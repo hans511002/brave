@@ -1,0 +1,431 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="win32">
+      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\sys">
+      <UniqueIdentifier>{9ccf9d14-965b-42f0-9a78-002a8207885d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\engine">
+      <UniqueIdentifier>{f80bc2ad-37bf-4d5c-af51-f9be07b08cd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\screens">
+      <UniqueIdentifier>{5cbb7da5-be33-4b50-8f27-ea390ce4469d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\bezier">
+      <UniqueIdentifier>{a233f36e-0220-4c47-91bc-0d943afeaf9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\engine\bullets">
+      <UniqueIdentifier>{23a9f5f7-f3bb-47c8-99a2-1cbb3f235018}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\engine\casts">
+      <UniqueIdentifier>{38c5ca74-9512-438a-b321-186adab3a495}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\engine\decoration">
+      <UniqueIdentifier>{ddbc8033-bb37-41d3-82ba-4a99e11c6da2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\engine\towers">
+      <UniqueIdentifier>{4e91d2bd-abc8-4cc4-9f57-e5f661be603e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\engine\units">
+      <UniqueIdentifier>{d3f4bca9-5bc1-49c3-9b34-6fec95d50ac2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\engine\xml">
+      <UniqueIdentifier>{6f8ffe4b-3307-4f7b-9240-2f3c857c843d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\common">
+      <UniqueIdentifier>{893fa5c6-0043-47b9-896b-ec2ec023f948}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\animation">
+      <UniqueIdentifier>{a365753e-73e0-4d7e-b5af-08c711c6119d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\engine\level">
+      <UniqueIdentifier>{4abe01f3-3bc1-4d94-8a52-edfba74636d4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\sys\bezierBox.cpp">
+      <Filter>src\sys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\sys\saveBox.cpp">
+      <Filter>src\sys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\bezier\FitLine.cpp">
+      <Filter>src\bezier</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\bezier\Path.cpp">
+      <Filter>src\bezier</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\bezier\PathSegment.cpp">
+      <Filter>src\bezier</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\bezier\Pointer.cpp">
+      <Filter>src\bezier</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\bezier\Bezier.cpp">
+      <Filter>src\bezier</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\World.cpp">
+      <Filter>src\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\WorldInterface.cpp">
+      <Filter>src\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_1.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\common\ArgsParse.cpp">
+      <Filter>src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\common\Decoding.cpp">
+      <Filter>src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\common\DirectoryInfo.cpp">
+      <Filter>src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\common\Encoding.cpp">
+      <Filter>src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\common\FTP.cpp">
+      <Filter>src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\common\Functions.cpp">
+      <Filter>src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\common\Log.cpp">
+      <Filter>src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\common\md5.cpp">
+      <Filter>src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\common\NetConstDefine.cpp">
+      <Filter>src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\common\Socket.cpp">
+      <Filter>src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\common\strCodeing.cpp">
+      <Filter>src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\common\String.cpp">
+      <Filter>src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\xml\XmlConfigParser.cpp">
+      <Filter>src\engine\xml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\xml\ReadXML.cpp">
+      <Filter>src\engine\xml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\Waves.cpp">
+      <Filter>src\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MainClass.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\JsonUtil.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\SavedCastTime.cpp">
+      <Filter>src\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\MoneyAdd.cpp">
+      <Filter>src\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\Feature.cpp">
+      <Filter>src\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\decoration\Decoration.cpp">
+      <Filter>src\engine\decoration</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_mc.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\level\Level1.cpp">
+      <Filter>src\engine\level</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\level\RoadLevel1.cpp">
+      <Filter>src\engine\level</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\screens\MiddleScreen.cpp">
+      <Filter>src\screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\level\PointTimer.cpp">
+      <Filter>src\engine\level</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BaseNode.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\WorldInterface_mc.cpp">
+      <Filter>src\engine</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HelloWorldScene.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\sys\bezierBox.h">
+      <Filter>src\sys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\sys\saveBox.h">
+      <Filter>src\sys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\CalcExp.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\Common.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\Connection.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\Convert.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\DataTable.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\DateTime.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\DateTimeFun.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\DateTimer.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\Decoding.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\DirectoryInfo.hpp">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\Encoding.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\Enums.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\Eval.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\Exception.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\ExpEval.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\ExpEval.hpp">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\FileInfo.hpp">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\FTP.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\Functions.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\hashMath.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\HashTable.hpp">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\HashTable2.hpp">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\includeHead.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\IPAddress.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\Log.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\md5.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\MulHashTable.hpp">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\MulHashTable2.hpp">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\NetConstDefine.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\numMap.hpp">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\platform.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\Socket.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\strCoding.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\String.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\TcpClient.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\TcpListener.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\TimeSpan.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\UdpClient.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\ArgsParse.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\Array.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\BTree.hpp">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\NetworkStream.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\xml\XmlConfigParser.h">
+      <Filter>src\engine\xml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\xml\ReadXML.h">
+      <Filter>src\engine\xml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\World.h">
+      <Filter>src\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MainClass.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\JsonUtil.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\allHeaders.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BaseHeaders.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\Waves.h">
+      <Filter>src\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\SavedCastTime.h">
+      <Filter>src\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\MoneyAdd.h">
+      <Filter>src\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\WorldInterface.h">
+      <Filter>src\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\Feature.h">
+      <Filter>src\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\decoration\Decoration.h">
+      <Filter>src\engine\decoration</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\decoration\DecorationLevel1.h">
+      <Filter>src\engine\decoration</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\animation\Hint.h">
+      <Filter>src\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\animation\MovieClip.h">
+      <Filter>src\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\units\Unit.h">
+      <Filter>src\engine\units</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\units\Unit_1.h">
+      <Filter>src\engine\units</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\units\Unit_mc.h">
+      <Filter>src\engine\units</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\units\HealthBar.h">
+      <Filter>src\engine\units</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\bezier\FitLine.h">
+      <Filter>src\bezier</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\bezier\Path.h">
+      <Filter>src\bezier</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\bezier\PathSegment.h">
+      <Filter>src\bezier</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\bezier\Pointer.h">
+      <Filter>src\bezier</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\bezier\Bezier.h">
+      <Filter>src\bezier</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\bezier\PathPoint.h">
+      <Filter>src\bezier</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\level\Level1.h">
+      <Filter>src\engine\level</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\level\RoadLevel1.h">
+      <Filter>src\engine\level</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\level\Level.h">
+      <Filter>src\engine\level</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\level\Road.h">
+      <Filter>src\engine\level</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\screens\MiddleScreen.h">
+      <Filter>src\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\level\PointTimer.h">
+      <Filter>src\engine\level</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BaseNode.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\WorldInterface_mc.h">
+      <Filter>src\engine</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="game.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
