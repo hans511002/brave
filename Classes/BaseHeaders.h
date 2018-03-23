@@ -1,12 +1,14 @@
 #ifndef BASE_HEADER_H
 #define BASE_HEADER_H
 #include "cocos2d.h"
-#include "dragonbones/cocos2d/DBCCRenderHeaders.h"
-#include "common/Common.h"
 #include "JsonUtil.h"
+#include "dragonbones/cocos2d/DBCCRenderHeaders.h"
+#include "dragonbones/DragonBonesHeaders.h"
+#include "ui/CocosGUI.h"
+#include "common/Common.h"
 #include "animation/MovieClip.h" 
 #include "BaseNode.h"
-
+#include "cocos-ext.h"
 USING_NS_CC;
 USING_NS_DB;
 

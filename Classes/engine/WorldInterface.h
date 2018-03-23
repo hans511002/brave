@@ -5,6 +5,7 @@
 //#include "MainClass.h"
 //#include "World.h"
 #include "JsonUtil.h"
+#include "WorldInterface_mc.h"
 
 namespace engine
 { 
@@ -16,7 +17,7 @@ namespace engine
         //public var tempObject:Object;
         //public var tempObject1:Object;
         //public var tempObject2:Object;
-        //public var container:WorldInterface_mc;
+        WorldInterface_mc *container; //public var container:WorldInterface_mc;
         int fasterFlag;//int fasterFlag;////public var fasterFlag:int = 0;
 		World * world;//public var world:World;
         //public var castMask:CastMask_mc;

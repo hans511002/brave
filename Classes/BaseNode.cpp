@@ -1,5 +1,6 @@
 #include "BaseNode.h"
 
+using namespace cocos2d;
 namespace std
 {
 	void setAnchorPoint(Node* node,bool subset)
@@ -14,6 +15,14 @@ namespace std
 			}
 		}
 	};
+    void setAnchorPoint(cocos2d::Node* node, float x, float y){
+        node->setAnchorPoint(Vec2(0, 0));
+        node->setPosition(Vec2(x, y));
+    };
+    void setAnchorPoint(cocos2d::Node* node, const cocos2d::Vec2 & pos){
+        node->setAnchorPoint(Vec2(0, 0));
+        node->setPosition(pos);
+    }
 }
 bool BaseNode::init() {
     cocos2d::Node::init();
@@ -63,10 +72,4 @@ bool BaseSprite::init()
 {
 	const auto& stageSize = cocos2d::Director::getInstance()->getVisibleSize();
 	return stageSize.height;
-}
-
-bool BaseFuns::Atstage(){
-	const auto& stageSize = cocos2d::Director::getInstance()->getVisibleSize();
-    Vec2 p= this->getPosition();
-    return p.x < 0 || p.y<0 || p.x > stageSize.width || p.y > stageSize.height;
 }

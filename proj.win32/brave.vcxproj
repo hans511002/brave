@@ -71,7 +71,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;$(EngineRoot);..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -163,6 +163,11 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\common\Socket.cpp" />
     <ClCompile Include="..\Classes\common\strCodeing.cpp" />
     <ClCompile Include="..\Classes\common\String.cpp" />
+    <ClCompile Include="..\Classes\engine\bullets\Bullet.cpp" />
+    <ClCompile Include="..\Classes\engine\bullets\Bullet_1.cpp" />
+    <ClCompile Include="..\Classes\engine\bullets\Bullet_2.cpp" />
+    <ClCompile Include="..\Classes\engine\bullets\Bullet_3.cpp" />
+    <ClCompile Include="..\Classes\engine\bullets\Bullet_4.cpp" />
     <ClCompile Include="..\Classes\engine\decoration\Decoration.cpp" />
     <ClCompile Include="..\Classes\engine\Feature.cpp" />
     <ClCompile Include="..\Classes\engine\level\Level1.cpp" />
@@ -242,6 +247,11 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\common\TcpListener.h" />
     <ClInclude Include="..\Classes\common\TimeSpan.h" />
     <ClInclude Include="..\Classes\common\UdpClient.h" />
+    <ClInclude Include="..\Classes\engine\bullets\Bullet.h" />
+    <ClInclude Include="..\Classes\engine\bullets\Bullet_1.h" />
+    <ClInclude Include="..\Classes\engine\bullets\Bullet_2.h" />
+    <ClInclude Include="..\Classes\engine\bullets\Bullet_3.h" />
+    <ClInclude Include="..\Classes\engine\bullets\Bullet_4.h" />
     <ClInclude Include="..\Classes\engine\decoration\Decoration.h" />
     <ClInclude Include="..\Classes\engine\decoration\DecorationLevel1.h" />
     <ClInclude Include="..\Classes\engine\Feature.h" />

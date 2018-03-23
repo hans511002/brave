@@ -35,7 +35,7 @@ namespace engine
 		//this.mouseChildren = false;
 		//this.mouseEnabled = false;
 		//this.alpha = 0;
-		//this.container = new WorldInterface_mc();
+		this->container = new WorldInterface_mc();
 		//this.container.stop();
 		//this.container.fireBack.stop();
 		//this.container.iceBack.stop();
@@ -146,6 +146,10 @@ namespace engine
 		//this.container.testRestart.visible = false;
 		//this.container.testRestartBoard.visible = false;
 		//this.container.慢.visible = false;
+
+        this->addChild(this->container);
+        this->container->init();
+        this->container->setPosition(0, 0);
 		//this.castMask = new CastMask_mc();
 		//this.castMask.stop();
 		//this.castMask.fireCase.stop();
@@ -1466,6 +1470,10 @@ namespace engine
 	}// end function
 	void WorldInterface::mouseDownHandler(cocos2d::Event *event)//(event:MouseEvent) : void
 	{
+        Node * node=event->getCurrentTarget();
+        Event::Type tp=event->getType();
+        string target = node->getName();
+
 		this->world->wavesClass->startWaves();
 
 		//if (!this->world->getSphere && !this->world->cast)

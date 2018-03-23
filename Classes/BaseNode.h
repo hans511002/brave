@@ -6,7 +6,9 @@
 #include "JsonUtil.h"
 
 namespace std {
-void setAnchorPoint(cocos2d::Node* node,bool subset=false); 
+    void setAnchorPoint(cocos2d::Node* node, bool subset = false);
+    void setAnchorPoint(cocos2d::Node* node, float x, float y);
+    void setAnchorPoint(cocos2d::Node* node,const cocos2d::Vec2 & pos);
 }
 
 class BaseFuns
@@ -15,7 +17,6 @@ class BaseFuns
 	cocos2d::Label* createText(const std::string& string);
 	float getStageWidth() const;
 	float getStageHeight() const;
-	bool Atstage();
 };
 
 
