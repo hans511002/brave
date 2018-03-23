@@ -16,11 +16,13 @@ namespace std
 	};
 }
 bool BaseNode::init() {
+    cocos2d::Node::init();
 	std::setAnchorPoint(this);
 	return true;
 }; 
 bool BaseSprite::init()
 {
+    cocos2d::Sprite::init();
 	std::setAnchorPoint(this);
 	return true;
 };

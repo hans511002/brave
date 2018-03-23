@@ -4,7 +4,7 @@
 
 namespace engine{
     namespace bullets{ 
-        class Bullet_1 :public Bullet
+        class Bullet_3 :public Bullet
         {
         public:
              float correct;
