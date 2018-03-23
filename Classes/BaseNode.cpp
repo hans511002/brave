@@ -64,3 +64,9 @@ bool BaseSprite::init()
 	const auto& stageSize = cocos2d::Director::getInstance()->getVisibleSize();
 	return stageSize.height;
 }
+
+bool BaseFuns::Atstage(){
+	const auto& stageSize = cocos2d::Director::getInstance()->getVisibleSize();
+    Vec2 p= this->getPosition();
+    return p.x < 0 || p.y<0 || p.x > stageSize.width || p.y > stageSize.height;
+}

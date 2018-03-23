@@ -15,6 +15,7 @@ class BaseFuns
 	cocos2d::Label* createText(const std::string& string);
 	float getStageWidth() const;
 	float getStageHeight() const;
+	bool Atstage();
 };
 
 
