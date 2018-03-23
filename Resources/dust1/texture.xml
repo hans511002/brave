@@ -1,0 +1,10 @@
+<TextureAtlas name="dust1" imagePath="texture.png">
+ <SubTexture name="Shape/shape 7948" x="51" y="90" width="49" height="28"/>
+ <SubTexture name="Shape/shape 7950" x="0" y="30" width="49" height="28"/>
+ <SubTexture name="Shape/shape 7952" x="51" y="30" width="49" height="28"/>
+ <SubTexture name="Shape/shape 7954" x="51" y="60" width="49" height="28"/>
+ <SubTexture name="Shape/shape 7956" x="0" y="60" width="49" height="28"/>
+ <SubTexture name="Shape/shape 7958" x="0" y="90" width="49" height="28"/>
+ <SubTexture name="Shape/shape 7960" x="0" y="0" width="49" height="28"/>
+ <SubTexture name="Shape/shape 7962" x="51" y="0" width="49" height="28"/>
+</TextureAtlas>

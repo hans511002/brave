@@ -1,0 +1,26 @@
+#ifndef ENGINE_LVEL_POINITTIMER_H
+#define ENGINE_LVEL_POINITTIMER_H
+#include "BaseHeaders.h"
+
+namespace engine{
+
+	class PointTimer:public BaseSprite
+	{
+	public:
+		int timer;
+		int counter;
+		int currentFrame;
+		//Sprite *point ;
+
+		PointTimer();
+		~PointTimer();
+		CREATE_FUNC(PointTimer);
+
+		void scheduleUpdate(float dt);
+		bool init();
+	private:
+
+	};
+		  
+}
+#endif

@@ -1,0 +1,687 @@
+<enemyesData>
+    <!--!>
+    build[true, false] - Видимость Бизье.
+    road[0, 1, 2, 3] - Видимость группы путей Бизье для выбранной дороги.[0] - Отображение всех дорог.
+    way[0, 1, 2, 3, 4, 5, 6, 7, 8, 9] - Видимость отдельно взятой линии Бизье.[0] - Отображение всех доступных групп Бизье.
+    -->
+    <bezier build = "false" road = "0" way = "0"></bezier>
+    <enemies>
+        <!--!>
+        typeEnemy - Номер юнита.
+        speedK - Скорость юнита.
+        health - Количество здоровья юнита.
+        gold - Количество денег, которые даются за убийство юнита.
+        fireDamageK - Восприимчевость к огню(%).[0] - Огонь не наносит урон.[200] - Огонь наносит двойной урон.
+        iceDamageK - Восприимчевость к льду(%).[0] - Лед не наносит урон.[200] - Лед наносит двойной урон.
+        stoneDamageK - Восприимчевость к камню(%).[0] - Камень не наносит урон.[200] - Камень наносит двойной урон.
+        levinDamageK - Восприимчевость к молнии(%).[0] - Молния не наносит урон.[200] - Молния наносит двойной урон.
+        costOfLiving - Количество штрафных баллов за проход юнита до финиша.
+        airResistance - Сопротивление касту Air(%) по силе отталкивания.[0] - Юнит тяжелый на столько, что его не оттолкнуть.[200] - Юнит отталкивается в два раза сильнее.
+        icemanResist - Сопротивление к касту Iceman(%) по времени заморозки.[0] - Юнит не замораживается.[200] - Юнит замораживается долше в два раза.
+        replacementCount - Количество создаваемых юнитов после смерти основного(требует replacement = "1" в levelX.xml).
+        -->
+        <!--  -->
+        <enemy typeEnemy = "1" speedK = "1.1" health = "50" gold = "2" fireDamageK = "100" iceDamageK = "100" stoneDamageK = "100" levinDamageK = "100" costOfLiving = "1" airResist = "100" icemanResist = "100" replacementCount = "0"></enemy>
+
+        <!--  -->
+        <enemy typeEnemy = "2" speedK = "0.8" health = "250" gold = "4" fireDamageK = "100" iceDamageK = "100" stoneDamageK = "100" levinDamageK = "100" costOfLiving = "1" airResist = "95" icemanResist = "100" replacementCount = "0"></enemy>
+
+        <!--КРЫЛАТЫЙ 1.  -->
+        <enemy typeEnemy = "3" speedK = "1.8" health = "135" gold = "3" fireDamageK = "100" iceDamageK = "100" stoneDamageK = "100" levinDamageK = "100" costOfLiving = "1" airResist = "95" icemanResist = "100" replacementCount = "0"></enemy>
+
+        <!--  -->
+        <enemy typeEnemy = "4" speedK = "0.8" health = "470" gold = "4" fireDamageK = "100" iceDamageK = "100" stoneDamageK = "100" levinDamageK = "100" costOfLiving = "1" airResist = "90" icemanResist = "100" replacementCount = "0"></enemy>
+
+        <!--МИНИ - БОСС.  -->
+        <enemy typeEnemy = "5" speedK = "0.65" health = "1800" gold = "11" fireDamageK = "90" iceDamageK = "90" stoneDamageK = "90" levinDamageK = "90" costOfLiving = "2" airResist = "80" icemanResist = "100" replacementCount = "1"></enemy>
+
+        <!--БОЛЕЕ УСТОЙЧИВ К ОГНЮ.  -->
+        <enemy typeEnemy = "6" speedK = "0.75" health = "500" gold = "7" fireDamageK = "10" iceDamageK = "100" stoneDamageK = "100" levinDamageK = "100" costOfLiving = "2" airResist = "88" icemanResist = "100" replacementCount = "1"></enemy>
+
+        <!--БОЛЕЕ УСТОЙЧИВ К ЛЬДУ.  -->
+        <enemy typeEnemy = "7" speedK = "0.7" health = "620" gold = "7" fireDamageK = "100" iceDamageK = "10" stoneDamageK = "100" levinDamageK = "100" costOfLiving = "2" airResist = "88" icemanResist = "100" replacementCount = "1"></enemy>
+
+        <!--КРЫЛАТЫЙ 2.  -->
+        <enemy typeEnemy = "8" speedK = "1.8" health = "330" gold = "5" fireDamageK = "100" iceDamageK = "100" stoneDamageK = "100" levinDamageK = "100" costOfLiving = "1" airResist = "90" icemanResist = "100" replacementCount = "1"></enemy>
+
+        <!--ЗАЩИТА ОТ ЛЬДА И КАМНЯ.  -->
+        <enemy typeEnemy = "9" speedK = "0.9" health = "1500" gold = "16" fireDamageK = "100" iceDamageK = "10" stoneDamageK = "10" levinDamageK = "100" costOfLiving = "2" airResist = "75" icemanResist = "100" replacementCount = "1"></enemy>
+
+        <!--СИЛЬНЫЙ И БЫСТРЫЙ 1.  -->
+        <enemy typeEnemy = "10" speedK = "1.4" health = "1200" gold = "15" fireDamageK = "90" iceDamageK = "90" stoneDamageK = "90" levinDamageK = "90" costOfLiving = "2" airResist = "80" icemanResist = "100" replacementCount = "1"></enemy>
+
+        <!--ЗАЩИТА ОТ ОГНЯ И КАМНЯ.  -->
+        <enemy typeEnemy = "11" speedK = "0.9" health = "1600" gold = "17" fireDamageK = "10" iceDamageK = "100" stoneDamageK = "10" levinDamageK = "100" costOfLiving = "2" airResist = "75" icemanResist = "100" replacementCount = "1"></enemy>
+
+        <!--ЗАЩИТА ОТ КАМНЯ.  -->
+        <enemy typeEnemy = "12" speedK = "0.7" health = "750" gold = "7" fireDamageK = "100" iceDamageK = "100" stoneDamageK = "10" levinDamageK = "100" costOfLiving = "2" airResist = "88" icemanResist = "100" replacementCount = "1"></enemy>
+
+        <!--КРЫЛАТЫЙ 3.  -->
+        <enemy typeEnemy = "13" speedK = "1.8" health = "550" gold = "18" fireDamageK = "90" iceDamageK = "90" stoneDamageK = "90" levinDamageK = "90" costOfLiving = "1" airResist = "88" icemanResist = "100" replacementCount = "1"></enemy>
+
+        <!--СИЛЬНЫЙ И БЫСТРЫЙ 2.  -->
+        <enemy typeEnemy = "14" speedK = "1.1" health = "2000" gold = "28" fireDamageK = "90" iceDamageK = "90" stoneDamageK = "90" levinDamageK = "90" costOfLiving = "2" airResist = "70" icemanResist = "100" replacementCount = "1"></enemy>
+
+        <!--СИЛЬНЫЙ И БЫСТРЫЙ 3.  -->
+        <enemy typeEnemy = "15" speedK = "1.1" health = "2600" gold = "50" fireDamageK = "100" iceDamageK = "100" stoneDamageK = "100" levinDamageK = "100" costOfLiving = "2" airResist = "65" icemanResist = "100" replacementCount = "1"></enemy>
+
+        <!--ЗАЩИТА ОТ МОЛНИИ.  -->
+        <enemy typeEnemy = "16" speedK = "0.75" health = "800" gold = "7" fireDamageK = "100" iceDamageK = "100" stoneDamageK = "100" levinDamageK = "10" costOfLiving = "2" airResist = "88" icemanResist = "100" replacementCount = "1"></enemy>
+
+        <!--ЗАЩИТА ОТ КАМНЯ И МОЛНИИ.  -->
+        <enemy typeEnemy = "17" speedK = "1" health = "1700" gold = "18" fireDamageK = "100" iceDamageK = "100" stoneDamageK = "10" levinDamageK = "10" costOfLiving = "2" airResist = "75" icemanResist = "100" replacementCount = "1"></enemy>
+
+        <!--АССАСИН 1.  -->
+        <enemy typeEnemy = "18" speedK = "1.4" health = "850" gold = "18" fireDamageK = "90" iceDamageK = "90" stoneDamageK = "90" levinDamageK = "90" costOfLiving = "2" airResist = "90" icemanResist = "100" replacementCount = "1" invisibleTimer = "4.7" visibleTimer = "4.7"></enemy>
+        <!--invisibleTimer - Время(сек.), которое юнит остаётся невидимым; visibleTimer - Время(сек.), которое юнит остаётся видимым.  -->
+
+        <!--АССАСИН 2.  -->
+        <enemy typeEnemy = "19" speedK = "1.3" health = "1800" gold = "40" fireDamageK = "90" iceDamageK = "90" stoneDamageK = "90" levinDamageK = "90" costOfLiving = "2" airResist = "88" icemanResist = "100" replacementCount = "1" invisibleTimer = "4.5" visibleTimer = "4.5"></enemy>
+        <!--invisibleTimer - Время(сек.), которое юнит остаётся невидимым; visibleTimer - Время(сек.), которое юнит остаётся видимым.  -->
+
+        <!--СОСТАВНОЙ 1.  -->
+        <enemy typeEnemy = "20" speedK = "0.7" health = "1700" gold = "27" fireDamageK = "90" iceDamageK = "90" stoneDamageK = "90" levinDamageK = "90" costOfLiving = "3" airResist = "70" icemanResist = "100" replacementCount = "1" countNewEnemy = "3"></enemy>
+        <!--countNewEnemy - Количество создаваемых юнитов №31 после смерти / распада юнита №20.  -->
+
+        <!--СОСТАВНОЙ 2.  -->
+        <enemy typeEnemy = "21" speedK = "0.7" health = "2500" gold = "37" fireDamageK = "90" iceDamageK = "90" stoneDamageK = "90" levinDamageK = "90" costOfLiving = "3" airResist = "65" icemanResist = "100" replacementCount = "1" countNewEnemy = "4"></enemy>
+        <!--countNewEnemy - Количество создаваемых юнитов №32 после смерти / распада юнита №21.  -->
+
+        <!--БЛОКИРОВАНИЕ БАШНИ.  -->
+        <enemy typeEnemy = "22" speedK = "0.6" health = "550" gold = "30" fireDamageK = "100" iceDamageK = "100" stoneDamageK = "100" levinDamageK = "100" costOfLiving = "2" airResist = "85" icemanResist = "100" replacementCount = "1" blockTowerRadius = "100"></enemy>
+        <!--blockTowerRadius - Башни, попадающие в этот радиус блокируются(стрельба и открытие меню).  -->
+
+        <!--ОГНЕННЫЙ ЭЛЕМЕНТАЛИЙ.  -->
+        <enemy typeEnemy = "23" speedK = "1.1" health = "1400" gold = "18" fireDamageK = "0" iceDamageK = "100" stoneDamageK = "100" levinDamageK = "100" costOfLiving = "3" airResist = "75" icemanResist = "100" replacementCount = "1" repairHealthPerc = "100"></enemy>
+        <!--repairHealthPerc - В случае стрельбы огня, юнит восстановит себе столько здоровья, сколько составляет данное количество процентов от урона.  -->
+
+        <!--ЛЕДЯНОЙ ЭЛЕМЕНТАЛИЙ.  -->
+        <enemy typeEnemy = "24" speedK = "0.8" health = "1600" gold = "25" fireDamageK = "100" iceDamageK = "0" stoneDamageK = "100" levinDamageK = "100" costOfLiving = "3" airResist = "75" icemanResist = "0" replacementCount = "1" speedRunPerc = "200" speedRunTimerIce1 = "0.7" speedRunTimerIce2 = "0.85" speedRunTimerIce3 = "1" speedRunTimerIce4 = "1.2"></enemy>
+        <!--speedRunPerc - 100 % -обычное ускорение, speedRunTimerIce1 - 1 сек.ускорения и т.д.-->
+
+        <!--КАМЕННЫЙ ЭЛЕМЕНТАЛИЙ.  -->
+        <enemy typeEnemy = "25" speedK = "0.7" health = "2000" gold = "33" fireDamageK = "100" iceDamageK = "100" stoneDamageK = "0" levinDamageK = "100" costOfLiving = "3" airResist = "75" icemanResist = "100" replacementCount = "1" armorTimer = "1000"></enemy>
+        <!--armorTimer - Время(сек.), которое действует броня на юнитах, если её не истощил урон.  -->
+
+        <!--МОЛНИЕВЫЙ ЭЛЕМЕНТАЛИЙ.  -->
+        <enemy typeEnemy = "26" speedK = "0.8" health = "2300" gold = "40" fireDamageK = "100" iceDamageK = "100" stoneDamageK = "100" levinDamageK = "0" costOfLiving = "3" airResist = "75" icemanResist = "100" replacementCount = "1"></enemy>
+
+        <!--ТЕЛЕПОРТ.  -->
+        <enemy typeEnemy = "27" speedK = "0.8" health = "1200" gold = "25" fireDamageK = "100" iceDamageK = "100" stoneDamageK = "100" levinDamageK = "100" costOfLiving = "2" airResist = "85" icemanResist = "100" replacementCount = "1" teleportTimer = "5" teleportStealthTimer = "1.4" teleportDistance = "130" teleportRadius = "65" unitsCount = "7"></enemy>
+        <!--teleportTimer - Время(сек.), через которое юнит начнет телепортацию.teleportStealthTimer - Время(сек.), которое юнит находися невидимым в режиме телепортирования.teleportDistance - Расстояние, на которое телепортируется юнит.UnitCount - скольких юнитов он телепортирует с собой(телепортирует и с другой дороги, но его дорога - приоритет)  -->
+
+        <!--ШАМАН.  -->
+        <enemy typeEnemy = "28" speedK = "1" health = "1800" gold = "35" fireDamageK = "90" iceDamageK = "90" stoneDamageK = "90" levinDamageK = "90" costOfLiving = "2" airResist = "83" icemanResist = "100" replacementCount = "1" giveHealthRadius = "100" giveHealthInterval = "4" giveHealth = "10"></enemy>
+        <!--giveHealthRadius - Радиус, в котором будут лечиться юниты.giveHealthInterval - Интервал(сек.) между лучениями.giveHealth - Процент от максимального здоровья юнита, которое восстанавливается([0] - ничего не восстановит, [100] - восстановит столько же здоровья, сколько есть сейчас).  -->
+
+        <!--ПЕСОЧНЫЙ 1.  -->
+        <enemy typeEnemy = "29" speedK = "1.3" health = "400" gold = "5" fireDamageK = "90" iceDamageK = "90" stoneDamageK = "90" levinDamageK = "90" costOfLiving = "1" airResist = "95" icemanResist = "100" replacementCount = "1" deadZone = "400" beginZone = "50" endZone = "50" returnHealth = "30" stealthTimer = "5"></enemy>
+        <!--deadZone - В каком пределе появится юнит - реплейсмент от места смерти предка(предел в сторону старта).beginZone - Минимальный путь, доступный для юнита - реплейсмента.endZone - Максимальный путь, доступный для юнита - реплейсмента.returnHealth - После первой смерти, юнит появится с указанным процентом от первоначального уровня здоровья([50] - половина здоровья, [100] - с таким же уровнем здоровья).stealthTimer - Время(сек.), которое юнит находится в песочном состоянии.  -->
+
+        <!--ПЕСОЧНЫЙ 2.  -->
+        <enemy typeEnemy = "30" speedK = "1.3" health = "900" gold = "10" fireDamageK = "100" iceDamageK = "100" stoneDamageK = "100" levinDamageK = "100" costOfLiving = "1" airResist = "90" icemanResist = "100" replacementCount = "1" deadZone = "400" beginZone = "50" endZone = "50" returnHealth = "45" stealthTimer = "5"></enemy>
+        <!--deadZone - В каком пределе появится юнит - реплейсмент от места смерти предка(предел в сторону старта).beginZone - Минимальный путь, доступный для юнита - реплейсмента.endZone - Максимальный путь, доступный для юнита - реплейсмента.returnHealth - После первой смерти, юнит появится с указанным процентом от первоначального уровня здоровья([50] - половина здоровья, [100] - с таким же уровнем здоровья).stealthTimer - Время(сек.), которое юнит находится в песочном состоянии.  -->
+
+        <!--ДЕСАНТ СОСТАВНОГО 1.  -->
+        <enemy typeEnemy = "31" speedK = "1.5" health = "350" gold = "4" fireDamageK = "100" iceDamageK = "100" stoneDamageK = "100" levinDamageK = "100" costOfLiving = "1" airResist = "95" icemanResist = "100" replacementCount = "1"></enemy>
+
+        <!--ДЕСАНТ СОСТАВНОГО 2.  -->
+        <enemy typeEnemy = "32" speedK = "1.5" health = "500" gold = "6" fireDamageK = "100" iceDamageK = "100" stoneDamageK = "100" levinDamageK = "100" costOfLiving = "1" airResist = "95" icemanResist = "100" replacementCount = "1"></enemy>
+
+        <!--ТОРНАДО.  -->
+        <enemy typeEnemy = "33" speedK = "1.5" health = "450" gold = "9" fireDamageK = "100" iceDamageK = "100" stoneDamageK = "100" levinDamageK = "100" costOfLiving = "1" airResist = "100" icemanResist = "100" replacementCount = "1"></enemy>
+
+        <!--БОСС.  -->
+        <enemy typeEnemy = "34" speedK = "0" health = "23000" gold = "500" fireDamageK = "80" iceDamageK = "80" stoneDamageK = "80" levinDamageK = "80" costOfLiving = "20" airResist = "20" icemanResist = "100" replacementCount = "0">
+            <phasePath>
+                <road1>
+                    <phase path = "300"></phase>
+                    <phase path = "420"></phase>
+                    <phase path = "550"></phase>
+                    <phase path = "650"></phase>
+                    <phase path = "750"></phase>
+                    <phase path = "850"></phase>
+                    <phase path = "950"></phase>
+                    <phase path = "1050"></phase>
+                    <phase path = "1050"></phase>
+                    <phase path = "1050"></phase>
+                    <phase path = "1050"></phase>
+                    <phase path = "1050"></phase>
+                    <phase path = "1050"></phase>
+                    <phase path = "1050"></phase>
+                </road1>
+                <road2>
+                    <phase path = "305"></phase>
+                    <phase path = "400"></phase>
+                    <phase path = "580"></phase>
+                    <phase path = "700"></phase>
+                    <phase path = "800"></phase>
+                    <phase path = "900"></phase>
+                    <phase path = "1000"></phase>
+                    <phase path = "1100"></phase>
+                    <phase path = "1100"></phase>
+                    <phase path = "1100"></phase>
+                    <phase path = "1100"></phase>
+                    <phase path = "1100"></phase>
+                    <phase path = "1100"></phase>
+                    <phase path = "1100"></phase>
+                </road2>
+            </phasePath>
+            <phaseCallUnits>
+                <callUnits timer = "5">
+                    <enemy typeUnit = "8" count = "6" interval = "1" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "8" count = "1" interval = "4" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "19" count = "2" interval = "4" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "26" count = "1" interval = "4" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "24" count = "1" interval = "0" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "8" count = "6" interval = "1" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "8" count = "1" interval = "4" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                </callUnits>
+                <callUnits timer = "15">
+                    <enemy typeUnit = "23" count = "1" interval = "2" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "25" count = "1" interval = "8" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "26" count = "1" interval = "3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "22" count = "1" interval = "3" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "8" count = "7" interval = "1.2" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "6" interval = "1" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                </callUnits>
+                <callUnits timer = "20">
+                    <enemy typeUnit = "13" count = "1" interval = "0.2" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "8" count = "1" interval = "0.2" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.2" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.2" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "8" count = "1" interval = "0.2" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.2" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.2" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "8" count = "1" interval = "0.2" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.2" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.2" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "8" count = "1" interval = "0.2" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.2" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.2" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "8" count = "1" interval = "0.2" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.2" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                </callUnits>
+                <callUnits timer = "28">
+                    <enemy typeUnit = "26" count = "1" interval = "3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "23" count = "1" interval = "2" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "22" count = "1" interval = "3" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "24" count = "1" interval = "2" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "25" count = "1" interval = "3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "23" count = "1" interval = "2" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "27" count = "1" interval = "2.3" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.3" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.3" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.3" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.3" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.3" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.3" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.3" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.3" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.3" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.3" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.3" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "3" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "24" count = "1" interval = "2" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "25" count = "1" interval = "3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "26" count = "1" interval = "3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                </callUnits>
+                <callUnits timer = "25">
+                    <enemy typeUnit = "27" count = "1" interval = "2.3" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.3" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.3" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.3" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "3" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "27" count = "1" interval = "1.5" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "27" count = "1" interval = "1.5" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.3" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.3" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.3" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "4" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "22" count = "1" interval = "3" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "28" count = "1" interval = "1.5" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.3" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.3" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.3" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.3" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                </callUnits>
+                <callUnits timer = "25">
+                    <enemy typeUnit = "26" count = "1" interval = "3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "23" count = "1" interval = "2" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "14" count = "1" interval = "0.3" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "24" count = "1" interval = "2" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "25" count = "1" interval = "3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "14" count = "1" interval = "0.3" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "22" count = "1" interval = "3" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "23" count = "1" interval = "2" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "24" count = "1" interval = "2" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "14" count = "1" interval = "0.3" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "25" count = "1" interval = "3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "26" count = "1" interval = "3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "14" count = "1" interval = "0.3" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                </callUnits>
+                <callUnits timer = "25">
+                    <enemy typeUnit = "8" count = "1" interval = "0.2" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "8" count = "1" interval = "0.2" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "8" count = "1" interval = "0.2" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "8" count = "1" interval = "0.2" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "8" count = "1" interval = "0.2" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "8" count = "1" interval = "0.2" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "15" count = "1" interval = "0.2" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "15" count = "1" interval = "0.2" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.2" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "8" count = "1" interval = "0.2" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "8" count = "1" interval = "0.2" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "8" count = "1" interval = "0.2" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "8" count = "1" interval = "0.2" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "8" count = "1" interval = "0.2" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "15" count = "1" interval = "0.2" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "15" count = "1" interval = "0.2" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.2" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.2" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.2" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                </callUnits>
+                <callUnits timer = "25">
+                    <enemy typeUnit = "26" count = "1" interval = "3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "23" count = "1" interval = "2" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "24" count = "1" interval = "2" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "25" count = "1" interval = "3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "22" count = "1" interval = "3" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "23" count = "1" interval = "2" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "24" count = "1" interval = "2" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "25" count = "1" interval = "3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "26" count = "1" interval = "3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                </callUnits>
+                <callUnits timer = "25">
+                    <enemy typeUnit = "27" count = "1" interval = "1" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.4" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.4" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.4" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.4" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.4" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.4" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.4" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.4" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "27" count = "1" interval = "1" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "27" count = "1" interval = "1" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.4" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.4" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.4" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.4" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "28" count = "1" interval = "1" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.4" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.4" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.4" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.4" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "27" count = "1" interval = "1" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.4" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.4" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.4" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.4" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "28" count = "1" interval = "1" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.4" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.4" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.4" road = "1" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "1" interval = "0.4" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                </callUnits>
+                <callUnits timer = "25">
+                    <enemy typeUnit = "23" count = "1" interval = "2" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "19" count = "1" interval = "2" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "24" count = "1" interval = "2" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "19" count = "1" interval = "2" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "25" count = "1" interval = "3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "19" count = "1" interval = "2" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "26" count = "1" interval = "3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "27" count = "3" interval = "2" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "23" count = "1" interval = "2" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "19" count = "1" interval = "2" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "24" count = "1" interval = "2" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "19" count = "1" interval = "2" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "25" count = "1" interval = "3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "19" count = "1" interval = "2" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "26" count = "1" interval = "3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "19" count = "1" interval = "2" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                </callUnits>
+                <callUnits timer = "15">
+                    <enemy typeUnit = "27" count = "3" interval = "2.5" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "23" count = "2" interval = "2.5" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "27" count = "3" interval = "2.3" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "10" interval = "0.4" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "27" count = "3" interval = "2.3" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "24" count = "2" interval = "2.3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "27" count = "3" interval = "2.3" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "10" interval = "0.4" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "27" count = "3" interval = "2.3" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "25" count = "1" interval = "2.3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "26" count = "1" interval = "2.3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "25" count = "1" interval = "2.3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "26" count = "1" interval = "2.3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "27" count = "3" interval = "2.3" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "10" interval = "0.4" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "27" count = "3" interval = "2.3" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "23" count = "1" interval = "2.3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "23" count = "1" interval = "2.3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "27" count = "3" interval = "2.3" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "10" interval = "0.4" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "27" count = "3" interval = "2.3" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "24" count = "2" interval = "2.3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "27" count = "3" interval = "2.3" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "25" count = "2" interval = "2.3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "27" count = "3" interval = "2.3" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "10" interval = "0.4" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "27" count = "3" interval = "2.3" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "26" count = "1" interval = "2.3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "27" count = "3" interval = "2.3" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "10" interval = "0.4" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "27" count = "3" interval = "2.3" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                </callUnits>
+                <callUnits timer = "15">
+                    <enemy typeUnit = "27" count = "3" interval = "2.3" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "23" count = "1" interval = "2.3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "23" count = "1" interval = "2.3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "27" count = "3" interval = "2.3" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "10" interval = "0.4" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "27" count = "3" interval = "2.3" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "24" count = "2" interval = "2.3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "27" count = "3" interval = "2.3" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "25" count = "2" interval = "2.3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "27" count = "3" interval = "2.3" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "10" interval = "0.4" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "27" count = "3" interval = "2.3" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "26" count = "1" interval = "2.3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "27" count = "3" interval = "2.3" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "10" interval = "0.4" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "27" count = "3" interval = "2.3" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                </callUnits>
+                <callUnits timer = "15">
+                    <enemy typeUnit = "23" count = "1" interval = "0.3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "19" count = "1" interval = "0.3" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "22" count = "1" interval = "1" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "27" count = "1" interval = "0.5" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "24" count = "1" interval = "0.3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "19" count = "1" interval = "0.3" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "27" count = "1" interval = "0.5" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "25" count = "1" interval = "0.3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "19" count = "1" interval = "0.3" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "26" count = "1" interval = "0.3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "27" count = "1" interval = "0.5" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "22" count = "1" interval = "1" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "23" count = "1" interval = "0.3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "19" count = "1" interval = "0.3" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "27" count = "1" interval = "0.5" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "24" count = "1" interval = "0.3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "19" count = "1" interval = "0.3" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "27" count = "1" interval = "0.5" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "22" count = "1" interval = "1" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "25" count = "1" interval = "0.3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "19" count = "1" interval = "0.3" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "27" count = "1" interval = "0.5" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "22" count = "1" interval = "1" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "26" count = "1" interval = "0.3" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "19" count = "1" interval = "0.3" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "27" count = "1" interval = "0.5" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "23" count = "2" interval = "2.5" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                    <enemy typeUnit = "22" count = "1" interval = "1" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "27" count = "3" interval = "2.3" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "13" count = "10" interval = "0.3" road = "2" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "27" count = "1" interval = "0" road = "3" way = "0" path = "0" replacement = "0"></enemy>
+                    <enemy typeUnit = "24" count = "1" interval = "0" road = "0" way = "0" path = "0" replacement = "0" gate = "1"></enemy>
+                </callUnits>
+            </phaseCallUnits>
+            <phaseView>
+                <viewTimer timer = "15" changeRoad = "false"></viewTimer>
+                <viewTimer timer = "15" changeRoad = "false"></viewTimer>
+                <viewTimer timer = "15" changeRoad = "false"></viewTimer>
+                <viewTimer timer = "15" changeRoad = "false"></viewTimer>
+                <viewTimer timer = "13" changeRoad = "false"></viewTimer>
+                <viewTimer timer = "13" changeRoad = "false"></viewTimer>
+                <viewTimer timer = "13" changeRoad = "false"></viewTimer>
+                <viewTimer timer = "13" changeRoad = "false"></viewTimer>
+                <viewTimer timer = "13" changeRoad = "false"></viewTimer>
+                <viewTimer timer = "13" changeRoad = "false"></viewTimer>
+                <viewTimer timer = "13" changeRoad = "false"></viewTimer>
+                <viewTimer timer = "15" changeRoad = "false"></viewTimer>
+                <viewTimer timer = "15" changeRoad = "false"></viewTimer>
+                <viewTimer timer = "15" changeRoad = "false"></viewTimer>
+                <viewTimer timer = "15" changeRoad = "false"></viewTimer>
+                <viewTimer timer = "15" changeRoad = "false"></viewTimer>
+                <viewTimer timer = "15" changeRoad = "false"></viewTimer>
+                <viewTimer timer = "13" changeRoad = "false"></viewTimer>
+                <viewTimer timer = "13" changeRoad = "false"></viewTimer>
+                <viewTimer timer = "13" changeRoad = "false"></viewTimer>
+                <viewTimer timer = "13" changeRoad = "false"></viewTimer>
+                <viewTimer timer = "13" changeRoad = "false"></viewTimer>
+                <viewTimer timer = "13" changeRoad = "false"></viewTimer>
+                <viewTimer timer = "13" changeRoad = "false"></viewTimer>
+                <viewTimer timer = "15" changeRoad = "false"></viewTimer>
+                <viewTimer timer = "15" changeRoad = "false"></viewTimer>
+            </phaseView>
+            <phaseArmorGo>
+                <armorGo timer = "40"></armorGo>
+                <armorGo timer = "40"></armorGo>
+                <armorGo timer = "40"></armorGo>
+                <armorGo timer = "40"></armorGo>
+                <armorGo timer = "40"></armorGo>
+                <armorGo timer = "40"></armorGo>
+                <armorGo timer = "40"></armorGo>
+                <armorGo timer = "40"></armorGo>
+                <armorGo timer = "40"></armorGo>
+                <armorGo timer = "40"></armorGo>
+                <armorGo timer = "40"></armorGo>
+                <armorGo timer = "40"></armorGo>
+                <armorGo timer = "40"></armorGo>
+            </phaseArmorGo>
+            <phaseCastGo>
+                <castGo timer = "80"></castGo>
+                <castGo timer = "60"></castGo>
+                <castGo timer = "60"></castGo>
+                <castGo timer = "50"></castGo>
+                <castGo timer = "60"></castGo>
+                <castGo timer = "60"></castGo>
+                <castGo timer = "50"></castGo>
+                <castGo timer = "60"></castGo>
+                <castGo timer = "60"></castGo>
+                <castGo timer = "60"></castGo>
+                <castGo timer = "50"></castGo>
+                <castGo timer = "60"></castGo>
+            </phaseCastGo>
+        </enemy>
+    </enemies>
+    <cost>
+        <!--
+        <tower> cost - Начальная стоимость башни.
+        <tower> costPlus - Число, на которое увеличивается стоимость башни после каждой покупки.
+        <towerSlots> slot2 - Стоимость башни №2.
+        <towerSlots> slot3 - Стоимость башни №3.
+        <towerSlots> slot4 - Стоимость башни №4.
+        <fire>[step1, step2...] - Стоимость сферы огня перед каждой покупкой.
+        <ice>[step1, step2...] - Стоимость сферы льда перед каждой покупкой.
+        <stone>[step1, step2...] - Стоимость сферы камня перед каждой покупкой.
+        <levin>[step1, step2...] - Стоимость сферы молнии перед каждой покупкой.
+        <ultra> fireStone - Стоимость ультра - башни №5(огонь + камень).
+        <ultra> iceLevin - Стоимость ультра - башни №6(лед + молния).
+        <ultra> iceStone - Стоимость ультра - башни №7(лед + камень).
+        <ultra> fireLevin - Стоимость ультра - башни №8(огонь + молния).
+        <ultraAdditional> fireStone - Стоимость улучшения ультра - башни №5(огонь + камень).
+        <ultraAdditional> iceLevin - Стоимость улучшения ультра - башни №6(лед + молния).
+        <ultraAdditional> iceStone - Стоимость улучшения ультра - башни №7(лед + камень).
+        <ultraAdditional> fireLevin - Стоимость улучшения ультра - башни №8(огонь + камень).
+        -->
+        <tower cost = "10" costPlus = "5"></tower>
+        <towerSlots slot2 = "5" slot3 = "10" slot4 = "15"></towerSlots>
+        <fire step1 = "5" step2 = "6" step3 = "7" step4 = "8" step5 = "9" step6 = "10" step7 = "11" step8 = "12" step9 = "13" step10 = "14" step11 = "15" step12 = "17" step13 = "19" step14 = "21" step15 = "23" step16 = "25" step17 = "27" step18 = "29" step19 = "31" step20 = "33" step21 = "35" step22 = "38" step23 = "41" step24 = "44" step25 = "47" step26 = "50" step27 = "53" step28 = "56" step29 = "59" step30 = "62" step31 = "65" step32 = "68" step33 = "71" step34 = "74" step35 = "77" step36 = "80" step37 = "83" step38 = "87" step39 = "91" step40 = "95" step41 = "99"></fire>
+
+    <!--<fire step1 = "5" step2 = "6" step3 = "7" step4 = "8" step5 = "9" step6 = "10" step7 = "11" step8 = "12" step9 = "13" step10 = "14" step11 = "15" step12 = "16" step13 = "17" step14 = "18" step15 = "19" step16 = "20" step17 = "22" step18 = "24" step19 = "26" step20 = "28" step21 = "30" step22 = "32" step23 = "34" step24 = "36" step25 = "38" step26 = "40" step27 = "43" step28 = "46" step29 = "49" step30 = "52" step31 = "55" step32 = "58" step33 = "61" step34 = "65" step35 = "69" step36 = "73" step37 = "77" step38 = "81" step39 = "86" step40 = "91" step41 = "96"></fire>-->
+
+    <ice step1 = "6" step2 = "7" step3 = "8" step4 = "9" step5 = "10" step6 = "11" step7 = "12" step8 = "13" step9 = "14" step10 = "15" step11 = "17" step12 = "19" step13 = "21" step14 = "23" step15 = "25" step16 = "27" step17 = "29" step18 = "31" step19 = "33" step20 = "35" step21 = "37" step22 = "40" step23 = "43" step24 = "46" step25 = "49" step26 = "52" step27 = "55" step28 = "58" step29 = "61" step30 = "64" step31 = "67" step32 = "70" step33 = "73" step34 = "76" step35 = "79" step36 = "82" step37 = "85" step38 = "89" step39 = "94" step40 = "99"></ice>
+
+<!--<ice step1 = "6" step2 = "7" step3 = "8" step4 = "9" step5 = "10" step6 = "11" step7 = "12" step8 = "13" step9 = "14" step10 = "15" step11 = "16" step12 = "17" step13 = "18" step14 = "19" step15 = "20" step16 = "22" step17 = "24" step18 = "26" step19 = "28" step20 = "30" step21 = "32" step22 = "34" step23 = "36" step24 = "38" step25 = "40" step26 = "43" step27 = "46" step28 = "49" step29 = "52" step30 = "55" step31 = "58" step32 = "61" step33 = "65" step34 = "69" step35 = "73" step36 = "77" step37 = "81" step38 = "86" step39 = "91" step40 = "96"></ice>-->
+
+<stone step1 = "7" step2 = "8" step3 = "9" step4 = "10" step5 = "11" step6 = "12" step7 = "13" step8 = "14" step9 = "15" step10 = "17" step11 = "19" step12 = "21" step13 = "23" step14 = "25" step15 = "27" step16 = "29" step17 = "31" step18 = "33" step19 = "35" step20 = "37" step21 = "39" step22 = "42" step23 = "45" step24 = "48" step25 = "51" step26 = "54" step27 = "57" step28 = "60" step29 = "63" step30 = "66" step31 = "69" step32 = "72" step33 = "75" step34 = "78" step35 = "81" step36 = "84" step37 = "87" step38 = "91" step39 = "97" step40 = "99"></stone>
+
+<!--<stone step1 = "7" step2 = "8" step3 = "9" step4 = "10" step5 = "11" step6 = "12" step7 = "13" step8 = "14" step9 = "15" step10 = "16" step11 = "17" step12 = "18" step13 = "19" step14 = "20" step15 = "22" step16 = "24" step17 = "26" step18 = "28" step19 = "30" step20 = "32" step21 = "34" step22 = "36" step23 = "38" step24 = "40" step25 = "43" step26 = "46" step27 = "49" step28 = "52" step29 = "55" step30 = "58" step31 = "61" step32 = "65" step33 = "69" step34 = "73" step35 = "77" step36 = "81" step37 = "86" step38 = "91" step39 = "96"></stone>-->
+
+<levin step1 = "8" step2 = "9" step3 = "10" step4 = "11" step5 = "12" step6 = "13" step7 = "14" step8 = "15" step9 = "17" step10 = "19" step11 = "21" step12 = "23" step13 = "25" step14 = "27" step15 = "29" step16 = "31" step17 = "33" step18 = "35" step19 = "37" step20 = "39" step21 = "42" step22 = "45" step23 = "48" step24 = "51" step25 = "54" step26 = "57" step27 = "60" step28 = "63" step29 = "66" step30 = "69" step31 = "72" step32 = "75" step33 = "78" step34 = "80" step35 = "84" step36 = "87" step37 = "91" step38 = "97" step39 = "99"></levin>
+
+<!--<levin step1 = "8" step2 = "9" step3 = "10" step4 = "11" step5 = "12" step6 = "13" step7 = "14" step8 = "15" step9 = "16" step10 = "17" step11 = "18" step12 = "19" step13 = "20" step14 = "22" step15 = "24" step16 = "26" step17 = "28" step18 = "30" step19 = "32" step20 = "34" step21 = "36" step22 = "38" step23 = "40"step24 = "43" step25 = "46" step26 = "49" step27 = "52" step28 = "55" step29 = "58" step30 = "61" step31 = "65" step32 = "69" step33 = "73" step34 = "77" step35 = "81" step36 = "86" step37 = "91" step38 = "96"></levin>-->
+
+<ultra fireStone = "400" iceLevin = "500" iceStone = "600" fireLevin = "700"></ultra>
+<ultraAdditional fireStone = "300" iceLevin = "350" iceStone = "400" fireLevin = "450"></ultraAdditional>
+</cost>
+<sphere>
+    <!--
+    <sphereOneMoveRadius> fire - Радиус огня при кастовании.
+    <sphereOneMoveRadius> ice - Радиус льда при кастовании.
+    <sphereOneMoveRadius> stone - Радиус камня при кастовании.
+    <sphereOneMoveRadius> levin - Радиус молнии при кастовании.
+    <sphereOneMoveFireDamage>[step1, step2, step3, step4] - Урон от огня при кастовании 1, 2, 3 или 4 штук.
+    <sphereOneMoveIceDamage>[step1, step2, step3, step4] - Урон от льда при кастовании 1, 2, 3 или 4 штук.
+    <sphereOneMoveStoneDamage>[step1, step2, step3, step4] - Урон от камня при кастовании 1, 2, 3 или 4 штук.
+    <sphereOneMoveLevinDamage>[step1, step2, step3, step4] - Урон от молнии при кастовании 1, 2, 3 или 4 штук.
+    <fireEffect> damagePerc - Процент от основного урона огня, который растягивается на анимацию поджигания юнита.[0] - Возгорание не нанесет урона, [200] - Возгорание нанесет двойной урон.
+    <iceEffect>[slowdown1Perc, slowdown2Perc, slowdown3Perc, slowdown4Perc] - Процент замедления юнита в зависимости от количества льда.[0] - не замедлит.[100] - Полностью остановит.
+    <iceEffect>[slowdown1Timer, slowdown2Timer, slowdown3Timer, slowdown4Timer] - Время(сек), в зависимости от количества сфер Льда, на которое юнит будет замедлен.
+    <stoneEffect> damagePerc - Процент от основного урона камня, который будет раздаваться ближайшим юнитам.[0] - нет урона.[200] - Двойной урон.
+    <stoneEffect> radius - Радиус, на который будет раздаваться дополнительный урон.
+    <levinEffect> damagePerc - Процент от основного урона, который будут нести дополнительные шаровые молнии.[0] - нет урона.[200] - Двойной урон.
+    <levinEffect> radius - Радиус, в пределах которого, исходя от места попадания основной шаровой молнии, будут создаваться дополнительные.
+    <getAll> liveTimer - Длительность(сек.) жизни радиации после атомного взрыва.
+    <getAll> damagePerSecond - Количество урона в каждую секунду, который будут получать юниты, попавшие в радиацию.
+    <getAll> getAllLittleMultiply - Уровень основного получаемого урона для малого Биг Бада Бума  в % (100 - это стандарт).
+    getAllLittleDoubleMultiply - (например огонь + огонь + лед + камень - т.е.огоньберётся step2, а остальное step1)
+    <getAll> getAllMultiplyX1 - Урон от GetAll в количестве 1 элемента.Прописывается чистый демейдж.
+    <getAll> getAllMultiplyX2 - Урон от GetAll в количестве 2 элементов.Прописывается чистый демейдж. 02002.
+
+    <getAll> getAllMultiplyX3 - Урон от GetAll в количестве 3 элементов.Прописывается чистый демейдж.
+    -->
+    <sphereOneMoveRadius fire = "47" ice = "50" stone = "53" levin = "55"></sphereOneMoveRadius>
+    <!--нужно исправить радиус для камня-->
+    <sphereOneMoveFireDamage step1 = "48" step2 = "113" step3 = "199" step4 = "307"></sphereOneMoveFireDamage>
+<!--<sphereOneMoveFireDamage step1 = "25" step2 = "60" step3 = "110" step4 = "170"></sphereOneMoveFireDamage>-->
+<sphereOneMoveIceDamage step1 = "48" step2 = "113" step3 = "199" step4 = "307"></sphereOneMoveIceDamage>
+<sphereOneMoveStoneDamage step1 = "53" step2 = "125" step3 = "220" step4 = "339"></sphereOneMoveStoneDamage>
+<!--<sphereOneMoveStoneDamage step1 = "28" step2 = "70" step3 = "126" step4 = "196"></sphereOneMoveStoneDamage>-->
+<sphereOneMoveLevinDamage step1 = "60" step2 = "141" step3 = "249" step4 = "384"></sphereOneMoveLevinDamage>
+<!--<sphereOneMoveLevinDamage step1 = "32" step2 = "80" step3 = "144" step4 = "224"></sphereOneMoveLevinDamage>-->
+<fireEffect damagePerc = "10"></fireEffect>
+<iceEffect slowdown1Perc = "55" slowdown2Perc = "57" slowdown3Perc = "59" slowdown4Perc = "62" slowdown1Timer = "3.3" slowdown2Timer = "3.4" slowdown3Timer = "3.5" slowdown4Timer = "3.5"></iceEffect>
+<stoneEffect radius = "60"></stoneEffect>
+<levinEffect damagePerc = "50" radius = "90"></levinEffect>
+<getAll liveTimer = "6" damagePerSecond = "25" getAllLittleMultiply = "265" getAllLittleDoubleMultiply = "217" getAllMultiplyX1 = "664" getAllMultiplyX2 = "1526" getAllMultiplyX3 = "2333"></getAll>
+</sphere>
+<towers>
+    <!--
+    SPHERES
+    <radius> tower1 - Радиус стрельбы башни №1.
+    <radius> tower2 - Радиус стрельбы башни №2.
+    <radius> tower3 - Радиус стрельбы башни №3.
+    <radius> tower4 - Радиус стрельбы башни №4.
+    <fireDamage>[step1, step2, step3, step4] - Урон огня в башне, в зависимости от количества : 1, 2, 3 или 4.
+    <iceDamage>[step1, step2, step3, step4] - Урон льда в башне, в зависимости от количества : 1, 2, 3 или 4.
+    <stoneDamage>[step1, step2, step3, step4] - Урон камня в башне, в зависимости от количества : 1, 2, 3 или 4.
+    <levinDamage>[step1, step2, step3, step4] - Урон молнии в башне, в зависимости от количества : 1, 2, 3 или 4.
+    <fireEffect> damagePerc - Процент от основного урона огня, который растягивается на анимацию поджигания юнита.[0] - Возгорание не нанесет урона, [200] - Возгорание нанесет двойной урон.
+    <iceEffect>[slowdown1Perc, slowdown2Perc, slowdown3Perc, slowdown4Perc] - Процент замедления юнита в зависимости от количества льда.[0] - не замедлит.[100] - Полностью остановит.
+    <iceEffect>[slowdown1Timer, slowdown2Timer, slowdown3Timer, slowdown4Timer] - Время(сек), в зависимости от количества сфер Льда, на которое юнит будет замедлен.
+    <stoneEffect> damagePerc - Процент от основного урона камня, который будет раздаваться ближайшим юнитам.[0] - нет урона.[200] - Двойной урон.
+    <stoneEffect> radius - Радиус, на который будет раздаваться дополнительный урон.
+    <levinEffect> damagePerc - Процент от основного урона, который будут нести дополнительные шаровые молнии.[0] - нет урона.[200] - Двойной урон.
+    <levinEffect> radius - Радиус, в пределах которого, исходя от места попадания основной шаровой молнии, будут создаваться дополнительные.
+    <spheresInterval> fire - Интервал(сек.) стрельбы огнем.
+    <spheresInterval> ice - Интервал(сек.) стрельбы льдом.
+    <spheresInterval> stone - Интервал(сек.) стрельбы камнем.
+    <spheresInterval> levin - Интервал(сек.) стрельбы молнией.
+    <probability> fire - Номер очереди стрельбы, на котором сработает эффект Огня.[step1, step2, step3, step4] - зависимость от количества : 1, 2, 3 или 4.
+    <probability> ice - Номер очереди стрельбы, на котором сработает эффект Льда.[step1, step2, step3, step4] - зависимость от количества : 1, 2, 3 или 4.
+    <probability> levin - Номер очереди стрельбы, на котором сработает эффект Молнии.[step1, step2, step3, step4] - зависимость от количества : 1, 2, 3 или 4.
+    -->
+    <radius tower1 = "97" tower2 = "104" tower3 = "109" tower4 = "115"></radius>
+    <!--Нужно будет увеличивать радиусы по мере открываний новых слотов-->
+    <fireDamage step1 = "13" step2 = "32" step3 = "57" step4 = "88"></fireDamage>
+    <iceDamage step1 = "14" step2 = "34" step3 = "60" step4 = "92"></iceDamage>
+    <stoneDamage step1 = "14" step2 = "34" step3 = "60" step4 = "92"></stoneDamage>
+    <levinDamage step1 = "16" step2 = "38" step3 = "69" step4 = "104"></levinDamage>
+    <fireEffect damagePerc = "10"></fireEffect>
+    <iceEffect slowdown1Perc = "50" slowdown2Perc = "50" slowdown3Perc = "50" slowdown4Perc = "40" slowdown1Timer = "2" slowdown2Timer = "2" slowdown3Timer = "2.5" slowdown4Timer = "2.5"></iceEffect>
+    <stoneEffect radius = "45"></stoneEffect>
+    <levinEffect damagePerc = "60" radius = "50"></levinEffect>
+    <spheresInterval fire = "1.2" ice = "1.3" stone = "1.55" levin = "1.4"></spheresInterval>
+    <probability>
+        <fire step1 = "4" step2 = "4" step3 = "4" step4 = "4"></fire>
+        <ice step1 = "4" step2 = "4" step3 = "3" step4 = "3"></ice>
+        <levin step1 = "3" step2 = "3" step3 = "2" step4 = "2"></levin>
+    </probability>
+    <!--
+    ULTRA
+    <ultraFireStone> radius - Радиус стрельбы башни №5(огонь + камень).
+    <ultraFireStone> damage - Урон башни №5(огонь + камень).
+    <ultraFireStone> interval - Интервал(сек.) стрельбы башни №5(огонь + камень).
+    <ultraFireStone> damageRadius - Радиус на который раздается урон башни №5(огонь + камень).
+    <ultraIceLevin> radius - Радиус стрельбы башни №6(лед + молния).
+    <ultraIceLevin> damage - Урон башни №6(лед + молния).
+    <ultraIceLevin> interval - Интервал(сек.) стрельбы башни №6(лед + молния).
+    <ultraIceLevin> slowdownPower - Сила(%) заморозки юнита, попавшего в радиус поражения.[0] - Не замедляет.[100] - Полностью останавливает.
+    <ultraIceLevin> slowdownTimer - Время(сек.), которое юнит будет заморожен.
+    <ultraIceLevin> long - Максимальная длинна молнии.
+    <ultraIceLevin> maxUnits - Максимальное количество одновременно поражаемых юнитов.
+    <ultraIceStone> radius - Радиус стрельбы башни №7(лед + камень).
+    <ultraIceStone> damage - Урон башни №7(лед + камень).
+    <ultraIceStone> interval - Интервал(сек.) стрельбы башни №7(лед + камень).
+    <ultraIceStone> damageRadius - Радиус на который раздается урон башни №7(лед + камень).
+    <ultraFireLevin> radius - Радиус стрельбы башни №8(огонь + молния).
+    <ultraFireLevin> damage - Урон башни №8(огонь + молния).
+    <ultraFireLevin> interval - Интервал(сек.) стрельбы башни №8(огонь + молния).
+    <ultraFireLevin> damageRadius - Радиус на который раздается урон башни №8(огонь + молния).
+    -->
+    <ultraFireStone radius = "120" damage = "153" interval = "2" damageRadius = "55"></ultraFireStone>
+    <!--Настроить радиусы ультра пушкам-->
+    <ultraIceLevin radius = "122" damage = "153" interval = "3" slowdownPower = "70" slowdownTimer = "2" long = "150" maxUnits = "4"></ultraIceLevin>
+    <ultraIceStone radius = "124" damage = "209" interval = "2" damageRadius = "55" slowdownPower = "60" slowdownTimer = "2.5"></ultraIceStone>
+    <ultraFireLevin radius = "126" damage = "120" interval = "2.8" damageRadius = "65"></ultraFireLevin>
+    <!--
+    ULTRA ADDIT 1
+    <ultraAdditionalFireStone> damage - Урон от доп.стрельбы башни №5.
+    <ultraAdditionalFireStone> interval - Интервал(сек.) доп.стрельбы башни №5.
+    <ultraAdditionalFireStone> radius - Радиус доп.стрельбы башни №5.
+    <ultraAdditionalIceLevin> damage - Урон от доп.стрельбы башни №6.
+    <ultraAdditionalIceLevin> interval - Интервал(сек.) доп.стрельбы башни №6.
+    <ultraAdditionalIceLevin> damageRadius - Радиус на который раздается урон от доп.стрельбы башни №6.
+    <ultraAdditionalIceStone> damage - Урон от доп.стрельбы башни №7.
+    <ultraAdditionalIceStone> interval - Интервал(сек.) доп.стрельбы башни №7.
+    <ultraAdditionalIceStone> radius - Радиус доп.стрельбы башни №7.
+    <ultraAdditionalIceStone> slowdownTimer - Время(сек.) после отталкивания, которое юниты стоят на месте.
+    <ultraAdditionalIceStone> spacing - Расстояние, на которое будет отталкиваться энит.
+    <ultraAdditionalIceStone> power - Сила(пикс.) отталкивания юнита.
+    <ultraAdditionalFireLevin> damage - Урон от доп.стрельбы башни №8.
+    <ultraAdditionalFireLevin> interval - Интервал(сек.) доп.стрельбы башни №8.
+    <ultraAdditionalFireLevin> radius - Радиус доп.стрельбы башни №8.
+    -->
+    <ultraAdditionalFireStone damage = "3" interval = "5" radius = "50"></ultraAdditionalFireStone>
+    <ultraAdditionalIceLevin damage = "108" interval = "7" damageRadius = "45"></ultraAdditionalIceLevin>
+    <ultraAdditionalIceStone damage = "0" interval = "8" radius = "110" spacing = "800" power = "11" slowdownTimer = "0.2"></ultraAdditionalIceStone>
+    <ultraAdditionalFireLevin damage = "1500" interval = "7" radius = "50"></ultraAdditionalFireLevin>
+</towers>
+<cast>
+    <!--
+    <download> golemInterval - Интервал(сек.) загрузки кнопки кастования Голем.
+    <download> icemanInterval - Интервал(сек.) загрузки кнопки кастования Айсмен.
+    <download> airInterval - Интервал(сек.) загрузки кнопки кастования Эйр.
+    <download> savingOfTime - Экономия загрузки кастований от предварительного старта волны(max ...secs).
+    <golem> health - Количество здоровья Голема.
+    <golem> speed - Скорость передвижения Голема.
+    <iceman> health - Количество здоровья Айсмена.
+    <iceman> speed - Скорость передвижения Айсмена.
+    <iceman> freezTimer - Время(сек.), которое длится полная заморозка юнита.
+    <iceman> lifeTimer - Время(сек.) жизни Айсмена.
+    <air> power - Сила(пикс.) отталкивания юнита Эйром.
+    <air> radius - Радиус, в котором Эйр начинает воздействовать на юнитов.
+    <air> lifeTimer - Время(сек.) жизни Эйра.
+    <air> spacing - Расстояние, на которое будет отталкиваться энит Эйром.
+    <air> shockTimer - Время(сек.), которое юнит остается неподвижным после отталкивания.
+    -->
+    <download golemInterval = "90" icemanInterval = "40" airInterval = "60" savingOfTime = "30"></download>
+    <golem health = "1500" speed = "2"></golem>
+    <iceman speed = "2" freezTimer = "5" lifeTimer = "5" damagePerSec = "0"></iceman>
+    <air power = "10" radius = "130" lifeTimer = "8" spacing = "560" shockTimer = "0.9"></air>
+</cast>
+</enemyesData>

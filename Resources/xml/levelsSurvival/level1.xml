@@ -1,0 +1,34 @@
+<data>
+				<strategy1>
+				<wave startDelay = "0" replacement = "0">
+
+				<enemy typeUnit = "1" count = "10" interval = "0.7" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "2" count = "9" interval = "0.7" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "2" count = "1" interval = "1.5" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "1" count = "10" interval = "0.4" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "2" count = "9" interval = "0.4" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "2" count = "1" interval = "1" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "1" count = "10" interval = "0.2" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "2" count = "5" interval = "0.2" way = "0" path = "0">< / enemy>
+
+				< / wave>
+				< / strategy1>
+				<settings money = "750" autoStartTimer = "15">
+				<testing towerStep = "0" fireStep = "0" iceStep = "0" stoneStep = "0" levinStep = "0">< / testing>
+				<sphere archiveSphereBlock = "3" towerSlotBlock = "3" ultraTower1Block = "1" ultraTower2Block = "1" ultraTower3Block = "1" ultraTower4Block = "1" ultraTower1UpgrBlock = "0" ultraTower2UpgrBlock = "0" ultraTower3UpgrBlock = "0" ultraTower4UpgrBlock = "0">< / sphere>
+				<portals>
+				<fire>
+				<location path = "0" road = "0" way = "0">< / location>
+				< / fire>
+				<ice>
+				<location path = "0" road = "0" way = "0">< / location>
+				< / ice>
+				<stone>
+				<location path = "0" road = "0" way = "0">< / location>
+				< / stone>
+				<levin>
+				<location path = "0" road = "0" way = "0">< / location>
+				< / levin>
+				< / portals>
+				< / settings>
+				< / data>

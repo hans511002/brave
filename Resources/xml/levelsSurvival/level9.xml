@@ -1,0 +1,54 @@
+<data>    <!--27, 3, 8, 13, 28-->
+				<strategy1> <!--верх-->
+				<wave startDelay = "13" replacement = "0">
+				<enemy typeUnit = "27" count = "1" interval = "1" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "3" count = "7" interval = "0.5" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "3" count = "1" interval = "2" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "27" count = "1" interval = "2" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "3" count = "7" interval = "0.5" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "3" count = "1" interval = "4" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "27" count = "1" interval = "2" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "8" count = "7" interval = "0.9" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "8" count = "1" interval = "5" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "27" count = "1" interval = "3" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "13" count = "7" interval = "0.8" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "13" count = "7" interval = "0.8" way = "0" path = "0">< / enemy>
+				< / wave>
+				< / strategy1>
+				<strategy2>  <!--низ-->
+				<wave startDelay = "0" replacement = "0">
+				<enemy typeUnit = "28" count = "1" interval = "1.6" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "3" count = "7" interval = "0.4" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "3" count = "1" interval = "0" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "28" count = "1" interval = "4" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "3" count = "7" interval = "0.4" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "3" count = "1" interval = "0" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "28" count = "1" interval = "6" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "8" count = "7" interval = "0.9" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "8" count = "1" interval = "0" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "28" count = "1" interval = "3" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "13" count = "7" interval = "1.2" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "13" count = "1" interval = "0" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "28" count = "1" interval = "4" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "13" count = "8" interval = "1.2" way = "0" path = "0">< / enemy>
+				< / wave>
+				< / strategy2>
+				<settings money = "500" autoStartTimer = "10">
+				<testing towerStep = "0" fireStep = "0" iceStep = "0" stoneStep = "0" levinStep = "0">< / testing>
+				<sphere archiveSphereBlock = "0" towerSlotBlock = "0" ultraTower1Block = "0" ultraTower2Block = "0" ultraTower3Block = "0" ultraTower4Block = "1" ultraTower1UpgrBlock = "0" ultraTower2UpgrBlock = "0" ultraTower3UpgrBlock = "0" ultraTower4UpgrBlock = "0">< / sphere>
+				<portals>
+				<fire>
+				<location path = "0" road = "0" way = "0">< / location>
+				< / fire>
+				<ice>
+				<location path = "0" road = "0" way = "0">< / location>
+				< / ice>
+				<stone>
+				<location path = "0" road = "0" way = "0">< / location>
+				< / stone>
+				<levin>
+				<location path = "0" road = "0" way = "0">< / location>
+				< / levin>
+				< / portals>
+				< / settings>
+				< / data>

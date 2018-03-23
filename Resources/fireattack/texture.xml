@@ -1,0 +1,15 @@
+<TextureAtlas name="fireattack" imagePath="texture.png">
+ <SubTexture name="Shape/shape 7887" x="28" y="70" width="26" height="33"/>
+ <SubTexture name="Shape/shape 7889" x="28" y="35" width="26" height="33"/>
+ <SubTexture name="Shape/shape 7891" x="84" y="35" width="26" height="33"/>
+ <SubTexture name="Shape/shape 7893" x="84" y="70" width="26" height="33"/>
+ <SubTexture name="Shape/shape 7895" x="84" y="0" width="26" height="33"/>
+ <SubTexture name="Shape/shape 7897" x="0" y="0" width="26" height="33"/>
+ <SubTexture name="Shape/shape 7899" x="56" y="70" width="26" height="33"/>
+ <SubTexture name="Shape/shape 7901" x="0" y="70" width="26" height="33"/>
+ <SubTexture name="Shape/shape 7903" x="0" y="105" width="26" height="33"/>
+ <SubTexture name="Shape/shape 7905" x="56" y="0" width="26" height="33"/>
+ <SubTexture name="Shape/shape 7907" x="0" y="35" width="26" height="33"/>
+ <SubTexture name="Shape/shape 7908" x="56" y="35" width="26" height="33"/>
+ <SubTexture name="Shape/shape 7910" x="28" y="0" width="26" height="33"/>
+</TextureAtlas>

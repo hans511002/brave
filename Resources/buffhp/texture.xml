@@ -1,0 +1,27 @@
+<TextureAtlas name="buffhp" imagePath="texture.png">
+ <SubTexture name="Shape/shape 8072" x="0" y="112" width="32" height="54"/>
+ <SubTexture name="Shape/shape 8074" x="0" y="168" width="32" height="54"/>
+ <SubTexture name="Shape/shape 8076" x="68" y="112" width="32" height="54"/>
+ <SubTexture name="Shape/shape 8078" x="136" y="0" width="32" height="54"/>
+ <SubTexture name="Shape/shape 8080" x="0" y="56" width="32" height="54"/>
+ <SubTexture name="Shape/shape 8082" x="170" y="112" width="32" height="54"/>
+ <SubTexture name="Shape/shape 8084" x="0" y="0" width="32" height="54"/>
+ <SubTexture name="Shape/shape 8086" x="68" y="56" width="32" height="54"/>
+ <SubTexture name="Shape/shape 8088" x="136" y="112" width="32" height="54"/>
+ <SubTexture name="Shape/shape 8090" x="34" y="112" width="32" height="54"/>
+ <SubTexture name="Shape/shape 8092" x="204" y="56" width="32" height="54"/>
+ <SubTexture name="Shape/shape 8094" x="204" y="112" width="32" height="54"/>
+ <SubTexture name="Shape/shape 8096" x="102" y="168" width="32" height="54"/>
+ <SubTexture name="Shape/shape 8098" x="34" y="168" width="32" height="54"/>
+ <SubTexture name="Shape/shape 8100" x="170" y="0" width="32" height="54"/>
+ <SubTexture name="Shape/shape 8102" x="68" y="168" width="32" height="54"/>
+ <SubTexture name="Shape/shape 8104" x="170" y="56" width="32" height="54"/>
+ <SubTexture name="Shape/shape 8106" x="102" y="0" width="32" height="54"/>
+ <SubTexture name="Shape/shape 8108" x="102" y="112" width="32" height="54"/>
+ <SubTexture name="Shape/shape 8110" x="34" y="0" width="32" height="54"/>
+ <SubTexture name="Shape/shape 8112" x="34" y="56" width="32" height="54"/>
+ <SubTexture name="Shape/shape 8114" x="136" y="56" width="32" height="54"/>
+ <SubTexture name="Shape/shape 8116" x="68" y="0" width="32" height="54"/>
+ <SubTexture name="Shape/shape 8118" x="204" y="0" width="32" height="54"/>
+ <SubTexture name="Shape/shape 8120" x="102" y="56" width="32" height="54"/>
+</TextureAtlas>

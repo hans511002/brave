@@ -1,0 +1,34 @@
+<TextureAtlas name="fireeffect" imagePath="texture.png">
+ <SubTexture name="Shape/shape 7764" x="216" y="135" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7766" x="0" y="0" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7768" x="144" y="0" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7770" x="108" y="135" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7772" x="72" y="0" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7774" x="180" y="90" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7776" x="144" y="90" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7778" x="144" y="45" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7780" x="108" y="45" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7782" x="180" y="135" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7784" x="0" y="180" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7786" x="72" y="135" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7788" x="0" y="45" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7790" x="216" y="45" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7792" x="72" y="90" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7794" x="72" y="45" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7796" x="108" y="180" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7798" x="180" y="45" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7800" x="36" y="45" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7802" x="36" y="180" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7804" x="72" y="180" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7806" x="36" y="90" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7807" x="216" y="0" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7808" x="0" y="135" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7809" x="216" y="90" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7810" x="0" y="90" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7811" x="36" y="135" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7812" x="36" y="0" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7813" x="144" y="135" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7814" x="108" y="90" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7815" x="180" y="0" width="34" height="43"/>
+ <SubTexture name="Shape/shape 7816" x="108" y="0" width="34" height="43"/>
+</TextureAtlas>

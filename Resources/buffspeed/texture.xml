@@ -1,0 +1,25 @@
+<TextureAtlas name="buffspeed" imagePath="texture.png">
+ <SubTexture name="Shape/shape 7965" x="425" y="76" width="83" height="74"/>
+ <SubTexture name="Shape/shape 7966" x="0" y="228" width="83" height="74"/>
+ <SubTexture name="Shape/shape 7968" x="85" y="152" width="83" height="74"/>
+ <SubTexture name="Shape/shape 7969" x="255" y="76" width="83" height="74"/>
+ <SubTexture name="Shape/shape 7971" x="0" y="0" width="83" height="74"/>
+ <SubTexture name="Shape/shape 7973" x="255" y="0" width="83" height="74"/>
+ <SubTexture name="Shape/shape 7975" x="170" y="152" width="83" height="74"/>
+ <SubTexture name="Shape/shape 7977" x="0" y="152" width="83" height="74"/>
+ <SubTexture name="Shape/shape 7979" x="85" y="228" width="83" height="74"/>
+ <SubTexture name="Shape/shape 7981" x="85" y="0" width="83" height="74"/>
+ <SubTexture name="Shape/shape 7983" x="170" y="0" width="83" height="74"/>
+ <SubTexture name="Shape/shape 7985" x="255" y="228" width="83" height="74"/>
+ <SubTexture name="Shape/shape 7987" x="85" y="76" width="83" height="74"/>
+ <SubTexture name="Shape/shape 7989" x="170" y="228" width="83" height="74"/>
+ <SubTexture name="Shape/shape 7991" x="0" y="76" width="83" height="74"/>
+ <SubTexture name="Shape/shape 7993" x="340" y="152" width="83" height="74"/>
+ <SubTexture name="Shape/shape 7994" x="340" y="0" width="83" height="74"/>
+ <SubTexture name="Shape/shape 7996" x="425" y="152" width="83" height="74"/>
+ <SubTexture name="Shape/shape 7997" x="340" y="228" width="83" height="74"/>
+ <SubTexture name="Shape/shape 7999" x="340" y="76" width="83" height="74"/>
+ <SubTexture name="Shape/shape 8000" x="255" y="152" width="83" height="74"/>
+ <SubTexture name="Shape/shape 8002" x="425" y="0" width="83" height="74"/>
+ <SubTexture name="Shape/shape 8003" x="170" y="76" width="83" height="74"/>
+</TextureAtlas>

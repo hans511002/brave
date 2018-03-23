@@ -1,0 +1,9 @@
+<TextureAtlas name="iceattack" imagePath="texture.png">
+ <SubTexture name="Shape/shape 7874" x="22" y="26" width="20" height="24"/>
+ <SubTexture name="Shape/shape 7875" x="0" y="78" width="20" height="24"/>
+ <SubTexture name="Shape/shape 7877" x="0" y="0" width="20" height="24"/>
+ <SubTexture name="Shape/shape 7878" x="22" y="0" width="20" height="24"/>
+ <SubTexture name="Shape/shape 7880" x="0" y="26" width="20" height="24"/>
+ <SubTexture name="Shape/shape 7881" x="22" y="52" width="20" height="24"/>
+ <SubTexture name="Shape/shape 7883" x="0" y="52" width="20" height="24"/>
+</TextureAtlas>
