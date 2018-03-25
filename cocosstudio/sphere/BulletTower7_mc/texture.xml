@@ -1,0 +1,16 @@
+<TextureAtlas name="BulletTower7_mc" imagePath="texture.png">
+ <SubTexture name="Sprite/sprite 8437" x="115" y="276" width="63" height="43"/>
+ <SubTexture name="Shape/shape 8482" x="0" y="92" width="114" height="91"/>
+ <SubTexture name="Shape/shape 8484" x="115" y="0" width="114" height="91"/>
+ <SubTexture name="Shape/shape 8486" x="0" y="184" width="114" height="91"/>
+ <SubTexture name="Shape/shape 8488" x="230" y="92" width="114" height="91"/>
+ <SubTexture name="Shape/shape 8489" x="0" y="276" width="114" height="91"/>
+ <SubTexture name="Shape/shape 8491" x="345" y="184" width="114" height="91"/>
+ <SubTexture name="Shape/shape 8492" x="230" y="184" width="114" height="91"/>
+ <SubTexture name="Shape/shape 8494" x="230" y="0" width="114" height="91"/>
+ <SubTexture name="Shape/shape 8495" x="345" y="92" width="114" height="91"/>
+ <SubTexture name="Shape/shape 8497" x="115" y="92" width="114" height="91"/>
+ <SubTexture name="Shape/shape 8498" x="115" y="184" width="114" height="91"/>
+ <SubTexture name="Shape/shape 8500" x="345" y="0" width="114" height="91"/>
+ <SubTexture name="Shape/shape 8501" x="0" y="0" width="114" height="91"/>
+</TextureAtlas>

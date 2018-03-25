@@ -35,7 +35,37 @@ bool BaseSprite::init()
 	std::setAnchorPoint(this);
 	return true;
 };
+bool BaseNode::hitTest(const Vec2 &pt){
+    return BaseNode::hitTest(this, pt);
+};
 
+void BaseNode::touchAction(cocos2d::Ref *ref, cocos2d::ui::TouchEventType type){
+    Node * node = (Node *)ref;
+    string target = node->getName();
+    CCLOG("touchAction %s type=%i", target.c_str(),type);
+};
+
+void BaseNode::mouseDownHandler(cocos2d::Event *event)//(event:MouseEvent) : void
+{
+    Node * node = event->getCurrentTarget();
+    Event::Type tp = event->getType();
+    string target = node->getName();
+    CCLOG("BaseNode::mouseDownHandler %s", target.c_str());
+}
+void BaseSprite::mouseDownHandler(cocos2d::Event *event)//(event:MouseEvent) : void
+{
+    Node * node = event->getCurrentTarget();
+    Event::Type tp = event->getType();
+    string target = node->getName();
+    CCLOG("BaseSprite::mouseDownHandler %s", target.c_str());
+}
+void BaseLayer::mouseDownHandler(cocos2d::Event *event)//(event:MouseEvent) : void
+{
+    Node * node = event->getCurrentTarget();
+    Event::Type tp = event->getType();
+    string target = node->getName();
+    CCLOG("BaseLayer::mouseDownHandler %s", target.c_str());
+}
 
   bool BaseLayer::init()
 {
@@ -73,3 +103,28 @@ bool BaseSprite::init()
 	const auto& stageSize = cocos2d::Director::getInstance()->getVisibleSize();
 	return stageSize.height;
 }
+
+  bool BaseNode::hitTest(Node * node, const Vec2 &pt)
+  {
+      Vec2 nsp = node->convertToNodeSpaceAR(pt);//convertToNodeSpace
+      Rect bb;
+      bb.size = node->getContentSize();
+      if (bb.containsPoint(nsp))
+      {
+          return true;
+      }
+      return false;
+  }
+
+
+bool BaseSprite::Atstage(){
+    const auto& stageSize = cocos2d::Director::getInstance()->getVisibleSize();
+    Vec2 p = this->getPosition();
+    return p.x < 0 || p.y<0 || p.x > stageSize.width || p.y > stageSize.height;
+}
+bool BaseNode::Atstage(){
+    const auto& stageSize = cocos2d::Director::getInstance()->getVisibleSize();
+    Vec2 p = this->getPosition();
+    return p.x < 0 || p.y<0 || p.x > stageSize.width || p.y > stageSize.height;
+}
+

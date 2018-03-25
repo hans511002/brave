@@ -1,0 +1,54 @@
+<dragonBones name="1yrt" frameRate="30" version="2.3">
+ <armature name="TowerSphere">
+  <bone name="sphere">
+   <transform x="-15.15" y="-24.25" skX="0" skY="0" scX="0.77" scY="0.77"/>
+  </bone>
+  <skin name="default">
+   <slot name="sphere" parent="sphere" z="0">
+    <display name="Sprite/sprite 6353" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="10" pY="10"/>
+    </display>
+   </slot>
+  </skin>
+  <animation name="TowerSphere" fadeInTime="0.3" duration="39" scale="1" loop="1" autoTween="1" tweenEasing="NaN">
+   <timeline name="sphere" scale="1" offset="0">
+    <frame z="0" tweenEasing="0" duration="1">
+     <transform x="-15.15" y="-24.25" skX="0" skY="0" scX="0.77" scY="0.77" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" tweenEasing="0" duration="1">
+     <transform x="-14.65" y="-26.2" skX="0" skY="0" scX="0.77" scY="0.77" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" tweenEasing="0" duration="1">
+     <transform x="-13.4" y="-27.8" skX="0" skY="0" scX="0.77" scY="0.77" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" tweenEasing="0" duration="13">
+     <transform x="-11.8" y="-29.1" skX="0" skY="0" scX="0.77" scY="0.77" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" tweenEasing="0" duration="1">
+     <transform x="13.45" y="-27.85" skX="0" skY="0" scX="0.77" scY="0.77" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" tweenEasing="0" duration="1">
+     <transform x="14.7" y="-26.2" skX="0" skY="0" scX="0.77" scY="0.77" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" tweenEasing="0" duration="3">
+     <transform x="15.15" y="-24.25" skX="0" skY="0" scX="0.77" scY="0.77" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" tweenEasing="0" duration="14">
+     <transform x="11.8" y="-19.5" skX="0" skY="0" scX="0.77" scY="0.77" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" tweenEasing="0" duration="1">
+     <transform x="-11.8" y="-19.4" skX="0" skY="0" scX="0.77" scY="0.77" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" tweenEasing="0" duration="1">
+     <transform x="-13.45" y="-20.7" skX="0" skY="0" scX="0.77" scY="0.77" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" tweenEasing="0" duration="1">
+     <transform x="-14.7" y="-22.3" skX="0" skY="0" scX="0.77" scY="0.77" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform x="-15.15" y="-24.25" skX="0" skY="0" scX="0.77" scY="0.77" pX="0" pY="0"/>
+    </frame>
+   </timeline>
+  </animation>
+ </armature>
+</dragonBones>

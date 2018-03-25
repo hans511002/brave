@@ -1,0 +1,19 @@
+<TextureAtlas name="GetSphereCont" imagePath="texture.png">
+ <SubTexture name="Shape/shape 11860" x="92" y="46" width="44" height="44"/>
+ <SubTexture name="Shape/shape 11861" x="0" y="46" width="44" height="44"/>
+ <SubTexture name="Shape/shape 11862" x="184" y="92" width="44" height="44"/>
+ <SubTexture name="Shape/shape 11863" x="92" y="92" width="44" height="44"/>
+ <SubTexture name="Shape/shape 11864" x="46" y="92" width="44" height="44"/>
+ <SubTexture name="Shape/shape 11865" x="46" y="46" width="44" height="44"/>
+ <SubTexture name="Shape/shape 11866" x="138" y="92" width="44" height="44"/>
+ <SubTexture name="Shape/shape 11867" x="0" y="92" width="44" height="44"/>
+ <SubTexture name="Shape/shape 11868" x="46" y="0" width="44" height="44"/>
+ <SubTexture name="Shape/shape 11869" x="0" y="0" width="44" height="44"/>
+ <SubTexture name="Shape/shape 11870" x="138" y="46" width="44" height="44"/>
+ <SubTexture name="Shape/shape 11871" x="138" y="0" width="44" height="44"/>
+ <SubTexture name="Shape/shape 11872" x="184" y="0" width="44" height="44"/>
+ <SubTexture name="Shape/shape 11873" x="92" y="0" width="44" height="44"/>
+ <SubTexture name="Shape/shape 11874" x="184" y="46" width="44" height="44"/>
+ <SubTexture name="Shape/shape 11875" x="46" y="138" width="44" height="44"/>
+ <SubTexture name="Shape/shape 11876" x="0" y="138" width="44" height="44"/>
+</TextureAtlas>

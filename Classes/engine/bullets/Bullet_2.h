@@ -3,18 +3,18 @@
 #include "Bullet.h" 
 
 namespace engine{
-    namespace bullets{ 
+    namespace bullets{
         class Bullet_2 :public Bullet
         {
-        public: 
+        public:
 
             Bullet_2(){};
 
-            bool init( ) ;
+            bool init();
 
-            void update() ;
+            void update();
 
-        }
+        };
     }
 }
 #endif

@@ -1,0 +1,10 @@
+<TextureAtlas name="1yrt" imagePath="texture.png">
+ <SubTexture name="Shape/shape 10775" x="54" y="0" width="52" height="137"/>
+ <SubTexture name="Shape/shape 10777" x="162" y="139" width="52" height="137"/>
+ <SubTexture name="Shape/shape 10779" x="54" y="139" width="52" height="137"/>
+ <SubTexture name="Shape/shape 10781" x="108" y="0" width="52" height="137"/>
+ <SubTexture name="Shape/shape 10783" x="108" y="139" width="52" height="137"/>
+ <SubTexture name="Shape/shape 10785" x="0" y="0" width="52" height="137"/>
+ <SubTexture name="Shape/shape 10787" x="162" y="0" width="52" height="137"/>
+ <SubTexture name="Shape/shape 10789" x="0" y="139" width="52" height="137"/>
+</TextureAtlas>

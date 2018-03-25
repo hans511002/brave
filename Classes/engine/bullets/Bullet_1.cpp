@@ -2,14 +2,14 @@
 #include "Bullet_1.h"
 
 
- namespace engine{
-	 namespace bullets{ 
-        bool Bullet_1::init( ) 
+namespace engine{
+    namespace bullets{
+        bool Bullet_1::init()
         {
             bulletType = 1;
             liveTimer = 18;
             liveCounter = 18;
-            this.setPostition(this_pt.x,his_pt.y);
+            this->setPosition(this_pt.x, this_pt.y);
             //this->x = this_pt.x;
             //this->y = this_pt.y;
             this->shiftX = 1;
@@ -20,12 +20,12 @@
             //container.stop();
             this->addChild(container);
             this->whoShoot->fireBulletCounter++;
-            super.init(event);
+            Bullet::init();
             changeIndex = 16;
-            return;
+            return true;
         }// end function
-        
-        void Bullet_1::update() 
+
+        void Bullet_1::update()
         {
             Bullet::update();
             if (mainCounter == 7)
@@ -44,11 +44,11 @@
             {
                 if (enemyTarget->dead)
                 {
-                    Unit * tempObject1 = NULL;
+                    units::Unit * tempObject1 = NULL;
                     i = 0;
-                    while (i < world->listOfUnits.length)
+                    while (i < world->listOfUnits.size())
                     {
-                        
+
                         float  tempObject = this_pt.distance(world->listOfUnits[i]->shoot_pt);
                         if (tempObject < 50)
                         {
@@ -79,27 +79,27 @@
                 if (this->phase1 > 0)
                 {
                     this->phase1--;
-                    this->setPostitionX(this->getPostition().x - distanceX / 20);
-                    this->setPostitionY( this->getPostition().y - distanceY / 20);
+                    this->setPositionX(this->getPosition().x - distanceX / 20);
+                    this->setPositionY(this->getPosition().y - distanceY / 20);
                 }
                 else if (this->phase2 > 0)
                 {
                     (this->phase2 - 1);
                     if (distanceX > 0)
                     {
-                        this->setPostitionX(this->getPostition().x +this->shiftX);//this->x = this->x + this->shiftX;
+                        this->setPositionX(this->getPosition().x + this->shiftX);//this->x = this->x + this->shiftX;
                     }
                     else
                     {
-                        this->setPostitionX(this->getPostition().x - this->shiftX);//this->x = this->x - this->shiftX;
+                        this->setPositionX(this->getPosition().x - this->shiftX);//this->x = this->x - this->shiftX;
                     }
                     if (distanceY > 0)//取反
                     {
-                        this->setPostitionY(this->getPostition().y + this->shiftY);// this->y = this->y - this->shiftY;
+                        this->setPositionY(this->getPosition().y + this->shiftY);// this->y = this->y - this->shiftY;
                     }
                     else
                     {
-                        this->setPostitionY(this->getPostition().y - this->shiftY);//  this->y = this->y + this->shiftY;
+                        this->setPositionY(this->getPosition().y - this->shiftY);//  this->y = this->y + this->shiftY;
                     }
                     if (liveCounter < (int)(liveTimer / 2))
                     {
@@ -114,11 +114,11 @@
                 }
                 else
                 {
-                    this->setPostition(this->getPostition().x + distanceX / liveCounter, this->getPostition().y + distanceY / liveCounter);
+                    this->setPosition(this->getPosition().x + distanceX / liveCounter, this->getPosition().y + distanceY / liveCounter);
                     //this->x = this->x + distanceX / liveCounter;
                     //this->y = this->y + distanceY / liveCounter;
                 }
-                this_pt =this->getPostition();// cocos2d::Point(this->x, this->y);
+                this_pt = this->getPosition();// cocos2d::Point(this->x, this->y);
                 liveCounter--;
             }
             else

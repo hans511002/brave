@@ -1,5 +1,5 @@
 ﻿
-#include "Bullet_1.h"
+#include "Bullet_2.h"
 
 
  namespace engine{
@@ -18,7 +18,7 @@
             whoShoot->iceBulletCounter++; 
             Bullet::init();
             //Sounds.instance.playSoundWithVol("snd_tower_shootIce", 0.83);
-            return;
+            return true;
         }// end function
 
         void Bullet_2::update()  

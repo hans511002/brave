@@ -14,11 +14,11 @@ namespace engine{
 	};
 
  	bool PointTimer::init(){
-		this->initWithFile("public/point.png");
-		//point = Sprite::create("public/point.png");
-		this->setPosition(50, 250);
-		//this->addChild(point);
-
+		//this->initWithFile("public/point.png");
+		point = Sprite::create("public/point.png");
+        point->setName("point");
+        std::setAnchorPoint(point, 0, 0);
+		this->addChild(point);
 		this->schedule(schedule_selector(PointTimer::scheduleUpdate), 1.0f);
 		return true;
 	}

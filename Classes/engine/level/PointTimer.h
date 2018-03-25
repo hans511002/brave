@@ -4,13 +4,13 @@
 
 namespace engine{
 
-	class PointTimer:public BaseSprite
+	class PointTimer:public BaseNode
 	{
 	public:
 		int timer;
 		int counter;
 		int currentFrame;
-		//Sprite *point ;
+		Sprite *point ;
 
 		PointTimer();
 		~PointTimer();

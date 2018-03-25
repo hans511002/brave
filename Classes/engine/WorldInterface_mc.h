@@ -29,8 +29,8 @@ namespace engine
         Sprite * fireBack;//public var fireBack : MovieClip;
         Sprite * levinBack;//public var levinBack : MovieClip;
         Sprite * stoneBack;// : MovieClip;
-        Sprite  * getAll;////public var getAll : MovieClip; allsphere
-
+        Sprite  * allSphereBack; 
+          
         Sprite  * buyFire;//: MovieClip;
         Sprite  * buyIce;// : MovieClip;
         Sprite  * buyLevin;//: MovieClip;
@@ -41,6 +41,7 @@ namespace engine
         Sprite *fireSphere;//public var fireSphere : MovieClip;
         Sprite *levinSphere;//public var levinSphere : MovieClip;
         Sprite *stoneSphere;// stoneSphere public var stoneSphere : MovieClip;
+        Sprite *allSphere;// stoneSphere public var stoneSphere : MovieClip;
 
  
 
@@ -58,16 +59,15 @@ namespace engine
 		//public var testRestart : MovieClip;
 		//public var testRestartBoard : MovieClip;
 		//public var traceBezier : MovieClip;
-		cocos2d::TextFieldTTF * lastTime;// public var lastTime : TextField;
-		cocos2d::TextFieldTTF  * waveTXT;// public var waveTXT : TextField;
-		cocos2d::TextFieldTTF * liveTXT;// : TextField;
-		cocos2d::TextFieldTTF * moneyTXT;//: TextField;
-		cocos2d::TextFieldTTF * levinNumTXT;// : TextField;
-		cocos2d::TextFieldTTF * iceNumTXT;//: TextField;
-		cocos2d::TextFieldTTF * fireNumTXT;// : TextField;
-		cocos2d::TextFieldTTF * stoneNumTXT;//public var stoneNumTXT : TextField;
-
-		cocos2d::TextFieldTTF * getAllNumTXT; // public var getAllNumTXT : TextField;
+		ui::Text * lastTime;// public var lastTime : TextField;
+		ui::Text  * waveTXT;// public var waveTXT : TextField;
+		ui::Text * liveTXT;// : TextField;
+		ui::Text * moneyTXT;//: TextField;
+		ui::Text * levinNumTXT;// : TextField;
+		ui::Text * iceNumTXT;//: TextField;
+		ui::Text * fireNumTXT;// : TextField;
+		ui::Text * stoneNumTXT;//public var stoneNumTXT : TextField;
+		ui::Text * getAllNumTXT; // public var getAllNumTXT : TextField;
         ui::Button * pause; //public var pause : MovieClip;
         
         Sprite * startbtnback;
@@ -79,8 +79,10 @@ namespace engine
 
 
 		WorldInterface_mc();
+        void WorldInterface_mc::startWavesCallback(Ref* pSender);
 		bool init();
-	};
+        void mouseDownHandler(cocos2d::Event *event);
+    };
 
 
 }

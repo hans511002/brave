@@ -3,25 +3,25 @@
 #include "Bullet.h" 
 
 namespace engine{
-    namespace bullets{ 
+    namespace bullets{
         class Bullet_3 :public Bullet
         {
         public:
-             float correct;
-        Vec2 enemyStartPoint;
-        int enemyRoad;
-        int enemyWay;
-        float enemyPath;
-        float enemySpeed;
-        //public var shadow:UnitShadow_mc;
+            float correct;
+            Vec2 enemyStartPoint;
+            int enemyRoad;
+            int enemyWay;
+            float enemyPath;
+            float enemySpeed;
+            //public var shadow:UnitShadow_mc;
 
             Bullet_3(){};
 
-            bool init( ) ;
+            bool init();
 
-            void update() ;
+            void update();
             void kill();
-        }
+        };
     }
 }
 #endif

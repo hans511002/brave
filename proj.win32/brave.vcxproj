@@ -104,7 +104,7 @@
     <CustomBuildStep>
       <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
 xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
-      </Command>
+</Command>
       <Outputs>$(TargetName).cab</Outputs>
       <Inputs>$(TargetFileName)</Inputs>
     </CustomBuildStep>
@@ -164,10 +164,6 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\common\strCodeing.cpp" />
     <ClCompile Include="..\Classes\common\String.cpp" />
     <ClCompile Include="..\Classes\engine\bullets\Bullet.cpp" />
-    <ClCompile Include="..\Classes\engine\bullets\Bullet_1.cpp" />
-    <ClCompile Include="..\Classes\engine\bullets\Bullet_2.cpp" />
-    <ClCompile Include="..\Classes\engine\bullets\Bullet_3.cpp" />
-    <ClCompile Include="..\Classes\engine\bullets\Bullet_4.cpp" />
     <ClCompile Include="..\Classes\engine\decoration\Decoration.cpp" />
     <ClCompile Include="..\Classes\engine\Feature.cpp" />
     <ClCompile Include="..\Classes\engine\level\Level1.cpp" />
@@ -175,6 +171,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\engine\level\RoadLevel1.cpp" />
     <ClCompile Include="..\Classes\engine\MoneyAdd.cpp" />
     <ClCompile Include="..\Classes\engine\SavedCastTime.cpp" />
+    <ClCompile Include="..\Classes\engine\towers\Tower.cpp" />
     <ClCompile Include="..\Classes\engine\units\Unit.cpp" />
     <ClCompile Include="..\Classes\engine\units\Unit_1.cpp" />
     <ClCompile Include="..\Classes\engine\units\Unit_mc.cpp" />
@@ -248,10 +245,6 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\common\TimeSpan.h" />
     <ClInclude Include="..\Classes\common\UdpClient.h" />
     <ClInclude Include="..\Classes\engine\bullets\Bullet.h" />
-    <ClInclude Include="..\Classes\engine\bullets\Bullet_1.h" />
-    <ClInclude Include="..\Classes\engine\bullets\Bullet_2.h" />
-    <ClInclude Include="..\Classes\engine\bullets\Bullet_3.h" />
-    <ClInclude Include="..\Classes\engine\bullets\Bullet_4.h" />
     <ClInclude Include="..\Classes\engine\decoration\Decoration.h" />
     <ClInclude Include="..\Classes\engine\decoration\DecorationLevel1.h" />
     <ClInclude Include="..\Classes\engine\Feature.h" />
@@ -262,6 +255,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\engine\level\RoadLevel1.h" />
     <ClInclude Include="..\Classes\engine\MoneyAdd.h" />
     <ClInclude Include="..\Classes\engine\SavedCastTime.h" />
+    <ClInclude Include="..\Classes\engine\towers\Tower.h" />
     <ClInclude Include="..\Classes\engine\units\HealthBar.h" />
     <ClInclude Include="..\Classes\engine\units\Unit.h" />
     <ClInclude Include="..\Classes\engine\units\Unit_1.h" />
@@ -283,7 +277,11 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
   <ItemGroup>
     <ProjectReference Include="..\cocos2d\cocos\2d\libcocos2d.vcxproj">
       <Project>{98a51ba8-fc3a-415b-ac8f-8c7bd464e93e}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <Private>false</Private>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
     </ProjectReference>
     <ProjectReference Include="..\cocos2d\external\Box2D\proj.win32\libbox2d.vcxproj">
       <Project>{929480e7-23c0-4df6-8456-096d71547116}</Project>

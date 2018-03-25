@@ -62,6 +62,16 @@ namespace engine
 		void mouseMoveHandler(cocos2d::Event* param1);
 		void mouseDownHandler(cocos2d::Event *event);
 		void mouseUpHandler(cocos2d::Event* event);
+        bool onTouchBegan(Touch *touch, Event *unused_event);
+        void onTouchEnded(Touch *touch, Event *unused_event);
+        void onTouchCancelled(Touch *touch, Event *unused_event);
+        void onTouchMoved(Touch *touch, Event *unused_event);
+
+        void onMouseMove(Event *unused_event);
+        void onTouchesBegan(const std::vector<Touch*>& touches, Event *unused_event);
+        void onTouchesMoved(const std::vector<Touch*>& touches, Event *pEvent);
+        void onTouchesEnded(const std::vector<Touch*>& touches, Event *pEvent);
+        void onTouchesCancelled(const std::vector<Touch*>&touches, Event *unused_event);
 
         void addCast(string param1) 
         {

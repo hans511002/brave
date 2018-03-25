@@ -3,20 +3,20 @@
 #include "Bullet.h" 
 
 namespace engine{
-    namespace bullets{ 
+    namespace bullets{
         class Bullet_1 :public Bullet
         {
         public:
-            float shiftX,shiftY;
-            int phase1,phase2;
+            float shiftX, shiftY;
+            int phase1, phase2;
 
             Bullet_1(){};
 
-            bool init( ) ;
+            bool init();
 
-            void update() ;
+            void update();
 
-        }
+        };
     }
 }
 #endif

@@ -8,22 +8,22 @@
 
 
 namespace engine{
-    namespace bullets{ 
-  
+    namespace bullets{
+
         class Bullet :public BaseNode
         {
         public:
-            int i,j;
+            int i, j;
             //public var tempObject:Object;
             //public var tempObject1:Object;
             //public var tempObject2:Object;
             bool dead;//public var dead:Boolean;
             World * world;//public var world:World;
-            MovieClip * container;//public var container:MovieClip;
-            Unit* enemyTarget;//public var enemyTarget:Object;
+            BaseNode * container;//public var container:MovieClip;
+            units::Unit* enemyTarget;//public var enemyTarget:Object;
             float damage;//public var damage:Number;
             int bulletType;//public var bulletType:int;
-            Tower * whoShoot;//public var whoShoot:Object;
+            towers::Tower * whoShoot;//public var whoShoot:Object;
             int liveCounter;//public var liveCounter:int;
             int liveTimer;//public var liveTimer:int;
             float distanceX;//public var distanceX:Number;
@@ -34,23 +34,23 @@ namespace engine{
             int  mainCounter;//public var mainCounter:int = 0;
             int changeIndex;//public var changeIndex:int;
             float radius;//public var radius:Number;
-            Unit * testTarget;//public var testTarget:Object;
-            Tower * testTower;//public var testTower:Object;
+            units::Unit * testTarget;//public var testTarget:Object;
+            towers::Tower * testTower;//public var testTower:Object;
             bool greenFlag;//public var greenFlag:Boolean;
 
             Bullet();
 
-            bool init( );
+            bool init();
 
             void update();
 
-            void defaultIndex() ; 
+            void defaultIndex();
 
-            void scanAtRadius() ; 
+            void scanAtRadius();
 
-            void kill()  ;
+            void kill();
 
+        };
     }
-}
 }
 #endif

@@ -177,20 +177,11 @@
     <ClCompile Include="..\Classes\engine\WorldInterface_mc.cpp">
       <Filter>src\engine</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\engine\bullets\Bullet_1.cpp">
-      <Filter>src\engine\bullets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\engine\bullets\Bullet_2.cpp">
-      <Filter>src\engine\bullets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\engine\bullets\Bullet_3.cpp">
-      <Filter>src\engine\bullets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\engine\bullets\Bullet_4.cpp">
-      <Filter>src\engine\bullets</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\engine\bullets\Bullet.cpp">
       <Filter>src\engine\bullets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\towers\Tower.cpp">
+      <Filter>src\engine\towers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -440,17 +431,8 @@
     <ClInclude Include="..\Classes\engine\bullets\Bullet.h">
       <Filter>src\engine\bullets</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\engine\bullets\Bullet_1.h">
-      <Filter>src\engine\bullets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\engine\bullets\Bullet_2.h">
-      <Filter>src\engine\bullets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\engine\bullets\Bullet_3.h">
-      <Filter>src\engine\bullets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\engine\bullets\Bullet_4.h">
-      <Filter>src\engine\bullets</Filter>
+    <ClInclude Include="..\Classes\engine\towers\Tower.h">
+      <Filter>src\engine\towers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

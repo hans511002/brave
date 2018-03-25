@@ -43,7 +43,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / (double)30);
     FileUtils::getInstance()->addSearchPath("assets");
-	
+    FileUtils::getInstance()->addSearchPath("res");
 	//// create a scene. it's an autorelease object
 	//auto scene = HelloWorld::createScene(); 
 	//// run

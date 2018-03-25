@@ -3,7 +3,7 @@
 
  namespace engine{
 	 namespace bullets{ 
-	       void init() 
+         bool Bullet_3::init()
         {
             bulletType = 3;
             liveTimer = 24;
@@ -46,10 +46,10 @@
             //this->shadow->setScale(0.5,0.5);
             //world->addChildAt(this->shadow, 2);
             //world->listOfIndexes2.push(this->shadow);
-            return;
+            return true;
         }// end function
 
-        void update() 
+        void Bullet_3::update() 
         {
             Bullet::update();
             if (mainCounter == 11)

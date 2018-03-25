@@ -1,0 +1,26 @@
+<TextureAtlas name="icesphere" imagePath="texture.png">
+ <SubTexture name="Shape/shape 10921" x="154" y="30" width="32" height="29"/>
+ <SubTexture name="Shape/shape 10922" x="222" y="0" width="32" height="29"/>
+ <SubTexture name="Shape/shape 10923" x="204" y="60" width="32" height="29"/>
+ <SubTexture name="Shape/shape 10924" x="52" y="30" width="32" height="29"/>
+ <SubTexture name="Shape/shape 10925" x="120" y="30" width="32" height="29"/>
+ <SubTexture name="Shape/shape 10926" x="68" y="60" width="32" height="29"/>
+ <SubTexture name="Shape/shape 10927" x="102" y="90" width="32" height="29"/>
+ <SubTexture name="Shape/shape 10928" x="34" y="60" width="32" height="29"/>
+ <SubTexture name="Shape/shape 10929" x="188" y="0" width="32" height="29"/>
+ <SubTexture name="Shape/shape 10930" x="86" y="0" width="32" height="29"/>
+ <SubTexture name="Shape/shape 10931" x="102" y="60" width="32" height="29"/>
+ <SubTexture name="Shape/shape 10932" x="34" y="90" width="32" height="29"/>
+ <SubTexture name="Shape/shape 10933" x="68" y="90" width="32" height="29"/>
+ <SubTexture name="Shape/shape 10934" x="136" y="60" width="32" height="29"/>
+ <SubTexture name="Shape/shape 10935" x="222" y="30" width="32" height="29"/>
+ <SubTexture name="Shape/shape 10936" x="170" y="60" width="32" height="29"/>
+ <SubTexture name="Shape/shape 10937" x="86" y="30" width="32" height="29"/>
+ <SubTexture name="Shape/shape 10938" x="52" y="0" width="32" height="29"/>
+ <SubTexture name="Shape/shape 10939" x="0" y="52" width="32" height="29"/>
+ <SubTexture name="Shape/shape 10940" x="154" y="0" width="32" height="29"/>
+ <SubTexture name="Shape/shape 10941" x="120" y="0" width="32" height="29"/>
+ <SubTexture name="Shape/shape 10942" x="0" y="82" width="32" height="29"/>
+ <SubTexture name="Shape/shape 10943" x="188" y="30" width="32" height="29"/>
+ <SubTexture name="Shape/shape 10944" x="0" y="0" width="50" height="50"/>
+</TextureAtlas>

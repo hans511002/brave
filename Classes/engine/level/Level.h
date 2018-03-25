@@ -5,7 +5,7 @@
 
 namespace engine{
 	 
-	class Level : public BaseSprite{
+	class Level : public BaseNode{
 		public:
 			Common::Array<dragonBones::DBCCArmatureNode * > decorations;
 			Common::Array<dragonBones::DBCCArmatureNode * > flags;

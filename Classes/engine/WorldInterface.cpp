@@ -19,15 +19,17 @@ namespace engine
 		//this.removeEventListener(Event.ADDED_TO_STAGE, this.init);
 		this->world = Main::mainClass->worldClass;
 
-		Sprite *point = this->world->pointer1;// Sprite::create("public/point.png");
+		BaseNode *point = this->world->pointer1;// Sprite::create("public/point.png");
 		//point->setPosition(400, 250);
-		EventListenerMouse *mouseListener= cocos2d::EventListenerMouse::create();
-		mouseListener->onMouseDown = CC_CALLBACK_1(WorldInterface::mouseDownHandler, this);
-		mouseListener->onMouseUp = CC_CALLBACK_1(WorldInterface::mouseUpHandler, this);
-		mouseListener->onMouseMove = CC_CALLBACK_1(WorldInterface::mouseMoveHandler, this);
-		point->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
-
+		//EventListenerMouse *mouseListener= cocos2d::EventListenerMouse::create();
+        //mouseListener->onMouseDown = CC_CALLBACK_1(WorldInterface::mouseDownHandler, this);
+        //mouseListener->onMouseUp = CC_CALLBACK_1(WorldInterface::mouseUpHandler, this);
+        //mouseListener->onMouseMove = CC_CALLBACK_1(WorldInterface::mouseMoveHandler, this); 
+        //point->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, point);
+       
+        
  		//this->addChild(point);
+
 		
 		point->setVisible(true);
 		this->setVisible(true);
@@ -36,6 +38,7 @@ namespace engine
 		//this.mouseEnabled = false;
 		//this.alpha = 0;
 		this->container = new WorldInterface_mc();
+ 
 		//this.container.stop();
 		//this.container.fireBack.stop();
 		//this.container.iceBack.stop();
@@ -150,6 +153,20 @@ namespace engine
         this->addChild(this->container);
         this->container->init();
         this->container->setPosition(0, 0);
+
+
+        //this->container->startWaves->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this->container->startWaves);
+        //this->container->fastbtn->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this->container->startWaves);
+
+        EventListenerTouchOneByOne *touchListener = EventListenerTouchOneByOne::create();
+        touchListener->onTouchBegan = [this](Touch *touch, Event *event){
+            return this->onTouchBegan(touch, event);
+        };
+        touchListener->onTouchEnded = [this](Touch *touch, Event *event){
+            return this->onTouchEnded(touch, event);
+        };
+        Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener, point);
+
 		//this.castMask = new CastMask_mc();
 		//this.castMask.stop();
 		//this.castMask.fireCase.stop();
@@ -169,7 +186,22 @@ namespace engine
 		//this.spheresBlockManage();
 		return true;
 	};
+    bool WorldInterface::onTouchBegan(Touch* touch, Event* event)
+    {
+        Node * node = event->getCurrentTarget();
+        Event::Type tp = event->getType();
+        string target = node->getName();
 
+        return true;
+    }
+    void WorldInterface::onTouchEnded(Touch* touch, Event* event)
+    {
+        Node * node = event->getCurrentTarget();
+        Event::Type tp = event->getType();
+        string target = node->getName();
+        CCLOG("WorldInterface::onTouchEnded %s", target.c_str());
+        return;
+    }
 	void WorldInterface::update(){
 		////public function update() : void
 		//{
@@ -1473,7 +1505,7 @@ namespace engine
         Node * node=event->getCurrentTarget();
         Event::Type tp=event->getType();
         string target = node->getName();
-
+        CCLOG("WorldInterface::mouseDownHandler %s", target.c_str());
 		this->world->wavesClass->startWaves();
 
 		//if (!this->world->getSphere && !this->world->cast)
