@@ -67,7 +67,7 @@ namespace engine
 		int liveMax;//: int = 20;
 		int live ;
 		bool forseIndexFl;// : Boolean;
-		//public var getSphere : GetSphere;
+        GetSphere *getSphere; //public var getSphere : GetSphere;
 		//public var listOfMoveSpheres : Array;
 		//public var listOfClasses : Array;
 		//public var listOfTowers : Array;

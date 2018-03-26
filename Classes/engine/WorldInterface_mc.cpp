@@ -65,9 +65,21 @@ namespace engine
         sphereback = (Sprite *)node->getChildByName("sphereback"); 
         iceBack = (Sprite *)node->getChildByName("iceBack");  
         fireBack = (Sprite *)node->getChildByName("fireBack");  
-        levinBack = (Sprite *)node->getChildByName("levinBack");  
         stoneBack = (Sprite *)node->getChildByName("stoneBack");  
+        levinBack = (Sprite *)node->getChildByName("levinBack");  
         allSphereBack = (Sprite *)node->getChildByName("allsphereback");
+
+        this->fireBacklight->setPosition(this->fireBack->getPosition());
+        this->iceBacklight->setPosition(this->iceBack->getPosition());
+        this->stoneBacklight->setPosition(this->stoneBack->getPosition());
+        this->levinBacklight->setPosition(this->levinBack->getPosition());
+
+        this->stoneBacked->setPosition(this->levinBack->getPosition());
+        this->levinBacked->setPosition(this->levinBack->getPosition());
+        this->iceBacked->setPosition(this->levinBack->getPosition());
+        this->fireBacked->setPosition(this->levinBack->getPosition());
+        
+         
 
         //¹ºÂò¼Û¸ñ±³¾°
         buyFire = (Sprite *)node->getChildByName("buyFire");  
@@ -91,59 +103,68 @@ namespace engine
         pause = (ui::Button *)node->getChildByName("pause");
         startWaves->setVisible(true);
         fastbtn->setVisible(true);
+        this->faster->setPosition(this->fastbtn->getPosition());
+         
           
         //lastTime=(ui::Text *)node->getChildByName("lastTime"); 
         waveTXT = (ui::Text *)node->getChildByName("waveTXT"); 
         liveTXT = (ui::Text *)node->getChildByName("liveTXT");;// : TextField;
         moneyTXT = (ui::Text *)node->getChildByName("moneyTXT");;//: TextField;
+
         fireNumTXT = (ui::Text *)node->getChildByName("fireNumTXT");;// : TextField;
         iceNumTXT = (ui::Text *)node->getChildByName("iceNumTXT");;//: TextField;
         stoneNumTXT = (ui::Text *)node->getChildByName("stoneNumTXT");;//public var stoneNumTXT : TextField;
         levinNumTXT = (ui::Text *)node->getChildByName("levinNumTXT");;// : TextField;
         getAllNumTXT = (ui::Text *)node->getChildByName("getAllNumTXT");; // public var getAllNumTXT : TextField;
 
+        firePrice = (ui::Text *)node->getChildByName("firePrice");;// : TextField;
+        icePrice = (ui::Text *)node->getChildByName("icePrice");;//: TextField;
+        stonePrice = (ui::Text *)node->getChildByName("stonePrice");;//public var stoneNumTXT : TextField;
+        levinPrice = (ui::Text *)node->getChildByName("levinPrice");;// : TextField;
+        getAllPrice = (ui::Text *)node->getChildByName("getAllPrice");; // public var getAllNumTXT : TextField;
+         
         
         liveTXT->setText("50");
  
-        startWaves->addClickEventListener(CC_CALLBACK_1(WorldInterface_mc::startWavesCallback, this));
-        fastbtn->addClickEventListener(CC_CALLBACK_1(WorldInterface_mc::startWavesCallback, this));
+        //startWaves->addClickEventListener(CC_CALLBACK_1(WorldInterface_mc::startWavesCallback, this));
+        //fastbtn->addClickEventListener(CC_CALLBACK_1(WorldInterface_mc::startWavesCallback, this));
         
 
         this->setName("workdIntface_mc");
          
-        fastbtn->addTouchEventListener(fastbtn, toucheventselector(BaseNode::touchAction));
-        startWaves->addTouchEventListener(startWaves, toucheventselector(BaseNode::touchAction));
+        //fastbtn->addTouchEventListener(fastbtn, toucheventselector(BaseNode::touchAction));
+        //startWaves->addTouchEventListener(startWaves, toucheventselector(BaseNode::touchAction));
          
-        EventListenerTouchOneByOne *touchListener = EventListenerTouchOneByOne::create();
-        touchListener->setSwallowTouches(true);
-        touchListener->onTouchBegan = [this](Touch *touch, Event *event){
-            Node * node = event->getCurrentTarget();
-            Event::Type tp = event->getType();
-            string target = node->getName();
-            bool hit = BaseNode::hitTest(node, touch->getLocation());
-            if (hit) CCLOG("WorldInterface_mc::onTouchBegan %s", target.c_str());
-            return hit;
-        };
-        touchListener->onTouchEnded = [this](Touch *touch, Event *event){
-            Node * node = event->getCurrentTarget();
-            Event::Type tp = event->getType();
-            string target = node->getName();
-            CCLOG("WorldInterface_mc::onTouchEnded %s", target.c_str());
-        };
+        //EventListenerTouchOneByOne *touchListener = EventListenerTouchOneByOne::create();
+        //touchListener->setSwallowTouches(true);
+        //touchListener->onTouchBegan = [this](Touch *touch, Event *event){
+        //    Node * node = event->getCurrentTarget();
+        //    Event::Type tp = event->getType();
+        //    string target = node->getName();
+        //    bool hit = BaseNode::hitTest(node, touch->getLocation());
+        //    if (hit) CCLOG("WorldInterface_mc::onTouchBegan %s", target.c_str());
+        //    return hit;
+        //};
+        //touchListener->onTouchEnded = [this](Touch *touch, Event *event){
+        //    Node * node = event->getCurrentTarget();
+        //    Event::Type tp = event->getType();
+        //    string target = node->getName();
+        //    CCLOG("WorldInterface_mc::onTouchEnded %s", target.c_str());
+        //};
 
-        //EventListenerTouchOneByOne *_touchListener = EventListenerTouchOneByOne::create();
-        //CC_SAFE_RETAIN(_touchListener);
-        //_touchListener->setSwallowTouches(true);
-        //_touchListener->onTouchBegan = CC_CALLBACK_2(WorldInterface_mc::onTouchBegan, this);
-        //_touchListener->onTouchMoved = CC_CALLBACK_2(WorldInterface_mc::onTouchMoved, this);
-        //_touchListener->onTouchEnded = CC_CALLBACK_2(WorldInterface_mc::onTouchEnded, this);
-        //_touchListener->onTouchCancelled = CC_CALLBACK_2(WorldInterface_mc::onTouchCancelled, this);
-        //_eventDispatcher->addEventListenerWithSceneGraphPriority(_touchListener, this);
+        ////EventListenerTouchOneByOne *_touchListener = EventListenerTouchOneByOne::create();
+        ////CC_SAFE_RETAIN(_touchListener);
+        ////_touchListener->setSwallowTouches(true);
+        ////_touchListener->onTouchBegan = CC_CALLBACK_2(WorldInterface_mc::onTouchBegan, this);
+        ////_touchListener->onTouchMoved = CC_CALLBACK_2(WorldInterface_mc::onTouchMoved, this);
+        ////_touchListener->onTouchEnded = CC_CALLBACK_2(WorldInterface_mc::onTouchEnded, this);
+        ////_touchListener->onTouchCancelled = CC_CALLBACK_2(WorldInterface_mc::onTouchCancelled, this);
+        ////_eventDispatcher->addEventListenerWithSceneGraphPriority(_touchListener, this);
 
 
-        iceSphere->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener, iceSphere);
-        fireSphere->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener->clone(), fireSphere);
-        stoneSphere->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener->clone(), stoneSphere);
+        //iceSphere->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener, iceSphere);
+        //fireSphere->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener->clone(), fireSphere);
+        //stoneSphere->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener->clone(), stoneSphere);
 
          
         return true;

@@ -23,7 +23,7 @@ namespace engine
         //public var castMask:CastMask_mc;
         //public var sphereCostHistory:Array;
         //public var listOfNewEnemies:Array;
-        //public var lastTime:TextField;
+        ui::Text * lastTime;//public var lastTime:TextField;
         //public var listOfGetAhieve:Array;
         //public var listOfAnimation:Array;
         //public var sellHint:Hint_mc;
@@ -58,7 +58,8 @@ namespace engine
   
 
 		void update();
-
+        void clickHandler(Ref* ref);
+        
 		void mouseMoveHandler(cocos2d::Event* param1);
 		void mouseDownHandler(cocos2d::Event *event);
 		void mouseUpHandler(cocos2d::Event* event);
@@ -973,212 +974,7 @@ namespace engine
             //}
         }// end function
 
-		void spheresBlockManage(string param1 = "")
-        {
-    //        if (param1 == "")
-    //        {
-    //            this->container.fireSphere.alpha = 0;
-    //            this->container.fireNumTXT.alpha = 0;
-    //            this->container.buyFire.alpha = 0; 
-    //            this->container.fireSphere.mouseChildren = false;
-				//this->container.fireSphere.mouseEnabled = false;
-    //            this->container.fireNumTXT.mouseEnabled = false; 
-    //            this->container.buyFire.mouseChildren = false;
-				//this->container.buyFire.mouseEnabled = false;
-    //            this->container.fireSphere.visible = false;
-    //            this->container.iceSphere.alpha = 0;
-    //            this->container.iceNumTXT.alpha = 0;
-    //            this->container.buyIce.alpha = 0;
-    //            var _loc_2:* = false;
-    //            this->container.iceSphere.mouseChildren = false;
-				//this->container.iceSphere.mouseEnabled = false;
-    //            this->container.iceNumTXT.mouseEnabled = false;
-    //            var _loc_2:* = false;
-    //            this->container.buyIce.mouseChildren = false;
-				//this->container.buyIce.mouseEnabled = false;
-    //            this->container.iceSphere.visible = false;
-    //            this->container.stoneSphere.alpha = 0;
-    //            this->container.stoneNumTXT.alpha = 0;
-    //            this->container.buyStone.alpha = 0;
-    //            this->container.stoneSphere.mouseChildren = false;
-				//this->container.stoneSphere.mouseEnabled = false;
-    //            this->container.stoneNumTXT.mouseEnabled = false;
-    //            this->container.buyStone.mouseChildren = false;
-				//this->container.buyStone.mouseEnabled = false;
-    //            this->container.stoneSphere.visible = false;
-    //            this->container.levinSphere.alpha = 0;
-    //            this->container.levinNumTXT.alpha = 0;
-    //            this->container.buyLevin.alpha = 0;
-    //            this->container.levinSphere.mouseChildren = false;
-				//this->container.levinSphere.mouseEnabled = false;
-    //            this->container.levinNumTXT.mouseEnabled = false;
-    //            this->container.buyLevin.mouseChildren = false;
-				//this->container.buyLevin.mouseEnabled = false;
-    //            this->container.levinSphere.visible = false;
-    //            this->container.getAll.gotoAndStop(3);
-    //            this->container.buyGetAll.alpha = 0;
-    //            this->container.getAllNumTXT.alpha = 0;
-    //            this->container.getAllNumTXT.mouseEnabled = false;
-    //            this->container.buyGetAll.mouseChildren = false;
-				//this->container.buyGetAll.mouseEnabled = false;
-    //            this->container.fireBack.gotoAndStop(3);
-    //            this->container.iceBack.gotoAndStop(3);
-    //            this->container.stoneBack.gotoAndStop(3);
-    //            this->container.levinBack.gotoAndStop(3);
-    //            if (Main.mainClass.readXMLClass.archiveSphereBlock == 3)
-    //            {
-    //                this->container.fireSphere.visible = true;
-    //                this->container.fireBack.gotoAndStop(1);
-    //            }
-    //            else if (Main.mainClass.readXMLClass.archiveSphereBlock == 2)
-    //            {
-    //                this->container.fireSphere.visible = true;
-    //                this->container.iceSphere.visible = true;
-    //                this->container.fireBack.gotoAndStop(1);
-    //                this->container.iceBack.gotoAndStop(1);
-    //            }
-    //            else if (Main.mainClass.readXMLClass.archiveSphereBlock == 1)
-    //            {
-    //                this->container.fireSphere.visible = true;
-    //                this->container.iceSphere.visible = true;
-    //                this->container.stoneSphere.visible = true;
-    //                this->container.fireBack.gotoAndStop(1);
-    //                this->container.iceBack.gotoAndStop(1);
-    //                this->container.stoneBack.gotoAndStop(1);
-    //            }
-    //            else if (Main.mainClass.readXMLClass.archiveSphereBlock == 0)
-    //            {
-    //                this->container.fireSphere.visible = true;
-    //                this->container.iceSphere.visible = true;
-    //                this->container.stoneSphere.visible = true;
-    //                this->container.levinSphere.visible = true;
-    //                this->container.fireBack.gotoAndStop(1);
-    //                this->container.iceBack.gotoAndStop(1);
-    //                this->container.stoneBack.gotoAndStop(1);
-    //                this->container.levinBack.gotoAndStop(1);
-    //            }
-    //            if (this->world.saveBox.gameSave.data.complexityLevel == 4)
-    //            {
-    //                if (this->world.nowLevel == 4)
-    //                {
-    //                    this->container.stoneSphere.visible = true;
-    //                    this->container.levinSphere.visible = true;
-    //                    this->container.stoneBack.gotoAndStop(1);
-    //                    this->container.levinBack.gotoAndStop(1);
-    //                }
-    //                else if (this->world.nowLevel == 5)
-    //                {
-    //                    this->container.iceSphere.visible = true;
-    //                    this->container.levinSphere.visible = true;
-    //                    this->container.iceBack.gotoAndStop(1);
-    //                    this->container.levinBack.gotoAndStop(1);
-    //                }
-    //                else if (this->world.nowLevel == 8)
-    //                {
-    //                    this->container.fireSphere.visible = true;
-    //                    this->container.iceSphere.visible = true;
-    //                    this->container.levinSphere.visible = true;
-    //                    this->container.fireBack.gotoAndStop(1);
-    //                    this->container.iceBack.gotoAndStop(1);
-    //                    this->container.levinBack.gotoAndStop(1);
-    //                }
-    //                else if (this->world.nowLevel == 13)
-    //                {
-    //                    this->container.iceSphere.visible = true;
-    //                    this->container.levinSphere.visible = true;
-    //                    this->container.iceBack.gotoAndStop(1);
-    //                    this->container.levinBack.gotoAndStop(1);
-    //                }
-    //                else if (this->world.nowLevel == 15)
-    //                {
-    //                    this->container.fireSphere.visible = true;
-    //                    this->container.iceSphere.visible = true;
-    //                    this->container.levinSphere.visible = true;
-    //                    this->container.fireBack.gotoAndStop(1);
-    //                    this->container.iceBack.gotoAndStop(1);
-    //                    this->container.levinBack.gotoAndStop(1);
-    //                }
-    //            }
-    //        }
-    //        else if (param1 == "unblockFire")
-    //        {
-    //            var _loc_2:* = 1;
-    //            this->container.fireSphere.scaleY = 1;
-    //            this->container.fireSphere.scaleX = _loc_2;
-    //            this->container.fireSphere.alpha = 1;
-    //            this->container.fireNumTXT.alpha = 1;
-    //            this->container.buyFire.alpha = 1;
-    //            this->container.fireSphere.mouseChildren = true;
-				//this->container.fireSphere.mouseEnabled = true;
-    //            this->container.fireNumTXT.mouseEnabled = false;
-    //            this->container.buyFire.mouseChildren = true;
-				//this->container.buyFire.mouseEnabled = true;
-    //            this->container.fireBack.gotoAndStop(1);
-    //        }
-    //        else if (param1 == "unblockIce")
-    //        {
-    //            var _loc_2:* = 1;
-    //            this->container.iceSphere.scaleY = 1;
-    //            this->container.iceSphere.scaleX = _loc_2;
-    //            this->container.iceSphere.alpha = 1;
-    //            this->container.iceNumTXT.alpha = 1;
-    //            this->container.buyIce.alpha = 1;
-    //            var _loc_2:* = true;
-    //            this->container.iceSphere.mouseChildren = true;
-    //            this->container.iceSphere.mouseEnabled = _loc_2;
-    //            this->container.iceNumTXT.mouseEnabled = false;
-    //            var _loc_2:* = true;
-    //            this->container.buyIce.mouseChildren = true;
-    //            this->container.buyIce.mouseEnabled = _loc_2;
-    //            this->container.iceBack.gotoAndStop(1);
-    //        }
-    //        else if (param1 == "unblockStone")
-    //        {
-    //            this->container.stoneSphere.scaleY = 1;
-    //            this->container.stoneSphere.scaleX = 1;
-    //            this->container.stoneSphere.alpha = 1;
-    //            this->container.stoneNumTXT.alpha = 1;
-    //            this->container.buyStone.alpha = 1;
-    //            this->container.stoneSphere.mouseChildren = true;
-				//this->container.stoneSphere.mouseEnabled = true;
-    //            this->container.stoneNumTXT.mouseEnabled = false;
-    //            this->container.buyStone.mouseChildren = true;
-				//this->container.buyStone.mouseEnabled = true;
-    //            this->container.stoneBack.gotoAndStop(1);
-    //        }
-    //        else if (param1 == "unblockLevin")
-    //        {
-    //            var _loc_2:* = 1;
-    //            this->container.levinSphere.scaleY = 1;
-    //            this->container.levinSphere.scaleX = 1;
-    //            this->container.levinSphere.alpha = 1;
-    //            this->container.levinNumTXT.alpha = 1;
-    //            this->container.buyLevin.alpha = 1;
-    //            this->container.levinSphere.mouseChildren = true;
-				//this->container.levinSphere.mouseEnabled = true;
-    //            this->container.levinNumTXT.mouseEnabled = false;
-    //            this->container.buyLevin.mouseChildren = true;
-				//this->container.buyLevin.mouseEnabled = true;
-    //            this->container.levinBack.gotoAndStop(1);
-    //        }
-    //        else if (param1 == "unblockGetAll")
-    //        {
-    //            this->container.getAll.scaleY = 1;
-    //            this->container.getAll.scaleX = 1;
-    //            this->container.getAll.gotoAndStop(1);
-    //            this->container.getAll.fire.stop();
-    //            this->container.getAll.ice.stop();
-    //            this->container.getAll.stone.stop();
-    //            this->container.getAll.levin.stop();
-    //            this->container.buyGetAll.alpha = 1;
-    //            this->container.getAllNumTXT.alpha = 1;
-    //            this->container.getAllNumTXT.mouseEnabled = false;
-    //            this->container.buyGetAll.mouseChildren = true;
-				//this->container.buyGetAll.mouseEnabled = true;
-    //        }
-    //        this->updateInfo();
-            return;
-        }// end function
+        void spheresBlockManage(string param1 = "");
 
 		void archiveSphereBacklightManage(string param1)
         {

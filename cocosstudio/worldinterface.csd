@@ -190,7 +190,7 @@
             <FileData Type="Normal" Path="worldinterface/sphere/stoneBack.png" Plist="" />
             <BlendFunc Src="1" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="stoneSphere" ActionTag="-1289102295" Tag="36" IconVisible="False" LeftMargin="394.7159" RightMargin="-437.7159" TopMargin="-560.8450" BottomMargin="517.8450" ctype="SpriteObjectData">
+          <AbstractNodeData Name="stoneSphere" ActionTag="-1289102295" VisibleForFrame="False" Tag="36" IconVisible="False" LeftMargin="394.7159" RightMargin="-437.7159" TopMargin="-560.8450" BottomMargin="517.8450" ctype="SpriteObjectData">
             <Size X="43.0000" Y="43.0000" />
             <AnchorPoint />
             <Position X="394.7159" Y="517.8450" />
@@ -223,10 +223,10 @@
             <FileData Type="Normal" Path="worldinterface/sphere/fireSphere.png" Plist="" />
             <BlendFunc Src="1" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="buyFire" ActionTag="-1903247411" Tag="39" IconVisible="False" LeftMargin="268.8981" RightMargin="-306.8981" TopMargin="-513.4943" BottomMargin="486.4943" ctype="SpriteObjectData">
+          <AbstractNodeData Name="buyFire" ActionTag="-1903247411" Tag="39" IconVisible="False" LeftMargin="270.8981" RightMargin="-308.8981" TopMargin="-512.4943" BottomMargin="485.4943" ctype="SpriteObjectData">
             <Size X="38.0000" Y="27.0000" />
             <AnchorPoint />
-            <Position X="268.8981" Y="486.4943" />
+            <Position X="270.8981" Y="485.4943" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition />
@@ -234,10 +234,10 @@
             <FileData Type="Normal" Path="worldinterface/sphere/buypricebar.png" Plist="" />
             <BlendFunc Src="1" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="buyIce" ActionTag="1421569750" Tag="40" IconVisible="False" LeftMargin="329.1209" RightMargin="-367.1209" TopMargin="-513.4803" BottomMargin="486.4803" ctype="SpriteObjectData">
+          <AbstractNodeData Name="buyIce" ActionTag="1421569750" VisibleForFrame="False" Tag="40" IconVisible="False" LeftMargin="329.1210" RightMargin="-367.1210" TopMargin="-512.4803" BottomMargin="485.4803" ctype="SpriteObjectData">
             <Size X="38.0000" Y="27.0000" />
             <AnchorPoint />
-            <Position X="329.1209" Y="486.4803" />
+            <Position X="329.1210" Y="485.4803" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition />
@@ -256,7 +256,7 @@
             <FileData Type="Normal" Path="worldinterface/sphere/iceBack.png" Plist="" />
             <BlendFunc Src="1" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="iceSphere" ActionTag="1729301433" Tag="41" IconVisible="False" LeftMargin="331.5219" RightMargin="-374.5219" TopMargin="-559.4211" BottomMargin="516.4211" ctype="SpriteObjectData">
+          <AbstractNodeData Name="iceSphere" ActionTag="1729301433" VisibleForFrame="False" Tag="41" IconVisible="False" LeftMargin="331.5219" RightMargin="-374.5219" TopMargin="-559.4211" BottomMargin="516.4211" ctype="SpriteObjectData">
             <Size X="43.0000" Y="43.0000" />
             <AnchorPoint />
             <Position X="331.5219" Y="516.4211" />
@@ -278,10 +278,10 @@
             <FileData Type="Normal" Path="worldinterface/sphere/levinBack.png" Plist="" />
             <BlendFunc Src="1" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="levinSphere" ActionTag="1841300455" Tag="45" IconVisible="False" LeftMargin="455.0361" RightMargin="-498.0361" TopMargin="-560.2321" BottomMargin="516.2321" ctype="SpriteObjectData">
+          <AbstractNodeData Name="levinSphere" ActionTag="1841300455" VisibleForFrame="False" Tag="45" IconVisible="False" LeftMargin="456.0361" RightMargin="-499.0361" TopMargin="-561.2319" BottomMargin="517.2319" ctype="SpriteObjectData">
             <Size X="43.0000" Y="44.0000" />
             <AnchorPoint />
-            <Position X="455.0361" Y="516.2321" />
+            <Position X="456.0361" Y="517.2319" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition />
@@ -300,7 +300,7 @@
             <FileData Type="Normal" Path="worldinterface/sphere/allSphereback.png" Plist="" />
             <BlendFunc Src="1" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="allSphered" ActionTag="1426514205" Tag="47" IconVisible="False" LeftMargin="500.2349" RightMargin="-561.2349" TopMargin="-568.9672" BottomMargin="509.9672" ctype="SpriteObjectData">
+          <AbstractNodeData Name="allSphered" ActionTag="1426514205" VisibleForFrame="False" Tag="47" IconVisible="False" LeftMargin="500.2349" RightMargin="-561.2349" TopMargin="-568.9672" BottomMargin="509.9672" ctype="SpriteObjectData">
             <Size X="61.0000" Y="59.0000" />
             <AnchorPoint />
             <Position X="500.2349" Y="509.9672" />
@@ -311,7 +311,7 @@
             <FileData Type="Normal" Path="worldinterface/sphere/allSphered.png" Plist="" />
             <BlendFunc Src="1" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="allSphere" ActionTag="-542387690" Tag="48" IconVisible="False" LeftMargin="500.9714" RightMargin="-561.9714" TopMargin="-569.4388" BottomMargin="510.4388" ctype="SpriteObjectData">
+          <AbstractNodeData Name="allSphere" ActionTag="-542387690" VisibleForFrame="False" Tag="48" IconVisible="False" LeftMargin="500.9714" RightMargin="-561.9714" TopMargin="-569.4388" BottomMargin="510.4388" ctype="SpriteObjectData">
             <Size X="61.0000" Y="59.0000" />
             <AnchorPoint />
             <Position X="500.9714" Y="510.4388" />
@@ -322,10 +322,10 @@
             <FileData Type="Normal" Path="worldinterface/sphere/allSphere.png" Plist="" />
             <BlendFunc Src="1" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="buyStone" ActionTag="-515494937" Tag="49" IconVisible="False" LeftMargin="393.4704" RightMargin="-431.4704" TopMargin="-512.7681" BottomMargin="485.7681" ctype="SpriteObjectData">
+          <AbstractNodeData Name="buyStone" ActionTag="-515494937" VisibleForFrame="False" Tag="49" IconVisible="False" LeftMargin="394.4704" RightMargin="-432.4704" TopMargin="-511.7681" BottomMargin="484.7681" ctype="SpriteObjectData">
             <Size X="38.0000" Y="27.0000" />
             <AnchorPoint />
-            <Position X="393.4704" Y="485.7681" />
+            <Position X="394.4704" Y="484.7681" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition />
@@ -333,10 +333,10 @@
             <FileData Type="Normal" Path="worldinterface/sphere/buypricebar.png" Plist="" />
             <BlendFunc Src="1" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="buyLevin" ActionTag="1468713986" Tag="50" IconVisible="False" LeftMargin="459.3887" RightMargin="-497.3887" TopMargin="-513.6610" BottomMargin="486.6610" ctype="SpriteObjectData">
+          <AbstractNodeData Name="buyLevin" ActionTag="1468713986" VisibleForFrame="False" Tag="50" IconVisible="False" LeftMargin="459.3887" RightMargin="-497.3887" TopMargin="-512.6610" BottomMargin="485.6610" ctype="SpriteObjectData">
             <Size X="38.0000" Y="27.0000" />
             <AnchorPoint />
-            <Position X="459.3887" Y="486.6610" />
+            <Position X="459.3887" Y="485.6610" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition />
@@ -344,10 +344,10 @@
             <FileData Type="Normal" Path="worldinterface/sphere/buypricebar.png" Plist="" />
             <BlendFunc Src="1" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="buyGetAll" ActionTag="-988040459" Tag="51" IconVisible="False" LeftMargin="512.9187" RightMargin="-550.9187" TopMargin="-513.9773" BottomMargin="486.9773" ctype="SpriteObjectData">
+          <AbstractNodeData Name="buyGetAll" ActionTag="-988040459" VisibleForFrame="False" Tag="51" IconVisible="False" LeftMargin="513.9188" RightMargin="-551.9188" TopMargin="-512.9773" BottomMargin="485.9773" ctype="SpriteObjectData">
             <Size X="38.0000" Y="27.0000" />
             <AnchorPoint />
-            <Position X="512.9187" Y="486.9773" />
+            <Position X="513.9188" Y="485.9773" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition />
@@ -355,56 +355,56 @@
             <FileData Type="Normal" Path="worldinterface/sphere/buypricebar.png" Plist="" />
             <BlendFunc Src="1" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="fireNumTXT" ActionTag="-1695880174" Tag="52" IconVisible="False" LeftMargin="290.8297" RightMargin="-297.8297" TopMargin="-509.0250" BottomMargin="495.0250" FontSize="14" LabelText="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+          <AbstractNodeData Name="fireNumTXT" ActionTag="-1695880174" Tag="52" IconVisible="False" LeftMargin="288.8297" RightMargin="-295.8297" TopMargin="-527.0247" BottomMargin="513.0247" FontSize="14" LabelText="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
             <Size X="7.0000" Y="14.0000" />
             <AnchorPoint />
-            <Position X="290.8297" Y="495.0250" />
+            <Position X="288.8297" Y="513.0247" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
-            <CColor A="255" R="255" G="201" B="0" />
+            <CColor A="255" R="165" G="42" B="42" />
             <PrePosition />
             <PreSize X="0.0000" Y="0.0000" />
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
-          <AbstractNodeData Name="iceNumTXT" ActionTag="1605641317" Tag="53" IconVisible="False" LeftMargin="351.4915" RightMargin="-358.4915" TopMargin="-509.1573" BottomMargin="495.1573" FontSize="14" LabelText="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+          <AbstractNodeData Name="iceNumTXT" ActionTag="1605641317" VisibleForFrame="False" Tag="53" IconVisible="False" LeftMargin="347.4917" RightMargin="-354.4917" TopMargin="-526.1570" BottomMargin="512.1570" FontSize="14" LabelText="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
             <Size X="7.0000" Y="14.0000" />
             <AnchorPoint />
-            <Position X="351.4915" Y="495.1573" />
+            <Position X="347.4917" Y="512.1570" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
-            <CColor A="255" R="255" G="201" B="0" />
+            <CColor A="255" R="165" G="42" B="42" />
             <PrePosition />
             <PreSize X="0.0000" Y="0.0000" />
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
-          <AbstractNodeData Name="stoneNumTXT" ActionTag="-665497230" Tag="54" IconVisible="False" LeftMargin="416.5586" RightMargin="-423.5586" TopMargin="-509.7302" BottomMargin="495.7302" FontSize="14" LabelText="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+          <AbstractNodeData Name="stoneNumTXT" ActionTag="-665497230" VisibleForFrame="False" Tag="54" IconVisible="False" LeftMargin="411.5586" RightMargin="-418.5586" TopMargin="-525.7297" BottomMargin="511.7297" FontSize="14" LabelText="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
             <Size X="7.0000" Y="14.0000" />
             <AnchorPoint />
-            <Position X="416.5586" Y="495.7302" />
+            <Position X="411.5586" Y="511.7297" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
-            <CColor A="255" R="255" G="201" B="0" />
+            <CColor A="255" R="165" G="42" B="42" />
             <PrePosition />
             <PreSize X="0.0000" Y="0.0000" />
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
-          <AbstractNodeData Name="levinNumTXT" ActionTag="-1573532625" Tag="55" IconVisible="False" LeftMargin="479.6140" RightMargin="-486.6140" TopMargin="-510.1724" BottomMargin="496.1724" FontSize="14" LabelText="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+          <AbstractNodeData Name="levinNumTXT" ActionTag="-1573532625" VisibleForFrame="False" Tag="55" IconVisible="False" LeftMargin="474.6140" RightMargin="-481.6140" TopMargin="-526.1721" BottomMargin="512.1721" FontSize="14" LabelText="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
             <Size X="7.0000" Y="14.0000" />
             <AnchorPoint />
-            <Position X="479.6140" Y="496.1724" />
+            <Position X="474.6140" Y="512.1721" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
-            <CColor A="255" R="255" G="201" B="0" />
+            <CColor A="255" R="165" G="42" B="42" />
             <PrePosition />
             <PreSize X="0.0000" Y="0.0000" />
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
-          <AbstractNodeData Name="getAllNumTXT" ActionTag="-1185461122" Tag="56" IconVisible="False" LeftMargin="534.7347" RightMargin="-541.7347" TopMargin="-510.1991" BottomMargin="496.1991" FontSize="14" LabelText="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+          <AbstractNodeData Name="getAllNumTXT" ActionTag="-1185461122" VisibleForFrame="False" Tag="56" IconVisible="False" LeftMargin="529.7347" RightMargin="-536.7347" TopMargin="-523.1989" BottomMargin="509.1989" FontSize="14" LabelText="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
             <Size X="7.0000" Y="14.0000" />
             <AnchorPoint />
-            <Position X="534.7347" Y="496.1991" />
+            <Position X="529.7347" Y="509.1989" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
-            <CColor A="255" R="255" G="201" B="0" />
+            <CColor A="255" R="165" G="42" B="42" />
             <PrePosition />
             <PreSize X="0.0000" Y="0.0000" />
             <OutlineColor A="255" R="255" G="0" B="0" />
@@ -437,6 +437,61 @@
             <DisabledFileData Type="Default" Path="Default/Button_Disable.png" Plist="" />
             <PressedFileData Type="Normal" Path="worldinterface/startbtn/fastbtned.png" Plist="" />
             <NormalFileData Type="Normal" Path="worldinterface/startbtn/fasterbtn.png" Plist="" />
+            <OutlineColor A="255" R="255" G="0" B="0" />
+            <ShadowColor A="255" R="110" G="110" B="110" />
+          </AbstractNodeData>
+          <AbstractNodeData Name="firePrice" ActionTag="-1503400884" Tag="40" IconVisible="False" LeftMargin="290.4929" RightMargin="-304.4929" TopMargin="-509.1572" BottomMargin="495.1572" FontSize="14" LabelText="15" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+            <Size X="14.0000" Y="14.0000" />
+            <AnchorPoint />
+            <Position X="290.4929" Y="495.1572" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <CColor A="255" R="255" G="201" B="0" />
+            <PrePosition />
+            <PreSize X="0.0000" Y="0.0000" />
+            <OutlineColor A="255" R="255" G="0" B="0" />
+            <ShadowColor A="255" R="110" G="110" B="110" />
+          </AbstractNodeData>
+          <AbstractNodeData Name="icePrice" ActionTag="-1835238070" VisibleForFrame="False" Tag="41" IconVisible="False" LeftMargin="350.4932" RightMargin="-357.4932" TopMargin="-509.1571" BottomMargin="495.1571" FontSize="14" LabelText="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+            <Size X="7.0000" Y="14.0000" />
+            <AnchorPoint />
+            <Position X="350.4932" Y="495.1571" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <CColor A="255" R="255" G="201" B="0" />
+            <PrePosition />
+            <PreSize X="0.0000" Y="0.0000" />
+            <OutlineColor A="255" R="255" G="0" B="0" />
+            <ShadowColor A="255" R="110" G="110" B="110" />
+          </AbstractNodeData>
+          <AbstractNodeData Name="stonePrice" ActionTag="6086236" VisibleForFrame="False" Tag="42" IconVisible="False" LeftMargin="417.0418" RightMargin="-424.0418" TopMargin="-507.3964" BottomMargin="493.3964" FontSize="14" LabelText="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+            <Size X="7.0000" Y="14.0000" />
+            <AnchorPoint />
+            <Position X="417.0418" Y="493.3964" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <CColor A="255" R="255" G="201" B="0" />
+            <PrePosition />
+            <PreSize X="0.0000" Y="0.0000" />
+            <OutlineColor A="255" R="255" G="0" B="0" />
+            <ShadowColor A="255" R="110" G="110" B="110" />
+          </AbstractNodeData>
+          <AbstractNodeData Name="levinPrice" ActionTag="747424074" VisibleForFrame="False" Tag="43" IconVisible="False" LeftMargin="481.0212" RightMargin="-488.0212" TopMargin="-509.7244" BottomMargin="495.7244" FontSize="14" LabelText="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+            <Size X="7.0000" Y="14.0000" />
+            <AnchorPoint />
+            <Position X="481.0212" Y="495.7244" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <CColor A="255" R="255" G="201" B="0" />
+            <PrePosition />
+            <PreSize X="0.0000" Y="0.0000" />
+            <OutlineColor A="255" R="255" G="0" B="0" />
+            <ShadowColor A="255" R="110" G="110" B="110" />
+          </AbstractNodeData>
+          <AbstractNodeData Name="getAllPrice" ActionTag="326720876" VisibleForFrame="False" Tag="44" IconVisible="False" LeftMargin="535.0216" RightMargin="-542.0216" TopMargin="-509.7242" BottomMargin="495.7242" FontSize="14" LabelText="5" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+            <Size X="7.0000" Y="14.0000" />
+            <AnchorPoint />
+            <Position X="535.0216" Y="495.7242" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <CColor A="255" R="255" G="201" B="0" />
+            <PrePosition />
+            <PreSize X="0.0000" Y="0.0000" />
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>

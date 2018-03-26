@@ -68,8 +68,15 @@ namespace engine
 		ui::Text * fireNumTXT;// : TextField;
 		ui::Text * stoneNumTXT;//public var stoneNumTXT : TextField;
 		ui::Text * getAllNumTXT; // public var getAllNumTXT : TextField;
-        ui::Button * pause; //public var pause : MovieClip;
         
+        ui::Text * firePrice;
+        ui::Text * icePrice;
+        ui::Text *  stonePrice;
+        ui::Text *  levinPrice;
+        ui::Text *  getAllPrice;
+
+
+        ui::Button * pause; //public var pause : MovieClip;
         Sprite * startbtnback;
         ui::Button * startWaves;// public var startWaves : MovieClip;
 
