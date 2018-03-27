@@ -1,0 +1,123 @@
+<Solution>
+  <PropertyGroup Name="brave" Version="3.10.0.0" Type="CocosStudio" />
+  <SolutionFolder>
+    <Group ctype="ResourceGroup">
+      <RootFolder Name=".">
+        <Folder Name="public">
+          <Folder Name="flag">
+            <File Name="skeleton.xml" />
+            <Image Name="texture.png" />
+            <File Name="texture.xml" />
+          </Folder>
+          <Image Name="place_off.png" />
+          <Image Name="place_on.png" />
+          <Image Name="point.png" />
+          <Image Name="point2.png" />
+        </Folder>
+        <Folder Name="worldinterface">
+          <Folder Name="barinfo">
+            <Image Name="barinfoback.png" />
+            <Image Name="barinfobacksingle.png" />
+            <Image Name="firebar.png" />
+            <Image Name="healthbar.png" />
+            <Image Name="icebar.png" />
+            <Image Name="levinbar.png" />
+            <Image Name="moneybar.png" />
+            <Image Name="penaltybar.png" />
+            <Image Name="speedbar.png" />
+            <Image Name="stonebar.png" />
+          </Folder>
+          <Folder Name="btncastback">
+            <Image Name="btncastback.png" />
+            <Image Name="btncastend.png" />
+            <Image Name="butCastAir.png" />
+            <Image Name="butCastGolem.png" />
+            <Image Name="butCastIceman.png" />
+          </Folder>
+          <Folder Name="level">
+            <Image Name="level1.png" />
+          </Folder>
+          <Folder Name="sphere">
+            <Folder Name="firebacked">
+              <File Name="skeleton.xml" />
+              <Image Name="texture.png" />
+              <File Name="texture.xml" />
+            </Folder>
+            <Folder Name="firesphere">
+              <File Name="skeleton.xml" />
+              <Image Name="texture.png" />
+              <File Name="texture.xml" />
+            </Folder>
+            <Folder Name="icebacked">
+              <File Name="skeleton.xml" />
+              <Image Name="texture.png" />
+              <File Name="texture.xml" />
+            </Folder>
+            <Folder Name="icesphere">
+              <File Name="skeleton.xml" />
+              <Image Name="texture.png" />
+              <File Name="texture.xml" />
+            </Folder>
+            <Folder Name="levinbacked">
+              <File Name="skeleton.xml" />
+              <Image Name="texture.png" />
+              <File Name="texture.xml" />
+            </Folder>
+            <Folder Name="levinsphere">
+              <File Name="skeleton.xml" />
+              <Image Name="texture.png" />
+              <File Name="texture.xml" />
+            </Folder>
+            <Folder Name="spherelight">
+              <File Name="skeleton.xml" />
+              <Image Name="texture.png" />
+              <File Name="texture.xml" />
+            </Folder>
+            <Folder Name="stonebacked">
+              <File Name="skeleton.xml" />
+              <Image Name="texture.png" />
+              <File Name="texture.xml" />
+            </Folder>
+            <Folder Name="stonesphere">
+              <File Name="skeleton.xml" />
+              <Image Name="texture.png" />
+              <File Name="texture.xml" />
+            </Folder>
+            <Image Name="allSphere.png" />
+            <Image Name="allSphereback.png" />
+            <Image Name="allSphered.png" />
+            <Image Name="backSphere.png" />
+            <Image Name="buypricebar.png" />
+            <Image Name="fireBack.png" />
+            <Image Name="fireSphere.png" />
+            <Image Name="iceBack.png" />
+            <Image Name="iceSphere.png" />
+            <Image Name="levinBack.png" />
+            <Image Name="levinbacked.png" />
+            <Image Name="levinSphere.png" />
+            <Image Name="stoneBack.png" />
+            <Image Name="stoneSphere.png" />
+          </Folder>
+          <Folder Name="startbtn">
+            <Folder Name="fasterbtn">
+              <File Name="skeleton.xml" />
+              <Image Name="texture.png" />
+              <File Name="texture.xml" />
+            </Folder>
+            <Image Name="book.png" />
+            <Image Name="booked.png" />
+            <Image Name="fastbtned.png" />
+            <Image Name="fasterbtn.png" />
+            <Image Name="pause.png" />
+            <Image Name="paused.png" />
+            <Image Name="startbtnback.png" />
+            <Image Name="startWavesoff.png" />
+            <Image Name="startWaveson.png" />
+          </Folder>
+        </Folder>
+        <Project Name="level1.csd" Type="Node" />
+        <Project Name="worldinterface.csd" Type="Node" />
+      </RootFolder>
+    </Group>
+  </SolutionFolder>
+</Solution>
