@@ -60,9 +60,9 @@ namespace engine
 		void update();
         void clickHandler(Ref* ref);
         
-		void mouseMoveHandler(cocos2d::Event* param1);
-		void mouseDownHandler(cocos2d::Event *event);
-		void mouseUpHandler(cocos2d::Event* event);
+        void mouseMoveHandler(cocos2d::Event* param1);
+        void mouseDownHandler(cocos2d::Event *event);
+        void mouseUpHandler(cocos2d::Event* event);
         bool onTouchBegan(Touch *touch, Event *unused_event);
         void onTouchEnded(Touch *touch, Event *unused_event);
         void onTouchCancelled(Touch *touch, Event *unused_event);

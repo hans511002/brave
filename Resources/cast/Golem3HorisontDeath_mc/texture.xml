@@ -1,0 +1,31 @@
+<TextureAtlas name="Golem3HorisontDeath_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 1838" x="560" y="0" width="138" height="119"/>
+ <SubTexture name="Shape/shape 1840" x="700" y="121" width="138" height="119"/>
+ <SubTexture name="Shape/shape 1842" x="280" y="121" width="138" height="119"/>
+ <SubTexture name="Shape/shape 1844" x="0" y="121" width="138" height="119"/>
+ <SubTexture name="Shape/shape 1846" x="420" y="0" width="138" height="119"/>
+ <SubTexture name="Shape/shape 1848" x="700" y="363" width="138" height="119"/>
+ <SubTexture name="Shape/shape 1850" x="840" y="242" width="138" height="119"/>
+ <SubTexture name="Shape/shape 1852" x="140" y="121" width="138" height="119"/>
+ <SubTexture name="Shape/shape 1854" x="420" y="363" width="138" height="119"/>
+ <SubTexture name="Shape/shape 1856" x="840" y="121" width="138" height="119"/>
+ <SubTexture name="Shape/shape 1858" x="280" y="0" width="138" height="119"/>
+ <SubTexture name="Shape/shape 1860" x="840" y="363" width="138" height="119"/>
+ <SubTexture name="Shape/shape 1862" x="280" y="242" width="138" height="119"/>
+ <SubTexture name="Shape/shape 1864" x="0" y="242" width="138" height="119"/>
+ <SubTexture name="Shape/shape 1866" x="0" y="0" width="138" height="119"/>
+ <SubTexture name="Shape/shape 1868" x="700" y="0" width="138" height="119"/>
+ <SubTexture name="Shape/shape 1870" x="140" y="242" width="138" height="119"/>
+ <SubTexture name="Shape/shape 1872" x="0" y="363" width="138" height="119"/>
+ <SubTexture name="Shape/shape 1874" x="140" y="363" width="138" height="119"/>
+ <SubTexture name="Shape/shape 1876" x="700" y="242" width="138" height="119"/>
+ <SubTexture name="Shape/shape 1878" x="280" y="363" width="138" height="119"/>
+ <SubTexture name="Shape/shape 1880" x="420" y="121" width="138" height="119"/>
+ <SubTexture name="Shape/shape 1882" x="0" y="484" width="138" height="119"/>
+ <SubTexture name="Shape/shape 1884" x="140" y="0" width="138" height="119"/>
+ <SubTexture name="Shape/shape 1886" x="560" y="121" width="138" height="119"/>
+ <SubTexture name="Shape/shape 1888" x="420" y="242" width="138" height="119"/>
+ <SubTexture name="Shape/shape 1890" x="560" y="363" width="138" height="119"/>
+ <SubTexture name="Shape/shape 1892" x="840" y="0" width="138" height="119"/>
+ <SubTexture name="Shape/shape 1894" x="560" y="242" width="138" height="119"/>
+</TextureAtlas>

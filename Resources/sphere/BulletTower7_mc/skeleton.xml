@@ -1,0 +1,125 @@
+<dragonBones name="1yrt" frameRate="30" version="2.3">
+ <armature name="BulletTower7_mc">
+  <bone name="Layer 1">
+   <transform x="0.4" y="-3.15" skX="0" skY="0" scX="0.85" scY="0.85"/>
+  </bone>
+  <bone name="Layer 3">
+   <transform x="0.4" y="-0.6" skX="180" skY="180" scX="0.85" scY="0.85"/>
+  </bone>
+  <skin name="default">
+   <slot name="Layer 1" parent="Layer 1" z="0">
+    <display name="Sprite/sprite 8437" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="30" pY="21"/>
+    </display>
+    <display name="Shape/shape 8482" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="55" pY="59"/>
+    </display>
+    <display name="Shape/shape 8484" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="55" pY="59"/>
+    </display>
+    <display name="Shape/shape 8486" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="55" pY="59"/>
+    </display>
+    <display name="Shape/shape 8488" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="55" pY="59"/>
+    </display>
+    <display name="Shape/shape 8489" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="55" pY="59"/>
+    </display>
+    <display name="Shape/shape 8491" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="55" pY="59"/>
+    </display>
+    <display name="Shape/shape 8492" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="55" pY="59"/>
+    </display>
+    <display name="Shape/shape 8494" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="55" pY="59"/>
+    </display>
+    <display name="Shape/shape 8495" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="55" pY="59"/>
+    </display>
+    <display name="Shape/shape 8497" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="55" pY="59"/>
+    </display>
+    <display name="Shape/shape 8498" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="55" pY="59"/>
+    </display>
+    <display name="Shape/shape 8500" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="55" pY="59"/>
+    </display>
+    <display name="Shape/shape 8501" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="55" pY="59"/>
+    </display>
+    <display name="Shape/shape 8503" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1"/>
+    </display>
+    <display name="Shape/shape 8504" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1"/>
+    </display>
+   </slot>
+   <slot name="Layer 3" parent="Layer 3" z="1">
+    <display name="Sprite/sprite 8480" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1"/>
+    </display>
+   </slot>
+  </skin>
+  <animation name="BulletTower7_mc" fadeInTime="0.3" duration="16" scale="1" loop="1" autoTween="1" tweenEasing="NaN">
+   <timeline name="Layer 1" scale="1" offset="0">
+    <frame z="0" duration="1">
+     <transform x="0.4" y="-3.15" skX="0" skY="0" scX="0.85" scY="0.85" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="1" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="2" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="3" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="4" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="5" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="6" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="7" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="8" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="9" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="10" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="11" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="12" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="13" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="14" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="15" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+   </timeline>
+   <timeline name="Layer 3" scale="1" offset="0">
+    <frame z="1" duration="1">
+     <transform x="0.4" y="-0.6" skX="180" skY="180" scX="0.85" scY="0.85" pX="0" pY="0"/>
+    </frame>
+    <frame duration="15" displayIndex="-1"/>
+   </timeline>
+  </animation>
+ </armature>
+</dragonBones>

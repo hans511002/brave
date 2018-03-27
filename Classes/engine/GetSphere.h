@@ -1,22 +1,28 @@
 ﻿#ifndef GETSPHERE_H
 #define GETSPHERE_H
 #include "BaseNode.h"
-#include "World.h"
 #include "MainClass.h"
 
 namespace engine
 {
-    class GetSphere_mc :public BaseNode{
+    class World;
+    struct GetSphere_mc :public BaseNode{
         cocos2d::Node* cont;
         cocos2d::Node* sphere1;
         cocos2d::Node* sphere2;
         cocos2d::Node* sphere3;
         cocos2d::Node* sphere4;
     };
+    struct GetAll_mc :public BaseNode
+    {
+        ui::Text * t;
+        Node * cross;
+        dragonBones::DBCCArmatureNode * cont;
+    };
     class GetSphere :public BaseNode
     {
     public:
-        int i ,j;
+        int i, j;
         //public var tempObject:Object;
         //public var tempObject1:Object;
         GetSphere_mc *container;//public var container:MovieClip;
@@ -33,41 +39,41 @@ namespace engine
         int levinCount;
         int getAllCount;
         Common::Array<>   listOfStack;// Array;
-        World * world ;
+        World * world;
         bool dead;
         int speedFrame;
-        float speedX, speedY; 
+        float speedX, speedY;
 
-        //public var arrow:Arrow_mc;
-        //public var towerArrow:Arrow_mc;
+        Sprite *  arrow;//public var arrow:Arrow_mc;
+        Sprite *  towerArrow;//public var towerArrow:Arrow_mc;
         string type;
         //public var containerChange:MovieClip;
 
-            GetSphere(string param1= "holder");
+        GetSphere(string param1 = "holder");
 
         bool init();
 
-        void  update() ;
+        void  update();
 
-        void  mouseMoveHandler(param1);
+        void  mouseMoveHandler(cocos2d::Event* param1);
 
-        void   mouseDownHandler(param1);
+        void   mouseDownHandler(cocos2d::Event* param1);
 
-        void mouseUpHandler(param1) ;
+        void mouseUpHandler(cocos2d::Event* param1);
 
-        void retrieveGetSphereToArchive() ;
+        void retrieveGetSphereToArchive();
 
-        void manage(string param1,string param2 = "") ;
+        void manage(string param1, string param2 = "");
 
-        void retrieveGetSphere() ;
+        void retrieveGetSphere();
 
-        void getSphereFromArchiveToTower() ;
+        void getSphereFromArchiveToTower();
 
         void monitor();
 
-        void kill() ;  
+        void kill();
 
-    }
+    };
 }
 #endif
 

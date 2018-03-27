@@ -1,0 +1,17 @@
+<TextureAtlas name="BulletTower51_1_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 10396" x="28" y="46" width="26" height="44"/>
+ <SubTexture name="Shape/shape 10398" x="56" y="46" width="26" height="44"/>
+ <SubTexture name="Shape/shape 10400" x="28" y="0" width="26" height="44"/>
+ <SubTexture name="Shape/shape 10402" x="84" y="0" width="26" height="44"/>
+ <SubTexture name="Shape/shape 10404" x="0" y="0" width="26" height="44"/>
+ <SubTexture name="Shape/shape 10406" x="56" y="0" width="26" height="44"/>
+ <SubTexture name="Shape/shape 10408" x="0" y="46" width="26" height="44"/>
+ <SubTexture name="Shape/shape 10410" x="84" y="68" width="19" height="20"/>
+ <SubTexture name="Shape/shape 10412" x="84" y="90" width="19" height="20"/>
+ <SubTexture name="Shape/shape 10414" x="105" y="90" width="19" height="20"/>
+ <SubTexture name="Shape/shape 10416" x="21" y="92" width="19" height="20"/>
+ <SubTexture name="Shape/shape 10418" x="105" y="68" width="19" height="20"/>
+ <SubTexture name="Shape/shape 10420" x="84" y="46" width="19" height="20"/>
+ <SubTexture name="Shape/shape 10422" x="0" y="92" width="19" height="20"/>
+ <SubTexture name="Shape/shape 10424" x="105" y="46" width="19" height="20"/>
+</TextureAtlas>

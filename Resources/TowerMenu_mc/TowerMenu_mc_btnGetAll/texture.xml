@@ -1,0 +1,28 @@
+<TextureAtlas name="TowerMenu_mc_btnGetAll" imagePath="texture.png">
+ <SubTexture name="Shape/shape 11081" x="102" y="68" width="32" height="32"/>
+ <SubTexture name="Shape/shape 11083" x="68" y="0" width="32" height="32"/>
+ <SubTexture name="Shape/shape 11085" x="102" y="34" width="32" height="32"/>
+ <SubTexture name="Shape/shape 11087" x="204" y="68" width="32" height="32"/>
+ <SubTexture name="Shape/shape 11089" x="102" y="0" width="32" height="32"/>
+ <SubTexture name="Shape/shape 11091" x="136" y="34" width="32" height="32"/>
+ <SubTexture name="Shape/shape 11093" x="0" y="34" width="32" height="32"/>
+ <SubTexture name="Shape/shape 11095" x="136" y="102" width="32" height="32"/>
+ <SubTexture name="Shape/shape 11097" x="204" y="34" width="32" height="32"/>
+ <SubTexture name="Shape/shape 11099" x="34" y="34" width="32" height="32"/>
+ <SubTexture name="Shape/shape 11101" x="68" y="102" width="32" height="32"/>
+ <SubTexture name="Shape/shape 11103" x="0" y="102" width="32" height="32"/>
+ <SubTexture name="Shape/shape 11105" x="34" y="102" width="32" height="32"/>
+ <SubTexture name="Shape/shape 11107" x="136" y="0" width="32" height="32"/>
+ <SubTexture name="Shape/shape 11109" x="0" y="68" width="32" height="32"/>
+ <SubTexture name="Shape/shape 11111" x="136" y="68" width="32" height="32"/>
+ <SubTexture name="Shape/shape 11113" x="34" y="0" width="32" height="32"/>
+ <SubTexture name="Shape/shape 11115" x="34" y="68" width="32" height="32"/>
+ <SubTexture name="Shape/shape 11117" x="204" y="0" width="32" height="32"/>
+ <SubTexture name="Shape/shape 11119" x="0" y="0" width="32" height="32"/>
+ <SubTexture name="Shape/shape 11121" x="68" y="68" width="32" height="32"/>
+ <SubTexture name="Shape/shape 11123" x="170" y="0" width="32" height="32"/>
+ <SubTexture name="Shape/shape 11125" x="102" y="102" width="32" height="32"/>
+ <SubTexture name="Shape/shape 11127" x="68" y="34" width="32" height="32"/>
+ <SubTexture name="Shape/shape 11129" x="170" y="68" width="32" height="32"/>
+ <SubTexture name="Shape/shape 11131" x="170" y="34" width="32" height="32"/>
+</TextureAtlas>

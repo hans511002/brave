@@ -1,0 +1,20 @@
+<TextureAtlas name="CastFireStone_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 6902" x="0" y="0" width="126" height="126"/>
+ <SubTexture name="Shape/shape 6904" x="768" y="0" width="126" height="126"/>
+ <SubTexture name="Shape/shape 6906" x="768" y="128" width="126" height="126"/>
+ <SubTexture name="Shape/shape 6908" x="128" y="128" width="126" height="126"/>
+ <SubTexture name="Shape/shape 6910" x="256" y="0" width="126" height="126"/>
+ <SubTexture name="Shape/shape 6912" x="0" y="128" width="126" height="126"/>
+ <SubTexture name="Shape/shape 6914" x="128" y="0" width="126" height="126"/>
+ <SubTexture name="Shape/shape 6916" x="256" y="128" width="126" height="126"/>
+ <SubTexture name="Shape/shape 6918" x="640" y="128" width="126" height="126"/>
+ <SubTexture name="Shape/shape 6920" x="512" y="0" width="126" height="126"/>
+ <SubTexture name="Shape/shape 6922" x="128" y="256" width="126" height="126"/>
+ <SubTexture name="Shape/shape 6924" x="640" y="0" width="126" height="126"/>
+ <SubTexture name="Shape/shape 6926" x="896" y="0" width="126" height="126"/>
+ <SubTexture name="Shape/shape 6928" x="512" y="128" width="126" height="126"/>
+ <SubTexture name="Shape/shape 6930" x="0" y="256" width="126" height="126"/>
+ <SubTexture name="Shape/shape 6932" x="384" y="0" width="126" height="126"/>
+ <SubTexture name="Shape/shape 6934" x="384" y="128" width="126" height="126"/>
+ <SubTexture name="Shape/shape 6936" x="896" y="128" width="126" height="126"/>
+</TextureAtlas>

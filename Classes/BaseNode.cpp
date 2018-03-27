@@ -103,6 +103,11 @@ void BaseLayer::mouseDownHandler(cocos2d::Event *event)//(event:MouseEvent) : vo
 	const auto& stageSize = cocos2d::Director::getInstance()->getVisibleSize();
 	return stageSize.height;
 }
+  dragonBones::DBCCArmatureNode * BaseFuns::loadAni(string rootPath,string aniName){
+      dragonBones::DBCCFactory::getInstance()->loadDragonBonesData(rootPath + aniName + "/skeleton.xml", aniName);
+      dragonBones::DBCCFactory::getInstance()->loadTextureAtlas(rootPath + aniName + "/texture.xml", aniName);
+      return dragonBones::DBCCFactory::getInstance()->buildArmatureNode(aniName);
+  };
 
   bool BaseNode::hitTest(Node * node, const Vec2 &pt)
   {

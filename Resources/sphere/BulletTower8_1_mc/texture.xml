@@ -1,0 +1,20 @@
+<TextureAtlas name="1yrt" imagePath="texture.png">
+ <SubTexture name="Shape/shape 10346" x="199" y="719" width="197" height="717"/>
+ <SubTexture name="Shape/shape 10348" x="597" y="0" width="197" height="717"/>
+ <SubTexture name="Shape/shape 10350" x="796" y="0" width="197" height="717"/>
+ <SubTexture name="Shape/shape 10352" x="398" y="719" width="197" height="717"/>
+ <SubTexture name="Shape/shape 10354" x="995" y="0" width="197" height="717"/>
+ <SubTexture name="Shape/shape 10356" x="1393" y="0" width="197" height="717"/>
+ <SubTexture name="Shape/shape 10358" x="0" y="0" width="197" height="717"/>
+ <SubTexture name="Shape/shape 10360" x="1791" y="0" width="197" height="717"/>
+ <SubTexture name="Shape/shape 10362" x="0" y="719" width="197" height="717"/>
+ <SubTexture name="Shape/shape 10364" x="398" y="0" width="197" height="717"/>
+ <SubTexture name="Shape/shape 10366" x="796" y="719" width="197" height="717"/>
+ <SubTexture name="Shape/shape 10368" x="199" y="0" width="197" height="717"/>
+ <SubTexture name="Shape/shape 10370" x="1271" y="719" width="136" height="98"/>
+ <SubTexture name="Shape/shape 10372" x="1133" y="719" width="136" height="98"/>
+ <SubTexture name="Shape/shape 10389" x="995" y="719" width="136" height="98"/>
+ <SubTexture name="Shape/shape 10391" x="1592" y="0" width="197" height="717"/>
+ <SubTexture name="Shape/shape 10393" x="1194" y="0" width="197" height="717"/>
+ <SubTexture name="Shape/shape 10375" x="597" y="719" width="197" height="717"/>
+</TextureAtlas>

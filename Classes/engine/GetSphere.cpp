@@ -21,27 +21,28 @@ namespace engine
         if (this->type == "holder")
         {
             this->container = new GetSphere_mc();
-            this->container.stop();
-            this->container.cont.stop();
-            this->container.sphere1.stop();
-            this->container.sphere2.stop();
-            this->container.sphere3.stop();
-            this->container.sphere4.stop();
-            this->container.sphere1.cont.stop();
-            this->container.sphere2.cont.stop();
-            this->container.sphere3.cont.stop();
-            this->container.sphere4.cont.stop();
-            this->container.sphere1.visible = false;
-            this->container.sphere2.visible = false;
-            this->container.sphere3.visible = false;
-            this->container.sphere4.visible = false;
+            //this->container->stop();
+            //this->container->cont.stop();
+            //this->container->sphere1.stop();
+            //this->container->sphere2.stop();
+            //this->container->sphere3.stop();
+            //this->container->sphere4.stop();
+            //this->container->sphere1.cont.stop();
+            //this->container->sphere2.cont.stop();
+            //this->container->sphere3.cont.stop();
+            //this->container->sphere4.cont.stop();
+
+            //this->container->sphere1->setVisible(false);
+            //this->container->sphere2->setVisible(false);
+            //this->container->sphere3->setVisible(false);
+            //this->container->sphere4->setVisible(false);
         }
         else if (this->type == "getAll")
         {
             this->container = new GetAll_mc();
-            this->container.stop();
-            this->container.cross.stop();
-            this->container.cross.visible = false;
+            //this->container->stop();
+            //this->container->cross.stop();
+            this->container->cross->setVisible(false);
         }
         this->addChild(this->container);
         this->world.worldInterface.castRegime("on");
@@ -49,7 +50,7 @@ namespace engine
         this->arrow.stop();
         this->arrow.scaleY = -1;
         this->arrow.y = this->arrow.y - 30;
-        this->arrow.visible = false;
+        this->arrow->setVisible(false);
         this->addChild(this->arrow);
         if (this->world.towerMenu)
         {
@@ -109,69 +110,69 @@ namespace engine
         {
             if (this->container is GetSphere_mc)
             {
-                if (this->container.sphere1.visible)
+                if (this->container->sphere1.visible)
                 {
-                    if (this->container.sphere1.cont.currentFrame < this->container.sphere1.cont.totalFrames)
+                    if (this->container->sphere1.cont.currentFrame < this->container->sphere1.cont.totalFrames)
                     {
-                        this->container.sphere1.cont.gotoAndStop((this->container.sphere1.cont.currentFrame + 1));
+                        this->container->sphere1.cont.gotoAndStop((this->container->sphere1.cont.currentFrame + 1));
                     }
                     else
                     {
-                        this->container.sphere1.cont.gotoAndStop(1);
+                        this->container->sphere1.cont.gotoAndStop(1);
                     }
                 }
-                if (this->container.sphere2.visible)
+                if (this->container->sphere2.visible)
                 {
-                    if (this->container.sphere2.cont.currentFrame < this->container.sphere2.cont.totalFrames)
+                    if (this->container->sphere2.cont.currentFrame < this->container->sphere2.cont.totalFrames)
                     {
-                        this->container.sphere2.cont.gotoAndStop((this->container.sphere2.cont.currentFrame + 1));
+                        this->container->sphere2.cont.gotoAndStop((this->container->sphere2.cont.currentFrame + 1));
                     }
                     else
                     {
-                        this->container.sphere2.cont.gotoAndStop(1);
+                        this->container->sphere2.cont.gotoAndStop(1);
                     }
                 }
-                if (this->container.sphere3.visible)
+                if (this->container->sphere3.visible)
                 {
-                    if (this->container.sphere3.cont.currentFrame < this->container.sphere3.cont.totalFrames)
+                    if (this->container->sphere3.cont.currentFrame < this->container->sphere3.cont.totalFrames)
                     {
-                        this->container.sphere3.cont.gotoAndStop((this->container.sphere3.cont.currentFrame + 1));
+                        this->container->sphere3.cont.gotoAndStop((this->container->sphere3.cont.currentFrame + 1));
                     }
                     else
                     {
-                        this->container.sphere3.cont.gotoAndStop(1);
+                        this->container->sphere3.cont.gotoAndStop(1);
                     }
                 }
-                if (this->container.sphere4.visible)
+                if (this->container->sphere4.visible)
                 {
-                    if (this->container.sphere4.cont.currentFrame < this->container.sphere4.cont.totalFrames)
+                    if (this->container->sphere4.cont.currentFrame < this->container->sphere4.cont.totalFrames)
                     {
-                        this->container.sphere4.cont.gotoAndStop((this->container.sphere4.cont.currentFrame + 1));
+                        this->container->sphere4.cont.gotoAndStop((this->container->sphere4.cont.currentFrame + 1));
                     }
                     else
                     {
-                        this->container.sphere4.cont.gotoAndStop(1);
+                        this->container->sphere4.cont.gotoAndStop(1);
                     }
                 }
             }
-            else if (this->container.cont.currentFrame < this->container.cont.totalFrames)
+            else if (this->container->cont.currentFrame < this->container->cont.totalFrames)
             {
-                this->container.cont.gotoAndStop((this->container.cont.currentFrame + 1));
+                this->container->cont.gotoAndStop((this->container->cont.currentFrame + 1));
             }
             else
             {
-                this->container.cont.gotoAndStop(1);
+                this->container->cont.gotoAndStop(1);
             }
         }
         else if (this->type == "getAll")
         {
-            if (this->container.currentFrame < this->container.totalFrames)
+            if (this->container->currentFrame < this->container->totalFrames)
             {
-                this->container.gotoAndStop((this->container.currentFrame + 1));
+                this->container->gotoAndStop((this->container->currentFrame + 1));
             }
             else
             {
-                this->container.gotoAndStop(1);
+                this->container->gotoAndStop(1);
             }
         }
         if (this->arrow.visible)
@@ -201,13 +202,13 @@ namespace engine
             if (this->containerChange.alpha > 0)
             {
                 this->containerChange.alpha = this->containerChange.alpha - 0.1;
-                this->container.alpha = this->container.alpha + 0.1;
+                this->container->alpha = this->container->alpha + 0.1;
             }
             else
             {
                 this->removeChild(this->containerChange);
                 this->containerChange = null;
-                this->container.alpha = 1;
+                this->container->alpha = 1;
             }
         }
         if (this->world.getSphere == this)
@@ -233,7 +234,7 @@ namespace engine
         }
         return;
     }// end function
-    void  GetSphere::mouseMoveHandler(param1)
+    void  GetSphere::mouseMoveHandler(cocos2d::Event* param1)
     {
         if (param1.target.name == "fireCase")
         {
@@ -383,8 +384,8 @@ namespace engine
         {
             if (this->radius.visible)
             {
-                this->radius.visible = false;
-                this->arrow.visible = false;
+                this->radius->setVisible(false);
+                this->arrow->setVisible(false);
             }
             if (param1.target.name == "towerCase")
             {
@@ -402,9 +403,9 @@ namespace engine
                             this->towerArrow.mouseEnabled = _loc_2;
                             this->towerArrow.myTower.addChild(this->towerArrow);
                         }
-                        if (this->container.currentFrame == 2)
+                        if (this->container->currentFrame == 2)
                         {
-                            this->container.gotoAndStop(1);
+                            this->container->gotoAndStop(1);
                         }
                     }
                     else
@@ -414,9 +415,9 @@ namespace engine
                             this->towerArrow.myTower.removeChild(this->towerArrow);
                             this->towerArrow = null;
                         }
-                        if (this->container.currentFrame == 1)
+                        if (this->container->currentFrame == 1)
                         {
-                            this->container.gotoAndStop(2);
+                            this->container->gotoAndStop(2);
                         }
                     }
                 }
@@ -434,9 +435,9 @@ namespace engine
                             this->towerArrow.mouseEnabled = _loc_2;
                             this->towerArrow.myTower.addChild(this->towerArrow);
                         }
-                        if (this->container.cross.visible)
+                        if (this->container->cross.visible)
                         {
-                            this->container.cross.visible = false;
+                            this->container->cross->setVisible(false);
                         }
                     }
                     else
@@ -446,9 +447,9 @@ namespace engine
                             this->towerArrow.myTower.removeChild(this->towerArrow);
                             this->towerArrow = null;
                         }
-                        if (this->container.cross.visible)
+                        if (this->container->cross.visible)
                         {
-                            this->container.cross.visible = true;
+                            this->container->cross.visible = true;
                         }
                     }
                 }
@@ -463,16 +464,16 @@ namespace engine
             }
             if (this->type == "holder")
             {
-                if (this->container.currentFrame == 2)
+                if (this->container->currentFrame == 2)
                 {
-                    this->container.gotoAndStop(1);
+                    this->container->gotoAndStop(1);
                 }
             }
             else if (this->type == "getAll")
             {
-                if (this->container.cross.visible)
+                if (this->container->cross.visible)
                 {
-                    this->container.cross.visible = false;
+                    this->container->cross->setVisible(false);
                 }
             }
             if (!this->world.towerMenu && !this->world.ultraTowerMenu)
@@ -514,9 +515,9 @@ namespace engine
                             this->radius.cont1.stop();
                             this->radius.cont2.stop();
                             this->radius.cont3.stop();
-                            this->radius.cont1.visible = false;
-                            this->radius.cont2.visible = false;
-                            this->radius.cont3.visible = false;
+                            this->radius.cont1->setVisible(false);
+                            this->radius.cont2->setVisible(false);
+                            this->radius.cont3->setVisible(false);
                         }
                         else
                         {
@@ -529,7 +530,7 @@ namespace engine
                             }
                             else
                             {
-                                this->radius.cont1.visible = false;
+                                this->radius.cont1->setVisible(false);
                             }
                             if (this->getAllCount > 1)
                             {
@@ -537,7 +538,7 @@ namespace engine
                             }
                             else
                             {
-                                this->radius.cont2.visible = false;
+                                this->radius.cont2->setVisible(false);
                             }
                             if (this->getAllCount > 2)
                             {
@@ -545,7 +546,7 @@ namespace engine
                             }
                             else
                             {
-                                this->radius.cont3.visible = false;
+                                this->radius.cont3->setVisible(false);
                             }
                         }
                     }
@@ -563,9 +564,9 @@ namespace engine
                         this->radius.cont1.stop();
                         this->radius.cont2.stop();
                         this->radius.cont3.stop();
-                        this->radius.cont1.visible = false;
-                        this->radius.cont2.visible = false;
-                        this->radius.cont3.visible = false;
+                        this->radius.cont1->setVisible(false);
+                        this->radius.cont2->setVisible(false);
+                        this->radius.cont3->setVisible(false);
                     }
                     else
                     {
@@ -578,7 +579,7 @@ namespace engine
                         }
                         else
                         {
-                            this->radius.cont1.visible = false;
+                            this->radius.cont1->setVisible(false);
                         }
                         if (this->getAllCount > 1)
                         {
@@ -586,7 +587,7 @@ namespace engine
                         }
                         else
                         {
-                            this->radius.cont2.visible = false;
+                            this->radius.cont2->setVisible(false);
                         }
                         if (this->getAllCount > 2)
                         {
@@ -594,7 +595,7 @@ namespace engine
                         }
                         else
                         {
-                            this->radius.cont3.visible = false;
+                            this->radius.cont3->setVisible(false);
                         }
                     }
                 }
@@ -656,7 +657,7 @@ namespace engine
         return;
     }// end function
 
-    void GetSphere::mouseDownHandler(param1)
+    void GetSphere::mouseDownHandler(cocos2d::Event* param1)
     {
         if (param1.target.name == "sellCase")
         {
@@ -699,10 +700,10 @@ namespace engine
             this->tempObject = param1.target.parent.parent;
             if (this->type == "holder")
             {
-                this->container.sphere1.visible = false;
-                this->container.sphere2.visible = false;
-                this->container.sphere3.visible = false;
-                this->container.sphere4.visible = false;
+                this->container->sphere1->setVisible(false);
+                this->container->sphere2->setVisible(false);
+                this->container->sphere3->setVisible(false);
+                this->container->sphere4->setVisible(false);
                 this->i = 0;
                 while (this->i < this->listOfStack.length)
                 {
@@ -942,7 +943,7 @@ namespace engine
         }
         return;
     }// end function
-    void GetSphere::mouseUpHandler(param1) 
+    void GetSphere::mouseUpHandler(cocos2d::Event* param1)
     {
         return;
     }// end function
@@ -991,27 +992,27 @@ namespace engine
                     {
                         if (this->listOfStack.length == 1)
                         {
-                            this->container.sphere1.gotoAndStop(1);
-                            this->container.sphere1.cont.stop();
-                            this->container.sphere1.visible = true;
+                            this->container->sphere1.gotoAndStop(1);
+                            this->container->sphere1.cont.stop();
+                            this->container->sphere1.visible = true;
                         }
                         else if (this->listOfStack.length == 2)
                         {
-                            this->container.sphere2.gotoAndStop(1);
-                            this->container.sphere2.cont.stop();
-                            this->container.sphere2.visible = true;
+                            this->container->sphere2.gotoAndStop(1);
+                            this->container->sphere2.cont.stop();
+                            this->container->sphere2.visible = true;
                         }
                         else if (this->listOfStack.length == 3)
                         {
-                            this->container.sphere3.gotoAndStop(1);
-                            this->container.sphere3.cont.stop();
-                            this->container.sphere3.visible = true;
+                            this->container->sphere3.gotoAndStop(1);
+                            this->container->sphere3.cont.stop();
+                            this->container->sphere3.visible = true;
                         }
                         else if (this->listOfStack.length == 4)
                         {
-                            this->container.sphere4.gotoAndStop(1);
-                            this->container.sphere4.cont.stop();
-                            this->container.sphere4.visible = true;
+                            this->container->sphere4.gotoAndStop(1);
+                            this->container->sphere4.cont.stop();
+                            this->container->sphere4.visible = true;
                         }
                         (this->fireCount + 1);
                     }
@@ -1019,27 +1020,27 @@ namespace engine
                     {
                         if (this->listOfStack.length == 1)
                         {
-                            this->container.sphere1.gotoAndStop(2);
-                            this->container.sphere1.cont.stop();
-                            this->container.sphere1.visible = true;
+                            this->container->sphere1.gotoAndStop(2);
+                            this->container->sphere1.cont.stop();
+                            this->container->sphere1.visible = true;
                         }
                         else if (this->listOfStack.length == 2)
                         {
-                            this->container.sphere2.gotoAndStop(2);
-                            this->container.sphere2.cont.stop();
-                            this->container.sphere2.visible = true;
+                            this->container->sphere2.gotoAndStop(2);
+                            this->container->sphere2.cont.stop();
+                            this->container->sphere2.visible = true;
                         }
                         else if (this->listOfStack.length == 3)
                         {
-                            this->container.sphere3.gotoAndStop(2);
-                            this->container.sphere3.cont.stop();
-                            this->container.sphere3.visible = true;
+                            this->container->sphere3.gotoAndStop(2);
+                            this->container->sphere3.cont.stop();
+                            this->container->sphere3.visible = true;
                         }
                         else if (this->listOfStack.length == 4)
                         {
-                            this->container.sphere4.gotoAndStop(2);
-                            this->container.sphere4.cont.stop();
-                            this->container.sphere4.visible = true;
+                            this->container->sphere4.gotoAndStop(2);
+                            this->container->sphere4.cont.stop();
+                            this->container->sphere4.visible = true;
                         }
                         (this->iceCount + 1);
                     }
@@ -1047,27 +1048,27 @@ namespace engine
                     {
                         if (this->listOfStack.length == 1)
                         {
-                            this->container.sphere1.gotoAndStop(3);
-                            this->container.sphere1.cont.stop();
-                            this->container.sphere1.visible = true;
+                            this->container->sphere1.gotoAndStop(3);
+                            this->container->sphere1.cont.stop();
+                            this->container->sphere1.visible = true;
                         }
                         else if (this->listOfStack.length == 2)
                         {
-                            this->container.sphere2.gotoAndStop(3);
-                            this->container.sphere2.cont.stop();
-                            this->container.sphere2.visible = true;
+                            this->container->sphere2.gotoAndStop(3);
+                            this->container->sphere2.cont.stop();
+                            this->container->sphere2.visible = true;
                         }
                         else if (this->listOfStack.length == 3)
                         {
-                            this->container.sphere3.gotoAndStop(3);
-                            this->container.sphere3.cont.stop();
-                            this->container.sphere3.visible = true;
+                            this->container->sphere3.gotoAndStop(3);
+                            this->container->sphere3.cont.stop();
+                            this->container->sphere3.visible = true;
                         }
                         else if (this->listOfStack.length == 4)
                         {
-                            this->container.sphere4.gotoAndStop(3);
-                            this->container.sphere4.cont.stop();
-                            this->container.sphere4.visible = true;
+                            this->container->sphere4.gotoAndStop(3);
+                            this->container->sphere4.cont.stop();
+                            this->container->sphere4.visible = true;
                         }
                         (this->stoneCount + 1);
                     }
@@ -1075,27 +1076,27 @@ namespace engine
                     {
                         if (this->listOfStack.length == 1)
                         {
-                            this->container.sphere1.gotoAndStop(4);
-                            this->container.sphere1.cont.stop();
-                            this->container.sphere1.visible = true;
+                            this->container->sphere1.gotoAndStop(4);
+                            this->container->sphere1.cont.stop();
+                            this->container->sphere1.visible = true;
                         }
                         else if (this->listOfStack.length == 2)
                         {
-                            this->container.sphere2.gotoAndStop(4);
-                            this->container.sphere2.cont.stop();
-                            this->container.sphere2.visible = true;
+                            this->container->sphere2.gotoAndStop(4);
+                            this->container->sphere2.cont.stop();
+                            this->container->sphere2.visible = true;
                         }
                         else if (this->listOfStack.length == 3)
                         {
-                            this->container.sphere3.gotoAndStop(4);
-                            this->container.sphere3.cont.stop();
-                            this->container.sphere3.visible = true;
+                            this->container->sphere3.gotoAndStop(4);
+                            this->container->sphere3.cont.stop();
+                            this->container->sphere3.visible = true;
                         }
                         else if (this->listOfStack.length == 4)
                         {
-                            this->container.sphere4.gotoAndStop(4);
-                            this->container.sphere4.cont.stop();
-                            this->container.sphere4.visible = true;
+                            this->container->sphere4.gotoAndStop(4);
+                            this->container->sphere4.cont.stop();
+                            this->container->sphere4.visible = true;
                         }
                         (this->levinCount + 1);
                     }
@@ -1110,11 +1111,11 @@ namespace engine
                         this->containerChange = this->container;
                         this->listOfStack = [];
                         this->container = new GetAll_mc();
-                        this->container.stop();
-                        this->container.cross.stop();
-                        this->container.numTXT.text = this->getAllCount;
-                        this->container.cross.visible = false;
-                        this->container.alpha = 0;
+                        this->container->stop();
+                        this->container->cross.stop();
+                        this->container->numTXT.text = this->getAllCount;
+                        this->container->cross->setVisible(false);
+                        this->container->alpha = 0;
                         this->addChild(this->container);
                     }
                 }
@@ -1124,7 +1125,7 @@ namespace engine
                 if (this->getAllCount < 3)
                 {
                     (this->getAllCount + 1);
-                    this->container.numTXT.text = this->getAllCount;
+                    this->container->numTXT.text = this->getAllCount;
                 }
             }
             if (this->fireCount > 0 && this->iceCount == 0 && this->stoneCount == 0 && this->levinCount == 0)
@@ -1143,8 +1144,8 @@ namespace engine
                     var _loc_3:* = Main.mainClass.readXMLClass.listOfMoveFireXML[0] * 2;
                     this->radius.height = Main.mainClass.readXMLClass.listOfMoveFireXML[0] * 2;
                     this->radius.width = _loc_3;
-                    this->radius.visible = false;
-                    this->arrow.visible = false;
+                    this->radius->setVisible(false);
+                    this->arrow->setVisible(false);
                     this->addChildAt(this->radius, 0);
                 }
                 this->myRadius = Main.mainClass.readXMLClass.listOfMoveFireXML[0];
@@ -1166,8 +1167,8 @@ namespace engine
                     var _loc_3:* = Main.mainClass.readXMLClass.listOfMoveIceXML[0] * 2;
                     this->radius.height = Main.mainClass.readXMLClass.listOfMoveIceXML[0] * 2;
                     this->radius.width = _loc_3;
-                    this->radius.visible = false;
-                    this->arrow.visible = false;
+                    this->radius->setVisible(false);
+                    this->arrow->setVisible(false);
                     this->addChildAt(this->radius, 0);
                 }
                 this->myRadius = Main.mainClass.readXMLClass.listOfMoveIceXML[0];
@@ -1189,8 +1190,8 @@ namespace engine
                     var _loc_3:* = Main.mainClass.readXMLClass.listOfMoveStoneXML[0] * 2;
                     this->radius.height = Main.mainClass.readXMLClass.listOfMoveStoneXML[0] * 2;
                     this->radius.width = _loc_3;
-                    this->radius.visible = false;
-                    this->arrow.visible = false;
+                    this->radius->setVisible(false);
+                    this->arrow->setVisible(false);
                     this->addChildAt(this->radius, 0);
                 }
                 this->myRadius = Main.mainClass.readXMLClass.listOfMoveStoneXML[0];
@@ -1212,8 +1213,8 @@ namespace engine
                     var _loc_3:* = Main.mainClass.readXMLClass.listOfMoveLevinXML[0] * 2;
                     this->radius.height = Main.mainClass.readXMLClass.listOfMoveLevinXML[0] * 2;
                     this->radius.width = _loc_3;
-                    this->radius.visible = false;
-                    this->arrow.visible = false;
+                    this->radius->setVisible(false);
+                    this->arrow->setVisible(false);
                     this->addChildAt(this->radius, 0);
                 }
                 this->myRadius = Main.mainClass.readXMLClass.listOfMoveLevinXML[0];
@@ -1239,9 +1240,9 @@ namespace engine
                             this->radius.cont1.stop();
                             this->radius.cont2.stop();
                             this->radius.cont3.stop();
-                            this->radius.cont1.visible = false;
-                            this->radius.cont2.visible = false;
-                            this->radius.cont3.visible = false;
+                            this->radius.cont1->setVisible(false);
+                            this->radius.cont2->setVisible(false);
+                            this->radius.cont3->setVisible(false);
                         }
                         else
                         {
@@ -1255,7 +1256,7 @@ namespace engine
                             }
                             else
                             {
-                                this->radius.cont2.visible = false;
+                                this->radius.cont2->setVisible(false);
                             }
                             if (this->getAllCount > 2)
                             {
@@ -1263,7 +1264,7 @@ namespace engine
                             }
                             else
                             {
-                                this->radius.cont3.visible = false;
+                                this->radius.cont3->setVisible(false);
                             }
                         }
                     }
@@ -1339,8 +1340,8 @@ namespace engine
                 var _loc_3:* = this->myRadius * 2;
                 this->radius.height = this->myRadius * 2;
                 this->radius.width = _loc_3;
-                this->radius.visible = false;
-                this->arrow.visible = false;
+                this->radius->setVisible(false);
+                this->arrow->setVisible(false);
                 this->addChildAt(this->radius, 0);
             }
         }
@@ -1359,64 +1360,64 @@ namespace engine
             {
                 this->removeChild(this->container);
                 this->container = new MoveFire_mc();
-                this->container.stop();
-                this->container.cont.stop();
-                this->container.numTXT.text = this->fireCount;
+                this->container->stop();
+                this->container->cont.stop();
+                this->container->numTXT.text = this->fireCount;
                 if (this->fireCount == 1)
                 {
-                    this->container.numTXT.visible = false;
+                    this->container->numTXT->setVisible(false);
                 }
                 var _loc_1:* = 0.6;
-                this->container.scaleY = 0.6;
-                this->container.scaleX = _loc_1;
+                this->container->scaleY = 0.6;
+                this->container->scaleX = _loc_1;
                 this->addChild(this->container);
             }
             else if (this->fireCount == 0 && this->iceCount > 0 && this->stoneCount == 0 && this->levinCount == 0)
             {
                 this->removeChild(this->container);
                 this->container = new MoveIce_mc();
-                this->container.stop();
-                this->container.cont.stop();
-                this->container.numTXT.text = this->iceCount;
+                this->container->stop();
+                this->container->cont.stop();
+                this->container->numTXT.text = this->iceCount;
                 if (this->iceCount == 1)
                 {
-                    this->container.numTXT.visible = false;
+                    this->container->numTXT->setVisible(false);
                 }
                 var _loc_1:* = 0.6;
-                this->container.scaleY = 0.6;
-                this->container.scaleX = _loc_1;
+                this->container->scaleY = 0.6;
+                this->container->scaleX = _loc_1;
                 this->addChild(this->container);
             }
             else if (this->fireCount == 0 && this->iceCount == 0 && this->stoneCount > 0 && this->levinCount == 0)
             {
                 this->removeChild(this->container);
                 this->container = new MoveStone_mc();
-                this->container.stop();
-                this->container.cont.stop();
-                this->container.numTXT.text = this->stoneCount;
+                this->container->stop();
+                this->container->cont.stop();
+                this->container->numTXT.text = this->stoneCount;
                 if (this->stoneCount == 1)
                 {
-                    this->container.numTXT.visible = false;
+                    this->container->numTXT->setVisible(false);
                 }
                 var _loc_1:* = 0.6;
-                this->container.scaleY = 0.6;
-                this->container.scaleX = _loc_1;
+                this->container->scaleY = 0.6;
+                this->container->scaleX = _loc_1;
                 this->addChild(this->container);
             }
             else if (this->fireCount == 0 && this->iceCount == 0 && this->stoneCount == 0 && this->levinCount > 0)
             {
                 this->removeChild(this->container);
                 this->container = new MoveLevin_mc();
-                this->container.stop();
-                this->container.cont.stop();
-                this->container.numTXT.text = this->levinCount;
+                this->container->stop();
+                this->container->cont.stop();
+                this->container->numTXT.text = this->levinCount;
                 if (this->levinCount == 1)
                 {
-                    this->container.numTXT.visible = false;
+                    this->container->numTXT->setVisible(false);
                 }
                 var _loc_1:* = 0.6;
-                this->container.scaleY = 0.6;
-                this->container.scaleX = _loc_1;
+                this->container->scaleY = 0.6;
+                this->container->scaleX = _loc_1;
                 this->addChild(this->container);
             }
             else if (this->ownerType == "archive")
@@ -1458,8 +1459,8 @@ namespace engine
         this->speedFrame = 5;
         this->speedX = (this->ownerPoint.x - this->x) / this->speedFrame;
         this->speedY = (this->ownerPoint.y - this->y) / this->speedFrame;
-        this->radius.visible = false;
-        this->arrow.visible = false;
+        this->radius->setVisible(false);
+        this->arrow->setVisible(false);
         this->world.getSphere = null;
         if (this->towerArrow)
         {

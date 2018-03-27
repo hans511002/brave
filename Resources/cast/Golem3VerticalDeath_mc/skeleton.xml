@@ -1,0 +1,199 @@
+<dragonBones name="1yrt" frameRate="30" version="2.3">
+ <armature name="Golem3VerticalDeath_mc">
+  <bone name="Layer 1">
+   <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1"/>
+  </bone>
+  <skin name="default">
+   <slot name="Layer 1" parent="Layer 1" z="0">
+    <display name="Shape/shape 1899" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="61" pY="90"/>
+    </display>
+    <display name="Shape/shape 1901" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="61" pY="90"/>
+    </display>
+    <display name="Shape/shape 1903" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="61" pY="90"/>
+    </display>
+    <display name="Shape/shape 1905" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="61" pY="90"/>
+    </display>
+    <display name="Shape/shape 1907" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="61" pY="90"/>
+    </display>
+    <display name="Shape/shape 1909" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="61" pY="90"/>
+    </display>
+    <display name="Shape/shape 1911" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="61" pY="90"/>
+    </display>
+    <display name="Shape/shape 1913" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="61" pY="90"/>
+    </display>
+    <display name="Shape/shape 1915" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="61" pY="90"/>
+    </display>
+    <display name="Shape/shape 1917" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="61" pY="90"/>
+    </display>
+    <display name="Shape/shape 1919" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="61" pY="90"/>
+    </display>
+    <display name="Shape/shape 1921" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="61" pY="90"/>
+    </display>
+    <display name="Shape/shape 1923" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="61" pY="90"/>
+    </display>
+    <display name="Shape/shape 1925" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="61" pY="90"/>
+    </display>
+    <display name="Shape/shape 1927" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="61" pY="90"/>
+    </display>
+    <display name="Shape/shape 1929" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="61" pY="90"/>
+    </display>
+    <display name="Shape/shape 1931" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="61" pY="90"/>
+    </display>
+    <display name="Shape/shape 1933" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="61" pY="90"/>
+    </display>
+    <display name="Shape/shape 1935" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="61" pY="90"/>
+    </display>
+    <display name="Shape/shape 1937" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="61" pY="90"/>
+    </display>
+    <display name="Shape/shape 1939" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="61" pY="90"/>
+    </display>
+    <display name="Shape/shape 1941" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="61" pY="90"/>
+    </display>
+    <display name="Shape/shape 1943" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="61" pY="90"/>
+    </display>
+    <display name="Shape/shape 1945" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="61" pY="90"/>
+    </display>
+    <display name="Shape/shape 1947" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="61" pY="90"/>
+    </display>
+    <display name="Shape/shape 1949" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="61" pY="90"/>
+    </display>
+    <display name="Shape/shape 1951" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="61" pY="90"/>
+    </display>
+    <display name="Shape/shape 1953" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="61" pY="90"/>
+    </display>
+    <display name="Shape/shape 1955" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="61" pY="90"/>
+    </display>
+    <display name="Shape/shape 1957" type="image">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="61" pY="90"/>
+    </display>
+   </slot>
+  </skin>
+  <animation name="Golem3VerticalDeath_mc" fadeInTime="0.3" duration="46" scale="1" loop="1" autoTween="1" tweenEasing="NaN">
+   <timeline name="Layer 1" scale="1" offset="0">
+    <frame z="0" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="1" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="2" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="3" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="4" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="5" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="6" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="7" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="8" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="9" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="10" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="11" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="12" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="13" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="14" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="15" duration="2">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="16" duration="2">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="17" duration="2">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="18" duration="2">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="19" duration="2">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="20" duration="2">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="21" duration="2">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="22" duration="2">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="23" duration="2">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="24" duration="2">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="25" duration="2">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="26" duration="2">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="27" duration="2">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="28" duration="2">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="29" duration="2">
+     <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1" pX="0" pY="0"/>
+    </frame>
+    <frame z="0" displayIndex="29" duration="1">
+     <transform x="0" y="0" skX="0" skY="0" scX="0.01" scY="0.01" pX="0" pY="0"/>
+     <colorTransform aO="0" rO="0" gO="0" bO="0" aM="0" rM="100" gM="100" bM="100"/>
+    </frame>
+   </timeline>
+  </animation>
+ </armature>
+</dragonBones>

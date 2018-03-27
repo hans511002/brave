@@ -1,0 +1,12 @@
+<TextureAtlas name="CastFire_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 6970" x="114" y="102" width="112" height="100"/>
+ <SubTexture name="Shape/shape 6972" x="228" y="0" width="112" height="100"/>
+ <SubTexture name="Shape/shape 6974" x="114" y="204" width="112" height="100"/>
+ <SubTexture name="Shape/shape 6976" x="342" y="0" width="112" height="100"/>
+ <SubTexture name="Shape/shape 6978" x="228" y="102" width="112" height="100"/>
+ <SubTexture name="Shape/shape 6980" x="0" y="0" width="112" height="100"/>
+ <SubTexture name="Shape/shape 6982" x="0" y="204" width="112" height="100"/>
+ <SubTexture name="Shape/shape 6984" x="342" y="102" width="112" height="100"/>
+ <SubTexture name="Shape/shape 6986" x="0" y="102" width="112" height="100"/>
+ <SubTexture name="Shape/shape 6988" x="114" y="0" width="112" height="100"/>
+</TextureAtlas>

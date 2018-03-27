@@ -1,0 +1,372 @@
+{
+  "ID": "5294e6fb-9324-46e7-9158-292f16dd3b53",
+  "Version": "3.10.0.0",
+  "Name": "level1",
+  "Content": {
+    "Content": {
+      "Animation": {
+        "Duration": 0,
+        "Speed": 1.0,
+        "Timelines": [],
+        "ctype": "TimelineActionData"
+      },
+      "AnimationList": [],
+      "ObjectData": {
+        "Tag": 18,
+        "Children": [
+          {
+            "FileData": {
+              "Type": "Normal",
+              "Path": "worldinterface/level/level1.png",
+              "Plist": ""
+            },
+            "BlendFunc": {
+              "Src": 1,
+              "Dst": 771
+            },
+            "AnchorPoint": {},
+            "Position": {
+              "X": -20.0,
+              "Y": -2.0
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "PreSize": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "LeftMargin": -20.0,
+            "RightMargin": -820.0,
+            "TopMargin": -602.0,
+            "BottomMargin": -2.0,
+            "Tag": 19,
+            "ActionTag": 308233551,
+            "Size": {
+              "X": 840.0,
+              "Y": 604.0
+            },
+            "Name": "level1",
+            "ctype": "SpriteObjectData"
+          },
+          {
+            "FileData": {
+              "Type": "Normal",
+              "Path": "public/place_off.png",
+              "Plist": ""
+            },
+            "BlendFunc": {
+              "Src": 1,
+              "Dst": 771
+            },
+            "AnchorPoint": {},
+            "Position": {
+              "X": 52.5689,
+              "Y": 368.8034
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "PreSize": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "LeftMargin": 52.5689,
+            "RightMargin": -124.5689,
+            "TopMargin": -407.8034,
+            "BottomMargin": 368.8034,
+            "Tag": 58,
+            "ActionTag": -1207773416,
+            "Size": {
+              "X": 72.0,
+              "Y": 39.0
+            },
+            "Name": "place1",
+            "ctype": "SpriteObjectData"
+          },
+          {
+            "FileData": {
+              "Type": "Normal",
+              "Path": "public/place_off.png",
+              "Plist": ""
+            },
+            "BlendFunc": {
+              "Src": 1,
+              "Dst": 771
+            },
+            "AnchorPoint": {},
+            "Position": {
+              "X": 168.7763,
+              "Y": 298.9681
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "PreSize": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "LeftMargin": 168.7763,
+            "RightMargin": -240.7763,
+            "TopMargin": -337.9681,
+            "BottomMargin": 298.9681,
+            "Tag": 61,
+            "ActionTag": 1859574387,
+            "Size": {
+              "X": 72.0,
+              "Y": 39.0
+            },
+            "Name": "place2",
+            "ctype": "SpriteObjectData"
+          },
+          {
+            "FileData": {
+              "Type": "Normal",
+              "Path": "public/point2.png",
+              "Plist": ""
+            },
+            "BlendFunc": {
+              "Src": 1,
+              "Dst": 771
+            },
+            "AnchorPoint": {},
+            "Position": {
+              "X": -9.0951,
+              "Y": 397.0714
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "PreSize": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "LeftMargin": -9.0951,
+            "RightMargin": -51.9049,
+            "TopMargin": -464.0714,
+            "BottomMargin": 397.0714,
+            "Tag": 63,
+            "ActionTag": 496403020,
+            "Size": {
+              "X": 61.0,
+              "Y": 67.0
+            },
+            "VisibleForFrame": false,
+            "Name": "point2",
+            "ctype": "SpriteObjectData"
+          },
+          {
+            "FileData": {
+              "Type": "Normal",
+              "Path": "public/place_off.png",
+              "Plist": ""
+            },
+            "BlendFunc": {
+              "Src": 1,
+              "Dst": 771
+            },
+            "AnchorPoint": {},
+            "Position": {
+              "X": 330.2921,
+              "Y": 194.1758
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "PreSize": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "LeftMargin": 330.2921,
+            "RightMargin": -402.2921,
+            "TopMargin": -233.1758,
+            "BottomMargin": 194.1758,
+            "Tag": 65,
+            "ActionTag": -1692262508,
+            "Size": {
+              "X": 72.0,
+              "Y": 39.0
+            },
+            "Name": "place3",
+            "ctype": "SpriteObjectData"
+          },
+          {
+            "FileData": {
+              "Type": "Normal",
+              "Path": "public/place_off.png",
+              "Plist": ""
+            },
+            "BlendFunc": {
+              "Src": 1,
+              "Dst": 771
+            },
+            "AnchorPoint": {},
+            "Position": {
+              "X": 580.3474,
+              "Y": 193.4986
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "PreSize": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "LeftMargin": 580.3474,
+            "RightMargin": -652.3474,
+            "TopMargin": -232.4986,
+            "BottomMargin": 193.4986,
+            "Tag": 66,
+            "ActionTag": -1914636267,
+            "Size": {
+              "X": 72.0,
+              "Y": 39.0
+            },
+            "Name": "place4",
+            "ctype": "SpriteObjectData"
+          },
+          {
+            "FileData": {
+              "Type": "Normal",
+              "Path": "public/place_off.png",
+              "Plist": ""
+            },
+            "BlendFunc": {
+              "Src": 1,
+              "Dst": 771
+            },
+            "AnchorPoint": {},
+            "Position": {
+              "X": 654.6044,
+              "Y": 357.2974
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "PreSize": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "LeftMargin": 654.6044,
+            "RightMargin": -726.6044,
+            "TopMargin": -396.2974,
+            "BottomMargin": 357.2974,
+            "Tag": 67,
+            "ActionTag": 1846365168,
+            "Size": {
+              "X": 72.0,
+              "Y": 39.0
+            },
+            "Name": "place5",
+            "ctype": "SpriteObjectData"
+          },
+          {
+            "FileData": {
+              "Type": "Normal",
+              "Path": "public/point.png",
+              "Plist": ""
+            },
+            "BlendFunc": {
+              "Src": 1,
+              "Dst": 771
+            },
+            "AnchorPoint": {},
+            "Position": {
+              "X": -15.4252,
+              "Y": 411.1036
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "PreSize": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "LeftMargin": -15.4252,
+            "RightMargin": -41.5748,
+            "TopMargin": -456.1036,
+            "BottomMargin": 411.1036,
+            "Tag": 62,
+            "ActionTag": 1950156148,
+            "Size": {
+              "X": 57.0,
+              "Y": 45.0
+            },
+            "Name": "point",
+            "ctype": "SpriteObjectData"
+          }
+        ],
+        "Size": {
+          "X": 0.0,
+          "Y": 0.0
+        },
+        "Name": "Node",
+        "ctype": "SingleNodeObjectData"
+      },
+      "UsedResources": [
+        "public/place_off.png",
+        "public/point.png",
+        "public/point2.png",
+        "worldinterface/level/level1.png"
+      ],
+      "ctype": "GameFileData"
+    }
+  },
+  "Type": "Node"
+}

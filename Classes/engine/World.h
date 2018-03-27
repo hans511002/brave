@@ -12,6 +12,7 @@
 #include "engine/level/PointTimer.h"
 #include "bezier/Bezier.h"
 #include "engine/units/Unit.h"
+#include "engine/GetSphere.h"
 
 //#include "animation/Hint.h"
  

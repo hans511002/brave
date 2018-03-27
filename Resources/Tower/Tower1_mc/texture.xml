@@ -1,0 +1,33 @@
+<TextureAtlas name="Tower1_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 4433" x="56" y="0" width="46" height="50"/>
+ <SubTexture name="Shape/shape 4435" x="164" y="0" width="28" height="27"/>
+ <SubTexture name="Shape/shape 4437" x="0" y="91" width="28" height="27"/>
+ <SubTexture name="Shape/shape 4439" x="206" y="58" width="28" height="27"/>
+ <SubTexture name="Shape/shape 4441" x="176" y="58" width="28" height="27"/>
+ <SubTexture name="Shape/shape 4443" x="134" y="0" width="28" height="27"/>
+ <SubTexture name="Shape/shape 4445" x="164" y="29" width="28" height="27"/>
+ <SubTexture name="Shape/shape 4447" x="210" y="87" width="28" height="27"/>
+ <SubTexture name="Shape/shape 4449" x="146" y="58" width="28" height="27"/>
+ <SubTexture name="Shape/shape 4451" x="30" y="81" width="28" height="27"/>
+ <SubTexture name="Shape/shape 4453" x="60" y="87" width="28" height="27"/>
+ <SubTexture name="Shape/shape 4455" x="120" y="87" width="28" height="27"/>
+ <SubTexture name="Shape/shape 4457" x="224" y="0" width="28" height="27"/>
+ <SubTexture name="Shape/shape 4459" x="104" y="29" width="28" height="27"/>
+ <SubTexture name="Shape/shape 4461" x="180" y="87" width="28" height="27"/>
+ <SubTexture name="Shape/shape 4463" x="224" y="29" width="28" height="27"/>
+ <SubTexture name="Shape/shape 4465" x="150" y="87" width="28" height="27"/>
+ <SubTexture name="Shape/shape 4467" x="134" y="29" width="28" height="27"/>
+ <SubTexture name="Shape/shape 4469" x="0" y="62" width="28" height="27"/>
+ <SubTexture name="Shape/shape 4471" x="86" y="58" width="28" height="27"/>
+ <SubTexture name="Shape/shape 4473" x="194" y="0" width="28" height="27"/>
+ <SubTexture name="Shape/shape 4475" x="90" y="87" width="28" height="27"/>
+ <SubTexture name="Shape/shape 4477" x="194" y="29" width="28" height="27"/>
+ <SubTexture name="Shape/shape 4479" x="60" y="116" width="28" height="27"/>
+ <SubTexture name="Shape/shape 4481" x="120" y="116" width="28" height="27"/>
+ <SubTexture name="Shape/shape 4482" x="90" y="116" width="28" height="27"/>
+ <SubTexture name="Sprite/sprite 6426" x="0" y="0" width="54" height="60"/>
+ <SubTexture name="Sprite/sprite 6354" x="30" y="110" width="28" height="27"/>
+ <SubTexture name="Sprite/sprite 6383" x="56" y="52" width="28" height="27"/>
+ <SubTexture name="Sprite/sprite 6422" x="116" y="58" width="28" height="27"/>
+ <SubTexture name="Sprite/sprite 47" x="104" y="0" width="28" height="27"/>
+</TextureAtlas>

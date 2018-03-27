@@ -21,11 +21,11 @@ namespace engine
 
 		BaseNode *point = this->world->pointer1;// Sprite::create("public/point.png");
 		//point->setPosition(400, 250);
-		//EventListenerMouse *mouseListener= cocos2d::EventListenerMouse::create();
-        //mouseListener->onMouseDown = CC_CALLBACK_1(WorldInterface::mouseDownHandler, this);
-        //mouseListener->onMouseUp = CC_CALLBACK_1(WorldInterface::mouseUpHandler, this);
-        //mouseListener->onMouseMove = CC_CALLBACK_1(WorldInterface::mouseMoveHandler, this); 
-        //point->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, point);
+		EventListenerMouse *mouseListener= cocos2d::EventListenerMouse::create();
+        mouseListener->onMouseDown = CC_CALLBACK_1(WorldInterface::mouseDownHandler, this);
+        mouseListener->onMouseUp = CC_CALLBACK_1(WorldInterface::mouseUpHandler, this);
+        mouseListener->onMouseMove = CC_CALLBACK_1(WorldInterface::mouseMoveHandler, this); 
+        this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
        
         
  		//this->addChild(point);
@@ -38,6 +38,9 @@ namespace engine
 		//this->mouseEnabled = false;
 		//this->alpha = 0;
 		this->container = new WorldInterface_mc();
+        this->addChild(this->container);
+        this->container->init();
+        this->container->setPosition(0, 0);
  
 		//this->container->stop();
 		//this->container->fireBack.stop();
@@ -151,9 +154,7 @@ namespace engine
 		//this->container->testRestartBoard->setVisible( false);
 		//this->container->慢->setVisible( false);
 
-        this->addChild(this->container);
-        this->container->init();
-        this->container->setPosition(0, 0);
+       
 
 
         this->container->startWaves->addClickEventListener(CC_CALLBACK_1(WorldInterface::clickHandler, this));
@@ -907,65 +908,66 @@ namespace engine
 		    //    this->container->buyFire.coin.scaleY = 0.8;
 		    //    this->container->buyFire.coin.scaleX = 0.8;
 		    //}
-		    if (this->container->fireSphere.sphereCase.buttonMode)
-		    {
-		        if (!this->world->getSphere)
-		        {
-		            if (this->world->towerMenu)
-		            {
-		                if (this->world->towerMenu.myTower.spheresManage("scan") > 0)
-		                {
-		                    if (!this->container->buyFire.lightUp->isVisible())
-		                    {
-		                        this->container->buyFire.lightUp->setVisible(true);
-		                    }
-		                }
-		                else if (this->container->buyFire.lightUp->isVisible())
-		                {
-		                    this->container->buyFire.lightUp->setVisible( false);
-		                }
-		            }
-		            else if (this->world->ultraTowerMenu)
-		            {
-		                if (this->world->ultraTowerMenu.myTower.towerType == 5 && Main::mainClass->readXMLClass.ultraTower1UpgrBlock == 0)
-		                {
-		                    if (!this->world->ultraTowerMenu.myTower.shootingTurnStack[0])
-		                    {
-		                        if (!this->container->buyFire.lightUp->isVisible())
-		                        {
-		                            this->container->buyFire.lightUp->setVisible(true);
-		                        }
-		                    }
-		                    else if (this->container->buyFire.lightUp->isVisible())
-		                    {
-		                        this->container->buyFire.lightUp->setVisible( false);
-		                    }
-		                }
-		                else if (this->world->ultraTowerMenu.myTower.towerType == 8 && Main::mainClass->readXMLClass.ultraTower4UpgrBlock == 0)
-		                {
-		                    if (!this->world->ultraTowerMenu.myTower.shootingTurnStack[0])
-		                    {
-		                        if (!this->container->buyFire.lightUp->isVisible())
-		                        {
-		                            this->container->buyFire.lightUp->setVisible(true);
-		                        }
-		                    }
-		                    else if (this->container->buyFire.lightUp->isVisible())
-		                    {
-		                        this->container->buyFire.lightUp->setVisible( false);
-		                    }
-		                }
-		            }
-		            else if (this->container->buyFire.lightUp->isVisible())
-		            {
-		                this->container->buyFire.lightUp->setVisible( false);
-		            }
-		        }
-		        else if (this->container->buyFire.lightUp->isVisible())
-		        {
-		            this->container->buyFire.lightUp->setVisible( false);
-		        }
-		    }
+
+		//    if (this->container->fireSphere.sphereCase.buttonMode)
+		//    {
+		//        if (!this->world->getSphere)
+		//        {
+		//            if (this->world->towerMenu)
+		//            {
+		//                if (this->world->towerMenu.myTower.spheresManage("scan") > 0)
+		//                {
+		//                    if (!this->container->buyFire.lightUp->isVisible())
+		//                    {
+		//                        this->container->buyFire.lightUp->setVisible(true);
+		//                    }
+		//                }
+		//                else if (this->container->buyFire.lightUp->isVisible())
+		//                {
+		//                    this->container->buyFire.lightUp->setVisible( false);
+		//                }
+		//            }
+		//            else if (this->world->ultraTowerMenu)
+		//            {
+		//                if (this->world->ultraTowerMenu.myTower.towerType == 5 && Main::mainClass->readXMLClass.ultraTower1UpgrBlock == 0)
+		//                {
+		//                    if (!this->world->ultraTowerMenu.myTower.shootingTurnStack[0])
+		//                    {
+		//                        if (!this->container->buyFire.lightUp->isVisible())
+		//                        {
+		//                            this->container->buyFire.lightUp->setVisible(true);
+		//                        }
+		//                    }
+		//                    else if (this->container->buyFire.lightUp->isVisible())
+		//                    {
+		//                        this->container->buyFire.lightUp->setVisible( false);
+		//                    }
+		//                }
+		//                else if (this->world->ultraTowerMenu.myTower.towerType == 8 && Main::mainClass->readXMLClass.ultraTower4UpgrBlock == 0)
+		//                {
+		//                    if (!this->world->ultraTowerMenu.myTower.shootingTurnStack[0])
+		//                    {
+		//                        if (!this->container->buyFire.lightUp->isVisible())
+		//                        {
+		//                            this->container->buyFire.lightUp->setVisible(true);
+		//                        }
+		//                    }
+		//                    else if (this->container->buyFire.lightUp->isVisible())
+		//                    {
+		//                        this->container->buyFire.lightUp->setVisible( false);
+		//                    }
+		//                }
+		//            }
+		//            else if (this->container->buyFire.lightUp->isVisible())
+		//            {
+		//                this->container->buyFire.lightUp->setVisible( false);
+		//            }
+		//        }
+		//        else if (this->container->buyFire.lightUp->isVisible())
+		//        {
+		//            this->container->buyFire.lightUp->setVisible( false);
+		//        }
+		//    }
 		}
 		//else
 		//{
@@ -1494,10 +1496,29 @@ namespace engine
 	}// end function
 	void WorldInterface::mouseDownHandler(cocos2d::Event *event)//(event:MouseEvent) : void
 	{
+        cocos2d::EventMouse*e = (cocos2d::EventMouse*)event;
         Node * node=event->getCurrentTarget();
         Event::Type tp=event->getType();
         string target = node->getName();
         CCLOG("WorldInterface::mouseDownHandler %s", target.c_str());
+         
+
+       cocos2d::Point pt = e->getLocationInView();
+        CCLOG("mouse InView point %f,%f", pt.x, pt.y);
+        nsp = node->convertToNodeSpaceAR(pt);
+        CCLOG("mouse ToNodeSpaceAR point %f,%f", nsp.x, nsp.y);
+        nsp = node->convertToNodeSpace(pt);
+        CCLOG("mouse ToNodeSpace point %f,%f", nsp.x, nsp.y);
+
+        nsp = this->world->pointer1->convertToNodeSpaceAR(pt);
+        CCLOG("pointer1 ToNodeSpace point %f,%f", nsp.x, nsp.y);
+
+        Rect bb;
+        bb.size = this->world->pointer1->point->getContentSize();
+        if (bb.containsPoint(nsp))
+        {
+            CCLOG("WorldInterface::containsPoint %s", target.c_str());
+        }
 		this->world->wavesClass->startWaves();
 
 		//if (!this->world->getSphere && !this->world->cast)
@@ -1762,7 +1783,7 @@ namespace engine
 		//	}
 		//}
 	}
-	void WorldInterface::mouseMoveHandler(cocos2d::Event *param1)//MouseEvent
+    void WorldInterface::mouseMoveHandler(cocos2d::Event *param1)//MouseEvent
 	{
 		//if (!this->world->getSphere && !this->world->cast && !this->world->exchange)
 		//{
@@ -2341,7 +2362,7 @@ namespace engine
 		//	}
 		//}
 	}
-	void WorldInterface::mouseUpHandler(cocos2d::Event *event)//(event:MouseEvent) : void
+    void WorldInterface::mouseUpHandler(cocos2d::Event *event)//(event:MouseEvent) : void
 	{
 		//if (!this->world->getSphere && !this->world->cast)
 		//{

@@ -16,7 +16,8 @@ namespace engine{
 		~PointTimer();
 		CREATE_FUNC(PointTimer);
 
-		void scheduleUpdate(float dt);
+        void mouseDownHandler(cocos2d::Event *event);
+            void scheduleUpdate(float dt);
 		bool init();
 	private:
 

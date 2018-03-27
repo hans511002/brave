@@ -434,6 +434,9 @@
     <ClInclude Include="..\Classes\engine\towers\Tower.h">
       <Filter>src\engine\towers</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\engine\GetSphere.h">
+      <Filter>src\engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">

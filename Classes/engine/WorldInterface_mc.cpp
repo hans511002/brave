@@ -18,32 +18,46 @@ namespace engine
     bool WorldInterface_mc::init()
     {
         BaseNode::init();
-        string basePath = "res/worldinterface/";
+        string basePath = "worldinterface/";
         //鼠标移上的过度动画
-        DBCCFactory::getInstance()->loadDragonBonesData(basePath + "spherelight/skeleton.xml", "spherelight");
-        DBCCFactory::getInstance()->loadTextureAtlas(basePath + "spherelight/texture.xml", "spherelight");
+        DBCCFactory::getInstance()->loadDragonBonesData(basePath + "sphere/spherelight/skeleton.xml", "spherelight");
+        DBCCFactory::getInstance()->loadTextureAtlas(basePath + "sphere/spherelight/texture.xml", "spherelight");
         this->stoneBacklight = DBCCFactory::getInstance()->buildArmatureNode("spherelight");
         this->levinBacklight = DBCCFactory::getInstance()->buildArmatureNode("spherelight");
         this->iceBacklight = DBCCFactory::getInstance()->buildArmatureNode("spherelight");
         this->fireBacklight = DBCCFactory::getInstance()->buildArmatureNode("spherelight");
 
-        DBCCFactory::getInstance()->loadDragonBonesData(basePath + "stoneBacked/skeleton.xml", "stonebacked");
-        DBCCFactory::getInstance()->loadTextureAtlas(basePath + "stoneBacked/texture.xml", "stonebacked");
+        DBCCFactory::getInstance()->loadDragonBonesData(basePath + "sphere/stoneBacked/skeleton.xml", "stonebacked");
+        DBCCFactory::getInstance()->loadTextureAtlas(basePath + "sphere/stoneBacked/texture.xml", "stonebacked");
         this->stoneBacked = DBCCFactory::getInstance()->buildArmatureNode("stonebacked");
-        DBCCFactory::getInstance()->loadDragonBonesData(basePath + "levinBacked/skeleton.xml", "levinbacked");
-        DBCCFactory::getInstance()->loadTextureAtlas(basePath + "levinBacked/texture.xml", "levinbacked");
+        DBCCFactory::getInstance()->loadDragonBonesData(basePath + "sphere/levinBacked/skeleton.xml", "levinbacked");
+        DBCCFactory::getInstance()->loadTextureAtlas(basePath + "sphere/levinBacked/texture.xml", "levinbacked");
         this->levinBacked = DBCCFactory::getInstance()->buildArmatureNode("levinbacked");
-        DBCCFactory::getInstance()->loadDragonBonesData(basePath + "iceBacked/skeleton.xml", "icebacked");
-        DBCCFactory::getInstance()->loadTextureAtlas(basePath + "iceBacked/texture.xml", "icebacked");
+        DBCCFactory::getInstance()->loadDragonBonesData(basePath + "sphere/iceBacked/skeleton.xml", "icebacked");
+        DBCCFactory::getInstance()->loadTextureAtlas(basePath + "sphere/iceBacked/texture.xml", "icebacked");
         this->iceBacked = DBCCFactory::getInstance()->buildArmatureNode("icebacked");
-        DBCCFactory::getInstance()->loadDragonBonesData(basePath + "fireBacked/skeleton.xml", "firebacked");
-        DBCCFactory::getInstance()->loadTextureAtlas(basePath + "fireBacked/texture.xml", "firebacked");
+        DBCCFactory::getInstance()->loadDragonBonesData(basePath + "sphere/fireBacked/skeleton.xml", "firebacked");
+        DBCCFactory::getInstance()->loadTextureAtlas(basePath + "sphere/fireBacked/texture.xml", "firebacked");
         this->fireBacked = DBCCFactory::getInstance()->buildArmatureNode("firebacked");
-        DBCCFactory::getInstance()->loadDragonBonesData(basePath + "startbtn/fasterbtn/skeleton.xml", "faster");
-        DBCCFactory::getInstance()->loadTextureAtlas(basePath + "startbtn/fasterbtn/texture.xml", "faster");
-        this->faster = DBCCFactory::getInstance()->buildArmatureNode("faster");
+        DBCCFactory::getInstance()->loadDragonBonesData(basePath + "startbtn/fasterbtn/skeleton.xml", "fasterbtn");
+        DBCCFactory::getInstance()->loadTextureAtlas(basePath + "startbtn/fasterbtn/texture.xml", "fasterbtn");
+        this->faster = DBCCFactory::getInstance()->buildArmatureNode("fasterbtn");
 
 
+        //DBCCFactory::getInstance()->loadDragonBonesData(basePath + "sphere/stonesphere/skeleton.xml", "stonesphere");
+        //DBCCFactory::getInstance()->loadTextureAtlas(basePath + "sphere/stonesphere/texture.xml", "stonesphere");
+        //this->stoneSphere = DBCCFactory::getInstance()->buildArmatureNode("stonesphere");
+        //DBCCFactory::getInstance()->loadDragonBonesData(basePath + "sphere/levinsphere/skeleton.xml", "levinsphere");
+        //DBCCFactory::getInstance()->loadTextureAtlas(basePath + "sphere/levinsphere/texture.xml", "levinsphere");
+        //this->levinSphere = DBCCFactory::getInstance()->buildArmatureNode("levinsphere");
+        //DBCCFactory::getInstance()->loadDragonBonesData(basePath + "sphere/icesphere/skeleton.xml", "icesphere");
+        //DBCCFactory::getInstance()->loadTextureAtlas(basePath + "sphere/icesphere/texture.xml", "icesphere");
+        //this->iceSphere = DBCCFactory::getInstance()->buildArmatureNode("icesphere");
+        //DBCCFactory::getInstance()->loadDragonBonesData(basePath + "sphere/fireSphere/skeleton.xml", "firesphere");
+        //DBCCFactory::getInstance()->loadTextureAtlas(basePath + "sphere/fireSphere/texture.xml", "firesphere");
+        //this->fireSphere = DBCCFactory::getInstance()->buildArmatureNode("firesphere");
+        //this->loadAni(basePath + "sphere", "firesphere");
+       
 
         Node * node = CSLoader::createNode("worldinterface.csb");
         //CSLoader cs;

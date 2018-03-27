@@ -1,0 +1,10 @@
+<TextureAtlas name="BulletTower7_smoke_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 8460" x="102" y="0" width="49" height="59"/>
+ <SubTexture name="Shape/shape 8462" x="102" y="61" width="49" height="59"/>
+ <SubTexture name="Shape/shape 8464" x="51" y="0" width="49" height="59"/>
+ <SubTexture name="Shape/shape 8466" x="0" y="61" width="49" height="59"/>
+ <SubTexture name="Shape/shape 8468" x="204" y="0" width="49" height="59"/>
+ <SubTexture name="Shape/shape 8470" x="51" y="61" width="49" height="59"/>
+ <SubTexture name="Shape/shape 8472" x="153" y="0" width="49" height="59"/>
+ <SubTexture name="Shape/shape 8474" x="0" y="0" width="49" height="59"/>
+</TextureAtlas>

@@ -248,6 +248,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\engine\decoration\Decoration.h" />
     <ClInclude Include="..\Classes\engine\decoration\DecorationLevel1.h" />
     <ClInclude Include="..\Classes\engine\Feature.h" />
+    <ClInclude Include="..\Classes\engine\GetSphere.h" />
     <ClInclude Include="..\Classes\engine\level\Level.h" />
     <ClInclude Include="..\Classes\engine\level\Level1.h" />
     <ClInclude Include="..\Classes\engine\level\PointTimer.h" />
