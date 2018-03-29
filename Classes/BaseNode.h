@@ -32,7 +32,9 @@ public:
     void touchAction(cocos2d::Ref *pSender, cocos2d::ui::TouchEventType type);
       bool hitTest(  const Vec2 &pt);
       static bool hitTest(cocos2d::Node * node, const Vec2 &pt);
-
+      static bool hitTest(cocos2d::Node * node, cocos2d::EventMouse* e);
+      bool mouseChildren ;
+      bool mouseEnabled ;
     
 private:
 
@@ -43,6 +45,8 @@ public:
 	bool init();
     bool Atstage();
     void mouseDownHandler(cocos2d::Event *event);
+    BaseSprite(string file);
+    BaseSprite(){};
     static Sprite* create();
 private:
 

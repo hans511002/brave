@@ -49,6 +49,9 @@
     <Filter Include="src\engine\level">
       <UniqueIdentifier>{4abe01f3-3bc1-4d94-8a52-edfba74636d4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\engine\mc">
+      <UniqueIdentifier>{a282b77b-bade-4986-85ae-015a487aa269}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -181,6 +184,27 @@
       <Filter>src\engine\bullets</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\engine\towers\Tower.cpp">
+      <Filter>src\engine\towers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\towers\Tower1.cpp">
+      <Filter>src\engine\towers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\towers\Tower1_mc.cpp">
+      <Filter>src\engine\towers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\towers\TowerMenu.cpp">
+      <Filter>src\engine\towers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\towers\TowerMenu_mc.cpp">
+      <Filter>src\engine\towers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\towers\TowerRadius_mc.cpp">
+      <Filter>src\engine\towers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\towers\UltraTowerMenu.cpp">
+      <Filter>src\engine\towers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\towers\BuildTowerMenu.cpp">
       <Filter>src\engine\towers</Filter>
     </ClCompile>
   </ItemGroup>
@@ -436,6 +460,51 @@
     </ClInclude>
     <ClInclude Include="..\Classes\engine\GetSphere.h">
       <Filter>src\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\towers\UltraTowerMenu.h">
+      <Filter>src\engine\towers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\towers\Tower1.h">
+      <Filter>src\engine\towers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\towers\TowerMenu.h">
+      <Filter>src\engine\towers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\towers\TowerMenu_mc.h">
+      <Filter>src\engine\towers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\towers\TowerRadius_mc.h">
+      <Filter>src\engine\towers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\casts\Cast.h">
+      <Filter>src\engine\casts</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\casts\Air.h">
+      <Filter>src\engine\casts</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\casts\Cast_1.h">
+      <Filter>src\engine\casts</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\casts\Cast_2.h">
+      <Filter>src\engine\casts</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\casts\Cast_3.h">
+      <Filter>src\engine\casts</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\casts\Golem.h">
+      <Filter>src\engine\casts</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\casts\Iceman.h">
+      <Filter>src\engine\casts</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\casts\Map.h">
+      <Filter>src\engine\casts</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\towers\BuildTowerMenu.h">
+      <Filter>src\engine\towers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\mc\mc.h">
+      <Filter>src\engine\mc</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

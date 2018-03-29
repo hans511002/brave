@@ -1,12 +1,11 @@
 ﻿#ifndef ENGINE_TOWERS_H
 #define ENGINE_TOWERS_H
 #include "BaseHeaders.h"
-#include "engine/World.h"
-#include "MainClass.h"
 #include "engine/units/Unit.h" 
 
 namespace engine
 {
+    class World;
     namespace towers
     {
         class Tower :public BaseNode
@@ -19,10 +18,10 @@ namespace engine
             //public var tempObject3:Object;
             //public var tempObject4:Object;
             BaseNode *container;// public var container : MovieClip;
-            BaseNode * myPlace;// :MovieClip;
+            Sprite * myPlace;// :MovieClip;
             BaseNode * buildAnima; //public var buildAnima:MovieClip;
-            Common::Array<>  spheresStack; //public var spheresStack:Array;
-            Common::Array<>  slotsStack; //public var slotsStack:Array;
+            Common::Array<string>  spheresStack; //public var spheresStack:Array;
+            Common::Array<int>  slotsStack; //public var slotsStack:Array;
             float damage; //public var damage:Number;
             float radius; //public var radius:Number;
             int  intervalCounter; //public var intervalCounter:int = 0;
@@ -31,7 +30,7 @@ namespace engine
             World * world;//public var world:World;
             int  towerType; //public var towerType:int = 0;
             int  correctYGrPos; //public var correctYGrPos:int;
-            Common::Array<>  shootingTurnStack; //public var shootingTurnStack:Array;
+            Common::Array<Common::Array<int> >  shootingTurnStack; //public var shootingTurnStack:Array;
             string shootingSphere;//public var shootingSphere:String;
             Common::Array<>  shootinAttackStack; //public var shootinAttackStack:Array;
             Common::Array<>  listOfTargets; //public var listOfTargets:Array;

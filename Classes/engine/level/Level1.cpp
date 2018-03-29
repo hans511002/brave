@@ -9,6 +9,8 @@
 using namespace cocostudio;
 
 namespace engine{
+
+
 	void Level::flagHandler(cocos2d::EventCustom *event){
 		EventData *eventData = (EventData*)(event->getUserData());
 		switch (eventData->getType())
@@ -35,6 +37,11 @@ namespace engine{
 	namespace level
 	{
 		bool Level1::init(){
+
+            CCActionInterval * actionBy1 = CCScaleBy::create(2.f, 2.f, 1.f);
+            //neru_pSprite->runAction(actionBy1); /
+            //miku_pSprite->runAction(CCSequence::create(actionBy1, actionBy1->reverse(), NULL));
+
 			//this->initWithFile("level/level1.png");
 			//auto _background = cocos2d::Sprite::create("level/level1.png");
 			//this->addChild(_background);
@@ -73,6 +80,9 @@ namespace engine{
 			{
                 Common::String placeName = "place";
                 placeBases[i] = (Sprite *)node->getChildByName(placeName + i);
+                //towerPlace[i] = TowerPlace::create();
+                //placeBases[i]->addChild(towerPlace[i]);
+                //std::setAnchorPoint(towerPlace[i], 35, 10);
 				//placeBases[i] = Sprite::create("public/place_off.png");
 				//this->addChild(placeBases[i]);
 			}

@@ -99,7 +99,10 @@ namespace engine
 			 
 
 
-			Unit() :direction("none"), world(NULL), road(0), way(0), path(0), finishPath(0), stopAnima(false), typeUnit(0), health(0), healthMax(0), speedK(0), speedKSave(0),				gold(0), fireDamageK(0), iceDamageK(0), stoneDamageK(0), levinDamageK(0), penalty(0), dead(false), atStage(false), readyDamage(true), 				bulletTower6Effect(false), airFlag(false), fireLevinKillFlag(false), moveFlag(true),gate(0), nextTurnFlag(false), nextTurnPath(0), nextTurnMidPath(0),				teleportFlag(false), directionFlag(false), replaced(false), speedKRun(0),speedRunTimerIce1(0), speedRunTimerIce2(0), speedRunTimerIce3(0),
+			Unit() :direction("none"), world(NULL), road(0), way(0), path(0), finishPath(0), stopAnima(false), typeUnit(0), health(0), healthMax(0), speedK(0), speedKSave(0),
+				gold(0), fireDamageK(0), iceDamageK(0), stoneDamageK(0), levinDamageK(0), penalty(0), dead(false), atStage(false), readyDamage(true), 
+				bulletTower6Effect(false), airFlag(false), fireLevinKillFlag(false), moveFlag(true),gate(0), nextTurnFlag(false), nextTurnPath(0), nextTurnMidPath(0),
+				teleportFlag(false), directionFlag(false), replaced(false), speedKRun(0),speedRunTimerIce1(0), speedRunTimerIce2(0), speedRunTimerIce3(0),
 				speedRunTimerIce4(0),healthPlusFlag(false),healthPlusValue(0),armorFlag(false),armorPower(0),armorCounter(0),airShockFlag(false),airShockCounter(0),
 				speedPlusFlag(false),speedPlusCounter(0),speedPlusValue(0),airGo(0),airWaitTimer(0),airSpacing(0),airPower(0),airResist(0),dampingAir(0),traversedPath(0),
 				icemanFlag(false),icemanCounter(0),icemanResist(0),fireEffectFlag(false),fireEffectCounter(0),fireEffectDamage(0),iceEffectFlag(false),iceEffectCounter(0),

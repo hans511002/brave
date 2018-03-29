@@ -35,6 +35,10 @@ bool BaseSprite::init()
 	std::setAnchorPoint(this);
 	return true;
 };
+BaseSprite::BaseSprite(string file){
+    this->initWithFile(file);
+}
+
 bool BaseNode::hitTest(const Vec2 &pt){
     return BaseNode::hitTest(this, pt);
 };
@@ -120,6 +124,9 @@ void BaseLayer::mouseDownHandler(cocos2d::Event *event)//(event:MouseEvent) : vo
       }
       return false;
   }
+  bool BaseNode::hitTest(cocos2d::Node * node, cocos2d::EventMouse* e){
+      return hitTest(node, e->getLocationInView());
+  };
 
 
 bool BaseSprite::Atstage(){

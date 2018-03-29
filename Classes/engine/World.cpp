@@ -5,7 +5,7 @@ using namespace engine;
 using namespace engine::units;
 namespace engine
 { 
-	World::World() :frameCounter(0), liveMax(20), unitInputBezieCounter(0), winDefCounter(-1), viewBoss(0), viewRockCrash(0), portalViewCounter(30)
+    World::World() :towerRadius(NULL),frameCounter(0), liveMax(20), unitInputBezieCounter(0), winDefCounter(-1), viewBoss(0), viewRockCrash(0), portalViewCounter(30)
 		, startMusicVolume(0), bonusMoneyFlag(true), eduOpenUpgrArrowFlag(true), killEnemiesCounter(0), createGolemCounter(0)
 		, createIcemanCounter(0), createAirCounter(0), earlyWaveCounter(0), sellFireCounter(0), sellIceCounter(0)
 		, sellStoneCounter(0), sellLevinCounter(0), sellGetAllCounter(0), icemanSlowdownEnemiesCounter(0), castFireCounter(0), castIceCounter(0)
@@ -795,47 +795,48 @@ namespace engine
 		//return;
 	}
 
-	//Tower World::addTower(std::string param1, MovieClip  param2, bool param3 = false)
-	//{
-	//	//if (param1 == "tower1")
-	//	//{
-	//	//	this->tempObject = new Tower1();
-	//	//}
-	//	//else if (param1 == "tower2")
-	//	//{
-	//	//	this->tempObject = new Tower2();
-	//	//}
-	//	//else if (param1 == "tower3")
-	//	//{
-	//	//	this->tempObject = new Tower3();
-	//	//}
-	//	//else if (param1 == "tower4")
-	//	//{
-	//	//	this->tempObject = new Tower4();
-	//	//}
-	//	//else if (param1 == "tower5")
-	//	//{
-	//	//	this->tempObject = new Tower5();
-	//	//}
-	//	//else if (param1 == "tower6")
-	//	//{
-	//	//	this->tempObject = new Tower6();
-	//	//}
-	//	//else if (param1 == "tower7")
-	//	//{
-	//	//	this->tempObject = new Tower7();
-	//	//}
-	//	//else if (param1 == "tower8")
-	//	//{
-	//	//	this->tempObject = new Tower8();
-	//	//}
-	//	//this->tempObject.myPlace = param2;
-	//	//this->tempObject.autoBuild = param3;
-	//	//this->addChild(this->tempObject);
-	//	//this->listOfTowers.push(this->tempObject);
-	//	//this->listOfTowers.sortOn("y", Array.NUMERIC);
-	//	//return this->tempObject;
-	//}// end function
+	towers::Tower * World::addTower(std::string param1, Sprite *  param2, bool param3)
+	{
+        towers::Tower * tempObject = NULL;
+		if (param1 == "tower1")
+		{
+			tempObject = new Tower1();
+		}
+		//else if (param1 == "tower2")
+		//{
+		//	this->tempObject = new Tower2();
+		//}
+		//else if (param1 == "tower3")
+		//{
+		//	this->tempObject = new Tower3();
+		//}
+		//else if (param1 == "tower4")
+		//{
+		//	this->tempObject = new Tower4();
+		//}
+		//else if (param1 == "tower5")
+		//{
+		//	this->tempObject = new Tower5();
+		//}
+		//else if (param1 == "tower6")
+		//{
+		//	this->tempObject = new Tower6();
+		//}
+		//else if (param1 == "tower7")
+		//{
+		//	this->tempObject = new Tower7();
+		//}
+		//else if (param1 == "tower8")
+		//{
+		//	this->tempObject = new Tower8();
+		//}
+		tempObject->myPlace = param2;
+		tempObject->autoBuild = param3;
+		this->addChild(tempObject);
+		this->listOfTowers.push(tempObject);
+		//this->listOfTowers.sortOn("y", Array.NUMERIC);
+		return tempObject;
+	}// end function
 
 	units::Unit * World::addUnit(int param1, int param2, int param3 , float param4 , int param5 , int param6 ){
 		Unit *tempObject = NULL;

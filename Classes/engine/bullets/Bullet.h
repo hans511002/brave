@@ -1,13 +1,12 @@
 ﻿#ifndef ENGINE_BULLETS_H
 #define ENGINE_BULLETS_H
 #include "BaseHeaders.h"
-#include "engine/World.h"
-#include "MainClass.h"
 #include "engine/units/Unit.h"
 #include "engine/towers/Tower.h"
 
 
 namespace engine{
+    class World;
     namespace bullets{
 
         class Bullet :public BaseNode

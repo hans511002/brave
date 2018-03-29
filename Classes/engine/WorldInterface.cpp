@@ -909,65 +909,65 @@ namespace engine
 		    //    this->container->buyFire.coin.scaleX = 0.8;
 		    //}
 
-		//    if (this->container->fireSphere.sphereCase.buttonMode)
-		//    {
-		//        if (!this->world->getSphere)
-		//        {
-		//            if (this->world->towerMenu)
-		//            {
-		//                if (this->world->towerMenu.myTower.spheresManage("scan") > 0)
-		//                {
-		//                    if (!this->container->buyFire.lightUp->isVisible())
-		//                    {
-		//                        this->container->buyFire.lightUp->setVisible(true);
-		//                    }
-		//                }
-		//                else if (this->container->buyFire.lightUp->isVisible())
-		//                {
-		//                    this->container->buyFire.lightUp->setVisible( false);
-		//                }
-		//            }
-		//            else if (this->world->ultraTowerMenu)
-		//            {
-		//                if (this->world->ultraTowerMenu.myTower.towerType == 5 && Main::mainClass->readXMLClass.ultraTower1UpgrBlock == 0)
-		//                {
-		//                    if (!this->world->ultraTowerMenu.myTower.shootingTurnStack[0])
-		//                    {
-		//                        if (!this->container->buyFire.lightUp->isVisible())
-		//                        {
-		//                            this->container->buyFire.lightUp->setVisible(true);
-		//                        }
-		//                    }
-		//                    else if (this->container->buyFire.lightUp->isVisible())
-		//                    {
-		//                        this->container->buyFire.lightUp->setVisible( false);
-		//                    }
-		//                }
-		//                else if (this->world->ultraTowerMenu.myTower.towerType == 8 && Main::mainClass->readXMLClass.ultraTower4UpgrBlock == 0)
-		//                {
-		//                    if (!this->world->ultraTowerMenu.myTower.shootingTurnStack[0])
-		//                    {
-		//                        if (!this->container->buyFire.lightUp->isVisible())
-		//                        {
-		//                            this->container->buyFire.lightUp->setVisible(true);
-		//                        }
-		//                    }
-		//                    else if (this->container->buyFire.lightUp->isVisible())
-		//                    {
-		//                        this->container->buyFire.lightUp->setVisible( false);
-		//                    }
-		//                }
-		//            }
-		//            else if (this->container->buyFire.lightUp->isVisible())
-		//            {
-		//                this->container->buyFire.lightUp->setVisible( false);
-		//            }
-		//        }
-		//        else if (this->container->buyFire.lightUp->isVisible())
-		//        {
-		//            this->container->buyFire.lightUp->setVisible( false);
-		//        }
-		//    }
+		    if (this->container->fireSphere.sphereCase.buttonMode)
+		    {
+		        if (!this->world->getSphere)
+		        {
+		            if (this->world->towerMenu)
+		            {
+		                if (this->world->towerMenu.myTower.spheresManage("scan") > 0)
+		                {
+		                    if (!this->container->buyFire.lightUp->isVisible())
+		                    {
+		                        this->container->buyFire.lightUp->setVisible(true);
+		                    }
+		                }
+		                else if (this->container->buyFire.lightUp->isVisible())
+		                {
+		                    this->container->buyFire.lightUp->setVisible( false);
+		                }
+		            }
+		            else if (this->world->ultraTowerMenu)
+		            {
+		                if (this->world->ultraTowerMenu.myTower.towerType == 5 && Main::mainClass->readXMLClass.ultraTower1UpgrBlock == 0)
+		                {
+		                    if (!this->world->ultraTowerMenu.myTower.shootingTurnStack[0])
+		                    {
+		                        if (!this->container->buyFire.lightUp->isVisible())
+		                        {
+		                            this->container->buyFire.lightUp->setVisible(true);
+		                        }
+		                    }
+		                    else if (this->container->buyFire.lightUp->isVisible())
+		                    {
+		                        this->container->buyFire.lightUp->setVisible( false);
+		                    }
+		                }
+		                else if (this->world->ultraTowerMenu.myTower.towerType == 8 && Main::mainClass->readXMLClass.ultraTower4UpgrBlock == 0)
+		                {
+		                    if (!this->world->ultraTowerMenu.myTower.shootingTurnStack[0])
+		                    {
+		                        if (!this->container->buyFire.lightUp->isVisible())
+		                        {
+		                            this->container->buyFire.lightUp->setVisible(true);
+		                        }
+		                    }
+		                    else if (this->container->buyFire.lightUp->isVisible())
+		                    {
+		                        this->container->buyFire.lightUp->setVisible( false);
+		                    }
+		                }
+		            }
+		            else if (this->container->buyFire.lightUp->isVisible())
+		            {
+		                this->container->buyFire.lightUp->setVisible( false);
+		            }
+		        }
+		        else if (this->container->buyFire.lightUp->isVisible())
+		        {
+		            this->container->buyFire.lightUp->setVisible( false);
+		        }
+		    }
 		}
 		//else
 		//{
@@ -1505,7 +1505,7 @@ namespace engine
 
        cocos2d::Point pt = e->getLocationInView();
         CCLOG("mouse InView point %f,%f", pt.x, pt.y);
-        nsp = node->convertToNodeSpaceAR(pt);
+        cocos2d::Point  nsp = node->convertToNodeSpaceAR(pt);
         CCLOG("mouse ToNodeSpaceAR point %f,%f", nsp.x, nsp.y);
         nsp = node->convertToNodeSpace(pt);
         CCLOG("mouse ToNodeSpace point %f,%f", nsp.x, nsp.y);
