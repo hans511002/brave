@@ -1,33 +1,28 @@
 ﻿package engine.casts
 {
-    import engine.*;
-    import flash.display.*;
-    import flash.events.*;
-
-    public class Cast extends Sprite
+ 
+    class Cast : public BaseNode
     {
-        public var i:int;
-        public var j:int;
-        public var n:int;
-        public var tempObject:Object;
-        public var tempObject1:Object;
-        public var tempObject2:Object;
-        public var tempObject3:Object;
+    	int i,j,n;
+//        public var tempObject:Object;
+//        public var tempObject1:Object;
+//        public var tempObject2:Object;
+//        public var tempObject3:Object;
         public var container:MovieClip;
-        public var world:World;
-        public var dead:Boolean;
-        public var map:Array;
-        public var canselCounter:int = 0;
-        public var canselTimer:int;
+    	World world;
+        bool dead;
+        Common::Array<>  map;
+        int canselCounter = 0;
+        int canselTimer;
 
-        public function Cast()
+        public  Cast():canselCounter(0),canselTimer(0)
         {
-            this.addEventListener(Event.ADDED_TO_STAGE, this.init);
+//            this.addEventListener(Event.ADDED_TO_STAGE, this.init);
             this.canselTimer = 5;
             return;
         }// end function
 
-        public function init(event:Event) : void
+        public void init( )
         {
             this.removeEventListener(Event.ADDED_TO_STAGE, this.init);
             this.world = Main.mainClass.worldClass;
@@ -41,7 +36,7 @@
             return;
         }// end function
 
-        public function update() : void
+        public   update() : void
         {
             this.world.feature.scanPointersAtCast();
             this.x = this.world.mouseX;
@@ -61,22 +56,22 @@
             return;
         }// end function
 
-        public function mouseMoveHandler(param1) : void
+        public   mouseMoveHandler(param1) : void
         {
             return;
         }// end function
 
-        public function mouseDownHandler(event:MouseEvent) : void
+        public   mouseDownHandler(event:MouseEvent) : void
         {
             return;
         }// end function
 
-        public function mouseUpHandler(event:MouseEvent = null) : void
+        public   mouseUpHandler(event:MouseEvent = null) : void
         {
             return;
         }// end function
 
-        public function scanWay() : Boolean
+        public   scanWay() : Boolean
         {
             this.tempObject = new Point(this.world.mouseX, this.world.mouseY);
             if (this.world.nowLevel == 6)
@@ -205,18 +200,14 @@
                             }
                         }
                     }
-                    var _loc_1:* = this;
-                    var _loc_2:* = this.i + 1;
-                    _loc_1.i = _loc_2;
+                    i++;
                 }
-                var _loc_1:* = this;
-                var _loc_2:* = this.n + 1;
-                _loc_1.n = _loc_2;
+                n++;
             }
             return false;
         }// end function
 
-        public function kill() : void
+        public   kill() : void
         {
             if (!this.dead)
             {
