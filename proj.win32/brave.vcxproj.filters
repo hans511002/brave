@@ -207,6 +207,24 @@
     <ClCompile Include="..\Classes\engine\towers\BuildTowerMenu.cpp">
       <Filter>src\engine\towers</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\engine\casts\Cast.cpp">
+      <Filter>src\engine\casts</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\casts\Map.cpp">
+      <Filter>src\engine\casts</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\casts\Cast_1.cpp">
+      <Filter>src\engine\casts</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\casts\Golem.cpp">
+      <Filter>src\engine\casts</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\casts\Cast_2.cpp">
+      <Filter>src\engine\casts</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\casts\Cast_3.cpp">
+      <Filter>src\engine\casts</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">

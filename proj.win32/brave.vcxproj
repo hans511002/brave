@@ -164,6 +164,12 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\common\strCodeing.cpp" />
     <ClCompile Include="..\Classes\common\String.cpp" />
     <ClCompile Include="..\Classes\engine\bullets\Bullet.cpp" />
+    <ClCompile Include="..\Classes\engine\casts\Cast.cpp" />
+    <ClCompile Include="..\Classes\engine\casts\Cast_1.cpp" />
+    <ClCompile Include="..\Classes\engine\casts\Cast_2.cpp" />
+    <ClCompile Include="..\Classes\engine\casts\Cast_3.cpp" />
+    <ClCompile Include="..\Classes\engine\casts\Golem.cpp" />
+    <ClCompile Include="..\Classes\engine\casts\Map.cpp" />
     <ClCompile Include="..\Classes\engine\decoration\Decoration.cpp" />
     <ClCompile Include="..\Classes\engine\Feature.cpp" />
     <ClCompile Include="..\Classes\engine\level\Level1.cpp" />

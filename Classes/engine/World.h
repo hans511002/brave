@@ -19,6 +19,7 @@
 #include "engine/towers/UltraTowerMenu.h"
 #include "engine/towers/TowerMenu.h"
 #include "engine/towers/TowerRadius_mc.h"
+#include "engine/casts/Map.h"
 
 //#include "animation/Hint.h"
 
@@ -97,7 +98,7 @@ namespace engine
         //public var listOfIndexes2 : Array;
         //public var listOfIndexes3 : Array;
         casts::Cast* cast;
-        //public var map : Map;
+        casts::Map map; //public var map : Map;
         //public var menuObject : Object;
         //public var sortIndex : Array;
 
@@ -108,7 +109,7 @@ namespace engine
         //public var pointer1 : MovieClip;
         //public var pointer2 : MovieClip;
         //public var pointer3 : MovieClip;
-        units::Unit * selectObject;//public var selectObject : Object;
+        BaseNode * selectObject;//public var selectObject : Object;
         bool firstMusicPlay;//: Boolean;
         bool secondMusicPlay;//: Boolean;
         int secondMusicCounter;// : int = 0;
@@ -148,6 +149,8 @@ namespace engine
         int airVoiceTurn;//: int = 1;
         std::string levelType;
 
+        float mouseX;
+        float mouseY;
 
         CREATE_FUNC(World);
 
