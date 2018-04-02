@@ -25,18 +25,18 @@ namespace engine{
             this->setPosition(cocos2d::Point(this->world->mouseX, this->world->mouseY));
             //this->x = this->world->mouseX;
             //this->y = this->world->mouseY;
-            //if (this->container->currentFrame == 3)
-            //{
-            //    if (this->canselCounter < this->canselTimer)
-            //    {
-            //        this->canselCounter++;
-            //    }
-            //    else
-            //    {
-            //        this->canselCounter = 0;
-            //        this->container.gotoAndStop(2);
-            //    }
-            //}
+            if (this->container->currentFrame == 3)
+            {
+                if (this->canselCounter < this->canselTimer)
+                {
+                    this->canselCounter++;
+                }
+                else
+                {
+                    this->canselCounter = 0;
+                    this->container->gotoAndStop(2);
+                }
+            }
             return;
         }// end function
         bool Cast::scanWay()

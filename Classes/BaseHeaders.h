@@ -9,6 +9,7 @@
 #include "animation/MovieClip.h" 
 #include "BaseNode.h"
 #include "cocos-ext.h"
+#include "engine/mc/mc.h"
 USING_NS_CC;
 USING_NS_DB;
 

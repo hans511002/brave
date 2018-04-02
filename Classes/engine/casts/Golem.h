@@ -7,15 +7,20 @@ namespace engine{
     class World;
     namespace    casts
     {
-        struct Golem1_mc :public BaseNode
+        struct Golem_mc :public MovieClip
+        {
+            MovieClip * dust1;//:MovieClip;
+            MovieClip * dust2;//:MovieClip;
+        };
+        struct Golem1_mc :public Golem_mc
+        {
+            
+        };
+        struct Golem2_mc :public Golem_mc
         {
 
         };
-        struct Golem2_mc :public BaseNode
-        {
-
-        };        
-        struct Golem3_mc :public BaseNode
+        struct Golem3_mc :public Golem_mc
         {
 
         };
@@ -25,7 +30,7 @@ namespace engine{
             int i, j, n;// : int;
             //public var tempObject : Object;
             //public var tempObject1 : Object;
-            BaseNode *container;// : MovieClip;
+            Golem_mc *container;// : MovieClip;
             cocos2d::Point this_pt;// : Point;
             cocos2d::Point enemy_pt;// : Point;
             World * world;

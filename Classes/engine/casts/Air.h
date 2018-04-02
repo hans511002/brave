@@ -9,7 +9,19 @@ namespace casts
 	class Air_mc:public BaseNode
 	{
 	public:
+	    int currentFrame;
+	    BaseNode* cont;//public var cont:MovieClip;
+        BaseNode* dust1;//public var dust1:MovieClip;
+        BaseNode* dust2;
 	}
+	class MoveAir_mc:public BaseNode
+    {
+        BaseNode* down;//:MovieClip;
+        BaseNode* left;//:MovieClip;
+        BaseNode* right;//:MovieClip;
+        BaseNode* up;//:MovieClip;
+
+    }
      class Air :public BaseNode
     {
     public:
