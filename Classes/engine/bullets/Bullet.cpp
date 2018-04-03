@@ -22,7 +22,7 @@ namespace engine{
             //this->mouseEnabled = false;
             this->world = Main::mainClass->worldClass;
             this->world->listOfBullets.push(this);
-            this->world->listOfIndexes3.push(this);
+            //this->world->listOfIndexes3.push(this);
             this->changeIndex = 10;
             return true;
         }// end function

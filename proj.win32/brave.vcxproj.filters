@@ -225,6 +225,27 @@
     <ClCompile Include="..\Classes\engine\casts\Cast_3.cpp">
       <Filter>src\engine\casts</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\engine\bullets\Bullet_1.cpp">
+      <Filter>src\engine\bullets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\bullets\Bullet_2.cpp">
+      <Filter>src\engine\bullets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\bullets\Bullet_3.cpp">
+      <Filter>src\engine\bullets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\bullets\Bullet_4.cpp">
+      <Filter>src\engine\bullets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\casts\Air.cpp">
+      <Filter>src\engine\casts</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\casts\Iceman.cpp">
+      <Filter>src\engine\casts</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\mc\mc.cpp">
+      <Filter>src\engine\mc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -523,6 +544,18 @@
     </ClInclude>
     <ClInclude Include="..\Classes\engine\mc\mc.h">
       <Filter>src\engine\mc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\bullets\Bullet_1.h">
+      <Filter>src\engine\bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\bullets\Bullet_2.h">
+      <Filter>src\engine\bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\bullets\Bullet_3.h">
+      <Filter>src\engine\bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\bullets\Bullet_4.h">
+      <Filter>src\engine\bullets</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

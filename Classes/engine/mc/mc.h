@@ -27,7 +27,7 @@ namespace engine
     {
     public:
         BaseSprite * container;  
-        BaseSprite(BaseSprite * cont) ;
+        SpriteClip(BaseSprite * cont);
     };
     
     //增加删除事件
