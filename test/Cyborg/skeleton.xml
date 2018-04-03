@@ -1,0 +1,771 @@
+<root name="Cyborg" isGlobal="0" frameRate="24" version="3.0">
+ <armature name="armInside">
+  <skin name="default">
+   <slot name="handL" z="0" parent="handL">
+    <display name="CyborgFolder/LeftHand" type="image">
+     <transform pX="3"/>
+    </display>
+   </slot>
+   <slot name="forearmL" z="1" parent="forearmL">
+    <display name="CyborgFolder/LeftArm" type="image">
+     <transform pX="5" pY="4"/>
+    </display>
+   </slot>
+   <slot name="upperarmL" z="2" parent="upperarmL">
+    <display name="CyborgFolder/LeftShoulder" type="image">
+     <transform pX="7" pY="5"/>
+    </display>
+   </slot>
+  </skin>
+  <bone name="forearmL">
+   <transform x="10.3" skX="-69.29" y="7.85" skY="-69.29"/>
+  </bone>
+  <bone name="upperarmL" parent="forearmL">
+   <transform x="3.7003" y="-12.4105" skX="14.77" skY="14.74"/>
+  </bone>
+  <bone name="handL" parent="upperarmL">
+   <transform scX="0.9998" x="3.6935" scY="1.0002" y="26.2893" skX="-19.7966" skY="-19.8134"/>
+  </bone>
+  <animation fadeInTime="0.3" autoTween="NaN" name="weapon1" duration="1" tweenEasing="NaN">
+   <timeline name="handL">
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+   </timeline>
+   <timeline name="forearmL">
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+   </timeline>
+   <timeline name="upperarmL">
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+   </timeline>
+  </animation>
+  <animation fadeInTime="0.3" autoTween="NaN" name="weapon2" duration="1" tweenEasing="NaN">
+   <timeline name="handL">
+    <frame z="0" duration="1">
+     <transform x="0.1928" y="-0.529" skX="1.0007" skY="1.0193"/>
+    </frame>
+   </timeline>
+   <timeline name="forearmL">
+    <frame z="0" duration="1">
+     <transform x="2" y="-4" skX="-17.73" skY="-17.73"/>
+    </frame>
+   </timeline>
+   <timeline name="upperarmL">
+    <frame z="0" duration="1">
+     <transform x="-0.4949" y="-0.073" skX="0.22" skY="0.21"/>
+    </frame>
+   </timeline>
+  </animation>
+  <animation fadeInTime="0.3" autoTween="NaN" name="weapon3" duration="1" tweenEasing="NaN">
+   <timeline name="handL">
+    <frame z="0" duration="1">
+     <transform x="0.6169" y="0.2172" skX="5.559" skY="5.571"/>
+    </frame>
+   </timeline>
+   <timeline name="forearmL">
+    <frame z="0" duration="1">
+     <transform y="-0.05" skX="3.99" skY="3.98"/>
+    </frame>
+   </timeline>
+   <timeline name="upperarmL">
+    <frame z="0" duration="1">
+     <transform x="-0.9179" y="-0.206" skX="-1.5195" skY="-1.5205"/>
+    </frame>
+   </timeline>
+  </animation>
+  <animation fadeInTime="0.3" autoTween="NaN" name="weapon4" duration="1" tweenEasing="NaN">
+   <timeline name="handL">
+    <frame z="0" duration="1">
+     <transform x="3.8292" y="-0.0929" skX="-3.4472" skY="-3.4428"/>
+    </frame>
+   </timeline>
+   <timeline name="forearmL">
+    <frame z="0" duration="1">
+     <transform x="2.7" y="-4.65" skX="-32.18" skY="-32.18"/>
+    </frame>
+   </timeline>
+   <timeline name="upperarmL">
+    <frame z="0" duration="1">
+     <transform x="2.0209" y="0.3065" skX="12.62" skY="12.61"/>
+    </frame>
+   </timeline>
+  </animation>
+ </armature>
+ <armature name="armOutside">
+  <skin name="default">
+   <slot name="weapon" z="0" parent="weapon">
+    <display name="CyborgFolder/weapon1" type="image">
+     <transform pX="27" pY="14"/>
+    </display>
+    <display name="CyborgFolder/weapon2" type="image">
+     <transform pX="20" pY="14"/>
+    </display>
+    <display name="CyborgFolder/weapon3" type="image">
+     <transform pX="23"/>
+    </display>
+    <display name="CyborgFolder/weapon4" type="image">
+     <transform pX="28" pY="13"/>
+    </display>
+   </slot>
+   <slot name="upperarmR" z="1" parent="upperarmR">
+    <display name="CyborgFolder/RightShoulder" type="image">
+     <transform pX="7" pY="5"/>
+    </display>
+   </slot>
+   <slot name="handR" z="2" parent="handR">
+    <display name="CyborgFolder/RightHand" type="image">
+     <transform pX="3"/>
+    </display>
+   </slot>
+   <slot name="forearmR" z="3" parent="forearmR">
+    <display name="CyborgFolder/RightArm" type="image">
+     <transform pX="5" pY="4"/>
+    </display>
+   </slot>
+  </skin>
+  <bone name="upperarmR">
+   <transform skX="30" skY="30"/>
+  </bone>
+  <bone name="forearmR" parent="upperarmR">
+   <transform x="-0.2519" y="14.4637" skX="-108.04" skY="-108.09"/>
+  </bone>
+  <bone name="handR" parent="forearmR">
+   <transform scX="0.9997" x="-0.1833" scY="1.0003" y="14.0938" skX="-20.7237" skY="-20.7363"/>
+  </bone>
+  <bone name="weapon" parent="handR">
+   <transform scX="0.9999" x="-0.5274" scY="1.0001" y="6.6974" skX="98.8188" skY="98.7712"/>
+  </bone>
+  <animation fadeInTime="0.3" autoTween="NaN" name="weapon1" duration="1" tweenEasing="NaN">
+   <timeline name="weapon">
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+   </timeline>
+   <timeline name="upperarmR">
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+   </timeline>
+   <timeline name="handR">
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+   </timeline>
+   <timeline name="forearmR">
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+   </timeline>
+  </animation>
+  <animation fadeInTime="0.3" autoTween="NaN" name="weapon2" duration="1" tweenEasing="NaN">
+   <timeline name="weapon">
+    <frame displayIndex="1" z="0" duration="1">
+     <transform scX="0.9998" x="1.7474" scY="1.0002" y="-0.3526" skX="17.4714" skY="17.4886"/>
+    </frame>
+   </timeline>
+   <timeline name="upperarmR">
+    <frame z="0" duration="1">
+     <transform skX="-55.17" skY="-55.16"/>
+    </frame>
+   </timeline>
+   <timeline name="handR">
+    <frame z="0" duration="1">
+     <transform scX="1.0002" x="-0.0619" scY="0.9998" y="-0.7346" skX="17.9639" skY="17.9762"/>
+    </frame>
+   </timeline>
+   <timeline name="forearmR">
+    <frame z="0" duration="1">
+     <transform x="-1.1771" y="0.3338" skX="19.71" skY="19.72"/>
+    </frame>
+   </timeline>
+  </animation>
+  <animation fadeInTime="0.3" autoTween="NaN" name="weapon3" duration="1" tweenEasing="NaN">
+   <timeline name="weapon">
+    <frame displayIndex="2" z="0" duration="1">
+     <transform x="3.2699" y="-1.5164"/>
+    </frame>
+   </timeline>
+   <timeline name="upperarmR">
+    <frame z="0" duration="1">
+     <transform skX="13.22" skY="13.23"/>
+    </frame>
+   </timeline>
+   <timeline name="handR">
+    <frame z="0" duration="1">
+     <transform scX="1.0002" x="0.4149" scY="0.9998" y="0.2133" skX="9.0254" skY="9.0246"/>
+    </frame>
+   </timeline>
+   <timeline name="forearmR">
+    <frame z="0" duration="1">
+     <transform x="-0.2313" y="1.0852" skX="-22.2558" skY="-22.2442"/>
+    </frame>
+   </timeline>
+  </animation>
+  <animation fadeInTime="0.3" autoTween="NaN" name="weapon4" duration="1" tweenEasing="NaN">
+   <timeline name="weapon">
+    <frame displayIndex="3" z="0" duration="1">
+     <transform scX="0.9999" x="1.4309" scY="1.0001" y="0.5849" skX="56.6681" skY="56.742"/>
+    </frame>
+   </timeline>
+   <timeline name="upperarmR">
+    <frame z="0" duration="1">
+     <transform skX="-35.7" skY="-35.69"/>
+    </frame>
+   </timeline>
+   <timeline name="handR">
+    <frame z="0" duration="1">
+     <transform x="1.0418" y="0.0634" skX="5.957" skY="5.973"/>
+    </frame>
+   </timeline>
+   <timeline name="forearmR">
+    <frame z="0" duration="1">
+     <transform x="0.6529" y="1.6557" skX="-26.975" skY="-26.975"/>
+    </frame>
+   </timeline>
+  </animation>
+ </armature>
+ <armature name="Cyborg">
+  <skin name="default">
+   <slot name="armInside" z="0" parent="armInside">
+    <display name="armInside" type="armature">
+     <transform/>
+    </display>
+   </slot>
+   <slot name="legL" z="1" parent="legL">
+    <display name="CyborgFolder/LeftThigh" type="image">
+     <transform pX="7" pY="5"/>
+    </display>
+   </slot>
+   <slot name="crusL" z="2" parent="crusL">
+    <display name="CyborgFolder/Leg" type="image">
+     <transform pX="7" pY="6"/>
+    </display>
+   </slot>
+   <slot name="body" z="3" parent="body">
+    <display name="CyborgFolder/Trunk" type="image">
+     <transform pX="3" pY="14"/>
+    </display>
+   </slot>
+   <slot name="crotch" z="4" parent="crotch">
+    <display name="CyborgFolder/Hip" type="image">
+     <transform pX="2" pY="2"/>
+    </display>
+   </slot>
+   <slot name="chest" z="5" parent="chest">
+    <display name="CyborgFolder/Chest" type="image">
+     <transform pX="6" pY="7"/>
+    </display>
+   </slot>
+   <slot name="head" z="6" parent="head">
+    <display name="CyborgFolder/Head" type="image">
+     <transform pX="20" pY="18"/>
+    </display>
+   </slot>
+   <slot name="legR" z="7" parent="legR">
+    <display name="CyborgFolder/RightThigh" type="image">
+     <transform pX="7" pY="5"/>
+    </display>
+   </slot>
+   <slot name="crusR" z="8" parent="crusR">
+    <display name="CyborgFolder/Leg" type="image">
+     <transform pX="7" pY="6"/>
+    </display>
+   </slot>
+   <slot name="armOutside" z="9" parent="armOutside">
+    <display name="armOutside" type="armature">
+     <transform/>
+    </display>
+   </slot>
+  </skin>
+  <bone name="crotch">
+   <transform/>
+  </bone>
+  <bone name="legL" parent="crotch">
+   <transform x="3" skX="-35.09" skY="-35.12"/>
+  </bone>
+  <bone name="legR" parent="crotch">
+   <transform x="-3" skX="-7" skY="-7"/>
+  </bone>
+  <bone name="body" parent="crotch">
+   <transform skX="9.77" skY="9.82"/>
+  </bone>
+  <bone name="crusL" parent="legL">
+   <transform scX="1.0002" x="-0.9376" scY="0.9998" y="21.3389" skX="35.35" skY="35.36"/>
+  </bone>
+  <bone name="chest" parent="body">
+   <transform x="0.3563" y="-13.253" skX="-5.0004" skY="-5.0096"/>
+  </bone>
+  <bone name="crusR" parent="legR">
+   <transform x="-0.6281" y="21.937" skX="40" skY="40"/>
+  </bone>
+  <bone name="armInside" parent="chest">
+   <transform x="2.9231" y="-1.0487" skX="-4.7703" skY="-4.8097"/>
+  </bone>
+  <bone name="head" parent="chest">
+   <transform x="0.8962" y="-6.0963" skX="-4.7703" skY="-4.8097"/>
+  </bone>
+  <bone name="armOutside" parent="chest">
+   <transform x="-5.1324" y="-1.3744" skX="-4.7703" skY="-4.8097"/>
+  </bone>
+  <animation fadeInTime="0.25" scale="12.5" loop="0" autoTween="NaN" name="stand" duration="2" tweenEasing="2">
+   <timeline name="armInside">
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform x="0.0814" y="0.9341" skX="-1.2297" skY="-1.1903"/>
+    </frame>
+   </timeline>
+   <timeline name="legL">
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform skX="-10.16" skY="-10.13"/>
+    </frame>
+   </timeline>
+   <timeline name="crusL">
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform scX="0.9998" x="0.067" scY="1.0002" y="-0.0586" skX="14.19" skY="14.18"/>
+    </frame>
+   </timeline>
+   <timeline name="body" offset="0.95">
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform skX="6.23" skY="6.18"/>
+    </frame>
+   </timeline>
+   <timeline name="crotch">
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform y="2"/>
+    </frame>
+   </timeline>
+   <timeline name="chest" offset="0.9">
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform x="-0.479" y="-0.2357" skX="-4.9996" skY="-4.9904"/>
+    </frame>
+   </timeline>
+   <timeline name="head" offset="0.8">
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform x="-0.1311" y="-0.0172" skX="-1.2297" skY="-1.1903"/>
+    </frame>
+   </timeline>
+   <timeline name="legR">
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform skX="-5" skY="-5"/>
+    </frame>
+   </timeline>
+   <timeline name="crusR">
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform x="0.2547" y="-0.7005" skX="8" skY="8"/>
+    </frame>
+   </timeline>
+   <timeline name="armOutside">
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform x="0.0761" y="1.1014" skX="-1.2297" skY="-1.1903"/>
+    </frame>
+   </timeline>
+  </animation>
+  <animation fadeInTime="0.25" scale="12" loop="0" autoTween="NaN" name="run" duration="2" tweenEasing="2">
+   <timeline name="armInside">
+    <frame z="0" duration="1">
+     <transform x="-0.163" y="-1.2506" skX="-0.2297" skY="-0.1903"/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform x="-3.4121" y="-1.2125" skX="-1.2297" skY="-1.1903"/>
+    </frame>
+   </timeline>
+   <timeline name="legL">
+    <frame z="0" duration="1">
+     <transform x="-5" y="1" skX="70.09" skY="70.12"/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform x="-1" y="-1" skX="-34.91" skY="-34.88"/>
+    </frame>
+   </timeline>
+   <timeline name="crusL" offset="0.15">
+    <frame z="0" duration="1">
+     <transform scX="0.9998" x="0.9698" scY="1.0002" y="3.7255" skX="-20.35" skY="-20.36"/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform scX="0.9998" x="0.9579" scY="1.0002" y="3.7151" skX="59.65" skY="59.64"/>
+    </frame>
+   </timeline>
+   <timeline name="body" scale="0.5">
+    <frame z="0" duration="1">
+     <transform skX="0.23" skY="0.18"/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform skX="2.23" skY="2.18"/>
+    </frame>
+   </timeline>
+   <timeline name="crotch" scale="0.5">
+    <frame z="0" duration="1">
+     <transform y="-5"/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform y="5"/>
+    </frame>
+   </timeline>
+   <timeline name="chest" scale="0.5">
+    <frame z="0" duration="1">
+     <transform x="-0.3078" y="-1.7331" skX="0.0004" skY="0.0096"/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform x="0.3949" y="-1.7306" skX="-0.9996" skY="-0.9904"/>
+    </frame>
+   </timeline>
+   <timeline name="head" scale="0.5">
+    <frame z="0" duration="1">
+     <transform x="-0.0089" y="0.7486" skX="-0.2297" skY="-0.1903"/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform x="-0.3274" y="0.5062" skX="-1.2297" skY="-1.1903"/>
+    </frame>
+   </timeline>
+   <timeline name="legR">
+    <frame z="0" duration="1">
+     <transform x="5" y="-1" skX="-63" skY="-63"/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform x="1" y="1" skX="42" skY="42"/>
+    </frame>
+   </timeline>
+   <timeline name="crusR" offset="0.15">
+    <frame z="0" duration="1">
+     <transform x="0.6483" y="3.1171" skX="55" skY="55"/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform x="0.6603" y="3.1274" skX="-25" skY="-25"/>
+    </frame>
+   </timeline>
+   <timeline name="armOutside">
+    <frame z="0" duration="1">
+     <transform x="-0.1642" y="-1.2239" skX="-0.2297" skY="-0.1903"/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform x="6.5278" y="-2.0904" skX="-1.2297" skY="-1.1903"/>
+    </frame>
+   </timeline>
+  </animation>
+  <animation fadeInTime="0.1667" scale="15" loop="0" autoTween="NaN" name="runBack" duration="2" tweenEasing="2">
+   <timeline name="armInside">
+    <frame z="0" duration="1">
+     <transform x="-3" y="-2.2598" skX="7.7703" skY="7.8097"/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform x="-3" y="-2.2598" skX="7.7703" skY="7.8097"/>
+    </frame>
+   </timeline>
+   <timeline name="legL">
+    <frame z="0" duration="1">
+     <transform y="-1" skX="-9.91" skY="-9.88"/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform x="-5.95" y="1" skX="50.09" skY="50.12"/>
+    </frame>
+   </timeline>
+   <timeline name="crusL" offset="0.85">
+    <frame z="0" duration="1">
+     <transform scX="0.9998" x="0.6548" scY="1.0002" y="0.0157" skX="54.65" skY="54.64"/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform scX="0.9998" x="1.3475" scY="1.0002" y="0.8615" skX="-41.35" skY="-41.36"/>
+    </frame>
+   </timeline>
+   <timeline name="body" scale="0.5">
+    <frame z="0" duration="1">
+     <transform skX="-15.77" skY="-15.82"/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform skX="-15.77" skY="-15.82"/>
+    </frame>
+   </timeline>
+   <timeline name="crotch" scale="0.5" offset="0.5">
+    <frame z="0" duration="1">
+     <transform y="-5"/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform y="-1"/>
+    </frame>
+   </timeline>
+   <timeline name="chest" scale="0.5">
+    <frame z="0" duration="1">
+     <transform x="-1.0834" y="-0.3978" skX="8.0004" skY="8.0096"/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform x="-1.0834" y="-0.3978" skX="8.0004" skY="8.0096"/>
+    </frame>
+   </timeline>
+   <timeline name="head" scale="0.5">
+    <frame z="0" duration="1">
+     <transform x="-1.4049" y="-0.4393" skX="7.7703" skY="7.8097"/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform x="-1.4049" y="-0.4393" skX="7.7703" skY="7.8097"/>
+    </frame>
+   </timeline>
+   <timeline name="legR">
+    <frame z="0" duration="1">
+     <transform y="1" skX="22" skY="22"/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform x="6" y="-0.95" skX="-38" skY="-38"/>
+    </frame>
+   </timeline>
+   <timeline name="crusR" offset="0.85">
+    <frame z="0" duration="1">
+     <transform x="1.038" y="0.2634" skX="-46" skY="-46"/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform x="0.3806" y="-0.6177" skX="50" skY="50"/>
+    </frame>
+   </timeline>
+   <timeline name="armOutside">
+    <frame z="0" duration="1">
+     <transform x="4.0045" y="-0.9879" skX="7.7703" skY="7.8097"/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform x="3.0582" y="-2.0388" skX="7.7703" skY="7.8097"/>
+    </frame>
+   </timeline>
+  </animation>
+  <animation fadeInTime="0.25" autoTween="NaN" name="squat" duration="1" tweenEasing="NaN">
+   <timeline name="armInside">
+    <frame z="0" duration="1">
+     <transform x="0.8669" y="-1.1595" skX="-1.2297" skY="-1.1903"/>
+    </frame>
+   </timeline>
+   <timeline name="legL">
+    <frame z="0" duration="1">
+     <transform x="-1" y="-1" skX="-84.91" skY="-84.88"/>
+    </frame>
+   </timeline>
+   <timeline name="crusL">
+    <frame z="0" duration="1">
+     <transform scX="0.9998" x="-0.1253" scY="1.0002" y="0.1022" skX="71.15" skY="71.14"/>
+    </frame>
+   </timeline>
+   <timeline name="body">
+    <frame z="0" duration="1">
+     <transform skX="-0.77" skY="-0.82"/>
+    </frame>
+   </timeline>
+   <timeline name="crotch">
+    <frame z="0" duration="1">
+     <transform y="32"/>
+    </frame>
+   </timeline>
+   <timeline name="chest">
+    <frame z="0" duration="1">
+     <transform x="-0.9661" y="-0.825" skX="2.0004" skY="2.0096"/>
+    </frame>
+   </timeline>
+   <timeline name="head">
+    <frame z="0" duration="1">
+     <transform x="0.968" y="0.8728" skX="-1.2297" skY="-1.1903"/>
+    </frame>
+   </timeline>
+   <timeline name="legR">
+    <frame z="0" duration="1">
+     <transform x="1" y="-1" skX="-23" skY="-23"/>
+    </frame>
+   </timeline>
+   <timeline name="crusR">
+    <frame z="0" duration="1">
+     <transform x="-0.0665" y="-1.0338" skX="79.99" skY="79.99"/>
+    </frame>
+   </timeline>
+   <timeline name="armOutside">
+    <frame z="0" duration="1">
+     <transform x="0.8616" y="-0.9921" skX="-1.2297" skY="-1.1903"/>
+    </frame>
+   </timeline>
+  </animation>
+  <animation fadeInTime="0.25" autoTween="NaN" name="jump" duration="1" tweenEasing="NaN">
+   <timeline name="armInside">
+    <frame z="0" duration="1">
+     <transform x="0.7036" y="-1.4185" skX="-5.2297" skY="-5.1903"/>
+    </frame>
+   </timeline>
+   <timeline name="legL">
+    <frame z="0" duration="1">
+     <transform x="-5" y="1" skX="65.09" skY="65.12"/>
+    </frame>
+   </timeline>
+   <timeline name="crusL">
+    <frame z="0" duration="1">
+     <transform scX="0.9998" x="1.098" scY="1.0002" y="0.7388" skX="-35.35" skY="-35.36"/>
+    </frame>
+   </timeline>
+   <timeline name="body">
+    <frame z="0" duration="1">
+     <transform skX="5.23" skY="5.18"/>
+    </frame>
+   </timeline>
+   <timeline name="crotch">
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+   </timeline>
+   <timeline name="chest">
+    <frame z="0" duration="1">
+     <transform x="-0.5024" y="-1.2017" skX="0.0004" skY="0.0096"/>
+    </frame>
+   </timeline>
+   <timeline name="head">
+    <frame z="0" duration="1">
+     <transform x="-0.5594" y="-0.0557" skX="-5.2297" skY="-5.1903"/>
+    </frame>
+   </timeline>
+   <timeline name="legR">
+    <frame z="0" duration="1">
+     <transform x="5" y="-1" skX="-53" skY="-53"/>
+    </frame>
+   </timeline>
+   <timeline name="crusR">
+    <frame z="0" duration="1">
+     <transform x="0.1371" y="0.1126" skX="80" skY="80"/>
+    </frame>
+   </timeline>
+   <timeline name="armOutside">
+    <frame z="0" duration="1">
+     <transform x="0.7069" y="-0.6885" skX="-5.2297" skY="-5.1903"/>
+    </frame>
+   </timeline>
+  </animation>
+  <animation fadeInTime="0.25" autoTween="NaN" name="fall" duration="1" tweenEasing="NaN">
+   <timeline name="armInside">
+    <frame z="0" duration="1">
+     <transform x="-0.8504" y="0.4622" skX="10.7703" skY="10.8097"/>
+    </frame>
+   </timeline>
+   <timeline name="legL">
+    <frame z="0" duration="1">
+     <transform x="-1" skX="-19.91" skY="-19.88"/>
+    </frame>
+   </timeline>
+   <timeline name="crusL">
+    <frame z="0" duration="1">
+     <transform scX="0.9998" x="0.5066" scY="1.0002" y="1.0589" skX="55.65" skY="55.64"/>
+    </frame>
+   </timeline>
+   <timeline name="body">
+    <frame z="0" duration="1">
+     <transform skX="-18.77" skY="-18.82"/>
+    </frame>
+   </timeline>
+   <timeline name="crotch">
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+   </timeline>
+   <timeline name="chest">
+    <frame z="0" duration="1">
+     <transform x="-1.5243" y="-1.1065" skX="8.0004" skY="8.0096"/>
+    </frame>
+   </timeline>
+   <timeline name="head">
+    <frame z="0" duration="1">
+     <transform x="-1.8603" y="-0.0381" skX="10.7703" skY="10.8097"/>
+    </frame>
+   </timeline>
+   <timeline name="legR">
+    <frame z="0" duration="1">
+     <transform x="1" skX="-8" skY="-8"/>
+    </frame>
+   </timeline>
+   <timeline name="crusR">
+    <frame z="0" duration="1">
+     <transform x="0.7271" y="0.2962" skX="-40" skY="-40"/>
+    </frame>
+   </timeline>
+   <timeline name="armOutside">
+    <frame z="0" duration="1">
+     <transform x="-0.6466" y="-1.0429" skX="10.7703" skY="10.8097"/>
+    </frame>
+   </timeline>
+  </animation>
+  <animation name="fallEnd" autoTween="NaN" fadeInTime="0.1667" duration="4" tweenEasing="NaN">
+   <timeline name="armInside">
+    <frame z="0" duration="4">
+     <transform/>
+    </frame>
+   </timeline>
+   <timeline name="legL">
+    <frame z="0" duration="4">
+     <transform x="1" skX="-24.91" skY="-24.88"/>
+    </frame>
+   </timeline>
+   <timeline name="crusL">
+    <frame z="0" duration="4">
+     <transform scX="0.9998" x="0.6614" scY="1.0002" y="0.1825" skX="24.65" skY="24.64"/>
+    </frame>
+   </timeline>
+   <timeline name="body">
+    <frame z="0" duration="4">
+     <transform skX="13.75" skY="13.75"/>
+    </frame>
+   </timeline>
+   <timeline name="crotch">
+    <frame z="0" duration="4">
+     <transform y="7"/>
+    </frame>
+   </timeline>
+   <timeline name="chest">
+    <frame z="0" duration="4">
+     <transform scX="1.0002" x="1.3056" scY="0.9998" y="0.5315" skX="-13.7548" skY="-13.7452"/>
+    </frame>
+   </timeline>
+   <timeline name="head">
+    <frame z="0" duration="4">
+     <transform/>
+    </frame>
+   </timeline>
+   <timeline name="legR">
+    <frame z="0" duration="4">
+     <transform x="-1" skX="-23" skY="-23"/>
+    </frame>
+   </timeline>
+   <timeline name="crusR">
+    <frame z="0" duration="4">
+     <transform x="-0.2116" y="-0.4825" skX="35" skY="35"/>
+    </frame>
+   </timeline>
+   <timeline name="armOutside">
+    <frame z="0" duration="4">
+     <transform/>
+    </frame>
+   </timeline>
+   <frame duration="3"/>
+   <frame duration="1" action="stand"/>
+  </animation>
+ </armature>
+</root>

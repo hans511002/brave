@@ -695,28 +695,32 @@ namespace engine{
                 }
                 else if (dynamic_cast<Golem2_mc*>(this->container) )
                 {
-                    //tempObject = new Indexes(new Golem2HorisontDeath_mc(), 1);
+                    tempObject = new OnceMovieClip(this->world,"cast/Golem2HorisontDeath_mc","Golem2HorisontDeath_mc",46);
                     tempObject->container->gotoAndStop(12);
                 }
                 else if (dynamic_cast<Golem3_mc*>(this->container))
                 {
+                    tempObject = new OnceMovieClip(this->world,"cast/Golem3HorisontDeath_mc","Golem3HorisontDeath_mc",46);
                     //tempObject = new Indexes(new Golem3HorisontDeath_mc(), 1);
                     tempObject->container->gotoAndStop(12);
                 }
             }
             else if (dynamic_cast<Golem1_mc*>(this->container))
             {
+                tempObject = new OnceMovieClip(this->world,"cast/Golem1VerticalDeath_mc","Golem1VerticalDeath_mc",46);
                 //tempObject = new Indexes(new Golem1VerticalDeath_mc(), 1);
                 tempObject->container->gotoAndStop(12);
             }
             else if (dynamic_cast<Golem2_mc*>(this->container))
             {
                 //tempObject = new Indexes(new Golem2VerticalDeath_mc(), 1);
+                tempObject = new OnceMovieClip(this->world,"cast/Golem2VerticalDeath_mc","Golem2VerticalDeath_mc",46);
                 tempObject->container->gotoAndStop(12);
             }
             else if (dynamic_cast<Golem3_mc*>(this->container))
             {
                 //tempObject = new Indexes(new Golem3VerticalDeath_mc(), 1);
+                tempObject = new OnceMovieClip(this->world,"cast/Golem3VerticalDeath_mc","Golem3VerticalDeath_mc",46);
                 tempObject->container->gotoAndStop(12);
             }
             tempObject->type = "golemDeath";

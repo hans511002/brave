@@ -3,11 +3,12 @@
 #include "BaseHeaders.h"
 #include "Cast.h"
 
+
 namespace engine{
     class World;
     namespace    casts
     {
-        struct MoveAir_mc :public BaseNode
+        struct MoveAir_mc :public MovieClip
         {
 
         };
@@ -17,7 +18,7 @@ namespace engine{
             string direction;
             cocos2d::Point this_pt;// :Point;
 
-             Cast_3()
+            Cast_3()
             {
                 return;
             }// end function

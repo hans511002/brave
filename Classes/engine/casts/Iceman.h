@@ -5,13 +5,41 @@
 
 namespace engine{
     class World;
+    
+    //To fix it at Label.cpp
+//void Label::createSpriteWithFontDefinition()
+//{
+//    _currentLabelType = LabelType::STRING_TEXTURE;
+//
+//    auto texture = new Texture2D;
+//    texture->initWithString(_originalUTF8String.c_str(),_fontDefinition);
+//
+//    _textSprite = Sprite::createWithTexture(texture);
+//    _textSprite->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
+//    this->setContentSize(_textSprite->getContentSize());
+//    texture->release();
+//    if (_blendFuncDirty)
+//    {
+//        _textSprite->setBlendFunc(_blendFunc);
+//    }
+//
+//    Node::addChild(_textSprite,0,Node::INVALID_TAG);
+//
+//    _textSprite->updateDisplayedColor(_displayedColor);
+//    _textSprite->updateDisplayedOpacity(_displayedOpacity);  <---add this
+//}
     namespace    casts
     {
-        struct Iceman_mc
-        {
-            MovieClip * container ;
-            
+        struct Iceman_mc : public MovieClip
+        { 
         }
+        struct BlowIce_mc : public MovieClip
+        { 
+        }
+        struct IceRoad_mc : public MovieClip
+        { 
+        }
+        
         class Iceman extends Sprite
         {
         public:
@@ -59,9 +87,9 @@ namespace engine{
 
         void  bifurcation() ;
 
-        void  soundTimerManageMove(param1:Boolean) ;
+        void  soundTimerManageMove(bool param1) ;
 
-        void  soundTimerMoveFunk(event:TimerEvent) ;
+        //void  soundTimerMoveFunk(event:TimerEvent) ;
 
         void  kill() ;
 

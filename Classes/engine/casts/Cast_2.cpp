@@ -72,7 +72,7 @@ namespace engine{
             //    }
             //    else if (event.target.name == "castGolemCase" || event.target.name == "castIcemanCase" || event.target.name == "castAirCase")
             //    {
-            //        world.worldInterface.container.butCastIceman.gotoAndStop(1);
+            //        world->worldInterface.container.butCastIceman.gotoAndStop(1);
             //        kill();
             //    }
             //}

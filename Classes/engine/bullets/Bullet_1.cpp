@@ -17,7 +17,7 @@ namespace engine{
             this->phase1 = 4;
             this->phase2 = 10;
             container = new BulletFireTower_mc();
-            //container.stop();
+            //container->stop();
             this->addChild(container);
             this->whoShoot->fireBulletCounter++;
             Bullet::init();
@@ -32,13 +32,13 @@ namespace engine{
             {
                 //Sounds.instance.playSound("snd_tower_shootFire");
             }
-            //if (container.currentFrame < container.totalFrames)
+            //if (container->currentFrame < container->totalFrames)
             //{
-            //    container.gotoAndStop((container.currentFrame + 1));
+            //    container->gotoAndStop((container->currentFrame + 1));
             //}
             //else
             //{
-            //    container.gotoAndStop(1);
+            //    container->gotoAndStop(1);
             //}
             if (liveCounter > 0)
             {

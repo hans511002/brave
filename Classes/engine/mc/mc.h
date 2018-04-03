@@ -15,6 +15,7 @@ namespace engine
         dragonBones::DBCCArmatureNode * container;
         int currentFrame;
         int totalFrames;
+        float speedX;
         MovieClip(World * world,dragonBones::DBCCArmatureNode * cont,int totalFrames) ;
         MovieClip(World * world,string rootPath, string aniName ,int totalFrames) ;
         void gotoAndStop(int cf);

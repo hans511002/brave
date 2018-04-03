@@ -23,62 +23,63 @@ namespace engine{
             //this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
             this->world = Main::mainClass->worldClass;
             this->container = new Iceman_mc();
-            this->container.stop();
+            //this->container->stop();
             this->addChild(this->container);
-            var _loc_2:* = Main::mainClass->readXMLClass.castIcemanSpeedXML;
             this->speedKSave = Main::mainClass->readXMLClass.castIcemanSpeedXML;
-            this->speedK = _loc_2;
+            this->speedK = Main::mainClass->readXMLClass.castIcemanSpeedXML;
             this->radius = 30;
             this->liveCounter = Main::mainClass->readXMLClass.castIcemanLifeTimerXML;
             if (this->road == 1)
             {
-                this->roadMap = this->world.map.road1;
+                this->roadMap = &this->world->map.road1;
             }
             else if (this->road == 2)
             {
-                this->roadMap = this->world.map.road2;
+                this->roadMap = &this->world->map.road2;
             }
             else if (this->road == 3)
             {
-                this->roadMap = this->world.map.road3;
+                this->roadMap = &this->world->map.road3;
             }
-            if (this->roadMap[this->movePhase].x != this->roadMap[(this->movePhase - 1)].x)
+            Common::Array<cocos2d::Point> &roadMap=*this->roadMap;
+            if (roadMap[this->movePhase].x != roadMap[(this->movePhase - 1)].x)
             {
-                if (this->roadMap[this->movePhase].x < this->roadMap[(this->movePhase - 1)].x)
+                if (roadMap[this->movePhase].x < roadMap[(this->movePhase - 1)].x)
                 {
-                    this->container.scaleX = this->container.scaleX * -1;
+                    this->container->setScaleX(this->container->getScaleX() * -1);
                 }
             }
             else
             {
                 this->scanNextTurn();
             }
-            this->x = this->this_pt.x;
-            this->y = this->this_pt.y;
+            this->setPosition(this->this_pt);
+            //this->x = this->this_pt.x;
+            //this->y = this->this_pt.y;
             if (this->openFlag)
             {
-                this->container.alpha = 0;
+                this->container->setOpacity(0) ;
                 this->blow = new BlowIce_mc();
                 this->blow.stop();
                 this->addChild(this->blow);
-                this->x = this->x + 84;
-                this->y = this->y - 238;
-            }
-            var _loc_2:* = false;
+                this->setPosition(Vec2(this->getPositionX() + 84,this->getPositionY() - 238));
+                //this->x = this->x + 84;
+                //this->y = this->y - 238;
+            } 
             this->mouseChildren = false;
-            this->mouseEnabled = _loc_2;
-            this->world.listOfClasses.push(this);
-            this->world.listOfIndexes1.push(this);
-            if (!this->world.selectObject)
+            this->mouseEnabled = false;
+            //this->world->listOfClasses.push(this);
+            //this->world->listOfIndexes1.push(this);
+            if (!this->world->selectObject)
             {
-                this->world.worldInterface.barInfoManage(this);
+                this->world->worldInterface->barInfoManage(this);
             }
             if (!this->brother)
             {
-                (this->world.createIcemanCounter + 1);
-                if (this->world.createIcemanCounter == 15)
+                this->world->createIcemanCounter ++;
+                if (this->world->createIcemanCounter == 15)
                 {
-                    this->world.achieveManage("createIceman_15_times");
+                    this->world->achieveManage("createIceman_15_times");
                 }
             }
             return;
@@ -86,136 +87,147 @@ namespace engine{
 
         void  Iceman::update() 
         {
+            OnceMovieClip * tempObject =NULL;
             if (!this->openFlag)
             {
                 this->soundTimerManageMove(true);
                 if (this->liveCounter > 0)
                 {
-                    (this->liveCounter - 1);
+                    this->liveCounter--;
                 }
                 if (this->liveCounter == 0)
                 {
                     this->kill();
                     if (this->direction == "left")
                     {
-                        this->tempObject = new Indexes(new IcemanHorisontDeath_mc(), 2);
-                        this->tempObject.speedX = this->speedK * -1;
+                        tempObject = new OnceMovieClip(this->world,"cast/IcemanHorisontDeath_mc","IcemanHorisontDeath_mc",46);
+                        //this->tempObject = new Indexes(new IcemanHorisontDeath_mc(), 2);
+                        tempObject->speedX = this->speedK * -1;
                     }
                     else if (this->direction == "right")
                     {
-                        this->tempObject = new Indexes(new IcemanHorisontDeath_mc(), 2);
-                        this->tempObject.speedX = this->speedK;
+                        tempObject = new OnceMovieClip(this->world,"cast/IcemanHorisontDeath_mc","IcemanHorisontDeath_mc",46);
+                        //tempObject = new Indexes(new IcemanHorisontDeath_mc(), 2);
+                        tempObject->speedX = this->speedK;
                     }
                     else if (this->direction == "up")
                     {
-                        this->tempObject = new Indexes(new IcemanVerticalDeath_mc(), 2);
-                        this->tempObject.speedY = this->speedK * -1;
+                        tempObject = new OnceMovieClip(this->world,"cast/IcemanVerticalDeath_mc","IcemanVerticalDeath_mc",46);
+                        //tempObject = new Indexes(new IcemanVerticalDeath_mc(), 2);
+                        tempObject->speedY = this->speedK * -1;
                     }
                     else if (this->direction == "down")
                     {
-                        this->tempObject = new Indexes(new IcemanHorisontDeath_mc(), 2);
-                        this->tempObject.speedY = this->speedK;
+                        tempObject = new OnceMovieClip(this->world,"cast/IcemanHorisontDeath_mc","IcemanHorisontDeath_mc",46);
+                        //this->tempObject = new Indexes(new IcemanHorisontDeath_mc(), 2);
+                        this->tempObject->speedY = this->speedK;
                     }
                     else
                     {
-                        this->tempObject = new Indexes(new IcemanHorisontDeath_mc(), 2);
+                        tempObject = new OnceMovieClip(this->world,"cast/IcemanHorisontDeath_mc","IcemanHorisontDeath_mc",46);
+                        //this->tempObject = new Indexes(new IcemanHorisontDeath_mc(), 2);
                     }
-                    this->tempObject.type = "icemanDeath";
-                    this->tempObject.container.scaleX = this->container.scaleX;
-                    this->tempObject.container.x = this->container.x;
-                    this->tempObject.x = this->this_pt.x;
-                    this->tempObject.y = this->this_pt.y;
+                    tempObject->type = "icemanDeath";
+                    tempObject->container->setScaleX(this->container->getScaleX());
+                    tempObject->container->setPositionX(this->container->getPositionX());
+                    //tempObject->container.x = this->container->x;
+                    tempObject->setPosition(this->this_pt);
+                    //tempObject->x = this->this_pt.x;
+                    //tempObject->y = this->this_pt.y;
                 }
                 else
                 {
                     if (this->voiceCounter > 0)
                     {
-                        (this->voiceCounter - 1);
+                        this->voiceCounter --;
                         if (this->voiceCounter == 0)
                         {
-                            if (this->world.icemanVoiceTurn == 1)
+                            if (this->world->icemanVoiceTurn == 1)
                             {
-                                this->world.icemanVoiceTurn = 2;
-                                Sounds.instance.playSoundWithVol("snd_iceman_voice2", 0.5);
+                                this->world->icemanVoiceTurn = 2;
+                                //Sounds.instance.playSoundWithVol("snd_iceman_voice2", 0.5);
                             }
-                            else if (this->world.icemanVoiceTurn == 2)
+                            else if (this->world->icemanVoiceTurn == 2)
                             {
-                                this->world.icemanVoiceTurn = 3;
-                                Sounds.instance.playSoundWithVol("snd_iceman_voice3", 0.5);
+                                this->world->icemanVoiceTurn = 3;
+                                //Sounds.instance.playSoundWithVol("snd_iceman_voice3", 0.5);
                             }
-                            else if (this->world.icemanVoiceTurn == 3)
+                            else if (this->world->icemanVoiceTurn == 3)
                             {
-                                this->world.icemanVoiceTurn = 4;
-                                Sounds.instance.playSoundWithVol("snd_iceman_voice4", 0.5);
+                                this->world->icemanVoiceTurn = 4;
+                                //Sounds.instance.playSoundWithVol("snd_iceman_voice4", 0.5);
                             }
-                            else if (this->world.icemanVoiceTurn == 4)
+                            else if (this->world->icemanVoiceTurn == 4)
                             {
-                                this->world.icemanVoiceTurn = 1;
-                                Sounds.instance.playSoundWithVol("snd_iceman_voice5", 0.5);
+                                this->world->icemanVoiceTurn = 1;
+                                //Sounds.instance.playSoundWithVol("snd_iceman_voice5", 0.5);
                             }
                         }
                     }
                     if (this->roadAnimaCounter < this->roadAnimaTimer)
                     {
-                        (this->roadAnimaCounter + 1);
+                        this->roadAnimaCounter++;
                     }
                     else
                     {
                         this->roadAnimaCounter = 0;
-                        this->tempObject = new Indexes(new IceRoad_mc(), 1);
-                        this->tempObject.x = this->this_pt.x;
-                        this->tempObject.y = this->this_pt.y;
-                        this->world.setChildIndex(this->tempObject, (this->world.getChildIndex(this) - 1));
+                        tempObject = new OnceMovieClip(this->world,"cast/IceRoad_mc","IceRoad_mc",46);
+                        //tempObject = new Indexes(new IceRoad_mc(), 1);
+                        tempObject->setPosition(this->this_pt);
+                        //tempObject.x = this->this_pt.x;
+                        //tempObject.y = this->this_pt.y;
+                        this->world->setChildIndex(tempObject, (this->world->getChildIndex(this) - 1));
                         if (this->direction == "left")
                         {
                         }
                         else if (this->direction == "right")
                         {
-                            this->tempObject.container.scaleX = this->tempObject.container.scaleX * -1;
+                            this->tempObject->container->setScaleX(this->tempObject.container->getScaleX() * -1);
                         }
                         else if (this->direction == "up")
                         {
-                            this->tempObject.container.rotation = this->tempObject.container.rotation + 90;
+                            this->tempObject->container->runAction(RotateBy::create(0, 90));
+                            //this->tempObject->container.rotation = this->tempObject.container.rotation + 90;
                         }
                         else if (this->direction == "down")
                         {
-                            this->tempObject.container.rotation = this->tempObject.container.rotation + 270;
-                            this->tempObject.y = this->tempObject.y - 10;
+                            //this->tempObject.container.rotation = this->tempObject.container.rotation + 270;
+                            tempObject->getPositionX(this->tempObject->getPositionX()- 10);
                         }
                     }
                     this->moveHandler();
                     this->attack();
                     if (this->direction == "left" || this->direction == "right")
                     {
-                        if (this->container.currentFrame < 50)
+                        if (this->container->currentFrame < 50)
                         {
-                            this->container.gotoAndStop((this->container.currentFrame + 1));
+                            this->container->gotoAndStop((this->container->currentFrame + 1));
                         }
                         else
                         {
-                            this->container.gotoAndStop(1);
+                            this->container->gotoAndStop(1);
                         }
                     }
                     else if (this->direction == "up")
                     {
-                        if (this->container.currentFrame < this->container.totalFrames)
+                        if (this->container->currentFrame < this->container->totalFrames)
                         {
-                            this->container.gotoAndStop((this->container.currentFrame + 1));
+                            this->container->gotoAndStop((this->container->currentFrame + 1));
                         }
                         else
                         {
-                            this->container.gotoAndStop(101);
+                            this->container->gotoAndStop(101);
                         }
                     }
                     else if (this->direction == "down")
                     {
-                        if (this->container.currentFrame < 100)
+                        if (this->container->currentFrame < 100)
                         {
-                            this->container.gotoAndStop((this->container.currentFrame + 1));
+                            this->container->gotoAndStop((this->container->currentFrame + 1));
                         }
                         else
                         {
-                            this->container.gotoAndStop(51);
+                            this->container->gotoAndStop(51);
                         }
                     }
                 }
@@ -224,31 +236,32 @@ namespace engine{
                     if (this->blow.currentFrame < this->blow.totalFrames)
                     {
                         this->blow.gotoAndStop((this->blow.currentFrame + 1));
-                        this->container.alpha = this->container.alpha + 1 / this->blow.totalFrames;
+                        this->container->alpha = this->container->alpha + 1 / this->blow.totalFrames;
                     }
                     else
                     {
-                        this->container.alpha = 1;
+                        this->container->setOpacity(1);
                         this->removeChild(this->blow);
-                        this->blow = null;
+                        this->blow = NULL;
                     }
                 }
             }
-            else if (Math.abs(this->x - this->this_pt.x) > 1 || Math.abs(this->y - this->this_pt.y) > 1)
+            else if (std::abs(this->getPositionX() - this->this_pt.x) > 1 || std::abs(this->getPositionY() - this->this_pt.y) > 1)
             {
-                this->x = this->x - 8.4;
-                this->y = this->y + 23.8;
+                this->setPosition(Vec2(this->getPositionX() - 8.4,this->getPositionY() + 23.8));
+                //this->x = this->x - 8.4;
+                //this->y = this->y + 23.8;
             }
             else
             {
                 this->openFlag = false;
-                if (this->x != this->this_pt.x)
+                if (this->getPositionX() != this->this_pt.x)
                 {
-                    this->x = this->this_pt.x;
+                    this->setPositionX(this->this_pt.x);
                 }
-                if (this->y != this->this_pt.y)
+                if (this->getPositionY() != this->this_pt.y)
                 {
-                    this->y = this->this_pt.y;
+                    this->setPositionY(this->this_pt.y);
                 }
                 this->moveHandler();
             }
@@ -257,24 +270,23 @@ namespace engine{
 
         void  Iceman::moveHandler() 
         {
-            if (this->this_pt.x == this->roadMap[this->movePhase].x)
+            Common::Array<cocos2d::Point> &roadMap=*this->roadMap;
+            if (this->this_pt.x == roadMap[this->movePhase].x)
             {
-                if (this->this_pt.y >= this->roadMap[this->movePhase].y)
+                if (this->this_pt.y >= roadMap[this->movePhase].y)
                 {
-                    this->y = this->y - this->speedK;
-                    if (this->y <= this->roadMap[this->movePhase].y)
+                    this->setPositionY(this->getPositionY() - this->speedK);
+                    if (this->getPositionY() <= roadMap[this->movePhase].y)
                     {
-                        this->tempObject = this->y;
-                        this->y = this->roadMap[this->movePhase].y;
+                        float tempObject = this->getPositionY();
+                        this->setPositionY(roadMap[this->movePhase].y);
                         this->bifurcation();
-                        var _loc_1:* = this;
-                        var _loc_2:* = this->movePhase + 1;
-                        _loc_1.movePhase = _loc_2;
-                        if (this->movePhase < this->roadMap.length)
+                        this->movePhase++; 
+                        if (this->movePhase < roadMap.size())
                         {
-                            if (this->tempObject < this->roadMap[this->movePhase].y)
+                            if (tempObject < roadMap[this->movePhase].y)
                             {
-                                this->speedK = this->roadMap[this->movePhase].y - this->tempObject;
+                                this->speedK = roadMap[this->movePhase].y - tempObject;
                                 this->moveHandler();
                             }
                         }
@@ -290,20 +302,19 @@ namespace engine{
                 }
                 else
                 {
-                    this->y = this->y + this->speedK;
-                    if (this->y >= this->roadMap[this->movePhase].y)
+                    this->setPositionY(this->getPositionY() + this->speedK);
+                    //this->y = this->y + this->speedK;
+                    if (this->y >= roadMap[this->movePhase].y)
                     {
-                        this->tempObject = this->y;
-                        this->y = this->roadMap[this->movePhase].y;
+                        float tempObject = this->y;
+                        this->setPositionY(roadMap[this->movePhase].y);
                         this->bifurcation();
-                        var _loc_1:* = this;
-                        var _loc_2:* = this->movePhase + 1;
-                        _loc_1.movePhase = _loc_2;
-                        if (this->movePhase < this->roadMap.length)
+                        this->movePhase++; 
+                        if (this->movePhase < roadMap.size())
                         {
-                            if (this->tempObject > this->roadMap[this->movePhase].y)
+                            if (tempObject > roadMap[this->movePhase].y)
                             {
-                                this->speedK = this->tempObject - this->roadMap[this->movePhase].y;
+                                this->speedK = tempObject - roadMap[this->movePhase].y;
                                 this->moveHandler();
                             }
                         }
@@ -318,24 +329,23 @@ namespace engine{
                     }
                 }
             }
-            else if (this->this_pt.y == this->roadMap[this->movePhase].y)
+            else if (this->this_pt.y == roadMap[this->movePhase].y)
             {
-                if (this->this_pt.x >= this->roadMap[this->movePhase].x)
+                if (this->this_pt.x >= roadMap[this->movePhase].x)
                 {
-                    this->x = this->x - this->speedK;
-                    if (this->x <= this->roadMap[this->movePhase].x)
+                    this->setPositionX(this->getPositionX() - this->speedK);
+                    //this->x = this->x - this->speedK;
+                    if (this->getPositionX() <= roadMap[this->movePhase].x)
                     {
-                        this->tempObject = this->x;
-                        this->x = this->roadMap[this->movePhase].x;
+                        float tempObject = this->getPositionX();
+                        this->setPositionX( roadMap[this->movePhase].x);
                         this->bifurcation();
-                        var _loc_1:* = this;
-                        var _loc_2:* = this->movePhase + 1;
-                        _loc_1.movePhase = _loc_2;
-                        if (this->movePhase < this->roadMap.length)
+                        this->movePhase ++;
+                        if (this->movePhase < roadMap.size())
                         {
-                            if (this->tempObject < this->roadMap[this->movePhase].x)
+                            if (tempObject < roadMap[this->movePhase].x)
                             {
-                                this->speedK = this->roadMap[this->movePhase].x - this->tempObject;
+                                this->speedK = roadMap[this->movePhase].x - tempObject;
                                 this->moveHandler();
                             }
                         }
@@ -351,20 +361,19 @@ namespace engine{
                 }
                 else
                 {
-                    this->x = this->x + this->speedK;
-                    if (this->x >= this->roadMap[this->movePhase].x)
+                    this->setPositionX(this->getPositionX() + this->speedK);
+                    //this->x = this->x + this->speedK;
+                    if (this->getPositionX() >= roadMap[this->movePhase].x)
                     {
-                        this->tempObject = this->x;
-                        this->x = this->roadMap[this->movePhase].x;
+                        float tempObject = this->x;
+                        this->setPositionX(roadMap[this->movePhase].x);
                         this->bifurcation();
-                        var _loc_1:* = this;
-                        var _loc_2:* = this->movePhase + 1;
-                        _loc_1.movePhase = _loc_2;
-                        if (this->movePhase < this->roadMap.length)
+                        this->movePhase++;
+                        if (this->movePhase < roadMap.size())
                         {
-                            if (this->tempObject > this->roadMap[this->movePhase].x)
+                            if ( tempObject > roadMap[this->movePhase].x)
                             {
-                                this->speedK = this->roadMap[this->movePhase].x - this->tempObject;
+                                this->speedK = roadMap[this->movePhase].x -  tempObject;
                                 this->moveHandler();
                             }
                         }
@@ -380,23 +389,23 @@ namespace engine{
                 }
             }
             this->directionManage();
-            this->this_pt = new Point(this->x, this->y);
-            if (this->movePhase < this->roadMap.length)
+            this->this_pt = this->getPosition();// cocos2d::Point(this->x, this->y);
+            if (this->movePhase <  roadMap.size())
             {
-                if (this->roadMap[this->movePhase].x == this->roadMap[(this->movePhase - 1)].x)
+                if (roadMap[this->movePhase].x == roadMap[(this->movePhase - 1)].x)
                 {
-                    if (this->roadMap[this->movePhase].y > this->roadMap[(this->movePhase - 1)].y)
+                    if (roadMap[this->movePhase].y > roadMap[(this->movePhase - 1)].y)
                     {
-                        this->tempObject = this->roadMap[(this->movePhase - 1)].y + (this->roadMap[this->movePhase].y - this->roadMap[(this->movePhase - 1)].y) * 0.75;
-                        if (this->this_pt.y > this->tempObject)
+                        float tempObject = roadMap[(this->movePhase - 1)].y + (roadMap[this->movePhase].y - roadMap[(this->movePhase - 1)].y) * 0.75;
+                        if (this->this_pt.y >  tempObject)
                         {
                             this->scanNextTurn();
                         }
                     }
-                    else if (this->roadMap[this->movePhase].y < this->roadMap[(this->movePhase - 1)].y)
+                    else if (roadMap[this->movePhase].y < roadMap[(this->movePhase - 1)].y)
                     {
-                        this->tempObject = this->roadMap[this->movePhase].y + (this->roadMap[(this->movePhase - 1)].y - this->roadMap[this->movePhase].y) * 0.75;
-                        if (this->this_pt.y < this->tempObject)
+                        float tempObject = roadMap[this->movePhase].y + (roadMap[(this->movePhase - 1)].y - roadMap[this->movePhase].y) * 0.75;
+                        if (this->this_pt.y < tempObject)
                         {
                             this->scanNextTurn();
                         }
@@ -408,76 +417,76 @@ namespace engine{
 
         void  Iceman::directionManage() 
         {
-            if (this->x > this->this_pt.x)
+            if (this->getPositionX() > this->this_pt.x)
             {
                 if (this->direction != "right")
                 {
                     this->direction = "right";
-                    if (this->container.scaleX < 0)
+                    if (this->container->getScaleX() < 0)
                     {
-                        this->container.scaleX = this->container.scaleX * -1;
+                        this->container->setScaleX(this->container->getScaleX() * -1);
                     }
-                    if (this->container.currentFrame > 50)
+                    if (this->container->currentFrame > 50)
                     {
-                        this->container.gotoAndStop(this->container.currentFrame - 50);
+                        this->container->gotoAndStop(this->container->currentFrame - 50);
                     }
                 }
             }
-            else if (this->x < this->this_pt.x)
+            else if (this->getPositionX() < this->this_pt.x)
             {
                 if (this->direction != "left")
                 {
                     this->direction = "left";
-                    if (this->container.scaleX > 0)
+                    if (this->container->getScaleX() > 0)
                     {
-                        this->container.scaleX = this->container.scaleX * -1;
+                        this->container->setScaleX(this->container->getScaleX() * -1);
                     }
-                    if (this->container.currentFrame > 50)
+                    if (this->container->currentFrame > 50)
                     {
-                        if (this->container.currentFrame < 101)
+                        if (this->container->currentFrame < 101)
                         {
-                            this->container.gotoAndStop(this->container.currentFrame - 50);
+                            this->container->gotoAndStop(this->container->currentFrame - 50);
                         }
-                        else if (this->container.currentFrame > 100)
+                        else if (this->container->currentFrame > 100)
                         {
-                            this->container.gotoAndStop(this->container.currentFrame - 100);
+                            this->container->gotoAndStop(this->container->currentFrame - 100);
                         }
                     }
                 }
             }
-            if (this->y > this->this_pt.y)
+            if (this->getPositionY() > this->this_pt.y)
             {
                 if (this->direction != "down")
                 {
                     this->direction = "down";
-                    if (this->container.currentFrame < 51)
+                    if (this->container->currentFrame < 51)
                     {
-                        this->container.gotoAndStop(this->container.currentFrame + 50);
+                        this->container->gotoAndStop(this->container->currentFrame + 50);
                     }
-                    else if (this->container.currentFrame > 100)
+                    else if (this->container->currentFrame > 100)
                     {
-                        this->container.gotoAndStop(this->container.currentFrame - 50);
+                        this->container->gotoAndStop(this->container->currentFrame - 50);
                     }
                 }
             }
-            else if (this->y < this->this_pt.y)
+            else if (this->getPositionY() < this->this_pt.y)
             {
                 if (this->direction != "up")
                 {
                     this->direction = "up";
-                    if (this->container.currentFrame < 51)
+                    if (this->container->currentFrame < 51)
                     {
-                        this->container.gotoAndStop(this->container.currentFrame + 100);
+                        this->container->gotoAndStop(this->container->currentFrame + 100);
                     }
-                    else if (this->container.currentFrame < 101)
+                    else if (this->container->currentFrame < 101)
                     {
-                        this->container.gotoAndStop(this->container.currentFrame + 50);
+                        this->container->gotoAndStop(this->container->currentFrame + 50);
                     }
-                    if (this->container.scaleX < 0)
+                    if (this->container->getScaleX() < 0)
                     {
-                        if (this->container.x != 4)
+                        if (this->container->getPositionX() != 4)
                         {
-                            this->container.x = 4;
+                            this->container->setPositionX(4);
                         }
                     }
                 }
@@ -487,53 +496,54 @@ namespace engine{
 
         void  Iceman::scanNextTurn() 
         {
-            if (this->movePhase < (this->roadMap.length - 1))
+            Common::Array<cocos2d::Point> &roadMap=*this->roadMap;
+            if (this->movePhase < (roadMap.size()- 1))
             {
-                if (this->movePhase < this->roadMap.length)
+                if (this->movePhase < roadMap.size())
                 {
-                    if (this->roadMap[this->movePhase].x > this->roadMap[(this->movePhase + 1)].x)
+                    if (roadMap[this->movePhase].x > roadMap[(this->movePhase + 1)].x)
                     {
-                        if (this->container.scaleX > 0)
+                        if (this->container->getScaleX() > 0)
                         {
-                            this->container.scaleX = this->container.scaleX * -1;
-                            if (this->container.x != 4)
+                            this->container->setScaleX(this->container->getScaleX() * -1);
+                            if (this->container->getPositionX() != 4)
                             {
-                                this->container.x = 4;
+                                this->container->getPositionX(4);
                             }
                         }
                     }
-                    else if (this->roadMap[this->movePhase].x < this->roadMap[(this->movePhase + 1)].x)
+                    else if (roadMap[this->movePhase].x < roadMap[(this->movePhase + 1)].x)
                     {
-                        if (this->container.scaleX < 0)
+                        if (this->container->getScaleX() < 0)
                         {
-                            this->container.scaleX = this->container.scaleX * -1;
-                            if (this->container.x != 0)
+                            this->container->setScaleX(this->container->getScaleX() * -1);
+                            if (this->container->getPositionX() != 0)
                             {
-                                this->container.x = 0;
+                                this->container->setPositionX(0);
                             }
                         }
                     }
-                    else if (this->movePhase < this->roadMap.length - 2)
+                    else if (this->movePhase < roadMap.size() - 2)
                     {
-                        if (this->roadMap[this->movePhase].x > this->roadMap[this->movePhase + 2].x)
+                        if (roadMap[this->movePhase].x > roadMap[this->movePhase + 2].x)
                         {
-                            if (this->container.scaleX > 0)
+                            if (this->container->getScaleX() > 0)
                             {
-                                this->container.scaleX = this->container.scaleX * -1;
-                                if (this->container.x != 4)
+                                this->container->setScaleX(this->container->scaleX * -1);
+                                if (this->container->getPositionX() != 4)
                                 {
-                                    this->container.x = 4;
+                                    this->container->setPositionX(4);
                                 }
                             }
                         }
-                        else if (this->roadMap[this->movePhase].x < this->roadMap[this->movePhase + 2].x)
+                        else if (roadMap[this->movePhase].x < roadMap[this->movePhase + 2].x)
                         {
-                            if (this->container.scaleX < 0)
+                            if (this->container->getScaleX() < 0)
                             {
-                                this->container.scaleX = this->container.scaleX * -1;
-                                if (this->container.x != 0)
+                                this->container->setScaleX(this->container->scaleX * -1);
+                                if (this->container->getPositionX() != 0)
                                 {
-                                    this->container.x = 0;
+                                    this->container->setPositionX(0);
                                 }
                             }
                         }
@@ -545,147 +555,141 @@ namespace engine{
 
         void  Iceman::attack() 
         {
-            this->i = this->world.listOfUnits.length - 1;
+            this->i = this->world->listOfUnits.size() - 1;
             while (this->i >= 0)
-            {
-                
-                if (this->world.listOfUnits[this->i].readyDamage && this->world.listOfUnits[this->i].atStage && !this->world.listOfUnits[this->i].icemanFlag && !this->world.listOfUnits[this->i].teleportFlag && (this->world.listOfUnits[this->i].icemanResist > 0 || this->world.listOfUnits[this->i].typeUnit == 24))
+            { 
+                if (this->world->listOfUnits[this->i]->readyDamage && this->world->listOfUnits[this->i]->atStage()
+                    && !this->world->listOfUnits[this->i]->icemanFlag && !this->world->listOfUnits[this->i]->teleportFlag 
+                    && (this->world->listOfUnits[this->i]->icemanResist > 0 || this->world->listOfUnits[this->i]->typeUnit == 24))
                 {
-                    if (Point.distance(this->world.listOfUnits[this->i].shoot_pt, this->this_pt) < this->radius)
+                    if (this->world->listOfUnits[this->i]->shoot_pt.distance(this->this_pt) < this->radius)
                     {
-                        this->world.listOfUnits[this->i].icemanFlag = true;
-                        if (this->world.listOfUnits[this->i].typeUnit != 24)
+                        this->world->listOfUnits[this->i]->icemanFlag = true;
+                        if (this->world->listOfUnits[this->i]->typeUnit != 24)
                         {
-                            this->world.listOfUnits[this->i].icemanCounter = Math.round(Main::mainClass->readXMLClass.castIcemanFreezTimerXML * this->world.listOfUnits[this->i].icemanResist);
+                            this->world->listOfUnits[this->i]->icemanCounter = std::round(Main::mainClass->readXMLClass.castIcemanFreezTimerXML * this->world->listOfUnits[this->i]->icemanResist);
                         }
                         else
                         {
-                            this->world.listOfUnits[this->i].icemanCounter = Main::mainClass->readXMLClass.castIcemanFreezTimerXML;
+                            this->world->listOfUnits[this->i]->icemanCounter = Main::mainClass->readXMLClass.castIcemanFreezTimerXML;
                         }
-                        Sounds.instance.playSoundWithVol("snd_iceman_freezes", 0.5);
-                        (this->world.icemanSlowdownEnemiesCounter + 1);
-                        (this->world.saveBox.gameSave.data.addit_icemanSlowdownEnemiesCounter + 1);
-                        if (this->world.icemanSlowdownEnemiesCounter == 75)
+                        //Sounds.instance.playSoundWithVol("snd_iceman_freezes", 0.5);
+                        this->world->icemanSlowdownEnemiesCounter++;
+                        int addit_icemanSlowdownEnemiesCounter=this->world->saveBox->getIntValue("addit_icemanSlowdownEnemiesCounter")+1;
+                        this->world->saveBox->setIntValue(addit_icemanSlowdownEnemiesCounter);
+                        if (this->world->icemanSlowdownEnemiesCounter == 75)
                         {
-                            this->world.achieveManage("icemanSlowdown_75_enemies");
+                            this->world->achieveManage("icemanSlowdown_75_enemies");
                         }
-                        if (this->world.saveBox.gameSave.data.addit_icemanSlowdownEnemiesCounter == 500)
+                        if (addit_icemanSlowdownEnemiesCounter == 500)
                         {
-                            this->world.achieveManage("icemanSlowdown_500_enemies");
+                            this->world->achieveManage("icemanSlowdown_500_enemies");
                         }
                     }
                 }
-                var _loc_1:* = this;
-                var _loc_2:* = this->i - 1;
-                _loc_1.i = _loc_2;
+                i--;
             }
             return;
         }// end function
 
         void  Iceman::bifurcation() 
         {
-            if (this->movePhase < (this->roadMap.length - 1))
+            if (this->movePhase < (roadMap.size() - 1))
             {
-                this->tempObject1 = null;
+                Iceman *tempObject1 = NULL;
                 this->i = 1;
                 while (this->i <= Main::mainClass->readXMLClass.strategies)
-                {
-                    
+                {   
                     if (this->i != this->road)
                     {
                         if (this->i == 1)
                         {
-                            this->j = this->world.map.road1.length - 2;
+                            this->j = this->world->map.road1.size() - 2;
                             while (this->j >= 0)
                             {
-                                
-                                if (this->world.map.road1[this->j].x == this->roadMap[this->movePhase].x && this->world.map.road1[this->j].y == this->roadMap[this->movePhase].y && (this->world.map.road1[(this->j + 1)].x != this->roadMap[(this->movePhase + 1)].x || this->world.map.road1[(this->j + 1)].y != this->roadMap[(this->movePhase + 1)].y))
+                                if (this->world->map.road1[this->j].x == roadMap[this->movePhase].x && this->world->map.road1[this->j].y == roadMap[this->movePhase].y 
+                                    && (this->world->map.road1[(this->j + 1)].x != roadMap[(this->movePhase + 1)].x || this->world->map.road1[(this->j + 1)].y != roadMap[(this->movePhase + 1)].y))
                                 {
-                                    this->tempObject1 = new Iceman(this->roadMap[this->movePhase], this->i, (this->j + 1), false);
-                                    this->brother = this->tempObject1;
-                                    this->tempObject1.brother = this;
-                                    this->world.addChild(this->tempObject1);
-                                    this->tempObject1.container.scaleX = this->container.scaleX;
-                                    this->tempObject1.container.x = this->container.x;
-                                    this->tempObject1.container.gotoAndStop(this->container.currentFrame);
-                                    this->tempObject1.liveCounter = this->liveCounter;
-                                    this->tempObject1.voiceCounter = 0;
-                                    this->world.worldInterface.barInfoView();
+                                    tempObject1 = new Iceman(roadMap[this->movePhase], this->i, (this->j + 1), false);
+                                    this->brother = tempObject1;
+                                    this->tempObject1->brother = this;
+                                    this->world->addChild(tempObject1);
+                                    tempObject1->container->setScaleX(this->container->getScaleX());
+                                    tempObject1->container->setPositionX(this->container->getPositionX());
+                                    tempObject1->container->gotoAndStop(this->container->currentFrame);
+                                    tempObject1->liveCounter = this->liveCounter;
+                                    tempObject1->voiceCounter = 0;
+                                    this->world->worldInterface->barInfoView();
                                     break;
                                 }
-                                var _loc_1:* = this;
-                                var _loc_2:* = this->j - 1;
-                                _loc_1.j = _loc_2;
+                                j--;
                             }
                         }
                         else if (this->i == 2)
                         {
-                            this->j = this->world.map.road2.length - 2;
+                            this->j = this->world->map.road2.size() - 2;
                             while (this->j >= 0)
-                            {
-                                
-                                if (this->world.map.road2[this->j].x == this->roadMap[this->movePhase].x && this->world.map.road2[this->j].y == this->roadMap[this->movePhase].y && (this->world.map.road2[(this->j + 1)].x != this->roadMap[(this->movePhase + 1)].x || this->world.map.road2[(this->j + 1)].y != this->roadMap[(this->movePhase + 1)].y))
+                            { 
+                                if (this->world->map.road2[this->j].x == roadMap[this->movePhase].x && this->world->map.road2[this->j].y == roadMap[this->movePhase].y 
+                                    && (this->world->map.road2[(this->j + 1)].x != roadMap[(this->movePhase + 1)].x 
+                                          || this->world->map.road2[(this->j + 1)].y != roadMap[(this->movePhase + 1)].y))
                                 {
-                                    this->tempObject1 = new Iceman(this->roadMap[this->movePhase], this->i, (this->j + 1), false);
-                                    this->brother = this->tempObject1;
-                                    this->tempObject1.brother = this;
-                                    this->world.addChild(this->tempObject1);
-                                    this->tempObject1.container.scaleX = this->container.scaleX;
-                                    this->tempObject1.container.x = this->container.x;
-                                    this->tempObject1.container.gotoAndStop(this->container.currentFrame);
-                                    this->tempObject1.liveCounter = this->liveCounter;
-                                    this->tempObject1.voiceCounter = 0;
-                                    this->world.worldInterface.barInfoView();
+                                    tempObject1 = new Iceman(roadMap[this->movePhase], this->i, (this->j + 1), false);
+                                    this->brother = tempObject1;
+                                    tempObject1->brother = this;
+                                    this->world->addChild(tempObject1);
+                                    tempObject1->container->setScaleX(this->container->getScaleX());
+                                    tempObject1->container->setPositionX(this->container->getPositionX());
+                                    tempObject1->container->gotoAndStop(this->container->currentFrame);
+                                    tempObject1->liveCounter = this->liveCounter;
+                                    tempObject1->voiceCounter = 0;
+                                    this->world->worldInterface->barInfoView();
                                     break;
                                 }
-                                var _loc_1:* = this;
-                                var _loc_2:* = this->j - 1;
-                                _loc_1.j = _loc_2;
+                                j--;
                             }
                         }
-                        if (this->tempObject1)
+                        if (tempObject1)
                         {
                             break;
                         }
                     }
-                    var _loc_1:* = this;
-                    var _loc_2:* = this->i + 1;
-                    _loc_1.i = _loc_2;
+                    i++;
                 }
             }
             return;
         }// end function
 
-        void  Iceman::soundTimerManageMove(param1:Boolean) 
+        void  Iceman::soundTimerManageMove(bool param1) 
         {
-            if (param1)
-            {
-                if (!this->soundTimerMove && Sounds.instance.soundOn && !this->world.menuObject)
-                {
-                    this->soundTimerMove = new Timer(Sounds.instance.playSoundWithVol("snd_iceman_move", 0.28), 99999);
-                    this->soundChannelMove = Sounds.instance.soundChanel;
-                    this->soundTimerMove.addEventListener(TimerEvent.TIMER, this->soundTimerMoveFunk);
-                    this->soundTimerMove.start();
-                }
-            }
-            else if (this->soundTimerMove)
-            {
-                this->world.listOfSoundChannels.push(this->soundChannelMove);
-                this->soundTimerMove.removeEventListener(TimerEvent.TIMER, this->soundTimerMoveFunk);
-                this->soundTimerMove.stop();
-                this->soundTimerMove = null;
-            }
+            //if (param1)
+            //{
+            //    if (!this->soundTimerMove && !this->world->menuObject)// && Sounds.instance.soundOn
+            //    {
+            //        //this->soundTimerMove = new Timer(Sounds.instance.playSoundWithVol("snd_iceman_move", 0.28), 99999);
+            //        //this->soundChannelMove = Sounds.instance.soundChanel;
+            //        //this->soundTimerMove.addEventListener(TimerEvent.TIMER, this->soundTimerMoveFunk);
+            //        //this->soundTimerMove.start();
+            //    }
+            //}
+            //else if (this->soundTimerMove)
+            //{
+            //    //this->world->listOfSoundChannels.push(this->soundChannelMove);
+            //    //this->soundTimerMove.removeEventListener(TimerEvent.TIMER, this->soundTimerMoveFunk);
+            //    //this->soundTimerMove.stop();
+            //    //this->soundTimerMove = null;
+            //}
             return;
         }// end function
 
-        void  Iceman::soundTimerMoveFunk(event:TimerEvent) 
+        void  Iceman::soundTimerMoveFunk()//(event:TimerEvent) 
         {
             if (this->dead && Main::mainClass->worldClass)
             {
-                if (!Main::mainClass->worldClass.menuObject)
+                if (!Main::mainClass->worldClass->menuObject)
                 {
-                    Sounds.instance.playSoundWithVol("snd_iceman_move", 0.28);
-                    this->soundChannelMove = Sounds.instance.soundChanel;
+                    //Sounds.instance.playSoundWithVol("snd_iceman_move", 0.28);
+                    //this->soundChannelMove = Sounds.instance.soundChanel;
                 }
                 else
                 {
@@ -705,36 +709,31 @@ namespace engine{
             {
                 this->dead = true;
                 this->soundTimerManageMove(false);
-                this->world.removeChild(this);
-                this->i = 0;
-                while (this->i < this->world.listOfClasses.length)
+                this->world->removeChild(this);
+                //this->i = 0;
+                //while (this->i < this->world->listOfClasses.length)
+                //{
+                //    
+                //    if (this->world->listOfClasses[this->i] == this)
+                //    {
+                //        this->world->listOfClasses.splice(this->i, 1);
+                //        break;
+                //    }
+                //    i++;
+                //}
+                //this->i = 0;
+                //while (this->i < this->world->listOfIndexes1.length)
+                //{ 
+                //    if (this->world->listOfIndexes1[this->i] == this)
+                //    {
+                //        this->world->listOfIndexes1.splice(this->i, 1);
+                //        break;
+                //    }
+                //    i++;
+                //}
+                if (this->world->selectObject == this)
                 {
-                    
-                    if (this->world.listOfClasses[this->i] == this)
-                    {
-                        this->world.listOfClasses.splice(this->i, 1);
-                        break;
-                    }
-                    var _loc_1:* = this;
-                    var _loc_2:* = this->i + 1;
-                    _loc_1.i = _loc_2;
-                }
-                this->i = 0;
-                while (this->i < this->world.listOfIndexes1.length)
-                {
-                    
-                    if (this->world.listOfIndexes1[this->i] == this)
-                    {
-                        this->world.listOfIndexes1.splice(this->i, 1);
-                        break;
-                    }
-                    var _loc_1:* = this;
-                    var _loc_2:* = this->i + 1;
-                    _loc_1.i = _loc_2;
-                }
-                if (this->world.selectObject == this)
-                {
-                    this->world.worldInterface.barInfoManage();
+                    this->world->worldInterface->barInfoManage();
                 }
             }
             return;

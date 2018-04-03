@@ -9,11 +9,11 @@
             liveTimer = 24;
             liveCounter = 24;
             this->correct = liveCounter / 12; 
-            this->setPostition(this_pt.x,his_pt.y);
+            this->setPosition(this_pt.x,his_pt.y);
             //this->x = this_pt.x;
             //this->y = this_pt.y;
             container = new BulletStoneTower_mc();
-            //container.stop();
+            //container->stop();
             this->addChild(container);
             testTower = whoShoot;
             radius = whoShoot->radius;
@@ -38,11 +38,11 @@
                 this->enemySpeed = 0.1;
             }
             //this->shadow = new UnitShadow_mc();
-            //this->shadow.stop();
-            //this->shadow.mouseChildren = false;
-            //this->shadow.mouseEnabled = false;
-            //this->shadow.x = this_pt.x;
-            //this->shadow.y = whoShoot->y;
+            //this->shadow->stop();
+            //this->shadow->mouseChildren = false;
+            //this->shadow->mouseEnabled = false;
+            //this->shadow->setPositionX(this_pt.x) ;
+            //this->shadow->setPositionY(whoShoot->y) ;
             //this->shadow->setScale(0.5,0.5);
             //world->addChildAt(this->shadow, 2);
             //world->listOfIndexes2.push(this->shadow);
@@ -56,14 +56,14 @@
             {
                 //Sounds.instance.playSoundWithVol("snd_tower_shootStone", 0.8);
             }
-            //if (container.currentFrame < container.totalFrames)
-            //{
-            //    container.gotoAndStop((container.currentFrame + 1));
-            //}
-            //else
-            //{
-            //    container.gotoAndStop(1);
-            //}
+            if (container->currentFrame < container->totalFrames)
+            {
+                container->gotoAndStop((container->currentFrame + 1));
+            }
+            else
+            {
+                container->gotoAndStop(1);
+            }
             if (liveCounter > 0)
             {
                 distanceX = this->enemyStartPoint.x - this_pt.x;
@@ -78,8 +78,8 @@
                 this->enemyStartPoint = tempObject;//new Point(tempObject.x, tempObject.y);
                 if (liveCounter > this->correct)
                 {
-                    this->setPostition(this->getPostition().x + distanceX /  (liveCounter - this->correct),
-                             this->getPostition().y + (distanceY /  (liveCounter - this->correct)-12));
+                    this->setPosition(this->getPosition().x + distanceX /  (liveCounter - this->correct),
+                             this->getPosition().y + (distanceY /  (liveCounter - this->correct)-12));
                     //this->x = this->x + distanceX / (liveCounter - this->correct);
                     //this->y = this->y + (distanceY / (liveCounter - this->correct) - 12);               
                     //this->shadow.x = this->shadow.x + (this->enemyStartPoint.x - this->shadow.x) / (liveCounter - this->correct);
@@ -87,13 +87,13 @@
                 }
                 else
                 {
-                    this->setPostition(this->getPostition().x + distanceX /liveCounter,this->getPostition().y +  distanceY / liveCounter );
+                    this->setPosition(this->getPosition().x + distanceX /liveCounter,this->getPosition().y +  distanceY / liveCounter );
                     //this->x = this->x + distanceX / liveCounter;
                     //this->y = this->y + distanceY / liveCounter;
                     //this->shadow.x = this->shadow.x + (this->enemyStartPoint.x - this->shadow.x) / liveCounter;
                     //this->shadow.y = this->shadow.y + (this->enemyStartPoint.y - this->shadow.y) / liveCounter;
                 }
-                this_pt =this->getPostition();// new Point(this->x, this->y);
+                this_pt =this->getPosition();// new Point(this->x, this->y);
                 liveCounter--;//(liveCounter - 1);
             }
             else
@@ -101,7 +101,7 @@
                 Node* tempObject = CastStone_mc::create(this);
                 this->addChild(tempObject); 
                 tempObject->container->setScale(0.5,0.5);
-                tempObject->setPostition(this_pt);
+                tempObject->setPosition(this_pt);
                 //tempObject.x = this_pt.x;
                 //tempObject.y = this_pt.y;
                 i = world->listOfUnits.size() - 1;

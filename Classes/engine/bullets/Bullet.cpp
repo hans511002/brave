@@ -15,14 +15,14 @@ namespace engine{
 
 
 
-        bool   Bullet::init()
+        bool Bullet::init()
         {
             //this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
             //this->mouseChildren = false;
             //this->mouseEnabled = false;
             this->world = Main::mainClass->worldClass;
-            //this->world->listOfBullets.push(this);
-            //this->world->listOfIndexes3.push(this);
+            this->world->listOfBullets.push(this);
+            this->world->listOfIndexes3.push(this);
             this->changeIndex = 10;
             return true;
         }// end function

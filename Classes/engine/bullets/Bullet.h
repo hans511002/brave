@@ -3,7 +3,7 @@
 #include "BaseHeaders.h"
 #include "engine/units/Unit.h"
 #include "engine/towers/Tower.h"
-
+#include "engine/mc/mc.h"
 
 namespace engine{
     class World;
@@ -18,7 +18,7 @@ namespace engine{
             //public var tempObject2:Object;
             bool dead;//public var dead:Boolean;
             World * world;//public var world:World;
-            BaseNode * container;//public var container:MovieClip;
+            MovieClip * container;//public var container:MovieClip;
             units::Unit* enemyTarget;//public var enemyTarget:Object;
             float damage;//public var damage:Number;
             int bulletType;//public var bulletType:int;

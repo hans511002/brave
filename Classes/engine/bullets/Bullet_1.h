@@ -4,6 +4,10 @@
 
 namespace engine{
     namespace bullets{
+        struct BulletFireTower_mc:public MovieClip
+        {
+            
+        }
         class Bullet_1 :public Bullet
         {
         public:

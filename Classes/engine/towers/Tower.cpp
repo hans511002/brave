@@ -8,7 +8,7 @@ namespace engine{
         {
             ////this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
             //this->world = Main::mainClass->worldClass;
-            //this->setPosition(this->myPlace->getPostition());
+            //this->setPosition(this->myPlace->getPosition());
             ////this->x = this->myPlace.x;
             ////this->y = this->myPlace.y;
             ////this->myPlace.placeForBuildCase.buttonMode = false;

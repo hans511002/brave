@@ -12,7 +12,7 @@ namespace engine{
             //this->x = this_pt.x;
             //this->y = this_pt.y;
             container = new BulletLevinTower_mc();
-            //container.stop();
+            //container->stop();
             this->addChild(container);
             if (whoShoot is Tower)
             {
@@ -26,14 +26,14 @@ namespace engine{
         void Bullet_4::update()
         {
             Bullet::update();
-            //if (container.currentFrame < container.totalFrames)
-            //{
-            //    container.gotoAndStop((container.currentFrame + 1));
-            //}
-            //else
-            //{
-            //    container.gotoAndStop(1);
-            //}
+            if (container->currentFrame < container->totalFrames)
+            {
+                container->gotoAndStop((container->currentFrame + 1));
+            }
+            else
+            {
+                container->gotoAndStop(1);
+            }
             if (liveCounter > 0)
             {
                 if (enemyTarget->dead)
@@ -42,14 +42,14 @@ namespace engine{
                     i = 0;
                     while (i < world->listOfUnits.size())
                     {
-                        float tempObject = this_pt->distance(world->listOfUnits[i]->shoot_pt);
+                        float tempObject = this_pt.distance(world->listOfUnits[i]->shoot_pt);
                         if (tempObject < 50)
                         {
                             if (!tempObject1)
                             {
                                 tempObject1 = world->listOfUnits[i];
                             }
-                            else if (this_pt->distance(tempObject1->shoot_pt) > tempObject)
+                            else if (this_pt.distance(tempObject1->shoot_pt) > tempObject)
                             {
                                 tempObject1 = world->listOfUnits[i];
                             }
@@ -67,21 +67,21 @@ namespace engine{
                 }
                 distanceX = enemyTarget->x - this_pt.x;
                 distanceY = enemyTarget->y - this_pt.y;
-                setPostition(this->getPOstition().x + distanceX / (liveCounter - 3), this->getPOstition().y + distanceY / (liveCounter - 3));
+                setPosition(this->getPosition().x + distanceX / (liveCounter - 3), this->getPosition().y + distanceY / (liveCounter - 3));
                 // this->x = this->x + distanceX / (liveCounter - 3);
                 // this->y = this->y + distanceY / (liveCounter - 3);
                 if (distanceY > 0)
                 {
-                    setPostitionX(this->getPOstition().x + this->deviation);
+                    setPositionX(this->getPosition().x + this->deviation);
                     //this->x = this->x + this->deviation;
                 }
                 else if (distanceY < 0)
                 {
-                    setPostitionX(this->getPOstition().x + this->deviation);
+                    setPositionX(this->getPosition().x + this->deviation);
                     //this->x = this->x - this->deviation;
                 }
-                this_pt = new Point(this->x, this->y);
-                (liveCounter - 1);
+                this_pt = cocos2d::Point(this->getPositionX(), this->getPositionY());
+                liveCounter--;
             }
             else
             {

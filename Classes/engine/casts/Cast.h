@@ -1,7 +1,7 @@
 ﻿#ifndef ENGINE_CASTS_CAST_H
 #define ENGINE_CASTS_CAST_H
 #include "BaseHeaders.h"
-
+#include "engine/mc/mc.h"
 namespace engine{
     class World;
     namespace    casts
@@ -14,15 +14,16 @@ namespace engine{
             //        public var tempObject:Object;
             //        public var tempObject1:Object;
             //        public var tempObject2:Object;
-            //        public var tempObject3:Object;
-            BaseNode* container;// : MovieClip;
+            cocos2d::Point tempObject;
+            cocos2d::Point tempObject3;
+            MovieClip * container;// : MovieClip;
             World *world;
             bool dead;
             Common::Array<cocos2d::Point> *  map;
             int canselCounter = 0;
             int canselTimer;
 
-            Cast() :canselCounter(0), canselTimer(5){};
+            Cast() :canselCounter(0), canselTimer(5),tempObject3(-1,-1){};
 
             bool init();
 

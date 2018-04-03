@@ -41,7 +41,7 @@ namespace engine{
         }// end function
         bool Cast::scanWay()
         {
-            cocos2d::Point tempObject (this->world->mouseX, this->world->mouseY);
+            tempObject=cocos2d::Point(this->world->mouseX, this->world->mouseY);
             if (this->world->nowLevel == 6)
             {
                 if (tempObject.x > 650 && tempObject.y < 320)

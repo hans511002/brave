@@ -9,11 +9,11 @@
             bulletType = 2; 
             liveTimer = 6;
             liveCounter = 6;
-            this->setPostition(this_pt.x,his_pt.y);
+            this->setPosition(this_pt.x,his_pt.y);
             //this->x = this_pt.x;
             //this->y = this_pt.y;
             container = new BulletIceTower_mc();
-            //container.stop();
+            //container->stop();
             this->addChild(container);
             whoShoot->iceBulletCounter++; 
             Bullet::init();
@@ -24,14 +24,14 @@
         void Bullet_2::update()  
         {
             Bullet::update();
-            //if (container.currentFrame < container.totalFrames)
-            //{
-            //    container.gotoAndStop((container.currentFrame + 1));
-            //}
-            //else
-            //{
-            //    container.gotoAndStop(1);
-            //}
+            if (container->currentFrame < container->totalFrames)
+            {
+                container->gotoAndStop((container->currentFrame + 1));
+            }
+            else
+            {
+                container->gotoAndStop(1);
+            }
             if (liveCounter > 0)
             {
                 if (enemyTarget->dead)
@@ -64,12 +64,12 @@
                         kill();
                     }
                 }
-                distanceX = enemyTarget->getPostition().x - this_pt.x;
-                distanceY = enemyTarget->getPostition().y - this_pt.y; 
-                this->setPostition(this->getPostition().x + distanceX / liveCounter, this->getPostition().y + distanceY / liveCounter);
+                distanceX = enemyTarget->getPosition().x - this_pt.x;
+                distanceY = enemyTarget->getPosition().y - this_pt.y; 
+                this->setPosition(this->getPosition().x + distanceX / liveCounter, this->getPosition().y + distanceY / liveCounter);
                 //this->x = this->x + distanceX / liveCounter;
                 //this->y = this->y + distanceY / liveCounter;
-                this_pt =this->getPostition();// new Point(this->x, this->y);
+                this_pt =this->getPosition();// new Point(this->x, this->y);
                 liveCounter--;
             }
             else
