@@ -77,13 +77,15 @@ namespace engine{
             //container->gotoAndStop(3);
             return;
         }// end function
-          void Cast_1::mouseUpHandler(cocos2d::Event  event){}
+        void Cast_1::mouseUpHandler(cocos2d::Event  event)
+        {
+        }
         void Cast_1::addGolem()
         {
             cocos2d::Point tempObject  (world->mouseX, world->mouseY);
             Golem *  tempObject1 = NULL;
-           int tempObject2 = 0;
-           int tempObject3 = 10000;
+            int tempObject2 = 0;
+            int tempObject3 = 10000;
             n = 1;
             while (n <= Main::mainClass->readXMLClass.strategies)
             {

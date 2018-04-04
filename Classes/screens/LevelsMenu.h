@@ -7,6 +7,10 @@
 //#include "screens/*.h"
 namespace screens{
 {
+    struct NewLevel_mc:public MovieClip
+    {
+        
+    };
     class LevelsMenu :public BaseLayer
     {
     public:
@@ -20,9 +24,9 @@ namespace screens{
         dragonBones::DBCCArmatureNode * newLevelGr;// public var newLevelGr:NewLevel_mc;
         bool roadOff;//public var roadOff:Boolean;
         int newStarsForLevel;//public var newStarsForLevel:int = 0;
-        public var mouseMoveTarget:MovieClip;
-        public var mouseDownTarget:MovieClip;
-        public var listOfAnimation:Array;
+        Node * mouseMoveTarget;
+        Node * mouseDownTarget;
+        Common::Array<dragonBones::DBCCArmatureNode * > listOfAnimation;
         public var openLevel:OpenLevel;
         public var upgradesClass:Upgrades;
         public var encyclopediaClass:Encyclopedia;
@@ -87,9 +91,7 @@ namespace screens{
                 this.tempObject = this.container.wavesAnimation.getChildAt(this.i);
                 this.tempObject.gotoAndStop((Math.round(Math.random() * (this.tempObject.totalFrames - 1)) + 1));
                 this.listOfAnimation.push(this.tempObject);
-                var _loc_2:* = this;
-                var _loc_3:* = this.i + 1;
-                _loc_2.i = _loc_3;
+                i++;
             }
             this.listOfLevels.push(this.container.level1);
             this.listOfLevels.push(this.container.level2);
@@ -1718,6 +1720,6 @@ namespace screens{
             return;
         }// end function
 
-    }
+    };
 }
 #endif

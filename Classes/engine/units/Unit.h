@@ -13,7 +13,7 @@ namespace engine
 		public:
 			int i, j, n;
 			float tempObject;// :Object;
-			//public var tempObject1:Object;
+			Bullet * tempObject1;//public var tempObject1:Object;
 			//public var tempObject2:Object;
 			//public var tempObject3:Object;
 			//public var tempObject4:Object;

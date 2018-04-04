@@ -1,26 +1,36 @@
-﻿package engine.bullets
-{
-    import flash.events.*;
+﻿#ifndef ENGINE_BULLET_51_H
+#define ENGINE_BULLET_51_H
+#include "Bullet.h" 
 
-    public class Bullet_51 extends Bullet
-    {
-        public var turnFlag:Boolean;
-        public var listOfAnimation:Array;
-
-        public function Bullet_51()
+namespace engine{
+    namespace bullets{ 
+        struct BulletTower51_1_mc
         {
-            this.listOfAnimation = [];
-            return;
+            
+        };
+        struct BulletTower51_2_mc
+        {
+            
+        };
+        
+        class Bullet_51 : public Bullet
+        {
+        public:
+            bool turnFlag;//:Boolean;
+            Common::Array<BaseNode*> listOfAnimation;
+
+        Bullet_51()
+        {
         }// end function
 
-        override public function init(event:Event) : void
+        bool init() 
         {
             bulletType = 51;
             liveCounter = 0;
             distanceX = -40;
             distanceY = -40;
-            this.x = this_pt.x;
-            this.y = this_pt.y;
+            this->x = this_pt.x;
+            this->y = this_pt.y;
             i = 0;
             while (i < 7)
             {
@@ -32,9 +42,9 @@
                 {
                     
                     distanceX = distanceX + 10;
-                    if (this.turnFlag)
+                    if (this->turnFlag)
                     {
-                        this.turnFlag = false;
+                        this->turnFlag = false;
                         tempObject = new BulletTower51_1_mc();
                         if (this_pt.x < whoShoot.this_pt.x)
                         {
@@ -49,7 +59,7 @@
                     }
                     else
                     {
-                        this.turnFlag = true;
+                        this->turnFlag = true;
                         tempObject = new BulletTower51_2_mc();
                         tempObject.x = 0;
                         tempObject.y = -624;
@@ -61,8 +71,8 @@
                     tempObject.distX = (distanceX - tempObject.x) / tempObject.counter;
                     tempObject.distY = (distanceY - tempObject.y) / tempObject.counter;
                     tempObject.visible = false;
-                    this.addChild(tempObject);
-                    this.listOfAnimation.push(tempObject);
+                    this->addChild(tempObject);
+                    this->listOfAnimation.push(tempObject);
                     var _loc_3:* = j + 1;
                     j = _loc_3;
                 }
@@ -74,30 +84,30 @@
             return;
         }// end function
 
-        override public function update() : void
+        void update() 
         {
-            super.update();
-            (liveCounter + 1);
-            i = this.listOfAnimation.length - 1;
+            Bullet::update();
+            liveCounter++;
+            i = this->listOfAnimation.size() - 1;
             while (i >= 0)
             {
                 
-                if (!this.listOfAnimation[i].visible)
+                if (!this->listOfAnimation[i].visible)
                 {
                     if (Math.random() < 0.05)
                     {
-                        this.listOfAnimation[i].visible = true;
+                        this->listOfAnimation[i].visible = true;
                     }
                 }
-                else if (this.listOfAnimation[i].counter > 0)
+                else if (this->listOfAnimation[i].counter > 0)
                 {
-                    (this.listOfAnimation[i].counter - 1);
-                    this.listOfAnimation[i].x = this.listOfAnimation[i].x + this.listOfAnimation[i].distX;
-                    this.listOfAnimation[i].y = this.listOfAnimation[i].y + this.listOfAnimation[i].distY;
+                    (this->listOfAnimation[i].counter - 1);
+                    this->listOfAnimation[i].x = this->listOfAnimation[i].x + this->listOfAnimation[i].distX;
+                    this->listOfAnimation[i].y = this->listOfAnimation[i].y + this->listOfAnimation[i].distY;
                 }
-                else if (this.listOfAnimation[i].currentFrame < this.listOfAnimation[i].totalFrames)
+                else if (this->listOfAnimation[i].currentFrame < this->listOfAnimation[i].totalFrames)
                 {
-                    this.listOfAnimation[i].gotoAndStop((this.listOfAnimation[i].currentFrame + 1));
+                    this->listOfAnimation[i].gotoAndStop((this->listOfAnimation[i].currentFrame + 1));
                 }
                 else
                 {
@@ -105,7 +115,7 @@
                     while (j >= 0)
                     {
                         
-                        tempObject = this.localToGlobal(new Point(this.listOfAnimation[i].x, this.listOfAnimation[i].y));
+                        tempObject = this->localToGlobal(new Point(this->listOfAnimation[i].x, this->listOfAnimation[i].y));
                         if (world.listOfUnits[j].atStage && world.listOfUnits[j].readyDamage)
                         {
                             if (Point.distance(world.listOfUnits[j].shoot_pt, tempObject) < Main.mainClass.readXMLClass.ultraAddFireStoneRadiusXML)
@@ -124,33 +134,35 @@
                         var _loc_2:* = j - 1;
                         j = _loc_2;
                     }
-                    this.removeChild(this.listOfAnimation[i]);
-                    this.listOfAnimation.splice(i, 1);
+                    this->removeChild(this->listOfAnimation[i]);
+                    this->listOfAnimation.splice(i, 1);
                 }
                 var _loc_2:* = i - 1;
                 i = _loc_2;
             }
             if (liveCounter == 160)
             {
-                i = this.listOfAnimation.length - 1;
+                i = this->listOfAnimation.length - 1;
                 while (i >= 0)
                 {
                     
-                    if (this.listOfAnimation[i].currentFrame == 1)
+                    if (this->listOfAnimation[i].currentFrame == 1)
                     {
-                        this.removeChild(this.listOfAnimation[i]);
-                        this.listOfAnimation.splice(i, 1);
+                        this->removeChild(this->listOfAnimation[i]);
+                        this->listOfAnimation.splice(i, 1);
                     }
                     var _loc_2:* = i - 1;
                     i = _loc_2;
                 }
             }
-            else if (this.listOfAnimation.length == 0)
+            else if (this->listOfAnimation.length == 0)
             {
                 kill();
             }
             return;
         }// end function
-
+    };
     }
 }
+#endif
+

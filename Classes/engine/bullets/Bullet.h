@@ -9,6 +9,10 @@ namespace engine{
     class World;
     namespace bullets{
 
+        struct UnitShadow_mc:public MovieClip
+        {
+            
+        };
         class Bullet :public BaseNode
         {
         public:

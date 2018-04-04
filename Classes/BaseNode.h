@@ -35,7 +35,7 @@ public:
       static bool hitTest(cocos2d::Node * node, cocos2d::EventMouse* e);
       bool mouseChildren ;
       bool mouseEnabled ;
-    
+    cocos2d::Point localToGlobal(cocos2d::Point pt);
 private:
 
 };

@@ -42,6 +42,10 @@ BaseSprite::BaseSprite(string file){
 bool BaseNode::hitTest(const Vec2 &pt){
     return BaseNode::hitTest(this, pt);
 };
+cocos2d::Point localToGlobal(cocos2d::Point pt)
+{
+    
+};
 
 void BaseNode::touchAction(cocos2d::Ref *ref, cocos2d::ui::TouchEventType type){
     Node * node = (Node *)ref;

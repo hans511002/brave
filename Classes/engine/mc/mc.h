@@ -18,6 +18,7 @@ namespace engine
         float speedX;
         MovieClip(World * world,dragonBones::DBCCArmatureNode * cont,int totalFrames) ;
         MovieClip(World * world,string rootPath, string aniName ,int totalFrames) ;
+        MovieClip():world(NULL),container(NULL),currentFrame(0),totalFrames(0),speedX(0) {};
         void gotoAndStop(int cf);
         void nextFram();
         void update();

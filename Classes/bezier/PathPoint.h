@@ -4,12 +4,11 @@
 
 namespace bezier
 {
-
-    class PathPoint 
+    class PathPoint : public cocos2d::Point
     {
 	public:
-		float x;// : Number;
-		float   y;// : Number;
+		//float x;// : Number;
+		//float   y;// : Number;
 		float rotation;// :Number;
 
 		PathPoint(float param1, float param2, float param3 = 0)

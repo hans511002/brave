@@ -33,7 +33,7 @@ namespace engine
             Common::Array<Common::Array<int> >  shootingTurnStack; //public var shootingTurnStack:Array;
             string shootingSphere;//public var shootingSphere:String;
             Common::Array<>  shootinAttackStack; //public var shootinAttackStack:Array;
-            Common::Array<>  listOfTargets; //public var listOfTargets:Array;
+            Common::Array<units::Unit *>  listOfTargets; //public var listOfTargets:Array;
             cocos2d::Vec2  this_pt; //public var this_pt:Point;
             cocos2d::Vec2  enemy_pt; //public var enemy_pt:Point;
             cocos2d::Vec2  shoot_pt; //public var shoot_pt:Point;
