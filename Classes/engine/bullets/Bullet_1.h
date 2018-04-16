@@ -4,7 +4,7 @@
 
 namespace engine{
     namespace bullets{
-        struct BulletFireTower_mc:public BaseNode
+		struct BulletFireTower_mc :public MovieClip  
         {
         public:
             BulletFireTower_mc();

@@ -1,8 +1,7 @@
 ﻿ 
 #include "GetSphere.h"
+#include "engine/World.h"
 
-
-  
 namespace engine
 {
  
@@ -13,149 +12,149 @@ namespace engine
         this->type = param1;
         return;
     }// end function
-    bool GetSphere::init()
-    {
-        //this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
-        //this->addEventListener(Event.REMOVED_FROM_STAGE, this->reInit);
-        this->world = Main::mainClass->worldClass;
-        if (this->type == "holder")
-        {
-            this->container = new GetSphere_mc();
-            //this->container->stop();
-            //this->container->cont.stop();
-            //this->container->sphere1.stop();
-            //this->container->sphere2.stop();
-            //this->container->sphere3.stop();
-            //this->container->sphere4.stop();
-            //this->container->sphere1.cont.stop();
-            //this->container->sphere2.cont.stop();
-            //this->container->sphere3.cont.stop();
-            //this->container->sphere4.cont.stop();
+	bool GetSphere::init()
+	{
+		//this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
+		//this->addEventListener(Event.REMOVED_FROM_STAGE, this->reInit);
+		this->world = Main::mainClass->worldClass;
+		if(this->type == "holder")
+		{
+			this->container = new GetSphere_mc();
+			//this->container->stop();
+			//this->container->cont.stop();
+			//container->sphere1.stop();
+			//container->sphere2.stop();
+			//container->sphere3.stop();
+			//container->sphere4.stop();
+			//container->sphere1.cont.stop();
+			//container->sphere2.cont.stop();
+			//container->sphere3.cont.stop();
+			//container->sphere4.cont.stop();
 
-            //this->container->sphere1->setVisible(false);
-            //this->container->sphere2->setVisible(false);
-            //this->container->sphere3->setVisible(false);
-            //this->container->sphere4->setVisible(false);
-        }
-        else if (this->type == "getAll")
-        {
-            this->container = new GetAll_mc();
-            //this->container->stop();
-            //this->container->cross.stop();
-            this->container->cross->setVisible(false);
-        }
-        this->addChild(this->container);
-        this->world.worldInterface.castRegime("on");
-        this->arrow = new Arrow_mc();
-        this->arrow.stop();
-        this->arrow.scaleY = -1;
-        this->arrow.y = this->arrow.y - 30;
-        this->arrow->setVisible(false);
-        this->addChild(this->arrow);
-        if (this->world.towerMenu)
-        {
-            if (this->world.towerMenu.container.btnUpgradeMenu)
-            {
-                if (this->world.towerMenu.container.btnUpgradeMenu.btnUpgradeMenuCase)
-                {
-                    if (this->world.towerMenu.container.btnUpgradeMenu.btnUpgradeMenuCase.buttonMode)
-                    {
-                        this->world.towerMenu.container.btnUpgradeMenu.btnUpgradeMenuCase.buttonMode = false;
-                    }
-                }
-            }
-            else
-            {
-                if (this->world.towerMenu.container.btnTowerUpgr1)
-                {
-                    this->world.towerMenu.container.btnTowerUpgr1.btnTowerUpgrCase.buttonMode = false;
-                }
-                if (this->world.towerMenu.container.btnTowerUpgr2)
-                {
-                    this->world.towerMenu.container.btnTowerUpgr2.btnTowerUpgrCase.buttonMode = false;
-                }
-                if (this->world.towerMenu.container.btnTowerUpgr3)
-                {
-                    this->world.towerMenu.container.btnTowerUpgr3.btnTowerUpgrCase.buttonMode = false;
-                }
-                if (this->world.towerMenu.container.btnTowerUpgr4)
-                {
-                    this->world.towerMenu.container.btnTowerUpgr4.btnTowerUpgrCase.buttonMode = false;
-                }
-            }
-        }
-        else if (this->world.ultraTowerMenu)
-        {
-            if (this->world.ultraTowerMenu.container.btnUpgradeMenu)
-            {
-                if (this->world.ultraTowerMenu.container.btnUpgradeMenu.btnUpgradeMenuCase)
-                {
-                    if (this->world.ultraTowerMenu.container.btnUpgradeMenu.btnUpgradeMenuCase.buttonMode)
-                    {
-                        this->world.ultraTowerMenu.container.btnUpgradeMenu.btnUpgradeMenuCase.buttonMode = false;
-                    }
-                }
-            }
-        }
-        this->x = this->world.mouseX;
-        this->y = this->world.mouseY;
-        var _loc_2:* = false;
-        this->mouseChildren = false;
-        this->mouseEnabled = _loc_2;
-        return;
-    }// end function
+			//container->sphere1->setVisible(false);
+			//container->sphere2->setVisible(false);
+			//container->sphere3->setVisible(false);
+			//container->sphere4->setVisible(false);
+		}
+		else if(this->type == "getAll")
+		{
+			GetAll_mc * container = new GetAll_mc();
+			this->container = container;
+			//this->container->stop();
+			//this->container->cross.stop();
+			container->cross->setVisible(false);
+		}
+		this->addChild(this->container);
+		this->world->worldInterface->castRegime("on");
+		this->arrow = new Arrow_mc();
+		this->arrow->stop();
+		this->arrow->setScaleY(-1);
+		this->arrow->setPositionY(this->arrow->getPositionY() - 30);
+		this->arrow->setVisible(false);
+		this->addChild(this->arrow);
+		if(this->world->towerMenu)
+		{
+			//        if (this->world->towerMenu->container->btnUpgradeMenu)
+			//        {
+			//            if (this->world->towerMenu->container->btnUpgradeMenu.btnUpgradeMenuCase)
+			//            {
+			//                if (this->world->towerMenu->container.btnUpgradeMenu.btnUpgradeMenuCase.buttonMode)
+			//                {
+			//                    this->world->towerMenu->container.btnUpgradeMenu.btnUpgradeMenuCase.buttonMode = false;
+			//                }
+			//            }
+			//        }
+			//        else
+			//        {
+			//            if (this->world->towerMenu->container->btnTowerUpgr1)
+			//            {
+			//                this->world->towerMenu->container->btnTowerUpgr1.btnTowerUpgrCase.buttonMode = false;
+			//            }
+			//            if (this->world->towerMenu->container->btnTowerUpgr2)
+			//            {
+			//	this->world->towerMenu->container->btnTowerUpgr2.btnTowerUpgrCase.buttonMode = false;
+			//            }
+			//if(this->world->towerMenu->container->btnTowerUpgr3)
+			//            {
+			//	this->world->towerMenu->container->btnTowerUpgr3.btnTowerUpgrCase.buttonMode = false;
+			//            }
+			//if(this->world->towerMenu->container->btnTowerUpgr4)
+			//            {
+			//	this->world->towerMenu->container->btnTowerUpgr4.btnTowerUpgrCase.buttonMode = false;
+			//            }
+			//        }
+		}
+		else if(this->world->ultraTowerMenu)
+		{
+			//if (this->world->ultraTowerMenu->container->btnUpgradeMenu)
+			//{
+			//    if (this->world->ultraTowerMenu.container.btnUpgradeMenu.btnUpgradeMenuCase)
+			//    {
+			//        if (this->world->ultraTowerMenu.container.btnUpgradeMenu.btnUpgradeMenuCase.buttonMode)
+			//        {
+			//            this->world->ultraTowerMenu.container.btnUpgradeMenu.btnUpgradeMenuCase.buttonMode = false;
+			//        }
+			//    }
+			//}
+		}
+		this->setPosition(this->world->mouseX, this->world->mouseY);
+		this->mouseChildren = false;
+		this->mouseEnabled = false;
+		return;
+	}// end function
     void  GetSphere::update() 
     {
         if (this->type == "holder")
         {
-            if (this->container is GetSphere_mc)
+			if(dynamic_cast<GetSphere_mc*>(this->container))
             {
-                if (this->container->sphere1.visible)
+				GetSphere_mc* container = (GetSphere_mc*)this->container;
+                if (container->sphere1->isVisible())
                 {
-                    if (this->container->sphere1.cont.currentFrame < this->container->sphere1.cont.totalFrames)
+                    if (container->sphere1->currentFrame < container->sphere1->totalFrames)
                     {
-                        this->container->sphere1.cont.gotoAndStop((this->container->sphere1.cont.currentFrame + 1));
+                        container->sphere1->gotoAndStop((container->sphere1->currentFrame + 1));
                     }
                     else
                     {
-                        this->container->sphere1.cont.gotoAndStop(1);
+                        container->sphere1->gotoAndStop(1);
                     }
                 }
-                if (this->container->sphere2.visible)
+                if (container->sphere2->isVisible())
                 {
-                    if (this->container->sphere2.cont.currentFrame < this->container->sphere2.cont.totalFrames)
+					if(container->sphere2->currentFrame < container->sphere2->totalFrames)
                     {
-                        this->container->sphere2.cont.gotoAndStop((this->container->sphere2.cont.currentFrame + 1));
+						container->sphere2->gotoAndStop((container->sphere2->currentFrame + 1));
                     }
                     else
                     {
-                        this->container->sphere2.cont.gotoAndStop(1);
+						container->sphere2->gotoAndStop(1);
                     }
                 }
-                if (this->container->sphere3.visible)
+                if (container->sphere3->isVisible())
                 {
-                    if (this->container->sphere3.cont.currentFrame < this->container->sphere3.cont.totalFrames)
+					if(container->sphere3->currentFrame < container->sphere3->totalFrames)
                     {
-                        this->container->sphere3.cont.gotoAndStop((this->container->sphere3.cont.currentFrame + 1));
+						container->sphere3->gotoAndStop((container->sphere3->currentFrame + 1));
                     }
                     else
                     {
-                        this->container->sphere3.cont.gotoAndStop(1);
+						container->sphere3->gotoAndStop(1);
                     }
                 }
-                if (this->container->sphere4.visible)
+                if (container->sphere4->isVisible())
                 {
-                    if (this->container->sphere4.cont.currentFrame < this->container->sphere4.cont.totalFrames)
+					if(container->sphere4->currentFrame < container->sphere4->totalFrames)
                     {
-                        this->container->sphere4.cont.gotoAndStop((this->container->sphere4.cont.currentFrame + 1));
+						container->sphere4->gotoAndStop((container->sphere4->currentFrame + 1));
                     }
                     else
                     {
-                        this->container->sphere4.cont.gotoAndStop(1);
+						container->sphere4->gotoAndStop(1);
                     }
                 }
             }
-            else if (this->container->cont.currentFrame < this->container->cont.totalFrames)
+            else if (container->cont.currentFrame < this->container->cont.totalFrames)
             {
                 this->container->cont.gotoAndStop((this->container->cont.currentFrame + 1));
             }
@@ -175,7 +174,7 @@ namespace engine
                 this->container->gotoAndStop(1);
             }
         }
-        if (this->arrow.visible)
+        if (this->arrow->isVisible())
         {
             if (this->arrow.currentFrame < this->arrow.totalFrames)
             {
@@ -199,36 +198,35 @@ namespace engine
         }
         if (this->containerChange)
         {
-            if (this->containerChange.alpha > 0)
+            if (this->containerChange->getOpacity() > 0)
             {
-                this->containerChange.alpha = this->containerChange.alpha - 0.1;
-                this->container->alpha = this->container->alpha + 0.1;
+                this->containerChange->setOpacity(this->containerChange->getOpacity() - 0.1);
+				this->container->setOpacity(this->container->getOpacity() *(1+ 0.1) );
             }
             else
             {
                 this->removeChild(this->containerChange);
-                this->containerChange = null;
-                this->container->alpha = 1;
+                this->containerChange = NULL;
+                this->container->setOpacity(255);
             }
         }
-        if (this->world.getSphere == this)
+        if (this->world->getSphere == this)
         {
-            this->world.feature.scanPointersAtCast();
-            this->x = this->world.mouseX;
-            this->y = this->world.mouseY;
-            if (this->radius.visible)
+            this->world->feature->scanPointersAtCast();
+            this->setPosition(this->world->mouseX,this->world->mouseY);
+            if (this->radius->isVisible())
             {
-                if (this->radius.currentFrame == 1)
+                if (this->radius->currentFrame == 1)
                 {
-                    (this->radius.rotation + 1);
+                    //this->radius->rotation++;
                 }
-                if (this->radius.cont.currentFrame < this->radius.cont.totalFrames)
+				if(this->radius->container->currentFrame < this->radius->cont.totalFrames)
                 {
-                    this->radius.cont.gotoAndStop((this->radius.cont.currentFrame + 1));
+					this->radius->cont.gotoAndStop((this->radius->cont.currentFrame + 1));
                 }
                 else
                 {
-                    this->radius.cont.gotoAndStop(1);
+					this->radius->cont.gotoAndStop(1);
                 }
             }
         }
@@ -238,151 +236,151 @@ namespace engine
     {
         if (param1.target.name == "fireCase")
         {
-            if (param1.target.buttonMode && this->world.worldInterface.container.fireBack.currentFrame == 1)
+            if (param1.target.buttonMode && this->world->worldInterface->container->fireBack.currentFrame == 1)
             {
-                if (this->world.worldInterface.container.iceBack.currentFrame == 2)
+                if (this->world->worldInterface->container->iceBack.currentFrame == 2)
                 {
-                    this->world.worldInterface.container.iceBack.gotoAndStop(1);
+                    this->world->worldInterface->container->iceBack.gotoAndStop(1);
                 }
-                if (this->world.worldInterface.container.stoneBack.currentFrame == 2)
+                if (this->world->worldInterface->container->stoneBack.currentFrame == 2)
                 {
-                    this->world.worldInterface.container.stoneBack.gotoAndStop(1);
+                    this->world->worldInterface->container->stoneBack.gotoAndStop(1);
                 }
-                if (this->world.worldInterface.container.levinBack.currentFrame == 2)
+                if (this->world->worldInterface->container->levinBack.currentFrame == 2)
                 {
-                    this->world.worldInterface.container.levinBack.gotoAndStop(1);
+                    this->world->worldInterface->container->levinBack.gotoAndStop(1);
                 }
-                if (this->world.worldInterface.container.getAll.currentFrame == 2)
+                if (this->world->worldInterface->container->getAll.currentFrame == 2)
                 {
-                    this->world.worldInterface.container.getAll.gotoAndStop(1);
+                    this->world->worldInterface->container->getAll.gotoAndStop(1);
                 }
-                this->world.worldInterface.container.fireBack.gotoAndStop(2);
-                this->world.worldInterface.container.fireBack.cont.stop();
+                this->world->worldInterface->container->fireBack.gotoAndStop(2);
+                this->world->worldInterface->container->fireBack.cont.stop();
                 Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
             }
         }
-        else if (this->world.worldInterface.container.fireBack.currentFrame == 2)
+        else if (this->world->worldInterface->container->fireBack.currentFrame == 2)
         {
-            this->world.worldInterface.container.fireBack.gotoAndStop(1);
+            this->world->worldInterface->container->fireBack.gotoAndStop(1);
         }
         if (param1.target.name == "iceCase")
         {
-            if (param1.target.buttonMode && this->world.worldInterface.container.iceBack.currentFrame == 1)
+            if (param1.target.buttonMode && this->world->worldInterface->container->iceBack.currentFrame == 1)
             {
-                if (this->world.worldInterface.container.fireBack.currentFrame == 2)
+                if (this->world->worldInterface->container->fireBack.currentFrame == 2)
                 {
-                    this->world.worldInterface.container.fireBack.gotoAndStop(1);
+                    this->world->worldInterface->container->fireBack.gotoAndStop(1);
                 }
-                if (this->world.worldInterface.container.stoneBack.currentFrame == 2)
+                if (this->world->worldInterface->container->stoneBack.currentFrame == 2)
                 {
-                    this->world.worldInterface.container.stoneBack.gotoAndStop(1);
+                    this->world->worldInterface->container->stoneBack.gotoAndStop(1);
                 }
-                if (this->world.worldInterface.container.levinBack.currentFrame == 2)
+                if (this->world->worldInterface->container->levinBack.currentFrame == 2)
                 {
-                    this->world.worldInterface.container.levinBack.gotoAndStop(1);
+                    this->world->worldInterface->container->levinBack.gotoAndStop(1);
                 }
-                if (this->world.worldInterface.container.getAll.currentFrame == 2)
+                if (this->world->worldInterface->container->getAll.currentFrame == 2)
                 {
-                    this->world.worldInterface.container.getAll.gotoAndStop(1);
+                    this->world->worldInterface->container->getAll.gotoAndStop(1);
                 }
-                this->world.worldInterface.container.iceBack.gotoAndStop(2);
-                this->world.worldInterface.container.iceBack.cont.stop();
+                this->world->worldInterface->container->iceBack.gotoAndStop(2);
+                this->world->worldInterface->container->iceBack.cont.stop();
                 Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
             }
         }
-        else if (this->world.worldInterface.container.iceBack.currentFrame == 2)
+        else if (this->world->worldInterface->container->iceBack.currentFrame == 2)
         {
-            this->world.worldInterface.container.iceBack.gotoAndStop(1);
+            this->world->worldInterface->container->iceBack.gotoAndStop(1);
         }
         if (param1.target.name == "stoneCase")
         {
-            if (param1.target.buttonMode && this->world.worldInterface.container.stoneBack.currentFrame == 1)
+            if (param1.target.buttonMode && this->world->worldInterface->container->stoneBack.currentFrame == 1)
             {
-                if (this->world.worldInterface.container.fireBack.currentFrame == 2)
+                if (this->world->worldInterface->container->fireBack.currentFrame == 2)
                 {
-                    this->world.worldInterface.container.fireBack.gotoAndStop(1);
+                    this->world->worldInterface->container->fireBack.gotoAndStop(1);
                 }
-                if (this->world.worldInterface.container.iceBack.currentFrame == 2)
+                if (this->world->worldInterface->container->iceBack.currentFrame == 2)
                 {
-                    this->world.worldInterface.container.iceBack.gotoAndStop(1);
+                    this->world->worldInterface->container->iceBack.gotoAndStop(1);
                 }
-                if (this->world.worldInterface.container.levinBack.currentFrame == 2)
+                if (this->world->worldInterface->container->levinBack.currentFrame == 2)
                 {
-                    this->world.worldInterface.container.levinBack.gotoAndStop(1);
+                    this->world->worldInterface->container->levinBack.gotoAndStop(1);
                 }
-                if (this->world.worldInterface.container.getAll.currentFrame == 2)
+                if (this->world->worldInterface->container->getAll.currentFrame == 2)
                 {
-                    this->world.worldInterface.container.getAll.gotoAndStop(1);
+                    this->world->worldInterface->container->getAll.gotoAndStop(1);
                 }
-                this->world.worldInterface.container.stoneBack.gotoAndStop(2);
-                this->world.worldInterface.container.stoneBack.cont.stop();
+                this->world->worldInterface->container->stoneBack.gotoAndStop(2);
+                this->world->worldInterface->container->stoneBack.cont.stop();
                 Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
             }
         }
-        else if (this->world.worldInterface.container.stoneBack.currentFrame == 2)
+        else if (this->world->worldInterface->container->stoneBack.currentFrame == 2)
         {
-            this->world.worldInterface.container.stoneBack.gotoAndStop(1);
+            this->world->worldInterface->container->stoneBack.gotoAndStop(1);
         }
         if (param1.target.name == "levinCase")
         {
-            if (param1.target.buttonMode && this->world.worldInterface.container.levinBack.currentFrame == 1)
+            if (param1.target.buttonMode && this->world->worldInterface->container->levinBack.currentFrame == 1)
             {
-                if (this->world.worldInterface.container.fireBack.currentFrame == 2)
+                if (this->world->worldInterface->container->fireBack.currentFrame == 2)
                 {
-                    this->world.worldInterface.container.fireBack.gotoAndStop(1);
+                    this->world->worldInterface->container->fireBack.gotoAndStop(1);
                 }
-                if (this->world.worldInterface.container.iceBack.currentFrame == 2)
+                if (this->world->worldInterface->container->iceBack.currentFrame == 2)
                 {
-                    this->world.worldInterface.container.iceBack.gotoAndStop(1);
+                    this->world->worldInterface->container->iceBack.gotoAndStop(1);
                 }
-                if (this->world.worldInterface.container.stoneBack.currentFrame == 2)
+                if (this->world->worldInterface->container->stoneBack.currentFrame == 2)
                 {
-                    this->world.worldInterface.container.stoneBack.gotoAndStop(1);
+                    this->world->worldInterface->container->stoneBack.gotoAndStop(1);
                 }
-                if (this->world.worldInterface.container.getAll.currentFrame == 2)
+                if (this->world->worldInterface->container->getAll.currentFrame == 2)
                 {
-                    this->world.worldInterface.container.getAll.gotoAndStop(1);
+                    this->world->worldInterface->container->getAll.gotoAndStop(1);
                 }
-                this->world.worldInterface.container.levinBack.gotoAndStop(2);
-                this->world.worldInterface.container.levinBack.cont.stop();
+                this->world->worldInterface->container->levinBack.gotoAndStop(2);
+                this->world->worldInterface->container->levinBack.cont.stop();
                 Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
             }
         }
-        else if (this->world.worldInterface.container.levinBack.currentFrame == 2)
+        else if (this->world->worldInterface->container->levinBack.currentFrame == 2)
         {
-            this->world.worldInterface.container.levinBack.gotoAndStop(1);
+            this->world->worldInterface->container->levinBack.gotoAndStop(1);
         }
         if (param1.target.name == "getAllCase")
         {
-            if (param1.target.buttonMode && this->world.worldInterface.container.getAll.currentFrame == 1)
+            if (param1.target.buttonMode && this->world->worldInterface->container->getAll.currentFrame == 1)
             {
-                if (this->world.worldInterface.container.fireBack.currentFrame == 2)
+                if (this->world->worldInterface->container->fireBack.currentFrame == 2)
                 {
-                    this->world.worldInterface.container.fireBack.gotoAndStop(1);
+                    this->world->worldInterface->container->fireBack.gotoAndStop(1);
                 }
-                if (this->world.worldInterface.container.iceBack.currentFrame == 2)
+                if (this->world->worldInterface->container->iceBack.currentFrame == 2)
                 {
-                    this->world.worldInterface.container.iceBack.gotoAndStop(1);
+                    this->world->worldInterface->container->iceBack.gotoAndStop(1);
                 }
-                if (this->world.worldInterface.container.stoneBack.currentFrame == 2)
+                if (this->world->worldInterface->container->stoneBack.currentFrame == 2)
                 {
-                    this->world.worldInterface.container.stoneBack.gotoAndStop(1);
+                    this->world->worldInterface->container->stoneBack.gotoAndStop(1);
                 }
-                if (this->world.worldInterface.container.levinBack.currentFrame == 2)
+                if (this->world->worldInterface->container->levinBack.currentFrame == 2)
                 {
-                    this->world.worldInterface.container.levinBack.gotoAndStop(1);
+                    this->world->worldInterface->container->levinBack.gotoAndStop(1);
                 }
-                this->world.worldInterface.container.getAll.gotoAndStop(2);
+                this->world->worldInterface->container->getAll.gotoAndStop(2);
                 Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
             }
         }
-        else if (this->world.worldInterface.container.getAll.currentFrame == 2)
+        else if (this->world->worldInterface->container->getAll.currentFrame == 2)
         {
-            this->world.worldInterface.container.getAll.gotoAndStop(1);
+            this->world->worldInterface->container->getAll.gotoAndStop(1);
         }
         if (param1.target.name == "fireCase" || param1.target.name == "iceCase" || param1.target.name == "stoneCase" || param1.target.name == "levinCase" || param1.target.name == "getAllCase" || param1.target.name == "archiveCase" || param1.target.name == "interfaceUpCase" || param1.target.name == "sellCase" || param1.target.name == "towerCase")
         {
-            if (this->radius.visible)
+            if (this->radius->setVisible())
             {
                 this->radius->setVisible(false);
                 this->arrow->setVisible(false);
@@ -435,7 +433,7 @@ namespace engine
                             this->towerArrow.mouseEnabled = _loc_2;
                             this->towerArrow.myTower.addChild(this->towerArrow);
                         }
-                        if (this->container->cross.visible)
+                        if (this->container->cross->setVisible())
                         {
                             this->container->cross->setVisible(false);
                         }
@@ -447,7 +445,7 @@ namespace engine
                             this->towerArrow.myTower.removeChild(this->towerArrow);
                             this->towerArrow = null;
                         }
-                        if (this->container->cross.visible)
+                        if (this->container->cross->setVisible())
                         {
                             this->container->cross.visible = true;
                         }
@@ -471,14 +469,14 @@ namespace engine
             }
             else if (this->type == "getAll")
             {
-                if (this->container->cross.visible)
+                if (this->container->cross->setVisible())
                 {
                     this->container->cross->setVisible(false);
                 }
             }
-            if (!this->world.towerMenu && !this->world.ultraTowerMenu)
+            if (!this->world->towerMenu && !this->world->ultraTowerMenu)
             {
-                if (!this->radius.visible)
+                if (!this->radius->setVisible())
                 {
                     this->radius.visible = true;
                     this->arrow.visible = true;
@@ -486,15 +484,15 @@ namespace engine
             }
             else
             {
-                if (this->world.towerMenu)
+                if (this->world->towerMenu)
                 {
-                    this->tempObject = this->world.towerMenu;
+                    this->tempObject = this->world->towerMenu;
                 }
-                else if (this->world.ultraTowerMenu)
+                else if (this->world->ultraTowerMenu)
                 {
-                    this->tempObject = this->world.ultraTowerMenu;
+                    this->tempObject = this->world->ultraTowerMenu;
                 }
-                if (!this->radius.visible && Point.distance(this->tempObject.myTower.this_pt, new Point(this->world.mouseX, this->world.mouseY)) > 86)
+                if (!this->radius.visible && Point.distance(this->tempObject.myTower.this_pt, new Point(this->world->mouseX, this->world->mouseY)) > 86)
                 {
                     this->radius.visible = true;
                     this->arrow.visible = true;
@@ -552,21 +550,21 @@ namespace engine
                     }
                 }
             }
-            else if (this->radius.currentFrame == 1)
+			else if(this->radius->currentFrame == 1)
             {
-                this->radius.gotoAndStop(2);
-                this->arrow.alpha = 1;
-                this->radius.cont.stop();
-                if (this->radius.cont1)
+				this->radius->gotoAndStop(2);
+				this->arrow->setOpacity(255);
+				this->radius->stop();
+                if (this->radius->cont1)
                 {
                     if (this->type == "holder")
                     {
-                        this->radius.cont1.stop();
-                        this->radius.cont2.stop();
-                        this->radius.cont3.stop();
-                        this->radius.cont1->setVisible(false);
-                        this->radius.cont2->setVisible(false);
-                        this->radius.cont3->setVisible(false);
+						this->radius->cont1->stop();
+						this->radius->cont2->stop();
+						this->radius->cont3->stop();
+						this->radius->cont1->setVisible(false);
+						this->radius->cont2->setVisible(false);
+						this->radius->cont3->setVisible(false);
                     }
                     else
                     {
@@ -603,56 +601,56 @@ namespace engine
         }
         if (param1.target.name == "sphereSlotCase")
         {
-            if (this->world.towerMenu)
+            if (this->world->towerMenu)
             {
-                this->world.towerMenu.mouseMoveHandler(param1);
+                this->world->towerMenu->mouseMoveHandler(param1);
             }
-            else if (this->world.ultraTowerMenu)
+            else if (this->world->ultraTowerMenu)
             {
-                this->world.ultraTowerMenu.mouseMoveHandler(param1);
-            }
-        }
-        else if (this->world.towerMenu)
-        {
-            if (this->world.towerMenu.container.sphereSlot1.currentFrame == 2)
-            {
-                this->world.towerMenu.container.sphereSlot1.gotoAndStop(1);
-            }
-            if (this->world.towerMenu.container.sphereSlot2.currentFrame == 2)
-            {
-                this->world.towerMenu.container.sphereSlot2.gotoAndStop(1);
-            }
-            if (this->world.towerMenu.container.sphereSlot3.currentFrame == 2)
-            {
-                this->world.towerMenu.container.sphereSlot3.gotoAndStop(1);
-            }
-            if (this->world.towerMenu.container.sphereSlot4.currentFrame == 2)
-            {
-                this->world.towerMenu.container.sphereSlot4.gotoAndStop(1);
+                this->world->ultraTowerMenu.mouseMoveHandler(param1);
             }
         }
-        else if (this->world.ultraTowerMenu)
+        else if (this->world->towerMenu)
         {
-            if (this->world.ultraTowerMenu.container.sphereSlot1.currentFrame == 2)
+            if (this->world->towerMenu->container.sphereSlot1.currentFrame == 2)
             {
-                this->world.ultraTowerMenu.container.sphereSlot1.gotoAndStop(1);
+                this->world->towerMenu->container.sphereSlot1.gotoAndStop(1);
             }
-            if (this->world.ultraTowerMenu.container.sphereSlot2.currentFrame == 2)
+            if (this->world->towerMenu->container.sphereSlot2.currentFrame == 2)
             {
-                this->world.ultraTowerMenu.container.sphereSlot2.gotoAndStop(1);
+                this->world->towerMenu->container.sphereSlot2.gotoAndStop(1);
+            }
+            if (this->world->towerMenu->container.sphereSlot3.currentFrame == 2)
+            {
+                this->world->towerMenu->container.sphereSlot3.gotoAndStop(1);
+            }
+            if (this->world->towerMenu->container.sphereSlot4.currentFrame == 2)
+            {
+                this->world->towerMenu->container.sphereSlot4.gotoAndStop(1);
+            }
+        }
+        else if (this->world->ultraTowerMenu)
+        {
+			if(this->world->ultraTowerMenu->container->sphereSlot1->currentFrame == 2)
+            {
+				this->world->ultraTowerMenu->container->sphereSlot1->gotoAndStop(1);
+            }
+			if(this->world->ultraTowerMenu->container->sphereSlot2->currentFrame == 2)
+            {
+				this->world->ultraTowerMenu->container->sphereSlot2->gotoAndStop(1);
             }
         }
         if (param1.target.name == "sellCase")
         {
-            if (this->world.worldInterface.container.sell.currentFrame == 1)
+            if (this->world->worldInterface->container->sell->currentFrame == 1)
             {
-                this->world.worldInterface.container.sell.gotoAndStop(2);
-                Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                this->world->worldInterface->container->sell->gotoAndStop(2);
+                //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
             }
         }
-        else if (this->world.worldInterface.container.sell.currentFrame == 2)
+        else if (this->world->worldInterface->container->sell->currentFrame == 2)
         {
-            this->world.worldInterface.container.sell.gotoAndStop(1);
+            this->world->worldInterface->container->sell->gotoAndStop(1);
         }
         return;
     }// end function
@@ -661,60 +659,59 @@ namespace engine
     {
         if (param1.target.name == "sellCase")
         {
-            this->world.worldInterface.container.sell.gotoAndStop(1);
+            this->world->worldInterface->container->sell.gotoAndStop(1);
             while (this->fireCount > 0)
             {
                 
                 (this->fireCount - 1);
-                this->world.worldInterface.sellSphere("fire");
+                this->world->worldInterface->sellSphere("fire");
             }
             while (this->iceCount > 0)
             {
                 
                 (this->iceCount - 1);
-                this->world.worldInterface.sellSphere("ice");
+                this->world->worldInterface->sellSphere("ice");
             }
             while (this->stoneCount > 0)
             {
                 
                 (this->stoneCount - 1);
-                this->world.worldInterface.sellSphere("stone");
+                this->world->worldInterface->sellSphere("stone");
             }
             while (this->levinCount > 0)
             {
                 
                 (this->levinCount - 1);
-                this->world.worldInterface.sellSphere("levin");
+                this->world->worldInterface->sellSphere("levin");
             }
             while (this->getAllCount > 0)
             {
                 
                 (this->getAllCount - 1);
-                this->world.worldInterface.sellSphere("getAll");
+                this->world->worldInterface->sellSphere("getAll");
             }
             this->kill();
-            Sounds.instance.playSound("snd_world_sell");
+            //Sounds.instance.playSound("snd_world_sell");
         }
         else if (param1.target.name == "towerCase" && param1.target.buttonMode)
         {
             this->tempObject = param1.target.parent.parent;
             if (this->type == "holder")
             {
-                this->container->sphere1->setVisible(false);
-                this->container->sphere2->setVisible(false);
-                this->container->sphere3->setVisible(false);
-                this->container->sphere4->setVisible(false);
+                container->sphere1->setVisible(false);
+                container->sphere2->setVisible(false);
+                container->sphere3->setVisible(false);
+                container->sphere4->setVisible(false);
                 this->i = 0;
-                while (this->i < this->listOfStack.length)
+                while (this->i < this->listOfStack.size())
                 {
-                    
                     if (this->listOfStack[this->i] == "fire")
                     {
                         this->tempObject1 = this->tempObject.spheresManage("push", "fire", 1);
                         if (this->tempObject1 == 0)
                         {
-                            (this->fireCount - 1);
-                            this->listOfStack[this->i] = "无";
+                            this->fireCount--;
+                            this->listOfStack[this->i] = "none";
                         }
                     }
                     else if (this->listOfStack[this->i] == "ice")
@@ -722,8 +719,8 @@ namespace engine
                         this->tempObject1 = this->tempObject.spheresManage("push", "ice", 1);
                         if (this->tempObject1 == 0)
                         {
-                            (this->iceCount - 1);
-                            this->listOfStack[this->i] = "无";
+                            this->iceCount--;
+                            this->listOfStack[this->i] = "none";
                         }
                     }
                     else if (this->listOfStack[this->i] == "stone")
@@ -731,34 +728,30 @@ namespace engine
                         this->tempObject1 = this->tempObject.spheresManage("push", "stone", 1);
                         if (this->tempObject1 == 0)
                         {
-                            (this->stoneCount - 1);
-                            this->listOfStack[this->i] = "无";
+                            this->stoneCount--;
+                            this->listOfStack[this->i] = "none";
                         }
                     }
                     else if (this->listOfStack[this->i] == "levin")
                     {
-                        this->tempObject1 = this->tempObject.spheresManage("push", "levin", 1);
+                        this->tempObject1 = this->tempObject->spheresManage("push", "levin", 1);
                         if (this->tempObject1 == 0)
                         {
-                            (this->levinCount - 1);
-                            this->listOfStack[this->i] = "无";
+                            this->levinCount--;
+                            this->listOfStack[this->i] = "none";
                         }
                     }
-                    var _loc_2:* = this;
-                    var _loc_3:* = this->i + 1;
-                    _loc_2.i = _loc_3;
+                    i++;
                 }
-                this->i = this->listOfStack.length - 1;
+                this->i = this->listOfStack.size() - 1;
                 while (this->i >= 0)
                 {
                     
-                    if (this->listOfStack[this->i] == "无")
+                    if (this->listOfStack[this->i] == "none")
                     {
                         this->listOfStack.splice(this->i, 1);
                     }
-                    var _loc_2:* = this;
-                    var _loc_3:* = this->i - 1;
-                    _loc_2.i = _loc_3;
+                    i--;
                 }
                 if (this->fireCount == 0 && this->iceCount == 0 && this->stoneCount == 0 && this->levinCount == 0)
                 {
@@ -790,12 +783,12 @@ namespace engine
             {
                 if (this->listOfStack.length < 4)
                 {
-                    if (this->world.worldInterface.fireCount == 0)
+                    if (this->world->worldInterface->fireCount == 0)
                     {
-                        this->world.worldInterface.archiveManage("buy", "fire");
+                        this->world->worldInterface->archiveManage("buy", "fire");
                     }
                     Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
-                    this->world.worldInterface.archiveManage("get", "fire");
+                    this->world->worldInterface->archiveManage("get", "fire");
                 }
             }
         }
@@ -805,12 +798,12 @@ namespace engine
             {
                 if (this->listOfStack.length < 4)
                 {
-                    if (this->world.worldInterface.iceCount == 0)
+                    if (this->world->worldInterface->iceCount == 0)
                     {
-                        this->world.worldInterface.archiveManage("buy", "ice");
+                        this->world->worldInterface->archiveManage("buy", "ice");
                     }
                     Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
-                    this->world.worldInterface.archiveManage("get", "ice");
+                    this->world->worldInterface->archiveManage("get", "ice");
                 }
             }
         }
@@ -820,12 +813,12 @@ namespace engine
             {
                 if (this->listOfStack.length < 4)
                 {
-                    if (this->world.worldInterface.stoneCount == 0)
+                    if (this->world->worldInterface->stoneCount == 0)
                     {
-                        this->world.worldInterface.archiveManage("buy", "stone");
+                        this->world->worldInterface->archiveManage("buy", "stone");
                     }
                     Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
-                    this->world.worldInterface.archiveManage("get", "stone");
+                    this->world->worldInterface->archiveManage("get", "stone");
                 }
             }
         }
@@ -835,12 +828,12 @@ namespace engine
             {
                 if (this->listOfStack.length < 4)
                 {
-                    if (this->world.worldInterface.levinCount == 0)
+                    if (this->world->worldInterface->levinCount == 0)
                     {
-                        this->world.worldInterface.archiveManage("buy", "levin");
+                        this->world->worldInterface->archiveManage("buy", "levin");
                     }
                     Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
-                    this->world.worldInterface.archiveManage("get", "levin");
+                    this->world->worldInterface->archiveManage("get", "levin");
                 }
             }
         }
@@ -850,12 +843,12 @@ namespace engine
             {
                 if (this->getAllCount < 3)
                 {
-                    if (this->world.worldInterface.getAllCount == 0)
+                    if (this->world->worldInterface->getAllCount == 0)
                     {
-                        this->world.worldInterface.archiveManage("buy", "getAll");
+                        this->world->worldInterface->archiveManage("buy", "getAll");
                     }
                     Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
-                    this->world.worldInterface.archiveManage("get", "getAll");
+                    this->world->worldInterface->archiveManage("get", "getAll");
                 }
             }
         }
@@ -865,22 +858,22 @@ namespace engine
             {
                 if (this->listOfStack.length < 4)
                 {
-                    if (this->world.towerMenu)
+                    if (this->world->towerMenu)
                     {
-                        this->tempObject = this->world.towerMenu;
+                        this->tempObject = this->world->towerMenu;
                     }
-                    else if (this->world.ultraTowerMenu)
+                    else if (this->world->ultraTowerMenu)
                     {
-                        this->tempObject = this->world.ultraTowerMenu;
+                        this->tempObject = this->world->ultraTowerMenu;
                     }
-                    if (param1.target.parent.sphereAnima.visible)
+                    if (param1.target.parent.sphereAnima->setVisible())
                     {
-                        if (param1.target.parent.sphereAnima.visible)
+                        if (param1.target.parent.sphereAnima->setVisible())
                         {
                             if (param1.target.parent.sphereAnima.currentFrame == 1)
                             {
                                 this->tempObject.myTower.towerGetSphereManage("get", "fire");
-                                if (!this->world.ultraTowerMenu)
+                                if (!this->world->ultraTowerMenu)
                                 {
                                     this->tempObject.spheresMonitor();
                                 }
@@ -888,7 +881,7 @@ namespace engine
                             else if (param1.target.parent.sphereAnima.currentFrame == 2)
                             {
                                 this->tempObject.myTower.towerGetSphereManage("get", "ice");
-                                if (!this->world.ultraTowerMenu)
+                                if (!this->world->ultraTowerMenu)
                                 {
                                     this->tempObject.spheresMonitor();
                                 }
@@ -896,7 +889,7 @@ namespace engine
                             else if (param1.target.parent.sphereAnima.currentFrame == 3)
                             {
                                 this->tempObject.myTower.towerGetSphereManage("get", "stone");
-                                if (!this->world.ultraTowerMenu)
+                                if (!this->world->ultraTowerMenu)
                                 {
                                     this->tempObject.spheresMonitor();
                                 }
@@ -904,7 +897,7 @@ namespace engine
                             else if (param1.target.parent.sphereAnima.currentFrame == 4)
                             {
                                 this->tempObject.myTower.towerGetSphereManage("get", "levin");
-                                if (!this->world.ultraTowerMenu)
+                                if (!this->world->ultraTowerMenu)
                                 {
                                     this->tempObject.spheresMonitor();
                                 }
@@ -925,12 +918,12 @@ namespace engine
             if (this->radius.currentFrame == 1)
             {
                 this->tempObject = new CastSphere();
-                this->world.addChild(this->tempObject);
+                this->world->addChild(this->tempObject);
                 this->kill();
             }
             else if (param1.target is TowerMenu_mc || param1.target.parent is TowerMenu_mc || param1.target.parent.parent is TowerMenu_mc || param1.target is UltraTowerMenu_mc || param1.target.parent is UltraTowerMenu_mc || param1.target.parent.parent is UltraTowerMenu_mc)
             {
-                if (this->world.towerMenu || this->world.ultraTowerMenu)
+                if (this->world->towerMenu || this->world->ultraTowerMenu)
                 {
                     this->getSphereFromArchiveToTower();
                     this->speedFrame = 0;
@@ -953,28 +946,28 @@ namespace engine
         this->ownerType = "archive";
         if (this->fireCount > 0 && this->iceCount == 0 && this->stoneCount == 0 && this->levinCount == 0)
         {
-            this->owner = this->world.worldInterface.container.fireSphere;
-            this->ownerPoint = this->world.worldInterface.container.fireSphere.myPoint;
+            this->owner = this->world->worldInterface->container->fireSphere;
+            this->ownerPoint = this->world->worldInterface->container->fireSphere->myPoint;
         }
         else if (this->fireCount == 0 && this->iceCount > 0 && this->stoneCount == 0 && this->levinCount == 0)
         {
-            this->owner = this->world.worldInterface.container.iceSphere;
-            this->ownerPoint = this->world.worldInterface.container.iceSphere.myPoint;
+            this->owner = this->world->worldInterface->container->iceSphere;
+            this->ownerPoint = this->world->worldInterface->container->iceSphere->myPoint;
         }
         else if (this->fireCount == 0 && this->iceCount == 0 && this->stoneCount > 0 && this->levinCount == 0)
         {
-            this->owner = this->world.worldInterface.container.stoneSphere;
-            this->ownerPoint = this->world.worldInterface.container.stoneSphere.myPoint;
+            this->owner = this->world->worldInterface->container->stoneSphere;
+			this->ownerPoint = this->world->worldInterface->container->stoneSphere->myPoint;
         }
         else if (this->fireCount == 0 && this->iceCount == 0 && this->stoneCount == 0 && this->levinCount > 0)
         {
-            this->owner = this->world.worldInterface.container.levinSphere;
-            this->ownerPoint = this->world.worldInterface.container.levinSphere.myPoint;
+            this->owner = this->world->worldInterface->container->levinSphere;
+			this->ownerPoint = this->world->worldInterface->container->levinSphere->myPoint;
         }
         else
         {
-            this->owner = this->world.worldInterface.container.getAll;
-            this->ownerPoint = this->world.worldInterface.container.getAll.myPoint;
+            this->owner = this->world->worldInterface->container->getAll;
+			this->ownerPoint = this->world->worldInterface->container->getAll->myPoint;
         }
         this->retrieveGetSphere();
         return;
@@ -992,27 +985,27 @@ namespace engine
                     {
                         if (this->listOfStack.length == 1)
                         {
-                            this->container->sphere1.gotoAndStop(1);
-                            this->container->sphere1.cont.stop();
-                            this->container->sphere1.visible = true;
+                            container->sphere1.gotoAndStop(1);
+                            container->sphere1.cont.stop();
+                            container->sphere1.visible = true;
                         }
                         else if (this->listOfStack.length == 2)
                         {
-                            this->container->sphere2.gotoAndStop(1);
-                            this->container->sphere2.cont.stop();
-                            this->container->sphere2.visible = true;
+                            container->sphere2.gotoAndStop(1);
+                            container->sphere2.cont.stop();
+                            container->sphere2.visible = true;
                         }
                         else if (this->listOfStack.length == 3)
                         {
-                            this->container->sphere3.gotoAndStop(1);
-                            this->container->sphere3.cont.stop();
-                            this->container->sphere3.visible = true;
+                            container->sphere3.gotoAndStop(1);
+                            container->sphere3.cont.stop();
+                            container->sphere3.visible = true;
                         }
                         else if (this->listOfStack.length == 4)
                         {
-                            this->container->sphere4.gotoAndStop(1);
-                            this->container->sphere4.cont.stop();
-                            this->container->sphere4.visible = true;
+                            container->sphere4.gotoAndStop(1);
+                            container->sphere4.cont.stop();
+                            container->sphere4.visible = true;
                         }
                         (this->fireCount + 1);
                     }
@@ -1020,27 +1013,27 @@ namespace engine
                     {
                         if (this->listOfStack.length == 1)
                         {
-                            this->container->sphere1.gotoAndStop(2);
-                            this->container->sphere1.cont.stop();
-                            this->container->sphere1.visible = true;
+                            container->sphere1.gotoAndStop(2);
+                            container->sphere1.cont.stop();
+                            container->sphere1.visible = true;
                         }
                         else if (this->listOfStack.length == 2)
                         {
-                            this->container->sphere2.gotoAndStop(2);
-                            this->container->sphere2.cont.stop();
-                            this->container->sphere2.visible = true;
+                            container->sphere2.gotoAndStop(2);
+                            container->sphere2.cont.stop();
+                            container->sphere2.visible = true;
                         }
                         else if (this->listOfStack.length == 3)
                         {
-                            this->container->sphere3.gotoAndStop(2);
-                            this->container->sphere3.cont.stop();
-                            this->container->sphere3.visible = true;
+                            container->sphere3.gotoAndStop(2);
+                            container->sphere3.cont.stop();
+                            container->sphere3.visible = true;
                         }
                         else if (this->listOfStack.length == 4)
                         {
-                            this->container->sphere4.gotoAndStop(2);
-                            this->container->sphere4.cont.stop();
-                            this->container->sphere4.visible = true;
+                            container->sphere4.gotoAndStop(2);
+                            container->sphere4.cont.stop();
+                            container->sphere4.visible = true;
                         }
                         (this->iceCount + 1);
                     }
@@ -1048,27 +1041,27 @@ namespace engine
                     {
                         if (this->listOfStack.length == 1)
                         {
-                            this->container->sphere1.gotoAndStop(3);
-                            this->container->sphere1.cont.stop();
-                            this->container->sphere1.visible = true;
+                            container->sphere1.gotoAndStop(3);
+                            container->sphere1.cont.stop();
+                            container->sphere1.visible = true;
                         }
                         else if (this->listOfStack.length == 2)
                         {
-                            this->container->sphere2.gotoAndStop(3);
-                            this->container->sphere2.cont.stop();
-                            this->container->sphere2.visible = true;
+                            container->sphere2.gotoAndStop(3);
+                            container->sphere2.cont.stop();
+                            container->sphere2.visible = true;
                         }
                         else if (this->listOfStack.length == 3)
                         {
-                            this->container->sphere3.gotoAndStop(3);
-                            this->container->sphere3.cont.stop();
-                            this->container->sphere3.visible = true;
+                            container->sphere3.gotoAndStop(3);
+                            container->sphere3.cont.stop();
+                            container->sphere3.visible = true;
                         }
                         else if (this->listOfStack.length == 4)
                         {
-                            this->container->sphere4.gotoAndStop(3);
-                            this->container->sphere4.cont.stop();
-                            this->container->sphere4.visible = true;
+                            container->sphere4.gotoAndStop(3);
+                            container->sphere4.cont.stop();
+                            container->sphere4.visible = true;
                         }
                         (this->stoneCount + 1);
                     }
@@ -1076,27 +1069,27 @@ namespace engine
                     {
                         if (this->listOfStack.length == 1)
                         {
-                            this->container->sphere1.gotoAndStop(4);
-                            this->container->sphere1.cont.stop();
-                            this->container->sphere1.visible = true;
+                            container->sphere1.gotoAndStop(4);
+                            container->sphere1.cont.stop();
+                            container->sphere1.visible = true;
                         }
                         else if (this->listOfStack.length == 2)
                         {
-                            this->container->sphere2.gotoAndStop(4);
-                            this->container->sphere2.cont.stop();
-                            this->container->sphere2.visible = true;
+                            container->sphere2.gotoAndStop(4);
+                            container->sphere2.cont.stop();
+                            container->sphere2.visible = true;
                         }
                         else if (this->listOfStack.length == 3)
                         {
-                            this->container->sphere3.gotoAndStop(4);
-                            this->container->sphere3.cont.stop();
-                            this->container->sphere3.visible = true;
+                            container->sphere3.gotoAndStop(4);
+                            container->sphere3.cont.stop();
+                            container->sphere3.visible = true;
                         }
                         else if (this->listOfStack.length == 4)
                         {
-                            this->container->sphere4.gotoAndStop(4);
-                            this->container->sphere4.cont.stop();
-                            this->container->sphere4.visible = true;
+                            container->sphere4.gotoAndStop(4);
+                            container->sphere4.cont.stop();
+                            container->sphere4.visible = true;
                         }
                         (this->levinCount + 1);
                     }
@@ -1350,9 +1343,9 @@ namespace engine
     
      void GetSphere::retrieveGetSphere() 
     {
-        if (this->world.getSphere == this)
+        if (this->world->getSphere == this)
         {
-            this->world.worldInterface.castRegime("off");
+            this->world->worldInterface->castRegime("off");
         }
         if (this->getAllCount == 0)
         {
@@ -1424,34 +1417,34 @@ namespace engine
             {
                 if (this->fireCount > 0)
                 {
-                    this->world.feature.getSphereBeat("fire", this->fireCount);
-                    this->world.getSphere.x = this->x;
-                    this->world.getSphere.y = this->y;
-                    this->world.getSphere.retrieveGetSphere();
+                    this->world->feature.getSphereBeat("fire", this->fireCount);
+                    this->world->getSphere.x = this->x;
+                    this->world->getSphere.y = this->y;
+                    this->world->getSphere.retrieveGetSphere();
                     this->fireCount = 0;
                 }
                 if (this->iceCount > 0)
                 {
-                    this->world.feature.getSphereBeat("ice", this->iceCount);
-                    this->world.getSphere.x = this->x;
-                    this->world.getSphere.y = this->y;
-                    this->world.getSphere.retrieveGetSphere();
+                    this->world->feature.getSphereBeat("ice", this->iceCount);
+                    this->world->getSphere.x = this->x;
+                    this->world->getSphere.y = this->y;
+                    this->world->getSphere.retrieveGetSphere();
                     this->iceCount = 0;
                 }
                 if (this->stoneCount > 0)
                 {
-                    this->world.feature.getSphereBeat("stone", this->stoneCount);
-                    this->world.getSphere.x = this->x;
-                    this->world.getSphere.y = this->y;
-                    this->world.getSphere.retrieveGetSphere();
+                    this->world->feature.getSphereBeat("stone", this->stoneCount);
+                    this->world->getSphere.x = this->x;
+                    this->world->getSphere.y = this->y;
+                    this->world->getSphere.retrieveGetSphere();
                     this->stoneCount = 0;
                 }
                 if (this->stoneCount > 0)
                 {
-                    this->world.feature.getSphereBeat("stone", this->stoneCount);
-                    this->world.getSphere.x = this->x;
-                    this->world.getSphere.y = this->y;
-                    this->world.getSphere.retrieveGetSphere();
+                    this->world->feature.getSphereBeat("stone", this->stoneCount);
+                    this->world->getSphere.x = this->x;
+                    this->world->getSphere.y = this->y;
+                    this->world->getSphere.retrieveGetSphere();
                     this->stoneCount = 0;
                 }
             }
@@ -1461,7 +1454,7 @@ namespace engine
         this->speedY = (this->ownerPoint.y - this->y) / this->speedFrame;
         this->radius->setVisible(false);
         this->arrow->setVisible(false);
-        this->world.getSphere = null;
+        this->world->getSphere = null;
         if (this->towerArrow)
         {
             this->towerArrow.myTower.removeChild(this->towerArrow);
@@ -1477,143 +1470,143 @@ namespace engine
         }
         if (this->fireCount == 0 && this->iceCount == 0 && this->stoneCount == 0 && this->levinCount == 0 && this->getAllCount == 0)
         {
-            this->world.removeChild(this);
+            this->world->removeChild(this);
         }
         else
         {
-            this->world.listOfMoveSpheres.push(this);
+            this->world->listOfMoveSpheres.push(this);
         }
-        this->world.worldInterface.autoguidersButtons();
+        this->world->worldInterface->autoguidersButtons();
         return;
     }// end function
     
      void GetSphere::getSphereFromArchiveToTower() 
     {
-        if (this->world.towerMenu)
+        if (this->world->towerMenu)
         {
-            this->owner = this->world.towerMenu.myTower;
-            this->ownerPoint = new Point(this->world.towerMenu.myTower.x, this->world.towerMenu.myTower.y + this->world.towerMenu.myTower.correctYGrPos);
+            this->owner = this->world->towerMenu->myTower;
+            this->ownerPoint = new Point(this->world->towerMenu->myTower.x, this->world->towerMenu->myTower.y + this->world->towerMenu->myTower.correctYGrPos);
         }
-        else if (this->world.ultraTowerMenu)
+        else if (this->world->ultraTowerMenu)
         {
-            this->owner = this->world.ultraTowerMenu.myTower;
-            this->ownerPoint = new Point(this->world.ultraTowerMenu.myTower.x, this->world.ultraTowerMenu.myTower.y + this->world.ultraTowerMenu.myTower.correctYGrPos);
+            this->owner = this->world->ultraTowerMenu.myTower;
+            this->ownerPoint = new Point(this->world->ultraTowerMenu.myTower.x, this->world->ultraTowerMenu.myTower.y + this->world->ultraTowerMenu.myTower.correctYGrPos);
         }
         this->ownerType = "tower";
         if (this->fireCount > 0 && this->iceCount == 0 && this->stoneCount == 0 && this->levinCount == 0)
         {
-            this->x = this->world.worldInterface.container.fireSphere.x;
-            this->y = this->world.worldInterface.container.fireSphere.y;
+            this->x = this->world->worldInterface->container->fireSphere.x;
+            this->y = this->world->worldInterface->container->fireSphere.y;
         }
         else if (this->fireCount == 0 && this->iceCount > 0 && this->stoneCount == 0 && this->levinCount == 0)
         {
-            this->x = this->world.worldInterface.container.iceSphere.x;
-            this->y = this->world.worldInterface.container.iceSphere.y;
+            this->x = this->world->worldInterface->container->iceSphere.x;
+            this->y = this->world->worldInterface->container->iceSphere.y;
         }
         else if (this->fireCount == 0 && this->iceCount == 0 && this->stoneCount > 0 && this->levinCount == 0)
         {
-            this->x = this->world.worldInterface.container.stoneSphere.x;
-            this->y = this->world.worldInterface.container.stoneSphere.y;
+            this->x = this->world->worldInterface->container->stoneSphere.x;
+            this->y = this->world->worldInterface->container->stoneSphere.y;
         }
         else if (this->fireCount == 0 && this->iceCount == 0 && this->stoneCount == 0 && this->levinCount > 0)
         {
-            this->x = this->world.worldInterface.container.levinSphere.x;
-            this->y = this->world.worldInterface.container.levinSphere.y;
+            this->x = this->world->worldInterface->container->levinSphere.x;
+            this->y = this->world->worldInterface->container->levinSphere.y;
         }
         else
         {
-            this->x = this->world.worldInterface.container.getAll.x;
-            this->y = this->world.worldInterface.container.getAll.y;
+            this->x = this->world->worldInterface->container->getAll.x;
+            this->y = this->world->worldInterface->container->getAll.y;
         }
         this->retrieveGetSphere();
-        this->world.worldInterface.updateInfo();
+        this->world->worldInterface->updateInfo();
         return;
     }// end function
     void GetSphere::monitor()
     {
         if (this->listOfStack.length < 4 && this->getAllCount == 0)
         {
-            if (this->world.worldInterface.fireCount > 0 || this->world.money >= int(this->world.worldInterface.container.buyFire.buyTXT.text) && this->world.worldInterface.container.fireSphere.visible)
+            if (this->world->worldInterface->fireCount > 0 || this->world->money >= int(this->world->worldInterface->container->buyFire.buyTXT.text) && this->world->worldInterface->container->fireSphere->setVisible())
             {
-                if (!this->world.worldInterface.castMask.fireCase.buttonMode)
+                if (!this->world->worldInterface->castMask.fireCase.buttonMode)
                 {
-                    this->world.worldInterface.castMask.fireCase.buttonMode = true;
+                    this->world->worldInterface->castMask.fireCase.buttonMode = true;
                 }
             }
-            else if (this->world.worldInterface.castMask.fireCase.buttonMode)
+            else if (this->world->worldInterface->castMask.fireCase.buttonMode)
             {
-                this->world.worldInterface.castMask.fireCase.buttonMode = false;
+                this->world->worldInterface->castMask.fireCase.buttonMode = false;
             }
-            if (this->world.worldInterface.iceCount > 0 || this->world.money >= int(this->world.worldInterface.container.buyIce.buyTXT.text) && this->world.worldInterface.container.iceSphere.visible)
+            if (this->world->worldInterface->iceCount > 0 || this->world->money >= int(this->world->worldInterface->container->buyIce.buyTXT.text) && this->world->worldInterface->container->iceSphere->setVisible())
             {
-                if (!this->world.worldInterface.castMask.iceCase.buttonMode)
+                if (!this->world->worldInterface->castMask.iceCase.buttonMode)
                 {
-                    this->world.worldInterface.castMask.iceCase.buttonMode = true;
+                    this->world->worldInterface->castMask.iceCase.buttonMode = true;
                 }
             }
-            else if (this->world.worldInterface.castMask.iceCase.buttonMode)
+            else if (this->world->worldInterface->castMask.iceCase.buttonMode)
             {
-                this->world.worldInterface.castMask.iceCase.buttonMode = false;
+                this->world->worldInterface->castMask.iceCase.buttonMode = false;
             }
-            if (this->world.worldInterface.stoneCount > 0 || this->world.money >= int(this->world.worldInterface.container.buyStone.buyTXT.text) && this->world.worldInterface.container.stoneSphere.visible)
+            if (this->world->worldInterface->stoneCount > 0 || this->world->money >= int(this->world->worldInterface->container->buyStone.buyTXT.text) && this->world->worldInterface->container->stoneSphere->setVisible())
             {
-                if (!this->world.worldInterface.castMask.stoneCase.buttonMode)
+                if (!this->world->worldInterface->castMask.stoneCase.buttonMode)
                 {
-                    this->world.worldInterface.castMask.stoneCase.buttonMode = true;
+                    this->world->worldInterface->castMask.stoneCase.buttonMode = true;
                 }
             }
-            else if (this->world.worldInterface.castMask.stoneCase.buttonMode)
+            else if (this->world->worldInterface->castMask.stoneCase.buttonMode)
             {
-                this->world.worldInterface.castMask.stoneCase.buttonMode = false;
+                this->world->worldInterface->castMask.stoneCase.buttonMode = false;
             }
-            if (this->world.worldInterface.levinCount > 0 || this->world.money >= int(this->world.worldInterface.container.buyLevin.buyTXT.text) && this->world.worldInterface.container.levinSphere.visible)
+            if (this->world->worldInterface->levinCount > 0 || this->world->money >= int(this->world->worldInterface->container->buyLevin.buyTXT.text) && this->world->worldInterface->container->levinSphere->setVisible())
             {
-                if (!this->world.worldInterface.castMask.levinCase.buttonMode)
+                if (!this->world->worldInterface->castMask.levinCase.buttonMode)
                 {
-                    this->world.worldInterface.castMask.levinCase.buttonMode = true;
+                    this->world->worldInterface->castMask.levinCase.buttonMode = true;
                 }
             }
-            else if (this->world.worldInterface.castMask.levinCase.buttonMode)
+            else if (this->world->worldInterface->castMask.levinCase.buttonMode)
             {
-                this->world.worldInterface.castMask.levinCase.buttonMode = false;
+                this->world->worldInterface->castMask.levinCase.buttonMode = false;
             }
         }
         else
         {
-            if (this->world.worldInterface.castMask.fireCase.buttonMode)
+            if (this->world->worldInterface->castMask.fireCase.buttonMode)
             {
-                this->world.worldInterface.castMask.fireCase.buttonMode = false;
+                this->world->worldInterface->castMask.fireCase.buttonMode = false;
             }
-            if (this->world.worldInterface.castMask.iceCase.buttonMode)
+            if (this->world->worldInterface->castMask.iceCase.buttonMode)
             {
-                this->world.worldInterface.castMask.iceCase.buttonMode = false;
+                this->world->worldInterface->castMask.iceCase.buttonMode = false;
             }
-            if (this->world.worldInterface.castMask.stoneCase.buttonMode)
+            if (this->world->worldInterface->castMask.stoneCase.buttonMode)
             {
-                this->world.worldInterface.castMask.stoneCase.buttonMode = false;
+                this->world->worldInterface->castMask.stoneCase.buttonMode = false;
             }
-            if (this->world.worldInterface.castMask.levinCase.buttonMode)
+            if (this->world->worldInterface->castMask.levinCase.buttonMode)
             {
-                this->world.worldInterface.castMask.levinCase.buttonMode = false;
+                this->world->worldInterface->castMask.levinCase.buttonMode = false;
             }
         }
         if (this->listOfStack.length == 0)
         {
             if (this->getAllCount < 3)
             {
-                if (!this->world.worldInterface.castMask.getAllCase.buttonMode)
+                if (!this->world->worldInterface->castMask.getAllCase.buttonMode)
                 {
-                    this->world.worldInterface.castMask.getAllCase.buttonMode = true;
+                    this->world->worldInterface->castMask.getAllCase.buttonMode = true;
                 }
             }
-            else if (this->world.worldInterface.castMask.getAllCase.buttonMode)
+            else if (this->world->worldInterface->castMask.getAllCase.buttonMode)
             {
-                this->world.worldInterface.castMask.getAllCase.buttonMode = false;
+                this->world->worldInterface->castMask.getAllCase.buttonMode = false;
             }
         }
-        else if (this->world.worldInterface.castMask.getAllCase.buttonMode)
+        else if (this->world->worldInterface->castMask.getAllCase.buttonMode)
         {
-            this->world.worldInterface.castMask.getAllCase.buttonMode = false;
+            this->world->worldInterface->castMask.getAllCase.buttonMode = false;
         }
         return;
     }// end function
@@ -1622,20 +1615,20 @@ namespace engine
         if (!this->dead)
         {
             this->dead = true;
-            this->world.worldInterface.castRegime("off");
-            this->world.removeChild(this);
-            this->world.getSphere = null;
+            this->world->worldInterface->castRegime("off");
+            this->world->removeChild(this);
+            this->world->getSphere = null;
             if (this->towerArrow)
             {
                 this->towerArrow.myTower.removeChild(this->towerArrow);
                 this->towerArrow = null;
             }
-            this->world.worldInterface.castMask.fireCase.buttonMode = false;
-            this->world.worldInterface.castMask.iceCase.buttonMode = false;
-            this->world.worldInterface.castMask.stoneCase.buttonMode = false;
-            this->world.worldInterface.castMask.levinCase.buttonMode = false;
-            this->world.worldInterface.castMask.getAllCase.buttonMode = false;
-            this->world.worldInterface.updateInfo();
+            this->world->worldInterface->castMask.fireCase.buttonMode = false;
+            this->world->worldInterface->castMask.iceCase.buttonMode = false;
+            this->world->worldInterface->castMask.stoneCase.buttonMode = false;
+            this->world->worldInterface->castMask.levinCase.buttonMode = false;
+            this->world->worldInterface->castMask.getAllCase.buttonMode = false;
+            this->world->worldInterface->updateInfo();
         }
         return;
     }// end function

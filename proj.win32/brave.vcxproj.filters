@@ -246,6 +246,66 @@
     <ClCompile Include="..\Classes\engine\mc\mc.cpp">
       <Filter>src\engine\mc</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\engine\towers\Exchange.cpp">
+      <Filter>src\engine\towers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\towers\Tower6.cpp">
+      <Filter>src\engine\towers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\towers\Tower7.cpp">
+      <Filter>src\engine\towers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\towers\Tower8.cpp">
+      <Filter>src\engine\towers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\towers\Tower2.cpp">
+      <Filter>src\engine\towers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\towers\Tower3.cpp">
+      <Filter>src\engine\towers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\towers\Tower4.cpp">
+      <Filter>src\engine\towers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\towers\Tower5.cpp">
+      <Filter>src\engine\towers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\bullets\Bullet_6.cpp">
+      <Filter>src\engine\bullets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\bullets\Bullet_7.cpp">
+      <Filter>src\engine\bullets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\bullets\Bullet_8.cpp">
+      <Filter>src\engine\bullets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\bullets\Bullet_51.cpp">
+      <Filter>src\engine\bullets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\bullets\Bullet_61.cpp">
+      <Filter>src\engine\bullets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\bullets\Bullet_81.cpp">
+      <Filter>src\engine\bullets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\bullets\Bullet_5.cpp">
+      <Filter>src\engine\bullets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_3.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_4.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_2.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\CastSphere.cpp">
+      <Filter>src\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\GetSphere.cpp">
+      <Filter>src\engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -434,9 +494,6 @@
     <ClInclude Include="..\Classes\animation\Hint.h">
       <Filter>src\animation</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\animation\MovieClip.h">
-      <Filter>src\animation</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\engine\units\Unit.h">
       <Filter>src\engine\units</Filter>
     </ClInclude>
@@ -556,6 +613,54 @@
     </ClInclude>
     <ClInclude Include="..\Classes\engine\bullets\Bullet_4.h">
       <Filter>src\engine\bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\towers\Exchange.h">
+      <Filter>src\engine\towers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\towers\Tower6.h">
+      <Filter>src\engine\towers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\towers\Tower7.h">
+      <Filter>src\engine\towers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\towers\Tower8.h">
+      <Filter>src\engine\towers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\towers\Tower2.h">
+      <Filter>src\engine\towers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\towers\Tower3.h">
+      <Filter>src\engine\towers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\towers\Tower4.h">
+      <Filter>src\engine\towers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\towers\Tower5.h">
+      <Filter>src\engine\towers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\bullets\Bullet_5.h">
+      <Filter>src\engine\bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\bullets\Bullet_6.h">
+      <Filter>src\engine\bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\bullets\Bullet_7.h">
+      <Filter>src\engine\bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\bullets\Bullet_8.h">
+      <Filter>src\engine\bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\bullets\Bullet_51.h">
+      <Filter>src\engine\bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\bullets\Bullet_61.h">
+      <Filter>src\engine\bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\bullets\Bullet_81.h">
+      <Filter>src\engine\bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\CastSphere.h">
+      <Filter>src\engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

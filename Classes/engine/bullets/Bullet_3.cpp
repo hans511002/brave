@@ -1,5 +1,8 @@
 ﻿
+#include "engine/World.h"
 #include "Bullet_3.h"
+#include "engine/CastSphere.h"
+#include "engine/units/Unit.h"
 
  namespace engine{
 	 namespace bullets{ 
@@ -9,7 +12,7 @@
             liveTimer = 24;
             liveCounter = 24;
             this->correct = liveCounter / 12; 
-            this->setPosition(this_pt.x,his_pt.y);
+            this->setPosition(this_pt.x,this_pt.y);
             //this->x = this_pt.x;
             //this->y = this_pt.y;
             container = new BulletStoneTower_mc();
@@ -68,7 +71,7 @@
             {
                 distanceX = this->enemyStartPoint.x - this_pt.x;
                 distanceY = this->enemyStartPoint.y - this_pt.y;
-                testTarget = this->enemyStartPoint;
+                //testTarget = this->enemyStartPoint;
                 scanAtRadius();
                 if (greenFlag)
                 {
@@ -110,7 +113,7 @@
                     if (world->listOfUnits[i]->atStage() && world->listOfUnits[i]->readyDamage)
                     {
                         //if (Point.distance(this_pt, world->listOfUnits[i]->shoot_pt) < Main::mainClass->readXMLClass.stoneEffectRadiusXML)
-                        if(this_pt->distance(world->listOfUnits[i]->shoot_pt) < Main::mainClass->readXMLClass.stoneEffectRadiusXML)
+                        if(this_pt.distance(world->listOfUnits[i]->shoot_pt) < Main::mainClass->readXMLClass.stoneEffectRadiusXML)
                         {
                             tempObject = world->listOfUnits[i];
                             tempObject->getHit(damage, "stone", spherePower, true, bulletType);

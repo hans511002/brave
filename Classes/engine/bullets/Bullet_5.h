@@ -3,17 +3,15 @@
 #include "Bullet.h" 
 
 namespace engine{
-    namespace bullets{ 
-        struct UnitShadow_mc
+    namespace bullets{
+
+		struct BulletTower5_1_mc :public MovieClip
         {
         };
-        struct BulletTower5_1_mc
+		struct BulletStoneTower_mc :public MovieClip
         {
         };
-        struct BulletStoneTower_mc
-        {
-        };
-        struct BulletTower5_1Bang_mc
+		struct BulletTower5_1Bang_mc :public MovieClip
         {
         };
         class Bullet_5 :public Bullet

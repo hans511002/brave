@@ -1,7 +1,8 @@
  
-#include "Bullet_5.h" 
 #include "engine/mc/mc.h" 
-#include "engine/World.h" 
+#include "Bullet_5.h" 
+#include "engine/World.h"
+#include "engine/units/Unit.h"
 
 namespace engine{
     namespace bullets{ 
@@ -17,7 +18,7 @@ namespace engine{
             //container->rotation = 180;
             this->addChild(container);
             testTower = whoShoot;
-            radius = whoShoot.radius;
+            radius = whoShoot->radius;
             Bullet::init();
             this->enemyStartPoint = enemyTarget->this_pt;
             this->enemyRoad = enemyTarget->road;

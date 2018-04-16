@@ -133,12 +133,14 @@ void BaseLayer::mouseDownHandler(cocos2d::Event *event)//(event:MouseEvent) : vo
   };
 
 
-bool BaseSprite::Atstage(){
+  bool BaseSprite::atStage()
+  {
     const auto& stageSize = cocos2d::Director::getInstance()->getVisibleSize();
     Vec2 p = this->getPosition();
     return p.x < 0 || p.y<0 || p.x > stageSize.width || p.y > stageSize.height;
 }
-bool BaseNode::Atstage(){
+  bool BaseNode::atStage()
+  {
     const auto& stageSize = cocos2d::Director::getInstance()->getVisibleSize();
     Vec2 p = this->getPosition();
     return p.x < 0 || p.y<0 || p.x > stageSize.width || p.y > stageSize.height;

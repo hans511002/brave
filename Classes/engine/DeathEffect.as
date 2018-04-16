@@ -1,24 +1,11 @@
 ﻿#ifndef ENGINE_DEATHEFFECT_H
 #define ENGINE_DEATHEFFECT_H
 
-#include "BaseNode.h"
-#include "engine/xml/ReadXML.h"
-#include "engine/Waves.h"
-#include "sys/saveBox.h"
-#include "engine/WorldInterface.h"
-#include "Feature.h"
-#include "engine/level/Level.h"
-#include "engine/level/Road.h"
-#include "engine/level/PointTimer.h"
-#include "bezier/Bezier.h"
-#include "engine/units/Unit.h"
-#include "World.h"
-
-//#include "animation/Hint.h"
+#include "BaseHeaders.h"  
 
 namespace engine
 { 
-     class DeathEffect : public BaseSprite
+     class DeathEffect : public BaseNode
     {
 	public:
 		int i;// = 0;
@@ -116,14 +103,12 @@ namespace engine
             }
             var _loc_1:* = 0;
             while (_loc_1 < this->_particleCount)
-            {
-                
+            { 
                 _loc_2 = new Array();
                 _loc_3 = false;
                 _loc_4 = this->_bitmapDataTarget.width;
                 while (_loc_4 >= 0)
-                {
-                    
+                { 
                     _loc_12 = this->_bitmapDataTarget.getPixel32((_loc_4 - 1), this->_target.height - this->_mask.height) >> 24 & 255;
                     if (_loc_12 != 0 && !_loc_3)
                     {
@@ -178,8 +163,7 @@ namespace engine
             this->addParticle();
             this->i = 0;
             while (this->i < this->_particles.length)
-            {
-                
+            { 
                 _loc_1 = this->_particles[this->i];
                 _loc_1.t = _loc_1.t + 0.19;
                 _loc_1.mc.x = _loc_1.mc.x + (Math.sin(_loc_1.t) * 1.2 + this->_windX);
@@ -218,17 +202,11 @@ namespace engine
         {
             this->i = 0;
             while (this->i < this->_particles.length)
-            {
-                
+            { 
                 this->world.removeChild(this->_particles[this->i]);
                 this->_particles[this->i] = null;
                 this->_particles.splice(this->i, 1);
-                var _loc_1:* = this;
-                var _loc_2:* = this->i - 1;
-                _loc_1.i = _loc_2;
-                var _loc_1:* = this;
-                var _loc_2:* = this->i + 1;
-                _loc_1.i = _loc_2;
+                i++;
             }
             if (this->_mask)
             {
@@ -242,16 +220,13 @@ namespace engine
             this->_bitmapTarget = null;
             this->j = 0;
             while (this->j < this->world.listOfClasses.length)
-            {
-                
+            { 
                 if (this->world.listOfClasses[this->j] == this)
                 {
                     this->world.listOfClasses.splice(this->j, 1);
                     break;
                 }
-                var _loc_1:* = this;
-                var _loc_2:* = this->j + 1;
-                _loc_1.j = _loc_2;
+                j++;
             }
             return;
         }// end function

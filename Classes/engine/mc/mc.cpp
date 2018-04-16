@@ -1,4 +1,5 @@
- #include "BaseHeaders.h"
+#include "BaseHeaders.h"
+#include "engine/World.h"
 
 namespace engine
 {
@@ -30,34 +31,34 @@ namespace engine
     {
         container->getAnimation()->play();
     }
-    BaseSprite::BaseSprite(BaseSprite * cont)
+	SpriteClip::SpriteClip(BaseSprite * cont)
     {
-        this->cont=cont;
+		this->container = cont;
     };
     
-
     OnceMovieClip::OnceMovieClip(World * world,dragonBones::DBCCArmatureNode * cont,int total):MovieClip(world,cont,total)
     { 
         container->getCCEventDispatcher()->addCustomEventListener(EventData::ANIMATION_FRAME_EVENT,std::bind(&OnceMovieClip::onceMovieHandler, this, std::placeholders::_1));
         container->getCCEventDispatcher()->addCustomEventListener(EventData::COMPLETE,std::bind(&OnceMovieClip::onceMovieHandler, this, std::placeholders::_1));
     }
-    OnceMovieClip::OnceMovieClip(World * world,string rootPath, string aniName ,int totalFrames):MovieClip(world,cont,total)
-    {
-        container->getCCEventDispatcher()->addCustomEventListener(EventData::ANIMATION_FRAME_EVENT,std::bind(&OnceMovieClip::onceMovieHandler, this, std::placeholders::_1));
-        container->getCCEventDispatcher()->addCustomEventListener(EventData::COMPLETE,std::bind(&OnceMovieClip::onceMovieHandler, this, std::placeholders::_1));       
-    } ;
+	OnceMovieClip::OnceMovieClip(World * world, string rootPath, string aniName, int totalFrames) : MovieClip(world, rootPath, aniName, totalFrames)
+	{
+		container->getCCEventDispatcher()->addCustomEventListener(EventData::ANIMATION_FRAME_EVENT, std::bind(&OnceMovieClip::onceMovieHandler, this, std::placeholders::_1));
+		container->getCCEventDispatcher()->addCustomEventListener(EventData::COMPLETE, std::bind(&OnceMovieClip::onceMovieHandler, this, std::placeholders::_1));
+	};
 
-    void OnceMovieClip::onceMovieHandler(cocos2d::EventCustom *event){
+	void OnceMovieClip::onceMovieHandler(cocos2d::EventCustom *event)
+	{
 		EventData *eventData = (EventData*)(event->getUserData());
-		switch (eventData->getType())
+		switch(eventData->getType())
 		{
 		case EventData::EventType::COMPLETE:
 			this->world->removeChild(this);
 			break;
-		//case EventData::EventType::LOOP_COMPLETE:
-		//	break;
+			//case EventData::EventType::LOOP_COMPLETE:
+			//	break;
 		case EventData::EventType::ANIMATION_FRAME_EVENT:
-			if (eventData->frameLabel == "ending")
+			if(eventData->frameLabel == "ending")
 			{
 				//
 				//pass->removeFromParentAndCleanup(true);

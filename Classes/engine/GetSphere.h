@@ -2,20 +2,25 @@
 #define GETSPHERE_H
 #include "BaseNode.h"
 #include "MainClass.h"
+#include "engine/mc/mc.h"
 
 namespace engine
 {
     class World;
+	struct Arrow_mc :public OnceMovieClip
+	{
+
+	};
     struct GetSphere_mc :public BaseNode{
-        cocos2d::Node* cont;
-        cocos2d::Node* sphere1;
-        cocos2d::Node* sphere2;
-        cocos2d::Node* sphere3;
-        cocos2d::Node* sphere4;
+		MovieClip * cont;
+		MovieClip * sphere1;
+		MovieClip * sphere2;
+		MovieClip * sphere3;
+		MovieClip * sphere4;
     };
     struct GetAll_mc :public BaseNode
     {
-        ui::Text * t;
+		ui::Text * numTXT;
         Node * cross;
         dragonBones::DBCCArmatureNode * cont;
     };
@@ -25,8 +30,8 @@ namespace engine
         int i, j;
         //public var tempObject:Object;
         //public var tempObject1:Object;
-        GetSphere_mc *container;//public var container:MovieClip;
-        //public var radius:MovieClip;
+		BaseNode *container;//public var container:MovieClip;
+		MovieClip* radius;
         int counter;
         //public var owner:Object;
         string ownerType;
@@ -38,16 +43,16 @@ namespace engine
         int stoneCount;
         int levinCount;
         int getAllCount;
-        Common::Array<>   listOfStack;// Array;
+        Common::Array<string>   listOfStack;// Array;
         World * world;
         bool dead;
         int speedFrame;
         float speedX, speedY;
 
-        Sprite *  arrow;//public var arrow:Arrow_mc;
+		Arrow_mc *  arrow;//public var arrow:Arrow_mc;
         Sprite *  towerArrow;//public var towerArrow:Arrow_mc;
         string type;
-        //public var containerChange:MovieClip;
+		MovieClip* containerChange;
 
         GetSphere(string param1 = "holder");
 

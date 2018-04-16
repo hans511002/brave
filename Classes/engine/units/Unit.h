@@ -2,6 +2,7 @@
 #define UNITS_UNIT_H
 #include "BaseHeaders.h"
 #include "Unit_mc.h"
+#include "engine/bullets/Bullet.h"
 
 namespace engine
 {
@@ -13,7 +14,7 @@ namespace engine
 		public:
 			int i, j, n;
 			float tempObject;// :Object;
-			Bullet * tempObject1;//public var tempObject1:Object;
+			engine::bullets::Bullet * tempObject1;//public var tempObject1:Object;
 			//public var tempObject2:Object;
 			//public var tempObject3:Object;
 			//public var tempObject4:Object;
@@ -41,7 +42,7 @@ namespace engine
 			int penalty;//public var penalty:int;
 			bool dead;//public var dead:Boolean;
 			string lastAttackType;//public var lastAttackType:String;
-			bool atStage;//public var atStage:Boolean;
+			//bool atStage;//public var atStage:Boolean;
 			bool readyDamage;//public var readyDamage:Boolean = true;
 			bool bulletTower6Effect;//public var bulletTower6Effect:Boolean;
 			bool airFlag;//public var airFlag:Boolean;
@@ -100,7 +101,7 @@ namespace engine
 
 
 			Unit() :direction("none"), world(NULL), road(0), way(0), path(0), finishPath(0), stopAnima(false), typeUnit(0), health(0), healthMax(0), speedK(0), speedKSave(0),
-				gold(0), fireDamageK(0), iceDamageK(0), stoneDamageK(0), levinDamageK(0), penalty(0), dead(false), atStage(false), readyDamage(true), 
+				gold(0), fireDamageK(0), iceDamageK(0), stoneDamageK(0), levinDamageK(0), penalty(0), dead(false), readyDamage(true), 
 				bulletTower6Effect(false), airFlag(false), fireLevinKillFlag(false), moveFlag(true),gate(0), nextTurnFlag(false), nextTurnPath(0), nextTurnMidPath(0),
 				teleportFlag(false), directionFlag(false), replaced(false), speedKRun(0),speedRunTimerIce1(0), speedRunTimerIce2(0), speedRunTimerIce3(0),
 				speedRunTimerIce4(0),healthPlusFlag(false),healthPlusValue(0),armorFlag(false),armorPower(0),armorCounter(0),airShockFlag(false),airShockCounter(0),

@@ -5,6 +5,7 @@
 #include "JsonUtil.h"
 #include "dragonbones/cocos2d/DBCCRenderHeaders.h"
 #include "dragonbones/DragonBonesHeaders.h"
+#include "BaseNode.h"
 
 namespace engine
 {
@@ -12,6 +13,8 @@ namespace engine
     struct MovieClip:public BaseNode
     {
         World * world;
+		Vec2 myPoint;
+		short myFrame;
         dragonBones::DBCCArmatureNode * container;
         int currentFrame;
         int totalFrames;
@@ -22,7 +25,8 @@ namespace engine
         void gotoAndStop(int cf);
         void nextFram();
         void update();
-        void stop(); 
+		void play();
+		void stop();
     };
     struct SpriteClip :public BaseNode
     {
@@ -36,8 +40,6 @@ namespace engine
     { 
         OnceMovieClip(World * world,dragonBones::DBCCArmatureNode * cont,int totalFrames) ;
         OnceMovieClip(World * world,string rootPath, string aniName ,int totalFrames) ;
- 
-
         void OnceMovieClip::onceMovieHandler(cocos2d::EventCustom *event);
     };
     struct AnimUpgrade_mc :public BaseNode

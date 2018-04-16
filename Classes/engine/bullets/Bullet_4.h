@@ -4,6 +4,10 @@
 
 namespace engine{
     namespace bullets{ 
+		struct BulletLevinTower_mc 
+		{
+
+		};
         class Bullet_4 :public Bullet
         {
         public:

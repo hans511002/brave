@@ -7,6 +7,7 @@
 
 namespace engine{
     class World;
+	class units::Unit;
     namespace bullets{
 
         struct UnitShadow_mc:public MovieClip

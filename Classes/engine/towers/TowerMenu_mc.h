@@ -53,6 +53,7 @@ namespace engine
 
         class UltraTowerMenu_mc :public BaseNode
         {
+		public:
             BtnUpgradeMenu * btnUpgradeMenu;// : MovieClip;
             dragonBones::DBCCArmatureNode * cont1;// : MovieClip;
             BaseNode fastBuyUltraCont;// : MovieClip;

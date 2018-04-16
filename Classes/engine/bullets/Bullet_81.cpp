@@ -2,6 +2,7 @@
 #define ENGINE_BULLET_81_H
 #include "Bullet_81.h" 
 #include "engine/World.h" 
+#include "engine/units/Unit.h"
 
 namespace engine
 {
