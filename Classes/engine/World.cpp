@@ -84,120 +84,106 @@ namespace engine
 		//	{
 		//		this->firstMusicPlay = true;
 		//		Sounds.instance.playMusic(1);
-		//		if (this->saveBox.gameSave.data.complexityLevel < 4)
+		//		if (this->saveBox->getIntValue("complexityLevel") < 4)
 		//		{
 		//			if (this->nowLevel == 1)
 		//			{
 		//				this->menuObject = new Training_2();
-		//				this->addChild(this->menuObject);
-		//				var _loc_2 : *= true;
+		//				this->addChild(this->menuObject); 
 		//				this->mouseChildren = true;
-		//				this->mouseEnabled = _loc_2;
+		//				this->mouseEnabled = true;
 		//			}
 		//			else if (this->nowLevel == 2)
 		//			{
 		//				this->menuObject = new Training_92(1);
-		//				this->addChild(this->menuObject);
-		//				var _loc_2 : *= true;
+		//				this->addChild(this->menuObject); 
 		//				this->mouseChildren = true;
-		//				this->mouseEnabled = _loc_2;
+		//				this->mouseEnabled = true;
 		//			}
 		//			else if (this->nowLevel == 3)
 		//			{
 		//				this->menuObject = new Training_92(2);
-		//				this->addChild(this->menuObject);
-		//				var _loc_2 : *= true;
+		//				this->addChild(this->menuObject); 
 		//				this->mouseChildren = true;
-		//				this->mouseEnabled = _loc_2;
+		//				this->mouseEnabled = true;
 		//			}
 		//			else if (this->nowLevel == 4)
 		//			{
 		//				this->menuObject = new Training_92(3);
-		//				this->addChild(this->menuObject);
-		//				var _loc_2 : *= true;
+		//				this->addChild(this->menuObject); 
 		//				this->mouseChildren = true;
-		//				this->mouseEnabled = _loc_2;
+		//				this->mouseEnabled = true;
 		//			}
 		//			else if (this->nowLevel == 5)
 		//			{
 		//				this->menuObject = new Training_92(4);
-		//				this->addChild(this->menuObject);
-		//				var _loc_2 : *= true;
+		//				this->addChild(this->menuObject); 
 		//				this->mouseChildren = true;
-		//				this->mouseEnabled = _loc_2;
+		//				this->mouseEnabled = true;
 		//			}
 		//			else if (this->nowLevel == 6)
 		//			{
 		//				this->menuObject = new Training_92(5);
-		//				this->addChild(this->menuObject);
-		//				var _loc_2 : *= true;
+		//				this->addChild(this->menuObject); 
 		//				this->mouseChildren = true;
-		//				this->mouseEnabled = _loc_2;
+		//				this->mouseEnabled = true;
 		//			}
 		//			else if (this->nowLevel == 7)
 		//			{
 		//				this->menuObject = new Training_92(6);
-		//				this->addChild(this->menuObject);
-		//				var _loc_2 : *= true;
+		//				this->addChild(this->menuObject); 
 		//				this->mouseChildren = true;
-		//				this->mouseEnabled = _loc_2;
+		//				this->mouseEnabled = true;
 		//			}
 		//			else if (this->nowLevel == 8)
 		//			{
 		//				this->menuObject = new Training_92(7);
-		//				this->addChild(this->menuObject);
-		//				var _loc_2 : *= true;
+		//				this->addChild(this->menuObject); 
 		//				this->mouseChildren = true;
-		//				this->mouseEnabled = _loc_2;
+		//				this->mouseEnabled = true;
 		//			}
 		//			else if (this->nowLevel == 9)
 		//			{
 		//				this->menuObject = new Training_92(8);
-		//				this->addChild(this->menuObject);
-		//				var _loc_2 : *= true;
+		//				this->addChild(this->menuObject); 
 		//				this->mouseChildren = true;
-		//				this->mouseEnabled = _loc_2;
+		//				this->mouseEnabled = true;
 		//			}
 		//			else if (this->nowLevel == 10)
 		//			{
 		//				this->menuObject = new Training_92(9);
-		//				this->addChild(this->menuObject);
-		//				var _loc_2 : *= true;
+		//				this->addChild(this->menuObject); 
 		//				this->mouseChildren = true;
-		//				this->mouseEnabled = _loc_2;
+		//				this->mouseEnabled = true;
 		//			}
 		//			else if (this->nowLevel == 11)
 		//			{
 		//				this->menuObject = new Training_92(10);
-		//				this->addChild(this->menuObject);
-		//				var _loc_2 : *= true;
+		//				this->addChild(this->menuObject); 
 		//				this->mouseChildren = true;
-		//				this->mouseEnabled = _loc_2;
+		//				this->mouseEnabled = true;
 		//			}
 		//			else if (this->nowLevel == 13)
 		//			{
 		//				this->menuObject = new Training_92(11);
-		//				this->addChild(this->menuObject);
-		//				var _loc_2 : *= true;
+		//				this->addChild(this->menuObject); 
 		//				this->mouseChildren = true;
-		//				this->mouseEnabled = _loc_2;
+		//				this->mouseEnabled = true;
 		//			}
 		//		}
 		//		else if (this->nowLevel == 1)
 		//		{
 		//			this->menuObject = new Training_92(13);
-		//			this->addChild(this->menuObject);
-		//			var _loc_2 : *= true;
+		//			this->addChild(this->menuObject); 
 		//			this->mouseChildren = true;
-		//			this->mouseEnabled = _loc_2;
+		//			this->mouseEnabled = true;
 		//		}
 		//		else if (this->nowLevel == 2)
 		//		{
 		//			this->menuObject = new Training_5(3);
-		//			this->addChild(this->menuObject);
-		//			var _loc_2 : *= true;
+		//			this->addChild(this->menuObject); 
 		//			this->mouseChildren = true;
-		//			this->mouseEnabled = _loc_2;
+		//			this->mouseEnabled = true;
 		//		}
 		//	}
 		//}
@@ -205,12 +191,12 @@ namespace engine
 		//{
 		//	if (this->secondMusicCounter > 0)
 		//	{
-		//		(this->secondMusicCounter - 1);
+		//		this->secondMusicCounter--;
 		//	}
 		//	else
 		//	{
 		//		this->secondMusicPlay = false;
-		//		Sounds.instance.playMusic(2);
+		//		//Sounds.instance.playMusic(2);
 		//	}
 		//}
 		if (this->bonusMoneyFlag)
@@ -218,7 +204,7 @@ namespace engine
 			//if (this->frameCounter == 30 && !this->menuObject)
 			//{
 			//	this->bonusMoneyFlag = false;
-			//	if (this->saveBox.gameSave.data.complexityLevel < 4 && this->saveBox.gameSave.data.type == "site")
+			//	if (this->saveBox->getIntValue("complexityLevel") < 4 && this->saveBox->getString("type") == "site")
 			//	{
 			//		this->tempObject = new BonusMoney();
 			//		this->addChild(this->tempObject);
@@ -226,66 +212,65 @@ namespace engine
 			//}
 		}
 		this->wavesClass->wavesHandler();
-		// 旗子播放,放动画中了
 		//int i = 0;
-		//while (i < this->listOfFlags.length)
+		//while (i < this->listOfFlags.size())
 		//{
-		//	if (this->listOfFlags[this->i].currentFrame < this->listOfFlags[this->i].totalFrames)
+		//	if (this->listOfFlags[this->i]->currentFrame < this->listOfFlags[this->i]->totalFrames)
 		//	{
-		//		this->listOfFlags[this->i].gotoAndStop((this->listOfFlags[this->i].currentFrame + 1));
+		//		this->listOfFlags[this->i]->gotoAndStop((this->listOfFlags[this->i]->currentFrame + 1));
 		//	}
 		//	else
 		//	{
-		//		this->listOfFlags[this->i].gotoAndStop(1);
+		//		this->listOfFlags[this->i]->gotoAndStop(1);
 		//	}
 		//	i++;
 		//}
 
 		//if (this->worldInterface)
 		//{
-		//	this->worldInterface.update();
+		//	this->worldInterface->update();
 		//}
 
-		//this->feature.update();
+		//this->feature->update();
 		//子类播放
-		//this->i = this->listOfClasses.length - 1;
+		//this->i = this->listOfClasses.size() - 1;
 		//while (this->i >= 0)
 		//{
-		//	this->listOfClasses[this->i].update();
+		//	this->listOfClasses[this->i]->update();
 		//	i++;
 		//}
-		//this->i = this->listOfTowers.length - 1;
+		//this->i = this->listOfTowers.size() - 1;
 		//while (this->i >= 0)
 		//{
-		//	this->listOfTowers[this->i].update();
+		//	this->listOfTowers[this->i]->update();
 		//	i++;
 		//}
 
 		//怪播放
-		//this->i = this->listOfUnits.length - 1;
+		//this->i = this->listOfUnits.size() - 1;
 		//while (this->i >= 0)
 		//{
-		//	this->listOfUnits[this->i].update();
+		//	this->listOfUnits[this->i]->update();
 		//	i++;
 		//}
-		//this->i = this->listOfBullets.length - 1;
+		//this->i = this->listOfBullets.size() - 1;
 		//while (this->i >= 0)
 		//{ 
-		//	this->listOfBullets[this->i].update();
+		//	this->listOfBullets[this->i]->update();
 		//	i++;
 		//}
 
 
-		//this->i = this->listOfSoundChannels.length - 1;
+		//this->i = this->listOfSoundChannels.size() - 1;
 		//while (this->i >= 0)
 		//{ 
-		//	if (this->listOfSoundChannels[this->i].soundTransform.volume - 0.0186667 > 0)
+		//	if (this->listOfSoundChannels[this->i]->soundTransform->volume - 0.0186667 > 0)
 		//	{
-		//		this->listOfSoundChannels[this->i].soundTransform = new SoundTransform(this->listOfSoundChannels[this->i].soundTransform.volume - 0.0186667, 0);
+		//		this->listOfSoundChannels[this->i]->soundTransform = new SoundTransform(this->listOfSoundChannels[this->i].soundTransform.volume - 0.0186667, 0);
 		//	}
 		//	else
 		//	{
-		//		this->listOfSoundChannels[this->i].soundTransform = new SoundTransform(0, 0);
+		//		this->listOfSoundChannels[this->i]->soundTransform = new SoundTransform(0, 0);
 		//		this->listOfSoundChannels.splice(this->i, 1);
 		//	}
 		//	i++;
@@ -304,7 +289,7 @@ namespace engine
 		//			this->menuObject = new Defeat();
 		//			this->addChild(this->menuObject);
 		//		}
-		//		else if (this->nowLevel == 15 && this->saveBox.gameSave.data.complexityLevel < 4)
+		//		else if (this->nowLevel == 15 && this->saveBox-getIntValue("complexityLevel") < 4)
 		//		{
 		//			this->menuObject = new PreVictory();
 		//			this->addChild(this->menuObject);
@@ -339,7 +324,7 @@ namespace engine
 		//		if (this->levelAdditionally.currentFrame == 182)
 		//		{
 		//			this->viewBoss = 2;
-		//			this->boss.visible = true;
+		//			this->boss->setVisible(true);
 		//		}
 		//	}
 		//	if (this->viewRockCrash == 1)
@@ -460,7 +445,7 @@ namespace engine
 		//					this->towerRadius.height = this->towerRadius.myTower.radius * 2 * this->scaleRadius;
 		//					this->towerRadius.x = this->towerRadius.myTower.this_pt.x;
 		//					this->towerRadius.y = this->towerRadius.myTower.this_pt.y;
-		//					this->towerRadius.visible = true;
+		//					this->towerRadius->setVisible(true);
 		//					Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
 		//				}
 		//			}
@@ -523,10 +508,10 @@ namespace engine
 		//				{
 		//					if (!this->towerRadius.myTower.container.selectTower.visible)
 		//					{
-		//						this->towerRadius.myTower.container.selectTower.visible = true;
+		//						this->towerRadius.myTower.container.selectTower->setVisible(true);
 		//					}
 		//				}
-		//				this->towerRadius.visible = true;
+		//				this->towerRadius->setVisible(true);
 		//				Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
 		//			}
 		//		}

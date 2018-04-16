@@ -113,10 +113,9 @@
                 {
                     Main.mainClass.levelsMenuClass.removeChild(this);
                     Main.mainClass.levelsMenuClass.difficultyLevel = null;
-                    Main.mainClass.levelsMenuClass.manageListeners("on");
-                    var _loc_2:* = true;
+                    Main.mainClass.levelsMenuClass.manageListeners("on"); 
                     Main.mainClass.levelsMenuClass.container.mouseChildren = true;
-                    Main.mainClass.levelsMenuClass.container.mouseEnabled = _loc_2;
+                    Main.mainClass.levelsMenuClass.container.mouseEnabled = true;
                 }
             }
             return;

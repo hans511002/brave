@@ -38,6 +38,15 @@ namespace engine
     class Feature;
     using namespace towers;
 
+    class RoadsignFire_mc : public MovieClip
+    {
+    public:
+        RoadsignFire_mc()
+        {
+            return;
+        }// end function
+
+    };
     class World : public BaseNode //, public  BaseLayer
     {
         World();
