@@ -1,29 +1,29 @@
 ﻿
-#include "Unit_3.h"
+#include "Unit.h"
 
 namespace engine
 {
 	namespace units
 	{  
-        Unit_3::Unit_3()
+        Unit_13::Unit_13()
         {
             return;
         }// end function
 
-        bool Unit_3::init()
+        bool Unit_13::init() 
         {
-            typeUnit = 3;
-            container = new Unit_mc(this,"unit3", typeUnit); //new Unit3_mc(); 
-            container->setScale(0.9);
+            typeUnit = 13;
+            container = new Unit_mc(this,"unit13", typeUnit); //new Unit13_mc(); 
+            container->setScale(0.85);
             container->init();
             Unit::init();
-            this->autorelease();
-            return true;
+            this->autorelease();  
+            return true;  
         }// end function
 
-        void Unit_3::animationHandler() 
+        void Unit_13::animationHandler()
         {
-            if (!container->stoneDeath->isVisible() && !icemanFlag)
+            if (!container->stoneDeath.visible && !icemanFlag)
             {
                 if (direction != "up")
                 {

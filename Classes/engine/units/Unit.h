@@ -98,6 +98,10 @@ namespace engine
 
 			int stealthCounter;
 			 
+			// 18 19
+			bool hiddenFlag;
+            int invisibleCounter,invisibleTimer,visibleCounter,visibleTimer;
+            int newEnemyCounter;//20
 
 
 			Unit() :direction("none"), world(NULL), road(0), way(0), path(0), finishPath(0), stopAnima(false), typeUnit(0), health(0), healthMax(0), speedK(0), speedKSave(0),
@@ -107,8 +111,8 @@ namespace engine
 				speedRunTimerIce4(0),healthPlusFlag(false),healthPlusValue(0),armorFlag(false),armorPower(0),armorCounter(0),airShockFlag(false),airShockCounter(0),
 				speedPlusFlag(false),speedPlusCounter(0),speedPlusValue(0),airGo(0),airWaitTimer(0),airSpacing(0),airPower(0),airResist(0),dampingAir(0),traversedPath(0),
 				icemanFlag(false),icemanCounter(0),icemanResist(0),fireEffectFlag(false),fireEffectCounter(0),fireEffectDamage(0),iceEffectFlag(false),iceEffectCounter(0),
-				iceEffectSlowdown(0),replacementFlag(0),replacementCount(0),mainMoveFlag(true),stealthCounter(0)
-
+				iceEffectSlowdown(0),replacementFlag(0),replacementCount(0),mainMoveFlag(true),stealthCounter(0),hiddenFlag(false),
+				invisibleCounter(0),invisibleTimer(0),visibleCounter(0),visibleTimer(0),newEnemyCounter(0)
 			{
 				 
 			}// end function
@@ -143,6 +147,48 @@ namespace engine
 			void kill();
 
 		};
+		
+#define UNIT_CLASS_DEFINE(unitName) struct unitName :public Unit{ \ 
+		public:\
+			unitName();\
+			bool init();\ 
+			void animationHandler();\
+		};
+		
+		UNIT_CLASS_DEFINE(Unit_1 );
+		UNIT_CLASS_DEFINE(Unit_2 );
+		UNIT_CLASS_DEFINE(Unit_3 );
+		UNIT_CLASS_DEFINE(Unit_4 );
+		UNIT_CLASS_DEFINE(Unit_5 );
+		UNIT_CLASS_DEFINE(Unit_6 );
+		UNIT_CLASS_DEFINE(Unit_7 );
+		UNIT_CLASS_DEFINE(Unit_8 );
+		UNIT_CLASS_DEFINE(Unit_9 );
+		UNIT_CLASS_DEFINE(Unit_10);
+		UNIT_CLASS_DEFINE(Unit_11);
+		UNIT_CLASS_DEFINE(Unit_12);
+		UNIT_CLASS_DEFINE(Unit_13);
+		UNIT_CLASS_DEFINE(Unit_14);
+		UNIT_CLASS_DEFINE(Unit_15);
+		UNIT_CLASS_DEFINE(Unit_16);
+		UNIT_CLASS_DEFINE(Unit_17);
+		UNIT_CLASS_DEFINE(Unit_18);
+		UNIT_CLASS_DEFINE(Unit_19);
+		UNIT_CLASS_DEFINE(Unit_20);
+		UNIT_CLASS_DEFINE(Unit_21);
+		UNIT_CLASS_DEFINE(Unit_22);
+		UNIT_CLASS_DEFINE(Unit_23);
+		UNIT_CLASS_DEFINE(Unit_24);
+		UNIT_CLASS_DEFINE(Unit_25);
+		UNIT_CLASS_DEFINE(Unit_26);
+		UNIT_CLASS_DEFINE(Unit_27);
+		UNIT_CLASS_DEFINE(Unit_28);
+		UNIT_CLASS_DEFINE(Unit_29);
+		UNIT_CLASS_DEFINE(Unit_30);
+		UNIT_CLASS_DEFINE(Unit_31);
+		UNIT_CLASS_DEFINE(Unit_32);
+		UNIT_CLASS_DEFINE(Unit_33);
+		UNIT_CLASS_DEFINE(Unit_34);
 	}
 }
 #endif

@@ -1,28 +1,29 @@
-﻿package engine.units
+﻿
+#include "Unit.h"
+
+namespace engine
 {
-    import flash.events.*;
-
-    public class Unit_15 extends Unit
-    {
-
-        public function Unit_15()
+	namespace units
+	{  
+        Unit_10::Unit_10()
         {
             return;
         }// end function
 
-        override public function init(event:Event) : void
+        bool Unit_10::init(event:Event) : void
         {
-            typeUnit = 15;
+            typeUnit = 10;
             moveFlag = false;
-            container = new Unit15_mc();
-            var _loc_2:* = 0.85;
-            container.scaleY = 0.85;
-            container.scaleX = _loc_2;
-            super.init(event);
-            return;
+            container = new Unit_mc(this,"unit10", typeUnit); //new Unit10_mc(); 
+            container->setScale(0.87);
+            container->init();
+            Unit::init();
+            this->autorelease();  
+            return true;
+              
         }// end function
 
-        override public function animationHandler() : void
+        void Unit_10::animationHandler()
         {
             if (!dead && !icemanFlag)
             {
@@ -30,23 +31,23 @@
                 {
                     if (direction == "left" || direction == "right")
                     {
-                        if (container.cont.currentFrame == 2)
+                        if (container->cont->currentFrame == 2)
                         {
-                            container.cont.gotoAndStop(1);
+                            container->cont->gotoAndStop(1);
                         }
-                        if (container.currentFrame > 18)
+                        if (container->currentFrame > 18)
                         {
-                            container.gotoAndStop(container.currentFrame - 18);
+                            container->gotoAndStop(container->currentFrame - 18);
                         }
-                        else if (container.currentFrame < 18)
+                        else if (container->currentFrame < 18)
                         {
-                            container.gotoAndStop((container.currentFrame + 1));
+                            container->gotoAndStop((container->currentFrame + 1));
                         }
                         else
                         {
-                            container.gotoAndStop(1);
+                            container->gotoAndStop(1);
                         }
-                        if (container.currentFrame < 9)
+                        if (container->currentFrame < 9)
                         {
                             if (moveFlag)
                             {
@@ -60,23 +61,23 @@
                     }
                     else if (direction == "up")
                     {
-                        if (container.cont.currentFrame == 1)
+                        if (container->cont->currentFrame == 1)
                         {
-                            container.cont.gotoAndStop(2);
+                            container->cont->gotoAndStop(2);
                         }
-                        if (container.currentFrame < 19)
+                        if (container->currentFrame < 19)
                         {
-                            container.gotoAndStop(container.currentFrame + 18);
+                            container->gotoAndStop(container->currentFrame + 18);
                         }
-                        else if (container.currentFrame < container.totalFrames)
+                        else if (container->currentFrame < container->totalFrames)
                         {
-                            container.gotoAndStop((container.currentFrame + 1));
+                            container->gotoAndStop((container->currentFrame + 1));
                         }
                         else
                         {
-                            container.gotoAndStop(19);
+                            container->gotoAndStop(19);
                         }
-                        if (container.currentFrame < 27)
+                        if (container->currentFrame < 27)
                         {
                             if (moveFlag)
                             {
@@ -90,23 +91,23 @@
                     }
                     else if (direction == "down")
                     {
-                        if (container.cont.currentFrame == 2)
+                        if (container->cont->currentFrame == 2)
                         {
-                            container.cont.gotoAndStop(1);
+                            container->cont->gotoAndStop(1);
                         }
-                        if (container.currentFrame < 19)
+                        if (container->currentFrame < 19)
                         {
-                            container.gotoAndStop(container.currentFrame + 18);
+                            container->gotoAndStop(container->currentFrame + 18);
                         }
-                        else if (container.currentFrame < container.totalFrames)
+                        else if (container->currentFrame < container->totalFrames)
                         {
-                            container.gotoAndStop((container.currentFrame + 1));
+                            container->gotoAndStop((container->currentFrame + 1));
                         }
                         else
                         {
-                            container.gotoAndStop(19);
+                            container->gotoAndStop(19);
                         }
-                        if (container.currentFrame < 27)
+                        if (container->currentFrame < 27)
                         {
                             if (moveFlag)
                             {
@@ -121,23 +122,23 @@
                 }
                 else if (direction == "left" || direction == "right")
                 {
-                    if (container.cont.currentFrame == 2)
+                    if (container->cont->currentFrame == 2)
                     {
-                        container.cont.gotoAndStop(1);
+                        container->cont->gotoAndStop(1);
                     }
-                    if (container.currentFrame > 18)
+                    if (container->currentFrame > 18)
                     {
-                        container.gotoAndStop(container.currentFrame - 18);
+                        container->gotoAndStop(container->currentFrame - 18);
                     }
-                    else if (container.currentFrame != 1 && container.currentFrame < 18)
+                    else if (container->currentFrame != 1 && container->currentFrame < 18)
                     {
-                        container.gotoAndStop((container.currentFrame + 1));
+                        container->gotoAndStop((container->currentFrame + 1));
                     }
-                    else if (container.currentFrame != 1)
+                    else if (container->currentFrame != 1)
                     {
-                        container.gotoAndStop(1);
+                        container->gotoAndStop(1);
                     }
-                    if (container.currentFrame < 9)
+                    if (container->currentFrame < 9)
                     {
                         if (moveFlag)
                         {
@@ -151,23 +152,23 @@
                 }
                 else if (direction == "up")
                 {
-                    if (container.cont.currentFrame == 1)
+                    if (container->cont->currentFrame == 1)
                     {
-                        container.cont.gotoAndStop(2);
+                        container->cont->gotoAndStop(2);
                     }
-                    if (container.currentFrame < 19)
+                    if (container->currentFrame < 19)
                     {
-                        container.gotoAndStop(container.currentFrame + 18);
+                        container->gotoAndStop(container->currentFrame + 18);
                     }
-                    else if (container.currentFrame != 19 && container.currentFrame < container.totalFrames)
+                    else if (container->currentFrame != 19 && container->currentFrame < container->totalFrames)
                     {
-                        container.gotoAndStop((container.currentFrame + 1));
+                        container->gotoAndStop((container->currentFrame + 1));
                     }
-                    else if (container.currentFrame != 19)
+                    else if (container->currentFrame != 19)
                     {
-                        container.gotoAndStop(19);
+                        container->gotoAndStop(19);
                     }
-                    if (container.currentFrame < 27)
+                    if (container->currentFrame < 27)
                     {
                         if (moveFlag)
                         {
@@ -181,23 +182,23 @@
                 }
                 else if (direction == "down")
                 {
-                    if (container.cont.currentFrame == 2)
+                    if (container->cont->currentFrame == 2)
                     {
-                        container.cont.gotoAndStop(1);
+                        container->cont->gotoAndStop(1);
                     }
-                    if (container.currentFrame < 19)
+                    if (container->currentFrame < 19)
                     {
-                        container.gotoAndStop(container.currentFrame + 18);
+                        container->gotoAndStop(container->currentFrame + 18);
                     }
-                    else if (container.currentFrame != 19 && container.currentFrame < container.totalFrames)
+                    else if (container->currentFrame != 19 && container->currentFrame < container->totalFrames)
                     {
-                        container.gotoAndStop((container.currentFrame + 1));
+                        container->gotoAndStop((container->currentFrame + 1));
                     }
-                    else if (container.currentFrame != 19)
+                    else if (container->currentFrame != 19)
                     {
-                        container.gotoAndStop(19);
+                        container->gotoAndStop(19);
                     }
-                    if (container.currentFrame < 27)
+                    if (container->currentFrame < 27)
                     {
                         if (moveFlag)
                         {
@@ -210,7 +211,7 @@
                     }
                 }
             }
-            super.animationHandler();
+            Unit::animationHandler();
             return;
         }// end function
 

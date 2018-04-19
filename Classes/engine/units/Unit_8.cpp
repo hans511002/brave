@@ -1,27 +1,27 @@
 ﻿
-#include "Unit_3.h"
+#include "Unit_8.h"
 
 namespace engine
 {
 	namespace units
 	{  
-        Unit_3::Unit_3()
+        Unit_8::Unit_8()
         {
             return;
         }// end function
 
-        bool Unit_3::init()
+        bool Unit_8::init() 
         {
-            typeUnit = 3;
-            container = new Unit_mc(this,"unit3", typeUnit); //new Unit3_mc(); 
-            container->setScale(0.9);
+            typeUnit = 8;
+            container = new Unit_mc(this,"unit8", typeUnit); //new Unit8_mc(); 
+            container->setScale(0.87);
             container->init();
             Unit::init();
-            this->autorelease();
+            this->autorelease();  
             return true;
         }// end function
 
-        void Unit_3::animationHandler() 
+        void Unit_8::animationHandler() 
         {
             if (!container->stoneDeath->isVisible() && !icemanFlag)
             {
@@ -70,7 +70,7 @@ namespace engine
                     }
                 }
             }
-            Unit::animationHandler();
+            Unit_8::animationHandler();
             return;
         }// end function
 
