@@ -12,7 +12,7 @@ namespace engine{
 		{
 			return Common::String::strcmp(a.c_str(), b) == 0;
 		};
-		inline  ostream& operator<<(ostream& target, dragonBones::XMLElement * node)
+        inline  ostream& operator<<(ostream& target, tinyxml2::XMLElement * node)
 		{
 			if (!node)return target;
 			if (node->ToText() && node->Value())
@@ -22,7 +22,7 @@ namespace engine{
 				return target;
 			}
 			target << "<" << node->Name();
-			const dragonBones::XMLAttribute * cattr = node->FirstAttribute();
+            const tinyxml2::XMLAttribute * cattr = node->FirstAttribute();
 			while (cattr){
 				target << " " << cattr->Name() << "=\"" << cattr->Value() << "\"";
 				cattr = cattr->Next();
@@ -30,7 +30,7 @@ namespace engine{
 			target << " >";
 			if (node->FirstChildElement())
 			{
-				dragonBones::XMLElement * cnode = node->FirstChildElement();
+                tinyxml2::XMLElement * cnode = node->FirstChildElement();
 				while (cnode){
 					target << cnode;
 					cnode->NextSiblingElement();
@@ -40,7 +40,7 @@ namespace engine{
 			return target;
 		}
 
-		inline Common::String& operator<<(Common::String& target, dragonBones::XMLElement * node)
+        inline Common::String& operator<<(Common::String& target, tinyxml2::XMLElement * node)
 		{
 			if (!node)return target;
 			if (node->ToText() && node->Value())
@@ -50,7 +50,7 @@ namespace engine{
 			}
 			if (node->FirstChildElement())
 			{
-				dragonBones::XMLElement * cnode = node->FirstChildElement();
+                tinyxml2::XMLElement * cnode = node->FirstChildElement();
 				while (cnode){
 					target << cnode;
 					cnode->NextSiblingElement();
@@ -58,19 +58,19 @@ namespace engine{
 			}
 			return target;
 		}
-		inline Common::String operator+(Common::String target, dragonBones::XMLElement * node)
+		inline Common::String operator+(Common::String target, tinyxml2::XMLElement * node)
 		{
 			Common::String temp;
 			temp << node;
 			return target + temp;
 		}
-		inline Common::String operator+(dragonBones::XMLElement *node, Common::String target)
+		inline Common::String operator+(tinyxml2::XMLElement *node, Common::String target)
 		{
 			Common::String temp;
 			temp << node;
 			return temp + target;
 		}
-		inline Common::String& operator+=(Common::String& target, dragonBones::XMLElement * node)
+		inline Common::String& operator+=(Common::String& target, tinyxml2::XMLElement * node)
 		{
 			Common::String temp;
 			temp << node;
@@ -81,12 +81,12 @@ namespace engine{
 		class XMLConfigParser{
 			bool del;
 		public:
-			static std::map<std::string, dragonBones::XMLDocument *> xmlCache;
-			dragonBones::XMLDocument * doc;
-			static dragonBones::XMLElement * findChild(dragonBones::XMLElement * root, std::string childName);
-			static dragonBones::XMLElement * findChild(dragonBones::XMLElement * root, std::string nodePath, std::string &attrName);
-			static vector<dragonBones::XMLElement *> findChildList(dragonBones::XMLElement * root, std::string childPath);
-			static dragonBones::XMLDocument * getDoc(std::string fileName, std::string name);
+			static std::map<std::string, tinyxml2::XMLDocument *> xmlCache;
+			tinyxml2::XMLDocument * doc;
+			static tinyxml2::XMLElement * findChild(tinyxml2::XMLElement * root, std::string childName);
+			static tinyxml2::XMLElement * findChild(tinyxml2::XMLElement * root, std::string nodePath, std::string &attrName);
+			static vector<tinyxml2::XMLElement *> findChildList(tinyxml2::XMLElement * root, std::string childPath);
+			static tinyxml2::XMLDocument * getDoc(std::string fileName, std::string name);
 			static bool removeDoc(std::string fileName, std::string name); 
 			XMLConfigParser(std::string fileName, std::string name,bool del=false) ;
 			~XMLConfigParser(){
@@ -96,25 +96,25 @@ namespace engine{
 					doc = NULL;
 			    }
 			};
-			inline dragonBones::XMLElement * get(std::string nodePath)
+			inline tinyxml2::XMLElement * get(std::string nodePath)
 			{
 				std::string attrName;
 				return  get(nodePath, &attrName);
 			}
-			inline dragonBones::XMLElement * get(std::string nodePath, std::string *attrName)
+			inline tinyxml2::XMLElement * get(std::string nodePath, std::string *attrName)
 			{
 				if (!doc)return NULL;
-				dragonBones::XMLElement * root = doc->RootElement();
+				tinyxml2::XMLElement * root = doc->RootElement();
 				if (!root)return NULL; 
-				dragonBones::XMLElement * resNode = findChild(root, nodePath, *attrName);
+				tinyxml2::XMLElement * resNode = findChild(root, nodePath, *attrName);
 				return resNode;
 			};
-			vector<dragonBones::XMLElement *> getChildList(std::string nodePath);
-			vector<dragonBones::XMLElement *> getChildList(dragonBones::XMLElement * root, std::string nodePath);
+			vector<tinyxml2::XMLElement *> getChildList(std::string nodePath);
+			vector<tinyxml2::XMLElement *> getChildList(tinyxml2::XMLElement * root, std::string nodePath);
 
 #define GET_XML_NODE(T,castType) inline bool get(T & val,std::string nodePath)\
 			{std::string attrName; \
-			dragonBones::XMLElement * resNode = get(nodePath, &attrName); \
+			tinyxml2::XMLElement * resNode = get(nodePath, &attrName); \
 			if (!resNode)return false; \
 			const char *cval = NULL; \
 			if (!attrName.empty()){ \
@@ -125,11 +125,11 @@ namespace engine{
 			if (!cval)return false;\
 			castType  \
 			return true; \
-			}; inline bool get(dragonBones::XMLElement * node, T & val, std::string nodePath=""){\
+			}; inline bool get(tinyxml2::XMLElement * node, T & val, std::string nodePath=""){\
 				const char *cval = NULL; \
 				if (!nodePath.empty()){ \
 					std::string attrName; \
-					dragonBones::XMLElement * resNode = findChild(node, nodePath, attrName);\
+					tinyxml2::XMLElement * resNode = findChild(node, nodePath, attrName);\
 					if (!resNode)return false; \
 					if (!attrName.empty()){ \
 						cval = resNode->Attribute(attrName.c_str()); \
@@ -160,7 +160,7 @@ namespace engine{
 			return res;				\
 			return defaultVal;			\
 			};  \
-			inline T  NAME(dragonBones::XMLElement * node, std::string nodePath,T defaultVal = DEF){\
+			inline T  NAME(tinyxml2::XMLElement * node, std::string nodePath,T defaultVal = DEF){\
 			T res;					\
 			if (get(node, res, nodePath))		\
 				return res;				\
@@ -181,7 +181,7 @@ namespace engine{
 			return res;								\
 			return defaultVal;							\
 			};  \
-			inline T  NAME(dragonBones::XMLElement * node,std::string attrName, T defaultVal = DEF){\
+			inline T  NAME(tinyxml2::XMLElement * node,std::string attrName, T defaultVal = DEF){\
 			T res;									\
 			if (get(node,res, attrName))	\
 			return res;								\

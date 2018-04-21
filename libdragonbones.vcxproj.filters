@@ -4,252 +4,390 @@
     <Filter Include="src">
       <UniqueIdentifier>{b4732bfc-ef2f-4ea3-acab-bc52d4c79c0d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\dragonbones">
+    <Filter Include="src\dragonBones">
       <UniqueIdentifier>{8d951a0e-ac48-4ab7-ba9e-781c6f561d99}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\dragonbones\animation">
+    <Filter Include="src\rapidjson">
+      <UniqueIdentifier>{4006bc49-59e9-45c9-8954-f25ee051b386}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\dragonBones\animation">
       <UniqueIdentifier>{968fc703-48d9-4e31-a6af-7bf53a0babc8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\dragonbones\cocos2d">
+    <Filter Include="src\dragonBones\armature">
+      <UniqueIdentifier>{123203c8-8674-48c2-b655-fa503f926493}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\dragonBones\cocos2dx">
       <UniqueIdentifier>{c1b4a521-42de-419b-804e-9d162bb17b1b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\dragonbones\core">
+    <Filter Include="src\dragonBones\core">
       <UniqueIdentifier>{4e4ab60b-0ff5-4cc8-8071-b8acc76b6edb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\dragonbones\events">
+    <Filter Include="src\dragonBones\event">
       <UniqueIdentifier>{5d191494-1291-46a6-868c-1f03f1e0aeae}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\dragonbones\factories">
+    <Filter Include="src\dragonBones\factory">
       <UniqueIdentifier>{72be8b40-bb98-48f6-a82e-ba1835930f5f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\dragonbones\geoms">
+    <Filter Include="src\dragonBones\geom">
       <UniqueIdentifier>{c11dafcc-ee46-405b-8a15-c20b5379c24a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\dragonbones\parsers">
+    <Filter Include="src\dragonBones\model">
+      <UniqueIdentifier>{972be612-b835-4118-a9af-cbbcfa373547}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\dragonBones\parser">
       <UniqueIdentifier>{249966ae-e0c7-4024-84c6-e9ac554ac972}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\dragonbones\objects">
-      <UniqueIdentifier>{3a6cceb5-b5b7-4b79-a6ce-76a176a624bd}</UniqueIdentifier>
+    <Filter Include="src\rapidjson\error">
+      <UniqueIdentifier>{01659221-837d-44df-9c84-1ce46752df63}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\dragonbones\textures">
-      <UniqueIdentifier>{ce63086a-a5cd-4543-a06e-226c06f5e220}</UniqueIdentifier>
+    <Filter Include="src\rapidjson\internal">
+      <UniqueIdentifier>{1d31cdf4-0fb7-48ee-853b-1d786e52c2f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\rapidjson\msinttypes">
+      <UniqueIdentifier>{170395c8-6801-45ab-b11a-455a12ae8102}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Classes\dragonbones\animation\Animation.cpp">
-      <Filter>src\dragonbones\animation</Filter>
+    <ClCompile Include="Classes\dragonBones\animation\Animation.cpp">
+      <Filter>src\dragonBones\animation</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\dragonbones\animation\AnimationState.cpp">
-      <Filter>src\dragonbones\animation</Filter>
+    <ClCompile Include="Classes\dragonBones\animation\AnimationState.cpp">
+      <Filter>src\dragonBones\animation</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\dragonbones\animation\TimelineState.cpp">
-      <Filter>src\dragonbones\animation</Filter>
+    <ClCompile Include="Classes\dragonBones\animation\BaseTimelineState.cpp">
+      <Filter>src\dragonBones\animation</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\dragonbones\animation\WorldClock.cpp">
-      <Filter>src\dragonbones\animation</Filter>
+    <ClCompile Include="Classes\dragonBones\animation\TimelineState.cpp">
+      <Filter>src\dragonBones\animation</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\dragonbones\cocos2d\DBCCArmature.cpp">
-      <Filter>src\dragonbones\cocos2d</Filter>
+    <ClCompile Include="Classes\dragonBones\animation\WorldClock.cpp">
+      <Filter>src\dragonBones\animation</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\dragonbones\cocos2d\DBCCArmatureNode.cpp">
-      <Filter>src\dragonbones\cocos2d</Filter>
+    <ClCompile Include="Classes\dragonBones\armature\Bone.cpp">
+      <Filter>src\dragonBones\armature</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\dragonbones\cocos2d\DBCCFactory.cpp">
-      <Filter>src\dragonbones\cocos2d</Filter>
+    <ClCompile Include="Classes\dragonBones\armature\Constraint.cpp">
+      <Filter>src\dragonBones\armature</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\dragonbones\cocos2d\DBCCLuaUtils.cpp">
-      <Filter>src\dragonbones\cocos2d</Filter>
+    <ClCompile Include="Classes\dragonBones\armature\DeformVertices.cpp">
+      <Filter>src\dragonBones\armature</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\dragonbones\cocos2d\DBCCSlot.cpp">
-      <Filter>src\dragonbones\cocos2d</Filter>
+    <ClCompile Include="Classes\dragonBones\armature\Slot.cpp">
+      <Filter>src\dragonBones\armature</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\dragonbones\cocos2d\DBCCUtils.cpp">
-      <Filter>src\dragonbones\cocos2d</Filter>
+    <ClCompile Include="Classes\dragonBones\armature\TransformObject.cpp">
+      <Filter>src\dragonBones\armature</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\dragonbones\core\Armature.cpp">
-      <Filter>src\dragonbones\core</Filter>
+    <ClCompile Include="Classes\dragonBones\armature\Armature.cpp">
+      <Filter>src\dragonBones\armature</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\dragonbones\core\Bone.cpp">
-      <Filter>src\dragonbones\core</Filter>
+    <ClCompile Include="Classes\dragonBones\cocos2dx\CCArmatureDisplay.cpp">
+      <Filter>src\dragonBones\cocos2dx</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\dragonbones\core\Object.cpp">
-      <Filter>src\dragonbones\core</Filter>
+    <ClCompile Include="Classes\dragonBones\cocos2dx\CCFactory.cpp">
+      <Filter>src\dragonBones\cocos2dx</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\dragonbones\core\Slot.cpp">
-      <Filter>src\dragonbones\core</Filter>
+    <ClCompile Include="Classes\dragonBones\cocos2dx\CCSlot.cpp">
+      <Filter>src\dragonBones\cocos2dx</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\dragonbones\events\EventData.cpp">
-      <Filter>src\dragonbones\events</Filter>
+    <ClCompile Include="Classes\dragonBones\cocos2dx\CCTextureAtlasData.cpp">
+      <Filter>src\dragonBones\cocos2dx</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\dragonbones\factories\BaseFactory.cpp">
-      <Filter>src\dragonbones\factories</Filter>
+    <ClCompile Include="Classes\dragonBones\core\BaseObject.cpp">
+      <Filter>src\dragonBones\core</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\dragonbones\parsers\BaseDataParser.cpp">
-      <Filter>src\dragonbones\parsers</Filter>
+    <ClCompile Include="Classes\dragonBones\core\DragonBones.cpp">
+      <Filter>src\dragonBones\core</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\dragonbones\parsers\ConstValues.cpp">
-      <Filter>src\dragonbones\parsers</Filter>
+    <ClCompile Include="Classes\dragonBones\event\EventObject.cpp">
+      <Filter>src\dragonBones\event</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\dragonbones\parsers\dbtinyxml2.cpp">
-      <Filter>src\dragonbones\parsers</Filter>
+    <ClCompile Include="Classes\dragonBones\factory\BaseFactory.cpp">
+      <Filter>src\dragonBones\factory</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\dragonbones\parsers\XMLDataParser.cpp">
-      <Filter>src\dragonbones\parsers</Filter>
+    <ClCompile Include="Classes\dragonBones\geom\Point.cpp">
+      <Filter>src\dragonBones\geom</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\dragonBones\geom\Transform.cpp">
+      <Filter>src\dragonBones\geom</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\dragonBones\model\AnimationConfig.cpp">
+      <Filter>src\dragonBones\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\dragonBones\model\AnimationData.cpp">
+      <Filter>src\dragonBones\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\dragonBones\model\ArmatureData.cpp">
+      <Filter>src\dragonBones\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\dragonBones\model\BoundingBoxData.cpp">
+      <Filter>src\dragonBones\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\dragonBones\model\CanvasData.cpp">
+      <Filter>src\dragonBones\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\dragonBones\model\ConstraintData.cpp">
+      <Filter>src\dragonBones\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\dragonBones\model\DisplayData.cpp">
+      <Filter>src\dragonBones\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\dragonBones\model\DragonBonesData.cpp">
+      <Filter>src\dragonBones\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\dragonBones\model\SkinData.cpp">
+      <Filter>src\dragonBones\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\dragonBones\model\TextureAtlasData.cpp">
+      <Filter>src\dragonBones\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\dragonBones\model\UserData.cpp">
+      <Filter>src\dragonBones\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\dragonBones\parser\BinaryDataParser.cpp">
+      <Filter>src\dragonBones\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\dragonBones\parser\DataParser.cpp">
+      <Filter>src\dragonBones\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\dragonBones\parser\JSONDataParser.cpp">
+      <Filter>src\dragonBones\parser</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Classes\dragonbones\animation\Animation.h">
-      <Filter>src\dragonbones\animation</Filter>
+    <ClInclude Include="Classes\dragonBones\animation\Animation.h">
+      <Filter>src\dragonBones\animation</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\animation\AnimationState.h">
-      <Filter>src\dragonbones\animation</Filter>
+    <ClInclude Include="Classes\dragonBones\animation\AnimationState.h">
+      <Filter>src\dragonBones\animation</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\animation\IAnimatable.h">
-      <Filter>src\dragonbones\animation</Filter>
+    <ClInclude Include="Classes\dragonBones\animation\BaseTimelineState.h">
+      <Filter>src\dragonBones\animation</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\animation\TimelineState.h">
-      <Filter>src\dragonbones\animation</Filter>
+    <ClInclude Include="Classes\dragonBones\animation\IAnimatable.h">
+      <Filter>src\dragonBones\animation</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\animation\WorldClock.h">
-      <Filter>src\dragonbones\animation</Filter>
+    <ClInclude Include="Classes\dragonBones\animation\TimelineState.h">
+      <Filter>src\dragonBones\animation</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\cocos2d\DBCCArmature.h">
-      <Filter>src\dragonbones\cocos2d</Filter>
+    <ClInclude Include="Classes\dragonBones\animation\WorldClock.h">
+      <Filter>src\dragonBones\animation</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\cocos2d\DBCCArmatureNode.h">
-      <Filter>src\dragonbones\cocos2d</Filter>
+    <ClInclude Include="Classes\dragonBones\armature\Bone.h">
+      <Filter>src\dragonBones\armature</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\cocos2d\DBCCEventDispatcher.h">
-      <Filter>src\dragonbones\cocos2d</Filter>
+    <ClInclude Include="Classes\dragonBones\armature\Constraint.h">
+      <Filter>src\dragonBones\armature</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\cocos2d\DBCCFactory.h">
-      <Filter>src\dragonbones\cocos2d</Filter>
+    <ClInclude Include="Classes\dragonBones\armature\DeformVertices.h">
+      <Filter>src\dragonBones\armature</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\cocos2d\DBCCLuaUtils.h">
-      <Filter>src\dragonbones\cocos2d</Filter>
+    <ClInclude Include="Classes\dragonBones\armature\IArmatureProxy.h">
+      <Filter>src\dragonBones\armature</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\cocos2d\dbccMacro.h">
-      <Filter>src\dragonbones\cocos2d</Filter>
+    <ClInclude Include="Classes\dragonBones\armature\Slot.h">
+      <Filter>src\dragonBones\armature</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\cocos2d\DBCCRenderHeaders.h">
-      <Filter>src\dragonbones\cocos2d</Filter>
+    <ClInclude Include="Classes\dragonBones\armature\TransformObject.h">
+      <Filter>src\dragonBones\armature</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\cocos2d\DBCCSlot.h">
-      <Filter>src\dragonbones\cocos2d</Filter>
+    <ClInclude Include="Classes\dragonBones\armature\Armature.h">
+      <Filter>src\dragonBones\armature</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\cocos2d\DBCCTextureAtlas.h">
-      <Filter>src\dragonbones\cocos2d</Filter>
+    <ClInclude Include="Classes\dragonBones\cocos2dx\CCArmatureDisplay.h">
+      <Filter>src\dragonBones\cocos2dx</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\cocos2d\DBCCUtils.h">
-      <Filter>src\dragonbones\cocos2d</Filter>
+    <ClInclude Include="Classes\dragonBones\cocos2dx\CCDragonBonesHeaders.h">
+      <Filter>src\dragonBones\cocos2dx</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\core\Armature.h">
-      <Filter>src\dragonbones\core</Filter>
+    <ClInclude Include="Classes\dragonBones\cocos2dx\CCFactory.h">
+      <Filter>src\dragonBones\cocos2dx</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\core\Bone.h">
-      <Filter>src\dragonbones\core</Filter>
+    <ClInclude Include="Classes\dragonBones\cocos2dx\CCSlot.h">
+      <Filter>src\dragonBones\cocos2dx</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\core\Object.h">
-      <Filter>src\dragonbones\core</Filter>
+    <ClInclude Include="Classes\dragonBones\cocos2dx\CCTextureAtlasData.h">
+      <Filter>src\dragonBones\cocos2dx</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\core\Slot.h">
-      <Filter>src\dragonbones\core</Filter>
+    <ClInclude Include="Classes\dragonBones\core\BaseObject.h">
+      <Filter>src\dragonBones\core</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\events\EventData.h">
-      <Filter>src\dragonbones\events</Filter>
+    <ClInclude Include="Classes\dragonBones\core\DragonBones.h">
+      <Filter>src\dragonBones\core</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\events\IEventDispatcher.h">
-      <Filter>src\dragonbones\events</Filter>
+    <ClInclude Include="Classes\dragonBones\event\EventObject.h">
+      <Filter>src\dragonBones\event</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\factories\BaseFactory.h">
-      <Filter>src\dragonbones\factories</Filter>
+    <ClInclude Include="Classes\dragonBones\event\IEventDispatcher.h">
+      <Filter>src\dragonBones\event</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\geoms\ColorTransform.h">
-      <Filter>src\dragonbones\geoms</Filter>
+    <ClInclude Include="Classes\dragonBones\factory\BaseFactory.h">
+      <Filter>src\dragonBones\factory</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\geoms\Matrix.h">
-      <Filter>src\dragonbones\geoms</Filter>
+    <ClInclude Include="Classes\dragonBones\geom\ColorTransform.h">
+      <Filter>src\dragonBones\geom</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\geoms\Point.h">
-      <Filter>src\dragonbones\geoms</Filter>
+    <ClInclude Include="Classes\dragonBones\geom\Matrix.h">
+      <Filter>src\dragonBones\geom</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\geoms\Rectangle.h">
-      <Filter>src\dragonbones\geoms</Filter>
+    <ClInclude Include="Classes\dragonBones\geom\Point.h">
+      <Filter>src\dragonBones\geom</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\geoms\Transform.h">
-      <Filter>src\dragonbones\geoms</Filter>
+    <ClInclude Include="Classes\dragonBones\geom\Rectangle.h">
+      <Filter>src\dragonBones\geom</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\objects\AnimationData.h">
-      <Filter>src\dragonbones\objects</Filter>
+    <ClInclude Include="Classes\dragonBones\geom\Transform.h">
+      <Filter>src\dragonBones\geom</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\objects\ArmatureData.h">
-      <Filter>src\dragonbones\objects</Filter>
+    <ClInclude Include="Classes\dragonBones\model\AnimationConfig.h">
+      <Filter>src\dragonBones\model</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\objects\BoneData.h">
-      <Filter>src\dragonbones\objects</Filter>
+    <ClInclude Include="Classes\dragonBones\model\AnimationData.h">
+      <Filter>src\dragonBones\model</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\objects\DisplayData.h">
-      <Filter>src\dragonbones\objects</Filter>
+    <ClInclude Include="Classes\dragonBones\model\ArmatureData.h">
+      <Filter>src\dragonBones\model</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\objects\DragonBonesData.h">
-      <Filter>src\dragonbones\objects</Filter>
+    <ClInclude Include="Classes\dragonBones\model\BoundingBoxData.h">
+      <Filter>src\dragonBones\model</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\objects\EllipseData.h">
-      <Filter>src\dragonbones\objects</Filter>
+    <ClInclude Include="Classes\dragonBones\model\CanvasData.h">
+      <Filter>src\dragonBones\model</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\objects\Frame.h">
-      <Filter>src\dragonbones\objects</Filter>
+    <ClInclude Include="Classes\dragonBones\model\ConstraintData.h">
+      <Filter>src\dragonBones\model</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\objects\IAreaData.h">
-      <Filter>src\dragonbones\objects</Filter>
+    <ClInclude Include="Classes\dragonBones\model\DisplayData.h">
+      <Filter>src\dragonBones\model</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\objects\RectangleData.h">
-      <Filter>src\dragonbones\objects</Filter>
+    <ClInclude Include="Classes\dragonBones\model\DragonBonesData.h">
+      <Filter>src\dragonBones\model</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\objects\SkinData.h">
-      <Filter>src\dragonbones\objects</Filter>
+    <ClInclude Include="Classes\dragonBones\model\SkinData.h">
+      <Filter>src\dragonBones\model</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\objects\SlotData.h">
-      <Filter>src\dragonbones\objects</Filter>
+    <ClInclude Include="Classes\dragonBones\model\TextureAtlasData.h">
+      <Filter>src\dragonBones\model</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\objects\TextData.h">
-      <Filter>src\dragonbones\objects</Filter>
+    <ClInclude Include="Classes\dragonBones\model\UserData.h">
+      <Filter>src\dragonBones\model</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\objects\Timeline.h">
-      <Filter>src\dragonbones\objects</Filter>
+    <ClInclude Include="Classes\dragonBones\parser\BinaryDataParser.h">
+      <Filter>src\dragonBones\parser</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\objects\TransformFrame.h">
-      <Filter>src\dragonbones\objects</Filter>
+    <ClInclude Include="Classes\dragonBones\parser\DataParser.h">
+      <Filter>src\dragonBones\parser</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\objects\TransformTimeline.h">
-      <Filter>src\dragonbones\objects</Filter>
+    <ClInclude Include="Classes\dragonBones\parser\JSONDataParser.h">
+      <Filter>src\dragonBones\parser</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\parsers\BaseDataParser.h">
-      <Filter>src\dragonbones\parsers</Filter>
+    <ClInclude Include="Classes\dragonBones\DragonBonesHeaders.h">
+      <Filter>src\dragonBones</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\parsers\ConstValues.h">
-      <Filter>src\dragonbones\parsers</Filter>
+    <ClInclude Include="Classes\rapidjson\allocators.h">
+      <Filter>src\rapidjson</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\parsers\dbtinyxml2.h">
-      <Filter>src\dragonbones\parsers</Filter>
+    <ClInclude Include="Classes\rapidjson\document.h">
+      <Filter>src\rapidjson</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\parsers\XMLDataParser.h">
-      <Filter>src\dragonbones\parsers</Filter>
+    <ClInclude Include="Classes\rapidjson\encodedstream.h">
+      <Filter>src\rapidjson</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\textures\ITextureAtlas.h">
-      <Filter>src\dragonbones\textures</Filter>
+    <ClInclude Include="Classes\rapidjson\encodings.h">
+      <Filter>src\rapidjson</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\textures\TextureAtlasData.h">
-      <Filter>src\dragonbones\textures</Filter>
+    <ClInclude Include="Classes\rapidjson\filereadstream.h">
+      <Filter>src\rapidjson</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\textures\TextureData.h">
-      <Filter>src\dragonbones\textures</Filter>
+    <ClInclude Include="Classes\rapidjson\filewritestream.h">
+      <Filter>src\rapidjson</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\DragonBones.h">
-      <Filter>src\dragonbones</Filter>
+    <ClInclude Include="Classes\rapidjson\fwd.h">
+      <Filter>src\rapidjson</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\dragonbones\DragonBonesHeaders.h">
-      <Filter>src\dragonbones</Filter>
+    <ClInclude Include="Classes\rapidjson\istreamwrapper.h">
+      <Filter>src\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\rapidjson\memorybuffer.h">
+      <Filter>src\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\rapidjson\memorystream.h">
+      <Filter>src\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\rapidjson\ostreamwrapper.h">
+      <Filter>src\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\rapidjson\pointer.h">
+      <Filter>src\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\rapidjson\prettywriter.h">
+      <Filter>src\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\rapidjson\rapidjson.h">
+      <Filter>src\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\rapidjson\reader.h">
+      <Filter>src\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\rapidjson\schema.h">
+      <Filter>src\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\rapidjson\stream.h">
+      <Filter>src\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\rapidjson\stringbuffer.h">
+      <Filter>src\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\rapidjson\writer.h">
+      <Filter>src\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\rapidjson\error\en.h">
+      <Filter>src\rapidjson\error</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\rapidjson\error\error.h">
+      <Filter>src\rapidjson\error</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\rapidjson\internal\biginteger.h">
+      <Filter>src\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\rapidjson\internal\diyfp.h">
+      <Filter>src\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\rapidjson\internal\dtoa.h">
+      <Filter>src\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\rapidjson\internal\ieee754.h">
+      <Filter>src\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\rapidjson\internal\itoa.h">
+      <Filter>src\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\rapidjson\internal\meta.h">
+      <Filter>src\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\rapidjson\internal\pow10.h">
+      <Filter>src\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\rapidjson\internal\regex.h">
+      <Filter>src\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\rapidjson\internal\stack.h">
+      <Filter>src\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\rapidjson\internal\strfunc.h">
+      <Filter>src\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\rapidjson\internal\strtod.h">
+      <Filter>src\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\rapidjson\internal\swap.h">
+      <Filter>src\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\rapidjson\msinttypes\inttypes.h">
+      <Filter>src\rapidjson\msinttypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\rapidjson\msinttypes\stdint.h">
+      <Filter>src\rapidjson\msinttypes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

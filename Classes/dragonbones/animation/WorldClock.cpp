@@ -1,147 +1,147 @@
-﻿#include "WorldClock.h"
+#include "WorldClock.h"
 
-NAME_SPACE_DRAGON_BONES_BEGIN
+DRAGONBONES_NAMESPACE_BEGIN
 
 WorldClock WorldClock::clock;
 
-WorldClock* WorldClock::getInstance()
-{
-    return &clock;
-}
-
-float WorldClock::getTime() const
-{
-    return _time;
-}
-
-float WorldClock::getTimeScale() const
-{
-    return _timeScale;
-}
-void WorldClock::setTimeScale(float timeScale)
-{
-    if (timeScale < 0 || timeScale != timeScale)
-    {
-        timeScale = 1.f;
-    }
-    
-    _timeScale = timeScale;
-}
-
-WorldClock::WorldClock(float time, float timeScale)
-    : _dirty(false)
-    , _isPlaying(true)
-{
-    // _time = (time < 0 || time != time) ? getTimer() * 0.001f : time;
-    _time = 0;
-    setTimeScale(timeScale);
-}
-WorldClock::~WorldClock()
-{
-    dispose();
-}
-void WorldClock::dispose()
-{
-    _animatableList.clear();
-}
-
-bool WorldClock::contains(const IAnimatable *animatable) const
-{
-    auto iterator = std::find(_animatableList.cbegin(), _animatableList.cend(), animatable);
-    return iterator != _animatableList.cend();
-}
-
-void WorldClock::add(IAnimatable *animatable)
-{
-    if (animatable && !contains(animatable))
-    {
-        _animatableList.push_back(animatable);
-    }
-}
-
-void WorldClock::remove(IAnimatable *animatable)
-{
-    if (!animatable) { return; }
-    
-    auto iterator = std::find(_animatableList.begin(), _animatableList.end(), animatable);
-    
-    if (iterator != _animatableList.end())
-    {
-        _animatableList[iterator - _animatableList.begin()] = nullptr;
-        _dirty = true;
-    }
-}
-
-void WorldClock::removeAll()
-{
-    _animatableList.clear();
-}
-
-void WorldClock::play()
-{
-    _isPlaying = true;
-}
-
-void WorldClock::stop()
-{
-    _isPlaying = false;
-}
-
 void WorldClock::advanceTime(float passedTime)
 {
-    if (!_isPlaying)
+    if (passedTime < 0.0f || passedTime != passedTime)
+    {
+        passedTime = 0.0f;
+    }
+
+    const auto currentTime = 0.0f;
+
+    if (passedTime < 0.0f) 
+    {
+        passedTime = currentTime - _systemTime;
+    }
+
+    _systemTime = currentTime;
+
+    if (timeScale != 1.0f)
+    {
+        passedTime *= timeScale;
+    }
+
+    if (passedTime == 0.0f)
     {
         return;
     }
-    
-    if (passedTime < 0 || passedTime != passedTime)
+
+    if (passedTime < 0.0f)
     {
-        /*
-        passedTime = getTimer() * 0.001f - _time;
-        if (passedTime < 0)
-        {
-            passedTime = 0.f;
-        }
-        */
-        passedTime = 0.f;
+        time -= passedTime;
     }
-    
-    passedTime *= _timeScale;
-    _time += passedTime;
-    
-    if (_animatableList.empty())
+    else
     {
-        return;
+        time += passedTime;
     }
-    
-    for (size_t i = 0, l = _animatableList.size(); i < l; ++i)
+
+    std::size_t i = 0, r = 0, l = _animatebles.size();
+    for (; i < l; ++i)
     {
-        if (_animatableList[i])
+        const auto animatable = _animatebles[i];
+        if (animatable != nullptr)
         {
-            _animatableList[i]->advanceTime(passedTime);
-        }
-    }
-    
-    if (_dirty)
-    {
-        size_t curIdx = 0;
-        
-        for (size_t i = 0, l = _animatableList.size(); i < l; ++i)
-        {
-            if (_animatableList[i])
+            if (r > 0)
             {
-                if (curIdx != i)
-                {
-                    _animatableList[curIdx] = _animatableList[i];
-                    _animatableList[i] = nullptr;
-                }
-                
-                curIdx++;
+                _animatebles[i - r] = animatable;
+                _animatebles[i] = nullptr;
+            }
+
+            animatable->advanceTime(passedTime);
+        }
+        else
+        {
+            r++;
+        }
+    }
+
+    if (r > 0)
+    {
+        l = _animatebles.size();
+        for (; i < l; ++i)
+        {
+            const auto animateble = _animatebles[i];
+            if (animateble != nullptr)
+            {
+                _animatebles[i - r] = animateble;
+            }
+            else
+            {
+                r++;
             }
         }
-        
-        _animatableList.resize(curIdx);
-        _dirty = false;
+
+        _animatebles.resize(l - r);
     }
 }
-NAME_SPACE_DRAGON_BONES_END
+
+bool WorldClock::contains(const IAnimatable* value) const
+{
+    if (value == this) {
+        return false;
+    }
+
+    auto ancestor = value;
+    while (ancestor != this && ancestor != nullptr) 
+    {
+        ancestor = ancestor->getClock();
+    }
+
+    return ancestor == this;
+}
+
+void WorldClock::add(IAnimatable* value)
+{
+    if (std::find(_animatebles.begin(), _animatebles.end(), value) == _animatebles.end())
+    {
+        _animatebles.push_back(value);
+        value->setClock(this);
+    }
+}
+
+void WorldClock::remove(IAnimatable* value)
+{
+    const auto iterator = std::find(_animatebles.begin(), _animatebles.end(), value);
+    if (iterator != _animatebles.end())
+    {
+        *iterator = nullptr;
+        value->setClock(nullptr);
+    }
+}
+
+void WorldClock::clear()
+{
+    for (const auto animatable : _animatebles)
+    {
+        if (animatable != nullptr)
+        {
+            animatable->setClock(nullptr);
+        }
+    }
+}
+
+void WorldClock::setClock(WorldClock* value)
+{
+    if (_clock == value)
+    {
+        return;
+    }
+
+    if (_clock != nullptr)
+    {
+        _clock->remove(this);
+    }
+
+    _clock = value;
+
+    if (_clock != nullptr)
+    {
+        _clock->add(this);
+    }
+}
+
+DRAGONBONES_NAMESPACE_END

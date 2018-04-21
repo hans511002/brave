@@ -1,9 +1,0 @@
-<TextureAtlas name="BlowIce_mc" imagePath="texture.png">
- <SubTexture name="Shape/shape 1214" x="284" y="0" width="140" height="121"/>
- <SubTexture name="Shape/shape 1216" x="284" y="123" width="140" height="121"/>
- <SubTexture name="Shape/shape 1218" x="0" y="0" width="140" height="121"/>
- <SubTexture name="Shape/shape 1220" x="0" y="246" width="140" height="121"/>
- <SubTexture name="Shape/shape 1222" x="142" y="123" width="140" height="121"/>
- <SubTexture name="Shape/shape 1224" x="142" y="0" width="140" height="121"/>
- <SubTexture name="Shape/shape 1226" x="0" y="123" width="140" height="121"/>
-</TextureAtlas>

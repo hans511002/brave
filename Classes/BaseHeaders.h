@@ -2,16 +2,17 @@
 #define BASE_HEADER_H
 #include "cocos2d.h"
 #include "JsonUtil.h"
-#include "dragonbones/cocos2d/DBCCRenderHeaders.h"
+#include "dragonBones/cocos2dx/CCDragonBonesHeaders.h"
 #include "dragonbones/DragonBonesHeaders.h"
+#include "tinyxml2/tinyxml2.h"
 #include "ui/CocosGUI.h"
-#include "common/Common.h"
-#include "animation/MovieClip.h" 
+#include "common/Common.h" 
 #include "BaseNode.h"
 #include "cocos-ext.h"
 #include "engine/mc/mc.h"
 USING_NS_CC;
-USING_NS_DB;
+using namespace dragonBones;
+using namespace tinyxml2;
 
 inline static std::vector<std::string> &split(const std::string &s, char delim, std::vector<std::string> &elems) {
 	std::stringstream ss(s);

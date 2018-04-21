@@ -1,7 +1,22 @@
 #include "AppDelegate.h"
 
-#include "HelloWorldScene.h"
 #include "MainClass.h"
+
+
+
+#include "./test/HelloWorldScene.h"
+#include "./test/HelloDragonBones.h"
+#include "./test/AnimationBase.h"
+#include "./test/DragonBonesEvent.h"
+#include "./test/AnimationLayer.h"
+#include "./test/BoneOffset.h"
+#include "./test/InverseKinematics.h"
+#include "./test/BoundingBox.h"
+#include "./test/ReplaceSlotDisplay.h"
+#include "./test/ReplaceSkin.h"
+#include "./test/ReplaceAnimation.h"
+#include "./test/CoreElement.h"
+#include "./test/PerformanceTest.h" 
 
 // #include "DragonBonesTest.h"
 
@@ -35,6 +50,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
         director->setOpenGLView(glview);
     }
 
+    //director->getOpenGLView()->setDesignResolutionSize(1136, 640, ResolutionPolicy::SHOW_ALL);
     director->getOpenGLView()->setDesignResolutionSize(800, 600, ResolutionPolicy::EXACT_FIT);
     director->getOpenGLView()->setFrameSize(800, 600);
     director->getOpenGLView()->setViewPortInPoints(0,0,800, 600);
@@ -44,7 +60,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / (double)30);
-    FileUtils::getInstance()->addSearchPath("assets");
+    FileUtils::getInstance()->addSearchPath("test");
     FileUtils::getInstance()->addSearchPath("res");
 	//// create a scene. it's an autorelease object
 	//auto scene = HelloWorld::createScene(); 
@@ -54,7 +70,29 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	 
 
 	auto scene = Main::createScene();
-	director->runWithScene(scene);
+
+
+
+    // create a scene. it's an autorelease object
+    //auto scene = HelloDragonBones::createScene();
+
+    //auto scene1 = AnimationBase::createScene();
+    //scene->addChild(scene1);
+
+    // auto scene = DragonBonesEvent::createScene();
+    // auto scene = AnimationLayer::createScene();
+    // auto scene = BoneOffset::createScene();
+    // auto scene = InverseKinematics::createScene();
+    // auto scene = BoundingBox::createScene();
+    // auto scene = ReplaceSlotDisplay::createScene();
+    // auto scene = ReplaceSkin::createScene();
+    // auto scene = ReplaceAnimation::createScene();
+    // auto scene = CoreElementGame::createScene();
+    // auto scene = PerformanceTest::createScene();
+
+    // auto scene = DragonBonesTest::createScene();
+
+    director->runWithScene(scene);
     return true;
 }
 

@@ -6,6 +6,7 @@
 //#include "World.h"
 #include "JsonUtil.h"
 #include "WorldInterface_mc.h"
+#include "engine/units/Unit.h"
 
 namespace engine
 { 
@@ -22,7 +23,7 @@ namespace engine
 		World * world;//public var world:World;
         //public var castMask:CastMask_mc;
         //public var sphereCostHistory:Array;
-        Common::Array<NewElement_mc*> listOfNewEnemies;//public var listOfNewEnemies:Array;
+        Common::Array<units::Unit*> listOfNewEnemies;//public var listOfNewEnemies:Array;
         ui::Text * lastTime;//public var lastTime:TextField;
         //public var listOfGetAhieve:Array;
         //public var listOfAnimation:Array;

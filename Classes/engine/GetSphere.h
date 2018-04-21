@@ -22,7 +22,7 @@ namespace engine
     {
 		ui::Text * numTXT;
         Node * cross;
-        dragonBones::DBCCArmatureNode * cont;
+        dragonBones::CCArmatureDisplay * cont;
     };
     class GetSphere :public BaseNode
     {

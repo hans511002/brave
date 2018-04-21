@@ -45,15 +45,15 @@ namespace engine
 
  
 
-		dragonBones::DBCCArmatureNode * stoneBacklight;//public var stoneBacklight : MovieClip;
-		dragonBones::DBCCArmatureNode * levinBacklight;//public var levinBacklight : MovieClip;
-		dragonBones::DBCCArmatureNode * iceBacklight;//public var iceBacklight : MovieClip;
-		dragonBones::DBCCArmatureNode * fireBacklight;//public var fireBacklight : MovieClip;
+		dragonBones::CCArmatureDisplay * stoneBacklight;//public var stoneBacklight : MovieClip;
+		dragonBones::CCArmatureDisplay * levinBacklight;//public var levinBacklight : MovieClip;
+		dragonBones::CCArmatureDisplay * iceBacklight;//public var iceBacklight : MovieClip;
+		dragonBones::CCArmatureDisplay * fireBacklight;//public var fireBacklight : MovieClip;
 
-        dragonBones::DBCCArmatureNode * stoneBacked; 
-        dragonBones::DBCCArmatureNode * levinBacked; 
-        dragonBones::DBCCArmatureNode * iceBacked; 
-        dragonBones::DBCCArmatureNode * fireBacked; 
+        dragonBones::CCArmatureDisplay * stoneBacked; 
+        dragonBones::CCArmatureDisplay * levinBacked; 
+        dragonBones::CCArmatureDisplay * iceBacked; 
+        dragonBones::CCArmatureDisplay * fireBacked; 
 
 	
 		//public var testRestart : MovieClip;
@@ -82,7 +82,7 @@ namespace engine
 
         ui::Button  * fastbtn;//BaseNode * fastbtned;
         //public var sell : MovieClip;
-        dragonBones::DBCCArmatureNode * faster;
+        dragonBones::CCArmatureDisplay * faster;
 
 
 		WorldInterface_mc();

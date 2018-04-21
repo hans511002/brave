@@ -5,7 +5,7 @@ namespace engine{
  
 		class Road : public BaseNode{
 		public:
-			dragonBones::DBCCArmatureNode *   armature;
+			dragonBones::CCArmatureDisplay *   armature;
 		 
 
 		};

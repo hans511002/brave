@@ -3,7 +3,7 @@
 
 #include "cocos2d.h"
 #include "JsonUtil.h"
-#include "dragonbones/cocos2d/DBCCRenderHeaders.h"
+#include "dragonBones/cocos2dx/CCDragonBonesHeaders.h"
 #include "dragonbones/DragonBonesHeaders.h"
 #include "BaseNode.h"
 
@@ -15,11 +15,11 @@ namespace engine
         World * world;
 		Vec2 myPoint;
 		short myFrame;
-        dragonBones::DBCCArmatureNode * container;
+        dragonBones::CCArmatureDisplay * container;
         int currentFrame;
         int totalFrames;
         float speedX;
-        MovieClip(World * world,dragonBones::DBCCArmatureNode * cont,int totalFrames) ;
+        MovieClip(World * world, dragonBones::CCArmatureDisplay * cont, int totalFrames);
         MovieClip(World * world,string rootPath, string aniName ,int totalFrames) ;
         MovieClip():world(NULL),container(NULL),currentFrame(0),totalFrames(0),speedX(0) {};
         void gotoAndStop(int cf);
@@ -38,18 +38,18 @@ namespace engine
     //增加删除事件
     struct OnceMovieClip:public MovieClip
     { 
-        OnceMovieClip(World * world,dragonBones::DBCCArmatureNode * cont,int totalFrames) ;
+        OnceMovieClip(World * world,dragonBones::CCArmatureDisplay * cont,int totalFrames) ;
         OnceMovieClip(World * world,string rootPath, string aniName ,int totalFrames) ;
         void OnceMovieClip::onceMovieHandler(cocos2d::EventCustom *event);
     };
     struct AnimUpgrade_mc :public BaseNode
     {
-        dragonBones::DBCCArmatureNode * cont;
+        dragonBones::CCArmatureDisplay * cont;
     };
     
     //struct AnimUpgrade_mc :public BaseNode
     //{
-    //    dragonBones::DBCCArmatureNode * cont;
+    //    dragonBones::CCArmatureDisplay * cont;
     //};
 }
 

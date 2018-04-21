@@ -11,7 +11,7 @@ namespace std
 			cocos2d::Vector<Node * > chlds = node->getChildren();
 			for(size_t i = 0; i < chlds.size(); i++)
 			{
-				std::setAnchorPoint(chlds.at(i));
+                std::setAnchorPoint(chlds.at(i), subset);
 			}
 		}
 	};
@@ -22,7 +22,26 @@ namespace std
     void setAnchorPoint(cocos2d::Node* node, const cocos2d::Vec2 & pos){
         node->setAnchorPoint(Vec2(0, 0));
         node->setPosition(pos);
-    }
+    };
+    dragonBones::CCArmatureDisplay * loadArmature(string rootPath, string armatureName, const string& dragonBonesName){
+        //dragonBones::DBCCFactory::getInstance()->loadDragonBonesData(rootPath + aniName + "/skeleton.xml", aniName);
+        //dragonBones::DBCCFactory::getInstance()->loadTextureAtlas(rootPath + aniName + "/texture.xml", aniName);
+        //return dragonBones::DBCCFactory::getInstance()->buildArmatureNode(aniName);
+
+        const auto factory = dragonBones::CCFactory::getFactory();
+        factory->loadDragonBonesData(rootPath + armatureName + "/" + armatureName + "_ske.json");
+        //factory->loadDragonBonesData(rootPath + armatureName + "/" + armatureName + "_ske.dbbin");
+        factory->loadTextureAtlasData(rootPath + armatureName + "/" + armatureName + "_tex.json");
+        //const std::string& armatureName, const std::string& dragonBonesName = "", const std::string& skinName = "", const std::string& textureAtlasName = ""
+        const auto armatureDisplay = factory->buildArmatureDisplay(armatureName, dragonBonesName == "" ? armatureName : dragonBonesName);
+        //scene->addChild(armatureDisplay);
+        ////std::string name = armatureDisplay->getArmature()->getSlot("handL")->getName();
+        //armatureDisplay->getAnimation()->play("icemandead", 999999);
+        //armatureDisplay->setAnchorPoint(cocos2d::Vec2(0, 0));
+        ////std::setAnchorPoint(armatureDisplay,0,0);
+        //armatureDisplay->setPosition(200.0f, 200.0f);
+        //armatureDisplay->setVisible(true);
+    };
 }
 bool BaseNode::init() {
     cocos2d::Node::init();
@@ -111,10 +130,8 @@ void BaseLayer::mouseDownHandler(cocos2d::Event *event)//(event:MouseEvent) : vo
 	const auto& stageSize = cocos2d::Director::getInstance()->getVisibleSize();
 	return stageSize.height;
 }
-  dragonBones::DBCCArmatureNode * BaseFuns::loadAni(string rootPath,string aniName){
-      dragonBones::DBCCFactory::getInstance()->loadDragonBonesData(rootPath + aniName + "/skeleton.xml", aniName);
-      dragonBones::DBCCFactory::getInstance()->loadTextureAtlas(rootPath + aniName + "/texture.xml", aniName);
-      return dragonBones::DBCCFactory::getInstance()->buildArmatureNode(aniName);
+  dragonBones::CCArmatureDisplay * BaseFuns::loadArmature(string rootPath, string armatureName, const string& dragonBonesName){
+      return std::loadArmature(rootPath, armatureName, dragonBonesName);
   };
 
   bool BaseNode::hitTest(Node * node, const Vec2 &pt)

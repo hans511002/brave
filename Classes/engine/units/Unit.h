@@ -148,10 +148,10 @@ namespace engine
 
 		};
 		
-#define UNIT_CLASS_DEFINE(unitName) struct unitName :public Unit{ \ 
+#define UNIT_CLASS_DEFINE(unitName) struct unitName :public Unit{ \
 		public:\
 			unitName();\
-			bool init();\ 
+			bool init();\
 			void animationHandler();\
 		};
 		

@@ -43,14 +43,17 @@
     <Filter Include="src\common">
       <UniqueIdentifier>{893fa5c6-0043-47b9-896b-ec2ec023f948}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\animation">
-      <UniqueIdentifier>{a365753e-73e0-4d7e-b5af-08c711c6119d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\engine\level">
       <UniqueIdentifier>{4abe01f3-3bc1-4d94-8a52-edfba74636d4}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\engine\mc">
       <UniqueIdentifier>{a282b77b-bade-4986-85ae-015a487aa269}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\test">
+      <UniqueIdentifier>{b055b077-e200-4e71-b141-c1d80d541d0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\tinyxml2">
+      <UniqueIdentifier>{d48bd1c1-5bfe-4ad1-b764-1f1dd105c09d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -58,9 +61,6 @@
       <Filter>win32</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\sys\bezierBox.cpp">
@@ -306,15 +306,24 @@
     <ClCompile Include="..\Classes\engine\GetSphere.cpp">
       <Filter>src\engine</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\test\CoreElement.cpp">
+      <Filter>src\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\test\DragHelper.cpp">
+      <Filter>src\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cocos2d\external\tinyxml2\tinyxml2.cpp">
+      <Filter>src\tinyxml2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\test\HelloWorldScene.cpp">
+      <Filter>src\test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
       <Filter>win32</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\AppDelegate.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\HelloWorldScene.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\sys\bezierBox.h">
@@ -491,9 +500,6 @@
     <ClInclude Include="..\Classes\engine\decoration\DecorationLevel1.h">
       <Filter>src\engine\decoration</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\animation\Hint.h">
-      <Filter>src\animation</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\engine\units\Unit.h">
       <Filter>src\engine\units</Filter>
     </ClInclude>
@@ -661,6 +667,54 @@
     </ClInclude>
     <ClInclude Include="..\Classes\engine\CastSphere.h">
       <Filter>src\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\CoreElement.h">
+      <Filter>src\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\DragHelper.h">
+      <Filter>src\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\DragonBonesEvent.h">
+      <Filter>src\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\HelloDragonBones.h">
+      <Filter>src\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\InverseKinematics.h">
+      <Filter>src\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\PerformanceTest.h">
+      <Filter>src\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\ReplaceAnimation.h">
+      <Filter>src\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\ReplaceSkin.h">
+      <Filter>src\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\ReplaceSlotDisplay.h">
+      <Filter>src\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\AnimationBase.h">
+      <Filter>src\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\AnimationLayer.h">
+      <Filter>src\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\BaseDemo.h">
+      <Filter>src\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\BoneOffset.h">
+      <Filter>src\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\BoundingBox.h">
+      <Filter>src\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cocos2d\external\tinyxml2\tinyxml2.h">
+      <Filter>src\tinyxml2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\HelloWorldScene.h">
+      <Filter>src\test</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

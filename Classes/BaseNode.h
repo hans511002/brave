@@ -1,7 +1,7 @@
 #ifndef BASE_NODE_SPRITE_H
 #define BASE_NODE_SPRITE_H
 #include "cocos2d.h"
-#include "dragonbones/cocos2d/DBCCRenderHeaders.h"
+#include "dragonBones/cocos2dx/CCDragonBonesHeaders.h"
 #include "common/Common.h"
 #include "JsonUtil.h"
 #include "ui/CocosGUI.h"
@@ -11,6 +11,7 @@ namespace std {
     void setAnchorPoint(cocos2d::Node* node, bool subset = false);
     void setAnchorPoint(cocos2d::Node* node, float x, float y);
     void setAnchorPoint(cocos2d::Node* node,const cocos2d::Vec2 & pos);
+    dragonBones::CCArmatureDisplay * loadArmature(string rootPath, string armatureName, const string& dragonBonesName = "");
 }
 
 class BaseFuns
@@ -19,7 +20,7 @@ class BaseFuns
 	cocos2d::Label* createText(const std::string& string);
 	float getStageWidth() const;
 	float getStageHeight() const;
-    dragonBones::DBCCArmatureNode * loadAni(string rootPath, string aniName);
+    dragonBones::CCArmatureDisplay * loadArmature(string rootPath, string armatureName, const string& dragonBonesName = "");
 };
 
 

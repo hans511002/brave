@@ -17,10 +17,10 @@ namespace engine
         struct SphereSlot : public BaseSprite
         {
             int currentFrame;
-            dragonBones::DBCCArmatureNode * fire;
-            dragonBones::DBCCArmatureNode * ice;
-            dragonBones::DBCCArmatureNode * stone;
-            dragonBones::DBCCArmatureNode * levin;
+            dragonBones::CCArmatureDisplay * fire;
+            dragonBones::CCArmatureDisplay * ice;
+            dragonBones::CCArmatureDisplay * stone;
+            dragonBones::CCArmatureDisplay * levin;
             CREATE_FUNC(SphereSlot);
             SphereSlot();
             void setImage(int type);
@@ -36,8 +36,8 @@ namespace engine
             BaseSprite*  btnTowerUpgr3;// : MovieClip;
             BaseSprite*  btnTowerUpgr4;// : MovieClip;
             BtnUpgradeMenu*  btnUpgradeMenu;// : MovieClip;
-            dragonBones::DBCCArmatureNode *  cont1;// : MovieClip;
-            dragonBones::DBCCArmatureNode *  cont2;// : MovieClip;
+            dragonBones::CCArmatureDisplay *  cont1;// : MovieClip;
+            dragonBones::CCArmatureDisplay *  cont2;// : MovieClip;
             BaseNode*  fastBuyUltraCont;//: MovieClip;
             BaseNode* sphereSlot1;// : MovieClip;
             BaseNode* sphereSlot2;// : MovieClip;
@@ -55,7 +55,7 @@ namespace engine
         {
 		public:
             BtnUpgradeMenu * btnUpgradeMenu;// : MovieClip;
-            dragonBones::DBCCArmatureNode * cont1;// : MovieClip;
+            dragonBones::CCArmatureDisplay * cont1;// : MovieClip;
             BaseNode fastBuyUltraCont;// : MovieClip;
             BaseNode* sellUltraTower;// : MovieClip;
             BaseNode* sphereSlot1;//: MovieClip;
