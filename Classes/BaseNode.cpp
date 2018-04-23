@@ -44,6 +44,7 @@ namespace std
         ////std::setAnchorPoint(armatureDisplay,0,0);
         //armatureDisplay->setPosition(200.0f, 200.0f);
         //armatureDisplay->setVisible(true);
+        return armatureDisplay;
     };
 }
 bool BaseNode::init() {
