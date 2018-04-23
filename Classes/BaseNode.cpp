@@ -27,7 +27,10 @@ namespace std
         //dragonBones::DBCCFactory::getInstance()->loadDragonBonesData(rootPath + aniName + "/skeleton.xml", aniName);
         //dragonBones::DBCCFactory::getInstance()->loadTextureAtlas(rootPath + aniName + "/texture.xml", aniName);
         //return dragonBones::DBCCFactory::getInstance()->buildArmatureNode(aniName);
-
+		if(!rootPath.empty() && rootPath.at(rootPath.length() - 1) != '/')
+		{
+			rootPath += "/";
+		}
         const auto factory = dragonBones::CCFactory::getFactory();
         factory->loadDragonBonesData(rootPath + armatureName + "/" + armatureName + "_ske.json");
         //factory->loadDragonBonesData(rootPath + armatureName + "/" + armatureName + "_ske.dbbin");

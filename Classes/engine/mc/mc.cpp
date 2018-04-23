@@ -3,13 +3,13 @@
 
 namespace engine
 {
-    MovieClip:: MovieClip(World * world,dragonBones::DBCCArmatureNode * cont,int total):currentFrame(1),totalFrames(total)
+	MovieClip::MovieClip(World * world, dragonBones::CCArmatureDisplay * cont, int total) :currentFrame(1), totalFrames(total)
     {
         this->container=cont;
     };
     MovieClip:: MovieClip(World * world,string rootPath, string aniName,int total):currentFrame(1),totalFrames(total)
     {
-        this->container=this->loadAni(rootPath,aniName);
+        this->container=this->loadArmature(rootPath,aniName);
     };
     void MovieClip::gotoAndStop(int cf)
     {
@@ -25,7 +25,7 @@ namespace engine
     };
     void MovieClip::stop()
     {
-        container->getAnimation()->stop();
+        container->getAnimation()->stop("");
     }
     void MovieClip::play()
     {
@@ -36,35 +36,38 @@ namespace engine
 		this->container = cont;
     };
     
-    OnceMovieClip::OnceMovieClip(World * world,dragonBones::DBCCArmatureNode * cont,int total):MovieClip(world,cont,total)
-    { 
-        container->getCCEventDispatcher()->addCustomEventListener(EventData::ANIMATION_FRAME_EVENT,std::bind(&OnceMovieClip::onceMovieHandler, this, std::placeholders::_1));
-        container->getCCEventDispatcher()->addCustomEventListener(EventData::COMPLETE,std::bind(&OnceMovieClip::onceMovieHandler, this, std::placeholders::_1));
+	OnceMovieClip::OnceMovieClip(World * world, dragonBones::CCArmatureDisplay * cont, int total) :MovieClip(world, cont, total)
+	{
+		//container->getAnimation()->getAnimationConfig()->duration
+		//container->getArmature()
+		container->getEventDispatcher()->addCustomEventListener(EventObject::FRAME_EVENT, std::bind(&OnceMovieClip::onceMovieHandler, this, std::placeholders::_1));
+		container->getEventDispatcher()->addCustomEventListener(EventObject::COMPLETE, std::bind(&OnceMovieClip::onceMovieHandler, this, std::placeholders::_1));
     }
 	OnceMovieClip::OnceMovieClip(World * world, string rootPath, string aniName, int totalFrames) : MovieClip(world, rootPath, aniName, totalFrames)
 	{
-		container->getCCEventDispatcher()->addCustomEventListener(EventData::ANIMATION_FRAME_EVENT, std::bind(&OnceMovieClip::onceMovieHandler, this, std::placeholders::_1));
-		container->getCCEventDispatcher()->addCustomEventListener(EventData::COMPLETE, std::bind(&OnceMovieClip::onceMovieHandler, this, std::placeholders::_1));
+		container->getEventDispatcher()->addCustomEventListener(EventObject::FRAME_EVENT, std::bind(&OnceMovieClip::onceMovieHandler, this, std::placeholders::_1));
+		container->getEventDispatcher()->addCustomEventListener(EventObject::COMPLETE, std::bind(&OnceMovieClip::onceMovieHandler, this, std::placeholders::_1));
 	};
 
 	void OnceMovieClip::onceMovieHandler(cocos2d::EventCustom *event)
 	{
-		EventData *eventData = (EventData*)(event->getUserData());
-		switch(eventData->getType())
+		Node * target = event->getCurrentTarget();
+		string eventName = event->getEventName();
+		EventObject *eventData = (EventObject*)(event->getUserData());
+		if(eventName == EventObject::COMPLETE)
 		{
-		case EventData::EventType::COMPLETE:
 			this->world->removeChild(this);
-			break;
-			//case EventData::EventType::LOOP_COMPLETE:
-			//	break;
-		case EventData::EventType::ANIMATION_FRAME_EVENT:
-			if(eventData->frameLabel == "ending")
+		}
+		else if(eventName == EventObject::FRAME_EVENT)
+		{
+			if(eventData->getData()->getString(0)== "ending")
 			{
 				//
 				//pass->removeFromParentAndCleanup(true);
 			}
-			break;
 		}
+		//case EventData::EventType::LOOP_COMPLETE:
+		//	break;
 	};
 }
  

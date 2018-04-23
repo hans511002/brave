@@ -1,0 +1,18 @@
+<TextureAtlas name="firesphere" imagePath="texture.png">
+  <SubTexture name="Shape/shape 8558" x="0" y="52" width="35" height="40"/>
+  <SubTexture name="Shape/shape 8559" x="163" y="42" width="35" height="40"/>
+  <SubTexture name="Shape/shape 8560" x="52" y="42" width="35" height="40"/>
+  <SubTexture name="Shape/shape 8561" x="148" y="84" width="35" height="40"/>
+  <SubTexture name="Shape/shape 8562" x="37" y="84" width="35" height="40"/>
+  <SubTexture name="Shape/shape 8563" x="74" y="84" width="35" height="40"/>
+  <SubTexture name="Shape/shape 8564" x="52" y="0" width="35" height="40"/>
+  <SubTexture name="Shape/shape 8565" x="89" y="42" width="35" height="40"/>
+  <SubTexture name="Shape/shape 8566" x="111" y="84" width="35" height="40"/>
+  <SubTexture name="Shape/shape 8567" x="163" y="0" width="35" height="40"/>
+  <SubTexture name="Shape/shape 8568" x="200" y="0" width="35" height="40"/>
+  <SubTexture name="Shape/shape 8569" x="126" y="42" width="35" height="40"/>
+  <SubTexture name="Shape/shape 8570" x="200" y="42" width="35" height="40"/>
+  <SubTexture name="Shape/shape 8571" x="126" y="0" width="35" height="40"/>
+  <SubTexture name="Shape/shape 8572" x="89" y="0" width="35" height="40"/>
+  <SubTexture name="Sprite/sprite 4085" x="0" y="0" width="50" height="50"/>
+</TextureAtlas>

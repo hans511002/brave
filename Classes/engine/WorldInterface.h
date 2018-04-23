@@ -22,11 +22,11 @@ namespace engine
         int fasterFlag;//int fasterFlag;////public var fasterFlag:int = 0;
 		World * world;//public var world:World;
         //public var castMask:CastMask_mc;
-        //public var sphereCostHistory:Array;
+		Common::Array<Common::Array<int> >  sphereCostHistory;//public var sphereCostHistory:Array;
         Common::Array<units::Unit*> listOfNewEnemies;//public var listOfNewEnemies:Array;
         ui::Text * lastTime;//public var lastTime:TextField;
         //public var listOfGetAhieve:Array;
-        //public var listOfAnimation:Array;
+		Common::Array<MovieClip *> listOfAnimation;//public var listOfAnimation:Array;
         //public var sellHint:Hint_mc;
         //public var getAllHint:Hint_mc;
         int fireCount;////public var fireCount:int = 0;

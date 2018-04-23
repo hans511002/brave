@@ -1,0 +1,27 @@
+<TextureAtlas name="fasterbtn" imagePath="texture.png">
+  <SubTexture name="Shape/shape 12693" x="181" y="42" width="41" height="40"/>
+  <SubTexture name="Shape/shape 12695" x="86" y="126" width="41" height="40"/>
+  <SubTexture name="Shape/shape 12696" x="215" y="122" width="38" height="37"/>
+  <SubTexture name="Shape/shape 12739" x="215" y="84" width="38" height="37"/>
+  <SubTexture name="Sprite/sprite 47" x="0" y="0" width="50" height="50"/>
+  <SubTexture name="Shape/shape 12698" x="181" y="0" width="41" height="40"/>
+  <SubTexture name="Shape/shape 12700" x="0" y="136" width="41" height="40"/>
+  <SubTexture name="Shape/shape 12702" x="172" y="84" width="41" height="40"/>
+  <SubTexture name="Shape/shape 12704" x="43" y="126" width="41" height="40"/>
+  <SubTexture name="Shape/shape 12706" x="129" y="168" width="41" height="40"/>
+  <SubTexture name="Shape/shape 12708" x="95" y="0" width="41" height="40"/>
+  <SubTexture name="Shape/shape 12710" x="129" y="84" width="41" height="40"/>
+  <SubTexture name="Shape/shape 12712" x="52" y="0" width="41" height="40"/>
+  <SubTexture name="Shape/shape 12714" x="43" y="84" width="41" height="40"/>
+  <SubTexture name="Shape/shape 12716" x="0" y="94" width="41" height="40"/>
+  <SubTexture name="Shape/shape 12719" x="95" y="42" width="41" height="40"/>
+  <SubTexture name="Shape/shape 12721" x="0" y="52" width="41" height="40"/>
+  <SubTexture name="Shape/shape 12723" x="172" y="126" width="41" height="40"/>
+  <SubTexture name="Shape/shape 12725" x="52" y="42" width="41" height="40"/>
+  <SubTexture name="Shape/shape 12727" x="86" y="84" width="41" height="40"/>
+  <SubTexture name="Shape/shape 12729" x="138" y="0" width="41" height="40"/>
+  <SubTexture name="Shape/shape 12731" x="129" y="126" width="41" height="40"/>
+  <SubTexture name="Shape/shape 12733" x="86" y="168" width="41" height="40"/>
+  <SubTexture name="Shape/shape 12735" x="138" y="42" width="41" height="40"/>
+  <SubTexture name="Shape/shape 12737" x="43" y="168" width="41" height="40"/>
+</TextureAtlas>
