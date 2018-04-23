@@ -3,14 +3,30 @@
 
 namespace engine
 {
-	MovieClip::MovieClip(World * world, dragonBones::CCArmatureDisplay * cont, int total) :currentFrame(1), totalFrames(total)
+	MovieClip::MovieClip(World * world, dragonBones::CCArmatureDisplay * cont, int total) :currentFrame(1)
     {
-        this->container=cont;
+		std::string defAniName ="";
+		std::map<std::string, dragonBones::AnimationData*> & animations = cont->getArmature()->_armatureData->animations;
+		for each (std::pair<std::string, dragonBones::AnimationData*> it in animations)
+		{
+			std::string aniName = it.first;
+			if(defAniName == "")defAniName = aniName;
+			int totalFrames = it.second->frameCount;
+			float duration = it.second->duration;
+			CCLOG("load %s totalFrames=%i duration=%f", aniName.c_str(), totalFrames, duration);
+		}
+		totalFrames = cont->getArmature()->_armatureData->animations[defAniName]->frameCount;
+		float duration = cont->getArmature()->_armatureData->animations[defAniName]->duration;
+		CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
+		this->container = cont;
     };
-    MovieClip:: MovieClip(World * world,string rootPath, string aniName,int total):currentFrame(1),totalFrames(total)
+    MovieClip:: MovieClip(World * world,string rootPath, string aniName,int total):currentFrame(1)
     {
         this->container=this->loadArmature(rootPath,aniName);
-    };
+		totalFrames = cont->getArmature()->_armatureData->animations[aniName]->frameCount;
+		float duration = cont->getArmature()->_armatureData->animations[aniName]->duration;
+		CCLOG("load %s totalFrames=%i duration=%f", aniName.c_str(), totalFrames, duration);
+	};
     void MovieClip::gotoAndStop(int cf)
     {
        this->currentFrame=(cf) % totalFrames+1;

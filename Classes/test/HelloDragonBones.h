@@ -83,7 +83,13 @@ protected:
         addChild(armatureDisplay);
         //std::string name = armatureDisplay->getArmature()->getSlot("handL")->getName();
         armatureDisplay->getAnimation()->play("icemandead", 999999);
-        armatureDisplay->setAnchorPoint(cocos2d::Vec2(0,0));
+
+		int frameCount = armatureDisplay->getArmature()->_armatureData->animations["icemandead"]->frameCount;
+		float duration = armatureDisplay->getArmature()->_armatureData->animations["icemandead"]->duration;
+		CCLOG("frameCount=%i", frameCount);
+		CCLOG("duration=%f", duration);
+
+
         //std::setAnchorPoint(armatureDisplay,0,0);
          armatureDisplay->setPosition(200.0f, 200.0f);
         armatureDisplay->setVisible(true);
