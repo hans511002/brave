@@ -1,0 +1,20 @@
+<TextureAtlas name="BulletStoneTower_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 4305" x="0" y="23" width="24" height="21"/>
+ <SubTexture name="Shape/shape 4307" x="0" y="46" width="23" height="21"/>
+ <SubTexture name="Shape/shape 4309" x="74" y="46" width="23" height="20"/>
+ <SubTexture name="Shape/shape 4311" x="24" y="69" width="22" height="20"/>
+ <SubTexture name="Shape/shape 4313" x="103" y="23" width="23" height="21"/>
+ <SubTexture name="Shape/shape 4315" x="0" y="0" width="25" height="21"/>
+ <SubTexture name="Shape/shape 4316" x="25" y="46" width="23" height="21"/>
+ <SubTexture name="Shape/shape 4317" x="98" y="69" width="22" height="20"/>
+ <SubTexture name="Shape/shape 4318" x="78" y="23" width="23" height="21"/>
+ <SubTexture name="Shape/shape 4319" x="52" y="23" width="24" height="21"/>
+ <SubTexture name="Shape/shape 4320" x="53" y="0" width="24" height="21"/>
+ <SubTexture name="Shape/shape 4322" x="26" y="23" width="24" height="21"/>
+ <SubTexture name="Shape/shape 4324" x="0" y="69" width="22" height="21"/>
+ <SubTexture name="Shape/shape 4326" x="74" y="68" width="22" height="21"/>
+ <SubTexture name="Shape/shape 4328" x="50" y="46" width="22" height="22"/>
+ <SubTexture name="Shape/shape 4330" x="99" y="46" width="22" height="21"/>
+ <SubTexture name="Shape/shape 4332" x="79" y="0" width="24" height="21"/>
+ <SubTexture name="Shape/shape 4333" x="27" y="0" width="24" height="21"/>
+</TextureAtlas>

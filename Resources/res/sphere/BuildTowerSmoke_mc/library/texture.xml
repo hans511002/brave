@@ -1,0 +1,11 @@
+<TextureAtlas name="BuildTowerSmoke_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 6319" x="168" y="152" width="82" height="74"/>
+ <SubTexture name="Shape/shape 6321" x="84" y="152" width="82" height="74"/>
+ <SubTexture name="Shape/shape 6323" x="168" y="0" width="82" height="74"/>
+ <SubTexture name="Shape/shape 6325" x="0" y="152" width="82" height="74"/>
+ <SubTexture name="Shape/shape 6327" x="84" y="76" width="82" height="74"/>
+ <SubTexture name="Shape/shape 6329" x="84" y="0" width="82" height="74"/>
+ <SubTexture name="Shape/shape 6331" x="168" y="76" width="82" height="74"/>
+ <SubTexture name="Shape/shape 6333" x="0" y="0" width="82" height="74"/>
+ <SubTexture name="Shape/shape 6335" x="0" y="76" width="82" height="74"/>
+</TextureAtlas>

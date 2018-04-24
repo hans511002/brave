@@ -1,5 +1,5 @@
 <dragonBones name="1yrt" frameRate="30" version="2.3">
- <armature name="Sprite/sprite 10394">
+ <armature name="BulletTower8_1_mc">
   <bone name="Layer 1">
    <transform x="0" y="0" skX="0" skY="0" scX="1" scY="1"/>
   </bone>

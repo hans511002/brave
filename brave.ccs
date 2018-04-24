@@ -3,17 +3,6 @@
   <SolutionFolder>
     <Group ctype="ResourceGroup">
       <RootFolder Name=".">
-        <Folder Name="public">
-          <Folder Name="flag">
-            <File Name="skeleton.xml" />
-            <Image Name="texture.png" />
-            <File Name="texture.xml" />
-          </Folder>
-          <Image Name="place_off.png" />
-          <Image Name="place_on.png" />
-          <Image Name="point.png" />
-          <Image Name="point2.png" />
-        </Folder>
         <Folder Name="worldinterface">
           <Folder Name="barinfo">
             <Image Name="barinfoback.png" />
@@ -36,53 +25,12 @@
           </Folder>
           <Folder Name="level">
             <Image Name="level1.png" />
+            <Image Name="place_off.png" />
+            <Image Name="place_on.png" />
+            <Image Name="point.png" />
+            <Image Name="point2.png" />
           </Folder>
           <Folder Name="sphere">
-            <Folder Name="firebacked">
-              <File Name="skeleton.xml" />
-              <Image Name="texture.png" />
-              <File Name="texture.xml" />
-            </Folder>
-            <Folder Name="firesphere">
-              <File Name="skeleton.xml" />
-              <Image Name="texture.png" />
-              <File Name="texture.xml" />
-            </Folder>
-            <Folder Name="icebacked">
-              <File Name="skeleton.xml" />
-              <Image Name="texture.png" />
-              <File Name="texture.xml" />
-            </Folder>
-            <Folder Name="icesphere">
-              <File Name="skeleton.xml" />
-              <Image Name="texture.png" />
-              <File Name="texture.xml" />
-            </Folder>
-            <Folder Name="levinbacked">
-              <File Name="skeleton.xml" />
-              <Image Name="texture.png" />
-              <File Name="texture.xml" />
-            </Folder>
-            <Folder Name="levinsphere">
-              <File Name="skeleton.xml" />
-              <Image Name="texture.png" />
-              <File Name="texture.xml" />
-            </Folder>
-            <Folder Name="spherelight">
-              <File Name="skeleton.xml" />
-              <Image Name="texture.png" />
-              <File Name="texture.xml" />
-            </Folder>
-            <Folder Name="stonebacked">
-              <File Name="skeleton.xml" />
-              <Image Name="texture.png" />
-              <File Name="texture.xml" />
-            </Folder>
-            <Folder Name="stonesphere">
-              <File Name="skeleton.xml" />
-              <Image Name="texture.png" />
-              <File Name="texture.xml" />
-            </Folder>
             <Image Name="allSphere.png" />
             <Image Name="allSphereback.png" />
             <Image Name="allSphered.png" />
@@ -99,11 +47,6 @@
             <Image Name="stoneSphere.png" />
           </Folder>
           <Folder Name="startbtn">
-            <Folder Name="fasterbtn">
-              <File Name="skeleton.xml" />
-              <Image Name="texture.png" />
-              <File Name="texture.xml" />
-            </Folder>
             <Image Name="book.png" />
             <Image Name="booked.png" />
             <Image Name="fastbtned.png" />
