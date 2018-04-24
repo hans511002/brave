@@ -17,17 +17,19 @@ namespace engine
 		short myFrame;
         dragonBones::CCArmatureDisplay * container;
         int currentFrame;
+		string defAniName;
         int totalFrames;
         float speedX;
 
         MovieClip(World * world, dragonBones::CCArmatureDisplay * cont, int totalFrames);
         MovieClip(World * world,string rootPath, string aniName ,int totalFrames) ;
         MovieClip():world(NULL),container(NULL),currentFrame(0),totalFrames(0),speedX(0) {};
-        void gotoAndStop(int cf);
+		int getTotalFrames(string aniName = "");
+		void gotoAndStop(int cf, string aniName = "");
         void nextFram();
         void update();
-		void play();
-		void stop();
+		void play(string aniName = "");
+		void stop(string aniName = "");
     };
     struct SpriteClip :public BaseNode
     {
