@@ -13,10 +13,11 @@ namespace engine{
         };
         class Cast_2 :public Cast
         {
+		public:
 
              Cast_2()
             {
-                return;
+				 init();
             }// end function
 
              bool init();

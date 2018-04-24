@@ -20,7 +20,7 @@ namespace engine{
 
             Cast_3()
             {
-                return;
+				init();
             }// end function
 
              bool init();

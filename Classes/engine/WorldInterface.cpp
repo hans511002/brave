@@ -2690,4 +2690,21 @@ namespace engine
         this->updateInfo();
         return;
     }// end function
+	void WorldInterface::addCast(string param1)
+	{
+		if (param1 == "golem")
+		{
+			this->world->cast = new casts::Cast_1();
+		}
+		else if (param1 == "iceman")
+		{
+			this->world->cast = new casts::Cast_2();
+		}
+		else if (param1 == "air")
+		{
+			this->world->cast = new casts::Cast_3();
+		}
+		this->world->addChild(this->world->cast);
+		//this->world->listOfClasses.push(this->world->cast);
+	}// end function
 }

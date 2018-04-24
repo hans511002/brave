@@ -10,6 +10,7 @@ namespace engine{
             container = new MoveGolem_mc();
              this->addChild(container);
             Cast::init();
+			this->autorelease();
             return true;
         }// end function
         void Cast_1::update()

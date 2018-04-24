@@ -8,15 +8,16 @@ namespace engine{
     namespace    casts
     {
         class Golem;
-        struct  MoveGolem_mc :public BaseNode
+		struct  MoveGolem_mc :public MovieClip
         {
 
         };
         class Cast_1 :public Cast
         {
         public:
-             Cast_1()
+ 			Cast_1()
             {
+				 init();
             }// end function
 
              bool init();

@@ -21,8 +21,8 @@ namespace engine
         int totalFrames;
         float speedX;
 
-        MovieClip(World * world, dragonBones::CCArmatureDisplay * cont, int totalFrames);
-        MovieClip(World * world,string rootPath, string aniName ,int totalFrames) ;
+		MovieClip(World * world, dragonBones::CCArmatureDisplay * cont, string defAniName = "");
+		MovieClip(World * world, string rootPath, string aniName, string defAniName = "");
         MovieClip():world(NULL),container(NULL),currentFrame(0),totalFrames(0),speedX(0) {};
 		int getTotalFrames(string aniName = "");
 		void gotoAndStop(int cf, string aniName = "");
@@ -41,8 +41,8 @@ namespace engine
     //增加删除事件
     struct OnceMovieClip:public MovieClip
     { 
-        OnceMovieClip(World * world,dragonBones::CCArmatureDisplay * cont,int totalFrames) ;
-        OnceMovieClip(World * world,string rootPath, string aniName ,int totalFrames) ;
+		OnceMovieClip(World * world, dragonBones::CCArmatureDisplay * cont, string defAniName="");
+		OnceMovieClip(World * world, string rootPath, string aniName, string defAniName = "");
         void OnceMovieClip::onceMovieHandler(cocos2d::EventCustom *event);
     };
     struct AnimUpgrade_mc :public BaseNode

@@ -11,6 +11,7 @@ namespace engine{
             this->addChild(container);
             Cast_3::init();
             this->this_pt =  cocos2d::Point(world->mouseX, world->mouseY);
+			this->autorelease();
             return true;
         }// end function
 

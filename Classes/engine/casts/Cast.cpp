@@ -15,7 +15,6 @@ namespace engine{
             this->mouseEnabled = false;
             //this->world->hint.visible = false;
             this->world->worldInterface->barInfoManage(this);
-            
             return true;
         }// end function
 

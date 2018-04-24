@@ -7,6 +7,10 @@
 #include "JsonUtil.h"
 #include "WorldInterface_mc.h"
 #include "engine/units/Unit.h"
+//#include "engine/casts/CastMask_mc.h"
+#include "engine/casts/Cast_1.h"
+#include "engine/casts/Cast_2.h"
+#include "engine/casts/Cast_3.h"
 
 namespace engine
 { 
@@ -21,7 +25,7 @@ namespace engine
         WorldInterface_mc *container; //public var container:WorldInterface_mc;
         int fasterFlag;//int fasterFlag;////public var fasterFlag:int = 0;
 		World * world;//public var world:World;
-        //public var castMask:CastMask_mc;
+		//CastMask_mc* castMask;
 		Common::Array<Common::Array<int> >  sphereCostHistory;//public var sphereCostHistory:Array;
         Common::Array<units::Unit*> listOfNewEnemies;//public var listOfNewEnemies:Array;
         ui::Text * lastTime;//public var lastTime:TextField;
@@ -75,23 +79,7 @@ namespace engine
         void onTouchesEnded(const std::vector<Touch*>& touches, Event *pEvent);
         void onTouchesCancelled(const std::vector<Touch*>&touches, Event *unused_event);
 
-        void addCast(string param1) 
-        {
-            //if (param1 == "golem")
-            //{
-            //    this->world.cast = new Cast_1();
-            //}
-            //else if (param1 == "iceman")
-            //{
-            //    this->world.cast = new Cast_2();
-            //}
-            //else if (param1 == "air")
-            //{
-            //    this->world.cast = new Cast_3();
-            //}
-            //this->world.addChild(this->world.cast);
-            //this->world.listOfClasses.push(this->world.cast);
-        }// end function
+		void addCast(string param1);
 
 		void updateInfo();
 

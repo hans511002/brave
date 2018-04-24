@@ -10,6 +10,7 @@ namespace engine{
             //container.gotoAndStop(2);
             this->addChild(container);
             Cast::init();
+			this->autorelease();
             return true;
         }// end function
 
