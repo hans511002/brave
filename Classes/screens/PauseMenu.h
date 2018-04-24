@@ -6,6 +6,8 @@
 #include "engine/xml/ReadXML.h"
 #include "engine/mc/mc.h"
 
+using namespace engine;
+
 namespace screens
 {
     class World;
@@ -28,9 +30,9 @@ namespace screens
         World * world;
         int questionFlag;
         float startMusicVolume;
-        cocosd::Point autoguidesMouse_pt;
+        cocos2d::Point autoguidesMouse_pt;
         //public var autoguidesObject:Object;
-        cocosd::Point autoguidesObject_pt;
+        cocos2d::Point autoguidesObject_pt;
         float autoguidesObjectWidth;
         float autoguidesObjectHeight;
 
@@ -50,7 +52,7 @@ namespace screens
 
         void close();
 
-        void reInit(event:Event);
+        //void reInit(event:Event);
 
     };
 }

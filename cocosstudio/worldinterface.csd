@@ -28,10 +28,10 @@
             <FileData Type="Normal" Path="worldinterface/btncastback/btncastback.png" Plist="" />
             <BlendFunc Src="1" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="butCastAir" ActionTag="-140772443" VisibleForFrame="False" Tag="21" IconVisible="False" LeftMargin="50.9826" RightMargin="-87.9826" TopMargin="-57.0730" BottomMargin="20.0730" ctype="SpriteObjectData">
+          <AbstractNodeData Name="butCastAir" ActionTag="-140772443" VisibleForFrame="False" Tag="21" IconVisible="False" LeftMargin="178.9826" RightMargin="-215.9826" TopMargin="-56.0730" BottomMargin="19.0730" ctype="SpriteObjectData">
             <Size X="37.0000" Y="37.0000" />
             <AnchorPoint />
-            <Position X="50.9826" Y="20.0730" />
+            <Position X="178.9826" Y="19.0730" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition />
@@ -50,10 +50,10 @@
             <FileData Type="Normal" Path="worldinterface/btncastback/butCastIceman.png" Plist="" />
             <BlendFunc Src="1" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="butCastGolem" ActionTag="-1057525973" VisibleForFrame="False" Tag="23" IconVisible="False" LeftMargin="178.4303" RightMargin="-215.4303" TopMargin="-58.0832" BottomMargin="21.0832" ctype="SpriteObjectData">
+          <AbstractNodeData Name="butCastGolem" ActionTag="-1057525973" VisibleForFrame="False" Tag="23" IconVisible="False" LeftMargin="49.4303" RightMargin="-86.4303" TopMargin="-56.0832" BottomMargin="19.0832" ctype="SpriteObjectData">
             <Size X="37.0000" Y="37.0000" />
             <AnchorPoint />
-            <Position X="178.4303" Y="21.0832" />
+            <Position X="49.4303" Y="19.0832" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition />

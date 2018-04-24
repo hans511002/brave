@@ -5,6 +5,7 @@
 //#include "engine/World.h"
 #include "engine/xml/ReadXML.h"
 #include "engine/mc/mc.h"
+using namespace engine;
 
 namespace screens
 {

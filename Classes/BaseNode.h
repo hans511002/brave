@@ -47,7 +47,7 @@ public:
 	bool atStage();
     void mouseDownHandler(cocos2d::Event *event);
     BaseSprite(string file);
-    BaseSprite(){};
+//    BaseSprite(){};
     static Sprite* create();
 private:
 

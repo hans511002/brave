@@ -8,10 +8,7 @@ namespace engine{
     namespace    casts
     {
         class Golem;
-		struct  MoveGolem_mc :public MovieClip
-        {
-
-        };
+		 
         class Cast_1 :public Cast
         {
         public:

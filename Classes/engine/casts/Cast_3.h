@@ -7,11 +7,7 @@
 namespace engine{
     class World;
     namespace    casts
-    {
-        struct MoveAir_mc :public MovieClip
-        {
-
-        };
+    { 
         class Cast_3 :public Cast
         {
         public:

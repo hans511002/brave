@@ -6,11 +6,7 @@
 namespace engine{
     class World;
     namespace    casts
-    {
-        class MoveIceman_mc:public BaseNode
-        {
-
-        };
+    { 
         class Cast_2 :public Cast
         {
 		public:

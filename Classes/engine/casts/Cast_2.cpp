@@ -6,7 +6,7 @@ namespace engine{
     {
         bool Cast_2::init()
         {
-            container = new MoveIceman_mc();
+            container = new MoveCast_mc(2);
             //container.gotoAndStop(2);
             this->addChild(container);
             Cast::init();

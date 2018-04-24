@@ -11,10 +11,11 @@ namespace engine
 		, sellStoneCounter(0), sellLevinCounter(0), sellGetAllCounter(0), icemanSlowdownEnemiesCounter(0), castFireCounter(0), castIceCounter(0)
 		, castStoneCounter(0), castLevinCounter(0), castGetAllCounter(0), golemVoiceTurn(1), icemanVoiceTurn(1), airVoiceTurn(1)
 	{
+        menuObject = NULL;
 		pointer1 = NULL;
 		pointer2 = NULL;
 		pointer3 = NULL;
-		Main::mainClass->worldClass = this;
+		//Main::mainClass->worldClass = this;
 		//this->listOfFlags = [];
 		//this->listOfPlaces = [];
 		//this->listOfFirePortals = [];

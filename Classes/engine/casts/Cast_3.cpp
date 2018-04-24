@@ -6,7 +6,7 @@ namespace engine{
     {
         bool Cast_3::init()
         {
-            container = new MoveAir_mc();
+            container = new MoveCast_mc(3);
             //container->gotoAndStop(2);
             this->addChild(container);
             Cast_3::init();

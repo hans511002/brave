@@ -4,15 +4,16 @@
 #include "sys/saveBox.h"
 //#include "engine/World.h"
 #include "engine/xml/ReadXML.h"
-//#include "screens/*.h"
+#include "screens/MiddleScreen.h"
+#include "screens/LevelsMenu.h"
 namespace engine{
 	class World;
 }
 using namespace engine;
-//using namespace screens;
+using namespace screens;
 using namespace sys;
 
-class Main //: public  cocos2d::Node //cocos2d::LayerColor //
+class Main : public  cocos2d::Node //cocos2d::LayerColor //
 {
 public:
 	int frameCounter;
@@ -25,8 +26,8 @@ public:
 	ReadXML readXMLClass;
 	//public var startLogoClass:StartLogo;
 	//public var startMenuClass:StartMenu;
-	//MiddleScreen * middleScreenClass;//public var middleScreenClass:MiddleScreen;
-	//LevelsMenu * levelsMenuClass;//public var levelsMenuClass:LevelsMenu;
+	MiddleScreen * middleScreenClass;//public var middleScreenClass:MiddleScreen;
+	LevelsMenu * levelsMenuClass;//public var levelsMenuClass:LevelsMenu;
 	World * worldClass;
 	//public var testingClass:Testing;
 	string lastClass;
@@ -59,141 +60,11 @@ public:
 
 	void removeAllScreens();
 
-	cocos2d::Image getBitmapData(cocos2d::Node* param1) //: BitmapData
-	{
-		/*  this.bd = new BitmapData(param1.width, param1.height);
-		  this.bd.draw(param1);
-		  return this.bd;*/
-	}// end function
+    cocos2d::Image getBitmapData(cocos2d::Node* param1);
 
-	void keyDownHandler(cocos2d::EventKeyboard event)
-	{
-		/*           if (event.charCode == 49)
-				   {
-				   if (this.worldClass)
-				   {
-				   if (!this.worldClass.menuObject && this.worldClass.firstMusicPlay)
-				   {
-				   if (this.worldClass.cast)
-				   {
-				   if (!(this.worldClass.cast is Cast_1))
-				   {
-				   this.worldClass.worldInterface.breaking();
-				   }
-				   else
-				   {
-				   this.worldClass.worldInterface.breaking();
-				   return;
-				   }
-				   }
-				   if (this.worldClass.worldInterface.container.butCastGolem.visible && this.worldClass.worldInterface.container.butCastGolem.currentFrame < 4)
-				   {
-				   if (this.worldClass.worldInterface.container.mouseEnabled)
-				   {
-				   this.worldClass.worldInterface.castGolem();
-				   this.worldClass.worldInterface.container.butCastGolem.gotoAndStop(5);
-				   }
-				   }
-				   }
-				   }
-				   }
-				   else if (event.charCode == 50)
-				   {
-				   if (this.worldClass)
-				   {
-				   if (!this.worldClass.menuObject && this.worldClass.firstMusicPlay)
-				   {
-				   if (this.worldClass.cast)
-				   {
-				   if (!(this.worldClass.cast is Cast_2))
-				   {
-				   this.worldClass.worldInterface.breaking();
-				   }
-				   else
-				   {
-				   this.worldClass.worldInterface.breaking();
-				   return;
-				   }
-				   }
-				   if (this.worldClass.worldInterface.container.butCastIceman.visible && this.worldClass.worldInterface.container.butCastIceman.currentFrame < 4)
-				   {
-				   if (this.worldClass.worldInterface.container.mouseEnabled)
-				   {
-				   this.worldClass.worldInterface.castIceman();
-				   this.worldClass.worldInterface.container.butCastIceman.gotoAndStop(5);
-				   }
-				   }
-				   }
-				   }
-				   }
-				   else if (event.charCode == 51)
-				   {
-				   if (this.worldClass)
-				   {
-				   if (!this.worldClass.menuObject && this.worldClass.firstMusicPlay)
-				   {
-				   if (this.worldClass.cast)
-				   {
-				   if (!(this.worldClass.cast is Cast_3))
-				   {
-				   this.worldClass.worldInterface.breaking();
-				   }
-				   else
-				   {
-				   this.worldClass.worldInterface.breaking();
-				   return;
-				   }
-				   }
-				   if (this.worldClass.worldInterface.container.butCastAir.visible && this.worldClass.worldInterface.container.butCastAir.currentFrame < 4)
-				   {
-				   if (this.worldClass.worldInterface.container.mouseEnabled)
-				   {
-				   this.worldClass.worldInterface.castAir();
-				   this.worldClass.worldInterface.container.butCastAir.gotoAndStop(5);
-				   }
-				   }
-				   }
-				   }
-				   }
-				   else if (event.charCode == 109 || event.charCode == 77)
-				   {
-				   if (this.worldClass)
-				   {
-				   if (Sounds.instance.musicOn)
-				   {
-				   Sounds.instance.musicManage("off");
-				   }
-				   else
-				   {
-				   Sounds.instance.musicManage("on");
-				   }
-				   }
-				   }
-				   else if (event.charCode == 115 || event.charCode == 83)
-				   {
-				   if (this.worldClass)
-				   {
-				   if (Sounds.instance.soundOn)
-				   {
-				   Sounds.instance.soundManage("off");
-				   }
-				   else
-				   {
-				   Sounds.instance.soundManage("on");
-				   }
-				   }
-				   }
-				   return;*/
-	}// end function
+    void keyDownHandler(EventKeyboard::KeyCode keycode, cocos2d::Event *event);
 
-	void addStartLogo()
-	{
-		/*var _loc_1:* = new StartMenu();
-		this.container = new StartMenu();
-		this.startMenuClass = _loc_1;
-		this.addChild(this.startMenuClass);
-		return;*/
-	}// end function
+    void addStartLogo();
 
 
 };

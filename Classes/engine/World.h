@@ -49,7 +49,7 @@ namespace engine
     };
     class World : public BaseNode //, public  BaseLayer
     {
-        World();
+        
     public:
         int i;
         int j;
@@ -108,7 +108,7 @@ namespace engine
         //public var listOfIndexes3 : Array;
         casts::Cast* cast;
         casts::Map map; //public var map : Map;
-        //public var menuObject : Object;
+        BaseNode * menuObject;//public var menuObject : Object;//ÔÝ¶¨ ºÍ Ñ§Ï°
         //public var sortIndex : Array;
 
         PointTimer * pointer1;
@@ -161,7 +161,8 @@ namespace engine
         float mouseX;
         float mouseY;
 
-        CREATE_FUNC(World);
+        World();
+        //CREATE_FUNC(World);
 
         void _onStart();
         bool init();

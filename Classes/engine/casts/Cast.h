@@ -6,7 +6,39 @@ namespace engine{
     class World;
     namespace    casts
     {
-
+        struct  MoveCast_mc :public BaseNode
+        {
+            BaseSprite * sprite;
+            int type;
+            int currentFrame;
+            MoveCast_mc(int _type) :sprite(NULL), type(_type)
+            {
+                BaseNode::init();
+                this->autorelease();
+                gotoAndStop(1);
+            }
+            void gotoAndStop(int idx){
+                this->currentFrame = idx;
+                char path[64];
+                if (type == 1){
+                sprintf(path, "cast/MoveCast_mc/MoveGolem_mc%2d.png", idx);
+                }
+                else if (type == 2){
+                    sprintf(path, "cast/MoveCast_mc/MoveIceman_mc%2d.png", idx);
+                }
+                else if (type == 3){
+                    sprintf(path, "cast/MoveCast_mc/MoveAir_mc%2d.png", idx);
+                }
+                if (sprite == NULL)
+                {
+                    sprite = new BaseSprite(path);
+                }
+                else
+                {
+                    sprite->setTexture(path);
+                }
+            }
+        };
         class Cast : public BaseNode
         {
         public:
@@ -16,7 +48,7 @@ namespace engine{
             //        public var tempObject2:Object;
             cocos2d::Point tempObject;
             cocos2d::Point tempObject3;
-            MovieClip * container;// : MovieClip;
+            MoveCast_mc * container;// : MovieClip;
             World *world;
             bool dead;
             Common::Array<cocos2d::Point> *  map;

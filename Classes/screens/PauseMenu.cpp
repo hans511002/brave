@@ -1,10 +1,5 @@
-#ifndef SCREENS_PAUSEMENU_H
-#define SCREENS_PAUSEMENU_H
-#include "BaseHeaders.h" 
-#include "sys/saveBox.h"
-//#include "engine/World.h"
-#include "engine/xml/ReadXML.h"
-#include "engine/mc/mc.h"
+ 
+#include "PauseMenu.h"
 
 namespace screens
 {
@@ -1167,29 +1162,29 @@ namespace screens
         return;
     }// end function
 
-    void PauseMenu::reInit(event:Event)
-    {
-        this->removeEventListener(Event.REMOVED_FROM_STAGE, this->reInit);
-        this->removeEventListener(Event.ENTER_FRAME, this->enterFrameHandler);
-        this->removeEventListener(MouseEvent.MOUSE_MOVE, this->mouseMoveHandler);
-        this->removeEventListener(MouseEvent.MOUSE_DOWN, this->mouseDownHandler);
-        this->removeEventListener(MouseEvent.MOUSE_UP, this->mouseUpHandler);
-        if (Sounds.instance.musicPausePosition != 0)
-        {
-            Sounds.instance.musicPausePosition = 0;
-        }
-        if (Sounds.instance.musicChanel)
-        {
-            if (this->startMusicVolume > 0)
-            {
-                Sounds.instance.musicChanel.soundTransform = new SoundTransform(this->startMusicVolume, 0);
-            }
-        }
-        if (this->world->getSphere || this->world->cast)
-        {
-            this->world->manageMouse("hide");
-        }
-        return;
-    }// end function
+    //void PauseMenu::reInit()
+    //{
+    //    this->removeEventListener(Event.REMOVED_FROM_STAGE, this->reInit);
+    //    this->removeEventListener(Event.ENTER_FRAME, this->enterFrameHandler);
+    //    this->removeEventListener(MouseEvent.MOUSE_MOVE, this->mouseMoveHandler);
+    //    this->removeEventListener(MouseEvent.MOUSE_DOWN, this->mouseDownHandler);
+    //    this->removeEventListener(MouseEvent.MOUSE_UP, this->mouseUpHandler);
+    //    if (Sounds.instance.musicPausePosition != 0)
+    //    {
+    //        Sounds.instance.musicPausePosition = 0;
+    //    }
+    //    if (Sounds.instance.musicChanel)
+    //    {
+    //        if (this->startMusicVolume > 0)
+    //        {
+    //            Sounds.instance.musicChanel.soundTransform = new SoundTransform(this->startMusicVolume, 0);
+    //        }
+    //    }
+    //    if (this->world->getSphere || this->world->cast)
+    //    {
+    //        this->world->manageMouse("hide");
+    //    }
+    //    return;
+    //}// end function
 
 } 

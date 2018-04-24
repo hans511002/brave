@@ -54,12 +54,13 @@ bool BaseNode::init() {
 }; 
 bool BaseSprite::init()
 {
-    cocos2d::Sprite::init();
+    this->autorelease();
 	std::setAnchorPoint(this);
 	return true;
 };
 BaseSprite::BaseSprite(string file){
     this->initWithFile(file);
+    init();
 }
 
 bool BaseNode::hitTest(const Vec2 &pt){

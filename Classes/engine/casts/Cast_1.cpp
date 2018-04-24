@@ -7,7 +7,7 @@ namespace engine{
     {
         bool Cast_1::init()
         {
-            container = new MoveGolem_mc();
+            container = new MoveCast_mc(1);
              this->addChild(container);
             Cast::init();
 			this->autorelease();
@@ -75,7 +75,7 @@ namespace engine{
                 //    kill();
                 //}
             }
-            //container->gotoAndStop(3);
+            container->gotoAndStop(3);
             return;
         }// end function
         void Cast_1::mouseUpHandler(cocos2d::Event  event)
