@@ -223,10 +223,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\engine\xml\XmlConfigParser.cpp" />
     <ClCompile Include="..\Classes\JsonUtil.cpp" />
     <ClCompile Include="..\Classes\MainClass.cpp" />
-    <ClCompile Include="..\Classes\screens\LevelsMenu.cpp" />
     <ClCompile Include="..\Classes\screens\MiddleScreen.cpp" />
-    <ClCompile Include="..\Classes\screens\OpenLevel.cpp" />
-    <ClCompile Include="..\Classes\screens\PauseMenu.cpp" />
     <ClCompile Include="..\Classes\sys\bezierBox.cpp" />
     <ClCompile Include="..\Classes\sys\saveBox.cpp" />
     <ClCompile Include="..\Classes\test\CoreElement.cpp" />
@@ -348,10 +345,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\engine\xml\XmlConfigParser.h" />
     <ClInclude Include="..\Classes\JsonUtil.h" />
     <ClInclude Include="..\Classes\MainClass.h" />
-    <ClInclude Include="..\Classes\screens\LevelsMenu.h" />
     <ClInclude Include="..\Classes\screens\MiddleScreen.h" />
-    <ClInclude Include="..\Classes\screens\OpenLevel.h" />
-    <ClInclude Include="..\Classes\screens\PauseMenu.h" />
     <ClInclude Include="..\Classes\sys\bezierBox.h" />
     <ClInclude Include="..\Classes\sys\saveBox.h" />
     <ClInclude Include="..\Classes\test\AnimationBase.h" />

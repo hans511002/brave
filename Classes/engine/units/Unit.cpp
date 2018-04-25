@@ -401,7 +401,7 @@ namespace engine
 		}// end function
 		void Unit::atStageManage() //public function atStageManage() : void
 		{
-			if (!this->atStage)
+			if (!this->atStaged)
 			{
 				if (this->world->nowLevel == 6)
 				{
@@ -409,7 +409,7 @@ namespace engine
 					{
 						if (this->path > 129)
 						{
-							this->atStage = true;
+							this->atStaged = true;
 						}
 						return;
 					}
@@ -420,7 +420,7 @@ namespace engine
 					{
 						if (this->path > 79)
 						{
-							this->atStage = true;
+                            this->atStaged = true;
 						}
 						return;
 					}
@@ -431,7 +431,7 @@ namespace engine
 					{
 						if (this->path > 50)
 						{
-							this->atStage = true;
+                            this->atStaged = true;
 						}
 						return;
 					}
@@ -442,14 +442,14 @@ namespace engine
 					{
 						if (this->path > 100)
 						{
-							this->atStage = true;
+                            this->atStaged = true;
 						}
 						return;
 					}
 				}
 				if(this->this_pt.x > 0 && this->this_pt.y > 0 && this->this_pt.x < Main::SCREEN_WIDTH && this->this_pt.y < Main::SCREEN_HEIGHT)
 				{
-					this->atStage = true;
+                    this->atStaged = true;
 				}
 			}
 			//return;
@@ -506,7 +506,7 @@ namespace engine
 				if (!this->container->fireEffect->isVisible())
 				{
 					this->container->fireEffect->setVisible(true) ;
-					this->container->fireEffect->getAnimation()->gotoAndPlay("begin");
+					this->container->fireEffect->getAnimation()->play("begin");
 					if (this->icemanFlag)
 					{
 						this->stopAllEffects("fireEffect");

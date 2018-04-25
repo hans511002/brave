@@ -318,15 +318,6 @@
     <ClCompile Include="..\Classes\test\HelloWorldScene.cpp">
       <Filter>src\test</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\screens\PauseMenu.cpp">
-      <Filter>src\screens</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\screens\OpenLevel.cpp">
-      <Filter>src\screens</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\screens\LevelsMenu.cpp">
-      <Filter>src\screens</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -724,15 +715,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\test\HelloWorldScene.h">
       <Filter>src\test</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\screens\LevelsMenu.h">
-      <Filter>src\screens</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\screens\OpenLevel.h">
-      <Filter>src\screens</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\screens\PauseMenu.h">
-      <Filter>src\screens</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

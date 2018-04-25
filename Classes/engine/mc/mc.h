@@ -12,7 +12,6 @@ namespace engine
     class World;
     struct MovieClip:public BaseNode
     {
-        World * world;
 		Vec2 myPoint;
 		short myFrame;
         dragonBones::CCArmatureDisplay * container;
@@ -20,16 +19,35 @@ namespace engine
 		string defAniName;
         int totalFrames;
         float speedX;
+         
+        MovieClip(  dragonBones::CCArmatureDisplay * cont, string defAniName = "");
+        MovieClip(string rootPath, string armName, string defAniName = "");
 
-		MovieClip(World * world, dragonBones::CCArmatureDisplay * cont, string defAniName = "");
-		MovieClip(World * world, string rootPath, string aniName, string defAniName = "");
-        MovieClip():world(NULL),container(NULL),currentFrame(0),totalFrames(0),speedX(0) {};
+        MovieClip(): container(NULL),currentFrame(0),totalFrames(0),speedX(0) {};
 		int getTotalFrames(string aniName = "");
 		void gotoAndStop(int cf, string aniName = "");
         void nextFram();
         void update();
 		void play(string aniName = "");
 		void stop(string aniName = "");
+    };
+    struct ImageMovieClip :public BaseNode
+    {
+        int currentFrame; 
+        int totalFrames;
+        byte playing;
+        BaseSprite * cont;
+        string filePre;
+        ImageMovieClip(string rootPath, string fileNamePre, int imgSize=0);
+        int getTotalFrames(string aniName = "");
+        void gotoAndStop(int cf, string aniName = "");
+        void nextFram();
+        void update();
+        void play(string aniName = "");
+        void stop(string aniName = "");
+        void scheduleUpdate(float dt);
+        void onEnter();
+
     };
     struct SpriteClip :public BaseNode
     {
@@ -41,6 +59,8 @@ namespace engine
     //增加删除事件
     struct OnceMovieClip:public MovieClip
     { 
+        World * world;
+
 		OnceMovieClip(World * world, dragonBones::CCArmatureDisplay * cont, string defAniName="");
 		OnceMovieClip(World * world, string rootPath, string aniName, string defAniName = "");
         void OnceMovieClip::onceMovieHandler(cocos2d::EventCustom *event);

@@ -6,6 +6,31 @@
 
 namespace screens
 {
+    MiddleScreen_mc::MiddleScreen_mc()
+    {
+        init();
+    }// end function
+    bool  MiddleScreen_mc::init()
+    {
+        BaseNode::init();
+        leftUp = new ImageMovieClip("screen/MiddleScreen_mc/", "leftUp", 2);
+        leftDown = new ImageMovieClip("screen/MiddleScreen_mc/", "leftDown", 2);
+        rightUp = new ImageMovieClip("screen/MiddleScreen_mc/", "rightUp", 2);
+        rightDown = new ImageMovieClip("screen/MiddleScreen_mc/", "rightDown", 2);
+
+        leftUp->setPosition(cocos2d::Point(-410, Main::SCREEN_HEIGHT + 310));
+        leftDown->setPosition(cocos2d::Point(-410, -310));
+        rightUp->setPosition(cocos2d::Point(Main::SCREEN_WIDTH + 410, Main::SCREEN_HEIGHT + 310));
+        rightDown->setPosition(cocos2d::Point(Main::SCREEN_WIDTH + 410, -310));
+        this->autorelease();
+    };
+
+    void MiddleScreen_mc::stop(){
+        leftDown->stop();
+        leftUp->stop();
+        rightDown->stop();
+        rightUp->stop();
+    };
 	MiddleScreen::MiddleScreen(string param1) :frameCounter(0), gogoCounter(0), middleRound(NULL), container(NULL)
     {
         //this->addEventListener(Event.ADDED_TO_STAGE, this->init);
@@ -88,7 +113,7 @@ namespace screens
         {
             if (!this->middleRound)
             {
-                this->middleRound = new MiddleScreenCentr_mc();
+                this->middleRound = new MovieClip("screen/","MiddleScreenCentr_mc");
                 this->middleRound->stop();
 				this->middleRound->setPositionX(Main::SCREEN_WIDTH_HALF);
 				this->middleRound->setPositionY(Main::SCREEN_HEIGHT_HALF); 

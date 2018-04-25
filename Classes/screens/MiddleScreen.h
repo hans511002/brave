@@ -5,23 +5,18 @@
 
 namespace screens
 { 
-	struct MiddleScreenCentr_mc :public MovieClip
-	{
-
-	};
-	 class MiddleScreen_mc :public MovieClip
+    
+    class MiddleScreen_mc :public BaseNode
 	{
 	public:
-		MovieClip * leftDown;
-		MovieClip *  leftUp ;
-		MovieClip *  rightDown ;
-		MovieClip *  rightUp ;
+        ImageMovieClip * leftDown;
+        ImageMovieClip *  leftUp;
+        ImageMovieClip *  rightDown;
+        ImageMovieClip *  rightUp;
 
-		 MiddleScreen_mc()
-		{
-			return;
-		}// end function
-
+        MiddleScreen_mc();
+        bool init();
+         void stop();
 	 };
 
     class MiddleScreen : public cocos2d::Node
@@ -30,7 +25,7 @@ namespace screens
 		int i;// public var i : int;
         //public var tempObject:Object;
 		MiddleScreen_mc *container;
-		MiddleScreenCentr_mc * middleRound;
+        MovieClip * middleRound;
 		int frameCounter;// public var frameCounter : int = 0;
 		int gogoCounter;// public var gogoCounter : int = 0;
 		string openScreenName;// public var openScreenName : String;

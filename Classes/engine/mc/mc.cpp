@@ -3,7 +3,7 @@
 
 namespace engine
 {
-	MovieClip::MovieClip(World * world, dragonBones::CCArmatureDisplay * cont, string defAniName ) :currentFrame(0)
+	MovieClip::MovieClip(  dragonBones::CCArmatureDisplay * cont, string defAniName ) :currentFrame(0)
     { 
 		std::map<std::string, dragonBones::AnimationData*> & animations = cont->getArmature()->_armatureData->animations;
 		for each (std::pair<std::string, dragonBones::AnimationData*> it in animations)
@@ -13,22 +13,26 @@ namespace engine
 			float duration = it.second->duration;
 			CCLOG("load %s totalFrames=%i duration=%f", aniName.c_str(), totalFrames, duration);
 		}
-
 		if(defAniName == "")defAniName = cont->getArmature()->_armatureData->defaultAnimation->name;
 		totalFrames = cont->getArmature()->_armatureData->animations[defAniName]->frameCount;
 		float duration = cont->getArmature()->_armatureData->animations[defAniName]->duration;
 		CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
 		this->container = cont;
+        BaseNode::init();
+        this->autorelease();
     };
-	MovieClip::MovieClip(World * world, string rootPath, string armName,   string defAniName ) :currentFrame(0)
+	MovieClip::MovieClip( string rootPath, string armName,   string defAniName ) :currentFrame(0)
     {
 		this->container = this->loadArmature(rootPath, armName);
 		if(defAniName == "")defAniName = container->getArmature()->_armatureData->defaultAnimation->name;
 		totalFrames = container->getArmature()->_armatureData->animations[defAniName]->frameCount;
 		float duration = container->getArmature()->_armatureData->animations[defAniName]->duration;
 		CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
+        BaseNode::init();
+        this->autorelease();
 	};
-	int MovieClip::getTotalFrames(string aniName)
+
+    int MovieClip::getTotalFrames(string aniName)
 	{
 		if(!container)return 0;
 		if(aniName == "")aniName = defAniName;
@@ -70,19 +74,68 @@ namespace engine
 		if(aniName == "")aniName = defAniName;
 		container->getAnimation()->play(aniName, 1);
     }
+
+    ImageMovieClip::ImageMovieClip(string rootPath, string fileNamePre, int imgSize){
+        currentFrame=0;
+        totalFrames = imgSize-1;
+        if (!rootPath.empty() && rootPath.at(rootPath.length() - 1) != '/')
+        {
+            rootPath += "/";
+        }
+        filePre = rootPath + fileNamePre;
+        char tmp[8];
+        sprintf(tmp, "%04d", 1);
+        cont = new BaseSprite(filePre + tmp + ".png");
+        playing = 0;
+    };
+
+    void ImageMovieClip::onEnter(){
+        this->schedule(schedule_selector(ImageMovieClip::scheduleUpdate), 0.0f);
+    }
+    void ImageMovieClip::scheduleUpdate(float dt){
+        if (playing!=-1)return;
+        nextFram();
+    };
+
+    int ImageMovieClip::getTotalFrames(string aniName){
+        return totalFrames;
+    };
+    void ImageMovieClip::gotoAndStop(int cf, string aniName){
+        this->currentFrame = (cf) % (totalFrames + 1);
+        char tmp[8];
+        sprintf(tmp, "%04d", currentFrame);
+        cont = new BaseSprite(filePre + tmp + ".png");
+        playing = true; 
+    };
+    void ImageMovieClip::nextFram()
+    {
+        this->currentFrame++;
+        gotoAndStop(this->currentFrame);
+    };
+    void ImageMovieClip::update(){
+        nextFram();
+    }
+    void ImageMovieClip::play(string aniName){
+        playing = 1;
+    }
+        ;
+    void ImageMovieClip::stop(string aniName){
+        playing = 0;
+    };
+
 	SpriteClip::SpriteClip(BaseSprite * cont)
     {
 		this->container = cont;
     };
     
-	OnceMovieClip::OnceMovieClip(World * world, dragonBones::CCArmatureDisplay * cont, string defAniName) :MovieClip(world, cont, defAniName)
+    OnceMovieClip::OnceMovieClip(World * world, dragonBones::CCArmatureDisplay * cont, string defAniName) :world(world), MovieClip(cont, defAniName)
 	{
 		//container->getAnimation()->getAnimationConfig()->duration
 		//container->getArmature()
 		container->getEventDispatcher()->addCustomEventListener(EventObject::FRAME_EVENT, std::bind(&OnceMovieClip::onceMovieHandler, this, std::placeholders::_1));
 		container->getEventDispatcher()->addCustomEventListener(EventObject::COMPLETE, std::bind(&OnceMovieClip::onceMovieHandler, this, std::placeholders::_1));
     }
-	OnceMovieClip::OnceMovieClip(World * world, string rootPath, string aniName, string defAniName) : MovieClip(world, rootPath, aniName, defAniName)
+    OnceMovieClip::OnceMovieClip(World * world, string rootPath, string aniName, string defAniName) : world(world), MovieClip(rootPath, aniName, defAniName)
 	{
 		container->getEventDispatcher()->addCustomEventListener(EventObject::FRAME_EVENT, std::bind(&OnceMovieClip::onceMovieHandler, this, std::placeholders::_1));
 		container->getEventDispatcher()->addCustomEventListener(EventObject::COMPLETE, std::bind(&OnceMovieClip::onceMovieHandler, this, std::placeholders::_1));

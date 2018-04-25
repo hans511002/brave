@@ -1,5 +1,6 @@
-﻿
-#include "Unit_1.h"
+﻿#include "Unit.h"
+
+//#include "Unit_1.h"
 
 namespace engine
 {
@@ -36,28 +37,29 @@ namespace engine
 		{
 			if (!dead && !icemanFlag)
 			{
+                    //换肤
 				//if (direction != "up")
 				//{ 
-				//	if (container->cont.currentFrame == 2)
-				//	{
-				//		container.cont.gotoAndStop(1);
-				//	}
+				//	//if (container->cont->currentFrame == 2)
+				//	//{
+				//	//	container->cont->gotoAndStop(1);
+				//	//}
 				//}
-				//else if (container.cont.currentFrame == 1)
+				//else if (container->cont->currentFrame == 1)
 				//{
 				//	container.cont.gotoAndStop(2);
 				//}
-				//if (!airFlag && !airShockFlag)
-				//{
-				//	if (container.currentFrame < container.totalFrames)
-				//	{
-				//		container.gotoAndStop((container.currentFrame + 1));
-				//	}
-				//	else
-				//	{
-				//		container.gotoAndStop(1);
-				//	}
-				//}
+				if (!airFlag && !airShockFlag)
+				{
+					//if (container->currentFrame < container->totalFrames)
+					//{
+					//	container->gotoAndStop((container.currentFrame + 1));
+					//}
+					//else
+					//{
+					//	container->gotoAndStop(1);
+					//}
+				}
 			}
 			Unit::animationHandler();
 			return;

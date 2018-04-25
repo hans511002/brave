@@ -10,30 +10,6 @@ using namespace cocostudio;
 
 namespace engine{
 
-
-	void Level::flagHandler(cocos2d::EventCustom *event){
-		EventData *eventData = (EventData*)(event->getUserData());
-		switch (eventData->getType())
-		{
-		case EventData::EventType::COMPLETE:
-			for (size_t i = 0; i < flags.size(); i++)
-			{
-				flags[i]->getAnimation()->gotoAndPlay("flag");
-			}
-			break;
-		case EventData::EventType::LOOP_COMPLETE:
-			break;
-		case EventData::EventType::ANIMATION_FRAME_EVENT:
-			if (eventData->frameLabel == "ending")
-			{
-				//
-				//pass->removeFromParentAndCleanup(true);
-			}
-			break;
-
-		}
-	};
-
 	namespace level
 	{
 		bool Level1::init(){
@@ -58,16 +34,16 @@ namespace engine{
             this->addChild(node);
 
 			//this->setPosition(Main::SCREEN_WIDTH_HALF, Main::SCREEN_HEIGHT_HALF);
-			DBCCFactory::getInstance()->loadDragonBonesData("public/flag/skeleton.xml", "flag");
-			DBCCFactory::getInstance()->loadTextureAtlas("public/flag/texture.xml", "flag");
-			auto flag1 = DBCCFactory::getInstance()->buildArmatureNode("flag");
-			auto flag2 = DBCCFactory::getInstance()->buildArmatureNode("flag");
+			//DBCCFactory::getInstance()->loadDragonBonesData("public/flag/skeleton.xml", "flag");
+			//DBCCFactory::getInstance()->loadTextureAtlas("public/flag/texture.xml", "flag");
+            auto flag1 = this->loadArmature("worldinterface/level/", "flag");// DBCCFactory::getInstance()->buildArmatureNode("flag");
+            auto flag2 = this->loadArmature("worldinterface/level/", "flag");//DBCCFactory::getInstance()->buildArmatureNode("flag");
 			flags.push_back(flag1);
 			flags.push_back(flag2);
 			this->addChild(flag1);
 			this->addChild(flag2);
-			flag1->getAnimation()->gotoAndPlay("flag", -1.0, -1.0, 0x7FFFFFF);
-			flag2->getAnimation()->gotoAndPlay("flag", -1.0, -1.0, 0x7FFFFFF);
+            flag1->getAnimation()->play("flag", 0);
+            flag2->getAnimation()->play("flag", 0); 
 			flag1->setPosition(760 - Main::SCREEN_WIDTH_OUT_LEFT, Main::SCREEN_HEIGHT + Main::SCREEN_HEIGHT_OUT_DOWN - 255);
 			flag2->setPosition(760 - Main::SCREEN_WIDTH_OUT_LEFT, Main::SCREEN_HEIGHT + Main::SCREEN_HEIGHT_OUT_DOWN - 290);
 			//flag1->getCCEventDispatcher()->addCustomEventListener(EventData::ANIMATION_FRAME_EVENT,std::bind(&Level1::flagHandler, this, std::placeholders::_1));

@@ -14,8 +14,7 @@ namespace engine{
             //Common::Array<TowerPlace * > towerPlace;
 			Common::Array<dragonBones::CCArmatureDisplay * > additionallys;
 			Common::Array<PointTimer * > pointers;
-			void flagHandler(cocos2d::EventCustom *event);
-			Level()
+ 			Level()
 			{ 
 			};
 		};
