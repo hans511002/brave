@@ -19,7 +19,7 @@ namespace screens
         //this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
         //this->addEventListener(Event.REMOVED_FROM_STAGE, this->reInit);
         this->manageListeners("on");
-        Main::mainClass->levelsMenuClass.manageListeners("off");
+        Main::mainClass->levelsMenuClass->manageListeners("off");
         //this->stage.frameRate = 60;
         this->container = new OpenLevel_mc();
         this->container->stop();
@@ -72,122 +72,69 @@ namespace screens
                 this->addChild(this->openSurvEdu);
             }
         }
-        this->container->board.start.startCase.buttonMode = true;
+        this->container->board->start->startCase->buttonMode = true;
         this->statusManage();
-        if (Main::mainClass->saveBoxClass.gameSave.data.starsOfLevels[(this->playLevel - 1)] >= 1)
+		int starsOfLevel = Main::mainClass->saveBoxClass->getIntValue("starsOfLevels", (this->playLevel - 1));
+		if(starsOfLevel >= 1)
         {
-            this->container->board.star1.gotoAndStop(1);
+            this->container->board->star1->gotoAndStop(1);
         }
         else
         {
-            this->container->board.star1.gotoAndStop(2);
+            this->container->board->star1->gotoAndStop(2);
         }
-        if (Main::mainClass->saveBoxClass.gameSave.data.starsOfLevels[(this->playLevel - 1)] >= 2)
+		if(starsOfLevel >= 2)
         {
-            this->container->board.star2.gotoAndStop(1);
+			this->container->board->star2->gotoAndStop(1);
         }
         else
         {
-            this->container->board.star2.gotoAndStop(2);
+			this->container->board->star2->gotoAndStop(2);
         }
-        if (Main::mainClass->saveBoxClass.gameSave.data.starsOfLevels[(this->playLevel - 1)] >= 3)
+		if(starsOfLevel >= 3)
         {
-            this->container->board.star3.gotoAndStop(1);
+			this->container->board->star3->gotoAndStop(1);
         }
         else
         {
-            this->container->board.star3.gotoAndStop(3);
+			this->container->board->star3->gotoAndStop(3);
         }
-        if (Main::mainClass->saveBoxClass.gameSave.data.starsOfLevels[(this->playLevel - 1)] >= 4)
+		if(starsOfLevel >= 4)
         {
-            this->container->board.wreath.gotoAndStop(1);
+			this->container->board->wreath->gotoAndStop(1);
         }
         else
         {
-            this->container->board.wreath.gotoAndStop(2);
+			this->container->board->wreath->gotoAndStop(2);
         }
-        if (Main::mainClass->saveBoxClass.gameSave.data.complexityLevel < 4)
+		int complexityLevel = Main::mainClass->saveBoxClass->getIntValue("complexityLevel");
+        if (complexityLevel < 4)
         {
         }
-        if (this->playLevel == 1)
-        {
-            this->container->board.headerTXT.text = "关卡 1";
-        }
-        else if (this->playLevel == 2)
-        {
-            this->container->board.headerTXT.text = "关卡 2";
-        }
-        else if (this->playLevel == 3)
-        {
-            this->container->board.headerTXT.text = "关卡 3";
-        }
-        else if (this->playLevel == 4)
-        {
-            this->container->board.headerTXT.text = "关卡 4";
-        }
-        else if (this->playLevel == 5)
-        {
-            this->container->board.headerTXT.text = "关卡 5";
-        }
-        else if (this->playLevel == 6)
-        {
-            this->container->board.headerTXT.text = "关卡 6";
-        }
-        else if (this->playLevel == 7)
-        {
-            this->container->board.headerTXT.text = "关卡 7";
-        }
-        else if (this->playLevel == 8)
-        {
-            this->container->board.headerTXT.text = "关卡 8";
-        }
-        else if (this->playLevel == 9)
-        {
-            this->container->board.headerTXT.text = "关卡 9";
-        }
-        else if (this->playLevel == 10)
-        {
-            this->container->board.headerTXT.text = "关卡 10";
-        }
-        else if (this->playLevel == 11)
-        {
-            this->container->board.headerTXT.text = "关卡 11";
-        }
-        else if (this->playLevel == 12)
-        {
-            this->container->board.headerTXT.text = "关卡 12";
-        }
-        else if (this->playLevel == 13)
-        {
-            this->container->board.headerTXT.text = "关卡 13";
-        }
-        else if (this->playLevel == 14)
-        {
-            this->container->board.headerTXT.text = "关卡 14";
-        }
-        else if (this->playLevel == 15)
-        {
-            this->container->board.headerTXT.text = "关卡 15";
-        }
-        this->container->board.headerTXT.setTextFormat(Main::mainClass->boldTextFormat);
+		char tmp[32];
+		sprintf(tmp, "关卡 %i", this->playLevel);
+		this->container->board->headerTXT->setText(tmp);
+        
+        this->container->board->headerTXT->setTextFormat(Main::mainClass->boldTextFormat);
         this->container->board.map.gotoAndStop(this->playLevel);
-        if (Main::mainClass->saveBoxClass.gameSave.data.complexityLevel == 1)
+		if(complexityLevel == 1)
         {
             this->complexityManage(1);
         }
-        else if (Main::mainClass->saveBoxClass.gameSave.data.complexityLevel == 2)
+		else if(complexityLevel == 2)
         {
             this->complexityManage(2);
         }
-        else if (Main::mainClass->saveBoxClass.gameSave.data.complexityLevel == 3)
+		else if(complexityLevel == 3)
         {
             this->complexityManage(3);
         }
-        else if (Main::mainClass->saveBoxClass.gameSave.data.complexityLevel == 4)
+        else if (complexityLevel == 4)
         {
-            this->complexityManage(Main::mainClass->saveBoxClass.gameSave.data.oldComplexityLevel);
+			int oldComplexityLevel = Main::mainClass->saveBoxClass->getIntValue("oldComplexityLevel");
+			this->complexityManage(oldComplexityLevel);
         }
-        Sounds.instance.playSound("snd_menu_openBoard");
+        //Sounds.instance.playSound("snd_menu_openBoard");
         return;
     }// end function
 
@@ -231,47 +178,48 @@ namespace screens
                 this->kill();
             }
         }
-        if (this->openSurvEdu)
-        {
-            if (this->openSurvEdu.visible)
-            {
-                if (!this->closeFlag)
-                {
-                    if (!this->openSurvEdu.closeFlag)
-                    {
-                        if (this->openSurvEdu.currentFrame < 23)
-                        {
-                            this->openSurvEdu.gotoAndStop((this->openSurvEdu.currentFrame + 1));
-                        }
-                        else
-                        {
-                            this->openSurvEdu.gotoAndStop(13);
-                        }
-                    }
-                    else
-                    {
-                        if (this->openSurvEdu.currentFrame < 23)
-                        {
-                            this->openSurvEdu.gotoAndStop(23);
-                        }
-                        if (this->openSurvEdu.currentFrame < this->openSurvEdu.totalFrames)
-                        {
-                            this->openSurvEdu.gotoAndStop((this->openSurvEdu.currentFrame + 1));
-                        }
-                        else
-                        {
-                            this->removeChild(this->openSurvEdu);
-                            this->openSurvEdu = null;
-                        }
-                    }
-                }
-                else
-                {
-                    this->removeChild(this->openSurvEdu);
-                    this->openSurvEdu = null;
-                }
-            }
-        }
+		//public var openSurvEdu:Training_91_mc;
+        //if (this->openSurvEdu)
+        //{
+        //    if (this->openSurvEdu.visible)
+        //    {
+        //        if (!this->closeFlag)
+        //        {
+        //            if (!this->openSurvEdu.closeFlag)
+        //            {
+        //                if (this->openSurvEdu.currentFrame < 23)
+        //                {
+        //                    this->openSurvEdu.gotoAndStop((this->openSurvEdu.currentFrame + 1));
+        //                }
+        //                else
+        //                {
+        //                    this->openSurvEdu.gotoAndStop(13);
+        //                }
+        //            }
+        //            else
+        //            {
+        //                if (this->openSurvEdu.currentFrame < 23)
+        //                {
+        //                    this->openSurvEdu.gotoAndStop(23);
+        //                }
+        //                if (this->openSurvEdu.currentFrame < this->openSurvEdu.totalFrames)
+        //                {
+        //                    this->openSurvEdu.gotoAndStop((this->openSurvEdu.currentFrame + 1));
+        //                }
+        //                else
+        //                {
+        //                    this->removeChild(this->openSurvEdu);
+        //                    this->openSurvEdu = null;
+        //                }
+        //            }
+        //        }
+        //        else
+        //        {
+        //            this->removeChild(this->openSurvEdu);
+        //            this->openSurvEdu = null;
+        //        }
+        //    }
+        //}
         if (this->container->board.currentComplexity.fire.currentFrame < this->container->board.currentComplexity.fire.totalFrames)
         {
             this->container->board.currentComplexity.fire.gotoAndStop((this->container->board.currentComplexity.fire.currentFrame + 1));

@@ -83,19 +83,19 @@ void Main::addNewScreen(string param1)
 		}
 		//this->bmp = new Bitmap(this->getBitmapData(this->container));
 		//this->addChild(Main.mainClass.bmp);
-		//this->container->visible = false;
+		if(this->container)this->container->setVisible(false);
         this->middleScreenClass->setZOrder(99);
 		//this->setChildIndex(this->middleScreenClass, (this->numChildren - 1));
 		//this->setChildIndex(this->IDIClass, (this->numChildren - 1));
 	}
 	else
 	{
-		//if (this->container)
-		//{
+		if (this->container)
+		{
 			//this->bmp = new Bitmap(this->getBitmapData(this->container));
 			//this->addChild(Main.mainClass.bmp);
-			//this->container->visible = false;
-		//}
+			this->container->setVisible( false);
+		}
 		this->middleScreenClass = new MiddleScreen(param1);
 		this->addChild(this->middleScreenClass);
 	}
@@ -114,20 +114,20 @@ void Main::removeAllScreens()
 	//	this->removeChild(this->startMenuClass);
 	//	this->startMenuClass = null;
 	//}
-	//if (this->levelsMenuClass)
-	//{
-	//	this->lastClass = "LevelsMenu";
-	//	this->removeChild(this->levelsMenuClass);
-	//	this->levelsMenuClass = null;
-	//}
-	//if (this->worldClass)
-	//{
-	//	this->lastClass = "World";
-	//	this->removeChild(this->worldClass);
-	//	this->worldClass = null;
-	//}
-	//this->container = null;
-	//this->saveBoxClass.updateSever();
+	if (this->levelsMenuClass)
+	{
+		this->lastClass = "LevelsMenu";
+		this->removeChild(this->levelsMenuClass);
+		this->levelsMenuClass = NULL;
+	}
+	if (this->worldClass)
+	{
+		this->lastClass = "World";
+		this->removeChild(this->worldClass);
+		this->worldClass = NULL;
+	}
+	this->container = NULL;
+	this->saveBoxClass->updateSever();
 	//return;
 }// end function
 

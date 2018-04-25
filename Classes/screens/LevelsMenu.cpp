@@ -1,5 +1,6 @@
 ﻿
 #include "LevelsMenu.h"
+#include "MainClass.h"
 
 namespace screens
 {

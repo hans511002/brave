@@ -13,6 +13,7 @@
 USING_NS_CC;
 using namespace dragonBones;
 using namespace tinyxml2;
+using namespace engine;
 
 inline static std::vector<std::string> &split(const std::string &s, char delim, std::vector<std::string> &elems) {
 	std::stringstream ss(s);
