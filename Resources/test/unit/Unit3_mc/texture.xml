@@ -1,0 +1,12 @@
+<TextureAtlas name="Unit3_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 2403" x="27" y="61" width="25" height="28"/>
+ <SubTexture name="Shape/shape 2405" x="54" y="61" width="25" height="28"/>
+ <SubTexture name="Shape/shape 2407" x="54" y="31" width="25" height="28"/>
+ <SubTexture name="Shape/shape 2409" x="81" y="31" width="25" height="28"/>
+ <SubTexture name="Shape/shape 2411" x="27" y="31" width="25" height="28"/>
+ <SubTexture name="Shape/shape 2393" x="0" y="0" width="25" height="29"/>
+ <SubTexture name="Shape/shape 2395" x="54" y="0" width="25" height="29"/>
+ <SubTexture name="Shape/shape 2397" x="81" y="0" width="25" height="29"/>
+ <SubTexture name="Shape/shape 2399" x="0" y="31" width="25" height="29"/>
+ <SubTexture name="Shape/shape 2401" x="27" y="0" width="25" height="29"/>
+</TextureAtlas>

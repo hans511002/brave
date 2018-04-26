@@ -55,7 +55,7 @@ namespace engine
     {
 		if(!container)return ;
 		if(aniName == "")aniName = defAniName;
-		if(container->getAnimation()->getLastAnimationName() == aniName)
+		if(container->getAnimation()->getLastAnimationName() != aniName)
 			container->getAnimation()->play(aniName, 1);
 		this->currentFrame = (cf) % totalFrames + 1;
 		container->getAnimation()->gotoAndStopByFrame(aniName, currentFrame-1);

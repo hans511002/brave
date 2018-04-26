@@ -535,7 +535,7 @@ namespace engine
 				else
 				{
 					this->fireEffectFlag = false;
-					this->container->fireEffect->getAnimation()->stop("");
+					this->container->fireEffect->stop();
 					this->container->fireEffect->setVisible(false);
 				}
 			}
@@ -692,7 +692,7 @@ namespace engine
 				else
 				{
 					this->speedPlusFlag = false;
-					this->container->buffSpeed->getAnimation()->stop("");
+					this->container->buffSpeed->stop();
 					this->container->buffSpeed->setVisible(false);
 				}
 			}
@@ -1012,7 +1012,7 @@ namespace engine
 						if (!this->container->fireAttack->isVisible() && this->typeUnit != 34)
 						{
 							this->container->fireAttack->setVisible(true);
-							this->container->fireAttack->getAnimation()->play("fireattack");
+							this->container->fireAttack->play("fireattack");
 						}
 						if (this->typeUnit != 23)
 						{
@@ -1055,7 +1055,7 @@ namespace engine
 						if (!this->container->iceAttack->isVisible() && this->typeUnit != 34)
 						{
 							this->container->iceAttack->setVisible(true);
-							this->container->iceAttack->getAnimation()->play("iceattack");
+							this->container->iceAttack->play("iceattack");
 						}
 						if (this->typeUnit != 24 && this->typeUnit != 34)
 						{
@@ -1430,7 +1430,7 @@ namespace engine
 						if (!this->container->levinAttack->isVisible())
 						{
 							this->container->levinAttack->setVisible(true);
-							this->container->levinAttack->getAnimation()->play("levinattack"); 
+							this->container->levinAttack->play("levinattack"); 
 						}
 						if (this->typeUnit != 26)
 						{

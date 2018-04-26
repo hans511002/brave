@@ -73,6 +73,7 @@ namespace engine
 			void mcHandler(cocos2d::EventCustom *event);
 			bool init();
 			void stop();
+            void setUnitDirection(string direction);
 		};
 
 	}

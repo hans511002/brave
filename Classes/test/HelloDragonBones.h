@@ -1,4 +1,5 @@
 #include "BaseDemo.h"
+#include "BaseNode.h"
 /**
  * How to use
  * 1. Load data.
@@ -42,6 +43,20 @@ protected:
 		//const auto armatureDisplay = factory->buildArmatureDisplay("Cyborg", "Cyborg");
 		//armatureDisplay->getAnimation()->play("Cyborg");
 
+       
+        armatureDisplay =std::loadArmature("unit/",  "Unit3_mc");
+        armatureDisplay->setPosition(0.0f, -100.0f);
+        addChild(armatureDisplay);
+        Armature * arm = armatureDisplay->getArmature()->getSlot("Layer 7")->getChildArmature();
+
+        //std::map<std::string, AnimationData*> & anis = dis->_armatureData->animations;
+        //std::map<std::string, AnimationData*>::iterator*it = ;
+        //dis->_armatureData->setDefaultAnimation(anis[string("top")]);
+        //dis->_armatureData->setDefaultAnimation(anis.find(string("top"))->second);
+        //dis->_armatureData->setDefaultAnimation(anis.find(string("right"))->second);
+        //dis->getAnimation()->play("right", 0);
+        arm->getAnimation()->play("top", 0);
+        armatureDisplay->getAnimation()->play("Unit3_mc", 0);
 
 		factory->loadDragonBonesData("levindeath/levindeath_ske.json");
 		factory->loadTextureAtlasData("levindeath/levindeath_tex.json");
@@ -81,9 +96,18 @@ protected:
 	int totalFrames;
 	void _animationEventHandler(cocos2d::EventCustom* event) const
 	{
+        Node * target = event->getCurrentTarget();
+        string eventName = event->getEventName();
 		const auto eventObject = (dragonBones::EventObject*)event->getUserData();
 		cocos2d::log("%s %s %s", eventObject->animationState->name.c_str(), eventObject->type.c_str(), eventObject->name.c_str());
-	}
+        double curFrames = (double)eventObject->animationState->getCurrentTime() / eventObject->animationState->_duration
+            * eventObject->armature->_armatureData->frameRate;
+        int currFrame = curFrames;
+        CCLOG("eventData->armature->_armatureData->frameRate=%i", eventObject->armature->_armatureData->frameRate);
+        CCLOG("eventData->animationState->getCurrentTime()=%f", eventObject->animationState->getCurrentTime());
+        CCLOG("curFrames=%f  %i", curFrames, currFrame);
+
+    }
 
  
 	void  scheduleUpdate(float dt)

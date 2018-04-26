@@ -37,28 +37,18 @@ namespace engine
 		{
 			if (!dead && !icemanFlag)
 			{
-                    //换肤
-				//if (direction != "up")
-				//{ 
-				//	//if (container->cont->currentFrame == 2)
-				//	//{
-				//	//	container->cont->gotoAndStop(1);
-				//	//}
-				//}
-				//else if (container->cont->currentFrame == 1)
-				//{
-				//	container.cont.gotoAndStop(2);
-				//}
+                //换肤
+                container->setUnitDirection(direction);
 				if (!airFlag && !airShockFlag)
 				{
-					//if (container->currentFrame < container->totalFrames)
-					//{
-					//	container->gotoAndStop((container.currentFrame + 1));
-					//}
-					//else
-					//{
-					//	container->gotoAndStop(1);
-					//}
+					if (container->cont->currentFrame < container->cont->totalFrames)
+					{
+						container->cont->gotoAndStop((container->cont->currentFrame + 1));
+					}
+					else
+					{
+						container->cont->gotoAndStop(1);
+					}
 				}
 			}
 			Unit::animationHandler();

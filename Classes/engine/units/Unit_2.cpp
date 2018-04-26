@@ -1,5 +1,6 @@
 ﻿
-#include "Unit_2.h"
+#include "Unit.h"
+//#include "Unit_2.h"
 
 namespace engine
 {
@@ -25,26 +26,28 @@ namespace engine
         {
             if (!dead && !icemanFlag)
             {
-                if (direction != "up")
-                {
-                    if (container->cont->currentFrame == 2)
-                    {
-                        container->cont->gotoAndStop(1);
-                    }
-                }
-                else if (container->cont->currentFrame == 1)
-                {
-                    container->cont->gotoAndStop(2);
-                }
+                //if (direction != "up")
+                //{
+                //    if (container->cont->currentFrame == 2)
+                //    {
+                //        container->cont->gotoAndStop(1);
+                //    }
+                //}
+                //else if (container->cont->currentFrame == 1)
+                //{
+                //    container->cont->gotoAndStop(2);
+                //}
+                container->setUnitDirection(direction);
+
                 if (!airFlag && !airShockFlag)
                 {
-                    if (container->currentFrame < container->totalFrames)
+                    if (container->cont->currentFrame < container->cont->totalFrames)
                     {
-                        container->gotoAndStop((container->currentFrame + 1));
+                        container->cont->gotoAndStop((container->cont->currentFrame + 1));
                     }
                     else
                     {
-                        container->gotoAndStop(1);
+                        container->cont->gotoAndStop(1);
                     }
                 }
             }

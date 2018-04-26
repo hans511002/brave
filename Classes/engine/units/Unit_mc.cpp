@@ -227,5 +227,22 @@ namespace engine
 			if (this->giveHealth2)this->giveHealth2->stop();
 			if (this->giveHealth3)this->giveHealth3->stop();
 		};
-	}
+        void Unit_mc::setUnitDirection(string direction){
+            Slot * slot = cont->getArmature()->getSlot("cont");
+            if (direction != "up")
+            {
+                if (slot->getDisplayIndex() == 1)
+                    slot->setDisplayIndex(0);
+                //	//{
+                //	//	container->cont->gotoAndStop(1);
+                //	//}
+            }
+            else if (slot->getDisplayIndex() == 0)
+            {
+                slot->setDisplayIndex(1);
+                //container.cont.gotoAndStop(2);
+            }
+        };
+
+}
 }

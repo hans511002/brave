@@ -3,6 +3,11 @@
 
 #include "cocos2d.h"
 #include "dragonBones/cocos2dx/CCDragonBonesHeaders.h"
+using namespace std;
+using namespace cocos2d;
+using namespace dragonBones;
+
+
 class BaseDemo : public cocos2d::LayerColor
 {
 protected:
