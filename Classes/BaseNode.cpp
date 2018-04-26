@@ -31,12 +31,13 @@ namespace std
 		{
 			rootPath += "/";
 		}
+		string dbName = dragonBonesName == "" ? armatureName : dragonBonesName;
         const auto factory = dragonBones::CCFactory::getFactory();
-        factory->loadDragonBonesData(rootPath + armatureName + "/" + armatureName + "_ske.json");
+		factory->loadDragonBonesData(rootPath + dbName + "/" + dbName + "_ske.json");
         //factory->loadDragonBonesData(rootPath + armatureName + "/" + armatureName + "_ske.dbbin");
-        factory->loadTextureAtlasData(rootPath + armatureName + "/" + armatureName + "_tex.json");
+		factory->loadTextureAtlasData(rootPath + dbName + "/" + dbName + "_tex.json");
         //const std::string& armatureName, const std::string& dragonBonesName = "", const std::string& skinName = "", const std::string& textureAtlasName = ""
-        const auto armatureDisplay = factory->buildArmatureDisplay(armatureName, dragonBonesName == "" ? armatureName : dragonBonesName);
+		const auto armatureDisplay = factory->buildArmatureDisplay(armatureName, dbName);
         //scene->addChild(armatureDisplay);
         ////std::string name = armatureDisplay->getArmature()->getSlot("handL")->getName();
         //armatureDisplay->getAnimation()->play("icemandead", 999999);
@@ -66,9 +67,9 @@ BaseSprite::BaseSprite(string file){
 bool BaseNode::hitTest(const Vec2 &pt){
     return BaseNode::hitTest(this, pt);
 };
-cocos2d::Point localToGlobal(cocos2d::Point pt)
+cocos2d::Point BaseNode::localToGlobal(cocos2d::Point pt)
 {
-    
+	return this->convertToWorldSpace(pt);
 };
 
 void BaseNode::touchAction(cocos2d::Ref *ref, cocos2d::ui::TouchEventType type){
@@ -141,9 +142,24 @@ void BaseLayer::mouseDownHandler(cocos2d::Event *event)//(event:MouseEvent) : vo
 
   bool BaseNode::hitTest(Node * node, const Vec2 &pt)
   {
-      Vec2 nsp = node->convertToNodeSpaceAR(pt);//convertToNodeSpace
+	  Vec2 nsp = node->convertToNodeSpace(pt);//convertToNodeSpace convertToNodeSpaceAR
       Rect bb;
       bb.size = node->getContentSize();
+	  if(bb.size.height == 0 || bb.size.width == 0)
+	  {
+		  if(node->getChildrenCount())
+		  {
+			  cocos2d::Vector<Node*> cld = node->getChildren();
+			  for each (Node *n in cld)
+			  {
+				  Size t = (n->getContentSize() - bb.size);
+				  if(t.width>0 || t.height>0)
+				  {
+					bb.size = n->getContentSize();
+				  }
+			  }
+		  }
+	  }
       if (bb.containsPoint(nsp))
       {
           return true;

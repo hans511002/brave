@@ -32,8 +32,6 @@ protected:
         _armatureDisplay->getEventDispatcher()->addCustomEventListener(dragonBones::EventObject::COMPLETE, std::bind(&DragonBonesEvent::_animationEventHandler, this, std::placeholders::_1));
         _armatureDisplay->getAnimation()->play("walk");
         _armatureDisplay->setPosition(0.0f, -100.0f);
-        //_armatureDisplay->getArmature()->getSlot("")->get;
-        
         addChild(_armatureDisplay);
         //
         const auto listener = cocos2d::EventListenerMouse::create();

@@ -3,42 +3,51 @@
 
 namespace engine
 {
-	MovieClip::MovieClip(  dragonBones::CCArmatureDisplay * cont, string defAniName ) :currentFrame(0)
+	MovieClip::MovieClip(  dragonBones::CCArmatureDisplay * cont, string defAniName ) :currentFrame(1)
     { 
 		std::map<std::string, dragonBones::AnimationData*> & animations = cont->getArmature()->_armatureData->animations;
 		for each (std::pair<std::string, dragonBones::AnimationData*> it in animations)
 		{
 			std::string aniName = it.first;
-			int totalFrames = it.second->frameCount;
+			int totalFrames = it.second->frameCount+1;
 			float duration = it.second->duration;
 			CCLOG("load %s totalFrames=%i duration=%f", aniName.c_str(), totalFrames, duration);
 		}
 		if(defAniName == "")defAniName = cont->getArmature()->_armatureData->defaultAnimation->name;
-		totalFrames = cont->getArmature()->_armatureData->animations[defAniName]->frameCount;
+		totalFrames = cont->getArmature()->_armatureData->animations[defAniName]->frameCount + 1;
 		float duration = cont->getArmature()->_armatureData->animations[defAniName]->duration;
 		CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
 		this->container = cont;
         BaseNode::init();
         this->autorelease();
     };
-	MovieClip::MovieClip( string rootPath, string armName,   string defAniName ) :currentFrame(0)
+	MovieClip::MovieClip( string rootPath, string armName,   string defAniName ) :currentFrame(1)
     {
 		this->container = this->loadArmature(rootPath, armName);
 		if(defAniName == "")defAniName = container->getArmature()->_armatureData->defaultAnimation->name;
-		totalFrames = container->getArmature()->_armatureData->animations[defAniName]->frameCount;
+		totalFrames = container->getArmature()->_armatureData->animations[defAniName]->frameCount + 1;
 		float duration = container->getArmature()->_armatureData->animations[defAniName]->duration;
 		CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
         BaseNode::init();
         this->autorelease();
 	};
-
+	dragonBones::Animation *MovieClip::getAnimation()
+	{
+		if(!container)return 0;
+		return container->getAnimation();
+	};
+	dragonBones::Armature *MovieClip::getArmature()
+	{
+		if(!container)return 0;
+		return container->getArmature();
+	};
     int MovieClip::getTotalFrames(string aniName)
 	{
 		if(!container)return 0;
 		if(aniName == "")aniName = defAniName;
 		AnimationData *aniData = container->getArmature()->_armatureData->animations[aniName];
 		if(aniData) 
-			return aniData->frameCount; 
+			return aniData->frameCount + 1;
 		return 0;
 	};
 
@@ -46,10 +55,10 @@ namespace engine
     {
 		if(!container)return ;
 		if(aniName == "")aniName = defAniName;
-		if(this->currentFrame == 0) 
+		if(container->getAnimation()->getLastAnimationName() == aniName)
 			container->getAnimation()->play(aniName, 1);
-		this->currentFrame = (cf) % (totalFrames + 1);
-		container->getAnimation()->gotoAndStopByFrame(aniName, currentFrame);
+		this->currentFrame = (cf) % totalFrames + 1;
+		container->getAnimation()->gotoAndStopByFrame(aniName, currentFrame-1);
     };
     void MovieClip::nextFram()
     {
@@ -144,19 +153,18 @@ namespace engine
 	void OnceMovieClip::onceMovieHandler(cocos2d::EventCustom *event)
 	{
 		Node * target = event->getCurrentTarget();
-		string eventName = event->getEventName();
-		EventObject *eventData = (EventObject*)(event->getUserData());
-		if(eventName == EventObject::COMPLETE)
+		EventObject *eventObject = (EventObject*)(event->getUserData());
+		string eventName = event->getEventName();//eventObject->type
+		//eventObject->animationState->name aniName
+		if(eventObject->type == dragonBones::EventObject::COMPLETE)
 		{
 			this->world->removeChild(this);
-		}
-		else if(eventName == EventObject::FRAME_EVENT)
-		{
-			if(eventData->getData()->getString(0)== "ending")
-			{
-				//
-				//pass->removeFromParentAndCleanup(true);
-			}
+		//}
+		//else if(eventName == EventObject::FRAME_EVENT)
+		//{
+		//	if(eventObject->name == "ending")
+		//	{
+		//	}
 		}
 		//case EventData::EventType::LOOP_COMPLETE:
 		//	break;

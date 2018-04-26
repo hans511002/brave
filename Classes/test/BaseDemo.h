@@ -25,8 +25,8 @@ public:
         const auto& stageSize = cocos2d::Director::getInstance()->getVisibleSize();
         setPosition(stageSize.width * 0.5f, stageSize.height * 0.5f);
 
-        //_background = cocos2d::Sprite::create("background.png");
-        //addChild(_background);
+        _background = cocos2d::Sprite::create("background.png");
+        addChild(_background);
 
         _onStart();
 

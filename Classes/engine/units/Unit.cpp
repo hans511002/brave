@@ -54,7 +54,7 @@ namespace engine
 			//	this->container->dustAnima.coordOrigin = new Point(this->container->dustAnima.x, this->container->dustAnima.y);
 			//}
 			this->world = Main::mainClass->worldClass;
-			//this->world->listOfUnits.push(this);
+			this->world->listOfUnits.push(this);
 			this->speedKSave = Main::mainClass->readXMLClass.listOfEnemiesXML[(this->typeUnit - 1)][1];
 			this->speedK = Main::mainClass->readXMLClass.listOfEnemiesXML[(this->typeUnit - 1)][1];
 			 
@@ -99,11 +99,11 @@ namespace engine
 			{
 				this->direction = "down";
 			}
-			//if (this->direction == "up" || this->direction == "down")
-			//{
-			//	this->scanNextTurn();
-			//	this->setVerticalTurn();
-			//}
+			if (this->direction == "up" || this->direction == "down")
+			{
+				this->scanNextTurn();
+				this->setVerticalTurn();
+			}
 			this->world->forseIndexFl = true;
 			//if (this->typeUnit < 33)
 			//{
@@ -131,7 +131,7 @@ namespace engine
 				this->kill();
 				return;
 			}
-			//this->animationHandler();
+			this->animationHandler();
 			//return;
 		}// end function
 		void Unit::moveHandler() //public function moveHandler() : void
@@ -470,43 +470,43 @@ namespace engine
 			//播放火击中效果
 			if (this->container->fireAttack->isVisible())
 			{
-				//if (this->container->fireAttack.currentFrame < this->container->fireAttack.totalFrames)
-				//{
-				//	this->container->fireAttack.gotoAndStop((this->container->fireAttack.currentFrame + 1));
-				//}
-				//else
-				//{
-				//	this->container->fireAttack->setVisible(false);
-				//}
+				if(this->container->fireAttack->currentFrame < this->container->fireAttack->totalFrames)
+				{
+					this->container->fireAttack->gotoAndStop((this->container->fireAttack->currentFrame + 1));
+				}
+				else
+				{
+					this->container->fireAttack->setVisible(false);
+				}
 			}
 			if (this->container->iceAttack->isVisible())
 			{
-			//	if (this->container->iceAttack.currentFrame < this->container->iceAttack.totalFrames)
-			//	{
-			//		this->container->iceAttack.gotoAndStop((this->container->iceAttack.currentFrame + 1));
-			//	}
-			//	else
-			//	{
-			//		this->container->iceAttack->setVisible(false);
-			//	}
+				if(this->container->iceAttack->currentFrame < this->container->iceAttack->totalFrames)
+				{
+					this->container->iceAttack->gotoAndStop((this->container->iceAttack->currentFrame + 1));
+				}
+				else
+				{
+					this->container->iceAttack->setVisible(false);
+				}
 			}
 			if (this->container->levinAttack->isVisible())
 			{
-			//	if (this->container->levinAttack.currentFrame < this->container->levinAttack.totalFrames)
-			//	{
-			//		this->container->levinAttack.gotoAndStop((this->container->levinAttack.currentFrame + 1));
-			//	}
-			//	else
-			//	{
-			//		this->container->levinAttack->setVisible(false);
-			//	}
+				if (this->container->levinAttack->currentFrame < this->container->levinAttack->totalFrames)
+				{
+					this->container->levinAttack->gotoAndStop((this->container->levinAttack->currentFrame + 1));
+				}
+				else
+				{
+					this->container->levinAttack->setVisible(false);
+				}
 			}
 			if (this->fireEffectFlag)
 			{
 				if (!this->container->fireEffect->isVisible())
 				{
 					this->container->fireEffect->setVisible(true) ;
-					this->container->fireEffect->getAnimation()->play("begin");
+					this->container->fireEffect->gotoAndStop(1);
 					if (this->icemanFlag)
 					{
 						this->stopAllEffects("fireEffect");
@@ -515,7 +515,7 @@ namespace engine
 				else if (this->fireEffectCounter > 0)
 				{
 					this->fireEffectCounter--;
-					if (this->atStage && this->readyDamage)
+					if (this->atStaged && this->readyDamage)
 					{
 						this->getHit(this->fireEffectDamage, "fire", 1, false);
 					}
@@ -523,19 +523,19 @@ namespace engine
 					{
 						return;
 					}
-					//if (this->container->fireEffect->currentFrame < this->container->fireEffect.totalFrames)
-					//{
-					//	this->container->fireEffect.gotoAndStop((this->container->fireEffect.currentFrame + 1));
-					//}
-					//else
-					//{
-					//	this->container->fireEffect.gotoAndStop(20);
-					//}
+					if (this->container->fireEffect->currentFrame < this->container->fireEffect->totalFrames)
+					{
+						this->container->fireEffect->gotoAndStop((this->container->fireEffect->currentFrame + 1));
+					}
+					else
+					{
+						this->container->fireEffect->gotoAndStop(20);
+					}
 				}
 				else
 				{
 					this->fireEffectFlag = false;
-					this->container->fireEffect->getAnimation()->stop();
+					this->container->fireEffect->getAnimation()->stop("");
 					this->container->fireEffect->setVisible(false);
 				}
 			}
@@ -544,7 +544,7 @@ namespace engine
 				if (!this->container->iceEffect->isVisible())
 				{
 					this->container->iceEffect->setVisible(true);
-					this->container->iceEffect->getAnimation()->gotoAndPlay("begin");
+					this->container->iceEffect->gotoAndStop(1);
 					if (this->icemanFlag)
 					{
 						this->stopAllEffects("iceEffect");
@@ -553,37 +553,34 @@ namespace engine
 				else if (this->iceEffectCounter > 0)
 				{
 					this->iceEffectCounter--;
-					//if (this->container->iceEffect.currentFrame < this->container->iceEffect.totalFrames)
-					//{
-					//	this->container->iceEffect.gotoAndStop((this->container->iceEffect.currentFrame + 1));
-					//}
-					//else
-					//{
-					//	this->container->iceEffect.gotoAndStop(16);
-					//}
+					if (this->container->iceEffect->currentFrame < this->container->iceEffect->totalFrames)
+					{
+						this->container->iceEffect->gotoAndStop((this->container->iceEffect->currentFrame + 1));
+					}
+					else
+					{
+						this->container->iceEffect->gotoAndStop(16);
+					}
 				}
-				else if(this->iceEffectCounter == 0)
+				else if(this->container->iceEffect->currentFrame > 16)
 				{
-					//播放消失的动画
-					this->iceEffectCounter--;
-
-					//if (this->container->iceEffect.currentFrame < this->container->iceEffect.totalFrames)
-					//{
-					//	this->container->iceEffect.gotoAndStop((this->container->iceEffect.currentFrame + 1));
-					//}
-					//else
-					//{
-					//	this->container->iceEffect.gotoAndStop(16);
-					//}
+					if(this->container->iceEffect->currentFrame < this->container->iceEffect->totalFrames)
+					{
+						this->container->iceEffect->gotoAndStop((this->container->iceEffect->currentFrame + 1));
+					}
+					else
+					{
+						this->container->iceEffect->gotoAndStop(16);
+					}
 				}
-				//else if (this->container->iceEffect.currentFrame > 1)
-				//{
-				//	this->container->iceEffect.gotoAndStop((this->container->iceEffect.currentFrame - 1));
-				//}
-				else if(this->iceEffectCounter <= -16)
+				else if(this->container->iceEffect->currentFrame > 1)
 				{
+					this->container->iceEffect->gotoAndStop((this->container->iceEffect->currentFrame - 1));
+				}
+				else
+				{ 
 					this->iceEffectFlag = false;
-					this->container->iceEffect->getAnimation()->stop();
+					this->container->iceEffect->stop();
 					this->container->iceEffect->setVisible(false); 
 				}
 			}
@@ -592,11 +589,11 @@ namespace engine
 				if (!this->container->buffHP->isVisible())
 				{
 					this->container->buffHP->setVisible(true)  ;
-					this->container->buffHP->getAnimation()->gotoAndPlay("buffhp");
+					this->container->buffHP->gotoAndStop(1);
 				}
-				//else if(this->container->buffHP.currentFrame < this->container->buffHP.totalFrames)
-				//{
-					//this->container->buffHP->gotoAndStop((this->container->buffHP.currentFrame + 1));
+				else if(this->container->buffHP->currentFrame < this->container->buffHP->totalFrames)
+				{
+					this->container->buffHP->gotoAndStop((this->container->buffHP->currentFrame + 1));
 					if (this->health + this->healthPlusValue < this->healthMax)
 					{
 						this->health = this->health + this->healthPlusValue;
@@ -607,52 +604,49 @@ namespace engine
 						this->container->healthBar->setVisible(false);
 						this->container->healthBar->cont->setScaleX ( 1);
 						this->health = this->healthMax;
-						this->healthPlusFlag = false;
-						this->container->buffHP->setVisible(false);
 					}
-				//}
-				//else
-				//{
-				//	this->healthPlusFlag = false;
-				//	this->container->buffHP->setVisible(false);
-				//}
+				}
+				else
+				{
+					this->healthPlusFlag = false;
+					this->container->buffHP->setVisible(false);
+				}
 			}
-			//if (this->armorFlag)
-			//{
-			//	if (this->armorCounter > 0 && this->armorPower > 0)
-			//	{
-			//		(this->armorCounter - 1);
-			//		if (!this->container->armor->isVisible())
-			//		{
-			//			this->container->armor->setVisible(true);
-			//			this->container->armor.gotoAndStop(1);
-			//		}
-			//		else if (this->container->armor.currentFrame < this->container->armor.totalFrames)
-			//		{
-			//			this->container->armor.gotoAndStop((this->container->armor.currentFrame + 1));
-			//		}
-			//		else
-			//		{
-			//			this->container->armor.gotoAndStop(16);
-			//		}
-			//	}
-			//	else
-			//	{
-			//		this->armorFlag = false;
-			//		this->container->armor->setVisible(false);
-			//	}
-			//}
-			//else if (this->armorCounter > 0)
-			//{
-			//	this->armorFlag = true;
-			//}
+			if (this->armorFlag)
+			{
+				if (this->armorCounter > 0 && this->armorPower > 0)
+				{
+					(this->armorCounter - 1);
+					if (!this->container->armor->isVisible())
+					{
+						this->container->armor->setVisible(true);
+						this->container->armor->gotoAndStop(1);
+					}
+					else if(this->container->armor->currentFrame < this->container->armor->totalFrames)
+					{
+						this->container->armor->gotoAndStop((this->container->armor->currentFrame + 1));
+					}
+					else
+					{
+						this->container->armor->gotoAndStop(16);
+					}
+				}
+				else
+				{
+					this->armorFlag = false;
+					this->container->armor->setVisible(false);
+				}
+			}
+			else if (this->armorCounter > 0)
+			{
+				this->armorFlag = true;
+			}
 			if (this->airShockFlag)
 			{
 				if (!this->container->airShock->isVisible())
 				{
 					this->container->airShock->setVisible(true);
-					this->container->airShock->getAnimation()->gotoAndPlay("airshock",-1,-1,0xFFFFFF);
-					//this->container->airShock->gotoAndStop(1);
+					this->container->airShock->gotoAndStop(1);
 					if (this->icemanFlag)
 					{
 						this->stopAllEffects("airShock");
@@ -661,13 +655,13 @@ namespace engine
 				else if (this->airShockCounter > 0)
 				{
 					this->airShockCounter--;
-					//if (this->container->airShock.currentFrame < this->container->airShock.totalFrames)
+					//if (this->container->airShock->currentFrame < this->container->airShock->totalFrames)
 					//{
-					//	this->container->airShock.gotoAndStop((this->container->airShock.currentFrame + 1));
+					//	this->container->airShock->gotoAndStop((this->container->airShock->currentFrame + 1));
 					//}
 					//else
 					//{
-					//	this->container->airShock.gotoAndStop(1);
+					//	this->container->airShock->gotoAndStop(1);
 					//}
 				}
 				else
@@ -681,25 +675,24 @@ namespace engine
 				if (!this->container->buffSpeed->isVisible())
 				{
 					this->container->buffSpeed->setVisible(true) ;
-					this->container->buffSpeed->getAnimation()->gotoAndPlay("buffspeed",-1,-1,0xFFFFFF);
-					//this->container->buffSpeed.gotoAndStop(1);
+					this->container->buffSpeed->gotoAndStop(1);
 				}
 				else if (this->speedPlusCounter > 0)
 				{
 					this->speedPlusCounter--;
-					//if (this->container->buffSpeed.currentFrame < this->container->buffSpeed.totalFrames)
-					//{
-					//	this->container->buffSpeed.gotoAndStop((this->container->buffSpeed.currentFrame + 1));
-					//}
-					//else
-					//{
-					//	this->container->buffSpeed.gotoAndStop(1);
-					//}
+					if (this->container->buffSpeed->currentFrame < this->container->buffSpeed->totalFrames)
+					{
+						this->container->buffSpeed->gotoAndStop((this->container->buffSpeed->currentFrame + 1));
+					}
+					else
+					{
+						this->container->buffSpeed->gotoAndStop(1);
+					}
 				}
 				else
 				{
 					this->speedPlusFlag = false;
-					this->container->buffSpeed->getAnimation()->stop();
+					this->container->buffSpeed->getAnimation()->stop("");
 					this->container->buffSpeed->setVisible(false);
 				}
 			}
@@ -724,16 +717,16 @@ namespace engine
 						if (!this->container->dust1->isVisible())
 						{
 							this->container->dust1->setVisible(true);
-							this->container->dust1->getAnimation()->gotoAndPlay("dust1");
+							this->container->dust1->gotoAndStop(1);
 						}
-						//else if (this->container->dust1.currentFrame < this->container->dust1.totalFrames)
-						//{
-						//	this->container->dust1.gotoAndStop((this->container->dust1.currentFrame + 1));
-						//}
-						//else
-						//{
-						//	this->container->dust1.gotoAndStop(1);
-						//}
+						else if (this->container->dust1->currentFrame < this->container->dust1->totalFrames)
+						{
+							this->container->dust1->gotoAndStop((this->container->dust1->currentFrame + 1));
+						}
+						else
+						{
+							this->container->dust1->gotoAndStop(1);
+						}
 					}
 					else if (this->airGo == 2)
 					{
@@ -749,27 +742,27 @@ namespace engine
 						{
 							this->container->dust2->setVisible(true);
 							this->container->dust3->setVisible(true);
-							this->container->dust2->getAnimation()->gotoAndPlay("dust2");
-							this->container->dust3->getAnimation()->gotoAndPlay("dust3");
+							this->container->dust2->gotoAndStop(1);
+							this->container->dust3->gotoAndStop(1);
 						}
 						else
 						{
-							//if (this->container->dust2.currentFrame < this->container->dust2.totalFrames)
-							//{
-							//	this->container->dust2.gotoAndStop((this->container->dust2.currentFrame + 1));
-							//}
-							//else
-							//{
-							//	this->container->dust2.gotoAndStop(1);
-							//}
-							//if (this->container->dust3.currentFrame < this->container->dust3.totalFrames)
-							//{
-							//	this->container->dust3.gotoAndStop((this->container->dust3.currentFrame + 1));
-							//}
-							//else
-							//{
-							//	this->container->dust3.gotoAndStop(1);
-							//}
+							if (this->container->dust2->currentFrame < this->container->dust2->totalFrames)
+							{
+								this->container->dust2->gotoAndStop((this->container->dust2->currentFrame + 1));
+							}
+							else
+							{
+								this->container->dust2->gotoAndStop(1);
+							}
+							if (this->container->dust3->currentFrame < this->container->dust3->totalFrames)
+							{
+								this->container->dust3->gotoAndStop((this->container->dust3->currentFrame + 1));
+							}
+							else
+							{
+								this->container->dust3->gotoAndStop(1);
+							}
 						}
 					}
 					else if (this->airGo == 3)
@@ -789,16 +782,16 @@ namespace engine
 						if (!this->container->dust4->isVisible())
 						{
 							this->container->dust4->setVisible(true)  ;
-							this->container->dust4->getAnimation()->gotoAndPlay("dust4");
+							this->container->dust4->gotoAndStop(1);
 						}
-						//else if (this->container->dust4.currentFrame < this->container->dust4.totalFrames)
-						//{
-						//	this->container->dust4.gotoAndStop((this->container->dust4.currentFrame + 1));
-						//}
-						//else
-						//{
-						//	this->container->dust4.gotoAndStop(1);
-						//}
+						else if (this->container->dust4->currentFrame < this->container->dust4->totalFrames)
+						{
+							this->container->dust4->gotoAndStop((this->container->dust4->currentFrame + 1));
+						}
+						else
+						{
+							this->container->dust4->gotoAndStop(1);
+						}
 					}
 				}
 				else
@@ -827,7 +820,7 @@ namespace engine
 				if (!this->container->iceFreez->isVisible())
 				{
 					this->container->iceFreez->setVisible(true);
-					this->container->iceFreez->getAnimation()->gotoAndPlay("icemanlive",-1,-1,0xfffff);
+					this->container->iceFreez->gotoAndStop(1);
 					this->stopAllEffects("fireEffect");
 					this->stopAllEffects("iceEffect");
 					this->stopAllEffects("airShock");
@@ -836,14 +829,14 @@ namespace engine
 				else if (this->icemanCounter > 0)
 				{
 					this->icemanCounter--;
-					//if (this->container->iceFreez.currentFrame < 45)
-					//{
-					//	this->container->iceFreez.gotoAndStop((this->container->iceFreez.currentFrame + 1));
-					//}
-					//else
-					//{
-					//	this->container->iceFreez.gotoAndStop(1);
-					//}
+					if (this->container->iceFreez->currentFrame < 45)
+					{
+						this->container->iceFreez->gotoAndStop((this->container->iceFreez->currentFrame + 1));
+					}
+					else
+					{
+						this->container->iceFreez->gotoAndStop(1);
+					}
 					if (this->icemanCounter % 30 ==0 )
 					{
 						this->getHit(Main::mainClass->readXMLClass.castIcemanDamageXML, "ice", 1, false, 0);
@@ -851,97 +844,81 @@ namespace engine
 				}
 				else 
 				{
-					if(this->icemanCounter ==0 )
+					if(this->container->iceFreez->currentFrame < 46)
 					{
-						this->container->iceFreez->getAnimation()->gotoAndPlay("icemandead");
+						this->container->iceFreez->gotoAndStop(46);
 					}
-					this->icemanCounter--;
-					//if(this->container->iceFreez.currentFrame < 46)
-					//{
-					//	this->container->iceFreez.gotoAndStop(46);
-					//}
-					//if (this->container->iceFreez.currentFrame < this->container->iceFreez.totalFrames)
-					//{
-					//	this->container->iceFreez.gotoAndStop((this->container->iceFreez.currentFrame + 1));
-					//	if (this->container->iceFreez.currentFrame == 46)
-					//	{
-					//		Sounds.instance.playSound("snd_unit_floeCrash");
-					//	}
-					//}
-					//else
-					if(this->icemanCounter < -16){
-						this->container->iceFreez->getAnimation()->stop();
+					if (this->container->iceFreez->currentFrame < this->container->iceFreez->totalFrames)
+					{
+						this->container->iceFreez->gotoAndStop((this->container->iceFreez->currentFrame + 1));
+						if (this->container->iceFreez->currentFrame == 46)
+						{
+							//Sounds.instance.playSound("snd_unit_floeCrash");
+						}
+					}
+					else 
+					{
+						this->container->iceFreez->stop();
 						this->icemanFlag = false;
 						this->container->iceFreez->setVisible(false);
 						//Sounds.instance.playSound("snd_unit_floeShards");
 					}
 				}
 			}
-			if (this->dead && this->container->iceDeath)
+			if(this->dead && this->container->iceDeath)
 			{
-				if (this->container->iceDeath->isVisible())
+				if(this->container->iceDeath->isVisible())
 				{
-					if(this->container->attrFlag["iceDeath"]   == 0)
-						this->container->iceDeath->getAnimation()->gotoAndPlay("icedeath");
-					this->container->attrFlag["iceDeath"]++;
-					if(this->container->attrFlag["iceDeath"] == 9)
-						this->container->cont->setVisible(false);
-					else if(this->container->getOpacity() > 0)
-						this->container->setOpacity(this->container->getOpacity() - 0.25 * this->container->getOpacity());
-					else
-						this->removeUnitAfterDeathAnima();
-				}
-				else if (this->container->stoneDeath->isVisible())
-				{
-					if(this->container->attrFlag["stoneDeath"] == 0)
+					if(this->container->iceDeath->currentFrame < this->container->iceDeath->totalFrames)
 					{
-						this->container->iceDeath->getAnimation()->gotoAndPlay("stonedeath");
+						this->container->iceDeath->gotoAndStop((this->container->iceDeath->currentFrame + 1));
+						if(this->container->iceDeath->currentFrame == 9)
+						{
+							this->container->cont->setVisible(false);
+						}
 					}
-					this->container->attrFlag["stoneDeath"]++;
-					if(this->container->attrFlag["stoneDeath"] == 3)
-						this->container->cont->setVisible(false);
-					else
-						this->removeUnitAfterDeathAnima();
-					//if (this->container->stoneDeath.currentFrame < this->container->stoneDeath.totalFrames)
-					//{
-					//	this->container->stoneDeath.gotoAndStop((this->container->stoneDeath.currentFrame + 1));
-					//	if (this->container->stoneDeath.currentFrame == 3)
-					//	{
-					//		this->container->cont->setVisible(false);
-					//	}
-					//}
-					//else
-					//{
-					//	this->removeUnitAfterDeathAnima();
-					//}
-				}
-				else if (this->container->levinDeath->isVisible())
-				{
-					if(this->container->attrFlag["levinDeath"] == 0)
-						this->container->levinDeath->getAnimation()->gotoAndPlay("levindeath");
-					this->container->attrFlag["levinDeath"]++;
-					if(this->container->attrFlag["levinDeath"] == 6)
-						this->container->cont->setVisible(false);
 					else if(this->container->getOpacity() > 0)
 						this->container->setOpacity(this->container->getOpacity() - 0.25 * this->container->getOpacity());
 					else
 						this->removeUnitAfterDeathAnima();
-					//if (this->container->levinDeath.currentFrame < this->container->levinDeath.totalFrames)
-					//{
-					//	this->container->levinDeath.gotoAndStop((this->container->levinDeath.currentFrame + 1));
-					//	if (this->container->levinDeath.currentFrame == 6)
-					//	{
-					//		this->container->cont->setVisible(false);
-					//	}
-					//}
-					//else if (this->container->alpha > 0)
-					//{
-					//	this->container->alpha = this->container->alpha - 0.25;
-					//}
-					//else
-					//{
-					//	this->removeUnitAfterDeathAnima();
-					//}
+				}
+				else if(this->container->stoneDeath->isVisible())
+				{
+					if(this->container->stoneDeath->currentFrame < this->container->stoneDeath->totalFrames)
+					{
+						this->container->stoneDeath->gotoAndStop((this->container->stoneDeath->currentFrame + 1));
+						if(this->container->stoneDeath->currentFrame == 9)
+						{
+							this->container->cont->setVisible(false);
+						}
+					}
+					if(this->container->stoneDeath->currentFrame < this->container->stoneDeath->totalFrames)
+					{
+						this->container->stoneDeath->gotoAndStop((this->container->stoneDeath->currentFrame + 1));
+						if(this->container->stoneDeath->currentFrame == 3)
+						{
+							this->container->cont->setVisible(false);
+						}
+					}
+					else
+					{
+						this->removeUnitAfterDeathAnima();
+					}
+				}
+				else if(this->container->levinDeath->isVisible())
+				{
+					if(this->container->levinDeath->currentFrame < this->container->levinDeath->totalFrames)
+					{
+						this->container->levinDeath->gotoAndStop((this->container->levinDeath->currentFrame + 1));
+						if(this->container->levinDeath->currentFrame == 6)
+						{
+							this->container->cont->setVisible(false);
+						}
+					}
+					else if(this->container->getOpacity() > 0)
+						this->container->setOpacity(this->container->getOpacity() - 0.25 * this->container->getOpacity());
+					else
+						this->removeUnitAfterDeathAnima();
 				}
 			}
 			//this->container->unitCase.x = this->container->unitCase.coordOrigin.x + this->container->cont.x;
@@ -1035,7 +1012,7 @@ namespace engine
 						if (!this->container->fireAttack->isVisible() && this->typeUnit != 34)
 						{
 							this->container->fireAttack->setVisible(true);
-							this->container->fireAttack->getAnimation()->gotoAndPlay("fireattack");
+							this->container->fireAttack->getAnimation()->play("fireattack");
 						}
 						if (this->typeUnit != 23)
 						{
@@ -1050,7 +1027,7 @@ namespace engine
 						{
 							this->healthPlusFlag = true;
 							this->healthPlusValue = param1 * Main::mainClass->readXMLClass.listOfEnemiesXML[(this->typeUnit - 1)][30];
-							this->healthPlusValue = this->healthPlusValue / 25;// this->container->buffHP.totalFrames;
+							this->healthPlusValue = this->healthPlusValue / 25;// this->container->buffHP->totalFrames;
 						}
 					}
 					else if (this->typeUnit != 23)
@@ -1067,7 +1044,7 @@ namespace engine
 						this->tempObject = 0;
 						this->healthPlusFlag = true;
 						this->healthPlusValue = param1 * Main::mainClass->readXMLClass.listOfEnemiesXML[(this->typeUnit - 1)][30];
-						this->healthPlusValue = this->healthPlusValue / 25;//  this->container->buffHP.totalFrames;
+						this->healthPlusValue = this->healthPlusValue / 25;//  this->container->buffHP->totalFrames;
 					}
 				}
 				else if (param2 == "ice")
@@ -1078,7 +1055,7 @@ namespace engine
 						if (!this->container->iceAttack->isVisible() && this->typeUnit != 34)
 						{
 							this->container->iceAttack->setVisible(true);
-							this->container->iceAttack->getAnimation()->gotoAndPlay("iceattack");
+							this->container->iceAttack->getAnimation()->play("iceattack");
 						}
 						if (this->typeUnit != 24 && this->typeUnit != 34)
 						{
@@ -1453,7 +1430,7 @@ namespace engine
 						if (!this->container->levinAttack->isVisible())
 						{
 							this->container->levinAttack->setVisible(true);
-							this->container->levinAttack->getAnimation()->gotoAndPlay("levinattack"); 
+							this->container->levinAttack->getAnimation()->play("levinattack"); 
 						}
 						if (this->typeUnit != 26)
 						{
@@ -1462,7 +1439,7 @@ namespace engine
 								this->i = 0;
 								while (this->i < this->world->listOfUnits.size())
 								{
-									if(this->world->listOfUnits[this->i]->atStage && this->world->listOfUnits[this->i]->readyDamage && this->world->listOfUnits[this->i] != this && this->typeUnit != 33)
+									if(this->world->listOfUnits[this->i]->atStaged && this->world->listOfUnits[this->i]->readyDamage && this->world->listOfUnits[this->i] != this && this->typeUnit != 33)
 									{
 										if(this->world->listOfUnits[this->i]->this_pt.distance(this->this_pt) < Main::mainClass->readXMLClass.towerStoneEffectRadiusXML)
 										//if(Point.distance(this->world->listOfUnits[this->i].this_pt, this->this_pt) < Main::mainClass->readXMLClass.towerLevinEffectRadiusXML)
@@ -1497,7 +1474,7 @@ namespace engine
 							this->i = 0;
 							while (this->i < this->world->listOfUnits.size())
 							{
-								if(this->world->listOfUnits[this->i]->atStage && this->world->listOfUnits[this->i]->readyDamage && this->world->listOfUnits[this->i] != this && this->typeUnit != 33)
+								if(this->world->listOfUnits[this->i]->atStaged && this->world->listOfUnits[this->i]->readyDamage && this->world->listOfUnits[this->i] != this && this->typeUnit != 33)
 								{
 									if(this->world->listOfUnits[this->i]->this_pt.distance(this->this_pt) < Main::mainClass->readXMLClass.towerStoneEffectRadiusXML)
 									//if(Point.distance(this->world->listOfUnits[this->i].this_pt, this->this_pt) < Main::mainClass->readXMLClass.levinEffectRadiusXML)
@@ -1727,7 +1704,7 @@ namespace engine
 			{
 				if (this->container->signal->isVisible())
 				{
-					//this->container->signal.gotoAndStop(1);
+					//this->container->signal->gotoAndStop(1);
 					this->container->signal->setVisible(false);
 				}
 			}

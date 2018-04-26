@@ -30,6 +30,8 @@ namespace engine
         void update();
 		void play(string aniName = "");
 		void stop(string aniName = "");
+		dragonBones::Armature *getArmature();
+		dragonBones::Animation *getAnimation();
     };
     struct ImageMovieClip :public BaseNode
     {

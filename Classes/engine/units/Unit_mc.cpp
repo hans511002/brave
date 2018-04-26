@@ -26,133 +26,108 @@ namespace engine
 			this->signal = NULL;
 			this->setPosition(0, 0);
 			this->contName = contName;
-			DBCCFactory::getInstance()->loadDragonBonesData(contName + "/skeleton.xml", contName);
-			DBCCFactory::getInstance()->loadTextureAtlas(contName + "/texture.xml", contName);
-			cont = DBCCFactory::getInstance()->buildArmatureNode(contName);
+			cont = new MovieClip("unit/", contName);
+			//DBCCFactory::getInstance()->loadDragonBonesData(contName + "/skeleton.xml", contName);
+			//DBCCFactory::getInstance()->loadTextureAtlas(contName + "/texture.xml", contName);
+			//cont = DBCCFactory::getInstance()->buildArmatureNode(contName);
 
 			std::string amnis[16] = { "levindeath", "stonedeath", "icedeath", "buffhp", "airshock",
 				"buffspeed", "dust1", "dust2", "dust3", "dust4", "fireattack", "levinattack", "iceattack", "icefreeze",
 				"fireeffect","iceeffect"};
-			for (int i = 0; i< 16; i++)
-			{
-				DBCCFactory::getInstance()->loadDragonBonesData(amnis[i] + "/skeleton.xml", amnis[i]);
-				DBCCFactory::getInstance()->loadTextureAtlas( amnis[i] + "/texture.xml", amnis[i]);
-			}
+			//for (int i = 0; i< 16; i++)
+			//{
+			//	DBCCFactory::getInstance()->loadDragonBonesData(amnis[i] + "/skeleton.xml", amnis[i]);
+			//	DBCCFactory::getInstance()->loadTextureAtlas( amnis[i] + "/texture.xml", amnis[i]);
+			//}
 
-			this->levinDeath = DBCCFactory::getInstance()->buildArmatureNode("levindeath");
-			this->stoneDeath = DBCCFactory::getInstance()->buildArmatureNode("stonedeath");
-			this->iceDeath = DBCCFactory::getInstance()->buildArmatureNode("icedeath");
-			this->buffHP = DBCCFactory::getInstance()->buildArmatureNode("buffhp");
-			this->airShock = DBCCFactory::getInstance()->buildArmatureNode("airshock");
-			this->buffSpeed = DBCCFactory::getInstance()->buildArmatureNode("buffspeed");
-			this->dust1 = DBCCFactory::getInstance()->buildArmatureNode("dust1");
-			this->dust2 = DBCCFactory::getInstance()->buildArmatureNode("dust2");
-			this->dust3 = DBCCFactory::getInstance()->buildArmatureNode("dust3");
-			this->dust4 = DBCCFactory::getInstance()->buildArmatureNode("dust4");
-			this->fireAttack = DBCCFactory::getInstance()->buildArmatureNode("fireattack");
-			this->levinAttack = DBCCFactory::getInstance()->buildArmatureNode("levinattack");
-			this->iceAttack = DBCCFactory::getInstance()->buildArmatureNode("iceattack");
-			this->iceFreez = DBCCFactory::getInstance()->buildArmatureNode("icefreeze");
-			this->fireEffect = DBCCFactory::getInstance()->buildArmatureNode("fireeffect");
-			this->iceEffect = DBCCFactory::getInstance()->buildArmatureNode("iceeffect");
+			this->levinDeath = new MovieClip("unit/", "levindeath");// DBCCFactory::getInstance()->buildArmatureNode("levindeath");
+			this->stoneDeath = new MovieClip("unit/", "stonedeath");//DBCCFactory::getInstance()->buildArmatureNode("stonedeath");
+			this->iceDeath = new MovieClip("unit/", "icedeath");// DBCCFactory::getInstance()->buildArmatureNode("icedeath");
+			this->buffHP = new MovieClip("unit/", "buffhp");// DBCCFactory::getInstance()->buildArmatureNode("buffhp");
+			this->airShock = new MovieClip("unit/", "airshock");// DBCCFactory::getInstance()->buildArmatureNode("airshock");
+			this->buffSpeed = new MovieClip("unit/", "buffspeed");// DBCCFactory::getInstance()->buildArmatureNode("buffspeed");
+			this->dust1 = new MovieClip("unit/", "dust1");// DBCCFactory::getInstance()->buildArmatureNode("dust1");
+			this->dust2 = new MovieClip("unit/", "dust2");// DBCCFactory::getInstance()->buildArmatureNode("dust2");
+			this->dust3 = new MovieClip("unit/", "dust3");// DBCCFactory::getInstance()->buildArmatureNode("dust3");
+			this->dust4 = new MovieClip("unit/", "dust4");// DBCCFactory::getInstance()->buildArmatureNode("dust4");
+			this->fireAttack = new MovieClip("unit/", "fireattack");// DBCCFactory::getInstance()->buildArmatureNode("fireattack");
+			this->levinAttack = new MovieClip("unit/", "levinattack");// DBCCFactory::getInstance()->buildArmatureNode("levinattack");
+			this->iceAttack = new MovieClip("unit/", "iceattack");// DBCCFactory::getInstance()->buildArmatureNode("iceattack");
+			this->iceFreez = new MovieClip("unit/", "icefreeze");// DBCCFactory::getInstance()->buildArmatureNode("icefreeze");
+			this->fireEffect = new MovieClip("unit/", "fireeffect");// DBCCFactory::getInstance()->buildArmatureNode("fireeffect");
+			this->iceEffect = new MovieClip("unit/", "iceeffect");// DBCCFactory::getInstance()->buildArmatureNode("iceeffect");
 			this->selectUnit = cocos2d::Sprite::create("selectunit.png");
 		 
 			if (typeUnit == 28){
-				DBCCFactory::getInstance()->loadDragonBonesData("giveHealth1/skeleton.xml", "giveHealth1");
-				DBCCFactory::getInstance()->loadTextureAtlas("giveHealth1/texture.xml", "giveHealth1");
-				this->giveHealth1 = DBCCFactory::getInstance()->buildArmatureNode("giveHealth1");
-				DBCCFactory::getInstance()->loadDragonBonesData("giveHealth2/skeleton.xml", "giveHealth2");
-				DBCCFactory::getInstance()->loadTextureAtlas("giveHealth2/texture.xml", "giveHealth2");
-				this->giveHealth1 = DBCCFactory::getInstance()->buildArmatureNode("giveHealth2");
-				DBCCFactory::getInstance()->loadDragonBonesData("giveHealth3/skeleton.xml", "giveHealth3");
-				DBCCFactory::getInstance()->loadTextureAtlas("giveHealth3/texture.xml", "giveHealth3");
-				this->giveHealth1 = DBCCFactory::getInstance()->buildArmatureNode("giveHealth3");
+				this->giveHealth1 = new MovieClip("unit/", "giveHealth1");// DBCCFactory::getInstance()->buildArmatureNode("giveHealth1");
+				this->giveHealth1 = new MovieClip("unit/", "giveHealth2");// DBCCFactory::getInstance()->buildArmatureNode("giveHealth2");
+				this->giveHealth1 = new MovieClip("unit/", "giveHealth3");// DBCCFactory::getInstance()->buildArmatureNode("giveHealth3");
 			}
 			else if (this->typeUnit == 29 || this->typeUnit == 30){
-				DBCCFactory::getInstance()->loadDragonBonesData("dustAnima/skeleton.xml","dustAnima");
-				DBCCFactory::getInstance()->loadTextureAtlas("dustAnima/texture.xml", "dustAnima");
-				this->dustAnima = DBCCFactory::getInstance()->buildArmatureNode("dustAnima");
+				this->dustAnima = new MovieClip("unit/", "dustAnima");// DBCCFactory::getInstance()->buildArmatureNode("dustAnima");
 			}
 			healthBar = HealthBar::create();
 
-			this->fireEffect->getCCEventDispatcher()->addCustomEventListener(EventData::COMPLETE, std::bind(&Unit_mc::mcHandler, this, std::placeholders::_1));
+			//this->fireEffect->getEventDispatcher()->addCustomEventListener(EventObject::COMPLETE, std::bind(&Unit_mc::mcHandler, this, std::placeholders::_1));
 			//this->fireEffect->getCCEventDispatcher()->addCustomEventListener(EventData::LOOP_COMPLETE, std::bind(&Unit_mc::mcHandler, this, std::placeholders::_1));
-			//this->fireEffect->getCCEventDispatcher()->addCustomEventListener(EventData::ANIMATION_FRAME_EVENT, std::bind(&Unit_mc::mcHandler, this, std::placeholders::_1));
+			//this->fireEffect->getCCEventDispatcher()->addCustomEventListener(EventData::FRAME_EVENT, std::bind(&Unit_mc::mcHandler, this, std::placeholders::_1));
 
-			this->iceFreez->getCCEventDispatcher()->addCustomEventListener(EventData::COMPLETE, std::bind(&Unit_mc::mcHandler, this, std::placeholders::_1));
+			this->iceFreez->getEventDispatcher()->addCustomEventListener(EventObject::COMPLETE, std::bind(&Unit_mc::mcHandler, this, std::placeholders::_1));
 			//this->iceFreez->getCCEventDispatcher()->addCustomEventListener(EventData::LOOP_COMPLETE, std::bind(&Unit_mc::mcHandler, this, std::placeholders::_1));
 			//this->iceFreez->getCCEventDispatcher()->addCustomEventListener(EventData::ANIMATION_FRAME_EVENT, std::bind(&Unit_mc::mcHandler, this, std::placeholders::_1));
 			
-			this->iceDeath->getCCEventDispatcher()->addCustomEventListener(EventData::ANIMATION_FRAME_EVENT, std::bind(&Unit_mc::mcHandler, this, std::placeholders::_1));
+			this->iceDeath->getEventDispatcher()->addCustomEventListener(EventObject::FRAME_EVENT, std::bind(&Unit_mc::mcHandler, this, std::placeholders::_1));
 
 			 
 		}; 
 		void Unit_mc::mcHandler(cocos2d::EventCustom *event)
 		{
- 			EventData *eventData = (EventData*)(event->getUserData());
-			string nodeName = eventData->armature->name;
-			switch(eventData->getType())
+			EventObject *eventObject = (EventObject*)(event->getUserData());
+			string eventName = event->getEventName();//eventObject->type
+			string nodeName = eventObject->animationState->name;
+			if(eventName == dragonBones::EventObject::COMPLETE)
 			{
-			case EventData::EventType::COMPLETE:
 				if(nodeName == "iceeffect")
 				{
-					string aniName = eventData->animationState->name;
-					if(aniName == "begine")
-					{
-						this->iceEffect->getAnimation()->gotoAndPlay("continue", -1, -1, 0xFFFFFF);
-					}
-					else if(aniName == "end")
-					{
-						unit->iceEffectFlag = false;
-						this->iceEffect->getAnimation()->stop();
-						this->iceEffect->setVisible(false);
-					}
+					//string aniName = eventObject->animationState->name;
+					//if(aniName == "begin")
+					//{
+					//	this->iceEffect->getAnimation()->play("continue");
+					//}
+					//else if(aniName == "end")
+					//{
+					//	unit->iceEffectFlag = false;
+					//	this->iceEffect->getAnimation()->stop("");
+					//	this->iceEffect->setVisible(false);
+					//}
 				}
 				else if(nodeName == "icefreeze")
 				{
-					string aniName = eventData->animationState->name;
-					if("icemandead" == aniName)
-					{
-						unit->icemanFlag = false;
-						this->iceFreez->getAnimation()->stop();
-						this->iceFreez->setVisible(false);
-					}
+					//string aniName = eventObject->animationState->name;
+					//if("icemandead" == aniName)
+					//{
+					//	unit->icemanFlag = false;
+					//	this->iceFreez->getAnimation()->stop("");
+					//	this->iceFreez->setVisible(false);
+					//}
 				}
 				else if(nodeName == "fireeffect")
 				{
-					this->fireEffect->getAnimation()->gotoAndPlay("continue", -1, -1, 0xFFFFFF);
+					//this->fireEffect->getAnimation()->play("continue");
 				}
 				else if(nodeName == "icedeath")
 				{
 
 				}
-				break;
-			case EventData::EventType::LOOP_COMPLETE:
-				break;
-			case EventData::EventType::ANIMATION_FRAME_EVENT:
-				if(nodeName == "icedeath" && eventData->frameLabel == "aa")
+			}
+			else if(eventName == EventObject::FRAME_EVENT)
+			{
+				if(nodeName == "icedeath" && eventObject->name == "aa")
 				{
 					this->cont->setVisible(false);
 				}
-				break;
 			}
-
-			//switch(eventData->getType())
-			//{
-			//case EventData::EventType::COMPLETE:
-
-			//	break;
-			//case EventData::EventType::LOOP_COMPLETE:
-			//	break;
-			//case EventData::EventType::ANIMATION_FRAME_EVENT:
-			//	if(eventData->frameLabel == "ending")
-			//	{
-			//		//
-			//		//pass->removeFromParentAndCleanup(true);
-			//	}
-			//	break;
-			//	 
-			//}
+			 
 
 		};
 
@@ -224,33 +199,33 @@ namespace engine
 		};
 		void Unit_mc::stop(){
 			//this->;
-			this->cont->getAnimation()->stop();  
-			this->buffHP->getAnimation()->stop();
-			this->airShock->getAnimation()->stop();
-			this->buffSpeed->getAnimation()->stop();
-			this->dust1->getAnimation()->stop();
-			this->dust2->getAnimation()->stop();
-			this->dust3->getAnimation()->stop();
-			this->dust4->getAnimation()->stop();
-			this->fireAttack->getAnimation()->stop();
-			this->iceAttack->getAnimation()->stop();
-			this->levinAttack->getAnimation()->stop();
-			this->iceFreez->getAnimation()->stop();
-			this->fireEffect->getAnimation()->stop();
-			this->iceEffect->getAnimation()->stop(); 
+			this->cont->stop();  
+			this->buffHP->stop();
+			this->airShock->stop();
+			this->buffSpeed->stop();
+			this->dust1->stop();
+			this->dust2->stop();
+			this->dust3->stop();
+			this->dust4->stop();
+			this->fireAttack->stop();
+			this->iceAttack->stop();
+			this->levinAttack->stop();
+			this->iceFreez->stop();
+			this->fireEffect->stop();
+			this->iceEffect->stop(); 
 			if (this->iceDeath)
 			{
-				this->iceDeath->getAnimation()->stop();
-				this->stoneDeath->getAnimation()->stop();
-				this->levinDeath->getAnimation()->stop();
+				this->iceDeath->stop();
+				this->stoneDeath->stop();
+				this->levinDeath->stop();
 			}
-			if (this->unitCase)this->armor->getAnimation()->stop();
-			if (this->armor)this->armor->getAnimation()->stop();
-			if (this->shadow)this->shadow->getAnimation()->stop(); 
-			if (this->signal)this->signal->getAnimation()->stop();
-			if (this->giveHealth1)this->giveHealth1->getAnimation()->stop();
-			if (this->giveHealth2)this->giveHealth2->getAnimation()->stop();
-			if (this->giveHealth3)this->giveHealth3->getAnimation()->stop();
+			if (this->unitCase)this->armor->stop();
+			if (this->armor)this->armor->stop();
+			if (this->shadow)this->shadow->stop(); 
+			if (this->signal)this->signal->stop();
+			if (this->giveHealth1)this->giveHealth1->stop();
+			if (this->giveHealth2)this->giveHealth2->stop();
+			if (this->giveHealth3)this->giveHealth3->stop();
 		};
 	}
 }
