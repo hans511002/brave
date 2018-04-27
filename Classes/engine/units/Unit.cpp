@@ -6,6 +6,11 @@ namespace engine
 {
 	namespace units
 	{
+	        NewEnemy_mc::NewEnemy_mc()
+            {
+                return;
+            }// end function
+
 		bool Unit::init() //public function init(event:Event) : void event:Event
 		{
 			//this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
@@ -105,21 +110,21 @@ namespace engine
 				this->setVerticalTurn();
 			}
 			this->world->forseIndexFl = true;
-			//if (this->typeUnit < 33)
-			//{
-			//	if (Main.mainClass.saveBoxClass.gameSave.data.firstViewEnemies[(this->typeUnit - 1)] == 0)
-			//	{
-			//		Main.mainClass.saveBoxClass.gameSave.data.firstViewEnemies[(this->typeUnit - 1)] = 1;
-			//		this->tempObject = new NewEnemy_mc();
-			//		this->tempObject.stop();
-			//		this->tempObject.newEnemyCase.stop();
-			//		this->tempObject.typeUnit = this->typeUnit;
-			//		this->tempObject.newEnemyCase.buttonMode = true;
-			//		this->world->worldInterface.addChild(this->tempObject);
-			//		this->world->worldInterface.listOfNewEnemies.push(this->tempObject);
-			//		Sounds.instance.playSoundWithVol("snd_world_newEnemy", 0.9);
-			//	}
-			//} 
+			if (this->typeUnit < 33)
+			{
+				if (Main::mainClass->saveBoxClass->getIntValue("firstViewEnemies",(this->typeUnit - 1)) == 0)
+				{
+				    Main::mainClass->saveBoxClass->getValue("firstViewEnemies",(this->typeUnit - 1),1);
+					MovieClip * tempObject = new NewEnemy_mc();
+					tempObject->stop();
+					tempObject->newEnemyCase->stop();
+					tempObject->typeUnit = this->typeUnit;
+					//this->tempObject.newEnemyCase.buttonMode = true;
+					this->world->worldInterface->addChild(this->tempObject);
+					this->world->worldInterface->listOfNewEnemies.push(this->tempObject);
+					//Sounds.instance.playSoundWithVol("snd_world_newEnemy", 0.9);
+				}
+			} 
 			this->schedule(schedule_selector(Unit::update), 0.0f);
 			return true;
 		}// end function
@@ -1444,13 +1449,13 @@ namespace engine
 										if(this->world->listOfUnits[this->i]->this_pt.distance(this->this_pt) < Main::mainClass->readXMLClass.towerStoneEffectRadiusXML)
 										//if(Point.distance(this->world->listOfUnits[this->i].this_pt, this->this_pt) < Main::mainClass->readXMLClass.towerLevinEffectRadiusXML)
 										{
-											//this->tempObject1 = this->world->addBullet(4, this->shoot_pt, this, this->world->listOfUnits[this->i], param1 * Main::mainClass->readXMLClass.towerLevinEffectDamageXML, 1);
-											//this->tempObject1.effectFlag = false;
-											//param3 = param3 - 1;
-											//if (param3 <= 0)
-											//{
-											//	break;
-											//}
+											Bullet * tempObject1 = this->world->addBullet(4, this->shoot_pt, this, this->world->listOfUnits[this->i], param1 * Main::mainClass->readXMLClass.towerLevinEffectDamageXML, 1);
+											tempObject1->effectFlag = false;
+											param3 = param3 - 1;
+											if (param3 <= 0)
+											{
+												break;
+											}
 										}
 									}
 									i++;
@@ -1479,9 +1484,9 @@ namespace engine
 									if(this->world->listOfUnits[this->i]->this_pt.distance(this->this_pt) < Main::mainClass->readXMLClass.towerStoneEffectRadiusXML)
 									//if(Point.distance(this->world->listOfUnits[this->i].this_pt, this->this_pt) < Main::mainClass->readXMLClass.levinEffectRadiusXML)
 									{
-										//this->tempObject1 = this->world->addBullet(4, this->shoot_pt, this, this->world->listOfUnits[this->i], param1 * Main::mainClass->readXMLClass.towerLevinEffectDamageXML, 1);
-										//this->tempObject1.effectFlag = false;
-										//this->tempObject1->setVisible(false);
+										Bullet * tempObject1 = this->world->addBullet(4, this->shoot_pt, this, this->world->listOfUnits[this->i], param1 * Main::mainClass->readXMLClass.towerLevinEffectDamageXML, 1);
+										tempObject1.effectFlag = false;
+										tempObject1->setVisible(false);
 										param3 = param3 - 1;
 										if (param3 <= 0)
 										{
@@ -1704,7 +1709,7 @@ namespace engine
 			{
 				if (this->container->signal->isVisible())
 				{
-					//this->container->signal->gotoAndStop(1);
+					this->container->signal->gotoAndStop(1);
 					this->container->signal->setVisible(false);
 				}
 			}
@@ -1808,49 +1813,49 @@ namespace engine
 							}
 							i++;
 						}
-						//if (this->replacementFlag == 1)
-						//{
-						//	this->i = 0;
-						//	while (this->i < this->replacementCount)
-						//	{
-						//		if (this->world->wavesClass->listOfReplacement.size()== 0)
-						//		{
-						//			this->world->wavesClass->listOfReplacement[0][0] = 60;
-						//			this->world->wavesClass->listOfReplacement[0][1] = 29;
-						//			this->world->wavesClass->listOfReplacement[0][2] = this->road;
-						//			this->world->wavesClass->listOfReplacement[0][3] = this->way;
-						//			this->world->wavesClass->listOfReplacement[0][4] = this->path; 
-						//			//this->world->wavesClass->listOfReplacement.push([60, 29, this->road, this->way, this->path]);
-						//		}
-						//		else
-						//		{
-						//			int c = this->world->wavesClass->listOfReplacement.size();
-						//			this->world->wavesClass->listOfReplacement[c][0] = this->world->wavesClass->listOfReplacement[(c - 1)][0] + 60;
-						//			this->world->wavesClass->listOfReplacement[c][1] = 29;
-						//			this->world->wavesClass->listOfReplacement[c][2] = this->road;
-						//			this->world->wavesClass->listOfReplacement[c][3] = this->way;
-						//			this->world->wavesClass->listOfReplacement[c][4] = this->path;
-						//			//this->world->wavesClass->listOfReplacement.push([this->world->wavesClass->listOfReplacement[(c- 1)][0] + 60, 29, this->road, this->way, this->path]);
-						//		}
-						//		i++;
-						//	}
-						//}
-						//else if (this->replacementFlag == 2)
-						//{
-						//	this->i = 0;
-						//	while (this->i < this->replacementCount)
-						//	{
-						//		if (this->world->wavesClass->listOfReplacement.size() == 0)
-						//		{
-						//			this->world->wavesClass->listOfReplacement.push([60, 30, this->road, this->way, this->path]);
-						//		}
-						//		else
-						//		{
-						//			this->world->wavesClass->listOfReplacement.push([this->world->wavesClass->listOfReplacement[(this->world->wavesClass->listOfReplacement.length - 1)][0] + 60, 30, this->road, this->way, this->path]);
-						//		}
-						//		i++;
-						//	}
-						//}
+						if (this->replacementFlag == 1)
+						{
+							this->i = 0;
+							while (this->i < this->replacementCount)
+							{
+								if (this->world->wavesClass->listOfReplacement.size()== 0)
+								{
+									this->world->wavesClass->listOfReplacement[0][0] = 60;
+									this->world->wavesClass->listOfReplacement[0][1] = 29;
+									this->world->wavesClass->listOfReplacement[0][2] = this->road;
+									this->world->wavesClass->listOfReplacement[0][3] = this->way;
+									this->world->wavesClass->listOfReplacement[0][4] = this->path; 
+									//this->world->wavesClass->listOfReplacement.push([60, 29, this->road, this->way, this->path]);
+								}
+								else
+								{
+									int c = this->world->wavesClass->listOfReplacement.size();
+									this->world->wavesClass->listOfReplacement[c][0] = this->world->wavesClass->listOfReplacement[(c - 1)][0] + 60;
+									this->world->wavesClass->listOfReplacement[c][1] = 29;
+									this->world->wavesClass->listOfReplacement[c][2] = this->road;
+									this->world->wavesClass->listOfReplacement[c][3] = this->way;
+									this->world->wavesClass->listOfReplacement[c][4] = this->path;
+									//this->world->wavesClass->listOfReplacement.push([this->world->wavesClass->listOfReplacement[(c- 1)][0] + 60, 29, this->road, this->way, this->path]);
+								}
+								i++;
+							}
+						}
+						else if (this->replacementFlag == 2)
+						{
+							this->i = 0;
+							while (this->i < this->replacementCount)
+							{
+								if (this->world->wavesClass->listOfReplacement.size() == 0)
+								{
+									this->world->wavesClass->listOfReplacement.push([60, 30, this->road, this->way, this->path]);
+								}
+								else
+								{
+									this->world->wavesClass->listOfReplacement.push([this->world->wavesClass->listOfReplacement[(this->world->wavesClass->listOfReplacement.length - 1)][0] + 60, 30, this->road, this->way, this->path]);
+								}
+								i++;
+							}
+						}
 					}
 					int addit_killEnemiesCounter = this->world->saveBox->getIntValue("addit_killEnemiesCounter") + 1;
 					this->world->saveBox->setValue("addit_killEnemiesCounter", addit_killEnemiesCounter);

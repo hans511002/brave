@@ -9,6 +9,12 @@ namespace engine
 	class World;
 	namespace units
 	{
+	     struct NewEnemy_mc :public MovieClip
+        {
+            MovieClip* newEnemyCase;
+             NewEnemy_mc();
+        };
+    
 		class Unit :public BaseNode
 		{
 		public:
