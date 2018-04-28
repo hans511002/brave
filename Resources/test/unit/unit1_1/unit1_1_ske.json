@@ -1,0 +1,207 @@
+{
+    "frameRate": 30,
+    "name": "unit1_1",
+    "version": "5.5",
+    "compatibleVersion": "5.5",
+    "armature": [
+        {
+            "type": "Armature",
+            "frameRate": 30,
+            "name": "unit1_1",
+            "aabb": {
+                "x": -10,
+                "y": -13,
+                "width": 20,
+                "height": 26
+            },
+            "bone": [
+                {
+                    "name": "root"
+                },
+                {
+                    "name": "cont",
+                    "parent": "root"
+                }
+            ],
+            "slot": [
+                {
+                    "name": "contSlot",
+                    "parent": "cont"
+                }
+            ],
+            "skin": [
+                {
+                    "slot": [
+                        {
+                            "name": "contSlot",
+                            "display": [
+                                {
+                                    "type": "armature",
+                                    "name": "Sprite/sprite 2372"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "animation": [
+                {
+                    "duration": 30,
+                    "fadeInTime": 0.3,
+                    "name": "unit1_1",
+                    "bone": [
+                        {
+                            "name": "cont",
+                            "translateFrame": [
+                                {
+                                    "duration": 7,
+                                    "tweenEasing": 0
+                                },
+                                {
+                                    "duration": 14,
+                                    "tweenEasing": 0,
+                                    "x": -0.5
+                                },
+                                {
+                                    "tweenEasing": 0,
+                                    "x": -0.95,
+                                    "y": 0.05
+                                },
+                                {
+                                    "tweenEasing": 0,
+                                    "x": 0.5
+                                },
+                                {
+                                    "duration": 6,
+                                    "tweenEasing": 0,
+                                    "x": 0.45
+                                },
+                                {}
+                            ],
+                            "rotateFrame": [
+                                {
+                                    "duration": 7,
+                                    "tweenEasing": 0
+                                },
+                                {
+                                    "duration": 14,
+                                    "tweenEasing": 0,
+                                    "rotate": -4
+                                },
+                                {
+                                    "tweenEasing": 0,
+                                    "rotate": 3.3
+                                },
+                                {
+                                    "tweenEasing": 0,
+                                    "rotate": 4
+                                },
+                                {
+                                    "duration": 6,
+                                    "tweenEasing": 0,
+                                    "rotate": 3.29
+                                },
+                                {}
+                            ]
+                        }
+                    ],
+                    "slot": [
+                        {
+                            "name": "contSlot",
+                            "displayFrame": [
+                                {
+                                    "duration": 30
+                                },
+                                {
+                                    "duration": 0,
+                                    "value": -1
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "defaultActions": [
+                {
+                    "gotoAndPlay": "unit1_1"
+                }
+            ]
+        },
+        {
+            "type": "Armature",
+            "frameRate": 30,
+            "name": "Sprite/sprite 2372",
+            "aabb": {
+                "x": -10,
+                "y": -21,
+                "width": 20,
+                "height": 26
+            },
+            "bone": [
+                {
+                    "name": "Layer 1"
+                }
+            ],
+            "slot": [
+                {
+                    "name": "contSlot",
+                    "parent": "Layer 1"
+                }
+            ],
+            "skin": [
+                {
+                    "slot": [
+                        {
+                            "name": "contSlot",
+                            "display": [
+                                {
+                                    "name": "Shape/shape 2369",
+                                    "transform": {
+                                        "y": -8
+                                    }
+                                },
+                                {
+                                    "name": "Shape/shape 2371",
+                                    "transform": {
+                                        "x": -0.5,
+                                        "y": -8
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "animation": [
+                {
+                    "duration": 2,
+                    "fadeInTime": 0.3,
+                    "name": "right",
+                    "slot": [
+                        {
+                            "name": "contSlot",
+                            "displayFrame": [
+                                {
+                                    "duration": 1
+                                },
+                                {
+                                    "duration": 1,
+                                    "value": 1
+                                },
+                                {
+                                    "duration": 0,
+                                    "value": -1
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "defaultActions": [
+                {
+                    "gotoAndPlay": "right"
+                }
+            ]
+        }
+    ]
+}

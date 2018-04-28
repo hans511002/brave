@@ -68,7 +68,9 @@ namespace engine
 			MovieClip * dustAnima;
 			
 			
-
+            void onExit();
+            MovieClipSub * contMcs;
+            
 			Unit_mc(Unit* unit,string contName, int typeUnit);
 			void mcHandler(cocos2d::EventCustom *event);
 			bool init();

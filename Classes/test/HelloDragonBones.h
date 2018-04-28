@@ -1,4 +1,5 @@
 #include "BaseDemo.h"
+#include "BaseHeaders.h"
 #include "BaseNode.h"
 /**
  * How to use
@@ -30,6 +31,7 @@ public:
     }
 	dragonBones::CCArmatureDisplay* armatureDisplay;
 protected:
+	MovieClip * mc;
     virtual void _onStart()
     {
         const auto factory = dragonBones::CCFactory::getFactory();
@@ -42,58 +44,64 @@ protected:
 		//factory->loadTextureAtlasData("Cyborg/texture.json");
 		//const auto armatureDisplay = factory->buildArmatureDisplay("Cyborg", "Cyborg");
 		//armatureDisplay->getAnimation()->play("Cyborg");
+		
+       ////子动画中有多个动画
+       // armatureDisplay =std::loadArmature("unit/",  "Unit3_mc");
+       // armatureDisplay->setPosition(0.0f, -100.0f);
+       // addChild(armatureDisplay);
+       // Armature * arm = armatureDisplay->getArmature()->getSlot("Layer 7")->getChildArmature();
+       // arm->getAnimation()->play("top", 0);
+       // armatureDisplay->getAnimation()->play("Unit3_mc", 0);
 
-       
-        armatureDisplay =std::loadArmature("unit/",  "Unit3_mc");
-        armatureDisplay->setPosition(0.0f, -100.0f);
-        addChild(armatureDisplay);
-        Armature * arm = armatureDisplay->getArmature()->getSlot("Layer 7")->getChildArmature();
-
-        //std::map<std::string, AnimationData*> & anis = dis->_armatureData->animations;
-        //std::map<std::string, AnimationData*>::iterator*it = ;
-        //dis->_armatureData->setDefaultAnimation(anis[string("top")]);
-        //dis->_armatureData->setDefaultAnimation(anis.find(string("top"))->second);
-        //dis->_armatureData->setDefaultAnimation(anis.find(string("right"))->second);
-        //dis->getAnimation()->play("right", 0);
-        arm->getAnimation()->play("top", 0);
-        armatureDisplay->getAnimation()->play("Unit3_mc", 0);
-
-		factory->loadDragonBonesData("levindeath/levindeath_ske.json");
-		factory->loadTextureAtlasData("levindeath/levindeath_tex.json");
-		armatureDisplay = factory->buildArmatureDisplay("levindeath");
-		armatureDisplay->getAnimation()->play("levindeath",1);
-        armatureDisplay->setPosition(0.0f, -200.0f);
-	 
-		//this->schedule(schedule_selector(HelloDragonBones::scheduleUpdate), 0.0f);
-
-
-		std::map<std::string, dragonBones::AnimationData*> & animations = armatureDisplay->getArmature()->_armatureData->animations;
-		for each (std::pair<std::string, dragonBones::AnimationData*> it in animations)
-		{
-			std::string aniName = it.first;
-			int totalFrames = it.second->frameCount;
-			float duration = it.second->duration;
-			CCLOG("load %s totalFrames=%i duration=%f", aniName.c_str(), totalFrames, duration);
-		}
-		totalFrames=armatureDisplay->getArmature()->_armatureData->animations["levindeath"]->frameCount;
-		armatureDisplay->getEventDispatcher()->setEnabled(true);
-		armatureDisplay->getEventDispatcher()->addCustomEventListener(dragonBones::EventObject::START, std::bind(&HelloDragonBones::_animationEventHandler, this, std::placeholders::_1));
-		armatureDisplay->getEventDispatcher()->addCustomEventListener(dragonBones::EventObject::LOOP_COMPLETE, std::bind(&HelloDragonBones::_animationEventHandler, this, std::placeholders::_1));
-		armatureDisplay->getEventDispatcher()->addCustomEventListener(dragonBones::EventObject::COMPLETE, std::bind(&HelloDragonBones::_animationEventHandler, this, std::placeholders::_1));
-		armatureDisplay->getEventDispatcher()->addCustomEventListener(dragonBones::EventObject::FADE_IN, std::bind(&HelloDragonBones::_animationEventHandler, this, std::placeholders::_1));
-		armatureDisplay->getEventDispatcher()->addCustomEventListener(dragonBones::EventObject::FADE_IN_COMPLETE, std::bind(&HelloDragonBones::_animationEventHandler, this, std::placeholders::_1));
-		armatureDisplay->getEventDispatcher()->addCustomEventListener(dragonBones::EventObject::FADE_OUT, std::bind(&HelloDragonBones::_animationEventHandler, this, std::placeholders::_1));
-		armatureDisplay->getEventDispatcher()->addCustomEventListener(dragonBones::EventObject::FADE_OUT_COMPLETE, std::bind(&HelloDragonBones::_animationEventHandler, this, std::placeholders::_1));
-		armatureDisplay->getEventDispatcher()->addCustomEventListener(dragonBones::EventObject::FRAME_EVENT, std::bind(&HelloDragonBones::_animationEventHandler, this, std::placeholders::_1));
-		armatureDisplay->getAnimation()->play("levindeath",10);
+		//
 		currentFrame = 0;
 		dir = true;
-        addChild(armatureDisplay);
+		mc = new MovieClip("unit/", "unit1_1");
+		mc->setPosition(0.0f, 100.0f);
+		addChild(mc);
+		mc->getAnimation()->play("unit1_1");
+		Armature * arm = mc->getArmature()->getSlot("contSlot")->getChildArmature();
+		mc->setUserData(new MovieClipSub(arm));
+		arm->getAnimation()->play();
+		
+		   
+	 
+		this->schedule(schedule_selector(HelloDragonBones::scheduleUpdate), 0.0f);
+
+		//////动画事件		
+		//factory->loadDragonBonesData("levindeath/levindeath_ske.json");
+		//factory->loadTextureAtlasData("levindeath/levindeath_tex.json");
+		//armatureDisplay = factory->buildArmatureDisplay("levindeath");
+		//armatureDisplay->getAnimation()->play("levindeath",1);
+		//armatureDisplay->setPosition(0.0f, -200.0f);
+		//addChild(armatureDisplay);
+		//armatureDisplay->getAnimation()->play("levindeath",10);
+		//std::map<std::string, dragonBones::AnimationData*> & animations = armatureDisplay->getArmature()->_armatureData->animations;
+		//for each (std::pair<std::string, dragonBones::AnimationData*> it in animations)
+		//{
+		//	std::string aniName = it.first;
+		//	int totalFrames = it.second->frameCount;
+		//	float duration = it.second->duration;
+		//	CCLOG("load %s totalFrames=%i duration=%f", aniName.c_str(), totalFrames, duration);
+		//}
+		//totalFrames=armatureDisplay->getArmature()->_armatureData->animations["levindeath"]->frameCount;
+		//armatureDisplay->getEventDispatcher()->setEnabled(true);
+		//armatureDisplay->getEventDispatcher()->addCustomEventListener(dragonBones::EventObject::START, std::bind(&HelloDragonBones::_animationEventHandler, this, std::placeholders::_1));
+		//armatureDisplay->getEventDispatcher()->addCustomEventListener(dragonBones::EventObject::LOOP_COMPLETE, std::bind(&HelloDragonBones::_animationEventHandler, this, std::placeholders::_1));
+		//armatureDisplay->getEventDispatcher()->addCustomEventListener(dragonBones::EventObject::COMPLETE, std::bind(&HelloDragonBones::_animationEventHandler, this, std::placeholders::_1));
+		//armatureDisplay->getEventDispatcher()->addCustomEventListener(dragonBones::EventObject::FADE_IN, std::bind(&HelloDragonBones::_animationEventHandler, this, std::placeholders::_1));
+		//armatureDisplay->getEventDispatcher()->addCustomEventListener(dragonBones::EventObject::FADE_IN_COMPLETE, std::bind(&HelloDragonBones::_animationEventHandler, this, std::placeholders::_1));
+		//armatureDisplay->getEventDispatcher()->addCustomEventListener(dragonBones::EventObject::FADE_OUT, std::bind(&HelloDragonBones::_animationEventHandler, this, std::placeholders::_1));
+		//armatureDisplay->getEventDispatcher()->addCustomEventListener(dragonBones::EventObject::FADE_OUT_COMPLETE, std::bind(&HelloDragonBones::_animationEventHandler, this, std::placeholders::_1));
+		//armatureDisplay->getEventDispatcher()->addCustomEventListener(dragonBones::EventObject::FRAME_EVENT, std::bind(&HelloDragonBones::_animationEventHandler, this, std::placeholders::_1));
+
+
 
     }
 	int currentFrame;
 	bool dir;
 	int totalFrames;
+	string direction;
 	void _animationEventHandler(cocos2d::EventCustom* event) const
 	{
         Node * target = event->getCurrentTarget();
@@ -109,9 +117,87 @@ protected:
 
     }
 
- 
+	
 	void  scheduleUpdate(float dt)
 	{
+		currentFrame++;
+		MovieClipSub * mcs = (MovieClipSub*)mc->getUserData();
+		if(currentFrame > 100)
+		{
+			direction = "up";
+		}
+		if(mc->currentFrame < mc->totalFrames)
+		{
+			mc->gotoAndStop((mc->currentFrame + 1));
+		}
+		else
+		{
+			mc->gotoAndStop(1);
+		}
+		//int didx = mcs->arm->getSlot("contSlot")->getDisplayIndex();
+		//int bcf = mcs->currentFrame;
+ 	//	mcs->gotoAndStop((mcs->currentFrame + 1));
+		//int edidx = mcs->arm->getSlot("contSlot")->getDisplayIndex();
+		//CCLOG("dt=%f  slot->getDisplayIndex=%i %i  cs->currentFrame=%i %i", dt, didx, edidx, bcf, mcs->currentFrame);
+		//return;
+		int edidx = mcs->arm->getSlot("contSlot")->getDisplayIndex();
+		CCLOG("dt=%f  slot->getDisplayIndex=%i   cs->currentFrame=%i ", dt,   edidx,  mcs->currentFrame);
+		//if(mcs->currentFrame < mcs->totalFrames)
+		//{
+		//	mcs->gotoAndStop((mcs->currentFrame + 1));
+		//}
+		//else
+		//{
+		//	mcs->gotoAndStop(1);
+		//}
+		if(direction != "up")
+		{
+			if(mcs->currentFrame != 1)
+			{
+				mcs->gotoAndStop(1);
+			} 
+		}
+		else if(mcs->currentFrame != 2)
+		{
+			mcs->gotoAndStop(2);
+		}
+		return;
+
+		if(direction != "up")
+		{
+			if(mcs->currentFrame < 11)
+			{
+				if(mcs->currentFrame < 10)
+				{
+					mcs->gotoAndStop((mcs->currentFrame + 1));
+				}
+				else
+				{
+					mcs->gotoAndStop(1);
+				}
+			}
+			else
+			{
+				mcs->gotoAndStop(mcs->currentFrame - 10);
+			}
+		}
+		else if(mcs->currentFrame > 10)
+		{
+			if(mcs->currentFrame < mcs->totalFrames)
+			{
+				//mcs->gotoAndStop(11);
+				mcs->gotoAndStop((mcs->currentFrame + 1));
+			}
+			else
+			{
+				mcs->gotoAndStop(11);
+			}
+		}
+		else
+		{
+			mcs->gotoAndStop(mcs->currentFrame + 10);
+		}
+		return;
 		if(dir && currentFrame == totalFrames)
 		{
 			dir = false;

@@ -3,86 +3,113 @@
 
 namespace engine
 {
-	MovieClip::MovieClip(  dragonBones::CCArmatureDisplay * cont, string defAniName ) :currentFrame(1)
+	MC::MC() :currentFrame(0), totalFrames(0)
+	{
+	}
+
+	int MC::getTotalFrames(string aniName)
+	{
+		if(aniName == "")aniName = defAniName;
+		AnimationData *aniData = this->getArmature()->_armatureData->animations[aniName];
+		if(aniData)
+			return aniData->frameCount + 1;
+		return 0;
+	};
+	void MC::gotoAndStop(int cf, string aniName)
+	{
+		if(cf == 0)cf = 1;
+		if(aniName == "")aniName = defAniName;
+		if(this->getAnimation()->getLastAnimationName() != aniName)
+			this->getAnimation()->play(aniName, 1);
+		this->currentFrame = (cf - 1) % totalFrames + 1; 
+		this->getAnimation()->gotoAndStopByFrame(aniName, currentFrame - 1);
+	};
+	void MC::nextFram()
+	{
+		this->currentFrame++;
+		gotoAndStop(this->currentFrame);
+	};
+	void MC::update()
+	{
+		nextFram();
+	};
+	void MC::stop(string aniName)
+	{
+		if(aniName == "")aniName = defAniName;
+		this->getAnimation()->stop(aniName);
+	}
+	void MC::play(string aniName)
+	{
+		if(aniName == "")aniName = defAniName;
+		this->getAnimation()->play(aniName, 1);
+	}
+
+
+	MovieClip::MovieClip(  dragonBones::CCArmatureDisplay * cont, string defAniName ) 
     { 
 		std::map<std::string, dragonBones::AnimationData*> & animations = cont->getArmature()->_armatureData->animations;
 		for each (std::pair<std::string, dragonBones::AnimationData*> it in animations)
 		{
 			std::string aniName = it.first;
-			int totalFrames = it.second->frameCount+1;
+			int totalFrames = it.second->frameCount;//+1;
 			float duration = it.second->duration;
 			CCLOG("load %s totalFrames=%i duration=%f", aniName.c_str(), totalFrames, duration);
 		}
-		if(defAniName == "")defAniName = cont->getArmature()->_armatureData->defaultAnimation->name;
-		totalFrames = cont->getArmature()->_armatureData->animations[defAniName]->frameCount + 1;
+		if(defAniName == "")
+			this->defAniName=defAniName = cont->getArmature()->_armatureData->defaultAnimation->name;
+		totalFrames = cont->getArmature()->_armatureData->animations[defAniName]->frameCount;// +1;
 		float duration = cont->getArmature()->_armatureData->animations[defAniName]->duration;
 		CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
 		this->container = cont;
         BaseNode::init();
+		addChild(container);
         this->autorelease();
     };
-	MovieClip::MovieClip( string rootPath, string armName,   string defAniName ) :currentFrame(1)
+	MovieClip::MovieClip( string rootPath, string armName,   string defAniName )  
     {
 		this->container = this->loadArmature(rootPath, armName);
-		if(defAniName == "")defAniName = container->getArmature()->_armatureData->defaultAnimation->name;
-		totalFrames = container->getArmature()->_armatureData->animations[defAniName]->frameCount + 1;
+		if(defAniName == "")
+			this->defAniName = defAniName = container->getArmature()->_armatureData->defaultAnimation->name;
+		totalFrames = container->getArmature()->_armatureData->animations[defAniName]->frameCount;//+ 1;
 		float duration = container->getArmature()->_armatureData->animations[defAniName]->duration;
 		CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
         BaseNode::init();
+		addChild(container);
         this->autorelease();
 	};
 	dragonBones::Animation *MovieClip::getAnimation()
 	{
-		if(!container)return 0;
 		return container->getAnimation();
 	};
 	dragonBones::Armature *MovieClip::getArmature()
 	{
-		if(!container)return 0;
 		return container->getArmature();
 	};
-    int MovieClip::getTotalFrames(string aniName)
+	
+	MovieClipSub::MovieClipSub(dragonBones::Armature * arm, string defAniName)
 	{
-		if(!container)return 0;
-		if(aniName == "")aniName = defAniName;
-		AnimationData *aniData = container->getArmature()->_armatureData->animations[aniName];
-		if(aniData) 
-			return aniData->frameCount + 1;
-		return 0;
+		this->arm = arm;
+		std::map<std::string, dragonBones::AnimationData*> & animations = this->getArmature()->_armatureData->animations;
+		for each (std::pair<std::string, dragonBones::AnimationData*> it in animations)
+		{
+			std::string aniName = it.first;
+			int totalFrames = it.second->frameCount;//+ 1;
+			float duration = it.second->duration;
+			CCLOG("load %s totalFrames=%i duration=%f", aniName.c_str(), totalFrames, duration);
+		}
+		if(defAniName == "")
+			this->defAniName=defAniName = this->getArmature()->_armatureData->defaultAnimation->name;
+		totalFrames = this->getArmature()->_armatureData->animations[defAniName]->frameCount;//+ 1;
+		float duration = this->getArmature()->_armatureData->animations[defAniName]->duration;
+		CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
 	};
-
-	void MovieClip::gotoAndStop(int cf, string aniName )
-    {
-		if(!container)return ;
-		if(aniName == "")aniName = defAniName;
-		if(container->getAnimation()->getLastAnimationName() != aniName)
-			container->getAnimation()->play(aniName, 1);
-		this->currentFrame = (cf) % totalFrames + 1;
-		container->getAnimation()->gotoAndStopByFrame(aniName, currentFrame-1);
-    };
-    void MovieClip::nextFram()
-    {
-		if(!container)return;
-		this->currentFrame++;
-	   gotoAndStop(this->currentFrame);
-    };
-    void MovieClip::update()
-    {
-		if(!container)return;
-		nextFram();
-    };
-	void MovieClip::stop(string aniName)
-    {
-		if(!container)return;
-		if(aniName == "")aniName = defAniName;
-		container->getAnimation()->stop(aniName);
-    }
-	void MovieClip::play(string aniName )
-    {
-		if(!container)return;
-		if(aniName == "")aniName = defAniName;
-		container->getAnimation()->play(aniName, 1);
-    }
+	dragonBones::Armature *MovieClipSub::getArmature()
+	{
+		return this->arm;
+	};
+	dragonBones::Animation *MovieClipSub::getAnimation() {
+		return arm->getAnimation();
+	};
 
     ImageMovieClip::ImageMovieClip(string rootPath, string fileNamePre, int imgSize){
         currentFrame=0;
@@ -95,6 +122,7 @@ namespace engine
         char tmp[8];
         sprintf(tmp, "%04d", 1);
         cont = new BaseSprite(filePre + tmp + ".png");
+		addChild(cont);
         playing = 0;
     };
 
@@ -113,7 +141,7 @@ namespace engine
         this->currentFrame = (cf) % (totalFrames + 1);
         char tmp[8];
         sprintf(tmp, "%04d", currentFrame);
-        cont = new BaseSprite(filePre + tmp + ".png");
+		cont->setTexture(filePre + tmp + ".png");// = new BaseSprite(filePre + tmp + ".png");
         playing = true; 
     };
     void ImageMovieClip::nextFram()

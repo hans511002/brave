@@ -19,6 +19,7 @@ namespace engine
             container->init();
             Unit::init();
             this->autorelease();
+            
             return true;
         }// end function
 

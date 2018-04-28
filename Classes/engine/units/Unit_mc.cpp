@@ -14,7 +14,7 @@ namespace engine
 			return true;
 		};
 
-		Unit_mc::Unit_mc(Unit* unit, string contName, int typeUnit) :unit(unit), typeUnit(typeUnit), giveHealth1(NULL), giveHealth2(NULL), giveHealth3(NULL)
+		Unit_mc::Unit_mc(Unit* unit, string contName, int typeUnit) :contMcs(NULL),unit(unit), typeUnit(typeUnit), giveHealth1(NULL), giveHealth2(NULL), giveHealth3(NULL)
 		{
 			iceDeathFlag = 0;
 			stoneDeathFlag = 0;
@@ -27,6 +27,13 @@ namespace engine
 			this->setPosition(0, 0);
 			this->contName = contName;
 			cont = new MovieClip("unit/", contName);
+			if (typeUnit==3 || typeUnit==13) 
+            {
+                Armature * arm = cont->getArmature()->getSlot("contSlot")->getChildArmature();
+        		contMcs=new MovieClipSub(arm);
+        		arm->getAnimation()->play();
+            }
+    		
 			//DBCCFactory::getInstance()->loadDragonBonesData(contName + "/skeleton.xml", contName);
 			//DBCCFactory::getInstance()->loadTextureAtlas(contName + "/texture.xml", contName);
 			//cont = DBCCFactory::getInstance()->buildArmatureNode(contName);
@@ -229,21 +236,38 @@ namespace engine
 		};
 		
         void Unit_mc::setUnitDirection(string direction){
-            Slot * slot = cont->getArmature()->getSlot("cont");
-            if (direction != "up")
-            {
-                if (slot->getDisplayIndex() == 1)
-                    slot->setDisplayIndex(0);
-                //	//{
-                //	//	container->cont->gotoAndStop(1);
-                //	//}
-            }
-            else if (slot->getDisplayIndex() == 0)
-            {
-                slot->setDisplayIndex(1);
-                //container.cont.gotoAndStop(2);
+            if(direction != "up")
+    		{
+    			if(contMcs->currentFrame != 1)
+    			{
+    				contMcs->gotoAndStop(1);
+    			} 
+    		}
+    		else if(contMcs->currentFrame != 2)
+    		{
+    			contMcs->gotoAndStop(2);
+    		}
+            //Slot * slot = cont->getArmature()->getSlot("cont");
+            //if (direction != "up")
+            //{
+            //    if (slot->getDisplayIndex() == 1)
+            //        slot->setDisplayIndex(0);
+            //    //	//{
+            //    //	//	container->cont->gotoAndStop(1);
+            //    //	//}
+            //}
+            //else if (slot->getDisplayIndex() == 0)
+            //{
+            //    slot->setDisplayIndex(1);
+            //    //container.cont.gotoAndStop(2);
+            //}
+        };
+        void Unit_mc::onExit()
+        {
+            if(contMcs){
+                delete contMcs;
             }
         };
 
-}
+    }
 }

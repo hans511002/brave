@@ -10,30 +10,41 @@
 namespace engine
 {
     class World;
-    struct MovieClip:public BaseNode
-    {
-		Vec2 myPoint;
-		short myFrame;
-        dragonBones::CCArmatureDisplay * container;
+	struct MC
+	{
         int currentFrame;
 		string defAniName;
         int totalFrames;
+		virtual int getTotalFrames(string aniName = "");
+		virtual void gotoAndStop(int cf, string aniName = "");
+		virtual  void nextFram();
+		virtual void update();
+		virtual void play(string aniName = "");
+		virtual void stop(string aniName = "");
+		virtual	dragonBones::Armature *getArmature() = 0;
+		virtual dragonBones::Animation *getAnimation()   = 0;
+		MC();
+	};
+	struct MovieClip :public virtual BaseNode, public virtual MC
+    {
+		Vec2 myPoint;
+		short myFrame;
         float speedX;
-         
-        MovieClip(  dragonBones::CCArmatureDisplay * cont, string defAniName = "");
+        dragonBones::CCArmatureDisplay * container;
+		MovieClip(dragonBones::CCArmatureDisplay * cont, string defAniName = "");
         MovieClip(string rootPath, string armName, string defAniName = "");
-
-        MovieClip(): container(NULL),currentFrame(0),totalFrames(0),speedX(0) {};
-		int getTotalFrames(string aniName = "");
-		void gotoAndStop(int cf, string aniName = "");
-        void nextFram();
-        void update();
-		void play(string aniName = "");
-		void stop(string aniName = "");
-		dragonBones::Armature *getArmature();
-		dragonBones::Animation *getAnimation();
-    };
-    struct ImageMovieClip :public BaseNode
+		virtual	dragonBones::Armature *getArmature();
+		virtual dragonBones::Animation *getAnimation();
+		MovieClip() :container(NULL){};
+	};
+	struct MovieClipSub :public virtual MC
+	{
+		dragonBones::Armature* arm;
+		MovieClipSub(dragonBones::Armature * cont, string defAniName = "");
+		virtual dragonBones::Armature *getArmature();
+		virtual dragonBones::Animation *getAnimation();
+	};
+	struct ImageMovieClip :public BaseNode
     {
         int currentFrame; 
         int totalFrames;

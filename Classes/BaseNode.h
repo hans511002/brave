@@ -24,7 +24,7 @@ class BaseFuns
 };
 
 
-class BaseNode :public cocos2d::Node, public BaseFuns
+class BaseNode :public   cocos2d::Node, public   BaseFuns
 {
 public:
 	bool init();
@@ -40,7 +40,7 @@ public:
 private:
 
 };
-class BaseSprite :public cocos2d::Sprite, public BaseFuns
+class BaseSprite :public   cocos2d::Sprite, public   BaseFuns
 {
 public:
 	bool init();
@@ -52,7 +52,7 @@ public:
 private:
 
 };
-class BaseLayer : public cocos2d::LayerColor, public BaseFuns
+class BaseLayer : public   cocos2d::LayerColor, public   BaseFuns
 {
 protected:
 	cocos2d::Sprite* _background;
