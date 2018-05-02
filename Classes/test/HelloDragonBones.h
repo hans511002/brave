@@ -54,20 +54,20 @@ protected:
        // armatureDisplay->getAnimation()->play("Unit3_mc", 0);
 
 		//
-		currentFrame = 0;
+		currentFrame = frameCounter= 0;
 		dir = true;
-		mc = new MovieClip("unit/", "unit1_1");
+		mc = new MovieClip("unit/", "unit27");
 		mc->setPosition(0.0f, 100.0f);
 		addChild(mc);
-		mc->getAnimation()->play("unit1_1");
-		Armature * arm = mc->getArmature()->getSlot("contSlot")->getChildArmature();
+		mc->getAnimation()->play("cont");
+		Armature * arm = mc->getArmature()->getSlot("cont")->getChildArmature();
 		mc->setUserData(new MovieClipSub(arm));
 		arm->getAnimation()->play();
+		direction = "right";
 		
-		   
 	 
-		this->schedule(schedule_selector(HelloDragonBones::scheduleUpdate), 0.0f);
-
+		this->schedule(schedule_selector(HelloDragonBones::scheduleUpdate), 1/30.0f);
+		//this->unschedule(schedule_selector(HelloDragonBones::scheduleUpdate));
 		//////¶¯»­ÊÂ¼þ		
 		//factory->loadDragonBonesData("levindeath/levindeath_ske.json");
 		//factory->loadTextureAtlasData("levindeath/levindeath_tex.json");
@@ -100,7 +100,7 @@ protected:
     }
 	int currentFrame;
 	bool dir;
-	int totalFrames;
+	int totalFrames, frameCounter;
 	string direction;
 	void _animationEventHandler(cocos2d::EventCustom* event) const
 	{
@@ -120,12 +120,117 @@ protected:
 	
 	void  scheduleUpdate(float dt)
 	{
+		if(this->frameCounter < 30)
+		{
+			this->frameCounter++;
+		}
+		else
+		{
+			this->frameCounter = 1;
+		}
 		currentFrame++;
 		MovieClipSub * mcs = (MovieClipSub*)mc->getUserData();
-		if(currentFrame > 100)
-		{
+		if(currentFrame > 100) 
 			direction = "up";
+		const auto factory = dragonBones::CCFactory::getFactory();
+		factory->getClock()->timeScale = 1;
+		if((currentFrame > 50 && currentFrame<100) || currentFrame>150)
+		{
+			//factory->getClock()->advanceTime(1 / 60.0f);
+			factory->getClock()->timeScale=2;
 		}
+		CCLOG("time=%f  getClock->timeScale=%f ", factory->getClock()->time, factory->getClock()->timeScale);
+
+		 float curTime=mcs->arm->getAnimation()->getLastAnimationState()->getCurrentTime();
+		 int mcsidx = mcs->arm->getSlot("contSlot")->getDisplayIndex();
+		 CCLOG("dt=%f curTime=%f slot->getDisplayIndex=%i   mcs->currentFrame=%i ", dt, curTime, mcsidx, mcs->currentFrame);
+		 if(direction != "up")
+		{
+			if(mcs->currentFrame < 9)
+			{
+				if(mcs->currentFrame < 8)
+				{
+					mcs->gotoAndStop((mcs->currentFrame + 1));
+				}
+				else
+				{
+					mcs->gotoAndStop(1);
+				}
+			}
+			else
+			{
+				mcs->gotoAndStop(mcs->currentFrame - 8);
+			}
+		}
+		else if(mcs->currentFrame > 8)
+		{
+			if(mcs->currentFrame < mcs->totalFrames)
+			{
+				mcs->gotoAndStop((mcs->currentFrame + 1));
+			}
+			else
+			{
+				mcs->gotoAndStop(9);
+			}
+		}
+		else
+		{
+			mcs->gotoAndStop(mcs->currentFrame + 8);
+		}
+		if(direction == "left" || direction == "right")
+		{
+			if(mc->currentFrame != 1)
+			{
+				if(mc->currentFrame > 16)
+				{
+					if(mc->currentFrame < mc->totalFrames)
+					{
+						mc->gotoAndStop((mc->currentFrame + 1));
+					}
+					else
+					{
+						mc->gotoAndStop(1);
+					}
+				}
+				else if(mc->currentFrame < 16)
+				{
+					mc->gotoAndStop((mc->currentFrame + 1));
+				}
+				else
+				{
+					mc->gotoAndStop(1);
+				}
+			}
+		}
+		else if(mc->currentFrame != 17)
+		{
+			if(mc->currentFrame > 16)
+			{
+				if(mc->currentFrame < mc->totalFrames)
+				{
+					mc->gotoAndStop((mc->currentFrame + 1));
+				}
+				else
+				{
+					mc->gotoAndStop(17);
+				}
+			}
+			else if(mc->currentFrame < 16)
+			{
+				mc->gotoAndStop((mc->currentFrame + 1));
+			}
+			else
+			{
+				mc->gotoAndStop(17);
+			}
+		}
+		if(this->frameCounter % 2)
+		{
+			this->scheduleUpdate(0);
+		}
+		return;
+
+
 		if(mc->currentFrame < mc->totalFrames)
 		{
 			mc->gotoAndStop((mc->currentFrame + 1));
@@ -217,7 +322,7 @@ protected:
 		{
 			currentFrame--;
 		} 
-		float curTime=armatureDisplay->getAnimation()->getLastAnimationState()->getCurrentTime();
+		  curTime=armatureDisplay->getAnimation()->getLastAnimationState()->getCurrentTime();
 		CCLOG("dt =%f ,  curTime =%f ,currentFrame=%i", dt, curTime, currentFrame);
 		armatureDisplay->getAnimation()->gotoAndStopByFrame("levindeath", currentFrame);
 	}

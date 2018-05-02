@@ -163,12 +163,12 @@ namespace engine
 
         World();
         //CREATE_FUNC(World);
-
-        void _onStart();
+ 
         bool init();
 
-        //void  enterFrameHandler();  // event : Event
-        void scheduleUpdate(float dt);
+        virtual void onEnter();
+        virtual void enterFrameHandler(float dt);//void  enterFrameHandler();  // event : Event
+        //void scheduleUpdate(float dt);
         //void MyNode::TickMe(float dt);
         //// wrap this function into a selector via schedule_selector marco.
         //this->schedule(CC_SCHEDULE_SELECTOR(MyNode::TickMe), 0, 0, 0);
@@ -190,7 +190,7 @@ namespace engine
 
 
 
-        //Bullet addBullet(int param1, Point param2, Object param3, Object param4, float param5 = 0, int param6 = 0);
+        Bullet * addBullet(int param1, Point param2, Object param3, Object param4, float param5 = 0, int param6 = 0);
 
         void manageIndexes();
 

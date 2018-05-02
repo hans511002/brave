@@ -26,19 +26,28 @@ class BaseFuns
 
 class BaseNode :public   cocos2d::Node, public   BaseFuns
 {
+    bool schdt;
 public:
+    BaseNode():schdt(false){};
 	bool init();
 	bool atStage();
 	void mouseDownHandler(cocos2d::Event *event);
 	void touchAction(cocos2d::Ref *pSender, cocos2d::ui::TouchEventType type);
 	bool hitTest(const Vec2 &pt);
-	static bool hitTest(cocos2d::Node * node, const Vec2 &pt);
-	static bool hitTest(cocos2d::Node * node, cocos2d::EventMouse* e);
 	bool mouseChildren;
 	bool mouseEnabled;
 	cocos2d::Point localToGlobal(cocos2d::Point pt);
-private:
 
+    virtual void onEnter();
+    virtual void onExit();
+    virtual void cleanup();
+	virtual void scheduleUpdate(float dt);
+	virtual void enterFrameHandler(float dt);
+	
+	static bool hitTest(cocos2d::Node * node, const Vec2 &pt);
+	static bool hitTest(cocos2d::Node * node, cocos2d::EventMouse* e);
+protected:
+    
 };
 class BaseSprite :public   cocos2d::Sprite, public   BaseFuns
 {

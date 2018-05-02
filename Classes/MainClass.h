@@ -47,6 +47,9 @@ public:
 	static const int SCREEN_WIDTH_OUT_LEFT = 0;
 	static const int SCREEN_HEIGHT_OUT_TOP = 0;
 	static const int SCREEN_HEIGHT_OUT_DOWN = 0;
+	
+    static const int FrameRate=30;
+	static const float AnimationInterval = 1.0f/(double)FrameRate;
 
 	static Main *mainClass;
 

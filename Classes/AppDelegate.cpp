@@ -59,7 +59,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setDisplayStats(true);
 
     // set FPS. the default value is 1.0/60 if you don't call this
-    director->setAnimationInterval(1.0 / (double)30);
+    director->setAnimationInterval(Main::AnimationInterval);
     FileUtils::getInstance()->addSearchPath("test");
     FileUtils::getInstance()->addSearchPath("res");
 	//// create a scene. it's an autorelease object

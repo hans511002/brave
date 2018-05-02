@@ -10,6 +10,7 @@ namespace engine
 		, createIcemanCounter(0), createAirCounter(0), earlyWaveCounter(0), sellFireCounter(0), sellIceCounter(0)
 		, sellStoneCounter(0), sellLevinCounter(0), sellGetAllCounter(0), icemanSlowdownEnemiesCounter(0), castFireCounter(0), castIceCounter(0)
 		, castStoneCounter(0), castLevinCounter(0), castGetAllCounter(0), golemVoiceTurn(1), icemanVoiceTurn(1), airVoiceTurn(1)
+		,firstMusicPlay(false)
 	{
         menuObject = NULL;
 		pointer1 = NULL;
@@ -45,16 +46,15 @@ namespace engine
 	}// end function
 	bool World::init()
 	{
-		_onStart();
+		this->wavesClass = new Waves();
+		this->feature = new Feature();
 		BaseNode::init();
-			return true;
+	    return true;
 	};
-	void World::_onStart()
+	void World::onEnter()
 	{
 		//this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
 		//this->addEventListener(Event.REMOVED_FROM_STAGE, this->reInit);
-		this->wavesClass = new Waves();
-		this->feature = new Feature();
 		//this->schedule(schedule_selector(World::scheduleUpdate));
 		this->schedule(schedule_selector(World::scheduleUpdate), 0.0f);
 		//if (this->saveBox.gameSave.data.complexityLevel < 4)
@@ -69,8 +69,9 @@ namespace engine
  	}// end function
 
 	//void  World::enterFrameHandler()  // event : Event
-	void  World::scheduleUpdate( float dt)
+	void  World::enterFrameHandler( float dt)
 	{
+	    //dragonBones::CCFactory::getFactory()->getClock()->timeScale=2;
  		if (this->frameCounter < 30)
 		{
 			this->frameCounter++;
@@ -202,15 +203,15 @@ namespace engine
 		//}
 		if (this->bonusMoneyFlag)
 		{
-			//if (this->frameCounter == 30 && !this->menuObject)
-			//{
-			//	this->bonusMoneyFlag = false;
-			//	if (this->saveBox->getIntValue("complexityLevel") < 4 && this->saveBox->getString("type") == "site")
-			//	{
-			//		this->tempObject = new BonusMoney();
-			//		this->addChild(this->tempObject);
-			//	}
-			//}
+			if (this->frameCounter == 30 && !this->menuObject)
+			{
+				this->bonusMoneyFlag = false;
+				if (this->saveBox->getIntValue("complexityLevel") < 4 && this->saveBox->getString("type") == "site")
+				{
+					this->tempObject = new BonusMoney();
+					this->addChild(this->tempObject);
+				}
+			}
 		}
 		this->wavesClass->wavesHandler();
 		//int i = 0;
@@ -989,60 +990,60 @@ namespace engine
 		return tempObject;
 	}
 
-	//Bullet World::addBullet(int param1, Point param2, Object param3, Object param4, float param5 = 0, int param6 = 0)
-	//{
-	//	//if (param1 == 1)
-	//	//{
-	//	//	this->tempObject1 = new Bullet_1();
-	//	//}
-	//	//else if (param1 == 2)
-	//	//{
-	//	//	this->tempObject1 = new Bullet_2();
-	//	//}
-	//	//else if (param1 == 3)
-	//	//{
-	//	//	this->tempObject1 = new Bullet_3();
-	//	//}
-	//	//else if (param1 == 4)
-	//	//{
-	//	//	this->tempObject1 = new Bullet_4();
-	//	//}
-	//	//else if (param1 == 5)
-	//	//{
-	//	//	this->tempObject1 = new Bullet_5();
-	//	//}
-	//	//else if (param1 == 6)
-	//	//{
-	//	//	this->tempObject1 = new Bullet_6();
-	//	//}
-	//	//else if (param1 == 61)
-	//	//{
-	//	//	this->tempObject1 = new Bullet_61();
-	//	//}
-	//	//else if (param1 == 7)
-	//	//{
-	//	//	this->tempObject1 = new Bullet_7();
-	//	//}
-	//	//else if (param1 == 8)
-	//	//{
-	//	//	this->tempObject1 = new Bullet_8();
-	//	//}
-	//	//else if (param1 == 51)
-	//	//{
-	//	//	this->tempObject1 = new Bullet_51();
-	//	//}
-	//	//else if (param1 == 81)
-	//	//{
-	//	//	this->tempObject1 = new Bullet_81();
-	//	//}
-	//	//this->tempObject1.spherePower = param6;
-	//	//this->tempObject1.this_pt = param2;
-	//	//this->tempObject1.whoShoot = param3;
-	//	//this->tempObject1.enemyTarget = param4;
-	//	//this->tempObject1.damage = param5;
-	//	//this->addChild(this->tempObject1);
-	//	//return this->tempObject1;
-	//}// end function
+	Bullet * World::addBullet(int param1, Point param2, Object param3, Object param4, float param5 , int param6  )
+	{
+		//if (param1 == 1)
+		//{
+		//	this->tempObject1 = new Bullet_1();
+		//}
+		//else if (param1 == 2)
+		//{
+		//	this->tempObject1 = new Bullet_2();
+		//}
+		//else if (param1 == 3)
+		//{
+		//	this->tempObject1 = new Bullet_3();
+		//}
+		//else if (param1 == 4)
+		//{
+		//	this->tempObject1 = new Bullet_4();
+		//}
+		//else if (param1 == 5)
+		//{
+		//	this->tempObject1 = new Bullet_5();
+		//}
+		//else if (param1 == 6)
+		//{
+		//	this->tempObject1 = new Bullet_6();
+		//}
+		//else if (param1 == 61)
+		//{
+		//	this->tempObject1 = new Bullet_61();
+		//}
+		//else if (param1 == 7)
+		//{
+		//	this->tempObject1 = new Bullet_7();
+		//}
+		//else if (param1 == 8)
+		//{
+		//	this->tempObject1 = new Bullet_8();
+		//}
+		//else if (param1 == 51)
+		//{
+		//	this->tempObject1 = new Bullet_51();
+		//}
+		//else if (param1 == 81)
+		//{
+		//	this->tempObject1 = new Bullet_81();
+		//}
+		//this->tempObject1.spherePower = param6;
+		//this->tempObject1.this_pt = param2;
+		//this->tempObject1.whoShoot = param3;
+		//this->tempObject1.enemyTarget = param4;
+		//this->tempObject1.damage = param5;
+		//this->addChild(this->tempObject1);
+		//return this->tempObject1;
+	}// end function
 
 	void World::manageIndexes(){
 		//	if (this->frameCounter == 10 || this->frameCounter == 20 || this->frameCounter == 30 || this->forseIndexFl)

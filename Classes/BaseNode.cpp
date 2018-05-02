@@ -72,6 +72,31 @@ cocos2d::Point BaseNode::localToGlobal(cocos2d::Point pt)
 	return this->convertToWorldSpace(pt);
 };
 
+void BaseNode::onEnter()
+{
+    if(schdt){
+        this->schedule(schedule_selector(BaseNode::scheduleUpdate),Main::AnimationInterval);
+    }
+};
+void BaseNode::onExit()
+{
+    cleanup();
+};
+void BaseNode::cleanup()
+{
+    if(schdt){
+		this->unschedule(schedule_selector(BaseNode::scheduleUpdate));
+    }
+    Node::cleanup();
+};
+void BaseNode::scheduleUpdate(float dt)
+{
+    enterFrameHandler(dt);
+};
+void BaseNode::enterFrameHandler(float dt)
+{
+};
+
 void BaseNode::touchAction(cocos2d::Ref *ref, cocos2d::ui::TouchEventType type){
     Node * node = (Node *)ref;
     string target = node->getName();
