@@ -1,4 +1,5 @@
 #include "BaseNode.h"
+#include "MainClass.h"
 
 using namespace cocos2d;
 namespace std

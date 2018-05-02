@@ -190,7 +190,7 @@ namespace engine
 
 
 
-        Bullet * addBullet(int param1, Point param2, Object param3, Object param4, float param5 = 0, int param6 = 0);
+        //Bullet * addBullet(int param1, Point param2, Object param3, Object param4, float param5 = 0, int param6 = 0);
 
         void manageIndexes();
 

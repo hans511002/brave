@@ -29,9 +29,9 @@ namespace engine
                 {
                     if (direction == "left" || direction == "right")
                     {
-                        if (container->cont->currentFrame == 2)
+                        if (container->contMcs->currentFrame == 2)
                         {
-                            container->cont->gotoAndStop(1);
+                            container->contMcs->gotoAndStop(1);
                         }
                         if (container->currentFrame > 20)
                         {

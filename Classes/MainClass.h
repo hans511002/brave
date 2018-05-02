@@ -49,7 +49,7 @@ public:
 	static const int SCREEN_HEIGHT_OUT_DOWN = 0;
 	
     static const int FrameRate=30;
-	static const float AnimationInterval = 1.0f/(double)FrameRate;
+    static const double AnimationInterval ;
 
 	static Main *mainClass;
 
@@ -63,7 +63,7 @@ public:
 
 	void removeAllScreens();
 
-    cocos2d::Image getBitmapData(cocos2d::Node* param1);
+    cocos2d::Image * getBitmapData(cocos2d::Node* param1);
 
     void keyDownHandler(EventKeyboard::KeyCode keycode, cocos2d::Event *event);
 

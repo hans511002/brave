@@ -27,24 +27,24 @@ namespace engine
             {
                 if (direction != "up")
                 {
-                    if (container->cont->currentFrame == 2)
+                    if (container->contMcs->currentFrame == 2)
                     {
-                        container->cont->gotoAndStop(1);
+                        container->contMcs->gotoAndStop(1);
                     }
                 }
-                else if (container->cont->currentFrame == 1)
+                else if (container->contMcs->currentFrame == 1)
                 {
-                    container->cont->gotoAndStop(2);
+                    container->contMcs->gotoAndStop(2);
                 }
                 if (!airFlag && !airShockFlag)
                 {
-                    if (container->currentFrame < container->totalFrames)
+                    if (container->cont->currentFrame < container->cont->totalFrames)
                     {
-                        container->gotoAndStop((container->currentFrame + 1));
+                        container->cont->gotoAndStop((container->cont->currentFrame + 1));
                     }
                     else
                     {
-                        container->gotoAndStop(1);
+                        container->cont->gotoAndStop(1);
                     }
                 }
             }

@@ -38,7 +38,17 @@ namespace engine
 			if (!dead && !icemanFlag)
 			{
                 //换肤
-                container->setUnitDirection(direction);
+                if (direction != "up")
+                {
+                    if (container->contMcs->currentFrame != 1)
+                    {
+                        container->contMcs->gotoAndStop(1);
+                    }
+                }
+                else if (container->contMcs->currentFrame != 2)
+                {
+                    container->contMcs->gotoAndStop(2);
+                }
 				if (!airFlag && !airShockFlag)
 				{
 					if (container->cont->currentFrame < container->cont->totalFrames)

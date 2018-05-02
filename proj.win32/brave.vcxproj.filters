@@ -318,6 +318,51 @@
     <ClCompile Include="..\Classes\test\HelloWorldScene.cpp">
       <Filter>src\test</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_5.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_17.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_18.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_19.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_6.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_7.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_8.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_9.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_10.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_11.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_12.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_13.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_14.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_15.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_16.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -501,9 +546,6 @@
       <Filter>src\engine\decoration</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\engine\units\Unit.h">
-      <Filter>src\engine\units</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\engine\units\Unit_1.h">
       <Filter>src\engine\units</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\engine\units\Unit_mc.h">

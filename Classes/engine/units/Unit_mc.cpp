@@ -235,33 +235,6 @@ namespace engine
 			if (this->giveHealth3)this->giveHealth3->stop();
 		};
 		
-        void Unit_mc::setUnitDirection(string direction){
-            if(direction != "up")
-    		{
-    			if(contMcs->currentFrame != 1)
-    			{
-    				contMcs->gotoAndStop(1);
-    			} 
-    		}
-    		else if(contMcs->currentFrame != 2)
-    		{
-    			contMcs->gotoAndStop(2);
-    		}
-            //Slot * slot = cont->getArmature()->getSlot("cont");
-            //if (direction != "up")
-            //{
-            //    if (slot->getDisplayIndex() == 1)
-            //        slot->setDisplayIndex(0);
-            //    //	//{
-            //    //	//	container->cont->gotoAndStop(1);
-            //    //	//}
-            //}
-            //else if (slot->getDisplayIndex() == 0)
-            //{
-            //    slot->setDisplayIndex(1);
-            //    //container.cont.gotoAndStop(2);
-            //}
-        };
         void Unit_mc::onExit()
         {
             if(contMcs){
