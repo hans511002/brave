@@ -222,6 +222,13 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\engine\units\Unit_18.cpp" />
     <ClCompile Include="..\Classes\engine\units\Unit_19.cpp" />
     <ClCompile Include="..\Classes\engine\units\Unit_2.cpp" />
+    <ClCompile Include="..\Classes\engine\units\Unit_20.cpp" />
+    <ClCompile Include="..\Classes\engine\units\Unit_21.cpp" />
+    <ClCompile Include="..\Classes\engine\units\Unit_22.cpp" />
+    <ClCompile Include="..\Classes\engine\units\Unit_23.cpp" />
+    <ClCompile Include="..\Classes\engine\units\Unit_24.cpp" />
+    <ClCompile Include="..\Classes\engine\units\Unit_25.cpp" />
+    <ClCompile Include="..\Classes\engine\units\Unit_26.cpp" />
     <ClCompile Include="..\Classes\engine\units\Unit_3.cpp" />
     <ClCompile Include="..\Classes\engine\units\Unit_4.cpp" />
     <ClCompile Include="..\Classes\engine\units\Unit_5.cpp" />

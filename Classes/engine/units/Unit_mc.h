@@ -59,7 +59,7 @@ namespace engine
 
 
 			MovieClip * unitCase;// public var unitCase : MovieClip;
-			MovieClip * shadow;//public var shadow : MovieClip;
+			//MovieClip * shadow;//public var shadow : MovieClip; 合并到cont中了
 			MovieClip * armor;//public var armor : MovieClip;
 			MovieClip * signal;
 			MovieClip * giveHealth1;
@@ -67,7 +67,9 @@ namespace engine
 			MovieClip * giveHealth3;
 			MovieClip * dustAnima;
 			
-			
+			MovieClip * maskCont;
+
+			cocos2d::Point myFirstPoint;
             void onExit();
             MovieClipSub * contMcs;
             

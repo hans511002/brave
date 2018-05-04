@@ -1,5 +1,7 @@
 ﻿
 #include "Unit.h"
+#include "MainClass.h"
+#include "engine/World.h"
 
 namespace engine
 {
@@ -49,11 +51,11 @@ namespace engine
                     }
                 }
             }
-            super.animationHandler();
+            Unit::animationHandler();
             return;
         }// end function
 
-        void kill() 
+		void Unit_20::kill()
         {
             if (!dead && health <= 0)
             {
@@ -120,7 +122,7 @@ namespace engine
                     i = 0;
                     while (i < tempObject4)
                     { 
-                        cocos2d::Point tempObject5 = world->bezierClass.getPathPoint(i, road, 2);
+                        cocos2d::Point tempObject5 = world->bezierClass->getPathPoint(i, road, 2);
                         float tempObject6=tempObject5.distance(this_pt);
                         //tempObject6 = Point.distance(new Point(tempObject5.x, tempObject5.y), this_pt);
                         if (tempObject6 < tempObject)
@@ -138,7 +140,7 @@ namespace engine
                 if (tempObject3 == 0)
                 {
                     float tempObject = 10000;
-                    float tempObject4 = world->bezierClass.getPathLength(road, 3);
+                    float tempObject4 = world->bezierClass->getPathLength(road, 3);
                     i = 0;
                     while (i < tempObject4)
                     { 
@@ -188,7 +190,7 @@ namespace engine
                     tempObject->moveFlag = false;
                     tempObject->setPosition(this->getPosition());// x = this->x;
                     //tempObject.y = this->y;
-                    tempObject->alpha = 0;
+					tempObject->setOpacity(0);// alpha = 0;
                     i++;
                 }
             }

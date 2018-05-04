@@ -6,41 +6,47 @@
 
 namespace engine
 {
-	class World; 
+	class World;
 	namespace units
 	{
-        class Unit;
-	    struct NewEnemy_mc :public MovieClip
-        {
-            MovieClip* newEnemyCase;
-             NewEnemy_mc();
-        };
-        
-        class RoadsignFire_mc : public MovieClip
-        {
-        public:
-            float myPath;
-            int myRoad,myWay;
-            Common::Array<Unit *> myStack ;
-            cocos2d::Point myPoint;
-            bool repeatFlag;
-            RoadsignFire_mc(); 
-        };
-        class RoadsignIce_mc : public MovieClip
-        {
-        public:
-            RoadsignIce_mc(); 
-        };
-        class RoadsignStone_mc : public MovieClip
-        {
-        public:
-            RoadsignStone_mc(); 
-        };
-        class RoadsignLevin_mc : public MovieClip
-        {
-        public:
-            RoadsignLevin_mc();
-        };
+		class Unit;
+		struct NewEnemy_mc :public MovieClip
+		{
+			MovieClip* newEnemyCase;
+			NewEnemy_mc();
+		};
+
+		class Roadsign_mc : public MovieClip
+		{
+		public:
+			float myPath;
+			int myRoad, myWay;
+			Common::Array<Unit *> myStack;
+			cocos2d::Point myPoint;
+			bool repeatFlag;
+			int repeatCounter;
+			Roadsign_mc();
+		};
+		class RoadsignFire_mc : public Roadsign_mc
+		{
+		public: 
+			RoadsignFire_mc();
+		};
+		class RoadsignIce_mc : public Roadsign_mc
+		{
+		public:
+			RoadsignIce_mc();
+		};
+		class RoadsignStone_mc : public Roadsign_mc
+		{
+		public:
+			RoadsignStone_mc();
+		};
+		class RoadsignLevin_mc : public Roadsign_mc
+		{
+		public:
+			RoadsignLevin_mc();
+		};
 		class Unit :public BaseNode
 		{
 		public:
@@ -129,30 +135,30 @@ namespace engine
 			bool mainMoveFlag;//public var mainMoveFlag:Boolean = true;
 
 			int stealthCounter;
-			 
+
 			// 18 19
 			bool hiddenFlag;
-            int invisibleCounter,invisibleTimer,visibleCounter,visibleTimer;
-            int newEnemyCounter;//20
-            bool atStaged;
+			int invisibleCounter, invisibleTimer, visibleCounter, visibleTimer;
+			int newEnemyCounter;//20
+			bool atStaged;
 
-            
+
 
 			Unit() :direction("none"), world(NULL), road(0), way(0), path(0), finishPath(0), stopAnima(false), typeUnit(0), health(0), healthMax(0), speedK(0), speedKSave(0),
-				gold(0), fireDamageK(0), iceDamageK(0), stoneDamageK(0), levinDamageK(0), penalty(0), dead(false), readyDamage(true), 
-				bulletTower6Effect(false), airFlag(false), fireLevinKillFlag(false), moveFlag(true),gate(0), nextTurnFlag(false), nextTurnPath(0), nextTurnMidPath(0),
-				teleportFlag(false), directionFlag(false), replaced(false), speedKRun(0),speedRunTimerIce1(0), speedRunTimerIce2(0), speedRunTimerIce3(0),
-				speedRunTimerIce4(0),healthPlusFlag(false),healthPlusValue(0),armorFlag(false),armorPower(0),armorCounter(0),airShockFlag(false),airShockCounter(0),
-				speedPlusFlag(false),speedPlusCounter(0),speedPlusValue(0),airGo(0),airWaitTimer(0),airSpacing(0),airPower(0),airResist(0),dampingAir(0),traversedPath(0),
-				icemanFlag(false),icemanCounter(0),icemanResist(0),fireEffectFlag(false),fireEffectCounter(0),fireEffectDamage(0),iceEffectFlag(false),iceEffectCounter(0),
-				iceEffectSlowdown(0),replacementFlag(0),replacementCount(0),mainMoveFlag(true),stealthCounter(0),hiddenFlag(false),
-                invisibleCounter(0), invisibleTimer(0), visibleCounter(0), visibleTimer(0), newEnemyCounter(0), atStaged(false)
+				gold(0), fireDamageK(0), iceDamageK(0), stoneDamageK(0), levinDamageK(0), penalty(0), dead(false), readyDamage(true),
+				bulletTower6Effect(false), airFlag(false), fireLevinKillFlag(false), moveFlag(true), gate(0), nextTurnFlag(false), nextTurnPath(0), nextTurnMidPath(0),
+				teleportFlag(false), directionFlag(false), replaced(false), speedKRun(0), speedRunTimerIce1(0), speedRunTimerIce2(0), speedRunTimerIce3(0),
+				speedRunTimerIce4(0), healthPlusFlag(false), healthPlusValue(0), armorFlag(false), armorPower(0), armorCounter(0), airShockFlag(false), airShockCounter(0),
+				speedPlusFlag(false), speedPlusCounter(0), speedPlusValue(0), airGo(0), airWaitTimer(0), airSpacing(0), airPower(0), airResist(0), dampingAir(0), traversedPath(0),
+				icemanFlag(false), icemanCounter(0), icemanResist(0), fireEffectFlag(false), fireEffectCounter(0), fireEffectDamage(0), iceEffectFlag(false), iceEffectCounter(0),
+				iceEffectSlowdown(0), replacementFlag(0), replacementCount(0), mainMoveFlag(true), stealthCounter(0), hiddenFlag(false),
+				invisibleCounter(0), invisibleTimer(0), visibleCounter(0), visibleTimer(0), newEnemyCounter(0), atStaged(false)
 			{
-				 
+
 			}// end function
 
 			virtual bool init();
-			 
+
 			virtual void update(float dt);
 
 			virtual void moveHandler();
@@ -180,26 +186,26 @@ namespace engine
 
 			virtual void kill();
 
-            virtual void onExit(); 
+			virtual void onExit();
 		};
-		
+
 #define UNIT_CLASS_DEFINE(unitName,MEMBER_DEFINE) struct unitName :public Unit{ \
-		public:\
-			unitName();\
-			bool init();\
-			void animationHandler();\
-			MEMBER_DEFINE \
+public:\
+	unitName(); \
+	virtual bool init(); \
+	virtual void animationHandler(); \
+	MEMBER_DEFINE \
 		};
-		
-		UNIT_CLASS_DEFINE(Unit_1 );
-		UNIT_CLASS_DEFINE(Unit_2 );
-		UNIT_CLASS_DEFINE(Unit_3 );
-		UNIT_CLASS_DEFINE(Unit_4 );
-		UNIT_CLASS_DEFINE(Unit_5 );
-		UNIT_CLASS_DEFINE(Unit_6 );
-		UNIT_CLASS_DEFINE(Unit_7 );
-		UNIT_CLASS_DEFINE(Unit_8 );
-		UNIT_CLASS_DEFINE(Unit_9 );
+
+		UNIT_CLASS_DEFINE(Unit_1);
+		UNIT_CLASS_DEFINE(Unit_2);
+		UNIT_CLASS_DEFINE(Unit_3);
+		UNIT_CLASS_DEFINE(Unit_4);
+		UNIT_CLASS_DEFINE(Unit_5);
+		UNIT_CLASS_DEFINE(Unit_6);
+		UNIT_CLASS_DEFINE(Unit_7);
+		UNIT_CLASS_DEFINE(Unit_8);
+		UNIT_CLASS_DEFINE(Unit_9);
 		UNIT_CLASS_DEFINE(Unit_10);
 		UNIT_CLASS_DEFINE(Unit_11);
 		UNIT_CLASS_DEFINE(Unit_12);
@@ -210,14 +216,14 @@ namespace engine
 		UNIT_CLASS_DEFINE(Unit_17);
 		UNIT_CLASS_DEFINE(Unit_18);
 		UNIT_CLASS_DEFINE(Unit_19);
-		UNIT_CLASS_DEFINE(Unit_20);
-		UNIT_CLASS_DEFINE(Unit_21);
-		UNIT_CLASS_DEFINE(Unit_22,int blockTowerRadius;MovieClip * blockRadiusGr;bool greenFlag;cocos2d::Point testTarget;void scanAtRadius(););
-		
-		UNIT_CLASS_DEFINE(Unit_23,MovieClip * myPortal;MovieClip * portalAnima;);
-		UNIT_CLASS_DEFINE(Unit_24);
-		UNIT_CLASS_DEFINE(Unit_25);
-		UNIT_CLASS_DEFINE(Unit_26);
+		UNIT_CLASS_DEFINE(Unit_20, void kill(););
+		UNIT_CLASS_DEFINE(Unit_21, void kill(););
+		UNIT_CLASS_DEFINE(Unit_22, int blockTowerRadius; MovieClip * blockRadiusGr; bool greenFlag; cocos2d::Point testTarget; void scanAtRadius();virtual void kill(););
+
+		UNIT_CLASS_DEFINE(Unit_23, RoadsignFire_mc * myPortal; MovieClip * portalAnima;virtual void kill(););
+		UNIT_CLASS_DEFINE(Unit_24, RoadsignIce_mc * myPortal; MovieClip * portalAnima;virtual void kill(););
+		UNIT_CLASS_DEFINE(Unit_25, RoadsignStone_mc * myPortal; MovieClip * portalAnima;virtual void kill();virtual void update(float dt););
+		UNIT_CLASS_DEFINE(Unit_26, RoadsignLevin_mc * myPortal; MovieClip * portalAnima; virtual void kill(););
 		UNIT_CLASS_DEFINE(Unit_27);
 		UNIT_CLASS_DEFINE(Unit_28);
 		UNIT_CLASS_DEFINE(Unit_29);

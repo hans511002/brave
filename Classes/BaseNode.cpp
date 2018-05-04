@@ -210,3 +210,14 @@ void BaseLayer::mouseDownHandler(cocos2d::Event *event)//(event:MouseEvent) : vo
     return p.x < 0 || p.y<0 || p.x > stageSize.width || p.y > stageSize.height;
 }
 
+
+void BaseNode::setOpacity(float op)
+{
+    int ops=op*255;
+    if(ops>255)ops=255;
+    Node::setOpacity(ops);
+};
+float BaseNode::getOpacity(){
+    int ops=Node::getOpacity();
+    return (double)ops/255;
+};

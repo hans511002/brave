@@ -110,6 +110,18 @@ namespace Common
 			this->erase(this->begin()+i);
 			return t;
 		};
+
+		//É¾³ıÏîÄ¿
+		inline Array<T> splice(int start, int len = 1)
+		{
+			Array<T> res;
+			int ri = 0;
+			while(ri < len && this->size() > start)
+			{
+				res.push(this->remove(start));
+			}
+			return res;
+		};
 	};
 
 	template <class T> Array<T> ::Array(int size): vector<T>(size){}

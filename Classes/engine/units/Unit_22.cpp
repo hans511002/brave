@@ -1,5 +1,7 @@
 ﻿
 #include "Unit.h"
+#include "MainClass.h"
+#include "engine/World.h"
 
 namespace engine
 {
@@ -25,9 +27,11 @@ namespace engine
             
             this->blockRadiusGr->setPosition(this->getPosition());//.x = this->x;
             //this->blockRadiusGr.y = this->y;
-            this->blockRadiusGr.width = this->blockTowerRadius * 2;
-            this->blockRadiusGr.scaleY = this->blockRadiusGr.scaleX;
-            
+			float wid=this->blockRadiusGr->getContentSize().width;
+			float scale = this->blockTowerRadius * 2 / wid;
+			this->blockRadiusGr->setScale(scale);
+            //this->blockRadiusGr.width = this->blockTowerRadius * 2;
+            //this->blockRadiusGr.scaleY = this->blockRadiusGr.scaleX;
             this->blockRadiusGr->mouseChildren = false;
             this->blockRadiusGr->mouseEnabled = false;
             this->blockRadiusGr->setVisible(false);
@@ -36,7 +40,7 @@ namespace engine
             return true;
         }// end function
 
-        void animationHandler() 
+		void Unit_22::animationHandler()
         {
             if (!dead)
             {
@@ -191,19 +195,20 @@ namespace engine
             return;
         }// end function
 
-        void scanAtRadius() 
+		void Unit_22::scanAtRadius()
         {
             this->greenFlag = false;
             float tempObject = this->blockTowerRadius - this->blockTowerRadius * (1 - world->scaleRadius);
-            if ((this->testTarget.x - this->x) * (this->testTarget.x - this->x) / (this->blockTowerRadius * this->blockTowerRadius) 
-                + (this->testTarget.y - this->y) * (this->testTarget.y - this->y) / (tempObject * tempObject) <= 1)
+			cocos2d::Point thpos = this->getPosition();
+			if((this->testTarget.x - thpos.x) * (this->testTarget.x - thpos.x) / (this->blockTowerRadius * this->blockTowerRadius)
+			   + (this->testTarget.y - thpos.y) * (this->testTarget.y - thpos.y) / (tempObject * tempObject) <= 1)
             {
                 this->greenFlag = true;
             }
             return;
         }// end function
 
-        void kill()
+		void Unit_22::kill()
         {
             if (!dead)
             {

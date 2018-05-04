@@ -363,6 +363,27 @@
     <ClCompile Include="..\Classes\engine\units\Unit_16.cpp">
       <Filter>src\engine\units</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_21.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_22.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_23.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_20.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_24.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_25.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_26.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">

@@ -44,6 +44,9 @@ public:
 	virtual void scheduleUpdate(float dt);
 	virtual void enterFrameHandler(float dt);
 	
+	virtual void setOpacity(float);
+	virtual float getOpacity();
+	
 	static bool hitTest(cocos2d::Node * node, const Vec2 &pt);
 	static bool hitTest(cocos2d::Node * node, cocos2d::EventMouse* e);
 protected:
