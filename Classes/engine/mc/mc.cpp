@@ -167,6 +167,7 @@ namespace engine
     
     OnceMovieClip::OnceMovieClip(World * world, dragonBones::CCArmatureDisplay * cont, string defAniName) :world(world), MovieClip(cont, defAniName)
 	{
+	    this->world->addChild(this);
 		//container->getAnimation()->getAnimationConfig()->duration
 		//container->getArmature()
 		container->getEventDispatcher()->addCustomEventListener(EventObject::FRAME_EVENT, std::bind(&OnceMovieClip::onceMovieHandler, this, std::placeholders::_1));
@@ -174,6 +175,7 @@ namespace engine
     }
     OnceMovieClip::OnceMovieClip(World * world, string rootPath, string aniName, string defAniName) : world(world), MovieClip(rootPath, aniName, defAniName)
 	{
+	    this->world->addChild(this);
 		container->getEventDispatcher()->addCustomEventListener(EventObject::FRAME_EVENT, std::bind(&OnceMovieClip::onceMovieHandler, this, std::placeholders::_1));
 		container->getEventDispatcher()->addCustomEventListener(EventObject::COMPLETE, std::bind(&OnceMovieClip::onceMovieHandler, this, std::placeholders::_1));
 	};

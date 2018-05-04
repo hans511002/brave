@@ -37,16 +37,8 @@ namespace engine
     class Waves;
     class Feature;
     using namespace towers;
-
-    class RoadsignFire_mc : public MovieClip
-    {
-    public:
-        RoadsignFire_mc()
-        {
-            return;
-        }// end function
-
-    };
+    using namespace units;
+    
     class World : public BaseNode //, public  BaseLayer
     {
         
@@ -80,10 +72,10 @@ namespace engine
         WorldInterface* worldInterface;
         Common::Array<Node*> listOfFlags;//public var listOfFlags : Array;
         Common::Array<Node*> listOfPlaces;//public var listOfPlaces : Array;
-        Common::Array<Node*> listOfFirePortals;//public var listOfFirePortals : Array;
-        Common::Array<Node*> listOfIcePortals;//public var listOfIcePortals : Array;
-        Common::Array<Node*> listOfStonePortals;//public var listOfStonePortals : Array;
-        Common::Array<Node*> listOfLevinPortals;//public var listOfLevinPortals : Array;
+        Common::Array<RoadsignFire_mc *> listOfFirePortals;//public var listOfFirePortals : Array;
+        Common::Array<RoadsignIce_mc *> listOfIcePortals;//public var listOfIcePortals : Array;
+        Common::Array<RoadsignStone_mc *> listOfStonePortals;//public var listOfStonePortals : Array;
+        Common::Array<RoadsignLevin_mc *> listOfLevinPortals;//public var listOfLevinPortals : Array;
         int money;
         int bonusMoney;
         int liveMax;//: int = 20;

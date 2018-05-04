@@ -6,15 +6,41 @@
 
 namespace engine
 {
-	class World;
+	class World; 
 	namespace units
 	{
-	     struct NewEnemy_mc :public MovieClip
+        class Unit;
+	    struct NewEnemy_mc :public MovieClip
         {
             MovieClip* newEnemyCase;
              NewEnemy_mc();
         };
-    
+        
+        class RoadsignFire_mc : public MovieClip
+        {
+        public:
+            float myPath;
+            int myRoad,myWay;
+            Common::Array<Unit *> myStack ;
+            cocos2d::Point myPoint;
+            bool repeatFlag;
+            RoadsignFire_mc(); 
+        };
+        class RoadsignIce_mc : public MovieClip
+        {
+        public:
+            RoadsignIce_mc(); 
+        };
+        class RoadsignStone_mc : public MovieClip
+        {
+        public:
+            RoadsignStone_mc(); 
+        };
+        class RoadsignLevin_mc : public MovieClip
+        {
+        public:
+            RoadsignLevin_mc();
+        };
 		class Unit :public BaseNode
 		{
 		public:
@@ -125,43 +151,44 @@ namespace engine
 				 
 			}// end function
 
-			bool init();
+			virtual bool init();
 			 
-			void update(float dt);
+			virtual void update(float dt);
 
-			void moveHandler();
+			virtual void moveHandler();
 
-			void directionManage();
+			virtual void directionManage();
 
-			void scanNextTurn();
+			virtual void scanNextTurn();
 
-			void setVerticalTurn();
+			virtual void setVerticalTurn();
 
-			void setTurn(string param1);
+			virtual void setTurn(string param1);
 
-			void atStageManage();
+			virtual void atStageManage();
 
-			void animationHandler();
+			virtual void animationHandler();
 
 			////public function getHit(param1:Number, param2:String = "无", param3:int = 0, param4:Boolean = false, param5:int = 0, param6:Object = null) : void
-			void getHit(float param1, string param2 = "none", int  param3 = 0, bool param4 = false, int param5 = 0, void * param6 = NULL);
+			virtual void getHit(float param1, string param2 = "none", int  param3 = 0, bool param4 = false, int param5 = 0, void * param6 = NULL);
 
-			void setAirSettings(string param1);
+			virtual void setAirSettings(string param1);
 
-			void stopAllEffects(string param1 = "");
+			virtual void stopAllEffects(string param1 = "");
 
-			void removeUnitAfterDeathAnima();
+			virtual void removeUnitAfterDeathAnima();
 
-			void kill();
+			virtual void kill();
 
-            void onExit(); 
+            virtual void onExit(); 
 		};
 		
-#define UNIT_CLASS_DEFINE(unitName) struct unitName :public Unit{ \
+#define UNIT_CLASS_DEFINE(unitName,MEMBER_DEFINE) struct unitName :public Unit{ \
 		public:\
 			unitName();\
 			bool init();\
 			void animationHandler();\
+			MEMBER_DEFINE \
 		};
 		
 		UNIT_CLASS_DEFINE(Unit_1 );
@@ -185,8 +212,9 @@ namespace engine
 		UNIT_CLASS_DEFINE(Unit_19);
 		UNIT_CLASS_DEFINE(Unit_20);
 		UNIT_CLASS_DEFINE(Unit_21);
-		UNIT_CLASS_DEFINE(Unit_22);
-		UNIT_CLASS_DEFINE(Unit_23);
+		UNIT_CLASS_DEFINE(Unit_22,int blockTowerRadius;MovieClip * blockRadiusGr;bool greenFlag;cocos2d::Point testTarget;void scanAtRadius(););
+		
+		UNIT_CLASS_DEFINE(Unit_23,MovieClip * myPortal;MovieClip * portalAnima;);
 		UNIT_CLASS_DEFINE(Unit_24);
 		UNIT_CLASS_DEFINE(Unit_25);
 		UNIT_CLASS_DEFINE(Unit_26);

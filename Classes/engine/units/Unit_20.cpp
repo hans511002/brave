@@ -10,7 +10,7 @@ namespace engine
             return;
         }// end function
 
-        bool Unit_20::init(event:Event)
+        bool Unit_20::init()
         {
             typeUnit = 20;
             this->newEnemyCounter = Main::mainClass->readXMLClass.listOfEnemiesXML[(typeUnit - 1)][30];
@@ -28,24 +28,24 @@ namespace engine
             {
                 if (direction != "up")
                 {
-                    if (container->cont->currentFrame == 2)
+                    if (container->contMcs->currentFrame != 1)
                     {
-                        container->cont->gotoAndStop(1);
+                        container->contMcs->gotoAndStop(1);
                     }
                 }
-                else if (container->cont->currentFrame == 1)
+                else if (container->contMcs->currentFrame != 2)
                 {
-                    container->cont->gotoAndStop(2);
+                    container->contMcs->gotoAndStop(2);
                 }
-                if (!airFlag && !airShockFlag || container->currentFrame != 1)
+                if (!airFlag && !airShockFlag || container->cont->currentFrame != 1)
                 {
-                    if (container->currentFrame < container->totalFrames)
+                    if (container->cont->currentFrame < container->cont->totalFrames)
                     {
-                        container->gotoAndStop((container->currentFrame + 1));
+                        container->cont->gotoAndStop((container->cont->currentFrame + 1));
                     }
                     else
                     {
-                        container->gotoAndStop(1);
+                        container->cont->gotoAndStop(1);
                     }
                 }
             }
@@ -53,25 +53,32 @@ namespace engine
             return;
         }// end function
 
-        override public function kill() : void
+        void kill() 
         {
             if (!dead && health <= 0)
             {
-                if (container->cont->currentFrame == 1)
+                //OnceMovieClip * tempObject=NULL;//OnceMovieClip(World * world, string rootPath, string aniName, string defAniName = "");
+                if (container->contMcs->currentFrame == 1)
                 {
-                    tempObject = new Indexes(new Unit20_frontDeath_mc(), 1);
+                    OnceMovieClip * tempObject = new OnceMovieClip(world, "unit/", "Unit20_frontDeath_mc");//Indexes(new Unit20_frontDeath_mc(), 1);
+                    cocos2d::Point pos=container->cont->getPosition();
+                    pos=container->localToGlobal(pos);
+                    tempObject->setPosition(pos);
                 }
-                else if (container->cont->currentFrame == 2)
+                else if (container->contMcs->currentFrame == 2)
                 {
-                    tempObject = new Indexes(new Unit20_backDeath_mc(), 1);
+                    OnceMovieClip * tempObject = new OnceMovieClip(world, "unit/", "Unit20_backDeath_mc");//Indexes(new Unit20_backDeath_mc(), 1);
+                    cocos2d::Point pos=container->cont->getPosition();
+                    pos=container->localToGlobal(pos);
+                    tempObject->setPosition(pos);
                 }
                 //Sounds.instance.playSound("snd_unit_orderDeath");
-                tempObject1 = container->localToGlobal(new Point(container->cont->x, container->cont->y));
-                tempObject.x = tempObject1.x;
-                tempObject.y = tempObject1.y;
-                tempObject1 = 0;
-                tempObject2 = 0;
-                tempObject3 = 0;
+                //cocos2d::Point tempObject1 = container->localToGlobal(container->cont->getPosition());//new Point(container->cont->x, container->cont->y));
+                //tempObject.x = tempObject1.x;
+                //tempObject.y = tempObject1.y;
+                float tempObject1 = 0;
+                float tempObject2 = 0;
+                float tempObject3 = 0;
                 if (way == 1)
                 {
                     tempObject1 = path;
@@ -84,16 +91,16 @@ namespace engine
                 {
                     tempObject3 = path;
                 }
-                if (tempObject1 == 0)
+                if (tempObject1 == 0)//way != 1
                 {
-                    tempObject = 10000;
-                    tempObject4 = world->bezierClass.getPathLength(road, 1);
+                    float tempObject = 10000;
+                    float tempObject4 = world->bezierClass->getPathLength(road, 1);
                     i = 0;
                     while (i < tempObject4)
                     {
-                        
-                        tempObject5 = world->bezierClass.getPathPoint(i, road, 1);
-                        tempObject6 = Point.distance(new Point(tempObject5.x, tempObject5.y), this_pt);
+                        cocos2d::Point tempObject5 = world->bezierClass->getPathPoint(i, road, 1);
+                        float tempObject6=tempObject5.distance(this_pt);
+                        //tempObject6 = Point.distance(new Point(tempObject5.x, tempObject5.y), this_pt);
                         if (tempObject6 < tempObject)
                         {
                             tempObject = tempObject6;
@@ -108,14 +115,14 @@ namespace engine
                 }
                 if (tempObject2 == 0)
                 {
-                    tempObject = 10000;
-                    tempObject4 = world->bezierClass.getPathLength(road, 2);
+                    float tempObject = 10000;
+                    float tempObject4 = world->bezierClass->getPathLength(road, 2);
                     i = 0;
                     while (i < tempObject4)
-                    {
-                        
-                        tempObject5 = world->bezierClass.getPathPoint(i, road, 2);
-                        tempObject6 = Point.distance(new Point(tempObject5.x, tempObject5.y), this_pt);
+                    { 
+                        cocos2d::Point tempObject5 = world->bezierClass.getPathPoint(i, road, 2);
+                        float tempObject6=tempObject5.distance(this_pt);
+                        //tempObject6 = Point.distance(new Point(tempObject5.x, tempObject5.y), this_pt);
                         if (tempObject6 < tempObject)
                         {
                             tempObject = tempObject6;
@@ -130,14 +137,14 @@ namespace engine
                 }
                 if (tempObject3 == 0)
                 {
-                    tempObject = 10000;
-                    tempObject4 = world->bezierClass.getPathLength(road, 3);
+                    float tempObject = 10000;
+                    float tempObject4 = world->bezierClass.getPathLength(road, 3);
                     i = 0;
                     while (i < tempObject4)
-                    {
-                        
-                        tempObject5 = world->bezierClass.getPathPoint(i, road, 3);
-                        tempObject6 = Point.distance(new Point(tempObject5.x, tempObject5.y), this_pt);
+                    { 
+                        cocos2d::Point tempObject5 = world->bezierClass->getPathPoint(i, road, 3);
+                        float tempObject6=tempObject5.distance(this_pt);
+                        //tempObject6 = Point.distance(new Point(tempObject5.x, tempObject5.y), this_pt);
                         if (tempObject6 < tempObject)
                         {
                             tempObject = tempObject6;
@@ -153,37 +160,36 @@ namespace engine
                 j = 0;
                 i = 1;
                 while (i <= this->newEnemyCounter)
-                {
-                    
-                    (j + 1);
+                { 
+                    Unit * tempObject=NULL;
+                    j++;
                     if (j == 1)
                     {
                         tempObject1 = tempObject1 + 15;
                         tempObject = world->addUnit(31, road, 1, tempObject1);
-                        tempObject.speedKSave = tempObject.speedKSave - 0.1;
+                        tempObject->speedKSave = tempObject->speedKSave - 0.1;
                     }
                     else if (j == 2)
                     {
                         tempObject2 = tempObject2 + 15;
                         tempObject = world->addUnit(31, road, 2, tempObject2);
-                        tempObject.speedKSave = tempObject.speedKSave - 0.13;
+                        tempObject->speedKSave = tempObject->speedKSave - 0.13;
                     }
                     else if (j == 3)
                     {
                         j = 0;
                         tempObject3 = tempObject3 + 15;
                         tempObject = world->addUnit(31, road, 3, tempObject3);
-                        tempObject.speedKSave = tempObject.speedKSave - 0.16;
+                        tempObject->speedKSave = tempObject->speedKSave - 0.16;
                     }
-                    tempObject.speedK = tempObject.speedKSave;
-                    tempObject.direction = direction;
-                    tempObject.readyDamage = false;
-                    tempObject.moveFlag = false;
-                    tempObject.x = this->x;
-                    tempObject.y = this->y;
-                    tempObject.alpha = 0;
-                    var _loc_2:* = i + 1;
-                    i = _loc_2;
+                    tempObject->speedK = tempObject->speedKSave;
+                    tempObject->direction = direction;
+                    tempObject->readyDamage = false;
+                    tempObject->moveFlag = false;
+                    tempObject->setPosition(this->getPosition());// x = this->x;
+                    //tempObject.y = this->y;
+                    tempObject->alpha = 0;
+                    i++;
                 }
             }
             Unit::kill();

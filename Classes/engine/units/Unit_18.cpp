@@ -36,63 +36,64 @@ namespace engine
                     {
                         if (this->invisibleCounter < this->invisibleTimer)
                         {
-                            (this->invisibleCounter + 1);
+                            this->invisibleCounter ++;
                         }
                     }
                     else if (this->visibleCounter < this->visibleTimer)
                     {
-                        (this->visibleCounter + 1);
+                        this->visibleCounter ++;
                     }
                     if (direction == "left" || direction == "right")
                     {
                         if (this->hiddenFlag)
                         {
-                            if (container->cont->currentFrame > 9)
+                            if (container->contMcs->currentFrame > 9)
+                            {
+                                container->contMcs->gotoAndStop(1);
+                            }
+                            else if (container->contMcs->currentFrame > 1)
+                            {
+                                container->contMcs->gotoAndStop((container->contMcs->currentFrame - 1));
+                            }
+                        }
+                        else if (container->contMcs->currentFrame > 9)
+                        {
+                            container->contMcs->gotoAndStop(9);
+                        }
+                        else if (container->contMcs->currentFrame < 9)
+                        {
+                            container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
+                        }
+                        if (container->cont->currentFrame > 24)
+                        {
+                            container->cont->gotoAndStop((container->cont->currentFrame + 1));
+                            if (container->cont->getPositionX() >= -1 && container->cont->getPositionX() <= 1 
+                                && container->cont->getPositionY() >= -1 && container->cont->getPositionY() <= 1)
                             {
                                 container->cont->gotoAndStop(1);
                             }
-                            else if (container->cont->currentFrame > 1)
-                            {
-                                container->cont->gotoAndStop((container->cont->currentFrame - 1));
-                            }
-                        }
-                        else if (container->cont->currentFrame > 9)
-                        {
-                            container->cont->gotoAndStop(9);
-                        }
-                        else if (container->cont->currentFrame < 9)
-                        {
-                            container->cont->gotoAndStop((container->cont->currentFrame + 1));
-                        }
-                        if (container->currentFrame > 24)
-                        {
-                            container->gotoAndStop((container->currentFrame + 1));
-                            if (container->cont->x >= -1 && container->cont->x <= 1 && container->cont->y >= -1 && container->cont->y <= 1)
-                            {
-                                container->gotoAndStop(1);
-                            }
-                            if (container->currentFrame < 33)
+                            if (container->cont->currentFrame < 33)
                             {
                                 if (!moveFlag)
                                 {
                                     moveFlag = true;
                                 }
                             }
-                            else if (container->currentFrame < 37)
+                            else if (container->cont->currentFrame < 37)
                             {
                                 if (moveFlag)
                                 {
                                     moveFlag = false;
                                 }
                             }
-                            else if (container->currentFrame < 44)
+                            else if (container->cont->currentFrame < 44)
                             {
                                 if (!moveFlag)
                                 {
                                     moveFlag = true;
                                 }
                             }
-                            else if (container->currentFrame < container->totalFrames)
+                            else if (container->cont->currentFrame < container->cont->totalFrames)
                             {
                                 if (moveFlag)
                                 {
@@ -102,36 +103,36 @@ namespace engine
                         }
                         else
                         {
-                            if (container->currentFrame < 24)
+                            if (container->cont->currentFrame < 24)
                             {
-                                container->gotoAndStop((container->currentFrame + 1));
+                                container->cont->gotoAndStop((container->cont->currentFrame + 1));
                             }
                             else
                             {
-                                container->gotoAndStop(1);
+                                container->cont->gotoAndStop(1);
                             }
-                            if (container->currentFrame < 9)
+                            if (container->cont->currentFrame < 9)
                             {
                                 if (!moveFlag)
                                 {
                                     moveFlag = true;
                                 }
                             }
-                            else if (container->currentFrame < 13)
+                            else if (container->cont->currentFrame < 13)
                             {
                                 if (moveFlag)
                                 {
                                     moveFlag = false;
                                 }
                             }
-                            else if (container->currentFrame < 20)
+                            else if (container->cont->currentFrame < 20)
                             {
                                 if (!moveFlag)
                                 {
                                     moveFlag = true;
                                 }
                             }
-                            else if (container->currentFrame < 24)
+                            else if (container->cont->currentFrame < 24)
                             {
                                 if (moveFlag)
                                 {
@@ -142,39 +143,39 @@ namespace engine
                     }
                     else if (direction == "up")
                     {
-                        if (container->cont->currentFrame < 10)
+                        if (container->contMcs->currentFrame < 10)
                         {
-                            container->cont->gotoAndStop(10);
+                            container->contMcs->gotoAndStop(10);
                         }
-                        if (container->currentFrame < 25)
+                        if (container->cont->currentFrame < 25)
                         {
-                            container->gotoAndStop((container->currentFrame + 1));
-                            if (container->cont->x >= -1 && container->cont->x <= 1 && container->cont->y >= -1 && container->cont->y <= 1)
+                            container->cont->gotoAndStop((container->cont->currentFrame + 1));
+                            if (container->cont->getPositionX() >= -1 && container->cont->getPositionX() <= 1 && container->cont->getPositionY() >= -1 && container->cont->getPositionY() <= 1)
                             {
-                                container->gotoAndStop(25);
+                                container->cont->gotoAndStop(25);
                             }
-                            if (container->currentFrame < 9)
+                            if (container->cont->currentFrame < 9)
                             {
                                 if (!moveFlag)
                                 {
                                     moveFlag = true;
                                 }
                             }
-                            else if (container->currentFrame < 13)
+                            else if (container->cont->currentFrame < 13)
                             {
                                 if (moveFlag)
                                 {
                                     moveFlag = false;
                                 }
                             }
-                            else if (container->currentFrame < 20)
+                            else if (container->cont->currentFrame < 20)
                             {
                                 if (!moveFlag)
                                 {
                                     moveFlag = true;
                                 }
                             }
-                            else if (container->currentFrame < 24)
+                            else if (container->cont->currentFrame < 24)
                             {
                                 if (moveFlag)
                                 {
@@ -184,36 +185,36 @@ namespace engine
                         }
                         else
                         {
-                            if (container->currentFrame < container->totalFrames)
+                            if (container->cont->currentFrame < container->cont->totalFrames)
                             {
-                                container->gotoAndStop((container->currentFrame + 1));
+                                container->cont->gotoAndStop((container->cont->currentFrame + 1));
                             }
                             else
                             {
-                                container->gotoAndStop(25);
+                                container->cont->gotoAndStop(25);
                             }
-                            if (container->currentFrame < 33)
+                            if (container->cont->currentFrame < 33)
                             {
                                 if (!moveFlag)
                                 {
                                     moveFlag = true;
                                 }
                             }
-                            else if (container->currentFrame < 37)
+                            else if (container->cont->currentFrame < 37)
                             {
                                 if (moveFlag)
                                 {
                                     moveFlag = false;
                                 }
                             }
-                            else if (container->currentFrame < 44)
+                            else if (container->cont->currentFrame < 44)
                             {
                                 if (!moveFlag)
                                 {
                                     moveFlag = true;
                                 }
                             }
-                            else if (container->currentFrame < container->totalFrames)
+                            else if (container->cont->currentFrame < container->cont->totalFrames)
                             {
                                 if (moveFlag)
                                 {
@@ -226,52 +227,53 @@ namespace engine
                     {
                         if (this->hiddenFlag)
                         {
-                            if (container->cont->currentFrame > 9)
+                            if (container->contMcs->currentFrame > 9)
                             {
-                                container->cont->gotoAndStop(1);
+                                container->contMcs->gotoAndStop(1);
                             }
-                            else if (container->cont->currentFrame > 1)
+                            else if (container->contMcs->currentFrame > 1)
                             {
-                                container->cont->gotoAndStop((container->cont->currentFrame - 1));
+                                container->contMcs->gotoAndStop((container->contMcs->currentFrame - 1));
                             }
                         }
-                        else if (container->cont->currentFrame > 9)
+                        else if (container->contMcs->currentFrame > 9)
                         {
-                            container->cont->gotoAndStop(9);
+                            container->contMcs->gotoAndStop(9);
                         }
-                        else if (container->cont->currentFrame < 9)
+                        else if (container->contMcs->currentFrame < 9)
+                        {
+                            container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
+                        }
+                        if (container->cont->currentFrame < 25)
                         {
                             container->cont->gotoAndStop((container->cont->currentFrame + 1));
-                        }
-                        if (container->currentFrame < 25)
-                        {
-                            container->gotoAndStop((container->currentFrame + 1));
-                            if (container->cont->x >= -1 && container->cont->x <= 1 && container->cont->y >= -1 && container->cont->y <= 1)
+                            if (container->cont->getPositionX() >= -1 && container->cont->getPositionX() <= 1 
+                                && container->cont->getPositionY() >= -1 && container->cont->getPositionY() <= 1)
                             {
-                                container->gotoAndStop(25);
+                                container->cont->gotoAndStop(25);
                             }
-                            if (container->currentFrame < 9)
+                            if (container->cont->currentFrame < 9)
                             {
                                 if (!moveFlag)
                                 {
                                     moveFlag = true;
                                 }
                             }
-                            else if (container->currentFrame < 13)
+                            else if (container->cont->currentFrame < 13)
                             {
                                 if (moveFlag)
                                 {
                                     moveFlag = false;
                                 }
                             }
-                            else if (container->currentFrame < 20)
+                            else if (container->cont->currentFrame < 20)
                             {
                                 if (!moveFlag)
                                 {
                                     moveFlag = true;
                                 }
                             }
-                            else if (container->currentFrame < 24)
+                            else if (container->cont->currentFrame < 24)
                             {
                                 if (moveFlag)
                                 {
@@ -281,36 +283,36 @@ namespace engine
                         }
                         else
                         {
-                            if (container->currentFrame < container->totalFrames)
+                            if (container->cont->currentFrame < container->cont->totalFrames)
                             {
-                                container->gotoAndStop((container->currentFrame + 1));
+                                container->cont->gotoAndStop((container->cont->currentFrame + 1));
                             }
                             else
                             {
-                                container->gotoAndStop(25);
+                                container->cont->gotoAndStop(25);
                             }
-                            if (container->currentFrame < 33)
+                            if (container->cont->currentFrame < 33)
                             {
                                 if (!moveFlag)
                                 {
                                     moveFlag = true;
                                 }
                             }
-                            else if (container->currentFrame < 37)
+                            else if (container->cont->currentFrame < 37)
                             {
                                 if (moveFlag)
                                 {
                                     moveFlag = false;
                                 }
                             }
-                            else if (container->currentFrame < 44)
+                            else if (container->cont->currentFrame < 44)
                             {
                                 if (!moveFlag)
                                 {
                                     moveFlag = true;
                                 }
                             }
-                            else if (container->currentFrame < container->totalFrames)
+                            else if (container->cont->currentFrame < container->cont->totalFrames)
                             {
                                 if (moveFlag)
                                 {
@@ -324,52 +326,53 @@ namespace engine
                 {
                     if (this->hiddenFlag)
                     {
-                        if (container->cont->currentFrame > 9)
+                        if (container->contMcs->currentFrame > 9)
+                        {
+                            container->contMcs->gotoAndStop(1);
+                        }
+                        else if (container->contMcs->currentFrame > 1)
+                        {
+                            container->contMcs->gotoAndStop((container->contMcs->currentFrame - 1));
+                        }
+                    }
+                    else if (container->contMcs->currentFrame > 9)
+                    {
+                        container->contMcs->gotoAndStop(9);
+                    }
+                    else if (container->contMcs->currentFrame < 9)
+                    {
+                        container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
+                    }
+                    if (container->cont->currentFrame > 24)
+                    {
+                        container->cont->gotoAndStop((container->cont->currentFrame + 1));
+                        if (container->cont->getPositionX() >= -1 && container->cont->getPositionX() <= 1 
+                            && container->cont->getPositionY() >= -1 && container->cont->getPositionY() <= 1)
                         {
                             container->cont->gotoAndStop(1);
                         }
-                        else if (container->cont->currentFrame > 1)
-                        {
-                            container->cont->gotoAndStop((container->cont->currentFrame - 1));
-                        }
-                    }
-                    else if (container->cont->currentFrame > 9)
-                    {
-                        container->cont->gotoAndStop(9);
-                    }
-                    else if (container->cont->currentFrame < 9)
-                    {
-                        container->cont->gotoAndStop((container->cont->currentFrame + 1));
-                    }
-                    if (container->currentFrame > 24)
-                    {
-                        container->gotoAndStop((container->currentFrame + 1));
-                        if (container->cont->x >= -1 && container->cont->x <= 1 && container->cont->y >= -1 && container->cont->y <= 1)
-                        {
-                            container->gotoAndStop(1);
-                        }
-                        if (container->currentFrame < 33)
+                        if (container->cont->currentFrame < 33)
                         {
                             if (!moveFlag)
                             {
                                 moveFlag = true;
                             }
                         }
-                        else if (container->currentFrame < 37)
+                        else if (container->cont->currentFrame < 37)
                         {
                             if (moveFlag)
                             {
                                 moveFlag = false;
                             }
                         }
-                        else if (container->currentFrame < 44)
+                        else if (container->cont->currentFrame < 44)
                         {
                             if (!moveFlag)
                             {
                                 moveFlag = true;
                             }
                         }
-                        else if (container->currentFrame < container->totalFrames)
+                        else if (container->cont->currentFrame < container->cont->totalFrames)
                         {
                             if (moveFlag)
                             {
@@ -379,36 +382,36 @@ namespace engine
                     }
                     else
                     {
-                        if (container->currentFrame != 1 && container->currentFrame < 24)
+                        if (container->cont->currentFrame != 1 && container->cont->currentFrame < 24)
                         {
-                            container->gotoAndStop((container->currentFrame + 1));
+                            container->cont->gotoAndStop((container->cont->currentFrame + 1));
                         }
-                        else if (container->currentFrame != 1)
+                        else if (container->cont->currentFrame != 1)
                         {
-                            container->gotoAndStop(1);
+                            container->cont->gotoAndStop(1);
                         }
-                        if (container->currentFrame < 9)
+                        if (container->cont->currentFrame < 9)
                         {
                             if (!moveFlag)
                             {
                                 moveFlag = true;
                             }
                         }
-                        else if (container->currentFrame < 13)
+                        else if (container->cont->currentFrame < 13)
                         {
                             if (moveFlag)
                             {
                                 moveFlag = false;
                             }
                         }
-                        else if (container->currentFrame < 20)
+                        else if (container->cont->currentFrame < 20)
                         {
                             if (!moveFlag)
                             {
                                 moveFlag = true;
                             }
                         }
-                        else if (container->currentFrame < 24)
+                        else if (container->cont->currentFrame < 24)
                         {
                             if (moveFlag)
                             {
@@ -419,39 +422,40 @@ namespace engine
                 }
                 else if (direction == "up")
                 {
-                    if (container->cont->currentFrame < 10)
+                    if (container->contMcs->currentFrame < 10)
                     {
-                        container->cont->gotoAndStop(10);
+                        container->contMcs->gotoAndStop(10);
                     }
-                    if (container->currentFrame < 25)
+                    if (container->cont->currentFrame < 25)
                     {
-                        container->gotoAndStop((container->currentFrame + 1));
-                        if (container->cont->x >= -1 && container->cont->x <= 1 && container->cont->y >= -1 && container->cont->y <= 1)
+                        container->cont->gotoAndStop((container->cont->currentFrame + 1));
+                        if (container->cont->getPositionX() >= -1 && container->cont->getPositionX() <= 1 
+                            && container->cont->getPositionY() >= -1 && container->cont->getPositionY() <= 1)
                         {
-                            container->gotoAndStop(25);
+                            container->cont->gotoAndStop(25);
                         }
-                        if (container->currentFrame < 9)
+                        if (container->cont->currentFrame < 9)
                         {
                             if (!moveFlag)
                             {
                                 moveFlag = true;
                             }
                         }
-                        else if (container->currentFrame < 13)
+                        else if (container->cont->currentFrame < 13)
                         {
                             if (moveFlag)
                             {
                                 moveFlag = false;
                             }
                         }
-                        else if (container->currentFrame < 20)
+                        else if (container->cont->currentFrame < 20)
                         {
                             if (!moveFlag)
                             {
                                 moveFlag = true;
                             }
                         }
-                        else if (container->currentFrame < 24)
+                        else if (container->cont->currentFrame < 24)
                         {
                             if (moveFlag)
                             {
@@ -461,36 +465,36 @@ namespace engine
                     }
                     else
                     {
-                        if (container->currentFrame != 25 && container->currentFrame < container->totalFrames)
+                        if (container->cont->currentFrame != 25 && container->cont->currentFrame < container->cont->totalFrames)
                         {
-                            container->gotoAndStop((container->currentFrame + 1));
+                            container->cont->gotoAndStop((container->cont->currentFrame + 1));
                         }
-                        else if (container->currentFrame != 25)
+                        else if (container->cont->currentFrame != 25)
                         {
-                            container->gotoAndStop(25);
+                            container->cont->gotoAndStop(25);
                         }
-                        if (container->currentFrame < 33)
+                        if (container->cont->currentFrame < 33)
                         {
                             if (!moveFlag)
                             {
                                 moveFlag = true;
                             }
                         }
-                        else if (container->currentFrame < 37)
+                        else if (container->cont->currentFrame < 37)
                         {
                             if (moveFlag)
                             {
                                 moveFlag = false;
                             }
                         }
-                        else if (container->currentFrame < 44)
+                        else if (container->cont->currentFrame < 44)
                         {
                             if (!moveFlag)
                             {
                                 moveFlag = true;
                             }
                         }
-                        else if (container->currentFrame < container->totalFrames)
+                        else if (container->cont->currentFrame < container->cont->totalFrames)
                         {
                             if (moveFlag)
                             {
@@ -503,52 +507,53 @@ namespace engine
                 {
                     if (this->hiddenFlag)
                     {
-                        if (container->cont->currentFrame > 9)
+                        if (container->contMcs->currentFrame > 9)
                         {
-                            container->cont->gotoAndStop(1);
+                            container->contMcs->gotoAndStop(1);
                         }
-                        else if (container->cont->currentFrame > 1)
+                        else if (container->contMcs->currentFrame > 1)
                         {
-                            container->cont->gotoAndStop((container->cont->currentFrame - 1));
+                            container->contMcs->gotoAndStop((container->contMcs->currentFrame - 1));
                         }
                     }
-                    else if (container->cont->currentFrame > 9)
+                    else if (container->contMcs->currentFrame > 9)
                     {
-                        container->cont->gotoAndStop(9);
+                        container->contMcs->gotoAndStop(9);
                     }
-                    else if (container->cont->currentFrame < 9)
+                    else if (container->contMcs->currentFrame < 9)
+                    {
+                        container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
+                    }
+                    if (container->cont->currentFrame < 25)
                     {
                         container->cont->gotoAndStop((container->cont->currentFrame + 1));
-                    }
-                    if (container->currentFrame < 25)
-                    {
-                        container->gotoAndStop((container->currentFrame + 1));
-                        if (container->cont->x >= -1 && container->cont->x <= 1 && container->cont->y >= -1 && container->cont->y <= 1)
+                        if (container->cont->getPositionX() >= -1 && container->cont->getPositionX() <= 1 
+                            && container->cont->getPositionY() >= -1 && container->cont->getPositionY() <= 1)
                         {
-                            container->gotoAndStop(25);
+                            container->cont->gotoAndStop(25);
                         }
-                        if (container->currentFrame < 9)
+                        if (container->cont->currentFrame < 9)
                         {
                             if (!moveFlag)
                             {
                                 moveFlag = true;
                             }
                         }
-                        else if (container->currentFrame < 13)
+                        else if (container->cont->currentFrame < 13)
                         {
                             if (moveFlag)
                             {
                                 moveFlag = false;
                             }
                         }
-                        else if (container->currentFrame < 20)
+                        else if (container->cont->currentFrame < 20)
                         {
                             if (!moveFlag)
                             {
                                 moveFlag = true;
                             }
                         }
-                        else if (container->currentFrame < 24)
+                        else if (container->cont->currentFrame < 24)
                         {
                             if (moveFlag)
                             {
@@ -558,36 +563,36 @@ namespace engine
                     }
                     else
                     {
-                        if (container->currentFrame != 25 && container->currentFrame < container->totalFrames)
+                        if (container->cont->currentFrame != 25 && container->cont->currentFrame < container->cont->totalFrames)
                         {
-                            container->gotoAndStop((container->currentFrame + 1));
+                            container->cont->gotoAndStop((container->cont->currentFrame + 1));
                         }
-                        else if (container->currentFrame != 25)
+                        else if (container->cont->currentFrame != 25)
                         {
-                            container->gotoAndStop(25);
+                            container->cont->gotoAndStop(25);
                         }
-                        if (container->currentFrame < 33)
+                        if (container->cont->currentFrame < 33)
                         {
                             if (!moveFlag)
                             {
                                 moveFlag = true;
                             }
                         }
-                        else if (container->currentFrame < 37)
+                        else if (container->cont->currentFrame < 37)
                         {
                             if (moveFlag)
                             {
                                 moveFlag = false;
                             }
                         }
-                        else if (container->currentFrame < 44)
+                        else if (container->cont->currentFrame < 44)
                         {
                             if (!moveFlag)
                             {
                                 moveFlag = true;
                             }
                         }
-                        else if (container->currentFrame < container->totalFrames)
+                        else if (container->cont->currentFrame < container->cont->totalFrames)
                         {
                             if (moveFlag)
                             {
@@ -599,18 +604,18 @@ namespace engine
             }
             if (this->invisibleCounter == this->invisibleTimer)
             {
-                if (!container->signal.visible)
+                if (!container->signal->isVisible())
                 {
-                    container->signal.visible = true;
+                    container->signal->setVisible(true);
                 }
-                else if (container->signal.currentFrame < container->signal.totalFrames)
+                else if (container->signal->currentFrame < container->signal->totalFrames)
                 {
-                    container->signal.gotoAndStop((container->signal.currentFrame + 1));
+                    container->signal->gotoAndStop((container->signal->currentFrame + 1));
                 }
                 else
                 {
-                    container->signal.gotoAndStop(1);
-                    container->signal.visible = false;
+                    container->signal->gotoAndStop(1);
+                    container->signal->setVisible(false);
                     this->invisibleCounter = 0;
                     this->hiddenFlag = false;
                     this->alpha = 1;
@@ -619,19 +624,19 @@ namespace engine
             }
             else if (this->visibleCounter == this->visibleTimer)
             {
-                if (!container->signal.visible)
+                if (!container->signal->isVisible())
                 {
-                    container->signal.visible = true;
+                    container->signal->setVisible(true);
                     readyDamage = false;
                 }
-                else if (container->signal.currentFrame < container->signal.totalFrames)
+                else if (container->signal->currentFrame < container->signal->totalFrames)
                 {
-                    container->signal.gotoAndStop((container->signal.currentFrame + 1));
+                    container->signal->gotoAndStop((container->signal->currentFrame + 1));
                 }
                 else
                 {
-                    container->signal.gotoAndStop(1);
-                    container->signal.visible = false;
+                    container->signal->gotoAndStop(1);
+                    container->signal->setVisible(false);
                     this->visibleCounter = 0;
                     this->hiddenFlag = true;
                     this->alpha = 0.5;

@@ -27,60 +27,60 @@ namespace engine
             {
                 if (direction != "up")
                 {
-                    if (container->cont->currentFrame == 2)
+                    if (container->contMcs->currentFrame != 1)
                     {
-                        container->cont->gotoAndStop(1);
+                        container->contMcs->gotoAndStop(1);
                     }
                 }
-                else if (container->cont->currentFrame == 1)
+                else if (container->contMcs->currentFrame != 2)
                 {
-                    container->cont->gotoAndStop(2);
+                    container->contMcs->gotoAndStop(2);
                 }
                 if (direction == "left" || direction == "right")
                 {
-                    if (!airFlag && !airShockFlag || container->currentFrame != 1)
+                    if (!airFlag && !airShockFlag || container->cont->currentFrame != 1)
                     {
-                        if (container->currentFrame > 26)
+                        if (container->cont->currentFrame > 26)
                         {
-                            if (container->currentFrame < container->totalFrames)
+                            if (container->cont->currentFrame < container->cont->totalFrames)
                             {
-                                container->gotoAndStop((container->currentFrame + 1));
+                                container->cont->gotoAndStop((container->cont->currentFrame + 1));
                             }
                             else
                             {
-                                container->gotoAndStop(1);
+                                container->cont->gotoAndStop(1);
                             }
                         }
-                        else if (container->currentFrame < 26)
+                        else if (container->cont->currentFrame < 26)
                         {
-                            container->gotoAndStop((container->currentFrame + 1));
+                            container->cont->gotoAndStop((container->cont->currentFrame + 1));
                         }
                         else
                         {
-                            container->gotoAndStop(1);
+                            container->cont->gotoAndStop(1);
                         }
                     }
                 }
-                else if (!airFlag && !airShockFlag || container->currentFrame != 27)
+                else if (!airFlag && !airShockFlag || container->cont->currentFrame != 27)
                 {
-                    if (container->currentFrame < 27)
+                    if (container->cont->currentFrame < 27)
                     {
-                        if (container->currentFrame < 26)
+                        if (container->cont->currentFrame < 26)
                         {
-                            container->gotoAndStop((container->currentFrame + 1));
+                            container->cont->gotoAndStop((container->cont->currentFrame + 1));
                         }
                         else
                         {
-                            container->gotoAndStop(27);
+                            container->cont->gotoAndStop(27);
                         }
                     }
-                    else if (container->currentFrame < container->totalFrames)
+                    else if (container->cont->currentFrame < container->cont->totalFrames)
                     {
-                        container->gotoAndStop((container->currentFrame + 1));
+                        container->cont->gotoAndStop((container->cont->currentFrame + 1));
                     }
                     else
                     {
-                        container->gotoAndStop(27);
+                        container->cont->gotoAndStop(27);
                     }
                 }
             }
