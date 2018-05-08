@@ -7,7 +7,7 @@ namespace engine{
     {
         bool Cast_1::init()
         {
-            container = new MoveCast_mc(1);
+            container = new ImageMovieClip("cast/MoveCast_mc/", "MoveGolem_mc",2, 3);
              this->addChild(container);
             Cast::init();
 			this->autorelease();

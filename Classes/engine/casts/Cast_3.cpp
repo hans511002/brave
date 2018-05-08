@@ -1,12 +1,13 @@
 #include "Cast_3.h"
 #include "engine/world.h"
+#include "Air.h"
 
 namespace engine{
     namespace    casts
     {
         bool Cast_3::init()
         {
-            container = new MoveCast_mc(3);
+            container = new ImageMovieClip("cast/MoveCast_mc/", "MoveAir_mc",2, 3);
             //container->gotoAndStop(2);
             this->addChild(container);
             Cast_3::init();

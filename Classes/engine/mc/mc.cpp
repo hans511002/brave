@@ -111,7 +111,7 @@ namespace engine
 		return arm->getAnimation();
 	};
 
-    ImageMovieClip::ImageMovieClip(string rootPath, string fileNamePre, int imgSize){
+    ImageMovieClip::ImageMovieClip(string rootPath, string fileNamePre, int numFormat,int imgSize){
         currentFrame=0;
         totalFrames = imgSize-1;
         if (!rootPath.empty() && rootPath.at(rootPath.length() - 1) != '/')

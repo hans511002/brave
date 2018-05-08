@@ -51,7 +51,8 @@ namespace engine
         byte playing;
         BaseSprite * cont;
         string filePre;
-        ImageMovieClip(string rootPath, string fileNamePre, int imgSize=0);
+        char numFormat[8];
+        ImageMovieClip(string rootPath, string fileNamePre,int numFormat, int imgSize=0);
         int getTotalFrames(string aniName = "");
         void gotoAndStop(int cf, string aniName = "");
         void nextFram();

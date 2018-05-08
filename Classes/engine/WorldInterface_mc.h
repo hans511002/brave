@@ -45,15 +45,15 @@ namespace engine
 
  
 
-		dragonBones::CCArmatureDisplay * stoneBacklight;//public var stoneBacklight : MovieClip;
-		dragonBones::CCArmatureDisplay * levinBacklight;//public var levinBacklight : MovieClip;
-		dragonBones::CCArmatureDisplay * iceBacklight;//public var iceBacklight : MovieClip;
-		dragonBones::CCArmatureDisplay * fireBacklight;//public var fireBacklight : MovieClip;
+		MovieClip * stoneBacklight;//public var stoneBacklight : MovieClip;
+		MovieClip * levinBacklight;//public var levinBacklight : MovieClip;
+		MovieClip * iceBacklight;//public var iceBacklight : MovieClip;
+		MovieClip * fireBacklight;//public var fireBacklight : MovieClip;
 
-        dragonBones::CCArmatureDisplay * stoneBacked; 
-        dragonBones::CCArmatureDisplay * levinBacked; 
-        dragonBones::CCArmatureDisplay * iceBacked; 
-        dragonBones::CCArmatureDisplay * fireBacked; 
+        MovieClip * stoneBacked; 
+        MovieClip * levinBacked; 
+        MovieClip * iceBacked; 
+        MovieClip * fireBacked; 
 
 	
 		//public var testRestart : MovieClip;
@@ -84,10 +84,13 @@ namespace engine
         //public var sell : MovieClip;
         dragonBones::CCArmatureDisplay * faster;
 
+        virtual void onEnter();
+        virtual void onExit();
+        
 
 		WorldInterface_mc();
         void WorldInterface_mc::startWavesCallback(Ref* pSender);
-		bool init();
+		virtual bool init();
         void mouseDownHandler(cocos2d::Event *event);
     };
 
