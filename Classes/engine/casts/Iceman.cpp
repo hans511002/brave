@@ -100,7 +100,7 @@ namespace engine{
                     this->kill();
                     if (this->direction == "left")
                     {
-                        tempObject = new OnceMovieClip(this->world,"cast/IcemanHorisontDeath_mc","IcemanHorisontDeath_mc",46);
+                        tempObject = new OnceMovieClip(this->world,"cast/IcemanHorisontDeath_mc","IcemanHorisontDeath_mc");
                         //this->tempObject = new Indexes(new IcemanHorisontDeath_mc(), 2);
                         tempObject->speedX = this->speedK * -1;
                     }

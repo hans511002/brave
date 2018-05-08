@@ -27,7 +27,7 @@ namespace engine
             if (world->listOfStonePortals.size() > 0)
             {
                 //container->cont->mask = container->maskCont;
-				container->cont->getArmature()->getSlot("shadow")->setVisible(false);//container->shadow.visible = false;
+                container->cont->getArmature()->getSlot("shadow")->setDisplayIndex(-1);// setVisible(false);//container->shadow.visible = false;
                 if ((gate - 1) >= 0 && (gate - 1) < world->listOfStonePortals.size())
                 {
                     this->myPortal = world->listOfStonePortals[(gate - 1)];
@@ -128,7 +128,7 @@ namespace engine
                             {
                                 this->portalAnima->setVisible(false); //visible = false;
                                 container->setPositionY(0);//cont->y = 0;
-								container->cont->getArmature()->getSlot("shadow")->setVisible(false);//container->shadow->setVisible(true); //visible = true;
+                                container->cont->getArmature()->getSlot("shadow")->setDisplayIndex(-1); //setVisible(false);//container->shadow->setVisible(true); //visible = true;
                             }
                         }
                     }

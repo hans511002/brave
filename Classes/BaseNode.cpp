@@ -2,6 +2,8 @@
 #include "MainClass.h"
 
 using namespace cocos2d;
+const double BaseNode::AnimationInterval = 1.0f / (double)Main::FrameRate;
+
 namespace std
 {
 	void setAnchorPoint(Node* node,bool subset)
@@ -76,7 +78,7 @@ cocos2d::Point BaseNode::localToGlobal(cocos2d::Point pt)
 void BaseNode::onEnter()
 {
     if(schdt){
-        this->schedule(schedule_selector(BaseNode::scheduleUpdate),Main::AnimationInterval);
+        this->schedule(schedule_selector(BaseNode::scheduleUpdate),AnimationInterval);
     }
 };
 void BaseNode::onExit()

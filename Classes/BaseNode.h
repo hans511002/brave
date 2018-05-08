@@ -28,6 +28,8 @@ class BaseNode :public   cocos2d::Node, public   BaseFuns
 {
     bool schdt;
 public:
+    static const double AnimationInterval;
+
     BaseNode():schdt(false){};
 	bool init();
 	bool atStage();

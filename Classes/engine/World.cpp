@@ -789,34 +789,34 @@ namespace engine
 		{
 			tempObject = new Tower1();
 		}
-		//else if (param1 == "tower2")
-		//{
-		//	this->tempObject = new Tower2();
-		//}
-		//else if (param1 == "tower3")
-		//{
-		//	this->tempObject = new Tower3();
-		//}
-		//else if (param1 == "tower4")
-		//{
-		//	this->tempObject = new Tower4();
-		//}
-		//else if (param1 == "tower5")
-		//{
-		//	this->tempObject = new Tower5();
-		//}
-		//else if (param1 == "tower6")
-		//{
-		//	this->tempObject = new Tower6();
-		//}
-		//else if (param1 == "tower7")
-		//{
-		//	this->tempObject = new Tower7();
-		//}
-		//else if (param1 == "tower8")
-		//{
-		//	this->tempObject = new Tower8();
-		//}
+		else if (param1 == "tower2")
+		{
+			this->tempObject = new Tower2();
+		}
+		else if (param1 == "tower3")
+		{
+			this->tempObject = new Tower3();
+		}
+		else if (param1 == "tower4")
+		{
+			this->tempObject = new Tower4();
+		}
+		else if (param1 == "tower5")
+		{
+			this->tempObject = new Tower5();
+		}
+		else if (param1 == "tower6")
+		{
+			this->tempObject = new Tower6();
+		}
+		else if (param1 == "tower7")
+		{
+			this->tempObject = new Tower7();
+		}
+		else if (param1 == "tower8")
+		{
+			this->tempObject = new Tower8();
+		}
 		tempObject->myPlace = param2;
 		tempObject->autoBuild = param3;
 		this->addChild(tempObject);

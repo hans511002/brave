@@ -56,15 +56,15 @@ protected:
 		//
 		currentFrame = frameCounter= 0;
 		dir = true;
-		mc = new MovieClip("unit/", "unit27");
+		mc = new MovieClip("unit/", "unit1_1");
 		mc->setPosition(0.0f, 100.0f);
 		addChild(mc);
-		mc->getAnimation()->play("cont");
-		Armature * arm = mc->getArmature()->getSlot("cont")->getChildArmature();
+		mc->getAnimation()->play("cont",0);
+		Armature * arm = mc->getArmature()->getSlot("contSlot")->getChildArmature();
 		mc->setUserData(new MovieClipSub(arm));
 		arm->getAnimation()->play();
 		direction = "right";
-		
+ 
 	 
 		this->schedule(schedule_selector(HelloDragonBones::scheduleUpdate), 1/30.0f);
 		//this->unschedule(schedule_selector(HelloDragonBones::scheduleUpdate));
@@ -129,6 +129,26 @@ protected:
 			this->frameCounter = 1;
 		}
 		currentFrame++;
+
+        CCLOG("%s getVisible=%i ", mc->getArmature()->getSlot("shadow")->getName().c_str(), mc->getArmature()->getSlot("shadow")->getVisible());
+        if (this->currentFrame>100 && this->currentFrame<200)
+        {
+            cocos2d::Sprite * img = (cocos2d::Sprite *)mc->getArmature()->getSlot("shadow")->getDisplay();
+            //img->setVisible(false);
+                //setVisible(true);//
+            mc->getArmature()->getSlot("shadow")->setDisplayIndex(-1);
+            //mc->getArmature()->getSlot("shadow")->setVisible(false); //visible = true;
+            //mc->getArmature()->getSlot("shadow")->setDisplay(NULL,DisplayType::Image);
+        }
+        else if (this->currentFrame>500){
+            //mc->getArmature()->getSlot("shadow")->setVisible(true);
+            //mc->getArmature()->getSlot("shadow")->setDisplayIndex(-1);
+            mc->getArmature()->getSlot("shadow")->setDisplayIndex(0);
+            //mc->getArmature()->getBone("shadow")->setVisible(true);
+        }
+        return;
+
+
 		MovieClipSub * mcs = (MovieClipSub*)mc->getUserData();
 		if(currentFrame > 100) 
 			direction = "up";
