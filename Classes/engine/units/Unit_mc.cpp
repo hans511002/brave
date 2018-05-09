@@ -21,7 +21,7 @@ namespace engine
 			levinDeathFlag = 0;
 
 			this->unitCase = NULL;
-			this->shadow = NULL;
+			//this->shadow = NULL;
 			this->armor = NULL;
 			this->signal = NULL;
 			this->setPosition(0, 0);
@@ -67,8 +67,8 @@ namespace engine
 		 
 			if (typeUnit == 28){
 				this->giveHealth1 = new MovieClip("unit/", "giveHealth1");// DBCCFactory::getInstance()->buildArmatureNode("giveHealth1");
-				this->giveHealth1 = new MovieClip("unit/", "giveHealth2");// DBCCFactory::getInstance()->buildArmatureNode("giveHealth2");
-				this->giveHealth1 = new MovieClip("unit/", "giveHealth3");// DBCCFactory::getInstance()->buildArmatureNode("giveHealth3");
+				this->giveHealth2 = new MovieClip("unit/", "giveHealth2");// DBCCFactory::getInstance()->buildArmatureNode("giveHealth2");
+				this->giveHealth3 = new MovieClip("unit/", "giveHealth3");// DBCCFactory::getInstance()->buildArmatureNode("giveHealth3");
 			}
 			else if (this->typeUnit == 29 || this->typeUnit == 30){
 				this->dustAnima = new MovieClip("unit/", "dustAnima");// DBCCFactory::getInstance()->buildArmatureNode("dustAnima");
@@ -164,7 +164,7 @@ namespace engine
 			if(this->giveHealth3)addChild(this->giveHealth3);
 			if(this->unitCase)addChild(this->unitCase);
 			if(this->armor)addChild(this->armor);
-			if(this->shadow)addChild(this->shadow);
+			//if(this->shadow)addChild(this->shadow);
 			if(this->signal)addChild(this->signal);
 			if(this->giveHealth1)addChild(this->giveHealth1);
 			if(this->giveHealth2)addChild(this->giveHealth2);
@@ -193,7 +193,7 @@ namespace engine
 
 			if(this->unitCase)this->armor->setVisible(true);
 			if(this->armor)this->armor->setVisible(true);
-			if(this->shadow)this->shadow->setVisible(true);
+			//if(this->shadow)this->shadow->setVisible(true);
 			if(this->signal)this->signal->setVisible(true);
 			if(this->giveHealth1)this->giveHealth1->setVisible(true);
 			if(this->giveHealth2)this->giveHealth2->setVisible(true);
@@ -228,7 +228,7 @@ namespace engine
 			}
 			if (this->unitCase)this->armor->stop();
 			if (this->armor)this->armor->stop();
-			if (this->shadow)this->shadow->stop(); 
+			//if (this->shadow)this->shadow->stop(); 
 			if (this->signal)this->signal->stop();
 			if (this->giveHealth1)this->giveHealth1->stop();
 			if (this->giveHealth2)this->giveHealth2->stop();

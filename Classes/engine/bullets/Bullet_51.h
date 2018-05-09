@@ -4,14 +4,7 @@
 
 namespace engine{
     namespace bullets{ 
-        struct BulletTower51_1_mc
-        {
-            
-        };
-        struct BulletTower51_2_mc
-        {
-            
-        };
+        
         
         class Bullet_51 : public Bullet
         {

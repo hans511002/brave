@@ -34,14 +34,14 @@ namespace engine{
             {
                 //Sounds.instance.playSound("snd_tower_shootFire");
             }
-            //if (container->currentFrame < container->totalFrames)
-            //{
-            //    container->gotoAndStop((container->currentFrame + 1));
-            //}
-            //else
-            //{
-            //    container->gotoAndStop(1);
-            //}
+            if (container->currentFrame < container->totalFrames)
+            {
+                container->gotoAndStop((container->currentFrame + 1));
+            }
+            else
+            {
+                container->gotoAndStop(1);
+            }
             if (liveCounter > 0)
             {
                 if (enemyTarget->dead)

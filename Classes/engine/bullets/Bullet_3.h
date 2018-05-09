@@ -4,10 +4,7 @@
 
 namespace engine{
     namespace bullets{
-		struct BulletStoneTower_mc :public MovieClip
-		{
-
-		};
+		
         class Bullet_3 :public Bullet
         {
         public:
@@ -17,7 +14,7 @@ namespace engine{
             int enemyWay;
             float enemyPath;
             float enemySpeed;
-            //public var shadow:UnitShadow_mc;
+            MovieClip * UnitShadow_mc;//public var shadow:UnitShadow_mc;
 
             Bullet_3(){};
 

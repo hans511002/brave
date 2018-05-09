@@ -40,14 +40,14 @@
             {
                 this->enemySpeed = 0.1;
             }
-            //this->shadow = new UnitShadow_mc();
-            //this->shadow->stop();
-            //this->shadow->mouseChildren = false;
-            //this->shadow->mouseEnabled = false;
-            //this->shadow->setPositionX(this_pt.x) ;
-            //this->shadow->setPositionY(whoShoot->y) ;
-            //this->shadow->setScale(0.5,0.5);
-            //world->addChildAt(this->shadow, 2);
+            this->shadow = new MovieClip("sphere","UnitShadow_mc","UnitShadow_mc");//UnitShadow_mc();
+            this->shadow->stop();
+            this->shadow->mouseChildren = false;
+            this->shadow->mouseEnabled = false;
+            this->shadow->setPositionX(this_pt.x) ;
+            this->shadow->setPositionY(whoShoot->y) ;
+            this->shadow->setScale(0.5,0.5);
+            world->addChildAt(this->shadow, 2);
             //world->listOfIndexes2.push(this->shadow);
             return true;
         }// end function
@@ -128,9 +128,9 @@
 
         void kill() 
         {
-            //if (this->shadow)
-            //{
-            //    world->removeChild(this->shadow);
+            if (this->shadow)
+            {
+                world->removeChild(this->shadow);
             //    i = 0;
             //    while (i < world->listOfIndexes2.length)
             //    {
@@ -143,8 +143,8 @@
             //        var _loc_2:* = i + 1;
             //        i = _loc_2;
             //    }
-            //    this->shadow = null;
-            //}
+                this->shadow = null;
+            }
             Bullet::kill();
             return;
         }// end function

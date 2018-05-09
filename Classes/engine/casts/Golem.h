@@ -14,15 +14,15 @@ namespace engine{
         };
         struct Golem1_mc :public Golem_mc
         {
-            
+            Golem1_mc();
         };
         struct Golem2_mc :public Golem_mc
         {
-
+            Golem2_mc();
         };
         struct Golem3_mc :public Golem_mc
         {
-
+            Golem3_mc();
         };
         class Golem :public BaseNode
         {

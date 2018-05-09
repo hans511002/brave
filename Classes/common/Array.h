@@ -122,6 +122,10 @@ namespace Common
 			}
 			return res;
 		};
+		
+		inline  operator bool (){
+			return (bool)size() ;
+		};
 	};
 
 	template <class T> Array<T> ::Array(int size): vector<T>(size){}

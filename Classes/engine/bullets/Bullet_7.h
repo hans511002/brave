@@ -6,15 +6,7 @@ namespace engine
 {
     namespace bullets
     {
-        struct BulletTower7_mc :public MovieClip
-        {
-            
-        };
         
-        struct BulletTower7_smoke_mc :public MovieClip
-        {
-            
-        };
         class Bullet_7 :public Bullet
         {
         public:

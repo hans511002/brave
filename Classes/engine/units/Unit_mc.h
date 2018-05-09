@@ -61,12 +61,18 @@ namespace engine
 			MovieClip * unitCase;// public var unitCase : MovieClip;
 			//MovieClip * shadow;//public var shadow : MovieClip; 合并到cont中了
 			MovieClip * armor;//public var armor : MovieClip;
+			// 18 19
 			MovieClip * signal;
+			
+			//28
 			MovieClip * giveHealth1;
 			MovieClip * giveHealth2;
 			MovieClip * giveHealth3;
+			
+			//29 30
 			MovieClip * dustAnima;
 			
+			//25
 			MovieClip * maskCont;
 
 			cocos2d::Point myFirstPoint;

@@ -5,15 +5,7 @@
 namespace engine{
     namespace bullets{
 
-		struct BulletTower5_1_mc :public MovieClip
-        {
-        };
-		struct BulletStoneTower_mc :public MovieClip
-        {
-        };
-		struct BulletTower5_1Bang_mc :public MovieClip
-        {
-        };
+		
         class Bullet_5 :public Bullet
         {
         public:
@@ -25,7 +17,7 @@ namespace engine{
             int enemyWay;
             float enemyPath;//:Number;
             float enemySpeed;//:Number;
-            UnitShadow_mc *shadow;
+            MovieClip *shadow;
             float deviation;
             bool effectFlag;
 

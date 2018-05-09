@@ -181,11 +181,11 @@ namespace engine
 				OnceMovieClip * tempObject = NULL;
 				if(direction != "up")
 				{
-					tempObject = new OnceMovieClip(this->world, "unit/", "Unit23HorisontDeath_mc");// new Indexes(new Unit23HorisontDeath_mc(), 1);
+					tempObject = new OnceMovieClip(this->world, "unit/", "Unit23HorisontDeath_mc", "Unit23HorisontDeath_mc");// new Indexes(new Unit23HorisontDeath_mc(), 1);
 				}
 				else
 				{
-					tempObject = new OnceMovieClip(world, "unit/", "Unit23VerticalDeath_mc");//Indexes(new Unit23VerticalDeath_mc(), 1);
+					tempObject = new OnceMovieClip(world, "unit/", "Unit23VerticalDeath_mc", "Unit23VerticalDeath_mc");//Indexes(new Unit23VerticalDeath_mc(), 1);
 				}
 				tempObject->container->setScaleX(container->getScaleX());//X = container.scaleX;
 				tempObject->container->setScaleY(container->getScaleY());//Y = container.scaleY;

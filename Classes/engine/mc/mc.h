@@ -32,10 +32,11 @@ namespace engine
         float speedX;
         dragonBones::CCArmatureDisplay * container;
 		MovieClip(dragonBones::CCArmatureDisplay * cont, string defAniName = "");
-        MovieClip(string rootPath, string armName, string defAniName = "");
+        MovieClip(string rootPath, string armName,string dbName, string defAniName = "");
 		virtual	dragonBones::Armature *getArmature();
 		virtual dragonBones::Animation *getAnimation();
 		MovieClip() :container(NULL){};
+		virtual bool init();
 	};
 	struct MovieClipSub :public virtual MC
 	{
@@ -76,7 +77,7 @@ namespace engine
         World * world;
 
 		OnceMovieClip(World * world, dragonBones::CCArmatureDisplay * cont, string defAniName="");
-		OnceMovieClip(World * world, string rootPath, string aniName, string defAniName = "");
+		OnceMovieClip(World * world, string rootPath, string aniName,string dbName, string defAniName = "");
         void OnceMovieClip::onceMovieHandler(cocos2d::EventCustom *event);
     };
     struct AnimUpgrade_mc :public BaseNode

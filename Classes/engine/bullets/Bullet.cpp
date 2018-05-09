@@ -5,7 +5,75 @@
 
 namespace engine{
     namespace bullets{
-
+        
+        BulletFireTower_mc::BulletFireTower_mc()
+        {
+            cont=new MovieClip("sphere/","BulletFireTower_mc","BulletFireTower_mc");
+        }
+        BulletIceTower_mc::BulletIceTower_mc()
+        {
+            cont=new MovieClip("sphere/","BulletIceTower_mc","BulletIceTower_mc");
+        }
+        BulletStoneTower_mc::BulletStoneTower_mc()
+        {
+            cont=new MovieClip("sphere/","BulletStoneTower_mc","BulletStoneTower_mc");
+        }
+        BulletLevinTower_mc::BulletLevinTower_mc()
+        {
+            cont=new MovieClip("sphere/","BulletLevinTower_mc","BulletLevinTower_mc");
+        }
+        BulletTower5_1_mc::BulletTower5_1_mc()
+        {
+            cont=new MovieClip("sphere/","BulletTower5_1_mc","BulletTower5_1_mc");
+        }
+        BulletTower5_1Bang_mc::BulletTower5_1Bang_mc()
+        {
+            cont=new MovieClip("sphere/","BulletTower5_1Bang_mc","BulletTower5_1Bang_mc");
+        }
+        BulletTower51_1_mc::BulletTower51_1_mc()
+        {
+            cont=new MovieClip("sphere/","BulletTower51_1_mc","BulletTower51_1_mc");
+        }
+        BulletTower51_2_mc::BulletTower51_2_mc()
+        {
+            cont=new MovieClip("sphere/","BulletTower51_2_mc","BulletTower51_2_mc");
+        }
+        BulletTower6_1_mc::BulletTower6_1_mc()
+        {
+            cont=new MovieClip("sphere/","BulletTower6_1_mc","BulletTower6_1_mc");
+        }
+        BulletTower6_2_mc::BulletTower6_2_mc()
+        {
+            cont=new MovieClip("sphere/","BulletTower6_2_mc","BulletTower6_2_mc");
+        }
+        BulletTower61_mc::BulletTower61_mc()
+        {
+            cont=new MovieClip("sphere/","BulletTower61_mc","BulletTower61_mc");
+        }
+        BulletTower7_mc::BulletTower7_mc()
+        {
+            //cont=new MovieClip("sphere/","BulletTower7_mc","BulletTower7_mc");
+            ball=new MovieClip("sphere/","ball","BulletTower7_mc");
+            smokeCont1=new MovieClip("sphere/","smokeCont1","BulletTower7_mc");
+            smokeCont2=new MovieClip("sphere/","smokeCont2","BulletTower7_mc");
+        }
+        BulletTower7_smoke_mc::BulletTower7_smoke_mc()
+        {
+            cont=new MovieClip("sphere/","BulletTower7_smoke_mc","BulletTower7_smoke_mc");
+        }
+        BulletTower8_1_mc::BulletTower8_1_mc()
+        {
+            cont=new MovieClip("sphere/","BulletTower8_1_mc","BulletTower8_1_mc");
+        }
+        BulletTower8_2_mc::BulletTower8_2_mc()
+        {
+            cont=new MovieClip("sphere/","BulletTower8_2_mc","BulletTower8_2_mc");
+        }
+        BulletTower81_mc::BulletTower81_mc()
+        {
+            cont=new MovieClip("sphere/","BulletTower81_mc","BulletTower81_mc");
+        }
+        
         Bullet::Bullet() :dead(false), world(NULL), container(NULL), enemyTarget(NULL), damage(0), bulletType(0), whoShoot(NULL)
             , liveCounter(0), liveTimer(0), distanceX(0), distanceY(0), spherePower(0), mainCounter(0), changeIndex(0), radius(0)
             , testTarget(NULL), testTower(NULL), greenFlag(false)

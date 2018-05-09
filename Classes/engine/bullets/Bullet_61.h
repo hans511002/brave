@@ -6,10 +6,7 @@ namespace engine
 {
     namespace bullets
     {
-        struct BulletTower61_mc : public MovieClip
-        {
-            
-        };
+        
         class Bullet_61 : public Bullet
         {
         public:

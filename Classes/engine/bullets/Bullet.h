@@ -10,6 +10,87 @@ namespace engine{
 	class units::Unit;
     namespace bullets{
 
+        struct BulletSphereTower_mc:public MovieClip
+        {
+            float distX;
+            float distY;
+            int counter;
+            MovieClip * ball;
+            MovieClip * smokeCont1;
+            MovieClip * smokeCont2;
+            MovieClip * cont;
+        };
+        struct BulletFireTower_mc :public BulletSphereTower_mc  
+        {
+            BulletFireTower_mc();
+        };
+        struct BulletIceTower_mc :public BulletSphereTower_mc
+		{
+            BulletIceTower_mc();
+		};
+		struct BulletStoneTower_mc :public BulletSphereTower_mc
+		{
+            BulletStoneTower_mc();
+		};
+		struct BulletLevinTower_mc :public BulletSphereTower_mc
+		{
+            BulletLevinTower_mc();
+		};
+		struct BulletTower5_1_mc :public BulletSphereTower_mc
+        {
+            BulletTower5_1_mc();
+        }; 
+		struct BulletTower5_1Bang_mc :public BulletSphereTower_mc
+        {
+            BulletTower5_1Bang_mc();
+        };
+        struct BulletTower51_1_mc:public BulletSphereTower_mc
+        {
+            BulletTower51_1_mc();
+        };
+        struct BulletTower51_2_mc:public BulletSphereTower_mc
+        {
+            BulletTower51_2_mc();
+        };
+        struct BulletTower6_1_mc : public BulletSphereTower_mc
+        {
+            BulletTower6_1_mc();
+        };
+        struct BulletTower6_2_mc : public BulletSphereTower_mc
+        {
+            BulletTower6_2_mc();
+        };
+        struct BulletTower61_mc : public BulletSphereTower_mc
+        {
+            BulletTower61_mc();
+        };
+        struct BulletTower7_mc :public BulletSphereTower_mc
+        {
+            // ball:MovieClip;
+            // smoke:MovieClip;
+            BulletTower7_mc();
+        };
+        
+        struct BulletTower7_smoke_mc :public BulletSphereTower_mc
+        {
+            BulletTower7_smoke_mc();
+        };
+        struct BulletTower8_1_mc : public BulletSphereTower_mc
+        {
+            BulletTower8_1_mc();
+        };
+        struct BulletTower8_2_mc : public BulletSphereTower_mc
+        {
+            BulletTower8_2_mc();
+        };
+        struct BulletTower81_mc : public BulletSphereTower_mc
+        {
+            BulletTower81_mc();
+        };
+        
+        
+        
+		
         struct UnitShadow_mc:public MovieClip
         {
             

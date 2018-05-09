@@ -10,10 +10,11 @@ namespace engine
 		class Air_mc :public BaseNode
 		{
 		public:
-			int currentFrame;
 			MovieClip* cont;//public var cont:MovieClip;
+			MovieClip* contBlowing;
 			MovieClip* dust1;//public var dust1:MovieClip;
 			MovieClip* dust2;
+			Air_mc();
 		};
 		class MoveAir_mc :public BaseNode
 		{
@@ -21,7 +22,7 @@ namespace engine
 			MovieClip* left;//:MovieClip;
 			MovieClip* right;//:MovieClip;
 			MovieClip* up;//:MovieClip;
-
+			MoveAir_mc();
 		};
 		class Air :public BaseNode
 		{

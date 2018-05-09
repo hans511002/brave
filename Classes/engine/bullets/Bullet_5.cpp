@@ -41,7 +41,7 @@ namespace engine{
             {
                 this->rotationFlag = true;
             }
-            this->shadow = new UnitShadow_mc();
+            this->shadow = new MovieClip("sphere","UnitShadow_mc","UnitShadow_mc");// new UnitShadow_mc();
             this->shadow->stop(); 
             this->shadow->mouseChildren = false;
             this->shadow->mouseEnabled = false;

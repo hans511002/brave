@@ -7,6 +7,20 @@ namespace engine
 	namespace casts
 	{
 
+        Air_mc::Air_mc()
+        {
+            cont = new MovieClip("cast/","cont","Air_mc");
+			contBlowing = new MovieClip("cast/","contBlowing","Air_mc");
+			dust1 = new MovieClip("cast/","dust1","Air_mc"); 
+			dust2 = new MovieClip("cast/","dust2","Air_mc");
+        };
+        MoveAir_mc::MoveAir_mc()
+        {
+            down = new MovieClip("cast/","down","MoveAir_m");
+			left = new MovieClip("cast/","left","MoveAir_m");
+			right = new MovieClip("cast/","right","MoveAir_m");
+			up = new MovieClip("cast/","up","MoveAir_m");
+        };
 		Air::Air(cocos2d::Point param1, string param2) :container(NULL)
 			, world(NULL)
 			, direction("none")
@@ -216,10 +230,10 @@ namespace engine
 					}
 					else if(this->container->cont->currentFrame == 49)
 					{
-						this->container->cont->currentFrame = 1;
-						//this->container->cont.gotoAndStop(1);
-						//this->container->cont->blowing.stop();
-						this->container->cont->blowing->setVisible(false);
+						//this->container->cont->currentFrame = 1;
+						this->container->cont->gotoAndStop(1);
+						this->container->contBlowing->stop(); // 						this->container->cont->blowing->stop();
+						this->container->contBlowing->setVisible(false); // 						this->container->cont->blowing->setVisible(false);
 					}
 				}
 			}
@@ -231,7 +245,7 @@ namespace engine
 				}
 				else
 				{
-					//this->container->dust1.gotoAndStop(1);
+					this->container->dust1->gotoAndStop(1);
 					this->container->dust1->setVisible(false);
 				}
 			}
@@ -239,12 +253,12 @@ namespace engine
 			{
 				if(this->container->dust2->currentFrame < 47)
 				{
-					//this->container->dust2.gotoAndStop(this->container->dust2->currentFrame++);
+					this->container->dust2->gotoAndStop(this->container->dust2->currentFrame++);
 				}
 				else
 				{
-					this->container->dust2->currentFrame = 1;
-					//this->container->dust2.gotoAndStop(1);
+					//this->container->dust2->currentFrame = 1;
+					this->container->dust2->gotoAndStop(1);
 					this->container->dust2->setVisible(false);
 				}
 			}
@@ -316,16 +330,16 @@ namespace engine
 
 		void Air::attack()
 		{
-			if(!this->container->cont->blowing->isVisible())
+			if(!this->container->contBlowing->isVisible()) // 			if(!this->container->cont->blowing->isVisible())
 			{
-				this->container->cont->blowing->setVisible(true);
+				this->container->contBlowing->setVisible(true); // 				this->container->cont->blowing->setVisible(true);
 			}
 			else if(this->container->cont->currentFrame < 47)
 			{
 				this->container->cont->currentFrame++;
 				this->container->cont->gotoAndStop(this->container->cont->currentFrame);
-				this->container->cont->blowing->currentFrame++;
-				this->container->cont->blowing.gotoAndStop(this->container->cont->blowing->currentFrame);
+				this->container->contBlowing->currentFrame++; // 				this->container->cont->blowing->currentFrame++;
+				this->container->contBlowing->gotoAndStop(this->container->contBlowing->currentFrame); // 				this->container->cont->blowing->gotoAndStop(this->container->cont->blowing->currentFrame);
 				if(this->container->cont->currentFrame == 2)
 				{
 					//Sounds.instance.playSoundWithVol("snd_air_blow", 0.65);
@@ -391,9 +405,9 @@ namespace engine
 			}
 			else
 			{
-				//	  this->container->cont.gotoAndStop (1);
-				//	  this->container->cont->blowing.gotoAndStop (1);
-				this->container->cont->blowing->setVisible(false);
+				this->container->cont->gotoAndStop (1);
+				this->container->contBlowing->gotoAndStop (1); // 				this->container->cont->blowing->gotoAndStop (1);
+				this->container->contBlowing->setVisible(false); // 				this->container->cont->blowing->setVisible(false);
 				this->workFlag = false;
 			}
 			return;

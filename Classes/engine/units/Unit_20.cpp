@@ -62,14 +62,14 @@ namespace engine
                 //OnceMovieClip * tempObject=NULL;//OnceMovieClip(World * world, string rootPath, string aniName, string defAniName = "");
                 if (container->contMcs->currentFrame == 1)
                 {
-                    OnceMovieClip * tempObject = new OnceMovieClip(world, "unit/", "Unit20_frontDeath_mc");//Indexes(new Unit20_frontDeath_mc(), 1);
+                    OnceMovieClip * tempObject = new OnceMovieClip(world, "unit/", "Unit20_frontDeath_mc", "Unit20_frontDeath_mc");//Indexes(new Unit20_frontDeath_mc(), 1);
                     cocos2d::Point pos=container->cont->getPosition();
                     pos=container->localToGlobal(pos);
                     tempObject->setPosition(pos);
                 }
                 else if (container->contMcs->currentFrame == 2)
                 {
-                    OnceMovieClip * tempObject = new OnceMovieClip(world, "unit/", "Unit20_backDeath_mc");//Indexes(new Unit20_backDeath_mc(), 1);
+                    OnceMovieClip * tempObject = new OnceMovieClip(world, "unit/", "Unit20_backDeath_mc", "Unit20_backDeath_mc");//Indexes(new Unit20_backDeath_mc(), 1);
                     cocos2d::Point pos=container->cont->getPosition();
                     pos=container->localToGlobal(pos);
                     tempObject->setPosition(pos);

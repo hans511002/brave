@@ -174,7 +174,7 @@ namespace engine
                     container->upgr1->gotoAndStop((container->upgr1->currentFrame + 1));
                     if (container->upgr1->currentFrame == 4)
                     {
-                        OnceMovieClip * tempObject = new OnceMovieClip();//new Indexes(new ShotTower51_2_mc(), 3);
+                        OnceMovieClip * tempObject = new OnceMovieClip(world,"tower","ShotTower51_2_mc","ShotTower51_2_mc");//new Indexes(new ShotTower51_2_mc(), 3);
                         tempObject->setPosition(this->getPositionX() - 8 , this->getPositionY() - 255);
                         //tempObject.x = this->x - 8;
                         //tempObject.y = this->y - 255;

@@ -51,8 +51,8 @@ namespace engine
 		{
 		public:
 			int i, j, n;
-			float tempObject;// :Object;
-			engine::bullets::Bullet * tempObject1;//public var tempObject1:Object;
+			float resLen;// tempObject:Object;
+			bool resFlag;//public var tempObject1:Object;
 			//public var tempObject2:Object;
 			//public var tempObject3:Object;
 			//public var tempObject4:Object;

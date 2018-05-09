@@ -65,9 +65,9 @@ namespace engine
 		addChild(container);
         this->autorelease();
     };
-	MovieClip::MovieClip( string rootPath, string armName,   string defAniName )  
+	MovieClip::MovieClip( string rootPath, string armName, string dbName, string defAniName )  
     {
-		this->container = this->loadArmature(rootPath, armName);
+		this->container = this->loadArmature(rootPath, armName,dbName);
 		if(defAniName == "")
 			this->defAniName = defAniName = container->getArmature()->_armatureData->defaultAnimation->name;
 		totalFrames = container->getArmature()->_armatureData->animations[defAniName]->frameCount;//+ 1;
@@ -77,6 +77,9 @@ namespace engine
 		addChild(container);
         this->autorelease();
 	};
+	bool MovieClip::init(){
+	    return BaseNode::init();
+	}
 	dragonBones::Animation *MovieClip::getAnimation()
 	{
 		return container->getAnimation();
@@ -173,7 +176,7 @@ namespace engine
 		container->getEventDispatcher()->addCustomEventListener(EventObject::FRAME_EVENT, std::bind(&OnceMovieClip::onceMovieHandler, this, std::placeholders::_1));
 		container->getEventDispatcher()->addCustomEventListener(EventObject::COMPLETE, std::bind(&OnceMovieClip::onceMovieHandler, this, std::placeholders::_1));
     }
-    OnceMovieClip::OnceMovieClip(World * world, string rootPath, string aniName, string defAniName) : world(world), MovieClip(rootPath, aniName, defAniName)
+    OnceMovieClip::OnceMovieClip(World * world, string rootPath, string armName,string dbName, string defAniName) : world(world), MovieClip(rootPath, armName,dbName, defAniName)
 	{
 	    this->world->addChild(this);
 		container->getEventDispatcher()->addCustomEventListener(EventObject::FRAME_EVENT, std::bind(&OnceMovieClip::onceMovieHandler, this, std::placeholders::_1));
