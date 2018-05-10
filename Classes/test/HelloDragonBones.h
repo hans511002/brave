@@ -32,8 +32,48 @@ public:
 	dragonBones::CCArmatureDisplay* armatureDisplay;
 protected:
 	MovieClip * mc;
+
+    struct Golem_mc :public MovieClip
+    {
+        MovieClip * dust1;//:MovieClip;
+        MovieClip * dust2;//:MovieClip;
+        Golem_mc(string path, string arm, string db) :MovieClip(path, arm, db){};
+    };
+    struct Golem1_mc :public Golem_mc
+    {
+        Golem1_mc() :Golem_mc("cast/", "Golem1_mc", "Golem1_mc")
+        {
+            //dust1 = new MovieClipSub(this->getArmature()->getSlot("dust1")->getChildArmature());
+            //dust2 = new MovieClipSub(this->getArmature()->getSlot("dust2")->getChildArmature());
+            this->getArmature()->getBone("dust1")->setVisible(false);
+            
+            const auto factory = dragonBones::CCFactory::getFactory();
+            const auto armatureDisplay = factory->buildArmatureDisplay("dust1", "Golem1_mc");
+            dust1 = new MovieClip(armatureDisplay);
+            const auto armatureDisplay2 = factory->buildArmatureDisplay("dust1", "Golem1_mc");
+            dust2 = new MovieClip(armatureDisplay2);
+            this->addChild(dust1);
+            this->addChild(dust2);
+            //dust1->setVisible(false);
+            //dust2->setVisible(false);
+            dust1->setPosition(100, 100);
+            dust2->setPosition(200, 100);
+            dust1->play("unnamed", 0);
+            dust2->play("unnamed", 0);
+        };
+    };
+
+    void onEnter(){
+        Golem1_mc * golem = new Golem1_mc();
+        this->addChild(golem);
+        golem->play("Golem1_mc", 0);
+    }
+
     virtual void _onStart()
     {
+        
+        return;
+
         const auto factory = dragonBones::CCFactory::getFactory();
         //factory->loadDragonBonesData("mecha_1002_101d_show/mecha_1002_101d_show_ske.dbbin");
         //factory->loadDragonBonesData("mecha_1002_101d_show/mecha_1002_101d_show_ske.json");
@@ -56,7 +96,7 @@ protected:
 		//
 		currentFrame = frameCounter= 0;
 		dir = true;
-		mc = new MovieClip("unit/", "unit1_1");
+        mc = new MovieClip("unit/", "unit1_1", "unit1_1");
 		mc->setPosition(0.0f, 100.0f);
 		addChild(mc);
 		mc->getAnimation()->play("cont",0);
@@ -116,6 +156,7 @@ protected:
         CCLOG("curFrames=%f  %i", curFrames, currFrame);
 
     }
+
 
 	
 	void  scheduleUpdate(float dt)

@@ -19,8 +19,8 @@ namespace engine
 		virtual void gotoAndStop(int cf, string aniName = "");
 		virtual  void nextFram();
 		virtual void update();
-		virtual void play(string aniName = "");
-		virtual void stop(string aniName = "");
+        virtual void play(string aniName = "", int times = 1);
+        virtual void stop(string aniName = "");
 		virtual	dragonBones::Armature *getArmature() = 0;
 		virtual dragonBones::Animation *getAnimation()   = 0;
 		MC();

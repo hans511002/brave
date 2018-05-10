@@ -231,11 +231,11 @@ public:\
 		UNIT_CLASS_DEFINE(Unit_27,int teleportPhase; int teleportTimer; int teleportCounter; int teleportStealthTimer; int teleportStealthCounter; float teleportDistance; float teleportRadius; Common::Array<MovieClip*> listOfTeleportUnits; int soundCounter; int soundTimer; int soundTimer1; int teleportUnitsMax; int teleportUnitsCounter;virtual void kill(););
 		UNIT_CLASS_DEFINE(Unit_28,float giveHealthRadius; int giveHeathCounter; int giveHeathTimer; float giveHeath;virtual void kill(););
 		UNIT_CLASS_DEFINE(Unit_29,float returnHealth; int stealthCounter; int stealthTimer; int phase;virtual void kill(););
-		UNIT_CLASS_DEFINE(Unit_30,float returnHealth; int stealthCounter; int stealthTimer; int phase;virtual void kill(););
-		UNIT_CLASS_DEFINE(Unit_31,float distanceX; float distanceY; int counter:int; bool firstView;virtual void moveHandler());
-		UNIT_CLASS_DEFINE(Unit_32,float distanceX; float distanceY; int counter:int; bool firstView;virtual void moveHandler());
-		UNIT_CLASS_DEFINE(Unit_33,float distanceX; float distanceY; int counter:int; bool firstView;virtual void moveHandler());
-		UNIT_CLASS_DEFINE(Unit_34,int phase; int teleportStatus; bool eyesFlag; int eyesCounter; int eyesCounter1; int eyesCounter2; ReadXML * readXML; int phaseRoad1; int phaseRoad2; bool giveArmorFlag; bool takeAwayCastsFlag; string changeRoad; bool speakFlag; int notAtRoad; int musicVolumeManageCounter; bool greenFlag; Common::Array<WaveData> arrayTurn; int callUnitsCounter; bool roadFlag; virtual void kill(););
+        UNIT_CLASS_DEFINE(Unit_30, float returnHealth; int stealthCounter; int stealthTimer; int phase; virtual void kill(););
+        UNIT_CLASS_DEFINE(Unit_31, float distanceX; float distanceY; int counter; bool firstView; virtual void moveHandler(););
+        UNIT_CLASS_DEFINE(Unit_32, float distanceX; float distanceY; int counter; bool firstView; virtual void moveHandler(););
+        UNIT_CLASS_DEFINE(Unit_33, float distanceX; float distanceY; int counter; bool firstView; virtual void moveHandler(););
+        UNIT_CLASS_DEFINE(Unit_34, int phase; int teleportStatus; bool eyesFlag; int eyesCounter; int eyesCounter1; int eyesCounter2; ReadXML * readXML; int phaseRoad1; int phaseRoad2; bool giveArmorFlag; bool takeAwayCastsFlag; string changeRoad; bool speakFlag; int notAtRoad; int musicVolumeManageCounter; bool greenFlag; Common::Array<WaveData> arrayTurn; int callUnitsCounter; bool roadFlag; virtual void kill(););
 	}
 }
 #endif

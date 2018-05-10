@@ -2,14 +2,16 @@
 #define ENGINE_TOWERS_H
 #include "BaseHeaders.h"
 #include "engine/units/Unit.h" 
-#include "engine/bullets/Bullet.h" 
+//#include "engine/bullets/Bullet.h" 
 
 namespace engine
 {
     class World;
+    namespace bullets{
+        struct BulletSphereTower_mc;
+    };
     namespace towers
     {
-        
         class Tower :public BaseNode
         {
         public:
@@ -42,10 +44,10 @@ namespace engine
             units::Unit * enemyTarget;//public var enemyTarget:Object;
             units::Unit * testTarget;// public var testTarget:Object;
             bool  greenFlag; //public var greenFlag:Boolean;
-            BulletSphereTower_mc * sphereBullet1; //public var sphereBullet1:MovieClip;
-            BulletSphereTower_mc * sphereBullet2; //public var sphereBullet2:MovieClip;
-            BulletSphereTower_mc * sphereBullet3; //public var sphereBullet3:MovieClip;
-            BulletSphereTower_mc * sphereBullet4; //public var sphereBullet4:MovieClip;
+            bullets::BulletSphereTower_mc * sphereBullet1; //public var sphereBullet1:MovieClip;
+            bullets::BulletSphereTower_mc * sphereBullet2; //public var sphereBullet2:MovieClip;
+            bullets::BulletSphereTower_mc * sphereBullet3; //public var sphereBullet3:MovieClip;
+            bullets::BulletSphereTower_mc * sphereBullet4; //public var sphereBullet4:MovieClip;
             int  upgradeTypeAdd; //public var upgradeTypeAdd:int = 0;
             bool  blockTowerFlag; //public var blockTowerFlag:Boolean;
             int  sphereVisibleTimer; //public var sphereVisibleTimer:int = 18;

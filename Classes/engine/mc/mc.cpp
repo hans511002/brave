@@ -38,10 +38,10 @@ namespace engine
 		if(aniName == "")aniName = defAniName;
 		this->getAnimation()->stop(aniName);
 	}
-	void MC::play(string aniName)
+	void MC::play(string aniName,int times)
 	{
 		if(aniName == "")aniName = defAniName;
-		this->getAnimation()->play(aniName, 1);
+        this->getAnimation()->play(aniName, times);
 	}
 
 

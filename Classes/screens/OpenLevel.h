@@ -16,7 +16,7 @@ namespace screens
         MovieClip* board;
         MovieClip* shadow;
 
-		OpenLevel_mc() :MovieClip("", "")
+		OpenLevel_mc() :MovieClip("", "","")
         {
             return;
         }// end function
@@ -28,7 +28,7 @@ namespace screens
         ui::Text * nameTXT;
         ui::Text * noteTXT;
 
-		HintSurvival_mc() :MovieClip("", "")
+		HintSurvival_mc() :MovieClip("", "","")
         {
             return;
         }// end function
