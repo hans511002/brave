@@ -13,9 +13,13 @@ namespace engine
 		struct NewEnemy_mc :public MovieClip
 		{
 			MovieClip* newEnemyCase;
+			int typeUnit;
 			NewEnemy_mc();
 		};
-
+		struct NewElement_mc :public MovieClip
+		{
+			MovieClip *newElementCase;
+		};
 		class Roadsign_mc : public MovieClip
 		{
 		public:

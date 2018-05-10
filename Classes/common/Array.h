@@ -122,7 +122,20 @@ namespace Common
 			}
 			return res;
 		};
-		
+		inline Array<T> & concat(const Array<T> & vals)
+		{
+			int len = vals.size();
+			for(int i = 0; i < len; i++)
+			{
+				this->push(vals[i]);
+			}
+			return *this;
+		};
+		inline Array<T> & concat(T  val)
+		{
+			this->push(val);
+			return *this;
+		};
 		inline  operator bool (){
 			return (bool)size() ;
 		};

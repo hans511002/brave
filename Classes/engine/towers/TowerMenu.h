@@ -2,8 +2,7 @@
 #define ENGINE_TOWERS_TOWERMENU_H
 #include "BaseHeaders.h"
 #include "TowerMenu_mc.h"
-#include "Tower.h"
-#include "TowerRadius_mc.h"
+#include "Tower.h" 
 
 
 namespace engine
@@ -11,18 +10,6 @@ namespace engine
     class World;
     namespace towers
     {
-        class TowerMenuHint_mc :public BaseNode
-        {
-        public:
-            Node * cont;// : MovieClip;
-            ui::Text * nameTXT;// : TextField;
-            CREATE_FUNC(TowerMenuHint_mc);
-            TowerMenuHint_mc()
-            {
-                return;
-            };// end function
-        };
-
 
         class TowerMenu :public BaseNode
         {
@@ -41,7 +28,7 @@ namespace engine
             bool openFlag;// :Boolean = true;
             TowerRadius_mc * towerRadius;// : MovieClip;
             TowerRadius_mc *  towerRadius1;// :MovieClip;
-            BaseNode *  exampleUltraTower;// :MovieClip;
+            MovieClip *  exampleUltraTower;// :MovieClip;
             bool openUltraSection;// :Boolean;
             TowerMenuHint_mc* hint;// : TowerMenuHint_mc;
             TowerMenuHint_mc* hint1;// : TowerMenuHint_mc;
@@ -59,7 +46,7 @@ namespace engine
             float  autoguidesObjectWidth;// :Number;
             float autoguidesObjectHeight;// : Number;
             TowerMenu_mc *container1;
-            BaseNode * starsAnima;// : AnimUpgrade_mc;
+            MovieClip * starsAnima;// : AnimUpgrade_mc;
 
             TowerMenu(Tower * param1);
 

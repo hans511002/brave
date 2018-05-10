@@ -2,14 +2,12 @@
 #define ENGINE_CALLDELAY_H
 #include "BaseHeaders.h" 
 #include "engine/mc/mc.h"
+#include "engine/unit/Unit.h"
 
 namespace engine
 {
 	class World;
-	struct NewElement_mc:public MovieClip
-	{
-	    MovieClip *newElementCase;
-	};
+	
     class CallDelay :public Object
     {
     public:

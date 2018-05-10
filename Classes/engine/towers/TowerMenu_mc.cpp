@@ -5,6 +5,9 @@ namespace engine
 {
     namespace towers
     {
+        TowerRadius_mc::TowerRadius_mc() :BaseSprite("Tower/TowerRadius_mc.png"), myTower(NULL)
+        {
+        }
         BtnUpgradeMenu::BtnUpgradeMenu() :BaseSprite("TowerMenu_mc/btnUpgradeMenu01.png")
         {
             //CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage("bg2.png");

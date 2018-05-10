@@ -3,8 +3,7 @@
 #include "BaseHeaders.h"
  
 #include "Tower.h"
-#include "TowerMenu_mc.h"
-#include "TowerRadius_mc.h"
+#include "TowerMenu_mc.h" 
 
 
 namespace engine

@@ -17,6 +17,7 @@ namespace engine
             CREATE_FUNC(BuildTowerMenu_mc);
             bool init();
             void setPrice(int pr);
+            MovieClip * cont;
             Sprite * place;
             ui::Text * price;
         };

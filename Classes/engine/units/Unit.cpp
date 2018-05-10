@@ -114,14 +114,14 @@ namespace engine
 			{
 				if(Main::mainClass->saveBoxClass->getIntValue("firstViewEnemies", (this->typeUnit - 1)) == 0)
 				{
-					Main::mainClass->saveBoxClass->getValue("firstViewEnemies", (this->typeUnit - 1), 1);
-					MovieClip * tempObject = new NewEnemy_mc();
+					Main::mainClass->saveBoxClass->setValue("firstViewEnemies", (this->typeUnit - 1), 1);
+					NewEnemy_mc * tempObject = new NewEnemy_mc();
 					tempObject->stop();
 					tempObject->newEnemyCase->stop();
 					tempObject->typeUnit = this->typeUnit;
 					//this->tempObject.newEnemyCase.buttonMode = true;
-					this->world->worldInterface->addChild(this->tempObject);
-					this->world->worldInterface->listOfNewEnemies.push(this->tempObject);
+					this->world->worldInterface->addChild(tempObject);
+					this->world->worldInterface->listOfNewEnemies.push(tempObject);
 					//Sounds.instance.playSoundWithVol("snd_world_newEnemy", 0.9);
 				}
 			}

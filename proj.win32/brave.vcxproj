@@ -207,7 +207,6 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\engine\towers\Tower8.cpp" />
     <ClCompile Include="..\Classes\engine\towers\TowerMenu.cpp" />
     <ClCompile Include="..\Classes\engine\towers\TowerMenu_mc.cpp" />
-    <ClCompile Include="..\Classes\engine\towers\TowerRadius_mc.cpp" />
     <ClCompile Include="..\Classes\engine\towers\UltraTowerMenu.cpp" />
     <ClCompile Include="..\Classes\engine\units\Unit.cpp" />
     <ClCompile Include="..\Classes\engine\units\Unit_1.cpp" />
@@ -353,7 +352,6 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\engine\towers\Tower8.h" />
     <ClInclude Include="..\Classes\engine\towers\TowerMenu.h" />
     <ClInclude Include="..\Classes\engine\towers\TowerMenu_mc.h" />
-    <ClInclude Include="..\Classes\engine\towers\TowerRadius_mc.h" />
     <ClInclude Include="..\Classes\engine\towers\UltraTowerMenu.h" />
     <ClInclude Include="..\Classes\engine\units\HealthBar.h" />
     <ClInclude Include="..\Classes\engine\units\Unit.h" />

@@ -198,9 +198,6 @@
     <ClCompile Include="..\Classes\engine\towers\TowerMenu_mc.cpp">
       <Filter>src\engine\towers</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\engine\towers\TowerRadius_mc.cpp">
-      <Filter>src\engine\towers</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\engine\towers\UltraTowerMenu.cpp">
       <Filter>src\engine\towers</Filter>
     </ClCompile>
@@ -636,9 +633,6 @@
       <Filter>src\engine\towers</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\engine\towers\TowerMenu_mc.h">
-      <Filter>src\engine\towers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\engine\towers\TowerRadius_mc.h">
       <Filter>src\engine\towers</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\engine\casts\Cast.h">

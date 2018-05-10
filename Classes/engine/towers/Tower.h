@@ -2,6 +2,7 @@
 #define ENGINE_TOWERS_H
 #include "BaseHeaders.h"
 #include "engine/units/Unit.h" 
+#include "engine/bullets/Bullet.h" 
 
 namespace engine
 {

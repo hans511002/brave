@@ -6,6 +6,24 @@ namespace engine
 {
     namespace towers
     {
+        class TowerMenuHint_mc :public BaseNode
+        {
+        public:
+            MovieClip * cont;// : MovieClip;
+            ui::Text * nameTXT;// : TextField;
+            CREATE_FUNC(TowerMenuHint_mc);
+            TowerMenuHint_mc()
+            {
+                return;
+            };// end function
+        };
+
+        class TowerRadius_mc :public BaseSprite{
+        public:
+            Tower * myTower;
+            TowerRadius_mc();
+        };
+        
         struct BtnUpgradeMenu : public BaseSprite
         {
             ui::Text * costTXT;// : TextField;
