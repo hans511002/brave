@@ -61,7 +61,7 @@ namespace engine
 			{
 				if(container->contMcs->currentFrame == 1)
 				{
-					OnceMovieClip * tempObject = new OnceMovieClip(world, "unit/", "Unit21_frontDeath_mc", "Unit21_frontDeath_mc");//Indexes(new Unit20_frontDeath_mc(), 1);
+					MovieClip * tempObject = new MovieClip(world, "unit/", "Unit21_frontDeath_mc", "Unit21_frontDeath_mc");//Indexes(new Unit20_frontDeath_mc(), 1);
 					cocos2d::Point pos = container->cont->getPosition();
 					pos = container->localToGlobal(pos);
 					tempObject->setPosition(pos);
@@ -69,7 +69,7 @@ namespace engine
 				}
 				else if(container->contMcs->currentFrame == 2)
 				{
-					OnceMovieClip * tempObject = new OnceMovieClip(world, "unit/", "Unit21_backDeath_mc", "Unit21_backDeath_mc");//Indexes(new Unit20_frontDeath_mc(), 1);
+					MovieClip * tempObject = new MovieClip(world, "unit/", "Unit21_backDeath_mc", "Unit21_backDeath_mc");//Indexes(new Unit20_frontDeath_mc(), 1);
 					cocos2d::Point pos = container->cont->getPosition();
 					pos = container->localToGlobal(pos);
 					tempObject->setPosition(pos);

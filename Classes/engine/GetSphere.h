@@ -7,7 +7,7 @@
 namespace engine
 {
     class World;
-	struct Arrow_mc :public OnceMovieClip
+	struct Arrow_mc :public MovieClip
 	{
 
 	};

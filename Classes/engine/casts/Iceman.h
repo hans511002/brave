@@ -31,14 +31,13 @@ namespace engine{
     namespace    casts
     {
         struct Iceman_mc : public MovieClip
-        { 
+        {
+            Iceman_mc();
         }
         struct BlowIce_mc : public MovieClip
-        { 
-        }
-        struct IceRoad_mc : public MovieClip
-        { 
-        }
+        {
+            BlowIce_mc();
+        } 
         
         class Iceman extends Sprite
         {

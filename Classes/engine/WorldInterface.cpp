@@ -2316,13 +2316,10 @@ namespace engine
 		//			if (this->listOfNewEnemies[this->i].mouseStatus == 2)
 		//			{
 		//				this->listOfNewEnemies[this->i].mouseStatus = 1;
-		//				var _loc_2 : *= 1;
 		//				this->listOfNewEnemies[this->i].scaleY = 1;
-		//				this->listOfNewEnemies[this->i].scaleX = _loc_2;
+		//				this->listOfNewEnemies[this->i].scaleX = 1;
 		//			}
-		//			var _loc_2 : *= this;
-		//			var _loc_3 : *= this->i + 1;
-		//			_loc_2.i = _loc_3;
+		//			i++;
 		//		}
 		//	}
 		//	if (param1.target.name == "testRestart")

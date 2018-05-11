@@ -12,6 +12,7 @@ namespace std {
     void setAnchorPoint(cocos2d::Node* node, float x, float y);
     void setAnchorPoint(cocos2d::Node* node,const cocos2d::Vec2 & pos);
     dragonBones::CCArmatureDisplay * loadArmature(string rootPath, string armatureName, const string& dragonBonesName = "");
+    dragonBones::CCArmatureDisplay * buildArmature(string armatureName, const string& dragonBonesName);
     string setText(ui::Text * tui,string val); 
     int setText(ui::Text * tui,int val); 
     float setText(ui::Text * tui,float val); 
@@ -24,6 +25,7 @@ class BaseFuns
 	float getStageWidth() const;
 	float getStageHeight() const;
     dragonBones::CCArmatureDisplay * loadArmature(string rootPath, string armatureName, const string& dragonBonesName = "");
+    dragonBones::CCArmatureDisplay * buildArmature(string armatureName, const string& dragonBonesName);
     inline string setText(ui::Text * tui,string val){return std::setText(tui,val);}; 
     inline int setText(ui::Text * tui,int val){return std::setText(tui,val);}; 
     inline float setText(ui::Text * tui,float val){return std::setText(tui,val);}; 

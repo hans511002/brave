@@ -10,6 +10,8 @@
 namespace engine
 {
     class World;
+	class MovieClip;
+	class MovieClipSub;
 	struct MC
 	{
         int currentFrame;
@@ -20,30 +22,53 @@ namespace engine
 		virtual  void nextFram();
 		virtual void update();
         virtual void play(string aniName = "", int times = 1);
+		virtual void play(int times);
         virtual void stop(string aniName = "");
 		virtual	dragonBones::Armature *getArmature() = 0;
 		virtual dragonBones::Animation *getAnimation()   = 0;
 		MC();
+		void addMcs(MC * mc, MovieClipSub * mcs);
+		MovieClip * getMc(MC * mc);
+
 	};
 	struct MovieClip :public virtual BaseNode, public virtual MC
     {
+        World * world;
 		Vec2 myPoint;
 		short myFrame;
         float speedX;
+        bool isOnce;
         dragonBones::CCArmatureDisplay * container;
+		//std::map<std::string, MovieClipSub*> mcs;
+		Common::Array<MovieClipSub*> mcs;
+
 		MovieClip(dragonBones::CCArmatureDisplay * cont, string defAniName = "");
         MovieClip(string rootPath, string armName,string dbName, string defAniName = "");
+        MovieClip(World * world,string rootPath, string armName,string dbName, string defAniName = "");
+        MovieClip(string armName,string dbName,BaseNode *node=NULL);
 		virtual	dragonBones::Armature *getArmature();
 		virtual dragonBones::Animation *getAnimation();
 		MovieClip() :container(NULL){};
 		virtual bool init();
+		
+		void addMcs(MovieClipSub * mcs);
+		virtual void destroy(MovieClipSub * & mcs);
+		virtual void destroy();
+		//增加删除事件
+		inline bool setOnceMove(World * world);
+		virtual void onEnter();
+		virtual void onExit();
+		virtual void onceMovieHandler(cocos2d::EventCustom *event);
 	};
 	struct MovieClipSub :public virtual MC
 	{
+		MC *mc;
 		dragonBones::Armature* arm;
-		MovieClipSub(dragonBones::Armature * cont, string defAniName = "");
+		MovieClipSub(MC *mc, dragonBones::Armature * cont, string defAniName = "");
+		MovieClipSub(MC *mc, string solt, string defAniName = "");
 		virtual dragonBones::Armature *getArmature();
 		virtual dragonBones::Animation *getAnimation();
+		inline MovieClip * getMc() { return MC::getMc(mc); };
 	};
 	struct ImageMovieClip :public BaseNode
     {
@@ -70,16 +95,7 @@ namespace engine
         BaseSprite * container;  
         SpriteClip(BaseSprite * cont);
     };
-    
-    //增加删除事件
-    struct OnceMovieClip:public MovieClip
-    { 
-        World * world;
-
-		OnceMovieClip(World * world, dragonBones::CCArmatureDisplay * cont, string defAniName="");
-		OnceMovieClip(World * world, string rootPath, string aniName,string dbName, string defAniName = "");
-        void OnceMovieClip::onceMovieHandler(cocos2d::EventCustom *event);
-    };
+     
     struct AnimUpgrade_mc :public BaseNode
     {
         dragonBones::CCArmatureDisplay * cont;

@@ -6,7 +6,15 @@
 namespace engine{
      namespace    casts
     {
- 
+        Iceman_mc::Iceman_mc():MovieClip("cast/","Iceman_mc","Iceman_mc")
+        {
+            
+        };
+        BlowIce_mc::BlowIce_mc():MovieClip("cast/","BlowIce_mc","BlowIce_mc")
+        {
+            
+        }; 
+        
         Iceman::Iceman(cocos2d::Point param1,int param2,int param3,bool param4):container(NULL),world(NULL),direction("none"),speedK(0),speedKSave(0),radius(0)
             ,roadMap(0),dead(false),blow(0),liveCounter(0),voiceCounter(10),rotationTimer(4),brother(NULL),roadAnimaTimer(7),roadAnimaCounter(0)
         {
@@ -22,8 +30,8 @@ namespace engine{
         {
             //this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
             this->world = Main::mainClass->worldClass;
-            this->container = new MovieClip("cast/","Iceman_mc","Iceman_mc");// new Iceman_mc();
-            //this->container->stop();
+            this->container = new Iceman_mc();//MovieClip("cast/","Iceman_mc","Iceman_mc");// new Iceman_mc();
+            this->container->stop();
             this->addChild(this->container);
             this->speedKSave = Main::mainClass->readXMLClass.castIcemanSpeedXML;
             this->speedK = Main::mainClass->readXMLClass.castIcemanSpeedXML;
@@ -59,7 +67,7 @@ namespace engine{
             if (this->openFlag)
             {
                 this->container->setOpacity(0) ;
-                this->blow = new MovieClip("cast/","BlowIce_mc","BlowIce_mc");// new BlowIce_mc();
+                this->blow = new BlowIce_mc();//MovieClip("cast/","BlowIce_mc","BlowIce_mc");// new BlowIce_mc();
                 this->blow.stop();
                 this->addChild(this->blow);
                 this->setPosition(Vec2(this->getPositionX() + 84,this->getPositionY() - 238));
@@ -87,7 +95,7 @@ namespace engine{
 
         void  Iceman::update() 
         {
-            OnceMovieClip * tempObject =NULL;
+            MovieClip * tempObject =NULL;
             if (!this->openFlag)
             {
                 this->soundTimerManageMove(true);
@@ -100,31 +108,31 @@ namespace engine{
                     this->kill();
                     if (this->direction == "left")
                     {
-                        tempObject = new OnceMovieClip(this->world,"cast/","IcemanHorisontDeath_mc","IcemanHorisontDeath_mc");
+                        tempObject = new MovieClip(this->world,"cast/","IcemanHorisontDeath_mc","IcemanHorisontDeath_mc");
                         //this->tempObject = new Indexes(new IcemanHorisontDeath_mc(), 2);
                         tempObject->speedX = this->speedK * -1;
                     }
                     else if (this->direction == "right")
                     {
-                        tempObject = new OnceMovieClip(this->world,"cast/","IcemanHorisontDeath_mc","IcemanHorisontDeath_mc");
+                        tempObject = new MovieClip(this->world,"cast/","IcemanHorisontDeath_mc","IcemanHorisontDeath_mc");
                         //tempObject = new Indexes(new IcemanHorisontDeath_mc(), 2);
                         tempObject->speedX = this->speedK;
                     }
                     else if (this->direction == "up")
                     {
-                        tempObject = new OnceMovieClip(this->world,"cast/","IcemanVerticalDeath_mc","IcemanVerticalDeath_mc");
+                        tempObject = new MovieClip(this->world,"cast/","IcemanVerticalDeath_mc","IcemanVerticalDeath_mc");
                         //tempObject = new Indexes(new IcemanVerticalDeath_mc(), 2);
                         tempObject->speedY = this->speedK * -1;
                     }
                     else if (this->direction == "down")
                     {
-                        tempObject = new OnceMovieClip(this->world,"cast/","IcemanHorisontDeath_mc","IcemanHorisontDeath_mc");
+                        tempObject = new MovieClip(this->world,"cast/","IcemanHorisontDeath_mc","IcemanHorisontDeath_mc");
                         //this->tempObject = new Indexes(new IcemanHorisontDeath_mc(), 2);
                         this->tempObject->speedY = this->speedK;
                     }
                     else
                     {
-                        tempObject = new OnceMovieClip(this->world,"cast/","IcemanHorisontDeath_mc","IcemanHorisontDeath_mc");
+                        tempObject = new MovieClip(this->world,"cast/","IcemanHorisontDeath_mc","IcemanHorisontDeath_mc");
                         //this->tempObject = new Indexes(new IcemanHorisontDeath_mc(), 2);
                     }
                     tempObject->type = "icemanDeath";
@@ -171,7 +179,7 @@ namespace engine{
                     else
                     {
                         this->roadAnimaCounter = 0;
-                        tempObject = new OnceMovieClip(this->world,"cast/","IceRoad_mc","IceRoad_mc");
+                        tempObject = new MovieClip(this->world,"cast/","IceRoad_mc","IceRoad_mc");
                         //tempObject = new Indexes(new IceRoad_mc(), 1);
                         tempObject->setPosition(this->this_pt);
                         //tempObject.x = this->this_pt.x;

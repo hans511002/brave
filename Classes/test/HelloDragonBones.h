@@ -64,6 +64,7 @@ protected:
     };
 
     void onEnter(){
+		BaseDemo::onEnter();
         Golem1_mc * golem = new Golem1_mc();
         this->addChild(golem);
         golem->play("Golem1_mc", 0);
@@ -72,7 +73,7 @@ protected:
     virtual void _onStart()
     {
         
-        return;
+        //return;
 
         const auto factory = dragonBones::CCFactory::getFactory();
         //factory->loadDragonBonesData("mecha_1002_101d_show/mecha_1002_101d_show_ske.dbbin");
@@ -101,7 +102,7 @@ protected:
 		addChild(mc);
 		mc->getAnimation()->play("cont",0);
 		Armature * arm = mc->getArmature()->getSlot("contSlot")->getChildArmature();
-		mc->setUserData(new MovieClipSub(arm));
+		mc->setUserData(new MovieClipSub(mc,arm));
 		arm->getAnimation()->play();
 		direction = "right";
  
@@ -159,7 +160,7 @@ protected:
 
 
 	
-	void  scheduleUpdate(float dt)
+	virtual void  scheduleUpdate(float dt)
 	{
 		if(this->frameCounter < 30)
 		{

@@ -9,17 +9,19 @@ namespace engine
 
         Air_mc::Air_mc()
         {
-            cont = new MovieClip("cast/","cont","Air_mc");
-			contBlowing = new MovieClip("cast/","contBlowing","Air_mc");
-			dust1 = new MovieClip("cast/","dust1","Air_mc"); 
-			dust2 = new MovieClip("cast/","dust2","Air_mc");
+            cont = new MovieClip("cast/","cont","Air_mc",this);
+			contBlowing = new MovieClip("contBlowing","Air_mc",this);
+			dust1 = new MovieClip("dust1","Air_mc",this); 
+			dust2 = new MovieClip("dust2","Air_mc",this);
         };
-        MoveAir_mc::MoveAir_mc()
+        MoveAir_mc::MoveAir_mc():MovieClip("cast/","MoveAir_mc","MoveAir_m")
         {
-            down = new MovieClip("cast/","down","MoveAir_m");
-			left = new MovieClip("cast/","left","MoveAir_m");
-			right = new MovieClip("cast/","right","MoveAir_m");
-			up = new MovieClip("cast/","up","MoveAir_m");
+            down = new MovieClip("updown","MoveAir_m");
+			left = new MovieClip("left","MoveAir_m");
+			right = new MovieClip("right","MoveAir_m");
+			up = new MovieClip("updown","MoveAir_m");
+			up->setScaleX(-1);
+			left->setScaleX(-1);
         };
 		Air::Air(cocos2d::Point param1, string param2) :container(NULL)
 			, world(NULL)

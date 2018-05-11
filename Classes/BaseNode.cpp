@@ -50,6 +50,10 @@ namespace std
         //armatureDisplay->setVisible(true);
         return armatureDisplay;
     };
+    dragonBones::CCArmatureDisplay * buildArmature(string armatureName, const string& dragonBonesName){
+        const auto factory = dragonBones::CCFactory::getFactory();
+          return   factory->buildArmatureDisplay(armatureName, dragonBonesName);
+    };
 }
 bool BaseNode::init() {
     cocos2d::Node::init();
@@ -167,6 +171,9 @@ void BaseLayer::mouseDownHandler(cocos2d::Event *event)//(event:MouseEvent) : vo
   dragonBones::CCArmatureDisplay * BaseFuns::loadArmature(string rootPath, string armatureName, const string& dragonBonesName){
       return std::loadArmature(rootPath, armatureName, dragonBonesName);
   };
+  dragonBones::CCArmatureDisplay * BaseFuns::buildArmature(string armatureName, const string& dragonBonesName){
+          return std::buildArmature(armatureName, dragonBonesName);
+    };
 
   bool BaseNode::hitTest(Node * node, const Vec2 &pt)
   {

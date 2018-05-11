@@ -201,14 +201,14 @@ namespace engine
         {
             if (!dead && health <= 0)
             {
-                OnceMovieClip * tempObject = NULL;
+                MovieClip * tempObject = NULL;
 				if(direction != "up")
 				{
-					tempObject = new OnceMovieClip(world, "unit/", "Unit25HorisontDeath_mc", "Unit25HorisontDeath_mc");// new Indexes(new Unit25HorisontDeath_mc(), 1);
+					tempObject = new MovieClip(world, "unit/", "Unit25HorisontDeath_mc", "Unit25HorisontDeath_mc");// new Indexes(new Unit25HorisontDeath_mc(), 1);
 				}
 				else
 				{
-					tempObject = new OnceMovieClip(world, "unit/", "Unit25VerticalDeath_mc", "Unit25VerticalDeath_mc");//Indexes(new Unit25VerticalDeath_mc(), 1);
+					tempObject = new MovieClip(world, "unit/", "Unit25VerticalDeath_mc", "Unit25VerticalDeath_mc");//Indexes(new Unit25VerticalDeath_mc(), 1);
 				}
 				tempObject->container->setScaleX(container->getScaleX());//X = container.scaleX;
 				tempObject->container->setScaleY(container->getScaleY());//Y = container.scaleY;

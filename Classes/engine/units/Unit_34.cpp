@@ -540,7 +540,7 @@ namespace engine
             }
             if (!dead && health <= 0)
             {
-                tempObject =new OnceMovieClip(world,"unit/","Unit34Death_mc","Unit34Death_mc");// new Indexes(new Unit34Death_mc(), 3);
+                tempObject =new MovieClip(world,"unit/","Unit34Death_mc","Unit34Death_mc");// new Indexes(new Unit34Death_mc(), 3);
                 tempObject->setPosition(shoot_pt.x,shoot_pt.y - 44.5);//.x = shoot_pt.x;
                 //tempObject.y = shoot_pt.y - 44.5;
                 //new InTimer("bossDeath");

@@ -4,20 +4,23 @@
 namespace engine{
     namespace    casts
     {
-        Golem1_mc:Golem1_mc()
+        Golem_mc::Golem_mc(string path, string arm, string db) :MovieClip(path, arm, db)
         {
-            dust1=new MovieClip("cast/","dust1","Golem1_mc");
-            dust2=new MovieClip("cast/","dust2","Golem1_mc");
+        };
+        Golem1_mc::Golem1_mc():Golem_mc("cast/", "Golem1_mc", "Golem1_mc")
+        {
+            dust1 = new MovieClip("dust1", "Golem1_mc",this);
+            dust2 = new MovieClip("dust1", "Golem1_mc",this);
         }
-        Golem2_mc:Golem1_mc()
+        Golem2_mc:Golem1_mc():Golem_mc("cast/", "Golem2_mc", "Golem1_mc")
         {
-            dust1=new MovieClip("cast/","dust1","Golem2_mc");
-            dust2=new MovieClip("cast/","dust2","Golem2_mc");
+            dust1=new MovieClip("dust1","Golem2_mc",this);
+            dust2=new MovieClip("dust2","Golem2_mc",this);
         }
-        Golem3_mc:Golem1_mc()
+        Golem3_mc:Golem1_mc():Golem_mc("cast/", "Golem3_mc", "Golem1_mc")
         {
-            dust1=new MovieClip("cast/","dust1","Golem3_mc");
-            dust2=new MovieClip("cast/","dust2","Golem3_mc");
+            dust1=new MovieClip("dust1","Golem3_mc",this);
+            dust2=new MovieClip("dust2","Golem3_mc",this);
         }
         Golem::Golem(cocos2d::Point param1, int param2, int param3, bool param4 = true) :direction("none"), voiceCounter(10), cameraJitterTimer(3), movePhase(1)
         {
@@ -47,11 +50,11 @@ namespace engine{
             {
                 this->container = new Golem1_mc();
             }
-            //this->container->gotoAndStop(57);
-            //this->container->dust1.stop();
-            //this->container->dust2.stop();
-            //this->container->dust1->setVisible(false);
-            //this->container->dust2->setVisible(false);
+            this->container->gotoAndStop(57);
+            this->container->dust1.stop();
+            this->container->dust2.stop();
+            this->container->dust1->setVisible(false);
+            this->container->dust2->setVisible(false);
             this->addChild(this->container);
             this->speedKSave = Main::mainClass->readXMLClass.castGolemSpeedXML;
             this->speedK = Main::mainClass->readXMLClass.castGolemSpeedXML;
@@ -288,7 +291,7 @@ namespace engine{
             else
             {
                 this->openFlag = false;
-                //this->container->gotoAndStop(58);
+                this->container->gotoAndStop(58);
                 this->container->setOpacity(1);
                 this->container->dust1->setVisible(true);
                 this->container->dust2->setVisible(true) ;
@@ -705,37 +708,37 @@ namespace engine{
             {
                 if (dynamic_cast<Golem1_mc*>(this->container))
                 {
-                    tempObject = new OnceMovieClip(this->world,"cast/","Golem1HorisontDeath_mc","Golem1HorisontDeath_mc");
+                    tempObject = new MovieClip(this->world,"cast/","Golem1HorisontDeath_mc","Golem1HorisontDeath_mc");
                     tempObject->container->gotoAndStop(12);
                 }
                 else if (dynamic_cast<Golem2_mc*>(this->container) )
                 {
-                    tempObject = new OnceMovieClip(this->world,"cast/","Golem2HorisontDeath_mc","Golem2HorisontDeath_mc");
+                    tempObject = new MovieClip(this->world,"cast/","Golem2HorisontDeath_mc","Golem2HorisontDeath_mc");
                     tempObject->container->gotoAndStop(12);
                 }
                 else if (dynamic_cast<Golem3_mc*>(this->container))
                 {
-                    tempObject = new OnceMovieClip(this->world,"cast/","Golem3HorisontDeath_mc","Golem3HorisontDeath_mc");
+                    tempObject = new MovieClip(this->world,"cast/","Golem3HorisontDeath_mc","Golem3HorisontDeath_mc");
                     //tempObject = new Indexes(new Golem3HorisontDeath_mc(), 1);
                     tempObject->container->gotoAndStop(12);
                 }
             }
             else if (dynamic_cast<Golem1_mc*>(this->container))
             {
-                tempObject = new OnceMovieClip(this->world,"cast/","Golem1VerticalDeath_mc","Golem1VerticalDeath_mc");
+                tempObject = new MovieClip(this->world,"cast/","Golem1VerticalDeath_mc","Golem1VerticalDeath_mc");
                 //tempObject = new Indexes(new Golem1VerticalDeath_mc(), 1);
                 tempObject->container->gotoAndStop(12);
             }
             else if (dynamic_cast<Golem2_mc*>(this->container))
             {
                 //tempObject = new Indexes(new Golem2VerticalDeath_mc(), 1);
-                tempObject = new OnceMovieClip(this->world,"cast/","Golem2VerticalDeath_mc","Golem2VerticalDeath_mc");
+                tempObject = new MovieClip(this->world,"cast/","Golem2VerticalDeath_mc","Golem2VerticalDeath_mc");
                 tempObject->container->gotoAndStop(12);
             }
             else if (dynamic_cast<Golem3_mc*>(this->container))
             {
                 //tempObject = new Indexes(new Golem3VerticalDeath_mc(), 1);
-                tempObject = new OnceMovieClip(this->world,"cast/","Golem3VerticalDeath_mc","Golem3VerticalDeath_mc");
+                tempObject = new MovieClip(this->world,"cast/","Golem3VerticalDeath_mc","Golem3VerticalDeath_mc");
                 tempObject->container->gotoAndStop(12);
             }
             tempObject->type = "golemDeath";

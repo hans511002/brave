@@ -16,7 +16,7 @@ namespace engine
 			MovieClip* dust2;
 			Air_mc();
 		};
-		class MoveAir_mc :public BaseNode
+		class MoveAir_mc :public MovieClip
 		{
 			MovieClip* down;//:MovieClip;
 			MovieClip* left;//:MovieClip;
