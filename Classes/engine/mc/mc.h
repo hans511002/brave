@@ -69,6 +69,8 @@ namespace engine
 		virtual dragonBones::Armature *getArmature();
 		virtual dragonBones::Animation *getAnimation();
 		inline MovieClip * getMc() { return MC::getMc(mc); };
+		void setVisible(bool v);
+		void isVisible();
 	};
 	struct ImageMovieClip :public BaseNode
     {

@@ -7,7 +7,7 @@ namespace engine
 {
     namespace towers
     {
-        class Tower1_mc :public BaseNode
+        class Tower1_mc :public MovieClip
         {
         public:
             dragonBones::DBCCArmatureNode * blockTower;// : MovieClip;

@@ -21,35 +21,35 @@ namespace engine{
        
         void  Cast_1::mouseMoveHandler(cocos2d::Event * param1)
         {
-            //if (param1.target.name == "castGolemCase")
-            //{
-            //    if (container->currentFrame == 1)
-            //    {
-            //        container->gotoAndStop(2);
-            //    }
-            //    if (world->worldInterface->container->butCastGolem.currentFrame != 6)
-            //    {
-            //        world->worldInterface->container->butCastGolem.gotoAndStop(6);
-            //    }
-            //}
-            //else
-            //{
-            //    if (world->worldInterface->container->butCastGolem.currentFrame != 5)
-            //    {
-            //        world->worldInterface->container->butCastGolem.gotoAndStop(5);
-            //    }
-            //    if (scanWay())
-            //    {
-            //        if (container->currentFrame == 2)
-            //        {
-            //            container->gotoAndStop(1);
-            //        }
-            //    }
-            //    else if (container->currentFrame == 1)
-            //    {
-            //        container->gotoAndStop(2);
-            //    }
-            //}
+            if (param1->target->name == "castGolemCase")
+            {
+                if (container->currentFrame == 1)
+                {
+                    container->gotoAndStop(2);
+                }
+                if (world->worldInterface->container->butCastGolem->currentFrame != 6)
+                {
+                    world->worldInterface->container->butCastGolem->gotoAndStop(6);
+                }
+            }
+            else
+            {
+                if (world->worldInterface->container->butCastGolem->currentFrame != 5)
+                {
+                    world->worldInterface->container->butCastGolem->gotoAndStop(5);
+                }
+                if (scanWay())
+                {
+                    if (container->currentFrame == 2)
+                    {
+                        container->gotoAndStop(1);
+                    }
+                }
+                else if (container->currentFrame == 1)
+                {
+                    container->gotoAndStop(2);
+                }
+            }
             return;
         }// end function
         
@@ -57,23 +57,23 @@ namespace engine{
         {
             if (event)
             {
-                //if (event.target.name != "castGolemCase" && scanWay())
-                //{ 
-                //    this->mouseChildren = true;
-                //    this->mouseEnabled = true;
-                //    //event = new MouseEvent(MouseEvent.MOUSE_DOWN);
-                //    world->worldInterface->castGolemCounter++;
-                //    //world->worldInterface->container->butCastGolem.gotoAndStop(4);
-                //    //world->worldInterface->container->butCastGolem.castGolemCase.buttonMode = false;
-                //    //world->worldInterface->container->butCastGolem.cont.contMask.scaleY = 0;
-                //    this->addGolem();
-                //    kill();
-                //}
-                //else if (event.target.name == "castGolemCase" || event.target.name == "castIcemanCase" || event.target.name == "castAirCase")
-                //{
-                //    world->worldInterface->container->butCastGolem.gotoAndStop(1);
-                //    kill();
-                //}
+                if (event->target->name != "castGolemCase" && scanWay())
+                { 
+                    this->mouseChildren = true;
+                    this->mouseEnabled = true;
+                    //event = new MouseEvent(MouseEvent.MOUSE_DOWN);
+                    world->worldInterface->castGolemCounter++;
+                    //world->worldInterface->container->butCastGolem->gotoAndStop(4);
+                    //world->worldInterface->container->butCastGolem->castGolemCase->buttonMode = false;
+                    //world->worldInterface->container->butCastGolem->cont.contMask->setScaleY(0);
+                    this->addGolem();
+                    kill();
+                }
+                else if (event->target->name == "castGolemCase" || event->target->name == "castIcemanCase" || event->target->name == "castAirCase")
+                {
+                    world->worldInterface->container->butCastGolem->gotoAndStop(1);
+                    kill();
+                }
             }
             container->gotoAndStop(3);
             return;
@@ -85,8 +85,8 @@ namespace engine{
         {
             cocos2d::Point tempObject  (world->mouseX, world->mouseY);
             Golem *  tempObject1 = NULL;
-            int tempObject2 = 0;
-            int tempObject3 = 10000;
+            float tempObject2 = 0;
+            float tempObject3 = 10000;
             n = 1;
             while (n <= Main::mainClass->readXMLClass.strategies)
             {
@@ -122,7 +122,7 @@ namespace engine{
                                     }
                                     else
                                     {
-                                        tempObject1 = new Golem(cocos2d::Point(map[i].x, j), n, i);
+                                        Golem * tempObject1 = new Golem(cocos2d::Point(map[i].x, j), n, i);
                                         world->addChild(tempObject1);
                                         return;
                                     }
@@ -145,7 +145,7 @@ namespace engine{
                                     }
                                     else
                                     {
-                                        tempObject1 = new Golem(cocos2d::Point(map[i].x, j), n, i);
+                                        Golem * tempObject1 = new Golem(cocos2d::Point(map[i].x, j), n, i);
                                         world->addChild(tempObject1);
                                         return;
                                     }
@@ -171,7 +171,7 @@ namespace engine{
                                     }
                                     else
                                     {
-                                        tempObject1 = new Golem(cocos2d::Point(j, map[i].y), n, i);
+                                        Golem * tempObject1 = new Golem(cocos2d::Point(j, map[i].y), n, i);
                                         world->addChild(tempObject1);
                                         return;
                                     }
@@ -194,7 +194,7 @@ namespace engine{
                                     }
                                     else
                                     {
-                                        tempObject1 = new Golem(cocos2d::Point(j, map[i].y), n, i);
+                                        Golem * tempObject1 = new Golem(cocos2d::Point(j, map[i].y), n, i);
                                         world->addChild(tempObject1);
                                         return;
                                     }

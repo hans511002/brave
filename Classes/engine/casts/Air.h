@@ -7,15 +7,33 @@ namespace engine
 	class World;
 	namespace casts
 	{
-		class Air_mc :public BaseNode
-		{
-		public:
-			MovieClip* cont;//public var cont:MovieClip;
-			MovieClip* contBlowing;
-			MovieClip* dust1;//public var dust1:MovieClip;
-			MovieClip* dust2;
-			Air_mc();
-		};
+		class Air_mc :public MovieClip
+    	{
+    	public:
+    		string direction;
+    		MovieClipSub* cont;//public var cont:MovieClip;
+    		MovieClipSub* contBlowing;
+    		MovieClipSub* dust1;//public var dust1:MovieClip;
+    		MovieClipSub* dust2;
+    		Air_mc(string dir);
+    		void clear();
+    		virtual void gotoAndStop(int cur)
+    		{
+    			MovieClip::gotoAndStop(cur);
+    			this->clear();
+    			this->cont = new MovieClipSub(this,this->getArmature()->getSlot("cont")->getChildArmature());
+    			this->dust1 = new MovieClipSub(this, this->getArmature()->getSlot("dust1")->getChildArmature());
+    			this->dust2 = new MovieClipSub(this, "dust2" );
+    			dragonBones::Armature * arm = cont->getArmature()->getSlot("blowing")->getChildArmature();
+    			this->contBlowing = new MovieClipSub(cont, arm);
+    			this->cont->gotoAndStop(48);
+    			this->dust1->stop();
+    			this->dust2->stop();
+    			this->dust1->arm->getBone("dust1")->setVisible(false);
+    			this->dust2->arm->getBone("dust2")->setVisible(false);
+    			this->cont->play(0);
+    		};
+    	};
 		class MoveAir_mc :public MovieClip
 		{
 			MovieClip* down;//:MovieClip;

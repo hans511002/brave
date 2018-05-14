@@ -6,10 +6,11 @@ namespace engine
 {
     namespace towers
     {
-        class TowerMenuHint_mc :public BaseNode
+        class TowerMenuHint_mc :public MovieClip
         {
         public:
-            MovieClip * cont;// : MovieClip;
+            MovieClipSub * cont;// : MovieClip;
+            MovieClipSub cont1,cont1Sphere1,cont1Sphere2;
             ui::Text * nameTXT;// : TextField;
             CREATE_FUNC(TowerMenuHint_mc);
             TowerMenuHint_mc()
@@ -53,9 +54,9 @@ namespace engine
             BaseSprite*  btnTowerUpgr2;// : MovieClip;
             BaseSprite*  btnTowerUpgr3;// : MovieClip;
             BaseSprite*  btnTowerUpgr4;// : MovieClip;
-            BtnUpgradeMenu*  btnUpgradeMenu;// : MovieClip;
-            dragonBones::CCArmatureDisplay *  cont1;// : MovieClip;
-            dragonBones::CCArmatureDisplay *  cont2;// : MovieClip;
+            BtnUpgradeMenu *  btnUpgradeMenu;// : MovieClip;
+            MovieClip *  cont1;// : MovieClip;
+            MovieClip *  cont2;// : MovieClip;
             BaseNode*  fastBuyUltraCont;//: MovieClip;
             BaseNode* sphereSlot1;// : MovieClip;
             BaseNode* sphereSlot2;// : MovieClip;
@@ -73,18 +74,30 @@ namespace engine
         {
 		public:
             BtnUpgradeMenu * btnUpgradeMenu;// : MovieClip;
-            dragonBones::CCArmatureDisplay * cont1;// : MovieClip;
+            MovieClip * cont1;// : MovieClip;
             BaseNode fastBuyUltraCont;// : MovieClip;
             BaseNode* sellUltraTower;// : MovieClip;
             BaseNode* sphereSlot1;//: MovieClip;
             BaseNode* sphereSlot2;// : MovieClip;
             CREATE_FUNC(UltraTowerMenu_mc);
-
+             
             UltraTowerMenu_mc()
             {
                 return;
             };// end function
 
+        };
+          class UltraTowerMenuHint_mc :public MovieClip
+        {
+        public:               
+            ui::Text * damageTXT;
+            ui::Text * nameTXT;
+            ui::Text * noteTXT;
+            CREATE_FUNC(UltraTowerMenuHint_mc);
+            UltraTowerMenuHint_mc()
+            {
+                return;
+            };// end function
         };
     }
 }

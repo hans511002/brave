@@ -13,6 +13,7 @@ namespace engine{
         public:
             string direction;
             cocos2d::Point this_pt;// :Point;
+            
 
             Cast_3()
             {

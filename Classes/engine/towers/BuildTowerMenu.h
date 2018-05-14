@@ -9,7 +9,7 @@ namespace engine
     class World;
     namespace towers
     { 
-        class BuildTowerMenu_mc : public BaseNode
+        class BuildTowerMenu_mc : public MovieClip
         {
         public:
             BuildTowerMenu_mc();

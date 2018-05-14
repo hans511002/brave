@@ -5,7 +5,7 @@ namespace engine{
     namespace towers
     {
 
-        BuildTowerMenu_mc::BuildTowerMenu_mc()
+        BuildTowerMenu_mc::BuildTowerMenu_mc():MovieClip("tower","BuildTowerMenu_mc","BuildTowerMenu_mc")
         {
         }
 
@@ -40,13 +40,14 @@ namespace engine{
                 ,this->myPlace->getPositionY() + this->myPlace->buildPoint->getPositionY());
             //this->x = this->myPlace->x + this->myPlace->buildPoint->x;
             //this->y = this->myPlace->y + this->myPlace->buildPoint->y;
-            //this->myPlace->gotoAndStop(2);
+            this->myPlace->gotoAndStop(2);
             this->container = BuildTowerMenu_mc::create();
             this->container->setPrice(Main::mainClass->readXMLClass.costTowerXML);
-            //this->container->stop();
-            //this->container->cont->stop();
+            this->container->stop();
+            this->container->cont->stop();
+            std::setText(this->container->cont->costTXT, Main::mainClass->readXMLClass.costTowerXML);
             //this->container->cont->costTXT.text = Main::mainClass->readXMLClass.costTowerXML;
-            //this->container->cont->buildTowerMenuCase.buttonMode = true;
+            this->container->cont->buildTowerMenuCase->buttonMode = true;
             this->addChild(this->container);
             //this->world->listOfClasses.push(this);
 
@@ -168,7 +169,7 @@ namespace engine{
                     this->container->gotoAndStop(this->container->currentFrame - 7);
                     this->container->cont->stop();
                 }
-                this->container->cont->buildTowerMenuCase.buttonMode = true;
+                this->container->cont->buildTowerMenuCase->buttonMode = true;
                 this->myPlace->placeForBuildCase->buttonMode = true;
             }
             else
@@ -178,10 +179,11 @@ namespace engine{
                     this->container->gotoAndStop(this->container->currentFrame + 7);
                     this->container->cont->stop();
                 }
-                this->container->cont->buildTowerMenuCase.buttonMode = false;
+                this->container->cont->buildTowerMenuCase->buttonMode = false;
                 this->myPlace->placeForBuildCase->buttonMode = false;
             }
             this->container->setPrice(Main::mainClass->readXMLClass.costTowerXML);
+            std::setText(this->container->cont->costTXT, Main::mainClass->readXMLClass.costTowerXML);
             //this->container->cont->costTXT.text = Main::mainClass->readXMLClass.costTowerXML;
             return;
         }// end function

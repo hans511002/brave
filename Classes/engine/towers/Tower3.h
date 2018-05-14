@@ -8,7 +8,7 @@ namespace engine
 {
     namespace towers
     {
-        class Tower3_mc :public BaseNode
+        class Tower3_mc :public MovieClip
         {
         public: 
              MovieClip * blockTower;

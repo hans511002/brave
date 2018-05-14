@@ -12,12 +12,12 @@ namespace engine
         {
         public: 
              MovieClip* blockTower;
-        MovieClip * boneBlock;
-        MovieClip * selectTower;
-        MovieClip * sphere1;
-        MovieClip * sphere2_1;
-        MovieClip * sphere2_2;
-        MovieClip * towerCase;
+            MovieClip * boneBlock;
+            MovieClip * selectTower;
+            MovieClip * sphere1;
+            MovieClip * sphere2_1;
+            MovieClip * sphere2_2;
+            MovieClip * towerCase;
             Tower2_mc()
             {
                 return;

@@ -11,17 +11,7 @@ namespace engine
     class World;
     namespace towers
     {
-        class UltraTowerMenuHint_mc :public BaseNode
-        {
-        public:
-            Node * cont;// : MovieClip;
-            ui::Text * nameTXT;// : TextField;
-            CREATE_FUNC(UltraTowerMenuHint_mc);
-            UltraTowerMenuHint_mc()
-            {
-                return;
-            };// end function
-        };
+      
         class UltraTowerMenu :public BaseNode
         {
         public:

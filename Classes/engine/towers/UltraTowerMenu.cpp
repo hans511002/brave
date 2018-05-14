@@ -5,6 +5,10 @@ namespace engine
 {
     namespace towers
     {
+        UltraTowerMenuHint_mc::UltraTowerMenuHint_mc()
+        {
+            return;
+        };// end function
     	UltraTowerMenu::UltraTowerMenu(Tower *param1)
         {
             //this->addEventListener(Event.ADDED_TO_STAGE, this->init);
@@ -14,59 +18,56 @@ namespace engine
         bool UltraTowerMenu::init()
         {
             //this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
-            //this->world = Main::mainClass->worldClass;
-            //if (this->world->towerRadius.visible)
-            //{
-            //    this->world->towerRadius->setVisible(false);
-            //}
-            //var _loc_2:* = false;
-            //this->mouseChildren = false;
-            //this->mouseEnabled = _loc_2;
+            this->world = Main::mainClass->worldClass;
+            if (this->world->towerRadius->setVisible())
+            {
+                this->world->towerRadius->setVisible(false);
+            }
+            this->mouseChildren = false;
+            this->mouseEnabled = false;
+            this->setPosition(this->myTower->this_pt);
             //this->x = this->myTower->this_pt.x;
             //this->y = this->myTower->this_pt.y;
-            //this->towerRadius = new TowerRadius_mc();
-            //this->towerRadius.stop();
-            //this->towerRadius.width = this->myTower->radius * 2;
-            //this->towerRadius.height = this->myTower->radius * 2 * this->world->scaleRadius;
-            //var _loc_2:* = false;
-            //this->towerRadius.mouseChildren = false;
-            //this->towerRadius.mouseEnabled = _loc_2;
-            //this->addChild(this->towerRadius);
-            //this->container = new UltraTowerMenu_mc();
-            //this->container->stop();
-            //this->container->btnUpgradeMenu.stop();
-            //this->container->sphereSlot1.stop();
-            //this->container->sphereSlot2.stop();
-            //this->container->sphereSlot1.sphereAnima.stop();
-            //this->container->sphereSlot2.sphereAnima.stop();
-            //this->container->sphereSlot1.sphereAnima.fire.stop();
-            //this->container->sphereSlot2.sphereAnima.fire.stop();
-            //this->container->sellUltraTower.stop();
-            //this->container->sellUltraTower.sellUltraTowerCase.stop();
-            //this->container->sellUltraTower.sellUltraTowerCase.buttonMode = true;
-            //this->addChild(this->container);
-            //this->world->listOfClasses.push(this);
-            //if (this->myTower->upgradeTypeAdd == 1)
-            //{
-            //    this->container->sphereSlot1->setVisible(false);
-            //    this->container->sphereSlot2->setVisible(false);
-            //}
-            //this->fastBuyUltraManage();
-            //var _loc_2:* = false;
-            //this->myTower->mouseChildren = false;
-            //this->myTower->mouseEnabled = _loc_2;
-            //this->world->worldInterface->barInfoManage(this);
-            //if (!this->hint)
-            //{
-            //    this->hint = new UltraTowerMenuHint_mc();
-            //    this->hint.stop();
-            //    var _loc_2:* = false;
-            //    this->hint.mouseChildren = false;
-            //    this->hint.mouseEnabled = _loc_2;
-            //    this->hint->setVisible(false);
-            //    this->world->addChild(this->hint);
-            //}
-            //this->world->worldInterface->updateInfo();
+            this->towerRadius = new TowerRadius_mc();
+            this->towerRadius->stop();
+            this->towerRadius->width = this->myTower->radius * 2;
+            this->towerRadius->height = this->myTower->radius * 2 * this->world->scaleRadius;
+            this->towerRadius.mouseChildren = false;
+            this->towerRadius.mouseEnabled = false;
+            this->addChild(this->towerRadius);
+            this->container = new UltraTowerMenu_mc();
+            this->container->stop();
+            this->container->btnUpgradeMenu->stop();
+            this->container->sphereSlot1->stop();
+            this->container->sphereSlot2->stop();
+            this->container->sphereSlot1->sphereAnima->stop();
+            this->container->sphereSlot2->sphereAnima->stop();
+            this->container->sphereSlot1->sphereAnima->fire->stop();
+            this->container->sphereSlot2->sphereAnima->fire->stop();
+            this->container->sellUltraTower->stop();
+            this->container->sellUltraTower->sellUltraTowerCase->stop();
+            this->container->sellUltraTower->sellUltraTowerCase.buttonMode = true;
+            this->addChild(this->container);
+            this->world->listOfClasses.push(this);
+            if (this->myTower->upgradeTypeAdd == 1)
+            {
+                this->container->sphereSlot1->setVisible(false);
+                this->container->sphereSlot2->setVisible(false);
+            }
+            this->fastBuyUltraManage(); 
+            this->myTower->mouseChildren = false;
+            this->myTower->mouseEnabled = false;
+            this->world->worldInterface->barInfoManage(this);
+            if (!this->hint)
+            {
+                this->hint = new UltraTowerMenuHint_mc();
+                this->hint->stop(); 
+                this->hint.mouseChildren = false;
+                this->hint.mouseEnabled = false;
+                this->hint->setVisible(false);
+                this->world->addChild(this->hint);
+            }
+            this->world->worldInterface->updateInfo();
             return true;
         }// end function
         void UltraTowerMenu::update()
@@ -96,97 +97,97 @@ namespace engine
             //}
             //else
             //{
-            //    if (this->container->sphereSlot1.sphereAnima.visible)
+            //    if (this->container->sphereSlot1->sphereAnima->setVisible())
             //    {
-            //        if (this->container->sphereSlot1.sphereAnima.currentFrame == 1)
+            //        if (this->container->sphereSlot1->sphereAnima->currentFrame == 1)
             //        {
-            //            if (this->container->sphereSlot1.sphereAnima.fire.currentFrame < this->container->sphereSlot1.sphereAnima.fire.totalFrames)
+            //            if (this->container->sphereSlot1->sphereAnima->fire.currentFrame < this->container->sphereSlot1->sphereAnima->fire.totalFrames)
             //            {
-            //                this->container->sphereSlot1.sphereAnima.fire.gotoAndStop((this->container->sphereSlot1.sphereAnima.fire.currentFrame + 1));
+            //                this->container->sphereSlot1->sphereAnima->fire.gotoAndStop((this->container->sphereSlot1->sphereAnima->fire.currentFrame + 1));
             //            }
             //            else
             //            {
-            //                this->container->sphereSlot1.sphereAnima.fire.gotoAndStop(1);
+            //                this->container->sphereSlot1->sphereAnima->fire.gotoAndStop(1);
             //            }
             //        }
-            //        else if (this->container->sphereSlot1.sphereAnima.currentFrame == 2)
+            //        else if (this->container->sphereSlot1->sphereAnima->currentFrame == 2)
             //        {
-            //            if (this->container->sphereSlot1.sphereAnima.ice.currentFrame < this->container->sphereSlot1.sphereAnima.ice.totalFrames)
+            //            if (this->container->sphereSlot1->sphereAnima->ice.currentFrame < this->container->sphereSlot1->sphereAnima->ice.totalFrames)
             //            {
-            //                this->container->sphereSlot1.sphereAnima.ice.gotoAndStop((this->container->sphereSlot1.sphereAnima.ice.currentFrame + 1));
+            //                this->container->sphereSlot1->sphereAnima->ice.gotoAndStop((this->container->sphereSlot1->sphereAnima->ice.currentFrame + 1));
             //            }
             //            else
             //            {
-            //                this->container->sphereSlot1.sphereAnima.ice.gotoAndStop(1);
+            //                this->container->sphereSlot1->sphereAnima->ice.gotoAndStop(1);
             //            }
             //        }
-            //        else if (this->container->sphereSlot1.sphereAnima.currentFrame == 3)
+            //        else if (this->container->sphereSlot1->sphereAnima->currentFrame == 3)
             //        {
-            //            if (this->container->sphereSlot1.sphereAnima.stone.currentFrame < this->container->sphereSlot1.sphereAnima.stone.totalFrames)
+            //            if (this->container->sphereSlot1->sphereAnima->stone.currentFrame < this->container->sphereSlot1->sphereAnima->stone.totalFrames)
             //            {
-            //                this->container->sphereSlot1.sphereAnima.stone.gotoAndStop((this->container->sphereSlot1.sphereAnima.stone.currentFrame + 1));
+            //                this->container->sphereSlot1->sphereAnima->stone.gotoAndStop((this->container->sphereSlot1->sphereAnima->stone.currentFrame + 1));
             //            }
             //            else
             //            {
-            //                this->container->sphereSlot1.sphereAnima.stone.gotoAndStop(1);
+            //                this->container->sphereSlot1->sphereAnima->stone.gotoAndStop(1);
             //            }
             //        }
-            //        else if (this->container->sphereSlot1.sphereAnima.currentFrame == 4)
+            //        else if (this->container->sphereSlot1->sphereAnima->currentFrame == 4)
             //        {
-            //            if (this->container->sphereSlot1.sphereAnima.levin.currentFrame < this->container->sphereSlot1.sphereAnima.levin.totalFrames)
+            //            if (this->container->sphereSlot1->sphereAnima->levin.currentFrame < this->container->sphereSlot1->sphereAnima->levin.totalFrames)
             //            {
-            //                this->container->sphereSlot1.sphereAnima.levin.gotoAndStop((this->container->sphereSlot1.sphereAnima.levin.currentFrame + 1));
+            //                this->container->sphereSlot1->sphereAnima->levin.gotoAndStop((this->container->sphereSlot1->sphereAnima->levin.currentFrame + 1));
             //            }
             //            else
             //            {
-            //                this->container->sphereSlot1.sphereAnima.levin.gotoAndStop(1);
+            //                this->container->sphereSlot1->sphereAnima->levin.gotoAndStop(1);
             //            }
             //        }
             //    }
-            //    if (this->container->sphereSlot2.sphereAnima.visible)
+            //    if (this->container->sphereSlot2->sphereAnima->setVisible())
             //    {
-            //        if (this->container->sphereSlot2.sphereAnima.currentFrame == 1)
+            //        if (this->container->sphereSlot2->sphereAnima->currentFrame == 1)
             //        {
-            //            if (this->container->sphereSlot2.sphereAnima.fire.currentFrame < this->container->sphereSlot2.sphereAnima.fire.totalFrames)
+            //            if (this->container->sphereSlot2->sphereAnima->fire.currentFrame < this->container->sphereSlot2->sphereAnima->fire.totalFrames)
             //            {
-            //                this->container->sphereSlot2.sphereAnima.fire.gotoAndStop((this->container->sphereSlot2.sphereAnima.fire.currentFrame + 1));
+            //                this->container->sphereSlot2->sphereAnima->fire.gotoAndStop((this->container->sphereSlot2->sphereAnima->fire.currentFrame + 1));
             //            }
             //            else
             //            {
-            //                this->container->sphereSlot2.sphereAnima.fire.gotoAndStop(1);
+            //                this->container->sphereSlot2->sphereAnima->fire.gotoAndStop(1);
             //            }
             //        }
-            //        else if (this->container->sphereSlot2.sphereAnima.currentFrame == 2)
+            //        else if (this->container->sphereSlot2->sphereAnima->currentFrame == 2)
             //        {
-            //            if (this->container->sphereSlot2.sphereAnima.ice.currentFrame < this->container->sphereSlot2.sphereAnima.ice.totalFrames)
+            //            if (this->container->sphereSlot2->sphereAnima->ice.currentFrame < this->container->sphereSlot2->sphereAnima->ice.totalFrames)
             //            {
-            //                this->container->sphereSlot2.sphereAnima.ice.gotoAndStop((this->container->sphereSlot2.sphereAnima.ice.currentFrame + 1));
+            //                this->container->sphereSlot2->sphereAnima->ice.gotoAndStop((this->container->sphereSlot2->sphereAnima->ice.currentFrame + 1));
             //            }
             //            else
             //            {
-            //                this->container->sphereSlot2.sphereAnima.ice.gotoAndStop(1);
+            //                this->container->sphereSlot2->sphereAnima->ice.gotoAndStop(1);
             //            }
             //        }
-            //        else if (this->container->sphereSlot2.sphereAnima.currentFrame == 3)
+            //        else if (this->container->sphereSlot2->sphereAnima->currentFrame == 3)
             //        {
-            //            if (this->container->sphereSlot2.sphereAnima.stone.currentFrame < this->container->sphereSlot2.sphereAnima.stone.totalFrames)
+            //            if (this->container->sphereSlot2->sphereAnima->stone.currentFrame < this->container->sphereSlot2->sphereAnima->stone.totalFrames)
             //            {
-            //                this->container->sphereSlot2.sphereAnima.stone.gotoAndStop((this->container->sphereSlot2.sphereAnima.stone.currentFrame + 1));
+            //                this->container->sphereSlot2->sphereAnima->stone.gotoAndStop((this->container->sphereSlot2->sphereAnima->stone.currentFrame + 1));
             //            }
             //            else
             //            {
-            //                this->container->sphereSlot2.sphereAnima.stone.gotoAndStop(1);
+            //                this->container->sphereSlot2->sphereAnima->stone.gotoAndStop(1);
             //            }
             //        }
-            //        else if (this->container->sphereSlot2.sphereAnima.currentFrame == 4)
+            //        else if (this->container->sphereSlot2->sphereAnima->currentFrame == 4)
             //        {
-            //            if (this->container->sphereSlot2.sphereAnima.levin.currentFrame < this->container->sphereSlot2.sphereAnima.levin.totalFrames)
+            //            if (this->container->sphereSlot2->sphereAnima->levin.currentFrame < this->container->sphereSlot2->sphereAnima->levin.totalFrames)
             //            {
-            //                this->container->sphereSlot2.sphereAnima.levin.gotoAndStop((this->container->sphereSlot2.sphereAnima.levin.currentFrame + 1));
+            //                this->container->sphereSlot2->sphereAnima->levin.gotoAndStop((this->container->sphereSlot2->sphereAnima->levin.currentFrame + 1));
             //            }
             //            else
             //            {
-            //                this->container->sphereSlot2.sphereAnima.levin.gotoAndStop(1);
+            //                this->container->sphereSlot2->sphereAnima->levin.gotoAndStop(1);
             //            }
             //        }
             //    }
@@ -220,7 +221,7 @@ namespace engine
             //    }
             //    else if (this->openFastBuyUltraFlag)
             //    {
-            //        if (!this->container->fastBuyUltraCont.visible)
+            //        if (!this->container->fastBuyUltraCont->setVisible())
             //        {
             //            this->container->fastBuyUltraCont.visible = true;
             //        }
@@ -335,7 +336,7 @@ namespace engine
             //            this->hintPosition(21);
             //        }
             //    }
-            //    else if (this->hint.visible)
+            //    else if (this->hint->setVisible())
             //    {
             //        this->hint->setVisible(false);
             //    }
@@ -344,60 +345,60 @@ namespace engine
             //{
             //    if (this->myTower->towerType == 5)
             //    {
-            //        if (this->world->worldInterface->container.iceBacklight.visible || this->world->worldInterface->container.levinBacklight.visible)
+            //        if (this->world->worldInterface->container.iceBacklight.visible || this->world->worldInterface->container.levinBacklight->setVisible())
             //        {
             //            this->world->worldInterface->archiveSphereBacklightManage("");
             //        }
-            //        if (!this->world->worldInterface->container.fireBacklight.visible)
+            //        if (!this->world->worldInterface->container.fireBacklight->setVisible())
             //        {
             //            this->world->worldInterface->archiveSphereBacklightManage("fire");
             //        }
-            //        if (!this->world->worldInterface->container.stoneBacklight.visible)
+            //        if (!this->world->worldInterface->container.stoneBacklight->setVisible())
             //        {
             //            this->world->worldInterface->archiveSphereBacklightManage("stone");
             //        }
             //    }
             //    else if (this->myTower->towerType == 6)
             //    {
-            //        if (this->world->worldInterface->container.fireBacklight.visible || this->world->worldInterface->container.stoneBacklight.visible)
+            //        if (this->world->worldInterface->container.fireBacklight.visible || this->world->worldInterface->container.stoneBacklight->setVisible())
             //        {
             //            this->world->worldInterface->archiveSphereBacklightManage("");
             //        }
-            //        if (!this->world->worldInterface->container.iceBacklight.visible)
+            //        if (!this->world->worldInterface->container.iceBacklight->setVisible())
             //        {
             //            this->world->worldInterface->archiveSphereBacklightManage("ice");
             //        }
-            //        if (!this->world->worldInterface->container.levinBacklight.visible)
+            //        if (!this->world->worldInterface->container.levinBacklight->setVisible())
             //        {
             //            this->world->worldInterface->archiveSphereBacklightManage("levin");
             //        }
             //    }
             //    else if (this->myTower->towerType == 7)
             //    {
-            //        if (this->world->worldInterface->container.fireBacklight.visible || this->world->worldInterface->container.levinBacklight.visible)
+            //        if (this->world->worldInterface->container.fireBacklight.visible || this->world->worldInterface->container.levinBacklight->setVisible())
             //        {
             //            this->world->worldInterface->archiveSphereBacklightManage("");
             //        }
-            //        if (!this->world->worldInterface->container.iceBacklight.visible)
+            //        if (!this->world->worldInterface->container.iceBacklight->setVisible())
             //        {
             //            this->world->worldInterface->archiveSphereBacklightManage("ice");
             //        }
-            //        if (!this->world->worldInterface->container.stoneBacklight.visible)
+            //        if (!this->world->worldInterface->container.stoneBacklight->setVisible())
             //        {
             //            this->world->worldInterface->archiveSphereBacklightManage("stone");
             //        }
             //    }
             //    else if (this->myTower->towerType == 8)
             //    {
-            //        if (this->world->worldInterface->container.iceBacklight.visible || this->world->worldInterface->container.stoneBacklight.visible)
+            //        if (this->world->worldInterface->container.iceBacklight.visible || this->world->worldInterface->container.stoneBacklight->setVisible())
             //        {
             //            this->world->worldInterface->archiveSphereBacklightManage("");
             //        }
-            //        if (!this->world->worldInterface->container.fireBacklight.visible)
+            //        if (!this->world->worldInterface->container.fireBacklight->setVisible())
             //        {
             //            this->world->worldInterface->archiveSphereBacklightManage("fire");
             //        }
-            //        if (!this->world->worldInterface->container.levinBacklight.visible)
+            //        if (!this->world->worldInterface->container.levinBacklight->setVisible())
             //        {
             //            this->world->worldInterface->archiveSphereBacklightManage("levin");
             //        }
@@ -405,7 +406,7 @@ namespace engine
             //}
             //else if (param1.target.name != "sphereSlotCase")
             //{
-            //    if (this->world->worldInterface->container.fireBacklight.visible || this->world->worldInterface->container.iceBacklight.visible || this->world->worldInterface->container.stoneBacklight.visible || this->world->worldInterface->container.levinBacklight.visible)
+            //    if (this->world->worldInterface->container.fireBacklight.visible || this->world->worldInterface->container.iceBacklight.visible || this->world->worldInterface->container.stoneBacklight.visible || this->world->worldInterface->container.levinBacklight->setVisible())
             //    {
             //        this->world->worldInterface->archiveSphereBacklightManage("");
             //    }
@@ -413,7 +414,7 @@ namespace engine
             //if (param1.target.name == "sphereSlotCase")
             //{
             //    this->tempObject = param1.target.parent;
-            //    if (this->tempObject.sphereAnima.visible)
+            //    if (this->tempObject->sphereAnima->setVisible())
             //    {
             //        if (param1.target.parent.name == "sphereSlot1")
             //        {
@@ -475,60 +476,60 @@ namespace engine
             //            {
             //                if (this->myTower->towerType == 5)
             //                {
-            //                    if (this->world->worldInterface->container.iceBacklight.visible || this->world->worldInterface->container.levinBacklight.visible)
+            //                    if (this->world->worldInterface->container.iceBacklight.visible || this->world->worldInterface->container.levinBacklight->setVisible())
             //                    {
             //                        this->world->worldInterface->archiveSphereBacklightManage("");
             //                    }
-            //                    if (!this->world->worldInterface->container.fireBacklight.visible)
+            //                    if (!this->world->worldInterface->container.fireBacklight->setVisible())
             //                    {
             //                        this->world->worldInterface->archiveSphereBacklightManage("fire");
             //                    }
-            //                    if (!this->world->worldInterface->container.stoneBacklight.visible)
+            //                    if (!this->world->worldInterface->container.stoneBacklight->setVisible())
             //                    {
             //                        this->world->worldInterface->archiveSphereBacklightManage("stone");
             //                    }
             //                }
             //                else if (this->myTower->towerType == 6)
             //                {
-            //                    if (this->world->worldInterface->container.fireBacklight.visible || this->world->worldInterface->container.stoneBacklight.visible)
+            //                    if (this->world->worldInterface->container.fireBacklight.visible || this->world->worldInterface->container.stoneBacklight->setVisible())
             //                    {
             //                        this->world->worldInterface->archiveSphereBacklightManage("");
             //                    }
-            //                    if (!this->world->worldInterface->container.iceBacklight.visible)
+            //                    if (!this->world->worldInterface->container.iceBacklight->setVisible())
             //                    {
             //                        this->world->worldInterface->archiveSphereBacklightManage("ice");
             //                    }
-            //                    if (!this->world->worldInterface->container.levinBacklight.visible)
+            //                    if (!this->world->worldInterface->container.levinBacklight->setVisible())
             //                    {
             //                        this->world->worldInterface->archiveSphereBacklightManage("levin");
             //                    }
             //                }
             //                else if (this->myTower->towerType == 7)
             //                {
-            //                    if (this->world->worldInterface->container.fireBacklight.visible || this->world->worldInterface->container.levinBacklight.visible)
+            //                    if (this->world->worldInterface->container.fireBacklight.visible || this->world->worldInterface->container.levinBacklight->setVisible())
             //                    {
             //                        this->world->worldInterface->archiveSphereBacklightManage("");
             //                    }
-            //                    if (!this->world->worldInterface->container.iceBacklight.visible)
+            //                    if (!this->world->worldInterface->container.iceBacklight->setVisible())
             //                    {
             //                        this->world->worldInterface->archiveSphereBacklightManage("ice");
             //                    }
-            //                    if (!this->world->worldInterface->container.stoneBacklight.visible)
+            //                    if (!this->world->worldInterface->container.stoneBacklight->setVisible())
             //                    {
             //                        this->world->worldInterface->archiveSphereBacklightManage("stone");
             //                    }
             //                }
             //                else if (this->myTower->towerType == 8)
             //                {
-            //                    if (this->world->worldInterface->container.iceBacklight.visible || this->world->worldInterface->container.stoneBacklight.visible)
+            //                    if (this->world->worldInterface->container.iceBacklight.visible || this->world->worldInterface->container.stoneBacklight->setVisible())
             //                    {
             //                        this->world->worldInterface->archiveSphereBacklightManage("");
             //                    }
-            //                    if (!this->world->worldInterface->container.fireBacklight.visible)
+            //                    if (!this->world->worldInterface->container.fireBacklight->setVisible())
             //                    {
             //                        this->world->worldInterface->archiveSphereBacklightManage("fire");
             //                    }
-            //                    if (!this->world->worldInterface->container.levinBacklight.visible)
+            //                    if (!this->world->worldInterface->container.levinBacklight->setVisible())
             //                    {
             //                        this->world->worldInterface->archiveSphereBacklightManage("levin");
             //                    }
@@ -541,7 +542,7 @@ namespace engine
             //    {
             //        this->container->fastBuyUltraCont.btnFastBuyUltra.gotoAndStop(1);
             //        this->container->fastBuyUltraCont.btnFastBuyUltra.costTXT.text = this->fastBuyPrice;
-            //        if (this->world->worldInterface->container.fireBacklight.visible || this->world->worldInterface->container.iceBacklight.visible || this->world->worldInterface->container.stoneBacklight.visible || this->world->worldInterface->container.levinBacklight.visible)
+            //        if (this->world->worldInterface->container.fireBacklight.visible || this->world->worldInterface->container.iceBacklight.visible || this->world->worldInterface->container.stoneBacklight.visible || this->world->worldInterface->container.levinBacklight->setVisible())
             //        {
             //            this->world->worldInterface->archiveSphereBacklightManage("");
             //        }
@@ -565,19 +566,19 @@ namespace engine
             //    this->tempObject = event.target.parent;
             //    if (this->tempObject.currentFrame < 4)
             //    {
-            //        if (this->tempObject.sphereAnima.currentFrame == 1)
+            //        if (this->tempObject->sphereAnima->currentFrame == 1)
             //        {
             //            this->myTower->towerGetSphereManage("get", "fire");
             //        }
-            //        else if (this->tempObject.sphereAnima.currentFrame == 2)
+            //        else if (this->tempObject->sphereAnima->currentFrame == 2)
             //        {
             //            this->myTower->towerGetSphereManage("get", "ice");
             //        }
-            //        else if (this->tempObject.sphereAnima.currentFrame == 3)
+            //        else if (this->tempObject->sphereAnima->currentFrame == 3)
             //        {
             //            this->myTower->towerGetSphereManage("get", "stone");
             //        }
-            //        else if (this->tempObject.sphereAnima.currentFrame == 4)
+            //        else if (this->tempObject->sphereAnima->currentFrame == 4)
             //        {
             //            this->myTower->towerGetSphereManage("get", "levin");
             //        }
@@ -587,7 +588,7 @@ namespace engine
             //            {
             //                if (this->myTower->towerType == 5)
             //                {
-            //                    if (this->world->worldInterface->container.fireSphere.alpha == 1 && this->world->worldInterface->container.fireSphere.visible)
+            //                    if (this->world->worldInterface->container.fireSphere.alpha == 1 && this->world->worldInterface->container.fireSphere->setVisible())
             //                    {
             //                        this->world->worldInterface->container.fireBacklight.turnFlag = false;
             //                        this->world->worldInterface->container.fireBacklight.gotoAndStop(2);
@@ -596,7 +597,7 @@ namespace engine
             //                }
             //                else if (this->myTower->towerType == 6)
             //                {
-            //                    if (this->world->worldInterface->container.iceSphere.alpha == 1 && this->world->worldInterface->container.iceSphere.visible)
+            //                    if (this->world->worldInterface->container.iceSphere.alpha == 1 && this->world->worldInterface->container.iceSphere->setVisible())
             //                    {
             //                        this->world->worldInterface->container.iceBacklight.turnFlag = false;
             //                        this->world->worldInterface->container.iceBacklight.gotoAndStop(2);
@@ -605,7 +606,7 @@ namespace engine
             //                }
             //                else if (this->myTower->towerType == 7)
             //                {
-            //                    if (this->world->worldInterface->container.iceSphere.alpha == 1 && this->world->worldInterface->container.iceSphere.visible)
+            //                    if (this->world->worldInterface->container.iceSphere.alpha == 1 && this->world->worldInterface->container.iceSphere->setVisible())
             //                    {
             //                        this->world->worldInterface->container.iceBacklight.turnFlag = false;
             //                        this->world->worldInterface->container.iceBacklight.gotoAndStop(2);
@@ -614,7 +615,7 @@ namespace engine
             //                }
             //                else if (this->myTower->towerType == 8)
             //                {
-            //                    if (this->world->worldInterface->container.fireSphere.alpha == 1 && this->world->worldInterface->container.fireSphere.visible)
+            //                    if (this->world->worldInterface->container.fireSphere.alpha == 1 && this->world->worldInterface->container.fireSphere->setVisible())
             //                    {
             //                        this->world->worldInterface->container.fireBacklight.turnFlag = false;
             //                        this->world->worldInterface->container.fireBacklight.gotoAndStop(2);
@@ -626,7 +627,7 @@ namespace engine
             //            {
             //                if (this->myTower->towerType == 5)
             //                {
-            //                    if (this->world->worldInterface->container.stoneSphere.alpha == 1 && this->world->worldInterface->container.stoneSphere.visible)
+            //                    if (this->world->worldInterface->container.stoneSphere.alpha == 1 && this->world->worldInterface->container.stoneSphere->setVisible())
             //                    {
             //                        this->world->worldInterface->container.stoneBacklight.turnFlag = false;
             //                        this->world->worldInterface->container.stoneBacklight.gotoAndStop(2);
@@ -635,7 +636,7 @@ namespace engine
             //                }
             //                else if (this->myTower->towerType == 6)
             //                {
-            //                    if (this->world->worldInterface->container.levinSphere.alpha == 1 && this->world->worldInterface->container.levinSphere.visible)
+            //                    if (this->world->worldInterface->container.levinSphere.alpha == 1 && this->world->worldInterface->container.levinSphere->setVisible())
             //                    {
             //                        this->world->worldInterface->container.levinBacklight.turnFlag = false;
             //                        this->world->worldInterface->container.levinBacklight.gotoAndStop(2);
@@ -644,7 +645,7 @@ namespace engine
             //                }
             //                else if (this->myTower->towerType == 7)
             //                {
-            //                    if (this->world->worldInterface->container.stoneSphere.alpha == 1 && this->world->worldInterface->container.stoneSphere.visible)
+            //                    if (this->world->worldInterface->container.stoneSphere.alpha == 1 && this->world->worldInterface->container.stoneSphere->setVisible())
             //                    {
             //                        this->world->worldInterface->container.stoneBacklight.turnFlag = false;
             //                        this->world->worldInterface->container.stoneBacklight.gotoAndStop(2);
@@ -653,7 +654,7 @@ namespace engine
             //                }
             //                else if (this->myTower->towerType == 8)
             //                {
-            //                    if (this->world->worldInterface->container.levinSphere.alpha == 1 && this->world->worldInterface->container.levinSphere.visible)
+            //                    if (this->world->worldInterface->container.levinSphere.alpha == 1 && this->world->worldInterface->container.levinSphere->setVisible())
             //                    {
             //                        this->world->worldInterface->container.levinBacklight.turnFlag = false;
             //                        this->world->worldInterface->container.levinBacklight.gotoAndStop(2);
@@ -1018,7 +1019,7 @@ namespace engine
             //        this->world->worldInterface->updateInfo();
             //        this->closeMenu();
             //        this->myTower->myPlace.gotoAndStop(1);
-            //        this->myTower->myPlace.buildPoint.stop();
+            //        this->myTower->myPlace.buildPoint->stop();
             //        this->myTower->myPlace.placeForBuildCase.buttonMode = true;
             //        this->myTower->kill();
             //        Sounds.instance.playSound("snd_tower_sell");
@@ -1038,28 +1039,28 @@ namespace engine
             //    {
             //        this->container->sphereSlot1.gotoAndStop(1);
             //        this->container->sphereSlot2.gotoAndStop(1);
-            //        this->container->sphereSlot1.sphereAnima.gotoAndStop(1);
-            //        this->container->sphereSlot1.sphereAnima.fire.stop();
-            //        this->container->sphereSlot2.sphereAnima.gotoAndStop(3);
-            //        this->container->sphereSlot2.sphereAnima.stone.stop();
+            //        this->container->sphereSlot1->sphereAnima->gotoAndStop(1);
+            //        this->container->sphereSlot1->sphereAnima->fire->stop();
+            //        this->container->sphereSlot2->sphereAnima->gotoAndStop(3);
+            //        this->container->sphereSlot2->sphereAnima->stone->stop();
             //        if (!this->myTower->shootingTurnStack[0])
             //        {
-            //            this->container->sphereSlot1.sphereAnima->setVisible(false);
+            //            this->container->sphereSlot1->sphereAnima->setVisible(false);
             //            this->container->sphereSlot1.sphereSlotCase.buttonMode = false;
             //        }
             //        else
             //        {
-            //            this->container->sphereSlot1.sphereAnima.visible = true;
+            //            this->container->sphereSlot1->sphereAnima->visible = true;
             //            this->container->sphereSlot1.sphereSlotCase.buttonMode = true;
             //        }
             //        if (!this->myTower->shootingTurnStack[2])
             //        {
-            //            this->container->sphereSlot2.sphereAnima->setVisible(false);
+            //            this->container->sphereSlot2->sphereAnima->setVisible(false);
             //            this->container->sphereSlot2.sphereSlotCase.buttonMode = false;
             //        }
             //        else
             //        {
-            //            this->container->sphereSlot2.sphereAnima.visible = true;
+            //            this->container->sphereSlot2->sphereAnima->visible = true;
             //            this->container->sphereSlot2.sphereSlotCase.buttonMode = true;
             //        }
             //        if (this->myTower->upgradeTypeAdd == 1)
@@ -1085,13 +1086,13 @@ namespace engine
             //        this->container->btnUpgradeMenu.gotoAndStop(5);
             //        this->container->sphereSlot1.gotoAndStop(4);
             //        this->container->sphereSlot2.gotoAndStop(4);
-            //        this->container->sphereSlot1.sphereAnima.gotoAndStop(1);
-            //        this->container->sphereSlot1.sphereAnima.fire.stop();
-            //        this->container->sphereSlot2.sphereAnima.gotoAndStop(3);
-            //        this->container->sphereSlot2.sphereAnima.stone.stop();
-            //        this->container->sphereSlot1.sphereAnima->setVisible(false);
+            //        this->container->sphereSlot1->sphereAnima->gotoAndStop(1);
+            //        this->container->sphereSlot1->sphereAnima->fire->stop();
+            //        this->container->sphereSlot2->sphereAnima->gotoAndStop(3);
+            //        this->container->sphereSlot2->sphereAnima->stone->stop();
+            //        this->container->sphereSlot1->sphereAnima->setVisible(false);
             //        this->container->sphereSlot1.sphereSlotCase.buttonMode = false;
-            //        this->container->sphereSlot2.sphereAnima->setVisible(false);
+            //        this->container->sphereSlot2->sphereAnima->setVisible(false);
             //        this->container->sphereSlot2.sphereSlotCase.buttonMode = false;
             //    }
             //}
@@ -1101,28 +1102,28 @@ namespace engine
             //    {
             //        this->container->sphereSlot1.gotoAndStop(1);
             //        this->container->sphereSlot2.gotoAndStop(1);
-            //        this->container->sphereSlot1.sphereAnima.gotoAndStop(2);
-            //        this->container->sphereSlot1.sphereAnima.ice.stop();
-            //        this->container->sphereSlot2.sphereAnima.gotoAndStop(4);
-            //        this->container->sphereSlot2.sphereAnima.levin.stop();
+            //        this->container->sphereSlot1->sphereAnima->gotoAndStop(2);
+            //        this->container->sphereSlot1->sphereAnima->ice->stop();
+            //        this->container->sphereSlot2->sphereAnima->gotoAndStop(4);
+            //        this->container->sphereSlot2->sphereAnima->levin->stop();
             //        if (!this->myTower->shootingTurnStack[1])
             //        {
-            //            this->container->sphereSlot1.sphereAnima->setVisible(false);
+            //            this->container->sphereSlot1->sphereAnima->setVisible(false);
             //            this->container->sphereSlot1.sphereSlotCase.buttonMode = false;
             //        }
             //        else
             //        {
-            //            this->container->sphereSlot1.sphereAnima.visible = true;
+            //            this->container->sphereSlot1->sphereAnima->visible = true;
             //            this->container->sphereSlot1.sphereSlotCase.buttonMode = true;
             //        }
             //        if (!this->myTower->shootingTurnStack[3])
             //        {
-            //            this->container->sphereSlot2.sphereAnima->setVisible(false);
+            //            this->container->sphereSlot2->sphereAnima->setVisible(false);
             //            this->container->sphereSlot2.sphereSlotCase.buttonMode = false;
             //        }
             //        else
             //        {
-            //            this->container->sphereSlot2.sphereAnima.visible = true;
+            //            this->container->sphereSlot2->sphereAnima->visible = true;
             //            this->container->sphereSlot2.sphereSlotCase.buttonMode = true;
             //        }
             //        if (this->myTower->upgradeTypeAdd == 1)
@@ -1148,13 +1149,13 @@ namespace engine
             //        this->container->btnUpgradeMenu.gotoAndStop(5);
             //        this->container->sphereSlot1.gotoAndStop(4);
             //        this->container->sphereSlot2.gotoAndStop(4);
-            //        this->container->sphereSlot1.sphereAnima.gotoAndStop(2);
-            //        this->container->sphereSlot1.sphereAnima.ice.stop();
-            //        this->container->sphereSlot2.sphereAnima.gotoAndStop(4);
-            //        this->container->sphereSlot2.sphereAnima.levin.stop();
-            //        this->container->sphereSlot1.sphereAnima->setVisible(false);
+            //        this->container->sphereSlot1->sphereAnima->gotoAndStop(2);
+            //        this->container->sphereSlot1->sphereAnima->ice->stop();
+            //        this->container->sphereSlot2->sphereAnima->gotoAndStop(4);
+            //        this->container->sphereSlot2->sphereAnima->levin->stop();
+            //        this->container->sphereSlot1->sphereAnima->setVisible(false);
             //        this->container->sphereSlot1.sphereSlotCase.buttonMode = false;
-            //        this->container->sphereSlot2.sphereAnima->setVisible(false);
+            //        this->container->sphereSlot2->sphereAnima->setVisible(false);
             //        this->container->sphereSlot2.sphereSlotCase.buttonMode = false;
             //    }
             //}
@@ -1164,28 +1165,28 @@ namespace engine
             //    {
             //        this->container->sphereSlot1.gotoAndStop(1);
             //        this->container->sphereSlot2.gotoAndStop(1);
-            //        this->container->sphereSlot1.sphereAnima.gotoAndStop(2);
-            //        this->container->sphereSlot1.sphereAnima.ice.stop();
-            //        this->container->sphereSlot2.sphereAnima.gotoAndStop(3);
-            //        this->container->sphereSlot2.sphereAnima.stone.stop();
+            //        this->container->sphereSlot1->sphereAnima->gotoAndStop(2);
+            //        this->container->sphereSlot1->sphereAnima->ice->stop();
+            //        this->container->sphereSlot2->sphereAnima->gotoAndStop(3);
+            //        this->container->sphereSlot2->sphereAnima->stone->stop();
             //        if (!this->myTower->shootingTurnStack[1])
             //        {
-            //            this->container->sphereSlot1.sphereAnima->setVisible(false);
+            //            this->container->sphereSlot1->sphereAnima->setVisible(false);
             //            this->container->sphereSlot1.sphereSlotCase.buttonMode = false;
             //        }
             //        else
             //        {
-            //            this->container->sphereSlot1.sphereAnima.visible = true;
+            //            this->container->sphereSlot1->sphereAnima->visible = true;
             //            this->container->sphereSlot1.sphereSlotCase.buttonMode = true;
             //        }
             //        if (!this->myTower->shootingTurnStack[2])
             //        {
-            //            this->container->sphereSlot2.sphereAnima->setVisible(false);
+            //            this->container->sphereSlot2->sphereAnima->setVisible(false);
             //            this->container->sphereSlot2.sphereSlotCase.buttonMode = false;
             //        }
             //        else
             //        {
-            //            this->container->sphereSlot2.sphereAnima.visible = true;
+            //            this->container->sphereSlot2->sphereAnima->visible = true;
             //            this->container->sphereSlot2.sphereSlotCase.buttonMode = true;
             //        }
             //        if (this->myTower->upgradeTypeAdd == 1)
@@ -1211,13 +1212,13 @@ namespace engine
             //        this->container->btnUpgradeMenu.gotoAndStop(5);
             //        this->container->sphereSlot1.gotoAndStop(4);
             //        this->container->sphereSlot2.gotoAndStop(4);
-            //        this->container->sphereSlot1.sphereAnima.gotoAndStop(2);
-            //        this->container->sphereSlot1.sphereAnima.ice.stop();
-            //        this->container->sphereSlot2.sphereAnima.gotoAndStop(3);
-            //        this->container->sphereSlot2.sphereAnima.stone.stop();
-            //        this->container->sphereSlot1.sphereAnima->setVisible(false);
+            //        this->container->sphereSlot1->sphereAnima->gotoAndStop(2);
+            //        this->container->sphereSlot1->sphereAnima->ice->stop();
+            //        this->container->sphereSlot2->sphereAnima->gotoAndStop(3);
+            //        this->container->sphereSlot2->sphereAnima->stone->stop();
+            //        this->container->sphereSlot1->sphereAnima->setVisible(false);
             //        this->container->sphereSlot1.sphereSlotCase.buttonMode = false;
-            //        this->container->sphereSlot2.sphereAnima->setVisible(false);
+            //        this->container->sphereSlot2->sphereAnima->setVisible(false);
             //        this->container->sphereSlot2.sphereSlotCase.buttonMode = false;
             //    }
             //}
@@ -1227,28 +1228,28 @@ namespace engine
             //    {
             //        this->container->sphereSlot1.gotoAndStop(1);
             //        this->container->sphereSlot2.gotoAndStop(1);
-            //        this->container->sphereSlot1.sphereAnima.gotoAndStop(1);
-            //        this->container->sphereSlot1.sphereAnima.fire.stop();
-            //        this->container->sphereSlot2.sphereAnima.gotoAndStop(4);
-            //        this->container->sphereSlot2.sphereAnima.levin.stop();
+            //        this->container->sphereSlot1->sphereAnima->gotoAndStop(1);
+            //        this->container->sphereSlot1->sphereAnima->fire->stop();
+            //        this->container->sphereSlot2->sphereAnima->gotoAndStop(4);
+            //        this->container->sphereSlot2->sphereAnima->levin->stop();
             //        if (!this->myTower->shootingTurnStack[0])
             //        {
-            //            this->container->sphereSlot1.sphereAnima->setVisible(false);
+            //            this->container->sphereSlot1->sphereAnima->setVisible(false);
             //            this->container->sphereSlot1.sphereSlotCase.buttonMode = false;
             //        }
             //        else
             //        {
-            //            this->container->sphereSlot1.sphereAnima.visible = true;
+            //            this->container->sphereSlot1->sphereAnima->visible = true;
             //            this->container->sphereSlot1.sphereSlotCase.buttonMode = true;
             //        }
             //        if (!this->myTower->shootingTurnStack[3])
             //        {
-            //            this->container->sphereSlot2.sphereAnima->setVisible(false);
+            //            this->container->sphereSlot2->sphereAnima->setVisible(false);
             //            this->container->sphereSlot2.sphereSlotCase.buttonMode = false;
             //        }
             //        else
             //        {
-            //            this->container->sphereSlot2.sphereAnima.visible = true;
+            //            this->container->sphereSlot2->sphereAnima->visible = true;
             //            this->container->sphereSlot2.sphereSlotCase.buttonMode = true;
             //        }
             //        if (this->myTower->upgradeTypeAdd == 1)
@@ -1274,13 +1275,13 @@ namespace engine
             //        this->container->btnUpgradeMenu.gotoAndStop(5);
             //        this->container->sphereSlot1.gotoAndStop(4);
             //        this->container->sphereSlot2.gotoAndStop(4);
-            //        this->container->sphereSlot1.sphereAnima.gotoAndStop(1);
-            //        this->container->sphereSlot1.sphereAnima.fire.stop();
-            //        this->container->sphereSlot2.sphereAnima.gotoAndStop(4);
-            //        this->container->sphereSlot2.sphereAnima.levin.stop();
-            //        this->container->sphereSlot1.sphereAnima->setVisible(false);
+            //        this->container->sphereSlot1->sphereAnima->gotoAndStop(1);
+            //        this->container->sphereSlot1->sphereAnima->fire->stop();
+            //        this->container->sphereSlot2->sphereAnima->gotoAndStop(4);
+            //        this->container->sphereSlot2->sphereAnima->levin->stop();
+            //        this->container->sphereSlot1->sphereAnima->setVisible(false);
             //        this->container->sphereSlot1.sphereSlotCase.buttonMode = false;
-            //        this->container->sphereSlot2.sphereAnima->setVisible(false);
+            //        this->container->sphereSlot2->sphereAnima->setVisible(false);
             //        this->container->sphereSlot2.sphereSlotCase.buttonMode = false;
             //    }
             //}
@@ -1350,13 +1351,13 @@ namespace engine
         {
             //if (this->container->fastBuyUltraCont)
             //{
-            //    this->container->fastBuyUltraCont.stop();
-            //    this->container->fastBuyUltraCont.btnFastBuyUltra.stop();
-            //    this->container->fastBuyUltraCont.btnFastBuyUltra.fastBuyUltraCase.stop();
-            //    this->container->fastBuyUltraCont.indicator1.stop();
-            //    this->container->fastBuyUltraCont.indicator2.stop();
-            //    this->container->fastBuyUltraCont.indicator3.stop();
-            //    this->container->fastBuyUltraCont.indicator4.stop();
+            //    this->container->fastBuyUltraCont->stop();
+            //    this->container->fastBuyUltraCont.btnFastBuyUltra->stop();
+            //    this->container->fastBuyUltraCont.btnFastBuyUltra.fastBuyUltraCase->stop();
+            //    this->container->fastBuyUltraCont.indicator1->stop();
+            //    this->container->fastBuyUltraCont.indicator2->stop();
+            //    this->container->fastBuyUltraCont.indicator3->stop();
+            //    this->container->fastBuyUltraCont.indicator4->stop();
             //    this->container->fastBuyUltraCont.indicator2->setVisible(false);
             //    this->container->fastBuyUltraCont.indicator3->setVisible(false);
             //    if (!this->fastBuyUltraFlag && !this->openFastBuyUltraFlag && !this->closeFastBuyUltraFlag)

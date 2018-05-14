@@ -94,10 +94,10 @@ namespace engine
             {
                 this->hint = new TowerMenuHint_mc();
                 this->hint->stop();
-                this->hint->cont.stop();
+                this->hint->cont->stop();
                 this->hint->cont->cont1->stop();
-                this->hint->cont->cont1->sphere1.stop();
-                this->hint->cont->cont1->sphere2.stop();
+                this->hint->cont->cont1->sphere1->stop();
+                this->hint->cont->cont1->sphere2->stop();
                 this->hint->mouseChildren = false;
                 this->hint->mouseEnabled = false;
                 this->hint->setVisible(false);
@@ -409,7 +409,7 @@ namespace engine
                     {
                         if (this->container->sphereSlot1->currentFrame == 1)
                         {
-                            if (this->container->sphereSlot1->sphereAnima->fire.currentFrame < this->container->sphereSlot1->sphereAnima->fire->totalFrames)
+                            if (this->container->sphereSlot1->sphereAnima->fire->currentFrame < this->container->sphereSlot1->sphereAnima->fire->totalFrames)
                             {
                                 this->container->sphereSlot1->sphereAnima->fire->gotoAndStop((this->container->sphereSlot1->sphereAnima->fire->currentFrame + 1));
                             }
@@ -1093,7 +1093,7 @@ namespace engine
                                 {
                                     this->world->worldInterface->archiveSphereBacklightManage("stone");
                                 }
-                                if (this->hint->cont.currentFrame != 3 || !this->hint->isVisible())
+                                if (this->hint->cont->currentFrame != 3 || !this->hint->isVisible())
                                 {
                                     this->hintManage("ultraButtons", 3);
                                 }
@@ -1112,7 +1112,7 @@ namespace engine
                                 {
                                     this->world->worldInterface->archiveSphereBacklightManage("levin");
                                 }
-                                if (this->hint->cont.currentFrame != 4 || !this->hint->isVisible())
+                                if (this->hint->cont->currentFrame != 4 || !this->hint->isVisible())
                                 {
                                     this->hintManage("ultraButtons", 4);
                                 }
@@ -1240,22 +1240,22 @@ namespace engine
                 if (event->target->parent->sphereAnima->isVisible())
                 {
                     this->tempObject = event->target->parent;
-                    if (this->tempObject->sphereAnima.currentFrame == 1)
+                    if (this->tempObject->sphereAnima->currentFrame == 1)
                     {
                         this->myTower->towerGetSphereManage("get", "fire");
                         this->spheresMonitor();
                     }
-                    else if (this->tempObject->sphereAnima.currentFrame == 2)
+                    else if (this->tempObject->sphereAnima->currentFrame == 2)
                     {
                         this->myTower->towerGetSphereManage("get", "ice");
                         this->spheresMonitor();
                     }
-                    else if (this->tempObject->sphereAnima.currentFrame == 3)
+                    else if (this->tempObject->sphereAnima->currentFrame == 3)
                     {
                         this->myTower->towerGetSphereManage("get", "stone");
                         this->spheresMonitor();
                     }
-                    else if (this->tempObject->sphereAnima.currentFrame == 4)
+                    else if (this->tempObject->sphereAnima->currentFrame == 4)
                     {
                         this->myTower->towerGetSphereManage("get", "levin");
                         this->spheresMonitor();
@@ -1342,7 +1342,7 @@ namespace engine
             {
                 if (!this->openFastBuyUltraFlag && !this->closeFastBuyUltraFlag)
                 {
-                    if (this->container->fastBuyUltraCont->btnFastBuyUltra->currentFrame == 2 && this->container->fastBuyUltraCont->btnFastBuyUltra->fastBuyUltraCase.buttonMode)
+                    if (this->container->fastBuyUltraCont->btnFastBuyUltra->currentFrame == 2 && this->container->fastBuyUltraCont->btnFastBuyUltra->fastBuyUltraCase->buttonMode)
                     {
                         this->container->fastBuyUltraCont->btnFastBuyUltra->gotoAndStop(1);
                         std::setText(this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT, this->fastBuyPrice);
@@ -1497,23 +1497,23 @@ namespace engine
                             this->myTower->shootingTurnStack = [];
                             this->myTower->shootingTurnStack = this->myTower->shootingTurnStack.concat(this->tempObject3);
                             this->myTower->prepareSpheresGraphic();
-                            if (this->myTower->container->sphere2_1.currentFrame + this->tempObject2 > this->myTower->container->sphere2_1.totalFrames)
+                            if (this->myTower->container->sphere2_1->currentFrame + this->tempObject2 > this->myTower->container->sphere2_1->totalFrames)
                             {
-                                this->tempObject = this->tempObject2 + this->myTower->container->sphere2_1.currentFrame - this->myTower->container->sphere2_1.totalFrames;
-                                this->myTower->container->sphere2_1.gotoAndStop(this->tempObject);
+                                this->tempObject = this->tempObject2 + this->myTower->container->sphere2_1->currentFrame - this->myTower->container->sphere2_1->totalFrames;
+                                this->myTower->container->sphere2_1->gotoAndStop(this->tempObject);
                             }
                             else
                             {
-                                this->myTower->container->sphere2_1.gotoAndStop(this->myTower->container->sphere2_1.currentFrame + this->tempObject2);
+                                this->myTower->container->sphere2_1->gotoAndStop(this->myTower->container->sphere2_1->currentFrame + this->tempObject2);
                             }
-                            if (this->myTower->container->sphere2_2.currentFrame + this->tempObject2 > this->myTower->container->sphere2_2.totalFrames)
+                            if (this->myTower->container->sphere2_2->currentFrame + this->tempObject2 > this->myTower->container->sphere2_2->totalFrames)
                             {
-                                this->tempObject = this->tempObject2 + this->myTower->container->sphere2_2.currentFrame - this->myTower->container->sphere2_2.totalFrames;
-                                this->myTower->container->sphere2_2.gotoAndStop(this->tempObject);
+                                this->tempObject = this->tempObject2 + this->myTower->container->sphere2_2->currentFrame - this->myTower->container->sphere2_2->totalFrames;
+                                this->myTower->container->sphere2_2->gotoAndStop(this->tempObject);
                             }
                             else
                             {
-                                this->myTower->container->sphere2_2.gotoAndStop(this->myTower->container->sphere2_2.currentFrame + this->tempObject2);
+                                this->myTower->container->sphere2_2->gotoAndStop(this->myTower->container->sphere2_2->currentFrame + this->tempObject2);
                             }
                             this->world->setChildIndex(this->myTower, (this->world->getChildIndex(this) - 1));
                             this->container->btnUpgradeMenu->gotoAndStop(1);
@@ -1525,7 +1525,7 @@ namespace engine
                             this->tempObject1 = [];
                             this->tempObject3 = [];
                             this->tempObject1 = this->tempObject1.concat(this->myTower->spheresStack);
-                            this->tempObject2 = this->myTower->container->sphere2_1.currentFrame;
+                            this->tempObject2 = this->myTower->container->sphere2_1->currentFrame;
                             this->tempObject3 = this->tempObject3.concat(this->myTower->shootingTurnStack);
                             this->myTower->kill();
                             this->myTower = this->world->addTower("tower3", this->tempObject);
@@ -1533,32 +1533,32 @@ namespace engine
                             this->myTower->shootingTurnStack = [];
                             this->myTower->shootingTurnStack = this->myTower->shootingTurnStack.concat(this->tempObject3);
                             this->myTower->prepareSpheresGraphic();
-                            if (this->myTower->container->sphere3_1.currentFrame + this->tempObject2 > this->myTower->container->sphere3_1.totalFrames)
+                            if (this->myTower->container->sphere3_1->currentFrame + this->tempObject2 > this->myTower->container->sphere3_1->totalFrames)
                             {
-                                this->tempObject = this->tempObject2 + this->myTower->container->sphere3_1.currentFrame - this->myTower->container->sphere3_1.totalFrames;
-                                this->myTower->container->sphere3_1.gotoAndStop(this->tempObject);
+                                this->tempObject = this->tempObject2 + this->myTower->container->sphere3_1->currentFrame - this->myTower->container->sphere3_1->totalFrames;
+                                this->myTower->container->sphere3_1->gotoAndStop(this->tempObject);
                             }
                             else
                             {
-                                this->myTower->container->sphere3_1.gotoAndStop(this->myTower->container->sphere3_1.currentFrame + this->tempObject2);
+                                this->myTower->container->sphere3_1->gotoAndStop(this->myTower->container->sphere3_1->currentFrame + this->tempObject2);
                             }
-                            if (this->myTower->container->sphere3_2.currentFrame + this->tempObject2 > this->myTower->container->sphere3_2.totalFrames)
+                            if (this->myTower->container->sphere3_2->currentFrame + this->tempObject2 > this->myTower->container->sphere3_2->totalFrames)
                             {
-                                this->tempObject = this->tempObject2 + this->myTower->container->sphere3_2.currentFrame - this->myTower->container->sphere3_2.totalFrames;
-                                this->myTower->container->sphere3_2.gotoAndStop(this->tempObject);
-                            }
-                            else
-                            {
-                                this->myTower->container->sphere3_2.gotoAndStop(this->myTower->container->sphere3_2.currentFrame + this->tempObject2);
-                            }
-                            if (this->myTower->container->sphere3_3.currentFrame + this->tempObject2 > this->myTower->container->sphere3_3.totalFrames)
-                            {
-                                this->tempObject = this->tempObject2 + this->myTower->container->sphere3_3.currentFrame - this->myTower->container->sphere3_3.totalFrames;
-                                this->myTower->container->sphere3_3.gotoAndStop(this->tempObject);
+                                this->tempObject = this->tempObject2 + this->myTower->container->sphere3_2->currentFrame - this->myTower->container->sphere3_2->totalFrames;
+                                this->myTower->container->sphere3_2->gotoAndStop(this->tempObject);
                             }
                             else
                             {
-                                this->myTower->container->sphere3_3.gotoAndStop(this->myTower->container->sphere3_3.currentFrame + this->tempObject2);
+                                this->myTower->container->sphere3_2->gotoAndStop(this->myTower->container->sphere3_2->currentFrame + this->tempObject2);
+                            }
+                            if (this->myTower->container->sphere3_3->currentFrame + this->tempObject2 > this->myTower->container->sphere3_3->totalFrames)
+                            {
+                                this->tempObject = this->tempObject2 + this->myTower->container->sphere3_3->currentFrame - this->myTower->container->sphere3_3->totalFrames;
+                                this->myTower->container->sphere3_3->gotoAndStop(this->tempObject);
+                            }
+                            else
+                            {
+                                this->myTower->container->sphere3_3->gotoAndStop(this->myTower->container->sphere3_3->currentFrame + this->tempObject2);
                             }
                             this->world->setChildIndex(this->myTower, (this->world->getChildIndex(this) - 1));
                             this->container->btnUpgradeMenu->gotoAndStop(1);
@@ -1570,7 +1570,7 @@ namespace engine
                             this->tempObject1 = [];
                             this->tempObject3 = [];
                             this->tempObject1 = this->tempObject1.concat(this->myTower->spheresStack);
-                            this->tempObject2 = this->myTower->container->sphere3_1.currentFrame;
+                            this->tempObject2 = this->myTower->container->sphere3_1->currentFrame;
                             this->tempObject3 = this->tempObject3.concat(this->myTower->shootingTurnStack);
                             this->myTower->kill();
                             this->myTower = this->world->addTower("tower4", this->tempObject);
@@ -1578,41 +1578,41 @@ namespace engine
                             this->myTower->shootingTurnStack = [];
                             this->myTower->shootingTurnStack = this->myTower->shootingTurnStack.concat(this->tempObject3);
                             this->myTower->prepareSpheresGraphic();
-                            if (this->myTower->container->sphere4_1.currentFrame + this->tempObject2 > this->myTower->container->sphere4_1.totalFrames)
+                            if (this->myTower->container->sphere4_1->currentFrame + this->tempObject2 > this->myTower->container->sphere4_1->totalFrames)
                             {
-                                this->tempObject = this->tempObject2 + this->myTower->container->sphere4_1.currentFrame - this->myTower->container->sphere4_1.totalFrames;
-                                this->myTower->container->sphere4_1.gotoAndStop(this->tempObject);
+                                this->tempObject = this->tempObject2 + this->myTower->container->sphere4_1->currentFrame - this->myTower->container->sphere4_1->totalFrames;
+                                this->myTower->container->sphere4_1->gotoAndStop(this->tempObject);
                             }
                             else
                             {
-                                this->myTower->container->sphere4_1.gotoAndStop(this->myTower->container->sphere4_1.currentFrame + this->tempObject2);
+                                this->myTower->container->sphere4_1->gotoAndStop(this->myTower->container->sphere4_1->currentFrame + this->tempObject2);
                             }
-                            if (this->myTower->container->sphere4_2.currentFrame + this->tempObject2 > this->myTower->container->sphere4_2.totalFrames)
+                            if (this->myTower->container->sphere4_2->currentFrame + this->tempObject2 > this->myTower->container->sphere4_2->totalFrames)
                             {
-                                this->tempObject = this->tempObject2 + this->myTower->container->sphere4_2.currentFrame - this->myTower->container->sphere4_2.totalFrames;
-                                this->myTower->container->sphere4_2.gotoAndStop(this->tempObject);
-                            }
-                            else
-                            {
-                                this->myTower->container->sphere4_2.gotoAndStop(this->myTower->container->sphere4_2.currentFrame + this->tempObject2);
-                            }
-                            if (this->myTower->container->sphere4_3.currentFrame + this->tempObject2 > this->myTower->container->sphere4_3.totalFrames)
-                            {
-                                this->tempObject = this->tempObject2 + this->myTower->container->sphere4_3.currentFrame - this->myTower->container->sphere4_3.totalFrames;
-                                this->myTower->container->sphere4_3.gotoAndStop(this->tempObject);
+                                this->tempObject = this->tempObject2 + this->myTower->container->sphere4_2->currentFrame - this->myTower->container->sphere4_2->totalFrames;
+                                this->myTower->container->sphere4_2->gotoAndStop(this->tempObject);
                             }
                             else
                             {
-                                this->myTower->container->sphere4_3.gotoAndStop(this->myTower->container->sphere4_3.currentFrame + this->tempObject2);
+                                this->myTower->container->sphere4_2->gotoAndStop(this->myTower->container->sphere4_2->currentFrame + this->tempObject2);
                             }
-                            if (this->myTower->container->sphere4_4.currentFrame + this->tempObject2 > this->myTower->container->sphere4_4.totalFrames)
+                            if (this->myTower->container->sphere4_3->currentFrame + this->tempObject2 > this->myTower->container->sphere4_3->totalFrames)
                             {
-                                this->tempObject = this->tempObject2 + this->myTower->container->sphere4_4.currentFrame - this->myTower->container->sphere4_4.totalFrames;
-                                this->myTower->container->sphere4_4.gotoAndStop(this->tempObject);
+                                this->tempObject = this->tempObject2 + this->myTower->container->sphere4_3->currentFrame - this->myTower->container->sphere4_3->totalFrames;
+                                this->myTower->container->sphere4_3->gotoAndStop(this->tempObject);
                             }
                             else
                             {
-                                this->myTower->container->sphere4_4.gotoAndStop(this->myTower->container->sphere4_4.currentFrame + this->tempObject2);
+                                this->myTower->container->sphere4_3->gotoAndStop(this->myTower->container->sphere4_3->currentFrame + this->tempObject2);
+                            }
+                            if (this->myTower->container->sphere4_4->currentFrame + this->tempObject2 > this->myTower->container->sphere4_4->totalFrames)
+                            {
+                                this->tempObject = this->tempObject2 + this->myTower->container->sphere4_4->currentFrame - this->myTower->container->sphere4_4->totalFrames;
+                                this->myTower->container->sphere4_4->gotoAndStop(this->tempObject);
+                            }
+                            else
+                            {
+                                this->myTower->container->sphere4_4->gotoAndStop(this->myTower->container->sphere4_4->currentFrame + this->tempObject2);
                             }
                             this->world->setChildIndex(this->myTower, (this->world->getChildIndex(this) - 1));
                             this->container->btnUpgradeMenu->gotoAndStop(1);
@@ -1633,7 +1633,7 @@ namespace engine
                         {
                             this->towerRadius1->setVisible(false);
                             this->hint->gotoAndStop(1);
-                            this->hint->cont.stop();
+                            this->hint->cont->stop();
                             this->hint->cont->cont1->stop();
                             this->hint->cont->cont1->sphere1->stop();
                             this->hint->cont->cont1->sphere2->stop();
@@ -1754,133 +1754,132 @@ namespace engine
 
         void TowerMenu::upgradeManage()
         {
-            //if (this->myTower->towerType == 4)
-            //{
-            //    if (this->container->currentFrame == 1)
-            //    {
-            //        this->openUltraSection = true;
-            //        var _loc_1 : *= false;
-            //        this->mouseChildren = false;
-            //        this->mouseEnabled = _loc_1;
-            //    }
-            //    else
-            //    {
-            //        this->fastBuyUltraManage();
-            //        if (this->container->btnTowerUpgr1)
-            //        {
-            //            if (Main::mainClass->readXMLClass.ultraTower1Block == 0)
-            //            {
-            //                if (this->world->money >= Main::mainClass->readXMLClass.costUltraFireStone && this->world->worldInterface->container->fireSphere.visible && this->world->worldInterface->container->stoneSphere->isVisible())
-            //                {
-            //                    if (this->container->btnTowerUpgr1->currentFrame > 3)
-            //                    {
-            //                        this->container->btnTowerUpgr1->gotoAndStop(1);
-            //                    }
-            //                    else
-            //                    {
-            //                        this->container->btnTowerUpgr1->stop();
-            //                    }
-            //                    this->container->btnTowerUpgr1->btnTowerUpgrCase.buttonMode = true;
-            //                }
-            //                else
-            //                {
-            //                    this->container->btnTowerUpgr1->gotoAndStop(4);
-            //                    this->container->btnTowerUpgr1->btnTowerUpgrCase.buttonMode = false;
-            //                }
-            //                this->container->btnTowerUpgr1->costTXT.text = Main::mainClass->readXMLClass.costUltraFireStone;
-            //            }
-            //            else
-            //            {
-            //                this->container->btnTowerUpgr1->gotoAndStop(5);
-            //            }
-            //        }
-            //        if (this->container->btnTowerUpgr2)
-            //        {
-            //            if (Main::mainClass->readXMLClass.ultraTower2Block == 0)
-            //            {
-            //                if (this->world->money >= Main::mainClass->readXMLClass.costUltraIceLevin && this->world->worldInterface->container->iceSphere.visible && this->world->worldInterface->container->levinSphere->isVisible())
-            //                {
-            //                    if (this->container->btnTowerUpgr2->currentFrame > 3)
-            //                    {
-            //                        this->container->btnTowerUpgr2->gotoAndStop(1);
-            //                    }
-            //                    else
-            //                    {
-            //                        this->container->btnTowerUpgr2->stop();
-            //                    }
-            //                    this->container->btnTowerUpgr2->btnTowerUpgrCase.buttonMode = true;
-            //                }
-            //                else
-            //                {
-            //                    this->container->btnTowerUpgr2->gotoAndStop(4);
-            //                    this->container->btnTowerUpgr2->btnTowerUpgrCase.buttonMode = false;
-            //                }
-            //                this->container->btnTowerUpgr2->costTXT.text = Main::mainClass->readXMLClass.costUltraIceLevin;
-            //            }
-            //            else
-            //            {
-            //                this->container->btnTowerUpgr2->gotoAndStop(5);
-            //            }
-            //        }
-            //        if (this->container->btnTowerUpgr3)
-            //        {
-            //            if (Main::mainClass->readXMLClass.ultraTower3Block == 0)
-            //            {
-            //                if (this->world->money >= Main::mainClass->readXMLClass.costUltraIceStone && this->world->worldInterface->container->iceSphere.visible && this->world->worldInterface->container->stoneSphere->isVisible())
-            //                {
-            //                    if (this->container->btnTowerUpgr3->currentFrame > 3)
-            //                    {
-            //                        this->container->btnTowerUpgr3->gotoAndStop(1);
-            //                    }
-            //                    else
-            //                    {
-            //                        this->container->btnTowerUpgr3->stop();
-            //                    }
-            //                    this->container->btnTowerUpgr3->btnTowerUpgrCase.buttonMode = true;
-            //                }
-            //                else
-            //                {
-            //                    this->container->btnTowerUpgr3->gotoAndStop(4);
-            //                    this->container->btnTowerUpgr3->btnTowerUpgrCase.buttonMode = false;
-            //                }
-            //                this->container->btnTowerUpgr3->costTXT.text = Main::mainClass->readXMLClass.costUltraIceStone;
-            //            }
-            //            else
-            //            {
-            //                this->container->btnTowerUpgr3->gotoAndStop(5);
-            //            }
-            //        }
-            //        if (this->container->btnTowerUpgr4)
-            //        {
-            //            if (Main::mainClass->readXMLClass.ultraTower4Block == 0)
-            //            {
-            //                if (this->world->money >= Main::mainClass->readXMLClass.costUltraFireLevin && this->world->worldInterface->container->fireSphere.visible && this->world->worldInterface->container->levinSphere->isVisible())
-            //                {
-            //                    if (this->container->btnTowerUpgr4->currentFrame > 3)
-            //                    {
-            //                        this->container->btnTowerUpgr4->gotoAndStop(1);
-            //                    }
-            //                    else
-            //                    {
-            //                        this->container->btnTowerUpgr4->stop();
-            //                    }
-            //                    this->container->btnTowerUpgr4->btnTowerUpgrCase.buttonMode = true;
-            //                }
-            //                else
-            //                {
-            //                    this->container->btnTowerUpgr4->gotoAndStop(4);
-            //                    this->container->btnTowerUpgr4->btnTowerUpgrCase.buttonMode = false;
-            //                }
-            //                this->container->btnTowerUpgr4->costTXT.text = Main::mainClass->readXMLClass.costUltraFireLevin;
-            //            }
-            //            else
-            //            {
-            //                this->container->btnTowerUpgr4->gotoAndStop(5);
-            //            }
-            //        }
-            //        this->fastBuyUltraManage();
-            //    }
-            //}
+            if (this->myTower->towerType == 4)
+            {
+                if (this->container->currentFrame == 1)
+                {
+                    this->openUltraSection = true; 
+                    this->mouseChildren = false;
+                    this->mouseEnabled = false;
+                }
+                else
+                {
+                    this->fastBuyUltraManage();
+                    if (this->container->btnTowerUpgr1)
+                    {
+                        if (Main::mainClass->readXMLClass.ultraTower1Block == 0)
+                        {
+                            if (this->world->money >= Main::mainClass->readXMLClass.costUltraFireStone && this->world->worldInterface->container->fireSphere.visible && this->world->worldInterface->container->stoneSphere->isVisible())
+                            {
+                                if (this->container->btnTowerUpgr1->currentFrame > 3)
+                                {
+                                    this->container->btnTowerUpgr1->gotoAndStop(1);
+                                }
+                                else
+                                {
+                                    this->container->btnTowerUpgr1->stop();
+                                }
+                                this->container->btnTowerUpgr1->btnTowerUpgrCase->buttonMode = true;
+                            }
+                            else
+                            {
+                                this->container->btnTowerUpgr1->gotoAndStop(4);
+                                this->container->btnTowerUpgr1->btnTowerUpgrCase->buttonMode = false;
+                            }
+                            this->container->btnTowerUpgr1->costTXT.text = Main::mainClass->readXMLClass.costUltraFireStone;
+                        }
+                        else
+                        {
+                            this->container->btnTowerUpgr1->gotoAndStop(5);
+                        }
+                    }
+                    if (this->container->btnTowerUpgr2)
+                    {
+                        if (Main::mainClass->readXMLClass.ultraTower2Block == 0)
+                        {
+                            if (this->world->money >= Main::mainClass->readXMLClass.costUltraIceLevin && this->world->worldInterface->container->iceSphere.visible && this->world->worldInterface->container->levinSphere->isVisible())
+                            {
+                                if (this->container->btnTowerUpgr2->currentFrame > 3)
+                                {
+                                    this->container->btnTowerUpgr2->gotoAndStop(1);
+                                }
+                                else
+                                {
+                                    this->container->btnTowerUpgr2->stop();
+                                }
+                                this->container->btnTowerUpgr2->btnTowerUpgrCase->buttonMode = true;
+                            }
+                            else
+                            {
+                                this->container->btnTowerUpgr2->gotoAndStop(4);
+                                this->container->btnTowerUpgr2->btnTowerUpgrCase->buttonMode = false;
+                            }
+                            this->container->btnTowerUpgr2->costTXT.text = Main::mainClass->readXMLClass.costUltraIceLevin;
+                        }
+                        else
+                        {
+                            this->container->btnTowerUpgr2->gotoAndStop(5);
+                        }
+                    }
+                    if (this->container->btnTowerUpgr3)
+                    {
+                        if (Main::mainClass->readXMLClass.ultraTower3Block == 0)
+                        {
+                            if (this->world->money >= Main::mainClass->readXMLClass.costUltraIceStone && this->world->worldInterface->container->iceSphere.visible && this->world->worldInterface->container->stoneSphere->isVisible())
+                            {
+                                if (this->container->btnTowerUpgr3->currentFrame > 3)
+                                {
+                                    this->container->btnTowerUpgr3->gotoAndStop(1);
+                                }
+                                else
+                                {
+                                    this->container->btnTowerUpgr3->stop();
+                                }
+                                this->container->btnTowerUpgr3->btnTowerUpgrCase->buttonMode = true;
+                            }
+                            else
+                            {
+                                this->container->btnTowerUpgr3->gotoAndStop(4);
+                                this->container->btnTowerUpgr3->btnTowerUpgrCase->buttonMode = false;
+                            }
+                            this->container->btnTowerUpgr3->costTXT.text = Main::mainClass->readXMLClass.costUltraIceStone;
+                        }
+                        else
+                        {
+                            this->container->btnTowerUpgr3->gotoAndStop(5);
+                        }
+                    }
+                    if (this->container->btnTowerUpgr4)
+                    {
+                        if (Main::mainClass->readXMLClass.ultraTower4Block == 0)
+                        {
+                            if (this->world->money >= Main::mainClass->readXMLClass.costUltraFireLevin && this->world->worldInterface->container->fireSphere.visible && this->world->worldInterface->container->levinSphere->isVisible())
+                            {
+                                if (this->container->btnTowerUpgr4->currentFrame > 3)
+                                {
+                                    this->container->btnTowerUpgr4->gotoAndStop(1);
+                                }
+                                else
+                                {
+                                    this->container->btnTowerUpgr4->stop();
+                                }
+                                this->container->btnTowerUpgr4->btnTowerUpgrCase->buttonMode = true;
+                            }
+                            else
+                            {
+                                this->container->btnTowerUpgr4->gotoAndStop(4);
+                                this->container->btnTowerUpgr4->btnTowerUpgrCase->buttonMode = false;
+                            }
+                            this->container->btnTowerUpgr4->costTXT.text = Main::mainClass->readXMLClass.costUltraFireLevin;
+                        }
+                        else
+                        {
+                            this->container->btnTowerUpgr4->gotoAndStop(5);
+                        }
+                    }
+                    this->fastBuyUltraManage();
+                }
+            }
             return;
         }// end function
 
@@ -1888,121 +1887,121 @@ namespace engine
         {
             if (this->myTower->towerType == 1)
             {
-                //this->container->sphereSlot1->gotoAndStop(1);
-                //if (Main::mainClass->readXMLClass.towerSlotBlock < 3)
-                //{
-                //    if (this->world->money >= Main::mainClass->readXMLClass.costSlot2XML)
-                //    {
-                //        this->container->sphereSlot2->gotoAndStop(3);
-                //        if (this->container->btnUpgradeMenu->currentFrame > 2)
-                //        {
-                //            this->container->btnUpgradeMenu->gotoAndStop(1);
-                //        }
-                //        this->container->btnUpgradeMenu->btnUpgradeMenuCase.buttonMode = true;
-                //    }
-                //    else
-                //    {
-                //        this->container->sphereSlot2->gotoAndStop(4);
-                //        this->container->btnUpgradeMenu->gotoAndStop(4);
-                //    }
-                //    this->container->btnUpgradeMenu->costTXT.text = Main::mainClass->readXMLClass.costSlot2XML;
-                //}
-                //else
-                //{
-                //    this->container->sphereSlot2->gotoAndStop(4);
-                //    if (this->container->btnUpgradeMenu->currentFrame != 5)
-                //    {
-                //        this->container->btnUpgradeMenu->gotoAndStop(5);
-                //        if (!this->openFlag && !this->closeFlag)
-                //        {
-                //            this->hint->setVisible(true);
-                //            this->hintPosition(9);
-                //        }
-                //    }
-                //}
-                //this->container->sphereSlot3->gotoAndStop(4);
-                //this->container->sphereSlot4->gotoAndStop(4);
+                this->container->sphereSlot1->gotoAndStop(1);
+                if (Main::mainClass->readXMLClass.towerSlotBlock < 3)
+                {
+                    if (this->world->money >= Main::mainClass->readXMLClass.costSlot2XML)
+                    {
+                        this->container->sphereSlot2->gotoAndStop(3);
+                        if (this->container->btnUpgradeMenu->currentFrame > 2)
+                        {
+                            this->container->btnUpgradeMenu->gotoAndStop(1);
+                        }
+                        this->container->btnUpgradeMenu->btnUpgradeMenuCase->buttonMode = true;
+                    }
+                    else
+                    {
+                        this->container->sphereSlot2->gotoAndStop(4);
+                        this->container->btnUpgradeMenu->gotoAndStop(4);
+                    }
+                    this->container->btnUpgradeMenu->costTXT.text = Main::mainClass->readXMLClass.costSlot2XML;
+                }
+                else
+                {
+                    this->container->sphereSlot2->gotoAndStop(4);
+                    if (this->container->btnUpgradeMenu->currentFrame != 5)
+                    {
+                        this->container->btnUpgradeMenu->gotoAndStop(5);
+                        if (!this->openFlag && !this->closeFlag)
+                        {
+                            this->hint->setVisible(true);
+                            this->hintPosition(9);
+                        }
+                    }
+                }
+                this->container->sphereSlot3->gotoAndStop(4);
+                this->container->sphereSlot4->gotoAndStop(4);
             }
             else if (this->myTower->towerType == 2)
             {
-                //this->container->sphereSlot1->gotoAndStop(1);
-                //this->container->sphereSlot2->gotoAndStop(1);
-                //if (Main::mainClass->readXMLClass.towerSlotBlock < 2)
-                //{
-                //    if (this->world->money >= Main::mainClass->readXMLClass.costSlot3XML)
-                //    {
-                //        this->container->sphereSlot3->gotoAndStop(3);
-                //        if (this->container->btnUpgradeMenu->currentFrame > 2)
-                //        {
-                //            this->container->btnUpgradeMenu->gotoAndStop(1);
-                //        }
-                //        this->container->btnUpgradeMenu->btnUpgradeMenuCase.buttonMode = true;
-                //    }
-                //    else
-                //    {
-                //        this->container->sphereSlot3->gotoAndStop(4);
-                //        this->container->btnUpgradeMenu->gotoAndStop(4);
-                //    }
-                //    this->container->btnUpgradeMenu->costTXT.text = Main::mainClass->readXMLClass.costSlot3XML;
-                //}
-                //else
-                //{
-                //    this->container->sphereSlot3->gotoAndStop(4);
-                //    if (this->container->btnUpgradeMenu->currentFrame != 5)
-                //    {
-                //        this->container->btnUpgradeMenu->gotoAndStop(5);
-                //        if (!this->openFlag && !this->closeFlag)
-                //        {
-                //            this->hint->setVisible(true);
-                //            this->hintPosition(9);
-                //        }
-                //    }
-                //}
-                //this->container->sphereSlot4->gotoAndStop(4);
+                this->container->sphereSlot1->gotoAndStop(1);
+                this->container->sphereSlot2->gotoAndStop(1);
+                if (Main::mainClass->readXMLClass.towerSlotBlock < 2)
+                {
+                    if (this->world->money >= Main::mainClass->readXMLClass.costSlot3XML)
+                    {
+                        this->container->sphereSlot3->gotoAndStop(3);
+                        if (this->container->btnUpgradeMenu->currentFrame > 2)
+                        {
+                            this->container->btnUpgradeMenu->gotoAndStop(1);
+                        }
+                        this->container->btnUpgradeMenu->btnUpgradeMenuCase->buttonMode = true;
+                    }
+                    else
+                    {
+                        this->container->sphereSlot3->gotoAndStop(4);
+                        this->container->btnUpgradeMenu->gotoAndStop(4);
+                    }
+                    this->container->btnUpgradeMenu->costTXT.text = Main::mainClass->readXMLClass.costSlot3XML;
+                }
+                else
+                {
+                    this->container->sphereSlot3->gotoAndStop(4);
+                    if (this->container->btnUpgradeMenu->currentFrame != 5)
+                    {
+                        this->container->btnUpgradeMenu->gotoAndStop(5);
+                        if (!this->openFlag && !this->closeFlag)
+                        {
+                            this->hint->setVisible(true);
+                            this->hintPosition(9);
+                        }
+                    }
+                }
+                this->container->sphereSlot4->gotoAndStop(4);
             }
             else if (this->myTower->towerType == 3)
             {
-                //this->container->sphereSlot1->gotoAndStop(1);
-                //this->container->sphereSlot2->gotoAndStop(1);
-                //this->container->sphereSlot3->gotoAndStop(1);
-                //if (Main::mainClass->readXMLClass.towerSlotBlock < 1)
-                //{
-                //    if (this->world->money >= Main::mainClass->readXMLClass.costSlot4XML)
-                //    {
-                //        this->container->sphereSlot4->gotoAndStop(3);
-                //        if (this->container->btnUpgradeMenu->currentFrame > 2)
-                //        {
-                //            this->container->btnUpgradeMenu->gotoAndStop(1);
-                //        }
-                //        this->container->btnUpgradeMenu->btnUpgradeMenuCase.buttonMode = true;
-                //    }
-                //    else
-                //    {
-                //        this->container->sphereSlot4->gotoAndStop(4);
-                //        this->container->btnUpgradeMenu->gotoAndStop(4);
-                //    }
-                //    this->container->btnUpgradeMenu->costTXT.text = Main::mainClass->readXMLClass.costSlot4XML;
-                //}
-                //else
-                //{
-                //    this->container->sphereSlot4->gotoAndStop(4);
-                //    if (this->container->btnUpgradeMenu->currentFrame != 5)
-                //    {
-                //        this->container->btnUpgradeMenu->gotoAndStop(5);
-                //        if (!this->openFlag && !this->closeFlag)
-                //        {
-                //            this->hint->setVisible(true);
-                //            this->hintPosition(9);
-                //        }
-                //    }
-                //}
+                this->container->sphereSlot1->gotoAndStop(1);
+                this->container->sphereSlot2->gotoAndStop(1);
+                this->container->sphereSlot3->gotoAndStop(1);
+                if (Main::mainClass->readXMLClass.towerSlotBlock < 1)
+                {
+                    if (this->world->money >= Main::mainClass->readXMLClass.costSlot4XML)
+                    {
+                        this->container->sphereSlot4->gotoAndStop(3);
+                        if (this->container->btnUpgradeMenu->currentFrame > 2)
+                        {
+                            this->container->btnUpgradeMenu->gotoAndStop(1);
+                        }
+                        this->container->btnUpgradeMenu->btnUpgradeMenuCase->buttonMode = true;
+                    }
+                    else
+                    {
+                        this->container->sphereSlot4->gotoAndStop(4);
+                        this->container->btnUpgradeMenu->gotoAndStop(4);
+                    }
+                    this->container->btnUpgradeMenu->costTXT.text = Main::mainClass->readXMLClass.costSlot4XML;
+                }
+                else
+                {
+                    this->container->sphereSlot4->gotoAndStop(4);
+                    if (this->container->btnUpgradeMenu->currentFrame != 5)
+                    {
+                        this->container->btnUpgradeMenu->gotoAndStop(5);
+                        if (!this->openFlag && !this->closeFlag)
+                        {
+                            this->hint->setVisible(true);
+                            this->hintPosition(9);
+                        }
+                    }
+                }
             }
             else if (this->myTower->towerType == 4)
             {
-                //this->container->sphereSlot1->gotoAndStop(1);
-                //this->container->sphereSlot2->gotoAndStop(1);
-                //this->container->sphereSlot3->gotoAndStop(1);
-                //this->container->sphereSlot4->gotoAndStop(1);
+                this->container->sphereSlot1->gotoAndStop(1);
+                this->container->sphereSlot2->gotoAndStop(1);
+                this->container->sphereSlot3->gotoAndStop(1);
+                this->container->sphereSlot4->gotoAndStop(1);
                 this->upgradeManage();
             }
             if (!this->openFlag)
@@ -2015,10 +2014,10 @@ namespace engine
 
         void TowerMenu::spheresMonitor()
         {
-            //this->container->sphereSlot1->sphereSlotCase.buttonMode = false;
-            //this->container->sphereSlot2->sphereSlotCase.buttonMode = false;
-            //this->container->sphereSlot3->sphereSlotCase.buttonMode = false;
-            //this->container->sphereSlot4->sphereSlotCase.buttonMode = false;
+            //this->container->sphereSlot1->sphereSlotCase->buttonMode = false;
+            //this->container->sphereSlot2->sphereSlotCase->buttonMode = false;
+            //this->container->sphereSlot3->sphereSlotCase->buttonMode = false;
+            //this->container->sphereSlot4->sphereSlotCase->buttonMode = false;
             //this->container->btnGetAll->btnGetAllCase->buttonMode = false;
             //this->container->sphereSlot1->sphereAnima->setVisible(false);
             //this->container->sphereSlot2->sphereAnima->setVisible(false);
@@ -2062,7 +2061,7 @@ namespace engine
                 //{
                 //    this->container->sphereSlot1->gotoAndStop(1);
                 //}
-                //this->container->sphereSlot1->sphereSlotCase.buttonMode = true;
+                //this->container->sphereSlot1->sphereSlotCase->buttonMode = true;
                 //this->container->sphereSlot1->sphereAnima->setVisible(true);
                 if (this->myTower->spheresStack[0] == "fire")
                 {
@@ -2103,7 +2102,7 @@ namespace engine
                 //{
                 //    this->container->sphereSlot2->gotoAndStop(1);
                 //}
-                //this->container->sphereSlot2->sphereSlotCase.buttonMode = true;
+                //this->container->sphereSlot2->sphereSlotCase->buttonMode = true;
                 //this->container->sphereSlot2->sphereAnima->setVisible(true);
                 if (this->myTower->spheresStack[1] == "fire")
                 {
@@ -2144,7 +2143,7 @@ namespace engine
                 //{
                 //    //this->container->sphereSlot3->gotoAndStop(1);
                 //}
-                //this->container->sphereSlot3->sphereSlotCase.buttonMode = true;
+                //this->container->sphereSlot3->sphereSlotCase->buttonMode = true;
                 //this->container->sphereSlot3->sphereAnima->setVisible(true);
                 if (this->myTower->spheresStack[2] == "fire")
                 {
@@ -2185,7 +2184,7 @@ namespace engine
                 //{
                 //    this->container->sphereSlot4->gotoAndStop(1);
                 //}
-                //this->container->sphereSlot4->sphereSlotCase.buttonMode = true;
+                //this->container->sphereSlot4->sphereSlotCase->buttonMode = true;
                 //this->container->sphereSlot4->sphereAnima->setVisible(true);
                 if (this->myTower->spheresStack[3] == "fire")
                 {
@@ -2233,19 +2232,20 @@ namespace engine
                     {
                         this->myTower->removeChild(this->exampleUltraTower);
                     }
-                    //this->exampleUltraTower = new Tower5_mc();
-                    //this->exampleUltraTower->myParent = this->myTower;
-                    //this->exampleUltraTower->stop();
-                    //this->exampleUltraTower->upgr1.stop();
-                    //this->exampleUltraTower->blockTower.stop();
-                    //this->exampleUltraTower->boneBlock.stop();
-                    //this->exampleUltraTower->bot.stop();
+                    this->exampleUltraTower = new Tower5_mc();
+                    this->exampleUltraTower->myParent = this->myTower;
+                    this->exampleUltraTower->stop();
+                    this->exampleUltraTower->upgr1->stop();
+                    this->exampleUltraTower->blockTower->stop();
+                    this->exampleUltraTower->boneBlock->stop();
+                    this->exampleUltraTower->bot->stop();
+                    this->exampleUltraTower->setPosition(this->myTower->container->getPosition());
                     //this->exampleUltraTower->x = this->myTower->container->x;
                     //this->exampleUltraTower->y = this->myTower->container->y;
-                    //this->exampleUltraTower->upgr1->setVisible(false);
-                    //this->exampleUltraTower->blockTower->setVisible(false);
-                    //this->exampleUltraTower->boneBlock->setVisible(false);
-                    //this->myTower->addChild(this->exampleUltraTower);
+                    this->exampleUltraTower->upgr1->setVisible(false);
+                    this->exampleUltraTower->blockTower->setVisible(false);
+                    this->exampleUltraTower->boneBlock->setVisible(false);
+                    this->myTower->addChild(this->exampleUltraTower);
                 }
                 else if (param1 == "btnTowerUpgr2")
                 {
@@ -2253,18 +2253,19 @@ namespace engine
                     {
                         this->myTower->removeChild(this->exampleUltraTower);
                     }
-                    //this->exampleUltraTower = new Tower6_mc();
-                    //this->exampleUltraTower->myParent = this->myTower;
-                    //this->exampleUltraTower->stop();
-                    //this->exampleUltraTower->shotAnima.stop();
-                    //this->exampleUltraTower->blockTower.stop();
-                    //this->exampleUltraTower->boneBlock.stop();
+                    this->exampleUltraTower = new Tower6_mc();
+                    this->exampleUltraTower->myParent = this->myTower;
+                    this->exampleUltraTower->stop();
+                    this->exampleUltraTower->shotAnima->stop();
+                    this->exampleUltraTower->blockTower->stop();
+                    this->exampleUltraTower->boneBlock->stop();
+                    this->exampleUltraTower->setPosition(this->myTower->container->getPosition());
                     //this->exampleUltraTower->x = this->myTower->container->x;
                     //this->exampleUltraTower->y = this->myTower->container->y;
-                    //this->exampleUltraTower->shotAnima->setVisible(false);
-                    //this->exampleUltraTower->blockTower->setVisible(false);
-                    //this->exampleUltraTower->boneBlock->setVisible(false);
-                    //this->myTower->addChild(this->exampleUltraTower);
+                    this->exampleUltraTower->shotAnima->setVisible(false);
+                    this->exampleUltraTower->blockTower->setVisible(false);
+                    this->exampleUltraTower->boneBlock->setVisible(false);
+                    this->myTower->addChild(this->exampleUltraTower);
                 }
                 else if (param1 == "btnTowerUpgr3")
                 {
@@ -2272,43 +2273,44 @@ namespace engine
                     {
                         this->myTower->removeChild(this->exampleUltraTower);
                     }
-                    //this->exampleUltraTower = new Tower7_mc();
-                    //this->exampleUltraTower->myParent = this->myTower;
-                    //this->exampleUltraTower->stop();
-                    //this->exampleUltraTower->cont1->stop();
-                    //this->exampleUltraTower->cont2->stop();
-                    //this->exampleUltraTower->cont3->stop();
-                    //this->exampleUltraTower->upgr1_1.stop();
-                    //this->exampleUltraTower->upgr1_2.stop();
-                    //this->exampleUltraTower->upgr1_3.stop();
-                    //this->exampleUltraTower->upgr1_4.stop();
-                    //this->exampleUltraTower->upgr1_5.stop();
-                    //this->exampleUltraTower->upgr1_6.stop();
-                    //this->exampleUltraTower->upgr1_7.stop();
-                    //this->exampleUltraTower->upgr1_8.stop();
-                    //this->exampleUltraTower->round1.stop();
-                    //this->exampleUltraTower->round2.stop();
-                    //this->exampleUltraTower->round3.stop();
-                    //this->exampleUltraTower->round4.stop();
-                    //this->exampleUltraTower->blockTower.stop();
-                    //this->exampleUltraTower->boneBlock.stop();
+                    this->exampleUltraTower = new Tower7_mc();
+                    this->exampleUltraTower->myParent = this->myTower;
+                    this->exampleUltraTower->stop();
+                    this->exampleUltraTower->cont1->stop();
+                    this->exampleUltraTower->cont2->stop();
+                    this->exampleUltraTower->cont3->stop();
+                    this->exampleUltraTower->upgr1_1->stop();
+                    this->exampleUltraTower->upgr1_2->stop();
+                    this->exampleUltraTower->upgr1_3->stop();
+                    this->exampleUltraTower->upgr1_4->stop();
+                    this->exampleUltraTower->upgr1_5->stop();
+                    this->exampleUltraTower->upgr1_6->stop();
+                    this->exampleUltraTower->upgr1_7->stop();
+                    this->exampleUltraTower->upgr1_8->stop();
+                    this->exampleUltraTower->round1->stop();
+                    this->exampleUltraTower->round2->stop();
+                    this->exampleUltraTower->round3->stop();
+                    this->exampleUltraTower->round4->stop();
+                    this->exampleUltraTower->blockTower->stop();
+                    this->exampleUltraTower->boneBlock->stop();
+                    this->exampleUltraTower->setPosition(this->myTower->container->getPosition());
                     //this->exampleUltraTower->x = this->myTower->container->x;
-                    //this->exampleUltraTower->y = this->myTower->container->y;
-                    //this->exampleUltraTower->upgr1_1->setVisible(false);
-                    //this->exampleUltraTower->upgr1_2->setVisible(false);
-                    //this->exampleUltraTower->upgr1_3->setVisible(false);
-                    //this->exampleUltraTower->upgr1_4->setVisible(false);
-                    //this->exampleUltraTower->upgr1_5->setVisible(false);
-                    //this->exampleUltraTower->upgr1_6->setVisible(false);
-                    //this->exampleUltraTower->upgr1_7->setVisible(false);
-                    //this->exampleUltraTower->upgr1_8->setVisible(false);
-                    //this->exampleUltraTower->round1->setVisible(false);
-                    //this->exampleUltraTower->round2->setVisible(false);
-                    //this->exampleUltraTower->round3->setVisible(false);
-                    //this->exampleUltraTower->round4->setVisible(false);
-                    //this->exampleUltraTower->blockTower->setVisible(false);
-                    //this->exampleUltraTower->boneBlock->setVisible(false);
-                    //this->myTower->addChild(this->exampleUltraTower);
+                    //this->exampleUltraTower->y = this->myTower->container->y; 
+                    this->exampleUltraTower->upgr1_1->setVisible(false);
+                    this->exampleUltraTower->upgr1_2->setVisible(false);
+                    this->exampleUltraTower->upgr1_3->setVisible(false);
+                    this->exampleUltraTower->upgr1_4->setVisible(false);
+                    this->exampleUltraTower->upgr1_5->setVisible(false);
+                    this->exampleUltraTower->upgr1_6->setVisible(false);
+                    this->exampleUltraTower->upgr1_7->setVisible(false);
+                    this->exampleUltraTower->upgr1_8->setVisible(false);
+                    this->exampleUltraTower->round1->setVisible(false);
+                    this->exampleUltraTower->round2->setVisible(false);
+                    this->exampleUltraTower->round3->setVisible(false);
+                    this->exampleUltraTower->round4->setVisible(false);
+                    this->exampleUltraTower->blockTower->setVisible(false);
+                    this->exampleUltraTower->boneBlock->setVisible(false);
+                    this->myTower->addChild(this->exampleUltraTower);
                 }
                 else if (param1 == "btnTowerUpgr4")
                 {
@@ -2316,27 +2318,28 @@ namespace engine
                     {
                         this->myTower->removeChild(this->exampleUltraTower);
                     }
-                    //this->exampleUltraTower = new Tower8_mc();
-                    //this->exampleUltraTower->myParent = this->myTower;
-                    //this->exampleUltraTower->stop();
-                    //this->exampleUltraTower->cont1->stop();
-                    //this->exampleUltraTower->cont2->stop();
-                    //this->exampleUltraTower->cont3->stop();
-                    //this->exampleUltraTower->cont4->stop();
-                    //this->exampleUltraTower->cont5->stop();
-                    //this->exampleUltraTower->cont6->stop();
-                    //this->exampleUltraTower->fireLight1.stop();
-                    //this->exampleUltraTower->blockTower.stop();
-                    //this->exampleUltraTower->boneBlock.stop();
+                    this->exampleUltraTower = new Tower8_mc();
+                    this->exampleUltraTower->myParent = this->myTower;
+                    this->exampleUltraTower->stop();
+                    this->exampleUltraTower->cont1->stop();
+                    this->exampleUltraTower->cont2->stop();
+                    this->exampleUltraTower->cont3->stop();
+                    this->exampleUltraTower->cont4->stop();
+                    this->exampleUltraTower->cont5->stop();
+                    this->exampleUltraTower->cont6->stop();
+                    this->exampleUltraTower->fireLight1->stop();
+                    this->exampleUltraTower->blockTower->stop();
+                    this->exampleUltraTower->boneBlock->stop();
+                    this->exampleUltraTower->setPosition(this->myTower->container->getPosition());
                     //this->exampleUltraTower->x = this->myTower->container->x;
                     //this->exampleUltraTower->y = this->myTower->container->y;
-                    //this->exampleUltraTower->cont4->setVisible(false);
-                    //this->exampleUltraTower->cont5->setVisible(false);
-                    //this->exampleUltraTower->cont6->setVisible(false);
-                    //this->exampleUltraTower->fireLight1->setVisible(false);
-                    //this->exampleUltraTower->blockTower->setVisible(false);
-                    //this->exampleUltraTower->boneBlock->setVisible(false);
-                    //this->myTower->addChild(this->exampleUltraTower);
+                    this->exampleUltraTower->cont4->setVisible(false);
+                    this->exampleUltraTower->cont5->setVisible(false);
+                    this->exampleUltraTower->cont6->setVisible(false);
+                    this->exampleUltraTower->fireLight1->setVisible(false);
+                    this->exampleUltraTower->blockTower->setVisible(false);
+                    this->exampleUltraTower->boneBlock->setVisible(false);
+                    this->myTower->addChild(this->exampleUltraTower);
                 }
                 this->container->btnGetAll->setVisible(false);
                 this->container->cont2->setVisible(false);
@@ -2346,8 +2349,8 @@ namespace engine
             {
                 this->container->btnGetAll->setVisible(true);
                 this->container->cont2->setVisible(true);
-                //this->exampleUltraTower->myParent.container->setVisible(true);
-                //this->exampleUltraTower->myParent.removeChild(this->exampleUltraTower);
+                this->exampleUltraTower->myParent->container->setVisible(true);
+                this->exampleUltraTower->myParent->removeChild(this->exampleUltraTower);
                 this->exampleUltraTower = NULL;
             }
             return;
@@ -2496,40 +2499,40 @@ namespace engine
                     }
                     else if (param2 == 1)
                     {
-                        //if (!(this->exampleUltraTower is Tower5_mc))
-                        //{
-                        //    this->exampleUltraManage("remove");
-                        //    this->exampleUltraManage("btnTowerUpgr1");
-                        //}
+                        if (!(this->exampleUltraTower is Tower5_mc))
+                        {
+                            this->exampleUltraManage("remove");
+                            this->exampleUltraManage("btnTowerUpgr1");
+                        }
                     }
                     else if (param2 == 2)
                     {
-                        //if (!(this->exampleUltraTower is Tower6_mc))
-                        //{
-                        //    this->exampleUltraManage("remove");
-                        //    this->exampleUltraManage("btnTowerUpgr2");
-                        //}
+                        if (!(this->exampleUltraTower is Tower6_mc))
+                        {
+                            this->exampleUltraManage("remove");
+                            this->exampleUltraManage("btnTowerUpgr2");
+                        }
                     }
                     else if (param2 == 3)
                     {
-                        //if (!(this->exampleUltraTower is Tower7_mc))
-                        //{
-                        //    this->exampleUltraManage("remove");
-                        //    this->exampleUltraManage("btnTowerUpgr3");
-                        //}
+                        if (!(this->exampleUltraTower is Tower7_mc))
+                        {
+                            this->exampleUltraManage("remove");
+                            this->exampleUltraManage("btnTowerUpgr3");
+                        }
                     }
                     else if (param2 == 4)
                     {
-                        //if (!(this->exampleUltraTower is Tower8_mc))
-                        //{
-                        //    this->exampleUltraManage("remove");
-                        //    this->exampleUltraManage("btnTowerUpgr4");
-                        //}
+                        if (!(this->exampleUltraTower is Tower8_mc))
+                        {
+                            this->exampleUltraManage("remove");
+                            this->exampleUltraManage("btnTowerUpgr4");
+                        }
                     }
                     this->hintPosition(param2, param3);
-                    //this->hint->cont.gotoAndStop(param2);
-                    //this->hint->cont->cont1->sphere1->stop();
-                    //this->hint->cont->cont1->sphere2->stop();
+                    this->hint->cont->gotoAndStop(param2);
+                    this->hint->cont->cont1->sphere1->stop();
+                    this->hint->cont->cont1->sphere2->stop();
                     this->hint->setVisible(true);
                 }
                 else
@@ -3123,403 +3126,403 @@ namespace engine
 
         void TowerMenu::fastBuyUltraManage()
         {
-            //if (this->container->fastBuyUltraCont)
-            //{
-            //    this->container->fastBuyUltraCont->stop();
-            //    this->container->fastBuyUltraCont->btnFastBuyUltra->stop();
-            //    this->container->fastBuyUltraCont->btnFastBuyUltra->fastBuyUltraCase.stop();
-            //    this->container->fastBuyUltraCont->indicator1.stop();
-            //    this->container->fastBuyUltraCont->indicator2.stop();
-            //    this->container->fastBuyUltraCont->indicator3.stop();
-            //    this->container->fastBuyUltraCont->indicator4.stop();
-            //    if (!this->fastBuyUltraFlag && !this->openFastBuyUltraFlag && !this->closeFastBuyUltraFlag)
-            //    {
-            //        this->container->fastBuyUltraCont->setVisible(false);
-            //    }
-            //    if (this->fastBuyUltraFlag)
-            //    {
-            //        this->container->fastBuyUltraCont->btnFastBuyUltra->gotoAndStop(1);
-            //        this->container->fastBuyUltraCont->indicator1.gotoAndStop(2);
-            //        this->container->fastBuyUltraCont->indicator2.gotoAndStop(2);
-            //        this->container->fastBuyUltraCont->indicator3.gotoAndStop(2);
-            //        this->container->fastBuyUltraCont->indicator4.gotoAndStop(2);
-            //        this->container->fastBuyUltraCont->indicator1->setVisible(true);
-            //        this->container->fastBuyUltraCont->indicator2->setVisible(true);
-            //        this->container->fastBuyUltraCont->indicator3->setVisible(true);
-            //        this->container->fastBuyUltraCont->indicator4->setVisible(true);
-            //        if (!this->fastBuyBlockCost)
-            //        {
-            //            this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT.text = this->fastBuyUltraScan(this->fastBuyUltraFlag);
-            //        }
-            //        else
-            //        {
-            //            this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT.text = this->fastBuyPrice;
-            //        }
-            //        if (this->fastBuyUltraFlag == "btnTowerUpgr1")
-            //        {
-            //            this->j = 0;
-            //            this->i = 0;
-            //            while (this->i < this->myTower->spheresStack.length)
-            //            {
-            //                if (this->myTower->spheresStack[this->i] == "fire")
-            //                {
-            //                    if (this->i == 0)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator1.gotoAndStop(1);
-            //                    }
-            //                    else if (this->i == 1)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator2.gotoAndStop(1);
-            //                    }
-            //                    else if (this->i == 2)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator3.gotoAndStop(1);
-            //                    }
-            //                    else if (this->i == 3)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator4.gotoAndStop(1);
-            //                    }
-            //                    (this->j + 1);
-            //                    break;
-            //                }
-            //                i++;
-            //            }
-            //            this->i = 0;
-            //            while (this->i < this->myTower->spheresStack.length)
-            //            {
-            //                if (this->myTower->spheresStack[this->i] == "stone")
-            //                {
-            //                    if (this->i == 0)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator1.gotoAndStop(1);
-            //                    }
-            //                    else if (this->i == 1)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator2.gotoAndStop(1);
-            //                    }
-            //                    else if (this->i == 2)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator3.gotoAndStop(1);
-            //                    }
-            //                    else if (this->i == 3)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator4.gotoAndStop(1);
-            //                    }
-            //                    (this->j + 1);
-            //                    break;
-            //                }
-            //                i++;
-            //            }
-            //            if (this->j < 2 && this->world->money >= int(this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT.text))
-            //            {
-            //                this->i = 0;
-            //                while (this->i < this->myTower->spheresStack.length)
-            //                {
-            //                    if (this->myTower->spheresStack[this->i] != "fire" && this->myTower->spheresStack[this->i] != "stone")
-            //                    {
-            //                        (this->j - 1);
-            //                        if (this->i == 0)
-            //                        {
-            //                            this->container->fastBuyUltraCont->indicator1.gotoAndStop(3);
-            //                        }
-            //                        else if (this->i == 1)
-            //                        {
-            //                            this->container->fastBuyUltraCont->indicator2.gotoAndStop(3);
-            //                        }
-            //                        else if (this->i == 2)
-            //                        {
-            //                            this->container->fastBuyUltraCont->indicator3.gotoAndStop(3);
-            //                        }
-            //                        else if (this->i == 3)
-            //                        {
-            //                            this->container->fastBuyUltraCont->indicator4.gotoAndStop(3);
-            //                        }
-            //                        if (this->j == 0)
-            //                        {
-            //                            break;
-            //                        }
-            //                    }
-            //                    i++;
-            //                }
-            //            }
-            //        }
-            //        else if (this->fastBuyUltraFlag == "btnTowerUpgr2")
-            //        {
-            //            this->j = 0;
-            //            this->i = 0;
-            //            while (this->i < this->myTower->spheresStack.length)
-            //            {
-            //                if (this->myTower->spheresStack[this->i] == "ice")
-            //                {
-            //                    if (this->i == 0)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator1.gotoAndStop(1);
-            //                    }
-            //                    else if (this->i == 1)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator2.gotoAndStop(1);
-            //                    }
-            //                    else if (this->i == 2)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator3.gotoAndStop(1);
-            //                    }
-            //                    else if (this->i == 3)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator4.gotoAndStop(1);
-            //                    }
-            //                    (this->j + 1);
-            //                    break;
-            //                }
-            //                i++;
-            //            }
-            //            this->i = 0;
-            //            while (this->i < this->myTower->spheresStack.length)
-            //            {
-            //                if (this->myTower->spheresStack[this->i] == "levin")
-            //                {
-            //                    if (this->i == 0)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator1.gotoAndStop(1);
-            //                    }
-            //                    else if (this->i == 1)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator2.gotoAndStop(1);
-            //                    }
-            //                    else if (this->i == 2)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator3.gotoAndStop(1);
-            //                    }
-            //                    else if (this->i == 3)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator4.gotoAndStop(1);
-            //                    }
-            //                    (this->j + 1);
-            //                    break;
-            //                }
-            //                i++;
-            //            }
-            //            if (this->j < 2 && this->world->money >= int(this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT.text))
-            //            {
-            //                this->i = 0;
-            //                while (this->i < this->myTower->spheresStack.length)
-            //                {
-            //                    if (this->myTower->spheresStack[this->i] != "ice" && this->myTower->spheresStack[this->i] != "levin")
-            //                    {
-            //                        (this->j - 1);
-            //                        if (this->i == 0)
-            //                        {
-            //                            this->container->fastBuyUltraCont->indicator1.gotoAndStop(3);
-            //                        }
-            //                        else if (this->i == 1)
-            //                        {
-            //                            this->container->fastBuyUltraCont->indicator2.gotoAndStop(3);
-            //                        }
-            //                        else if (this->i == 2)
-            //                        {
-            //                            this->container->fastBuyUltraCont->indicator3.gotoAndStop(3);
-            //                        }
-            //                        else if (this->i == 3)
-            //                        {
-            //                            this->container->fastBuyUltraCont->indicator4.gotoAndStop(3);
-            //                        }
-            //                        if (this->j == 0)
-            //                        {
-            //                            break;
-            //                        }
-            //                    }
-            //                    i++;
-            //                }
-            //            }
-            //        }
-            //        else if (this->fastBuyUltraFlag == "btnTowerUpgr3")
-            //        {
-            //            this->j = 0;
-            //            this->i = 0;
-            //            while (this->i < this->myTower->spheresStack.length)
-            //            {
-            //                if (this->myTower->spheresStack[this->i] == "ice")
-            //                {
-            //                    if (this->i == 0)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator1.gotoAndStop(1);
-            //                    }
-            //                    else if (this->i == 1)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator2.gotoAndStop(1);
-            //                    }
-            //                    else if (this->i == 2)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator3.gotoAndStop(1);
-            //                    }
-            //                    else if (this->i == 3)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator4.gotoAndStop(1);
-            //                    }
-            //                    (this->j + 1);
-            //                    break;
-            //                }
-            //                i++;
-            //            }
-            //            this->i = 0;
-            //            while (this->i < this->myTower->spheresStack.length)
-            //            {
-            //                if (this->myTower->spheresStack[this->i] == "stone")
-            //                {
-            //                    if (this->i == 0)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator1.gotoAndStop(1);
-            //                    }
-            //                    else if (this->i == 1)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator2.gotoAndStop(1);
-            //                    }
-            //                    else if (this->i == 2)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator3.gotoAndStop(1);
-            //                    }
-            //                    else if (this->i == 3)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator4.gotoAndStop(1);
-            //                    }
-            //                    (this->j + 1);
-            //                    break;
-            //                }
-            //                i++;
-            //            }
-            //            if (this->j < 2 && this->world->money >= int(this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT.text))
-            //            {
-            //                this->i = 0;
-            //                while (this->i < this->myTower->spheresStack.length)
-            //                {
-            //                    if (this->myTower->spheresStack[this->i] != "ice" && this->myTower->spheresStack[this->i] != "stone")
-            //                    {
-            //                        (this->j - 1);
-            //                        if (this->i == 0)
-            //                        {
-            //                            this->container->fastBuyUltraCont->indicator1.gotoAndStop(3);
-            //                        }
-            //                        else if (this->i == 1)
-            //                        {
-            //                            this->container->fastBuyUltraCont->indicator2.gotoAndStop(3);
-            //                        }
-            //                        else if (this->i == 2)
-            //                        {
-            //                            this->container->fastBuyUltraCont->indicator3.gotoAndStop(3);
-            //                        }
-            //                        else if (this->i == 3)
-            //                        {
-            //                            this->container->fastBuyUltraCont->indicator4.gotoAndStop(3);
-            //                        }
-            //                        if (this->j == 0)
-            //                        {
-            //                            break;
-            //                        }
-            //                    }
-            //                    i++;
-            //                }
-            //            }
-            //        }
-            //        else if (this->fastBuyUltraFlag == "btnTowerUpgr4")
-            //        {
-            //            this->j = 0;
-            //            this->i = 0;
-            //            while (this->i < this->myTower->spheresStack.length)
-            //            {
-            //                if (this->myTower->spheresStack[this->i] == "fire")
-            //                {
-            //                    if (this->i == 0)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator1.gotoAndStop(1);
-            //                    }
-            //                    else if (this->i == 1)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator2.gotoAndStop(1);
-            //                    }
-            //                    else if (this->i == 2)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator3.gotoAndStop(1);
-            //                    }
-            //                    else if (this->i == 3)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator4.gotoAndStop(1);
-            //                    }
-            //                    (this->j + 1);
-            //                    break;
-            //                }
-            //                i++;
-            //            }
-            //            this->i = 0;
-            //            while (this->i < this->myTower->spheresStack.length)
-            //            {
-            //                if (this->myTower->spheresStack[this->i] == "levin")
-            //                {
-            //                    if (this->i == 0)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator1.gotoAndStop(1);
-            //                    }
-            //                    else if (this->i == 1)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator2.gotoAndStop(1);
-            //                    }
-            //                    else if (this->i == 2)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator3.gotoAndStop(1);
-            //                    }
-            //                    else if (this->i == 3)
-            //                    {
-            //                        this->container->fastBuyUltraCont->indicator4.gotoAndStop(1);
-            //                    }
-            //                    (this->j + 1);
-            //                    break;
-            //                }
-            //                i++;
-            //            }
-            //            if (this->j < 2 && this->world->money >= int(this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT.text))
-            //            {
-            //                this->i = 0;
-            //                while (this->i < this->myTower->spheresStack.length)
-            //                {
-            //                    if (this->myTower->spheresStack[this->i] != "fire" && this->myTower->spheresStack[this->i] != "levin")
-            //                    {
-            //                        (this->j - 1);
-            //                        if (this->i == 0)
-            //                        {
-            //                            this->container->fastBuyUltraCont->indicator1.gotoAndStop(3);
-            //                        }
-            //                        else if (this->i == 1)
-            //                        {
-            //                            this->container->fastBuyUltraCont->indicator2.gotoAndStop(3);
-            //                        }
-            //                        else if (this->i == 2)
-            //                        {
-            //                            this->container->fastBuyUltraCont->indicator3.gotoAndStop(3);
-            //                        }
-            //                        else if (this->i == 3)
-            //                        {
-            //                            this->container->fastBuyUltraCont->indicator4.gotoAndStop(3);
-            //                        }
-            //                        if (this->j == 0)
-            //                        {
-            //                            break;
-            //                        }
-            //                    }
-            //                    i++;
-            //                }
-            //            }
-            //        }
-            //        this->fastBuyPrice = int(this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT.text);
-            //        if (this->world->money >= int(this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT.text))
-            //        {
-            //            this->container->fastBuyUltraCont->btnFastBuyUltra->fastBuyUltraCase.buttonMode = true;
-            //        }
-            //        else
-            //        {
-            //            this->container->fastBuyUltraCont->btnFastBuyUltra->gotoAndStop(4);
-            //            this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT.text = this->fastBuyPrice;
-            //            this->container->fastBuyUltraCont->btnFastBuyUltra->fastBuyUltraCase.buttonMode = false;
-            //        }
-            //    }
-            //}
+            if (this->container->fastBuyUltraCont)
+            {
+                this->container->fastBuyUltraCont->stop();
+                this->container->fastBuyUltraCont->btnFastBuyUltra->stop();
+                this->container->fastBuyUltraCont->btnFastBuyUltra->fastBuyUltraCase->stop();
+                this->container->fastBuyUltraCont->indicator1->stop();
+                this->container->fastBuyUltraCont->indicator2->stop();
+                this->container->fastBuyUltraCont->indicator3->stop();
+                this->container->fastBuyUltraCont->indicator4->stop();
+                if (!this->fastBuyUltraFlag && !this->openFastBuyUltraFlag && !this->closeFastBuyUltraFlag)
+                {
+                    this->container->fastBuyUltraCont->setVisible(false);
+                }
+                if (this->fastBuyUltraFlag)
+                {
+                    this->container->fastBuyUltraCont->btnFastBuyUltra->gotoAndStop(1);
+                    this->container->fastBuyUltraCont->indicator1->gotoAndStop(2);
+                    this->container->fastBuyUltraCont->indicator2->gotoAndStop(2);
+                    this->container->fastBuyUltraCont->indicator3->gotoAndStop(2);
+                    this->container->fastBuyUltraCont->indicator4->gotoAndStop(2);
+                    this->container->fastBuyUltraCont->indicator1->setVisible(true);
+                    this->container->fastBuyUltraCont->indicator2->setVisible(true);
+                    this->container->fastBuyUltraCont->indicator3->setVisible(true);
+                    this->container->fastBuyUltraCont->indicator4->setVisible(true);
+                    if (!this->fastBuyBlockCost)
+                    {
+                        this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT.text = this->fastBuyUltraScan(this->fastBuyUltraFlag);
+                    }
+                    else
+                    {
+                        this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT.text = this->fastBuyPrice;
+                    }
+                    if (this->fastBuyUltraFlag == "btnTowerUpgr1")
+                    {
+                        this->j = 0;
+                        this->i = 0;
+                        while (this->i < this->myTower->spheresStack.length)
+                        {
+                            if (this->myTower->spheresStack[this->i] == "fire")
+                            {
+                                if (this->i == 0)
+                                {
+                                    this->container->fastBuyUltraCont->indicator1->gotoAndStop(1);
+                                }
+                                else if (this->i == 1)
+                                {
+                                    this->container->fastBuyUltraCont->indicator2->gotoAndStop(1);
+                                }
+                                else if (this->i == 2)
+                                {
+                                    this->container->fastBuyUltraCont->indicator3->gotoAndStop(1);
+                                }
+                                else if (this->i == 3)
+                                {
+                                    this->container->fastBuyUltraCont->indicator4->gotoAndStop(1);
+                                }
+                                (this->j + 1);
+                                break;
+                            }
+                            i++;
+                        }
+                        this->i = 0;
+                        while (this->i < this->myTower->spheresStack.length)
+                        {
+                            if (this->myTower->spheresStack[this->i] == "stone")
+                            {
+                                if (this->i == 0)
+                                {
+                                    this->container->fastBuyUltraCont->indicator1->gotoAndStop(1);
+                                }
+                                else if (this->i == 1)
+                                {
+                                    this->container->fastBuyUltraCont->indicator2->gotoAndStop(1);
+                                }
+                                else if (this->i == 2)
+                                {
+                                    this->container->fastBuyUltraCont->indicator3->gotoAndStop(1);
+                                }
+                                else if (this->i == 3)
+                                {
+                                    this->container->fastBuyUltraCont->indicator4->gotoAndStop(1);
+                                }
+                                (this->j + 1);
+                                break;
+                            }
+                            i++;
+                        }
+                        if (this->j < 2 && this->world->money >= int(this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT.text))
+                        {
+                            this->i = 0;
+                            while (this->i < this->myTower->spheresStack.length)
+                            {
+                                if (this->myTower->spheresStack[this->i] != "fire" && this->myTower->spheresStack[this->i] != "stone")
+                                {
+                                    (this->j - 1);
+                                    if (this->i == 0)
+                                    {
+                                        this->container->fastBuyUltraCont->indicator1->gotoAndStop(3);
+                                    }
+                                    else if (this->i == 1)
+                                    {
+                                        this->container->fastBuyUltraCont->indicator2->gotoAndStop(3);
+                                    }
+                                    else if (this->i == 2)
+                                    {
+                                        this->container->fastBuyUltraCont->indicator3->gotoAndStop(3);
+                                    }
+                                    else if (this->i == 3)
+                                    {
+                                        this->container->fastBuyUltraCont->indicator4->gotoAndStop(3);
+                                    }
+                                    if (this->j == 0)
+                                    {
+                                        break;
+                                    }
+                                }
+                                i++;
+                            }
+                        }
+                    }
+                    else if (this->fastBuyUltraFlag == "btnTowerUpgr2")
+                    {
+                        this->j = 0;
+                        this->i = 0;
+                        while (this->i < this->myTower->spheresStack.length)
+                        {
+                            if (this->myTower->spheresStack[this->i] == "ice")
+                            {
+                                if (this->i == 0)
+                                {
+                                    this->container->fastBuyUltraCont->indicator1->gotoAndStop(1);
+                                }
+                                else if (this->i == 1)
+                                {
+                                    this->container->fastBuyUltraCont->indicator2->gotoAndStop(1);
+                                }
+                                else if (this->i == 2)
+                                {
+                                    this->container->fastBuyUltraCont->indicator3->gotoAndStop(1);
+                                }
+                                else if (this->i == 3)
+                                {
+                                    this->container->fastBuyUltraCont->indicator4->gotoAndStop(1);
+                                }
+                                (this->j + 1);
+                                break;
+                            }
+                            i++;
+                        }
+                        this->i = 0;
+                        while (this->i < this->myTower->spheresStack.length)
+                        {
+                            if (this->myTower->spheresStack[this->i] == "levin")
+                            {
+                                if (this->i == 0)
+                                {
+                                    this->container->fastBuyUltraCont->indicator1->gotoAndStop(1);
+                                }
+                                else if (this->i == 1)
+                                {
+                                    this->container->fastBuyUltraCont->indicator2->gotoAndStop(1);
+                                }
+                                else if (this->i == 2)
+                                {
+                                    this->container->fastBuyUltraCont->indicator3->gotoAndStop(1);
+                                }
+                                else if (this->i == 3)
+                                {
+                                    this->container->fastBuyUltraCont->indicator4->gotoAndStop(1);
+                                }
+                                (this->j + 1);
+                                break;
+                            }
+                            i++;
+                        }
+                        if (this->j < 2 && this->world->money >= int(this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT.text))
+                        {
+                            this->i = 0;
+                            while (this->i < this->myTower->spheresStack.length)
+                            {
+                                if (this->myTower->spheresStack[this->i] != "ice" && this->myTower->spheresStack[this->i] != "levin")
+                                {
+                                    (this->j - 1);
+                                    if (this->i == 0)
+                                    {
+                                        this->container->fastBuyUltraCont->indicator1->gotoAndStop(3);
+                                    }
+                                    else if (this->i == 1)
+                                    {
+                                        this->container->fastBuyUltraCont->indicator2->gotoAndStop(3);
+                                    }
+                                    else if (this->i == 2)
+                                    {
+                                        this->container->fastBuyUltraCont->indicator3->gotoAndStop(3);
+                                    }
+                                    else if (this->i == 3)
+                                    {
+                                        this->container->fastBuyUltraCont->indicator4->gotoAndStop(3);
+                                    }
+                                    if (this->j == 0)
+                                    {
+                                        break;
+                                    }
+                                }
+                                i++;
+                            }
+                        }
+                    }
+                    else if (this->fastBuyUltraFlag == "btnTowerUpgr3")
+                    {
+                        this->j = 0;
+                        this->i = 0;
+                        while (this->i < this->myTower->spheresStack.length)
+                        {
+                            if (this->myTower->spheresStack[this->i] == "ice")
+                            {
+                                if (this->i == 0)
+                                {
+                                    this->container->fastBuyUltraCont->indicator1->gotoAndStop(1);
+                                }
+                                else if (this->i == 1)
+                                {
+                                    this->container->fastBuyUltraCont->indicator2->gotoAndStop(1);
+                                }
+                                else if (this->i == 2)
+                                {
+                                    this->container->fastBuyUltraCont->indicator3->gotoAndStop(1);
+                                }
+                                else if (this->i == 3)
+                                {
+                                    this->container->fastBuyUltraCont->indicator4->gotoAndStop(1);
+                                }
+                                (this->j + 1);
+                                break;
+                            }
+                            i++;
+                        }
+                        this->i = 0;
+                        while (this->i < this->myTower->spheresStack.length)
+                        {
+                            if (this->myTower->spheresStack[this->i] == "stone")
+                            {
+                                if (this->i == 0)
+                                {
+                                    this->container->fastBuyUltraCont->indicator1->gotoAndStop(1);
+                                }
+                                else if (this->i == 1)
+                                {
+                                    this->container->fastBuyUltraCont->indicator2->gotoAndStop(1);
+                                }
+                                else if (this->i == 2)
+                                {
+                                    this->container->fastBuyUltraCont->indicator3->gotoAndStop(1);
+                                }
+                                else if (this->i == 3)
+                                {
+                                    this->container->fastBuyUltraCont->indicator4->gotoAndStop(1);
+                                }
+                                (this->j + 1);
+                                break;
+                            }
+                            i++;
+                        }
+                        if (this->j < 2 && this->world->money >= int(this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT.text))
+                        {
+                            this->i = 0;
+                            while (this->i < this->myTower->spheresStack.length)
+                            {
+                                if (this->myTower->spheresStack[this->i] != "ice" && this->myTower->spheresStack[this->i] != "stone")
+                                {
+                                    (this->j - 1);
+                                    if (this->i == 0)
+                                    {
+                                        this->container->fastBuyUltraCont->indicator1->gotoAndStop(3);
+                                    }
+                                    else if (this->i == 1)
+                                    {
+                                        this->container->fastBuyUltraCont->indicator2->gotoAndStop(3);
+                                    }
+                                    else if (this->i == 2)
+                                    {
+                                        this->container->fastBuyUltraCont->indicator3->gotoAndStop(3);
+                                    }
+                                    else if (this->i == 3)
+                                    {
+                                        this->container->fastBuyUltraCont->indicator4->gotoAndStop(3);
+                                    }
+                                    if (this->j == 0)
+                                    {
+                                        break;
+                                    }
+                                }
+                                i++;
+                            }
+                        }
+                    }
+                    else if (this->fastBuyUltraFlag == "btnTowerUpgr4")
+                    {
+                        this->j = 0;
+                        this->i = 0;
+                        while (this->i < this->myTower->spheresStack.length)
+                        {
+                            if (this->myTower->spheresStack[this->i] == "fire")
+                            {
+                                if (this->i == 0)
+                                {
+                                    this->container->fastBuyUltraCont->indicator1->gotoAndStop(1);
+                                }
+                                else if (this->i == 1)
+                                {
+                                    this->container->fastBuyUltraCont->indicator2->gotoAndStop(1);
+                                }
+                                else if (this->i == 2)
+                                {
+                                    this->container->fastBuyUltraCont->indicator3->gotoAndStop(1);
+                                }
+                                else if (this->i == 3)
+                                {
+                                    this->container->fastBuyUltraCont->indicator4->gotoAndStop(1);
+                                }
+                                (this->j + 1);
+                                break;
+                            }
+                            i++;
+                        }
+                        this->i = 0;
+                        while (this->i < this->myTower->spheresStack.length)
+                        {
+                            if (this->myTower->spheresStack[this->i] == "levin")
+                            {
+                                if (this->i == 0)
+                                {
+                                    this->container->fastBuyUltraCont->indicator1->gotoAndStop(1);
+                                }
+                                else if (this->i == 1)
+                                {
+                                    this->container->fastBuyUltraCont->indicator2->gotoAndStop(1);
+                                }
+                                else if (this->i == 2)
+                                {
+                                    this->container->fastBuyUltraCont->indicator3->gotoAndStop(1);
+                                }
+                                else if (this->i == 3)
+                                {
+                                    this->container->fastBuyUltraCont->indicator4->gotoAndStop(1);
+                                }
+                                (this->j + 1);
+                                break;
+                            }
+                            i++;
+                        }
+                        if (this->j < 2 && this->world->money >= int(this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT.text))
+                        {
+                            this->i = 0;
+                            while (this->i < this->myTower->spheresStack.length)
+                            {
+                                if (this->myTower->spheresStack[this->i] != "fire" && this->myTower->spheresStack[this->i] != "levin")
+                                {
+                                    (this->j - 1);
+                                    if (this->i == 0)
+                                    {
+                                        this->container->fastBuyUltraCont->indicator1->gotoAndStop(3);
+                                    }
+                                    else if (this->i == 1)
+                                    {
+                                        this->container->fastBuyUltraCont->indicator2->gotoAndStop(3);
+                                    }
+                                    else if (this->i == 2)
+                                    {
+                                        this->container->fastBuyUltraCont->indicator3->gotoAndStop(3);
+                                    }
+                                    else if (this->i == 3)
+                                    {
+                                        this->container->fastBuyUltraCont->indicator4->gotoAndStop(3);
+                                    }
+                                    if (this->j == 0)
+                                    {
+                                        break;
+                                    }
+                                }
+                                i++;
+                            }
+                        }
+                    }
+                    this->fastBuyPrice = int(this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT.text);
+                    if (this->world->money >= int(this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT.text))
+                    {
+                        this->container->fastBuyUltraCont->btnFastBuyUltra->fastBuyUltraCase->buttonMode = true;
+                    }
+                    else
+                    {
+                        this->container->fastBuyUltraCont->btnFastBuyUltra->gotoAndStop(4);
+                        this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT.text = this->fastBuyPrice;
+                        this->container->fastBuyUltraCont->btnFastBuyUltra->fastBuyUltraCase->buttonMode = false;
+                    }
+                }
+            }
             return;
         }// end function
 

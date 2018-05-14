@@ -7,14 +7,49 @@ namespace engine
 	namespace casts
 	{
 
-        Air_mc::Air_mc()
-        {
-            cont = new MovieClip("cast/","cont","Air_mc",this);
-			contBlowing = new MovieClip("contBlowing","Air_mc",this);
-			dust1 = new MovieClip("dust1","Air_mc",this); 
-			dust2 = new MovieClip("dust2","Air_mc",this);
-        };
-        MoveAir_mc::MoveAir_mc():MovieClip("cast/","MoveAir_mc","MoveAir_m")
+        Air_mc::Air_mc(string dir) :direction(dir), MovieClip("cast/", "Air_mc", "Air_mc"), cont(0), dust1(0), dust2(0), contBlowing(0)
+		{
+			if(this->direction == "left")
+			{
+				this->gotoAndStop(1);
+			}
+			else if(this->direction == "right")
+			{
+				this->gotoAndStop(2);
+			}
+			else if(this->direction == "up")
+			{
+				this->gotoAndStop(3);
+			}
+			else if(this->direction == "down")
+			{
+				this->gotoAndStop(4);
+			}
+		};
+		void Air_mc::clear()
+		{
+			destroy(cont);
+			destroy(dust1);
+			destroy(dust2);
+			destroy(contBlowing);
+		}; 
+        virtual void Air_mc::gotoAndStop(int cur)
+		{
+			MovieClip::gotoAndStop(cur);
+			this->clear();
+			this->cont = new MovieClipSub(this,this->getArmature()->getSlot("cont")->getChildArmature());
+			this->dust1 = new MovieClipSub(this, this->getArmature()->getSlot("dust1")->getChildArmature());
+			this->dust2 = new MovieClipSub(this, "dust2" );
+			dragonBones::Armature * arm = cont->getArmature()->getSlot("blowing")->getChildArmature();
+			this->contBlowing = new MovieClipSub(cont, arm);
+			this->cont->gotoAndStop(48);
+			this->dust1->stop();
+			this->dust2->stop();
+			this->dust1->arm->getBone("dust1")->setVisible(false);
+			this->dust2->arm->getBone("dust2")->setVisible(false);
+			this->cont->play(0);
+		};
+        MoveAir_mc::MoveAir_mc():MovieClip("cast/","MoveAir_mc","MoveAir_mc")
         {
             down = new MovieClip("updown","MoveAir_m");
 			left = new MovieClip("left","MoveAir_m");
@@ -49,35 +84,35 @@ namespace engine
 		{
 			//      this->removeEventListener (Event.ADDED_TO_STAGE, this->init);
 			this->world = Main::mainClass->worldClass;
-			this->container = new Air_mc();
-			if(this->direction == "left")
-			{
-				//	  this->container->gotoAndStop (1);
-			}
-			else if(this->direction == "right")
-			{
-				//	  this->container->gotoAndStop (2);
-			}
-			else if(this->direction == "up")
-			{
-				//	  this->container->gotoAndStop (3);
-			}
-			else if(this->direction == "down")
-			{
-				//	  this->container->gotoAndStop (4);
-			}
-			//      this->container->cont.gotoAndStop (48);
-			//      this->container->dust1.stop ();
-			//      this->container->dust2.stop ();
-			//      this->container->dust1->setVisible(false);
-			//      this->container->dust2->setVisible(false);
+			this->container = new Air_mc(this->direction);
+			//if(this->direction == "left")
+			//{
+			//	//	  this->container->gotoAndStop (1);
+			//}
+			//else if(this->direction == "right")
+			//{
+			//	//	  this->container->gotoAndStop (2);
+			//}
+			//else if(this->direction == "up")
+			//{
+			//	//	  this->container->gotoAndStop (3);
+			//}
+			//else if(this->direction == "down")
+			//{
+			//	//	  this->container->gotoAndStop (4);
+			//}
+			this->container->cont->gotoAndStop (48);
+			this->container->dust1->stop ();
+			this->container->dust2->stop ();
+			this->container->dust1->setVisible(false);
+			this->container->dust2->setVisible(false);
 			this->addChild(this->container);
 			this->radius = 125;
 			this->liveCounter = Main::mainClass->readXMLClass.airLifeSecXML;
 			this->setPosition(this->this_pt);
 			//      this->x = this->this_pt.x;
 			//      this->y = this->this_pt.y;
-			//      this->container->alpha = 0.1;
+			this->container->setOpacity(0.1);
 			this->setPositionY(this->getPositionY() - 200);
 			//      this->y = this->y - 200;
 			this->mouseChildren = false;
@@ -228,7 +263,7 @@ namespace engine
 					}
 					if(this->container->cont->currentFrame == 48)
 					{
-						//this->container->cont.gotoAndStop(49);
+						this->container->cont.gotoAndStop(49);
 					}
 					else if(this->container->cont->currentFrame == 49)
 					{
