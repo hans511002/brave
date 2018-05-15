@@ -102,7 +102,7 @@ namespace engine
                     }
                     if (world->frameCounter % 2)
                     {
-                        Point tempObject1 = container->smoke.localToGlobal(new Point(container->smoke.cont2.x, container->smoke.cont2.y));
+                        Point tempObject1 = container->smoke->localToGlobal(container->smoke.cont2->getPosition());
                         tempObject = new BulletTower7_smoke_mc();//new Indexes(new BulletTower7_smoke_mc(), 2, 0);
                         tempObject->setPosition(tempObject1);
                         //tempObject.x = tempObject1.x;

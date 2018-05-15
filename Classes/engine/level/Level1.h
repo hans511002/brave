@@ -14,7 +14,7 @@ namespace engine{
 			//dragonBones::DBCCArmatureNode * decoration;
 			////伐木工人
 			//dragonBones::DBCCArmatureNode * decoration1;
-			////伐木
+			////伐木按钮
 			//dragonBones::DBCCArmatureNode * decorationCase;
 
 			////旗子
@@ -31,6 +31,20 @@ namespace engine{
 			//提前下一波到来的图标  时间到开始播 播完下一波, 点击直接下一波,可获取不同数量的金币 
 			//部分属性需要提升到level中
 			//dragonBones::DBCCArmatureNode * pointer1;
+			
+			MovieClip * decoration;
+            MovieClip * decoration1;
+            MovieClip * decorationCase;
+            MovieClip * flag1;
+            MovieClip * flag2;
+            MovieClip * place1;
+            MovieClip * place2;
+            MovieClip * place3;
+            MovieClip * place4;
+            MovieClip * place5;
+            MovieClip * pointer1;
+
+			
 			Level1(){
 			}
 			bool init();

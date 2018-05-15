@@ -9,6 +9,31 @@
 namespace engine
 { 
 	class World;
+	
+	struct RoadsignFire_mc : public MovieClip
+	{
+		 Common::Array<> myStack;
+		 int myPath;
+		 int myRoad;
+		 int myWay;
+		 cocos2d::Point myPoint;
+	};
+	struct RoadsignIce_mc : public MovieClip
+	{
+		 Common::Array<> myStack;
+		 int myPath;
+		 int myRoad;
+		 int myWay;
+		 cocos2d::Point myPoint;
+	};
+	struct Hint_mc : public MovieClip
+    {
+        ui::Text * nameTXT;
+        ui::Text * noteTXT;
+        ui::Text * timeTXT;
+         Hint_mc();
+    }
+	
     class Feature  
     {
 	public:
@@ -26,17 +51,7 @@ namespace engine
 
 		void getSphereBeat(string param1, int param2);
 
-		void returnGetSphereToArchive(string param1, int param2)
-        {
-            //if (!this.world.getSphere)
-            //{
-            //    this.getSphereBeat(param1, param2);
-            //    this.world.getSphere.x = this.world.listOfMoveSpheres[this.i].x;
-            //    this.world.getSphere.y = this.world.listOfMoveSpheres[this.i].y;
-            //    this.world.getSphere.retrieveGetSphere();
-            //}
- 
-        }// end function
+		void returnGetSphereToArchive(string param1, int param2);
 
 		void afterLoadXML();
 

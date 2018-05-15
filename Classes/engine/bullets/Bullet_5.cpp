@@ -168,7 +168,7 @@ namespace engine{
                     container->setScaleX(container->getScaleX() - 0.0105);
                     container->setScaleY(container->getScaleY() - 0.0105);
                 }
-                tempObject =new BulletTower5_1Smoke1_mc();// new Indexes(new BulletTower5_1Smoke1_mc(), 3, 0.18);
+                tempObject =new MovieClip(world,"sphere/","BulletTower5_1Smoke1_mc","BulletTower5_1Smoke1_mc");// new Indexes(new BulletTower5_1Smoke1_mc(), 3, 0.18);
                 //tempObject.container->rotation = container->rotation;
                 tempObject->setPosition(this_pt);
                 //tempObject.x = this_pt.x;

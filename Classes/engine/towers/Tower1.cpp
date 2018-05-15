@@ -19,12 +19,12 @@ namespace engine
             slotsStack[3] = 1;
             slotsStack[4] = 1;
             Tower1_mc * cont= new Tower1_mc();
-            //container->stop();
-            //container->towerCase.stop();
-            //container->blockTower.stop();
-            //container->boneBlock.stop();
-            //container->selectTower.stop();
-            //container->towerCase.buttonMode = true;
+            container->stop();
+            container->towerCase->stop();
+            container->blockTower->stop();
+            container->boneBlock->stop();
+            container->selectTower->stop();
+            container->towerCase->buttonMode = true;
             cont->blockTower->setVisible(false);
             cont->boneBlock->setVisible(false);
             cont->selectTower->setVisible(false);
@@ -68,69 +68,69 @@ namespace engine
             }
             if (world->frameCounter % 2)
             {
-                //if (container->currentFrame < container->totalFrames)
-                //{
-                //    container->gotoAndStop((container->currentFrame + 1));
-                //}
-                //else
-                //{
-                //    container->gotoAndStop(1);
-                //}
+                if (container->currentFrame < container->totalFrames)
+                {
+                    container->gotoAndStop((container->currentFrame + 1));
+                }
+                else
+                {
+                    container->gotoAndStop(1);
+                }
             }
             if (spheresStack.size() == 1)
             {
-                //if (container->sphere1->currentFrame < container->sphere1->totalFrames)
-                //{
-                //    container->sphere1->gotoAndStop((container->sphere1->currentFrame + 1));
-                //}
-                //else
-                //{
-                //    container->sphere1->gotoAndStop(1);
-                //}
-                //if (container->sphere1->bullet->currentFrame == 1)
-                //{
-                //    if (container->sphere1->bullet->cont.currentFrame < container->sphere1->bullet->cont.totalFrames)
-                //    {
-                //        container->sphere1->bullet->cont.gotoAndStop((container->sphere1->bullet->cont.currentFrame + 1));
-                //    }
-                //    else
-                //    {
-                //        container->sphere1->bullet->cont.gotoAndStop(1);
-                //    }
-                //}
-                //else if (container->sphere1->bullet->currentFrame == 2)
-                //{
-                //    if (container->sphere1->bullet->cont.currentFrame < container->sphere1->bullet->cont.totalFrames)
-                //    {
-                //        container->sphere1->bullet->cont.gotoAndStop((container->sphere1->bullet->cont.currentFrame + 1));
-                //    }
-                //    else
-                //    {
-                //        container->sphere1->bullet->cont.gotoAndStop(1);
-                //    }
-                //}
-                //else if (container->sphere1->bullet->currentFrame == 3)
-                //{
-                //    if (container->sphere1->bullet->cont.currentFrame < container->sphere1->bullet->cont.totalFrames)
-                //    {
-                //        container->sphere1->bullet->cont.gotoAndStop((container->sphere1->bullet->cont.currentFrame + 1));
-                //    }
-                //    else
-                //    {
-                //        container->sphere1->bullet->cont.gotoAndStop(1);
-                //    }
-                //}
-                //else if (container->sphere1->bullet->currentFrame == 4)
-                //{
-                //    if (container->sphere1->bullet->cont.currentFrame < container->sphere1->bullet->cont.totalFrames)
-                //    {
-                //        container->sphere1->bullet->cont.gotoAndStop((container->sphere1->bullet->cont.currentFrame + 1));
-                //    }
-                //    else
-                //    {
-                //        container->sphere1->bullet->cont.gotoAndStop(1);
-                //    }
-                //}
+                if (container->sphere1->currentFrame < container->sphere1->totalFrames)
+                {
+                    container->sphere1->gotoAndStop((container->sphere1->currentFrame + 1));
+                }
+                else
+                {
+                    container->sphere1->gotoAndStop(1);
+                }
+                if (container->sphere1->bullet->currentFrame == 1)
+                {
+                    if (container->sphere1->bullet->cont->currentFrame < container->sphere1->bullet->cont->totalFrames)
+                    {
+                        container->sphere1->bullet->cont->gotoAndStop((container->sphere1->bullet->cont->currentFrame + 1));
+                    }
+                    else
+                    {
+                        container->sphere1->bullet->cont->gotoAndStop(1);
+                    }
+                }
+                else if (container->sphere1->bullet->currentFrame == 2)
+                {
+                    if (container->sphere1->bullet->cont->currentFrame < container->sphere1->bullet->cont->totalFrames)
+                    {
+                        container->sphere1->bullet->cont->gotoAndStop((container->sphere1->bullet->cont->currentFrame + 1));
+                    }
+                    else
+                    {
+                        container->sphere1->bullet->cont->gotoAndStop(1);
+                    }
+                }
+                else if (container->sphere1->bullet->currentFrame == 3)
+                {
+                    if (container->sphere1->bullet->cont->currentFrame < container->sphere1->bullet->cont->totalFrames)
+                    {
+                        container->sphere1->bullet->cont->gotoAndStop((container->sphere1->bullet->cont->currentFrame + 1));
+                    }
+                    else
+                    {
+                        container->sphere1->bullet->cont->gotoAndStop(1);
+                    }
+                }
+                else if (container->sphere1->bullet->currentFrame == 4)
+                {
+                    if (container->sphere1->bullet->cont->currentFrame < container->sphere1->bullet->cont->totalFrames)
+                    {
+                        container->sphere1->bullet->cont->gotoAndStop((container->sphere1->bullet->cont->currentFrame + 1));
+                    }
+                    else
+                    {
+                        container->sphere1->bullet->cont->gotoAndStop(1);
+                    }
+                }
             }
             return;
         }// end function

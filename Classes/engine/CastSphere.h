@@ -8,22 +8,17 @@
 namespace engine
 {
 	class World;
-	struct   CastStone_mc : public MovieClip
-	{
-
-	};
 	struct   CastFire_mc : public MovieClip
 	{
-
-	};
+        CastFire_mc();
+	}; 
 	struct   CastIce_mc : public MovieClip
 	{
 
 	};
 	struct   CastStone_mc : public MovieClip
 	{
-
-	};
+	}; 
 	struct   CastLevin_mc : public MovieClip
 	{
 
@@ -54,10 +49,7 @@ namespace engine
 	};
 	struct   CastGetAllLittle_mc : public MovieClip
 	{
-	};
-	struct   CastGetAllLittle_mc : public MovieClip
-	{
-	};
+	}; 
 	struct   CastGetAll_mc : public MovieClip
 	{
 		MovieClip* haze1;

@@ -9,21 +9,75 @@ namespace engine
     class World;
 	struct Arrow_mc :public MovieClip
 	{
-
+        MovieClip * myTower;
 	};
-    struct GetSphere_mc :public BaseNode{
+    struct GetSphere_mc :public MovieClip{
 		MovieClip * cont;
 		MovieClip * sphere1;
 		MovieClip * sphere2;
 		MovieClip * sphere3;
 		MovieClip * sphere4;
     };
-    struct GetAll_mc :public BaseNode
+    struct GetAll_mc :public MovieClip
     {
 		ui::Text * numTXT;
-        Node * cross;
-        dragonBones::CCArmatureDisplay * cont;
+        MovieClip * cross; 
     };
+    struct RadiusSphere_mc :public MovieClip
+    {
+        MovieClip* cont;
+        RadiusSphere_mc();
+    };
+    struct RadiusFire_mc :public RadiusSphere_mc
+    {
+        MovieClip* cont;
+        RadiusFire_mc();
+    };
+    struct RadiusIce_mc :public RadiusSphere_mc
+    {
+        MovieClip* cont;
+        RadiusIce_mc();
+    };
+    struct RadiusStone_mc:public RadiusSphere_mc
+    {
+        MovieClip* cont;
+        RadiusStone_mc();
+    };
+    struct RadiusLevin_mc:public RadiusSphere_mc
+    {
+        MovieClip* cont;
+        RadiusLevin_mc();
+    };
+    struct RadiusGetAll_mc :public RadiusSphere_mc
+    { 
+        MovieClip * cont1;
+        MovieClip * cont2;
+        MovieClip * cont3; 
+        RadiusGetAll_mc(); 
+    }; 
+    struct MoveSphere_mc :public MovieClip
+    {
+        MovieClip * cont;
+        ui::Text * numTXT; 
+        MoveSphere_mc(); 
+    };
+    struct MoveFire_mc :public MoveSphere_mc
+    { 
+        MoveFire_mc(); 
+    };
+    struct MoveIce_mc :public MoveSphere_mc
+    { 
+        MoveIce_mc(); 
+    };
+    struct MoveLevin_mc :public MoveSphere_mc
+    { 
+        MoveLevin_mc(); 
+    };
+    struct MoveStone_mc :public MoveSphere_mc
+    { 
+        MoveStone_mc(); 
+    };
+    
     class GetSphere :public BaseNode
     {
     public:

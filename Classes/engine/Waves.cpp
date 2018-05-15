@@ -23,110 +23,111 @@ namespace engine
 		int complexityLevel = this->world->saveBox->getIntValue("complexityLevel");
 		if (this->nowWave > 0)
 		{
-			//int tempObject = this->listOfWaves[0][0][0] / this->world->pointer1->timer;
-			////this->tempObject = this->listOfWaves[0][0][0] / this->world->pointer1->timer;
-			//         if (tempObject > 0)
-			//         {
-			//             this->j = std::round(this->tempObject * Main::mainClass->readXMLClass.savingOfTimeCast);
-			//             if (this->world->worldInterface->castGolemCounter > 0 && this->world->worldInterface->castGolemCounter < this->world->worldInterface->castGolemTimer)
-			//             {
-			//                 if (this->j > this->world->worldInterface->castGolemTimer - this->world->worldInterface->castGolemCounter)
-			//                 {
-			//                     this->tempObject1 = new SavedCastTime("golem", this->world->worldInterface->castGolemTimer - this->world->worldInterface->castGolemCounter);
-			//                 }
-			//                 else
-			//                 {
-			//                     this->tempObject1 = new SavedCastTime("golem", this->j);
-			//                 }
-			//                 this->world->worldInterface->addChild(this->tempObject1);
-			//                 this->world->listOfClasses.push(this->tempObject1);
-			//             }
-			//             if (this->world->worldInterface->castIcemanCounter > 0 && this->world->worldInterface->castIcemanCounter < this->world->worldInterface->castIcemanTimer)
-			//             {
-			//                 if (this->j > this->world->worldInterface->castIcemanTimer - this->world->worldInterface->castIcemanCounter)
-			//                 {
-			//                     this->tempObject1 = new SavedCastTime("iceman", this->world->worldInterface->castIcemanTimer - this->world->worldInterface->castIcemanCounter);
-			//                 }
-			//                 else
-			//                 {
-			//                     this->tempObject1 = new SavedCastTime("iceman", this->j);
-			//                 }
-			//                 this->world->worldInterface->addChild(this->tempObject1);
-			//                 this->world->listOfClasses.push(this->tempObject1);
-			//             }
-			//             if (this->world->worldInterface->castAirCounter > 0 && this->world->worldInterface->castAirCounter < this->world->worldInterface->castAirTimer)
-			//             {
-			//                 if (this->j > this->world->worldInterface->castAirTimer - this->world->worldInterface->castAirCounter)
-			//                 {
-			//                     this->tempObject1 = new SavedCastTime("air", this->world->worldInterface->castAirTimer - this->world->worldInterface->castAirCounter);
-			//                 }
-			//                 else
-			//                 {
-			//                     this->tempObject1 = new SavedCastTime("air", this->j);
-			//                 }
-			//                 this->world->worldInterface->addChild(this->tempObject1);
-			//                 this->world->listOfClasses.push(this->tempObject1);
-			//             }
-			//             this->i = 0;
-			//             while (this->i < this->j)
-			//             {
-			//                 this->world->worldInterface->downloadCast();
-			//		i++;
-			//             }
-			//             this->tempObject = Math.round(this->tempObject * 20);
-			//             if (this->tempObject > 0)
-			//             {
-			//                 this->world->money = this->world->money + this->tempObject;
-			//                 if (this->world->pointer1)
-			//                 {
-			//                     if (this->world->pointer1.visible)
-			//                     {
-			//                         this->tempObject1 = new Moneyadd(this->tempObject);
-			//                         this->tempObject1.x = this->world->pointer1.x;
-			//                         this->tempObject1.y = this->world->pointer1.y;
-			//                         this->world->addChild(this->tempObject1);
-			//                     }
-			//                 }
-			//                 if (this->world->pointer2)
-			//                 {
-			//                     if (this->world->pointer2.visible)
-			//                     {
-			//                         this->tempObject1 = new MoneyAdd(this->tempObject);
-			//                         this->tempObject1.x = this->world->pointer2.x;
-			//                         this->tempObject1.y = this->world->pointer2.y;
-			//                         this->world->addChild(this->tempObject1);
-			//                     }
-			//                 }
-			//                 if (this->world->pointer3)
-			//                 {
-			//                     if (this->world->pointer3.visible)
-			//                     {
-			//                         this->tempObject1 = new MoneyAdd(this->tempObject);
-			//                         this->tempObject1.x = this->world->pointer3.x;
-			//                         this->tempObject1.y = this->world->pointer3.y;
-			//                         this->world->addChild(this->tempObject1);
-			//                     }
-			//                 }
-			//                 Sounds.instance.playSoundWithVol("snd_menu_monetki", 0.95);
-			//             }
-			//             (this->world->saveBox.gameSave.data.addit_earlyWavesCounter + 1);
-			//             (this->world->earlyWaveCounter + 1);
-			//             if (this->world->saveBox.gameSave.data.addit_earlyWavesCounter == 100)
-			//             {
-			//                 this->world->achieveManage("call_100_earlyWaves");
-			//             }
-			//             if (this->world->earlyWaveCounter == (this->maxWaves - 1))
-			//             {
-			//                 this->world->achieveManage("callAllWavesInLevel");
-			//             }
-			//         }
+			int tempObject = this->listOfWaves[0][0][0] / this->world->pointer1->timer;
+			//this->tempObject = this->listOfWaves[0][0][0] / this->world->pointer1->timer;
+            if (tempObject > 0)
+            {
+                this->j = std::round(this->tempObject * Main::mainClass->readXMLClass.savingOfTimeCast);
+                if (this->world->worldInterface->castGolemCounter > 0 && this->world->worldInterface->castGolemCounter < this->world->worldInterface->castGolemTimer)
+                {
+                    if (this->j > this->world->worldInterface->castGolemTimer - this->world->worldInterface->castGolemCounter)
+                    {
+                        this->tempObject1 = new SavedCastTime("golem", this->world->worldInterface->castGolemTimer - this->world->worldInterface->castGolemCounter);
+                    }
+                    else
+                    {
+                        this->tempObject1 = new SavedCastTime("golem", this->j);
+                    }
+                    this->world->worldInterface->addChild(this->tempObject1);
+                    this->world->listOfClasses.push(this->tempObject1);
+                }
+                if (this->world->worldInterface->castIcemanCounter > 0 && this->world->worldInterface->castIcemanCounter < this->world->worldInterface->castIcemanTimer)
+                {
+                    if (this->j > this->world->worldInterface->castIcemanTimer - this->world->worldInterface->castIcemanCounter)
+                    {
+                        this->tempObject1 = new SavedCastTime("iceman", this->world->worldInterface->castIcemanTimer - this->world->worldInterface->castIcemanCounter);
+                    }
+                    else
+                    {
+                        this->tempObject1 = new SavedCastTime("iceman", this->j);
+                    }
+                    this->world->worldInterface->addChild(this->tempObject1);
+                    this->world->listOfClasses.push(this->tempObject1);
+                }
+                if (this->world->worldInterface->castAirCounter > 0 && this->world->worldInterface->castAirCounter < this->world->worldInterface->castAirTimer)
+                {
+                    if (this->j > this->world->worldInterface->castAirTimer - this->world->worldInterface->castAirCounter)
+                    {
+                        this->tempObject1 = new SavedCastTime("air", this->world->worldInterface->castAirTimer - this->world->worldInterface->castAirCounter);
+                    }
+                    else
+                    {
+                        this->tempObject1 = new SavedCastTime("air", this->j);
+                    }
+                    this->world->worldInterface->addChild(this->tempObject1);
+                    this->world->listOfClasses.push(this->tempObject1);
+                }
+                this->i = 0;
+                while (this->i < this->j)
+                {
+                    this->world->worldInterface->downloadCast();
+    		        i++;
+                }
+                this->tempObject = Math.round(this->tempObject * 20);
+                if (this->tempObject > 0)
+                {
+                    this->world->money = this->world->money + this->tempObject;
+                    if (this->world->pointer1)
+                    {
+                        if (this->world->pointer1->isVisible())
+                        {
+                            MoneyAdd *tempObject1 = new Moneyadd(this->tempObject);
+                            tempObject1->setPosition(this->world->pointer1->getPosition());
+                            this->world->addChild( tempObject1);
+                        }
+                    }
+                    if (this->world->pointer2)
+                    {
+                        if (this->world->pointer2->isVisible())
+                        {
+                            MoneyAdd * tempObject1 = new MoneyAdd(this->tempObject);
+                            tempObject1->setPosition(this->world->pointer2->getPosition());
+                            this->world->addChild( tempObject1);
+                        }
+                    }
+                    if (this->world->pointer3)
+                    {
+                        if (this->world->pointer3->isVisible())
+                        {
+                            MoneyAdd * tempObject1 = new MoneyAdd(this->tempObject);
+                            tempObject1->setPosition(this->world->pointer3->getPosition());
+                            //tempObject1.x = this->world->pointer3.x;
+                            //tempObject1.y = this->world->pointer3.y;
+                            this->world->addChild(tempObject1);
+                        }
+                    }
+                    //Sounds.instance.playSoundWithVol("snd_menu_monetki", 0.95);
+                }
+                //(this->world->saveBox.gameSave.data.addit_earlyWavesCounter + 1);
+                int addit_earlyWavesCounter=this->world->saveBox->setIntValue("addit_earlyWavesCounter")+1;
+                this->world->earlyWaveCounter=addit_earlyWavesCounter;
+                this->world->saveBox->setValue("addit_earlyWavesCounter",addit_earlyWavesCounter);
+                if (addit_earlyWavesCounter == 100)
+                {
+                    this->world->achieveManage("call_100_earlyWaves");
+                }
+                if (this->world->earlyWaveCounter == (this->maxWaves - 1))
+                {
+                    this->world->achieveManage("callAllWavesInLevel");
+                }
+            }
 		}
 		else
 		{
-			//         if (!this->world->worldInterface->container.快.fastCase.buttonMode)
-			//         {
-			//             this->world->worldInterface->container.快.fastCase.buttonMode = true;
-			//         }
+			if (!this->world->worldInterface->container->快->fastCase->buttonMode)
+			{
+			    this->world->worldInterface->container->快->fastCase->buttonMode = true;
+			}
 			if (complexityLevel < 4)
 			{
 				if (this->world->nowLevel == 1)
@@ -222,33 +223,33 @@ namespace engine
 					this->world->worldInterface->blockCastIceman = false;
 					this->world->worldInterface->blockCastAir = false;
 				}
-				//this->world->worldInterface->container.lastTime.alpha = 1;
-				//this->world->worldInterface->container.lastTime.visible = false;
+				//this->world->worldInterface->container->lastTime->alpha = 1;
+				//this->world->worldInterface->container->lastTime->setVisible(false);
 			}
 		}
-		//     this->world->worldInterface->container.startWaves.gotoAndStop(21);
-		//     this->world->worldInterface->container.startWaves.startWavesCase.buttonMode = false;
-		//     if (this->world->pointer1.visible)
-		//     { 
-		//         this->world->pointer1.mouseChildren = false;
-		//         this->world->pointer1.mouseEnabled = false;
-		//     }
-		//     if (this->world->pointer2)
-		//     {
-		//         if (this->world->pointer2.visible)
-		//         { 
-		//             this->world->pointer2.mouseChildren = false;
-		//             this->world->pointer2.mouseEnabled = false;
-		//         }
-		//     }
-		//     if (this->world->pointer3)
-		//     {
-		//         if (this->world->pointer3.visible)
-		//         { 
-		//             this->world->pointer3.mouseChildren = false;
-		//             this->world->pointer3.mouseEnabled = false;
-		//         }
-		//     }
+		this->world->worldInterface->container->startWaves->gotoAndStop(21);
+		this->world->worldInterface->container->startWaves->startWavesCase.buttonMode = false;
+		if (this->world->pointer1->isVisible())
+		{ 
+		    this->world->pointer1->mouseChildren = false;
+		    this->world->pointer1->mouseEnabled = false;
+		}
+		if (this->world->pointer2)
+		{
+		    if (this->world->pointer2->isVisible())
+		    { 
+		        this->world->pointer2->mouseChildren = false;
+		        this->world->pointer2->mouseEnabled = false;
+		    }
+		}
+		if (this->world->pointer3)
+		{
+		    if (this->world->pointer3->isVisible())
+		    { 
+		        this->world->pointer3->mouseChildren = false;
+		        this->world->pointer3->mouseEnabled = false;
+		    }
+		}
 		this->nowWave++;
 		this->waveWork = true;
 		if (this->world->numRoads > 0)
@@ -729,18 +730,18 @@ namespace engine
                 this->waveWork = false;
                 if (this->nowWave < this->maxWaves)
                 {
-                    //this->world->worldInterface->container.startWaves.gotoAndStop(1);
-                    //this->world->worldInterface->container.startWaves.startWavesCase.buttonMode = true;
+                    this->world->worldInterface->container->startWaves->gotoAndStop(1);
+                    this->world->worldInterface->container->startWaves->startWavesCase.buttonMode = true;
                     this->world->pointer1->timer = this->listOfWaves[0][0][0];
                     this->world->pointer1->counter = 360 / this->listOfWaves[0][0][0];
-					//this->world->pointer1->fireAnima.rotation = 0;
+					this->world->pointer1->fireAnima->rotation = 0;
                     if (this->world->pointer2)
                     {
-                        //this->world->pointer2->fireAnima.rotation = 0;
+                        this->world->pointer2->fireAnima->rotation = 0;
                     }
                     if (this->world->pointer3)
                     {
-                        //this->world->pointer3->fireAnima.rotation = 0;
+                        this->world->pointer3->fireAnima->rotation = 0;
                     }
                     if (this->listOfWaves.size() > 0)
                     {
@@ -826,22 +827,22 @@ namespace engine
                             {
                                 if (this->world->pointer1->currentFrame == 1)
                                 {
-                                    //if (this->world->pointer1.mask1.rotation + this->world->pointer1.counter < 0)
-                                    //{
-                                    //    this->world->pointer1.mask1.rotation = this->world->pointer1.mask1.rotation + this->world->pointer1.counter;
-                                    //    this->world->pointer1.fireAnima.rotation = this->world->pointer1.fireAnima.rotation + this->world->pointer1.counter;
-                                    //}
-                                    //else
-                                    //{
-                                    //    this->tempObject = this->world->pointer1.mask1.rotation + this->world->pointer1.counter;
-                                    //    this->world->pointer1.gotoAndStop(2);
-                                    //    this->world->pointer1.mask2.rotation = this->tempObject;
-                                    //}
+                                    if (this->world->pointer1->mask1->rotation + this->world->pointer1->counter < 0)
+                                    {
+                                        this->world->pointer1->mask1->rotation = this->world->pointer1->mask1->rotation + this->world->pointer1->counter;
+                                        this->world->pointer1->fireAnima->rotation = this->world->pointer1->fireAnima->rotation + this->world->pointer1->counter;
+                                    }
+                                    else
+                                    {
+                                        this->tempObject = this->world->pointer1->mask1->rotation + this->world->pointer1->counter;
+                                        this->world->pointer1->gotoAndStop(2);
+                                        this->world->pointer1->mask2->rotation = this->tempObject;
+                                    }
                                 }
                                 else
                                 {
-                                    //this->world->pointer1.mask2.rotation = this->world->pointer1.mask2.rotation + this->world->pointer1.counter;
-                                    //this->world->pointer1.fireAnima.rotation = this->world->pointer1.fireAnima.rotation + this->world->pointer1.counter;
+                                    this->world->pointer1->mask2->rotation = this->world->pointer1->mask2->rotation + this->world->pointer1->counter;
+                                    this->world->pointer1->fireAnima->rotation = this->world->pointer1->fireAnima->rotation + this->world->pointer1->counter;
                                 }
                             }
                         }
@@ -851,22 +852,22 @@ namespace engine
                             {
                                 if (this->world->pointer2->currentFrame == 1)
                                 {
-                                    //if (this->world->pointer2.mask1.rotation + this->world->pointer1.counter < 0)
-                                    //{
-                                    //    this->world->pointer2.mask1.rotation = this->world->pointer2.mask1.rotation + this->world->pointer1.counter;
-                                    //    this->world->pointer2.fireAnima.rotation = this->world->pointer2.fireAnima.rotation + this->world->pointer1.counter;
-                                    //}
-                                    //else
-                                    //{
-                                    //    this->tempObject = this->world->pointer2.mask1.rotation + this->world->pointer1.counter;
-                                    //    this->world->pointer2.gotoAndStop(2);
-                                    //    this->world->pointer2.mask2.rotation = this->tempObject;
-                                    //}
+                                    if (this->world->pointer2->mask1->rotation + this->world->pointer1->counter < 0)
+                                    {
+                                        this->world->pointer2->mask1->rotation = this->world->pointer2->mask1->rotation + this->world->pointer1->counter;
+                                        this->world->pointer2->fireAnima->rotation = this->world->pointer2->fireAnima->rotation + this->world->pointer1->counter;
+                                    }
+                                    else
+                                    {
+                                        this->tempObject = this->world->pointer2->mask1->rotation + this->world->pointer1->counter;
+                                        this->world->pointer2->gotoAndStop(2);
+                                        this->world->pointer2->mask2->rotation = this->tempObject;
+                                    }
                                 }
                                 else
                                 {
-                                    //this->world->pointer2.mask2.rotation = this->world->pointer2.mask2.rotation + this->world->pointer1.counter;
-                                    //this->world->pointer2.fireAnima.rotation = this->world->pointer2.fireAnima.rotation + this->world->pointer1.counter;
+                                    this->world->pointer2->mask2->rotation = this->world->pointer2->mask2->rotation + this->world->pointer1->counter;
+                                    this->world->pointer2->fireAnima->rotation = this->world->pointer2->fireAnima->rotation + this->world->pointer1->counter;
                                 }
                             }
                         }
@@ -876,22 +877,22 @@ namespace engine
                             {
                                 if (this->world->pointer3->currentFrame == 1)
                                 {
-                                    //if (this->world->pointer3.mask1.rotation + this->world->pointer1.counter < 0)
-                                    //{
-                                    //    this->world->pointer3.mask1.rotation = this->world->pointer3.mask1.rotation + this->world->pointer1.counter;
-                                    //    this->world->pointer3.fireAnima.rotation = this->world->pointer3.fireAnima.rotation + this->world->pointer1.counter;
-                                    //}
-                                    //else
-                                    //{
-                                    //    this->tempObject = this->world->pointer3.mask1.rotation + this->world->pointer1.counter;
-                                    //    this->world->pointer3.gotoAndStop(2);
-                                    //    this->world->pointer3.mask2.rotation = this->tempObject;
-                                    //}
+                                    if (this->world->pointer3->mask1->rotation + this->world->pointer1->counter < 0)
+                                    {
+                                        this->world->pointer3->mask1->rotation = this->world->pointer3->mask1->rotation + this->world->pointer1->counter;
+                                        this->world->pointer3->fireAnima->rotation = this->world->pointer3->fireAnima->rotation + this->world->pointer1->counter;
+                                    }
+                                    else
+                                    {
+                                        this->tempObject = this->world->pointer3->mask1->rotation + this->world->pointer1->counter;
+                                        this->world->pointer3->gotoAndStop(2);
+                                        this->world->pointer3->mask2->rotation = this->tempObject;
+                                    }
                                 }
                                 else
                                 {
-                                    //this->world->pointer3.mask2.rotation = this->world->pointer3.mask2.rotation + this->world->pointer1.counter;
-                                    //this->world->pointer3.fireAnima.rotation = this->world->pointer3.fireAnima.rotation + this->world->pointer1.counter;
+                                    this->world->pointer3->mask2->rotation = this->world->pointer3->mask2->rotation + this->world->pointer1->counter;
+                                    this->world->pointer3->fireAnima->rotation = this->world->pointer3->fireAnima->rotation + this->world->pointer1->counter;
                                 }
                             }
                         }
@@ -903,42 +904,40 @@ namespace engine
                 }
             }
         }
-        //else if (this->world->worldInterface->lastTime.visible)
-        //{
-        //    if (this->world->worldInterface->alpha == 1)
-        //    {
-        //        if (Main::mainClass->readXMLClass.autoStartCounter > 0)
-        //        {
-        //            (Main::mainClass->readXMLClass.autoStartCounter - 1);
-        //            this->world->worldInterface->lastTime.text = int(Main::mainClass->readXMLClass.autoStartCounter / 30) + 1;
-        //            this->world->worldInterface->lastTime.setTextFormat(Main::mainClass->boldTextFormat);
-        //        }
-        //        else if (this->world->worldInterface->lastTime.alpha > 0)
-        //        {
-        //            this->world->worldInterface->lastTime.alpha = this->world->worldInterface->lastTime.alpha - 0.2;
-        //        }
-        //        else
-        //        {
-        //            this->world->worldInterface->lastTime.alpha = 1;
-        //            this->world->worldInterface->lastTime.visible = false;
-        //            this->i = 0;
-        //            while (this->i < this->world->listOfIndexes3.length)
-        //            {
-        //                
-        //                if (this->world->listOfIndexes3[this->i] == this->world->worldInterface->lastTime)
-        //                {
-        //                    this->world->listOfIndexes3.splice(this->i, 1);
-        //                    break;
-        //                }
-        //                var _loc_1:* = this;
-        //                var _loc_2:* = this->i + 1;
-        //                _loc_1.i = _loc_2;
-        //            }
-        //            this->startWaves();
-        //        }
-        //    }
-        //}
-        //return;
+        else if (this->world->worldInterface->lastTime->isVisible())
+        {
+            if (this->world->worldInterface->alpha == 1)
+            {
+                if (Main::mainClass->readXMLClass.autoStartCounter > 0)
+                {
+                    Main::mainClass->readXMLClass.autoStartCounter--;
+                    this->world->worldInterface->lastTime.text = int(Main::mainClass->readXMLClass.autoStartCounter / 30) + 1;
+                    this->world->worldInterface->lastTime.setTextFormat(Main::mainClass->boldTextFormat);
+                }
+                else if (this->world->worldInterface->lastTime->alpha > 0)
+                {
+                    this->world->worldInterface->lastTime->alpha = this->world->worldInterface->lastTime->alpha - 0.2;
+                }
+                else
+                {
+                    this->world->worldInterface->lastTime->alpha = 1;
+                    this->world->worldInterface->lastTime->setVisible(false);
+                    //this->i = 0;
+                    //while (this->i < this->world->listOfIndexes3.size())
+                    //{
+                    //    
+                    //    if (this->world->listOfIndexes3[this->i] == this->world->worldInterface->lastTime)
+                    //    {
+                    //        this->world->listOfIndexes3.splice(this->i, 1);
+                    //        break;
+                    //    }
+                    //    i++;
+                    //}
+                    this->startWaves();
+                }
+            }
+        }
+        return;
     }// end function
 
 }
