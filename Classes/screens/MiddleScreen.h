@@ -6,7 +6,7 @@
 namespace screens
 { 
     
-    class MiddleScreen_mc :public BaseNode
+    class MiddleScreen_mc :public MovieClip
 	{
 	public:
         ImageMovieClip * leftDown;

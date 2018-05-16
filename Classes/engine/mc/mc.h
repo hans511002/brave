@@ -98,9 +98,9 @@ namespace engine
         SpriteClip(BaseSprite * cont);
     };
      
-    struct AnimUpgrade_mc :public BaseNode
+    struct AnimUpgrade_mc :public MovieClip
     {
-        dragonBones::CCArmatureDisplay * cont;
+         
     };
     
     //struct AnimUpgrade_mc :public BaseNode

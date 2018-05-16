@@ -6,13 +6,7 @@
 namespace engine
 {
 	class World;
-	struct AnimUpgrade_mc :public MovieClip
-    { 
-        AnimUpgrade_mc()
-        {
-            return;
-        }// end function
-    }
+
     class InTimer :public MovieClip
     {
     public:

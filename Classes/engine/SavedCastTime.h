@@ -8,6 +8,11 @@
 
 namespace engine
 { 
+    struct SavedCastTime_mc : public MovieClip
+    {
+        MovieClip* cont;
+        SavedCastTime_mc() ;
+    };
     class SavedCastTime :public cocos2d::Sprite
     {
 	public:
@@ -21,12 +26,7 @@ namespace engine
 		int *counter ;
 		int timer = 90;
 
-        SavedCastTime(string param1, int param2)
-        {
-           //this->addEventListener(Event.ADDED_TO_STAGE,this->init);
-           this->type = param1;
-           this->savedFrames = param2;
-        }// end function
+        SavedCastTime(string param1, int param2);
 
 		bool init();
 

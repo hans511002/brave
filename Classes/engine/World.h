@@ -124,7 +124,7 @@ namespace engine
         sys::SaveBox * saveBox;
         //public var exchange : Exchange;
         int portalViewCounter;//: int = 30;
-        //public var trainingClass : Object;
+        BaseNode * trainingClass;//public var trainingClass : Object;
         //Hint* hint;// : Hint_mc;
         float startMusicVolume;//: Number = 0;
         bool bonusMoneyFlag;//: Boolean = true;
