@@ -5,6 +5,13 @@
 
 namespace engine
 {
+    struct GetAchieve_mc  :public  MovieClip
+    {
+        MovieClip* board;
+        MovieClip* icon;
+        GetAchieve_mc();
+    }
+    
 	class WorldInterface_mc :public BaseNode
 	{
 	public:

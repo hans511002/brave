@@ -10,8 +10,29 @@ namespace engine
     class World;
     namespace towers
     {
+        class BaseTowerMenu :public BaseNode 
+        {
+        public:
+            Tower * myTower;
+            bool dead;
+            World * world;
+            bool closeFlag;
+            bool openFlag;// :Boolean = true;
+            TowerRadius_mc * towerRadius;// : MovieClip;
+            bool openFastBuyUltraFlag;
+            bool closeFastBuyUltraFlag;
+            bool readyFastBuyUltraFlag;
+            int fastBuyPrice;
+            bool fastBuyBlockCost;
+            string fastBuyUltraFlag;// :String;
+            cocos2d::Point autoguidesMouse_pt;//:Point;
+            BaseNode* autoguidesObject;//:Object;
+            cocos2d::Point autoguidesObject_pt;//:Point;
+            float autoguidesObjectWidth;//:Number;
+            float autoguidesObjectHeight;//:Number;  
+        };
 
-        class TowerMenu :public BaseNode
+        class TowerMenu :public BaseTowerMenu
         {
         public:
             int i, j;// var i : int;        public var j:int;
@@ -21,30 +42,14 @@ namespace engine
             //public var tempObject3:Object;
             //public var tempObject4:Object;
             TowerMenu_mc * container;// : TowerMenu_mc;
-            Tower * myTower;
-            World * world;
-            bool dead;
-            bool closeFlag;
-            bool openFlag;// :Boolean = true;
-            TowerRadius_mc * towerRadius;// : MovieClip;
             TowerRadius_mc *  towerRadius1;// :MovieClip;
             MovieClip *  exampleUltraTower;// :MovieClip;
             bool openUltraSection;// :Boolean;
             TowerMenuHint_mc* hint;// : TowerMenuHint_mc;
             TowerMenuHint_mc* hint1;// : TowerMenuHint_mc;
             cocos2d::EventMouse *lastE;//public var lastE:MouseEvent;
-            string fastBuyUltraFlag;// :String;
-            bool openFastBuyUltraFlag;
-            bool closeFastBuyUltraFlag;
-            bool readyFastBuyUltraFlag;
-            int fastBuyPrice;
-            bool fastBuyBlockCost;
             BaseNode * training_12;// :Training_12;
-            cocos2d::Point autoguidesMouse_pt;// :Point;
-            //public var autoguidesObject:Object;
-            cocos2d::Point autoguidesObject_pt;// :Point;
-            float  autoguidesObjectWidth;// :Number;
-            float autoguidesObjectHeight;// : Number;
+    
             TowerMenu_mc *container1;
             MovieClip * starsAnima;// : AnimUpgrade_mc;
 

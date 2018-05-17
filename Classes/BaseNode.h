@@ -17,7 +17,7 @@ namespace std {
     int setText(ui::Text * tui,int val); 
     float setText(ui::Text * tui,float val); 
     int getInt(ui::Text * tui);
-    int getText(ui::Text * tui);
+    string getText(ui::Text * tui);
 }
 
 class BaseFuns

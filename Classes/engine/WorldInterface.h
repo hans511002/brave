@@ -25,11 +25,12 @@ namespace engine
         WorldInterface_mc *container; //public var container:WorldInterface_mc;
         int fasterFlag;//int fasterFlag;////public var fasterFlag:int = 0;
 		World * world;//public var world:World;
-		//CastMask_mc* castMask;
-		Common::Array<Common::Array<int> >  sphereCostHistory;//public var sphereCostHistory:Array;
+		CastMask_mc* castMask;
+		//Common::Array<Common::Array<int> >  sphereCostHistory;//public var sphereCostHistory:Array;
+		Common::Array<int>   sphereCostHistory[4];//public var sphereCostHistory:Array;
         Common::Array<units::Unit*> listOfNewEnemies;//public var listOfNewEnemies:Array;
         ui::Text * lastTime;//public var lastTime:TextField;
-        //public var listOfGetAhieve:Array;
+        Common::Array<GetAchieve_mc *> * listOfGetAhieve ;//public var listOfGetAhieve:Array;
 		Common::Array<MovieClip *> listOfAnimation;//public var listOfAnimation:Array;
         //public var sellHint:Hint_mc;
         //public var getAllHint:Hint_mc;
@@ -52,7 +53,7 @@ namespace engine
         int castIcemanTimer;////public var castIcemanTimer:int;
         int castAirTimer;////public var castAirTimer:int;
 		cocos2d::Point autoguidesMouse_pt;//public var autoguidesMouse_pt:Point;
-		cocos2d::Point autoguidesObject;//public var autoguidesObject:Object;
+		BaseNode * autoguidesObject;//public var autoguidesObject:Object;
 		cocos2d::Point autoguidesObject_pt;//public var autoguidesObject_pt:Point;
         float autoguidesObjectWidth;////public var autoguidesObjectWidth:Number;
         float autoguidesObjectHeight;////public var autoguidesObjectHeight:Number;
@@ -68,16 +69,16 @@ namespace engine
         void mouseMoveHandler(cocos2d::Event* param1);
         void mouseDownHandler(cocos2d::Event *event);
         void mouseUpHandler(cocos2d::Event* event);
-        bool onTouchBegan(Touch *touch, Event *unused_event);
-        void onTouchEnded(Touch *touch, Event *unused_event);
-        void onTouchCancelled(Touch *touch, Event *unused_event);
-        void onTouchMoved(Touch *touch, Event *unused_event);
-
-        void onMouseMove(Event *unused_event);
-        void onTouchesBegan(const std::vector<Touch*>& touches, Event *unused_event);
-        void onTouchesMoved(const std::vector<Touch*>& touches, Event *pEvent);
-        void onTouchesEnded(const std::vector<Touch*>& touches, Event *pEvent);
-        void onTouchesCancelled(const std::vector<Touch*>&touches, Event *unused_event);
+        //bool onTouchBegan(Touch *touch, Event *unused_event);
+        //void onTouchEnded(Touch *touch, Event *unused_event);
+        //void onTouchCancelled(Touch *touch, Event *unused_event);
+        //void onTouchMoved(Touch *touch, Event *unused_event);
+        //
+        //void onMouseMove(Event *unused_event);
+        //void onTouchesBegan(const std::vector<Touch*>& touches, Event *unused_event);
+        //void onTouchesMoved(const std::vector<Touch*>& touches, Event *pEvent);
+        //void onTouchesEnded(const std::vector<Touch*>& touches, Event *pEvent);
+        //void onTouchesCancelled(const std::vector<Touch*>&touches, Event *unused_event);
 
 		void addCast(string param1);
 
@@ -105,7 +106,7 @@ namespace engine
 
 		 void  barInfoView();
 
-		void barInfoManage(cocos2d::Node* param1= NULL) ;
+		void barInfoManage(BaseNode * param1= NULL) ;
 
 		void breaking()  ;
 

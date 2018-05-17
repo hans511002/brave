@@ -12,34 +12,17 @@ namespace engine
     namespace towers
     {
       
-        class UltraTowerMenu :public BaseNode
+        class UltraTowerMenu :public BaseTowerMenu
         {
         public:
             int i, j;
             //public var tempObject:Object;
             //public var tempObject1:Object;
             UltraTowerMenu_mc * container;// : UltraTowerMenu_mc;
-            Tower *myTower;
-            bool dead;
-            World *world;
-            bool closeFlag;
-            bool openFlag;//= true;
-            TowerRadius_mc * towerRadius;//:MovieClip;
             cocos2d::EventMouse * lastE;// : MouseEvent;
             float sellTax;//:Number = 0.4;
-            string fastBuyUltraFlag;//:String;
-            bool openFastBuyUltraFlag;//:Boolean;
-            bool closeFastBuyUltraFlag;//:Boolean;
-            bool readyFastBuyUltraFlag;//:Boolean;
-            int fastBuyPrice;//:int = 0;
-            bool fastBuyBlockCost;//:Boolean;
             UltraTowerMenuHint_mc* hint;//:UltraTowerMenuHint_mc;
-            cocos2d::Point autoguidesMouse_pt;//:Point;
-            BaseNode* autoguidesObject;//:Object;
-            cocos2d::Point autoguidesObject_pt;//:Point;
-            float autoguidesObjectWidth;//:Number;
-            float autoguidesObjectHeight;//:Number;
-
+           
             UltraTowerMenu(Tower *param1);
 
             bool init();
