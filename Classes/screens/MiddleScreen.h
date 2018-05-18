@@ -1,6 +1,6 @@
 ﻿#ifndef SCREENS_MIDDLESCREEN_H
 #define SCREENS_MIDDLESCREEN_H
-#include "BaseHeaders.h"
+#include "Screen.h"
  
 
 namespace screens

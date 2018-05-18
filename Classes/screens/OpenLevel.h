@@ -51,7 +51,7 @@ namespace screens
         int eyes1Counter ;
         //public var loginOrRegisterClass:LoginOrRegister;
         cocos2d::Point autoguidesMouse_pt;
-        //public var autoguidesObject:Object;
+        BaseNode * autoguidesObject;
         cocos2d::Point autoguidesObject_pt;
         float autoguidesObjectWidth;
         float autoguidesObjectHeight;

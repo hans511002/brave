@@ -6,6 +6,12 @@
 
 namespace screens
 {
+    
+    Screen:Screen():frameCounter(0),openFlag(true) ,fireFrame(0),closeFlag(false),dead(false) 
+    {
+        
+    };
+    
     MiddleScreen_mc::MiddleScreen_mc()
     {
         init();
