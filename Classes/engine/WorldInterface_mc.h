@@ -10,7 +10,7 @@ namespace engine
         MovieClip* board;
         MovieClip* icon;
         GetAchieve_mc();
-    }
+    };
     
 	class WorldInterface_mc :public BaseNode
 	{

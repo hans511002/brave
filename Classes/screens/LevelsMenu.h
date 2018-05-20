@@ -54,7 +54,7 @@ namespace screens
         int i;//public var i:int;
         //public var tempObject:Object;
         //public var tempObject1:Object;
-        LevelsMenu_mc * container:;
+        LevelsMenu_mc * container;
         int frameCounter;//public var frameCounter:int = 0;
         Common::Array<engine::Level *> listOfLevels;//public var listOfLevels:Array;
         int newLevel;//public var newLevel:int = 0;
@@ -65,11 +65,11 @@ namespace screens
         Node * mouseDownTarget;
         Common::Array<dragonBones::CCArmatureDisplay * > listOfAnimation;
         OpenLevel * openLevel;
-        Upgrades * upgradesClass;
+        //Upgrades * upgradesClass;
         //Encyclopedia * encyclopediaClass;
-        Achievements * achievementsClass;
+        //Achievements * achievementsClass;
         bool firstMusicPlay;
-        DifficultyLevel * difficultyLevel;
+        //DifficultyLevel * difficultyLevel;
         //public var training_1:Training_1;
         //public var training_9:Training_9;
         cocos2d::Point autoguidesMouse_pt;//public var autoguidesMouse_pt:Point;

@@ -12,11 +12,8 @@ namespace engine
             MovieClipSub * cont;// : MovieClip;
             MovieClipSub cont1,cont1Sphere1,cont1Sphere2;
             ui::Text * nameTXT;// : TextField;
-            CREATE_FUNC(TowerMenuHint_mc);
-            TowerMenuHint_mc()
-            {
-                return;
-            };// end function
+            //CREATE_FUNC(TowerMenuHint_mc);
+            TowerMenuHint_mc();
         };
 
         class TowerRadius_mc :public BaseSprite{

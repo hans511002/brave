@@ -25,6 +25,6 @@ namespace screens
         float autoguidesObjectWidth;
         float autoguidesObjectHeight;
         Screen();
-    }
+    };
 }
 #endif

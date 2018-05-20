@@ -30,6 +30,7 @@ namespace engine
 			bool repeatFlag;
 			int repeatCounter;
 			Roadsign_mc();
+			  
 		};
 		class RoadsignFire_mc : public Roadsign_mc
 		{

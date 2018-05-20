@@ -1,0 +1,130 @@
+<root name="buySphere" isGlobal="0" frameRate="30" version="3.0">
+ <armature name="buySphere">
+  <skin name="default">
+   <slot name="bg" z="0" parent="bg">
+    <display name="Shape/shape 12171" type="image">
+     <transform pX="16" pY="-2"/>
+    </display>
+    <display name="Shape/shape 12182" type="image">
+     <transform pX="14" pY="-3"/>
+    </display>
+   </slot>
+   <slot name="lightUp" z="1" parent="lightUp">
+    <display name="lightUp" type="image">
+     <transform/>
+    </display>
+   </slot>
+   <slot name="coin" z="2" parent="coin">
+    <display name="coin" type="armature">
+     <transform/>
+    </display>
+   </slot>
+   <slot name="buyTXT" z="3" parent="buyTXT">
+    <display name="text" type="text">
+     <transform x="-2" y="-2"/>
+     <text text="4" size="14" alignV="top" alignH="left" lineType="multiline" textType="dynamic" width="43" bold="0" face="FZJianTiS-R-GB Bold" height="37" italic="0">
+      <color g="204" r="255" b="0" a="255"/>
+     </text>
+    </display>
+   </slot>
+   <slot name="buySphereCase" z="4" parent="buySphereCase">
+    <display name="Case" type="image">
+     <transform pX="25" pY="25"/>
+    </display>
+   </slot>
+  </skin>
+  <bone name="coin">
+   <transform x="-5.75" y="13.15"/>
+  </bone>
+  <bone name="lightUp">
+   <transform x="-19.5" y="2"/>
+  </bone>
+  <bone name="bg">
+   <transform/>
+  </bone>
+  <bone name="buyTXT">
+   <transform x="8.15" y="13.25"/>
+  </bone>
+  <bone name="buySphereCase">
+   <transform scX="0.66" x="0.4" scY="0.46" y="12.5"/>
+  </bone>
+  <animation fadeInTime="0.3" autoTween="NaN" name="buySphere" duration="3" tweenEasing="NaN">
+   <timeline name="bg">
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+    <frame displayIndex="1" z="0" duration="1">
+     <transform/>
+    </frame>
+    <frame displayIndex="1" z="0" duration="1">
+     <transform/>
+    </frame>
+   </timeline>
+   <timeline name="lightUp">
+    <frame z="0" duration="2">
+     <transform/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+   </timeline>
+   <timeline name="coin">
+    <frame z="0" duration="2">
+     <transform/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+   </timeline>
+   <timeline name="buyTXT">
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform scX="0.9" x="-0.15" scY="0.9" y="-0.25"/>
+     <colorTransform bM="46" gO="0" bO="0" aM="100" rM="100" aO="0" gM="90" rO="0"/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform scX="0.9" x="-0.15" scY="0.9" y="-0.25"/>
+     <colorTransform bM="46" gO="0" bO="0" aM="100" rM="100" aO="0" gM="90" rO="0"/>
+    </frame>
+   </timeline>
+   <timeline name="buySphereCase">
+    <frame z="0" duration="2">
+     <transform/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+   </timeline>
+  </animation>
+ </armature>
+ <armature name="coin">
+  <skin name="default">
+   <slot name="coin" z="0" parent="coin">
+    <display name="Shape/shape 12176" type="image">
+     <transform pX="5.85" pY="7"/>
+    </display>
+    <display name="Shape/shape 12178" type="image">
+     <transform pX="6.65" pY="5.75"/>
+    </display>
+   </slot>
+  </skin>
+  <bone name="coin">
+   <transform/>
+  </bone>
+  <animation fadeInTime="0.3" autoTween="NaN" name="coin" duration="3" tweenEasing="NaN">
+   <timeline name="coin">
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+    <frame displayIndex="1" z="0" duration="1">
+     <transform/>
+    </frame>
+    <frame displayIndex="1" z="0" duration="1">
+     <transform/>
+    </frame>
+   </timeline>
+  </animation>
+ </armature>
+</root>

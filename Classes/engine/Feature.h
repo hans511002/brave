@@ -10,29 +10,14 @@ namespace engine
 { 
 	class World;
 	
-	struct RoadsignFire_mc : public MovieClip
-	{
-		 Common::Array<> myStack;
-		 int myPath;
-		 int myRoad;
-		 int myWay;
-		 cocos2d::Point myPoint;
-	};
-	struct RoadsignIce_mc : public MovieClip
-	{
-		 Common::Array<> myStack;
-		 int myPath;
-		 int myRoad;
-		 int myWay;
-		 cocos2d::Point myPoint;
-	};
+	 
 	struct Hint_mc : public MovieClip
     {
         ui::Text * nameTXT;
         ui::Text * noteTXT;
         ui::Text * timeTXT;
          Hint_mc();
-    }
+    };
 	
     class Feature  
     {
