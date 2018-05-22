@@ -18,13 +18,29 @@ namespace std
 			}
 		}
 	};
-    void setAnchorPoint(cocos2d::Node* node, float x, float y){
-        node->setAnchorPoint(Vec2(0, 0));
-        node->setPosition(Vec2(x, y));
+	void setAnchorPoint(cocos2d::Node* node, float x, float y, bool subset)
+	{
+        node->setAnchorPoint(Vec2(x, y)); 
+		if(subset)
+		{
+			cocos2d::Vector<Node * > chlds = node->getChildren();
+			for(size_t i = 0; i < chlds.size(); i++)
+			{
+				std::setAnchorPoint(chlds.at(i),x,y, subset);
+			}
+		}
     };
-    void setAnchorPoint(cocos2d::Node* node, const cocos2d::Vec2 & pos){
-        node->setAnchorPoint(Vec2(0, 0));
-        node->setPosition(pos);
+	void setAnchorPoint(cocos2d::Node* node, const cocos2d::Vec2 & pos, bool subset)
+	{
+        node->setAnchorPoint(pos); 
+		if(subset)
+		{
+			cocos2d::Vector<Node * > chlds = node->getChildren();
+			for(size_t i = 0; i < chlds.size(); i++)
+			{
+				std::setAnchorPoint(chlds.at(i), pos, subset);
+			}
+		}
     };
     dragonBones::CCArmatureDisplay * loadArmature(string rootPath, string armatureName, const string& dragonBonesName){
         //dragonBones::DBCCFactory::getInstance()->loadDragonBonesData(rootPath + aniName + "/skeleton.xml", aniName);
@@ -54,6 +70,32 @@ namespace std
         const auto factory = dragonBones::CCFactory::getFactory();
           return   factory->buildArmatureDisplay(armatureName, dragonBonesName);
     };
+	string setText(ui::Text * tui, string val) {
+		string old = tui->getString();
+		tui->setString(val);
+		return old;
+	};
+	int setText(ui::Text * tui, int val) {
+		string old = tui->getString();
+		char tmp[12];
+		sprintf(tmp, "%d",val);
+		tui->setText(tmp);
+		return atoi(old.c_str());
+	};
+	float setText(ui::Text * tui, float val) {
+		string old = tui->getString();
+		char tmp[15];
+		sprintf(tmp, "%0.2f", val);
+		tui->setText(tmp);
+		return atof(old.c_str());
+	};
+	int getInt(ui::Text * tui) {
+		string old = tui->getString();
+		return atoi(old.c_str());
+	};
+	string getText(ui::Text * tui) {
+		return tui->getString();
+	};
 }
 bool BaseNode::init() {
     cocos2d::Node::init();

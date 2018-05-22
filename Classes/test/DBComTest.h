@@ -82,8 +82,8 @@ protected:
 		{
 			MovieClip::gotoAndStop(cur);
 			this->clear();
-			this->cont = new MovieClipSub(this,this->getArmature()->getSlot("cont")->getChildArmature());
-			this->dust1 = new MovieClipSub(this, this->getArmature()->getSlot("dust1")->getChildArmature());
+			this->cont = new MovieClipSub(this,this->getArmature()->getSlot("cont") );
+			this->dust1 = new MovieClipSub(this, this->getArmature()->getSlot("dust1") );
 			this->dust2 = new MovieClipSub(this, "dust2" );
 			dragonBones::Armature * arm = cont->getArmature()->getSlot("blowing")->getChildArmature();
 			//while(arm == NULL)
@@ -91,7 +91,7 @@ protected:
 			//	CCLOG("blowing arm = NULL this->cont->getName=%s  ", this->cont->getArmature()->getName().c_str());
 			//	arm=cont->getArmature()->getSlot("blowing")->getChildArmature();
 			//}
-			this->contBlowing = new MovieClipSub(cont, arm);
+			this->contBlowing = new MovieClipSub(cont, cont->getArmature()->getSlot("blowing"));
 			
 			this->cont->gotoAndStop(48);
 			this->dust1->stop();

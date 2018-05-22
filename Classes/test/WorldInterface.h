@@ -81,8 +81,8 @@ protected:
 		{
 			MovieClip::gotoAndStop(cur);
 			this->clear();
-			this->cont = new MovieClipSub(this,this->getArmature()->getSlot("cont")->getChildArmature());
-			this->dust1 = new MovieClipSub(this, this->getArmature()->getSlot("dust1")->getChildArmature());
+			this->cont = new MovieClipSub(this,this->getArmature()->getSlot("cont"));
+			this->dust1 = new MovieClipSub(this, this->getArmature()->getSlot("dust1"));
 			this->dust2 = new MovieClipSub(this, "dust2" );
 			dragonBones::Armature * arm = cont->getArmature()->getSlot("blowing")->getChildArmature();
 			//while(arm == NULL)
@@ -90,7 +90,7 @@ protected:
 			//	CCLOG("blowing arm = NULL this->cont->getName=%s  ", this->cont->getArmature()->getName().c_str());
 			//	arm=cont->getArmature()->getSlot("blowing")->getChildArmature();
 			//}
-			this->contBlowing = new MovieClipSub(cont, arm);
+			this->contBlowing = new MovieClipSub(cont, cont->getArmature()->getSlot("blowing"));
 			
 			this->cont->gotoAndStop(48);
 			this->dust1->stop();
@@ -105,26 +105,108 @@ protected:
     struct BuySphere :public MovieClip
     {
         ui::Text * buyTXT;
-         MovieClipSub * coin;
-        MovieClipSub *lightUp;
+         MovieClipSub * coin; 
+		 MovieClipSub *lightUp;
         BuySphere() :MovieClip("worldinterface/","buySphere","buySphere")
         {
             buyTXT = ui::Text::create();
-            this->coin = new MovieClipSub(this, this->getArmature()->getSlot("coin")->getChildArmature());
+            this->coin = new MovieClipSub(this, this->getArmature()->getSlot("coin"));
             Node * sp = (Node *)this->getArmature()->getSlot("buyTXT")->getDisplay();
-            buyTXT->setPosition(sp->getPosition());
-            this->addChild(buyTXT);
+			//std::setAnchorPoint(sp->getParent());
+            sp->getParent()->addChild(buyTXT,9999);
+			//buyTXT->setPosition(sp->getParent()->convertToNodeSpaceAR(sp->getPosition()));
+			//std::setAnchorPoint(this, 0.5, 1);
+			this->setPosition(Vec2(0,15));
+			// x/2 y
+			
+			//std::setAnchorPoint(this->container, 0.5, 0.5,true);
+			//buyTXT->setAnchorPoint(Vec2(0, 1));
+			std::setText(buyTXT, 40); 
         };
-    };
+		void logPos(cocos2d::Point pos)
+		{
+			CCLOG("x=%f y=%f", pos.x, pos.y);
+		};
+		void logPos(cocos2d::Size pos)
+		{
+			CCLOG("w=%f h=%f", pos.width, pos.height);
+		};
+		void logPos(float x,float y)
+		{
+			CCLOG("x=%f y=%f", x, y);
+		};
+		void print()
+		{
+			Node * sp = (Node *)this->getArmature()->getSlot("buyTXT")->getDisplay();
+			CCLOG("coin.x=%f y=%f", sp->getContentSize().width, sp->getContentSize().height);
+			logPos(this->convertToNodeSpace(sp->getPosition()));
+			logPos(this->convertToWorldSpace(sp->getPosition()));
+			logPos(this->convertToNodeSpace(this->getPosition()));
+			logPos(this->convertToWorldSpace(this->getPosition()));
+			CCLOG("coin.x=%f y=%f", coin->getPosition().x, coin->getPosition().y);
+			//buySphereCase
+
+			 
+			Slot  *buySphereCaseSlot = this->getArmature()->getSlot("buySphereCase");
+			Node * buySphereCase = (Node *)buySphereCaseSlot->getDisplay();
+			logPos(this->convertToNodeSpace(buySphereCase->getPosition()));
+			logPos(this->convertToWorldSpace(buySphereCase->getPosition()));
+			logPos(buySphereCase->getContentSize());
+			logPos(coin->getContentSize());
+			logPos(buyTXT->getContentSize());
+			logPos(this->getContentSize());
+			logPos(this->getPosition());
+			logPos(this->getAnchorPoint());
+			logPos(this->getAnchorPointInPoints());
+			logPos(buySphereCase->getScaleX(), buySphereCase->getScaleY());
+			logPos(coin->getScaleX(), coin->getScaleY());
+
+			logPos(container->getContentSize());
+			logPos(container->getPosition());
+			logPos(container->getAnchorPoint());
+			logPos(container->getAnchorPointInPoints());
+			logPos(container->getScaleX(), container->getScaleY());
+
+			logPos(this->convertToNodeSpaceAR(buySphereCase->getPosition()));
+			logPos(this->convertToWorldSpaceAR(buySphereCase->getPosition()));
+			logPos(this->convertToNodeSpaceAR(buyTXT->getPosition()));
+			logPos(this->convertToWorldSpaceAR(buyTXT->getPosition()));
+			logPos(container->convertToNodeSpaceAR(container->getPosition()));
+			logPos(container->convertToWorldSpaceAR(container->getPosition()));
+			logPos(this->convertToNodeSpaceAR(container->getPosition()));
+			logPos(this->convertToWorldSpaceAR(container->getPosition()));
+
+		}
+	};
 	void onEnter()
 	{
 		BaseDemo::onEnter();
 	}
 	virtual void _onStart()
 	{
+		air = NULL;
 		currentFrame = frameCounter = 0;
-        BuySphere * sphere = new BuySphere();
-        this->addChild(sphere);
+		BuySphere * sphere = new BuySphere(); 
+		this->addChild(sphere);  
+		sphere->print();
+
+		CCLOG("coin getAnchorPoint.x=%f y=%f", sphere->getAnchorPoint().x, sphere->getAnchorPoint().y);
+		CCLOG("coin getAnchorPointInPoints.x=%f y=%f", sphere->getAnchorPointInPoints().x, sphere->getAnchorPointInPoints().y);
+		CCLOG("coin.x=%f y=%f", sphere->getPosition().x, sphere->getPosition().y);
+		 
+		Node *node = (Node*)sphere->getArmature()->getSlot("coin")->getDisplay();
+		CCLOG("coin getAnchorPoint.x=%f y=%f", node->getAnchorPoint().x, node->getAnchorPoint().y);
+		CCLOG("coin getAnchorPointInPoints.x=%f y=%f", node->getAnchorPointInPoints().x, node->getAnchorPointInPoints().y);
+		node = node->getParent();
+		CCLOG("coin getAnchorPoint.x=%f y=%f", node->getAnchorPoint().x, node->getAnchorPoint().y);
+		CCLOG("coin getAnchorPointInPoints.x=%f y=%f", node->getAnchorPointInPoints().x, node->getAnchorPointInPoints().y);
+		node = node->getParent();
+		CCLOG("coin getAnchorPoint.x=%f y=%f", node->getAnchorPoint().x, node->getAnchorPoint().y);
+		CCLOG("coin getAnchorPointInPoints.x=%f y=%f", node->getAnchorPointInPoints().x, node->getAnchorPointInPoints().y);
+		node = node->getParent();
+		CCLOG("coin getAnchorPoint.x=%f y=%f", node->getAnchorPoint().x, node->getAnchorPoint().y);
+		CCLOG("coin getAnchorPointInPoints.x=%f y=%f", node->getAnchorPointInPoints().x, node->getAnchorPointInPoints().y);
+		 
 		//this->schedule(schedule_selector(DBComTest::scheduleUpdate), (float)1 / 30.0f);
         this->schedule(static_cast<cocos2d::SEL_SCHEDULE>(&WorldInterface::scheduleUpdate));
 		return;

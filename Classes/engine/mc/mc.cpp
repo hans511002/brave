@@ -201,28 +201,21 @@ namespace engine
 		//case EventData::EventType::LOOP_COMPLETE:
 		//	break;
 	};
-	MovieClipSub::MovieClipSub(MC *_mc, dragonBones::Armature * arm, string defAniName) :mc(_mc)
+	MovieClipSub::MovieClipSub(MC *_mc, dragonBones::Slot * _slot, string defAniName) :mc(_mc)
 	{
-		this->arm = arm;
-		std::map<std::string, dragonBones::AnimationData*> & animations = this->getArmature()->_armatureData->animations;
-		for each (std::pair<std::string, dragonBones::AnimationData*> it in animations)
-		{
-			std::string aniName = it.first;
-			int totalFrames = it.second->frameCount;//+ 1;
-			float duration = it.second->duration;
-			CCLOG("load %s totalFrames=%i duration=%f", aniName.c_str(), totalFrames, duration);
-		}
-		if(defAniName == "")
-			this->defAniName = defAniName = this->getArmature()->_armatureData->defaultAnimation->name;
-		totalFrames = this->getArmature()->_armatureData->animations[defAniName]->frameCount;//+ 1;
-		float duration = this->getArmature()->_armatureData->animations[defAniName]->duration;
-		CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
-		this->gotoAndStop(1);
+		this->slot =_slot ; 
+		reinit();
 		addMcs(mc, this);
 	};
-	MovieClipSub::MovieClipSub(MC *mc, string solt, string defAniName) :mc(mc)
+	MovieClipSub::MovieClipSub(MC *mc, string soltName, string defAniName) :mc(mc)
 	{
-		this->arm = mc->getArmature()->getSlot(solt)->getChildArmature();
+		this->slot = mc->getArmature()->getSlot(soltName);
+		reinit();
+		addMcs(mc, this);
+	};
+	void MovieClipSub::reinit()
+	{
+		this->arm = this->slot->getChildArmature();
 		std::map<std::string, dragonBones::AnimationData*> & animations = this->getArmature()->_armatureData->animations;
 		for each (std::pair<std::string, dragonBones::AnimationData*> it in animations)
 		{
@@ -237,7 +230,48 @@ namespace engine
 		float duration = this->getArmature()->_armatureData->animations[defAniName]->duration;
 		CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
 		this->gotoAndStop(1);
-		addMcs(mc, this);
+	}
+	cocos2d::Point MovieClipSub::getPosition()
+	{
+		Node * sp = (Node *)this->slot->getDisplay();
+		return sp->getPosition();
+	};
+	float MovieClipSub::getPositionX()
+	{
+		Node * sp = (Node *)this->slot->getDisplay();
+		return sp->getPositionX();
+	};
+	float MovieClipSub::getPositionY()
+	{
+		Node * sp = (Node *)this->slot->getDisplay();
+		return sp->getPositionY();
+	};
+	void MovieClipSub::setPosition(cocos2d::Point pos) {
+		Node * sp = (Node *)this->slot->getDisplay();
+		sp->setPosition(pos);
+	};
+	void MovieClipSub::setPosition(float x, float y)
+	{
+		Node * sp = (Node *)this->slot->getDisplay();
+		sp->setPosition(x,y);
+	};
+	void MovieClipSub::setPositionX(float x)
+	{
+		Node * sp = (Node *)this->slot->getDisplay();
+		sp->setPositionX(x);
+	};
+	void MovieClipSub::setPositionY(float y)
+	{
+		Node * sp = (Node *)this->slot->getDisplay();
+		sp->setPositionY(y);
+	};
+	Size MovieClipSub::getContentSize() {
+		Node * sp = (Node *)this->slot->getDisplay();
+		return sp->getContentSize();
+	};
+	Node* MovieClipSub::getDisplayNode()
+	{ 
+		return (Node *)this->slot->getDisplay();
 	};
 
 	dragonBones::Armature *MovieClipSub::getArmature()

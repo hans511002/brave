@@ -9,8 +9,8 @@ using namespace cocos2d;
 
 namespace std {
     void setAnchorPoint(cocos2d::Node* node, bool subset = false);
-    void setAnchorPoint(cocos2d::Node* node, float x, float y);
-    void setAnchorPoint(cocos2d::Node* node,const cocos2d::Vec2 & pos);
+	void setAnchorPoint(cocos2d::Node* node, float x, float y, bool subset = false);
+	void setAnchorPoint(cocos2d::Node* node, const cocos2d::Vec2 & pos, bool subset = false);
     dragonBones::CCArmatureDisplay * loadArmature(string rootPath, string armatureName, const string& dragonBonesName = "");
     dragonBones::CCArmatureDisplay * buildArmature(string armatureName, const string& dragonBonesName);
     string setText(ui::Text * tui,string val); 

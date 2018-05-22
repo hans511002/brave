@@ -63,14 +63,29 @@ namespace engine
 	struct MovieClipSub :public virtual MC
 	{
 		MC *mc;
+		dragonBones::Slot * slot;
 		dragonBones::Armature* arm;
-		MovieClipSub(MC *mc, dragonBones::Armature * cont, string defAniName = "");
+		MovieClipSub(MC *mc, dragonBones::Slot * slot, string defAniName = "");
 		MovieClipSub(MC *mc, string solt, string defAniName = "");
 		virtual dragonBones::Armature *getArmature();
 		virtual dragonBones::Animation *getAnimation();
 		inline MovieClip * getMc() { return MC::getMc(mc); };
 		void setVisible(bool v);
 		void isVisible();
+		void reinit();
+		cocos2d::Point getPosition();
+		float getPositionX();
+		float getPositionY();
+		void setPosition(cocos2d::Point pos);
+		void setPosition(float x,float y);
+		void setPositionX(float x);
+		void setPositionY(float y);
+		Size getContentSize();
+		Node* getDisplayNode();
+		inline float getScale() { return getDisplayNode()->getScale(); };
+		inline float getScaleX() { return getDisplayNode()->getScaleX(); };
+		inline float getScaleY() { return getDisplayNode()->getScaleY(); };
+
 	};
 	struct ImageMovieClip :public BaseNode
     {
