@@ -96,5 +96,9 @@ public:
 	//float getStageHeight() const;
 };
 
+class CaseNode : public BaseNode{
+public:
+    CaseNode(float w, float h);
+};
 #endif
 

@@ -110,7 +110,7 @@ protected:
 	virtual void _onStart()
 	{
 		currentFrame = frameCounter = 0;
-
+        this->setName("layer");
 		air = new Air_mc("up");
 		this->addChild(air);
 		//this->schedule(schedule_selector(DBComTest::scheduleUpdate), (float)1 / 30.0f);
@@ -144,6 +144,7 @@ protected:
 		if(this->currentFrame > 500)
 		{
 			this->removeChild(air);
+            air = NULL;
 		}
 		return;
 

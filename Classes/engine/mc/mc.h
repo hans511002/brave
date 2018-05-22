@@ -59,6 +59,10 @@ namespace engine
 		virtual void onEnter();
 		virtual void onExit();
 		virtual void onceMovieHandler(cocos2d::EventCustom *event);
+
+        ui::Text * createText(string slot);
+        MovieClipSub * createMovieClipSub(string slot);
+        CaseNode * createCase(string slot);
 	};
 	struct MovieClipSub :public virtual MC
 	{

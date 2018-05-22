@@ -107,21 +107,21 @@ protected:
         ui::Text * buyTXT;
          MovieClipSub * coin; 
 		 MovieClipSub *lightUp;
+         CaseNode *buySphereCase;
         BuySphere() :MovieClip("worldinterface/","buySphere","buySphere")
         {
-            buyTXT = ui::Text::create();
-            this->coin = new MovieClipSub(this, this->getArmature()->getSlot("coin"));
-            Node * sp = (Node *)this->getArmature()->getSlot("buyTXT")->getDisplay();
-			//std::setAnchorPoint(sp->getParent());
-            sp->getParent()->addChild(buyTXT,9999);
-			//buyTXT->setPosition(sp->getParent()->convertToNodeSpaceAR(sp->getPosition()));
+            buyTXT = createText("buyTXT");
+            this->coin = createMovieClipSub("coin");
+            //std::setAnchorPoint(sp->getParent());
+            //buyTXT->setPosition(sp->getParent()->convertToNodeSpaceAR(sp->getPosition()));
 			//std::setAnchorPoint(this, 0.5, 1);
-			this->setPosition(Vec2(0,15));
+			//this->setPosition(Vec2(0,15));
 			// x/2 y
-			
+            buySphereCase= createCase("buySphereCase");
+
 			//std::setAnchorPoint(this->container, 0.5, 0.5,true);
 			//buyTXT->setAnchorPoint(Vec2(0, 1));
-			std::setText(buyTXT, 40); 
+			std::setText(buyTXT, 4); 
         };
 		void logPos(cocos2d::Point pos)
 		{
@@ -137,44 +137,19 @@ protected:
 		};
 		void print()
 		{
-			Node * sp = (Node *)this->getArmature()->getSlot("buyTXT")->getDisplay();
-			CCLOG("coin.x=%f y=%f", sp->getContentSize().width, sp->getContentSize().height);
-			logPos(this->convertToNodeSpace(sp->getPosition()));
-			logPos(this->convertToWorldSpace(sp->getPosition()));
-			logPos(this->convertToNodeSpace(this->getPosition()));
-			logPos(this->convertToWorldSpace(this->getPosition()));
-			CCLOG("coin.x=%f y=%f", coin->getPosition().x, coin->getPosition().y);
-			//buySphereCase
+			//Node * sp = (Node *)this->getArmature()->getSlot("buyTXT")->getDisplay();
+			//CCLOG("coin.x=%f y=%f", sp->getContentSize().width, sp->getContentSize().height);
+			//logPos(this->convertToNodeSpace(sp->getPosition()));
+			//logPos(this->convertToWorldSpace(sp->getPosition()));
+			//logPos(this->convertToNodeSpace(this->getPosition()));
+			//logPos(this->convertToWorldSpace(this->getPosition()));
+			//CCLOG("coin.x=%f y=%f", coin->getPosition().x, coin->getPosition().y);
+			////buySphereCase
+   //         const dragonBones::Transform * ortrans = this->getArmature()->getBone("buySphereCase")->getOrigin();
+   //         CCLOG("buySphereCase.x=%f y=%f", this->getArmature()->getBone("buySphereCase")->getOffset()->x, this->getArmature()->getBone("buySphereCase")->getOffset()->y);
+   //         
 
-			 
-			Slot  *buySphereCaseSlot = this->getArmature()->getSlot("buySphereCase");
-			Node * buySphereCase = (Node *)buySphereCaseSlot->getDisplay();
-			logPos(this->convertToNodeSpace(buySphereCase->getPosition()));
-			logPos(this->convertToWorldSpace(buySphereCase->getPosition()));
-			logPos(buySphereCase->getContentSize());
-			logPos(coin->getContentSize());
-			logPos(buyTXT->getContentSize());
-			logPos(this->getContentSize());
-			logPos(this->getPosition());
-			logPos(this->getAnchorPoint());
-			logPos(this->getAnchorPointInPoints());
-			logPos(buySphereCase->getScaleX(), buySphereCase->getScaleY());
-			logPos(coin->getScaleX(), coin->getScaleY());
-
-			logPos(container->getContentSize());
-			logPos(container->getPosition());
-			logPos(container->getAnchorPoint());
-			logPos(container->getAnchorPointInPoints());
-			logPos(container->getScaleX(), container->getScaleY());
-
-			logPos(this->convertToNodeSpaceAR(buySphereCase->getPosition()));
-			logPos(this->convertToWorldSpaceAR(buySphereCase->getPosition()));
-			logPos(this->convertToNodeSpaceAR(buyTXT->getPosition()));
-			logPos(this->convertToWorldSpaceAR(buyTXT->getPosition()));
-			logPos(container->convertToNodeSpaceAR(container->getPosition()));
-			logPos(container->convertToWorldSpaceAR(container->getPosition()));
-			logPos(this->convertToNodeSpaceAR(container->getPosition()));
-			logPos(this->convertToWorldSpaceAR(container->getPosition()));
+			  
 
 		}
 	};

@@ -58,6 +58,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // create a scene. it's an autorelease object
     //auto scene = HelloDragonBones::createScene();
     auto scene = WorldInterface::createScene();
+    //auto scene = DBComTest::createScene();
    
     
      //auto scene1 = AnimationBase::createScene();

@@ -123,13 +123,15 @@ cocos2d::Point BaseNode::localToGlobal(cocos2d::Point pt)
 
 void BaseNode::onEnter()
 {
-    if(schdt){
+    Node::onEnter();
+    if (schdt){
         this->schedule(schedule_selector(BaseNode::scheduleUpdate),AnimationInterval);
     }
 };
 void BaseNode::onExit()
 {
     cleanup();
+    Node::onExit();
 };
 void BaseNode::cleanup()
 {
@@ -272,3 +274,10 @@ float BaseNode::getOpacity(){
     int ops=Node::getOpacity();
     return (double)ops/255;
 };
+
+
+CaseNode::CaseNode(float w, float h){
+    this->setContentSize(Size(w, h));
+};
+
+

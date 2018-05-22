@@ -166,6 +166,35 @@ namespace engine
 	{
 		return container->getArmature();
 	};
+    ui::Text * MovieClip::createText(string slotName){
+        Slot * slot = this->getArmature()->getSlot(slotName);
+        if (slot){
+            ui::Text * txt = ui::Text::create();
+            Node * sp = (Node *)slot->getDisplay();
+            sp->addChild(txt);
+            return txt;
+        }
+        return NULL;
+    };
+    MovieClipSub * MovieClip::createMovieClipSub(string slotName)
+    {
+        return  new MovieClipSub(this, this->getArmature()->getSlot(slotName));
+    }
+    CaseNode * MovieClip::createCase(string slotName){
+        Slot * slot = this->getArmature()->getSlot(slotName);
+        if (slot){
+            Node * sp = (Node *)slot->getDisplay();
+            Size size=sp->getContentSize();
+            const dragonBones::Transform * ortrans = slot->getOrigin();
+            CaseNode *butCase = new CaseNode(ortrans->scaleX*size.width, ortrans->scaleY*size.height);
+            butCase->init();
+            sp->addChild(butCase);
+            butCase->setName(slotName);
+            butCase->setPosition(ortrans->x, ortrans->y);
+            return butCase;
+        }
+        return NULL;
+    };
 
 	void MovieClip::onEnter()
 	{
