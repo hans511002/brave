@@ -10,8 +10,8 @@
 namespace engine
 {
     class World;
-	class MovieClip;
-	class MovieClipSub;
+	struct MovieClip;
+	struct MovieClipSub;
 	struct MC
 	{
         int currentFrame;
@@ -50,7 +50,7 @@ namespace engine
 		virtual dragonBones::Animation *getAnimation();
 		MovieClip() :container(NULL){};
 		virtual bool init();
-		
+		virtual void setName(string name);
 		void addMcs(MovieClipSub * mcs);
 		virtual void destroy(MovieClipSub * & mcs);
 		virtual void destroy();
@@ -62,7 +62,7 @@ namespace engine
 
         ui::Text * createText(string slot);
         MovieClipSub * createMovieClipSub(string slot);
-        CaseNode * createCase(string slot);
+		BaseNode * createCase(string slot, bool draw = false);
 	};
 	struct MovieClipSub :public virtual MC
 	{

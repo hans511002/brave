@@ -6,6 +6,12 @@ const double BaseNode::AnimationInterval = 1.0f / (double)Main::FrameRate;
 
 namespace std
 {
+	Common::Log gLog;
+	void writeLog(string msg, int type)
+	{
+		Common::writeLog(msg, &gLog, BaseFuns::debug, type);
+	};
+
 	void setAnchorPoint(Node* node,bool subset)
 	{
 		node->setAnchorPoint(Vec2(0, 0));
@@ -52,9 +58,9 @@ namespace std
 		}
 		string dbName = dragonBonesName == "" ? armatureName : dragonBonesName;
         const auto factory = dragonBones::CCFactory::getFactory();
-		factory->loadDragonBonesData(rootPath + dbName + "/" + dbName + "_ske.json");
+		factory->loadDragonBonesData(rootPath + dbName + "/" + dbName + "_ske.json", dbName);
         //factory->loadDragonBonesData(rootPath + armatureName + "/" + armatureName + "_ske.dbbin");
-		factory->loadTextureAtlasData(rootPath + dbName + "/" + dbName + "_tex.json");
+		factory->loadTextureAtlasData(rootPath + dbName + "/" + dbName + "_tex.json", dbName);
         //const std::string& armatureName, const std::string& dragonBonesName = "", const std::string& skinName = "", const std::string& textureAtlasName = ""
 		const auto armatureDisplay = factory->buildArmatureDisplay(armatureName, dbName);
         //scene->addChild(armatureDisplay);
@@ -66,10 +72,11 @@ namespace std
         //armatureDisplay->setVisible(true);
         return armatureDisplay;
     };
-    dragonBones::CCArmatureDisplay * buildArmature(string armatureName, const string& dragonBonesName){
-        const auto factory = dragonBones::CCFactory::getFactory();
-          return   factory->buildArmatureDisplay(armatureName, dragonBonesName);
-    };
+	dragonBones::CCArmatureDisplay * buildArmature(string armatureName, const string& dragonBonesName)
+	{
+		const auto factory = dragonBones::CCFactory::getFactory();
+		return   factory->buildArmatureDisplay(armatureName, dragonBonesName);
+	};
 	string setText(ui::Text * tui, string val) {
 		string old = tui->getString();
 		tui->setString(val);
@@ -114,8 +121,15 @@ BaseSprite::BaseSprite(string file){
 }
 
 bool BaseNode::hitTest(const Vec2 &pt){
+	if(!mouseEnabled)return false;
     return BaseNode::hitTest(this, pt);
 };
+bool BaseNode::hitTest(cocos2d::EventMouse* event)
+{
+	if(!mouseEnabled)return false;
+	return BaseNode::hitTest(this, event);
+};
+
 cocos2d::Point BaseNode::localToGlobal(cocos2d::Point pt)
 {
 	return this->convertToWorldSpace(pt);
@@ -148,19 +162,7 @@ void BaseNode::enterFrameHandler(float dt)
 {
 };
 
-void BaseNode::touchAction(cocos2d::Ref *ref, cocos2d::ui::TouchEventType type){
-    Node * node = (Node *)ref;
-    string target = node->getName();
-    CCLOG("touchAction %s type=%i", target.c_str(),type);
-};
 
-void BaseNode::mouseDownHandler(cocos2d::Event *event)//(event:MouseEvent) : void
-{
-    Node * node = event->getCurrentTarget();
-    Event::Type tp = event->getType();
-    string target = node->getName();
-    CCLOG("BaseNode::mouseDownHandler %s", target.c_str());
-}
 void BaseSprite::mouseDownHandler(cocos2d::Event *event)//(event:MouseEvent) : void
 {
     Node * node = event->getCurrentTarget();
@@ -176,7 +178,7 @@ void BaseLayer::mouseDownHandler(cocos2d::Event *event)//(event:MouseEvent) : vo
     CCLOG("BaseLayer::mouseDownHandler %s", target.c_str());
 }
 
-  bool BaseLayer::init()
+bool BaseLayer::init()
 {
 	if(!LayerColor::initWithColor(cocos2d::Color4B(105, 105, 105, 255)))
 	{
@@ -191,7 +193,7 @@ void BaseLayer::mouseDownHandler(cocos2d::Event *event)//(event:MouseEvent) : vo
 	return true;
 }
 
-  cocos2d::Label* BaseFuns::createText(const std::string& string)
+cocos2d::Label* BaseFuns::createText(const std::string& string)
 {
 	const auto text = cocos2d::Label::create();
 	text->setPosition(0.0f, -(getStageHeight() * 0.5f - 100.f));
@@ -201,68 +203,71 @@ void BaseLayer::mouseDownHandler(cocos2d::Event *event)//(event:MouseEvent) : vo
 	return text;
 }
 
-  float  BaseFuns::getStageWidth() const
+float  BaseFuns::getStageWidth() const
 {
 	const auto& stageSize = cocos2d::Director::getInstance()->getVisibleSize();
 	return stageSize.width;
 }
 
-  float  BaseFuns::getStageHeight() const
+float  BaseFuns::getStageHeight() const
 {
 	const auto& stageSize = cocos2d::Director::getInstance()->getVisibleSize();
 	return stageSize.height;
 }
-  dragonBones::CCArmatureDisplay * BaseFuns::loadArmature(string rootPath, string armatureName, const string& dragonBonesName){
-      return std::loadArmature(rootPath, armatureName, dragonBonesName);
-  };
-  dragonBones::CCArmatureDisplay * BaseFuns::buildArmature(string armatureName, const string& dragonBonesName){
-          return std::buildArmature(armatureName, dragonBonesName);
-    };
+dragonBones::CCArmatureDisplay * BaseFuns::loadArmature(string rootPath, string armatureName, const string& dragonBonesName)
+{
+	return std::loadArmature(rootPath, armatureName, dragonBonesName);
+};
+dragonBones::CCArmatureDisplay * BaseFuns::buildArmature(string armatureName, const string& dragonBonesName)
+{
+	return std::buildArmature(armatureName, dragonBonesName);
+};
 
-  bool BaseNode::hitTest(Node * node, const Vec2 &pt)
-  {
-	  Vec2 nsp = node->convertToNodeSpace(pt);//convertToNodeSpace convertToNodeSpaceAR
-      Rect bb;
-      bb.size = node->getContentSize();
-	  if(bb.size.height == 0 || bb.size.width == 0)
-	  {
-		  if(node->getChildrenCount())
-		  {
-			  cocos2d::Vector<Node*> cld = node->getChildren();
-			  for each (Node *n in cld)
-			  {
-				  Size t = (n->getContentSize() - bb.size);
-				  if(t.width>0 || t.height>0)
-				  {
+bool BaseNode::hitTest(Node * node, const Vec2 &pt)
+{
+	Vec2 nsp = node->convertToNodeSpace(pt);//convertToNodeSpace convertToNodeSpaceAR
+	Rect bb;
+	bb.size = node->getContentSize();
+	if(bb.size.height == 0 || bb.size.width == 0)
+	{
+		if(node->getChildrenCount())
+		{
+			cocos2d::Vector<Node*> cld = node->getChildren();
+			for each (Node *n in cld)
+			{
+				Size t = (n->getContentSize() - bb.size);
+				if(t.width > 0 && t.height > 0)
 					bb.size = n->getContentSize();
-				  }
-			  }
-		  }
-	  }
-      if (bb.containsPoint(nsp))
-      {
-          return true;
-      }
-      return false;
-  }
-  bool BaseNode::hitTest(cocos2d::Node * node, cocos2d::EventMouse* e){
-      return hitTest(node, e->getLocationInView());
-  };
-
-
-  bool BaseSprite::atStage()
-  {
-    const auto& stageSize = cocos2d::Director::getInstance()->getVisibleSize();
-    Vec2 p = this->getPosition();
-    return p.x < 0 || p.y<0 || p.x > stageSize.width || p.y > stageSize.height;
+			}
+		}
+	}
+	if(bb.containsPoint(nsp))
+	{
+		return true;
+	}
+	return false;
 }
-  bool BaseNode::atStage()
-  {
-    const auto& stageSize = cocos2d::Director::getInstance()->getVisibleSize();
-    Vec2 p = this->getPosition();
-    return p.x < 0 || p.y<0 || p.x > stageSize.width || p.y > stageSize.height;
-}
+bool BaseNode::hitTest(cocos2d::Node * node, cocos2d::EventMouse* e)
+{
+	return hitTest(node, e->getLocationInView());
+};
 
+
+bool BaseSprite::atStage()
+{
+	const auto& stageSize = cocos2d::Director::getInstance()->getVisibleSize();
+	Vec2 p = this->getPosition(); 
+	p = this->convertToWorldSpace(p);
+	return !(p.x < 0 || p.y<0 || p.x > stageSize.width || p.y > stageSize.height);
+}
+bool BaseNode::atStage()
+{
+	const auto& stageSize = cocos2d::Director::getInstance()->getVisibleSize();
+	Vec2 p = this->getPosition();
+	p = this->convertToWorldSpace(p);
+	// p = this->convertToNodeSpace(p);
+	return !(p.x < 0 || p.y<0 || p.x > stageSize.width || p.y > stageSize.height);
+}
 
 void BaseNode::setOpacity(float op)
 {
@@ -275,9 +280,177 @@ float BaseNode::getOpacity(){
     return (double)ops/255;
 };
 
-
-CaseNode::CaseNode(float w, float h){
-    this->setContentSize(Size(w, h));
+BaseNode::BaseNode(float w, float h, bool draw)
+{
+	this->setContentSize(Size(w, h));
+	enableMouseHandler();
+	if(draw)drawRange();
+};
+void BaseNode::setSize(float w, float h, bool draw)
+{
+	this->setContentSize(Size(w, h));
+	if(draw)drawRange();
+}
+void BaseNode::drawRange()
+{
+	DrawNode* drawNode = DrawNode::create();
+	this->addChild(drawNode);
+	Vec2 pos = this->getPosition();
+	Size size = this->getContentSize();
+	Vec2 dest(pos.x + size.width, pos.y + size.height);
+	drawNode->drawRect(pos, dest, Color4F::GREEN);
+	drawNode->setScaleX(this->getScaleX());
+	drawNode->setScaleY(this->getScaleY());
 };
 
+void BaseNode::enableMouseHandler()
+{
+	if(!this->mouseEnabled)this->mouseEnabled = true;
+	const auto listener = cocos2d::EventListenerMouse::create();
+	listener->onMouseDown = CC_CALLBACK_1(BaseNode::mouseDownHandler, this);
+	listener->onMouseUp = CC_CALLBACK_1(BaseNode::mouseUpHandler, this);
+	listener->onMouseMove = CC_CALLBACK_1(BaseNode::mouseMovedHandler, this);
+	listener->onMouseScroll = CC_CALLBACK_1(BaseNode::mouseScrollHandler, this);
+	getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+};
+void BaseNode::enableKeyHandler()
+{
+	const auto keyboardListener = cocos2d::EventListenerKeyboard::create();
+	keyboardListener->onKeyPressed = CC_CALLBACK_2(BaseNode::keyBoardPressedHandler, this);
+	keyboardListener->onKeyReleased = CC_CALLBACK_2(BaseNode::keyBoardReleasedHandler, this);
+	getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
+}
+void BaseNode::keyBoardPressedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event)
+{
+	logInfo("keyBoardPressed keyCode", (int)keyCode);
+	switch(keyCode)
+	{
+	case cocos2d::EventKeyboard::KeyCode::KEY_A:
+	case cocos2d::EventKeyboard::KeyCode::KEY_LEFT_ARROW:
+		//_left = true;
+		break;
+	case cocos2d::EventKeyboard::KeyCode::KEY_D:
+	case cocos2d::EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
+		//_right = true;
+		break;
+	case cocos2d::EventKeyboard::KeyCode::KEY_W:
+	case cocos2d::EventKeyboard::KeyCode::KEY_UP_ARROW:
+		//->jump();
+		break;
+	case cocos2d::EventKeyboard::KeyCode::KEY_S:
+	case cocos2d::EventKeyboard::KeyCode::KEY_DOWN_ARROW:
+		//->squat(true);
+		break;
+	case cocos2d::EventKeyboard::KeyCode::KEY_Q:
+		//->switchWeaponR();
+		break;
+	case cocos2d::EventKeyboard::KeyCode::KEY_E:
+		//->switchWeaponL();
+		break;
+	case cocos2d::EventKeyboard::KeyCode::KEY_SPACE:
+		//->switchSkin();
+		break;
+	}
 
+};
+void BaseNode::keyBoardReleasedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event)
+{
+	logInfo("keyBoardReleased keyCode", (int)keyCode);
+	switch(keyCode)
+	{
+	case cocos2d::EventKeyboard::KeyCode::KEY_A:
+	case cocos2d::EventKeyboard::KeyCode::KEY_LEFT_ARROW:
+		//_left = false;		 
+		break; 
+	case cocos2d::EventKeyboard::KeyCode::KEY_D:
+	case cocos2d::EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
+		//_right = false; 
+		break;
+	case cocos2d::EventKeyboard::KeyCode::KEY_W:
+	case cocos2d::EventKeyboard::KeyCode::KEY_UP_ARROW:
+		break;
+	case cocos2d::EventKeyboard::KeyCode::KEY_S:
+	case cocos2d::EventKeyboard::KeyCode::KEY_DOWN_ARROW:
+		//_player->squat(false);
+		break;
+	}
+};
+void BaseNode::mouseDownHandler(cocos2d::EventMouse* event)
+{
+	//loginfo("mouseDown",event); 
+	if(!this->hitTest(event))return;
+	logInfo("hitTest true : mouse in ", this->getName());
+	Node * node = event->getCurrentTarget();
+	string name = node->getName();
+	while(node->getParent())
+	{
+ 		node = node->getParent();
+		name = node->getName() + "."+name ;
+	}
+	logInfo("event targetNamePath", name);
+
+	int mouseButton = event->getMouseButton();
+	if(mouseButton == 1)
+		rightMouseDownHandler(event);
+}; 
+void BaseNode::mouseUpHandler(cocos2d::EventMouse* event)
+{
+	if(!this->hitTest(event))return;
+	int mouseButton = event->getMouseButton();
+	//loginfo("mouseUp", event);
+	if(mouseButton == 1)rightMouseUpHandler(event);
+};
+void BaseNode::mouseMovedHandler(cocos2d::EventMouse* event)
+{
+	if(!this->hitTest(event))return;
+	//logInfo("mouseMoved", event->getCursorX(), event->getCursorY());
+};
+void BaseNode::mouseScrollHandler(cocos2d::EventMouse* event)
+{
+	if(!this->hitTest(event))return;
+};
+void BaseNode::rightMouseDownHandler(cocos2d::EventMouse* event)
+{
+};
+void BaseNode::rightMouseUpHandler(cocos2d::EventMouse* event)
+{
+};
+void BaseNode::touchAction(cocos2d::Ref *ref, cocos2d::ui::TouchEventType type)
+{
+	Node * node = (Node *)ref;
+	string target = node->getName();
+	CCLOG("touchAction %s type=%i", target.c_str(), type);
+};
+
+void BaseFuns::loginfo(string mouseType,cocos2d::EventMouse* event)
+{
+	if(!BaseFuns::debug)return;
+	int mouseButton = event->getMouseButton();
+	logInfo(mouseType, event->getCursorX(), event->getCursorY());
+	logInfo("         mouseButton", mouseButton);
+
+	Node * node = event->getCurrentTarget();
+	Event::Type tp = event->getType();
+	string target = node->getName();
+	logInfo("         node->getPosition()", node->getPosition());
+	logInfo("         target", target);
+
+	
+	cocos2d::Point pt = event->getLocationInView();
+	logInfo("         event getLocation", event->getLocation());
+	logInfo("         event getLocationInView", pt);
+	cocos2d::Point  nsp = node->convertToNodeSpaceAR(pt);
+	logInfo("         event convertToNodeSpaceAR", nsp);
+	nsp = node->convertToNodeSpace(pt);
+	logInfo("         event convertToNodeSpace", nsp);
+
+	Rect bb;
+	bb.size = node->getContentSize();
+	logInfo("         getContentSize", bb.size);
+	if(bb.containsPoint(nsp))
+	{
+		logInfo("         nsp in bb", bb.size);
+ 		
+	}
+};
+bool BaseFuns::debug = true;

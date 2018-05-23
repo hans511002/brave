@@ -117,6 +117,7 @@ namespace engine
 		BaseNode::init();
 		addChild(container);
 		this->autorelease();
+		this->setName(cont->getName());
 	};
 	MovieClip::MovieClip(string rootPath, string armName, string dbName, string defAniName) :isOnce(false)
 	{
@@ -129,10 +130,20 @@ namespace engine
 		BaseNode::init();
 		addChild(container);
 		this->autorelease();
+		this->setName(armName); 
 	};
 	MovieClip::MovieClip(string armName, string dbName, BaseNode *node)
 	{
-		MovieClip(armName, dbName);
+		this->container = this->loadArmature(armName, dbName);
+		if(defAniName == "")
+			this->defAniName = defAniName = container->getArmature()->_armatureData->defaultAnimation->name;
+		totalFrames = container->getArmature()->_armatureData->animations[defAniName]->frameCount;//+ 1;
+		float duration = container->getArmature()->_armatureData->animations[defAniName]->duration;
+		CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
+		BaseNode::init();
+		addChild(container);
+		this->autorelease();
+		this->setName(armName); 
 		if(node)node->addChild(this);
 	};
 	MovieClip::MovieClip(World * world, string rootPath, string armName, string dbName, string defAniName)
@@ -172,6 +183,8 @@ namespace engine
             ui::Text * txt = ui::Text::create();
             Node * sp = (Node *)slot->getDisplay();
             sp->addChild(txt);
+			txt->setName(slotName);
+			sp->setName(slotName);
             return txt;
         }
         return NULL;
@@ -180,22 +193,43 @@ namespace engine
     {
         return  new MovieClipSub(this, this->getArmature()->getSlot(slotName));
     }
-    CaseNode * MovieClip::createCase(string slotName){
+	BaseNode * MovieClip::createCase(string slotName, bool draw)
+	{
         Slot * slot = this->getArmature()->getSlot(slotName);
         if (slot){
             Node * sp = (Node *)slot->getDisplay();
             Size size=sp->getContentSize();
-            const dragonBones::Transform * ortrans = slot->getOrigin();
-            CaseNode *butCase = new CaseNode(ortrans->scaleX*size.width, ortrans->scaleY*size.height);
+			const dragonBones::Transform * origin = slot->getOrigin();
+			const dragonBones::Transform * offset = slot->getOffset();
+			BaseNode *butCase = new BaseNode(origin->scaleX*size.width, origin->scaleY*size.height);
             butCase->init();
-            sp->addChild(butCase);
-            butCase->setName(slotName);
-            butCase->setPosition(ortrans->x, ortrans->y);
+			//butCase->mouseEnabled = true;
+			//sp->getParent()->addChild(butCase,9999);
+			sp->addChild(butCase,9999);
+			sp->setName(slotName);
+			butCase->setName(slotName);
+			butCase->setPosition(origin->x, origin->y);
+			if(draw)
+			{
+				DrawNode* drawNode = DrawNode::create();
+				butCase->addChild(drawNode);
+				Vec2 pos = butCase->getPosition();
+				size = butCase->getContentSize();
+				Vec2 dest(pos.x + size.width, pos.y + size.height);
+				drawNode->drawRect(pos, dest, Color4F::GREEN);
+				drawNode->setScaleX(butCase->getScaleX());
+				drawNode->setScaleY(butCase->getScaleY());
+			}
             return butCase;
         }
         return NULL;
     };
 
+	void MovieClip::setName(string name)
+	{
+		BaseNode::setName(name);
+		this->container->setName(name);
+	};
 	void MovieClip::onEnter()
 	{
 		if(world && isOnce)

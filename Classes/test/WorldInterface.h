@@ -19,17 +19,19 @@
 class WorldInterface : BaseDemo
 {
 public:
-    CREATE_FUNC(WorldInterface);
+	CREATE_FUNC(WorldInterface);
 
 	static cocos2d::Scene* createScene()
 	{
 		auto scene = cocos2d::Scene::create();
-        auto layer = WorldInterface::create();
+		auto layer = WorldInterface::create();
 		scene->addChild(layer);
+		layer->setName("WorldInterface");
+		scene->setName("scene");
 		return scene;
 	}
 	dragonBones::CCArmatureDisplay* armatureDisplay;
-protected: 
+protected:
 
 	class Air_mc :public MovieClip
 	{
@@ -44,10 +46,10 @@ protected:
 			//dust1 = new MovieClipSub(this->getArmature()->getSlot("dust1")->getChildArmature());
 			//dust2 = new MovieClipSub(this->getArmature()->getSlot("dust2")->getChildArmature());
 			//this->getArmature()->getBone("dust1")->setVisible(false);
-			 
-		/*};
-		void onEnter()
-		{*/
+
+			/*};
+			void onEnter()
+			{*/
 			if(this->direction == "left")
 			{
 				this->gotoAndStop(1);
@@ -64,7 +66,7 @@ protected:
 			{
 				this->gotoAndStop(4);
 			}
-			
+
 		};
 		void clear()
 		{
@@ -81,9 +83,9 @@ protected:
 		{
 			MovieClip::gotoAndStop(cur);
 			this->clear();
-			this->cont = new MovieClipSub(this,this->getArmature()->getSlot("cont"));
+			this->cont = new MovieClipSub(this, this->getArmature()->getSlot("cont"));
 			this->dust1 = new MovieClipSub(this, this->getArmature()->getSlot("dust1"));
-			this->dust2 = new MovieClipSub(this, "dust2" );
+			this->dust2 = new MovieClipSub(this, "dust2");
 			dragonBones::Armature * arm = cont->getArmature()->getSlot("blowing")->getChildArmature();
 			//while(arm == NULL)
 			//{
@@ -91,7 +93,7 @@ protected:
 			//	arm=cont->getArmature()->getSlot("blowing")->getChildArmature();
 			//}
 			this->contBlowing = new MovieClipSub(cont, cont->getArmature()->getSlot("blowing"));
-			
+
 			this->cont->gotoAndStop(48);
 			this->dust1->stop();
 			this->dust2->stop();
@@ -101,28 +103,21 @@ protected:
 		};
 	};
 	Air_mc * air;
- 
-    struct BuySphere :public MovieClip
-    {
-        ui::Text * buyTXT;
-         MovieClipSub * coin; 
-		 MovieClipSub *lightUp;
-         CaseNode *buySphereCase;
-        BuySphere() :MovieClip("worldinterface/","buySphere","buySphere")
-        {
-            buyTXT = createText("buyTXT");
-            this->coin = createMovieClipSub("coin");
-            //std::setAnchorPoint(sp->getParent());
-            //buyTXT->setPosition(sp->getParent()->convertToNodeSpaceAR(sp->getPosition()));
-			//std::setAnchorPoint(this, 0.5, 1);
-			//this->setPosition(Vec2(0,15));
-			// x/2 y
-            buySphereCase= createCase("buySphereCase");
 
-			//std::setAnchorPoint(this->container, 0.5, 0.5,true);
-			//buyTXT->setAnchorPoint(Vec2(0, 1));
-			std::setText(buyTXT, 4); 
-        };
+	struct BuySphere :public MovieClip
+	{
+		ui::Text * buyTXT;
+		MovieClipSub * coin;
+		MovieClipSub *lightUp;
+		BaseNode *buySphereCase;
+		BuySphere() :MovieClip("worldinterface/", "buySphere", "buySphere")
+		{
+			//this->gotoAndStop(2);
+			buySphereCase = createCase("buySphereCase",true);
+			buyTXT = createText("buyTXT");
+			this->coin = createMovieClipSub("coin");
+			std::setText(buyTXT, 4);
+		};
 		void logPos(cocos2d::Point pos)
 		{
 			CCLOG("x=%f y=%f", pos.x, pos.y);
@@ -131,13 +126,13 @@ protected:
 		{
 			CCLOG("w=%f h=%f", pos.width, pos.height);
 		};
-		void logPos(float x,float y)
+		void logPos(float x, float y)
 		{
 			CCLOG("x=%f y=%f", x, y);
 		};
 		void print()
 		{
-			//Node * sp = (Node *)this->getArmature()->getSlot("buyTXT")->getDisplay();
+			Node * sp = (Node *)this->getArmature()->getSlot("buyTXT")->getDisplay();
 			//CCLOG("coin.x=%f y=%f", sp->getContentSize().width, sp->getContentSize().height);
 			//logPos(this->convertToNodeSpace(sp->getPosition()));
 			//logPos(this->convertToWorldSpace(sp->getPosition()));
@@ -145,14 +140,33 @@ protected:
 			//logPos(this->convertToWorldSpace(this->getPosition()));
 			//CCLOG("coin.x=%f y=%f", coin->getPosition().x, coin->getPosition().y);
 			////buySphereCase
-   //         const dragonBones::Transform * ortrans = this->getArmature()->getBone("buySphereCase")->getOrigin();
-   //         CCLOG("buySphereCase.x=%f y=%f", this->getArmature()->getBone("buySphereCase")->getOffset()->x, this->getArmature()->getBone("buySphereCase")->getOffset()->y);
-   //         
-
-			  
-
+			const dragonBones::Transform * origin = this->getArmature()->getBone("buySphereCase")->getOrigin();
+			const dragonBones::Transform * offset = this->getArmature()->getBone("buySphereCase")->getOffset();
+			CCLOG(" origin.x=%f y=%f", origin->x, origin->y);
+			CCLOG(" offset.x=%f y=%f", offset->x, offset->y);
+			CCLOG("buySphereCase.x=%f y=%f", this->getArmature()->getBone("buySphereCase")->getOffset()->x, this->getArmature()->getBone("buySphereCase")->getOffset()->y);
 		}
 	};
+	
+	struct CaseTest :public BaseNode
+	{
+		CaseTest()
+		{
+			BaseNode::init();
+		}
+		virtual void mouseDownHandler(cocos2d::EventMouse* event) {
+			if(!this->hitTest(event))return;
+			BaseNode::mouseDownHandler(event);
+			loginfo("mouseDown", event);
+		};
+		virtual void mouseUpHandler(cocos2d::EventMouse* event) {
+			if(!this->hitTest(event))return;
+			loginfo("mouseUp", event);
+			BaseNode::mouseUpHandler(event);
+		};
+
+	};
+
 	void onEnter()
 	{
 		BaseDemo::onEnter();
@@ -161,36 +175,48 @@ protected:
 	{
 		air = NULL;
 		currentFrame = frameCounter = 0;
-		BuySphere * sphere = new BuySphere(); 
-		this->addChild(sphere);  
-		sphere->print();
+		BuySphere * sphere = new BuySphere();
+		sphere->setName("sphere");
+		this->addChild(sphere);
 
-		CCLOG("coin getAnchorPoint.x=%f y=%f", sphere->getAnchorPoint().x, sphere->getAnchorPoint().y);
-		CCLOG("coin getAnchorPointInPoints.x=%f y=%f", sphere->getAnchorPointInPoints().x, sphere->getAnchorPointInPoints().y);
-		CCLOG("coin.x=%f y=%f", sphere->getPosition().x, sphere->getPosition().y);
-		 
-		Node *node = (Node*)sphere->getArmature()->getSlot("coin")->getDisplay();
-		CCLOG("coin getAnchorPoint.x=%f y=%f", node->getAnchorPoint().x, node->getAnchorPoint().y);
-		CCLOG("coin getAnchorPointInPoints.x=%f y=%f", node->getAnchorPointInPoints().x, node->getAnchorPointInPoints().y);
-		node = node->getParent();
-		CCLOG("coin getAnchorPoint.x=%f y=%f", node->getAnchorPoint().x, node->getAnchorPoint().y);
-		CCLOG("coin getAnchorPointInPoints.x=%f y=%f", node->getAnchorPointInPoints().x, node->getAnchorPointInPoints().y);
-		node = node->getParent();
-		CCLOG("coin getAnchorPoint.x=%f y=%f", node->getAnchorPoint().x, node->getAnchorPoint().y);
-		CCLOG("coin getAnchorPointInPoints.x=%f y=%f", node->getAnchorPointInPoints().x, node->getAnchorPointInPoints().y);
-		node = node->getParent();
-		CCLOG("coin getAnchorPoint.x=%f y=%f", node->getAnchorPoint().x, node->getAnchorPoint().y);
-		CCLOG("coin getAnchorPointInPoints.x=%f y=%f", node->getAnchorPointInPoints().x, node->getAnchorPointInPoints().y);
-		 
+		BuySphere * sphere1 = new BuySphere( );
+		sphere1->setName("sphere1");
+		this->addChild(sphere1);
+		sphere1->enableMouseHandler();
+		sphere1->setSize(40, 30);
+		sphere1->setPosition(-100, -100);
+		//sphere->print();
+		//this->addChild(sphere->buySphereCase);
+		sphere1->buySphereCase->setPosition(-100, -100);
+		//sphere->buySphereCase->setPosition(100, 100);
+
+		CaseTest *Case = new CaseTest();
+		this->addChild(Case);
+		Case->setSize(50, 50);
+		Case->drawRange();
+		Case->setPosition(-150, -100);
+		Case->enableMouseHandler();
+		Case->setName("Case");
+		//Sprite * sprite=Sprite::create("background1.png");
+		//sprite->setContentSize(sphere->buySphereCase->getContentSize());
+		//sphere->buySphereCase->addChild(sprite);
+
+		//Node * node = sphere->buySphereCase;
+		//while(node)
+		//{
+		//	CCLOG("%s getScaleX.x=%f y=%f",node->getName().c_str(), node->getScaleX(), node->getScaleY());
+		//	node = node->getParent();
+		//}
+	 
 		//this->schedule(schedule_selector(DBComTest::scheduleUpdate), (float)1 / 30.0f);
-        this->schedule(static_cast<cocos2d::SEL_SCHEDULE>(&WorldInterface::scheduleUpdate));
+		this->schedule(static_cast<cocos2d::SEL_SCHEDULE>(&WorldInterface::scheduleUpdate));
 		return;
 	}
-    int currentFrame;
-    bool dir;
-    int totalFrames, frameCounter;
-    string direction;
-    MovieClip *mc;
+	int currentFrame;
+	bool dir;
+	int totalFrames, frameCounter;
+	string direction;
+	MovieClip *mc;
 
 	virtual void  scheduleUpdate(float dt)
 	{
@@ -205,7 +231,7 @@ protected:
 		currentFrame++;
 		if(air)
 		{
-			int cur=(this->currentFrame / 100) %air->totalFrames +1;
+			int cur = (this->currentFrame / 100) % air->totalFrames + 1;
 			if(cur != air->currentFrame)
 				air->gotoAndStop(cur);
 		}
