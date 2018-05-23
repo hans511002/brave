@@ -12,7 +12,7 @@ namespace std
 		Common::writeLog(msg, &gLog, BaseFuns::debug, type);
 	};
 
-	void setAnchorPoint(Node* node,bool subset)
+	void setAnchorPoint(Node* node, bool subset)
 	{
 		node->setAnchorPoint(Vec2(0, 0));
 		if(subset)
@@ -20,25 +20,25 @@ namespace std
 			cocos2d::Vector<Node * > chlds = node->getChildren();
 			for(size_t i = 0; i < chlds.size(); i++)
 			{
-                std::setAnchorPoint(chlds.at(i), subset);
+				std::setAnchorPoint(chlds.at(i), subset);
 			}
 		}
 	};
 	void setAnchorPoint(cocos2d::Node* node, float x, float y, bool subset)
 	{
-        node->setAnchorPoint(Vec2(x, y)); 
+		node->setAnchorPoint(Vec2(x, y));
 		if(subset)
 		{
 			cocos2d::Vector<Node * > chlds = node->getChildren();
 			for(size_t i = 0; i < chlds.size(); i++)
 			{
-				std::setAnchorPoint(chlds.at(i),x,y, subset);
+				std::setAnchorPoint(chlds.at(i), x, y, subset);
 			}
 		}
-    };
+	};
 	void setAnchorPoint(cocos2d::Node* node, const cocos2d::Vec2 & pos, bool subset)
 	{
-        node->setAnchorPoint(pos); 
+		node->setAnchorPoint(pos);
 		if(subset)
 		{
 			cocos2d::Vector<Node * > chlds = node->getChildren();
@@ -47,82 +47,91 @@ namespace std
 				std::setAnchorPoint(chlds.at(i), pos, subset);
 			}
 		}
-    };
-    dragonBones::CCArmatureDisplay * loadArmature(string rootPath, string armatureName, const string& dragonBonesName){
-        //dragonBones::DBCCFactory::getInstance()->loadDragonBonesData(rootPath + aniName + "/skeleton.xml", aniName);
-        //dragonBones::DBCCFactory::getInstance()->loadTextureAtlas(rootPath + aniName + "/texture.xml", aniName);
-        //return dragonBones::DBCCFactory::getInstance()->buildArmatureNode(aniName);
+	};
+	dragonBones::CCArmatureDisplay * loadArmature(string rootPath, string armatureName, const string& dragonBonesName)
+	{
+		//dragonBones::DBCCFactory::getInstance()->loadDragonBonesData(rootPath + aniName + "/skeleton.xml", aniName);
+		//dragonBones::DBCCFactory::getInstance()->loadTextureAtlas(rootPath + aniName + "/texture.xml", aniName);
+		//return dragonBones::DBCCFactory::getInstance()->buildArmatureNode(aniName);
 		if(!rootPath.empty() && rootPath.at(rootPath.length() - 1) != '/')
 		{
 			rootPath += "/";
 		}
 		string dbName = dragonBonesName == "" ? armatureName : dragonBonesName;
-        const auto factory = dragonBones::CCFactory::getFactory();
+		const auto factory = dragonBones::CCFactory::getFactory();
 		factory->loadDragonBonesData(rootPath + dbName + "/" + dbName + "_ske.json", dbName);
-        //factory->loadDragonBonesData(rootPath + armatureName + "/" + armatureName + "_ske.dbbin");
+		//factory->loadDragonBonesData(rootPath + armatureName + "/" + armatureName + "_ske.dbbin");
 		factory->loadTextureAtlasData(rootPath + dbName + "/" + dbName + "_tex.json", dbName);
-        //const std::string& armatureName, const std::string& dragonBonesName = "", const std::string& skinName = "", const std::string& textureAtlasName = ""
+		//const std::string& armatureName, const std::string& dragonBonesName = "", const std::string& skinName = "", const std::string& textureAtlasName = ""
 		const auto armatureDisplay = factory->buildArmatureDisplay(armatureName, dbName);
-        //scene->addChild(armatureDisplay);
-        ////std::string name = armatureDisplay->getArmature()->getSlot("handL")->getName();
-        //armatureDisplay->getAnimation()->play("icemandead", 999999);
-        //armatureDisplay->setAnchorPoint(cocos2d::Vec2(0, 0));
-        ////std::setAnchorPoint(armatureDisplay,0,0);
-        //armatureDisplay->setPosition(200.0f, 200.0f);
-        //armatureDisplay->setVisible(true);
-        return armatureDisplay;
-    };
+		//scene->addChild(armatureDisplay);
+		////std::string name = armatureDisplay->getArmature()->getSlot("handL")->getName();
+		//armatureDisplay->getAnimation()->play("icemandead", 999999);
+		//armatureDisplay->setAnchorPoint(cocos2d::Vec2(0, 0));
+		////std::setAnchorPoint(armatureDisplay,0,0);
+		//armatureDisplay->setPosition(200.0f, 200.0f);
+		//armatureDisplay->setVisible(true);
+		return armatureDisplay;
+	};
 	dragonBones::CCArmatureDisplay * buildArmature(string armatureName, const string& dragonBonesName)
 	{
 		const auto factory = dragonBones::CCFactory::getFactory();
 		return   factory->buildArmatureDisplay(armatureName, dragonBonesName);
 	};
-	string setText(ui::Text * tui, string val) {
+	string setText(ui::Text * tui, string val)
+	{
 		string old = tui->getString();
 		tui->setString(val);
 		return old;
 	};
-	int setText(ui::Text * tui, int val) {
+	int setText(ui::Text * tui, int val)
+	{
 		string old = tui->getString();
 		char tmp[12];
-		sprintf(tmp, "%d",val);
+		sprintf(tmp, "%d", val);
 		tui->setText(tmp);
 		return atoi(old.c_str());
 	};
-	float setText(ui::Text * tui, float val) {
+	float setText(ui::Text * tui, float val)
+	{
 		string old = tui->getString();
 		char tmp[15];
 		sprintf(tmp, "%0.2f", val);
 		tui->setText(tmp);
 		return atof(old.c_str());
 	};
-	int getInt(ui::Text * tui) {
+	int getInt(ui::Text * tui)
+	{
 		string old = tui->getString();
 		return atoi(old.c_str());
 	};
-	string getText(ui::Text * tui) {
+	string getText(ui::Text * tui)
+	{
 		return tui->getString();
 	};
 }
-bool BaseNode::init() {
-    cocos2d::Node::init();
-	std::setAnchorPoint(this);
-	return true;
-}; 
-bool BaseSprite::init()
+bool BaseNode::init()
 {
-    this->autorelease();
+	cocos2d::Node::init();
 	std::setAnchorPoint(this);
 	return true;
 };
-BaseSprite::BaseSprite(string file){
-    this->initWithFile(file);
-    init();
+bool BaseSprite::init()
+{
+	this->autorelease();
+	std::setAnchorPoint(this);
+	return true;
+};
+BaseSprite::BaseSprite(string file)
+{
+	this->initWithFile(file);
+	init();
 }
 
-bool BaseNode::hitTest(const Vec2 &pt){
+bool BaseNode::hitTest(const Vec2 &pt)
+{
 	if(!mouseEnabled)return false;
-    return BaseNode::hitTest(this, pt);
+	return BaseNode::hitTest(this, pt);
 };
 bool BaseNode::hitTest(cocos2d::EventMouse* event)
 {
@@ -137,26 +146,28 @@ cocos2d::Point BaseNode::localToGlobal(cocos2d::Point pt)
 
 void BaseNode::onEnter()
 {
-    Node::onEnter();
-    if (schdt){
-        this->schedule(schedule_selector(BaseNode::scheduleUpdate),AnimationInterval);
-    }
+	Node::onEnter();
+	if(schdt)
+	{
+		this->schedule(schedule_selector(BaseNode::scheduleUpdate), AnimationInterval);
+	}
 };
 void BaseNode::onExit()
 {
-    cleanup();
-    Node::onExit();
+	cleanup();
+	Node::onExit();
 };
 void BaseNode::cleanup()
 {
-    if(schdt){
+	if(schdt)
+	{
 		this->unschedule(schedule_selector(BaseNode::scheduleUpdate));
-    }
-    Node::cleanup();
+	}
+	Node::cleanup();
 };
 void BaseNode::scheduleUpdate(float dt)
 {
-    enterFrameHandler(dt);
+	enterFrameHandler(dt);
 };
 void BaseNode::enterFrameHandler(float dt)
 {
@@ -165,17 +176,17 @@ void BaseNode::enterFrameHandler(float dt)
 
 void BaseSprite::mouseDownHandler(cocos2d::Event *event)//(event:MouseEvent) : void
 {
-    Node * node = event->getCurrentTarget();
-    Event::Type tp = event->getType();
-    string target = node->getName();
-    CCLOG("BaseSprite::mouseDownHandler %s", target.c_str());
+	Node * node = event->getCurrentTarget();
+	Event::Type tp = event->getType();
+	string target = node->getName();
+	CCLOG("BaseSprite::mouseDownHandler %s", target.c_str());
 }
 void BaseLayer::mouseDownHandler(cocos2d::Event *event)//(event:MouseEvent) : void
 {
-    Node * node = event->getCurrentTarget();
-    Event::Type tp = event->getType();
-    string target = node->getName();
-    CCLOG("BaseLayer::mouseDownHandler %s", target.c_str());
+	Node * node = event->getCurrentTarget();
+	Event::Type tp = event->getType();
+	string target = node->getName();
+	CCLOG("BaseLayer::mouseDownHandler %s", target.c_str());
 }
 
 bool BaseLayer::init()
@@ -256,7 +267,7 @@ bool BaseNode::hitTest(cocos2d::Node * node, cocos2d::EventMouse* e)
 bool BaseSprite::atStage()
 {
 	const auto& stageSize = cocos2d::Director::getInstance()->getVisibleSize();
-	Vec2 p = this->getPosition(); 
+	Vec2 p = this->getPosition();
 	p = this->convertToWorldSpace(p);
 	return !(p.x < 0 || p.y<0 || p.x > stageSize.width || p.y > stageSize.height);
 }
@@ -271,13 +282,14 @@ bool BaseNode::atStage()
 
 void BaseNode::setOpacity(float op)
 {
-    int ops=op*255;
-    if(ops>255)ops=255;
-    Node::setOpacity(ops);
+	int ops = op * 255;
+	if(ops > 255)ops = 255;
+	Node::setOpacity(ops);
 };
-float BaseNode::getOpacity(){
-    int ops=Node::getOpacity();
-    return (double)ops/255;
+float BaseNode::getOpacity()
+{
+	int ops = Node::getOpacity();
+	return (double)ops / 255;
 };
 
 BaseNode::BaseNode(float w, float h, bool draw)
@@ -303,6 +315,31 @@ void BaseNode::drawRange()
 	drawNode->setScaleY(this->getScaleY());
 };
 
+std::MouseEvent::MouseEvent(MouseEventType mouseEventCode) : cocos2d::EventMouse(mouseEventCode)
+{
+};
+inline void std::MouseEvent::setCurrentTarget(Node* target)
+{
+	cocos2d::EventMouse::setCurrentTarget(target);
+};
+std::MouseEvent* BaseNode::buildMousrEvent(Node * node, int mouseButton)
+{
+	std::MouseEvent* e = new std::MouseEvent(cocos2d::EventMouse::MouseEventType::MOUSE_DOWN);
+	e->setMouseButton(mouseButton);
+	e->getCurrentTarget();
+	//setCurrentTarget
+	if(node)
+	{
+		Vec2 pos = node->convertToWorldSpace(node->getPosition());
+		e->setCursorPosition(pos.x, pos.y);
+	}
+	else
+	{
+		Vec2 pos = this->convertToWorldSpace(this->getPosition());
+		e->setCursorPosition(pos.x, pos.y);
+	}
+	return e;
+}
 void BaseNode::enableMouseHandler()
 {
 	if(!this->mouseEnabled)this->mouseEnabled = true;
@@ -361,7 +398,7 @@ void BaseNode::keyBoardReleasedHandler(cocos2d::EventKeyboard::KeyCode keyCode, 
 	case cocos2d::EventKeyboard::KeyCode::KEY_A:
 	case cocos2d::EventKeyboard::KeyCode::KEY_LEFT_ARROW:
 		//_left = false;		 
-		break; 
+		break;
 	case cocos2d::EventKeyboard::KeyCode::KEY_D:
 	case cocos2d::EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
 		//_right = false; 
@@ -377,6 +414,7 @@ void BaseNode::keyBoardReleasedHandler(cocos2d::EventKeyboard::KeyCode keyCode, 
 };
 void BaseNode::mouseDownHandler(cocos2d::EventMouse* event)
 {
+
 	//loginfo("mouseDown",event); 
 	if(!this->hitTest(event))return;
 	logInfo("hitTest true : mouse in ", this->getName());
@@ -384,15 +422,15 @@ void BaseNode::mouseDownHandler(cocos2d::EventMouse* event)
 	string name = node->getName();
 	while(node->getParent())
 	{
- 		node = node->getParent();
-		name = node->getName() + "."+name ;
+		node = node->getParent();
+		name = node->getName() + "." + name;
 	}
 	logInfo("event targetNamePath", name);
 
 	int mouseButton = event->getMouseButton();
 	if(mouseButton == 1)
 		rightMouseDownHandler(event);
-}; 
+};
 void BaseNode::mouseUpHandler(cocos2d::EventMouse* event)
 {
 	if(!this->hitTest(event))return;
@@ -422,7 +460,7 @@ void BaseNode::touchAction(cocos2d::Ref *ref, cocos2d::ui::TouchEventType type)
 	CCLOG("touchAction %s type=%i", target.c_str(), type);
 };
 
-void BaseFuns::loginfo(string mouseType,cocos2d::EventMouse* event)
+void BaseFuns::loginfo(string mouseType, cocos2d::EventMouse* event)
 {
 	if(!BaseFuns::debug)return;
 	int mouseButton = event->getMouseButton();
@@ -435,7 +473,7 @@ void BaseFuns::loginfo(string mouseType,cocos2d::EventMouse* event)
 	logInfo("         node->getPosition()", node->getPosition());
 	logInfo("         target", target);
 
-	
+
 	cocos2d::Point pt = event->getLocationInView();
 	logInfo("         event getLocation", event->getLocation());
 	logInfo("         event getLocationInView", pt);
@@ -450,7 +488,7 @@ void BaseFuns::loginfo(string mouseType,cocos2d::EventMouse* event)
 	if(bb.containsPoint(nsp))
 	{
 		logInfo("         nsp in bb", bb.size);
- 		
+
 	}
 };
 bool BaseFuns::debug = true;

@@ -1,3 +1,4 @@
+#pragma warning(disable:4819 4003)
 #include "AppDelegate.h"
 
 #include "test/HelloDragonBones.h"
