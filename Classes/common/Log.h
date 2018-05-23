@@ -48,11 +48,11 @@ namespace Common
 		String ExecParameter;
 		bool isFirst;
 		static const string TypeName[];
-		Log()
+        Log(string _AppName="")
 		{
 			//cout<<"初始化日志对象"<<endl;
 			LogDirName="log";
-			AppName="";
+            AppName = _AppName;
 			isFirst=true;
 		};
 		~Log(){};

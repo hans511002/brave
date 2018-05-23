@@ -22,7 +22,9 @@ namespace std
 	int getInt(ui::Text * tui);
 	string getText(ui::Text * tui);
 
-	extern Common::Log gLog;//全局日志记录对象
+
+    extern Common::Log * gLog;
+
 	void writeLog(string msg, int type);
 	class MouseEvent : public cocos2d::EventMouse
 	{
@@ -45,49 +47,12 @@ public:
 	inline string setText(ui::Text * tui, string val) { return std::setText(tui, val); };
 	inline int setText(ui::Text * tui, int val) { return std::setText(tui, val); };
 	inline float setText(ui::Text * tui, float val) { return std::setText(tui, val); };
-	inline void logInfo(string label, cocos2d::Point pos)
-	{
-		if(!BaseFuns::debug)return;
-		CCLOG("%s x=%f y=%f", label.c_str(), pos.x, pos.y);
-		writeLog(label + " x=" + Common::String(pos.x) + " y=" + Common::String(pos.y), 1);
-	};
-	inline void logInfo(string label, cocos2d::Size pos)
-	{
-		if(!BaseFuns::debug)return;
-		CCLOG("%s w=%f h=%f", label.c_str(), pos.width, pos.height);
-		writeLog(label + " w=" + Common::String(pos.width) + " h=" + Common::String(pos.height), 1);
-	};
-	inline void logInfo(string label, float x, float y = 0)
-	{
-		if(!BaseFuns::debug)return;
-		CCLOG("%s x=%f y=%f", label.c_str(), x, y);
-		writeLog(label + " x=" + Common::String(x) + " y=" + Common::String(y), 1);
-	};
-	inline void logInfo(string label, int x)
-	{
-		if(!BaseFuns::debug)return;
-		CCLOG("%s=%d ", label.c_str(), x);
-		writeLog(label + "=" + Common::String(x), 1);
-	};
-	inline void logInfo(string label, int x, int y)
-	{
-		if(!BaseFuns::debug)return;
-		CCLOG("%s[%d , %d]", label.c_str(), x, y);
-		writeLog(label + " x=" + Common::String(x) + " y=" + Common::String(y), 1);
-	};
-	inline void logInfo(string label1, string label2 = "", string label3 = "", string label4 = "", string label5 = "", string label6 = "")
-	{
-		if(!BaseFuns::debug)return;
-		string msg = label1;
-		if(!label2.empty())
-			msg += "=" + label2;
-		if(!label3.empty() && !label4.empty())
-			msg += label3 + "=" + label4;
-		if(!label5.empty() && !label6.empty())
-			msg += label5 + "=" + label6;
-		CCLOG(msg.c_str());
-		writeLog(msg, 1);
-	};
+    inline void logInfo(string label, cocos2d::Point pos);
+    inline void logInfo(string label, cocos2d::Size pos);
+    inline void logInfo(string label, float x, float y = 0);
+    inline void logInfo(string label, int x);
+    inline void logInfo(string label, int x, int y);
+    inline void logInfo(string label1, string label2 = "", string label3 = "", string label4 = "", string label5 = "", string label6 = "");
 #define LOGINFO(format, ...)      cocos2d::log(format, ##__VA_ARGS__)
 	void loginfo(string mouseType, cocos2d::EventMouse* event);
 };
