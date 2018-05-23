@@ -205,7 +205,7 @@ bool BaseLayer::init()
     return true;
 }
 
-cocos2d::Label* BaseFuns::createText(const std::string& string)
+cocos2d::Label* BaseFuns::createLabel(const std::string& string)
 {
     const auto text = cocos2d::Label::create();
     text->setPosition(0.0f, -(getStageHeight() * 0.5f - 100.f));

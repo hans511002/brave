@@ -30,6 +30,10 @@ namespace engine
 		void addMcs(MC * mc, MovieClipSub * mcs);
 		MovieClip * getMc(MC * mc);
 
+        ui::Text * createText(string slot);
+        MovieClipSub * createMovieClipSub(string slot);
+        BaseNode * createCase(string slot, bool draw = false);
+
 	};
 	struct MovieClip :public virtual BaseNode, public virtual MC
     {
@@ -52,17 +56,17 @@ namespace engine
 		virtual bool init();
 		virtual void setName(string name);
 		void addMcs(MovieClipSub * mcs);
-		virtual void destroy(MovieClipSub * & mcs);
+        virtual void destroy(MovieClipSub * & mcs);
+        virtual void remove(MovieClipSub * ms);
+
 		virtual void destroy();
 		//增加删除事件
 		inline bool setOnceMove(World * world);
 		virtual void onEnter();
 		virtual void onExit();
 		virtual void onceMovieHandler(cocos2d::EventCustom *event);
+        virtual void gotoAndStop(int cf, string aniName = "");
 
-        ui::Text * createText(string slot);
-        MovieClipSub * createMovieClipSub(string slot);
-		BaseNode * createCase(string slot, bool draw = false);
 	};
 	struct MovieClipSub :public virtual MC
 	{
@@ -121,11 +125,20 @@ namespace engine
     {
          
     };
-    
+
     //struct AnimUpgrade_mc :public BaseNode
     //{
     //    dragonBones::CCArmatureDisplay * cont;
     //};
+
+#define MC_STRUCT(clsName) inline  clsName(dragonBones::CCArmatureDisplay * cont, string defAniName = ""):MovieClip(cont,defAniName){};\
+    inline  clsName(string rootPath, string armName, string dbName, string defAniName = "") :MovieClip(rootPath, armName, dbName, defAniName){}; \
+    inline  clsName(World * world, string rootPath, string armName, string dbName, string defAniName = "") :MovieClip(world, rootPath, armName, dbName, defAniName){}; \
+    inline  clsName(string armName, string dbName, BaseNode *node = NULL) :MovieClip(armName, dbName, node){};
+
+#define MCSUB_STRUCT(clsName) inline clsName(MC *_mc, string soltName, string defAniName = "") :MovieClipSub(_mc, soltName, defAniName){};\
+    inline clsName(MC *_mc, dragonBones::Slot * slot, string defAniName = "") :MovieClipSub(_mc, slot, defAniName){};
+
 }
 
 #endif

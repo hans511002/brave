@@ -7,6 +7,10 @@ using namespace cocostudio;
 
 namespace engine
 {
+  
+    
+    
+
     WorldInterface_mc::WorldInterface_mc() :barinfoback(NULL), healthbar(NULL), moneybar(NULL), butCastAir(NULL), butCastGolem(NULL), allSphereBack(NULL),
         butCastIceman(NULL), fastbtn(NULL), faster(NULL), buyFire(NULL), buyIce(NULL), buyLevin(NULL), buyStone(NULL), buyGetAll(NULL), allSphere(NULL),
         pause(NULL), startWaves(NULL), stoneBacklight(NULL), levinBacklight(NULL), iceBacklight(NULL), fireBacklight(NULL), iceBack(NULL), fireBack(NULL),

@@ -39,7 +39,7 @@ class BaseFuns
 {
 public:
 	static bool debug;
-	cocos2d::Label* createText(const std::string& string);
+    cocos2d::Label* createLabel(const std::string& string);
 	float getStageWidth() const;
 	float getStageHeight() const;
 	dragonBones::CCArmatureDisplay * loadArmature(string rootPath, string armatureName, const string& dragonBonesName = "");

@@ -68,6 +68,53 @@ namespace engine
 			mvc->addMcs(mcs);
 		}
 	};
+    ui::Text * MC::createText(string slotName){
+        Slot * slot = this->getArmature()->getSlot(slotName);
+        if (slot){
+            ui::Text * txt = ui::Text::create();
+            Node * sp = (Node *)slot->getDisplay();
+            sp->addChild(txt);
+			txt->setName(slotName);
+			sp->setName(slotName);
+            return txt;
+        }
+        return NULL;
+    };
+    MovieClipSub * MC::createMovieClipSub(string slotName)
+    {
+        return  new MovieClipSub(this, this->getArmature()->getSlot(slotName));
+    }
+    BaseNode * MC::createCase(string slotName, bool draw)
+	{
+        Slot * slot = this->getArmature()->getSlot(slotName);
+        if (slot){
+            Node * sp = (Node *)slot->getDisplay();
+            Size size=sp->getContentSize();
+			const dragonBones::Transform * origin = slot->getOrigin();
+			const dragonBones::Transform * offset = slot->getOffset();
+			BaseNode *butCase = new BaseNode(origin->scaleX*size.width, origin->scaleY*size.height);
+            butCase->init();
+			//butCase->mouseEnabled = true;
+			//sp->getParent()->addChild(butCase,9999);
+			sp->addChild(butCase,9999);
+			sp->setName(slotName);
+			butCase->setName(slotName);
+			butCase->setPosition(origin->x, origin->y);
+			if(draw)
+			{
+				DrawNode* drawNode = DrawNode::create();
+				butCase->addChild(drawNode);
+				Vec2 pos = butCase->getPosition();
+				size = butCase->getContentSize();
+				Vec2 dest(pos.x + size.width, pos.y + size.height);
+				drawNode->drawRect(pos, dest, Color4F::GREEN);
+				drawNode->setScaleX(butCase->getScaleX());
+				drawNode->setScaleY(butCase->getScaleY());
+			}
+            return butCase;
+        }
+        return NULL;
+    };
 
 	void MovieClip::addMcs(MovieClipSub * mcs)
 	{
@@ -90,12 +137,31 @@ namespace engine
 			if(ms == this->mcs[i])
 			{
 				this->mcs.remove(i);
-				delete ms;
-				ms = NULL;
-				break;
+                delete ms;
+                ms = NULL;
+                break;
 			}
 		}
 	};
+    void MovieClip::remove(MovieClipSub * ms)
+    {
+        for (int i = 0; i < this->mcs.size(); i++)
+        {
+            if (ms == this->mcs[i])
+            {
+                this->mcs.remove(i);
+                break;
+            }
+        }
+    };
+    void MovieClip::gotoAndStop(int cf, string aniName){
+        MC::gotoAndStop(cf, aniName);
+        int l = this->mcs.size();
+        for (int i = 0; i < l; i++)
+        {
+            this->mcs[i]->reinit();
+        }
+    };
 
 
 	MovieClip::MovieClip(dragonBones::CCArmatureDisplay * cont, string defAniName) :isOnce(false)
@@ -177,53 +243,6 @@ namespace engine
 	{
 		return container->getArmature();
 	};
-    ui::Text * MovieClip::createText(string slotName){
-        Slot * slot = this->getArmature()->getSlot(slotName);
-        if (slot){
-            ui::Text * txt = ui::Text::create();
-            Node * sp = (Node *)slot->getDisplay();
-            sp->addChild(txt);
-			txt->setName(slotName);
-			sp->setName(slotName);
-            return txt;
-        }
-        return NULL;
-    };
-    MovieClipSub * MovieClip::createMovieClipSub(string slotName)
-    {
-        return  new MovieClipSub(this, this->getArmature()->getSlot(slotName));
-    }
-	BaseNode * MovieClip::createCase(string slotName, bool draw)
-	{
-        Slot * slot = this->getArmature()->getSlot(slotName);
-        if (slot){
-            Node * sp = (Node *)slot->getDisplay();
-            Size size=sp->getContentSize();
-			const dragonBones::Transform * origin = slot->getOrigin();
-			const dragonBones::Transform * offset = slot->getOffset();
-			BaseNode *butCase = new BaseNode(origin->scaleX*size.width, origin->scaleY*size.height);
-            butCase->init();
-			//butCase->mouseEnabled = true;
-			//sp->getParent()->addChild(butCase,9999);
-			sp->addChild(butCase,9999);
-			sp->setName(slotName);
-			butCase->setName(slotName);
-			butCase->setPosition(origin->x, origin->y);
-			if(draw)
-			{
-				DrawNode* drawNode = DrawNode::create();
-				butCase->addChild(drawNode);
-				Vec2 pos = butCase->getPosition();
-				size = butCase->getContentSize();
-				Vec2 dest(pos.x + size.width, pos.y + size.height);
-				drawNode->drawRect(pos, dest, Color4F::GREEN);
-				drawNode->setScaleX(butCase->getScaleX());
-				drawNode->setScaleY(butCase->getScaleY());
-			}
-            return butCase;
-        }
-        return NULL;
-    };
 
 	void MovieClip::setName(string name)
 	{
@@ -278,6 +297,7 @@ namespace engine
 	};
 	void MovieClipSub::reinit()
 	{
+        if (this->arm == this->slot->getChildArmature())return;
 		this->arm = this->slot->getChildArmature();
 		std::map<std::string, dragonBones::AnimationData*> & animations = this->getArmature()->_armatureData->animations;
 		for each (std::pair<std::string, dragonBones::AnimationData*> it in animations)

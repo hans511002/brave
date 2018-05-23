@@ -1,21 +1,8 @@
 #include "BaseDemo.h"
 #include "BaseHeaders.h"
 #include "BaseNode.h"
-/**
-* How to use
-* 1. Load data.
-*    factory.loadDragonBonesData();
-*    factory.loadTextureAtlasData();
-*
-* 2. Build armature.
-*    armatureDisplay = factory.buildArmatureDisplay("armatureName");
-*
-* 3. Play animation.
-*    armatureDisplay->getAnimation()->play("animationName");
-*
-* 4. Add armature to stage.
-*    addChild(armatureDisplay);
-*/
+#include "engine/WorldInterface_mc.h"
+using namespace engine;
 class WorldInterface : BaseDemo
 {
 public:
@@ -197,6 +184,12 @@ protected:
 		Case->setPosition(-150, -100);
 		Case->enableMouseHandler();
 		Case->setName("Case");
+
+        GetAchieve_mc * gac = new GetAchieve_mc();
+        this->addChild(gac);
+        //gac->drawRange();
+        gac->setPosition(-250, -100);
+
 		//Sprite * sprite=Sprite::create("background1.png");
 		//sprite->setContentSize(sphere->buySphereCase->getContentSize());
 		//sphere->buySphereCase->addChild(sprite);
