@@ -6,7 +6,7 @@ namespace engine
 	WorldInterface::WorldInterface() :fireCount(0), iceCount(0), stoneCount(0), levinCount(0), getAllCount(0), 
 		fireBuyHistory(0), iceBuyHistory(0), stoneBuyHistory(0), levinBuyHistory(0), fasterFlag(0),
 		castGolemCounter(0), castIcemanCounter(0), castAirCounter(0)
-	{
+	{ 
 		//this->sphereCostHistory = [[], [], [], []];
 		this->sphereCostHistory[0].clear();
 		this->sphereCostHistory[1].clear();

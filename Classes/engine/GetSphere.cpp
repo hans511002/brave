@@ -4,7 +4,7 @@
 
 namespace engine
 {
- 
+  
     GetSphere::GetSphere(string param1 ) :counter(0), myRadius(0), myDamage(0), fireCount(0), iceCount(0), stoneCount(0), levinCount(0)
     {
         //this->listOfStack = [];

@@ -16,41 +16,41 @@ namespace engine
 			int typeUnit;
 			string contName;
 			//////////////////////////////////////////////////////////////////////////
-			//airshockÉúĞ§Ğ§¹û ÖØ¸´²¥
+			//airshockç”Ÿæ•ˆæ•ˆæœ é‡å¤æ’­
 			MovieClip * airShock;// airshock;//public var airShock : MovieClip;
 
-			//¼ÓÑªbuffÉúĞ§Ğ§¹û ¹²25Ö¡
+			//åŠ è¡€buffç”Ÿæ•ˆæ•ˆæœ å…±25å¸§
 			MovieClip * buffHP;// buffhp;//public var buffHP : MovieClip;
-			//¼ÓËÙbuffÉúĞ§Ğ§¹û ÖØ¸´²¥
+			//åŠ é€Ÿbuffç”Ÿæ•ˆæ•ˆæœ é‡å¤æ’­
 			MovieClip * buffSpeed;// buffspeed;//public var buffSpeed : MovieClip;
-			//ÆÕÍ¨»ğ»÷ÖĞĞ§¹û Ö»²¥Ò»´Î
+			//æ™®é€šç«å‡»ä¸­æ•ˆæœ åªæ’­ä¸€æ¬¡
 			MovieClip * fireAttack;// fireattack; public var fireAttack : MovieClip;
-			//ÌØÊâ»ğ¹¥»÷Ğ§¹û Á½¸ö¶¯×÷£º¹¥»÷¿ªÊ¼:begin(Ö»²¥Ò»´Î)  ¹¥»÷³ÖĞø:continue(ÖØ¸´£© ¿ªÊ¼²¥ÍêÔÙÖØ¸´²¥³ÖĞø£¨¿ªÊ¼¶ÔÓ¦Ç°19Ö¡£©
+			//ç‰¹æ®Šç«æ”»å‡»æ•ˆæœ ä¸¤ä¸ªåŠ¨ä½œï¼šæ”»å‡»å¼€å§‹:begin(åªæ’­ä¸€æ¬¡)  æ”»å‡»æŒç»­:continue(é‡å¤ï¼‰ å¼€å§‹æ’­å®Œå†é‡å¤æ’­æŒç»­ï¼ˆå¼€å§‹å¯¹åº”å‰19å¸§ï¼‰
 			MovieClip  * fireEffect;// fireeffect; //public var fireEffect : MovieClip;
-			//ÌØÊâ±ù¹¥»÷Ğ§¹û Á½¸ö¶¯×÷£º¹¥»÷¿ªÊ¼:begin(Ö»²¥Ò»´Î)  ¹¥»÷³ÖĞø:continue(ÖØ¸´£© ¿ªÊ¼²¥ÍêÔÙÖØ¸´²¥³ÖĞø£¨¿ªÊ¼¶ÔÓ¦Ç°15Ö¡£©
+			//ç‰¹æ®Šå†°æ”»å‡»æ•ˆæœ ä¸¤ä¸ªåŠ¨ä½œï¼šæ”»å‡»å¼€å§‹:begin(åªæ’­ä¸€æ¬¡)  æ”»å‡»æŒç»­:continue(é‡å¤ï¼‰ å¼€å§‹æ’­å®Œå†é‡å¤æ’­æŒç»­ï¼ˆå¼€å§‹å¯¹åº”å‰15å¸§ï¼‰
 			MovieClip * iceEffect;// iceeffect;//public var iceEffect : MovieClip;
-			//±ù»÷ÖĞĞ§¹û
+			//å†°å‡»ä¸­æ•ˆæœ
 			MovieClip *iceAttack;// iceattack; // public var iceAttack : MovieClip;
-			//ÉÁµç»÷ÖĞËÀÍöĞ§¹û ¹Ø¼üµÚ6Ö¡±ê¼Ç£ºaa
+			//é—ªç”µå‡»ä¸­æ­»äº¡æ•ˆæœ å…³é”®ç¬¬6å¸§æ ‡è®°ï¼šaa
 			MovieClip * levinDeath;// levindeath; public var levinDeath : MovieClip;
-			//Ê¯Í·»÷ÖĞËÀÍöĞ§¹û ¹Ø¼üµÚ3Ö¡±ê¼Ç£ºaa
+			//çŸ³å¤´å‡»ä¸­æ­»äº¡æ•ˆæœ å…³é”®ç¬¬3å¸§æ ‡è®°ï¼šaa
 			MovieClip * stoneDeath;// stonedeath;//public var stoneDeath : MovieClip;
-			//±ù»÷ÖĞËÀÍöĞ§¹û ¹Ø¼üµÚ9Ö¡±ê¼Ç£ºaa
+			//å†°å‡»ä¸­æ­»äº¡æ•ˆæœ å…³é”®ç¬¬9å¸§æ ‡è®°ï¼šaa
 			MovieClip * iceDeath;// icedeath; public var iceDeath : MovieClip;
 			int iceDeathFlag;
 			int stoneDeathFlag;
 			int levinDeathFlag;
-			//ÖØ¸´²¥
+			//é‡å¤æ’­
 			MovieClip * dust1;
 			MovieClip * dust2;
 			MovieClip * dust3;
 			MovieClip * dust4;
-			//ÉÁµç»÷ÖĞĞ§¹û
+			//é—ªç”µå‡»ä¸­æ•ˆæœ
 			MovieClip * levinAttack;// levinattack;//public var levinAttack : MovieClip;
-			//±»¼¼ÄÜ±ùÈË¹¥»÷Ğ§¹û  Á½¸ö¶¯×÷£ºiceman»î×Å:icemanlive  icemanËÀÍö:icemandead  £¨»î×Å¶ÔÓ¦Ç°45Ö¡£©
+			//è¢«æŠ€èƒ½å†°äººæ”»å‡»æ•ˆæœ  ä¸¤ä¸ªåŠ¨ä½œï¼šicemanæ´»ç€:icemanlive  icemanæ­»äº¡:icemandead  ï¼ˆæ´»ç€å¯¹åº”å‰45å¸§ï¼‰
 			MovieClip * iceFreez;// icefreeze; public var iceFreez : MovieClip;
 
-			//ÑªÌõ ±³¾°£ºhealthbar_cont µ±Ç°½ø¶È£ºhealthbar_getdamage
+			//è¡€æ¡ èƒŒæ™¯ï¼šhealthbar_cont å½“å‰è¿›åº¦ï¼šhealthbar_getdamage
 			HealthBar * healthBar;// healthbar; // public var healthBar : MovieClip;
 			 
 			cocos2d::Sprite * selectUnit;// selectunit; //public var selectUnit : MovieClip;
@@ -59,7 +59,7 @@ namespace engine
 
 
 			MovieClip * unitCase;// public var unitCase : MovieClip;
-			//MovieClip * shadow;//public var shadow : MovieClip; ºÏ²¢µ½contÖĞÁË
+			//MovieClip * shadow;//public var shadow : MovieClip; åˆå¹¶åˆ°contä¸­äº†
 			MovieClip * armor;//public var armor : MovieClip;
 			// 18 19
 			MovieClip * signal;

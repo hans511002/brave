@@ -18,28 +18,28 @@
 
 namespace Common
 {
-	//Ö§³Ö + - * / % & | ^ > >= < <= == !=
+	//æ”¯æŒ + - * / % & | ^ > >= < <= == !=
 	template <class T > class calcExp
 	{
 #define CALEXPR_MAX_TOKEN_LEN 256
 	protected:
 		typedef enum
 		{
-			// ÎÄ¼ş½áÎ²
+			// æ–‡ä»¶ç»“å°¾
 			ENDFILE,
-			// ±í´ïÊ½´íÎó
+			// è¡¨è¾¾å¼é”™è¯¯
 			EXPERROR,
-			// + - * / % ( )·ûºÅÖ®Ò»
+			// + - * / % ( )ç¬¦å·ä¹‹ä¸€
 			SYMBOL,
-			// Êı×Ö
+			// æ•°å­—
 			NUM,
 		} TokenType;
 		typedef enum
 		{
-			START,		// ¿ªÊ¼×´Ì¬
-			INUM,		// Êı×ÖµÄÖĞ¼ä×´Ì¬
-			DOT,		// ½ÓÊÜµ½·ûºÅ.µÄ×´Ì¬
-			END			// ½áÊø×´Ì¬
+			START,		// å¼€å§‹çŠ¶æ€
+			INUM,		// æ•°å­—çš„ä¸­é—´çŠ¶æ€
+			DOT,		// æ¥å—åˆ°ç¬¦å·.çš„çŠ¶æ€
+			END			// ç»“æŸçŠ¶æ€
 		} StateType;
 		const char * buffer;
 		unsigned int bufIndex;
@@ -50,12 +50,12 @@ namespace Common
 			if(bufIndex<bufferLen) return buffer[bufIndex++];
 			return EOF;
 		}
-		// Êä³ö´íÎóĞÅÏ¢
-		inline void error(){EXP("Óï·¨´íÎó: \""+String(buffer)+"\" tokenString=\""+tokenString+"\" bufIndex="+String((int)bufIndex) + " bufferLen="+(int)bufferLen);}
-		// »º³åÇø»ØÍËÒ»¸ö×Ö·û
+		// è¾“å‡ºé”™è¯¯ä¿¡æ¯
+		inline void error(){EXP("è¯­æ³•é”™è¯¯: \""+String(buffer)+"\" tokenString=\""+tokenString+"\" bufIndex="+String((int)bufIndex) + " bufferLen="+(int)bufferLen);}
+		// ç¼“å†²åŒºå›é€€ä¸€ä¸ªå­—ç¬¦
 		inline void ungetNextChar(){bufIndex--;}
 
-		//matchº¯Êı
+		//matchå‡½æ•°
 		inline void match(const char* expectedToken)
 		{
 			if(strcmp(expectedToken, tokenString) == 0)
@@ -72,7 +72,7 @@ namespace Common
 			else
 				error();
 		}
-		// »ñÈ¡»º³åÇøÏÂÒ»¸ötoken£¬²¢·µ»ØtokenµÄÀàĞÍ
+		// è·å–ç¼“å†²åŒºä¸‹ä¸€ä¸ªtokenï¼Œå¹¶è¿”å›tokençš„ç±»å‹
 		inline TokenType getToken()
 		{
 			int tokenIndex = 0;
@@ -215,7 +215,7 @@ namespace Common
 			bufIndex=temp-buffer;
 			return subLp;
 		}
-		//¼ÆËãÂß¼­±í´ïÊ½
+		//è®¡ç®—é€»è¾‘è¡¨è¾¾å¼
 		inline T logic()
 		{
 			T tmp = bitOperation();
@@ -258,7 +258,7 @@ namespace Common
 			}
 			return tmp;
 		};
-		//¼ÆËãÎ»ÔËËã±í´ïÊ½  & | ^ 
+		//è®¡ç®—ä½è¿ç®—è¡¨è¾¾å¼  & | ^ 
 		inline T bitOperation()
 		{
 			T tmp = condition();
@@ -282,7 +282,7 @@ namespace Common
 			}
 			return tmp;
 		};
-		//¼ÆËãÌõ¼ş±í´ïÊ½ > >= < <= == !=
+		//è®¡ç®—æ¡ä»¶è¡¨è¾¾å¼ > >= < <= == !=
 		inline T condition()
 		{
 			T tmp = plusOperation();
@@ -344,7 +344,7 @@ namespace Common
 			}
 			return tmp;
 		}
-		//¼ÆËã¼Ó¼õ
+		//è®¡ç®—åŠ å‡
 		inline T plusOperation()
 		{
 			T tmp = multiplication();
@@ -368,7 +368,7 @@ namespace Common
 			}
 			return tmp;
 		}
-		//¼ÆËã³Ë·¨
+		//è®¡ç®—ä¹˜æ³•
 		inline T multiplication()
 		{
 			T tmp = powerOperation();
@@ -415,7 +415,7 @@ namespace Common
 			}
 			return tmp;
 		};
-		//Ê¹ÓÃÂß¼­ÔËËãµÄ()²Ù×÷
+		//ä½¿ç”¨é€»è¾‘è¿ç®—çš„()æ“ä½œ
 		inline T bracket()
 		{
 			T tmp;

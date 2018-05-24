@@ -4,7 +4,7 @@
 using namespace engine;
 using namespace engine::units;
 namespace engine
-{ 
+{  
     World::World() :towerRadius(NULL),frameCounter(0), liveMax(20), unitInputBezieCounter(0), winDefCounter(-1), viewBoss(0), viewRockCrash(0), portalViewCounter(30)
 		, startMusicVolume(0), bonusMoneyFlag(true), eduOpenUpgrArrowFlag(true), killEnemiesCounter(0), createGolemCounter(0)
 		, createIcemanCounter(0), createAirCounter(0), earlyWaveCounter(0), sellFireCounter(0), sellIceCounter(0)

@@ -85,12 +85,12 @@ namespace Common
 		if(this->_argc==0)
 		{
 			if(log)
-				log->writeLog("Î´×ªÈë²ÎÊı£¬²»ÄÜÕıÈ·µ÷ÓÃ²ÎÊı½âÎöº¯Êı:parse()",log->AppCategory,0);
+				log->writeLog("æœªè½¬å…¥å‚æ•°ï¼Œä¸èƒ½æ­£ç¡®è°ƒç”¨å‚æ•°è§£æå‡½æ•°:parse()",log->AppCategory,0);
 			else
-				cout<<"Î´×ªÈë²ÎÊı£¬²»ÄÜÕıÈ·µ÷ÓÃ²ÎÊı½âÎöº¯Êı:parse()"<<endl;
+				cout<<"æœªè½¬å…¥å‚æ•°ï¼Œä¸èƒ½æ­£ç¡®è°ƒç”¨å‚æ•°è§£æå‡½æ•°:parse()"<<endl;
 			return false;
 		}
-		paramsValue["FULLPATH"]=this->_argv[0];				//È«³ÌĞòÂ·¾¶
+		paramsValue["FULLPATH"]=this->_argv[0];				//å…¨ç¨‹åºè·¯å¾„
 		String path=paramsValue["FULLPATH"];
 		if(path.LastIndexOf("/")>0)
 		{
@@ -111,18 +111,18 @@ namespace Common
 		if(paramsValue["APPNAME"].SubString(paramsValue["APPNAME"].size()-4,4)==".exe")
 			paramsValue["APPNAME"]=paramsValue["APPNAME"].SubString(0,paramsValue["APPNAME"].size()-4);
 #endif
-		paramsValue["APPPATH"]=path;					//³ÌĞòÄ¿±ê -dl55 -d5
+		paramsValue["APPPATH"]=path;					//ç¨‹åºç›®æ ‡ -dl55 -d5
 		for(int i=1;i<this->_argc;i++)
 		{
 			String temp=this->_argv[i];
-			//´¦ÀíÌØÊâ²ÎÊı 	-h -version FULLPATH APPNAME APPPATH DEBUG -DEBUG ÒÑ¾­Ä¬ÈÏ±£ÁôÊ¹ÓÃ
-			if(temp.StartsWith("-DEBUG",true))	//ÊÇ·ñµ÷ÊÔÄ£Ê½Ö´ĞĞ
+			//å¤„ç†ç‰¹æ®Šå‚æ•° 	-h -version FULLPATH APPNAME APPPATH DEBUG -DEBUG å·²ç»é»˜è®¤ä¿ç•™ä½¿ç”¨
+			if(temp.StartsWith("-DEBUG",true))	//æ˜¯å¦è°ƒè¯•æ¨¡å¼æ‰§è¡Œ
 			{
 				paramsValue["-DEBUG"]=_argv[i]+6;
 				paramsValue["DEBUG"]=_argv[i]+6;
 				continue;
 			}
-			else if(temp.StartsWith("-H",true))	//Ö±½Ó´òÓ¡°ïÖúĞÅÏ¢
+			else if(temp.StartsWith("-H",true))	//ç›´æ¥æ‰“å°å¸®åŠ©ä¿¡æ¯
 			{
 				paramsTip();
 				return false; 
@@ -144,13 +144,13 @@ namespace Common
 							int val=Convert::ToInt(temp);
 							if(argItems[key].length>0 && val==0 && temp!="0")
 							{
-								paramsTip("  error: "+argItems[key].name+"²»ÕıÈ·");
+								paramsTip("  error: "+argItems[key].name+"ä¸æ­£ç¡®");
 								return false;
 							}
 							temp=Convert::ToString(val);
 							if(temp.size()==0 || temp.size()<argItems[key].length)
 							{
-								paramsTip("  error: "+argItems[key].name+"³¤¶È²»¹»");
+								paramsTip("  error: "+argItems[key].name+"é•¿åº¦ä¸å¤Ÿ");
 								return false;
 							}
 							paramsValue[argItems[key].prefix]=temp;
@@ -162,13 +162,13 @@ namespace Common
 							int val=Convert::ToLLong(temp);
 							if(argItems[key].length>0 && val==0 && temp!="0")
 							{
-								paramsTip("  error: "+argItems[key].name+"²»ÕıÈ·");
+								paramsTip("  error: "+argItems[key].name+"ä¸æ­£ç¡®");
 								return false;
 							}
 							temp=Convert::ToString(val);
 							if(temp.size()==0 || temp.size()<argItems[key].length)
 							{
-								paramsTip("  error: "+argItems[key].name+"³¤¶È²»¹»");
+								paramsTip("  error: "+argItems[key].name+"é•¿åº¦ä¸å¤Ÿ");
 								return false;
 							}
 							paramsValue[argItems[key].prefix]=temp;
@@ -179,7 +179,7 @@ namespace Common
 						{
 							if(temp.size()<argItems[key].length)
 							{
-								paramsTip("  error: "+argItems[key].name+"³¤¶È²»¹»");
+								paramsTip("  error: "+argItems[key].name+"é•¿åº¦ä¸å¤Ÿ");
 								return false;
 							}
 							paramsValue[argItems[key].prefix]=temp;
@@ -189,12 +189,12 @@ namespace Common
 						{
 							if(Convert::ParseDouble(temp)==(double)0)
 							{
-								paramsTip("  error: "+argItems[key].name+"²»ÕıÈ·");
+								paramsTip("  error: "+argItems[key].name+"ä¸æ­£ç¡®");
 								return false;
 							}
 							if((temp.size()==0 || temp.size()<argItems[key].length))
 							{
-								paramsTip("  error: "+argItems[key].name+"³¤¶È²»¹»");
+								paramsTip("  error: "+argItems[key].name+"é•¿åº¦ä¸å¤Ÿ");
 								return false;
 							}
 							paramsValue[argItems[key].prefix]=temp;
@@ -210,12 +210,12 @@ namespace Common
 		}
 		map<String,ArgItem>::iterator argBegin=argItems.begin();
 		map<int,int> flag;
-		//ÑéÖ¤
+		//éªŒè¯
 		for(;argBegin!=argItems.end();argBegin++)
 		{
 			if(argBegin->second.needType==1 && paramsValue.find(argBegin->second.prefix)==paramsValue.end())
 			{
-				paramsTip("  error: Ã»ÓĞÊäÈë²ÎÊı: "+argBegin->first);
+				paramsTip("  error: æ²¡æœ‰è¾“å…¥å‚æ•°: "+argBegin->first);
 				return false;
 			}
 			else if(argBegin->second.needType>1)
@@ -232,7 +232,7 @@ namespace Common
 				}
 				if(!found)
 				{
-					String msg="  error: ²ÎÊı:\n";
+					String msg="  error: å‚æ•°:\n";
 					for(map<String,ArgItem>::iterator pos=argItems.begin();pos!=argItems.end();pos++)
 					{
 						if(pos->second.needType==argBegin->second.needType)
@@ -240,7 +240,7 @@ namespace Common
 							msg+="["+pos->second.prefix+"]"+pos->second.name+"\n";
 						}
 					}
-					paramsTip(msg+"\t\t±ØĞèÊäÈëÒ»¸ö.");
+					paramsTip(msg+"\t\tå¿…éœ€è¾“å…¥ä¸€ä¸ª.");
 					return false;
 				}
 			}
@@ -251,7 +251,7 @@ namespace Common
 	{
 		if(msg!="")cout<<msg.c_str()<<endl;
 		if(argItems.size()==0)return;
-		cout<<"²ÎÊıËµÃ÷:"<<endl;
+		cout<<"å‚æ•°è¯´æ˜:"<<endl;
 		map<String,ArgItem>::iterator argBegin;
 		for(argBegin=argItems.begin();argBegin!=argItems.end();argBegin++)
 		{
@@ -264,9 +264,9 @@ namespace Common
 				cout<<"\t["<<argBegin->second.prefix<<"]:"<<argBegin->second.name<<","<<argBegin->second.desc<<";"<<endl;
 		}
 		if(argItems.find("-DEBUG")==argItems.end())
-			cout<<"\t[-DEBUG]:µ÷ÊÔÄ£Ê½Ö´ĞĞ;"<<endl;
-		cout<<"\t[-H]:´òÓ¡´Ë°ïÖúÌáÊ¾ĞÅÏ¢;"<<endl;
-		cout<<"\t[-VERSION]:´òÓ¡°æ±¾ĞÅÏ¢;"<<endl;
+			cout<<"\t[-DEBUG]:è°ƒè¯•æ¨¡å¼æ‰§è¡Œ;"<<endl;
+		cout<<"\t[-H]:æ‰“å°æ­¤å¸®åŠ©æç¤ºä¿¡æ¯;"<<endl;
+		cout<<"\t[-VERSION]:æ‰“å°ç‰ˆæœ¬ä¿¡æ¯;"<<endl;
 
 	} 
 }

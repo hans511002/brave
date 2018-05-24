@@ -24,7 +24,7 @@ namespace engine
             if (this->world->towerRadius->isVisible())
             {
                 this->world->towerRadius->setVisible(false);
-            }
+            } 
             if (this->myTower->towerType < 5)
             {
                 //this->myTower->container->selectTower->setVisible(false);

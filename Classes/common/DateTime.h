@@ -17,10 +17,10 @@
 namespace Common
 {
 	///	<summary>
-	///	±íÊ¾Ê±¼äÉÏµÄÒ»¿Ì£¬Í¨³£ÒÔÈÕÆÚºÍµ±ÌìµÄÊ±¼ä±íÊ¾¡£×îĞ¡¼ÆÊıµ½Î¢Ãë¡£
+	///	è¡¨ç¤ºæ—¶é—´ä¸Šçš„ä¸€åˆ»ï¼Œé€šå¸¸ä»¥æ—¥æœŸå’Œå½“å¤©çš„æ—¶é—´è¡¨ç¤ºã€‚æœ€å°è®¡æ•°åˆ°å¾®ç§’ã€‚
 	///	</summary>
 	///	<remarks>
-	///	¾«È·µÄ±íÊ¾Ò»¸öÊ±¼ä¼ä¸ô£¬¾«È·µ½Î¢Ãë¡£
+	///	ç²¾ç¡®çš„è¡¨ç¤ºä¸€ä¸ªæ—¶é—´é—´éš”ï¼Œç²¾ç¡®åˆ°å¾®ç§’ã€‚
 	///	</remarks>
     /// <example><code>
     /// </code></example>
@@ -36,17 +36,17 @@ namespace Common
 		// Fields
 		protected:
 			///	<summary>
-			///	Ê±¼äµÄ¿Ì¶ÈÊı£¬¾«È·µ½Î¢Ãë£¬²¢ÒÔÊ±¼ä±àÂë¡£Ç°ÎåÎ»´æ´¢Ê±ÇøĞÅÏ¢£¬ºó59Î»´æ´¢Ê±¼äÖµ.
+			///	æ—¶é—´çš„åˆ»åº¦æ•°ï¼Œç²¾ç¡®åˆ°å¾®ç§’ï¼Œå¹¶ä»¥æ—¶é—´ç¼–ç ã€‚å‰äº”ä½å­˜å‚¨æ—¶åŒºä¿¡æ¯ï¼Œå59ä½å­˜å‚¨æ—¶é—´å€¼.
 			///	</summary>
-			unsigned long long _Ticks;        // Ç°5Î»±íÊ¾Ê±Çø
+			unsigned long long _Ticks;        // å‰5ä½è¡¨ç¤ºæ—¶åŒº
 		public:
 			///	<summary>
-			///	½«tm¶ÔÏó×ª»»³ÉÖ¸¶¨¸ñÊ½µÄ×Ö·û´®¶ÔÏó
-			///	<code>Ô­ĞÍ£ºinline static string ToString(tm &amp;_tm,DateTimeStyles style=StaDateTime);</code>
+			///	å°†tmå¯¹è±¡è½¬æ¢æˆæŒ‡å®šæ ¼å¼çš„å­—ç¬¦ä¸²å¯¹è±¡
+			///	<code>åŸå‹ï¼šinline static string ToString(tm &amp;_tm,DateTimeStyles style=StaDateTime);</code>
 			///	</summary>
-			///	<param name="_tm">tm¶ÔÏó£¬C±ê×¼µÄÊ±¼ä½á¹¹Ìå</param>
-			///	<param name="style">Òª×ª»»³ÉµÄ¸ñÊ½<see cref="DateTimeStyles"/>,Ä¬ÈÏÎª±ê×¼¸ñÊ½ StaDateTime[yyyy-mm-dd hh:mi:ss] </param>
-			///	<returns>·µ»Øtm¶ÔÓ¦µÄ×Ö·û´®±íÏÖĞÎÊ½</returns>
+			///	<param name="_tm">tmå¯¹è±¡ï¼ŒCæ ‡å‡†çš„æ—¶é—´ç»“æ„ä½“</param>
+			///	<param name="style">è¦è½¬æ¢æˆçš„æ ¼å¼<see cref="DateTimeStyles"/>,é»˜è®¤ä¸ºæ ‡å‡†æ ¼å¼ StaDateTime[yyyy-mm-dd hh:mi:ss] </param>
+			///	<returns>è¿”å›tmå¯¹åº”çš„å­—ç¬¦ä¸²è¡¨ç°å½¢å¼</returns>
 			inline static string ToString(tm &_tm,DateTimeStyles style=StaDateTime)
 			{
 				const string * weekName=DateTime::WeekName[_tm.tm_wday];
@@ -61,14 +61,14 @@ namespace Common
 				memset(p,0,40);
 				switch(style)
 				{
-				case StaUTC:				// Mon May 14 02:03:55 2007	// ĞÇÆÚ¼¸ ÔÂ·İ ÈÕÆÚ Ê±:·Ö:Ãë Äê
+				case StaUTC:				// Mon May 14 02:03:55 2007	// æ˜ŸæœŸå‡  æœˆä»½ æ—¥æœŸ æ—¶:åˆ†:ç§’ å¹´
 					sprintf(p,"%s %s %d %02d:%02d:%02d %d",weekName[2].c_str(),monthName[2].c_str(),day,hour,minute,second,year);
 					break;
 				case StaDateTime:// yyyy-mm-dd hh:mi:ss
 					sprintf(p,"%04d-%02d-%02d %0d:%02d:%02d",year,month,day,hour,minute,second);
 					break;
-				case LongDate:				// yyyyÄêmmÔÂddÈÕ
-					sprintf(p,"%04dÄê%dÔÂ%dÈÕ",year,month,day);
+				case LongDate:				// yyyyå¹´mmæœˆddæ—¥
+					sprintf(p,"%04då¹´%dæœˆ%dæ—¥",year,month,day);
 					break;
 				case StaDate:		// yyyy-mm-dd
 					sprintf(p,"%04d-%02d-%02d",year,month,day);
@@ -94,40 +94,40 @@ namespace Common
 
 
 
-#if OSTYPE<=10         // windows ÏÂµÄ¼ÆÊıÆ÷º¯Êı
+#if OSTYPE<=10         // windows ä¸‹çš„è®¡æ•°å™¨å‡½æ•°
 			///	<summary>
-			///	Ö±½Ó»ñÈ¡CPU¼ÆÊı[Ìø´Î] ¶ş´Îµ÷ÓÃ·µ»ØÖµ²î³ıÒÔCPUÆµÂÊ¼´ÎªÃë   ÄÉÃë¼¶
-			///	<code>Ô­ĞÍ£ºinline static unsigned __int64 GetCycleCount();</code>
+			///	ç›´æ¥è·å–CPUè®¡æ•°[è·³æ¬¡] äºŒæ¬¡è°ƒç”¨è¿”å›å€¼å·®é™¤ä»¥CPUé¢‘ç‡å³ä¸ºç§’   çº³ç§’çº§
+			///	<code>åŸå‹ï¼šinline static unsigned __int64 GetCycleCount();</code>
 			///	</summary>
-			///	<returns>64Î»ÎŞ·ûºÅÕûÊı£¬CPUÌø´Î¼ÆÊıÖµ</returns>
+			///	<returns>64ä½æ— ç¬¦å·æ•´æ•°ï¼ŒCPUè·³æ¬¡è®¡æ•°å€¼</returns>
 			inline static unsigned __int64 GetCycleCount() 
 			{ 
 			__asm _emit 0x0F 
 			__asm _emit 0x31 
 			};
 			///	<summary>
-			///	Ö±½Ó»ñÈ¡CPU¼ÆÊı[Ìø´Î] ¶ş´Îµ÷ÓÃ·µ»ØÖµ²î³ıÒÔCPUÆµÂÊ¼´ÎªÃë   ÄÉÃë¼¶
-			///	<code>Ô­ĞÍ£ºinline static unsigned __int64 GetCycleCount2();</code>
+			///	ç›´æ¥è·å–CPUè®¡æ•°[è·³æ¬¡] äºŒæ¬¡è°ƒç”¨è¿”å›å€¼å·®é™¤ä»¥CPUé¢‘ç‡å³ä¸ºç§’   çº³ç§’çº§
+			///	<code>åŸå‹ï¼šinline static unsigned __int64 GetCycleCount2();</code>
 			///	</summary>
-			///	<returns>64Î»ÎŞ·ûºÅÕûÊı£¬CPUÌø´Î¼ÆÊıÖµ</returns>
+			///	<returns>64ä½æ— ç¬¦å·æ•´æ•°ï¼ŒCPUè·³æ¬¡è®¡æ•°å€¼</returns>
 			inline static unsigned __int64 GetCycleCount2() 
 			{ 
 			__asm RDTSC 
 			};
 			///	<summary>
-			///	ºÁÃë¼¶ ĞèÒª¼ÓÔØ¶àÃ½Ìåº¯Êı¿â
-			///	<code>Ô­ĞÍ£ºinline static unsigned long GetMMTime();</code>
+			///	æ¯«ç§’çº§ éœ€è¦åŠ è½½å¤šåª’ä½“å‡½æ•°åº“
+			///	<code>åŸå‹ï¼šinline static unsigned long GetMMTime();</code>
 			///	</summary>
-			///	<returns>¶àÃ½ÌåÊ±¼ä¼ÆËãÆ÷Ê±¼ä</returns>
+			///	<returns>å¤šåª’ä½“æ—¶é—´è®¡ç®—å™¨æ—¶é—´</returns>
 			inline static unsigned long GetMMTime()
 			{
 				return timeGetTime();
 			};
 			///	<summary>
-			///	»ñÈ¡ÏµÍ³µÄ¼ÆÊıÆ÷µÄÆµÂÊ Î¢Ãë¼¶
-			///	<code>Ô­ĞÍ£ºinline static unsigned long long GetPerformanceUnit();</code>
+			///	è·å–ç³»ç»Ÿçš„è®¡æ•°å™¨çš„é¢‘ç‡ å¾®ç§’çº§
+			///	<code>åŸå‹ï¼šinline static unsigned long long GetPerformanceUnit();</code>
 			///	</summary>
-			///	<returns>·µ»ØÏµÍ³¼ÆËãÆ÷ÆµÂÊ</returns>
+			///	<returns>è¿”å›ç³»ç»Ÿè®¡ç®—å™¨é¢‘ç‡</returns>
 			inline static unsigned long long GetPerformanceUnit()
 			{
 				LARGE_INTEGER tc;
@@ -135,10 +135,10 @@ namespace Common
 				return tc.QuadPart;
 			};
 			///	<summary>
-			///	»ñÈ¡ÏµÍ³¼ÆÊı´ÎÊı ¶ş´Î·µ»ØÖµ²î³ıÒÔ¼ÆÊıÆ÷µÄÆµÂÊ¼´ÎªÃë  Î¢Ãë¼¶
-			///	<code>Ô­ĞÍ£ºinline static unsigned long long GetPerformanceCounter();</code>
+			///	è·å–ç³»ç»Ÿè®¡æ•°æ¬¡æ•° äºŒæ¬¡è¿”å›å€¼å·®é™¤ä»¥è®¡æ•°å™¨çš„é¢‘ç‡å³ä¸ºç§’  å¾®ç§’çº§
+			///	<code>åŸå‹ï¼šinline static unsigned long long GetPerformanceCounter();</code>
 			///	</summary>
-			///	<returns>·µ»ØÏµÍ³¼ÆËãÆ÷µÄÖµ</returns>
+			///	<returns>è¿”å›ç³»ç»Ÿè®¡ç®—å™¨çš„å€¼</returns>
 			inline static unsigned long long GetPerformanceCounter()
 			{
 				LARGE_INTEGER tc;
@@ -146,21 +146,21 @@ namespace Common
 				return tc.QuadPart;
 			};
 			///	<summary>
-			///	ÏµÍ³¼ÆÊı´ÎÊı
+			///	ç³»ç»Ÿè®¡æ•°æ¬¡æ•°
 			///	</summary>
 			static unsigned long long sysPerformanceUnit;
 			///	<summary>
-			///	CPUÖ÷Æµ
+			///	CPUä¸»é¢‘
 			///	</summary>
 			static unsigned long long sysCpuUnit;
 #endif
 			///	<summary>
-			///	½«Ê±¼ä¶ÔÏó×ª»»³Éoracle´æ´¢¸ñÊ½
-			///	<code>Ô­ĞÍ£ºinline static unsigned char * ToOracleDate(DateTime &amp;dt,unsigned char * tempStr);</code>
+			///	å°†æ—¶é—´å¯¹è±¡è½¬æ¢æˆoracleå­˜å‚¨æ ¼å¼
+			///	<code>åŸå‹ï¼šinline static unsigned char * ToOracleDate(DateTime &amp;dt,unsigned char * tempStr);</code>
 			///	</summary>
-			///	<param name="dt">Òª×ª»»µÄÊ±¼ä¶ÔÏó</param>
-			///	<param name="tempStr">Ä¿±ê´æ´¢¿Õ¼äÖ¸Õë£¬ÓÃÓÚ´æ´¢×ª»»ºóµÄÖµ</param>
-			///	<returns>·µ»ØtempStrÖ¸Õë</returns>
+			///	<param name="dt">è¦è½¬æ¢çš„æ—¶é—´å¯¹è±¡</param>
+			///	<param name="tempStr">ç›®æ ‡å­˜å‚¨ç©ºé—´æŒ‡é’ˆï¼Œç”¨äºå­˜å‚¨è½¬æ¢åçš„å€¼</param>
+			///	<returns>è¿”å›tempStræŒ‡é’ˆ</returns>
 			inline static unsigned char * ToOracleDate(DateTime &dt,unsigned char * tempStr)
 			{
 				memset(tempStr,0,7);
@@ -178,12 +178,12 @@ namespace Common
 				return tempStr;
 			}
 			///	<summary>
-			///	´Óoracle´æ´¢¸ñÊ½×ª»»Ê±¼ä¶ÔÏó
-			///	<code>Ô­ĞÍ£ºinline static DateTime GetDateFromOracle(unsigned char * dtp,DateTime * nullDefault=NULL);</code>
+			///	ä»oracleå­˜å‚¨æ ¼å¼è½¬æ¢æ—¶é—´å¯¹è±¡
+			///	<code>åŸå‹ï¼šinline static DateTime GetDateFromOracle(unsigned char * dtp,DateTime * nullDefault=NULL);</code>
 			///	</summary>
-			///	<param name="dtp">7×Ö½ÚµÄoracle´æ´¢¸ñÊ½Êı¾İ</param>
-			///	<param name="nullDefault">Ö¸¶¨Îª¿Õ»òÒì³£Ê±µÄÄ¬ÈÏÊ±¼äÖµ</param>
-			///	<returns>×ª»»ËùµÃµÄÊ±¼ä¶ÔÏó£¬ÈçoracleËù±íÊ¾µÄÊ±¼äÒì³££¬Ôò·µ»Ø×îĞ¡Ê±¼äÖµ</returns>
+			///	<param name="dtp">7å­—èŠ‚çš„oracleå­˜å‚¨æ ¼å¼æ•°æ®</param>
+			///	<param name="nullDefault">æŒ‡å®šä¸ºç©ºæˆ–å¼‚å¸¸æ—¶çš„é»˜è®¤æ—¶é—´å€¼</param>
+			///	<returns>è½¬æ¢æ‰€å¾—çš„æ—¶é—´å¯¹è±¡ï¼Œå¦‚oracleæ‰€è¡¨ç¤ºçš„æ—¶é—´å¼‚å¸¸ï¼Œåˆ™è¿”å›æœ€å°æ—¶é—´å€¼</returns>
 			inline static DateTime GetDateFromOracle(unsigned char * dtp,DateTime * nullDefault=NULL)
 			{
 				if(dtp[0]==0 || (dtp[2]==6 && dtp[3]==31))
@@ -204,115 +204,115 @@ namespace Common
 				}
 			}
 			///	<summary>
-			///	ĞÇÆÚµÄÃû³Æ ÖĞÎÄÃû,Ó¢ÎÄÃû,Ó¢ÎÄ¼òĞ´
+			///	æ˜ŸæœŸçš„åç§° ä¸­æ–‡å,è‹±æ–‡å,è‹±æ–‡ç®€å†™
 			///	</summary>
 			static const string WeekName[7][3];
 			///	<summary>
-			///	¸÷ÖÖÔÂ·İµÄÃû³Æ  ÖĞÎÄÃû,Ó¢ÎÄÃû,Ó¢ÎÄ¼òĞ´
+			///	å„ç§æœˆä»½çš„åç§°  ä¸­æ–‡å,è‹±æ–‡å,è‹±æ–‡ç®€å†™
 			///	</summary>
 			static const string MonthNames[13][3];
 			
 			///	<summary>
-			///	13Êı×é ±êÊ¶Ã¿¸öÔÂÌìÊı
+			///	13æ•°ç»„ æ ‡è¯†æ¯ä¸ªæœˆå¤©æ•°
 			///	</summary>
 			static  const int  DaysToMonth365[];
 			///	<summary>
-			///	13Êı×é ±êÊ¶Ã¿¸öÔÂÌìÊı
+			///	13æ•°ç»„ æ ‡è¯†æ¯ä¸ªæœˆå¤©æ•°
 			///	</summary>
 			static  const int  DaysToMonth366[];
 			///	<summary>
-			///	UTC ±ê×¼Ê±¼äÓĞ¶àÉÙºÁÃë  62135596800000
+			///	UTC æ ‡å‡†æ—¶é—´æœ‰å¤šå°‘æ¯«ç§’  62135596800000
 			///	</summary>
 			static const long long MillesPerUTCSta;
 			///	<summary>
-			///	100ÄêÓĞ¶àÉÙºÁÃë
+			///	100å¹´æœ‰å¤šå°‘æ¯«ç§’
 			///	</summary>
 			static const long long MillesPer2100Year;
 			///	<summary> 
-			///	×î´óºÁÃëÊı  315537897599999
+			///	æœ€å¤§æ¯«ç§’æ•°  315537897599999
 			///	</summary>
 			static const long long MaxMillesSecond;
 			///	<summary> 
-			///	×îĞ¡Ê±¼ä  0
+			///	æœ€å°æ—¶é—´  0
 			///	</summary>
 			static const long long MinMillesSecond;
 			
 			///	<summary> 
-			///	100Äê¶àÉÙÌì	36524
+			///	100å¹´å¤šå°‘å¤©	36524
 			///	</summary>
 			static const int  DaysPer100Years; 
 			///	<summary> 
-			///	400Äê¶àÉÙÌì	146097
+			///	400å¹´å¤šå°‘å¤©	146097
 			///	</summary>
 			static const int  DaysPer400Years ;
 			///	<summary> 
-			///	4Äê¶àÉÙÌì	1461
+			///	4å¹´å¤šå°‘å¤©	1461
 			///	</summary>
 			static const int  DaysPer4Years ;
 			///	<summary> 
-			///	1Äê¶àÉÙÌì	365
+			///	1å¹´å¤šå°‘å¤©	365
 			///	</summary>
 			static const int  DaysPerYear ;
 			///	<summary> 
-			///	Ò»Ìì¶àÉÙºÁÃë	86400000
+			///	ä¸€å¤©å¤šå°‘æ¯«ç§’	86400000
 			///	</summary>
 			static const int  MillisPerDay ;
 			///	<summary> 
-			///	1Ğ¡Ê±¶àÉÙºÁÃë	3600000
+			///	1å°æ—¶å¤šå°‘æ¯«ç§’	3600000
 			///	</summary>
 			static const int  MillisPerHour ;
 			///	<summary> 
-			///	1·ÖÖÓ¶àÉÙºÁÃë	60000
+			///	1åˆ†é’Ÿå¤šå°‘æ¯«ç§’	60000
 			///	</summary>
 			static const int  MillisPerMinute ;
 			///	<summary> 
-			///	1Ãë¶àÉÙºÁÃë	1000
+			///	1ç§’å¤šå°‘æ¯«ç§’	1000
 			///	</summary>
 			static const int  MillisPerSecond ;
 
 			///	<summary> 
-			///	×î´óÊ±¼ä¿Ì¶ÈÊı 0x461040BCB9F1FFFLL
+			///	æœ€å¤§æ—¶é—´åˆ»åº¦æ•° 0x461040BCB9F1FFFLL
 			///	</summary>
 			static const long long MaxTicks ;//= 0x461040BCB9F1FFFLL;
 			///	<summary> 
-			///	×îĞ¡Ê±¼ä¿Ì¶ÈÊı 0
+			///	æœ€å°æ—¶é—´åˆ»åº¦æ•° 0
 			///	</summary>
 			static const long long MinTicks;// = 0L;
 
 			///	<summary> 
-			///	Ê±ÇøÎ±Âë£¬×÷ÓëÔËËã¿ÉÖ±½Ó»ñÈ¡Ê±Çø²¿·Ö 0xF800000000000000LL
+			///	æ—¶åŒºä¼ªç ï¼Œä½œä¸è¿ç®—å¯ç›´æ¥è·å–æ—¶åŒºéƒ¨åˆ† 0xF800000000000000LL
 			///	</summary>
 			static const long long TicksCeiling ;
 			///	<summary> 
-			///	Ê±¼ä¿Ì¶ÈÎ±Âë£¬×÷ÓëÔËËã¿ÉÖ±½Ó»ñÈ¡Ê±¼ä²¿·Ö 0x7FFFFFFFFFFFFFFLL
+			///	æ—¶é—´åˆ»åº¦ä¼ªç ï¼Œä½œä¸è¿ç®—å¯ç›´æ¥è·å–æ—¶é—´éƒ¨åˆ† 0x7FFFFFFFFFFFFFFLL
 			///	</summary>
 			static const long long TicksMask;
 			///	<summary> 
-			///	Ò»ÌìÓĞ¶àÉÙ¿Ì¶ÈÊı£¨Î¢Ãë£© 0x141DD76000LL
+			///	ä¸€å¤©æœ‰å¤šå°‘åˆ»åº¦æ•°ï¼ˆå¾®ç§’ï¼‰ 0x141DD76000LL
 			///	</summary>
 			static const long long TicksPerDay;
 			///	<summary> 
-			///	Ò»Ğ¡Ê±ÓĞ¶àÉÙ¿Ì¶ÈÊı£¨Î¢Ãë£© 0xD693A400LL
+			///	ä¸€å°æ—¶æœ‰å¤šå°‘åˆ»åº¦æ•°ï¼ˆå¾®ç§’ï¼‰ 0xD693A400LL
 			///	</summary>
 			static const long long TicksPerHour;
 			///	<summary> 
-			///	Ò»ºÁÃëÓĞ¶àÉÙ¿Ì¶ÈÊı£¨Î¢Ãë£© 0x3e8LL
+			///	ä¸€æ¯«ç§’æœ‰å¤šå°‘åˆ»åº¦æ•°ï¼ˆå¾®ç§’ï¼‰ 0x3e8LL
 			///	</summary>
 			static const long long TicksPerMillisecond;
 			///	<summary> 
-			///	Ò»·ÖÖÓÓĞ¶àÉÙ¿Ì¶ÈÊı£¨Î¢Ãë£© 0x3938700LL
+			///	ä¸€åˆ†é’Ÿæœ‰å¤šå°‘åˆ»åº¦æ•°ï¼ˆå¾®ç§’ï¼‰ 0x3938700LL
 			///	</summary>
 			static const long long TicksPerMinute;
 			///	<summary> 
-			///	Ò»ÃëÓĞ¶àÉÙ¿Ì¶ÈÊı£¨Î¢Ãë£© 0xF4240LL
+			///	ä¸€ç§’æœ‰å¤šå°‘åˆ»åº¦æ•°ï¼ˆå¾®ç§’ï¼‰ 0xF4240LL
 			///	</summary>
 			static const long long TicksPerSecond;
 			///	<summary> 
-			///	UTC±ê×¼Ê±¼ä¿Ì¶ÈÊı£¨Î¢Ãë£© 0xDCBFFEFF2BC000LL
+			///	UTCæ ‡å‡†æ—¶é—´åˆ»åº¦æ•°ï¼ˆå¾®ç§’ï¼‰ 0xDCBFFEFF2BC000LL
 			///	</summary>
 			static const long long TicksPerUTCSta;
 			///	<summary> 
-			///	±ê×¼Ê±¼äÃëÊı 0xE7791F700ll
+			///	æ ‡å‡†æ—¶é—´ç§’æ•° 0xE7791F700ll
 			///	</summary>
 			static const long long SecondPerUTCSta;
 
@@ -324,7 +324,7 @@ namespace Common
 			static const int lHour;//localtime(&ts)->tm_hour;
 		public:
 			///	<summary> 
-			///	µ±Ç°±¾µØÊ±Çø
+			///	å½“å‰æœ¬åœ°æ—¶åŒº
 			///	</summary>
 			static const TimeZone localTimeZone;//=GMT8 ;//SetTimeZone
 //#endif
@@ -335,14 +335,14 @@ namespace Common
 #if OSTYPE>10
 				struct timeval tv;
 				gettimeofday (&tv ,NULL);
-				this->_Ticks=DateTime::TicksPerUTCSta+ tv.tv_sec* DateTime::TicksPerSecond+tv.tv_usec;	//Î¢Ãë
+				this->_Ticks=DateTime::TicksPerUTCSta+ tv.tv_sec* DateTime::TicksPerSecond+tv.tv_usec;	//å¾®ç§’
 				//printf("tv_sec; %d\n",tv.tv_sec) ;
 				//printf("tv_usec; %d\n",tv.tv_usec);
-				//printf("tz_minuteswest; %d\n",tz.tz_minuteswest);   // Ê±ÇøĞÅÏ¢   UTCÓëµ±Ç°Ê±ÇøÊ±¼ä²îÖµ£¬  ·ÖÖÓÊı
+				//printf("tz_minuteswest; %d\n",tz.tz_minuteswest);   // æ—¶åŒºä¿¡æ¯   UTCä¸å½“å‰æ—¶åŒºæ—¶é—´å·®å€¼ï¼Œ  åˆ†é’Ÿæ•°
 				//printf("tz_dsttime,%d\n",tz.tz_dsttime);
 #else
 				//SYSTEMTIME st;
-				//GetSystemTime(&st);	////¾«È·µ½ºÁÃë 
+				//GetSystemTime(&st);	////ç²¾ç¡®åˆ°æ¯«ç§’ 
 				////_init(st.wYear,st.wMonth,st.wDay,st.wHour,st.wMinute,st.wSecond,st.wMilliseconds,0,tz);
 				//unsigned long long ys=DateToTicks(st.wYear, st.wMonth, st.wDay);
 				//unsigned long long ds=TimeToTicks(st.wHour, st.wMinute, st.wSecond);
@@ -353,32 +353,32 @@ namespace Common
 				//this->_Ticks=num=num - tz * this->TicksPerHour;
 
 				FILETIME ft;
-				GetSystemTimeAsFileTime( &ft ); //·µ»Ø100ÄÉÃë ¼¶  ĞÔÄÜ±Ètime»¹ºÃ
+				GetSystemTimeAsFileTime( &ft ); //è¿”å›100çº³ç§’ çº§  æ€§èƒ½æ¯”timeè¿˜å¥½
 				_Ticks = ft.dwHighDateTime; _Ticks =(_Ticks<<32) | (long long)ft.dwLowDateTime;
 				//_Ticks = (((long long)ft.dwHighDateTime)*4294967296LL) + (long long)ft.dwLowDateTime;
 				_Ticks/=10;
-				_Ticks+=50491123200000000LL;//50491094400000000LL; ¼Ó1600Äê 1601ÄêtickÎª50491123200000000 				//*this=this->AddYears(1600);
+				_Ticks+=50491123200000000LL;//50491094400000000LL; åŠ 1600å¹´ 1601å¹´tickä¸º50491123200000000 				//*this=this->AddYears(1600);
 
-				////int l=(GetCycleCount() /2660) % 1000000;			//	¾«È·µ½Î¢Ãë
-				//int l=(GetTickCount() % this->MillisPerSecond )*this->TicksPerMillisecond;		//¾«È·µ½ºÁÃë
+				////int l=(GetCycleCount() /2660) % 1000000;			//	ç²¾ç¡®åˆ°å¾®ç§’
+				//int l=(GetTickCount() % this->MillisPerSecond )*this->TicksPerMillisecond;		//ç²¾ç¡®åˆ°æ¯«ç§’
 				////unsigned long long l=GetPerformanceCounter();
-				////l = (((l * DateTime::TicksPerSecond ) / GetPerformanceUnit() )% DateTime::TicksPerSecond);	//	¾«È·µ½Î¢Ãë,ĞÔÄÜ½ÏµÍ
+				////l = (((l * DateTime::TicksPerSecond ) / GetPerformanceUnit() )% DateTime::TicksPerSecond);	//	ç²¾ç¡®åˆ°å¾®ç§’,æ€§èƒ½è¾ƒä½
 				//time_t t= time(NULL);
 				//this->_Ticks=DateTime::TicksPerUTCSta+ (unsigned long long)t * DateTime::TicksPerSecond+l;
 #endif
-				//×éºÏ¼ÆËãÊ±Çø
+				//ç»„åˆè®¡ç®—æ—¶åŒº
 				tl=32+tz;
-				tl=tl<<59;		//	Áô5Î»Ê±Çø±êÊ¶
+				tl=tl<<59;		//	ç•™5ä½æ—¶åŒºæ ‡è¯†
 				this->_Ticks=tl | _Ticks;
 			}
 			inline void _init(long long t,TimeZone tz=localTimeZone)
 			{
 				this->_Ticks=t>0?t:0;
 				if(t>this->MaxTicks)this->_Ticks=this->MaxTicks;
-				//×éºÏ¼ÆËãÊ±Çø
+				//ç»„åˆè®¡ç®—æ—¶åŒº
 				unsigned long long tl=0;
 				tl=32+tz;
-				tl=tl<<59;		//	Áô5Î»Ê±Çø±êÊ¶
+				tl=tl<<59;		//	ç•™5ä½æ—¶åŒºæ ‡è¯†
 				this->_Ticks=(tl | (_Ticks & this->TicksMask));
 			}
 			inline void _init(int year, int month, int day, int hour, int minute, int second,int millisecond, int ticks,TimeZone tz)
@@ -408,32 +408,32 @@ namespace Common
 					this->_Ticks=num=num - tz * this->TicksPerHour;
 				unsigned long long tl=0;
 				tl=32+tz;
-				tl=tl<<59;		//	Áô5Î»Ê±Çø±êÊ¶
+				tl=tl<<59;		//	ç•™5ä½æ—¶åŒºæ ‡è¯†
 				this->_Ticks=tl | _Ticks;
 			}
 
 		public:
 			///	<summary> 
-			///	»ñÈ¡´Ó¸ñÁÖÍşÖÎ±ê×¼Ê±¼äµ½Ö¸¶¨Ê±¼äµÄÃëÊı
-			///	<code>Ô­ĞÍ£ºinline static long getUtcSec(DateTime &amp; dt);</code>
+			///	è·å–ä»æ ¼æ—å¨æ²»æ ‡å‡†æ—¶é—´åˆ°æŒ‡å®šæ—¶é—´çš„ç§’æ•°
+			///	<code>åŸå‹ï¼šinline static long getUtcSec(DateTime &amp; dt);</code>
 			///	</summary>
-			///	<param name="dt">Ê±¼ä¶ÔÏó<see cref="DateTime"/></param>
-			///	<returns>·µ»Ø¸ñÁÖÍşÖÎ±ê×¼Ê±¼äµ½dtËù±íÊ¾µÄÊ±¼äµÄÃëÊı</returns>
+			///	<param name="dt">æ—¶é—´å¯¹è±¡<see cref="DateTime"/></param>
+			///	<returns>è¿”å›æ ¼æ—å¨æ²»æ ‡å‡†æ—¶é—´åˆ°dtæ‰€è¡¨ç¤ºçš„æ—¶é—´çš„ç§’æ•°</returns>
 			inline static long getUtcSec(DateTime & dt){return (dt.GetTicks()-DateTime::TicksPerUTCSta)/DateTime::TicksPerSecond ; };
 			///	<summary> 
-			///	»ñÈ¡´Ó¸ñÁÖÍşÖÎ±ê×¼Ê±¼äµ½´ËÊµÀıËù±íÊ¾µÄÊ±¼äµÄÃëÊı
-			///	<code>Ô­ĞÍ£ºinline long getUtcSec();</code>
+			///	è·å–ä»æ ¼æ—å¨æ²»æ ‡å‡†æ—¶é—´åˆ°æ­¤å®ä¾‹æ‰€è¡¨ç¤ºçš„æ—¶é—´çš„ç§’æ•°
+			///	<code>åŸå‹ï¼šinline long getUtcSec();</code>
 			///	</summary>
-			///	<returns>·µ»ØĞ©ÊµÀıµ½UTCÊ±¼äµÄÃëÊı</returns>
+			///	<returns>è¿”å›äº›å®ä¾‹åˆ°UTCæ—¶é—´çš„ç§’æ•°</returns>
 			inline long getUtcSec(){return ((_Ticks & this->TicksMask)-DateTime::TicksPerUTCSta)/DateTime::TicksPerSecond  ; };
 			///	<summary> 
-			///	´ÓÄêÔÂÈÕµÄÈı¸öÕûÊı×ª»»ÎªÊ±¼ä¿Ì¶ÈÊı£¨Î¢Ãë£©
-			///	<code>Ô­ĞÍ£ºinline static unsigned long long DateToTicks(int year, int month, int day);</code>
+			///	ä»å¹´æœˆæ—¥çš„ä¸‰ä¸ªæ•´æ•°è½¬æ¢ä¸ºæ—¶é—´åˆ»åº¦æ•°ï¼ˆå¾®ç§’ï¼‰
+			///	<code>åŸå‹ï¼šinline static unsigned long long DateToTicks(int year, int month, int day);</code>
 			///	</summary>
-			///	<param name="year">Äê</param>
-			///	<param name="month">ÔÂ</param>
-			///	<param name="day">ÈÕ</param>
-			///	<returns>·µ»Ø´Ó¹«ÔªÒ»ÄêÒ»ÔÂÒ»ÈÕÁãÊ±Áã·ÖÁãÃëµ½Ö¸¶¨ÄêÔÂÈÕµÄ¿Ì¶ÈÊı</returns>
+			///	<param name="year">å¹´</param>
+			///	<param name="month">æœˆ</param>
+			///	<param name="day">æ—¥</param>
+			///	<returns>è¿”å›ä»å…¬å…ƒä¸€å¹´ä¸€æœˆä¸€æ—¥é›¶æ—¶é›¶åˆ†é›¶ç§’åˆ°æŒ‡å®šå¹´æœˆæ—¥çš„åˆ»åº¦æ•°</returns>
 			inline static unsigned long long DateToTicks(int year, int month, int day)
 			{
 				if (((year >= 1) && (year <= 0x270f)) && ((month >= 1) && (month <= 12)))
@@ -450,13 +450,13 @@ namespace Common
 			}
 
 			///	<summary>
-			///	½«Ê±¼ä²¿·Ö×ª»»ÎªÊ±¼ä¿Ì¶ÈÊı£¨Î¢Ãë£©
-			///	<code>Ô­ĞÍ£ºinline static unsigned long long TimeToTicks(int hour, int minute, int second);</code>
+			///	å°†æ—¶é—´éƒ¨åˆ†è½¬æ¢ä¸ºæ—¶é—´åˆ»åº¦æ•°ï¼ˆå¾®ç§’ï¼‰
+			///	<code>åŸå‹ï¼šinline static unsigned long long TimeToTicks(int hour, int minute, int second);</code>
 			///	</summary>
-			///	<param name="hour">Ğ¡Ê±</param>
-			///	<param name="minute">·ÖÖÓ</param>
-			///	<param name="second">Ãë</param>
-			///	<returns>·µ»Ø¶ÔÓ¦µÄ¿Ì¶ÈÊı£¨Î¢ÃëÊı£©</returns>
+			///	<param name="hour">å°æ—¶</param>
+			///	<param name="minute">åˆ†é’Ÿ</param>
+			///	<param name="second">ç§’</param>
+			///	<returns>è¿”å›å¯¹åº”çš„åˆ»åº¦æ•°ï¼ˆå¾®ç§’æ•°ï¼‰</returns>
  			inline static unsigned long long TimeToTicks(int hour, int minute, int second)
 			{
 				if ((((hour < 0) || (hour >= 0x18)) || ((minute < 0) || (minute >= 60))) || ((second < 0) || (second >= 60)))
@@ -467,19 +467,19 @@ namespace Common
 			}
 
 			///	<summary>
-			///	×î´óÊ±¼äÖµ 9999-12-31 23:59:59 	315537897599999 ºÁÃë 
+			///	æœ€å¤§æ—¶é—´å€¼ 9999-12-31 23:59:59 	315537897599999 æ¯«ç§’ 
 			///	</summary>
 			static  const DateTime  MaxValue;
 			///	<summary>
-			///	×îĞ¡Ê±¼äÖµ 0001-1-1 0:00:00  	0 ºÁÃë 
+			///	æœ€å°æ—¶é—´å€¼ 0001-1-1 0:00:00  	0 æ¯«ç§’ 
 			///	</summary>
 			static  const DateTime  MinValue;
 			///	<summary>
-			///	Ö¸¶¨¾àUTCÊ±¼äµÄÃëÊıºÍÊ±ÇøĞÅÏ¢³õÊ¼»¯Ê±¼ä¶ÔÏó 
-			///	<code>Ô­ĞÍ£ºDateTime(unsigned int  sec,TimeZone tz=localTimeZone);</code>
+			///	æŒ‡å®šè·UTCæ—¶é—´çš„ç§’æ•°å’Œæ—¶åŒºä¿¡æ¯åˆå§‹åŒ–æ—¶é—´å¯¹è±¡ 
+			///	<code>åŸå‹ï¼šDateTime(unsigned int  sec,TimeZone tz=localTimeZone);</code>
 			///	</summary>
-			///	<param name="sec">¾àUTCÊ±¼äµÄÃëÊı</param>
-			///	<param name="tz">secËùÒª±íÊ¾µÄÊ±ÇøÊ±¼ä<see cref="TimeZone"/></param>
+			///	<param name="sec">è·UTCæ—¶é—´çš„ç§’æ•°</param>
+			///	<param name="tz">secæ‰€è¦è¡¨ç¤ºçš„æ—¶åŒºæ—¶é—´<see cref="TimeZone"/></param>
 			DateTime(unsigned int  sec,TimeZone tz=localTimeZone)
 			{
 				long long t=DateTime::TicksPerUTCSta+ (long long)sec * DateTime::TicksPerSecond;
@@ -487,52 +487,52 @@ namespace Common
 				if(t>this->MaxTicks)this->_Ticks=this->MaxTicks;
 				unsigned long long tl=0;
 				tl=32+tz;
-				tl=tl<<59;		//	Áô5Î»Ê±Çø±êÊ¶
+				tl=tl<<59;		//	ç•™5ä½æ—¶åŒºæ ‡è¯†
 				this->_Ticks=tl | _Ticks;
 			};
 			///	<summary>
-			///	Ö¸¶¨CµÄÊ±¼ä½á¹¹¶ÔÏó³õÊ¼»¯Ê±¼ä¶ÔÏó 
-			///	<code>Ô­ĞÍ£ºDateTime(tm &amp;_tm);</code>
+			///	æŒ‡å®šCçš„æ—¶é—´ç»“æ„å¯¹è±¡åˆå§‹åŒ–æ—¶é—´å¯¹è±¡ 
+			///	<code>åŸå‹ï¼šDateTime(tm &amp;_tm);</code>
 			///	</summary>
-			///	<param name="_tm">CÊ±¼ä½á¹¹¶ÔÏó</param> 
+			///	<param name="_tm">Cæ—¶é—´ç»“æ„å¯¹è±¡</param> 
 			DateTime(tm &_tm)
 			{
 				this->_init( _tm.tm_year+1900,_tm.tm_mon+1,_tm.tm_mday,_tm.tm_hour,_tm.tm_min,_tm.tm_sec,0,0,localTimeZone);
 			}
 			///	<summary>
-			///	Ö¸¶¨Ê±Çø²¢ÒÔµ±Ç°Ê±¼ä³õÊ¼»¯¶ÔÏó 
-			///	<code>Ô­ĞÍ£ºDateTime(TimeZone tz=localTimeZone);</code>
+			///	æŒ‡å®šæ—¶åŒºå¹¶ä»¥å½“å‰æ—¶é—´åˆå§‹åŒ–å¯¹è±¡ 
+			///	<code>åŸå‹ï¼šDateTime(TimeZone tz=localTimeZone);</code>
 			///	</summary>
-			///	<param name="tz">Ê±ÇøĞÅÏ¢</param> 
+			///	<param name="tz">æ—¶åŒºä¿¡æ¯</param> 
 			DateTime(TimeZone tz=localTimeZone)
 			{
 				this->_init(tz);
 			}
 			///	<summary>
-			///	ÒÔÎ¢ÃëÎªµ¥Î»±íÊ¾µÄÈÕÆÚºÍÊ±¼ä¡£Æä×¼Ê±¼ä£º1Äê1ÔÂ1ÈÕ0Ê±0·Ö0Ãë 
-			///	<code>Ô­ĞÍ£ºDateTime(long long t, TimeZone tz=localTimeZone);</code>
+			///	ä»¥å¾®ç§’ä¸ºå•ä½è¡¨ç¤ºçš„æ—¥æœŸå’Œæ—¶é—´ã€‚å…¶å‡†æ—¶é—´ï¼š1å¹´1æœˆ1æ—¥0æ—¶0åˆ†0ç§’ 
+			///	<code>åŸå‹ï¼šDateTime(long long t, TimeZone tz=localTimeZone);</code>
 			///	</summary>
-			///	<param name="t">ÒÔÎ¢ÃëÎªµ¥Î»±íÊ¾µÄÈÕÆÚºÍÊ±¼ä¿Ì¶ÈÊı</param> 
-			///	<param name="tz">Ê±ÇøĞÅÏ¢</param> 
+			///	<param name="t">ä»¥å¾®ç§’ä¸ºå•ä½è¡¨ç¤ºçš„æ—¥æœŸå’Œæ—¶é—´åˆ»åº¦æ•°</param> 
+			///	<param name="tz">æ—¶åŒºä¿¡æ¯</param> 
 			DateTime(long long t, TimeZone tz=localTimeZone)
 			{
 				this->_init((long long)(t & this->TicksMask),tz);
 			};
 			///	<summary>
-			///	ÒÔÎ¢ÃëÎªµ¥Î»±íÊ¾µÄÈÕÆÚºÍÊ±¼ä¡£Æä×¼Ê±¼ä£º1Äê1ÔÂ1ÈÕ0Ê±0·Ö0Ãë 
-			///	<code>Ô­ĞÍ£ºDateTime(unsigned long long t, TimeZone tz);</code>
+			///	ä»¥å¾®ç§’ä¸ºå•ä½è¡¨ç¤ºçš„æ—¥æœŸå’Œæ—¶é—´ã€‚å…¶å‡†æ—¶é—´ï¼š1å¹´1æœˆ1æ—¥0æ—¶0åˆ†0ç§’ 
+			///	<code>åŸå‹ï¼šDateTime(unsigned long long t, TimeZone tz);</code>
 			///	</summary>
-			///	<param name="t">ÒÔÎ¢ÃëÎªµ¥Î»±íÊ¾µÄÈÕÆÚºÍÊ±¼ä¿Ì¶ÈÊı</param> 
-			///	<param name="tz">Ê±ÇøĞÅÏ¢</param> 
+			///	<param name="t">ä»¥å¾®ç§’ä¸ºå•ä½è¡¨ç¤ºçš„æ—¥æœŸå’Œæ—¶é—´åˆ»åº¦æ•°</param> 
+			///	<param name="tz">æ—¶åŒºä¿¡æ¯</param> 
 			DateTime(unsigned long long t, TimeZone tz)
 			{
 				this->_init((long long)(t & this->TicksMask),tz);
 			};
 			///	<summary>
-			///	ÒÔÎ¢ÃëÎªµ¥Î»±íÊ¾µÄÈÕÆÚºÍÊ±¼ä¡£Æä×¼Ê±¼ä£º1Äê1ÔÂ1ÈÕ0Ê±0·Ö0Ãë 
-			///	<code>Ô­ĞÍ£ºDateTime(unsigned long long t);</code>
+			///	ä»¥å¾®ç§’ä¸ºå•ä½è¡¨ç¤ºçš„æ—¥æœŸå’Œæ—¶é—´ã€‚å…¶å‡†æ—¶é—´ï¼š1å¹´1æœˆ1æ—¥0æ—¶0åˆ†0ç§’ 
+			///	<code>åŸå‹ï¼šDateTime(unsigned long long t);</code>
 			///	</summary>
-			///	<param name="t">ÒÔÎ¢ÃëÎªµ¥Î»±íÊ¾µÄÈÕÆÚºÍÊ±¼ä¿Ì¶ÈÊı</param> 
+			///	<param name="t">ä»¥å¾®ç§’ä¸ºå•ä½è¡¨ç¤ºçš„æ—¥æœŸå’Œæ—¶é—´åˆ»åº¦æ•°</param> 
 			DateTime(unsigned long long t)
 			{
 				if((t & this->TicksMask)>this->MaxTicks)
@@ -545,29 +545,29 @@ namespace Common
 				}
 			};
 			///	<summary>
-			///	½« <see cref='DateTime'/>½á¹¹µÄĞÂÊµÀı³õÊ¼»¯ÎªÖ¸¶¨Äê¡¢ÔÂ¡¢ÈÕ¡¢Ğ¡Ê±¡¢·ÖÖÓ¡¢Ãë¡¢ºÁÃë¡¢Î¢ÃëºÍÖ¸¶¨Ê±ÇøµÄÊ±¼ä¡£
-			///	<code>Ô­ĞÍ£ºDateTime(int year, int month, int day, int hour=0, int minute=0, int second=0,
+			///	å°† <see cref='DateTime'/>ç»“æ„çš„æ–°å®ä¾‹åˆå§‹åŒ–ä¸ºæŒ‡å®šå¹´ã€æœˆã€æ—¥ã€å°æ—¶ã€åˆ†é’Ÿã€ç§’ã€æ¯«ç§’ã€å¾®ç§’å’ŒæŒ‡å®šæ—¶åŒºçš„æ—¶é—´ã€‚
+			///	<code>åŸå‹ï¼šDateTime(int year, int month, int day, int hour=0, int minute=0, int second=0,
 			///                       int millisecond=0,int ticks=0, TimeZone tz=localTimeZone);</code>
 			///	</summary>
-			///	<param name="year">Äê</param> 
-			///	<param name="month">ÔÂ</param> 
-			///	<param name="day">ÈÕ</param> 
-			///	<param name="hour">Ğ¡Ê±</param> 
-			///	<param name="minute">·Ö</param> 
-			///	<param name="second">Ãë</param> 
-			///	<param name="millisecond">ºÁÃë</param> 
-			///	<param name="ticks">Î¢Ãë</param> 
-			///	<param name="tz">Ö¸¶¨Ê±¼äµÄ¶ÔÓ¦Ê±Çø</param>
+			///	<param name="year">å¹´</param> 
+			///	<param name="month">æœˆ</param> 
+			///	<param name="day">æ—¥</param> 
+			///	<param name="hour">å°æ—¶</param> 
+			///	<param name="minute">åˆ†</param> 
+			///	<param name="second">ç§’</param> 
+			///	<param name="millisecond">æ¯«ç§’</param> 
+			///	<param name="ticks">å¾®ç§’</param> 
+			///	<param name="tz">æŒ‡å®šæ—¶é—´çš„å¯¹åº”æ—¶åŒº</param>
 			DateTime(int year, int month, int day, int hour=0, int minute=0, int second=0,int millisecond=0,int ticks=0, TimeZone tz=localTimeZone)
 			{
 				this->_init( year,month,day,hour,minute,second,millisecond,ticks,tz);
 			}
 			///	<summary>
-			///	ÓÃ8Î»ÕûÊı±íÊ¾µÄÄêÔÂÈÕ³õÊ¼»¯. Èç:20071128½«
-			///	<code>Ô­ĞÍ£ºDateTime(int date,TimeZone tz=localTimeZone);</code>
+			///	ç”¨8ä½æ•´æ•°è¡¨ç¤ºçš„å¹´æœˆæ—¥åˆå§‹åŒ–. å¦‚:20071128å°†
+			///	<code>åŸå‹ï¼šDateTime(int date,TimeZone tz=localTimeZone);</code>
 			///	</summary>
-			///	<param name="date">8Î»ÈÕÆÚ²¿·Ö</param> 
-			///	<param name="tz">¶ÔÓ¦Ê±Çø</param> 
+			///	<param name="date">8ä½æ—¥æœŸéƒ¨åˆ†</param> 
+			///	<param name="tz">å¯¹åº”æ—¶åŒº</param> 
 			DateTime(int date,TimeZone tz=localTimeZone)   //20071128 
 			{
 				int year,month,day;
@@ -577,7 +577,7 @@ namespace Common
 				this->_init(year,month,day,0,0,0,0,0,tz);
 			}
 			
-			//*******************************²Ù×÷·ûÖØÔØ*****************************************                                    
+			//*******************************æ“ä½œç¬¦é‡è½½*****************************************                                    
 			friend TimeSpan Common::operator -(DateTime d1, DateTime d2);
 			friend DateTime Common::operator -(DateTime d, TimeSpan t);
 			friend bool Common::operator !=(DateTime d1, DateTime d2);
@@ -590,37 +590,37 @@ namespace Common
 			friend bool Common::operator >=(DateTime t1, DateTime t2);
 
 			///	<summary>
-			///	»ñÈ¡´ËÊµÀıËù±íÊ¾ÈÕÆÚµÄÄê·İ²¿·Ö¡£
-			///	<code>Ô­ĞÍ£ºinline int GetYear();</code>
+			///	è·å–æ­¤å®ä¾‹æ‰€è¡¨ç¤ºæ—¥æœŸçš„å¹´ä»½éƒ¨åˆ†ã€‚
+			///	<code>åŸå‹ï¼šinline int GetYear();</code>
 			///	</summary>
-			///	<returns>·µ»ØÄê²¿·Ö</returns> 
+			///	<returns>è¿”å›å¹´éƒ¨åˆ†</returns> 
 			inline int GetYear()
 			{
 				return this->GetDatePart(0);		 
 			}
 			///	<summary>
-			///	»ñÈ¡´ËÊµÀıËù±íÊ¾ÈÕÆÚµÄÔÂ·İ²¿·Ö¡£ÔÂ×é³É²¿·Ö£¬±íÊ¾Îª 1 ºÍ 12 Ö®¼äµÄÒ»¸öÖµ¡£
-			///	<code>Ô­ĞÍ£ºinline int GetMonth();</code>
+			///	è·å–æ­¤å®ä¾‹æ‰€è¡¨ç¤ºæ—¥æœŸçš„æœˆä»½éƒ¨åˆ†ã€‚æœˆç»„æˆéƒ¨åˆ†ï¼Œè¡¨ç¤ºä¸º 1 å’Œ 12 ä¹‹é—´çš„ä¸€ä¸ªå€¼ã€‚
+			///	<code>åŸå‹ï¼šinline int GetMonth();</code>
 			///	</summary>
-			///	<returns>·µ»ØÔÂ²¿·Ö</returns> 
+			///	<returns>è¿”å›æœˆéƒ¨åˆ†</returns> 
 			inline int GetMonth()
 			{
 				return this->GetDatePart(2);		 
 			}
 			///	<summary>
-			///	»ñÈ¡´ËÊµÀıËù±íÊ¾µÄÈÕÆÚÎª¸ÃÔÂÖĞµÄµÚ¼¸Ìì¡£ÈÕ×é³É²¿·Ö£¬±íÊ¾Îª 1 ºÍ 31 Ö®¼äµÄÒ»¸öÖµ¡£
-			///	<code>Ô­ĞÍ£ºinline int GetDay();</code>
+			///	è·å–æ­¤å®ä¾‹æ‰€è¡¨ç¤ºçš„æ—¥æœŸä¸ºè¯¥æœˆä¸­çš„ç¬¬å‡ å¤©ã€‚æ—¥ç»„æˆéƒ¨åˆ†ï¼Œè¡¨ç¤ºä¸º 1 å’Œ 31 ä¹‹é—´çš„ä¸€ä¸ªå€¼ã€‚
+			///	<code>åŸå‹ï¼šinline int GetDay();</code>
 			///	</summary>
-			///	<returns>·µ»ØÈÕ²¿·Ö</returns> 
+			///	<returns>è¿”å›æ—¥éƒ¨åˆ†</returns> 
 			inline int GetDay()
 			{
 				return this->GetDatePart(3);
 			}
 			///	<summary>
-			///	»ñÈ¡´ËÊµÀıËù±íÊ¾ÈÕÆÚµÄĞ¡Ê±²¿·Ö¡£Ğ¡Ê±×é³É²¿·Ö£¬±íÊ¾Îª 0 ºÍ 23 Ö®¼äµÄÒ»¸öÖµ¡£
-			///	<code>Ô­ĞÍ£ºinline int GetHour();</code>
+			///	è·å–æ­¤å®ä¾‹æ‰€è¡¨ç¤ºæ—¥æœŸçš„å°æ—¶éƒ¨åˆ†ã€‚å°æ—¶ç»„æˆéƒ¨åˆ†ï¼Œè¡¨ç¤ºä¸º 0 å’Œ 23 ä¹‹é—´çš„ä¸€ä¸ªå€¼ã€‚
+			///	<code>åŸå‹ï¼šinline int GetHour();</code>
 			///	</summary>
-			///	<returns>·µ»ØĞ¡Ê±²¿·Ö</returns> 
+			///	<returns>è¿”å›å°æ—¶éƒ¨åˆ†</returns> 
 			inline int GetHour()
 			{
 				unsigned long long totalTicks=(_Ticks & this->TicksMask);
@@ -632,75 +632,75 @@ namespace Common
 				return (int) (hs/this->TicksPerHour);
 			}
 			///	<summary>
-			///	»ñÈ¡´ËÊµÀıËù±íÊ¾ÈÕÆÚµÄ·ÖÖÓ²¿·Ö¡£·ÖÖÓ×é³É²¿·Ö£¬±íÊ¾Îª 0 ºÍ 59 Ö®¼äµÄÒ»¸öÖµ¡£
-			///	<code>Ô­ĞÍ£ºinline int GetMinute();</code>
+			///	è·å–æ­¤å®ä¾‹æ‰€è¡¨ç¤ºæ—¥æœŸçš„åˆ†é’Ÿéƒ¨åˆ†ã€‚åˆ†é’Ÿç»„æˆéƒ¨åˆ†ï¼Œè¡¨ç¤ºä¸º 0 å’Œ 59 ä¹‹é—´çš„ä¸€ä¸ªå€¼ã€‚
+			///	<code>åŸå‹ï¼šinline int GetMinute();</code>
 			///	</summary>
-			///	<returns>·µ»Ø·ÖÖÓ²¿·Ö</returns> 
+			///	<returns>è¿”å›åˆ†é’Ÿéƒ¨åˆ†</returns> 
 			inline int GetMinute()
 			{
 				long long hs=(long long)((_Ticks & this->TicksMask)%this->TicksPerHour);
 				return (int) (hs / this->TicksPerMinute);
 			}
 			///	<summary>
-			///	»ñÈ¡´ËÊµÀıËù±íÊ¾ÈÕÆÚµÄÃë²¿·Ö¡£ÃëÊı£¨½éÓÚ 0 ºÍ 59 Ö®¼ä£©¡£
-			///	<code>Ô­ĞÍ£ºinline int GetSecond();</code>
+			///	è·å–æ­¤å®ä¾‹æ‰€è¡¨ç¤ºæ—¥æœŸçš„ç§’éƒ¨åˆ†ã€‚ç§’æ•°ï¼ˆä»‹äº 0 å’Œ 59 ä¹‹é—´ï¼‰ã€‚
+			///	<code>åŸå‹ï¼šinline int GetSecond();</code>
 			///	</summary>
-			///	<returns>´ËÊµÀıËù±íÊ¾ÈÕÆÚµÄÃë²¿·Ö</returns> 
+			///	<returns>æ­¤å®ä¾‹æ‰€è¡¨ç¤ºæ—¥æœŸçš„ç§’éƒ¨åˆ†</returns> 
 			inline int GetSecond()
 			{
 				long long ds=(this->_Ticks & this->TicksMask) % this->TicksPerMinute;	
 				return (int) (ds/this->TicksPerSecond);
 			}
 			///	<summary>
-			///	»ñÈ¡´ËÊµÀıËù±íÊ¾ÈÕÆÚµÄºÁÃë²¿·Ö¡£ºÁÃëÊı£¨½éÓÚ 0 ºÍ 999 Ö®¼ä£©¡£
-			///	<code>Ô­ĞÍ£ºinline int GetMillessecond();</code>
+			///	è·å–æ­¤å®ä¾‹æ‰€è¡¨ç¤ºæ—¥æœŸçš„æ¯«ç§’éƒ¨åˆ†ã€‚æ¯«ç§’æ•°ï¼ˆä»‹äº 0 å’Œ 999 ä¹‹é—´ï¼‰ã€‚
+			///	<code>åŸå‹ï¼šinline int GetMillessecond();</code>
 			///	</summary>
-			///	<returns>´ËÊµÀıËù±íÊ¾ÈÕÆÚµÄºÁÃë²¿·Ö</returns> 
+			///	<returns>æ­¤å®ä¾‹æ‰€è¡¨ç¤ºæ—¥æœŸçš„æ¯«ç§’éƒ¨åˆ†</returns> 
 			inline int GetMillessecond()
 			{
 				return (int)((this->_Ticks & this->TicksMask) % this->TicksPerSecond)/this->TicksPerMillisecond;
 			}
 			///	<summary>
-			///	»ñÈ¡´ËÊµÀıËù±íÊ¾ÈÕÆÚµÄÎ¢Ãë²¿·Ö¡£Î¢ÃëÊı£¨½éÓÚ 0 ºÍ 999 Ö®¼ä£©¡£
-			///	<code>Ô­ĞÍ£ºinline int GetMicrosecond();</code>
+			///	è·å–æ­¤å®ä¾‹æ‰€è¡¨ç¤ºæ—¥æœŸçš„å¾®ç§’éƒ¨åˆ†ã€‚å¾®ç§’æ•°ï¼ˆä»‹äº 0 å’Œ 999 ä¹‹é—´ï¼‰ã€‚
+			///	<code>åŸå‹ï¼šinline int GetMicrosecond();</code>
 			///	</summary>
-			///	<returns>´ËÊµÀıËù±íÊ¾ÈÕÆÚµÄÎ¢Ãë²¿·Ö</returns> 
+			///	<returns>æ­¤å®ä¾‹æ‰€è¡¨ç¤ºæ—¥æœŸçš„å¾®ç§’éƒ¨åˆ†</returns> 
 			inline int GetMicrosecond(){return (this->_Ticks & this->TicksMask) % this->TicksPerMillisecond; };
 			///	<summary>
-			///	»ñÈ¡±íÊ¾´ËÊµÀıµÄÈÕÆÚºÍÊ±¼äµÄ¿Ì¶ÈÊıÎ¢ÃëÊı¡£
-			///	<code>Ô­ĞÍ£ºinline unsigned long long GetTicks();</code>
+			///	è·å–è¡¨ç¤ºæ­¤å®ä¾‹çš„æ—¥æœŸå’Œæ—¶é—´çš„åˆ»åº¦æ•°å¾®ç§’æ•°ã€‚
+			///	<code>åŸå‹ï¼šinline unsigned long long GetTicks();</code>
 			///	</summary>
-			///	<returns>´ËÊµÀıËù±íÊ¾ÈÕÆÚµÄÎ¢Ãë²¿·Ö</returns> 
+			///	<returns>æ­¤å®ä¾‹æ‰€è¡¨ç¤ºæ—¥æœŸçš„å¾®ç§’éƒ¨åˆ†</returns> 
 			inline unsigned long long GetTicks()
 			{
 				return (this->_Ticks & this->TicksMask);
 			}
 			///	<summary>
-			///	»ñÈ¡´ËÊµÀıËù±íÊ¾µÄÈÕÆÚÊÇ¸ÃÄêÖĞµÄµÚ¼¸Ìì¡£¸ÃÄêÖĞµÄµÚ¼¸Ìì£¬±íÊ¾Îª 1 ºÍ 366 Ö®¼äµÄÒ»¸öÖµ¡£
-			///	<code>Ô­ĞÍ£ºinline int GetDayOfYear();</code>
+			///	è·å–æ­¤å®ä¾‹æ‰€è¡¨ç¤ºçš„æ—¥æœŸæ˜¯è¯¥å¹´ä¸­çš„ç¬¬å‡ å¤©ã€‚è¯¥å¹´ä¸­çš„ç¬¬å‡ å¤©ï¼Œè¡¨ç¤ºä¸º 1 å’Œ 366 ä¹‹é—´çš„ä¸€ä¸ªå€¼ã€‚
+			///	<code>åŸå‹ï¼šinline int GetDayOfYear();</code>
 			///	</summary>
-			///	<returns>´ËÊµÀıËù±íÊ¾µÄÈÕÆÚÊÇ¸ÃÄêÖĞµÄµÚ¼¸Ìì</returns> 
+			///	<returns>æ­¤å®ä¾‹æ‰€è¡¨ç¤ºçš„æ—¥æœŸæ˜¯è¯¥å¹´ä¸­çš„ç¬¬å‡ å¤©</returns> 
 			inline int GetDayOfYear()
 			{
 				return this->GetDatePart(1);		 
 			}
 			///	<summary>
-			///	»ñÈ¡´ËÊµÀıËù×ª»»Ê±ÇøËù±íÊ¾µÄÈÕÆÚÊÇĞÇÆÚ¼¸¡£Ò»¸ö<see cref="Common.DayOfWeek"/>Ã¶¾Ù³£Êı£¬ËüÖ¸Ê¾ĞÇÆÚ¼¸¡£¸ÃÊôĞÔÖµµÄ·¶Î§´ÓÁã£¨±íÊ¾ĞÇÆÚÈÕ£©µ½Áù£¨±íÊ¾ĞÇÆÚÁù£©¡£
-			///	<code>Ô­ĞÍ£ºinline DayOfWeek GetDayOfWeek(TimeZone tz=localTimeZone);</code>
+			///	è·å–æ­¤å®ä¾‹æ‰€è½¬æ¢æ—¶åŒºæ‰€è¡¨ç¤ºçš„æ—¥æœŸæ˜¯æ˜ŸæœŸå‡ ã€‚ä¸€ä¸ª<see cref="Common.DayOfWeek"/>æšä¸¾å¸¸æ•°ï¼Œå®ƒæŒ‡ç¤ºæ˜ŸæœŸå‡ ã€‚è¯¥å±æ€§å€¼çš„èŒƒå›´ä»é›¶ï¼ˆè¡¨ç¤ºæ˜ŸæœŸæ—¥ï¼‰åˆ°å…­ï¼ˆè¡¨ç¤ºæ˜ŸæœŸå…­ï¼‰ã€‚
+			///	<code>åŸå‹ï¼šinline DayOfWeek GetDayOfWeek(TimeZone tz=localTimeZone);</code>
 			///	</summary>
-			///	<param name="tz">Ö¸¶¨Ê±Çø</param> 
-			///	<returns>ĞÇÆÚ¼¸</returns> 
+			///	<param name="tz">æŒ‡å®šæ—¶åŒº</param> 
+			///	<returns>æ˜ŸæœŸå‡ </returns> 
 			inline DayOfWeek GetDayOfWeek(TimeZone tz=localTimeZone)
 			{
 				return (DayOfWeek) ((int) ((((long)(((_Ticks & this->TicksMask)+tz*DateTime::TicksPerHour) / this->TicksPerDay)) + 1) % ((long) 7)));
 			};
 			///	<summary>
-			///	·µ»Øµ±Ç°Ê±¼äËù±íÊ¾µÄĞÇÆÚÃû³Æ¡£type=0 ÖĞÎÄÃû³Æ 1 Ó¢ÎÄÈ«³Æ 2 Ó¢ÎÄ¼òĞ´¡£
-			///	<code>Ô­ĞÍ£ºinline const string &amp;GetWeekName(int type,TimeZone tz=localTimeZone);</code>
+			///	è¿”å›å½“å‰æ—¶é—´æ‰€è¡¨ç¤ºçš„æ˜ŸæœŸåç§°ã€‚type=0 ä¸­æ–‡åç§° 1 è‹±æ–‡å…¨ç§° 2 è‹±æ–‡ç®€å†™ã€‚
+			///	<code>åŸå‹ï¼šinline const string &amp;GetWeekName(int type,TimeZone tz=localTimeZone);</code>
 			///	</summary>
-			///	<param name="type">Ö¸¶¨·µ»Ø±íÊ¾ĞÎÊ½</param> 
-			///	<param name="tz">Ö¸¶¨Ê±Çø</param> 
-			///	<returns>µ±Ç°Ê±¼äËù±íÊ¾µÄĞÇÆÚÃû³Æ</returns> 
+			///	<param name="type">æŒ‡å®šè¿”å›è¡¨ç¤ºå½¢å¼</param> 
+			///	<param name="tz">æŒ‡å®šæ—¶åŒº</param> 
+			///	<returns>å½“å‰æ—¶é—´æ‰€è¡¨ç¤ºçš„æ˜ŸæœŸåç§°</returns> 
 			inline const string &GetWeekName(int type,TimeZone tz=localTimeZone)
 			{
 				type=type%3;
@@ -708,10 +708,10 @@ namespace Common
 				return DateTime::WeekName[index][type];
 			}
 			///	<summary>
-			///	»ñÈ¡´ËÊµÀıµÄÈÕÆÚ²¿·Ö¡£ĞÂµÄ <see cref="DateTime"/>£¬ÆäÈÕÆÚÓë´ËÊµÀıÏàÍ¬£¬Ê±¼äÖµÉèÖÃÎªÎçÒ¹ 12:00:00 (00:00:00)¡£
-			///	<code>Ô­ĞÍ£ºinline DateTime GetDate();</code>
+			///	è·å–æ­¤å®ä¾‹çš„æ—¥æœŸéƒ¨åˆ†ã€‚æ–°çš„ <see cref="DateTime"/>ï¼Œå…¶æ—¥æœŸä¸æ­¤å®ä¾‹ç›¸åŒï¼Œæ—¶é—´å€¼è®¾ç½®ä¸ºåˆå¤œ 12:00:00 (00:00:00)ã€‚
+			///	<code>åŸå‹ï¼šinline DateTime GetDate();</code>
 			///	</summary>
-			///	<returns>´ËÊµÀıµÄÈÕÆÚ²¿·ÖËù±íÊ¾µÄĞÂÈÕÆÚ¶ÔÏó</returns> 
+			///	<returns>æ­¤å®ä¾‹çš„æ—¥æœŸéƒ¨åˆ†æ‰€è¡¨ç¤ºçš„æ–°æ—¥æœŸå¯¹è±¡</returns> 
 			inline DateTime GetDate()
 			{
 				unsigned long long l=(this->_Ticks & this->TicksMask);
@@ -723,11 +723,11 @@ namespace Common
 				return DateTime(ll | l );
 			}
 			///	<summary>
-			///	»ñÈ¡´ËÊµÀıµÄÖ¸¶¨²¿·Ö¡£
-			///	<code>Ô­ĞÍ£ºinline int GetDatePart(DatePart dp);</code>
+			///	è·å–æ­¤å®ä¾‹çš„æŒ‡å®šéƒ¨åˆ†ã€‚
+			///	<code>åŸå‹ï¼šinline int GetDatePart(DatePart dp);</code>
 			///	</summary>
-			///	<param name="dp">Ö¸¶¨Òª·µ»ØµÄÈÕÆÚÊ±¼ä²¿·Ö<see cref='DatePart'/></param> 
-			///	<returns>»ñÈ¡´ËÊµÀıµÄÖ¸¶¨²¿·Ö</returns> 
+			///	<param name="dp">æŒ‡å®šè¦è¿”å›çš„æ—¥æœŸæ—¶é—´éƒ¨åˆ†<see cref='DatePart'/></param> 
+			///	<returns>è·å–æ­¤å®ä¾‹çš„æŒ‡å®šéƒ¨åˆ†</returns> 
 			inline int GetDatePart(DatePart dp)
 			{
 				switch(dp)
@@ -757,77 +757,77 @@ namespace Common
 				}
 			}
 			///	<summary>
-			///	ÉèÖÃ´ËÊµÀı±íÊ¾Ê±¼äµÄÊ±Çø¡£
-			///	<code>Ô­ĞÍ£ºinline void SetTimeZone(TimeZone tz);</code>
+			///	è®¾ç½®æ­¤å®ä¾‹è¡¨ç¤ºæ—¶é—´çš„æ—¶åŒºã€‚
+			///	<code>åŸå‹ï¼šinline void SetTimeZone(TimeZone tz);</code>
 			///	</summary>
-			///	<param name="tc">Ö¸¶¨Ê±Çø<see cref='TimeZone'/></param> 
+			///	<param name="tc">æŒ‡å®šæ—¶åŒº<see cref='TimeZone'/></param> 
 			inline void SetTimeZone(TimeZone tz)
 			{
 				unsigned long long tl =32+tz;
-				tl=tl<<59;		//	Áô5Î»Ê±Çø±êÊ¶
+				tl=tl<<59;		//	ç•™5ä½æ—¶åŒºæ ‡è¯†
 				this->_Ticks=(tl | (_Ticks & this->TicksMask ));
 			}
 			///	<summary>
-			///	»ñÈ¡´ËÊµÀı±íÊ¾Ê±¼äµÄÊ±Çø¡£
-			///	<code>Ô­ĞÍ£ºinline TimeZone GetTimeZone();</code>
+			///	è·å–æ­¤å®ä¾‹è¡¨ç¤ºæ—¶é—´çš„æ—¶åŒºã€‚
+			///	<code>åŸå‹ï¼šinline TimeZone GetTimeZone();</code>
 			///	</summary>
-			///	<returns>»ñÈ¡´ËÊµÀı±íÊ¾Ê±¼äµÄÊ±Çø</returns> 
+			///	<returns>è·å–æ­¤å®ä¾‹è¡¨ç¤ºæ—¶é—´çš„æ—¶åŒº</returns> 
 			inline TimeZone GetTimeZone()
 			{
 				int tz=(_Ticks>>59);if(tz>16)tz-=32;
 				return (TimeZone)tz;
 			};
 			///	<summary>
-			///	»ñÈ¡Ò»¸ö<see cref='DateTime'/>¶ÔÏó£¬¸Ã¶ÔÏóÉèÖÃÎª´Ë¼ÆËã»úÉÏµÄµ±Ç°ÈÕÆÚºÍÊ±¼ä£¬±íÊ¾Îª±¾µØÊ±¼ä¡£
-			///	<code>Ô­ĞÍ£ºinline static DateTime Now();</code>
+			///	è·å–ä¸€ä¸ª<see cref='DateTime'/>å¯¹è±¡ï¼Œè¯¥å¯¹è±¡è®¾ç½®ä¸ºæ­¤è®¡ç®—æœºä¸Šçš„å½“å‰æ—¥æœŸå’Œæ—¶é—´ï¼Œè¡¨ç¤ºä¸ºæœ¬åœ°æ—¶é—´ã€‚
+			///	<code>åŸå‹ï¼šinline static DateTime Now();</code>
 			///	</summary>
-			///	<returns>·µ»Øµ±Ç°¼ÆËã»úÉÏµÄµ±Ç°ÈÕÆÚºÍÊ±¼ä£¬±íÊ¾Îª±¾µØÊ±¼ä</returns> 
+			///	<returns>è¿”å›å½“å‰è®¡ç®—æœºä¸Šçš„å½“å‰æ—¥æœŸå’Œæ—¶é—´ï¼Œè¡¨ç¤ºä¸ºæœ¬åœ°æ—¶é—´</returns> 
 			inline static DateTime Now()
 			{
 				return DateTime();
 			}
 			///	<summary>
-			///	»ñÈ¡´ËÊµÀıµÄÊ±¼ä²¿·Ö¡£
-			///	<code>Ô­ĞÍ£ºinline TimeSpan GetTimeOfDay();</code>
+			///	è·å–æ­¤å®ä¾‹çš„æ—¶é—´éƒ¨åˆ†ã€‚
+			///	<code>åŸå‹ï¼šinline TimeSpan GetTimeOfDay();</code>
 			///	</summary>
-			///	<returns>»ñÈ¡´ËÊµÀıµÄµ±ÌìµÄÊ±¼ä£¬Ëü±íÊ¾µ±Ìì×ÔÎçÒ¹ÒÔÀ´ÒÑ¾­¹ıÊ±¼äµÄ²¿·Ö</returns> 
+			///	<returns>è·å–æ­¤å®ä¾‹çš„å½“å¤©çš„æ—¶é—´ï¼Œå®ƒè¡¨ç¤ºå½“å¤©è‡ªåˆå¤œä»¥æ¥å·²ç»è¿‡æ—¶é—´çš„éƒ¨åˆ†</returns> 
 			inline TimeSpan GetTimeOfDay()
 			{
 				long long d=((_Ticks & this->TicksMask) % this->TicksPerDay);
 				return TimeSpan(d);
 			}
 			///	<summary>
-			///	»ñÈ¡µ±Ç°Ê±¼äµÄÈÕÆÚ²¿·Ö¡£
-			///	<code>Ô­ĞÍ£ºinline static DateTime GetToday();</code>
+			///	è·å–å½“å‰æ—¶é—´çš„æ—¥æœŸéƒ¨åˆ†ã€‚
+			///	<code>åŸå‹ï¼šinline static DateTime GetToday();</code>
 			///	</summary>
-			///	<returns>»ñÈ¡µ±Ç°Ê±¼äµÄÈÕÆÚ²¿·Ö£¬ÆäÊ±¼ä×é³É²¿·ÖÉèÖÃÎª 00:00:00</returns> 
+			///	<returns>è·å–å½“å‰æ—¶é—´çš„æ—¥æœŸéƒ¨åˆ†ï¼Œå…¶æ—¶é—´ç»„æˆéƒ¨åˆ†è®¾ç½®ä¸º 00:00:00</returns> 
 			inline static DateTime GetToday()
 			{
 				return DateTime::Now().GetDate();
 			}
 			///	<summary>
-			///	»ñÈ¡Ò»¸ö<see cref='DateTime'/>¶ÔÏó,¸Ã¶ÔÏóÉèÖÃÎª´Ë¼ÆËã»úÉÏµÄµ±Ç°ÈÕÆÚºÍÊ±¼ä£¬²¢±íÊ¾ÎªĞ­µ÷Í¨ÓÃÊ±¼ä (UTC)¡£
-			///	<code>Ô­ĞÍ£ºinline static DateTime GetUtcNow();</code>
+			///	è·å–ä¸€ä¸ª<see cref='DateTime'/>å¯¹è±¡,è¯¥å¯¹è±¡è®¾ç½®ä¸ºæ­¤è®¡ç®—æœºä¸Šçš„å½“å‰æ—¥æœŸå’Œæ—¶é—´ï¼Œå¹¶è¡¨ç¤ºä¸ºåè°ƒé€šç”¨æ—¶é—´ (UTC)ã€‚
+			///	<code>åŸå‹ï¼šinline static DateTime GetUtcNow();</code>
 			///	</summary>
-			///	<returns>´Ë¼ÆËã»úÉÏµÄµ±Ç°ÈÕÆÚºÍÊ±¼ä£¬ÆäÊ±¼ä×é³É²¿·ÖÉèÖÃÎª 00:00:00</returns> 
+			///	<returns>æ­¤è®¡ç®—æœºä¸Šçš„å½“å‰æ—¥æœŸå’Œæ—¶é—´ï¼Œå…¶æ—¶é—´ç»„æˆéƒ¨åˆ†è®¾ç½®ä¸º 00:00:00</returns> 
 			inline static DateTime GetUtcNow()
 			{
 				return DateTime(GMT0);
 			}
 
 			///	<summary>
-			///	»ñÈ¡´ËÊ±¼äÊµÀıÖĞµÄÖ¸¶¨²¿·Ö£¬ÅúÁ¿·µ»Ø¡£
-			///	<code>Ô­ĞÍ£ºinline void GetDateParts(int * year,int * month,int * day,int * dayOfyear,int * hour=NULL,
+			///	è·å–æ­¤æ—¶é—´å®ä¾‹ä¸­çš„æŒ‡å®šéƒ¨åˆ†ï¼Œæ‰¹é‡è¿”å›ã€‚
+			///	<code>åŸå‹ï¼šinline void GetDateParts(int * year,int * month,int * day,int * dayOfyear,int * hour=NULL,
 			///                                   int* minute=NULL,int *second=NULL,int *millis=NULL,int * ticks=NULL);</code>
 			///	</summary>
-			///	<param name="year">·µ»ØÄê</param> 
-			///	<param name="month">·µ»ØÔÂ</param> 
-			///	<param name="day">·µ»ØÈÕ</param> 
-			///	<param name="hour">·µ»ØĞ¡Ê±</param> 
-			///	<param name="minute">·µ»Ø·Ö</param> 
-			///	<param name="second">·µ»ØÃë</param> 
-			///	<param name="millisecond">·µ»ØºÁÃë</param> 
-			///	<param name="ticks">·µ»ØÎ¢Ãë</param> 
+			///	<param name="year">è¿”å›å¹´</param> 
+			///	<param name="month">è¿”å›æœˆ</param> 
+			///	<param name="day">è¿”å›æ—¥</param> 
+			///	<param name="hour">è¿”å›å°æ—¶</param> 
+			///	<param name="minute">è¿”å›åˆ†</param> 
+			///	<param name="second">è¿”å›ç§’</param> 
+			///	<param name="millisecond">è¿”å›æ¯«ç§’</param> 
+			///	<param name="ticks">è¿”å›å¾®ç§’</param> 
 			inline void GetDateParts(int * year,int * month,int * day,int * dayOfyear,int * hour=NULL,int* minute=NULL,int *second=NULL,int *millis=NULL,int * ticks=NULL)
 			{
 				unsigned long long totalTicks=(_Ticks & this->TicksMask);
@@ -871,10 +871,10 @@ namespace Common
 				if(ticks)*ticks=(int) (dayMillis % this->TicksPerMillisecond);
 			}
 			///	<summary>
-			///	»ñÈ¡´ËÊ±¼äÊµÀıÖĞµÄÖ¸¶¨Ä³Ò»²¿·Ö¡£
-			///	<code>Ô­ĞÍ£ºinline int GetDatePart(int part);</code>
+			///	è·å–æ­¤æ—¶é—´å®ä¾‹ä¸­çš„æŒ‡å®šæŸä¸€éƒ¨åˆ†ã€‚
+			///	<code>åŸå‹ï¼šinline int GetDatePart(int part);</code>
 			///	</summary>
-			///	<returns>·µ»Ø¶ÔÓ¦Ê±¼äÖµ²¿·Ö</returns> 
+			///	<returns>è¿”å›å¯¹åº”æ—¶é—´å€¼éƒ¨åˆ†</returns> 
 			inline int GetDatePart(int part)
 			{
 				unsigned long long totalTicks=(_Ticks & this->TicksMask);
@@ -921,12 +921,12 @@ namespace Common
 			}
 
 			///	<summary>
-			///	·µ»ØĞÂ<see cref='DateTime'/>¶ÔÏó£¬ÆäÖµÎªÔÚµ±Ç°Ê±¼äÊµÀıÉÏ¼ÓÒ»Ö¸¶¨Ê±¼ä²¿·ÖµÄÖ¸¶¨Öµ¡£
-			///	<code>Ô­ĞÍ£ºinline DateTime Add(long long value, long long scale);</code>
+			///	è¿”å›æ–°<see cref='DateTime'/>å¯¹è±¡ï¼Œå…¶å€¼ä¸ºåœ¨å½“å‰æ—¶é—´å®ä¾‹ä¸ŠåŠ ä¸€æŒ‡å®šæ—¶é—´éƒ¨åˆ†çš„æŒ‡å®šå€¼ã€‚
+			///	<code>åŸå‹ï¼šinline DateTime Add(long long value, long long scale);</code>
 			///	</summary>
-			///	<param name="value">Ö¸¶¨Öµ</param> 
-			///	<param name="scale">Ö¸¶¨µ¥Î»</param> 
-			///	<returns>Ò»¸öĞÂµÄ<see cref='DateTime'/>¶ÔÏó£¬ÆäÖµÎªÔÚµ±Ç°Ê±¼äÊµÀıÉÏ¼ÓÒ»Ö¸¶¨Ê±¼ä²¿·ÖµÄÖ¸¶¨Öµ¡£</returns> 
+			///	<param name="value">æŒ‡å®šå€¼</param> 
+			///	<param name="scale">æŒ‡å®šå•ä½</param> 
+			///	<returns>ä¸€ä¸ªæ–°çš„<see cref='DateTime'/>å¯¹è±¡ï¼Œå…¶å€¼ä¸ºåœ¨å½“å‰æ—¶é—´å®ä¾‹ä¸ŠåŠ ä¸€æŒ‡å®šæ—¶é—´éƒ¨åˆ†çš„æŒ‡å®šå€¼ã€‚</returns> 
 			inline DateTime Add(long long value, long long scale)
 			{
 				long long num = (time_t) ((value * scale) + ((value >= 0) ? 0.5 : -0.5));
@@ -937,21 +937,21 @@ namespace Common
 				return this->AddTicks(num);
 			}
 			///	<summary>
-			///	½«Ö¸¶¨µÄ<see cref='TimeSpan'/>µÄÖµ¼Óµ½´ËÊµÀıµÄÖµÉÏ¡£
-			///	<code>Ô­ĞÍ£ºinline DateTime Add(TimeSpan value);</code>
+			///	å°†æŒ‡å®šçš„<see cref='TimeSpan'/>çš„å€¼åŠ åˆ°æ­¤å®ä¾‹çš„å€¼ä¸Šã€‚
+			///	<code>åŸå‹ï¼šinline DateTime Add(TimeSpan value);</code>
 			///	</summary>
-			///	<param name="value">Ö¸¶¨Ê±¼ä¼ä¸ô</param> 
-			///	<returns>Ò»¸öĞÂµÄ<see cref='DateTime'/>¶ÔÏó£¬ÆäÖµÊÇ´ËÊµÀıËù±íÊ¾µÄÈÕÆÚºÍÊ±¼äÓëvalue Ëù±íÊ¾µÄÊ±¼ä¼ä¸ôÖ®ºÍ¡£</returns> 
+			///	<param name="value">æŒ‡å®šæ—¶é—´é—´éš”</param> 
+			///	<returns>ä¸€ä¸ªæ–°çš„<see cref='DateTime'/>å¯¹è±¡ï¼Œå…¶å€¼æ˜¯æ­¤å®ä¾‹æ‰€è¡¨ç¤ºçš„æ—¥æœŸå’Œæ—¶é—´ä¸value æ‰€è¡¨ç¤ºçš„æ—¶é—´é—´éš”ä¹‹å’Œã€‚</returns> 
 			inline DateTime Add(TimeSpan value)
 			{
 				return this->Add(value._ticks,1);
 			};
 			///	<summary>
-			///	½«Ö¸¶¨µÄÎ¢ÃëÊı¼Óµ½´ËÊµÀıµÄÖµÉÏ¡£
-			///	<code>Ô­ĞÍ£ºinline DateTime AddTicks(long long ticks);</code>
+			///	å°†æŒ‡å®šçš„å¾®ç§’æ•°åŠ åˆ°æ­¤å®ä¾‹çš„å€¼ä¸Šã€‚
+			///	<code>åŸå‹ï¼šinline DateTime AddTicks(long long ticks);</code>
 			///	</summary>
-			///	<param name="value">Ê±¼ä¿Ì¶ÈÊı£¬Î¢ÃëÊı</param> 
-			///	<returns>Ò»¸öĞÂµÄ<see cref='DateTime'/>¶ÔÏó£¬ÆäÖµÊÇ´ËÊµÀıËù±íÊ¾µÄÈÕÆÚºÍÊ±¼äÓëvalue Ëù±íÊ¾µÄÎ¢ÃëÊ±¼äÖ®ºÍ¡£</returns> 
+			///	<param name="value">æ—¶é—´åˆ»åº¦æ•°ï¼Œå¾®ç§’æ•°</param> 
+			///	<returns>ä¸€ä¸ªæ–°çš„<see cref='DateTime'/>å¯¹è±¡ï¼Œå…¶å€¼æ˜¯æ­¤å®ä¾‹æ‰€è¡¨ç¤ºçš„æ—¥æœŸå’Œæ—¶é—´ä¸value æ‰€è¡¨ç¤ºçš„å¾®ç§’æ—¶é—´ä¹‹å’Œã€‚</returns> 
 			inline DateTime AddTicks(long long ticks)
 			{
 				long long internalTicks = (_Ticks & this->TicksMask);
@@ -962,54 +962,54 @@ namespace Common
 				return DateTime(this->_Ticks+ticks);
 			};
 			///	<summary>
-			///	½«Ö¸¶¨µÄºÁÃëÊı¼Óµ½´ËÊµÀıµÄÖµÉÏ¡£
-			///	<code>Ô­ĞÍ£ºinline DateTime AddMillesSecond(long long value);</code>
+			///	å°†æŒ‡å®šçš„æ¯«ç§’æ•°åŠ åˆ°æ­¤å®ä¾‹çš„å€¼ä¸Šã€‚
+			///	<code>åŸå‹ï¼šinline DateTime AddMillesSecond(long long value);</code>
 			///	</summary>
-			///	<param name="value">ºÁÃëÊı</param> 
-			///	<returns>Ò»¸öĞÂµÄ<see cref='DateTime'/>¶ÔÏó£¬ÆäÖµÊÇ´ËÊµÀıËù±íÊ¾µÄÈÕÆÚºÍÊ±¼äÓëvalue Ëù±íÊ¾µÄºÁÃëÊ±¼äÖ®ºÍ¡£</returns> 
+			///	<param name="value">æ¯«ç§’æ•°</param> 
+			///	<returns>ä¸€ä¸ªæ–°çš„<see cref='DateTime'/>å¯¹è±¡ï¼Œå…¶å€¼æ˜¯æ­¤å®ä¾‹æ‰€è¡¨ç¤ºçš„æ—¥æœŸå’Œæ—¶é—´ä¸value æ‰€è¡¨ç¤ºçš„æ¯«ç§’æ—¶é—´ä¹‹å’Œã€‚</returns> 
 			inline DateTime AddMillesSecond(long long value)
 			{
 				return this->Add(value,this->TicksPerMillisecond);
 			}
 			///	<summary>
-			///	½«Ö¸¶¨µÄÌìÊı¼Óµ½´ËÊµÀıµÄÖµÉÏ¡£
-			///	<code>Ô­ĞÍ£ºinline DateTime AddDays(int value);</code>
+			///	å°†æŒ‡å®šçš„å¤©æ•°åŠ åˆ°æ­¤å®ä¾‹çš„å€¼ä¸Šã€‚
+			///	<code>åŸå‹ï¼šinline DateTime AddDays(int value);</code>
 			///	</summary>
-			///	<param name="value">ÌìÊı£¬¿ÉÒÔÊÇ¸ºÊıÒ²¿ÉÒÔÊÇÕıÊı</param> 
-			///	<returns>Ò»¸öĞÂµÄ<see cref='DateTime'/>¶ÔÏó£¬ÆäÖµÊÇ´ËÊµÀıËù±íÊ¾µÄÈÕÆÚºÍÊ±¼äÓëvalue Ëù±íÊ¾µÄÌìÊıÖ®ºÍ¡£</returns> 
+			///	<param name="value">å¤©æ•°ï¼Œå¯ä»¥æ˜¯è´Ÿæ•°ä¹Ÿå¯ä»¥æ˜¯æ­£æ•°</param> 
+			///	<returns>ä¸€ä¸ªæ–°çš„<see cref='DateTime'/>å¯¹è±¡ï¼Œå…¶å€¼æ˜¯æ­¤å®ä¾‹æ‰€è¡¨ç¤ºçš„æ—¥æœŸå’Œæ—¶é—´ä¸value æ‰€è¡¨ç¤ºçš„å¤©æ•°ä¹‹å’Œã€‚</returns> 
 			inline DateTime AddDays(int value)
 			{
 				return this->Add(value, this->TicksPerDay);
 			}
 			///	<summary>
-			///	½«Ö¸¶¨µÄĞ¡Ê±Êı¼Óµ½´ËÊµÀıµÄÖµÉÏ¡£
-			///	<code>Ô­ĞÍ£ºinline DateTime AddHours(int value);</code>
+			///	å°†æŒ‡å®šçš„å°æ—¶æ•°åŠ åˆ°æ­¤å®ä¾‹çš„å€¼ä¸Šã€‚
+			///	<code>åŸå‹ï¼šinline DateTime AddHours(int value);</code>
 			///	</summary>
-			///	<param name="value">Ğ¡Ê±Êı£¬¿ÉÒÔÊÇ¸ºÊıÒ²¿ÉÒÔÊÇÕıÊı</param> 
-			///	<returns>Ò»¸öĞÂµÄ<see cref='DateTime'/>¶ÔÏó£¬ÆäÖµÊÇ´ËÊµÀıËù±íÊ¾µÄÈÕÆÚºÍÊ±¼äÓëvalue Ëù±íÊ¾µÄĞ¡Ê±ÊıÖ®ºÍ¡£</returns> 
+			///	<param name="value">å°æ—¶æ•°ï¼Œå¯ä»¥æ˜¯è´Ÿæ•°ä¹Ÿå¯ä»¥æ˜¯æ­£æ•°</param> 
+			///	<returns>ä¸€ä¸ªæ–°çš„<see cref='DateTime'/>å¯¹è±¡ï¼Œå…¶å€¼æ˜¯æ­¤å®ä¾‹æ‰€è¡¨ç¤ºçš„æ—¥æœŸå’Œæ—¶é—´ä¸value æ‰€è¡¨ç¤ºçš„å°æ—¶æ•°ä¹‹å’Œã€‚</returns> 
 			inline DateTime AddHours(int value)
 			{
 				return this->Add(value, this->TicksPerHour);
 			}
 			///	<summary>
-			///	½«Ö¸¶¨µÄ·ÖÖÓÊı¼Óµ½´ËÊµÀıµÄÖµÉÏ¡£
-			///	<code>Ô­ĞÍ£ºinline DateTime AddMinutes(int value);</code>
+			///	å°†æŒ‡å®šçš„åˆ†é’Ÿæ•°åŠ åˆ°æ­¤å®ä¾‹çš„å€¼ä¸Šã€‚
+			///	<code>åŸå‹ï¼šinline DateTime AddMinutes(int value);</code>
 			///	</summary>
-			///	<param name="value">·ÖÖÓÊı£¬¿ÉÒÔÊÇ¸ºÊıÒ²¿ÉÒÔÊÇÕıÊı</param> 
-			///	<returns>Ò»¸öĞÂµÄ<see cref='DateTime'/>¶ÔÏó£¬ÆäÖµÊÇ´ËÊµÀıËù±íÊ¾µÄÈÕÆÚºÍÊ±¼äÓëvalue Ëù±íÊ¾µÄ·ÖÖÓÊıÖ®ºÍ¡£</returns> 
+			///	<param name="value">åˆ†é’Ÿæ•°ï¼Œå¯ä»¥æ˜¯è´Ÿæ•°ä¹Ÿå¯ä»¥æ˜¯æ­£æ•°</param> 
+			///	<returns>ä¸€ä¸ªæ–°çš„<see cref='DateTime'/>å¯¹è±¡ï¼Œå…¶å€¼æ˜¯æ­¤å®ä¾‹æ‰€è¡¨ç¤ºçš„æ—¥æœŸå’Œæ—¶é—´ä¸value æ‰€è¡¨ç¤ºçš„åˆ†é’Ÿæ•°ä¹‹å’Œã€‚</returns> 
 			inline DateTime AddMinutes(int value)
 			{
 				return this->Add(value, this->TicksPerMinute);
 			}
 			///	<summary>
-			///	½«Ö¸¶¨µÄÔÂ·İÊı¼Óµ½´ËÊµÀıµÄÖµÉÏ¡£
-			///	<code>Ô­ĞÍ£ºinline DateTime AddMonths(int months);</code>
+			///	å°†æŒ‡å®šçš„æœˆä»½æ•°åŠ åˆ°æ­¤å®ä¾‹çš„å€¼ä¸Šã€‚
+			///	<code>åŸå‹ï¼šinline DateTime AddMonths(int months);</code>
 			///	</summary>
-			///	<param name="months">ÔÂ·İÊı¡£¿ÉÒÔÊÇ¸ºÊıÒ²¿ÉÒÔÊÇÕıÊı¡£</param> 
-			///	<returns>Ò»¸öĞÂµÄ<see cref='DateTime'/>¶ÔÏó£¬ÆäÖµÊÇ´ËÊµÀıËù±íÊ¾µÄÈÕÆÚºÍÊ±¼äÓëmonths Ëù±íÊ¾µÄÔÂ·İÊıÖ®ºÍ¡£</returns> 
+			///	<param name="months">æœˆä»½æ•°ã€‚å¯ä»¥æ˜¯è´Ÿæ•°ä¹Ÿå¯ä»¥æ˜¯æ­£æ•°ã€‚</param> 
+			///	<returns>ä¸€ä¸ªæ–°çš„<see cref='DateTime'/>å¯¹è±¡ï¼Œå…¶å€¼æ˜¯æ­¤å®ä¾‹æ‰€è¡¨ç¤ºçš„æ—¥æœŸå’Œæ—¶é—´ä¸months æ‰€è¡¨ç¤ºçš„æœˆä»½æ•°ä¹‹å’Œã€‚</returns> 
 			inline DateTime AddMonths(int months)
 			{
-				if ((months < -120000) || (months > 120000)) //Ò»ÍòÄê
+				if ((months < -120000) || (months > 120000)) //ä¸€ä¸‡å¹´
 				{
 					EXP("ArgumentOutOfRange_DateTimeBadMonths");
 				}
@@ -1023,7 +1023,7 @@ namespace Common
 				}
 				else
 				{
-					month=12 - abs(num4 - 11) % 12;			//month = 12 + ((num4 + 1) % 12);   //¸ºÊıÈ¡Ä£ÊÇMSÌØÓĞµÄËã·¨
+					month=12 - abs(num4 - 11) % 12;			//month = 12 + ((num4 + 1) % 12);   //è´Ÿæ•°å–æ¨¡æ˜¯MSç‰¹æœ‰çš„ç®—æ³•
 					year +=(num4 - 11) / 12;
 				}
 				if ((year < 1) || (year > 9999))
@@ -1040,21 +1040,21 @@ namespace Common
 				return DateTime(tl,(TimeZone)tz);
  			}
 			///	<summary>
-			///	½«Ö¸¶¨µÄÃëÊı¼Óµ½´ËÊµÀıµÄÖµÉÏ¡£
-			///	<code>Ô­ĞÍ£ºinline DateTime AddMonths(int value);</code>
+			///	å°†æŒ‡å®šçš„ç§’æ•°åŠ åˆ°æ­¤å®ä¾‹çš„å€¼ä¸Šã€‚
+			///	<code>åŸå‹ï¼šinline DateTime AddMonths(int value);</code>
 			///	</summary>
-			///	<param name="value">ÃëÊı¡£¿ÉÒÔÊÇ¸ºÊıÒ²¿ÉÒÔÊÇÕıÊı¡£</param> 
-			///	<returns>Ò»¸öĞÂµÄ<see cref='DateTime'/>¶ÔÏó£¬ÆäÖµÊÇ´ËÊµÀıËù±íÊ¾µÄÈÕÆÚºÍÊ±¼äÓëvalue Ëù±íÊ¾µÄÃëÊıÖ®ºÍ¡£</returns> 
+			///	<param name="value">ç§’æ•°ã€‚å¯ä»¥æ˜¯è´Ÿæ•°ä¹Ÿå¯ä»¥æ˜¯æ­£æ•°ã€‚</param> 
+			///	<returns>ä¸€ä¸ªæ–°çš„<see cref='DateTime'/>å¯¹è±¡ï¼Œå…¶å€¼æ˜¯æ­¤å®ä¾‹æ‰€è¡¨ç¤ºçš„æ—¥æœŸå’Œæ—¶é—´ä¸value æ‰€è¡¨ç¤ºçš„ç§’æ•°ä¹‹å’Œã€‚</returns> 
 			inline DateTime AddSeconds(int value)
 			{
 				return this->Add(value, this->TicksPerSecond);
 			}
 			///	<summary>
-			///	½«Ö¸¶¨µÄÄê·İÊı¼Óµ½´ËÊµÀıµÄÖµÉÏ¡£
-			///	<code>Ô­ĞÍ£ºinline DateTime AddYears(int value);</code>
+			///	å°†æŒ‡å®šçš„å¹´ä»½æ•°åŠ åˆ°æ­¤å®ä¾‹çš„å€¼ä¸Šã€‚
+			///	<code>åŸå‹ï¼šinline DateTime AddYears(int value);</code>
 			///	</summary>
-			///	<param name="value">Äê·İÊı¡£¿ÉÒÔÊÇ¸ºÊıÒ²¿ÉÒÔÊÇÕıÊı¡£</param> 
-			///	<returns>Ò»¸öĞÂµÄ<see cref='DateTime'/>¶ÔÏó£¬ÆäÖµÊÇ´ËÊµÀıËù±íÊ¾µÄÈÕÆÚºÍÊ±¼äÓëvalue Ëù±íÊ¾µÄÄê·İÊıÖ®ºÍ¡£</returns> 
+			///	<param name="value">å¹´ä»½æ•°ã€‚å¯ä»¥æ˜¯è´Ÿæ•°ä¹Ÿå¯ä»¥æ˜¯æ­£æ•°ã€‚</param> 
+			///	<returns>ä¸€ä¸ªæ–°çš„<see cref='DateTime'/>å¯¹è±¡ï¼Œå…¶å€¼æ˜¯æ­¤å®ä¾‹æ‰€è¡¨ç¤ºçš„æ—¥æœŸå’Œæ—¶é—´ä¸value æ‰€è¡¨ç¤ºçš„å¹´ä»½æ•°ä¹‹å’Œã€‚</returns> 
 			inline DateTime AddYears(int value)
 			{
 				if ((value < -10000) || (value > 10000))
@@ -1064,12 +1064,12 @@ namespace Common
 				return this->AddMonths(value * 12);
 			}
 			///	<summary>
-			///	½«Ö¸¶¨µÄÊıÖµÌí¼Ó¼Óµ½´ËÊµÀıµÄÖ¸¶¨²¿·ÖÖµÉÏ¡£
-			///	<code>Ô­ĞÍ£ºinline DateTime AddDataPart(int number,DatePart dp);</code>
+			///	å°†æŒ‡å®šçš„æ•°å€¼æ·»åŠ åŠ åˆ°æ­¤å®ä¾‹çš„æŒ‡å®šéƒ¨åˆ†å€¼ä¸Šã€‚
+			///	<code>åŸå‹ï¼šinline DateTime AddDataPart(int number,DatePart dp);</code>
 			///	</summary>
-			///	<param name="number">¿ÉÒÔÊÇ¸ºÊıÒ²¿ÉÒÔÊÇÕıÊı¡£</param> 
-			///	<param name="dp">Ö¸¶¨ÒªÌí¼Óµ½´ËÊµÀıµÄÄÄ¸ö²¿·ÖÉÏ¡£</param> 
-			///	<returns>Ò»¸öĞÂµÄ<see cref='DateTime'/>¶ÔÏó£¬ÆäÖµÊÇ´ËÊµÀıËù±íÊ¾µÄÈÕÆÚºÍÊ±¼äÓëvalue Ëù±íÊ¾µÄÊıÖ®ºÍ¡£</returns> 
+			///	<param name="number">å¯ä»¥æ˜¯è´Ÿæ•°ä¹Ÿå¯ä»¥æ˜¯æ­£æ•°ã€‚</param> 
+			///	<param name="dp">æŒ‡å®šè¦æ·»åŠ åˆ°æ­¤å®ä¾‹çš„å“ªä¸ªéƒ¨åˆ†ä¸Šã€‚</param> 
+			///	<returns>ä¸€ä¸ªæ–°çš„<see cref='DateTime'/>å¯¹è±¡ï¼Œå…¶å€¼æ˜¯æ­¤å®ä¾‹æ‰€è¡¨ç¤ºçš„æ—¥æœŸå’Œæ—¶é—´ä¸value æ‰€è¡¨ç¤ºçš„æ•°ä¹‹å’Œã€‚</returns> 
 			inline DateTime AddDataPart(int number,DatePart dp)
 			{
 				switch(dp)
@@ -1097,12 +1097,12 @@ namespace Common
 
 
 			///	<summary>
-			///	±È½Ï<see cref='DateTime'/>Á½¸öÊµÀı£¬²¢·µ»ØËüÃÇÏà¶ÔÖµµÄÖ¸Ê¾¡£
-			///	<code>Ô­ĞÍ£ºinline static int Compare(DateTime t1, DateTime t2);</code>
+			///	æ¯”è¾ƒ<see cref='DateTime'/>ä¸¤ä¸ªå®ä¾‹ï¼Œå¹¶è¿”å›å®ƒä»¬ç›¸å¯¹å€¼çš„æŒ‡ç¤ºã€‚
+			///	<code>åŸå‹ï¼šinline static int Compare(DateTime t1, DateTime t2);</code>
 			///	</summary>
-			///	<param name="t1">µÚÒ»¸ö<see cref='DateTime'/>¡£</param> 
-			///	<param name="t2">µÚ¶ş¸ö<see cref='DateTime'/>¡£</param> 
-			///	<returns>ÓĞ·ûºÅÊı×Ö£¬Ö¸Ê¾ t1 ºÍ t2 µÄÏà¶ÔÖµ¡£ÖµÀàĞÍ Ìõ¼ş Ğ¡ÓÚÁã t1 Ğ¡ÓÚ t2¡£ Áã t1 µÈÓÚ t2¡£ ´óÓÚÁã t1 ´óÓÚ t2¡£</returns> 
+			///	<param name="t1">ç¬¬ä¸€ä¸ª<see cref='DateTime'/>ã€‚</param> 
+			///	<param name="t2">ç¬¬äºŒä¸ª<see cref='DateTime'/>ã€‚</param> 
+			///	<returns>æœ‰ç¬¦å·æ•°å­—ï¼ŒæŒ‡ç¤º t1 å’Œ t2 çš„ç›¸å¯¹å€¼ã€‚å€¼ç±»å‹ æ¡ä»¶ å°äºé›¶ t1 å°äº t2ã€‚ é›¶ t1 ç­‰äº t2ã€‚ å¤§äºé›¶ t1 å¤§äº t2ã€‚</returns> 
 			inline static int Compare(DateTime t1, DateTime t2)
 			{
 				long long d=t1.GetTicks()-t2.GetTicks();
@@ -1117,11 +1117,11 @@ namespace Common
 				return 0;
 			}
 			///	<summary>
-			///	½«´ËÊµÀıÓëÖ¸¶¨<see cref='DateTime'/>¶ÔÏó½øĞĞ±È½Ï²¢·µ»Ø¶ÔÆäÏà¶ÔÖµµÄÖ¸Ê¾.
-			///	<code>Ô­ĞÍ£ºinline int CompareTo(DateTime value);</code>
+			///	å°†æ­¤å®ä¾‹ä¸æŒ‡å®š<see cref='DateTime'/>å¯¹è±¡è¿›è¡Œæ¯”è¾ƒå¹¶è¿”å›å¯¹å…¶ç›¸å¯¹å€¼çš„æŒ‡ç¤º.
+			///	<code>åŸå‹ï¼šinline int CompareTo(DateTime value);</code>
 			///	</summary>
-			///	<param name="value">Òª±È½ÏµÄ<see cref='DateTime'/>¶ÔÏó¡£</param>
-			///	<returns>ÓĞ·ûºÅÊı×Ö£¬Ö¸Ê¾´ËÊµÀıºÍ value ²ÎÊıµÄÏà¶ÔÖµ¡£ÖµËµÃ÷: Ğ¡ÓÚÁã ´ËÊµÀıĞ¡ÓÚ value¡£ Áã ´ËÊµÀıµÈÓÚ value¡£ ´óÓÚÁã ´ËÊµÀı´óÓÚvalue¡£¡£</returns> 
+			///	<param name="value">è¦æ¯”è¾ƒçš„<see cref='DateTime'/>å¯¹è±¡ã€‚</param>
+			///	<returns>æœ‰ç¬¦å·æ•°å­—ï¼ŒæŒ‡ç¤ºæ­¤å®ä¾‹å’Œ value å‚æ•°çš„ç›¸å¯¹å€¼ã€‚å€¼è¯´æ˜: å°äºé›¶ æ­¤å®ä¾‹å°äº valueã€‚ é›¶ æ­¤å®ä¾‹ç­‰äº valueã€‚ å¤§äºé›¶ æ­¤å®ä¾‹å¤§äºvalueã€‚ã€‚</returns> 
 			inline int CompareTo(DateTime value)
 			{
 				long long d=(_Ticks & this->TicksMask)-value.GetTicks();
@@ -1136,12 +1136,12 @@ namespace Common
 				return 0;
 			}
 			///	<summary>
-			///	·µ»ØÖ¸¶¨ÄêºÍÔÂÖĞµÄÌìÊı
-			///	<code>Ô­ĞÍ£ºinline static int DaysInMonth(int year, int month);</code>
+			///	è¿”å›æŒ‡å®šå¹´å’Œæœˆä¸­çš„å¤©æ•°
+			///	<code>åŸå‹ï¼šinline static int DaysInMonth(int year, int month);</code>
 			///	</summary>
-			///	<param name="year">Äê·İ</param>
-			///	<param name="month">ÔÂ·İ£¨½éÓÚ 1 µ½ 12 Ö®¼äµÄÒ»¸öÊı×Ö£©¡£</param>
-			///	<returns> Ö¸¶¨ year ÖĞ month µÄÌìÊı¡£ÀıÈç£¬Èç¹û month µÈÓÚ 2£¨±íÊ¾¶şÔÂ£©£¬Ôò·µ»ØÖµÎª 28 »ò 29£¬¾ßÌåÈ¡¾öÓÚ year ÊÇ·ñÎªÈòÄê¡£</returns> 
+			///	<param name="year">å¹´ä»½</param>
+			///	<param name="month">æœˆä»½ï¼ˆä»‹äº 1 åˆ° 12 ä¹‹é—´çš„ä¸€ä¸ªæ•°å­—ï¼‰ã€‚</param>
+			///	<returns> æŒ‡å®š year ä¸­ month çš„å¤©æ•°ã€‚ä¾‹å¦‚ï¼Œå¦‚æœ month ç­‰äº 2ï¼ˆè¡¨ç¤ºäºŒæœˆï¼‰ï¼Œåˆ™è¿”å›å€¼ä¸º 28 æˆ– 29ï¼Œå…·ä½“å–å†³äº year æ˜¯å¦ä¸ºé—°å¹´ã€‚</returns> 
 			inline static int DaysInMonth(int year, int month)
 			{
 				if ((month < 1) || (month > 12))
@@ -1152,33 +1152,33 @@ namespace Common
 				return (numArray[month] - numArray[month - 1]);
 			}
 			///	<summary>
-			///	·µ»ØÒ»¸öÖµ£¬¸ÃÖµÖ¸Ê¾´ËÊµÀıÊÇ·ñÓëÖ¸¶¨µÄ<see cref='DateTime'/>ÊµÀıÏàµÈ
-			///	<code>Ô­ĞÍ£ºinline bool Equals(DateTime value);</code>
+			///	è¿”å›ä¸€ä¸ªå€¼ï¼Œè¯¥å€¼æŒ‡ç¤ºæ­¤å®ä¾‹æ˜¯å¦ä¸æŒ‡å®šçš„<see cref='DateTime'/>å®ä¾‹ç›¸ç­‰
+			///	<code>åŸå‹ï¼šinline bool Equals(DateTime value);</code>
 			///	</summary>
-			///	<param name="value">ÒªÓë´ËÊµÀı½øĞĞ±È½ÏµÄ<see cref='DateTime'/>ÊµÀı</param>
-			///	<param name="month">ÔÂ·İ£¨½éÓÚ 1 µ½ 12 Ö®¼äµÄÒ»¸öÊı×Ö£©¡£</param>
-			///	<returns> Èç¹û value ²ÎÊıµÈÓÚ´ËÊµÀıµÄÖµ£¬ÔòÎª true£»·ñÔòÎª false¡£</returns> 
+			///	<param name="value">è¦ä¸æ­¤å®ä¾‹è¿›è¡Œæ¯”è¾ƒçš„<see cref='DateTime'/>å®ä¾‹</param>
+			///	<param name="month">æœˆä»½ï¼ˆä»‹äº 1 åˆ° 12 ä¹‹é—´çš„ä¸€ä¸ªæ•°å­—ï¼‰ã€‚</param>
+			///	<returns> å¦‚æœ value å‚æ•°ç­‰äºæ­¤å®ä¾‹çš„å€¼ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns> 
 			inline bool Equals(DateTime value)
 			{
 				return ((_Ticks & this->TicksMask)==value.GetTicks());
 			}
 			///	<summary>
-			///	·µ»ØÒ»¸öÖµ£¬¸ÃÖµÖ¸Ê¾<see cref='DateTime'/>µÄÁ½¸öÊµÀıÊÇ·ñÏàµÈ
-			///	<code>Ô­ĞÍ£ºinline static bool Equals(DateTime t1, DateTime t2);</code>
+			///	è¿”å›ä¸€ä¸ªå€¼ï¼Œè¯¥å€¼æŒ‡ç¤º<see cref='DateTime'/>çš„ä¸¤ä¸ªå®ä¾‹æ˜¯å¦ç›¸ç­‰
+			///	<code>åŸå‹ï¼šinline static bool Equals(DateTime t1, DateTime t2);</code>
 			///	</summary>
-			///	<param name="t1">Òª½øĞĞ±È½ÏµÄ<see cref='DateTime'/>ÊµÀı1</param>
-			///	<param name="t2">Òª½øĞĞ±È½ÏµÄ<see cref='DateTime'/>ÊµÀı2¡£</param>
-			///	<returns> Èç¹ûÁ½¸ö<see cref='DateTime'/> ÖµÏàµÈ£¬ÔòÎª true£»·ñÔòÎª false¡£</returns> 
+			///	<param name="t1">è¦è¿›è¡Œæ¯”è¾ƒçš„<see cref='DateTime'/>å®ä¾‹1</param>
+			///	<param name="t2">è¦è¿›è¡Œæ¯”è¾ƒçš„<see cref='DateTime'/>å®ä¾‹2ã€‚</param>
+			///	<returns> å¦‚æœä¸¤ä¸ª<see cref='DateTime'/> å€¼ç›¸ç­‰ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns> 
 			inline static bool Equals(DateTime t1, DateTime t2)
 			{
 				return (t1.GetTicks()==t2.GetTicks());
 			}
 			///	<summary>
-			///	·µ»ØÖ¸¶¨µÄÄê·İÊÇ·ñÎªÈòÄêµÄÖ¸Ê¾
-			///	<code>Ô­ĞÍ£ºinline static bool Equals(DateTime t1, DateTime t2);</code>
+			///	è¿”å›æŒ‡å®šçš„å¹´ä»½æ˜¯å¦ä¸ºé—°å¹´çš„æŒ‡ç¤º
+			///	<code>åŸå‹ï¼šinline static bool Equals(DateTime t1, DateTime t2);</code>
 			///	</summary>
-			///	<param name="year">ËÄÎ»ÊıÄê·İ</param> 
-			///	<returns> Èç¹û year ÎªÈòÄê£¬ÔòÎª true£»·ñÔòÎª false¡£</returns> 
+			///	<param name="year">å››ä½æ•°å¹´ä»½</param> 
+			///	<returns> å¦‚æœ year ä¸ºé—°å¹´ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns> 
 			inline static bool IsLeapYear(int year)
 			{
 				if ((year < 1) || (year > 9999))
@@ -1196,12 +1196,12 @@ namespace Common
 				return true;
 			}
 			///	<summary>
-			///	½«Ïà¶ÔÓÚ¸ñÁÖÍşÖÎÊ±¼äËù±íÊ¾µÄÃëÊı¼ÓÉÏ¸öÖ¸¶¨ÃëÊı×ª»»Îª±ê×¼×Ö·û´®ĞÎÊ½·µ»Ø
-			///	<code>Ô­ĞÍ£ºinline static string getDateAddDur(time_t NowTime,int dur=0);</code>
+			///	å°†ç›¸å¯¹äºæ ¼æ—å¨æ²»æ—¶é—´æ‰€è¡¨ç¤ºçš„ç§’æ•°åŠ ä¸Šä¸ªæŒ‡å®šç§’æ•°è½¬æ¢ä¸ºæ ‡å‡†å­—ç¬¦ä¸²å½¢å¼è¿”å›
+			///	<code>åŸå‹ï¼šinline static string getDateAddDur(time_t NowTime,int dur=0);</code>
 			///	</summary>
-			///	<param name="NowTime">Ê±¼äÃë</param> 
-			///	<param name="dur">ÒªÌí¼ÓµÄÃëÊı</param> 
-			///	<returns> NowTime¼ÓÉÏdurºóËù±íÊ¾µÄÊ±¼ä¶ÔÓ¦µÄ×Ö·û´®ĞÎÊ½¡£</returns> 
+			///	<param name="NowTime">æ—¶é—´ç§’</param> 
+			///	<param name="dur">è¦æ·»åŠ çš„ç§’æ•°</param> 
+			///	<returns> NowTimeåŠ ä¸Šduråæ‰€è¡¨ç¤ºçš„æ—¶é—´å¯¹åº”çš„å­—ç¬¦ä¸²å½¢å¼ã€‚</returns> 
 			inline static string getDateAddDur(time_t NowTime,int dur=0)
 			{
 				struct tm * _tm;
@@ -1212,12 +1212,12 @@ namespace Common
 				return p;
 			}
 			///	<summary>
-			///	½«×Ö·û´®±íÊ¾µÄÊ±¼ä¼ÓÉÏÖ¸¶¨µÄÃëÊıÔÙ·µ»Ø×Ö·û´®Ê±¼ä
-			///	<code>Ô­ĞÍ£ºinline static string getDateAddDur(string str,int dur=0);</code>
+			///	å°†å­—ç¬¦ä¸²è¡¨ç¤ºçš„æ—¶é—´åŠ ä¸ŠæŒ‡å®šçš„ç§’æ•°å†è¿”å›å­—ç¬¦ä¸²æ—¶é—´
+			///	<code>åŸå‹ï¼šinline static string getDateAddDur(string str,int dur=0);</code>
 			///	</summary>
-			///	<param name="str">×Ö·û´®ĞÎÊ½±íÊ¾µÄÊ±¼ä</param> 
-			///	<param name="dur">ÒªÌí¼ÓµÄÃëÊı</param> 
-			///	<returns> strËù±íÊ¾Ê±¼ä¼ÓÉÏdurºó¶ÔÓ¦µÄ×Ö·û´®±íÊ¾ĞÎÊ½¡£</returns> 
+			///	<param name="str">å­—ç¬¦ä¸²å½¢å¼è¡¨ç¤ºçš„æ—¶é—´</param> 
+			///	<param name="dur">è¦æ·»åŠ çš„ç§’æ•°</param> 
+			///	<returns> stræ‰€è¡¨ç¤ºæ—¶é—´åŠ ä¸Šduråå¯¹åº”çš„å­—ç¬¦ä¸²è¡¨ç¤ºå½¢å¼ã€‚</returns> 
 			inline static string getDateAddDur(string str,int dur=0)
 			{
 				if(dur==0)return str;
@@ -1234,18 +1234,18 @@ namespace Common
 				//return p;
 			}
 			///	<summary>
-			///	½«Ö¸¶¨Ê±¼ä¸÷²¿·Ö¼ÓÉÏÖ¸¶¨Ãëºó×ª»»Îª±¾µØÊ±¼ä×Ö·û´®±íÊ¾ĞÎÊ½
-			///	<code>Ô­ĞÍ£ºinline static string getDateAddDur(int year, int month, int day,
+			///	å°†æŒ‡å®šæ—¶é—´å„éƒ¨åˆ†åŠ ä¸ŠæŒ‡å®šç§’åè½¬æ¢ä¸ºæœ¬åœ°æ—¶é—´å­—ç¬¦ä¸²è¡¨ç¤ºå½¢å¼
+			///	<code>åŸå‹ï¼šinline static string getDateAddDur(int year, int month, int day,
 			///                                        int hour=0, int minute=0, int second=0,int dur=0);</code>
 			///	</summary>
-			///	<param name="year">Äê</param> 
-			///	<param name="month">ÔÂ</param> 
-			///	<param name="day">ÈÕ</param> 
-			///	<param name="hour">Ê±</param> 
-			///	<param name="minute">·Ö</param> 
-			///	<param name="second">Ãë</param> 
-			///	<param name="dur">ÒªÌí¼ÓµÄÃëÊı</param>  
-			///	<returns>¶ÔÓ¦µÄ×Ö·û´®±íÊ¾ĞÎÊ½¡£</returns> 
+			///	<param name="year">å¹´</param> 
+			///	<param name="month">æœˆ</param> 
+			///	<param name="day">æ—¥</param> 
+			///	<param name="hour">æ—¶</param> 
+			///	<param name="minute">åˆ†</param> 
+			///	<param name="second">ç§’</param> 
+			///	<param name="dur">è¦æ·»åŠ çš„ç§’æ•°</param>  
+			///	<returns>å¯¹åº”çš„å­—ç¬¦ä¸²è¡¨ç¤ºå½¢å¼ã€‚</returns> 
 			inline static string getDateAddDur(int year, int month, int day,int hour=0, int minute=0, int second=0,int dur=0)
 			{
 				char p[40];
@@ -1261,17 +1261,17 @@ namespace Common
 				}
 			}
 			///	<summary>
-			///	»ñÈ¡UTCÏà¶ÔÃëÊı
-			///	<code>Ô­ĞÍ£ºinline static time_t DateToUTCSecond(int year, int month, int day,
+			///	è·å–UTCç›¸å¯¹ç§’æ•°
+			///	<code>åŸå‹ï¼šinline static time_t DateToUTCSecond(int year, int month, int day,
 			///                                         int hour=0, int minute=0, int second=0);</code>
 			///	</summary>
-			///	<param name="year">Äê</param> 
-			///	<param name="month">ÔÂ</param> 
-			///	<param name="day">ÈÕ</param> 
-			///	<param name="hour">Ê±</param> 
-			///	<param name="minute">·Ö</param> 
-			///	<param name="second">Ãë</param> 
-			///	<returns>Ïà¶ÔUTCÃëÊı¡£</returns> 
+			///	<param name="year">å¹´</param> 
+			///	<param name="month">æœˆ</param> 
+			///	<param name="day">æ—¥</param> 
+			///	<param name="hour">æ—¶</param> 
+			///	<param name="minute">åˆ†</param> 
+			///	<param name="second">ç§’</param> 
+			///	<returns>ç›¸å¯¹UTCç§’æ•°ã€‚</returns> 
 			inline static time_t DateToUTCSecond(int year, int month, int day,int hour=0, int minute=0, int second=0)
 			{
 				time_t result;
@@ -1287,37 +1287,37 @@ namespace Common
 					}
 				}
 				allsec+= ((hour * 0xe10) + (minute * 60)) + second;	
-				result=(time_t)(allsec-DateTime::localTimeZone * 3600 -TicksPerUTCSta/DateTime::TicksPerSecond) ;   // ¼õÈ¥µ±µØÊ±ÇøÊ±¼ä
+				result=(time_t)(allsec-DateTime::localTimeZone * 3600 -TicksPerUTCSta/DateTime::TicksPerSecond) ;   // å‡å»å½“åœ°æ—¶åŒºæ—¶é—´
 				return result;
 			}
 		public:
 
 			///	<summary>
-			///	´Ó´ËÊµÀıÖĞ¼õÈ¥Ö¸¶¨µÄÈÕÆÚºÍÊ±¼ä
-			///	<code>Ô­ĞÍ£ºinline TimeSpan Subtract(DateTime value);</code>
+			///	ä»æ­¤å®ä¾‹ä¸­å‡å»æŒ‡å®šçš„æ—¥æœŸå’Œæ—¶é—´
+			///	<code>åŸå‹ï¼šinline TimeSpan Subtract(DateTime value);</code>
 			///	</summary>
-			///	<param name="value"><see cref='DateTime'/>µÄÒ»¸öÊµÀı</param> 
-			///	<returns>Ïà²îÊ±¼ä¼ä¸ô<see cref='TimeSpan'/>,ËüµÈÓÚ´ËÊµÀıËù±íÊ¾µÄÈÕÆÚºÍÊ±¼ä¼õÈ¥ value Ëù±íÊ¾µÄÈÕÆÚºÍÊ±¼ä</returns> 
+			///	<param name="value"><see cref='DateTime'/>çš„ä¸€ä¸ªå®ä¾‹</param> 
+			///	<returns>ç›¸å·®æ—¶é—´é—´éš”<see cref='TimeSpan'/>,å®ƒç­‰äºæ­¤å®ä¾‹æ‰€è¡¨ç¤ºçš„æ—¥æœŸå’Œæ—¶é—´å‡å» value æ‰€è¡¨ç¤ºçš„æ—¥æœŸå’Œæ—¶é—´</returns> 
 			inline TimeSpan Subtract(DateTime value)
 			{
 				return TimeSpan(this->GetTicks()-value.GetTicks());
 			};
 			///	<summary>
-			///	´Ó´ËÊµÀıÖĞ¼õÈ¥Ö¸¶¨Ê±¼ä¼ä¸ô
-			///	<code>Ô­ĞÍ£ºinline DateTime &amp;Subtract(TimeSpan value);</code>
+			///	ä»æ­¤å®ä¾‹ä¸­å‡å»æŒ‡å®šæ—¶é—´é—´éš”
+			///	<code>åŸå‹ï¼šinline DateTime &amp;Subtract(TimeSpan value);</code>
 			///	</summary>
-			///	<param name="value"><see cref='TimeSpan'/>µÄÒ»¸öÊµÀı</param> 
-			///	<returns>´ËÊµÀı±¾Éí</returns> 
+			///	<param name="value"><see cref='TimeSpan'/>çš„ä¸€ä¸ªå®ä¾‹</param> 
+			///	<returns>æ­¤å®ä¾‹æœ¬èº«</returns> 
 			inline DateTime &Subtract(TimeSpan value)
 			{
 				this->_Ticks-=value.getTotalTicks();
 				return *this;
 			};
 			///	<summary>
-			///	½«´ËÊµÀıµÄÖµ×ª»»ÎªÆäµÈĞ§µÄ³¤ÈÕÆÚ×Ö·û´®±íÊ¾ĞÎÊ½ yyyyÄêmmÔÂddÈÕ
-			///	<code>Ô­ĞÍ£ºinline string ToLongDateString();</code>
+			///	å°†æ­¤å®ä¾‹çš„å€¼è½¬æ¢ä¸ºå…¶ç­‰æ•ˆçš„é•¿æ—¥æœŸå­—ç¬¦ä¸²è¡¨ç¤ºå½¢å¼ yyyyå¹´mmæœˆddæ—¥
+			///	<code>åŸå‹ï¼šinline string ToLongDateString();</code>
 			///	</summary>
-			///	<returns>Ò»¸ö×Ö·û´®,ĞÎÈç£ºyyyyÄêmmÔÂddÈÕ¡£</returns> 
+			///	<returns>ä¸€ä¸ªå­—ç¬¦ä¸²,å½¢å¦‚ï¼šyyyyå¹´mmæœˆddæ—¥ã€‚</returns> 
 			inline string ToLongDateString()
 			{
 				int year,month,day;
@@ -1325,59 +1325,59 @@ namespace Common
 
 				char p[20];
 				char f[20];
-				strcpy(f,"%dÄê%dÔÂ%dÈÕ");
+				strcpy(f,"%då¹´%dæœˆ%dæ—¥");
 				sprintf(p,f,year,month,day);
 				//_result=p;
 				return p;
 			}
 			///	<summary>
-			///	½«´ËÊµÀıµÄÖµ×ª»»ÎªÆäµÈĞ§µÄ³¤Ê±¼ä×Ö·û´®±íÊ¾ĞÎÊ½ hh:mi:ss
-			///	<code>Ô­ĞÍ£ºinline string ToLongTimeString();</code>
+			///	å°†æ­¤å®ä¾‹çš„å€¼è½¬æ¢ä¸ºå…¶ç­‰æ•ˆçš„é•¿æ—¶é—´å­—ç¬¦ä¸²è¡¨ç¤ºå½¢å¼ hh:mi:ss
+			///	<code>åŸå‹ï¼šinline string ToLongTimeString();</code>
 			///	</summary>
-			///	<returns>Ò»¸ö×Ö·û´®£¬ĞÎÈç£ºhh:mi:ss¡£</returns> 
+			///	<returns>ä¸€ä¸ªå­—ç¬¦ä¸²ï¼Œå½¢å¦‚ï¼šhh:mi:ssã€‚</returns> 
 			inline string ToLongTimeString()
 			{
 				return this->ToString(StaTime);
 			} 
 			///	<summary>
-			///	½«´ËÊµÀıµÄÖµ×ª»»ÎªÆäµÈĞ§µÄ¶ÌÈÕÆÚ×Ö·û´®±íÊ¾ĞÎÊ½ yyyy-mm-dd
-			///	<code>Ô­ĞÍ£ºinline string ToShortDateString();</code>
+			///	å°†æ­¤å®ä¾‹çš„å€¼è½¬æ¢ä¸ºå…¶ç­‰æ•ˆçš„çŸ­æ—¥æœŸå­—ç¬¦ä¸²è¡¨ç¤ºå½¢å¼ yyyy-mm-dd
+			///	<code>åŸå‹ï¼šinline string ToShortDateString();</code>
 			///	</summary>
-			///	<returns>Ò»¸ö×Ö·û´®£¬ĞÎÈç£ºyyyy-mm-dd¡£</returns> 
+			///	<returns>ä¸€ä¸ªå­—ç¬¦ä¸²ï¼Œå½¢å¦‚ï¼šyyyy-mm-ddã€‚</returns> 
 			inline string ToStaDateString()
 			{
 				return this->ToString(StaDate);
 			}
 			///	<summary>
-			///	½«´ËÊµÀıµÄÖµ×ª»»ÎªÆäµÈĞ§µÄ¶ÌÈÕÆÚ×Ö·û´®±íÊ¾ĞÎÊ½ yyyy-mm-dd
-			///	<code>Ô­ĞÍ£ºinline string ToShortDateString();</code>
+			///	å°†æ­¤å®ä¾‹çš„å€¼è½¬æ¢ä¸ºå…¶ç­‰æ•ˆçš„çŸ­æ—¥æœŸå­—ç¬¦ä¸²è¡¨ç¤ºå½¢å¼ yyyy-mm-dd
+			///	<code>åŸå‹ï¼šinline string ToShortDateString();</code>
 			///	</summary>
-			///	<returns>Ò»¸ö×Ö·û´®£¬ĞÎÈç£ºyyyymmdd¡£</returns> 
+			///	<returns>ä¸€ä¸ªå­—ç¬¦ä¸²ï¼Œå½¢å¦‚ï¼šyyyymmddã€‚</returns> 
 			inline string ToShortDateString()
 			{
 				return this->ToString(ShotDate);
 			}
 			///	<summary>
-			///	½«´ËÊµÀıµÄÖµ×ª»»ÎªÆäµÈĞ§µÄ¶ÌÊ±¼ä×Ö·û´®±íÊ¾ĞÎÊ½ hh:mi
-			///	<code>Ô­ĞÍ£ºinline string ToShortTimeString();</code>
+			///	å°†æ­¤å®ä¾‹çš„å€¼è½¬æ¢ä¸ºå…¶ç­‰æ•ˆçš„çŸ­æ—¶é—´å­—ç¬¦ä¸²è¡¨ç¤ºå½¢å¼ hh:mi
+			///	<code>åŸå‹ï¼šinline string ToShortTimeString();</code>
 			///	</summary>
-			///	<returns>Ò»¸ö×Ö·û´®£¬ĞÎÈç£ºhh:mi¡£</returns> 
+			///	<returns>ä¸€ä¸ªå­—ç¬¦ä¸²ï¼Œå½¢å¦‚ï¼šhh:miã€‚</returns> 
 			inline string ToShortTimeString()
 			{
 				return this->ToString(ShotTime);
 			}
 			///	<summary>
-			///	½«´ËÊµÀıµÄÖµ×ª»»ÎªÆäµÈĞ§µÄ¶ÌÊ±¼ä×Ö·û´®±íÊ¾ĞÎÊ½ yyyymmddhhmiss
-			///	<code>Ô­ĞÍ£ºinline string ToShotDateTimeString();</code>
+			///	å°†æ­¤å®ä¾‹çš„å€¼è½¬æ¢ä¸ºå…¶ç­‰æ•ˆçš„çŸ­æ—¶é—´å­—ç¬¦ä¸²è¡¨ç¤ºå½¢å¼ yyyymmddhhmiss
+			///	<code>åŸå‹ï¼šinline string ToShotDateTimeString();</code>
 			///	</summary>
-			///	<returns>Ò»¸ö×Ö·û´®£¬ĞÎÈç£ºyyyymmddhhmiss¡£</returns> 
+			///	<returns>ä¸€ä¸ªå­—ç¬¦ä¸²ï¼Œå½¢å¦‚ï¼šyyyymmddhhmissã€‚</returns> 
 			inline string ToShotDateTimeString(){return this->ToString(ShotDateTime);}
 			///	<summary>
-			///	½«´ËÊµÀıµÄÖµ×ª»»ÎªÆäµÈĞ§µÄ×Ö·û´®±íÊ¾
-			///	<code>Ô­ĞÍ£ºinline string ToString(DateTimeStyles  format=StaDateTime);</code>
+			///	å°†æ­¤å®ä¾‹çš„å€¼è½¬æ¢ä¸ºå…¶ç­‰æ•ˆçš„å­—ç¬¦ä¸²è¡¨ç¤º
+			///	<code>åŸå‹ï¼šinline string ToString(DateTimeStyles  format=StaDateTime);</code>
 			///	</summary>
-			///	<param name="format">Ö¸¶¨·µ»Ø×Ö·û´®¸ñÊ½</param> 
-			///	<returns>´ËÊµÀıµÄÖµµÄ×Ö·û´®±íÊ¾ĞÎÊ½£¬¸ñÊ½ÓÉformatÖ¸¶¨¡£</returns> 
+			///	<param name="format">æŒ‡å®šè¿”å›å­—ç¬¦ä¸²æ ¼å¼</param> 
+			///	<returns>æ­¤å®ä¾‹çš„å€¼çš„å­—ç¬¦ä¸²è¡¨ç¤ºå½¢å¼ï¼Œæ ¼å¼ç”±formatæŒ‡å®šã€‚</returns> 
 			inline string ToString(DateTimeStyles  format=StaDateTime)
 			{
 				const string * weekName=this->WeekName[this->GetDayOfWeek()];
@@ -1389,14 +1389,14 @@ namespace Common
 				//memset(f,0,40);
 				switch(format)
 				{
-				case StaUTC:				// Mon May 14 02:03:55 2007	// ĞÇÆÚ¼¸ ÔÂ·İ ÈÕÆÚ Ê±:·Ö:Ãë Äê
+				case StaUTC:				// Mon May 14 02:03:55 2007	// æ˜ŸæœŸå‡  æœˆä»½ æ—¥æœŸ æ—¶:åˆ†:ç§’ å¹´
 					sprintf(p,"%s %s %d %02d:%02d:%02d %d",weekName[2].c_str(),monthName[2].c_str(),day,hour,minute,second,year);
 					break;
 				case StaDateTime:// yyyy-mm-dd hh:mi:ss
 					sprintf(p,"%04d-%02d-%02d %02d:%02d:%02d",year,month,day,hour,minute,second);
 					break;
-				case LongDate:				// yyyyÄêmmÔÂddÈÕ
-					sprintf(p,"%04dÄê%dÔÂ%dÈÕ",year,month,day);
+				case LongDate:				// yyyyå¹´mmæœˆddæ—¥
+					sprintf(p,"%04då¹´%dæœˆ%dæ—¥",year,month,day);
 					break;
 				case StaDate:		// yyyy-mm-dd
 					sprintf(p,"%04d-%02d-%02d",year,month,day);
@@ -1421,22 +1421,22 @@ namespace Common
 				return p;
 			}
 			///	<summary>
-			///	Ê¹ÓÃÖ¸¶¨µÄÊ±ÇøĞÅÏ¢½«´ËÊµÀıµÄÖµ×ª»»ÎªËüµÄµÈĞ§×Ö·û´®±íÊ¾ĞÎÊ½
-			///	<code>Ô­ĞÍ£ºinline string ToString(TimeZone tz);</code>
+			///	ä½¿ç”¨æŒ‡å®šçš„æ—¶åŒºä¿¡æ¯å°†æ­¤å®ä¾‹çš„å€¼è½¬æ¢ä¸ºå®ƒçš„ç­‰æ•ˆå­—ç¬¦ä¸²è¡¨ç¤ºå½¢å¼
+			///	<code>åŸå‹ï¼šinline string ToString(TimeZone tz);</code>
 			///	</summary>
-			///	<param name="tz">Ö¸¶¨Ê±Çø</param> 
-			///	<returns>´ËÊµÀıµÄÖµµÄ×Ö·û´®±íÊ¾ĞÎÊ½¡£</returns> 
+			///	<param name="tz">æŒ‡å®šæ—¶åŒº</param> 
+			///	<returns>æ­¤å®ä¾‹çš„å€¼çš„å­—ç¬¦ä¸²è¡¨ç¤ºå½¢å¼ã€‚</returns> 
 			inline string ToString(TimeZone tz)
 			{
 				DateTime temp=DateTime(this->_Ticks ,tz);
 				return  temp.ToString();
 			};
 			///	<summary>
-			///	Ê¹ÓÃÖ¸¶¨¸ñÊ½½«´ËÊµÀıµÄÖµ×ª»»³ÉÆäµÈĞ§µÄ×Ö·û´®±íÊ¾
-			///	<code>Ô­ĞÍ£ºinline string ToString(TimeZone tz);</code>
+			///	ä½¿ç”¨æŒ‡å®šæ ¼å¼å°†æ­¤å®ä¾‹çš„å€¼è½¬æ¢æˆå…¶ç­‰æ•ˆçš„å­—ç¬¦ä¸²è¡¨ç¤º
+			///	<code>åŸå‹ï¼šinline string ToString(TimeZone tz);</code>
 			///	</summary>
-			///	<param name="format">¸ñÊ½×Ö·û´®</param> 
-			///	<returns>format Ö¸¶¨µÄ´ËÊµÀıµÄÖµµÄ×Ö·û´®±íÊ¾ĞÎÊ½¡£¡£</returns> 
+			///	<param name="format">æ ¼å¼å­—ç¬¦ä¸²</param> 
+			///	<returns>format æŒ‡å®šçš„æ­¤å®ä¾‹çš„å€¼çš„å­—ç¬¦ä¸²è¡¨ç¤ºå½¢å¼ã€‚ã€‚</returns> 
 			inline string ToString(string format)
 			{
 				string temp=format;
@@ -1445,7 +1445,7 @@ namespace Common
 				{
 					return ToString(StaDateTime);
 				}
-				else if(format=="yyyyÄêmmÔÂddÈÕ")
+				else if(format=="yyyyå¹´mmæœˆddæ—¥")
 				{
 					return ToString(LongDate);
 				}
@@ -1481,22 +1481,22 @@ namespace Common
 
 
 			///	<summary>
-			///	Ê¹ÓÃÖ¸¶¨¸ñÊ½ºÍÊ±Çø½«´ËÊµÀıµÄÖµ×ª»»ÎªËüµÄµÈĞ§×Ö·û´®±íÊ¾ĞÎÊ½
-			///	<code>Ô­ĞÍ£ºinline string ToString(string format,TimeZone tz);</code>
+			///	ä½¿ç”¨æŒ‡å®šæ ¼å¼å’Œæ—¶åŒºå°†æ­¤å®ä¾‹çš„å€¼è½¬æ¢ä¸ºå®ƒçš„ç­‰æ•ˆå­—ç¬¦ä¸²è¡¨ç¤ºå½¢å¼
+			///	<code>åŸå‹ï¼šinline string ToString(string format,TimeZone tz);</code>
 			///	</summary>
-			///	<param name="format">¸ñÊ½×Ö·û´®</param> 
-			///	<param name="tz">Ö¸¶¨Ê±Çø</param> 
-			///	<returns>format ºÍtz Ö¸¶¨µÄ´ËÊµÀıµÄÖµµÄ×Ö·û´®±íÊ¾ĞÎÊ½¡£¡£</returns> 
+			///	<param name="format">æ ¼å¼å­—ç¬¦ä¸²</param> 
+			///	<param name="tz">æŒ‡å®šæ—¶åŒº</param> 
+			///	<returns>format å’Œtz æŒ‡å®šçš„æ­¤å®ä¾‹çš„å€¼çš„å­—ç¬¦ä¸²è¡¨ç¤ºå½¢å¼ã€‚ã€‚</returns> 
 			inline string ToString(string format,TimeZone tz)
 			{
 				DateTime temp=DateTime(this->_Ticks ,tz);
 				return temp.ToString(format);
 			}
 			///	<summary>
-			///	·µ»Ø´ËÊµÀıµÄÄêÔÂ²¿·Ö
-			///	<code>Ô­ĞÍ£ºinline string GetYearMonthStr();</code>
+			///	è¿”å›æ­¤å®ä¾‹çš„å¹´æœˆéƒ¨åˆ†
+			///	<code>åŸå‹ï¼šinline string GetYearMonthStr();</code>
 			///	</summary>
-			///	<returns>6Î»×Ö·û´®ĞÎÊ½±íÊ¾ÄêÔÂ¡£</returns> 
+			///	<returns>6ä½å­—ç¬¦ä¸²å½¢å¼è¡¨ç¤ºå¹´æœˆã€‚</returns> 
 			inline string GetYearMonthStr()
 			{
 				char p[20];
@@ -1508,10 +1508,10 @@ namespace Common
 				return p;
 			};
 			///	<summary>
-			///	·µ»Ø8Î»ÕûÊı±íÊ¾µÄ´ËÊµÀıµÄÄêÔÂÈÕ²¿·Ö
-			///	<code>Ô­ĞÍ£ºinline string GetYearMonthDay();</code>
+			///	è¿”å›8ä½æ•´æ•°è¡¨ç¤ºçš„æ­¤å®ä¾‹çš„å¹´æœˆæ—¥éƒ¨åˆ†
+			///	<code>åŸå‹ï¼šinline string GetYearMonthDay();</code>
 			///	</summary>
-			///	<returns>8Î»ÕûÊı±íÊ¾µÄ´ËÊµÀıµÄÄêÔÂÈÕ¡£</returns> 
+			///	<returns>8ä½æ•´æ•°è¡¨ç¤ºçš„æ­¤å®ä¾‹çš„å¹´æœˆæ—¥ã€‚</returns> 
 			inline int GetYearMonthDay()
 			{
 				int year,month,day;
@@ -1519,10 +1519,10 @@ namespace Common
 				return year*10000+month*100+day;
 			};
 			///	<summary>
-			///	·µ»Ø6Î»ÕûÊı±íÊ¾µÄ´ËÊµÀıµÄÄêÔÂ²¿·Ö
-			///	<code>Ô­ĞÍ£ºinline int GetYearMonth();</code>
+			///	è¿”å›6ä½æ•´æ•°è¡¨ç¤ºçš„æ­¤å®ä¾‹çš„å¹´æœˆéƒ¨åˆ†
+			///	<code>åŸå‹ï¼šinline int GetYearMonth();</code>
 			///	</summary>
-			///	<returns>6Î»ÕûÊı±íÊ¾µÄ´ËÊµÀıµÄÄêÔÂ¡£</returns> 
+			///	<returns>6ä½æ•´æ•°è¡¨ç¤ºçš„æ­¤å®ä¾‹çš„å¹´æœˆã€‚</returns> 
 			inline int GetYearMonth()
 			{
 				int year,month;
@@ -1530,10 +1530,10 @@ namespace Common
 				return year*100+month;
 			};
 			///	<summary>
-			///	·µ»Ø14Î»ÕûÊı±íÊ¾µÄ´ËÊµÀıµÄÄêÔÂÈÕÊ±·ÖÃë²¿·Ö
-			///	<code>Ô­ĞÍ£ºinline long long GetFullDate();</code>
+			///	è¿”å›14ä½æ•´æ•°è¡¨ç¤ºçš„æ­¤å®ä¾‹çš„å¹´æœˆæ—¥æ—¶åˆ†ç§’éƒ¨åˆ†
+			///	<code>åŸå‹ï¼šinline long long GetFullDate();</code>
 			///	</summary>
-			///	<returns>14Î»ÕûÊı±íÊ¾µÄ´ËÊµÀıµÄÄêÔÂÈÕÊ±·ÖÃë²¿·Ö¡£</returns> 
+			///	<returns>14ä½æ•´æ•°è¡¨ç¤ºçš„æ­¤å®ä¾‹çš„å¹´æœˆæ—¥æ—¶åˆ†ç§’éƒ¨åˆ†ã€‚</returns> 
 			inline long long GetFullDate()
 			{
 				int year,month,day,hour,minute,second,millis;
@@ -1542,13 +1542,13 @@ namespace Common
 				return res+month*100000000L+day*1000000L+hour*10000L+minute*100L+second;
 			}
 			///	<summary>
-			///	Ê¹ÓÃÖ¸¶¨µÄÊ±ÇøĞÅÏ¢ºÍ¸ñÊ½»¯ÑùÊ½,½«ÈÕÆÚºÍÊ±¼äµÄÖ¸¶¨×Ö·û´®±íÊ¾ĞÎÊ½×ª»»ÎªÆäµÈĞ§µÄ<see cref='DateTime'/>
-			///	<code>Ô­ĞÍ£ºinline static DateTime Parse2(const char * s, DateTimeStyles styles=StaDateTime, TimeZone tz=localTimeZone);</code>
+			///	ä½¿ç”¨æŒ‡å®šçš„æ—¶åŒºä¿¡æ¯å’Œæ ¼å¼åŒ–æ ·å¼,å°†æ—¥æœŸå’Œæ—¶é—´çš„æŒ‡å®šå­—ç¬¦ä¸²è¡¨ç¤ºå½¢å¼è½¬æ¢ä¸ºå…¶ç­‰æ•ˆçš„<see cref='DateTime'/>
+			///	<code>åŸå‹ï¼šinline static DateTime Parse2(const char * s, DateTimeStyles styles=StaDateTime, TimeZone tz=localTimeZone);</code>
 			///	</summary>
-			///	<param name="s">Òª½âÎöµÄ×Ö·û´®</param> 
-			///	<param name="styles">Ö¸¶¨s±íÊ¾Ê±¼äµÄ¸ñÊ½</param> 
-			///	<param name="tz">Ö¸¶¨s±íÊ¾Ê±¼äµÄÊ±Çø</param> 
-			///	<returns><see cref='DateTime'/>,µÈĞ§ÓÚÓÉ tz ºÍ styles ËùÖ¸¶¨µÄ s ÖĞ°üº¬µÄÈÕÆÚºÍÊ±¼ä¡£</returns> 
+			///	<param name="s">è¦è§£æçš„å­—ç¬¦ä¸²</param> 
+			///	<param name="styles">æŒ‡å®šsè¡¨ç¤ºæ—¶é—´çš„æ ¼å¼</param> 
+			///	<param name="tz">æŒ‡å®šsè¡¨ç¤ºæ—¶é—´çš„æ—¶åŒº</param> 
+			///	<returns><see cref='DateTime'/>,ç­‰æ•ˆäºç”± tz å’Œ styles æ‰€æŒ‡å®šçš„ s ä¸­åŒ…å«çš„æ—¥æœŸå’Œæ—¶é—´ã€‚</returns> 
 			inline static DateTime Parse2(const char * s, DateTimeStyles styles=StaDateTime, TimeZone tz=localTimeZone)
 			{
 				DateTime res;
@@ -1556,13 +1556,13 @@ namespace Common
 				return res;
 			}
 			///	<summary>
-			///	Ê¹ÓÃÖ¸¶¨µÄÊ±ÇøĞÅÏ¢ºÍ¸ñÊ½»¯ÑùÊ½,½«ÈÕÆÚºÍÊ±¼äµÄÖ¸¶¨×Ö·û´®±íÊ¾ĞÎÊ½×ª»»ÎªÆäµÈĞ§µÄ<see cref='DateTime'/>
-			///	<code>Ô­ĞÍ£ºinline static DateTime Parse2(string &amp; s, DateTimeStyles styles=StaDateTime, TimeZone tz=localTimeZone);</code>
+			///	ä½¿ç”¨æŒ‡å®šçš„æ—¶åŒºä¿¡æ¯å’Œæ ¼å¼åŒ–æ ·å¼,å°†æ—¥æœŸå’Œæ—¶é—´çš„æŒ‡å®šå­—ç¬¦ä¸²è¡¨ç¤ºå½¢å¼è½¬æ¢ä¸ºå…¶ç­‰æ•ˆçš„<see cref='DateTime'/>
+			///	<code>åŸå‹ï¼šinline static DateTime Parse2(string &amp; s, DateTimeStyles styles=StaDateTime, TimeZone tz=localTimeZone);</code>
 			///	</summary>
-			///	<param name="s">Òª½âÎöµÄ×Ö·û´®</param> 
-			///	<param name="styles">Ö¸¶¨s±íÊ¾Ê±¼äµÄ¸ñÊ½</param> 
-			///	<param name="tz">Ö¸¶¨s±íÊ¾Ê±¼äµÄÊ±Çø</param> 
-			///	<returns><see cref='DateTime'/>,µÈĞ§ÓÚÓÉ tz ºÍ styles ËùÖ¸¶¨µÄ s ÖĞ°üº¬µÄÈÕÆÚºÍÊ±¼ä¡£</returns> 
+			///	<param name="s">è¦è§£æçš„å­—ç¬¦ä¸²</param> 
+			///	<param name="styles">æŒ‡å®šsè¡¨ç¤ºæ—¶é—´çš„æ ¼å¼</param> 
+			///	<param name="tz">æŒ‡å®šsè¡¨ç¤ºæ—¶é—´çš„æ—¶åŒº</param> 
+			///	<returns><see cref='DateTime'/>,ç­‰æ•ˆäºç”± tz å’Œ styles æ‰€æŒ‡å®šçš„ s ä¸­åŒ…å«çš„æ—¥æœŸå’Œæ—¶é—´ã€‚</returns> 
 			inline static DateTime Parse2(string & s, DateTimeStyles styles=StaDateTime, TimeZone tz=localTimeZone)
 			{
 				DateTime res;
@@ -1570,13 +1570,13 @@ namespace Common
 				return res;
 			}
 			///	<summary>
-			///	½«ÈÕÆÚºÍÊ±¼äµÄÖ¸¶¨×Ö·û´®±íÊ¾ĞÎÊ½×ª»»ÎªÆäµÈĞ§µÄ<see cref='DateTime'/>
-			///	<code>Ô­ĞÍ£ºinline static DateTime Parse(string s, TimeZone tz=localTimeZone);</code>
+			///	å°†æ—¥æœŸå’Œæ—¶é—´çš„æŒ‡å®šå­—ç¬¦ä¸²è¡¨ç¤ºå½¢å¼è½¬æ¢ä¸ºå…¶ç­‰æ•ˆçš„<see cref='DateTime'/>
+			///	<code>åŸå‹ï¼šinline static DateTime Parse(string s, TimeZone tz=localTimeZone);</code>
 			///	</summary>
-			///	<param name="s">Òª½âÎöµÄ×Ö·û´®,¸ñÊ½²»¶¨¡£µ«½öÏŞÓÚ£º yyyy-mm-dd hh:mm:ss "yyyy-mm-dd"
-			///                "yyyy-mm-dd hh:mm:ss"  Mon May 14 02:03:55 2007(ĞÇÆÚ¼¸ ÔÂ·İ ÈÕÆÚ Ê±:·Ö:Ãë Äê) </param> 
-			///	<param name="tz">Ö¸¶¨s±íÊ¾Ê±¼äµÄÊ±Çø</param> 
-			///	<returns><see cref='DateTime'/>,µÈĞ§ÓÚÓÉ tzËùÖ¸¶¨µÄ s ÖĞ°üº¬µÄÈÕÆÚºÍÊ±¼ä¡£</returns> 
+			///	<param name="s">è¦è§£æçš„å­—ç¬¦ä¸²,æ ¼å¼ä¸å®šã€‚ä½†ä»…é™äºï¼š yyyy-mm-dd hh:mm:ss "yyyy-mm-dd"
+			///                "yyyy-mm-dd hh:mm:ss"  Mon May 14 02:03:55 2007(æ˜ŸæœŸå‡  æœˆä»½ æ—¥æœŸ æ—¶:åˆ†:ç§’ å¹´) </param> 
+			///	<param name="tz">æŒ‡å®šsè¡¨ç¤ºæ—¶é—´çš„æ—¶åŒº</param> 
+			///	<returns><see cref='DateTime'/>,ç­‰æ•ˆäºç”± tzæ‰€æŒ‡å®šçš„ s ä¸­åŒ…å«çš„æ—¥æœŸå’Œæ—¶é—´ã€‚</returns> 
 			inline static DateTime Parse(string s, TimeZone tz=localTimeZone)
 			{
 				StringParser parser2;
@@ -1584,49 +1584,49 @@ namespace Common
 				return DateTime(ticks,tz);
 			}
 			///	<summary>
-			///	½«ÈÕÆÚºÍÊ±¼äµÄÖ¸¶¨×Ö·û´®±íÊ¾ĞÎÊ½×ª»»ÎªÆäµÈĞ§µÄ<see cref='DateTime'/>
-			///	<code>Ô­ĞÍ£ºinline static void Parse(DateTime &amp;result,string s, TimeZone tz=localTimeZone)</code>
+			///	å°†æ—¥æœŸå’Œæ—¶é—´çš„æŒ‡å®šå­—ç¬¦ä¸²è¡¨ç¤ºå½¢å¼è½¬æ¢ä¸ºå…¶ç­‰æ•ˆçš„<see cref='DateTime'/>
+			///	<code>åŸå‹ï¼šinline static void Parse(DateTime &amp;result,string s, TimeZone tz=localTimeZone)</code>
 			///	</summary>
-			///	<param name="result"> µ±´Ë·½·¨·µ»ØÊ±£¬Èç¹û×ª»»³É¹¦£¬Ôò°üº¬Óë s ÖĞ°üº¬µÄÈÕÆÚºÍÊ±¼äµÈĞ§µÄ Common.DateTime Öµ£»Èç¹û×ª»»Ê§°Ü£¬ÔòÎª Common.DateTime.MinValue¡£Èç¹û
-			///     s ²ÎÊıÎª¿Õ£¬»òÕß²»°üº¬ÈÕÆÚºÍÊ±¼äµÄÓĞĞ§×Ö·û´®±íÊ¾ĞÎÊ½£¬Ôò×ª»»Ê§°Ü¡£¸Ã²ÎÊıÎ´¾­³õÊ¼»¯¼´±»´«µİ¡£</param> 
-			///	<param name="s">Òª½âÎöµÄ×Ö·û´®,¸ñÊ½²»¶¨¡£µ«½öÏŞÓÚ£º yyyy-mm-dd hh:mm:ss "yyyy-mm-dd"
-			///                "yyyy-mm-dd hh:mm:ss"  Mon May 14 02:03:55 2007(ĞÇÆÚ¼¸ ÔÂ·İ ÈÕÆÚ Ê±:·Ö:Ãë Äê) </param> 
-			///	<param name="tz">Ö¸¶¨s±íÊ¾Ê±¼äµÄÊ±Çø</param> 
+			///	<param name="result"> å½“æ­¤æ–¹æ³•è¿”å›æ—¶ï¼Œå¦‚æœè½¬æ¢æˆåŠŸï¼Œåˆ™åŒ…å«ä¸ s ä¸­åŒ…å«çš„æ—¥æœŸå’Œæ—¶é—´ç­‰æ•ˆçš„ Common.DateTime å€¼ï¼›å¦‚æœè½¬æ¢å¤±è´¥ï¼Œåˆ™ä¸º Common.DateTime.MinValueã€‚å¦‚æœ
+			///     s å‚æ•°ä¸ºç©ºï¼Œæˆ–è€…ä¸åŒ…å«æ—¥æœŸå’Œæ—¶é—´çš„æœ‰æ•ˆå­—ç¬¦ä¸²è¡¨ç¤ºå½¢å¼ï¼Œåˆ™è½¬æ¢å¤±è´¥ã€‚è¯¥å‚æ•°æœªç»åˆå§‹åŒ–å³è¢«ä¼ é€’ã€‚</param> 
+			///	<param name="s">è¦è§£æçš„å­—ç¬¦ä¸²,æ ¼å¼ä¸å®šã€‚ä½†ä»…é™äºï¼š yyyy-mm-dd hh:mm:ss "yyyy-mm-dd"
+			///                "yyyy-mm-dd hh:mm:ss"  Mon May 14 02:03:55 2007(æ˜ŸæœŸå‡  æœˆä»½ æ—¥æœŸ æ—¶:åˆ†:ç§’ å¹´) </param> 
+			///	<param name="tz">æŒ‡å®šsè¡¨ç¤ºæ—¶é—´çš„æ—¶åŒº</param> 
 			inline static void Parse(DateTime &result,string s, TimeZone tz=localTimeZone)
 			{
 				result=DateTime::Parse(s,tz);
 			}
 			///	<summary>
-			///	Ê¹ÓÃÖ¸¶¨µÄÊ±ÇøĞÅÏ¢ºÍ¸ñÊ½»¯ÑùÊ½,½«ÈÕÆÚºÍÊ±¼äµÄÖ¸¶¨×Ö·û´®±íÊ¾ĞÎÊ½×ª»»ÎªÆäµÈĞ§µÄ<see cref='DateTime'/>
-			///	<code>Ô­ĞÍ£ºinline static void Parse2(DateTime &amp;result,const char *s,
+			///	ä½¿ç”¨æŒ‡å®šçš„æ—¶åŒºä¿¡æ¯å’Œæ ¼å¼åŒ–æ ·å¼,å°†æ—¥æœŸå’Œæ—¶é—´çš„æŒ‡å®šå­—ç¬¦ä¸²è¡¨ç¤ºå½¢å¼è½¬æ¢ä¸ºå…¶ç­‰æ•ˆçš„<see cref='DateTime'/>
+			///	<code>åŸå‹ï¼šinline static void Parse2(DateTime &amp;result,const char *s,
 			///                                 DateTimeStyles styles=StaDateTime, TimeZone tz=localTimeZone);</code>
 			///	</summary>
-			///	<param name="result"><see cref='DateTime'/>,µÈĞ§ÓÚÓÉ tz ºÍ styles ËùÖ¸¶¨µÄ s ÖĞ°üº¬µÄÈÕÆÚºÍÊ±¼ä¡£</param> 
-			///	<param name="s">Òª½âÎöµÄ×Ö·û´®</param> 
-			///	<param name="styles">Ö¸¶¨s±íÊ¾Ê±¼äµÄ¸ñÊ½</param> 
-			///	<param name="tz">Ö¸¶¨s±íÊ¾Ê±¼äµÄÊ±Çø</param> 
+			///	<param name="result"><see cref='DateTime'/>,ç­‰æ•ˆäºç”± tz å’Œ styles æ‰€æŒ‡å®šçš„ s ä¸­åŒ…å«çš„æ—¥æœŸå’Œæ—¶é—´ã€‚</param> 
+			///	<param name="s">è¦è§£æçš„å­—ç¬¦ä¸²</param> 
+			///	<param name="styles">æŒ‡å®šsè¡¨ç¤ºæ—¶é—´çš„æ ¼å¼</param> 
+			///	<param name="tz">æŒ‡å®šsè¡¨ç¤ºæ—¶é—´çš„æ—¶åŒº</param> 
 			inline static void Parse2(DateTime &result,const char *s,DateTimeStyles styles=StaDateTime
 				, TimeZone tz=localTimeZone)
 			{
 				celerityParse::Parse(result,s,styles,tz);
 			}
 			///	<summary>
-			///	Ê¹ÓÃÖ¸¶¨µÄÊ±ÇøĞÅÏ¢ºÍ¸ñÊ½»¯ÑùÊ½,½«ÈÕÆÚºÍÊ±¼äµÄÖ¸¶¨×Ö·û´®±íÊ¾ĞÎÊ½×ª»»ÎªÆäµÈĞ§µÄ<see cref='DateTime'/>
-			///	<code>Ô­ĞÍ£ºinline static void Parse2(DateTime &amp;result,string &amp; s,
+			///	ä½¿ç”¨æŒ‡å®šçš„æ—¶åŒºä¿¡æ¯å’Œæ ¼å¼åŒ–æ ·å¼,å°†æ—¥æœŸå’Œæ—¶é—´çš„æŒ‡å®šå­—ç¬¦ä¸²è¡¨ç¤ºå½¢å¼è½¬æ¢ä¸ºå…¶ç­‰æ•ˆçš„<see cref='DateTime'/>
+			///	<code>åŸå‹ï¼šinline static void Parse2(DateTime &amp;result,string &amp; s,
 			///                                 DateTimeStyles styles=StaDateTime, TimeZone tz=localTimeZone);</code>
 			///	</summary>
-			///	<param name="result"><see cref='DateTime'/>,µÈĞ§ÓÚÓÉ tz ºÍ styles ËùÖ¸¶¨µÄ s ÖĞ°üº¬µÄÈÕÆÚºÍÊ±¼ä¡£</param> 
-			///	<param name="s">Òª½âÎöµÄ×Ö·û´®</param> 
-			///	<param name="styles">Ö¸¶¨s±íÊ¾Ê±¼äµÄ¸ñÊ½</param> 
-			///	<param name="tz">Ö¸¶¨s±íÊ¾Ê±¼äµÄÊ±Çø</param> 
+			///	<param name="result"><see cref='DateTime'/>,ç­‰æ•ˆäºç”± tz å’Œ styles æ‰€æŒ‡å®šçš„ s ä¸­åŒ…å«çš„æ—¥æœŸå’Œæ—¶é—´ã€‚</param> 
+			///	<param name="s">è¦è§£æçš„å­—ç¬¦ä¸²</param> 
+			///	<param name="styles">æŒ‡å®šsè¡¨ç¤ºæ—¶é—´çš„æ ¼å¼</param> 
+			///	<param name="tz">æŒ‡å®šsè¡¨ç¤ºæ—¶é—´çš„æ—¶åŒº</param> 
 			inline static void Parse2(DateTime &result,string &s,DateTimeStyles styles=StaDateTime
 				, TimeZone tz=localTimeZone)
 			{
 				celerityParse::Parse(result,s.c_str(),styles,tz);
 			}
 			///	<summary>
-			///	´ÓÖ¸¶¨Êı×Ö£¬Ö¸¶¨¸ñÊ½£¬Ö¸¶¨Ìí¼ÓÖµºÍÌí¼Ó²¿·Ö»ñÈ¡Ê±¼ä
-			///	<code>Ô­ĞÍ£ºinline static void Parse3(long dateVal,int style,int intType,long inteval);</code>
+			///	ä»æŒ‡å®šæ•°å­—ï¼ŒæŒ‡å®šæ ¼å¼ï¼ŒæŒ‡å®šæ·»åŠ å€¼å’Œæ·»åŠ éƒ¨åˆ†è·å–æ—¶é—´
+			///	<code>åŸå‹ï¼šinline static void Parse3(long dateVal,int style,int intType,long inteval);</code>
 			///	</summary>
 			inline static DateTime Parse3(long long dateVal,int style,int intType,long interval, TimeZone tz=localTimeZone)
 			{
@@ -1689,12 +1689,12 @@ namespace Common
 				return dt.AddDataPart(interval,DatePart(intType-1));
 			}
 			///	<summary>
-			///	»ñÈ¡Ç°¼¸Ìì»òÇ°¼¸ÔÂ
-			///	<code>Ô­ĞÍ£ºinline static string getPreDate(string yyyymmdd,int pNum);</code>
+			///	è·å–å‰å‡ å¤©æˆ–å‰å‡ æœˆ
+			///	<code>åŸå‹ï¼šinline static string getPreDate(string yyyymmdd,int pNum);</code>
 			///	</summary>
-			///	<param name="yyyymmdd">8Î»»ò6Î»×Ö·û´®±íÊ¾µÄÊ±¼ä</param> 
-			///	<param name="pNum">Òª¼õÈ¥µÄÊıÖµ£¨Ìì»òÔÂ£©</param> 
-			///	<returns> yyyymmddÒÔÊ±¼äÔËËã·½·¨¼õÈ¥pNumºóµÄ×Ö·û´®Öµ ¡£</returns> 
+			///	<param name="yyyymmdd">8ä½æˆ–6ä½å­—ç¬¦ä¸²è¡¨ç¤ºçš„æ—¶é—´</param> 
+			///	<param name="pNum">è¦å‡å»çš„æ•°å€¼ï¼ˆå¤©æˆ–æœˆï¼‰</param> 
+			///	<returns> yyyymmddä»¥æ—¶é—´è¿ç®—æ–¹æ³•å‡å»pNumåçš„å­—ç¬¦ä¸²å€¼ ã€‚</returns> 
 			inline static string getPreDate(string yyyymmdd,int pNum)
 			{
 				if(yyyymmdd.size()==8)
@@ -1713,10 +1713,10 @@ namespace Common
 				}
 			};
 			///	<summary>
-			///	½«´ËÊµÀıµÄÖµ×ª»»Îª±ê×¼<see cref='DateTimeStyles'/>¸ñÊ½ËµÃ÷·ûÖ§³ÖµÄËùÓĞ×Ö·û´®±íÊ¾ĞÎÊ½.
-			///	<code>Ô­ĞÍ£ºinline void GetDateTimeFormats(Array&lt;string> &amp;arr);</code>
+			///	å°†æ­¤å®ä¾‹çš„å€¼è½¬æ¢ä¸ºæ ‡å‡†<see cref='DateTimeStyles'/>æ ¼å¼è¯´æ˜ç¬¦æ”¯æŒçš„æ‰€æœ‰å­—ç¬¦ä¸²è¡¨ç¤ºå½¢å¼.
+			///	<code>åŸå‹ï¼šinline void GetDateTimeFormats(Array&lt;string> &amp;arr);</code>
 			///	</summary>
-			///	<param name="arr">×Ö·û´®Êı×é£¬ÆäÖĞµÄÃ¿¸öÔªËØ¶¼±íÊ¾´ËÊµÀıµÄÖµ£¬²¢ÇÒÒÑÓÃ±ê×¼ Common.DateTime ¸ñÊ½ËµÃ÷·ûÖ®Ò»¸ñÊ½»¯¡£</param> 
+			///	<param name="arr">å­—ç¬¦ä¸²æ•°ç»„ï¼Œå…¶ä¸­çš„æ¯ä¸ªå…ƒç´ éƒ½è¡¨ç¤ºæ­¤å®ä¾‹çš„å€¼ï¼Œå¹¶ä¸”å·²ç”¨æ ‡å‡† Common.DateTime æ ¼å¼è¯´æ˜ç¬¦ä¹‹ä¸€æ ¼å¼åŒ–ã€‚</param> 
 			inline void GetDateTimeFormats(Array<string> &arr)
 			{
 				Array<string> tempArr=Array<string>(7);
@@ -1732,7 +1732,7 @@ namespace Common
 				int len=0;
 				memset(p,0,40);		
 				memset(f,0,40);		
-				strcpy(f,"%s %s %d %02d:%02d:%02d %d");// Mon May 14 02:03:55 2007	// ĞÇÆÚ¼¸ ÔÂ·İ ÈÕÆÚ Ê±:·Ö:Ãë Äê
+				strcpy(f,"%s %s %d %02d:%02d:%02d %d");// Mon May 14 02:03:55 2007	// æ˜ŸæœŸå‡  æœˆä»½ æ—¥æœŸ æ—¶:åˆ†:ç§’ å¹´
 				len=sprintf(p,f,weekName[2].c_str(),monthName[2].c_str(),day,hour,minute,second,year);
 				p[len]='\0';
 				arr[0]= p;
@@ -1742,7 +1742,7 @@ namespace Common
 				p[len]='\0';
 				arr[1]= p;
 
-				strcpy(f,"%dÄê%dÔÂ%dÈÕ");					// yyyyÄêmmÔÂddÈÕ
+				strcpy(f,"%då¹´%dæœˆ%dæ—¥");					// yyyyå¹´mmæœˆddæ—¥
 				len=sprintf(p,f,year,month,day);
 				p[len]='\0';
 				arr[2]= p;
@@ -1768,11 +1768,11 @@ namespace Common
 				arr[6]= p;
 			}
 			///	<summary>
-			///	½«´ËÊµÀıµÄÖµ×ª»»Îª±ê×¼<see cref='DateTimeStyles'/>¸ñÊ½ËµÃ÷·ûÖ§³ÖµÄËùÓĞ×Ö·û´®±íÊ¾ĞÎÊ½.
-			///	<code>Ô­ĞÍ£ºinline void GetDateTimeFormats(Array&lt;string> &amp;arr);</code>
+			///	å°†æ­¤å®ä¾‹çš„å€¼è½¬æ¢ä¸ºæ ‡å‡†<see cref='DateTimeStyles'/>æ ¼å¼è¯´æ˜ç¬¦æ”¯æŒçš„æ‰€æœ‰å­—ç¬¦ä¸²è¡¨ç¤ºå½¢å¼.
+			///	<code>åŸå‹ï¼šinline void GetDateTimeFormats(Array&lt;string> &amp;arr);</code>
 			///	</summary>
-			///	<param name="arr">×Ö·û´®Êı×é£¬ÆäÖĞµÄÃ¿¸öÔªËØ¶¼±íÊ¾´ËÊµÀıµÄÖµ£¬²¢ÇÒÒÑÓÃ±ê×¼ <see cref='DateTimeStyles'/>¸ñÊ½ËµÃ÷·ûÖ®Ò»¸ñÊ½»¯¡£</param> 
-			///	<param name="tz">Ö¸¶¨Ê±Çø</param> 
+			///	<param name="arr">å­—ç¬¦ä¸²æ•°ç»„ï¼Œå…¶ä¸­çš„æ¯ä¸ªå…ƒç´ éƒ½è¡¨ç¤ºæ­¤å®ä¾‹çš„å€¼ï¼Œå¹¶ä¸”å·²ç”¨æ ‡å‡† <see cref='DateTimeStyles'/>æ ¼å¼è¯´æ˜ç¬¦ä¹‹ä¸€æ ¼å¼åŒ–ã€‚</param> 
+			///	<param name="tz">æŒ‡å®šæ—¶åŒº</param> 
 			inline void GetDateTimeFormats(Array<string> &arr,TimeZone tz)
 			{
 				DateTime temp=DateTime(this->_Ticks ,tz);
@@ -1795,12 +1795,12 @@ namespace Common
 					int len=0;
 					switch(styles)
 					{
-					case StaUTC:				// Mon May 14 02:03:55 2007	// ĞÇÆÚ¼¸ ÔÂ·İ ÈÕÆÚ Ê±:·Ö:Ãë Äê
+					case StaUTC:				// Mon May 14 02:03:55 2007	// æ˜ŸæœŸå‡  æœˆä»½ æ—¥æœŸ æ—¶:åˆ†:ç§’ å¹´
 						{
 							char weekName[4],monthName[4];
 							memset(monthName,0,4);
 							len=sscanf(s, "%s %s %d %d:%d:%d %d", weekName,monthName,&day,&hour,&minute,&second,&year);
-							if(len!=7)EXP(String("ÊäÈë×Ö·ûÊ±¼ä\"")+String(s)+String("\"²»ÊÇĞÎÈç¸ñÊ½µÄ\"Mon May 14 02:03:55 2007\"×Ö·û´®"));
+							if(len!=7)EXP(String("è¾“å…¥å­—ç¬¦æ—¶é—´\"")+String(s)+String("\"ä¸æ˜¯å½¢å¦‚æ ¼å¼çš„\"Mon May 14 02:03:55 2007\"å­—ç¬¦ä¸²"));
 							for(int i=1;i<=12;i++)
 							{
 								if(strcmp(MonthNames[i][2].c_str(),monthName)==0)
@@ -1808,23 +1808,23 @@ namespace Common
 									month=i;break;
 								}
 							}
-							if(month==0)EXP(string("»ñÈ¡µÄÔÂ·İÎŞ·¨Æ¥Åä")+monthName);
+							if(month==0)EXP(string("è·å–çš„æœˆä»½æ— æ³•åŒ¹é…")+monthName);
 							res=DateTime(year,month,day,hour,minute,second,millis,0,tz);
 						}
 						break;
 					case StaDateTime:// yyyy-mm-dd hh:mi:ss
 						len=sscanf(s, "%d-%d-%d %d:%d:%d", &year,&month,&day,&hour,&minute,&second);
-						if(len!=6)EXP(string("ÊäÈë×Ö·ûÊ±¼ä\"")+s+"\"²»ÊÇĞÎÈç¸ñÊ½µÄ\"yyyy-mm-dd hh:mi:ss\"×Ö·û´®");
+						if(len!=6)EXP(string("è¾“å…¥å­—ç¬¦æ—¶é—´\"")+s+"\"ä¸æ˜¯å½¢å¦‚æ ¼å¼çš„\"yyyy-mm-dd hh:mi:ss\"å­—ç¬¦ä¸²");
 						res=DateTime(year,month,day,hour,minute,second,millis,0,tz);
 						break;
-					case LongDate:				// yyyyÄêmmÔÂddÈÕ
-						len=sscanf(s, "%dÄê%dÔÂ%dÈÕ", &year,&month,&day);
-						if(len!=3)EXP(string("ÊäÈë×Ö·ûÊ±¼ä\"")+s+"\"²»ÊÇĞÎÈç¸ñÊ½µÄ\"yyyyÄêmmÔÂddÈÕ\"×Ö·û´®");
+					case LongDate:				// yyyyå¹´mmæœˆddæ—¥
+						len=sscanf(s, "%då¹´%dæœˆ%dæ—¥", &year,&month,&day);
+						if(len!=3)EXP(string("è¾“å…¥å­—ç¬¦æ—¶é—´\"")+s+"\"ä¸æ˜¯å½¢å¦‚æ ¼å¼çš„\"yyyyå¹´mmæœˆddæ—¥\"å­—ç¬¦ä¸²");
 						res=DateTime(year,month,day,hour,minute,second,millis,0,tz);
 						break;
 					case StaDate:		// yyyy-mm-dd
 						len=sscanf(s, "%d-%d-%d", &year,&month,&day);
-						if(len!=3)EXP(string("ÊäÈë×Ö·ûÊ±¼ä\"")+s+"\"²»ÊÇĞÎÈç¸ñÊ½µÄ\"yyyy-mm-dd\"×Ö·û´®");
+						if(len!=3)EXP(string("è¾“å…¥å­—ç¬¦æ—¶é—´\"")+s+"\"ä¸æ˜¯å½¢å¦‚æ ¼å¼çš„\"yyyy-mm-dd\"å­—ç¬¦ä¸²");
 						res=DateTime(year,month,day,hour,minute,second,millis,0,tz);
 						break;
 					case ShotDate: 			// 	yyyymmdd
@@ -1843,17 +1843,17 @@ namespace Common
 						}
 						break;
 					default:
-						EXP(string("ÊäÈë×Ö·û´®\"")+s+"²»ÊÇÒÑÖª¿ÉÊ¶±ğµÄÈÕÆÚ¸ñÊ½");
+						EXP(string("è¾“å…¥å­—ç¬¦ä¸²\"")+s+"ä¸æ˜¯å·²çŸ¥å¯è¯†åˆ«çš„æ—¥æœŸæ ¼å¼");
 						break;
 					}
 				}
 			};
 			//
-			//ÕªÒª£º
-			//		Ê¹ÓÃ×Ö·û´®²ğ·Ö·¨
+			//æ‘˜è¦ï¼š
+			//		ä½¿ç”¨å­—ç¬¦ä¸²æ‹†åˆ†æ³•
 			//		yyyy-mm-dd hh:mm:ss
 			//		//	"yyyy-mm-dd"     "yyyy-mm-dd hh:mm:ss"		"yyyy-mm-dd hh:mm:ss.ff"
-			//	// Mon May 14 02:03:55 2007	// ĞÇÆÚ¼¸ ÔÂ·İ ÈÕÆÚ Ê±:·Ö:Ãë Äê
+			//	// Mon May 14 02:03:55 2007	// æ˜ŸæœŸå‡  æœˆä»½ æ—¥æœŸ æ—¶:åˆ†:ç§’ å¹´
 			class StringParser
 			{
 			protected: enum ParseError
@@ -1965,7 +1965,7 @@ namespace Common
 						value=time;
 						return true;
 					}
-					else												//	// Mon May 14 02:03:55 2007	// ĞÇÆÚ¼¸ ÔÂ·İ ÈÕÆÚ Ê±:·Ö:Ãë Äê
+					else												//	// Mon May 14 02:03:55 2007	// æ˜ŸæœŸå‡  æœˆä»½ æ—¥æœŸ æ—¶:åˆ†:ç§’ å¹´
 					{
 						String::Trim(s);
 						Array<string> parts;
@@ -2090,12 +2090,12 @@ namespace Common
 #if defined(__OTL_H__)
 		public:
 			///	<summary>
-			///	½«.otl_datetime ¶ÔÏó×ª»»ÎªÖ¸¶¨¸ñÊ½µÄ×Ö·û´®
-			///	<code>Ô­ĞÍ£ºstatic string ToString(otl_datetime &amp;_tm,DateTimeStyles style);</code>
+			///	å°†.otl_datetime å¯¹è±¡è½¬æ¢ä¸ºæŒ‡å®šæ ¼å¼çš„å­—ç¬¦ä¸²
+			///	<code>åŸå‹ï¼šstatic string ToString(otl_datetime &amp;_tm,DateTimeStyles style);</code>
 			///	</summary>
-			///	<param name="_tm">OTLÊ±¼ä¶ÔÏó¡£</param> 
-			///	<param name="style">Ö¸¶¨·µ»Ø×Ö·û´®¸ñÊ½¡£</param> 
-			///	<returns>µÈĞ§µÄ-tm×Ö·û´®±íÊ¾ĞÎÊ½¡£</returns> 
+			///	<param name="_tm">OTLæ—¶é—´å¯¹è±¡ã€‚</param> 
+			///	<param name="style">æŒ‡å®šè¿”å›å­—ç¬¦ä¸²æ ¼å¼ã€‚</param> 
+			///	<returns>ç­‰æ•ˆçš„-tmå­—ç¬¦ä¸²è¡¨ç¤ºå½¢å¼ã€‚</returns> 
 			static string ToString(otl_datetime &_tm,DateTimeStyles style)
 			{
 				//int year=_tm.year;
@@ -2108,7 +2108,7 @@ namespace Common
 				memset(p,0,40);
 				switch(style)
 				{
-				case StaUTC:				// Mon May 14 02:03:55 2007	// ĞÇÆÚ¼¸ ÔÂ·İ ÈÕÆÚ Ê±:·Ö:Ãë Äê
+				case StaUTC:				// Mon May 14 02:03:55 2007	// æ˜ŸæœŸå‡  æœˆä»½ æ—¥æœŸ æ—¶:åˆ†:ç§’ å¹´
 					{
 						DateTime dt=DateTime(_tm);
 						return dt.ToString(style);
@@ -2117,8 +2117,8 @@ namespace Common
 				case StaDateTime:	// yyyy-mm-dd hh:mi:ss
 					sprintf(p,"%04d-%02d-%02d %d:%02d:%02d",_tm.year,_tm.month,_tm.day,_tm.hour,_tm.minute,_tm.second);
 					break;
-				case LongDate:				// yyyyÄêmmÔÂddÈÕ
-					sprintf(p,"%04dÄê%dÔÂ%dÈÕ",_tm.year,_tm.month,_tm.day);
+				case LongDate:				// yyyyå¹´mmæœˆddæ—¥
+					sprintf(p,"%04då¹´%dæœˆ%dæ—¥",_tm.year,_tm.month,_tm.day);
 					break;
 				case StaDate:		// yyyy-mm-dd
 					sprintf(p,"%04d-%02d-%02d",_tm.year,_tm.month,_tm.day);
@@ -2142,10 +2142,10 @@ namespace Common
 				return string(p);
 			}
 			///	<summary>
-			///	»ñÈ¡´Ë¶ÔÏó±íÊ¾Ê±¼äµÄ.otl_datetime ¶ÔÏóµÈĞ§Öµ
-			///	<code>Ô­ĞÍ£ºinline otl_datetime GetOtlTime();</code>
+			///	è·å–æ­¤å¯¹è±¡è¡¨ç¤ºæ—¶é—´çš„.otl_datetime å¯¹è±¡ç­‰æ•ˆå€¼
+			///	<code>åŸå‹ï¼šinline otl_datetime GetOtlTime();</code>
 			///	</summary>
-			///	<returns>µÈĞ§µÄotl_datetime¶ÔÏó¡£</returns> 
+			///	<returns>ç­‰æ•ˆçš„otl_datetimeå¯¹è±¡ã€‚</returns> 
 			inline otl_datetime GetOtlTime(){return ToOtlTime();};
 			otl_datetime ToOtlTime()
 			{
@@ -2154,31 +2154,31 @@ namespace Common
 				return otlTime;
 			}
 			///	<summary>
-			///	Ê¹ÓÃÁ÷²Ù×÷·û¶Ô´Ë¶ÔÏó¸³Öµ
-			///	<code>Ô­ĞÍ£ºDateTime&amp; operator&lt;&lt;(otl_datetime&amp; _tm);</code>
+			///	ä½¿ç”¨æµæ“ä½œç¬¦å¯¹æ­¤å¯¹è±¡èµ‹å€¼
+			///	<code>åŸå‹ï¼šDateTime&amp; operator&lt;&lt;(otl_datetime&amp; _tm);</code>
 			///	</summary>
-			///	<param name="_tm">OTLÊ±¼ä¶ÔÏó¡£</param> 
-			///	<returns>´Ë¶ÔÏó±¾Éí¡£</returns> 
+			///	<param name="_tm">OTLæ—¶é—´å¯¹è±¡ã€‚</param> 
+			///	<returns>æ­¤å¯¹è±¡æœ¬èº«ã€‚</returns> 
 			DateTime& operator<<(otl_datetime& _tm)
 			{
 				this->_init( _tm.year,_tm.month,_tm.day,_tm.hour,_tm.minute,_tm.second,0,0,localTimeZone);
 				return *this;
 			};
 			///	<summary>
-			///	Ê¹ÓÃOTLÊ±¼ä¶ÔÏóÊµÀı»¯¶ÔÏó
-			///	<code>Ô­ĞÍ£ºDateTime(otl_datetime _tm);</code>
+			///	ä½¿ç”¨OTLæ—¶é—´å¯¹è±¡å®ä¾‹åŒ–å¯¹è±¡
+			///	<code>åŸå‹ï¼šDateTime(otl_datetime _tm);</code>
 			///	</summary>
-			///	<param name="_tm">OTLÊ±¼ä¶ÔÏó¡£</param> 
+			///	<param name="_tm">OTLæ—¶é—´å¯¹è±¡ã€‚</param> 
 			DateTime(otl_datetime _tm)
 			{
 				this->_init( _tm.year,_tm.month,_tm.day,_tm.hour,_tm.minute,_tm.second,0,0,localTimeZone);
 			}
 			///	<summary>
-			///	Ê¹ÓÃORACLEÄÚ²¿Ê±¼ä´æ´¢¸ñÊ½³õÊ¼»¯´ËÊµÀı¶ÔÏó
-			///	<code>Ô­ĞÍ£ºDateTime(unsigned char * dtp,DateTime nullDefault=DateTime(1900,1,1,0,0,0,0,0,localTimeZone));</code>
+			///	ä½¿ç”¨ORACLEå†…éƒ¨æ—¶é—´å­˜å‚¨æ ¼å¼åˆå§‹åŒ–æ­¤å®ä¾‹å¯¹è±¡
+			///	<code>åŸå‹ï¼šDateTime(unsigned char * dtp,DateTime nullDefault=DateTime(1900,1,1,0,0,0,0,0,localTimeZone));</code>
 			///	</summary>
-			///	<param name="dtp">ORACLEÄÚ²¿´æ´¢¸ñÊ½µÄ7×Ö½ÚÊı¾İ¡£</param> 
-			///	<param name="nullDefault">¿ÕÖµÊ±µÄÄ¬ÈÏÖµ¡£</param> 
+			///	<param name="dtp">ORACLEå†…éƒ¨å­˜å‚¨æ ¼å¼çš„7å­—èŠ‚æ•°æ®ã€‚</param> 
+			///	<param name="nullDefault">ç©ºå€¼æ—¶çš„é»˜è®¤å€¼ã€‚</param> 
 			DateTime(unsigned char * dtp,DateTime nullDefault=DateTime(1900,1,1,0,0,0,0,0,localTimeZone))
 			{
 				if(dtp[0]==0 || dtp[1]==0 || (dtp[2]==6 && dtp[3]==31))
@@ -2198,23 +2198,23 @@ namespace Common
 				}
 			}
 			///	<summary>
-			///	Ê¹ÓÃOTLÊ±¼ä¶ÔÏó¶Ô´Ë¶ÔÏó¸³Öµ
-			///	<code>Ô­ĞÍ£ºDateTime &amp;operator=(otl_datetime _tm);</code>
+			///	ä½¿ç”¨OTLæ—¶é—´å¯¹è±¡å¯¹æ­¤å¯¹è±¡èµ‹å€¼
+			///	<code>åŸå‹ï¼šDateTime &amp;operator=(otl_datetime _tm);</code>
 			///	</summary>
-			///	<param name="_tm">OTLÊ±¼ä¶ÔÏó¡£</param>
-			///	<returns>´Ë¶ÔÏó±¾Éí¡£</returns> 
+			///	<param name="_tm">OTLæ—¶é—´å¯¹è±¡ã€‚</param>
+			///	<returns>æ­¤å¯¹è±¡æœ¬èº«ã€‚</returns> 
 			DateTime &operator=(otl_datetime _tm)
 			{
 				this->_init( _tm.year,_tm.month,_tm.day,_tm.hour,_tm.minute,_tm.second,0,0,localTimeZone);return *this;
 			};
 			///	<summary>
-			///	´ÓORACLEÄÚ²¿´æ´¢µÄÊ±¼ä×Ö½Ú»ñÈ¡OTLÊ±¼ä¶ÔÏó
-			///	<code>Ô­ĞÍ£ºinline static otl_datetime GetOtlTime(unsigned char * dtp,
+			///	ä»ORACLEå†…éƒ¨å­˜å‚¨çš„æ—¶é—´å­—èŠ‚è·å–OTLæ—¶é—´å¯¹è±¡
+			///	<code>åŸå‹ï¼šinline static otl_datetime GetOtlTime(unsigned char * dtp,
 			///                                 DateTime nullDefault=DateTime(1900,1,1,0,0,0,0,0,localTimeZone));</code>
 			///	</summary>
-			///	<param name="dtp">ORACLEÄÚ²¿´æ´¢¸ñÊ½µÄ7×Ö½ÚÊı¾İ¡£</param> 
-			///	<param name="nullDefault">¿ÕÖµÊ±µÄÄ¬ÈÏÖµ¡£</param> 
-			///	<returns>µÈĞ§µÄotl_datetime¶ÔÏó¡£</returns> 
+			///	<param name="dtp">ORACLEå†…éƒ¨å­˜å‚¨æ ¼å¼çš„7å­—èŠ‚æ•°æ®ã€‚</param> 
+			///	<param name="nullDefault">ç©ºå€¼æ—¶çš„é»˜è®¤å€¼ã€‚</param> 
+			///	<returns>ç­‰æ•ˆçš„otl_datetimeå¯¹è±¡ã€‚</returns> 
 			inline static otl_datetime GetOtlTime(unsigned char * dtp,DateTime nullDefault=DateTime(1900,1,1,0,0,0,0,0,localTimeZone))
 			{
 				if(dtp[0]==0 || dtp[1]==0 || (dtp[2]==6 && dtp[3]==31))
@@ -2235,22 +2235,22 @@ namespace Common
 			}
 #ifdef OTL_SQL_TIMESTAMP_STRUCT
 			///	<summary>
-			///	´ÓOLEÊ±¼ä¶ÔÏó³õÊ¼»¯´ËÊµÀı¶ÔÏó
-			///	<code>Ô­ĞÍ£ºDateTime(OTL_SQL_TIMESTAMP_STRUCT * tmp);</code>
+			///	ä»OLEæ—¶é—´å¯¹è±¡åˆå§‹åŒ–æ­¤å®ä¾‹å¯¹è±¡
+			///	<code>åŸå‹ï¼šDateTime(OTL_SQL_TIMESTAMP_STRUCT * tmp);</code>
 			///	</summary>
-			///	<param name="tmp">OLEÊ±¼ä¶ÔÏó¡£</param> 
+			///	<param name="tmp">OLEæ—¶é—´å¯¹è±¡ã€‚</param> 
 			DateTime(OTL_SQL_TIMESTAMP_STRUCT * tmp)
 			{
 				_init(tmp->year,tmp->month,tmp->day,tmp->hour,tmp->minute,tmp->second,0,0,localTimeZone);
 			}
 			///	<summary>
-			///	´ÓOLEÊ±¼ä¶ÔÏó³õÊ¼»¯´ËÊµÀı¶ÔÏó
-			///	<code>Ô­ĞÍ£ºinline static otl_datetime GetOtlTime(OTL_SQL_TIMESTAMP_STRUCT * tmp,
+			///	ä»OLEæ—¶é—´å¯¹è±¡åˆå§‹åŒ–æ­¤å®ä¾‹å¯¹è±¡
+			///	<code>åŸå‹ï¼šinline static otl_datetime GetOtlTime(OTL_SQL_TIMESTAMP_STRUCT * tmp,
 			///                                DateTime nullDefault=otl_datetime(1900,1,1,0,0,0));</code>
 			///	</summary>
-			///	<param name="tmp">OLEÊ±¼ä¶ÔÏó¡£</param> 
-			///	<param name="nullDefault">¿ÕÖµÊ±µÄÄ¬ÈÏÖµ¡£</param> 
-			///	<returns>µÈĞ§µÄotl_datetime¶ÔÏó¡£</returns> 
+			///	<param name="tmp">OLEæ—¶é—´å¯¹è±¡ã€‚</param> 
+			///	<param name="nullDefault">ç©ºå€¼æ—¶çš„é»˜è®¤å€¼ã€‚</param> 
+			///	<returns>ç­‰æ•ˆçš„otl_datetimeå¯¹è±¡ã€‚</returns> 
 			inline static otl_datetime GetOtlTime(OTL_SQL_TIMESTAMP_STRUCT * tmp,DateTime nullDefault=otl_datetime(1900,1,1,0,0,0))
 			{
 				if(tmp->year==0)
@@ -2276,12 +2276,12 @@ namespace Common
 
 	};
 	///	<summary>
-	///	ÖØÔØÊ±¼ä¶ÔÏóµÄ±ê×¼Êä³ö²Ù×÷·û
-	///	<code>Ô­ĞÍ£ºinline ostream&amp; operator&lt;&lt;(ostream&amp; target, DateTime dt);</code>
+	///	é‡è½½æ—¶é—´å¯¹è±¡çš„æ ‡å‡†è¾“å‡ºæ“ä½œç¬¦
+	///	<code>åŸå‹ï¼šinline ostream&amp; operator&lt;&lt;(ostream&amp; target, DateTime dt);</code>
 	///	</summary>
-	///	<param name="target">±ê×¼Êä³öÁ÷¡£</param> 
-	///	<param name="dt">Ê±¼ä¶ÔÏó¡£</param> 
-	///	<returns>Êä³öÁ÷±¾Éí¡£</returns> 
+	///	<param name="target">æ ‡å‡†è¾“å‡ºæµã€‚</param> 
+	///	<param name="dt">æ—¶é—´å¯¹è±¡ã€‚</param> 
+	///	<returns>è¾“å‡ºæµæœ¬èº«ã€‚</returns> 
 	inline ostream& operator<<(ostream& target, DateTime dt)
 	{
 		target << dt.ToString();
@@ -2291,12 +2291,12 @@ namespace Common
 
 #if defined(__OTL_H__)
 	///	<summary>
-	///	ÖØÔØ×Ö·û´®ÓëOTLÊ±¼ä¶ÔÏóµÄÊäÈë²Ù×÷·û
-	///	<code>Ô­ĞÍ£ºinline otl_datetime&amp; operator>>(otl_datetime &amp;target,string &amp;s);</code>
+	///	é‡è½½å­—ç¬¦ä¸²ä¸OTLæ—¶é—´å¯¹è±¡çš„è¾“å…¥æ“ä½œç¬¦
+	///	<code>åŸå‹ï¼šinline otl_datetime&amp; operator>>(otl_datetime &amp;target,string &amp;s);</code>
 	///	</summary>
-	///	<param name="target">OTLÊ±¼ä¶ÔÏó¡£</param> 
-	///	<param name="s">½ÓÊÕÊäÈëµÄ×Ö·û´®¶ÔÏó¡£</param> 
-	///	<returns>OTL¶ÔÏó±¾Éí¡£</returns> 
+	///	<param name="target">OTLæ—¶é—´å¯¹è±¡ã€‚</param> 
+	///	<param name="s">æ¥æ”¶è¾“å…¥çš„å­—ç¬¦ä¸²å¯¹è±¡ã€‚</param> 
+	///	<returns>OTLå¯¹è±¡æœ¬èº«ã€‚</returns> 
 	inline otl_datetime& operator>>(otl_datetime &target,string &s)
 	{
 		if(target.year<=0 || target.year>=10000){s=""; return target;}
@@ -2307,12 +2307,12 @@ namespace Common
 	}
 
 	///	<summary>
-	///	ÖØÔØOTLÊ±¼ä¶ÔÏóµÄ±ê×¼Êä³ö²Ù×÷·û
-	///	<code>Ô­ĞÍ£ºinline ostream&amp; operator&lt;&lt;(ostream&amp; target, otl_datetime dt);</code>
+	///	é‡è½½OTLæ—¶é—´å¯¹è±¡çš„æ ‡å‡†è¾“å‡ºæ“ä½œç¬¦
+	///	<code>åŸå‹ï¼šinline ostream&amp; operator&lt;&lt;(ostream&amp; target, otl_datetime dt);</code>
 	///	</summary>
-	///	<param name="target">±ê×¼Êä³öÁ÷¡£</param> 
-	///	<param name="dt">OTLÊ±¼ä¶ÔÏó¡£</param> 
-	///	<returns>Êä³öÁ÷±¾Éí¡£</returns> 
+	///	<param name="target">æ ‡å‡†è¾“å‡ºæµã€‚</param> 
+	///	<param name="dt">OTLæ—¶é—´å¯¹è±¡ã€‚</param> 
+	///	<returns>è¾“å‡ºæµæœ¬èº«ã€‚</returns> 
 	inline ostream& operator<<(ostream& target, otl_datetime dt)
 	{
 		string s;

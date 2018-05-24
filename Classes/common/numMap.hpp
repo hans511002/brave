@@ -20,7 +20,7 @@ namespace Common
 #define EXP(msg) {cout<<__FILE__<<": error "<< " on line "<< __LINE__<<endl ;throw(string(msg));}
 #endif
 #ifndef ONE_READ_COUNT
-#define ONE_READ_COUNT 5			//Ò»´Î¶ÁÈ¡¼ÇÂ¼Êı
+#define ONE_READ_COUNT 5			//ä¸€æ¬¡è¯»å–è®°å½•æ•°
 #endif
 
 #define GET_ABS(T) T abs(T t){return (t>0)?t:-t;}
@@ -58,23 +58,23 @@ namespace Common
 			clear();
 		};
 		//
-		// ÕªÒª:
-		//     Ìí¼Ó½Úµãµ½hashTableÖĞ
+		// æ‘˜è¦:
+		//     æ·»åŠ èŠ‚ç‚¹åˆ°hashTableä¸­
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   node:
-		//     numNode ÀàĞÍÖ¸Õë¡£
+		//     numNode ç±»å‹æŒ‡é’ˆã€‚
 		//
 		inline bool addNode(numNode * &node)
 		{
 			if(nodes==NULL)
 			{
-				if(this->size==0)EXP("Î´ÉèÖÃhash³õÊ¼»¯´óĞ¡");
-				nodes=new numNode[this->size];	//·ÖÅä´æ´¢¿Õ¼ä
+				if(this->size==0)EXP("æœªè®¾ç½®hashåˆå§‹åŒ–å¤§å°");
+				nodes=new numNode[this->size];	//åˆ†é…å­˜å‚¨ç©ºé—´
 			}
 			if(node->key==0){delete node;return false;}
-			unsigned int curIndex=abs(node->key)%this->size;					//È¡Ë÷ÒıÎ»ÖÃ;
-			if(nodes[curIndex].key==0 && curIndex!=0)						//Ö÷±£´ækey==0µÄÖµ,µ±curIndex==0Ê±Ö±½ÓÁ´½ÓÔÚ×îºó
+			unsigned int curIndex=abs(node->key)%this->size;					//å–ç´¢å¼•ä½ç½®;
+			if(nodes[curIndex].key==0 && curIndex!=0)						//ä¸»ä¿å­˜key==0çš„å€¼,å½“curIndex==0æ—¶ç›´æ¥é“¾æ¥åœ¨æœ€å
 			{
 				nodes[curIndex]=*node;
 				delete node;
@@ -82,7 +82,7 @@ namespace Common
 			}
 			else
 			{
-				if(nodes[curIndex].key==node->key && curIndex!=0)						//ÏàÍ¬key²»ÔÙ´¦Àí
+				if(nodes[curIndex].key==node->key && curIndex!=0)						//ç›¸åŒkeyä¸å†å¤„ç†
 				{
 					delete node;
 					return false;
@@ -92,7 +92,7 @@ namespace Common
 				while(pNode->next)
 				{
 					pNode=(numNode *)(pNode->next);
-					if(pNode->key==node->key)						//ÏàÍ¬key²»ÔÙ´¦Àí
+					if(pNode->key==node->key)						//ç›¸åŒkeyä¸å†å¤„ç†
 					{
 						delete node;
 						return false;
@@ -103,12 +103,12 @@ namespace Common
 			}
 		};
 		//
-		// ÕªÒª:
-		//     ÖØĞÂÉèÖÃÈİÆ÷´óĞ¡,Ã¿µ÷ÓÃÒ»´Î¶¼»áÒıÆğÒÑÓĞÊı¾İµÄ¿½±´ÒÆ¶¯
+		// æ‘˜è¦:
+		//     é‡æ–°è®¾ç½®å®¹å™¨å¤§å°,æ¯è°ƒç”¨ä¸€æ¬¡éƒ½ä¼šå¼•èµ·å·²æœ‰æ•°æ®çš„æ‹·è´ç§»åŠ¨
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   size:
-		//     ÒªÖØĞÂÉèÖÃµÄÈİÆ÷´óĞ¡ÊıÄ¿¡£
+		//     è¦é‡æ–°è®¾ç½®çš„å®¹å™¨å¤§å°æ•°ç›®ã€‚
 		//
 		inline void resize(int size)
 		{
@@ -120,8 +120,8 @@ namespace Common
 				nodes=new numNode[this->size];
 				for(int i=0;i<oldSize;i++)
 				{
-					if(tempNodes[i].key==0)continue;									//´æÔÚÊı¾İ
-					unsigned int curIndex=abs(tempNodes[i].key)%this->size;				//È¡Ë÷ÒıÎ»ÖÃ;
+					if(tempNodes[i].key==0)continue;									//å­˜åœ¨æ•°æ®
+					unsigned int curIndex=abs(tempNodes[i].key)%this->size;				//å–ç´¢å¼•ä½ç½®;
 					numNode * node=new numNode();
 					(*node)=tempNodes[i];
 					addNode(node);
@@ -142,8 +142,8 @@ namespace Common
 			}
 		};
 		//
-		// ÕªÒª:
-		//	ÖØÉè´óĞ¡,²»±£ÁôÒÔÇ°Öµ
+		// æ‘˜è¦:
+		//	é‡è®¾å¤§å°,ä¸ä¿ç•™ä»¥å‰å€¼
 		//
 		inline void setSize(int size)
 		{
@@ -154,13 +154,13 @@ namespace Common
 			this->size=size;
 		};
 		//
-		// ÕªÒª:
-		//	·µ»Øhash±í´óĞ¡
+		// æ‘˜è¦:
+		//	è¿”å›hashè¡¨å¤§å°
 		//
 		inline int getSize(){return this->size;};
 		//
-		// ÕªÒª:
-		//     ÇåÀíÊı¾İ
+		// æ‘˜è¦:
+		//     æ¸…ç†æ•°æ®
 		//
 		inline void clear()
 		{
@@ -185,27 +185,27 @@ namespace Common
 			nodes=NULL;
 		}
 		//
-		// ÕªÒª:
-		//     Ìí¼Ó½Úµãµ½hashTableÖĞ
+		// æ‘˜è¦:
+		//     æ·»åŠ èŠ‚ç‚¹åˆ°hashTableä¸­
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   key:
-		//     hash¹Ø¼ü×Ö¡£
+		//     hashå…³é”®å­—ã€‚
 		//
 		//   val:
-		//     hash¹Ø¼ü×Ö¶ÔÓ¦Öµ¡£ 			if(node->key==0){delete node;return false;}
+		//     hashå…³é”®å­—å¯¹åº”å€¼ã€‚ 			if(node->key==0){delete node;return false;}
 		//
 		inline bool addNode(const KEYT &key,const VALUE &val)
 		{
 			if(nodes==NULL)
 			{
-				if(this->size==0)EXP("Î´ÉèÖÃhash³õÊ¼»¯´óĞ¡");
-				nodes=new numNode[this->size];	//·ÖÅä´æ´¢¿Õ¼ä
+				if(this->size==0)EXP("æœªè®¾ç½®hashåˆå§‹åŒ–å¤§å°");
+				nodes=new numNode[this->size];	//åˆ†é…å­˜å‚¨ç©ºé—´
 			}
 			numNode *node=getNumNode(key,val);
 			return addNode(node);
 		};
-		//ÒÆ³ıÒ»¸ö¹Ø¼ü×Ö          ĞèÒªÒÆ¶¯Ö¸Õë
+		//ç§»é™¤ä¸€ä¸ªå…³é”®å­—          éœ€è¦ç§»åŠ¨æŒ‡é’ˆ
 		inline bool remove(const KEYT &key)
 		{
 			if(nodes==NULL)
@@ -215,7 +215,7 @@ namespace Common
 			numNode * pNode=nodes + curIndex;
 			if(curIndex!=0 && pNode->key==key)
 			{
-				if(pNode->next==0)//ÎŞºóĞø½Úµã
+				if(pNode->next==0)//æ— åç»­èŠ‚ç‚¹
 				{
 					pNode->key=0;
 				}
@@ -247,25 +247,25 @@ namespace Common
 			return false;
 		}
 		//
-		// ÕªÒª:
-		//	²Ù×÷·ûÖØÔØ,·µ»ØÖµÒıÓÃ
+		// æ‘˜è¦:
+		//	æ“ä½œç¬¦é‡è½½,è¿”å›å€¼å¼•ç”¨
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   key:
-		//     ¹Ø¼ü×Ö
+		//     å…³é”®å­—
 		//
-		// ·µ»Ø½á¹û:
-		//     ·µ»ØÖµÒıÓÃ
+		// è¿”å›ç»“æœ:
+		//     è¿”å›å€¼å¼•ç”¨
 		//
 		inline VALUE &operator[](const KEYT &key)
 		{
 			if(nodes==NULL)
 			{
-				if(this->size==0)EXP("Î´ÉèÖÃhash³õÊ¼»¯´óĞ¡");
-				nodes=new numNode[this->size];	//·ÖÅä´æ´¢¿Õ¼ä
+				if(this->size==0)EXP("æœªè®¾ç½®hashåˆå§‹åŒ–å¤§å°");
+				nodes=new numNode[this->size];	//åˆ†é…å­˜å‚¨ç©ºé—´
 			}
 			numNode *node=getNumNode(key);
-			unsigned int curIndex=abs(node->key)%this->size;					//È¡Ë÷ÒıÎ»ÖÃ;
+			unsigned int curIndex=abs(node->key)%this->size;					//å–ç´¢å¼•ä½ç½®;
 			numNode * pNode;
 			numNode * curNode=nodes + curIndex;
 			if(curNode->key==0 && curIndex!=0)
@@ -283,7 +283,7 @@ namespace Common
 					pNode=(numNode *)pNode->next;
 					if(pNode && pNode->key==node->key)
 					{
-						delete node;									//ÒÑ¾­´æÔÚ
+						delete node;									//å·²ç»å­˜åœ¨
 						return pNode->val;
 					}
 				}
@@ -291,7 +291,7 @@ namespace Common
 				{
 					if(pNode->key==node->key)
 					{
-						delete node;									//ÒÑ¾­´æÔÚ
+						delete node;									//å·²ç»å­˜åœ¨
 						return pNode->val;
 					}
 					curNode=pNode;
@@ -302,18 +302,18 @@ namespace Common
 			return node->val;
 		};
 		//
-		// ÕªÒª:
-		//	´ÓÄÚ´æ²éÕÒ
+		// æ‘˜è¦:
+		//	ä»å†…å­˜æŸ¥æ‰¾
 		//
 		inline bool find(const KEYT &key,VALUE &val,bool exp=false)
 		{
-			if(nodes==NULL)if(exp)EXP("Ã»ÓĞ³õÊ¼»¯½ÚµãÊı¾İ.")else return false;
+			if(nodes==NULL)if(exp)EXP("æ²¡æœ‰åˆå§‹åŒ–èŠ‚ç‚¹æ•°æ®.")else return false;
 			unsigned int curIndex;
 			curIndex=abs(key)%this->size;
 			numNode * pNode=nodes + curIndex;
 			if(curIndex!=0 && pNode->key==0 )
 			{
-				return false;								//Î´ÕÒµ½
+				return false;								//æœªæ‰¾åˆ°
 			}
 			else if(curIndex!=0 && pNode->key==key)
 			{
@@ -369,7 +369,7 @@ namespace Common
 
 			//if(curIndex!=0 && pNode->key==0 )
 			//{
-			//	return false;								//Î´ÕÒµ½
+			//	return false;								//æœªæ‰¾åˆ°
 			//}
 			//else if(curIndex!=0 && pNode->key==key)
 			//{
@@ -392,24 +392,24 @@ namespace Common
 			return false;
 		};
 		//
-		// ÕªÒª:
-		//     ´ÓÎÄ¼ş²éÕÒ
+		// æ‘˜è¦:
+		//     ä»æ–‡ä»¶æŸ¥æ‰¾
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   pkeyFile:
-		//     ÒÑ´ò¿ªµÄ¹Ø¼ü×ÖÎÄ¼şÖ¸Õë¡£
+		//     å·²æ‰“å¼€çš„å…³é”®å­—æ–‡ä»¶æŒ‡é’ˆã€‚
 		//
 		//   key:
-		//     hash¹Ø¼ü×Ö¡£
+		//     hashå…³é”®å­—ã€‚
 		//
 		//   val:
-		//     hash¹Ø¼ü×Ö¶ÔÓ¦·µ»ØÖµ¡£
+		//     hashå…³é”®å­—å¯¹åº”è¿”å›å€¼ã€‚
 		//
 		//   size:
-		//     hash´óĞ¡¡£
+		//     hashå¤§å°ã€‚
 		//
-		// ·µ»Ø½á¹û:
-		//     ÊÇ·ñ³É¹¦²éÕÒµ½Êı¾İ¡£
+		// è¿”å›ç»“æœ:
+		//     æ˜¯å¦æˆåŠŸæŸ¥æ‰¾åˆ°æ•°æ®ã€‚
 		//
 		inline static bool find(FILE *pkeyFile,const KEYT &key,VALUE &val,int size)
 		{
@@ -420,10 +420,10 @@ namespace Common
 			long long curPos=NodeSize*curIndex;
 			fseek(pkeyFile, curPos, SEEK_SET);
 			int len= fread(&tempNode,NodeSize,1,pkeyFile);
-			if(len!=1)	EXP("¶ÁÈ¡keyÊı¾İ·¢Éú´íÎó,Î´¶ÁÈ¡µ½Ö¸¶¨³¤¶ÈµÄÊı¾İ.");
+			if(len!=1)	EXP("è¯»å–keyæ•°æ®å‘ç”Ÿé”™è¯¯,æœªè¯»å–åˆ°æŒ‡å®šé•¿åº¦çš„æ•°æ®.");
 			if(curIndex!=0 && tempNode.key==0 )
 			{
-				return false;								//Î´ÕÒµ½
+				return false;								//æœªæ‰¾åˆ°
 			}
 			else if(curIndex!=0 && tempNode.key==key)
 			{
@@ -447,12 +447,12 @@ namespace Common
 			return false;
 		};
 		//
-		// ÕªÒª:
-		//	´ÓÎÄ¼ş²éÕÒkey
+		// æ‘˜è¦:
+		//	ä»æ–‡ä»¶æŸ¥æ‰¾key
 		//
 		inline static bool find(FILE *pkeyFile,const KEYT &key,VALUE &val,int size,bool isSeries)
 		{
-			if(!isSeries)							//ÊÇ·ñÊ¹ÓÃÒ»´ÎĞ´ÈëkeyÎÄ¼ş
+			if(!isSeries)							//æ˜¯å¦ä½¿ç”¨ä¸€æ¬¡å†™å…¥keyæ–‡ä»¶
 				return find(pkeyFile,key,val,size);
 			if(!pkeyFile)
 				return false;
@@ -462,10 +462,10 @@ namespace Common
 			long long curPos=NodeSize*curIndex;
 			fseek(pkeyFile, curPos, SEEK_SET);//return false;
 			int len= fread(&tempNode,NodeSize,1,pkeyFile);//return false;
-			if(len!=1)	EXP("¶ÁÈ¡keyÊı¾İ·¢Éú´íÎó,Î´¶ÁÈ¡µ½Ö¸¶¨³¤¶ÈµÄÊı¾İ."+String(len));
+			if(len!=1)	EXP("è¯»å–keyæ•°æ®å‘ç”Ÿé”™è¯¯,æœªè¯»å–åˆ°æŒ‡å®šé•¿åº¦çš„æ•°æ®."+String(len));
 			if(curIndex!=0 && tempNode.key==0 )
 			{
-				return false;								//Î´ÕÒµ½
+				return false;								//æœªæ‰¾åˆ°
 			}
 			else if(curIndex!=0 && tempNode.key==key)
 			{
@@ -476,11 +476,11 @@ namespace Common
 			{
 				return false;
 			}
-			//¶ÁÈ¡Á¬ĞøÎ»ÖÃÖµ,¼õÉÙI/O½»»¥
+			//è¯»å–è¿ç»­ä½ç½®å€¼,å‡å°‘I/Oäº¤äº’
 			numNode tempNodes[ONE_READ_COUNT];
 			fseek(pkeyFile,tempNode.next, SEEK_SET);
 			len= fread(&tempNodes,NodeSize,1,pkeyFile);
-			if(len==0)	EXP("¶ÁÈ¡keyÊı¾İ·¢Éú´íÎó,Î´¶ÁÈ¡µ½ÈÎºÎÊı¾İ.");
+			if(len==0)	EXP("è¯»å–keyæ•°æ®å‘ç”Ÿé”™è¯¯,æœªè¯»å–åˆ°ä»»ä½•æ•°æ®.");
 			int index=0;
 			while(abs(tempNodes[index].key)%size==curIndex)
 			{
@@ -502,8 +502,8 @@ namespace Common
 			return false;
 		};
 		//
-		// ÕªÒª:
-		//	´ÓÎÄ¼ş²éÕÒkey
+		// æ‘˜è¦:
+		//	ä»æ–‡ä»¶æŸ¥æ‰¾key
 		//
 		inline bool find(FILE *pkeyFile,const KEYT &key,VALUE &val)
 		{
@@ -514,10 +514,10 @@ namespace Common
 			long long curPos=NodeSize*curIndex;
 			fseek(pkeyFile, curPos, SEEK_SET);
 			int len= fread(&tempNode,NodeSize,1,pkeyFile);
-			if(len!=1)	EXP("¶ÁÈ¡keyÊı¾İ·¢Éú´íÎó,Î´¶ÁÈ¡µ½Ö¸¶¨³¤¶ÈµÄÊı¾İ.");
+			if(len!=1)	EXP("è¯»å–keyæ•°æ®å‘ç”Ÿé”™è¯¯,æœªè¯»å–åˆ°æŒ‡å®šé•¿åº¦çš„æ•°æ®.");
 			if(curIndex!=0 && tempNode.key==0 )
 			{
-				return false;								//Î´ÕÒµ½
+				return false;								//æœªæ‰¾åˆ°
 			}
 			else if(curIndex!=0 && tempNode.key==key)
 			{
@@ -541,12 +541,12 @@ namespace Common
 			return false;
 		};
 		//
-		// ÕªÒª:
-		//	´ÓÎÄ¼ş²éÕÒkey
+		// æ‘˜è¦:
+		//	ä»æ–‡ä»¶æŸ¥æ‰¾key
 		//
 		inline bool find(FILE *pkeyFile,const KEYT &key,VALUE &val,bool isSeries)
 		{
-			if(!isSeries)							//ÊÇ·ñÊ¹ÓÃÒ»´ÎĞ´ÈëkeyÎÄ¼ş
+			if(!isSeries)							//æ˜¯å¦ä½¿ç”¨ä¸€æ¬¡å†™å…¥keyæ–‡ä»¶
 				return find(pkeyFile,key,val);
 			if(!pkeyFile)
 				return false;
@@ -556,10 +556,10 @@ namespace Common
 			long long curPos=NodeSize*curIndex;
 			fseek(pkeyFile, curPos, SEEK_SET);
 			int len= fread(&tempNode,NodeSize,1,pkeyFile);
-			if(len!=1)	EXP("¶ÁÈ¡keyÊı¾İ·¢Éú´íÎó,Î´¶ÁÈ¡µ½Ö¸¶¨³¤¶ÈµÄÊı¾İ.");
+			if(len!=1)	EXP("è¯»å–keyæ•°æ®å‘ç”Ÿé”™è¯¯,æœªè¯»å–åˆ°æŒ‡å®šé•¿åº¦çš„æ•°æ®.");
 			if(tempNode.key==0 && curIndex!=0)
 			{
-				return false;								//Î´ÕÒµ½
+				return false;								//æœªæ‰¾åˆ°
 			}
 			else if(tempNode.key==key)
 			{
@@ -570,11 +570,11 @@ namespace Common
 			{
 				return false;
 			}
-			//¶ÁÈ¡Á¬ĞøÎ»ÖÃÖµ,¼õÉÙI/O½»»¥
+			//è¯»å–è¿ç»­ä½ç½®å€¼,å‡å°‘I/Oäº¤äº’
 			numNode tempNodes[ONE_READ_COUNT];
 			fseek(pkeyFile, tempNode.next, SEEK_SET);
 			len= fread(&tempNodes,NodeSize,ONE_READ_COUNT,pkeyFile);
-			if(len==0)	EXP("¶ÁÈ¡keyÊı¾İ·¢Éú´íÎó,Î´¶ÁÈ¡µ½ÈÎºÎÊı¾İ.");
+			if(len==0)	EXP("è¯»å–keyæ•°æ®å‘ç”Ÿé”™è¯¯,æœªè¯»å–åˆ°ä»»ä½•æ•°æ®.");
 			int index=0;
 			while(abs(tempNodes[index].key)%size==curIndex)
 			{
@@ -596,34 +596,34 @@ namespace Common
 			return false;
 		};
 		//
-		// ÕªÒª:
-		//     ½«hashTableÊı¾İĞ´³ÉÎÄ¼ş,Ğ´Íêºó»áÉ¾³ıhashTable ÖĞµÄÄÚ´æÊı¾İ
+		// æ‘˜è¦:
+		//     å°†hashTableæ•°æ®å†™æˆæ–‡ä»¶,å†™å®Œåä¼šåˆ é™¤hashTable ä¸­çš„å†…å­˜æ•°æ®
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   pkeyFile:
-		//     ÒÑ´ò¿ªµÄ¹Ø¼ü×ÖÎÄ¼şÖ¸Õë¡£
+		//     å·²æ‰“å¼€çš„å…³é”®å­—æ–‡ä»¶æŒ‡é’ˆã€‚
 		//
 		//   printAnalyse:
-		//     ÊÇ·ñ´òÓ¡hash·ÖÎö½á¹û¡£
+		//     æ˜¯å¦æ‰“å°hashåˆ†æç»“æœã€‚
 		//
-		inline int writeFile(FILE *pkeyFile)					//Ğ´ÈëÎÄ¼ş
+		inline int writeFile(FILE *pkeyFile)					//å†™å…¥æ–‡ä»¶
 		{
 			if(nodes==NULL)
 			{
-				if(this->size==0)EXP("Î´ÉèÖÃhash³õÊ¼»¯´óĞ¡");
-				nodes=new numNode[this->size];	//·ÖÅä´æ´¢¿Õ¼ä
+				if(this->size==0)EXP("æœªè®¾ç½®hashåˆå§‹åŒ–å¤§å°");
+				nodes=new numNode[this->size];	//åˆ†é…å­˜å‚¨ç©ºé—´
 			}
 			long long curPos=0;
 			int repeatCount=0,len=0;
 			numNode * pNode,* curNode,*nextNode;
 
 			numNode tempNode=numNode();
-			fseek(pkeyFile,(this->size-1) * NodeSize ,SEEK_SET);			//Ö±½ÓĞ´Èë×î´ó³¤¶È
+			fseek(pkeyFile,(this->size-1) * NodeSize ,SEEK_SET);			//ç›´æ¥å†™å…¥æœ€å¤§é•¿åº¦
 			len=fwrite(&tempNode,NodeSize,1,pkeyFile);
 			fflush(pkeyFile);
 			long fileSize=ftell(pkeyFile);
 			if(len!=1 || fileSize!=this->size*NodeSize)
-				EXP("³õÊ¼»¯hashÎÄ¼ş´óĞ¡·¢Éú´íÎó.");
+				EXP("åˆå§‹åŒ–hashæ–‡ä»¶å¤§å°å‘ç”Ÿé”™è¯¯.");
 			for(int i=0;i<this->size;i++)
 			{
 				if(nodes[i].key==0 && i!=0)continue;
@@ -635,7 +635,7 @@ namespace Common
 					curPos= i * NodeSize;
 					fseek(pkeyFile, curPos, SEEK_SET);
 					len=fwrite(curNode,NodeSize,1,pkeyFile);
-					if(len!=1)	EXP("Ğ´ÈëhashÎÄ¼ş·¢Éú´íÎó.");
+					if(len!=1)	EXP("å†™å…¥hashæ–‡ä»¶å‘ç”Ÿé”™è¯¯.");
 					while(nextNode)
 					{
 						repeatCount++;
@@ -645,7 +645,7 @@ namespace Common
 						fseek(pkeyFile, 0, SEEK_END);
 						len=fwrite(nextNode,NodeSize,1,pkeyFile);
 						if(len!=1)
-							EXP("Ğ´ÈëhashÎÄ¼ş·¢Éú´íÎó.");
+							EXP("å†™å…¥hashæ–‡ä»¶å‘ç”Ÿé”™è¯¯.");
 						delete nextNode;
 						nextNode=pNode;
 					}
@@ -655,7 +655,7 @@ namespace Common
 					curPos= i * NodeSize;
 					fseek(pkeyFile, curPos, SEEK_SET);
 					len=fwrite(curNode,NodeSize,1,pkeyFile);
-					if(len!=1)	EXP("Ğ´ÈëhashÎÄ¼ş·¢Éú´íÎó.");
+					if(len!=1)	EXP("å†™å…¥hashæ–‡ä»¶å‘ç”Ÿé”™è¯¯.");
 				}
 			}
 			delete [] nodes;
@@ -663,15 +663,15 @@ namespace Common
 			return repeatCount;
 		};
 		//
-		// ÕªÒª:
-		//	Ğ´ÎÄ¼ş
+		// æ‘˜è¦:
+		//	å†™æ–‡ä»¶
 		//
-		inline int writeFile(FILE *pkeyFile,bool printAnalyse)					//Ğ´ÈëÎÄ¼ş
+		inline int writeFile(FILE *pkeyFile,bool printAnalyse)					//å†™å…¥æ–‡ä»¶
 		{
 			if(nodes==NULL)
 			{
-				if(this->size==0)EXP("Î´ÉèÖÃhash³õÊ¼»¯´óĞ¡");
-				nodes=new numNode[this->size];	//·ÖÅä´æ´¢¿Õ¼ä
+				if(this->size==0)EXP("æœªè®¾ç½®hashåˆå§‹åŒ–å¤§å°");
+				nodes=new numNode[this->size];	//åˆ†é…å­˜å‚¨ç©ºé—´
 			}
 			if(!printAnalyse)
 				return writeFile(pkeyFile);
@@ -680,12 +680,12 @@ namespace Common
 			numNode * pNode,* curNode,*nextNode;
 
 			numNode tempNode=numNode();
-			fseek(pkeyFile,(this->size-1) * NodeSize ,SEEK_SET);			//Ö±½ÓĞ´Èë×î´ó³¤¶È
+			fseek(pkeyFile,(this->size-1) * NodeSize ,SEEK_SET);			//ç›´æ¥å†™å…¥æœ€å¤§é•¿åº¦
 			len=fwrite(&tempNode,NodeSize,1,pkeyFile);
 			fflush(pkeyFile);
 			long fileSize=ftell(pkeyFile);
 			if(len!=1 || fileSize!=this->size*NodeSize)
-				EXP("³õÊ¼»¯hashÎÄ¼ş´óĞ¡·¢Éú´íÎó.");
+				EXP("åˆå§‹åŒ–hashæ–‡ä»¶å¤§å°å‘ç”Ÿé”™è¯¯.");
 			vector<int> distributing;
 			distributing.push_back(1);
 			distributing.push_back(0);
@@ -701,7 +701,7 @@ namespace Common
 					curPos= i * NodeSize;
 					fseek(pkeyFile, curPos, SEEK_SET);
 					len=fwrite(curNode,NodeSize,1,pkeyFile);
-					if(len!=1)	EXP("Ğ´ÈëhashÎÄ¼ş·¢Éú´íÎó.");
+					if(len!=1)	EXP("å†™å…¥hashæ–‡ä»¶å‘ç”Ÿé”™è¯¯.");
 					int depth=1;
 					while(nextNode)
 					{
@@ -717,7 +717,7 @@ namespace Common
 						fseek(pkeyFile, 0, SEEK_END);
 						len=fwrite(nextNode,NodeSize,1,pkeyFile);
 						if(len!=1)
-							EXP("Ğ´ÈëhashÎÄ¼ş·¢Éú´íÎó.");
+							EXP("å†™å…¥hashæ–‡ä»¶å‘ç”Ÿé”™è¯¯.");
 						delete nextNode;
 						nextNode=pNode;
 					}
@@ -729,12 +729,12 @@ namespace Common
 					curPos= i * NodeSize;
 					fseek(pkeyFile, curPos, SEEK_SET);
 					len=fwrite(curNode,NodeSize,1,pkeyFile);
-					if(len!=1)	EXP("Ğ´ÈëhashÎÄ¼ş·¢Éú´íÎó.");
+					if(len!=1)	EXP("å†™å…¥hashæ–‡ä»¶å‘ç”Ÿé”™è¯¯.");
 				}
 			}
 			delete [] nodes;
 			nodes=NULL;
-			cout<<"hashÁ´±íÉî¶È: "<< distributing[0] <<endl;
+			cout<<"hashé“¾è¡¨æ·±åº¦: "<< distributing[0] <<endl;
 			int countPos=0;
 			for(int i=1;i<distributing.size();i++)
 			{
@@ -744,47 +744,47 @@ namespace Common
 			{
 				for(int i=1;i<distributing.size();i++)
 				{
-					cout<<"hash "<<i<<" ´Î¶¨Î»Êı: "<< distributing[i] <<" Õ¼±È: "<< (double)distributing[i]/countPos <<endl;
+					cout<<"hash "<<i<<" æ¬¡å®šä½æ•°: "<< distributing[i] <<" å æ¯”: "<< (double)distributing[i]/countPos <<endl;
 				}
 			}
-			cout<<"hash±íÊ¹ÓÃÂÊ: "<< (double)distributing[1]*100/this->size <<endl;
+			cout<<"hashè¡¨ä½¿ç”¨ç‡: "<< (double)distributing[1]*100/this->size <<endl;
 			distributing.clear();
 			return repeatCount;
 		};
 		//
-		// ÕªÒª:
-		//     Ö±½Ó½«KEYĞ´ÈëÎÄ¼ş
+		// æ‘˜è¦:
+		//     ç›´æ¥å°†KEYå†™å…¥æ–‡ä»¶
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   pkeyFile:
-		//     in ÒÑ´ò¿ªµÄ¹Ø¼ü×ÖÎÄ¼şÖ¸Õë¡£
+		//     in å·²æ‰“å¼€çš„å…³é”®å­—æ–‡ä»¶æŒ‡é’ˆã€‚
 		//
 		//   key:
-		//     in hash¹Ø¼ü×Ö¡£
+		//     in hashå…³é”®å­—ã€‚
 		//
 		//   val:
-		//     in hash¹Ø¼ü×Ö¶ÔÓ¦·µ»ØÖµ¡£
+		//     in hashå…³é”®å­—å¯¹åº”è¿”å›å€¼ã€‚
 		//
 		//   repeatCount:
-		//     in/out hashË÷ÒıÖØ¸´Öµ´óĞ¡¡£µÚÒ»´Îµ÷ÓÃÇ°ÖÃ 0
+		//     in/out hashç´¢å¼•é‡å¤å€¼å¤§å°ã€‚ç¬¬ä¸€æ¬¡è°ƒç”¨å‰ç½® 0
 		//
 		inline static void writeFile(FILE *pkeyFile,const KEYT &key,const VALUE &val,int &repeatCount,int size)
 		{
-			if(!pkeyFile)EXP("keyÎÄ¼şÖ¸ÕëÎª¿Õ.");
-			//Ö±½ÓĞ´ÈëÎÄ¼ş
+			if(!pkeyFile)EXP("keyæ–‡ä»¶æŒ‡é’ˆä¸ºç©º.");
+			//ç›´æ¥å†™å…¥æ–‡ä»¶
 			int len=0;
 			numNode *node=getNumNode(key,val);
-			unsigned int curIndex=abs(node->key) % size;					//È¡Ë÷ÒıÎ»ÖÃ;
+			unsigned int curIndex=abs(node->key) % size;					//å–ç´¢å¼•ä½ç½®;
 			long long curPos=NodeSize*curIndex;
 			fseek(pkeyFile, curPos, SEEK_SET);
 			numNode tempNode;
 			len= fread(&tempNode,NodeSize,1,pkeyFile);
-			if(len!=1)	EXP("¶ÁÈ¡keyÊı¾İ·¢Éú´íÎó,Î´¶ÁÈ¡µ½Ö¸¶¨³¤¶ÈµÄÊı¾İ.");
+			if(len!=1)	EXP("è¯»å–keyæ•°æ®å‘ç”Ÿé”™è¯¯,æœªè¯»å–åˆ°æŒ‡å®šé•¿åº¦çš„æ•°æ®.");
 			if(tempNode.key==0 && curIndex!=0)
 			{
 				fseek(pkeyFile, curPos, SEEK_SET);
 				len=fwrite(node,NodeSize,1,pkeyFile);
-				if(len!=1)	EXP("Ğ´ÈëhashÎÄ¼ş·¢Éú´íÎó.");
+				if(len!=1)	EXP("å†™å…¥hashæ–‡ä»¶å‘ç”Ÿé”™è¯¯.");
 				delete node;
 			}
 			else
@@ -814,34 +814,34 @@ namespace Common
 				fseek(pkeyFile, nPos, SEEK_SET);
 				len=fwrite(&tempNode,NodeSize,1,pkeyFile);
 				if(len!=1)
-					EXP("¸üĞÂhashÎÄ¼şÖĞ½Úµã·¢Éú´íÎó.");
+					EXP("æ›´æ–°hashæ–‡ä»¶ä¸­èŠ‚ç‚¹å‘ç”Ÿé”™è¯¯.");
 				fseek(pkeyFile, 0, SEEK_END);
 				len=fwrite(node,NodeSize,1,pkeyFile);
 				if(len!=1)
-					EXP("Ğ´ÈëhashÎÄ¼ş·¢Éú´íÎó.");
+					EXP("å†™å…¥hashæ–‡ä»¶å‘ç”Ÿé”™è¯¯.");
 				delete node;
 				repeatCount++;
 			}
 		};
 		//
-		// ÕªÒª:
-		//	»ñÈ¡ĞÂhash½ÚµãµÄÖ¸Õë
+		// æ‘˜è¦:
+		//	è·å–æ–°hashèŠ‚ç‚¹çš„æŒ‡é’ˆ
 		//
 		inline static numNode * getNumNode(const KEYT &key,const VALUE &val)
 		{
 			return new numNode(key,val);
 		};
 		//
-		// ÕªÒª:
-		//	»ñÈ¡ĞÂhash½ÚµãµÄÖ¸Õë
+		// æ‘˜è¦:
+		//	è·å–æ–°hashèŠ‚ç‚¹çš„æŒ‡é’ˆ
 		//
 		inline static numNode * getNumNode(const KEYT &key)
 		{
 			return new numNode(key);
 		};
 		//
-		// ÕªÒª:
-		//	·ÖÎöhash±í
+		// æ‘˜è¦:
+		//	åˆ†æhashè¡¨
 		//
 		inline void analyse()
 		{
@@ -877,7 +877,7 @@ namespace Common
 						}
 					}
 				}
-				cout<<"hashÁ´±íÉî¶È: "<< distributing[0] <<endl;
+				cout<<"hashé“¾è¡¨æ·±åº¦: "<< distributing[0] <<endl;
 				int countPos=0;
 				for(int i=1;i<distributing.size();i++)
 				{
@@ -885,19 +885,19 @@ namespace Common
 				}
 				for(int i=1;i<distributing.size();i++)
 				{
-					cout<<"hash "<<i<<" ´Î¶¨Î»Êı: "<< distributing[i] <<" Õ¼±È: "<< (double)distributing[i]/countPos <<endl;
+					cout<<"hash "<<i<<" æ¬¡å®šä½æ•°: "<< distributing[i] <<" å æ¯”: "<< (double)distributing[i]/countPos <<endl;
 				}
-				cout<<"hash±íÊ¹ÓÃÂÊ: "<< (double)distributing[1]*100/this->size <<endl;
+				cout<<"hashè¡¨ä½¿ç”¨ç‡: "<< (double)distributing[1]*100/this->size <<endl;
 			}
 			else
 			{
-				cout<<"²»´æÔÚhash½Úµã! " <<endl;
+				cout<<"ä¸å­˜åœ¨hashèŠ‚ç‚¹! " <<endl;
 			}
 			distributing.clear();
 		};
 		//
-		// ÕªÒª:
-		//	»ñÈ¡hash±íÉî¶È
+		// æ‘˜è¦:
+		//	è·å–hashè¡¨æ·±åº¦
 		//
 		inline int getDepth()
 		{

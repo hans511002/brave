@@ -6,7 +6,7 @@
 #include "JsonUtil.h"
 
 namespace engine
-{
+{ 
 	struct WaveData{
 		int value;
 		Common::Array<WaveData> d;

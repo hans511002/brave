@@ -5,7 +5,6 @@
 
 namespace engine
 { 
-
     InTimer::InTimer(string param1)
     {
         this->world = Main::mainClass->worldClass;

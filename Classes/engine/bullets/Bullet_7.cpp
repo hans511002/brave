@@ -31,7 +31,7 @@ namespace engine
             container->rotation = 180;
             this->addChild(container);
             testTower = whoShoot;
-            radius = whoShoot->radius;
+            radius = whoShoot->radius; 
             Bullet::init(event);
             this->enemyStartPoint = enemyTarget->this_pt;
             this->enemyRoad = enemyTarget->road;

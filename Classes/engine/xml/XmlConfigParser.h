@@ -153,7 +153,7 @@ namespace engine{
 			GET_XML_NODE(double, { val = Common::Convert::ToDouble(cval); });
 			GET_XML_NODE(bool, { int iv = atoi(cval); if (iv)val = true; else val = (Common::String::strcmp(cval, "true") == 0); });
 
-			//最后一节如果是@开头则表示属性
+			//禺锟斤拷蹐绾凰嘆锟斤拷头詹锟筋娋舜褦
 #define GET_XML_NODE_VALUE(T,NAME,DEF) inline T NAME( std::string nodePath,T defaultVal=DEF){\
 			T res;					\
 			if (get(res, nodePath))		\

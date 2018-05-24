@@ -4,7 +4,7 @@
 
 namespace engine
 {
-	class World;
+	class World; 
 	
 	namespace units
 	{

@@ -200,7 +200,7 @@ namespace engine
 		Common::Array<int> bossArrayOfEnemies0;
 		Common::Array<int *> bossArrayOfEnemies1;
 
-		//long long bossArrayOfEnemies[32][2];//[n][1] void * 4Î¬Êý×é
+		//long long bossArrayOfEnemies[32][2];//[n][1] void * 4Î¬Ë½Ø©
 
 		int bossArrayOfView[32][2];
 		int bossArrayOfArmor[16];
@@ -230,6 +230,5 @@ namespace engine
 
 	};
 }
-
 
 #endif

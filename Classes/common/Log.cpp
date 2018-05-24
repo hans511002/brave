@@ -31,7 +31,7 @@ namespace Common
 			Path::GetDemandDir(LogDirName);
 			if(Directory::CreateDir(LogDirName)==false)
 			{
-				printf("ÈÕÖ¾Ä¿Â¼´´½¨Ê§°Ü:%s\n",LogDirName.c_str());
+				printf("æ—¥å¿—ç›®å½•åˆ›å»ºå¤±è´¥:%s\n",LogDirName.c_str());
 				return;
 			}
 			isFirst=false;
@@ -42,11 +42,11 @@ namespace Common
 		FILE *fp=fopen(strTempDir.c_str(),"a+");
 		if(fp==NULL)
 		{
-			printf("ÈÕÖ¾ÎÄ¼þ´ò¿ªÊ§°Ü:%s,%s\n",strTempDir.c_str(),strerror(errno));
+			printf("æ—¥å¿—æ–‡ä»¶æ‰“å¼€å¤±è´¥:%s,%s\n",strTempDir.c_str(),strerror(errno));
 			return;
 		}
 		strInfo = Log::TypeName[type] +DateTime::Now().ToString()+"\t"+ strMessage;
-        //printf("ÄÚÈÝ[%s]\n",strInfo.Str);
+        //printf("å†…å®¹[%s]\n",strInfo.Str);
 		//printf("_getdrive: %d \n",fileno(fp));
 		fprintf(fp,"%s\r\n",strInfo.c_str());
 		fclose(fp);
@@ -62,7 +62,7 @@ namespace Common
 		//}
 		//Connection &con=*((Connection *)DbLog::_con);
 		//ResultSet &rs=*((ResultSet *)DbLog::_rs);
-		////Ð´ÈÕÖ¾
+		////å†™æ—¥å¿—
 		//try
 		//{	
 		//	if(!con.connected)
@@ -91,7 +91,7 @@ namespace Common
 		//}
 		//catch(otl_exception& er)
 		//{
-		//	String log_mess="Ð´Êý¾Ý¿âÈÕÖ¾·¢Éú´íÎó£º"+String((char *)er.msg)+"\nstm_text:"+er.stm_text+"\nvar_info:"+er.var_info+"\n==>"+msg; 
+		//	String log_mess="å†™æ•°æ®åº“æ—¥å¿—å‘ç”Ÿé”™è¯¯ï¼š"+String((char *)er.msg)+"\nstm_text:"+er.stm_text+"\nvar_info:"+er.var_info+"\n==>"+msg; 
 		//	writeLog(log_mess,log,isDebug,type);
 		//	rs.close();
 		//	//con.close();

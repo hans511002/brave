@@ -13,48 +13,48 @@ using namespace std;
 
 #define JsonUtil rapidjson
 namespace rapidjson{
-	//#Êı×é·ÃÎÊ
-	//// Ê¹ÓÃÒıÓÃÀ´Á¬Ğø·ÃÎÊ£¬·½±ãÖ®Óà»¹¸ü¸ßĞ§¡£
+	//#æ•°ç»„è®¿é—®
+	//// ä½¿ç”¨å¼•ç”¨æ¥è¿ç»­è®¿é—®ï¼Œæ–¹ä¾¿ä¹‹ä½™è¿˜æ›´é«˜æ•ˆã€‚
 	//const Value& a = document["a"];
 	//assert(a.IsArray());
-	//for (SizeType i = 0; i < a.Size(); i++) // Ê¹ÓÃ SizeType ¶ø²»ÊÇ size_t
+	//for (SizeType i = 0; i < a.Size(); i++) // ä½¿ç”¨ SizeType è€Œä¸æ˜¯ size_t
 	//	printf("a[%d] = %d\n", i, a[i].GetInt());
 
-	//¸Ä±ä Value ÀàĞÍ
+	//æ”¹å˜ Value ç±»å‹
 	//Document d; // Null
 	//d.SetObject();
 	//Value v;    // Null
 	//v.SetInt(10);
-	//v = 10;     // ¼òĞ´£¬ºÍÉÏÃæµÄÏàÍ¬
-	//Value b(true);    // µ÷ÓÃ Value(bool)
-	//Value i(-123);    // µ÷ÓÃ Value(int)
-	//Value u(123u);    // µ÷ÓÃ Value(unsigned)
-	//Value d(1.5);     // µ÷ÓÃ Value(double)
+	//v = 10;     // ç®€å†™ï¼Œå’Œä¸Šé¢çš„ç›¸åŒ
+	//Value b(true);    // è°ƒç”¨ Value(bool)
+	//Value i(-123);    // è°ƒç”¨ Value(int)
+	//Value u(123u);    // è°ƒç”¨ Value(unsigned)
+	//Value d(1.5);     // è°ƒç”¨ Value(double)
 
-	//ÒªÖØ½¨¿Õ Object »ò Array£¬¿ÉÔÚÄ¬ÈÏ¹¹Ôìº¯ÊıºóÊ¹ÓÃ SetObject() / SetArray()£¬»òÒ»´ÎĞÔÊ¹ÓÃ Value(Type)£º
+	//è¦é‡å»ºç©º Object æˆ– Arrayï¼Œå¯åœ¨é»˜è®¤æ„é€ å‡½æ•°åä½¿ç”¨ SetObject() / SetArray()ï¼Œæˆ–ä¸€æ¬¡æ€§ä½¿ç”¨ Value(Type)ï¼š
 	//Value o(kObjectType);
 	//Value a(kArrayType);
 	//Value a(kArrayType);
 
-	// Êı¾İ¶ÔÏó×ªÒÆ
+	// æ•°æ®å¯¹è±¡è½¬ç§»
 	//Document::AllocatorType& allocator = document.GetAllocator();
-	//// a.PushBack(Value(42), allocator);       // ²»ÄÜÍ¨¹ı±àÒë
+	//// a.PushBack(Value(42), allocator);       // ä¸èƒ½é€šè¿‡ç¼–è¯‘
 	//a.PushBack(Value().SetInt(42), allocator); // fluent API
-	//a.PushBack(Value(42).Move(), allocator);   // ºÍÉÏÒ»ĞĞÏàÍ¬
+	//a.PushBack(Value(42).Move(), allocator);   // å’Œä¸Šä¸€è¡Œç›¸åŒ
 
 
 
 	//###string##
 	//const char * cstr = getenv("USER");
-	//size_t cstr_len = ...;                 // Èç¹ûÓĞ³¤¶È
+	//size_t cstr_len = ...;                 // å¦‚æœæœ‰é•¿åº¦
 	//Value s;
-	//// s.SetString(cstr);                  // Õâ²»ÄÜÍ¨¹ı±àÒë
-	//s.SetString(StringRef(cstr));          // ¿ÉÒÔ£¬¼ÙÉèËüµÄÉúÃüÖÜÆÚ°²È«£¬²¢ÇÒÊÇÒÔ¿Õ×Ö·û½áÎ²µÄ
-	//s = StringRef(cstr);                   // ÉÏĞĞµÄËõĞ´
-	//s.SetString(StringRef(cstr, cstr_len));// ¸ü¿ì£¬¿É´¦Àí¿Õ×Ö·û
-	//s = StringRef(cstr, cstr_len);         // ÉÏĞĞµÄËõĞ´
+	//// s.SetString(cstr);                  // è¿™ä¸èƒ½é€šè¿‡ç¼–è¯‘
+	//s.SetString(StringRef(cstr));          // å¯ä»¥ï¼Œå‡è®¾å®ƒçš„ç”Ÿå‘½å‘¨æœŸå®‰å…¨ï¼Œå¹¶ä¸”æ˜¯ä»¥ç©ºå­—ç¬¦ç»“å°¾çš„
+	//s = StringRef(cstr);                   // ä¸Šè¡Œçš„ç¼©å†™
+	//s.SetString(StringRef(cstr, cstr_len));// æ›´å¿«ï¼Œå¯å¤„ç†ç©ºå­—ç¬¦
+	//s = StringRef(cstr, cstr_len);         // ä¸Šè¡Œçš„ç¼©å†™
 
-	//##ĞŞ¸Ä Array################################################################
+	//##ä¿®æ”¹ Array################################################################
 	//Clear()
 	//Reserve(SizeType, Allocator&)
 	//Value& PushBack(Value&, Allocator&)
@@ -67,18 +67,18 @@ namespace rapidjson{
 	//Value a(kArrayType);
 	//Document::AllocatorType& allocator = document.GetAllocator();
 	//for (int i = 5; i <= 10; i++)
-	//	a.PushBack(i, allocator);   // ¿ÉÄÜĞèÒªµ÷ÓÃ realloc() ËùÒÔĞèÒª allocator
-	//// Á÷³©½Ó¿Ú£¨Fluent interface£©
+	//	a.PushBack(i, allocator);   // å¯èƒ½éœ€è¦è°ƒç”¨ realloc() æ‰€ä»¥éœ€è¦ allocator
+	//// æµç•…æ¥å£ï¼ˆFluent interfaceï¼‰
 	//a.PushBack("Lua", allocator).PushBack("Mio", allocator);
 
-	//// ¾ÍµØ Value ²ÎÊı
+	//// å°±åœ° Value å‚æ•°
 	//contact.PushBack(Value("copy", document.GetAllocator()).Move(), // copy string
 	//	document.GetAllocator());
-	//// ÏÔÊ½ Value ²ÎÊı
+	//// æ˜¾å¼ Value å‚æ•°
 	//Value val("key", document.GetAllocator()); // copy string
 	//contact.PushBack(val, document.GetAllocator());
 
-	//################################ĞŞ¸Ä Object########################
+	//################################ä¿®æ”¹ Object########################
 	//Value& AddMember(Value&, Value&, Allocator& allocator)
 	//Value& AddMember(StringRefType, Value&, Allocator&)
 	//template <typename T> Value& AddMember(StringRefType, T value, Allocator&)
@@ -87,37 +87,37 @@ namespace rapidjson{
 	//Value contact(kObject);
 	//contact.AddMember("name", "Milo", document.GetAllocator());
 	//contact.AddMember("married", true, document.GetAllocator());
-	//// ¾ÍµØ Value ²ÎÊı
+	//// å°±åœ° Value å‚æ•°
 	//contact.AddMember(Value("copy", document.GetAllocator()).Move(), // copy string
 	//	Value().Move(),                                // null value
 	//	document.GetAllocator());
-	//// ÏÔÊ½²ÎÊı
+	//// æ˜¾å¼å‚æ•°
 	//Value key("key", document.GetAllocator()); // copy string name
-	//Value val(42);                             // Ä³ Value
+	//Value val(42);                             // æŸ Value
 	//contact.AddMember(key, val, document.GetAllocator());
 
-	//ÒÆ³ı³ÉÔ±ÓĞ¼¸¸öÑ¡Ôñ£º
-	//bool RemoveMember(const Ch* name)£ºÊ¹ÓÃ¼üÃûÀ´ÒÆ³ı³ÉÔ±£¨ÏßĞÔÊ±¼ä¸´ÔÓ¶È£©¡£
-	//bool RemoveMember(const Value& name)£º³ıÁË name ÊÇÒ»¸ö Value£¬ºÍÉÏÒ»ĞĞÏàÍ¬¡£
-	//MemberIterator RemoveMember(MemberIterator)£ºÊ¹ÓÃµü´úÆ÷ÒÆ³ı³ÉÔ±£¨_ ³£Êı _ Ê±¼ä¸´ÔÓ¶È£©¡£
-	//MemberIterator EraseMember(MemberIterator)£ººÍÉÏĞĞÏàËÆµ«Î¬³Ö³ÉÔ±´ÎĞò£¨ÏßĞÔÊ±¼ä¸´ÔÓ¶È£©¡£
-	//MemberIterator EraseMember(MemberIterator first, MemberIterator last)£ºÒÆ³ıÒ»¸ö·¶Î§ÄÚµÄ³ÉÔ±£¬Î¬³Ö´ÎĞò£¨ÏßĞÔÊ±¼ä¸´ÔÓ¶È£©¡£
+	//ç§»é™¤æˆå‘˜æœ‰å‡ ä¸ªé€‰æ‹©ï¼š
+	//bool RemoveMember(const Ch* name)ï¼šä½¿ç”¨é”®åæ¥ç§»é™¤æˆå‘˜ï¼ˆçº¿æ€§æ—¶é—´å¤æ‚åº¦ï¼‰ã€‚
+	//bool RemoveMember(const Value& name)ï¼šé™¤äº† name æ˜¯ä¸€ä¸ª Valueï¼Œå’Œä¸Šä¸€è¡Œç›¸åŒã€‚
+	//MemberIterator RemoveMember(MemberIterator)ï¼šä½¿ç”¨è¿­ä»£å™¨ç§»é™¤æˆå‘˜ï¼ˆ_ å¸¸æ•° _ æ—¶é—´å¤æ‚åº¦ï¼‰ã€‚
+	//MemberIterator EraseMember(MemberIterator)ï¼šå’Œä¸Šè¡Œç›¸ä¼¼ä½†ç»´æŒæˆå‘˜æ¬¡åºï¼ˆçº¿æ€§æ—¶é—´å¤æ‚åº¦ï¼‰ã€‚
+	//MemberIterator EraseMember(MemberIterator first, MemberIterator last)ï¼šç§»é™¤ä¸€ä¸ªèŒƒå›´å†…çš„æˆå‘˜ï¼Œç»´æŒæ¬¡åºï¼ˆçº¿æ€§æ—¶é—´å¤æ‚åº¦ï¼‰ã€‚
 
-	//¸´ÖÆValue
+	//å¤åˆ¶Value
 	//Document d;
 	//Document::AllocatorType& a = d.GetAllocator();
 	//Value v1("foo");
-	//// Value v2(v1); // ²»ÈİĞí
-	//Value v2(v1, a);                      // ÖÆÔìÒ»¸ö¿ËÂ¡
-	//assert(v1.IsString());                // v1 ²»±ä
+	//// Value v2(v1); // ä¸å®¹è®¸
+	//Value v2(v1, a);                      // åˆ¶é€ ä¸€ä¸ªå…‹éš†
+	//assert(v1.IsString());                // v1 ä¸å˜
 	//d.SetArray().PushBack(v1, a).PushBack(v2, a);
-	//assert(v1.IsNull() && v2.IsNull());   // Á½¸ö¶¼×ªÒÆ¶¯ d
-	//v2.CopyFrom(d, a);                    // °ÑÕû¸ö document ¸´ÖÆÖÁ v2
-	//assert(d.IsArray() && d.Size() == 2); // d ²»±ä
+	//assert(v1.IsNull() && v2.IsNull());   // ä¸¤ä¸ªéƒ½è½¬ç§»åŠ¨ d
+	//v2.CopyFrom(d, a);                    // æŠŠæ•´ä¸ª document å¤åˆ¶è‡³ v2
+	//assert(d.IsArray() && d.Size() == 2); // d ä¸å˜
 	//v1.SetObject().AddMember("array", v2, a);
 	//d.PushBack(v1, a);
 
-	//½»»» Value
+	//äº¤æ¢ Value
 	//Value a(123);
 	//Value b("Hello");
 	//a.Swap(b);
@@ -143,7 +143,7 @@ namespace rapidjson{
 	long long getLLongValue(Value *node, string namePath);
 	const char* getCharsValue(Value *node, string namePath);
 	string getStringValue(Value *node, string namePath);
-	//Êı×é
+	//æ•°ç»„
 	bool getBoolValue(Value *node, string namePath, int idx);
 	int getIntValue(Value *node, string namePath, int idx);
 	long long getLLongValue(Value *node, string namePath, int idx);
@@ -151,7 +151,7 @@ namespace rapidjson{
 	string getStringValue(Value *node, string namePath, int idx);
 	const char * getCharsValue(Value *node, string namePath, int idx);
 
-	//¿ìËÙÉèÖÃ.,Î´×öÀàĞÍ¼ì²é
+	//å¿«é€Ÿè®¾ç½®.,æœªåšç±»å‹æ£€æŸ¥
 	template <class T = int> void setValue(Document &doc, string namePath,T val ){
 		Common::String tmp = namePath;
 		tmp='/'+tmp.ReplaceAll('.', '/');

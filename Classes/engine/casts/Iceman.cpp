@@ -9,7 +9,7 @@ namespace engine{
         Iceman_mc::Iceman_mc():MovieClip("cast/","Iceman_mc","Iceman_mc")
         {
             
-        };
+        }; 
         BlowIce_mc::BlowIce_mc():MovieClip("cast/","BlowIce_mc","BlowIce_mc")
         {
             

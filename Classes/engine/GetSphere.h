@@ -5,7 +5,7 @@
 #include "engine/mc/mc.h"
 
 namespace engine
-{
+{ 
     class World;
 	struct Arrow_mc :public MovieClip
 	{

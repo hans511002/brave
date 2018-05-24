@@ -5,7 +5,7 @@ namespace engine
 {
 	namespace units
 	{
-		Unit_17::Unit_17()
+		Unit_17::Unit_17() 
 		{
 			return;
 		}// end function

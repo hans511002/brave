@@ -17,8 +17,8 @@
 
 namespace Common
 {
-	//¾ØÕó¼ÓÃÜ
-	//ÏÈ´òÂÒ£¬ÔÙÒÆÎ»
+	//çŸ©é˜µåŠ å¯†
+	//å…ˆæ‰“ä¹±ï¼Œå†ç§»ä½
 	void Encoding::matrixEncode(const char * src,char * dest,const char * password)
 	{
 		int srcLen=strlen(src);
@@ -35,7 +35,7 @@ namespace Common
 		delete [] asize;
 		delete [] p;
 	}
-	//¾µÏñ¼ÓÃÜ(²¹·´)
+	//é•œåƒåŠ å¯†(è¡¥å)
 	void Encoding::MSLEncode(const char * src,char * dest)
 	{
 		unsigned char * tp=(unsigned char *)src;
@@ -50,7 +50,7 @@ namespace Common
 			c=*tp;
 		}
 	}
-	//µ¹ÖÃ¼ÓÃÜ
+	//å€’ç½®åŠ å¯†
 	void Encoding::anasEncode(const char * src,char * dest)
 	{
 		int srcLen=strlen(src);
@@ -61,7 +61,7 @@ namespace Common
 			dest++;tp--;
 		}
 	}
-	//ÒÆÎ»¼ÓÃÜ(°´×Ö½ÚÑ­»·ÒÆÎ»)
+	//ç§»ä½åŠ å¯†(æŒ‰å­—èŠ‚å¾ªç¯ç§»ä½)
 	void Encoding::shiftEncode(const char * src,char * dest,int size)
 	{
 		size=size%8;
@@ -76,7 +76,7 @@ namespace Common
 			tp++;dest++;
 		}
 	}
-	//¶àÒÆÎ»¼ÓÃÜ
+	//å¤šç§»ä½åŠ å¯†
 	void Encoding::shiftEncode(const char * src,char * dest,int * asize,int len)
 	{
 		unsigned char * tp=(unsigned char *)src;

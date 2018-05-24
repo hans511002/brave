@@ -15,20 +15,20 @@
 
 namespace Common
 {
-	// ժҪ:
-    //     ��ʾ���ַ��������ֶ�Ϊֻ����
+	// 摘要:
+    //     表示空字符串。此字段为只读。
 	const char String::WhitespaceChars[]={'\t','\n','\v','\f','\r',' ','\b','\a'};
 	//
 	//
-    // ժҪ:
-    //     �ַ����,���ذ�����ʵ���е����ַ����� Common.String ���顣
+    // 摘要:
+    //     字符拆分,返回包含此实例中的子字符串的 Common.String 数组。
     //
-    // ����:
+    // 参数:
     //   separator:
-    //     �ָ���ʵ�������ַ����� ASCII �ַ���
+    //     分隔此实例中子字符串的 ASCII 字符。
     //
-    // ���ؽ��:
-    //     һ�����飬��Ԫ�ذ�����ʵ���е����ַ�������Щ���ַ����� separator �е�һ�������ַ��ָ����йظ�����Ϣ����μ���ע���֡�
+    // 返回结果:
+    //     一个数组，其元素包含此实例中的子字符串，这些子字符串由 separator 中的一个或多个字符分隔。有关更多信息，请参见备注部分。
 	//
 	void String::Split(Array<String>  &result,char separator,StringSplitOptions options,int count)
 	{
@@ -71,22 +71,22 @@ namespace Common
 		}
 	}
     //
-    // ժҪ:
-    //     �ַ�������,���ذ������ַ����е����ַ�������ָ���� Common.Char �����Ԫ�طָ����� Common.String ���顣����ָ��Ҫ�������ַ���������������Լ��Ƿ�Ҫ���ؿ�����Ԫ�ء�
+    // 摘要:
+    //     字符数组拆分,返回包含此字符串中的子字符串（由指定的 Common.Char 数组的元素分隔）的 Common.String 数组。参数指定要返回子字符串的最大数量，以及是否要返回空数组元素。
     //
-    // ����:
+    // 参数:
     //   count:
-    //     Ҫ���ص����ַ��������������
+    //     要返回的子字符串的最大数量。
     //
     //   options:
-    //     ָ�� Common.StringSplitOptions.RemoveEmptyEntries ��ʡ�Է��ص������еĿ�����Ԫ�أ���ָ�� Common.StringSplitOptions.None
-    //     �԰������ص������еĿ�����Ԫ�ء�
+    //     指定 Common.StringSplitOptions.RemoveEmptyEntries 以省略返回的数组中的空数组元素，或指定 Common.StringSplitOptions.None
+    //     以包含返回的数组中的空数组元素。
     //
     //   separator:
-    //     �ָ����ַ��������ַ����� ASCII �ַ����顢�������ָ����Ŀ������null��
+    //     分隔此字符串中子字符串的 ASCII 字符数组、不包含分隔符的空数组或null。
     //
-    // ���ؽ��:
-    //     һ�����飬��Ԫ�ذ������ַ����е����ַ�������Щ���ַ����� separator �е�һ�������ַ��ָ����йظ�����Ϣ����μ���ע���֡�
+    // 返回结果:
+    //     一个数组，其元素包含此字符串中的子字符串，这些子字符串由 separator 中的一个或多个字符分隔。有关更多信息，请参见备注部分。
     void String::Split(Array<String>  &result,Array<char> & separator, StringSplitOptions options, int count)
 	{
 		bool remove=(options==RemoveEmptyEntries);
@@ -94,19 +94,19 @@ namespace Common
 		Split(result, temp, false, options, count);
 	}
 	//
-	// ժҪ:
-	//     �ַ������,���ذ������ַ����е����ַ�������ָ���� Common.Char �����Ԫ�طָ����� Common.String ���顣����ָ���Ƿ񷵻ؿ�����Ԫ�ء�
+	// 摘要:
+	//     字符串拆分,返回包含此字符串中的子字符串（由指定的 Common.Char 数组的元素分隔）的 Common.String 数组。参数指定是否返回空数组元素。
 	//
-	// ����:
+	// 参数:
 	//   options:
-	//     ָ�� Common.StringSplitOptions.RemoveEmptyEntries ��ʡ�Է��ص������еĿ�����Ԫ�أ���ָ�� Common.StringSplitOptions.None
-	//     �԰������ص������еĿ�����Ԫ�ء�
+	//     指定 Common.StringSplitOptions.RemoveEmptyEntries 以省略返回的数组中的空数组元素，或指定 Common.StringSplitOptions.None
+	//     以包含返回的数组中的空数组元素。
 	//
 	//   separator:
-	//     �ָ����ַ��������ַ����� ASCII �ַ����顢�������ָ����Ŀ������null��
+	//     分隔此字符串中子字符串的 ASCII 字符数组、不包含分隔符的空数组或null。
 	//
-	// ���ؽ��:
-	//     һ�����飬��Ԫ�ذ������ַ����е����ַ�������Щ���ַ����� separator �е�һ�������ַ��ָ����йظ�����Ϣ����μ���ע���֡�
+	// 返回结果:
+	//     一个数组，其元素包含此字符串中的子字符串，这些子字符串由 separator 中的一个或多个字符分隔。有关更多信息，请参见备注部分。
 	//
     void String::Split(Array<String>  &result,String separator,bool isString, StringSplitOptions options, int count)
 	{
@@ -260,30 +260,30 @@ namespace Common
 	}
 
     //
-    // ժҪ:
-    //     �ַ���������,���ذ������ַ����е����ַ�������ָ���� Common.String �����Ԫ�طָ����� Common.String ���顣����ָ��Ҫ�������ַ���������������Լ��Ƿ�Ҫ���ؿ�����Ԫ�ء�
+    // 摘要:
+    //     字符串数组拆分,返回包含此字符串中的子字符串（由指定的 Common.String 数组的元素分隔）的 Common.String 数组。参数指定要返回子字符串的最大数量，以及是否要返回空数组元素。
     //
-    // ����:
+    // 参数:
     //   count:
-    //     Ҫ���ص����ַ��������������
+    //     要返回的子字符串的最大数量。
     //
     //   options:
-    //     ָ�� Common.StringSplitOptions.RemoveEmptyEntries ��ʡ�Է��ص������еĿ�����Ԫ�أ���ָ�� Common.StringSplitOptions.None
-    //     �԰������ص������еĿ�����Ԫ�ء�
+    //     指定 Common.StringSplitOptions.RemoveEmptyEntries 以省略返回的数组中的空数组元素，或指定 Common.StringSplitOptions.None
+    //     以包含返回的数组中的空数组元素。
     //
     //   separator:
-    //     �ָ����ַ��������ַ������ַ������顢�������ָ����Ŀ������null��
+    //     分隔此字符串中子字符串的字符串数组、不包含分隔符的空数组或null。
     //
-    // ���ؽ��:
-    //     һ�����飬��Ԫ�ذ������ַ����е����ַ�������Щ���ַ����� separator �е�һ�������ַ����ָ����йظ�����Ϣ����μ���ע���֡�
+    // 返回结果:
+    //     一个数组，其元素包含此字符串中的子字符串，这些子字符串由 separator 中的一个或多个字符串分隔。有关更多信息，请参见备注部分。
 	void String::Split(Array<String>  &result,Array<String> &separators, StringSplitOptions options, int count)
 	{
 		bool remove=(options==RemoveEmptyEntries);
 		int  index = 0,Size=this->size()+1;
 		int  num1 = separators.size();
 		const char * chRef=this->c_str();
-		int * sepList = new int[Size];				//	����ַ�������
-		int * lengthList = new int[Size];			//	����ַ�������
+		int * sepList = new int[Size];				//	拆分字符串索引
+		int * lengthList = new int[Size];			//	拆分字符串长度
 		String::memset(sepList,0,sizeof(int)*Size);
 		String::memset(lengthList,0,sizeof(int)*Size);
 
@@ -319,9 +319,9 @@ namespace Common
 			lengthList[index]=1;
 		}
 		int startIndex = 0;
-		int * nullIndex = new int[index+1];			//	��ʶ�Ƿ�Ϊ���ַ���
+		int * nullIndex = new int[index+1];			//	标识是否为空字符串
 		String::memset(nullIndex,0,sizeof(int)*(index+1));
-        //����ַ���λ��
+        //拆分字符串位置
 		//for(int i=0;i<size;i++)
 		//{
 		//	if(lengthList[i]!=0)
@@ -341,7 +341,7 @@ namespace Common
 			}
 			startIndex = sepList[i] + lengthList[i];
 		}
-        //���ַ���λ��
+        //空字符串位置
 		//for(int i=0;i<len;i++)
 		//{
 		//	printf("nullIndex[%d]=%d\t \n",i,nullIndex[i] );
@@ -369,15 +369,15 @@ namespace Common
 	}
 	//
 	//
-    // ժҪ:
-    //     �ַ����,���ذ�����ʵ���е����ַ����� Common.string ���顣
+    // 摘要:
+    //     字符拆分,返回包含此实例中的子字符串的 Common.string 数组。
     //
-    // ����:
+    // 参数:
     //   separator:
-    //     �ָ���ʵ�������ַ����� ASCII �ַ���
+    //     分隔此实例中子字符串的 ASCII 字符。
     //
-    // ���ؽ��:
-    //     һ�����飬��Ԫ�ذ�����ʵ���е����ַ�������Щ���ַ����� separator �е�һ�������ַ��ָ����йظ�����Ϣ����μ���ע���֡�
+    // 返回结果:
+    //     一个数组，其元素包含此实例中的子字符串，这些子字符串由 separator 中的一个或多个字符分隔。有关更多信息，请参见备注部分。
 	//
 	void String::Split(Array<string>  &result,string str,char separator,StringSplitOptions options,int count)
 	{
@@ -420,22 +420,22 @@ namespace Common
 		}
 	}
     //
-    // ժҪ:
-    //     �ַ�������,���ذ������ַ����е����ַ�������ָ���� Common.Char �����Ԫ�طָ����� Common.string ���顣����ָ��Ҫ�������ַ���������������Լ��Ƿ�Ҫ���ؿ�����Ԫ�ء�
+    // 摘要:
+    //     字符数组拆分,返回包含此字符串中的子字符串（由指定的 Common.Char 数组的元素分隔）的 Common.string 数组。参数指定要返回子字符串的最大数量，以及是否要返回空数组元素。
     //
-    // ����:
+    // 参数:
     //   count:
-    //     Ҫ���ص����ַ��������������
+    //     要返回的子字符串的最大数量。
     //
     //   options:
-    //     ָ�� Common.StringSplitOptions.RemoveEmptyEntries ��ʡ�Է��ص������еĿ�����Ԫ�أ���ָ�� Common.StringSplitOptions.None
-    //     �԰������ص������еĿ�����Ԫ�ء�
+    //     指定 Common.StringSplitOptions.RemoveEmptyEntries 以省略返回的数组中的空数组元素，或指定 Common.StringSplitOptions.None
+    //     以包含返回的数组中的空数组元素。
     //
     //   separator:
-    //     �ָ����ַ��������ַ����� ASCII �ַ����顢�������ָ����Ŀ������null��
+    //     分隔此字符串中子字符串的 ASCII 字符数组、不包含分隔符的空数组或null。
     //
-    // ���ؽ��:
-    //     һ�����飬��Ԫ�ذ������ַ����е����ַ�������Щ���ַ����� separator �е�һ�������ַ��ָ����йظ�����Ϣ����μ���ע���֡�
+    // 返回结果:
+    //     一个数组，其元素包含此字符串中的子字符串，这些子字符串由 separator 中的一个或多个字符分隔。有关更多信息，请参见备注部分。
     void String::Split(Array<string>  &result,string str,Array<char> & separator, StringSplitOptions options, int count)
 	{
 		bool remove=(options==RemoveEmptyEntries);
@@ -443,19 +443,19 @@ namespace Common
 		Split(result,str, temp, false, options, count);
 	}
 	//
-	// ժҪ:
-	//     �ַ������,���ذ������ַ����е����ַ�������ָ���� Common.Char �����Ԫ�طָ����� Common.string ���顣����ָ���Ƿ񷵻ؿ�����Ԫ�ء�
+	// 摘要:
+	//     字符串拆分,返回包含此字符串中的子字符串（由指定的 Common.Char 数组的元素分隔）的 Common.string 数组。参数指定是否返回空数组元素。
 	//
-	// ����:
+	// 参数:
 	//   options:
-	//     ָ�� Common.StringSplitOptions.RemoveEmptyEntries ��ʡ�Է��ص������еĿ�����Ԫ�أ���ָ�� Common.StringSplitOptions.None
-	//     �԰������ص������еĿ�����Ԫ�ء�
+	//     指定 Common.StringSplitOptions.RemoveEmptyEntries 以省略返回的数组中的空数组元素，或指定 Common.StringSplitOptions.None
+	//     以包含返回的数组中的空数组元素。
 	//
 	//   separator:
-	//     �ָ����ַ��������ַ����� ASCII �ַ����顢�������ָ����Ŀ������null��
+	//     分隔此字符串中子字符串的 ASCII 字符数组、不包含分隔符的空数组或null。
 	//
-	// ���ؽ��:
-	//     һ�����飬��Ԫ�ذ������ַ����е����ַ�������Щ���ַ����� separator �е�һ�������ַ��ָ����йظ�����Ϣ����μ���ע���֡�
+	// 返回结果:
+	//     一个数组，其元素包含此字符串中的子字符串，这些子字符串由 separator 中的一个或多个字符分隔。有关更多信息，请参见备注部分。
 	//
     void String::Split(Array<string>  &result,string str,string separator,bool isString, StringSplitOptions options, int count)
 	{
@@ -615,30 +615,30 @@ namespace Common
 	}
 
     //
-    // ժҪ:
-    //     �ַ���������,���ذ������ַ����е����ַ�������ָ���� Common.string �����Ԫ�طָ����� Common.string ���顣����ָ��Ҫ�������ַ���������������Լ��Ƿ�Ҫ���ؿ�����Ԫ�ء�
+    // 摘要:
+    //     字符串数组拆分,返回包含此字符串中的子字符串（由指定的 Common.string 数组的元素分隔）的 Common.string 数组。参数指定要返回子字符串的最大数量，以及是否要返回空数组元素。
     //
-    // ����:
+    // 参数:
     //   count:
-    //     Ҫ���ص����ַ��������������
+    //     要返回的子字符串的最大数量。
     //
     //   options:
-    //     ָ�� Common.StringSplitOptions.RemoveEmptyEntries ��ʡ�Է��ص������еĿ�����Ԫ�أ���ָ�� Common.StringSplitOptions.None
-    //     �԰������ص������еĿ�����Ԫ�ء�
+    //     指定 Common.StringSplitOptions.RemoveEmptyEntries 以省略返回的数组中的空数组元素，或指定 Common.StringSplitOptions.None
+    //     以包含返回的数组中的空数组元素。
     //
     //   separator:
-    //     �ָ����ַ��������ַ������ַ������顢�������ָ����Ŀ������null��
+    //     分隔此字符串中子字符串的字符串数组、不包含分隔符的空数组或null。
     //
-    // ���ؽ��:
-    //     һ�����飬��Ԫ�ذ������ַ����е����ַ�������Щ���ַ����� separator �е�һ�������ַ����ָ����йظ�����Ϣ����μ���ע���֡�
+    // 返回结果:
+    //     一个数组，其元素包含此字符串中的子字符串，这些子字符串由 separator 中的一个或多个字符串分隔。有关更多信息，请参见备注部分。
 	void String::Split(Array<string>  &result,string str,Array<string> &separators, StringSplitOptions options, int count)
 	{
 		bool remove=(options==RemoveEmptyEntries);
 		int  index = 0,Size=str.size()+1;
 		int  num1 = separators.size();
 		const char * chRef=str.c_str();
-		int * sepList = new int[Size];				//	����ַ�������
-		int * lengthList = new int[Size];			//	����ַ�������
+		int * sepList = new int[Size];				//	拆分字符串索引
+		int * lengthList = new int[Size];			//	拆分字符串长度
 		String::memset(sepList,0,sizeof(int)*Size);
 		String::memset(lengthList,0,sizeof(int)*Size);
 
@@ -674,9 +674,9 @@ namespace Common
 			lengthList[index]=1;
 		}
 		int startIndex = 0;
-		int * nullIndex = new int[index+1];			//	��ʶ�Ƿ�Ϊ���ַ���
+		int * nullIndex = new int[index+1];			//	标识是否为空字符串
 		String::memset(nullIndex,0,sizeof(int)*(index+1));
-        //����ַ���λ��
+        //拆分字符串位置
 		//for(int i=0;i<size;i++)
 		//{
 		//	if(lengthList[i]!=0)
@@ -696,7 +696,7 @@ namespace Common
 			}
 			startIndex = sepList[i] + lengthList[i];
 		}
-        //���ַ���λ��
+        //空字符串位置
 		//for(int i=0;i<len;i++)
 		//{
 		//	printf("nullIndex[%d]=%d\t \n",i,nullIndex[i] );

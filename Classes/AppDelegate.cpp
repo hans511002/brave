@@ -12,7 +12,7 @@
 #include "./test/BoneOffset.h"
 #include "./test/InverseKinematics.h"
 #include "./test/BoundingBox.h"
-#include "./test/ReplaceSlotDisplay.h"
+#include "./test/ReplaceSlotDisplay.h" 
 #include "./test/ReplaceSkin.h"
 #include "./test/ReplaceAnimation.h"
 #include "./test/CoreElement.h"
@@ -20,7 +20,7 @@
 
 // #include "DragonBonesTest.h"
 
-USING_NS_CC;
+USING_NS_CC; 
 
 AppDelegate::AppDelegate() 
 {

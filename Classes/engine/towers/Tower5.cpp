@@ -33,7 +33,7 @@ namespace engine
             container->boneBlock->stop();
             container->towerCase->buttonMode = true;
             container->upgr1->setVisible(false);
-            container->blockTower->setVisible(false);
+            container->blockTower->setVisible(false); 
             container->boneBlock->setVisible(false);
             this->addChild(container);
             Tower::init();

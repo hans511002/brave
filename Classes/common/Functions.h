@@ -18,69 +18,69 @@
 
 typedef long long Long;
 
-// ÕªÒª:
-//     ¹«¹²º¯ÊıÍ·ÎÄ¼ş.
+// æ‘˜è¦:
+//     å…¬å…±å‡½æ•°å¤´æ–‡ä»¶.
 //
-//×¢Òâ£º
-//		ÎªÌá¸ßĞ§ÂÊ£¬ËùÓĞÀà¶ÔÏó¶¼½¨Òé²ÉÓÃÒıÓÃ²ÎÊı´«µİ¡£
+//æ³¨æ„ï¼š
+//		ä¸ºæé«˜æ•ˆç‡ï¼Œæ‰€æœ‰ç±»å¯¹è±¡éƒ½å»ºè®®é‡‡ç”¨å¼•ç”¨å‚æ•°ä¼ é€’ã€‚
 //
 //
-// ×÷ Õß: ×ŞÔ¶¹ó
-// ÈÕ ÆÚ: 2007-4-25
-// °æ ±¾: 1.0
+// ä½œ è€…: é‚¹è¿œè´µ
+// æ—¥ æœŸ: 2007-4-25
+// ç‰ˆ æœ¬: 1.0
 //
 namespace Common
 {
 	///	<summary>
-	///	¼ÓÔØctlÎÄ¼şµ½Êı¾İ±í:¿ìËÙ¼ÓÔØ¡£ºöÂÔÎÄ¼şÍ·,¼ÓÔØÌõÊıÏŞÖÆ¡£
-	///	<code>Ô­ĞÍ£º	int  ImportCtlFile( String ctlName,String stlDataName,String dbConnStr,bool direct=false,
+	///	åŠ è½½ctlæ–‡ä»¶åˆ°æ•°æ®è¡¨:å¿«é€ŸåŠ è½½ã€‚å¿½ç•¥æ–‡ä»¶å¤´,åŠ è½½æ¡æ•°é™åˆ¶ã€‚
+	///	<code>åŸå‹ï¼š	int  ImportCtlFile( String ctlName,String stlDataName,String dbConnStr,bool direct=false,
 	///                             bool parallel=false,int readsize=6553600,int bindsize=6553600,
 	///                             int rows=10000,const long skipNum=0,const long loadRowNum=0);</code>
 	///	</summary>
-	///	<param name="ctlName">ctl¿ØÖÆÍ·ÎÄ¼ş,ÀàĞÍ<see cref="String"/></param>
-	///	<param name="stlDataName">Êı¾İÎÄ¼ş,ÀàĞÍ<see cref="String"/></param>
-	///	<param name="dbConnStr">Êı¾İÁ¬½Ó´®,ÀàĞÍ<see cref="String"/></param>
-	///	<param name="direct">ÊÇ·ñÊ¹ÓÃÖ±Í¨µ¼Èë£¬±àÒë³ÌĞòµÄÊı¾İ¿â°æ±¾ÓëÄ¿±êÊı¾İ¿âÏàÍ¬Ê±²ÅÄÜÊ¹ÓÃ,ÀàĞÍ<see cref="bool"/></param>
-	///	<param name="parallel">ÊÇ·ñÖ§³Å²¢ĞĞ,ÀàĞÍ<see cref="bool"/></param>
-	///	<param name="readsize">¶ÁÈ¡´óĞ¡,ÀàĞÍ<see cref="int"/></param>
-	///	<param name="bindsize">°ó¶¨ÏÂ´óĞ¡,ÀàĞÍ<see cref="int"/></param>
-	///	<param name="rows">µ¥´ÎÌá½»¼ÇÂ¼Êı´óĞ¡,ÀàĞÍ<see cref="int"/></param>
-	///	<param name="skipNum">Ìø¹ı¼ÇÂ¼Êı,ÀàĞÍ<see cref="int"/></param>
-	///	<param name="loadRowNum">ÏŞ¶¨¼ÓÔØ¼ÇÂ¼Êı,ÀàĞÍ<see cref="int"/></param>
-	///	<returns>·µ»ØÖ´ĞĞ½á¹û£º 0:³É¹¦,1:¶ÔÏóĞ£ÑéÊ§°Ü£º±í²»´æÔÚ»ò×Ö¶Î²»Æ¥ÅäµÈ,2:µ¼Èë²»ÍêÈ«,²úÉúBADÎÄ¼ş:×Ö¶ÎÒì³£µÈ,-1:Ê§°Ü</returns>
+	///	<param name="ctlName">ctlæ§åˆ¶å¤´æ–‡ä»¶,ç±»å‹<see cref="String"/></param>
+	///	<param name="stlDataName">æ•°æ®æ–‡ä»¶,ç±»å‹<see cref="String"/></param>
+	///	<param name="dbConnStr">æ•°æ®è¿æ¥ä¸²,ç±»å‹<see cref="String"/></param>
+	///	<param name="direct">æ˜¯å¦ä½¿ç”¨ç›´é€šå¯¼å…¥ï¼Œç¼–è¯‘ç¨‹åºçš„æ•°æ®åº“ç‰ˆæœ¬ä¸ç›®æ ‡æ•°æ®åº“ç›¸åŒæ—¶æ‰èƒ½ä½¿ç”¨,ç±»å‹<see cref="bool"/></param>
+	///	<param name="parallel">æ˜¯å¦æ”¯æ’‘å¹¶è¡Œ,ç±»å‹<see cref="bool"/></param>
+	///	<param name="readsize">è¯»å–å¤§å°,ç±»å‹<see cref="int"/></param>
+	///	<param name="bindsize">ç»‘å®šä¸‹å¤§å°,ç±»å‹<see cref="int"/></param>
+	///	<param name="rows">å•æ¬¡æäº¤è®°å½•æ•°å¤§å°,ç±»å‹<see cref="int"/></param>
+	///	<param name="skipNum">è·³è¿‡è®°å½•æ•°,ç±»å‹<see cref="int"/></param>
+	///	<param name="loadRowNum">é™å®šåŠ è½½è®°å½•æ•°,ç±»å‹<see cref="int"/></param>
+	///	<returns>è¿”å›æ‰§è¡Œç»“æœï¼š 0:æˆåŠŸ,1:å¯¹è±¡æ ¡éªŒå¤±è´¥ï¼šè¡¨ä¸å­˜åœ¨æˆ–å­—æ®µä¸åŒ¹é…ç­‰,2:å¯¼å…¥ä¸å®Œå…¨,äº§ç”ŸBADæ–‡ä»¶:å­—æ®µå¼‚å¸¸ç­‰,-1:å¤±è´¥</returns>
 	int  ImportCtlFile( String ctlName,String stlDataName,String dbConnStr,bool direct=false,bool parallel=false
 		,int readsize=6553600,int bindsize=6553600,int rows=10000,const long skipNum=0,const long loadRowNum=0);
 	///	<summary>
-	///	Ö´ĞĞsqlldrÍâ²¿µ÷ÓÃ¡£
-	///	<code>Ô­ĞÍ£ºint  Sqlldr(string pCommand);</code>
+	///	æ‰§è¡Œsqlldrå¤–éƒ¨è°ƒç”¨ã€‚
+	///	<code>åŸå‹ï¼šint  Sqlldr(string pCommand);</code>
 	///	</summary>
-	///	<param name="pCommand">Ö´ĞĞÃüÁî×Ö·û´®<see cref="String"/></param>
-	///	<returns>·µ»ØÖ´ĞĞ½á¹û£º 0:³É¹¦,1:¶ÔÏóĞ£ÑéÊ§°Ü£º±í²»´æÔÚ»ò×Ö¶Î²»Æ¥ÅäµÈ,2:µ¼Èë²»ÍêÈ«,²úÉúBADÎÄ¼ş:×Ö¶ÎÒì³£µÈ,-1:Ê§°Ü</returns>
+	///	<param name="pCommand">æ‰§è¡Œå‘½ä»¤å­—ç¬¦ä¸²<see cref="String"/></param>
+	///	<returns>è¿”å›æ‰§è¡Œç»“æœï¼š 0:æˆåŠŸ,1:å¯¹è±¡æ ¡éªŒå¤±è´¥ï¼šè¡¨ä¸å­˜åœ¨æˆ–å­—æ®µä¸åŒ¹é…ç­‰,2:å¯¼å…¥ä¸å®Œå…¨,äº§ç”ŸBADæ–‡ä»¶:å­—æ®µå¼‚å¸¸ç­‰,-1:å¤±è´¥</returns>
 	int  Sqlldr(string pCommand);
 	///	<summary>
-	///	¼ì²éÖ´ĞĞsqlldrºóµÄÈÕÖ¾ÎÄ¼ş¡£
-	///	<code>Ô­ĞÍ£ºbool CheckSqlldrRet(const char*log_file ,string &amp;out_msg ) ;</code>
+	///	æ£€æŸ¥æ‰§è¡Œsqlldråçš„æ—¥å¿—æ–‡ä»¶ã€‚
+	///	<code>åŸå‹ï¼šbool CheckSqlldrRet(const char*log_file ,string &amp;out_msg ) ;</code>
 	///	</summary>
-	///	<param name="log_file">ÎÄ¼şÃû×Ö·û´®Ö¸Õë</param>
-	///	<param name="out_msg">·µ»ØĞÅÏ¢<see cref="String"/></param>
-	///	<returns>·µ»ØsqlldrÖ´ĞĞ½á¹û£¬³É¹¦[true]£¬·´Ö®·µ»Ø¼Ù[false]</returns>
+	///	<param name="log_file">æ–‡ä»¶åå­—ç¬¦ä¸²æŒ‡é’ˆ</param>
+	///	<param name="out_msg">è¿”å›ä¿¡æ¯<see cref="String"/></param>
+	///	<returns>è¿”å›sqlldræ‰§è¡Œç»“æœï¼ŒæˆåŠŸ[true]ï¼Œåä¹‹è¿”å›å‡[false]</returns>
 	bool CheckSqlldrRet(const char*log_file ,string &out_msg ) ;
 	///	<summary>
-	///	Ö´ĞĞÏµÍ³µ÷ÓÃ¡£
-	///	<code>Ô­ĞÍ£ºbool System(string pCommand,string &amp;pOutMsg,int&amp; pRetValue);</code>
+	///	æ‰§è¡Œç³»ç»Ÿè°ƒç”¨ã€‚
+	///	<code>åŸå‹ï¼šbool System(string pCommand,string &amp;pOutMsg,int&amp; pRetValue);</code>
 	///	</summary>
-	///	<param name="pCommand">Ö´ĞĞÃüÁî×Ö·û´®,ÀàĞÍ<see cref="String"/></param>
-	///	<param name="pOutMsg">·µ»ØĞÅÏ¢,ÀàĞÍ<see cref="String"/></param>
-	///	<param name="pRetValue">ÃüÁîÖ´ĞĞ½á¹û·µ»ØÖµ,ÀàĞÍ<see cref="int"/></param>
-	///	<returns>ÊÇ·ñÖ´ĞĞ³É¹¦£¬³É¹¦[true]£¬·´Ö®·µ»Ø¼Ù[false]</returns>
+	///	<param name="pCommand">æ‰§è¡Œå‘½ä»¤å­—ç¬¦ä¸²,ç±»å‹<see cref="String"/></param>
+	///	<param name="pOutMsg">è¿”å›ä¿¡æ¯,ç±»å‹<see cref="String"/></param>
+	///	<param name="pRetValue">å‘½ä»¤æ‰§è¡Œç»“æœè¿”å›å€¼,ç±»å‹<see cref="int"/></param>
+	///	<returns>æ˜¯å¦æ‰§è¡ŒæˆåŠŸï¼ŒæˆåŠŸ[true]ï¼Œåä¹‹è¿”å›å‡[false]</returns>
 	bool System(string pCommand,string &pOutMsg,int& pRetValue);
 	///	<summary>
-	///	Ö´ĞĞÏµÍ³µ÷ÓÃ¡£
-	///	<code>Ô­ĞÍ£ºint System(string pCommand,String &amp;pOutMsg);</code>
+	///	æ‰§è¡Œç³»ç»Ÿè°ƒç”¨ã€‚
+	///	<code>åŸå‹ï¼šint System(string pCommand,String &amp;pOutMsg);</code>
 	///	</summary>
-	///	<param name="pCommand">Ö´ĞĞÃüÁî×Ö·û´®,ÀàĞÍ<see cref="String"/></param>
-	///	<param name="pOutMsg">·µ»ØĞÅÏ¢,ÀàĞÍ<see cref="String"/></param>
-	///	<returns>ÃüÁîÖ´ĞĞ½á¹û·µ»ØÖµ</returns>
+	///	<param name="pCommand">æ‰§è¡Œå‘½ä»¤å­—ç¬¦ä¸²,ç±»å‹<see cref="String"/></param>
+	///	<param name="pOutMsg">è¿”å›ä¿¡æ¯,ç±»å‹<see cref="String"/></param>
+	///	<returns>å‘½ä»¤æ‰§è¡Œç»“æœè¿”å›å€¼</returns>
 	int System(string pCommand,String &pOutMsg);
 
 #if OSTYPE>10
@@ -90,27 +90,27 @@ namespace Common
 #endif
 
 	///	<summary>
-	///	½âÂëÎÄ¼ş±àÂë£¬´Ó64Î»±àÂëÖĞ½âÂë³öÎÄ¼şºÅ£¬ÎÄ¼şÄÚÆ«ÒÆÎ»ÖÃ£¬Êı¾İ³¤¶È¡£
-	///	<code>Ô­ĞÍ£ºinline int decodePos(unsigned long long &amp;pos,int &amp;len)</code>
+	///	è§£ç æ–‡ä»¶ç¼–ç ï¼Œä»64ä½ç¼–ç ä¸­è§£ç å‡ºæ–‡ä»¶å·ï¼Œæ–‡ä»¶å†…åç§»ä½ç½®ï¼Œæ•°æ®é•¿åº¦ã€‚
+	///	<code>åŸå‹ï¼šinline int decodePos(unsigned long long &amp;pos,int &amp;len)</code>
 	///	</summary>
-	///	<param name="pos">Î»ÒÆ,ÀàĞÍ<see cref="unsigned long long"/></param>
-	///	<param name="len">³¤¶È,ÀàĞÍ<see cref="int"/></param>
-	///	<returns>ÎÄ¼şºÅ</returns>
+	///	<param name="pos">ä½ç§»,ç±»å‹<see cref="unsigned long long"/></param>
+	///	<param name="len">é•¿åº¦,ç±»å‹<see cref="int"/></param>
+	///	<returns>æ–‡ä»¶å·</returns>
 	inline int decodePos(unsigned long long &pos,int &len)
 	{
-		unsigned int fileNum=pos>>56;	//8Î»ÎÄ¼şºÅ
-		len=pos>>40 & 0xFFFF;			//16Î»´óĞ¡
-		pos=pos & 0xFFFFFFFFFFll;			//40ÄÚ²¿Î»ÖÃºÅ
+		unsigned int fileNum=pos>>56;	//8ä½æ–‡ä»¶å·
+		len=pos>>40 & 0xFFFF;			//16ä½å¤§å°
+		pos=pos & 0xFFFFFFFFFFll;			//40å†…éƒ¨ä½ç½®å·
 		return fileNum;
 	};
 	///	<summary>
-	///	½âÂëÎÄ¼ş±àÂë£¬´Ó64Î»±àÂëÖĞ½âÂë³öÎÄ¼şºÅ£¬ÎÄ¼şÄÚÆ«ÒÆÎ»ÖÃ£¬Êı¾İ³¤¶È¡£
-	///	<code>Ô­ĞÍ£ºinline unsigned long long encodePos(const int &amp;fileNum,const unsigned long long &amp;pos,const int &amp;len)</code>
+	///	è§£ç æ–‡ä»¶ç¼–ç ï¼Œä»64ä½ç¼–ç ä¸­è§£ç å‡ºæ–‡ä»¶å·ï¼Œæ–‡ä»¶å†…åç§»ä½ç½®ï¼Œæ•°æ®é•¿åº¦ã€‚
+	///	<code>åŸå‹ï¼šinline unsigned long long encodePos(const int &amp;fileNum,const unsigned long long &amp;pos,const int &amp;len)</code>
 	///	</summary>
-	///	<param name="fileNum">ÎÄ¼şºÅ,ÀàĞÍ<see cref="unsigned long long"/></param>
-	///	<param name="pos">Î»ÒÆ,ÀàĞÍ<see cref="unsigned long long"/></param>
-	///	<param name="len">³¤¶È,ÀàĞÍ<see cref="int"/></param>
-	///	<returns>±àÂë½á¹û</returns>
+	///	<param name="fileNum">æ–‡ä»¶å·,ç±»å‹<see cref="unsigned long long"/></param>
+	///	<param name="pos">ä½ç§»,ç±»å‹<see cref="unsigned long long"/></param>
+	///	<param name="len">é•¿åº¦,ç±»å‹<see cref="int"/></param>
+	///	<returns>ç¼–ç ç»“æœ</returns>
 	inline unsigned long long  encodePos(const int &fileNum,const unsigned long long &pos,const int &len)
 	{
 		unsigned long long res=((unsigned int)fileNum<<16) | ((unsigned int)len);
@@ -118,22 +118,22 @@ namespace Common
 	};
 
 	///	<summary>
-	///	»ñÈ¡hash±àÂë
-	///	<code>Ô­ĞÍ£ºinline static void getHashCode(const string &amp; s,unsigned long long &amp;hashCode);</code>
+	///	è·å–hashç¼–ç 
+	///	<code>åŸå‹ï¼šinline static void getHashCode(const string &amp; s,unsigned long long &amp;hashCode);</code>
 	///	</summary>
-	///	<param name="s">Êı¾İ×Ö·û´®,ÀàĞÍ<see cref="String"/></param>
-	///	<param name="hashCode">±àÂë½á¹ûÖµ,ÀàĞÍ<see cref="unsigned long long"/></param>
+	///	<param name="s">æ•°æ®å­—ç¬¦ä¸²,ç±»å‹<see cref="String"/></param>
+	///	<param name="hashCode">ç¼–ç ç»“æœå€¼,ç±»å‹<see cref="unsigned long long"/></param>
 	inline static void getHashCode(const string & s,unsigned long long &hashCode)
 	{
 		hashCode=hashMath::hashsp(s);
 		hashCode=((hashCode<<32) | hashMath::hashpjw(s));
 	}
 	///	<summary>
-	///	»ñÈ¡hash±àÂë
-	///	<code>Ô­ĞÍ£ºinline static unsigned long long getHashCode(const string &amp; s);</code>
+	///	è·å–hashç¼–ç 
+	///	<code>åŸå‹ï¼šinline static unsigned long long getHashCode(const string &amp; s);</code>
 	///	</summary>
-	///	<param name="s">Êı¾İ×Ö·û´®,ÀàĞÍ<see cref="String"/></param>
-	///	<returns>×Ö·û´®µÄhash±àÂëÖµ</returns>
+	///	<param name="s">æ•°æ®å­—ç¬¦ä¸²,ç±»å‹<see cref="String"/></param>
+	///	<returns>å­—ç¬¦ä¸²çš„hashç¼–ç å€¼</returns>
 	inline static unsigned long long getHashCode(const string & s)
 	{
 		unsigned long long hashCode;
@@ -141,22 +141,22 @@ namespace Common
 		return hashCode;
 	}
 	///	<summary>
-	///	»ñÈ¡hash±àÂë
-	///	<code>Ô­ĞÍ£ºinline static void getHashCode(const char *  s,unsigned long long &amp;hashCode);</code>
+	///	è·å–hashç¼–ç 
+	///	<code>åŸå‹ï¼šinline static void getHashCode(const char *  s,unsigned long long &amp;hashCode);</code>
 	///	</summary>
-	///	<param name="s">Êı¾İ×Ö·û´®,ÀàĞÍcharÖ¸Õë</param>
-	///	<param name="hashCode">±àÂë½á¹ûÖµ,ÀàĞÍ<see cref="unsigned long long"/></param>
+	///	<param name="s">æ•°æ®å­—ç¬¦ä¸²,ç±»å‹charæŒ‡é’ˆ</param>
+	///	<param name="hashCode">ç¼–ç ç»“æœå€¼,ç±»å‹<see cref="unsigned long long"/></param>
 	inline static void getHashCode(const char * s,unsigned long long &hashCode)
 	{
 		hashCode=hashMath::hashsp(s);
 		hashCode=((hashCode<<32) | hashMath::hashpjw(s));
 	}
 	///	<summary>
-	///	»ñÈ¡hash±àÂë
-	///	<code>Ô­ĞÍ£ºinline static unsigned long long getHashCode(const char * s);</code>
+	///	è·å–hashç¼–ç 
+	///	<code>åŸå‹ï¼šinline static unsigned long long getHashCode(const char * s);</code>
 	///	</summary>
-	///	<param name="s">Êı¾İ×Ö·û´®,ÀàĞÍcharÖ¸Õë</param>
-	///	<returns>×Ö·û´®µÄhash±àÂëÖµ</returns>
+	///	<param name="s">æ•°æ®å­—ç¬¦ä¸²,ç±»å‹charæŒ‡é’ˆ</param>
+	///	<returns>å­—ç¬¦ä¸²çš„hashç¼–ç å€¼</returns>
 	inline static unsigned long long getHashCode(const char * s)
 	{
 		unsigned long long hashCode;
@@ -165,11 +165,11 @@ namespace Common
 	}
 
 	///	<summary>
-	///	ÎÄ¼ş²âÊÔ£¬ÅĞ¶ÏÎÄ¼şÊÇ·ñ´æÔÚ
-	///	<code>Ô­ĞÍ£ºinline bool testFile(const string&amp; file);</code>
+	///	æ–‡ä»¶æµ‹è¯•ï¼Œåˆ¤æ–­æ–‡ä»¶æ˜¯å¦å­˜åœ¨
+	///	<code>åŸå‹ï¼šinline bool testFile(const string&amp; file);</code>
 	///	</summary>
-	///	<param name="file">ÎÄ¼şÃûÂ·¾¶</param>
-	///	<returns>ÊÇ·ñ´æÔÚ,ÀàĞÍ<see cref="bool"/>£¬´æÔÚ[true],·´Ö®[false]</returns>
+	///	<param name="file">æ–‡ä»¶åè·¯å¾„</param>
+	///	<returns>æ˜¯å¦å­˜åœ¨,ç±»å‹<see cref="bool"/>ï¼Œå­˜åœ¨[true],åä¹‹[false]</returns>
 	inline bool testFile(const string& file)
 	{
 		FILE *hFile=fopen(file.c_str(),"r") ;
@@ -185,18 +185,18 @@ namespace Common
 	}
 
 	///	<summary>
-	///	²éÑ¯¿ÉÖ´ĞĞÎÄ¼ş,pathÄ¿Â¼ÏÂµÄ
-	///	<code>Ô­ĞÍ£ºinline string getFilePath(const string&amp; fileName);</code>
+	///	æŸ¥è¯¢å¯æ‰§è¡Œæ–‡ä»¶,pathç›®å½•ä¸‹çš„
+	///	<code>åŸå‹ï¼šinline string getFilePath(const string&amp; fileName);</code>
 	///	</summary>
-	///	<param name="fileName">ÎÄ¼şÃû</param>
-	///	<returns>ÍêÕûµÄÎÄ¼şÃûÂ·¾¶</returns>
+	///	<param name="fileName">æ–‡ä»¶å</param>
+	///	<returns>å®Œæ•´çš„æ–‡ä»¶åè·¯å¾„</returns>
 	inline string getFilePath(const string& fileName)
 	{
 		FILE * hFile;
 		char szBuff[256];	
 		hFile=POPEN((SEARCH_CMD+fileName).c_str(),"r");
 		if(!hFile)
-			EXP("Ö´ĞĞÎÄ¼ş²éÕÒÃüÁîÊ§°Ü");
+			EXP("æ‰§è¡Œæ–‡ä»¶æŸ¥æ‰¾å‘½ä»¤å¤±è´¥");
 		string filePath="";
 		if(fgets(szBuff, sizeof(szBuff)-1, hFile))
 		{
@@ -209,11 +209,11 @@ namespace Common
 		return filePath;
 	}
 	///	<summary>
-	///	»ñÈ¡»·¾³±äÁ¿Öµ
-	///	<code>Ô­ĞÍ£ºinline string getEnv(const string &amp; name);</code>
+	///	è·å–ç¯å¢ƒå˜é‡å€¼
+	///	<code>åŸå‹ï¼šinline string getEnv(const string &amp; name);</code>
 	///	</summary>
-	///	<param name="name">±äÁ¿Ãû</param>
-	///	<returns>»·¾³±äÁ¿Öµ</returns>
+	///	<param name="name">å˜é‡å</param>
+	///	<returns>ç¯å¢ƒå˜é‡å€¼</returns>
 	inline string getEnv(const string & name)
 	{
 		char* val = getenv(name.c_str());
@@ -226,7 +226,7 @@ namespace Common
 		FILE * hostname;
 		char szBuff[100];	
 		hostname=POPEN("hostname","r");
-		if(!hostname)EXP("»ñÈ¡±¾»úÃû³ÆÊ§°Ü");
+		if(!hostname)EXP("è·å–æœ¬æœºåç§°å¤±è´¥");
 		if(fgets(szBuff, sizeof(szBuff)-1, hostname))
 		{
 			szBuff[strlen(szBuff)-1]=0;
@@ -272,7 +272,7 @@ namespace Common
 		return res;
 	};
 #if OSTYPE>10
-	//Í¨¹ıÍø¿¨Ãû³Æ»ñÈ¡IP
+	//é€šè¿‡ç½‘å¡åç§°è·å–IP
 	inline String getIPbyNetCard(String name)
 	{
 		char *local_ip;

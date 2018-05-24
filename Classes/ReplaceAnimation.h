@@ -6,7 +6,7 @@ public:
     CREATE_FUNC(ReplaceAnimation);
 
     static cocos2d::Scene* createScene()
-    {
+    { 
         auto scene = cocos2d::Scene::create();
         auto layer = ReplaceAnimation::create();
 

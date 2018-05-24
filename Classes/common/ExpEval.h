@@ -117,7 +117,7 @@ namespace Common
 		const char * temp=zCmd;
 		int subLp=0;
 		//bool next=true;
-		//cout<<"µ±Ç°£º"<<temp<<endl;
+		//cout<<"ÂµÂ±Ã‡Â°Â£Âº"<<temp<<endl;
 		while(*temp)
 		{
 			if(*temp=='(')

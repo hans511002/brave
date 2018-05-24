@@ -9,7 +9,7 @@ namespace engine
             return;
         }// end function
 
-        bool Tower4::init()
+        bool Tower4::init() 
         {
             towerType = 4;
             correctYGrPos = -15;

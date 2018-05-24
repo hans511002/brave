@@ -11,7 +11,7 @@ namespace engine
 		}// end function
 
 		bool Unit_12::init()
-		{
+		{ 
 			typeUnit = 12;
 			container = new Unit_mc(this, "unit12", typeUnit); //new Unit12_mc(); 
 			container->setScale(0.82);

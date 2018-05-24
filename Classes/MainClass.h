@@ -22,7 +22,7 @@ public:
 	void * tempObject;
 	Node * container;
 	SaveBox * saveBoxClass;
-	//¼ÓÔØÅäÖÃÊı¾İ 
+	//åŠ è½½é…ç½®æ•°æ® 
 	ReadXML readXMLClass;
 	//public var startLogoClass:StartLogo;
 	//public var startMenuClass:StartMenu;

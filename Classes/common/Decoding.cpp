@@ -17,8 +17,8 @@
 
 namespace Common
 {
-	//¾ØÕó½âÃÜ
-	//ÏÈÒÆÎ»£¬ÔÙ»¹Ô­Î»ÖÃ
+	//çŸ©é˜µè§£å¯†
+	//å…ˆç§»ä½ï¼Œå†è¿˜åŸä½ç½®
 	void Decoding::matrixDecode(const char * src,char * dest,const char * password)
 	{
 		int srcLen=strlen(src);
@@ -35,7 +35,7 @@ namespace Common
 		delete [] asize;
 		delete [] p;
 	}
-	//¾µÏñ½âÃÜ(²¹·´)
+	//é•œåƒè§£å¯†(è¡¥å)
 	void Decoding::MSLDecode(const char * src,char * dest)
 	{
 		unsigned char * tp=(unsigned char *)src;
@@ -50,7 +50,7 @@ namespace Common
 			c=*tp;
 		}
 	}
-	//µ¹ÖÃ½âÃÜ
+	//å€’ç½®è§£å¯†
 	void Decoding::anasDecode(const char * src,char * dest)
 	{
 		int srcLen=strlen(src);
@@ -61,7 +61,7 @@ namespace Common
 			dest++;tp--;
 		}
 	}
-	//ÒÆÎ»½âÃÜ(°´×Ö½ÚÑ­»··´ÏòÒÆÎ»)
+	//ç§»ä½è§£å¯†(æŒ‰å­—èŠ‚å¾ªç¯åå‘ç§»ä½)
 	void Decoding::shiftDecode(const char * src,char * dest,int size)
 	{
 		size=size%8;
@@ -77,7 +77,7 @@ namespace Common
 			dest++;tp++;
 		}
 	}
-	//¶àÒÆÎ»¼ÓÃÜ
+	//å¤šç§»ä½åŠ å¯†
 	void Decoding::shiftDecode(const char * src,char * dest,int * asize,int len)
 	{
 		unsigned char * tp=(unsigned char *)src;

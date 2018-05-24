@@ -13,7 +13,7 @@ namespace engine
         }// end function
 
         bool Unit_22::init()
-        {
+        { 
             typeUnit = 22;
             this->blockTowerRadius = Main::mainClass->readXMLClass.listOfEnemiesXML[(typeUnit - 1)][30];
             container = new Unit_mc(this,"unit22", typeUnit); //new Unit22_mc(); 

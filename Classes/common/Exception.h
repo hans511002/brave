@@ -24,13 +24,13 @@ namespace Common
 	private:
 		CWinUtil();
 	public:
-		//	Æô¶¯¼ì²éÄÚ´æĞ¹Â¶µÄ¹¦ÄÜ¡£
+		//	å¯åŠ¨æ£€æŸ¥å†…å­˜æ³„éœ²çš„åŠŸèƒ½ã€‚
 		static void vCheckMemoryLeak();
-		//	°ÑWINDOWSÖĞµÄ½á¹¹»¯Òì³£×ª»¯ÎªC++Òì³£¡£
+		//	æŠŠWINDOWSä¸­çš„ç»“æ„åŒ–å¼‚å¸¸è½¬åŒ–ä¸ºC++å¼‚å¸¸ã€‚
 		static void vMapSEHtoCE();
-		//	Ê¹newº¯ÊıÊ§°ÜÊ±Å×³öÒì³£¡£
+		//	ä½¿newå‡½æ•°å¤±è´¥æ—¶æŠ›å‡ºå¼‚å¸¸ã€‚
 		static void vSetThrowNewException();
-		//	ÈÃ¸¡µãÊı´íÎóÅ×³öÒì³£
+		//	è®©æµ®ç‚¹æ•°é”™è¯¯æŠ›å‡ºå¼‚å¸¸
 		static void vSetThrowFloatException();
 		static void vSetUnExpectedExceptionFilter();
 		static int NewHandler( size_t size );
@@ -41,10 +41,10 @@ namespace Common
 	};
 #endif
 	///	<summary>
-	///	Òì³£ĞÅÏ¢Àà
+	///	å¼‚å¸¸ä¿¡æ¯ç±»
 	///	</summary>
 	///	<remarks>
-	///	ÓÃÓÚ³ÌĞòÖ´ĞĞÖĞÒì³£ĞÅÏ¢µÄ²¶»ñÓë´«µİ
+	///	ç”¨äºç¨‹åºæ‰§è¡Œä¸­å¼‚å¸¸ä¿¡æ¯çš„æ•è·ä¸ä¼ é€’
 	///	</remarks>
     /// <example><code>
     /// </code></example>
@@ -62,22 +62,22 @@ namespace Common
 #endif
 		const char* what(){ return Message.c_str();	}
 		///	<summary>
-		///	´æ´¢Òì³£ÃèÊöĞÅÏ¢
+		///	å­˜å‚¨å¼‚å¸¸æè¿°ä¿¡æ¯
 		///	</summary>
 		string Message;
 		Exception(){};
 		///	<summary>
-		///	½âÎö¶ÔÏó¹¹Ôìº¯Êı£¬ÓÃÓÚÖ¸¶¨²ÎÊı¼°²ÎÊı¼ìÑéÌõ¼ş³õÊ¼»¯½âÎö¶ÔÏó
-		///	<code>Ô­ĞÍ£ºException(string s);</code>
+		///	è§£æå¯¹è±¡æ„é€ å‡½æ•°ï¼Œç”¨äºæŒ‡å®šå‚æ•°åŠå‚æ•°æ£€éªŒæ¡ä»¶åˆå§‹åŒ–è§£æå¯¹è±¡
+		///	<code>åŸå‹ï¼šException(string s);</code>
 		///	</summary>
-		///	<param name="s">Òì³£ÃèÊöĞÅÏ¢</param>
+		///	<param name="s">å¼‚å¸¸æè¿°ä¿¡æ¯</param>
 		inline Exception(string s)
 		{
 			this->Message = s;
 		};
 		///	<summary>
-		///	»ñÈ¡Òì³£ĞÅÏ¢Êı¾İÖ¸Õë
-		///	<code>Ô­ĞÍ£ºconst char  * GetMessage();</code>
+		///	è·å–å¼‚å¸¸ä¿¡æ¯æ•°æ®æŒ‡é’ˆ
+		///	<code>åŸå‹ï¼šconst char  * GetMessage();</code>
 		///	</summary>
 		const char  * GetMessage()
 		{

@@ -41,7 +41,7 @@ namespace engine
     
     class World : public BaseNode //, public  BaseLayer
     {
-        
+         
     public:
         int i;
         int j;
@@ -100,7 +100,7 @@ namespace engine
         //public var listOfIndexes3 : Array;
         casts::Cast* cast;
         casts::Map map; //public var map : Map;
-        BaseNode * menuObject;//public var menuObject : Object;//‘›∂® ∫Õ —ßœ∞
+        BaseNode * menuObject;//public var menuObject : Object;//’ùÔøΩÔøΩ ÔøΩÀ†—ßœ∞
         //public var sortIndex : Array;
 
         PointTimer * pointer1;

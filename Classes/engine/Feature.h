@@ -10,7 +10,6 @@ namespace engine
 { 
 	class World;
 	
-	 
 	struct Hint_mc : public MovieClip
     {
         ui::Text * nameTXT;

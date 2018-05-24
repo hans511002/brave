@@ -5,7 +5,7 @@
 #include "MainClass.h"
 #include "World.h"
 #include "JsonUtil.h"
-
+ 
 namespace engine
 {
     struct MoneyAdd_mc:public MovieClip

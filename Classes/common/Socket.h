@@ -16,7 +16,7 @@
 //#include "Common.h"
 namespace Common
 {
-	//×¢Òâ£ºÔÚUnixÏµÍ³ÏÂ£¬Èç¹ûrecv sendº¯ÊıÔÚµÈ´ıĞ­Òé½ÓÊÕÊı¾İÊ±ÍøÂç¶Ï¿ªÁË£¬ÄÇÃ´µ÷ÓÃrecvµÄ½ø³Ì»á½ÓÊÕµ½Ò»¸öSIGPIPEĞÅºÅ£¬½ø³Ì¶Ô¸ÃĞÅºÅµÄÄ¬ÈÏ´¦ÀíÊÇ½ø³ÌÖÕÖ¹¡£
+	//æ³¨æ„ï¼šåœ¨Unixç³»ç»Ÿä¸‹ï¼Œå¦‚æœrecv sendå‡½æ•°åœ¨ç­‰å¾…åè®®æ¥æ”¶æ•°æ®æ—¶ç½‘ç»œæ–­å¼€äº†ï¼Œé‚£ä¹ˆè°ƒç”¨recvçš„è¿›ç¨‹ä¼šæ¥æ”¶åˆ°ä¸€ä¸ªSIGPIPEä¿¡å·ï¼Œè¿›ç¨‹å¯¹è¯¥ä¿¡å·çš„é»˜è®¤å¤„ç†æ˜¯è¿›ç¨‹ç»ˆæ­¢ã€‚
 #if OSTYPE>10 
 #define SOCKET unsigned int
 //#define SOCKET_LEN_T
@@ -25,7 +25,7 @@ namespace Common
 #define socklen_t int
 #define CLOSE_SOCKET(sock) closesocket(sock)
 #endif
-#define SOCKET_CHECK if(m_socket==0)EXP("Ì×½Ó×ÖÎª0,Á¬½ÓÒì³£¡£")
+#define SOCKET_CHECK if(m_socket==0)EXP("å¥—æ¥å­—ä¸º0,è¿æ¥å¼‚å¸¸ã€‚")
 	NET_NAMESPACE_BEGIN
 	class Socket
 	{
@@ -33,7 +33,7 @@ namespace Common
 		static bool socketLibInited;
 	public:
 		static const int DefaultCloseTimeout = -1;
-		static bool Startup(int up=2,int low=1) //Ä¬ÈÏÊ¹ÓÃ2.1°æ±¾
+		static bool Startup(int up=2,int low=1) //é»˜è®¤ä½¿ç”¨2.1ç‰ˆæœ¬
 		{
 #if OSTYPE<=10
 			WORD wVersionRequested;
@@ -45,7 +45,7 @@ namespace Common
 			{
 				// Tell the user that we couldn't find a useable                                     
 				// winsock.dll.                                                                      
-				perror("Î´ÕÒµ½¿ÉÓÃµÄwinsock.dll");
+				perror("æœªæ‰¾åˆ°å¯ç”¨çš„winsock.dll");
 				return false;
 			}
 #endif
@@ -59,26 +59,26 @@ namespace Common
 		}
 		bool isListening;
 		SOCKET m_socket;			//	socket ID
-		ProtocolFamily m_af;		//	µØÖ·¼Ò×åÀàĞÍ
-		SocketType m_socketType;	//	socketÀàĞÍ
-		ProtocolType m_pcType;		//	¿ØÖÆĞ­ÒéÀàĞÍ
+		ProtocolFamily m_af;		//	åœ°å€å®¶æ—ç±»å‹
+		SocketType m_socketType;	//	socketç±»å‹
+		ProtocolType m_pcType;		//	æ§åˆ¶åè®®ç±»å‹
 
-		int m_SendTimeout;			//	·¢ËÍ³¬Ê±Ê±¼ä	            ÒÔÎ¢ÃëÎªµ¥Î»  timeval         long    tv_sec;Ãë  long    tv_usec;  and microseconds Î¢Ãë
-		int m_SendBufferSize;		//	·¢ËÍ»º³åÇø´óĞ¡
+		int m_SendTimeout;			//	å‘é€è¶…æ—¶æ—¶é—´	            ä»¥å¾®ç§’ä¸ºå•ä½  timeval         long    tv_sec;ç§’  long    tv_usec;  and microseconds å¾®ç§’
+		int m_SendBufferSize;		//	å‘é€ç¼“å†²åŒºå¤§å°
 
-		int m_ReceiveBufferSize;	//	½ÓÊÕÊı¾İ»º³åÇø´óĞ¡
-		int m_ReceiveTimeout;		//	½ÓÊÕ³¬Ê±Ê±¼ä                ÒÔÎ¢ÃëÎªµ¥Î»
+		int m_ReceiveBufferSize;	//	æ¥æ”¶æ•°æ®ç¼“å†²åŒºå¤§å°
+		int m_ReceiveTimeout;		//	æ¥æ”¶è¶…æ—¶æ—¶é—´                ä»¥å¾®ç§’ä¸ºå•ä½
 
-		int m_CloseTimeout;			//	¹Ø±ÕÑÓÊ±Ê±¼ä                ÒÔÃëÎªµ¥Î»
+		int m_CloseTimeout;			//	å…³é—­å»¶æ—¶æ—¶é—´                ä»¥ç§’ä¸ºå•ä½
 
-		bool m_IsConnected;			//	ÊÇ·ñÒÑ¾­Á¬½ÓÉÏ
-		bool m_IsDisconnected;		//	ÊÇ·ñ¿ÉÓÃ
-		IPAddress m_RemoteEndPoint;	//	Ô¶³ÌIPµØÖ·½Úµã
-		IPAddress m_RightEndPoint;	//	±¾µØIPµØÖ·½Úµã
-		bool useOverlappedIO;		//	ÊÇ·ñÊ¹ÓÃIOÖØµş
+		bool m_IsConnected;			//	æ˜¯å¦å·²ç»è¿æ¥ä¸Š
+		bool m_IsDisconnected;		//	æ˜¯å¦å¯ç”¨
+		IPAddress m_RemoteEndPoint;	//	è¿œç¨‹IPåœ°å€èŠ‚ç‚¹
+		IPAddress m_RightEndPoint;	//	æœ¬åœ°IPåœ°å€èŠ‚ç‚¹
+		bool useOverlappedIO;		//	æ˜¯å¦ä½¿ç”¨IOé‡å 
 		static bool UseOverlappedIO;
-		bool m_WillBlock;				//	ÊÇ·ñ×èÈû
-		bool m_CleanedUp;				//	ÊÇ·ñÒÑ¾­ÇåÀí
+		bool m_WillBlock;				//	æ˜¯å¦é˜»å¡
+		bool m_CleanedUp;				//	æ˜¯å¦å·²ç»æ¸…ç†
 		static void MicrosecondsToTimeValue(long long microSeconds, timeval & socketTime);
 		static timeval GetMicrosecondsToTimeValue(long long microSeconds);
 		Socket(){_init(true);};
@@ -123,52 +123,52 @@ namespace Common
 		inline static String getErrMsg(){return strerror(errno);};
 		inline static String getErrMsg(int errCode){return strerror(errCode);};
 		inline int getErrCode(){return errno;};
-		//     ½¨Á¢ÓëÔ¶³ÌÖ÷»úµÄÁ¬½Ó¡£
+		//     å»ºç«‹ä¸è¿œç¨‹ä¸»æœºçš„è¿æ¥ã€‚
 		void Connect(IPAddress remoteEP);
- 		//     ½¨Á¢ÓëÔ¶³ÌÖ÷»úµÄÁ¬½Ó¡£Ö÷»úÓÉ IP µØÖ·µÄÊı×é¡£
+ 		//     å»ºç«‹ä¸è¿œç¨‹ä¸»æœºçš„è¿æ¥ã€‚ä¸»æœºç”± IP åœ°å€çš„æ•°ç»„ã€‚
 		void Connect(Array<IPAddress> & addresses,int port =-1);
-		//     ½¨Á¢ÓëÔ¶³ÌÖ÷»úµÄÁ¬½Ó¡£Ö÷»úÓÉÖ÷»úÃûºÍ¶Ë¿ÚºÅÖ¸¶¨¡£
+		//     å»ºç«‹ä¸è¿œç¨‹ä¸»æœºçš„è¿æ¥ã€‚ä¸»æœºç”±ä¸»æœºåå’Œç«¯å£å·æŒ‡å®šã€‚
 		void Connect(String host, int port);
-		//¹Ø±Õsocket 
+		//å…³é—­socket 
 		void Close();
 		void Bind();
 		void Bind(IPAddress address);
-		//¼àÌıÊ±
+		//ç›‘å¬æ—¶
 		void Listen(int backlog=1);
-		//½ÓÊÜÁ¬½Ó
+		//æ¥å—è¿æ¥
 		Socket Accept();
 		//
-		// ÕªÒª:
-		//     È·¶¨Ò»¸ö»ò¶à¸öÌ×½Ó×ÖµÄ×´Ì¬¡£
+		// æ‘˜è¦:
+		//     ç¡®å®šä¸€ä¸ªæˆ–å¤šä¸ªå¥—æ¥å­—çš„çŠ¶æ€ã€‚
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   microSeconds:
-		//     ³¬Ê±Öµ£¨ÒÔºÁÃëÎªµ¥Î»£©¡£A -1 ÖµÖ¸Ê¾³¬Ê±ÖµÎªÎŞÏŞ´ó¡£
+		//     è¶…æ—¶å€¼ï¼ˆä»¥æ¯«ç§’ä¸ºå•ä½ï¼‰ã€‚A -1 å€¼æŒ‡ç¤ºè¶…æ—¶å€¼ä¸ºæ— é™å¤§ã€‚
 		//
 		//   checkRead:
-		//     Òª¼ì²é¿É¶ÁĞÔµÄ System.Net.Sockets.Socket ÊµÀıµÄ System.Collections.IList¡£
+		//     è¦æ£€æŸ¥å¯è¯»æ€§çš„ System.Net.Sockets.Socket å®ä¾‹çš„ System.Collections.IListã€‚
 		//
 		//   checkError:
-		//     Òª¼ì²é´íÎóµÄ System.Net.Sockets.Socket ÊµÀıµÄ System.Collections.IList¡£
+		//     è¦æ£€æŸ¥é”™è¯¯çš„ System.Net.Sockets.Socket å®ä¾‹çš„ System.Collections.IListã€‚
 		//
 		//   checkWrite:
-		//     Ò»¸ö System.Net.Sockets.Socket ÊµÀıµÄ System.Collections.IList£¬ÓÃÓÚ¼ì²é¿ÉĞ´ĞÔ¡£
+		//     ä¸€ä¸ª System.Net.Sockets.Socket å®ä¾‹çš„ System.Collections.IListï¼Œç”¨äºæ£€æŸ¥å¯å†™æ€§ã€‚
 		static int Select(Array<Socket> * checkRead, Array<Socket> * checkWrite, Array<Socket> * checkError, long long microSeconds);
 		static int Select(Array<Socket> & checkList, SelectMode mode,long long microSeconds);
-		//¶ÔÓ¦selectº¯Êı microSeconds ºÁÃë  mode ²éÑ¯Ä£Ê½
+		//å¯¹åº”selectå‡½æ•° microSeconds æ¯«ç§’  mode æŸ¥è¯¢æ¨¡å¼
 		bool Poll(SelectMode mode,long long microSeconds);
-		//   preBuffer:°üº¬·¢ËÍÎÄ¼şÇ°Òª·¢ËÍµÄÊı¾İ¡£´Ë²ÎÊı¿ÉÒÔÎªnull¡£
-		//   postBuffer: °üº¬·¢ËÍÎÄ¼şºóÒª·¢ËÍµÄÊı¾İ¡£´Ë²ÎÊı¿ÉÒÔÎªnull¡£
-		//   fileName: Ëü°üº¬Òª·¢ËÍµÄÎÄ¼şµÄÂ·¾¶ºÍÃû³Æ¡£´Ë²ÎÊı¿ÉÒÔÎªnull¡£
+		//   preBuffer:åŒ…å«å‘é€æ–‡ä»¶å‰è¦å‘é€çš„æ•°æ®ã€‚æ­¤å‚æ•°å¯ä»¥ä¸ºnullã€‚
+		//   postBuffer: åŒ…å«å‘é€æ–‡ä»¶åè¦å‘é€çš„æ•°æ®ã€‚æ­¤å‚æ•°å¯ä»¥ä¸ºnullã€‚
+		//   fileName: å®ƒåŒ…å«è¦å‘é€çš„æ–‡ä»¶çš„è·¯å¾„å’Œåç§°ã€‚æ­¤å‚æ•°å¯ä»¥ä¸ºnullã€‚
 		void SendFile(string fileName, char * preBuffer, char * postBuffer);
-		//	ÒÑ·¢ËÍµÄ×Ö½ÚÊı¡£
+		//	å·²å‘é€çš„å­—èŠ‚æ•°ã€‚
 		inline int SendTo(const char * buffer, IPAddress &remoteEP,SocketFlags socketFlags=0,int * errorCode=NULL)
 		{
 			return SendTo((void *)buffer, strlen(buffer)+1,remoteEP,socketFlags.value,errorCode);
 		};
-		//	Ò»¸ö System.String£¬Ëü°üº¬Òª·¢ËÍµÄÎÄ¼şµÄÂ·¾¶ºÍÃû³Æ¡£
+		//	ä¸€ä¸ª System.Stringï¼Œå®ƒåŒ…å«è¦å‘é€çš„æ–‡ä»¶çš„è·¯å¾„å’Œåç§°ã€‚
 		void SendFile(string fileName);
-		//	¹Ø±ÕÌ×½Ó×Ö ÉÏµÄ·¢ËÍºÍ½ÓÊÕ¡£
+		//	å…³é—­å¥—æ¥å­— ä¸Šçš„å‘é€å’Œæ¥æ”¶ã€‚
 		void Shutdown(SocketShutdown how=2);
  		int getSocketErrorCode();
 		int GetReuseAddress();
@@ -190,11 +190,11 @@ namespace Common
 		IPAddress &RemoteEndPoint()	;
 		inline ProtocolFamily getAddressFamily(){return m_af;};
 		inline bool Connected(){return this->m_IsConnected;};
-		//ÉèÖÃsocketÅäÖÃ¶¨ÒåÑ¡Ïî
+		//è®¾ç½®socketé…ç½®å®šä¹‰é€‰é¡¹
 		bool SetSocketOption(SocketOptionLevel optionLevel, SocketOptionName optionName, linger optionValue)
 		{
 			return (setsockopt(m_socket,optionLevel.value,optionName.value,SETSOCKOPT_OPTVAL_TYPE &optionValue,sizeof(optionValue))!=-1);
-			 //setsockopt(m_socket,SOL_SOCKET,SO_REUSEADDR,SETSOCKOPT_OPTVAL_TYPE &on,sizeof(on))== -1	//	×Ô¶¯°ó¶¨µØÖ·
+			 //setsockopt(m_socket,SOL_SOCKET,SO_REUSEADDR,SETSOCKOPT_OPTVAL_TYPE &on,sizeof(on))== -1	//	è‡ªåŠ¨ç»‘å®šåœ°å€
 			 // || setsockopt(m_socket,SOL_SOCKET,SO_LINGER,SETSOCKOPT_OPTVAL_TYPE &lng,sizeof(lng)) == -1)  
 		};
 		bool SetSocketOption(SocketOptionLevel optionLevel, SocketOptionName optionName, int optionValue)
@@ -206,7 +206,7 @@ namespace Common
 			}
 			return (setsockopt(m_socket,optionLevel.value,optionName.value,SETSOCKOPT_OPTVAL_TYPE &optionValue,sizeof(optionValue))!=-1);
 		};
-		//ÉèÖÃsocketÅäÖÃ¶¨ÒåÑ¡Ïî
+		//è®¾ç½®socketé…ç½®å®šä¹‰é€‰é¡¹
 		bool SetSocketOption(SocketOptionLevel optionLevel, SocketOptionName optionName, ip_mreq optionValue)
 		{
 			return (setsockopt(m_socket,optionLevel.value,optionName.value,SETSOCKOPT_OPTVAL_TYPE &optionValue,sizeof(optionValue))!=-1);
@@ -215,19 +215,19 @@ namespace Common
 		{
 			if (this->m_CleanedUp)
 			{
-				EXP("ÒÑ¾­ÇåÀísocket");
+				EXP("å·²ç»æ¸…ç†socket");
 			}
 			if ((optionLevel == SocketOptionLevel::Socket) && (optionName == SocketOptionName::Linger))
 			{
-				EXP("socketÊôĞÔÀàĞÍ²»¶Ô");
+				EXP("socketå±æ€§ç±»å‹ä¸å¯¹");
 			}
 			if ((optionLevel == SocketOptionLevel::IP) && ((optionName == SocketOptionName::AddMembership) || (optionName == SocketOptionName::DropMembership)))
 			{
-				EXP("socketÊôĞÔÀàĞÍ²»¶Ô");
+				EXP("socketå±æ€§ç±»å‹ä¸å¯¹");
 			}
 			if ((optionLevel == SocketOptionLevel::IPv6) && ((optionName == SocketOptionName::AddMembership) || (optionName == SocketOptionName::DropMembership)))
 			{
-				EXP("socketÊôĞÔÀàĞÍ²»¶Ô");
+				EXP("socketå±æ€§ç±»å‹ä¸å¯¹");
 			}
 			if(optionLevel==SocketOptionLevel::Socket &&( optionName==SocketOptionName::ReceiveTimeout || optionName==SocketOptionName::SendTimeout))
 			{
@@ -236,7 +236,7 @@ namespace Common
 				{
 					return tv.tv_sec * 1000000 + tv.tv_usec;
 				};
-				EXP("GetSocketOption ·¢Éú´íÎó");
+				EXP("GetSocketOption å‘ç”Ÿé”™è¯¯");
 			}
 			int optionValue = 0;
 			socklen_t optionLength = 4;
@@ -244,20 +244,20 @@ namespace Common
 			{
 				return optionValue;
 			}
-			EXP("GetSocketOption ·¢Éú´íÎó");
+			EXP("GetSocketOption å‘ç”Ÿé”™è¯¯");
 		};
 
 		linger GetLingerOpt()
 		{
 			if (this->m_CleanedUp)
 			{
-				EXP("ÒÑ¾­ÇåÀísocket");
+				EXP("å·²ç»æ¸…ç†socket");
 			}
 			linger  optionValue ={0,0};
 			socklen_t		optionLength = 4;
 			if (getsockopt(this->m_socket, SocketOptionLevel::Socket, SocketOptionName::Linger, (char *)  &optionValue, &optionLength) == -1)
 			{
-				EXP("getLingerOpt ·¢Éú´íÎó");
+				EXP("getLingerOpt å‘ç”Ÿé”™è¯¯");
 			}
 			return optionValue;
 		}
@@ -265,29 +265,29 @@ namespace Common
 		{
 			if (this->m_CleanedUp)
 			{
-				EXP("ÒÑ¾­ÇåÀísocket");
+				EXP("å·²ç»æ¸…ç†socket");
 			}
 			ip_mreq   optionValue;
 			memset(&optionValue,0,sizeof(ip_mreq));
 			socklen_t size = sizeof(ip_mreq);
 			if (getsockopt(this->m_socket, SocketOptionLevel::IP, optionName.value,(char *)  &optionValue, &size) == -1)
 			{
-				EXP("getMulticastOpt ·¢Éú´íÎó");
+				EXP("getMulticastOpt å‘ç”Ÿé”™è¯¯");
 			}
 			return optionValue;
 		}
 
-		//     ½ÓÊÕµ½µÄ×Ö½ÚÊı¡£
+		//     æ¥æ”¶åˆ°çš„å­—èŠ‚æ•°ã€‚
 		inline int Receive(char * buffer, int size,SocketFlags socketFlags=0,int * errorCode=NULL)
 		{
 //#if OSTYPE>10 
-//			return read(m_socket,buffer,size);		//	unix¿ÉÒÔÊ¹ÓÃread¶ÁÈ¡
+//			return read(m_socket,buffer,size);		//	unixå¯ä»¥ä½¿ç”¨readè¯»å–
 //#endif 
 			int res=recv(m_socket,buffer,size,socketFlags.value);
 			if(res==-1 && errorCode!=NULL)*errorCode=errno;
 			return res;
 		};
-		//     ½ÓÊÕµ½µÄ×Ö½ÚÊı¡£
+		//     æ¥æ”¶åˆ°çš„å­—èŠ‚æ•°ã€‚
 		inline int ReceiveFrom(char * buf, int len,IPAddress &remoteEP, SocketFlags socketFlags=0,int * errorCode=NULL)
 		{
 			socklen_t fromlen=sizeof(remoteEP.sadin);
@@ -295,7 +295,7 @@ namespace Common
 			if(res==-1 && errorCode!=NULL)*errorCode=errno;
 			return res;
 		};
-		//     ÒÑ·¢ËÍµ½ System.Net.Sockets.Socket µÄ×Ö½ÚÊı¡£
+		//     å·²å‘é€åˆ° System.Net.Sockets.Socket çš„å­—èŠ‚æ•°ã€‚
 		inline int Send(void * buffer, int size,SocketFlags socketFlags=0,int * errorCode=NULL)
 		{
 			if(errorCode)*errorCode=0;
@@ -304,7 +304,7 @@ namespace Common
 			if(res==-1 && errorCode!=NULL)*errorCode=errno;
 			return res;
 		};
-		//	ÒÑ·¢ËÍµÄ×Ö½ÚÊı¡£
+		//	å·²å‘é€çš„å­—èŠ‚æ•°ã€‚
 		inline int SendTo(void * buffer, int size, IPAddress &remoteEP,SocketFlags socketFlags=0,int * errorCode=NULL)
 		{
 			if(errorCode)*errorCode=0;

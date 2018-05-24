@@ -17,7 +17,7 @@
 namespace Common
 {
 NET_NAMESPACE_BEGIN
-//ÍøÂçÍ¨ĞÅÀà³£Á¿¶¨Òå//
+//ç½‘ç»œé€šä¿¡ç±»å¸¸é‡å®šä¹‰//
 	const int SocketType::Stream = 1;         // stream socket                                     
 	const int SocketType::Dgram = 2;		    // datagram socket                                     
 	const int SocketType::Raw = 3;		    // raw-protocol interface                                     
@@ -35,223 +35,223 @@ NET_NAMESPACE_BEGIN
 	const int SocketAsyncOperation::Send = 7;
 	const int SocketAsyncOperation::SendPackets = 8;
 	const int SocketAsyncOperation::SendTo = 9;
-	//Ö¸¶¨Ì×½Ó×ÖµÄ·¢ËÍºÍ½ÓÊÕĞĞÎª¡£
-	const int SocketFlags::None = 0;//     ²»¶Ô´Ëµ÷ÓÃÊ¹ÓÃ±êÖ¾¡£
-	const int SocketFlags::OutOfBand = 1;		//     ´¦Àí´øÍâÊı¾İ¡£//#define MSG_OOB         0x1             // process out-of-band data                                     
-	const int SocketFlags::Peek = 2;			//     ²é¿´´«ÈëµÄÏûÏ¢¡£//#define MSG_PEEK        0x2             // peek at incoming message                                     
-	const int SocketFlags::DontRoute = 4;		//     ²»Ê¹ÓÃÂ·ÓÉ±í·¢ËÍ¡£//#define MSG_DONTROUTE   0x4             // send without using routing tables                                     
-	const int SocketFlags::MaxIOVectorLength = 0x10;		//     Îª·¢ËÍºÍ½ÓÊÕÊı¾İµÄ WSABUF ½á¹¹ÊıÁ¿Ìá¹©±ê×¼Öµ¡£//#define MSG_MAXIOVLEN   16
-	const int SocketFlags::Truncated = 0x100;//     ¸ÃÏûÏ¢Ì«´ó£¬ÎŞ·¨·ÅÈëÖ¸¶¨µÄ»º³åÇø£¬Òò¶ø±»½Ø¶Ï¡£
-	const int SocketFlags::ControlDataTruncated = 0x200;//     Ö¸Ê¾¿Ø¼şÊı¾İ²»ÊÊºÏÄÚ²¿ 64-KB »º³åÇø£¬²¢ÇÒÒÑ±»½Ø¶Ï¡£
-	const int SocketFlags::Broadcast = 0x400;//     Ö¸Ê¾¹ã²¥Êı¾İ°ü¡£
+	//æŒ‡å®šå¥—æ¥å­—çš„å‘é€å’Œæ¥æ”¶è¡Œä¸ºã€‚
+	const int SocketFlags::None = 0;//     ä¸å¯¹æ­¤è°ƒç”¨ä½¿ç”¨æ ‡å¿—ã€‚
+	const int SocketFlags::OutOfBand = 1;		//     å¤„ç†å¸¦å¤–æ•°æ®ã€‚//#define MSG_OOB         0x1             // process out-of-band data                                     
+	const int SocketFlags::Peek = 2;			//     æŸ¥çœ‹ä¼ å…¥çš„æ¶ˆæ¯ã€‚//#define MSG_PEEK        0x2             // peek at incoming message                                     
+	const int SocketFlags::DontRoute = 4;		//     ä¸ä½¿ç”¨è·¯ç”±è¡¨å‘é€ã€‚//#define MSG_DONTROUTE   0x4             // send without using routing tables                                     
+	const int SocketFlags::MaxIOVectorLength = 0x10;		//     ä¸ºå‘é€å’Œæ¥æ”¶æ•°æ®çš„ WSABUF ç»“æ„æ•°é‡æä¾›æ ‡å‡†å€¼ã€‚//#define MSG_MAXIOVLEN   16
+	const int SocketFlags::Truncated = 0x100;//     è¯¥æ¶ˆæ¯å¤ªå¤§ï¼Œæ— æ³•æ”¾å…¥æŒ‡å®šçš„ç¼“å†²åŒºï¼Œå› è€Œè¢«æˆªæ–­ã€‚
+	const int SocketFlags::ControlDataTruncated = 0x200;//     æŒ‡ç¤ºæ§ä»¶æ•°æ®ä¸é€‚åˆå†…éƒ¨ 64-KB ç¼“å†²åŒºï¼Œå¹¶ä¸”å·²è¢«æˆªæ–­ã€‚
+	const int SocketFlags::Broadcast = 0x400;//     æŒ‡ç¤ºå¹¿æ’­æ•°æ®åŒ…ã€‚
 	const int SocketFlags::Multicast = 0x800;
-	const int SocketFlags::Partial = 0x8000;	//     ÏûÏ¢µÄ²¿·Ö·¢ËÍ»ò½ÓÊÕ¡£//#define MSG_PARTIAL     0x8000          // partial send or recv for message xport                                     
-	// ÃèÊö Socket µÄ×´Ì¬¡£
-	const int SocketInformationOptions::Connected = 2;//     System.Net.Sockets.Socket ÒÑÁ¬½Ó¡£
-	const int SocketInformationOptions::Listening = 4;//     System.Net.Sockets.Socket ÕıÔÚÕìÌıĞÂÁ¬½Ó¡£
-	const int SocketInformationOptions::NonBlocking = 1;//     System.Net.Sockets.Socket Îª·Ç×èÈû¡£
-	const int SocketInformationOptions::UseOnlyOverlappedIO = 8;//     System.Net.Sockets.Socket Ê¹ÓÃÖØµş I/O¡£
+	const int SocketFlags::Partial = 0x8000;	//     æ¶ˆæ¯çš„éƒ¨åˆ†å‘é€æˆ–æ¥æ”¶ã€‚//#define MSG_PARTIAL     0x8000          // partial send or recv for message xport                                     
+	// æè¿° Socket çš„çŠ¶æ€ã€‚
+	const int SocketInformationOptions::Connected = 2;//     System.Net.Sockets.Socket å·²è¿æ¥ã€‚
+	const int SocketInformationOptions::Listening = 4;//     System.Net.Sockets.Socket æ­£åœ¨ä¾¦å¬æ–°è¿æ¥ã€‚
+	const int SocketInformationOptions::NonBlocking = 1;//     System.Net.Sockets.Socket ä¸ºéé˜»å¡ã€‚
+	const int SocketInformationOptions::UseOnlyOverlappedIO = 8;//     System.Net.Sockets.Socket ä½¿ç”¨é‡å  I/Oã€‚
 
-	const int SocketShutdown::Receive=1;//     ½ûÓÃ½ÓÊÕµÄ System.Net.Sockets.Socket¡£´Ë×Ö¶ÎÎª³£Êı¡£
-	const int SocketShutdown::Send=2;//     ½ûÓÃ·¢ËÍµÄ System.Net.Sockets.Socket¡£´Ë×Ö¶ÎÎª³£Êı¡£
-	const int SocketShutdown::Both=3;//     Îª·¢ËÍºÍ½ÓÊÕ½ûÓÃ System.Net.Sockets.Socket¡£´Ë×Ö¶ÎÎª³£Êı¡£
-	//¶¨ÒåÌ×½Ó×ÖÑ¡Ïî¼¶±ğ¡£
-	const int SocketOptionLevel::IP = 0;//     System.Net.Sockets.Socket Ñ¡Ïî½öÊÊÓÃÓÚ IP Ì×½Ó×Ö¡£
-	const int SocketOptionLevel::Tcp = 6;//     System.Net.Sockets.Socket Ñ¡Ïî½öÊÊÓÃÓÚ TCP Ì×½Ó×Ö¡£
-	const int SocketOptionLevel::Udp = 0x11;//     System.Net.Sockets.Socket Ñ¡Ïî½öÊÊÓÃÓÚ UDP Ì×½Ó×Ö¡£
-	const int SocketOptionLevel::IPv6 = 0x29;//     System.Net.Sockets.Socket Ñ¡Ïî½öÊÊÓÃÓÚ IPv6 Ì×½Ó×Ö¡£
-	const int SocketOptionLevel::Socket = 0xffff;//     System.Net.Sockets.Socket Ñ¡ÏîÊÊÓÃÓÚËùÓĞÌ×½Ó×Ö¡£
-	//¶¨ÒåÅäÖÃÑ¡ÏîÃû³Æ¡£
-	//     ÍêÈ«¹Ø±ÕÌ×½Ó×Ö£¬²»×ö¶ºÁô¡£
+	const int SocketShutdown::Receive=1;//     ç¦ç”¨æ¥æ”¶çš„ System.Net.Sockets.Socketã€‚æ­¤å­—æ®µä¸ºå¸¸æ•°ã€‚
+	const int SocketShutdown::Send=2;//     ç¦ç”¨å‘é€çš„ System.Net.Sockets.Socketã€‚æ­¤å­—æ®µä¸ºå¸¸æ•°ã€‚
+	const int SocketShutdown::Both=3;//     ä¸ºå‘é€å’Œæ¥æ”¶ç¦ç”¨ System.Net.Sockets.Socketã€‚æ­¤å­—æ®µä¸ºå¸¸æ•°ã€‚
+	//å®šä¹‰å¥—æ¥å­—é€‰é¡¹çº§åˆ«ã€‚
+	const int SocketOptionLevel::IP = 0;//     System.Net.Sockets.Socket é€‰é¡¹ä»…é€‚ç”¨äº IP å¥—æ¥å­—ã€‚
+	const int SocketOptionLevel::Tcp = 6;//     System.Net.Sockets.Socket é€‰é¡¹ä»…é€‚ç”¨äº TCP å¥—æ¥å­—ã€‚
+	const int SocketOptionLevel::Udp = 0x11;//     System.Net.Sockets.Socket é€‰é¡¹ä»…é€‚ç”¨äº UDP å¥—æ¥å­—ã€‚
+	const int SocketOptionLevel::IPv6 = 0x29;//     System.Net.Sockets.Socket é€‰é¡¹ä»…é€‚ç”¨äº IPv6 å¥—æ¥å­—ã€‚
+	const int SocketOptionLevel::Socket = 0xffff;//     System.Net.Sockets.Socket é€‰é¡¹é€‚ç”¨äºæ‰€æœ‰å¥—æ¥å­—ã€‚
+	//å®šä¹‰é…ç½®é€‰é¡¹åç§°ã€‚
+	//     å®Œå…¨å…³é—­å¥—æ¥å­—ï¼Œä¸åšé€—ç•™ã€‚
 	const int SocketOptionName::DontLinger = -129;
-	//     Ê¹Ì×½Ó×ÖÄÜ¹»Îª¶ÀÕ¼·ÃÎÊ½øĞĞ°ó¶¨¡£
+	//     ä½¿å¥—æ¥å­—èƒ½å¤Ÿä¸ºç‹¬å è®¿é—®è¿›è¡Œç»‘å®šã€‚
 	const int SocketOptionName::ExclusiveAddressUse = -5;
-	//     Ö¸¶¨Òª²åÈëµ½Êä³öÊı¾İ±¨ÖĞµÄ IP Ñ¡Ïî¡£//#define IP_OPTIONS          1           // set/get IP per-packet options                                        
+	//     æŒ‡å®šè¦æ’å…¥åˆ°è¾“å‡ºæ•°æ®æŠ¥ä¸­çš„ IP é€‰é¡¹ã€‚//#define IP_OPTIONS          1           // set/get IP per-packet options                                        
 	const int SocketOptionName::IPOptions = 1;
-	//     Îª·¢ËÍºÏ²¢½ûÓÃ Nagle Ëã·¨¡£#define TCP_NODELAY     0x0001
+	//     ä¸ºå‘é€åˆå¹¶ç¦ç”¨ Nagle ç®—æ³•ã€‚#define TCP_NODELAY     0x0001
 	const int SocketOptionName::NoDelay = 1;
-	//     ¼ÇÂ¼µ÷ÊÔĞÅÏ¢¡£//#define SO_DEBUG        0x0001          // turn on debugging info recording                                     
+	//     è®°å½•è°ƒè¯•ä¿¡æ¯ã€‚//#define SO_DEBUG        0x0001          // turn on debugging info recording                                     
 	const int SocketOptionName::Debug = 1;
-	//     ·¢ËÍĞ£ÑéºÍÉèÖÃÎªÁãµÄ UDP Êı¾İ±¨¡£
+	//     å‘é€æ ¡éªŒå’Œè®¾ç½®ä¸ºé›¶çš„ UDP æ•°æ®æŠ¥ã€‚
 	const int SocketOptionName::NoChecksum = 1;
-	//     Ê¹ÓÃ RFC-1222 ÖĞ¶¨ÒåµÄ¼Ó¼±Êı¾İ¡£´ËÑ¡ÏîÖ»ÄÜÉèÖÃÒ»´Î£¬¶øÇÒÉèÖÃÒÔºó¾ÍÎŞ·¨¹Ø±Õ¡£
+	//     ä½¿ç”¨ RFC-1222 ä¸­å®šä¹‰çš„åŠ æ€¥æ•°æ®ã€‚æ­¤é€‰é¡¹åªèƒ½è®¾ç½®ä¸€æ¬¡ï¼Œè€Œä¸”è®¾ç½®ä»¥åå°±æ— æ³•å…³é—­ã€‚
 	const int SocketOptionName::Expedited = 2;
-	//     Ö¸Ê¾Ó¦ÓÃ³ÌĞòÎªÊä³öÊı¾İ±¨Ìá¹© IP Í·¡£
+	//     æŒ‡ç¤ºåº”ç”¨ç¨‹åºä¸ºè¾“å‡ºæ•°æ®æŠ¥æä¾› IP å¤´ã€‚
 	const int SocketOptionName::HeaderIncluded = 2;
 
 
-	//     Ê¹ÓÃ RFC-1222 ÖĞ¶¨ÒåµÄ½ô¼±Êı¾İ¡£´ËÑ¡ÏîÖ»ÄÜÉèÖÃÒ»´Î£¬¶øÇÒÉèÖÃÒÔºó¾Í²»ÄÜ¹Ø±Õ¡£
+	//     ä½¿ç”¨ RFC-1222 ä¸­å®šä¹‰çš„ç´§æ€¥æ•°æ®ã€‚æ­¤é€‰é¡¹åªèƒ½è®¾ç½®ä¸€æ¬¡ï¼Œè€Œä¸”è®¾ç½®ä»¥åå°±ä¸èƒ½å…³é—­ã€‚
 #ifdef SUNIX
 	const int SocketOptionName::BsdUrgent = 2;
 #else
 	const int SocketOptionName::BsdUrgent = 0x7000;//#define TCP_BSDURGENT   0x7000
 #endif
-	//     Ì×½Ó×ÖÕıÔÚÕìÌı¡£//#define SO_ACCEPTCONN   0x0002          // socket has had listen()                                     
+	//     å¥—æ¥å­—æ­£åœ¨ä¾¦å¬ã€‚//#define SO_ACCEPTCONN   0x0002          // socket has had listen()                                     
 	const int SocketOptionName::AcceptConnection = 2;
-	//     ¸ü¸Ä·şÎñ×Ö¶ÎµÄ IP Í·ÀàĞÍ¡£#define IP_TOS              8           // set/get IP Type Of Service                                           
+	//     æ›´æ”¹æœåŠ¡å­—æ®µçš„ IP å¤´ç±»å‹ã€‚#define IP_TOS              8           // set/get IP Type Of Service                                           
 #ifdef SUNIX
 	const int SocketOptionName::TypeOfService = 3;
 #else
 	const int SocketOptionName::TypeOfService = 8;
 #endif
-	//     ÔÊĞí½«Ì×½Ó×Ö°ó¶¨µ½ÒÑÔÚÊ¹ÓÃÖĞµÄµØÖ·¡£//#define SO_REUSEADDR    0x0004          // allow local address reuse                                     
+	//     å…è®¸å°†å¥—æ¥å­—ç»‘å®šåˆ°å·²åœ¨ä½¿ç”¨ä¸­çš„åœ°å€ã€‚//#define SO_REUSEADDR    0x0004          // allow local address reuse                                     
 	const int SocketOptionName::ReuseAddress = 4;
-	//     ÉèÖÃ IP Í·Éú´æÊ±¼ä×Ö¶Î¡£#define IP_TTL              7           // set/get IP Time To Live                                              
+	//     è®¾ç½® IP å¤´ç”Ÿå­˜æ—¶é—´å­—æ®µã€‚#define IP_TTL              7           // set/get IP Time To Live                                              
 #ifdef SUNIX
 	const int SocketOptionName::IpTimeToLive = 4;
 #else
 	const int SocketOptionName::IpTimeToLive = 7;
 #endif
-	//     Ê¹ÓÃ keep-alive¡£//#define SO_KEEPALIVE    0x0008          // keep connections alive                                     
+	//     ä½¿ç”¨ keep-aliveã€‚//#define SO_KEEPALIVE    0x0008          // keep connections alive                                     
 	const int SocketOptionName::KeepAlive = 8;
-	//     ÎªÊä³öµÄ¶àÂ·¹ã²¥Êı¾İ°üÉèÖÃ½Ó¿Ú¡£ #define IP_MULTICAST_IF     2           // set/get IP multicast interface                                       
+	//     ä¸ºè¾“å‡ºçš„å¤šè·¯å¹¿æ’­æ•°æ®åŒ…è®¾ç½®æ¥å£ã€‚ #define IP_MULTICAST_IF     2           // set/get IP multicast interface                                       
 #ifdef SUNIX
 	const int SocketOptionName::MulticastInterface = 9;
 #else
 	const int SocketOptionName::MulticastInterface = 2;
 #endif
-	//     IP ¶àÂ·¹ã²¥Éú´æÊ±¼ä¡£#define IP_MULTICAST_TTL    3           // set/get IP multicast timetolive                                      
+	//     IP å¤šè·¯å¹¿æ’­ç”Ÿå­˜æ—¶é—´ã€‚#define IP_MULTICAST_TTL    3           // set/get IP multicast timetolive                                      
 #ifdef SUNIX
 	const int SocketOptionName::MulticastTimeToLive = 10;
 #else
 	const int SocketOptionName::MulticastTimeToLive = 3;
 #endif
-	//     IP ¶àÂ·¹ã²¥»·»Ø¡£ #define IP_MULTICAST_LOOP   4           // set/get IP multicast loopback                                        
+	//     IP å¤šè·¯å¹¿æ’­ç¯å›ã€‚ #define IP_MULTICAST_LOOP   4           // set/get IP multicast loopback                                        
 #ifdef SUNIX
 	const int SocketOptionName::MulticastLoopback = 11;
 #else
 	const int SocketOptionName::MulticastLoopback = 4;
 #endif
-	//     Ìí¼ÓÒ»¸ö IP ×é³ÉÔ±¡£//#define IP_ADD_MEMBERSHIP   5           // add  an IP group membership                                          
+	//     æ·»åŠ ä¸€ä¸ª IP ç»„æˆå‘˜ã€‚//#define IP_ADD_MEMBERSHIP   5           // add  an IP group membership                                          
 #ifdef SUNIX
 	const int SocketOptionName::AddMembership = 12;
 #else
 	const int SocketOptionName::AddMembership = 5;
 #endif
-	//     ·ÅÖÃÒ»¸ö IP ×é³ÉÔ±¡£//#define IP_DROP_MEMBERSHIP  6           // drop an IP group membership                                          
+	//     æ”¾ç½®ä¸€ä¸ª IP ç»„æˆå‘˜ã€‚//#define IP_DROP_MEMBERSHIP  6           // drop an IP group membership                                          
 #ifdef SUNIX
 	const int SocketOptionName::DropMembership = 13;
 #else
 	const int SocketOptionName::DropMembership = 6;
 #endif
-	//     ²»¶Ô IP Êı¾İ±¨½øĞĞ·Ö¶Î¡£#define IP_DONTFRAGMENT     9           // set/get IP Don't Fragment flag                                       
+	//     ä¸å¯¹ IP æ•°æ®æŠ¥è¿›è¡Œåˆ†æ®µã€‚#define IP_DONTFRAGMENT     9           // set/get IP Don't Fragment flag                                       
 #ifdef SUNIX
 	const int SocketOptionName::DontFragment = 14;
 #else
 	const int SocketOptionName::DontFragment = 6;
 #endif
-	//     Áª½ÓÔ´×é¡£
+	//     è”æ¥æºç»„ã€‚
 	const int SocketOptionName::AddSourceMembership = 15;
-	//     ·ÅÖÃÒ»¸öÔ´×é¡£
+	//     æ”¾ç½®ä¸€ä¸ªæºç»„ã€‚
 	const int SocketOptionName::DropSourceMembership = 16;
-	//     ²»Â·ÓÉ£¬½«Êı¾İ°üÖ±½Ó·¢ËÍµ½½Ó¿ÚµØÖ·¡£//#define SO_DONTROUTE    0x0010          // just use interface addresses                                     
+	//     ä¸è·¯ç”±ï¼Œå°†æ•°æ®åŒ…ç›´æ¥å‘é€åˆ°æ¥å£åœ°å€ã€‚//#define SO_DONTROUTE    0x0010          // just use interface addresses                                     
 	const int SocketOptionName::DontRoute = 16;
-	//     ×èÖ¹Ô´ÖĞµÄÊı¾İ¡£
+	//     é˜»æ­¢æºä¸­çš„æ•°æ®ã€‚
 	const int SocketOptionName::BlockSource = 17;
-	//     È¡Ïû×èÖ¹ÏÈÇ°±»×èÖ¹µÄÔ´¡£
+	//     å–æ¶ˆé˜»æ­¢å…ˆå‰è¢«é˜»æ­¢çš„æºã€‚
 	const int SocketOptionName::UnblockSource = 18;
-	//     ·µ»ØÓĞ¹Ø½ÓÊÕµ½µÄÊı¾İ°üµÄĞÅÏ¢¡£
+	//     è¿”å›æœ‰å…³æ¥æ”¶åˆ°çš„æ•°æ®åŒ…çš„ä¿¡æ¯ã€‚
 	const int SocketOptionName::PacketInformation = 19;
-	//     ÉèÖÃ»ò»ñÈ¡ UDP Ğ£ÑéºÍ¸²¸Ç¡£
+	//     è®¾ç½®æˆ–è·å– UDP æ ¡éªŒå’Œè¦†ç›–ã€‚
 	const int SocketOptionName::ChecksumCoverage = 20;
-	//     Ö¸¶¨ Internet Ğ­Òé°æ±¾ 6 (IPv6) Êı¾İ°üµÄ×î´óÂ·ÓÉÆ÷Ô¾µãÊıÄ¿¡£ÕâÀàËÆÓÚ Internet Ğ­Òé°æ±¾ 4 µÄÉú´æÊ±¼ä (TTL)¡£
+	//     æŒ‡å®š Internet åè®®ç‰ˆæœ¬ 6 (IPv6) æ•°æ®åŒ…çš„æœ€å¤§è·¯ç”±å™¨è·ƒç‚¹æ•°ç›®ã€‚è¿™ç±»ä¼¼äº Internet åè®®ç‰ˆæœ¬ 4 çš„ç”Ÿå­˜æ—¶é—´ (TTL)ã€‚
 	const int SocketOptionName::HopLimit = 21;
-	//     ÔÊĞíÔÚÌ×½Ó×ÖÉÏ·¢ËÍ¹ã²¥ÏûÏ¢¡£//#define SO_BROADCAST    0x0020          // permit sending of broadcast msgs                                     
+	//     å…è®¸åœ¨å¥—æ¥å­—ä¸Šå‘é€å¹¿æ’­æ¶ˆæ¯ã€‚//#define SO_BROADCAST    0x0020          // permit sending of broadcast msgs                                     
 	const int SocketOptionName::Broadcast = 0x0020;
-	//     ¿ÉÄÜÊ±±Ü¿ªÓ²¼ş¡£//#define SO_USELOOPBACK  0x0040          // bypass hardware when possible                                     
+	//     å¯èƒ½æ—¶é¿å¼€ç¡¬ä»¶ã€‚//#define SO_USELOOPBACK  0x0040          // bypass hardware when possible                                     
 	const int SocketOptionName::UseLoopback = 0x0040;
-	//     Èç¹û´æÔÚÎ´·¢ËÍµÄÊı¾İ£¬ÔòÔÚ¹Ø±ÕÊ±¶ºÁô¡£ //#define SO_LINGER       0x0080          // linger on close if data present                                     
+	//     å¦‚æœå­˜åœ¨æœªå‘é€çš„æ•°æ®ï¼Œåˆ™åœ¨å…³é—­æ—¶é€—ç•™ã€‚ //#define SO_LINGER       0x0080          // linger on close if data present                                     
 	const int SocketOptionName::Linger = 0x0080;
-	//     ½ÓÊÕÕı³£Êı¾İÁ÷ÖĞµÄ´øÍâÊı¾İ¡£//#define SO_OOBINLINE    0x0100          // leave received OOB data in line                                     
+	//     æ¥æ”¶æ­£å¸¸æ•°æ®æµä¸­çš„å¸¦å¤–æ•°æ®ã€‚//#define SO_OOBINLINE    0x0100          // leave received OOB data in line                                     
 	const int SocketOptionName::OutOfBandInline = 0x0100;
-	//     Ö¸¶¨Îª·¢ËÍ±£ÁôµÄÃ¿¸öÌ×½Ó×Ö»º³åÇø¿Õ¼äµÄ×ÜÁ¿¡£ÕâÓë×î´óÏûÏ¢´óĞ¡»ò TCP ´°¿ÚµÄ´óĞ¡ÎŞ¹Ø¡£//#define SO_SNDBUF       0x1001          // send buffer size                                     
+	//     æŒ‡å®šä¸ºå‘é€ä¿ç•™çš„æ¯ä¸ªå¥—æ¥å­—ç¼“å†²åŒºç©ºé—´çš„æ€»é‡ã€‚è¿™ä¸æœ€å¤§æ¶ˆæ¯å¤§å°æˆ– TCP çª—å£çš„å¤§å°æ— å…³ã€‚//#define SO_SNDBUF       0x1001          // send buffer size                                     
 	const int SocketOptionName::SendBuffer = 0x1001;
-	//     Ö¸¶¨Îª½ÓÊÕ±£ÁôµÄÃ¿¸öÌ×½Ó×Ö»º³åÇø¿Õ¼äµÄ×ÜÁ¿¡£ÕâÓë×î´óÏûÏ¢´óĞ¡»ò TCP ´°¿ÚµÄ´óĞ¡ÎŞ¹Ø¡£//#define SO_RCVBUF       0x1002          // receive buffer size                                     
+	//     æŒ‡å®šä¸ºæ¥æ”¶ä¿ç•™çš„æ¯ä¸ªå¥—æ¥å­—ç¼“å†²åŒºç©ºé—´çš„æ€»é‡ã€‚è¿™ä¸æœ€å¤§æ¶ˆæ¯å¤§å°æˆ– TCP çª—å£çš„å¤§å°æ— å…³ã€‚//#define SO_RCVBUF       0x1002          // receive buffer size                                     
 	const int SocketOptionName::ReceiveBuffer = 0x1002;
-	//     Îª Overload:System.Net.Sockets.Socket.Send ²Ù×÷Ö¸¶¨µÍË®Ó¡¡£//#define SO_SNDLOWAT     0x1003          // send low-water mark                                     
+	//     ä¸º Overload:System.Net.Sockets.Socket.Send æ“ä½œæŒ‡å®šä½æ°´å°ã€‚//#define SO_SNDLOWAT     0x1003          // send low-water mark                                     
 	const int SocketOptionName::SendLowWater = 0x1003;
-	//     Îª Overload:System.Net.Sockets.Socket.Receive ²Ù×÷Ö¸¶¨µÍË®Ó¡¡£
+	//     ä¸º Overload:System.Net.Sockets.Socket.Receive æ“ä½œæŒ‡å®šä½æ°´å°ã€‚
 	const int SocketOptionName::ReceiveLowWater = 4100;
-	//     ·¢ËÍ³¬Ê±¡£´ËÑ¡ÏîÖ»ÊÊÓÃÓÚÍ¬²½·½·¨£¬Ëü¶ÔÒì²½·½·¨£¨Èç System.Net.Sockets.Socket.BeginSend(System.Byte[],System.Int32,System.Int32,System.Net.Sockets.SocketFlags,System.AsyncCallback,System.Object)
-	//     ·½·¨£©ÎŞĞ§¡£//#define SO_SNDTIMEO     0x1005          // send timeout                                     
+	//     å‘é€è¶…æ—¶ã€‚æ­¤é€‰é¡¹åªé€‚ç”¨äºåŒæ­¥æ–¹æ³•ï¼Œå®ƒå¯¹å¼‚æ­¥æ–¹æ³•ï¼ˆå¦‚ System.Net.Sockets.Socket.BeginSend(System.Byte[],System.Int32,System.Int32,System.Net.Sockets.SocketFlags,System.AsyncCallback,System.Object)
+	//     æ–¹æ³•ï¼‰æ— æ•ˆã€‚//#define SO_SNDTIMEO     0x1005          // send timeout                                     
 	const int SocketOptionName::SendTimeout = 0x1005;
-	//     ½ÓÊÕ³¬Ê±¡£´ËÑ¡ÏîÖ»ÊÊÓÃÓÚÍ¬²½·½·¨£¬Ëü¶ÔÒì²½·½·¨£¨Èç System.Net.Sockets.Socket.BeginSend(System.Byte[],System.Int32,System.Int32,System.Net.Sockets.SocketFlags,System.AsyncCallback,System.Object)
-	//     ·½·¨£©ÎŞĞ§¡£//#define SO_RCVTIMEO     0x1006          // receive timeout                                     
+	//     æ¥æ”¶è¶…æ—¶ã€‚æ­¤é€‰é¡¹åªé€‚ç”¨äºåŒæ­¥æ–¹æ³•ï¼Œå®ƒå¯¹å¼‚æ­¥æ–¹æ³•ï¼ˆå¦‚ System.Net.Sockets.Socket.BeginSend(System.Byte[],System.Int32,System.Int32,System.Net.Sockets.SocketFlags,System.AsyncCallback,System.Object)
+	//     æ–¹æ³•ï¼‰æ— æ•ˆã€‚//#define SO_RCVTIMEO     0x1006          // receive timeout                                     
 	const int SocketOptionName::ReceiveTimeout = 0x1006;
-	//     »ñÈ¡´íÎó×´Ì¬²¢Çå³ı¡£//#define SO_ERROR        0x1007          // get error status and clear                                     
+	//     è·å–é”™è¯¯çŠ¶æ€å¹¶æ¸…é™¤ã€‚//#define SO_ERROR        0x1007          // get error status and clear                                     
 	const int SocketOptionName::Error = 0x1007;
-	//     »ñÈ¡Ì×½Ó×ÖÀàĞÍ¡£//#define SO_TYPE         0x1008          // get socket type                                     
+	//     è·å–å¥—æ¥å­—ç±»å‹ã€‚//#define SO_TYPE         0x1008          // get socket type                                     
 	const int SocketOptionName::Type = 0x1008;
-	//     Ê¹ÓÃÏÖÓĞÌ×½Ó×ÖµÄÊôĞÔ¸üĞÂÒÑ½ÓÊÜÌ×½Ó×ÖµÄÊôĞÔ¡£ÕâµÈĞ§ÓÚÊ¹ÓÃ Winsock2 SO_UPDATE_ACCEPT_CONTEXT Ì×½Ó×ÖÑ¡Ïî£¬²¢ÇÒ½öÔÚÃæÏòÁ¬½ÓµÄÌ×½Ó×ÖÉÏÊÜÖ§³Ö¡£
+	//     ä½¿ç”¨ç°æœ‰å¥—æ¥å­—çš„å±æ€§æ›´æ–°å·²æ¥å—å¥—æ¥å­—çš„å±æ€§ã€‚è¿™ç­‰æ•ˆäºä½¿ç”¨ Winsock2 SO_UPDATE_ACCEPT_CONTEXT å¥—æ¥å­—é€‰é¡¹ï¼Œå¹¶ä¸”ä»…åœ¨é¢å‘è¿æ¥çš„å¥—æ¥å­—ä¸Šå—æ”¯æŒã€‚
 	const int SocketOptionName::UpdateAcceptContext = 28683;
-	//     Ê¹ÓÃÏÖÓĞÌ×½Ó×ÖµÄÊôĞÔ¸üĞÂÒÑÁ¬½ÓÌ×½Ó×ÖµÄÊôĞÔ¡£ÕâµÈĞ§ÓÚÊ¹ÓÃ Winsock2 SO_UPDATE_CONNECT_CONTEXT Ì×½Ó×ÖÑ¡Ïî£¬²¢ÇÒ½öÔÚÃæÏòÁ¬½ÓµÄÌ×½Ó×ÖÉÏÊÜÖ§³Ö¡£
+	//     ä½¿ç”¨ç°æœ‰å¥—æ¥å­—çš„å±æ€§æ›´æ–°å·²è¿æ¥å¥—æ¥å­—çš„å±æ€§ã€‚è¿™ç­‰æ•ˆäºä½¿ç”¨ Winsock2 SO_UPDATE_CONNECT_CONTEXT å¥—æ¥å­—é€‰é¡¹ï¼Œå¹¶ä¸”ä»…åœ¨é¢å‘è¿æ¥çš„å¥—æ¥å­—ä¸Šå—æ”¯æŒã€‚
 	const int SocketOptionName::UpdateConnectContext = 28688;
-	//     ²»ÊÜÖ§³Ö£»Èç¹ûÊ¹ÓÃ£¬½«Òı·¢ System.Net.Sockets.SocketException¡£
+	//     ä¸å—æ”¯æŒï¼›å¦‚æœä½¿ç”¨ï¼Œå°†å¼•å‘ System.Net.Sockets.SocketExceptionã€‚
 	const int SocketOptionName::MaxConnections = 2147483647;
 
 
-	//Ö¸¶¨ Socket ÀàµÄÊµÀı¿ÉÒÔÊ¹ÓÃµÄĞ­ÒéÀàĞÍ¡£InterNetwork ¶ÔÓ¦ AF_INET
-	//Î´ÖªĞ­Òé¡£
+	//æŒ‡å®š Socket ç±»çš„å®ä¾‹å¯ä»¥ä½¿ç”¨çš„åè®®ç±»å‹ã€‚InterNetwork å¯¹åº” AF_INET
+	//æœªçŸ¥åè®®ã€‚
 	const int ProtocolFamily::Unknown = -1;
-	//Î´Ö¸¶¨µÄĞ­Òé¡£
+	//æœªæŒ‡å®šçš„åè®®ã€‚
 	const int ProtocolFamily::Unspecified = 0;
-	//Unix ±¾µØµ½Ö÷»úĞ­Òé¡£
+	//Unix æœ¬åœ°åˆ°ä¸»æœºåè®®ã€‚
 	const int ProtocolFamily::Unix = 1;
-	//IP °æ±¾ 4 Ğ­Òé¡£
+	//IP ç‰ˆæœ¬ 4 åè®®ã€‚
 	const int ProtocolFamily::InterNetwork = 2;   //#define AF_INET         2               // internetwork: UDP, TCP, etc.                                     
-	//ARPANET IMP Ğ­Òé¡£
+	//ARPANET IMP åè®®ã€‚
 	const int ProtocolFamily::ImpLink = 3;
-	//PUP Ğ­Òé¡£
+	//PUP åè®®ã€‚
 	const int ProtocolFamily::Pup = 4;
-	//MIT CHAOS Ğ­Òé¡£
+	//MIT CHAOS åè®®ã€‚
 	const int ProtocolFamily::Chaos = 5;
-	//IPX »ò SPX Ğ­Òé¡£
+	//IPX æˆ– SPX åè®®ã€‚
 	const int ProtocolFamily::Ipx = 6;
-	//Xerox NS Ğ­Òé¡£
+	//Xerox NS åè®®ã€‚
 	const int ProtocolFamily::NS = 6;
-	//OSI Ğ­Òé¡£
+	//OSI åè®®ã€‚
 	const int ProtocolFamily::Osi = 7;
-	//ISO Ğ­Òé¡£
+	//ISO åè®®ã€‚
 	const int ProtocolFamily::Iso = 7;
-	//Å·ÖŞ¼ÆËã»úÖÆÔìÉÌĞ­»á (ECMA) Ğ­Òé¡£
+	//æ¬§æ´²è®¡ç®—æœºåˆ¶é€ å•†åä¼š (ECMA) åè®®ã€‚
 	const int ProtocolFamily::Ecma = 8;
-	//DataKit Ğ­Òé¡£
+	//DataKit åè®®ã€‚
 	const int ProtocolFamily::DataKit = 9;
-	//CCITT Ğ­Òé£¬Èç X.25¡£
+	//CCITT åè®®ï¼Œå¦‚ X.25ã€‚
 	const int ProtocolFamily::Ccitt = 10;
-	//IBM SNA Ğ­Òé¡£
+	//IBM SNA åè®®ã€‚
 	const int ProtocolFamily::Sna = 11;
-	//DECNet Ğ­Òé¡£
+	//DECNet åè®®ã€‚
 	const int ProtocolFamily::DecNet = 12;
-	//Ö±½ÓÊı¾İÁ´½ÓĞ­Òé¡£
+	//ç›´æ¥æ•°æ®é“¾æ¥åè®®ã€‚
 	const int ProtocolFamily::DataLink = 13;
-	//LAT Ğ­Òé¡£
+	//LAT åè®®ã€‚
 	const int ProtocolFamily::Lat = 14;
-	//NSC HyperChannel Ğ­Òé¡£
+	//NSC HyperChannel åè®®ã€‚
 	const int ProtocolFamily::HyperChannel = 15;
-	//AppleTalk Ğ­Òé¡£
+	//AppleTalk åè®®ã€‚
 	const int ProtocolFamily::AppleTalk = 16;
-	//NetBIOS Ğ­Òé¡£
+	//NetBIOS åè®®ã€‚
 	const int ProtocolFamily::NetBios = 17;
-	//VoiceView Ğ­Òé¡£
+	//VoiceView åè®®ã€‚
 	const int ProtocolFamily::VoiceView = 18;
-	//FireFox Ğ­Òé¡£
+	//FireFox åè®®ã€‚
 	const int ProtocolFamily::FireFox = 19;
-	//Banyan Ğ­Òé¡£
+	//Banyan åè®®ã€‚
 	const int ProtocolFamily::Banyan = 21;
-	//±¾»ú ATM ·şÎñĞ­Òé¡£
+	//æœ¬æœº ATM æœåŠ¡åè®®ã€‚
 	const int ProtocolFamily::Atm = 22;
-	//IP °æ±¾ 6 Ğ­Òé¡£
+	//IP ç‰ˆæœ¬ 6 åè®®ã€‚
 	const int ProtocolFamily::InterNetworkV6 = 23;
-	//Microsoft Èº¼¯²úÆ·Ğ­Òé¡£
+	//Microsoft ç¾¤é›†äº§å“åè®®ã€‚
 	const int ProtocolFamily::Cluster = 24;
-	//IEEE 1284.4 ¹¤×÷×éĞ­Òé¡£
+	//IEEE 1284.4 å·¥ä½œç»„åè®®ã€‚
 	const int ProtocolFamily::Ieee12844 = 25;
-	//IrDA Ğ­Òé¡£
+	//IrDA åè®®ã€‚
 	const int ProtocolFamily::Irda = 26;
-	//Ö§³ÖÍøÂçÉè¼ÆÆ÷ OSI Íø¹ØµÄĞ­Òé¡£
+	//æ”¯æŒç½‘ç»œè®¾è®¡å™¨ OSI ç½‘å…³çš„åè®®ã€‚
 	const int ProtocolFamily::NetworkDesigners = 28;
-	//MAX Ğ­Òé¡£
+	//MAX åè®®ã€‚
 	const int ProtocolFamily::Max = 29;
 
  
@@ -259,56 +259,56 @@ NET_NAMESPACE_BEGIN
 	const int SelectMode::SelectWrite=1;
 	const int SelectMode::SelectError=2;
 
-	//Ö¸¶¨Socket ÀàÖ§³ÖµÄĞ­Òé¡£
-	//Î´ÖªĞ­Òé¡£
+	//æŒ‡å®šSocket ç±»æ”¯æŒçš„åè®®ã€‚
+	//æœªçŸ¥åè®®ã€‚
 	const int ProtocolType::Unknown = -1;
-	//IPv6 ÖğÌøÑ¡ÏîÍ·¡£
+	//IPv6 é€è·³é€‰é¡¹å¤´ã€‚
 	const int ProtocolType::IPv6HopByHopOptions = 0;
-	//Î´Ö¸¶¨µÄĞ­Òé¡£
+	//æœªæŒ‡å®šçš„åè®®ã€‚
 	const int ProtocolType::Unspecified = 0;
-	//Íø¼ÊĞ­Òé¡£
+	//ç½‘é™…åè®®ã€‚
 	const int ProtocolType::IP = 0;
-	//Íø¼ÊÏûÏ¢¿ØÖÆĞ­Òé¡£
+	//ç½‘é™…æ¶ˆæ¯æ§åˆ¶åè®®ã€‚
 	const int ProtocolType::Icmp = 1;
-	//Íø¼Ê×é¹ÜÀíĞ­Òé¡£
+	//ç½‘é™…ç»„ç®¡ç†åè®®ã€‚
 	const int ProtocolType::Igmp = 2;
-	//Íø¹Øµ½Íø¹ØĞ­Òé¡£
+	//ç½‘å…³åˆ°ç½‘å…³åè®®ã€‚
 	const int ProtocolType::Ggp = 3;
-	//Internet Ğ­Òé°æ±¾ 4¡£
+	//Internet åè®®ç‰ˆæœ¬ 4ã€‚
 	const int ProtocolType::IPv4 = 4;
-	//´«Êä¿ØÖÆĞ­Òé¡£
+	//ä¼ è¾“æ§åˆ¶åè®®ã€‚
 	const int ProtocolType::Tcp = 6;
-	//PARC Í¨ÓÃÊı¾İ°üĞ­Òé¡£
+	//PARC é€šç”¨æ•°æ®åŒ…åè®®ã€‚
 	const int ProtocolType::Pup = 12;
-	//ÓÃ»§Êı¾İ±¨Ğ­Òé¡£
+	//ç”¨æˆ·æ•°æ®æŠ¥åè®®ã€‚
 	const int ProtocolType::Udp = 17;
-	//Internet Êı¾İ±¨Ğ­Òé¡£
+	//Internet æ•°æ®æŠ¥åè®®ã€‚
 	const int ProtocolType::Idp = 22;
-	//Internet Ğ­Òé°æ±¾ 6 (IPv6)¡£
+	//Internet åè®®ç‰ˆæœ¬ 6 (IPv6)ã€‚
 	const int ProtocolType::IPv6 = 41;
-	//IPv6 Â·ÓÉÍ·¡£
+	//IPv6 è·¯ç”±å¤´ã€‚
 	const int ProtocolType::IPv6RoutingHeader = 43;
-	//IPv6 Æ¬¶ÎÍ·¡£
+	//IPv6 ç‰‡æ®µå¤´ã€‚
 	const int ProtocolType::IPv6FragmentHeader = 44;
-	//IPv6 ·â×°Ê½°²È«´ëÊ©¸ºÔØÍ·¡£
+	//IPv6 å°è£…å¼å®‰å…¨æªæ–½è´Ÿè½½å¤´ã€‚
 	const int ProtocolType::IPSecEncapsulatingSecurityPayload = 50;
-	//IPv6 Éí·İÑéÖ¤Í·¡£ÓĞ¹ØÏêÏ¸ĞÅÏ¢£¬Çë²Î¼ûÎ»ÓÚ http://www.ietf.org ÖĞµÄ RFC 2292 µÄ 2.2.1 ½Ú¡£
+	//IPv6 èº«ä»½éªŒè¯å¤´ã€‚æœ‰å…³è¯¦ç»†ä¿¡æ¯ï¼Œè¯·å‚è§ä½äº http://www.ietf.org ä¸­çš„ RFC 2292 çš„ 2.2.1 èŠ‚ã€‚
 	const int ProtocolType::IPSecAuthenticationHeader = 51;
-	//ÓÃÓÚ IPv6 µÄ Internet ¿ØÖÆÏûÏ¢Ğ­Òé¡£
+	//ç”¨äº IPv6 çš„ Internet æ§åˆ¶æ¶ˆæ¯åè®®ã€‚
 	const int ProtocolType::IcmpV6 = 58;
-	//IPv6 No Next Í·¡£
+	//IPv6 No Next å¤´ã€‚
 	const int ProtocolType::IPv6NoNextHeader = 59;
-	//IPv6 Ä¿±êÑ¡ÏîÍ·¡£
+	//IPv6 ç›®æ ‡é€‰é¡¹å¤´ã€‚
 	const int ProtocolType::IPv6DestinationOptions = 60;
-	//ÍøÂç´ÅÅÌĞ­Òé£¨·ÇÕıÊ½£©¡£
+	//ç½‘ç»œç£ç›˜åè®®ï¼ˆéæ­£å¼ï¼‰ã€‚
 	const int ProtocolType::ND = 77;
-	//Ô­Ê¼ IP Êı¾İ°üĞ­Òé¡£
+	//åŸå§‹ IP æ•°æ®åŒ…åè®®ã€‚
 	const int ProtocolType::Raw = 255;
-	//Internet Êı¾İ°ü½»»»Ğ­Òé¡£
+	//Internet æ•°æ®åŒ…äº¤æ¢åè®®ã€‚
 	const int ProtocolType::Ipx = 1000;
-	//Ë³Ğò°ü½»»»Ğ­Òé¡£
+	//é¡ºåºåŒ…äº¤æ¢åè®®ã€‚
 	const int ProtocolType::Spx = 1256;
-	//Ë³Ğò°ü½»»»Ğ­ÒéµÚ 2 °æ¡£
+	//é¡ºåºåŒ…äº¤æ¢åè®®ç¬¬ 2 ç‰ˆã€‚
 	const int ProtocolType::SpxII = 1257;
 
 	const int IPAddress::maxPort=0xffff;

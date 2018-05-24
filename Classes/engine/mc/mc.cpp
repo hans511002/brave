@@ -314,6 +314,20 @@ namespace engine
 		CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
 		this->gotoAndStop(1);
 	}
+	void MovieClipSub::setVisible(bool v) 
+	{
+		slot->setVisible(v);
+		const std::vector<Bone*>& bones=arm->getBones();
+		for each (Bone * bone in bones)
+		{
+			bone->setVisible(v);
+		}
+	};
+	bool MovieClipSub::isVisible() 
+	{
+		return slot->getVisible();
+	};
+
 	cocos2d::Point MovieClipSub::getPosition()
 	{
 		Node * sp = (Node *)this->slot->getDisplay();

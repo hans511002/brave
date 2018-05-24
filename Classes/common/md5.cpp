@@ -15,7 +15,7 @@
 
 namespace Common
 {
-		// MD5µÄÖ÷Ñ­»·µÄÂÖÖ÷Òª²Ù×÷Îªa=b+((a+f(b,c,d)+M+t)<<ÖµÈçÏÂ:                                        
+		// MD5çš„ä¸»å¾ªç¯çš„è½®ä¸»è¦æ“ä½œä¸ºa=b+((a+f(b,c,d)+M+t)<<å€¼å¦‚ä¸‹:                                        
 		#define S11 7  
 		#define S12 12  
 		#define S13 17  
@@ -33,17 +33,17 @@ namespace Common
 		#define S43 15  
 		#define S44 21
 
-		// F, G, H ºÍ I ÊÇ»ù±¾MD5º¯Êı                                     
+		// F, G, H å’Œ I æ˜¯åŸºæœ¬MD5å‡½æ•°                                     
 		#define F(x, y, z) (((x) & (y)) | ((~x) & (z)))
 		#define G(x, y, z) (((x) & (z)) | ((y) & (~z)))
 		#define H(x, y, z) ((x) ^ (y) ^ (z))
 		#define I(x, y, z) ((y) ^ ((x) | (~z)))
 
-		// ROTATE_LEFT ½«xÑ­»·×óÒÆnÎ»                                     
+		// ROTATE_LEFT å°†xå¾ªç¯å·¦ç§»nä½                                     
 		#define ROTATE_LEFT(x, n) (((x) << (n)) | ((x) >> (32-(n))))
 
 
-		/* FF, GG, HH, and II ´ú±í1,2,3,4ÂÖ¼ÆËã,ÏÈºê¶¨ÒåÒÔ±ãÓÚºóÃæÒıÓÃ. 
+		/* FF, GG, HH, and II ä»£è¡¨1,2,3,4è½®è®¡ç®—,å…ˆå®å®šä¹‰ä»¥ä¾¿äºåé¢å¼•ç”¨. 
 		*/  
 		#define FF(a, b, c, d, x, s, ac) { \
 		 (a) += F ((b), (c), (d)) + (x) + (UINT4)(ac); \
@@ -71,13 +71,13 @@ namespace Common
 	  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-	// MD5 ³õÊ¼»¯. ¿ªÊ¼Ò»¸öMD5²Ù×÷Ğ´Ò»¸öĞÂµÄcontext.                                     
+	// MD5 åˆå§‹åŒ–. å¼€å§‹ä¸€ä¸ªMD5æ“ä½œå†™ä¸€ä¸ªæ–°çš„context.                                     
 	//
 	// // context                                     
 	void md5::MD5Init (MD5_CTX * context)       
 	{
 		context->count[0] = context->count[1] = 0;
-		context->state[0] = 0x67452301;// ¸ø³ö4¸ö32±ÈÌØµÄ³õÊ¼ÏòÁ¿.                                    
+		context->state[0] = 0x67452301;// ç»™å‡º4ä¸ª32æ¯”ç‰¹çš„åˆå§‹å‘é‡.                                    
 		context->state[1] = 0xefcdab89;
 		context->state[2] = 0x98badcfe;
 		context->state[3] = 0x10325476;
@@ -116,7 +116,7 @@ namespace Common
 		for (i = 0, j = 0; j < len; i++, j += 4)  
 			output[i] = ((UINT4)input[j]) | (((UINT4)input[j+1]) << 8) | (((UINT4)input[j+2]) << 16) | (((UINT4)input[j+3]) << 24);  
 	}  
-	// ¶ÔÒ»¸öÏûÏ¢¿éµÄ16¸ö×Ó¿é½øĞĞMD5 »ù±¾¼ÆËã.                                        
+	// å¯¹ä¸€ä¸ªæ¶ˆæ¯å—çš„16ä¸ªå­å—è¿›è¡ŒMD5 åŸºæœ¬è®¡ç®—.                                        
 	void md5::MD5Transform (UINT4 state[4], unsigned char block[64])
 	{
 		UINT4 a = state[0], b = state[1], c = state[2], d = state[3], x[16];
@@ -207,20 +207,20 @@ namespace Common
 
 
 	//
-	//MD5 ·Ö×é¸üĞÂ²Ù×÷.²»¶ÏµØ¶ÔÏûÏ¢¿é½øĞĞMD5 ÏûÏ¢-ÕªÒª²Ù×÷ ¼ÌĞøÒ»¸öMD5²Ù×÷,´¦ÀíÁíÒ»¸öÏûÏ¢·Ö×é²¢¸üĞÂcontext.                                     
-	// ÊäÈë·Ö×é ÊäÈëµÄ·Ö×éµÄ³¤¶È  context                                     
+	//MD5 åˆ†ç»„æ›´æ–°æ“ä½œ.ä¸æ–­åœ°å¯¹æ¶ˆæ¯å—è¿›è¡ŒMD5 æ¶ˆæ¯-æ‘˜è¦æ“ä½œ ç»§ç»­ä¸€ä¸ªMD5æ“ä½œ,å¤„ç†å¦ä¸€ä¸ªæ¶ˆæ¯åˆ†ç»„å¹¶æ›´æ–°context.                                     
+	// è¾“å…¥åˆ†ç»„ è¾“å…¥çš„åˆ†ç»„çš„é•¿åº¦  context                                     
 	//
 	void md5::MD5Update (MD5_CTX * context, unsigned char * input, unsigned int inputLen)
 	{
 		unsigned int i, index, partLen;
-		// ¼ÆËã×Ö½ÚÊıÄ£64µÄÖµ                                     
+		// è®¡ç®—å­—èŠ‚æ•°æ¨¡64çš„å€¼                                     
 		index = (unsigned int)((context->count[0] >> 3) & 0x3F);
 		// Update number of bits                                     
 		if ((context->count[0] += ((UINT4)inputLen << 3))< ((UINT4)inputLen << 3))
 		context->count[1]++;
 		context->count[1] += ((UINT4)inputLen >> 29);
 		partLen = 64 - index;
-		// °´ÄÜ´ïµ½µÄ×î´ó´ÎÊı×ª»»                                    
+		// æŒ‰èƒ½è¾¾åˆ°çš„æœ€å¤§æ¬¡æ•°è½¬æ¢                                    
 		if (inputLen >= partLen) 
 		{
 			MD5_memcpy((POINTER)&context->buffer[index], (POINTER)input, partLen);
@@ -232,27 +232,27 @@ namespace Common
 		else
 			i = 0;
 
-		// »º³åÆ÷±£ÁôÊäÈëÖµ                                     
+		// ç¼“å†²å™¨ä¿ç•™è¾“å…¥å€¼                                     
 		MD5_memcpy((POINTER)&context->buffer[index], (POINTER)&input[i],inputLen-i);
 	}
 
 
-	// MD5 ×îÖÕ½á¹û. ÒÔÒ»¸ö MD5 ±¨ÎÄÕªÒª²Ù×÷½áÊø, Ğ´ÏÂ±¨ÎÄÕªÒªÖµ ±¨ÎÄÕªÒª   context                                     
+	// MD5 æœ€ç»ˆç»“æœ. ä»¥ä¸€ä¸ª MD5 æŠ¥æ–‡æ‘˜è¦æ“ä½œç»“æŸ, å†™ä¸‹æŠ¥æ–‡æ‘˜è¦å€¼ æŠ¥æ–‡æ‘˜è¦   context                                     
 	void md5::MD5Final (unsigned char digest[16], MD5_CTX *context)
 	{
 		unsigned char bits[8];
 		unsigned int index, padLen;
 
-		// ±£´æÎ»ÊıÖµ                                     
+		// ä¿å­˜ä½æ•°å€¼                                     
 		Encode (bits, context->count, 8);
 		index = (unsigned int)((context->count[0] >> 3) & 0x3f);
 		padLen = (index < 56) ? (56 - index) : (120 - index);
 		MD5Update (context, PADDING, padLen);
 
-		// ¸½¼Ó³¤¶È (ÔÚ²¹Î»Ö®Ç°)                                     
+		// é™„åŠ é•¿åº¦ (åœ¨è¡¥ä½ä¹‹å‰)                                     
 		MD5Update (context, bits, 8);
 
-		// ½« state ´æÈë digest ÖĞ                                    
+		// å°† state å­˜å…¥ digest ä¸­                                    
 		Encode (digest, context->state, 16);
 		MD5_memset ((POINTER)context, 0, sizeof (*context));
 	}
@@ -287,14 +287,14 @@ namespace Common
 		}
 	}
 
-    // ÕªÒª:
-    //     32Î»µÄMD5¼ÓÃÜ×Ö·û´®¡£
+    // æ‘˜è¦:
+    //     32ä½çš„MD5åŠ å¯†å­—ç¬¦ä¸²ã€‚
     //
-    // ²ÎÊı:
-    //   Òª¼ÓÃÜµÄ×Ö·û´®:
-    //     ÒªĞ§ÑéµÄÎÄ¼şÂ·¾¶¡£
-    // ·µ»Ø½á¹û:
-    //     32Î»MD5Ğ§Ñé×Ö·û´®¡£
+    // å‚æ•°:
+    //   è¦åŠ å¯†çš„å­—ç¬¦ä¸²:
+    //     è¦æ•ˆéªŒçš„æ–‡ä»¶è·¯å¾„ã€‚
+    // è¿”å›ç»“æœ:
+    //     32ä½MD5æ•ˆéªŒå­—ç¬¦ä¸²ã€‚
 	string  md5::md5_32(string str)
 	{  
 		MD5_CTX context;  
@@ -305,14 +305,14 @@ namespace Common
 		MD5Final (digest, &context);
 		return ConvertChar(digest,32);
 	} 
-    // ÕªÒª:
-    //     16Î»µÄMD5¼ÓÃÜ×Ö·û´®¡£
+    // æ‘˜è¦:
+    //     16ä½çš„MD5åŠ å¯†å­—ç¬¦ä¸²ã€‚
     //
-    // ²ÎÊı:
-    //   Òª¼ÓÃÜµÄ×Ö·û´®:
-    //     ÒªĞ§ÑéµÄÎÄ¼şÂ·¾¶¡£
-    // ·µ»Ø½á¹û:
-    //     16Î»MD5Ğ§Ñé×Ö·û´®¡£
+    // å‚æ•°:
+    //   è¦åŠ å¯†çš„å­—ç¬¦ä¸²:
+    //     è¦æ•ˆéªŒçš„æ–‡ä»¶è·¯å¾„ã€‚
+    // è¿”å›ç»“æœ:
+    //     16ä½MD5æ•ˆéªŒå­—ç¬¦ä¸²ã€‚
 	string  md5::md5_16(string str)
 	{  
 		MD5_CTX context;  
@@ -324,30 +324,30 @@ namespace Common
 		return ConvertChar(digest,16);
 	} 	
 
-    // ÕªÒª:
-    //     ½«ÎÄ¼ş½øĞĞMD5Ğ§Ñé¡£
+    // æ‘˜è¦:
+    //     å°†æ–‡ä»¶è¿›è¡ŒMD5æ•ˆéªŒã€‚
     //
-    // ²ÎÊı:
+    // å‚æ•°:
     //   filename:
-    //     ÒªĞ§ÑéµÄÎÄ¼şÂ·¾¶¡£
-    // ·µ»Ø½á¹û:
-    //     MD5Ğ§Ñé×Ö·û´®¡£
+    //     è¦æ•ˆéªŒçš„æ–‡ä»¶è·¯å¾„ã€‚
+    // è¿”å›ç»“æœ:
+    //     MD5æ•ˆéªŒå­—ç¬¦ä¸²ã€‚
 	string md5::mdFile(string filename)  
 	{  
 		FILE *fp;
-		if (!(fp=fopen(filename.c_str(),"rb"))) //¶ş½øÖÆ´ò¿ª
+		if (!(fp=fopen(filename.c_str(),"rb"))) //äºŒè¿›åˆ¶æ‰“å¼€
 		{
             printf("Can not open this file!\n");
             string _result="";
 			return _result;
-		}  //ÒÔ¶ş½øÖÆ´ò¿ªÎÄ¼ş
-		fseek(fp, 0, SEEK_END);  //ÎÄ¼şÖ¸Õë×ªµ½ÎÄ¼şÄ©Î²
+		}  //ä»¥äºŒè¿›åˆ¶æ‰“å¼€æ–‡ä»¶
+		fseek(fp, 0, SEEK_END);  //æ–‡ä»¶æŒ‡é’ˆè½¬åˆ°æ–‡ä»¶æœ«å°¾
 		int len;  
 		if((len=ftell(fp))==-1) 
 		{
 			printf("Sorry! Can not calculate files which larger than 2 GB!\n");fclose(fp);string _result="";return _result;
-		}//ftellº¯Êı·µ»Ølong,×î´óÎª2GB,³¬³ö·µ»Ø-1
-		rewind(fp);  //ÎÄ¼şÖ¸Õë¸´Î»µ½ÎÄ¼şÍ·
+		}//ftellå‡½æ•°è¿”å›long,æœ€å¤§ä¸º2GB,è¶…å‡ºè¿”å›-1
+		rewind(fp);  //æ–‡ä»¶æŒ‡é’ˆå¤ä½åˆ°æ–‡ä»¶å¤´
 		MD5_CTX context;  
 		unsigned char buffer[16], digest[16];  
 		MD5Init(&context);  

@@ -42,12 +42,12 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 
 	//
 	//
-	//ÕªÒª£º
-	//	µ¼³ö±íÊı¾İµ½¶ÔÓ¦ÀàĞÍµÄ½á¹¹Êı×éÖĞ,Ö»ÄÜ´æ´¢ 20ÒÚ ´óĞ¡¼ÇÂ¼Êı 2147483647
-	//	²»Í¬ÀàĞÍ´æ´¢.ÒªèØ¹¹ÊÍ·ÅÄÚ´æ¿Õ¼ä
-    // ×÷ Õß: ×ŞÔ¶¹ó
-    // ÈÕ ÆÚ: 2007-5-21
-    // °æ ±¾: 1.0
+	//æ‘˜è¦ï¼š
+	//	å¯¼å‡ºè¡¨æ•°æ®åˆ°å¯¹åº”ç±»å‹çš„ç»“æ„æ•°ç»„ä¸­,åªèƒ½å­˜å‚¨ 20äº¿ å¤§å°è®°å½•æ•° 2147483647
+	//	ä¸åŒç±»å‹å­˜å‚¨.è¦æŸæ„é‡Šæ”¾å†…å­˜ç©ºé—´
+    // ä½œ è€…: é‚¹è¿œè´µ
+    // æ—¥ æœŸ: 2007-5-21
+    // ç‰ˆ æœ¬: 1.0
 	//
 	class DataTable 
 	{
@@ -74,10 +74,10 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 
 #if defined(__Common_ResultSet__) 
 		//
-		//ÕªÒª£º
-		//	²ÎÊıÀàĞÍ
+		//æ‘˜è¦ï¼š
+		//	å‚æ•°ç±»å‹
 		//
-//Ìí¼Ó»ù±¾·½·¨//
+//æ·»åŠ åŸºæœ¬æ–¹æ³•//
 	protected:
 		void _init()
 		{
@@ -97,9 +97,9 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 #endif
 		};
 	public:
-		//bool setKeys(String key1,int num=1,...); 		//²»Ö§³Ö64±àÒë
-		//bool setKeys(int key1,...);					//²»Ö§³Ö64±àÒë
-		//Ìí¼ÓÉèÖÃkey
+		//bool setKeys(String key1,int num=1,...); 		//ä¸æ”¯æŒ64ç¼–è¯‘
+		//bool setKeys(int key1,...);					//ä¸æ”¯æŒ64ç¼–è¯‘
+		//æ·»åŠ è®¾ç½®key
 		DataTable()
 		{
 			_init();
@@ -195,7 +195,7 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 		}
 
 
-		//Çå³ıkey
+		//æ¸…é™¤key
 		void clearKeys(){KeysStr.clear();KeysIndex.clear();};
 		void clear(bool all=true)
 		{
@@ -209,13 +209,13 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 					{
 						if(stringObject)
 						{
-							string * temp=(string *)Data[i]; //¶ÔÏó´æ´¢
+							string * temp=(string *)Data[i]; //å¯¹è±¡å­˜å‚¨
 							delete[] temp; 
 						}
 						else
 						{
 	#if defined(USE_SEPARATE_STORAGE_POINT)
-							unsigned char * temp=(unsigned char *)Data[i];   //°´×Ö½Ú´æ´¢
+							unsigned char * temp=(unsigned char *)Data[i];   //æŒ‰å­—èŠ‚å­˜å‚¨
 							delete[] temp;
 	#else
 							char ** temp=(char **)Data[i];
@@ -231,7 +231,7 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 					}
 					case otl_var_raw:
 					{
-						string * temp=(string *)Data[i]; //¶ÔÏó´æ´¢
+						string * temp=(string *)Data[i]; //å¯¹è±¡å­˜å‚¨
 						delete[] temp;
 						break;
 					}
@@ -288,13 +288,13 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 			if(all)_init();
 		}
 		//
-		//ÕªÒª£º
-        //  Ìî³ä±í¸ñÊı¾İ
+		//æ‘˜è¦ï¼š
+        //  å¡«å……è¡¨æ ¼æ•°æ®
 		bool Fill(String sql,String connStr=dbStr,int preFetch=5000,int maxCount=-1)
 		{
 			if(connStr.empty() || connStr.Trim()=="")
 			{
-				cout<<"Êı¾İ¿âÁ¬½Ó×Ö·û´®Îª¿Õ"<<endl;
+				cout<<"æ•°æ®åº“è¿æ¥å­—ç¬¦ä¸²ä¸ºç©º"<<endl;
 				return false;
 			}
 			this->clear(false);
@@ -394,9 +394,9 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 				if(this->RowCount==-1)
 				{
 					String temp="select count(1) rc from ("+sql+") a ";
-					cout<<"»ñÈ¡¼ÇÂ¼Êı: "<<temp<<endl;
+					cout<<"è·å–è®°å½•æ•°: "<<temp<<endl;
 					ResultSet is;
-					is.open(1,temp.c_str(),con); // ÏÈ²éÑ¯¼ÇÂ¼Êı
+					is.open(1,temp.c_str(),con); // å…ˆæŸ¥è¯¢è®°å½•æ•°
 					if(!is.eof())is>>this->RowCount;
 					this->allRowCount=this->RowCount;
 					is.close();
@@ -416,13 +416,13 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 					case otl_var_char:
 						{
 							if(stringObject)
-								Data[i]=(unsigned char *)(new string[this->allRowCount]);      //¶ÔÏó´æ´¢
+								Data[i]=(unsigned char *)(new string[this->allRowCount]);      //å¯¹è±¡å­˜å‚¨
 							else 
 							{
 	#if defined(USE_SEPARATE_STORAGE_POINT)
-								Data[i]=new unsigned char[this->allRowCount*(this->Columns[i].dbsize)];     //°´×Ö½Ú´æ´¢
+								Data[i]=new unsigned char[this->allRowCount*(this->Columns[i].dbsize)];     //æŒ‰å­—èŠ‚å­˜å‚¨
 	#else
-								char * * tcp=(new char *[this->allRowCount]);     //°´×Ö½Ú´æ´¢
+								char * * tcp=(new char *[this->allRowCount]);     //æŒ‰å­—èŠ‚å­˜å‚¨
 								Data[i]=(unsigned char *)tcp;
 								for(int index=0;index<this->allRowCount;index++)
 									tcp[index]=NULL;
@@ -489,7 +489,7 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 							break;
 						}
 					}
-					if(!Data[i])EXP("ÄÚ´æ¿Õ¼äÉêÇëÊ§°Ü!")
+					if(!Data[i])EXP("å†…å­˜ç©ºé—´ç”³è¯·å¤±è´¥!")
 				}
 				int rowIndex=0;
 				string key;
@@ -502,7 +502,7 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 				{
 					if(rowIndex>=this->allRowCount)
 					{
-						EXP(String("µ±Ç°ÉèÖÃµÄ×î´óÊı¾İ´æ´¢³¤¶È²»¹»:")+this->allRowCount);
+						EXP(String("å½“å‰è®¾ç½®çš„æœ€å¤§æ•°æ®å­˜å‚¨é•¿åº¦ä¸å¤Ÿ:")+this->allRowCount);
 					}
 					if(KeysIndex.size()>0)
 					{
@@ -523,20 +523,20 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 					{
 						switch(this->Columns[col].otl_var_dbtype)
 						{
-						case otl_var_char:			//·ÖÀà´¦Àí
+						case otl_var_char:			//åˆ†ç±»å¤„ç†
 							{
 								if(stringObject) 
-									((string *) Data[col])[rowIndex]=rs.getChars(col); //¶ÔÏó´æ´¢                                    
+									((string *) Data[col])[rowIndex]=rs.getChars(col); //å¯¹è±¡å­˜å‚¨                                    
 								else 
 								{
 #if defined(USE_SEPARATE_STORAGE_POINT)
-									strcpy((((char * )Data[col])+rowIndex*(this->Columns[col].dbsize)),rs.getChars(col));//°´×Ö½Ú´æ´¢                                    
+									strcpy((((char * )Data[col])+rowIndex*(this->Columns[col].dbsize)),rs.getChars(col));//æŒ‰å­—èŠ‚å­˜å‚¨                                    
 #else
 									if(useMaxLen)
 										((char **)Data[col])[rowIndex]=new char[this->Columns[col].dbsize];
 									else
 										((char **)Data[col])[rowIndex]=new char[rs.getLen(col)+1];
-									strcpy(((char **)Data[col])[rowIndex],rs.getChars(col));//°´×Ö½Ú´æ´¢                                    
+									strcpy(((char **)Data[col])[rowIndex],rs.getChars(col));//æŒ‰å­—èŠ‚å­˜å‚¨                                    
 #endif
 								}
 								break;
@@ -618,7 +618,7 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 			{
 				rs.close();
 				con.logoff();
-				EXP(String("²éÑ¯Êı¾İÌî³äTableMap: ")+String(p.stm_text)+string("\t\t")+(char *)p.msg+"\tvar_info:"+(char *)p.var_info);
+				EXP(String("æŸ¥è¯¢æ•°æ®å¡«å……TableMap: ")+String(p.stm_text)+string("\t\t")+(char *)p.msg+"\tvar_info:"+(char *)p.var_info);
 			}
 			catch(Exception &ex)
 			{
@@ -629,8 +629,8 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 			return result;
 		}
         //
-		//ÕªÒª£º
-        //  »ñÈ¡ÁĞÃû³Æ		
+		//æ‘˜è¦ï¼š
+        //  è·å–åˆ—åç§°		
 		const string & getColName(int index)
 		{
 			return this->Columns[index].name;
@@ -640,8 +640,8 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 			return this->Columns[index].typeName;
 		}
         //
-		//ÕªÒª£º
-        //  »ñÈ¡ÁĞÊı×éÊı¾İ
+		//æ‘˜è¦ï¼š
+        //  è·å–åˆ—æ•°ç»„æ•°æ®
 		void getColAsDbl(Array<double> &result,int col)
 		{
 			result[this->RowCount-1]=0;
@@ -670,7 +670,7 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 		int getRowIndexByKey(string key)
 		{
 			if(KeysIndex.size()==0)
-				EXP("Î´Éè¶¨¹Ø¼ü×ÖÁĞ,²»ÄÜÊ¹ÓÃMAP²éÑ¯.");
+				EXP("æœªè®¾å®šå…³é”®å­—åˆ—,ä¸èƒ½ä½¿ç”¨MAPæŸ¥è¯¢.");
 			if(valueIndexMap.find(key)!=valueIndexMap.end())
 				return valueIndexMap[key];
 			else 
@@ -679,7 +679,7 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 		int getRowIndexByKey(Array<string> &keys)
 		{
 			if(KeysIndex.size()==0)
-				EXP("Î´Éè¶¨¹Ø¼ü×ÖÁĞ,²»ÄÜÊ¹ÓÃMAP²éÑ¯.");
+				EXP("æœªè®¾å®šå…³é”®å­—åˆ—,ä¸èƒ½ä½¿ç”¨MAPæŸ¥è¯¢.");
 			string key=String::Join(keys,keySplit);
 			map<string,int>::iterator pos=valueIndexMap.find(key);
 			if(pos!=valueIndexMap.end())
@@ -695,7 +695,7 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 			GET_NUM_DATA(T,T_type)																	\
 		}
 #endif
-//for string DateTime  µÈ¶ÔÏóĞÍ
+//for string DateTime  ç­‰å¯¹è±¡å‹
 #ifndef TABLE_GETSOBJ
 #define TABLE_GETSOBJ(T,T_type)                                                                     \
   		void	 get(T& n,int i,int j)                                                              \
@@ -712,15 +712,15 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 	TABLE_GETSNUM(double,otl_var_double)
 	TABLE_GETSNUM(long long,otl_var_bigint)
 	TABLE_GETSOBJ(DateTime,otl_var_timestamp)
-	//TABLE_GETSELF(string,otl_var_raw)			//ÒÑ¾­µ¥¶ÀĞ´  getStr
+	//TABLE_GETSELF(string,otl_var_raw)			//å·²ç»å•ç‹¬å†™  getStr
 
    		inline string getStr(int i ,int j)
 		{
 			return getChars(i,j);
 		}
 		//
-		//ÕªÒª£º
-		//  »ñÈ¡Êı¾İ
+		//æ‘˜è¦ï¼š
+		//  è·å–æ•°æ®
 		inline int getInt(int i,int j)
 		{
 			int result=0;
@@ -867,7 +867,7 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 			return result;
 		}
 
-//ÉèÖÃÖµ
+//è®¾ç½®å€¼
 #ifndef TABLE_SETSNUM
 #define TABLE_SETSNUM(T,T_type)																\
   		inline void set(int i,int j,T n)													\
@@ -907,8 +907,8 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 			}                                                                               \
 			else                                                                            \
 			{                                                                               \
-				EXP("×Ö¶Î:"+this->Columns[j].name+"ÀàĞÍÎª"+this->Columns[j].typeName+       \
-					",²»ÊÇ"+otl_var_type_name(T_type));                                     \
+				EXP("å­—æ®µ:"+this->Columns[j].name+"ç±»å‹ä¸º"+this->Columns[j].typeName+       \
+					",ä¸æ˜¯"+otl_var_type_name(T_type));                                     \
 			}                                                                               \
 		}
 
@@ -929,8 +929,8 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 			}
 			else
 			{
-				EXP("×Ö¶Î:"+this->Columns[j].name+"ÀàĞÍÎª"+this->Columns[j].typeName+
-					",²»ÊÇ"+otl_var_type_name(otl_var_timestamp));
+				EXP("å­—æ®µ:"+this->Columns[j].name+"ç±»å‹ä¸º"+this->Columns[j].typeName+
+					",ä¸æ˜¯"+otl_var_type_name(otl_var_timestamp));
 			}
 		}
 		inline void set(int i,int j,const string &n)
@@ -944,11 +944,11 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 				{
 #if defined(USE_SEPARATE_STORAGE_POINT)
 					char * temp=(char *)(this->Data[j]+i*(this->Columns[j].dbsize));
-					if(n.size()>=this->Columns[j].dbsize)EXP("ÉèÖÃÊı¾İ´óĞ¡±È´æÔÚÊı¾İ¿Õ¼ä´ó");
+					if(n.size()>=this->Columns[j].dbsize)EXP("è®¾ç½®æ•°æ®å¤§å°æ¯”å­˜åœ¨æ•°æ®ç©ºé—´å¤§");
 					strcpy(temp,n.c_str());
 #else
-					if(useMaxLen==false)EXP("Ã»ÓĞÉèÖÃ´æÔÚ×î´ó×Ö·ûÊı¾İÖ¸Õë³¤¶È");
-					if(n.size()>=this->Columns[j].dbsize)EXP("ÉèÖÃÊı¾İ´óĞ¡±È´æÔÚÊı¾İ¿Õ¼ä´ó");
+					if(useMaxLen==false)EXP("æ²¡æœ‰è®¾ç½®å­˜åœ¨æœ€å¤§å­—ç¬¦æ•°æ®æŒ‡é’ˆé•¿åº¦");
+					if(n.size()>=this->Columns[j].dbsize)EXP("è®¾ç½®æ•°æ®å¤§å°æ¯”å­˜åœ¨æ•°æ®ç©ºé—´å¤§");
 					char * temp=((char **)Data[j])[i];
 					if(temp==NULL)((char **)Data[j])[i]=new char[this->Columns[j].dbsize];
 					strcpy(temp,n.c_str());
@@ -981,11 +981,11 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 				{
 #if defined(USE_SEPARATE_STORAGE_POINT)
 					char * temp=(char *)(this->Data[j]+i*(this->Columns[j].dbsize));
-					if(strlen(n)>=this->Columns[j].dbsize)EXP("ÉèÖÃÊı¾İ´óĞ¡±È´æÔÚÊı¾İ¿Õ¼ä´ó");
+					if(strlen(n)>=this->Columns[j].dbsize)EXP("è®¾ç½®æ•°æ®å¤§å°æ¯”å­˜åœ¨æ•°æ®ç©ºé—´å¤§");
 					strcpy(temp,n);
 #else
-					if(useMaxLen==false)EXP("Ã»ÓĞÉèÖÃ´æÔÚ×î´ó×Ö·ûÊı¾İÖ¸Õë³¤¶È");
-					if(strlen(n)>=this->Columns[j].dbsize)EXP("ÉèÖÃÊı¾İ´óĞ¡±È´æÔÚÊı¾İ¿Õ¼ä´ó");
+					if(useMaxLen==false)EXP("æ²¡æœ‰è®¾ç½®å­˜åœ¨æœ€å¤§å­—ç¬¦æ•°æ®æŒ‡é’ˆé•¿åº¦");
+					if(strlen(n)>=this->Columns[j].dbsize)EXP("è®¾ç½®æ•°æ®å¤§å°æ¯”å­˜åœ¨æ•°æ®ç©ºé—´å¤§");
 					char * temp=((char **)Data[j])[i];
 					if(temp==NULL)((char **)Data[j])[i]=new char[this->Columns[j].dbsize];
 					strcpy(temp,n);
@@ -1017,8 +1017,8 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 		} 
 
         //
-		//ÕªÒª£º
-        //  ÉèÖÃÊı¾İ
+		//æ‘˜è¦ï¼š
+        //  è®¾ç½®æ•°æ®
 		inline void setInt(int i,int j,int value)
 		{
 			this->set(i,j,value);
@@ -1055,7 +1055,7 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 		{
 			this->set(i,j,value);
 		}
-		//ÉèÖÃ±í¸ñ//
+		//è®¾ç½®è¡¨æ ¼//
 		inline void setInfo(Array<ColumnInfo> &_Columns,int _RowCount)
 		{
 			this->setIndexSeq=0;
@@ -1087,14 +1087,14 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 				case otl_var_char:
 					{
 						if(stringObject)
-							Data[i]=(unsigned char *)(new string[this->allRowCount]);      //¶ÔÏó´æ´¢
+							Data[i]=(unsigned char *)(new string[this->allRowCount]);      //å¯¹è±¡å­˜å‚¨
 						else 
 						{
 #if defined(USE_SEPARATE_STORAGE_POINT)
-							Data[i]=new unsigned char[this->allRowCount*(this->Columns[i].dbsize)];     //°´×Ö½Ú´æ´¢
+							Data[i]=new unsigned char[this->allRowCount*(this->Columns[i].dbsize)];     //æŒ‰å­—èŠ‚å­˜å‚¨
 #else
-							char * * tcp=(new char *[this->allRowCount]);     //°´×Ö½Ú´æ´¢
-							Data[i]=(unsigned char *)tcp;     //°´×Ö½Ú´æ´¢
+							char * * tcp=(new char *[this->allRowCount]);     //æŒ‰å­—èŠ‚å­˜å‚¨
+							Data[i]=(unsigned char *)tcp;     //æŒ‰å­—èŠ‚å­˜å‚¨
 							for(int index=0;index<this->allRowCount;index++)
 								tcp[index]=NULL;
 #endif
@@ -1147,12 +1147,12 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 						break;
 					}
 				default :
-					EXP("´æÔÚ²»Ö§³ÖµÄÊı¾İÀàĞÍ¡£ÁĞ["+String(i)+"]");
+					EXP("å­˜åœ¨ä¸æ”¯æŒçš„æ•°æ®ç±»å‹ã€‚åˆ—["+String(i)+"]");
 				}
 				if(!Data[i])
 				{
 					cout<<i<<endl;
-					EXP("ÄÚ´æ¿Õ¼äÉêÇëÊ§°Ü!")
+					EXP("å†…å­˜ç©ºé—´ç”³è¯·å¤±è´¥!")
 				}
 			}
 		};
@@ -1163,18 +1163,18 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 			{
 				switch(this->Columns[col].otl_var_dbtype)
 				{
-				case otl_var_char:			//·ÖÀà´¦Àí
+				case otl_var_char:			//åˆ†ç±»å¤„ç†
 					{
 						char * dcp=(char *)(dataPoint[col]);
 						if(stringObject) 
-							((string *) Data[col])[rowIndex]=dcp; //¶ÔÏó´æ´¢                                    
+							((string *) Data[col])[rowIndex]=dcp; //å¯¹è±¡å­˜å‚¨                                    
 						else 
 						{
 #if defined(USE_SEPARATE_STORAGE_POINT)
-							strcpy((((char * )Data[col])+rowIndex*(this->Columns[col].dbsize)),dcp);//°´×Ö½Ú´æ´¢                                    
+							strcpy((((char * )Data[col])+rowIndex*(this->Columns[col].dbsize)),dcp);//æŒ‰å­—èŠ‚å­˜å‚¨                                    
 #else
 							((char **)Data[col])[rowIndex]=new char[this->Columns[col].dbsize];
-							strcpy(((char **)Data[col])[rowIndex],dcp);//°´×Ö½Ú´æ´¢                                    
+							strcpy(((char **)Data[col])[rowIndex],dcp);//æŒ‰å­—èŠ‚å­˜å‚¨                                    
 #endif
 						}
 						break;
@@ -1245,24 +1245,24 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 			{
 				switch(this->Columns[col].otl_var_dbtype)
 				{
-				case otl_var_char:			//·ÖÀà´¦Àí
+				case otl_var_char:			//åˆ†ç±»å¤„ç†
 					{
 						char * dcp=(char *)(dataPoint[col]);
 						if(stringObject) 
-							((string *) Data[col])[rowIndex]=dcp; //¶ÔÏó´æ´¢                                    
+							((string *) Data[col])[rowIndex]=dcp; //å¯¹è±¡å­˜å‚¨                                    
 						else 
 						{
 #if defined(USE_SEPARATE_STORAGE_POINT)
-							strcpy((((char * )Data[col])+rowIndex*(this->Columns[col].dbsize)),dcp);//°´×Ö½Ú´æ´¢                                    
+							strcpy((((char * )Data[col])+rowIndex*(this->Columns[col].dbsize)),dcp);//æŒ‰å­—èŠ‚å­˜å‚¨                                    
 #else
 							if(((char **)Data[col])[rowIndex])
 							{
-								strcpy(((char **)Data[col])[rowIndex],dcp);//°´×Ö½Ú´æ´¢                                    
+								strcpy(((char **)Data[col])[rowIndex],dcp);//æŒ‰å­—èŠ‚å­˜å‚¨                                    
 							}
 							else
 							{
 								((char **)Data[col])[rowIndex]=new char[this->Columns[col].dbsize];
-								strcpy(((char **)Data[col])[rowIndex],dcp);//°´×Ö½Ú´æ´¢                                    
+								strcpy(((char **)Data[col])[rowIndex],dcp);//æŒ‰å­—èŠ‚å­˜å‚¨                                    
 							}
 #endif
 						}
@@ -1330,19 +1330,19 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 				this->setIndexSeq++;
 			}
 		}
-		//ÅÅĞò
+		//æ’åº
 		inline void sort(DataTable & table,int  indexs[])
 		{
 		}
-		//¼ÆËãÖµ·½·¨,1:sum,2:avg,3:max,4:min,5:count,6:last
+		//è®¡ç®—å€¼æ–¹æ³•,1:sum,2:avg,3:max,4:min,5:count,6:last
 		inline void groupBy(DataTable & table,Array<ColumnInfo> &_Columns,
-			Array<int>& _indexRel,	//ĞÂ±í×Ö¶Î¶ÔÓ¦Ô´±í×Ö¶ÎÓ³Éä¹ØÏµ
-			Array<int>& _groupMethod		//ĞÂ±í×Ö¶Î·Ö×é¼ÆËã·½·¨ 0:group by ×Ö¶Î£¬ÆäËüÎª¼ÆËã×Ö¶Î 1:sum,2:avg,3:max,4:min,5:count,6:last
+			Array<int>& _indexRel,	//æ–°è¡¨å­—æ®µå¯¹åº”æºè¡¨å­—æ®µæ˜ å°„å…³ç³»
+			Array<int>& _groupMethod		//æ–°è¡¨å­—æ®µåˆ†ç»„è®¡ç®—æ–¹æ³• 0:group by å­—æ®µï¼Œå…¶å®ƒä¸ºè®¡ç®—å­—æ®µ 1:sum,2:avg,3:max,4:min,5:count,6:last
 			)
 		{
-			//¼ÆËã¼ì²éÓĞĞ§ĞÔ, ¼ì²éÊÇ·ñ´æÔÚ5¼ÆËã,Èç¹û´æÔÚ2¼ÆËãÔòÇ¿ÖÆÌí¼Ó5¼ÆËã
-			if(_indexRel.size()!=_Columns.size())EXP("´«Èë²ÎÊı²»¶Ô³Æ_Columns´óĞ¡Óë_indexRel´óĞ¡");
-			if(_groupMethod.size()!=_Columns.size())EXP("´«Èë²ÎÊı²»¶Ô³Æ_Columns´óĞ¡Óë_groupMethod´óĞ¡");
+			//è®¡ç®—æ£€æŸ¥æœ‰æ•ˆæ€§, æ£€æŸ¥æ˜¯å¦å­˜åœ¨5è®¡ç®—,å¦‚æœå­˜åœ¨2è®¡ç®—åˆ™å¼ºåˆ¶æ·»åŠ 5è®¡ç®—
+			if(_indexRel.size()!=_Columns.size())EXP("ä¼ å…¥å‚æ•°ä¸å¯¹ç§°_Columnså¤§å°ä¸_indexRelå¤§å°");
+			if(_groupMethod.size()!=_Columns.size())EXP("ä¼ å…¥å‚æ•°ä¸å¯¹ç§°_Columnså¤§å°ä¸_groupMethodå¤§å°");
 			bool havFiveCalc=false;
 			bool havTwoCalc=false;
 			int countCalcIndex=-1;
@@ -1373,7 +1373,7 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 					_Columns[i].typeName=otl_var_type_name(otl_var_double);
 				}
 			}
-			if(havTwoCalc==true && havFiveCalc==false)		//´æÔÚ2²»´æÔÚ5
+			if(havTwoCalc==true && havFiveCalc==false)		//å­˜åœ¨2ä¸å­˜åœ¨5
 			{
 				int colLen=_Columns.size();
 				countCalcIndex=colLen;
@@ -1410,20 +1410,20 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 					if((this->Columns[i].otl_var_dbtype==otl_var_char ||
 						this->Columns[i].otl_var_dbtype==otl_var_timestamp
 						)&& (groupMethod[i]==1 || groupMethod[i]==2 ))
-						EXP("×Ö·û´®ºÍÊ±¼ä²»Ö§³Ö·Ö×éº¯Êı£ºsum ºÍ avg ");
+						EXP("å­—ç¬¦ä¸²å’Œæ—¶é—´ä¸æ”¯æŒåˆ†ç»„å‡½æ•°ï¼šsum å’Œ avg ");
 				}
 			}
-			char groupKey[4096];				//	´æ´¢·Ö×éÖµ
-			hashTable<char *,int> contains(table.RowCount);	//	´æ´¢·Ö×éKEYË÷Òı
+			char groupKey[4096];				//	å­˜å‚¨åˆ†ç»„å€¼
+			hashTable<char *,int> contains(table.RowCount);	//	å­˜å‚¨åˆ†ç»„KEYç´¢å¼•
 			int rowIndex=0;
 			for(int i=0;i<table.RowCount;i++)
 			{
 				int pos=0;
 				for(int j=0;j<this->ColCount;j++)
 				{
-					if(groupMethod[j]==0)			//	·Ö×é×Ö¶Î
+					if(groupMethod[j]==0)			//	åˆ†ç»„å­—æ®µ
 					{
-						pos+=sprintf(groupKey+pos,"%s\1",table.getChars(i,indexRel[j]));		//	´æ´¢·Ö×éKEY
+						pos+=sprintf(groupKey+pos,"%s\1",table.getChars(i,indexRel[j]));		//	å­˜å‚¨åˆ†ç»„KEY
 					}
 				}
 				int index=rowIndex;
@@ -1433,7 +1433,7 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 					contains.addNode(groupKey,rowIndex++);
 					for(int j=0;j<this->ColCount;j++)
 					{
-						if(groupMethod[j]!=5)			//	·Ö×é×Ö¶Î groupMethod[j]==0 ||  ºÍ²¿·Ö¼ÆËã×Ö¶Î
+						if(groupMethod[j]!=5)			//	åˆ†ç»„å­—æ®µ groupMethod[j]==0 ||  å’Œéƒ¨åˆ†è®¡ç®—å­—æ®µ
 						{
 							switch(this->Columns[j].otl_var_dbtype)
 							{
@@ -1471,7 +1471,7 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 				{
 					for(int j=0;j<this->ColCount;j++)
 					{
-						switch(groupMethod[j])			//	¼ÆËã×Ö¶Î
+						switch(groupMethod[j])			//	è®¡ç®—å­—æ®µ
 						{
 						case 0:continue;
 						case 1:		//sum
@@ -1661,7 +1661,7 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 							}
 							break;
 						default:
-							EXP("´æÔÚ²»ÄÜ½âÎöµÄ·Ö×é·½·¨.");
+							EXP("å­˜åœ¨ä¸èƒ½è§£æçš„åˆ†ç»„æ–¹æ³•.");
 						}
 					}
 				}
@@ -1669,14 +1669,14 @@ otl_var_raw	23	RAW, BINARY, VARBINARY, BYTEA, VARCHAR BYTE, CHAR BYTE, etc.
 			this->RowCount=rowIndex;
 			contains.clear();
 			delete[] indexRel;
-			//×îºó¼ÆËãÆ½¾ùÖµ
+			//æœ€åè®¡ç®—å¹³å‡å€¼
 			if(havTwoCalc)
 			{
 				for(int i=0;i<table.RowCount;i++)
 				{
 					for(int j=0;j<this->ColCount;j++)
 					{
-						if(groupMethod[j]==2)			//	·Ö×é×Ö¶Î
+						if(groupMethod[j]==2)			//	åˆ†ç»„å­—æ®µ
 						{
 							double sum=this->getDouble(i,j);
 							int count=this->getInt(i,countCalcIndex);

@@ -8,7 +8,7 @@ namespace engine
 	{
 		NewEnemy_mc::NewEnemy_mc()
 		{
-			return;
+			return; 
 		}// end function
 
 		bool Unit::init() //public function init(event:Event) : void event:Event

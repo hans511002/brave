@@ -6,7 +6,7 @@
 
 namespace engine{
     namespace bullets{ 
-        bool Bullet_5::init() 
+        bool Bullet_5::init()  
         {
             bulletType = 5;
             liveTimer = 30;

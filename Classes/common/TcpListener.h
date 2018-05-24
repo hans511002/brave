@@ -18,8 +18,8 @@
 namespace Common
 {
 	NET_NAMESPACE_BEGIN
-	// ÕªÒª:
-	//     ´Ó TCP ÍøÂç¿Í»§¶ËÕìÌıÁ¬½Ó¡£
+	// æ‘˜è¦:
+	//     ä» TCP ç½‘ç»œå®¢æˆ·ç«¯ä¾¦å¬è¿æ¥ã€‚
 	class TcpListener
 	{
     // Fields
@@ -27,7 +27,7 @@ namespace Common
 		Socket m_ServerSocket;
 		IPAddress m_ServerSocketEP;
 	public :
-		//     ³õÊ¼»¯ÔÚÖ¸¶¨¶Ë¿ÚÉÏÕìÌıµÄ System.Net.Sockets.TcpListener ÀàµÄĞÂÊµÀı¡£port:ÓÃÀ´ÕìÌı´«ÈëµÄÁ¬½Ó³¢ÊÔµÄ¶Ë¿Ú¡£
+		//     åˆå§‹åŒ–åœ¨æŒ‡å®šç«¯å£ä¸Šä¾¦å¬çš„ System.Net.Sockets.TcpListener ç±»çš„æ–°å®ä¾‹ã€‚port:ç”¨æ¥ä¾¦å¬ä¼ å…¥çš„è¿æ¥å°è¯•çš„ç«¯å£ã€‚
 		TcpListener():m_ServerSocket(AddressFamily::InterNetwork, SocketType::Stream, ProtocolType::Tcp),m_Active(false){};
 		TcpListener(int port):m_ServerSocketEP(port),m_ServerSocket(AddressFamily::InterNetwork, SocketType::Stream, ProtocolType::Tcp),m_Active(false){};
 		TcpListener(IPAddress localEP):m_ServerSocketEP(localEP),m_ServerSocket(AddressFamily::InterNetwork, SocketType::Stream, ProtocolType::Tcp),m_Active(false){};
@@ -49,7 +49,7 @@ namespace Common
 		//{
 		//	 return TcpClient(m_ServerSocket.Accept());
 		//};
-		//×î´óÁ¬½ÓÊıÏŞÖÆ
+		//æœ€å¤§è¿æ¥æ•°é™åˆ¶
 		void Start(int backlog)
 		{
 			if ((backlog > 0x7fffffff) || (backlog < 0))
@@ -82,7 +82,7 @@ namespace Common
 				this->m_ServerSocket.Close();
 			}
 			m_Active = false;
-			m_ServerSocket=Socket(AddressFamily::InterNetwork, SocketType::Stream, ProtocolType::Tcp);		//	ÖØĞÂ³õÊ¼socket,ÒÔ±ãÖØĞÂ¼àÌı
+			m_ServerSocket=Socket(AddressFamily::InterNetwork, SocketType::Stream, ProtocolType::Tcp);		//	é‡æ–°åˆå§‹socket,ä»¥ä¾¿é‡æ–°ç›‘å¬
 		};
 		void Close()
 		{
@@ -98,7 +98,7 @@ namespace Common
 		};
 
 		// Properties
-		bool Active() { return m_Active; };// TcpListener ÕıÖ÷¶¯ÕìÌı£¬ÔòÎª true£»·ñÔòÎª false¡£
+		bool Active() { return m_Active; };// TcpListener æ­£ä¸»åŠ¨ä¾¦å¬ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚
 		IPAddress &LocalEndpoint() { return  m_ServerSocketEP; }
 		Socket Server() { return m_ServerSocket; }
 	};

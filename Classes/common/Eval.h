@@ -10,7 +10,7 @@
 //				modify and redistribute it for any purpose is hereby granted
 //				without fee, provided that the above copyright notice appear
 //				in all copies.
-//description  ¶¯Ì¬Ö´ÐÐ±í´ïÊ½£¬¿ÉÒÔÖ§³Öº¯ÊýÔËËãÒÔ¼°±äÁ¿ÒýÓÃ   Ö§³Ö+ - * / % ~(ÃÝ **)  && || ! & | ^
+//description  åŠ¨æ€æ‰§è¡Œè¡¨è¾¾å¼ï¼Œå¯ä»¥æ”¯æŒå‡½æ•°è¿ç®—ä»¥åŠå˜é‡å¼•ç”¨   æ”¯æŒ+ - * / % ~(å¹‚ **)  && || ! & | ^
 // ==============================================================
 
 #ifndef __Common_Eval__
@@ -64,7 +64,7 @@ namespace Common
 				RB = ')',
 				PS = ',',
 
-				GT = '>',		// ÐÂ¼Ó
+				GT = '>',		// æ–°åŠ 
 				LT = '<', 
 				EQ = '=', 
 				NQ = '!',
@@ -164,7 +164,7 @@ namespace Common
 				else
 					error();
 			}
-			void error(){EXP("Óï·¨´íÎó: \""+String(MC)+"\" tokenString=\""+MTT+"\" ");}
+			void error(){EXP("è¯­æ³•é”™è¯¯: \""+String(MC)+"\" tokenString=\""+MTT+"\" ");}
 			N logic()
 			{
 				N tmp = bitOperation();
@@ -403,13 +403,13 @@ namespace Common
 					error();
 				return tmp;
 			}
-			N LS()	//º¯Êý£¬±êÊ¶·ûÔËËã
+			N LS()	//å‡½æ•°ï¼Œæ ‡è¯†ç¬¦è¿ç®—
 			{
 				string id = MI;
 				M( I );
 				return FUNC( id );
 			}
-			N FUNC( const string& id )  //º¯Êý£¬±êÊ¶·ûÔËËã
+			N FUNC( const string& id )  //å‡½æ•°ï¼Œæ ‡è¯†ç¬¦è¿ç®—
 			{
 				N R;
 				if( MTT == LB )

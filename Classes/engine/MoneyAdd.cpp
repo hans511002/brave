@@ -1,7 +1,7 @@
 ﻿#include "MoneyAdd.h"
 
 namespace engine
-{
+{ 
     MoneyAdd(int param1):container(NULL),money(0),dead(false),i(0)
     {
         this->world = Main::mainClass->worldClass;

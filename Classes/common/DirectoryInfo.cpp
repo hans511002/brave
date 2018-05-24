@@ -38,15 +38,15 @@ namespace Common
 
 #endif
 
-	// ÕªÒª:
-	//     °´ path µÄÖ¸¶¨´´½¨ËùÓĞÄ¿Â¼ºÍ×ÓÄ¿Â¼.
+	// æ‘˜è¦:
+	//     æŒ‰ path çš„æŒ‡å®šåˆ›å»ºæ‰€æœ‰ç›®å½•å’Œå­ç›®å½•.
 	//
-	// ²ÎÊı:
+	// å‚æ•°:
 	//   path:
-	//     Òª´´½¨µÄÄ¿Â¼Â·¾¶¡£
+	//     è¦åˆ›å»ºçš„ç›®å½•è·¯å¾„ã€‚
 	//
-	// ·µ»Ø½á¹û:
-	//     ÓÉ path Ö¸¶¨µÄ System.IO.DirectoryInfo¡£
+	// è¿”å›ç»“æœ:
+	//     ç”± path æŒ‡å®šçš„ System.IO.DirectoryInfoã€‚
 	DirectoryInfo Directory::CreateDirectory(String path)
 	{
 		if (path.empty())
@@ -60,15 +60,15 @@ namespace Common
 		return DirectoryInfo("");
 	};
 	//
-	// ÕªÒª:
-	//     ¼ìË÷Ö¸¶¨Â·¾¶µÄ¸¸Ä¿Â¼£¬°üÀ¨¾ø¶ÔÂ·¾¶ºÍÏà¶ÔÂ·¾¶¡£
+	// æ‘˜è¦:
+	//     æ£€ç´¢æŒ‡å®šè·¯å¾„çš„çˆ¶ç›®å½•ï¼ŒåŒ…æ‹¬ç»å¯¹è·¯å¾„å’Œç›¸å¯¹è·¯å¾„ã€‚
 	//
-	// ²ÎÊı:
+	// å‚æ•°:
 	//   path:
-	//     ÓÃÓÚ¼ìË÷¸¸Ä¿Â¼µÄÂ·¾¶¡£
+	//     ç”¨äºæ£€ç´¢çˆ¶ç›®å½•çš„è·¯å¾„ã€‚
 	//
-	// ·µ»Ø½á¹û:
-	//     ¸¸Ä¿Â¼£»»òÕßÈç¹û path ÊÇ¸ùÄ¿Â¼£¬°üÀ¨ UNC ·şÎñÆ÷»ò¹²ÏíÃûµÄ¸ù£¬ÔòÎªnull¡£
+	// è¿”å›ç»“æœ:
+	//     çˆ¶ç›®å½•ï¼›æˆ–è€…å¦‚æœ path æ˜¯æ ¹ç›®å½•ï¼ŒåŒ…æ‹¬ UNC æœåŠ¡å™¨æˆ–å…±äº«åçš„æ ¹ï¼Œåˆ™ä¸ºnullã€‚
 	DirectoryInfo Directory::GetParent(String path)
 	{
 		path=Path::GetFullPath(path);
@@ -81,23 +81,23 @@ namespace Common
 	};
 
  	//
-	// ÕªÒª:
-	//     »ñÈ¡µ±Ç°Ä¿Â¼ÖĞÓëÖ¸¶¨ËÑË÷Ä£Ê½Æ¥Åä²¢Ê¹ÓÃÄ³¸öÖµÈ·¶¨ÊÇ·ñÔÚ×ÓÄ¿Â¼ÖĞËÑË÷µÄÄ¿Â¼µÄÊı×é¡£
+	// æ‘˜è¦:
+	//     è·å–å½“å‰ç›®å½•ä¸­ä¸æŒ‡å®šæœç´¢æ¨¡å¼åŒ¹é…å¹¶ä½¿ç”¨æŸä¸ªå€¼ç¡®å®šæ˜¯å¦åœ¨å­ç›®å½•ä¸­æœç´¢çš„ç›®å½•çš„æ•°ç»„ã€‚
 	//
-	// ²ÎÊı:
+	// å‚æ•°:
 	//   searchOption:
-	//     System.IO.SearchOption ÖµÖ®Ò»£¬Ö¸¶¨ËÑË÷²Ù×÷Ó¦°üÀ¨ËùÓĞ×ÓÄ¿Â¼»¹ÊÇ½ö°üÀ¨µ±Ç°Ä¿Â¼¡£
+	//     System.IO.SearchOption å€¼ä¹‹ä¸€ï¼ŒæŒ‡å®šæœç´¢æ“ä½œåº”åŒ…æ‹¬æ‰€æœ‰å­ç›®å½•è¿˜æ˜¯ä»…åŒ…æ‹¬å½“å‰ç›®å½•ã€‚
 	//
 	//   path:
-	//     ÒªËÑË÷µÄÂ·¾¶¡£
+	//     è¦æœç´¢çš„è·¯å¾„ã€‚
 	//
 	//   searchPattern:
-	//     ÒªÓë path ÖĞµÄÎÄ¼şÃûÆ¥ÅäµÄËÑË÷×Ö·û´®¡£´Ë²ÎÊı²»ÄÜÒÔÁ½¸ö¾äµã£¨¡°..¡±£©½áÊø£¬²»ÄÜÔÚ System.IO.Path.DirectorySeparatorChar
-	//     »ò System.IO.Path.AltDirectorySeparatorChar µÄÇ°Ãæ°üº¬Á½¸ö¾äµã£¨¡°..¡±£©£¬Ò²²»ÄÜ°üº¬ System.IO.Path.InvalidPathChars
-	//     ÖĞµÄÈÎºÎ×Ö·û¡£
+	//     è¦ä¸ path ä¸­çš„æ–‡ä»¶ååŒ¹é…çš„æœç´¢å­—ç¬¦ä¸²ã€‚æ­¤å‚æ•°ä¸èƒ½ä»¥ä¸¤ä¸ªå¥ç‚¹ï¼ˆâ€œ..â€ï¼‰ç»“æŸï¼Œä¸èƒ½åœ¨ System.IO.Path.DirectorySeparatorChar
+	//     æˆ– System.IO.Path.AltDirectorySeparatorChar çš„å‰é¢åŒ…å«ä¸¤ä¸ªå¥ç‚¹ï¼ˆâ€œ..â€ï¼‰ï¼Œä¹Ÿä¸èƒ½åŒ…å« System.IO.Path.InvalidPathChars
+	//     ä¸­çš„ä»»ä½•å­—ç¬¦ã€‚
 	//
-	// ·µ»Ø½á¹û:
-	//     ÓëËÑË÷Ä£Ê½Æ¥ÅäµÄÄ¿Â¼µÄ String Êı×é¡£
+	// è¿”å›ç»“æœ:
+	//     ä¸æœç´¢æ¨¡å¼åŒ¹é…çš„ç›®å½•çš„ String æ•°ç»„ã€‚
 	void Directory::InternalGetFileDirectoryNames(Array<String> &res,String path,bool includeFiles,
 		bool includeDirs,String searchPattern,bool ignoreCase,SearchOption searchOption)
 	{
@@ -112,13 +112,13 @@ namespace Common
 #if OSTYPE>10
 		hFile=POPEN(("ls -l \""+path+"\"").c_str(),"r");
 		if(!hFile)
-			EXP("Ö´ĞĞÄ¿Â¼ÁĞ±íÃüÁîÊ§°Ü");
+			EXP("æ‰§è¡Œç›®å½•åˆ—è¡¨å‘½ä»¤å¤±è´¥");
 		char * dest[100];
 		while(fgets(szBuff, sizeof(szBuff)-1, hFile))
 		{
-			if(index++==0)continue;   //È¥³ı total 19584
+			if(index++==0)continue;   //å»é™¤ total 19584
 			int len=String::Split(dest,szBuff,' ');
-			if(dest[len-1][strlen(dest[len-1])-1]=='\n')dest[len-1][strlen(dest[len-1])-1]=0;	//È¥³ı»Ø³µ
+			if(dest[len-1][strlen(dest[len-1])-1]=='\n')dest[len-1][strlen(dest[len-1])-1]=0;	//å»é™¤å›è½¦
 			char ch=dest[0][0];
 			switch(ch)							//If the first character is:
 			{
@@ -152,12 +152,12 @@ namespace Common
 		{
 			hFile=POPEN(("dir /AD-S /B \""+path+"\"").c_str(),"r");
 			if(!hFile)
-				EXP("Ö´ĞĞÄ¿Â¼ÁĞ±íÃüÁîÊ§°Ü");
+				EXP("æ‰§è¡Œç›®å½•åˆ—è¡¨å‘½ä»¤å¤±è´¥");
 			string filePath="";
 			while(fgets(szBuff, sizeof(szBuff)-1, hFile))
 			{
 				if(szBuff[0]==32 || szBuff[0]=='\n')continue;
-				if(szBuff[strlen(szBuff)-1]=='\n')szBuff[strlen(szBuff)-1]=0;	//È¥³ı»Ø³µ
+				if(szBuff[strlen(szBuff)-1]=='\n')szBuff[strlen(szBuff)-1]=0;	//å»é™¤å›è½¦
 				subPath=path+szBuff+Path::DirectorySeparatorChar;
 				if(searchOption==AllDirectories)
 				{
@@ -172,12 +172,12 @@ namespace Common
 		{
 			hFile=POPEN(("dir /A-S-D /B \""+path+"\"").c_str(),"r");
 			if(!hFile)
-				EXP("Ö´ĞĞÄ¿Â¼ÁĞ±íÃüÁîÊ§°Ü");
+				EXP("æ‰§è¡Œç›®å½•åˆ—è¡¨å‘½ä»¤å¤±è´¥");
 			string filePath="";
 			while(fgets(szBuff, sizeof(szBuff)-1, hFile))
 			{
 				if(szBuff[0]==32 || szBuff[0]=='\n')continue;
-				if(szBuff[strlen(szBuff)-1]=='\n')szBuff[strlen(szBuff)-1]=0;	//È¥³ı»Ø³µ
+				if(szBuff[strlen(szBuff)-1]=='\n')szBuff[strlen(szBuff)-1]=0;	//å»é™¤å›è½¦
 				if(search==false || String::IndexOf(szBuff,searchPattern,ignoreCase)!=-1)
 					res[res.size()]=path+szBuff+Path::DirectorySeparatorChar;
 				memset(szBuff,0,sizeof(szBuff));
@@ -187,12 +187,12 @@ namespace Common
 		{
 			hFile=POPEN(("dir /AD-S /B \""+path+"\"").c_str(),"r");
 			if(!hFile)
-				EXP("Ö´ĞĞÄ¿Â¼ÁĞ±íÃüÁîÊ§°Ü");
+				EXP("æ‰§è¡Œç›®å½•åˆ—è¡¨å‘½ä»¤å¤±è´¥");
 			string filePath="";
 			while(fgets(szBuff, sizeof(szBuff)-1, hFile))
 			{
 				if(szBuff[0]==32 || szBuff[0]=='\n')continue;
-				if(szBuff[strlen(szBuff)-1]=='\n')szBuff[strlen(szBuff)-1]=0;	//È¥³ı»Ø³µ
+				if(szBuff[strlen(szBuff)-1]=='\n')szBuff[strlen(szBuff)-1]=0;	//å»é™¤å›è½¦
 				subPath=path+szBuff+Path::DirectorySeparatorChar;
 				if(searchOption==AllDirectories)
 				{
@@ -205,11 +205,11 @@ namespace Common
 			PCLOSE(hFile);
 			hFile=POPEN(("dir /A-D-S /B \""+path+"\"").c_str(),"r");
 			if(!hFile)
-				EXP("Ö´ĞĞÄ¿Â¼ÁĞ±íÃüÁîÊ§°Ü");
+				EXP("æ‰§è¡Œç›®å½•åˆ—è¡¨å‘½ä»¤å¤±è´¥");
 			while(fgets(szBuff, sizeof(szBuff)-1, hFile))
 			{
 				if(szBuff[0]==32 || szBuff[0]=='\n')continue;
-				if(szBuff[strlen(szBuff)-1]=='\n')szBuff[strlen(szBuff)-1]=0;	//È¥³ı»Ø³µ
+				if(szBuff[strlen(szBuff)-1]=='\n')szBuff[strlen(szBuff)-1]=0;	//å»é™¤å›è½¦
 				if(search==false || String::IndexOf(szBuff,searchPattern,ignoreCase)!=-1)
 					res[res.size()]=path+szBuff+Path::DirectorySeparatorChar;
 				memset(szBuff,0,sizeof(szBuff));
@@ -218,7 +218,7 @@ namespace Common
 		PCLOSE(hFile);
 #endif
 	}
-	//»ñÈ¡×ÓÄ¿Â¼ÁĞ±í
+	//è·å–å­ç›®å½•åˆ—è¡¨
 	Array<DirectoryInfo> DirectoryInfo::GetDirectoryInfos(String searchPattern,bool ignoreCase, SearchOption searchOption)
 	{
 		Array<String> dires=GetDirectories(searchPattern,ignoreCase,searchOption);
@@ -230,7 +230,7 @@ namespace Common
 		}
 		return res;
 	}
-	//»ñÈ¡ÎÄ¼şÁĞ±í
+	//è·å–æ–‡ä»¶åˆ—è¡¨
 	Array<FileInfo> DirectoryInfo::GetFileInfos(String searchPattern,bool ignoreCase, SearchOption searchOption)
 	{
 		Array<String> dires=GetFiles(searchPattern,ignoreCase,searchOption);
@@ -251,9 +251,9 @@ namespace Common
 		if(destFile==srcFile)
 			destFile+=".temp";
 		FILE * fsrcFile=fopen(srcFile.Trim().c_str(),"rb");
-		if(fsrcFile==NULL)EXP("ÎÄ¼ş²»´æÔÚ->"+srcFile);
+		if(fsrcFile==NULL)EXP("æ–‡ä»¶ä¸å­˜åœ¨->"+srcFile);
 		FILE * fdestFile=fopen(destFile.Trim().c_str(),"wb");
-		if(fdestFile==NULL)EXP("´´½¨ÎÄ¼şÊ§°Ü->"+destFile);
+		if(fdestFile==NULL)EXP("åˆ›å»ºæ–‡ä»¶å¤±è´¥->"+destFile);
 		char src[1024];
 		char dest[1024];
 		int readLen=0;
@@ -289,24 +289,24 @@ namespace Common
 #endif
 }
 
-//UNIX »ñÈ¡Ä¿Â¼
-//opendir£¨´ò¿ªÄ¿Â¼£© 
-//Ïà¹Øº¯Êı  open£¬readdir£¬closedir£¬rewinddir£¬seekdir£¬telldir£¬scandir 
-//windowsÏÂ»ñÈ¡×ÓÄ¿Â¼ºÍÎÄ¼ş
+//UNIX è·å–ç›®å½•
+//opendirï¼ˆæ‰“å¼€ç›®å½•ï¼‰ 
+//ç›¸å…³å‡½æ•°  openï¼Œreaddirï¼Œclosedirï¼Œrewinddirï¼Œseekdirï¼Œtelldirï¼Œscandir 
+//windowsä¸‹è·å–å­ç›®å½•å’Œæ–‡ä»¶
 //void main(int argc, char **argv)  
 //{  
 //    _finddata_t file;  
 //    long longf;  
 //
-//  //_findfirst·µ»ØµÄÊÇlongĞÍ; long __cdecl _findfirst(const char *, struct _finddata_t *)  
+//  //_findfirstè¿”å›çš„æ˜¯longå‹; long __cdecl _findfirst(const char *, struct _finddata_t *)  
 //  if((longf = _findfirst("d:\\*.*", &file))==-1l)  
 //  {  
-//      cout<<"ÎÄ¼şÃ»ÓĞÕÒµ½!\n";  
+//      cout<<"æ–‡ä»¶æ²¡æœ‰æ‰¾åˆ°!\n";  
 //  }  
 //  else  
 //  {  
-//      cout<<"\nÎÄ¼şÁĞ±í:\n";  
-//      //int __cdecl _findnext(long, struct _finddata_t *);Èç¹ûÕÒµ½ÏÂ¸öÎÄ¼şµÄÃû×Ö³É¹¦µÄ»°¾Í·µ»Ø0,·ñÔò·µ»Ø-1  
+//      cout<<"\næ–‡ä»¶åˆ—è¡¨:\n";  
+//      //int __cdecl _findnext(long, struct _finddata_t *);å¦‚æœæ‰¾åˆ°ä¸‹ä¸ªæ–‡ä»¶çš„åå­—æˆåŠŸçš„è¯å°±è¿”å›0,å¦åˆ™è¿”å›-1  
 //      string tempName;  
 //      while( _findnext( longf, &file ) == 0 )  
 //      {  
@@ -321,27 +321,27 @@ namespace Common
 //
 //          if(file.attrib == _A_NORMAL)  
 //          {  
-//                cout<<"  ÆÕÍ¨ÎÄ¼ş  ";  
+//                cout<<"  æ™®é€šæ–‡ä»¶  ";  
 //            }  
 //            else if(file.attrib == _A_RDONLY)  
 //            {  
-//                cout<<"  Ö»¶ÁÎÄ¼ş  ";  
+//                cout<<"  åªè¯»æ–‡ä»¶  ";  
 //            }  
 //            else if(file.attrib == _A_HIDDEN )  
 //            {  
-//                cout<<"  Òş²ØÎÄ¼ş  ";  
+//                cout<<"  éšè—æ–‡ä»¶  ";  
 //            }  
 //            else if(file.attrib == _A_SYSTEM )  
 //            {  
-//                cout<<"  ÏµÍ³ÎÄ¼ş  ";  
+//                cout<<"  ç³»ç»Ÿæ–‡ä»¶  ";  
 //            }  
 //            else if(file.attrib == _A_SUBDIR)  
 //            {  
-//                cout<<"  ×ÓÄ¿Â¼  ";  
+//                cout<<"  å­ç›®å½•  ";  
 //            }  
 //            else   
 //            {  
-//                cout<<"  ´æµµÎÄ¼ş  ";  
+//                cout<<"  å­˜æ¡£æ–‡ä»¶  ";  
 //            }  
 //            cout<<endl;  
 //        }  

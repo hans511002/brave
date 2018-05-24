@@ -8,7 +8,7 @@ using namespace engine::units;
 //#include "bezier/Bezier.h"
 using namespace bezier ;
 
-namespace engine
+namespace engine 
 {
 	Waves::Waves() :nowWave(0), maxWaves(0), waveWork(false), waveWorkSt1(false), waveWorkSt2(false), waveWorkSt3(false), world(NULL)
 	{

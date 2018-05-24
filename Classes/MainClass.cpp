@@ -36,21 +36,21 @@ bool Main::init()
     CCLOG("fps=%i", Main::fps);
 
     this->saveBoxClass = new SaveBox();
-    //this->readXMLClass = new ReadXML();//Ê¹ÓÃ¶ÔÏó
+    //this->readXMLClass = new ReadXML();//ä½¿ç”¨å¯¹è±¡
     //Sounds.instance.stopAll();
     //this->tracker = new GATracker(this, "UA-63231445-3", "AS3", false);
     //this->tracker.trackPageview("openGame");
     addNewScreen("World");
     //Main::mainClass->worldClass = World::create();// new World();
-    auto myKeyListener = EventListenerKeyboard::create(); //´´½¨ÊÂ¼þ¼àÌýÆ÷¼àÌý¼üÅÌÊÂ¼þ
-    ////¼üÅÌ°´¼ü°´ÏÂÊ±µÄÏìÓ¦
+    auto myKeyListener = EventListenerKeyboard::create(); //åˆ›å»ºäº‹ä»¶ç›‘å¬å™¨ç›‘å¬é”®ç›˜äº‹ä»¶
+    ////é”®ç›˜æŒ‰é”®æŒ‰ä¸‹æ—¶çš„å“åº”
     //myKeyListener->onKeyPressed = [](EventKeyboard::KeyCode keycode, cocos2d::Event *event)
     //{
     //    CCLOG("key is pressed, keycode is %d", keycode);
     //};
 
     myKeyListener->onKeyPressed = CC_CALLBACK_2(Main::keyDownHandler, this);
-    ////¼üÅÌ°´¼üµ¯»ØÊ±µÄÏìÓ¦
+    ////é”®ç›˜æŒ‰é”®å¼¹å›žæ—¶çš„å“åº”
     //myKeyListener->onKeyReleased = [](EventKeyboard::KeyCode keycode, cocos2d::Event *event)
     //{
     //    CCLOG("key is released, keycode is %d", keycode);

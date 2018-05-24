@@ -31,15 +31,15 @@
 namespace Common
 {
 	///	<summary>
-	///	Ö¸¶¨¶ÔÏóµÄÀàÐÍ
+	///	æŒ‡å®šå¯¹è±¡çš„ç±»åž‹
 	///	</summary>
 	///	<remarks>
 	/// <code>
-	///		NONE		=       0,//Î´ÖªÀàÐÍ£¬ÓÃÓÚ²ÎÊý¿ª¹ØÏî
+	///		NONE		=       0,//æœªçŸ¥ç±»åž‹ï¼Œç”¨äºŽå‚æ•°å¼€å…³é¡¹
 	///		CHAR		=       1,//char
 	///		INT 		=       3,
 	///		DOUBLE		=       4,
-	///		STRING		=       5,//string ¶ÔÏó
+	///		STRING		=       5,//string å¯¹è±¡
 	///		DATE		=       12,
 	///		LONG		=       20,
 	///		LLONG		=       64,
@@ -47,22 +47,22 @@ namespace Common
 	///	</remarks>
 	enum varType
 	{
-		NONE		=		0,//Î´ÖªÀàÐÍ£¬ÓÃÓÚ²ÎÊý¿ª¹ØÏî
+		NONE		=		0,//æœªçŸ¥ç±»åž‹ï¼Œç”¨äºŽå‚æ•°å¼€å…³é¡¹
 		CHAR		=       1,//char
 		INT			=       3,
 		DOUBLE		=       4,
-		STRING		=       5,//string ¶ÔÏó
+		STRING		=       5,//string å¯¹è±¡
 		DATE		=       12,
 		LONG		=       20,
 		LLONG		=		64,
 	};    
 	///	<summary>
-	///	Ö¸¶¨ÊÊÓÃµÄ Overload:String.Split ÖØÔØ·½·¨°üº¬»¹ÊÇÊ¡ÂÔ·µ»ØÖµÖÐµÄ¿Õ×Ó×Ö·û´®¡£
+	///	æŒ‡å®šé€‚ç”¨çš„ Overload:String.Split é‡è½½æ–¹æ³•åŒ…å«è¿˜æ˜¯çœç•¥è¿”å›žå€¼ä¸­çš„ç©ºå­å­—ç¬¦ä¸²ã€‚
 	///	</summary>
 	///	<remarks>
 	/// <code>
-	///		NONE = 0,//·µ»ØÖµ°üÀ¨º¬ÓÐ¿Õ×Ö·û´®µÄÊý×éÔªËØ
-	///		RemoveEmptyEntries = 1,//·µ»ØÖµ²»°üÀ¨º¬ÓÐ¿Õ×Ö·û´®µÄÊý×éÔªËØ 
+	///		NONE = 0,//è¿”å›žå€¼åŒ…æ‹¬å«æœ‰ç©ºå­—ç¬¦ä¸²çš„æ•°ç»„å…ƒç´ 
+	///		RemoveEmptyEntries = 1,//è¿”å›žå€¼ä¸åŒ…æ‹¬å«æœ‰ç©ºå­—ç¬¦ä¸²çš„æ•°ç»„å…ƒç´  
 	/// </code>
 	///	</remarks>
 	enum StringSplitOptions
@@ -72,12 +72,12 @@ namespace Common
 	};
 
 	///	<summary>
-	///	Ê±¼äÀàÐÍ¡£
+	///	æ—¶é—´ç±»åž‹ã€‚
 	///	</summary>
 	///	<remarks>
 	/// <code>
-	///		Local = 0,//±íÊ¾µÄÊ±¼äÎª±¾µØÊ±¼ä
-	///		Utc = 1,//±íÊ¾µÄÊ±¼äÎª UTC 
+	///		Local = 0,//è¡¨ç¤ºçš„æ—¶é—´ä¸ºæœ¬åœ°æ—¶é—´
+	///		Utc = 1,//è¡¨ç¤ºçš„æ—¶é—´ä¸º UTC 
 	/// </code>
 	///	</remarks>
 	enum DateTimeKind
@@ -86,37 +86,37 @@ namespace Common
 		Utc = 1
 	};
 	///	<summary>
-	///	ÐÇÆÚ¼¸¡£
+	///	æ˜ŸæœŸå‡ ã€‚
 	///	</summary>
 	///	<remarks>
 	/// <code>
-	///		Sunday = 0,//     ±íÊ¾ÐÇÆÚÈÕ¡£
-	///		Monday = 1,//     ±íÊ¾ÐÇÆÚÒ»¡£
-	///		Tuesday = 2,//     ±íÊ¾ÐÇÆÚ¶þ¡£
-	///		Wednesday = 3,//     ±íÊ¾ÐÇÆÚÈý¡£
-	///		Thursday = 4,//     ±íÊ¾ÐÇÆÚËÄ¡£
-	///		Friday = 5,//     ±íÊ¾ÐÇÆÚÎå¡£
-	///		Saturday = 6//     ±íÊ¾ÐÇÆÚÁù¡£ 
+	///		Sunday = 0,//     è¡¨ç¤ºæ˜ŸæœŸæ—¥ã€‚
+	///		Monday = 1,//     è¡¨ç¤ºæ˜ŸæœŸä¸€ã€‚
+	///		Tuesday = 2,//     è¡¨ç¤ºæ˜ŸæœŸäºŒã€‚
+	///		Wednesday = 3,//     è¡¨ç¤ºæ˜ŸæœŸä¸‰ã€‚
+	///		Thursday = 4,//     è¡¨ç¤ºæ˜ŸæœŸå››ã€‚
+	///		Friday = 5,//     è¡¨ç¤ºæ˜ŸæœŸäº”ã€‚
+	///		Saturday = 6//     è¡¨ç¤ºæ˜ŸæœŸå…­ã€‚ 
 	/// </code>
 	///	</remarks>
 	enum DayOfWeek
 	{
-		Sunday = 0,//     ±íÊ¾ÐÇÆÚÈÕ¡£
-		Monday = 1,//     ±íÊ¾ÐÇÆÚÒ»¡£
-		Tuesday = 2,//     ±íÊ¾ÐÇÆÚ¶þ¡£
-		Wednesday = 3,//     ±íÊ¾ÐÇÆÚÈý¡£
-		Thursday = 4,//     ±íÊ¾ÐÇÆÚËÄ¡£
-		Friday = 5,//     ±íÊ¾ÐÇÆÚÎå¡£
-		Saturday = 6//     ±íÊ¾ÐÇÆÚÁù¡£
+		Sunday = 0,//     è¡¨ç¤ºæ˜ŸæœŸæ—¥ã€‚
+		Monday = 1,//     è¡¨ç¤ºæ˜ŸæœŸä¸€ã€‚
+		Tuesday = 2,//     è¡¨ç¤ºæ˜ŸæœŸäºŒã€‚
+		Wednesday = 3,//     è¡¨ç¤ºæ˜ŸæœŸä¸‰ã€‚
+		Thursday = 4,//     è¡¨ç¤ºæ˜ŸæœŸå››ã€‚
+		Friday = 5,//     è¡¨ç¤ºæ˜ŸæœŸäº”ã€‚
+		Saturday = 6//     è¡¨ç¤ºæ˜ŸæœŸå…­ã€‚
 	};
 	///	<summary>
-	///	Ê±¼ä¸ñÊ½¡£
+	///	æ—¶é—´æ ¼å¼ã€‚
 	///	</summary>
 	///	<remarks>
 	/// <code>
-	///		StaUTC,//	Wed Jan 02 02:03:55 1980	// ÐÇÆÚ¼¸ ÔÂ·Ý ÈÕÆÚ Ê±:·Ö:Ãë Äê
+	///		StaUTC,//	Wed Jan 02 02:03:55 1980	// æ˜ŸæœŸå‡  æœˆä»½ æ—¥æœŸ æ—¶:åˆ†:ç§’ å¹´
 	///		StaDateTime, //	yyyy-mm-dd hh:mi:ss
-	///		LongDate,//	yyyyÄêmmÔÂddÈÕ
+	///		LongDate,//	yyyyå¹´mmæœˆddæ—¥
 	///		StaDate,//	yyyy-mm-dd
 	///		StaTime,//	hh:mi:ss
 	///		ShotDate,//	yyyymmdd
@@ -126,9 +126,9 @@ namespace Common
 	///	</remarks>
 	enum DateTimeStyles
 	{
-		StaUTC,//	Wed Jan 02 02:03:55 1980	// ÐÇÆÚ¼¸ ÔÂ·Ý ÈÕÆÚ Ê±:·Ö:Ãë Äê
+		StaUTC,//	Wed Jan 02 02:03:55 1980	// æ˜ŸæœŸå‡  æœˆä»½ æ—¥æœŸ æ—¶:åˆ†:ç§’ å¹´
 		StaDateTime, //	yyyy-mm-dd hh:mi:ss
-		LongDate,//	yyyyÄêmmÔÂddÈÕ
+		LongDate,//	yyyyå¹´mmæœˆddæ—¥
 		StaDate,//	yyyy-mm-dd
 		StaTime,//	hh:mi:ss
 		ShotDate,//	yyyymmdd
@@ -136,35 +136,35 @@ namespace Common
 		ShotDateTime,//	yyyymmddhhmiss
 	};
 	///	<summary>
-	///	Ê±ÇøÖµ¡£
+	///	æ—¶åŒºå€¼ã€‚
 	///	</summary>
 	///	<remarks>
 	/// <code>
-	///		GMT_1=-1,     //Î÷1  Çø
-	///		GMT_2=-2,     //Î÷2  Çø
-	///		GMT_3=-3,     //Î÷3  Çø
-	///		GMT_4=-4,     //Î÷4  Çø
-	///		GMT_5=-5,     //Î÷5  Çø
-	///		GMT_6=-6,     //Î÷6  Çø
-	///		GMT_7=-7,     //Î÷7  Çø
-	///		GMT_8=-8,     //Î÷8  Çø
-	///		GMT_9=-9,     //Î÷9  Çø
-	///		GMT_10=-10,   //Î÷10 Çø
-	///		GMT_11=-11,   //Î÷11 Çø
-	///		GMT_12=-12,   //Î÷12 Çø
-	///		GMT0=0,       //¶«0  Çø
-	///		GMT1=1,       //¶«1  Çø
-	///		GMT2=2,       //¶«2  Çø
-	///		GMT3=3,       //¶«3  Çø
-	///		GMT4=4,       //¶«4  Çø
-	///		GMT5=5,       //¶«5  Çø
-	///		GMT6=6,       //¶«6  Çø
-	///		GMT7=7,       //¶«7  Çø
-	///		GMT8=8,       //¶«8  Çø
-	///		GMT9=9,       //¶«9  Çø
-	///		GMT10=10,     //¶«10 Çø
-	///		GMT11=11,     //¶«11 Çø
-	///		GMT12=12      //¶«12 Çø
+	///		GMT_1=-1,     //è¥¿1  åŒº
+	///		GMT_2=-2,     //è¥¿2  åŒº
+	///		GMT_3=-3,     //è¥¿3  åŒº
+	///		GMT_4=-4,     //è¥¿4  åŒº
+	///		GMT_5=-5,     //è¥¿5  åŒº
+	///		GMT_6=-6,     //è¥¿6  åŒº
+	///		GMT_7=-7,     //è¥¿7  åŒº
+	///		GMT_8=-8,     //è¥¿8  åŒº
+	///		GMT_9=-9,     //è¥¿9  åŒº
+	///		GMT_10=-10,   //è¥¿10 åŒº
+	///		GMT_11=-11,   //è¥¿11 åŒº
+	///		GMT_12=-12,   //è¥¿12 åŒº
+	///		GMT0=0,       //ä¸œ0  åŒº
+	///		GMT1=1,       //ä¸œ1  åŒº
+	///		GMT2=2,       //ä¸œ2  åŒº
+	///		GMT3=3,       //ä¸œ3  åŒº
+	///		GMT4=4,       //ä¸œ4  åŒº
+	///		GMT5=5,       //ä¸œ5  åŒº
+	///		GMT6=6,       //ä¸œ6  åŒº
+	///		GMT7=7,       //ä¸œ7  åŒº
+	///		GMT8=8,       //ä¸œ8  åŒº
+	///		GMT9=9,       //ä¸œ9  åŒº
+	///		GMT10=10,     //ä¸œ10 åŒº
+	///		GMT11=11,     //ä¸œ11 åŒº
+	///		GMT12=12      //ä¸œ12 åŒº
 	/// </code>
 	///	</remarks>
 	enum TimeZone
@@ -196,37 +196,37 @@ namespace Common
 		GMT12=12
 	};
 	///	<summary>
-	///	Ê±¼ä²¿·Ö¡£
+	///	æ—¶é—´éƒ¨åˆ†ã€‚
 	///	</summary>
 	///	<remarks>
 	/// <code>
-	///		Year,//Äê
-	///		yearDay,//Ò»ÄêÖÐµÄµÚ¶àÉÙÌì
-	///		Month,//ÔÂ
-	///		Day,//ÈÕ
-	///		Hour,//Ð¡Ê±
-	///		Minute,//·ÖÖÓ
-	///		Second,//Ãë
-	///		MillesSecond,//ºÁÃë
-	///		WeekDay,//ÐÇÆÚ¼¸
-	///		Usec//Î¢Ãë
+	///		Year,//å¹´
+	///		yearDay,//ä¸€å¹´ä¸­çš„ç¬¬å¤šå°‘å¤©
+	///		Month,//æœˆ
+	///		Day,//æ—¥
+	///		Hour,//å°æ—¶
+	///		Minute,//åˆ†é’Ÿ
+	///		Second,//ç§’
+	///		MillesSecond,//æ¯«ç§’
+	///		WeekDay,//æ˜ŸæœŸå‡ 
+	///		Usec//å¾®ç§’
 	/// </code>
 	///	</remarks>
 	enum DatePart
 	{
-		Year=0,//Äê
-		yearDay,//Ò»ÄêÖÐµÄµÚ¶àÉÙÌì
-		Month,//ÔÂ
-		Day,//ÈÕ
-		Hour,//Ð¡Ê±
-		Minute,//·ÖÖÓ
-		Second,//Ãë
-		MillesSecond,//ºÁÃë
-		WeekDay,//ÐÇÆÚ¼¸
-		Usec//Î¢Ãë Ò²¾ÍÊÇ¶ÔÓ¦µÄ¿Ì¶È ticks
+		Year=0,//å¹´
+		yearDay,//ä¸€å¹´ä¸­çš„ç¬¬å¤šå°‘å¤©
+		Month,//æœˆ
+		Day,//æ—¥
+		Hour,//å°æ—¶
+		Minute,//åˆ†é’Ÿ
+		Second,//ç§’
+		MillesSecond,//æ¯«ç§’
+		WeekDay,//æ˜ŸæœŸå‡ 
+		Usec//å¾®ç§’ ä¹Ÿå°±æ˜¯å¯¹åº”çš„åˆ»åº¦ ticks
 	};
 	///	<summary>
-	///	Êý¾Ý¿â×Ö¶ÎÓ³ÉäÀàÐÍ¡£ÃèÊöÒ»¸ö×Ö¶ÎµÄÏà¹ØÐÅÏ¢
+	///	æ•°æ®åº“å­—æ®µæ˜ å°„ç±»åž‹ã€‚æè¿°ä¸€ä¸ªå­—æ®µçš„ç›¸å…³ä¿¡æ¯
 	///	</summary>
 	///	<remarks>
 	/// <code> 
@@ -235,68 +235,68 @@ namespace Common
 	struct ColumnInfo
 	{
 		///	<summary>
-		///	×Ö¶ÎÃû³Æ,´óÐ´ÐÎÊ½±íÊ¾
+		///	å­—æ®µåç§°,å¤§å†™å½¢å¼è¡¨ç¤º
 		///	</summary>
 		string name;
 		///	<summary>
-		///	Êý¾Ý¿âÄÚ²¿Êý¾ÝÀàÐÍ
+		///	æ•°æ®åº“å†…éƒ¨æ•°æ®ç±»åž‹
 		///	</summary>
 		///	<remarks><code> 
-		///	×Ö¶ÎµÄÄÚ²¿Êý¾ÝÀàÐÍ´úÂë¡£¶ÔÓÚCHARÏî£¨°üÀ¨Ñ¡Ôñ±íÖÐµÄÎÄ×Ö´®£©£¬·µ»ØµÄÊý¾ÝÀàÐÍÂë¿ÉÄÜÒÀÀµÓÚ
-		///	ÄãÈçºÎ·ÖÎöSQLÓï¾ä¡£Èç¹ûÄãÊ¹ÓÃosql3»òÊ¹ÓÃÉèÖÃÎª0µÄlngflg²ÎÊýµÄoparse»òÕßËµÔÚORACLE°æ±¾6µÄ»·¾³ÏÂ
-		///	Ê¹ÓÃÉèÖÃÎª1µÄlnkflg²ÎÊýµÄoparseµÄ»°£¬CHARÏî·µ»ØÊý¾ÝÀàÐÍÂë1£¬·ñÔòdbtype·µ»Ø96¡£
-		///	Ñ¡Ôñ±íÖÐµÄUSERº¯Êý×ÜÊÇ·µ»ØÊý¾ÝÀàÐÍ´úÂë1¡£
+		///	å­—æ®µçš„å†…éƒ¨æ•°æ®ç±»åž‹ä»£ç ã€‚å¯¹äºŽCHARé¡¹ï¼ˆåŒ…æ‹¬é€‰æ‹©è¡¨ä¸­çš„æ–‡å­—ä¸²ï¼‰ï¼Œè¿”å›žçš„æ•°æ®ç±»åž‹ç å¯èƒ½ä¾èµ–äºŽ
+		///	ä½ å¦‚ä½•åˆ†æžSQLè¯­å¥ã€‚å¦‚æžœä½ ä½¿ç”¨osql3æˆ–ä½¿ç”¨è®¾ç½®ä¸º0çš„lngflgå‚æ•°çš„oparseæˆ–è€…è¯´åœ¨ORACLEç‰ˆæœ¬6çš„çŽ¯å¢ƒä¸‹
+		///	ä½¿ç”¨è®¾ç½®ä¸º1çš„lnkflgå‚æ•°çš„oparseçš„è¯ï¼ŒCHARé¡¹è¿”å›žæ•°æ®ç±»åž‹ç 1ï¼Œå¦åˆ™dbtypeè¿”å›ž96ã€‚
+		///	é€‰æ‹©è¡¨ä¸­çš„USERå‡½æ•°æ€»æ˜¯è¿”å›žæ•°æ®ç±»åž‹ä»£ç 1ã€‚
 		/// </code></remarks>
 		int  dbtype;
 		///	<summary>
-		///	¶ÔÓ¦µÄotlÊý¾ÝÀàÐÍ
+		///	å¯¹åº”çš„otlæ•°æ®ç±»åž‹
 		///	</summary>
 		int  otl_var_dbtype;
 		///	<summary>
-		///	Êý¾Ý¿âÄÚ²¿×Ö¶Î´óÐ¡
+		///	æ•°æ®åº“å†…éƒ¨å­—æ®µå¤§å°
 		///	</summary>
 		///	<remarks><code> 
-		///	oracle±íµÄÀàÐÍ       		      Öµ
-		///	CHAR,VARCHAR2,RAW 		        ±íÖÐÁÐµÄ³¤¶È
-		///	NUMBER            		        22(ÄÚ²¿³¤¶È)
-		///	DATE             		         7(ÄÚ²¿³¤¶È)
+		///	oracleè¡¨çš„ç±»åž‹       		      å€¼
+		///	CHAR,VARCHAR2,RAW 		        è¡¨ä¸­åˆ—çš„é•¿åº¦
+		///	NUMBER            		        22(å†…éƒ¨é•¿åº¦)
+		///	DATE             		         7(å†…éƒ¨é•¿åº¦)
 		///	LONG LONGRAW     		          0
-		///	ROWID            			      (ÏµÍ³ÒÀÀµ)
-		///	·µ»ØÊý¾ÝÀàÐÍ1µÄ³¤¶È(Èç:to_char())ºÍdsizeÏàÍ¬
+		///	ROWID            			      (ç³»ç»Ÿä¾èµ–)
+		///	è¿”å›žæ•°æ®ç±»åž‹1çš„é•¿åº¦(å¦‚:to_char())å’Œdsizeç›¸åŒ
 		/// </code></remarks>
 		int  dbsize;
 		///	<summary>
-		///	ÊýÖµ×Ö¶ÎµÄ¾«¶È£¨Êý×Ö×ÜÎ»Êý£©
+		///	æ•°å€¼å­—æ®µçš„ç²¾åº¦ï¼ˆæ•°å­—æ€»ä½æ•°ï¼‰
 		///	</summary>
 		///	<remarks><code> 
-		///	·µ»ØÊý×ÖÑ¡Ôñ±íÏîµÄ¾«¶È£¬¾«¶ÈÊÇÒ»¸öÊýµÄÊý×Ö×ÜÎ»Êý¡£
-		///	Èç¹û²»ÐèÒª¾«¶ÈÖµ£¬¾Í°Ñ¸Ã²ÎÊýÖ¸¶¨Îª0¡£
+		///	è¿”å›žæ•°å­—é€‰æ‹©è¡¨é¡¹çš„ç²¾åº¦ï¼Œç²¾åº¦æ˜¯ä¸€ä¸ªæ•°çš„æ•°å­—æ€»ä½æ•°ã€‚
+		///	å¦‚æžœä¸éœ€è¦ç²¾åº¦å€¼ï¼Œå°±æŠŠè¯¥å‚æ•°æŒ‡å®šä¸º0ã€‚
 		/// </code></remarks>
 		int  prec;
 		///	<summary>
-		///	·µ»ØÊý×ÖÐÍ×Ö¶ÎµÄ¶¨±ê£¬Ð¡ÊýÎ»¾«¶È¡£Èç¹û²»ÐèÒª¶¨±êÖµ£¬¾Í°Ñ¸Ã²ÎÊý×÷Îª0¡£
+		///	è¿”å›žæ•°å­—åž‹å­—æ®µçš„å®šæ ‡ï¼Œå°æ•°ä½ç²¾åº¦ã€‚å¦‚æžœä¸éœ€è¦å®šæ ‡å€¼ï¼Œå°±æŠŠè¯¥å‚æ•°ä½œä¸º0ã€‚
 		///	</summary>
 		///	<remarks><code> 
-		///	·µ»ØÊý×ÖÐÍ×Ö¶ÎµÄ¶¨±ê¡£Èç¹û²»ÐèÒª¶¨±êÖµ£¬¾Í°Ñ¸Ã²ÎÊý×÷Îª0¡£
-		///	¶ÔÓÚ°æ±¾6µÄRDBMS£¬odescr·µ»ØÕæÕýµÄ¶¨µãÊýµÄ¶¨±êºÍ¾«¶È¡£¶ÔÓÚ¸¡µãÊý£¬·µ»Ø0¾«¶ÈºÍ¶¨±ê¡£ÈçÏÂËùÊ¾£º
-		///	SQLÊý¾ÝÀàÐÍ			      ¾«¶È		¶¨±ê
+		///	è¿”å›žæ•°å­—åž‹å­—æ®µçš„å®šæ ‡ã€‚å¦‚æžœä¸éœ€è¦å®šæ ‡å€¼ï¼Œå°±æŠŠè¯¥å‚æ•°ä½œä¸º0ã€‚
+		///	å¯¹äºŽç‰ˆæœ¬6çš„RDBMSï¼Œodescrè¿”å›žçœŸæ­£çš„å®šç‚¹æ•°çš„å®šæ ‡å’Œç²¾åº¦ã€‚å¯¹äºŽæµ®ç‚¹æ•°ï¼Œè¿”å›ž0ç²¾åº¦å’Œå®šæ ‡ã€‚å¦‚ä¸‹æ‰€ç¤ºï¼š
+		///	SQLæ•°æ®ç±»åž‹			      ç²¾åº¦		å®šæ ‡
 		///	NUMBER(p)				    p         0
 		///	NUMBER(p,s)   			    p         S
 		///	NUMBER        			    0         0
 		///	float(n)       	        	0         0
-		///	¶ÔÓÚORACLE7£¬SQLÀàÐÍREAL¡¢DOUBLE PRECISION¡¢DOUBLEºÍDOUBLE(N)	·µ»ØÊµ¼ÊµÄ¾«¶ÈºÍ-127µÄ¶¨±ê¡£
+		///	å¯¹äºŽORACLE7ï¼ŒSQLç±»åž‹REALã€DOUBLE PRECISIONã€DOUBLEå’ŒDOUBLE(N)	è¿”å›žå®žé™…çš„ç²¾åº¦å’Œ-127çš„å®šæ ‡ã€‚
 		/// </code></remarks>
 		int  scale;
 		///	<summary>
-		///	±êÊ¶×Ö¶ÎÊÇ·ñ¿ÉÎª null Öµ
+		///	æ ‡è¯†å­—æ®µæ˜¯å¦å¯ä¸º null å€¼
 		///	</summary>
 		///	<remarks><code> 
-		///	ÊäÈë£ºÈç¹ûÐèÒªÑ¡ÔñÁÐÏîµÄNull×´Ì¬£¬Ôò°Ñ¸Ã²ÎÊýÖ¸¶¨Îª0¡£
-		///	Êä³ö£ºÈç¹ûÁÐ²»ÔÊÐíNullÖµ£¬Ôò·µ»Ø0£»Èç¹ûÔÊÐíNullÖµÔò·µ»Ø·Ç0¡£
+		///	è¾“å…¥ï¼šå¦‚æžœéœ€è¦é€‰æ‹©åˆ—é¡¹çš„NullçŠ¶æ€ï¼Œåˆ™æŠŠè¯¥å‚æ•°æŒ‡å®šä¸º0ã€‚
+		///	è¾“å‡ºï¼šå¦‚æžœåˆ—ä¸å…è®¸Nullå€¼ï¼Œåˆ™è¿”å›ž0ï¼›å¦‚æžœå…è®¸Nullå€¼åˆ™è¿”å›žéž0ã€‚
 		/// </code></remarks>
 		int  nullok;
 		///	<summary>
-		///	×Ö¶ÎÀàÐÍÃû³Æ
+		///	å­—æ®µç±»åž‹åç§°
 		///	</summary>
 		string typeName;
 		ColumnInfo():dbtype(0),otl_var_dbtype(0),dbsize(0),prec(0),scale(0),nullok(0){}
@@ -306,7 +306,7 @@ namespace Common
 
 	// for FileSystem                                              
 	///	<summary>
-	///	Ä¿Â¼²éÕÒÑ¡Ïî
+	///	ç›®å½•æŸ¥æ‰¾é€‰é¡¹
 	///	</summary>
 	///	<remarks>
 	/// <code> 
@@ -321,7 +321,7 @@ namespace Common
 		TopDirectoryOnly = 0
 	};
 	///	<summary>
-	///	ÎÄ¼þÖ¸ÕëÒÆ¶¯Ä£Ê½
+	///	æ–‡ä»¶æŒ‡é’ˆç§»åŠ¨æ¨¡å¼
 	///	</summary>
 	///	<remarks>
 	/// <code> 
@@ -337,7 +337,7 @@ namespace Common
 		End = 2
 	};
 	///	<summary>
-	///	ÎÄ¼þÀàÐÍ
+	///	æ–‡ä»¶ç±»åž‹
 	///	</summary>
 	///	<remarks>
 	/// <code> 
@@ -351,7 +351,7 @@ namespace Common
 		Binarry=1,
 	};
 	///	<summary>
-	///	ÎÄ¼þ²Ù×÷Ä£Ê½
+	///	æ–‡ä»¶æ“ä½œæ¨¡å¼
 	///	</summary>
 	///	<remarks>
 	/// <code> 
@@ -373,7 +373,7 @@ namespace Common
 		Truncate = 5
 	};
 	///	<summary>
-	///	ÎÄ¼þ²Ù×÷È¨ÏÞ
+	///	æ–‡ä»¶æ“ä½œæƒé™
 	///	</summary>
 	///	<remarks>
 	/// <code> 
@@ -389,38 +389,38 @@ namespace Common
 		Write = 2
 	};
 	///	<summary>
-	///	ÎÄ¼þÊôÐÔ
+	///	æ–‡ä»¶å±žæ€§
 	///	</summary>
 	///	<remarks>
 	/// <code> 
-	///		Archive = 0x20,			//´ò°üÎÄ¼þ
-	///		Compressed = 0x800,		//Ñ¹ËõÎÄ¼þ
-	///		Device = 0x40,			//Çý¶¯
-	///		Directory = 0x10,		//Ä¿Â¼
-	///		Encrypted = 0x4000,		//¼ÓÃÜ
-	///		Hidden = 2,				//Òþ²Ø
-	///		Normal = 0x80,			//³£¹æ
-	///		ReadOnly = 1,			//Ö»¶Á
+	///		Archive = 0x20,			//æ‰“åŒ…æ–‡ä»¶
+	///		Compressed = 0x800,		//åŽ‹ç¼©æ–‡ä»¶
+	///		Device = 0x40,			//é©±åŠ¨
+	///		Directory = 0x10,		//ç›®å½•
+	///		Encrypted = 0x4000,		//åŠ å¯†
+	///		Hidden = 2,				//éšè—
+	///		Normal = 0x80,			//å¸¸è§„
+	///		ReadOnly = 1,			//åªè¯»
 	///		ReparsePoint = 0x400,	
 	///		SparseFile = 0x200,
-	///		Systemic = 4,				//ÏµÍ³
-	///		Temporary = 0x100		//ÁÙÊ±
+	///		Systemic = 4,				//ç³»ç»Ÿ
+	///		Temporary = 0x100		//ä¸´æ—¶
 	/// </code>
 	///	</remarks>
 	enum FileAttributes
 	{
-		Archive = 0x20,			//´ò°üÎÄ¼þ
-		Compressed = 0x800,		//Ñ¹ËõÎÄ¼þ
-		Device = 0x40,			//Çý¶¯
-		Directory = 0x10,		//Ä¿Â¼
-		Encrypted = 0x4000,		//¼ÓÃÜ
-		Hidden = 2,				//Òþ²Ø
-		Normal = 0x80,			//³£¹æ
-		ReadOnly = 1,			//Ö»¶Á
+		Archive = 0x20,			//æ‰“åŒ…æ–‡ä»¶
+		Compressed = 0x800,		//åŽ‹ç¼©æ–‡ä»¶
+		Device = 0x40,			//é©±åŠ¨
+		Directory = 0x10,		//ç›®å½•
+		Encrypted = 0x4000,		//åŠ å¯†
+		Hidden = 2,				//éšè—
+		Normal = 0x80,			//å¸¸è§„
+		ReadOnly = 1,			//åªè¯»
 		ReparsePoint = 0x400,	
 		SparseFile = 0x200,
-		Systemic = 4,				//ÏµÍ³
-		Temporary = 0x100		//ÁÙÊ±
+		Systemic = 4,				//ç³»ç»Ÿ
+		Temporary = 0x100		//ä¸´æ—¶
 	};
 
 }

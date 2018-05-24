@@ -9,6 +9,9 @@
 #include "ui/CocosGUI.h"
 using namespace cocos2d;
 
+#define ISTYPE(CLZTYPE,POINTER)  dynamic_cast<CLZTYPE *>(POINTER)
+
+class BaseNode;
 namespace std
 {
 	void setAnchorPoint(cocos2d::Node* node, bool subset = false);
@@ -29,8 +32,11 @@ namespace std
 	class MouseEvent : public cocos2d::EventMouse
 	{
 	public:
+		Common::Array<BaseNode *> currentTargets;
 		MouseEvent(MouseEventType mouseEventCode);
 		void setCurrentTarget(Node* target);
+		MouseEvent(EventMouse * e);
+		void hitTest(Node *node);
 
 	};
 }
@@ -77,18 +83,20 @@ public:
 	virtual void onExit();
 	virtual void cleanup();
 	virtual void scheduleUpdate(float dt);
-	//Ö¡ÆµÊÂ¼þ
+	//å¸§é¢‘äº‹ä»¶
 	virtual void enterFrameHandler(float dt);
 
 	virtual void setOpacity(float);
 	virtual float getOpacity();
+	virtual string getNamePath(Node *node=NULL);
+
 
 	BaseNode(float w, float h, bool draw = false);
 	virtual void setSize(float w, float h, bool draw = false);
 	virtual void drawRange();
 	void enableMouseHandler();
 	void enableKeyHandler();
-	//Êó±ê¼üÅÌÊÂ¼þ
+	//é¼ æ ‡é”®ç›˜äº‹ä»¶
 	virtual void keyBoardPressedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	virtual void keyBoardReleasedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	virtual void mouseDownHandler(cocos2d::EventMouse* event);

@@ -7,7 +7,7 @@
 namespace engine{
 	namespace level
 	{
-		//¿ÉÒÔÊÇ¾²Ì¬Í¼Æ¬
+		//å¯ä»¥æ˜¯é™æ€å›¾ç‰‡
 		class RoadLevel1 :public Road //cocos2d::Node
 		{
 		public:

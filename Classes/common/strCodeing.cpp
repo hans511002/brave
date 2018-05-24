@@ -15,8 +15,8 @@
 
 namespace Common
 {
-	strCoding::GB2312DATA strCoding::gb2312Map[94*94] ;		//	GB2312DATAµ½unicode ºÍ UTF8Ó³Éä
-	short int strCoding::UnicodeMap[65536] ;		//	GB2312DATAµ½unicode ºÍ UTF8Ó³Éä
+	strCoding::GB2312DATA strCoding::gb2312Map[94*94] ;		//	GB2312DATAåˆ°unicode å’Œ UTF8æ˜ å°„
+	short int strCoding::UnicodeMap[65536] ;		//	GB2312DATAåˆ°unicode å’Œ UTF8æ˜ å°„
 	bool strCoding::inited=false;
 
 	void strCoding::init(char * file)
@@ -30,7 +30,7 @@ namespace Common
 				const char * data=gb2312Chars[i];
 				if(data==0 || data[0]==0)return;
 				int index=((unsigned char)data[5]-161)*94+(unsigned char)data[6]-161;
-				if(index>=94*94){EXP("³¬³öGB2312DATA±àÂëË÷Òý·¶Î§");};
+				if(index>=94*94){EXP("è¶…å‡ºGB2312DATAç¼–ç ç´¢å¼•èŒƒå›´");};
 				GB2312DATA &gb=gb2312Map[index];
 				gb.qw[0]=StrToBin(data);
 				gb.qw[1]=StrToBin(data+2);
@@ -54,14 +54,14 @@ namespace Common
 		else
 		{
 			FILE * fp=fopen(file,"rb");
-			if(fp==NULL)EXP("´ò¿ªGB2312±àÂëÓ³ÉäÊý¾ÝÎÄ¼þÊ§°Ü,ÎÄ¼þ£º"+String(file)+"¡£");
+			if(fp==NULL)EXP("æ‰“å¼€GB2312ç¼–ç æ˜ å°„æ•°æ®æ–‡ä»¶å¤±è´¥,æ–‡ä»¶ï¼š"+String(file)+"ã€‚");
 			char data[256];
 			while(fgets(data,256,fp))
 			{
 				if(strlen(data)>=24)
 				{
 					int index=((unsigned char)data[5]-161)*94+(unsigned char)data[6]-161;
-					if(index>=94*94){EXP("³¬³öGB2312DATA±àÂëË÷Òý·¶Î§");};
+					if(index>=94*94){EXP("è¶…å‡ºGB2312DATAç¼–ç ç´¢å¼•èŒƒå›´");};
 					GB2312DATA &gb=gb2312Map[index];
 					gb.qw[0]=StrToBin(data);
 					gb.qw[1]=StrToBin(data+2);
@@ -99,7 +99,7 @@ namespace Common
 		}
 		else return false;
 	};
-	//2¡¢ÅÐ¶ÏÊÇ·ñÊÇGBK±àÂë
+	//2ã€åˆ¤æ–­æ˜¯å¦æ˜¯GBKç¼–ç 
 	bool strCoding::isGBKCode(char * strIn)
 	{
 		unsigned char ch1;
@@ -114,7 +114,7 @@ namespace Common
 		}
 		else return false;
 	}
-	//3¡¢ÅÐ¶ÏBIG5
+	//3ã€åˆ¤æ–­BIG5
 	bool strCoding::isBIG5Code(char * strIn)
 	{
 		unsigned char ch1;
@@ -161,7 +161,7 @@ namespace Common
 	}
 	void strCoding::__UnicodeToUTF8(char* pOut,char* pText)
 	{
-		char* pchar = (char *)pText;		// ×¢Òâ WCHAR¸ßµÍ×ÖµÄË³Ðò,µÍ×Ö½ÚÔÚÇ°£¬¸ß×Ö½ÚÔÚºó
+		char* pchar = (char *)pText;		// æ³¨æ„ WCHARé«˜ä½Žå­—çš„é¡ºåº,ä½Žå­—èŠ‚åœ¨å‰ï¼Œé«˜å­—èŠ‚åœ¨åŽ
 #ifdef WIN32
 		pOut[0] = (0xE0 | ((pchar[1] & 0xF0) >> 4));
 		pOut[1] = (0x80 | ((pchar[1] & 0x0F) << 2)) + ((pchar[0] & 0xC0) >> 6);
@@ -191,7 +191,7 @@ namespace Common
 		__UTF8ToUnicode(pOut,uData);
 		__UnicodeToGB2312(pOut,pOut);
 	};
-	//×Ö·û×ª»»Êý×Ö
+	//å­—ç¬¦è½¬æ¢æ•°å­—
 	char strCoding::CharToInt(char ch)
 	{
 		if(ch>='0' && ch<='9')return (char)(ch-'0');
@@ -199,7 +199,7 @@ namespace Common
 		if(ch>='A' && ch<='F')return (char)(ch-'A'+10);
 		return -1;
 	}
-	//16½øÖÆ×Ö·û×ª»»³É×Ö·û
+	//16è¿›åˆ¶å­—ç¬¦è½¬æ¢æˆå­—ç¬¦
 	char strCoding::StrToBin(const char *str)
 	{
 		char tempWord[2];
@@ -209,7 +209,7 @@ namespace Common
 		chn = (tempWord[0] << 4) | tempWord[1];                //to change the BO to 10110000
 		return chn;
 	};
-	//UTF_8 ×ªunicode
+	//UTF_8 è½¬unicode
 	int strCoding::UTF8ToUnicode(char *pOut,char *pText)
 	{
 		unsigned char buf[4];
@@ -241,7 +241,7 @@ namespace Common
 		pOut[j]='\0';
 		return j;
 	};
-	//UTF_8 ×ªgb2312
+	//UTF_8 è½¬gb2312
 	void strCoding::UTF8ToGB2312(char *pOut,char *pText)
 	{
 		unsigned char buf[4];
@@ -266,7 +266,7 @@ namespace Common
 		}
 		pOut[j]='\0';
 	};
-	//GB2312 ×ªÎª UTF-8
+	//GB2312 è½¬ä¸º UTF-8
 	void strCoding::GB2312ToUTF8(char *pOut,char *pText)
 	{
 		char buf[4];
@@ -275,7 +275,7 @@ namespace Common
 		int j=0;
 		while(pText[i])
 		{
-			//Èç¹ûÊÇÓ¢ÎÄÖ±½Ó¸´ÖÆ¾Í¿ÉÒÔ
+			//å¦‚æžœæ˜¯è‹±æ–‡ç›´æŽ¥å¤åˆ¶å°±å¯ä»¥
 			if( pText[i] >= 0 && pText[i]<128)
 			{
 				pOut[j++]=pText[i++];
@@ -292,7 +292,7 @@ namespace Common
 		return;
 	}
 
-	//GB2312 ×ªÎª Unicode
+	//GB2312 è½¬ä¸º Unicode
 	int strCoding::GB2312ToUnicode(char *pOut,char *pText)
 	{
 		char buf[4];
@@ -301,7 +301,7 @@ namespace Common
 		int j=0;
 		while(pText[i])
 		{
-			//Èç¹ûÊÇÓ¢ÎÄÖ±½Ó¸´ÖÆ¾Í¿ÉÒÔ
+			//å¦‚æžœæ˜¯è‹±æ–‡ç›´æŽ¥å¤åˆ¶å°±å¯ä»¥
 			if( pText[i] >= 0 && pText[i]<128)
 			{
 #ifdef WIN32
@@ -323,7 +323,7 @@ namespace Common
 		return j;
 	}
 
-	//Unicode ×ªÎª GB2312
+	//Unicode è½¬ä¸º GB2312
 	void strCoding::UnicodeToGB2312(char *pOut,char *pText,int len)
 	{
 		char buf[4];
@@ -347,7 +347,7 @@ namespace Common
 		return;
 	}
 
-	//Unicode ×ªÎª UTF8
+	//Unicode è½¬ä¸º UTF8
 	void strCoding::UnicodeToUTF8(char *pOut,char *pText,int len)
 	{
 		unsigned char buf[4];
@@ -379,7 +379,7 @@ namespace Common
 		}
 		pOut[j]='\0';
 	};
-	//gb2312×ªutf8
+	//gb2312è½¬utf8
 	bool strCoding::GB2312ToUTF8(char* pstrOut, size_t dwOutLen, const char* pstrIn, size_t dwInLen)
 	{
 		if (NULL == pstrOut)
@@ -416,7 +416,7 @@ namespace Common
 		return true;
 	}
 
-	//utf8×ªgb2312
+	//utf8è½¬gb2312
 	bool strCoding::UTF8ToGB2312(char* pstrOut, size_t dwOutLen, const char* pstrIn, size_t dwInLen)
 	{
 		if (NULL == pstrOut)
@@ -451,7 +451,7 @@ namespace Common
 		return true;
 	}
 
-	//°Ñstr±àÂëÎªÍøÒ³ÖÐµÄ GB2312DATA url encode ,Ó¢ÎÄ²»±ä£¬ºº×ÖË«×Ö½Ú  Èç%3D%AE
+	//æŠŠstrç¼–ç ä¸ºç½‘é¡µä¸­çš„ GB2312DATA url encode ,è‹±æ–‡ä¸å˜ï¼Œæ±‰å­—åŒå­—èŠ‚  å¦‚%3D%AE
 	string strCoding::UrlGB2312(char * str)
 	{
 		string dd;
@@ -477,7 +477,7 @@ namespace Common
 		}
 		return dd;
 	};
-	//°Ñstr±àÂëÎªÍøÒ³ÖÐµÄ UTF-8 url encode ,Ó¢ÎÄ²»±ä£¬ºº×ÖÈý×Ö½Ú  Èç%3D%AE%88
+	//æŠŠstrç¼–ç ä¸ºç½‘é¡µä¸­çš„ UTF-8 url encode ,è‹±æ–‡ä¸å˜ï¼Œæ±‰å­—ä¸‰å­—èŠ‚  å¦‚%3D%AE%88
 	string strCoding::UrlUTF8(char * str)
 	{
 		string tt;
@@ -508,7 +508,7 @@ namespace Common
 		}
 		return dd;
 	}
-	//°Ñurl GB2312DATA½âÂë
+	//æŠŠurl GB2312DATAè§£ç 
 	string strCoding::UrlGB2312Decode(string str)
 	{
 		string output="";
@@ -536,7 +536,7 @@ namespace Common
 		}
 		return output;
 	}
-	//°Ñurl utf8½âÂë
+	//æŠŠurl utf8è§£ç 
 	string strCoding::UrlUTF8Decode(string str)
 	{
 		string output="";

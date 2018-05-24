@@ -25,7 +25,7 @@ namespace engine
             //tempObject.x = enemyTarget.x;
             //tempObject.y = enemyTarget.y;
             tempObject->container->gotoAndStop(2);
-            Bullet::init(event);
+            Bullet::init(event); 
             return true;
         }// end function
 

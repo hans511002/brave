@@ -17,12 +17,12 @@
 namespace Common
 {
 	//
-	// ժҪ:
-	//	ɢ��MD5
+	// 摘要:
+	//	散列MD5
 	//
-    // �� ��: ��Զ��
-    // �� ��: 2007-4-25
-    // �� ��: 1.0
+    // 作 者: 邹远贵
+    // 日 期: 2007-4-25
+    // 版 本: 1.0
 	//
 	class md5
 	{
@@ -51,32 +51,32 @@ namespace Common
 		static void MD5Final(unsigned char [16], MD5_CTX *);
 		static string  ConvertChar(unsigned char [16],int);
 	public:
-		// ժҪ:
-		//     32λ��MD5�����ַ�����
+		// 摘要:
+		//     32位的MD5加密字符串。
 		//
-		// ����:
-		//   Ҫ���ܵ��ַ���:
-		//     ҪЧ����ļ�·����
-		// ���ؽ��:
-		//     32λMD5Ч���ַ�����
+		// 参数:
+		//   要加密的字符串:
+		//     要效验的文件路径。
+		// 返回结果:
+		//     32位MD5效验字符串。
 		static string  md5_32(string s);
-		// ժҪ:
-		//     16λ��MD5�����ַ�����
+		// 摘要:
+		//     16位的MD5加密字符串。
 		//
-		// ����:
-		//   Ҫ���ܵ��ַ���:
-		//     ҪЧ����ļ�·����
-		// ���ؽ��:
-		//     16λMD5Ч���ַ�����
+		// 参数:
+		//   要加密的字符串:
+		//     要效验的文件路径。
+		// 返回结果:
+		//     16位MD5效验字符串。
 		static string  md5_16(string s);
-		// ժҪ:
-		//     ���ļ�����MD5Ч�顣
+		// 摘要:
+		//     将文件进行MD5效验。
 		//
-		// ����:
+		// 参数:
 		//   filename:
-		//     ҪЧ����ļ�·����
-		// ���ؽ��:
-		//     MD5Ч���ַ�����
+		//     要效验的文件路径。
+		// 返回结果:
+		//     MD5效验字符串。
 		static string  mdFile(string s);
 	};
 }

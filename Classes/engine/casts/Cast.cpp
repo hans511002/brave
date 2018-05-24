@@ -47,7 +47,7 @@ namespace engine
 				if(tempObject.x > 650 && tempObject.y < 320)
 				{
 					return false;
-				}
+				} 
 			}
 			else if(this->world->nowLevel == 11)
 			{

@@ -10,7 +10,7 @@
 //				modify and redistribute it for any purpose is hereby granted
 //				without fee, provided that the above copyright notice appear
 //				in all copies.
-//				Æ½Ì¨Í·ÎÄ¼ş
+//				å¹³å°å¤´æ–‡ä»¶
 // ==============================================================
 #ifndef __Common_Platform__
 #define __Common_Platform__
@@ -135,16 +135,16 @@ using namespace std;
 # include <io.h>
 # include   <direct.h>
 //# include   <dir.h>  
-//# include <windows.h>				//windowsÆ½Ì¨º¯Êı
+//# include <windows.h>				//windowså¹³å°å‡½æ•°
 #include <ws2tcpip.h>
 # include   <process.h>
 # include   <share.h>
-//#include <tchar.h>				//¿í×Ö·û
+//#include <tchar.h>				//å®½å­—ç¬¦
 //using namespace std;
-//#define WIN32_LEAN_AND_MEAN		// ´Ó Windows Í·ÖĞÅÅ³ı¼«ÉÙÊ¹ÓÃµÄ×ÊÁÏ
+//#define WIN32_LEAN_AND_MEAN		// ä» Windows å¤´ä¸­æ’é™¤æå°‘ä½¿ç”¨çš„èµ„æ–™
 # include <LIMITS.H>
 # include <eh.H>
-//#include <Atalkwh.h> // for AppleTalk Ğ­Òé
+//#include <Atalkwh.h> // for AppleTalk åè®®
 #if !defined(NDEBUG)
 #define DEBUG_NEW new( _NORMAL_BLOCK, __FILE__, __LINE__ )
 #include <crtdbg.h>
@@ -162,17 +162,17 @@ using namespace std;
 
 
 
-//Windows ÏµÍ³ÒıÓÃ¶¨Òå ½áÊø//
+//Windows ç³»ç»Ÿå¼•ç”¨å®šä¹‰ ç»“æŸ//
 #endif
 
 
-//º¯ÊıÍ³Ò»
+//å‡½æ•°ç»Ÿä¸€
 #if OSTYPE>10
 #define SLEEP(x) usleep(1000 * x)
 #define SEARCH_CMD "which "
 #define POPEN(cmd,type) popen(cmd,type)
 #define PCLOSE(file) pclose(file)
-#define Pause()   {cout<<"ÇëÊäÈë»Ø³µ¼ÌĞø....";int c=getchar();}
+#define Pause()   {cout<<"è¯·è¾“å…¥å›è½¦ç»§ç»­....";int c=getchar();}
 
 #else
 #define SLEEP(x) Sleep(x)
@@ -199,7 +199,7 @@ using namespace std;
 //int   ftruncate(int   fd,   off_t   length); 
 
 
-//handle   =   fileno(fp);                   //   Ê¹ÓÃfileno()½«FILE½á¹¹×ª»»³ÉÎÄ¼ş¾ä±ú 
+//handle   =   fileno(fp);                   //   ä½¿ç”¨fileno()å°†FILEç»“æ„è½¬æ¢æˆæ–‡ä»¶å¥æŸ„ 
 //chsize(handle,   8);
 
 #if OSTYPE>31	//	gcc

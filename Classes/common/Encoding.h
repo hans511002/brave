@@ -18,10 +18,10 @@
 namespace Common
 {
 	///	<summary>
-	///	¼ÓÃÜº¯ÊıÀà
+	///	åŠ å¯†å‡½æ•°ç±»
 	///	</summary>
 	///	<remarks>
-	///	<code>¶ş½øÖÆ¶Ô³Æ¼ÓÃÜ¶ÔÓ¦µÄ¼ÓÃÜËã·¨</code>
+	///	<code>äºŒè¿›åˆ¶å¯¹ç§°åŠ å¯†å¯¹åº”çš„åŠ å¯†ç®—æ³•</code>
 	///	</remarks>
     /// <example><code>
     /// </code></example>
@@ -29,59 +29,59 @@ namespace Common
 	{
 	public:
 		///	<summary>
-		///	¾ØÕó¼ÓÃÜ,ÏÈ´òÂÒ£¬ÔÙÒÆÎ»
-		///	<code>Ô­ĞÍ£ºstatic void matrixEncode(const char * src,char * dest,const char * password);</code>
+		///	çŸ©é˜µåŠ å¯†,å…ˆæ‰“ä¹±ï¼Œå†ç§»ä½
+		///	<code>åŸå‹ï¼šstatic void matrixEncode(const char * src,char * dest,const char * password);</code>
 		///	</summary>
-		///	<param name="src">Ã÷ÎÄ×Ö·û´®Ö¸Õë</param>
-		///	<param name="dest">´æ´¢¼ÓÃÜºóµÄÃÜÎÄ×Ö·û´®Ö¸Õë</param>
-		///	<param name="password">ÃÜÔ¿</param>
+		///	<param name="src">æ˜æ–‡å­—ç¬¦ä¸²æŒ‡é’ˆ</param>
+		///	<param name="dest">å­˜å‚¨åŠ å¯†åçš„å¯†æ–‡å­—ç¬¦ä¸²æŒ‡é’ˆ</param>
+		///	<param name="password">å¯†é’¥</param>
 		static void matrixEncode(const char * src,char * dest,const char * password);
 		///	<summary>
-		///	¾µÏñ¼ÓÃÜ(²¹·´)
-		///	<code>Ô­ĞÍ£ºstatic void MSLEncode(const char * src,char * dest);</code>
+		///	é•œåƒåŠ å¯†(è¡¥å)
+		///	<code>åŸå‹ï¼šstatic void MSLEncode(const char * src,char * dest);</code>
 		///	</summary>
-		///	<param name="src">Ã÷ÎÄ×Ö·û´®Ö¸Õë</param>
-		///	<param name="dest">´æ´¢¼ÓÃÜºóµÄÃÜÎÄ×Ö·û´®Ö¸Õë</param>
+		///	<param name="src">æ˜æ–‡å­—ç¬¦ä¸²æŒ‡é’ˆ</param>
+		///	<param name="dest">å­˜å‚¨åŠ å¯†åçš„å¯†æ–‡å­—ç¬¦ä¸²æŒ‡é’ˆ</param>
 		static void MSLEncode(const char * src,char * dest);
  		///	<summary>
-		///	µ¹ÖÃ¼ÓÃÜ
-		///	<code>Ô­ĞÍ£ºstatic void anasEncode(const char * src,char * dest);</code>
+		///	å€’ç½®åŠ å¯†
+		///	<code>åŸå‹ï¼šstatic void anasEncode(const char * src,char * dest);</code>
 		///	</summary>
-		///	<param name="src">Ã÷ÎÄ×Ö·û´®Ö¸Õë</param>
-		///	<param name="dest">´æ´¢¼ÓÃÜºóµÄÃÜÎÄ×Ö·û´®Ö¸Õë</param>
+		///	<param name="src">æ˜æ–‡å­—ç¬¦ä¸²æŒ‡é’ˆ</param>
+		///	<param name="dest">å­˜å‚¨åŠ å¯†åçš„å¯†æ–‡å­—ç¬¦ä¸²æŒ‡é’ˆ</param>
 		static void anasEncode(const char * src,char * dest);
   		///	<summary>
-		///	ÒÆÎ»¼ÓÃÜ
-		///	<code>Ô­ĞÍ£ºstatic void shiftEncode(const char * src,char * dest,int size);</code>
+		///	ç§»ä½åŠ å¯†
+		///	<code>åŸå‹ï¼šstatic void shiftEncode(const char * src,char * dest,int size);</code>
 		///	</summary>
-		///	<param name="src">Ã÷ÎÄ×Ö·û´®Ö¸Õë</param>
-		///	<param name="dest">´æ´¢¼ÓÃÜºóµÄÃÜÎÄ×Ö·û´®Ö¸Õë</param>
-		///	<param name="size">ÒÆÎ»´óĞ¡£¬µ±¶Ô8È¡Ä£Îª0Ê±²»Æğ×÷ÓÃ</param>
+		///	<param name="src">æ˜æ–‡å­—ç¬¦ä¸²æŒ‡é’ˆ</param>
+		///	<param name="dest">å­˜å‚¨åŠ å¯†åçš„å¯†æ–‡å­—ç¬¦ä¸²æŒ‡é’ˆ</param>
+		///	<param name="size">ç§»ä½å¤§å°ï¼Œå½“å¯¹8å–æ¨¡ä¸º0æ—¶ä¸èµ·ä½œç”¨</param>
 		static void shiftEncode(const char * src,char * dest,int size);
   		///	<summary>
-		///	¶àÒÆÎ»¼ÓÃÜ
-		///	<code>Ô­ĞÍ£ºstatic void shiftEncode(const char * src,char * dest,int size,int len);</code>
+		///	å¤šç§»ä½åŠ å¯†
+		///	<code>åŸå‹ï¼šstatic void shiftEncode(const char * src,char * dest,int size,int len);</code>
 		///	</summary>
-		///	<param name="src">Ã÷ÎÄ×Ö·û´®Ö¸Õë</param>
-		///	<param name="dest">´æ´¢¼ÓÃÜºóµÄÃÜÎÄ×Ö·û´®Ö¸Õë</param>
-		///	<param name="size">intÖ¸Õë£¬»ùÔªËØ±íÊ¾ÒÆÎ»´óĞ¡£¬µ±¶Ô8È¡Ä£Îª0Ê±²»Æğ×÷ÓÃ</param>
-		///	<param name="len">Ö¸Ê¾sizeÖ¸ÕëµÄ³¤¶È</param>
+		///	<param name="src">æ˜æ–‡å­—ç¬¦ä¸²æŒ‡é’ˆ</param>
+		///	<param name="dest">å­˜å‚¨åŠ å¯†åçš„å¯†æ–‡å­—ç¬¦ä¸²æŒ‡é’ˆ</param>
+		///	<param name="size">intæŒ‡é’ˆï¼ŒåŸºå…ƒç´ è¡¨ç¤ºç§»ä½å¤§å°ï¼Œå½“å¯¹8å–æ¨¡ä¸º0æ—¶ä¸èµ·ä½œç”¨</param>
+		///	<param name="len">æŒ‡ç¤ºsizeæŒ‡é’ˆçš„é•¿åº¦</param>
 		static void shiftEncode(const char * src,char * dest,int * size,int len);
   		///	<summary>
-		///	´òÂÒ¼ÓÃÜ
-		///	<code>Ô­ĞÍ£ºstatic void chaosEncode(const char * src,char * dest,int len);</code>
+		///	æ‰“ä¹±åŠ å¯†
+		///	<code>åŸå‹ï¼šstatic void chaosEncode(const char * src,char * dest,int len);</code>
 		///	</summary>
-		///	<param name="src">Ã÷ÎÄ×Ö·û´®Ö¸Õë</param>
-		///	<param name="dest">´æ´¢¼ÓÃÜºóµÄÃÜÎÄ×Ö·û´®Ö¸Õë</param> 
-		///	<param name="len">Ö¸Ê¾´òÂÒ¾ØÕóµÄ³¤¶È</param>
+		///	<param name="src">æ˜æ–‡å­—ç¬¦ä¸²æŒ‡é’ˆ</param>
+		///	<param name="dest">å­˜å‚¨åŠ å¯†åçš„å¯†æ–‡å­—ç¬¦ä¸²æŒ‡é’ˆ</param> 
+		///	<param name="len">æŒ‡ç¤ºæ‰“ä¹±çŸ©é˜µçš„é•¿åº¦</param>
 		static void chaosEncode(const char * src,char * dest,int len);
   		///	<summary>
-		///	×Ö·ûÒÆÎ»£¬Ñ­»·ÒÆÎ»
-		///	<code>Ô­ĞÍ£ºinline static char cycShift(const char src,int size);</code>
+		///	å­—ç¬¦ç§»ä½ï¼Œå¾ªç¯ç§»ä½
+		///	<code>åŸå‹ï¼šinline static char cycShift(const char src,int size);</code>
 		///	</summary>
-		///	<param name="src">Ã÷ÎÄ×Ö·û</param> 
-		///	<param name="size">ÒÆÎ»´óĞ¡</param>
-		///	<returns>ÒÆÎ»ºóµÄ×Ö·û</returns>
+		///	<param name="src">æ˜æ–‡å­—ç¬¦</param> 
+		///	<param name="size">ç§»ä½å¤§å°</param>
+		///	<returns>ç§»ä½åçš„å­—ç¬¦</returns>
 		inline static char cycShift(const char src,int size)
 		{
 			unsigned char c=src;

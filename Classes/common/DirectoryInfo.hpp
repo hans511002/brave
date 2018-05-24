@@ -20,7 +20,7 @@ namespace Common
 	class DirectoryInfo;
 	class FileInfo;
 	///	<summary>
-	///	¶Ô°üº¬ÎÄ¼ş»òÄ¿Â¼Â·¾¶ĞÅÏ¢µÄ<see cref='String'/>ÊµÀıÖ´ĞĞ²Ù×÷¡£ÕâĞ©²Ù×÷ÊÇÒÔ¿çÆ½Ì¨µÄ·½Ê½Ö´ĞĞµÄ¡£
+	///	å¯¹åŒ…å«æ–‡ä»¶æˆ–ç›®å½•è·¯å¾„ä¿¡æ¯çš„<see cref='String'/>å®ä¾‹æ‰§è¡Œæ“ä½œã€‚è¿™äº›æ“ä½œæ˜¯ä»¥è·¨å¹³å°çš„æ–¹å¼æ‰§è¡Œçš„ã€‚
 	///	</summary>
 	///	<remarks>
 	///	<code></code>
@@ -54,20 +54,20 @@ namespace Common
 			return path;
 		};
 
-		// ÕªÒª:
-		//     ¸ü¸ÄÂ·¾¶×Ö·û´®µÄÀ©Õ¹Ãû¡£
+		// æ‘˜è¦:
+		//     æ›´æ”¹è·¯å¾„å­—ç¬¦ä¸²çš„æ‰©å±•åã€‚
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   extension:
-		//     ĞÂµÄÀ©Õ¹Ãû£¨¾ßÓĞÇ°µ¼¾äµã£©¡£Ö¸¶¨nullÒÔ´Ó path ÒÆ³ıÏÖÓĞÀ©Õ¹Ãû¡£
+		//     æ–°çš„æ‰©å±•åï¼ˆå…·æœ‰å‰å¯¼å¥ç‚¹ï¼‰ã€‚æŒ‡å®šnullä»¥ä» path ç§»é™¤ç°æœ‰æ‰©å±•åã€‚
 		//
 		//   path:
-		//     ÒªĞŞ¸ÄµÄÂ·¾¶ĞÅÏ¢¡£¸ÃÂ·¾¶²»ÄÜ°üº¬ÔÚ System.IO.Path.InvalidPathChars ÖĞ¶¨ÒåµÄÈÎºÎ×Ö·û¡£
+		//     è¦ä¿®æ”¹çš„è·¯å¾„ä¿¡æ¯ã€‚è¯¥è·¯å¾„ä¸èƒ½åŒ…å«åœ¨ System.IO.Path.InvalidPathChars ä¸­å®šä¹‰çš„ä»»ä½•å­—ç¬¦ã€‚
 		//
-		// ·µ»Ø½á¹û:
-		//     °üº¬ĞŞ¸ÄµÄÂ·¾¶ĞÅÏ¢µÄ×Ö·û´®¡£ÔÚ»ùÓÚ Windows µÄ×ÀÃæÆ½Ì¨ÉÏ£¬Èç¹û path ÊÇnull »ò¿Õ×Ö·û´® ("")£¬Ôò·µ»ØµÄÂ·¾¶ĞÅÏ¢ÊÇÎ´ĞŞ¸ÄµÄ¡£Èç¹û
-		//     extension ÊÇnull£¬Ôò·µ»ØµÄ×Ö·û´®°üº¬Ö¸¶¨µÄÂ·¾¶£¬ÆäÀ©Õ¹ÃûÒÑÒÆ³ı¡£Èç¹û path ²»¾ßÓĞÀ©Õ¹Ãû£¬²¢ÇÒ extension ²»ÊÇnull£¬Ôò·µ»ØµÄÂ·¾¶×Ö·û´®°üº¬
-		//     extension£¬Ëü×·¼Óµ½ path µÄ½áÎ²¡£
+		// è¿”å›ç»“æœ:
+		//     åŒ…å«ä¿®æ”¹çš„è·¯å¾„ä¿¡æ¯çš„å­—ç¬¦ä¸²ã€‚åœ¨åŸºäº Windows çš„æ¡Œé¢å¹³å°ä¸Šï¼Œå¦‚æœ path æ˜¯null æˆ–ç©ºå­—ç¬¦ä¸² ("")ï¼Œåˆ™è¿”å›çš„è·¯å¾„ä¿¡æ¯æ˜¯æœªä¿®æ”¹çš„ã€‚å¦‚æœ
+		//     extension æ˜¯nullï¼Œåˆ™è¿”å›çš„å­—ç¬¦ä¸²åŒ…å«æŒ‡å®šçš„è·¯å¾„ï¼Œå…¶æ‰©å±•åå·²ç§»é™¤ã€‚å¦‚æœ path ä¸å…·æœ‰æ‰©å±•åï¼Œå¹¶ä¸” extension ä¸æ˜¯nullï¼Œåˆ™è¿”å›çš„è·¯å¾„å­—ç¬¦ä¸²åŒ…å«
+		//     extensionï¼Œå®ƒè¿½åŠ åˆ° path çš„ç»“å°¾ã€‚
 		//	public static string ChangeExtension(string path, string extension);
 		static String ChangeExtension(String path, String extension)
 		{
@@ -101,7 +101,7 @@ namespace Common
 			}
 			return (str + extension);
 		};
-		//ÑéÖ¤Ãû³Æ
+		//éªŒè¯åç§°
 		inline static void CheckInvalidPathChars(String path)
 		{
 			formatPath(path);
@@ -113,7 +113,7 @@ namespace Common
 				tmp++;
 			}
 		};
-		//ÑéÖ¤Ãû³Æ
+		//éªŒè¯åç§°
 		inline static void CheckInvalidFileNameChars(String fileName)
 		{
 			int len=fileName.size();
@@ -126,18 +126,18 @@ namespace Common
 			}
 		};
 		//
-		// ÕªÒª:
-		//     ºÏ²¢Á½¸öÂ·¾¶×Ö·û´®¡£
+		// æ‘˜è¦:
+		//     åˆå¹¶ä¸¤ä¸ªè·¯å¾„å­—ç¬¦ä¸²ã€‚
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   path2:
-		//     µÚ¶ş¸öÂ·¾¶¡£
+		//     ç¬¬äºŒä¸ªè·¯å¾„ã€‚
 		//
 		//   path1:
-		//     µÚÒ»¸öÂ·¾¶¡£
+		//     ç¬¬ä¸€ä¸ªè·¯å¾„ã€‚
 		//
-		// ·µ»Ø½á¹û:
-		//     °üº¬ºÏ²¢µÄÂ·¾¶µÄ×Ö·û´®¡£Èç¹ûÖ¸¶¨µÄÂ·¾¶Ö®Ò»ÊÇÁã³¤¶È×Ö·û´®£¬Ôò¸Ã·½·¨·µ»ØÆäËûÂ·¾¶¡£Èç¹û path2 °üº¬¾ø¶ÔÂ·¾¶£¬Ôò¸Ã·½·¨·µ»Ø path2¡£
+		// è¿”å›ç»“æœ:
+		//     åŒ…å«åˆå¹¶çš„è·¯å¾„çš„å­—ç¬¦ä¸²ã€‚å¦‚æœæŒ‡å®šçš„è·¯å¾„ä¹‹ä¸€æ˜¯é›¶é•¿åº¦å­—ç¬¦ä¸²ï¼Œåˆ™è¯¥æ–¹æ³•è¿”å›å…¶ä»–è·¯å¾„ã€‚å¦‚æœ path2 åŒ…å«ç»å¯¹è·¯å¾„ï¼Œåˆ™è¯¥æ–¹æ³•è¿”å› path2ã€‚
 		inline static String Combine(String path1, String path2)
 		{
 			CheckInvalidPathChars(path1);
@@ -163,16 +163,16 @@ namespace Common
 		};
 
 		//
-		// ÕªÒª:
-		//     ·µ»ØÖ¸¶¨Â·¾¶×Ö·û´®µÄÄ¿Â¼ĞÅÏ¢¡£
+		// æ‘˜è¦:
+		//     è¿”å›æŒ‡å®šè·¯å¾„å­—ç¬¦ä¸²çš„ç›®å½•ä¿¡æ¯ã€‚
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   path:
-		//     ÎÄ¼ş»òÄ¿Â¼µÄÂ·¾¶¡£
+		//     æ–‡ä»¶æˆ–ç›®å½•çš„è·¯å¾„ã€‚
 		//
-		// ·µ»Ø½á¹û:
-		//     °üº¬ path Ä¿Â¼ĞÅÏ¢µÄ ×Ö·û´®£»»òÕßÎª¿Õ£¨Èç¹û path ±íÊ¾¸ùÄ¿Â¼¡¢ÊÇ¿Õ×Ö·û´® ("") »òÊÇnull£©¡£Èç¹û path
-		//     Ã»ÓĞ°üº¬Ä¿Â¼ĞÅÏ¢£¬Ôò·µ»Ø ¿Õ×Ö·û¡£
+		// è¿”å›ç»“æœ:
+		//     åŒ…å« path ç›®å½•ä¿¡æ¯çš„ å­—ç¬¦ä¸²ï¼›æˆ–è€…ä¸ºç©ºï¼ˆå¦‚æœ path è¡¨ç¤ºæ ¹ç›®å½•ã€æ˜¯ç©ºå­—ç¬¦ä¸² ("") æˆ–æ˜¯nullï¼‰ã€‚å¦‚æœ path
+		//     æ²¡æœ‰åŒ…å«ç›®å½•ä¿¡æ¯ï¼Œåˆ™è¿”å› ç©ºå­—ç¬¦ã€‚
 		inline static String GetDirectoryName(String path)
 		{
 			if (!path.empty())
@@ -212,16 +212,16 @@ namespace Common
 			return "";
 		};
 		//
-		// ÕªÒª:
-		//     ·µ»ØÖ¸¶¨µÄÂ·¾¶×Ö·û´®µÄÀ©Õ¹Ãû¡£
+		// æ‘˜è¦:
+		//     è¿”å›æŒ‡å®šçš„è·¯å¾„å­—ç¬¦ä¸²çš„æ‰©å±•åã€‚
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   path:
-		//     ´ÓÆä»ñÈ¡À©Õ¹ÃûµÄÂ·¾¶×Ö·û´®¡£
+		//     ä»å…¶è·å–æ‰©å±•åçš„è·¯å¾„å­—ç¬¦ä¸²ã€‚
 		//
-		// ·µ»Ø½á¹û:
-		//     °üº¬Ö¸¶¨Â·¾¶µÄÀ©Õ¹Ãû£¨°üÀ¨¡°.¡±£©µÄ System.String¡¢null »ò System.String.Empty¡£Èç¹û path Îªnull£¬Ôò
-		//     GetExtension ·µ»Ønull¡£Èç¹û path ²»¾ßÓĞÀ©Õ¹ÃûĞÅÏ¢£¬Ôò GetExtension ·µ»Ø Empty¡£
+		// è¿”å›ç»“æœ:
+		//     åŒ…å«æŒ‡å®šè·¯å¾„çš„æ‰©å±•åï¼ˆåŒ…æ‹¬â€œ.â€ï¼‰çš„ System.Stringã€null æˆ– System.String.Emptyã€‚å¦‚æœ path ä¸ºnullï¼Œåˆ™
+		//     GetExtension è¿”å›nullã€‚å¦‚æœ path ä¸å…·æœ‰æ‰©å±•åä¿¡æ¯ï¼Œåˆ™ GetExtension è¿”å› Emptyã€‚
 		inline static String GetExtension(String path)
 		{
 			if (path.empty())
@@ -254,16 +254,16 @@ namespace Common
 			return "";
 		};
 		//
-		// ÕªÒª:
-		//     ·µ»ØÖ¸¶¨Â·¾¶×Ö·û´®µÄÎÄ¼şÃûºÍÀ©Õ¹Ãû¡£
+		// æ‘˜è¦:
+		//     è¿”å›æŒ‡å®šè·¯å¾„å­—ç¬¦ä¸²çš„æ–‡ä»¶åå’Œæ‰©å±•åã€‚
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   path:
-		//     ´ÓÆä»ñÈ¡ÎÄ¼şÃûºÍÀ©Õ¹ÃûµÄÂ·¾¶×Ö·û´®¡£
+		//     ä»å…¶è·å–æ–‡ä»¶åå’Œæ‰©å±•åçš„è·¯å¾„å­—ç¬¦ä¸²ã€‚
 		//
-		// ·µ»Ø½á¹û:
-		//     Ò»¸ö System.String£¬ÓÉ path ÖĞ×îºóµÄÄ¿Â¼×Ö·ûºóµÄ×Ö·û×é³É¡£Èç¹û path µÄ×îºóÒ»¸ö×Ö·ûÊÇÄ¿Â¼»ò¾í·Ö¸ô·û£¬Ôò´Ë·½·¨·µ»Ø System.String.Empty¡£Èç¹û
-		//     path Îªnull£¬Ôò´Ë·½·¨·µ»Ønull¡£
+		// è¿”å›ç»“æœ:
+		//     ä¸€ä¸ª System.Stringï¼Œç”± path ä¸­æœ€åçš„ç›®å½•å­—ç¬¦åçš„å­—ç¬¦ç»„æˆã€‚å¦‚æœ path çš„æœ€åä¸€ä¸ªå­—ç¬¦æ˜¯ç›®å½•æˆ–å·åˆ†éš”ç¬¦ï¼Œåˆ™æ­¤æ–¹æ³•è¿”å› System.String.Emptyã€‚å¦‚æœ
+		//     path ä¸ºnullï¼Œåˆ™æ­¤æ–¹æ³•è¿”å›nullã€‚
 		//	public static string GetFileName(string path);
 		inline static String GetFileName(String path)
 		{
@@ -306,16 +306,16 @@ namespace Common
 			return path;
 		};
 		//
-		// ÕªÒª:
-		//     ·µ»Ø²»¾ßÓĞÀ©Õ¹ÃûµÄÖ¸¶¨Â·¾¶×Ö·û´®µÄÎÄ¼şÃû¡£
+		// æ‘˜è¦:
+		//     è¿”å›ä¸å…·æœ‰æ‰©å±•åçš„æŒ‡å®šè·¯å¾„å­—ç¬¦ä¸²çš„æ–‡ä»¶åã€‚
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   path:
-		//     ÎÄ¼şµÄÂ·¾¶¡£
+		//     æ–‡ä»¶çš„è·¯å¾„ã€‚
 		//
-		// ·µ»Ø½á¹û:
-		//     °üº¬ÓÉ System.IO.Path.GetFileName(System.String) ·µ»ØµÄ×Ö·û´®µÄ System.String£¬µ«²»°üÀ¨×îºóµÄ¾äµã
-		//     (.) ºÍ¸Ã¾äµãºóµÄËùÓĞ×Ö·û¡£
+		// è¿”å›ç»“æœ:
+		//     åŒ…å«ç”± System.IO.Path.GetFileName(System.String) è¿”å›çš„å­—ç¬¦ä¸²çš„ System.Stringï¼Œä½†ä¸åŒ…æ‹¬æœ€åçš„å¥ç‚¹
+		//     (.) å’Œè¯¥å¥ç‚¹åçš„æ‰€æœ‰å­—ç¬¦ã€‚
 		//	public static string GetFileNameWithoutExtension(string path);
 		inline static String GetFileNameWithoutExtension(String path)
 		{
@@ -332,52 +332,52 @@ namespace Common
 			return path.SubString(0, length);
 		};
 		//
-		// ÕªÒª:
-		//     ·µ»ØÖ¸¶¨Â·¾¶×Ö·û´®µÄ¾ø¶ÔÂ·¾¶¡£
+		// æ‘˜è¦:
+		//     è¿”å›æŒ‡å®šè·¯å¾„å­—ç¬¦ä¸²çš„ç»å¯¹è·¯å¾„ã€‚
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   path:
-		//     ÒªÎªÆä»ñÈ¡¾ø¶ÔÂ·¾¶ĞÅÏ¢µÄÎÄ¼ş»òÄ¿Â¼
+		//     è¦ä¸ºå…¶è·å–ç»å¯¹è·¯å¾„ä¿¡æ¯çš„æ–‡ä»¶æˆ–ç›®å½•
 		//
-		// ·µ»Ø½á¹û:
-		//     °üº¬ path µÄÍêÈ«ÏŞ¶¨Î»ÖÃµÄ×Ö·û´®£¬ÀıÈç¡°C:\MyFile.txt¡±¡£
+		// è¿”å›ç»“æœ:
+		//     åŒ…å« path çš„å®Œå…¨é™å®šä½ç½®çš„å­—ç¬¦ä¸²ï¼Œä¾‹å¦‚â€œC:\MyFile.txtâ€ã€‚
 		//	public static string GetFullPath(string path);
 		inline static String GetFullPath(String path,bool isDir=false)
 		{
 			return GetFullPathInternal(path,isDir);
 		};
 		//
-		// ÕªÒª:
-		//     »ñÈ¡°üº¬²»ÔÊĞíÔÚÎÄ¼şÃûÖĞÊ¹ÓÃµÄ×Ö·ûµÄÊı×é¡£
+		// æ‘˜è¦:
+		//     è·å–åŒ…å«ä¸å…è®¸åœ¨æ–‡ä»¶åä¸­ä½¿ç”¨çš„å­—ç¬¦çš„æ•°ç»„ã€‚
 		//
-		// ·µ»Ø½á¹û:
-		//     °üº¬²»ÔÊĞíÔÚÎÄ¼şÃûÖĞÊ¹ÓÃµÄ×Ö·ûµÄÊı×é¡£
+		// è¿”å›ç»“æœ:
+		//     åŒ…å«ä¸å…è®¸åœ¨æ–‡ä»¶åä¸­ä½¿ç”¨çš„å­—ç¬¦çš„æ•°ç»„ã€‚
 		//	public static char[] GetInvalidFileNameChars();
 		inline static const char * GetInvalidFileNameChars(int &len)
 		{
 			return Path::InvalidFileNameChars;
 		};
 		//
-		// ÕªÒª:
-		//     »ñÈ¡°üº¬²»ÔÊĞíÔÚÂ·¾¶ÃûÖĞÊ¹ÓÃµÄ×Ö·ûµÄÊı×é¡£
+		// æ‘˜è¦:
+		//     è·å–åŒ…å«ä¸å…è®¸åœ¨è·¯å¾„åä¸­ä½¿ç”¨çš„å­—ç¬¦çš„æ•°ç»„ã€‚
 		//
-		// ·µ»Ø½á¹û:
-		//     °üº¬²»ÔÊĞíÔÚÂ·¾¶ÃûÖĞÊ¹ÓÃµÄ×Ö·ûµÄÊı×é¡£
+		// è¿”å›ç»“æœ:
+		//     åŒ…å«ä¸å…è®¸åœ¨è·¯å¾„åä¸­ä½¿ç”¨çš„å­—ç¬¦çš„æ•°ç»„ã€‚
 		//	public static char[] GetInvalidPathChars();
 		inline static const char * GetInvalidPathChars(int &len)
 		{
 			return Path::InvalidPathChars;
 		};
 		//
-		// ÕªÒª:
-		//     »ñÈ¡Ö¸¶¨Â·¾¶µÄ¸ùÄ¿Â¼ĞÅÏ¢¡£
+		// æ‘˜è¦:
+		//     è·å–æŒ‡å®šè·¯å¾„çš„æ ¹ç›®å½•ä¿¡æ¯ã€‚
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   path:
-		//     ´ÓÆä»ñÈ¡¸ùÄ¿Â¼ĞÅÏ¢µÄÂ·¾¶¡£
+		//     ä»å…¶è·å–æ ¹ç›®å½•ä¿¡æ¯çš„è·¯å¾„ã€‚
 		//
-		// ·µ»Ø½á¹û:
-		//     Ò»¸ö°üº¬ path µÄ¸ùÄ¿Â¼µÄ×Ö·û´®£¬ÀıÈç¡°C:\¡±£»»òÕßÈç¹û path Îªnull£¬ÔòÎªnull£»»òÕßÈç¹û path ²»°üº¬¸ùÄ¿Â¼ĞÅÏ¢£¬ÔòÎª¿Õ×Ö·û´®¡£
+		// è¿”å›ç»“æœ:
+		//     ä¸€ä¸ªåŒ…å« path çš„æ ¹ç›®å½•çš„å­—ç¬¦ä¸²ï¼Œä¾‹å¦‚â€œC:\â€ï¼›æˆ–è€…å¦‚æœ path ä¸ºnullï¼Œåˆ™ä¸ºnullï¼›æˆ–è€…å¦‚æœ path ä¸åŒ…å«æ ¹ç›®å½•ä¿¡æ¯ï¼Œåˆ™ä¸ºç©ºå­—ç¬¦ä¸²ã€‚
 		//	public static string GetPathRoot(string path);
 		inline static String GetPathRoot(String path)
 		{
@@ -389,15 +389,15 @@ namespace Common
 			return path.SubString(0, GetRootLength(path));
 		};
 		//
-		// ÕªÒª:
-		//     È·¶¨Â·¾¶ÊÇ·ñ°üÀ¨ÎÄ¼şÀ©Õ¹Ãû¡£
+		// æ‘˜è¦:
+		//     ç¡®å®šè·¯å¾„æ˜¯å¦åŒ…æ‹¬æ–‡ä»¶æ‰©å±•åã€‚
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   path:
-		//     ÓÃÓÚËÑË÷À©Õ¹ÃûµÄÂ·¾¶¡£
+		//     ç”¨äºæœç´¢æ‰©å±•åçš„è·¯å¾„ã€‚
 		//
-		// ·µ»Ø½á¹û:
-		//     Èç¹ûÂ·¾¶ÖĞ×îºóµÄÄ¿Â¼·Ö¸ô·û£¨\\ »ò /£©»ò¾í·Ö¸ô·û (:) Ö®ºóµÄ×Ö·û°üÀ¨¾äµã (.)£¬²¢ÇÒºóÃæ¸úÓĞÒ»¸ö»ò¶à¸ö×Ö·û£¬ÔòÎª true£»·ñÔòÎª false¡£
+		// è¿”å›ç»“æœ:
+		//     å¦‚æœè·¯å¾„ä¸­æœ€åçš„ç›®å½•åˆ†éš”ç¬¦ï¼ˆ\\ æˆ– /ï¼‰æˆ–å·åˆ†éš”ç¬¦ (:) ä¹‹åçš„å­—ç¬¦åŒ…æ‹¬å¥ç‚¹ (.)ï¼Œå¹¶ä¸”åé¢è·Ÿæœ‰ä¸€ä¸ªæˆ–å¤šä¸ªå­—ç¬¦ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚
 		//	public static bool HasExtension(string path);
 		inline static bool HasExtension(String path)
 		{
@@ -424,7 +424,7 @@ namespace Common
 			}
 			return false;
 		};
-		//ºÏ²¢¶ş¸öÂ·¾¶, path2²»Îª¿Õ,Ò²²»Îª¸ùÂ·¾¶
+		//åˆå¹¶äºŒä¸ªè·¯å¾„, path2ä¸ä¸ºç©º,ä¹Ÿä¸ä¸ºæ ¹è·¯å¾„
 		inline static String InternalCombine(String path1, String path2)
 		{
 			if (path2.empty())
@@ -454,15 +454,15 @@ namespace Common
 			return (path1 + path2);
 		};
 		//
-		// ÕªÒª:
-		//     »ñÈ¡Ò»¸öÖµ£¬¸ÃÖµÖ¸Ê¾Ö¸¶¨µÄÂ·¾¶×Ö·û´®ÊÇ°üº¬¾ø¶ÔÂ·¾¶ĞÅÏ¢»¹ÊÇ°üº¬Ïà¶ÔÂ·¾¶ĞÅÏ¢¡£
+		// æ‘˜è¦:
+		//     è·å–ä¸€ä¸ªå€¼ï¼Œè¯¥å€¼æŒ‡ç¤ºæŒ‡å®šçš„è·¯å¾„å­—ç¬¦ä¸²æ˜¯åŒ…å«ç»å¯¹è·¯å¾„ä¿¡æ¯è¿˜æ˜¯åŒ…å«ç›¸å¯¹è·¯å¾„ä¿¡æ¯ã€‚
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   path:
-		//     Òª²âÊÔµÄÂ·¾¶¡£
+		//     è¦æµ‹è¯•çš„è·¯å¾„ã€‚
 		//
-		// ·µ»Ø½á¹û:
-		//     Èç¹û path °üº¬¾ø¶ÔÂ·¾¶£¬ÔòÎª true£»·ñÔòÎª false¡£
+		// è¿”å›ç»“æœ:
+		//     å¦‚æœ path åŒ…å«ç»å¯¹è·¯å¾„ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚
 		inline static bool IsPathRooted(const String &path)
 		{
 			if (path.size() != 0)
@@ -480,7 +480,7 @@ namespace Common
 			}
 			return false;
 		};
-		//¸ùÄ¿Â¼³¤¶È
+		//æ ¹ç›®å½•é•¿åº¦
 		inline static int GetRootLength(String path)
 		{
 			CheckInvalidPathChars(path);
@@ -513,7 +513,7 @@ namespace Common
 #endif
 			return num;
 		};
-		//ÊÇ·ñÄ¿Â¼·Ö¸ô·û
+		//æ˜¯å¦ç›®å½•åˆ†éš”ç¬¦
 		inline static bool IsDirectorySeparator(char c)
 		{
 			return (c != DirectorySeparatorChar);
@@ -527,24 +527,24 @@ namespace Common
 			buffer[index] = value;
 		};
 		//
-		// ÕªÒª:
-		//     ·µ»ØËæ»úÎÄ¼ş¼ĞÃû»òÎÄ¼şÃû¡£
+		// æ‘˜è¦:
+		//     è¿”å›éšæœºæ–‡ä»¶å¤¹åæˆ–æ–‡ä»¶åã€‚
 		//
-		// ·µ»Ø½á¹û:
-		//     Ëæ»úÎÄ¼ş¼ĞÃû»òÎÄ¼şÃû¡£
+		// è¿”å›ç»“æœ:
+		//     éšæœºæ–‡ä»¶å¤¹åæˆ–æ–‡ä»¶åã€‚
 		//	public static string GetRandomFileName();
 		static String GetRandomFileName()
 		{
 			return "Random"+DateTime().ToString()+rand();
 		};
 		//
-		// ÕªÒª:
-		//     ´´½¨´ÅÅÌÉÏÎ¨Ò»ÃüÃûµÄÁã×Ö½ÚµÄÁÙÊ±ÎÄ¼ş²¢·µ»Ø¸ÃÎÄ¼şµÄÍêÕûÂ·¾¶¡£
+		// æ‘˜è¦:
+		//     åˆ›å»ºç£ç›˜ä¸Šå”¯ä¸€å‘½åçš„é›¶å­—èŠ‚çš„ä¸´æ—¶æ–‡ä»¶å¹¶è¿”å›è¯¥æ–‡ä»¶çš„å®Œæ•´è·¯å¾„ã€‚
 		//
-		// ·µ»Ø½á¹û:
-		//     °üº¬ÁÙÊ±ÎÄ¼şµÄÍêÕûÂ·¾¶µÄ System.String¡£
+		// è¿”å›ç»“æœ:
+		//     åŒ…å«ä¸´æ—¶æ–‡ä»¶çš„å®Œæ•´è·¯å¾„çš„ System.Stringã€‚
 		//	public static string GetTempFileName();
-		//»ñÈ¡ÁÙÊ±ÎÄ¼şÃû
+		//è·å–ä¸´æ—¶æ–‡ä»¶å
 		static String GetTempFileName()
 		{
 			String tempPath = GetTempPath();
@@ -569,11 +569,11 @@ namespace Common
 			return tmpFileName;
 		};
 		//
-		// ÕªÒª:
-		//     ·µ»Øµ±Ç°ÏµÍ³µÄÁÙÊ±ÎÄ¼ş¼ĞµÄÂ·¾¶¡£»ñÈ¡ÁÙÊ±ÎÄ¼şÂ·¾¶,Èç¹û²»´æÔÚ»·¾³±äÁ¿ TEMP TMP ÔòÄ¬ÈÏÎªµ±Ç°¹¤×÷Ä¿Â¼
+		// æ‘˜è¦:
+		//     è¿”å›å½“å‰ç³»ç»Ÿçš„ä¸´æ—¶æ–‡ä»¶å¤¹çš„è·¯å¾„ã€‚è·å–ä¸´æ—¶æ–‡ä»¶è·¯å¾„,å¦‚æœä¸å­˜åœ¨ç¯å¢ƒå˜é‡ TEMP TMP åˆ™é»˜è®¤ä¸ºå½“å‰å·¥ä½œç›®å½•
 		//
-		// ·µ»Ø½á¹û:
-		//     °üº¬ÁÙÊ±Ä¿Â¼µÄÂ·¾¶ĞÅÏ¢µÄ System.String¡£
+		// è¿”å›ç»“æœ:
+		//     åŒ…å«ä¸´æ—¶ç›®å½•çš„è·¯å¾„ä¿¡æ¯çš„ System.Stringã€‚
 		//	public static string GetTempPath();
 		static String GetTempPath()
 		{
@@ -582,9 +582,9 @@ namespace Common
 			return GetFullPathInternal(path,true);
 		};
 
-		//²éÑ¯Ä£Ê½ÑéÖ¤
+		//æŸ¥è¯¢æ¨¡å¼éªŒè¯
 		inline static void CheckSearchPattern(String & searchPattern);
-		//·µ»ØÄ¿Â¼,ÒÔÌØ¶¨×Ö·û½áÎ²
+		//è¿”å›ç›®å½•,ä»¥ç‰¹å®šå­—ç¬¦ç»“å°¾
 		inline static String GetDemandDir(String &path)
 		{    
 			Path::formatPath(path);
@@ -594,7 +594,7 @@ namespace Common
 			}
 			return path;
 		};
-		//»ñÈ¡È«Â·¾¶ÊµÏÖÌå
+		//è·å–å…¨è·¯å¾„å®ç°ä½“
 		static String GetFullPathInternal(String path,bool isDir=false)
 		{
 			if(path=="")return "";
@@ -622,7 +622,7 @@ namespace Common
 #endif
 				return path;
 			}
-			//Ïà¶Ô×ª»»¾ø¶Ô
+			//ç›¸å¯¹è½¬æ¢ç»å¯¹
 			if(path.StartsWith(".."))
 			{
 				char * dest1[50];
@@ -711,7 +711,7 @@ namespace Common
 	};
 	//rename  unlink,  access  chmod  mktemp
 	///	<summary>
-	///	¹«¿ªÓÃÓÚ´´½¨¡¢ÒÆ¶¯ºÍÃ¶¾ÙÍ¨¹ıÄ¿Â¼ºÍ×ÓÄ¿Â¼µÄ¾²Ì¬·½·¨¡£
+	///	å…¬å¼€ç”¨äºåˆ›å»ºã€ç§»åŠ¨å’Œæšä¸¾é€šè¿‡ç›®å½•å’Œå­ç›®å½•çš„é™æ€æ–¹æ³•ã€‚
 	///	</summary>
 	///	<remarks>
 	///	<code></code>
@@ -723,15 +723,15 @@ namespace Common
 		friend class DirectoryInfo;
 	public:
 
-		// ÕªÒª:
-		//     °´ path µÄÖ¸¶¨´´½¨ËùÓĞÄ¿Â¼ºÍ×ÓÄ¿Â¼.
+		// æ‘˜è¦:
+		//     æŒ‰ path çš„æŒ‡å®šåˆ›å»ºæ‰€æœ‰ç›®å½•å’Œå­ç›®å½•.
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   path:
-		//     Òª´´½¨µÄÄ¿Â¼Â·¾¶¡£
+		//     è¦åˆ›å»ºçš„ç›®å½•è·¯å¾„ã€‚
 		//
-		// ·µ»Ø½á¹û:
-		//     ÓÉ path Ö¸¶¨µÄ System.IO.DirectoryInfo¡£
+		// è¿”å›ç»“æœ:
+		//     ç”± path æŒ‡å®šçš„ System.IO.DirectoryInfoã€‚
 		static DirectoryInfo CreateDirectory(String path);
 
 		static bool CreateDir(String path,int mode=777)
@@ -755,13 +755,13 @@ namespace Common
 				}
 				if(system(cmd.c_str())!=0)
 				{
-					printf("Ä¿Â¼´´½¨Ê§°Ü:%s\n",path.c_str());
+					printf("ç›®å½•åˆ›å»ºå¤±è´¥:%s\n",path.c_str());
 					return false;
 				}
 		#else
 				if(system(("mkdir \""+path+"\"").c_str())!=0)
 				{
-					printf("Ä¿Â¼´´½¨Ê§°Ü:%s\n",path.c_str());
+					printf("ç›®å½•åˆ›å»ºå¤±è´¥:%s\n",path.c_str());
 					return false;
 				}
 		#endif
@@ -769,15 +769,15 @@ namespace Common
 			return true;
 		};
 		//
-		// ÕªÒª:
-		//     É¾³ıÖ¸¶¨µÄÄ¿Â¼²¢£¨Èç¹ûÖ¸Ê¾£©É¾³ı¸ÃÄ¿Â¼ÖĞµÄÈÎºÎ×ÓÄ¿Â¼¡£
+		// æ‘˜è¦:
+		//     åˆ é™¤æŒ‡å®šçš„ç›®å½•å¹¶ï¼ˆå¦‚æœæŒ‡ç¤ºï¼‰åˆ é™¤è¯¥ç›®å½•ä¸­çš„ä»»ä½•å­ç›®å½•ã€‚
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   recursive:
-		//     ÈôÒªÒÆ³ı path ÖĞµÄÄ¿Â¼¡¢×ÓÄ¿Â¼ºÍÎÄ¼ş£¬ÔòÎª true£»·ñÔòÎª false¡£
+		//     è‹¥è¦ç§»é™¤ path ä¸­çš„ç›®å½•ã€å­ç›®å½•å’Œæ–‡ä»¶ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚
 		//
 		//   path:
-		//     ÒªÒÆ³ıµÄÄ¿Â¼µÄÃû³Æ¡£
+		//     è¦ç§»é™¤çš„ç›®å½•çš„åç§°ã€‚
 		//	public static void Delete(string path, bool recursive);
 		inline static void Delete(String path,bool recursive=false)
 		{
@@ -795,15 +795,15 @@ namespace Common
 				rmdir(path.c_str());
 			}
 		};		//
-		// ÕªÒª:
-		//     È·¶¨¸ø¶¨Â·¾¶ÊÇ·ñÒıÓÃ´ÅÅÌÉÏµÄÏÖÓĞÄ¿Â¼¡£
+		// æ‘˜è¦:
+		//     ç¡®å®šç»™å®šè·¯å¾„æ˜¯å¦å¼•ç”¨ç£ç›˜ä¸Šçš„ç°æœ‰ç›®å½•ã€‚
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   path:
-		//     Òª²âÊÔµÄÂ·¾¶¡£
+		//     è¦æµ‹è¯•çš„è·¯å¾„ã€‚
 		//
-		// ·µ»Ø½á¹û:
-		//     Èç¹û path ÒıÓÃÏÖÓĞÄ¿Â¼£¬ÔòÎª true£»·ñÔòÎª false¡£
+		// è¿”å›ç»“æœ:
+		//     å¦‚æœ path å¼•ç”¨ç°æœ‰ç›®å½•ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚
 		//	public static bool Exists(string path);
 		inline static bool Exists(String path)
 		{
@@ -831,15 +831,15 @@ namespace Common
 		}
  
 		//
-		// ÕªÒª:
-		//     ½«ÎÄ¼ş»òÄ¿Â¼¼°ÆäÄÚÈİÒÆµ½ĞÂÎ»ÖÃ¡£
+		// æ‘˜è¦:
+		//     å°†æ–‡ä»¶æˆ–ç›®å½•åŠå…¶å†…å®¹ç§»åˆ°æ–°ä½ç½®ã€‚
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   sourceDirName:
-		//     ÒªÒÆ¶¯µÄÎÄ¼ş»òÄ¿Â¼µÄÂ·¾¶¡£
+		//     è¦ç§»åŠ¨çš„æ–‡ä»¶æˆ–ç›®å½•çš„è·¯å¾„ã€‚
 		//
 		//   destDirName:
-		//     Ö¸Ïò sourceDirName µÄĞÂÎ»ÖÃµÄÂ·¾¶¡£
+		//     æŒ‡å‘ sourceDirName çš„æ–°ä½ç½®çš„è·¯å¾„ã€‚
 		inline static bool Move(String sourceDirName, String destDirName,bool isConvered=false)
 		{
 			sourceDirName = Path::GetFullPath(sourceDirName);
@@ -859,11 +859,11 @@ namespace Common
 	#endif
 		};
 		//
-		// ÕªÒª:
-		//     »ñÈ¡Ó¦ÓÃ³ÌĞòµÄµ±Ç°¹¤×÷Ä¿Â¼¡£
+		// æ‘˜è¦:
+		//     è·å–åº”ç”¨ç¨‹åºçš„å½“å‰å·¥ä½œç›®å½•ã€‚
 		//
-		// ·µ»Ø½á¹û:
-		//     °üº¬µ±Ç°¹¤×÷Ä¿Â¼µÄÂ·¾¶µÄ×Ö·û´®¡£
+		// è¿”å›ç»“æœ:
+		//     åŒ…å«å½“å‰å·¥ä½œç›®å½•çš„è·¯å¾„çš„å­—ç¬¦ä¸²ã€‚
 		inline static String GetCurrentDirectory()
 		{
 			char * buf=new char[Path::MaxPath+1];
@@ -874,15 +874,15 @@ namespace Common
 			return curDir;
 		};
 		//
-		// ÕªÒª:
-		//     »ñÈ¡Ä¿Â¼µÄ´´½¨ÈÕÆÚºÍÊ±¼ä¡£
+		// æ‘˜è¦:
+		//     è·å–ç›®å½•çš„åˆ›å»ºæ—¥æœŸå’Œæ—¶é—´ã€‚
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   path:
-		//     Ä¿Â¼µÄÂ·¾¶¡£
+		//     ç›®å½•çš„è·¯å¾„ã€‚
 		//
-		// ·µ»Ø½á¹û:
-		//     Ò»¸ö System.DateTime ½á¹¹£¬ËüÉèÖÃÎªÖ¸¶¨Ä¿Â¼µÄ´´½¨ÈÕÆÚºÍÊ±¼ä¡£¸ÃÖµÓÃ±¾µØÊ±¼ä±íÊ¾¡£
+		// è¿”å›ç»“æœ:
+		//     ä¸€ä¸ª System.DateTime ç»“æ„ï¼Œå®ƒè®¾ç½®ä¸ºæŒ‡å®šç›®å½•çš„åˆ›å»ºæ—¥æœŸå’Œæ—¶é—´ã€‚è¯¥å€¼ç”¨æœ¬åœ°æ—¶é—´è¡¨ç¤ºã€‚
 		inline static DateTime GetCreationTime(String path)
 		{
 			Path::formatPath(path);
@@ -892,15 +892,15 @@ namespace Common
 			return DateTime((unsigned int)buf.st_ctime);
 		};
 		//
-		// ÕªÒª:
-		//     »ñÈ¡Ä¿Â¼´´½¨µÄÈÕÆÚºÍÊ±¼ä£¬Æä¸ñÊ½ÎªĞ­µ÷Í¨ÓÃÊ±¼ä (UTC)¡£
+		// æ‘˜è¦:
+		//     è·å–ç›®å½•åˆ›å»ºçš„æ—¥æœŸå’Œæ—¶é—´ï¼Œå…¶æ ¼å¼ä¸ºåè°ƒé€šç”¨æ—¶é—´ (UTC)ã€‚
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   path:
-		//     Ä¿Â¼µÄÂ·¾¶¡£
+		//     ç›®å½•çš„è·¯å¾„ã€‚
 		//
-		// ·µ»Ø½á¹û:
-		//     Ò»¸ö System.DateTime ½á¹¹£¬ËüÉèÖÃÎªÖ¸¶¨Ä¿Â¼µÄ´´½¨ÈÕÆÚºÍÊ±¼ä¡£¸ÃÖµÓÃ UTC Ê±¼ä±íÊ¾¡£
+		// è¿”å›ç»“æœ:
+		//     ä¸€ä¸ª System.DateTime ç»“æ„ï¼Œå®ƒè®¾ç½®ä¸ºæŒ‡å®šç›®å½•çš„åˆ›å»ºæ—¥æœŸå’Œæ—¶é—´ã€‚è¯¥å€¼ç”¨ UTC æ—¶é—´è¡¨ç¤ºã€‚
 		inline static DateTime GetCreationTimeUtc(String path)
 		{
 			struct stat buf;
@@ -909,15 +909,15 @@ namespace Common
 			return DateTime((unsigned int )buf.st_ctime,GMT0);
 		};
 		//
-		// ÕªÒª:
-		//     ·µ»ØÉÏ´Î·ÃÎÊÖ¸¶¨ÎÄ¼ş»òÄ¿Â¼µÄÈÕÆÚºÍÊ±¼ä¡£
+		// æ‘˜è¦:
+		//     è¿”å›ä¸Šæ¬¡è®¿é—®æŒ‡å®šæ–‡ä»¶æˆ–ç›®å½•çš„æ—¥æœŸå’Œæ—¶é—´ã€‚
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   path:
-		//     Òª»ñÈ¡Æä·ÃÎÊÈÕÆÚºÍÊ±¼äĞÅÏ¢µÄÎÄ¼ş»òÄ¿Â¼¡£
+		//     è¦è·å–å…¶è®¿é—®æ—¥æœŸå’Œæ—¶é—´ä¿¡æ¯çš„æ–‡ä»¶æˆ–ç›®å½•ã€‚
 		//
-		// ·µ»Ø½á¹û:
-		//     Ò»¸ö System.DateTime ½á¹¹£¬ËüÉèÖÃÎªÉÏ´Î·ÃÎÊÖ¸¶¨ÎÄ¼ş»òÄ¿Â¼µÄÈÕÆÚºÍÊ±¼ä¡£¸ÃÖµÓÃ±¾µØÊ±¼ä±íÊ¾¡£
+		// è¿”å›ç»“æœ:
+		//     ä¸€ä¸ª System.DateTime ç»“æ„ï¼Œå®ƒè®¾ç½®ä¸ºä¸Šæ¬¡è®¿é—®æŒ‡å®šæ–‡ä»¶æˆ–ç›®å½•çš„æ—¥æœŸå’Œæ—¶é—´ã€‚è¯¥å€¼ç”¨æœ¬åœ°æ—¶é—´è¡¨ç¤ºã€‚
 		inline static DateTime GetLastAccessTime(String path)
 		{
 			struct stat buf;
@@ -926,15 +926,15 @@ namespace Common
 			return DateTime((unsigned int)buf.st_atime);
 		};
 		//
-		// ÕªÒª:
-		//     ·µ»ØÉÏ´Î·ÃÎÊÖ¸¶¨ÎÄ¼ş»òÄ¿Â¼µÄÈÕÆÚºÍÊ±¼ä£¬Æä¸ñÊ½ÎªĞ­µ÷Í¨ÓÃÊ±¼ä (UTC)¡£
+		// æ‘˜è¦:
+		//     è¿”å›ä¸Šæ¬¡è®¿é—®æŒ‡å®šæ–‡ä»¶æˆ–ç›®å½•çš„æ—¥æœŸå’Œæ—¶é—´ï¼Œå…¶æ ¼å¼ä¸ºåè°ƒé€šç”¨æ—¶é—´ (UTC)ã€‚
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   path:
-		//     Òª»ñÈ¡Æä·ÃÎÊÈÕÆÚºÍÊ±¼äĞÅÏ¢µÄÎÄ¼ş»òÄ¿Â¼¡£
+		//     è¦è·å–å…¶è®¿é—®æ—¥æœŸå’Œæ—¶é—´ä¿¡æ¯çš„æ–‡ä»¶æˆ–ç›®å½•ã€‚
 		//
-		// ·µ»Ø½á¹û:
-		//     Ò»¸ö System.DateTime ½á¹¹£¬ËüÉèÖÃÎªÉÏ´Î·ÃÎÊÖ¸¶¨ÎÄ¼ş»òÄ¿Â¼µÄÈÕÆÚºÍÊ±¼ä¡£¸ÃÖµÓÃ UTC Ê±¼ä±íÊ¾¡£
+		// è¿”å›ç»“æœ:
+		//     ä¸€ä¸ª System.DateTime ç»“æ„ï¼Œå®ƒè®¾ç½®ä¸ºä¸Šæ¬¡è®¿é—®æŒ‡å®šæ–‡ä»¶æˆ–ç›®å½•çš„æ—¥æœŸå’Œæ—¶é—´ã€‚è¯¥å€¼ç”¨ UTC æ—¶é—´è¡¨ç¤ºã€‚
 		inline static DateTime GetLastAccessTimeUtc(String path)
 		{
 			struct stat buf;
@@ -943,15 +943,15 @@ namespace Common
 			return DateTime((unsigned int )buf.st_atime,GMT0);
 		};
 		//
-		// ÕªÒª:
-		//     ·µ»ØÉÏ´ÎĞ´ÈëÖ¸¶¨ÎÄ¼ş»òÄ¿Â¼µÄÈÕÆÚºÍÊ±¼ä¡£
+		// æ‘˜è¦:
+		//     è¿”å›ä¸Šæ¬¡å†™å…¥æŒ‡å®šæ–‡ä»¶æˆ–ç›®å½•çš„æ—¥æœŸå’Œæ—¶é—´ã€‚
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   path:
-		//     Òª»ñÈ¡ÆäĞŞ¸ÄÈÕÆÚºÍÊ±¼äĞÅÏ¢µÄÎÄ¼ş»òÄ¿Â¼¡£
+		//     è¦è·å–å…¶ä¿®æ”¹æ—¥æœŸå’Œæ—¶é—´ä¿¡æ¯çš„æ–‡ä»¶æˆ–ç›®å½•ã€‚
 		//
-		// ·µ»Ø½á¹û:
-		//     Ò»¸ö System.DateTime ½á¹¹£¬ËüÉèÖÃÎªÉÏ´ÎĞ´ÈëÖ¸¶¨ÎÄ¼ş»òÄ¿Â¼µÄÈÕÆÚºÍÊ±¼ä¡£¸ÃÖµÓÃ±¾µØÊ±¼ä±íÊ¾¡£
+		// è¿”å›ç»“æœ:
+		//     ä¸€ä¸ª System.DateTime ç»“æ„ï¼Œå®ƒè®¾ç½®ä¸ºä¸Šæ¬¡å†™å…¥æŒ‡å®šæ–‡ä»¶æˆ–ç›®å½•çš„æ—¥æœŸå’Œæ—¶é—´ã€‚è¯¥å€¼ç”¨æœ¬åœ°æ—¶é—´è¡¨ç¤ºã€‚
 		inline static DateTime GetLastWriteTime(String path)
 		{
 			struct stat buf;
@@ -960,15 +960,15 @@ namespace Common
 			return DateTime((unsigned int)buf.st_mtime);
 		};
 		//
-		// ÕªÒª:
-		//     ·µ»ØÉÏ´ÎĞ´ÈëÖ¸¶¨ÎÄ¼ş»òÄ¿Â¼µÄÈÕÆÚºÍÊ±¼ä£¬Æä¸ñÊ½ÎªĞ­µ÷Í¨ÓÃÊ±¼ä (UTC)¡£
+		// æ‘˜è¦:
+		//     è¿”å›ä¸Šæ¬¡å†™å…¥æŒ‡å®šæ–‡ä»¶æˆ–ç›®å½•çš„æ—¥æœŸå’Œæ—¶é—´ï¼Œå…¶æ ¼å¼ä¸ºåè°ƒé€šç”¨æ—¶é—´ (UTC)ã€‚
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   path:
-		//     Òª»ñÈ¡ÆäĞŞ¸ÄÈÕÆÚºÍÊ±¼äĞÅÏ¢µÄÎÄ¼ş»òÄ¿Â¼¡£
+		//     è¦è·å–å…¶ä¿®æ”¹æ—¥æœŸå’Œæ—¶é—´ä¿¡æ¯çš„æ–‡ä»¶æˆ–ç›®å½•ã€‚
 		//
-		// ·µ»Ø½á¹û:
-		//     Ò»¸ö System.DateTime ½á¹¹£¬ËüÉèÖÃÎªÉÏ´ÎĞ´ÈëÖ¸¶¨ÎÄ¼ş»òÄ¿Â¼µÄÈÕÆÚºÍÊ±¼ä¡£¸ÃÖµÓÃ UTC Ê±¼ä±íÊ¾¡£
+		// è¿”å›ç»“æœ:
+		//     ä¸€ä¸ª System.DateTime ç»“æ„ï¼Œå®ƒè®¾ç½®ä¸ºä¸Šæ¬¡å†™å…¥æŒ‡å®šæ–‡ä»¶æˆ–ç›®å½•çš„æ—¥æœŸå’Œæ—¶é—´ã€‚è¯¥å€¼ç”¨ UTC æ—¶é—´è¡¨ç¤ºã€‚
 		inline static DateTime GetLastWriteTimeUtc(String path)
 		{
 			struct stat buf;
@@ -977,69 +977,69 @@ namespace Common
 			return DateTime((unsigned int )buf.st_mtime,GMT0);
 		};
 		//
-		// ÕªÒª:
-		//     ¼ìË÷Ö¸¶¨Â·¾¶µÄ¸¸Ä¿Â¼£¬°üÀ¨¾ø¶ÔÂ·¾¶ºÍÏà¶ÔÂ·¾¶¡£
+		// æ‘˜è¦:
+		//     æ£€ç´¢æŒ‡å®šè·¯å¾„çš„çˆ¶ç›®å½•ï¼ŒåŒ…æ‹¬ç»å¯¹è·¯å¾„å’Œç›¸å¯¹è·¯å¾„ã€‚
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   path:
-		//     ÓÃÓÚ¼ìË÷¸¸Ä¿Â¼µÄÂ·¾¶¡£
+		//     ç”¨äºæ£€ç´¢çˆ¶ç›®å½•çš„è·¯å¾„ã€‚
 		//
-		// ·µ»Ø½á¹û:
-		//     ¸¸Ä¿Â¼£»»òÕßÈç¹û path ÊÇ¸ùÄ¿Â¼£¬°üÀ¨ UNC ·şÎñÆ÷»ò¹²ÏíÃûµÄ¸ù£¬ÔòÎªnull¡£
+		// è¿”å›ç»“æœ:
+		//     çˆ¶ç›®å½•ï¼›æˆ–è€…å¦‚æœ path æ˜¯æ ¹ç›®å½•ï¼ŒåŒ…æ‹¬ UNC æœåŠ¡å™¨æˆ–å…±äº«åçš„æ ¹ï¼Œåˆ™ä¸ºnullã€‚
 		inline static DirectoryInfo GetParent(String path);
 		//
-		// ÕªÒª:
-		//     ·µ»ØÖ¸¶¨Â·¾¶µÄ¾íĞÅÏ¢¡¢¸ùĞÅÏ¢»òÁ½ÕßÍ¬Ê±·µ»Ø¡£
+		// æ‘˜è¦:
+		//     è¿”å›æŒ‡å®šè·¯å¾„çš„å·ä¿¡æ¯ã€æ ¹ä¿¡æ¯æˆ–ä¸¤è€…åŒæ—¶è¿”å›ã€‚
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   path:
-		//     ÎÄ¼ş»òÄ¿Â¼µÄÂ·¾¶¡£
+		//     æ–‡ä»¶æˆ–ç›®å½•çš„è·¯å¾„ã€‚
 		//
-		// ·µ»Ø½á¹û:
-		//     °üº¬Ö¸¶¨Â·¾¶µÄ¾íĞÅÏ¢¡¢¸ùĞÅÏ¢»òÍ¬Ê±°üÀ¨ÕâÁ½ÕßµÄ×Ö·û´®¡£
+		// è¿”å›ç»“æœ:
+		//     åŒ…å«æŒ‡å®šè·¯å¾„çš„å·ä¿¡æ¯ã€æ ¹ä¿¡æ¯æˆ–åŒæ—¶åŒ…æ‹¬è¿™ä¸¤è€…çš„å­—ç¬¦ä¸²ã€‚
 		static String GetDirectoryRoot(String path){return Path::GetPathRoot(path);};
 		//
-		// ÕªÒª:
-		//     »ñÈ¡µ±Ç°Ä¿Â¼ÖĞÓëÖ¸¶¨ËÑË÷Ä£Ê½Æ¥Åä²¢Ê¹ÓÃÄ³¸öÖµÈ·¶¨ÊÇ·ñÔÚ×ÓÄ¿Â¼ÖĞËÑË÷µÄÄ¿Â¼µÄÊı×é¡£
+		// æ‘˜è¦:
+		//     è·å–å½“å‰ç›®å½•ä¸­ä¸æŒ‡å®šæœç´¢æ¨¡å¼åŒ¹é…å¹¶ä½¿ç”¨æŸä¸ªå€¼ç¡®å®šæ˜¯å¦åœ¨å­ç›®å½•ä¸­æœç´¢çš„ç›®å½•çš„æ•°ç»„ã€‚
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   searchOption:
-		//     System.IO.SearchOption ÖµÖ®Ò»£¬Ö¸¶¨ËÑË÷²Ù×÷Ó¦°üÀ¨ËùÓĞ×ÓÄ¿Â¼»¹ÊÇ½ö°üÀ¨µ±Ç°Ä¿Â¼¡£
+		//     System.IO.SearchOption å€¼ä¹‹ä¸€ï¼ŒæŒ‡å®šæœç´¢æ“ä½œåº”åŒ…æ‹¬æ‰€æœ‰å­ç›®å½•è¿˜æ˜¯ä»…åŒ…æ‹¬å½“å‰ç›®å½•ã€‚
 		//
 		//   path:
-		//     ÒªËÑË÷µÄÂ·¾¶¡£
+		//     è¦æœç´¢çš„è·¯å¾„ã€‚
 		//
 		//   searchPattern:
-		//     ÒªÓë path ÖĞµÄÎÄ¼şÃûÆ¥ÅäµÄËÑË÷×Ö·û´®¡£´Ë²ÎÊı²»ÄÜÒÔÁ½¸ö¾äµã£¨¡°..¡±£©½áÊø£¬²»ÄÜÔÚ System.IO.Path.DirectorySeparatorChar
-		//     »ò System.IO.Path.AltDirectorySeparatorChar µÄÇ°Ãæ°üº¬Á½¸ö¾äµã£¨¡°..¡±£©£¬Ò²²»ÄÜ°üº¬ System.IO.Path.InvalidPathChars
-		//     ÖĞµÄÈÎºÎ×Ö·û¡£
+		//     è¦ä¸ path ä¸­çš„æ–‡ä»¶ååŒ¹é…çš„æœç´¢å­—ç¬¦ä¸²ã€‚æ­¤å‚æ•°ä¸èƒ½ä»¥ä¸¤ä¸ªå¥ç‚¹ï¼ˆâ€œ..â€ï¼‰ç»“æŸï¼Œä¸èƒ½åœ¨ System.IO.Path.DirectorySeparatorChar
+		//     æˆ– System.IO.Path.AltDirectorySeparatorChar çš„å‰é¢åŒ…å«ä¸¤ä¸ªå¥ç‚¹ï¼ˆâ€œ..â€ï¼‰ï¼Œä¹Ÿä¸èƒ½åŒ…å« System.IO.Path.InvalidPathChars
+		//     ä¸­çš„ä»»ä½•å­—ç¬¦ã€‚
 		//
-		// ·µ»Ø½á¹û:
-		//     ÓëËÑË÷Ä£Ê½Æ¥ÅäµÄÄ¿Â¼µÄ String Êı×é¡£
+		// è¿”å›ç»“æœ:
+		//     ä¸æœç´¢æ¨¡å¼åŒ¹é…çš„ç›®å½•çš„ String æ•°ç»„ã€‚
 		inline static Array<String> GetDirectories(String path, String searchPattern="",bool ignoreCase=false, SearchOption searchOption=TopDirectoryOnly){return InternalGetFileDirectoryNames(path,false,true, searchPattern,ignoreCase,searchOption);};
 		//
-		// ÕªÒª:
-		//     ·µ»ØÖ¸¶¨Ä¿Â¼ÖĞÎÄ¼şµÄÃû³Æ£¬¸ÃÄ¿Â¼ÓëÖ¸¶¨ËÑË÷Ä£Ê½Æ¥Åä²¢Ê¹ÓÃÄ³¸öÖµÈ·¶¨ÊÇ·ñÔÚ×ÓÄ¿Â¼ÖĞËÑË÷¡£
+		// æ‘˜è¦:
+		//     è¿”å›æŒ‡å®šç›®å½•ä¸­æ–‡ä»¶çš„åç§°ï¼Œè¯¥ç›®å½•ä¸æŒ‡å®šæœç´¢æ¨¡å¼åŒ¹é…å¹¶ä½¿ç”¨æŸä¸ªå€¼ç¡®å®šæ˜¯å¦åœ¨å­ç›®å½•ä¸­æœç´¢ã€‚
 		//
-		// ²ÎÊı:
+		// å‚æ•°:
 		//   searchOption:
-		//     System.IO.SearchOption ÖµÖ®Ò»£¬Ö¸¶¨ËÑË÷²Ù×÷Ó¦°üÀ¨ËùÓĞ×ÓÄ¿Â¼»¹ÊÇ½ö°üÀ¨µ±Ç°Ä¿Â¼¡£
+		//     System.IO.SearchOption å€¼ä¹‹ä¸€ï¼ŒæŒ‡å®šæœç´¢æ“ä½œåº”åŒ…æ‹¬æ‰€æœ‰å­ç›®å½•è¿˜æ˜¯ä»…åŒ…æ‹¬å½“å‰ç›®å½•ã€‚
 		//
 		//   path:
-		//     ÒªËÑË÷µÄÄ¿Â¼¡£
+		//     è¦æœç´¢çš„ç›®å½•ã€‚
 		//
 		//   searchPattern:
-		//     ÒªÓë path ÖĞµÄÎÄ¼şÃûÆ¥ÅäµÄËÑË÷×Ö·û´®¡£´Ë²ÎÊı²»ÄÜÒÔÁ½¸ö¾äµã£¨¡°..¡±£©½áÊø£¬²»ÄÜÔÚ System.IO.Path.DirectorySeparatorChar
-		//     »ò System.IO.Path.AltDirectorySeparatorChar µÄÇ°Ãæ°üº¬Á½¸ö¾äµã£¨¡°..¡±£©£¬Ò²²»ÄÜ°üº¬ System.IO.Path.InvalidPathChars
-		//     ÖĞµÄÈÎºÎ×Ö·û¡£
+		//     è¦ä¸ path ä¸­çš„æ–‡ä»¶ååŒ¹é…çš„æœç´¢å­—ç¬¦ä¸²ã€‚æ­¤å‚æ•°ä¸èƒ½ä»¥ä¸¤ä¸ªå¥ç‚¹ï¼ˆâ€œ..â€ï¼‰ç»“æŸï¼Œä¸èƒ½åœ¨ System.IO.Path.DirectorySeparatorChar
+		//     æˆ– System.IO.Path.AltDirectorySeparatorChar çš„å‰é¢åŒ…å«ä¸¤ä¸ªå¥ç‚¹ï¼ˆâ€œ..â€ï¼‰ï¼Œä¹Ÿä¸èƒ½åŒ…å« System.IO.Path.InvalidPathChars
+		//     ä¸­çš„ä»»ä½•å­—ç¬¦ã€‚
 		//
-		// ·µ»Ø½á¹û:
-		//     Ò»¸ö String Êı×é£¬Ëü°üº¬Ö¸¶¨Ä¿Â¼ÖĞÓëÖ¸¶¨ËÑË÷Ä£Ê½Æ¥ÅäµÄÎÄ¼şµÄÃû³Æ¡£ÎÄ¼şÃû°üº¬ÍêÕûÂ·¾¶¡£
+		// è¿”å›ç»“æœ:
+		//     ä¸€ä¸ª String æ•°ç»„ï¼Œå®ƒåŒ…å«æŒ‡å®šç›®å½•ä¸­ä¸æŒ‡å®šæœç´¢æ¨¡å¼åŒ¹é…çš„æ–‡ä»¶çš„åç§°ã€‚æ–‡ä»¶ååŒ…å«å®Œæ•´è·¯å¾„ã€‚
 		inline static Array<String> GetFiles(String path, String searchPattern="",bool ignoreCase=false, SearchOption searchOption=TopDirectoryOnly){return InternalGetFileDirectoryNames(path,true,false, searchPattern,ignoreCase,searchOption);};
 
-		//ÉèÖÃÎÄ¼ş»òÄ¿Â¼µÄ´´½¨Ê±¼ä
+		//è®¾ç½®æ–‡ä»¶æˆ–ç›®å½•çš„åˆ›å»ºæ—¶é—´
 		//inline static void SetCreationTime(String path, DateTime creationTime);
-		//ÉèÖÃÉÏ´Î·ÃÎÊÖ¸¶¨ÎÄ¼ş»òÄ¿Â¼µÄÊ±¼ä
+		//è®¾ç½®ä¸Šæ¬¡è®¿é—®æŒ‡å®šæ–‡ä»¶æˆ–ç›®å½•çš„æ—¶é—´
 		inline static void SetLastAccessTime(String path, DateTime lastAccessTime)
 		{
 			struct stat buf;
@@ -1050,7 +1050,7 @@ namespace Common
 			ut.modtime=buf.st_atime;
 			utime(path.c_str(),&ut);
 		};
-		//ÉèÖÃÉÏ´ÎĞ´ÈëÖ¸¶¨ÎÄ¼ş»òÄ¿Â¼µÄÊ±¼ä
+		//è®¾ç½®ä¸Šæ¬¡å†™å…¥æŒ‡å®šæ–‡ä»¶æˆ–ç›®å½•çš„æ—¶é—´
 		inline static void SetLastWriteTime(String path, DateTime lastWriteTime)
 		{
 			struct stat buf;
@@ -1069,18 +1069,18 @@ namespace Common
 			InternalGetFileDirectoryNames(res,path,includeFiles, includeDirs,searchPattern,ignoreCase,searchOption);
 			return res;
 		};
-		//»ñÈ¡×ÓÎÄ¼ş»òÄ¿Â¼ÁĞ±íÊµÏÖÌå
+		//è·å–å­æ–‡ä»¶æˆ–ç›®å½•åˆ—è¡¨å®ç°ä½“
 		static void InternalGetFileDirectoryNames(Array<String> &res,String path,bool includeFiles, bool includeDirs,String searchPattern,bool ignoreCase,SearchOption searchOption);
 		//
-		// ÕªÒª:
-		//     ¼ìË÷´Ë¼ÆËã»úÉÏ¸ñÊ½Îª¡°<Çı¶¯Æ÷ºÅ>:\¡±µÄÂß¼­Çı¶¯Æ÷µÄÃû³Æ¡£
+		// æ‘˜è¦:
+		//     æ£€ç´¢æ­¤è®¡ç®—æœºä¸Šæ ¼å¼ä¸ºâ€œ<é©±åŠ¨å™¨å·>:\â€çš„é€»è¾‘é©±åŠ¨å™¨çš„åç§°ã€‚
 		//
-		// ·µ»Ø½á¹û:
-		//     ´Ë¼ÆËã»úÉÏµÄÂß¼­Çı¶¯Æ÷¡£
+		// è¿”å›ç»“æœ:
+		//     æ­¤è®¡ç®—æœºä¸Šçš„é€»è¾‘é©±åŠ¨å™¨ã€‚
 		//static string[] GetLogicalDrives();
 	};
 	///	<summary>
-	///	±íÊ¾Ò»¸öÄ¿Â¼¶ÔÏóĞÅÏ¢¡£
+	///	è¡¨ç¤ºä¸€ä¸ªç›®å½•å¯¹è±¡ä¿¡æ¯ã€‚
 	///	</summary>
 	///	<remarks>
 	///	<code></code>
@@ -1094,28 +1094,28 @@ namespace Common
 		DirectoryInfo(){};
 		DirectoryInfo(String path){dirPath=Path::GetFullPath(path,true);};
 		void setFileName(String path){dirPath=Path::GetFullPath(path,true);};
-		//´´½¨Ä¿Â¼
+		//åˆ›å»ºç›®å½•
 		void Create(){Directory::CreateDirectory(dirPath);};
-		//´´½¨×ÓÄ¿Â¼
+		//åˆ›å»ºå­ç›®å½•
 		DirectoryInfo CreateSubdirectory(String path)
 		{
 			path=Path::Combine(dirPath, path);
 			Directory::CreateDirectory(path);
 			return DirectoryInfo(path);
 		};
-		//É¾³ıÄ¿Â¼
+		//åˆ é™¤ç›®å½•
 		inline void Delete(bool recursive=false){Directory::Delete(dirPath,recursive);};
-		//ÒÆ¶¯Ä¿Â¼
+		//ç§»åŠ¨ç›®å½•
 		void MoveTo(String destDirName,bool isConvered=false){Directory::Move(dirPath, destDirName,isConvered);};
-		//ÅĞ¶ÏÄ¿Â¼ÊÇ·ñÒÑ¾­´æÔÚ
+		//åˆ¤æ–­ç›®å½•æ˜¯å¦å·²ç»å­˜åœ¨
 		bool Exists(){return Directory::Exists(dirPath);};
-		//»ñÈ¡¸ùÄ¿Â¼
+		//è·å–æ ¹ç›®å½•
 		DirectoryInfo getRoot(){String temp=Path::GetPathRoot(dirPath);return DirectoryInfo(temp);};
-		//»ñÈ¡ÉÏ¼¶Ä¿Â¼
+		//è·å–ä¸Šçº§ç›®å½•
 		DirectoryInfo getParent(){String temp=dirPath.SubString(0,dirPath.LastIndexOf(Path::DirectorySeparatorChar));return DirectoryInfo(temp.SubString(0,temp.LastIndexOf(Path::DirectorySeparatorChar)));};
-		//»ñÈ¡Ä¿Â¼Ãû³Æ
+		//è·å–ç›®å½•åç§°
 		String getName(){String temp=dirPath.SubString(0,dirPath.LastIndexOf(Path::DirectorySeparatorChar));return temp.SubString(temp.LastIndexOf(Path::DirectorySeparatorChar)+1);};
-		//»ñÈ¡Ä¿Â¼È«Â·¾¶Ãû³Æ
+		//è·å–ç›®å½•å…¨è·¯å¾„åç§°
 		String getFullName(){return dirPath;};
 
 		inline Array<String> GetDirectories(String searchPattern="",bool ignoreCase=false, SearchOption searchOption=TopDirectoryOnly)
@@ -1127,11 +1127,11 @@ namespace Common
 			return Directory::InternalGetFileDirectoryNames(dirPath,true,false, searchPattern,ignoreCase,searchOption);
 		};
 
-		//»ñÈ¡×ÓÄ¿Â¼ÁĞ±í
+		//è·å–å­ç›®å½•åˆ—è¡¨
 		Array<DirectoryInfo> GetDirectoryInfos(String searchPattern="",bool ignoreCase=false, SearchOption searchOption=TopDirectoryOnly);
-		//»ñÈ¡ÎÄ¼şÁĞ±í
+		//è·å–æ–‡ä»¶åˆ—è¡¨
 		Array<FileInfo> GetFileInfos(String searchPattern="",bool ignoreCase=false, SearchOption searchOption=TopDirectoryOnly);
-		//ÉèÖÃÊ±¼ä
+		//è®¾ç½®æ—¶é—´
 		//void SetCreationTime(String path, DateTime creationTime);
 		//void SetCreationTimeUtc(String path, DateTime creationTimeUtc);
 		inline void SetLastAccessTime(String path, DateTime lastAccessTime){Directory::SetLastAccessTime(path,lastAccessTime);};

@@ -19,7 +19,7 @@ namespace engine{
         void Cast_3::update()
         {
             this->directionManage();
-            Cast::update();
+            Cast::update(); 
             return;
         }// end function
 

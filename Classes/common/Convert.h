@@ -19,32 +19,32 @@
 namespace Common
 {
 	///	<summary>
-	///	»ù±¾Êı¾İÀàĞÍ×ª»»Àà
+	///	åŸºæœ¬æ•°æ®ç±»å‹è½¬æ¢ç±»
 	///	</summary>
 	///	<remarks>
-	///	»ù±¾Ê¹ÓÃµÄSTD±ê×¼º¯Êı£¬¼¯ÖĞÕûÀí£¬ÒòÈ«ÊÇÄÚÁªº¯Êı£¬°ï²»»á½µµÍĞÔÄÜ£¬·½±ã±à³ÌÊ±µ÷ÓÃ¡£
-	///	·½·¨ÈçÏÂ£º<code>
+	///	åŸºæœ¬ä½¿ç”¨çš„STDæ ‡å‡†å‡½æ•°ï¼Œé›†ä¸­æ•´ç†ï¼Œå› å…¨æ˜¯å†…è”å‡½æ•°ï¼Œå¸®ä¸ä¼šé™ä½æ€§èƒ½ï¼Œæ–¹ä¾¿ç¼–ç¨‹æ—¶è°ƒç”¨ã€‚
+	///	æ–¹æ³•å¦‚ä¸‹ï¼š<code>
 	/// static int ParseInt(string s);//
 	/// static double ParseDouble(string s);//
-	/// inline static int ToInt(string s);//µÈĞ§ÓÚatoi(s.c_str());
-	/// inline static int ToInt(bool b);//µÈĞ§ÓÚb==true?1:0;
-	/// inline static long ToLong(string s);//µÈĞ§ÓÚatol(s.c_str());
-	/// inline static long long ToLLong(string s);//µÈĞ§ÓÚatoll(s.c_str()); 
-	///               HPÓĞÊ±²»´æÔÚatollº¯Êı£¬¿ÉÔÚCommon.h 364ĞĞÌí¼Ó #define atoll(c){long long l=0;ato_t(l,c);return l;}
-	/// inline static float  ToFloat(string s);//µÈĞ§ÓÚatof(s.c_str()); 
-	/// inline static double ToDouble(string s);//µÈĞ§ÓÚatof(s.c_str()); 
-	/// inline static double Ceil(double d);//µÈĞ§ÓÚceil(d); ÏòÉÏÉáÈë
-	/// inline static float  Ceil(float d);//µÈĞ§ÓÚceil(d);
-	/// inline static double Floor(double d);//µÈĞ§ÓÚfloor(d); ÏòÏÂÉáÈë
-	/// inline static float  Floor(float d);//µÈĞ§ÓÚfloor(d);
+	/// inline static int ToInt(string s);//ç­‰æ•ˆäºatoi(s.c_str());
+	/// inline static int ToInt(bool b);//ç­‰æ•ˆäºb==true?1:0;
+	/// inline static long ToLong(string s);//ç­‰æ•ˆäºatol(s.c_str());
+	/// inline static long long ToLLong(string s);//ç­‰æ•ˆäºatoll(s.c_str()); 
+	///               HPæœ‰æ—¶ä¸å­˜åœ¨atollå‡½æ•°ï¼Œå¯åœ¨Common.h 364è¡Œæ·»åŠ  #define atoll(c){long long l=0;ato_t(l,c);return l;}
+	/// inline static float  ToFloat(string s);//ç­‰æ•ˆäºatof(s.c_str()); 
+	/// inline static double ToDouble(string s);//ç­‰æ•ˆäºatof(s.c_str()); 
+	/// inline static double Ceil(double d);//ç­‰æ•ˆäºceil(d); å‘ä¸Šèˆå…¥
+	/// inline static float  Ceil(float d);//ç­‰æ•ˆäºceil(d);
+	/// inline static double Floor(double d);//ç­‰æ•ˆäºfloor(d); å‘ä¸‹èˆå…¥
+	/// inline static float  Floor(float d);//ç­‰æ•ˆäºfloor(d);
 	///	inline static string ToString(int i) ;
 	///	inline static string ToString(long l) ;
 	///	inline static string ToString(long long l) ;
 	///	inline static string ToString(double d,int p=0,int r=0) ;
 	///	inline static string ToString(bool b) ;
 	///	inline static bool ToBool(const string &amp;s) ;
-	/// inline static void convertBits(unsigned char * src,unsigned char * dest,int len);//ÍøÂçĞòÁĞ·´×ª
-	/// inline static void convertBits(unsigned char * src,int len);//ÍøÂçĞòÁĞ·´×ª</code>
+	/// inline static void convertBits(unsigned char * src,unsigned char * dest,int len);//ç½‘ç»œåºåˆ—åè½¬
+	/// inline static void convertBits(unsigned char * src,int len);//ç½‘ç»œåºåˆ—åè½¬</code>
 	///	</remarks>
     /// <example><code>
 	///	String a=Convert::ToString(54.464,4,2);
@@ -53,8 +53,8 @@ namespace Common
 	{
 	public:
 		//
-		//ÕªÒª£º
-		//		Ä£·ÂDateTime::StringParser::ParseInt
+		//æ‘˜è¦ï¼š
+		//		æ¨¡ä»¿DateTime::StringParser::ParseInt
 		inline static int ParseInt(string s)
 		{
 			return ParseInt(s.c_str());
@@ -85,8 +85,8 @@ namespace Common
 			return i;
 		}
 		//
-		//ÕªÒª£º
-		//		Ä£·ÂDateTime::StringParser::ParseInt
+		//æ‘˜è¦ï¼š
+		//		æ¨¡ä»¿DateTime::StringParser::ParseInt
 		static double ParseDouble(string s)
 		{
 			return ParseDouble(s.c_str());
@@ -178,12 +178,12 @@ namespace Common
 		{
 			char p[40];
 			p[39]=0;
-			// ÏµÍ³º¯Êı
+			// ç³»ç»Ÿå‡½æ•°
 			int len=sprintf(p,"%d",i);
 			//return String('F',50000000);
 			return p;//value= String(p,0,len);
 
-			// ×Ô¼ºÔËËã
+			// è‡ªå·±è¿ç®—
 			//int a=0,b=0,l=38;
 			//while(i>0)
 			//{
@@ -326,7 +326,7 @@ namespace Common
 			strcpy(data+16-len,pa);
 			return data;
 		}
-		//´òÓ¡µØÖ·
+		//æ‰“å°åœ°å€
 		inline static string ToString0X(void * v)
 		{
 			if(sizeof(v)==8)

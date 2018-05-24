@@ -21,7 +21,7 @@ namespace engine{
         }// end function
 
         void Cast_2::mouseMoveHandler(cocos2d::Event *param1) 
-        {
+        { 
             if (param1->target->name == "castIcemanCase")
             {
                 if (container->currentFrame == 1)

@@ -23,7 +23,7 @@ namespace engine{
                 distanceX = -40;
                 distanceY = distanceY + 10;
                 j = 0;
-                while (j < 7)
+                while (j < 7) 
                 { 
                     distanceX = distanceX + 10;
                     if (this->turnFlag)

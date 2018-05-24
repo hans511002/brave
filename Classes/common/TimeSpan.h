@@ -18,10 +18,10 @@
 namespace Common
 {
 	///	<summary>
-	///	±íÊ¾Ò»¸öÊ±¼ä¼ä¸ô¡£
+	///	è¡¨ç¤ºä¸€ä¸ªæ—¶é—´é—´éš”ã€‚
 	///	</summary>
 	///	<remarks>
-	///	¾«È·µÄ±íÊ¾Ò»¸öÊ±¼ä¼ä¸ô£¬¾«È·µ½Î¢Ãë¡£
+	///	ç²¾ç¡®çš„è¡¨ç¤ºä¸€ä¸ªæ—¶é—´é—´éš”ï¼Œç²¾ç¡®åˆ°å¾®ç§’ã€‚
 	///	</remarks>
     /// <example><code>
     /// </code></example>
@@ -29,101 +29,101 @@ namespace Common
 	{
 	public:
 		///	<summary>
-		///	Ê±¼äÆ¬µÄ¿Ì¶ÈÊı£¬Î¢ÃëÊı¡£
+		///	æ—¶é—´ç‰‡çš„åˆ»åº¦æ•°ï¼Œå¾®ç§’æ•°ã€‚
 		///	</summary>
 		long long _ticks;
 		///	<summary>
-		///	Ò»Î¢ÃëµÈÓÚ¶àÉÙÌì¡£´Ë×Ö¶ÎÎª³£Êı¡£
+		///	ä¸€å¾®ç§’ç­‰äºå¤šå°‘å¤©ã€‚æ­¤å­—æ®µä¸ºå¸¸æ•°ã€‚
 		///	</summary>
 		static const double DaysPerTicks;
 		///	<summary>
-		///	Ò»Î¢ÃëµÈÓÚ¶àÉÙĞ¡Ê±¡£´Ë×Ö¶ÎÎª³£Êı¡£
+		///	ä¸€å¾®ç§’ç­‰äºå¤šå°‘å°æ—¶ã€‚æ­¤å­—æ®µä¸ºå¸¸æ•°ã€‚
 		///	</summary>
 		static const double HoursPerTicks;
 		///	<summary>
-		///	Ò»Î¢ÃëµÈÓÚ¶àÉÙ·ÖÖÓÊı¡£´Ë×Ö¶ÎÎª³£Êı¡£
+		///	ä¸€å¾®ç§’ç­‰äºå¤šå°‘åˆ†é’Ÿæ•°ã€‚æ­¤å­—æ®µä¸ºå¸¸æ•°ã€‚
 		///	</summary>
 		static const double MinutesPerTicks;
 		///	<summary>
-		///	Ò»Î¢ÃëµÈÓÚ¶àÉÙÃë¡£´Ë×Ö¶ÎÎª³£Êı¡£
+		///	ä¸€å¾®ç§’ç­‰äºå¤šå°‘ç§’ã€‚æ­¤å­—æ®µä¸ºå¸¸æ•°ã€‚
 		///	</summary>
 		static const double SecondsPerTicks;
 		///	<summary>
-		///	×î´óºÁÃëÊı¡£´Ë×Ö¶ÎÎª³£Êı¡£
+		///	æœ€å¤§æ¯«ç§’æ•°ã€‚æ­¤å­—æ®µä¸ºå¸¸æ•°ã€‚
 		///	</summary>
 		static const long long MaxMillis ;
 		///	<summary>
-		///	×î´óÃëÊı¡£´Ë×Ö¶ÎÎª³£Êı¡£
+		///	æœ€å¤§ç§’æ•°ã€‚æ­¤å­—æ®µä¸ºå¸¸æ•°ã€‚
 		///	</summary>
 		static const long long MaxSeconds ;
 		///	<summary>
-		///	±íÊ¾Ò»ÌìÖĞµÄ¿Ì¶ÈÊı(Î¢Ãë)¡£´Ë×Ö¶ÎÎª³£Êı¡£
+		///	è¡¨ç¤ºä¸€å¤©ä¸­çš„åˆ»åº¦æ•°(å¾®ç§’)ã€‚æ­¤å­—æ®µä¸ºå¸¸æ•°ã€‚
 		///	</summary>
 		static const int MillisPerDay ;
 		///	<summary>
-		///	±íÊ¾ 1 Ğ¡Ê±µÄ¿Ì¶ÈÊı(Î¢Ãë)¡£´Ë×Ö¶ÎÎª³£Êı¡£
+		///	è¡¨ç¤º 1 å°æ—¶çš„åˆ»åº¦æ•°(å¾®ç§’)ã€‚æ­¤å­—æ®µä¸ºå¸¸æ•°ã€‚
 		///	</summary>
 		static const int MillisPerHour ;
 		///	<summary>
-		///	±íÊ¾ 1 ·ÖÖÓµÄ¿Ì¶ÈÊı(Î¢Ãë)¡£´Ë×Ö¶ÎÎª³£Êı¡£
+		///	è¡¨ç¤º 1 åˆ†é’Ÿçš„åˆ»åº¦æ•°(å¾®ç§’)ã€‚æ­¤å­—æ®µä¸ºå¸¸æ•°ã€‚
 		///	</summary>
 		static const int MillisPerMinute ;
 		///	<summary>
-		///	±íÊ¾ 1 ÃëµÄ¿Ì¶ÈÊı(Î¢Ãë)¡£´Ë×Ö¶ÎÎª³£Êı¡£
+		///	è¡¨ç¤º 1 ç§’çš„åˆ»åº¦æ•°(å¾®ç§’)ã€‚æ­¤å­—æ®µä¸ºå¸¸æ•°ã€‚
 		///	</summary>
 		static const int MillisPerSecond ;
 
 		///	<summary>
-		///	±íÊ¾ 1 ºÁÃëµÄ¿Ì¶ÈÊı(Î¢Ãë)¡£´Ë×Ö¶ÎÎª³£Êı¡£
+		///	è¡¨ç¤º 1 æ¯«ç§’çš„åˆ»åº¦æ•°(å¾®ç§’)ã€‚æ­¤å­—æ®µä¸ºå¸¸æ•°ã€‚
 		///	</summary>
 		static const long long  TicksPerMillisecond ;
 		///	<summary>
-		///	±íÊ¾ 1 ÃëµÄ¿Ì¶ÈÊı(Î¢Ãë)¡£´Ë×Ö¶ÎÎª³£Êı¡£
+		///	è¡¨ç¤º 1 ç§’çš„åˆ»åº¦æ•°(å¾®ç§’)ã€‚æ­¤å­—æ®µä¸ºå¸¸æ•°ã€‚
 		///	</summary>
 		static const long long  TicksPerSecond ;
 		///	<summary>
-		///	±íÊ¾ 1 ·ÖÖÓµÄ¿Ì¶ÈÊı(Î¢Ãë)¡£´Ë×Ö¶ÎÎª³£Êı¡£
+		///	è¡¨ç¤º 1 åˆ†é’Ÿçš„åˆ»åº¦æ•°(å¾®ç§’)ã€‚æ­¤å­—æ®µä¸ºå¸¸æ•°ã€‚
 		///	</summary>
 		static const long long  TicksPerMinute ;
 		///	<summary>
-		///	±íÊ¾ 1 Ğ¡Ê±µÄ¿Ì¶ÈÊı(Î¢Ãë)¡£´Ë×Ö¶ÎÎª³£Êı¡£
+		///	è¡¨ç¤º 1 å°æ—¶çš„åˆ»åº¦æ•°(å¾®ç§’)ã€‚æ­¤å­—æ®µä¸ºå¸¸æ•°ã€‚
 		///	</summary>
 		static const long long  TicksPerHour ;
 		///	<summary>
-		///	±íÊ¾ 1 ÌìµÄ¿Ì¶ÈÊı(Î¢Ãë)¡£´Ë×Ö¶ÎÎª³£Êı¡£
+		///	è¡¨ç¤º 1 å¤©çš„åˆ»åº¦æ•°(å¾®ç§’)ã€‚æ­¤å­—æ®µä¸ºå¸¸æ•°ã€‚
 		///	</summary>
 		static const long long  TicksPerDay ;
 		///	<summary>
-		///	×îĞ¡ºÁÃëÊı¡£´Ë×Ö¶ÎÎª³£Êı¡£
+		///	æœ€å°æ¯«ç§’æ•°ã€‚æ­¤å­—æ®µä¸ºå¸¸æ•°ã€‚
 		///	</summary>
 		static const long long MinMilliSeconds ;
 		///	<summary>
-		///	×îĞ¡ÃëÊı¡£´Ë×Ö¶ÎÎª³£Êı¡£
+		///	æœ€å°ç§’æ•°ã€‚æ­¤å­—æ®µä¸ºå¸¸æ•°ã€‚
 		///	</summary>
 		static const long long MinSeconds ;
 		///	<summary>
-		///	±íÊ¾×î´óµÄ<see cref="TimeSpan"/>¡£´Ë×Ö¶ÎÎª³£Êı¡£
+		///	è¡¨ç¤ºæœ€å¤§çš„<see cref="TimeSpan"/>ã€‚æ­¤å­—æ®µä¸ºå¸¸æ•°ã€‚
 		///	</summary>
         static  const TimeSpan MaxValue;
 		///	<summary>
-		///	±íÊ¾×îĞ¡µÄ<see cref="TimeSpan"/>¡£´Ë×Ö¶ÎÎª³£Êı¡£
+		///	è¡¨ç¤ºæœ€å°çš„<see cref="TimeSpan"/>ã€‚æ­¤å­—æ®µä¸ºå¸¸æ•°ã€‚
 		///	</summary>
         static  const TimeSpan MinValue;
 		///	<summary>
-		///	±íÊ¾Áã<see cref="TimeSpan"/> Öµ¡£´Ë×Ö¶ÎÎª³£Êı¡£
+		///	è¡¨ç¤ºé›¶<see cref="TimeSpan"/> å€¼ã€‚æ­¤å­—æ®µä¸ºå¸¸æ•°ã€‚
 		///	</summary>
         static const  TimeSpan Zero;
 
 
 	public:
 		///	<summary>
-		///	½«Ê±¼ä²¿·Ö×ª»»ÎªÊ±¼ä¿Ì¶ÈÊı£¨Î¢Ãë£©
-		///	<code>Ô­ĞÍ£ºinline static unsigned long long TimeToTicks(int hour, int minute, int second);</code>
+		///	å°†æ—¶é—´éƒ¨åˆ†è½¬æ¢ä¸ºæ—¶é—´åˆ»åº¦æ•°ï¼ˆå¾®ç§’ï¼‰
+		///	<code>åŸå‹ï¼šinline static unsigned long long TimeToTicks(int hour, int minute, int second);</code>
 		///	</summary>
-		///	<param name="hour">Ğ¡Ê±</param>
-		///	<param name="minute">·ÖÖÓ</param>
-		///	<param name="second">Ãë</param>
-		///	<returns>·µ»Ø¶ÔÓ¦µÄ¿Ì¶ÈÊı£¨Î¢ÃëÊı£©</returns>
+		///	<param name="hour">å°æ—¶</param>
+		///	<param name="minute">åˆ†é’Ÿ</param>
+		///	<param name="second">ç§’</param>
+		///	<returns>è¿”å›å¯¹åº”çš„åˆ»åº¦æ•°ï¼ˆå¾®ç§’æ•°ï¼‰</returns>
 		inline static unsigned long long TimeToTicks(int hour, int minute, int second)
 		{
 			long long num = ((hour * 0xe10) + (minute * 60)) + second;
@@ -134,70 +134,70 @@ namespace Common
 			return (num * TimeSpan::TicksPerSecond);
 		}
 		///	<summary>
-		///	½«ĞÂµÄ <see cref="TimeSpan"/> ³õÊ¼»¯ÎªÖ¸¶¨µÄ¿Ì¶ÈÊı£¨Î¢Ãë£©¡£
-		///	<code>Ô­ĞÍ£ºTimeSpan(long long ticks=0);</code>
+		///	å°†æ–°çš„ <see cref="TimeSpan"/> åˆå§‹åŒ–ä¸ºæŒ‡å®šçš„åˆ»åº¦æ•°ï¼ˆå¾®ç§’ï¼‰ã€‚
+		///	<code>åŸå‹ï¼šTimeSpan(long long ticks=0);</code>
 		///	</summary>
-		///	<param name="ticks">¿Ì¶ÈÊı£¨Î¢ÃëÊı£©£¬ÒÔ 1 Î¢ÃëÎªµ¥Î»±íÊ¾µÄÊ±¼ä¶Î¡£</param>
+		///	<param name="ticks">åˆ»åº¦æ•°ï¼ˆå¾®ç§’æ•°ï¼‰ï¼Œä»¥ 1 å¾®ç§’ä¸ºå•ä½è¡¨ç¤ºçš„æ—¶é—´æ®µã€‚</param>
 		TimeSpan(long long ticks=0)
 		{
 			this->_ticks=ticks;
 		}
 		///	<summary>
-		///	½«ĞÂµÄ <see cref="TimeSpan"/> ³õÊ¼»¯ÎªÖ¸¶¨µÄ¿Ì¶ÈÊı£¨Î¢Ãë£©¡£
-		///	<code>Ô­ĞÍ£ºTimeSpan(int millis);</code>
+		///	å°†æ–°çš„ <see cref="TimeSpan"/> åˆå§‹åŒ–ä¸ºæŒ‡å®šçš„åˆ»åº¦æ•°ï¼ˆå¾®ç§’ï¼‰ã€‚
+		///	<code>åŸå‹ï¼šTimeSpan(int millis);</code>
 		///	</summary>
-		///	<param name="millis">¿Ì¶ÈÊı£¨Î¢ÃëÊı£©£¬ÒÔ 1 Î¢ÃëÎªµ¥Î»±íÊ¾µÄÊ±¼ä¶Î¡£</param>
+		///	<param name="millis">åˆ»åº¦æ•°ï¼ˆå¾®ç§’æ•°ï¼‰ï¼Œä»¥ 1 å¾®ç§’ä¸ºå•ä½è¡¨ç¤ºçš„æ—¶é—´æ®µã€‚</param>
 		TimeSpan(int millis)
 		{
 			this->_ticks=millis;
 		}
 		///	<summary>
-		///	½«ĞÂµÄ <see cref="TimeSpan"/> ³õÊ¼»¯ÎªÖ¸¶¨µÄ¿Ì¶ÈÊı£¨Î¢Ãë£©¡£
-		///	<code>Ô­ĞÍ£ºTimeSpan(long millis);</code>
+		///	å°†æ–°çš„ <see cref="TimeSpan"/> åˆå§‹åŒ–ä¸ºæŒ‡å®šçš„åˆ»åº¦æ•°ï¼ˆå¾®ç§’ï¼‰ã€‚
+		///	<code>åŸå‹ï¼šTimeSpan(long millis);</code>
 		///	</summary>
-		///	<param name="millis">¿Ì¶ÈÊı£¨Î¢ÃëÊı£©£¬ÒÔ 1 Î¢ÃëÎªµ¥Î»±íÊ¾µÄÊ±¼ä¶Î¡£</param>
+		///	<param name="millis">åˆ»åº¦æ•°ï¼ˆå¾®ç§’æ•°ï¼‰ï¼Œä»¥ 1 å¾®ç§’ä¸ºå•ä½è¡¨ç¤ºçš„æ—¶é—´æ®µã€‚</param>
 		TimeSpan(long millis)
 		{
 			this->_ticks=millis;
 		}
 		///	<summary>
-		///	½«ĞÂµÄ <see cref="TimeSpan"/> ³õÊ¼»¯ÎªÖ¸¶¨µÄ¿Ì¶ÈÊı£¨Î¢Ãë£©¡£
-		///	<code>Ô­ĞÍ£ºTimeSpan(unsigned long long millis);</code>
+		///	å°†æ–°çš„ <see cref="TimeSpan"/> åˆå§‹åŒ–ä¸ºæŒ‡å®šçš„åˆ»åº¦æ•°ï¼ˆå¾®ç§’ï¼‰ã€‚
+		///	<code>åŸå‹ï¼šTimeSpan(unsigned long long millis);</code>
 		///	</summary>
-		///	<param name="millis">¿Ì¶ÈÊı£¨Î¢ÃëÊı£©£¬ÒÔ 1 Î¢ÃëÎªµ¥Î»±íÊ¾µÄÊ±¼ä¶Î¡£</param>
+		///	<param name="millis">åˆ»åº¦æ•°ï¼ˆå¾®ç§’æ•°ï¼‰ï¼Œä»¥ 1 å¾®ç§’ä¸ºå•ä½è¡¨ç¤ºçš„æ—¶é—´æ®µã€‚</param>
 		TimeSpan(unsigned long long millis)
 		{
 			this->_ticks=millis;
 		}
 		///	<summary>
-		///	ÒÔÖ¸¶¨µÄÊ±·ÖÃëºÁÃëÎ¢Ãë³õÊ¼»¯<see cref="TimeSpan"/>¶ÔÏó¡£
-		///	<code>Ô­ĞÍ£ºTimeSpan(int hours, int minutes, int seconds, int milliseconds,int ticks);</code>
+		///	ä»¥æŒ‡å®šçš„æ—¶åˆ†ç§’æ¯«ç§’å¾®ç§’åˆå§‹åŒ–<see cref="TimeSpan"/>å¯¹è±¡ã€‚
+		///	<code>åŸå‹ï¼šTimeSpan(int hours, int minutes, int seconds, int milliseconds,int ticks);</code>
 		///	</summary>
-		///	<param name="hours">Ğ¡Ê±¡£</param>
-		///	<param name="minutes">·ÖÖÓ¡£</param>
-		///	<param name="seconds">Ãë¡£</param>
-		///	<param name="milliseconds">ºÁÃë¡£</param>
-		///	<param name="ticks">Î¢Ãë¡£</param> 
+		///	<param name="hours">å°æ—¶ã€‚</param>
+		///	<param name="minutes">åˆ†é’Ÿã€‚</param>
+		///	<param name="seconds">ç§’ã€‚</param>
+		///	<param name="milliseconds">æ¯«ç§’ã€‚</param>
+		///	<param name="ticks">å¾®ç§’ã€‚</param> 
 		TimeSpan(int hours, int minutes, int seconds, int milliseconds,int ticks)
 		{
 			this->_ticks=hours * TicksPerHour + minutes * TicksPerMinute + seconds * TicksPerSecond+milliseconds* this->TicksPerMillisecond + ticks;
 		}
 		///	<summary>
-		///	ÒÔÖ¸¶¨µÄÊ±·ÖÃëºÁÃëÎ¢Ãë³õÊ¼»¯<see cref="TimeSpan"/>¶ÔÏó¡£
-		///	<code>Ô­ĞÍ£ºTimeSpan(int days,int hours, int minutes, int seconds, int milliseconds,int ticks);</code>
+		///	ä»¥æŒ‡å®šçš„æ—¶åˆ†ç§’æ¯«ç§’å¾®ç§’åˆå§‹åŒ–<see cref="TimeSpan"/>å¯¹è±¡ã€‚
+		///	<code>åŸå‹ï¼šTimeSpan(int days,int hours, int minutes, int seconds, int milliseconds,int ticks);</code>
 		///	</summary>
-		///	<param name="days">Ìì¡£</param>
-		///	<param name="hours">Ğ¡Ê±¡£</param>
-		///	<param name="minutes">·ÖÖÓ¡£</param>
-		///	<param name="seconds">Ãë¡£</param>
-		///	<param name="milliseconds">ºÁÃë¡£</param>
-		///	<param name="ticks">Î¢Ãë¡£</param> 
+		///	<param name="days">å¤©ã€‚</param>
+		///	<param name="hours">å°æ—¶ã€‚</param>
+		///	<param name="minutes">åˆ†é’Ÿã€‚</param>
+		///	<param name="seconds">ç§’ã€‚</param>
+		///	<param name="milliseconds">æ¯«ç§’ã€‚</param>
+		///	<param name="ticks">å¾®ç§’ã€‚</param> 
 		TimeSpan(int days, int hours, int minutes, int seconds, int milliseconds,int ticks)
 		{
 			this->_ticks=days * TicksPerDay +hours * TicksPerHour + minutes * TicksPerMinute + seconds * TicksPerSecond+milliseconds* this->TicksPerMillisecond + ticks;
 		}
 
-        // Ãû³Æ¿Õ¼ä²Ù×÷ÖØÔØÓÑÔªÉêÃ÷
+        // åç§°ç©ºé—´æ“ä½œé‡è½½å‹å…ƒç”³æ˜
         friend TimeSpan &Common::operator -(TimeSpan &t);
 		friend TimeSpan Common::operator -(TimeSpan &t1, TimeSpan &t2);
 		friend TimeSpan &Common::operator -=(TimeSpan &t1, TimeSpan &t2);
@@ -212,141 +212,141 @@ namespace Common
 
 
 		///	<summary>
-		///	»ñÈ¡ÓÉµ±Ç° <see cref="TimeSpan"/> ½á¹¹±íÊ¾µÄÕûÌìÊı¡£
-		///	<code>Ô­ĞÍ£ºinline int getDays();</code>
+		///	è·å–ç”±å½“å‰ <see cref="TimeSpan"/> ç»“æ„è¡¨ç¤ºçš„æ•´å¤©æ•°ã€‚
+		///	<code>åŸå‹ï¼šinline int getDays();</code>
 		///	</summary>
-		///	<returns>´ËÊµÀıµÄÌìÊı²¿·Ö¡£·µ»ØÖµ¿ÉÒÔÊÇÕıÊıÒ²¿ÉÒÔÊÇ¸ºÊı¡£</returns>
+		///	<returns>æ­¤å®ä¾‹çš„å¤©æ•°éƒ¨åˆ†ã€‚è¿”å›å€¼å¯ä»¥æ˜¯æ­£æ•°ä¹Ÿå¯ä»¥æ˜¯è´Ÿæ•°ã€‚</returns>
 		inline int getDays()
 		{
 			if(this->_ticks==0)return 0;
 			return (this->_ticks/this->TicksPerDay);
 		}
 		///	<summary>
-		///	»ñÈ¡ÓÉµ±Ç° <see cref="TimeSpan"/> ½á¹¹±íÊ¾µÄÕûĞ¡Ê±Êı¡£
-		///	<code>Ô­ĞÍ£ºinline int getHours();</code>
+		///	è·å–ç”±å½“å‰ <see cref="TimeSpan"/> ç»“æ„è¡¨ç¤ºçš„æ•´å°æ—¶æ•°ã€‚
+		///	<code>åŸå‹ï¼šinline int getHours();</code>
 		///	</summary>
-		///	<returns>µ±Ç°<see cref="TimeSpan"/>½á¹¹µÄĞ¡Ê±·ÖÁ¿¡£·µ»ØÖµµÄ·¶Î§Îª -23 µ½ 23¡£</returns>
+		///	<returns>å½“å‰<see cref="TimeSpan"/>ç»“æ„çš„å°æ—¶åˆ†é‡ã€‚è¿”å›å€¼çš„èŒƒå›´ä¸º -23 åˆ° 23ã€‚</returns>
 		inline int getHours()
 		{
 			if(this->_ticks==0)return 0;
 			return	int((this->_ticks%this->TicksPerDay)/this->TicksPerHour);
 		} 
 		///	<summary>
-		///	»ñÈ¡ÓÉµ±Ç° <see cref="TimeSpan"/> ½á¹¹±íÊ¾µÄÕû·ÖÖÓÊı¡£
-		///	<code>Ô­ĞÍ£ºinline int getMinutes();</code>
+		///	è·å–ç”±å½“å‰ <see cref="TimeSpan"/> ç»“æ„è¡¨ç¤ºçš„æ•´åˆ†é’Ÿæ•°ã€‚
+		///	<code>åŸå‹ï¼šinline int getMinutes();</code>
 		///	</summary>
-		///	<returns>µ±Ç°<see cref="TimeSpan"/>½á¹¹µÄ·ÖÖÓ·ÖÁ¿¡£·µ»ØÖµµÄ·¶Î§Îª -59 µ½ 59¡£</returns>
+		///	<returns>å½“å‰<see cref="TimeSpan"/>ç»“æ„çš„åˆ†é’Ÿåˆ†é‡ã€‚è¿”å›å€¼çš„èŒƒå›´ä¸º -59 åˆ° 59ã€‚</returns>
 		inline int getMinutes()
 		{
 			if(this->_ticks==0)return 0;
 			return int((this->_ticks % this->TicksPerHour)/this->TicksPerMinute);
 		} 
 		///	<summary>
-		///	»ñÈ¡ÓÉµ±Ç° <see cref="TimeSpan"/> ½á¹¹±íÊ¾µÄÕûÃëÊı¡£
-		///	<code>Ô­ĞÍ£ºinline int getSeconds();</code>
+		///	è·å–ç”±å½“å‰ <see cref="TimeSpan"/> ç»“æ„è¡¨ç¤ºçš„æ•´ç§’æ•°ã€‚
+		///	<code>åŸå‹ï¼šinline int getSeconds();</code>
 		///	</summary>
-		///	<returns>µ±Ç°<see cref="TimeSpan"/>½á¹¹µÄÃë·ÖÁ¿¡£·µ»ØÖµµÄ·¶Î§Îª -59 µ½ 59¡£</returns>
+		///	<returns>å½“å‰<see cref="TimeSpan"/>ç»“æ„çš„ç§’åˆ†é‡ã€‚è¿”å›å€¼çš„èŒƒå›´ä¸º -59 åˆ° 59ã€‚</returns>
 		inline int getSeconds()
 		{
 			if(this->_ticks==0)return 0;
 			return int(this->_ticks/this->TicksPerSecond) % 60;
 		}
 		///	<summary>
-		///	»ñÈ¡ÓÉµ±Ç° <see cref="TimeSpan"/> ½á¹¹±íÊ¾µÄÕûÃëÊı¡£
-		///	<code>Ô­ĞÍ£ºinline int getSeconds();</code>
+		///	è·å–ç”±å½“å‰ <see cref="TimeSpan"/> ç»“æ„è¡¨ç¤ºçš„æ•´ç§’æ•°ã€‚
+		///	<code>åŸå‹ï¼šinline int getSeconds();</code>
 		///	</summary>
-		///	<returns>µ±Ç°<see cref="TimeSpan"/>½á¹¹µÄºÁÃë·ÖÁ¿¡£·µ»ØÖµµÄ·¶Î§Îª -999 µ½ 999¡£</returns>
+		///	<returns>å½“å‰<see cref="TimeSpan"/>ç»“æ„çš„æ¯«ç§’åˆ†é‡ã€‚è¿”å›å€¼çš„èŒƒå›´ä¸º -999 åˆ° 999ã€‚</returns>
 		inline int getMilliseconds()
 		{
 			if(this->_ticks==0)return 0;
 			return int((this->_ticks % this->TicksPerSecond)/this->TicksPerMillisecond);
 		}
 		///	<summary>
-		///	»ñÈ¡ÓÉµ±Ç° <see cref="TimeSpan"/> ½á¹¹±íÊ¾µÄÎ¢ÃëÊı¡£
-		///	<code>Ô­ĞÍ£ºinline int getUsec();</code>
+		///	è·å–ç”±å½“å‰ <see cref="TimeSpan"/> ç»“æ„è¡¨ç¤ºçš„å¾®ç§’æ•°ã€‚
+		///	<code>åŸå‹ï¼šinline int getUsec();</code>
 		///	</summary>
-		///	<returns>µ±Ç°<see cref="TimeSpan"/>½á¹¹±íÊ¾µÄÎ¢ÃëÊı¡£·µ»ØÖµµÄ·¶Î§Îª -999 µ½ 999¡£</returns>
+		///	<returns>å½“å‰<see cref="TimeSpan"/>ç»“æ„è¡¨ç¤ºçš„å¾®ç§’æ•°ã€‚è¿”å›å€¼çš„èŒƒå›´ä¸º -999 åˆ° 999ã€‚</returns>
 		inline int getUsec()
 		{
 			if(this->_ticks==0)return 0;
 			return int(this->_ticks % this->TicksPerMillisecond);
 		}
 		///	<summary>
-		///	»ñÈ¡ÒÔÕûÌìÊıºÍÌìµÄĞ¡Êı²¿·Ö±íÊ¾µÄµ±Ç° <see cref="TimeSpan"/> ½á¹¹µÄÖµ¡£
-		///	<code>Ô­ĞÍ£ºinline double getTotalDays();</code>
+		///	è·å–ä»¥æ•´å¤©æ•°å’Œå¤©çš„å°æ•°éƒ¨åˆ†è¡¨ç¤ºçš„å½“å‰ <see cref="TimeSpan"/> ç»“æ„çš„å€¼ã€‚
+		///	<code>åŸå‹ï¼šinline double getTotalDays();</code>
 		///	</summary>
-		///	<returns>´ËÊµÀı±íÊ¾µÄ×ÜÌìÊı</returns>
+		///	<returns>æ­¤å®ä¾‹è¡¨ç¤ºçš„æ€»å¤©æ•°</returns>
 		inline double getTotalDays()
 		{
 			if(this->_ticks==0)return 0;
 			return (double)this->_ticks/(double)this->TicksPerDay;;
 		}
 		///	<summary>
-		///	»ñÈ¡ÒÔÕûĞ¡Ê±ÊıºÍĞ¡Ê±µÄĞ¡Êı²¿·Ö±íÊ¾µÄµ±Ç° <see cref="TimeSpan"/> ½á¹¹µÄÖµ¡£
-		///	<code>Ô­ĞÍ£ºinline double getTotalHours();</code>
+		///	è·å–ä»¥æ•´å°æ—¶æ•°å’Œå°æ—¶çš„å°æ•°éƒ¨åˆ†è¡¨ç¤ºçš„å½“å‰ <see cref="TimeSpan"/> ç»“æ„çš„å€¼ã€‚
+		///	<code>åŸå‹ï¼šinline double getTotalHours();</code>
 		///	</summary>
-		///	<returns>´ËÊµÀı±íÊ¾µÄ×ÜĞ¡Ê±Êı</returns>
+		///	<returns>æ­¤å®ä¾‹è¡¨ç¤ºçš„æ€»å°æ—¶æ•°</returns>
 		inline double getTotalHours()
 		{
 			if(this->_ticks==0)return 0;
 			return (double)this->_ticks/(double)this->TicksPerHour;
 		}
  		///	<summary>
-		///	»ñÈ¡ÒÔÕû·ÖÖÓÊıºÍ·ÖÖÓµÄĞ¡Êı²¿·Ö±íÊ¾µÄµ±Ç° <see cref="TimeSpan"/> ½á¹¹µÄÖµ¡£
-		///	<code>Ô­ĞÍ£ºinline double getTotalMinutes();</code>
+		///	è·å–ä»¥æ•´åˆ†é’Ÿæ•°å’Œåˆ†é’Ÿçš„å°æ•°éƒ¨åˆ†è¡¨ç¤ºçš„å½“å‰ <see cref="TimeSpan"/> ç»“æ„çš„å€¼ã€‚
+		///	<code>åŸå‹ï¼šinline double getTotalMinutes();</code>
 		///	</summary>
-		///	<returns>´ËÊµÀı±íÊ¾µÄ×Ü·ÖÖÓÊı</returns>
+		///	<returns>æ­¤å®ä¾‹è¡¨ç¤ºçš„æ€»åˆ†é’Ÿæ•°</returns>
 		inline double getTotalMinutes()
 		{
 			if(this->_ticks==0)return 0;
 			return (double)this->_ticks/(double)this->TicksPerMinute;;
 		}
   		///	<summary>
-		///	»ñÈ¡ÒÔÕûÃëÊıºÍÃëµÄĞ¡Êı²¿·Ö±íÊ¾µÄµ±Ç° <see cref="TimeSpan"/> ½á¹¹µÄÖµ¡£
-		///	<code>Ô­ĞÍ£ºinline double getTotalSeconds();</code>
+		///	è·å–ä»¥æ•´ç§’æ•°å’Œç§’çš„å°æ•°éƒ¨åˆ†è¡¨ç¤ºçš„å½“å‰ <see cref="TimeSpan"/> ç»“æ„çš„å€¼ã€‚
+		///	<code>åŸå‹ï¼šinline double getTotalSeconds();</code>
 		///	</summary>
-		///	<returns>´ËÊµÀı±íÊ¾µÄ×ÜÃëÊı</returns>
+		///	<returns>æ­¤å®ä¾‹è¡¨ç¤ºçš„æ€»ç§’æ•°</returns>
 		inline double getTotalSeconds()
 		{
 			if(this->_ticks==0)return 0;
 			return (double)this->_ticks/(double)this->TicksPerSecond;
 		}
   		///	<summary>
-		///	»ñÈ¡ÒÔÕûºÁÃëÊıºÍºÁÃëµÄĞ¡Êı²¿·Ö±íÊ¾µÄµ±Ç° <see cref="TimeSpan"/> ½á¹¹µÄÖµ¡£
-		///	<code>Ô­ĞÍ£ºinline double getTotalMilliseconds();</code>
+		///	è·å–ä»¥æ•´æ¯«ç§’æ•°å’Œæ¯«ç§’çš„å°æ•°éƒ¨åˆ†è¡¨ç¤ºçš„å½“å‰ <see cref="TimeSpan"/> ç»“æ„çš„å€¼ã€‚
+		///	<code>åŸå‹ï¼šinline double getTotalMilliseconds();</code>
 		///	</summary>
-		///	<returns>´ËÊµÀı±íÊ¾µÄ×ÜºÁÃëÊı</returns>
+		///	<returns>æ­¤å®ä¾‹è¡¨ç¤ºçš„æ€»æ¯«ç§’æ•°</returns>
 		inline double getTotalMilliseconds()
 		{
 			return (double)this->_ticks/(double)this->TicksPerMillisecond;
 		}
   		///	<summary>
-		///	»ñÈ¡ÒÔÕûÎ¢ÃëÊı±íÊ¾µÄµ±Ç° <see cref="TimeSpan"/> ½á¹¹µÄÖµ¡£
-		///	<code>Ô­ĞÍ£ºinline double getTotalTicks();</code>
+		///	è·å–ä»¥æ•´å¾®ç§’æ•°è¡¨ç¤ºçš„å½“å‰ <see cref="TimeSpan"/> ç»“æ„çš„å€¼ã€‚
+		///	<code>åŸå‹ï¼šinline double getTotalTicks();</code>
 		///	</summary>
-		///	<returns>´ËÊµÀı±íÊ¾µÄ×ÜÎ¢ÃëÊı</returns>
+		///	<returns>æ­¤å®ä¾‹è¡¨ç¤ºçš„æ€»å¾®ç§’æ•°</returns>
 		inline long long getTotalTicks()
 		{
 			return this->_ticks;
 		}
   		///	<summary>
-		///	½«Ö¸¶¨µÄ <see cref="TimeSpan"/> Ìí¼Óµ½´ËÊµÀıÖĞ¡£
-		///	<code>Ô­ĞÍ£ºinline TimeSpan &amp;Add(TimeSpan ts);</code>
+		///	å°†æŒ‡å®šçš„ <see cref="TimeSpan"/> æ·»åŠ åˆ°æ­¤å®ä¾‹ä¸­ã€‚
+		///	<code>åŸå‹ï¼šinline TimeSpan &amp;Add(TimeSpan ts);</code>
 		///	</summary>
-		///	<param name="ts">ÒªÌí¼ÓµÄ<see cref="TimeSpan"/>¶ÔÏó</param>
-		///	<returns>µ±Ç°ÊµÀı±¾Éí£¬ÖµÎª´ËÊµÀıµÄÖµÓë ts µÄÖµÖ®ºÍ</returns>
+		///	<param name="ts">è¦æ·»åŠ çš„<see cref="TimeSpan"/>å¯¹è±¡</param>
+		///	<returns>å½“å‰å®ä¾‹æœ¬èº«ï¼Œå€¼ä¸ºæ­¤å®ä¾‹çš„å€¼ä¸ ts çš„å€¼ä¹‹å’Œ</returns>
 		inline TimeSpan &Add(TimeSpan ts)
 		{
 			this->_ticks+=ts.getTotalTicks();
 			return *this;
 		}
   		///	<summary>
-		///	±È½ÏÁ½¸ö <see cref="TimeSpan"/> Öµ²¢·µ»ØÒ»¸öÖ¸Ê¾ËüÃÇÖ®¼ä¹ØÏµµÄÕûÊı¡£
-		///	<code>Ô­ĞÍ£ºinline static int Compare(TimeSpan t1, TimeSpan t2);</code>
+		///	æ¯”è¾ƒä¸¤ä¸ª <see cref="TimeSpan"/> å€¼å¹¶è¿”å›ä¸€ä¸ªæŒ‡ç¤ºå®ƒä»¬ä¹‹é—´å…³ç³»çš„æ•´æ•°ã€‚
+		///	<code>åŸå‹ï¼šinline static int Compare(TimeSpan t1, TimeSpan t2);</code>
 		///	</summary>
-		///	<param name="t1">Ê±¼ä¼ä¸ôÒ»<see cref="TimeSpan"/>¶ÔÏó</param>
-		///	<param name="t2">Ê±¼ä¼ä¸ô¶ş<see cref="TimeSpan"/>¶ÔÏó</param>
-		///	<returns>ÖµÌõ¼ş: -1 t1 Ğ¡ÓÚ t2, 0 t1 µÈÓÚ t2,1 t1 ´óÓÚ t2</returns>
+		///	<param name="t1">æ—¶é—´é—´éš”ä¸€<see cref="TimeSpan"/>å¯¹è±¡</param>
+		///	<param name="t2">æ—¶é—´é—´éš”äºŒ<see cref="TimeSpan"/>å¯¹è±¡</param>
+		///	<returns>å€¼æ¡ä»¶: -1 t1 å°äº t2, 0 t1 ç­‰äº t2,1 t1 å¤§äº t2</returns>
         inline static int Compare(TimeSpan t1, TimeSpan t2)
 		{
 			long long v=t1.getTotalTicks()-t2.getTotalTicks();
@@ -357,17 +357,17 @@ namespace Common
 			else return -1;
 		};
   		///	<summary>
-		///	½«´ËÊµÀıÓëÖ¸¶¨ <see cref="TimeSpan"/> ¶ÔÏó½øĞĞ±È½Ï²¢·µ»Ø¶ÔÆäÏà¶ÔÖµµÄÖ¸Ê¾¡£
-		///	<code>Ô­ĞÍ£ºinline int Compare(TimeSpan value);</code>
+		///	å°†æ­¤å®ä¾‹ä¸æŒ‡å®š <see cref="TimeSpan"/> å¯¹è±¡è¿›è¡Œæ¯”è¾ƒå¹¶è¿”å›å¯¹å…¶ç›¸å¯¹å€¼çš„æŒ‡ç¤ºã€‚
+		///	<code>åŸå‹ï¼šinline int Compare(TimeSpan value);</code>
 		///	</summary>
-		///	<param name="value">Ê±¼ä¼ä¸ôÒ»<see cref="TimeSpan"/>¶ÔÏó</param> 
-		///	<returns>ÓĞ·ûºÅÊı×Ö£¬Ö¸Ê¾´ËÊµÀıºÍ value µÄÏà¶ÔÖµ¡£ÖµËµÃ÷: ¸ºÕûÊı ´ËÊµÀıĞ¡ÓÚ value¡£ Áã ´ËÊµÀıµÈÓÚ value¡£ ÕıÕûÊı ´ËÊµÀı´óÓÚ value¡£</returns>
+		///	<param name="value">æ—¶é—´é—´éš”ä¸€<see cref="TimeSpan"/>å¯¹è±¡</param> 
+		///	<returns>æœ‰ç¬¦å·æ•°å­—ï¼ŒæŒ‡ç¤ºæ­¤å®ä¾‹å’Œ value çš„ç›¸å¯¹å€¼ã€‚å€¼è¯´æ˜: è´Ÿæ•´æ•° æ­¤å®ä¾‹å°äº valueã€‚ é›¶ æ­¤å®ä¾‹ç­‰äº valueã€‚ æ­£æ•´æ•° æ­¤å®ä¾‹å¤§äº valueã€‚</returns>
 		inline int CompareTo(TimeSpan value){return TimeSpan::Compare(*this, value);};
    		///	<summary>
-		///	·µ»ØĞÂµÄ <see cref="TimeSpan"/> ¶ÔÏó£¬ÆäÖµÊÇµ±Ç° <see cref="TimeSpan"/> ¶ÔÏóµÄ¾ø¶ÔÖµ¡£¡£
-		///	<code>Ô­ĞÍ£ºinline TimeSpan Duration();</code>
+		///	è¿”å›æ–°çš„ <see cref="TimeSpan"/> å¯¹è±¡ï¼Œå…¶å€¼æ˜¯å½“å‰ <see cref="TimeSpan"/> å¯¹è±¡çš„ç»å¯¹å€¼ã€‚ã€‚
+		///	<code>åŸå‹ï¼šinline TimeSpan Duration();</code>
 		///	</summary>
- 		///	<returns>ĞÂµÄ <see cref="TimeSpan"/>£¬ÆäÖµÊÇµ±Ç° <see cref="TimeSpan"/> ¶ÔÏóµÄ¾ø¶ÔÖµ</returns>
+ 		///	<returns>æ–°çš„ <see cref="TimeSpan"/>ï¼Œå…¶å€¼æ˜¯å½“å‰ <see cref="TimeSpan"/> å¯¹è±¡çš„ç»å¯¹å€¼</returns>
         inline TimeSpan Duration()
 		{
 			if(this->_ticks>0)
@@ -377,79 +377,79 @@ namespace Common
 		};
 //**********************************************                                    
    		///	<summary>
-		///	·µ»ØÒ»¸öÖµ£¬¸ÃÖµÖ¸Ê¾´ËÊµÀıÊÇ·ñÓëÖ¸¶¨µÄ <see cref="TimeSpan"/> ¶ÔÏóÏàµÈ¡£
-		///	<code>Ô­ĞÍ£ºinline bool Equals(TimeSpan obj);</code>
+		///	è¿”å›ä¸€ä¸ªå€¼ï¼Œè¯¥å€¼æŒ‡ç¤ºæ­¤å®ä¾‹æ˜¯å¦ä¸æŒ‡å®šçš„ <see cref="TimeSpan"/> å¯¹è±¡ç›¸ç­‰ã€‚
+		///	<code>åŸå‹ï¼šinline bool Equals(TimeSpan obj);</code>
 		///	</summary>
- 		///	<param name="obj">Ê±¼ä¼ä¸ô<see cref="TimeSpan"/>¶ÔÏó</param>
-		///	<returns>Èç¹û obj ±íÊ¾µÄÊ±¼ä¼ä¸ôÓë´ËÊµÀıÏàÍ¬£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>
+ 		///	<param name="obj">æ—¶é—´é—´éš”<see cref="TimeSpan"/>å¯¹è±¡</param>
+		///	<returns>å¦‚æœ obj è¡¨ç¤ºçš„æ—¶é—´é—´éš”ä¸æ­¤å®ä¾‹ç›¸åŒï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>
 		inline bool Equals(TimeSpan obj){return this->_ticks==obj.getTotalTicks();};
    		///	<summary>
-		///	·µ»ØÒ»¸öÖµ£¬¸ÃÖµÖ¸Ê¾ <see cref="TimeSpan"/> µÄÁ½¸öÖ¸¶¨ÊµÀıÊÇ·ñÏàµÈ¡£
-		///	<code>Ô­ĞÍ£ºinline static bool Equals(TimeSpan t1, TimeSpan t2);</code>
+		///	è¿”å›ä¸€ä¸ªå€¼ï¼Œè¯¥å€¼æŒ‡ç¤º <see cref="TimeSpan"/> çš„ä¸¤ä¸ªæŒ‡å®šå®ä¾‹æ˜¯å¦ç›¸ç­‰ã€‚
+		///	<code>åŸå‹ï¼šinline static bool Equals(TimeSpan t1, TimeSpan t2);</code>
 		///	</summary>
- 		///	<param name="t1">Ê±¼ä¼ä¸ôÒ»<see cref="TimeSpan"/>¶ÔÏó</param>
- 		///	<param name="t2">Ê±¼ä¼ä¸ôÏÂ<see cref="TimeSpan"/>¶ÔÏó</param>
-		///	<returns>Èç¹û t1 ºÍ t2 µÄÖµÏàµÈ£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>
+ 		///	<param name="t1">æ—¶é—´é—´éš”ä¸€<see cref="TimeSpan"/>å¯¹è±¡</param>
+ 		///	<param name="t2">æ—¶é—´é—´éš”ä¸‹<see cref="TimeSpan"/>å¯¹è±¡</param>
+		///	<returns>å¦‚æœ t1 å’Œ t2 çš„å€¼ç›¸ç­‰ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>
 		inline static bool Equals(TimeSpan t1, TimeSpan t2){return t1.getTotalTicks()==t2.getTotalTicks();};
    		///	<summary>
-		///	·µ»Ø±íÊ¾Ö¸¶¨ÌìÊıµÄ <see cref="TimeSpan"/> ÆäÖĞ¶ÔÌìÊıµÄÖ¸¶¨¾«È·µ½×î½Ó½üµÄÎ¢Ãë¡£
-		///	<code>Ô­ĞÍ£ºinline static TimeSpan FromDays(double value);</code>
+		///	è¿”å›è¡¨ç¤ºæŒ‡å®šå¤©æ•°çš„ <see cref="TimeSpan"/> å…¶ä¸­å¯¹å¤©æ•°çš„æŒ‡å®šç²¾ç¡®åˆ°æœ€æ¥è¿‘çš„å¾®ç§’ã€‚
+		///	<code>åŸå‹ï¼šinline static TimeSpan FromDays(double value);</code>
 		///	</summary>
- 		///	<param name="value">ÌìÊı£¬¾«È·µ½×î½Ó½üµÄÎ¢Ãë¡£</param> 
-		///	<returns>±íÊ¾ value µÄ <see cref="TimeSpan"/></returns>
+ 		///	<param name="value">å¤©æ•°ï¼Œç²¾ç¡®åˆ°æœ€æ¥è¿‘çš„å¾®ç§’ã€‚</param> 
+		///	<returns>è¡¨ç¤º value çš„ <see cref="TimeSpan"/></returns>
         inline static TimeSpan FromDays(double value)
 		{
 			long long l=(long long)ceil(value*TimeSpan::TicksPerDay);
 			return TimeSpan(l);
 		};
    		///	<summary>
-		///	·µ»Ø±íÊ¾Ö¸¶¨Ğ¡Ê±ÊıµÄ <see cref="TimeSpan"/> ÆäÖĞ¶ÔĞ¡Ê±ÊıµÄÖ¸¶¨¾«È·µ½×î½Ó½üµÄÎ¢Ãë¡£
-		///	<code>Ô­ĞÍ£ºinline static TimeSpan FromHours(double value);</code>
+		///	è¿”å›è¡¨ç¤ºæŒ‡å®šå°æ—¶æ•°çš„ <see cref="TimeSpan"/> å…¶ä¸­å¯¹å°æ—¶æ•°çš„æŒ‡å®šç²¾ç¡®åˆ°æœ€æ¥è¿‘çš„å¾®ç§’ã€‚
+		///	<code>åŸå‹ï¼šinline static TimeSpan FromHours(double value);</code>
 		///	</summary>
- 		///	<param name="value">Ğ¡Ê±Êı£¬¾«È·µ½×î½Ó½üµÄÎ¢Ãë¡£</param> 
-		///	<returns>±íÊ¾ value µÄ <see cref="TimeSpan"/></returns>
+ 		///	<param name="value">å°æ—¶æ•°ï¼Œç²¾ç¡®åˆ°æœ€æ¥è¿‘çš„å¾®ç§’ã€‚</param> 
+		///	<returns>è¡¨ç¤º value çš„ <see cref="TimeSpan"/></returns>
 		inline static TimeSpan FromHours(double value)
 		{
 			long long l=(long long)ceil(value*TimeSpan::TicksPerHour);
 			return TimeSpan(l);
 		}
    		///	<summary>
-		///	·µ»Ø±íÊ¾Ö¸¶¨Î¢ÃëÊıµÄ <see cref="TimeSpan"/>¡£
-		///	<code>Ô­ĞÍ£ºinline static TimeSpan FromMilliseconds(long long value);</code>
+		///	è¿”å›è¡¨ç¤ºæŒ‡å®šå¾®ç§’æ•°çš„ <see cref="TimeSpan"/>ã€‚
+		///	<code>åŸå‹ï¼šinline static TimeSpan FromMilliseconds(long long value);</code>
 		///	</summary>
- 		///	<param name="value">Î¢ÃëÊı¡£</param> 
-		///	<returns>±íÊ¾ value µÄ <see cref="TimeSpan"/></returns>
+ 		///	<param name="value">å¾®ç§’æ•°ã€‚</param> 
+		///	<returns>è¡¨ç¤º value çš„ <see cref="TimeSpan"/></returns>
 		inline static TimeSpan FromMilliseconds(long long value)
 		{
 			return TimeSpan(value);
 		}
    		///	<summary>
-		///	·µ»Ø±íÊ¾Ö¸¶¨·ÖÖÓÊıµÄ <see cref="TimeSpan"/>,ÆäÖĞ¶Ô·ÖÖÓÊıµÄÖ¸¶¨¾«È·µ½×î½Ó½üµÄÎ¢Ãë¡£
-		///	<code>Ô­ĞÍ£ºinline static TimeSpan FromMinutes(double value);</code>
+		///	è¿”å›è¡¨ç¤ºæŒ‡å®šåˆ†é’Ÿæ•°çš„ <see cref="TimeSpan"/>,å…¶ä¸­å¯¹åˆ†é’Ÿæ•°çš„æŒ‡å®šç²¾ç¡®åˆ°æœ€æ¥è¿‘çš„å¾®ç§’ã€‚
+		///	<code>åŸå‹ï¼šinline static TimeSpan FromMinutes(double value);</code>
 		///	</summary>
- 		///	<param name="value">·ÖÖÓÊı£¬¾«È·µ½×î½Ó½üµÄÎ¢Ãë¡£</param> 
-		///	<returns>±íÊ¾ value µÄ <see cref="TimeSpan"/></returns>
+ 		///	<param name="value">åˆ†é’Ÿæ•°ï¼Œç²¾ç¡®åˆ°æœ€æ¥è¿‘çš„å¾®ç§’ã€‚</param> 
+		///	<returns>è¡¨ç¤º value çš„ <see cref="TimeSpan"/></returns>
 		inline static TimeSpan FromMinutes(double value)
 		{
 			long long  l=(long long)ceil(value*TimeSpan::TicksPerMinute);
 			return TimeSpan(l);
 		}
    		///	<summary>
-		///	·µ»Ø±íÊ¾Ö¸¶¨ÃëÊıµÄ <see cref="TimeSpan"/>,ÆäÖĞ¶Ô·ÖÖÓÊıµÄÖ¸¶¨¾«È·µ½×î½Ó½üµÄÎ¢Ãë¡£
-		///	<code>Ô­ĞÍ£ºinline static TimeSpan FromSeconds(double value);</code>
+		///	è¿”å›è¡¨ç¤ºæŒ‡å®šç§’æ•°çš„ <see cref="TimeSpan"/>,å…¶ä¸­å¯¹åˆ†é’Ÿæ•°çš„æŒ‡å®šç²¾ç¡®åˆ°æœ€æ¥è¿‘çš„å¾®ç§’ã€‚
+		///	<code>åŸå‹ï¼šinline static TimeSpan FromSeconds(double value);</code>
 		///	</summary>
- 		///	<param name="value">ÃëÊı£¬¾«È·µ½×î½Ó½üµÄÎ¢Ãë¡£</param> 
-		///	<returns>±íÊ¾ value µÄ <see cref="TimeSpan"/></returns>
+ 		///	<param name="value">ç§’æ•°ï¼Œç²¾ç¡®åˆ°æœ€æ¥è¿‘çš„å¾®ç§’ã€‚</param> 
+		///	<returns>è¡¨ç¤º value çš„ <see cref="TimeSpan"/></returns>
 		inline static TimeSpan FromSeconds(double value)
 		{
 			long long l=(long long)ceil(value*TimeSpan::TicksPerSecond);
 			return TimeSpan(l);
 		}
    		///	<summary>
-		///	·µ»ØÆäÖµÎª´ËÊµÀıµÄÏà·´ÖµµÄ <see cref="TimeSpan"/>¡£
-		///	<code>Ô­ĞÍ£ºinline TimeSpan Negate();</code>
+		///	è¿”å›å…¶å€¼ä¸ºæ­¤å®ä¾‹çš„ç›¸åå€¼çš„ <see cref="TimeSpan"/>ã€‚
+		///	<code>åŸå‹ï¼šinline TimeSpan Negate();</code>
 		///	</summary>
-		///	<returns>Óë´ËÊµÀıµÄÊıÖµÏàÍ¬µ«·ûºÅÏà·´</returns>
+		///	<returns>ä¸æ­¤å®ä¾‹çš„æ•°å€¼ç›¸åŒä½†ç¬¦å·ç›¸å</returns>
         inline TimeSpan Negate()
 		{
 			if(this->_ticks!=0)
@@ -462,27 +462,27 @@ namespace Common
 			}
 		};
    		///	<summary>
-		///	´Ó´ËÊµÀıÖĞ¼õÈ¥Ö¸¶¨µÄ <see cref="TimeSpan"/>¡£
-		///	<code>Ô­ĞÍ£ºinline TimeSpan &amp;Subtract(TimeSpan ts);</code>
+		///	ä»æ­¤å®ä¾‹ä¸­å‡å»æŒ‡å®šçš„ <see cref="TimeSpan"/>ã€‚
+		///	<code>åŸå‹ï¼šinline TimeSpan &amp;Subtract(TimeSpan ts);</code>
 		///	</summary>
- 		///	<param name="ts">Òª¼õÈ¥µÄ <see cref="TimeSpan"/>¡£</param> 
-		///	<returns>ÖµÎª´ËÊµÀıµÄÖµ¼õÈ¥ ts µÄÖµºóËùµÃ½á¹ûµÄ <see cref="TimeSpan"/></returns>
+ 		///	<param name="ts">è¦å‡å»çš„ <see cref="TimeSpan"/>ã€‚</param> 
+		///	<returns>å€¼ä¸ºæ­¤å®ä¾‹çš„å€¼å‡å» ts çš„å€¼åæ‰€å¾—ç»“æœçš„ <see cref="TimeSpan"/></returns>
         inline TimeSpan &Subtract(TimeSpan ts)
 		{
 			this->_ticks-=ts.getTotalTicks();
 			return *this;
 		};
    		///	<summary>
-		///	»ñÈ¡Ê±¼ä¼ä¸ôµÄ¸÷Ê±¼ä±íÊ¾²¿·Ö¡£
-		///	<code>Ô­ĞÍ£ºinline void getTimsSpanParts(int *day,int *hour,int *minute,int*second,
+		///	è·å–æ—¶é—´é—´éš”çš„å„æ—¶é—´è¡¨ç¤ºéƒ¨åˆ†ã€‚
+		///	<code>åŸå‹ï¼šinline void getTimsSpanParts(int *day,int *hour,int *minute,int*second,
 		///	                                         int * millis=NULL,int * usec=NULL);</code>
 		///	</summary>
- 		///	<param name="day">ÌìµÄ·µ»ØÖµ¡£</param> 
- 		///	<param name="hour">Ğ¡Ê±µÄ·µ»ØÖµ¡£</param> 
- 		///	<param name="minute">·ÖÖÓµÄ·µ»ØÖµ¡£</param> 
- 		///	<param name="second">ÃëµÄ·µ»ØÖµ¡£</param> 
- 		///	<param name="millis">ºÁÃëµÄ·µ»ØÖµ¡£</param> 
- 		///	<param name="usec">ÃëµÄ·µ»ØÖµ¡£</param> 
+ 		///	<param name="day">å¤©çš„è¿”å›å€¼ã€‚</param> 
+ 		///	<param name="hour">å°æ—¶çš„è¿”å›å€¼ã€‚</param> 
+ 		///	<param name="minute">åˆ†é’Ÿçš„è¿”å›å€¼ã€‚</param> 
+ 		///	<param name="second">ç§’çš„è¿”å›å€¼ã€‚</param> 
+ 		///	<param name="millis">æ¯«ç§’çš„è¿”å›å€¼ã€‚</param> 
+ 		///	<param name="usec">ç§’çš„è¿”å›å€¼ã€‚</param> 
 		inline void getTimsSpanParts(int *day,int *hour,int *minute,int*second,int * millis=NULL,int * usec=NULL)
 		{
 			if(this->_ticks==0)
@@ -497,13 +497,13 @@ namespace Common
 			if(usec)*usec= int(this->_ticks % this->TicksPerMillisecond);
 		}
    		///	<summary>
-		///	·µ»Ø´ËÊµÀıµÄÖµµÄ×Ö·û´®±íÊ¾ĞÎÊ½¡£
-		///	<code>Ô­ĞÍ£ºinline string ToString();</code>
+		///	è¿”å›æ­¤å®ä¾‹çš„å€¼çš„å­—ç¬¦ä¸²è¡¨ç¤ºå½¢å¼ã€‚
+		///	<code>åŸå‹ï¼šinline string ToString();</code>
 		///	</summary>
-		///	<returns>´ËÊµÀıµÄ×Ö·û´®±íÊ¾ĞÎÊ½,Ö»µ½ºÁÃë²¿·Ö
-		///     ±íÊ¾´ËÊµÀıµÄÖµµÄ×Ö·û´®¡£·µ»ØÖµĞÎÊ½ÈçÏÂ£º [-][d.]hh:mm:ss[.ff] ·½À¨ºÅ£¨¡°[¡±ºÍ¡°]¡±£©ÖĞµÄÏîÊÇ¿ÉÑ¡µÄ£¬Ã°ºÅºÍ¾äºÅ£¨¡°:¡±ºÍ¡°.¡±£©ÊÇÔ­Òå×Ö·û£¬ÆäËûÏîÈçÏÂ¡£Ïî
-		///     ËµÃ÷ "-" ¿ÉÑ¡µÄ¸ººÅ£¬Ö¸Ê¾¸ºÊ±¼ä ¡°d¡± ¿ÉÑ¡µÄÌìÊı ¡°hh¡± Ğ¡Ê±£¬·¶Î§´Ó 0 µ½ 23 ¡°mm¡± ·ÖÖÓ£¬·¶Î§´Ó 0 µ½ 59 ¡°ss¡± Ãë£¬·¶Î§´Ó
-		///     0 µ½ 59 ¡°ff¡± ¿ÉÑ¡µÄÃëµÄĞ¡Êı²¿·Ö£¬ÓĞ 3 ¸öĞ¡ÊıÎ»£¬¾«È·µ½ºÁÃë¡£
+		///	<returns>æ­¤å®ä¾‹çš„å­—ç¬¦ä¸²è¡¨ç¤ºå½¢å¼,åªåˆ°æ¯«ç§’éƒ¨åˆ†
+		///     è¡¨ç¤ºæ­¤å®ä¾‹çš„å€¼çš„å­—ç¬¦ä¸²ã€‚è¿”å›å€¼å½¢å¼å¦‚ä¸‹ï¼š [-][d.]hh:mm:ss[.ff] æ–¹æ‹¬å·ï¼ˆâ€œ[â€å’Œâ€œ]â€ï¼‰ä¸­çš„é¡¹æ˜¯å¯é€‰çš„ï¼Œå†’å·å’Œå¥å·ï¼ˆâ€œ:â€å’Œâ€œ.â€ï¼‰æ˜¯åŸä¹‰å­—ç¬¦ï¼Œå…¶ä»–é¡¹å¦‚ä¸‹ã€‚é¡¹
+		///     è¯´æ˜ "-" å¯é€‰çš„è´Ÿå·ï¼ŒæŒ‡ç¤ºè´Ÿæ—¶é—´ â€œdâ€ å¯é€‰çš„å¤©æ•° â€œhhâ€ å°æ—¶ï¼ŒèŒƒå›´ä» 0 åˆ° 23 â€œmmâ€ åˆ†é’Ÿï¼ŒèŒƒå›´ä» 0 åˆ° 59 â€œssâ€ ç§’ï¼ŒèŒƒå›´ä»
+		///     0 åˆ° 59 â€œffâ€ å¯é€‰çš„ç§’çš„å°æ•°éƒ¨åˆ†ï¼Œæœ‰ 3 ä¸ªå°æ•°ä½ï¼Œç²¾ç¡®åˆ°æ¯«ç§’ã€‚
 		///</returns>
 		inline string ToString()
 		{
@@ -544,26 +544,26 @@ namespace Common
 			return _result;
 		}
    		///	<summary>
-		///	´Ó×Ö·û´®ÖĞÖ¸¶¨µÄÊ±¼ä¼ä¸ô¹¹ÔìĞÂµÄ<see cref="TimeSpan"/>¶ÔÏó¡£
-		///	<code>Ô­ĞÍ£ºinline static TimeSpan Parse(const string&amp; s);</code>
+		///	ä»å­—ç¬¦ä¸²ä¸­æŒ‡å®šçš„æ—¶é—´é—´éš”æ„é€ æ–°çš„<see cref="TimeSpan"/>å¯¹è±¡ã€‚
+		///	<code>åŸå‹ï¼šinline static TimeSpan Parse(const string&amp; s);</code>
 		///	</summary>
-		///	<remarks>°´Î»½âÎö</remarks>
- 		///	<param name="s">Ö¸¶¨Ê±¼ä¼ä¸ôµÄ×Ö·û´®¡£</param> 
-		///	<returns>ÓësÖµÏàÓ¦µÄ <see cref="TimeSpan"/></returns>
- 		/// <exception cref="Exception">¸ñÊ½²»ÕıÈ·£¬½âÎö´íÎóÊ±Å×³ö</exception>
+		///	<remarks>æŒ‰ä½è§£æ</remarks>
+ 		///	<param name="s">æŒ‡å®šæ—¶é—´é—´éš”çš„å­—ç¬¦ä¸²ã€‚</param> 
+		///	<returns>ä¸så€¼ç›¸åº”çš„ <see cref="TimeSpan"/></returns>
+ 		/// <exception cref="Exception">æ ¼å¼ä¸æ­£ç¡®ï¼Œè§£æé”™è¯¯æ—¶æŠ›å‡º</exception>
 		inline static TimeSpan Parse(const string& s)
 		{
 			StringParser parser2 = StringParser();
 			return TimeSpan(parser2.Parse(s));
 		}
    		///	<summary>
-		///	´Ó×Ö·û´®ÖĞÖ¸¶¨µÄÊ±¼ä¼ä¸ô¹¹ÔìĞÂµÄ<see cref="TimeSpan"/>¶ÔÏó¡£
-		///	<code>Ô­ĞÍ£ºinline static TimeSpan Parse2(const string&amp; s);</code>
+		///	ä»å­—ç¬¦ä¸²ä¸­æŒ‡å®šçš„æ—¶é—´é—´éš”æ„é€ æ–°çš„<see cref="TimeSpan"/>å¯¹è±¡ã€‚
+		///	<code>åŸå‹ï¼šinline static TimeSpan Parse2(const string&amp; s);</code>
 		///	</summary>
-		/// <exception cref="Exception">¸ñÊ½²»ÕıÈ·£¬½âÎö´íÎóÊ±Å×³ö</exception>
-		///	<remarks>Ê¹ÓÃ¸ñÊ½»¯µÄ¿ìËÙµÄsscanfÊäÈë½âÎöÖµ</remarks>
- 		///	<param name="s">Ö¸¶¨Ê±¼ä¼ä¸ôµÄ×Ö·û´®¡£</param> 
-		///	<returns>ÓësÖµÏàÓ¦µÄ <see cref="TimeSpan"/></returns>
+		/// <exception cref="Exception">æ ¼å¼ä¸æ­£ç¡®ï¼Œè§£æé”™è¯¯æ—¶æŠ›å‡º</exception>
+		///	<remarks>ä½¿ç”¨æ ¼å¼åŒ–çš„å¿«é€Ÿçš„sscanfè¾“å…¥è§£æå€¼</remarks>
+ 		///	<param name="s">æŒ‡å®šæ—¶é—´é—´éš”çš„å­—ç¬¦ä¸²ã€‚</param> 
+		///	<returns>ä¸så€¼ç›¸åº”çš„ <see cref="TimeSpan"/></returns>
 		inline static TimeSpan Parse2(string& s)
 		{
 			TimeSpan tp;
@@ -571,26 +571,26 @@ namespace Common
 			return tp;
 		}
    		///	<summary>
-		///	´Ó×Ö·û´®ÖĞÖ¸¶¨µÄÊ±¼ä¼ä¸ô¹¹ÔìĞÂµÄ<see cref="TimeSpan"/>¶ÔÏó¡£
-		///	<code>Ô­ĞÍ£ºinline static void Parse2(TimeSpan &amp;result,string&amp; s);</code>
+		///	ä»å­—ç¬¦ä¸²ä¸­æŒ‡å®šçš„æ—¶é—´é—´éš”æ„é€ æ–°çš„<see cref="TimeSpan"/>å¯¹è±¡ã€‚
+		///	<code>åŸå‹ï¼šinline static void Parse2(TimeSpan &amp;result,string&amp; s);</code>
 		///	</summary>
-		///	<remarks>Ê¹ÓÃ¸ñÊ½»¯µÄ¿ìËÙµÄsscanfÊäÈë½âÎöÖµ</remarks>
-		///	<param name="result">·µ»ØÓësÖµÏàÓ¦µÄ <see cref="TimeSpan"/>¡£</param> 
- 		///	<param name="s">Ö¸¶¨Ê±¼ä¼ä¸ôµÄ×Ö·û´®¡£</param> 
- 		/// <exception cref="Exception">¸ñÊ½²»ÕıÈ·£¬½âÎö´íÎóÊ±Å×³ö</exception>
+		///	<remarks>ä½¿ç”¨æ ¼å¼åŒ–çš„å¿«é€Ÿçš„sscanfè¾“å…¥è§£æå€¼</remarks>
+		///	<param name="result">è¿”å›ä¸så€¼ç›¸åº”çš„ <see cref="TimeSpan"/>ã€‚</param> 
+ 		///	<param name="s">æŒ‡å®šæ—¶é—´é—´éš”çš„å­—ç¬¦ä¸²ã€‚</param> 
+ 		/// <exception cref="Exception">æ ¼å¼ä¸æ­£ç¡®ï¼Œè§£æé”™è¯¯æ—¶æŠ›å‡º</exception>
 		inline static void Parse2(TimeSpan &result,string& s)
 		{
 			celerityParse::Parse(result,s);
 		}
    		///	<summary>
-		///	´Ó×Ö·û´®ÖĞÖ¸¶¨µÄÊ±¼ä¼ä¸ô¹¹ÔìĞÂµÄ<see cref="TimeSpan"/>¶ÔÏó¡£
-		///	<code>Ô­ĞÍ£ºinline static void Parse(TimeSpan &amp;result,string&amp; s);</code>
+		///	ä»å­—ç¬¦ä¸²ä¸­æŒ‡å®šçš„æ—¶é—´é—´éš”æ„é€ æ–°çš„<see cref="TimeSpan"/>å¯¹è±¡ã€‚
+		///	<code>åŸå‹ï¼šinline static void Parse(TimeSpan &amp;result,string&amp; s);</code>
 		///	</summary>
-		///	<remarks>Ê¹ÓÃ¸ñÊ½»¯µÄ¿ìËÙµÄsscanfÊäÈë½âÎöÖµ</remarks>
- 		///	<param name="result">´Ë·½·¨·µ»ØÊ±£¬°üº¬±íÊ¾ÓÉ s Ö¸¶¨µÄÊ±¼ä¼ä¸ôµÄ¶ÔÏó£»»òÕßÈç¹û×ª»»Ê§°Ü£¬Ôò°üº¬ Common.TimeSpan.Zero¡£¸Ã²ÎÊıÎ´¾­³õÊ¼»¯¼´±»´«µİ¡£¡£</param> 
- 		///	<param name="s">Ö¸¶¨Ê±¼ä¼ä¸ôµÄ×Ö·û´®</param> 
-		///	<returns>Èç¹û s ×ª»»³É¹¦£¬ÔòÎª true£»·ñÔòÎª false¡£Èç¹û s ²ÎÊıÎªnull£¬¸ñÊ½ÎŞĞ§£¬ ±íÊ¾µÄÊ±¼ä¼ä¸ôĞ¡ÓÚ Common.TimeSpan.MinValue
-        ///     »ò´óÓÚ Common.TimeSpan.MaxValue£¬»òÕßÌì¡¢Ğ¡Ê±¡¢·ÖÖÓ»òÕßÃë·ÖÁ¿ÖĞÖÁÉÙÓĞÒ»¸ö³¬³öÆäÓĞĞ§·¶Î§£¬Ôò´ËÔËËã·µ»Ø false¡£ </returns>
+		///	<remarks>ä½¿ç”¨æ ¼å¼åŒ–çš„å¿«é€Ÿçš„sscanfè¾“å…¥è§£æå€¼</remarks>
+ 		///	<param name="result">æ­¤æ–¹æ³•è¿”å›æ—¶ï¼ŒåŒ…å«è¡¨ç¤ºç”± s æŒ‡å®šçš„æ—¶é—´é—´éš”çš„å¯¹è±¡ï¼›æˆ–è€…å¦‚æœè½¬æ¢å¤±è´¥ï¼Œåˆ™åŒ…å« Common.TimeSpan.Zeroã€‚è¯¥å‚æ•°æœªç»åˆå§‹åŒ–å³è¢«ä¼ é€’ã€‚ã€‚</param> 
+ 		///	<param name="s">æŒ‡å®šæ—¶é—´é—´éš”çš„å­—ç¬¦ä¸²</param> 
+		///	<returns>å¦‚æœ s è½¬æ¢æˆåŠŸï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚å¦‚æœ s å‚æ•°ä¸ºnullï¼Œæ ¼å¼æ— æ•ˆï¼Œ è¡¨ç¤ºçš„æ—¶é—´é—´éš”å°äº Common.TimeSpan.MinValue
+        ///     æˆ–å¤§äº Common.TimeSpan.MaxValueï¼Œæˆ–è€…å¤©ã€å°æ—¶ã€åˆ†é’Ÿæˆ–è€…ç§’åˆ†é‡ä¸­è‡³å°‘æœ‰ä¸€ä¸ªè¶…å‡ºå…¶æœ‰æ•ˆèŒƒå›´ï¼Œåˆ™æ­¤è¿ç®—è¿”å› falseã€‚ </returns>
         inline static bool Parse(TimeSpan &result,const string& s)
 		{
 			long long num;
@@ -607,7 +607,7 @@ namespace Common
 
 
 		//
-		//ÕªÒª£º
+		//æ‘˜è¦ï¼š
 		//		[-][d.]hh:mm:ss[.ff]
 		protected:  
 			class celerityParse
@@ -633,16 +633,16 @@ namespace Common
 					if(c=='.')
 					{
 						len=sscanf(tp, "%d.%d:%d:%d.%d", &day,&hour,&minute,&second,&millis);
-						if(len<4)EXP(String("ÊäÈë×Ö·ûÊ±¼ä\"")+s+"\"²»ÊÇĞÎÈç¸ñÊ½µÄ\"dd.hh:mi:ss.ms\"×Ö·û´®");
+						if(len<4)EXP(String("è¾“å…¥å­—ç¬¦æ—¶é—´\"")+s+"\"ä¸æ˜¯å½¢å¦‚æ ¼å¼çš„\"dd.hh:mi:ss.ms\"å­—ç¬¦ä¸²");
 					}
 					else if(c==':')
 					{
 						len=sscanf(tp, "%d:%d:%d.%d", &hour,&minute,&second,&millis);
-						if(len<3)EXP(String("ÊäÈë×Ö·ûÊ±¼ä\"")+s+"\"²»ÊÇĞÎÈç¸ñÊ½µÄ\"dd.hh:mi:ss.ms\"×Ö·û´®");
+						if(len<3)EXP(String("è¾“å…¥å­—ç¬¦æ—¶é—´\"")+s+"\"ä¸æ˜¯å½¢å¦‚æ ¼å¼çš„\"dd.hh:mi:ss.ms\"å­—ç¬¦ä¸²");
 					}
 					else
 					{
-						EXP(String("ÊäÈë×Ö·ûÊ±¼ä\"")+s+"\"²»ÊÇĞÎÈç¸ñÊ½µÄ\"dd.hh:mi:ss.ms\"×Ö·û´®");
+						EXP(String("è¾“å…¥å­—ç¬¦æ—¶é—´\"")+s+"\"ä¸æ˜¯å½¢å¦‚æ ¼å¼çš„\"dd.hh:mi:ss.ms\"å­—ç¬¦ä¸²");
 					}
 					res=TimeSpan(day, hour, minute, second, millis,0);
 					if(flag)res=res.Duration();

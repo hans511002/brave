@@ -31,7 +31,7 @@ namespace engine
             if (container->currentFrame < container->totalFrames)
             {
                 container->gotoAndStop((container->currentFrame + 1));
-                if (container->currentFrame == 4)
+                if (container->currentFrame == 4) 
                 {
                     i = world->listOfUnits.size()- 1;
                     while (i >= 0)

@@ -4,7 +4,6 @@
 #include "engine/Waves.h"
 #include "engine/World.h"
 
-
 namespace engine
 { 
     void ReadXML::loadXMLData()//base.xml

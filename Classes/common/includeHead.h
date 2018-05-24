@@ -1,6 +1,6 @@
 #ifndef __Common_INCHEAD_H__ 
 #define __Common_INCHEAD_H__
-//Æ½Ì¨¿â
+//å¹³å°åº“
 #include "platform.h"	//	_MSC_VER
 
 #define ROUND8(x)     (((x)+7)&~7)
@@ -36,33 +36,33 @@ namespace Common
 #include "Convert.h"
 #include "hashMath.h"
 #include "Enums.h"
-#include "String.h"	//×Ö·û´®
+#include "String.h"	//å­—ç¬¦ä¸²
 
 #if CPP_FILE == 1											//	ArgsParse.cpp
-#include "DateTimeFun.h"	//	Ê±¼äÀà
-#include "TimeSpan.h"	//Ê±¼äÆ¬
-#include "DateTime.h"	//Ê±¼ä
-#include "DateTimer.h"//¼ÆÊ±Æ÷
-#include "Log.h"//ÈÕÖ¾
-#include "ArgsParse.h"//²ÎÊı½âÎö
+#include "DateTimeFun.h"	//	æ—¶é—´ç±»
+#include "TimeSpan.h"	//æ—¶é—´ç‰‡
+#include "DateTime.h"	//æ—¶é—´
+#include "DateTimer.h"//è®¡æ—¶å™¨
+#include "Log.h"//æ—¥å¿—
+#include "ArgsParse.h"//å‚æ•°è§£æ
 
 #elif CPP_FILE==2											//	DirectoryInfo.cpp
-#include "Functions.h"	//	ÆÕÍ¨º¯Êı
-#include "DateTimeFun.h"	//	Ê±¼äÀà
-#include "TimeSpan.h"	//Ê±¼äÆ¬
-#include "DateTime.h"	//Ê±¼ä
-#include "DateTimer.h"//¼ÆÊ±Æ÷
-#include "DirectoryInfo.hpp"//Ä¿Â¼ÎÄ¼ş
+#include "Functions.h"	//	æ™®é€šå‡½æ•°
+#include "DateTimeFun.h"	//	æ—¶é—´ç±»
+#include "TimeSpan.h"	//æ—¶é—´ç‰‡
+#include "DateTime.h"	//æ—¶é—´
+#include "DateTimer.h"//è®¡æ—¶å™¨
+#include "DirectoryInfo.hpp"//ç›®å½•æ–‡ä»¶
 #include "FileInfo.hpp"
 #elif CPP_FILE==3											//	FTP.cpp
-#include "Functions.h"	//	ÆÕÍ¨º¯Êı
-#include "DateTimeFun.h"	//	Ê±¼äÀà
-#include "TimeSpan.h"	//Ê±¼äÆ¬
-#include "DateTime.h"	//Ê±¼ä
-#include "DateTimer.h"//¼ÆÊ±Æ÷
-#include "DirectoryInfo.hpp"//Ä¿Â¼ÎÄ¼ş
+#include "Functions.h"	//	æ™®é€šå‡½æ•°
+#include "DateTimeFun.h"	//	æ—¶é—´ç±»
+#include "TimeSpan.h"	//æ—¶é—´ç‰‡
+#include "DateTime.h"	//æ—¶é—´
+#include "DateTimer.h"//è®¡æ—¶å™¨
+#include "DirectoryInfo.hpp"//ç›®å½•æ–‡ä»¶
 #include "FileInfo.hpp"
-#include "NetConstDefine.h"		//	ÍøÂç²¿·Ö
+#include "NetConstDefine.h"		//	ç½‘ç»œéƒ¨åˆ†
 #include "IPAddress.h"
 #include "Socket.h"
 #include "NetworkStream.h"
@@ -70,14 +70,14 @@ namespace Common
 #include "UdpClient.h"
 #include "TcpListener.h"
 
-#include "FTP.h"  //Ó¦ÓÃSocket
+#include "FTP.h"  //åº”ç”¨Socket
 #elif CPP_FILE==4											//FtpClient.cpp
 #include "FtpClient.h"	//unix FTP
 #elif CPP_FILE==5											 
 #elif CPP_FILE==6											//md5.cpp
 #include "md5.h"	
 #elif CPP_FILE==7											//NetConstDefine.cpp
-#include "NetConstDefine.h"		//	ÍøÂç²¿·Ö
+#include "NetConstDefine.h"		//	ç½‘ç»œéƒ¨åˆ†
 #include "IPAddress.h"
 #include "Socket.h"
 #include "NetworkStream.h"
@@ -86,24 +86,24 @@ namespace Common
 #include "TcpListener.h"
 #elif CPP_FILE==8											//ShareMemory.cpp
 #include "md5.h"	
-#include "Functions.h"	//	ÆÕÍ¨º¯Êı
-#include "DateTimeFun.h"	//	Ê±¼äÀà
-#include "TimeSpan.h"	//Ê±¼äÆ¬
-#include "DateTime.h"	//Ê±¼ä
-#include "DateTimer.h"//¼ÆÊ±Æ÷
-#include "DirectoryInfo.hpp"//Ä¿Â¼ÎÄ¼ş
+#include "Functions.h"	//	æ™®é€šå‡½æ•°
+#include "DateTimeFun.h"	//	æ—¶é—´ç±»
+#include "TimeSpan.h"	//æ—¶é—´ç‰‡
+#include "DateTime.h"	//æ—¶é—´
+#include "DateTimer.h"//è®¡æ—¶å™¨
+#include "DirectoryInfo.hpp"//ç›®å½•æ–‡ä»¶
 #include "FileInfo.hpp"
 #include "ShareMemory.h"
 #include "SemaphoreMutex.h"
 #elif CPP_FILE==9											//Socket.cpp
-#include "Functions.h"	//	ÆÕÍ¨º¯Êı
-#include "DateTimeFun.h"	//	Ê±¼äÀà
-#include "TimeSpan.h"	//Ê±¼äÆ¬
-#include "DateTime.h"	//Ê±¼ä
-#include "DateTimer.h"//¼ÆÊ±Æ÷
-#include "DirectoryInfo.hpp"//Ä¿Â¼ÎÄ¼ş
+#include "Functions.h"	//	æ™®é€šå‡½æ•°
+#include "DateTimeFun.h"	//	æ—¶é—´ç±»
+#include "TimeSpan.h"	//æ—¶é—´ç‰‡
+#include "DateTime.h"	//æ—¶é—´
+#include "DateTimer.h"//è®¡æ—¶å™¨
+#include "DirectoryInfo.hpp"//ç›®å½•æ–‡ä»¶
 #include "FileInfo.hpp"
-#include "NetConstDefine.h"		//	ÍøÂç²¿·Ö
+#include "NetConstDefine.h"		//	ç½‘ç»œéƒ¨åˆ†
 #include "IPAddress.h"
 #include "Socket.h"
 #include "NetworkStream.h"

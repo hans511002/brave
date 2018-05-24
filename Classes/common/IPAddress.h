@@ -44,14 +44,14 @@ NET_NAMESPACE_BEGIN
 			{
 				EXP("port error, port=["+String(port)+"]");
 			}
-			if(port>maxPort)EXP("´«Èë¶Ë¿ÚºÅ´óÓÚ¶Ë¿Ú×î´óÖµ"+String(maxPort));
-			if(port<minPort)EXP("´«Èë¶Ë¿ÚºÅĞ¡ÓÚ¶Ë¿Ú×î´óÖµ"+String(minPort));
+			if(port>maxPort)EXP("ä¼ å…¥ç«¯å£å·å¤§äºç«¯å£æœ€å¤§å€¼"+String(maxPort));
+			if(port<minPort)EXP("ä¼ å…¥ç«¯å£å·å°äºç«¯å£æœ€å¤§å€¼"+String(minPort));
 			sadin.sin.sin_port = htons(port);
-			//½«µã·Ö¸ôµØÖ·×ª»»³É³¤ÕûÊı                                    
+			//å°†ç‚¹åˆ†éš”åœ°å€è½¬æ¢æˆé•¿æ•´æ•°                                    
 			if ((sadin.sin.sin_addr.s_addr = inet_addr(ipString.c_str())) == -1)
 			{
-				//Ê§°Ü,±íÃ÷ÊäÈëµÄÊÇÖ÷»úÃû,Í¨¹ıÏµÍ³ÅäÖÃ×ª»»ÃûÎªµØÖ·                                    
-				//Í¨¹ıIP»ñÈ¡Ö÷»úĞÅÏ¢ gethostbyaddr(inet_addr(m_host.c_str()),sizeof(long),AF_INET)
+				//å¤±è´¥,è¡¨æ˜è¾“å…¥çš„æ˜¯ä¸»æœºå,é€šè¿‡ç³»ç»Ÿé…ç½®è½¬æ¢åä¸ºåœ°å€                                    
+				//é€šè¿‡IPè·å–ä¸»æœºä¿¡æ¯ gethostbyaddr(inet_addr(m_host.c_str()),sizeof(long),AF_INET)
 				struct hostent *phe ;
 				if ((phe = gethostbyname(SETSOCKOPT_OPTVAL_TYPE ipString.c_str()))==NULL)
 				{
@@ -60,7 +60,7 @@ NET_NAMESPACE_BEGIN
 				}
 				memcpy((char *)&sadin.sin.sin_addr, phe->h_addr, phe->h_length);
 			}
-			sadin.sin.sin_family = AF_INET ;	//	Ä¬ÈÏinetµØÖ·Ğ­Òé
+			sadin.sin.sin_family = AF_INET ;	//	é»˜è®¤inetåœ°å€åè®®
 			inited=true;
 		};
 		IPAddress(const Common::String & ipString, int port){memset(&sadin,0,sizeof(sadin));_init(ipString,port);};
@@ -75,7 +75,7 @@ NET_NAMESPACE_BEGIN
 			else
 			{
 				_init(ipString,0);
-				//EXP("Ö¸¶¨µÄIP´®²»´æÔÚ¶Ë¿ÚºÅ");
+				//EXP("æŒ‡å®šçš„IPä¸²ä¸å­˜åœ¨ç«¯å£å·");
 			}
 		};
 		IPAddress(){memset(&sadin,0,sizeof(sadin));inited=false;sadin.sin.sin_family = AF_INET ;};
@@ -94,11 +94,11 @@ NET_NAMESPACE_BEGIN
 			{
 				EXP("hostname is null");
 			}
-			//½«µã·Ö¸ôµØÖ·×ª»»³É³¤ÕûÊı                                    
+			//å°†ç‚¹åˆ†éš”åœ°å€è½¬æ¢æˆé•¿æ•´æ•°                                    
 			if ((sadin.sin.sin_addr.s_addr = inet_addr(ip.c_str())) == -1)
 			{
-				//Ê§°Ü,±íÃ÷ÊäÈëµÄÊÇÖ÷»úÃû,Í¨¹ıÏµÍ³ÅäÖÃ×ª»»ÃûÎªµØÖ·                                    
-				//Í¨¹ıIP»ñÈ¡Ö÷»úĞÅÏ¢ gethostbyaddr(inet_addr(m_host.c_str()),sizeof(long),AF_INET)
+				//å¤±è´¥,è¡¨æ˜è¾“å…¥çš„æ˜¯ä¸»æœºå,é€šè¿‡ç³»ç»Ÿé…ç½®è½¬æ¢åä¸ºåœ°å€                                    
+				//é€šè¿‡IPè·å–ä¸»æœºä¿¡æ¯ gethostbyaddr(inet_addr(m_host.c_str()),sizeof(long),AF_INET)
 				struct hostent *phe ;
 				if ((phe = gethostbyname(SETSOCKOPT_OPTVAL_TYPE ip.c_str()))==NULL)
 				{
@@ -180,11 +180,11 @@ NET_NAMESPACE_BEGIN
 	{
 		addresses.clear();
 		struct sockaddr_in sin;
-		//½«µã·Ö¸ôµØÖ·×ª»»³É³¤ÕûÊı                                    
+		//å°†ç‚¹åˆ†éš”åœ°å€è½¬æ¢æˆé•¿æ•´æ•°                                    
 		if ((sin.sin_addr.s_addr = inet_addr(name.c_str())) == -1)
 		{
-			//Ê§°Ü,±íÃ÷ÊäÈëµÄÊÇÖ÷»úÃû,Í¨¹ıÏµÍ³ÅäÖÃ×ª»»ÃûÎªµØÖ·                                    
-			//Í¨¹ıIP»ñÈ¡Ö÷»úĞÅÏ¢ gethostbyaddr(inet_addr(m_host.c_str()),sizeof(long),AF_INET)
+			//å¤±è´¥,è¡¨æ˜è¾“å…¥çš„æ˜¯ä¸»æœºå,é€šè¿‡ç³»ç»Ÿé…ç½®è½¬æ¢åä¸ºåœ°å€                                    
+			//é€šè¿‡IPè·å–ä¸»æœºä¿¡æ¯ gethostbyaddr(inet_addr(m_host.c_str()),sizeof(long),AF_INET)
 			struct hostent *phe ;
 			if ((phe = gethostbyname(SETSOCKOPT_OPTVAL_TYPE name.c_str()))==NULL)
 			{
@@ -197,7 +197,7 @@ NET_NAMESPACE_BEGIN
 				memcpy((char *)(&addresses[i].sadin.sin.sin_addr), phe->h_addr_list[i], phe->h_length);
 				addresses[i].sadin.sin.sin_port=htons(port);
 				addresses[i].inited=true;
-				addresses[i].sadin.sin.sin_family = AF_INET ;	//	Ä¬ÈÏinetµØÖ·Ğ­Òé
+				addresses[i].sadin.sin.sin_family = AF_INET ;	//	é»˜è®¤inetåœ°å€åè®®
 				i++;
 			}
 		}
@@ -205,7 +205,7 @@ NET_NAMESPACE_BEGIN
 		{
 			addresses[0].sadin.sin=sin;
 			addresses[0].sadin.sin.sin_port=htons(port);
-			addresses[0].sadin.sin.sin_family = AF_INET ;	//	Ä¬ÈÏinetµØÖ·Ğ­Òé
+			addresses[0].sadin.sin.sin_family = AF_INET ;	//	é»˜è®¤inetåœ°å€åè®®
 			addresses[0].inited=true;
 		}
 	}

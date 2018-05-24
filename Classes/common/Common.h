@@ -1,5 +1,5 @@
 ///	<summary>
-///	C/C++±à³Ì»ù´¡Àà
+///	C/C++ç¼–ç¨‹åŸºç¡€ç±»
 /// <para>
 /// </para>
 ///	<code>
@@ -16,11 +16,11 @@
 ///				without fee, provided that the above copyright notice appear
 ///				in all copies.
 ///				
-///				this include boost thread¡¢otl and so on third-party open source libraries
+///				this include boost threadã€otl and so on third-party open source libraries
 /// ==============================================================
-/// ×÷ Õß: ×ŞÔ¶¹ó
-/// ÈÕ ÆÚ: 2006-11-25
-/// °æ ±¾: 1.0
+/// ä½œ è€…: é‚¹è¿œè´µ
+/// æ—¥ æœŸ: 2006-11-25
+/// ç‰ˆ æœ¬: 1.0
 ///
 ///	</code>
 ///	</summary>
@@ -32,7 +32,7 @@
 #ifndef __Common_H__
 #define __Common_H__
 
-//¾¯¸æµÈ¼¶
+//è­¦å‘Šç­‰çº§
 #pragma warning( push ,2)
 #ifdef UNICODE
 #undef UNICODE
@@ -84,43 +84,43 @@ namespace Common
 #include "Enums.h"
 #include "Convert.h"
 #include "hashMath.h"
-#include "Encoding.h"	//±àÂë
+#include "Encoding.h"	//ç¼–ç 
 #include "Decoding.h"
-#include "String.h"	//×Ö·û´®
-#include "Functions.h"	//	ÆÕÍ¨º¯Êı
-#include "DateTimeFun.h"	//	Ê±¼äÀà
-#include "TimeSpan.h"	//Ê±¼äÆ¬
-#include "DateTime.h"	//Ê±¼ä
-#include "DateTimer.h"//¼ÆÊ±Æ÷
-#include "DirectoryInfo.hpp"//Ä¿Â¼ÎÄ¼ş
+#include "String.h"	//å­—ç¬¦ä¸²
+#include "Functions.h"	//	æ™®é€šå‡½æ•°
+#include "DateTimeFun.h"	//	æ—¶é—´ç±»
+#include "TimeSpan.h"	//æ—¶é—´ç‰‡
+#include "DateTime.h"	//æ—¶é—´
+#include "DateTimer.h"//è®¡æ—¶å™¨
+#include "DirectoryInfo.hpp"//ç›®å½•æ–‡ä»¶
 #include "FileInfo.hpp"
-#include "ArgsParse.h"//²ÎÊı½âÎö
-#include "Log.h"//ÈÕÖ¾ 
-#include "strCoding.h"	//×Ö·û´®
+#include "ArgsParse.h"//å‚æ•°è§£æ
+#include "Log.h"//æ—¥å¿— 
+#include "strCoding.h"	//å­—ç¬¦ä¸²
 	 
 
      
 #include "HashTable.hpp"
 #include "MulHashTable.hpp"
 #include "MulHashTable2.hpp"
-#include "HashTable2.hpp"		//	µ¥Öµ£¬¶àÖµ£¬µ¥Á´±í´æ´¢
+#include "HashTable2.hpp"		//	å•å€¼ï¼Œå¤šå€¼ï¼Œå•é“¾è¡¨å­˜å‚¨
 
  
-//Êı×Ö¼ü×öhashKey
+//æ•°å­—é”®åšhashKey
 #include "numMap.hpp"
 //hashFile
 #ifndef HASH_CHECK_LEVEL
-#define HASH_CHECK_LEVEL 3			// hashcode Ğ£Ñé´ÎÊı HASH_CHECK_LEVEL=0 µ±ÎªÊı×ÖÊ±²»Ê¹ÓÃhash
+#define HASH_CHECK_LEVEL 3			// hashcode æ ¡éªŒæ¬¡æ•° HASH_CHECK_LEVEL=0 å½“ä¸ºæ•°å­—æ—¶ä¸ä½¿ç”¨hash
 #endif
 
-#include "BTree.hpp"	//¶ş²æÊ÷
+#include "BTree.hpp"	//äºŒå‰æ ‘
     
-#include "CalcExp.h"			//	¼òµ¥±í´ïÊ½¼ÆËã									#include "CalcLogic.h"			//	Âß¼­±í´ïÊ½¼ÆËã
-#include "Eval.h"				//	¶¯Ì¬¼ÆËã Éı¼¶,°üÀ¨º¯Êıµ÷ÓÃºÍ±äÁ¿´«µİ			#include "EvalCalc.h"			//	¶¯Ì¬¼ÆËã
-#include "ExpEval.h"			//	lemon ´Ê·¨½âÎö³ÌĞòÉú³ÉµÄ±í´ïÊ½¼ÆËã
+#include "CalcExp.h"			//	ç®€å•è¡¨è¾¾å¼è®¡ç®—									#include "CalcLogic.h"			//	é€»è¾‘è¡¨è¾¾å¼è®¡ç®—
+#include "Eval.h"				//	åŠ¨æ€è®¡ç®— å‡çº§,åŒ…æ‹¬å‡½æ•°è°ƒç”¨å’Œå˜é‡ä¼ é€’			#include "EvalCalc.h"			//	åŠ¨æ€è®¡ç®—
+#include "ExpEval.h"			//	lemon è¯æ³•è§£æç¨‹åºç”Ÿæˆçš„è¡¨è¾¾å¼è®¡ç®—
  
 
-#include "NetConstDefine.h"		//	ÍøÂç²¿·Ö
+#include "NetConstDefine.h"		//	ç½‘ç»œéƒ¨åˆ†
 #include "IPAddress.h"
 #include "Socket.h"
 #include "NetworkStream.h"
@@ -128,13 +128,13 @@ namespace Common
 #include "UdpClient.h"
 #include "TcpListener.h"
 
-#include "FTP.h"  //Ó¦ÓÃSocket
+#include "FTP.h"  //åº”ç”¨Socket
 
 
 //
 namespace Common
 {
-	//ÃİÔËËã
+	//å¹‚è¿ç®—
 	inline double pow(int x,int y)
 	{
 		return ::pow((double)x,y);
@@ -160,8 +160,8 @@ namespace Common
 		}                                                       \
 	}
 	///	<summary>
-	///	×Ö·û´®µ½intÀàĞÍ×ª»»
-	///	<code>Ô­ĞÍ£ºvoid ato_t(int &amp;t,char *s);</code>
+	///	å­—ç¬¦ä¸²åˆ°intç±»å‹è½¬æ¢
+	///	<code>åŸå‹ï¼švoid ato_t(int &amp;t,char *s);</code>
 	///	</summary>
 	///	<param name="t"><see cref="int"/></param>
 	///	<param name="s"><see cref="char"/></param>
@@ -170,8 +170,8 @@ namespace Common
 		 sscanf(s, "%u", &t);
 	}
 	///	<summary>
-	///	×Ö·û´®µ½unsigned intÀàĞÍ×ª»»
-	///	<code>Ô­ĞÍ£ºvoid ato_t(unsigned int &amp;t,char *s);</code>
+	///	å­—ç¬¦ä¸²åˆ°unsigned intç±»å‹è½¬æ¢
+	///	<code>åŸå‹ï¼švoid ato_t(unsigned int &amp;t,char *s);</code>
 	///	</summary>
 	///	<param name="t"><see cref="unsigned int"/></param>
 	///	<param name="s"><see cref="char"/></param>
@@ -180,8 +180,8 @@ namespace Common
 		sscanf(s, "%d", &t);
 	}
 	///	<summary>
-	///	×Ö·û´®µ½doubleÀàĞÍ×ª»»
-	///	<code>Ô­ĞÍ£ºvoid ato_t(double &amp;t,char *s);</code>
+	///	å­—ç¬¦ä¸²åˆ°doubleç±»å‹è½¬æ¢
+	///	<code>åŸå‹ï¼švoid ato_t(double &amp;t,char *s);</code>
 	///	</summary>
 	///	<param name="t"><see cref="double"/></param>
 	///	<param name="s"><see cref="char"/></param>
@@ -193,8 +193,8 @@ namespace Common
 		t = f;
 	}
 	///	<summary>
-	///	×Ö·û´®µ½longÀàĞÍ×ª»»
-	///	<code>Ô­ĞÍ£ºvoid ato_t(long &amp;t,char *s);</code>
+	///	å­—ç¬¦ä¸²åˆ°longç±»å‹è½¬æ¢
+	///	<code>åŸå‹ï¼švoid ato_t(long &amp;t,char *s);</code>
 	///	</summary>
 	///	<param name="t"><see cref="long"/></param>
 	///	<param name="s"><see cref="char"/></param>
@@ -203,8 +203,8 @@ namespace Common
 		sscanf(s, "%ld", &t);
 	}
 	///	<summary>
-	///	×Ö·û´®µ½unsigned longÀàĞÍ×ª»»
-	///	<code>Ô­ĞÍ£ºvoid ato_t(unsigned long &amp;t,char *s);</code>
+	///	å­—ç¬¦ä¸²åˆ°unsigned longç±»å‹è½¬æ¢
+	///	<code>åŸå‹ï¼švoid ato_t(unsigned long &amp;t,char *s);</code>
 	///	</summary>
 	///	<param name="t"><see cref="unsigned long"/></param>
 	///	<param name="s"><see cref="char"/></param>
@@ -213,8 +213,8 @@ namespace Common
 		sscanf(s, "%lu", &t);
 	}
 	///	<summary>
-	///	×Ö·û´®µ½long longÀàĞÍ×ª»»
-	///	<code>Ô­ĞÍ£ºvoid ato_t(long long &amp;t,char *s);</code>
+	///	å­—ç¬¦ä¸²åˆ°long longç±»å‹è½¬æ¢
+	///	<code>åŸå‹ï¼švoid ato_t(long long &amp;t,char *s);</code>
 	///	</summary>
 	///	<param name="t"><see cref="long long"/></param>
 	///	<param name="s"><see cref="char"/></param>
@@ -223,8 +223,8 @@ namespace Common
 		sscanf(s, "%lld", &t);
 	}
 	///	<summary>
-	///	×Ö·û´®µ½unsigned long longÀàĞÍ×ª»»
-	///	<code>Ô­ĞÍ£ºvoid ato_t(unsigned long long &amp;t,char *s);</code>
+	///	å­—ç¬¦ä¸²åˆ°unsigned long longç±»å‹è½¬æ¢
+	///	<code>åŸå‹ï¼švoid ato_t(unsigned long long &amp;t,char *s);</code>
 	///	</summary>
 	///	<param name="t"><see cref="unsigned long long"/></param>
 	///	<param name="s"><see cref="char"/></param>
@@ -233,28 +233,28 @@ namespace Common
 		sscanf(s, "%llu", &t);
 	}
 	///	<summary>
-	///	»ñÈ¡ÏµÍ³´íÎóĞÅÏ¢
-	///	<code>Ô­ĞÍ£ºvoid ato_t(unsigned long long &amp;t,char *s);</code>
+	///	è·å–ç³»ç»Ÿé”™è¯¯ä¿¡æ¯
+	///	<code>åŸå‹ï¼švoid ato_t(unsigned long long &amp;t,char *s);</code>
 	///	</summary>
 	///	<param name="t"><see cref="unsigned long long"/></param>
 	///	<param name="s"><see cref="char"/></param>
 	inline String GetErrorMsg(){return strerror(errno);}
 	///	<summary>
-	///	¼ÆËã±í´ïÊ½
-	///	<code>Ô­ĞÍ£ºinline double cal(const string &amp;s);</code>
+	///	è®¡ç®—è¡¨è¾¾å¼
+	///	<code>åŸå‹ï¼šinline double cal(const string &amp;s);</code>
 	///	</summary>
-	///	<param name="s"><see cref="×Ö·û´®±í´ïÊ½"/></param>
-	///	<returns>¼ÆËã½á¹û</returns>
+	///	<param name="s"><see cref="å­—ç¬¦ä¸²è¡¨è¾¾å¼"/></param>
+	///	<returns>è®¡ç®—ç»“æœ</returns>
 	inline double cal(const string &s)
 	{
 		return calcExp<int>().cal(s);
 	};
 	///	<summary>
-	///	»ñÈ¡³ÌĞòÆô¶¯ÃüÁîÖĞµÄÂ·¾¶²¿·Ö
-	///	<code>Ô­ĞÍ£ºinline String getAppPath(char *argv[]);</code>
+	///	è·å–ç¨‹åºå¯åŠ¨å‘½ä»¤ä¸­çš„è·¯å¾„éƒ¨åˆ†
+	///	<code>åŸå‹ï¼šinline String getAppPath(char *argv[]);</code>
 	///	</summary>
-	///	<param name="argv">³ÌĞòÔËĞĞÊäÈë²ÎÊı¼¯</param>
-	///	<returns>³ÌĞòÆô¶¯ÃüÁîÖĞµÄÂ·¾¶</returns>
+	///	<param name="argv">ç¨‹åºè¿è¡Œè¾“å…¥å‚æ•°é›†</param>
+	///	<returns>ç¨‹åºå¯åŠ¨å‘½ä»¤ä¸­çš„è·¯å¾„</returns>
 	inline String getAppPath(char *argv[])
 	{
 		String path=argv[0];//Path::DirectorySeparatorChar
@@ -271,7 +271,7 @@ namespace Common
 			return "";
 		}
 	};
-	//×Ó½ø³ÌÍË³ö×´Ì¬¼ì²é,Å×³ö´íÎóÒì³£
+	//å­è¿›ç¨‹é€€å‡ºçŠ¶æ€æ£€æŸ¥,æŠ›å‡ºé”™è¯¯å¼‚å¸¸
 	inline int checkSubProExit(int &status)
 	{
 #if OSTYPE>10
@@ -284,16 +284,16 @@ namespace Common
 		{
 			status=WTERMSIG(status);
 #if defined(WCOREDUMP)
-			EXP(String("[ERROR]×Ó³ÌĞòÒì³£½áÊø ,ÈíÖĞ¶ÏºÅ =")+status+( WCOREDUMP(status) ? " (²úÉúÁËcoreÎÄ¼ş)" :""));
+			EXP(String("[ERROR]å­ç¨‹åºå¼‚å¸¸ç»“æŸ ,è½¯ä¸­æ–­å· =")+status+( WCOREDUMP(status) ? " (äº§ç”Ÿäº†coreæ–‡ä»¶)" :""));
 #else
-			EXP(String("[ERROR]×Ó³ÌĞòÒì³£½áÊø ,ÈíÖĞ¶ÏºÅ =")+status);
+			EXP(String("[ERROR]å­ç¨‹åºå¼‚å¸¸ç»“æŸ ,è½¯ä¸­æ–­å· =")+status);
 #endif
 			return -1;
 		}
 		else if (WIFSTOPPED(status))
 		{
 			status=WSTOPSIG(status);
-			EXP(String("[ERROR]×Ó³ÌĞòÒì³£½áÊø ,ÈíÖĞ¶ÏºÅ =")+status);
+			EXP(String("[ERROR]å­ç¨‹åºå¼‚å¸¸ç»“æŸ ,è½¯ä¸­æ–­å· =")+status);
 			return -1;
 		}
 		return -1;
@@ -302,7 +302,7 @@ namespace Common
 #endif
 	}
 
-	//×Ó½ø³ÌÍË³ö×´Ì¬¼ì²é,Í¨¹ı²ÎÊı·µ»Ø´íÎóĞÅÏ¢
+	//å­è¿›ç¨‹é€€å‡ºçŠ¶æ€æ£€æŸ¥,é€šè¿‡å‚æ•°è¿”å›é”™è¯¯ä¿¡æ¯
 	inline int checkProExit(int &status,string &msg)
 	{
 #if OSTYPE>10
@@ -310,16 +310,16 @@ namespace Common
 		if (WIFEXITED(status))
 		{
 			status=WEXITSTATUS(status);
-			sprintf(Err_Msg,"[INFO]×Ó³ÌĞòÕı³£½áÊø ,½áÊø×´Ì¬ = %d",status);
+			sprintf(Err_Msg,"[INFO]å­ç¨‹åºæ­£å¸¸ç»“æŸ ,ç»“æŸçŠ¶æ€ = %d",status);
 			msg=Err_Msg;
 			return status;
 		}
 		else if (WIFSIGNALED(status))
 		{
 			status=WTERMSIG(status);
-			sprintf(Err_Msg,"[ERROR]×Ó³ÌĞòÒì³£½áÊø ,ÈíÖĞ¶ÏºÅ = %d%s",status,
+			sprintf(Err_Msg,"[ERROR]å­ç¨‹åºå¼‚å¸¸ç»“æŸ ,è½¯ä¸­æ–­å· = %d%s",status,
 #if defined(WCOREDUMP)
-				WCOREDUMP(status) ? " (²úÉúÁËcoreÎÄ¼ş)" :"");
+				WCOREDUMP(status) ? " (äº§ç”Ÿäº†coreæ–‡ä»¶)" :"");
 #else
 			  "");
 #endif
@@ -329,7 +329,7 @@ namespace Common
 		else if (WIFSTOPPED(status))
 		{
 			status=WSTOPSIG(status);
-			sprintf(Err_Msg,"[ERROR]×Ó³ÌĞòÍ£Ö¹ÔËĞĞ,ÈíÖĞ¶ÏºÅ = %d",status);
+			sprintf(Err_Msg,"[ERROR]å­ç¨‹åºåœæ­¢è¿è¡Œ,è½¯ä¸­æ–­å· = %d",status);
 			msg=Err_Msg;
 			return -1;
 		}
@@ -339,17 +339,17 @@ namespace Common
 #endif
 	}
 
-	//»ØÊÕ×Ó½ø³Ì
+	//å›æ”¶å­è¿›ç¨‹
 	inline void sigchld(int sig)
 	{
 #if OSTYPE>10
 		pid_t pid;
 		int status;
 		/* Reap defunct children until there aren't any more. */
-		for (;;) //Ñ­»··Ç×èÈû£¬È¡³öËÀ½ø³ÌÇåÀí
+		for (;;) //å¾ªç¯éé˜»å¡ï¼Œå–å‡ºæ­»è¿›ç¨‹æ¸…ç†
 		{
-			pid = waitpid( (pid_t) -1, &status, WNOHANG ); //-1±íÊ¾µÚÒ»¸öÖĞÖ¹µÄ×Ó½ø³Ì£¬WNOHANG±íÊ¾·Ç×èÈû
-			if (pid==0) //Ã»ÓĞÓĞ´ı»ØÊÕµÄÁË
+			pid = waitpid( (pid_t) -1, &status, WNOHANG ); //-1è¡¨ç¤ºç¬¬ä¸€ä¸ªä¸­æ­¢çš„å­è¿›ç¨‹ï¼ŒWNOHANGè¡¨ç¤ºéé˜»å¡
+			if (pid==0) //æ²¡æœ‰æœ‰å¾…å›æ”¶çš„äº†
 				break;
 			if (pid<0)
 			{
@@ -362,24 +362,24 @@ namespace Common
 #endif
 	}
 	///	<summary>
-	///	ÆÁ±Î×ÓÏß³ÌĞÅºÅ windows²»´æÔÚ
-	///	<code>Ô­ĞÍ£ºinline void shieldSigs();</code>
+	///	å±è”½å­çº¿ç¨‹ä¿¡å· windowsä¸å­˜åœ¨
+	///	<code>åŸå‹ï¼šinline void shieldSigs();</code>
 	///	</summary> 
 	inline void shieldSigs()
 	{
 #if OSTYPE>10
 		sigset_t emptyset,fillset;
-		sigfillset( &fillset );			//	Ìî³äËùÓĞĞÅºÅ
+		sigfillset( &fillset );			//	å¡«å……æ‰€æœ‰ä¿¡å·
 		sigprocmask( SIG_BLOCK, &fillset, NULL );
 		//sigemptyset( &emptyset );
 		//for(int i=1;i<=36; i++)
-		//{   //¶Ô×ÓÏß³ÌÆÁ±ÎËùÓĞĞÅºÅ
+		//{   //å¯¹å­çº¿ç¨‹å±è”½æ‰€æœ‰ä¿¡å·
 		//	sigaddset( &emptyset, i );
 		//}
 		//pthread_sigmask( SIG_BLOCK, &fillset, NULL );
 #endif
 	}
-	//·ÖÀë×Ô¼º
+	//åˆ†ç¦»è‡ªå·±
 	inline int detachSelf()
 	{
 #if OSTYPE>10
@@ -395,7 +395,7 @@ namespace Common
 	//signal(SIGINT,sigterm); //handle ctrl-c
 
 	///	<summary>
-	///	ĞÅºÅ´¦ÀíÀà
+	///	ä¿¡å·å¤„ç†ç±»
 	///	</summary> 
 	/// <example><code>signal(SIGTERM,sig_adapter(reset));//handle kill
 	///	sig_adapter sigPro(reset);
@@ -407,11 +407,11 @@ namespace Common
 		void (*_func)(int);
 	public:
 		///	<summary>
-		///	ÒÔÎŞ·µ»ØÖµµÄº¯ÊıÖ¸Õë³õÊ¼»¯
+		///	ä»¥æ— è¿”å›å€¼çš„å‡½æ•°æŒ‡é’ˆåˆå§‹åŒ–
 		///	</summary> 
 		sig_adapter(void (*func)(int)):_func(func){};
 		///	<summary>
-		///	ÔËĞĞÎ±º¯Êı
+		///	è¿è¡Œä¼ªå‡½æ•°
 		///	</summary> 
 		void operator()(int sign_um) const
 		{

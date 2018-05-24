@@ -6,7 +6,7 @@ namespace engine
        //this->addEventListener(Event.ADDED_TO_STAGE,this->init);
        this->type = param1;
        this->savedFrames = param2;
-    }// end function
+    }// end function 
     
 	bool SavedCastTime::init()
 	{

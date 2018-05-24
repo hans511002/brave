@@ -60,7 +60,7 @@ namespace engine
         virtual void remove(MovieClipSub * ms);
 
 		virtual void destroy();
-		//增加删除事件
+		//澧炲姞鍒犻櫎浜嬩欢
 		inline bool setOnceMove(World * world);
 		virtual void onEnter();
 		virtual void onExit();
@@ -79,7 +79,7 @@ namespace engine
 		virtual dragonBones::Animation *getAnimation();
 		inline MovieClip * getMc() { return MC::getMc(mc); };
 		void setVisible(bool v);
-		void isVisible();
+		bool isVisible();
 		void reinit();
 		cocos2d::Point getPosition();
 		float getPositionX();

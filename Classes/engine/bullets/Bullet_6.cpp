@@ -8,7 +8,7 @@ namespace engine
     namespace bullets
     {  
         Bullet_6::Bullet_6():length(0),unitsCout(1)
-        {
+        { 
             return;
         }// end function
 

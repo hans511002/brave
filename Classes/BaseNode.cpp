@@ -327,20 +327,44 @@ std::MouseEvent* BaseNode::buildMousrEvent(Node * node, int mouseButton)
 {
     std::MouseEvent* e = new std::MouseEvent(cocos2d::EventMouse::MouseEventType::MOUSE_DOWN);
     e->setMouseButton(mouseButton);
-    e->getCurrentTarget();
-    //setCurrentTarget
+	e->setCurrentTarget(node); 
     if (node)
     {
         Vec2 pos = node->convertToWorldSpace(node->getPosition());
-        e->setCursorPosition(pos.x, pos.y);
+		e->setCursorPosition(pos.x + 0.1, pos.y + 0.1);
     }
     else
     {
         Vec2 pos = this->convertToWorldSpace(this->getPosition());
-        e->setCursorPosition(pos.x, pos.y);
+		e->setCursorPosition(pos.x + 0.1, pos.y + 0.1);
     }
     return e;
 }
+std::MouseEvent::MouseEvent(cocos2d::EventMouse * e) :EventMouse(*e)
+{
+	Node * node = e->getCurrentTarget();
+	hitTest(node);
+};
+void std::MouseEvent::hitTest(Node *node)
+{
+	if(ISTYPE(BaseNode, node))
+	{
+		BaseNode *n = ISTYPE(BaseNode, node);
+		if(n->hitTest(this))
+			currentTargets.push(n);
+		if(n->mouseChildren && n->getChildrenCount())
+		{
+			int len = n->getChildrenCount();
+			Vector<Node*>& nodes = n->getChildren();
+			for(int i = 0; i < len; i++)
+			{
+				node = nodes.at(i);
+				hitTest(node);
+			}
+		}
+	}
+};
+
 void BaseNode::enableMouseHandler()
 {
     if (!this->mouseEnabled)this->mouseEnabled = true;
@@ -420,14 +444,7 @@ void BaseNode::mouseDownHandler(cocos2d::EventMouse* event)
     if (!this->hitTest(event))return;
     logInfo("hitTest true : mouse in ", this->getName());
     Node * node = event->getCurrentTarget();
-    string name = node->getName();
-    while (node->getParent())
-    {
-        node = node->getParent();
-        name = node->getName() + "." + name;
-    }
-    logInfo("event targetNamePath", name);
-
+	logInfo("event targetNamePath", getNamePath(node));
     int mouseButton = event->getMouseButton();
     if (mouseButton == 1)
         rightMouseDownHandler(event);
@@ -459,6 +476,18 @@ void BaseNode::touchAction(cocos2d::Ref *ref, cocos2d::ui::TouchEventType type)
     Node * node = (Node *)ref;
     string target = node->getName();
     CCLOG("touchAction %s type=%i", target.c_str(), type);
+};
+
+string BaseNode::getNamePath(Node *node)
+{
+	if(!node)node = this;
+	string name = node->getName();
+	while(node->getParent())
+	{
+		node = node->getParent();
+		name = node->getName() + "." + name;
+	}
+	return name;
 };
 
 void BaseFuns::loginfo(string mouseType, cocos2d::EventMouse* event)
@@ -517,7 +546,7 @@ void BaseFuns::logInfo(string label, int x)
     CCLOG("%s=%d ", label.c_str(), x);
     if (gLog)writeLog(label + "=" + Common::String(x), 1);
 };
-void BaseFuns::logInfo(string label, int x, int y)
+void BaseFuns::logInfo(string label, int x, int y) 
 {
     if (!BaseFuns::debug)return;
     CCLOG("%s[%d , %d]", label.c_str(), x, y);

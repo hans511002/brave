@@ -19,9 +19,9 @@ namespace Common
 {
 	template <class T> class BTree
 	{
-		#define  LH  1         // ×ó¸ß                                     
-		#define  EH  0         // µÈ¸ß                                     
-		#define  RH  -1        // ÓÒ¸ß                                     
+		#define  LH  1         // å·¦é«˜                                     
+		#define  EH  0         // ç­‰é«˜                                     
+		#define  RH  -1        // å³é«˜                                     
 		#define  True 1
 		#define  False 0
 		#define  RET_FOUND       1
@@ -30,9 +30,9 @@ namespace Common
 		struct BTreeNode
 		{
 		public:
-			BTreeNode  * ptnLeft;     // ×óÖ¸Õë
-			BTreeNode  * ptnRight;    // ÓÒÖ¸Õë
-			int    bf;                // Æ½ºâÒò×Ó
+			BTreeNode  * ptnLeft;     // å·¦æŒ‡é’ˆ
+			BTreeNode  * ptnRight;    // å³æŒ‡é’ˆ
+			int    bf;                // å¹³è¡¡å› å­
 			T   value;
 		};
 		typedef BTreeNode TNode;
@@ -43,45 +43,45 @@ namespace Common
 		};
 		~BTree(){clear();};
 	protected:
-		// È«¾Ö‰äÊı                                     
+		// å…¨å±€å¤‰æ•°                                     
 		int taller;
 		pBTreeNode root;
 
-		//Æ½ºâ¶ş²æÊ÷µ÷Õû²Ù×÷                                    
+		//å¹³è¡¡äºŒå‰æ ‘è°ƒæ•´æ“ä½œ                                    
 		inline void L_Rotate(pBTreeNode &p)
 		{
-			pBTreeNode lp;					//¶ÔÒÔ*pÖ¸ÏòµÄ½áµãÎª¸ùµÄ×ÓÊ÷£¬×÷×óµ¥Ğı×ª´¦Àí£¬´¦ÀíÖ®ºó£¬*pÖ¸ÏòµÄ½áµãÎª×ÓÊ÷µÄĞÂ¸ù                                    
-			lp=p->ptnRight;					//lpÖ¸Ïò*pÓÒ×ÓÊ÷¸ù½áµã                                    
-			p->ptnRight=lp->ptnLeft;		//lpµÄ×ó×ÓÊ÷¹Ò½Ó*pµÄÓÒ×ÓÊ÷                                    
+			pBTreeNode lp;					//å¯¹ä»¥*pæŒ‡å‘çš„ç»“ç‚¹ä¸ºæ ¹çš„å­æ ‘ï¼Œä½œå·¦å•æ—‹è½¬å¤„ç†ï¼Œå¤„ç†ä¹‹åï¼Œ*pæŒ‡å‘çš„ç»“ç‚¹ä¸ºå­æ ‘çš„æ–°æ ¹                                    
+			lp=p->ptnRight;					//lpæŒ‡å‘*på³å­æ ‘æ ¹ç»“ç‚¹                                    
+			p->ptnRight=lp->ptnLeft;		//lpçš„å·¦å­æ ‘æŒ‚æ¥*pçš„å³å­æ ‘                                    
 			lp->ptnLeft=p; 
-			p=lp;							// *pÖ¸ÏòĞÂµÄ¸ù½áµã                                    
+			p=lp;							// *pæŒ‡å‘æ–°çš„æ ¹ç»“ç‚¹                                    
 		}
 		inline void R_Rotate(pBTreeNode &p)
 		{	
-			pBTreeNode lp;					//¶ÔÒÔ*pÖ¸ÏòµÄ½áµãÎª¸ùµÄ×ÓÊ÷£¬×÷ÓÒµ¥Ğı×ª´¦Àí£¬´¦ÀíÖ®ºó£¬*pÖ¸ÏòµÄ½áµãÎª×ÓÊ÷µÄĞÂ¸ù                                    
-			lp=p->ptnLeft;					//lpÖ¸Ïò*p×ó×ÓÊ÷¸ù½áµã                                    
-			p->ptnLeft=lp->ptnRight;		//lpµÄÓÒ×ÓÊ÷¹Ò½Ó*pµÄ×ó×ÓÊ÷                                    
+			pBTreeNode lp;					//å¯¹ä»¥*pæŒ‡å‘çš„ç»“ç‚¹ä¸ºæ ¹çš„å­æ ‘ï¼Œä½œå³å•æ—‹è½¬å¤„ç†ï¼Œå¤„ç†ä¹‹åï¼Œ*pæŒ‡å‘çš„ç»“ç‚¹ä¸ºå­æ ‘çš„æ–°æ ¹                                    
+			lp=p->ptnLeft;					//lpæŒ‡å‘*på·¦å­æ ‘æ ¹ç»“ç‚¹                                    
+			p->ptnLeft=lp->ptnRight;		//lpçš„å³å­æ ‘æŒ‚æ¥*pçš„å·¦å­æ ‘                                    
 			lp->ptnRight=p; 
-			p=lp;							//  *pÖ¸ÏòĞÂµÄ¸ù½áµã                                    
+			p=lp;							//  *pæŒ‡å‘æ–°çš„æ ¹ç»“ç‚¹                                    
 		}
 
-		//¶ÔÒÔ*pÖ¸ÏòµÄ½áµãÎª¸ùµÄ×ÓÊ÷£¬×÷×óÆ½ºâĞı×ª´¦Àí£¬´¦ÀíÖ®ºó£¬*pÖ¸ÏòµÄ½áµãÎª×ÓÊ÷µÄĞÂ¸ù                                    
+		//å¯¹ä»¥*pæŒ‡å‘çš„ç»“ç‚¹ä¸ºæ ¹çš„å­æ ‘ï¼Œä½œå·¦å¹³è¡¡æ—‹è½¬å¤„ç†ï¼Œå¤„ç†ä¹‹åï¼Œ*pæŒ‡å‘çš„ç»“ç‚¹ä¸ºå­æ ‘çš„æ–°æ ¹                                    
 		inline void LeftBalance(pBTreeNode &p)
 		{
 			pBTreeNode lp, rc;
-			lp=p->ptnLeft;						//lpÖ¸Ïò*p×ó×ÓÊ÷¸ù½áµã                                    
-			switch(p->bf)						//¼ì²é*pÆ½ºâ¶È£¬²¢×÷ÏàÓ¦´¦Àí                                    
+			lp=p->ptnLeft;						//lpæŒ‡å‘*på·¦å­æ ‘æ ¹ç»“ç‚¹                                    
+			switch(p->bf)						//æ£€æŸ¥*på¹³è¡¡åº¦ï¼Œå¹¶ä½œç›¸åº”å¤„ç†                                    
 			{
-			case LH:							//ĞÂ½áµã²åÔÚ*p×ó×ÓÅ®µÄ×ó×ÓÊ÷ÉÏ£¬Ğè×÷µ¥ÓÒĞı×ª´¦Àí                                    
+			case LH:							//æ–°ç»“ç‚¹æ’åœ¨*på·¦å­å¥³çš„å·¦å­æ ‘ä¸Šï¼Œéœ€ä½œå•å³æ—‹è½¬å¤„ç†                                    
 				p->bf=lp->bf=EH;
 				R_Rotate(p);
 				break;
-			case EH:							//Ô­±¾×ó¡¢ÓÒ×ÓÊ÷µÈ¸ß£¬Òò×ó×ÓÊ÷Ôö¸ßÊ¹Ê÷Ôö¸ß                                    
+			case EH:							//åŸæœ¬å·¦ã€å³å­æ ‘ç­‰é«˜ï¼Œå› å·¦å­æ ‘å¢é«˜ä½¿æ ‘å¢é«˜                                    
 				p->bf=LH;    
 				break;
-			case RH:							//ĞÂ½áµã²åÔÚ*p×ó×ÓÅ®µÄÓÒ×ÓÊ÷ÉÏ£¬Ğè×÷ÏÈ×óºóÓÒË«Ğı´¦Àí                                    
-				rc=lp->ptnRight;				//ptnRightÖ¸Ïò*p×ó×ÓÅ®µÄÓÒ×ÓÊ÷¸ù½áµã                                    
-				switch(rc->bf)					//ĞŞÕı*p¼°Æä×ó×ÓÅ®µÄÆ½ºâÒò×Ó                                    
+			case RH:							//æ–°ç»“ç‚¹æ’åœ¨*på·¦å­å¥³çš„å³å­æ ‘ä¸Šï¼Œéœ€ä½œå…ˆå·¦åå³åŒæ—‹å¤„ç†                                    
+				rc=lp->ptnRight;				//ptnRightæŒ‡å‘*på·¦å­å¥³çš„å³å­æ ‘æ ¹ç»“ç‚¹                                    
+				switch(rc->bf)					//ä¿®æ­£*påŠå…¶å·¦å­å¥³çš„å¹³è¡¡å› å­                                    
 				{ 
 				case LH:
 					p->bf=RH;
@@ -96,29 +96,29 @@ namespace Common
 					break;
 				}//switch(ptnRight->bf)                                    
 				rc->bf=EH;        
-				L_Rotate(p->ptnLeft);         //¶Ô*pµÄ×ó×ÓÊ÷×÷×óĞı×ª´¦Àí                                    
-				R_Rotate(p);						//¶Ô*t×÷ÓÒĞı×ª´¦Àí                                    
+				L_Rotate(p->ptnLeft);         //å¯¹*pçš„å·¦å­æ ‘ä½œå·¦æ—‹è½¬å¤„ç†                                    
+				R_Rotate(p);						//å¯¹*tä½œå³æ—‹è½¬å¤„ç†                                    
 				break;
 			}//switch(p->bf)                                    
 		}//LeftBalance                                    
 
-		//¶ÔÒÔ*pÖ¸ÏòµÄ½áµãÎª¸ùµÄ×ÓÊ÷£¬×÷×óÆ½ºâĞı×ª´¦Àí£¬´¦ÀíÖ®ºó£¬*pÖ¸ÏòµÄ½áµãÎª×ÓÊ÷µÄĞÂ¸ù                                    
+		//å¯¹ä»¥*pæŒ‡å‘çš„ç»“ç‚¹ä¸ºæ ¹çš„å­æ ‘ï¼Œä½œå·¦å¹³è¡¡æ—‹è½¬å¤„ç†ï¼Œå¤„ç†ä¹‹åï¼Œ*pæŒ‡å‘çš„ç»“ç‚¹ä¸ºå­æ ‘çš„æ–°æ ¹                                    
 		inline void RightBalance(pBTreeNode &p)
 		{
 			pBTreeNode lp, lc;
-			lp=p->ptnRight;					//lpÖ¸Ïò*pÓÒ×ÓÊ÷¸ù½áµã                                    
-			switch(p->bf)					//¼ì²é*pÆ½ºâ¶È£¬²¢×÷ÏàÓ¦´¦Àí                                    
+			lp=p->ptnRight;					//lpæŒ‡å‘*på³å­æ ‘æ ¹ç»“ç‚¹                                    
+			switch(p->bf)					//æ£€æŸ¥*på¹³è¡¡åº¦ï¼Œå¹¶ä½œç›¸åº”å¤„ç†                                    
 			{
-			case RH:							//ĞÂ½áµã²åÔÚ*p×ó×ÓÅ®µÄÓÒ×ÓÊ÷ÉÏ£¬Ğè×÷µ¥×óĞı×ª´¦Àí                                    
+			case RH:							//æ–°ç»“ç‚¹æ’åœ¨*på·¦å­å¥³çš„å³å­æ ‘ä¸Šï¼Œéœ€ä½œå•å·¦æ—‹è½¬å¤„ç†                                    
 				p->bf=lp->bf=EH;
 				L_Rotate(p);
 				break;
-			case EH:							//Ô­±¾×ó¡¢ÓÒ×ÓÊ÷µÈ¸ß£¬Òò×ó×ÓÊ÷Ôö¸ßÊ¹Ê÷Ôö¸ß                                    
+			case EH:							//åŸæœ¬å·¦ã€å³å­æ ‘ç­‰é«˜ï¼Œå› å·¦å­æ ‘å¢é«˜ä½¿æ ‘å¢é«˜                                    
 				p->bf=RH;    
 				break;
-			case LH:							//ĞÂ½áµã²åÔÚ*p×ó×ÓÅ®µÄ×ó×ÓÊ÷ÉÏ£¬Ğè×÷ÏÈÓÒºó×óË«Ğı´¦Àí                                    
-				lc=lp->ptnLeft;					//ptnLeftÖ¸Ïò*pÓÒ×ÓÅ®µÄ×ó×ÓÊ÷¸ù½áµã                                    
-				switch(lc->bf)					//ĞŞÕı*p¼°ÆäÓÒ×ÓÅ®µÄÆ½ºâÒò×Ó                                    
+			case LH:							//æ–°ç»“ç‚¹æ’åœ¨*på·¦å­å¥³çš„å·¦å­æ ‘ä¸Šï¼Œéœ€ä½œå…ˆå³åå·¦åŒæ—‹å¤„ç†                                    
+				lc=lp->ptnLeft;					//ptnLeftæŒ‡å‘*på³å­å¥³çš„å·¦å­æ ‘æ ¹ç»“ç‚¹                                    
+				switch(lc->bf)					//ä¿®æ­£*påŠå…¶å³å­å¥³çš„å¹³è¡¡å› å­                                    
 				{ 
 				case RH:
 					p->bf=LH;
@@ -133,14 +133,14 @@ namespace Common
 					 break;
 				}//switch(ptnLeft->bf)                                    
 				lc->bf=EH;        
-				R_Rotate(p->ptnLeft);         //¶Ô*pµÄÓÒ×ÓÊ÷×÷ÓÒĞı×ª´¦Àí                                    
-				L_Rotate(p);        //¶Ô*t×÷×óĞı×ª´¦Àí                                    
+				R_Rotate(p->ptnLeft);         //å¯¹*pçš„å³å­æ ‘ä½œå³æ—‹è½¬å¤„ç†                                    
+				L_Rotate(p);        //å¯¹*tä½œå·¦æ—‹è½¬å¤„ç†                                    
 			}//switch(p->bf)                                    
 		}//RightBalance                                    
 
 
 	public:
-		//Ìí¼Ó½Úµã
+		//æ·»åŠ èŠ‚ç‚¹
 		inline void  insertNode(pBTreeNode & pptnHead,const T &value,int &taller)
 		{
 			pBTreeNode ptnCurr;
@@ -158,19 +158,19 @@ namespace Common
 			else if(ptnCurr->value > value)
 			{
 				insertNode(ptnCurr->ptnLeft, value,taller);
-				if(taller)										//ÒÑ²åÈëµ½(*t)µÄ×ó×ÓÊ÷ÖĞ£¬ÇÒ×ó×ÓÊ÷Ôö¸ß                                    
+				if(taller)										//å·²æ’å…¥åˆ°(*t)çš„å·¦å­æ ‘ä¸­ï¼Œä¸”å·¦å­æ ‘å¢é«˜                                    
 				{
-					switch(ptnCurr->bf)							//¼ì²é*tÆ½ºâ¶È                                    
+					switch(ptnCurr->bf)							//æ£€æŸ¥*tå¹³è¡¡åº¦                                    
 					{
-					case  LH:								//Ô­±¾×ó×ÓÊ÷¸ß£¬Ğè×÷×óÆ½ºâ´¦Àí                                    
+					case  LH:								//åŸæœ¬å·¦å­æ ‘é«˜ï¼Œéœ€ä½œå·¦å¹³è¡¡å¤„ç†                                    
 						LeftBalance(pptnHead);
 						taller=False;
 						break;
-					case  EH:								//Ô­±¾×ó¡¢ÓÒ×ÓÊ÷µÈ¸ß£¬Òò×ó×ÓÊ÷Ôö¸ßÊ¹Ê÷Ôö¸ß                                    
+					case  EH:								//åŸæœ¬å·¦ã€å³å­æ ‘ç­‰é«˜ï¼Œå› å·¦å­æ ‘å¢é«˜ä½¿æ ‘å¢é«˜                                    
 						ptnCurr->bf=LH;
 						taller=True;
 						break;
-					 case  RH:								//Ô­±¾ÓÒ×ÓÊ÷¸ß£¬Ê¹×ó¡¢ÓÒ×ÓÊ÷µÈ¸ß                                    
+					 case  RH:								//åŸæœ¬å³å­æ ‘é«˜ï¼Œä½¿å·¦ã€å³å­æ ‘ç­‰é«˜                                    
 						ptnCurr->bf=EH;
 						taller=False;
 						break;
@@ -180,19 +180,19 @@ namespace Common
 			else
 			{
 				insertNode(ptnCurr->ptnRight, value, taller);
-				if(taller)									//ÒÑ²åÈëµ½(*t)µÄ×ó×ÓÊ÷ÖĞ£¬ÇÒÓÒ×ÓÊ÷Ôö¸ß                                    
+				if(taller)									//å·²æ’å…¥åˆ°(*t)çš„å·¦å­æ ‘ä¸­ï¼Œä¸”å³å­æ ‘å¢é«˜                                    
 				{
-					switch(ptnCurr->bf)						//¼ì²é*tÆ½ºâ¶È                                    
+					switch(ptnCurr->bf)						//æ£€æŸ¥*tå¹³è¡¡åº¦                                    
 					{
-					case LH:								//Ô­±¾×ó×ÓÊ÷¸ß£¬Ê¹×ó¡¢ÓÒ×ÓÊ÷µÈ¸ß                                    
+					case LH:								//åŸæœ¬å·¦å­æ ‘é«˜ï¼Œä½¿å·¦ã€å³å­æ ‘ç­‰é«˜                                    
 						ptnCurr->bf=EH;
 						taller=False;
 						break;
-					case EH:								//Ô­±¾×ó¡¢ÓÒ×ÓÊ÷µÈ¸ß£¬ÒòÓÒ×ÓÊ÷Ôö¸ßÊ¹Ê÷Ôö¸ß                                    
+					case EH:								//åŸæœ¬å·¦ã€å³å­æ ‘ç­‰é«˜ï¼Œå› å³å­æ ‘å¢é«˜ä½¿æ ‘å¢é«˜                                    
 						ptnCurr->bf=RH;
 						taller=True;
 						break;
-					case RH:								//Ô­±¾ÓÒ×ÓÊ÷¸ß£¬Ğè×÷ÓÒÆ½ºâ´¦Àí                                    
+					case RH:								//åŸæœ¬å³å­æ ‘é«˜ï¼Œéœ€ä½œå³å¹³è¡¡å¤„ç†                                    
 						RightBalance(pptnHead);
 						taller=False;
 						break;
@@ -210,7 +210,7 @@ namespace Common
 			insertNode(this->root,value,taller);
 		}
 		inline pBTreeNode &getRoot(){return root;};
-		//Çå³ı¶ş²æÊ÷£¬Ê¹Ö®±äÎªÒ»¿Ã¿ÕÊ÷ */ 
+		//æ¸…é™¤äºŒå‰æ ‘ï¼Œä½¿ä¹‹å˜ä¸ºä¸€æ£µç©ºæ ‘ */ 
 		inline void clear(pBTreeNode &pptnHead) 
 		{
 			if(pptnHead != NULL)
@@ -221,10 +221,10 @@ namespace Common
 				pptnHead = NULL; 
 			}
 		}
-		//Êä³ö±íĞòÁĞ¶ş²æÊ÷½Úµã(Ç°Ğò±éÀú) 
+		//è¾“å‡ºè¡¨åºåˆ—äºŒå‰æ ‘èŠ‚ç‚¹(å‰åºéå†) 
 		inline void print(pBTreeNode &pptnHead) 
 		{ 
-			if(pptnHead != NULL)// Ê÷Îª¿ÕÊ±½áÊøµİ¹é£¬·ñÔòÖ´ĞĞÈçÏÂ²Ù×÷                                      
+			if(pptnHead != NULL)// æ ‘ä¸ºç©ºæ—¶ç»“æŸé€’å½’ï¼Œå¦åˆ™æ‰§è¡Œå¦‚ä¸‹æ“ä½œ                                      
 			{ 
 				cout<<pptnHead->value;
 				if(pptnHead->ptnLeft != NULL || pptnHead->ptnRight != NULL)
@@ -241,56 +241,56 @@ namespace Common
 			} 
 		} 
 
-		//Ç°Ğò±éÀú
+		//å‰åºéå†
 		inline void printPre(pBTreeNode &pptnHead) 
 		{ 
 			if(pptnHead != NULL)
 			{ 
-				cout<<pptnHead->value<<" ";		// ·ÃÎÊ¸ù½áµã                                      
-				printPre(pptnHead->ptnLeft);	// Ç°Ğò±éÀú×ó×ÓÊ÷                                      
-				printPre(pptnHead->ptnRight);	// Ç°Ğò±éÀúÓÒ×ÓÊ÷                                      
+				cout<<pptnHead->value<<" ";		// è®¿é—®æ ¹ç»“ç‚¹                                      
+				printPre(pptnHead->ptnLeft);	// å‰åºéå†å·¦å­æ ‘                                      
+				printPre(pptnHead->ptnRight);	// å‰åºéå†å³å­æ ‘                                      
 			}
 		}
-		//ÖĞĞò±éÀú 
+		//ä¸­åºéå† 
 		inline void printMid(pBTreeNode &pptnHead) 
 		{ 
 			if(pptnHead != NULL)
 			{ 
-				printMid(pptnHead->ptnLeft);		// ÖĞĞò±éÀú×ó×ÓÊ÷                                      
-				cout<<pptnHead->value<<" ";		// ·ÃÎÊ¸ù½áµã                                      
-				printMid(pptnHead->ptnRight);	// ÖĞĞò±éÀúÓÒ×ÓÊ÷                                      
+				printMid(pptnHead->ptnLeft);		// ä¸­åºéå†å·¦å­æ ‘                                      
+				cout<<pptnHead->value<<" ";		// è®¿é—®æ ¹ç»“ç‚¹                                      
+				printMid(pptnHead->ptnRight);	// ä¸­åºéå†å³å­æ ‘                                      
 			}
 		} 
 
-		//ºóĞò±éÀú
+		//ååºéå†
 		inline void printPost(pBTreeNode &pptnHead) 
 		{ 
 			if(pptnHead != NULL)
 			{
-				printPost(pptnHead->ptnLeft);	// ºóĞò±éÀú×ó×ÓÊ÷                                      
-				printPost(pptnHead->ptnRight); // ºóĞò±éÀúÓÒ×ÓÊ÷                                      
-				cout<<pptnHead->value<<" ";		// ·ÃÎÊ¸ù½áµã                                      
+				printPost(pptnHead->ptnLeft);	// ååºéå†å·¦å­æ ‘                                      
+				printPost(pptnHead->ptnRight); // ååºéå†å³å­æ ‘                                      
+				cout<<pptnHead->value<<" ";		// è®¿é—®æ ¹ç»“ç‚¹                                      
 			}
 		}
-		//°´²ã±éÀú
+		//æŒ‰å±‚éå†
 		inline void printLevel(pBTreeNode &pptnHead) 
 		{ 
 			pBTreeNode p; 
 			Common::Array<pBTreeNode> q;
 			int front = 0, rear = 0;
-			if(pptnHead != NULL)				// ½«Ê÷¸ùÖ¸Õë½ø¶Ó                                      
+			if(pptnHead != NULL)				// å°†æ ‘æ ¹æŒ‡é’ˆè¿›é˜Ÿ                                      
 			{	
 				q[rear++] = pptnHead; 
 			} 
-			while(front != rear)				//Ê÷·Ç¿Õ                                      
+			while(front != rear)				//æ ‘éç©º                                      
 			{
 				p = q[front++];
 				cout<<p->value<<" ";
-				if(p->ptnLeft != NULL)			// Èô½áµã´æÔÚ×óº¢×Ó£¬Ôò×óº¢×Ó½áµãÖ¸Õë½ø¶Ó                                      
+				if(p->ptnLeft != NULL)			// è‹¥ç»“ç‚¹å­˜åœ¨å·¦å­©å­ï¼Œåˆ™å·¦å­©å­ç»“ç‚¹æŒ‡é’ˆè¿›é˜Ÿ                                      
 				{
 					q[rear++] = p->ptnLeft;
 				}
-				if(p->ptnRight != NULL)			// Èô½áµã´æÔÚÓÒº¢×Ó£¬ÔòÓÒº¢×Ó½áµãÖ¸Õë½ø¶Ó                                      
+				if(p->ptnRight != NULL)			// è‹¥ç»“ç‚¹å­˜åœ¨å³å­©å­ï¼Œåˆ™å³å­©å­ç»“ç‚¹æŒ‡é’ˆè¿›é˜Ÿ                                      
 				{
 					q[rear++] = p->ptnRight; 
 				} 
@@ -298,7 +298,7 @@ namespace Common
 			cout<<endl;
 			return; 
 		} 
-		//Çó¶ş²æÊ÷Éî¶È 
+		//æ±‚äºŒå‰æ ‘æ·±åº¦ 
 		inline int getDepth(pBTreeNode &pptnHead) 
 		{ 
 			if(pptnHead == NULL) 
@@ -307,8 +307,8 @@ namespace Common
 			} 
 			else 
 			{ 
-				int dep1 = getDepth(pptnHead->ptnLeft); // ¼ÆËã×ó×ÓÊ÷µÄÉî¶È                                      
-				int dep2 = getDepth(pptnHead->ptnRight); // ¼ÆËãÓÒ×ÓÊ÷µÄÉî¶È                                      
+				int dep1 = getDepth(pptnHead->ptnLeft); // è®¡ç®—å·¦å­æ ‘çš„æ·±åº¦                                      
+				int dep2 = getDepth(pptnHead->ptnRight); // è®¡ç®—å³å­æ ‘çš„æ·±åº¦                                      
 				if(dep1 > dep2) 
 				{ 
 					return dep1 + 1; 
@@ -320,15 +320,15 @@ namespace Common
 			} 
 		} 
 
-		//½¨Á¢¶ş²æÊ÷(¸ù¾İaËùÖ¸ÏòµÄ¶ş²æÊ÷¹ãÒå±í×Ö·û´®½¨Á¢) 
+		//å»ºç«‹äºŒå‰æ ‘(æ ¹æ®aæ‰€æŒ‡å‘çš„äºŒå‰æ ‘å¹¿ä¹‰è¡¨å­—ç¬¦ä¸²å»ºç«‹) 
 		bool createBTree(pBTreeNode &pptnHead, char *a) 
 		{
 			Common::Array<pBTreeNode> q;
 			pBTreeNode p; 
-			int top = -1;			// ¶¨Òåtop×÷ÎªsÕ»µÄÕ»¶¥Ö¸Õë£¬³õÖµÎª-1,±íÊ¾¿ÕÕ»                                      
-			int k;					// ÓÃk×÷Îª´¦Àí½áµãµÄ×ó×ÓÊ÷ºÍÓÒ×ÓÊ÷£¬k = 1´¦Àí×ó×ÓÊ÷£¬k = 2´¦ÀíÓÒ×ÓÊ÷                                      
-			int i = 0;				// ÓÃiÉ¨ÃèÊı×éaÖĞ´æ´¢µÄ¶ş²æÊ÷¹ãÒå±í×Ö·û´®£¬³õÖµÎª0                                      
-			pptnHead= NULL;			// °ÑÊ÷¸ùÖ¸ÕëÖÃÎª¿Õ£¬¼´´Ó¿ÕÊ÷¿ªÊ¼½¨Á¢¶ş²æÊ÷                                      
+			int top = -1;			// å®šä¹‰topä½œä¸ºsæ ˆçš„æ ˆé¡¶æŒ‡é’ˆï¼Œåˆå€¼ä¸º-1,è¡¨ç¤ºç©ºæ ˆ                                      
+			int k;					// ç”¨kä½œä¸ºå¤„ç†ç»“ç‚¹çš„å·¦å­æ ‘å’Œå³å­æ ‘ï¼Œk = 1å¤„ç†å·¦å­æ ‘ï¼Œk = 2å¤„ç†å³å­æ ‘                                      
+			int i = 0;				// ç”¨iæ‰«ææ•°ç»„aä¸­å­˜å‚¨çš„äºŒå‰æ ‘å¹¿ä¹‰è¡¨å­—ç¬¦ä¸²ï¼Œåˆå€¼ä¸º0                                      
+			pptnHead= NULL;			// æŠŠæ ‘æ ¹æŒ‡é’ˆç½®ä¸ºç©ºï¼Œå³ä»ç©ºæ ‘å¼€å§‹å»ºç«‹äºŒå‰æ ‘                                      
 			vector<pBTreeNode> s;
 			while(a[i] != '\0') 
 			{ 
@@ -345,7 +345,7 @@ namespace Common
 				case ')': 
 					if(top == -1) 
 					{ 
-						printf("¶ş²æÊ÷¹ãÒå±í×Ö·û´®´íÎó!\n"); 
+						printf("äºŒå‰æ ‘å¹¿ä¹‰è¡¨å­—ç¬¦ä¸²é”™è¯¯!\n"); 
 						return false; 
 					} 
 					top--; 
@@ -382,27 +382,27 @@ namespace Common
 		{
 			clear(this->root);
 		};
-		//´òÓ¡±íĞòÁĞ¶ş²æÊ÷(Ç°Ğò±éÀú) 
+		//æ‰“å°è¡¨åºåˆ—äºŒå‰æ ‘(å‰åºéå†) 
 		inline void print()
 		{
 			print(this->root);
 		}
-		//Ç°Ğò±éÀú
+		//å‰åºéå†
 		inline void printPre()
 		{
 			printPre(this->root);
 		}
-		//ÖĞĞò±éÀú 
+		//ä¸­åºéå† 
 		inline void printMid()
 		{
 			printMid(this->root);
 		}
-		//ºóĞò±éÀú
+		//ååºéå†
 		inline void printPost()
 		{
 			printPost(this->root);
 		}
-		//ºóĞò±éÀú
+		//ååºéå†
 		inline void printLevel()
 		{
 			printLevel(this->root);
@@ -410,7 +410,7 @@ namespace Common
 		inline bool empty(){return (root == NULL);};
 		inline int getDepth(){return getDepth(this->root);};
 		inline bool createBTree(char *a) {return createBTree(this->root,a) ;};
-		//²éÕÒ½Úµã rebound:ÊÇ·ñ»ØĞ´Öµµ½value,	Ö»ÓĞµ±TÎªÀàÊ±ĞèÒª
+		//æŸ¥æ‰¾èŠ‚ç‚¹ rebound:æ˜¯å¦å›å†™å€¼åˆ°value,	åªæœ‰å½“Tä¸ºç±»æ—¶éœ€è¦
 		inline int search(T &value,bool rebound=false)
 		{
 			return search(this->root,value,rebound);
@@ -468,15 +468,15 @@ namespace Common
 //	insertNode(&root,14,&taller);
 //	insertNode(&root,15,&taller);
 //	//insertNode(&root,16,&taller);
-//	printf("¹ãÒå±í\n");
+//	printf("å¹¿ä¹‰è¡¨\n");
 //	printBTree(&root);
-//	printf("\nÇ°Ğò\n");
+//	printf("\nå‰åº\n");
 //	preOrder(&root);
-//	printf("\nÖĞĞò\n");
+//	printf("\nä¸­åº\n");
 //	inOrder(&root);
-//	printf("\nºóĞò\n");
+//	printf("\nååº\n");
 //	postOrder(&root);
-//	printf("\n°´²ã\n");
+//	printf("\næŒ‰å±‚\n");
 //	levelOrder(&root);
 //	system("pause");
 //	return 0;

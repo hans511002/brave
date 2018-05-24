@@ -10,17 +10,17 @@ namespace engine{
 		public:
 			CREATE_FUNC(Level1);
 
-			////²ñ·¿
+			////æŸ´æˆ¿
 			//dragonBones::DBCCArmatureNode * decoration;
-			////·¥Ä¾¹¤ÈË
+			////ä¼æœ¨å·¥äºº
 			//dragonBones::DBCCArmatureNode * decoration1;
-			////·¥Ä¾°´Å¥
+			////ä¼æœ¨æŒ‰é’®
 			//dragonBones::DBCCArmatureNode * decorationCase;
 
-			////Æì×Ó
+			////æ——å­
 			//dragonBones::DBCCArmatureNode * flag1;
 			//dragonBones::DBCCArmatureNode * flag2;
-			////Ëş
+			////å¡”
 			//dragonBones::DBCCArmatureNode * place1;
 			//dragonBones::DBCCArmatureNode * place2;
 			//dragonBones::DBCCArmatureNode * place3;
@@ -28,8 +28,8 @@ namespace engine{
 			//dragonBones::DBCCArmatureNode * place5;
 			
 
-			//ÌáÇ°ÏÂÒ»²¨µ½À´µÄÍ¼±ê  Ê±¼äµ½¿ªÊ¼²¥ ²¥ÍêÏÂÒ»²¨, µã»÷Ö±½ÓÏÂÒ»²¨,¿É»ñÈ¡²»Í¬ÊıÁ¿µÄ½ğ±Ò 
-			//²¿·ÖÊôĞÔĞèÒªÌáÉıµ½levelÖĞ
+			//æå‰ä¸‹ä¸€æ³¢åˆ°æ¥çš„å›¾æ ‡  æ—¶é—´åˆ°å¼€å§‹æ’­ æ’­å®Œä¸‹ä¸€æ³¢, ç‚¹å‡»ç›´æ¥ä¸‹ä¸€æ³¢,å¯è·å–ä¸åŒæ•°é‡çš„é‡‘å¸ 
+			//éƒ¨åˆ†å±æ€§éœ€è¦æå‡åˆ°levelä¸­
 			//dragonBones::DBCCArmatureNode * pointer1;
 			
 			MovieClip * decoration;

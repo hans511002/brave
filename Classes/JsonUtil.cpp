@@ -1,5 +1,5 @@
 #include "JsonUtil.h"
-
+ 
 namespace JsonUtil{
 	inline static std::vector<std::string> &split(const std::string &s, char delim, std::vector<std::string> &elems) {
 		std::stringstream ss(s);
@@ -141,7 +141,7 @@ namespace JsonUtil{
 	};
 
 
-	//Êý×é
+	//Ë½Ø©
 	bool getBoolValue(Value *node, string namePath, int idx){
 		rapidjson::Value * a = getValue(node, namePath);
 		if (!a)return false;

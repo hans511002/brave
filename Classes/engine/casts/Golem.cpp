@@ -14,7 +14,7 @@ namespace engine{
         }
         Golem2_mc:Golem1_mc():Golem_mc("cast/", "Golem2_mc", "Golem1_mc")
         {
-            dust1=new MovieClip("dust1","Golem2_mc",this);
+            dust1=new MovieClip("dust1","Golem2_mc",this); 
             dust2=new MovieClip("dust2","Golem2_mc",this);
         }
         Golem3_mc:Golem1_mc():Golem_mc("cast/", "Golem3_mc", "Golem1_mc")

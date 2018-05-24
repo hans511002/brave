@@ -21,7 +21,7 @@ namespace engine
             //this->y = this_pt.y;
             container = new BulletTower81_mc();
             container->stop();
-            container->myWidth = container->width;
+            container->myWidth = container->width; 
             container->myHeight = container->height;
             this->addChild(container);
             enemyTarget->bulletTower6Effect = true;

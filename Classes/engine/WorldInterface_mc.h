@@ -2,37 +2,21 @@
 #define WORLD_INTERFACE_MC_H
 #include "BaseHeaders.h"
 
-
 namespace engine
 {
-    struct GetAchieve_mc  :public  MovieClip
-    {
-        MovieClipSub * icon;
-        struct GetAchieve_BOARD : public MovieClipSub
-        {
-            ui::Text * noteTXT;
-            MCSUB_STRUCT(GetAchieve_BOARD);
-        }  * board;
-        //MovieClip * board;
-        inline GetAchieve_mc::GetAchieve_mc() :MovieClip("worldinterface/", "GetAchieve_mc", "GetAchieve_mc")
-        {
-            board = new GetAchieve_BOARD(this, "board");
-            board->noteTXT = board->createText("noteTXT");
-            icon = this->createMovieClipSub("icon");
-        };
-        inline void onExit()
-        {
-            MovieClip::remove(board);
-            delete board;
-            board = NULL;
-            MovieClip::onExit();
-        };
-        //virtual inline void gotoAndStop(int cf, string aniName = ""){
-        //    MovieClip::gotoAndStop(cf, aniName);
-        //    //icon->reinit();
-        //};
-    };
-
+	struct GetAchieve_mc :public  MovieClip
+	{
+		MovieClipSub * icon;
+		MovieClipSub * board;
+		ui::Text * boardNoteTXT;
+		//MovieClip * board;
+		inline GetAchieve_mc::GetAchieve_mc() :MovieClip("worldinterface/", "GetAchieve_mc", "GetAchieve_mc")
+		{
+			board = this->createMovieClipSub("board");
+			boardNoteTXT = board->createText("noteTXT");
+			icon = this->createMovieClipSub("icon");
+		}; 
+	};
     
 	class WorldInterface_mc :public BaseNode
 	{

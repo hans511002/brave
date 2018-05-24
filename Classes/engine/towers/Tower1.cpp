@@ -37,7 +37,7 @@ namespace engine
             {
                 //Sounds.instance.playSoundWithVol("snd_tower_build", 0.95);
             }
-            return true;
+            return true; 
         }// end function
         void Tower1::update()
         {

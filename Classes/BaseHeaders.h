@@ -23,7 +23,7 @@ inline static std::vector<std::string> &split(const std::string &s, char delim, 
 	}
 	return elems;
 }
-
+ 
 namespace std{
 double const PI = 3.14159265;
 inline float random(){ return cocos2d::rand_0_1(); }
@@ -31,4 +31,4 @@ inline float random(){ return cocos2d::rand_0_1(); }
 }
 
 #endif
-
+ 

@@ -90,7 +90,7 @@ namespace engine
 		Common::Array<bool> getAllForm;
 		bool dead;
 		int liveCounter;
-		cocos2d::Vec2  leftSmoke_pt;
+		cocos2d::Vec2  leftSmoke_pt; 
 		cocos2d::Vec2  rightSmoke_pt;
 		cocos2d::Vec2  upSmoke_pt;
 		cocos2d::Vec2  downSmoke_pt;

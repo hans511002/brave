@@ -3,7 +3,7 @@
 #include "engine/World.h" 
 
 namespace engine{
-     
+
 
 	CastSphere::CastSphere() :fireCount(0), iceCount(0), stoneCount(0), levinCount(0), getAllCount(0)
 	{

@@ -189,6 +189,7 @@ protected:
         this->addChild(gac);
         //gac->drawRange();
         gac->setPosition(-250, -100);
+		gac->board->noteTXT->setText("中国联盟");
 
 		//Sprite * sprite=Sprite::create("background1.png");
 		//sprite->setContentSize(sphere->buySphereCase->getContentSize());

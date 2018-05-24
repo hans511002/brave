@@ -10,7 +10,7 @@ namespace engine
             return;
         }// end function
 
-        bool Tower2::init()
+        bool Tower2::init() 
         {
             towerType = 2;
             correctYGrPos = -15;

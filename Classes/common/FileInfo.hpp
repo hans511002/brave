@@ -50,18 +50,18 @@ namespace Common
 #endif
 
  	//int locking(FILE * hFile, int mode, long size) {return 0;};
-	//cmdÃüÁî£º
-	//F_SETFD ÉèÖÃclose-on-exec Æì±ê¡£¸ÃÆì±êÒÔ²ÎÊıarg µÄFD_CLOEXECÎ»¾ö¶¨¡£
-	//F_GETFL È¡µÃÎÄ¼şÃèÊö´Ê×´Ì¬Æì±ê£¬´ËÆì±êÎªopen£¨£©µÄ²ÎÊıflags¡£
-	//F_SETFL ÉèÖÃÎÄ¼şÃèÊö´Ê×´Ì¬Æì±ê£¬²ÎÊıargÎªĞÂÆì±ê£¬µ«Ö»ÔÊĞíO_APPEND¡¢O_NONBLOCKºÍO_ASYNCÎ»µÄ¸Ä±ä£¬ÆäËûÎ»µÄ¸Ä±ä½«²»ÊÜÓ°Ïì¡£
-	//F_GETLK È¡µÃÎÄ¼şËø¶¨µÄ×´Ì¬¡£
-	//F_SETLK ÉèÖÃÎÄ¼şËø¶¨µÄ×´Ì¬¡£´ËÊ±flcok ½á¹¹µÄl_type Öµ±ØĞëÊÇF_RDLCK¡¢F_WRLCK»òF_UNLCK¡£Èç¹ûÎŞ·¨½¨Á¢Ëø¶¨£¬Ôò·µ»Ø-1£¬´íÎó´úÂëÎªEACCES »òEAGAIN¡£
-	//F_SETLKW F_SETLK ×÷ÓÃÏàÍ¬£¬µ«ÊÇÎŞ·¨½¨Á¢Ëø¶¨Ê±£¬´Ëµ÷ÓÃ»áÒ»Ö±µÈµ½Ëø¶¨¶¯×÷³É¹¦ÎªÖ¹¡£ÈôÔÚµÈ´ıËø¶¨µÄ¹ı³ÌÖĞ±»ĞÅºÅÖĞ¶ÏÊ±£¬»áÁ¢¼´·µ»Ø-1£¬´íÎó´úÂëÎªEINTR
+	//cmdå‘½ä»¤ï¼š
+	//F_SETFD è®¾ç½®close-on-exec æ——æ ‡ã€‚è¯¥æ——æ ‡ä»¥å‚æ•°arg çš„FD_CLOEXECä½å†³å®šã€‚
+	//F_GETFL å–å¾—æ–‡ä»¶æè¿°è¯çŠ¶æ€æ——æ ‡ï¼Œæ­¤æ——æ ‡ä¸ºopenï¼ˆï¼‰çš„å‚æ•°flagsã€‚
+	//F_SETFL è®¾ç½®æ–‡ä»¶æè¿°è¯çŠ¶æ€æ——æ ‡ï¼Œå‚æ•°argä¸ºæ–°æ——æ ‡ï¼Œä½†åªå…è®¸O_APPENDã€O_NONBLOCKå’ŒO_ASYNCä½çš„æ”¹å˜ï¼Œå…¶ä»–ä½çš„æ”¹å˜å°†ä¸å—å½±å“ã€‚
+	//F_GETLK å–å¾—æ–‡ä»¶é”å®šçš„çŠ¶æ€ã€‚
+	//F_SETLK è®¾ç½®æ–‡ä»¶é”å®šçš„çŠ¶æ€ã€‚æ­¤æ—¶flcok ç»“æ„çš„l_type å€¼å¿…é¡»æ˜¯F_RDLCKã€F_WRLCKæˆ–F_UNLCKã€‚å¦‚æœæ— æ³•å»ºç«‹é”å®šï¼Œåˆ™è¿”å›-1ï¼Œé”™è¯¯ä»£ç ä¸ºEACCES æˆ–EAGAINã€‚
+	//F_SETLKW F_SETLK ä½œç”¨ç›¸åŒï¼Œä½†æ˜¯æ— æ³•å»ºç«‹é”å®šæ—¶ï¼Œæ­¤è°ƒç”¨ä¼šä¸€ç›´ç­‰åˆ°é”å®šåŠ¨ä½œæˆåŠŸä¸ºæ­¢ã€‚è‹¥åœ¨ç­‰å¾…é”å®šçš„è¿‡ç¨‹ä¸­è¢«ä¿¡å·ä¸­æ–­æ—¶ï¼Œä¼šç«‹å³è¿”å›-1ï¼Œé”™è¯¯ä»£ç ä¸ºEINTR
 	//type:
-	//F_RDLCK ½¨Á¢Ò»¸ö¹©¶ÁÈ¡ÓÃµÄËø¶¨
-	//F_WRLCK ½¨Á¢Ò»¸ö¹©Ğ´ÈëÓÃµÄËø¶¨
-	//F_UNLCK É¾³ıÖ®Ç°½¨Á¢µÄËø¶¨
-    //¸³Öµlock½á¹¹Ìå£¬¼ÓËøÕû¸öÎÄ¼ş
+	//F_RDLCK å»ºç«‹ä¸€ä¸ªä¾›è¯»å–ç”¨çš„é”å®š
+	//F_WRLCK å»ºç«‹ä¸€ä¸ªä¾›å†™å…¥ç”¨çš„é”å®š
+	//F_UNLCK åˆ é™¤ä¹‹å‰å»ºç«‹çš„é”å®š
+    //èµ‹å€¼lockç»“æ„ä½“ï¼ŒåŠ é”æ•´ä¸ªæ–‡ä»¶
     //lock.l_whence = SEEK_SET;
     //lock.l_start = 0;
     //lock.l_len = 0;
@@ -74,7 +74,7 @@ namespace Common
 			cmd=flock_setlkw;
 		}
 		struct	flock llscs;
-		//¸³Öµlock½á¹¹Ìå£¬¼ÓËøµ±Ç°Î»ÖÃÖ¸¶¨´óĞ¡                                    
+		//èµ‹å€¼lockç»“æ„ä½“ï¼ŒåŠ é”å½“å‰ä½ç½®æŒ‡å®šå¤§å°                                    
 		llscs.l_whence = SEEK_SET;
 		llscs.l_start = ftell(hFile);
 		llscs.l_len = size;
@@ -92,7 +92,7 @@ namespace Common
 			//	cmd=flock_setlk;
 			//}
 		//	struct	flcok llscs;
-		//	//¸³Öµlock½á¹¹Ìå£¬¼ÓËøµ±Ç°Î»ÖÃÖ¸¶¨´óĞ¡                                    
+		//	//èµ‹å€¼lockç»“æ„ä½“ï¼ŒåŠ é”å½“å‰ä½ç½®æŒ‡å®šå¤§å°                                    
 		//	llscs.l_whence = SEEK_SET;
 		//	llscs.l_start = ftell(hFile);
 		//	llscs.l_len = size;
@@ -110,7 +110,7 @@ namespace Common
 	{
 		return locking(hFile,cmd,size,type);
 	}
-#define FLOCK_EXP(hFile,mode,size,type) {if(locking(hFile,mode,size,type)!=0)EXP("Ëø¶¨ÎÄ¼ş·¢Éú´íÎó");}
+#define FLOCK_EXP(hFile,mode,size,type) {if(locking(hFile,mode,size,type)!=0)EXP("é”å®šæ–‡ä»¶å‘ç”Ÿé”™è¯¯");}
 #define LOCKED_FILE(hFile,type) FLOCK(hFile,flock_setlkw,0,type)
 	inline int lock_file(int fd)
 	{
@@ -165,20 +165,20 @@ namespace Common
 		if(type)
 		{
 			if(cmd==flock_setlk)
-				type=(type+1)&6;	//	×ªµ½ 2 4
+				type=(type+1)&6;	//	è½¬åˆ° 2 4
 			else
-				type=(type-1)|1;	//	×ªµ½ 1 3
+				type=(type-1)|1;	//	è½¬åˆ° 1 3
 		}
 		return locking(fd,type,size);
 	}
-#define FLOCK_EXP(hFile,mode,size,type ) {int fileNo=fileno(hFile);if(locking(fileNo,mode,size)!=0)EXP("Ëø¶¨ÎÄ¼ş·¢Éú´íÎó");}
+#define FLOCK_EXP(hFile,mode,size,type ) {int fileNo=fileno(hFile);if(locking(fileNo,mode,size)!=0)EXP("é”å®šæ–‡ä»¶å‘ç”Ÿé”™è¯¯");}
 #define LOCKED_FILE(hFile,type) FLOCK(hFile,flock_setlkw,-1,type)
 #endif
 	//int fileNo=fileno(hFile);
-	//if(locking(fileNo,1,0)!=0)EXP("Ëø¶¨ÎÄ¼şÊ§°Ü");F_RDLCK 
+	//if(locking(fileNo,1,0)!=0)EXP("é”å®šæ–‡ä»¶å¤±è´¥");F_RDLCK 
 
 	///	<summary>
-	///	ÎÄ¼şÁ÷¶ÔÏó¡£
+	///	æ–‡ä»¶æµå¯¹è±¡ã€‚
 	///	</summary>
 	///	<remarks>
 	///	<code></code>
@@ -217,14 +217,14 @@ namespace Common
 		{
 			return fputs(buffer.c_str(),_file)==0;
 		};
-		//¶ÁÈ¡Ò»ĞĞ¼ÇÂ¼
+		//è¯»å–ä¸€è¡Œè®°å½•
 		inline bool readLine(string &buffer)
 		{
 			char * szBuff=new char[10240];
 			if(fgets(szBuff, sizeof(szBuff)-1, _file))
 			{
 				//int len=strlen(szBuff);
-				//if(len==sizeof(szBuff)-1)cout<<"ÎÄ¼ş¼ÇÂ¼ĞĞ´óĞ¡¿ÉÄÜÒÑ¾­³¬³ö 10240 ×Ö½Ú"<<endl;
+				//if(len==sizeof(szBuff)-1)cout<<"æ–‡ä»¶è®°å½•è¡Œå¤§å°å¯èƒ½å·²ç»è¶…å‡º 10240 å­—èŠ‚"<<endl;
 				buffer=szBuff;
 				return true;
 			}
@@ -250,7 +250,7 @@ namespace Common
 		inline long tell()	{return ftell(_file);};
 		inline bool isNill(){return _file==NULL;};
 		inline long fileSize()	{long cur=ftell(_file); fseek(_file,0,SEEK_END);long size= ftell(_file);fseek(_file,cur,SEEK_SET);return size;};
-		inline int flush(){if(_file==NULL)EXP("ÎÄ¼şÖ¸ÕëÎª¿Õ£¬²»ÄÜË¢ĞÂÊı¾İµ½ÎÄ¼ş¡£");return fflush(_file);};
+		inline int flush(){if(_file==NULL)EXP("æ–‡ä»¶æŒ‡é’ˆä¸ºç©ºï¼Œä¸èƒ½åˆ·æ–°æ•°æ®åˆ°æ–‡ä»¶ã€‚");return fflush(_file);};
 		inline void close(){if(_file)fclose(_file);_file=NULL;};
 		inline int lock(int type=flock_WRLCK)
 		{
@@ -264,7 +264,7 @@ namespace Common
 		};
 	};
 	///	<summary>
-	///	¼Ì³Ğ<see cref='FileStream'/>ÎÄ¼şÁ÷¶ÔÏó£¬Ìá¹©ÌØÊâ·½·¨,Ö§³ÖÎÄ¼şĞ´²Ù×÷ÉèÖÃ»Ø¹ö¶Î(ÔöÁ¿Ä£Ê½)£¬ÒÔ¼°ÎÄ¼şÖ¸Õë×ÔÊÍ·Å¡£
+	///	ç»§æ‰¿<see cref='FileStream'/>æ–‡ä»¶æµå¯¹è±¡ï¼Œæä¾›ç‰¹æ®Šæ–¹æ³•,æ”¯æŒæ–‡ä»¶å†™æ“ä½œè®¾ç½®å›æ»šæ®µ(å¢é‡æ¨¡å¼)ï¼Œä»¥åŠæ–‡ä»¶æŒ‡é’ˆè‡ªé‡Šæ”¾ã€‚
 	///	</summary>
 	///	<remarks>
 	///	<code></code>
@@ -289,12 +289,12 @@ namespace Common
 				Insert_Pair=pos.insert(map<String,long>::value_type(name,ftell(this->_file)));
 				if(Insert_Pair.second == false)
 				{
-					EXP("Ìí¼Ó»Ø¹ö±êÊ¶Ê§°Ü£¬ÇëÈ·¶¨ÊÇ·ñÒÑ¾­Ìí¼Ó¹ıÒ»´Î£º"+name);
+					EXP("æ·»åŠ å›æ»šæ ‡è¯†å¤±è´¥ï¼Œè¯·ç¡®å®šæ˜¯å¦å·²ç»æ·»åŠ è¿‡ä¸€æ¬¡ï¼š"+name);
 				}
 			}
 			else
 			{
-				EXP("Ìí¼Ó»Ø¹ö±êÊ¶Ê§°Ü£¬ÒÑ¾­³¬¹ı×î´ó»Ø¹ö¶ÎÊı10");
+				EXP("æ·»åŠ å›æ»šæ ‡è¯†å¤±è´¥ï¼Œå·²ç»è¶…è¿‡æœ€å¤§å›æ»šæ®µæ•°10");
 			}
 			return this->flush();
 		};
@@ -304,28 +304,28 @@ namespace Common
 			if(itr!=pos.end())
 			{
 				long len=itr->second;
-#if OSTYPE>10				//½ØÈ¡ÎÄ¼ş
+#if OSTYPE>10				//æˆªå–æ–‡ä»¶
 				int fd=fileno(this->_file);
 				int res=ftruncate(fd,len);
 				if(res==0)
 				{
 					pos.erase(name);
-					res= fseek(_file,len,SEEK_SET);		//	ÖØÖÃµ±Ç°Î»ÖÃ£¬¼È»Ø¹öÊı¾İ
+					res= fseek(_file,len,SEEK_SET);		//	é‡ç½®å½“å‰ä½ç½®ï¼Œæ—¢å›æ»šæ•°æ®
 				}
 				return res;
 #else
 				pos.erase(name);
-				return fseek(_file,len,SEEK_SET);		//	ÖØÖÃµ±Ç°Î»ÖÃ£¬¼È»Ø¹öÊı¾İ
+				return fseek(_file,len,SEEK_SET);		//	é‡ç½®å½“å‰ä½ç½®ï¼Œæ—¢å›æ»šæ•°æ®
 #endif
 			}
 			else
 			{
-				EXP("ÎÄ¼ş»Ø¹öÊ§°Ü£¬²»´æÔÚ´Ë»Ø¹ö¶Î±êÊ¶:"+name);
+				EXP("æ–‡ä»¶å›æ»šå¤±è´¥ï¼Œä¸å­˜åœ¨æ­¤å›æ»šæ®µæ ‡è¯†:"+name);
 			}
 		};
 		int beginTransaction()
 		{
-			if(this->_file==NULL)EXP("ÎÄ¼şÖ¸ÕëÎª¿Õ£¬²»ÄÜ¿ªÊ¼ÊÂÎñ´¦Àí¡£");
+			if(this->_file==NULL)EXP("æ–‡ä»¶æŒ‡é’ˆä¸ºç©ºï¼Œä¸èƒ½å¼€å§‹äº‹åŠ¡å¤„ç†ã€‚");
 			position=ftell(this->_file);
 			return fflush(this->_file);
 		};
@@ -339,7 +339,7 @@ namespace Common
 				return res;
 			}
 			else
-				EXP("ÎÄ¼şÖ¸ÕëÎª¿Õ£¬²»ÄÜË¢ĞÂÊı¾İµ½ÎÄ¼ş¡£");
+				EXP("æ–‡ä»¶æŒ‡é’ˆä¸ºç©ºï¼Œä¸èƒ½åˆ·æ–°æ•°æ®åˆ°æ–‡ä»¶ã€‚");
 		};
 		int rollback()
 		{
@@ -348,16 +348,16 @@ namespace Common
 			int res=ftruncate(fd,position);
 			if(res==0)
 			{
-				res= fseek(_file,position,SEEK_SET);		//	ÖØÖÃµ±Ç°Î»ÖÃ£¬¼È»Ø¹öÊı¾İ
+				res= fseek(_file,position,SEEK_SET);		//	é‡ç½®å½“å‰ä½ç½®ï¼Œæ—¢å›æ»šæ•°æ®
 			}
 			return res;
 #else
-			return fseek(_file,position,SEEK_SET);		//	ÖØÖÃµ±Ç°Î»ÖÃ£¬¼È»Ø¹öÊı¾İ
+			return fseek(_file,position,SEEK_SET);		//	é‡ç½®å½“å‰ä½ç½®ï¼Œæ—¢å›æ»šæ•°æ®
 #endif
 		};
 	};
 	///	<summary>
-	///	¹«¿ªÓÃÓÚ´´½¨¡¢ÒÆ¶¯µÈ²Ù×÷ÎÄ¼şµÄ¾²Ì¬·½·¨¡£
+	///	å…¬å¼€ç”¨äºåˆ›å»ºã€ç§»åŠ¨ç­‰æ“ä½œæ–‡ä»¶çš„é™æ€æ–¹æ³•ã€‚
 	///	</summary>
 	///	<remarks>
 	///	<code></code>
@@ -388,23 +388,23 @@ namespace Common
 			close(fileId);
 			return res;
 #endif
-			/*   O_RDONLY      Ö»¶ÁÄ£Ê½ 
-        O_WRONLY      Ö»Ğ´Ä£Ê½ 
-        O_RDWR        ¶ÁĞ´Ä£Ê½
+			/*   O_RDONLY      åªè¯»æ¨¡å¼ 
+        O_WRONLY      åªå†™æ¨¡å¼ 
+        O_RDWR        è¯»å†™æ¨¡å¼
 
-´ò¿ª/´´½¨ÎÄ¼şÊ±£¬ÖÁÉÙµÃÊ¹ÓÃÉÏÊöÈı¸ö³£Á¿ÖĞµÄÒ»¸ö¡£ÒÔÏÂ³£Á¿ÊÇÑ¡ÓÃµÄ£º
-        O_APPEND       Ã¿´ÎĞ´²Ù×÷¶¼Ğ´ÈëÎÄ¼şµÄÄ©Î² 
-        O_CREAT        Èç¹ûÖ¸¶¨ÎÄ¼ş²»´æÔÚ£¬Ôò´´½¨Õâ¸öÎÄ¼ş 
-        O_EXCL         Èç¹ûÒª´´½¨µÄÎÄ¼şÒÑ´æÔÚ£¬Ôò·µ»Ø -1£¬²¢ÇÒĞŞ¸Ä errno µÄÖµ
-        O_TRUNC        Èç¹ûÎÄ¼ş´æÔÚ£¬²¢ÇÒÒÔÖ»Ğ´/¶ÁĞ´·½Ê½´ò¿ª£¬ÔòÇå¿ÕÎÄ¼şÈ«²¿ÄÚÈİ 
-        O_NOCTTY       Èç¹ûÂ·¾¶ÃûÖ¸ÏòÖÕ¶ËÉè±¸£¬²»Òª°ÑÕâ¸öÉè±¸ÓÃ×÷¿ØÖÆÖÕ¶Ë¡£
-        O_NONBLOCK     Èç¹ûÂ·¾¶ÃûÖ¸Ïò FIFO/¿éÎÄ¼ş/×Ö·ûÎÄ¼ş£¬Ôò°ÑÎÄ¼şµÄ´ò¿ªºÍºó¼Ì I/O
-                       ÉèÖÃÎª·Ç×èÈûÄ£Ê½£¨nonblocking mode£©
-ÒÔÏÂÈı¸ö³£Á¿Í¬ÑùÊÇÑ¡ÓÃµÄ£¬ËüÃÇÓÃÓÚÍ¬²½ÊäÈëÊä³ö
-        O_DSYNC        µÈ´ıÎïÀí I/O ½áÊøºóÔÙ write¡£ÔÚ²»Ó°Ïì¶ÁÈ¡ĞÂĞ´ÈëµÄÊı¾İµÄ
-                       Ç°ÌáÏÂ£¬²»µÈ´ıÎÄ¼şÊôĞÔ¸üĞÂ¡£ 
-        O_RSYNC        read µÈ´ıËùÓĞĞ´ÈëÍ¬Ò»ÇøÓòµÄĞ´²Ù×÷Íê³ÉºóÔÙ½øĞĞ
-        O_SYNC         µÈ´ıÎïÀí I/O ½áÊøºóÔÙ write£¬°üÀ¨¸üĞÂÎÄ¼şÊôĞÔµÄ I/O
+æ‰“å¼€/åˆ›å»ºæ–‡ä»¶æ—¶ï¼Œè‡³å°‘å¾—ä½¿ç”¨ä¸Šè¿°ä¸‰ä¸ªå¸¸é‡ä¸­çš„ä¸€ä¸ªã€‚ä»¥ä¸‹å¸¸é‡æ˜¯é€‰ç”¨çš„ï¼š
+        O_APPEND       æ¯æ¬¡å†™æ“ä½œéƒ½å†™å…¥æ–‡ä»¶çš„æœ«å°¾ 
+        O_CREAT        å¦‚æœæŒ‡å®šæ–‡ä»¶ä¸å­˜åœ¨ï¼Œåˆ™åˆ›å»ºè¿™ä¸ªæ–‡ä»¶ 
+        O_EXCL         å¦‚æœè¦åˆ›å»ºçš„æ–‡ä»¶å·²å­˜åœ¨ï¼Œåˆ™è¿”å› -1ï¼Œå¹¶ä¸”ä¿®æ”¹ errno çš„å€¼
+        O_TRUNC        å¦‚æœæ–‡ä»¶å­˜åœ¨ï¼Œå¹¶ä¸”ä»¥åªå†™/è¯»å†™æ–¹å¼æ‰“å¼€ï¼Œåˆ™æ¸…ç©ºæ–‡ä»¶å…¨éƒ¨å†…å®¹ 
+        O_NOCTTY       å¦‚æœè·¯å¾„åæŒ‡å‘ç»ˆç«¯è®¾å¤‡ï¼Œä¸è¦æŠŠè¿™ä¸ªè®¾å¤‡ç”¨ä½œæ§åˆ¶ç»ˆç«¯ã€‚
+        O_NONBLOCK     å¦‚æœè·¯å¾„åæŒ‡å‘ FIFO/å—æ–‡ä»¶/å­—ç¬¦æ–‡ä»¶ï¼Œåˆ™æŠŠæ–‡ä»¶çš„æ‰“å¼€å’Œåç»§ I/O
+                       è®¾ç½®ä¸ºéé˜»å¡æ¨¡å¼ï¼ˆnonblocking modeï¼‰
+ä»¥ä¸‹ä¸‰ä¸ªå¸¸é‡åŒæ ·æ˜¯é€‰ç”¨çš„ï¼Œå®ƒä»¬ç”¨äºåŒæ­¥è¾“å…¥è¾“å‡º
+        O_DSYNC        ç­‰å¾…ç‰©ç† I/O ç»“æŸåå† writeã€‚åœ¨ä¸å½±å“è¯»å–æ–°å†™å…¥çš„æ•°æ®çš„
+                       å‰æä¸‹ï¼Œä¸ç­‰å¾…æ–‡ä»¶å±æ€§æ›´æ–°ã€‚ 
+        O_RSYNC        read ç­‰å¾…æ‰€æœ‰å†™å…¥åŒä¸€åŒºåŸŸçš„å†™æ“ä½œå®Œæˆåå†è¿›è¡Œ
+        O_SYNC         ç­‰å¾…ç‰©ç† I/O ç»“æŸåå† writeï¼ŒåŒ…æ‹¬æ›´æ–°æ–‡ä»¶å±æ€§çš„ I/O
 */
 		};
 		inline static int truncate(FILE * fp,long size)
@@ -419,18 +419,18 @@ namespace Common
 		inline static void AppendText(const String &path, const String & contents)
 		{
 			FileStream fs=OpenAppend(path);
-			if(fs.getFILE()==NULL)EXP("´ò¿ªÎÄ¼şÊ§°Ü:"+path);
+			if(fs.getFILE()==NULL)EXP("æ‰“å¼€æ–‡ä»¶å¤±è´¥:"+path);
 			fs.write(contents.c_str(),contents.size());
 			fs.close();
 		};
-		//¿½±´ÎÄ¼ş
+		//æ‹·è´æ–‡ä»¶
 		inline static bool Copy(const String & sourceFileName, const String & destFileName, bool overwrite=false)
 		{
 			if(overwrite==false && File::Exists(destFileName))return false;
 			FileStream rfs=OpenRead(sourceFileName);
-			if(rfs.getFILE()==NULL)EXP("´ò¿ªÎÄ¼şÊ§°Ü:"+sourceFileName);
+			if(rfs.getFILE()==NULL)EXP("æ‰“å¼€æ–‡ä»¶å¤±è´¥:"+sourceFileName);
 			FileStream wfs=OpenWrite(destFileName);
-			if(wfs.getFILE()==NULL)EXP("´ò¿ªÎÄ¼şÊ§°Ü:"+destFileName);
+			if(wfs.getFILE()==NULL)EXP("æ‰“å¼€æ–‡ä»¶å¤±è´¥:"+destFileName);
 			try
 			{
 				char buf[1024];
@@ -449,7 +449,7 @@ namespace Common
 				return false;
 			}
 		};
-		//´´½¨ÎÄ¼ş
+		//åˆ›å»ºæ–‡ä»¶
 		inline static FileStream Create(const String & path,int flag=0)
 		{
 			if(flag==0 || Exists(path)==false)
@@ -457,13 +457,13 @@ namespace Common
 			else
 				return OpenRead(path);
 		};
-		//É¾³ıÎÄ¼ş
+		//åˆ é™¤æ–‡ä»¶
 		inline static bool Delete(const String &path)
 		{
 			return remove(path.c_str())==0;
 		};
 
-		//ÅĞ¶ÏÎÄ¼şÊÇ·ñ´æÔÚ
+		//åˆ¤æ–­æ–‡ä»¶æ˜¯å¦å­˜åœ¨
 		inline static bool Exists(const String &path)
 		{
 			 FileStream fs=OpenRead(path);
@@ -478,7 +478,7 @@ namespace Common
 			 }
 		};
 
-		//ÒÆ¶¯ÎÄ¼ş
+		//ç§»åŠ¨æ–‡ä»¶
 		inline static bool Move(String sourceFileName, String destFileName,bool isConvered=false)
 		{
 			sourceFileName = Path::GetFullPath(sourceFileName);
@@ -497,12 +497,12 @@ namespace Common
 				return system(("move /y \""+sourceFileName+"\" \""+destFileName+"\"").c_str())==0;
 	#endif
 		};
-		//ÒÆ¶¯ÎÄ¼ş
+		//ç§»åŠ¨æ–‡ä»¶
 		inline static bool Rename(const String & _OldFilename, const String & _NewFilename)
 		{
 			return rename(_OldFilename.c_str(), _NewFilename.c_str())==0;
 		};
-		//´ò¿ªÎÄ¼ş
+		//æ‰“å¼€æ–‡ä»¶
 		inline static FileStream OpenFile(const String & path, const string & _mode,bool locked=false,int size=-1)
 		{
 			FILE * rfile=NULL;
@@ -535,7 +535,7 @@ namespace Common
 			fs.close();
 			return size;
 		};
-		//¶ÁÈ¡×Ö·û
+		//è¯»å–å­—ç¬¦
 		inline static char * ReadAllBytes(const String & path,int &len)
 		{
 			FileStream fs=OpenRead(path);
@@ -549,7 +549,7 @@ namespace Common
 			return buf;
 			else return NULL;
 		};
-		//ÓÃÆäËüÎÄ¼şµÄÄÚÈİÌæ»»Ö¸¶¨ÎÄ¼şµÄÄÚÈİ
+		//ç”¨å…¶å®ƒæ–‡ä»¶çš„å†…å®¹æ›¿æ¢æŒ‡å®šæ–‡ä»¶çš„å†…å®¹
 		inline static void Replace(const String & sourceFileName, const String & destinationFileName, const String & destinationBackupFileName)
 		{
 			if(Exists(destinationFileName) && destinationBackupFileName!="")
@@ -558,7 +558,7 @@ namespace Common
 			}
 			Copy(sourceFileName, destinationFileName, true);
 		};
-		//»ñÈ¡ÎÄ¼şÊ±¼äÊôĞÔ
+		//è·å–æ–‡ä»¶æ—¶é—´å±æ€§
 		inline static DateTime GetCreationTime(const String & path)
 		{
 			struct stat buf;
@@ -602,13 +602,13 @@ namespace Common
 			return DateTime((unsigned int )buf.st_mtime,GMT0);
 		};
 
-		//ÉèÖÃÊôĞÔÖµ
+		//è®¾ç½®å±æ€§å€¼
 		inline static void SetAttributes(const String & path, FileAttributes fileAttributes);
-		//»ñÈ¡ÎÄ¼şµÄÊôĞÔ,ÔİÊ±²»ÊµÏÖ
+		//è·å–æ–‡ä»¶çš„å±æ€§,æš‚æ—¶ä¸å®ç°
 		inline static FileAttributes GetAttributes(const String & path);
-		//ÉèÖÃÊ±¼ä
-//unixÏµÍ³ ¿ÉÊ¹ÓÃÃüÁî touchºÍCº¯Êı utime    /ÎÄ±¾×ÊÁÏ/aixcmds5/touch.htm#ohk350craw
-//touch  -t Time Ê¹ÓÃÖ¸¶¨Ê±¼ä¶ø²»ÊÇµ±Ç°Ê±¼ä¡£Time ±äÁ¿ÒÔÊ®½øÖÆĞÎÊ½ [[CC]YY]MMDDhhmm[.SS] Ö¸¶¨£¬ÆäÖĞ£º  
+		//è®¾ç½®æ—¶é—´
+//unixç³»ç»Ÿ å¯ä½¿ç”¨å‘½ä»¤ touchå’ŒCå‡½æ•° utime    /æ–‡æœ¬èµ„æ–™/aixcmds5/touch.htm#ohk350craw
+//touch  -t Time ä½¿ç”¨æŒ‡å®šæ—¶é—´è€Œä¸æ˜¯å½“å‰æ—¶é—´ã€‚Time å˜é‡ä»¥åè¿›åˆ¶å½¢å¼ [[CC]YY]MMDDhhmm[.SS] æŒ‡å®šï¼Œå…¶ä¸­ï¼š  
 //utime
 		//inline static void SetCreationTime(const String & path, DateTime creationTime);
 		inline static void SetLastAccessTime(const String & path, DateTime lastAccessTime)
@@ -632,12 +632,12 @@ namespace Common
 			utime(path.c_str(),&ut);
 		};
 
-		//½âÃÜÎÄ¼ş
+		//è§£å¯†æ–‡ä»¶
 		inline static void Decrypt(const String &path,const String & password)
 		{
 			return cryptFile(path,path,password,0);
 		};
-		//¼ÓÃÜÎÄ¼ş
+		//åŠ å¯†æ–‡ä»¶
 		inline static void Encrypt(const String &path,const String & password)
 		{
 			return cryptFile(path,path,password,1);
@@ -645,7 +645,7 @@ namespace Common
 		static void cryptFile(const String &sourceFileName, const String & destinationFileName,const String & password,int type);
 	};
 	///	<summary>
-	///	±íÊ¾Ò»¸öÎÄ¼ş¶ÔÏóĞÅÏ¢¡£
+	///	è¡¨ç¤ºä¸€ä¸ªæ–‡ä»¶å¯¹è±¡ä¿¡æ¯ã€‚
 	///	</summary>
 	///	<remarks>
 	///	<code></code>
@@ -667,53 +667,53 @@ namespace Common
 		{
 			return File::truncate(_fileName,size);
 		};
-		//·µ»Ø×·¼ÓÄ£Ê½´ò¿ªµÄÎÄ¼şÁ÷
+		//è¿”å›è¿½åŠ æ¨¡å¼æ‰“å¼€çš„æ–‡ä»¶æµ
 		inline FileStream AppendText(){return File::OpenAppend(_fileName);};
-		//´´½¨ÎÄ¼ş
+		//åˆ›å»ºæ–‡ä»¶
 		inline FileStream Create(){return File::Create(_fileName);};
-		//¿½±´ÎÄ¼ş
+		//æ‹·è´æ–‡ä»¶
 		inline FileInfo CopyTo(const String & destFileName, bool overwrite=false)
 		{
 			File::Copy(_fileName,destFileName, overwrite);
 			return FileInfo(destFileName);
 		};
-		//½âÃÜÎÄ¼ş
+		//è§£å¯†æ–‡ä»¶
 		inline void Decrypt(const String & password){File::Decrypt(_fileName,password);};
-		//¼ÓÃÜÎÄ¼ş
+		//åŠ å¯†æ–‡ä»¶
 		inline void Encrypt(const String & password){File::Encrypt(_fileName,password);};
-		//É¾³ıÎÄ¼ş
+		//åˆ é™¤æ–‡ä»¶
 		inline bool Delete(){return File::Delete(_fileName);};
-		//ÒÆ¶¯ÎÄ¼ş
+		//ç§»åŠ¨æ–‡ä»¶
 		inline bool MoveTo(const String &destFileName)
 		{
 			return File::Move(_fileName,destFileName);
 		};
-		//´ò¿ªÎÄ¼ş
+		//æ‰“å¼€æ–‡ä»¶
 		inline FileStream OpenRead(){return File::OpenRead(_fileName);};
 		inline FileStream OpenAppend(){return File::OpenAppend(_fileName);};
 		inline FileStream OpenWrite(){return File::OpenWrite(_fileName);};
-		//Ìæ»»ÎÄ¼ş
+		//æ›¿æ¢æ–‡ä»¶
 		inline FileInfo Replace(String destinationFileName, String destinationBackupFileName)
 		{
 			File::Replace(_fileName, destinationFileName, destinationBackupFileName);
 			return FileInfo(destinationFileName);
 		};
 	
-		//ÎÄ¼şÀ©Õ¹Ãû²¿·Ö
+		//æ–‡ä»¶æ‰©å±•åéƒ¨åˆ†
 		inline String getExtension(){return Path::GetExtension(_fileName);};
-		//ÎÄ¼şÄ¿Â¼ĞÅÏ¢
+		//æ–‡ä»¶ç›®å½•ä¿¡æ¯
 		inline DirectoryInfo getDirectory(){return DirectoryInfo(Path::GetDirectoryName(_fileName));};
-		//ÎÄ¼şÄ¿Â¼Ãû³Æ
+		//æ–‡ä»¶ç›®å½•åç§°
 		inline String getDirectoryName(){return Path::GetDirectoryName(_fileName);};
-		//ÎÄ¼şÊÇ·ñ´æÔÚ
+		//æ–‡ä»¶æ˜¯å¦å­˜åœ¨
 		inline bool Exists(){return File::Exists(_fileName);};
-		//»ñÈ¡ÎÄ¼ş³¤¶È
+		//è·å–æ–‡ä»¶é•¿åº¦
 		inline long getLength(){return File::getFileSize(_fileName);};
-		//»ñÈ¡ÎÄ¼şÃû³Æ
+		//è·å–æ–‡ä»¶åç§°
 		inline String getName(){return Path::GetFileName(_fileName);};
-		//»ñÈ¡ÎÄ¼şÈ«Â·¾¶Ãû³Æ
+		//è·å–æ–‡ä»¶å…¨è·¯å¾„åç§°
 		inline String getFullName(){return _fileName;};
-		//»ñÈ¡ÎÄ¼şÊ±¼äÊôĞÔ
+		//è·å–æ–‡ä»¶æ—¶é—´å±æ€§
 		inline DateTime GetCreationTime(){return File::GetCreationTime(_fileName);};
 		inline DateTime GetCreationTimeUtc(){return File::GetCreationTimeUtc(_fileName);};
 		inline DateTime GetLastAccessTime(){return File::GetLastAccessTime(_fileName);};
@@ -721,7 +721,7 @@ namespace Common
 		inline DateTime GetLastWriteTime(){return File::GetLastWriteTime(_fileName);};
 		inline DateTime GetLastWriteTimeUtc(){return File::GetLastWriteTimeUtc(_fileName);};
 
-		//ÎÄ¼şÊÇ·ñÖ»¶Á
+		//æ–‡ä»¶æ˜¯å¦åªè¯»
 		bool getIsReadOnly()
 		{
 			FILE * hFile;
@@ -730,7 +730,7 @@ namespace Common
 #if OSTYPE>10
 			hFile=POPEN(("ls -l \""+_fileName+"\"").c_str(),"r");
 			if(!hFile)
-				EXP("Ö´ĞĞÊôĞÔÏÔÊ¾ÃüÁîÊ§°Ü");
+				EXP("æ‰§è¡Œå±æ€§æ˜¾ç¤ºå‘½ä»¤å¤±è´¥");
 			if(fgets(szBuff, sizeof(szBuff)-1, hFile))
 			{
 				//drwxrwxrwx 
@@ -742,7 +742,7 @@ namespace Common
 #else
 			hFile=POPEN(("ATTRIB \""+_fileName+"\"").c_str(),"r");
 			if(!hFile)
-				EXP("Ö´ĞĞÊôĞÔÏÔÊ¾ÃüÁîÊ§°Ü");
+				EXP("æ‰§è¡Œå±æ€§æ˜¾ç¤ºå‘½ä»¤å¤±è´¥");
 			if(fgets(szBuff, sizeof(szBuff)-1, hFile))
 			{
 				//A  SHR
@@ -760,7 +760,7 @@ namespace Common
 			char szBuff[1024];
 			hFile=POPEN(("ls -l \""+_fileName+"\"").c_str(),"r");
 			if(!hFile)
-				EXP("Ö´ĞĞÄ¿Â¼ÁĞ±íÃüÁîÊ§°Ü");
+				EXP("æ‰§è¡Œç›®å½•åˆ—è¡¨å‘½ä»¤å¤±è´¥");
 			String attr="";
 			if(fgets(szBuff, sizeof(szBuff)-1, hFile))
 			{
@@ -776,7 +776,7 @@ namespace Common
 			char szBuff[1024];
 			hFile=POPEN(("ls -l \""+_fileName+"\"").c_str(),"r");
 			if(!hFile)
-				EXP("Ö´ĞĞÄ¿Â¼ÁĞ±íÃüÁîÊ§°Ü");
+				EXP("æ‰§è¡Œç›®å½•åˆ—è¡¨å‘½ä»¤å¤±è´¥");
 			int mode=0;
 			if(fgets(szBuff, sizeof(szBuff)-1, hFile))
 			{
@@ -803,7 +803,7 @@ namespace Common
 			return mode;
 		};
 #endif
-		//ÉèÖÃÎÄ¼şÖ»¶Á
+		//è®¾ç½®æ–‡ä»¶åªè¯»
 		void setIsReadOnly(bool value)
 		{
 #if OSTYPE>10
@@ -835,7 +835,7 @@ namespace Common
 #endif
 		};
 
-		//ÉèÖÃÊ±¼ä
+		//è®¾ç½®æ—¶é—´
 		//void SetCreationTime(const String & path, DateTime creationTime);
 		//void SetCreationTimeUtc(const String & path, DateTime creationTimeUtc);
 		inline void SetLastAccessTime(const String & path, DateTime lastAccessTime){File::SetLastAccessTime(path,lastAccessTime);};

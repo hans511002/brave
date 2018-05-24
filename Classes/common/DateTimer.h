@@ -17,7 +17,7 @@
 //#include "Common.h"
 namespace Common
 {
-	//¼ÆÊ±Æ÷
+	//è®¡æ—¶å™¨
 	class DateTimer:public DateTime
 	{
 	protected:
@@ -29,22 +29,22 @@ namespace Common
 			struct timezone stz;
 			gettimeofday (&tv ,&stz);
 			int tz=(0-stz.tz_minuteswest)/60;
-			//×éºÏ¼ÆËãÊ±Çø
+			//ç»„åˆè®¡ç®—æ—¶åŒº
 			tl=32+tz;
-			tl=tl<<59;		//	Áô5Î»Ê±Çø±êÊ¶
-			return tl=(tl|DateTime::TicksPerUTCSta+ tv.tv_sec * DateTime::TicksPerSecond+tv.tv_usec);	//Î¢Ãë
+			tl=tl<<59;		//	ç•™5ä½æ—¶åŒºæ ‡è¯†
+			return tl=(tl|DateTime::TicksPerUTCSta+ tv.tv_sec * DateTime::TicksPerSecond+tv.tv_usec);	//å¾®ç§’
 #else
-			//int l=(GetCycleCount() /2660) % 1000000;			//	¾«È·µ½Î¢Ãë
+			//int l=(GetCycleCount() /2660) % 1000000;			//	ç²¾ç¡®åˆ°å¾®ç§’
 
 			time_t  ts=time(NULL);
 			int lHour=localtime(&ts)->tm_hour;		
 			int tz=  TimeZone(lHour-gmtime(&ts)->tm_hour);
-			//×éºÏ¼ÆËãÊ±Çø
+			//ç»„åˆè®¡ç®—æ—¶åŒº
 			tl=32+tz;
-			tl=tl<<59;		//	Áô5Î»Ê±Çø±êÊ¶
+			tl=tl<<59;		//	ç•™5ä½æ—¶åŒºæ ‡è¯†
 
 			unsigned long long l=GetPerformanceCounter();
-			l = (((l * DateTime::TicksPerSecond ) / GetPerformanceUnit() )% DateTime::TicksPerSecond);	//	¾«È·µ½Î¢Ãë,ĞÔÄÜµÍ
+			l = (((l * DateTime::TicksPerSecond ) / GetPerformanceUnit() )% DateTime::TicksPerSecond);	//	ç²¾ç¡®åˆ°å¾®ç§’,æ€§èƒ½ä½
 			time_t t= time(NULL);
 			return tl=tl | DateTime::TicksPerUTCSta+ (unsigned long long)t * DateTime::TicksPerSecond+l;
 #endif

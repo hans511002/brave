@@ -268,7 +268,7 @@ namespace Common
 			}
 			this->m_ClientSocket.SetSocketOption(SocketOptionLevel::IP, SocketOptionName::AddMembership, multicastAddr);
 		}
-		//MulticastTimeToLive 在windows下可能不为 10
+		//MulticastTimeToLive 脭脷windows脧脗驴脡脛脺虏禄脦陋 10
 		void JoinMulticastGroup(ip_mreq multicastAddr, int timeToLive)
 		{
 			if (!ValidateRange(timeToLive, 0, 0xff))

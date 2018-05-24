@@ -19,13 +19,13 @@ namespace Common
 {
 
 	///	<summary>
-	///	²ÎÊı½âÎö¹æÔò´æ´¢½á¹¹Ìå¡£
+	///	å‚æ•°è§£æè§„åˆ™å­˜å‚¨ç»“æ„ä½“ã€‚
 	///	</summary>
 	///	<remarks>
-	///	ÃüÁîĞĞÊäÈë²ÎÊı½âÎö¹æÔò´æ´¢½á¹¹Ìå£¬ÓÃÓÚ´æ´¢²ÎÊı¸ñÊ½»¯¼ì²éĞÅÏ¢¡£Ê¹ÓÃ¼û<see cref="ArgsParse"/>
+	///	å‘½ä»¤è¡Œè¾“å…¥å‚æ•°è§£æè§„åˆ™å­˜å‚¨ç»“æ„ä½“ï¼Œç”¨äºå­˜å‚¨å‚æ•°æ ¼å¼åŒ–æ£€æŸ¥ä¿¡æ¯ã€‚ä½¿ç”¨è§<see cref="ArgsParse"/>
 	///	</remarks>
     /// <example><code>
-	///	const ArgItem items[]={	{"-d","ÈÕÆÚ²ÎÊı","ÓÃÓÚÌæ»»ÅäÖÃÖĞµÄºê±äÁ¿",0,Common::INT,6},
+	///	const ArgItem items[]={	{"-d","æ—¥æœŸå‚æ•°","ç”¨äºæ›¿æ¢é…ç½®ä¸­çš„å®å˜é‡",0,Common::INT,6},
 	///						  };
 	///	ArgsParse pars;
 	///	if(!pars.parse(argc,argv,items,1))exit(1);
@@ -34,44 +34,44 @@ namespace Common
 	struct ArgItem
 	{
 		///	<summary>
-		///	Ç°×º
+		///	å‰ç¼€
 		///	</summary>
 		String prefix		;
 		///	<summary>
-		///	Ãû³Æ
+		///	åç§°
 		///	</summary>
 		String name			;
 		///	<summary>
-		///	ÃèÊö
+		///	æè¿°
 		///	</summary>
 		String desc			;
 		///	<summary>
-		///	ÊÇ·ñ±ØĞè	0:¿ÉÑ¡,1:±ØĞè,2...·Ö×éID,±íÊ¾×éÖĞ²ÎÊı¸öÊı,±ØĞèÓĞÒ»¸ö´æÔÚ
+		///	æ˜¯å¦å¿…éœ€	0:å¯é€‰,1:å¿…éœ€,2...åˆ†ç»„ID,è¡¨ç¤ºç»„ä¸­å‚æ•°ä¸ªæ•°,å¿…éœ€æœ‰ä¸€ä¸ªå­˜åœ¨
 		///	</summary>
 		int needType		;
 		///	<summary>
-		///	ĞèÒªÑéÖ¤µÄÀàĞÍ ÑéÖ¤ÖµÊÇ·ñÄÜ×ª»»ÎªÄ¿±êÀàĞÍ
+		///	éœ€è¦éªŒè¯çš„ç±»å‹ éªŒè¯å€¼æ˜¯å¦èƒ½è½¬æ¢ä¸ºç›®æ ‡ç±»å‹
 		///	</summary>
 		varType  valueType	;
 		///	<summary>
-		///	ĞèÒªµÄÖµ³¤¶È
+		///	éœ€è¦çš„å€¼é•¿åº¦
 		///	</summary>
 		int length			;
 		String defaultVal ;
-		ArgItem(){};//"-r","È·ÈÏ¹Ø±Õ","ÊÇ·ñ¹Ø±Õ¹²ÏíÄÚ´æ£¬Ë¢ĞÂÊı¾İµ½´ÅÅÌ",1,Common::NONE,0
+		ArgItem(){};//"-r","ç¡®è®¤å…³é—­","æ˜¯å¦å…³é—­å…±äº«å†…å­˜ï¼Œåˆ·æ–°æ•°æ®åˆ°ç£ç›˜",1,Common::NONE,0
 		ArgItem(String _prefix,String _name,String _desc,int _needType,varType  _valueType,int _length)
 			:prefix(_prefix),name(_name),desc(_desc),needType(_needType),valueType(_valueType),length(_length){};
 	} ;
 	///	<summary>
-	///	²ÎÊı½âÎöÀà
+	///	å‚æ•°è§£æç±»
 	///	</summary>
 	///	<remarks>
-	///	ÃüÁîĞĞ²ÎÊı½âÎöÀà,ĞèÒªÊ¹ÓÃ½á¹¹Ìå<see cref="ArgItem"/>
-	///	-h -version FULLPATH APPNAME APPPATH DEBUG -DEBUG ÒÑ¾­Ä¬ÈÏ±£ÁôÊ¹ÓÃ
+	///	å‘½ä»¤è¡Œå‚æ•°è§£æç±»,éœ€è¦ä½¿ç”¨ç»“æ„ä½“<see cref="ArgItem"/>
+	///	-h -version FULLPATH APPNAME APPPATH DEBUG -DEBUG å·²ç»é»˜è®¤ä¿ç•™ä½¿ç”¨
 	///	</remarks>
     /// <example><code>
-	///	Ó¦ÓÃÃüÁîĞĞ²ÎÊı½âÎö£º
-	///	const ArgItem items[]={	{"-d","ÈÕÆÚ²ÎÊı","ÓÃÓÚÌæ»»ÅäÖÃÖĞµÄºê±äÁ¿",0,Common::INT,6},
+	///	åº”ç”¨å‘½ä»¤è¡Œå‚æ•°è§£æï¼š
+	///	const ArgItem items[]={	{"-d","æ—¥æœŸå‚æ•°","ç”¨äºæ›¿æ¢é…ç½®ä¸­çš„å®å˜é‡",0,Common::INT,6},
 	///						  };
 	///	ArgsParse pars;
 	///	if(!pars.parse(argc,argv,items,2))exit(1);
@@ -92,14 +92,14 @@ namespace Common
 			if(ver)appVer=ver;
 		};
 		///	<summary>
-		///	½âÎö¶ÔÏó¹¹Ôìº¯Êı£¬ÓÃÓÚÖ¸¶¨²ÎÊı¼°²ÎÊı¼ìÑéÌõ¼ş³õÊ¼»¯½âÎö¶ÔÏó
-		///	<code>Ô­ĞÍ£ºArgsParse(int argc=0,char *argv[]=NULL,const ArgItem items[]=NULL,int _count=0,Log *log=NULL);</code>
+		///	è§£æå¯¹è±¡æ„é€ å‡½æ•°ï¼Œç”¨äºæŒ‡å®šå‚æ•°åŠå‚æ•°æ£€éªŒæ¡ä»¶åˆå§‹åŒ–è§£æå¯¹è±¡
+		///	<code>åŸå‹ï¼šArgsParse(int argc=0,char *argv[]=NULL,const ArgItem items[]=NULL,int _count=0,Log *log=NULL);</code>
 		///	</summary>
-		///	<param name="argc">ÃüÁîĞĞ²ÎÊı¸öÊı£¬¶ÔÓ¦Êı×é²ÎÊıargv³¤¶È</param>
-		///	<param name="argv">ÃüÁîĞĞÊäÈë²ÎÊı£¬×Ö·û´®Ö¸ÕëÊı×é</param>
-		///	<param name="items">²ÎÊı¸ñÊ½»¯ĞÅÏ¢½á¹¹Êı×é£¬ÓÃÓÚ¼ìÑéÊäÈë²ÎÊı</param>
-		///	<param name="_count">²ÎÊı¸ñÊ½»¯ĞÅÏ¢½á¹¹Êı×é³¤¶È</param>
-		///	<param name="log">ÈÕÖ¾¶ÔÏóÖ¸Õë£¬ÓÃÓÚÈÕÖ¾Êä³ö</param>
+		///	<param name="argc">å‘½ä»¤è¡Œå‚æ•°ä¸ªæ•°ï¼Œå¯¹åº”æ•°ç»„å‚æ•°argvé•¿åº¦</param>
+		///	<param name="argv">å‘½ä»¤è¡Œè¾“å…¥å‚æ•°ï¼Œå­—ç¬¦ä¸²æŒ‡é’ˆæ•°ç»„</param>
+		///	<param name="items">å‚æ•°æ ¼å¼åŒ–ä¿¡æ¯ç»“æ„æ•°ç»„ï¼Œç”¨äºæ£€éªŒè¾“å…¥å‚æ•°</param>
+		///	<param name="_count">å‚æ•°æ ¼å¼åŒ–ä¿¡æ¯ç»“æ„æ•°ç»„é•¿åº¦</param>
+		///	<param name="log">æ—¥å¿—å¯¹è±¡æŒ‡é’ˆï¼Œç”¨äºæ—¥å¿—è¾“å‡º</param>
 		ArgsParse(int argc,char *argv[],const ArgItem items[]=NULL,int _count=0,Log *log=NULL)
 		{
 			argItems.clear();
@@ -111,35 +111,35 @@ namespace Common
 				addParam(items,_count);
 		};
 		///	<summary>
-		///	½âÎö¶ÔÏóÎö¹¹º¯Êı£¬ÓÃÓÚ¶ÔÏó×ÔÊÍ·Å×ÊÔ´
-		///	<code>Ô­ĞÍ£º~ArgsParse();</code>
+		///	è§£æå¯¹è±¡ææ„å‡½æ•°ï¼Œç”¨äºå¯¹è±¡è‡ªé‡Šæ”¾èµ„æº
+		///	<code>åŸå‹ï¼š~ArgsParse();</code>
 		///	</summary>
 		~ArgsParse(){clear();};
 		///	<summary>
-		///	´òÓ¡ÌáÊ¾ĞÅÏ¢
-		///	<code>Ô­ĞÍ£ºvoid paramsTip(String msg="");</code>
+		///	æ‰“å°æç¤ºä¿¡æ¯
+		///	<code>åŸå‹ï¼švoid paramsTip(String msg="");</code>
 		///	</summary>
-		///	<param name="msg">¸½¼ÓµÄÒª´òÓ¡µÄÌáÊ¾ĞÅÏ¢</param>
+		///	<param name="msg">é™„åŠ çš„è¦æ‰“å°çš„æç¤ºä¿¡æ¯</param>
 		void paramsTip(String msg="");
  
 		///	<summary>
-		///	ÉèÖÃÈÕÖ¾¶ÔÏóÖ¸Õë
-		///	<code>Ô­ĞÍ£ºvoid setLog(Log *log);</code>
+		///	è®¾ç½®æ—¥å¿—å¯¹è±¡æŒ‡é’ˆ
+		///	<code>åŸå‹ï¼švoid setLog(Log *log);</code>
 		///	</summary>
-		///	<param name="log">ÈÕÖ¾¶ÔÏó<see cref="Log"/></param>
+		///	<param name="log">æ—¥å¿—å¯¹è±¡<see cref="Log"/></param>
 		void setLog(Log *log){this->log=log;};
 		///	<summary>
-		///	ÇåÀí¶ÔÏóË½ÓĞÊôĞÔÖµ£¬ÊÍ·ÅÄÚ´æ¿Õ¼ä
-		///	<code>Ô­ĞÍ£ºvoid clear();</code>
+		///	æ¸…ç†å¯¹è±¡ç§æœ‰å±æ€§å€¼ï¼Œé‡Šæ”¾å†…å­˜ç©ºé—´
+		///	<code>åŸå‹ï¼švoid clear();</code>
 		///	</summary>
 		void clear(){this->argItems.clear();this->paramsValue.clear();};
 		///	<summary>
-		///	½âÎöÃüÁîĞĞ²ÎÊı£¬ÔÚ³õÊ¼»¯Ê±ÉèÖÃÁË½âÎö¹æÔò[items]ÒÔ¼°¸öÊı[_count]Ê±Ê¹ÓÃ
-		///	<code>Ô­ĞÍ£ºbool parse(int argc,char *argv[]);</code>
+		///	è§£æå‘½ä»¤è¡Œå‚æ•°ï¼Œåœ¨åˆå§‹åŒ–æ—¶è®¾ç½®äº†è§£æè§„åˆ™[items]ä»¥åŠä¸ªæ•°[_count]æ—¶ä½¿ç”¨
+		///	<code>åŸå‹ï¼šbool parse(int argc,char *argv[]);</code>
 		///	</summary>
-		///	<param name="argc">ÃüÁîĞĞ²ÎÊı¸öÊı£¬¶ÔÓ¦Êı×é²ÎÊıargv³¤¶È</param>
-		///	<param name="argv">ÃüÁîĞĞÊäÈë²ÎÊı£¬×Ö·û´®Ö¸ÕëÊı×é</param>
-		///	<returns>·µ»Ø½âÎö½á¹û£¬ÊäÈë²ÎÊıÂú×ãÆ¥Åä¹æÔòÊ±·µ»ØÕæ[true]£¬·´Ö®·µ»Ø¼Ù[false]</returns>
+		///	<param name="argc">å‘½ä»¤è¡Œå‚æ•°ä¸ªæ•°ï¼Œå¯¹åº”æ•°ç»„å‚æ•°argvé•¿åº¦</param>
+		///	<param name="argv">å‘½ä»¤è¡Œè¾“å…¥å‚æ•°ï¼Œå­—ç¬¦ä¸²æŒ‡é’ˆæ•°ç»„</param>
+		///	<returns>è¿”å›è§£æç»“æœï¼Œè¾“å…¥å‚æ•°æ»¡è¶³åŒ¹é…è§„åˆ™æ—¶è¿”å›çœŸ[true]ï¼Œåä¹‹è¿”å›å‡[false]</returns>
 		bool parse(int argc,char *argv[])
 		{
 			this->_argc=argc;
@@ -147,12 +147,12 @@ namespace Common
 			return parse();
 		};
 		///	<summary>
-		///	½âÎöÃüÁîĞĞ²ÎÊı£¬ÔÚ³õÊ¼»¯Ê±ÉèÖÃÁË²ÎÊı[argv]ÒÔ¼°¸öÊı[argc]Ê±Ê¹ÓÃ
-		///	<code>Ô­ĞÍ£ºbool parse(const ArgItem items[],int _count);</code>
+		///	è§£æå‘½ä»¤è¡Œå‚æ•°ï¼Œåœ¨åˆå§‹åŒ–æ—¶è®¾ç½®äº†å‚æ•°[argv]ä»¥åŠä¸ªæ•°[argc]æ—¶ä½¿ç”¨
+		///	<code>åŸå‹ï¼šbool parse(const ArgItem items[],int _count);</code>
 		///	</summary>
-		///	<param name="items">²ÎÊı¸ñÊ½»¯ĞÅÏ¢½á¹¹Êı×é£¬ÓÃÓÚ¼ìÑéÊäÈë²ÎÊı</param>
-		///	<param name="_count">²ÎÊı¸ñÊ½»¯ĞÅÏ¢½á¹¹Êı×é³¤¶È</param>
-		///	<returns>·µ»Ø½âÎö½á¹û£¬ÊäÈë²ÎÊıÂú×ãÆ¥Åä¹æÔòÊ±·µ»ØÕæ[true]£¬·´Ö®·µ»Ø¼Ù[false]</returns>
+		///	<param name="items">å‚æ•°æ ¼å¼åŒ–ä¿¡æ¯ç»“æ„æ•°ç»„ï¼Œç”¨äºæ£€éªŒè¾“å…¥å‚æ•°</param>
+		///	<param name="_count">å‚æ•°æ ¼å¼åŒ–ä¿¡æ¯ç»“æ„æ•°ç»„é•¿åº¦</param>
+		///	<returns>è¿”å›è§£æç»“æœï¼Œè¾“å…¥å‚æ•°æ»¡è¶³åŒ¹é…è§„åˆ™æ—¶è¿”å›çœŸ[true]ï¼Œåä¹‹è¿”å›å‡[false]</returns>
 		bool parse(const ArgItem items[],int _count)
 		{
 			argItems.clear();
@@ -161,14 +161,14 @@ namespace Common
 			return parse();
 		};
 		///	<summary>
-		///	½âÎöÃüÁîĞĞ²ÎÊı£¬ÔÚ³õÊ¼»¯Ê±ÉèÖÃÁË²ÎÊı[argv]ÒÔ¼°¸öÊı[argc]Ê±Ê¹ÓÃ
-		///	<code>Ô­ĞÍ£ºbool parse(int argc,char *argv[],const ArgItem items[],int _count);</code>
+		///	è§£æå‘½ä»¤è¡Œå‚æ•°ï¼Œåœ¨åˆå§‹åŒ–æ—¶è®¾ç½®äº†å‚æ•°[argv]ä»¥åŠä¸ªæ•°[argc]æ—¶ä½¿ç”¨
+		///	<code>åŸå‹ï¼šbool parse(int argc,char *argv[],const ArgItem items[],int _count);</code>
 		///	</summary>
-		///	<param name="argc">ÃüÁîĞĞ²ÎÊı¸öÊı£¬¶ÔÓ¦Êı×é²ÎÊıargv³¤¶È</param>
-		///	<param name="argv">ÃüÁîĞĞÊäÈë²ÎÊı£¬×Ö·û´®Ö¸ÕëÊı×é</param>
-		///	<param name="items">²ÎÊı¸ñÊ½»¯ĞÅÏ¢½á¹¹Êı×é£¬ÓÃÓÚ¼ìÑéÊäÈë²ÎÊı</param>
-		///	<param name="_count">²ÎÊı¸ñÊ½»¯ĞÅÏ¢½á¹¹Êı×é³¤¶È</param>
-		///	<returns>·µ»Ø½âÎö½á¹û£¬ÊäÈë²ÎÊıÂú×ãÆ¥Åä¹æÔòÊ±·µ»ØÕæ[true]£¬·´Ö®·µ»Ø¼Ù[false]</returns>
+		///	<param name="argc">å‘½ä»¤è¡Œå‚æ•°ä¸ªæ•°ï¼Œå¯¹åº”æ•°ç»„å‚æ•°argvé•¿åº¦</param>
+		///	<param name="argv">å‘½ä»¤è¡Œè¾“å…¥å‚æ•°ï¼Œå­—ç¬¦ä¸²æŒ‡é’ˆæ•°ç»„</param>
+		///	<param name="items">å‚æ•°æ ¼å¼åŒ–ä¿¡æ¯ç»“æ„æ•°ç»„ï¼Œç”¨äºæ£€éªŒè¾“å…¥å‚æ•°</param>
+		///	<param name="_count">å‚æ•°æ ¼å¼åŒ–ä¿¡æ¯ç»“æ„æ•°ç»„é•¿åº¦</param>
+		///	<returns>è¿”å›è§£æç»“æœï¼Œè¾“å…¥å‚æ•°æ»¡è¶³åŒ¹é…è§„åˆ™æ—¶è¿”å›çœŸ[true]ï¼Œåä¹‹è¿”å›å‡[false]</returns>
 		bool parse(int argc,char *argv[],const ArgItem items[],int _count,Log *log=NULL)
 		{
 			this->_argc=argc;
@@ -180,55 +180,55 @@ namespace Common
 			return parse();
 		};
 		///	<summary>
-		///	½âÎöÃüÁîĞĞ²ÎÊı£¬ÕæÕıµÄ½âÎö¹ı³Ì
-		///	<code>Ô­ĞÍ£ºbool parse();</code>
+		///	è§£æå‘½ä»¤è¡Œå‚æ•°ï¼ŒçœŸæ­£çš„è§£æè¿‡ç¨‹
+		///	<code>åŸå‹ï¼šbool parse();</code>
 		///	</summary>
-		///	<returns>·µ»Ø½âÎö½á¹û£¬ÊäÈë²ÎÊıÂú×ãÆ¥Åä¹æÔòÊ±·µ»ØÕæ[true]£¬·´Ö®·µ»Ø¼Ù[false]</returns>
+		///	<returns>è¿”å›è§£æç»“æœï¼Œè¾“å…¥å‚æ•°æ»¡è¶³åŒ¹é…è§„åˆ™æ—¶è¿”å›çœŸ[true]ï¼Œåä¹‹è¿”å›å‡[false]</returns>
 		bool parse();
 		/// <summary>
-		/// Ïò²ÎÊı½âÎöÌåÖĞÌí¼Ó²ÎÊıÅäÖÃÏî
-		///	<code>Ô­ĞÍ£ºvoid addParam(ArgItem item);</code>
+		/// å‘å‚æ•°è§£æä½“ä¸­æ·»åŠ å‚æ•°é…ç½®é¡¹
+		///	<code>åŸå‹ï¼švoid addParam(ArgItem item);</code>
 		/// </summary>
-		/// <param name="item">²ÎÊı¼ìÑé¹æÔòÏî<code>ÀàĞÍ£º<see cref="ArgItem"/></code></param>
+		/// <param name="item">å‚æ•°æ£€éªŒè§„åˆ™é¡¹<code>ç±»å‹ï¼š<see cref="ArgItem"/></code></param>
 		void addParam(ArgItem item);
 		/// <summary>
-		/// Ïò²ÎÊı½âÎöÌåÖĞÅúÁ¿Ìí¼Ó²ÎÊıÅäÖÃÏî
-		///	<code>Ô­ĞÍ£ºvoid addParam(Array&lt;ArgItem&gt; items);</code>
+		/// å‘å‚æ•°è§£æä½“ä¸­æ‰¹é‡æ·»åŠ å‚æ•°é…ç½®é¡¹
+		///	<code>åŸå‹ï¼švoid addParam(Array&lt;ArgItem&gt; items);</code>
 		/// </summary>
-		/// <param name="items">²ÎÊı¼ìÑé¹æÔòÏî<code>ÀàĞÍ£º<see cref="Array"/>&lt;<see cref="ArgItem"/>&gt;</code></param>
+		/// <param name="items">å‚æ•°æ£€éªŒè§„åˆ™é¡¹<code>ç±»å‹ï¼š<see cref="Array"/>&lt;<see cref="ArgItem"/>&gt;</code></param>
 		void addParam(Array<ArgItem> items);
 		/// <summary>
-		/// Ïò²ÎÊı½âÎöÌåÖĞÅúÁ¿Ìí¼Ó²ÎÊıÅäÖÃÏî
-		///	<code>Ô­ĞÍ£ºvoid addParam(const ArgItem items[],int _count);</code>
+		/// å‘å‚æ•°è§£æä½“ä¸­æ‰¹é‡æ·»åŠ å‚æ•°é…ç½®é¡¹
+		///	<code>åŸå‹ï¼švoid addParam(const ArgItem items[],int _count);</code>
 		/// </summary>
-		/// <param name="items">²ÎÊı¼ìÑé¹æÔòÏî<code>ÀàĞÍ£º<see cref="ArgItem"/>Êı×é</code></param>
-		/// <param name="_count">Êı×é²ÎÊı³¤¶È<code>ÀàĞÍ£º<see cref="int"/></code></param>
+		/// <param name="items">å‚æ•°æ£€éªŒè§„åˆ™é¡¹<code>ç±»å‹ï¼š<see cref="ArgItem"/>æ•°ç»„</code></param>
+		/// <param name="_count">æ•°ç»„å‚æ•°é•¿åº¦<code>ç±»å‹ï¼š<see cref="int"/></code></param>
 		void addParam(const ArgItem items[],int _count);
 		/// <summary>
-		/// Ïò²ÎÊı½âÎöÌåÖĞÌí¼Ó²ÎÊıÅäÖÃ
-		///	<code>Ô­ĞÍ£ºvoid addParam(const char* _prefix, const char* _name, const char* _desc,
+		/// å‘å‚æ•°è§£æä½“ä¸­æ·»åŠ å‚æ•°é…ç½®
+		///	<code>åŸå‹ï¼švoid addParam(const char* _prefix, const char* _name, const char* _desc,
 		///	                         int _needType,varType _valueType , int _length);</code>
 		/// </summary>
-		/// <param name="_prefix">²ÎÊıÇ°×º<code>ÀàĞÍ£º<see cref="char"/>Ö¸Õë</code></param>
-		/// <param name="_name">²ÎÊıÃû³Æ<code>ÀàĞÍ£º<see cref="char"/>Ö¸Õë</code></param>
-		/// <param name="_desc">²ÎÊıÃèÊö<code>ÀàĞÍ£º<see cref="char"/>Ö¸Õë</code></param>
-		/// <param name="_needType">²ÎÊıÑéÖ¤ÀàĞÍ<code>ÀàĞÍ£º<see cref="int"/></code></param>
-		/// <param name="_valueType">²ÎÊıÖµÀàĞÍ<code>ÀàĞÍ£º<see cref="varType"/></code></param>
-		/// <param name="_length">²ÎÊıÒªÇó³¤¶È<code>ÀàĞÍ£º<see cref="int"/></code></param>
+		/// <param name="_prefix">å‚æ•°å‰ç¼€<code>ç±»å‹ï¼š<see cref="char"/>æŒ‡é’ˆ</code></param>
+		/// <param name="_name">å‚æ•°åç§°<code>ç±»å‹ï¼š<see cref="char"/>æŒ‡é’ˆ</code></param>
+		/// <param name="_desc">å‚æ•°æè¿°<code>ç±»å‹ï¼š<see cref="char"/>æŒ‡é’ˆ</code></param>
+		/// <param name="_needType">å‚æ•°éªŒè¯ç±»å‹<code>ç±»å‹ï¼š<see cref="int"/></code></param>
+		/// <param name="_valueType">å‚æ•°å€¼ç±»å‹<code>ç±»å‹ï¼š<see cref="varType"/></code></param>
+		/// <param name="_length">å‚æ•°è¦æ±‚é•¿åº¦<code>ç±»å‹ï¼š<see cref="int"/></code></param>
 		void addParam(const char* _prefix, const char* _name, const char* _desc,int _needType,varType _valueType , int _length);
 		/// <summary>
-		/// ÒÆ³ı½âÎöÌåµÄ²ÎÊıÅäÖÃÏî
-		///	<code>Ô­ĞÍ£ºvoid removeParam(String s_prefix);</code>
+		/// ç§»é™¤è§£æä½“çš„å‚æ•°é…ç½®é¡¹
+		///	<code>åŸå‹ï¼švoid removeParam(String s_prefix);</code>
 		/// </summary>
-		/// <param name="s_prefix">²ÎÊıÇ°×º<code>ÀàĞÍ£º<see cref="String"/></code></param>
+		/// <param name="s_prefix">å‚æ•°å‰ç¼€<code>ç±»å‹ï¼š<see cref="String"/></code></param>
 		void removeParam(String s_prefix);
 
 		/// <summary>
-		/// »ñÈ¡ÕûÊıÖµ
-		///	<code>Ô­ĞÍ£ºinline int getInt(String _prefix);</code>
+		/// è·å–æ•´æ•°å€¼
+		///	<code>åŸå‹ï¼šinline int getInt(String _prefix);</code>
 		/// </summary>
-		/// <param name="s_prefix">²ÎÊıÇ°×º<code>ÀàĞÍ£º<see cref="String"/></code></param>
-		///	<returns>·µ»Ø½âÎöºóµÄÊäÈë²ÎÊıÖµ£¬ÈçÎª¿ÉÑ¡²ÎÊıÊ±Î´ÊäÈë´ËÏîÖµÊ±Îª0¡£</returns>
+		/// <param name="s_prefix">å‚æ•°å‰ç¼€<code>ç±»å‹ï¼š<see cref="String"/></code></param>
+		///	<returns>è¿”å›è§£æåçš„è¾“å…¥å‚æ•°å€¼ï¼Œå¦‚ä¸ºå¯é€‰å‚æ•°æ—¶æœªè¾“å…¥æ­¤é¡¹å€¼æ—¶ä¸º0ã€‚</returns>
 		inline int	getInt(String _prefix)
 		{
 			map<String,String>::const_iterator _where=paramsValue.find(_prefix.ToUpper());
@@ -240,11 +240,11 @@ namespace Common
 				return 0;
 		}
 		/// <summary>
-		/// »ñÈ¡³¤ÕûÊıÖµ
-		///	<code>Ô­ĞÍ£ºinline long getLong(String _prefix);</code>
+		/// è·å–é•¿æ•´æ•°å€¼
+		///	<code>åŸå‹ï¼šinline long getLong(String _prefix);</code>
 		/// </summary>
-		/// <param name="s_prefix">²ÎÊıÇ°×º<code>ÀàĞÍ£º<see cref="String"/></code></param>
-		///	<returns>·µ»Ø½âÎöºóµÄÊäÈë²ÎÊıÖµ£¬ÈçÎª¿ÉÑ¡²ÎÊıÊ±Î´ÊäÈë´ËÏîÖµÊ±Îª0¡£</returns>
+		/// <param name="s_prefix">å‚æ•°å‰ç¼€<code>ç±»å‹ï¼š<see cref="String"/></code></param>
+		///	<returns>è¿”å›è§£æåçš„è¾“å…¥å‚æ•°å€¼ï¼Œå¦‚ä¸ºå¯é€‰å‚æ•°æ—¶æœªè¾“å…¥æ­¤é¡¹å€¼æ—¶ä¸º0ã€‚</returns>
 		inline long getLong(String _prefix)
 		{
 			map<String,String>::const_iterator _where=paramsValue.find(_prefix.ToUpper());
@@ -256,11 +256,11 @@ namespace Common
 				return 0;
 		}
 		/// <summary>
-		/// »ñÈ¡64Î»³¤ÕûÊıÖµ
-		///	<code>Ô­ĞÍ£ºinline long long getLLong(String _prefix);</code>
+		/// è·å–64ä½é•¿æ•´æ•°å€¼
+		///	<code>åŸå‹ï¼šinline long long getLLong(String _prefix);</code>
 		/// </summary>
-		/// <param name="s_prefix">²ÎÊıÇ°×º<code>ÀàĞÍ£º<see cref="String"/></code></param>
-		///	<returns>·µ»Ø½âÎöºóµÄÊäÈë²ÎÊıÖµ£¬ÈçÎª¿ÉÑ¡²ÎÊıÊ±Î´ÊäÈë´ËÏîÖµÊ±Îª0¡£</returns>
+		/// <param name="s_prefix">å‚æ•°å‰ç¼€<code>ç±»å‹ï¼š<see cref="String"/></code></param>
+		///	<returns>è¿”å›è§£æåçš„è¾“å…¥å‚æ•°å€¼ï¼Œå¦‚ä¸ºå¯é€‰å‚æ•°æ—¶æœªè¾“å…¥æ­¤é¡¹å€¼æ—¶ä¸º0ã€‚</returns>
 		inline long long getLLong(String _prefix)
 		{
 			map<String,String>::const_iterator _where=paramsValue.find(_prefix.ToUpper());
@@ -272,11 +272,11 @@ namespace Common
 				return 0;
 		}
 		/// <summary>
-		/// »ñÈ¡×Ö·û´®ÊäÈëÖµ
-		///	<code>Ô­ĞÍ£ºinline String getStr(String _prefix);</code>
+		/// è·å–å­—ç¬¦ä¸²è¾“å…¥å€¼
+		///	<code>åŸå‹ï¼šinline String getStr(String _prefix);</code>
 		/// </summary>
-		/// <param name="s_prefix">²ÎÊıÇ°×º<code>ÀàĞÍ£º<see cref="String"/></code></param>
-		///	<returns>·µ»Ø½âÎöºóµÄÊäÈë²ÎÊıÖµ£¬ÈçÎª¿ÉÑ¡²ÎÊıÊ±Î´ÊäÈë´ËÏîÖµÊ±Îª¿Õ×Ö·û´®[""]¡£</returns>
+		/// <param name="s_prefix">å‚æ•°å‰ç¼€<code>ç±»å‹ï¼š<see cref="String"/></code></param>
+		///	<returns>è¿”å›è§£æåçš„è¾“å…¥å‚æ•°å€¼ï¼Œå¦‚ä¸ºå¯é€‰å‚æ•°æ—¶æœªè¾“å…¥æ­¤é¡¹å€¼æ—¶ä¸ºç©ºå­—ç¬¦ä¸²[""]ã€‚</returns>
 		inline String getStr(String _prefix)
 		{
 			map<String,String>::const_iterator _where=paramsValue.find(_prefix.ToUpper());
@@ -288,11 +288,11 @@ namespace Common
 				return "";
 		}
 		/// <summary>
-		/// ÅĞ¶ÏÊÇ·ñÊäÈë´ËÇ°×º²ÎÊı
-		///	<code>Ô­ĞÍ£ºinline bool getBool(String _prefix);</code>
+		/// åˆ¤æ–­æ˜¯å¦è¾“å…¥æ­¤å‰ç¼€å‚æ•°
+		///	<code>åŸå‹ï¼šinline bool getBool(String _prefix);</code>
 		/// </summary>
-		/// <param name="s_prefix">²ÎÊıÇ°×º<code>ÀàĞÍ£º<see cref="String"/></code></param>
-		///	<returns>·µ»Ø½âÎöºóµÄÊäÈë²ÎÊıÖµ£¬´æÔÚ´ËÇ°×º²ÎÊı·µ»Ø[true],·´Ö®·µ»Ø[false]¡£</returns>
+		/// <param name="s_prefix">å‚æ•°å‰ç¼€<code>ç±»å‹ï¼š<see cref="String"/></code></param>
+		///	<returns>è¿”å›è§£æåçš„è¾“å…¥å‚æ•°å€¼ï¼Œå­˜åœ¨æ­¤å‰ç¼€å‚æ•°è¿”å›[true],åä¹‹è¿”å›[false]ã€‚</returns>
 		inline bool getBool(String _prefix)
 		{
 			map<String,String>::const_iterator _where=paramsValue.find(_prefix.ToUpper());
@@ -300,51 +300,51 @@ namespace Common
 		}
 
 		/// <summary>
-		/// ÉèÖÃ½âÎöÌåÖĞµÄ²ÎÊıÖµ
-		///	<code>Ô­ĞÍ£ºinline bool setInt(String _prefix,int val);</code>
+		/// è®¾ç½®è§£æä½“ä¸­çš„å‚æ•°å€¼
+		///	<code>åŸå‹ï¼šinline bool setInt(String _prefix,int val);</code>
 		/// </summary>
-		/// <param name="s_prefix">²ÎÊıÇ°×º<code>ÀàĞÍ£º<see cref="String"/></code></param>
-		/// <param name="val">²ÎÊıÖµ<code>ÀàĞÍ£º<see cref="int"/></code></param>
+		/// <param name="s_prefix">å‚æ•°å‰ç¼€<code>ç±»å‹ï¼š<see cref="String"/></code></param>
+		/// <param name="val">å‚æ•°å€¼<code>ç±»å‹ï¼š<see cref="int"/></code></param>
 		inline void setInt(String _prefix,int val)
 		{
 			paramsValue[_prefix.ToUpper()]=String(val);
 		}
 		/// <summary>
-		/// ÉèÖÃ½âÎöÌåÖĞµÄ²ÎÊıÖµ
-		///	<code>Ô­ĞÍ£ºinline void setStr(String _prefix,String val);</code>
+		/// è®¾ç½®è§£æä½“ä¸­çš„å‚æ•°å€¼
+		///	<code>åŸå‹ï¼šinline void setStr(String _prefix,String val);</code>
 		/// </summary>
-		/// <param name="s_prefix">²ÎÊıÇ°×º<code>ÀàĞÍ£º<see cref="String"/></code></param>
-		/// <param name="val">²ÎÊıÖµ<code>ÀàĞÍ£º<see cref="String"/></code></param>
+		/// <param name="s_prefix">å‚æ•°å‰ç¼€<code>ç±»å‹ï¼š<see cref="String"/></code></param>
+		/// <param name="val">å‚æ•°å€¼<code>ç±»å‹ï¼š<see cref="String"/></code></param>
 		inline void setStr(String _prefix,String val)
 		{
 			paramsValue[_prefix.ToUpper()]=val;
 		}
 		/// <summary>
-		/// ÉèÖÃ½âÎöÌåÖĞµÄ²ÎÊıÖµ
-		///	<code>Ô­ĞÍ£ºinline void setLong(String _prefix,long val);</code>
+		/// è®¾ç½®è§£æä½“ä¸­çš„å‚æ•°å€¼
+		///	<code>åŸå‹ï¼šinline void setLong(String _prefix,long val);</code>
 		/// </summary>
-		/// <param name="s_prefix">²ÎÊıÇ°×º<code>ÀàĞÍ£º<see cref="String"/></code></param>
-		/// <param name="val">²ÎÊıÖµ<code>ÀàĞÍ£º<see cref="long"/></code></param>
+		/// <param name="s_prefix">å‚æ•°å‰ç¼€<code>ç±»å‹ï¼š<see cref="String"/></code></param>
+		/// <param name="val">å‚æ•°å€¼<code>ç±»å‹ï¼š<see cref="long"/></code></param>
 		inline void setLong(String _prefix,long val)
 		{
 			paramsValue[_prefix.ToUpper()]=String(val);
 		}
 		/// <summary>
-		/// ÉèÖÃ½âÎöÌåÖĞµÄ²ÎÊıÖµ
-		///	<code>Ô­ĞÍ£ºinline void setLLong(String _prefix,long long val);</code>
+		/// è®¾ç½®è§£æä½“ä¸­çš„å‚æ•°å€¼
+		///	<code>åŸå‹ï¼šinline void setLLong(String _prefix,long long val);</code>
 		/// </summary>
-		/// <param name="s_prefix">²ÎÊıÇ°×º<code>ÀàĞÍ£º<see cref="String"/></code></param>
-		/// <param name="val">²ÎÊıÖµ<code>ÀàĞÍ£º<see cref="long long"/></code></param>
+		/// <param name="s_prefix">å‚æ•°å‰ç¼€<code>ç±»å‹ï¼š<see cref="String"/></code></param>
+		/// <param name="val">å‚æ•°å€¼<code>ç±»å‹ï¼š<see cref="long long"/></code></param>
 		inline void setLLong(String _prefix,long long val)
 		{
 			paramsValue[_prefix.ToUpper()]=String(val);
 		}
 		/// <summary>
-		/// ÉèÖÃ½âÎöÌåÖĞµÄ²ÎÊıÖµ
-		///	<code>Ô­ĞÍ£ºinline void setBool(String _prefix,bool val);</code>
+		/// è®¾ç½®è§£æä½“ä¸­çš„å‚æ•°å€¼
+		///	<code>åŸå‹ï¼šinline void setBool(String _prefix,bool val);</code>
 		/// </summary>
-		/// <param name="s_prefix">²ÎÊıÇ°×º<code>ÀàĞÍ£º<see cref="String"/></code></param>
-		/// <param name="val">²ÎÊıÖµ<code>ÀàĞÍ£º<see cref="bool"/></code></param>
+		/// <param name="s_prefix">å‚æ•°å‰ç¼€<code>ç±»å‹ï¼š<see cref="String"/></code></param>
+		/// <param name="val">å‚æ•°å€¼<code>ç±»å‹ï¼š<see cref="bool"/></code></param>
 		inline void setBool(String _prefix,bool val)
 		{
 			if(val)

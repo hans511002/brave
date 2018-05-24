@@ -10,7 +10,7 @@
 //				modify and redistribute it for any purpose is hereby granted
 //				without fee, provided that the above copyright notice appear
 //				in all copies.
-//				Ê±¼äÀà²Ù×÷ÔËËã·ûº¯Êı
+//				æ—¶é—´ç±»æ“ä½œè¿ç®—ç¬¦å‡½æ•°
 // ==============================================================
 
 #ifndef __Common_DateTimeFun_H__ 
@@ -19,179 +19,179 @@ namespace Common
 {
 		/**************************************************************************
 		*
-		*					²Ù×÷·ûÖØÔØ
+		*					æ“ä½œç¬¦é‡è½½
 		*
 		**************************************************************************/
  		///	<summary>
-		///	´ÓÒ»¸öÖ¸¶¨ÈÕÆÚºÍÊ±¼ä¼õÈ¥ÁíÒ»¸öÖ¸¶¨µÄÈÕÆÚºÍÊ±¼äÒÔÉú³ÉÊ±¼ä¼ä¸ô<see cref="TimeSpan"/>
-		///	<code>Ô­ĞÍ£ºTimeSpan operator -(DateTime d1, DateTime d2);</code>
+		///	ä»ä¸€ä¸ªæŒ‡å®šæ—¥æœŸå’Œæ—¶é—´å‡å»å¦ä¸€ä¸ªæŒ‡å®šçš„æ—¥æœŸå’Œæ—¶é—´ä»¥ç”Ÿæˆæ—¶é—´é—´éš”<see cref="TimeSpan"/>
+		///	<code>åŸå‹ï¼šTimeSpan operator -(DateTime d1, DateTime d2);</code>
 		///	</summary>
-		///	<param name="d1">Ê±¼äÒ»<see cref="DateTime"/>£¨¼õÊı£©</param>
-		///	<param name="d2">Ê±¼äÆ¬<see cref="DateTime"/>£¨±»¼õÊı£©</param>
-		///	<returns>Ò»¸öĞÂµÄ<see cref="TimeSpan"/>¶ÔÏó£¬ËüÊÇ d1 ºÍ d2 Ö®¼äµÄÊ±¼ä¼ä¸ô£¬¼´ d1 ¼õÈ¥ d2¡£</returns>
+		///	<param name="d1">æ—¶é—´ä¸€<see cref="DateTime"/>ï¼ˆå‡æ•°ï¼‰</param>
+		///	<param name="d2">æ—¶é—´ç‰‡<see cref="DateTime"/>ï¼ˆè¢«å‡æ•°ï¼‰</param>
+		///	<returns>ä¸€ä¸ªæ–°çš„<see cref="TimeSpan"/>å¯¹è±¡ï¼Œå®ƒæ˜¯ d1 å’Œ d2 ä¹‹é—´çš„æ—¶é—´é—´éš”ï¼Œå³ d1 å‡å» d2ã€‚</returns>
 		TimeSpan operator -(DateTime d1, DateTime d2);
  		///	<summary>
-		///	´ÓÖ¸¶¨µÄÈÕÆÚºÍÊ±¼ä¼õÈ¥Ö¸¶¨µÄÊ±¼ä¼ä¸ô£¬ÒÔÉú³ÉĞÂµÄÈÕÆÚºÍÊ±¼ä¡£
-		///	<code>Ô­ĞÍ£ºDateTime operator -(DateTime d, TimeSpan t);</code>
+		///	ä»æŒ‡å®šçš„æ—¥æœŸå’Œæ—¶é—´å‡å»æŒ‡å®šçš„æ—¶é—´é—´éš”ï¼Œä»¥ç”Ÿæˆæ–°çš„æ—¥æœŸå’Œæ—¶é—´ã€‚
+		///	<code>åŸå‹ï¼šDateTime operator -(DateTime d, TimeSpan t);</code>
 		///	</summary>
-		///	<param name="d">Ê±¼ä<see cref="DateTime"/></param>
-		///	<param name="t">Ê±¼äÆ¬<see cref="TimeSpan"/></param>
-		///	<returns>Ò»¸öĞÂµÄ<see cref="DateTime"/>¶ÔÏó£¬ÖµÎªd±íÊ¾µÄÊ±¼ä¼õÈ¥t±íÊ¾µÄÊ±¼äÆ¬</returns>
+		///	<param name="d">æ—¶é—´<see cref="DateTime"/></param>
+		///	<param name="t">æ—¶é—´ç‰‡<see cref="TimeSpan"/></param>
+		///	<returns>ä¸€ä¸ªæ–°çš„<see cref="DateTime"/>å¯¹è±¡ï¼Œå€¼ä¸ºdè¡¨ç¤ºçš„æ—¶é—´å‡å»tè¡¨ç¤ºçš„æ—¶é—´ç‰‡</returns>
 		DateTime operator -(DateTime d, TimeSpan t);
  		///	<summary>
-		///	È·¶¨ <see cref="DateTime"/> µÄÁ½¸öÖ¸¶¨µÄÊµÀıÊÇ·ñ²»µÈ¡£
-		///	<code>Ô­ĞÍ£ºbool operator !=(DateTime d1, DateTime d2);</code>
+		///	ç¡®å®š <see cref="DateTime"/> çš„ä¸¤ä¸ªæŒ‡å®šçš„å®ä¾‹æ˜¯å¦ä¸ç­‰ã€‚
+		///	<code>åŸå‹ï¼šbool operator !=(DateTime d1, DateTime d2);</code>
 		///	</summary>
-		///	<param name="d1">Ê±¼äÒ»<see cref="DateTime"/></param>
-		///	<param name="d2">Ê±¼ä¶ş<see cref="DateTime"/></param>
-		///	<returns>Èç¹û d1 ºÍ d2 ²»±íÊ¾Í¬Ò»ÈÕÆÚºÍÊ±¼ä£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>
+		///	<param name="d1">æ—¶é—´ä¸€<see cref="DateTime"/></param>
+		///	<param name="d2">æ—¶é—´äºŒ<see cref="DateTime"/></param>
+		///	<returns>å¦‚æœ d1 å’Œ d2 ä¸è¡¨ç¤ºåŒä¸€æ—¥æœŸå’Œæ—¶é—´ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>
 		bool operator !=(DateTime d1, DateTime d2);
  		///	<summary>
-		///	½«Ö¸¶¨µÄÊ±¼ä¼ä¸ô¼Ó<see cref="TimeSpan"/>µ½Ö¸¶¨µÄÈÕÆÚºÍÊ±¼äÒÔÉú³ÉĞÂµÄÈÕÆÚºÍÊ±¼ä<see cref="DateTime"/>¡£
-		///	<code>Ô­ĞÍ£ºDateTime operator +(DateTime d, TimeSpan t);</code>
+		///	å°†æŒ‡å®šçš„æ—¶é—´é—´éš”åŠ <see cref="TimeSpan"/>åˆ°æŒ‡å®šçš„æ—¥æœŸå’Œæ—¶é—´ä»¥ç”Ÿæˆæ–°çš„æ—¥æœŸå’Œæ—¶é—´<see cref="DateTime"/>ã€‚
+		///	<code>åŸå‹ï¼šDateTime operator +(DateTime d, TimeSpan t);</code>
 		///	</summary>
-		///	<param name="d">Ê±¼ä<see cref="DateTime"/>£¬×óÖµ</param>
-		///	<param name="t">Ê±¼äÆ¬<see cref="TimeSpan"/></param>
-		///	<returns>Ò»¸öĞÂµÄ<see cref="DateTime"/>¶ÔÏó£¬ÖµÎªd±íÊ¾µÄÊ±¼ä¼ÓÉÏt±íÊ¾µÄÊ±¼äÆ¬</returns>
+		///	<param name="d">æ—¶é—´<see cref="DateTime"/>ï¼Œå·¦å€¼</param>
+		///	<param name="t">æ—¶é—´ç‰‡<see cref="TimeSpan"/></param>
+		///	<returns>ä¸€ä¸ªæ–°çš„<see cref="DateTime"/>å¯¹è±¡ï¼Œå€¼ä¸ºdè¡¨ç¤ºçš„æ—¶é—´åŠ ä¸Štè¡¨ç¤ºçš„æ—¶é—´ç‰‡</returns>
 		DateTime operator +(DateTime d, TimeSpan t);
  		///	<summary>
-		///	¶ÔÖ¸¶¨µÄ<see cref="DateTime"/>¶ÔÏó¼ÓÉÏÒ»¸öÖ¸¶¨µÄÊ±¼äÆ¬<see cref="TimeSpan"/>¡£
-		///	<code>Ô­ĞÍ£ºDateTime &lt;operator +=(DateTime d, TimeSpan t);</code>
+		///	å¯¹æŒ‡å®šçš„<see cref="DateTime"/>å¯¹è±¡åŠ ä¸Šä¸€ä¸ªæŒ‡å®šçš„æ—¶é—´ç‰‡<see cref="TimeSpan"/>ã€‚
+		///	<code>åŸå‹ï¼šDateTime &lt;operator +=(DateTime d, TimeSpan t);</code>
 		///	</summary>
-		///	<param name="d">Ê±¼ä<see cref="DateTime"/>£¬×óÖµ</param>
-		///	<param name="t">Ê±¼äÆ¬<see cref="TimeSpan"/></param>
-		///	<returns>·µ»Ød±¾Éí,ÔÚdÉÏ¼ÓÉÏt±íÊ¾µÄÊ±¼äÆ¬</returns>
+		///	<param name="d">æ—¶é—´<see cref="DateTime"/>ï¼Œå·¦å€¼</param>
+		///	<param name="t">æ—¶é—´ç‰‡<see cref="TimeSpan"/></param>
+		///	<returns>è¿”å›dæœ¬èº«,åœ¨dä¸ŠåŠ ä¸Štè¡¨ç¤ºçš„æ—¶é—´ç‰‡</returns>
 		DateTime &operator +=(DateTime &d, TimeSpan t);
  		///	<summary>
-		///	¶ş¸ö<see cref="DateTime"/>¶ÔÏóµÄ±È½Ï¡£È·¶¨Ö¸¶¨µÄ <see cref="DateTime"/>ÊÇ·ñĞ¡ÓÚÁíÒ»¸öÖ¸¶¨µÄ <see cref="DateTime"/>¡£
-		///	<code>Ô­ĞÍ£ºbool operator &lt;(DateTime d1, DateTime d2);</code>
+		///	äºŒä¸ª<see cref="DateTime"/>å¯¹è±¡çš„æ¯”è¾ƒã€‚ç¡®å®šæŒ‡å®šçš„ <see cref="DateTime"/>æ˜¯å¦å°äºå¦ä¸€ä¸ªæŒ‡å®šçš„ <see cref="DateTime"/>ã€‚
+		///	<code>åŸå‹ï¼šbool operator &lt;(DateTime d1, DateTime d2);</code>
 		///	</summary>
-		///	<param name="d1">Ê±¼äÒ»<see cref="DateTime"/></param>
-		///	<param name="d2">Ê±¼ä¶ş<see cref="DateTime"/></param>
-		///	<returns>Èç¹û d1±íÊ¾µÄÊ±¼ä±È d2 ±íÊ¾µÄÊ±¼ä¸üÔç£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>
+		///	<param name="d1">æ—¶é—´ä¸€<see cref="DateTime"/></param>
+		///	<param name="d2">æ—¶é—´äºŒ<see cref="DateTime"/></param>
+		///	<returns>å¦‚æœ d1è¡¨ç¤ºçš„æ—¶é—´æ¯” d2 è¡¨ç¤ºçš„æ—¶é—´æ›´æ—©ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>
 		bool operator <(DateTime t1, DateTime t2);
  		///	<summary>
-		///	¶ş¸ö<see cref="DateTime"/>¶ÔÏóµÄ±È½Ï¡£È·¶¨Ö¸¶¨µÄ <see cref="DateTime"/>ÊÇ·ñĞ¡ÓÚ»òµÈÓÚÁíÒ»¸öÖ¸¶¨µÄ <see cref="DateTime"/>¡£
-		///	<code>Ô­ĞÍ£ºbool operator &lt;=(DateTime d1, DateTime d2);</code>
+		///	äºŒä¸ª<see cref="DateTime"/>å¯¹è±¡çš„æ¯”è¾ƒã€‚ç¡®å®šæŒ‡å®šçš„ <see cref="DateTime"/>æ˜¯å¦å°äºæˆ–ç­‰äºå¦ä¸€ä¸ªæŒ‡å®šçš„ <see cref="DateTime"/>ã€‚
+		///	<code>åŸå‹ï¼šbool operator &lt;=(DateTime d1, DateTime d2);</code>
 		///	</summary>
-		///	<param name="d1">Ê±¼äÒ»<see cref="DateTime"/></param>
-		///	<param name="d2">Ê±¼ä¶ş<see cref="DateTime"/></param>
-		///	<returns>Èç¹û d1±íÊ¾µÄÊ±¼ä±È d2 ±íÊ¾µÄÊ±¼ä¸üÔç»òÏàÍ¬£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>
+		///	<param name="d1">æ—¶é—´ä¸€<see cref="DateTime"/></param>
+		///	<param name="d2">æ—¶é—´äºŒ<see cref="DateTime"/></param>
+		///	<returns>å¦‚æœ d1è¡¨ç¤ºçš„æ—¶é—´æ¯” d2 è¡¨ç¤ºçš„æ—¶é—´æ›´æ—©æˆ–ç›¸åŒï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>
 		bool operator <=(DateTime d1, DateTime d2);
  		///	<summary>
-		///	¶ş¸ö<see cref="DateTime"/>¶ÔÏóµÄ±È½Ï¡£È·¶¨<see cref="DateTime"/>µÄÁ½¸öÖ¸¶¨µÄÊµÀıÊÇ·ñÏàµÈ¡£
-		///	<code>Ô­ĞÍ£ºbool operator ==(DateTime d1, DateTime d2);</code>
+		///	äºŒä¸ª<see cref="DateTime"/>å¯¹è±¡çš„æ¯”è¾ƒã€‚ç¡®å®š<see cref="DateTime"/>çš„ä¸¤ä¸ªæŒ‡å®šçš„å®ä¾‹æ˜¯å¦ç›¸ç­‰ã€‚
+		///	<code>åŸå‹ï¼šbool operator ==(DateTime d1, DateTime d2);</code>
 		///	</summary>
-		///	<param name="d1">Ê±¼äÒ»<see cref="DateTime"/></param>
-		///	<param name="d2">Ê±¼ä¶ş<see cref="DateTime"/></param>
-		///	<returns>Èç¹û d1 ºÍ d2 ±íÊ¾Í¬Ò»ÈÕÆÚºÍÊ±¼ä£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>
+		///	<param name="d1">æ—¶é—´ä¸€<see cref="DateTime"/></param>
+		///	<param name="d2">æ—¶é—´äºŒ<see cref="DateTime"/></param>
+		///	<returns>å¦‚æœ d1 å’Œ d2 è¡¨ç¤ºåŒä¸€æ—¥æœŸå’Œæ—¶é—´ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>
 		bool operator ==(DateTime d1, DateTime d2);
  		///	<summary>
-		///	¶ş¸ö<see cref="DateTime"/>¶ÔÏóµÄ±È½Ï¡£È·¶¨Ö¸¶¨µÄ<see cref="DateTime"/>ÊÇ·ñ´óÓÚÁíÒ»¸öÖ¸¶¨µÄ<see cref="DateTime"/>¡£
-		///	<code>Ô­ĞÍ£ºbool operator >(DateTime t1, DateTime t2);</code>
+		///	äºŒä¸ª<see cref="DateTime"/>å¯¹è±¡çš„æ¯”è¾ƒã€‚ç¡®å®šæŒ‡å®šçš„<see cref="DateTime"/>æ˜¯å¦å¤§äºå¦ä¸€ä¸ªæŒ‡å®šçš„<see cref="DateTime"/>ã€‚
+		///	<code>åŸå‹ï¼šbool operator >(DateTime t1, DateTime t2);</code>
 		///	</summary>
-		///	<param name="d1">Ê±¼äÒ»<see cref="DateTime"/></param>
-		///	<param name="d2">Ê±¼ä¶ş<see cref="DateTime"/></param>
-		///	<returns>Èç¹û d1±íÊ¾µÄÊ±¼ä±Èd2±íÊ¾µÄÊ±¼ä¸üÍí£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>
+		///	<param name="d1">æ—¶é—´ä¸€<see cref="DateTime"/></param>
+		///	<param name="d2">æ—¶é—´äºŒ<see cref="DateTime"/></param>
+		///	<returns>å¦‚æœ d1è¡¨ç¤ºçš„æ—¶é—´æ¯”d2è¡¨ç¤ºçš„æ—¶é—´æ›´æ™šï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>
 		bool operator >(DateTime d1, DateTime d2);
  		///	<summary>
-		///	¶ş¸ö<see cref="DateTime"/>¶ÔÏóµÄ±È½Ï¡£È·¶¨Ö¸¶¨µÄ<see cref="DateTime"/>ÊÇ·ñ´óÓÚ»òµÈÓÚÁíÒ»¸öÖ¸¶¨µÄ<see cref="DateTime"/>¡£
-		///	<code>Ô­ĞÍ£ºbool operator >=(DateTime t1, DateTime t2);</code>
+		///	äºŒä¸ª<see cref="DateTime"/>å¯¹è±¡çš„æ¯”è¾ƒã€‚ç¡®å®šæŒ‡å®šçš„<see cref="DateTime"/>æ˜¯å¦å¤§äºæˆ–ç­‰äºå¦ä¸€ä¸ªæŒ‡å®šçš„<see cref="DateTime"/>ã€‚
+		///	<code>åŸå‹ï¼šbool operator >=(DateTime t1, DateTime t2);</code>
 		///	</summary>
-		///	<param name="d1">Ê±¼äÒ»<see cref="DateTime"/></param>
-		///	<param name="d2">Ê±¼ä¶ş<see cref="DateTime"/></param>
-		///	<returns>Èç¹û d1±íÊ¾µÄÊ±¼ä±Èd2±íÊ¾µÄÊ±¼ä¸üÍí£¬»ò¸úd2±íÊ¾Í¬Ò»Ê±¼äµã£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>
+		///	<param name="d1">æ—¶é—´ä¸€<see cref="DateTime"/></param>
+		///	<param name="d2">æ—¶é—´äºŒ<see cref="DateTime"/></param>
+		///	<returns>å¦‚æœ d1è¡¨ç¤ºçš„æ—¶é—´æ¯”d2è¡¨ç¤ºçš„æ—¶é—´æ›´æ™šï¼Œæˆ–è·Ÿd2è¡¨ç¤ºåŒä¸€æ—¶é—´ç‚¹ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>
 		bool operator >=(DateTime d1, DateTime d2);
 
 /****************************************************************************
 				TimeSpan
 ********************************************************************************/
  		///	<summary>
-		///	·µ»ØÆäÖµÎªÖ¸¶¨ÊµÀıµÄÏà·´ÖµµÄ<see cref="TimeSpan"/>¡£
-		///	<code>Ô­ĞÍ£ºTimeSpan &amp;operator -(TimeSpan &amp;t1);</code>
+		///	è¿”å›å…¶å€¼ä¸ºæŒ‡å®šå®ä¾‹çš„ç›¸åå€¼çš„<see cref="TimeSpan"/>ã€‚
+		///	<code>åŸå‹ï¼šTimeSpan &amp;operator -(TimeSpan &amp;t1);</code>
 		///	</summary>
-		///	<param name="t1">Ê±¼äÆ¬<see cref="TimeSpan"/>£¬ÒªÈ¡·´µÄ×óÖµ</param>
-		///	<returns>Óë´ËÊµÀıµÄÊıÖµÏàÍ¬£¬µ«·ûºÅÏà·´µÄ<see cref="TimeSpan"/>¡£</returns>
+		///	<param name="t1">æ—¶é—´ç‰‡<see cref="TimeSpan"/>ï¼Œè¦å–åçš„å·¦å€¼</param>
+		///	<returns>ä¸æ­¤å®ä¾‹çš„æ•°å€¼ç›¸åŒï¼Œä½†ç¬¦å·ç›¸åçš„<see cref="TimeSpan"/>ã€‚</returns>
         TimeSpan &operator -(TimeSpan &t);
  		///	<summary>
-		///	Ê±¼äÆ¬Ïà¼õ<see cref="TimeSpan"/>¡£
-		///	<code>Ô­ĞÍ£ºTimeSpan operator -(TimeSpan &amp;t1, TimeSpan &amp;t2);</code>
+		///	æ—¶é—´ç‰‡ç›¸å‡<see cref="TimeSpan"/>ã€‚
+		///	<code>åŸå‹ï¼šTimeSpan operator -(TimeSpan &amp;t1, TimeSpan &amp;t2);</code>
 		///	</summary>
-		///	<param name="t1">Ê±¼äÆ¬Ò»<see cref="TimeSpan"/></param>
-		///	<param name="t2">Ê±¼äÆ¬¶ş<see cref="TimeSpan"/></param>
-		///	<returns>Ò»¸öĞÂµÄÊ±¼äÆ¬¶ÔÏó£¬ÖµÎªt1Öµ¼õÑ¹È¥t2ÒÔºóµÄÖµ¡£</returns>
+		///	<param name="t1">æ—¶é—´ç‰‡ä¸€<see cref="TimeSpan"/></param>
+		///	<param name="t2">æ—¶é—´ç‰‡äºŒ<see cref="TimeSpan"/></param>
+		///	<returns>ä¸€ä¸ªæ–°çš„æ—¶é—´ç‰‡å¯¹è±¡ï¼Œå€¼ä¸ºt1å€¼å‡å‹å»t2ä»¥åçš„å€¼ã€‚</returns>
 		TimeSpan operator -(TimeSpan &t1, TimeSpan &t2);
  		///	<summary>
-		///	Ê±¼äÆ¬Ïà¼õ<see cref="TimeSpan"/>¡£
-		///	<code>Ô­ĞÍ£ºTimeSpan &amp;operator -=(TimeSpan &amp;t1, TimeSpan &amp;t2);</code>
+		///	æ—¶é—´ç‰‡ç›¸å‡<see cref="TimeSpan"/>ã€‚
+		///	<code>åŸå‹ï¼šTimeSpan &amp;operator -=(TimeSpan &amp;t1, TimeSpan &amp;t2);</code>
 		///	</summary>
-		///	<param name="t1">Ê±¼äÆ¬Ò»,×óÖµ<see cref="TimeSpan"/></param>
-		///	<param name="t2">Ê±¼äÆ¬¶ş<see cref="TimeSpan"/></param>
-		///	<returns>·µ»Ø¼õÈ¥t2µÄt1±¾Éí¡£</returns>
+		///	<param name="t1">æ—¶é—´ç‰‡ä¸€,å·¦å€¼<see cref="TimeSpan"/></param>
+		///	<param name="t2">æ—¶é—´ç‰‡äºŒ<see cref="TimeSpan"/></param>
+		///	<returns>è¿”å›å‡å»t2çš„t1æœ¬èº«ã€‚</returns>
 		TimeSpan &operator -=(TimeSpan &t1, TimeSpan &t2);
  		///	<summary>
-		///	Ö¸Ê¾Á½¸ö <see cref="TimeSpan"/>ÊµÀıÊÇ·ñ²»ÏàµÈ¡£
-		///	<code>Ô­ĞÍ£ºbool operator !=(TimeSpan &amp;t1, TimeSpan &amp;t2);;</code>
+		///	æŒ‡ç¤ºä¸¤ä¸ª <see cref="TimeSpan"/>å®ä¾‹æ˜¯å¦ä¸ç›¸ç­‰ã€‚
+		///	<code>åŸå‹ï¼šbool operator !=(TimeSpan &amp;t1, TimeSpan &amp;t2);;</code>
 		///	</summary>
-		///	<param name="t1">Ê±¼äÆ¬Ò»<see cref="TimeSpan"/></param>
-		///	<param name="t2">Ê±¼äÆ¬¶ş<see cref="TimeSpan"/></param>
-		///	<returns>Èç¹û t1 ºÍ t2 µÄÖµ²»ÏàµÈ£¬ÔòÎª true£»·ñÔòÎª false¡£¡£</returns>
+		///	<param name="t1">æ—¶é—´ç‰‡ä¸€<see cref="TimeSpan"/></param>
+		///	<param name="t2">æ—¶é—´ç‰‡äºŒ<see cref="TimeSpan"/></param>
+		///	<returns>å¦‚æœ t1 å’Œ t2 çš„å€¼ä¸ç›¸ç­‰ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚ã€‚</returns>
         bool operator !=(TimeSpan &t1, TimeSpan &t2);
  		///	<summary>
-		///	¶ş¸öÊ±¼äÆ¬µÄÏà¼Ó<see cref="TimeSpan"/>
-		///	<code>Ô­ĞÍ£ºTimeSpan operator +(TimeSpan &amp;t1, TimeSpan &amp;t2);</code>
+		///	äºŒä¸ªæ—¶é—´ç‰‡çš„ç›¸åŠ <see cref="TimeSpan"/>
+		///	<code>åŸå‹ï¼šTimeSpan operator +(TimeSpan &amp;t1, TimeSpan &amp;t2);</code>
 		///	</summary>
-		///	<param name="t1">Ê±¼äÆ¬Ò»<see cref="TimeSpan"/></param>
-		///	<param name="t2">Ê±¼äÆ¬¶ş<see cref="TimeSpan"/></param>
-		///	<returns>Ò»¸öĞÂµÄÊ±¼äÆ¬¶ÔÏó£¬ÖµÎªt1+t2µÄºÍ¡£</returns>
+		///	<param name="t1">æ—¶é—´ç‰‡ä¸€<see cref="TimeSpan"/></param>
+		///	<param name="t2">æ—¶é—´ç‰‡äºŒ<see cref="TimeSpan"/></param>
+		///	<returns>ä¸€ä¸ªæ–°çš„æ—¶é—´ç‰‡å¯¹è±¡ï¼Œå€¼ä¸ºt1+t2çš„å’Œã€‚</returns>
         TimeSpan operator +(TimeSpan &t1, TimeSpan &t2);
  		///	<summary>
-		///	¶ş¸öÊ±¼äÆ¬µÄÏà¼Ó<see cref="TimeSpan"/>
-		///	<code>Ô­ĞÍ£ºTimeSpan &amp;operator +=(TimeSpan &amp;t1, TimeSpan &amp;t2);</code>
+		///	äºŒä¸ªæ—¶é—´ç‰‡çš„ç›¸åŠ <see cref="TimeSpan"/>
+		///	<code>åŸå‹ï¼šTimeSpan &amp;operator +=(TimeSpan &amp;t1, TimeSpan &amp;t2);</code>
 		///	</summary>
-		///	<param name="t1">Ê±¼äÆ¬Ò»£¬×óÖµ<see cref="TimeSpan"/></param>
-		///	<param name="t2">Ê±¼äÆ¬¶ş<see cref="TimeSpan"/></param>
-		///	<returns>·µ»Ø¼ÓÉÏt2µÄt1±¾Éí¡£</returns>
+		///	<param name="t1">æ—¶é—´ç‰‡ä¸€ï¼Œå·¦å€¼<see cref="TimeSpan"/></param>
+		///	<param name="t2">æ—¶é—´ç‰‡äºŒ<see cref="TimeSpan"/></param>
+		///	<returns>è¿”å›åŠ ä¸Št2çš„t1æœ¬èº«ã€‚</returns>
 		TimeSpan &operator +=(TimeSpan &t1, TimeSpan &t2);
  		///	<summary>
-		///	Ê±¼äÆ¬µÄ´óĞ¡±È½Ï¡£Ö¸Ê¾Ö¸¶¨µÄ<see cref="TimeSpan"/>ÊÇ·ñĞ¡ÓÚÁíÒ»¸öÖ¸¶¨µÄ<see cref="TimeSpan"/>
-		///	<code>Ô­ĞÍ£ºbool operator &lt;TimeSpan &amp;t1, TimeSpan &amp;t2);</code>
+		///	æ—¶é—´ç‰‡çš„å¤§å°æ¯”è¾ƒã€‚æŒ‡ç¤ºæŒ‡å®šçš„<see cref="TimeSpan"/>æ˜¯å¦å°äºå¦ä¸€ä¸ªæŒ‡å®šçš„<see cref="TimeSpan"/>
+		///	<code>åŸå‹ï¼šbool operator &lt;TimeSpan &amp;t1, TimeSpan &amp;t2);</code>
 		///	</summary>
-		///	<param name="t1">Ê±¼äÆ¬Ò»<see cref="TimeSpan"/></param>
-		///	<param name="t2">Ê±¼äÆ¬¶ş<see cref="TimeSpan"/></param>
-		///	<returns>Èç¹û t1 µÄÖµĞ¡ÓÚ t2 µÄÖµ£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>
+		///	<param name="t1">æ—¶é—´ç‰‡ä¸€<see cref="TimeSpan"/></param>
+		///	<param name="t2">æ—¶é—´ç‰‡äºŒ<see cref="TimeSpan"/></param>
+		///	<returns>å¦‚æœ t1 çš„å€¼å°äº t2 çš„å€¼ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>
         bool operator <(TimeSpan &t1, TimeSpan &t2);
  		///	<summary>
-		///	Ê±¼äÆ¬µÄ´óĞ¡±È½Ï¡£Ö¸Ê¾Ö¸¶¨µÄ<see cref="TimeSpan"/>ÊÇ·ñĞ¡ÓÚ»òµÈÓÚÁíÒ»¸öÖ¸¶¨µÄ<see cref="TimeSpan"/>
-		///	<code>Ô­ĞÍ£ºbool operator &lt;=TimeSpan &amp;t1, TimeSpan &amp;t2);</code>
+		///	æ—¶é—´ç‰‡çš„å¤§å°æ¯”è¾ƒã€‚æŒ‡ç¤ºæŒ‡å®šçš„<see cref="TimeSpan"/>æ˜¯å¦å°äºæˆ–ç­‰äºå¦ä¸€ä¸ªæŒ‡å®šçš„<see cref="TimeSpan"/>
+		///	<code>åŸå‹ï¼šbool operator &lt;=TimeSpan &amp;t1, TimeSpan &amp;t2);</code>
 		///	</summary>
-		///	<param name="t1">Ê±¼äÆ¬Ò»<see cref="TimeSpan"/></param>
-		///	<param name="t2">Ê±¼äÆ¬¶ş<see cref="TimeSpan"/></param>
-		///	<returns>Èç¹û t1 µÄÖµĞ¡ÓÚ»òµÈÓÚ t2 µÄÖµ£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>
+		///	<param name="t1">æ—¶é—´ç‰‡ä¸€<see cref="TimeSpan"/></param>
+		///	<param name="t2">æ—¶é—´ç‰‡äºŒ<see cref="TimeSpan"/></param>
+		///	<returns>å¦‚æœ t1 çš„å€¼å°äºæˆ–ç­‰äº t2 çš„å€¼ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>
        bool operator <=(TimeSpan &t1, TimeSpan &t2);
 		///	<summary>
-		///	Ê±¼äÆ¬µÄ´óĞ¡±È½Ï¡£Ö¸Ê¾Á½¸ö <see cref="TimeSpan"/> ÊµÀıÊÇ·ñÏàµÈ
-		///	<code>Ô­ĞÍ£ºbool operator ==(TimeSpan &amp;t1, TimeSpan &amp;t2);</code>
+		///	æ—¶é—´ç‰‡çš„å¤§å°æ¯”è¾ƒã€‚æŒ‡ç¤ºä¸¤ä¸ª <see cref="TimeSpan"/> å®ä¾‹æ˜¯å¦ç›¸ç­‰
+		///	<code>åŸå‹ï¼šbool operator ==(TimeSpan &amp;t1, TimeSpan &amp;t2);</code>
 		///	</summary>
-		///	<param name="t1">Ê±¼äÆ¬Ò»<see cref="TimeSpan"/></param>
-		///	<param name="t2">Ê±¼äÆ¬¶ş<see cref="TimeSpan"/></param>
-		///	<returns>Èç¹û t1 ºÍ t2 µÄÖµÏàµÈ£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>
+		///	<param name="t1">æ—¶é—´ç‰‡ä¸€<see cref="TimeSpan"/></param>
+		///	<param name="t2">æ—¶é—´ç‰‡äºŒ<see cref="TimeSpan"/></param>
+		///	<returns>å¦‚æœ t1 å’Œ t2 çš„å€¼ç›¸ç­‰ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>
         bool operator ==(TimeSpan &t1, TimeSpan &t2);
 		///	<summary>
-		///	Ê±¼äÆ¬µÄ´óĞ¡±È½Ï¡£Ö¸Ê¾Ö¸¶¨µÄ <see cref="TimeSpan"/> ÊÇ·ñ´óÓÚ»òµÈÓÚÁíÒ»¸öÖ¸¶¨µÄ <see cref="TimeSpan"/>
-		///	<code>Ô­ĞÍ£ºbool operator >(TimeSpan &amp;t1, TimeSpan &amp;t2);</code>
+		///	æ—¶é—´ç‰‡çš„å¤§å°æ¯”è¾ƒã€‚æŒ‡ç¤ºæŒ‡å®šçš„ <see cref="TimeSpan"/> æ˜¯å¦å¤§äºæˆ–ç­‰äºå¦ä¸€ä¸ªæŒ‡å®šçš„ <see cref="TimeSpan"/>
+		///	<code>åŸå‹ï¼šbool operator >(TimeSpan &amp;t1, TimeSpan &amp;t2);</code>
 		///	</summary>
-		///	<param name="t1">Ê±¼äÆ¬Ò»<see cref="TimeSpan"/></param>
-		///	<param name="t2">Ê±¼äÆ¬¶ş<see cref="TimeSpan"/></param>
-		///	<returns>Èç¹û t1 µÄÖµ´óÓÚ t2 µÄÖµ£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>
+		///	<param name="t1">æ—¶é—´ç‰‡ä¸€<see cref="TimeSpan"/></param>
+		///	<param name="t2">æ—¶é—´ç‰‡äºŒ<see cref="TimeSpan"/></param>
+		///	<returns>å¦‚æœ t1 çš„å€¼å¤§äº t2 çš„å€¼ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>
         bool operator >(TimeSpan &t1, TimeSpan &t2);
 		///	<summary>
-		///	Ê±¼äÆ¬µÄ´óĞ¡±È½Ï¡£Ö¸Ê¾Ö¸¶¨µÄ <see cref="TimeSpan"/> ÊÇ·ñ´óÓÚ»òµÈÓÚÁíÒ»¸öÖ¸¶¨µÄ <see cref="TimeSpan"/>
-		///	<code>Ô­ĞÍ£ºbool operator >=(TimeSpan &amp;t1, TimeSpan &amp;t2);</code>
+		///	æ—¶é—´ç‰‡çš„å¤§å°æ¯”è¾ƒã€‚æŒ‡ç¤ºæŒ‡å®šçš„ <see cref="TimeSpan"/> æ˜¯å¦å¤§äºæˆ–ç­‰äºå¦ä¸€ä¸ªæŒ‡å®šçš„ <see cref="TimeSpan"/>
+		///	<code>åŸå‹ï¼šbool operator >=(TimeSpan &amp;t1, TimeSpan &amp;t2);</code>
 		///	</summary>
-		///	<param name="t1">Ê±¼äÆ¬Ò»<see cref="TimeSpan"/></param>
-		///	<param name="t2">Ê±¼äÆ¬¶ş<see cref="TimeSpan"/></param>
-		///	<returns>Èç¹û t1 µÄÖµ´óÓÚ»òµÈÓÚ t2 µÄÖµ£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>
+		///	<param name="t1">æ—¶é—´ç‰‡ä¸€<see cref="TimeSpan"/></param>
+		///	<param name="t2">æ—¶é—´ç‰‡äºŒ<see cref="TimeSpan"/></param>
+		///	<returns>å¦‚æœ t1 çš„å€¼å¤§äºæˆ–ç­‰äº t2 çš„å€¼ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>
         bool operator >=(TimeSpan &t1, TimeSpan &t2);
 
 

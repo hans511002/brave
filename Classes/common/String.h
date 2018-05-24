@@ -85,14 +85,14 @@ namespace Common
 # define charToLower(x)   (charUpperToLower[(unsigned char)(x)])
 #endif
 	///	<summary>
-	///	×Ö·û´®Àà
+	///	å­—ç¬¦ä¸²ç±»
 	///	</summary>
 	///	<remarks>
-	///	<code>¼Ì³ĞSTL±ê×¼Àà£¬À©Õ¹·½·¨£¬ASCII×Ö·û¡£²ÉÓÃÏµÍ³Ä¬ÈÏ±àÂë
-    /// ×÷ Õß: ×ŞÔ¶¹ó
-    /// ÈÕ ÆÚ: 2007-4-25
-	/// °æ ±¾: 1.0
-	///	//Î´Ìí¼ÓÏêÏ¸×¢ÊÍµÄÖØÔØÔËËã·½·¨
+	///	<code>ç»§æ‰¿STLæ ‡å‡†ç±»ï¼Œæ‰©å±•æ–¹æ³•ï¼ŒASCIIå­—ç¬¦ã€‚é‡‡ç”¨ç³»ç»Ÿé»˜è®¤ç¼–ç 
+    /// ä½œ è€…: é‚¹è¿œè´µ
+    /// æ—¥ æœŸ: 2007-4-25
+	/// ç‰ˆ æœ¬: 1.0
+	///	//æœªæ·»åŠ è¯¦ç»†æ³¨é‡Šçš„é‡è½½è¿ç®—æ–¹æ³•
 	///	inline ostream&amp; operator&lt;&lt;(ostream&amp; target, const String&amp; s);
 	///	inline String operator+(const String &amp;a,const char * b);
 	///	inline String operator+(const char * b,const String &amp;a);
@@ -156,7 +156,7 @@ namespace Common
 	///</code>
 	///	</remarks>
     /// <example><code>
-	///	Ó¦ÓÃÃüÁîĞĞ²ÎÊı½âÎö£º
+	///	åº”ç”¨å‘½ä»¤è¡Œå‚æ•°è§£æï¼š
 	///	String a;
 	///	a="sdgdsgh";
 	///	String a="sdgd";
@@ -167,30 +167,30 @@ namespace Common
 	public: 
 		//static const unsigned char charUpperToLower[] ;
 		///	<summary>
-		///	³£Á¿¿Õ°××Ö·ûÊı×é
+		///	å¸¸é‡ç©ºç™½å­—ç¬¦æ•°ç»„
 		///	</summary>
-		///	<remarks>ÖµÁĞ±í£º<code>    '\t','\n','\v','\f','\r',' ','\b','\a'</code></remarks>
+		///	<remarks>å€¼åˆ—è¡¨ï¼š<code>    '\t','\n','\v','\f','\r',' ','\b','\a'</code></remarks>
 		static const char WhitespaceChars[];
 		///	<summary>
-		///	×Ö·û´®¿½±´
-		///	<code>Ô­ĞÍ£ºinline static char * strcpy(char * dest,const char * source);</code>
+		///	å­—ç¬¦ä¸²æ‹·è´
+		///	<code>åŸå‹ï¼šinline static char * strcpy(char * dest,const char * source);</code>
 		///	</summary>
-		///	<param name="dest">Ä¿±ê´æ´¢Ö¸Õë£¬ÒªÇódestËùÖ¸ÏòµÄ´æ´¢¿Õ¼äÒª±ÈÔ´´ó£¬·ñÔòÔì³É·Ç·¨µØÖ··ÃÎÊ</param>
-		///	<param name="source">Ô´Êı¾İÖ¸Õë</param>
-		///	<returns>·µ»ØdestÖ¸Õë</returns>
+		///	<param name="dest">ç›®æ ‡å­˜å‚¨æŒ‡é’ˆï¼Œè¦æ±‚destæ‰€æŒ‡å‘çš„å­˜å‚¨ç©ºé—´è¦æ¯”æºå¤§ï¼Œå¦åˆ™é€ æˆéæ³•åœ°å€è®¿é—®</param>
+		///	<param name="source">æºæ•°æ®æŒ‡é’ˆ</param>
+		///	<returns>è¿”å›destæŒ‡é’ˆ</returns>
 		inline static char * strcpy(char * dest,const char * source)
 		{
 			::strcpy(dest,source);
 			return dest;
 		}
 		///	<summary>
-		///	×Ö·û´®¿½±´£¬Ö¸¶¨Ô´¿ªÊ¼Î»ÖÃ
-		///	<code>Ô­ĞÍ£ºinline static char *  strcpy(char * dest,const char * source,int startIndex);</code>
+		///	å­—ç¬¦ä¸²æ‹·è´ï¼ŒæŒ‡å®šæºå¼€å§‹ä½ç½®
+		///	<code>åŸå‹ï¼šinline static char *  strcpy(char * dest,const char * source,int startIndex);</code>
 		///	</summary>
-		///	<param name="dest">Ä¿±ê´æ´¢Ö¸Õë£¬ÒªÇódestËùÖ¸ÏòµÄ´æ´¢¿Õ¼äÒª±ÈÔ´´ó£¬·ñÔòÔì³É·Ç·¨µØÖ··ÃÎÊ</param>
-		///	<param name="source">Ô´Êı¾İÖ¸Õë</param>
-		///	<param name="startIndex">¿ªÊ¼Ë÷ÒıÎ»ÖÃ</param>
-		///	<returns>·µ»ØdestÖ¸Õë</returns>
+		///	<param name="dest">ç›®æ ‡å­˜å‚¨æŒ‡é’ˆï¼Œè¦æ±‚destæ‰€æŒ‡å‘çš„å­˜å‚¨ç©ºé—´è¦æ¯”æºå¤§ï¼Œå¦åˆ™é€ æˆéæ³•åœ°å€è®¿é—®</param>
+		///	<param name="source">æºæ•°æ®æŒ‡é’ˆ</param>
+		///	<param name="startIndex">å¼€å§‹ç´¢å¼•ä½ç½®</param>
+		///	<returns>è¿”å›destæŒ‡é’ˆ</returns>
 		inline static char *  strcpy(char * dest,const char * source,int startIndex)
 		{
 			source+=startIndex;
@@ -198,14 +198,14 @@ namespace Common
 			return dest;
 		}
 		///	<summary>
-		///	×Ö·û´®¿½±´£¬Ö¸¶¨Ô´¿ªÊ¼Î»ÖÃºÍ³¤¶È
-		///	<code>Ô­ĞÍ£ºinline static char *  strcpy(char * dest,const char * source,int startIndex,int length);</code>
+		///	å­—ç¬¦ä¸²æ‹·è´ï¼ŒæŒ‡å®šæºå¼€å§‹ä½ç½®å’Œé•¿åº¦
+		///	<code>åŸå‹ï¼šinline static char *  strcpy(char * dest,const char * source,int startIndex,int length);</code>
 		///	</summary>
-		///	<param name="dest">Ä¿±ê´æ´¢Ö¸Õë£¬ÒªÇódestËùÖ¸ÏòµÄ´æ´¢¿Õ¼äÒª±ÈÔ´´ó£¬·ñÔòÔì³É·Ç·¨µØÖ··ÃÎÊ</param>
-		///	<param name="source">Ô´Êı¾İÖ¸Õë</param>
-		///	<param name="startIndex">¿ªÊ¼Ë÷ÒıÎ»ÖÃ</param>
-		///	<param name="length">ĞèÒª¿½±´µÄ³¤¶È</param>
-		///	<returns>¿½±´µÄ×Ö½ÚÊı</returns>
+		///	<param name="dest">ç›®æ ‡å­˜å‚¨æŒ‡é’ˆï¼Œè¦æ±‚destæ‰€æŒ‡å‘çš„å­˜å‚¨ç©ºé—´è¦æ¯”æºå¤§ï¼Œå¦åˆ™é€ æˆéæ³•åœ°å€è®¿é—®</param>
+		///	<param name="source">æºæ•°æ®æŒ‡é’ˆ</param>
+		///	<param name="startIndex">å¼€å§‹ç´¢å¼•ä½ç½®</param>
+		///	<param name="length">éœ€è¦æ‹·è´çš„é•¿åº¦</param>
+		///	<returns>æ‹·è´çš„å­—èŠ‚æ•°</returns>
 		inline static int strcpy(char * dest,const char * source,int startIndex,int length)
 		{
 			int i=0;
@@ -222,12 +222,12 @@ namespace Common
 		}
 		
 		///	<summary>
-		///	×Ö½Ú¿½±´,Ç¿ÖÆ¿½±´
-		///	<code>Ô­ĞÍ£ºinline static void strcpy(unsigned char * dest,const unsigned char * source,int length);</code>
+		///	å­—èŠ‚æ‹·è´,å¼ºåˆ¶æ‹·è´
+		///	<code>åŸå‹ï¼šinline static void strcpy(unsigned char * dest,const unsigned char * source,int length);</code>
 		///	</summary>
-		///	<param name="dest">Ä¿±ê´æ´¢Ö¸Õë£¬ÒªÇódestËùÖ¸ÏòµÄ´æ´¢¿Õ¼ä²»ÄÜ±ÈlengthĞ¡£¬·ñÔòÔì³É·Ç·¨µØÖ··ÃÎÊ</param>
-		///	<param name="source">Ô´Êı¾İÖ¸Õë</param>
-		///	<param name="length">ĞèÒª¿½±´µÄ³¤¶È</param>
+		///	<param name="dest">ç›®æ ‡å­˜å‚¨æŒ‡é’ˆï¼Œè¦æ±‚destæ‰€æŒ‡å‘çš„å­˜å‚¨ç©ºé—´ä¸èƒ½æ¯”lengthå°ï¼Œå¦åˆ™é€ æˆéæ³•åœ°å€è®¿é—®</param>
+		///	<param name="source">æºæ•°æ®æŒ‡é’ˆ</param>
+		///	<param name="length">éœ€è¦æ‹·è´çš„é•¿åº¦</param>
 		inline static void strcpy(unsigned char * dest,const unsigned char * source,int length)
 		{
 			if(length<1)return;
@@ -239,15 +239,15 @@ namespace Common
 			}
 		}
 		///	<summary>
-		///	×Ö·û´®¿½±´£¬Ö¸¶¨Ô´¿ªÊ¼Î»ÖÃºÍ³¤¶È
-		///	<code>Ô­ĞÍ£ºinline static int strcpy(char * dest,int startIndex,const char * source,int sourceIndex,int length);</code>
+		///	å­—ç¬¦ä¸²æ‹·è´ï¼ŒæŒ‡å®šæºå¼€å§‹ä½ç½®å’Œé•¿åº¦
+		///	<code>åŸå‹ï¼šinline static int strcpy(char * dest,int startIndex,const char * source,int sourceIndex,int length);</code>
 		///	</summary>
-		///	<param name="dest">Ä¿±ê´æ´¢Ö¸Õë</param>
-		///	<param name="startIndex">Ä¿±ê¿ªÊ¼Ë÷ÒıÎ»ÖÃ</param>
-		///	<param name="source">Ô´Êı¾İÖ¸Õë</param>
-		///	<param name="sourceIndex">Ô´¿ªÊ¼Ë÷ÒıÎ»ÖÃ</param>
-		///	<param name="length">ĞèÒª¿½±´µÄ³¤¶È</param>
-		///	<returns>¿½±´µÄ×Ö½ÚÊı</returns>
+		///	<param name="dest">ç›®æ ‡å­˜å‚¨æŒ‡é’ˆ</param>
+		///	<param name="startIndex">ç›®æ ‡å¼€å§‹ç´¢å¼•ä½ç½®</param>
+		///	<param name="source">æºæ•°æ®æŒ‡é’ˆ</param>
+		///	<param name="sourceIndex">æºå¼€å§‹ç´¢å¼•ä½ç½®</param>
+		///	<param name="length">éœ€è¦æ‹·è´çš„é•¿åº¦</param>
+		///	<returns>æ‹·è´çš„å­—èŠ‚æ•°</returns>
 		inline static int strcpy(char * dest,int startIndex,const char * source,int sourceIndex,int length)
 		{
 			int i=0;
@@ -264,34 +264,34 @@ namespace Common
 			return i;
 		}
 		///	<summary>
-		///	»ñÈ¡×Ö·ûÖ¸ÕëÖ¸Ïò×Ö·ûµÄ³¤¶È
-		///	<code>Ô­ĞÍ£ºinline static int strlen(const char *source);</code>
+		///	è·å–å­—ç¬¦æŒ‡é’ˆæŒ‡å‘å­—ç¬¦çš„é•¿åº¦
+		///	<code>åŸå‹ï¼šinline static int strlen(const char *source);</code>
 		///	</summary> 
-		///	<param name="source">×Ö·ûÖ¸Õë</param>
-		///	<returns>×Ö·û³¤¶È</returns>
+		///	<param name="source">å­—ç¬¦æŒ‡é’ˆ</param>
+		///	<returns>å­—ç¬¦é•¿åº¦</returns>
 		inline static int strlen(const char *source)
 		{
 			return STDSPACE::strlen(source);
 		};
 		///	<summary>
-		///	±È½ÏÁ½¸ö×Ö·û´®ÖµµÄÏà¶ÔÖ¸Ê¾
-		///	<code>Ô­ĞÍ£ºinline static int strcmp(const char * _Str1,const char * _Str2);</code>
+		///	æ¯”è¾ƒä¸¤ä¸ªå­—ç¬¦ä¸²å€¼çš„ç›¸å¯¹æŒ‡ç¤º
+		///	<code>åŸå‹ï¼šinline static int strcmp(const char * _Str1,const char * _Str2);</code>
 		///	</summary> 
-		///	<param name="_Str1">Ö¸Ïò×Ö·û´®Ö¸Õë</param>
-		///	<param name="_Str2">Ö¸Ïò×Ö·û´®Ö¸Õë</param>
-		///	<returns> Ïà¶Ô±È½ÏÖµ  1:_Str1>_Str2 , 0:_Str1=_Str2 , -1:_Str1&lt;_Str2</returns>
+		///	<param name="_Str1">æŒ‡å‘å­—ç¬¦ä¸²æŒ‡é’ˆ</param>
+		///	<param name="_Str2">æŒ‡å‘å­—ç¬¦ä¸²æŒ‡é’ˆ</param>
+		///	<returns> ç›¸å¯¹æ¯”è¾ƒå€¼  1:_Str1>_Str2 , 0:_Str1=_Str2 , -1:_Str1&lt;_Str2</returns>
 		inline static int strcmp(const char * _Str1,const char * _Str2)
 		{
 			return STDSPACE::strcmp(_Str1,_Str2);
 		}
 		///	<summary>
-		///	±È½ÏÁ½¸ö×Ö·û´®ÖµµÄÏà¶ÔÖ¸Ê¾
-		///	<code>Ô­ĞÍ£ºinline static int strcmp(const char * _Str1,const char * _Str2,bool ignoreCase);</code>
+		///	æ¯”è¾ƒä¸¤ä¸ªå­—ç¬¦ä¸²å€¼çš„ç›¸å¯¹æŒ‡ç¤º
+		///	<code>åŸå‹ï¼šinline static int strcmp(const char * _Str1,const char * _Str2,bool ignoreCase);</code>
 		///	</summary> 
-		///	<param name="_Str1">Ö¸Ïò×Ö·û´®Ö¸Õë</param>
-		///	<param name="_Str2">Ö¸Ïò×Ö·û´®Ö¸Õë</param>
-		///	<param name="ignoreCase">ÊÇ·ñºöÂÔ´óĞ¡Ğ´</param>
-		///	<returns> Ïà¶Ô±È½ÏÖµ  1:_Str1>_Str2 , 0:_Str1=_Str2 , -1:_Str1&lt;_Str2</returns>
+		///	<param name="_Str1">æŒ‡å‘å­—ç¬¦ä¸²æŒ‡é’ˆ</param>
+		///	<param name="_Str2">æŒ‡å‘å­—ç¬¦ä¸²æŒ‡é’ˆ</param>
+		///	<param name="ignoreCase">æ˜¯å¦å¿½ç•¥å¤§å°å†™</param>
+		///	<returns> ç›¸å¯¹æ¯”è¾ƒå€¼  1:_Str1>_Str2 , 0:_Str1=_Str2 , -1:_Str1&lt;_Str2</returns>
 		inline static int strcmp(const char * _Str1,const char * _Str2,bool ignoreCase)
 		{
 			if(ignoreCase)
@@ -317,14 +317,14 @@ namespace Common
 			}
 		} 
 		///	<summary>
-		///	±È½ÏÁ½¸ö×Ö·û´®ÖµµÄÏà¶ÔÖ¸Ê¾
-		///	<code>Ô­ĞÍ£ºinline static int strcmp(const char * _Str1,const char * _Str2,int index,int length);</code>
+		///	æ¯”è¾ƒä¸¤ä¸ªå­—ç¬¦ä¸²å€¼çš„ç›¸å¯¹æŒ‡ç¤º
+		///	<code>åŸå‹ï¼šinline static int strcmp(const char * _Str1,const char * _Str2,int index,int length);</code>
 		///	</summary> 
-		///	<param name="_Str1">Ö¸Ïò×Ö·û´®Ö¸Õë</param>
-		///	<param name="_Str2">Ö¸Ïò×Ö·û´®Ö¸Õë</param>
-		///	<param name="index">×Ö·û±È½ÏµÄ¿ªÊ¼Î»ÖÃ</param>
-		///	<param name="length">Òª±È½ÏµÄ³¤¶È</param>
-		///	<returns> Ïà¶Ô±È½ÏÖµ  1:_Str1>_Str2 , 0:_Str1=_Str2 , -1:_Str1&lt;_Str2</returns>
+		///	<param name="_Str1">æŒ‡å‘å­—ç¬¦ä¸²æŒ‡é’ˆ</param>
+		///	<param name="_Str2">æŒ‡å‘å­—ç¬¦ä¸²æŒ‡é’ˆ</param>
+		///	<param name="index">å­—ç¬¦æ¯”è¾ƒçš„å¼€å§‹ä½ç½®</param>
+		///	<param name="length">è¦æ¯”è¾ƒçš„é•¿åº¦</param>
+		///	<returns> ç›¸å¯¹æ¯”è¾ƒå€¼  1:_Str1>_Str2 , 0:_Str1=_Str2 , -1:_Str1&lt;_Str2</returns>
 		inline static int strcmp(const char * _Str1,const char * _Str2,int index,int length)
 		{
 			int i=0;
@@ -345,15 +345,15 @@ namespace Common
 			else return 1;//if(_Str2[i]=='\0')return 1;
 		}
 		///	<summary>
-		///	±È½ÏÁ½¸ö×Ö·û´®ÖµµÄÏà¶ÔÖ¸Ê¾
-		///	<code>Ô­ĞÍ£ºinline static int strcmp(const char * _Str1,const char * _Str2,int index,int length,bool ignoreCase);</code>
+		///	æ¯”è¾ƒä¸¤ä¸ªå­—ç¬¦ä¸²å€¼çš„ç›¸å¯¹æŒ‡ç¤º
+		///	<code>åŸå‹ï¼šinline static int strcmp(const char * _Str1,const char * _Str2,int index,int length,bool ignoreCase);</code>
 		///	</summary> 
-		///	<param name="_Str1">Ö¸Ïò×Ö·û´®Ö¸Õë</param>
-		///	<param name="_Str2">Ö¸Ïò×Ö·û´®Ö¸Õë</param>
-		///	<param name="index">×Ö·û±È½ÏµÄ¿ªÊ¼Î»ÖÃ</param>
-		///	<param name="length">Òª±È½ÏµÄ³¤¶È</param>
-		///	<param name="ignoreCase">ÊÇ·ñºöÂÔ´óĞ¡Ğ´</param>
-		///	<returns> Ïà¶Ô±È½ÏÖµ  1:_Str1>_Str2 , 0:_Str1=_Str2 , -1:_Str1&lt;_Str2</returns>
+		///	<param name="_Str1">æŒ‡å‘å­—ç¬¦ä¸²æŒ‡é’ˆ</param>
+		///	<param name="_Str2">æŒ‡å‘å­—ç¬¦ä¸²æŒ‡é’ˆ</param>
+		///	<param name="index">å­—ç¬¦æ¯”è¾ƒçš„å¼€å§‹ä½ç½®</param>
+		///	<param name="length">è¦æ¯”è¾ƒçš„é•¿åº¦</param>
+		///	<param name="ignoreCase">æ˜¯å¦å¿½ç•¥å¤§å°å†™</param>
+		///	<returns> ç›¸å¯¹æ¯”è¾ƒå€¼  1:_Str1>_Str2 , 0:_Str1=_Str2 , -1:_Str1&lt;_Str2</returns>
 		inline static int strcmp(const char * _Str1,const char * _Str2,int index,int length,bool ignoreCase)
 		{
 			if(ignoreCase)
@@ -386,43 +386,43 @@ namespace Common
 		}
 
 		///	<summary>
-		///	±È½ÏÁ½¸ö×Ö·û´®ÖµµÄÏà¶ÔÖ¸Ê¾
-		///	<code>Ô­ĞÍ£ºinline static int strcmp(const char * _Str1,int indexA,const char * _Str2,int indexB,int length);</code>
+		///	æ¯”è¾ƒä¸¤ä¸ªå­—ç¬¦ä¸²å€¼çš„ç›¸å¯¹æŒ‡ç¤º
+		///	<code>åŸå‹ï¼šinline static int strcmp(const char * _Str1,int indexA,const char * _Str2,int indexB,int length);</code>
 		///	</summary> 
-		///	<param name="_Str1">Ö¸Ïò×Ö·û´®Ö¸Õë</param>
-		///	<param name="indexA">×Ö·û_Str1±È½ÏµÄ¿ªÊ¼Î»ÖÃ</param>
-		///	<param name="_Str2">Ö¸Ïò×Ö·û´®Ö¸Õë</param>
-		///	<param name="indexB">×Ö·û_Str2±È½ÏµÄ¿ªÊ¼Î»ÖÃ</param>
-		///	<param name="length">Òª±È½ÏµÄ³¤¶È</param>
-		///	<returns> Ïà¶Ô±È½ÏÖµ  1:_Str1>_Str2 , 0:_Str1=_Str2 , -1:_Str1&lt;_Str2</returns>
+		///	<param name="_Str1">æŒ‡å‘å­—ç¬¦ä¸²æŒ‡é’ˆ</param>
+		///	<param name="indexA">å­—ç¬¦_Str1æ¯”è¾ƒçš„å¼€å§‹ä½ç½®</param>
+		///	<param name="_Str2">æŒ‡å‘å­—ç¬¦ä¸²æŒ‡é’ˆ</param>
+		///	<param name="indexB">å­—ç¬¦_Str2æ¯”è¾ƒçš„å¼€å§‹ä½ç½®</param>
+		///	<param name="length">è¦æ¯”è¾ƒçš„é•¿åº¦</param>
+		///	<returns> ç›¸å¯¹æ¯”è¾ƒå€¼  1:_Str1>_Str2 , 0:_Str1=_Str2 , -1:_Str1&lt;_Str2</returns>
 		inline static int strcmp(const char * _Str1,int indexA,const char * _Str2,int indexB,int length)
 		{
 			return strcmp(_Str1+indexA,_Str2+indexB,0,length);		
 		}
 		///	<summary>
-		///	±È½ÏÁ½¸ö×Ö·û´®ÖµµÄÏà¶ÔÖ¸Ê¾
-		///	<code>Ô­ĞÍ£ºinline static int strcmp(const char * _Str1,int indexA,const char * _Str2,
+		///	æ¯”è¾ƒä¸¤ä¸ªå­—ç¬¦ä¸²å€¼çš„ç›¸å¯¹æŒ‡ç¤º
+		///	<code>åŸå‹ï¼šinline static int strcmp(const char * _Str1,int indexA,const char * _Str2,
 		///                                      int indexB,int length,bool ignoreCase);</code>
 		///	</summary> 
-		///	<param name="_Str1">Ö¸Ïò×Ö·û´®Ö¸Õë</param>
-		///	<param name="indexA">×Ö·û_Str1±È½ÏµÄ¿ªÊ¼Î»ÖÃ</param>
-		///	<param name="_Str2">Ö¸Ïò×Ö·û´®Ö¸Õë</param>
-		///	<param name="indexB">×Ö·û_Str2±È½ÏµÄ¿ªÊ¼Î»ÖÃ</param>
-		///	<param name="length">Òª±È½ÏµÄ³¤¶È</param>
-		///	<param name="ignoreCase">ÊÇ·ñºöÂÔ´óĞ¡Ğ´</param>
-		///	<returns> Ïà¶Ô±È½ÏÖµ  1:_Str1>_Str2 , 0:_Str1=_Str2 , -1:_Str1&lt;_Str2</returns>
+		///	<param name="_Str1">æŒ‡å‘å­—ç¬¦ä¸²æŒ‡é’ˆ</param>
+		///	<param name="indexA">å­—ç¬¦_Str1æ¯”è¾ƒçš„å¼€å§‹ä½ç½®</param>
+		///	<param name="_Str2">æŒ‡å‘å­—ç¬¦ä¸²æŒ‡é’ˆ</param>
+		///	<param name="indexB">å­—ç¬¦_Str2æ¯”è¾ƒçš„å¼€å§‹ä½ç½®</param>
+		///	<param name="length">è¦æ¯”è¾ƒçš„é•¿åº¦</param>
+		///	<param name="ignoreCase">æ˜¯å¦å¿½ç•¥å¤§å°å†™</param>
+		///	<returns> ç›¸å¯¹æ¯”è¾ƒå€¼  1:_Str1>_Str2 , 0:_Str1=_Str2 , -1:_Str1&lt;_Str2</returns>
 		inline static int strcmp(const char * _Str1,int indexA,const char * _Str2,int indexB,int length,bool ignoreCase)
 		{
 			return strcmp(_Str1+indexA,_Str2+indexB,0,length,ignoreCase);	
 		}
 
 		///	<summary>
-		///	×Ö·û´®Á¬½Ó,½«source¿½±´µ½destÄ©Î²µÄ×Ö·û´®Ö¸Õë
-		///	<code>Ô­ĞÍ£ºinline static char * strcat(char * dest,const char * source);</code>
+		///	å­—ç¬¦ä¸²è¿æ¥,å°†sourceæ‹·è´åˆ°destæœ«å°¾çš„å­—ç¬¦ä¸²æŒ‡é’ˆ
+		///	<code>åŸå‹ï¼šinline static char * strcat(char * dest,const char * source);</code>
 		///	</summary> 
-		///	<param name="dest">Ö¸Ïò×Ö·û´®Ö¸Õë</param> 
-		///	<param name="source">Ö¸Ïò×Ö·û´®Ö¸Õë</param> 
-		///	<returns> Á¬½ÓºóµÄdest</returns>
+		///	<param name="dest">æŒ‡å‘å­—ç¬¦ä¸²æŒ‡é’ˆ</param> 
+		///	<param name="source">æŒ‡å‘å­—ç¬¦ä¸²æŒ‡é’ˆ</param> 
+		///	<returns> è¿æ¥åçš„dest</returns>
 		inline static char * strcat(char * dest,const char * source)
 		{
 			return STDSPACE::strcat(dest,source);
@@ -433,25 +433,25 @@ namespace Common
 			//return dest;
 		} 
 		///	<summary>
-		///	¸ñÊ½»¯×Ö·ûÄÚ´æ¿Õ¼ä
-		///	<code>Ô­ĞÍ£ºinline static char * memset(char * _Dst,  int _Val,  int _Size);</code>
+		///	æ ¼å¼åŒ–å­—ç¬¦å†…å­˜ç©ºé—´
+		///	<code>åŸå‹ï¼šinline static char * memset(char * _Dst,  int _Val,  int _Size);</code>
 		///	</summary> 
-		///	<param name="_Dst">Ä¿±ê×Ö·û´®Ö¸Õë</param> 
-		///	<param name="_Val">ÒªÌî³äµÄ×Ö·ûÖµ</param>
-		///	<param name="_Size">±êÊ¶_DstµÄ´óĞ¡,ÒªÌî³äµÄ×Ö·û¸öÊı</param> 
-		///	<returns>Ìî³ä_ValºóµÄ_DstÖ¸Õë</returns>
+		///	<param name="_Dst">ç›®æ ‡å­—ç¬¦ä¸²æŒ‡é’ˆ</param> 
+		///	<param name="_Val">è¦å¡«å……çš„å­—ç¬¦å€¼</param>
+		///	<param name="_Size">æ ‡è¯†_Dstçš„å¤§å°,è¦å¡«å……çš„å­—ç¬¦ä¸ªæ•°</param> 
+		///	<returns>å¡«å……_Valåçš„_DstæŒ‡é’ˆ</returns>
 		inline static char * memset(char * _Dst,  int _Val,  int _Size)
 		{
 			STDSPACE::memset(_Dst,_Val,_Size);
 			return _Dst;
 		}
 		///	<summary>
-		///	¸ñÊ½»¯ÄÚ´æ¿Õ¼ä
-		///	<code>Ô­ĞÍ£ºinline static char * memset(char * _Dst,  int _Val,  int _Size);</code>
+		///	æ ¼å¼åŒ–å†…å­˜ç©ºé—´
+		///	<code>åŸå‹ï¼šinline static char * memset(char * _Dst,  int _Val,  int _Size);</code>
 		///	</summary> 
-		///	<param name="_Dst">ÄÚ´æÖ¸Õë</param> 
-		///	<param name="_Val">ÒªÌî³äµÄ×Ö·ûÖµ</param>
-		///	<param name="_Size">±êÊ¶_DstµÄ´óĞ¡,ÒªÌî³äµÄ×Ö·û¸öÊı</param> 
+		///	<param name="_Dst">å†…å­˜æŒ‡é’ˆ</param> 
+		///	<param name="_Val">è¦å¡«å……çš„å­—ç¬¦å€¼</param>
+		///	<param name="_Size">æ ‡è¯†_Dstçš„å¤§å°,è¦å¡«å……çš„å­—ç¬¦ä¸ªæ•°</param> 
 		inline static void * memset(void * _Dst,  int _Val,  int _Size)
 		{
 			STDSPACE::memset(_Dst,_Val,_Size);
@@ -459,11 +459,11 @@ namespace Common
 		}
  
 		///	<summary>
-		///	´óĞ´×ª»»
-		///	<code>Ô­ĞÍ£ºinline static char * ToUpper(char * dest);</code>
+		///	å¤§å†™è½¬æ¢
+		///	<code>åŸå‹ï¼šinline static char * ToUpper(char * dest);</code>
 		///	</summary> 
-		///	<param name="dest">Òª×ª»»µÄ×Ö·û´®Ö¸Õë</param> 
-		///	<returns>×ª»»ºóµÄdestÖ¸Õë</returns>
+		///	<param name="dest">è¦è½¬æ¢çš„å­—ç¬¦ä¸²æŒ‡é’ˆ</param> 
+		///	<returns>è½¬æ¢åçš„destæŒ‡é’ˆ</returns>
 		inline static char * ToUpper(char * dest)
 		{
 			int i=-1;
@@ -479,11 +479,11 @@ namespace Common
 			return dest;
 		}; 
 		///	<summary>
-		///	Ğ¡Ğ´×ª»»
-		///	<code>Ô­ĞÍ£ºinline static char * ToLower(char * dest);</code>
+		///	å°å†™è½¬æ¢
+		///	<code>åŸå‹ï¼šinline static char * ToLower(char * dest);</code>
 		///	</summary> 
-		///	<param name="dest">Òª×ª»»µÄ×Ö·û´®Ö¸Õë</param> 
-		///	<returns>×ª»»ºóµÄdestÖ¸Õë</returns>
+		///	<param name="dest">è¦è½¬æ¢çš„å­—ç¬¦ä¸²æŒ‡é’ˆ</param> 
+		///	<returns>è½¬æ¢åçš„destæŒ‡é’ˆ</returns>
 		inline static char * ToLower(char * dest)
 		{
 			int i=-1;
@@ -501,169 +501,169 @@ namespace Common
 
 		String():string(){};
 		///	<summary>
-		///	ÒÔ»ùÀà<see cref="string"/>³õÊ¼»¯¶ÔÏó
-		///	<code>Ô­ĞÍ£ºString(string s);</code>
+		///	ä»¥åŸºç±»<see cref="string"/>åˆå§‹åŒ–å¯¹è±¡
+		///	<code>åŸå‹ï¼šString(string s);</code>
 		///	</summary> 
-		///	<param name="value"><see cref="string"/>¶ÔÏó</param> 
+		///	<param name="value"><see cref="string"/>å¯¹è±¡</param> 
 		String(string s):string(s){};
 		//String(const String &s){this->assign(s.c_str());};
 
 		///	<summary>
-		///	ÒÔ×Ö·ûÖ¸Õë³õÊ¼»¯
-		///	<code>Ô­ĞÍ£ºString(const char * value);</code>
+		///	ä»¥å­—ç¬¦æŒ‡é’ˆåˆå§‹åŒ–
+		///	<code>åŸå‹ï¼šString(const char * value);</code>
 		///	</summary> 
-		///	<param name="value">×Ö·û´®Ö¸Õë</param> 
+		///	<param name="value">å­—ç¬¦ä¸²æŒ‡é’ˆ</param> 
 		String(const char * value):string(value){};
 		///	<summary>
-		///	ÒÔÕûÊı³õÊ¼»¯
-		///	<code>Ô­ĞÍ£ºString(int i);</code>
+		///	ä»¥æ•´æ•°åˆå§‹åŒ–
+		///	<code>åŸå‹ï¼šString(int i);</code>
 		///	</summary> 
-		///	<param name="i">ÕûÊı</param> 
+		///	<param name="i">æ•´æ•°</param> 
 		String(int i){char p[40];sprintf(p,"%d",i);assign(p);};
 		///	<summary>
-		///	ÒÔ³¤ÕûÊı³õÊ¼»¯
-		///	<code>Ô­ĞÍ£ºString(long i);</code>
+		///	ä»¥é•¿æ•´æ•°åˆå§‹åŒ–
+		///	<code>åŸå‹ï¼šString(long i);</code>
 		///	</summary> 
-		///	<param name="l">ÕûÊı</param> 
+		///	<param name="l">æ•´æ•°</param> 
 		String(long l){char p[40];sprintf(p,"%ld",l);assign(p);};
 		///	<summary>
-		///	ÒÔ64Î»³¤ÕûÊı³õÊ¼»¯
-		///	<code>Ô­ĞÍ£ºString(long long i);</code>
+		///	ä»¥64ä½é•¿æ•´æ•°åˆå§‹åŒ–
+		///	<code>åŸå‹ï¼šString(long long i);</code>
 		///	</summary> 
-		///	<param name="l">64Î»³¤ÕûÊı</param> 
+		///	<param name="l">64ä½é•¿æ•´æ•°</param> 
 		String(long long l){char p[40];sprintf(p,"%lld",l);assign(p);};
 		///	<summary>
-		///	ÒÔÎŞ·ûºÅÕûÊı³õÊ¼»¯
-		///	<code>Ô­ĞÍ£ºString(unsigned int i);</code>
+		///	ä»¥æ— ç¬¦å·æ•´æ•°åˆå§‹åŒ–
+		///	<code>åŸå‹ï¼šString(unsigned int i);</code>
 		///	</summary> 
-		///	<param name="l">ÎŞ·ûºÅÕûÊı</param> 
+		///	<param name="l">æ— ç¬¦å·æ•´æ•°</param> 
 		String(unsigned int i){char p[40];sprintf(p,"%u",i);assign(p);};
 		///	<summary>
-		///	ÒÔÎŞ·ûºÅ³¤ÕûÊı³õÊ¼»¯
-		///	<code>Ô­ĞÍ£ºString(unsigned long i);</code>
+		///	ä»¥æ— ç¬¦å·é•¿æ•´æ•°åˆå§‹åŒ–
+		///	<code>åŸå‹ï¼šString(unsigned long i);</code>
 		///	</summary> 
-		///	<param name="l">ÎŞ·ûºÅ³¤ÕûÊı</param> 
+		///	<param name="l">æ— ç¬¦å·é•¿æ•´æ•°</param> 
 		String(unsigned long l){char p[40];sprintf(p,"%lu",l);assign(p);};
 		///	<summary>
-		///	ÒÔÎŞ·ûºÅ64Î»ÕûÊı³õÊ¼»¯
-		///	<code>Ô­ĞÍ£ºString(unsigned long long  i);</code>
+		///	ä»¥æ— ç¬¦å·64ä½æ•´æ•°åˆå§‹åŒ–
+		///	<code>åŸå‹ï¼šString(unsigned long long  i);</code>
 		///	</summary> 
-		///	<param name="l">ÎŞ·ûºÅ64Î»ÕûÊı</param> 
+		///	<param name="l">æ— ç¬¦å·64ä½æ•´æ•°</param> 
 		String(unsigned long long l){char p[40];sprintf(p,"%llu",l);assign(p);};
 		///	<summary>
-		///	ÒÔdouble³õÊ¼»¯
-		///	<code>Ô­ĞÍ£ºString(double i);</code>
+		///	ä»¥doubleåˆå§‹åŒ–
+		///	<code>åŸå‹ï¼šString(double i);</code>
 		///	</summary> 
-		///	<param name="d">doubleÀàĞÍÊı×Ö</param> 
+		///	<param name="d">doubleç±»å‹æ•°å­—</param> 
 		String(double d):string(Convert::ToString(d)){}//{ *this=Convert::ToString(d);};
 		///	<summary>
-		///	ÒÔ×Ö·û³õÊ¼»¯
-		///	<code>Ô­ĞÍ£ºString(char i);</code>
+		///	ä»¥å­—ç¬¦åˆå§‹åŒ–
+		///	<code>åŸå‹ï¼šString(char i);</code>
 		///	</summary> 
-		///	<param name="c">×Ö·û</param> 
+		///	<param name="c">å­—ç¬¦</param> 
 		String(char c){char p[2];p[0]=c;p[1]=0;assign(p);};
 		///	<summary>
-		///	ÒÔÏàÍ¬×Ö·û³õÊ¼»¯
-		///	<code>Ô­ĞÍ£ºString(char i);</code>
+		///	ä»¥ç›¸åŒå­—ç¬¦åˆå§‹åŒ–
+		///	<code>åŸå‹ï¼šString(char i);</code>
 		///	</summary> 
-		///	<param name="c">×Ö·û</param> 
-		///	<param name="count">³¤¶È¸öÊı</param> 
+		///	<param name="c">å­—ç¬¦</param> 
+		///	<param name="count">é•¿åº¦ä¸ªæ•°</param> 
 		String(char c, int count):string(count,c){}
 		///	<summary>
-		///	ÒÔ<see cref="String"/>¶ÔÏó³õÊ¼»¯
-		///	<code>Ô­ĞÍ£ºString(String &amp;value, int startIndex);</code>
+		///	ä»¥<see cref="String"/>å¯¹è±¡åˆå§‹åŒ–
+		///	<code>åŸå‹ï¼šString(String &amp;value, int startIndex);</code>
 		///	</summary> 
-		///	<param name="value"><see cref="String"/>¶ÔÏóÊµÀı</param> 
-		///	<param name="startIndex">ÆğÊ¼Î»ÖÃ</param> 
+		///	<param name="value"><see cref="String"/>å¯¹è±¡å®ä¾‹</param> 
+		///	<param name="startIndex">èµ·å§‹ä½ç½®</param> 
 		String(String &value, int startIndex):string(value.c_str()+startIndex){}
  		///	<summary>
-		///	ÒÔ<see cref="String"/>¶ÔÏó³õÊ¼»¯
-		///	<code>Ô­ĞÍ£ºString(String &amp;value, int startIndex, int length);</code>
+		///	ä»¥<see cref="String"/>å¯¹è±¡åˆå§‹åŒ–
+		///	<code>åŸå‹ï¼šString(String &amp;value, int startIndex, int length);</code>
 		///	</summary> 
-		///	<param name="value"><see cref="String"/>¶ÔÏóÊµÀı</param> 
-		///	<param name="startIndex">value ÄÚµÄÆğÊ¼Î»ÖÃ¡£</param> 
-		///	<param name="length">ÒªÊ¹ÓÃ×Ö·ûÊı³¤¶È¡£</param> 
+		///	<param name="value"><see cref="String"/>å¯¹è±¡å®ä¾‹</param> 
+		///	<param name="startIndex">value å†…çš„èµ·å§‹ä½ç½®ã€‚</param> 
+		///	<param name="length">è¦ä½¿ç”¨å­—ç¬¦æ•°é•¿åº¦ã€‚</param> 
 		String(String &value, int startIndex, int length):string(value.c_str()+startIndex,length){}
  		///	<summary>
-		///	ÒÔ×Ö·û´®Ö¸Õë³õÊ¼»¯
-		///	<code>Ô­ĞÍ£ºString(const char * value,int startIndex);</code>
+		///	ä»¥å­—ç¬¦ä¸²æŒ‡é’ˆåˆå§‹åŒ–
+		///	<code>åŸå‹ï¼šString(const char * value,int startIndex);</code>
 		///	</summary> 
-		///	<param name="value">×Ö·û´®Ö¸Õë</param> 
-		///	<param name="startIndex">value ÄÚµÄÆğÊ¼Î»ÖÃ¡£</param>  
+		///	<param name="value">å­—ç¬¦ä¸²æŒ‡é’ˆ</param> 
+		///	<param name="startIndex">value å†…çš„èµ·å§‹ä½ç½®ã€‚</param>  
 		String(const char * value,int startIndex):string(value+startIndex){}
  		///	<summary>
-		///	ÒÔ×Ö·û´®Ö¸Õë³õÊ¼»¯
-		///	<code>Ô­ĞÍ£ºString(const char * value,int startIndex, int length);</code>
+		///	ä»¥å­—ç¬¦ä¸²æŒ‡é’ˆåˆå§‹åŒ–
+		///	<code>åŸå‹ï¼šString(const char * value,int startIndex, int length);</code>
 		///	</summary> 
-		///	<param name="value"><see cref="String"/>¶ÔÏóÊµÀı</param> 
-		///	<param name="startIndex">value ÄÚµÄÆğÊ¼Î»ÖÃ¡£</param> 
-		///	<param name="length">ÒªÊ¹ÓÃ×Ö·ûÊı³¤¶È¡£</param> 
+		///	<param name="value"><see cref="String"/>å¯¹è±¡å®ä¾‹</param> 
+		///	<param name="startIndex">value å†…çš„èµ·å§‹ä½ç½®ã€‚</param> 
+		///	<param name="length">è¦ä½¿ç”¨å­—ç¬¦æ•°é•¿åº¦ã€‚</param> 
 		String(const char * value,int startIndex, int length):string(value+startIndex,length){}
  		///	<summary>
-		///	ÏÂ±êÔËËã·û
-		///	<code>Ô­ĞÍ£ºinline char &amp;operator[](int index);</code>
+		///	ä¸‹æ ‡è¿ç®—ç¬¦
+		///	<code>åŸå‹ï¼šinline char &amp;operator[](int index);</code>
 		///	</summary> 
-		///	<param name="index">×Ö·û´®ÄÚÎ»ÖÃ</param> 
-		///	<returns>¶ÔÓ¦Î»ÖÃ×Ö·ûÒıÓÃ</returns>
+		///	<param name="index">å­—ç¬¦ä¸²å†…ä½ç½®</param> 
+		///	<returns>å¯¹åº”ä½ç½®å­—ç¬¦å¼•ç”¨</returns>
 		inline char &operator[](int index){return at(index);};
  
  		///	<summary>
-		///	±È½ÏÁ½¸öÖ¸¶¨µÄ <see cref="String"/> ¶ÔÏó¡£
-		///	<code>Ô­ĞÍ£ºinline static int Compare(String &amp;strA, String &amp;strB);</code>
+		///	æ¯”è¾ƒä¸¤ä¸ªæŒ‡å®šçš„ <see cref="String"/> å¯¹è±¡ã€‚
+		///	<code>åŸå‹ï¼šinline static int Compare(String &amp;strA, String &amp;strB);</code>
 		///	</summary> 
-		///	<param name="strA">µÚÒ»¸ö<see cref="String"/>¶ÔÏó</param> 
-		///	<param name="strB">µÚ¶ş¸ö<see cref="String"/>¶ÔÏó</param>
-		///	<returns>Ò»¸ö 32 Î»ÓĞ·ûºÅÕûÊı£¬Ö¸Ê¾Á½¸ö±È½ÏÊıÖ®¼äµÄ´Ê·¨¹ØÏµ¡£Öµ Ìõ¼ş Ğ¡ÓÚÁã strA Ğ¡ÓÚ strB¡£ Áã strA µÈÓÚ strB¡£ ´óÓÚÁã strA ´óÓÚ strB¡£</returns>
+		///	<param name="strA">ç¬¬ä¸€ä¸ª<see cref="String"/>å¯¹è±¡</param> 
+		///	<param name="strB">ç¬¬äºŒä¸ª<see cref="String"/>å¯¹è±¡</param>
+		///	<returns>ä¸€ä¸ª 32 ä½æœ‰ç¬¦å·æ•´æ•°ï¼ŒæŒ‡ç¤ºä¸¤ä¸ªæ¯”è¾ƒæ•°ä¹‹é—´çš„è¯æ³•å…³ç³»ã€‚å€¼ æ¡ä»¶ å°äºé›¶ strA å°äº strBã€‚ é›¶ strA ç­‰äº strBã€‚ å¤§äºé›¶ strA å¤§äº strBã€‚</returns>
 		inline static int Compare(String &strA, String &strB){return String::strcmp(strA.c_str(),strB.c_str());};
  		///	<summary>
-		///	±È½ÏÁ½¸öÖ¸¶¨µÄ <see cref="String"/> ¶ÔÏó,ºöÂÔ»ò¿¼ÂÇËüÃÇµÄ´óĞ¡Ğ´¡£
-		///	<code>Ô­ĞÍ£ºinline static int Compare(String &amp;strA, String &amp;strB, bool ignoreCase);</code>
+		///	æ¯”è¾ƒä¸¤ä¸ªæŒ‡å®šçš„ <see cref="String"/> å¯¹è±¡,å¿½ç•¥æˆ–è€ƒè™‘å®ƒä»¬çš„å¤§å°å†™ã€‚
+		///	<code>åŸå‹ï¼šinline static int Compare(String &amp;strA, String &amp;strB, bool ignoreCase);</code>
 		///	</summary> 
-		///	<param name="strA">µÚÒ»¸ö<see cref="String"/>¶ÔÏó</param> 
-		///	<param name="strB">µÚ¶ş¸ö<see cref="String"/>¶ÔÏó</param>
-		///	<param name="ignoreCase">ÊÇ·ñºöÂÔ´óĞ¡Ğ´</param>
-		///	<returns>Ò»¸ö 32 Î»ÓĞ·ûºÅÕûÊı£¬Ö¸Ê¾Á½¸ö±È½ÏÊıÖ®¼äµÄ´Ê·¨¹ØÏµ¡£Öµ Ìõ¼ş Ğ¡ÓÚÁã strA Ğ¡ÓÚ strB¡£ Áã strA µÈÓÚ strB¡£ ´óÓÚÁã strA ´óÓÚ strB¡£</returns>
+		///	<param name="strA">ç¬¬ä¸€ä¸ª<see cref="String"/>å¯¹è±¡</param> 
+		///	<param name="strB">ç¬¬äºŒä¸ª<see cref="String"/>å¯¹è±¡</param>
+		///	<param name="ignoreCase">æ˜¯å¦å¿½ç•¥å¤§å°å†™</param>
+		///	<returns>ä¸€ä¸ª 32 ä½æœ‰ç¬¦å·æ•´æ•°ï¼ŒæŒ‡ç¤ºä¸¤ä¸ªæ¯”è¾ƒæ•°ä¹‹é—´çš„è¯æ³•å…³ç³»ã€‚å€¼ æ¡ä»¶ å°äºé›¶ strA å°äº strBã€‚ é›¶ strA ç­‰äº strBã€‚ å¤§äºé›¶ strA å¤§äº strBã€‚</returns>
         inline static int Compare(String &strA, String &strB, bool ignoreCase){return String::strcmp(strA.c_str(),strB.c_str(),ignoreCase);};
     	///	<summary>
-		///	±È½ÏÁ½¸öÖ¸¶¨µÄ <see cref="String"/> ¶ÔÏó,ºöÂÔ»ò¿¼ÂÇËüÃÇµÄ´óĞ¡Ğ´¡£
-		///	<code>Ô­ĞÍ£ºinline static int Compare(String &amp;strA, int indexA, String &amp;strB,int indexB, int length);</code>
+		///	æ¯”è¾ƒä¸¤ä¸ªæŒ‡å®šçš„ <see cref="String"/> å¯¹è±¡,å¿½ç•¥æˆ–è€ƒè™‘å®ƒä»¬çš„å¤§å°å†™ã€‚
+		///	<code>åŸå‹ï¼šinline static int Compare(String &amp;strA, int indexA, String &amp;strB,int indexB, int length);</code>
 		///	</summary> 
-		///	<param name="strA">µÚÒ»¸ö<see cref="String"/>¶ÔÏó</param> 
-		///	<param name="indexA"> strA ÄÚ×Ó×Ö·û´®µÄÎ»ÖÃ¡£</param> 
-		///	<param name="strB">µÚ¶ş¸ö<see cref="String"/>¶ÔÏó</param>
-		///	<param name="indexB"> strB ÄÚ×Ó×Ö·û´®µÄÎ»ÖÃ¡£</param> 
-		///	<param name="length">Òª±È½ÏµÄ×Ö·û³¤¶È¡£</param> 
-		///	<returns>Ò»¸ö 32 Î»ÓĞ·ûºÅÕûÊı£¬Ö¸Ê¾Á½¸ö±È½ÏÊıÖ®¼äµÄ´Ê·¨¹ØÏµ¡£ÖµÌõ¼ş Ğ¡ÓÚÁã strA ÖĞµÄ×Ó×Ö·û´®Ğ¡ÓÚ strB ÖĞµÄ×Ó×Ö·û´®¡£ Áã ×Ó×Ö·û´®ÏàµÈ£¬»òÕß
-        ///     length ÎªÁã¡£ ´óÓÚÁã strA ÖĞµÄ×Ó×Ö·û´®´óÓÚ strB ÖĞµÄ×Ó×Ö·û´®¡£</returns>
+		///	<param name="strA">ç¬¬ä¸€ä¸ª<see cref="String"/>å¯¹è±¡</param> 
+		///	<param name="indexA"> strA å†…å­å­—ç¬¦ä¸²çš„ä½ç½®ã€‚</param> 
+		///	<param name="strB">ç¬¬äºŒä¸ª<see cref="String"/>å¯¹è±¡</param>
+		///	<param name="indexB"> strB å†…å­å­—ç¬¦ä¸²çš„ä½ç½®ã€‚</param> 
+		///	<param name="length">è¦æ¯”è¾ƒçš„å­—ç¬¦é•¿åº¦ã€‚</param> 
+		///	<returns>ä¸€ä¸ª 32 ä½æœ‰ç¬¦å·æ•´æ•°ï¼ŒæŒ‡ç¤ºä¸¤ä¸ªæ¯”è¾ƒæ•°ä¹‹é—´çš„è¯æ³•å…³ç³»ã€‚å€¼æ¡ä»¶ å°äºé›¶ strA ä¸­çš„å­å­—ç¬¦ä¸²å°äº strB ä¸­çš„å­å­—ç¬¦ä¸²ã€‚ é›¶ å­å­—ç¬¦ä¸²ç›¸ç­‰ï¼Œæˆ–è€…
+        ///     length ä¸ºé›¶ã€‚ å¤§äºé›¶ strA ä¸­çš„å­å­—ç¬¦ä¸²å¤§äº strB ä¸­çš„å­å­—ç¬¦ä¸²ã€‚</returns>
         inline static int Compare(String &strA, int indexA, String &strB, int indexB, int length){return String::strcmp(strA.c_str(),indexA,strB.c_str(),indexB,length);};
   		///	<summary>
-		///	±È½ÏÁ½¸öÖ¸¶¨µÄ <see cref="String"/> ¶ÔÏó,ºöÂÔ»ò¿¼ÂÇËüÃÇµÄ´óĞ¡Ğ´¡£
-		///	<code>Ô­ĞÍ£ºinline static int Compare(String &amp;strA, int indexA, String &amp;strB,
+		///	æ¯”è¾ƒä¸¤ä¸ªæŒ‡å®šçš„ <see cref="String"/> å¯¹è±¡,å¿½ç•¥æˆ–è€ƒè™‘å®ƒä»¬çš„å¤§å°å†™ã€‚
+		///	<code>åŸå‹ï¼šinline static int Compare(String &amp;strA, int indexA, String &amp;strB,
 		///                                       int indexB,  int length, bool ignoreCase);</code>
 		///	</summary> 
-		///	<param name="strA">µÚÒ»¸ö<see cref="String"/>¶ÔÏó</param> 
-		///	<param name="indexA"> strA ÄÚ×Ó×Ö·û´®µÄÎ»ÖÃ¡£</param> 
-		///	<param name="strB">µÚ¶ş¸ö<see cref="String"/>¶ÔÏó</param>
-		///	<param name="indexB"> strB ÄÚ×Ó×Ö·û´®µÄÎ»ÖÃ¡£</param> 
-		///	<param name="length">Òª±È½ÏµÄ×Ö·û³¤¶È¡£</param> 
-		///	<param name="ignoreCase">ÊÇ·ñºöÂÔ´óĞ¡Ğ´</param>
-		///	<returns>Ò»¸ö 32 Î»ÓĞ·ûºÅÕûÊı£¬Ö¸Ê¾Á½¸ö±È½ÏÊıÖ®¼äµÄ´Ê·¨¹ØÏµ¡£ÖµÌõ¼ş Ğ¡ÓÚÁã strA ÖĞµÄ×Ó×Ö·û´®Ğ¡ÓÚ strB ÖĞµÄ×Ó×Ö·û´®¡£ Áã ×Ó×Ö·û´®ÏàµÈ£¬»òÕß
-        ///     length ÎªÁã¡£ ´óÓÚÁã strA ÖĞµÄ×Ó×Ö·û´®´óÓÚ strB ÖĞµÄ×Ó×Ö·û´®¡£</returns>
+		///	<param name="strA">ç¬¬ä¸€ä¸ª<see cref="String"/>å¯¹è±¡</param> 
+		///	<param name="indexA"> strA å†…å­å­—ç¬¦ä¸²çš„ä½ç½®ã€‚</param> 
+		///	<param name="strB">ç¬¬äºŒä¸ª<see cref="String"/>å¯¹è±¡</param>
+		///	<param name="indexB"> strB å†…å­å­—ç¬¦ä¸²çš„ä½ç½®ã€‚</param> 
+		///	<param name="length">è¦æ¯”è¾ƒçš„å­—ç¬¦é•¿åº¦ã€‚</param> 
+		///	<param name="ignoreCase">æ˜¯å¦å¿½ç•¥å¤§å°å†™</param>
+		///	<returns>ä¸€ä¸ª 32 ä½æœ‰ç¬¦å·æ•´æ•°ï¼ŒæŒ‡ç¤ºä¸¤ä¸ªæ¯”è¾ƒæ•°ä¹‹é—´çš„è¯æ³•å…³ç³»ã€‚å€¼æ¡ä»¶ å°äºé›¶ strA ä¸­çš„å­å­—ç¬¦ä¸²å°äº strB ä¸­çš„å­å­—ç¬¦ä¸²ã€‚ é›¶ å­å­—ç¬¦ä¸²ç›¸ç­‰ï¼Œæˆ–è€…
+        ///     length ä¸ºé›¶ã€‚ å¤§äºé›¶ strA ä¸­çš„å­å­—ç¬¦ä¸²å¤§äº strB ä¸­çš„å­å­—ç¬¦ä¸²ã€‚</returns>
        inline static int Compare(String &strA, int indexA, String &strB, int indexB, int length, bool ignoreCase){return String::strcmp(strA.c_str(),indexA,strB.c_str(),indexB,length,ignoreCase);};
    		///	<summary>
-		///	½«´ËÊµÀıÓëÖ¸¶¨µÄ  <see cref="String"/> ¶ÔÏó½øĞĞ±È½Ï¡£ 
-		///	<code>Ô­ĞÍ£ºinline int Compare(String &amp;strB );</code>
+		///	å°†æ­¤å®ä¾‹ä¸æŒ‡å®šçš„  <see cref="String"/> å¯¹è±¡è¿›è¡Œæ¯”è¾ƒã€‚ 
+		///	<code>åŸå‹ï¼šinline int Compare(String &amp;strB );</code>
 		///	</summary>  
-		///	<param name="strB">µÚ¶ş¸ö<see cref="String"/>¶ÔÏó</param> 
-		///	<returns> Ò»¸ö 32 Î»ÓĞ·ûºÅÕûÊı£¬Ö¸Ê¾Á½¸ö±È½ÏÊıÖ®¼äµÄ´Ê·¨¹ØÏµ¡£Öµ Ìõ¼ş Ğ¡ÓÚÁã ´ËÊµÀıĞ¡ÓÚ strB¡£ Áã ´ËÊµÀıµÈÓÚ strB¡£ ´óÓÚÁã ´ËÊµÀı´óÓÚ
-        ///     strB¡£- »ò - strB Îªnull¡£</returns>
+		///	<param name="strB">ç¬¬äºŒä¸ª<see cref="String"/>å¯¹è±¡</param> 
+		///	<returns> ä¸€ä¸ª 32 ä½æœ‰ç¬¦å·æ•´æ•°ï¼ŒæŒ‡ç¤ºä¸¤ä¸ªæ¯”è¾ƒæ•°ä¹‹é—´çš„è¯æ³•å…³ç³»ã€‚å€¼ æ¡ä»¶ å°äºé›¶ æ­¤å®ä¾‹å°äº strBã€‚ é›¶ æ­¤å®ä¾‹ç­‰äº strBã€‚ å¤§äºé›¶ æ­¤å®ä¾‹å¤§äº
+        ///     strBã€‚- æˆ– - strB ä¸ºnullã€‚</returns>
         inline int CompareTo(String &strB){return String::strcmp(c_str(),strB.c_str());};
     	///	<summary>
-		///	·µ»ØÒ»¸öÖµ£¬¸ÃÖµÖ¸Ê¾Ö¸¶¨µÄ <see cref="String"/>¶ÔÏóÊÇ·ñ³öÏÖÔÚ´Ë×Ö·û´®ÖĞ¡£
-		///	<code>Ô­ĞÍ£ºinline int Contains(String &amp;value );</code>
+		///	è¿”å›ä¸€ä¸ªå€¼ï¼Œè¯¥å€¼æŒ‡ç¤ºæŒ‡å®šçš„ <see cref="String"/>å¯¹è±¡æ˜¯å¦å‡ºç°åœ¨æ­¤å­—ç¬¦ä¸²ä¸­ã€‚
+		///	<code>åŸå‹ï¼šinline int Contains(String &amp;value );</code>
 		///	</summary>  
-		///	<param name="value">Òª²éÕÒµÄ <see cref="String"/>¶ÔÏó¡£</param> 
-		///	<returns> Èç¹û value ²ÎÊı³öÏÖÔÚ´Ë×Ö·û´®ÖĞ£¬»òÕß value Îª¿Õ×Ö·û´® ("")£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>
+		///	<param name="value">è¦æŸ¥æ‰¾çš„ <see cref="String"/>å¯¹è±¡ã€‚</param> 
+		///	<returns> å¦‚æœ value å‚æ•°å‡ºç°åœ¨æ­¤å­—ç¬¦ä¸²ä¸­ï¼Œæˆ–è€… value ä¸ºç©ºå­—ç¬¦ä¸² ("")ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>
        inline bool Contains(String &value)
 		{
 			if(value.empty())return true;
@@ -690,23 +690,23 @@ namespace Common
 			return false;
 		}
     	///	<summary>
-		///	¿½±´×Ö·ûµ½×Ö·û´®Ö¸ÕëÖĞ.
-		///	<code>Ô­ĞÍ£ºinline void CopyTo(int sourceIndex, char * destination, int destinationIndex, int count);</code>
+		///	æ‹·è´å­—ç¬¦åˆ°å­—ç¬¦ä¸²æŒ‡é’ˆä¸­.
+		///	<code>åŸå‹ï¼šinline void CopyTo(int sourceIndex, char * destination, int destinationIndex, int count);</code>
 		///	</summary>  
-		///	<param name="sourceIndex">µ±Ç°ÊµÀı¶ÔÏóÖĞ×Ö·û¿ªÊ¼Î»ÖÃ¡£</param> 
-		///	<param name="destination">Ä¿±ê×Ö·ûÖ¸Õë¡£</param> 
-		///	<param name="destinationIndex">destination ÖĞµÄ¿ªÊ¼Î»ÖÃ¡£</param> 
-		///	<param name="count">´ËÊµÀıÖĞÒª¸´ÖÆµ½ destination µÄ×Ö·ûÊı¡£</param> 
+		///	<param name="sourceIndex">å½“å‰å®ä¾‹å¯¹è±¡ä¸­å­—ç¬¦å¼€å§‹ä½ç½®ã€‚</param> 
+		///	<param name="destination">ç›®æ ‡å­—ç¬¦æŒ‡é’ˆã€‚</param> 
+		///	<param name="destinationIndex">destination ä¸­çš„å¼€å§‹ä½ç½®ã€‚</param> 
+		///	<param name="count">æ­¤å®ä¾‹ä¸­è¦å¤åˆ¶åˆ° destination çš„å­—ç¬¦æ•°ã€‚</param> 
 		inline void CopyTo(int sourceIndex, char * destination, int destinationIndex, int count)
 		{
 			String::strcpy(destination,destinationIndex,c_str(),sourceIndex,count);
 		}
     	///	<summary>
-		///	È·¶¨´ËÊµÀıÊÇ·ñÓëÁíÒ»¸öÖ¸¶¨µÄ <see cref="String"/> ¶ÔÏó¾ßÓĞÏàÍ¬µÄÖµ.
-		///	<code>Ô­ĞÍ£ºinline bool Equals(String &amp;value);</code>
+		///	ç¡®å®šæ­¤å®ä¾‹æ˜¯å¦ä¸å¦ä¸€ä¸ªæŒ‡å®šçš„ <see cref="String"/> å¯¹è±¡å…·æœ‰ç›¸åŒçš„å€¼.
+		///	<code>åŸå‹ï¼šinline bool Equals(String &amp;value);</code>
 		///	</summary>  
-		///	<param name="value">Òª±È¶ÔµÄ<see cref="String"/>¶ÔÏó¡£</param>  
-		///	<returns>Èç¹û value ²ÎÊıµÄÖµÓë´ËÊµÀıÏàÍ¬£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>
+		///	<param name="value">è¦æ¯”å¯¹çš„<see cref="String"/>å¯¹è±¡ã€‚</param>  
+		///	<returns>å¦‚æœ value å‚æ•°çš„å€¼ä¸æ­¤å®ä¾‹ç›¸åŒï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>
 		inline bool Equals(String &value)
 		{
 			 int result=String::strcmp(c_str(),value.c_str());
@@ -716,22 +716,22 @@ namespace Common
 				 return false;
 		} 
      	///	<summary>
-		///	È·¶¨Á½¸öÖ¸¶¨µÄ<see cref="String"/>¶ÔÏóÊÇ·ñ¾ßÓĞÍ¬Ò»Öµ¡£²ÎÊıÖ¸¶¨ÇøÓòĞÔ¡¢´óĞ¡Ğ´ÒÔ¼°±È½ÏËùÓÃµÄÅÅĞò¹æÔò¡£
-		///	<code>Ô­ĞÍ£ºinline static bool Equals(String &amp;a, String &amp;b, bool ignoreCase=false)</code>
+		///	ç¡®å®šä¸¤ä¸ªæŒ‡å®šçš„<see cref="String"/>å¯¹è±¡æ˜¯å¦å…·æœ‰åŒä¸€å€¼ã€‚å‚æ•°æŒ‡å®šåŒºåŸŸæ€§ã€å¤§å°å†™ä»¥åŠæ¯”è¾ƒæ‰€ç”¨çš„æ’åºè§„åˆ™ã€‚
+		///	<code>åŸå‹ï¼šinline static bool Equals(String &amp;a, String &amp;b, bool ignoreCase=false)</code>
 		///	</summary>  
-		///	<param name="a">Òª±È¶ÔµÄ<see cref="String"/>¶ÔÏó¡£</param>  
-		///	<param name="b">Òª±È¶ÔµÄ<see cref="String"/>¶ÔÏó¡£</param>  
-		///	<param name="ignoreCase">ÊÇ·ñºöÂÔ´óĞ¡Ğ´</param>
-		///	<returns>Èç¹û value ²ÎÊıµÄÖµÓë´ËÊµÀıÏàÍ¬£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>
+		///	<param name="a">è¦æ¯”å¯¹çš„<see cref="String"/>å¯¹è±¡ã€‚</param>  
+		///	<param name="b">è¦æ¯”å¯¹çš„<see cref="String"/>å¯¹è±¡ã€‚</param>  
+		///	<param name="ignoreCase">æ˜¯å¦å¿½ç•¥å¤§å°å†™</param>
+		///	<returns>å¦‚æœ value å‚æ•°çš„å€¼ä¸æ­¤å®ä¾‹ç›¸åŒï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>
         inline static bool Equals(String &a, String &b, bool ignoreCase=false){return String::strcmp(a.c_str(),b.c_str(),ignoreCase)==0;};
 		inline static bool Equals(string &a, string b, bool ignoreCase=false){return String::strcmp(a.c_str(),b.c_str(),ignoreCase)==0;};
      	///	<summary>
-		///	½«Ö¸¶¨µÄ<see cref="String"/>ÖĞµÄ¸ñÊ½ÏîÌæ»»ÎªÖ¸¶¨µÄ<see cref="String"/>ÊµÀıµÄÖµµÄÎÄ±¾µÈĞ§Ïî¡£
-		///	<code>Ô­ĞÍ£ºinline static String Format(String format, String arg0);</code>
+		///	å°†æŒ‡å®šçš„<see cref="String"/>ä¸­çš„æ ¼å¼é¡¹æ›¿æ¢ä¸ºæŒ‡å®šçš„<see cref="String"/>å®ä¾‹çš„å€¼çš„æ–‡æœ¬ç­‰æ•ˆé¡¹ã€‚
+		///	<code>åŸå‹ï¼šinline static String Format(String format, String arg0);</code>
 		///	</summary>  
-		///	<param name="format">¸ñÊ½»¯µÄformat<see cref="String"/>¶ÔÏó£¬°üº¬¡°{0}¡±Õâ¸öÕ¼Î»·û¡£</param>  
-		///	<param name="arg0">Òª¸ñÊ½»¯µÄ<see cref="String"/>¶ÔÏó¡£</param>   
-		///	<returns>format µÄÒ»¸ö¸±±¾£¬ÆäÖĞµÄµÚÒ»¸ö¸ñÊ½Ïî{0}ÒÑÌæ»»Îª arg0 µÄ<see cref="String"/>µÈĞ§Ïî¡£</returns>
+		///	<param name="format">æ ¼å¼åŒ–çš„format<see cref="String"/>å¯¹è±¡ï¼ŒåŒ…å«â€œ{0}â€è¿™ä¸ªå ä½ç¬¦ã€‚</param>  
+		///	<param name="arg0">è¦æ ¼å¼åŒ–çš„<see cref="String"/>å¯¹è±¡ã€‚</param>   
+		///	<returns>format çš„ä¸€ä¸ªå‰¯æœ¬ï¼Œå…¶ä¸­çš„ç¬¬ä¸€ä¸ªæ ¼å¼é¡¹{0}å·²æ›¿æ¢ä¸º arg0 çš„<see cref="String"/>ç­‰æ•ˆé¡¹ã€‚</returns>
 		inline static String Format(String format, String arg0)
 		{
 			String s="{0}",result;
@@ -747,12 +747,12 @@ namespace Common
 			return result.c_str();
 		} 
      	///	<summary>
-		///	½«Ö¸¶¨µÄ<see cref="String"/>ÖĞµÄ¸ñÊ½ÏîÌæ»»ÎªÖ¸¶¨µÄ<see cref="String"/>ÊµÀıµÄÖµµÄÎÄ±¾µÈĞ§Ïî¡£
-		///	<code>Ô­ĞÍ£ºinline static String Format(String format, Array&lt;String> &amp;args);</code>
+		///	å°†æŒ‡å®šçš„<see cref="String"/>ä¸­çš„æ ¼å¼é¡¹æ›¿æ¢ä¸ºæŒ‡å®šçš„<see cref="String"/>å®ä¾‹çš„å€¼çš„æ–‡æœ¬ç­‰æ•ˆé¡¹ã€‚
+		///	<code>åŸå‹ï¼šinline static String Format(String format, Array&lt;String> &amp;args);</code>
 		///	</summary>  
-		///	<param name="format"><see cref="String"/>£¬°üº¬Áã¸ö»ò¶à¸ö¸ñÊ½Ïî¡£</param>  
-		///	<param name="args">°üº¬Áã¸ö»ò¶à¸öÒª¸ñÊ½»¯µÄ¶ÔÏóµÄ<see cref="String"/>Êı×é¡£</param>   
-		///	<returns>format µÄÒ»¸ö¸±±¾£¬ÆäÖĞ¸ñÊ½ÏîÒÑÌæ»»Îª args ÖĞÏàÓ¦ <see cref="String"/> ÊµÀıµÄ <see cref="String"/> µÈĞ§Ïî¡£</returns>
+		///	<param name="format"><see cref="String"/>ï¼ŒåŒ…å«é›¶ä¸ªæˆ–å¤šä¸ªæ ¼å¼é¡¹ã€‚</param>  
+		///	<param name="args">åŒ…å«é›¶ä¸ªæˆ–å¤šä¸ªè¦æ ¼å¼åŒ–çš„å¯¹è±¡çš„<see cref="String"/>æ•°ç»„ã€‚</param>   
+		///	<returns>format çš„ä¸€ä¸ªå‰¯æœ¬ï¼Œå…¶ä¸­æ ¼å¼é¡¹å·²æ›¿æ¢ä¸º args ä¸­ç›¸åº” <see cref="String"/> å®ä¾‹çš„ <see cref="String"/> ç­‰æ•ˆé¡¹ã€‚</returns>
 		inline static String Format(String format, Array<String> &args)
 		{
 			String result=format;
@@ -769,13 +769,13 @@ namespace Common
 			return result.c_str();
 		}
      	///	<summary>
-		///	½«Ö¸¶¨µÄ<see cref="String"/>ÖĞµÄ¸ñÊ½ÏîÌæ»»ÎªÖ¸¶¨µÄ<see cref="String"/>ÊµÀıµÄÖµµÄÎÄ±¾µÈĞ§Ïî¡£
-		///	<code>Ô­ĞÍ£ºinline static String Format(String format, String arg0, String arg1);</code>
+		///	å°†æŒ‡å®šçš„<see cref="String"/>ä¸­çš„æ ¼å¼é¡¹æ›¿æ¢ä¸ºæŒ‡å®šçš„<see cref="String"/>å®ä¾‹çš„å€¼çš„æ–‡æœ¬ç­‰æ•ˆé¡¹ã€‚
+		///	<code>åŸå‹ï¼šinline static String Format(String format, String arg0, String arg1);</code>
 		///	</summary>  
-		///	<param name="format"><see cref="String"/>£¬°üº¬Áã¸ö»ò¶à¸ö¸ñÊ½Ïî¡£</param>  
-		///	<param name="arg0">µÚÒ»¸öÒª¸ñÊ½»¯µÄ<see cref="String"/>¡£</param>   
-		///	<param name="arg1">µÚ¶ş¸öÒª¸ñÊ½»¯µÄ<see cref="String"/>¡£</param>   
-		///	<returns>format µÄÒ»¸ö¸±±¾£¬ÆäÖĞ¸ñÊ½ÏîÒÑÌæ»»Îª arg0 ,arg1ÖĞÏàÓ¦ <see cref="String"/> ÊµÀıµÄ <see cref="String"/> µÈĞ§Ïî¡£</returns>
+		///	<param name="format"><see cref="String"/>ï¼ŒåŒ…å«é›¶ä¸ªæˆ–å¤šä¸ªæ ¼å¼é¡¹ã€‚</param>  
+		///	<param name="arg0">ç¬¬ä¸€ä¸ªè¦æ ¼å¼åŒ–çš„<see cref="String"/>ã€‚</param>   
+		///	<param name="arg1">ç¬¬äºŒä¸ªè¦æ ¼å¼åŒ–çš„<see cref="String"/>ã€‚</param>   
+		///	<returns>format çš„ä¸€ä¸ªå‰¯æœ¬ï¼Œå…¶ä¸­æ ¼å¼é¡¹å·²æ›¿æ¢ä¸º arg0 ,arg1ä¸­ç›¸åº” <see cref="String"/> å®ä¾‹çš„ <see cref="String"/> ç­‰æ•ˆé¡¹ã€‚</returns>
 		inline static String Format(String format, String arg0, String arg1)
 		{
 			int i=0,count=0;
@@ -802,14 +802,14 @@ namespace Common
 			return format.c_str();
 		}
       	///	<summary>
-		///	½«Ö¸¶¨µÄ <see cref="String"/> ÖĞµÄ¸ñÊ½ÏîÌæ»»ÎªÈı¸öÖ¸¶¨µÄ <see cref="String"/> ¡£
-		///	<code>Ô­ĞÍ£ºinline static String Format(String format, String arg0, String arg1, String arg2);</code>
+		///	å°†æŒ‡å®šçš„ <see cref="String"/> ä¸­çš„æ ¼å¼é¡¹æ›¿æ¢ä¸ºä¸‰ä¸ªæŒ‡å®šçš„ <see cref="String"/> ã€‚
+		///	<code>åŸå‹ï¼šinline static String Format(String format, String arg0, String arg1, String arg2);</code>
 		///	</summary>  
-		///	<param name="format"><see cref="String"/>£¬°üº¬Áã¸ö»ò¶à¸ö¸ñÊ½Ïî¡£</param>  
-		///	<param name="arg0">µÚÒ»¸öÒª¸ñÊ½»¯µÄ<see cref="String"/>¡£</param>   
-		///	<param name="arg1">µÚ¶ş¸öÒª¸ñÊ½»¯µÄ<see cref="String"/>¡£</param>   
-		///	<param name="arg1">µÚÈı¸öÒª¸ñÊ½»¯µÄ<see cref="String"/>¡£</param>   
-		///	<returns>format µÄÒ»¸ö¸±±¾£¬ÆäÖĞ¸ñÊ½ÏîÒÑÌæ»»Îª arg0 ,arg1 ,arg2ÖĞÏàÓ¦ <see cref="String"/> ÊµÀıµÄ <see cref="String"/> µÈĞ§Ïî¡£</returns>
+		///	<param name="format"><see cref="String"/>ï¼ŒåŒ…å«é›¶ä¸ªæˆ–å¤šä¸ªæ ¼å¼é¡¹ã€‚</param>  
+		///	<param name="arg0">ç¬¬ä¸€ä¸ªè¦æ ¼å¼åŒ–çš„<see cref="String"/>ã€‚</param>   
+		///	<param name="arg1">ç¬¬äºŒä¸ªè¦æ ¼å¼åŒ–çš„<see cref="String"/>ã€‚</param>   
+		///	<param name="arg1">ç¬¬ä¸‰ä¸ªè¦æ ¼å¼åŒ–çš„<see cref="String"/>ã€‚</param>   
+		///	<returns>format çš„ä¸€ä¸ªå‰¯æœ¬ï¼Œå…¶ä¸­æ ¼å¼é¡¹å·²æ›¿æ¢ä¸º arg0 ,arg1 ,arg2ä¸­ç›¸åº” <see cref="String"/> å®ä¾‹çš„ <see cref="String"/> ç­‰æ•ˆé¡¹ã€‚</returns>
 		inline static String Format(String format, String arg0, String arg1, String arg2)
 		{
 			int i=0,count=0;
@@ -839,14 +839,14 @@ namespace Common
 			return format.c_str();
 		}
        	///	<summary>
-		///	±¨¸æÖ¸¶¨×Ö·ûÔÚ´Ë×Ö·û´®ÖĞµÄµÚÒ»¸öÆ¥ÅäÏîµÄË÷Òı¡£
-		///	<code>Ô­ĞÍ£ºinline int IndexOf(char value, int startIndex,bool ignoreCase, int count=0);</code>
+		///	æŠ¥å‘ŠæŒ‡å®šå­—ç¬¦åœ¨æ­¤å­—ç¬¦ä¸²ä¸­çš„ç¬¬ä¸€ä¸ªåŒ¹é…é¡¹çš„ç´¢å¼•ã€‚
+		///	<code>åŸå‹ï¼šinline int IndexOf(char value, int startIndex,bool ignoreCase, int count=0);</code>
 		///	</summary>  
-		///	<param name="value">Òª²éÕÒµÄ×Ö·û ¡£</param>   
-		///	<param name="startIndex">ËÑË÷ÆğÊ¼Î»ÖÃ¡£</param>   
-		///	<param name="ignoreCase">ÊÇ·ñºöÂÔ´óĞ¡Ğ´¡£</param>   
-		///	<param name="count">²éÕÒ³¤¶È£¬²éÕÒ¶àÉÙ×Ö·ûºóÍ£Ö¹²éÕÒ¡£</param>   
-		///	<returns>Èç¹ûÕÒµ½¸Ã×Ö·û£¬ÔòÎª value µÄË÷ÒıÎ»ÖÃ£»·ñÔòÈç¹ûÎ´ÕÒµ½£¬ÔòÎª -1¡£</returns>
+		///	<param name="value">è¦æŸ¥æ‰¾çš„å­—ç¬¦ ã€‚</param>   
+		///	<param name="startIndex">æœç´¢èµ·å§‹ä½ç½®ã€‚</param>   
+		///	<param name="ignoreCase">æ˜¯å¦å¿½ç•¥å¤§å°å†™ã€‚</param>   
+		///	<param name="count">æŸ¥æ‰¾é•¿åº¦ï¼ŒæŸ¥æ‰¾å¤šå°‘å­—ç¬¦ååœæ­¢æŸ¥æ‰¾ã€‚</param>   
+		///	<returns>å¦‚æœæ‰¾åˆ°è¯¥å­—ç¬¦ï¼Œåˆ™ä¸º value çš„ç´¢å¼•ä½ç½®ï¼›å¦åˆ™å¦‚æœæœªæ‰¾åˆ°ï¼Œåˆ™ä¸º -1ã€‚</returns>
         inline int IndexOf(char value, int startIndex,bool ignoreCase, int count=0)
 		{
 			int i=startIndex;
@@ -865,25 +865,25 @@ namespace Common
 			return -1;
 		}
        	///	<summary>
-		///	±¨¸æÖ¸¶¨×Ö·ûÔÚ´Ë×Ö·û´®ÖĞµÄµÚÒ»¸öÆ¥ÅäÏîµÄË÷Òı¡£¸ÃËÑË÷´ÓÖ¸¶¨×Ö·ûÎ»ÖÃ¿ªÊ¼
-		///	<code>Ô­ĞÍ£ºinline int IndexOf(char value, bool ignoreCase=0);</code>
+		///	æŠ¥å‘ŠæŒ‡å®šå­—ç¬¦åœ¨æ­¤å­—ç¬¦ä¸²ä¸­çš„ç¬¬ä¸€ä¸ªåŒ¹é…é¡¹çš„ç´¢å¼•ã€‚è¯¥æœç´¢ä»æŒ‡å®šå­—ç¬¦ä½ç½®å¼€å§‹
+		///	<code>åŸå‹ï¼šinline int IndexOf(char value, bool ignoreCase=0);</code>
 		///	</summary>  
-		///	<param name="value">Òª²éÕÒµÄ×Ö·û ¡£</param>     
-		///	<param name="ignoreCase">ÊÇ·ñºöÂÔ´óĞ¡Ğ´¡£</param>    
-		///	<returns>Èç¹ûÕÒµ½¸Ã×Ö·û£¬ÔòÎª value µÄË÷ÒıÎ»ÖÃ£»·ñÔòÈç¹ûÎ´ÕÒµ½£¬ÔòÎª -1¡£</returns>
+		///	<param name="value">è¦æŸ¥æ‰¾çš„å­—ç¬¦ ã€‚</param>     
+		///	<param name="ignoreCase">æ˜¯å¦å¿½ç•¥å¤§å°å†™ã€‚</param>    
+		///	<returns>å¦‚æœæ‰¾åˆ°è¯¥å­—ç¬¦ï¼Œåˆ™ä¸º value çš„ç´¢å¼•ä½ç½®ï¼›å¦åˆ™å¦‚æœæœªæ‰¾åˆ°ï¼Œåˆ™ä¸º -1ã€‚</returns>
 		inline int IndexOf(char value, bool ignoreCase=0)
 		{
 			return IndexOf(value,0,ignoreCase);
 		}
        	///	<summary>
-		///	±¨¸æÖ¸¶¨µÄ <see cref="String"/> ÔÚ´ËÊµÀıÖĞµÄµÚÒ»¸öÆ¥ÅäÏîµÄË÷Òı¡£
-		///	<code>Ô­ĞÍ£ºinline int IndexOf(String value, int startIndex, bool ignoreCase, int count=0);</code>
+		///	æŠ¥å‘ŠæŒ‡å®šçš„ <see cref="String"/> åœ¨æ­¤å®ä¾‹ä¸­çš„ç¬¬ä¸€ä¸ªåŒ¹é…é¡¹çš„ç´¢å¼•ã€‚
+		///	<code>åŸå‹ï¼šinline int IndexOf(String value, int startIndex, bool ignoreCase, int count=0);</code>
 		///	</summary>  
-		///	<param name="value">Òª²éÕÒµÄ×Ö·û´®<see cref="String"/>  ¡£</param>     
-		///	<param name="startIndex">ËÑË÷ÆğÊ¼Î»ÖÃ¡£</param>   
-		///	<param name="ignoreCase">ÊÇ·ñºöÂÔ´óĞ¡Ğ´¡£</param>   
-		///	<param name="count">²éÕÒ³¤¶È£¬²éÕÒ¶àÉÙ×Ö·ûºóÍ£Ö¹²éÕÒ¡£</param>   
-		///	<returns>Èç¹ûÕÒµ½¸Ã×Ö·û£¬ÔòÎª value µÄË÷ÒıÎ»ÖÃ£»·ñÔòÈç¹ûÎ´ÕÒµ½£¬ÔòÎª -1¡£</returns>
+		///	<param name="value">è¦æŸ¥æ‰¾çš„å­—ç¬¦ä¸²<see cref="String"/>  ã€‚</param>     
+		///	<param name="startIndex">æœç´¢èµ·å§‹ä½ç½®ã€‚</param>   
+		///	<param name="ignoreCase">æ˜¯å¦å¿½ç•¥å¤§å°å†™ã€‚</param>   
+		///	<param name="count">æŸ¥æ‰¾é•¿åº¦ï¼ŒæŸ¥æ‰¾å¤šå°‘å­—ç¬¦ååœæ­¢æŸ¥æ‰¾ã€‚</param>   
+		///	<returns>å¦‚æœæ‰¾åˆ°è¯¥å­—ç¬¦ï¼Œåˆ™ä¸º value çš„ç´¢å¼•ä½ç½®ï¼›å¦åˆ™å¦‚æœæœªæ‰¾åˆ°ï¼Œåˆ™ä¸º -1ã€‚</returns>
 		inline int IndexOf(String value, int startIndex, bool ignoreCase, int count=0)
 		{
 			if(value.empty())return startIndex;
@@ -915,24 +915,24 @@ namespace Common
 		}
 
       	///	<summary>
-		///	±¨¸æÖ¸¶¨µÄ <see cref="String"/> ÔÚ´ËÊµÀıÖĞµÄµÚÒ»¸öÆ¥ÅäÏîµÄË÷Òı¡£¸ÃËÑË÷´ÓÖ¸¶¨×Ö·ûÎ»ÖÃ¿ªÊ¼
-		///	<code>Ô­ĞÍ£ºinline int IndexOf(String value,  bool ignoreCase );</code>
+		///	æŠ¥å‘ŠæŒ‡å®šçš„ <see cref="String"/> åœ¨æ­¤å®ä¾‹ä¸­çš„ç¬¬ä¸€ä¸ªåŒ¹é…é¡¹çš„ç´¢å¼•ã€‚è¯¥æœç´¢ä»æŒ‡å®šå­—ç¬¦ä½ç½®å¼€å§‹
+		///	<code>åŸå‹ï¼šinline int IndexOf(String value,  bool ignoreCase );</code>
 		///	</summary>  
-		///	<param name="value">Òª²éÕÒµÄ×Ö·û´®<see cref="String"/>  ¡£</param>   
-		///	<param name="ignoreCase">ÊÇ·ñºöÂÔ´óĞ¡Ğ´¡£</param>    
-		///	<returns>Èç¹ûÕÒµ½¸Ã×Ö·û£¬ÔòÎª value µÄË÷ÒıÎ»ÖÃ£»·ñÔòÈç¹ûÎ´ÕÒµ½£¬ÔòÎª -1¡£</returns>
+		///	<param name="value">è¦æŸ¥æ‰¾çš„å­—ç¬¦ä¸²<see cref="String"/>  ã€‚</param>   
+		///	<param name="ignoreCase">æ˜¯å¦å¿½ç•¥å¤§å°å†™ã€‚</param>    
+		///	<returns>å¦‚æœæ‰¾åˆ°è¯¥å­—ç¬¦ï¼Œåˆ™ä¸º value çš„ç´¢å¼•ä½ç½®ï¼›å¦åˆ™å¦‚æœæœªæ‰¾åˆ°ï¼Œåˆ™ä¸º -1ã€‚</returns>
 		inline int IndexOf(String value, bool ignoreCase=false)
 		{
 			return IndexOf(value,0,ignoreCase);
 		}
        	///	<summary>
-		///	±¨¸æÖ¸¶¨×Ö·ûÊı×éÖĞµÄÈÎÒâ×Ö·ûÔÚ´ËÊµÀıÖĞµÚÒ»¸öÆ¥ÅäÏîµÄË÷Òı¡£ËÑË÷´ÓÖ¸¶¨×Ö·ûÎ»ÖÃ¿ªÊ¼£¬²¢¼ì²éÖ¸¶¨ÊıÁ¿µÄ×Ö·ûÎ»ÖÃ¡£
-		///	<code>Ô­ĞÍ£ºinline int IndexOfAny(String anyOf, int startIndex=0, int count=0);</code>
+		///	æŠ¥å‘ŠæŒ‡å®šå­—ç¬¦æ•°ç»„ä¸­çš„ä»»æ„å­—ç¬¦åœ¨æ­¤å®ä¾‹ä¸­ç¬¬ä¸€ä¸ªåŒ¹é…é¡¹çš„ç´¢å¼•ã€‚æœç´¢ä»æŒ‡å®šå­—ç¬¦ä½ç½®å¼€å§‹ï¼Œå¹¶æ£€æŸ¥æŒ‡å®šæ•°é‡çš„å­—ç¬¦ä½ç½®ã€‚
+		///	<code>åŸå‹ï¼šinline int IndexOfAny(String anyOf, int startIndex=0, int count=0);</code>
 		///	</summary>  
-		///	<param name="anyOf">Òª²éÕÒµÄ×Ö·ûÊı×é£¬°üº¬Ò»¸ö»ò¶à¸öÒª²éÕÒµÄ×Ö·û¡£<see cref="String"/>  ¡£</param>   
-		///	<param name="startIndex">ÊÇ·ñºöÂÔ´óĞ¡Ğ´¡£</param>    
-		///	<param name="count">Òª¼ì²éµÄ×Ö·ûÎ»ÖÃÊı¡£</param>    
-		///	<returns>´ËÊµÀıÖĞµÚÒ»¸öÆ¥ÅäÏîµÄË÷ÒıÎ»ÖÃ£¬ÔÚ´Ë´¦ÕÒµ½ anyOf ÖĞµÄÈÎÒâ×Ö·û£»·ñÔò£¬Èç¹ûÎ´ÕÒµ½ anyOf ÖĞµÄ×Ö·û£¬ÔòÎª -1¡£</returns>
+		///	<param name="anyOf">è¦æŸ¥æ‰¾çš„å­—ç¬¦æ•°ç»„ï¼ŒåŒ…å«ä¸€ä¸ªæˆ–å¤šä¸ªè¦æŸ¥æ‰¾çš„å­—ç¬¦ã€‚<see cref="String"/>  ã€‚</param>   
+		///	<param name="startIndex">æ˜¯å¦å¿½ç•¥å¤§å°å†™ã€‚</param>    
+		///	<param name="count">è¦æ£€æŸ¥çš„å­—ç¬¦ä½ç½®æ•°ã€‚</param>    
+		///	<returns>æ­¤å®ä¾‹ä¸­ç¬¬ä¸€ä¸ªåŒ¹é…é¡¹çš„ç´¢å¼•ä½ç½®ï¼Œåœ¨æ­¤å¤„æ‰¾åˆ° anyOf ä¸­çš„ä»»æ„å­—ç¬¦ï¼›å¦åˆ™ï¼Œå¦‚æœæœªæ‰¾åˆ° anyOf ä¸­çš„å­—ç¬¦ï¼Œåˆ™ä¸º -1ã€‚</returns>
  		inline int IndexOfAny(String anyOf, int startIndex=0, int count=0)
 		{
 			if(count==0)return -1;
@@ -951,17 +951,17 @@ namespace Common
 			return -1;
 		}
        	///	<summary>
-		///	ÔÚÖ¸¶¨ <see cref="String"/>  Êı×éµÄÃ¿¸öÔªËØÖ®¼ä´®ÁªÖ¸¶¨µÄ·Ö¸ô·û <see cref="String"/> £¬
-		///     ´Ó¶ø²úÉúµ¥¸ö´®ÁªµÄ×Ö·û´®¡£²ÎÊıÖ¸¶¨ÒªÊ¹ÓÃµÄµÚÒ»¸öÊı×éÔªËØºÍÔªËØÊı¡£
-		///	<code>Ô­ĞÍ£ºinline static String Join(Array&lt;String> &amp;value,String separator=",",
+		///	åœ¨æŒ‡å®š <see cref="String"/>  æ•°ç»„çš„æ¯ä¸ªå…ƒç´ ä¹‹é—´ä¸²è”æŒ‡å®šçš„åˆ†éš”ç¬¦ <see cref="String"/> ï¼Œ
+		///     ä»è€Œäº§ç”Ÿå•ä¸ªä¸²è”çš„å­—ç¬¦ä¸²ã€‚å‚æ•°æŒ‡å®šè¦ä½¿ç”¨çš„ç¬¬ä¸€ä¸ªæ•°ç»„å…ƒç´ å’Œå…ƒç´ æ•°ã€‚
+		///	<code>åŸå‹ï¼šinline static String Join(Array&lt;String> &amp;value,String separator=",",
 		///                                       int startIndex=0, int count=0x7fffffff);</code>
 		///	</summary>  
-		///	<param name="value">Ò»¸ö <see cref="String"/> Êı×é¡£</param>   
-		///	<param name="separator">·Ö¸ô·û×Ö·û´® <see cref="String"/>  ¡£</param>   
-		///	<param name="startIndex">ÒªÊ¹ÓÃµÄ value ÖĞµÄµÚÒ»¸öÊı×éÔªËØ¡£</param>    
-		///	<param name="count">ÒªÊ¹ÓÃµÄ value µÄÔªËØÊı¡£</param>    
-		///	<returns><see cref="String"/> ¶ÔÏó£¬ÓÉÍ¨¹ı separator Áª½ÓµÄ value ÖĞµÄ×Ö·û´®×é³É¡£Èç¹û count ÎªÁã¡¢value Ã»ÓĞÔªËØ»òÕß
-		///     separator ºÍ value µÄÈ«²¿ÔªËØÎª Common.String.Empty£¬ÔòÎª Common.String.Empty¡£</returns>
+		///	<param name="value">ä¸€ä¸ª <see cref="String"/> æ•°ç»„ã€‚</param>   
+		///	<param name="separator">åˆ†éš”ç¬¦å­—ç¬¦ä¸² <see cref="String"/>  ã€‚</param>   
+		///	<param name="startIndex">è¦ä½¿ç”¨çš„ value ä¸­çš„ç¬¬ä¸€ä¸ªæ•°ç»„å…ƒç´ ã€‚</param>    
+		///	<param name="count">è¦ä½¿ç”¨çš„ value çš„å…ƒç´ æ•°ã€‚</param>    
+		///	<returns><see cref="String"/> å¯¹è±¡ï¼Œç”±é€šè¿‡ separator è”æ¥çš„ value ä¸­çš„å­—ç¬¦ä¸²ç»„æˆã€‚å¦‚æœ count ä¸ºé›¶ã€value æ²¡æœ‰å…ƒç´ æˆ–è€…
+		///     separator å’Œ value çš„å…¨éƒ¨å…ƒç´ ä¸º Common.String.Emptyï¼Œåˆ™ä¸º Common.String.Emptyã€‚</returns>
 		inline static String Join(Array<String> &value,String separator=",", int startIndex=0, int count=0x7fffffff)
 		{
 			String result;
@@ -974,17 +974,17 @@ namespace Common
 			return result;
 		}
        	///	<summary>
-		///	ÔÚÖ¸¶¨ <see cref="string"/>  Êı×éµÄÃ¿¸öÔªËØÖ®¼ä´®ÁªÖ¸¶¨µÄ·Ö¸ô·û <see cref="string"/> £¬
-		///     ´Ó¶ø²úÉúµ¥¸ö´®ÁªµÄ×Ö·û´®¡£²ÎÊıÖ¸¶¨ÒªÊ¹ÓÃµÄµÚÒ»¸öÊı×éÔªËØºÍÔªËØÊı¡£
-		///	<code>Ô­ĞÍ£ºinline static string Join(Array&lt;string> &amp;value,string separator=",", 
+		///	åœ¨æŒ‡å®š <see cref="string"/>  æ•°ç»„çš„æ¯ä¸ªå…ƒç´ ä¹‹é—´ä¸²è”æŒ‡å®šçš„åˆ†éš”ç¬¦ <see cref="string"/> ï¼Œ
+		///     ä»è€Œäº§ç”Ÿå•ä¸ªä¸²è”çš„å­—ç¬¦ä¸²ã€‚å‚æ•°æŒ‡å®šè¦ä½¿ç”¨çš„ç¬¬ä¸€ä¸ªæ•°ç»„å…ƒç´ å’Œå…ƒç´ æ•°ã€‚
+		///	<code>åŸå‹ï¼šinline static string Join(Array&lt;string> &amp;value,string separator=",", 
 		///                                       int startIndex=0, int count=0x7fffffff);</code>
 		///	</summary>  
-		///	<param name="value">Ò»¸ö <see cref="string"/> Êı×é¡£ </param>   
-		///	<param name="separator">·Ö¸ô·û×Ö·û´® <see cref="string"/>  ¡£</param>   
-		///	<param name="startIndex">ÒªÊ¹ÓÃµÄ value ÖĞµÄµÚÒ»¸öÊı×éÔªËØ¡£</param>    
-		///	<param name="count">ÒªÊ¹ÓÃµÄ value µÄÔªËØÊı¡£</param>    
-		///	<returns><see cref="string"/> ¶ÔÏó£¬ÓÉÍ¨¹ı separator Áª½ÓµÄ value ÖĞµÄ×Ö·û´®×é³É¡£Èç¹û count ÎªÁã¡¢value Ã»ÓĞÔªËØ»òÕß
-		///     separator ºÍ value µÄÈ«²¿ÔªËØÎª Common.String.Empty£¬ÔòÎª Common.String.Empty¡£</returns>
+		///	<param name="value">ä¸€ä¸ª <see cref="string"/> æ•°ç»„ã€‚ </param>   
+		///	<param name="separator">åˆ†éš”ç¬¦å­—ç¬¦ä¸² <see cref="string"/>  ã€‚</param>   
+		///	<param name="startIndex">è¦ä½¿ç”¨çš„ value ä¸­çš„ç¬¬ä¸€ä¸ªæ•°ç»„å…ƒç´ ã€‚</param>    
+		///	<param name="count">è¦ä½¿ç”¨çš„ value çš„å…ƒç´ æ•°ã€‚</param>    
+		///	<returns><see cref="string"/> å¯¹è±¡ï¼Œç”±é€šè¿‡ separator è”æ¥çš„ value ä¸­çš„å­—ç¬¦ä¸²ç»„æˆã€‚å¦‚æœ count ä¸ºé›¶ã€value æ²¡æœ‰å…ƒç´ æˆ–è€…
+		///     separator å’Œ value çš„å…¨éƒ¨å…ƒç´ ä¸º Common.String.Emptyï¼Œåˆ™ä¸º Common.String.Emptyã€‚</returns>
 		inline static string Join(Array<string> &value, string separator=",", int startIndex=0, int count=0x7fffffff)
 		{
 			string result;
@@ -997,17 +997,17 @@ namespace Common
 			return result;
 		} 
        	///	<summary>
-		///	ÔÚÖ¸¶¨ <see cref="char"/>  Êı×éµÄÃ¿¸öÔªËØÖ®¼ä´®ÁªÖ¸¶¨µÄ·Ö¸ô·û <see cref="String"/> £¬
-		///     ´Ó¶ø²úÉúµ¥¸ö´®ÁªµÄ×Ö·û´®¡£²ÎÊıÖ¸¶¨ÒªÊ¹ÓÃµÄµÚÒ»¸öÊı×éÔªËØºÍÔªËØÊı¡£
-		///	<code>Ô­ĞÍ£ºinline static String Join(Array&lt;char> &amp;value,String separator=",",
+		///	åœ¨æŒ‡å®š <see cref="char"/>  æ•°ç»„çš„æ¯ä¸ªå…ƒç´ ä¹‹é—´ä¸²è”æŒ‡å®šçš„åˆ†éš”ç¬¦ <see cref="String"/> ï¼Œ
+		///     ä»è€Œäº§ç”Ÿå•ä¸ªä¸²è”çš„å­—ç¬¦ä¸²ã€‚å‚æ•°æŒ‡å®šè¦ä½¿ç”¨çš„ç¬¬ä¸€ä¸ªæ•°ç»„å…ƒç´ å’Œå…ƒç´ æ•°ã€‚
+		///	<code>åŸå‹ï¼šinline static String Join(Array&lt;char> &amp;value,String separator=",",
 		///                                       int startIndex=0, int count=0x7fffffff);</code>
 		///	</summary>  
-		///	<param name="value">Ò»¸ö <see cref="char"/> Êı×é¡£ </param>   
-		///	<param name="separator">·Ö¸ô·û×Ö·û´® <see cref="String"/>  ¡£</param>   
-		///	<param name="startIndex">ÒªÊ¹ÓÃµÄ value ÖĞµÄµÚÒ»¸öÊı×éÔªËØ¡£</param>    
-		///	<param name="count">ÒªÊ¹ÓÃµÄ value µÄÔªËØÊı¡£</param>    
-		///	<returns><see cref="String"/> ¶ÔÏó£¬ÓÉÍ¨¹ı separator Áª½ÓµÄ value ÖĞµÄ×Ö·û´®×é³É¡£Èç¹û count ÎªÁã¡¢value Ã»ÓĞÔªËØ»òÕß
-		///     separator ºÍ value µÄÈ«²¿ÔªËØÎª Common.String.Empty£¬ÔòÎª Common.String.Empty¡£</returns>
+		///	<param name="value">ä¸€ä¸ª <see cref="char"/> æ•°ç»„ã€‚ </param>   
+		///	<param name="separator">åˆ†éš”ç¬¦å­—ç¬¦ä¸² <see cref="String"/>  ã€‚</param>   
+		///	<param name="startIndex">è¦ä½¿ç”¨çš„ value ä¸­çš„ç¬¬ä¸€ä¸ªæ•°ç»„å…ƒç´ ã€‚</param>    
+		///	<param name="count">è¦ä½¿ç”¨çš„ value çš„å…ƒç´ æ•°ã€‚</param>    
+		///	<returns><see cref="String"/> å¯¹è±¡ï¼Œç”±é€šè¿‡ separator è”æ¥çš„ value ä¸­çš„å­—ç¬¦ä¸²ç»„æˆã€‚å¦‚æœ count ä¸ºé›¶ã€value æ²¡æœ‰å…ƒç´ æˆ–è€…
+		///     separator å’Œ value çš„å…¨éƒ¨å…ƒç´ ä¸º Common.String.Emptyï¼Œåˆ™ä¸º Common.String.Emptyã€‚</returns>
 		inline static String Join(Array<char> &value,String separator=",", int startIndex=0, int count=0x7fffffff)
 		{
 			String result;
@@ -1020,12 +1020,12 @@ namespace Common
 			return result;
 		}
        	///	<summary>
-		///	±¨¸æÖ¸¶¨×Ö·ûÔÚ´ËÊµÀıÖĞµÄ×îºóÒ»¸öÆ¥ÅäÏîµÄË÷ÒıÎ»ÖÃ¡£
-		///	<code>Ô­ĞÍ£ºinline int LastIndexOf(char value, bool ignoreCase=0);</code>
+		///	æŠ¥å‘ŠæŒ‡å®šå­—ç¬¦åœ¨æ­¤å®ä¾‹ä¸­çš„æœ€åä¸€ä¸ªåŒ¹é…é¡¹çš„ç´¢å¼•ä½ç½®ã€‚
+		///	<code>åŸå‹ï¼šinline int LastIndexOf(char value, bool ignoreCase=0);</code>
 		///	</summary>  
-		///	<param name="value">Ò»¸ö <see cref="char"/> ¡£ </param>       
-		///	<param name="ignoreCase">ÊÇ·ñºöÂÔ´óĞ¡Ğ´¡£</param>    
-		///	<returns>Èç¹ûÕÒµ½¸Ã×Ö·û£¬ÔòÎª value µÄË÷ÒıÎ»ÖÃ£»·ñÔòÈç¹ûÎ´ÕÒµ½£¬ÔòÎª -1¡£</returns>
+		///	<param name="value">ä¸€ä¸ª <see cref="char"/> ã€‚ </param>       
+		///	<param name="ignoreCase">æ˜¯å¦å¿½ç•¥å¤§å°å†™ã€‚</param>    
+		///	<returns>å¦‚æœæ‰¾åˆ°è¯¥å­—ç¬¦ï¼Œåˆ™ä¸º value çš„ç´¢å¼•ä½ç½®ï¼›å¦åˆ™å¦‚æœæœªæ‰¾åˆ°ï¼Œåˆ™ä¸º -1ã€‚</returns>
         inline int LastIndexOf(char value, bool ignoreCase=0)
 		{
 			if(ignoreCase)
@@ -1041,14 +1041,14 @@ namespace Common
 			}
 		}
        	///	<summary>
-		///	±¨¸æÖ¸¶¨×Ö·ûÔÚ´ËÊµÀıÖĞµÄ×îºóÒ»¸öÆ¥ÅäÏîµÄË÷ÒıÎ»ÖÃ¡£
-		///	<code>Ô­ĞÍ£ºinline int LastIndexOf(char value, bool ignoreCase=0);</code>
+		///	æŠ¥å‘ŠæŒ‡å®šå­—ç¬¦åœ¨æ­¤å®ä¾‹ä¸­çš„æœ€åä¸€ä¸ªåŒ¹é…é¡¹çš„ç´¢å¼•ä½ç½®ã€‚
+		///	<code>åŸå‹ï¼šinline int LastIndexOf(char value, bool ignoreCase=0);</code>
 		///	</summary>  
-		///	<param name="value">Ò»¸ö <see cref="char"/> ¡£ </param>       
-		///	<param name="startIndex">¿ªÊ¼Î»ÖÃ£¬·´Ïò²éÕÒÊ±µÄ½ØÖ¹Î»ÖÃ¡£</param>    
-		///	<param name="ignoreCase">ÊÇ·ñºöÂÔ´óĞ¡Ğ´¡£</param>    
-		///	<param name="count">²éÕÒ×Ö·ûÊı¡£</param>    
-		///	<returns>Èç¹ûÕÒµ½¸Ã×Ö·û£¬ÔòÎª value µÄË÷ÒıÎ»ÖÃ£»·ñÔòÈç¹ûÎ´ÕÒµ½£¬ÔòÎª -1¡£</returns>
+		///	<param name="value">ä¸€ä¸ª <see cref="char"/> ã€‚ </param>       
+		///	<param name="startIndex">å¼€å§‹ä½ç½®ï¼Œåå‘æŸ¥æ‰¾æ—¶çš„æˆªæ­¢ä½ç½®ã€‚</param>    
+		///	<param name="ignoreCase">æ˜¯å¦å¿½ç•¥å¤§å°å†™ã€‚</param>    
+		///	<param name="count">æŸ¥æ‰¾å­—ç¬¦æ•°ã€‚</param>    
+		///	<returns>å¦‚æœæ‰¾åˆ°è¯¥å­—ç¬¦ï¼Œåˆ™ä¸º value çš„ç´¢å¼•ä½ç½®ï¼›å¦åˆ™å¦‚æœæœªæ‰¾åˆ°ï¼Œåˆ™ä¸º -1ã€‚</returns>
         inline int LastIndexOf(char value, int startIndex, bool ignoreCase, int count=0)
 		{
 			int i=size()-1;
@@ -1070,26 +1070,26 @@ namespace Common
 			return -1;
 		}
     	///	<summary>
-		///	±¨¸æÖ¸¶¨<see cref="String"/>ÔÚ´ËÊµÀıÖĞµÄ×îºóÒ»¸öÆ¥ÅäÏîµÄË÷ÒıÎ»ÖÃ¡£
-		///	<code>Ô­ĞÍ£ºinline int LastIndexOf(char value, bool ignoreCase=0);</code>
+		///	æŠ¥å‘ŠæŒ‡å®š<see cref="String"/>åœ¨æ­¤å®ä¾‹ä¸­çš„æœ€åä¸€ä¸ªåŒ¹é…é¡¹çš„ç´¢å¼•ä½ç½®ã€‚
+		///	<code>åŸå‹ï¼šinline int LastIndexOf(char value, bool ignoreCase=0);</code>
 		///	</summary>  
-		///	<param name="value">Ò»¸ö <see cref="char"/> ¡£ </param>        
-		///	<param name="ignoreCase">ÊÇ·ñºöÂÔ´óĞ¡Ğ´¡£</param>     
-		///	<returns>Èç¹ûÕÒµ½¸Ã×Ö·û£¬ÔòÎª value µÄË÷ÒıÎ»ÖÃ£»·ñÔòÈç¹ûÎ´ÕÒµ½£¬ÔòÎª -1¡£</returns>
+		///	<param name="value">ä¸€ä¸ª <see cref="char"/> ã€‚ </param>        
+		///	<param name="ignoreCase">æ˜¯å¦å¿½ç•¥å¤§å°å†™ã€‚</param>     
+		///	<returns>å¦‚æœæ‰¾åˆ°è¯¥å­—ç¬¦ï¼Œåˆ™ä¸º value çš„ç´¢å¼•ä½ç½®ï¼›å¦åˆ™å¦‚æœæœªæ‰¾åˆ°ï¼Œåˆ™ä¸º -1ã€‚</returns>
         inline int LastIndexOf(String value, bool ignoreCase=0)
 		{
 			return LastIndexOf(value,0,ignoreCase);
 		}
      	///	<summary>
-		///	±¨¸æÖ¸¶¨<see cref="String"/>ÔÚ´ËÊµÀıÖĞµÄ×îºóÒ»¸öÆ¥ÅäÏîµÄË÷ÒıÎ»ÖÃ¡£
-		///	²ÎÊıÖ¸¶¨µ±Ç°×Ö·û´®ÖĞµÄÆğÊ¼ËÑË÷Î»ÖÃ¡¢ÒªËÑË÷µÄµ±Ç°×Ö·û´®ÖĞµÄ×Ö·ûÊıÁ¿£¬ÒÔ¼°ÊÇ·ñºöÂÔ´óĞ¡Ğ´¡£
-		///	<code>Ô­ĞÍ£ºinline int LastIndexOf(String value, int startIndex, bool ignoreCase, int count=0);</code>
+		///	æŠ¥å‘ŠæŒ‡å®š<see cref="String"/>åœ¨æ­¤å®ä¾‹ä¸­çš„æœ€åä¸€ä¸ªåŒ¹é…é¡¹çš„ç´¢å¼•ä½ç½®ã€‚
+		///	å‚æ•°æŒ‡å®šå½“å‰å­—ç¬¦ä¸²ä¸­çš„èµ·å§‹æœç´¢ä½ç½®ã€è¦æœç´¢çš„å½“å‰å­—ç¬¦ä¸²ä¸­çš„å­—ç¬¦æ•°é‡ï¼Œä»¥åŠæ˜¯å¦å¿½ç•¥å¤§å°å†™ã€‚
+		///	<code>åŸå‹ï¼šinline int LastIndexOf(String value, int startIndex, bool ignoreCase, int count=0);</code>
 		///	</summary>  
-		///	<param name="value">Ò»¸ö <see cref="char"/> ¡£ </param>        
-		///	<param name="startIndex">ËÑË÷ÆğÊ¼Î»ÖÃ£¬·´Ïò²éÕÒÊ±µÄ½ØÖ¹Î»ÖÃ¡£</param>    
-		///	<param name="ignoreCase">ÊÇ·ñºöÂÔ´óĞ¡Ğ´¡£</param>    
-		///	<param name="count">Òª¼ì²éµÄ×Ö·ûÎ»ÖÃÊı¡£</param>    
-		///	<returns>Èç¹ûÕÒµ½¸Ã×Ö·û£¬ÔòÎª value µÄË÷ÒıÎ»ÖÃ£»·ñÔòÈç¹ûÎ´ÕÒµ½£¬ÔòÎª -1¡£</returns>
+		///	<param name="value">ä¸€ä¸ª <see cref="char"/> ã€‚ </param>        
+		///	<param name="startIndex">æœç´¢èµ·å§‹ä½ç½®ï¼Œåå‘æŸ¥æ‰¾æ—¶çš„æˆªæ­¢ä½ç½®ã€‚</param>    
+		///	<param name="ignoreCase">æ˜¯å¦å¿½ç•¥å¤§å°å†™ã€‚</param>    
+		///	<param name="count">è¦æ£€æŸ¥çš„å­—ç¬¦ä½ç½®æ•°ã€‚</param>    
+		///	<returns>å¦‚æœæ‰¾åˆ°è¯¥å­—ç¬¦ï¼Œåˆ™ä¸º value çš„ç´¢å¼•ä½ç½®ï¼›å¦åˆ™å¦‚æœæœªæ‰¾åˆ°ï¼Œåˆ™ä¸º -1ã€‚</returns>
         inline int LastIndexOf(String value, int startIndex, bool ignoreCase, int count=0)
 		{
 			if(value.empty())return startIndex;
@@ -1115,13 +1115,13 @@ namespace Common
 		}
 
      	///	<summary>
-		///	±¨¸æÔÚ×Ö·ûÊı×éÖĞÖ¸¶¨µÄÒ»¸ö»ò¶à¸ö×Ö·ûÔÚ´ËÊµÀıÖĞµÄ×îºóÒ»¸öÆ¥ÅäÏîµÄË÷ÒıÎ»ÖÃ¡£ËÑË÷´ÓÖ¸¶¨×Ö·ûÎ»ÖÃ¿ªÊ¼£¬²¢¼ì²éÖ¸¶¨ÊıÁ¿µÄ×Ö·ûÎ»ÖÃ¡£
-		///	<code>Ô­ĞÍ£ºinline int LastIndexOfAny(String anyOf, int startIndex=0, int count=0);</code>
+		///	æŠ¥å‘Šåœ¨å­—ç¬¦æ•°ç»„ä¸­æŒ‡å®šçš„ä¸€ä¸ªæˆ–å¤šä¸ªå­—ç¬¦åœ¨æ­¤å®ä¾‹ä¸­çš„æœ€åä¸€ä¸ªåŒ¹é…é¡¹çš„ç´¢å¼•ä½ç½®ã€‚æœç´¢ä»æŒ‡å®šå­—ç¬¦ä½ç½®å¼€å§‹ï¼Œå¹¶æ£€æŸ¥æŒ‡å®šæ•°é‡çš„å­—ç¬¦ä½ç½®ã€‚
+		///	<code>åŸå‹ï¼šinline int LastIndexOfAny(String anyOf, int startIndex=0, int count=0);</code>
 		///	</summary>  
-		///	<param name="anyOf">Ò»¸ö<see cref="String"/>±íÊ¾µÄ<see cref="char"/>Êı×é¡£ </param>        
-		///	<param name="startIndex">ËÑË÷ÆğÊ¼Î»ÖÃ£¬·´Ïò²éÕÒÊ±µÄ½ØÖ¹Î»ÖÃ¡£</param>    
-		///	<param name="count">Òª¼ì²éµÄ×Ö·ûÎ»ÖÃÊı¡£</param>    
-		///	<returns>´ËÊµÀıÖĞ×îºóÒ»¸öÆ¥ÅäÏîµÄË÷ÒıÎ»ÖÃ£¬ÔÚ´ËÎ»ÖÃÕÒµ½ anyOf ÖĞµÄÈÎÒâ×Ö·û£»·ñÔò£¬Èç¹ûÎ´ÕÒµ½ anyOf ÖĞµÄ×Ö·û£¬ÔòÎª -1¡£</returns>
+		///	<param name="anyOf">ä¸€ä¸ª<see cref="String"/>è¡¨ç¤ºçš„<see cref="char"/>æ•°ç»„ã€‚ </param>        
+		///	<param name="startIndex">æœç´¢èµ·å§‹ä½ç½®ï¼Œåå‘æŸ¥æ‰¾æ—¶çš„æˆªæ­¢ä½ç½®ã€‚</param>    
+		///	<param name="count">è¦æ£€æŸ¥çš„å­—ç¬¦ä½ç½®æ•°ã€‚</param>    
+		///	<returns>æ­¤å®ä¾‹ä¸­æœ€åä¸€ä¸ªåŒ¹é…é¡¹çš„ç´¢å¼•ä½ç½®ï¼Œåœ¨æ­¤ä½ç½®æ‰¾åˆ° anyOf ä¸­çš„ä»»æ„å­—ç¬¦ï¼›å¦åˆ™ï¼Œå¦‚æœæœªæ‰¾åˆ° anyOf ä¸­çš„å­—ç¬¦ï¼Œåˆ™ä¸º -1ã€‚</returns>
 		inline int LastIndexOfAny(String anyOf, int startIndex=0, int count=0)
 		{
 			int i=startIndex+count-1;
@@ -1140,13 +1140,13 @@ namespace Common
 			return -1;
 		}
        	///	<summary>
-		///	ÓÒ¶ÔÆë´ËÊµÀıÖĞµÄ×Ö·û£¬ÔÚ×ó±ßÓÃÖ¸¶¨µÄ×Ö·ûÌî³äÒÔ´ïµ½Ö¸¶¨µÄ×Ü³¤¶È¡£
-		///	<code>Ô­ĞÍ£ºinline String &amp;PadLeft(int totalWidth, char paddingChar=' ');</code>
+		///	å³å¯¹é½æ­¤å®ä¾‹ä¸­çš„å­—ç¬¦ï¼Œåœ¨å·¦è¾¹ç”¨æŒ‡å®šçš„å­—ç¬¦å¡«å……ä»¥è¾¾åˆ°æŒ‡å®šçš„æ€»é•¿åº¦ã€‚
+		///	<code>åŸå‹ï¼šinline String &amp;PadLeft(int totalWidth, char paddingChar=' ');</code>
 		///	</summary>  
-		///	<param name="totalWidth">½á¹û×Ö·û´®ÖĞµÄ×Ö·ûÊı£¬µÈÓÚÔ­Ê¼×Ö·ûÊı¼ÓÉÏÈÎºÎÆäËûÌî³ä×Ö·û¡£ </param>        
-		///	<param name="paddingChar">Ìî³ä×Ö·û¡£</param>       
-		///	<returns>´ËÊµÀı±¾Éí£¬µ«ËüÊÇÓÒ¶ÔÆëµÄ£¬²¢ÔÚ×ó±ßÓÃ´ïµ½ totalWidth ³¤¶ÈËùĞèÊıÄ¿µÄ paddingChar ×Ö·û½øĞĞÌî³ä¡£Èç¹û
-        ///     totalWidth Ğ¡ÓÚ´ËÊµÀıµÄ³¤¶È£¬Ôò²»ĞŞ¸Ä¡£</returns>
+		///	<param name="totalWidth">ç»“æœå­—ç¬¦ä¸²ä¸­çš„å­—ç¬¦æ•°ï¼Œç­‰äºåŸå§‹å­—ç¬¦æ•°åŠ ä¸Šä»»ä½•å…¶ä»–å¡«å……å­—ç¬¦ã€‚ </param>        
+		///	<param name="paddingChar">å¡«å……å­—ç¬¦ã€‚</param>       
+		///	<returns>æ­¤å®ä¾‹æœ¬èº«ï¼Œä½†å®ƒæ˜¯å³å¯¹é½çš„ï¼Œå¹¶åœ¨å·¦è¾¹ç”¨è¾¾åˆ° totalWidth é•¿åº¦æ‰€éœ€æ•°ç›®çš„ paddingChar å­—ç¬¦è¿›è¡Œå¡«å……ã€‚å¦‚æœ
+        ///     totalWidth å°äºæ­¤å®ä¾‹çš„é•¿åº¦ï¼Œåˆ™ä¸ä¿®æ”¹ã€‚</returns>
         inline String &PadLeft(int totalWidth, char paddingChar=' ')
 		{
 			if(size()>=totalWidth)return *this;
@@ -1163,13 +1163,13 @@ namespace Common
 			return *this;
 		}
        	///	<summary>
-		///	×ó¶ÔÆë´Ë×Ö·û´®ÖĞµÄ×Ö·û£¬ÔÚÓÒ±ßÓÃÖ¸¶¨µÄ×Ö·ûÌî³äÒÔ´ïµ½Ö¸¶¨µÄ×Ü³¤¶È¡£
-		///	<code>Ô­ĞÍ£ºinline String &amp;PadRight(int totalWidth, char paddingChar=' ');</code>
+		///	å·¦å¯¹é½æ­¤å­—ç¬¦ä¸²ä¸­çš„å­—ç¬¦ï¼Œåœ¨å³è¾¹ç”¨æŒ‡å®šçš„å­—ç¬¦å¡«å……ä»¥è¾¾åˆ°æŒ‡å®šçš„æ€»é•¿åº¦ã€‚
+		///	<code>åŸå‹ï¼šinline String &amp;PadRight(int totalWidth, char paddingChar=' ');</code>
 		///	</summary>  
-		///	<param name="totalWidth">½á¹û×Ö·û´®ÖĞµÄ×Ö·ûÊı£¬µÈÓÚÔ­Ê¼×Ö·ûÊı¼ÓÉÏÈÎºÎÆäËûÌî³ä×Ö·û¡£ </param>        
-		///	<param name="paddingChar">Ìî³ä×Ö·û¡£</param>       
-		///	<returns>´ËÊµÀı±¾Éí£¬µ«ËüÊÇ×ó¶ÔÆëµÄ£¬²¢ÔÚÓÒ±ßÓÃ´ïµ½ totalWidth ³¤¶ÈËùĞèÊıÄ¿µÄ paddingChar ×Ö·û½øĞĞÌî³ä¡£Èç¹û
-        ///     totalWidth Ğ¡ÓÚ´ËÊµÀıµÄ³¤¶È£¬Ôò²»ĞŞ¸Ä¡£</returns>
+		///	<param name="totalWidth">ç»“æœå­—ç¬¦ä¸²ä¸­çš„å­—ç¬¦æ•°ï¼Œç­‰äºåŸå§‹å­—ç¬¦æ•°åŠ ä¸Šä»»ä½•å…¶ä»–å¡«å……å­—ç¬¦ã€‚ </param>        
+		///	<param name="paddingChar">å¡«å……å­—ç¬¦ã€‚</param>       
+		///	<returns>æ­¤å®ä¾‹æœ¬èº«ï¼Œä½†å®ƒæ˜¯å·¦å¯¹é½çš„ï¼Œå¹¶åœ¨å³è¾¹ç”¨è¾¾åˆ° totalWidth é•¿åº¦æ‰€éœ€æ•°ç›®çš„ paddingChar å­—ç¬¦è¿›è¡Œå¡«å……ã€‚å¦‚æœ
+        ///     totalWidth å°äºæ­¤å®ä¾‹çš„é•¿åº¦ï¼Œåˆ™ä¸ä¿®æ”¹ã€‚</returns>
         inline String &PadRight(int totalWidth, char paddingChar=' ')
 		{
 			if(size()>=totalWidth)return *this;
@@ -1186,12 +1186,12 @@ namespace Common
 			return *this;
 		}
         ///	<summary>
-		///	É¾³ı´Ë×Ö·û´®ÖĞ´ÓÖ¸¶¨Î»ÖÃµ½×îºóÎ»ÖÃµÄËùÓĞ×Ö·û
-		///	<code>Ô­ĞÍ£ºinline String &amp;Remove(int startIndex);</code>
+		///	åˆ é™¤æ­¤å­—ç¬¦ä¸²ä¸­ä»æŒ‡å®šä½ç½®åˆ°æœ€åä½ç½®çš„æ‰€æœ‰å­—ç¬¦
+		///	<code>åŸå‹ï¼šinline String &amp;Remove(int startIndex);</code>
 		///	</summary>  
-		///	<param name="startIndex">¿ªÊ¼É¾³ı×Ö·ûµÄÎ»ÖÃ¡£ </param>        
-		///	<param name="paddingChar">Ìî³ä×Ö·û¡£</param>       
-		///	<returns>´ËÊµÀı±¾Éí£¬ËüµÈÓÚ´Ë×Ö·û´®ÌŞ³ıÒÑÉ¾³ı×Ö·ûºóµÄ×Ö·û´®¡£</returns>
+		///	<param name="startIndex">å¼€å§‹åˆ é™¤å­—ç¬¦çš„ä½ç½®ã€‚ </param>        
+		///	<param name="paddingChar">å¡«å……å­—ç¬¦ã€‚</param>       
+		///	<returns>æ­¤å®ä¾‹æœ¬èº«ï¼Œå®ƒç­‰äºæ­¤å­—ç¬¦ä¸²å‰”é™¤å·²åˆ é™¤å­—ç¬¦åçš„å­—ç¬¦ä¸²ã€‚</returns>
         inline String &Remove(int startIndex)
 		{
 			//if((c_str()=(char *)realloc(c_str(),startIndex+1))==NULL)
@@ -1207,25 +1207,25 @@ namespace Common
 			return Remove(startIndex,(int)size()-startIndex);
 		}
         ///	<summary>
-		///	´Ó´ËÊµÀıÖĞµÄÖ¸¶¨Î»ÖÃ¿ªÊ¼É¾³ıÖ¸¶¨ÊıÄ¿µÄ×Ö·û
-		///	<code>Ô­ĞÍ£ºinline String &amp;Remove(int startIndex, int count);</code>
+		///	ä»æ­¤å®ä¾‹ä¸­çš„æŒ‡å®šä½ç½®å¼€å§‹åˆ é™¤æŒ‡å®šæ•°ç›®çš„å­—ç¬¦
+		///	<code>åŸå‹ï¼šinline String &amp;Remove(int startIndex, int count);</code>
 		///	</summary>  
-		///	<param name="startIndex">¿ªÊ¼É¾³ı×Ö·ûµÄÎ»ÖÃ¡£ </param>        
-		///	<param name="paddingChar">Ìî³ä×Ö·û¡£</param>       
-		///	<returns>´ËÊµÀı±¾Éí£¬ËüµÈÓÚ´Ë×Ö·û´®ÌŞ³ıÒÑÉ¾³ıÖ¸¶¨ÊıÄ¿µÄ×Ö·ûºóµÄ×Ö·û´®¡£</returns>
+		///	<param name="startIndex">å¼€å§‹åˆ é™¤å­—ç¬¦çš„ä½ç½®ã€‚ </param>        
+		///	<param name="paddingChar">å¡«å……å­—ç¬¦ã€‚</param>       
+		///	<returns>æ­¤å®ä¾‹æœ¬èº«ï¼Œå®ƒç­‰äºæ­¤å­—ç¬¦ä¸²å‰”é™¤å·²åˆ é™¤æŒ‡å®šæ•°ç›®çš„å­—ç¬¦åçš„å­—ç¬¦ä¸²ã€‚</returns>
         inline String &Remove(int startIndex, int count)
 		{
 			erase(startIndex,count);
 			return *this;
 		};
         ///	<summary>
-		///	½«´ËÊµÀıÖĞµÄÖ¸¶¨×Ö·ûµÄËùÓĞÆ¥ÅäÏîÌæ»»ÎªÆäËûÖ¸¶¨µÄ×Ö·û¡£
-		///	<code>Ô­ĞÍ£ºinline String ReplaceAll(char oldChar, char newChar,bool ignoreCase=false);</code>
+		///	å°†æ­¤å®ä¾‹ä¸­çš„æŒ‡å®šå­—ç¬¦çš„æ‰€æœ‰åŒ¹é…é¡¹æ›¿æ¢ä¸ºå…¶ä»–æŒ‡å®šçš„å­—ç¬¦ã€‚
+		///	<code>åŸå‹ï¼šinline String ReplaceAll(char oldChar, char newChar,bool ignoreCase=false);</code>
 		///	</summary>  
-		///	<param name="oldChar">ÒªÌæ»»µÄ×Ö·û¡£</param>       
-		///	<param name="newChar">ÒªÌæ»» oldChar µÄËùÓĞÆ¥ÅäÏîµÄĞÂ×Ö·û¡£ </param>        
-		///	<param name="ignoreCase">ÊÇ·ñºöÂÔ´óĞ¡Ğ´¡£ </param>        
-		///	<returns>µ«½« oldChar µÄËùÓĞÊµÀı¶¼Ìæ»»Îª newChar ºóµÄĞÂµÄ <see cref="String"/>¡£</returns>
+		///	<param name="oldChar">è¦æ›¿æ¢çš„å­—ç¬¦ã€‚</param>       
+		///	<param name="newChar">è¦æ›¿æ¢ oldChar çš„æ‰€æœ‰åŒ¹é…é¡¹çš„æ–°å­—ç¬¦ã€‚ </param>        
+		///	<param name="ignoreCase">æ˜¯å¦å¿½ç•¥å¤§å°å†™ã€‚ </param>        
+		///	<returns>ä½†å°† oldChar çš„æ‰€æœ‰å®ä¾‹éƒ½æ›¿æ¢ä¸º newChar åçš„æ–°çš„ <see cref="String"/>ã€‚</returns>
         inline String ReplaceAll(char oldChar, char newChar,bool ignoreCase=false)
 		{
 			String result;
@@ -1279,13 +1279,13 @@ namespace Common
 			return result;
 		};
         ///	<summary>
-		///	½«´ËÊµÀıÖĞµÄÖ¸¶¨×Ö·ûµÄµÚÒ»¸öÆ¥ÅäÏîÌæ»»ÎªÆäËûÖ¸¶¨µÄ×Ö·û¡£
-		///	<code>Ô­ĞÍ£ºinline String Replace(char oldChar, char newChar,bool ignoreCase=false);</code>
+		///	å°†æ­¤å®ä¾‹ä¸­çš„æŒ‡å®šå­—ç¬¦çš„ç¬¬ä¸€ä¸ªåŒ¹é…é¡¹æ›¿æ¢ä¸ºå…¶ä»–æŒ‡å®šçš„å­—ç¬¦ã€‚
+		///	<code>åŸå‹ï¼šinline String Replace(char oldChar, char newChar,bool ignoreCase=false);</code>
 		///	</summary>  
-		///	<param name="oldChar">ÒªÌæ»»µÄ×Ö·û¡£</param>       
-		///	<param name="newChar">ÒªÌæ»» oldChar µÄËùÓĞÆ¥ÅäÏîµÄĞÂ×Ö·û¡£ </param>        
-		///	<param name="ignoreCase">ÊÇ·ñºöÂÔ´óĞ¡Ğ´¡£ </param>        
-		///	<returns>½« oldChar µÄµÚÒ»¸öÊµÀıÌæ»»Îª newChar ºóµÄĞÂµÄ <see cref="String"/>¡£</returns>
+		///	<param name="oldChar">è¦æ›¿æ¢çš„å­—ç¬¦ã€‚</param>       
+		///	<param name="newChar">è¦æ›¿æ¢ oldChar çš„æ‰€æœ‰åŒ¹é…é¡¹çš„æ–°å­—ç¬¦ã€‚ </param>        
+		///	<param name="ignoreCase">æ˜¯å¦å¿½ç•¥å¤§å°å†™ã€‚ </param>        
+		///	<returns>å°† oldChar çš„ç¬¬ä¸€ä¸ªå®ä¾‹æ›¿æ¢ä¸º newChar åçš„æ–°çš„ <see cref="String"/>ã€‚</returns>
 		inline String Replace(char oldChar, char newChar,bool ignoreCase=false)
 		{
 			String result;
@@ -1338,13 +1338,13 @@ namespace Common
 		}
 
         ///	<summary>
-		///	½«´ËÊµÀıÖĞµÄÖ¸¶¨ <see cref="String"/> µÄËùÓĞÆ¥ÅäÏîÌæ»»ÎªÆäËûÖ¸¶¨µÄ <see cref="String"/>¡£
-		///	<code>Ô­ĞÍ£ºinline String ReplaceAll(const String&amp; oldValue, const String&amp; newValue,bool ignoreCase=false);</code>
+		///	å°†æ­¤å®ä¾‹ä¸­çš„æŒ‡å®š <see cref="String"/> çš„æ‰€æœ‰åŒ¹é…é¡¹æ›¿æ¢ä¸ºå…¶ä»–æŒ‡å®šçš„ <see cref="String"/>ã€‚
+		///	<code>åŸå‹ï¼šinline String ReplaceAll(const String&amp; oldValue, const String&amp; newValue,bool ignoreCase=false);</code>
 		///	</summary>
-		///	<param name="oldValue">ÒªÌæ»»µÄ<see cref="String"/>¡£</param>       
-		///	<param name="newValue">ÒªÌæ»» oldValue µÄËùÓĞÆ¥ÅäÏîµÄ<see cref="String"/>¡£ </param>        
-		///	<param name="ignoreCase">ÊÇ·ñºöÂÔ´óĞ¡Ğ´¡£ </param>        
-		///	<returns>µÈĞ§ÓÚ´ËÊµÀı£¬µ«½« oldValue µÄËùÓĞÊµÀı¶¼Ìæ»»Îª newValue µÄ <see cref="String"/>¡£</returns>
+		///	<param name="oldValue">è¦æ›¿æ¢çš„<see cref="String"/>ã€‚</param>       
+		///	<param name="newValue">è¦æ›¿æ¢ oldValue çš„æ‰€æœ‰åŒ¹é…é¡¹çš„<see cref="String"/>ã€‚ </param>        
+		///	<param name="ignoreCase">æ˜¯å¦å¿½ç•¥å¤§å°å†™ã€‚ </param>        
+		///	<returns>ç­‰æ•ˆäºæ­¤å®ä¾‹ï¼Œä½†å°† oldValue çš„æ‰€æœ‰å®ä¾‹éƒ½æ›¿æ¢ä¸º newValue çš„ <see cref="String"/>ã€‚</returns>
 		inline String ReplaceAll(const String& oldValue, const String& newValue,bool ignoreCase=false)
 		{
 			String result;
@@ -1367,13 +1367,13 @@ namespace Common
 		//String ReplaceAll(char * oldValue, char * newValue);
 
         ///	<summary>
-		///	½«´ËÊµÀıÖĞµÄÖ¸¶¨ <see cref="String"/> µÄµÚÒ»¸öÆ¥ÅäÏîÌæ»»ÎªÆäËûÖ¸¶¨µÄ <see cref="String"/>¡£
-		///	<code>Ô­ĞÍ£ºinline String Replace(const String&amp; oldValue, const String&amp; newValue,bool ignoreCase=false);</code>
+		///	å°†æ­¤å®ä¾‹ä¸­çš„æŒ‡å®š <see cref="String"/> çš„ç¬¬ä¸€ä¸ªåŒ¹é…é¡¹æ›¿æ¢ä¸ºå…¶ä»–æŒ‡å®šçš„ <see cref="String"/>ã€‚
+		///	<code>åŸå‹ï¼šinline String Replace(const String&amp; oldValue, const String&amp; newValue,bool ignoreCase=false);</code>
 		///	</summary>
-		///	<param name="oldValue">ÒªÌæ»»µÄ<see cref="String"/>¡£</param>       
-		///	<param name="newValue">ÒªÌæ»» oldValue µÄËùÓĞÆ¥ÅäÏîµÄ<see cref="String"/>¡£ </param>        
-		///	<param name="ignoreCase">ÊÇ·ñºöÂÔ´óĞ¡Ğ´¡£ </param>        
-		///	<returns>µÈĞ§ÓÚ´ËÊµÀı£¬µ«½« oldValue µÄµÚÒ»¸öÊµÀıÌæ»»Îª newValue µÄĞÂµÄ <see cref="String"/>¡£</returns>
+		///	<param name="oldValue">è¦æ›¿æ¢çš„<see cref="String"/>ã€‚</param>       
+		///	<param name="newValue">è¦æ›¿æ¢ oldValue çš„æ‰€æœ‰åŒ¹é…é¡¹çš„<see cref="String"/>ã€‚ </param>        
+		///	<param name="ignoreCase">æ˜¯å¦å¿½ç•¥å¤§å°å†™ã€‚ </param>        
+		///	<returns>ç­‰æ•ˆäºæ­¤å®ä¾‹ï¼Œä½†å°† oldValue çš„ç¬¬ä¸€ä¸ªå®ä¾‹æ›¿æ¢ä¸º newValue çš„æ–°çš„ <see cref="String"/>ã€‚</returns>
 		inline String Replace(const String& oldValue, const String& newValue,bool ignoreCase=false)
 		{
 			String result=c_str();
@@ -1393,12 +1393,12 @@ namespace Common
 			return result.c_str();
 		}
         ///	<summary>
-		///	È·¶¨´Ë×Ö·û´®µÄ¿ªÍ·ÊÇ·ñÓëÖ¸¶¨µÄ×Ö·û´®Æ¥Åä¡£
-		///	<code>Ô­ĞÍ£ºinline bool StartsWith(String value, bool ignoreCase=false);</code>
+		///	ç¡®å®šæ­¤å­—ç¬¦ä¸²çš„å¼€å¤´æ˜¯å¦ä¸æŒ‡å®šçš„å­—ç¬¦ä¸²åŒ¹é…ã€‚
+		///	<code>åŸå‹ï¼šinline bool StartsWith(String value, bool ignoreCase=false);</code>
 		///	</summary>
-		///	<param name="value">Òª±È½ÏµÄ<see cref="String"/>¶ÔÏó¡£</param>           
-		///	<param name="ignoreCase">ÈôÒªÔÚ¶Ô´Ë×Ö·û´®Óë value ½øĞĞ±È½ÏÊ±ºöÂÔ´óĞ¡Ğ´£¬ÔòÎª true£»·ñÔòÎª false¡£ </param>        
-		///	<returns> Èç¹û value ²ÎÊıÓë´Ë×Ö·û´®µÄ¿ªÍ·Æ¥Åä£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>
+		///	<param name="value">è¦æ¯”è¾ƒçš„<see cref="String"/>å¯¹è±¡ã€‚</param>           
+		///	<param name="ignoreCase">è‹¥è¦åœ¨å¯¹æ­¤å­—ç¬¦ä¸²ä¸ value è¿›è¡Œæ¯”è¾ƒæ—¶å¿½ç•¥å¤§å°å†™ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚ </param>        
+		///	<returns> å¦‚æœ value å‚æ•°ä¸æ­¤å­—ç¬¦ä¸²çš„å¼€å¤´åŒ¹é…ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>
 		inline bool StartsWith(String value, bool ignoreCase=false)
 		{
 			//return IndexOf(value,0,ignoreCase)==0;
@@ -1422,12 +1422,12 @@ namespace Common
 			return true;
 		};
         ///	<summary>
-		///	È·¶¨´Ë×Ö·û´®µÄ¿ªÍ·ÊÇ·ñÓëÖ¸¶¨µÄ×Ö·ûÆ¥Åä¡£
-		///	<code>Ô­ĞÍ£ºinline bool StartsWith(char value, bool ignoreCase=false);</code>
+		///	ç¡®å®šæ­¤å­—ç¬¦ä¸²çš„å¼€å¤´æ˜¯å¦ä¸æŒ‡å®šçš„å­—ç¬¦åŒ¹é…ã€‚
+		///	<code>åŸå‹ï¼šinline bool StartsWith(char value, bool ignoreCase=false);</code>
 		///	</summary>
-		///	<param name="value">Òª±È½ÏµÄ<see cref="char"/>¡£</param>           
-		///	<param name="ignoreCase">ÈôÒªÔÚ¶Ô´Ë×Ö·û´®Óë value ½øĞĞ±È½ÏÊ±ºöÂÔ´óĞ¡Ğ´£¬ÔòÎª true£»·ñÔòÎª false¡£ </param>        
-		///	<returns> Èç¹û value ²ÎÊıÓë´Ë×Ö·û´®µÄ¿ªÍ·Æ¥Åä£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>
+		///	<param name="value">è¦æ¯”è¾ƒçš„<see cref="char"/>ã€‚</param>           
+		///	<param name="ignoreCase">è‹¥è¦åœ¨å¯¹æ­¤å­—ç¬¦ä¸²ä¸ value è¿›è¡Œæ¯”è¾ƒæ—¶å¿½ç•¥å¤§å°å†™ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚ </param>        
+		///	<returns> å¦‚æœ value å‚æ•°ä¸æ­¤å­—ç¬¦ä¸²çš„å¼€å¤´åŒ¹é…ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>
 		inline bool StartsWith(char value, bool ignoreCase=false)
 		{
 			//return IndexOf(value,0,ignoreCase)==0;
@@ -1444,12 +1444,12 @@ namespace Common
 			return c==value;
 		};
         ///	<summary>
-		///	È·¶¨´Ë×Ö·û´®µÄÄ©Î²ÊÇ·ñÓëÖ¸¶¨µÄ×Ö·û´®Æ¥Åä¡£
-		///	<code>Ô­ĞÍ£ºinline bool EndsWith(char value, bool ignoreCase=false);</code>
+		///	ç¡®å®šæ­¤å­—ç¬¦ä¸²çš„æœ«å°¾æ˜¯å¦ä¸æŒ‡å®šçš„å­—ç¬¦ä¸²åŒ¹é…ã€‚
+		///	<code>åŸå‹ï¼šinline bool EndsWith(char value, bool ignoreCase=false);</code>
 		///	</summary>
-		///	<param name="value">Òª±È½ÏµÄ<see cref="String"/>¡£</param>           
-		///	<param name="ignoreCase">ÈôÒªÔÚ¶Ô´Ë×Ö·û´®Óë value ½øĞĞ±È½ÏÊ±ºöÂÔ´óĞ¡Ğ´£¬ÔòÎª true£»·ñÔòÎª false¡£ </param>        
-		///	<returns> Èç¹û´Ë×Ö·û´®µÄÄ©Î²Óë value ²ÎÊıÆ¥Åä£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>
+		///	<param name="value">è¦æ¯”è¾ƒçš„<see cref="String"/>ã€‚</param>           
+		///	<param name="ignoreCase">è‹¥è¦åœ¨å¯¹æ­¤å­—ç¬¦ä¸²ä¸ value è¿›è¡Œæ¯”è¾ƒæ—¶å¿½ç•¥å¤§å°å†™ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚ </param>        
+		///	<returns> å¦‚æœæ­¤å­—ç¬¦ä¸²çš„æœ«å°¾ä¸ value å‚æ•°åŒ¹é…ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>
 		inline bool EndsWith(String value, bool ignoreCase=false)
 		{
 			//return LastIndexOf(value,0,ignoreCase)==(int)size()-(int)value.size();
@@ -1469,12 +1469,12 @@ namespace Common
 			return strcmp(_Str1,_Str2)==0;
 		};
         ///	<summary>
-		///	È·¶¨´Ë×Ö·û´®µÄÄ©Î²ÊÇ·ñÓëÖ¸¶¨µÄ×Ö·ûÆ¥Åä¡£
-		///	<code>Ô­ĞÍ£ºinline bool EndsWith(char value, bool ignoreCase=false);</code>
+		///	ç¡®å®šæ­¤å­—ç¬¦ä¸²çš„æœ«å°¾æ˜¯å¦ä¸æŒ‡å®šçš„å­—ç¬¦åŒ¹é…ã€‚
+		///	<code>åŸå‹ï¼šinline bool EndsWith(char value, bool ignoreCase=false);</code>
 		///	</summary>
-		///	<param name="value">Òª±È½ÏµÄ<see cref="char"/>¡£</param>           
-		///	<param name="ignoreCase">ÈôÒªÔÚ¶Ô´Ë×Ö·û´®Óë value ½øĞĞ±È½ÏÊ±ºöÂÔ´óĞ¡Ğ´£¬ÔòÎª true£»·ñÔòÎª false¡£ </param>        
-		///	<returns> Èç¹û´Ë×Ö·û´®µÄÄ©Î²Óë value ²ÎÊıÆ¥Åä£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>
+		///	<param name="value">è¦æ¯”è¾ƒçš„<see cref="char"/>ã€‚</param>           
+		///	<param name="ignoreCase">è‹¥è¦åœ¨å¯¹æ­¤å­—ç¬¦ä¸²ä¸ value è¿›è¡Œæ¯”è¾ƒæ—¶å¿½ç•¥å¤§å°å†™ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚ </param>        
+		///	<returns> å¦‚æœæ­¤å­—ç¬¦ä¸²çš„æœ«å°¾ä¸ value å‚æ•°åŒ¹é…ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>
 		inline bool EndsWith(char value, bool ignoreCase=false)
 		{
 			//return LastIndexOf(value,0,ignoreCase)==(int)size()-1;
@@ -1491,35 +1491,35 @@ namespace Common
 			return c==value;
 		};
 		///	<summary>
-		///	´Ó´ËÊµÀı¼ìË÷×Ó×Ö·û´®¡£×Ó×Ö·û´®´ÓÖ¸¶¨µÄ×Ö·ûÎ»ÖÃ¿ªÊ¼¡£
-		///	<code>Ô­ĞÍ£ºinline String SubString(int startIndex);</code>
+		///	ä»æ­¤å®ä¾‹æ£€ç´¢å­å­—ç¬¦ä¸²ã€‚å­å­—ç¬¦ä¸²ä»æŒ‡å®šçš„å­—ç¬¦ä½ç½®å¼€å§‹ã€‚
+		///	<code>åŸå‹ï¼šinline String SubString(int startIndex);</code>
 		///	</summary>
-		///	<param name="startIndex">´ËÊµÀıÖĞ×Ó×Ö·û´®µÄÆğÊ¼×Ö·ûÎ»ÖÃ<see cref="int"/></param>
-		///	<returns>½ØÈ¡µÄ×Ó×Ö·û´®Ò»¸ö <see cref="String"/>¶ÔÏó£¬ËüµÈÓÚ´ËÊµÀıÖĞ´Ó startIndex ¿ªÊ¼µÄ×Ó×Ö·û´®£¬Èç¹û startIndex µÈÓÚ´ËÊµÀıµÄ³¤¶È£¬ÔòÎª
-        ///     Common.String.Empty¡£</returns>
+		///	<param name="startIndex">æ­¤å®ä¾‹ä¸­å­å­—ç¬¦ä¸²çš„èµ·å§‹å­—ç¬¦ä½ç½®<see cref="int"/></param>
+		///	<returns>æˆªå–çš„å­å­—ç¬¦ä¸²ä¸€ä¸ª <see cref="String"/>å¯¹è±¡ï¼Œå®ƒç­‰äºæ­¤å®ä¾‹ä¸­ä» startIndex å¼€å§‹çš„å­å­—ç¬¦ä¸²ï¼Œå¦‚æœ startIndex ç­‰äºæ­¤å®ä¾‹çš„é•¿åº¦ï¼Œåˆ™ä¸º
+        ///     Common.String.Emptyã€‚</returns>
         inline String SubString(int startIndex)
 		{
 			if(startIndex>=size())return "";
 			return String(*this,startIndex);
 		}
 		///	<summary>
-		///	´Ó´ËÊµÀı¼ìË÷×Ó×Ö·û´®¡£×Ó×Ö·û´®´ÓÖ¸¶¨µÄ×Ö·ûÎ»ÖÃ¿ªÊ¼ÇÒ¾ßÓĞÖ¸¶¨µÄ³¤¶È¡£
-		///	<code>Ô­ĞÍ£ºinline String SubString(int startIndex, int length);</code>
+		///	ä»æ­¤å®ä¾‹æ£€ç´¢å­å­—ç¬¦ä¸²ã€‚å­å­—ç¬¦ä¸²ä»æŒ‡å®šçš„å­—ç¬¦ä½ç½®å¼€å§‹ä¸”å…·æœ‰æŒ‡å®šçš„é•¿åº¦ã€‚
+		///	<code>åŸå‹ï¼šinline String SubString(int startIndex, int length);</code>
 		///	</summary>
-		///	<param name="startIndex">×Ó×Ö·û´®µÄÆğÊ¼Î»ÖÃµÄË÷Òı<see cref="int"/></param>
-		///	<param name="length">×Ó×Ö·û´®ÖĞµÄ×Ö·ûÊı<see cref="int"/></param>
-		///	<returns>Ò»¸ö <see cref="String"/>£¬ËüµÈÓÚ´ËÊµÀıÖĞ´Ó startIndex ¿ªÊ¼µÄ³¤¶ÈÎª length µÄ×Ó×Ö·û´®£¬Èç¹û startIndex µÈÓÚ´ËÊµÀıµÄ³¤¶ÈÇÒ
-        ///     length ÎªÁã£¬ÔòÎª Common.String.Empty¡£ </returns>
+		///	<param name="startIndex">å­å­—ç¬¦ä¸²çš„èµ·å§‹ä½ç½®çš„ç´¢å¼•<see cref="int"/></param>
+		///	<param name="length">å­å­—ç¬¦ä¸²ä¸­çš„å­—ç¬¦æ•°<see cref="int"/></param>
+		///	<returns>ä¸€ä¸ª <see cref="String"/>ï¼Œå®ƒç­‰äºæ­¤å®ä¾‹ä¸­ä» startIndex å¼€å§‹çš„é•¿åº¦ä¸º length çš„å­å­—ç¬¦ä¸²ï¼Œå¦‚æœ startIndex ç­‰äºæ­¤å®ä¾‹çš„é•¿åº¦ä¸”
+        ///     length ä¸ºé›¶ï¼Œåˆ™ä¸º Common.String.Emptyã€‚ </returns>
         inline String SubString(int startIndex, int length)
 		{
 			if(startIndex>=size() || length<0)return "";
 			return String(*this,startIndex,length);
 		}
 		///	<summary>
-		///	·µ»Ø´Ë <see cref="String"/> µÄ×ª»»ÎªĞ¡Ğ´ĞÎÊ½µÄ¸±±¾
-		///	<code>Ô­ĞÍ£ºinline String &amp;ToLower();</code>
+		///	è¿”å›æ­¤ <see cref="String"/> çš„è½¬æ¢ä¸ºå°å†™å½¢å¼çš„å‰¯æœ¬
+		///	<code>åŸå‹ï¼šinline String &amp;ToLower();</code>
 		///	</summary>
-		///	<returns>´ËÊµÀı±¾Éí¡£ </returns>
+		///	<returns>æ­¤å®ä¾‹æœ¬èº«ã€‚ </returns>
         inline String &ToLower()
 		{
 			int i=0;
@@ -1537,10 +1537,10 @@ namespace Common
 			return *this;
 		}
 		///	<summary>
-		///	·µ»Ø´Ë <see cref="String"/> µÄ×ª»»Îª´óĞ´ĞÎÊ½µÄ¸±±¾
-		///	<code>Ô­ĞÍ£ºinline String &amp;ToUpper();</code>
+		///	è¿”å›æ­¤ <see cref="String"/> çš„è½¬æ¢ä¸ºå¤§å†™å½¢å¼çš„å‰¯æœ¬
+		///	<code>åŸå‹ï¼šinline String &amp;ToUpper();</code>
 		///	</summary>
-		///	<returns>´ËÊµÀı±¾Éí¡£ </returns>
+		///	<returns>æ­¤å®ä¾‹æœ¬èº«ã€‚ </returns>
         inline String &ToUpper()
 		{
 			int i=0;
@@ -1558,17 +1558,17 @@ namespace Common
 			return *this;
 		};
 		///	<summary>
-		///	´Ó´ËÊµÀıµÄ¿ªÊ¼Î»ÖÃºÍÄ©Î²ÒÆ³ı¿Õ°××Ö·û(°üÀ¨ÖÆ±í·û)µÄËùÓĞÆ¥ÅäÏî
-		///	<code>Ô­ĞÍ£ºinline String &amp;Trim();</code>
+		///	ä»æ­¤å®ä¾‹çš„å¼€å§‹ä½ç½®å’Œæœ«å°¾ç§»é™¤ç©ºç™½å­—ç¬¦(åŒ…æ‹¬åˆ¶è¡¨ç¬¦)çš„æ‰€æœ‰åŒ¹é…é¡¹
+		///	<code>åŸå‹ï¼šinline String &amp;Trim();</code>
 		///	</summary>
-		///	<returns>´ËÊµÀı±¾Éí¡£ </returns>
+		///	<returns>æ­¤å®ä¾‹æœ¬èº«ã€‚ </returns>
 		inline String &Trim(){return Trim(' ');};
 		///	<summary>
-		///	´Ó´ËÊµÀıµÄ¿ªÊ¼Î»ÖÃºÍÄ©Î²ÒÆ³ıÖ¸¶¨×Ö·ûµÄËùÓĞÆ¥ÅäÏî,ÕâÀï¿Õ¸ñÓëÖÆ±í·ûµÈĞ§
-		///	<code>Ô­ĞÍ£ºinline String &amp;Trim(char c);</code>
+		///	ä»æ­¤å®ä¾‹çš„å¼€å§‹ä½ç½®å’Œæœ«å°¾ç§»é™¤æŒ‡å®šå­—ç¬¦çš„æ‰€æœ‰åŒ¹é…é¡¹,è¿™é‡Œç©ºæ ¼ä¸åˆ¶è¡¨ç¬¦ç­‰æ•ˆ
+		///	<code>åŸå‹ï¼šinline String &amp;Trim(char c);</code>
 		///	</summary>
-		///	<param name="c">ÒªÏÈÒÆ³ıµÄ×Ö·û </param> 
-		///	<returns>´ËÊµÀı±¾Éí¡£ </returns>
+		///	<param name="c">è¦å…ˆç§»é™¤çš„å­—ç¬¦ </param> 
+		///	<returns>æ­¤å®ä¾‹æœ¬èº«ã€‚ </returns>
 		inline String &Trim(char c)
 		{
 			int i=size()-1,startIndex=0,endCount=0;
@@ -1587,11 +1587,11 @@ namespace Common
 			return *this;
 		}
 		///	<summary>
-		///	´Ó´ËÊµÀıµÄÄ©Î²ÒÆ³ıÖ¸¶¨×Ö·ûµÄËùÓĞÆ¥ÅäÏî,ÕâÀï¿Õ¸ñÓëÖÆ±í·ûµÈĞ§
-		///	<code>Ô­ĞÍ£ºinline String &amp;TrimEnd(char c);</code>
+		///	ä»æ­¤å®ä¾‹çš„æœ«å°¾ç§»é™¤æŒ‡å®šå­—ç¬¦çš„æ‰€æœ‰åŒ¹é…é¡¹,è¿™é‡Œç©ºæ ¼ä¸åˆ¶è¡¨ç¬¦ç­‰æ•ˆ
+		///	<code>åŸå‹ï¼šinline String &amp;TrimEnd(char c);</code>
 		///	</summary>
-		///	<param name="c">ÒªÏÈÒÆ³ıµÄ×Ö·û </param> 
-		///	<returns>´ËÊµÀı±¾Éí¡£ </returns>
+		///	<param name="c">è¦å…ˆç§»é™¤çš„å­—ç¬¦ </param> 
+		///	<returns>æ­¤å®ä¾‹æœ¬èº«ã€‚ </returns>
 		inline String &TrimEnd(char c)
 		{
 			int i=size()-1,count=0;;
@@ -1606,11 +1606,11 @@ namespace Common
 			return *this;
 		}
 		///	<summary>
-		///	´Ó´ËÊµÀıµÄ¿ªÊ¼Î»ÖÃÒÆ³ıÖ¸¶¨×Ö·ûµÄËùÓĞÆ¥ÅäÏî,ÕâÀï¿Õ¸ñÓëÖÆ±í·ûµÈĞ§
-		///	<code>Ô­ĞÍ£ºinline String &amp;TrimStart(char c);</code>
+		///	ä»æ­¤å®ä¾‹çš„å¼€å§‹ä½ç½®ç§»é™¤æŒ‡å®šå­—ç¬¦çš„æ‰€æœ‰åŒ¹é…é¡¹,è¿™é‡Œç©ºæ ¼ä¸åˆ¶è¡¨ç¬¦ç­‰æ•ˆ
+		///	<code>åŸå‹ï¼šinline String &amp;TrimStart(char c);</code>
 		///	</summary>
-		///	<param name="c">ÒªÏÈÒÆ³ıµÄ×Ö·û </param> 
-		///	<returns>´ËÊµÀı±¾Éí¡£ </returns>
+		///	<param name="c">è¦å…ˆç§»é™¤çš„å­—ç¬¦ </param> 
+		///	<returns>æ­¤å®ä¾‹æœ¬èº«ã€‚ </returns>
 		inline String &TrimStart(char c)
 		{
 			int count=0;
@@ -1623,11 +1623,11 @@ namespace Common
 			return *this;
 		}
 		///	<summary>
-		///	´Ó´ËÊµÀıµÄ¿ªÊ¼ºÍÄ©Î²ÒÆ³ıÊı×éÖĞÖ¸¶¨µÄÒ»×é×Ö·ûµÄËùÓĞÆ¥ÅäÏî
-		///	<code>Ô­ĞÍ£ºinline String &amp;Trim(char *trimChars);</code>
+		///	ä»æ­¤å®ä¾‹çš„å¼€å§‹å’Œæœ«å°¾ç§»é™¤æ•°ç»„ä¸­æŒ‡å®šçš„ä¸€ç»„å­—ç¬¦çš„æ‰€æœ‰åŒ¹é…é¡¹
+		///	<code>åŸå‹ï¼šinline String &amp;Trim(char *trimChars);</code>
 		///	</summary>
-		///	<param name="trimChars">ÒªÒÆ³ıµÄ×Ö·ûÊı×é </param> 
-		///	<returns>´ËÊµÀı±¾Éí,´Ó´ËÊµÀıµÄ¿ªÊ¼ºÍ½áÎ²ÒÆ³ı trimChars ÖĞ×Ö·ûµÄËùÓĞÆ¥ÅäÏîºóÊ£ÓàµÄ Common.String¡£Èç¹û trimChars Îªnull£¬Ôò¸ÄÎªÒÆ³ı¿Õ°××Ö·û¡£ </returns>
+		///	<param name="trimChars">è¦ç§»é™¤çš„å­—ç¬¦æ•°ç»„ </param> 
+		///	<returns>æ­¤å®ä¾‹æœ¬èº«,ä»æ­¤å®ä¾‹çš„å¼€å§‹å’Œç»“å°¾ç§»é™¤ trimChars ä¸­å­—ç¬¦çš„æ‰€æœ‰åŒ¹é…é¡¹åå‰©ä½™çš„ Common.Stringã€‚å¦‚æœ trimChars ä¸ºnullï¼Œåˆ™æ”¹ä¸ºç§»é™¤ç©ºç™½å­—ç¬¦ã€‚ </returns>
         inline String &Trim(const char * trimChars)
 		{
 			if(trimChars==NULL)return Trim();
@@ -1647,11 +1647,11 @@ namespace Common
 			return *this;
 		}
  		///	<summary>
-		///	´Ó´ËÊµÀıµÄ½áÎ²ÒÆ³ıÊı×éÖĞÖ¸¶¨µÄÒ»×é×Ö·ûµÄËùÓĞÆ¥ÅäÏî
-		///	<code>Ô­ĞÍ£ºinline String &amp;TrimEnd(char *trimChars);</code>
+		///	ä»æ­¤å®ä¾‹çš„ç»“å°¾ç§»é™¤æ•°ç»„ä¸­æŒ‡å®šçš„ä¸€ç»„å­—ç¬¦çš„æ‰€æœ‰åŒ¹é…é¡¹
+		///	<code>åŸå‹ï¼šinline String &amp;TrimEnd(char *trimChars);</code>
 		///	</summary>
-		///	<param name="trimChars">ÒªÒÆ³ıµÄ×Ö·ûÊı×é </param> 
-		///	<returns>´ËÊµÀı±¾Éí,´Ó´ËÊµÀıµÄ½áÎ²ÒÆ³ı trimChars ÖĞ×Ö·ûµÄËùÓĞÆ¥ÅäÏîºóÊ£ÓàµÄ Common.String¡£Èç¹û trimChars Îªnull£¬Ôò¸ÄÎªÒÆ³ı¿Õ°××Ö·û¡£ </returns>
+		///	<param name="trimChars">è¦ç§»é™¤çš„å­—ç¬¦æ•°ç»„ </param> 
+		///	<returns>æ­¤å®ä¾‹æœ¬èº«,ä»æ­¤å®ä¾‹çš„ç»“å°¾ç§»é™¤ trimChars ä¸­å­—ç¬¦çš„æ‰€æœ‰åŒ¹é…é¡¹åå‰©ä½™çš„ Common.Stringã€‚å¦‚æœ trimChars ä¸ºnullï¼Œåˆ™æ”¹ä¸ºç§»é™¤ç©ºç™½å­—ç¬¦ã€‚ </returns>
         inline String &TrimEnd(char * trimChars)
 		{
 			if(trimChars==NULL)return TrimEnd(' ');
@@ -1668,11 +1668,11 @@ namespace Common
 		}
 
  		///	<summary>
-		///	´Ó´ËÊµÀıµÄ¿ªÊ¼Î»ÖÃÒÆ³ıÊı×éÖĞÖ¸¶¨µÄÒ»×é×Ö·ûµÄËùÓĞÆ¥ÅäÏî
-		///	<code>Ô­ĞÍ£ºinline String &amp;TrimStart(char *trimChars);</code>
+		///	ä»æ­¤å®ä¾‹çš„å¼€å§‹ä½ç½®ç§»é™¤æ•°ç»„ä¸­æŒ‡å®šçš„ä¸€ç»„å­—ç¬¦çš„æ‰€æœ‰åŒ¹é…é¡¹
+		///	<code>åŸå‹ï¼šinline String &amp;TrimStart(char *trimChars);</code>
 		///	</summary>
-		///	<param name="trimChars">ÒªÒÆ³ıµÄ×Ö·ûÊı×é </param> 
-		///	<returns>´ËÊµÀı±¾Éí,´Ó´ËÊµÀıµÄ¿ªÊ¼Î»ÖÃÒÆ³ı trimChars ÖĞ×Ö·ûµÄËùÓĞÆ¥ÅäÏîºóÊ£ÓàµÄ Common.String¡£Èç¹û trimChars Îªnull£¬Ôò¸ÄÎªÒÆ³ı¿Õ°××Ö·û¡£ </returns>
+		///	<param name="trimChars">è¦ç§»é™¤çš„å­—ç¬¦æ•°ç»„ </param> 
+		///	<returns>æ­¤å®ä¾‹æœ¬èº«,ä»æ­¤å®ä¾‹çš„å¼€å§‹ä½ç½®ç§»é™¤ trimChars ä¸­å­—ç¬¦çš„æ‰€æœ‰åŒ¹é…é¡¹åå‰©ä½™çš„ Common.Stringã€‚å¦‚æœ trimChars ä¸ºnullï¼Œåˆ™æ”¹ä¸ºç§»é™¤ç©ºç™½å­—ç¬¦ã€‚ </returns>
         inline String &TrimStart(char * trimChars)
 		{
 			if(trimChars==NULL)return TrimStart(' ');
@@ -1687,79 +1687,79 @@ namespace Common
 		}
 
  		///	<summary>
-		///	»ñÈ¡´Ë×Ö·û´®¶ÔÏóµÄ¼òµ¥hashÖµ
-		///	<code>Ô­ĞÍ£ºinline unsigned int hashCode();</code>
+		///	è·å–æ­¤å­—ç¬¦ä¸²å¯¹è±¡çš„ç®€å•hashå€¼
+		///	<code>åŸå‹ï¼šinline unsigned int hashCode();</code>
 		///	</summary> 
-		///	<returns>Ò»¸öÎŞ·ûºÅÕûÊı¡£ </returns>
+		///	<returns>ä¸€ä¸ªæ— ç¬¦å·æ•´æ•°ã€‚ </returns>
 		inline unsigned int hashCode(){return hashMath::hashsp(c_str(),size());};
  		///	<summary>
-		///	»ñÈ¡´Ë×Ö·û´®¶ÔÏóµÄ¼òµ¥hashÖµ
-		///	<code>Ô­ĞÍ£ºinline static unsigned int getHashCode(const string &amp; s);</code>
+		///	è·å–æ­¤å­—ç¬¦ä¸²å¯¹è±¡çš„ç®€å•hashå€¼
+		///	<code>åŸå‹ï¼šinline static unsigned int getHashCode(const string &amp; s);</code>
 		///	</summary> 
-		///	<param name="s">Òª¼ÆËãhashÖµµÄ×Ö·û´® </param> 
-		///	<returns>Ò»¸öÎŞ·ûºÅÕûÊı¡£ </returns>
+		///	<param name="s">è¦è®¡ç®—hashå€¼çš„å­—ç¬¦ä¸² </param> 
+		///	<returns>ä¸€ä¸ªæ— ç¬¦å·æ•´æ•°ã€‚ </returns>
 		inline static unsigned int getHashCode(const string & s){return hashMath::hashsp(s);};
  		///	<summary>
-		///	×Ö·û²ğ·Ö,·µ»Ø°üº¬´ËÊµÀıÖĞµÄ×Ó×Ö·û´®µÄ <see cref='String'/> Êı×é¡£
-		///	<code>Ô­ĞÍ£ºvoid Split(Array&lt;String>  &amp;result,char separator,StringSplitOptions options=None, int count=0);</code>
+		///	å­—ç¬¦æ‹†åˆ†,è¿”å›åŒ…å«æ­¤å®ä¾‹ä¸­çš„å­å­—ç¬¦ä¸²çš„ <see cref='String'/> æ•°ç»„ã€‚
+		///	<code>åŸå‹ï¼švoid Split(Array&lt;String>  &amp;result,char separator,StringSplitOptions options=None, int count=0);</code>
 		///	</summary> 
-		///	<param name="result">Òª±£´æ½á¹ûÖµµÄ<see cref='String'/> Êı×é,ÆäÔªËØ°üº¬´ËÊµÀıÖĞµÄ×Ó×Ö·û´®,ÕâĞ©×Ó×Ö·û´®ÓÉ separator ÖĞµÄÒ»¸ö»ò¶à¸ö×Ö·û·Ö¸ô</param> 
-		///	<param name="separator">²ğ·Ö×Ö·û</param> 
-		///	<param name="options">Ö¸¶¨<see cref='RemoveEmptyEntries'/> ÒÔÊ¡ÂÔ·µ»ØµÄÊı×éÖĞµÄ¿ÕÊı×éÔªËØ£¬»òÖ¸¶¨<see cref='None'/> ÒÔ°üº¬·µ»ØµÄÊı×éÖĞµÄ¿ÕÊı×éÔªËØ </param> 
-		///	<param name="count">Òª·µ»ØµÄ×Ó×Ö·û´®µÄ×î´óÊıÁ¿ </param>  
+		///	<param name="result">è¦ä¿å­˜ç»“æœå€¼çš„<see cref='String'/> æ•°ç»„,å…¶å…ƒç´ åŒ…å«æ­¤å®ä¾‹ä¸­çš„å­å­—ç¬¦ä¸²,è¿™äº›å­å­—ç¬¦ä¸²ç”± separator ä¸­çš„ä¸€ä¸ªæˆ–å¤šä¸ªå­—ç¬¦åˆ†éš”</param> 
+		///	<param name="separator">æ‹†åˆ†å­—ç¬¦</param> 
+		///	<param name="options">æŒ‡å®š<see cref='RemoveEmptyEntries'/> ä»¥çœç•¥è¿”å›çš„æ•°ç»„ä¸­çš„ç©ºæ•°ç»„å…ƒç´ ï¼Œæˆ–æŒ‡å®š<see cref='None'/> ä»¥åŒ…å«è¿”å›çš„æ•°ç»„ä¸­çš„ç©ºæ•°ç»„å…ƒç´  </param> 
+		///	<param name="count">è¦è¿”å›çš„å­å­—ç¬¦ä¸²çš„æœ€å¤§æ•°é‡ </param>  
 		void Split(Array<String>  &result,char separator,StringSplitOptions options=None, int count=0);
    		///	<summary>
-		///	×Ö·û²ğ·Ö,·µ»Ø°üº¬´ËÊµÀıÖĞµÄ×Ó×Ö·û´®µÄ <see cref='String'/> Êı×é¡£
-		///	<code>Ô­ĞÍ£ºvoid Split(Array&lt;String>  &amp;result,Array&lt;char> separator,
+		///	å­—ç¬¦æ‹†åˆ†,è¿”å›åŒ…å«æ­¤å®ä¾‹ä¸­çš„å­å­—ç¬¦ä¸²çš„ <see cref='String'/> æ•°ç»„ã€‚
+		///	<code>åŸå‹ï¼švoid Split(Array&lt;String>  &amp;result,Array&lt;char> separator,
 		///                        StringSplitOptions options=None, int count=0);</code>
 		///	</summary> 
-		///	<param name="result">Òª±£´æ½á¹ûÖµµÄ<see cref='String'/> Êı×é,ÆäÔªËØ°üº¬´ËÊµÀıÖĞµÄ×Ó×Ö·û´®,ÕâĞ©×Ó×Ö·û´®ÓÉ separators ÖĞµÄÒ»¸ö»ò¶à¸ö×Ö·û·Ö¸ô</param> 
-		///	<param name="separators">·Ö¸ô´Ë×Ö·û´®ÖĞ×Ó×Ö·û´®µÄ ASCII ×Ö·ûÊı×é¡¢²»°üº¬·Ö¸ô·ûµÄ¿ÕÊı×é»ònull</param> 
-		///	<param name="options">Ö¸¶¨<see cref='RemoveEmptyEntries'/> ÒÔÊ¡ÂÔ·µ»ØµÄÊı×éÖĞµÄ¿ÕÊı×éÔªËØ£¬»òÖ¸¶¨<see cref='None'/> ÒÔ°üº¬·µ»ØµÄÊı×éÖĞµÄ¿ÕÊı×éÔªËØ </param> 
-		///	<param name="count">Òª·µ»ØµÄ×Ó×Ö·û´®µÄ×î´óÊıÁ¿ </param>  
+		///	<param name="result">è¦ä¿å­˜ç»“æœå€¼çš„<see cref='String'/> æ•°ç»„,å…¶å…ƒç´ åŒ…å«æ­¤å®ä¾‹ä¸­çš„å­å­—ç¬¦ä¸²,è¿™äº›å­å­—ç¬¦ä¸²ç”± separators ä¸­çš„ä¸€ä¸ªæˆ–å¤šä¸ªå­—ç¬¦åˆ†éš”</param> 
+		///	<param name="separators">åˆ†éš”æ­¤å­—ç¬¦ä¸²ä¸­å­å­—ç¬¦ä¸²çš„ ASCII å­—ç¬¦æ•°ç»„ã€ä¸åŒ…å«åˆ†éš”ç¬¦çš„ç©ºæ•°ç»„æˆ–null</param> 
+		///	<param name="options">æŒ‡å®š<see cref='RemoveEmptyEntries'/> ä»¥çœç•¥è¿”å›çš„æ•°ç»„ä¸­çš„ç©ºæ•°ç»„å…ƒç´ ï¼Œæˆ–æŒ‡å®š<see cref='None'/> ä»¥åŒ…å«è¿”å›çš„æ•°ç»„ä¸­çš„ç©ºæ•°ç»„å…ƒç´  </param> 
+		///	<param name="count">è¦è¿”å›çš„å­å­—ç¬¦ä¸²çš„æœ€å¤§æ•°é‡ </param>  
         void Split(Array<String>  &result,Array<char> & separators, StringSplitOptions options=None, int count=0);
    		///	<summary>
-		///	×Ö·û´®²ğ·Ö,·µ»Ø°üº¬´Ë×Ö·û´®ÖĞµÄ×Ó×Ö·û´®£¨ÓÉÖ¸¶¨µÄ×Ö·û´®µÄÔªËØ»ò×Ö·û´®·Ö¸ô£©µÄ<see cref='String'/>Êı×é¡£²ÎÊıÖ¸¶¨ÊÇ·ñ·µ»Ø¿ÕÊı×éÔªËØ¡£
-		///	<code>Ô­ĞÍ£ºvoid Split(Array&lt;String>  &amp;result,String separator,bool isString,
+		///	å­—ç¬¦ä¸²æ‹†åˆ†,è¿”å›åŒ…å«æ­¤å­—ç¬¦ä¸²ä¸­çš„å­å­—ç¬¦ä¸²ï¼ˆç”±æŒ‡å®šçš„å­—ç¬¦ä¸²çš„å…ƒç´ æˆ–å­—ç¬¦ä¸²åˆ†éš”ï¼‰çš„<see cref='String'/>æ•°ç»„ã€‚å‚æ•°æŒ‡å®šæ˜¯å¦è¿”å›ç©ºæ•°ç»„å…ƒç´ ã€‚
+		///	<code>åŸå‹ï¼švoid Split(Array&lt;String>  &amp;result,String separator,bool isString,
 		///                        StringSplitOptions options=None, int count=0);</code>
 		///	</summary> 
-		///	<param name="result">Òª±£´æ½á¹ûÖµµÄ<see cref='String'/> Êı×é,ÆäÔªËØ°üº¬´ËÊµÀıÖĞµÄ×Ó×Ö·û´®,ÕâĞ©×Ó×Ö·û´®ÓÉ separatorÖ¸¶¨µÄ×Ö·û´®»ò¶à¸ö×Ö·û·Ö¸ô</param> 
-		///	<param name="separator">·Ö¸ô´Ë×Ö·û´®ÖĞ×Ó×Ö·û´®µÄ ASCII ×Ö·ûÊı×é¡¢²»°üº¬·Ö¸ô·ûµÄ¿ÕÊı×é»ònull</param> 
-		///	<param name="isString">Ö¸Ê¾separatorÊÇ×Ö·û´®»¹ÊÇ×Ö·ûÊı×é£¬ÎªÕæÊ±ÒÔ×Ö·û´®²ğ·Ö£¬Îª¼ÙÊ±ÒÔ×Ö·û´®ÖĞµÄÈÎÒ»×Ö·û²ğ·Ö</param> 
-		///	<param name="options">Ö¸¶¨<see cref='RemoveEmptyEntries'/> ÒÔÊ¡ÂÔ·µ»ØµÄÊı×éÖĞµÄ¿ÕÊı×éÔªËØ£¬»òÖ¸¶¨<see cref='None'/> ÒÔ°üº¬·µ»ØµÄÊı×éÖĞµÄ¿ÕÊı×éÔªËØ </param> 
-		///	<param name="count">Òª·µ»ØµÄ×Ó×Ö·û´®µÄ×î´óÊıÁ¿ </param>  
+		///	<param name="result">è¦ä¿å­˜ç»“æœå€¼çš„<see cref='String'/> æ•°ç»„,å…¶å…ƒç´ åŒ…å«æ­¤å®ä¾‹ä¸­çš„å­å­—ç¬¦ä¸²,è¿™äº›å­å­—ç¬¦ä¸²ç”± separatoræŒ‡å®šçš„å­—ç¬¦ä¸²æˆ–å¤šä¸ªå­—ç¬¦åˆ†éš”</param> 
+		///	<param name="separator">åˆ†éš”æ­¤å­—ç¬¦ä¸²ä¸­å­å­—ç¬¦ä¸²çš„ ASCII å­—ç¬¦æ•°ç»„ã€ä¸åŒ…å«åˆ†éš”ç¬¦çš„ç©ºæ•°ç»„æˆ–null</param> 
+		///	<param name="isString">æŒ‡ç¤ºseparatoræ˜¯å­—ç¬¦ä¸²è¿˜æ˜¯å­—ç¬¦æ•°ç»„ï¼Œä¸ºçœŸæ—¶ä»¥å­—ç¬¦ä¸²æ‹†åˆ†ï¼Œä¸ºå‡æ—¶ä»¥å­—ç¬¦ä¸²ä¸­çš„ä»»ä¸€å­—ç¬¦æ‹†åˆ†</param> 
+		///	<param name="options">æŒ‡å®š<see cref='RemoveEmptyEntries'/> ä»¥çœç•¥è¿”å›çš„æ•°ç»„ä¸­çš„ç©ºæ•°ç»„å…ƒç´ ï¼Œæˆ–æŒ‡å®š<see cref='None'/> ä»¥åŒ…å«è¿”å›çš„æ•°ç»„ä¸­çš„ç©ºæ•°ç»„å…ƒç´  </param> 
+		///	<param name="count">è¦è¿”å›çš„å­å­—ç¬¦ä¸²çš„æœ€å¤§æ•°é‡ </param>  
         void Split(Array<String>  &result,String separator,bool isString, StringSplitOptions options=None, int count=0);
    		///	<summary>
-		///	×Ö·û´®²ğ·Ö,·µ»Ø°üº¬´Ë×Ö·û´®ÖĞµÄ×Ó×Ö·û´®£¨ÓÉÖ¸¶¨µÄ <see cref='String'/>·Ö¸ô£©µÄ<see cref='String'/>Êı×é¡£²ÎÊıÖ¸¶¨ÊÇ·ñ·µ»Ø¿ÕÊı×éÔªËØ¡£
-		///	<code>Ô­ĞÍ£ºvoid Split(Array&lt;String>  &amp;result,String separator,
+		///	å­—ç¬¦ä¸²æ‹†åˆ†,è¿”å›åŒ…å«æ­¤å­—ç¬¦ä¸²ä¸­çš„å­å­—ç¬¦ä¸²ï¼ˆç”±æŒ‡å®šçš„ <see cref='String'/>åˆ†éš”ï¼‰çš„<see cref='String'/>æ•°ç»„ã€‚å‚æ•°æŒ‡å®šæ˜¯å¦è¿”å›ç©ºæ•°ç»„å…ƒç´ ã€‚
+		///	<code>åŸå‹ï¼švoid Split(Array&lt;String>  &amp;result,String separator,
 		///                        StringSplitOptions options=None, int count=0);</code>
 		///	</summary> 
-		///	<param name="result">Òª±£´æ½á¹ûÖµµÄ<see cref='String'/> Êı×é,ÆäÔªËØ°üº¬´ËÊµÀıÖĞµÄ×Ó×Ö·û´®,ÕâĞ©×Ó×Ö·û´®ÓÉ separator ·Ö¸ô</param> 
-		///	<param name="separator">·Ö¸ô´Ë×Ö·û´®ÖĞ×Ó×Ö·û´®µÄ ASCII ×Ö·ûÊı×é¡¢²»°üº¬·Ö¸ô·ûµÄ¿ÕÊı×é»ònull</param> 
-		///	<param name="options">Ö¸¶¨<see cref='RemoveEmptyEntries'/> ÒÔÊ¡ÂÔ·µ»ØµÄÊı×éÖĞµÄ¿ÕÊı×éÔªËØ£¬»òÖ¸¶¨<see cref='None'/> ÒÔ°üº¬·µ»ØµÄÊı×éÖĞµÄ¿ÕÊı×éÔªËØ </param> 
-		///	<param name="count">Òª·µ»ØµÄ×Ó×Ö·û´®µÄ×î´óÊıÁ¿ </param>  
+		///	<param name="result">è¦ä¿å­˜ç»“æœå€¼çš„<see cref='String'/> æ•°ç»„,å…¶å…ƒç´ åŒ…å«æ­¤å®ä¾‹ä¸­çš„å­å­—ç¬¦ä¸²,è¿™äº›å­å­—ç¬¦ä¸²ç”± separator åˆ†éš”</param> 
+		///	<param name="separator">åˆ†éš”æ­¤å­—ç¬¦ä¸²ä¸­å­å­—ç¬¦ä¸²çš„ ASCII å­—ç¬¦æ•°ç»„ã€ä¸åŒ…å«åˆ†éš”ç¬¦çš„ç©ºæ•°ç»„æˆ–null</param> 
+		///	<param name="options">æŒ‡å®š<see cref='RemoveEmptyEntries'/> ä»¥çœç•¥è¿”å›çš„æ•°ç»„ä¸­çš„ç©ºæ•°ç»„å…ƒç´ ï¼Œæˆ–æŒ‡å®š<see cref='None'/> ä»¥åŒ…å«è¿”å›çš„æ•°ç»„ä¸­çš„ç©ºæ•°ç»„å…ƒç´  </param> 
+		///	<param name="count">è¦è¿”å›çš„å­å­—ç¬¦ä¸²çš„æœ€å¤§æ•°é‡ </param>  
 		void Split(Array<String>  &result,String separator,StringSplitOptions options=None, int count=0)
 		{
 			Split(result,separator,true, options,count);
 		};
    		///	<summary>
-		///	×Ö·û´®²ğ·Ö,·µ»Ø°üº¬´Ë×Ö·û´®ÖĞµÄ×Ó×Ö·û´®£¨ÓÉÖ¸¶¨µÄ <see cref='String'/>Êı×é·Ö¸ô£©µÄ<see cref='String'/>Êı×é¡£²ÎÊıÖ¸¶¨ÊÇ·ñ·µ»Ø¿ÕÊı×éÔªËØ¡£
-		///	<code>Ô­ĞÍ£ºvoid Split(Array&lt;String>  &amp;result,Array&lt;String>  &amp; separators,
+		///	å­—ç¬¦ä¸²æ‹†åˆ†,è¿”å›åŒ…å«æ­¤å­—ç¬¦ä¸²ä¸­çš„å­å­—ç¬¦ä¸²ï¼ˆç”±æŒ‡å®šçš„ <see cref='String'/>æ•°ç»„åˆ†éš”ï¼‰çš„<see cref='String'/>æ•°ç»„ã€‚å‚æ•°æŒ‡å®šæ˜¯å¦è¿”å›ç©ºæ•°ç»„å…ƒç´ ã€‚
+		///	<code>åŸå‹ï¼švoid Split(Array&lt;String>  &amp;result,Array&lt;String>  &amp; separators,
 		///                        StringSplitOptions options=None, int count=0);</code>
 		///	</summary> 
-		///	<param name="result">Òª±£´æ½á¹ûÖµµÄ<see cref='String'/> Êı×é,ÆäÔªËØ°üº¬´ËÊµÀıÖĞµÄ×Ó×Ö·û´®,ÕâĞ©×Ó×Ö·û´®ÓÉ separators ÖĞµÄÒ»¸ö»ò¶à¸ö×Ö·û´®·Ö¸ô</param> 
-		///	<param name="separators">·Ö¸ô´Ë×Ö·û´®ÖĞ×Ó×Ö·û´®µÄ ASCII ×Ö·ûÊı×é¡¢²»°üº¬·Ö¸ô·ûµÄ¿ÕÊı×é»ònull</param> 
-		///	<param name="options">Ö¸¶¨<see cref='RemoveEmptyEntries'/> ÒÔÊ¡ÂÔ·µ»ØµÄÊı×éÖĞµÄ¿ÕÊı×éÔªËØ£¬»òÖ¸¶¨<see cref='None'/> ÒÔ°üº¬·µ»ØµÄÊı×éÖĞµÄ¿ÕÊı×éÔªËØ </param> 
-		///	<param name="count">Òª·µ»ØµÄ×Ó×Ö·û´®µÄ×î´óÊıÁ¿ </param>  
+		///	<param name="result">è¦ä¿å­˜ç»“æœå€¼çš„<see cref='String'/> æ•°ç»„,å…¶å…ƒç´ åŒ…å«æ­¤å®ä¾‹ä¸­çš„å­å­—ç¬¦ä¸²,è¿™äº›å­å­—ç¬¦ä¸²ç”± separators ä¸­çš„ä¸€ä¸ªæˆ–å¤šä¸ªå­—ç¬¦ä¸²åˆ†éš”</param> 
+		///	<param name="separators">åˆ†éš”æ­¤å­—ç¬¦ä¸²ä¸­å­å­—ç¬¦ä¸²çš„ ASCII å­—ç¬¦æ•°ç»„ã€ä¸åŒ…å«åˆ†éš”ç¬¦çš„ç©ºæ•°ç»„æˆ–null</param> 
+		///	<param name="options">æŒ‡å®š<see cref='RemoveEmptyEntries'/> ä»¥çœç•¥è¿”å›çš„æ•°ç»„ä¸­çš„ç©ºæ•°ç»„å…ƒç´ ï¼Œæˆ–æŒ‡å®š<see cref='None'/> ä»¥åŒ…å«è¿”å›çš„æ•°ç»„ä¸­çš„ç©ºæ•°ç»„å…ƒç´  </param> 
+		///	<param name="count">è¦è¿”å›çš„å­å­—ç¬¦ä¸²çš„æœ€å¤§æ•°é‡ </param>  
 	    void Split(Array<String>  &result,Array<String> &separators, StringSplitOptions options=None, int count=0);
  		///	<summary>
-		///	×Ö·û²ğ·Ö,·µ»Ø°üº¬´ËÊµÀıÖĞµÄ×Ó×Ö·û´®µÄ <see cref='String'/> Êı×é¡£
-		///	<code>Ô­ĞÍ£ºinline Array&lt;String> Split(char separator,StringSplitOptions options=None, int count=0);</code>
+		///	å­—ç¬¦æ‹†åˆ†,è¿”å›åŒ…å«æ­¤å®ä¾‹ä¸­çš„å­å­—ç¬¦ä¸²çš„ <see cref='String'/> æ•°ç»„ã€‚
+		///	<code>åŸå‹ï¼šinline Array&lt;String> Split(char separator,StringSplitOptions options=None, int count=0);</code>
 		///	</summary> 
-		///	<param name="separator">²ğ·Ö×Ö·û</param> 
-		///	<param name="options">Ö¸¶¨<see cref='RemoveEmptyEntries'/> ÒÔÊ¡ÂÔ·µ»ØµÄÊı×éÖĞµÄ¿ÕÊı×éÔªËØ£¬»òÖ¸¶¨<see cref='None'/> ÒÔ°üº¬·µ»ØµÄÊı×éÖĞµÄ¿ÕÊı×éÔªËØ </param> 
-		///	<param name="count">Òª·µ»ØµÄ×Ó×Ö·û´®µÄ×î´óÊıÁ¿ </param>  
-		///	<returns><see cref='String'/> Êı×é,ÆäÔªËØ°üº¬´ËÊµÀıÖĞµÄ×Ó×Ö·û´®,ÕâĞ©×Ó×Ö·û´®ÓÉ separator ÖĞµÄÒ»¸ö»ò¶à¸ö×Ö·û´®·Ö¸ô</returns>
+		///	<param name="separator">æ‹†åˆ†å­—ç¬¦</param> 
+		///	<param name="options">æŒ‡å®š<see cref='RemoveEmptyEntries'/> ä»¥çœç•¥è¿”å›çš„æ•°ç»„ä¸­çš„ç©ºæ•°ç»„å…ƒç´ ï¼Œæˆ–æŒ‡å®š<see cref='None'/> ä»¥åŒ…å«è¿”å›çš„æ•°ç»„ä¸­çš„ç©ºæ•°ç»„å…ƒç´  </param> 
+		///	<param name="count">è¦è¿”å›çš„å­å­—ç¬¦ä¸²çš„æœ€å¤§æ•°é‡ </param>  
+		///	<returns><see cref='String'/> æ•°ç»„,å…¶å…ƒç´ åŒ…å«æ­¤å®ä¾‹ä¸­çš„å­å­—ç¬¦ä¸²,è¿™äº›å­å­—ç¬¦ä¸²ç”± separator ä¸­çš„ä¸€ä¸ªæˆ–å¤šä¸ªå­—ç¬¦ä¸²åˆ†éš”</returns>
 		inline Array<String> Split(char separator,StringSplitOptions options=None, int count=0)
 		{
 			Array<String>  result;
@@ -1767,14 +1767,14 @@ namespace Common
 			return result;
 		};
    		///	<summary>
-		///	×Ö·û²ğ·Ö,·µ»Ø°üº¬´ËÊµÀıÖĞµÄ×Ó×Ö·û´®µÄ <see cref='String'/> Êı×é¡£
-		///	<code>Ô­ĞÍ£ºinline Array&lt;String> Split(Array&lt;char> separator,
+		///	å­—ç¬¦æ‹†åˆ†,è¿”å›åŒ…å«æ­¤å®ä¾‹ä¸­çš„å­å­—ç¬¦ä¸²çš„ <see cref='String'/> æ•°ç»„ã€‚
+		///	<code>åŸå‹ï¼šinline Array&lt;String> Split(Array&lt;char> separator,
 		///                                            StringSplitOptions options=None, int count=0);</code>
 		///	</summary> 
-		///	<param name="separators">·Ö¸ô´Ë×Ö·û´®ÖĞ×Ó×Ö·û´®µÄ ASCII ×Ö·ûÊı×é¡¢²»°üº¬·Ö¸ô·ûµÄ¿ÕÊı×é»ònull</param> 
-		///	<param name="options">Ö¸¶¨<see cref='RemoveEmptyEntries'/> ÒÔÊ¡ÂÔ·µ»ØµÄÊı×éÖĞµÄ¿ÕÊı×éÔªËØ£¬»òÖ¸¶¨<see cref='None'/> ÒÔ°üº¬·µ»ØµÄÊı×éÖĞµÄ¿ÕÊı×éÔªËØ </param> 
-		///	<param name="count">Òª·µ»ØµÄ×Ó×Ö·û´®µÄ×î´óÊıÁ¿ </param>  
-		///	<returns><see cref='String'/> Êı×é,ÆäÔªËØ°üº¬´ËÊµÀıÖĞµÄ×Ó×Ö·û´®,ÕâĞ©×Ó×Ö·û´®ÓÉ separator ÖĞµÄÒ»¸ö»ò¶à¸ö×Ö·û´®·Ö¸ô</returns>
+		///	<param name="separators">åˆ†éš”æ­¤å­—ç¬¦ä¸²ä¸­å­å­—ç¬¦ä¸²çš„ ASCII å­—ç¬¦æ•°ç»„ã€ä¸åŒ…å«åˆ†éš”ç¬¦çš„ç©ºæ•°ç»„æˆ–null</param> 
+		///	<param name="options">æŒ‡å®š<see cref='RemoveEmptyEntries'/> ä»¥çœç•¥è¿”å›çš„æ•°ç»„ä¸­çš„ç©ºæ•°ç»„å…ƒç´ ï¼Œæˆ–æŒ‡å®š<see cref='None'/> ä»¥åŒ…å«è¿”å›çš„æ•°ç»„ä¸­çš„ç©ºæ•°ç»„å…ƒç´  </param> 
+		///	<param name="count">è¦è¿”å›çš„å­å­—ç¬¦ä¸²çš„æœ€å¤§æ•°é‡ </param>  
+		///	<returns><see cref='String'/> æ•°ç»„,å…¶å…ƒç´ åŒ…å«æ­¤å®ä¾‹ä¸­çš„å­å­—ç¬¦ä¸²,è¿™äº›å­å­—ç¬¦ä¸²ç”± separator ä¸­çš„ä¸€ä¸ªæˆ–å¤šä¸ªå­—ç¬¦ä¸²åˆ†éš”</returns>
 		inline Array<String> Split(Array<char> & separators, StringSplitOptions options=None, int count=0)
 		{
 			Array<String>  result;
@@ -1782,15 +1782,15 @@ namespace Common
 			return result;
 		};
    		///	<summary>
-		///	×Ö·û´®²ğ·Ö,·µ»Ø°üº¬´Ë×Ö·û´®ÖĞµÄ×Ó×Ö·û´®£¨ÓÉÖ¸¶¨µÄ×Ö·û´®µÄÔªËØ»ò×Ö·û´®·Ö¸ô£©µÄ<see cref='String'/>Êı×é¡£²ÎÊıÖ¸¶¨ÊÇ·ñ·µ»Ø¿ÕÊı×éÔªËØ¡£
-		///	<code>Ô­ĞÍ£ºinline Array&lt;String>  Split(String separator,bool isString,
+		///	å­—ç¬¦ä¸²æ‹†åˆ†,è¿”å›åŒ…å«æ­¤å­—ç¬¦ä¸²ä¸­çš„å­å­—ç¬¦ä¸²ï¼ˆç”±æŒ‡å®šçš„å­—ç¬¦ä¸²çš„å…ƒç´ æˆ–å­—ç¬¦ä¸²åˆ†éš”ï¼‰çš„<see cref='String'/>æ•°ç»„ã€‚å‚æ•°æŒ‡å®šæ˜¯å¦è¿”å›ç©ºæ•°ç»„å…ƒç´ ã€‚
+		///	<code>åŸå‹ï¼šinline Array&lt;String>  Split(String separator,bool isString,
 		///                                            StringSplitOptions options=None, int count=0);</code>
 		///	</summary> 
-		///	<param name="separator">·Ö¸ô´Ë×Ö·û´®ÖĞ×Ó×Ö·û´®µÄ ASCII ×Ö·ûÊı×é¡¢²»°üº¬·Ö¸ô·ûµÄ¿ÕÊı×é»ònull</param> 
-		///	<param name="isString">Ö¸Ê¾separatorÊÇ×Ö·û´®»¹ÊÇ×Ö·ûÊı×é£¬ÎªÕæÊ±ÒÔ×Ö·û´®²ğ·Ö£¬Îª¼ÙÊ±ÒÔ×Ö·û´®ÖĞµÄÈÎÒ»×Ö·û²ğ·Ö</param> 
-		///	<param name="options">Ö¸¶¨<see cref='RemoveEmptyEntries'/> ÒÔÊ¡ÂÔ·µ»ØµÄÊı×éÖĞµÄ¿ÕÊı×éÔªËØ£¬»òÖ¸¶¨<see cref='None'/> ÒÔ°üº¬·µ»ØµÄÊı×éÖĞµÄ¿ÕÊı×éÔªËØ </param> 
-		///	<param name="count">Òª·µ»ØµÄ×Ó×Ö·û´®µÄ×î´óÊıÁ¿ </param>  
-		///	<returns><see cref='String'/> Êı×é,ÆäÔªËØ°üº¬´ËÊµÀıÖĞµÄ×Ó×Ö·û´®,ÕâĞ©×Ó×Ö·û´®ÓÉ separator Ö¸¶¨µÄ×Ö·û´®»ò¶à¸ö×Ö·û·Ö¸ô</returns>
+		///	<param name="separator">åˆ†éš”æ­¤å­—ç¬¦ä¸²ä¸­å­å­—ç¬¦ä¸²çš„ ASCII å­—ç¬¦æ•°ç»„ã€ä¸åŒ…å«åˆ†éš”ç¬¦çš„ç©ºæ•°ç»„æˆ–null</param> 
+		///	<param name="isString">æŒ‡ç¤ºseparatoræ˜¯å­—ç¬¦ä¸²è¿˜æ˜¯å­—ç¬¦æ•°ç»„ï¼Œä¸ºçœŸæ—¶ä»¥å­—ç¬¦ä¸²æ‹†åˆ†ï¼Œä¸ºå‡æ—¶ä»¥å­—ç¬¦ä¸²ä¸­çš„ä»»ä¸€å­—ç¬¦æ‹†åˆ†</param> 
+		///	<param name="options">æŒ‡å®š<see cref='RemoveEmptyEntries'/> ä»¥çœç•¥è¿”å›çš„æ•°ç»„ä¸­çš„ç©ºæ•°ç»„å…ƒç´ ï¼Œæˆ–æŒ‡å®š<see cref='None'/> ä»¥åŒ…å«è¿”å›çš„æ•°ç»„ä¸­çš„ç©ºæ•°ç»„å…ƒç´  </param> 
+		///	<param name="count">è¦è¿”å›çš„å­å­—ç¬¦ä¸²çš„æœ€å¤§æ•°é‡ </param>  
+		///	<returns><see cref='String'/> æ•°ç»„,å…¶å…ƒç´ åŒ…å«æ­¤å®ä¾‹ä¸­çš„å­å­—ç¬¦ä¸²,è¿™äº›å­å­—ç¬¦ä¸²ç”± separator æŒ‡å®šçš„å­—ç¬¦ä¸²æˆ–å¤šä¸ªå­—ç¬¦åˆ†éš”</returns>
 		inline Array<String> Split(String separator,bool isString, StringSplitOptions options=None, int count=0)
 		{
 			Array<String>  result;
@@ -1798,13 +1798,13 @@ namespace Common
 			return result;
 		};
    		///	<summary>
-		///	×Ö·û´®²ğ·Ö,·µ»Ø°üº¬´Ë×Ö·û´®ÖĞµÄ×Ó×Ö·û´®£¨ÓÉÖ¸¶¨µÄ <see cref='String'/>·Ö¸ô£©µÄ<see cref='String'/>Êı×é¡£²ÎÊıÖ¸¶¨ÊÇ·ñ·µ»Ø¿ÕÊı×éÔªËØ¡£
-		///	<code>Ô­ĞÍ£ºinline Array&lt;String> Split(String separator,StringSplitOptions options=None, int count=0);</code>
+		///	å­—ç¬¦ä¸²æ‹†åˆ†,è¿”å›åŒ…å«æ­¤å­—ç¬¦ä¸²ä¸­çš„å­å­—ç¬¦ä¸²ï¼ˆç”±æŒ‡å®šçš„ <see cref='String'/>åˆ†éš”ï¼‰çš„<see cref='String'/>æ•°ç»„ã€‚å‚æ•°æŒ‡å®šæ˜¯å¦è¿”å›ç©ºæ•°ç»„å…ƒç´ ã€‚
+		///	<code>åŸå‹ï¼šinline Array&lt;String> Split(String separator,StringSplitOptions options=None, int count=0);</code>
 		///	</summary> 
-		///	<param name="separator">·Ö¸ô´Ë×Ö·û´®ÖĞ×Ó×Ö·û´®µÄ ASCII ×Ö·ûÊı×é¡¢²»°üº¬·Ö¸ô·ûµÄ¿ÕÊı×é»ònull</param> 
-		///	<param name="options">Ö¸¶¨<see cref='RemoveEmptyEntries'/> ÒÔÊ¡ÂÔ·µ»ØµÄÊı×éÖĞµÄ¿ÕÊı×éÔªËØ£¬»òÖ¸¶¨<see cref='None'/> ÒÔ°üº¬·µ»ØµÄÊı×éÖĞµÄ¿ÕÊı×éÔªËØ </param> 
-		///	<param name="count">Òª·µ»ØµÄ×Ó×Ö·û´®µÄ×î´óÊıÁ¿ </param>  
-		///	<returns><see cref='String'/> Êı×é,ÆäÔªËØ°üº¬´ËÊµÀıÖĞµÄ×Ó×Ö·û´®,ÕâĞ©×Ó×Ö·û´®ÓÉ separator ·Ö¸ô</returns>
+		///	<param name="separator">åˆ†éš”æ­¤å­—ç¬¦ä¸²ä¸­å­å­—ç¬¦ä¸²çš„ ASCII å­—ç¬¦æ•°ç»„ã€ä¸åŒ…å«åˆ†éš”ç¬¦çš„ç©ºæ•°ç»„æˆ–null</param> 
+		///	<param name="options">æŒ‡å®š<see cref='RemoveEmptyEntries'/> ä»¥çœç•¥è¿”å›çš„æ•°ç»„ä¸­çš„ç©ºæ•°ç»„å…ƒç´ ï¼Œæˆ–æŒ‡å®š<see cref='None'/> ä»¥åŒ…å«è¿”å›çš„æ•°ç»„ä¸­çš„ç©ºæ•°ç»„å…ƒç´  </param> 
+		///	<param name="count">è¦è¿”å›çš„å­å­—ç¬¦ä¸²çš„æœ€å¤§æ•°é‡ </param>  
+		///	<returns><see cref='String'/> æ•°ç»„,å…¶å…ƒç´ åŒ…å«æ­¤å®ä¾‹ä¸­çš„å­å­—ç¬¦ä¸²,è¿™äº›å­å­—ç¬¦ä¸²ç”± separator åˆ†éš”</returns>
 		inline Array<String> Split(String separator,StringSplitOptions options=None, int count=0)
 		{
 			Array<String>  result;
@@ -1812,14 +1812,14 @@ namespace Common
 			return result;
 		};
    		///	<summary>
-		///	×Ö·û´®²ğ·Ö,·µ»Ø°üº¬´Ë×Ö·û´®ÖĞµÄ×Ó×Ö·û´®£¨ÓÉÖ¸¶¨µÄ <see cref='String'/>Êı×é·Ö¸ô£©µÄ<see cref='String'/>Êı×é¡£²ÎÊıÖ¸¶¨ÊÇ·ñ·µ»Ø¿ÕÊı×éÔªËØ¡£
-		///	<code>Ô­ĞÍ£ºvoid Split(Array&lt;String>  &amp;result,Array&lt;String>  &amp; separator,
+		///	å­—ç¬¦ä¸²æ‹†åˆ†,è¿”å›åŒ…å«æ­¤å­—ç¬¦ä¸²ä¸­çš„å­å­—ç¬¦ä¸²ï¼ˆç”±æŒ‡å®šçš„ <see cref='String'/>æ•°ç»„åˆ†éš”ï¼‰çš„<see cref='String'/>æ•°ç»„ã€‚å‚æ•°æŒ‡å®šæ˜¯å¦è¿”å›ç©ºæ•°ç»„å…ƒç´ ã€‚
+		///	<code>åŸå‹ï¼švoid Split(Array&lt;String>  &amp;result,Array&lt;String>  &amp; separator,
 		///                        StringSplitOptions options=None, int count=0);</code>
 		///	</summary> 
-		///	<param name="separators">·Ö¸ô´Ë×Ö·û´®ÖĞ×Ó×Ö·û´®µÄ ASCII ×Ö·ûÊı×é¡¢²»°üº¬·Ö¸ô·ûµÄ¿ÕÊı×é»ònull</param> 
-		///	<param name="options">Ö¸¶¨<see cref='RemoveEmptyEntries'/> ÒÔÊ¡ÂÔ·µ»ØµÄÊı×éÖĞµÄ¿ÕÊı×éÔªËØ£¬»òÖ¸¶¨<see cref='None'/> ÒÔ°üº¬·µ»ØµÄÊı×éÖĞµÄ¿ÕÊı×éÔªËØ </param> 
-		///	<param name="count">Òª·µ»ØµÄ×Ó×Ö·û´®µÄ×î´óÊıÁ¿ </param>  
-		///	<returns><see cref='String'/> Êı×é,ÆäÔªËØ°üº¬´ËÊµÀıÖĞµÄ×Ó×Ö·û´®,ÕâĞ©×Ó×Ö·û´®ÓÉ separators ÖĞµÄÒ»¸ö»ò¶à¸ö×Ö·û´®·Ö¸ô</returns>
+		///	<param name="separators">åˆ†éš”æ­¤å­—ç¬¦ä¸²ä¸­å­å­—ç¬¦ä¸²çš„ ASCII å­—ç¬¦æ•°ç»„ã€ä¸åŒ…å«åˆ†éš”ç¬¦çš„ç©ºæ•°ç»„æˆ–null</param> 
+		///	<param name="options">æŒ‡å®š<see cref='RemoveEmptyEntries'/> ä»¥çœç•¥è¿”å›çš„æ•°ç»„ä¸­çš„ç©ºæ•°ç»„å…ƒç´ ï¼Œæˆ–æŒ‡å®š<see cref='None'/> ä»¥åŒ…å«è¿”å›çš„æ•°ç»„ä¸­çš„ç©ºæ•°ç»„å…ƒç´  </param> 
+		///	<param name="count">è¦è¿”å›çš„å­å­—ç¬¦ä¸²çš„æœ€å¤§æ•°é‡ </param>  
+		///	<returns><see cref='String'/> æ•°ç»„,å…¶å…ƒç´ åŒ…å«æ­¤å®ä¾‹ä¸­çš„å­å­—ç¬¦ä¸²,è¿™äº›å­å­—ç¬¦ä¸²ç”± separators ä¸­çš„ä¸€ä¸ªæˆ–å¤šä¸ªå­—ç¬¦ä¸²åˆ†éš”</returns>
 		inline Array<String> Split(Array<String> &separators, StringSplitOptions options=None, int count=0)
 		{
 			Array<String>  result;
@@ -1830,67 +1830,67 @@ namespace Common
 
 //for base class string//
  		///	<summary>
-		///	×Ö·û²ğ·Ö,·µ»Ø°üº¬´ËÊµÀıÖĞµÄ×Ó×Ö·û´®µÄ <see cref='string'/> Êı×é¡£
-		///	<code>Ô­ĞÍ£ºstatic void Split(Array&lt;string>  &amp;result,string str,char separator,
+		///	å­—ç¬¦æ‹†åˆ†,è¿”å›åŒ…å«æ­¤å®ä¾‹ä¸­çš„å­å­—ç¬¦ä¸²çš„ <see cref='string'/> æ•°ç»„ã€‚
+		///	<code>åŸå‹ï¼šstatic void Split(Array&lt;string>  &amp;result,string str,char separator,
 		///                                StringSplitOptions options=None, int count=0);</code>
 		///	</summary> 
-		///	<param name="result">Òª±£´æ½á¹ûÖµµÄ<see cref='string'/> Êı×é,ÆäÔªËØ°üº¬´ËÊµÀıÖĞµÄ×Ó×Ö·û´®,ÕâĞ©×Ó×Ö·û´®ÓÉ separator ÖĞµÄÒ»¸ö»ò¶à¸ö×Ö·û·Ö¸ô</param> 
-		///	<param name="str">Òª½øĞĞ²ğ·ÖµÄÔ´×Ö·û´®,<see cref='String'/>µÄ¸¸Àà<see cref='string'/></param> 
-		///	<param name="separator">²ğ·Ö×Ö·û</param> 
-		///	<param name="options">Ö¸¶¨<see cref='RemoveEmptyEntries'/> ÒÔÊ¡ÂÔ·µ»ØµÄÊı×éÖĞµÄ¿ÕÊı×éÔªËØ£¬»òÖ¸¶¨<see cref='None'/> ÒÔ°üº¬·µ»ØµÄÊı×éÖĞµÄ¿ÕÊı×éÔªËØ </param> 
-		///	<param name="count">Òª·µ»ØµÄ×Ó×Ö·û´®µÄ×î´óÊıÁ¿ </param>  
+		///	<param name="result">è¦ä¿å­˜ç»“æœå€¼çš„<see cref='string'/> æ•°ç»„,å…¶å…ƒç´ åŒ…å«æ­¤å®ä¾‹ä¸­çš„å­å­—ç¬¦ä¸²,è¿™äº›å­å­—ç¬¦ä¸²ç”± separator ä¸­çš„ä¸€ä¸ªæˆ–å¤šä¸ªå­—ç¬¦åˆ†éš”</param> 
+		///	<param name="str">è¦è¿›è¡Œæ‹†åˆ†çš„æºå­—ç¬¦ä¸²,<see cref='String'/>çš„çˆ¶ç±»<see cref='string'/></param> 
+		///	<param name="separator">æ‹†åˆ†å­—ç¬¦</param> 
+		///	<param name="options">æŒ‡å®š<see cref='RemoveEmptyEntries'/> ä»¥çœç•¥è¿”å›çš„æ•°ç»„ä¸­çš„ç©ºæ•°ç»„å…ƒç´ ï¼Œæˆ–æŒ‡å®š<see cref='None'/> ä»¥åŒ…å«è¿”å›çš„æ•°ç»„ä¸­çš„ç©ºæ•°ç»„å…ƒç´  </param> 
+		///	<param name="count">è¦è¿”å›çš„å­å­—ç¬¦ä¸²çš„æœ€å¤§æ•°é‡ </param>  
 		static void Split(Array<string>  &result,string str,char separator,StringSplitOptions options=None,int count=0);
    		///	<summary>
-		///	×Ö·û²ğ·Ö,·µ»Ø°üº¬´ËÊµÀıÖĞµÄ×Ó×Ö·û´®µÄ <see cref='string'/> Êı×é¡£
-		///	<code>Ô­ĞÍ£ºstatic void Split(Array&lt;string>  &amp;result,string str,Array&lt;char> separator,
+		///	å­—ç¬¦æ‹†åˆ†,è¿”å›åŒ…å«æ­¤å®ä¾‹ä¸­çš„å­å­—ç¬¦ä¸²çš„ <see cref='string'/> æ•°ç»„ã€‚
+		///	<code>åŸå‹ï¼šstatic void Split(Array&lt;string>  &amp;result,string str,Array&lt;char> separator,
 		///                               StringSplitOptions options=None, int count=0);</code>
 		///	</summary> 
-		///	<param name="result">Òª±£´æ½á¹ûÖµµÄ<see cref='string'/> Êı×é,ÆäÔªËØ°üº¬´ËÊµÀıÖĞµÄ×Ó×Ö·û´®,ÕâĞ©×Ó×Ö·û´®ÓÉ separators ÖĞµÄÒ»¸ö»ò¶à¸ö×Ö·û·Ö¸ô</param> 
-		///	<param name="str">Òª½øĞĞ²ğ·ÖµÄÔ´×Ö·û´®,<see cref='String'/>µÄ¸¸Àà<see cref='string'/></param> 
-		///	<param name="separators">·Ö¸ô´Ë×Ö·û´®ÖĞ×Ó×Ö·û´®µÄ ASCII ×Ö·ûÊı×é¡¢²»°üº¬·Ö¸ô·ûµÄ¿ÕÊı×é»ònull</param> 
-		///	<param name="options">Ö¸¶¨<see cref='RemoveEmptyEntries'/> ÒÔÊ¡ÂÔ·µ»ØµÄÊı×éÖĞµÄ¿ÕÊı×éÔªËØ£¬»òÖ¸¶¨<see cref='None'/> ÒÔ°üº¬·µ»ØµÄÊı×éÖĞµÄ¿ÕÊı×éÔªËØ </param> 
-		///	<param name="count">Òª·µ»ØµÄ×Ó×Ö·û´®µÄ×î´óÊıÁ¿ </param>  
+		///	<param name="result">è¦ä¿å­˜ç»“æœå€¼çš„<see cref='string'/> æ•°ç»„,å…¶å…ƒç´ åŒ…å«æ­¤å®ä¾‹ä¸­çš„å­å­—ç¬¦ä¸²,è¿™äº›å­å­—ç¬¦ä¸²ç”± separators ä¸­çš„ä¸€ä¸ªæˆ–å¤šä¸ªå­—ç¬¦åˆ†éš”</param> 
+		///	<param name="str">è¦è¿›è¡Œæ‹†åˆ†çš„æºå­—ç¬¦ä¸²,<see cref='String'/>çš„çˆ¶ç±»<see cref='string'/></param> 
+		///	<param name="separators">åˆ†éš”æ­¤å­—ç¬¦ä¸²ä¸­å­å­—ç¬¦ä¸²çš„ ASCII å­—ç¬¦æ•°ç»„ã€ä¸åŒ…å«åˆ†éš”ç¬¦çš„ç©ºæ•°ç»„æˆ–null</param> 
+		///	<param name="options">æŒ‡å®š<see cref='RemoveEmptyEntries'/> ä»¥çœç•¥è¿”å›çš„æ•°ç»„ä¸­çš„ç©ºæ•°ç»„å…ƒç´ ï¼Œæˆ–æŒ‡å®š<see cref='None'/> ä»¥åŒ…å«è¿”å›çš„æ•°ç»„ä¸­çš„ç©ºæ•°ç»„å…ƒç´  </param> 
+		///	<param name="count">è¦è¿”å›çš„å­å­—ç¬¦ä¸²çš„æœ€å¤§æ•°é‡ </param>  
 		static void Split(Array<string>  &result,string str,Array<char> & separator, StringSplitOptions options=None, int count=0);
    		///	<summary>
-		///	×Ö·û´®²ğ·Ö,·µ»Ø°üº¬´Ë×Ö·û´®ÖĞµÄ×Ó×Ö·û´®£¨ÓÉÖ¸¶¨µÄ×Ö·û´®µÄÔªËØ»ò×Ö·û´®·Ö¸ô£©µÄ<see cref='string'/>Êı×é¡£²ÎÊıÖ¸¶¨ÊÇ·ñ·µ»Ø¿ÕÊı×éÔªËØ¡£
-		///	<code>Ô­ĞÍ£ºstatic void Split(Array&lt;string>  &amp;result,string separator,
+		///	å­—ç¬¦ä¸²æ‹†åˆ†,è¿”å›åŒ…å«æ­¤å­—ç¬¦ä¸²ä¸­çš„å­å­—ç¬¦ä¸²ï¼ˆç”±æŒ‡å®šçš„å­—ç¬¦ä¸²çš„å…ƒç´ æˆ–å­—ç¬¦ä¸²åˆ†éš”ï¼‰çš„<see cref='string'/>æ•°ç»„ã€‚å‚æ•°æŒ‡å®šæ˜¯å¦è¿”å›ç©ºæ•°ç»„å…ƒç´ ã€‚
+		///	<code>åŸå‹ï¼šstatic void Split(Array&lt;string>  &amp;result,string separator,
 		///                               bool isString,StringSplitOptions options=None, int count=0);</code>
 		///	</summary> 
-		///	<param name="result">Òª±£´æ½á¹ûÖµµÄ<see cref='string'/> Êı×é,ÆäÔªËØ°üº¬´ËÊµÀıÖĞµÄ×Ó×Ö·û´®,ÕâĞ©×Ó×Ö·û´®ÓÉ separatorÖ¸¶¨µÄ×Ö·û´®»ò¶à¸ö×Ö·û·Ö¸ô</param> 
-		///	<param name="str">Òª½øĞĞ²ğ·ÖµÄÔ´×Ö·û´®,<see cref='String'/>µÄ¸¸Àà<see cref='string'/></param> 
-		///	<param name="separator">·Ö¸ô´Ë×Ö·û´®ÖĞ×Ó×Ö·û´®µÄ ASCII ×Ö·ûÊı×é¡¢²»°üº¬·Ö¸ô·ûµÄ¿ÕÊı×é»ònull</param> 
-		///	<param name="isString">Ö¸Ê¾separatorÊÇ×Ö·û´®»¹ÊÇ×Ö·ûÊı×é£¬ÎªÕæÊ±ÒÔ×Ö·û´®²ğ·Ö£¬Îª¼ÙÊ±ÒÔ×Ö·û´®ÖĞµÄÈÎÒ»×Ö·û²ğ·Ö</param> 
-		///	<param name="options">Ö¸¶¨<see cref='RemoveEmptyEntries'/> ÒÔÊ¡ÂÔ·µ»ØµÄÊı×éÖĞµÄ¿ÕÊı×éÔªËØ£¬»òÖ¸¶¨<see cref='None'/> ÒÔ°üº¬·µ»ØµÄÊı×éÖĞµÄ¿ÕÊı×éÔªËØ </param> 
-		///	<param name="count">Òª·µ»ØµÄ×Ó×Ö·û´®µÄ×î´óÊıÁ¿ </param>  
+		///	<param name="result">è¦ä¿å­˜ç»“æœå€¼çš„<see cref='string'/> æ•°ç»„,å…¶å…ƒç´ åŒ…å«æ­¤å®ä¾‹ä¸­çš„å­å­—ç¬¦ä¸²,è¿™äº›å­å­—ç¬¦ä¸²ç”± separatoræŒ‡å®šçš„å­—ç¬¦ä¸²æˆ–å¤šä¸ªå­—ç¬¦åˆ†éš”</param> 
+		///	<param name="str">è¦è¿›è¡Œæ‹†åˆ†çš„æºå­—ç¬¦ä¸²,<see cref='String'/>çš„çˆ¶ç±»<see cref='string'/></param> 
+		///	<param name="separator">åˆ†éš”æ­¤å­—ç¬¦ä¸²ä¸­å­å­—ç¬¦ä¸²çš„ ASCII å­—ç¬¦æ•°ç»„ã€ä¸åŒ…å«åˆ†éš”ç¬¦çš„ç©ºæ•°ç»„æˆ–null</param> 
+		///	<param name="isString">æŒ‡ç¤ºseparatoræ˜¯å­—ç¬¦ä¸²è¿˜æ˜¯å­—ç¬¦æ•°ç»„ï¼Œä¸ºçœŸæ—¶ä»¥å­—ç¬¦ä¸²æ‹†åˆ†ï¼Œä¸ºå‡æ—¶ä»¥å­—ç¬¦ä¸²ä¸­çš„ä»»ä¸€å­—ç¬¦æ‹†åˆ†</param> 
+		///	<param name="options">æŒ‡å®š<see cref='RemoveEmptyEntries'/> ä»¥çœç•¥è¿”å›çš„æ•°ç»„ä¸­çš„ç©ºæ•°ç»„å…ƒç´ ï¼Œæˆ–æŒ‡å®š<see cref='None'/> ä»¥åŒ…å«è¿”å›çš„æ•°ç»„ä¸­çš„ç©ºæ•°ç»„å…ƒç´  </param> 
+		///	<param name="count">è¦è¿”å›çš„å­å­—ç¬¦ä¸²çš„æœ€å¤§æ•°é‡ </param>  
 		static void Split(Array<string>  &result,string str,string separator,bool isString, StringSplitOptions options=None, int count=0);
    		///	<summary>
-		///	×Ö·û´®²ğ·Ö,·µ»Ø°üº¬´Ë×Ö·û´®ÖĞµÄ×Ó×Ö·û´®£¨ÓÉÖ¸¶¨µÄ <see cref='string'/>·Ö¸ô£©µÄ<see cref='string'/>Êı×é¡£
-		///	<code>Ô­ĞÍ£ºinline static void Split(Array&lt;string>  &amp;result,string str,string separator);</code>
+		///	å­—ç¬¦ä¸²æ‹†åˆ†,è¿”å›åŒ…å«æ­¤å­—ç¬¦ä¸²ä¸­çš„å­å­—ç¬¦ä¸²ï¼ˆç”±æŒ‡å®šçš„ <see cref='string'/>åˆ†éš”ï¼‰çš„<see cref='string'/>æ•°ç»„ã€‚
+		///	<code>åŸå‹ï¼šinline static void Split(Array&lt;string>  &amp;result,string str,string separator);</code>
 		///	</summary> 
-		///	<param name="result">Òª±£´æ½á¹ûÖµµÄ<see cref='string'/> Êı×é,ÆäÔªËØ°üº¬´ËÊµÀıÖĞµÄ×Ó×Ö·û´®,ÕâĞ©×Ó×Ö·û´®ÓÉ separator ·Ö¸ô</param> 
-		///	<param name="str">Òª½øĞĞ²ğ·ÖµÄÔ´×Ö·û´®,<see cref='String'/>µÄ¸¸Àà<see cref='string'/></param> 
-		///	<param name="separator">·Ö¸ô´Ë×Ö·û´®ÖĞ×Ó×Ö·û´®µÄ ASCII ×Ö·ûÊı×é¡¢²»°üº¬·Ö¸ô·ûµÄ¿ÕÊı×é»ònull</param> 
+		///	<param name="result">è¦ä¿å­˜ç»“æœå€¼çš„<see cref='string'/> æ•°ç»„,å…¶å…ƒç´ åŒ…å«æ­¤å®ä¾‹ä¸­çš„å­å­—ç¬¦ä¸²,è¿™äº›å­å­—ç¬¦ä¸²ç”± separator åˆ†éš”</param> 
+		///	<param name="str">è¦è¿›è¡Œæ‹†åˆ†çš„æºå­—ç¬¦ä¸²,<see cref='String'/>çš„çˆ¶ç±»<see cref='string'/></param> 
+		///	<param name="separator">åˆ†éš”æ­¤å­—ç¬¦ä¸²ä¸­å­å­—ç¬¦ä¸²çš„ ASCII å­—ç¬¦æ•°ç»„ã€ä¸åŒ…å«åˆ†éš”ç¬¦çš„ç©ºæ•°ç»„æˆ–null</param> 
 		inline static void Split(Array<string>  &result,string str,string separator){Split(result,str,separator,true);};
    		///	<summary>
-		///	×Ö·û´®²ğ·Ö,·µ»Ø°üº¬´Ë×Ö·û´®ÖĞµÄ×Ó×Ö·û´®£¨ÓÉÖ¸¶¨µÄ <see cref='string'/>Êı×é·Ö¸ô£©µÄ<see cref='string'/>Êı×é¡£²ÎÊıÖ¸¶¨ÊÇ·ñ·µ»Ø¿ÕÊı×éÔªËØ¡£
-		///	<code>Ô­ĞÍ£ºstatic void Split(Array&lt;string>  &amp;result,string str,Array&lt;string>  &amp; separators,
+		///	å­—ç¬¦ä¸²æ‹†åˆ†,è¿”å›åŒ…å«æ­¤å­—ç¬¦ä¸²ä¸­çš„å­å­—ç¬¦ä¸²ï¼ˆç”±æŒ‡å®šçš„ <see cref='string'/>æ•°ç»„åˆ†éš”ï¼‰çš„<see cref='string'/>æ•°ç»„ã€‚å‚æ•°æŒ‡å®šæ˜¯å¦è¿”å›ç©ºæ•°ç»„å…ƒç´ ã€‚
+		///	<code>åŸå‹ï¼šstatic void Split(Array&lt;string>  &amp;result,string str,Array&lt;string>  &amp; separators,
 		///                               StringSplitOptions options=None, int count=0);</code>
 		///	</summary> 
-		///	<param name="result">Òª±£´æ½á¹ûÖµµÄ<see cref='string'/> Êı×é,ÆäÔªËØ°üº¬´ËÊµÀıÖĞµÄ×Ó×Ö·û´®,ÕâĞ©×Ó×Ö·û´®ÓÉ separators ÖĞµÄÒ»¸ö»ò¶à¸ö×Ö·û´®·Ö¸ô</param> 
-		///	<param name="str">Òª½øĞĞ²ğ·ÖµÄÔ´×Ö·û´®,<see cref='String'/>µÄ¸¸Àà<see cref='string'/></param> 
-		///	<param name="separators">·Ö¸ô´Ë×Ö·û´®ÖĞ×Ó×Ö·û´®µÄ ASCII ×Ö·ûÊı×é¡¢²»°üº¬·Ö¸ô·ûµÄ¿ÕÊı×é»ònull</param> 
-		///	<param name="options">Ö¸¶¨<see cref='StringSplitOptions'/>.<see cref='RemoveEmptyEntries'/> ÒÔÊ¡ÂÔ·µ»ØµÄÊı×éÖĞµÄ¿ÕÊı×éÔªËØ£¬»òÖ¸¶¨<see cref='None'/> ÒÔ°üº¬·µ»ØµÄÊı×éÖĞµÄ¿ÕÊı×éÔªËØ </param> 
-		///	<param name="count">Òª·µ»ØµÄ×Ó×Ö·û´®µÄ×î´óÊıÁ¿ </param>  
+		///	<param name="result">è¦ä¿å­˜ç»“æœå€¼çš„<see cref='string'/> æ•°ç»„,å…¶å…ƒç´ åŒ…å«æ­¤å®ä¾‹ä¸­çš„å­å­—ç¬¦ä¸²,è¿™äº›å­å­—ç¬¦ä¸²ç”± separators ä¸­çš„ä¸€ä¸ªæˆ–å¤šä¸ªå­—ç¬¦ä¸²åˆ†éš”</param> 
+		///	<param name="str">è¦è¿›è¡Œæ‹†åˆ†çš„æºå­—ç¬¦ä¸²,<see cref='String'/>çš„çˆ¶ç±»<see cref='string'/></param> 
+		///	<param name="separators">åˆ†éš”æ­¤å­—ç¬¦ä¸²ä¸­å­å­—ç¬¦ä¸²çš„ ASCII å­—ç¬¦æ•°ç»„ã€ä¸åŒ…å«åˆ†éš”ç¬¦çš„ç©ºæ•°ç»„æˆ–null</param> 
+		///	<param name="options">æŒ‡å®š<see cref='StringSplitOptions'/>.<see cref='RemoveEmptyEntries'/> ä»¥çœç•¥è¿”å›çš„æ•°ç»„ä¸­çš„ç©ºæ•°ç»„å…ƒç´ ï¼Œæˆ–æŒ‡å®š<see cref='None'/> ä»¥åŒ…å«è¿”å›çš„æ•°ç»„ä¸­çš„ç©ºæ•°ç»„å…ƒç´  </param> 
+		///	<param name="count">è¦è¿”å›çš„å­å­—ç¬¦ä¸²çš„æœ€å¤§æ•°é‡ </param>  
 		static void Split(Array<string>  &result,string str,Array<string> &separators, StringSplitOptions options=None, int count=0);
    		///	<summary>
-		///	×Ö·û´®²ğ·Ö,·µ»Ø²ğ·Ö´óĞ¡
-		///	<code>Ô­ĞÍ£ºinline static int SplitCpy(char * dest[],const char * src,char c);</code>
+		///	å­—ç¬¦ä¸²æ‹†åˆ†,è¿”å›æ‹†åˆ†å¤§å°
+		///	<code>åŸå‹ï¼šinline static int SplitCpy(char * dest[],const char * src,char c);</code>
 		///	</summary> 
-		/// <remarks>¿ìËÙ²ğ·Ö×Ö·û´®,Ò»°ãĞÔÄÜÎª: 90W/s</remarks>
-		///	<param name="dest">Òª±£´æ½á¹ûÖµµÄ×Ö·ûÖ¸ÕëÊı×é£¬¶şÎ¬×Ö·ûÊı×é£¬Òò½øĞĞÁËÖµµÄ¿½±´£¬ËùÒÔÃ¿¸öÎ¬¶ÈµÄ´óĞ¡ÒªÓĞ±£Ö¤</param> 
-		///	<param name="str">²ğ·ÖÔ´×Ö·û´®</param> 
-		///	<param name="c">²ğ·Ö×Ö·û</param> 
-		///	<returns>²ğ·ÖµÄÊı×é´óĞ¡</returns>  
+		/// <remarks>å¿«é€Ÿæ‹†åˆ†å­—ç¬¦ä¸²,ä¸€èˆ¬æ€§èƒ½ä¸º: 90W/s</remarks>
+		///	<param name="dest">è¦ä¿å­˜ç»“æœå€¼çš„å­—ç¬¦æŒ‡é’ˆæ•°ç»„ï¼ŒäºŒç»´å­—ç¬¦æ•°ç»„ï¼Œå› è¿›è¡Œäº†å€¼çš„æ‹·è´ï¼Œæ‰€ä»¥æ¯ä¸ªç»´åº¦çš„å¤§å°è¦æœ‰ä¿è¯</param> 
+		///	<param name="str">æ‹†åˆ†æºå­—ç¬¦ä¸²</param> 
+		///	<param name="c">æ‹†åˆ†å­—ç¬¦</param> 
+		///	<returns>æ‹†åˆ†çš„æ•°ç»„å¤§å°</returns>  
 		inline static int SplitCpy(char * dest[],const char * src,char c,bool remove=false)
 		{
 			int count=0,len=0;
@@ -1903,15 +1903,15 @@ namespace Common
 			return count+1;
 		}
    		///	<summary>
-		///	×Ö·û´®²ğ·Ö,·µ»Ø²ğ·Ö´óĞ¡
-		///	<code>Ô­ĞÍ£ºinline static int Split(char * dest[],const char * src,char c);</code>
+		///	å­—ç¬¦ä¸²æ‹†åˆ†,è¿”å›æ‹†åˆ†å¤§å°
+		///	<code>åŸå‹ï¼šinline static int Split(char * dest[],const char * src,char c);</code>
 		///	</summary> 
-		/// <remarks>¿ìËÙ²ğ·Ö×Ö·û´®,Ò»°ãĞÔÄÜÎª: 200W/s
-		///	         ×¢Òâ£ºÔ´×Ö·û´®ÖĞ²ğ·Ö×Ö·ûÖµÒÑ¾­ĞŞ¸ÄÎª¿Õ¡£</remarks>
-		///	<param name="dest">Òª±£´æ½á¹ûÖµµÄ×Ö·ûÖ¸ÕëÊı×é</param> 
-		///	<param name="str">²ğ·ÖÔ´×Ö·û´®</param> 
-		///	<param name="c">²ğ·Ö×Ö·û</param> 
-		///	<returns>²ğ·ÖµÄÊı×é´óĞ¡£¬Ö¸Ê¾destÖ¸ÕëÊı×éÖĞÓĞĞ§Ö¸Õë¸öÊı</returns>  
+		/// <remarks>å¿«é€Ÿæ‹†åˆ†å­—ç¬¦ä¸²,ä¸€èˆ¬æ€§èƒ½ä¸º: 200W/s
+		///	         æ³¨æ„ï¼šæºå­—ç¬¦ä¸²ä¸­æ‹†åˆ†å­—ç¬¦å€¼å·²ç»ä¿®æ”¹ä¸ºç©ºã€‚</remarks>
+		///	<param name="dest">è¦ä¿å­˜ç»“æœå€¼çš„å­—ç¬¦æŒ‡é’ˆæ•°ç»„</param> 
+		///	<param name="str">æ‹†åˆ†æºå­—ç¬¦ä¸²</param> 
+		///	<param name="c">æ‹†åˆ†å­—ç¬¦</param> 
+		///	<returns>æ‹†åˆ†çš„æ•°ç»„å¤§å°ï¼ŒæŒ‡ç¤ºdestæŒ‡é’ˆæ•°ç»„ä¸­æœ‰æ•ˆæŒ‡é’ˆä¸ªæ•°</returns>  
 		inline static int Split(char * dest[],const char * src,char c,bool remove=false)
 		{
 			char * tp=(char *)src;
@@ -1928,15 +1928,15 @@ namespace Common
 			return count;
 		}
    		///	<summary>
-		///	×Ö·û´®²ğ·Ö,Ê¹ÓÃ×Ö·û´®À´²ğ·Ö×Ö·û´®,·µ»Ø²ğ·Ö´óĞ¡
-		///	<code>Ô­ĞÍ£ºinline static int Split(char * dest[],const char * src,const char *spc);</code>
+		///	å­—ç¬¦ä¸²æ‹†åˆ†,ä½¿ç”¨å­—ç¬¦ä¸²æ¥æ‹†åˆ†å­—ç¬¦ä¸²,è¿”å›æ‹†åˆ†å¤§å°
+		///	<code>åŸå‹ï¼šinline static int Split(char * dest[],const char * src,const char *spc);</code>
 		///	</summary> 
-		/// <remarks>¿ìËÙ²ğ·Ö×Ö·û´®,Ò»°ãĞÔÄÜÎª: 100W/s
-		///	         ×¢Òâ£ºÔ´×Ö·û´®ÖĞ²ğ·Ö×Ö·û¿ªÊ¼Î»ÖÃÖµÒÑ¾­ĞŞ¸ÄÎª¿Õ¡£</remarks>
-		///	<param name="dest">Òª±£´æ½á¹ûÖµµÄ×Ö·ûÖ¸ÕëÊı×é</param> 
-		///	<param name="str">²ğ·ÖÔ´×Ö·û´®</param> 
-		///	<param name="spc">²ğ·Ö×Ö·û´®</param> 
-		///	<returns>²ğ·ÖµÄÊı×é´óĞ¡£¬Ö¸Ê¾destÖ¸ÕëÊı×éÖĞÓĞĞ§Ö¸Õë¸öÊı</returns>  
+		/// <remarks>å¿«é€Ÿæ‹†åˆ†å­—ç¬¦ä¸²,ä¸€èˆ¬æ€§èƒ½ä¸º: 100W/s
+		///	         æ³¨æ„ï¼šæºå­—ç¬¦ä¸²ä¸­æ‹†åˆ†å­—ç¬¦å¼€å§‹ä½ç½®å€¼å·²ç»ä¿®æ”¹ä¸ºç©ºã€‚</remarks>
+		///	<param name="dest">è¦ä¿å­˜ç»“æœå€¼çš„å­—ç¬¦æŒ‡é’ˆæ•°ç»„</param> 
+		///	<param name="str">æ‹†åˆ†æºå­—ç¬¦ä¸²</param> 
+		///	<param name="spc">æ‹†åˆ†å­—ç¬¦ä¸²</param> 
+		///	<returns>æ‹†åˆ†çš„æ•°ç»„å¤§å°ï¼ŒæŒ‡ç¤ºdestæŒ‡é’ˆæ•°ç»„ä¸­æœ‰æ•ˆæŒ‡é’ˆä¸ªæ•°</returns>  
 		inline static int Split(char * dest[],const char * src,const char *spc)
 		{
 			char * tp=(char *)src;
@@ -1946,7 +1946,7 @@ namespace Common
 			if(spc[0]==0){return count;}
 			while(tp=strchr(tp,spc[0]))
 			{
-				//ÅĞ¶ÏtpÊÇ·ñÒÔspc¿ªÊ¼
+				//åˆ¤æ–­tpæ˜¯å¦ä»¥spcå¼€å§‹
 				bool htrue=true;
 				for(int i=1;i<spLen;i++)
 				{
@@ -1963,11 +1963,11 @@ namespace Common
 		}
 
 		///	<summary>
-		///	¶Ô¸¸Àà×Ö·û´®¶ÔÏó´óĞ´×ª»»
-		///	<code>Ô­ĞÍ£ºinline static string&amp; ToUpper(string &amp;dest);</code>
+		///	å¯¹çˆ¶ç±»å­—ç¬¦ä¸²å¯¹è±¡å¤§å†™è½¬æ¢
+		///	<code>åŸå‹ï¼šinline static string&amp; ToUpper(string &amp;dest);</code>
 		///	</summary> 
-		///	<param name="dest">Òª×ª»»µÄ×Ö·û´®¶ÔÏó</param> 
-		///	<returns>destËù±íÊ¾µÄ×Ö·û´®¶ÔÏó</returns>  
+		///	<param name="dest">è¦è½¬æ¢çš„å­—ç¬¦ä¸²å¯¹è±¡</param> 
+		///	<returns>destæ‰€è¡¨ç¤ºçš„å­—ç¬¦ä¸²å¯¹è±¡</returns>  
 		inline static string& ToUpper(string &dest)
 		{
 			int i=-1;
@@ -1984,11 +1984,11 @@ namespace Common
 			return dest;
 		};
 		///	<summary>
-		///	¶Ô¸¸Àà×Ö·û´®¶ÔÏóĞ¡Ğ´×ª»»
-		///	<code>Ô­ĞÍ£ºinline static string&amp; ToLower(string &amp;dest);</code>
+		///	å¯¹çˆ¶ç±»å­—ç¬¦ä¸²å¯¹è±¡å°å†™è½¬æ¢
+		///	<code>åŸå‹ï¼šinline static string&amp; ToLower(string &amp;dest);</code>
 		///	</summary> 
-		///	<param name="dest">Òª×ª»»µÄ×Ö·û´®¶ÔÏó</param> 
-		///	<returns>destËù±íÊ¾µÄ×Ö·û´®¶ÔÏó</returns>  
+		///	<param name="dest">è¦è½¬æ¢çš„å­—ç¬¦ä¸²å¯¹è±¡</param> 
+		///	<returns>destæ‰€è¡¨ç¤ºçš„å­—ç¬¦ä¸²å¯¹è±¡</returns>  
 		inline static string& ToLower(string &dest)
 		{
 			int i=-1;
@@ -2005,15 +2005,15 @@ namespace Common
 			return dest;
 		};
 		///	<summary>
-		///	±¨¸æÖ¸¶¨×Ö·ûÔÚÖ¸¶¨×Ö·û´®ÖĞµÄµÚÒ»¸öÆ¥ÅäÏîµÄË÷Òı¡£¸ÃËÑË÷´ÓÖ¸¶¨×Ö·ûÎ»ÖÃ¿ªÊ¼¡£
-		///	<code>Ô­ĞÍ£ºinline static int IndexOf(string str,char value, int startIndex,bool ignoreCase, int count=0);</code>
+		///	æŠ¥å‘ŠæŒ‡å®šå­—ç¬¦åœ¨æŒ‡å®šå­—ç¬¦ä¸²ä¸­çš„ç¬¬ä¸€ä¸ªåŒ¹é…é¡¹çš„ç´¢å¼•ã€‚è¯¥æœç´¢ä»æŒ‡å®šå­—ç¬¦ä½ç½®å¼€å§‹ã€‚
+		///	<code>åŸå‹ï¼šinline static int IndexOf(string str,char value, int startIndex,bool ignoreCase, int count=0);</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®¶ÔÏó</param> 
-		///	<param name="value">Òª²éÕÒµÄ×Ö·û</param> 
-		///	<param name="startIndex">¿ªÊ¼²éÕÒÎ»ÖÃ</param> 
-		///	<param name="ignoreCase">ÊÇ·ñºöÂÔ´óĞ¡Ğ´</param> 
-		///	<param name="count">Ö¸¶¨Òª²éÕÒµÄ×Ö·û¸öÊı,Îª0²»Ö¸¶¨</param> 
-		///	<returns>Èç¹ûÕÒµ½¸Ã×Ö·û£¬ÔòÎª value µÄË÷ÒıÎ»ÖÃ£»·ñÔòÈç¹ûÎ´ÕÒµ½£¬ÔòÎª -1¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²å¯¹è±¡</param> 
+		///	<param name="value">è¦æŸ¥æ‰¾çš„å­—ç¬¦</param> 
+		///	<param name="startIndex">å¼€å§‹æŸ¥æ‰¾ä½ç½®</param> 
+		///	<param name="ignoreCase">æ˜¯å¦å¿½ç•¥å¤§å°å†™</param> 
+		///	<param name="count">æŒ‡å®šè¦æŸ¥æ‰¾çš„å­—ç¬¦ä¸ªæ•°,ä¸º0ä¸æŒ‡å®š</param> 
+		///	<returns>å¦‚æœæ‰¾åˆ°è¯¥å­—ç¬¦ï¼Œåˆ™ä¸º value çš„ç´¢å¼•ä½ç½®ï¼›å¦åˆ™å¦‚æœæœªæ‰¾åˆ°ï¼Œåˆ™ä¸º -1ã€‚</returns>  
         inline static int IndexOf(string str,char value, int startIndex,bool ignoreCase, int count=0)
 		{
 			int i=startIndex,size=str.size();
@@ -2032,27 +2032,27 @@ namespace Common
 			return -1;
 		}
 		///	<summary>
-		///	±¨¸æÖ¸¶¨×Ö·ûÔÚÖ¸¶¨×Ö·û´®ÖĞµÄµÚÒ»¸öÆ¥ÅäÏîµÄË÷Òı¡£
-		///	<code>Ô­ĞÍ£ºinline static int IndexOf(string str,char value, bool ignoreCase=0);</code>
+		///	æŠ¥å‘ŠæŒ‡å®šå­—ç¬¦åœ¨æŒ‡å®šå­—ç¬¦ä¸²ä¸­çš„ç¬¬ä¸€ä¸ªåŒ¹é…é¡¹çš„ç´¢å¼•ã€‚
+		///	<code>åŸå‹ï¼šinline static int IndexOf(string str,char value, bool ignoreCase=0);</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®¶ÔÏó</param> 
-		///	<param name="value">Òª²éÕÒµÄ×Ö·û</param>  
-		///	<param name="ignoreCase">ÊÇ·ñºöÂÔ´óĞ¡Ğ´</param>  
-		///	<returns>Èç¹ûÕÒµ½¸Ã×Ö·û£¬ÔòÎª value µÄË÷ÒıÎ»ÖÃ£»·ñÔòÈç¹ûÎ´ÕÒµ½£¬ÔòÎª -1¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²å¯¹è±¡</param> 
+		///	<param name="value">è¦æŸ¥æ‰¾çš„å­—ç¬¦</param>  
+		///	<param name="ignoreCase">æ˜¯å¦å¿½ç•¥å¤§å°å†™</param>  
+		///	<returns>å¦‚æœæ‰¾åˆ°è¯¥å­—ç¬¦ï¼Œåˆ™ä¸º value çš„ç´¢å¼•ä½ç½®ï¼›å¦åˆ™å¦‚æœæœªæ‰¾åˆ°ï¼Œåˆ™ä¸º -1ã€‚</returns>  
 		inline static int IndexOf(string str,char value, bool ignoreCase=0)
 		{
 			return IndexOf(str,value,0,ignoreCase);
 		} 
 		///	<summary>
-		///	±¨¸æÖ¸¶¨×Ö·ûÔÚÖ¸¶¨×Ö·û´®ÖĞµÄµÚÒ»¸öÆ¥ÅäÏîµÄË÷Òı¡£¸ÃËÑË÷´ÓÖ¸¶¨×Ö·ûÎ»ÖÃ¿ªÊ¼¡£
-		///	<code>Ô­ĞÍ£ºinline static int IndexOf(string str,string value, int startIndex, bool ignoreCase, int count=0);</code>
+		///	æŠ¥å‘ŠæŒ‡å®šå­—ç¬¦åœ¨æŒ‡å®šå­—ç¬¦ä¸²ä¸­çš„ç¬¬ä¸€ä¸ªåŒ¹é…é¡¹çš„ç´¢å¼•ã€‚è¯¥æœç´¢ä»æŒ‡å®šå­—ç¬¦ä½ç½®å¼€å§‹ã€‚
+		///	<code>åŸå‹ï¼šinline static int IndexOf(string str,string value, int startIndex, bool ignoreCase, int count=0);</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®¶ÔÏó</param> 
-		///	<param name="value">Òª²éÕÒµÄ×Ö·û´®<see cref="string"/></param>  
-		///	<param name="startIndex">¿ªÊ¼²éÕÒÎ»ÖÃ</param> 
-		///	<param name="ignoreCase">ÊÇ·ñºöÂÔ´óĞ¡Ğ´</param>  
-		///	<param name="count">Ö¸¶¨Òª²éÕÒµÄ×Ö·û¸öÊı,Îª0²»Ö¸¶¨</param> 
-		///	<returns> Èç¹ûÕÒµ½¸Ã×Ö·û£¬ÔòÎª value µÄË÷ÒıÎ»ÖÃ£»Èç¹ûÎ´ÕÒµ½¸Ã×Ö·û£¬ÔòÎª -1¡£Èç¹û value Îª Common.String.Empty£¬Ôò·µ»ØÖµÎªstartIndex¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²å¯¹è±¡</param> 
+		///	<param name="value">è¦æŸ¥æ‰¾çš„å­—ç¬¦ä¸²<see cref="string"/></param>  
+		///	<param name="startIndex">å¼€å§‹æŸ¥æ‰¾ä½ç½®</param> 
+		///	<param name="ignoreCase">æ˜¯å¦å¿½ç•¥å¤§å°å†™</param>  
+		///	<param name="count">æŒ‡å®šè¦æŸ¥æ‰¾çš„å­—ç¬¦ä¸ªæ•°,ä¸º0ä¸æŒ‡å®š</param> 
+		///	<returns> å¦‚æœæ‰¾åˆ°è¯¥å­—ç¬¦ï¼Œåˆ™ä¸º value çš„ç´¢å¼•ä½ç½®ï¼›å¦‚æœæœªæ‰¾åˆ°è¯¥å­—ç¬¦ï¼Œåˆ™ä¸º -1ã€‚å¦‚æœ value ä¸º Common.String.Emptyï¼Œåˆ™è¿”å›å€¼ä¸ºstartIndexã€‚</returns>  
 		inline static int IndexOf(string str,string value, int startIndex, bool ignoreCase, int count=0)
 		{
 			if(value.empty())return startIndex;
@@ -2083,23 +2083,23 @@ namespace Common
 		}
 
 		///	<summary>
-		///	±¨¸æÖ¸¶¨×Ö·ûÔÚÖ¸¶¨×Ö·û´®ÖĞµÄµÚÒ»¸öÆ¥ÅäÏîµÄË÷Òı¡£
-		///	<code>Ô­ĞÍ£ºinline static int IndexOf(string str,string value, int startIndex, bool ignoreCase, int count=0);</code>
+		///	æŠ¥å‘ŠæŒ‡å®šå­—ç¬¦åœ¨æŒ‡å®šå­—ç¬¦ä¸²ä¸­çš„ç¬¬ä¸€ä¸ªåŒ¹é…é¡¹çš„ç´¢å¼•ã€‚
+		///	<code>åŸå‹ï¼šinline static int IndexOf(string str,string value, int startIndex, bool ignoreCase, int count=0);</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®¶ÔÏó</param> 
-		///	<param name="value">Òª²éÕÒµÄ×Ö·û´®</param>   
-		///	<param name="ignoreCase">ÊÇ·ñºöÂÔ´óĞ¡Ğ´</param>   
-		///	<returns> Èç¹ûÕÒµ½¸Ã×Ö·û£¬ÔòÎª value µÄË÷ÒıÎ»ÖÃ£»Èç¹ûÎ´ÕÒµ½¸Ã×Ö·û£¬ÔòÎª -1¡£Èç¹û value Îª Common.String.Empty£¬Ôò·µ»ØÖµÎªstartIndex¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²å¯¹è±¡</param> 
+		///	<param name="value">è¦æŸ¥æ‰¾çš„å­—ç¬¦ä¸²</param>   
+		///	<param name="ignoreCase">æ˜¯å¦å¿½ç•¥å¤§å°å†™</param>   
+		///	<returns> å¦‚æœæ‰¾åˆ°è¯¥å­—ç¬¦ï¼Œåˆ™ä¸º value çš„ç´¢å¼•ä½ç½®ï¼›å¦‚æœæœªæ‰¾åˆ°è¯¥å­—ç¬¦ï¼Œåˆ™ä¸º -1ã€‚å¦‚æœ value ä¸º Common.String.Emptyï¼Œåˆ™è¿”å›å€¼ä¸ºstartIndexã€‚</returns>  
 		inline static int IndexOf(string str,string value, bool ignoreCase=false){return IndexOf(str,value,0,ignoreCase);}
 		///	<summary>
-		///	±¨¸æÖ¸¶¨×Ö·ûÊı×éÖĞµÄÈÎÒâ×Ö·ûÔÚÖ¸¶¨×Ö·û´®ÊµÀıÖĞµÚÒ»¸öÆ¥ÅäÏîµÄË÷Òı£¬ËÑË÷´ÓÖ¸¶¨×Ö·ûÎ»ÖÃ¿ªÊ¼,²¢¼ì²éÖ¸¶¨ÊıÁ¿µÄ×Ö·ûÎ»ÖÃ¡£
-		///	<code>Ô­ĞÍ£ºinline static int IndexOfAny(string str,string value, int startIndex, int count=0);</code>
+		///	æŠ¥å‘ŠæŒ‡å®šå­—ç¬¦æ•°ç»„ä¸­çš„ä»»æ„å­—ç¬¦åœ¨æŒ‡å®šå­—ç¬¦ä¸²å®ä¾‹ä¸­ç¬¬ä¸€ä¸ªåŒ¹é…é¡¹çš„ç´¢å¼•ï¼Œæœç´¢ä»æŒ‡å®šå­—ç¬¦ä½ç½®å¼€å§‹,å¹¶æ£€æŸ¥æŒ‡å®šæ•°é‡çš„å­—ç¬¦ä½ç½®ã€‚
+		///	<code>åŸå‹ï¼šinline static int IndexOfAny(string str,string value, int startIndex, int count=0);</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®¶ÔÏó</param> 
-		///	<param name="anyOf">Òª²éÕÒµÄ×Ö·ûÔªËØ×é</param>   
-		///	<param name="startIndex">¿ªÊ¼²éÕÒÎ»ÖÃ</param> 
-		///	<param name="count">Ö¸¶¨Òª²éÕÒµÄ×Ö·û¸öÊı,Îª0²»Ö¸¶¨</param>  
-		///	<returns> ´ËÊµÀıÖĞµÚÒ»¸öÆ¥ÅäÏîµÄË÷ÒıÎ»ÖÃ£¬ÔÚ´Ë´¦ÕÒµ½ anyOf ÖĞµÄÈÎÒâ×Ö·û£»·ñÔò£¬Èç¹ûÎ´ÕÒµ½ anyOf ÖĞµÄ×Ö·û£¬ÔòÎª -1¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²å¯¹è±¡</param> 
+		///	<param name="anyOf">è¦æŸ¥æ‰¾çš„å­—ç¬¦å…ƒç´ ç»„</param>   
+		///	<param name="startIndex">å¼€å§‹æŸ¥æ‰¾ä½ç½®</param> 
+		///	<param name="count">æŒ‡å®šè¦æŸ¥æ‰¾çš„å­—ç¬¦ä¸ªæ•°,ä¸º0ä¸æŒ‡å®š</param>  
+		///	<returns> æ­¤å®ä¾‹ä¸­ç¬¬ä¸€ä¸ªåŒ¹é…é¡¹çš„ç´¢å¼•ä½ç½®ï¼Œåœ¨æ­¤å¤„æ‰¾åˆ° anyOf ä¸­çš„ä»»æ„å­—ç¬¦ï¼›å¦åˆ™ï¼Œå¦‚æœæœªæ‰¾åˆ° anyOf ä¸­çš„å­—ç¬¦ï¼Œåˆ™ä¸º -1ã€‚</returns>  
  		inline static int IndexOfAny(string str,string anyOf, int startIndex=0, int count=0)
 		{
 			if(count==0)return -1;
@@ -2119,13 +2119,13 @@ namespace Common
 		}
 
  		///	<summary>
-		///	±¨¸æÖ¸¶¨×Ö·ûÔÚÖ¸¶¨×Ö·û´®ÊµÀıÖĞ×îºóÒ»¸öÆ¥ÅäÏîµÄË÷Òı£¬ËÑË÷´ÓÖ¸¶¨×Ö·ûÎ»ÖÃ¿ªÊ¼¡£
-		///	<code>Ô­ĞÍ£ºinline static int LastIndexOf(string str,char value, bool ignoreCase=false);</code>
+		///	æŠ¥å‘ŠæŒ‡å®šå­—ç¬¦åœ¨æŒ‡å®šå­—ç¬¦ä¸²å®ä¾‹ä¸­æœ€åä¸€ä¸ªåŒ¹é…é¡¹çš„ç´¢å¼•ï¼Œæœç´¢ä»æŒ‡å®šå­—ç¬¦ä½ç½®å¼€å§‹ã€‚
+		///	<code>åŸå‹ï¼šinline static int LastIndexOf(string str,char value, bool ignoreCase=false);</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®¶ÔÏó</param> 
-		///	<param name="value">Òª²éÕÒµÄ×Ö·ûÔªËØ</param>  
-		///	<param name="ignoreCase">ÒªÔÚ¶Ô´ËÊµÀıÓë value ½øĞĞ±È½ÏÊ±ºöÂÔ´óĞ¡Ğ´£¬ÔòÎª true£»·ñÔòÎª false¡£</param>  
-		///	<returns> Èç¹ûÕÒµ½¸Ã×Ö·û£¬ÔòÎª value µÄË÷ÒıÎ»ÖÃ£»·ñÔòÈç¹ûÎ´ÕÒµ½£¬ÔòÎª -1¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²å¯¹è±¡</param> 
+		///	<param name="value">è¦æŸ¥æ‰¾çš„å­—ç¬¦å…ƒç´ </param>  
+		///	<param name="ignoreCase">è¦åœ¨å¯¹æ­¤å®ä¾‹ä¸ value è¿›è¡Œæ¯”è¾ƒæ—¶å¿½ç•¥å¤§å°å†™ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</param>  
+		///	<returns> å¦‚æœæ‰¾åˆ°è¯¥å­—ç¬¦ï¼Œåˆ™ä¸º value çš„ç´¢å¼•ä½ç½®ï¼›å¦åˆ™å¦‚æœæœªæ‰¾åˆ°ï¼Œåˆ™ä¸º -1ã€‚</returns>  
         inline static int LastIndexOf(string str,char value, bool ignoreCase=false)
 		{
 			if(ignoreCase)
@@ -2140,15 +2140,15 @@ namespace Common
 			}
 		} 
  		///	<summary>
-		///	±¨¸æÖ¸¶¨×Ö·ûÔÚÖ¸¶¨×Ö·û´®ÊµÀıÖĞ×îºóÒ»¸öÆ¥ÅäÏîµÄË÷Òı£¬ËÑË÷´ÓÖ¸¶¨×Ö·ûÎ»ÖÃ¿ªÊ¼£¬²¢¼ì²éÖ¸¶¨ÊıÁ¿µÄ×Ö·ûÎ»ÖÃ¡£
-		///	<code>Ô­ĞÍ£ºinline static int LastIndexOf(string str,char value, int startIndex, bool ignoreCase, int count=0);</code>
+		///	æŠ¥å‘ŠæŒ‡å®šå­—ç¬¦åœ¨æŒ‡å®šå­—ç¬¦ä¸²å®ä¾‹ä¸­æœ€åä¸€ä¸ªåŒ¹é…é¡¹çš„ç´¢å¼•ï¼Œæœç´¢ä»æŒ‡å®šå­—ç¬¦ä½ç½®å¼€å§‹ï¼Œå¹¶æ£€æŸ¥æŒ‡å®šæ•°é‡çš„å­—ç¬¦ä½ç½®ã€‚
+		///	<code>åŸå‹ï¼šinline static int LastIndexOf(string str,char value, int startIndex, bool ignoreCase, int count=0);</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®¶ÔÏó</param> 
-		///	<param name="value">Òª²éÕÒµÄ×Ö·ûÔªËØ</param>  
-		///	<param name="startIndex">´ËÊµÀıÄÚ×Ó×Ö·û´®µÄÆğÊ¼Î»ÖÃ</param>  
-		///	<param name="ignoreCase">ÒªÔÚ¶Ô´ËÊµÀıÓë value ½øĞĞ±È½ÏÊ±ºöÂÔ´óĞ¡Ğ´£¬ÔòÎª true£»·ñÔòÎª false¡£</param>  
-		///	<param name="count">Ö¸¶¨Òª²éÕÒµÄ×Ö·û¸öÊı,Îª0²»Ö¸¶¨</param>  
-		///	<returns> Èç¹ûÕÒµ½¸Ã×Ö·û£¬ÔòÎª value µÄË÷ÒıÎ»ÖÃ£»·ñÔòÈç¹ûÎ´ÕÒµ½£¬ÔòÎª -1¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²å¯¹è±¡</param> 
+		///	<param name="value">è¦æŸ¥æ‰¾çš„å­—ç¬¦å…ƒç´ </param>  
+		///	<param name="startIndex">æ­¤å®ä¾‹å†…å­å­—ç¬¦ä¸²çš„èµ·å§‹ä½ç½®</param>  
+		///	<param name="ignoreCase">è¦åœ¨å¯¹æ­¤å®ä¾‹ä¸ value è¿›è¡Œæ¯”è¾ƒæ—¶å¿½ç•¥å¤§å°å†™ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</param>  
+		///	<param name="count">æŒ‡å®šè¦æŸ¥æ‰¾çš„å­—ç¬¦ä¸ªæ•°,ä¸º0ä¸æŒ‡å®š</param>  
+		///	<returns> å¦‚æœæ‰¾åˆ°è¯¥å­—ç¬¦ï¼Œåˆ™ä¸º value çš„ç´¢å¼•ä½ç½®ï¼›å¦åˆ™å¦‚æœæœªæ‰¾åˆ°ï¼Œåˆ™ä¸º -1ã€‚</returns>  
         inline static int LastIndexOf(string str,char value, int startIndex, bool ignoreCase, int count=0)
 		{
 			int i=str.size()-1;
@@ -2168,27 +2168,27 @@ namespace Common
 			return -1;
 		} 
   		///	<summary>
-		///	±¨¸æÖ¸¶¨×Ö·û´®ÔÚÖ¸¶¨×Ö·û´®ÊµÀıÖĞ×îºóÒ»¸öÆ¥ÅäÏîµÄË÷Òı¡£
-		///	<code>Ô­ĞÍ£ºinline static int LastIndexOf(string str,string value, bool ignoreCase=false);</code>
+		///	æŠ¥å‘ŠæŒ‡å®šå­—ç¬¦ä¸²åœ¨æŒ‡å®šå­—ç¬¦ä¸²å®ä¾‹ä¸­æœ€åä¸€ä¸ªåŒ¹é…é¡¹çš„ç´¢å¼•ã€‚
+		///	<code>åŸå‹ï¼šinline static int LastIndexOf(string str,string value, bool ignoreCase=false);</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®¶ÔÏó</param> 
-		///	<param name="value">Òª²éÕÒµÄ×Ö·û´®</param> 
-		///	<param name="ignoreCase">ÒªÔÚ¶Ô´ËÊµÀıÓë value ½øĞĞ±È½ÏÊ±ºöÂÔ´óĞ¡Ğ´£¬ÔòÎª true£»·ñÔòÎª false¡£</param>  
-		///	<returns> Èç¹ûÕÒµ½¸Ã×Ö·û£¬ÔòÎª value µÄË÷ÒıÎ»ÖÃ£»·ñÔòÈç¹ûÎ´ÕÒµ½£¬ÔòÎª -1¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²å¯¹è±¡</param> 
+		///	<param name="value">è¦æŸ¥æ‰¾çš„å­—ç¬¦ä¸²</param> 
+		///	<param name="ignoreCase">è¦åœ¨å¯¹æ­¤å®ä¾‹ä¸ value è¿›è¡Œæ¯”è¾ƒæ—¶å¿½ç•¥å¤§å°å†™ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</param>  
+		///	<returns> å¦‚æœæ‰¾åˆ°è¯¥å­—ç¬¦ï¼Œåˆ™ä¸º value çš„ç´¢å¼•ä½ç½®ï¼›å¦åˆ™å¦‚æœæœªæ‰¾åˆ°ï¼Œåˆ™ä¸º -1ã€‚</returns>  
         inline static int LastIndexOf(string str,string value, bool ignoreCase=false)
 		{
 			return LastIndexOf(str,value,0,ignoreCase);
 		}
   		///	<summary>
-		///	±¨¸æÖ¸¶¨×Ö·û´®ÔÚÖ¸¶¨×Ö·û´®ÊµÀıÖĞ×îºóÒ»¸öÆ¥ÅäÏîµÄË÷Òı¡£
-		///	<code>Ô­ĞÍ£ºinline static int LastIndexOf(string str,string value, int startIndex, bool ignoreCase, int count=0);</code>
+		///	æŠ¥å‘ŠæŒ‡å®šå­—ç¬¦ä¸²åœ¨æŒ‡å®šå­—ç¬¦ä¸²å®ä¾‹ä¸­æœ€åä¸€ä¸ªåŒ¹é…é¡¹çš„ç´¢å¼•ã€‚
+		///	<code>åŸå‹ï¼šinline static int LastIndexOf(string str,string value, int startIndex, bool ignoreCase, int count=0);</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®¶ÔÏó</param> 
-		///	<param name="value">Òª²éÕÒµÄ×Ö·û´®</param> 
-		///	<param name="startIndex">´ËÊµÀıÄÚ×Ó×Ö·û´®µÄÆğÊ¼Î»ÖÃ</param>  
-		///	<param name="ignoreCase">ÒªÔÚ¶Ô´ËÊµÀıÓë value ½øĞĞ±È½ÏÊ±ºöÂÔ´óĞ¡Ğ´£¬ÔòÎª true£»·ñÔòÎª false¡£</param>  
-		///	<param name="count">Ö¸¶¨Òª²éÕÒµÄ×Ö·û¸öÊı,Îª0²»Ö¸¶¨</param>  
- 		///	<returns> Èç¹ûÕÒµ½¸Ã×Ö·û£¬ÔòÎª value µÄË÷ÒıÎ»ÖÃ£»·ñÔòÈç¹ûÎ´ÕÒµ½£¬ÔòÎª -1¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²å¯¹è±¡</param> 
+		///	<param name="value">è¦æŸ¥æ‰¾çš„å­—ç¬¦ä¸²</param> 
+		///	<param name="startIndex">æ­¤å®ä¾‹å†…å­å­—ç¬¦ä¸²çš„èµ·å§‹ä½ç½®</param>  
+		///	<param name="ignoreCase">è¦åœ¨å¯¹æ­¤å®ä¾‹ä¸ value è¿›è¡Œæ¯”è¾ƒæ—¶å¿½ç•¥å¤§å°å†™ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</param>  
+		///	<param name="count">æŒ‡å®šè¦æŸ¥æ‰¾çš„å­—ç¬¦ä¸ªæ•°,ä¸º0ä¸æŒ‡å®š</param>  
+ 		///	<returns> å¦‚æœæ‰¾åˆ°è¯¥å­—ç¬¦ï¼Œåˆ™ä¸º value çš„ç´¢å¼•ä½ç½®ï¼›å¦åˆ™å¦‚æœæœªæ‰¾åˆ°ï¼Œåˆ™ä¸º -1ã€‚</returns>  
         inline static int LastIndexOf(string str,string value, int startIndex, bool ignoreCase, int count=0)
 		{
 			if(value.empty())return startIndex;
@@ -2212,14 +2212,14 @@ namespace Common
 		}
     
   		///	<summary>
-		///	±¨¸æÖ¸¶¨×Ö·ûÊı×éÖĞµÄÈÎÒâ×Ö·ûÔÚÖ¸¶¨×Ö·û´®ÊµÀıÖĞ×îºóÒ»¸öÆ¥ÅäÏîµÄË÷Òı¡£
-		///	<code>Ô­ĞÍ£ºinline static int LastIndexOfAny(string str,string anyOf, int startIndex=0, int count=0);</code>
+		///	æŠ¥å‘ŠæŒ‡å®šå­—ç¬¦æ•°ç»„ä¸­çš„ä»»æ„å­—ç¬¦åœ¨æŒ‡å®šå­—ç¬¦ä¸²å®ä¾‹ä¸­æœ€åä¸€ä¸ªåŒ¹é…é¡¹çš„ç´¢å¼•ã€‚
+		///	<code>åŸå‹ï¼šinline static int LastIndexOfAny(string str,string anyOf, int startIndex=0, int count=0);</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®¶ÔÏó</param> 
-		///	<param name="anyOf">Òª²éÕÒµÄ×Ö·û´®</param> 
-		///	<param name="startIndex">´ËÊµÀıÄÚ×Ó×Ö·û´®µÄÆğÊ¼Î»ÖÃ</param>
-		///	<param name="count">Ö¸¶¨Òª²éÕÒµÄ×Ö·û¸öÊı,Îª0²»Ö¸¶¨</param>  
- 		///	<returns> ´ËÊµÀıÖĞ×îºóÒ»¸öÆ¥ÅäÏîµÄË÷ÒıÎ»ÖÃ£¬ÔÚ´ËÎ»ÖÃÕÒµ½ anyOf ÖĞµÄÈÎÒâ×Ö·û£»·ñÔò£¬Èç¹ûÎ´ÕÒµ½ anyOf ÖĞµÄ×Ö·û£¬ÔòÎª -1¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²å¯¹è±¡</param> 
+		///	<param name="anyOf">è¦æŸ¥æ‰¾çš„å­—ç¬¦ä¸²</param> 
+		///	<param name="startIndex">æ­¤å®ä¾‹å†…å­å­—ç¬¦ä¸²çš„èµ·å§‹ä½ç½®</param>
+		///	<param name="count">æŒ‡å®šè¦æŸ¥æ‰¾çš„å­—ç¬¦ä¸ªæ•°,ä¸º0ä¸æŒ‡å®š</param>  
+ 		///	<returns> æ­¤å®ä¾‹ä¸­æœ€åä¸€ä¸ªåŒ¹é…é¡¹çš„ç´¢å¼•ä½ç½®ï¼Œåœ¨æ­¤ä½ç½®æ‰¾åˆ° anyOf ä¸­çš„ä»»æ„å­—ç¬¦ï¼›å¦åˆ™ï¼Œå¦‚æœæœªæ‰¾åˆ° anyOf ä¸­çš„å­—ç¬¦ï¼Œåˆ™ä¸º -1ã€‚</returns>  
 		inline static int LastIndexOfAny(string str,string anyOf, int startIndex=0, int count=0)
 		{
 			int i=startIndex+count-1;
@@ -2239,19 +2239,19 @@ namespace Common
 		}
 
   		///	<summary>
-		///	´ÓÖ¸¶¨ÊµÀıµÄ¿ªÊ¼Î»ÖÃºÍÄ©Î²ÒÆ³ı¿Õ°××Ö·ûµÄËùÓĞÆ¥ÅäÏî¡£
-		///	<code>Ô­ĞÍ£ºinline static string &amp;Trim(string &amp;str);</code>
+		///	ä»æŒ‡å®šå®ä¾‹çš„å¼€å§‹ä½ç½®å’Œæœ«å°¾ç§»é™¤ç©ºç™½å­—ç¬¦çš„æ‰€æœ‰åŒ¹é…é¡¹ã€‚
+		///	<code>åŸå‹ï¼šinline static string &amp;Trim(string &amp;str);</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®¶ÔÏó</param>  
- 		///	<returns> strÊµÀı¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²å¯¹è±¡</param>  
+ 		///	<returns> strå®ä¾‹ã€‚</returns>  
 		inline static string &Trim(string &str){return String::Trim(str,' ');};
   		///	<summary>
-		///	´ÓÖ¸¶¨ÊµÀıµÄ¿ªÊ¼Î»ÖÃºÍÄ©Î²ÒÆ³ıÖ¸¶¨×Ö·ûµÄËùÓĞÆ¥ÅäÏî¡£
-		///	<code>Ô­ĞÍ£ºinline static string &amp;Trim(string &amp;str,char c);</code>
+		///	ä»æŒ‡å®šå®ä¾‹çš„å¼€å§‹ä½ç½®å’Œæœ«å°¾ç§»é™¤æŒ‡å®šå­—ç¬¦çš„æ‰€æœ‰åŒ¹é…é¡¹ã€‚
+		///	<code>åŸå‹ï¼šinline static string &amp;Trim(string &amp;str,char c);</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®¶ÔÏó</param>  
-		///	<param name="c">ÒÆ³ı×Ö·û</param>  
- 		///	<returns> strÊµÀı¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²å¯¹è±¡</param>  
+		///	<param name="c">ç§»é™¤å­—ç¬¦</param>  
+ 		///	<returns> strå®ä¾‹ã€‚</returns>  
 		inline static string &Trim(string &str,char c)
 		{
 			int i=str.size()-1,startIndex=0,endCount=0;
@@ -2270,12 +2270,12 @@ namespace Common
 			return str;
 		}
   		///	<summary>
-		///	´ÓÖ¸¶¨×Ö·ûÖ¸ÕëµÄ¿ªÊ¼Î»ÖÃºÍÄ©Î²ÒÆ³ıÖ¸¶¨×Ö·ûµÄËùÓĞÆ¥ÅäÏî¡£
-		///	<code>Ô­ĞÍ£ºinline static char * Trim(char *str,char c);</code>
+		///	ä»æŒ‡å®šå­—ç¬¦æŒ‡é’ˆçš„å¼€å§‹ä½ç½®å’Œæœ«å°¾ç§»é™¤æŒ‡å®šå­—ç¬¦çš„æ‰€æœ‰åŒ¹é…é¡¹ã€‚
+		///	<code>åŸå‹ï¼šinline static char * Trim(char *str,char c);</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®Ö¸Õë</param>  
-		///	<param name="c">ÒÆ³ı×Ö·û</param>  
- 		///	<returns> ĞÂ×Ö·û¿ªÊ¼Î»ÖÃÖ¸Õë¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²æŒ‡é’ˆ</param>  
+		///	<param name="c">ç§»é™¤å­—ç¬¦</param>  
+ 		///	<returns> æ–°å­—ç¬¦å¼€å§‹ä½ç½®æŒ‡é’ˆã€‚</returns>  
 		inline static char * Trim(char *str,char c)
 		{
 			if(str==NULL)return str;
@@ -2293,19 +2293,19 @@ namespace Common
 			return str;
 		}
   		///	<summary>
-		///	´ÓÖ¸¶¨×Ö·ûÖ¸ÕëµÄ¿ªÊ¼Î»ÖÃºÍÄ©Î²ÒÆ³ı¿Õ°××Ö·ûµÄËùÓĞÆ¥ÅäÏî¡£
-		///	<code>Ô­ĞÍ£ºinline static char * Trim(const char * str);</code>
+		///	ä»æŒ‡å®šå­—ç¬¦æŒ‡é’ˆçš„å¼€å§‹ä½ç½®å’Œæœ«å°¾ç§»é™¤ç©ºç™½å­—ç¬¦çš„æ‰€æœ‰åŒ¹é…é¡¹ã€‚
+		///	<code>åŸå‹ï¼šinline static char * Trim(const char * str);</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®Ö¸Õë</param> 
- 		///	<returns> ĞÂ×Ö·û¿ªÊ¼Î»ÖÃÖ¸Õë¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²æŒ‡é’ˆ</param> 
+ 		///	<returns> æ–°å­—ç¬¦å¼€å§‹ä½ç½®æŒ‡é’ˆã€‚</returns>  
 		inline static char * Trim(char * str){return String::Trim((char *)str,' ');};
   		///	<summary>
-		///	´ÓÖ¸¶¨×Ö·û¶ÔÏóµÄÄ©Î²ÒÆ³ıÖ¸¶¨×Ö·ûµÄËùÓĞÆ¥ÅäÏî¡£
-		///	<code>Ô­ĞÍ£ºinline static string &amp;TrimEnd(string &amp;str,char c);</code>
+		///	ä»æŒ‡å®šå­—ç¬¦å¯¹è±¡çš„æœ«å°¾ç§»é™¤æŒ‡å®šå­—ç¬¦çš„æ‰€æœ‰åŒ¹é…é¡¹ã€‚
+		///	<code>åŸå‹ï¼šinline static string &amp;TrimEnd(string &amp;str,char c);</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®Ö¸Õë</param> 
-		///	<param name="c">ÒÆ³ı×Ö·û</param>  
- 		///	<returns> strÊµÀı¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²æŒ‡é’ˆ</param> 
+		///	<param name="c">ç§»é™¤å­—ç¬¦</param>  
+ 		///	<returns> strå®ä¾‹ã€‚</returns>  
 		inline static string &TrimEnd(string &str,char c)
 		{
 			int i=str.size()-1,count=0;;
@@ -2320,12 +2320,12 @@ namespace Common
 			return str;
 		}
   		///	<summary>
-		///	´ÓÖ¸¶¨×Ö·û¶ÔÏóµÄ¿ªÊ¼Î»ÖÃÒÆ³ıÖ¸¶¨×Ö·ûµÄËùÓĞÆ¥ÅäÏî¡£
-		///	<code>Ô­ĞÍ£ºinline static string &amp;TrimStart(string &amp;str,char c);</code>
+		///	ä»æŒ‡å®šå­—ç¬¦å¯¹è±¡çš„å¼€å§‹ä½ç½®ç§»é™¤æŒ‡å®šå­—ç¬¦çš„æ‰€æœ‰åŒ¹é…é¡¹ã€‚
+		///	<code>åŸå‹ï¼šinline static string &amp;TrimStart(string &amp;str,char c);</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®Ö¸Õë</param> 
-		///	<param name="c">ÒÆ³ı×Ö·û</param>  
- 		///	<returns> strÊµÀı¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²æŒ‡é’ˆ</param> 
+		///	<param name="c">ç§»é™¤å­—ç¬¦</param>  
+ 		///	<returns> strå®ä¾‹ã€‚</returns>  
 		inline static string &TrimStart(string &str,char c)
 		{
 			int count=0;
@@ -2338,12 +2338,12 @@ namespace Common
 			return str;
 		}
    		///	<summary>
-		///	´ÓÖ¸¶¨×Ö·û¶ÔÏóµÄ¿ªÊ¼Î»ÖÃÒÆ³ıÒ»×é×Ö·ûµÄËùÓĞÆ¥ÅäÏî¡£
-		///	<code>Ô­ĞÍ£ºinline static string &amp;Trim(string &amp;str,char *trimChars);</code>
+		///	ä»æŒ‡å®šå­—ç¬¦å¯¹è±¡çš„å¼€å§‹ä½ç½®ç§»é™¤ä¸€ç»„å­—ç¬¦çš„æ‰€æœ‰åŒ¹é…é¡¹ã€‚
+		///	<code>åŸå‹ï¼šinline static string &amp;Trim(string &amp;str,char *trimChars);</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®Ö¸Õë</param> 
-		///	<param name="trimChars">ÒªÒÆ³ıµÄchar×Ö·ûÖ¸Õë,Èç¹û trimChars Îªnull£¬Ôò¸ÄÎªÒÆ³ı¿Õ°××Ö·û¡£</param>  
- 		///	<returns> strÊµÀı¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²æŒ‡é’ˆ</param> 
+		///	<param name="trimChars">è¦ç§»é™¤çš„charå­—ç¬¦æŒ‡é’ˆ,å¦‚æœ trimChars ä¸ºnullï¼Œåˆ™æ”¹ä¸ºç§»é™¤ç©ºç™½å­—ç¬¦ã€‚</param>  
+ 		///	<returns> strå®ä¾‹ã€‚</returns>  
         inline static string &Trim(string &str,char * trimChars)
 		{
 			if(trimChars==NULL)return Trim(str);
@@ -2363,12 +2363,12 @@ namespace Common
 			return str;
 		}
    		///	<summary>
-		///	´ÓÖ¸¶¨×Ö·û¶ÔÏóµÄ½áÎ²ÒÆ³ıÒ»×é×Ö·ûµÄËùÓĞÆ¥ÅäÏî¡£
-		///	<code>Ô­ĞÍ£ºinline static string &amp;TrimEnd(string &amp;str,char * trimChars);</code>
+		///	ä»æŒ‡å®šå­—ç¬¦å¯¹è±¡çš„ç»“å°¾ç§»é™¤ä¸€ç»„å­—ç¬¦çš„æ‰€æœ‰åŒ¹é…é¡¹ã€‚
+		///	<code>åŸå‹ï¼šinline static string &amp;TrimEnd(string &amp;str,char * trimChars);</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®Ö¸Õë</param> 
-		///	<param name="trimChars">ÒªÒÆ³ıµÄchar×Ö·ûÖ¸Õë,Èç¹û trimChars Îªnull£¬Ôò¸ÄÎªÒÆ³ı¿Õ°××Ö·û¡£</param>  
- 		///	<returns> strÊµÀı¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²æŒ‡é’ˆ</param> 
+		///	<param name="trimChars">è¦ç§»é™¤çš„charå­—ç¬¦æŒ‡é’ˆ,å¦‚æœ trimChars ä¸ºnullï¼Œåˆ™æ”¹ä¸ºç§»é™¤ç©ºç™½å­—ç¬¦ã€‚</param>  
+ 		///	<returns> strå®ä¾‹ã€‚</returns>  
         inline static string &TrimEnd(string &str,char * trimChars)
 		{
 			if(trimChars==NULL)return TrimEnd(str,' ');
@@ -2384,12 +2384,12 @@ namespace Common
 			return str;
 		}
    		///	<summary>
-		///	´ÓÖ¸¶¨×Ö·û¶ÔÏóµÄ¿ªÊ¼Î»ÖÃÒÆ³ıÒ»×é×Ö·ûµÄËùÓĞÆ¥ÅäÏî¡£
-		///	<code>Ô­ĞÍ£ºinline static string &amp;TrimStart(string &amp;str,char * trimChars);</code>
+		///	ä»æŒ‡å®šå­—ç¬¦å¯¹è±¡çš„å¼€å§‹ä½ç½®ç§»é™¤ä¸€ç»„å­—ç¬¦çš„æ‰€æœ‰åŒ¹é…é¡¹ã€‚
+		///	<code>åŸå‹ï¼šinline static string &amp;TrimStart(string &amp;str,char * trimChars);</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®Ö¸Õë</param> 
-		///	<param name="trimChars">ÒªÒÆ³ıµÄchar×Ö·ûÖ¸Õë,Èç¹û trimChars Îªnull£¬Ôò¸ÄÎªÒÆ³ı¿Õ°××Ö·û¡£</param>  
- 		///	<returns> strÊµÀı¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²æŒ‡é’ˆ</param> 
+		///	<param name="trimChars">è¦ç§»é™¤çš„charå­—ç¬¦æŒ‡é’ˆ,å¦‚æœ trimChars ä¸ºnullï¼Œåˆ™æ”¹ä¸ºç§»é™¤ç©ºç™½å­—ç¬¦ã€‚</param>  
+ 		///	<returns> strå®ä¾‹ã€‚</returns>  
         inline static string &TrimStart(string &str,char * trimChars)
 		{
 			if(trimChars==NULL)return TrimStart(str,' ');
@@ -2403,13 +2403,13 @@ namespace Common
 			return str;
 		} 
 		///	<summary>
-		///	È·¶¨´Ë×Ö·û´®µÄ¿ªÍ·ÊÇ·ñÓëÖ¸¶¨µÄ×Ö·û´®Æ¥Åä¡£
-		///	<code>Ô­ĞÍ£ºinline static bool StartsWith(const string &amp;str,string value, bool ignoreCase=false);</code>
+		///	ç¡®å®šæ­¤å­—ç¬¦ä¸²çš„å¼€å¤´æ˜¯å¦ä¸æŒ‡å®šçš„å­—ç¬¦ä¸²åŒ¹é…ã€‚
+		///	<code>åŸå‹ï¼šinline static bool StartsWith(const string &amp;str,string value, bool ignoreCase=false);</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®Ö¸Õë</param> 
-		///	<param name="value">Òª±È½ÏµÄ<see cref='string'/>¡£</param>  
-		///	<param name="ignoreCase">ÈôÒªÔÚ¶Ô´Ë×Ö·û´®Óë value ½øĞĞ±È½ÏÊ±ºöÂÔ´óĞ¡Ğ´£¬ÔòÎª true£»·ñÔòÎª false¡£</param> 
- 		///	<returns> Èç¹û value ²ÎÊıÓë´Ë×Ö·û´®µÄ¿ªÍ·Æ¥Åä£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²æŒ‡é’ˆ</param> 
+		///	<param name="value">è¦æ¯”è¾ƒçš„<see cref='string'/>ã€‚</param>  
+		///	<param name="ignoreCase">è‹¥è¦åœ¨å¯¹æ­¤å­—ç¬¦ä¸²ä¸ value è¿›è¡Œæ¯”è¾ƒæ—¶å¿½ç•¥å¤§å°å†™ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</param> 
+ 		///	<returns> å¦‚æœ value å‚æ•°ä¸æ­¤å­—ç¬¦ä¸²çš„å¼€å¤´åŒ¹é…ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>  
 		inline static bool StartsWith(const string &str,string value, bool ignoreCase=false)
 		{
 			//return IndexOf(str,value,0,ignoreCase)==0;
@@ -2433,13 +2433,13 @@ namespace Common
 			return true;
 		};
 		///	<summary>
-		///	È·¶¨´Ë×Ö·û´®µÄ¿ªÍ·ÊÇ·ñÓëÖ¸¶¨µÄ×Ö·ûÆ¥Åä¡£
-		///	<code>Ô­ĞÍ£ºinline static bool StartsWith(const string &amp;str,char value, bool ignoreCase=false);</code>
+		///	ç¡®å®šæ­¤å­—ç¬¦ä¸²çš„å¼€å¤´æ˜¯å¦ä¸æŒ‡å®šçš„å­—ç¬¦åŒ¹é…ã€‚
+		///	<code>åŸå‹ï¼šinline static bool StartsWith(const string &amp;str,char value, bool ignoreCase=false);</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®Ö¸Õë</param> 
-		///	<param name="value">Òª±È½ÏµÄ×Ö·û¡£</param>  
-		///	<param name="ignoreCase">ÈôÒªÔÚ¶Ô´Ë×Ö·û´®Óë value ½øĞĞ±È½ÏÊ±ºöÂÔ´óĞ¡Ğ´£¬ÔòÎª true£»·ñÔòÎª false¡£</param> 
- 		///	<returns> Èç¹û value ²ÎÊıÓë´Ë×Ö·û´®µÄ¿ªÍ·Æ¥Åä£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²æŒ‡é’ˆ</param> 
+		///	<param name="value">è¦æ¯”è¾ƒçš„å­—ç¬¦ã€‚</param>  
+		///	<param name="ignoreCase">è‹¥è¦åœ¨å¯¹æ­¤å­—ç¬¦ä¸²ä¸ value è¿›è¡Œæ¯”è¾ƒæ—¶å¿½ç•¥å¤§å°å†™ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</param> 
+ 		///	<returns> å¦‚æœ value å‚æ•°ä¸æ­¤å­—ç¬¦ä¸²çš„å¼€å¤´åŒ¹é…ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>  
  		inline static bool StartsWith(const string &str,char value, bool ignoreCase=false)
 		{
 			//return IndexOf(str,value,0,ignoreCase)==0;
@@ -2456,13 +2456,13 @@ namespace Common
 			return c==value;
 		};
 		///	<summary>
-		///	È·¶¨´Ë×Ö·û´®µÄ½áÎ²ÊÇ·ñÓëÖ¸¶¨µÄ×Ö·û´®Æ¥Åä¡£
-		///	<code>Ô­ĞÍ£ºinline static bool EndsWith(const string &amp;str,string value, bool ignoreCase=false);</code>
+		///	ç¡®å®šæ­¤å­—ç¬¦ä¸²çš„ç»“å°¾æ˜¯å¦ä¸æŒ‡å®šçš„å­—ç¬¦ä¸²åŒ¹é…ã€‚
+		///	<code>åŸå‹ï¼šinline static bool EndsWith(const string &amp;str,string value, bool ignoreCase=false);</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®Ö¸Õë</param> 
-		///	<param name="value">Òª±È½ÏµÄ×Ö·û´®¡£</param>  
-		///	<param name="ignoreCase">ÈôÒªÔÚ¶Ô´Ë×Ö·û´®Óë value ½øĞĞ±È½ÏÊ±ºöÂÔ´óĞ¡Ğ´£¬ÔòÎª true£»·ñÔòÎª false¡£</param> 
- 		///	<returns> Èç¹û value ²ÎÊıÓë´Ë×Ö·û´®µÄ¿ªÍ·Æ¥Åä£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²æŒ‡é’ˆ</param> 
+		///	<param name="value">è¦æ¯”è¾ƒçš„å­—ç¬¦ä¸²ã€‚</param>  
+		///	<param name="ignoreCase">è‹¥è¦åœ¨å¯¹æ­¤å­—ç¬¦ä¸²ä¸ value è¿›è¡Œæ¯”è¾ƒæ—¶å¿½ç•¥å¤§å°å†™ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</param> 
+ 		///	<returns> å¦‚æœ value å‚æ•°ä¸æ­¤å­—ç¬¦ä¸²çš„å¼€å¤´åŒ¹é…ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>  
 		inline static bool EndsWith(const string &str,string value, bool ignoreCase=false)
 		{
 			//return LastIndexOf(str,value,0,ignoreCase)==(int)str.size()-(int)value.size();
@@ -2482,13 +2482,13 @@ namespace Common
 			return strcmp(_Str1,_Str2)==0;
 		};
 		///	<summary>
-		///	È·¶¨´Ë×Ö·û´®µÄ½áÎ²ÊÇ·ñÓëÖ¸¶¨µÄ×Ö·ûÆ¥Åä¡£
-		///	<code>Ô­ĞÍ£ºinline static bool EndsWith(const string &amp;str,char value, bool ignoreCase=false);</code>
+		///	ç¡®å®šæ­¤å­—ç¬¦ä¸²çš„ç»“å°¾æ˜¯å¦ä¸æŒ‡å®šçš„å­—ç¬¦åŒ¹é…ã€‚
+		///	<code>åŸå‹ï¼šinline static bool EndsWith(const string &amp;str,char value, bool ignoreCase=false);</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®Ö¸Õë</param> 
-		///	<param name="value">Òª±È½ÏµÄ×Ö·û¡£</param>  
-		///	<param name="ignoreCase">ÈôÒªÔÚ¶Ô´Ë×Ö·û´®Óë value ½øĞĞ±È½ÏÊ±ºöÂÔ´óĞ¡Ğ´£¬ÔòÎª true£»·ñÔòÎª false¡£</param> 
- 		///	<returns> Èç¹û value ²ÎÊıÓë´Ë×Ö·û´®µÄ¿ªÍ·Æ¥Åä£¬ÔòÎª true£»·ñÔòÎª false¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²æŒ‡é’ˆ</param> 
+		///	<param name="value">è¦æ¯”è¾ƒçš„å­—ç¬¦ã€‚</param>  
+		///	<param name="ignoreCase">è‹¥è¦åœ¨å¯¹æ­¤å­—ç¬¦ä¸²ä¸ value è¿›è¡Œæ¯”è¾ƒæ—¶å¿½ç•¥å¤§å°å†™ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</param> 
+ 		///	<returns> å¦‚æœ value å‚æ•°ä¸æ­¤å­—ç¬¦ä¸²çš„å¼€å¤´åŒ¹é…ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚</returns>  
 		inline static bool EndsWith(const string &str,char value, bool ignoreCase=false)
 		{
 			if(value==0)return true;
@@ -2504,14 +2504,14 @@ namespace Common
 			return c==value;
 		};
  		///	<summary>
-		///	ÓÒ¶ÔÆë´ËÊµÀıÖĞµÄ×Ö·û£¬ÔÚ×ó±ßÓÃÖ¸¶¨µÄ×Ö·ûÌî³äÒÔ´ïµ½Ö¸¶¨µÄ×Ü³¤¶È¡£
-		///	<code>Ô­ĞÍ£ºinline static string &amp;PadLeft(string &amp;str,int totalWidth, char paddingChar=' ');</code>
+		///	å³å¯¹é½æ­¤å®ä¾‹ä¸­çš„å­—ç¬¦ï¼Œåœ¨å·¦è¾¹ç”¨æŒ‡å®šçš„å­—ç¬¦å¡«å……ä»¥è¾¾åˆ°æŒ‡å®šçš„æ€»é•¿åº¦ã€‚
+		///	<code>åŸå‹ï¼šinline static string &amp;PadLeft(string &amp;str,int totalWidth, char paddingChar=' ');</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®Ö¸Õë</param> 
-		///	<param name="totalWidth">½á¹û×Ö·û´®ÖĞµÄ×Ö·ûÊı£¬µÈÓÚÔ­Ê¼×Ö·ûÊı¼ÓÉÏÈÎºÎÆäËûÌî³ä×Ö·û¡£ </param>
-		///	<param name="paddingChar">Ìî³ä×Ö·û</param> 
- 		///	<returns> str¶ÔÏó±¾Éí£¬µ«ËüÊÇÓÒ¶ÔÆëµÄ£¬²¢ÔÚ×ó±ßÓÃ´ïµ½ totalWidth ³¤¶ÈËùĞèÊıÄ¿µÄ paddingChar ×Ö·û½øĞĞÌî³ä¡£Èç¹û
-        ///     totalWidth Ğ¡ÓÚ´ËÊµÀıµÄ³¤¶È£¬Ôò²»ĞŞ¸Ä¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²æŒ‡é’ˆ</param> 
+		///	<param name="totalWidth">ç»“æœå­—ç¬¦ä¸²ä¸­çš„å­—ç¬¦æ•°ï¼Œç­‰äºåŸå§‹å­—ç¬¦æ•°åŠ ä¸Šä»»ä½•å…¶ä»–å¡«å……å­—ç¬¦ã€‚ </param>
+		///	<param name="paddingChar">å¡«å……å­—ç¬¦</param> 
+ 		///	<returns> strå¯¹è±¡æœ¬èº«ï¼Œä½†å®ƒæ˜¯å³å¯¹é½çš„ï¼Œå¹¶åœ¨å·¦è¾¹ç”¨è¾¾åˆ° totalWidth é•¿åº¦æ‰€éœ€æ•°ç›®çš„ paddingChar å­—ç¬¦è¿›è¡Œå¡«å……ã€‚å¦‚æœ
+        ///     totalWidth å°äºæ­¤å®ä¾‹çš„é•¿åº¦ï¼Œåˆ™ä¸ä¿®æ”¹ã€‚</returns>  
         inline static string &PadLeft(string &str,int totalWidth, char paddingChar=' ')
 		{
 			int len=str.size();
@@ -2528,14 +2528,14 @@ namespace Common
 			return str;
 		}
   		///	<summary>
-		///	×ó¶ÔÆë´ËÊµÀıÖĞµÄ×Ö·û£¬ÔÚÓÒ±ßÓÃÖ¸¶¨µÄ×Ö·ûÌî³äÒÔ´ïµ½Ö¸¶¨µÄ×Ü³¤¶È¡£
-		///	<code>Ô­ĞÍ£ºinline static string &amp;PadRight(string &amp;str,int totalWidth, char paddingChar=' ');</code>
+		///	å·¦å¯¹é½æ­¤å®ä¾‹ä¸­çš„å­—ç¬¦ï¼Œåœ¨å³è¾¹ç”¨æŒ‡å®šçš„å­—ç¬¦å¡«å……ä»¥è¾¾åˆ°æŒ‡å®šçš„æ€»é•¿åº¦ã€‚
+		///	<code>åŸå‹ï¼šinline static string &amp;PadRight(string &amp;str,int totalWidth, char paddingChar=' ');</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®Ö¸Õë</param> 
-		///	<param name="totalWidth">½á¹û×Ö·û´®ÖĞµÄ×Ö·ûÊı£¬µÈÓÚÔ­Ê¼×Ö·ûÊı¼ÓÉÏÈÎºÎÆäËûÌî³ä×Ö·û¡£ </param>
-		///	<param name="paddingChar">Ìî³ä×Ö·û</param> 
- 		///	<returns> str¶ÔÏó±¾Éí£¬µ«ËüÊÇ×ó¶ÔÆëµÄ£¬²¢ÔÚÓÒ±ßÓÃ´ïµ½ totalWidth ³¤¶ÈËùĞèÊıÄ¿µÄ paddingChar ×Ö·û½øĞĞÌî³ä¡£Èç¹û
-        ///     totalWidth Ğ¡ÓÚ´ËÊµÀıµÄ³¤¶È£¬Ôò²»ĞŞ¸Ä¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²æŒ‡é’ˆ</param> 
+		///	<param name="totalWidth">ç»“æœå­—ç¬¦ä¸²ä¸­çš„å­—ç¬¦æ•°ï¼Œç­‰äºåŸå§‹å­—ç¬¦æ•°åŠ ä¸Šä»»ä½•å…¶ä»–å¡«å……å­—ç¬¦ã€‚ </param>
+		///	<param name="paddingChar">å¡«å……å­—ç¬¦</param> 
+ 		///	<returns> strå¯¹è±¡æœ¬èº«ï¼Œä½†å®ƒæ˜¯å·¦å¯¹é½çš„ï¼Œå¹¶åœ¨å³è¾¹ç”¨è¾¾åˆ° totalWidth é•¿åº¦æ‰€éœ€æ•°ç›®çš„ paddingChar å­—ç¬¦è¿›è¡Œå¡«å……ã€‚å¦‚æœ
+        ///     totalWidth å°äºæ­¤å®ä¾‹çš„é•¿åº¦ï¼Œåˆ™ä¸ä¿®æ”¹ã€‚</returns>  
         inline static string &PadRight(string &str,int totalWidth, char paddingChar=' ')
 		{
 			int len=str.size();
@@ -2553,38 +2553,38 @@ namespace Common
 		}
 
   		///	<summary>
-		///	É¾³ı´Ë×Ö·û´®ÖĞ´ÓÖ¸¶¨Î»ÖÃµ½×îºóÎ»ÖÃµÄËùÓĞ×Ö·û¡£
-		///	<code>Ô­ĞÍ£ºinline static string &amp;Remove(string &amp;str,int startIndex);</code>
+		///	åˆ é™¤æ­¤å­—ç¬¦ä¸²ä¸­ä»æŒ‡å®šä½ç½®åˆ°æœ€åä½ç½®çš„æ‰€æœ‰å­—ç¬¦ã€‚
+		///	<code>åŸå‹ï¼šinline static string &amp;Remove(string &amp;str,int startIndex);</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®Ö¸Õë</param> 
-		///	<param name="startIndex">¿ªÊ¼É¾³ı×Ö·ûµÄÎ»ÖÃ¡£ </param> 
- 		///	<returns> str¶ÔÏó±¾Éí£¬ËüµÈÓÚ´Ë×Ö·û´®ÌŞ³ıÒÑÉ¾³ı×Ö·ûºóµÄ×Ö·û´®¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²æŒ‡é’ˆ</param> 
+		///	<param name="startIndex">å¼€å§‹åˆ é™¤å­—ç¬¦çš„ä½ç½®ã€‚ </param> 
+ 		///	<returns> strå¯¹è±¡æœ¬èº«ï¼Œå®ƒç­‰äºæ­¤å­—ç¬¦ä¸²å‰”é™¤å·²åˆ é™¤å­—ç¬¦åçš„å­—ç¬¦ä¸²ã€‚</returns>  
         inline static string &Remove(string &str,int startIndex)
 		{
 			return Remove(str,startIndex,(int)str.size()-startIndex);
 		}
    		///	<summary>
-		///	´Ó´ËÊµÀıÖĞµÄÖ¸¶¨Î»ÖÃ¿ªÊ¼É¾³ıÖ¸¶¨ÊıÄ¿µÄ×Ö·û¡£
-		///	<code>Ô­ĞÍ£ºinline static string &amp;Remove(string &amp;str,int startIndex, int count);</code>
+		///	ä»æ­¤å®ä¾‹ä¸­çš„æŒ‡å®šä½ç½®å¼€å§‹åˆ é™¤æŒ‡å®šæ•°ç›®çš„å­—ç¬¦ã€‚
+		///	<code>åŸå‹ï¼šinline static string &amp;Remove(string &amp;str,int startIndex, int count);</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®Ö¸Õë</param> 
-		///	<param name="startIndex">¿ªÊ¼É¾³ı×Ö·ûµÄÎ»ÖÃ¡£ </param> 
-		///	<param name="count">ÒªÉ¾³ıµÄ×Ö·ûÊı¡£ </param> 
- 		///	<returns> str¶ÔÏó±¾Éí£¬ËüµÈÓÚ´Ë×Ö·û´®ÌŞ³ıÒÑÉ¾³ı×Ö·ûºóµÄ×Ö·û´®¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²æŒ‡é’ˆ</param> 
+		///	<param name="startIndex">å¼€å§‹åˆ é™¤å­—ç¬¦çš„ä½ç½®ã€‚ </param> 
+		///	<param name="count">è¦åˆ é™¤çš„å­—ç¬¦æ•°ã€‚ </param> 
+ 		///	<returns> strå¯¹è±¡æœ¬èº«ï¼Œå®ƒç­‰äºæ­¤å­—ç¬¦ä¸²å‰”é™¤å·²åˆ é™¤å­—ç¬¦åçš„å­—ç¬¦ä¸²ã€‚</returns>  
         inline static string &Remove(string &str,int startIndex, int count)
 		{
 			str.erase(startIndex,count);
 			return str;
 		}; 
    		///	<summary>
-		///	½«´ËÊµÀıÖĞµÄÖ¸¶¨×Ö·ûµÄËùÓĞÆ¥ÅäÏîÌæ»»ÎªÆäËûÖ¸¶¨µÄ×Ö·û¡£¡£
-		///	<code>Ô­ĞÍ£ºinline static string ReplaceAll(string &amp;str,char oldChar, char newChar,bool ignoreCase=false);</code>
+		///	å°†æ­¤å®ä¾‹ä¸­çš„æŒ‡å®šå­—ç¬¦çš„æ‰€æœ‰åŒ¹é…é¡¹æ›¿æ¢ä¸ºå…¶ä»–æŒ‡å®šçš„å­—ç¬¦ã€‚ã€‚
+		///	<code>åŸå‹ï¼šinline static string ReplaceAll(string &amp;str,char oldChar, char newChar,bool ignoreCase=false);</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®Ö¸Õë</param> 
-		///	<param name="oldChar"> ÒªÌæ»»µÄ×Ö·û¡£ </param> 
-		///	<param name="newChar">ÒªÌæ»» oldChar µÄËùÓĞÆ¥ÅäÏîµÄ×Ö·û¡£¡£ </param> 
-		///	<param name="ignoreCase">ÊÇ·ñºöÂÔ´óĞ¡Ğ´¡£ </param> 
-		///	<returns> µÈĞ§ÓÚ´ËÊµÀı£¬µ«½« oldChar µÄËùÓĞÊµÀı¶¼Ìæ»»Îª newChar µÄ<see cref="String"/>¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²æŒ‡é’ˆ</param> 
+		///	<param name="oldChar"> è¦æ›¿æ¢çš„å­—ç¬¦ã€‚ </param> 
+		///	<param name="newChar">è¦æ›¿æ¢ oldChar çš„æ‰€æœ‰åŒ¹é…é¡¹çš„å­—ç¬¦ã€‚ã€‚ </param> 
+		///	<param name="ignoreCase">æ˜¯å¦å¿½ç•¥å¤§å°å†™ã€‚ </param> 
+		///	<returns> ç­‰æ•ˆäºæ­¤å®ä¾‹ï¼Œä½†å°† oldChar çš„æ‰€æœ‰å®ä¾‹éƒ½æ›¿æ¢ä¸º newChar çš„<see cref="String"/>ã€‚</returns>  
         inline static string ReplaceAll(string &str,char oldChar, char newChar,bool ignoreCase=false)
 		{
 			string result;
@@ -2635,14 +2635,14 @@ namespace Common
 			return result;
 		}
    		///	<summary>
-		///	½«´ËÊµÀıÖĞµÄÖ¸¶¨×Ö·ûµÄµÚÒ»¸öÆ¥ÅäÏîÌæ»»ÎªÆäËûÖ¸¶¨µÄ×Ö·û¡£
-		///	<code>Ô­ĞÍ£ºinline static string Replace(string &amp;str,char oldChar, char newChar,bool ignoreCase=false);</code>
+		///	å°†æ­¤å®ä¾‹ä¸­çš„æŒ‡å®šå­—ç¬¦çš„ç¬¬ä¸€ä¸ªåŒ¹é…é¡¹æ›¿æ¢ä¸ºå…¶ä»–æŒ‡å®šçš„å­—ç¬¦ã€‚
+		///	<code>åŸå‹ï¼šinline static string Replace(string &amp;str,char oldChar, char newChar,bool ignoreCase=false);</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®Ö¸Õë</param> 
-		///	<param name="oldChar"> ÒªÌæ»»µÄ×Ö·û¡£ </param> 
-		///	<param name="newChar">ÒªÌæ»» oldChar µÄËùÓĞÆ¥ÅäÏîµÄ×Ö·û¡£ </param> 
-		///	<param name="ignoreCase">ÊÇ·ñºöÂÔ´óĞ¡Ğ´¡£ </param> 
- 		///	<returns> µÈĞ§ÓÚ´ËÊµÀı£¬µ«½« oldChar µÄµÚÒ»¸öÊµÀıÌæ»»Îª newChar µÄ<see cref="string"/>¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²æŒ‡é’ˆ</param> 
+		///	<param name="oldChar"> è¦æ›¿æ¢çš„å­—ç¬¦ã€‚ </param> 
+		///	<param name="newChar">è¦æ›¿æ¢ oldChar çš„æ‰€æœ‰åŒ¹é…é¡¹çš„å­—ç¬¦ã€‚ </param> 
+		///	<param name="ignoreCase">æ˜¯å¦å¿½ç•¥å¤§å°å†™ã€‚ </param> 
+ 		///	<returns> ç­‰æ•ˆäºæ­¤å®ä¾‹ï¼Œä½†å°† oldChar çš„ç¬¬ä¸€ä¸ªå®ä¾‹æ›¿æ¢ä¸º newChar çš„<see cref="string"/>ã€‚</returns>  
 		inline static string Replace(string &str,char oldChar, char newChar,bool ignoreCase=false)
 		{
 			if(oldChar==newChar)
@@ -2691,15 +2691,15 @@ namespace Common
 			return result;
 		}
    		///	<summary>
-		///	½«´ËÊµÀıÖĞµÄÖ¸¶¨ <see cref="string"/> µÄËùÓĞÆ¥ÅäÏîÌæ»»ÎªÆäËûÖ¸¶¨µÄ <see cref="string"/>¡£
-		///	<code>Ô­ĞÍ£ºinline static string ReplaceAll(string &amp;str,const string&amp; oldValue, 
+		///	å°†æ­¤å®ä¾‹ä¸­çš„æŒ‡å®š <see cref="string"/> çš„æ‰€æœ‰åŒ¹é…é¡¹æ›¿æ¢ä¸ºå…¶ä»–æŒ‡å®šçš„ <see cref="string"/>ã€‚
+		///	<code>åŸå‹ï¼šinline static string ReplaceAll(string &amp;str,const string&amp; oldValue, 
 		///                                             const string&amp; newValue,bool ignoreCase=false);</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®</param> 
-		///	<param name="oldChar"> ÒªÌæ»»µÄ<see cref="string"/>¡£ </param> 
-		///	<param name="newChar">ÒªÌæ»» oldChar µÄËùÓĞÆ¥ÅäÏîµÄ<see cref="string"/>¡£ </param> 
-		///	<param name="ignoreCase">ÊÇ·ñºöÂÔ´óĞ¡Ğ´¡£ </param> 
- 		///	<returns> µÈĞ§ÓÚ´ËÊµÀı£¬µ«½« oldChar µÄµÚÒ»¸öÊµÀıÌæ»»Îª newChar µÄ<see cref="string"/>¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²</param> 
+		///	<param name="oldChar"> è¦æ›¿æ¢çš„<see cref="string"/>ã€‚ </param> 
+		///	<param name="newChar">è¦æ›¿æ¢ oldChar çš„æ‰€æœ‰åŒ¹é…é¡¹çš„<see cref="string"/>ã€‚ </param> 
+		///	<param name="ignoreCase">æ˜¯å¦å¿½ç•¥å¤§å°å†™ã€‚ </param> 
+ 		///	<returns> ç­‰æ•ˆäºæ­¤å®ä¾‹ï¼Œä½†å°† oldChar çš„ç¬¬ä¸€ä¸ªå®ä¾‹æ›¿æ¢ä¸º newChar çš„<see cref="string"/>ã€‚</returns>  
 		inline static string ReplaceAll(string &str,const string& oldValue, const string& newValue,bool ignoreCase=false)
 		{
 			string& result=str;
@@ -2716,15 +2716,15 @@ namespace Common
 			return result;
 		}
    		///	<summary>
-		///	½«´ËÊµÀıÖĞµÄÖ¸¶¨ <see cref="string"/> µÄµÚÒ»¸öÆ¥ÅäÏîÌæ»»ÎªÆäËûÖ¸¶¨µÄ <see cref="string"/>¡£
-		///	<code>Ô­ĞÍ£ºinline static string Replace(string &amp;str,const string&amp; oldValue, 
+		///	å°†æ­¤å®ä¾‹ä¸­çš„æŒ‡å®š <see cref="string"/> çš„ç¬¬ä¸€ä¸ªåŒ¹é…é¡¹æ›¿æ¢ä¸ºå…¶ä»–æŒ‡å®šçš„ <see cref="string"/>ã€‚
+		///	<code>åŸå‹ï¼šinline static string Replace(string &amp;str,const string&amp; oldValue, 
 		///                                             const string&amp; newValue,bool ignoreCase=false);</code>
 		///	</summary> 
-		///	<param name="str">Ô´×Ö·û´®</param> 
-		///	<param name="oldChar"> ÒªÌæ»»µÄ<see cref="string"/>¡£ </param> 
-		///	<param name="newChar">ÒªÌæ»» oldChar µÄËùÓĞÆ¥ÅäÏîµÄ<see cref="string"/>¡£ </param> 
-		///	<param name="ignoreCase">ÊÇ·ñºöÂÔ´óĞ¡Ğ´¡£ </param> 
- 		///	<returns> µÈĞ§ÓÚ´ËÊµÀı£¬µ«½« oldChar µÄµÚÒ»¸öÊµÀıÌæ»»Îª newChar µÄ<see cref="string"/>¡£</returns>  
+		///	<param name="str">æºå­—ç¬¦ä¸²</param> 
+		///	<param name="oldChar"> è¦æ›¿æ¢çš„<see cref="string"/>ã€‚ </param> 
+		///	<param name="newChar">è¦æ›¿æ¢ oldChar çš„æ‰€æœ‰åŒ¹é…é¡¹çš„<see cref="string"/>ã€‚ </param> 
+		///	<param name="ignoreCase">æ˜¯å¦å¿½ç•¥å¤§å°å†™ã€‚ </param> 
+ 		///	<returns> ç­‰æ•ˆäºæ­¤å®ä¾‹ï¼Œä½†å°† oldChar çš„ç¬¬ä¸€ä¸ªå®ä¾‹æ›¿æ¢ä¸º newChar çš„<see cref="string"/>ã€‚</returns>  
 		inline static string Replace(string &str,const string& oldValue, const string& newValue,bool ignoreCase=false)
 		{
 			string result=str;
@@ -2936,11 +2936,11 @@ namespace Common
 	}
 
 	
-	// ÕªÒª:
-    //     Ò»°ãĞÔ×Ö·û´®²Ù×÷·û±È½Ï¡£
+	// æ‘˜è¦:
+    //     ä¸€èˆ¬æ€§å­—ç¬¦ä¸²æ“ä½œç¬¦æ¯”è¾ƒã€‚
     //
-    // ·µ»Ø½á¹û:
-    //     Èç¹û a µÄÖµÓë b µÄÖµ²»Í¬£¬ÔòÎª true£»·ñÔòÎª false¡£
+    // è¿”å›ç»“æœ:
+    //     å¦‚æœ a çš„å€¼ä¸ b çš„å€¼ä¸åŒï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚
     //
     bool inline operator>(const  String &a,const  String &b)
     {
@@ -3010,15 +3010,15 @@ namespace Common
         return String::strcmp(a.c_str(),b)<0;
     };
 
-	// ÕªÒª:
-    //     È·¶¨Á½¸öÖ¸¶¨µÄ Common.String ¶ÔÏóÊÇ·ñ¾ßÓĞ²»Í¬µÄÖµ¡£
+	// æ‘˜è¦:
+    //     ç¡®å®šä¸¤ä¸ªæŒ‡å®šçš„ Common.String å¯¹è±¡æ˜¯å¦å…·æœ‰ä¸åŒçš„å€¼ã€‚
     //
-    // ²ÎÊı:
+    // å‚æ•°:
     //   a:
-    //     String »ònull¡£
+    //     String æˆ–nullã€‚
     //
-    // ·µ»Ø½á¹û:
-    //     Èç¹û a µÄÖµÓë b µÄÖµ²»Í¬£¬ÔòÎª true£»·ñÔòÎª false¡£
+    // è¿”å›ç»“æœ:
+    //     å¦‚æœ a çš„å€¼ä¸ b çš„å€¼ä¸åŒï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚
 	bool inline operator!=(const String &a,const String &b)
 	{
         return String::strcmp(a.c_str(),b.c_str())!=0;
@@ -3036,15 +3036,15 @@ namespace Common
         return String::strcmp(a.c_str(),b)!=0;
 	};
     //
-    // ÕªÒª:
-    //     È·¶¨Á½¸öÖ¸¶¨µÄ Common.String ¶ÔÏóÊÇ·ñ¾ßÓĞÍ¬Ò»Öµ¡£
+    // æ‘˜è¦:
+    //     ç¡®å®šä¸¤ä¸ªæŒ‡å®šçš„ Common.String å¯¹è±¡æ˜¯å¦å…·æœ‰åŒä¸€å€¼ã€‚
     //
-    // ²ÎÊı:
+    // å‚æ•°:
     //   a:
-    //     Common.String »ònull¡£
+    //     Common.String æˆ–nullã€‚
     //
-    // ·µ»Ø½á¹û:
-    //     Èç¹û a µÄÖµÓë b µÄÖµÏàÍ¬£¬ÔòÎª true£»·ñÔòÎª false¡£
+    // è¿”å›ç»“æœ:
+    //     å¦‚æœ a çš„å€¼ä¸ b çš„å€¼ç›¸åŒï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚
 	bool inline operator==(const  String &a,const  String &b)
 	{
         return String::strcmp(a.c_str(),b.c_str())==0;

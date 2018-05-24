@@ -145,7 +145,7 @@ OTL_ORA8_NAMESPACE_BEGIN
 	typedef ConnectionT< OTL_ORA8_NAMESPACE_PREFIX otl_connect> Connection;
 OTL_ORA8_NAMESPACE_END
 #if MAIN_DATABASE_TYPE==0
-#error "¶¨Òå¶àÖÖÊý¾Ý¿â½Ó¿ÚÊ±±ØÐèÖ¸¶¨Ö÷Êý¾Ý¿âÀàÐÍ,MAIN_DATABASE_TYPE Ö»ÄÜÎª 1 »òÕß 2  "
+#error "å®šä¹‰å¤šç§æ•°æ®åº“æŽ¥å£æ—¶å¿…éœ€æŒ‡å®šä¸»æ•°æ®åº“ç±»åž‹,MAIN_DATABASE_TYPE åªèƒ½ä¸º 1 æˆ–è€… 2  "
 #endif
 
 #else
@@ -161,7 +161,7 @@ OTL_ODBC_NAMESPACE_BEGIN
 	typedef Common::ConnectionT<OTL_ODBC_NAMESPACE_PREFIX otl_connect> Connection;
 OTL_ODBC_NAMESPACE_END
 #if MAIN_DATABASE_TYPE==0
-#error "¶¨Òå¶þÖÖÊý¾Ý¿â½Ó¿ÚÊ±±ØÐèÖ¸¶¨Ö÷Êý¾Ý¿âÀàÐÍ,MAIN_DATABASE_TYPE Ö»ÄÜÎª 1 »òÕß 2  "
+#error "å®šä¹‰äºŒç§æ•°æ®åº“æŽ¥å£æ—¶å¿…éœ€æŒ‡å®šä¸»æ•°æ®åº“ç±»åž‹,MAIN_DATABASE_TYPE åªèƒ½ä¸º 1 æˆ–è€… 2  "
 #endif
 #endif
 
@@ -176,7 +176,7 @@ OTL_ODBC_NAMESPACE_BEGIN
 OTL_ODBC_NAMESPACE_END
 
 #if MAIN_DATABASE_TYPE==0
-#error "¶¨Òå¶þÖÖÊý¾Ý¿â½Ó¿ÚÊ±±ØÐèÖ¸¶¨Ö÷Êý¾Ý¿âÀàÐÍ,MAIN_DATABASE_TYPE Ö»ÄÜÎª 1 »òÕß 2  "
+#error "å®šä¹‰äºŒç§æ•°æ®åº“æŽ¥å£æ—¶å¿…éœ€æŒ‡å®šä¸»æ•°æ®åº“ç±»åž‹,MAIN_DATABASE_TYPE åªèƒ½ä¸º 1 æˆ–è€… 2  "
 #endif
 
 #endif

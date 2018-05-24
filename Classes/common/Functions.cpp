@@ -30,43 +30,43 @@ namespace Common
 //TimeSpan static const var //
 #ifdef __Common_TimeSpan_H__
 	//
-	//Ò»ºÁÃëµÈÓÚ¶àÉÙÌì
+	//ä¸€æ¯«ç§’ç­‰äºå¤šå°‘å¤©
 	//
 	const double TimeSpan::DaysPerTicks = 1.1574074074074074074074074074074e-11;
 	//
-	//Ò»ºÁÃëµÈÓÚ¶àÉÙĞ¡Ê±
+	//ä¸€æ¯«ç§’ç­‰äºå¤šå°‘å°æ—¶
 	//
 	const double TimeSpan::HoursPerTicks = 2.7777777777777777E-10;
 	//
-	//Ò»ºÁÃëµÈÓÚ¶àÉÙ·ÖÖÓÊı
+	//ä¸€æ¯«ç§’ç­‰äºå¤šå°‘åˆ†é’Ÿæ•°
 	//
 	const double TimeSpan::MinutesPerTicks = 1.6666666666666667E-8;
 	//
-	//×î´óºÁÃëÊı
+	//æœ€å¤§æ¯«ç§’æ•°
 	//
 	const double TimeSpan::SecondsPerTicks  = 0.000001;
 	//
-	//×î´óºÁÃëÊı
+	//æœ€å¤§æ¯«ç§’æ•°
 	//
 	const long long TimeSpan::MaxMillis=922337203685477ll ;
 	//
-	//×î´óÃëÊı						  15372286728
+	//æœ€å¤§ç§’æ•°						  15372286728
 	//								  4294967296
 	const long long TimeSpan::MaxSeconds = 922337203685ll;
 	//
-	//Ò»Ìì¶àÉÙºÁÃë
+	//ä¸€å¤©å¤šå°‘æ¯«ç§’
 	//
 	const int TimeSpan::MillisPerDay = 0x5265c00;
 	//
-	//1Ğ¡Ê±¶àÉÙºÁÃë
+	//1å°æ—¶å¤šå°‘æ¯«ç§’
 	//
     const int TimeSpan::MillisPerHour = 0x36ee80;
 	//
-	//1·ÖÖÓ¶àÉÙºÁÃë
+	//1åˆ†é’Ÿå¤šå°‘æ¯«ç§’
 	//
     const int TimeSpan::MillisPerMinute = 0xea60;
 	//
-	//1Ãë¶àÉÙºÁÃë
+	//1ç§’å¤šå°‘æ¯«ç§’
 	//
     const int TimeSpan::MillisPerSecond = 0x3e8;
 
@@ -78,23 +78,23 @@ namespace Common
 
 
 	//
-	//×îĞ¡ºÁÃëÊı
+	//æœ€å°æ¯«ç§’æ•°
 	//
 	const long long TimeSpan::MinMilliSeconds = -922337203685477ll;
 	//
-	//×îĞ¡ÃëÊı
+	//æœ€å°ç§’æ•°
 	//
 	const long long TimeSpan::MinSeconds = -922337203685ll;
-    // ÕªÒª:
-    //     ±íÊ¾×î´óµÄ Common.TimeSpan Öµ¡£´Ë×Ö¶ÎÎªÖ»¶Á¡£
+    // æ‘˜è¦:
+    //     è¡¨ç¤ºæœ€å¤§çš„ Common.TimeSpan å€¼ã€‚æ­¤å­—æ®µä¸ºåªè¯»ã€‚
 	const TimeSpan TimeSpan::MaxValue=TimeSpan(TimeSpan::MaxSeconds * TimeSpan::TicksPerSecond);
     //
-    // ÕªÒª:
-    //     ±íÊ¾×îĞ¡µÄ Common.TimeSpan Öµ¡£´Ë×Ö¶ÎÎªÖ»¶Á¡£
+    // æ‘˜è¦:
+    //     è¡¨ç¤ºæœ€å°çš„ Common.TimeSpan å€¼ã€‚æ­¤å­—æ®µä¸ºåªè¯»ã€‚
     const TimeSpan TimeSpan::MinValue=TimeSpan(TimeSpan::MinSeconds * TimeSpan::TicksPerSecond);
     //
-    // ÕªÒª:
-    //     ±íÊ¾Áã Common.TimeSpan Öµ¡£´Ë×Ö¶ÎÎªÖ»¶Á¡£
+    // æ‘˜è¦:
+    //     è¡¨ç¤ºé›¶ Common.TimeSpan å€¼ã€‚æ­¤å­—æ®µä¸ºåªè¯»ã€‚
 	const  TimeSpan TimeSpan::Zero=TimeSpan(0);
 #endif
 
@@ -103,27 +103,27 @@ namespace Common
 	const int  DateTime::DaysToMonth365[]={ 0, 0x1f, 0x3b, 90, 120, 0x97, 0xb5, 0xd4, 0xf3, 0x111, 0x130, 0x14e, 0x16d };
 	const int  DateTime::DaysToMonth366[]={ 0, 0x1f, 60, 0x5b, 0x79, 0x98, 0xb6, 0xd5, 0xf4, 0x112, 0x131, 0x14f, 0x16e };
 
-	const string DateTime::WeekName[7][3]={{"ĞÇÆÚÈÕ","Sunday","Sun"}
-	,{"ĞÇÆÚÒ»","Monday","Mon"},{"ĞÇÆÚ¶ş","Tuesday","Tue"}
-	,{"ĞÇÆÚÈı","Wednesday","Wed"},{"ĞÇÆÚËÄ","Thursday","Thu"}
-	,{"ĞÇÆÚÎå","Friday","Fri"},{"ĞÇÆÚÁù","Saturday","Sat"}};
+	const string DateTime::WeekName[7][3]={{"æ˜ŸæœŸæ—¥","Sunday","Sun"}
+	,{"æ˜ŸæœŸä¸€","Monday","Mon"},{"æ˜ŸæœŸäºŒ","Tuesday","Tue"}
+	,{"æ˜ŸæœŸä¸‰","Wednesday","Wed"},{"æ˜ŸæœŸå››","Thursday","Thu"}
+	,{"æ˜ŸæœŸäº”","Friday","Fri"},{"æ˜ŸæœŸå…­","Saturday","Sat"}};
 	const string DateTime::MonthNames[13][3]={{"","",""}
-	,{"1ÔÂ","January","Jan"},{"2ÔÂ","February","Feb"},{"3ÔÂ","March","Mar"}
-	,{"4ÔÂ","April","Apr"},{"5ÔÂ","May","May"},{"6ÔÂ","June","June"}
-	,{"7ÔÂ","July","July"},{"8ÔÂ","Aguest","Agu"},{"9ÔÂ","September","Sep"}
-	,{"10ÔÂ","October","Oct"},{"11ÔÂ","November","Nov"},{"12ÔÂ","December","Dec"}};
+	,{"1æœˆ","January","Jan"},{"2æœˆ","February","Feb"},{"3æœˆ","March","Mar"}
+	,{"4æœˆ","April","Apr"},{"5æœˆ","May","May"},{"6æœˆ","June","June"}
+	,{"7æœˆ","July","July"},{"8æœˆ","Aguest","Agu"},{"9æœˆ","September","Sep"}
+	,{"10æœˆ","October","Oct"},{"11æœˆ","November","Nov"},{"12æœˆ","December","Dec"}};
 
 	//string DateTime::_result="";
 	//
-	//ÕªÒª£º
-	//		UTC ±ê×¼Ê±¼ä¶àÉÙºÁÃë
+	//æ‘˜è¦ï¼š
+	//		UTC æ ‡å‡†æ—¶é—´å¤šå°‘æ¯«ç§’
 	//	62135596800000
 	//	62135596800000.0000
 	const long long DateTime::MillesPerUTCSta=62135596800000ll;
 	const long long DateTime::MillesPer2100Year=66238041600000ll;
 	//
-	//ÕªÒª£º
-	//		×î´óĞ¡Ê± ºÁÃëÊı
+	//æ‘˜è¦ï¼š
+	//		æœ€å¤§å°æ—¶ æ¯«ç§’æ•°
 	//	315537897599999	 
 	const long long DateTime::MaxMillesSecond=315537897599999ll;
 	const long long DateTime::MinMillesSecond=0;
@@ -140,43 +140,43 @@ namespace Common
 	const long long DateTime::SecondPerUTCSta=0xE7791F700ll;
 
 	//
-	//ÕªÒª£º
-	//		100Äê¶àÉÙÌì
+	//æ‘˜è¦ï¼š
+	//		100å¹´å¤šå°‘å¤©
 	//	36524
 	const int DateTime::DaysPer100Years = 0x8eac;
 	//
-	//ÕªÒª£º
-	//		400Äê¶àÉÙÌì
+	//æ‘˜è¦ï¼š
+	//		400å¹´å¤šå°‘å¤©
 	//	146097
     const int DateTime::DaysPer400Years = 0x23ab1;
 	//
-	//ÕªÒª£º
-	//		4Äê¶àÉÙÌì
+	//æ‘˜è¦ï¼š
+	//		4å¹´å¤šå°‘å¤©
 	//	1461
     const int DateTime::DaysPer4Years = 0x5b5;
 	//
-	//ÕªÒª£º
-	//		1Äê¶àÉÙÌì
+	//æ‘˜è¦ï¼š
+	//		1å¹´å¤šå°‘å¤©
 	//	365
     const int DateTime::DaysPerYear = 0x16d;
 	//
-	//ÕªÒª£º
-	//		Ò»Ìì¶àÉÙºÁÃë
+	//æ‘˜è¦ï¼š
+	//		ä¸€å¤©å¤šå°‘æ¯«ç§’
 	//	86400000
 	const int DateTime::MillisPerDay = 0x5265c00;
 	//
-	//ÕªÒª£º
-	//		1Ğ¡Ê±¶àÉÙºÁÃë
+	//æ‘˜è¦ï¼š
+	//		1å°æ—¶å¤šå°‘æ¯«ç§’
 	//	3600000
     const int DateTime::MillisPerHour = 0x36ee80;
 	//
-	//ÕªÒª£º
-	//		1·ÖÖÓ¶àÉÙºÁÃë
+	//æ‘˜è¦ï¼š
+	//		1åˆ†é’Ÿå¤šå°‘æ¯«ç§’
 	//	60000
     const int DateTime::MillisPerMinute = 0xea60;
 	//
-	//ÕªÒª£º
-	//		1Ãë¶àÉÙºÁÃë
+	//æ‘˜è¦ï¼š
+	//		1ç§’å¤šå°‘æ¯«ç§’
 	//	1000
     const int DateTime::MillisPerSecond = 0x3e8;
 //#if OSTYPE<=10
@@ -185,80 +185,80 @@ namespace Common
 	const TimeZone DateTime::localTimeZone =  TimeZone((lHour-gmtime(&ts)->tm_hour)>12?((lHour-gmtime(&ts)->tm_hour)-24):((lHour-gmtime(&ts)->tm_hour)<-12?((lHour-gmtime(&ts)->tm_hour)+24):(lHour-gmtime(&ts)->tm_hour)));
 //#endif
 	//
-	//ÕªÒª£º
-	//		×î´óÊ±¼äÖµ
-	//	9999-12-31 23:59:59   //	315537897599999 ºÁÃë 
+	//æ‘˜è¦ï¼š
+	//		æœ€å¤§æ—¶é—´å€¼
+	//	9999-12-31 23:59:59   //	315537897599999 æ¯«ç§’ 
 	const  DateTime  DateTime::MaxValue=DateTime(DateTime::MaxTicks);
 	//
-	//ÕªÒª£º
-	//		×îĞ¡Ê±¼äÖµ
-	//	0001-1-1 0:00:00  //	0 ºÁÃë
+	//æ‘˜è¦ï¼š
+	//		æœ€å°æ—¶é—´å€¼
+	//	0001-1-1 0:00:00  //	0 æ¯«ç§’
 	const  DateTime  DateTime::MinValue=DateTime(DateTime::MinTicks);
 	//*****    DateTime    TimeSpan operator method          *                                    
-	// ÕªÒª:
-	//     ´ÓÒ»¸öÖ¸¶¨ÈÕÆÚºÍÊ±¼ä¼õÈ¥ÁíÒ»¸öÖ¸¶¨µÄÈÕÆÚºÍÊ±¼äÒÔÉú³ÉÊ±¼ä¼ä¸ô¡£
+	// æ‘˜è¦:
+	//     ä»ä¸€ä¸ªæŒ‡å®šæ—¥æœŸå’Œæ—¶é—´å‡å»å¦ä¸€ä¸ªæŒ‡å®šçš„æ—¥æœŸå’Œæ—¶é—´ä»¥ç”Ÿæˆæ—¶é—´é—´éš”ã€‚
 	//
-	// ²ÎÊı:
+	// å‚æ•°:
 	//   d2:
-	//     Common.DateTime£¨¼õÊı£©¡£
+	//     Common.DateTimeï¼ˆå‡æ•°ï¼‰ã€‚
 	//
 	//   d1:
-	//     Common.DateTime£¨±»¼õÊı£©¡£
+	//     Common.DateTimeï¼ˆè¢«å‡æ•°ï¼‰ã€‚
 	//
-	// ·µ»Ø½á¹û:
-	//     Common.TimeSpan£¬ËüÊÇ d1 ºÍ d2 Ö®¼äµÄÊ±¼ä¼ä¸ô£¬¼´ d1 ¼õÈ¥ d2¡£
+	// è¿”å›ç»“æœ:
+	//     Common.TimeSpanï¼Œå®ƒæ˜¯ d1 å’Œ d2 ä¹‹é—´çš„æ—¶é—´é—´éš”ï¼Œå³ d1 å‡å» d2ã€‚
 	TimeSpan operator -(DateTime d1, DateTime d2)
 	{
 		return TimeSpan((d1.GetTicks()-d2.GetTicks()));
 	}
 	//
-	// ÕªÒª:
-	//     ´ÓÖ¸¶¨µÄÈÕÆÚºÍÊ±¼ä¼õÈ¥Ö¸¶¨µÄÊ±¼ä¼ä¸ô£¬ÒÔÉú³ÉĞÂµÄÈÕÆÚºÍÊ±¼ä¡£
+	// æ‘˜è¦:
+	//     ä»æŒ‡å®šçš„æ—¥æœŸå’Œæ—¶é—´å‡å»æŒ‡å®šçš„æ—¶é—´é—´éš”ï¼Œä»¥ç”Ÿæˆæ–°çš„æ—¥æœŸå’Œæ—¶é—´ã€‚
 	//
-	// ²ÎÊı:
+	// å‚æ•°:
 	//   d:
-	//     Common.DateTime¡£
+	//     Common.DateTimeã€‚
 	//
 	//   t:
-	//     Common.TimeSpan¡£
+	//     Common.TimeSpanã€‚
 	//
-	// ·µ»Ø½á¹û:
-	//     Common.DateTime£¬ËüµÄÖµÎª d µÄÖµ¼õÈ¥ t µÄÖµ¡£
+	// è¿”å›ç»“æœ:
+	//     Common.DateTimeï¼Œå®ƒçš„å€¼ä¸º d çš„å€¼å‡å» t çš„å€¼ã€‚
 	DateTime operator -(DateTime d, TimeSpan t)
 	{
 		return  DateTime(d._Ticks-t.getTotalTicks());
 	}
 	//
-	// ÕªÒª:
-	//     È·¶¨ Common.DateTime µÄÁ½¸öÖ¸¶¨µÄÊµÀıÊÇ·ñ²»µÈ¡£
+	// æ‘˜è¦:
+	//     ç¡®å®š Common.DateTime çš„ä¸¤ä¸ªæŒ‡å®šçš„å®ä¾‹æ˜¯å¦ä¸ç­‰ã€‚
 	//
-	// ²ÎÊı:
+	// å‚æ•°:
 	//   d2:
-	//     Common.DateTime¡£
+	//     Common.DateTimeã€‚
 	//
 	//   d1:
-	//     Common.DateTime¡£
+	//     Common.DateTimeã€‚
 	//
-	// ·µ»Ø½á¹û:
-	//     Èç¹û d1 ºÍ d2 ²»±íÊ¾Í¬Ò»ÈÕÆÚºÍÊ±¼ä£¬ÔòÎª true£»·ñÔòÎª false¡£
+	// è¿”å›ç»“æœ:
+	//     å¦‚æœ d1 å’Œ d2 ä¸è¡¨ç¤ºåŒä¸€æ—¥æœŸå’Œæ—¶é—´ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚
 	bool operator !=(DateTime d1, DateTime d2)
 	{
 		if(d1.GetTicks()==d2.GetTicks())return false;
 		else return true;
 	}
 	//
-	// ÕªÒª:
-	//     ½«Ö¸¶¨µÄÊ±¼ä¼ä¸ô¼Óµ½Ö¸¶¨µÄÈÕÆÚºÍÊ±¼äÒÔÉú³ÉĞÂµÄÈÕÆÚºÍÊ±¼ä¡£
+	// æ‘˜è¦:
+	//     å°†æŒ‡å®šçš„æ—¶é—´é—´éš”åŠ åˆ°æŒ‡å®šçš„æ—¥æœŸå’Œæ—¶é—´ä»¥ç”Ÿæˆæ–°çš„æ—¥æœŸå’Œæ—¶é—´ã€‚
 	//
-	// ²ÎÊı:
+	// å‚æ•°:
 	//   d:
-	//     Common.DateTime¡£
+	//     Common.DateTimeã€‚
 	//
 	//   t:
-	//     Common.TimeSpan¡£
+	//     Common.TimeSpanã€‚
 	//
-	// ·µ»Ø½á¹û:
-	//     Common.DateTime£¬ËüÊÇ d ºÍ t ÖµµÄºÍ¡£
+	// è¿”å›ç»“æœ:
+	//     Common.DateTimeï¼Œå®ƒæ˜¯ d å’Œ t å€¼çš„å’Œã€‚
 	DateTime operator +(DateTime d, TimeSpan t)
 	{
 		return  DateTime(d._Ticks+t.getTotalTicks());
@@ -268,87 +268,87 @@ namespace Common
 		return d=DateTime(d._Ticks+t.getTotalTicks());
 	}
 	//
-	// ÕªÒª:
-	//     È·¶¨Ö¸¶¨µÄ Common.DateTime ÊÇ·ñĞ¡ÓÚÁíÒ»¸öÖ¸¶¨µÄ Common.DateTime¡£
+	// æ‘˜è¦:
+	//     ç¡®å®šæŒ‡å®šçš„ Common.DateTime æ˜¯å¦å°äºå¦ä¸€ä¸ªæŒ‡å®šçš„ Common.DateTimeã€‚
 	//
-	// ²ÎÊı:
+	// å‚æ•°:
 	//   t2:
-	//     Common.DateTime¡£
+	//     Common.DateTimeã€‚
 	//
 	//   t1:
-	//     Common.DateTime¡£
+	//     Common.DateTimeã€‚
 	//
-	// ·µ»Ø½á¹û:
-	//     Èç¹û t1 Ğ¡ÓÚ t2£¬ÔòÎª true£»·ñÔòÎª false¡£
+	// è¿”å›ç»“æœ:
+	//     å¦‚æœ t1 å°äº t2ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚
 	bool operator <(DateTime t1, DateTime t2)
 	{
 		return (t1.GetTicks()<t2.GetTicks()) ;
 	}
 	//
-	// ÕªÒª:
-	//     È·¶¨Ö¸¶¨µÄ Common.DateTime ÊÇ·ñĞ¡ÓÚ»òµÈÓÚÁíÒ»¸öÖ¸¶¨µÄ Common.DateTime¡£
+	// æ‘˜è¦:
+	//     ç¡®å®šæŒ‡å®šçš„ Common.DateTime æ˜¯å¦å°äºæˆ–ç­‰äºå¦ä¸€ä¸ªæŒ‡å®šçš„ Common.DateTimeã€‚
 	//
-	// ²ÎÊı:
+	// å‚æ•°:
 	//   t2:
-	//     Common.DateTime¡£
+	//     Common.DateTimeã€‚
 	//
 	//   t1:
-	//     Common.DateTime¡£
+	//     Common.DateTimeã€‚
 	//
-	// ·µ»Ø½á¹û:
-	//     Èç¹û t1 Ğ¡ÓÚ»òµÈÓÚ t2£¬ÔòÎª true£»·ñÔòÎª false¡£
+	// è¿”å›ç»“æœ:
+	//     å¦‚æœ t1 å°äºæˆ–ç­‰äº t2ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚
 	bool operator <=(DateTime t1, DateTime t2)
 	{
 		return (t1.GetTicks()<=t2.GetTicks());
 	}
 	//
-	// ÕªÒª:
-	//     È·¶¨ Common.DateTime µÄÁ½¸öÖ¸¶¨µÄÊµÀıÊÇ·ñÏàµÈ¡£
+	// æ‘˜è¦:
+	//     ç¡®å®š Common.DateTime çš„ä¸¤ä¸ªæŒ‡å®šçš„å®ä¾‹æ˜¯å¦ç›¸ç­‰ã€‚
 	//
-	// ²ÎÊı:
+	// å‚æ•°:
 	//   d2:
-	//     Common.DateTime¡£
+	//     Common.DateTimeã€‚
 	//
 	//   d1:
-	//     Common.DateTime¡£
+	//     Common.DateTimeã€‚
 	//
-	// ·µ»Ø½á¹û:
-	//     Èç¹û d1 ºÍ d2 ±íÊ¾Í¬Ò»ÈÕÆÚºÍÊ±¼ä£¬ÔòÎª true£»·ñÔòÎª false¡£
+	// è¿”å›ç»“æœ:
+	//     å¦‚æœ d1 å’Œ d2 è¡¨ç¤ºåŒä¸€æ—¥æœŸå’Œæ—¶é—´ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚
 	bool operator ==(DateTime d1, DateTime d2)
 	{
 		return (d1.GetTicks()==d2.GetTicks());
 	}
 	//
-	// ÕªÒª:
-	//     È·¶¨Ö¸¶¨µÄ Common.DateTime ÊÇ·ñ´óÓÚÁíÒ»¸öÖ¸¶¨µÄ Common.DateTime¡£
+	// æ‘˜è¦:
+	//     ç¡®å®šæŒ‡å®šçš„ Common.DateTime æ˜¯å¦å¤§äºå¦ä¸€ä¸ªæŒ‡å®šçš„ Common.DateTimeã€‚
 	//
-	// ²ÎÊı:
+	// å‚æ•°:
 	//   t2:
-	//     Common.DateTime¡£
+	//     Common.DateTimeã€‚
 	//
 	//   t1:
-	//     Common.DateTime¡£
+	//     Common.DateTimeã€‚
 	//
-	// ·µ»Ø½á¹û:
-	//     Èç¹û t1 ´óÓÚ t2£¬ÔòÎª true£»·ñÔòÎª false¡£
+	// è¿”å›ç»“æœ:
+	//     å¦‚æœ t1 å¤§äº t2ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚
 	bool operator >(DateTime t1, DateTime t2)
 	{
 		return (t1.GetTicks()>t2.GetTicks());
 	}
 	 
 	//
-	// ÕªÒª:
-	//     È·¶¨Ö¸¶¨µÄ Common.DateTime ÊÇ·ñ´óÓÚ»òµÈÓÚÁíÒ»¸öÖ¸¶¨µÄ Common.DateTime¡£
+	// æ‘˜è¦:
+	//     ç¡®å®šæŒ‡å®šçš„ Common.DateTime æ˜¯å¦å¤§äºæˆ–ç­‰äºå¦ä¸€ä¸ªæŒ‡å®šçš„ Common.DateTimeã€‚
 	//
-	// ²ÎÊı:
+	// å‚æ•°:
 	//   t2:
-	//     Common.DateTime¡£
+	//     Common.DateTimeã€‚
 	//
 	//   t1:
-	//     Common.DateTime¡£
+	//     Common.DateTimeã€‚
 	//
-	// ·µ»Ø½á¹û:
-	//     Èç¹û t1 ´óÓÚ»òµÈÓÚ t2£¬ÔòÎª true£»·ñÔòÎª false¡£
+	// è¿”å›ç»“æœ:
+	//     å¦‚æœ t1 å¤§äºæˆ–ç­‰äº t2ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚
 	bool operator >=(DateTime t1, DateTime t2)
 	{
 		return (t1.GetTicks()>=t2.GetTicks());
@@ -357,33 +357,33 @@ namespace Common
 
 //**************TimeSpan  ***********************************************                                    
 #ifdef __Common_TimeSpan_H__
-    // ÕªÒª:
-    //     ·µ»ØÆäÖµÎªÖ¸¶¨ÊµÀıµÄÏà·´ÖµµÄ Common::TimeSpan¡£
+    // æ‘˜è¦:
+    //     è¿”å›å…¶å€¼ä¸ºæŒ‡å®šå®ä¾‹çš„ç›¸åå€¼çš„ Common::TimeSpanã€‚
     //
-    // ²ÎÊı:
+    // å‚æ•°:
     //   t:
-    //     Common::TimeSpan¡£
+    //     Common::TimeSpanã€‚
     //
-    // ·µ»Ø½á¹û:
-    //     Óë´ËÊµÀıµÄÊıÖµÏàÍ¬£¬µ«·ûºÅÏà·´µÄ Common::TimeSpan¡£
+    // è¿”å›ç»“æœ:
+    //     ä¸æ­¤å®ä¾‹çš„æ•°å€¼ç›¸åŒï¼Œä½†ç¬¦å·ç›¸åçš„ Common::TimeSpanã€‚
     TimeSpan &operator -(TimeSpan &t)
 	{
 		t._ticks=0-t._ticks;
 		return t;
 	}
     //
-    // ÕªÒª:
-    //     ´ÓÁíÒ»¸öÖ¸¶¨µÄ Common::TimeSpan ÖĞ¼õÈ¥Ö¸¶¨µÄ Common::TimeSpan¡£
+    // æ‘˜è¦:
+    //     ä»å¦ä¸€ä¸ªæŒ‡å®šçš„ Common::TimeSpan ä¸­å‡å»æŒ‡å®šçš„ Common::TimeSpanã€‚
     //
-    // ²ÎÊı:
+    // å‚æ•°:
     //   t2:
-    //     TimeSpan¡£
+    //     TimeSpanã€‚
     //
     //   t1:
-    //     Common::TimeSpan¡£
+    //     Common::TimeSpanã€‚
     //
-    // ·µ»Ø½á¹û:
-    //     ÖµÎª t1 µÄÖµ¼õÈ¥ t2 µÄÖµºóËùµÃ½á¹ûµÄ TimeSpan¡£
+    // è¿”å›ç»“æœ:
+    //     å€¼ä¸º t1 çš„å€¼å‡å» t2 çš„å€¼åæ‰€å¾—ç»“æœçš„ TimeSpanã€‚
     TimeSpan operator -(TimeSpan &t1, TimeSpan &t2)
 	{
 		return  TimeSpan(t1._ticks-t2._ticks);
@@ -393,35 +393,35 @@ namespace Common
 		return t1=TimeSpan(t1._ticks-=t2._ticks);
 	}
     //
-    // ÕªÒª:
-    //     Ö¸Ê¾Á½¸ö Common::TimeSpan ÊµÀıÊÇ·ñ²»ÏàµÈ¡£
+    // æ‘˜è¦:
+    //     æŒ‡ç¤ºä¸¤ä¸ª Common::TimeSpan å®ä¾‹æ˜¯å¦ä¸ç›¸ç­‰ã€‚
     //
-    // ²ÎÊı:
+    // å‚æ•°:
     //   t2:
-    //     TimeSpan¡£
+    //     TimeSpanã€‚
     //
     //   t1:
-    //     Common::TimeSpan¡£
+    //     Common::TimeSpanã€‚
     //
-    // ·µ»Ø½á¹û:
-    //     Èç¹û t1 ºÍ t2 µÄÖµ²»ÏàµÈ£¬ÔòÎª true£»·ñÔòÎª false¡£
+    // è¿”å›ç»“æœ:
+    //     å¦‚æœ t1 å’Œ t2 çš„å€¼ä¸ç›¸ç­‰ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚
     bool operator !=(TimeSpan &t1, TimeSpan &t2)
 	{
 		return (t1._ticks!=t2._ticks);
 	}
     //
-    // ÕªÒª:
-    //     Ìí¼ÓÁ½¸öÖ¸¶¨µÄ Common::TimeSpan ÊµÀı¡£
+    // æ‘˜è¦:
+    //     æ·»åŠ ä¸¤ä¸ªæŒ‡å®šçš„ Common::TimeSpan å®ä¾‹ã€‚
     //
-    // ²ÎÊı:
+    // å‚æ•°:
     //   t2:
-    //     TimeSpan¡£
+    //     TimeSpanã€‚
     //
     //   t1:
-    //     Common::TimeSpan¡£
+    //     Common::TimeSpanã€‚
     //
-    // ·µ»Ø½á¹û:
-    //     ÖµÎª t1 ºÍ t2 µÄÖµÖ®ºÍµÄ Common::TimeSpan¡£
+    // è¿”å›ç»“æœ:
+    //     å€¼ä¸º t1 å’Œ t2 çš„å€¼ä¹‹å’Œçš„ Common::TimeSpanã€‚
     TimeSpan operator +(TimeSpan &t1, TimeSpan &t2)
 	{
 		return  TimeSpan(t1._ticks+t2._ticks);
@@ -431,86 +431,86 @@ namespace Common
 		return  t1=  TimeSpan(t1._ticks+t2._ticks);
 	}
     //
-    // ÕªÒª:
-    //     Ö¸Ê¾Ö¸¶¨µÄ Common::TimeSpan ÊÇ·ñĞ¡ÓÚÁíÒ»¸öÖ¸¶¨µÄ Common::TimeSpan¡£
+    // æ‘˜è¦:
+    //     æŒ‡ç¤ºæŒ‡å®šçš„ Common::TimeSpan æ˜¯å¦å°äºå¦ä¸€ä¸ªæŒ‡å®šçš„ Common::TimeSpanã€‚
     //
-    // ²ÎÊı:
+    // å‚æ•°:
     //   t2:
-    //     TimeSpan¡£
+    //     TimeSpanã€‚
     //
     //   t1:
-    //     Common::TimeSpan¡£
+    //     Common::TimeSpanã€‚
     //
-    // ·µ»Ø½á¹û:
-    //     Èç¹û t1 µÄÖµĞ¡ÓÚ t2 µÄÖµ£¬ÔòÎª true£»·ñÔòÎª false¡£
+    // è¿”å›ç»“æœ:
+    //     å¦‚æœ t1 çš„å€¼å°äº t2 çš„å€¼ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚
     bool operator <(TimeSpan &t1, TimeSpan &t2)
 	{
 		return (t1._ticks<t2._ticks);
 	}
     //
-    // ÕªÒª:
-    //     Ö¸Ê¾Ö¸¶¨µÄ Common::TimeSpan ÊÇ·ñĞ¡ÓÚ»òµÈÓÚÁíÒ»¸öÖ¸¶¨µÄ Common::TimeSpan¡£
+    // æ‘˜è¦:
+    //     æŒ‡ç¤ºæŒ‡å®šçš„ Common::TimeSpan æ˜¯å¦å°äºæˆ–ç­‰äºå¦ä¸€ä¸ªæŒ‡å®šçš„ Common::TimeSpanã€‚
     //
-    // ²ÎÊı:
+    // å‚æ•°:
     //   t2:
-    //     TimeSpan¡£
+    //     TimeSpanã€‚
     //
     //   t1:
-    //     Common::TimeSpan¡£
+    //     Common::TimeSpanã€‚
     //
-    // ·µ»Ø½á¹û:
-    //     Èç¹û t1 µÄÖµĞ¡ÓÚ»òµÈÓÚ t2 µÄÖµ£¬ÔòÎª true£»·ñÔòÎª false¡£
+    // è¿”å›ç»“æœ:
+    //     å¦‚æœ t1 çš„å€¼å°äºæˆ–ç­‰äº t2 çš„å€¼ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚
     bool operator <=(TimeSpan &t1, TimeSpan &t2)
 	{
 		return (t1._ticks<=t2._ticks);
 	}
     //
-    // ÕªÒª:
-    //     Ö¸Ê¾Á½¸ö Common::TimeSpan ÊµÀıÊÇ·ñÏàµÈ¡£
+    // æ‘˜è¦:
+    //     æŒ‡ç¤ºä¸¤ä¸ª Common::TimeSpan å®ä¾‹æ˜¯å¦ç›¸ç­‰ã€‚
     //
-    // ²ÎÊı:
+    // å‚æ•°:
     //   t2:
-    //     TimeSpan¡£
+    //     TimeSpanã€‚
     //
     //   t1:
-    //     Common::TimeSpan¡£
+    //     Common::TimeSpanã€‚
     //
-    // ·µ»Ø½á¹û:
-    //     Èç¹û t1 ºÍ t2 µÄÖµÏàµÈ£¬ÔòÎª true£»·ñÔòÎª false¡£
+    // è¿”å›ç»“æœ:
+    //     å¦‚æœ t1 å’Œ t2 çš„å€¼ç›¸ç­‰ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚
     bool operator ==(TimeSpan &t1, TimeSpan &t2)
 	{
 		return (t1._ticks==t2._ticks);
 	}
     //
-    // ÕªÒª:
-    //     Ö¸Ê¾Ö¸¶¨µÄ Common::TimeSpan ÊÇ·ñ´óÓÚÁíÒ»¸öÖ¸¶¨µÄ Common::TimeSpan¡£
+    // æ‘˜è¦:
+    //     æŒ‡ç¤ºæŒ‡å®šçš„ Common::TimeSpan æ˜¯å¦å¤§äºå¦ä¸€ä¸ªæŒ‡å®šçš„ Common::TimeSpanã€‚
     //
-    // ²ÎÊı:
+    // å‚æ•°:
     //   t2:
-    //     TimeSpan¡£
+    //     TimeSpanã€‚
     //
     //   t1:
-    //     Common::TimeSpan¡£
+    //     Common::TimeSpanã€‚
     //
-    // ·µ»Ø½á¹û:
-    //     Èç¹û t1 µÄÖµ´óÓÚ t2 µÄÖµ£¬ÔòÎª true£»·ñÔòÎª false¡£
+    // è¿”å›ç»“æœ:
+    //     å¦‚æœ t1 çš„å€¼å¤§äº t2 çš„å€¼ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚
     bool operator >(TimeSpan &t1, TimeSpan &t2)
 	{
 		return (t1._ticks>t2._ticks);
 	}
     //
-    // ÕªÒª:
-    //     Ö¸Ê¾Ö¸¶¨µÄ Common::TimeSpan ÊÇ·ñ´óÓÚ»òµÈÓÚÁíÒ»¸öÖ¸¶¨µÄ Common::TimeSpan¡£
+    // æ‘˜è¦:
+    //     æŒ‡ç¤ºæŒ‡å®šçš„ Common::TimeSpan æ˜¯å¦å¤§äºæˆ–ç­‰äºå¦ä¸€ä¸ªæŒ‡å®šçš„ Common::TimeSpanã€‚
     //
-    // ²ÎÊı:
+    // å‚æ•°:
     //   t2:
-    //     TimeSpan¡£
+    //     TimeSpanã€‚
     //
     //   t1:
-    //     Common::TimeSpan¡£
+    //     Common::TimeSpanã€‚
     //
-    // ·µ»Ø½á¹û:
-    //     Èç¹û t1 µÄÖµ´óÓÚ»òµÈÓÚ t2 µÄÖµ£¬ÔòÎª true£»·ñÔòÎª false¡£
+    // è¿”å›ç»“æœ:
+    //     å¦‚æœ t1 çš„å€¼å¤§äºæˆ–ç­‰äº t2 çš„å€¼ï¼Œåˆ™ä¸º trueï¼›å¦åˆ™ä¸º falseã€‚
     bool operator >=(TimeSpan &t1, TimeSpan &t2)
 	{
 		return (t1._ticks>=t2._ticks);
@@ -518,19 +518,19 @@ namespace Common
 
 #endif
     //
-    // ÕªÒª:
-    //     ¼ÓÔØctlÎÄ¼şµ½Êı¾İ±í:¿ìËÙ¼ÓÔØ¡£ºöÂÔÎÄ¼şÍ·,¼ÓÔØÌõÊıÏŞÖÆ
+    // æ‘˜è¦:
+    //     åŠ è½½ctlæ–‡ä»¶åˆ°æ•°æ®è¡¨:å¿«é€ŸåŠ è½½ã€‚å¿½ç•¥æ–‡ä»¶å¤´,åŠ è½½æ¡æ•°é™åˆ¶
     //
-    // ²ÎÊı:
+    // å‚æ•°:
     //   pCtlControlName:
-    //     TimeSpan¡£
+    //     TimeSpanã€‚
     //
     //   pCtlDataName:
-    //     Common::TimeSpan¡£
+    //     Common::TimeSpanã€‚
 	//
 	//	pDbId:
     //
-    // ·µ»Ø½á¹û:
+    // è¿”å›ç»“æœ:
     //     
 	int ImportCtlFile( String ctlName,String ctlDataName,String dbConnStr,bool direct,bool parallel
 		,int readsize,int bindsize,int rows,const long skipNum,const long loadRowNum)
@@ -566,22 +566,22 @@ namespace Common
 #if OSTYPE>10
 		Command+=" silent=header,feedback ";
 #endif
-		if(!parallel)cout<<"Ö´ĞĞsqlldrÃüÁî: "<<Command.c_str()<<endl;
+		if(!parallel)cout<<"æ‰§è¡Œsqlldrå‘½ä»¤: "<<Command.c_str()<<endl;
 		return Sqlldr(Command);
 	}
 
-	// ÕªÒª:
-	//    µ÷ÓÃsqlldrÖ´ĞĞµ¼Èë£¬²¢·µ»Øµ¼ÈëÇé¿ö
+	// æ‘˜è¦:
+	//    è°ƒç”¨sqlldræ‰§è¡Œå¯¼å…¥ï¼Œå¹¶è¿”å›å¯¼å…¥æƒ…å†µ
 	//
-	// ²ÎÊı:
+	// å‚æ•°:
 	//   pCommand:
-	//     Ö´ĞĞÃüÁî¡£
+	//     æ‰§è¡Œå‘½ä»¤ã€‚
 	//
-	// ·µ»Ø½á¹û:
-	//       -1 Ê§°Ü
-	//		0  ³É¹¦µ¼Èë,ÎŞBADÎÄ¼ş
-	//		1  Êı¾İ¿â¶ÔÏóĞ£ÑéÊ§°Ü±í²»´æÔÚ»ò×Ö¶Î²»Æ¥ÅäµÈ
-	//		2  µ¼Èë²»ÍêÈ«,²úÉúBADÎÄ¼ş:×Ö¶ÎÒì³£µÈ
+	// è¿”å›ç»“æœ:
+	//       -1 å¤±è´¥
+	//		0  æˆåŠŸå¯¼å…¥,æ— BADæ–‡ä»¶
+	//		1  æ•°æ®åº“å¯¹è±¡æ ¡éªŒå¤±è´¥è¡¨ä¸å­˜åœ¨æˆ–å­—æ®µä¸åŒ¹é…ç­‰
+	//		2  å¯¼å…¥ä¸å®Œå…¨,äº§ç”ŸBADæ–‡ä»¶:å­—æ®µå¼‚å¸¸ç­‰
 	int Sqlldr(string pCommand)
 	{
 		int  ret=0 ;
@@ -593,31 +593,31 @@ namespace Common
 		}
 		else
 		{
-			printf("sqlldrµ÷ÓÃ·µ»ØÖµ:%d £¬",ret) ;
+			printf("sqlldrè°ƒç”¨è¿”å›å€¼:%d ï¼Œ",ret) ;
 			if( ret==0)
-				printf("³É¹¦µ¼Èë,ÎŞBADÎÄ¼ş\n") ;
+				printf("æˆåŠŸå¯¼å…¥,æ— BADæ–‡ä»¶\n") ;
 			else if( ret==1)
-				printf("¶ÔÏóĞ£ÑéÊ§°Ü£º±í²»´æÔÚ»ò×Ö¶Î²»Æ¥ÅäµÈ\n");
+				printf("å¯¹è±¡æ ¡éªŒå¤±è´¥ï¼šè¡¨ä¸å­˜åœ¨æˆ–å­—æ®µä¸åŒ¹é…ç­‰\n");
 			else if( ret==2)
-				printf("µ¼Èë²»ÍêÈ«,²úÉúBADÎÄ¼ş:×Ö¶ÎÒì³£µÈ\n") ;
+				printf("å¯¼å…¥ä¸å®Œå…¨,äº§ç”ŸBADæ–‡ä»¶:å­—æ®µå¼‚å¸¸ç­‰\n") ;
 		}
 		return ret ;
 	}
 
-	// ÕªÒª:
-	//    µ÷ÓÃsystemÖ´ĞĞ³ÌĞò,²¢·µ»ØÖ´ĞĞÇé¿ö
+	// æ‘˜è¦:
+	//    è°ƒç”¨systemæ‰§è¡Œç¨‹åº,å¹¶è¿”å›æ‰§è¡Œæƒ…å†µ
 	//
-	// ²ÎÊı:
+	// å‚æ•°:
 	//   pCommand:
-	//		Ö´ĞĞÃüÁî¡£
+	//		æ‰§è¡Œå‘½ä»¤ã€‚
 	//	pOutMsg:
-	//		µ÷ÓÃÇé¿ö£¬´íÎóĞÅÏ¢
+	//		è°ƒç”¨æƒ…å†µï¼Œé”™è¯¯ä¿¡æ¯
 	//	pRetValue:
-	//		µ÷ÓÃ³ÌĞòµÄ·µ»ØÖµ£¨½öÔÚµ÷ÓÃ³É¹¦Ê±ÓĞ²Î¿¼ĞÔ£©
+	//		è°ƒç”¨ç¨‹åºçš„è¿”å›å€¼ï¼ˆä»…åœ¨è°ƒç”¨æˆåŠŸæ—¶æœ‰å‚è€ƒæ€§ï¼‰
 	//
-	// ·µ»Ø½á¹û:
-	//         true  ³É¹¦
-	//         false Ê§°Ü
+	// è¿”å›ç»“æœ:
+	//         true  æˆåŠŸ
+	//         false å¤±è´¥
 	bool System(string pCommand,string &pOutMsg,int& pRetValue)
 	{
 		int status , ret ;
@@ -627,31 +627,31 @@ namespace Common
 			ret = status >>8 ;
 			if( ret == 0x7F )
 			{
-				pOutMsg=String("µ÷ÓÃ³ÌĞò[")+pCommand+"]²»´æÔÚ\n";
+				pOutMsg=String("è°ƒç”¨ç¨‹åº[")+pCommand+"]ä¸å­˜åœ¨\n";
 				return false ;
 			}
 			else
 			{
 				pRetValue = ret ;
-				pOutMsg=String("³ÌĞòÕı³£µ÷ÓÃ½áÊø,·µ»ØÖµÊÇ[")+ret+"]\n";
+				pOutMsg=String("ç¨‹åºæ­£å¸¸è°ƒç”¨ç»“æŸ,è¿”å›å€¼æ˜¯[")+ret+"]\n";
 				return true ;
 			}
 		}
 		else if( ((status & 0x80)^0x7F)==0 )
 		{
 			ret = status >>8 ;
-			pOutMsg=String("µ÷ÓÃµÄ×Ó³ÌĞòÖĞ¶Ï,ÒıÆğÖĞ¶ÏµÄĞÅºÅÊÇ:")+ret+"]\n";
+			pOutMsg=String("è°ƒç”¨çš„å­ç¨‹åºä¸­æ–­,å¼•èµ·ä¸­æ–­çš„ä¿¡å·æ˜¯:")+ret+"]\n";
 			return false ;
 		}
 		else if( ( ( (status&0x7F)+1)>>1) > 0 )
 		{
 			ret = status & 0x7F ;
-			pOutMsg=String("ÓÉĞÅºÅ[")+ret+"]ÒıÆğ½áÊø\n";
+			pOutMsg=String("ç”±ä¿¡å·[")+ret+"]å¼•èµ·ç»“æŸ\n";
 			return false ;
 		}
 		else if( (status & 0x80) ==0 )
 		{
-			pOutMsg="²úÉúcoredump";
+			pOutMsg="äº§ç”Ÿcoredump";
 			return false ;
 		}
 		else
@@ -669,30 +669,30 @@ namespace Common
 			ret = status >>8 ;
 			if( ret == 0x7F )
 			{
-				pOutMsg=String("µ÷ÓÃ³ÌĞò[")+pCommand+"]²»´æÔÚ\n";
+				pOutMsg=String("è°ƒç”¨ç¨‹åº[")+pCommand+"]ä¸å­˜åœ¨\n";
 				return -1 ;
 			}
 			else
 			{
-				pOutMsg=String("³ÌĞòÕı³£µ÷ÓÃ½áÊø,·µ»ØÖµÊÇ[")+ret+"]\n";
+				pOutMsg=String("ç¨‹åºæ­£å¸¸è°ƒç”¨ç»“æŸ,è¿”å›å€¼æ˜¯[")+ret+"]\n";
 				return ret ;
 			}
 		}
 		else if( ((status & 0x80)^0x7F)==0 )
 		{
 			ret = status >>8 ;
-			pOutMsg=String("µ÷ÓÃµÄ×Ó³ÌĞòÖĞ¶Ï,ÒıÆğÖĞ¶ÏµÄĞÅºÅÊÇ:")+ret+"]\n";
+			pOutMsg=String("è°ƒç”¨çš„å­ç¨‹åºä¸­æ–­,å¼•èµ·ä¸­æ–­çš„ä¿¡å·æ˜¯:")+ret+"]\n";
 			return -1 ;
 		}
 		else if( ( ( (status&0x7F)+1)>>1) > 0 )
 		{
 			ret = status & 0x7F ;
-			pOutMsg=String("ÓÉĞÅºÅ[")+ret+"]ÒıÆğ½áÊø\n";
+			pOutMsg=String("ç”±ä¿¡å·[")+ret+"]å¼•èµ·ç»“æŸ\n";
 			return -1 ;
 		}
 		else if( (status & 0x80) ==0 )
 		{
-			pOutMsg="²úÉúcoredump";
+			pOutMsg="äº§ç”Ÿcoredump";
 			return -1 ;
 		}
 		else
@@ -703,11 +703,11 @@ namespace Common
 
 #if OSTYPE>10
 	//
-	//ÕªÒª:
-	//       Fork³ö×Ó½ø³Ì´®ĞĞÖ´ĞĞÒ»ÏµÁĞÃüÁî
-	//²ÎÊı:
+	//æ‘˜è¦:
+	//       Forkå‡ºå­è¿›ç¨‹ä¸²è¡Œæ‰§è¡Œä¸€ç³»åˆ—å‘½ä»¤
+	//å‚æ•°:
 	//	lst_appName:
-	//		Ö´ĞĞÃüÁîµÄÁĞ±í
+	//		æ‰§è¡Œå‘½ä»¤çš„åˆ—è¡¨
 	//
 	int ForkRun(list<string> lst_appName)
 	{
@@ -715,7 +715,7 @@ namespace Common
 		list<string>::iterator appIterator ;
 		if((p_id=fork())>0)
 		{
-			//while(pidLen)			//Ñ­»·µÈ´ı×Ó½ø³Ì pidLen ×Ó½ø³ÌÊı
+			//while(pidLen)			//å¾ªç¯ç­‰å¾…å­è¿›ç¨‹ pidLen å­è¿›ç¨‹æ•°
 			//{
 			//	int stat;
 			//	int rt;
@@ -724,12 +724,12 @@ namespace Common
 			//	{
    // 				pidLen--;
    // 				if(stat)
-   // 					return false;//×Ó½ø³ÌÖ´ĞĞÊ§°Ü
+   // 					return false;//å­è¿›ç¨‹æ‰§è¡Œå¤±è´¥
 			//		printf("Child %d exit status: %d\n", rt, WEXITSTATUS(stat));
 			//	}
 			//}
 	//		int e, status;
-	//      for(;;)	//µÈ´ı
+	//      for(;;)	//ç­‰å¾…
 	//      {
 	//			e = waitpid(pid,&status,WNOHANG);
 	//          if(e<0)
@@ -740,14 +740,14 @@ namespace Common
 	//          usleep(500);
 	//		}
 		}
-		else if(p_id==0)   //×Ó½ø³ÌÆô¶¯×Ó½ø³Ì
+		else if(p_id==0)   //å­è¿›ç¨‹å¯åŠ¨å­è¿›ç¨‹
 		{
 			for (appIterator=lst_appName.begin(); appIterator!=lst_appName.end();++appIterator)
 			{
     			cout << *appIterator << endl;
     			system( (*appIterator).c_str()) ;
 			}
-			printf("×Ó½ø³ÌÍê±Ï\n");
+			printf("å­è¿›ç¨‹å®Œæ¯•\n");
 			exit(0);
 		}
 		else if (p_id<0)
@@ -796,14 +796,14 @@ namespace Common
 		const char reject_key[]="Total logical records rejected:";
 #else
 		char error_key[]="SQL*Loader-" ;
-		const char table_key[] ="±í";
-		const char read_key[] = "¶ÁÈ¡µÄÂß¼­¼ÇÂ¼×ÜÊı:";
-		const char reject_key[]="¾Ü¾øµÄÂß¼­¼ÇÂ¼×ÜÊı:";
+		const char table_key[] ="è¡¨";
+		const char read_key[] = "è¯»å–çš„é€»è¾‘è®°å½•æ€»æ•°:";
+		const char reject_key[]="æ‹’ç»çš„é€»è¾‘è®°å½•æ€»æ•°:";
 #endif
 
 		if( (log_stream=fopen(log_file, "r" ))==NULL)
 		{
-			cout<< "SQL*LoaderÈÕÖ¾ÎÄ¼ş[" << log_file <<"] open failed" <<endl;
+			cout<< "SQL*Loaderæ—¥å¿—æ–‡ä»¶[" << log_file <<"] open failed" <<endl;
 			return false ;
 		}
 		fseek(log_stream,0L,SEEK_SET) ;
@@ -854,10 +854,10 @@ namespace Common
 		if( recordRead>0 && recordReject>0 )
 		{
 			bSuccess=false;
-			sprintf(s_temp,"SQL*Loader Ê§°Ü,Ä¿±ê±í:[%s],¼ÇÂ¼×ÜÊı:[%ld],Òì³£¼ÇÂ¼Êı:[%ld]\0",tableName,recordRead,recordReject);
+			sprintf(s_temp,"SQL*Loader å¤±è´¥,ç›®æ ‡è¡¨:[%s],è®°å½•æ€»æ•°:[%ld],å¼‚å¸¸è®°å½•æ•°:[%ld]\0",tableName,recordRead,recordReject);
 		}
 		if(bSuccess)
-			sprintf(s_temp,"SQL*Loader ³É¹¦,Ä¿±ê±í:[%s],¼ÇÂ¼×ÜÊı:[%ld],Òì³£¼ÇÂ¼Êı:[%ld]\0",tableName,recordRead,recordReject);
+			sprintf(s_temp,"SQL*Loader æˆåŠŸ,ç›®æ ‡è¡¨:[%s],è®°å½•æ€»æ•°:[%ld],å¼‚å¸¸è®°å½•æ•°:[%ld]\0",tableName,recordRead,recordReject);
 		out_msg=s_temp;
 		return bSuccess;
 	}

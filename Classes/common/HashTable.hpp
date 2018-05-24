@@ -10,7 +10,7 @@
 //				modify and redistribute it for any purpose is hereby granted
 //				without fee, provided that the above copyright notice appear
 //				in all copies.
-//funcation		ÎÄ¼şÊı¾İ¿âhash±í¡£
+//funcation		æ–‡ä»¶æ•°æ®åº“hashè¡¨ã€‚
 // ==============================================================
 
 #ifndef __Common_HashTable_H__
@@ -29,11 +29,11 @@ namespace Common
 		struct HashNode
 		{
 		public:
-			unsigned long long next;					//Á´±í ÏÂÒ»¸öÎ»ÖÃ
-			unsigned int hashCode;						//hashÖµ
-			unsigned int hashCode2;						//hashÖµ  ÓÃÓÚ×Ö·û´®Ğ£Ñé
-			VALUET  val;									/* µ±Ç°½ÚµãÊı¾İÎ»ÖÃ*/
-			unsigned int hashCode3;						//hashÖµ  ÓÃÓÚ×Ö·û´®Ğ£Ñé
+			unsigned long long next;					//é“¾è¡¨ ä¸‹ä¸€ä¸ªä½ç½®
+			unsigned int hashCode;						//hashå€¼
+			unsigned int hashCode2;						//hashå€¼  ç”¨äºå­—ç¬¦ä¸²æ ¡éªŒ
+			VALUET  val;									/* å½“å‰èŠ‚ç‚¹æ•°æ®ä½ç½®*/
+			unsigned int hashCode3;						//hashå€¼  ç”¨äºå­—ç¬¦ä¸²æ ¡éªŒ
 			HashNode():hashCode(0),next(0),val(VALUET()),hashCode2(0),hashCode3(0){};
 			HashNode(const KEYT &key):next(0),val(VALUET())
 			{
@@ -54,23 +54,23 @@ namespace Common
 	public:
 		HashTable(int _size=0):hashSize(_size),nodes(NULL),nodeNum(0){};
 		~HashTable(){clear();};
-		//  Ìí¼Ó½Úµãµ½HashTableÖĞ
+		//  æ·»åŠ èŠ‚ç‚¹åˆ°HashTableä¸­
 		inline bool addNode(HashNode * node)
 		{
 			if(nodes==NULL)
 			{
-				if(this->hashSize==0)EXP("addNodeÎ´ÉèÖÃhash³õÊ¼»¯´óĞ¡");
+				if(this->hashSize==0)EXP("addNodeæœªè®¾ç½®hashåˆå§‹åŒ–å¤§å°");
 				try
 				{
-					nodes=new HashNode[this->hashSize];	//·ÖÅä´æ´¢¿Õ¼ä
+					nodes=new HashNode[this->hashSize];	//åˆ†é…å­˜å‚¨ç©ºé—´
 				}
 				catch(...)
 				{
-					EXP("hash±íÄÚ´æ¿Õ¼ä·ÖÅäÊ§°Ü");
+					EXP("hashè¡¨å†…å­˜ç©ºé—´åˆ†é…å¤±è´¥");
 				}
 			}
 			if(node->hashCode==0){delete node;return false;}
-			unsigned int curIndex=node->hashCode%this->hashSize;					//È¡Ë÷ÒıÎ»ÖÃ;
+			unsigned int curIndex=node->hashCode%this->hashSize;					//å–ç´¢å¼•ä½ç½®;
 			if(nodes[curIndex].hashCode==0)
 			{
 				nodes[curIndex]=*node;
@@ -81,7 +81,7 @@ namespace Common
 			}
 			else
 			{
-				if(nodes[curIndex].hashCode==node->hashCode						//ÏàÍ¬key²»ÔÙ´¦Àí
+				if(nodes[curIndex].hashCode==node->hashCode						//ç›¸åŒkeyä¸å†å¤„ç†
 					&& nodes[curIndex].hashCode2==node->hashCode2
 					&& nodes[curIndex].hashCode3==node->hashCode3 )
 				{
@@ -93,7 +93,7 @@ namespace Common
 				while(pNode->next)
 				{
 					pNode=(HashNode *)(pNode->next);
-					if(pNode->hashCode==node->hashCode						//ÏàÍ¬key²»ÔÙ´¦Àí
+					if(pNode->hashCode==node->hashCode						//ç›¸åŒkeyä¸å†å¤„ç†
 						&& pNode->hashCode2==node->hashCode2
 						&& pNode->hashCode3==node->hashCode3
 						)
@@ -106,13 +106,13 @@ namespace Common
 				return true;
 			}
 		};
-		//  Ìí¼Ó½Úµãµ½HashTableÖĞ
+		//  æ·»åŠ èŠ‚ç‚¹åˆ°HashTableä¸­
 		inline bool addNode(const KEYT &key,const VALUET &val)
 		{
 			HashNode *node=getHashNode(key,val);
 			return addNode(node);
 		};
-		//  ÖØĞÂÉèÖÃÈİÆ÷´óĞ¡,Ã¿µ÷ÓÃÒ»´Î¶¼»áÒıÆğÒÑÓĞÊı¾İµÄ¿½±´ÒÆ¶¯
+		//  é‡æ–°è®¾ç½®å®¹å™¨å¤§å°,æ¯è°ƒç”¨ä¸€æ¬¡éƒ½ä¼šå¼•èµ·å·²æœ‰æ•°æ®çš„æ‹·è´ç§»åŠ¨
 		inline void resize(int hashSize)
 		{
 			if(hashSize>this->hashSize)
@@ -123,8 +123,8 @@ namespace Common
 				nodes=new HashNode[this->hashSize];
 				for(int i=0;i<oldSize;i++)
 				{
-					if(tempNodes[i].hashCode==0)continue;									//´æÔÚÊı¾İ
-					unsigned int curIndex=tempNodes[i].hashCode%this->hashSize;				//È¡Ë÷ÒıÎ»ÖÃ;
+					if(tempNodes[i].hashCode==0)continue;									//å­˜åœ¨æ•°æ®
+					unsigned int curIndex=tempNodes[i].hashCode%this->hashSize;				//å–ç´¢å¼•ä½ç½®;
 					HashNode * node=new HashNode();
 					(*node)=tempNodes[i];
 					node->next=0;
@@ -146,15 +146,15 @@ namespace Common
 				delete []tempNodes;
 			}
 		};
-		//	ÖØÉè´óĞ¡,²»±£ÁôÒÔÇ°Öµ
+		//	é‡è®¾å¤§å°,ä¸ä¿ç•™ä»¥å‰å€¼
 		inline void setSize(int hashSize)
 		{
 			if(this->nodes==NULL)
 				this->hashSize=hashSize;
 		};
-		//	·µ»Øhash±í´óĞ¡
+		//	è¿”å›hashè¡¨å¤§å°
 		inline int getSize(){return this->hashSize;};
-		//  ÇåÀíÊı¾İ
+		//  æ¸…ç†æ•°æ®
 		inline void clear()
 		{
 			if(nodes)
@@ -178,7 +178,7 @@ namespace Common
 			nodes=NULL;
 			nodeNum=0;
 		}
-		//ÒÆ³ıÒ»¸ö¹Ø¼ü×Ö
+		//ç§»é™¤ä¸€ä¸ªå…³é”®å­—
 		inline bool remove(const KEYT &key)
 		{
 			if(nodes==NULL)return false;
@@ -193,7 +193,7 @@ namespace Common
 				&& pNode->hashCode3==hashCode3
 				)
 			{
-				if(pNode->next==0)//ÎŞºóĞø½Úµã
+				if(pNode->next==0)//æ— åç»­èŠ‚ç‚¹
 				{
 					pNode->hashCode=0;
 					pNode->hashCode2=0;
@@ -236,19 +236,19 @@ namespace Common
 			return false;
 		}
 
-		//	²Ù×÷·ûÖØÔØ,·µ»ØÖµÒıÓÃ
+		//	æ“ä½œç¬¦é‡è½½,è¿”å›å€¼å¼•ç”¨
 		inline VALUET &operator[](const KEYT &key)
 		{
 			if(nodes==NULL)
 			{
-				if(this->hashSize==0)EXP("operator[]Î´ÉèÖÃhash³õÊ¼»¯´óĞ¡");
+				if(this->hashSize==0)EXP("operator[]æœªè®¾ç½®hashåˆå§‹åŒ–å¤§å°");
 				try
 				{
-					nodes=new HashNode[this->hashSize];	//·ÖÅä´æ´¢¿Õ¼ä
+					nodes=new HashNode[this->hashSize];	//åˆ†é…å­˜å‚¨ç©ºé—´
 				}
 				catch(...)
 				{
-					EXP("hash±íÄÚ´æ¿Õ¼ä·ÖÅäÊ§°Ü");
+					EXP("hashè¡¨å†…å­˜ç©ºé—´åˆ†é…å¤±è´¥");
 				}
 			}
 			HashNode *node=getHashNode(key);
@@ -269,7 +269,7 @@ namespace Common
 					&& pNode->hashCode3==node->hashCode3
 					)
 				{
-					delete node;									//ÒÑ¾­´æÔÚ
+					delete node;									//å·²ç»å­˜åœ¨
 					return pNode->val;
 				}
 				curNode=pNode;
@@ -278,10 +278,10 @@ namespace Common
 			curNode->next=(unsigned long long)node;
 			return node->val;
 		};
-		//	´ÓÄÚ´æ²éÕÒ
+		//	ä»å†…å­˜æŸ¥æ‰¾
 		inline bool find(const KEYT &key,VALUET &val,bool exp=false)
 		{
-			if(nodes==NULL)if(exp)EXP("Ã»ÓĞ³õÊ¼»¯½ÚµãÊı¾İ.")else return false;
+			if(nodes==NULL)if(exp)EXP("æ²¡æœ‰åˆå§‹åŒ–èŠ‚ç‚¹æ•°æ®.")else return false;
 			unsigned int hashCode,hashCode2,hashCode3,curIndex;
 			hashCode=HASHMATH_METHOD1(key);
 			hashCode2=HASHMATH_METHOD2(key);
@@ -293,7 +293,7 @@ namespace Common
 			{
 				if(pNode->hashCode==hashCode
 					&& pNode->hashCode2==hashCode2 
-					&& pNode->hashCode3==hashCode3					//Èı´ÎhashÏàµÈ
+					&& pNode->hashCode3==hashCode3					//ä¸‰æ¬¡hashç›¸ç­‰
 					)
 				{
 					val=pNode->val;
@@ -303,7 +303,7 @@ namespace Common
 			}
 			return false;
 		};
-		//ÑéÖ¤Ò»¸öKEYÊÇ·ñ´æÔÚ
+		//éªŒè¯ä¸€ä¸ªKEYæ˜¯å¦å­˜åœ¨
 		inline bool contain(const KEYT &key)
 		{
 			if(nodes==NULL)return false;
@@ -318,7 +318,7 @@ namespace Common
 			{
 				if(pNode->hashCode==hashCode
 					&& pNode->hashCode2==hashCode2 
-					&& pNode->hashCode3==hashCode3					//Èı´ÎhashÏàµÈ
+					&& pNode->hashCode3==hashCode3					//ä¸‰æ¬¡hashç›¸ç­‰
 					)
 				{
 					return true;
@@ -327,7 +327,7 @@ namespace Common
 			}
 			return false;
 		};
-		//     ´ÓÎÄ¼ş²éÕÒ
+		//     ä»æ–‡ä»¶æŸ¥æ‰¾
 		inline static bool find(FILE *pkeyFile,const KEYT &key,VALUET &val,int hashSize)
 		{
 			if(!pkeyFile)return false;
@@ -340,12 +340,12 @@ namespace Common
 			long long curPos=NodeSize*curIndex;
 			fseek(pkeyFile, curPos, SEEK_SET);
 			int len= fread(&tempNode,1,NodeSize,pkeyFile);//return false;
-			if(len!=NodeSize)	EXP("¶ÁÈ¡keyÊı¾İ·¢Éú´íÎó,Î´¶ÁÈ¡µ½Ö¸¶¨³¤¶ÈµÄÊı¾İ.");
+			if(len!=NodeSize)	EXP("è¯»å–keyæ•°æ®å‘ç”Ÿé”™è¯¯,æœªè¯»å–åˆ°æŒ‡å®šé•¿åº¦çš„æ•°æ®.");
 			while(tempNode.hashCode%hashSize==curIndex)
 			{
 				if(tempNode.hashCode==hashCode
 					&& tempNode.hashCode2==hashCode2 
-					&& tempNode.hashCode3==hashCode3					//Èı´ÎhashÏàµÈ
+					&& tempNode.hashCode3==hashCode3					//ä¸‰æ¬¡hashç›¸ç­‰
 					)
 				{
 					val=tempNode.val;
@@ -356,27 +356,27 @@ namespace Common
 				fread(&tempNode,1,NodeSize,pkeyFile);
 				if(tempNode.hashCode==0)
 				{
-					return false;						//Î´ÕÒµ½
+					return false;						//æœªæ‰¾åˆ°
 				}
 			}
 			return false;
 		};
 		//
-		// ÕªÒª:
-		//	´ÓÎÄ¼ş²éÕÒkey
+		// æ‘˜è¦:
+		//	ä»æ–‡ä»¶æŸ¥æ‰¾key
 		//
 		inline bool find(FILE *pkeyFile,const KEYT &key,VALUET &val)
 		{
 			return find(pkeyFile,key,val,this->hashSize);
 		};
-		//     ½«HashTableÊı¾İĞ´³ÉÎÄ¼ş,Ğ´Íêºó»áÉ¾³ıHashTable ÖĞµÄÄÚ´æÊı¾İ
-		inline int writeFile(FILE *pkeyFile,bool printAnalyse=false)					//Ğ´ÈëÎÄ¼ş
+		//     å°†HashTableæ•°æ®å†™æˆæ–‡ä»¶,å†™å®Œåä¼šåˆ é™¤HashTable ä¸­çš„å†…å­˜æ•°æ®
+		inline int writeFile(FILE *pkeyFile,bool printAnalyse=false)					//å†™å…¥æ–‡ä»¶
 		{
 			if(printAnalyse)
 			{
 				Array<int> distributing;
 				int res=writeFile(pkeyFile,&distributing);
-				cout<<"hashÁ´±íÉî¶È: "<< distributing[0] <<endl;
+				cout<<"hashé“¾è¡¨æ·±åº¦: "<< distributing[0] <<endl;
 				int countPos=0;
 				for(int i=1;i<distributing.size();i++)
 				{
@@ -384,26 +384,26 @@ namespace Common
 				}
 				for(int i=1;i<distributing.size();i++)
 				{
-					cout<<"hash "<<i<<" ´Î¶¨Î»Êı: "<< distributing[i] <<" Õ¼±È: "<< (double)distributing[i]/countPos <<endl;
+					cout<<"hash "<<i<<" æ¬¡å®šä½æ•°: "<< distributing[i] <<" å æ¯”: "<< (double)distributing[i]/countPos <<endl;
 				}
-				cout<<"hash±íÊ¹ÓÃÂÊ: "<< (double)distributing[1]*100/this->hashSize <<endl;
+				cout<<"hashè¡¨ä½¿ç”¨ç‡: "<< (double)distributing[1]*100/this->hashSize <<endl;
 				return res;
 			}
 			else
 				return writeFile(pkeyFile,(Array<int> *)NULL);
 		};
-		inline int writeFile(FILE *pkeyFile,Array<int> *distributing)					//Ğ´ÈëÎÄ¼ş
+		inline int writeFile(FILE *pkeyFile,Array<int> *distributing)					//å†™å…¥æ–‡ä»¶
 		{
 			if(nodes==NULL)
 			{
-				if(this->hashSize==0)EXP("writeFileÎ´ÉèÖÃhash³õÊ¼»¯´óĞ¡");
+				if(this->hashSize==0)EXP("writeFileæœªè®¾ç½®hashåˆå§‹åŒ–å¤§å°");
 				try
 				{
-					nodes=new HashNode[this->hashSize];	//·ÖÅä´æ´¢¿Õ¼ä
+					nodes=new HashNode[this->hashSize];	//åˆ†é…å­˜å‚¨ç©ºé—´
 				}
 				catch(...)
 				{
-					EXP("hash±íÄÚ´æ¿Õ¼ä·ÖÅäÊ§°Ü");
+					EXP("hashè¡¨å†…å­˜ç©ºé—´åˆ†é…å¤±è´¥");
 				}
 			}
 			long long curPos=0;
@@ -411,12 +411,12 @@ namespace Common
 			HashNode * pNode,* curNode,*nextNode;
 
 			HashNode tempNode=HashNode();
-			fseek(pkeyFile,(this->hashSize-1) * NodeSize ,SEEK_SET);			//Ö±½ÓĞ´Èë×î´ó³¤¶È
+			fseek(pkeyFile,(this->hashSize-1) * NodeSize ,SEEK_SET);			//ç›´æ¥å†™å…¥æœ€å¤§é•¿åº¦
 			len=fwrite(&tempNode,1,NodeSize,pkeyFile);
 			fflush(pkeyFile);
 			long fileSize=ftell(pkeyFile);
 			if(len!=NodeSize || fileSize!=this->hashSize*NodeSize)
-				EXP("³õÊ¼»¯hashÎÄ¼ş´óĞ¡·¢Éú´íÎó.");
+				EXP("åˆå§‹åŒ–hashæ–‡ä»¶å¤§å°å‘ç”Ÿé”™è¯¯.");
 			for(int i=0;i<this->hashSize;i++)
 			{
 				if(nodes[i].hashCode==0)continue;
@@ -430,7 +430,7 @@ namespace Common
 					curPos= i * NodeSize;
 					fseek(pkeyFile, curPos, SEEK_SET);
 					len=fwrite(curNode,1,NodeSize,pkeyFile);
-					if(len!=NodeSize)	EXP("Ğ´ÈëhashÎÄ¼ş·¢Éú´íÎó.");
+					if(len!=NodeSize)	EXP("å†™å…¥hashæ–‡ä»¶å‘ç”Ÿé”™è¯¯.");
 					while(nextNode)
 					{
 						if(distributing)(*distributing)[depth++]++;
@@ -451,32 +451,32 @@ namespace Common
 					fseek(pkeyFile, curPos, SEEK_SET);
 					len=fwrite(curNode,1,NodeSize,pkeyFile);
 					if(len!=NodeSize)
-						EXP("Ğ´ÈëhashÎÄ¼ş·¢Éú´íÎó.");
+						EXP("å†™å…¥hashæ–‡ä»¶å‘ç”Ÿé”™è¯¯.");
 				}
 			}
 			delete [] nodes;
 			nodes=NULL;
 			return repeatCount;
 		};
-		//     Ö±½Ó½«KEYĞ´ÈëÎÄ¼ş
+		//     ç›´æ¥å°†KEYå†™å…¥æ–‡ä»¶
 		inline static int writeFile(FILE *pkeyFile,const KEYT &key,const VALUET &val,int &repeatCount,int hashSize)
 		{
-			if(!pkeyFile)EXP("keyÎÄ¼şÖ¸ÕëÎª¿Õ.");
-			//Ö±½ÓĞ´ÈëÎÄ¼ş
+			if(!pkeyFile)EXP("keyæ–‡ä»¶æŒ‡é’ˆä¸ºç©º.");
+			//ç›´æ¥å†™å…¥æ–‡ä»¶
 			int len=0;
 			HashNode node(key,val);
 			if(node.hashCode==0)return -1;
-			unsigned int curIndex=node.hashCode % hashSize;					//È¡Ë÷ÒıÎ»ÖÃ;
+			unsigned int curIndex=node.hashCode % hashSize;					//å–ç´¢å¼•ä½ç½®;
 			long long curPos=NodeSize*curIndex;
 			fseek(pkeyFile, curPos, SEEK_SET);
 			HashNode tempNode;
 			len= fread(&tempNode,1,NodeSize,pkeyFile);
-			if(len!=NodeSize)	EXP("¶ÁÈ¡keyÊı¾İ·¢Éú´íÎó,Î´¶ÁÈ¡µ½Ö¸¶¨³¤¶ÈµÄÊı¾İ.");
+			if(len!=NodeSize)	EXP("è¯»å–keyæ•°æ®å‘ç”Ÿé”™è¯¯,æœªè¯»å–åˆ°æŒ‡å®šé•¿åº¦çš„æ•°æ®.");
 			if(tempNode.hashCode==0)
 			{
 				fseek(pkeyFile, curPos, SEEK_SET);
 				len=fwrite(&node,1,NodeSize,pkeyFile);
-				if(len!=NodeSize)	EXP("Ğ´ÈëhashÎÄ¼ş·¢Éú´íÎó.");
+				if(len!=NodeSize)	EXP("å†™å…¥hashæ–‡ä»¶å‘ç”Ÿé”™è¯¯.");
 			}
 			else
 			{
@@ -503,18 +503,18 @@ namespace Common
 			}
 			return 1;
 		};
-		//	»ñÈ¡ĞÂhash½ÚµãµÄÖ¸Õë
+		//	è·å–æ–°hashèŠ‚ç‚¹çš„æŒ‡é’ˆ
 		static HashNode * getHashNode(const KEYT &key,const VALUET &val)
 		{
 			return new HashNode(key,val);
 		};
-		//	»ñÈ¡ĞÂhash½ÚµãµÄÖ¸Õë
+		//	è·å–æ–°hashèŠ‚ç‚¹çš„æŒ‡é’ˆ
 		static HashNode * getHashNode(const KEYT &key)
 		{
 			HashNode *node=new HashNode(key);
 			return node;
 		};
-		//	·ÖÎöhash±í
+		//	åˆ†æhashè¡¨
 		inline void analyse()
 		{
 			vector<int> distributing;
@@ -549,7 +549,7 @@ namespace Common
 						}
 					}
 				}
-				cout<<"hashÁ´±íÉî¶È: "<< distributing[0] <<endl;
+				cout<<"hashé“¾è¡¨æ·±åº¦: "<< distributing[0] <<endl;
 				int countPos=0;
 				for(int i=1;i<distributing.size();i++)
 				{
@@ -557,17 +557,17 @@ namespace Common
 				}
 				for(int i=1;i<distributing.size();i++)
 				{
-					cout<<"hash "<<i<<" ´Î¶¨Î»Êı: "<< distributing[i] <<" Õ¼±È: "<< (double)distributing[i]/countPos <<endl;
+					cout<<"hash "<<i<<" æ¬¡å®šä½æ•°: "<< distributing[i] <<" å æ¯”: "<< (double)distributing[i]/countPos <<endl;
 				}
-				cout<<"hash±íÊ¹ÓÃÂÊ: "<< (double)distributing[1]*100/this->hashSize <<endl;
+				cout<<"hashè¡¨ä½¿ç”¨ç‡: "<< (double)distributing[1]*100/this->hashSize <<endl;
 			}
 			else
 			{
-				cout<<"²»´æÔÚhash½Úµã! " <<endl;
+				cout<<"ä¸å­˜åœ¨hashèŠ‚ç‚¹! " <<endl;
 			}
 			distributing.clear();
 		};
-		//	»ñÈ¡hash±íÉî¶È
+		//	è·å–hashè¡¨æ·±åº¦
 		inline int getDepth()
 		{
 			int depth=1;

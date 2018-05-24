@@ -20,7 +20,7 @@ namespace Common
 	{
 		//static char p[40];
 	public :
-		//2.1 PHPÖĞ³öÏÖµÄ×Ö·û´®Hashº¯Êı 0%
+		//2.1 PHPä¸­å‡ºç°çš„å­—ç¬¦ä¸²Hashå‡½æ•° 0%
 		inline static unsigned int hashpjw(const char *key, unsigned int nKeyLength) 
 		{ 
 			char *arKey=(char *)key;
@@ -37,7 +37,7 @@ namespace Common
 			}
 			return h;
 		} 
-		//2.2 OpenSSLÖĞ³öÏÖµÄ×Ö·û´®Hashº¯Êı  OpenSSL_Hash1: ÖØ¸´¶ÈÌ«¸ß
+		//2.2 OpenSSLä¸­å‡ºç°çš„å­—ç¬¦ä¸²Hashå‡½æ•°  OpenSSL_Hash1: é‡å¤åº¦å¤ªé«˜
 		inline static unsigned int lh_strhash(const char *str,unsigned int l) 
 		{ 
 			int i; 
@@ -79,7 +79,7 @@ namespace Common
 			return((ret>>16)^ret); 
 		} 
 
-		//2.3 MySqlÖĞ³öÏÖµÄ×Ö·û´®Hashº¯Êı  1%
+		//2.3 MySqlä¸­å‡ºç°çš„å­—ç¬¦ä¸²Hashå‡½æ•°  1%
 		inline static unsigned int calc_hashnr(const char *key, unsigned int len) 
 		{ 
 			const char *end=key+len; 
@@ -126,7 +126,7 @@ namespace Common
 		} 
 
 
-	//2.4 ÁíÒ»¸ö¾­µä×Ö·û´®Hashº¯Êı 0%
+	//2.4 å¦ä¸€ä¸ªç»å…¸å­—ç¬¦ä¸²Hashå‡½æ•° 0%
 		inline static unsigned int hashsp(const char *str, int l) 
 		{ 
 			register unsigned int h; 

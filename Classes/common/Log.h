@@ -20,7 +20,7 @@ namespace Common
 	class DbLog
 	{
 	public:
-		static void * _con ;//	ÅäÖÃÊı¾İ¿âÁ¬½Ó¶ÔÏó
+		static void * _con ;//	é…ç½®æ•°æ®åº“è¿æ¥å¯¹è±¡
 		static void * _rs;
 		static bool writeDbLogFlag;
 		static String dbLogTable;
@@ -29,7 +29,7 @@ namespace Common
 		static void writeDbLog(String & msg,Log *log,bool isDebug,int type);
 	};
 	///	<summary>
-	///	ÈÕÖ¾¶ÔÏó,Ğ´ÎÄ±¾ÈÕÖ¾
+	///	æ—¥å¿—å¯¹è±¡,å†™æ–‡æœ¬æ—¥å¿—
 	///	</summary>
 	///	<remarks>
 	///	
@@ -50,7 +50,7 @@ namespace Common
 		static const string TypeName[];
         Log(string _AppName="")
 		{
-			//cout<<"³õÊ¼»¯ÈÕÖ¾¶ÔÏó"<<endl;
+			//cout<<"åˆå§‹åŒ–æ—¥å¿—å¯¹è±¡"<<endl;
 			LogDirName="log";
             AppName = _AppName;
 			isFirst=true;
@@ -74,15 +74,15 @@ namespace Common
 			log.WriteLogToFile(strMessage,strAppCategory,2);
 		};
 		//
-		//ÕªÒª
-		//	ÈÕÖ¾´òÓ¡
-		//²ÎÊı:
+		//æ‘˜è¦
+		//	æ—¥å¿—æ‰“å°
+		//å‚æ•°:
 		//	msg:
-		//		ÈÕÖ¾ĞÅÏ¢
+		//		æ—¥å¿—ä¿¡æ¯
 		//	strAppCategory:
-		//		ÈÕÖ¾ÎÄ¼ş·ÖÀà
+		//		æ—¥å¿—æ–‡ä»¶åˆ†ç±»
 		//	type:
-		//		ÈÕÖ¾ÀàĞÍ,0:Ö»ÔÚµ÷ÊÔÊ±Êä³ö,1:ÈÕÖ¾ÎÄ¼şĞÅÏ¢,2:´íÎóĞÅÏ¢,3:¾¯¸æ,4´¿´òÓ¡ĞÅÏ¢
+		//		æ—¥å¿—ç±»å‹,0:åªåœ¨è°ƒè¯•æ—¶è¾“å‡º,1:æ—¥å¿—æ–‡ä»¶ä¿¡æ¯,2:é”™è¯¯ä¿¡æ¯,3:è­¦å‘Š,4çº¯æ‰“å°ä¿¡æ¯
 		//
 		void writeLog(String msg,String strAppCategory,int type=1)
 		{

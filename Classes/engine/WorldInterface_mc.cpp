@@ -9,8 +9,7 @@ namespace engine
 {
   
     
-    
-
+   
     WorldInterface_mc::WorldInterface_mc() :barinfoback(NULL), healthbar(NULL), moneybar(NULL), butCastAir(NULL), butCastGolem(NULL), allSphereBack(NULL),
         butCastIceman(NULL), fastbtn(NULL), faster(NULL), buyFire(NULL), buyIce(NULL), buyLevin(NULL), buyStone(NULL), buyGetAll(NULL), allSphere(NULL),
         pause(NULL), startWaves(NULL), stoneBacklight(NULL), levinBacklight(NULL), iceBacklight(NULL), fireBacklight(NULL), iceBack(NULL), fireBack(NULL),
@@ -23,7 +22,7 @@ namespace engine
     {
         BaseNode::init();
         string basePath = "worldinterface/";
-        //Êó±êÒÆÉÏµÄ¹ı¶È¶¯»­
+        //Ë³ï¿½ë“†Êï¿½Ä¹ï¿½ï¿½
         //DBCCFactory::getInstance()->loadDragonBonesData(basePath + "sphere/spherelight/skeleton.xml", "spherelight");
         //DBCCFactory::getInstance()->loadTextureAtlas(basePath + "sphere/spherelight/texture.xml", "spherelight");
         //this->stoneBacklight = DBCCFactory::getInstance()->buildArmatureNode("spherelight");
@@ -75,18 +74,18 @@ namespace engine
         //node = cs.createNodeFromJson("D:\\work\\gm\\brave\\proj.win32\\Debug.win32\\worldinterface.json");
         this->addChild(node);
         this->autorelease();
-        //×óÉÏ
+        //Ø³Ê
         barinfoback = (Sprite *)node->getChildByName("barinfoback"); 
         healthbar = (Sprite *)node->getChildByName("healthbar");  
         moneybar = (Sprite *)node->getChildByName("moneybar");  
-        //×óÏÂ
+        //Ø³Ğ‚
         btncastback = (Sprite *)node->getChildByName("btncastback");  
         butCastAir = (Sprite *)node->getChildByName("butCastAir");   
         butCastGolem = (Sprite *)node->getChildByName("butCastGolem");   
         butCastIceman = (Sprite *)node->getChildByName("butCastIceman"); 
 
 
-        //¼¼ÄÜ±³¾°
+        //ï¿½ï¿½Åœï¿½ï¿½ï¿½ï¿½
         sphereback = (Sprite *)node->getChildByName("sphereback"); 
         iceBack = (Sprite *)node->getChildByName("iceBack");  
         fireBack = (Sprite *)node->getChildByName("fireBack");  
@@ -106,14 +105,14 @@ namespace engine
         
          
 
-        //¹ºÂò¼Û¸ñ±³¾°
+        //ï¿½ï¿½Ã²ï¿½Û¸ñ±³¾ï¿½
         buyFire = (Sprite *)node->getChildByName("buyFire");  
         buyIce = (Sprite *)node->getChildByName("buyIce");  
         buyLevin = (Sprite *)node->getChildByName("buyLevin"); 
         buyStone = (Sprite *)node->getChildByName("buyStone"); 
         buyGetAll = (Sprite *)node->getChildByName("buyGetAll");  
         
-        //Í¼Æ¬´úÌæ¶¯»­
+        //Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
         iceSphere = (Sprite *)node->getChildByName("iceSphere");   
         fireSphere = (Sprite *)node->getChildByName("fireSphere");  
         levinSphere = (Sprite *)node->getChildByName("levinSphere");  
@@ -195,7 +194,7 @@ namespace engine
         return true;
 
 
-        ////×óÉÏ
+        ////Ø³Ê
         //barinfoback = Sprite::create(basePath + "barinfo/barinfoback.png");
         //std::setAnchorPoint(barinfoback, 50, 500);
         //healthbar = Sprite::create(basePath + "barinfo/healthbar.png");
@@ -203,7 +202,7 @@ namespace engine
         //moneybar = Sprite::create(basePath + "barinfo/moneybar.png");
         //std::setAnchorPoint(moneybar, 90, 500);
 
-        ////×óÏÂ
+        ////Ø³Ğ‚
         //btncastback = Sprite::create(basePath + "btncastback/btncastback.png");
         //std::setAnchorPoint(btncastback, 50, 50);
         //butCastAir = Sprite::create(basePath + "btncastback/butCastAir.png");
@@ -213,7 +212,7 @@ namespace engine
         //butCastIceman = Sprite::create(basePath + "btncastback/butCastIceman.png");
         //std::setAnchorPoint(butCastIceman, 200, 50);
 
-        ////¼¼ÄÜ±³¾°
+        ////ï¿½ï¿½Åœï¿½ï¿½ï¿½ï¿½
         //sphereback = Sprite::create(basePath + "sphere/backsphere.png");
         //std::setAnchorPoint(sphereback, 250, 550);
         //iceBack = Sprite::create(basePath + "sphere/iceBack.png");
@@ -227,7 +226,7 @@ namespace engine
         //allSphere = Sprite::create(basePath + "sphere/allsphereback.png");
         //std::setAnchorPoint(allSphere, 450, 550);
 
-        ////¹ºÂò¼Û¸ñ±³¾°
+        ////ï¿½ï¿½Ã²ï¿½Û¸ñ±³¾ï¿½
         //buyFire = Sprite::create(basePath + "sphere/buypricebar.png");
         //std::setAnchorPoint(buyFire, 250, 500);
         //buyIce = Sprite::create(basePath + "sphere/buypricebar.png");
@@ -239,7 +238,7 @@ namespace engine
         //buyGetAll = Sprite::create(basePath + "sphere/buypricebar.png");
         //std::setAnchorPoint(buyGetAll, 450, 500);
 
-        ////Í¼Æ¬´úÌæ¶¯»­
+        ////Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
         //iceSphere = Sprite::create(basePath + "sphere/iceSphere.png");
         //std::setAnchorPoint(iceSphere, 250, 560);;
         //fireSphere = Sprite::create(basePath + "sphere/fireSphere.png");

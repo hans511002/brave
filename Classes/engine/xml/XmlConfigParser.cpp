@@ -1,4 +1,4 @@
-#include "XmlConfigParser.h"
+﻿#include "XmlConfigParser.h"
 
 namespace engine{
  
@@ -20,7 +20,7 @@ namespace engine{
 			}
 			return false;
 		}
-	}; 
+	};
 	bool XMLConfigParser::removeDoc(std::string fileName, std::string name){
 		std::map<std::string, dragonBones::XMLDocument *>::iterator it = xmlCache.find(name);
 		if (it != xmlCache.end()){

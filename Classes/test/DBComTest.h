@@ -65,7 +65,24 @@ protected:
 			{
 				this->gotoAndStop(4);
 			}
-			
+			this->cont = new MovieClipSub(this, this->getArmature()->getSlot("cont"));
+			this->dust1 = new MovieClipSub(this, this->getArmature()->getSlot("dust1"));
+			this->dust2 = new MovieClipSub(this, "dust2");
+			dragonBones::Armature * arm = cont->getArmature()->getSlot("blowing")->getChildArmature();
+			//while(arm == NULL)
+			//{
+			//	CCLOG("blowing arm = NULL this->cont->getName=%s  ", this->cont->getArmature()->getName().c_str());
+			//	arm=cont->getArmature()->getSlot("blowing")->getChildArmature();
+			//}
+			this->contBlowing = new MovieClipSub(cont, cont->getArmature()->getSlot("blowing"));
+
+			this->cont->gotoAndStop(48);
+			this->dust1->stop();
+			this->dust2->stop();
+			this->dust1->setVisible(false);// arm->getBone("dust1")->setVisible(false);
+			this->dust2->setVisible(false);// arm->getBone("dust2")->setVisible(false);
+			this->cont->play(0);
+
 		};
 		void clear()
 		{
@@ -78,28 +95,28 @@ protected:
 			//if(this->dust2)delete this->dust2;
 			//if(this->contBlowing)delete this->contBlowing;
 		};
-		virtual void gotoAndStop(int cur)
-		{
-			MovieClip::gotoAndStop(cur);
-			this->clear();
-			this->cont = new MovieClipSub(this,this->getArmature()->getSlot("cont") );
-			this->dust1 = new MovieClipSub(this, this->getArmature()->getSlot("dust1") );
-			this->dust2 = new MovieClipSub(this, "dust2" );
-			dragonBones::Armature * arm = cont->getArmature()->getSlot("blowing")->getChildArmature();
-			//while(arm == NULL)
-			//{
-			//	CCLOG("blowing arm = NULL this->cont->getName=%s  ", this->cont->getArmature()->getName().c_str());
-			//	arm=cont->getArmature()->getSlot("blowing")->getChildArmature();
-			//}
-			this->contBlowing = new MovieClipSub(cont, cont->getArmature()->getSlot("blowing"));
-			
-			this->cont->gotoAndStop(48);
-			this->dust1->stop();
-			this->dust2->stop();
-			this->dust1->arm->getBone("dust1")->setVisible(false);
-			this->dust2->arm->getBone("dust2")->setVisible(false);
-			this->cont->play(0);
-		};
+		//virtual void gotoAndStop(int cur)
+		//{
+		//	MovieClip::gotoAndStop(cur);
+		//	this->clear();
+		//	this->cont = new MovieClipSub(this,this->getArmature()->getSlot("cont") );
+		//	this->dust1 = new MovieClipSub(this, this->getArmature()->getSlot("dust1") );
+		//	this->dust2 = new MovieClipSub(this, "dust2" );
+		//	dragonBones::Armature * arm = cont->getArmature()->getSlot("blowing")->getChildArmature();
+		//	//while(arm == NULL)
+		//	//{
+		//	//	CCLOG("blowing arm = NULL this->cont->getName=%s  ", this->cont->getArmature()->getName().c_str());
+		//	//	arm=cont->getArmature()->getSlot("blowing")->getChildArmature();
+		//	//}
+		//	this->contBlowing = new MovieClipSub(cont, cont->getArmature()->getSlot("blowing"));
+		//	
+		//	this->cont->gotoAndStop(48);
+		//	this->dust1->stop();
+		//	this->dust2->stop();
+		//	this->dust1->setVisible(false);// arm->getBone("dust1")->setVisible(false);
+		//	this->dust2->setVisible(false);// arm->getBone("dust2")->setVisible(false);
+		//	this->cont->play(0);
+		//};
 	};
 	Air_mc * air;
  

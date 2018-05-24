@@ -14,7 +14,7 @@ namespace engine
         //public var tempObject:Object;
         int counter;//public var counter:int = 0;
         string type;
-        bool dead;
+        bool dead; 
         World* world;
 
         InTimer(string param1);

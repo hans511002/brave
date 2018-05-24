@@ -25,7 +25,7 @@ namespace Common
 
 		m_CloseTimeout=0;
 
-		m_SendTimeout=0;				//Ä¬ÈÏ×èÈû  262140=65535*4
+		m_SendTimeout=0;				//é»˜è®¤é˜»å¡  262140=65535*4
 		m_SendBufferSize=262144;		//256k
 
 		m_ReceiveBufferSize=262144;		//65536*4;
@@ -67,7 +67,7 @@ namespace Common
 		socketTime.tv_usec = int(microSeconds % 0xf4240);
 		return socketTime;
 	};
-	//	¹Ø±ÕÌ×½Ó×Ö ÉÏµÄ·¢ËÍºÍ½ÓÊÕ¡£
+	//	å…³é—­å¥—æ¥å­— ä¸Šçš„å‘é€å’Œæ¥æ”¶ã€‚
 	void Socket::Shutdown(SocketShutdown how)
 	{
 		if(this->m_socket>0)
@@ -194,9 +194,9 @@ namespace Common
 
 
 
-	//   preBuffer:°üº¬·¢ËÍÎÄ¼şÇ°Òª·¢ËÍµÄÊı¾İ¡£´Ë²ÎÊı¿ÉÒÔÎªnull¡£
-	//   postBuffer: °üº¬·¢ËÍÎÄ¼şºóÒª·¢ËÍµÄÊı¾İ¡£´Ë²ÎÊı¿ÉÒÔÎªnull¡£
-	//   fileName: Ëü°üº¬Òª·¢ËÍµÄÎÄ¼şµÄÂ·¾¶ºÍÃû³Æ¡£´Ë²ÎÊı¿ÉÒÔÎªnull¡£
+	//   preBuffer:åŒ…å«å‘é€æ–‡ä»¶å‰è¦å‘é€çš„æ•°æ®ã€‚æ­¤å‚æ•°å¯ä»¥ä¸ºnullã€‚
+	//   postBuffer: åŒ…å«å‘é€æ–‡ä»¶åè¦å‘é€çš„æ•°æ®ã€‚æ­¤å‚æ•°å¯ä»¥ä¸ºnullã€‚
+	//   fileName: å®ƒåŒ…å«è¦å‘é€çš„æ–‡ä»¶çš„è·¯å¾„å’Œåç§°ã€‚æ­¤å‚æ•°å¯ä»¥ä¸ºnullã€‚
 	void Socket::SendFile(string fileName, char * preBuffer, char * postBuffer)
 	{
 		Send(preBuffer,strlen(preBuffer));
@@ -217,21 +217,21 @@ namespace Common
 		SendFile(fileName, NULL, NULL);
 	};
 	//
-	// ÕªÒª:
-	//     È·¶¨Ò»¸ö»ò¶à¸öÌ×½Ó×ÖµÄ×´Ì¬¡£
+	// æ‘˜è¦:
+	//     ç¡®å®šä¸€ä¸ªæˆ–å¤šä¸ªå¥—æ¥å­—çš„çŠ¶æ€ã€‚
 	//
-	// ²ÎÊı:
+	// å‚æ•°:
 	//   microSeconds:
-	//     ³¬Ê±Öµ£¨ÒÔºÁÃëÎªµ¥Î»£©¡£A -1 ÖµÖ¸Ê¾³¬Ê±ÖµÎªÎŞÏŞ´ó¡£
+	//     è¶…æ—¶å€¼ï¼ˆä»¥æ¯«ç§’ä¸ºå•ä½ï¼‰ã€‚A -1 å€¼æŒ‡ç¤ºè¶…æ—¶å€¼ä¸ºæ— é™å¤§ã€‚
 	//
 	//   checkRead:
-	//     Òª¼ì²é¿É¶ÁĞÔµÄ System.Net.Sockets.Socket ÊµÀıµÄ System.Collections.IList¡£
+	//     è¦æ£€æŸ¥å¯è¯»æ€§çš„ System.Net.Sockets.Socket å®ä¾‹çš„ System.Collections.IListã€‚
 	//
 	//   checkError:
-	//     Òª¼ì²é´íÎóµÄ System.Net.Sockets.Socket ÊµÀıµÄ System.Collections.IList¡£
+	//     è¦æ£€æŸ¥é”™è¯¯çš„ System.Net.Sockets.Socket å®ä¾‹çš„ System.Collections.IListã€‚
 	//
 	//   checkWrite:
-	//     Ò»¸ö System.Net.Sockets.Socket ÊµÀıµÄ System.Collections.IList£¬ÓÃÓÚ¼ì²é¿ÉĞ´ĞÔ¡£
+	//     ä¸€ä¸ª System.Net.Sockets.Socket å®ä¾‹çš„ System.Collections.IListï¼Œç”¨äºæ£€æŸ¥å¯å†™æ€§ã€‚
 	int Socket::Select(Array<Socket> * checkRead, Array<Socket> * checkWrite, Array<Socket> * checkError, long long microSeconds)
 	{
 		struct timeval tv;
@@ -336,12 +336,12 @@ namespace Common
 			return -1;
 		}
 	};
-	//¶ÔÓ¦selectº¯Êı microSeconds ºÁÃë  mode ²éÑ¯Ä£Ê½
+	//å¯¹åº”selectå‡½æ•° microSeconds æ¯«ç§’  mode æŸ¥è¯¢æ¨¡å¼
 	bool Socket::Poll( SelectMode mode,long long microSeconds)
 	{
 		if (this->m_CleanedUp)
 		{
-			EXP("ÒÑ¾­Çå³ıSocket£¬²»ÄÜÔÙÁ¬½Ó");
+			EXP("å·²ç»æ¸…é™¤Socketï¼Œä¸èƒ½å†è¿æ¥");
 		}
 		struct timeval tv;
 		if(microSeconds>=0)
@@ -363,15 +363,15 @@ namespace Common
 	}
 	Socket Socket::Accept()
 	{
-		if (m_CleanedUp)				//	ÒÑ¾­ÇåÀíSocket
+		if (m_CleanedUp)				//	å·²ç»æ¸…ç†Socket
 		{
-			EXP("ÒÑ¾­Çå³ıSocket£¬²»ÄÜÔÙ½ÓÊÜĞÂÁ¬½Ó");
+			EXP("å·²ç»æ¸…é™¤Socketï¼Œä¸èƒ½å†æ¥å—æ–°è¿æ¥");
 		}
-		if (!isListening)			//	²»ÊÇ¼àÌı×´Ì¬
+		if (!isListening)			//	ä¸æ˜¯ç›‘å¬çŠ¶æ€
 		{
 			EXP("net_sockets_mustlisten");
 		}
-		if (m_IsDisconnected)		//	²»¿ÉÁ¬½Ó
+		if (m_IsDisconnected)		//	ä¸å¯è¿æ¥
 		{
 			EXP("net_sockets_disconnectedAccept");
 		}
@@ -404,38 +404,38 @@ namespace Common
 			EXP(strerror(errno));
 		}
 	};
-	//¼àÌıÊ±
+	//ç›‘å¬æ—¶
 	void Socket::Listen(int backlog)
 	{
-		//struct linger lng = { 0, 0 }; // ¹Ø±ÕÑÓÊ±
+		//struct linger lng = { 0, 0 }; // å…³é—­å»¶æ—¶
 		//if (this->SetReuseAddress(1)==false //int on=1; setsockopt(m_socket,SOL_SOCKET,SO_REUSEADDR,SETSOCKOPT_OPTVAL_TYPE &on,sizeof(on))== -1
 		//	|| this->SetLingerState(lng)==false )//setsockopt(m_socket,SOL_SOCKET,SO_LINGER,SETSOCKOPT_OPTVAL_TYPE &lng,sizeof(lng))== -1 )
-		///m_RightEndPoint.sadin.sin.sin_port=0 ;			//ÒÔ¶Ë¿ÚºÅÎª0µ÷ÓÃbindºó,Ê¹ÓÃgetsockname·µ»ØÄÚºË·ÖÅäµÄ±¾µØ¶Ë¿ÚºÅ
+		///m_RightEndPoint.sadin.sin.sin_port=0 ;			//ä»¥ç«¯å£å·ä¸º0è°ƒç”¨bindå,ä½¿ç”¨getsocknameè¿”å›å†…æ ¸åˆ†é…çš„æœ¬åœ°ç«¯å£å·
 
 		if (listen(m_socket, backlog)<0)
 		{
 			Close();
-			EXP("¼àÌı·¢Éú´íÎó");
+			EXP("ç›‘å¬å‘ç”Ÿé”™è¯¯");
 		}
 		socklen_t len=sizeof(m_RightEndPoint.sadin.sa);
 		if (getsockname(m_socket, &m_RightEndPoint.sadin.sa, &len)<0)
-			EXP("»ñÈ¡±¾µØ°ó¶¨µØÖ·ºÍ¶Ë¿Ú·¢Éú´íÎó");
+			EXP("è·å–æœ¬åœ°ç»‘å®šåœ°å€å’Œç«¯å£å‘ç”Ÿé”™è¯¯");
 		this->isListening=true;
 	};
-	//     ½¨Á¢ÓëÔ¶³ÌÖ÷»úµÄÁ¬½Ó¡£
+	//     å»ºç«‹ä¸è¿œç¨‹ä¸»æœºçš„è¿æ¥ã€‚
 	void Socket::Connect(IPAddress remoteEP)
 	{
 		SOCKET_CHECK
 		if (this->m_CleanedUp)
 		{
-			EXP("ÒÑ¾­Çå³ıSocket£¬²»ÄÜÔÙÁ¬½Ó");
+			EXP("å·²ç»æ¸…é™¤Socketï¼Œä¸èƒ½å†è¿æ¥");
 		}
-		if(m_IsConnected)EXP("SocketÒÑ¾­Á¬½Óµ½Ò»¸ö·şÎñÆ÷£¬²»ÄÜÔÙÁ¬½Ó");
+		if(m_IsConnected)EXP("Socketå·²ç»è¿æ¥åˆ°ä¸€ä¸ªæœåŠ¡å™¨ï¼Œä¸èƒ½å†è¿æ¥");
 		if(remoteEP.inited==false)//(remoteEP.sadin.sin.sin_port==0) //(const sockaddr *)&sin,
 		{
-			EXP("Î´³õÊ¼»¯Ô¶³ÌÁ¬½ÓµØÖ·½Úµã");
+			EXP("æœªåˆå§‹åŒ–è¿œç¨‹è¿æ¥åœ°å€èŠ‚ç‚¹");
 		}
-		if (m_IsDisconnected)		//	²»¿ÉÁ¬½Ó
+		if (m_IsDisconnected)		//	ä¸å¯è¿æ¥
 		{
 			EXP("net_sockets_disconnectedConnect");
 		}
@@ -444,23 +444,23 @@ namespace Common
 			EXP("net_sockets_mustnotlisten");
 		}
 		this->m_RemoteEndPoint=remoteEP;
-		//ÉèÖÃsocketÊôĞÔ,Ãâ<bind addr in  use>Ö®¿à   ÖØÓÃµØÖ·
+		//è®¾ç½®socketå±æ€§,å…<bind addr in  use>ä¹‹è‹¦   é‡ç”¨åœ°å€
 		if (SetReuseAddress(1)==false)//int on =1 ;setsockopt(m_socket,SOL_SOCKET,SO_REUSEADDR,SETSOCKOPT_OPTVAL_TYPE &on, sizeof(on)) == -1
 		{
-			EXP("°ó¶¨±¾µØµØÖ·Ê§°Ü");
+			EXP("ç»‘å®šæœ¬åœ°åœ°å€å¤±è´¥");
 			Close();
 		}
   		int bufsize = 65535*4 ;
   		if(setsockopt(m_socket,SOL_SOCKET,SO_RCVBUF,SETSOCKOPT_OPTVAL_TYPE &bufsize,sizeof(bufsize))==-1)
 		{
-			EXP("ÉèÖÃÊı¾İ½ÓÊÕ»º³åÇøÊ§°Ü");
+			EXP("è®¾ç½®æ•°æ®æ¥æ”¶ç¼“å†²åŒºå¤±è´¥");
 			Close();
 		}
 		//if(SetReceiveBufferSize(this->m_ReceiveBufferSize)==false)
 		//
 		if(setsockopt(m_socket,SOL_SOCKET,SO_RCVBUF,SETSOCKOPT_OPTVAL_TYPE &m_ReceiveBufferSize,sizeof(m_ReceiveBufferSize))==-1) 
 		{
-			EXP("ÉèÖÃÊı¾İ½ÓÊÕ»º³åÇøÊ§°Ü");
+			EXP("è®¾ç½®æ•°æ®æ¥æ”¶ç¼“å†²åŒºå¤±è´¥");
 			Close();
 		}
 		linger lng;
@@ -471,16 +471,16 @@ namespace Common
 		lng.l_linger=m_CloseTimeout;
 		if(SetLingerState(lng)==false)
 		{
-			EXP("ÉèÖÃÌ×½Ó×Ö¹Ø±ÕÑÓÊ±Ê§°Ü");
+			EXP("è®¾ç½®å¥—æ¥å­—å…³é—­å»¶æ—¶å¤±è´¥");
 		}
-		if (connect(m_socket, (const sockaddr *)(&m_RemoteEndPoint.sadin.sin), sizeof(m_RemoteEndPoint.sadin.sin)) == -1) //Á¬½Óµ½Ô¶³Ì·şÎñÆ÷¶Ë¿Ú
+		if (connect(m_socket, (const sockaddr *)(&m_RemoteEndPoint.sadin.sin), sizeof(m_RemoteEndPoint.sadin.sin)) == -1) //è¿æ¥åˆ°è¿œç¨‹æœåŠ¡å™¨ç«¯å£
 		{
-			EXP("Á¬½Ó·şÎñÆ÷¶ËÊ§°Ü");
+			EXP("è¿æ¥æœåŠ¡å™¨ç«¯å¤±è´¥");
 			Close();
 		}
 		m_IsConnected=true;
 	};
-	//     ½¨Á¢ÓëÔ¶³ÌÖ÷»úµÄÁ¬½Ó¡£Ö÷»úÓÉ IP µØÖ·µÄÊı×é¡£
+	//     å»ºç«‹ä¸è¿œç¨‹ä¸»æœºçš„è¿æ¥ã€‚ä¸»æœºç”± IP åœ°å€çš„æ•°ç»„ã€‚
 	void Socket::Connect(Array<IPAddress> & addresses,int port)
 	{
 		SOCKET_CHECK
@@ -490,10 +490,10 @@ namespace Common
 		}
 		if (this->m_CleanedUp)
 		{
-			EXP("ÒÑ¾­Çå³ıSocket£¬²»ÄÜÔÙÁ¬½Ó");
+			EXP("å·²ç»æ¸…é™¤Socketï¼Œä¸èƒ½å†è¿æ¥");
 		}
-		if(m_IsConnected)EXP("SocketÒÑ¾­Á¬½Óµ½Ò»¸ö·şÎñÆ÷£¬²»ÄÜÔÙÁ¬½Ó");
-		if (m_IsDisconnected)		//	²»¿ÉÁ¬½Ó
+		if(m_IsConnected)EXP("Socketå·²ç»è¿æ¥åˆ°ä¸€ä¸ªæœåŠ¡å™¨ï¼Œä¸èƒ½å†è¿æ¥");
+		if (m_IsDisconnected)		//	ä¸å¯è¿æ¥
 		{
 			EXP("net_sockets_disconnectedConnect");
 		}
@@ -501,10 +501,10 @@ namespace Common
 		{
 			EXP("net_sockets_mustnotlisten");
 		}
-		//ÉèÖÃsocketÊôĞÔ,Ãâ<bind addr in  use>Ö®¿à                                    
+		//è®¾ç½®socketå±æ€§,å…<bind addr in  use>ä¹‹è‹¦                                    
 		if (SetReuseAddress(1)==false)//int on =1 ;setsockopt(m_socket,SOL_SOCKET,SO_REUSEADDR,SETSOCKOPT_OPTVAL_TYPE &on, sizeof(on)) == -1
 		{
-			EXP("°ó¶¨±¾µØµØÖ·Ê§°Ü");
+			EXP("ç»‘å®šæœ¬åœ°åœ°å€å¤±è´¥");
 			Close();
 		}
 		linger lng;
@@ -515,7 +515,7 @@ namespace Common
 		lng.l_linger=m_CloseTimeout;
 		if(SetLingerState(lng)==false)
 		{
-			EXP("ÉèÖÃÌ×½Ó×Ö¹Ø±ÕÑÓÊ±Ê§°Ü");
+			EXP("è®¾ç½®å¥—æ¥å­—å…³é—­å»¶æ—¶å¤±è´¥");
 		}
 		for(int i=0;i<addresses.size();i++)
 		{
@@ -526,13 +526,13 @@ namespace Common
 			this->m_RemoteEndPoint=addresses[i];
 			if(port!=-1)
 				this->m_RemoteEndPoint.setPort(port);
-			if (connect(m_socket, (const sockaddr *)(&m_RemoteEndPoint.sadin.sin), sizeof(m_RemoteEndPoint.sadin.sin)) == -1) //Á¬½Óµ½Ô¶³Ì·şÎñÆ÷¶Ë¿Ú
+			if (connect(m_socket, (const sockaddr *)(&m_RemoteEndPoint.sadin.sin), sizeof(m_RemoteEndPoint.sadin.sin)) == -1) //è¿æ¥åˆ°è¿œç¨‹æœåŠ¡å™¨ç«¯å£
 			{
 				if(i<addresses.size()-1)
 					continue;
 				else
 				{
-					EXP("Á¬½Ó·şÎñÆ÷¶ËÊ§°Ü");
+					EXP("è¿æ¥æœåŠ¡å™¨ç«¯å¤±è´¥");
 					Close();
 				}
 			}
@@ -541,7 +541,7 @@ namespace Common
 		}
 		m_IsConnected=true;
 	};
-	//     ½¨Á¢ÓëÔ¶³ÌÖ÷»úµÄÁ¬½Ó¡£Ö÷»úÓÉÖ÷»úÃûºÍ¶Ë¿ÚºÅÖ¸¶¨¡£
+	//     å»ºç«‹ä¸è¿œç¨‹ä¸»æœºçš„è¿æ¥ã€‚ä¸»æœºç”±ä¸»æœºåå’Œç«¯å£å·æŒ‡å®šã€‚
 	void Socket::Connect(String host, int port)
 	{
 		SOCKET_CHECK
@@ -564,7 +564,7 @@ namespace Common
 			Connect(addresses);
 		}
 	};
-	//¹Ø±Õsocket 
+	//å…³é—­socket 
 	void Socket::Close()
 	{
 		if(this->m_socket>0)
@@ -579,7 +579,7 @@ namespace Common
 		if (::bind(m_socket, &m_RightEndPoint.sadin.sa, sizeof(m_RightEndPoint.sadin.sa)) == -1)
 		{
 			Close();
-			EXP("°ó¶¨µØÖ··¢Éú´íÎó");
+			EXP("ç»‘å®šåœ°å€å‘ç”Ÿé”™è¯¯");
 		}
 	};
 	void Socket::Bind(IPAddress address)

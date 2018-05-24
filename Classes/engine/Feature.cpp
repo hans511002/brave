@@ -10,7 +10,6 @@
 #include "bezier/PathPoint.h"
 #include "bezier/PathPoint.h"
 
-
 namespace engine
 {
 	Feature::Feature() :autoAddTowerCounter(30)

@@ -8,7 +8,7 @@ namespace engine{
 			dragonBones::CCArmatureDisplay *   armature;
 		 
 
-		};
+		}; 
  
 }
 #endif
