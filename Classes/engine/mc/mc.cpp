@@ -71,15 +71,18 @@ namespace engine
     ui::Text * MC::createText(string slotName){
         Slot * slot = this->getArmature()->getSlot(slotName);
         if (slot){
-            ui::Text * txt = ui::Text::create();
-            Node * sp = (Node *)slot->getDisplay();
-            sp->addChild(txt);
-			txt->setName(slotName);
-			sp->setName(slotName);
+			MCText * txt = new MCText(this, slotName);
+            //ui::Text * txt = ui::Text::create();
+   //         Node * sp = (Node *)slot->getDisplay();
+   //         sp->addChild(txt);
+			//txt->setName(slotName);
+			//sp->setName(slotName);
             return txt;
         }
         return NULL;
     };
+	 
+
     MovieClipSub * MC::createMovieClipSub(string slotName)
     {
         return  new MovieClipSub(this, this->getArmature()->getSlot(slotName));
@@ -115,6 +118,36 @@ namespace engine
         }
         return NULL;
     };
+
+	MCText::MCText(MC * mc, string slotName) :ui::Text(), display(0)
+	{
+		init();
+		this->autorelease();
+		this->mc = mc;
+		this->slot = mc->getArmature()->getSlot(slotName);
+		this->slotName = slotName;
+		this->setName(slotName);
+		Node * sp = (Node *)slot->getDisplay();
+		if(sp)
+		{
+			this->display = sp;
+			sp->addChild(this);
+			sp->setName(slotName);
+		}
+	};
+	void MCText::reinit()
+	{
+		if(this->display == this->slot->getDisplay())return;
+		if(this->display && this->slot->getDisplay())
+		{
+			this->retain();
+			this->display->removeChild(this);
+			this->display=(Node*)this->slot->getDisplay();
+			display->addChild(this);
+			display->setName(slotName);
+			this->release();
+		}
+	};
 
 	void MovieClip::addMcs(MovieClipSub * mcs)
 	{

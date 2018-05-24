@@ -7,280 +7,102 @@ using namespace cocostudio;
 
 namespace engine
 {
-  
-    
-   
-    WorldInterface_mc::WorldInterface_mc() :barinfoback(NULL), healthbar(NULL), moneybar(NULL), butCastAir(NULL), butCastGolem(NULL), allSphereBack(NULL),
-        butCastIceman(NULL), fastbtn(NULL), faster(NULL), buyFire(NULL), buyIce(NULL), buyLevin(NULL), buyStone(NULL), buyGetAll(NULL), allSphere(NULL),
-        pause(NULL), startWaves(NULL), stoneBacklight(NULL), levinBacklight(NULL), iceBacklight(NULL), fireBacklight(NULL), iceBack(NULL), fireBack(NULL),
-        levinBack(NULL), stoneBack(NULL), iceSphere(NULL), fireSphere(NULL), levinSphere(NULL), stoneSphere(NULL), lastTime(NULL), waveTXT(NULL),
-        liveTXT(NULL), moneyTXT(NULL), levinNumTXT(NULL), iceNumTXT(NULL), fireNumTXT(NULL), stoneNumTXT(NULL), getAllNumTXT(NULL)
-    {
-
-    }
-    bool WorldInterface_mc::init()
-    {
-        BaseNode::init();
-        string basePath = "worldinterface/";
-        //˳�듆ʏ�Ĺ��
-        //DBCCFactory::getInstance()->loadDragonBonesData(basePath + "sphere/spherelight/skeleton.xml", "spherelight");
-        //DBCCFactory::getInstance()->loadTextureAtlas(basePath + "sphere/spherelight/texture.xml", "spherelight");
-        //this->stoneBacklight = DBCCFactory::getInstance()->buildArmatureNode("spherelight");
-        //this->levinBacklight = DBCCFactory::getInstance()->buildArmatureNode("spherelight");
-        //this->iceBacklight = DBCCFactory::getInstance()->buildArmatureNode("spherelight");
-        //this->fireBacklight = DBCCFactory::getInstance()->buildArmatureNode("spherelight");
-
-		this->stoneBacklight = new MovieClip(basePath + "/sphere/", "spherelight");
-		this->levinBacklight = new MovieClip(basePath + "/sphere/", "spherelight");
-		this->iceBacklight = new MovieClip(basePath + "/sphere/", "spherelight");
-		this->fireBacklight = new MovieClip(basePath + "/sphere/", "spherelight");
-
-
-        //DBCCFactory::getInstance()->loadDragonBonesData(basePath + "sphere/stoneBacked/skeleton.xml", "stonebacked");
-        //DBCCFactory::getInstance()->loadTextureAtlas(basePath + "sphere/stoneBacked/texture.xml", "stonebacked");
-		this->stoneBacked = new MovieClip(basePath + "/sphere/", "stoneBacked");// DBCCFactory::getInstance()->buildArmatureNode("stonebacked");
-        //DBCCFactory::getInstance()->loadDragonBonesData(basePath + "sphere/levinBacked/skeleton.xml", "levinbacked");
-        //DBCCFactory::getInstance()->loadTextureAtlas(basePath + "sphere/levinBacked/texture.xml", "levinbacked");
-		this->levinBacked = new MovieClip(basePath + "/sphere/", "levinBacked");// DBCCFactory::getInstance()->buildArmatureNode("stonebacked");
-        //DBCCFactory::getInstance()->loadDragonBonesData(basePath + "sphere/iceBacked/skeleton.xml", "icebacked");
-        //DBCCFactory::getInstance()->loadTextureAtlas(basePath + "sphere/iceBacked/texture.xml", "icebacked");
-		this->iceBacked = new MovieClip(basePath + "/sphere/", "iceBacked");//DBCCFactory::getInstance()->buildArmatureNode("icebacked");
-        //DBCCFactory::getInstance()->loadDragonBonesData(basePath + "sphere/fireBacked/skeleton.xml", "firebacked");
-        //DBCCFactory::getInstance()->loadTextureAtlas(basePath + "sphere/fireBacked/texture.xml", "firebacked");
-		this->fireBacked = new MovieClip(basePath + "/sphere/", "fireBacked");// DBCCFactory::getInstance()->buildArmatureNode("firebacked");
-
-		//DBCCFactory::getInstance()->loadDragonBonesData(basePath + "startbtn/fasterbtn/skeleton.xml", "fasterbtn");
-        //DBCCFactory::getInstance()->loadTextureAtlas(basePath + "startbtn/fasterbtn/texture.xml", "fasterbtn");
-		this->faster = new MovieClip(basePath + "/startbtn/", "fasterbtn");//DBCCFactory::getInstance()->buildArmatureNode("fasterbtn");
-
-
-        //DBCCFactory::getInstance()->loadDragonBonesData(basePath + "sphere/stonesphere/skeleton.xml", "stonesphere");
-        //DBCCFactory::getInstance()->loadTextureAtlas(basePath + "sphere/stonesphere/texture.xml", "stonesphere");
-        //this->stoneSphere = DBCCFactory::getInstance()->buildArmatureNode("stonesphere");
-        //DBCCFactory::getInstance()->loadDragonBonesData(basePath + "sphere/levinsphere/skeleton.xml", "levinsphere");
-        //DBCCFactory::getInstance()->loadTextureAtlas(basePath + "sphere/levinsphere/texture.xml", "levinsphere");
-        //this->levinSphere = DBCCFactory::getInstance()->buildArmatureNode("levinsphere");
-        //DBCCFactory::getInstance()->loadDragonBonesData(basePath + "sphere/icesphere/skeleton.xml", "icesphere");
-        //DBCCFactory::getInstance()->loadTextureAtlas(basePath + "sphere/icesphere/texture.xml", "icesphere");
-        //this->iceSphere = DBCCFactory::getInstance()->buildArmatureNode("icesphere");
-        //DBCCFactory::getInstance()->loadDragonBonesData(basePath + "sphere/fireSphere/skeleton.xml", "firesphere");
-        //DBCCFactory::getInstance()->loadTextureAtlas(basePath + "sphere/fireSphere/texture.xml", "firesphere");
-        //this->fireSphere = DBCCFactory::getInstance()->buildArmatureNode("firesphere");
-        //this->loadAni(basePath + "sphere", "firesphere");
-       
-
-        Node * node = CSLoader::createNode("worldinterface.csb");
-        //CSLoader cs;
-        //node = cs.createNodeFromJson("D:\\work\\gm\\brave\\proj.win32\\Debug.win32\\worldinterface.json");
-        this->addChild(node);
-        this->autorelease();
-        //سʏ
-        barinfoback = (Sprite *)node->getChildByName("barinfoback"); 
-        healthbar = (Sprite *)node->getChildByName("healthbar");  
-        moneybar = (Sprite *)node->getChildByName("moneybar");  
-        //سЂ
-        btncastback = (Sprite *)node->getChildByName("btncastback");  
-        butCastAir = (Sprite *)node->getChildByName("butCastAir");   
-        butCastGolem = (Sprite *)node->getChildByName("butCastGolem");   
-        butCastIceman = (Sprite *)node->getChildByName("butCastIceman"); 
-
-
-        //��Ŝ����
-        sphereback = (Sprite *)node->getChildByName("sphereback"); 
-        iceBack = (Sprite *)node->getChildByName("iceBack");  
-        fireBack = (Sprite *)node->getChildByName("fireBack");  
-        stoneBack = (Sprite *)node->getChildByName("stoneBack");  
-        levinBack = (Sprite *)node->getChildByName("levinBack");  
-        allSphereBack = (Sprite *)node->getChildByName("allsphereback");
-
-        this->fireBacklight->setPosition(this->fireBack->getPosition());
-        this->iceBacklight->setPosition(this->iceBack->getPosition());
-        this->stoneBacklight->setPosition(this->stoneBack->getPosition());
-        this->levinBacklight->setPosition(this->levinBack->getPosition());
-
-        this->stoneBacked->setPosition(this->levinBack->getPosition());
-        this->levinBacked->setPosition(this->levinBack->getPosition());
-        this->iceBacked->setPosition(this->levinBack->getPosition());
-        this->fireBacked->setPosition(this->levinBack->getPosition());
-        
-         
-
-        //��ò�۸񱳾�
-        buyFire = (Sprite *)node->getChildByName("buyFire");  
-        buyIce = (Sprite *)node->getChildByName("buyIce");  
-        buyLevin = (Sprite *)node->getChildByName("buyLevin"); 
-        buyStone = (Sprite *)node->getChildByName("buyStone"); 
-        buyGetAll = (Sprite *)node->getChildByName("buyGetAll");  
-        
-        //ͼƬ����
-        iceSphere = (Sprite *)node->getChildByName("iceSphere");   
-        fireSphere = (Sprite *)node->getChildByName("fireSphere");  
-        levinSphere = (Sprite *)node->getChildByName("levinSphere");  
-        stoneSphere = (Sprite *)node->getChildByName("stoneSphere");
-        allSphere = (Sprite *)node->getChildByName("allSphere");
-        
-
-        //startbtnback
-        startbtnback = (Sprite *)node->getChildByName("startbtnback");
-        startWaves = (ui::Button *)node->getChildByName("startWaves");
-        fastbtn = (ui::Button *)node->getChildByName("fastbtn");
-        pause = (ui::Button *)node->getChildByName("pause");
-        startWaves->setVisible(true);
-        fastbtn->setVisible(true);
-        this->faster->setPosition(this->fastbtn->getPosition());
-         
-          
-        //lastTime=(ui::Text *)node->getChildByName("lastTime"); 
-        waveTXT = (ui::Text *)node->getChildByName("waveTXT"); 
-        liveTXT = (ui::Text *)node->getChildByName("liveTXT");;// : TextField;
-        moneyTXT = (ui::Text *)node->getChildByName("moneyTXT");;//: TextField;
-
-        fireNumTXT = (ui::Text *)node->getChildByName("fireNumTXT");;// : TextField;
-        iceNumTXT = (ui::Text *)node->getChildByName("iceNumTXT");;//: TextField;
-        stoneNumTXT = (ui::Text *)node->getChildByName("stoneNumTXT");;//public var stoneNumTXT : TextField;
-        levinNumTXT = (ui::Text *)node->getChildByName("levinNumTXT");;// : TextField;
-        getAllNumTXT = (ui::Text *)node->getChildByName("getAllNumTXT");; // public var getAllNumTXT : TextField;
-
-        firePrice = (ui::Text *)node->getChildByName("firePrice");;// : TextField;
-        icePrice = (ui::Text *)node->getChildByName("icePrice");;//: TextField;
-        stonePrice = (ui::Text *)node->getChildByName("stonePrice");;//public var stoneNumTXT : TextField;
-        levinPrice = (ui::Text *)node->getChildByName("levinPrice");;// : TextField;
-        getAllPrice = (ui::Text *)node->getChildByName("getAllPrice");; // public var getAllNumTXT : TextField;
-         
-        
-        liveTXT->setText("50");
- 
-        //startWaves->addClickEventListener(CC_CALLBACK_1(WorldInterface_mc::startWavesCallback, this));
-        //fastbtn->addClickEventListener(CC_CALLBACK_1(WorldInterface_mc::startWavesCallback, this));
-        
-
-        this->setName("workdIntface_mc");
-         
-        //fastbtn->addTouchEventListener(fastbtn, toucheventselector(BaseNode::touchAction));
-        //startWaves->addTouchEventListener(startWaves, toucheventselector(BaseNode::touchAction));
-         
-        //EventListenerTouchOneByOne *touchListener = EventListenerTouchOneByOne::create();
-        //touchListener->setSwallowTouches(true);
-        //touchListener->onTouchBegan = [this](Touch *touch, Event *event){
-        //    Node * node = event->getCurrentTarget();
-        //    Event::Type tp = event->getType();
-        //    string target = node->getName();
-        //    bool hit = BaseNode::hitTest(node, touch->getLocation());
-        //    if (hit) CCLOG("WorldInterface_mc::onTouchBegan %s", target.c_str());
-        //    return hit;
-        //};
-        //touchListener->onTouchEnded = [this](Touch *touch, Event *event){
-        //    Node * node = event->getCurrentTarget();
-        //    Event::Type tp = event->getType();
-        //    string target = node->getName();
-        //    CCLOG("WorldInterface_mc::onTouchEnded %s", target.c_str());
-        //};
-
-        ////EventListenerTouchOneByOne *_touchListener = EventListenerTouchOneByOne::create();
-        ////CC_SAFE_RETAIN(_touchListener);
-        ////_touchListener->setSwallowTouches(true);
-        ////_touchListener->onTouchBegan = CC_CALLBACK_2(WorldInterface_mc::onTouchBegan, this);
-        ////_touchListener->onTouchMoved = CC_CALLBACK_2(WorldInterface_mc::onTouchMoved, this);
-        ////_touchListener->onTouchEnded = CC_CALLBACK_2(WorldInterface_mc::onTouchEnded, this);
-        ////_touchListener->onTouchCancelled = CC_CALLBACK_2(WorldInterface_mc::onTouchCancelled, this);
-        ////_eventDispatcher->addEventListenerWithSceneGraphPriority(_touchListener, this);
-
-
-        //iceSphere->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener, iceSphere);
-        //fireSphere->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener->clone(), fireSphere);
-        //stoneSphere->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener->clone(), stoneSphere);
-
-         
-        return true;
-
-
-        ////سʏ
-        //barinfoback = Sprite::create(basePath + "barinfo/barinfoback.png");
-        //std::setAnchorPoint(barinfoback, 50, 500);
-        //healthbar = Sprite::create(basePath + "barinfo/healthbar.png");
-        //std::setAnchorPoint(healthbar, 70, 500);
-        //moneybar = Sprite::create(basePath + "barinfo/moneybar.png");
-        //std::setAnchorPoint(moneybar, 90, 500);
-
-        ////سЂ
-        //btncastback = Sprite::create(basePath + "btncastback/btncastback.png");
-        //std::setAnchorPoint(btncastback, 50, 50);
-        //butCastAir = Sprite::create(basePath + "btncastback/butCastAir.png");
-        //std::setAnchorPoint(butCastAir, 100, 50);
-        //butCastGolem = Sprite::create(basePath + "btncastback/butCastGolem.png");
-        //std::setAnchorPoint(butCastGolem, 150, 50);
-        //butCastIceman = Sprite::create(basePath + "btncastback/butCastIceman.png");
-        //std::setAnchorPoint(butCastIceman, 200, 50);
-
-        ////��Ŝ����
-        //sphereback = Sprite::create(basePath + "sphere/backsphere.png");
-        //std::setAnchorPoint(sphereback, 250, 550);
-        //iceBack = Sprite::create(basePath + "sphere/iceBack.png");
-        //std::setAnchorPoint(iceBack, 250, 550);
-        //fireBack = Sprite::create(basePath + "sphere/fireBack.png");
-        //std::setAnchorPoint(fireBack, 300, 550);
-        //levinBack = Sprite::create(basePath + "sphere/levinBack.png");
-        //std::setAnchorPoint(levinBack, 350, 550);
-        //stoneBack = Sprite::create(basePath + "sphere/stoneBack.png");
-        //std::setAnchorPoint(stoneBack, 400, 550);
-        //allSphere = Sprite::create(basePath + "sphere/allsphereback.png");
-        //std::setAnchorPoint(allSphere, 450, 550);
-
-        ////��ò�۸񱳾�
-        //buyFire = Sprite::create(basePath + "sphere/buypricebar.png");
-        //std::setAnchorPoint(buyFire, 250, 500);
-        //buyIce = Sprite::create(basePath + "sphere/buypricebar.png");
-        //std::setAnchorPoint(buyIce, 300, 500);
-        //buyLevin = Sprite::create(basePath + "sphere/buypricebar.png");
-        //std::setAnchorPoint(buyLevin, 350, 500);
-        //buyStone = Sprite::create(basePath + "sphere/buypricebar.png");
-        //std::setAnchorPoint(buyStone, 400, 500);
-        //buyGetAll = Sprite::create(basePath + "sphere/buypricebar.png");
-        //std::setAnchorPoint(buyGetAll, 450, 500);
-
-        ////ͼƬ����
-        //iceSphere = Sprite::create(basePath + "sphere/iceSphere.png");
-        //std::setAnchorPoint(iceSphere, 250, 560);;
-        //fireSphere = Sprite::create(basePath + "sphere/fireSphere.png");
-        //std::setAnchorPoint(fireSphere, 300, 560);
-        //levinSphere = Sprite::create(basePath + "sphere/levinSphere.png");
-        //std::setAnchorPoint(levinSphere, 350, 560);
-        //stoneSphere = Sprite::create(basePath + "sphere/stoneSphere.png");
-        //std::setAnchorPoint(stoneSphere, 400, 560);
-
-
-        //pause = Button::create(basePath + "startbtn/pause.png", basePath + "startbtn/paused.png");
-        //startbtnback = Sprite::create(basePath + "startbtn/startbtnback.png");
-        //std::setAnchorPoint(startbtnback, 510, 0);
-        //this->addChild(startbtnback); 
-        //this->fastbtn = Button::create(basePath + "startbtn/fasterbtn.png", basePath + "startbtn/fastbtned.png");
-        //startWaves = Button::create(basePath + "startbtn/startWavesoff.png", basePath + "startbtn/startWaveson.png");
-        //startbtnback->addChild(fastbtn);
-        //startbtnback->addChild(startWaves);
-        //std::setAnchorPoint(fastbtn, 96, 22); 
-        //std::setAnchorPoint(startWaves, 145, 15);
-
-
-        //startWaves->setPressedActionEnabled(true);
-        ////startWaves->addTouchEventListener(this, toucheventselector(PlayState::btnPlayAction));
-        ////addChild(startWaves, 10000);
-        //this->autorelease();
-        //return true;
-    }
-        
-    void WorldInterface_mc::startWavesCallback(Ref* ref){
-        ui::Button * node = (ui::Button *)ref;
-        string target = node->getName();
-        CCLOG("startWavesCallback %s", target.c_str());
-        int a = 0;
-    }
-    void WorldInterface_mc::onEnter()
-    {
-        
-    };
-    void WorldInterface_mc::onExit()
-    {
-        
-    };
-        
+	WorldInterface_mc::WorldInterface_mc()
+		:MovieClip("worldinterface/", "WorldInterface_mc", "WorldInterface_mc")
+	{
+		//backComponents = this->createMovieClipSub("backComponents");//image
+		barInfo = this->createMovieClipSub("barInfo");
+		barInfoFireTXT = barInfo->createText("fireTXT");
+		barInfoHealthTXT = barInfo->createText("healthTXT");
+		barInfoIceTXT = barInfo->createText("iceTXT");
+		barInfoLevinTXT = barInfo->createText("levinTXT");
+		barInfoMyTarget = barInfo->createCase("myTarget");
+		barInfoNoteTXT = barInfo->createText("noteTXT");
+		barInfoPenaltyTXT = barInfo->createText("penaltyTXT");
+		barInfoSpeedTXT = barInfo->createText("speedTXT");
+		barInfoStoneTXT = barInfo->createText("stoneTXT");
+		book = this->createMovieClipSub("book");
+		bookBookCase = book->createCase("bookCase");
+		butCastAir = this->createMovieClipSub("butCastAir");
+		butCastAirCastIcemanCase = butCastAir->createCase("castIcemanCase");
+		butCastAirCont = butCastAir->createMovieClipSub("cont");
+		butCastAirContContMask = butCastAirCont->createMovieClipSub("contMask");
+		butCastGolem = this->createMovieClipSub("butCastGolem");
+		butCastGolemCastIcemanCase = butCastGolem->createCase("castIcemanCase");
+		butCastGolemCont = butCastGolem->createMovieClipSub("cont");
+		butCastGolemContContMask = butCastGolemCont->createMovieClipSub("contMask");
+		butCastIceman = this->createMovieClipSub("butCastIceman");
+		butCastIcemanCastIcemanCase = butCastIceman->createCase("castIcemanCase");
+		butCastIcemanCont = butCastIceman->createMovieClipSub("cont");
+		butCastIcemanContContMask = butCastIcemanCont->createMovieClipSub("contMask");
+		buyFire = this->createMovieClipSub("buyFire");
+		buyFireBuyTXT = buyFire->createText("buyTXT");
+		buyFireCoin = buyFire->createMovieClipSub("coin");
+		buyFireLightUp = buyFire->createMovieClipSub("lightUp");
+		buygetAll = this->createMovieClipSub("buygetAll");
+		buygetAllBuyTXT = buygetAll->createText("buyTXT");
+		buygetAllCoin = buygetAll->createMovieClipSub("coin");
+		buygetAllLightUp = buygetAll->createMovieClipSub("lightUp");
+		buyIce = this->createMovieClipSub("buyIce");
+		buyIceBuyTXT = buyIce->createText("buyTXT");
+		buyIceCoin = buyIce->createMovieClipSub("coin");
+		buyIceLightUp = buyIce->createMovieClipSub("lightUp");
+		buyLevin = this->createMovieClipSub("buyLevin");
+		buyLevinBuyTXT = buyLevin->createText("buyTXT");
+		buyLevinCoin = buyLevin->createMovieClipSub("coin");
+		buyLevinLightUp = buyLevin->createMovieClipSub("lightUp");
+		buyStone = this->createMovieClipSub("buyStone");
+		buyStoneBuyTXT = buyStone->createText("buyTXT");
+		buyStoneCoin = buyStone->createMovieClipSub("coin");
+		buyStoneLightUp = buyStone->createMovieClipSub("lightUp");
+		fast = this->createMovieClipSub("fast");
+		fastFastCase = fast->createCase("fastCase");
+		fastCont = fast->createMovieClipSub("cont");
+		fireBack = this->createMovieClipSub("fireBack");
+		fireBackCont = fireBack->createMovieClipSub("cont");
+		fireBacklight = this->createMovieClipSub("fireBacklight");
+		fireNumTXT = this->createText("fireNumTXT");
+		firePrice = this->createMovieClipSub("firePrice");
+		fireSphere = this->createMovieClipSub("fireSphere");
+		fireSphereSphereCase = fireSphere->createCase("sphereCase");
+		getAll = this->createMovieClipSub("getAll");
+		getAllFire = getAll->createMovieClipSub("fire");
+		getAllIce = getAll->createMovieClipSub("ice");
+		getAllLevin = getAll->createMovieClipSub("levin");
+		getAllSphereCase = getAll->createCase("sphereCase");
+		getAllStone = getAll->createMovieClipSub("stone");
+		getAllNumTXT = this->createText("getAllNumTXT");
+		iceBack = this->createMovieClipSub("iceBack");
+		iceBackCont = iceBack->createMovieClipSub("cont");
+		iceBacklight = this->createMovieClipSub("iceBacklight");
+		iceNumTXT = this->createText("iceNumTXT");
+		iceSphere = this->createMovieClipSub("iceSphere");
+		iceSphereSphereCase = iceSphere->createCase("sphereCase");
+		lastTime = this->createText("lastTime");
+		levinBack = this->createMovieClipSub("levinBack");
+		levinBackCont = levinBack->createMovieClipSub("cont");
+		levinBacklight = this->createMovieClipSub("levinBacklight");
+		levinNumTXT = this->createText("levinNumTXT");
+		levinSphere = this->createMovieClipSub("levinSphere");
+		levinSphereSphereCase = levinSphere->createCase("sphereCase");
+		liveTXT = this->createText("liveTXT");
+		moneyTXT = this->createText("moneyTXT");
+		pause = this->createMovieClipSub("pause");
+		pausePauseCase = pause->createCase("pauseCase");
+		selectUnit = this->createMovieClipSub("selectUnit");
+		sell = this->createMovieClipSub("sell");
+		slow = this->createMovieClipSub("slow");
+		startWaves = this->createMovieClipSub("startWaves");
+		startWavesStartWavesCase = startWaves->createCase("startWavesCase");
+		stoneBack = this->createMovieClipSub("stoneBack");
+		stoneBackCont = stoneBack->createMovieClipSub("cont");
+		stoneBacklight = this->createMovieClipSub("stoneBacklight");
+		stoneNumTXT = this->createText("stoneNumTXT");
+		stoneSphere = this->createMovieClipSub("stoneSphere");
+		stoneSphereSphereCase = stoneSphere->createCase("sphereCase");
+		testRestart = this->createMovieClipSub("testRestart");
+		testRestartBoard = this->createMovieClipSub("testRestartBoard");
+		testRestartBoardWaveTXT = testRestartBoard->createText("waveTXT");
+		waveTXT = this->createText("waveTXT");
+	};
 }

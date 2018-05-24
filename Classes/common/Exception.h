@@ -1,4 +1,4 @@
-// ==============================================================
+﻿// ==============================================================
 //progame      Common::Exception  simple exception class
 //company      hans
 //copyright    Copyright (c) hans  2007-4     2008-03

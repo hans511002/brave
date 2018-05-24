@@ -1,4 +1,4 @@
-//progame      Common:TcpListener 
+﻿//progame      Common:TcpListener 
 //company      hans
 //copyright    Copyright (c) hans  2007-4     2008-03
 //version      1.0

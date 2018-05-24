@@ -12,6 +12,7 @@ namespace engine
     class World;
 	struct MovieClip;
 	struct MovieClipSub;
+	struct MCText;
 	struct MC
 	{
         int currentFrame;
@@ -94,6 +95,16 @@ namespace engine
 		inline float getScaleX() { return getDisplayNode()->getScaleX(); };
 		inline float getScaleY() { return getDisplayNode()->getScaleY(); };
 
+	};
+
+	struct MCText :public ui::Text
+	{
+		MC * mc;
+		Slot * slot;
+		Node * display;
+		string slotName;
+		MCText(MC * mc, string slotName);
+		void reinit();
 	};
 	struct ImageMovieClip :public BaseNode
     {

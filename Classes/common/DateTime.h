@@ -1,4 +1,4 @@
-// ==============================================================
+﻿// ==============================================================
 //progame      Common::DateTime 
 //company      hans
 //copyright    Copyright (c) hans  2007-4     2008-03
@@ -2314,7 +2314,7 @@ namespace Common
 	///	<param name="dt">OTL时间对象。</param> 
 	///	<returns>输出流本身。</returns> 
 	inline ostream& operator<<(ostream& target, otl_datetime dt)
-	{
+	{ 
 		string s;
 		dt>>s;
 		target << s;

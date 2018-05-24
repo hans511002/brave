@@ -1,4 +1,4 @@
-///	<summary>
+﻿///	<summary>
 ///	C/C++编程基础类
 /// <para>
 /// </para>

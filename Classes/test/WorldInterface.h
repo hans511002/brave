@@ -189,8 +189,11 @@ protected:
         this->addChild(gac);
         //gac->drawRange();
         gac->setPosition(-250, -100);
-		gac->board->noteTXT->setText("中国联盟");
+		gac->boardNoteTXT->setText("中国联盟");
 
+		WorldInterface_mc * worldInterface = new WorldInterface_mc();
+		worldInterface->setName("WorldInterface_mc");
+		this->addChild(worldInterface);
 		//Sprite * sprite=Sprite::create("background1.png");
 		//sprite->setContentSize(sphere->buySphereCase->getContentSize());
 		//sphere->buySphereCase->addChild(sprite);

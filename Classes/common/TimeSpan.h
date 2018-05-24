@@ -1,4 +1,4 @@
-// ==============================================================
+﻿// ==============================================================
 //progame      Common::TimeSpan 
 //company      hans
 //copyright    Copyright (c) hans  2007-4     2008-03
@@ -629,7 +629,7 @@ namespace Common
 					if(s[0]=='-')flag = true;
 					const char * tp=s.c_str();
 					if(flag)tp++;
-					char c=NextNonDigit(tp,0,s.size());
+					char c=NextNonDigit(tp,0,s.size()); 
 					if(c=='.')
 					{
 						len=sscanf(tp, "%d.%d:%d:%d.%d", &day,&hour,&minute,&second,&millis);

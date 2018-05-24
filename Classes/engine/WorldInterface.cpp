@@ -61,16 +61,16 @@ namespace engine
 		this->container->buyStone->stop();
 		this->container->buyLevin->stop();
 		this->container->buygetAll->stop();
-		this->container->buyFire->coin->stop();
-		this->container->buyIce->coin->stop();
-		this->container->buyStone->coin->stop();
-		this->container->buyLevin->coin->stop();
-		this->container->buygetAll->coin->stop();
-		this->container->buyFire->lightUp->stop();
-		this->container->buyIce->lightUp->stop();
-		this->container->buyStone->lightUp->stop();
-		this->container->buyLevin->lightUp->stop();
-		this->container->buygetAll->lightUp->stop();
+		this->container->buyFireCoin->stop();
+		this->container->buyIceCoin->stop();
+		this->container->buyStoneCoin->stop();
+		this->container->buyLevinCoin->stop();
+		this->container->buygetAllCoin->stop();
+		this->container->buyFireLightUp->stop();
+		this->container->buyIceLightUp->stop();
+		this->container->buyStoneLightUp->stop();
+		this->container->buyLevinLightUp->stop();
+		this->container->buygetAllLightUp->stop();
 		this->container->sell->stop();
 		this->container->book->stop();
 		this->container->pause->stop();
@@ -83,12 +83,12 @@ namespace engine
 		this->container->fast->stop();
 		this->container->traceBezier->stop();
 		this->container->barInfo->y = 585;
-		this->container->book->bookCase->buttonMode = true;
-		this->container->pause->pauseCase->buttonMode = true;
-		this->container->startWaves->startWavesCase->buttonMode = true;
-		this->container->butCastGolem->castGolemCase->buttonMode = true;
-		this->container->butCastIceman->castIcemanCase->buttonMode = true;
-		this->container->butCastAir->castAirCase->buttonMode = true;
+		this->container->bookBookCase->buttonMode = true;
+		this->container->pausePauseCase->buttonMode = true;
+		this->container->startWavesStartWavesCase->buttonMode = true;
+		this->container->butCastGolemCastGolemCase->buttonMode = true;
+		this->container->butCastIcemanCastIcemanCase->buttonMode = true;
+		this->container->butCastAirCastAirCase->buttonMode = true;
 		this->container->slow->buttonMode = true;
 		this->container->traceBezier->buttonMode = true;
 		this->container->fireNumTXT->mouseEnabled = false;
@@ -113,11 +113,11 @@ namespace engine
 		this->container->buyLevin->setVisible( false);
 		this->container->backComponents.cacheAsBitmap = true;
 		this->addChild(this->container);
-		this->container->fireSphere->myPoint = this->container->fireSphere->localToGlobal(this->container->fireSphere->sphereCase->getPosition());
-		this->container->iceSphere->myPoint = this->container->iceSphere->localToGlobal(this->container->iceSphere->sphereCase->getPosition());
-		this->container->stoneSphere->myPoint = this->container->stoneSphere->localToGlobal(this->container->stoneSphere->sphereCase->getPosition());
-		this->container->levinSphere->myPoint = this->container->levinSphere->localToGlobal(this->container->levinSphere->sphereCase->getPosition());
-		this->container->getAll->myPoint = this->container->getAll->localToGlobal(this->container->getAll->sphereCase->getPosition());
+		this->container->fireSphereMyPoint = this->container->fireSphere->localToGlobal(this->container->fireSphereSphereCase->getPosition());
+		this->container->iceSphereMyPoint = this->container->iceSphere->localToGlobal(this->container->iceSphereSphereCase->getPosition());
+		this->container->stoneSphereMyPoint = this->container->stoneSphere->localToGlobal(this->container->stoneSphereSphereCase->getPosition());
+		this->container->levinSphereMyPoint = this->container->levinSphere->localToGlobal(this->container->levinSphereSphereCase->getPosition());
+		this->container->getAllMyPoint = this->container->getAll->localToGlobal(this->container->getAllSphereCase->getPosition());
 		this->castGolemTimer = Main::mainClass->readXMLClass.intervalTimerGolemXML;
 		this->castIcemanTimer = Main::mainClass->readXMLClass.intervalTimerIcemanXML;
 		this->castAirTimer = Main::mainClass->readXMLClass.intervalTimerAirXML;
@@ -227,13 +227,13 @@ namespace engine
 			{
 				if (this->world->frameCounter % 2)
 				{
-					if (this->container->fast->cont->currentFrame < this->container->fast->cont->totalFrames)
+					if (this->container->fastCont->currentFrame < this->container->fastCont->totalFrames)
 					{
-						this->container->fast->cont->gotoAndStop((this->container->fast->cont->currentFrame + 1));
+						this->container->fastCont->gotoAndStop((this->container->fastCont->currentFrame + 1));
 					}
 					else
 					{
-						this->container->fast->cont->gotoAndStop(1);
+						this->container->fastCont->gotoAndStop(1);
 					}
 				}
 			}
@@ -329,37 +329,37 @@ namespace engine
 			{
 				if (this->container->getAll->fire)
 				{
-					if (this->container->getAll->fire->currentFrame < this->container->getAll->fire->totalFrames)
+					if (this->container->getAllFire->currentFrame < this->container->getAllFire->totalFrames)
 					{
-						this->container->getAll->fire->gotoAndStop((this->container->getAll->fire->currentFrame + 1));
+						this->container->getAllFire->gotoAndStop((this->container->getAllFire->currentFrame + 1));
 					}
 					else
 					{
-						this->container->getAll->fire->gotoAndStop(1);
+						this->container->getAllFire->gotoAndStop(1);
 					}
-					if (this->container->getAll->ice->currentFrame < this->container->getAll->ice->totalFrames)
+					if (this->container->getAllIce->currentFrame < this->container->getAllIce->totalFrames)
 					{
-						this->container->getAll->ice->gotoAndStop((this->container->getAll->ice->currentFrame + 1));
-					}
-					else
-					{
-						this->container->getAll->ice->gotoAndStop(1);
-					}
-					if (this->container->getAll->stone->currentFrame < this->container->getAll->stone->totalFrames)
-					{
-						this->container->getAll->stone->gotoAndStop((this->container->getAll->stone->currentFrame + 1));
+						this->container->getAllIce->gotoAndStop((this->container->getAllIce->currentFrame + 1));
 					}
 					else
 					{
-						this->container->getAll->stone->gotoAndStop(1);
+						this->container->getAllIce->gotoAndStop(1);
 					}
-					if (this->container->getAll->levin->currentFrame < this->container->getAll->levin->totalFrames)
+					if (this->container->getAllStone->currentFrame < this->container->getAllStone->totalFrames)
 					{
-						this->container->getAll->levin->gotoAndStop((this->container->getAll->levin->currentFrame + 1));
+						this->container->getAllStone->gotoAndStop((this->container->getAllStone->currentFrame + 1));
 					}
 					else
 					{
-						this->container->getAll->levin->gotoAndStop(1);
+						this->container->getAllStone->gotoAndStop(1);
+					}
+					if (this->container->getAllLevin->currentFrame < this->container->getAllLevin->totalFrames)
+					{
+						this->container->getAllLevin->gotoAndStop((this->container->getAllLevin->currentFrame + 1));
+					}
+					else
+					{
+						this->container->getAllLevin->gotoAndStop(1);
 					}
 				}
 			}
@@ -658,46 +658,46 @@ namespace engine
 			this->hintUpdate();
 			if (this->container->fireBack->currentFrame == 2)
 			{
-				if (this->container->fireBack->cont->currentFrame < this->container->fireBack->cont->totalFrames)
+				if (this->container->fireBackCont->currentFrame < this->container->fireBackCont->totalFrames)
 				{
-					this->container->fireBack->cont->gotoAndStop(this->container->fireBack->cont->currentFrame + 2);
+					this->container->fireBackCont->gotoAndStop(this->container->fireBackCont->currentFrame + 2);
 				}
 				else
 				{
-					this->container->fireBack->cont->gotoAndStop(1);
+					this->container->fireBackCont->gotoAndStop(1);
 				}
 			}
 			else if (this->container->iceBack->currentFrame == 2)
 			{
-				if (this->container->iceBack->cont->currentFrame < this->container->iceBack->cont->totalFrames)
+				if (this->container->iceBackCont->currentFrame < this->container->iceBackCont->totalFrames)
 				{
-					this->container->iceBack->cont->gotoAndStop(this->container->iceBack->cont->currentFrame + 2);
+					this->container->iceBackCont->gotoAndStop(this->container->iceBackCont->currentFrame + 2);
 				}
 				else
 				{
-					this->container->iceBack->cont->gotoAndStop(1);
+					this->container->iceBackCont->gotoAndStop(1);
 				}
 			}
 			else if (this->container->stoneBack->currentFrame == 2)
 			{
-				if (this->container->stoneBack->cont->currentFrame < this->container->stoneBack->cont->totalFrames)
+				if (this->container->stoneBackCont->currentFrame < this->container->stoneBackCont->totalFrames)
 				{
-					this->container->stoneBack->cont->gotoAndStop(this->container->stoneBack->cont->currentFrame + 2);
+					this->container->stoneBackCont->gotoAndStop(this->container->stoneBackCont->currentFrame + 2);
 				}
 				else
 				{
-					this->container->stoneBack->cont->gotoAndStop(1);
+					this->container->stoneBackCont->gotoAndStop(1);
 				}
 			}
 			else if (this->container->levinBack->currentFrame == 2)
 			{
-				if (this->container->levinBack->cont->currentFrame < this->container->levinBack->cont->totalFrames)
+				if (this->container->levinBackCont->currentFrame < this->container->levinBackCont->totalFrames)
 				{
-					this->container->levinBack->cont->gotoAndStop(this->container->levinBack->cont->currentFrame + 2);
+					this->container->levinBackCont->gotoAndStop(this->container->levinBackCont->currentFrame + 2);
 				}
 				else
 				{
-					this->container->levinBack->cont->gotoAndStop(1);
+					this->container->levinBackCont->gotoAndStop(1);
 				}
 			}
 			if (this->listOfGetAhieve.size() > 0)
@@ -794,7 +794,7 @@ namespace engine
 							this->container->getAll->gotoAndStop(1);
 						}
 						this->container->fireBack->gotoAndStop(2);
-						this->container->fireBack->cont->stop();
+						this->container->fireBackCont->stop();
 						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
 					}
 				}
@@ -819,7 +819,7 @@ namespace engine
 							this->container->getAll->gotoAndStop(1);
 						}
 						this->container->iceBack->gotoAndStop(2);
-						this->container->iceBack->cont->stop();
+						this->container->iceBackCont->stop();
 						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
 					}
 				}
@@ -844,7 +844,7 @@ namespace engine
 							this->container->getAll->gotoAndStop(1);
 						}
 						this->container->stoneBack->gotoAndStop(2);
-						this->container->stoneBack->cont->stop();
+						this->container->stoneBackCont->stop();
 						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
 					}
 				}
@@ -869,7 +869,7 @@ namespace engine
 							this->container->getAll->gotoAndStop(1);
 						}
 						this->container->levinBack->gotoAndStop(2);
-						this->container->levinBack->cont->stop();
+						this->container->levinBackCont->stop();
 						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
 					}
 				}
@@ -961,12 +961,12 @@ namespace engine
 					{
 						if (this->container->fast->currentFrame == 4)
 						{
-							tempObject = this->container->fast->cont->currentFrame;
+							tempObject = this->container->fastCont->currentFrame;
 						}
 						this->container->fast->gotoAndStop((this->container->fast->currentFrame + 1));
 						if (this->container->fast->currentFrame == 5)
 						{
-							this->container->fast->cont->gotoAndStop(tempObject);
+							this->container->fastCont->gotoAndStop(tempObject);
 						}
 						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
 					}
@@ -976,12 +976,12 @@ namespace engine
 			{
 				if (this->container->fast->currentFrame == 5)
 				{
-					tempObject = this->container->fast->cont->currentFrame;
+					tempObject = this->container->fastCont->currentFrame;
 				}
 				this->container->fast->gotoAndStop((this->container->fast->currentFrame - 1));
 				if (this->container->fast->currentFrame == 4)
 				{
-					this->container->fast->cont->gotoAndStop(tempObject);
+					this->container->fastCont->gotoAndStop(tempObject);
 				}
 			}
 			if (param1->target->name == "traceBezier")
@@ -1047,7 +1047,7 @@ namespace engine
 			}
 			if (param1->target->name == "startWavesCase")
 			{
-				if (this->container->startWaves->startWavesCase->buttonMode)
+				if (this->container->startWavesStartWavesCase->buttonMode)
 				{
 					if (this->container->startWaves->currentFrame <= 10)
 					{
@@ -1056,7 +1056,7 @@ namespace engine
 					}
 				}
 			}
-			else if (this->container->startWaves->startWavesCase->buttonMode)
+			else if (this->container->startWavesStartWavesCase->buttonMode)
 			{
 				if (this->container->startWaves->currentFrame > 10)
 				{
@@ -1574,7 +1574,7 @@ namespace engine
 			}
 			else if (event->target->name == "startWavesCase")
 			{
-				if (this->container->startWaves->startWavesCase->buttonMode)
+				if (this->container->startWavesStartWavesCase->buttonMode)
 				{
 					this->world->wavesClass->startWaves();
 				}
@@ -1673,7 +1673,7 @@ namespace engine
 				this->container->fast->gotoAndStop(this->container->fast->currentFrame - 2);
 				if (this->container->fast->currentFrame == 4)
 				{
-					this->container->fast->cont->stop();
+					this->container->fastCont->stop();
 				}
 			}
 			if (event->target->name == "traceBezier")
@@ -1736,13 +1736,13 @@ namespace engine
 				if (this->container->testRestart->currentFrame == 3)
 				{
 					this->container->testRestart->gotoAndStop(2);
-					if (std::getText(this->container->testRestartBoard->waveTXT) == "")
+					if (std::getText(this->container->testRestartBoardWaveTXT) == "")
 					{
 						Main::mainClass->testingClass->loadWave = Main::mainClass->worldClass->wavesClass.nowWave;
 					}
-					else if (std::getInt(this->container->testRestartBoard->waveTXT) < Main::mainClass->testingClass->listOfStory.size())
+					else if (std::getInt(this->container->testRestartBoardWaveTXT) < Main::mainClass->testingClass->listOfStory.size())
 					{
-						Main::mainClass->testingClass->loadWave = std::getInt(this->container->testRestartBoard->waveTXT);
+						Main::mainClass->testingClass->loadWave = std::getInt(this->container->testRestartBoardWaveTXT);
 					}
 					else
 					{
@@ -1885,99 +1885,99 @@ namespace engine
         //else
         //    this->container->getAllPrice->setPosition(Vec2(bp.x + 16, bp.y + 9));
 			
-		this->container->buyFire->buyTXT.text = Main::mainClass->readXMLClass.listOfFirePriceXML[this->fireBuyHistory];
-        this->container->buyIce->buyTXT.text = Main::mainClass->readXMLClass.listOfIcePriceXML[this->iceBuyHistory];
-        this->container->buyStone->buyTXT.text = Main::mainClass->readXMLClass.listOfStonePriceXML[this->stoneBuyHistory];
-        this->container->buyLevin->buyTXT.text = Main::mainClass->readXMLClass.listOfLevinPriceXML[this->levinBuyHistory];
-        this->container->buyGetAll->buyTXT.text = Main::mainClass->readXMLClass.listOfFirePriceXML[this->fireBuyHistory] + Main::mainClass->readXMLClass.listOfIcePriceXML[this->iceBuyHistory] + Main::mainClass->readXMLClass.listOfStonePriceXML[this->stoneBuyHistory] + Main::mainClass->readXMLClass.listOfLevinPriceXML[this->levinBuyHistory];
-		if (std::getInt(this->container->buyFire->buyTXT) < 10)
+		this->container->buyFireBuyTXT.text = Main::mainClass->readXMLClass.listOfFirePriceXML[this->fireBuyHistory];
+        this->container->buyIceBuyTXT.text = Main::mainClass->readXMLClass.listOfIcePriceXML[this->iceBuyHistory];
+        this->container->buyStoneBuyTXT.text = Main::mainClass->readXMLClass.listOfStonePriceXML[this->stoneBuyHistory];
+        this->container->buyLevinBuyTXT.text = Main::mainClass->readXMLClass.listOfLevinPriceXML[this->levinBuyHistory];
+        this->container->buyGetAllBuyTXT.text = Main::mainClass->readXMLClass.listOfFirePriceXML[this->fireBuyHistory] + Main::mainClass->readXMLClass.listOfIcePriceXML[this->iceBuyHistory] + Main::mainClass->readXMLClass.listOfStonePriceXML[this->stoneBuyHistory] + Main::mainClass->readXMLClass.listOfLevinPriceXML[this->levinBuyHistory];
+		if (std::getInt(this->container->buyFireBuyTXT) < 10)
         {
-            this->container->buyFire->coin->setPositionX(-5.75);
-            this->container->buyFire->coin->setPositionY(13.15);
+            this->container->buyFireCoin->setPositionX(-5.75);
+            this->container->buyFireCoin->setPositionY(13.15);
         }
         else
         {
-            this->container->buyFire->coin->setPositionX(-9.25);
-            this->container->buyFire->coin->setPositionY(13.15);
+            this->container->buyFireCoin->setPositionX(-9.25);
+            this->container->buyFireCoin->setPositionY(13.15);
         }
-        if (std::getInt(this->container->buyIce->buyTXT) < 10)
+        if (std::getInt(this->container->buyIceBuyTXT) < 10)
         {
-            this->container->buyIce->coin->setPositionX(-5.75);
-            this->container->buyIce->coin->setPositionY(13.15);
-        }
-        else
-        {
-            this->container->buyIce->coin->setPositionX(-9.25);
-            this->container->buyIce->coin->setPositionY(13.15);
-        }
-        if (std::getInt(this->container->buyStone->buyTXT) < 10)
-        {
-            this->container->buyStone->coin->setPositionX(-5.75);
-            this->container->buyStone->coin->setPositionY(13.15);
+            this->container->buyIceCoin->setPositionX(-5.75);
+            this->container->buyIceCoin->setPositionY(13.15);
         }
         else
         {
-            this->container->buyStone->coin->setPositionX(-9.25);
-            this->container->buyStone->coin->setPositionY(13.15);
+            this->container->buyIceCoin->setPositionX(-9.25);
+            this->container->buyIceCoin->setPositionY(13.15);
         }
-        if (std::getInt(this->container->buyLevin->buyTXT) < 10)
+        if (std::getInt(this->container->buyStoneBuyTXT) < 10)
         {
-            this->container->buyLevin->coin->setPositionX(-5.75);
-            this->container->buyLevin->coin->setPositionY(13.15);
-        }
-        else
-        {
-            this->container->buyLevin->coin->setPositionX(-9.25);
-            this->container->buyLevin->coin->setPositionY(13.15);
-        }
-        if (std::getInt(this->container->buyGetAll->buyTXT) < 10)
-        {
-            this->container->buyGetAll->coin->setPositionX(-8.6);
-            this->container->buyGetAll->coin->setPositionY(13.15);
-        }
-        else if (std::getInt(this->container->buyGetAll->buyTXT) < 100)
-        {
-            this->container->buyGetAll->coin->setPositionX(-11);
-            this->container->buyGetAll->coin->setPositionY(13.15);
+            this->container->buyStoneCoin->setPositionX(-5.75);
+            this->container->buyStoneCoin->setPositionY(13.15);
         }
         else
         {
-            this->container->buyGetAll->coin->setPositionX(-14.2);
-            this->container->buyGetAll->coin->setPositionY(13.15);
+            this->container->buyStoneCoin->setPositionX(-9.25);
+            this->container->buyStoneCoin->setPositionY(13.15);
+        }
+        if (std::getInt(this->container->buyLevinBuyTXT) < 10)
+        {
+            this->container->buyLevinCoin->setPositionX(-5.75);
+            this->container->buyLevinCoin->setPositionY(13.15);
+        }
+        else
+        {
+            this->container->buyLevinCoin->setPositionX(-9.25);
+            this->container->buyLevinCoin->setPositionY(13.15);
+        }
+        if (std::getInt(this->container->buyGetAllBuyTXT) < 10)
+        {
+            this->container->buyGetAllCoin->setPositionX(-8.6);
+            this->container->buyGetAllCoin->setPositionY(13.15);
+        }
+        else if (std::getInt(this->container->buyGetAllBuyTXT) < 100)
+        {
+            this->container->buyGetAllCoin->setPositionX(-11);
+            this->container->buyGetAllCoin->setPositionY(13.15);
+        }
+        else
+        {
+            this->container->buyGetAllCoin->setPositionX(-14.2);
+            this->container->buyGetAllCoin->setPositionY(13.15);
         }
 
         if (this->container->fireSphere->isVisible() && (this->fireCount > 0 || this->world->money >= firePrice ))
 		{
-		    if (!this->container->fireSphere->sphereCase->buttonMode)
+		    if (!this->container->fireSphereSphereCase->buttonMode)
 		    {
-		        this->container->fireSphere->sphereCase->buttonMode = true;
+		        this->container->fireSphereSphereCase->buttonMode = true;
 		        this->container->fireSphere->alpha = 1;
 		    }
             if (this->world->money >= firePrice)
 		    {
 		        if (this->container->buyFire->currentFrame == 2)
 		        {
-		            this->container->buyFire->myCost = std::getInt(this->container->buyFire->buyTXT);
-		            this->container->buyFire->coin->myPoint = new Point(this->container->buyFire->coin->x, this->container->buyFire->coin->y);
+		            this->container->buyFireMyCost = std::getInt(this->container->buyFireBuyTXT);
+		            this->container->buyFireCoinMyPoint = new Point(this->container->buyFireCoin->x, this->container->buyFireCoin->y);
 		            this->container->buyFire->gotoAndStop(1);
-		            std::setText(this->container->buyFire->buyTXT , this->container->buyFire->myCost );
-		            this->container->buyFire->coin->gotoAndStop(1);
-		            this->container->buyFire->coin->setPosition(this->container->buyFire->coin->myPoint);
+		            std::setText(this->container->buyFireBuyTXT , this->container->buyFireMyCost );
+		            this->container->buyFireCoin->gotoAndStop(1);
+		            this->container->buyFireCoin->setPosition(this->container->buyFireCoinMyPoint);
 		        }
 		    }
 		    else if (this->container->buyFire->currentFrame == 1)
 		    {
-		        this->container->buyFire->myCost = std::getInt(this->container->buyFire->buyTXT);
-		        this->container->buyFire->coin->myPoint = new Point(this->container->buyFire->coin->x, this->container->buyFire->coin->y);
+		        this->container->buyFireMyCost = std::getInt(this->container->buyFireBuyTXT);
+		        this->container->buyFireCoinMyPoint = new Point(this->container->buyFireCoin->x, this->container->buyFireCoin->y);
 		        this->container->buyFire->gotoAndStop(2);
-		        std::setText(this->container->buyFire->buyTXT , this->container->buyFire->myCost );
-		        this->container->buyFire->coin->gotoAndStop(2);
-		        this->container->buyFire->coin->setPosition(this->container->buyFire->coin->myPoint); 
-		        this->container->buyFire->coin->setScaleY(0.8);
-		        this->container->buyFire->coin->setScaleX(0.8);
+		        std::setText(this->container->buyFireBuyTXT , this->container->buyFireMyCost );
+		        this->container->buyFireCoin->gotoAndStop(2);
+		        this->container->buyFireCoin->setPosition(this->container->buyFireCoinMyPoint); 
+		        this->container->buyFireCoin->setScaleY(0.8);
+		        this->container->buyFireCoin->setScaleX(0.8);
 		    }
 
-		    if (this->container->fireSphere->sphereCase->buttonMode)
+		    if (this->container->fireSphereSphereCase->buttonMode)
 		    {
 		        if (!this->world->getSphere)
 		        {
@@ -1985,14 +1985,14 @@ namespace engine
 		            {
 		                if (this->world->towerMenu->myTower->spheresManage("scan") > 0)
 		                {
-		                    if (!this->container->buyFire->lightUp->isVisible())
+		                    if (!this->container->buyFireLightUp->isVisible())
 		                    {
-		                        this->container->buyFire->lightUp->setVisible(true);
+		                        this->container->buyFireLightUp->setVisible(true);
 		                    }
 		                }
-		                else if (this->container->buyFire->lightUp->isVisible())
+		                else if (this->container->buyFireLightUp->isVisible())
 		                {
-		                    this->container->buyFire->lightUp->setVisible( false);
+		                    this->container->buyFireLightUp->setVisible( false);
 		                }
 		            }
 		            else if (this->world->ultraTowerMenu)
@@ -2001,63 +2001,63 @@ namespace engine
 		                {
 		                    if (!this->world->ultraTowerMenu->myTower->shootingTurnStack[0])
 		                    {
-		                        if (!this->container->buyFire->lightUp->isVisible())
+		                        if (!this->container->buyFireLightUp->isVisible())
 		                        {
-		                            this->container->buyFire->lightUp->setVisible(true);
+		                            this->container->buyFireLightUp->setVisible(true);
 		                        }
 		                    }
-		                    else if (this->container->buyFire->lightUp->isVisible())
+		                    else if (this->container->buyFireLightUp->isVisible())
 		                    {
-		                        this->container->buyFire->lightUp->setVisible( false);
+		                        this->container->buyFireLightUp->setVisible( false);
 		                    }
 		                }
 		                else if (this->world->ultraTowerMenu->myTower->towerType == 8 && Main::mainClass->readXMLClass.ultraTower4UpgrBlock == 0)
 		                {
 		                    if (!this->world->ultraTowerMenu->myTower->shootingTurnStack[0])
 		                    {
-		                        if (!this->container->buyFire->lightUp->isVisible())
+		                        if (!this->container->buyFireLightUp->isVisible())
 		                        {
-		                            this->container->buyFire->lightUp->setVisible(true);
+		                            this->container->buyFireLightUp->setVisible(true);
 		                        }
 		                    }
-		                    else if (this->container->buyFire->lightUp->isVisible())
+		                    else if (this->container->buyFireLightUp->isVisible())
 		                    {
-		                        this->container->buyFire->lightUp->setVisible( false);
+		                        this->container->buyFireLightUp->setVisible( false);
 		                    }
 		                }
 		            }
-		            else if (this->container->buyFire->lightUp->isVisible())
+		            else if (this->container->buyFireLightUp->isVisible())
 		            {
-		                this->container->buyFire->lightUp->setVisible( false);
+		                this->container->buyFireLightUp->setVisible( false);
 		            }
 		        }
-		        else if (this->container->buyFire->lightUp->isVisible())
+		        else if (this->container->buyFireLightUp->isVisible())
 		        {
-		            this->container->buyFire->lightUp->setVisible( false);
+		            this->container->buyFireLightUp->setVisible( false);
 		        }
 		    }
 		}
 		else
 		{
-		    if (this->container->fireSphere->sphereCase->buttonMode)
+		    if (this->container->fireSphereSphereCase->buttonMode)
 		    {
-		        this->container->fireSphere->sphereCase->buttonMode = false;
+		        this->container->fireSphereSphereCase->buttonMode = false;
 		        this->container->fireBack->gotoAndStop(1);
-		        if (this->container->buyFire->lightUp->isVisible())
+		        if (this->container->buyFireLightUp->isVisible())
 		        {
-		            this->container->buyFire->lightUp->setVisible( false);
+		            this->container->buyFireLightUp->setVisible( false);
 		        }
 		    }
 		    if (this->container->buyFire->currentFrame == 1)
 		    {
-		        this->container->buyFire->myCost = std::getInt(this->container->buyFire->buyTXT);
-		        this->container->buyFire->coin->myPoint = new Point(this->container->buyFire->coin->x, this->container->buyFire->coin->y);
+		        this->container->buyFireMyCost = std::getInt(this->container->buyFireBuyTXT);
+		        this->container->buyFireCoinMyPoint = new Point(this->container->buyFireCoin->x, this->container->buyFireCoin->y);
 		        this->container->buyFire->gotoAndStop(2);
-		        std::setText(this->container->buyFire->buyTXT , this->container->buyFire->myCost );
-		        this->container->buyFire->coin->gotoAndStop(2);
-		        this->container->buyFire->coin->setPosition(this->container->buyFire->coin->myPoint);
-		        this->container->buyFire->coin->setScaleY(0.8);
-		        this->container->buyFire->coin->setScaleX(0.8);
+		        std::setText(this->container->buyFireBuyTXT , this->container->buyFireMyCost );
+		        this->container->buyFireCoin->gotoAndStop(2);
+		        this->container->buyFireCoin->setPosition(this->container->buyFireCoinMyPoint);
+		        this->container->buyFireCoin->setScaleY(0.8);
+		        this->container->buyFireCoin->setScaleX(0.8);
 		    }
 		    if (this->container->fireSphere->alpha != 0.5)
 		    {
@@ -2065,39 +2065,39 @@ namespace engine
 		    }
 		}
 
-		if (this->container->iceSphere->isVisible() && (this->iceCount > 0 || this->world->money >= std::getInt(this->container->buyIce->buyTXT)))
+		if (this->container->iceSphere->isVisible() && (this->iceCount > 0 || this->world->money >= std::getInt(this->container->buyIceBuyTXT)))
 		{
-		    if (!this->container->iceSphere->sphereCase->buttonMode)
+		    if (!this->container->iceSphereSphereCase->buttonMode)
 		    {
-		        this->container->iceSphere->sphereCase->buttonMode = true;
+		        this->container->iceSphereSphereCase->buttonMode = true;
 		        this->container->iceSphere->alpha = 1;
 		    }
-		    if (this->world->money >= std::getInt(this->container->buyIce->buyTXT))
+		    if (this->world->money >= std::getInt(this->container->buyIceBuyTXT))
 		    {
 		        if (this->container->buyIce->currentFrame == 2)
 		        {
-		            this->container->buyIce->myCost = std::getInt(this->container->buyIce->buyTXT);
-		            this->container->buyIce->coin->myPoint = new Point(this->container->buyIce->coin->x, this->container->buyIce->coin->y);
+		            this->container->buyIceMyCost = std::getInt(this->container->buyIceBuyTXT);
+		            this->container->buyIceCoinMyPoint = new Point(this->container->buyIceCoin->x, this->container->buyIceCoin->y);
 		            this->container->buyIce->gotoAndStop(1);
-		            std::setText(this->container->buyIce->buyTXT , this->container->buyIce->myCost );
-		            this->container->buyIce->coin->gotoAndStop(1);
-		            this->container->buyIce->coin->setPosition(this->container->buyIce->coin->myPoint);
-		            this->container->buyIce->coin->setScaleY(1);
-		            this->container->buyIce->coin->setScaleX(1);
+		            std::setText(this->container->buyIceBuyTXT , this->container->buyIceMyCost );
+		            this->container->buyIceCoin->gotoAndStop(1);
+		            this->container->buyIceCoin->setPosition(this->container->buyIceCoinMyPoint);
+		            this->container->buyIceCoin->setScaleY(1);
+		            this->container->buyIceCoin->setScaleX(1);
 		        }
 		    }
 		    else if (this->container->buyIce->currentFrame == 1)
 		    {
-		        this->container->buyIce->myCost = std::getInt(this->container->buyIce->buyTXT);
-		        this->container->buyIce->coin->myPoint = new Point(this->container->buyIce->coin->x, this->container->buyIce->coin->y);
+		        this->container->buyIceMyCost = std::getInt(this->container->buyIceBuyTXT);
+		        this->container->buyIceCoinMyPoint = new Point(this->container->buyIceCoin->x, this->container->buyIceCoin->y);
 		        this->container->buyIce->gotoAndStop(2);
-		        std::setText(this->container->buyIce->buyTXT , this->container->buyIce->myCost );
-		        this->container->buyIce->coin->gotoAndStop(2);
-		        this->container->buyIce->coin->setPosition(this->container->buyIce->coin->myPoint); 
-		        this->container->buyIce->coin->setScaleY(0.8);
-		        this->container->buyIce->coin->setScaleX(0.8);
+		        std::setText(this->container->buyIceBuyTXT , this->container->buyIceMyCost );
+		        this->container->buyIceCoin->gotoAndStop(2);
+		        this->container->buyIceCoin->setPosition(this->container->buyIceCoinMyPoint); 
+		        this->container->buyIceCoin->setScaleY(0.8);
+		        this->container->buyIceCoin->setScaleX(0.8);
 		    }
-		    if (this->container->iceSphere->sphereCase->buttonMode)
+		    if (this->container->iceSphereSphereCase->buttonMode)
 		    {
 		        if (!this->world->getSphere)
 		        {
@@ -2105,14 +2105,14 @@ namespace engine
 		            {
 		                if (this->world->towerMenu->myTower->spheresManage("scan") > 0)
 		                {
-		                    if (!this->container->buyIce->lightUp->isVisible())
+		                    if (!this->container->buyIceLightUp->isVisible())
 		                    {
-		                        this->container->buyIce->lightUp->setVisible(true);
+		                        this->container->buyIceLightUp->setVisible(true);
 		                    }
 		                }
-		                else if (this->container->buyIce->lightUp->isVisible())
+		                else if (this->container->buyIceLightUp->isVisible())
 		                {
-		                    this->container->buyIce->lightUp->setVisible( false);
+		                    this->container->buyIceLightUp->setVisible( false);
 		                }
 		            }
 		            else if (this->world->ultraTowerMenu)
@@ -2121,63 +2121,63 @@ namespace engine
 		                {
 		                    if (!this->world->ultraTowerMenu->myTower->shootingTurnStack[1])
 		                    {
-		                        if (!this->container->buyIce->lightUp->isVisible())
+		                        if (!this->container->buyIceLightUp->isVisible())
 		                        {
-		                            this->container->buyIce->lightUp->setVisible(true);
+		                            this->container->buyIceLightUp->setVisible(true);
 		                        }
 		                    }
-		                    else if (this->container->buyIce->lightUp->isVisible())
+		                    else if (this->container->buyIceLightUp->isVisible())
 		                    {
-		                        this->container->buyIce->lightUp->setVisible( false);
+		                        this->container->buyIceLightUp->setVisible( false);
 		                    }
 		                }
 		                else if (this->world->ultraTowerMenu->myTower->towerType == 7 && Main::mainClass->readXMLClass.ultraTower3UpgrBlock == 0)
 		                {
 		                    if (!this->world->ultraTowerMenu->myTower->shootingTurnStack[1])
 		                    {
-		                        if (!this->container->buyIce->lightUp->isVisible())
+		                        if (!this->container->buyIceLightUp->isVisible())
 		                        {
-		                            this->container->buyIce->lightUp->setVisible(true);
+		                            this->container->buyIceLightUp->setVisible(true);
 		                        }
 		                    }
-		                    else if (this->container->buyIce->lightUp->isVisible())
+		                    else if (this->container->buyIceLightUp->isVisible())
 		                    {
-		                        this->container->buyIce->lightUp->setVisible( false);
+		                        this->container->buyIceLightUp->setVisible( false);
 		                    }
 		                }
 		            }
-		            else if (this->container->buyIce->lightUp->isVisible())
+		            else if (this->container->buyIceLightUp->isVisible())
 		            {
-		                this->container->buyIce->lightUp->setVisible( false);
+		                this->container->buyIceLightUp->setVisible( false);
 		            }
 		        }
-		        else if (this->container->buyIce->lightUp->isVisible())
+		        else if (this->container->buyIceLightUp->isVisible())
 		        {
-		            this->container->buyIce->lightUp->setVisible( false);
+		            this->container->buyIceLightUp->setVisible( false);
 		        }
 		    }
 		}
 		else
 		{
-		    if (this->container->iceSphere->sphereCase->buttonMode)
+		    if (this->container->iceSphereSphereCase->buttonMode)
 		    {
-		        this->container->iceSphere->sphereCase->buttonMode = false;
+		        this->container->iceSphereSphereCase->buttonMode = false;
 		        this->container->iceBack->gotoAndStop(1);
-		        if (this->container->buyIce->lightUp->isVisible())
+		        if (this->container->buyIceLightUp->isVisible())
 		        {
-		            this->container->buyIce->lightUp->setVisible( false);
+		            this->container->buyIceLightUp->setVisible( false);
 		        }
 		    }
 		    if (this->container->buyIce->currentFrame == 1)
 		    {
-		        this->container->buyIce->myCost = std::getInt(this->container->buyIce->buyTXT);
-		        this->container->buyIce->coin->myPoint = new Point(this->container->buyIce->coin->x, this->container->buyIce->coin->y);
+		        this->container->buyIceMyCost = std::getInt(this->container->buyIceBuyTXT);
+		        this->container->buyIceCoinMyPoint = new Point(this->container->buyIceCoin->x, this->container->buyIceCoin->y);
 		        this->container->buyIce->gotoAndStop(2);
-		        std::setText(this->container->buyIce->buyTXT , this->container->buyIce->myCost );
-		        this->container->buyIce->coin->gotoAndStop(2);
-		        this->container->buyIce->coin->setPosition(this->container->buyIce->coin->myPoint); 
-		        this->container->buyIce->coin->setScaleY(0.8);
-		        this->container->buyIce->coin->setScaleX(0.8);
+		        std::setText(this->container->buyIceBuyTXT , this->container->buyIceMyCost );
+		        this->container->buyIceCoin->gotoAndStop(2);
+		        this->container->buyIceCoin->setPosition(this->container->buyIceCoinMyPoint); 
+		        this->container->buyIceCoin->setScaleY(0.8);
+		        this->container->buyIceCoin->setScaleX(0.8);
 		    }
 		    if (this->container->iceSphere->alpha != 0.5)
 		    {
@@ -2185,39 +2185,39 @@ namespace engine
 		    }
 		}
 
-		if (this->container->stoneSphere->isVisible() && (this->stoneCount > 0 || this->world->money >= std::getInt(this->container->buyStone->buyTXT)))
+		if (this->container->stoneSphere->isVisible() && (this->stoneCount > 0 || this->world->money >= std::getInt(this->container->buyStoneBuyTXT)))
 		{
-		    if (!this->container->stoneSphere->sphereCase->buttonMode)
+		    if (!this->container->stoneSphereSphereCase->buttonMode)
 		    {
-		        this->container->stoneSphere->sphereCase->buttonMode = true;
+		        this->container->stoneSphereSphereCase->buttonMode = true;
 		        this->container->stoneSphere->alpha = 1;
 		    }
-		    if (this->world->money >= std::getInt(this->container->buyStone->buyTXT))
+		    if (this->world->money >= std::getInt(this->container->buyStoneBuyTXT))
 		    {
 		        if (this->container->buyStone->currentFrame == 2)
 		        {
-		            this->container->buyStone->myCost = std::getInt(this->container->buyStone->buyTXT);
-		            this->container->buyStone->coin->myPoint = new Point(this->container->buyStone->coin->x, this->container->buyStone->coin->y);
+		            this->container->buyStoneMyCost = std::getInt(this->container->buyStoneBuyTXT);
+		            this->container->buyStoneCoinMyPoint = new Point(this->container->buyStoneCoin->x, this->container->buyStoneCoin->y);
 		            this->container->buyStone->gotoAndStop(1);
-		            std::setText(this->container->buyStone->buyTXT , this->container->buyStone->myCost );
-		            this->container->buyStone->coin->gotoAndStop(1);
-		            this->container->buyStone->coin->setPosition(this->container->buyStone->coin->myPoint);
-		            this->container->buyStone->coin->setScaleY(1);
-		            this->container->buyStone->coin->setScaleX(1);
+		            std::setText(this->container->buyStoneBuyTXT , this->container->buyStoneMyCost );
+		            this->container->buyStoneCoin->gotoAndStop(1);
+		            this->container->buyStoneCoin->setPosition(this->container->buyStoneCoinMyPoint);
+		            this->container->buyStoneCoin->setScaleY(1);
+		            this->container->buyStoneCoin->setScaleX(1);
 		        }
 		    }
 		    else if (this->container->buyStone->currentFrame == 1)
 		    {
-		        this->container->buyStone->myCost = std::getInt(this->container->buyStone->buyTXT);
-		        this->container->buyStone->coin->myPoint = new Point(this->container->buyStone->coin->x, this->container->buyStone->coin->y);
+		        this->container->buyStoneMyCost = std::getInt(this->container->buyStoneBuyTXT);
+		        this->container->buyStoneCoinMyPoint = new Point(this->container->buyStoneCoin->x, this->container->buyStoneCoin->y);
 		        this->container->buyStone->gotoAndStop(2);
-		        std::setText(this->container->buyStone->buyTXT , this->container->buyStone->myCost );
-		        this->container->buyStone->coin->gotoAndStop(2);
-		        this->container->buyStone->coin->setPosition(this->container->buyStone->coin->myPoint);
-		        this->container->buyStone->coin->setScaleY(0.8);
-		        this->container->buyStone->coin->setScaleX(0.8);
+		        std::setText(this->container->buyStoneBuyTXT , this->container->buyStoneMyCost );
+		        this->container->buyStoneCoin->gotoAndStop(2);
+		        this->container->buyStoneCoin->setPosition(this->container->buyStoneCoinMyPoint);
+		        this->container->buyStoneCoin->setScaleY(0.8);
+		        this->container->buyStoneCoin->setScaleX(0.8);
 		    }
-		    if (this->container->stoneSphere->sphereCase->buttonMode)
+		    if (this->container->stoneSphereSphereCase->buttonMode)
 		    {
 		        if (!this->world->getSphere)
 		        {
@@ -2225,14 +2225,14 @@ namespace engine
 		            {
 		                if (this->world->towerMenu->myTower->spheresManage("scan") > 0)
 		                {
-		                    if (!this->container->buyStone->lightUp->isVisible())
+		                    if (!this->container->buyStoneLightUp->isVisible())
 		                    {
-		                        this->container->buyStone->lightUp->setVisible(true);
+		                        this->container->buyStoneLightUp->setVisible(true);
 		                    }
 		                }
-		                else if (this->container->buyStone->lightUp->isVisible())
+		                else if (this->container->buyStoneLightUp->isVisible())
 		                {
-		                    this->container->buyStone->lightUp->setVisible( false);
+		                    this->container->buyStoneLightUp->setVisible( false);
 		                }
 		            }
 		            else if (this->world->ultraTowerMenu)
@@ -2241,63 +2241,63 @@ namespace engine
 		                {
 		                    if (!this->world->ultraTowerMenu->myTower->shootingTurnStack[2])
 		                    {
-		                        if (!this->container->buyStone->lightUp->isVisible())
+		                        if (!this->container->buyStoneLightUp->isVisible())
 		                        {
-		                            this->container->buyStone->lightUp->setVisible(true);
+		                            this->container->buyStoneLightUp->setVisible(true);
 		                        }
 		                    }
-		                    else if (this->container->buyStone->lightUp->isVisible())
+		                    else if (this->container->buyStoneLightUp->isVisible())
 		                    {
-		                        this->container->buyStone->lightUp->setVisible( false);
+		                        this->container->buyStoneLightUp->setVisible( false);
 		                    }
 		                }
 		                else if (this->world->ultraTowerMenu->myTower->towerType == 7 && Main::mainClass->readXMLClass.ultraTower3UpgrBlock == 0)
 		                {
 		                    if (!this->world->ultraTowerMenu->myTower->shootingTurnStack[2])
 		                    {
-		                        if (!this->container->buyStone->lightUp->isVisible())
+		                        if (!this->container->buyStoneLightUp->isVisible())
 		                        {
-		                            this->container->buyStone->lightUp->setVisible(true);
+		                            this->container->buyStoneLightUp->setVisible(true);
 		                        }
 		                    }
-		                    else if (this->container->buyStone->lightUp->isVisible())
+		                    else if (this->container->buyStoneLightUp->isVisible())
 		                    {
-		                        this->container->buyStone->lightUp->setVisible( false);
+		                        this->container->buyStoneLightUp->setVisible( false);
 		                    }
 		                }
 		            }
-		            else if (this->container->buyStone->lightUp->isVisible())
+		            else if (this->container->buyStoneLightUp->isVisible())
 		            {
-		                this->container->buyStone->lightUp->setVisible( false);
+		                this->container->buyStoneLightUp->setVisible( false);
 		            }
 		        }
-		        else if (this->container->buyStone->lightUp->isVisible())
+		        else if (this->container->buyStoneLightUp->isVisible())
 		        {
-		            this->container->buyStone->lightUp->setVisible( false);
+		            this->container->buyStoneLightUp->setVisible( false);
 		        }
 		    }
 		}
 		else
 		{
-		    if (this->container->stoneSphere->sphereCase->buttonMode)
+		    if (this->container->stoneSphereSphereCase->buttonMode)
 		    {
-		        this->container->stoneSphere->sphereCase->buttonMode = false;
+		        this->container->stoneSphereSphereCase->buttonMode = false;
 		        this->container->stoneBack->gotoAndStop(1);
-		        if (this->container->buyStone->lightUp->isVisible())
+		        if (this->container->buyStoneLightUp->isVisible())
 		        {
-		            this->container->buyStone->lightUp->setVisible( false);
+		            this->container->buyStoneLightUp->setVisible( false);
 		        }
 		    }
 		    if (this->container->buyStone->currentFrame == 1)
 		    {
-		        this->container->buyStone->myCost = std::getInt(this->container->buyStone->buyTXT);
-		        this->container->buyStone->coin->myPoint = new Point(this->container->buyStone->coin->x, this->container->buyStone->coin->y);
+		        this->container->buyStoneMyCost = std::getInt(this->container->buyStoneBuyTXT);
+		        this->container->buyStoneCoinMyPoint = new Point(this->container->buyStoneCoin->x, this->container->buyStoneCoin->y);
 		        this->container->buyStone->gotoAndStop(2);
-		        std::setText(this->container->buyStone->buyTXT , this->container->buyStone->myCost );
-		        this->container->buyStone->coin->gotoAndStop(2);
-		        this->container->buyStone->coin->setPosition(this->container->buyStone->coin->myPoint);
-		        this->container->buyStone->coin->setScaleY(0.8);
-		        this->container->buyStone->coin->setScaleX(0.8);
+		        std::setText(this->container->buyStoneBuyTXT , this->container->buyStoneMyCost );
+		        this->container->buyStoneCoin->gotoAndStop(2);
+		        this->container->buyStoneCoin->setPosition(this->container->buyStoneCoinMyPoint);
+		        this->container->buyStoneCoin->setScaleY(0.8);
+		        this->container->buyStoneCoin->setScaleX(0.8);
 		    }
 		    if (this->container->stoneSphere->alpha != 0.5)
 		    {
@@ -2305,39 +2305,39 @@ namespace engine
 		    }
 		}
 
-		if (this->container->levinSphere->isVisible() && (this->levinCount > 0 || this->world->money >= std::getInt(this->container->buyLevin->buyTXT)))
+		if (this->container->levinSphere->isVisible() && (this->levinCount > 0 || this->world->money >= std::getInt(this->container->buyLevinBuyTXT)))
 		{
-		    if (!this->container->levinSphere->sphereCase->buttonMode)
+		    if (!this->container->levinSphereSphereCase->buttonMode)
 		    {
-		        this->container->levinSphere->sphereCase->buttonMode = true;
+		        this->container->levinSphereSphereCase->buttonMode = true;
 		        this->container->levinSphere->alpha = 1;
 		    }
-		    if (this->world->money >= std::getInt(this->container->buyLevin->buyTXT))
+		    if (this->world->money >= std::getInt(this->container->buyLevinBuyTXT))
 		    {
 		        if (this->container->buyLevin->currentFrame == 2)
 		        {
-		            this->container->buyLevin->myCost = std::getInt(this->container->buyLevin->buyTXT);
-		            this->container->buyLevin->coin->myPoint = new Point(this->container->buyLevin->coin->x, this->container->buyLevin->coin->y);
+		            this->container->buyLevinMyCost = std::getInt(this->container->buyLevinBuyTXT);
+		            this->container->buyLevinCoinMyPoint = new Point(this->container->buyLevinCoin->x, this->container->buyLevinCoin->y);
 		            this->container->buyLevin->gotoAndStop(1);
-		            std::setText(this->container->buyLevin->buyTXT , this->container->buyLevin->myCost );
-		            this->container->buyLevin->coin->gotoAndStop(1);
-		            this->container->buyLevin->coin->setPosition(this->container->buyLevin->coin->myPoint);
-		            this->container->buyLevin->coin->setScaleY(1);
-		            this->container->buyLevin->coin->setScaleX(1);
+		            std::setText(this->container->buyLevinBuyTXT , this->container->buyLevinMyCost );
+		            this->container->buyLevinCoin->gotoAndStop(1);
+		            this->container->buyLevinCoin->setPosition(this->container->buyLevinCoinMyPoint);
+		            this->container->buyLevinCoin->setScaleY(1);
+		            this->container->buyLevinCoin->setScaleX(1);
 		        }
 		    }
 		    else if (this->container->buyLevin->currentFrame == 1)
 		    {
-		        this->container->buyLevin->myCost = std::getInt(this->container->buyLevin->buyTXT);
-		        this->container->buyLevin->coin->myPoint = new Point(this->container->buyLevin->coin->x, this->container->buyLevin->coin->y);
+		        this->container->buyLevinMyCost = std::getInt(this->container->buyLevinBuyTXT);
+		        this->container->buyLevinCoinMyPoint = new Point(this->container->buyLevinCoin->x, this->container->buyLevinCoin->y);
 		        this->container->buyLevin->gotoAndStop(2);
-		        std::setText(this->container->buyLevin->buyTXT , this->container->buyLevin->myCost );
-		        this->container->buyLevin->coin->gotoAndStop(2);
-		        this->container->buyLevin->coin->setPosition(this->container->buyLevin->coin->myPoint);
-    	        this->container->buyLevin->coin->setScaleY(0.8);
-		        this->container->buyLevin->coin->setScaleX(0.8);
+		        std::setText(this->container->buyLevinBuyTXT , this->container->buyLevinMyCost );
+		        this->container->buyLevinCoin->gotoAndStop(2);
+		        this->container->buyLevinCoin->setPosition(this->container->buyLevinCoinMyPoint);
+    	        this->container->buyLevinCoin->setScaleY(0.8);
+		        this->container->buyLevinCoin->setScaleX(0.8);
 		    }
-		    if (this->container->levinSphere->sphereCase->buttonMode)
+		    if (this->container->levinSphereSphereCase->buttonMode)
 		    {
 		        if (!this->world->getSphere)
 		        {
@@ -2345,14 +2345,14 @@ namespace engine
 		            {
 		                if (this->world->towerMenu->myTower->spheresManage("scan") > 0)
 		                {
-		                    if (!this->container->buyLevin->lightUp->isVisible())
+		                    if (!this->container->buyLevinLightUp->isVisible())
 		                    {
-		                        this->container->buyLevin->lightUp->setVisible(true);
+		                        this->container->buyLevinLightUp->setVisible(true);
 		                    }
 		                }
-		                else if (this->container->buyLevin->lightUp->isVisible())
+		                else if (this->container->buyLevinLightUp->isVisible())
 		                {
-		                    this->container->buyLevin->lightUp->setVisible( false);
+		                    this->container->buyLevinLightUp->setVisible( false);
 		                }
 		            }
 		            else if (this->world->ultraTowerMenu)
@@ -2361,63 +2361,63 @@ namespace engine
 		                {
 		                    if (!this->world->ultraTowerMenu->myTower->shootingTurnStack[3])
 		                    {
-		                        if (!this->container->buyLevin->lightUp->isVisible())
+		                        if (!this->container->buyLevinLightUp->isVisible())
 		                        {
-		                            this->container->buyLevin->lightUp->setVisible(true);
+		                            this->container->buyLevinLightUp->setVisible(true);
 		                        }
 		                    }
-		                    else if (this->container->buyLevin->lightUp->isVisible())
+		                    else if (this->container->buyLevinLightUp->isVisible())
 		                    {
-		                        this->container->buyLevin->lightUp->setVisible( false);
+		                        this->container->buyLevinLightUp->setVisible( false);
 		                    }
 		                }
 		                else if (this->world->ultraTowerMenu->myTower->towerType == 8 && Main::mainClass->readXMLClass.ultraTower4UpgrBlock == 0)
 		                {
 		                    if (!this->world->ultraTowerMenu->myTower->shootingTurnStack[3])
 		                    {
-		                        if (!this->container->buyLevin->lightUp->isVisible())
+		                        if (!this->container->buyLevinLightUp->isVisible())
 		                        {
-		                            this->container->buyLevin->lightUp->setVisible(true);
+		                            this->container->buyLevinLightUp->setVisible(true);
 		                        }
 		                    }
-		                    else if (this->container->buyLevin->lightUp->isVisible())
+		                    else if (this->container->buyLevinLightUp->isVisible())
 		                    {
-		                        this->container->buyLevin->lightUp->setVisible( false);
+		                        this->container->buyLevinLightUp->setVisible( false);
 		                    }
 		                }
 		            }
-		            else if (this->container->buyLevin->lightUp->isVisible())
+		            else if (this->container->buyLevinLightUp->isVisible())
 		            {
-		                this->container->buyLevin->lightUp->setVisible( false);
+		                this->container->buyLevinLightUp->setVisible( false);
 		            }
 		        }
-		        else if (this->container->buyLevin->lightUp->isVisible())
+		        else if (this->container->buyLevinLightUp->isVisible())
 		        {
-		            this->container->buyLevin->lightUp->setVisible( false);
+		            this->container->buyLevinLightUp->setVisible( false);
 		        }
 		    }
 		}
 		else
 		{
-		    if (this->container->levinSphere->sphereCase->buttonMode)
+		    if (this->container->levinSphereSphereCase->buttonMode)
 		    {
-		        this->container->levinSphere->sphereCase->buttonMode = false;
+		        this->container->levinSphereSphereCase->buttonMode = false;
 		        this->container->levinBack->gotoAndStop(1);
-		        if (this->container->buyLevin->lightUp->isVisible())
+		        if (this->container->buyLevinLightUp->isVisible())
 		        {
-		            this->container->buyLevin->lightUp->setVisible( false);
+		            this->container->buyLevinLightUp->setVisible( false);
 		        }
 		    }
 		    if (this->container->buyLevin->currentFrame == 1)
 		    {
-		        this->container->buyLevin->myCost = std::getInt(this->container->buyLevin->buyTXT);
-		        this->container->buyLevin->coin->myPoint = new Point(this->container->buyLevin->coin->x, this->container->buyLevin->coin->y);
+		        this->container->buyLevinMyCost = std::getInt(this->container->buyLevinBuyTXT);
+		        this->container->buyLevinCoinMyPoint = new Point(this->container->buyLevinCoin->x, this->container->buyLevinCoin->y);
 		        this->container->buyLevin->gotoAndStop(2);
-		        std::setText(this->container->buyLevin->buyTXT , this->container->buyLevin->myCost );
-		        this->container->buyLevin->coin->gotoAndStop(2);
-		        this->container->buyLevin->coin->setPosition(this->container->buyLevin->coin->myPoint);
-		        this->container->buyLevin->coin->setScaleY(0.8);
-		        this->container->buyLevin->coin->setScaleX(0.8);
+		        std::setText(this->container->buyLevinBuyTXT , this->container->buyLevinMyCost );
+		        this->container->buyLevinCoin->gotoAndStop(2);
+		        this->container->buyLevinCoin->setPosition(this->container->buyLevinCoinMyPoint);
+		        this->container->buyLevinCoin->setScaleY(0.8);
+		        this->container->buyLevinCoin->setScaleX(0.8);
 		    }
 		    if (this->container->levinSphere->alpha != 0.5)
 		    {
@@ -2427,39 +2427,39 @@ namespace engine
 
 		if (this->container->getAll->currentFrame < 3)
 		{
-		    if (this->container->getAll->isVisible() && (this->getAllCount > 0 || this->world->money >= std::getInt(this->container->buygetAll->buyTXT)))
+		    if (this->container->getAll->isVisible() && (this->getAllCount > 0 || this->world->money >= std::getInt(this->container->buygetAllBuyTXT)))
 		    {
-		        if (!this->container->getAll->sphereCase->buttonMode)
+		        if (!this->container->getAllSphereCase->buttonMode)
 		        {
-		            this->container->getAll->sphereCase->buttonMode = true;
+		            this->container->getAllSphereCase->buttonMode = true;
 		            this->container->getAll->alpha = 1;
 		        }
-		        if (this->world->money >= std::getInt(this->container->buygetAll->buyTXT))
+		        if (this->world->money >= std::getInt(this->container->buygetAllBuyTXT))
 		        {
 		            if (this->container->buygetAll->currentFrame == 2)
 		            {
-		                this->container->buygetAll->myCost = std::getInt(this->container->buygetAll->buyTXT);
-		                this->container->buygetAll->coin->myPoint = new Point(this->container->buygetAll->coin->x, this->container->buygetAll->coin->y);
+		                this->container->buygetAllMyCost = std::getInt(this->container->buygetAllBuyTXT);
+		                this->container->buygetAllCoinMyPoint = new Point(this->container->buygetAllCoin->x, this->container->buygetAllCoin->y);
 		                this->container->buygetAll->gotoAndStop(1);
-		                std::setText(this->container->buygetAll->buyTXT , this->container->buygetAll->myCost );
-		                this->container->buygetAll->coin->gotoAndStop(1);
-		                this->container->buygetAll->coin->setPosition(this->container->buygetAll->coin->myPoint);
-		                this->container->buygetAll->coin->setScaleY(1);
-		                this->container->buygetAll->coin->setScaleX(1);
+		                std::setText(this->container->buygetAllBuyTXT , this->container->buygetAllMyCost );
+		                this->container->buygetAllCoin->gotoAndStop(1);
+		                this->container->buygetAllCoin->setPosition(this->container->buygetAllCoinMyPoint);
+		                this->container->buygetAllCoin->setScaleY(1);
+		                this->container->buygetAllCoin->setScaleX(1);
 		            }
 		        }
 		        else if (this->container->buygetAll->currentFrame == 1)
 		        {
-		            this->container->buygetAll->myCost = std::getInt(this->container->buygetAll->buyTXT);
-		            this->container->buygetAll->coin->myPoint = new Point(this->container->buygetAll->coin->x, this->container->buygetAll->coin->y);
+		            this->container->buygetAllMyCost = std::getInt(this->container->buygetAllBuyTXT);
+		            this->container->buygetAllCoinMyPoint = new Point(this->container->buygetAllCoin->x, this->container->buygetAllCoin->y);
 		            this->container->buygetAll->gotoAndStop(2);
-		            std::setText(this->container->buygetAll->buyTXT , this->container->buygetAll->myCost );
-		            this->container->buygetAll->coin->gotoAndStop(2);
-		            this->container->buygetAll->coin->setPosition(this->container->buygetAll->coin->myPoint);
-		            this->container->buygetAll->coin->setScaleY(0.8);
-		            this->container->buygetAll->coin->setScaleX(0.8);
+		            std::setText(this->container->buygetAllBuyTXT , this->container->buygetAllMyCost );
+		            this->container->buygetAllCoin->gotoAndStop(2);
+		            this->container->buygetAllCoin->setPosition(this->container->buygetAllCoinMyPoint);
+		            this->container->buygetAllCoin->setScaleY(0.8);
+		            this->container->buygetAllCoin->setScaleX(0.8);
 		        }
-		        if (this->container->getAll->sphereCase->buttonMode)
+		        if (this->container->getAllSphereCase->buttonMode)
 		        {
 		            if (!this->world->getSphere)
 		            {
@@ -2467,48 +2467,48 @@ namespace engine
 		                {
 		                    if (this->world->towerMenu->myTower->spheresManage("scan") == 4)
 		                    {
-		                        if (!this->container->buygetAll->lightUp->isVisible())
+		                        if (!this->container->buygetAllLightUp->isVisible())
 		                        {
-		                            this->container->buygetAll->lightUp->setVisible(true);
+		                            this->container->buygetAllLightUp->setVisible(true);
 		                        }
 		                    }
-		                    else if (this->container->buygetAll->lightUp->isVisible())
+		                    else if (this->container->buygetAllLightUp->isVisible())
 		                    {
-		                        this->container->buygetAll->lightUp->setVisible( false);
+		                        this->container->buygetAllLightUp->setVisible( false);
 		                    }
 		                }
-		                else if (this->container->buygetAll->lightUp->isVisible())
+		                else if (this->container->buygetAllLightUp->isVisible())
 		                {
-		                    this->container->buygetAll->lightUp->setVisible( false);
+		                    this->container->buygetAllLightUp->setVisible( false);
 		                }
 		            }
-		            else if (this->container->buygetAll->lightUp->isVisible())
+		            else if (this->container->buygetAllLightUp->isVisible())
 		            {
-		                this->container->buygetAll->lightUp->setVisible( false);
+		                this->container->buygetAllLightUp->setVisible( false);
 		            }
 		        }
 		    }
 		    else
 		    {
-		        if (this->container->getAll->sphereCase->buttonMode)
+		        if (this->container->getAllSphereCase->buttonMode)
 		        {
-		            this->container->getAll->sphereCase->buttonMode = false;
+		            this->container->getAllSphereCase->buttonMode = false;
 		            this->container->getAll->gotoAndStop(1);
-		            if (this->container->buygetAll->lightUp->isVisible())
+		            if (this->container->buygetAllLightUp->isVisible())
 		            {
-		                this->container->buygetAll->lightUp->setVisible( false);
+		                this->container->buygetAllLightUp->setVisible( false);
 		            }
 		        }
 		        if (this->container->buygetAll->currentFrame == 1)
 		        {
-		            this->container->buygetAll->myCost = std::getInt(this->container->buygetAll->buyTXT);
-		            this->container->buygetAll->coin->myPoint = this->container->buygetAll->coin->getPosition();
+		            this->container->buygetAllMyCost = std::getInt(this->container->buygetAllBuyTXT);
+		            this->container->buygetAllCoinMyPoint = this->container->buygetAllCoin->getPosition();
 		            this->container->buygetAll->gotoAndStop(2);
-		            std::setText(this->container->buygetAll->buyTXT , this->container->buygetAll->myCost );
-		            this->container->buygetAll->coin->gotoAndStop(2);
-		            this->container->buygetAll->coin->setPosition(this->container->buygetAll->coin->myPoint);
-		            this->container->buygetAll->coin->setScaleY(0.8);
-		            this->container->buygetAll->coin->setScaleX(0.8);
+		            std::setText(this->container->buygetAllBuyTXT , this->container->buygetAllMyCost );
+		            this->container->buygetAllCoin->gotoAndStop(2);
+		            this->container->buygetAllCoin->setPosition(this->container->buygetAllCoinMyPoint);
+		            this->container->buygetAllCoin->setScaleY(0.8);
+		            this->container->buygetAllCoin->setScaleX(0.8);
 		        }
 		        if (this->container->getAll->alpha != 0.5)
 		        {
@@ -2631,7 +2631,7 @@ namespace engine
                         this->world->getSphere = new GetSphere();
                         this->world->getSphere->owner = this->container->fireSphere;
                         this->world->getSphere->ownerType = "archive";
-                        this->world->getSphere->ownerPoint = this->container->fireSphere->myPoint;
+                        this->world->getSphere->ownerPoint = this->container->fireSphereMyPoint;
                         this->world->addChild(this->world->getSphere);
                         this->world->getSphere->manage("add", "fire");
                     }
@@ -2652,7 +2652,7 @@ namespace engine
                         this->world->getSphere = new GetSphere();
                         this->world->getSphere->owner = this->container->iceSphere;
                         this->world->getSphere->ownerType = "archive";
-                        this->world->getSphere->ownerPoint = this->container->iceSphere->myPoint;
+                        this->world->getSphere->ownerPoint = this->container->iceSphereMyPoint;
                         this->world->addChild(this->world->getSphere);
                         this->world->getSphere->manage("add", "ice");
                     }
@@ -2673,7 +2673,7 @@ namespace engine
                         this->world->getSphere = new GetSphere();
                         this->world->getSphere->owner = this->container->stoneSphere;
                         this->world->getSphere->ownerType = "archive";
-                        this->world->getSphere->ownerPoint = this->container->stoneSphere->myPoint;
+                        this->world->getSphere->ownerPoint = this->container->stoneSphereMyPoint;
                         this->world->addChild(this->world->getSphere);
                         this->world->getSphere->manage("add", "stone");
                     }
@@ -2694,7 +2694,7 @@ namespace engine
                         this->world->getSphere = new GetSphere();
                         this->world->getSphere->owner = this->container->levinSphere;
                         this->world->getSphere->ownerType = "archive";
-                        this->world->getSphere->ownerPoint = this->container->levinSphere->myPoint;
+                        this->world->getSphere->ownerPoint = this->container->levinSphereMyPoint;
                         this->world->addChild(this->world->getSphere);
                         this->world->getSphere->manage("add", "levin");
                     }
@@ -2715,7 +2715,7 @@ namespace engine
                         this->world->getSphere = new GetSphere("getAll");
                         this->world->getSphere->owner = this->container->getAll;
                         this->world->getSphere->ownerType = "archive";
-                        this->world->getSphere->ownerPoint = this->container->getAll->myPoint;
+                        this->world->getSphere->ownerPoint = this->container->getAllMyPoint;
                         this->world->addChild(this->world->getSphere);
                         this->world->getSphere->manage("add", "getAll");
                     }
@@ -2821,14 +2821,14 @@ namespace engine
             if (this->castGolemCounter < this->castGolemTimer)
             {
                 this->castGolemCounter++;
-                this->container->butCastGolem->cont->contMask->setScaleY( this->castGolemCounter / this->castGolemTimer);
+                this->container->butCastGolemContContMask->setScaleY( this->castGolemCounter / this->castGolemTimer);
             }
             else
             {
                 this->castGolemCounter = 0;
-                this->container->butCastGolem->cont->contMask->setScaleY( 1);
+                this->container->butCastGolemContContMask->setScaleY( 1);
                 this->container->butCastGolem->gotoAndStop(1);
-                this->container->butCastGolem->castGolemCase->buttonMode = true;
+                this->container->butCastGolemCastGolemCase->buttonMode = true;
                 this->autoguidersButtons();
                 //Sounds.instance.playSound("snd_cast_ready");
             }
@@ -2838,14 +2838,14 @@ namespace engine
             if (this->castIcemanCounter < this->castIcemanTimer)
             {
                 this->castIcemanCounter++;
-                this->container->butCastIceman->cont->contMask->setScaleY( this->castIcemanCounter / this->castIcemanTimer);
+                this->container->butCastIcemanContContMask->setScaleY( this->castIcemanCounter / this->castIcemanTimer);
             }
             else
             {
                 this->castIcemanCounter = 0;
-                this->container->butCastIceman->cont->contMask->setScaleY( 1);
+                this->container->butCastIcemanContContMask->setScaleY( 1);
                 this->container->butCastIceman->gotoAndStop(1);
-                this->container->butCastIceman->castIcemanCase->buttonMode = true;
+                this->container->butCastIcemanCastIcemanCase->buttonMode = true;
                 this->autoguidersButtons();
                 //Sounds.instance.playSound("snd_cast_ready");
             }
@@ -2855,14 +2855,14 @@ namespace engine
             if (this->castAirCounter < this->castAirTimer)
             {
                 this->castAirCounter++;
-                this->container->butCastAir->cont->contMask->setScaleY( this->castAirCounter / this->castAirTimer);
+                this->container->butCastAirContContMask->setScaleY( this->castAirCounter / this->castAirTimer);
             }
             else
             {
                 this->castAirCounter = 0;
-                this->container->butCastAir->cont->contMask->setScaleY( 1);
+                this->container->butCastAirContContMask->setScaleY( 1);
                 this->container->butCastAir->gotoAndStop(1);
-                this->container->butCastAir->castAirCase->buttonMode = true;
+                this->container->butCastAirCastAirCase->buttonMode = true;
                 this->autoguidersButtons();
                 //Sounds.instance.playSound("snd_cast_ready");
             }
@@ -2941,23 +2941,23 @@ namespace engine
         {
             if (this->world->getSphere->fireCount > 0 && this->world->getSphere->iceCount == 0 && this->world->getSphere->stoneCount == 0 && this->world->getSphere->levinCount == 0)
             {
-                std::setText(this->container->barInfo->noteTXT , string("范围: ") + std::round(this->world->getSphere->myRadius) + " ; 火焰伤害: " + std::round(this->world->getSphere->myDamage));
+                std::setText(this->container->barInfoNoteTXT , string("范围: ") + std::round(this->world->getSphere->myRadius) + " ; 火焰伤害: " + std::round(this->world->getSphere->myDamage));
             }
             else if (this->world->getSphere->fireCount == 0 && this->world->getSphere->iceCount > 0 && this->world->getSphere->stoneCount == 0 && this->world->getSphere->levinCount == 0)
             {
-                std::setText(this->container->barInfo->noteTXT , string("范围: ") + std::round(this->world->getSphere->myRadius) + " ; 寒冰伤害: " + std::round(this->world->getSphere->myDamage));
+                std::setText(this->container->barInfoNoteTXT , string("范围: ") + std::round(this->world->getSphere->myRadius) + " ; 寒冰伤害: " + std::round(this->world->getSphere->myDamage));
             }
             else if (this->world->getSphere->fireCount == 0 && this->world->getSphere->iceCount == 0 && this->world->getSphere->stoneCount > 0 && this->world->getSphere->levinCount == 0)
             {
-                std::setText(this->container->barInfo->noteTXT , string("范围: ") + std::round(this->world->getSphere->myRadius) + " ; 岩石伤害: " + std::round(this->world->getSphere->myDamage));
+                std::setText(this->container->barInfoNoteTXT , string("范围: ") + std::round(this->world->getSphere->myRadius) + " ; 岩石伤害: " + std::round(this->world->getSphere->myDamage));
             }
             else if (this->world->getSphere->fireCount == 0 && this->world->getSphere->iceCount == 0 && this->world->getSphere->stoneCount == 0 && this->world->getSphere->levinCount > 0)
             {
-                std::setText(this->container->barInfo->noteTXT , string("范围: ") + std::round(this->world->getSphere->myRadius) + " ; 闪电伤害: " + std::round(this->world->getSphere->myDamage));
+                std::setText(this->container->barInfoNoteTXT , string("范围: ") + std::round(this->world->getSphere->myRadius) + " ; 闪电伤害: " + std::round(this->world->getSphere->myDamage));
             }
             else if (this->world->getSphere->getAllCount > 0)
             {
-                std::setText(this->container->barInfo->noteTXT , string("范围: ") + std::round(this->world->getSphere->myRadius) + " ; 伤害: " + std::round(this->world->getSphere->myDamage));
+                std::setText(this->container->barInfoNoteTXT , string("范围: ") + std::round(this->world->getSphere->myRadius) + " ; 伤害: " + std::round(this->world->getSphere->myDamage));
             }
             else if ((this->world->getSphere->fireCount > 0 && this->world->getSphere->iceCount > 0 && this->world->getSphere->stoneCount > 0 && this->world->getSphere->levinCount == 0 )
                 || (this->world->getSphere->fireCount > 0 && this->world->getSphere->iceCount > 0 && this->world->getSphere->stoneCount == 0 && this->world->getSphere->levinCount > 0 )
@@ -2966,53 +2966,53 @@ namespace engine
             {
                 if (this->world->getSphere->fireCount > 1 || this->world->getSphere->iceCount > 1 || this->world->getSphere->stoneCount > 1 || this->world->getSphere->levinCount > 1)
                 {
-                    std::setText(this->container->barInfo->noteTXT , string("范围: ") + std::round(this->world->getSphere->myRadius) + " ; 伤害: " + std::round(this->world->getSphere->myDamage * Main::mainClass->readXMLClass.getAllLittleDoubleMultiply));
+                    std::setText(this->container->barInfoNoteTXT , string("范围: ") + std::round(this->world->getSphere->myRadius) + " ; 伤害: " + std::round(this->world->getSphere->myDamage * Main::mainClass->readXMLClass.getAllLittleDoubleMultiply));
                 }
                 else
                 {
-                    std::setText(this->container->barInfo->noteTXT , string("范围: ") + std::round(this->world->getSphere->myRadius) + " ; 伤害: " + std::round(this->world->getSphere->myDamage * Main::mainClass->readXMLClass.getAllLittleMultiply));
+                    std::setText(this->container->barInfoNoteTXT , string("范围: ") + std::round(this->world->getSphere->myRadius) + " ; 伤害: " + std::round(this->world->getSphere->myDamage * Main::mainClass->readXMLClass.getAllLittleMultiply));
                 }
             }
             else
             {
-                std::setText(this->container->barInfo->noteTXT , string("范围: ") + std::round(this->world->getSphere->myRadius) + " ; 伤害: " + std::round(this->world->getSphere->myDamage));
+                std::setText(this->container->barInfoNoteTXT , string("范围: ") + std::round(this->world->getSphere->myRadius) + " ; 伤害: " + std::round(this->world->getSphere->myDamage));
             }
         }
         else if (dynamic_cast<Cast *>(this->world->selectObject) && this->world->cast)
         {
             if (dynamic_cast<Cast_1 *>(this->world->cast))
             {
-                std::setText(this->container->barInfo->healthTXT , std::round(Main::mainClass->readXMLClass.castGolemHealthXML) );
+                std::setText(this->container->barInfoHealthTXT , std::round(Main::mainClass->readXMLClass.castGolemHealthXML) );
             }
             else if (dynamic_cast<Cast_2 *>(this->world->cast))
             {
-                std::setText(this->container->barInfo->noteTXT , std::round(Main::mainClass->readXMLClass.castIcemanLifeTimerXML / 30) + " 秒" );
+                std::setText(this->container->barInfoNoteTXT , std::round(Main::mainClass->readXMLClass.castIcemanLifeTimerXML / 30) + " 秒" );
             }
             else if (dynamic_cast<Cast_3 *>(this->world->cast))
             {
-                std::setText(this->container->barInfo->noteTXT , std::round(Main::mainClass->readXMLClass.airLifeSecXML / 30) + " 秒" );
+                std::setText(this->container->barInfoNoteTXT , std::round(Main::mainClass->readXMLClass.airLifeSecXML / 30) + " 秒" );
             }
         }
         else if (dynamic_cast<Unit *>(this->world->selectObject))
         {
-            std::setText(this->container->barInfo->healthTXT , std::round(this->world->selectObject->health) + "/" + std::round(this->world->selectObject->healthMax) );
+            std::setText(this->container->barInfoHealthTXT , std::round(this->world->selectObject->health) + "/" + std::round(this->world->selectObject->healthMax) );
             if (this->container->barInfo->myTarget != this->world->selectObject)
             {
                 this->container->barInfo->myTarget = this->world->selectObject;
                 Common::Array<string> tempObject = Encyclopedia::enemyInfo(this->world->selectObject->typeUnit); 
-                std::setText(this->container->barInfo->speedTXT , tempObject[2] );
-                std::setText(this->container->barInfo->penaltyTXT , tempObject[3] ); 
-                std::setText(this->container->barInfo->fireTXT , tempObject[4] );
-                std::setText(this->container->barInfo->iceTXT , tempObject[5] );
-                std::setText(this->container->barInfo->stoneTXT , tempObject[6] );
-                std::setText(this->container->barInfo->levinTXT , tempObject[7] );
+                std::setText(this->container->barInfoSpeedTXT , tempObject[2] );
+                std::setText(this->container->barInfoPenaltyTXT , tempObject[3] ); 
+                std::setText(this->container->barInfoFireTXT , tempObject[4] );
+                std::setText(this->container->barInfoIceTXT , tempObject[5] );
+                std::setText(this->container->barInfoStoneTXT , tempObject[6] );
+                std::setText(this->container->barInfoLevinTXT , tempObject[7] );
             }
         }
         else if (dynamic_cast<Golem *>(this->world->selectObject))
         {
             if (!this->world->selectObject->brother)
             {
-                std::setText(this->container->barInfo->healthTXT , std::round(this->world->selectObject->health) );
+                std::setText(this->container->barInfoHealthTXT , std::round(this->world->selectObject->health) );
             }
             else
             {
@@ -3028,7 +3028,7 @@ namespace engine
                 {
                     tempObject = std::round(this->world->selectObject->brother.health);
                 }
-                std::setText(this->container->barInfo->healthTXT , std::round(tempObject) );
+                std::setText(this->container->barInfoHealthTXT , std::round(tempObject) );
             }
         }
         else if (dynamic_cast<Iceman *>(this->world->selectObject))
@@ -3036,7 +3036,7 @@ namespace engine
             int tempObject = (int)(this->world->selectObject->liveCounter / 30 + 0.99);
             if (tempObject > 0)
             {
-                std::setText(this->container->barInfo->noteTXT , tempObject + " 秒" );
+                std::setText(this->container->barInfoNoteTXT , tempObject + " 秒" );
             }
             else
             {
@@ -3048,7 +3048,7 @@ namespace engine
             int tempObject = (int)(this->world->selectObject->liveCounter / 30 + 0.99);
             if (tempObject > 0)
             {
-                std::setText(this->container->barInfo->noteTXT , tempObject + " 秒" );
+                std::setText(this->container->barInfoNoteTXT , tempObject + " 秒" );
             }
             else
             {
@@ -3059,52 +3059,52 @@ namespace engine
         {
             if (this->world->selectObject->myTower->towerType < 5)
             {
-                std::setText(this->container->barInfo->noteTXT , "" );
+                std::setText(this->container->barInfoNoteTXT , "" );
                 if (this->world->selectObject->myTower->shootingTurnStack[0])
                 {
-                    std::setText(this->container->barInfo->noteTXT , "火焰: " + std::round(Main::mainClass->readXMLClass.listOfFireTowerDamageXML[(this->world->selectObject->myTower->shootingTurnStack[0][3] - 1)]) + " ; ");
+                    std::setText(this->container->barInfoNoteTXT , "火焰: " + std::round(Main::mainClass->readXMLClass.listOfFireTowerDamageXML[(this->world->selectObject->myTower->shootingTurnStack[0][3] - 1)]) + " ; ");
                 }
                 if (this->world->selectObject->myTower->shootingTurnStack[1])
                 {
-                    std::setText(this->container->barInfo->noteTXT , std::getText(this->container->barInfo->noteTXT) + "寒冰: " + std::round(Main::mainClass->readXMLClass.listOfIceTowerDamageXML[(this->world->selectObject->myTower->shootingTurnStack[1][3] - 1)]) + " ; ");
+                    std::setText(this->container->barInfoNoteTXT , std::getText(this->container->barInfoNoteTXT) + "寒冰: " + std::round(Main::mainClass->readXMLClass.listOfIceTowerDamageXML[(this->world->selectObject->myTower->shootingTurnStack[1][3] - 1)]) + " ; ");
                 }
                 if (this->world->selectObject->myTower->shootingTurnStack[2])
                 {
-                    std::setText(this->container->barInfo->noteTXT , std::getText(this->container->barInfo->noteTXT) + "岩石: " + std::round(Main::mainClass->readXMLClass.listOfStoneTowerDamageXML[(this->world->selectObject->myTower->shootingTurnStack[2][3] - 1)]) + " ; ");
+                    std::setText(this->container->barInfoNoteTXT , std::getText(this->container->barInfoNoteTXT) + "岩石: " + std::round(Main::mainClass->readXMLClass.listOfStoneTowerDamageXML[(this->world->selectObject->myTower->shootingTurnStack[2][3] - 1)]) + " ; ");
                 }
                 if (this->world->selectObject->myTower->shootingTurnStack[3])
                 {
-                    std::setText(this->container->barInfo->noteTXT , std::getText(this->container->barInfo->noteTXT) + "闪电: " + std::round(Main::mainClass->readXMLClass.listOfLevinTowerDamageXML[(this->world->selectObject->myTower->shootingTurnStack[3][3] - 1)]) + " ; ");
+                    std::setText(this->container->barInfoNoteTXT , std::getText(this->container->barInfoNoteTXT) + "闪电: " + std::round(Main::mainClass->readXMLClass.listOfLevinTowerDamageXML[(this->world->selectObject->myTower->shootingTurnStack[3][3] - 1)]) + " ; ");
                 }
-                if (std::getText(this->container->barInfo->noteTXT) == "")
+                if (std::getText(this->container->barInfoNoteTXT) == "")
                 {
-                    std::setText(this->container->barInfo->noteTXT , "无元素" );
+                    std::setText(this->container->barInfoNoteTXT , "无元素" );
                 }
                 else
                 {
-                    string noteText=std::getText(this->container->barInfo->noteTXT);
-                    std::setText(this->container->barInfo->noteTXT , noteText.subStr(0, noteText.size() - 2) );
+                    string noteText=std::getText(this->container->barInfoNoteTXT);
+                    std::setText(this->container->barInfoNoteTXT , noteText.subStr(0, noteText.size() - 2) );
                 }
             }
             else
             {
                 if (this->world->selectObject->myTower->towerType == 8)
                 {
-                    std::setText(this->container->barInfo->noteTXT , "伤害: " + std::round(this->world->selectObject->myTower->damage * 3) );
+                    std::setText(this->container->barInfoNoteTXT , "伤害: " + std::round(this->world->selectObject->myTower->damage * 3) );
                 }
                 else
                 {
-                    std::setText(this->container->barInfo->noteTXT , "伤害: " + std::round(this->world->selectObject->myTower->damage) );
+                    std::setText(this->container->barInfoNoteTXT , "伤害: " + std::round(this->world->selectObject->myTower->damage) );
                 }
                 if (this->world->selectObject->myTower->upgradeTypeAdd == 1)
                 {
                     if (this->world->selectObject->myTower->towerType == 5)
                     {
-                        std::setText(this->container->barInfo->noteTXT , std::getText(this->container->barInfo->noteTXT) + " ; 额外伤害: " + std::round(this->world->selectObject->myTower->upgr1_damage * 49));
+                        std::setText(this->container->barInfoNoteTXT , std::getText(this->container->barInfoNoteTXT) + " ; 额外伤害: " + std::round(this->world->selectObject->myTower->upgr1_damage * 49));
                     }
                     else
                     {
-                        std::setText(this->container->barInfo->noteTXT , std::getText(this->container->barInfo->noteTXT) + " ; 额外伤害: " + std::round(this->world->selectObject->myTower->upgr1_damage));
+                        std::setText(this->container->barInfoNoteTXT , std::getText(this->container->barInfoNoteTXT) + " ; 额外伤害: " + std::round(this->world->selectObject->myTower->upgr1_damage));
                     }
                 }
             }
@@ -3268,7 +3268,7 @@ namespace engine
     {
         this->autoguidesMouse_pt = cocos2d::Point(Main::mainClass->worldClass->mouseX, Main::mainClass->worldClass->mouseY);
         this->autoguidesObject = NULL;
-        this->autoguidesObject_pt = this->container->butCastGolem->localToGlobal(this->container->butCastGolem->castGolemCase->getPosition());
+        this->autoguidesObject_pt = this->container->butCastGolem->localToGlobal(this->container->butCastGolemCastGolemCase->getPosition());
         this->autoguidesObjectWidth = this->container->butCastGolem->castGolemCase.width / 2;
         this->autoguidesObjectHeight = this->container->butCastGolem->castGolemCase.height / 2;
         if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
@@ -3280,7 +3280,7 @@ namespace engine
         }
         if (!this->autoguidesObject)
         {
-            this->autoguidesObject_pt = this->container->butCastIceman->localToGlobal(this->container->butCastIceman->castIcemanCase->getPosition());
+            this->autoguidesObject_pt = this->container->butCastIceman->localToGlobal(this->container->butCastIcemanCastIcemanCase->getPosition());
             this->autoguidesObjectWidth = this->container->butCastIceman->castIcemanCase.width / 2;
             this->autoguidesObjectHeight = this->container->butCastIceman->castIcemanCase.height / 2;
             if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
@@ -3293,7 +3293,7 @@ namespace engine
         }
         if (!this->autoguidesObject)
         {
-            this->autoguidesObject_pt = this->container->butCastAir->localToGlobal(this->container->butCastAir->castAirCase->getPosition());
+            this->autoguidesObject_pt = this->container->butCastAir->localToGlobal(this->container->butCastAirCastAirCase->getPosition());
             this->autoguidesObjectWidth = this->container->butCastAir->castAirCase.width / 2;
             this->autoguidesObjectHeight = this->container->butCastAir->castAirCase.height / 2;
             if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
@@ -3306,7 +3306,7 @@ namespace engine
         }
         if (!this->autoguidesObject)
         {
-            this->autoguidesObject_pt = this->container->fast->localToGlobal(this->container->fast->fastCase->getPosition());
+            this->autoguidesObject_pt = this->container->fast->localToGlobal(this->container->fastFastCase->getPosition());
             this->autoguidesObjectWidth = this->container->fast->fastCase.width / 2;
             this->autoguidesObjectHeight = this->container->fast->fastCase.height / 2;
             if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
@@ -3319,7 +3319,7 @@ namespace engine
         }
         if (!this->autoguidesObject)
         {
-            this->autoguidesObject_pt = this->container->fireSphere->localToGlobal(this->container->fireSphere->sphereCase->getPosition());
+            this->autoguidesObject_pt = this->container->fireSphere->localToGlobal(this->container->fireSphereSphereCase->getPosition());
             this->autoguidesObjectWidth = this->container->fireSphere->sphereCase.width / 2;
             this->autoguidesObjectHeight = this->container->fireSphere->sphereCase.height / 2;
             if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
@@ -3332,7 +3332,7 @@ namespace engine
         }
         if (!this->autoguidesObject)
         {
-            this->autoguidesObject_pt = this->container->iceSphere->localToGlobal(this->container->iceSphere->sphereCase->getPosition());
+            this->autoguidesObject_pt = this->container->iceSphere->localToGlobal(this->container->iceSphereSphereCase->getPosition());
             this->autoguidesObjectWidth = this->container->iceSphere->sphereCase.width / 2;
             this->autoguidesObjectHeight = this->container->iceSphere->sphereCase.height / 2;
             if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
@@ -3345,7 +3345,7 @@ namespace engine
         }
         if (!this->autoguidesObject)
         {
-            this->autoguidesObject_pt = this->container->stoneSphere->localToGlobal(this->container->stoneSphere->sphereCase->getPosition());
+            this->autoguidesObject_pt = this->container->stoneSphere->localToGlobal(this->container->stoneSphereSphereCase->getPosition());
             this->autoguidesObjectWidth = this->container->stoneSphere->sphereCase.width / 2;
             this->autoguidesObjectHeight = this->container->stoneSphere->sphereCase.height / 2;
             if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
@@ -3358,7 +3358,7 @@ namespace engine
         }
         if (!this->autoguidesObject)
         {
-            this->autoguidesObject_pt = this->container->levinSphere->localToGlobal(this->container->levinSphere->sphereCase->getPosition());
+            this->autoguidesObject_pt = this->container->levinSphere->localToGlobal(this->container->levinSphereSphereCase->getPosition());
             this->autoguidesObjectWidth = this->container->levinSphere->sphereCase.width / 2;
             this->autoguidesObjectHeight = this->container->levinSphere->sphereCase.height / 2;
             if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
@@ -3371,7 +3371,7 @@ namespace engine
         }
         if (!this->autoguidesObject)
         {
-            this->autoguidesObject_pt = this->container->getAll->localToGlobal(this->container->getAll->sphereCase->getPosition());
+            this->autoguidesObject_pt = this->container->getAll->localToGlobal(this->container->getAllSphereCase->getPosition());
             this->autoguidesObjectWidth = this->container->getAll->sphereCase.width / 2;
             this->autoguidesObjectHeight = this->container->getAll->sphereCase.height / 2;
             if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
@@ -3576,10 +3576,10 @@ namespace engine
             this->container->getAll->setScaleY(1);
             this->container->getAll->setScaleX(1);
             this->container->getAll->gotoAndStop(1);
-            this->container->getAll->fire->stop();
-            this->container->getAll->ice->stop();
-            this->container->getAll->stone->stop();
-            this->container->getAll->levin->stop();
+            this->container->getAllFire->stop();
+            this->container->getAllIce->stop();
+            this->container->getAllStone->stop();
+            this->container->getAllLevin->stop();
             this->container->buygetAll->alpha = 1;
             this->container->getAllNumTXT->alpha = 1;
             this->container->getAllNumTXT->mouseEnabled = false;
@@ -3738,7 +3738,7 @@ namespace engine
             {
                 this->container->fast->gotoAndStop(4);
             }
-            this->container->fast->cont->stop();
+            this->container->fastCont->stop();
             this->fastPlayControl(2);
             if (this->container->slow->currentFrame != 1)
             {

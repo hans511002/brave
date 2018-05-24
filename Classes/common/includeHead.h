@@ -1,4 +1,4 @@
-#ifndef __Common_INCHEAD_H__ 
+﻿#ifndef __Common_INCHEAD_H__ 
 #define __Common_INCHEAD_H__
 //平台库
 #include "platform.h"	//	_MSC_VER

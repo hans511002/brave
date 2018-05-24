@@ -16,95 +16,107 @@ namespace engine
 			boardNoteTXT = board->createText("noteTXT");
 			icon = this->createMovieClipSub("icon");
 		}; 
-	};
+	}; 
     
-	class WorldInterface_mc :public BaseNode
+	class WorldInterface_mc :public MovieClip
 	{
 	public:
-
-		//public var backComponents : MovieClip;
-		//barInfo : MovieClip;
-        Sprite * barinfoback;
-        Sprite * healthbar;
-        Sprite * moneybar;
-
-
-     
-		//public var book : MovieClip;
-        Sprite *  btncastback;
-        Sprite * butCastAir;// : MovieClip;
-        Sprite * butCastGolem;// : MovieClip;
-        Sprite * butCastIceman;// : MovieClip;
-
-
-        Sprite *  sphereback;
-        Sprite * iceBack;//public var iceBack : MovieClip;
-        Sprite * fireBack;//public var fireBack : MovieClip;
-        Sprite * levinBack;//public var levinBack : MovieClip;
-        Sprite * stoneBack;// : MovieClip;
-        Sprite  * allSphereBack; 
-          
-        Sprite  * buyFire;//: MovieClip;
-        Sprite  * buyIce;// : MovieClip;
-        Sprite  * buyLevin;//: MovieClip;
-        Sprite  * buyStone;//: MovieClip;
-        Sprite  * buyGetAll;//: MovieClip; 
-
-        Sprite *iceSphere;//public var iceSphere : MovieClip;
-        Sprite *fireSphere;//public var fireSphere : MovieClip;
-        Sprite *levinSphere;//public var levinSphere : MovieClip;
-        Sprite *stoneSphere;// stoneSphere public var stoneSphere : MovieClip;
-        Sprite *allSphere;// stoneSphere public var stoneSphere : MovieClip;
-
- 
-
-		MovieClip * stoneBacklight;//public var stoneBacklight : MovieClip;
-		MovieClip * levinBacklight;//public var levinBacklight : MovieClip;
-		MovieClip * iceBacklight;//public var iceBacklight : MovieClip;
-		MovieClip * fireBacklight;//public var fireBacklight : MovieClip;
-
-        MovieClip * stoneBacked; 
-        MovieClip * levinBacked; 
-        MovieClip * iceBacked; 
-        MovieClip * fireBacked; 
-
-	
-		//public var testRestart : MovieClip;
-		//public var testRestartBoard : MovieClip;
-		//public var traceBezier : MovieClip;
-		ui::Text * lastTime;// public var lastTime : TextField;
-		ui::Text  * waveTXT;// public var waveTXT : TextField;
-		ui::Text * liveTXT;// : TextField;
-		ui::Text * moneyTXT;//: TextField;
-		ui::Text * levinNumTXT;// : TextField;
-		ui::Text * iceNumTXT;//: TextField;
-		ui::Text * fireNumTXT;// : TextField;
-		ui::Text * stoneNumTXT;//public var stoneNumTXT : TextField;
-		ui::Text * getAllNumTXT; // public var getAllNumTXT : TextField;
-        
-        ui::Text * firePrice;
-        ui::Text * icePrice;
-        ui::Text *  stonePrice;
-        ui::Text *  levinPrice;
-        ui::Text *  getAllPrice;
-
-
-        ui::Button * pause; //public var pause : MovieClip;
-        Sprite * startbtnback;
-        ui::Button * startWaves;// public var startWaves : MovieClip;
-
-        ui::Button  * fastbtn;//BaseNode * fastbtned;
-        //public var sell : MovieClip;
-        MovieClip * faster;
-
-        virtual void onEnter();
-        virtual void onExit();
-        
-
+		//MovieClipSub * backComponents;
+		MovieClipSub * barInfo;
+		ui::Text     * barInfoFireTXT;
+		ui::Text     * barInfoHealthTXT;
+		ui::Text     * barInfoIceTXT;
+		ui::Text     * barInfoLevinTXT;
+		BaseNode     * barInfoMyTarget;
+		ui::Text     * barInfoNoteTXT;
+		ui::Text     * barInfoPenaltyTXT;
+		ui::Text     * barInfoSpeedTXT;
+		ui::Text     * barInfoStoneTXT;
+		MovieClipSub * book;
+		BaseNode     * bookBookCase;
+		MovieClipSub * butCastAir;
+		BaseNode     * butCastAirCastIcemanCase;
+		MovieClipSub * butCastAirCont;
+		MovieClipSub * butCastAirContContMask;
+		MovieClipSub * butCastGolem;
+		BaseNode     * butCastGolemCastIcemanCase;
+		MovieClipSub * butCastGolemCont;
+		MovieClipSub * butCastGolemContContMask;
+		MovieClipSub * butCastIceman;
+		BaseNode     * butCastIcemanCastIcemanCase;
+		MovieClipSub * butCastIcemanCont;
+		MovieClipSub * butCastIcemanContContMask;
+		MovieClipSub * buyFire;
+		ui::Text     * buyFireBuyTXT;
+		MovieClipSub * buyFireCoin;
+		MovieClipSub * buyFireLightUp;
+		MovieClipSub * buygetAll;
+		ui::Text     * buygetAllBuyTXT;
+		MovieClipSub * buygetAllCoin;
+		MovieClipSub * buygetAllLightUp;
+		MovieClipSub * buyIce;
+		ui::Text     * buyIceBuyTXT;
+		MovieClipSub * buyIceCoin;
+		MovieClipSub * buyIceLightUp;
+		MovieClipSub * buyLevin;
+		ui::Text     * buyLevinBuyTXT;
+		MovieClipSub * buyLevinCoin;
+		MovieClipSub * buyLevinLightUp;
+		MovieClipSub * buyStone;
+		ui::Text     * buyStoneBuyTXT;
+		MovieClipSub * buyStoneCoin;
+		MovieClipSub * buyStoneLightUp;
+		MovieClipSub * fast;
+		BaseNode     * fastFastCase;
+		MovieClipSub * fastCont;
+		MovieClipSub * fireBack;
+		MovieClipSub * fireBackCont;
+		MovieClipSub * fireBacklight;
+		ui::Text     * fireNumTXT;
+		MovieClipSub * firePrice;
+		MovieClipSub * fireSphere;
+		BaseNode     * fireSphereSphereCase;
+		MovieClipSub * getAll;
+		MovieClipSub * getAllFire;
+		MovieClipSub * getAllIce;
+		MovieClipSub * getAllLevin;
+		BaseNode     * getAllSphereCase;
+		MovieClipSub * getAllStone;
+		ui::Text     * getAllNumTXT;
+		MovieClipSub * iceBack;
+		MovieClipSub * iceBackCont;
+		MovieClipSub * iceBacklight;
+		ui::Text     * iceNumTXT;
+		MovieClipSub * iceSphere;
+		BaseNode     * iceSphereSphereCase;
+		ui::Text     * lastTime;
+		MovieClipSub * levinBack;
+		MovieClipSub * levinBackCont;
+		MovieClipSub * levinBacklight;
+		ui::Text     * levinNumTXT;
+		MovieClipSub * levinSphere;
+		BaseNode     * levinSphereSphereCase;
+		ui::Text     * liveTXT;
+		ui::Text     * moneyTXT;
+		MovieClipSub * pause;
+		BaseNode     * pausePauseCase;
+		MovieClipSub * selectUnit;
+		MovieClipSub * sell;
+		MovieClipSub * slow;
+		MovieClipSub * startWaves;
+		BaseNode     * startWavesStartWavesCase;
+		MovieClipSub * stoneBack;
+		MovieClipSub * stoneBackCont;
+		MovieClipSub * stoneBacklight;
+		ui::Text     * stoneNumTXT;
+		MovieClipSub * stoneSphere;
+		BaseNode     * stoneSphereSphereCase;
+		MovieClipSub * testRestart;
+		MovieClipSub * testRestartBoard;
+		ui::Text     * testRestartBoardWaveTXT;
+		ui::Text     * waveTXT;
+		
 		WorldInterface_mc();
-        void WorldInterface_mc::startWavesCallback(Ref* pSender);
-		virtual bool init();
-        void mouseDownHandler(cocos2d::Event *event);
     };
 
 
