@@ -27,6 +27,7 @@ namespace engine
 		butCastAirCastIcemanCase = butCastAir->createCase("castIcemanCase");
 		butCastAirCont = butCastAir->createMovieClipSub("cont");
 		butCastAirContContMask = butCastAirCont->createMovieClipSub("contMask");
+
 		butCastGolem = this->createMovieClipSub("butCastGolem");
 		butCastGolemCastIcemanCase = butCastGolem->createCase("castIcemanCase");
 		butCastGolemCont = butCastGolem->createMovieClipSub("cont");

@@ -70,7 +70,8 @@ public:
 	static const double AnimationInterval;
 
 	BaseNode() :schdt(false), mouseEnabled(false), mouseChildren(false) {};
-	bool init();
+    BaseNode(float w, float h, bool draw = false);
+    bool init();
 	bool atStage();
 	void touchAction(cocos2d::Ref *pSender, cocos2d::ui::TouchEventType type);
 	virtual bool hitTest(const Vec2 &pt);
@@ -91,7 +92,6 @@ public:
 	virtual string getNamePath(Node *node=NULL);
 
 
-	BaseNode(float w, float h, bool draw = false);
 	virtual void setSize(float w, float h, bool draw = false);
 	virtual void drawRange();
 	void enableMouseHandler();

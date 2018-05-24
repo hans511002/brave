@@ -12,7 +12,9 @@ namespace engine
     class World;
 	struct MovieClip;
 	struct MovieClipSub;
-	struct MCText;
+    struct MCText;
+    struct MCCase;
+    struct MovieClipSubBase;
 	struct MC
 	{
         int currentFrame;
@@ -29,14 +31,20 @@ namespace engine
 		virtual dragonBones::Animation *getAnimation()   = 0;
 		MC();
 		void addMcs(MC * mc, MovieClipSub * mcs);
-		MovieClip * getMc(MC * mc);
+		static MovieClip * getMc(MC * mc);
 
         ui::Text * createText(string slot);
         MovieClipSub * createMovieClipSub(string slot);
-        BaseNode * createCase(string slot, bool draw = false);
+        MCCase * createCase(string slot, bool draw = true);
+        //BaseNode * createCase(string slot, bool draw = false);
 
+        Common::Array<MCText*> mct;
+        Common::Array<MCCase*> mcase;
+        virtual void addMCbs(MovieClipSubBase * mcs);
+        virtual void remove(MovieClipSubBase * ms);
 	};
-	struct MovieClip :public virtual BaseNode, public virtual MC
+     
+    struct MovieClip :public virtual BaseNode, public virtual MC
     {
         World * world;
 		Vec2 myPoint;
@@ -45,7 +53,9 @@ namespace engine
         bool isOnce;
         dragonBones::CCArmatureDisplay * container;
 		//std::map<std::string, MovieClipSub*> mcs;
-		Common::Array<MovieClipSub*> mcs;
+        Common::Array<MovieClipSub*> mcs;
+        //Common::Array<MCText*> mct;
+        //Common::Array<MCCase*> mcase;
 
 		MovieClip(dragonBones::CCArmatureDisplay * cont, string defAniName = "");
         MovieClip(string rootPath, string armName,string dbName, string defAniName = "");
@@ -56,9 +66,15 @@ namespace engine
 		MovieClip() :container(NULL){};
 		virtual bool init();
 		virtual void setName(string name);
+
 		void addMcs(MovieClipSub * mcs);
         virtual void destroy(MovieClipSub * & mcs);
         virtual void remove(MovieClipSub * ms);
+
+        //virtual void addMCbs(MovieClipSubBase * mcs);
+        //virtual void remove(MovieClipSubBase * ms);
+        //virtual void destroy(MCText * & mcs);
+        //virtual void destroy(MCCase * & mcs);
 
 		virtual void destroy();
 		//增加删除事件
@@ -69,19 +85,27 @@ namespace engine
         virtual void gotoAndStop(int cf, string aniName = "");
 
 	};
-	struct MovieClipSub :public virtual MC
+    struct MovieClipSubBase
+    {
+        MC * mc;
+        dragonBones::Slot * slot;
+        Node * display;
+        string slotName;
+        inline virtual void reinit(){};
+        inline MovieClipSubBase() :mc(0), slot(0), display(0){};
+        //inline MovieClip * getMc() { return MC::getMc(mc); };
+        void addMCbs(MC * mc, MovieClipSubBase * mcs);
+    };
+    struct MovieClipSub :public virtual MC, MovieClipSubBase
 	{
-		MC *mc;
-		dragonBones::Slot * slot;
-		dragonBones::Armature* arm;
+        dragonBones::Armature* arm;
 		MovieClipSub(MC *mc, dragonBones::Slot * slot, string defAniName = "");
-		MovieClipSub(MC *mc, string solt, string defAniName = "");
+        MovieClipSub(MC *mc, string slot, string defAniName = "");
 		virtual dragonBones::Armature *getArmature();
 		virtual dragonBones::Animation *getAnimation();
-		inline MovieClip * getMc() { return MC::getMc(mc); };
 		void setVisible(bool v);
 		bool isVisible();
-		void reinit();
+        inline void reinit();
 		cocos2d::Point getPosition();
 		float getPositionX();
 		float getPositionY();
@@ -94,18 +118,20 @@ namespace engine
 		inline float getScale() { return getDisplayNode()->getScale(); };
 		inline float getScaleX() { return getDisplayNode()->getScaleX(); };
 		inline float getScaleY() { return getDisplayNode()->getScaleY(); };
+        virtual void gotoAndStop(int cf, string aniName = "");
+    };
 
-	};
-
-	struct MCText :public ui::Text
+    struct MCText :public ui::Text, MovieClipSubBase
 	{
-		MC * mc;
-		Slot * slot;
-		Node * display;
-		string slotName;
 		MCText(MC * mc, string slotName);
-		void reinit();
+        virtual void reinit();
 	};
+    struct MCCase :public BaseNode, MovieClipSubBase
+    {
+        bool _draw;
+        MCCase(MC * mc, string slotName, bool draw = false);
+        virtual void reinit();
+    };
 	struct ImageMovieClip :public BaseNode
     {
         int currentFrame; 

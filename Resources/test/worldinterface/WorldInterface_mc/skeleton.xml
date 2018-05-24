@@ -79,7 +79,7 @@
    <slot name="getAllNumTXT" z="15" parent="getAllNumTXT">
     <display name="text" type="text">
      <transform x="-2" y="-2"/>
-     <text text="0" size="14" alignV="top" alignH="left" lineType="multiline" textType="dynamic" width="43" bold="0" face="FZJianTiS-R-GB Bold" height="37" italic="0">
+     <text face="FZJianTiS-R-GB Bold" alignV="top" size="14" lineType="multiline" textType="dynamic" alignH="left" width="43" bold="0" text="0" height="37" italic="0">
       <color g="204" r="255" b="0" a="255"/>
      </text>
     </display>
@@ -92,7 +92,7 @@
    <slot name="fireNumTXT" z="17" parent="fireNumTXT">
     <display name="text" type="text">
      <transform x="-2" y="-2"/>
-     <text text="0" size="14" alignV="top" alignH="left" lineType="multiline" textType="dynamic" width="43" bold="0" face="FZJianTiS-R-GB Bold" height="37" italic="0">
+     <text face="FZJianTiS-R-GB Bold" alignV="top" size="14" lineType="multiline" textType="dynamic" alignH="left" width="43" bold="0" text="0" height="37" italic="0">
       <color g="204" r="255" b="0" a="255"/>
      </text>
     </display>
@@ -100,7 +100,7 @@
    <slot name="levinNumTXT" z="18" parent="levinNumTXT">
     <display name="text" type="text">
      <transform x="-2" y="-2"/>
-     <text text="0" size="14" alignV="top" alignH="left" lineType="multiline" textType="dynamic" width="43" bold="0" face="FZJianTiS-R-GB Bold" height="37" italic="0">
+     <text face="FZJianTiS-R-GB Bold" alignV="top" size="14" lineType="multiline" textType="dynamic" alignH="left" width="43" bold="0" text="0" height="37" italic="0">
       <color g="204" r="255" b="0" a="255"/>
      </text>
     </display>
@@ -108,7 +108,7 @@
    <slot name="stoneNumTXT" z="19" parent="stoneNumTXT">
     <display name="text" type="text">
      <transform x="-2" y="-2"/>
-     <text text="0" size="14" alignV="top" alignH="left" lineType="multiline" textType="dynamic" width="43" bold="0" face="FZJianTiS-R-GB Bold" height="37" italic="0">
+     <text face="FZJianTiS-R-GB Bold" alignV="top" size="14" lineType="multiline" textType="dynamic" alignH="left" width="43" bold="0" text="0" height="37" italic="0">
       <color g="204" r="255" b="0" a="255"/>
      </text>
     </display>
@@ -116,7 +116,7 @@
    <slot name="iceNumTXT" z="20" parent="iceNumTXT">
     <display name="text" type="text">
      <transform x="-2" y="-2"/>
-     <text text="0" size="14" alignV="top" alignH="left" lineType="multiline" textType="dynamic" width="43" bold="0" face="FZJianTiS-R-GB Bold" height="37" italic="0">
+     <text face="FZJianTiS-R-GB Bold" alignV="top" size="14" lineType="multiline" textType="dynamic" alignH="left" width="43" bold="0" text="0" height="37" italic="0">
       <color g="204" r="255" b="0" a="255"/>
      </text>
     </display>
@@ -124,7 +124,7 @@
    <slot name="wavesTXT" z="21" parent="wavesTXT">
     <display name="text" type="text">
      <transform x="-2" y="-2"/>
-     <text text="波次:&#xD;&#xD;" size="8" alignV="top" alignH="center" lineType="multiline no wrap" textType="dynamic" width="52" bold="0" face="FZJianTiS-R-GB" height="31" italic="0">
+     <text face="FZJianTiS-R-GB" alignV="top" size="8" lineType="multiline no wrap" textType="dynamic" alignH="center" width="52" bold="0" text="波次:&#xD;&#xD;" height="31" italic="0">
       <color g="204" r="255" b="0" a="255"/>
      </text>
     </display>
@@ -132,7 +132,7 @@
    <slot name="moneyTXT" z="22" parent="moneyTXT">
     <display name="text" type="text">
      <transform x="-2" y="-2"/>
-     <text text="0" size="16" alignV="top" alignH="left" lineType="single line" textType="dynamic" width="68" bold="0" face="FZJianTiS-R-GB Bold" height="40" italic="0">
+     <text face="FZJianTiS-R-GB Bold" alignV="top" size="16" lineType="single line" textType="dynamic" alignH="left" width="68" bold="0" text="0" height="40" italic="0">
       <color g="204" r="255" b="0" a="255"/>
      </text>
     </display>
@@ -140,7 +140,7 @@
    <slot name="waveTXT" z="23" parent="waveTXT">
     <display name="text" type="text">
      <transform x="-2" y="-2"/>
-     <text text="00/00 &#xD;" size="10" alignV="top" alignH="left" lineType="single line" textType="dynamic" width="48" bold="0" face="FZJianTiS-R-GB Bold" height="29" italic="0">
+     <text face="FZJianTiS-R-GB Bold" alignV="top" size="10" lineType="single line" textType="dynamic" alignH="left" width="48" bold="0" text="00/00 &#xD;" height="29" italic="0">
       <color g="204" r="255" b="0" a="255"/>
      </text>
     </display>
@@ -148,7 +148,7 @@
    <slot name="liveTXT" z="24" parent="liveTXT">
     <display name="text" type="text">
      <transform x="-2" y="-2"/>
-     <text text="0" size="16" alignV="top" alignH="left" lineType="multiline" textType="dynamic" width="71" bold="0" face="FZJianTiS-R-GB Bold" height="41" italic="0">
+     <text face="FZJianTiS-R-GB Bold" alignV="top" size="16" lineType="multiline" textType="dynamic" alignH="left" width="71" bold="0" text="0" height="41" italic="0">
       <color g="204" r="255" b="0" a="255"/>
      </text>
     </display>
@@ -236,7 +236,7 @@
    <slot name="lastTime" z="41" parent="lastTime">
     <display name="text" type="text">
      <transform x="-2" y="-2"/>
-     <text text="0" size="72" alignV="top" alignH="left" lineType="single line" textType="dynamic" width="145" bold="0" face="FZJianTiS-R-GB" height="165" italic="0">
+     <text face="FZJianTiS-R-GB" alignV="top" size="72" lineType="single line" textType="dynamic" alignH="left" width="145" bold="0" text="0" height="165" italic="0">
       <color g="204" r="255" b="0" a="255"/>
      </text>
     </display>
@@ -748,7 +748,7 @@
    <slot name="buyTXT" z="3" parent="buyTXT">
     <display name="text" type="text">
      <transform x="-2" y="-2"/>
-     <text text="4" size="14" alignV="top" alignH="left" lineType="multiline" textType="dynamic" width="43" bold="0" face="FZJianTiS-R-GB Bold" height="37" italic="0">
+     <text face="FZJianTiS-R-GB Bold" alignV="top" size="14" lineType="multiline" textType="dynamic" alignH="left" width="43" bold="0" text="4" height="37" italic="0">
       <color g="204" r="255" b="0" a="255"/>
      </text>
     </display>
@@ -848,7 +848,7 @@
    <slot name="buyTXT" z="3" parent="buyTXT">
     <display name="text" type="text">
      <transform x="-2" y="-2"/>
-     <text text="4" size="14" alignV="top" alignH="left" lineType="multiline" textType="dynamic" width="43" bold="0" face="FZJianTiS-R-GB Bold" height="37" italic="0">
+     <text face="FZJianTiS-R-GB Bold" alignV="top" size="14" lineType="multiline" textType="dynamic" alignH="left" width="43" bold="0" text="4" height="37" italic="0">
       <color g="204" r="255" b="0" a="255"/>
      </text>
     </display>
@@ -2568,8 +2568,8 @@
  <armature name="butCastAir">
   <skin name="default">
    <slot name="cont" z="0" parent="cont">
-    <display name="butCastAir.cont" type="image">
-     <transform pX="19.5" pY="19"/>
+    <display name="butCastAir.cont" type="armature">
+     <transform/>
     </display>
     <display name="Shape/shape 12641" type="image">
      <transform pX="21" pY="3"/>
@@ -2763,7 +2763,7 @@
    <slot name="noteTXT" z="1" parent="noteTXT">
     <display name="text" type="text">
      <transform x="-2" y="-2"/>
-     <text text="0" size="12" alignV="top" alignH="left" lineType="single line" textType="dynamic" width="377" bold="0" face="FZJianTiS-R-GB" height="33" italic="0">
+     <text face="FZJianTiS-R-GB" alignV="top" size="12" lineType="single line" textType="dynamic" alignH="left" width="377" bold="0" text="0" height="33" italic="0">
       <color g="166" r="191" b="45" a="255"/>
      </text>
     </display>
@@ -2774,7 +2774,7 @@
    <slot name="healthTXT" z="2" parent="healthTXT">
     <display name="text" type="text">
      <transform x="-2" y="-2"/>
-     <text text="0" size="10" alignV="top" alignH="left" lineType="single line" textType="dynamic" width="40" bold="0" face="FZJianTiS-R-GB" height="27" italic="0">
+     <text face="FZJianTiS-R-GB" alignV="top" size="10" lineType="single line" textType="dynamic" alignH="left" width="40" bold="0" text="0" height="27" italic="0">
       <color g="212" r="236" b="166" a="255"/>
      </text>
     </display>
@@ -2790,7 +2790,7 @@
    <slot name="fireTXT" z="4" parent="fireTXT">
     <display name="text" type="text">
      <transform x="-2" y="-2"/>
-     <text text="高&#xD;" size="10" alignV="top" alignH="left" lineType="single line" textType="dynamic" width="36" bold="0" face="FZJianTiS-R-GB" height="27" italic="0">
+     <text face="FZJianTiS-R-GB" alignV="top" size="10" lineType="single line" textType="dynamic" alignH="left" width="36" bold="0" text="高&#xD;" height="27" italic="0">
       <color g="212" r="236" b="166" a="255"/>
      </text>
     </display>
@@ -2798,7 +2798,7 @@
    <slot name="iceTXT" z="5" parent="iceTXT">
     <display name="text" type="text">
      <transform x="-2" y="-2"/>
-     <text text="高&#xD;" size="10" alignV="top" alignH="left" lineType="single line" textType="dynamic" width="36" bold="0" face="FZJianTiS-R-GB" height="27" italic="0">
+     <text face="FZJianTiS-R-GB" alignV="top" size="10" lineType="single line" textType="dynamic" alignH="left" width="36" bold="0" text="高&#xD;" height="27" italic="0">
       <color g="212" r="236" b="166" a="255"/>
      </text>
     </display>
@@ -2806,7 +2806,7 @@
    <slot name="stoneTXT" z="6" parent="stoneTXT">
     <display name="text" type="text">
      <transform x="-2" y="-2"/>
-     <text text="高&#xD;" size="10" alignV="top" alignH="left" lineType="single line" textType="dynamic" width="36" bold="0" face="FZJianTiS-R-GB" height="27" italic="0">
+     <text face="FZJianTiS-R-GB" alignV="top" size="10" lineType="single line" textType="dynamic" alignH="left" width="36" bold="0" text="高&#xD;" height="27" italic="0">
       <color g="212" r="236" b="166" a="255"/>
      </text>
     </display>
@@ -2814,7 +2814,7 @@
    <slot name="levinTXT" z="7" parent="levinTXT">
     <display name="text" type="text">
      <transform x="-2" y="-2"/>
-     <text text="高&#xD;" size="10" alignV="top" alignH="left" lineType="single line" textType="dynamic" width="36" bold="0" face="FZJianTiS-R-GB" height="27" italic="0">
+     <text face="FZJianTiS-R-GB" alignV="top" size="10" lineType="single line" textType="dynamic" alignH="left" width="36" bold="0" text="高&#xD;" height="27" italic="0">
       <color g="212" r="236" b="166" a="255"/>
      </text>
     </display>
@@ -2822,7 +2822,7 @@
    <slot name="healthTXT_0" z="8" parent="healthTXT_0">
     <display name="text" type="text">
      <transform x="-2" y="-2"/>
-     <text text="00000/00000&#xD;" size="10" alignV="top" alignH="left" lineType="single line" textType="dynamic" width="92" bold="0" face="FZJianTiS-R-GB" height="27" italic="0">
+     <text face="FZJianTiS-R-GB" alignV="top" size="10" lineType="single line" textType="dynamic" alignH="left" width="92" bold="0" text="00000/00000&#xD;" height="27" italic="0">
       <color g="212" r="236" b="166" a="255"/>
      </text>
     </display>
@@ -2830,7 +2830,7 @@
    <slot name="penaltyTXT" z="9" parent="penaltyTXT">
     <display name="text" type="text">
      <transform x="-2" y="-2"/>
-     <text text="0" size="10" alignV="top" alignH="left" lineType="single line" textType="dynamic" width="24" bold="0" face="FZJianTiS-R-GB" height="27" italic="0">
+     <text face="FZJianTiS-R-GB" alignV="top" size="10" lineType="single line" textType="dynamic" alignH="left" width="24" bold="0" text="0" height="27" italic="0">
       <color g="212" r="236" b="166" a="255"/>
      </text>
     </display>
@@ -2838,7 +2838,7 @@
    <slot name="speedTXT" z="10" parent="speedTXT">
     <display name="text" type="text">
      <transform x="-2" y="-2"/>
-     <text text="一般&#xD;" size="10" alignV="top" alignH="left" lineType="single line" textType="dynamic" width="49" bold="0" face="FZJianTiS-R-GB" height="27" italic="0">
+     <text face="FZJianTiS-R-GB" alignV="top" size="10" lineType="single line" textType="dynamic" alignH="left" width="49" bold="0" text="一般&#xD;" height="27" italic="0">
       <color g="212" r="236" b="166" a="255"/>
      </text>
     </display>
@@ -2848,10 +2848,10 @@
    <transform x="-6.25" y="5.15"/>
   </bone>
   <bone name="noteTXT">
-   <transform x="10.95" y="5.15"/>
+   <transform x="17.45" y="3.25"/>
   </bone>
   <bone name="healthTXT">
-   <transform/>
+   <transform x="1.7" y="5.15"/>
   </bone>
   <bone name="icon">
    <transform/>
@@ -2877,33 +2877,43 @@
   <bone name="speedTXT">
    <transform x="118.4" y="5.15"/>
   </bone>
-  <animation fadeInTime="0.3" autoTween="NaN" name="barInfo" duration="5" tweenEasing="NaN">
+  <animation fadeInTime="0.3" autoTween="NaN" name="barInfo" duration="6" tweenEasing="NaN">
    <timeline name="bg">
     <frame z="0" duration="5">
+     <transform/>
+    </frame>
+    <frame z="0" duration="1">
      <transform/>
     </frame>
    </timeline>
    <timeline name="noteTXT">
     <frame displayIndex="-1" duration="1"/>
     <frame z="0" duration="1">
-     <transform x="6.5" y="-1.9"/>
+     <transform/>
     </frame>
     <frame displayIndex="-1" duration="1"/>
     <frame displayIndex="1" z="0" duration="1">
-     <transform x="-10.95" y="-5.15"/>
+     <transform x="-17.45" y="-3.25"/>
     </frame>
     <frame z="0" duration="1">
-     <transform/>
+     <transform x="-6.5" y="1.9"/>
+     <colorTransform bM="66" gO="0" bO="0" aM="100" rM="93" aO="0" gM="84" rO="0"/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform x="-6.5" y="1.9"/>
      <colorTransform bM="66" gO="0" bO="0" aM="100" rM="93" aO="0" gM="84" rO="0"/>
     </frame>
    </timeline>
    <timeline name="healthTXT">
     <frame displayIndex="-1" duration="3"/>
     <frame z="0" duration="1">
-     <transform x="1.7" y="5.15"/>
+     <transform/>
     </frame>
     <frame displayIndex="1" z="0" duration="1">
-     <transform/>
+     <transform x="-1.7" y="-5.15"/>
+    </frame>
+    <frame displayIndex="1" z="0" duration="1">
+     <transform x="-1.7" y="-5.15"/>
     </frame>
    </timeline>
    <timeline name="icon">
@@ -2914,7 +2924,7 @@
     <frame z="0" duration="1">
      <transform/>
     </frame>
-    <frame displayIndex="-1" duration="1"/>
+    <frame displayIndex="-1" duration="2"/>
    </timeline>
    <timeline name="fireTXT">
     <frame displayIndex="-1" duration="2"/>
@@ -2924,7 +2934,7 @@
     <frame z="0" duration="1">
      <transform/>
     </frame>
-    <frame displayIndex="-1" duration="1"/>
+    <frame displayIndex="-1" duration="2"/>
    </timeline>
    <timeline name="iceTXT">
     <frame displayIndex="-1" duration="2"/>
@@ -2934,7 +2944,7 @@
     <frame z="0" duration="1">
      <transform/>
     </frame>
-    <frame displayIndex="-1" duration="1"/>
+    <frame displayIndex="-1" duration="2"/>
    </timeline>
    <timeline name="stoneTXT">
     <frame displayIndex="-1" duration="2"/>
@@ -2944,7 +2954,7 @@
     <frame z="0" duration="1">
      <transform/>
     </frame>
-    <frame displayIndex="-1" duration="1"/>
+    <frame displayIndex="-1" duration="2"/>
    </timeline>
    <timeline name="levinTXT">
     <frame displayIndex="-1" duration="2"/>
@@ -2954,7 +2964,7 @@
     <frame z="0" duration="1">
      <transform/>
     </frame>
-    <frame displayIndex="-1" duration="1"/>
+    <frame displayIndex="-1" duration="2"/>
    </timeline>
    <timeline name="healthTXT_0">
     <frame displayIndex="-1" duration="2"/>
@@ -2964,7 +2974,7 @@
     <frame z="0" duration="1">
      <transform/>
     </frame>
-    <frame displayIndex="-1" duration="1"/>
+    <frame displayIndex="-1" duration="2"/>
    </timeline>
    <timeline name="penaltyTXT">
     <frame displayIndex="-1" duration="2"/>
@@ -2974,7 +2984,7 @@
     <frame z="0" duration="1">
      <transform/>
     </frame>
-    <frame displayIndex="-1" duration="1"/>
+    <frame displayIndex="-1" duration="2"/>
    </timeline>
    <timeline name="speedTXT">
     <frame displayIndex="-1" duration="2"/>
@@ -2984,25 +2994,7 @@
     <frame z="0" duration="1">
      <transform/>
     </frame>
-    <frame displayIndex="-1" duration="1"/>
-   </timeline>
-  </animation>
-  <animation fadeInTime="0.3" autoTween="NaN" name="barInfo_0" duration="1" tweenEasing="NaN">
-   <timeline name="bg">
-    <frame z="0" duration="1">
-     <transform/>
-    </frame>
-   </timeline>
-   <timeline name="noteTXT">
-    <frame z="0" duration="1">
-     <transform/>
-     <colorTransform bM="66" gO="0" bO="0" aM="100" rM="93" aO="0" gM="84" rO="0"/>
-    </frame>
-   </timeline>
-   <timeline name="healthTXT">
-    <frame displayIndex="1" z="0" duration="1">
-     <transform/>
-    </frame>
+    <frame displayIndex="-1" duration="2"/>
    </timeline>
   </animation>
  </armature>
@@ -3016,7 +3008,7 @@
    <slot name="waveTXT" z="1" parent="waveTXT">
     <display name="text" type="text">
      <transform x="-2" y="-2"/>
-     <text text="0" size="20" alignV="top" alignH="left" lineType="single line" textType="input" width="114" bold="0" face="FZJianTiS-R-GB" height="49" italic="0">
+     <text face="FZJianTiS-R-GB" alignV="top" size="20" lineType="single line" textType="input" alignH="left" width="114" bold="0" text="0" height="49" italic="0">
       <color g="0" r="0" b="0" a="255"/>
      </text>
     </display>
@@ -4175,6 +4167,46 @@
      <transform/>
     </frame>
    </timeline>
+  </animation>
+ </armature>
+ <armature name="butCastAir.cont">
+  <skin name="default">
+   <slot name="bg" z="0" parent="bg">
+    <display name="Shape/shape 12636" type="image">
+     <transform pX="19" pY="19"/>
+    </display>
+   </slot>
+   <slot name="cont" z="1" parent="cont">
+    <display name="butCastAir.cont.cont" type="image">
+     <transform pX="19" pY="19"/>
+    </display>
+   </slot>
+  </skin>
+  <bone name="bg">
+   <transform/>
+  </bone>
+  <bone name="cont">
+   <transform/>
+  </bone>
+  <animation name="contMask" scale="5" loop="0" autoTween="NaN" fadeInTime="0.3" duration="2" tweenEasing="2">
+   <timeline name="bg">
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+   </timeline>
+   <timeline name="cont">
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+   </timeline>
+   <frame duration="1"/>
+   <frame duration="1"/>
   </animation>
  </armature>
  <armature name="fast.cont.cont1">
