@@ -1,0 +1,4 @@
+<TextureAtlas name="Arrow_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 11857" x="0" y="35" width="35" height="33"/>
+ <SubTexture name="cont" x="0" y="0" width="35" height="33"/>
+</TextureAtlas>

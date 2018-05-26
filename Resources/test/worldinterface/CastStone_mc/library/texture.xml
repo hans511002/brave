@@ -1,0 +1,15 @@
+<TextureAtlas name="CastStone_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 7022" x="134" y="126" width="132" height="124"/>
+ <SubTexture name="Shape/shape 7024" x="134" y="378" width="132" height="124"/>
+ <SubTexture name="Shape/shape 7026" x="134" y="0" width="132" height="124"/>
+ <SubTexture name="Shape/shape 7028" x="0" y="504" width="132" height="124"/>
+ <SubTexture name="Shape/shape 7030" x="0" y="252" width="132" height="124"/>
+ <SubTexture name="Shape/shape 7032" x="268" y="0" width="132" height="124"/>
+ <SubTexture name="Shape/shape 7034" x="0" y="126" width="132" height="124"/>
+ <SubTexture name="Shape/shape 7036" x="268" y="378" width="132" height="124"/>
+ <SubTexture name="Shape/shape 7038" x="134" y="252" width="132" height="124"/>
+ <SubTexture name="Shape/shape 7040" x="0" y="378" width="132" height="124"/>
+ <SubTexture name="Shape/shape 7042" x="0" y="0" width="132" height="124"/>
+ <SubTexture name="Shape/shape 7044" x="268" y="252" width="132" height="124"/>
+ <SubTexture name="Shape/shape 7046" x="268" y="126" width="132" height="124"/>
+</TextureAtlas>

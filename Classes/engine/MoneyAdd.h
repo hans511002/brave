@@ -8,10 +8,14 @@
  
 namespace engine
 {
-    struct MoneyAdd_mc:public MovieClip
-    {
-        
-    } ;
+	struct MoneyAdd_mc:public MovieClip
+	{
+		ui::Text	* noteTXT	;
+		inline MoneyAdd_mc():MovieClip("worldinterface/","MoneyAdd_mc","MoneyAdd_mc")
+		{
+		noteTXT=this->createText("noteTXT");
+		}
+	} ;
 	class MoneyAdd : public BaseNode
     {
         int i;

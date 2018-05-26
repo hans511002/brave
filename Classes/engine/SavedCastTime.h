@@ -10,7 +10,9 @@ namespace engine
 { 
     struct SavedCastTime_mc : public MovieClip
     {
-        MovieClip* cont;
+        MovieClipSub * cont;
+        ui::Text * contNoteTXT;
+
         SavedCastTime_mc() ;
     };
     class SavedCastTime :public cocos2d::Sprite

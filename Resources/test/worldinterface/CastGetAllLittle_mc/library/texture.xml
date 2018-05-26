@@ -1,0 +1,28 @@
+<TextureAtlas name="CastGetAllLittle_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 7049" x="0" y="388" width="233" height="192"/>
+ <SubTexture name="Shape/shape 7051" x="1175" y="388" width="233" height="192"/>
+ <SubTexture name="Shape/shape 7053" x="1645" y="388" width="233" height="192"/>
+ <SubTexture name="Shape/shape 7055" x="940" y="194" width="233" height="192"/>
+ <SubTexture name="Shape/shape 7057" x="940" y="0" width="233" height="192"/>
+ <SubTexture name="Shape/shape 7059" x="0" y="0" width="233" height="192"/>
+ <SubTexture name="Shape/shape 7061" x="235" y="194" width="233" height="192"/>
+ <SubTexture name="Shape/shape 7063" x="470" y="0" width="233" height="192"/>
+ <SubTexture name="Shape/shape 7065" x="1645" y="0" width="233" height="192"/>
+ <SubTexture name="Shape/shape 7067" x="1175" y="194" width="233" height="192"/>
+ <SubTexture name="Shape/shape 7069" x="1410" y="194" width="233" height="192"/>
+ <SubTexture name="Shape/shape 7071" x="0" y="194" width="233" height="192"/>
+ <SubTexture name="Shape/shape 7073" x="235" y="388" width="233" height="192"/>
+ <SubTexture name="Shape/shape 7075" x="1410" y="388" width="233" height="192"/>
+ <SubTexture name="Shape/shape 7077" x="705" y="0" width="233" height="192"/>
+ <SubTexture name="Shape/shape 7079" x="235" y="582" width="233" height="192"/>
+ <SubTexture name="Shape/shape 7081" x="0" y="582" width="233" height="192"/>
+ <SubTexture name="Shape/shape 7083" x="1645" y="194" width="233" height="192"/>
+ <SubTexture name="Shape/shape 7085" x="1175" y="0" width="233" height="192"/>
+ <SubTexture name="Shape/shape 7087" x="470" y="388" width="233" height="192"/>
+ <SubTexture name="Shape/shape 7089" x="235" y="0" width="233" height="192"/>
+ <SubTexture name="Shape/shape 7091" x="705" y="194" width="233" height="192"/>
+ <SubTexture name="Shape/shape 7093" x="705" y="388" width="233" height="192"/>
+ <SubTexture name="Shape/shape 7095" x="1410" y="0" width="233" height="192"/>
+ <SubTexture name="Shape/shape 7097" x="940" y="388" width="233" height="192"/>
+ <SubTexture name="Shape/shape 7099" x="470" y="194" width="233" height="192"/>
+</TextureAtlas>

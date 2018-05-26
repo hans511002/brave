@@ -1,0 +1,5 @@
+<TextureAtlas name="MoneyAdd_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 12785" x="0" y="0" width="33" height="51"/>
+ <SubTexture name="Shape/shape 12787" x="70" y="0" width="33" height="51"/>
+ <SubTexture name="Shape/shape 12789" x="35" y="0" width="33" height="51"/>
+</TextureAtlas>

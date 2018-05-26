@@ -1,6 +1,13 @@
 ﻿#include "SavedCastTime.h"
 namespace engine
 {
+
+    SavedCastTime_mc::SavedCastTime_mc():MovieClip("worldinterface/", "SavedCastTime_mc", "SavedCastTime_mc")
+    {
+        cont = this->createMovieClipSub("cont");
+        contNoteTXT = cont->createText("noteTXT");
+    }
+
     SavedCastTime::SavedCastTime(string param1, int param2)
     {
        //this->addEventListener(Event.ADDED_TO_STAGE,this->init);

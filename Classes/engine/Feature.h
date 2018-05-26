@@ -10,14 +10,7 @@ namespace engine
 { 
 	class World;
 	
-	struct Hint_mc : public MovieClip
-    {
-        ui::Text * nameTXT;
-        ui::Text * noteTXT;
-        ui::Text * timeTXT;
-         Hint_mc();
-    };
-	
+
     class Feature  
     {
 	public:

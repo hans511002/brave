@@ -2889,10 +2889,9 @@ namespace engine
         else if (param1 == "off")
         {
             this->castMask->setVisible(false);
-            this->world->manageMouse("show");
-            var _loc_2:* = true;
+            this->world->manageMouse("show"); 
             this->container->mouseChildren = true;
-            this->container->mouseEnabled = _loc_2;
+            this->container->mouseEnabled = true;
             this->i = 0;
             while (this->i < this->world->listOfPlaces.size())
             { 

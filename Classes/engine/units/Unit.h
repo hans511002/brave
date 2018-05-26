@@ -20,37 +20,31 @@ namespace engine
 		{
 			MovieClip *newElementCase;
 		};
-		class Roadsign_mc : public MovieClip
-		{
-		public:
+		struct Roadsign_mc : public MovieClip
+		{ 
 			float myPath;
 			int myRoad, myWay;
 			Common::Array<Unit *> myStack;
 			cocos2d::Point myPoint;
 			bool repeatFlag;
-			int repeatCounter;
-			Roadsign_mc();
-			  
+			int repeatCounter; 
+			inline Roadsign_mc(string path,string arm,string dbName):MovieClip(path,arm,dbname){};
 		};
-		class RoadsignFire_mc : public Roadsign_mc
-		{
-		public: 
-			RoadsignFire_mc();
+		struct RoadsignFire_mc : public Roadsign_mc
+		{ 
+			inline RoadsignFire_mc():Roadsign_mc("worldinterface/","RoadsignFire_mc","RoadsignFire_mc"){};
 		};
-		class RoadsignIce_mc : public Roadsign_mc
-		{
-		public:
-			RoadsignIce_mc();
+		struct RoadsignIce_mc : public Roadsign_mc
+		{ 
+			inline RoadsignIce_mc():Roadsign_mc("worldinterface/","RoadsignIce_mc","RoadsignIce_mc"){};
+ 		};
+		struct RoadsignStone_mc : public Roadsign_mc
+		{  
+			inline RoadsignStone_mc():Roadsign_mc("worldinterface/","RoadsignStone_mc","RoadsignStone_mc"){};
 		};
-		class RoadsignStone_mc : public Roadsign_mc
-		{
-		public:
-			RoadsignStone_mc();
-		};
-		class RoadsignLevin_mc : public Roadsign_mc
-		{
-		public:
-			RoadsignLevin_mc();
+		struct RoadsignLevin_mc : public Roadsign_mc
+		{ 
+			inline RoadsignLevin_mc():Roadsign_mc("worldinterface/","RoadsignLevin_mc","RoadsignLevin_mc"){};
 		};
 		class Unit :public BaseNode
 		{

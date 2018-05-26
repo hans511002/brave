@@ -1,0 +1,173 @@
+<TextureAtlas name="Level1_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 9964" x="0" y="0" width="840" height="604"/>
+ <SubTexture name="case" x="842" y="88" width="50" height="50"/>
+ <SubTexture name="Shape/shape 9075" x="910" y="100" width="19" height="24"/>
+ <SubTexture name="Shape/shape 9085" x="968" y="75" width="19" height="24"/>
+ <SubTexture name="Shape/shape 9089" x="930" y="100" width="19" height="24"/>
+ <SubTexture name="Shape/shape 9091" x="968" y="50" width="19" height="24"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_1" x="900" y="152" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_2" x="902" y="190" width="9" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_3" x="872" y="149" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_4" x="1013" y="126" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_5" x="894" y="88" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_6" x="962" y="173" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_7" x="948" y="136" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_8" x="984" y="174" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_9" x="906" y="143" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_10" x="1014" y="112" width="9" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_11" x="970" y="165" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_12" x="892" y="190" width="9" height="6"/>
+ <SubTexture name="Shape/shape 9014" x="842" y="149" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_14" x="956" y="164" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_15" x="933" y="184" width="9" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_16" x="928" y="160" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_17" x="1003" y="115" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_18" x="988" y="86" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_19" x="1009" y="176" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_20" x="910" y="125" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_21" x="1002" y="129" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_22" x="894" y="124" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_23" x="903" y="183" width="9" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_24" x="926" y="168" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_25" x="1006" y="183" width="9" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_27" x="886" y="151" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_28" x="842" y="188" width="9" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_29" x="942" y="162" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_30" x="1013" y="147" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_31" x="988" y="59" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_32" x="944" y="179" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_33" x="963" y="147" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_34" x="1004" y="94" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_35" x="926" y="134" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_36" x="872" y="189" width="9" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_323" x="993" y="150" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_324" x="943" y="186" width="9" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_325" x="914" y="152" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_326" x="1002" y="143" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_327" x="874" y="140" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_328" x="1004" y="87" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_329" x="842" y="140" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_330" x="1002" y="136" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_331" x="988" y="77" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_332" x="975" y="181" width="9" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_333" x="984" y="166" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_334" x="842" y="181" width="9" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_336" x="886" y="159" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_337" x="882" y="190" width="9" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_338" x="942" y="154" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_339" x="878" y="175" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_340" x="890" y="142" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_341" x="1013" y="140" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_342" x="986" y="140" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_343" x="1012" y="162" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_344" x="988" y="68" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_345" x="893" y="183" width="9" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_346" x="898" y="168" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_347" x="955" y="180" width="9" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_349" x="872" y="157" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_350" x="863" y="180" width="9" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_351" x="928" y="152" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_352" x="889" y="176" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_353" x="988" y="50" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_354" x="951" y="172" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_355" x="986" y="122" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration/Masked Layer 3 - 2_356" x="858" y="140" width="15" height="8"/>
+ <SubTexture name="Shape/shape 9061" x="980" y="129" width="5" height="6"/>
+ <SubTexture name="Shape/shape 9015" x="1017" y="40" width="6" height="6"/>
+ <SubTexture name="Shape/shape 9110" x="1017" y="55" width="6" height="7"/>
+ <SubTexture name="Shape/shape 9016" x="942" y="125" width="5" height="6"/>
+ <SubTexture name="Shape/shape 9111" x="1017" y="9" width="6" height="8"/>
+ <SubTexture name="Shape/shape 9119" x="942" y="132" width="5" height="7"/>
+ <SubTexture name="Shape/shape 9123" x="1017" y="18" width="6" height="7"/>
+ <SubTexture name="Shape/shape 9017" x="1017" y="0" width="6" height="8"/>
+ <SubTexture name="Shape/shape 9112" x="1017" y="33" width="6" height="6"/>
+ <SubTexture name="Shape/shape 9117" x="1015" y="89" width="7" height="7"/>
+ <SubTexture name="Shape/shape 9120" x="1015" y="81" width="7" height="7"/>
+ <SubTexture name="Shape/shape 9062" x="1017" y="63" width="5" height="7"/>
+ <SubTexture name="Shape/shape 9066" x="1015" y="97" width="5" height="7"/>
+ <SubTexture name="Shape/shape 9018" x="1017" y="47" width="6" height="7"/>
+ <SubTexture name="Shape/shape 9113" x="1016" y="71" width="7" height="8"/>
+ <SubTexture name="Shape/shape 9019" x="980" y="136" width="4" height="7"/>
+ <SubTexture name="Shape/shape 9114" x="1004" y="70" width="10" height="9"/>
+ <SubTexture name="Shape/shape 9115" x="1015" y="105" width="6" height="6"/>
+ <SubTexture name="Shape/shape 9121" x="1017" y="26" width="6" height="6"/>
+ <SubTexture name="Shape/shape 9020" x="1004" y="60" width="11" height="9"/>
+ <SubTexture name="Shape/shape 9968" x="1006" y="0" width="10" height="22"/>
+ <SubTexture name="Shape/shape 9969" x="842" y="0" width="68" height="87"/>
+ <SubTexture name="Shape/shape 9967" x="912" y="0" width="93" height="48"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_2" x="900" y="160" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_3" x="965" y="180" width="9" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_4" x="858" y="157" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_5" x="1013" y="133" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_6" x="894" y="133" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_7" x="1004" y="80" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_8" x="964" y="129" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_9" x="900" y="176" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_10" x="894" y="115" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_11" x="923" y="183" width="9" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_12" x="842" y="166" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_13" x="853" y="180" width="9" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_15" x="856" y="165" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_16" x="873" y="182" width="9" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_17" x="842" y="158" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_18" x="911" y="176" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_19" x="922" y="143" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_20" x="1012" y="169" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_21" x="910" y="134" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_22" x="940" y="170" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_23" x="950" y="118" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_24" x="985" y="181" width="9" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_25" x="870" y="165" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_26" x="862" y="187" width="9" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_28" x="984" y="158" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_29" x="973" y="188" width="9" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_30" x="998" y="162" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_31" x="998" y="170" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_32" x="926" y="125" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_33" x="842" y="174" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_34" x="986" y="131" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_35" x="1002" y="122" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_36" x="950" y="100" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_37" x="983" y="188" width="9" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_267" x="1007" y="154" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_268" x="963" y="187" width="9" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_269" x="970" y="157" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_270" x="1003" y="108" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_271" x="987" y="104" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_272" x="922" y="176" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_273" x="947" y="145" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_274" x="995" y="177" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_275" x="950" y="109" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_276" x="953" y="187" width="9" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_277" x="912" y="168" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_278" x="883" y="183" width="9" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_280" x="956" y="156" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_281" x="1014" y="119" width="9" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_282" x="979" y="149" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_283" x="973" y="173" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_284" x="894" y="97" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_285" x="933" y="177" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_286" x="948" y="127" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_287" x="1004" y="101" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_288" x="987" y="113" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_289" x="913" y="183" width="9" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_290" x="884" y="167" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_291" x="852" y="187" width="9" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_293" x="858" y="149" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_294" x="995" y="184" width="9" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_295" x="914" y="160" width="13" height="7"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_296" x="867" y="173" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_297" x="964" y="138" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_298" x="856" y="173" width="10" height="6"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_299" x="894" y="106" width="15" height="8"/>
+ <SubTexture name="__dbTextures/decoration1/Masked Layer 3 - 2_300" x="988" y="95" width="15" height="8"/>
+ <SubTexture name="Shape/shape 9976" x="912" y="190" width="9" height="4"/>
+ <SubTexture name="Shape/shape 9979" x="1005" y="190" width="9" height="4"/>
+ <SubTexture name="Shape/shape 9977" x="966" y="119" width="19" height="9"/>
+ <SubTexture name="Shape/shape 9980" x="1006" y="41" width="10" height="8"/>
+ <SubTexture name="Shape/shape 9982" x="1006" y="23" width="10" height="17"/>
+ <SubTexture name="Shape/shape 9983" x="1004" y="50" width="12" height="9"/>
+ <SubTexture name="Shape/shape 9032" x="942" y="140" width="4" height="7"/>
+ <SubTexture name="Shape/shape 9971" x="912" y="50" width="55" height="48"/>
+ <SubTexture name="Shape/shape 9973" x="966" y="100" width="20" height="18"/>
+</TextureAtlas>

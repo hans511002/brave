@@ -1,0 +1,13 @@
+<TextureAtlas name="CastFireLevin_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 6879" x="0" y="208" width="120" height="102"/>
+ <SubTexture name="Shape/shape 6881" x="366" y="0" width="120" height="102"/>
+ <SubTexture name="Shape/shape 6883" x="244" y="208" width="120" height="102"/>
+ <SubTexture name="Shape/shape 6885" x="244" y="0" width="120" height="102"/>
+ <SubTexture name="Shape/shape 6887" x="366" y="104" width="120" height="102"/>
+ <SubTexture name="Shape/shape 6889" x="244" y="104" width="120" height="102"/>
+ <SubTexture name="Shape/shape 6891" x="0" y="104" width="120" height="102"/>
+ <SubTexture name="Shape/shape 6893" x="0" y="0" width="120" height="102"/>
+ <SubTexture name="Shape/shape 6895" x="122" y="104" width="120" height="102"/>
+ <SubTexture name="Shape/shape 6897" x="122" y="0" width="120" height="102"/>
+ <SubTexture name="Shape/shape 6899" x="122" y="208" width="120" height="102"/>
+</TextureAtlas>

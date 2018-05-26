@@ -9,7 +9,8 @@ namespace engine
 	struct BonusMoney_mc:public MovieClip
 	{
 	    MovieClip* cont;
-	    ui::Text * noteTXT;
+	    ui::Text * contNoteTXT;
+	    BonusMoney_mc();
 	};
 
     class BonusMoney :public BaseNode

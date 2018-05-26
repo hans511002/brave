@@ -1,0 +1,22 @@
+<TextureAtlas name="RoadsignLevin_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 897" x="380" y="309" width="52" height="26"/>
+ <SubTexture name="Shape/shape 899" x="285" y="309" width="93" height="101"/>
+ <SubTexture name="Shape/shape 901" x="380" y="103" width="93" height="101"/>
+ <SubTexture name="Shape/shape 903" x="190" y="103" width="93" height="101"/>
+ <SubTexture name="Shape/shape 905" x="285" y="206" width="93" height="101"/>
+ <SubTexture name="Shape/shape 907" x="190" y="309" width="93" height="101"/>
+ <SubTexture name="Shape/shape 909" x="95" y="206" width="93" height="101"/>
+ <SubTexture name="Shape/shape 911" x="285" y="0" width="93" height="101"/>
+ <SubTexture name="Shape/shape 913" x="95" y="103" width="93" height="101"/>
+ <SubTexture name="Shape/shape 915" x="0" y="103" width="93" height="101"/>
+ <SubTexture name="Shape/shape 917" x="95" y="309" width="93" height="101"/>
+ <SubTexture name="Shape/shape 919" x="285" y="103" width="93" height="101"/>
+ <SubTexture name="Shape/shape 921" x="380" y="206" width="93" height="101"/>
+ <SubTexture name="Shape/shape 923" x="0" y="206" width="93" height="101"/>
+ <SubTexture name="Shape/shape 925" x="190" y="0" width="93" height="101"/>
+ <SubTexture name="Shape/shape 927" x="95" y="0" width="93" height="101"/>
+ <SubTexture name="Shape/shape 929" x="0" y="309" width="93" height="101"/>
+ <SubTexture name="Shape/shape 931" x="0" y="0" width="93" height="101"/>
+ <SubTexture name="Shape/shape 933" x="190" y="206" width="93" height="101"/>
+ <SubTexture name="Shape/shape 935" x="380" y="0" width="93" height="101"/>
+</TextureAtlas>

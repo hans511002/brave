@@ -1,0 +1,18 @@
+<TextureAtlas name="CastIceStone_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 7102" x="366" y="122" width="120" height="120"/>
+ <SubTexture name="Shape/shape 7104" x="0" y="122" width="120" height="120"/>
+ <SubTexture name="Shape/shape 7106" x="0" y="366" width="120" height="120"/>
+ <SubTexture name="Shape/shape 7108" x="0" y="0" width="120" height="120"/>
+ <SubTexture name="Shape/shape 7110" x="366" y="0" width="120" height="120"/>
+ <SubTexture name="Shape/shape 7112" x="0" y="244" width="120" height="120"/>
+ <SubTexture name="Shape/shape 7114" x="122" y="366" width="120" height="120"/>
+ <SubTexture name="Shape/shape 7116" x="366" y="366" width="120" height="120"/>
+ <SubTexture name="Shape/shape 7118" x="244" y="244" width="120" height="120"/>
+ <SubTexture name="Shape/shape 7120" x="366" y="244" width="120" height="120"/>
+ <SubTexture name="Shape/shape 7122" x="244" y="0" width="120" height="120"/>
+ <SubTexture name="Shape/shape 7124" x="122" y="244" width="120" height="120"/>
+ <SubTexture name="Shape/shape 7126" x="244" y="366" width="120" height="120"/>
+ <SubTexture name="Shape/shape 7128" x="122" y="0" width="120" height="120"/>
+ <SubTexture name="Shape/shape 7130" x="122" y="122" width="120" height="120"/>
+ <SubTexture name="Shape/shape 7132" x="244" y="122" width="120" height="120"/>
+</TextureAtlas>

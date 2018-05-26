@@ -1,0 +1,7 @@
+<TextureAtlas name="RadiusSphere_mc" imagePath="texture.png">
+ <SubTexture name="cont3" x="190" y="101" width="62" height="47"/>
+ <SubTexture name="Shape/shape 11886" x="95" y="101" width="94" height="94"/>
+ <SubTexture name="Shape/shape 11887" x="0" y="0" width="100" height="100"/>
+ <SubTexture name="Shape/shape 11882" x="0" y="101" width="94" height="94"/>
+ <SubTexture name="Shape/shape 11883" x="101" y="0" width="100" height="100"/>
+</TextureAtlas>

@@ -6,7 +6,15 @@
 
 namespace engine
 {
+    BonusMoney_mc::BonusMoney_mc():MovieClip("worldinterface/","BonusMoney_mc","BonusMoney_mc")
+    {
+        cont	=this	->createMovieClipSub	("cont");
+contNoteTXT	=cont	->createText	("noteTXT");
+    };
  
+
+
+
     BonusMoney::BonusMoney():counter(0)
     {
         this->world = Main::mainClass->worldClass;

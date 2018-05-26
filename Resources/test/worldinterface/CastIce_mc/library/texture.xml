@@ -1,0 +1,12 @@
+<TextureAtlas name="CastIce_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 7471" x="0" y="102" width="108" height="100"/>
+ <SubTexture name="Shape/shape 7473" x="330" y="0" width="108" height="100"/>
+ <SubTexture name="Shape/shape 7475" x="110" y="102" width="108" height="100"/>
+ <SubTexture name="Shape/shape 7477" x="220" y="0" width="108" height="100"/>
+ <SubTexture name="Shape/shape 7479" x="110" y="204" width="108" height="100"/>
+ <SubTexture name="Shape/shape 7481" x="220" y="102" width="108" height="100"/>
+ <SubTexture name="Shape/shape 7483" x="110" y="0" width="108" height="100"/>
+ <SubTexture name="Shape/shape 7485" x="0" y="204" width="108" height="100"/>
+ <SubTexture name="Shape/shape 7487" x="330" y="102" width="108" height="100"/>
+ <SubTexture name="Shape/shape 7489" x="0" y="0" width="108" height="100"/>
+</TextureAtlas>

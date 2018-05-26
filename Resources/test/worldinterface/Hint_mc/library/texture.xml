@@ -1,0 +1,7 @@
+<TextureAtlas name="Hint_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 385" x="0" y="109" width="140" height="86"/>
+ <SubTexture name="Shape/shape 393" x="0" y="260" width="130" height="46"/>
+ <SubTexture name="Shape/shape 406" x="0" y="308" width="130" height="46"/>
+ <SubTexture name="Shape/shape 410" x="0" y="197" width="140" height="61"/>
+ <SubTexture name="idnet" x="0" y="0" width="235" height="107"/>
+</TextureAtlas>

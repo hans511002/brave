@@ -1,0 +1,15 @@
+<TextureAtlas name="RoadsignFire_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 938" x="0" y="208" width="52" height="26"/>
+ <SubTexture name="Shape/shape 940" x="0" y="0" width="76" height="50"/>
+ <SubTexture name="Shape/shape 942" x="156" y="0" width="76" height="50"/>
+ <SubTexture name="Shape/shape 944" x="78" y="156" width="76" height="50"/>
+ <SubTexture name="Shape/shape 946" x="0" y="156" width="76" height="50"/>
+ <SubTexture name="Shape/shape 948" x="156" y="156" width="76" height="50"/>
+ <SubTexture name="Shape/shape 950" x="156" y="52" width="76" height="50"/>
+ <SubTexture name="Shape/shape 952" x="0" y="52" width="76" height="50"/>
+ <SubTexture name="Shape/shape 954" x="0" y="104" width="76" height="50"/>
+ <SubTexture name="Shape/shape 956" x="78" y="52" width="76" height="50"/>
+ <SubTexture name="Shape/shape 958" x="78" y="0" width="76" height="50"/>
+ <SubTexture name="Shape/shape 960" x="78" y="104" width="76" height="50"/>
+ <SubTexture name="Shape/shape 962" x="156" y="104" width="76" height="50"/>
+</TextureAtlas>

@@ -1,0 +1,33 @@
+<TextureAtlas name="GetAll_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 11901" x="310" y="186" width="60" height="60"/>
+ <SubTexture name="Shape/shape 11904" x="62" y="186" width="60" height="60"/>
+ <SubTexture name="Shape/shape 11906" x="0" y="124" width="60" height="60"/>
+ <SubTexture name="Shape/shape 11908" x="124" y="124" width="60" height="60"/>
+ <SubTexture name="Shape/shape 11910" x="124" y="62" width="60" height="60"/>
+ <SubTexture name="Shape/shape 11912" x="434" y="124" width="60" height="60"/>
+ <SubTexture name="Shape/shape 11914" x="62" y="62" width="60" height="60"/>
+ <SubTexture name="Shape/shape 11916" x="248" y="186" width="60" height="60"/>
+ <SubTexture name="Shape/shape 11918" x="186" y="124" width="60" height="60"/>
+ <SubTexture name="Shape/shape 11920" x="62" y="124" width="60" height="60"/>
+ <SubTexture name="Shape/shape 11922" x="372" y="124" width="60" height="60"/>
+ <SubTexture name="Shape/shape 11924" x="0" y="62" width="60" height="60"/>
+ <SubTexture name="Shape/shape 11926" x="372" y="0" width="60" height="60"/>
+ <SubTexture name="Shape/shape 11928" x="124" y="186" width="60" height="60"/>
+ <SubTexture name="Shape/shape 11930" x="434" y="0" width="60" height="60"/>
+ <SubTexture name="Shape/shape 11932" x="124" y="0" width="60" height="60"/>
+ <SubTexture name="Shape/shape 11934" x="186" y="62" width="60" height="60"/>
+ <SubTexture name="Shape/shape 11936" x="310" y="0" width="60" height="60"/>
+ <SubTexture name="Shape/shape 11938" x="62" y="0" width="60" height="60"/>
+ <SubTexture name="Shape/shape 11940" x="310" y="124" width="60" height="60"/>
+ <SubTexture name="Shape/shape 11942" x="186" y="0" width="60" height="60"/>
+ <SubTexture name="Shape/shape 11944" x="0" y="186" width="60" height="60"/>
+ <SubTexture name="Shape/shape 11946" x="372" y="62" width="60" height="60"/>
+ <SubTexture name="Shape/shape 11948" x="248" y="124" width="60" height="60"/>
+ <SubTexture name="Shape/shape 11950" x="434" y="62" width="60" height="60"/>
+ <SubTexture name="Shape/shape 11952" x="0" y="0" width="60" height="60"/>
+ <SubTexture name="Shape/shape 11954" x="310" y="62" width="60" height="60"/>
+ <SubTexture name="Shape/shape 11956" x="248" y="0" width="60" height="60"/>
+ <SubTexture name="Shape/shape 11958" x="186" y="186" width="60" height="60"/>
+ <SubTexture name="Shape/shape 11960" x="248" y="62" width="60" height="60"/>
+ <SubTexture name="cross" x="372" y="186" width="30" height="30"/>
+</TextureAtlas>

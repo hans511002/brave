@@ -9,57 +9,76 @@ namespace engine
     class World;
 	struct Arrow_mc :public MovieClip
 	{
-        MovieClip * myTower;
+        Tower * myTower;
+    inline Arrow_mc(): MovieClip("worldinterface/", "Arrow_mc", "Arrow_mc"),myTower(0){};
 	};
     struct GetSphere_mc :public MovieClip{
-		MovieClip * cont;
-		MovieClip * sphere1;
-		MovieClip * sphere2;
-		MovieClip * sphere3;
-		MovieClip * sphere4;
+		MovieClipSub * cont;
+		MovieClipSub * sphere1;
+		MovieClipSub * sphere1Cont;
+		MovieClipSub * sphere2;
+		MovieClipSub * sphere2Cont;
+		MovieClipSub * sphere3;
+		MovieClipSub * sphere3Cont;
+		MovieClipSub * sphere4;
+		MovieClipSub * sphere4Cont;
     };
     struct GetAll_mc :public MovieClip
     {
 		ui::Text * numTXT;
-        MovieClip * cross; 
+        Sprite * cross; 
+        inline GetAll_mc():MovieClip("worldinterface/", "GetAll_mc", "GetAll_mc")
+        {
+            numTXT=this->createText("numTXT");
+            cross=(Sprite*)this->getArmature()->getSlot("cross")->getDisplay();
+        };
     };
     struct RadiusSphere_mc :public MovieClip
     {
-        MovieClip* cont;
-        RadiusSphere_mc();
+        MovieClipSub * cont;
+        inline RadiusSphere_mc(String arm):MovieClip("worldinterface/", arm, "RadiusSphere_mc")
+      	{
+      		cont=this->createMovieClipSub("cont");
+      	};
+        
     };
     struct RadiusFire_mc :public RadiusSphere_mc
     {
-        MovieClip* cont;
-        RadiusFire_mc();
+       inline  RadiusFire_mc():RadiusSphere_mc("RadiusFire_mc"){};
     };
     struct RadiusIce_mc :public RadiusSphere_mc
     {
-        MovieClip* cont;
-        RadiusIce_mc();
+        inline RadiusIce_mc():RadiusSphere_mc("RadiusIce_mc"){};
     };
     struct RadiusStone_mc:public RadiusSphere_mc
-    {
-        MovieClip* cont;
-        RadiusStone_mc();
+    { 
+        inline RadiusStone_mc():RadiusSphere_mc("RadiusStone_mc"){};
     };
     struct RadiusLevin_mc:public RadiusSphere_mc
     {
-        MovieClip* cont;
-        RadiusLevin_mc();
+        inline RadiusLevin_mc():RadiusSphere_mc("RadiusLevin_mc"){};
     };
     struct RadiusGetAll_mc :public RadiusSphere_mc
     { 
-        MovieClip * cont1;
-        MovieClip * cont2;
-        MovieClip * cont3; 
-        RadiusGetAll_mc(); 
+        MovieClipSub * cont1;
+        MovieClipSub * cont2;
+        MovieClipSub * cont3; 
+        inline RadiusGetAll_mc():RadiusSphere_mc("RadiusGetAll_mc")
+        {
+            cont1=this->createMovieClipSub("cont1");
+            cont2=this->createMovieClipSub("cont2");
+            cont3=this->createMovieClipSub("cont3");
+        }; 
     }; 
     struct MoveSphere_mc :public MovieClip
     {
         MovieClip * cont;
         ui::Text * numTXT; 
-        MoveSphere_mc(); 
+        inline MoveSphere_mc(string arm):MovieClip("worldinterface/","MoveSphere_mc","MoveSphere_mc")
+        {
+            cont=new MovieClip("worldinterface/",arm,"GetSphere_mc");
+            numTXT=this->createText("numTXT");
+        }; 
     };
     struct MoveFire_mc :public MoveSphere_mc
     { 

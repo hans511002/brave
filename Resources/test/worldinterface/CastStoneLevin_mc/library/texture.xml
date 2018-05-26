@@ -1,0 +1,14 @@
+<TextureAtlas name="CastStoneLevin_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 7135" x="366" y="224" width="77" height="71"/>
+ <SubTexture name="Shape/shape 7137" x="0" y="112" width="120" height="110"/>
+ <SubTexture name="Shape/shape 7139" x="366" y="0" width="120" height="110"/>
+ <SubTexture name="Shape/shape 7141" x="366" y="112" width="120" height="110"/>
+ <SubTexture name="Shape/shape 7143" x="244" y="224" width="120" height="110"/>
+ <SubTexture name="Shape/shape 7145" x="0" y="224" width="120" height="110"/>
+ <SubTexture name="Shape/shape 7147" x="244" y="0" width="120" height="110"/>
+ <SubTexture name="Shape/shape 7149" x="122" y="112" width="120" height="110"/>
+ <SubTexture name="Shape/shape 7151" x="122" y="224" width="120" height="110"/>
+ <SubTexture name="Shape/shape 7153" x="244" y="112" width="120" height="110"/>
+ <SubTexture name="Shape/shape 7155" x="122" y="0" width="120" height="110"/>
+ <SubTexture name="Shape/shape 7157" x="0" y="0" width="120" height="110"/>
+</TextureAtlas>
