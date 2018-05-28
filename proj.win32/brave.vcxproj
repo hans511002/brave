@@ -165,6 +165,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\common\Socket.cpp" />
     <ClCompile Include="..\Classes\common\strCodeing.cpp" />
     <ClCompile Include="..\Classes\common\String.cpp" />
+    <ClCompile Include="..\Classes\engine\BonusMoney.cpp" />
     <ClCompile Include="..\Classes\engine\bullets\Bullet.cpp" />
     <ClCompile Include="..\Classes\engine\bullets\Bullet_1.cpp" />
     <ClCompile Include="..\Classes\engine\bullets\Bullet_2.cpp" />
@@ -307,6 +308,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\common\TcpListener.h" />
     <ClInclude Include="..\Classes\common\TimeSpan.h" />
     <ClInclude Include="..\Classes\common\UdpClient.h" />
+    <ClInclude Include="..\Classes\engine\BonusMoney.h" />
     <ClInclude Include="..\Classes\engine\bullets\Bullet.h" />
     <ClInclude Include="..\Classes\engine\bullets\Bullet_1.h" />
     <ClInclude Include="..\Classes\engine\bullets\Bullet_2.h" />

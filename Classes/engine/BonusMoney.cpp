@@ -2,18 +2,15 @@
 #include "BonusMoney.h"
 #include "engine/World.h"
 #include "MainClass.h"
-#include "engine/mc/mc.h"
 
 namespace engine
 {
-    BonusMoney_mc::BonusMoney_mc():MovieClip("worldinterface/","BonusMoney_mc","BonusMoney_mc")
+    BonusMoney_mc::BonusMoney_mc() :MovieClip("worldinterface/", "BonusMoney_mc", "BonusMoney_mc")
     {
-        cont	=this	->createMovieClipSub	("cont");
-contNoteTXT	=cont	->createText	("noteTXT");
+        cont = this->createMovieClipSub("cont");
+        contNoteTXT = cont->createText("noteTXT");
     };
  
-
-
 
     BonusMoney::BonusMoney():counter(0)
     {
@@ -28,7 +25,7 @@ contNoteTXT	=cont	->createText	("noteTXT");
         this->container = new BonusMoney_mc();
         this->container->stop();
         this->container->cont->stop();
-        this->container->noteTXT->setText(string("+") + this->world->bonusMoney);
+        this->container->contNoteTXT->setText(Common::String("+") + this->world->bonusMoney);
         this->container->setPosition(Main::SCREEN_WIDTH_HALF,Main::SCREEN_HEIGHT_HALF);
         this->addChild(this->container);
         this->mouseChildren = false;

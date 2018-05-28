@@ -375,6 +375,9 @@
     <ClCompile Include="..\Classes\base\mc.cpp">
       <Filter>src\base</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\engine\BonusMoney.cpp">
+      <Filter>src\engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -760,6 +763,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\base\mc.h">
       <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\BonusMoney.h">
+      <Filter>src\engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

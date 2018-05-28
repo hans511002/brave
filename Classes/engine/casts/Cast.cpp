@@ -5,17 +5,17 @@ namespace engine
 {
     CastMask_mc::CastMask_mc() :MovieClip("worldinterface/", "CastMask_mc", "CastMask_mc")
     {
-archiveCase      = this->createCase("archiveCase");
-castAirCase      = this->createCase("castAirCase");
-castGolemCase    = this->createCase("castGolemCase");
-castIcemanCase   = this->createCase("castIcemanCase");
-fireCase         = this->createCase("fireCase");
-getAllCase       = this->createCase("getAllCase");
-iceCase          = this->createCase("iceCase");
-interfaceUpCase  = this->createCase("interfaceUpCase"); 
-levinCase        = this->createCase("levinCase");
-sellCase         = this->createCase("sellCase");
-stoneCase        = this->createCase("stoneCase");
+        archiveCase = this->createCase("archiveCase");
+        castAirCase = this->createCase("castAirCase");
+        castGolemCase = this->createCase("castGolemCase");
+        castIcemanCase = this->createCase("castIcemanCase");
+        fireCase = this->createCase("fireCase");
+        getAllCase = this->createCase("getAllCase");
+        iceCase = this->createCase("iceCase");
+        interfaceUpCase = this->createCase("interfaceUpCase");
+        levinCase = this->createCase("levinCase");
+        sellCase = this->createCase("sellCase");
+        stoneCase = this->createCase("stoneCase");
 
         return;
     }// end function	

@@ -28,6 +28,8 @@ namespace engine
 		int *counter ;
 		int timer = 90;
 
+        SavedCastTime_mc * container;
+
         SavedCastTime(string param1, int param2);
 
 		bool init();

@@ -1,14 +1,13 @@
 ﻿#ifndef ENGINE_BONUSMONEY_H
 #define ENGINE_BONUSMONEY_H
 #include "BaseHeaders.h" 
-#include "engine/mc/mc.h"
 
 namespace engine
 {
 	class World;
 	struct BonusMoney_mc:public MovieClip
 	{
-	    MovieClip* cont;
+	    MovieClipSub * cont;
 	    ui::Text * contNoteTXT;
 	    BonusMoney_mc();
 	};

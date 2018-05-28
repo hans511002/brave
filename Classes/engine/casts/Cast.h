@@ -6,18 +6,18 @@ namespace engine{
     class World;
     struct CastMask_mc : public MovieClip
     {
-         
-BaseNode	* archiveCase           ;
-BaseNode	* castAirCase           ;
-BaseNode	* castGolemCase         ;
-BaseNode	* castIcemanCase        ;
-BaseNode	* fireCase              ;
-BaseNode	* getAllCase            ;
-BaseNode	* iceCase               ;
-BaseNode	* interfaceUpCase       ;
-BaseNode	* levinCase             ; 
-BaseNode	* sellCase              ;
-BaseNode	* stoneCase             ; 
+
+        BaseNode	* archiveCase;
+        BaseNode	* castAirCase;
+        BaseNode	* castGolemCase;
+        BaseNode	* castIcemanCase;
+        BaseNode	* fireCase;
+        BaseNode	* getAllCase;
+        BaseNode	* iceCase;
+        BaseNode	* interfaceUpCase;
+        BaseNode	* levinCase;
+        BaseNode	* sellCase;
+        BaseNode	* stoneCase;
         CastMask_mc();
 
     };

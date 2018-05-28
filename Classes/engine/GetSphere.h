@@ -83,19 +83,19 @@ namespace engine
     };
     struct MoveFire_mc :public MoveSphere_mc
     { 
-        MoveFire_mc(); 
+        inline MoveFire_mc() :MoveSphere_mc("fire"){};
     };
     struct MoveIce_mc :public MoveSphere_mc
     { 
-        MoveIce_mc(); 
-    };
-    struct MoveLevin_mc :public MoveSphere_mc
-    { 
-        MoveLevin_mc(); 
+        inline MoveIce_mc() :MoveSphere_mc("ice"){};
     };
     struct MoveStone_mc :public MoveSphere_mc
     { 
-        MoveStone_mc(); 
+        inline MoveStone_mc() :MoveSphere_mc("stone"){};
+    };
+    struct MoveLevin_mc :public MoveSphere_mc
+    {  
+        inline MoveLevin_mc() :MoveSphere_mc("levin"){};
     };
     
     class GetSphere :public BaseNode
