@@ -2,14 +2,15 @@
 #define GETSPHERE_H
 #include "BaseNode.h"
 #include "MainClass.h"
-#include "engine/mc/mc.h"
+#include "base/mc.h"
+#include "engine/towers/Tower.h"
 
 namespace engine
 { 
     class World;
 	struct Arrow_mc :public MovieClip
 	{
-        Tower * myTower;
+		towers::Tower * myTower;
     inline Arrow_mc(): MovieClip("worldinterface/", "Arrow_mc", "Arrow_mc"),myTower(0){};
 	};
     struct GetSphere_mc :public MovieClip{
@@ -36,7 +37,7 @@ namespace engine
     struct RadiusSphere_mc :public MovieClip
     {
         MovieClipSub * cont;
-        inline RadiusSphere_mc(String arm):MovieClip("worldinterface/", arm, "RadiusSphere_mc")
+        inline RadiusSphere_mc(string arm):MovieClip("worldinterface/", arm, "RadiusSphere_mc")
       	{
       		cont=this->createMovieClipSub("cont");
       	};
@@ -103,7 +104,7 @@ namespace engine
         int i, j;
         //public var tempObject:Object;
         //public var tempObject1:Object;
-		BaseNode *container;//public var container:MovieClip;
+		GetSphere_mc *container;//public var container:MovieClip;
 		MovieClip* radius;
         int counter;
         //public var owner:Object;

@@ -269,8 +269,8 @@ namespace engine
 					{
 						//this->container->cont->currentFrame = 1;
 						this->container->cont->gotoAndStop(1);
-						this->container->contBlowing->stop(); // 						this->container->cont->blowing->stop();
-						this->container->contBlowing->setVisible(false); // 						this->container->cont->blowing->setVisible(false);
+						this->container->contBlowing->stop(); // 						this->container->contBlowing->stop();
+						this->container->contBlowing->setVisible(false); // 						this->container->contBlowing->setVisible(false);
 					}
 				}
 			}
@@ -367,16 +367,16 @@ namespace engine
 
 		void Air::attack()
 		{
-			if(!this->container->contBlowing->isVisible()) // 			if(!this->container->cont->blowing->isVisible())
+			if(!this->container->contBlowing->isVisible()) // 			if(!this->container->contBlowing->isVisible())
 			{
-				this->container->contBlowing->setVisible(true); // 				this->container->cont->blowing->setVisible(true);
+				this->container->contBlowing->setVisible(true); // 				this->container->contBlowing->setVisible(true);
 			}
 			else if(this->container->cont->currentFrame < 47)
 			{
 				this->container->cont->currentFrame++;
 				this->container->cont->gotoAndStop(this->container->cont->currentFrame);
-				this->container->contBlowing->currentFrame++; // 				this->container->cont->blowing->currentFrame++;
-				this->container->contBlowing->gotoAndStop(this->container->contBlowing->currentFrame); // 				this->container->cont->blowing->gotoAndStop(this->container->cont->blowing->currentFrame);
+				this->container->contBlowing->currentFrame++; // 				this->container->contBlowing->currentFrame++;
+				this->container->contBlowing->gotoAndStop(this->container->contBlowing->currentFrame); // 				this->container->contBlowing->gotoAndStop(this->container->contBlowing->currentFrame);
 				if(this->container->cont->currentFrame == 2)
 				{
 					//Sounds.instance.playSoundWithVol("snd_air_blow", 0.65);
@@ -443,8 +443,8 @@ namespace engine
 			else
 			{
 				this->container->cont->gotoAndStop (1);
-				this->container->contBlowing->gotoAndStop (1); // 				this->container->cont->blowing->gotoAndStop (1);
-				this->container->contBlowing->setVisible(false); // 				this->container->cont->blowing->setVisible(false);
+				this->container->contBlowing->gotoAndStop (1); // 				this->container->contBlowing->gotoAndStop (1);
+				this->container->contBlowing->setVisible(false); // 				this->container->contBlowing->setVisible(false);
 				this->workFlag = false;
 			}
 			return;

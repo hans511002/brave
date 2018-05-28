@@ -4,7 +4,18 @@
 
 namespace engine
 {
-  
+	GetSphere_mc::GetSphere_mc()
+	{
+		cont = this->createMovieClipSub("cont");
+		sphere1 = this->createMovieClipSub("sphere1");
+		sphere1Cont = sphere1->createMovieClipSub("cont");
+		sphere2 = this->createMovieClipSub("sphere2");
+		sphere2Cont = sphere2->createMovieClipSub("cont");
+		sphere3 = this->createMovieClipSub("sphere3");
+		sphere3Cont = sphere3->createMovieClipSub("cont");
+		sphere4 = this->createMovieClipSub("sphere4");
+		sphere4Cont = sphere4->createMovieClipSub("cont");
+	};
     GetSphere::GetSphere(string param1 ) :counter(0), myRadius(0), myDamage(0), fireCount(0), iceCount(0), stoneCount(0), levinCount(0)
     {
         //this->listOfStack = [];
@@ -26,10 +37,10 @@ namespace engine
 			container->sphere2->stop();
 			container->sphere3->stop();
 			container->sphere4->stop();
-			container->sphere1->cont->stop();
-			container->sphere2->cont->stop();
-			container->sphere3->cont->stop();
-			container->sphere4->cont->stop();
+			container->sphere1Cont->stop();
+			container->sphere2Cont->stop();
+			container->sphere3Cont->stop();
+			container->sphere4Cont->stop();
 
 			container->sphere1->setVisible(false);
 			container->sphere2->setVisible(false);
@@ -56,11 +67,11 @@ namespace engine
 		{
 	        if (this->world->towerMenu->container->btnUpgradeMenu)
 	        {
-	            if (this->world->towerMenu->container->btnUpgradeMenu->btnUpgradeMenuCase)
+	            if (this->world->towerMenu->container->btnUpgradeMenuBtnUpgradeMenuCase->isReady)
 	            {
-	                if (this->world->towerMenu->container->btnUpgradeMenu->btnUpgradeMenuCase->buttonMode)
+	                if (this->world->towerMenu->container->btnUpgradeMenuBtnUpgradeMenuCase->buttonMode)
 	                {
-	                    this->world->towerMenu->container->btnUpgradeMenu->btnUpgradeMenuCase->buttonMode = false;
+	                    this->world->towerMenu->container->btnUpgradeMenuBtnUpgradeMenuCase->buttonMode = false;
 	                }
 	            }
 	        }
@@ -68,19 +79,19 @@ namespace engine
 	        {
 	            if (this->world->towerMenu->container->btnTowerUpgr1)
 	            {
-	                this->world->towerMenu->container->btnTowerUpgr1->btnTowerUpgrCase->buttonMode = false;
+	                this->world->towerMenu->container->btnTowerUpgr1BtnTowerUpgrCase->buttonMode = false;
 	            }
 	            if (this->world->towerMenu->container->btnTowerUpgr2)
 	            {
-				    this->world->towerMenu->container->btnTowerUpgr2->btnTowerUpgrCase->buttonMode = false;
+				    this->world->towerMenu->container->btnTowerUpgr2BtnTowerUpgrCase->buttonMode = false;
 			    }
     			if(this->world->towerMenu->container->btnTowerUpgr3)
     		    {
-    				this->world->towerMenu->container->btnTowerUpgr3->btnTowerUpgrCase->buttonMode = false;
+    				this->world->towerMenu->container->btnTowerUpgr3BtnTowerUpgrCase->buttonMode = false;
     		    }
     			if(this->world->towerMenu->container->btnTowerUpgr4)
     			{
-				this->world->towerMenu->container->btnTowerUpgr4->btnTowerUpgrCase->buttonMode = false;
+				this->world->towerMenu->container->btnTowerUpgr4BtnTowerUpgrCase->buttonMode = false;
 	            }
 	        }
 		}
@@ -88,11 +99,11 @@ namespace engine
 		{
 			if (this->world->ultraTowerMenu->container->btnUpgradeMenu)
 			{
-			    if (this->world->ultraTowerMenu->container->btnUpgradeMenu->btnUpgradeMenuCase)
+			    if (this->world->ultraTowerMenu->container->btnUpgradeMenuBtnUpgradeMenuCase->isReady)
 			    {
-			        if (this->world->ultraTowerMenu->container->btnUpgradeMenu->btnUpgradeMenuCase->buttonMode)
+			        if (this->world->ultraTowerMenu->container->btnUpgradeMenuBtnUpgradeMenuCase->buttonMode)
 			        {
-			            this->world->ultraTowerMenu->container->btnUpgradeMenu->btnUpgradeMenuCase->buttonMode = false;
+			            this->world->ultraTowerMenu->container->btnUpgradeMenuBtnUpgradeMenuCase->buttonMode = false;
 			        }
 			    }
 			}
@@ -255,7 +266,7 @@ namespace engine
                     this->world->worldInterface->container->getAll->gotoAndStop(1);
                 }
                 this->world->worldInterface->container->fireBack->gotoAndStop(2);
-                this->world->worldInterface->container->fireBack->cont->stop();
+                this->world->worldInterface->container->fireBackCont->stop();
                 //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
             }
         }
@@ -284,7 +295,7 @@ namespace engine
                     this->world->worldInterface->container->getAll->gotoAndStop(1);
                 }
                 this->world->worldInterface->container->iceBack->gotoAndStop(2);
-                this->world->worldInterface->container->iceBack->cont->stop();
+                this->world->worldInterface->container->iceBackCont->stop();
                 //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
             }
         }
@@ -313,7 +324,7 @@ namespace engine
                     this->world->worldInterface->container->getAll->gotoAndStop(1);
                 }
                 this->world->worldInterface->container->stoneBack->gotoAndStop(2);
-                this->world->worldInterface->container->stoneBack->cont->stop();
+                this->world->worldInterface->container->stoneBackCont->stop();
                 //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
             }
         }
@@ -342,7 +353,7 @@ namespace engine
                     this->world->worldInterface->container->getAll->gotoAndStop(1);
                 }
                 this->world->worldInterface->container->levinBack->gotoAndStop(2);
-                this->world->worldInterface->container->levinBack->cont->stop();
+                this->world->worldInterface->container->levinBackCont->stop();
                 //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
             }
         }
@@ -985,25 +996,25 @@ namespace engine
                         if (this->listOfStack.size() == 1)
                         {
                             container->sphere1->gotoAndStop(1);
-                            container->sphere1->cont->stop();
+                            container->sphere1Cont->stop();
                             container->sphere1->setVisible(true);
                         }
                         else if (this->listOfStack.size() == 2)
                         {
                             container->sphere2->gotoAndStop(1);
-                            container->sphere2->cont->stop();
+                            container->sphere2Cont->stop();
                             container->sphere2->setVisible(true);
                         }
                         else if (this->listOfStack.size() == 3)
                         {
                             container->sphere3->gotoAndStop(1);
-                            container->sphere3->cont->stop();
+                            container->sphere3Cont->stop();
                             container->sphere3->setVisible(true);
                         }
                         else if (this->listOfStack.size() == 4)
                         {
                             container->sphere4->gotoAndStop(1);
-                            container->sphere4->cont->stop();
+                            container->sphere4Cont->stop();
                             container->sphere4->setVisible(true);
                         }
                         (this->fireCount + 1);
@@ -1013,25 +1024,25 @@ namespace engine
                         if (this->listOfStack.size() == 1)
                         {
                             container->sphere1->gotoAndStop(2);
-                            container->sphere1->cont->stop();
+                            container->sphere1Cont->stop();
                             container->sphere1->setVisible(true);
                         }
                         else if (this->listOfStack.size() == 2)
                         {
                             container->sphere2->gotoAndStop(2);
-                            container->sphere2->cont->stop();
+                            container->sphere2Cont->stop();
                             container->sphere2->setVisible(true);
                         }
                         else if (this->listOfStack.size() == 3)
                         {
                             container->sphere3->gotoAndStop(2);
-                            container->sphere3->cont->stop();
+                            container->sphere3Cont->stop();
                             container->sphere3->setVisible(true);
                         }
                         else if (this->listOfStack.size() == 4)
                         {
                             container->sphere4->gotoAndStop(2);
-                            container->sphere4->cont->stop();
+                            container->sphere4Cont->stop();
                             container->sphere4->setVisible(true);
                         }
                         (this->iceCount + 1);
@@ -1041,25 +1052,25 @@ namespace engine
                         if (this->listOfStack.size() == 1)
                         {
                             container->sphere1->gotoAndStop(3);
-                            container->sphere1->cont->stop();
+                            container->sphere1Cont->stop();
                             container->sphere1->setVisible(true);
                         }
                         else if (this->listOfStack.size() == 2)
                         {
                             container->sphere2->gotoAndStop(3);
-                            container->sphere2->cont->stop();
+                            container->sphere2Cont->stop();
                             container->sphere2->setVisible(true);
                         }
                         else if (this->listOfStack.size() == 3)
                         {
                             container->sphere3->gotoAndStop(3);
-                            container->sphere3->cont->stop();
+                            container->sphere3Cont->stop();
                             container->sphere3->setVisible(true);
                         }
                         else if (this->listOfStack.size() == 4)
                         {
                             container->sphere4->gotoAndStop(3);
-                            container->sphere4->cont->stop();
+                            container->sphere4Cont->stop();
                             container->sphere4->setVisible(true);
                         }
                         (this->stoneCount + 1);
@@ -1069,25 +1080,25 @@ namespace engine
                         if (this->listOfStack.size() == 1)
                         {
                             container->sphere1->gotoAndStop(4);
-                            container->sphere1->cont->stop();
+                            container->sphere1Cont->stop();
                             container->sphere1->setVisible(true);
                         }
                         else if (this->listOfStack.size() == 2)
                         {
                             container->sphere2->gotoAndStop(4);
-                            container->sphere2->cont->stop();
+                            container->sphere2Cont->stop();
                             container->sphere2->setVisible(true);
                         }
                         else if (this->listOfStack.size() == 3)
                         {
                             container->sphere3->gotoAndStop(4);
-                            container->sphere3->cont->stop();
+                            container->sphere3Cont->stop();
                             container->sphere3->setVisible(true);
                         }
                         else if (this->listOfStack.size() == 4)
                         {
                             container->sphere4->gotoAndStop(4);
-                            container->sphere4->cont->stop();
+                            container->sphere4Cont->stop();
                             container->sphere4->setVisible(true);
                         }
                         (this->levinCount + 1);

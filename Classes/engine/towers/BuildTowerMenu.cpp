@@ -47,7 +47,7 @@ namespace engine{
             this->container->cont->stop();
             std::setText(this->container->cont->costTXT, Main::mainClass->readXMLClass.costTowerXML);
             //this->container->cont->costTXT.text = Main::mainClass->readXMLClass.costTowerXML;
-            this->container->cont->buildTowerMenuCase->buttonMode = true;
+            this->container->contBuildTowerMenuCase->buttonMode = true;
             this->addChild(this->container);
             //this->world->listOfClasses.push(this);
 
@@ -169,7 +169,7 @@ namespace engine{
                     this->container->gotoAndStop(this->container->currentFrame - 7);
                     this->container->cont->stop();
                 }
-                this->container->cont->buildTowerMenuCase->buttonMode = true;
+                this->container->contBuildTowerMenuCase->buttonMode = true;
                 this->myPlace->placeForBuildCase->buttonMode = true;
             }
             else
@@ -179,7 +179,7 @@ namespace engine{
                     this->container->gotoAndStop(this->container->currentFrame + 7);
                     this->container->cont->stop();
                 }
-                this->container->cont->buildTowerMenuCase->buttonMode = false;
+                this->container->contBuildTowerMenuCase->buttonMode = false;
                 this->myPlace->placeForBuildCase->buttonMode = false;
             }
             this->container->setPrice(Main::mainClass->readXMLClass.costTowerXML);

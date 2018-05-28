@@ -41,7 +41,7 @@ namespace screens
         MovieClip * upgrades;
         MovieClip * wavesAnimation;
 
-        LevelsMenu_mc()
+		LevelsMenu_mc() :MovieClip("","","")
         {
             return;
         }// end function

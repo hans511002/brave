@@ -65,8 +65,8 @@ namespace engine{
                     //event = new MouseEvent(MouseEvent.MOUSE_DOWN);
                     world->worldInterface->castIcemanCounter++;
                     world->worldInterface->container->butCastIceman->gotoAndStop(4);
-                    world->worldInterface->container->butCastIceman->castIcemanCase->buttonMode = false;
-                    world->worldInterface->container->butCastIceman->cont->contMask->setScaleY(0);
+                    world->worldInterface->container->butCastIcemanCastIcemanCase->buttonMode = false;
+                    world->worldInterface->container->butCastIcemanContContMask->setScaleY(0);
                     this->addIceman();
                     kill();
                 }

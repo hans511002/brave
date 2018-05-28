@@ -9,7 +9,7 @@
 #include "common/Common.h" 
 #include "BaseNode.h"
 #include "cocos-ext.h"
-#include "engine/mc/mc.h"
+#include "base/mc.h"
 USING_NS_CC;
 using namespace dragonBones;
 using namespace tinyxml2;

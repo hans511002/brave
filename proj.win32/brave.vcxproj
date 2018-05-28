@@ -71,7 +71,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;$(EngineRoot);..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;$(EngineRoot);..\Classes;..\Classes\base;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -145,7 +145,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
-    <ClCompile Include="..\Classes\BaseNode.cpp" />
+    <ClCompile Include="..\Classes\base\BaseNode.cpp" />
+    <ClCompile Include="..\Classes\base\JsonUtil.cpp" />
+    <ClCompile Include="..\Classes\base\mc.cpp" />
     <ClCompile Include="..\Classes\bezier\Bezier.cpp" />
     <ClCompile Include="..\Classes\bezier\FitLine.cpp" />
     <ClCompile Include="..\Classes\bezier\Path.cpp" />
@@ -187,10 +189,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\engine\decoration\Decoration.cpp" />
     <ClCompile Include="..\Classes\engine\Feature.cpp" />
     <ClCompile Include="..\Classes\engine\GetSphere.cpp" />
-    <ClCompile Include="..\Classes\engine\level\Level1.cpp" />
-    <ClCompile Include="..\Classes\engine\level\PointTimer.cpp" />
-    <ClCompile Include="..\Classes\engine\level\RoadLevel1.cpp" />
-    <ClCompile Include="..\Classes\engine\mc\mc.cpp" />
+    <ClCompile Include="..\Classes\engine\level\Level1_mc.cpp" />
     <ClCompile Include="..\Classes\engine\MoneyAdd.cpp" />
     <ClCompile Include="..\Classes\engine\SavedCastTime.cpp" />
     <ClCompile Include="..\Classes\engine\towers\BuildTowerMenu.cpp" />
@@ -242,7 +241,6 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\engine\WorldInterface_mc.cpp" />
     <ClCompile Include="..\Classes\engine\xml\ReadXML.cpp" />
     <ClCompile Include="..\Classes\engine\xml\XmlConfigParser.cpp" />
-    <ClCompile Include="..\Classes\JsonUtil.cpp" />
     <ClCompile Include="..\Classes\MainClass.cpp" />
     <ClCompile Include="..\Classes\screens\MiddleScreen.cpp" />
     <ClCompile Include="..\Classes\sys\bezierBox.cpp" />
@@ -254,10 +252,13 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Classes\allHeaders.h" />
     <ClInclude Include="..\Classes\AppDelegate.h" />
-    <ClInclude Include="..\Classes\BaseHeaders.h" />
-    <ClInclude Include="..\Classes\BaseNode.h" />
+    <ClInclude Include="..\Classes\base\AllHeaders.h" />
+    <ClInclude Include="..\Classes\base\BaseHeaders.h" />
+    <ClInclude Include="..\Classes\base\BaseLayer.h" />
+    <ClInclude Include="..\Classes\base\BaseNode.h" />
+    <ClInclude Include="..\Classes\base\JsonUtil.h" />
+    <ClInclude Include="..\Classes\base\mc.h" />
     <ClInclude Include="..\Classes\bezier\Bezier.h" />
     <ClInclude Include="..\Classes\bezier\FitLine.h" />
     <ClInclude Include="..\Classes\bezier\Path.h" />
@@ -332,11 +333,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\engine\Feature.h" />
     <ClInclude Include="..\Classes\engine\GetSphere.h" />
     <ClInclude Include="..\Classes\engine\level\Level.h" />
-    <ClInclude Include="..\Classes\engine\level\Level1.h" />
-    <ClInclude Include="..\Classes\engine\level\PointTimer.h" />
-    <ClInclude Include="..\Classes\engine\level\Road.h" />
-    <ClInclude Include="..\Classes\engine\level\RoadLevel1.h" />
-    <ClInclude Include="..\Classes\engine\mc\mc.h" />
+    <ClInclude Include="..\Classes\engine\level\Level1_mc.h" />
     <ClInclude Include="..\Classes\engine\MoneyAdd.h" />
     <ClInclude Include="..\Classes\engine\SavedCastTime.h" />
     <ClInclude Include="..\Classes\engine\towers\BuildTowerMenu.h" />
@@ -362,7 +359,6 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\engine\WorldInterface_mc.h" />
     <ClInclude Include="..\Classes\engine\xml\ReadXML.h" />
     <ClInclude Include="..\Classes\engine\xml\XmlConfigParser.h" />
-    <ClInclude Include="..\Classes\JsonUtil.h" />
     <ClInclude Include="..\Classes\MainClass.h" />
     <ClInclude Include="..\Classes\screens\MiddleScreen.h" />
     <ClInclude Include="..\Classes\sys\bezierBox.h" />

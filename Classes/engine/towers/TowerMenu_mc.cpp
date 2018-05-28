@@ -5,16 +5,14 @@ namespace engine
 {
     namespace towers
     {
-        TowerMenuHint_mc::TowerMenuHint_mc():MovieClip("tower","TowerMenuHint_mc","TowerMenuHint_mc")
+        TowerMenuHint_mc::TowerMenuHint_mc():MovieClip("tower/","TowerMenuHint_mc","TowerMenuHint_mc")
         {
             cont1=cont1Sphere1=cont1Sphere2=NULL; 
-            
-            this->cont = new MovieClipSub(this,this->getArmature()->getSlot("cont")->getChildArmature());
-            this->cont->gotoAndStop(1);
-            this->cont1=new MovieClipSub(cont->getArmature()->getSlot("cont1")->getChildArmature());
-            this->cont1Sphere1=new MovieClipSub(cont1->getArmature()->getSlot("sphere1")->getChildArmature());
-            this->cont1Sphere2=new MovieClipSub(cont1->getArmature()->getSlot("sphere2")->getChildArmature());
-            return;
+            cont               = this     ->createMovieClipSub("cont");
+            contCont1          = cont     ->createMovieClipSub("cont1");
+            contCont1Sphere1   = contCont1->createMovieClipSub("sphere1");
+            contCont1Sphere2   = contCont1->createMovieClipSub("sphere2");
+            nameTXT            = this     ->createText        ("nameTXT");
         };// end function
         TowerRadius_mc::TowerRadius_mc() :BaseSprite("Tower/TowerRadius_mc.png"), myTower(NULL)
         {

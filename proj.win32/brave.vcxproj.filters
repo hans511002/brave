@@ -46,14 +46,14 @@
     <Filter Include="src\engine\level">
       <UniqueIdentifier>{4abe01f3-3bc1-4d94-8a52-edfba74636d4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\engine\mc">
-      <UniqueIdentifier>{a282b77b-bade-4986-85ae-015a487aa269}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\test">
       <UniqueIdentifier>{b055b077-e200-4e71-b141-c1d80d541d0c}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\tinyxml2">
       <UniqueIdentifier>{d48bd1c1-5bfe-4ad1-b764-1f1dd105c09d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\base">
+      <UniqueIdentifier>{be460ec4-878b-4b9b-a571-23e26d90d149}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -144,9 +144,6 @@
     <ClCompile Include="..\Classes\MainClass.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\JsonUtil.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\engine\SavedCastTime.cpp">
       <Filter>src\engine</Filter>
     </ClCompile>
@@ -162,20 +159,8 @@
     <ClCompile Include="..\Classes\engine\units\Unit_mc.cpp">
       <Filter>src\engine\units</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\engine\level\Level1.cpp">
-      <Filter>src\engine\level</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\engine\level\RoadLevel1.cpp">
-      <Filter>src\engine\level</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\screens\MiddleScreen.cpp">
       <Filter>src\screens</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\engine\level\PointTimer.cpp">
-      <Filter>src\engine\level</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\BaseNode.cpp">
-      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\engine\WorldInterface_mc.cpp">
       <Filter>src\engine</Filter>
@@ -239,9 +224,6 @@
     </ClCompile>
     <ClCompile Include="..\Classes\engine\casts\Iceman.cpp">
       <Filter>src\engine\casts</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\engine\mc\mc.cpp">
-      <Filter>src\engine\mc</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\engine\towers\Exchange.cpp">
       <Filter>src\engine\towers</Filter>
@@ -380,6 +362,18 @@
     </ClCompile>
     <ClCompile Include="..\Classes\engine\units\Unit_26.cpp">
       <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\level\Level1_mc.cpp">
+      <Filter>src\engine\level</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\base\BaseNode.cpp">
+      <Filter>src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\base\JsonUtil.cpp">
+      <Filter>src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\base\mc.cpp">
+      <Filter>src\base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -533,15 +527,6 @@
     <ClInclude Include="..\Classes\MainClass.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\JsonUtil.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\allHeaders.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\BaseHeaders.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\engine\Waves.h">
       <Filter>src\engine</Filter>
     </ClInclude>
@@ -590,26 +575,11 @@
     <ClInclude Include="..\Classes\bezier\PathPoint.h">
       <Filter>src\bezier</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\engine\level\Level1.h">
-      <Filter>src\engine\level</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\engine\level\RoadLevel1.h">
-      <Filter>src\engine\level</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\engine\level\Level.h">
-      <Filter>src\engine\level</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\engine\level\Road.h">
       <Filter>src\engine\level</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\screens\MiddleScreen.h">
       <Filter>src\screens</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\engine\level\PointTimer.h">
-      <Filter>src\engine\level</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\BaseNode.h">
-      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\engine\WorldInterface_mc.h">
       <Filter>src\engine</Filter>
@@ -661,9 +631,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\engine\towers\BuildTowerMenu.h">
       <Filter>src\engine\towers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\engine\mc\mc.h">
-      <Filter>src\engine\mc</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\engine\bullets\Bullet_1.h">
       <Filter>src\engine\bullets</Filter>
@@ -772,6 +739,27 @@
     </ClInclude>
     <ClInclude Include="..\Classes\test\HelloWorldScene.h">
       <Filter>src\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\level\Level1_mc.h">
+      <Filter>src\engine\level</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\base\AllHeaders.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\base\BaseHeaders.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\base\BaseLayer.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\base\BaseNode.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\base\JsonUtil.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\base\mc.h">
+      <Filter>src\base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

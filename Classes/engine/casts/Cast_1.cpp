@@ -64,8 +64,8 @@ namespace engine{
                     //event = new MouseEvent(MouseEvent.MOUSE_DOWN);
                     world->worldInterface->castGolemCounter++;
                     //world->worldInterface->container->butCastGolem->gotoAndStop(4);
-                    //world->worldInterface->container->butCastGolem->castGolemCase->buttonMode = false;
-                    //world->worldInterface->container->butCastGolem->cont.contMask->setScaleY(0);
+                    //world->worldInterface->container->butCastGolemCastGolemCase->buttonMode = false;
+                    //world->worldInterface->container->butCastGolemContContMask->setScaleY(0);
                     this->addGolem();
                     kill();
                 }

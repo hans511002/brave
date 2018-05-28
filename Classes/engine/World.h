@@ -8,8 +8,6 @@
 #include "engine/WorldInterface.h"
 #include "Feature.h"
 #include "engine/level/Level.h"
-#include "engine/level/Road.h"
-#include "engine/level/PointTimer.h"
 #include "bezier/Bezier.h"
 #include "engine/units/Unit.h"
 #include "engine/GetSphere.h"
@@ -63,7 +61,7 @@ namespace engine
         Waves *wavesClass;
         int numRoads;//public var numRoads : int;
         Level * level;		//public var level : MovieClip;
-        Road * road;		//public var road : MovieClip;
+        //public var road : MovieClip;
         //public var levelAdditionally : MovieClip;
         //public var levelAdditionally1 : MovieClip;
         //public var levelAdditionally2 : MovieClip;
@@ -103,9 +101,7 @@ namespace engine
         BaseNode * menuObject;//public var menuObject : Object;//՝�� �ˠѧϰ
         //public var sortIndex : Array;
 
-        PointTimer * pointer1;
-        PointTimer * pointer2;
-        PointTimer * pointer3;//
+       
         //PointTimer * pointer4;
         //public var pointer1 : MovieClip;
         //public var pointer2 : MovieClip;

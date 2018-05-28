@@ -9,10 +9,11 @@ namespace engine
         class TowerMenuHint_mc :public MovieClip
         {
         public:
-            MovieClipSub * cont;// : MovieClip;
-            MovieClipSub cont1,cont1Sphere1,cont1Sphere2;
-            ui::Text * nameTXT;// : TextField;
-            //CREATE_FUNC(TowerMenuHint_mc);
+            MovieClipSub * cont                ;
+            MovieClipSub * contCont1           ;
+            MovieClipSub * contCont1Sphere1    ;
+            MovieClipSub * contCont1Sphere2    ;
+            ui::Text     * nameTXT             ;
             TowerMenuHint_mc();
         };
 
@@ -46,19 +47,46 @@ namespace engine
         class TowerMenu_mc :public BaseNode
         {
         public:
-            ui::Button * btnGetAll;// : MovieClip;
-            BaseSprite *  btnTowerUpgr1;// : MovieClip;
-            BaseSprite*  btnTowerUpgr2;// : MovieClip;
-            BaseSprite*  btnTowerUpgr3;// : MovieClip;
-            BaseSprite*  btnTowerUpgr4;// : MovieClip;
-            BtnUpgradeMenu *  btnUpgradeMenu;// : MovieClip;
-            MovieClip *  cont1;// : MovieClip;
-            MovieClip *  cont2;// : MovieClip;
-            BaseNode*  fastBuyUltraCont;//: MovieClip;
-            BaseNode* sphereSlot1;// : MovieClip;
-            BaseNode* sphereSlot2;// : MovieClip;
-            BaseNode* sphereSlot3;// : MovieClip;
-            BaseNode* sphereSlot4;// : MovieClip;
+            MovieClipSub * btnGetAll                                                   ;
+            MovieClipSub * btnTowerUpgr1                                               ;
+            ui::Text     * btnTowerUpgr1CostTXT                                        ;
+            MovieClipSub * btnTowerUpgr2                                               ;
+            ui::Text     * btnTowerUpgr2CostTXT                                        ;
+            MovieClipSub * btnTowerUpgr3                                               ;
+            ui::Text     * btnTowerUpgr3CostTXT                                        ;
+            MovieClipSub * btnTowerUpgr4                                               ;
+            ui::Text     * btnTowerUpgr4CostTXT                                        ;
+            MovieClipSub * btnUpgradeMenu                                              ;
+			MCCase * btnUpgradeMenuBtnUpgradeMenuCase;
+            MovieClipSub * cont1                                                       ;
+            MovieClipSub * cont2                                                       ;
+            MovieClipSub * fastBuyUltraCont                                            ;
+            MovieClipSub * fastBuyUltraContBtnFastBuyUltra                             ;
+            ui::Text     * fastBuyUltraContBtnFastBuyUltraCostTXT                      ;
+			MCCase     * fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase;
+            MovieClipSub * sphereSlot1                                                 ;
+            MovieClipSub * sphereSlot1SphereAnima                                      ;
+            MovieClipSub * sphereSlot1SphereAnimaFire                                  ;
+            MovieClipSub * sphereSlot1SphereAnimaIce                                   ;
+            MovieClipSub * sphereSlot1SphereAnimaStone                                 ;
+            MovieClipSub * sphereSlot1SphereAnimaLevin                                 ;
+            MovieClipSub * sphereSlot2                                                 ;
+            MovieClipSub * sphereSlot2Fire                                             ;
+            MovieClipSub * sphereSlot2Ice                                              ;
+            MovieClipSub * sphereSlot2Stone                                            ;
+            MovieClipSub * sphereSlot2Levin                                            ;
+            MovieClipSub * sphereSlot3                                                 ;
+            MovieClipSub * sphereSlot3Fire                                             ;
+            MovieClipSub * sphereSlot3Ice                                              ;
+            MovieClipSub * sphereSlot3Stone                                            ;
+            MovieClipSub * sphereSlot3Levin                                            ;
+            MovieClipSub * sphereSlot4                                                 ;
+            MovieClipSub * sphereSlot4Fire                                             ;
+            MovieClipSub * sphereSlot4Ice                                              ;
+            MovieClipSub * sphereSlot4Stone                                            ;
+            MovieClipSub * sphereSlot4Levin                                            ;
+
+
             CREATE_FUNC(TowerMenu_mc);
 
             TowerMenu_mc()

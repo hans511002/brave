@@ -1,22 +1,18 @@
 #ifndef ENGINE_LEVEL_H
 #define ENGINE_LEVEL_H
 #include "BaseHeaders.h"
-#include "PointTimer.h"
 
 namespace engine{
    
-	class Level : public BaseNode{
+	class Level : public MovieClip{
 		public:
-			Common::Array<dragonBones::CCArmatureDisplay * > decorations;
-			Common::Array<dragonBones::CCArmatureDisplay * > flags;
-			Common::Array<dragonBones::CCArmatureDisplay * > places;
-            Common::Array<Sprite * > placeBases;
+			Common::Array<MovieClipSub * > decorations;
+			Common::Array<MovieClip * > flags;
+			Common::Array<MovieClip * > places; 
+			Common::Array<MovieClip * > pointers;
             //Common::Array<TowerPlace * > towerPlace;
-			Common::Array<dragonBones::CCArmatureDisplay * > additionallys;
-			Common::Array<PointTimer * > pointers;
- 			Level()
-			{ 
-			};
+			Common::Array<MovieClipSub * > additionallys;
+			inline Level(string rootPath, string armName, string dbName) :MovieClip(rootPath, armName, dbName) {};
 		};
  
 } 

@@ -1078,16 +1078,16 @@ namespace engine
 					this->world->removeChild(this->world->listOfMoveSpheres[this->i]);
 					this->world->listOfMoveSpheres.splice(this->i, 1);
 				}
-				this->world->worldInterface->container->fireSphere->sphereCase->setVisible(false);
-				this->world->worldInterface->container->fireSphere->sphereCase->setVisible(true);
-				this->world->worldInterface->container->iceSphere->sphereCase->setVisible(false);
-				this->world->worldInterface->container->iceSphere->sphereCase->setVisible(true);
-				this->world->worldInterface->container->stoneSphere->sphereCase->setVisible(false);
-				this->world->worldInterface->container->stoneSphere->sphereCase->setVisible(true);
-				this->world->worldInterface->container->levinSphere->sphereCase->setVisible(false);
-				this->world->worldInterface->container->levinSphere->sphereCase->setVisible(true);
-				this->world->worldInterface->container->getAll->sphereCase->setVisible(false);
-				this->world->worldInterface->container->getAll->sphereCase->setVisible(true);
+				this->world->worldInterface->container->fireSphereSphereCase->setVisible(false);
+				this->world->worldInterface->container->fireSphereSphereCase->setVisible(true);
+				this->world->worldInterface->container->iceSphereSphereCase->setVisible(false);
+				this->world->worldInterface->container->iceSphereSphereCase->setVisible(true);
+				this->world->worldInterface->container->stoneSphereSphereCase->setVisible(false);
+				this->world->worldInterface->container->stoneSphereSphereCase->setVisible(true);
+				this->world->worldInterface->container->levinSphereSphereCase->setVisible(false);
+				this->world->worldInterface->container->levinSphereSphereCase->setVisible(true);
+				this->world->worldInterface->container->getAllSphereCase->setVisible(false);
+				this->world->worldInterface->container->getAllSphereCase->setVisible(true);
 			}
 			i++;
 		}

@@ -26,8 +26,8 @@ namespace engine
             container->stop();
             container->ball->stop();
             container->smoke->stop();
-            container->smoke->cont1->stop();
-            container->smoke->cont2->stop();
+            container->smokeCont1->stop();
+            container->smokeCont2->stop();
             container->rotation = 180;
             this->addChild(container);
             testTower = whoShoot;
@@ -84,25 +84,25 @@ namespace engine
             {
                 if (container->smoke->isVisible())
                 {
-                    if (container->smoke->cont1->currentFrame < container->smoke->cont1->totalFrames)
+                    if (container->smokeCont1->currentFrame < container->smokeCont1->totalFrames)
                     {
-                        container->smoke->cont1->gotoAndStop((container->smoke->cont1->currentFrame + 1));
+                        container->smokeCont1->gotoAndStop((container->smokeCont1->currentFrame + 1));
                     }
                     else
                     {
-                        container->smoke->cont1->gotoAndStop(1);
+                        container->smokeCont1->gotoAndStop(1);
                     }
-                    if (container->smoke->cont2->currentFrame < container->smoke->cont2->totalFrames)
+                    if (container->smokeCont2->currentFrame < container->smokeCont2->totalFrames)
                     {
-                        container->smoke->cont2->gotoAndStop((container->smoke->cont2->currentFrame + 1));
+                        container->smokeCont2->gotoAndStop((container->smokeCont2->currentFrame + 1));
                     }
                     else
                     {
-                        container->smoke->cont2->gotoAndStop(1);
+                        container->smokeCont2->gotoAndStop(1);
                     }
                     if (world->frameCounter % 2)
                     {
-                        Point tempObject1 = container->smoke->localToGlobal(container->smoke.cont2->getPosition());
+                        Point tempObject1 = container->smokeCont2->localToGlobal(container->smokeCont2->getPosition());
                         tempObject = new BulletTower7_smoke_mc();//new Indexes(new BulletTower7_smoke_mc(), 2, 0);
                         tempObject->setPosition(tempObject1);
                         //tempObject.x = tempObject1.x;

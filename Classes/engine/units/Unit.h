@@ -28,7 +28,7 @@ namespace engine
 			cocos2d::Point myPoint;
 			bool repeatFlag;
 			int repeatCounter; 
-			inline Roadsign_mc(string path,string arm,string dbName):MovieClip(path,arm,dbname){};
+			inline Roadsign_mc(string path,string arm,string dbName):MovieClip(path,arm,dbName){};
 		};
 		struct RoadsignFire_mc : public Roadsign_mc
 		{ 
