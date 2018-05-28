@@ -15,7 +15,7 @@ BaseNode	* fireCase              ;
 BaseNode	* getAllCase            ;
 BaseNode	* iceCase               ;
 BaseNode	* interfaceUpCase       ;
-BaseNode	* levinCase             ;
+BaseNode	* levinCase             ; 
 BaseNode	* sellCase              ;
 BaseNode	* stoneCase             ; 
         CastMask_mc();

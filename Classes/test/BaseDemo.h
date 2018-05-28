@@ -6,9 +6,10 @@
 using namespace std;
 using namespace cocos2d;
 using namespace dragonBones;
+#include "BaseNode.h"
 
 
-class BaseDemo : public cocos2d::LayerColor
+class BaseDemo : public BaseLayer
 {
 protected:
     cocos2d::Sprite* _background;
@@ -22,20 +23,17 @@ public:
 
     virtual bool init()
     {
-        if (!LayerColor::initWithColor(cocos2d::Color4B(105, 105, 105, 255)))
-        {
-            return false;
-        }
-
-        const auto& stageSize = cocos2d::Director::getInstance()->getVisibleSize();
-        setPosition(stageSize.width * 0.5f, stageSize.height * 0.5f);
-
-        _background = cocos2d::Sprite::create("background.png");
-        addChild(_background,0);
-
-        _onStart();
-
-        return true;
+		return BaseLayer::init();
+        //if (!LayerColor::initWithColor(cocos2d::Color4B(105, 105, 105, 255)))
+        //{
+        //    return false;
+        //}
+        //const auto& stageSize = cocos2d::Director::getInstance()->getVisibleSize();
+        //setPosition(stageSize.width * 0.5f, stageSize.height * 0.5f);
+        //_background = cocos2d::Sprite::create("background.png");
+        //addChild(_background,0);
+        //_onStart();
+        //return true;
     }
 
     cocos2d::Label* createText(const std::string& string)

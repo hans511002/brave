@@ -29,7 +29,7 @@ namespace engine
 			Unit::init();
 			//this->addChild(container);
 			//this->setPosition(50, 50);
-			this->autorelease();
+			// this->autorelease();
 			return true;
 		}// end function
 

@@ -32,10 +32,11 @@ namespace std
 	class MouseEvent : public cocos2d::EventMouse
 	{
 	public:
-		Common::Array<BaseNode *> currentTargets;
+		Common::Array<Node *> currentTargets;
 		MouseEvent(MouseEventType mouseEventCode);
 		void setCurrentTarget(Node* target);
 		MouseEvent(EventMouse * e);
+		void hitTest(Node *node,int level);
 		void hitTest(Node *node);
 
 	};
@@ -69,8 +70,8 @@ class BaseNode :public   cocos2d::Node, public   BaseFuns
 public:
 	static const double AnimationInterval;
 
-	BaseNode() :schdt(false), mouseEnabled(false), mouseChildren(false) {};
-    BaseNode(float w, float h, bool draw = false);
+	BaseNode() :schdt(false), mouseEnabled(false), mouseChildren(false), autoDel(true) {};
+    BaseNode(float w, float h, bool draw = true);
     bool init();
 	bool atStage();
 	void touchAction(cocos2d::Ref *pSender, cocos2d::ui::TouchEventType type);
@@ -84,15 +85,19 @@ public:
 	virtual void onExit();
 	virtual void cleanup();
 	virtual void scheduleUpdate(float dt);
+	inline virtual void update() {};
+
 	//帧频事件
 	virtual void enterFrameHandler(float dt);
 
-	virtual void setOpacity(float);
-	virtual float getOpacity();
+	virtual void setAlpha(float);
+	virtual float getAlpha();
 	virtual string getNamePath(Node *node=NULL);
 
-
-	virtual void setSize(float w, float h, bool draw = false);
+	bool autoDel;
+	bool isAutoDel;
+	virtual void autorelease();
+	virtual void setSize(float w, float h, bool draw = true);
 	virtual void drawRange();
 	void enableMouseHandler();
 	void enableKeyHandler();
@@ -109,6 +114,8 @@ public:
 	virtual std::MouseEvent* buildMousrEvent(Node * node = NULL, int mouseButton = 0);
 	static bool hitTest(cocos2d::Node * node, const Vec2 &pt);
 	static bool hitTest(cocos2d::Node * node, cocos2d::EventMouse* e);
+	static void setAlpha(cocos2d::Node * node, float);
+	static float getAlpha(cocos2d::Node * node);
 protected:
 
 };
@@ -117,9 +124,10 @@ class BaseSprite :public   cocos2d::Sprite, public   BaseFuns
 public:
 	bool init();
 	bool atStage();
-	void mouseDownHandler(cocos2d::Event *event);
+	void mouseDownHandler(cocos2d::EventMouse *event);
 	BaseSprite(string file);
-	//    BaseSprite(){};
+	BaseSprite(cocos2d::Sprite* sprite);
+	BaseSprite(){};
 	static Sprite* create();
 private:
 
@@ -129,7 +137,7 @@ class BaseLayer : public   cocos2d::LayerColor, public   BaseFuns
 protected:
 	cocos2d::Sprite* _background;
 	virtual void _onStart() = 0;
-	void mouseDownHandler(cocos2d::Event *event);
+	void mouseDownHandler(cocos2d::EventMouse *event);
 public:
 	BaseLayer() :_background(nullptr)
 	{

@@ -23,14 +23,15 @@ namespace engine
 		//this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
 		this->world = Main::mainClass->worldClass;
 
-		BaseNode *point = this->world->pointer1;// Sprite::create("public/point.png");
+        //事件统一从world触发
+		//BaseNode *point = this->world->pointer1;// Sprite::create("public/point.png");
 		//point->setPosition(400, 250);
-		EventListenerMouse *mouseListener= cocos2d::EventListenerMouse::create();
-        mouseListener->onMouseDown = CC_CALLBACK_1(WorldInterface::mouseDownHandler, this->;
-        mouseListener->onMouseUp = CC_CALLBACK_1(WorldInterface::mouseUpHandler, this->;
-        mouseListener->onMouseMove = CC_CALLBACK_1(WorldInterface::mouseMoveHandler, this->; 
-        this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this->;
-       	point->setVisible(true); 
+		//EventListenerMouse *mouseListener= cocos2d::EventListenerMouse::create();
+        //mouseListener->onMouseDown = CC_CALLBACK_1(WorldInterface::mouseDownHandler, this);
+        //mouseListener->onMouseUp = CC_CALLBACK_1(WorldInterface::mouseUpHandler, this);
+        //mouseListener->onMouseMove = CC_CALLBACK_1(WorldInterface::mouseMoveHandler, this); 
+        //this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
+       	//point->setVisible(true); 
         
  		//this->addChild(point);
 
@@ -39,7 +40,7 @@ namespace engine
 //////////////////////////begin////////////////////////////////
 		this->mouseChildren = false;
 		this->mouseEnabled = false;
-		this->alpha = 0;
+		this->setAlpha(0);
 		this->container = new WorldInterface_mc();
         this->addChild(this->container);
         this->container->init();
@@ -50,7 +51,7 @@ namespace engine
 		this->container->iceBack->stop();
 		this->container->stoneBack->stop();
 		this->container->levinBack->stop();
-		this->container->backComponents->stop();
+//		this->container->backComponents->stop();
 		this->container->fireSphere->stop();
 		this->container->iceSphere->stop();
 		this->container->stoneSphere->stop();
@@ -82,7 +83,7 @@ namespace engine
 		this->container->slow->stop();
 		this->container->fast->stop();
 		this->container->traceBezier->stop();
-		this->container->barInfo->y = 585;
+		this->container->barInfo->setPositionY(15);//Main:: - 585
 		this->container->bookBookCase->buttonMode = true;
 		this->container->pausePauseCase->buttonMode = true;
 		this->container->startWavesStartWavesCase->buttonMode = true;
@@ -98,9 +99,9 @@ namespace engine
 		this->container->barInfo->mouseChildren = false;
 		this->container->barInfo->mouseEnabled = false;
 		this->container->lastTime->mouseEnabled = false;
-		this->container->butCastGolem->alpha = 0;
-		this->container->butCastIceman->alpha = 0;
-		this->container->butCastAir->alpha = 0;
+		this->container->butCastGolem->setAlpha(0);
+		this->container->butCastIceman->setAlpha(0);
+		this->container->butCastAir->setAlpha(0);
 
 		this->container->butCastGolem->setVisible( false);
 		this->container->butCastIceman->setVisible( false);
@@ -111,7 +112,7 @@ namespace engine
 		this->container->buyIce->setVisible( false);
 		this->container->buyStone->setVisible( false);
 		this->container->buyLevin->setVisible( false);
-		this->container->backComponents.cacheAsBitmap = true;
+//		this->container->backComponents.cacheAsBitmap = true;
 		this->addChild(this->container);
 		this->container->fireSphereMyPoint = this->container->fireSphere->localToGlobal(this->container->fireSphereSphereCase->getPosition());
 		this->container->iceSphereMyPoint = this->container->iceSphere->localToGlobal(this->container->iceSphereSphereCase->getPosition());
@@ -121,10 +122,10 @@ namespace engine
 		this->castGolemTimer = Main::mainClass->readXMLClass.intervalTimerGolemXML;
 		this->castIcemanTimer = Main::mainClass->readXMLClass.intervalTimerIcemanXML;
 		this->castAirTimer = Main::mainClass->readXMLClass.intervalTimerAirXML;
-		this->container->fireBacklight->turnFlag = true;
-		this->container->iceBacklight->turnFlag = true;
-		this->container->stoneBacklight->turnFlag = true;
-		this->container->levinBacklight->turnFlag = true;
+		this->container->fireBacklightTurnFlag = true;
+		this->container->iceBacklightTurnFlag = true;
+		this->container->stoneBacklightTurnFlag = true;
+		this->container->levinBacklightTurnFlag = true;
 		this->container->fireBacklight->stop();
 		this->container->iceBacklight->stop();
 		this->container->stoneBacklight->stop();
@@ -137,19 +138,20 @@ namespace engine
 		this->container->testRestart->stop();
 		this->container->testRestartBoard->stop();
 		this->container->testRestart->buttonMode = true;
-		if (Main::mainClass->readXMLClass.bezierBuildXML)
-		{
-			this->world->bezierClass->tracePoints = this->container->traceBezier;
-			this->world->bezierClass->tracePoints.addEventListener(MouseEvent.CLICK, this->world->bezierClass->tracePointsArr);
-		}
-		else
-		{
-			this->container->traceBezier->setVisible( false);
-		}
+		//if (Main::mainClass->readXMLClass.bezierBuildXML)
+		//{
+		//	this->world->bezierClass->tracePoints = this->container->traceBezier;
+		//	this->world->bezierClass->tracePoints.addEventListener(MouseEvent.CLICK, this->world->bezierClass->tracePointsArr);
+		//}
+		//else
+		//{
+		//	this->container->traceBezier->setVisible( false);
+		//}
 		this->lastTime = this->container->lastTime;
 		this->container->removeChild(this->lastTime);
 		this->world->addChild(this->lastTime);
-		if (this->world->saveBox.gameSave.data.complexityLevel == 4)
+		int complexityLevel=this->world->saveBox->getIntValue("complexityLevel");
+		if (complexityLevel == 4)
 		{
 			this->world->listOfIndexes3.push(this->lastTime);
 		}
@@ -160,8 +162,8 @@ namespace engine
        
 
 
-        //this->container->startWaves->addClickEventListener(CC_CALLBACK_1(WorldInterface::clickHandler, this->);
-        //this->container->fastbtn->addClickEventListener(CC_CALLBACK_1(WorldInterface::clickHandler, this->);
+        //this->container->startWaves->addClickEventListener(CC_CALLBACK_1(WorldInterface::clickHandler, this);
+        //this->container->fastbtn->addClickEventListener(CC_CALLBACK_1(WorldInterface::clickHandler, this);
         //EventListenerTouchOneByOne *touchListener = EventListenerTouchOneByOne::create();
         //touchListener->onTouchBegan = [this->(Touch *touch, Event *event){
         //    return this->onTouchBegan(touch, event);
@@ -190,40 +192,42 @@ namespace engine
 		this->spheresBlockManage();
 		return true;
 	};
-    void WorldInterface::clickHandler(Ref* ref){
-        ui::Button * node = (ui::Button *)ref;
-        string target = node->getName();
-        CCLOG("startWavesCallback %s", target.c_str());
-        if (target == "startWaves")
-        {
+    //void WorldInterface::clickHandler(Ref* ref)
+    //{
+    //    ui::Button * node = (ui::Button *)ref;
+    //    string target = node->getName();
+    //    CCLOG("startWavesCallback %s", target.c_str());
+    //    if (target == "startWaves")
+    //    {
+    //
+    //    }
+    //    else  if (target == "fastbtn")
+    //    {
+    //
+    //    }
+    //};
 
-        }
-        else  if (target == "fastbtn")
-        {
-
-        }
-    };
-
-    bool WorldInterface::onTouchBegan(Touch* touch, Event* event)
-    {
-        Node * node = event->getCurrentTarget();
-        Event::Type tp = event->getType();
-        string target = node->getName();
-
-        return true;
-    }
-    void WorldInterface::onTouchEnded(Touch* touch, Event* event)
-    {
-        Node * node = event->getCurrentTarget();
-        Event::Type tp = event->getType();
-        string target = node->getName();
-        CCLOG("WorldInterface::onTouchEnded %s", target.c_str());
-        return;
-    }
+    //bool WorldInterface::onTouchBegan(Touch* touch, Event* event)
+    //{
+    //    Node * node = event->getCurrentTarget();
+    //    Event::Type tp = event->getType();
+    //    string target = node->getName();
+    //
+    //    return true;
+    //}
+    //void WorldInterface::onTouchEnded(Touch* touch, Event* event)
+    //{
+    //    Node * node = event->getCurrentTarget();
+    //    Event::Type tp = event->getType();
+    //    string target = node->getName();
+    //    CCLOG("WorldInterface::onTouchEnded %s", target.c_str());
+    //    return;
+    //}
+    
 	void WorldInterface::update(){ 
 		if (this->mouseEnabled)
 		{
-			if (this->container->fast->cont)
+			if (this->container->fastCont->isReady)
 			{
 				if (this->world->frameCounter % 2)
 				{
@@ -237,7 +241,7 @@ namespace engine
 					}
 				}
 			}
-			if (this->container->pause->openFlag)
+			if (this->container->pauseOpenFlag)
 			{
 				if (this->container->pause->currentFrame < (this->container->pause->totalFrames - 1))
 				{
@@ -245,10 +249,10 @@ namespace engine
 				}
 				else
 				{
-					this->container->pause->openFlag = false;
+					this->container->pauseOpenFlag = false;
 				}
 			}
-			else if (this->container->pause->closeFlag)
+			else if (this->container->pauseCloseFlag)
 			{
 				if (this->container->pause->currentFrame > 1 && this->container->pause->currentFrame < this->container->pause->totalFrames)
 				{
@@ -256,10 +260,10 @@ namespace engine
 				}
 				else
 				{
-					this->container->pause->closeFlag = false;
+					this->container->pauseCloseFlag = false;
 				}
 			}
-			if (this->container->book->openFlag)
+			if (this->container->bookOpenFlag)
 			{
 				if (this->container->book->currentFrame < (this->container->book->totalFrames - 1))
 				{
@@ -267,10 +271,10 @@ namespace engine
 				}
 				else
 				{
-					this->container->book->openFlag = false;
+					this->container->bookOpenFlag = false;
 				}
 			}
-			else if (this->container->book->closeFlag)
+			else if (this->container->bookCloseFlag)
 			{
 				if (this->container->book->currentFrame > 1 && this->container->book->currentFrame < this->container->book->totalFrames)
 				{
@@ -278,7 +282,7 @@ namespace engine
 				}
 				else
 				{
-					this->container->book->closeFlag = false;
+					this->container->bookCloseFlag = false;
 				}
 			}
 			if (this->fireCount > 0)
@@ -389,14 +393,14 @@ namespace engine
 			{
 				if (this->container->butCastGolem->isVisible())
 				{
-					if (this->container->butCastGolem->alpha < 1)
+					if (this->container->butCastGolem->getAlpha() < 1)
 					{
-						this->container->butCastGolem->alpha = this->container->butCastGolem->alpha + 0.2;
+						this->container->butCastGolem->setAlpha(this->container->butCastGolem->getAlpha() + 0.2);
 					}
 					else
 					{
 						this->blockCastGolem = true;
-						this->container->butCastGolem->alpha = 1;
+						this->container->butCastGolem->setAlpha(1);
 						this->autoguidersButtons();
 					}
 				}
@@ -409,14 +413,14 @@ namespace engine
 			{
 				if (this->container->butCastIceman->isVisible())
 				{
-					if (this->container->butCastIceman->alpha < 1)
+					if (this->container->butCastIceman->getAlpha() < 1)
 					{
-						this->container->butCastIceman->alpha = this->container->butCastIceman->alpha + 0.2;
+						this->container->butCastIceman->setAlpha(this->container->butCastIceman->getAlpha() + 0.2);
 					}
 					else
 					{
 						this->blockCastIceman = true;
-						this->container->butCastIceman->alpha = 1;
+						this->container->butCastIceman->setAlpha(1);
 						this->autoguidersButtons();
 					}
 				}
@@ -429,14 +433,14 @@ namespace engine
 			{
 				if (this->container->butCastAir->isVisible())
 				{
-					if (this->container->butCastAir->alpha < 1)
+					if (this->container->butCastAir->getAlpha() < 1)
 					{
-						this->container->butCastAir->alpha = this->container->butCastAir->alpha + 0.2;
+						this->container->butCastAir->setAlpha(this->container->butCastAir->getAlpha() + 0.2);
 					}
 					else
 					{
 						this->blockCastAir = true;
-						this->container->butCastAir->alpha = 1;
+						this->container->butCastAir->setAlpha(1);
 						this->autoguidersButtons();
 					}
 				}
@@ -447,17 +451,17 @@ namespace engine
 			}
 			if (this->container->fireSphere->isVisible())
 			{
-				if (!this->container->fireSphere->opened)
+				if (!this->container->fireSphereOpened)
 				{
-					if (this->container->fireSphere->alpha < 1)
+					if (this->container->fireSphere->getAlpha() < 1)
 					{
 						if (this->container->fireBack->currentFrame != 1)
 						{
 							this->container->fireBack->gotoAndStop(1);
 						}
-						this->container->fireSphere->alpha = this->container->fireSphere->alpha + 0.2;
-						this->container->fireNumTXT->alpha = this->container->fireNumTXT->alpha + 0.2;
-						this->container->buyFire->alpha = this->container->buyFire->alpha + 0.2;
+						this->container->fireSphere->setAlpha(this->container->fireSphere->getAlpha() + 0.2);
+						this->container->fireNumTXT->setAlpha(this->container->fireNumTXT->getAlpha() + 0.2);
+						this->container->buyFire->setAlpha(this->container->buyFire->getAlpha() + 0.2);
 					}
 					else if (this->container->fireSphere->getScaleX() < 1)
 					{
@@ -466,90 +470,90 @@ namespace engine
 					}
 					else
 					{
-						this->container->fireSphere->opened = true;
+						this->container->fireSphereOpened = true;
 						this->spheresBlockManage("unblockFire");
 					}
 				}
 			}
 			if (this->container->iceSphere->isVisible())
 			{
-				if (!this->container->iceSphere->opened)
+				if (!this->container->iceSphereOpened)
 				{
-					if (this->container->iceSphere->alpha < 1)
+					if (this->container->iceSphere->getAlpha() < 1)
 					{
 						if (this->container->iceBack->currentFrame != 1)
 						{
 							this->container->iceBack->gotoAndStop(1);
 						}
-						this->container->iceSphere->alpha = this->container->iceSphere->alpha + 0.2;
-						this->container->iceNumTXT->alpha = this->container->iceNumTXT->alpha + 0.2;
-						this->container->buyIce->alpha = this->container->buyIce->alpha + 0.2;
+						this->container->iceSphere->setAlpha(this->container->iceSphere->getAlpha() + 0.2);
+						this->container->iceNumTXT->setAlpha(this->container->iceNumTXT->getAlpha() + 0.2);
+						this->container->buyIce->setAlpha(this->container->buyIce->getAlpha() + 0.2);
 					}
-					else if (this->container->iceSphere->scaleX < 1)
+					else if (this->container->iceSphere->getScaleX() < 1)
 					{
-						this->container->iceSphere->scaleX = this->container->iceSphere->scaleX + 0.25;
-						this->container->iceSphere->scaleY = this->container->iceSphere->scaleY + 0.25;
+						this->container->iceSphere->setScaleX(this->container->iceSphere->getScaleX() + 0.25);
+						this->container->iceSphere->setScaleY(this->container->iceSphere->getScaleY() + 0.25);
 					}
 					else
 					{
-						this->container->iceSphere->opened = true;
+						this->container->iceSphereOpened = true;
 						this->spheresBlockManage("unblockIce");
 					}
 				}
 			}
 			if (this->container->stoneSphere->isVisible())
 			{
-				if (!this->container->stoneSphere->opened)
+				if (!this->container->stoneSphereOpened)
 				{
-					if (this->container->stoneSphere->alpha < 1)
+					if (this->container->stoneSphere->getAlpha() < 1)
 					{
 						if (this->container->stoneBack->currentFrame != 1)
 						{
 							this->container->stoneBack->gotoAndStop(1);
 						}
-						this->container->stoneSphere->alpha = this->container->stoneSphere->alpha + 0.2;
-						this->container->stoneNumTXT->alpha = this->container->stoneNumTXT->alpha + 0.2;
-						this->container->buyStone->alpha = this->container->buyStone->alpha + 0.2;
+						this->container->stoneSphere->setAlpha(this->container->stoneSphere->getAlpha() + 0.2);
+						this->container->stoneNumTXT->setAlpha(this->container->stoneNumTXT->getAlpha() + 0.2);
+						this->container->buyStone->setAlpha(this->container->buyStone->getAlpha() + 0.2);
 					}
-					else if (this->container->stoneSphere->scaleX < 1)
+					else if (this->container->stoneSphere->getScaleX() < 1)
 					{
-						this->container->stoneSphere->scaleX = this->container->stoneSphere->scaleX + 0.25;
-						this->container->stoneSphere->scaleY = this->container->stoneSphere->scaleY + 0.25;
+						this->container->stoneSphere->setScaleX(this->container->stoneSphere->getScaleX() + 0.25);
+						this->container->stoneSphere->setScaleY(this->container->stoneSphere->getScaleY() + 0.25);
 					}
 					else
 					{
-						this->container->stoneSphere->opened = true;
+						this->container->stoneSphereOpened = true;
 						this->spheresBlockManage("unblockStone");
 					}
 				}
 			}
 			if (this->container->levinSphere->isVisible())
 			{
-				if (!this->container->levinSphere->opened)
+				if (!this->container->levinSphereOpened)
 				{
-					if (this->container->levinSphere->alpha < 1)
+					if (this->container->levinSphere->getAlpha() < 1)
 					{
 						if (this->container->levinBack->currentFrame != 1)
 						{
 							this->container->levinBack->gotoAndStop(1);
 						}
-						this->container->levinSphere->alpha = this->container->levinSphere->alpha + 0.2;
-						this->container->levinNumTXT->alpha = this->container->levinNumTXT->alpha + 0.2;
-						this->container->buyLevin->alpha = this->container->buyLevin->alpha + 0.2;
+						this->container->levinSphere->setAlpha(this->container->levinSphere->getAlpha() + 0.2);
+						this->container->levinNumTXT->setAlpha(this->container->levinNumTXT->getAlpha() + 0.2);
+						this->container->buyLevin->setAlpha(this->container->buyLevin->getAlpha() + 0.2);
 					}
-					else if (this->container->levinSphere->scaleX < 1)
+					else if (this->container->levinSphere->getScaleX() < 1)
 					{
-						this->container->levinSphere->scaleX = this->container->levinSphere->scaleX + 0.25;
-						this->container->levinSphere->scaleY = this->container->levinSphere->scaleY + 0.25;
+						this->container->levinSphere->setScaleX(this->container->levinSphere->getScaleX() + 0.25);
+						this->container->levinSphere->setScaleY(this->container->levinSphere->getScaleY() + 0.25);
 					}
 					else
 					{
-						this->container->levinSphere->opened = true;
+						this->container->levinSphereOpened = true;
 						this->spheresBlockManage("unblockLevin");
 					}
 				}
 			}
-			if (!this->container->getAll->opened)
+			if (!this->container->getAllOpened)
 			{
 				if (this->container->fireSphere->isVisible() && this->container->iceSphere->isVisible() && this->container->stoneSphere->isVisible() && this->container->levinSphere->isVisible())
 				{
@@ -557,27 +561,27 @@ namespace engine
 					{
 						if (Main::mainClass->readXMLClass.towerSlotBlock == 0)
 						{
-							if (this->container->getAll->alpha < 1)
+							if (this->container->getAll->getAlpha() < 1)
 							{
-								this->container->getAll->alpha = this->container->getAll->alpha + 0.2;
-								this->container->getAll->alpha = this->container->getAll->alpha + 0.2;
-								this->container->buygetAll->alpha = this->container->buygetAll->alpha + 0.2;
+								this->container->getAll->setAlpha(this->container->getAll->getAlpha() + 0.2);
+								this->container->getAll->setAlpha(this->container->getAll->getAlpha() + 0.2);
+								this->container->buygetAll->setAlpha(this->container->buygetAll->getAlpha() + 0.2);
 							}
-							else if (this->container->getAll->scaleX < 1)
+							else if (this->container->getAll->getScaleX() < 1)
 							{
-								this->container->getAll->scaleX = this->container->getAll->scaleX + 0.25;
-								this->container->getAll->scaleY = this->container->getAll->scaleY + 0.25;
+								this->container->getAll->setScaleX(this->container->getAll->getScaleX() + 0.25);
+								this->container->getAll->setScaleY(this->container->getAll->getScaleY() + 0.25);
 							}
 							else
 							{
-								this->container->getAll->opened = true;
+								this->container->getAllOpened = true;
 								this->spheresBlockManage("unblockGetAll");
 							}
 						}
 					}
 					else
 					{
-						this->container->getAll->opened = true;
+						this->container->getAllOpened = true;
 					}
 				}
 			}
@@ -603,9 +607,9 @@ namespace engine
 					{
 						this->container->fireBacklight->gotoAndStop((this->container->fireBacklight->currentFrame + 1));
 					}
-					else if (!this->container->fireBacklight->turnFlag)
+					else if (!this->container->fireBacklightTurnFlag)
 					{
-						this->container->fireBacklight->turnFlag = true;
+						this->container->fireBacklightTurnFlag = true;
 						this->container->fireBacklight->gotoAndStop(2);
 					}
 				}
@@ -618,9 +622,9 @@ namespace engine
 					{
 						this->container->iceBacklight->gotoAndStop((this->container->iceBacklight->currentFrame + 1));
 					}
-					else if (!this->container->iceBacklight->turnFlag)
+					else if (!this->container->iceBacklightTurnFlag)
 					{
-						this->container->iceBacklight->turnFlag = true;
+						this->container->iceBacklightTurnFlag = true;
 						this->container->iceBacklight->gotoAndStop(2);
 					}
 				}
@@ -633,9 +637,9 @@ namespace engine
 					{
 						this->container->stoneBacklight->gotoAndStop((this->container->stoneBacklight->currentFrame + 1));
 					}
-					else if (!this->container->stoneBacklight->turnFlag)
+					else if (!this->container->stoneBacklightTurnFlag)
 					{
-						this->container->stoneBacklight->turnFlag = true;
+						this->container->stoneBacklightTurnFlag = true;
 						this->container->stoneBacklight->gotoAndStop(2);
 					}
 				}
@@ -648,9 +652,9 @@ namespace engine
 					{
 						this->container->levinBacklight->gotoAndStop((this->container->levinBacklight->currentFrame + 1));
 					}
-					else if (!this->container->levinBacklight->turnFlag)
+					else if (!this->container->levinBacklightTurnFlag)
 					{
-						this->container->levinBacklight->turnFlag = true;
+						this->container->levinBacklightTurnFlag = true;
 						this->container->levinBacklight->gotoAndStop(2);
 					}
 				}
@@ -705,27 +709,27 @@ namespace engine
 				this->i = this->listOfGetAhieve.size() - 1;
 				while (this->i >= 0)
 				{ 
-					if (!this->listOfGetAhieve[this->i].closeFlag)
+					if (!this->listOfGetAhieve[this->i]->closeFlag)
 					{
 						if (this->listOfGetAhieve[this->i]->currentFrame < this->listOfGetAhieve[this->i]->totalFrames)
 						{
 							this->listOfGetAhieve[this->i]->gotoAndStop((this->listOfGetAhieve[this->i]->currentFrame + 1));
-							std::setText(this->listOfGetAhieve[this->i].board->noteTXT , this->listOfGetAhieve[this->i].myText );
+							std::setText(this->listOfGetAhieve[this->i]->boardNoteTXT , this->listOfGetAhieve[this->i]->myText );
 						}
-						else if (this->listOfGetAhieve[this->i].counter > 0)
+						else if (this->listOfGetAhieve[this->i]->counter > 0)
 						{
-							(this->listOfGetAhieve[this->i].counter - 1);
+							this->listOfGetAhieve[this->i]->counter--;
 						}
 						else
 						{
-							this->listOfGetAhieve[this->i].closeFlag = true;
+							this->listOfGetAhieve[this->i]->closeFlag = true;
 						}
-						this->listOfGetAhieve[this->i].y = this->container->barInfo->y - 42;
+						this->listOfGetAhieve[this->i]->setPositionY (this->container->barInfo->getPositionY() + 42);// - 42
 					}
 					else if (this->listOfGetAhieve[this->i]->currentFrame > 1)
 					{
 						this->listOfGetAhieve[this->i]->gotoAndStop((this->listOfGetAhieve[this->i]->currentFrame - 1));
-						std::setText(this->listOfGetAhieve[this->i].board->noteTXT , this->listOfGetAhieve[this->i].myText );
+						std::setText(this->listOfGetAhieve[this->i]->boardNoteTXT , this->listOfGetAhieve[this->i]->myText );
 					}
 					else
 					{
@@ -753,16 +757,15 @@ namespace engine
 				}
 			}
 		}
-		else if (this->alpha < 1)
+		else if (this->getAlpha() < 1)
 		{
-			this->alpha = this->alpha + 0.2;
+			this->setAlpha(this->getAlpha() + 0.2);
 		}
 		else
-		{
-			var _loc_1 : *= true;
+		{ 
 			this->mouseChildren = true;
-			this->mouseEnabled = _loc_1;
-			this->alpha = 1;
+			this->mouseEnabled = true;
+			this->setAlpha(1);
 		}
 		return;
 	};
@@ -1000,8 +1003,8 @@ namespace engine
 				if (this->container->pause->currentFrame == 1)
 				{
 					this->container->pause->gotoAndStop(2);
-					this->container->pause->openFlag = true;
-					this->container->pause->closeFlag = false;
+					this->container->pauseOpenFlag = true;
+					this->container->pauseCloseFlag = false;
 					//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
 				}
 			}
@@ -1011,13 +1014,13 @@ namespace engine
 				{
 					this->container->pause->gotoAndStop(this->container->pause->totalFrames);
 				}
-				if (this->container->pause->openFlag)
+				if (this->container->pauseOpenFlag)
 				{
-					this->container->pause->openFlag = false;
+					this->container->pauseOpenFlag = false;
 				}
-				if (!this->container->pause->closeFlag)
+				if (!this->container->pauseCloseFlag)
 				{
-					this->container->pause->closeFlag = true;
+					this->container->pauseCloseFlag = true;
 				}
 			}
 			if (param1->target->name == "bookCase")
@@ -1025,8 +1028,8 @@ namespace engine
 				if (this->container->book->currentFrame == 1)
 				{
 					this->container->book->gotoAndStop(2);
-					this->container->book->openFlag = true;
-					this->container->book->closeFlag = false;
+					this->container->bookOpenFlag = true;
+					this->container->bookCloseFlag = false;
 					//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
 				}
 			}
@@ -1036,13 +1039,13 @@ namespace engine
 				{
 					this->container->book->gotoAndStop(this->container->book->totalFrames);
 				}
-				if (this->container->book->openFlag)
+				if (this->container->bookOpenFlag)
 				{
-					this->container->book->openFlag = false;
+					this->container->bookOpenFlag = false;
 				}
-				if (!this->container->book->closeFlag)
+				if (!this->container->bookCloseFlag)
 				{
-					this->container->book->closeFlag = true;
+					this->container->bookCloseFlag = true;
 				}
 			}
 			if (param1->target->name == "startWavesCase")
@@ -1402,8 +1405,8 @@ namespace engine
 				if (this->container->pause->currentFrame != this->container->pause->totalFrames)
 				{
 					this->container->pause->gotoAndStop(this->container->pause->totalFrames);
-					this->container->pause->openFlag = false;
-					this->container->pause->closeFlag = false;
+					this->container->pauseOpenFlag = false;
+					this->container->pauseCloseFlag = false;
 					//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 				}
 			}
@@ -1412,8 +1415,8 @@ namespace engine
 				if (this->container->book->currentFrame != this->container->book->totalFrames)
 				{
 					this->container->book->gotoAndStop(this->container->book->totalFrames);
-					this->container->book->openFlag = false;
-					this->container->book->closeFlag = false;
+					this->container->bookOpenFlag = false;
+					this->container->bookCloseFlag = false;
 					//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 				}
 			}
@@ -1704,9 +1707,9 @@ namespace engine
 				{
 					this->container->pause->opneFlag = false;
 				}
-				if (!this->container->pause->closeFlag)
+				if (!this->container->pauseCloseFlag)
 				{
-					this->container->pause->closeFlag = true;
+					this->container->pauseCloseFlag = true;
 				}
 			}
 			if (event->target->name == "bookCase")
@@ -1726,9 +1729,9 @@ namespace engine
 				{
 					this->container->book->opneFlag = false;
 				}
-				if (!this->container->book->closeFlag)
+				if (!this->container->bookCloseFlag)
 				{
-					this->container->book->closeFlag = true;
+					this->container->bookCloseFlag = true;
 				}
 			}
 			if (event->target->name == "testRestart")
@@ -1843,53 +1846,15 @@ namespace engine
 		else if (this->container->getAllNumTXT->isVisible())
 		{
 		    this->container->getAllNumTXT->setVisible( false);
-		}
-        ////
-        //int firePrice = Main::mainClass->readXMLClass.listOfFirePriceXML[this->fireBuyHistory];
-        //this->container->firePrice->setText(itoa(firePrice, tmp, 10));
-        //int icePrice = Main::mainClass->readXMLClass.listOfIcePriceXML[this->iceBuyHistory];
-        //this->container->icePrice->setText(itoa(icePrice, tmp, 10));
-        //int stonePrice = Main::mainClass->readXMLClass.listOfStonePriceXML[this->stoneBuyHistory];
-        //this->container->stonePrice->setText(itoa(stonePrice, tmp, 10));
-        //int levinPrice = Main::mainClass->readXMLClass.listOfLevinPriceXML[this->levinBuyHistory];
-        //this->container->levinPrice->setText(itoa(levinPrice, tmp, 10));
-        // 
-        //int allPrice = Main::mainClass->readXMLClass.listOfFirePriceXML[this->fireBuyHistory] + Main::mainClass->readXMLClass.listOfIcePriceXML[this->iceBuyHistory] + Main::mainClass->readXMLClass.listOfStonePriceXML[this->stoneBuyHistory] + Main::mainClass->readXMLClass.listOfLevinPriceXML[this->levinBuyHistory];
-        //this->container->getAllPrice->setText(itoa(allPrice, tmp, 10));
-        //cocos2d::Point bp= this->container->buyFire->getPosition();
-        //if (firePrice < 10)
-        //    this->container->firePrice->setPosition(Vec2(bp.x + 21, bp.y + 9));
-		//else
-        //     this->container->firePrice->setPosition(Vec2(bp.x + 18, bp.y + 9));
-        //
-        //bp = this->container->buyIce->getPosition();
-        //if (icePrice < 10)
-        //    this->container->icePrice->setPosition(Vec2(bp.x + 21, bp.y + 9));
-		//else
-        //    this->container->icePrice->setPosition(Vec2(bp.x + 18, bp.y + 9));
-        //bp = this->container->buyStone->getPosition();
-        //if (stonePrice < 10)
-        //    this->container->stonePrice->setPosition(Vec2(bp.x + 21, bp.y + 9));
-        //else
-        //    this->container->stonePrice->setPosition(Vec2(bp.x + 18, bp.y + 9));
-        //bp = this->container->buyLevin->getPosition();
-        //if (levinPrice < 10)
-        //    this->container->levinPrice->setPosition(Vec2(bp.x + 21, bp.y + 9));
-        //else
-        //    this->container->levinPrice->setPosition(Vec2(bp.x + 18, bp.y + 9));
-        //bp = this->container->buyGetAll->getPosition();
-        //if (allPrice < 10)
-        //    this->container->getAllPrice->setPosition(Vec2(bp.x + 21, bp.y + 9));
-        //else if (allPrice < 100)
-        //    this->container->getAllPrice->setPosition(Vec2(bp.x + 18, bp.y + 9));
-        //else
-        //    this->container->getAllPrice->setPosition(Vec2(bp.x + 16, bp.y + 9));
+		} 
 			
-		this->container->buyFireBuyTXT.text = Main::mainClass->readXMLClass.listOfFirePriceXML[this->fireBuyHistory];
-        this->container->buyIceBuyTXT.text = Main::mainClass->readXMLClass.listOfIcePriceXML[this->iceBuyHistory];
-        this->container->buyStoneBuyTXT.text = Main::mainClass->readXMLClass.listOfStonePriceXML[this->stoneBuyHistory];
-        this->container->buyLevinBuyTXT.text = Main::mainClass->readXMLClass.listOfLevinPriceXML[this->levinBuyHistory];
-        this->container->buyGetAllBuyTXT.text = Main::mainClass->readXMLClass.listOfFirePriceXML[this->fireBuyHistory] + Main::mainClass->readXMLClass.listOfIcePriceXML[this->iceBuyHistory] + Main::mainClass->readXMLClass.listOfStonePriceXML[this->stoneBuyHistory] + Main::mainClass->readXMLClass.listOfLevinPriceXML[this->levinBuyHistory];
+		std::setText(this->container->buyFireBuyTXT, Main::mainClass->readXMLClass.listOfFirePriceXML[this->fireBuyHistory]);
+        std::setText(this->container->buyIceBuyTXT, Main::mainClass->readXMLClass.listOfIcePriceXML[this->iceBuyHistory]);
+        std::setText( this->container->buyStoneBuyTXT, Main::mainClass->readXMLClass.listOfStonePriceXML[this->stoneBuyHistory]);
+        std::setText(this->container->buyLevinBuyTXT, Main::mainClass->readXMLClass.listOfLevinPriceXML[this->levinBuyHistory]);
+        std::setText(this->container->buyGetAllBuyTXT, Main::mainClass->readXMLClass.listOfFirePriceXML[this->fireBuyHistory] 
+            + Main::mainClass->readXMLClass.listOfIcePriceXML[this->iceBuyHistory] + Main::mainClass->readXMLClass.listOfStonePriceXML[this->stoneBuyHistory] 
+                + Main::mainClass->readXMLClass.listOfLevinPriceXML[this->levinBuyHistory]);
 		if (std::getInt(this->container->buyFireBuyTXT) < 10)
         {
             this->container->buyFireCoin->setPositionX(-5.75);
@@ -1951,7 +1916,7 @@ namespace engine
 		    if (!this->container->fireSphereSphereCase->buttonMode)
 		    {
 		        this->container->fireSphereSphereCase->buttonMode = true;
-		        this->container->fireSphere->alpha = 1;
+		        this->container->fireSphere->setAlpha(1);
 		    }
             if (this->world->money >= firePrice)
 		    {
@@ -2059,9 +2024,9 @@ namespace engine
 		        this->container->buyFireCoin->setScaleY(0.8);
 		        this->container->buyFireCoin->setScaleX(0.8);
 		    }
-		    if (this->container->fireSphere->alpha != 0.5)
+		    if (this->container->fireSphere->getAlpha() != 0.5)
 		    {
-		        this->container->fireSphere->alpha = 0.5;
+		        this->container->fireSphere->setAlpha(0.5);
 		    }
 		}
 
@@ -2070,7 +2035,7 @@ namespace engine
 		    if (!this->container->iceSphereSphereCase->buttonMode)
 		    {
 		        this->container->iceSphereSphereCase->buttonMode = true;
-		        this->container->iceSphere->alpha = 1;
+		        this->container->iceSphere->setAlpha(1);
 		    }
 		    if (this->world->money >= std::getInt(this->container->buyIceBuyTXT))
 		    {
@@ -2179,9 +2144,9 @@ namespace engine
 		        this->container->buyIceCoin->setScaleY(0.8);
 		        this->container->buyIceCoin->setScaleX(0.8);
 		    }
-		    if (this->container->iceSphere->alpha != 0.5)
+		    if (this->container->iceSphere->getAlpha() != 0.5)
 		    {
-		        this->container->iceSphere->alpha = 0.5;
+		        this->container->iceSphere->setAlpha(0.5);
 		    }
 		}
 
@@ -2190,7 +2155,7 @@ namespace engine
 		    if (!this->container->stoneSphereSphereCase->buttonMode)
 		    {
 		        this->container->stoneSphereSphereCase->buttonMode = true;
-		        this->container->stoneSphere->alpha = 1;
+		        this->container->stoneSphere->setAlpha(1);
 		    }
 		    if (this->world->money >= std::getInt(this->container->buyStoneBuyTXT))
 		    {
@@ -2299,9 +2264,9 @@ namespace engine
 		        this->container->buyStoneCoin->setScaleY(0.8);
 		        this->container->buyStoneCoin->setScaleX(0.8);
 		    }
-		    if (this->container->stoneSphere->alpha != 0.5)
+		    if (this->container->stoneSphere->getAlpha() != 0.5)
 		    {
-		        this->container->stoneSphere->alpha = 0.5;
+		        this->container->stoneSphere->setAlpha(0.5);
 		    }
 		}
 
@@ -2310,7 +2275,7 @@ namespace engine
 		    if (!this->container->levinSphereSphereCase->buttonMode)
 		    {
 		        this->container->levinSphereSphereCase->buttonMode = true;
-		        this->container->levinSphere->alpha = 1;
+		        this->container->levinSphere->setAlpha(1);
 		    }
 		    if (this->world->money >= std::getInt(this->container->buyLevinBuyTXT))
 		    {
@@ -2419,9 +2384,9 @@ namespace engine
 		        this->container->buyLevinCoin->setScaleY(0.8);
 		        this->container->buyLevinCoin->setScaleX(0.8);
 		    }
-		    if (this->container->levinSphere->alpha != 0.5)
+		    if (this->container->levinSphere->getAlpha() != 0.5)
 		    {
-		        this->container->levinSphere->alpha = 0.5;
+		        this->container->levinSphere->setAlpha(0.5);
 		    }
 		}
 
@@ -2432,7 +2397,7 @@ namespace engine
 		        if (!this->container->getAllSphereCase->buttonMode)
 		        {
 		            this->container->getAllSphereCase->buttonMode = true;
-		            this->container->getAll->alpha = 1;
+		            this->container->getAll->setAlpha(1);
 		        }
 		        if (this->world->money >= std::getInt(this->container->buygetAllBuyTXT))
 		        {
@@ -2510,9 +2475,9 @@ namespace engine
 		            this->container->buygetAllCoin->setScaleY(0.8);
 		            this->container->buygetAllCoin->setScaleX(0.8);
 		        }
-		        if (this->container->getAll->alpha != 0.5)
+		        if (this->container->getAll->getAlpha() != 0.5)
 		        {
-		            this->container->getAll->alpha = 0.5;
+		            this->container->getAll->setAlpha(0.5);
 		        }
 		    }
 		}
@@ -2793,16 +2758,16 @@ namespace engine
     void WorldInterface::addPause() 
     {
         this->container->pause->gotoAndStop((this->container->pause->totalFrames - 1));
-        this->container->pause->openFlag = false;
-        this->container->pause->closeFlag = true;
+        this->container->pauseOpenFlag = false;
+        this->container->pauseCloseFlag = true;
         this->world->menuObject = new PauseMenu();
         this->world->addChild(this->world->menuObject);
     }// end function
 
     void WorldInterface::addFastPause()
     {
-        //this->world->menuObject = new FastPause();
-        //this->world->addChild(this->world->menuObject);
+        this->world->menuObject = new FastPause();
+        this->world->addChild(this->world->menuObject);
     }// end function
 
     void WorldInterface::addEncyclopedia() 
@@ -2902,15 +2867,15 @@ namespace engine
             this->world->road->setVisible(false);
             if (this->world->pointer1)
             {
-                this->world->pointer1->alpha = 1;
+                this->world->pointer1->setAlpha(1);
             }
             if (this->world->pointer2)
             {
-                this->world->pointer2->alpha = 1;
+                this->world->pointer2->setAlpha(1);
             }
             if (this->world->pointer3)
             {
-                this->world->pointer3->alpha = 1;
+                this->world->pointer3->setAlpha(1);
             }
         }
     }// end function
@@ -3270,10 +3235,7 @@ namespace engine
         this->autoguidesObject_pt = this->container->butCastGolem->localToGlobal(this->container->butCastGolemCastGolemCase->getPosition());
         this->autoguidesObjectWidth = this->container->butCastGolem->castGolemCase.width / 2;
         this->autoguidesObjectHeight = this->container->butCastGolem->castGolemCase.height / 2;
-        if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-            && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-            && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-            && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+        if (this->container->butCastGolemCastGolemCase->hitTest(autoguidesMouse_pt))
         {
             this->autoguidesObject = this->container->butCastGolem->castGolemCase;
         }
@@ -3282,10 +3244,7 @@ namespace engine
             this->autoguidesObject_pt = this->container->butCastIceman->localToGlobal(this->container->butCastIcemanCastIcemanCase->getPosition());
             this->autoguidesObjectWidth = this->container->butCastIceman->castIcemanCase.width / 2;
             this->autoguidesObjectHeight = this->container->butCastIceman->castIcemanCase.height / 2;
-            if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+            if (this->container->butCastIcemanCastIcemanCase->hitTest(autoguidesMouse_pt))
             {
                 this->autoguidesObject = this->container->butCastIceman->castIcemanCase;
             }
@@ -3295,10 +3254,7 @@ namespace engine
             this->autoguidesObject_pt = this->container->butCastAir->localToGlobal(this->container->butCastAirCastAirCase->getPosition());
             this->autoguidesObjectWidth = this->container->butCastAir->castAirCase.width / 2;
             this->autoguidesObjectHeight = this->container->butCastAir->castAirCase.height / 2;
-            if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+            if (this->container->butCastAirCastAirCase->hitTest(autoguidesMouse_pt))
             {
                 this->autoguidesObject = this->container->butCastAir->castAirCase;
             }
@@ -3308,10 +3264,7 @@ namespace engine
             this->autoguidesObject_pt = this->container->fast->localToGlobal(this->container->fastFastCase->getPosition());
             this->autoguidesObjectWidth = this->container->fast->fastCase.width / 2;
             this->autoguidesObjectHeight = this->container->fast->fastCase.height / 2;
-            if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+            if (this->container->fastFastCase->hitTest(autoguidesMouse_pt))
             {
                 this->autoguidesObject = this->container->fast->fastCase;
             }
@@ -3321,10 +3274,7 @@ namespace engine
             this->autoguidesObject_pt = this->container->fireSphere->localToGlobal(this->container->fireSphereSphereCase->getPosition());
             this->autoguidesObjectWidth = this->container->fireSphere->sphereCase.width / 2;
             this->autoguidesObjectHeight = this->container->fireSphere->sphereCase.height / 2;
-            if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+            if (this->container->fireSphereSphereCase->hitTest(autoguidesMouse_pt))
             {
                 this->autoguidesObject = this->container->fireSphere->sphereCase;
             }
@@ -3334,10 +3284,7 @@ namespace engine
             this->autoguidesObject_pt = this->container->iceSphere->localToGlobal(this->container->iceSphereSphereCase->getPosition());
             this->autoguidesObjectWidth = this->container->iceSphere->sphereCase.width / 2;
             this->autoguidesObjectHeight = this->container->iceSphere->sphereCase.height / 2;
-            if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+            if (this->container->iceSphereSphereCase->hitTest(autoguidesMouse_pt))
             {
                 this->autoguidesObject = this->container->iceSphere->sphereCase;
             }
@@ -3347,10 +3294,7 @@ namespace engine
             this->autoguidesObject_pt = this->container->stoneSphere->localToGlobal(this->container->stoneSphereSphereCase->getPosition());
             this->autoguidesObjectWidth = this->container->stoneSphere->sphereCase.width / 2;
             this->autoguidesObjectHeight = this->container->stoneSphere->sphereCase.height / 2;
-            if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+            if (this->container->stoneSphereSphereCase->hitTest(autoguidesMouse_pt))
             {
                 this->autoguidesObject = this->container->stoneSphere->sphereCase;
             }
@@ -3360,10 +3304,7 @@ namespace engine
             this->autoguidesObject_pt = this->container->levinSphere->localToGlobal(this->container->levinSphereSphereCase->getPosition());
             this->autoguidesObjectWidth = this->container->levinSphere->sphereCase.width / 2;
             this->autoguidesObjectHeight = this->container->levinSphere->sphereCase.height / 2;
-            if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+            if (this->container->levinSphereSphereCase->hitTest(autoguidesMouse_pt))
             {
                 this->autoguidesObject = this->container->levinSphere->sphereCase;
             }
@@ -3373,10 +3314,7 @@ namespace engine
             this->autoguidesObject_pt = this->container->getAll->localToGlobal(this->container->getAllSphereCase->getPosition());
             this->autoguidesObjectWidth = this->container->getAll->sphereCase.width / 2;
             this->autoguidesObjectHeight = this->container->getAll->sphereCase.height / 2;
-            if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+            if (this->container->getAllSphereCase->hitTest(autoguidesMouse_pt))
             {
                 this->autoguidesObject = this->container->getAll->sphereCase;
             }
@@ -3393,36 +3331,36 @@ namespace engine
     {
         if (param1 == "")
         {
-            this->container->fireSphere->alpha = 0;
-            this->container->fireNumTXT->alpha = 0;
-            this->container->buyFire->alpha = 0;
+            this->container->fireSphere->setAlpha(0);
+            this->container->fireNumTXT->setAlpha(0);
+            this->container->buyFire->setAlpha(0);
             this->container->fireSphere->mouseChildren = false;
             this->container->fireSphere->mouseEnabled = false;
             this->container->fireNumTXT->mouseEnabled = false;
             this->container->buyFire->mouseChildren = false;
             this->container->buyFire->mouseEnabled = false;
             this->container->fireSphere->setVisible(false);
-            this->container->iceSphere->alpha = 0;
-            this->container->iceNumTXT->alpha = 0;
-            this->container->buyIce->alpha = 0;
+            this->container->iceSphere->setAlpha(0);
+            this->container->iceNumTXT->setAlpha(0);
+            this->container->buyIce->setAlpha(0);
             this->container->iceSphere->mouseChildren = false;
             this->container->iceSphere->mouseEnabled = false;
             this->container->iceNumTXT->mouseEnabled = false;
             this->container->buyIce->mouseChildren = false;
             this->container->buyIce->mouseEnabled = false;
             this->container->iceSphere->setVisible(false);
-            this->container->stoneSphere->alpha = 0;
-            this->container->stoneNumTXT->alpha = 0;
-            this->container->buyStone->alpha = 0;
+            this->container->stoneSphere->setAlpha(0);
+            this->container->stoneNumTXT->setAlpha(0);
+            this->container->buyStone->setAlpha(0);
             this->container->stoneSphere->mouseChildren = false;
             this->container->stoneSphere->mouseEnabled = false;
             this->container->stoneNumTXT->mouseEnabled = false;
             this->container->buyStone->mouseChildren = false;
             this->container->buyStone->mouseEnabled = false;
             this->container->stoneSphere->setVisible(false);
-            this->container->levinSphere->alpha = 0;
-            this->container->levinNumTXT->alpha = 0;
-            this->container->buyLevin->alpha = 0;
+            this->container->levinSphere->setAlpha(0);
+            this->container->levinNumTXT->setAlpha(0);
+            this->container->buyLevin->setAlpha(0);
             this->container->levinSphere->mouseChildren = false;
             this->container->levinSphere->mouseEnabled = false;
             this->container->levinNumTXT->mouseEnabled = false;
@@ -3430,8 +3368,8 @@ namespace engine
             this->container->buyLevin->mouseEnabled = false;
             this->container->levinSphere->setVisible(false);
             this->container->getAll->gotoAndStop(3);
-            this->container->buygetAll->alpha = 0;
-            this->container->getAllNumTXT->alpha = 0;
+            this->container->buygetAll->setAlpha(0);
+            this->container->getAllNumTXT->setAlpha(0);
             this->container->getAllNumTXT->mouseEnabled = false;
             this->container->buygetAll->mouseChildren = false;
             this->container->buygetAll->mouseEnabled = false;
@@ -3518,9 +3456,9 @@ namespace engine
         { 
             this->container->fireSphere->setScaleY( 1);
             this->container->fireSphere->setScaleX( 1);
-            this->container->fireSphere->alpha = 1;
-            this->container->fireNumTXT->alpha = 1;
-            this->container->buyFire->alpha = 1;
+            this->container->fireSphere->setAlpha(1);
+            this->container->fireNumTXT->setAlpha(1);
+            this->container->buyFire->setAlpha(1);
             this->container->fireSphere->mouseChildren = true;
             this->container->fireSphere->mouseEnabled = true;
             this->container->fireNumTXT->mouseEnabled = false;
@@ -3532,9 +3470,9 @@ namespace engine
         {
             this->container->iceSphere->setScaleY(1);
             this->container->iceSphere->setScaleX(1);
-            this->container->iceSphere->alpha = 1;
-            this->container->iceNumTXT->alpha = 1;
-            this->container->buyIce->alpha = 1;
+            this->container->iceSphere->setAlpha(1);
+            this->container->iceNumTXT->setAlpha(1);
+            this->container->buyIce->setAlpha(1);
             this->container->iceSphere->mouseChildren = true;
             this->container->iceSphere->mouseEnabled = true;
             this->container->iceNumTXT->mouseEnabled = false;
@@ -3546,9 +3484,9 @@ namespace engine
         {
             this->container->stoneSphere->setScaleY(1);
             this->container->stoneSphere->setScaleX(1);
-            this->container->stoneSphere->alpha = 1;
-            this->container->stoneNumTXT->alpha = 1;
-            this->container->buyStone->alpha = 1;
+            this->container->stoneSphere->setAlpha(1);
+            this->container->stoneNumTXT->setAlpha(1);
+            this->container->buyStone->setAlpha(1);
             this->container->stoneSphere->mouseChildren = true;
             this->container->stoneSphere->mouseEnabled = true;
             this->container->stoneNumTXT->mouseEnabled = false;
@@ -3560,9 +3498,9 @@ namespace engine
         { 
             this->container->levinSphere->setScaleY(1);
             this->container->levinSphere->setScaleX(1);
-            this->container->levinSphere->alpha = 1;
-            this->container->levinNumTXT->alpha = 1;
-            this->container->buyLevin->alpha = 1;
+            this->container->levinSphere->setAlpha(1);
+            this->container->levinNumTXT->setAlpha(1);
+            this->container->buyLevin->setAlpha(1);
             this->container->levinSphere->mouseChildren = true;
             this->container->levinSphere->mouseEnabled = true;
             this->container->levinNumTXT->mouseEnabled = false;
@@ -3579,8 +3517,8 @@ namespace engine
             this->container->getAllIce->stop();
             this->container->getAllStone->stop();
             this->container->getAllLevin->stop();
-            this->container->buygetAll->alpha = 1;
-            this->container->getAllNumTXT->alpha = 1;
+            this->container->buygetAll->setAlpha(1);
+            this->container->getAllNumTXT->setAlpha(1);
             this->container->getAllNumTXT->mouseEnabled = false;
             this->container->buygetAll->mouseChildren = true;
             this->container->buygetAll->mouseEnabled = true;
@@ -3690,21 +3628,21 @@ namespace engine
             {
                 this->container->levinBacklight->gotoAndStop(1);
             }
-            if (!this->container->fireBacklight->turnFlag)
+            if (!this->container->fireBacklightTurnFlag)
             {
-                this->container->fireBacklight->turnFlag = true;
+                this->container->fireBacklightTurnFlag = true;
             }
-            if (!this->container->iceBacklight->turnFlag)
+            if (!this->container->iceBacklightTurnFlag)
             {
-                this->container->iceBacklight->turnFlag = true;
+                this->container->iceBacklightTurnFlag = true;
             }
-            if (!this->container->stoneBacklight->turnFlag)
+            if (!this->container->stoneBacklightTurnFlag)
             {
-                this->container->stoneBacklight->turnFlag = true;
+                this->container->stoneBacklightTurnFlag = true;
             }
-            if (!this->container->levinBacklight->turnFlag)
+            if (!this->container->levinBacklightTurnFlag)
             {
-                this->container->levinBacklight->turnFlag = true;
+                this->container->levinBacklightTurnFlag = true;
             }
             if (this->container->fireBacklight->isVisible())
             {
@@ -3867,277 +3805,277 @@ namespace engine
         {
             tempObject->icon->gotoAndStop(1); 
             tempObject->myText = "第一滴血";
-            std::setText(tempObject->board->noteTXT , "第一滴血" );
+            std::setText(tempObject->boardNoteTXT , "第一滴血" );
         }
         else if (param1 == "kill_100_enemies")
         {
             tempObject->icon->gotoAndStop(2); 
             tempObject->myText = "热烈无比";
-            std::setText(tempObject->board->noteTXT , "热烈无比" );
+            std::setText(tempObject->boardNoteTXT , "热烈无比" );
         }
         else if (param1 == "kill_2500_enemies")
         {
             tempObject->icon->gotoAndStop(3); 
             tempObject->myText = "杀手";
-            std::setText(tempObject->board->noteTXT , "杀手" );
+            std::setText(tempObject->boardNoteTXT , "杀手" );
         }
         else if (param1 == "call_100_earlyWaves")
         {
             tempObject->icon->gotoAndStop(4); 
             tempObject->myText = "毫无畏惧";
-            std::setText(tempObject->board->noteTXT , "毫无畏惧" );
+            std::setText(tempObject->boardNoteTXT , "毫无畏惧" );
         }
         else if (param1 == "build_100_towers")
         {
             tempObject->icon->gotoAndStop(5); 
             tempObject->myText = "建造者";
-            std::setText(tempObject->board->noteTXT , "建造者" );
+            std::setText(tempObject->boardNoteTXT , "建造者" );
         }
         else if (param1 == "createGolem_5_times")
         {
             tempObject->icon->gotoAndStop(6); 
             tempObject->myText = "巨型支援";
-            std::setText(tempObject->board->noteTXT , "巨型支援" );
+            std::setText(tempObject->boardNoteTXT , "巨型支援" );
         }
         else if (param1 == "createIceman_15_times")
         {
             tempObject->icon->gotoAndStop(7); 
             tempObject->myText = "缓和";
-            std::setText(tempObject->board->noteTXT , "缓和" );
+            std::setText(tempObject->boardNoteTXT , "缓和" );
         }
         else if (param1 == "createAir_7_times")
         {
             tempObject->icon->gotoAndStop(8); 
             tempObject->myText = "远古支援";
-            std::setText(tempObject->board->noteTXT , "远古支援" );
+            std::setText(tempObject->boardNoteTXT , "远古支援" );
         }
         else if (param1 == "callAllWavesInLevel")
         {
             tempObject->icon->gotoAndStop(9); 
             tempObject->myText = "大胆";
-            std::setText(tempObject->board->noteTXT , "大胆" );
+            std::setText(tempObject->boardNoteTXT , "大胆" );
         }
         else if (param1 == "sellFireIceStoneLevin")
         {
             tempObject->icon->gotoAndStop(10); 
             tempObject->myText = "破坏者";
-            std::setText(tempObject->board->noteTXT , "破坏者" );
+            std::setText(tempObject->boardNoteTXT , "破坏者" );
         }
         else if (param1 == "sellFire_10_times")
         {
             tempObject->icon->gotoAndStop(11); 
             tempObject->myText = "火焰破坏者";
-            std::setText(tempObject->board->noteTXT , "火焰破坏者" );
+            std::setText(tempObject->boardNoteTXT , "火焰破坏者" );
         }
         else if (param1 == "sellIce_10_times")
         {
             tempObject->icon->gotoAndStop(12); 
             tempObject->myText = "寒冰破坏者";
-            std::setText(tempObject->board->noteTXT , "寒冰破坏者" );
+            std::setText(tempObject->boardNoteTXT , "寒冰破坏者" );
         }
         else if (param1 == "sellStone_10_times")
         {
             tempObject->icon->gotoAndStop(13); 
             tempObject->myText = "巨石破坏者";
-            std::setText(tempObject->board->noteTXT , "巨石破坏者" );
+            std::setText(tempObject->boardNoteTXT , "巨石破坏者" );
         }
         else if (param1 == "sellLevin_10_times")
         {
             tempObject->icon->gotoAndStop(14); 
             tempObject->myText = "闪电破坏者";
-            std::setText(tempObject->board->noteTXT , "闪电破坏者" );
+            std::setText(tempObject->boardNoteTXT , "闪电破坏者" );
         }
         else if (param1 == "golemKill_250_enemies")
         {
             tempObject->icon->gotoAndStop(15); 
             tempObject->myText = "粉碎者";
-            std::setText(tempObject->board->noteTXT , "粉碎者" );
+            std::setText(tempObject->boardNoteTXT , "粉碎者" );
         }
         else if (param1 == "icemanSlowdown_75_enemies")
         {
             tempObject->icon->gotoAndStop(16); 
             tempObject->myText = "有点冷";
-            std::setText(tempObject->board->noteTXT , "有点冷" );
+            std::setText(tempObject->boardNoteTXT , "有点冷" );
         }
         else if (param1 == "icemanSlowdown_500_enemies")
         {
             tempObject->icon->gotoAndStop(17); 
             tempObject->myText = "霜冻力量";
-            std::setText(tempObject->board->noteTXT , "霜冻力量" );
+            std::setText(tempObject->boardNoteTXT , "霜冻力量" );
         }
         else if (param1 == "buildUltraTower")
         {
             tempObject->icon->gotoAndStop(18); 
             tempObject->myText = "进阶建造者";
-            std::setText(tempObject->board->noteTXT , "进阶建造者" );
+            std::setText(tempObject->boardNoteTXT , "进阶建造者" );
         }
         else if (param1 == "buildUltraTower_50_times")
         {
             tempObject->icon->gotoAndStop(19); 
             tempObject->myText = "专家建造者";
-            std::setText(tempObject->board->noteTXT, "专家建造者");
+            std::setText(tempObject->boardNoteTXT, "专家建造者");
         }
         else if (param1 == "buildAllUltraTowers")
         {
             tempObject->icon->gotoAndStop(20); 
             tempObject->myText = "策略建造者";
-            std::setText(tempObject->board->noteTXT , "策略建造者" );
+            std::setText(tempObject->boardNoteTXT , "策略建造者" );
         }
         else if (param1 == "notCast")
         {
             tempObject->icon->gotoAndStop(21); 
             tempObject->myText = "上手";
-            std::setText(tempObject->board->noteTXT , "上手" );
+            std::setText(tempObject->boardNoteTXT , "上手" );
         }
         else if (param1 == "castFire_150_times")
         {
             tempObject->icon->gotoAndStop(22); 
             tempObject->myText = "火焰大师";
-            std::setText(tempObject->board->noteTXT , "火焰大师" );
+            std::setText(tempObject->boardNoteTXT , "火焰大师" );
         }
         else if (param1 == "castIce_150_times")
         {
             tempObject->icon->gotoAndStop(23); 
             tempObject->myText = "寒冰大师";
-            std::setText(tempObject->board->noteTXT , "寒冰大师" );
+            std::setText(tempObject->boardNoteTXT , "寒冰大师" );
         }
         else if (param1 == "castStone_150_times")
         {
             tempObject->icon->gotoAndStop(24); 
             tempObject->myText = "岩石大师";
-            std::setText(tempObject->board->noteTXT , "岩石大师" );
+            std::setText(tempObject->boardNoteTXT , "岩石大师" );
         }
         else if (param1 == "castLevin_150_times")
         {
             tempObject->icon->gotoAndStop(25); 
             tempObject->myText = "闪电大师";
-            std::setText(tempObject->board->noteTXT , "闪电大师" );
+            std::setText(tempObject->boardNoteTXT , "闪电大师" );
         }
         else if (param1 == "castGetAll_10_times")
         {
             tempObject->icon->gotoAndStop(26); 
             tempObject->myText = "策略爆破者";
-            std::setText(tempObject->board->noteTXT , "策略爆破者" );
+            std::setText(tempObject->boardNoteTXT , "策略爆破者" );
         }
         else if (param1 == "castGetAll_100_times")
         {
             tempObject->icon->gotoAndStop(27); 
             tempObject->myText = "爆破者";
-            std::setText(tempObject->board->noteTXT , "爆破者" );
+            std::setText(tempObject->boardNoteTXT , "爆破者" );
         }
         else if (param1 == "castKill_1_enemy")
         {
             tempObject->icon->gotoAndStop(28); 
             tempObject->myText = "施法者";
-            std::setText(tempObject->board->noteTXT , "施法者" );
+            std::setText(tempObject->boardNoteTXT , "施法者" );
         }
         else if (param1 == "castKill_100_enemy")
         {
             tempObject->icon->gotoAndStop(29); 
             tempObject->myText = "法术杀手";
-            std::setText(tempObject->board->noteTXT , "法术杀手" );
+            std::setText(tempObject->boardNoteTXT , "法术杀手" );
         }
         else if (param1 == "complete_10_hardLevels")
         {
             tempObject->icon->gotoAndStop(30); 
             tempObject->myText = "勇猛战士";
-            std::setText(tempObject->board->noteTXT , "勇猛战士" );
+            std::setText(tempObject->boardNoteTXT , "勇猛战士" );
         }
         else if (param1 == "complete_10_survivalLevels")
         {
             tempObject->icon->gotoAndStop(31); 
             tempObject->myText = "幸存者";
-            std::setText(tempObject->board->noteTXT , "幸存者" );
+            std::setText(tempObject->boardNoteTXT , "幸存者" );
         }
         else if (param1 == "complete_10_withAllLives")
         {
             tempObject->icon->gotoAndStop(32); 
             tempObject->myText = "活力四射";
-            std::setText(tempObject->board->noteTXT , "活力四射" );
+            std::setText(tempObject->boardNoteTXT , "活力四射" );
         }
         else if (param1 == "achieve_dude_01")
         {
             tempObject->icon->gotoAndStop(33); 
             tempObject->myText = "伐木工";
-            std::setText(tempObject->board->noteTXT , "伐木工" );
+            std::setText(tempObject->boardNoteTXT , "伐木工" );
         }
         else if (param1 == "achieve_dude_02")
         {
             tempObject->icon->gotoAndStop(34); 
             tempObject->myText = "忙忙碌碌";
-            std::setText(tempObject->board->noteTXT , "忙忙碌碌" );
+            std::setText(tempObject->boardNoteTXT , "忙忙碌碌" );
         }
         else if (param1 == "achieve_dude_03")
         {
             tempObject->icon->gotoAndStop(35); 
             tempObject->myText = "南瓜节";
-            std::setText(tempObject->board->noteTXT , "南瓜节" );
+            std::setText(tempObject->boardNoteTXT , "南瓜节" );
         }
         else if (param1 == "achieve_dude_04")
         {
             tempObject->icon->gotoAndStop(36); 
             tempObject->myText = "修理工";
-            std::setText(tempObject->board->noteTXT , "修理工" );
+            std::setText(tempObject->boardNoteTXT , "修理工" );
         }
         else if (param1 == "achieve_dude_05")
         {
             tempObject->icon->gotoAndStop(37); 
             tempObject->myText = "勇士";
-            std::setText(tempObject->board->noteTXT , "勇士" );
+            std::setText(tempObject->boardNoteTXT , "勇士" );
         }
         else if (param1 == "achieve_dude_06")
         {
             tempObject->icon->gotoAndStop(38); 
             tempObject->myText = "睡眼阑珊";
-            std::setText(tempObject->board->noteTXT , "睡眼阑珊" );
+            std::setText(tempObject->boardNoteTXT , "睡眼阑珊" );
         }
         else if (param1 == "achieve_dude_07")
         {
             tempObject->icon->gotoAndStop(39); 
             tempObject->myText = "超级女声";
-            std::setText(tempObject->board->noteTXT , "超级女声" );
+            std::setText(tempObject->boardNoteTXT , "超级女声" );
         }
         else if (param1 == "achieve_dude_08")
         {
             tempObject->icon->gotoAndStop(40); 
             tempObject->myText = "老烟枪";
-            std::setText(tempObject->board->noteTXT , "老烟枪" );
+            std::setText(tempObject->boardNoteTXT , "老烟枪" );
         }
         else if (param1 == "achieve_dude_09")
         {
             tempObject->icon->gotoAndStop(41); 
             tempObject->myText = "渔夫";
-            std::setText(tempObject->board->noteTXT , "渔夫" );
+            std::setText(tempObject->boardNoteTXT , "渔夫" );
         }
         else if (param1 == "achieve_dude_10")
         {
             tempObject->icon->gotoAndStop(42);  
             tempObject->myText = "决斗" ;
-            std::setText(tempObject->board->noteTXT , "决斗" );
+            std::setText(tempObject->boardNoteTXT , "决斗" );
         }
         else if (param1 == "achieve_dude_11")
         {
             tempObject->icon->gotoAndStop(43); 
             tempObject->myText = "萨满";
-            std::setText(tempObject->board->noteTXT , "萨满" );
+            std::setText(tempObject->boardNoteTXT , "萨满" );
         }
         else if (param1 == "achieve_dude_12")
         {
             tempObject->icon->gotoAndStop(44); 
             tempObject->myText = "疯狂射手";
-            std::setText(tempObject->board->noteTXT , "疯狂射手" );
+            std::setText(tempObject->boardNoteTXT , "疯狂射手" );
         }
         else if (param1 == "achieve_dude_13")
         {
             tempObject->icon->gotoAndStop(45); 
             tempObject->myText = "勇猛大头";
-            std::setText(tempObject->board->noteTXT , "勇猛大头" ); 
+            std::setText(tempObject->boardNoteTXT , "勇猛大头" ); 
         }
         else if (param1 == "achieve_dude_14")
         {
             tempObject->icon->gotoAndStop(46); 
             tempObject->myText = "寻路无门";
-            std::setText(tempObject->board->noteTXT , "寻路无门" );
+            std::setText(tempObject->boardNoteTXT , "寻路无门" );
         }
 
     }// end function

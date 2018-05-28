@@ -61,148 +61,225 @@ namespace engine
 	}
 	void MC::addMcs(MC * mc, MovieClipSub * mcs)
 	{
+		mc->submc.push(mcs);
 		MovieClip * mvc = getMc(mc);
-		if(mvc)
-		{
+		if(mvc && mc != mvc)
 			mvc->addMcs(mcs);
-		}
 	};
     void MC::addMCbs(MovieClipSubBase * mcs){
-        if (ISTYPE(MCText, mcs)){
-            this->mct.push((MCText*)mcs);
-        }
-        else if (ISTYPE(MCCase, mcs)){
-            this->mcase.push((MCCase*)mcs);
-        }
+		this->mcbs.push(mcs);
+        //if (ISTYPE(MCText, mcs)){
+        //    this->mct.push((MCText*)mcs);
+        //}
+        //else if (ISTYPE(MCCase, mcs)){
+        //    this->mcase.push((MCCase*)mcs);
+        //}
     };
-    void MC::remove(MovieClipSubBase * mcs){
-        if (ISTYPE(MCText, mcs)){
-            for (int i = 0; i < this->mct.size(); i++)
-            {
-                if (mcs == this->mct[i])
-                {
-                    this->mct.remove(i);
-                    break;
-                }
-            }
-        }
-        else if (ISTYPE(MCCase, mcs)){
-            for (int i = 0; i < this->mcase.size(); i++)
-            {
-                if (mcs == this->mcase[i])
-                {
-                    this->mcase.remove(i);
-                    break;
-                }
-            }
-        }
+	bool MC::remove(MovieClipSub * mcs) {
+		for(int i = 0; i < this->submc.size(); i++)
+		{
+			if(mcs == this->submc[i])
+			{
+				this->submc.remove(i);
+				return true;
+			}
+		}
+		return false;
+	};
+
+    bool MC::remove(MovieClipSubBase * mcs){
+		for(int i = 0; i < this->mcbs.size(); i++)
+		{
+			if(mcs == this->mcbs[i])
+			{
+				this->mcbs.remove(i);
+				return true;
+			}
+		}
+		return false;
+
+        //if (ISTYPE(MCText, mcs)){
+        //    for (int i = 0; i < this->mct.size(); i++)
+        //    {
+        //        if (mcs == this->mct[i])
+        //        {
+        //            this->mct.remove(i);
+        //            break;
+        //        }
+        //    }
+        //}
+        //else if (ISTYPE(MCCase, mcs)){
+        //    for (int i = 0; i < this->mcase.size(); i++)
+        //    {
+        //        if (mcs == this->mcase[i])
+        //        {
+        //            this->mcase.remove(i);
+        //            break;
+        //        }
+        //    }
+        //}
     };
     ui::Text * MC::createText(string slotName){
-        Slot * slot = this->getArmature()->getSlot(slotName);
-        if (slot){
-			MCText * txt = new MCText(this, slotName);
-            //ui::Text * txt = ui::Text::create();
-   //         Node * sp = (Node *)slot->getDisplay();
-   //         sp->addChild(txt);
-			//txt->setName(slotName);
-			//sp->setName(slotName);
-            return txt;
-        }
-        return NULL;
+		return new MCText(this, slotName);
     };
 	 
     MovieClipSub * MC::createMovieClipSub(string slotName)
     {
-        return  new MovieClipSub(this, this->getArmature()->getSlot(slotName));
+		return  new MovieClipSub(this, slotName);
     }
     MCCase * MC::createCase(string slotName, bool draw)
 	{
-        Slot * slot = this->getArmature()->getSlot(slotName);
-        if (slot){
-            MCCase * butCase = new MCCase(this, slotName,draw);
-            return butCase; 
-        }
-        return NULL;
+		return  new MCCase(this, slotName, draw);
     };
-    void MovieClipSubBase::addMCbs(MC * mc, MovieClipSubBase * mbs)
+	MCSprite * MC::createSprite(string slotName, string file)
+	{ 
+		return new MCSprite(this, slotName, file);
+	};
+	MCSprite * MC::createSprite(string slotName, Sprite* file)
+	{ 
+		if(file)
+			return new MCSprite(this, slotName, file);
+		else
+			return new MCSprite(this, slotName);
+	};
+
+	void MovieClipSubBase::addMCbs(MC * mc, MovieClipSubBase * mbs)
     { 
         mc->addMCbs(mbs);
     };
+	 bool MovieClipSubBase::reinit() 
+	 {
+		 if(!this->slot)
+		 {
+			 if(mc->getArmature())
+				 this->slot = mc->getArmature()->getSlot(slotName);
+			 else
+				 return false;
+		 }
+		 if(!this->slot) return false;
+		 if(this->display == this->slot->getDisplay())
+			 return false;
+		 Node* thsi = ISTYPE(Node, this);
+ 		 Node * dis = (Node *) this->slot->getDisplay();
+		 if(dis &&  ISTYPE(cocos2d::Sprite, dis))
+		 {
+			 isReady = true;
+			 if(this->display )
+			 {
+				 thsi->retain();
+				 this->display->removeChild(thsi);
+				 this->display = (Node*)this->slot->getDisplay();
+				 display->addChild(thsi);
+				 display->setName(slotName);
+				 thsi->release();
+				 return true;
+			  }
+			  else
+			  {
+				  this->display = dis;
+				  display->addChild(thsi);
+				  display->setName(slotName);
+				  return true;
+			  }
+		 }
+		 isReady = false;
+		 return false;
+	 };
 	MCText::MCText(MC * mc, string slotName) :ui::Text()
 	{
 		init();
 		this->autorelease();
-		this->mc = mc;
-		this->slot = mc->getArmature()->getSlot(slotName);
+		this->mc = mc; 
 		this->slotName = slotName;
 		this->setName(slotName);
-        this->display = NULL;
         reinit();
         addMCbs(mc, this);
 	};
-    void MCText::reinit()
+    bool MCText::reinit()
     {
-        if (this->display == this->slot->getDisplay())
-            return;
-        Node * dis = (Node *) this->slot->getDisplay();
-        if (!this->display)
-        {
-            this->display = dis;
-            display->addChild(this);
-            display->setName(slotName);
-        }
-        else if (this->display && dis)
-        {
-            this->retain();
-            this->display->removeChild(this);
-            this->display = (Node*)this->slot->getDisplay();
-            display->addChild(this);
-            display->setName(slotName);
-            this->release();
-        }
+		return MovieClipSubBase::reinit();
+   //     if (this->display == this->slot->getDisplay())
+			//return false;
+   //     Node * dis = (Node *) this->slot->getDisplay();
+   //     if (!this->display)
+   //     {
+   //         this->display = dis;
+   //         display->addChild(this);
+   //         display->setName(slotName);
+   //     }
+   //     else if (this->display && dis)
+   //     {
+   //         this->retain();
+   //         this->display->removeChild(this);
+   //         this->display = (Node*)this->slot->getDisplay();
+   //         display->addChild(this);
+   //         display->setName(slotName);
+   //         this->release();
+   //     }
     };
     MCCase::MCCase(MC * mc, string slotName, bool draw) :BaseNode(), _draw(draw)
     {
-        init();
-        this->display = NULL;
-        this->autorelease();
+		BaseNode::init();
         this->mc = mc;
-        this->slot = mc->getArmature()->getSlot(slotName);
         this->slotName = slotName;
         this->setName(slotName);
         reinit();
         addMCbs(mc, this);
     };
-    void MCCase::reinit()
+    bool MCCase::reinit()
     {
-        if (this->display == this->slot->getDisplay())
-            return;
+		if(MovieClipSubBase::reinit())
+		{
+			Size size = display->getContentSize();
+			const dragonBones::Transform * origin = slot->getOrigin(); 
+			this->setContentSize(Size(origin->scaleX*size.width, origin->scaleY*size.height));
+			enableMouseHandler();
+			if (_draw)drawRange();
+			this->setPosition(origin->x, origin->y);
+			return true;
+		}
+		return false;
+	};
 
-        Node * dis = (Node *) this->slot->getDisplay();
-        if (!this->display)
-        {
-            this->display = dis;
-            display->addChild(this);
-            display->setName(slotName);
-        }
-        else if (this->display && dis)
-        {
-            this->retain();
-            this->display->removeChild(this);
-            this->display = (Node*)this->slot->getDisplay();
-            display->addChild(this);
-            display->setName(slotName);
-            this->release();
-        }
-        if (this->display){
-            Size size = display->getContentSize();
-            const dragonBones::Transform * origin = slot->getOrigin(); 
-            this->setContentSize(Size(origin->scaleX*size.width, origin->scaleY*size.height));
-            enableMouseHandler();
-            if (_draw)drawRange();
-            this->setPosition(origin->x, origin->y);
-        }
-    };
+	MCSprite::MCSprite(MC * mc, string slotName, string file) :BaseSprite(file), initSprite(false)
+	{ 
+		this->mc = mc;
+		this->slotName = slotName;
+		this->setName(slotName);
+		reinit();
+		addMCbs(mc, this);
+
+	};
+	MCSprite::MCSprite(MC * mc, string slotName, cocos2d::Sprite * sprite) : BaseSprite(sprite) , initSprite(false)
+	{
+		this->mc = mc;
+		this->slotName = slotName;
+		this->setName(slotName); 
+		reinit();
+		addMCbs(mc, this);
+	};
+	MCSprite::MCSprite(MC * mc, string slotName) :initSprite(true)
+	{
+		this->mc = mc; 
+		this->slotName = slotName;
+		this->setName(slotName);
+		reinit();
+		addMCbs(mc, this);
+	};
+	bool MCSprite::reinit()
+	{
+		if(MovieClipSubBase::reinit())
+		{
+			if(initSprite && ISTYPE(cocos2d::Sprite, this->display))
+			{
+				cocos2d::Sprite * sprite = (Sprite*)this->display;
+				this->initWithTexture(sprite->getTexture());
+			}
+			return true;
+		}
+		return false;
+	};
+
 	void MovieClip::addMcs(MovieClipSub * mcs)
 	{
 		this->mcs.push(mcs);
@@ -218,27 +295,37 @@ namespace engine
 	}
 	void MovieClip::destroy(MovieClipSub * & ms)
 	{ 
+ 		MC * par = NULL;
 		for(int i = 0; i < this->mcs.size(); i++)
 		{
 			if(ms == this->mcs[i])
 			{
 				this->mcs.remove(i);
+				par=ms->mc;
+				par->remove(ms);
                 delete ms;
-                ms = NULL;
+                ms = NULL; 
                 break;
 			}
 		}
 	};
-    void MovieClip::remove(MovieClipSub * ms)
+	bool MovieClip::remove(MovieClipSub * ms)
     {
+		MC * par = NULL;
         for (int i = 0; i < this->mcs.size(); i++)
         {
             if (ms == this->mcs[i])
             {
                 this->mcs.remove(i);
-                break;
+				par = ms->mc;
+				if(par)
+					par->remove(ms);
+				else
+					MC::remove(ms);
+				return true;
             }
         }
+		return false;
     };
    
     //void MovieClip::destroy(MCText * & mcs){
@@ -268,15 +355,15 @@ namespace engine
 
     void MovieClip::gotoAndStop(int cf, string aniName){
         MC::gotoAndStop(cf, aniName);
-        int l = this->mcs.size();
+		int l = this->submc.size();
         for (int i = 0; i < l; i++)
-            this->mcs[i]->reinit();
-        l = this->mct.size();
+			this->submc[i]->reinit();
+        l = this->mcbs.size();
         for (int i = 0; i < l; i++)
-            this->mct[i]->reinit();
-        l = this->mcase.size();
-        for (int i = 0; i < l; i++)
-            this->mcase[i]->reinit();
+			this->mcbs[i]->reinit();
+        //l = this->mcase.size();
+        //for (int i = 0; i < l; i++)
+        //    this->mcase[i]->reinit();
     };
 	MovieClip::MovieClip(dragonBones::CCArmatureDisplay * cont, string defAniName) :isOnce(false)
 	{
@@ -296,7 +383,7 @@ namespace engine
 		this->container = cont;
 		BaseNode::init();
 		addChild(container);
-		this->autorelease();
+		//this->autorelease(); in BaseNode::init();
 		this->setName(cont->getName());
 	};
 	MovieClip::MovieClip(string rootPath, string armName, string dbName, string defAniName) :isOnce(false)
@@ -309,7 +396,7 @@ namespace engine
 		CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
 		BaseNode::init();
 		addChild(container);
-		this->autorelease();
+		//this->autorelease(); in BaseNode::init();
 		this->setName(armName); 
 	};
 	MovieClip::MovieClip(string armName, string dbName, BaseNode *node)
@@ -322,7 +409,7 @@ namespace engine
 		CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
 		BaseNode::init();
 		addChild(container);
-		this->autorelease();
+		//this->autorelease(); in BaseNode::init();
 		this->setName(armName); 
 		if(node)node->addChild(this);
 	};
@@ -397,7 +484,7 @@ namespace engine
 		//case EventData::EventType::LOOP_COMPLETE:
 		//	break;
 	};
-	MovieClipSub::MovieClipSub(MC *_mc, dragonBones::Slot * _slot, string defAniName)
+	MovieClipSub::MovieClipSub(MC *_mc, dragonBones::Slot * _slot, string defAniName) :arm(0)
 	{
         this->mc=_mc;
         this->slot = _slot;
@@ -407,30 +494,34 @@ namespace engine
 		reinit();
 		addMcs(mc, this);
 	};
-    MovieClipSub::MovieClipSub(MC *mc, string slotName, string defAniName)
+	MovieClipSub::MovieClipSub(MC *mc, string slotName, string defAniName) :arm(0)
 	{
         this->mc = mc;
         this->slotName = slotName;
         this->display = NULL;
-        this->slot = mc->getArmature()->getSlot(slotName);
+		this->slot = NULL; //mc->getArmature()->getSlot(slotName);
 		reinit();
 		addMcs(mc, this);
-	};
-    void MovieClipSub::gotoAndStop(int cf, string aniName){
-        MC::gotoAndStop(cf, aniName);
-        int l = this->mct.size();
-        for (int i = 0; i < l; i++)
-            this->mct[i]->reinit();
-        l = this->mcase.size();
-        for (int i = 0; i < l; i++)
-            this->mcase[i]->reinit();
-    };
-
-	void MovieClipSub::reinit()
+	}; 
+	bool MovieClipSub::reinit()
     {
-        if (this->arm == this->slot->getChildArmature())return;
+		if(!this->slot)
+		{
+			if(mc->getArmature())
+				this->slot = mc->getArmature()->getSlot(slotName);
+			else
+				return false;
+		}
+		if(!this->slot) return false;
+		if(this->arm == this->slot->getChildArmature())return false;
 		this->arm = this->slot->getChildArmature();
         if (arm){
+			this->display=(Node *)this->slot->getDisplay();
+			if(this->display)this->display->setName(slot->getName());
+			this->container = NULL;
+			if(ISTYPE(CCArmatureDisplay, display))
+				this->container = ISTYPE(CCArmatureDisplay, display);
+			isReady = true;
             std::map<std::string, dragonBones::AnimationData*> & animations = this->arm->_armatureData->animations;
             for each (std::pair<std::string, dragonBones::AnimationData*> it in animations)
             {
@@ -445,7 +536,13 @@ namespace engine
             float duration = this->arm->_armatureData->animations[defAniName]->duration;
             CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
             this->gotoAndStop(1);
-        }
+			return true;
+		}
+		else
+		{
+			isReady = false;
+		}
+		return false;
 	}
 	void MovieClipSub::setVisible(bool v) 
 	{
@@ -511,6 +608,19 @@ namespace engine
 	dragonBones::Animation *MovieClipSub::getAnimation()
 	{
 		return arm->getAnimation();
+	};
+	void MovieClipSub::gotoAndStop(int cf, string aniName)
+	{
+		MC::gotoAndStop(cf, aniName);
+		int l = this->submc.size();
+		for(int i = 0; i < l; i++)
+			this->submc[i]->reinit();
+		l = this->mcbs.size();
+		for(int i = 0; i < l; i++)
+			this->mcbs[i]->reinit();
+		//l = this->mcase.size();
+		//for (int i = 0; i < l; i++)
+		//    this->mcase[i]->reinit();
 	};
 
 	ImageMovieClip::ImageMovieClip(string rootPath, string fileNamePre, int numFormat, int imgSize)

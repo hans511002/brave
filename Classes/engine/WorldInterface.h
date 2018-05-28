@@ -5,6 +5,7 @@
 //#include "MainClass.h"
 //#include "World.h"
 #include "JsonUtil.h"
+#include "Feature.h"
 #include "WorldInterface_mc.h"
 #include "engine/units/Unit.h" 
 #include "engine/casts/Cast_1.h"
@@ -14,7 +15,7 @@
 namespace engine
 { 
 	class World;
-	class  WorldInterface :public cocos2d::Node
+	class  WorldInterface :public BaseNode
     {
 	public:
 		int i;
@@ -31,8 +32,8 @@ namespace engine
         ui::Text * lastTime;//public var lastTime:TextField;
         Common::Array<GetAchieve_mc *> * listOfGetAhieve ;//public var listOfGetAhieve:Array;
 		Common::Array<MovieClip *> listOfAnimation;//public var listOfAnimation:Array;
-        //public var sellHint:Hint_mc;
-        //public var getAllHint:Hint_mc;
+        Hint_mc * sellHint;
+        Hint_mc * getAllHint;
         int fireCount;////public var fireCount:int = 0;
         int iceCount;////public var iceCount:int = 0;
         int stoneCount;////public var stoneCount:int = 0;
@@ -60,14 +61,12 @@ namespace engine
 		WorldInterface();
 		CREATE_FUNC(WorldInterface);
 		bool init();// (event:Event) : void
-  
-
 		void update();
-        void clickHandler(Ref* ref);
+        //void clickHandler(Ref* ref);
         
-        void mouseMoveHandler(cocos2d::Event* param1);
-        void mouseDownHandler(cocos2d::Event *event);
-        void mouseUpHandler(cocos2d::Event* event);
+        void mouseMoveHandler(cocos2d::EventMouse* param1);
+        void mouseDownHandler(cocos2d::EventMouse *event);
+        void mouseUpHandler(cocos2d::EventMouse* event);
         //bool onTouchBegan(Touch *touch, Event *unused_event);
         //void onTouchEnded(Touch *touch, Event *unused_event);
         //void onTouchCancelled(Touch *touch, Event *unused_event);

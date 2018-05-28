@@ -162,38 +162,39 @@ protected:
 	{
 		air = NULL;
 		currentFrame = frameCounter = 0;
-		BuySphere * sphere = new BuySphere();
-		sphere->setName("sphere");
-		this->addChild(sphere);
+		//BuySphere * sphere = new BuySphere();
+		//sphere->setName("sphere");
+		//this->addChild(sphere);
 
-		BuySphere * sphere1 = new BuySphere( );
-		sphere1->setName("sphere1");
-		this->addChild(sphere1);
-		sphere1->enableMouseHandler();
-		sphere1->setSize(40, 30);
-		sphere1->setPosition(-100, -100);
-		//sphere->print();
-		//this->addChild(sphere->buySphereCase);
-		sphere1->buySphereCase->setPosition(-100, -100);
-		//sphere->buySphereCase->setPosition(100, 100);
+		//BuySphere * sphere1 = new BuySphere( );
+		//sphere1->setName("sphere1");
+		//this->addChild(sphere1);
+		//sphere1->enableMouseHandler();
+		//sphere1->setSize(40, 30);
+		//sphere1->setPosition(-100, -100);
+		////sphere->print();
+		////this->addChild(sphere->buySphereCase);
+		//sphere1->buySphereCase->setPosition(-100, -100);
+		////sphere->buySphereCase->setPosition(100, 100);
 
-		CaseTest *Case = new CaseTest();
-		this->addChild(Case);
-		Case->setSize(50, 50);
-		Case->drawRange();
-		Case->setPosition(-150, -100);
-		Case->enableMouseHandler();
-		Case->setName("Case");
+		//CaseTest *Case = new CaseTest();
+		//this->addChild(Case);
+		//Case->setSize(50, 50);
+		//Case->drawRange();
+		//Case->setPosition(-150, -100);
+		//Case->enableMouseHandler();
+		//Case->setName("Case");
 
-        GetAchieve_mc * gac = new GetAchieve_mc();
-        this->addChild(gac);
-        //gac->drawRange();
-        gac->setPosition(-250, -100);
-		gac->boardNoteTXT->setText("中国联盟");
+  //      GetAchieve_mc * gac = new GetAchieve_mc();
+  //      this->addChild(gac);
+  //      //gac->drawRange();
+  //      gac->setPosition(-250, -100);
+		//gac->boardNoteTXT->setText("中国联盟");
 
-		WorldInterface_mc * worldInterface = new WorldInterface_mc();
+		 worldInterface = new WorldInterface_mc();
 		worldInterface->setName("WorldInterface_mc");
 		this->addChild(worldInterface);
+
 		//Sprite * sprite=Sprite::create("background1.png");
 		//sprite->setContentSize(sphere->buySphereCase->getContentSize());
 		//sphere->buySphereCase->addChild(sprite);
@@ -214,9 +215,13 @@ protected:
 	int totalFrames, frameCounter;
 	string direction;
 	MovieClip *mc;
-
+	WorldInterface_mc * worldInterface;
 	virtual void  scheduleUpdate(float dt)
 	{
+		//logInfo("fireSphere pos", worldInterface->fireSphere->getPosition());
+		//logInfo("fireSphere worldpos", worldInterface->fireSphere->convertToWorldSpace(worldInterface->fireSphere->getPosition()));
+		//logInfo("fireSphereSphereCase pos", worldInterface->fireSphereSphereCase->getPosition() );
+		//logInfo("fireSphereSphereCase worldpos", worldInterface->fireSphereSphereCase->convertToWorldSpace(worldInterface->fireSphereSphereCase->getPosition()));
 		if(this->frameCounter < 30)
 		{
 			this->frameCounter++;

@@ -17,7 +17,7 @@ namespace engine
 			container->setScale(0.85);
 			container->init();
 			Unit::init();
-			this->autorelease();
+			//this->autorelease();
 			return true;
 		}// end function
 

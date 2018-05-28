@@ -24,7 +24,7 @@ namespace engine
 		barInfoHealthTXT = barInfo->createText("healthTXT");
 		barInfoIceTXT = barInfo->createText("iceTXT");
 		barInfoLevinTXT = barInfo->createText("levinTXT");
-		barInfoMyTarget = barInfo->createCase("myTarget");
+		barInfoMyTarget = NULL;// barInfo->createCase("myTarget");
 		barInfoNoteTXT = barInfo->createText("noteTXT");
 		barInfoPenaltyTXT = barInfo->createText("penaltyTXT");
 		barInfoSpeedTXT = barInfo->createText("speedTXT");
@@ -32,12 +32,14 @@ namespace engine
 		book = this->createMovieClipSub("book");
 		bookBookCase = book->createCase("bookCase");
 		butCastAir = this->createMovieClipSub("butCastAir");
-		butCastAirCastIcemanCase = butCastAir->createCase("castIcemanCase");
+		butCastAirCastIcemanCase = butCastAir->createCase("castAirCase");
 		butCastAirCont = butCastAir->createMovieClipSub("cont");
-		butCastAirContContMask = butCastAirCont->createMovieClipSub("contMask");
+
+		butCastAirContContMask = butCastAirCont->createSprite("cont");
+		//butCastAirContContMask = butCastAirCont->createMovieClipSub("contMask");
 
 		butCastGolem = this->createMovieClipSub("butCastGolem");
-		butCastGolemCastIcemanCase = butCastGolem->createCase("castIcemanCase");
+		butCastGolemCastIcemanCase = butCastGolem->createCase("castGolemCase");
 		butCastGolemCont = butCastGolem->createMovieClipSub("cont");
 		butCastGolemContContMask = butCastGolemCont->createMovieClipSub("contMask");
 		butCastIceman = this->createMovieClipSub("butCastIceman");
@@ -71,8 +73,7 @@ namespace engine
 		fireBackCont = fireBack->createMovieClipSub("cont");
 		fireBacklight = this->createMovieClipSub("fireBacklight");
 		fireNumTXT = this->createText("fireNumTXT");
-		firePrice = this->createMovieClipSub("firePrice");
-		fireSphere = this->createMovieClipSub("fireSphere");
+ 		fireSphere = this->createMovieClipSub("fireSphere");
 		fireSphereSphereCase = fireSphere->createCase("sphereCase");
 		getAll = this->createMovieClipSub("getAll");
 		getAllFire = getAll->createMovieClipSub("fire");
@@ -113,5 +114,7 @@ namespace engine
 		testRestartBoard = this->createMovieClipSub("testRestartBoard");
 		testRestartBoardWaveTXT = testRestartBoard->createText("waveTXT");
 		waveTXT = this->createText("waveTXT");
+		
+		traceBezier=NULL;
 	};
 }

@@ -18,7 +18,7 @@ sellCase         = this->createCase("sellCase");
 stoneCase        = this->createCase("stoneCase");
 
         return;
-    }// end function
+    }// end function	
 	namespace    casts
 	{
 		bool Cast::init()

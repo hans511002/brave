@@ -115,8 +115,18 @@ bool BaseNode::init()
 {
     cocos2d::Node::init();
     std::setAnchorPoint(this);
+	this->autorelease();
     return true;
 };
+void BaseNode::autorelease()
+{
+	if(autoDel && !isAutoDel)
+	{
+		Node::autorelease();
+		isAutoDel = true;
+	}
+};
+
 bool BaseSprite::init()
 {
     this->autorelease();
@@ -128,16 +138,22 @@ BaseSprite::BaseSprite(string file)
     this->initWithFile(file);
     init();
 }
+BaseSprite::BaseSprite(cocos2d::Sprite* sprite) {
+	this->initWithTexture(sprite->getTexture());
+	BaseSprite::init(); 
+};
 
 bool BaseNode::hitTest(const Vec2 &pt)
 {
     if (!mouseEnabled)return false;
-    return BaseNode::hitTest(this, pt);
+	if(!this->isVisible())return false;
+	return BaseNode::hitTest(this, pt);
 };
 bool BaseNode::hitTest(cocos2d::EventMouse* event)
 {
     if (!mouseEnabled)return false;
-    return BaseNode::hitTest(this, event);
+	if(!this->isVisible())return false;
+	return BaseNode::hitTest(this, event);
 };
 
 cocos2d::Point BaseNode::localToGlobal(cocos2d::Point pt)
@@ -175,16 +191,18 @@ void BaseNode::enterFrameHandler(float dt)
 };
 
 
-void BaseSprite::mouseDownHandler(cocos2d::Event *event)//(event:MouseEvent) : void
+void BaseSprite::mouseDownHandler(cocos2d::EventMouse *event)//(event:MouseEvent) : void
 {
-    Node * node = event->getCurrentTarget();
+	if(!BaseNode::hitTest(this,event))return;
+	Node * node = event->getCurrentTarget();
     Event::Type tp = event->getType();
     string target = node->getName();
     CCLOG("BaseSprite::mouseDownHandler %s", target.c_str());
 }
-void BaseLayer::mouseDownHandler(cocos2d::Event *event)//(event:MouseEvent) : void
+void BaseLayer::mouseDownHandler(cocos2d::EventMouse *event)//(event:MouseEvent) : void
 {
-    Node * node = event->getCurrentTarget();
+	if(!BaseNode::hitTest(this, event))return;
+	Node * node = event->getCurrentTarget();
     Event::Type tp = event->getType();
     string target = node->getName();
     CCLOG("BaseLayer::mouseDownHandler %s", target.c_str());
@@ -199,8 +217,8 @@ bool BaseLayer::init()
     const auto& stageSize = cocos2d::Director::getInstance()->getVisibleSize();
     setPosition(0, 0);
     //setPosition(stageSize.width * 0.5f, stageSize.height * 0.5f);
-    //_background = cocos2d::Sprite::create("background.png");
-    //addChild(_background);
+    _background = cocos2d::Sprite::create("background.png");
+    addChild(_background,0);
     _onStart();
     return true;
 }
@@ -235,8 +253,14 @@ dragonBones::CCArmatureDisplay * BaseFuns::buildArmature(string armatureName, co
     return std::buildArmature(armatureName, dragonBonesName);
 };
 
+bool BaseNode::hitTest(cocos2d::Node * node, cocos2d::EventMouse* e)
+{
+    return hitTest(node, e->getLocationInView());
+};
 bool BaseNode::hitTest(Node * node, const Vec2 &pt)
 {
+	if(!node->isVisible())return false;
+	if(node->getOpacity()<2)return false;
     Vec2 nsp = node->convertToNodeSpace(pt);//convertToNodeSpace convertToNodeSpaceAR
     Rect bb;
     bb.size = node->getContentSize();
@@ -259,10 +283,6 @@ bool BaseNode::hitTest(Node * node, const Vec2 &pt)
     }
     return false;
 }
-bool BaseNode::hitTest(cocos2d::Node * node, cocos2d::EventMouse* e)
-{
-    return hitTest(node, e->getLocationInView());
-};
 
 
 bool BaseSprite::atStage()
@@ -281,19 +301,27 @@ bool BaseNode::atStage()
     return !(p.x < 0 || p.y<0 || p.x > stageSize.width || p.y > stageSize.height);
 }
 
-void BaseNode::setOpacity(float op)
+void BaseNode::setAlpha(float op)
 {
-    int ops = op * 255;
-    if (ops > 255)ops = 255;
-    Node::setOpacity(ops);
+	setAlpha(this, op);
 };
-float BaseNode::getOpacity()
+float BaseNode::getAlpha()
 {
-    int ops = Node::getOpacity();
-    return (double)ops / 255;
+	return getAlpha(this);
+};
+void BaseNode::setAlpha(cocos2d::Node * node, float op)
+{
+	int ops = op * 255;
+	if(ops > 255)ops = 255;
+	node->setOpacity(ops);
+};
+float BaseNode::getAlpha(cocos2d::Node * node)
+{
+	int ops = node->getOpacity();
+	return (double)ops / 255;
 };
 
-BaseNode::BaseNode(float w, float h, bool draw)
+BaseNode::BaseNode(float w, float h, bool draw) :autoDel(true)
 {
     this->setContentSize(Size(w, h));
     enableMouseHandler();
@@ -352,14 +380,48 @@ void std::MouseEvent::hitTest(Node *node)
 		BaseNode *n = ISTYPE(BaseNode, node);
 		if(n->hitTest(this))
 			currentTargets.push(n);
-		if(n->mouseChildren && n->getChildrenCount())
+	}
+	if(node->isVisible() && node->getChildrenCount())
+	{
+		int len = node->getChildrenCount();
+		Vector<Node*>& nodes = node->getChildren();
+		for(int i = 0; i < len; i++)
+		{
+			node = nodes.at(i);
+			hitTest(node);
+		}
+	}
+};
+void std::MouseEvent::hitTest(Node *node, int level)
+{
+	if(ISTYPE(BaseNode, node))
+	{
+		BaseNode *n = ISTYPE(BaseNode, node);
+		if(n->hitTest(this))
+			currentTargets.push(n);
+		if(n->mouseChildren && n->isVisible() && n->getChildrenCount())
 		{
 			int len = n->getChildrenCount();
 			Vector<Node*>& nodes = n->getChildren();
 			for(int i = 0; i < len; i++)
 			{
 				node = nodes.at(i);
-				hitTest(node);
+				hitTest(node, level+1);
+			}
+		}
+	}
+	else
+	{
+		if(BaseNode::hitTest(node,this))
+			currentTargets.push(node);
+		if(node->isVisible() && node->getChildrenCount())
+		{
+			int len = node->getChildrenCount();
+			Vector<Node*>& nodes = node->getChildren();
+			for(int i = 0; i < len; i++)
+			{
+				node = nodes.at(i);
+				hitTest(node, level + 1);
 			}
 		}
 	}
@@ -439,7 +501,6 @@ void BaseNode::keyBoardReleasedHandler(cocos2d::EventKeyboard::KeyCode keyCode, 
 };
 void BaseNode::mouseDownHandler(cocos2d::EventMouse* event)
 {
-
     //loginfo("mouseDown",event); 
     if (!this->hitTest(event))return;
     logInfo("hitTest true : mouse in ", this->getName());

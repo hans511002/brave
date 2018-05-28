@@ -68,7 +68,14 @@ namespace engine
 		}
 		//Main::mainClass->tracker.trackPageview("openLevel_" + this->nowLevel);
  	}// end function
-
+ 	
+    void World::onExit()
+    {
+        delete this->wavesClass;
+        this->wavesClass=NULL;
+        delete this->feature;
+        this->feature=NULL;
+    };
 	//void  World::enterFrameHandler()  // event : Event
 	void  World::enterFrameHandler( float dt)
 	{

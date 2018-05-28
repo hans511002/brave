@@ -159,6 +159,8 @@ namespace engine
         bool init();
 
         virtual void onEnter();
+        virtual void onExit();
+        
         virtual void enterFrameHandler(float dt);//void  enterFrameHandler();  // event : Event
         //void scheduleUpdate(float dt);
         //void MyNode::TickMe(float dt);

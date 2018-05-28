@@ -17,7 +17,9 @@ namespace engine
 		MovieClipSub * icon;
 		MovieClipSub * board;
 		ui::Text * boardNoteTXT;
-		//MovieClip * board;
+	    bool closeFlag;
+		string myText;
+		int counter;
 		inline GetAchieve_mc::GetAchieve_mc() :MovieClip("worldinterface/", "GetAchieve_mc", "GetAchieve_mc")
 		{
 			board = this->createMovieClipSub("board");
@@ -35,7 +37,7 @@ namespace engine
 		ui::Text     * barInfoHealthTXT;
 		ui::Text     * barInfoIceTXT;
 		ui::Text     * barInfoLevinTXT;
-		BaseNode     * barInfoMyTarget;
+		Node         * barInfoMyTarget;
 		ui::Text     * barInfoNoteTXT;
 		ui::Text     * barInfoPenaltyTXT;
 		ui::Text     * barInfoSpeedTXT;
@@ -45,7 +47,7 @@ namespace engine
 		MovieClipSub * butCastAir;
 		BaseNode     * butCastAirCastIcemanCase;
 		MovieClipSub * butCastAirCont;
-		MovieClipSub * butCastAirContContMask;
+		MCSprite     * butCastAirContContMask;
 		MovieClipSub * butCastGolem;
 		BaseNode     * butCastGolemCastIcemanCase;
 		MovieClipSub * butCastGolemCont;
@@ -80,8 +82,7 @@ namespace engine
 		MovieClipSub * fireBack;
 		MovieClipSub * fireBackCont;
 		MovieClipSub * fireBacklight;
-		ui::Text     * fireNumTXT;
-		MovieClipSub * firePrice;
+		ui::Text     * fireNumTXT; 
 		MovieClipSub * fireSphere;
 		BaseNode     * fireSphereSphereCase;
 		MovieClipSub * getAll;
@@ -123,8 +124,33 @@ namespace engine
 		MovieClipSub * testRestartBoard;
 		ui::Text     * testRestartBoardWaveTXT;
 		ui::Text     * waveTXT;
+		BaseNode     * traceBezier;
 		
 		WorldInterface_mc();
+		
+		///////////////////////////
+        Vec2 fireSphereMyPoint  ;
+		Vec2 iceSphereMyPoint   ;
+		Vec2 stoneSphereMyPoint ;
+		Vec2 levinSphereMyPoint ;
+		Vec2 getAllMyPoint      ;
+		
+		bool pauseOpenFlag;
+		bool pauseCloseFlag;
+		bool bookOpenFlag;
+		bool bookCloseFlag;
+		
+		bool fireSphereOpened;
+		bool iceSphereOpened;
+		bool stoneSphereOpened;
+		bool levinSphereOpened;
+		bool getAllOpened;
+		
+		bool fireBacklightTurnFlag;
+		bool iceBacklightTurnFlag;
+		bool stoneBacklightTurnFlag;
+		bool levinBacklightTurnFlag;
+
     };
 
 
