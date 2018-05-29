@@ -12,14 +12,11 @@ namespace engine
         class BuildTowerMenu_mc : public MovieClip
         {
         public:
-            BuildTowerMenu_mc();
-            ~BuildTowerMenu_mc();
-            CREATE_FUNC(BuildTowerMenu_mc);
-            bool init();
-            void setPrice(int pr);
-            MovieClip * cont;
-            Sprite * place;
-            ui::Text * price;
+            BuildTowerMenu_mc(); 
+MovieClipSub * cont;
+MCCase * contBuildTowerMenuCase;
+MCText * contCostTXT;
+ 
         };
 
         class BuildTowerMenu :public BaseNode

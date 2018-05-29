@@ -11,9 +11,9 @@ namespace engine
         public:
             MovieClipSub * cont                ;
             MovieClipSub * contCont1           ;
-            MovieClipSub * contCont1Sphere1    ;
-            MovieClipSub * contCont1Sphere2    ;
-            ui::Text     * nameTXT             ;
+			MovieClip * contCont1Sphere1;
+			MovieClip * contCont1Sphere2;
+            //ui::Text     * nameTXT             ;
             TowerMenuHint_mc();
         };
 
@@ -44,50 +44,50 @@ namespace engine
         };
 
 
-        class TowerMenu_mc :public BaseNode
+		class TowerMenu_mc :public MovieClip
         {
         public:
-            MovieClipSub * btnGetAll                                                   ;
-            MovieClipSub * btnTowerUpgr1                                               ;
-            ui::Text     * btnTowerUpgr1CostTXT                                        ;
-            MovieClipSub * btnTowerUpgr2                                               ;
-            ui::Text     * btnTowerUpgr2CostTXT                                        ;
-            MovieClipSub * btnTowerUpgr3                                               ;
-            ui::Text     * btnTowerUpgr3CostTXT                                        ;
-            MovieClipSub * btnTowerUpgr4                                               ;
-            ui::Text     * btnTowerUpgr4CostTXT                                        ;
-            MovieClipSub * btnUpgradeMenu                                              ;
+			MovieClipSub * btnGetAll;
+			MCCase * btnGetAllBtnGetAllCase;
+			MovieClipSub * btnTowerUpgr1;
+			MCCase * btnTowerUpgr1BtnTowerUpgrCase;
+			MCText * btnTowerUpgr1CostTXT;
+			MovieClipSub * btnTowerUpgr2;
+			MCCase * btnTowerUpgr2BtnTowerUpgrCase;
+			MCText * btnTowerUpgr2CostTXT;
+			MovieClipSub * btnTowerUpgr3;
+			MCCase * btnTowerUpgr3BtnTowerUpgrCase;
+			MCText * btnTowerUpgr3CostTXT;
+			MovieClipSub * btnTowerUpgr4;
+			MCCase * btnTowerUpgr4BtnTowerUpgrCase;
+			MCText * btnTowerUpgr4CostTXT;
+			MovieClipSub * btnUpgradeMenu;
 			MCCase * btnUpgradeMenuBtnUpgradeMenuCase;
-            MovieClipSub * cont1                                                       ;
-            MovieClipSub * cont2                                                       ;
-            MovieClipSub * fastBuyUltraCont                                            ;
-            MovieClipSub * fastBuyUltraContBtnFastBuyUltra                             ;
-            ui::Text     * fastBuyUltraContBtnFastBuyUltraCostTXT                      ;
-			MCCase     * fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase;
-            MovieClipSub * sphereSlot1                                                 ;
-            MovieClipSub * sphereSlot1SphereAnima                                      ;
-            MovieClipSub * sphereSlot1SphereAnimaFire                                  ;
-            MovieClipSub * sphereSlot1SphereAnimaIce                                   ;
-            MovieClipSub * sphereSlot1SphereAnimaStone                                 ;
-            MovieClipSub * sphereSlot1SphereAnimaLevin                                 ;
-            MovieClipSub * sphereSlot2                                                 ;
-            MovieClipSub * sphereSlot2Fire                                             ;
-            MovieClipSub * sphereSlot2Ice                                              ;
-            MovieClipSub * sphereSlot2Stone                                            ;
-            MovieClipSub * sphereSlot2Levin                                            ;
-            MovieClipSub * sphereSlot3                                                 ;
-            MovieClipSub * sphereSlot3Fire                                             ;
-            MovieClipSub * sphereSlot3Ice                                              ;
-            MovieClipSub * sphereSlot3Stone                                            ;
-            MovieClipSub * sphereSlot3Levin                                            ;
-            MovieClipSub * sphereSlot4                                                 ;
-            MovieClipSub * sphereSlot4Fire                                             ;
-            MovieClipSub * sphereSlot4Ice                                              ;
-            MovieClipSub * sphereSlot4Stone                                            ;
-            MovieClipSub * sphereSlot4Levin                                            ;
+			MovieClipSub * cont1;
+			MovieClipSub * cont2;
+			MovieClipSub * fastBuyUltraCont;
+			MovieClipSub * fastBuyUltraContBtnFastBuyUltra;
+			MCText * fastBuyUltraContBtnFastBuyUltraCostTXT;
+			MCCase * fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase;
+			MovieClipSub * sphereSlot1;
+			MovieClipSub * sphereSlot1SphereSlotCase;
+			MovieClip * sphereSlot1SphereAnima;
+			MovieClipSub * sphereSlot1SphereAnimaCont;
+			MovieClipSub * sphereSlot2;
+			MovieClipSub * sphereSlot2SphereSlotCase;
+			MovieClip * sphereSlot2SphereAnima;
+			MovieClipSub * sphereSlot2SphereAnimaCont;
+			MovieClipSub * sphereSlot3;
+			MovieClipSub * sphereSlot3SphereSlotCase;
+			MovieClip * sphereSlot3SphereAnima;
+			MovieClipSub * sphereSlot3SphereAnimaCont;
+			MovieClipSub * sphereSlot4;
+			MovieClipSub * sphereSlot4SphereSlotCase;
+			MovieClip * sphereSlot4SphereAnima;
+			MovieClipSub * sphereSlot4SphereAnimaCont;
 
 
-            CREATE_FUNC(TowerMenu_mc);
+			 
 
             TowerMenu_mc()
             {
@@ -95,7 +95,7 @@ namespace engine
             }// end function
         };
 
-        class UltraTowerMenu_mc :public BaseNode
+		class UltraTowerMenu_mc :public MovieClip
         {
 		public:
             BtnUpgradeMenu * btnUpgradeMenu;// : MovieClip;

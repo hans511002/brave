@@ -7,23 +7,12 @@ namespace engine{
 
         BuildTowerMenu_mc::BuildTowerMenu_mc():MovieClip("tower","BuildTowerMenu_mc","BuildTowerMenu_mc")
         {
+            cont= this->createMovieClipSub("cont");
+contBuildTowerMenuCase= cont->createCase("buildTowerMenuCase");
+contCostTXT= cont->createText("costTXT");
+
         }
-
-        BuildTowerMenu_mc::~BuildTowerMenu_mc()
-        {
-        }
-        bool BuildTowerMenu_mc::init(){
-            Common::String placeName = "place";
-            this->place = Sprite::create("public/BuildTowerMenu_mc.png");
-            this->price = ui::Text::create();
-            return true;
-        };
-
-
-        void BuildTowerMenu_mc::setPrice(int pr){
-            char tmp[8];
-            this->price->setText(itoa(pr, tmp, 10));
-        };
+   
         BuildTowerMenu::BuildTowerMenu(Sprite *  param1)
         {
             //this->addEventListener(Event.ADDED_TO_STAGE, this->init);

@@ -33,7 +33,7 @@ namespace engine
 		virtual dragonBones::Animation *getAnimation()   = 0;
 		MC();
 
-        ui::Text * createText(string slot);
+		MCText * createText(string slot);
         MovieClipSub * createMovieClipSub(string slot);
 		MovieClip * createMovieClip(string slot,string rootPath, string armName, string dbName, string defAniName = "");
         MCCase * createCase(string slot, bool draw = true);
@@ -66,6 +66,9 @@ namespace engine
     };
     struct MovieClip :public virtual BaseNode, public virtual MC,public virtual MovieClipSubBase
     {
+		string rootPath ;
+		string  armName;
+		string  dbName;
         World * world;
 		Vec2 myPoint;
 		short myFrame;
@@ -86,6 +89,9 @@ namespace engine
         
         MovieClip(MC *mc, dragonBones::Slot * slot,string rootPath, string armName,string dbName,string defAniName = "");
         MovieClip(MC *mc, string slot, string rootPath, string armName,string dbName,string defAniName = "");
+		MovieClip::MovieClip(MC *mc, string slotName, string rootPath, string dbName, string defAniName = "");
+
+		bool MovieClip::init(string rootPath, string armName, string dbName, string defAniName="");
 
 		virtual	dragonBones::Armature *getArmature();
 		virtual dragonBones::Animation *getAnimation();

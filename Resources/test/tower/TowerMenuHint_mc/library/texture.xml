@@ -1,0 +1,32 @@
+<TextureAtlas name="TowerMenuHint_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 10964" x="361" y="114" width="130" height="46"/>
+ <SubTexture name="Shape/shape 393" x="107" y="205" width="130" height="46"/>
+ <SubTexture name="Shape/shape 10966" x="107" y="157" width="130" height="46"/>
+ <SubTexture name="Shape/shape 406" x="350" y="162" width="130" height="46"/>
+ <SubTexture name="Shape/shape 10968" x="239" y="243" width="63" height="26"/>
+ <SubTexture name="Shape/shape 10970" x="162" y="253" width="63" height="26"/>
+ <SubTexture name="Shape/shape 10971" x="97" y="253" width="63" height="26"/>
+ <SubTexture name="Shape/shape 10972" x="239" y="215" width="63" height="26"/>
+ <SubTexture name="nameTXT1" x="239" y="185" width="105" height="28"/>
+ <SubTexture name="nameTXT2" x="243" y="155" width="105" height="28"/>
+ <SubTexture name="nameTXT3" x="0" y="185" width="105" height="28"/>
+ <SubTexture name="nameTXT4" x="0" y="155" width="105" height="28"/>
+ <SubTexture name="nameTXT5" x="409" y="253" width="33" height="27"/>
+ <SubTexture name="nameTXT6" x="339" y="253" width="33" height="27"/>
+ <SubTexture name="nameTXT7" x="374" y="253" width="33" height="27"/>
+ <SubTexture name="nameTXT8" x="304" y="245" width="33" height="27"/>
+ <SubTexture name="arrow" x="482" y="162" width="19" height="19"/>
+ <SubTexture name="Shape/shape 10910" x="248" y="0" width="122" height="112"/>
+ <SubTexture name="l111" x="52" y="215" width="42" height="31"/>
+ <SubTexture name="l112" x="346" y="210" width="132" height="41"/>
+ <SubTexture name="case" x="0" y="215" width="50" height="50"/>
+ <SubTexture name="Shape/shape 10918" x="124" y="0" width="122" height="112"/>
+ <SubTexture name="l121" x="52" y="248" width="43" height="21"/>
+ <SubTexture name="l122" x="118" y="114" width="123" height="41"/>
+ <SubTexture name="Shape/shape 10950" x="372" y="0" width="122" height="112"/>
+ <SubTexture name="l131" x="304" y="215" width="40" height="28"/>
+ <SubTexture name="l132" x="243" y="114" width="116" height="39"/>
+ <SubTexture name="Shape/shape 10955" x="0" y="0" width="122" height="112"/>
+ <SubTexture name="img1" x="444" y="253" width="33" height="25"/>
+ <SubTexture name="img2" x="0" y="114" width="116" height="39"/>
+</TextureAtlas>

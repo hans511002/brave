@@ -119,7 +119,7 @@ namespace engine
         //    }
         //}
     };
-    ui::Text * MC::createText(string slotName){
+    MCText * MC::createText(string slotName){
 		return new MCText(this, slotName);
     };
 	 
@@ -404,7 +404,8 @@ namespace engine
 		totalFrames = cont->getArmature()->_armatureData->animations[defAniName]->frameCount;// +1;
 		float duration = cont->getArmature()->_armatureData->animations[defAniName]->duration;
 		CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
-		this->display = cont;
+		this->display = cont; 
+		this->armName = cont->getArmature()->getName(); 
 		BaseNode::init();
 		addChild(display);
 		//this->autorelease(); in BaseNode::init();
@@ -413,8 +414,18 @@ namespace engine
 	};
 	MovieClip::MovieClip(string rootPath, string armName, string dbName, string defAniName) :isOnce(false)
 	{
+		this->rootPath = rootPath;
+		this->armName = armName;
+		this->dbName = dbName; 
+		init(rootPath, armName, dbName, defAniName);
+	};
+	bool MovieClip::init(string rootPath, string armName, string dbName, string defAniName) 
+	{ 
+		if (isReady && this->getName()==armName){
+			return true;
+		}
 		this->display = this->loadArmature(rootPath, armName, dbName);
-		if(defAniName == "")
+		if (defAniName == "")
 			this->defAniName = defAniName = this->getArmature()->_armatureData->defaultAnimation->name;
 		totalFrames = this->getArmature()->_armatureData->animations[defAniName]->frameCount;//+ 1;
 		float duration = this->getArmature()->_armatureData->animations[defAniName]->duration;
@@ -422,11 +433,13 @@ namespace engine
 		BaseNode::init();
 		addChild(display);
 		//this->autorelease(); in BaseNode::init();
-		this->setName(armName); 
+		this->setName(armName);
 		this->isReady = true;
 	};
 	MovieClip::MovieClip(string armName, string dbName, BaseNode *node)
-	{
+	{ 
+		this->armName = armName;
+		this->dbName = dbName;
 		this->display = this->loadArmature(armName, dbName);
 		if(defAniName == "")
 			this->defAniName = defAniName = this->getArmature()->_armatureData->defaultAnimation->name;
@@ -459,15 +472,32 @@ namespace engine
 	{
 		MovieClip(rootPath, armName, dbName, defAniName);
 		this->mc = mc;
+		this->rootPath = rootPath;
+		this->armName = armName;
+		this->dbName = dbName;
 		this->slotName = slotName;
 		this->setName(slotName);
 		reinit();
 		mc->addMCbs(this);
 	};
+	MovieClip::MovieClip(MC *mc, string slotName, string rootPath,string dbName, string defAniName)
+	{ 
+ 		this->mc = mc;
+		this->slotName = slotName;
+		this->setName(slotName);
+		this->rootPath = rootPath; 
+		this->dbName = dbName;
+		reinit();
+		mc->addMCbs(this);
+	};
 	bool MovieClip::reinit()
 	{
-		if(this->mc)
+		if (this->mc)
+		{
 			MovieClipSubBase::reinit();
+			armName = this->display->getName();
+			init(rootPath, armName, dbName, defAniName);
+		}
 		return this->isReady;
 	};
 
