@@ -1,0 +1,50 @@
+<data>
+				<strategy1>
+				<wave startDelay = "0" replacement = "1">
+				<enemy typeUnit = "10" count = "9" interval = "1.4" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "10" count = "1" interval = "9" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "10" count = "10" interval = "0.9" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "7" count = "2" interval = "1.4" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "7" count = "1" interval = "5" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "6" count = "2" interval = "1.1" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "6" count = "1" interval = "4" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "7" count = "2" interval = "1.1" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "7" count = "1" interval = "0" way = "0" path = "0">< / enemy>
+				< / wave>
+				< / strategy1>
+				<strategy2>
+				<wave startDelay = "20" replacement = "1">
+				<enemy typeUnit = "6" count = "2" interval = "2" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "6" count = "1" interval = "7" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "7" count = "2" interval = "2" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "7" count = "1" interval = "7" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "6" count = "2" interval = "1.6" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "6" count = "1" interval = "6" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "10" count = "10" interval = "0.8" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "7" count = "2" interval = "1.5" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "7" count = "1" interval = "6" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "6" count = "2" interval = "1.4" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "6" count = "1" interval = "5" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "10" count = "10" interval = "0.6" way = "0" path = "0">< / enemy>
+
+				< / wave>
+				< / strategy2>
+				<settings money = "0" autoStartTimer = "5">
+				<testing towerStep = "0" fireStep = "0" iceStep = "0" stoneStep = "0" levinStep = "0">< / testing>
+				<sphere archiveSphereBlock = "0" towerSlotBlock = "0" ultraTower1Block = "1" ultraTower2Block = "1" ultraTower3Block = "1" ultraTower4Block = "1" ultraTower1UpgrBlock = "0" ultraTower2UpgrBlock = "0" ultraTower3UpgrBlock = "0" ultraTower4UpgrBlock = "0">< / sphere>
+				<portals>
+				<fire>
+				<location path = "0" road = "0" way = "0">< / location>
+				< / fire>
+				<ice>
+				<location path = "0" road = "0" way = "0">< / location>
+				< / ice>
+				<stone>
+				<location path = "0" road = "0" way = "0">< / location>
+				< / stone>
+				<levin>
+				<location path = "0" road = "0" way = "0">< / location>
+				< / levin>
+				< / portals>
+				< / settings>
+				< / data>

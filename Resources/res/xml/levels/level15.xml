@@ -1,0 +1,175 @@
+<data>
+				<strategy1>   <!--юниты 1, 2, 3, 4, 6, 10, 7, 29, 18, 5, 12, 16, 9, 8, 11, 17, 23 огн из порт, 20, 22, 14, 24 лед.порт, 27телепорт, 13, 28шам, 19, 25кам, 15, 21 рим вторые, 26 элемент молния-->
+				<wave startDelay = "0" replacement = "0">  <!--1-->   <!--слева-->
+				<enemy typeUnit = "8" count = "2" interval = "2" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "8" count = "1" interval = "4" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "13" count = "2" interval = "2" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "13" count = "1" interval = "0" way = "0" path = "0">< / enemy>
+				< / wave>
+				<waveSettings delay = "40">< / waveSettings>
+				<wave startDelay = "0" replacement = "1"> <!--2-->
+				<enemy typeUnit = "19" count = "2" interval = "3" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "13" count = "5" interval = "0.7" way = "0" path = "0">< / enemy>
+				< / wave>
+				<waveSettings delay = "45">< / waveSettings>
+				<wave startDelay = "0" replacement = "0">
+				<enemy typeUnit = "24" count = "1" interval = "1" way = "0" path = "0" gate = "1">< / enemy>
+				<enemy typeUnit = "22" count = "1" interval = "3" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "19" count = "1" interval = "7" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "25" count = "1" interval = "6" way = "0" path = "0" gate = "1">< / enemy>
+				<enemy typeUnit = "19" count = "1" interval = "0" way = "0" path = "0">< / enemy>
+				< / wave>
+				<waveSettings delay = "45">< / waveSettings>
+				<wave startDelay = "0" replacement = "2">
+				<enemy typeUnit = "24" count = "1" interval = "0" way = "0" path = "0" gate = "1">< / enemy>
+				<enemy typeUnit = "17" count = "3" interval = "3.3" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "21" count = "1" interval = "8" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "8" count = "5" interval = "0.6" way = "0" path = "0">< / enemy>
+				< / wave>
+				<waveSettings delay = "55">< / waveSettings>
+				<wave startDelay = "0" replacement = "0">
+				<enemy typeUnit = "15" count = "1" interval = "3" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "15" count = "1" interval = "4" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "11" count = "2" interval = "5" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "11" count = "1" interval = "10" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "27" count = "1" interval = "3" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "13" count = "4" interval = "0.6" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "13" count = "1" interval = "0" way = "0" path = "0">< / enemy>
+				< / wave>
+				<waveSettings delay = "50">< / waveSettings>
+				<wave startDelay = "3" replacement = "0">
+				<enemy typeUnit = "9" count = "2" interval = "4" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "9" count = "1" interval = "8" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "8" count = "10" interval = "1.3" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "8" count = "1" interval = "6" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "13" count = "10" interval = "1" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "13" count = "1" interval = "1" way = "0" path = "0">< / enemy>
+				< / wave>
+				<waveSettings delay = "55">< / waveSettings>
+				<wave startDelay = "5" replacement = "0">
+				<enemy typeUnit = "25" count = "1" interval = "2" way = "0" path = "0" gate = "1">< / enemy>
+				<enemy typeUnit = "24" count = "1" interval = "3" way = "0" path = "0" gate = "1">< / enemy>
+				<enemy typeUnit = "25" count = "1" interval = "2" way = "0" path = "0" gate = "1">< / enemy>
+				<enemy typeUnit = "24" count = "1" interval = "2" way = "0" path = "0" gate = "1">< / enemy>
+				<enemy typeUnit = "25" count = "1" interval = "3" way = "0" path = "0" gate = "1">< / enemy>
+				<enemy typeUnit = "24" count = "1" interval = "2" way = "0" path = "0" gate = "1">< / enemy>
+				< / wave>
+				<waveSettings delay = "40">< / waveSettings>
+				<wave startDelay = "6" replacement = "0">
+				<enemy typeUnit = "8" count = "10" interval = "1.3" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "8" count = "1" interval = "4" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "8" count = "10" interval = "1" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "8" count = "1" interval = "1" way = "0" path = "0">< / enemy>
+				< / wave>
+				< / strategy1>
+
+				<strategy2> <!--справа-->
+				<wave startDelay = "4" replacement = "0"> <!--1-->
+				<enemy typeUnit = "13" count = "3" interval = "4" way = "0" path = "0">< / enemy>
+				< / wave>
+				<wave startDelay = "5" replacement = "1"> <!--2-->
+				<enemy typeUnit = "14" count = "2" interval = "3" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "13" count = "4" interval = "0.7" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "13" count = "1" interval = "4" way = "0" path = "0">< / enemy>
+				< / wave>
+				<wave startDelay = "8" replacement = "2">
+				<enemy typeUnit = "23" count = "1" interval = "0" way = "0" path = "0" gate = "1">< / enemy>
+				<enemy typeUnit = "15" count = "1" interval = "4" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "28" count = "1" interval = "4" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "13" count = "5" interval = "0.6" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "15" count = "2" interval = "4" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "26" count = "1" interval = "0" way = "0" path = "0" gate = "1">< / enemy>
+				< / wave>
+				<wave startDelay = "18" replacement = "0">
+				<enemy typeUnit = "26" count = "1" interval = "2" way = "0" path = "0" gate = "1">< / enemy>
+				<enemy typeUnit = "22" count = "1" interval = "0" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "23" count = "1" interval = "2" way = "0" path = "0" gate = "1">< / enemy>
+				<enemy typeUnit = "8" count = "4" interval = "0.5" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "8" count = "1" interval = "2" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "8" count = "5" interval = "0.5" way = "0" path = "0">< / enemy>
+				< / wave>
+				<wave startDelay = "0" replacement = "1">
+				<enemy typeUnit = "23" count = "1" interval = "4" way = "0" path = "0" gate = "1">< / enemy>
+				<enemy typeUnit = "8" count = "4" interval = "0.6" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "8" count = "1" interval = "4" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "21" count = "1" interval = "14" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "21" count = "1" interval = "10" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "13" count = "4" interval = "0.6" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "13" count = "1" interval = "4" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "26" count = "1" interval = "0" way = "0" path = "0" gate = "1">< / enemy>
+				< / wave>
+				<wave startDelay = "6" replacement = "0">
+				<enemy typeUnit = "8" count = "10" interval = "1.3" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "8" count = "1" interval = "4" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "13" count = "10" interval = "1" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "13" count = "1" interval = "1" way = "0" path = "0">< / enemy>
+				< / wave>
+				<wave startDelay = "2" replacement = "0">
+				<enemy typeUnit = "26" count = "1" interval = "5" way = "0" path = "0" gate = "1">< / enemy>
+				<enemy typeUnit = "23" count = "2" interval = "5" way = "0" path = "0" gate = "1">< / enemy>
+				<enemy typeUnit = "26" count = "1" interval = "5" way = "0" path = "0" gate = "1">< / enemy>
+				<enemy typeUnit = "23" count = "1" interval = "5" way = "0" path = "0" gate = "1">< / enemy>
+				<enemy typeUnit = "26" count = "1" interval = "5" way = "0" path = "0" gate = "1">< / enemy>
+				<enemy typeUnit = "23" count = "1" interval = "5" way = "0" path = "0" gate = "1">< / enemy>
+				<enemy typeUnit = "26" count = "1" interval = "5" way = "0" path = "0" gate = "1">< / enemy>
+				<enemy typeUnit = "23" count = "2" interval = "5" way = "0" path = "0" gate = "1">< / enemy>
+				<enemy typeUnit = "26" count = "1" interval = "5" way = "0" path = "0" gate = "1">< / enemy>
+				<enemy typeUnit = "23" count = "1" interval = "5" way = "0" path = "0" gate = "1">< / enemy>
+				< / wave>
+				<wave startDelay = "18" replacement = "0">
+				<enemy typeUnit = "26" count = "1" interval = "2" way = "0" path = "0" gate = "1">< / enemy>
+				<enemy typeUnit = "23" count = "1" interval = "2" way = "0" path = "0" gate = "1">< / enemy>
+				<enemy typeUnit = "8" count = "4" interval = "0.7" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "8" count = "1" interval = "2" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "8" count = "9" interval = "0.7" way = "0" path = "0">< / enemy>
+				< / wave>
+				< / strategy2>
+
+				<strategy3>
+				<wave startDelay = "4" replacement = "0"> <!--1-->
+				< / wave>
+				<wave startDelay = "5" replacement = "2"> <!--2-->
+				< / wave>
+				<wave startDelay = "15" replacement = "2">
+				< / wave>
+				<wave startDelay = "30" replacement = "2">
+				< / wave>
+				<wave startDelay = "0" replacement = "2">
+				< / wave>
+				<wave startDelay = "3.2" replacement = "0">
+				<enemy typeUnit = "8" count = "5" interval = "0.9" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "28" count = "1" interval = "8" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "8" count = "3" interval = "0.9" way = "0" path = "0">< / enemy>
+				< / wave>
+				<wave startDelay = "0" replacement = "0">
+				<enemy typeUnit = "8" count = "10" interval = "1" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "8" count = "1" interval = "8" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "8" count = "10" interval = "1" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "8" count = "1" interval = "8" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "8" count = "10" interval = "1" way = "0" path = "0">< / enemy>
+				<enemy typeUnit = "8" count = "1" interval = "0" way = "0" path = "0">< / enemy>
+				< / wave>
+				<wave startDelay = "6" replacement = "0">
+				<enemy typeUnit = "8" count = "10" interval = "1" way = "0" path = "0">< / enemy>
+				< / wave>
+				< / strategy3>
+				<settings money = "600" bonus = "120">
+				<testing towerStep = "0" fireStep = "0" iceStep = "0" stoneStep = "0" levinStep = "0">< / testing>
+				<sphere archiveSphereBlock = "0" towerSlotBlock = "0" ultraTower1Block = "0" ultraTower2Block = "0" ultraTower3Block = "0" ultraTower4Block = "0" ultraTower1UpgrBlock = "0" ultraTower2UpgrBlock = "0" ultraTower3UpgrBlock = "0" ultraTower4UpgrBlock = "0">< / sphere>
+				<portals>
+				<fire>
+				<location path = "604" road = "2" way = "3" x = "-1" y = "0">< / location>
+				< / fire>
+				<ice>
+				<location path = "608" road = "1" way = "1" x = "-2" y = "0">< / location>
+				< / ice>
+				<stone>
+				<location path = "341" road = "1" way = "1" x = "-3" y = "0">< / location>
+				< / stone>
+				<levin>
+				<location path = "314" road = "2" way = "3" x = "2" y = "0">< / location>
+				< / levin>
+				< / portals>
+				<complexity easy = "133" normal = "120" hard = "100">< / complexity>
+				< / settings>
+				< / data>

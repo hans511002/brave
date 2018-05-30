@@ -1,0 +1,225 @@
+<root name="test" isGlobal="0" frameRate="30" version="3.0">
+ <armature name="MoveAir_mc">
+  <skin name="default">
+   <slot name="right" z="0" parent="right">
+    <display name="leftright" type="armature">
+     <transform/>
+    </display>
+   </slot>
+   <slot name="cont" z="1" parent="cont">
+    <display name="Shape/shape 216" type="image">
+     <transform pX="19" pY="19"/>
+    </display>
+    <display name="Shape/shape 218" type="image">
+     <transform pX="19" pY="17"/>
+    </display>
+   </slot>
+   <slot name="left" z="2" parent="left">
+    <display name="leftright" type="armature">
+     <transform/>
+    </display>
+   </slot>
+   <slot name="up" z="3" parent="up">
+    <display name="downup" type="armature">
+     <transform/>
+    </display>
+   </slot>
+   <slot name="down" z="4" parent="down">
+    <display name="downup" type="armature">
+     <transform/>
+    </display>
+   </slot>
+   <slot name="l9" z="5" parent="l9">
+    <display name="Shape/shape 214" type="image">
+     <transform pX="31" pY="32"/>
+    </display>
+   </slot>
+  </skin>
+  <bone name="up">
+   <transform x="1" y="-63"/>
+  </bone>
+  <bone name="cont">
+   <transform/>
+  </bone>
+  <bone name="left">
+   <transform x="-58" scX="-1" y="1"/>
+  </bone>
+  <bone name="right">
+   <transform x="58" y="1"/>
+  </bone>
+  <bone name="down">
+   <transform skY="-180" x="1" scX="-1" y="63" skX="180"/>
+  </bone>
+  <bone name="l9">
+   <transform x="-386.5" y="-1.5"/>
+  </bone>
+  <animation name="MoveAir_mc" fadeInTime="0.3" autoTween="1" duration="4" tweenEasing="NaN">
+   <timeline name="right">
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+    <frame displayIndex="-1" duration="3"/>
+   </timeline>
+   <timeline name="cont">
+    <frame displayIndex="-1" duration="1"/>
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+    <frame displayIndex="1" z="0" duration="1">
+     <transform/>
+    </frame>
+    <frame displayIndex="1" z="0" duration="1">
+     <transform/>
+    </frame>
+   </timeline>
+   <timeline name="left">
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+    <frame displayIndex="-1" duration="3"/>
+   </timeline>
+   <timeline name="up">
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+    <frame displayIndex="-1" duration="3"/>
+   </timeline>
+   <timeline name="down">
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+    <frame displayIndex="-1" duration="3"/>
+   </timeline>
+   <timeline name="l9">
+    <frame z="0" duration="1">
+     <transform/>
+    </frame>
+    <frame displayIndex="-1" duration="3"/>
+   </timeline>
+   <frame duration="3"/>
+   <frame duration="1"/>
+  </animation>
+ </armature>
+ <armature name="leftright">
+  <skin name="default">
+   <slot name="Layer 1" z="0" parent="Layer 1">
+    <display name="Shape/shape 188" type="image">
+     <transform pX="81" pY="42"/>
+    </display>
+    <display name="Shape/shape 190" type="image">
+     <transform pX="81" pY="42"/>
+    </display>
+    <display name="Shape/shape 192" type="image">
+     <transform pX="81" pY="42"/>
+    </display>
+    <display name="Shape/shape 194" type="image">
+     <transform pX="81" pY="42"/>
+    </display>
+    <display name="Shape/shape 196" type="image">
+     <transform pX="81" pY="42"/>
+    </display>
+    <display name="Shape/shape 198" type="image">
+     <transform pX="81" pY="42"/>
+    </display>
+    <display name="Shape/shape 200" type="image">
+     <transform pX="81" pY="42"/>
+    </display>
+    <display name="Shape/shape 202" type="image">
+     <transform pX="81" pY="42"/>
+    </display>
+   </slot>
+  </skin>
+  <bone name="Layer 1">
+   <transform/>
+  </bone>
+  <animation name="unnamed" duration="15" autoTween="1" tweenEasing="NaN">
+   <timeline name="Layer 1">
+    <frame z="0" duration="2">
+     <transform/>
+    </frame>
+    <frame displayIndex="1" z="0" duration="2">
+     <transform/>
+    </frame>
+    <frame displayIndex="2" z="0" duration="2">
+     <transform/>
+    </frame>
+    <frame displayIndex="3" z="0" duration="2">
+     <transform/>
+    </frame>
+    <frame displayIndex="4" z="0" duration="2">
+     <transform/>
+    </frame>
+    <frame displayIndex="5" z="0" duration="2">
+     <transform/>
+    </frame>
+    <frame displayIndex="6" z="0" duration="2">
+     <transform/>
+    </frame>
+    <frame displayIndex="7" z="0" duration="1">
+     <transform/>
+    </frame>
+   </timeline>
+  </animation>
+ </armature>
+ <armature name="downup">
+  <skin name="default">
+   <slot name="down" z="0" parent="down">
+    <display name="Shape/shape 204" type="image">
+     <transform pX="42" pY="82"/>
+    </display>
+    <display name="Shape/shape 205" type="image">
+     <transform pX="42" pY="82"/>
+    </display>
+    <display name="Shape/shape 206" type="image">
+     <transform pX="42" pY="82"/>
+    </display>
+    <display name="Shape/shape 207" type="image">
+     <transform pX="42" pY="82"/>
+    </display>
+    <display name="Shape/shape 208" type="image">
+     <transform pX="42" pY="82"/>
+    </display>
+    <display name="Shape/shape 209" type="image">
+     <transform pX="42" pY="82"/>
+    </display>
+    <display name="Shape/shape 210" type="image">
+     <transform pX="42" pY="82"/>
+    </display>
+    <display name="Shape/shape 211" type="image">
+     <transform pX="42" pY="82"/>
+    </display>
+   </slot>
+  </skin>
+  <bone name="down">
+   <transform/>
+  </bone>
+  <animation name="down" duration="15" autoTween="1" fadeInTime="0.3" tweenEasing="NaN">
+   <timeline name="down">
+    <frame z="0" duration="2">
+     <transform/>
+    </frame>
+    <frame displayIndex="1" z="0" duration="2">
+     <transform/>
+    </frame>
+    <frame displayIndex="2" z="0" duration="2">
+     <transform/>
+    </frame>
+    <frame displayIndex="3" z="0" duration="2">
+     <transform/>
+    </frame>
+    <frame displayIndex="4" z="0" duration="2">
+     <transform/>
+    </frame>
+    <frame displayIndex="5" z="0" duration="2">
+     <transform/>
+    </frame>
+    <frame displayIndex="6" z="0" duration="2">
+     <transform/>
+    </frame>
+    <frame displayIndex="7" z="0" duration="1">
+     <transform/>
+    </frame>
+   </timeline>
+  </animation>
+ </armature>
+</root>

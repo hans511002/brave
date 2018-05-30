@@ -7,13 +7,12 @@ using namespace cocostudio;
 
 namespace engine
 {
-    Hint_mc:Hint_mc():MovieClip("worldinterface/", "Hint_mc", "Hint_mc")
-    {
-        	nameTXT	=this	->createText	("nameTXT");
-            noteTXT	=this	->createText	("noteTXT");
-            timeTXT	=this	->createText	("timeTXT");
-
-    }    
+	Hint_mc::Hint_mc() :MovieClip("worldinterface/", "Hint_mc", "Hint_mc")
+	{
+		nameTXT = this->createText("nameTXT");
+		noteTXT = this->createText("noteTXT");
+		timeTXT = this->createText("timeTXT");
+	}
         
 	WorldInterface_mc::WorldInterface_mc()
 		:MovieClip("worldinterface/", "WorldInterface_mc", "WorldInterface_mc")
