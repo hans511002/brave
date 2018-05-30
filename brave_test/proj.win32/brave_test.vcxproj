@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{76A39BB2-9B84-4C65-98A5-654D86B86F2A}</ProjectGuid>
+    <RootNamespace>test_win32</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectName>brave_test</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0'">v120</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v120_xp</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0'">v140</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v140_xp</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0'">v120</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v120_xp</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0'">v140</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v140_xp</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\cocos2d\cocos\2d\cocos2dx.props" />
+    <Import Project="..\cocos2d\cocos\2d\cocos2d_headers.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\cocos2d\cocos\2d\cocos2dx.props" />
+    <Import Project="..\cocos2d\cocos\2d\cocos2d_headers.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration).win32\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration).win32\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration).win32\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration).win32\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LibraryPath>$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LibraryPath>$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END);D:\work\gm\brave\brave\Classes;D:\work\gm\brave\brave\cocos2d;D:\work\gm\brave\brave\Classes\base</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <DisableSpecificWarnings>4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories);$(_COCOS_LIB_PATH_WIN32_BEGIN);$(_COCOS_LIB_PATH_WIN32_END)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <PreLinkEvent>
+      <Command>
+      </Command>
+    </PreLinkEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup>
+    <CustomBuildStep>
+      <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
+xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
+      </Command>
+      <Outputs>$(TargetName).cab</Outputs>
+      <Inputs>$(TargetFileName)</Inputs>
+    </CustomBuildStep>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libcurl_imp.lib;websockets.lib;%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories);$(_COCOS_LIB_PATH_WIN32_BEGIN);$(_COCOS_LIB_PATH_WIN32_END)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <PreLinkEvent>
+      <Command>
+      </Command>
+    </PreLinkEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\brave\Classes\base\BaseNode.cpp" />
+    <ClCompile Include="..\..\brave\Classes\base\JsonUtil.cpp" />
+    <ClCompile Include="..\..\brave\Classes\base\mc.cpp" />
+    <ClCompile Include="..\..\brave\Classes\common\ArgsParse.cpp" />
+    <ClCompile Include="..\..\brave\Classes\common\Decoding.cpp" />
+    <ClCompile Include="..\..\brave\Classes\common\DirectoryInfo.cpp" />
+    <ClCompile Include="..\..\brave\Classes\common\Encoding.cpp" />
+    <ClCompile Include="..\..\brave\Classes\common\FTP.cpp" />
+    <ClCompile Include="..\..\brave\Classes\common\Functions.cpp" />
+    <ClCompile Include="..\..\brave\Classes\common\Log.cpp" />
+    <ClCompile Include="..\..\brave\Classes\common\md5.cpp" />
+    <ClCompile Include="..\..\brave\Classes\common\NetConstDefine.cpp" />
+    <ClCompile Include="..\..\brave\Classes\common\Socket.cpp" />
+    <ClCompile Include="..\..\brave\Classes\common\strCodeing.cpp" />
+    <ClCompile Include="..\..\brave\Classes\common\String.cpp" />
+    <ClCompile Include="..\..\brave\Classes\engine\WorldInterface_mc.cpp" />
+    <ClCompile Include="..\..\brave\Classes\test\AppDelegate.cpp" />
+    <ClCompile Include="..\..\brave\Classes\test\CoreElement.cpp" />
+    <ClCompile Include="..\..\brave\Classes\test\DragHelper.cpp" />
+    <ClCompile Include="..\..\brave\Classes\test\HelloWorldScene.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\brave\Classes\base\AllHeaders.h" />
+    <ClInclude Include="..\..\brave\Classes\base\BaseHeaders.h" />
+    <ClInclude Include="..\..\brave\Classes\base\BaseLayer.h" />
+    <ClInclude Include="..\..\brave\Classes\base\BaseNode.h" />
+    <ClInclude Include="..\..\brave\Classes\base\JsonUtil.h" />
+    <ClInclude Include="..\..\brave\Classes\base\mc.h" />
+    <ClInclude Include="..\..\brave\Classes\common\ArgsParse.h" />
+    <ClInclude Include="..\..\brave\Classes\common\Array.h" />
+    <ClInclude Include="..\..\brave\Classes\common\BTree.hpp" />
+    <ClInclude Include="..\..\brave\Classes\common\CalcExp.h" />
+    <ClInclude Include="..\..\brave\Classes\common\Common.h" />
+    <ClInclude Include="..\..\brave\Classes\common\Connection.h" />
+    <ClInclude Include="..\..\brave\Classes\common\Convert.h" />
+    <ClInclude Include="..\..\brave\Classes\common\DataTable.h" />
+    <ClInclude Include="..\..\brave\Classes\common\DateTime.h" />
+    <ClInclude Include="..\..\brave\Classes\common\DateTimeFun.h" />
+    <ClInclude Include="..\..\brave\Classes\common\DateTimer.h" />
+    <ClInclude Include="..\..\brave\Classes\common\Decoding.h" />
+    <ClInclude Include="..\..\brave\Classes\common\DirectoryInfo.hpp" />
+    <ClInclude Include="..\..\brave\Classes\common\Encoding.h" />
+    <ClInclude Include="..\..\brave\Classes\common\Enums.h" />
+    <ClInclude Include="..\..\brave\Classes\common\Eval.h" />
+    <ClInclude Include="..\..\brave\Classes\common\Exception.h" />
+    <ClInclude Include="..\..\brave\Classes\common\ExpEval.h" />
+    <ClInclude Include="..\..\brave\Classes\common\ExpEval.hpp" />
+    <ClInclude Include="..\..\brave\Classes\common\FileInfo.hpp" />
+    <ClInclude Include="..\..\brave\Classes\common\FTP.h" />
+    <ClInclude Include="..\..\brave\Classes\common\Functions.h" />
+    <ClInclude Include="..\..\brave\Classes\common\hashMath.h" />
+    <ClInclude Include="..\..\brave\Classes\common\HashTable.hpp" />
+    <ClInclude Include="..\..\brave\Classes\common\HashTable2.hpp" />
+    <ClInclude Include="..\..\brave\Classes\common\hashTable_bak.h" />
+    <ClInclude Include="..\..\brave\Classes\common\includeHead.h" />
+    <ClInclude Include="..\..\brave\Classes\common\IPAddress.h" />
+    <ClInclude Include="..\..\brave\Classes\common\Log.h" />
+    <ClInclude Include="..\..\brave\Classes\common\md5.h" />
+    <ClInclude Include="..\..\brave\Classes\common\MulHashTable.hpp" />
+    <ClInclude Include="..\..\brave\Classes\common\MulHashTable2.hpp" />
+    <ClInclude Include="..\..\brave\Classes\common\NetConstDefine.h" />
+    <ClInclude Include="..\..\brave\Classes\common\NetworkStream.h" />
+    <ClInclude Include="..\..\brave\Classes\common\numMap.hpp" />
+    <ClInclude Include="..\..\brave\Classes\common\platform.h" />
+    <ClInclude Include="..\..\brave\Classes\common\Socket.h" />
+    <ClInclude Include="..\..\brave\Classes\common\strCoding.h" />
+    <ClInclude Include="..\..\brave\Classes\common\String.h" />
+    <ClInclude Include="..\..\brave\Classes\common\TcpClient.h" />
+    <ClInclude Include="..\..\brave\Classes\common\TcpListener.h" />
+    <ClInclude Include="..\..\brave\Classes\common\TimeSpan.h" />
+    <ClInclude Include="..\..\brave\Classes\common\UdpClient.h" />
+    <ClInclude Include="..\..\brave\Classes\engine\WorldInterface_mc.h" />
+    <ClInclude Include="..\..\brave\Classes\test\AnimationBase.h" />
+    <ClInclude Include="..\..\brave\Classes\test\AnimationLayer.h" />
+    <ClInclude Include="..\..\brave\Classes\test\AppDelegate.h" />
+    <ClInclude Include="..\..\brave\Classes\test\BaseDemo.h" />
+    <ClInclude Include="..\..\brave\Classes\test\BoneOffset.h" />
+    <ClInclude Include="..\..\brave\Classes\test\BoundingBox.h" />
+    <ClInclude Include="..\..\brave\Classes\test\CoreElement.h" />
+    <ClInclude Include="..\..\brave\Classes\test\DBComTest.h" />
+    <ClInclude Include="..\..\brave\Classes\test\DragHelper.h" />
+    <ClInclude Include="..\..\brave\Classes\test\DragonBonesEvent.h" />
+    <ClInclude Include="..\..\brave\Classes\test\HelloDragonBones.h" />
+    <ClInclude Include="..\..\brave\Classes\test\HelloWorldScene.h" />
+    <ClInclude Include="..\..\brave\Classes\test\InverseKinematics.h" />
+    <ClInclude Include="..\..\brave\Classes\test\PerformanceTest.h" />
+    <ClInclude Include="..\..\brave\Classes\test\ReplaceAnimation.h" />
+    <ClInclude Include="..\..\brave\Classes\test\ReplaceSkin.h" />
+    <ClInclude Include="..\..\brave\Classes\test\ReplaceSlotDisplay.h" />
+    <ClInclude Include="..\..\brave\Classes\test\WorldInterface.h" />
+    <ClInclude Include="main.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\cocos2d\cocos\2d\libcocos2d.vcxproj">
+      <Project>{98a51ba8-fc3a-415b-ac8f-8c7bd464e93e}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\cocos2d\external\Box2D\proj.win32\libbox2d.vcxproj">
+      <Project>{929480e7-23c0-4df6-8456-096d71547116}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\libdragonbones.vcxproj">
+      <Project>{bde5c8d9-6363-44a7-b0b8-a2884cdb1306}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="game.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
