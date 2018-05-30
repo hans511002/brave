@@ -332,6 +332,15 @@ namespace std
 		this->setContentSize(Size(w, h));
 		if(draw)drawRange();
 	}
+	float BaseNode::getWidth()
+	{
+	    return this->getContentSize().width;
+    };
+    float BaseNode::getHeight()
+	{
+	    return this->getContentSize().height;
+    };
+
 	void BaseNode::drawRange()
 	{
 		DrawNode* drawNode = DrawNode::create();

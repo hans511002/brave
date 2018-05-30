@@ -44,8 +44,16 @@ namespace std
 	class BaseFuns
 	{
 	public:
+	    inline BaseFuns():mouseChildren(false),mouseEnabled(false),buttonMode(false){};
 		static bool debug;
 		cocos2d::Label* createLabel(const std::string& string);
+		    
+		inline virtual bool hitTest(const Vec2 &pt){return false;};
+		inline virtual bool hitTest(cocos2d::EventMouse* event){};
+		bool mouseChildren;
+		bool mouseEnabled;
+		bool buttonMode;
+		
 		float getStageWidth() const;
 		float getStageHeight() const;
 		dragonBones::CCArmatureDisplay * loadArmature(string rootPath, string armatureName, const string& dragonBonesName = "");
@@ -69,15 +77,13 @@ namespace std
 	public:
 		static const double AnimationInterval;
 
-		BaseNode() :schdt(false), mouseEnabled(false), mouseChildren(false), autoDel(true) {};
+		inline BaseNode() :schdt(false), autoDel(true) {};//mouseEnabled(false), mouseChildren(false), 
 		BaseNode(float w, float h, bool draw = true);
 		bool init();
 		bool atStage();
 		void touchAction(cocos2d::Ref *pSender, cocos2d::ui::TouchEventType type);
 		virtual bool hitTest(const Vec2 &pt);
 		virtual bool hitTest(cocos2d::EventMouse* event);
-		bool mouseChildren;
-		bool mouseEnabled;
 		cocos2d::Point localToGlobal(cocos2d::Point pt);
 
 		virtual void onEnter();
@@ -111,6 +117,10 @@ namespace std
 		virtual void rightMouseUpHandler(cocos2d::EventMouse* event);
 
 		virtual std::MouseEvent* buildMousrEvent(Node * node = NULL, int mouseButton = 0);
+		    
+		virtual float getWidth();
+		virtual float getHeight();
+		    
 		static bool hitTest(cocos2d::Node * node, const Vec2 &pt);
 		static bool hitTest(cocos2d::Node * node, cocos2d::EventMouse* e);
 		static void setAlpha(cocos2d::Node * node, float);
@@ -126,8 +136,11 @@ namespace std
 		void mouseDownHandler(cocos2d::EventMouse *event);
 		BaseSprite(string file);
 		BaseSprite(cocos2d::Sprite* sprite);
-		BaseSprite() {};
-		static Sprite* create();
+		//BaseSprite() {};
+		virtual float getWidth();
+		virtual float getHeight();
+		inline virtual bool hitTest(const Vec2 &pt){return std::hitTest(this,pt);};
+		inline virtual bool hitTest(cocos2d::EventMouse* event){return std::hitTest(this,event);};
 	private:
 
 	};

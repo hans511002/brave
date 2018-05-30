@@ -9,8 +9,11 @@ namespace engine
 		{
 			cont = this->createMovieClipSub("cont");
 			contCont1 = cont->createMovieClipSub("cont1");
+			//²»¸´ÓÃ
 			//contCont1Sphere1 = contCont1->createMovieClipSub("sphere1");
 			//contCont1Sphere2 = contCont1->createMovieClipSub("sphere2");
+			
+			//¸´ÓÃ
 			contCont1Sphere1 = new MovieClip(contCont1, "sphere1", "worldinterface", "GetSphere_mc");
 			contCont1Sphere2 = new MovieClip(contCont1, "sphere1", "worldinterface", "GetSphere_mc");
 			//nameTXT            = this     ->createText        ("nameTXT");
