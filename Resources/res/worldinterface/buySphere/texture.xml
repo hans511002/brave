@@ -1,8 +1,0 @@
-<TextureAtlas name="buySphere" imagePath="texture.png">
- <SubTexture name="Shape/shape 12171" x="52" y="30" width="33" height="22"/>
- <SubTexture name="Shape/shape 12182" x="94" y="0" width="31" height="20"/>
- <SubTexture name="lightUp" x="52" y="0" width="40" height="28"/>
- <SubTexture name="Case" x="0" y="0" width="50" height="50"/>
- <SubTexture name="Shape/shape 12176" x="94" y="21" width="12" height="15"/>
- <SubTexture name="Shape/shape 12178" x="107" y="21" width="13" height="13"/>
-</TextureAtlas>
