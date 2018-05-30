@@ -54,7 +54,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0f / 30.f);
-    FileUtils::getInstance()->addSearchPath("test");
+	FileUtils::getInstance()->addSearchPath("res");
+	FileUtils::getInstance()->addSearchPath("test");
     
     // create a scene. it's an autorelease object
     //auto scene = HelloDragonBones::createScene();

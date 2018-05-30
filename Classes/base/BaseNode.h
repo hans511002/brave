@@ -24,12 +24,15 @@ namespace std
 	float setText(ui::Text * tui, float val);
 	int getInt(ui::Text * tui);
 	string getText(ui::Text * tui);
+	  bool hitTest(cocos2d::Node * node, const Vec2 &pt);
+	  bool hitTest(cocos2d::Node * node, cocos2d::EventMouse* e);
 
 
 	extern Common::Log * gLog;
 
 	void writeLog(string msg, int type);
 	class MouseEvent : public cocos2d::EventMouse
+
 	{
 	public:
 		Common::Array<Node *> currentTargets;
@@ -49,7 +52,7 @@ namespace std
 		cocos2d::Label* createLabel(const std::string& string);
 		    
 		inline virtual bool hitTest(const Vec2 &pt){return false;};
-		inline virtual bool hitTest(cocos2d::EventMouse* event){};
+		inline virtual bool hitTest(cocos2d::EventMouse* event){ return false; };
 		bool mouseChildren;
 		bool mouseEnabled;
 		bool buttonMode;
@@ -121,8 +124,6 @@ namespace std
 		virtual float getWidth();
 		virtual float getHeight();
 		    
-		static bool hitTest(cocos2d::Node * node, const Vec2 &pt);
-		static bool hitTest(cocos2d::Node * node, cocos2d::EventMouse* e);
 		static void setAlpha(cocos2d::Node * node, float);
 		static float getAlpha(cocos2d::Node * node);
 	protected:
@@ -130,13 +131,14 @@ namespace std
 	};
 	class BaseSprite :public   cocos2d::Sprite, public   BaseFuns
 	{
+	protected:
+		inline BaseSprite() {};
 	public:
 		bool init();
 		bool atStage();
 		void mouseDownHandler(cocos2d::EventMouse *event);
 		BaseSprite(string file);
 		BaseSprite(cocos2d::Sprite* sprite);
-		//BaseSprite() {};
 		virtual float getWidth();
 		virtual float getHeight();
 		inline virtual bool hitTest(const Vec2 &pt){return std::hitTest(this,pt);};

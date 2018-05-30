@@ -147,13 +147,13 @@ namespace std
 	{
 		if(!mouseEnabled)return false;
 		if(!this->isVisible())return false;
-		return BaseNode::hitTest(this, pt);
+		return std::hitTest(this, pt);
 	};
 	bool BaseNode::hitTest(cocos2d::EventMouse* event)
 	{
 		if(!mouseEnabled)return false;
 		if(!this->isVisible())return false;
-		return BaseNode::hitTest(this, event);
+		return std::hitTest(this, event);
 	};
 
 	cocos2d::Point BaseNode::localToGlobal(cocos2d::Point pt)
@@ -193,7 +193,7 @@ namespace std
 
 	void BaseSprite::mouseDownHandler(cocos2d::EventMouse *event)//(event:MouseEvent) : void
 	{
-		if(!BaseNode::hitTest(this, event))return;
+		if (!std::hitTest(this, event))return;
 		Node * node = event->getCurrentTarget();
 		Event::Type tp = event->getType();
 		string target = node->getName();
@@ -201,7 +201,7 @@ namespace std
 	}
 	void BaseLayer::mouseDownHandler(cocos2d::EventMouse *event)//(event:MouseEvent) : void
 	{
-		if(!BaseNode::hitTest(this, event))return;
+		if (!std::hitTest(this, event))return;
 		Node * node = event->getCurrentTarget();
 		Event::Type tp = event->getType();
 		string target = node->getName();
@@ -253,11 +253,11 @@ namespace std
 		return std::buildArmature(armatureName, dragonBonesName);
 	};
 
-	bool BaseNode::hitTest(cocos2d::Node * node, cocos2d::EventMouse* e)
+	bool  hitTest(cocos2d::Node * node, cocos2d::EventMouse* e)
 	{
 		return hitTest(node, e->getLocationInView());
 	};
-	bool BaseNode::hitTest(Node * node, const Vec2 &pt)
+	bool  hitTest(Node * node, const Vec2 &pt)
 	{
 		if(!node->isVisible())return false;
 		if(node->getOpacity() < 2)return false;
@@ -340,6 +340,14 @@ namespace std
 	{
 	    return this->getContentSize().height;
     };
+	float BaseSprite::getWidth()
+	{
+		return this->getContentSize().width;
+	};
+	float BaseSprite::getHeight()
+	{
+		return this->getContentSize().height;
+	};
 
 	void BaseNode::drawRange()
 	{
@@ -421,7 +429,7 @@ namespace std
 		}
 		else
 		{
-			if(BaseNode::hitTest(node, this))
+			if(std::hitTest(node, this))
 				currentTargets.push(node);
 			if(node->isVisible() && node->getChildrenCount())
 			{
