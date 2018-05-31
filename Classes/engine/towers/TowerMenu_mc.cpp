@@ -80,9 +80,9 @@ fastBuyUltraContBtnFastBuyUltraCostTXT= fastBuyUltraContBtnFastBuyUltra->createT
 sellUltraTower= this->createMovieClipSub("sellUltraTower");
 sellUltraTowerSellUltraTowerCase= sellUltraTower->createCase("sellUltraTowerCase");
 sphereSlot1= this->createMovieClipSub("sphereSlot1");
-sphereSlot1SphereAnima= sphereSlot1->createMovieClip("sphereAnima","tower/", "UltraTowerMenu_mc", "UltraTowerMenu_mc");
+sphereSlot1SphereAnima= sphereSlot1->createMovieClip("sphereAnima","sphere/", "BulletSphereTower_mc", "BulletSphereTower_mc");
 sphereSlot1SphereAnimaCont= sphereSlot1SphereAnima->createMovieClipSub("cont");
-sphereSlot2SphereAnima= sphereSlot1->createMovieClip("sphereAnima","tower/", "UltraTowerMenu_mc", "UltraTowerMenu_mc");
+sphereSlot2SphereAnima= sphereSlot1->createMovieClip("sphereAnima","sphere/", "BulletSphereTower_mc", "BulletSphereTower_mc");
 sphereSlot2SphereAnimaCont= sphereSlot1SphereAnima->createMovieClipSub("cont");
 //sphereSlot1SphereAnima= sphereSlot1->createMovieClipSub("sphereAnima");
 //sphereSlot1SphereAnimaFire= sphereSlot1SphereAnima->createMovieClipSub("fire");
@@ -95,6 +95,13 @@ sphereSlot2SphereAnimaCont= sphereSlot1SphereAnima->createMovieClipSub("cont");
 //sphereSlot2SphereAnimaIce= sphereSlot2SphereAnima->createMovieClipSub("ice");
 //sphereSlot2SphereAnimaStone= sphereSlot2SphereAnima->createMovieClipSub("stone");
 //sphereSlot2SphereAnimaLevin= sphereSlot2SphereAnima->createMovieClipSub("levin");
+
+	    }
+	    UltraTowerMenuHint_mc::UltraTowerMenuHint_mc:MovieClip("tower/", "UltraTowerMenuHint_mc", "UltraTowerMenuHint_mc")
+	    {
+damageTXT= this->createText("damageTXT");
+nameTXT= this->createText("nameTXT");
+noteTXT= this->createText("noteTXT");
 
 	    }
     }

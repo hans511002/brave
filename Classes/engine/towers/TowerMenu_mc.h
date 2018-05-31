@@ -104,14 +104,11 @@ MovieClipSub * sphereSlot1SphereAnimaCont;
           class UltraTowerMenuHint_mc :public MovieClip
         {
         public:               
-            ui::Text * damageTXT;
-            ui::Text * nameTXT;
-            ui::Text * noteTXT;
-            CREATE_FUNC(UltraTowerMenuHint_mc);
-            UltraTowerMenuHint_mc()
-            {
-                return;
-            };// end function 
+MCText * damageTXT;
+MCText * nameTXT;
+MCText * noteTXT;
+
+            UltraTowerMenuHint_mc() ;
         };
     }
 }

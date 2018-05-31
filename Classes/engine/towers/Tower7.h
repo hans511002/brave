@@ -9,10 +9,7 @@ namespace engine
 {
     namespace towers
     {
-        struct BulletTower71_mc: public MovieClip
-        {
-            
-        };
+
         struct Tower7_mc : public MovieClip
         {
             MovieClip * blockTower;

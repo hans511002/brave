@@ -7,6 +7,17 @@ namespace engine
 {
     namespace towers
     {
+        Tower1_mc::Tower1_mc():MovieClip("tower/","Tower1_mc","Tower1_mc")
+        {
+blockTower= this->createMovieClipSub("blockTower");
+boneBlock= this->createMovieClipSub("boneBlock");
+selectTower= this->createMovieClipSub("selectTower");
+towerCase= this->createCase("towerCase");
+sphere1= this->createMovieClipSub("sphere1");
+sphere1Bullet= sphere1->createMovieClipSub("bullet");
+sphere1BulletCont= sphere1Bullet->createMovieClipSub("cont");
+
+        }
 
         bool Tower1::init()
         {

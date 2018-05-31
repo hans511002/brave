@@ -9,18 +9,16 @@ namespace engine
     {
         class Tower1_mc :public MovieClip
         {
-        public:
-            dragonBones::DBCCArmatureNode * blockTower;// : MovieClip;
-            dragonBones::DBCCArmatureNode * boneBlock;// : MovieClip;
-            dragonBones::DBCCArmatureNode * selectTower;// : MovieClip;
-            dragonBones::DBCCArmatureNode * sphere1;// : MovieClip;
-            dragonBones::DBCCArmatureNode * towerCase;// : MovieClip;
+        public: 
+MovieClipSub * blockTower;
+MovieClipSub * boneBlock;
+MovieClipSub * selectTower;
+MCCase * towerCase;
+MovieClipSub * sphere1;
+MovieClipSub * sphere1Bullet;
+MovieClipSub * sphere1BulletCont;
 
-            Tower1_mc()
-            {
-                return;
-            }// end function
-            bool init();
+            Tower1_mc(); 
         };
         class Tower1 :public Tower
         {
