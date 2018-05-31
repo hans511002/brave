@@ -14,8 +14,7 @@ namespace engine
 		timeTXT = this->createText("timeTXT");
 	}
         
-	WorldInterface_mc::WorldInterface_mc()
-		:MovieClip("worldinterface/", "WorldInterface_mc", "WorldInterface_mc")
+	WorldInterface_mc::WorldInterface_mc():MovieClip("worldinterface/", "WorldInterface_mc", "WorldInterface_mc")
 	{
 		//backComponents = this->createMovieClipSub("backComponents");//image
 		barInfo = this->createMovieClipSub("barInfo");
@@ -116,4 +115,6 @@ namespace engine
 		
 		traceBezier=NULL;
 	};
+	
+	
 }

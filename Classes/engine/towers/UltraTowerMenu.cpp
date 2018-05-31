@@ -4,11 +4,7 @@
 namespace engine
 {
     namespace towers
-    {
-        UltraTowerMenuHint_mc::UltraTowerMenuHint_mc()
-        {
-            return;
-        };// end function
+    { 
     	UltraTowerMenu::UltraTowerMenu(Tower *param1)
         {
             //this->addEventListener(Event.ADDED_TO_STAGE, this->init);
@@ -29,24 +25,25 @@ namespace engine
             //this->x = this->myTower->this_pt.x;
             //this->y = this->myTower->this_pt.y;
             this->towerRadius = new TowerRadius_mc();
-            this->towerRadius->stop();
-            this->towerRadius->width = this->myTower->radius * 2;
-            this->towerRadius->height = this->myTower->radius * 2 * this->world->scaleRadius;
-            this->towerRadius.mouseChildren = false;
-            this->towerRadius.mouseEnabled = false;
+            //this->towerRadius->stop();
+            this->towerRadius->setContentSize(Size(this->myTower->radius * 2, this->myTower->radius * 2 * this->world->scaleRadius));
+            //this->towerRadius->width = this->myTower->radius * 2;
+            //this->towerRadius->height = this->myTower->radius * 2 * this->world->scaleRadius;
+            this->towerRadius->mouseChildren = false;
+            this->towerRadius->mouseEnabled = false;
             this->addChild(this->towerRadius);
             this->container = new UltraTowerMenu_mc();
             this->container->stop();
             this->container->btnUpgradeMenu->stop();
             this->container->sphereSlot1->stop();
             this->container->sphereSlot2->stop();
-            this->container->sphereSlot1->sphereAnima->stop();
-            this->container->sphereSlot2->sphereAnima->stop();
-            this->container->sphereSlot1->sphereAnima->fire->stop();
-            this->container->sphereSlot2->sphereAnima->fire->stop();
+            this->container->sphereSlot1SphereAnima->stop();
+            this->container->sphereSlot2SphereAnima->stop();
+            this->container->sphereSlot1SphereAnimaCont->stop();
+            this->container->sphereSlot2SphereAnimaCont->stop();
             this->container->sellUltraTower->stop();
-            this->container->sellUltraTower->sellUltraTowerCase->stop();
-            this->container->sellUltraTower->sellUltraTowerCase->buttonMode = true;
+            this->container->sellUltraTowerSellUltraTowerCase->stop();
+            this->container->sellUltraTowerSellUltraTowerCase->buttonMode = true;
             this->addChild(this->container);
             this->world->listOfClasses.push(this);
             if (this->myTower->upgradeTypeAdd == 1)
@@ -95,97 +92,97 @@ namespace engine
             }
             else
             {
-                if (this->container->sphereSlot1->sphereAnima->isVisible())
+                if (this->container->sphereSlot1SphereAnima->isVisible())
                 {
-                    if (this->container->sphereSlot1->sphereAnima->currentFrame == 1)
+                    if (this->container->sphereSlot1SphereAnima->currentFrame == 1)
                     {
-                        if (this->container->sphereSlot1->sphereAnima->fire->currentFrame < this->container->sphereSlot1->sphereAnima->fire->totalFrames)
+                        if (this->container->sphereSlot1SphereAnimaCont->currentFrame < this->container->sphereSlot1SphereAnimaCont->totalFrames)
                         {
-                            this->container->sphereSlot1->sphereAnima->fire->gotoAndStop((this->container->sphereSlot1->sphereAnima->fire->currentFrame + 1));
+                            this->container->sphereSlot1SphereAnimaCont->gotoAndStop((this->container->sphereSlot1SphereAnimaCont->currentFrame + 1));
                         }
                         else
                         {
-                            this->container->sphereSlot1->sphereAnima->fire->gotoAndStop(1);
+                            this->container->sphereSlot1SphereAnimaCont->gotoAndStop(1);
                         }
                     }
-                    else if (this->container->sphereSlot1->sphereAnima->currentFrame == 2)
+                    else if (this->container->sphereSlot1SphereAnima->currentFrame == 2)
                     {
-                        if (this->container->sphereSlot1->sphereAnima->ice->currentFrame < this->container->sphereSlot1->sphereAnima->ice->totalFrames)
+                        if (this->container->sphereSlot1SphereAnimaCont->currentFrame < this->container->sphereSlot1SphereAnimaCont->totalFrames)
                         {
-                            this->container->sphereSlot1->sphereAnima->ice->gotoAndStop((this->container->sphereSlot1->sphereAnima->ice->currentFrame + 1));
+                            this->container->sphereSlot1SphereAnimaCont->gotoAndStop((this->container->sphereSlot1SphereAnimaCont->currentFrame + 1));
                         }
                         else
                         {
-                            this->container->sphereSlot1->sphereAnima->ice->gotoAndStop(1);
+                            this->container->sphereSlot1SphereAnimaCont->gotoAndStop(1);
                         }
                     }
-                    else if (this->container->sphereSlot1->sphereAnima->currentFrame == 3)
+                    else if (this->container->sphereSlot1SphereAnima->currentFrame == 3)
                     {
-                        if (this->container->sphereSlot1->sphereAnima->stone->currentFrame < this->container->sphereSlot1->sphereAnima->stone->totalFrames)
+                        if (this->container->sphereSlot1SphereAnimaCont->currentFrame < this->container->sphereSlot1SphereAnimaCont->totalFrames)
                         {
-                            this->container->sphereSlot1->sphereAnima->stone->gotoAndStop((this->container->sphereSlot1->sphereAnima->stone->currentFrame + 1));
+                            this->container->sphereSlot1SphereAnimaCont->gotoAndStop((this->container->sphereSlot1SphereAnimaCont->currentFrame + 1));
                         }
                         else
                         {
-                            this->container->sphereSlot1->sphereAnima->stone->gotoAndStop(1);
+                            this->container->sphereSlot1SphereAnimaCont->gotoAndStop(1);
                         }
                     }
-                    else if (this->container->sphereSlot1->sphereAnima->currentFrame == 4)
+                    else if (this->container->sphereSlot1SphereAnima->currentFrame == 4)
                     {
-                        if (this->container->sphereSlot1->sphereAnima->levin->currentFrame < this->container->sphereSlot1->sphereAnima->levin->totalFrames)
+                        if (this->container->sphereSlot1SphereAnimaCont->currentFrame < this->container->sphereSlot1SphereAnimaCont->totalFrames)
                         {
-                            this->container->sphereSlot1->sphereAnima->levin->gotoAndStop((this->container->sphereSlot1->sphereAnima->levin->currentFrame + 1));
+                            this->container->sphereSlot1SphereAnimaCont->gotoAndStop((this->container->sphereSlot1SphereAnimaCont->currentFrame + 1));
                         }
                         else
                         {
-                            this->container->sphereSlot1->sphereAnima->levin->gotoAndStop(1);
+                            this->container->sphereSlot1SphereAnimaCont->gotoAndStop(1);
                         }
                     }
                 }
-                if (this->container->sphereSlot2->sphereAnima->isVisible())
+                if (this->container->sphereSlot2SphereAnima->isVisible())
                 {
-                    if (this->container->sphereSlot2->sphereAnima->currentFrame == 1)
+                    if (this->container->sphereSlot2SphereAnima->currentFrame == 1)
                     {
-                        if (this->container->sphereSlot2->sphereAnima->fire->currentFrame < this->container->sphereSlot2->sphereAnima->fire->totalFrames)
+                        if (this->container->sphereSlot2SphereAnimaCont->currentFrame < this->container->sphereSlot2SphereAnimaCont->totalFrames)
                         {
-                            this->container->sphereSlot2->sphereAnima->fire->gotoAndStop((this->container->sphereSlot2->sphereAnima->fire->currentFrame + 1));
+                            this->container->sphereSlot2SphereAnimaCont->gotoAndStop((this->container->sphereSlot2SphereAnimaCont->currentFrame + 1));
                         }
                         else
                         {
-                            this->container->sphereSlot2->sphereAnima->fire->gotoAndStop(1);
+                            this->container->sphereSlot2SphereAnimaCont->gotoAndStop(1);
                         }
                     }
-                    else if (this->container->sphereSlot2->sphereAnima->currentFrame == 2)
+                    else if (this->container->sphereSlot2SphereAnima->currentFrame == 2)
                     {
-                        if (this->container->sphereSlot2->sphereAnima->ice->currentFrame < this->container->sphereSlot2->sphereAnima->ice->totalFrames)
+                        if (this->container->sphereSlot2SphereAnimaCont->currentFrame < this->container->sphereSlot2SphereAnimaCont->totalFrames)
                         {
-                            this->container->sphereSlot2->sphereAnima->ice->gotoAndStop((this->container->sphereSlot2->sphereAnima->ice->currentFrame + 1));
+                            this->container->sphereSlot2SphereAnimaCont->gotoAndStop((this->container->sphereSlot2SphereAnimaCont->currentFrame + 1));
                         }
                         else
                         {
-                            this->container->sphereSlot2->sphereAnima->ice->gotoAndStop(1);
+                            this->container->sphereSlot2SphereAnimaCont->gotoAndStop(1);
                         }
                     }
-                    else if (this->container->sphereSlot2->sphereAnima->currentFrame == 3)
+                    else if (this->container->sphereSlot2SphereAnima->currentFrame == 3)
                     {
-                        if (this->container->sphereSlot2->sphereAnima->stone->currentFrame < this->container->sphereSlot2->sphereAnima->stone->totalFrames)
+                        if (this->container->sphereSlot2SphereAnimaCont->currentFrame < this->container->sphereSlot2SphereAnimaCont->totalFrames)
                         {
-                            this->container->sphereSlot2->sphereAnima->stone->gotoAndStop((this->container->sphereSlot2->sphereAnima->stone->currentFrame + 1));
+                            this->container->sphereSlot2SphereAnimaCont->gotoAndStop((this->container->sphereSlot2SphereAnimaCont->currentFrame + 1));
                         }
                         else
                         {
-                            this->container->sphereSlot2->sphereAnima->stone->gotoAndStop(1);
+                            this->container->sphereSlot2SphereAnimaCont->gotoAndStop(1);
                         }
                     }
-                    else if (this->container->sphereSlot2->sphereAnima->currentFrame == 4)
+                    else if (this->container->sphereSlot2SphereAnima->currentFrame == 4)
                     {
-                        if (this->container->sphereSlot2->sphereAnima->levin->currentFrame < this->container->sphereSlot2->sphereAnima->levin->totalFrames)
+                        if (this->container->sphereSlot2SphereAnimaCont->currentFrame < this->container->sphereSlot2SphereAnimaCont->totalFrames)
                         {
-                            this->container->sphereSlot2->sphereAnima->levin->gotoAndStop((this->container->sphereSlot2->sphereAnima->levin->currentFrame + 1));
+                            this->container->sphereSlot2SphereAnimaCont->gotoAndStop((this->container->sphereSlot2SphereAnimaCont->currentFrame + 1));
                         }
                         else
                         {
-                            this->container->sphereSlot2->sphereAnima->levin->gotoAndStop(1);
+                            this->container->sphereSlot2SphereAnimaCont->gotoAndStop(1);
                         }
                     }
                 }
@@ -251,7 +248,7 @@ namespace engine
                 else if (this->fastBuyUltraFlag == "upgrade")
                 {
                     //Sounds.instance.playSoundWithVol("snd_tower_build1", 0.9);
-                    this->container->btnUpgradeMenu->costTXT->setVisible(false);
+                    this->container->btnUpgradeMenuCostTXT->setVisible(false);
                     this->myTower->upgradeTypeAdd ++;
                     if (!this->myTower->enemyTarget)
                     {
@@ -461,12 +458,12 @@ namespace engine
             }
             if (!this->openFastBuyUltraFlag && !this->closeFastBuyUltraFlag)
             {
-                if (param1->target->name == "fastBuyUltraCase" && this->container->fastBuyUltraCont->btnFastBuyUltra->fastBuyUltraCase.buttonMode)
+                if (param1->target->name == "fastBuyUltraCase" && this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase.buttonMode)
                 {
-                    if (this->container->fastBuyUltraCont->btnFastBuyUltra->currentFrame == 1)
+                    if (this->container->fastBuyUltraContBtnFastBuyUltra->currentFrame == 1)
                     {
-                        this->container->fastBuyUltraCont->btnFastBuyUltra->gotoAndStop(2);
-                        this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT.text = this->fastBuyPrice;
+                        this->container->fastBuyUltraContBtnFastBuyUltra->gotoAndStop(2);
+                        this->container->fastBuyUltraContBtnFastBuyUltra->costTXT.text = this->fastBuyPrice;
                         if (this->fastBuyUltraFlag == "upgrade")
                         {
                             if (this->myTower->towerType == 5)
@@ -533,11 +530,11 @@ namespace engine
                         //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
                     }
                 }
-                else if (this->container->fastBuyUltraCont->btnFastBuyUltra->currentFrame == 2)
+                else if (this->container->fastBuyUltraContBtnFastBuyUltra->currentFrame == 2)
                 {
-                    this->container->fastBuyUltraCont->btnFastBuyUltra->gotoAndStop(1);
-                    std::setText(this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT, this->fastBuyPrice);
-                    //this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT.text = this->fastBuyPrice;
+                    this->container->fastBuyUltraContBtnFastBuyUltra->gotoAndStop(1);
+                    std::setText(this->container->fastBuyUltraContBtnFastBuyUltra->costTXT, this->fastBuyPrice);
+                    //this->container->fastBuyUltraContBtnFastBuyUltra->costTXT.text = this->fastBuyPrice;
                     if (this->world->worldInterface->container->fireBacklight->isVisible() || this->world->worldInterface->container->iceBacklight->isVisible() || this->world->worldInterface->container->stoneBacklight->isVisible() || this->world->worldInterface->container->levinBacklight->isVisible())
                     {
                         this->world->worldInterface->archiveSphereBacklightManage("");
@@ -674,11 +671,11 @@ namespace engine
             {
                 if (!this->openFastBuyUltraFlag && !this->closeFastBuyUltraFlag)
                 {
-                    if (this->container->fastBuyUltraCont->btnFastBuyUltra->currentFrame == 2 && this->container->fastBuyUltraCont->btnFastBuyUltra->fastBuyUltraCase->buttonMode)
+                    if (this->container->fastBuyUltraContBtnFastBuyUltra->currentFrame == 2 && this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->buttonMode)
                     {
-                        this->container->fastBuyUltraCont->btnFastBuyUltra->gotoAndStop(1);
-                        std::setText(this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT, this->fastBuyPrice);
-                        //this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT.text = this->fastBuyPrice;
+                        this->container->fastBuyUltraContBtnFastBuyUltra->gotoAndStop(1);
+                        std::setText(this->container->fastBuyUltraContBtnFastBuyUltra->costTXT, this->fastBuyPrice);
+                        //this->container->fastBuyUltraContBtnFastBuyUltra->costTXT.text = this->fastBuyPrice;
                         this->fastBuyBlockCost = true;
                         this->fastBuyUltraManage(); 
                         this->myTower->mouseChildren = false;
@@ -1034,29 +1031,29 @@ namespace engine
                 {
                     this->container->sphereSlot1->gotoAndStop(1);
                     this->container->sphereSlot2->gotoAndStop(1);
-                    this->container->sphereSlot1->sphereAnima->gotoAndStop(1);
-                    this->container->sphereSlot1->sphereAnima->fire->stop();
-                    this->container->sphereSlot2->sphereAnima->gotoAndStop(3);
-                    this->container->sphereSlot2->sphereAnima->stone->stop();
+                    this->container->sphereSlot1SphereAnima->gotoAndStop(1);
+                    this->container->sphereSlot1SphereAnimaCont->stop();
+                    this->container->sphereSlot2SphereAnima->gotoAndStop(3);
+                    this->container->sphereSlot2SphereAnimaCont->stop();
                     if (!this->myTower->shootingTurnStack[0])
                     {
-                        this->container->sphereSlot1->sphereAnima->setVisible(false);
-                        this->container->sphereSlot1->sphereSlotCase->buttonMode = false;
+                        this->container->sphereSlot1SphereAnima->setVisible(false);
+                        this->container->sphereSlot1SphereSlotCase->buttonMode = false;
                     }
                     else
                     {
-                        this->container->sphereSlot1->sphereAnima->setVisible(true);
-                        this->container->sphereSlot1->sphereSlotCase->buttonMode = true;
+                        this->container->sphereSlot1SphereAnima->setVisible(true);
+                        this->container->sphereSlot1SphereSlotCase->buttonMode = true;
                     }
                     if (!this->myTower->shootingTurnStack[2])
                     {
-                        this->container->sphereSlot2->sphereAnima->setVisible(false);
-                        this->container->sphereSlot2->sphereSlotCase->buttonMode = false;
+                        this->container->sphereSlot2SphereAnima->setVisible(false);
+                        this->container->sphereSlot2SphereSlotCase->buttonMode = false;
                     }
                     else
                     {
-                        this->container->sphereSlot2->sphereAnima->setVisible(true);
-                        this->container->sphereSlot2->sphereSlotCase->buttonMode = true;
+                        this->container->sphereSlot2SphereAnima->setVisible(true);
+                        this->container->sphereSlot2SphereSlotCase->buttonMode = true;
                     }
                     if (this->myTower->upgradeTypeAdd == 1)
                     {
@@ -1065,7 +1062,7 @@ namespace engine
                     else if (this->world->money >= Main::mainClass->readXMLClass.costUltraAddFireStone && !this->fastBuyUltraFlag)
                     {
                         this->container->btnUpgradeMenu->gotoAndStop(1);
-                        this->container->btnUpgradeMenu->btnUpgradeMenuCase->buttonMode = true;
+                        this->container->btnUpgradeMenuBtnUpgradeMenuCase->buttonMode = true;
                     }
                     else
                     {
@@ -1082,14 +1079,14 @@ namespace engine
                     this->container->btnUpgradeMenu->gotoAndStop(5);
                     this->container->sphereSlot1->gotoAndStop(4);
                     this->container->sphereSlot2->gotoAndStop(4);
-                    this->container->sphereSlot1->sphereAnima->gotoAndStop(1);
-                    this->container->sphereSlot1->sphereAnima->fire->stop();
-                    this->container->sphereSlot2->sphereAnima->gotoAndStop(3);
-                    this->container->sphereSlot2->sphereAnima->stone->stop();
-                    this->container->sphereSlot1->sphereAnima->setVisible(false);
-                    this->container->sphereSlot1->sphereSlotCase->buttonMode = false;
-                    this->container->sphereSlot2->sphereAnima->setVisible(false);
-                    this->container->sphereSlot2->sphereSlotCase->buttonMode = false;
+                    this->container->sphereSlot1SphereAnima->gotoAndStop(1);
+                    this->container->sphereSlot1SphereAnimaCont->stop();
+                    this->container->sphereSlot2SphereAnima->gotoAndStop(3);
+                    this->container->sphereSlot2SphereAnimaCont->stop();
+                    this->container->sphereSlot1SphereAnima->setVisible(false);
+                    this->container->sphereSlot1SphereSlotCase->buttonMode = false;
+                    this->container->sphereSlot2SphereAnima->setVisible(false);
+                    this->container->sphereSlot2SphereSlotCase->buttonMode = false;
                 }
             }
             else if (this->myTower->towerType == 6)
@@ -1098,29 +1095,29 @@ namespace engine
                 {
                     this->container->sphereSlot1->gotoAndStop(1);
                     this->container->sphereSlot2->gotoAndStop(1);
-                    this->container->sphereSlot1->sphereAnima->gotoAndStop(2);
-                    this->container->sphereSlot1->sphereAnima->ice->stop();
-                    this->container->sphereSlot2->sphereAnima->gotoAndStop(4);
-                    this->container->sphereSlot2->sphereAnima->levin->stop();
+                    this->container->sphereSlot1SphereAnima->gotoAndStop(2);
+                    this->container->sphereSlot1SphereAnimaCont->stop();
+                    this->container->sphereSlot2SphereAnima->gotoAndStop(4);
+                    this->container->sphereSlot2SphereAnimaCont->stop();
                     if (!this->myTower->shootingTurnStack[1])
                     {
-                        this->container->sphereSlot1->sphereAnima->setVisible(false);
-                        this->container->sphereSlot1->sphereSlotCase->buttonMode = false;
+                        this->container->sphereSlot1SphereAnima->setVisible(false);
+                        this->container->sphereSlot1SphereSlotCase->buttonMode = false;
                     }
                     else
                     {
-                        this->container->sphereSlot1->sphereAnima->setVisible(true);
-                        this->container->sphereSlot1->sphereSlotCase->buttonMode = true;
+                        this->container->sphereSlot1SphereAnima->setVisible(true);
+                        this->container->sphereSlot1SphereSlotCase->buttonMode = true;
                     }
                     if (!this->myTower->shootingTurnStack[3])
                     {
-                        this->container->sphereSlot2->sphereAnima->setVisible(false);
-                        this->container->sphereSlot2->sphereSlotCase->buttonMode = false;
+                        this->container->sphereSlot2SphereAnima->setVisible(false);
+                        this->container->sphereSlot2SphereSlotCase->buttonMode = false;
                     }
                     else
                     {
-                        this->container->sphereSlot2->sphereAnima->setVisible(true);
-                        this->container->sphereSlot2->sphereSlotCase->buttonMode = true;
+                        this->container->sphereSlot2SphereAnima->setVisible(true);
+                        this->container->sphereSlot2SphereSlotCase->buttonMode = true;
                     }
                     if (this->myTower->upgradeTypeAdd == 1)
                     {
@@ -1129,7 +1126,7 @@ namespace engine
                     else if (this->world->money >= Main::mainClass->readXMLClass.costUltraAddIceLevin && !this->fastBuyUltraFlag)
                     {
                         this->container->btnUpgradeMenu->gotoAndStop(1);
-                        this->container->btnUpgradeMenu->btnUpgradeMenuCase->buttonMode = true;
+                        this->container->btnUpgradeMenuBtnUpgradeMenuCase->buttonMode = true;
                     }
                     else
                     {
@@ -1146,14 +1143,14 @@ namespace engine
                     this->container->btnUpgradeMenu->gotoAndStop(5);
                     this->container->sphereSlot1->gotoAndStop(4);
                     this->container->sphereSlot2->gotoAndStop(4);
-                    this->container->sphereSlot1->sphereAnima->gotoAndStop(2);
-                    this->container->sphereSlot1->sphereAnima->ice->stop();
-                    this->container->sphereSlot2->sphereAnima->gotoAndStop(4);
-                    this->container->sphereSlot2->sphereAnima->levin->stop();
-                    this->container->sphereSlot1->sphereAnima->setVisible(false);
-                    this->container->sphereSlot1->sphereSlotCase->buttonMode = false;
-                    this->container->sphereSlot2->sphereAnima->setVisible(false);
-                    this->container->sphereSlot2->sphereSlotCase->buttonMode = false;
+                    this->container->sphereSlot1SphereAnima->gotoAndStop(2);
+                    this->container->sphereSlot1SphereAnimaCont->stop();
+                    this->container->sphereSlot2SphereAnima->gotoAndStop(4);
+                    this->container->sphereSlot2SphereAnimaCont->stop();
+                    this->container->sphereSlot1SphereAnima->setVisible(false);
+                    this->container->sphereSlot1SphereSlotCase->buttonMode = false;
+                    this->container->sphereSlot2SphereAnima->setVisible(false);
+                    this->container->sphereSlot2SphereSlotCase->buttonMode = false;
                 }
             }
             else if (this->myTower->towerType == 7)
@@ -1162,29 +1159,29 @@ namespace engine
                 {
                     this->container->sphereSlot1->gotoAndStop(1);
                     this->container->sphereSlot2->gotoAndStop(1);
-                    this->container->sphereSlot1->sphereAnima->gotoAndStop(2);
-                    this->container->sphereSlot1->sphereAnima->ice->stop();
-                    this->container->sphereSlot2->sphereAnima->gotoAndStop(3);
-                    this->container->sphereSlot2->sphereAnima->stone->stop();
+                    this->container->sphereSlot1SphereAnima->gotoAndStop(2);
+                    this->container->sphereSlot1SphereAnimaCont->stop();
+                    this->container->sphereSlot2SphereAnima->gotoAndStop(3);
+                    this->container->sphereSlot2SphereAnimaCont->stop();
                     if (!this->myTower->shootingTurnStack[1])
                     {
-                        this->container->sphereSlot1->sphereAnima->setVisible(false);
-                        this->container->sphereSlot1->sphereSlotCase->buttonMode = false;
+                        this->container->sphereSlot1SphereAnima->setVisible(false);
+                        this->container->sphereSlot1SphereSlotCase->buttonMode = false;
                     }
                     else
                     {
-                        this->container->sphereSlot1->sphereAnima->setVisible(true);
-                        this->container->sphereSlot1->sphereSlotCase->buttonMode = true;
+                        this->container->sphereSlot1SphereAnima->setVisible(true);
+                        this->container->sphereSlot1SphereSlotCase->buttonMode = true;
                     }
                     if (!this->myTower->shootingTurnStack[2])
                     {
-                        this->container->sphereSlot2->sphereAnima->setVisible(false);
-                        this->container->sphereSlot2->sphereSlotCase->buttonMode = false;
+                        this->container->sphereSlot2SphereAnima->setVisible(false);
+                        this->container->sphereSlot2SphereSlotCase->buttonMode = false;
                     }
                     else
                     {
-                        this->container->sphereSlot2->sphereAnima->setVisible(true);
-                        this->container->sphereSlot2->sphereSlotCase->buttonMode = true;
+                        this->container->sphereSlot2SphereAnima->setVisible(true);
+                        this->container->sphereSlot2SphereSlotCase->buttonMode = true;
                     }
                     if (this->myTower->upgradeTypeAdd == 1)
                     {
@@ -1193,7 +1190,7 @@ namespace engine
                     else if (this->world->money >= Main::mainClass->readXMLClass.costUltraAddIceStone && !this->fastBuyUltraFlag)
                     {
                         this->container->btnUpgradeMenu->gotoAndStop(1);
-                        this->container->btnUpgradeMenu->btnUpgradeMenuCase->buttonMode = true;
+                        this->container->btnUpgradeMenuBtnUpgradeMenuCase->buttonMode = true;
                     }
                     else
                     {
@@ -1210,14 +1207,14 @@ namespace engine
                     this->container->btnUpgradeMenu->gotoAndStop(5);
                     this->container->sphereSlot1->gotoAndStop(4);
                     this->container->sphereSlot2->gotoAndStop(4);
-                    this->container->sphereSlot1->sphereAnima->gotoAndStop(2);
-                    this->container->sphereSlot1->sphereAnima->ice->stop();
-                    this->container->sphereSlot2->sphereAnima->gotoAndStop(3);
-                    this->container->sphereSlot2->sphereAnima->stone->stop();
-                    this->container->sphereSlot1->sphereAnima->setVisible(false);
-                    this->container->sphereSlot1->sphereSlotCase->buttonMode = false;
-                    this->container->sphereSlot2->sphereAnima->setVisible(false);
-                    this->container->sphereSlot2->sphereSlotCase->buttonMode = false;
+                    this->container->sphereSlot1SphereAnima->gotoAndStop(2);
+                    this->container->sphereSlot1SphereAnimaCont->stop();
+                    this->container->sphereSlot2SphereAnima->gotoAndStop(3);
+                    this->container->sphereSlot2SphereAnimaCont->stop();
+                    this->container->sphereSlot1SphereAnima->setVisible(false);
+                    this->container->sphereSlot1SphereSlotCase->buttonMode = false;
+                    this->container->sphereSlot2SphereAnima->setVisible(false);
+                    this->container->sphereSlot2SphereSlotCase->buttonMode = false;
                 }
             }
             else if (this->myTower->towerType == 8)
@@ -1226,29 +1223,29 @@ namespace engine
                 {
                     this->container->sphereSlot1->gotoAndStop(1);
                     this->container->sphereSlot2->gotoAndStop(1);
-                    this->container->sphereSlot1->sphereAnima->gotoAndStop(1);
-                    this->container->sphereSlot1->sphereAnima->fire->stop();
-                    this->container->sphereSlot2->sphereAnima->gotoAndStop(4);
-                    this->container->sphereSlot2->sphereAnima->levin->stop();
+                    this->container->sphereSlot1SphereAnima->gotoAndStop(1);
+                    this->container->sphereSlot1SphereAnimaCont->stop();
+                    this->container->sphereSlot2SphereAnima->gotoAndStop(4);
+                    this->container->sphereSlot2SphereAnimaCont->stop();
                     if (!this->myTower->shootingTurnStack[0])
                     {
-                        this->container->sphereSlot1->sphereAnima->setVisible(false);
-                        this->container->sphereSlot1->sphereSlotCase->buttonMode = false;
+                        this->container->sphereSlot1SphereAnima->setVisible(false);
+                        this->container->sphereSlot1SphereSlotCase->buttonMode = false;
                     }
                     else
                     {
-                        this->container->sphereSlot1->sphereAnima->setVisible(true);
-                        this->container->sphereSlot1->sphereSlotCase->buttonMode = true;
+                        this->container->sphereSlot1SphereAnima->setVisible(true);
+                        this->container->sphereSlot1SphereSlotCase->buttonMode = true;
                     }
                     if (!this->myTower->shootingTurnStack[3])
                     {
-                        this->container->sphereSlot2->sphereAnima->setVisible(false);
-                        this->container->sphereSlot2->sphereSlotCase->buttonMode = false;
+                        this->container->sphereSlot2SphereAnima->setVisible(false);
+                        this->container->sphereSlot2SphereSlotCase->buttonMode = false;
                     }
                     else
                     {
-                        this->container->sphereSlot2->sphereAnima->setVisible(true);
-                        this->container->sphereSlot2->sphereSlotCase->buttonMode = true;
+                        this->container->sphereSlot2SphereAnima->setVisible(true);
+                        this->container->sphereSlot2SphereSlotCase->buttonMode = true;
                     }
                     if (this->myTower->upgradeTypeAdd == 1)
                     {
@@ -1257,7 +1254,7 @@ namespace engine
                     else if (this->world->money >= Main::mainClass->readXMLClass.costUltraAddFireLevin && !this->fastBuyUltraFlag)
                     {
                         this->container->btnUpgradeMenu->gotoAndStop(1);
-                        this->container->btnUpgradeMenu->btnUpgradeMenuCase->buttonMode = true;
+                        this->container->btnUpgradeMenuBtnUpgradeMenuCase->buttonMode = true;
                     }
                     else
                     {
@@ -1274,14 +1271,14 @@ namespace engine
                     this->container->btnUpgradeMenu->gotoAndStop(5);
                     this->container->sphereSlot1->gotoAndStop(4);
                     this->container->sphereSlot2->gotoAndStop(4);
-                    this->container->sphereSlot1->sphereAnima->gotoAndStop(1);
-                    this->container->sphereSlot1->sphereAnima->fire->stop();
-                    this->container->sphereSlot2->sphereAnima->gotoAndStop(4);
-                    this->container->sphereSlot2->sphereAnima->levin->stop();
-                    this->container->sphereSlot1->sphereAnima->setVisible(false);
-                    this->container->sphereSlot1->sphereSlotCase->buttonMode = false;
-                    this->container->sphereSlot2->sphereAnima->setVisible(false);
-                    this->container->sphereSlot2->sphereSlotCase->buttonMode = false;
+                    this->container->sphereSlot1SphereAnima->gotoAndStop(1);
+                    this->container->sphereSlot1SphereAnimaCont->stop();
+                    this->container->sphereSlot2SphereAnima->gotoAndStop(4);
+                    this->container->sphereSlot2SphereAnimaCont->stop();
+                    this->container->sphereSlot1SphereAnima->setVisible(false);
+                    this->container->sphereSlot1SphereSlotCase->buttonMode = false;
+                    this->container->sphereSlot2SphereAnima->setVisible(false);
+                    this->container->sphereSlot2SphereSlotCase->buttonMode = false;
                 }
             }
             if (this->fastBuyUltraFlag)
@@ -1300,53 +1297,53 @@ namespace engine
         {
             this->autoguidesMouse_pt = cocos2d::Point(Main::mainClass->worldClass->mouseX, Main::mainClass->worldClass->mouseY);
             this->autoguidesObject = NULL;
-            this->autoguidesObject_pt = this->container->sphereSlot1->localToGlobal(this->container->sphereSlot1->sphereSlotCase->getPosition());
-            this->autoguidesObjectWidth = this->container->sphereSlot1->sphereSlotCase->width / 2;
-            this->autoguidesObjectHeight = this->container->sphereSlot1->sphereSlotCase->height / 2;
+            this->autoguidesObject_pt = this->container->sphereSlot1->localToGlobal(this->container->sphereSlot1SphereSlotCase->getPosition());
+            this->autoguidesObjectWidth = this->container->sphereSlot1SphereSlotCase->width / 2;
+            this->autoguidesObjectHeight = this->container->sphereSlot1SphereSlotCase->height / 2;
             if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
                 && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
                 && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
                 && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
             {
-                this->autoguidesObject = this->container->sphereSlot1->sphereSlotCase;
+                this->autoguidesObject = this->container->sphereSlot1SphereSlotCase;
             }
             if (!this->autoguidesObject)
             {
-                this->autoguidesObject_pt = this->container->sphereSlot2->localToGlobal(this->container->sphereSlot2->sphereSlotCase->getPosition());
-                this->autoguidesObjectWidth = this->container->sphereSlot2->sphereSlotCase->width / 2;
-                this->autoguidesObjectHeight = this->container->sphereSlot2->sphereSlotCase->height / 2;
+                this->autoguidesObject_pt = this->container->sphereSlot2->localToGlobal(this->container->sphereSlot2SphereSlotCase->getPosition());
+                this->autoguidesObjectWidth = this->container->sphereSlot2SphereSlotCase->width / 2;
+                this->autoguidesObjectHeight = this->container->sphereSlot2SphereSlotCase->height / 2;
                 if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
                     && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
                     && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
                     && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
                 {
-                    this->autoguidesObject = this->container->sphereSlot2->sphereSlotCase;
+                    this->autoguidesObject = this->container->sphereSlot2SphereSlotCase;
                 }
             }
-            if (!this->autoguidesObject && this->container->btnUpgradeMenu->isVisible() && this->container->btnUpgradeMenu->btnUpgradeMenuCase)
+            if (!this->autoguidesObject && this->container->btnUpgradeMenu->isVisible() && this->container->btnUpgradeMenuBtnUpgradeMenuCase)
             {
-                this->autoguidesObject_pt = this->container->btnUpgradeMenu->localToGlobal(this->container->btnUpgradeMenu->btnUpgradeMenuCase->getPosition());
-                this->autoguidesObjectWidth = this->container->btnUpgradeMenu->btnUpgradeMenuCase.width / 2;
-                this->autoguidesObjectHeight = this->container->btnUpgradeMenu->btnUpgradeMenuCase.height / 2;
+                this->autoguidesObject_pt = this->container->btnUpgradeMenu->localToGlobal(this->container->btnUpgradeMenuBtnUpgradeMenuCase->getPosition());
+                this->autoguidesObjectWidth = this->container->btnUpgradeMenuBtnUpgradeMenuCase.width / 2;
+                this->autoguidesObjectHeight = this->container->btnUpgradeMenuBtnUpgradeMenuCase.height / 2;
                 if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
                     && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
                     && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
                     && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
                 {
-                    this->autoguidesObject = this->container->btnUpgradeMenu->btnUpgradeMenuCase;
+                    this->autoguidesObject = this->container->btnUpgradeMenuBtnUpgradeMenuCase;
                 }
             }
             if (!this->autoguidesObject && this->fastBuyUltraFlag)
             {
-                this->autoguidesObject_pt = this->container->fastBuyUltraCont->btnFastBuyUltra->localToGlobal(this->container->fastBuyUltraCont->btnFastBuyUltra->fastBuyUltraCase->getPosition());
-                this->autoguidesObjectWidth = this->container->fastBuyUltraCont->btnFastBuyUltra->fastBuyUltraCase->width / 2;
-                this->autoguidesObjectHeight = this->container->fastBuyUltraCont->btnFastBuyUltra->fastBuyUltraCase->height / 2;
+                this->autoguidesObject_pt = this->container->fastBuyUltraContBtnFastBuyUltra->localToGlobal(this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->getPosition());
+                this->autoguidesObjectWidth = this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->width / 2;
+                this->autoguidesObjectHeight = this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->height / 2;
                 if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
                     && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
                     && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
                     && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
                 {
-                    this->autoguidesObject = this->container->fastBuyUltraCont->btnFastBuyUltra->fastBuyUltraCase;
+                    this->autoguidesObject = this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase;
                 }
             }
             if (this->autoguidesObject)
@@ -1364,90 +1361,90 @@ namespace engine
             if (this->container->fastBuyUltraCont)
             {
                 this->container->fastBuyUltraCont->stop();
-                this->container->fastBuyUltraCont->btnFastBuyUltra->stop();
-                this->container->fastBuyUltraCont->btnFastBuyUltra->fastBuyUltraCase->stop();
-                this->container->fastBuyUltraCont->indicator1->stop();
-                this->container->fastBuyUltraCont->indicator2->stop();
-                this->container->fastBuyUltraCont->indicator3->stop();
-                this->container->fastBuyUltraCont->indicator4->stop();
-                this->container->fastBuyUltraCont->indicator2->setVisible(false);
-                this->container->fastBuyUltraCont->indicator3->setVisible(false);
+                this->container->fastBuyUltraContBtnFastBuyUltra->stop();
+                this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->stop();
+                this->container->fastBuyUltraContIndicator1->stop();
+                this->container->fastBuyUltraContIndicator2->stop();
+                this->container->fastBuyUltraContIndicator3->stop();
+                this->container->fastBuyUltraContIndicator4->stop();
+                this->container->fastBuyUltraContIndicator2->setVisible(false);
+                this->container->fastBuyUltraContIndicator3->setVisible(false);
                 if (!this->fastBuyUltraFlag && !this->openFastBuyUltraFlag && !this->closeFastBuyUltraFlag)
                 {
                     this->container->fastBuyUltraCont->setVisible(false);
                 }
                 if (this->fastBuyUltraFlag)
                 {
-                    this->container->fastBuyUltraCont->btnFastBuyUltra->gotoAndStop(1);
-                    this->container->fastBuyUltraCont->indicator1->gotoAndStop(2);
-                    this->container->fastBuyUltraCont->indicator4->gotoAndStop(2);
-                    this->container->fastBuyUltraCont->indicator1->setVisible(true);
-                    this->container->fastBuyUltraCont->indicator4->setVisible(true);
+                    this->container->fastBuyUltraContBtnFastBuyUltra->gotoAndStop(1);
+                    this->container->fastBuyUltraContIndicator1->gotoAndStop(2);
+                    this->container->fastBuyUltraContIndicator4->gotoAndStop(2);
+                    this->container->fastBuyUltraContIndicator1->setVisible(true);
+                    this->container->fastBuyUltraContIndicator4->setVisible(true);
                     if (!this->fastBuyBlockCost)
                     {
-                        std::setText(this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT, this->fastBuyUltraScan());
-                        //this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT.text = this->fastBuyUltraScan();
+                        std::setText(this->container->fastBuyUltraContBtnFastBuyUltra->costTXT, this->fastBuyUltraScan());
+                        //this->container->fastBuyUltraContBtnFastBuyUltra->costTXT.text = this->fastBuyUltraScan();
                     }
                     else
                     {
-                        std::setText(this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT, this->fastBuyPrice);
-                        //this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT.text = this->fastBuyPrice;
+                        std::setText(this->container->fastBuyUltraContBtnFastBuyUltra->costTXT, this->fastBuyPrice);
+                        //this->container->fastBuyUltraContBtnFastBuyUltra->costTXT.text = this->fastBuyPrice;
                     }
                     if (this->myTower->towerType == 5)
                     {
                         if (this->myTower->shootingTurnStack[0])
                         {
-                            this->container->fastBuyUltraCont->indicator1->gotoAndStop(1);
+                            this->container->fastBuyUltraContIndicator1->gotoAndStop(1);
                         }
                         if (this->myTower->shootingTurnStack[2])
                         {
-                            this->container->fastBuyUltraCont->indicator4->gotoAndStop(1);
+                            this->container->fastBuyUltraContIndicator4->gotoAndStop(1);
                         }
                     }
                     else if (this->myTower->towerType == 6)
                     {
                         if (this->myTower->shootingTurnStack[1])
                         {
-                            this->container->fastBuyUltraCont->indicator1->gotoAndStop(1);
+                            this->container->fastBuyUltraContIndicator1->gotoAndStop(1);
                         }
                         if (this->myTower->shootingTurnStack[3])
                         {
-                            this->container->fastBuyUltraCont->indicator4->gotoAndStop(1);
+                            this->container->fastBuyUltraContIndicator4->gotoAndStop(1);
                         }
                     }
                     else if (this->myTower->towerType == 7)
                     {
                         if (this->myTower->shootingTurnStack[1])
                         {
-                            this->container->fastBuyUltraCont->indicator1->gotoAndStop(1);
+                            this->container->fastBuyUltraContIndicator1->gotoAndStop(1);
                         }
                         if (this->myTower->shootingTurnStack[2])
                         {
-                            this->container->fastBuyUltraCont->indicator4->gotoAndStop(1);
+                            this->container->fastBuyUltraContIndicator4->gotoAndStop(1);
                         }
                     }
                     else if (this->myTower->towerType == 8)
                     {
                         if (this->myTower->shootingTurnStack[0])
                         {
-                            this->container->fastBuyUltraCont->indicator1->gotoAndStop(1);
+                            this->container->fastBuyUltraContIndicator1->gotoAndStop(1);
                         }
                         if (this->myTower->shootingTurnStack[3])
                         {
-                            this->container->fastBuyUltraCont->indicator4->gotoAndStop(1);
+                            this->container->fastBuyUltraContIndicator4->gotoAndStop(1);
                         }
                     }
-                    this->fastBuyPrice = int(this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT.text);
-                    if (this->world->money >= int(this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT.text))
+                    this->fastBuyPrice = int(this->container->fastBuyUltraContBtnFastBuyUltra->costTXT.text);
+                    if (this->world->money >= int(this->container->fastBuyUltraContBtnFastBuyUltra->costTXT.text))
                     {
-                        this->container->fastBuyUltraCont->btnFastBuyUltra->fastBuyUltraCase->buttonMode = true;
+                        this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->buttonMode = true;
                     }
                     else
                     {
-                        this->container->fastBuyUltraCont->btnFastBuyUltra->gotoAndStop(4);
-                        std::setText(this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT, this->fastBuyPrice);
-                        //this->container->fastBuyUltraCont->btnFastBuyUltra->costTXT.text = this->fastBuyPrice;
-                        this->container->fastBuyUltraCont->btnFastBuyUltra->fastBuyUltraCase->buttonMode = false;
+                        this->container->fastBuyUltraContBtnFastBuyUltra->gotoAndStop(4);
+                        std::setText(this->container->fastBuyUltraContBtnFastBuyUltra->costTXT, this->fastBuyPrice);
+                        //this->container->fastBuyUltraContBtnFastBuyUltra->costTXT.text = this->fastBuyPrice;
+                        this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->buttonMode = false;
                     }
                 }
             }

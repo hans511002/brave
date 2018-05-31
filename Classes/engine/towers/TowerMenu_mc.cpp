@@ -18,7 +18,7 @@ namespace engine
 			contCont1Sphere2 = new MovieClip(contCont1, "sphere1", "worldinterface", "GetSphere_mc");
 			//nameTXT            = this     ->createText        ("nameTXT");
 		};// end function
-        TowerRadius_mc::TowerRadius_mc() :BaseSprite("Tower/TowerRadius_mc.png"), myTower(NULL)
+        TowerRadius_mc::TowerRadius_mc() :BaseSprite("tower/TowerRadius_mc.png"), myTower(NULL)
         {
         }
 		TowerMenu_mc::TowerMenu_mc() : MovieClip("tower/", "TowerMenu_mc", "TowerMenu_mc"){
@@ -63,6 +63,40 @@ namespace engine
 
 		}
      
+        UltraTowerMenu_mc::UltraTowerMenu_mc():MovieClip("tower/", "UltraTowerMenu_mc", "UltraTowerMenu_mc")
+	    {
+btnUpgradeMenu= this->createMovieClipSub("btnUpgradeMenu");
+btnUpgradeMenuBtnUpgradeMenuCase= btnUpgradeMenu->createCase("btnUpgradeMenuCase");
+btnUpgradeMenuCostTXT= btnUpgradeMenu->createText("costTXT");
+cont1= this->createMovieClipSub("cont1");
+fastBuyUltraCont= this->createMovieClipSub("fastBuyUltraCont");
+fastBuyUltraContBtnFastBuyUltra= fastBuyUltraCont->createMovieClipSub("btnFastBuyUltra");
+fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase= fastBuyUltraContBtnFastBuyUltra->createCase("fastBuyUltraCase");
+fastBuyUltraContBtnFastBuyUltraIndicator1= fastBuyUltraContBtnFastBuyUltra->createMovieClipSub("indicator1");
+fastBuyUltraContBtnFastBuyUltraIndicator2= fastBuyUltraContBtnFastBuyUltra->createMovieClipSub("indicator2");
+fastBuyUltraContBtnFastBuyUltraIndicator3= fastBuyUltraContBtnFastBuyUltra->createMovieClipSub("indicator3");
+fastBuyUltraContBtnFastBuyUltraIndicator4= fastBuyUltraContBtnFastBuyUltra->createMovieClipSub("indicator4");
+fastBuyUltraContBtnFastBuyUltraCostTXT= fastBuyUltraContBtnFastBuyUltra->createText("costTXT");
+sellUltraTower= this->createMovieClipSub("sellUltraTower");
+sellUltraTowerSellUltraTowerCase= sellUltraTower->createCase("sellUltraTowerCase");
+sphereSlot1= this->createMovieClipSub("sphereSlot1");
+sphereSlot1SphereAnima= sphereSlot1->createMovieClip("sphereAnima","tower/", "UltraTowerMenu_mc", "UltraTowerMenu_mc");
+sphereSlot1SphereAnimaCont= sphereSlot1SphereAnima->createMovieClipSub("cont");
+sphereSlot2SphereAnima= sphereSlot1->createMovieClip("sphereAnima","tower/", "UltraTowerMenu_mc", "UltraTowerMenu_mc");
+sphereSlot2SphereAnimaCont= sphereSlot1SphereAnima->createMovieClipSub("cont");
+//sphereSlot1SphereAnima= sphereSlot1->createMovieClipSub("sphereAnima");
+//sphereSlot1SphereAnimaFire= sphereSlot1SphereAnima->createMovieClipSub("fire");
+//sphereSlot1SphereAnimaIce= sphereSlot1SphereAnima->createMovieClipSub("ice");
+//sphereSlot1SphereAnimaStone= sphereSlot1SphereAnima->createMovieClipSub("stone");
+//sphereSlot1SphereAnimaLevin= sphereSlot1SphereAnima->createMovieClipSub("levin");
+//sphereSlot2= this->createMovieClipSub("sphereSlot2");
+//sphereSlot2SphereAnima= sphereSlot2->createMovieClipSub("sphereAnima");
+//sphereSlot2SphereAnimaFire= sphereSlot2SphereAnima->createMovieClipSub("fire");
+//sphereSlot2SphereAnimaIce= sphereSlot2SphereAnima->createMovieClipSub("ice");
+//sphereSlot2SphereAnimaStone= sphereSlot2SphereAnima->createMovieClipSub("stone");
+//sphereSlot2SphereAnimaLevin= sphereSlot2SphereAnima->createMovieClipSub("levin");
+
+	    }
     }
 }
  

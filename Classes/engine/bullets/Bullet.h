@@ -138,4 +138,5 @@ namespace engine{
         };
     }
 }
+using namespace engine::bullets;
 #endif

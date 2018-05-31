@@ -22,28 +22,7 @@ namespace engine
             Tower * myTower;
             TowerRadius_mc();
         };
-        
-        struct BtnUpgradeMenu : public BaseSprite
-        {
-            ui::Text * costTXT;// : TextField;
-            CREATE_FUNC(BtnUpgradeMenu);
-            BtnUpgradeMenu();
-            void setImage(int index);
-        };
-
-        struct SphereSlot : public BaseSprite
-        {
-            int currentFrame;
-            dragonBones::CCArmatureDisplay * fire;
-            dragonBones::CCArmatureDisplay * ice;
-            dragonBones::CCArmatureDisplay * stone;
-            dragonBones::CCArmatureDisplay * levin;
-            CREATE_FUNC(SphereSlot);
-            SphereSlot();
-            void setImage(int type);
-        };
-
-
+          
 		class TowerMenu_mc :public MovieClip
         {
         public:
@@ -85,10 +64,7 @@ namespace engine
 			MovieClipSub * sphereSlot4SphereSlotCase;
 			MovieClip * sphereSlot4SphereAnima;
 			MovieClipSub * sphereSlot4SphereAnimaCont;
-
-
-			 
-
+ 
             TowerMenu_mc()
             {
                 return;
@@ -98,18 +74,31 @@ namespace engine
 		class UltraTowerMenu_mc :public MovieClip
         {
 		public:
-            BtnUpgradeMenu * btnUpgradeMenu;// : MovieClip;
-            MovieClip * cont1;// : MovieClip;
-            BaseNode fastBuyUltraCont;// : MovieClip;
-            BaseNode* sellUltraTower;// : MovieClip;
-            BaseNode* sphereSlot1;//: MovieClip;
-            BaseNode* sphereSlot2;// : MovieClip;
-            CREATE_FUNC(UltraTowerMenu_mc);
+            
+MovieClipSub * btnUpgradeMenu;
+MCCase * btnUpgradeMenuBtnUpgradeMenuCase;
+MCText * btnUpgradeMenuCostTXT;
+MovieClipSub * cont1;
+MovieClipSub * fastBuyUltraCont;
+MovieClipSub * fastBuyUltraContBtnFastBuyUltra;
+MCCase * fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase;
+MovieClipSub * fastBuyUltraContBtnFastBuyUltraIndicator1;
+MovieClipSub * fastBuyUltraContBtnFastBuyUltraIndicator2;
+MovieClipSub * fastBuyUltraContBtnFastBuyUltraIndicator3;
+MovieClipSub * fastBuyUltraContBtnFastBuyUltraIndicator4;
+MCText * fastBuyUltraContBtnFastBuyUltraCostTXT;
+MovieClipSub * sellUltraTower;
+MCCase * sellUltraTowerSellUltraTowerCase;
+MovieClipSub * sphereSlot1;
+MovieClipSub * sphereSlot1SphereAnima;
+MovieClipSub * sphereSlot1SphereAnimaCont;
+MovieClipSub * sphereSlot2;
+MovieClipSub * sphereSlot2SphereAnima;
+MovieClipSub * sphereSlot1SphereAnimaCont; 
+
              
-            UltraTowerMenu_mc()
-            {
-                return;
-            };// end function
+             
+            UltraTowerMenu_mc();
 
         };
           class UltraTowerMenuHint_mc :public MovieClip

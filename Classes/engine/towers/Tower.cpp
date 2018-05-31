@@ -58,19 +58,19 @@ namespace engine{
                     {
                         if (this->world->listOfTowers[this->i]->towerType == 5)
                         {
-                            this->tempObject1 ++;
+                            tempObject1 ++;
                         }
                         else if (this->world->listOfTowers[this->i]->towerType == 6)
                         {
-                            this->tempObject2 ++;
+                            tempObject2 ++;
                         }
                         else if (this->world->listOfTowers[this->i]->towerType == 7)
                         {
-                            this->tempObject3 ++;
+                            tempObject3 ++;
                         }
                         else if (this->world->listOfTowers[this->i]->towerType == 8)
                         {
-                            this->tempObject4 ++;
+                            tempObject4 ++;
                         }
                         i++;
                     }
