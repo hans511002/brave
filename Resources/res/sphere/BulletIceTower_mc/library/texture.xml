@@ -1,0 +1,27 @@
+<TextureAtlas name="BulletIceTower_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 6292" x="48" y="42" width="22" height="20"/>
+ <SubTexture name="Shape/shape 6293" x="72" y="63" width="22" height="20"/>
+ <SubTexture name="Shape/shape 6294" x="0" y="0" width="22" height="20"/>
+ <SubTexture name="Shape/shape 6295" x="48" y="63" width="22" height="20"/>
+ <SubTexture name="Shape/shape 6296" x="72" y="21" width="22" height="20"/>
+ <SubTexture name="Shape/shape 6297" x="96" y="63" width="22" height="20"/>
+ <SubTexture name="Shape/shape 6298" x="48" y="0" width="22" height="20"/>
+ <SubTexture name="Shape/shape 6299" x="0" y="63" width="22" height="20"/>
+ <SubTexture name="Shape/shape 6300" x="72" y="42" width="22" height="20"/>
+ <SubTexture name="Shape/shape 6301" x="96" y="42" width="22" height="20"/>
+ <SubTexture name="Shape/shape 6302" x="96" y="0" width="22" height="20"/>
+ <SubTexture name="Shape/shape 6303" x="48" y="21" width="22" height="20"/>
+ <SubTexture name="Shape/shape 6304" x="48" y="84" width="22" height="20"/>
+ <SubTexture name="Shape/shape 6305" x="0" y="42" width="22" height="20"/>
+ <SubTexture name="Shape/shape 6306" x="0" y="84" width="22" height="20"/>
+ <SubTexture name="Shape/shape 6307" x="0" y="21" width="22" height="20"/>
+ <SubTexture name="Shape/shape 6308" x="72" y="0" width="22" height="20"/>
+ <SubTexture name="Shape/shape 6309" x="72" y="84" width="22" height="20"/>
+ <SubTexture name="Shape/shape 6310" x="24" y="42" width="22" height="20"/>
+ <SubTexture name="Shape/shape 6311" x="96" y="84" width="22" height="20"/>
+ <SubTexture name="Shape/shape 6312" x="24" y="21" width="22" height="20"/>
+ <SubTexture name="Shape/shape 6313" x="24" y="63" width="22" height="20"/>
+ <SubTexture name="Shape/shape 6314" x="24" y="84" width="22" height="20"/>
+ <SubTexture name="Shape/shape 6315" x="24" y="0" width="22" height="20"/>
+ <SubTexture name="Shape/shape 6316" x="96" y="21" width="22" height="20"/>
+</TextureAtlas>

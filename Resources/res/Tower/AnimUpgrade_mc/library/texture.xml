@@ -1,0 +1,25 @@
+<TextureAtlas name="AnimUpgrade_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 5259" x="164" y="164" width="80" height="80"/>
+ <SubTexture name="Shape/shape 5261" x="328" y="0" width="80" height="80"/>
+ <SubTexture name="Shape/shape 5263" x="410" y="0" width="80" height="80"/>
+ <SubTexture name="Shape/shape 5265" x="82" y="246" width="80" height="80"/>
+ <SubTexture name="Shape/shape 5267" x="328" y="246" width="80" height="80"/>
+ <SubTexture name="Shape/shape 5269" x="0" y="0" width="80" height="80"/>
+ <SubTexture name="Shape/shape 5271" x="246" y="164" width="80" height="80"/>
+ <SubTexture name="Shape/shape 5273" x="0" y="164" width="80" height="80"/>
+ <SubTexture name="Shape/shape 5275" x="164" y="82" width="80" height="80"/>
+ <SubTexture name="Shape/shape 5277" x="410" y="164" width="80" height="80"/>
+ <SubTexture name="Shape/shape 5279" x="164" y="0" width="80" height="80"/>
+ <SubTexture name="Shape/shape 5281" x="82" y="0" width="80" height="80"/>
+ <SubTexture name="Shape/shape 5283" x="328" y="164" width="80" height="80"/>
+ <SubTexture name="Shape/shape 5285" x="82" y="82" width="80" height="80"/>
+ <SubTexture name="Shape/shape 5287" x="410" y="82" width="80" height="80"/>
+ <SubTexture name="Shape/shape 5289" x="328" y="82" width="80" height="80"/>
+ <SubTexture name="Shape/shape 5291" x="246" y="82" width="80" height="80"/>
+ <SubTexture name="Shape/shape 5293" x="246" y="246" width="80" height="80"/>
+ <SubTexture name="Shape/shape 5295" x="164" y="246" width="80" height="80"/>
+ <SubTexture name="Shape/shape 5297" x="0" y="82" width="80" height="80"/>
+ <SubTexture name="Shape/shape 5299" x="82" y="164" width="80" height="80"/>
+ <SubTexture name="Shape/shape 5301" x="0" y="246" width="80" height="80"/>
+ <SubTexture name="Shape/shape 5303" x="246" y="0" width="80" height="80"/>
+</TextureAtlas>

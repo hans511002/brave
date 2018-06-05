@@ -1,0 +1,6 @@
+<TextureAtlas name="BulletSphereTower_mc" imagePath="texture.png">
+ <SubTexture name="位图 1" x="0" y="0" width="50" height="50"/>
+ <SubTexture name="位图 2" x="52" y="0" width="50" height="50"/>
+ <SubTexture name="位图 3" x="0" y="52" width="50" height="50"/>
+ <SubTexture name="位图 4" x="52" y="52" width="50" height="50"/>
+</TextureAtlas>

@@ -1,0 +1,7 @@
+<TextureAtlas name="BulletFireTower_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 6340" x="27" y="24" width="25" height="22"/>
+ <SubTexture name="Shape/shape 6342" x="0" y="48" width="25" height="22"/>
+ <SubTexture name="Shape/shape 6344" x="27" y="0" width="25" height="22"/>
+ <SubTexture name="Shape/shape 6346" x="0" y="0" width="25" height="22"/>
+ <SubTexture name="Shape/shape 6348" x="0" y="24" width="25" height="22"/>
+</TextureAtlas>
