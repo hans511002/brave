@@ -1,0 +1,5 @@
+<TextureAtlas name="MoveIceman_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 86" x="0" y="0" width="64" height="68"/>
+ <SubTexture name="Shape/shape 89" x="66" y="0" width="38" height="53"/>
+ <SubTexture name="Shape/shape 92" x="66" y="55" width="38" height="51"/>
+</TextureAtlas>

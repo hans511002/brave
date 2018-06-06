@@ -1,0 +1,11 @@
+<TextureAtlas name="IceRoad_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 1043" x="0" y="0" width="51" height="40"/>
+ <SubTexture name="Shape/shape 1045" x="106" y="42" width="51" height="40"/>
+ <SubTexture name="Shape/shape 1047" x="159" y="0" width="51" height="40"/>
+ <SubTexture name="Shape/shape 1049" x="0" y="42" width="51" height="40"/>
+ <SubTexture name="Shape/shape 1051" x="53" y="0" width="51" height="40"/>
+ <SubTexture name="Shape/shape 1053" x="53" y="42" width="51" height="40"/>
+ <SubTexture name="Shape/shape 1055" x="106" y="0" width="51" height="40"/>
+ <SubTexture name="Shape/shape 1057" x="0" y="84" width="51" height="40"/>
+ <SubTexture name="Shape/shape 1059" x="159" y="42" width="51" height="40"/>
+</TextureAtlas>

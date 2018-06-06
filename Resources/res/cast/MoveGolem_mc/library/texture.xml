@@ -1,0 +1,5 @@
+<TextureAtlas name="MoveGolem_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 414" x="0" y="0" width="62" height="59"/>
+ <SubTexture name="Shape/shape 416" x="64" y="0" width="38" height="53"/>
+ <SubTexture name="Shape/shape 418" x="64" y="55" width="38" height="51"/>
+</TextureAtlas>

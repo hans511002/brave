@@ -1,21 +1,21 @@
 <TextureAtlas name="MoveAir_mc" imagePath="texture.png">
- <SubTexture name="Shape/shape 214" x="86" y="258" width="68" height="68"/>
  <SubTexture name="Shape/shape 216" x="86" y="328" width="38" height="53"/>
  <SubTexture name="Shape/shape 218" x="86" y="383" width="38" height="51"/>
- <SubTexture name="Shape/shape 188" x="0" y="0" width="163" height="84"/>
- <SubTexture name="Shape/shape 190" x="330" y="86" width="163" height="84"/>
- <SubTexture name="Shape/shape 192" x="330" y="0" width="163" height="84"/>
- <SubTexture name="Shape/shape 194" x="0" y="172" width="163" height="84"/>
- <SubTexture name="Shape/shape 196" x="0" y="86" width="163" height="84"/>
- <SubTexture name="Shape/shape 198" x="165" y="172" width="163" height="84"/>
- <SubTexture name="Shape/shape 200" x="165" y="0" width="163" height="84"/>
- <SubTexture name="Shape/shape 202" x="165" y="86" width="163" height="84"/>
- <SubTexture name="Shape/shape 204" x="416" y="172" width="84" height="163"/>
- <SubTexture name="Shape/shape 205" x="156" y="258" width="84" height="163"/>
- <SubTexture name="Shape/shape 206" x="0" y="258" width="84" height="163"/>
- <SubTexture name="Shape/shape 207" x="0" y="423" width="84" height="163"/>
- <SubTexture name="Shape/shape 208" x="328" y="337" width="84" height="163"/>
- <SubTexture name="Shape/shape 209" x="330" y="172" width="84" height="163"/>
- <SubTexture name="Shape/shape 210" x="414" y="337" width="84" height="163"/>
- <SubTexture name="Shape/shape 211" x="242" y="258" width="84" height="163"/>
+ <SubTexture name="Shape/shape 214" x="86" y="258" width="68" height="68"/>
+ <SubTexture name="Shape/shape 188" x="330" y="86" width="163" height="84"/>
+ <SubTexture name="Shape/shape 190" x="330" y="0" width="163" height="84"/>
+ <SubTexture name="Shape/shape 192" x="165" y="0" width="163" height="84"/>
+ <SubTexture name="Shape/shape 194" x="0" y="0" width="163" height="84"/>
+ <SubTexture name="Shape/shape 196" x="165" y="86" width="163" height="84"/>
+ <SubTexture name="Shape/shape 198" x="0" y="172" width="163" height="84"/>
+ <SubTexture name="Shape/shape 200" x="165" y="172" width="163" height="84"/>
+ <SubTexture name="Shape/shape 202" x="0" y="86" width="163" height="84"/>
+ <SubTexture name="Shape/shape 204" x="0" y="258" width="84" height="163"/>
+ <SubTexture name="Shape/shape 205" x="330" y="172" width="84" height="163"/>
+ <SubTexture name="Shape/shape 206" x="416" y="172" width="84" height="163"/>
+ <SubTexture name="Shape/shape 207" x="242" y="258" width="84" height="163"/>
+ <SubTexture name="Shape/shape 208" x="414" y="337" width="84" height="163"/>
+ <SubTexture name="Shape/shape 209" x="156" y="258" width="84" height="163"/>
+ <SubTexture name="Shape/shape 210" x="0" y="423" width="84" height="163"/>
+ <SubTexture name="Shape/shape 211" x="328" y="337" width="84" height="163"/>
 </TextureAtlas>
