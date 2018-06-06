@@ -17,6 +17,7 @@ namespace engine
 	};
 	void MC::gotoAndStop(int cf, string aniName)
 	{
+		if(this->getArmature() == NULL || this->getAnimation() == NULL)return;
 		if(cf == 0)cf = 1;
 		if(aniName == "")aniName = defAniName;
 		if(this->getAnimation()->getLastAnimationName() != aniName)
@@ -26,6 +27,7 @@ namespace engine
 	};
 	void MC::nextFram()
 	{
+		if(this->getArmature() == NULL || this->getAnimation() == NULL)return;
 		this->currentFrame++;
 		gotoAndStop(this->currentFrame);
 	};
@@ -35,15 +37,18 @@ namespace engine
 	};
 	void MC::stop(string aniName)
 	{
+		if(this->getArmature() == NULL || this->getAnimation() == NULL)return;
 		if(aniName == "")aniName = defAniName;
 		this->getAnimation()->stop(aniName);
 	}
 	void MC::play(int times)
 	{
+		if(this->getArmature() == NULL || this->getAnimation() == NULL)return;
 		this->getAnimation()->play(defAniName, times);
 	}
 	void MC::play(string aniName, int times)
 	{
+		if(this->getArmature() == NULL || this->getAnimation() == NULL)return;
 		if(aniName == "")aniName = defAniName;
 		this->getAnimation()->play(aniName, times);
 	}
@@ -179,7 +184,10 @@ namespace engine
 				 this->display->removeChild(thsi);
 				 this->display = (Node*)this->slot->getDisplay();
 				 display->addChild(thsi);
-				 display->setName(slotName);
+				 if(!ISTYPE(MovieClip, this))
+					display->setName(slotName);
+				 else if(this->slot->_displayData)
+					 display->setName(this->slot->_displayData->name);
 				 thsi->release();
 				 return true;
 			  }
@@ -187,7 +195,10 @@ namespace engine
 			  {
 				  this->display = dis;
 				  display->addChild(thsi);
-				  display->setName(slotName);
+				  if(!ISTYPE(MovieClip, this))
+					  display->setName(slotName);
+				  else if(this->slot->_displayData)
+					  display->setName(this->slot->_displayData->name);
 				  return true;
 			  }
 		 }
@@ -389,7 +400,7 @@ namespace engine
         //for (int i = 0; i < l; i++)
         //    this->mcase[i]->reinit();
     };
-	MovieClip::MovieClip(dragonBones::CCArmatureDisplay * cont, string defAniName) :isOnce(false)
+	MovieClip::MovieClip(dragonBones::CCArmatureDisplay * cont, string defAniName) :isOnce(false) 
 	{
 		std::map<std::string, dragonBones::AnimationData*> & animations = cont->getArmature()->_armatureData->animations;
 		for each (std::pair<std::string, dragonBones::AnimationData*> it in animations)
@@ -399,12 +410,13 @@ namespace engine
 			float duration = it.second->duration;
 			CCLOG("load %s totalFrames=%i duration=%f", aniName.c_str(), totalFrames, duration);
 		}
+		this->defAniName = defAniName;
 		if(defAniName == "")
 			this->defAniName = defAniName = cont->getArmature()->_armatureData->defaultAnimation->name;
 		totalFrames = cont->getArmature()->_armatureData->animations[defAniName]->frameCount;// +1;
 		float duration = cont->getArmature()->_armatureData->animations[defAniName]->duration;
 		CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
-		this->display = cont; 
+		this->display = this->cont = cont;
 		this->armName = cont->getArmature()->getName(); 
 		BaseNode::init();
 		addChild(display);
@@ -412,7 +424,7 @@ namespace engine
 		this->setName(cont->getName());
 		this->isReady = true;
 	};
-	MovieClip::MovieClip(string rootPath, string armName, string dbName, string defAniName) :isOnce(false)
+	MovieClip::MovieClip(string rootPath, string armName, string dbName, string defAniName) :isOnce(false) , cont(0)
 	{
 		this->rootPath = rootPath;
 		this->armName = armName;
@@ -424,23 +436,27 @@ namespace engine
 		if (isReady && this->getName()==armName){
 			return true;
 		}
-		this->display = this->loadArmature(rootPath, armName, dbName);
-		if (defAniName == "")
+		if(this->mc) 
+			this->cont = this->loadArmature(rootPath, armName, dbName);
+		else 
+			this->display = this->cont = this->loadArmature(rootPath, armName, dbName);
+		this->defAniName = defAniName;
+		if(defAniName == "")
 			this->defAniName = defAniName = this->getArmature()->_armatureData->defaultAnimation->name;
 		totalFrames = this->getArmature()->_armatureData->animations[defAniName]->frameCount;//+ 1;
 		float duration = this->getArmature()->_armatureData->animations[defAniName]->duration;
 		CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
 		BaseNode::init();
-		addChild(display);
+		addChild(cont);
 		//this->autorelease(); in BaseNode::init();
 		this->setName(armName);
 		this->isReady = true;
 	};
-	MovieClip::MovieClip(string armName, string dbName, BaseNode *node)
+	MovieClip::MovieClip(string armName, string dbName, BaseNode *node) :cont(0)
 	{ 
 		this->armName = armName;
 		this->dbName = dbName;
-		this->display = this->loadArmature(armName, dbName);
+		this->display=this->cont = this->loadArmature(armName, dbName);
 		if(defAniName == "")
 			this->defAniName = defAniName = this->getArmature()->_armatureData->defaultAnimation->name;
 		totalFrames = this->getArmature()->_armatureData->animations[defAniName]->frameCount;//+ 1;
@@ -480,23 +496,44 @@ namespace engine
 		reinit();
 		mc->addMCbs(this);
 	};
-	MovieClip::MovieClip(MC *mc, string slotName, string rootPath,string dbName, string defAniName)
+	MovieClip::MovieClip(MC *mc, string slotName, string rootPath, string dbName, string defAniName) :cont(0)
 	{ 
  		this->mc = mc;
 		this->slotName = slotName;
 		this->setName(slotName);
 		this->rootPath = rootPath; 
 		this->dbName = dbName;
+		this->defAniName = defAniName;
 		reinit();
 		mc->addMCbs(this);
 	};
 	bool MovieClip::reinit()
 	{
-		if (this->mc)
-		{
-			MovieClipSubBase::reinit();
-			armName = this->display->getName();
-			init(rootPath, armName, dbName, defAniName);
+		if(this->mc && MovieClipSubBase::reinit())
+		{ 
+			string _armName = armName;
+			if(_armName.empty()) 
+			//{
+			//	if(ISTYPE(dragonBones::CCArmatureDisplay, this->display))
+			//	{
+			//		//dragonBones::CCArmatureDisplay * dis = ISTYPE(dragonBones::CCArmatureDisplay, this->display);
+			//		Slot * _slot=this->getArmature()->getSlot(slotName);
+			//		if(_slot)
+			//		{
+			//			Node * n = (Node *)_slot->getDisplay();
+			//			if(_slot->_displayData)
+			//			n->setName(this->slot->_displayData->name);
+			//			_armName = n->getName();
+			//		}
+			//	}
+			//	else if(ISTYPE(Sprite, this->display))
+			//	{
+			//		_armName = this->display->getName();
+			//	}
+			//	logInfo("_displayData->name", _armName);
+			//} 
+			_armName = this->display->getName();
+			init(rootPath, _armName, dbName, defAniName);//display=_armName
 		}
 		return this->isReady;
 	};
@@ -522,16 +559,14 @@ namespace engine
 	}
 	dragonBones::Animation *MovieClip::getAnimation()
 	{
-		dragonBones::CCArmatureDisplay* cont = ISTYPE(dragonBones::CCArmatureDisplay, display);
-		if(cont)
+ 		if(cont)
 			return cont->getAnimation();
 		else 
 			return NULL;
 	};
 	dragonBones::Armature *MovieClip::getArmature()
 	{
-		dragonBones::CCArmatureDisplay* cont = ISTYPE(dragonBones::CCArmatureDisplay, display);
-		if(cont)
+ 		if(cont)
 			return cont->getArmature();
 		else
 			return NULL; 
@@ -540,12 +575,14 @@ namespace engine
 	void MovieClip::setName(string name)
 	{
 		BaseNode::setName(name);
-		this->display->setName(name);
+		if(this->mc && this->cont)
+				this->cont->setName(name);
+		else if(!this->mc && this->display)
+			this->display->setName(name);
 	};
 	void MovieClip::onEnter()
 	{
-		dragonBones::CCArmatureDisplay* cont = ISTYPE(dragonBones::CCArmatureDisplay, display);
-		if(world && isOnce && cont)
+ 		if(world && isOnce && cont)
 		{
 			cont->getEventDispatcher()->setEnabled(true);
 			//container->getEventDispatcher()->addCustomEventListener(EventObject::FRAME_EVENT, std::bind(&MovieClip::onceMovieHandler, this, std::placeholders::_1));
@@ -624,8 +661,9 @@ namespace engine
                 float duration = it.second->duration;
                 CCLOG("load %s totalFrames=%i duration=%f", aniName.c_str(), totalFrames, duration);
             }
-            if (defAniName == "")
-                this->defAniName = defAniName = this->arm->_armatureData->defaultAnimation->name;
+			/*string defAniName = this->defAniName;
+            if (defAniName == "")*/
+                defAniName = this->arm->_armatureData->defaultAnimation->name;
             totalFrames = this->arm->_armatureData->animations[defAniName]->frameCount;//+ 1;
             float duration = this->arm->_armatureData->animations[defAniName]->duration;
             CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);

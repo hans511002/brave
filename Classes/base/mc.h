@@ -74,7 +74,7 @@ namespace engine
 		short myFrame;
         float speedX;
         bool isOnce;
-        // display dragonBones::CCArmatureDisplay * container;
+        dragonBones::CCArmatureDisplay * cont;
 		//std::map<std::string, MovieClipSub*> mcs;
         //Common::Array<MCText*> mct;
         //Common::Array<MCCase*> mcase;

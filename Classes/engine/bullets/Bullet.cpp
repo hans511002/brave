@@ -5,7 +5,37 @@
 
 namespace engine{
     namespace bullets{
+        BulletSphereTower_mc::BulletSphereTower_mc():MovieClip("sphere/","BulletSphereTower_mc","BulletSphereTower_mc"),cont(0)
+        {
+            
+        }
         
+        void BulletSphereTower_mc::gotoAndStop(int cur)
+		{
+		    int oldIdx = this->currentFrame;
+			MovieClip::gotoAndStop(cur);
+			if(oldIdx == this->currentFrame)return;
+			if(cont)display->removeChild(cont);
+			cont = NULL;
+			if(this->currentFrame == 1)
+			{
+				cont = new MovieClip("sphere/", "BulletFireTower_mc", "BulletFireTower_mc");
+			}
+			else if(this->currentFrame == 2)
+			{
+				cont = new MovieClip("sphere/", "BulletIceTower_mc", "BulletIceTower_mc");
+			}
+			else if(this->currentFrame == 3)
+			{
+				cont = new MovieClip("sphere/", "BulletStoneTower_mc", "BulletStoneTower_mc");
+			}
+			else if(this->currentFrame == 4)
+			{
+				cont = new MovieClip("sphere/", "BulletLevinTower_mc", "BulletLevinTower_mc");
+			}
+			if(cont)display->addChild(cont);
+
+		};
         BulletFireTower_mc::BulletFireTower_mc()
         {
             cont=new MovieClip("sphere/","BulletFireTower_mc","BulletFireTower_mc");

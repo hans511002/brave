@@ -242,9 +242,6 @@
     <ClInclude Include="..\..\brave\Classes\test\CoreElement.h">
       <Filter>src\test</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\brave\Classes\test\DBComTest.h">
-      <Filter>src\test</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\brave\Classes\test\DragHelper.h">
       <Filter>src\test</Filter>
     </ClInclude>
@@ -298,6 +295,12 @@
     </ClInclude>
     <ClInclude Include="..\..\brave\Classes\base\mc.h">
       <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\brave\Classes\test\DBComTest.h">
+      <Filter>src\tmp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\brave\Classes\test\DBComSubTest.h">
+      <Filter>src\tmp</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

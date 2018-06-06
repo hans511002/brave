@@ -94,7 +94,7 @@ MovieClipSub * sphereSlot1SphereAnima;
 MovieClipSub * sphereSlot1SphereAnimaCont;
 MovieClipSub * sphereSlot2;
 MovieClipSub * sphereSlot2SphereAnima;
-MovieClipSub * sphereSlot1SphereAnimaCont; 
+MovieClipSub * sphereSlot2SphereAnimaCont; 
 
              
              

@@ -225,6 +225,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\..\brave\Classes\test\BoneOffset.h" />
     <ClInclude Include="..\..\brave\Classes\test\BoundingBox.h" />
     <ClInclude Include="..\..\brave\Classes\test\CoreElement.h" />
+    <ClInclude Include="..\..\brave\Classes\test\DBComSubTest.h" />
     <ClInclude Include="..\..\brave\Classes\test\DBComTest.h" />
     <ClInclude Include="..\..\brave\Classes\test\DragHelper.h" />
     <ClInclude Include="..\..\brave\Classes\test\DragonBonesEvent.h" />
