@@ -1,0 +1,18 @@
+<TextureAtlas name="NewElement_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 12744" x="0" y="94" width="40" height="40"/>
+ <SubTexture name="Shape/shape 12746" x="126" y="84" width="40" height="40"/>
+ <SubTexture name="Shape/shape 12748" x="52" y="42" width="40" height="40"/>
+ <SubTexture name="Shape/shape 12750" x="178" y="42" width="40" height="40"/>
+ <SubTexture name="Shape/shape 12752" x="136" y="0" width="40" height="40"/>
+ <SubTexture name="Shape/shape 12754" x="84" y="84" width="40" height="40"/>
+ <SubTexture name="Shape/shape 12756" x="0" y="52" width="40" height="40"/>
+ <SubTexture name="Shape/shape 12758" x="94" y="42" width="40" height="40"/>
+ <SubTexture name="Shape/shape 12760" x="136" y="42" width="40" height="40"/>
+ <SubTexture name="Shape/shape 12762" x="42" y="84" width="40" height="40"/>
+ <SubTexture name="Shape/shape 12764" x="178" y="0" width="40" height="40"/>
+ <SubTexture name="Shape/shape 12766" x="52" y="0" width="40" height="40"/>
+ <SubTexture name="Shape/shape 12768" x="168" y="84" width="40" height="40"/>
+ <SubTexture name="Shape/shape 12770" x="210" y="84" width="40" height="40"/>
+ <SubTexture name="Shape/shape 12772" x="94" y="0" width="40" height="40"/>
+ <SubTexture name="case1" x="0" y="0" width="50" height="50"/>
+</TextureAtlas>

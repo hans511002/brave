@@ -10,12 +10,12 @@ namespace engine
         class Tower1_mc :public MovieClip
         {
         public: 
-MovieClipSub * blockTower;
-MovieClipSub * boneBlock;
+MovieClip * blockTower;
+MovieClip * boneBlock;
 MovieClipSub * selectTower;
 MCCase * towerCase;
 MovieClipSub * sphere1;
-MovieClipSub * sphere1Bullet;
+MovieClip * sphere1Bullet;
 MovieClipSub * sphere1BulletCont;
 
             Tower1_mc(); 

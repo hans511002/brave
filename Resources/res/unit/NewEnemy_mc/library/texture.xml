@@ -1,0 +1,18 @@
+<TextureAtlas name="NewEnemy_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 7601" x="180" y="100" width="43" height="48"/>
+ <SubTexture name="Shape/shape 7603" x="97" y="50" width="43" height="48"/>
+ <SubTexture name="Shape/shape 7605" x="97" y="0" width="43" height="48"/>
+ <SubTexture name="Shape/shape 7607" x="187" y="0" width="43" height="48"/>
+ <SubTexture name="Shape/shape 7609" x="90" y="100" width="43" height="48"/>
+ <SubTexture name="Shape/shape 7611" x="45" y="100" width="43" height="48"/>
+ <SubTexture name="Shape/shape 7613" x="45" y="150" width="43" height="48"/>
+ <SubTexture name="Shape/shape 7615" x="0" y="52" width="43" height="48"/>
+ <SubTexture name="Shape/shape 7617" x="0" y="102" width="43" height="48"/>
+ <SubTexture name="Shape/shape 7619" x="142" y="50" width="43" height="48"/>
+ <SubTexture name="Shape/shape 7621" x="52" y="50" width="43" height="48"/>
+ <SubTexture name="Shape/shape 7623" x="142" y="0" width="43" height="48"/>
+ <SubTexture name="Shape/shape 7625" x="187" y="50" width="43" height="48"/>
+ <SubTexture name="Shape/shape 7627" x="52" y="0" width="43" height="48"/>
+ <SubTexture name="Shape/shape 7629" x="135" y="100" width="43" height="48"/>
+ <SubTexture name="case" x="0" y="0" width="50" height="50"/>
+</TextureAtlas>

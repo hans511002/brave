@@ -90,10 +90,10 @@ MCText * fastBuyUltraContBtnFastBuyUltraCostTXT;
 MovieClipSub * sellUltraTower;
 MCCase * sellUltraTowerSellUltraTowerCase;
 MovieClipSub * sphereSlot1;
-MovieClipSub * sphereSlot1SphereAnima;
+MovieClip  * sphereSlot1SphereAnima;
 MovieClipSub * sphereSlot1SphereAnimaCont;
 MovieClipSub * sphereSlot2;
-MovieClipSub * sphereSlot2SphereAnima;
+MovieClip * sphereSlot2SphereAnima;
 MovieClipSub * sphereSlot2SphereAnimaCont; 
 
              

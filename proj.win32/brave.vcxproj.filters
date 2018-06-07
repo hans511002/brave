@@ -174,9 +174,6 @@
     <ClCompile Include="..\Classes\engine\towers\Tower1.cpp">
       <Filter>src\engine\towers</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\engine\towers\Tower1_mc.cpp">
-      <Filter>src\engine\towers</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\engine\towers\TowerMenu.cpp">
       <Filter>src\engine\towers</Filter>
     </ClCompile>

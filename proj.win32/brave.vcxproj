@@ -197,7 +197,6 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\engine\towers\Exchange.cpp" />
     <ClCompile Include="..\Classes\engine\towers\Tower.cpp" />
     <ClCompile Include="..\Classes\engine\towers\Tower1.cpp" />
-    <ClCompile Include="..\Classes\engine\towers\Tower1_mc.cpp" />
     <ClCompile Include="..\Classes\engine\towers\Tower2.cpp" />
     <ClCompile Include="..\Classes\engine\towers\Tower3.cpp" />
     <ClCompile Include="..\Classes\engine\towers\Tower4.cpp" />

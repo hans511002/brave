@@ -17,8 +17,8 @@ namespace screens
 
     struct MiddleScreenCentr_mc:public MovieClip
     {
-        MiddleScreenCentr_mc()
-    }
+		MiddleScreenCentr_mc();
+	};
     class MiddleScreen : public cocos2d::Node
     {
 	public:
