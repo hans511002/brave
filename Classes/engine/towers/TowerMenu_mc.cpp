@@ -84,6 +84,8 @@ sphereSlot1SphereAnima= sphereSlot1->createMovieClip("sphereAnima","sphere/", "B
 sphereSlot1SphereAnimaCont= sphereSlot1SphereAnima->createMovieClipSub("cont");
 sphereSlot2SphereAnima= sphereSlot1->createMovieClip("sphereAnima","sphere/", "BulletSphereTower_mc", "BulletSphereTower_mc");
 sphereSlot2SphereAnimaCont= sphereSlot1SphereAnima->createMovieClipSub("cont");
+
+
 //sphereSlot1SphereAnima= sphereSlot1->createMovieClipSub("sphereAnima");
 //sphereSlot1SphereAnimaFire= sphereSlot1SphereAnima->createMovieClipSub("fire");
 //sphereSlot1SphereAnimaIce= sphereSlot1SphereAnima->createMovieClipSub("ice");

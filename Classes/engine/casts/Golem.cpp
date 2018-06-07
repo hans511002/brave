@@ -6,21 +6,17 @@ namespace engine{
     {
         Golem_mc::Golem_mc(string path, string arm, string db) :MovieClip(path, arm, db)
         {
+            dust1= this->createMovieClipSub("dust1");
+            dust2= this->createMovieClipSub("dust2");
         };
-        Golem1_mc::Golem1_mc():Golem_mc("cast/", "Golem1_mc", "Golem1_mc")
-        {
-            dust1 = new MovieClip("dust1", "Golem1_mc",this);
-            dust2 = new MovieClip("dust1", "Golem1_mc",this);
+        Golem1_mc::Golem1_mc():Golem_mc("cast/", "Golem1_mc", "Golem_mc")
+        { 
         }
-        Golem2_mc:Golem1_mc():Golem_mc("cast/", "Golem2_mc", "Golem1_mc")
-        {
-            dust1=new MovieClip("dust1","Golem2_mc",this); 
-            dust2=new MovieClip("dust2","Golem2_mc",this);
+        Golem2_mc:Golem1_mc():Golem_mc("cast/", "Golem2_mc", "Golem_mc")
+        { 
         }
-        Golem3_mc:Golem1_mc():Golem_mc("cast/", "Golem3_mc", "Golem1_mc")
-        {
-            dust1=new MovieClip("dust1","Golem3_mc",this);
-            dust2=new MovieClip("dust2","Golem3_mc",this);
+        Golem3_mc:Golem1_mc():Golem_mc("cast/", "Golem3_mc", "Golem_mc")
+        { 
         }
         Golem::Golem(cocos2d::Point param1, int param2, int param3, bool param4 = true) :direction("none"), voiceCounter(10), cameraJitterTimer(3), movePhase(1)
         {

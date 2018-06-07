@@ -36,6 +36,7 @@ namespace engine
 		MCText * createText(string slot);
         MovieClipSub * createMovieClipSub(string slot);
 		MovieClip * createMovieClip(string slot,string rootPath, string armName, string dbName, string defAniName = "");
+		MovieClip * createMovieClip(string slot,string rootPath, string dbName);
         MCCase * createCase(string slot, bool draw = true);
 		MCSprite * createSprite(string slot, string file);
 		MCSprite * createSprite(string slot, Sprite* file = NULL);
@@ -89,7 +90,7 @@ namespace engine
         
         MovieClip(MC *mc, dragonBones::Slot * slot,string rootPath, string armName,string dbName,string defAniName = "");
         MovieClip(MC *mc, string slot, string rootPath, string armName,string dbName,string defAniName = "");
-		MovieClip::MovieClip(MC *mc, string slotName, string rootPath, string dbName, string defAniName = "");
+		MovieClip(MC *mc, string slot, string rootPath, string dbName);
 
 		bool MovieClip::init(string rootPath, string armName, string dbName, string defAniName="");
 
@@ -210,7 +211,7 @@ namespace engine
      
     struct AnimUpgrade_mc :public MovieClip
     {
-         
+         inline AnimUpgrade_mc():MovieClip("tower/","AnimUpgrade_mc","AnimUpgrade_mc"){};
     };
 
     //struct AnimUpgrade_mc :public BaseNode

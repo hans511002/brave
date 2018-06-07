@@ -46,7 +46,7 @@ namespace engine{
         };
         struct BulletTower5_1Smoke1_mc :public MovieClip
         {
-			inline BulletTower5_1Smoke1_mc(World * world) :MovieClip(world, "sphere/", "BulletTower5_1Smoke1_mc", "BulletTower5_1Smoke1_mc") {};
+            BulletTower5_1Smoke1_mc();
         };
         struct BulletTower51_1_mc:public BulletBase_mc,public MovieClip
         {
@@ -68,18 +68,7 @@ namespace engine{
         {
             BulletTower61_mc();
         };
-        struct BulletTower7_mc :public BulletBase_mc,public MovieClip
-        {
-            // ball:MovieClip;
-            // smoke:MovieClip;
-            MovieClip * ball;
-            MovieClip * smoke;
-            MovieClip * smokeCont1;
-            MovieClip * smokeCont2;
-            BulletTower7_mc();
-        };
-        
-        struct BulletTower7_smoke_mc :public BulletBase_mc,public MovieClip
+         struct BulletTower7_smoke_mc :public BulletBase_mc,public MovieClip
         {
             BulletTower7_smoke_mc();
         };
@@ -87,6 +76,17 @@ namespace engine{
         {
             BulletTower71_mc();
         };
+        struct BulletTower7_mc :public BulletBase_mc,public MovieClip
+        {
+            MovieClipSub * ball;
+            MovieClipSub * smoke;
+            MovieClipSub * smokeCont1;
+            MovieClip  * smokeCont2;
+
+            BulletTower7_mc();
+        };
+        
+       
         struct BulletTower8_1_mc : public BulletBase_mc,public MovieClip
         {
             BulletTower8_1_mc();
@@ -103,9 +103,9 @@ namespace engine{
         
         
 		
-        struct UnitShadow_mc:public MovieClip
+        struct UnitShadow_mc:public BaseSprite
         {
-            
+            UnitShadow_mc();
         };
         class Bullet :public BaseNode
         {

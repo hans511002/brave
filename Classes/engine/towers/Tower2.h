@@ -10,19 +10,22 @@ namespace engine
     {
         class Tower2_mc :public BaseNode
         {
-        public: 
-             MovieClip* blockTower;
-            MovieClip * boneBlock;
-            MovieClip * selectTower;
-            MovieClip * sphere1;
-            MovieClip * sphere2_1;
-            MovieClip * sphere2_2;
-            MovieClip * towerCase;
-            Tower2_mc()
-            {
-                return;
-            }// end function
-            bool init();
+        public:  
+            MovieClipSub * blockTower;
+            MovieClipSub * boneBlock;
+            MovieClipSub * selectTower;
+            MCCase * towerCase;
+            MovieClipSub * sphere1;
+            MovieClipSub * sphere1Bullet;
+            MovieClipSub * sphere1BulletCont;
+            MovieClipSub * sphere2_1;
+            MovieClipSub * sphere2_1Bullet;
+            MovieClipSub * sphere2_1BulletCont;
+            MovieClipSub * sphere2_2;
+            MovieClipSub * sphere2_2Bullet;
+            MovieClipSub * sphere2_2BulletCont;
+
+            Tower2_mc(); 
         };
         class Tower2 : public Tower
         {

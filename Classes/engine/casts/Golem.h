@@ -10,8 +10,8 @@ namespace engine{
         struct Golem_mc :public MovieClip
         {
             Golem_mc(string path, string arm, string db);
-            MovieClip * dust1;//:MovieClip;
-            MovieClip * dust2;//:MovieClip;
+            MovieClipSub * dust1;//:MovieClip;
+            MovieClipSub * dust2;//:MovieClip;
         };
         struct Golem1_mc :public Golem_mc
         {

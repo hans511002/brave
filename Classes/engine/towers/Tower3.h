@@ -11,22 +11,31 @@ namespace engine
         class Tower3_mc :public MovieClip
         {
         public: 
-             MovieClip * blockTower;
-             MovieClip * boneBlock;
-             MovieClip * selectTower;
-             MovieClip * sphere1;
-             MovieClip * sphere2_1;
-             MovieClip * sphere2_2;
-             MovieClip * sphere3_1;
-             MovieClip * sphere3_2;
-             MovieClip * sphere3_3;
-             MovieClip * towerCase;
+MovieClipSub * blockTower;
+MovieClipSub * boneBlock;
+MovieClipSub * selectTower;
+MCCase * towerCase;
+MovieClipSub * sphere1;
+MovieClipSub * sphere1Bullet;
+MovieClipSub * sphere1BulletCont;
+MovieClipSub * sphere2_1;
+MovieClipSub * sphere2_1Bullet;
+MovieClipSub * sphere2_1BulletCont;
+MovieClipSub * sphere2_2;
+MovieClipSub * sphere2_2Bullet;
+MovieClipSub * sphere2_2BulletCont;
+MovieClipSub * sphere3_1;
+MovieClipSub * sphere3_1Bullet;
+MovieClipSub * sphere3_1BulletCont;
+MovieClipSub * sphere3_2;
+MovieClipSub * sphere3_2Bullet;
+MovieClipSub * sphere3_2BulletCont;
+MovieClipSub * sphere3_3;
+MovieClipSub * sphere3_3Bullet;
+MovieClipSub * sphere3_3BulletCont;
+
             
-            Tower2_mc()
-            {
-                return;
-            }// end function
-            bool init();
+            Tower2_mc(); 
         };
         class Tower3 :public  Tower
         {

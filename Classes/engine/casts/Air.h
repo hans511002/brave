@@ -15,31 +15,16 @@ namespace engine
     		MovieClipSub* contBlowing;
     		MovieClipSub* dust1;//public var dust1:MovieClip;
     		MovieClipSub* dust2;
-    		Air_mc(string dir);
-    		void clear();
-    		virtual void gotoAndStop(int cur)
-    		{
-    			MovieClip::gotoAndStop(cur);
-    			this->clear();
-    			this->cont = new MovieClipSub(this,this->getArmature()->getSlot("cont")->getChildArmature());
-    			this->dust1 = new MovieClipSub(this, this->getArmature()->getSlot("dust1")->getChildArmature());
-    			this->dust2 = new MovieClipSub(this, "dust2" );
-    			dragonBones::Armature * arm = cont->getArmature()->getSlot("blowing")->getChildArmature();
-    			this->contBlowing = new MovieClipSub(cont, arm);
-    			this->cont->gotoAndStop(48);
-    			this->dust1->stop();
-    			this->dust2->stop();
-    			this->dust1->arm->getBone("dust1")->setVisible(false);
-    			this->dust2->arm->getBone("dust2")->setVisible(false);
-    			this->cont->play(0);
-    		};
+    		
+    		Air_mc();
+    	 
     	};
 		class MoveAir_mc :public MovieClip
 		{
-			MovieClip* down;//:MovieClip;
-			MovieClip* left;//:MovieClip;
-			MovieClip* right;//:MovieClip;
-			MovieClip* up;//:MovieClip;
+		    MovieClipSub * down;
+            MovieClipSub * left;
+            MovieClipSub * right;
+            MovieClipSub * up;
 			MoveAir_mc();
 		};
 		class Air :public BaseNode

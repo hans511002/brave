@@ -4,6 +4,24 @@ namespace engine
 {
     namespace towers
     {
+        Tower2_mc::Tower2_mc():MovieClip("tower/","Tower2_mc","Tower2_mc")
+        {
+blockTower= this->createMovieClipSub("blockTower");
+boneBlock= this->createMovieClipSub("boneBlock");
+selectTower= this->createMovieClipSub("selectTower");
+towerCase= this->createCase("towerCase");
+sphere1= this->createMovieClipSub("sphere1");
+sphere1Bullet= sphere1->createMovieClipSub("bullet");
+sphere1BulletCont= sphere1Bullet->createMovieClipSub("cont");
+sphere2_1= this->createMovieClipSub("sphere2_1");
+sphere2_1Bullet= sphere2_1->createMovieClipSub("bullet");
+sphere2_1BulletCont= sphere2_1Bullet->createMovieClipSub("cont");
+sphere2_2= this->createMovieClipSub("sphere2_2");
+sphere2_2Bullet= sphere2_2->createMovieClipSub("bullet");
+sphere2_2BulletCont= sphere2_2Bullet->createMovieClipSub("cont");
+          
+        }
+
         
         Tower2::Tower2()
         {

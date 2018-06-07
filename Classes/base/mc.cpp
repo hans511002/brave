@@ -136,7 +136,10 @@ namespace engine
 	{
 		return  new MovieClip(this, slot,rootPath, armName, dbName, defAniName);
 	};
-
+	MovieClip * MC::createMovieClip(string slot, string rootPath, string dbName)
+	{
+		return  new MovieClip(this, slot,rootPath,  dbName);
+	};
     MCCase * MC::createCase(string slotName, bool draw)
 	{
 		return  new MCCase(this, slotName, draw);
@@ -496,14 +499,14 @@ namespace engine
 		reinit();
 		mc->addMCbs(this);
 	};
-	MovieClip::MovieClip(MC *mc, string slotName, string rootPath, string dbName, string defAniName) :cont(0)
-	{ 
+	MovieClip::MovieClip(MC *mc, string slotName, string rootPath, string dbName) :cont(0)
+	{
  		this->mc = mc;
 		this->slotName = slotName;
 		this->setName(slotName);
 		this->rootPath = rootPath; 
 		this->dbName = dbName;
-		this->defAniName = defAniName;
+		this->defAniName = "";
 		reinit();
 		mc->addMCbs(this);
 	};

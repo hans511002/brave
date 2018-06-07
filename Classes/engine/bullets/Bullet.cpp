@@ -7,7 +7,7 @@ namespace engine{
     namespace bullets{
         BulletSphereTower_mc::BulletSphereTower_mc():MovieClip("sphere/","BulletSphereTower_mc","BulletSphereTower_mc"),cont(0)
         {
-            
+            //cont=this->createMovieClip("sphere/","cont","BulletSpheresTower_mc");//合并多个在一个db中
         }
         
         void BulletSphereTower_mc::gotoAndStop(int cur)
@@ -33,75 +33,79 @@ namespace engine{
 			{
 				cont = new MovieClip("sphere/", "BulletLevinTower_mc", "BulletLevinTower_mc");
 			}
-			if(cont)display->addChild(cont);
+			if(cont)
+			    display->addChild(cont);
 
 		};
-        BulletFireTower_mc::BulletFireTower_mc()
-        {
-            cont=new MovieClip("sphere/","BulletFireTower_mc","BulletFireTower_mc");
+        BulletFireTower_mc::BulletFireTower_mc():MovieClip("sphere/","BulletFireTower_mc","BulletFireTower_mc")
+        { 
         }
-        BulletIceTower_mc::BulletIceTower_mc()
-        {
-            cont=new MovieClip("sphere/","BulletIceTower_mc","BulletIceTower_mc");
+        BulletIceTower_mc::BulletIceTower_mc():MovieClip("sphere/","BulletIceTower_mc","BulletIceTower_mc")
+        { 
         }
-        BulletStoneTower_mc::BulletStoneTower_mc()
+        BulletStoneTower_mc::BulletStoneTower_mc():MovieClip("sphere/","BulletStoneTower_mc","BulletStoneTower_mc")
         {
-            cont=new MovieClip("sphere/","BulletStoneTower_mc","BulletStoneTower_mc");
         }
-        BulletLevinTower_mc::BulletLevinTower_mc()
-        {
-            cont=new MovieClip("sphere/","BulletLevinTower_mc","BulletLevinTower_mc");
+        BulletLevinTower_mc::BulletLevinTower_mc():MovieClip("sphere/","BulletLevinTower_mc","BulletLevinTower_mc")
+        { 
         }
-        BulletTower5_1_mc::BulletTower5_1_mc()
-        {
-            cont=new MovieClip("sphere/","BulletTower5_1_mc","BulletTower5_1_mc");
+        BulletTower5_1_mc::BulletTower5_1_mc():MovieClip("sphere/","BulletTower5_1_mc","BulletTower5_1_mc")
+        { 
         }
-        BulletTower5_1Bang_mc::BulletTower5_1Bang_mc()
-        {
-            cont=new MovieClip("sphere/","BulletTower5_1Bang_mc","BulletTower5_1Bang_mc");
+        BulletTower5_1Bang_mc::BulletTower5_1Bang_mc():MovieClip("sphere/","BulletTower5_1Bang_mc","BulletTower5_1Bang_mc")
+        { 
         }
-        BulletTower51_1_mc::BulletTower51_1_mc()
+        BulletTower5_1Smoke1_mc::BulletTower5_1Smoke1_mc(World * world) :MovieClip(world, "sphere/", "BulletTower5_1Smoke1_mc", "BulletTower5_1Smoke1_mc") 
         {
-            cont=new MovieClip("sphere/","BulletTower51_1_mc","BulletTower51_1_mc");
+        };
+        BulletTower51_1_mc::BulletTower51_1_mc():MovieClip("sphere/","BulletTower51_1_mc","BulletTower51_1_mc")
+        { 
         }
-        BulletTower51_2_mc::BulletTower51_2_mc()
-        {
-            cont=new MovieClip("sphere/","BulletTower51_2_mc","BulletTower51_2_mc");
+        BulletTower51_2_mc::BulletTower51_2_mc():MovieClip("sphere/","BulletTower51_2_mc","BulletTower51_2_mc")
+        { 
         }
-        BulletTower6_1_mc::BulletTower6_1_mc()
-        {
-            cont=new MovieClip("sphere/","BulletTower6_1_mc","BulletTower6_1_mc");
+        BulletTower6_1_mc::BulletTower6_1_mc():MovieClip("sphere/","BulletTower6_1_mc","BulletTower6_1_mc")
+        { 
         }
-        BulletTower6_2_mc::BulletTower6_2_mc()
-        {
-            cont=new MovieClip("sphere/","BulletTower6_2_mc","BulletTower6_2_mc");
+        BulletTower6_2_mc::BulletTower6_2_mc():MovieClip("sphere/","BulletTower6_2_mc","BulletTower6_2_mc")
+        { 
         }
-        BulletTower61_mc::BulletTower61_mc()
-        {
-            cont=new MovieClip("sphere/","BulletTower61_mc","BulletTower61_mc");
+        BulletTower61_mc::BulletTower61_mc():MovieClip("sphere/","BulletTower61_mc","BulletTower61_mc")
+        { 
         }
-        BulletTower7_mc::BulletTower7_mc()
-        {
-            //cont=new MovieClip("sphere/","BulletTower7_mc","BulletTower7_mc");
-            ball=new MovieClip("sphere/","ball","BulletTower7_mc");
-            smokeCont1=new MovieClip("sphere/","smokeCont1","BulletTower7_mc");
-            smokeCont2=new MovieClip("sphere/","smokeCont2","BulletTower7_mc");
+        BulletTower7_smoke_mc::BulletTower7_smoke_mc():MovieClip("sphere/","BulletTower7_smoke_mc","BulletTower7_smoke_mc")
+        { 
         }
-        BulletTower7_smoke_mc::BulletTower7_smoke_mc()
+        BulletTower71_mc::BulletTower71_mc():MovieClip("sphere/","BulletTower71_mc","BulletTower71_mc")
         {
-            cont=new MovieClip("sphere/","BulletTower7_smoke_mc","BulletTower7_smoke_mc");
+            
         }
-        BulletTower8_1_mc::BulletTower8_1_mc()
+        BulletTower7_mc::BulletTower7_mc():MovieClip("sphere/","BulletTower7_mc","BulletTower7_mc")
         {
-            cont=new MovieClip("sphere/","BulletTower8_1_mc","BulletTower8_1_mc");
+            ////cont=new MovieClip("sphere/","BulletTower7_mc","BulletTower7_mc");
+            //ball=new MovieClip("sphere/","ball","BulletTower7_mc");
+            //smokeCont1=new MovieClip("sphere/","smokeCont1","BulletTower7_mc");
+            //smokeCont2=new MovieClip("sphere/","smokeCont2","BulletTower7_mc");
+            
+            ball= this->createMovieClipSub("ball");
+            smoke= this->createMovieClipSub("smoke");
+            smokeCont1= smoke->createMovieClipSub("cont1");
+            smokeCont2= smoke->createMovieClip("cont2","sphere/", "BulletTower7_smoke_mc", "BulletTower7_smoke_mc");
         }
-        BulletTower8_2_mc::BulletTower8_2_mc()
-        {
-            cont=new MovieClip("sphere/","BulletTower8_2_mc","BulletTower8_2_mc");
+       
+        BulletTower8_1_mc::BulletTower8_1_mc():MovieClip("sphere/","BulletTower8_1_mc","BulletTower8_1_mc")
+        { 
         }
-        BulletTower81_mc::BulletTower81_mc()
+        BulletTower8_2_mc::BulletTower8_2_mc():MovieClip("sphere/","BulletTower8_2_mc","BulletTower8_2_mc")
+        { 
+        }
+        BulletTower81_mc::BulletTower81_mc():MovieClip("sphere/","BulletTower81_mc","BulletTower81_mc")
+        { 
+        }
+        
+        UnitShadow_mc::UnitShadow_mc():BaseSprit("sphere/UnitShadow_mc.png")
         {
-            cont=new MovieClip("sphere/","BulletTower81_mc","BulletTower81_mc");
+            
         }
         
         Bullet::Bullet() :dead(false), world(NULL), container(NULL), enemyTarget(NULL), damage(0), bulletType(0), whoShoot(NULL)

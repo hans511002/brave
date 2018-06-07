@@ -4,6 +4,32 @@ namespace engine
 {
     namespace towers
     { 
+        Tower3_mc::Tower3_mc():MovieClip("tower/","Tower3_mc","Tower3_mc")
+        {
+blockTower= this->createMovieClipSub("blockTower");
+boneBlock= this->createMovieClipSub("boneBlock");
+selectTower= this->createMovieClipSub("selectTower");
+towerCase= this->createCase("towerCase");
+sphere1= this->createMovieClipSub("sphere1");
+sphere1Bullet= sphere1->createMovieClipSub("bullet");
+sphere1BulletCont= sphere1Bullet->createMovieClipSub("cont");
+sphere2_1= this->createMovieClipSub("sphere2_1");
+sphere2_1Bullet= sphere2_1->createMovieClipSub("bullet");
+sphere2_1BulletCont= sphere2_1Bullet->createMovieClipSub("cont");
+sphere2_2= this->createMovieClipSub("sphere2_2");
+sphere2_2Bullet= sphere2_2->createMovieClipSub("bullet");
+sphere2_2BulletCont= sphere2_2Bullet->createMovieClipSub("cont");
+sphere3_1= this->createMovieClipSub("sphere3_1");
+sphere3_1Bullet= sphere3_1->createMovieClipSub("bullet");
+sphere3_1BulletCont= sphere3_1Bullet->createMovieClipSub("cont");
+sphere3_2= this->createMovieClipSub("sphere3_2");
+sphere3_2Bullet= sphere3_2->createMovieClipSub("bullet");
+sphere3_2BulletCont= sphere3_2Bullet->createMovieClipSub("cont");
+sphere3_3= this->createMovieClipSub("sphere3_3");
+sphere3_3Bullet= sphere3_3->createMovieClipSub("bullet");
+sphere3_3BulletCont= sphere3_3Bullet->createMovieClipSub("cont");
+
+        }
         Tower3::Tower3()
         {
             return;

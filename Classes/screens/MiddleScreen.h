@@ -6,19 +6,19 @@
 namespace screens
 { 
     
-    class MiddleScreen_mc :public MovieClip
+    struct MiddleScreen_mc :public MovieClip
 	{
-	public:
-        ImageMovieClip * leftDown;
-        ImageMovieClip *  leftUp;
-        ImageMovieClip *  rightDown;
-        ImageMovieClip *  rightUp;
-
-        MiddleScreen_mc();
-        bool init();
-         void stop();
+        MovieClipSub * leftDown;
+        MovieClipSub * leftUp;
+        MovieClipSub * rightDown;
+        MovieClipSub * rightUp; 
+        MiddleScreen_mc(); 
 	 };
 
+    struct MiddleScreenCentr_mc:public MovieClip
+    {
+        MiddleScreenCentr_mc()
+    }
     class MiddleScreen : public cocos2d::Node
     {
 	public:
