@@ -37,6 +37,7 @@ namespace engine
         MovieClipSub * createMovieClipSub(string slot);
 		MovieClip * createMovieClip(string slot,string rootPath, string armName, string dbName, string defAniName = "");
 		MovieClip * createMovieClip(string slot,string rootPath, string dbName);
+		MovieClip * MC::createMovieClip(string slot, MovieClip * mc);
         MCCase * createCase(string slot, bool draw = true);
 		MCSprite * createSprite(string slot, string file);
 		MCSprite * createSprite(string slot, Sprite* file = NULL);

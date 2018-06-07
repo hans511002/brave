@@ -140,6 +140,16 @@ namespace engine
 	{
 		return  new MovieClip(this, slot,rootPath,  dbName);
 	};
+	MovieClip * MC::createMovieClip(string slot, MovieClip * mc)
+	{
+		mc->mc=this;
+		mc->display=NULL;
+		mc->slotName=slot;
+		mc->reinit();
+		this->addMCbs(mc);
+		return mc;
+	};
+	
     MCCase * MC::createCase(string slotName, bool draw)
 	{
 		return  new MCCase(this, slotName, draw);
