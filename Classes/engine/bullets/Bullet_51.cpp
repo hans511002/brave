@@ -1,6 +1,4 @@
-#include "engine/World.h"
-#include "engine/mc/mc.h"
-#include "engine/bullets/Bullet.h"
+#include "engine/World.h"  
 #include "Bullet_51.h"
 #include "engine/units/Unit.h"
 
@@ -26,17 +24,18 @@ namespace engine{
                 while (j < 7) 
                 { 
                     distanceX = distanceX + 10;
+					BulletBase_mc * tempObject = NULL;
                     if (this->turnFlag)
                     {
                         this->turnFlag = false;
-                        tempObject = new BulletTower51_1_mc();
+						 tempObject  = new BulletTower51_1_mc();
                         if (this_pt.x < whoShoot->this_pt.x)
                         {
                             tempObject->setPositionX(44);
                         }
                         else
                         {
-                            tempObject->setScaleX(tempObject->setScaleX() * -1);
+                            tempObject->setScaleX(tempObject->getScaleX() * -1);
                             tempObject->setPositionX(-44);
                         }
                         tempObject->setPositionY(-624);//.y = -624;
@@ -44,26 +43,28 @@ namespace engine{
                     else
                     {
                         this->turnFlag = true;
-                        tempObject = new BulletTower51_2_mc();
+						 tempObject = new BulletTower51_2_mc();
                         tempObject->setPositionX(0);//tempObject.x = 0;
                         tempObject->setPositionY(-624);//tempObject.y = -624;
                     }
-                    tempObject->stop();
-                    tempObject->setPositionX(tempObject->getPositionX() + distanceX);
-                    tempObject->setPositionY(tempObject->getPositionY() + distanceY);
+					tempObject->stop();
+					tempObject->setPositionX(tempObject->getPositionX() + distanceX);
+					tempObject->setPositionY(tempObject->getPositionY() + distanceY);
+					tempObject->setVisible(false);
+
                     tempObject->counter = 40;
                     tempObject->distX = (distanceX - tempObject->getPositionX()) / tempObject->counter;
                     tempObject->distY = (distanceY - tempObject->getPositionY()) / tempObject->counter;
-                    tempObject->setVisible(false);
+                   
                     this->addChild(tempObject);
                     this->listOfAnimation.push(tempObject);
                     j++;
                 }
                 i++;
             }
-            Bullet::init(event);
+            Bullet::init();
             //Sounds.instance.playSound("snd_tower_shootUltraAdd1");
-            return;
+            return true;
         }// end function
 
         void Bullet_51::update() 
@@ -77,12 +78,12 @@ namespace engine{
                 {
                     if (std::random() < 0.05)
                     {
-                        this->listOfAnimation[i]->isVisible(true);
+                        this->listOfAnimation[i]->setVisible(true);
                     }
                 }
                 else if (this->listOfAnimation[i]->counter > 0)
                 {
-                    this->listOfAnimation[i].counter--;
+                    this->listOfAnimation[i]->counter--;
                     this->listOfAnimation[i]->setPosition(this->listOfAnimation[i]->getPositionX() + this->listOfAnimation[i]->distX ,
                         this->listOfAnimation[i]->getPositionY() + this->listOfAnimation[i]->distY );
                     //this->listOfAnimation[i].x = this->listOfAnimation[i].x + this->listOfAnimation[i].distX;
@@ -97,13 +98,13 @@ namespace engine{
                     j = world->listOfUnits.size()- 1;
                     while (j >= 0)
                     {
-			            tempObject = this->convertToWorldSpace(this->listOfAnimation[i]->getPosition());
+			            Vec2 tempObject = this->convertToWorldSpace(this->listOfAnimation[i]->getPosition());
                         //tempObject = this->localToGlobal(new Point(this->listOfAnimation[i].x, this->listOfAnimation[i].y));
                         if (world->listOfUnits[j]->atStage() && world->listOfUnits[j]->readyDamage)
                         {
                             if (world->listOfUnits[j]->shoot_pt.distance(tempObject) < Main::mainClass->readXMLClass.ultraAddFireStoneRadiusXML)
                             {
-                                tempObject = world->listOfUnits[j];
+                                Unit * tempObject = world->listOfUnits[j];
                                 if (tempObject->typeUnit != 23)
                                 {
                                     tempObject->getHit(damage, "fire", 2, true, bulletType, whoShoot);

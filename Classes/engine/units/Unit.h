@@ -2,51 +2,55 @@
 #define UNITS_UNIT_H
 #include "BaseHeaders.h"
 #include "Unit_mc.h"
-#include "engine/bullets/Bullet.h"
+#include "engine/Waves.h"
+#include "engine/bullets/Bullet.h" 
 
 namespace engine
 {
 	class World;
+	//class WaveData;
+	
 	namespace units
 	{
-		class Unit; 
+		class Unit;
 		struct NewEnemy_mc :public MovieClip
 		{
-			MovieClip* newEnemyCase;
+			MCCase* newEnemyCase;
 			int typeUnit;
 			NewEnemy_mc();
 		};
 		struct NewElement_mc :public MovieClip
 		{
-			MovieClip *newElementCase;
+			MCCase *newElementCase;
+			NewElement_mc();
 		};
 		struct Roadsign_mc : public MovieClip
-		{ 
+		{
 			float myPath;
 			int myRoad, myWay;
 			Common::Array<Unit *> myStack;
 			cocos2d::Point myPoint;
 			bool repeatFlag;
-			int repeatCounter; 
-			inline Roadsign_mc(string path,string arm,string dbName):MovieClip(path,arm,dbName){};
+			int repeatCounter;
+			inline Roadsign_mc(string path, string arm, string dbName) :MovieClip(path, arm, dbName){};
 		};
 		struct RoadsignFire_mc : public Roadsign_mc
-		{ 
-			inline RoadsignFire_mc():Roadsign_mc("worldinterface/","RoadsignFire_mc","RoadsignFire_mc"){};
+		{
+			inline RoadsignFire_mc() :Roadsign_mc("worldinterface/", "RoadsignFire_mc", "RoadsignFire_mc"){};
 		};
 		struct RoadsignIce_mc : public Roadsign_mc
-		{ 
-			inline RoadsignIce_mc():Roadsign_mc("worldinterface/","RoadsignIce_mc","RoadsignIce_mc"){};
- 		};
+		{
+			inline RoadsignIce_mc() :Roadsign_mc("worldinterface/", "RoadsignIce_mc", "RoadsignIce_mc"){};
+		};
 		struct RoadsignStone_mc : public Roadsign_mc
-		{  
-			inline RoadsignStone_mc():Roadsign_mc("worldinterface/","RoadsignStone_mc","RoadsignStone_mc"){};
+		{
+			inline RoadsignStone_mc() :Roadsign_mc("worldinterface/", "RoadsignStone_mc", "RoadsignStone_mc"){};
 		};
 		struct RoadsignLevin_mc : public Roadsign_mc
-		{ 
-			inline RoadsignLevin_mc():Roadsign_mc("worldinterface/","RoadsignLevin_mc","RoadsignLevin_mc"){};
+		{
+			inline RoadsignLevin_mc() :Roadsign_mc("worldinterface/", "RoadsignLevin_mc", "RoadsignLevin_mc"){};
 		};
-		class Unit :public BaseNode
+		class Unit :public ShootBase
 		{
 		public:
 			int i, j, n;
@@ -151,7 +155,7 @@ namespace engine
 				speedPlusFlag(false), speedPlusCounter(0), speedPlusValue(0), airGo(0), airWaitTimer(0), airSpacing(0), airPower(0), airResist(0), dampingAir(0), traversedPath(0),
 				icemanFlag(false), icemanCounter(0), icemanResist(0), fireEffectFlag(false), fireEffectCounter(0), fireEffectDamage(0), iceEffectFlag(false), iceEffectCounter(0),
 				iceEffectSlowdown(0), replacementFlag(0), replacementCount(0), mainMoveFlag(true), stealthCounter(0), hiddenFlag(false),
-				invisibleCounter(0), invisibleTimer(0), visibleCounter(0), visibleTimer(0), newEnemyCounter(0), atStaged(false),teleportAnima(NULL)
+				invisibleCounter(0), invisibleTimer(0), visibleCounter(0), visibleTimer(0), newEnemyCounter(0), atStaged(false), teleportAnima(NULL)
 			{
 
 			}// end function
@@ -175,7 +179,7 @@ namespace engine
 			virtual void animationHandler();
 
 			////public function getHit(param1:Number, param2:String = "无", param3:int = 0, param4:Boolean = false, param5:int = 0, param6:Object = null) : void
-			virtual void getHit(float param1, string param2 = "none", int  param3 = 0, bool param4 = false, int param5 = 0, void * param6 = NULL);
+			virtual void getHit(float param1, string param2 = "none", int  param3 = 0, bool param4 = false, int param5 = 0, ShootBase * param6 = NULL);
 
 			virtual void setAirSettings(string param1);
 
@@ -217,20 +221,20 @@ public:\
 		UNIT_CLASS_DEFINE(Unit_19);
 		UNIT_CLASS_DEFINE(Unit_20, virtual void kill(););
 		UNIT_CLASS_DEFINE(Unit_21, virtual void kill(););
-		UNIT_CLASS_DEFINE(Unit_22, int blockTowerRadius; MovieClip * blockRadiusGr; bool greenFlag; cocos2d::Point testTarget; void scanAtRadius();virtual void kill(););
+		UNIT_CLASS_DEFINE(Unit_22, int blockTowerRadius; MovieClip * blockRadiusGr; bool greenFlag; cocos2d::Point testTarget; void scanAtRadius(); virtual void kill(););
 
-		UNIT_CLASS_DEFINE(Unit_23, RoadsignFire_mc * myPortal; MovieClip * portalAnima;virtual void kill(););
-		UNIT_CLASS_DEFINE(Unit_24, RoadsignIce_mc * myPortal; MovieClip * portalAnima;virtual void kill(););
-		UNIT_CLASS_DEFINE(Unit_25, RoadsignStone_mc * myPortal; MovieClip * portalAnima;virtual void kill();virtual void update(float dt););
+		UNIT_CLASS_DEFINE(Unit_23, RoadsignFire_mc * myPortal; MovieClip * portalAnima; virtual void kill(););
+		UNIT_CLASS_DEFINE(Unit_24, RoadsignIce_mc * myPortal; MovieClip * portalAnima; virtual void kill(););
+		UNIT_CLASS_DEFINE(Unit_25, RoadsignStone_mc * myPortal; MovieClip * portalAnima; virtual void kill(); virtual void update(float dt););
 		UNIT_CLASS_DEFINE(Unit_26, RoadsignLevin_mc * myPortal; MovieClip * portalAnima; virtual void kill(););
-		UNIT_CLASS_DEFINE(Unit_27,int teleportPhase; int teleportTimer; int teleportCounter; int teleportStealthTimer; int teleportStealthCounter; float teleportDistance; float teleportRadius; Common::Array<MovieClip*> listOfTeleportUnits; int soundCounter; int soundTimer; int soundTimer1; int teleportUnitsMax; int teleportUnitsCounter;virtual void kill(););
-		UNIT_CLASS_DEFINE(Unit_28,float giveHealthRadius; int giveHeathCounter; int giveHeathTimer; float giveHeath;virtual void kill(););
-		UNIT_CLASS_DEFINE(Unit_29,float returnHealth; int stealthCounter; int stealthTimer; int phase;virtual void kill(););
-        UNIT_CLASS_DEFINE(Unit_30, float returnHealth; int stealthCounter; int stealthTimer; int phase; virtual void kill(););
-        UNIT_CLASS_DEFINE(Unit_31, float distanceX; float distanceY; int counter; bool firstView; virtual void moveHandler(););
-        UNIT_CLASS_DEFINE(Unit_32, float distanceX; float distanceY; int counter; bool firstView; virtual void moveHandler(););
-        UNIT_CLASS_DEFINE(Unit_33, float distanceX; float distanceY; int counter; bool firstView; virtual void moveHandler(););
-        UNIT_CLASS_DEFINE(Unit_34, int phase; int teleportStatus; bool eyesFlag; int eyesCounter; int eyesCounter1; int eyesCounter2; ReadXML * readXML; int phaseRoad1; int phaseRoad2; bool giveArmorFlag; bool takeAwayCastsFlag; string changeRoad; bool speakFlag; int notAtRoad; int musicVolumeManageCounter; bool greenFlag; Common::Array<WaveData> arrayTurn; int callUnitsCounter; bool roadFlag; virtual void kill(););
+		UNIT_CLASS_DEFINE(Unit_27, int teleportPhase; int teleportTimer; int teleportCounter; int teleportStealthTimer; int teleportStealthCounter; float teleportDistance; float teleportRadius; Common::Array<MovieClip*> listOfTeleportUnits; int soundCounter; int soundTimer; int soundTimer1; int teleportUnitsMax; int teleportUnitsCounter; virtual void kill(););
+		UNIT_CLASS_DEFINE(Unit_28, float giveHealthRadius; int giveHeathCounter; int giveHeathTimer; float giveHeath; virtual void kill(););
+		UNIT_CLASS_DEFINE(Unit_29, float returnHealth; int stealthCounter; int stealthTimer; int phase; virtual void kill(););
+		UNIT_CLASS_DEFINE(Unit_30, float returnHealth; int stealthCounter; int stealthTimer; int phase; virtual void kill(););
+		UNIT_CLASS_DEFINE(Unit_31, float distanceX; float distanceY; int counter; bool firstView; virtual void moveHandler(););
+		UNIT_CLASS_DEFINE(Unit_32, float distanceX; float distanceY; int counter; bool firstView; virtual void moveHandler(););
+		UNIT_CLASS_DEFINE(Unit_33, float distanceX; float distanceY; int counter; bool firstView; virtual void moveHandler(););
+		UNIT_CLASS_DEFINE(Unit_34, int phase; int teleportStatus; bool eyesFlag; int eyesCounter; int eyesCounter1; int eyesCounter2; ReadXML * readXML; int phaseRoad1; int phaseRoad2; bool giveArmorFlag; bool takeAwayCastsFlag; string changeRoad; bool speakFlag; int notAtRoad; int musicVolumeManageCounter; bool greenFlag; Common::Array<engine::WaveData> arrayTurn; int callUnitsCounter; bool roadFlag; virtual void kill(););
 	}
 }
 #endif

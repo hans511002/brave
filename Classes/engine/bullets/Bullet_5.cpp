@@ -1,5 +1,4 @@
  
-#include "engine/mc/mc.h" 
 #include "Bullet_5.h" 
 #include "engine/World.h"
 #include "engine/units/Unit.h"
@@ -30,7 +29,7 @@ namespace engine{
             }
             else
             {
-                this->enemySpeed = 0.1;
+                this->enemySpeed = 0.1f;
             }
             bezier::PathPoint tempObject = world->bezierClass->getPathPoint(this->enemyPath + this->enemySpeed * liveTimer, this->enemyRoad, this->enemyWay);
             if (this->getPositionX() > tempObject.x)
@@ -45,14 +44,14 @@ namespace engine{
             this->shadow->stop(); 
             this->shadow->mouseChildren = false;
             this->shadow->mouseEnabled = false;
-            this->shadow->setPosition(this_pt.x,whoShoot.y);
+            this->shadow->setPosition(this_pt.x,whoShoot->getPositionY());
             //this->shadow->x = this_pt.x;
             //this->shadow->y = whoShoot.y;
             this->shadow->setScale(0.5,0.5);
-            world->addChildAt(this->shadow, 2);
+            world->addChild(this->shadow, 2);
             //world->listOfIndexes2.push(this->shadow);
             //Sounds.instance.playSound("snd_tower_shootUltra1_1");
-            return;
+            return true;
         }// end function  
         void Bullet_5::update()
         {
@@ -119,7 +118,7 @@ namespace engine{
                     //this->shadow.y = this->shadow.y + (this->enemyStartPoint.y - this->shadow.y) / (liveCounter * 10);
                     if (liveCounter == 4)
                     {
-                        BulletTower5_1Bang_mc * tempObject =  new BulletTower5_1Bang_mc() ;
+                        BulletTower5_1Bang_mc * tempObject =  new BulletTower5_1Bang_mc(this->world) ;
                         //Sounds.instance.playSound("snd_tower_shootUltra1_2");
                         tempObject->setPosition(this_pt);
                         //tempObject.x = this_pt.x;
@@ -168,9 +167,9 @@ namespace engine{
                     container->setScaleX(container->getScaleX() - 0.0105);
                     container->setScaleY(container->getScaleY() - 0.0105);
                 }
-                tempObject =new MovieClip(world,"sphere/","BulletTower5_1Smoke1_mc","BulletTower5_1Smoke1_mc");// new Indexes(new BulletTower5_1Smoke1_mc(), 3, 0.18);
+				BulletTower5_1Smoke1_mc * tempObject1 = new BulletTower5_1Smoke1_mc(world );// new Indexes(new BulletTower5_1Smoke1_mc(), 3, 0.18);
                 //tempObject.container->rotation = container->rotation;
-                tempObject->setPosition(this_pt);
+				tempObject1->setPosition(this_pt);
                 //tempObject.x = this_pt.x;
                 //tempObject.y = this_pt.y;
                 liveCounter--;
@@ -199,7 +198,7 @@ namespace engine{
                 //}
                 this->shadow = NULL;
             }
-            Bullet_5::kill();
+            Bullet::kill();
             return;
         }// end function
 

@@ -75,10 +75,10 @@ namespace engine
             }
             else if (this->openFlag)
             {
-                if (this->container->scaleX < 1)
+                if (this->container->getScaleX() < 1)
                 {
-                    this->container->setScaleX(this->container->scaleX + 0.2);//scaleX = this->container->scaleX + 0.2;
-                    this->container->setScaleY(this->container->scaleY + 0.2);//scaleY = this->container->scaleY + 0.2;
+					this->container->setScaleX(this->container->getScaleX() + 0.2);//scaleX = this->container->scaleX + 0.2;
+					this->container->setScaleY(this->container->getScaleY() + 0.2);//scaleY = this->container->scaleY + 0.2;
                 }
                 else
                 {

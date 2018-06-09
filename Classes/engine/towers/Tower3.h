@@ -2,22 +2,21 @@
 #define ENGINE_TOWERS_TOWER3_H
 #include "BaseHeaders.h"
 #include "engine/towers/Tower.h" 
-#include "engine/mc/mc.h" 
-
+ 
 namespace engine
 {
     namespace towers
     {
-		class Tower3_mc :public MovieClip
+		class Tower3_mc :public TowerBase
 		{
 		public:
-			MovieClip * blockTower;
-			MovieClip * boneBlock;
-			MovieClipSub * selectTower;
-			MCCase * towerCase;
-			MovieClipSub * sphere1;
-			MovieClip * sphere1Bullet;
-			MovieClipSub * sphere1BulletCont;
+			//MovieClip * blockTower;
+			//MovieClip * boneBlock;
+			//MovieClipSub * selectTower;
+			//MCCase * towerCase;
+			//MovieClipSub * sphere1;
+			//MovieClip * sphere1Bullet;
+			//MovieClipSub * sphere1BulletCont;
 			MovieClipSub * sphere2_1;
 			MovieClip * sphere2_1Bullet;
 			MovieClipSub * sphere2_1BulletCont;

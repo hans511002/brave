@@ -14,7 +14,7 @@ namespace engine{
             int enemyWay;
             float enemyPath;
             float enemySpeed;
-            MovieClip * UnitShadow_mc;//public var shadow:UnitShadow_mc;
+			UnitShadow_mc *shadow;//public var shadow:UnitShadow_mc;
 
             Bullet_3(){};
 

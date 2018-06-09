@@ -1,15 +1,21 @@
 ﻿
 #include "Unit.h"
 #include "MainClass.h"
-#include "engine/World.h"
+#include "engine/World.h" 
+
 namespace engine
 {
 	namespace units
 	{
-		NewEnemy_mc::NewEnemy_mc()
+		NewEnemy_mc::NewEnemy_mc() :MovieClip("unit/","NewEnemy_mc","NewEnemy_mc")
 		{
-			return; 
-		}// end function
+			newEnemyCase = this->createCase("newEnemyCase");
+		};
+
+		NewElement_mc::NewElement_mc(){
+			newElementCase = this->createCase("newEnemyCase");
+		};
+
 
 		bool Unit::init() //public function init(event:Event) : void event:Event
 		{
@@ -21,6 +27,7 @@ namespace engine
 			//this->container->healthBar->getDamage->setVisible(false);
 
 			this->addChild(this->container);
+			this->container->coordOrigin = this->container->getPosition();
 			//this->container->unitCase.coordOrigin = new Point(this->container->unitCase.x, this->container->unitCase.y);
 			//this->container->buffHP.coordOrigin = new Point(this->container->buffHP.x, this->container->buffHP.y);
 			//this->container->airShock.coordOrigin = new Point(this->container->airShock.x, this->container->airShock.y);
@@ -86,38 +93,38 @@ namespace engine
 			//this->this_pt = new Point(this->x, this->y);
 			this->shoot_pt = this->container->cont->convertToWorldSpace(this->container->cont->getPosition());
 			//this->shoot_pt = this->container->localToGlobal(new Point(this->container->cont.x, this->container->cont.y));
-
+ 
 			bezier::PathPoint tempObject = this->world->bezierClass->getPathPoint(this->path + 10, this->road, this->way);
-			if(this->this_pt.x < tempObject.x - 5)
+			if (this->this_pt.x < tempObject.x - 5)
 			{
 				this->direction = "right";
 			}
-			else if(this->this_pt.x > tempObject.x + 5)
+			else if (this->this_pt.x > tempObject.x + 5)
 			{
 				this->direction = "left";
 			}
-			else if(this->this_pt.y > tempObject.y + 5)
+			else if (this->this_pt.y > tempObject.y + 5)
 			{
 				this->direction = "up";
 			}
-			else if(this->this_pt.y < tempObject.y - 5)
+			else if (this->this_pt.y < tempObject.y - 5)
 			{
 				this->direction = "down";
 			}
-			if(this->direction == "up" || this->direction == "down")
+			if (this->direction == "up" || this->direction == "down")
 			{
 				this->scanNextTurn();
 				this->setVerticalTurn();
 			}
 			this->world->forseIndexFl = true;
-			if(this->typeUnit < 33)
+			if (this->typeUnit < 33)
 			{
-				if(Main::mainClass->saveBoxClass->getIntValue("firstViewEnemies", (this->typeUnit - 1)) == 0)
+				if (Main::mainClass->saveBoxClass->getIntValue("firstViewEnemies", (this->typeUnit - 1)) == 0)
 				{
 					Main::mainClass->saveBoxClass->setValue("firstViewEnemies", (this->typeUnit - 1), 1);
 					NewEnemy_mc * tempObject = new NewEnemy_mc();
-					tempObject->stop();
-					tempObject->newEnemyCase->stop();
+ 					tempObject->stop();
+					//tempObject->newEnemyCase->stop();
 					tempObject->typeUnit = this->typeUnit;
 					//this->tempObject.newEnemyCase.buttonMode = true;
 					this->world->worldInterface->addChild(tempObject);
@@ -131,7 +138,7 @@ namespace engine
 		void Unit::update(float dt) //public function update() : void
 		{
 			this->moveHandler();
-			if(this->path >= this->finishPath)
+			if (this->path >= this->finishPath)
 			{
 				this->kill();
 				return;
@@ -141,29 +148,29 @@ namespace engine
 		}// end function
 		void Unit::moveHandler() //public function moveHandler() : void
 		{
-			if(!this->airFlag && !this->airShockFlag && !this->icemanFlag && !this->iceEffectFlag && !this->speedPlusFlag)
+			if (!this->airFlag && !this->airShockFlag && !this->icemanFlag && !this->iceEffectFlag && !this->speedPlusFlag)
 			{
-				if(this->moveFlag)
+				if (this->moveFlag)
 				{
-					if(this->speedK != this->speedKSave)
+					if (this->speedK != this->speedKSave)
 					{
 						this->speedK = this->speedKSave;
 						this->directionFlag = true;
 					}
 				}
-				else if(this->speedK != 0)
+				else if (this->speedK != 0)
 				{
 					this->speedK = 0;
 				}
 			}
-			else if(this->airFlag)
+			else if (this->airFlag)
 			{
-				this->tempObject = this->airPower - this->dampingAir;
-				if(this->traversedPath < this->airSpacing && this->tempObject > 0)
+				float tempObject = this->airPower - this->dampingAir;
+				if (this->traversedPath < this->airSpacing &&  tempObject > 0)
 				{
 					this->dampingAir = this->dampingAir + 0.4;
-					this->speedK = this->tempObject * -1;
-					if(this->path - this->speedK < 0)
+					this->speedK =  tempObject * -1;
+					if (this->path - this->speedK < 0)
 					{
 						this->speedK = 0;
 					}
@@ -172,50 +179,50 @@ namespace engine
 				else
 				{
 					this->airFlag = false;
-					if(this->typeUnit != 34)
+					if (this->typeUnit != 34)
 					{
 						this->airShockFlag = true;
 						this->airShockCounter = Main::mainClass->readXMLClass.airWaitTimerXML;
 					}
 				}
 			}
-			else if(this->airShockFlag)
+			else if (this->airShockFlag)
 			{
-				if(this->speedK != 0)
+				if (this->speedK != 0)
 				{
 					this->speedK = 0;
 				}
 			}
-			else if(this->icemanFlag)
+			else if (this->icemanFlag)
 			{
-				if(this->speedK != 0)
+				if (this->speedK != 0)
 				{
 					this->speedK = 0;
 				}
 			}
-			else if(this->iceEffectFlag)
+			else if (this->iceEffectFlag)
 			{
-				if(this->moveFlag)
+				if (this->moveFlag)
 				{
 					this->speedK = this->iceEffectSlowdown;
 				}
-				else if(this->speedK != 0)
+				else if (this->speedK != 0)
 				{
 					this->speedK = 0;
 				}
 			}
-			else if(this->speedPlusFlag)
+			else if (this->speedPlusFlag)
 			{
-				if(this->moveFlag)
+				if (this->moveFlag)
 				{
 					this->speedK = this->speedPlusValue;
 				}
-				else if(this->speedK != 0)
+				else if (this->speedK != 0)
 				{
 					this->speedK = 0;
 				}
 			}
-			if(this->mainMoveFlag && this->speedK != 0)
+			if (this->mainMoveFlag && this->speedK != 0)
 			{
 				this->path = this->path + this->speedK;
 				bezier::PathPoint ppo = this->world->bezierClass->getPathPoint(this->path, this->road, this->way);
@@ -224,9 +231,9 @@ namespace engine
 				this->this_pt = this->getPosition();
 				this->shoot_pt = this->container->cont->convertToWorldSpace(this->container->cont->getPosition());
 				//this->shoot_pt = this->container->localToGlobal(new Point(this->container->cont.x, this->container->cont.y));
-				if(this->direction == "up" || this->direction == "down")
+				if (this->direction == "up" || this->direction == "down")
 				{
-					if(this->path > this->nextTurnMidPath)
+					if (this->path > this->nextTurnMidPath)
 					{
 						this->setVerticalTurn();
 					}
@@ -238,95 +245,95 @@ namespace engine
 
 		void Unit::directionManage() //public function directionManage() : void
 		{
-			if(this->directionFlag || this->world->frameCounter == 10 || this->world->frameCounter == 20 || this->world->frameCounter == 30)
+			if (this->directionFlag || this->world->frameCounter == 10 || this->world->frameCounter == 20 || this->world->frameCounter == 30)
 			{
-				if(this->directionFlag)
+				if (this->directionFlag)
 				{
 					this->directionFlag = false;
 				}
-				if(this->speedK != 0)
+				if (this->speedK != 0)
 				{
-					if(this->getPosition().x > this->this_pt.x && this->getPosition().x - this->this_pt.x >= this->speedK * 0.5)
+					if (this->getPosition().x > this->this_pt.x && this->getPosition().x - this->this_pt.x >= this->speedK * 0.5)
 					{
-						if(this->speedK > 0)
+						if (this->speedK > 0)
 						{
-							if(this->direction != "right")
+							if (this->direction != "right")
 							{
 								this->direction = "right";
-								if(this->nextTurnFlag)
+								if (this->nextTurnFlag)
 								{
 									this->nextTurnFlag = false;
 								}
 							}
 						}
-						if(this->container->getScaleX() < 0)
+						if (this->container->getScaleX() < 0)
 						{
 							this->setTurn("right");
 						}
-						if(this->airFlag)
+						if (this->airFlag)
 						{
-							if(this->airGo != 1)
+							if (this->airGo != 1)
 							{
 								this->airGo = 1;
 							}
 						}
 					}
-					else if(this->getPosition().x < this->this_pt.x && this->this_pt.x - this->getPosition().x >= this->speedK * 0.5)
+					else if (this->getPosition().x < this->this_pt.x && this->this_pt.x - this->getPosition().x >= this->speedK * 0.5)
 					{
-						if(this->speedK > 0)
+						if (this->speedK > 0)
 						{
-							if(this->direction != "left")
+							if (this->direction != "left")
 							{
 								this->direction = "left";
-								if(this->nextTurnFlag)
+								if (this->nextTurnFlag)
 								{
 									this->nextTurnFlag = false;
 								}
 							}
 						}
-						if(this->container->getScaleX() > 0)
+						if (this->container->getScaleX() > 0)
 						{
 							this->setTurn("left");
 						}
-						if(this->airFlag)
+						if (this->airFlag)
 						{
-							if(this->airGo != 1)
+							if (this->airGo != 1)
 							{
 								this->airGo = 1;
 							}
 						}
 					}
-					else if(this->getPosition().y > this->this_pt.y && this->getPosition().y - this->this_pt.y >= this->speedK * 0.5)
+					else if (this->getPosition().y > this->this_pt.y && this->getPosition().y - this->this_pt.y >= this->speedK * 0.5)
 					{
-						if(this->speedK > 0)
+						if (this->speedK > 0)
 						{
-							if(this->direction != "down")
+							if (this->direction != "down")
 							{
 								this->direction = "down";
 								this->scanNextTurn();
 							}
 						}
-						if(this->airFlag)
+						if (this->airFlag)
 						{
-							if(this->airGo != 3)
+							if (this->airGo != 3)
 							{
 								this->airGo = 3;
 							}
 						}
 					}
-					else if(this->getPosition().y < this->this_pt.y && this->this_pt.y - this->getPosition().y >= this->speedK * 0.5)
+					else if (this->getPosition().y < this->this_pt.y && this->this_pt.y - this->getPosition().y >= this->speedK * 0.5)
 					{
-						if(this->speedK > 0)
+						if (this->speedK > 0)
 						{
-							if(this->direction != "up")
+							if (this->direction != "up")
 							{
 								this->direction = "up";
 								this->scanNextTurn();
 							}
 						}
-						if(this->airFlag)
+						if (this->airFlag)
 						{
-							if(this->airGo != 2)
+							if (this->airGo != 2)
 							{
 								this->airGo = 2;
 							}
@@ -337,7 +344,7 @@ namespace engine
 		}// end function
 		void Unit::scanNextTurn() //public function scanNextTurn() : void
 		{
-			if(!this->nextTurnFlag)
+			if (!this->nextTurnFlag)
 			{
 				this->nextTurnFlag = true;
 				bezier::PathPoint ppo = this->world->bezierClass->getPathPoint(this->path, this->road, this->way);
@@ -345,14 +352,14 @@ namespace engine
 				this->n = 20;
 				this->i = this->path;
 				bezier::PathPoint po(0, 0);
-				while(this->i < this->finishPath)
+				while (this->i < this->finishPath)
 				{
 					po = this->world->bezierClass->getPathPoint(this->i, this->road, this->way);
-					if(po.x < ppo.x - this->n)
+					if (po.x < ppo.x - this->n)
 					{
 						break;
 					}
-					else if(po.x > ppo.x + this->n)
+					else if (po.x > ppo.x + this->n)
 					{
 						break;
 					}
@@ -366,16 +373,16 @@ namespace engine
 		}// end function
 		void Unit::setVerticalTurn() //public function setVerticalTurn() : void
 		{
-			if(this->this_pt.x > this->nextTurnPoint.x)
+			if (this->this_pt.x > this->nextTurnPoint.x)
 			{
-				if(this->container->getScaleX() > 0)
+				if (this->container->getScaleX() > 0)
 				{
 					this->setTurn("left");
 				}
 			}
-			else if(this->this_pt.x < this->nextTurnPoint.x)
+			else if (this->this_pt.x < this->nextTurnPoint.x)
 			{
-				if(this->container->getScaleX() < 0)
+				if (this->container->getScaleX() < 0)
 				{
 					this->setTurn("right");
 				}
@@ -384,18 +391,18 @@ namespace engine
 		}// end function
 		void Unit::setTurn(string param1) //public function setTurn(param1:String) : void
 		{
-			if(param1 == "left")
+			if (param1 == "left")
 			{
-				if(this->container->getScaleX() > 0)
+				if (this->container->getScaleX() > 0)
 				{
 					this->container->setScaleX(this->container->getScaleX() * -1);
 					this->container->healthBar->setScaleX(this->container->healthBar->getScaleX() * -1);
 					this->container->healthBar->setPositionX(this->container->healthBar->getPositionX() * -1);
 				}
 			}
-			else if(param1 == "right")
+			else if (param1 == "right")
 			{
-				if(this->container->getScaleX() < 0)
+				if (this->container->getScaleX() < 0)
 				{
 					this->container->setScaleX(this->container->getScaleX() * -1);
 					this->container->healthBar->setScaleX(this->container->healthBar->getScaleX() * -1);
@@ -406,53 +413,53 @@ namespace engine
 		}// end function
 		void Unit::atStageManage() //public function atStageManage() : void
 		{
-			if(!this->atStaged)
+			if (!this->atStaged)
 			{
-				if(this->world->nowLevel == 6)
+				if (this->world->nowLevel == 6)
 				{
-					if(this->road == 2)
+					if (this->road == 2)
 					{
-						if(this->path > 129)
+						if (this->path > 129)
 						{
 							this->atStaged = true;
 						}
 						return;
 					}
 				}
-				else if(this->world->nowLevel == 11)
+				else if (this->world->nowLevel == 11)
 				{
-					if(this->road == 2)
+					if (this->road == 2)
 					{
-						if(this->path > 79)
+						if (this->path > 79)
 						{
 							this->atStaged = true;
 						}
 						return;
 					}
 				}
-				else if(this->world->nowLevel == 13)
+				else if (this->world->nowLevel == 13)
 				{
-					if(this->road == 2)
+					if (this->road == 2)
 					{
-						if(this->path > 50)
+						if (this->path > 50)
 						{
 							this->atStaged = true;
 						}
 						return;
 					}
 				}
-				else if(this->world->nowLevel == 14)
+				else if (this->world->nowLevel == 14)
 				{
-					if(this->road == 2)
+					if (this->road == 2)
 					{
-						if(this->path > 100)
+						if (this->path > 100)
 						{
 							this->atStaged = true;
 						}
 						return;
 					}
 				}
-				if(this->this_pt.x > 0 && this->this_pt.y > 0 && this->this_pt.x < Main::SCREEN_WIDTH && this->this_pt.y < Main::SCREEN_HEIGHT)
+				if (this->this_pt.x > 0 && this->this_pt.y > 0 && this->this_pt.x < Main::SCREEN_WIDTH && this->this_pt.y < Main::SCREEN_HEIGHT)
 				{
 					this->atStaged = true;
 				}
@@ -461,21 +468,21 @@ namespace engine
 		}// end function
 		void Unit::animationHandler() //public function animationHandler() : void
 		{
-			if(this->container->healthBar->cont->isVisible())
+			if (this->container->healthBarCont->isVisible())
 			{
-				if(this->container->healthBar->counter < 2)
+				if (this->container->healthBarCounter < 2)
 				{
-					this->container->healthBar->counter++;
+					this->container->healthBarCounter++;
 				}
 				else
 				{
-					this->container->healthBar->cont->setVisible(false);
+					this->container->healthBarCont->setVisible(false);
 				}
 			}
 			//播放火击中效果
-			if(this->container->fireAttack->isVisible())
+			if (this->container->fireAttack->isVisible())
 			{
-				if(this->container->fireAttack->currentFrame < this->container->fireAttack->totalFrames)
+				if (this->container->fireAttack->currentFrame < this->container->fireAttack->totalFrames)
 				{
 					this->container->fireAttack->gotoAndStop((this->container->fireAttack->currentFrame + 1));
 				}
@@ -484,9 +491,9 @@ namespace engine
 					this->container->fireAttack->setVisible(false);
 				}
 			}
-			if(this->container->iceAttack->isVisible())
+			if (this->container->iceAttack->isVisible())
 			{
-				if(this->container->iceAttack->currentFrame < this->container->iceAttack->totalFrames)
+				if (this->container->iceAttack->currentFrame < this->container->iceAttack->totalFrames)
 				{
 					this->container->iceAttack->gotoAndStop((this->container->iceAttack->currentFrame + 1));
 				}
@@ -495,9 +502,9 @@ namespace engine
 					this->container->iceAttack->setVisible(false);
 				}
 			}
-			if(this->container->levinAttack->isVisible())
+			if (this->container->levinAttack->isVisible())
 			{
-				if(this->container->levinAttack->currentFrame < this->container->levinAttack->totalFrames)
+				if (this->container->levinAttack->currentFrame < this->container->levinAttack->totalFrames)
 				{
 					this->container->levinAttack->gotoAndStop((this->container->levinAttack->currentFrame + 1));
 				}
@@ -506,29 +513,29 @@ namespace engine
 					this->container->levinAttack->setVisible(false);
 				}
 			}
-			if(this->fireEffectFlag)
+			if (this->fireEffectFlag)
 			{
-				if(!this->container->fireEffect->isVisible())
+				if (!this->container->fireEffect->isVisible())
 				{
 					this->container->fireEffect->setVisible(true);
 					this->container->fireEffect->gotoAndStop(1);
-					if(this->icemanFlag)
+					if (this->icemanFlag)
 					{
 						this->stopAllEffects("fireEffect");
 					}
 				}
-				else if(this->fireEffectCounter > 0)
+				else if (this->fireEffectCounter > 0)
 				{
 					this->fireEffectCounter--;
-					if(this->atStaged && this->readyDamage)
+					if (this->atStaged && this->readyDamage)
 					{
 						this->getHit(this->fireEffectDamage, "fire", 1, false);
 					}
-					if(this->dead)
+					if (this->dead)
 					{
 						return;
 					}
-					if(this->container->fireEffect->currentFrame < this->container->fireEffect->totalFrames)
+					if (this->container->fireEffect->currentFrame < this->container->fireEffect->totalFrames)
 					{
 						this->container->fireEffect->gotoAndStop((this->container->fireEffect->currentFrame + 1));
 					}
@@ -544,21 +551,21 @@ namespace engine
 					this->container->fireEffect->setVisible(false);
 				}
 			}
-			if(this->iceEffectFlag)
+			if (this->iceEffectFlag)
 			{
-				if(!this->container->iceEffect->isVisible())
+				if (!this->container->iceEffect->isVisible())
 				{
 					this->container->iceEffect->setVisible(true);
 					this->container->iceEffect->gotoAndStop(1);
-					if(this->icemanFlag)
+					if (this->icemanFlag)
 					{
 						this->stopAllEffects("iceEffect");
 					}
 				}
-				else if(this->iceEffectCounter > 0)
+				else if (this->iceEffectCounter > 0)
 				{
 					this->iceEffectCounter--;
-					if(this->container->iceEffect->currentFrame < this->container->iceEffect->totalFrames)
+					if (this->container->iceEffect->currentFrame < this->container->iceEffect->totalFrames)
 					{
 						this->container->iceEffect->gotoAndStop((this->container->iceEffect->currentFrame + 1));
 					}
@@ -567,9 +574,9 @@ namespace engine
 						this->container->iceEffect->gotoAndStop(16);
 					}
 				}
-				else if(this->container->iceEffect->currentFrame > 16)
+				else if (this->container->iceEffect->currentFrame > 16)
 				{
-					if(this->container->iceEffect->currentFrame < this->container->iceEffect->totalFrames)
+					if (this->container->iceEffect->currentFrame < this->container->iceEffect->totalFrames)
 					{
 						this->container->iceEffect->gotoAndStop((this->container->iceEffect->currentFrame + 1));
 					}
@@ -578,7 +585,7 @@ namespace engine
 						this->container->iceEffect->gotoAndStop(16);
 					}
 				}
-				else if(this->container->iceEffect->currentFrame > 1)
+				else if (this->container->iceEffect->currentFrame > 1)
 				{
 					this->container->iceEffect->gotoAndStop((this->container->iceEffect->currentFrame - 1));
 				}
@@ -589,22 +596,22 @@ namespace engine
 					this->container->iceEffect->setVisible(false);
 				}
 			}
-			if(this->healthPlusFlag)
+			if (this->healthPlusFlag)
 			{
-				if(!this->container->buffHP->isVisible())
+				if (!this->container->buffHP->isVisible())
 				{
 					this->container->buffHP->setVisible(true);
 					this->container->buffHP->gotoAndStop(1);
 				}
-				else if(this->container->buffHP->currentFrame < this->container->buffHP->totalFrames)
+				else if (this->container->buffHP->currentFrame < this->container->buffHP->totalFrames)
 				{
 					this->container->buffHP->gotoAndStop((this->container->buffHP->currentFrame + 1));
-					if(this->health + this->healthPlusValue < this->healthMax)
+					if (this->health + this->healthPlusValue < this->healthMax)
 					{
 						this->health = this->health + this->healthPlusValue;
 						this->container->healthBar->cont->setScaleX(this->health / this->healthMax);
 					}
-					else if(this->container->healthBar->isVisible())
+					else if (this->container->healthBar->isVisible())
 					{
 						this->container->healthBar->setVisible(false);
 						this->container->healthBar->cont->setScaleX(1);
@@ -617,17 +624,17 @@ namespace engine
 					this->container->buffHP->setVisible(false);
 				}
 			}
-			if(this->armorFlag)
+			if (this->armorFlag)
 			{
-				if(this->armorCounter > 0 && this->armorPower > 0)
+				if (this->armorCounter > 0 && this->armorPower > 0)
 				{
 					(this->armorCounter - 1);
-					if(!this->container->armor->isVisible())
+					if (!this->container->armor->isVisible())
 					{
 						this->container->armor->setVisible(true);
 						this->container->armor->gotoAndStop(1);
 					}
-					else if(this->container->armor->currentFrame < this->container->armor->totalFrames)
+					else if (this->container->armor->currentFrame < this->container->armor->totalFrames)
 					{
 						this->container->armor->gotoAndStop((this->container->armor->currentFrame + 1));
 					}
@@ -642,22 +649,22 @@ namespace engine
 					this->container->armor->setVisible(false);
 				}
 			}
-			else if(this->armorCounter > 0)
+			else if (this->armorCounter > 0)
 			{
 				this->armorFlag = true;
 			}
-			if(this->airShockFlag)
+			if (this->airShockFlag)
 			{
-				if(!this->container->airShock->isVisible())
+				if (!this->container->airShock->isVisible())
 				{
 					this->container->airShock->setVisible(true);
 					this->container->airShock->gotoAndStop(1);
-					if(this->icemanFlag)
+					if (this->icemanFlag)
 					{
 						this->stopAllEffects("airShock");
 					}
 				}
-				else if(this->airShockCounter > 0)
+				else if (this->airShockCounter > 0)
 				{
 					this->airShockCounter--;
 					//if (this->container->airShock->currentFrame < this->container->airShock->totalFrames)
@@ -675,17 +682,17 @@ namespace engine
 					this->container->airShock->setVisible(false);
 				}
 			}
-			if(this->speedPlusFlag)
+			if (this->speedPlusFlag)
 			{
-				if(!this->container->buffSpeed->isVisible())
+				if (!this->container->buffSpeed->isVisible())
 				{
 					this->container->buffSpeed->setVisible(true);
 					this->container->buffSpeed->gotoAndStop(1);
 				}
-				else if(this->speedPlusCounter > 0)
+				else if (this->speedPlusCounter > 0)
 				{
 					this->speedPlusCounter--;
-					if(this->container->buffSpeed->currentFrame < this->container->buffSpeed->totalFrames)
+					if (this->container->buffSpeed->currentFrame < this->container->buffSpeed->totalFrames)
 					{
 						this->container->buffSpeed->gotoAndStop((this->container->buffSpeed->currentFrame + 1));
 					}
@@ -701,30 +708,30 @@ namespace engine
 					this->container->buffSpeed->setVisible(false);
 				}
 			}
-			if(this->airGo > 0)
+			if (this->airGo > 0)
 			{
-				if(this->airFlag)
+				if (this->airFlag)
 				{
-					if(this->airGo == 1)
+					if (this->airGo == 1)
 					{
-						if(this->container->dust2->isVisible())
+						if (this->container->dust2->isVisible())
 						{
 							this->container->dust2->setVisible(false);
 						}
-						if(this->container->dust3->isVisible())
+						if (this->container->dust3->isVisible())
 						{
 							this->container->dust3->setVisible(false);
 						}
-						if(this->container->dust4->isVisible())
+						if (this->container->dust4->isVisible())
 						{
 							this->container->dust4->setVisible(false);
 						}
-						if(!this->container->dust1->isVisible())
+						if (!this->container->dust1->isVisible())
 						{
 							this->container->dust1->setVisible(true);
 							this->container->dust1->gotoAndStop(1);
 						}
-						else if(this->container->dust1->currentFrame < this->container->dust1->totalFrames)
+						else if (this->container->dust1->currentFrame < this->container->dust1->totalFrames)
 						{
 							this->container->dust1->gotoAndStop((this->container->dust1->currentFrame + 1));
 						}
@@ -733,17 +740,17 @@ namespace engine
 							this->container->dust1->gotoAndStop(1);
 						}
 					}
-					else if(this->airGo == 2)
+					else if (this->airGo == 2)
 					{
-						if(this->container->dust1->isVisible())
+						if (this->container->dust1->isVisible())
 						{
 							this->container->dust2->setVisible(false);
 						}
-						if(this->container->dust4->isVisible())
+						if (this->container->dust4->isVisible())
 						{
 							this->container->dust3->setVisible(false);
 						}
-						if(!this->container->dust2->isVisible() || !this->container->dust4->isVisible())
+						if (!this->container->dust2->isVisible() || !this->container->dust4->isVisible())
 						{
 							this->container->dust2->setVisible(true);
 							this->container->dust3->setVisible(true);
@@ -752,7 +759,7 @@ namespace engine
 						}
 						else
 						{
-							if(this->container->dust2->currentFrame < this->container->dust2->totalFrames)
+							if (this->container->dust2->currentFrame < this->container->dust2->totalFrames)
 							{
 								this->container->dust2->gotoAndStop((this->container->dust2->currentFrame + 1));
 							}
@@ -760,7 +767,7 @@ namespace engine
 							{
 								this->container->dust2->gotoAndStop(1);
 							}
-							if(this->container->dust3->currentFrame < this->container->dust3->totalFrames)
+							if (this->container->dust3->currentFrame < this->container->dust3->totalFrames)
 							{
 								this->container->dust3->gotoAndStop((this->container->dust3->currentFrame + 1));
 							}
@@ -770,26 +777,26 @@ namespace engine
 							}
 						}
 					}
-					else if(this->airGo == 3)
+					else if (this->airGo == 3)
 					{
-						if(this->container->dust1->isVisible())
+						if (this->container->dust1->isVisible())
 						{
 							this->container->dust2->setVisible(false);
 						}
-						if(this->container->dust2->isVisible())
+						if (this->container->dust2->isVisible())
 						{
 							this->container->dust3->setVisible(false);
 						}
-						if(this->container->dust3->isVisible())
+						if (this->container->dust3->isVisible())
 						{
 							this->container->dust4->setVisible(false);
 						}
-						if(!this->container->dust4->isVisible())
+						if (!this->container->dust4->isVisible())
 						{
 							this->container->dust4->setVisible(true);
 							this->container->dust4->gotoAndStop(1);
 						}
-						else if(this->container->dust4->currentFrame < this->container->dust4->totalFrames)
+						else if (this->container->dust4->currentFrame < this->container->dust4->totalFrames)
 						{
 							this->container->dust4->gotoAndStop((this->container->dust4->currentFrame + 1));
 						}
@@ -802,27 +809,27 @@ namespace engine
 				else
 				{
 					this->airGo = 0;
-					if(this->container->dust1->isVisible())
+					if (this->container->dust1->isVisible())
 					{
 						this->container->dust1->setVisible(false);
 					}
-					if(this->container->dust2->isVisible())
+					if (this->container->dust2->isVisible())
 					{
 						this->container->dust2->setVisible(false);
 					}
-					if(this->container->dust3->isVisible())
+					if (this->container->dust3->isVisible())
 					{
 						this->container->dust3->setVisible(false);
 					}
-					if(this->container->dust4->isVisible())
+					if (this->container->dust4->isVisible())
 					{
 						this->container->dust4->setVisible(false);
 					}
 				}
 			}
-			if(this->icemanFlag)
+			if (this->icemanFlag)
 			{
-				if(!this->container->iceFreez->isVisible())
+				if (!this->container->iceFreez->isVisible())
 				{
 					this->container->iceFreez->setVisible(true);
 					this->container->iceFreez->gotoAndStop(1);
@@ -831,10 +838,10 @@ namespace engine
 					this->stopAllEffects("airShock");
 					this->stopAllEffects("armor");
 				}
-				else if(this->icemanCounter > 0)
+				else if (this->icemanCounter > 0)
 				{
 					this->icemanCounter--;
-					if(this->container->iceFreez->currentFrame < 45)
+					if (this->container->iceFreez->currentFrame < 45)
 					{
 						this->container->iceFreez->gotoAndStop((this->container->iceFreez->currentFrame + 1));
 					}
@@ -842,21 +849,21 @@ namespace engine
 					{
 						this->container->iceFreez->gotoAndStop(1);
 					}
-					if(this->icemanCounter % 30 == 0)
+					if (this->icemanCounter % 30 == 0)
 					{
 						this->getHit(Main::mainClass->readXMLClass.castIcemanDamageXML, "ice", 1, false, 0);
 					}
 				}
 				else
 				{
-					if(this->container->iceFreez->currentFrame < 46)
+					if (this->container->iceFreez->currentFrame < 46)
 					{
 						this->container->iceFreez->gotoAndStop(46);
 					}
-					if(this->container->iceFreez->currentFrame < this->container->iceFreez->totalFrames)
+					if (this->container->iceFreez->currentFrame < this->container->iceFreez->totalFrames)
 					{
 						this->container->iceFreez->gotoAndStop((this->container->iceFreez->currentFrame + 1));
-						if(this->container->iceFreez->currentFrame == 46)
+						if (this->container->iceFreez->currentFrame == 46)
 						{
 							//Sounds.instance.playSound("snd_unit_floeCrash");
 						}
@@ -870,37 +877,37 @@ namespace engine
 					}
 				}
 			}
-			if(this->dead && this->container->iceDeath)
+			if (this->dead && this->container->iceDeath)
 			{
-				if(this->container->iceDeath->isVisible())
+				if (this->container->iceDeath->isVisible())
 				{
-					if(this->container->iceDeath->currentFrame < this->container->iceDeath->totalFrames)
+					if (this->container->iceDeath->currentFrame < this->container->iceDeath->totalFrames)
 					{
 						this->container->iceDeath->gotoAndStop((this->container->iceDeath->currentFrame + 1));
-						if(this->container->iceDeath->currentFrame == 9)
+						if (this->container->iceDeath->currentFrame == 9)
 						{
 							this->container->cont->setVisible(false);
 						}
 					}
-					else if(this->container->getOpacity() > 0)
+					else if (this->container->getOpacity() > 0)
 						this->container->setOpacity(this->container->getOpacity() - 0.25 * this->container->getOpacity());
 					else
 						this->removeUnitAfterDeathAnima();
 				}
-				else if(this->container->stoneDeath->isVisible())
+				else if (this->container->stoneDeath->isVisible())
 				{
-					if(this->container->stoneDeath->currentFrame < this->container->stoneDeath->totalFrames)
+					if (this->container->stoneDeath->currentFrame < this->container->stoneDeath->totalFrames)
 					{
 						this->container->stoneDeath->gotoAndStop((this->container->stoneDeath->currentFrame + 1));
-						if(this->container->stoneDeath->currentFrame == 9)
+						if (this->container->stoneDeath->currentFrame == 9)
 						{
 							this->container->cont->setVisible(false);
 						}
 					}
-					if(this->container->stoneDeath->currentFrame < this->container->stoneDeath->totalFrames)
+					if (this->container->stoneDeath->currentFrame < this->container->stoneDeath->totalFrames)
 					{
 						this->container->stoneDeath->gotoAndStop((this->container->stoneDeath->currentFrame + 1));
-						if(this->container->stoneDeath->currentFrame == 3)
+						if (this->container->stoneDeath->currentFrame == 3)
 						{
 							this->container->cont->setVisible(false);
 						}
@@ -910,17 +917,17 @@ namespace engine
 						this->removeUnitAfterDeathAnima();
 					}
 				}
-				else if(this->container->levinDeath->isVisible())
+				else if (this->container->levinDeath->isVisible())
 				{
-					if(this->container->levinDeath->currentFrame < this->container->levinDeath->totalFrames)
+					if (this->container->levinDeath->currentFrame < this->container->levinDeath->totalFrames)
 					{
 						this->container->levinDeath->gotoAndStop((this->container->levinDeath->currentFrame + 1));
-						if(this->container->levinDeath->currentFrame == 6)
+						if (this->container->levinDeath->currentFrame == 6)
 						{
 							this->container->cont->setVisible(false);
 						}
 					}
-					else if(this->container->getOpacity() > 0)
+					else if (this->container->getOpacity() > 0)
 						this->container->setOpacity(this->container->getOpacity() - 0.25 * this->container->getOpacity());
 					else
 						this->removeUnitAfterDeathAnima();
@@ -995,427 +1002,383 @@ namespace engine
 		}// end function
 
 		////public function getHit(param1:Number, param2:String = "无", param3:int = 0, param4:Boolean = false, param5:int = 0, param6:Object = null) : void
-		void Unit::getHit(float param1, string param2, int  param3, bool param4, int param5, void * param6)
+		void Unit::getHit(float param1, string param2, int  param3, bool param4, int param5, ShootBase * param6)
 		{
-			if(this->readyDamage)
+			if (!this->readyDamage)return; 
+			if (param1 > 0)
 			{
-				if(param1 > 0)
+				this->container->healthBarCounter = 0;
+				this->container->healthBar->setVisible(true);
+			}
+			float tempObject = param1;
+			if (param2 != "none")
+			{
+				this->lastAttackType = param2;
+			}
+			if (param2 == "fire")
+			{
+				if (param5)
 				{
-					this->container->healthBar->counter = 0;
-					this->container->healthBar->setVisible(true);
-				}
-				this->tempObject = param1;
-				if(param2 != "none")
-				{
-					this->lastAttackType = param2;
-				}
-				if(param2 == "fire")
-				{
-					if(param5)
+					 tempObject = param1 * this->fireDamageK;
+					if (!this->container->fireAttack->isVisible() && this->typeUnit != 34)
 					{
-						this->tempObject = param1 * this->fireDamageK;
-						if(!this->container->fireAttack->isVisible() && this->typeUnit != 34)
-						{
-							this->container->fireAttack->setVisible(true);
-							this->container->fireAttack->play("fireattack");
-						}
-						if(this->typeUnit != 23)
-						{
-							if(param4 && this->fireDamageK > 0)
-							{
-								this->fireEffectFlag = true;
-								this->fireEffectCounter = 30;
-								this->fireEffectDamage = this->tempObject * Main::mainClass->readXMLClass.towerFireEffectDamageXML / this->fireEffectCounter;
-							}
-						}
-						else if(param5 == 0 || param5 == 1)
-						{
-							this->healthPlusFlag = true;
-							this->healthPlusValue = param1 * Main::mainClass->readXMLClass.listOfEnemiesXML[(this->typeUnit - 1)][30];
-							this->healthPlusValue = this->healthPlusValue / 25;// this->container->buffHP->totalFrames;
-						}
+						this->container->fireAttack->setVisible(true);
+						this->container->fireAttack->play("fireattack");
 					}
-					else if(this->typeUnit != 23)
+					if (this->typeUnit != 23)
 					{
-						if(param4 && this->fireDamageK > 0)
+						if (param4 && this->fireDamageK > 0)
 						{
 							this->fireEffectFlag = true;
 							this->fireEffectCounter = 30;
-							this->fireEffectDamage = this->tempObject * Main::mainClass->readXMLClass.fireEffectDamageXML / this->fireEffectCounter;
+							this->fireEffectDamage =  tempObject * Main::mainClass->readXMLClass.towerFireEffectDamageXML / this->fireEffectCounter;
 						}
 					}
-					else if(param5 == 0 || param5 == 1)
+					else if (param5 == 0 || param5 == 1)
 					{
-						this->tempObject = 0;
 						this->healthPlusFlag = true;
 						this->healthPlusValue = param1 * Main::mainClass->readXMLClass.listOfEnemiesXML[(this->typeUnit - 1)][30];
-						this->healthPlusValue = this->healthPlusValue / 25;//  this->container->buffHP->totalFrames;
+						this->healthPlusValue = this->healthPlusValue / 25;// this->container->buffHP->totalFrames;
 					}
 				}
-				else if(param2 == "ice")
+				else if (this->typeUnit != 23)
 				{
-					if(param5)
+					if (param4 && this->fireDamageK > 0)
 					{
-						this->tempObject = param1 * this->iceDamageK;
-						if(!this->container->iceAttack->isVisible() && this->typeUnit != 34)
+						this->fireEffectFlag = true;
+						this->fireEffectCounter = 30;
+						this->fireEffectDamage =  tempObject * Main::mainClass->readXMLClass.fireEffectDamageXML / this->fireEffectCounter;
+					}
+				}
+				else if (param5 == 0 || param5 == 1)
+				{
+					 tempObject = 0;
+					this->healthPlusFlag = true;
+					this->healthPlusValue = param1 * Main::mainClass->readXMLClass.listOfEnemiesXML[(this->typeUnit - 1)][30];
+					this->healthPlusValue = this->healthPlusValue / 25;//  this->container->buffHP->totalFrames;
+				}
+			}
+			else if (param2 == "ice")
+			{
+				if (param5)
+				{
+				     tempObject = param1 * this->iceDamageK;
+					if (!this->container->iceAttack->isVisible() && this->typeUnit != 34)
+					{
+						this->container->iceAttack->setVisible(true);
+						this->container->iceAttack->play("iceattack");
+					}
+					if (this->typeUnit != 24 && this->typeUnit != 34)
+					{
+						if (param4 && this->iceDamageK > 0 && this->icemanCounter == 0)
 						{
-							this->container->iceAttack->setVisible(true);
-							this->container->iceAttack->play("iceattack");
-						}
-						if(this->typeUnit != 24 && this->typeUnit != 34)
-						{
-							if(param4 && this->iceDamageK > 0 && this->icemanCounter == 0)
+							if (param3 == 1)
 							{
-								if(param3 == 1)
+								if (Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[0] < 1)
 								{
-									if(Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[0] < 1)
+									if (!this->iceEffectFlag)
 									{
-										if(!this->iceEffectFlag)
-										{
-											this->iceEffectFlag = true;
-											this->iceEffectSlowdown = this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[0];
-											this->iceEffectCounter = Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[4];
-										}
-										else if(this->iceEffectSlowdown >= this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[0])
-										{
-											this->iceEffectSlowdown = this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[0];
-											this->iceEffectCounter = Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[4];
-										}
+										this->iceEffectFlag = true;
+										this->iceEffectSlowdown = this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[0];
+										this->iceEffectCounter = Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[4];
 									}
-								}
-								else if(param3 == 2)
-								{
-									if(Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[1] < 1)
+									else if (this->iceEffectSlowdown >= this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[0])
 									{
-										if(!this->iceEffectFlag)
-										{
-											this->iceEffectFlag = true;
-											this->iceEffectSlowdown = this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[1];
-											this->iceEffectCounter = Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[5];
-										}
-										else if(this->iceEffectSlowdown >= this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[1])
-										{
-											this->iceEffectSlowdown = this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[1];
-											this->iceEffectCounter = Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[5];
-										}
-									}
-								}
-								else if(param3 == 3)
-								{
-									if(Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[2] < 1)
-									{
-										if(!this->iceEffectFlag)
-										{
-											this->iceEffectFlag = true;
-											this->iceEffectSlowdown = this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[2];
-											this->iceEffectCounter = Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[6];
-										}
-										else if(this->iceEffectSlowdown >= this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[2])
-										{
-											this->iceEffectSlowdown = this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[2];
-											this->iceEffectCounter = Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[6];
-										}
-									}
-								}
-								else if(param3 == 4)
-								{
-									if(Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[3] < 1)
-									{
-										if(!this->iceEffectFlag)
-										{
-											this->iceEffectFlag = true;
-											this->iceEffectSlowdown = this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[3];
-											this->iceEffectCounter = Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[7];
-										}
-										else if(this->iceEffectSlowdown >= this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[3])
-										{
-											this->iceEffectSlowdown = this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[3];
-											this->iceEffectCounter = Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[7];
-										}
+										this->iceEffectSlowdown = this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[0];
+										this->iceEffectCounter = Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[4];
 									}
 								}
 							}
-						}
-						else if(this->typeUnit == 24)
-						{
-							if((param5 == 0 || param5 == 2) && !this->icemanFlag)
+							else if (param3 == 2)
 							{
-								if(param3 == 1)
+								if (Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[1] < 1)
 								{
-									if(Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[0] < 1)
+									if (!this->iceEffectFlag)
 									{
-										if(!this->speedPlusFlag)
-										{
-											this->speedPlusFlag = true;
-											this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[0]) * this->speedKRun;
-											this->speedPlusCounter = this->speedRunTimerIce1;
-										}
-										else if(this->speedPlusValue <= this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[0]) * this->speedKRun)
-										{
-											this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[0]) * this->speedKRun;
-											this->speedPlusCounter = this->speedRunTimerIce1;
-										}
+										this->iceEffectFlag = true;
+										this->iceEffectSlowdown = this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[1];
+										this->iceEffectCounter = Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[5];
+									}
+									else if (this->iceEffectSlowdown >= this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[1])
+									{
+										this->iceEffectSlowdown = this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[1];
+										this->iceEffectCounter = Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[5];
 									}
 								}
-								else if(param3 == 2)
+							}
+							else if (param3 == 3)
+							{
+								if (Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[2] < 1)
 								{
-									if(Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[1] < 1)
+									if (!this->iceEffectFlag)
 									{
-										if(!this->speedPlusFlag)
-										{
-											this->speedPlusFlag = true;
-											this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[1]) * this->speedKRun;
-											this->speedPlusCounter = this->speedRunTimerIce2;
-										}
-										else if(this->speedPlusValue <= this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[1]) * this->speedKRun)
-										{
-											this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[1]) * this->speedKRun;
-											this->speedPlusCounter = this->speedRunTimerIce2;
-										}
+										this->iceEffectFlag = true;
+										this->iceEffectSlowdown = this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[2];
+										this->iceEffectCounter = Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[6];
+									}
+									else if (this->iceEffectSlowdown >= this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[2])
+									{
+										this->iceEffectSlowdown = this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[2];
+										this->iceEffectCounter = Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[6];
 									}
 								}
-								else if(param3 == 3)
+							}
+							else if (param3 == 4)
+							{
+								if (Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[3] < 1)
 								{
-									if(Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[2] < 1)
+									if (!this->iceEffectFlag)
 									{
-										if(!this->speedPlusFlag)
-										{
-											this->speedPlusFlag = true;
-											this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[2]) * this->speedKRun;
-											this->speedPlusCounter = this->speedRunTimerIce3;
-										}
-										else if(this->speedPlusValue <= this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[2]) * this->speedKRun)
-										{
-											this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[2]) * this->speedKRun;
-											this->speedPlusCounter = this->speedRunTimerIce3;
-										}
+										this->iceEffectFlag = true;
+										this->iceEffectSlowdown = this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[3];
+										this->iceEffectCounter = Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[7];
 									}
-								}
-								else if(param3 == 4)
-								{
-									if(Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[3] < 1)
+									else if (this->iceEffectSlowdown >= this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[3])
 									{
-										if(!this->speedPlusFlag)
-										{
-											this->speedPlusFlag = true;
-											this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[3]) * this->speedKRun;
-											this->speedPlusCounter = this->speedRunTimerIce4;
-										}
-										else if(this->speedPlusValue <= this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[3]) * this->speedKRun)
-										{
-											this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[3]) * this->speedKRun;
-											this->speedPlusCounter = this->speedRunTimerIce4;
-										}
+										this->iceEffectSlowdown = this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[3];
+										this->iceEffectCounter = Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[7];
 									}
 								}
 							}
 						}
 					}
-					else if(this->typeUnit != 24 && this->typeUnit != 34)
+					else if (this->typeUnit == 24)
 					{
-						if(param4 && this->iceDamageK > 0 && this->icemanCounter == 0)
+						if ((param5 == 0 || param5 == 2) && !this->icemanFlag)
 						{
-							if(param3 == 1)
+							if (param3 == 1)
 							{
-								if(!this->iceEffectFlag)
+								if (Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[0] < 1)
 								{
-									this->iceEffectFlag = true;
-									this->iceEffectSlowdown = this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown1XML;
-									this->iceEffectCounter = Main::mainClass->readXMLClass.iceEffectSlowdown1TimerXML;
-								}
-								else if(this->iceEffectSlowdown >= this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown1XML)
-								{
-									this->iceEffectSlowdown = this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown1XML;
-									this->iceEffectCounter = Main::mainClass->readXMLClass.iceEffectSlowdown1TimerXML;
+									if (!this->speedPlusFlag)
+									{
+										this->speedPlusFlag = true;
+										this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[0]) * this->speedKRun;
+										this->speedPlusCounter = this->speedRunTimerIce1;
+									}
+									else if (this->speedPlusValue <= this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[0]) * this->speedKRun)
+									{
+										this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[0]) * this->speedKRun;
+										this->speedPlusCounter = this->speedRunTimerIce1;
+									}
 								}
 							}
-							else if(param3 == 2)
+							else if (param3 == 2)
 							{
-								if(!this->iceEffectFlag)
+								if (Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[1] < 1)
 								{
-									this->iceEffectFlag = true;
-									this->iceEffectSlowdown = this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown2XML;
-									this->iceEffectCounter = Main::mainClass->readXMLClass.iceEffectSlowdown2TimerXML;
-								}
-								else if(this->iceEffectSlowdown >= this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown2XML)
-								{
-									this->iceEffectSlowdown = this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown2XML;
-									this->iceEffectCounter = Main::mainClass->readXMLClass.iceEffectSlowdown2TimerXML;
+									if (!this->speedPlusFlag)
+									{
+										this->speedPlusFlag = true;
+										this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[1]) * this->speedKRun;
+										this->speedPlusCounter = this->speedRunTimerIce2;
+									}
+									else if (this->speedPlusValue <= this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[1]) * this->speedKRun)
+									{
+										this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[1]) * this->speedKRun;
+										this->speedPlusCounter = this->speedRunTimerIce2;
+									}
 								}
 							}
-							else if(param3 == 3)
+							else if (param3 == 3)
 							{
-								if(!this->iceEffectFlag)
+								if (Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[2] < 1)
 								{
-									this->iceEffectFlag = true;
-									this->iceEffectSlowdown = this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown3XML;
-									this->iceEffectCounter = Main::mainClass->readXMLClass.iceEffectSlowdown3TimerXML;
-								}
-								else if(this->iceEffectSlowdown >= this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown3XML)
-								{
-									this->iceEffectSlowdown = this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown3XML;
-									this->iceEffectCounter = Main::mainClass->readXMLClass.iceEffectSlowdown3TimerXML;
+									if (!this->speedPlusFlag)
+									{
+										this->speedPlusFlag = true;
+										this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[2]) * this->speedKRun;
+										this->speedPlusCounter = this->speedRunTimerIce3;
+									}
+									else if (this->speedPlusValue <= this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[2]) * this->speedKRun)
+									{
+										this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[2]) * this->speedKRun;
+										this->speedPlusCounter = this->speedRunTimerIce3;
+									}
 								}
 							}
-							else if(param3 == 4)
+							else if (param3 == 4)
 							{
-								if(!this->iceEffectFlag)
+								if (Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[3] < 1)
 								{
-									this->iceEffectFlag = true;
-									this->iceEffectSlowdown = this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown4XML;
-									this->iceEffectCounter = Main::mainClass->readXMLClass.iceEffectSlowdown4TimerXML;
-								}
-								else if(this->iceEffectSlowdown >= this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown4XML)
-								{
-									this->iceEffectSlowdown = this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown4XML;
-									this->iceEffectCounter = Main::mainClass->readXMLClass.iceEffectSlowdown4TimerXML;
-								}
-							}
-						}
-					}
-					else if(this->typeUnit == 24)
-					{
-						if((param5 == 0 || param5 == 2) && !this->icemanFlag)
-						{
-							this->tempObject = 0;
-							if(param3 == 1)
-							{
-								if(!this->speedPlusFlag)
-								{
-									this->speedPlusFlag = true;
-									this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown1XML) * this->speedKRun;
-									this->speedPlusCounter = this->speedRunTimerIce1;
-								}
-								else if(this->speedPlusValue <= this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown1XML) * this->speedKRun)
-								{
-									this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown1XML) * this->speedKRun;
-									this->speedPlusCounter = this->speedRunTimerIce1;
-								}
-							}
-							else if(param3 == 2)
-							{
-								if(!this->speedPlusFlag)
-								{
-									this->speedPlusFlag = true;
-									this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown2XML) * this->speedKRun;
-									this->speedPlusCounter = this->speedRunTimerIce2;
-								}
-								else if(this->speedPlusValue <= this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown2XML) * this->speedKRun)
-								{
-									this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown2XML) * this->speedKRun;
-									this->speedPlusCounter = this->speedRunTimerIce2;
-								}
-							}
-							else if(param3 == 3)
-							{
-								if(!this->speedPlusFlag)
-								{
-									this->speedPlusFlag = true;
-									this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown3XML) * this->speedKRun;
-									this->speedPlusCounter = this->speedRunTimerIce3;
-								}
-								else if(this->speedPlusValue <= this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown3XML) * this->speedKRun)
-								{
-									this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown3XML) * this->speedKRun;
-									this->speedPlusCounter = this->speedRunTimerIce3;
-								}
-							}
-							else if(param3 == 4)
-							{
-								if(!this->speedPlusFlag)
-								{
-									this->speedPlusFlag = true;
-									this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown4XML) * this->speedKRun;
-									this->speedPlusCounter = this->speedRunTimerIce4;
-								}
-								else if(this->speedPlusValue <= this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown4XML) * this->speedKRun)
-								{
-									this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown4XML) * this->speedKRun;
-									this->speedPlusCounter = this->speedRunTimerIce4;
+									if (!this->speedPlusFlag)
+									{
+										this->speedPlusFlag = true;
+										this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[3]) * this->speedKRun;
+										this->speedPlusCounter = this->speedRunTimerIce4;
+									}
+									else if (this->speedPlusValue <= this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[3]) * this->speedKRun)
+									{
+										this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.towerIceEffectSlowdownXML[3]) * this->speedKRun;
+										this->speedPlusCounter = this->speedRunTimerIce4;
+									}
 								}
 							}
 						}
 					}
 				}
-				else if(param2 == "stone")
+				else if (this->typeUnit != 24 && this->typeUnit != 34)
 				{
-					if(param5)
+					if (param4 && this->iceDamageK > 0 && this->icemanCounter == 0)
 					{
-						this->tempObject = param1 * this->stoneDamageK;
-						if(this->typeUnit != 25)
+						if (param3 == 1)
 						{
-							if(param4)
+							if (!this->iceEffectFlag)
 							{
+								this->iceEffectFlag = true;
+								this->iceEffectSlowdown = this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown1XML;
+								this->iceEffectCounter = Main::mainClass->readXMLClass.iceEffectSlowdown1TimerXML;
+							}
+							else if (this->iceEffectSlowdown >= this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown1XML)
+							{
+								this->iceEffectSlowdown = this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown1XML;
+								this->iceEffectCounter = Main::mainClass->readXMLClass.iceEffectSlowdown1TimerXML;
 							}
 						}
-						else if(param5 == 0 || param5 == 3)
+						else if (param3 == 2)
 						{
-							this->i = 0;
-							while(this->i < this->world->listOfUnits.size())
+							if (!this->iceEffectFlag)
 							{
-								if(this->world->listOfUnits[this->i] != this)
-								{
-									if(this->this_pt.distance(this->world->listOfUnits[this->i]->this_pt) < Main::mainClass->readXMLClass.towerStoneEffectRadiusXML)
-									{
-										if(param3 == 1)
-										{
-											this->world->listOfUnits[this->i]->armorPower = param1;
-											this->world->listOfUnits[this->i]->armorCounter = Main::mainClass->readXMLClass.listOfEnemiesXML[(this->typeUnit - 1)][30];
-										}
-										else if(param3 == 2)
-										{
-											this->world->listOfUnits[this->i]->armorPower = param1;
-											this->world->listOfUnits[this->i]->armorCounter = Main::mainClass->readXMLClass.listOfEnemiesXML[(this->typeUnit - 1)][30];
-										}
-										else if(param3 == 3)
-										{
-											this->world->listOfUnits[this->i]->armorPower = param1;
-											this->world->listOfUnits[this->i]->armorCounter = Main::mainClass->readXMLClass.listOfEnemiesXML[(this->typeUnit - 1)][30];
-										}
-										else if(param3 == 4)
-										{
-											this->world->listOfUnits[this->i]->armorPower = param1;
-											this->world->listOfUnits[this->i]->armorCounter = Main::mainClass->readXMLClass.listOfEnemiesXML[(this->typeUnit - 1)][30];
-										}
-									}
-								}
-								i++;
+								this->iceEffectFlag = true;
+								this->iceEffectSlowdown = this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown2XML;
+								this->iceEffectCounter = Main::mainClass->readXMLClass.iceEffectSlowdown2TimerXML;
+							}
+							else if (this->iceEffectSlowdown >= this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown2XML)
+							{
+								this->iceEffectSlowdown = this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown2XML;
+								this->iceEffectCounter = Main::mainClass->readXMLClass.iceEffectSlowdown2TimerXML;
+							}
+						}
+						else if (param3 == 3)
+						{
+							if (!this->iceEffectFlag)
+							{
+								this->iceEffectFlag = true;
+								this->iceEffectSlowdown = this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown3XML;
+								this->iceEffectCounter = Main::mainClass->readXMLClass.iceEffectSlowdown3TimerXML;
+							}
+							else if (this->iceEffectSlowdown >= this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown3XML)
+							{
+								this->iceEffectSlowdown = this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown3XML;
+								this->iceEffectCounter = Main::mainClass->readXMLClass.iceEffectSlowdown3TimerXML;
+							}
+						}
+						else if (param3 == 4)
+						{
+							if (!this->iceEffectFlag)
+							{
+								this->iceEffectFlag = true;
+								this->iceEffectSlowdown = this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown4XML;
+								this->iceEffectCounter = Main::mainClass->readXMLClass.iceEffectSlowdown4TimerXML;
+							}
+							else if (this->iceEffectSlowdown >= this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown4XML)
+							{
+								this->iceEffectSlowdown = this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown4XML;
+								this->iceEffectCounter = Main::mainClass->readXMLClass.iceEffectSlowdown4TimerXML;
 							}
 						}
 					}
-					else if(this->typeUnit != 25)
+				}
+				else if (this->typeUnit == 24)
+				{
+					if ((param5 == 0 || param5 == 2) && !this->icemanFlag)
 					{
-						if(param4)
+						 tempObject = 0;
+						if (param3 == 1)
+						{
+							if (!this->speedPlusFlag)
+							{
+								this->speedPlusFlag = true;
+								this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown1XML) * this->speedKRun;
+								this->speedPlusCounter = this->speedRunTimerIce1;
+							}
+							else if (this->speedPlusValue <= this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown1XML) * this->speedKRun)
+							{
+								this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown1XML) * this->speedKRun;
+								this->speedPlusCounter = this->speedRunTimerIce1;
+							}
+						}
+						else if (param3 == 2)
+						{
+							if (!this->speedPlusFlag)
+							{
+								this->speedPlusFlag = true;
+								this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown2XML) * this->speedKRun;
+								this->speedPlusCounter = this->speedRunTimerIce2;
+							}
+							else if (this->speedPlusValue <= this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown2XML) * this->speedKRun)
+							{
+								this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown2XML) * this->speedKRun;
+								this->speedPlusCounter = this->speedRunTimerIce2;
+							}
+						}
+						else if (param3 == 3)
+						{
+							if (!this->speedPlusFlag)
+							{
+								this->speedPlusFlag = true;
+								this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown3XML) * this->speedKRun;
+								this->speedPlusCounter = this->speedRunTimerIce3;
+							}
+							else if (this->speedPlusValue <= this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown3XML) * this->speedKRun)
+							{
+								this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown3XML) * this->speedKRun;
+								this->speedPlusCounter = this->speedRunTimerIce3;
+							}
+						}
+						else if (param3 == 4)
+						{
+							if (!this->speedPlusFlag)
+							{
+								this->speedPlusFlag = true;
+								this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown4XML) * this->speedKRun;
+								this->speedPlusCounter = this->speedRunTimerIce4;
+							}
+							else if (this->speedPlusValue <= this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown4XML) * this->speedKRun)
+							{
+								this->speedPlusValue = this->speedKSave + (this->speedKSave - this->speedKSave * Main::mainClass->readXMLClass.iceEffectSlowdown4XML) * this->speedKRun;
+								this->speedPlusCounter = this->speedRunTimerIce4;
+							}
+						}
+					}
+				}
+			}
+			else if (param2 == "stone")
+			{
+				if (param5)
+				{
+					 tempObject = param1 * this->stoneDamageK;
+					if (this->typeUnit != 25)
+					{
+						if (param4)
 						{
 						}
 					}
-					else if(param5 == 0 || param5 == 3)
+					else if (param5 == 0 || param5 == 3)
 					{
-						this->tempObject = 0;
 						this->i = 0;
-						while(this->i < this->world->listOfUnits.size())
+						while (this->i < this->world->listOfUnits.size())
 						{
-							if(this->world->listOfUnits[this->i] != this)
+							if (this->world->listOfUnits[this->i] != this)
 							{
-								if(this->this_pt.distance(this->world->listOfUnits[this->i]->this_pt) < Main::mainClass->readXMLClass.towerStoneEffectRadiusXML)
-									//if(Point.distance(this->this_pt, this->world->listOfUnits[this->i].this_pt) < Main::mainClass->readXMLClass.stoneEffectRadiusXML)
+								if (this->this_pt.distance(this->world->listOfUnits[this->i]->this_pt) < Main::mainClass->readXMLClass.towerStoneEffectRadiusXML)
 								{
-									if(param3 == 1)
+									if (param3 == 1)
 									{
 										this->world->listOfUnits[this->i]->armorPower = param1;
 										this->world->listOfUnits[this->i]->armorCounter = Main::mainClass->readXMLClass.listOfEnemiesXML[(this->typeUnit - 1)][30];
 									}
-									else if(param3 == 2)
+									else if (param3 == 2)
 									{
 										this->world->listOfUnits[this->i]->armorPower = param1;
 										this->world->listOfUnits[this->i]->armorCounter = Main::mainClass->readXMLClass.listOfEnemiesXML[(this->typeUnit - 1)][30];
 									}
-									else if(param3 == 3)
+									else if (param3 == 3)
 									{
 										this->world->listOfUnits[this->i]->armorPower = param1;
 										this->world->listOfUnits[this->i]->armorCounter = Main::mainClass->readXMLClass.listOfEnemiesXML[(this->typeUnit - 1)][30];
 									}
-									else if(param3 == 4)
+									else if (param3 == 4)
 									{
 										this->world->listOfUnits[this->i]->armorPower = param1;
 										this->world->listOfUnits[this->i]->armorCounter = Main::mainClass->readXMLClass.listOfEnemiesXML[(this->typeUnit - 1)][30];
@@ -1426,69 +1389,76 @@ namespace engine
 						}
 					}
 				}
-				else if(param2 == "levin")
+				else if (this->typeUnit != 25)
 				{
-					if(param5)
+					if (param4)
 					{
-						this->tempObject = param1 * this->levinDamageK;
-						param3 = param3 + Main::mainClass->readXMLClass.levinCountPlus;
-						if(!this->container->levinAttack->isVisible())
+					}
+				}
+				else if (param5 == 0 || param5 == 3)
+				{
+					 tempObject = 0;
+					this->i = 0;
+					while (this->i < this->world->listOfUnits.size())
+					{
+						if (this->world->listOfUnits[this->i] != this)
 						{
-							this->container->levinAttack->setVisible(true);
-							this->container->levinAttack->play("levinattack");
-						}
-						if(this->typeUnit != 26)
-						{
-							if(param4)
+							if (this->this_pt.distance(this->world->listOfUnits[this->i]->this_pt) < Main::mainClass->readXMLClass.towerStoneEffectRadiusXML)
+								//if(Point.distance(this->this_pt, this->world->listOfUnits[this->i].this_pt) < Main::mainClass->readXMLClass.stoneEffectRadiusXML)
 							{
-								this->i = 0;
-								while(this->i < this->world->listOfUnits.size())
+								if (param3 == 1)
 								{
-									if(this->world->listOfUnits[this->i]->atStaged && this->world->listOfUnits[this->i]->readyDamage && this->world->listOfUnits[this->i] != this && this->typeUnit != 33)
-									{
-										if(this->world->listOfUnits[this->i]->this_pt.distance(this->this_pt) < Main::mainClass->readXMLClass.towerStoneEffectRadiusXML)
-											//if(Point.distance(this->world->listOfUnits[this->i].this_pt, this->this_pt) < Main::mainClass->readXMLClass.towerLevinEffectRadiusXML)
-										{
-											Bullet * tempObject1 = this->world->addBullet(4, this->shoot_pt, this, this->world->listOfUnits[this->i], param1 * Main::mainClass->readXMLClass.towerLevinEffectDamageXML, 1);
-											tempObject1->effectFlag = false;
-											param3 = param3 - 1;
-											if(param3 <= 0)
-											{
-												break;
-											}
-										}
-									}
-									i++;
+									this->world->listOfUnits[this->i]->armorPower = param1;
+									this->world->listOfUnits[this->i]->armorCounter = Main::mainClass->readXMLClass.listOfEnemiesXML[(this->typeUnit - 1)][30];
+								}
+								else if (param3 == 2)
+								{
+									this->world->listOfUnits[this->i]->armorPower = param1;
+									this->world->listOfUnits[this->i]->armorCounter = Main::mainClass->readXMLClass.listOfEnemiesXML[(this->typeUnit - 1)][30];
+								}
+								else if (param3 == 3)
+								{
+									this->world->listOfUnits[this->i]->armorPower = param1;
+									this->world->listOfUnits[this->i]->armorCounter = Main::mainClass->readXMLClass.listOfEnemiesXML[(this->typeUnit - 1)][30];
+								}
+								else if (param3 == 4)
+								{
+									this->world->listOfUnits[this->i]->armorPower = param1;
+									this->world->listOfUnits[this->i]->armorCounter = Main::mainClass->readXMLClass.listOfEnemiesXML[(this->typeUnit - 1)][30];
 								}
 							}
 						}
-						else if(param5 == 0 || param5 == 4)
-						{
-							this->i = param3;
-							while(this->i > 0)
-							{
-								this->listOfTornado.push(33);
-								i++;
-							}
-						}
+						i++;
 					}
-					else if(this->typeUnit != 26)
+				}
+			}
+			else if (param2 == "levin")
+			{
+				if (param5)
+				{
+					 tempObject = param1 * this->levinDamageK;
+					param3 = param3 + Main::mainClass->readXMLClass.levinCountPlus;
+					if (!this->container->levinAttack->isVisible())
 					{
-						if(param4)
+						this->container->levinAttack->setVisible(true);
+						this->container->levinAttack->play("levinattack");
+					}
+					if (this->typeUnit != 26)
+					{
+						if (param4)
 						{
 							this->i = 0;
-							while(this->i < this->world->listOfUnits.size())
+							while (this->i < this->world->listOfUnits.size())
 							{
-								if(this->world->listOfUnits[this->i]->atStaged && this->world->listOfUnits[this->i]->readyDamage && this->world->listOfUnits[this->i] != this && this->typeUnit != 33)
+								if (this->world->listOfUnits[this->i]->atStaged && this->world->listOfUnits[this->i]->readyDamage && this->world->listOfUnits[this->i] != this && this->typeUnit != 33)
 								{
-									if(this->world->listOfUnits[this->i]->this_pt.distance(this->this_pt) < Main::mainClass->readXMLClass.towerStoneEffectRadiusXML)
-										//if(Point.distance(this->world->listOfUnits[this->i].this_pt, this->this_pt) < Main::mainClass->readXMLClass.levinEffectRadiusXML)
+									if (this->world->listOfUnits[this->i]->this_pt.distance(this->this_pt) < Main::mainClass->readXMLClass.towerLevinEffectRadiusXML)
+										//if(Point.distance(this->world->listOfUnits[this->i].this_pt, this->this_pt) < Main::mainClass->readXMLClass.towerLevinEffectRadiusXML)
 									{
 										Bullet * tempObject1 = this->world->addBullet(4, this->shoot_pt, this, this->world->listOfUnits[this->i], param1 * Main::mainClass->readXMLClass.towerLevinEffectDamageXML, 1);
-										tempObject1.effectFlag = false;
-										tempObject1->setVisible(false);
+										tempObject1->effectFlag = false;
 										param3 = param3 - 1;
-										if(param3 <= 0)
+										if (param3 <= 0)
 										{
 											break;
 										}
@@ -1498,56 +1468,92 @@ namespace engine
 							}
 						}
 					}
-					else if(param5 == 0 || param5 == 4)
+					else if (param5 == 0 || param5 == 4)
 					{
-						this->tempObject = 0;
-						if(param4)
+						this->i = param3;
+						while (this->i > 0)
 						{
-							this->i = param3;
-							while(this->i > 0)
+							this->listOfTornado.push(33);
+							i++;
+						}
+					}
+				}
+				else if (this->typeUnit != 26)
+				{
+					if (param4)
+					{
+						this->i = 0;
+						while (this->i < this->world->listOfUnits.size())
+						{
+							if (this->world->listOfUnits[this->i]->atStaged && this->world->listOfUnits[this->i]->readyDamage && this->world->listOfUnits[this->i] != this && this->typeUnit != 33)
 							{
-								this->listOfTornado.push(33);
-								i++;
+								if (this->world->listOfUnits[this->i]->this_pt.distance(this->this_pt) < Main::mainClass->readXMLClass.levinEffectRadiusXML)
+									//if(Point.distance(this->world->listOfUnits[this->i].this_pt, this->this_pt) < Main::mainClass->readXMLClass.levinEffectRadiusXML)
+								{
+									Bullet * tempObject1 = this->world->addBullet(4, this->shoot_pt, this, this->world->listOfUnits[this->i], param1 * Main::mainClass->readXMLClass.towerLevinEffectDamageXML, 1);
+									tempObject1->effectFlag = false;
+									tempObject1->setVisible(false);
+									param3 = param3 - 1;
+									if (param3 <= 0)
+									{
+										break;
+									}
+								}
 							}
+							i++;
 						}
 					}
 				}
-				if(!this->armorFlag)
+				else if (param5 == 0 || param5 == 4)
 				{
-					this->health = this->health - this->tempObject;
-				}
-				else
-				{
-					this->armorPower = this->armorPower - this->tempObject;
-					if(this->armorPower < 0)
+					tempObject = 0;
+					if (param4)
 					{
-						this->health = this->health + this->armorPower;
-					}
-				}
-				if(this->health < this->healthMax)
-				{
-					if(this->health > 0)
-					{
-						if(!this->container->healthBar->isVisible())
+						this->i = param3;
+						while (this->i > 0)
 						{
-							this->container->healthBar->setVisible(true);
+							this->listOfTornado.push(33);
+							i++;
 						}
-						this->container->healthBar->cont->setScaleX(this->health / this->healthMax);
-					}
-					else
-					{
-						this->kill();
-					}
-				}
-				else
-				{
-					this->health = this->healthMax;
-					if(this->container->healthBar->isVisible())
-					{
-						this->container->healthBar->setVisible(false);
 					}
 				}
 			}
+			if (!this->armorFlag)
+			{
+				this->health = this->health - tempObject;
+			}
+			else
+			{
+				this->armorPower = this->armorPower - tempObject;
+				if (this->armorPower < 0)
+				{
+					this->health = this->health + this->armorPower;
+				}
+			}
+			if (this->health < this->healthMax)
+			{
+				if (this->health > 0)
+				{
+					if (!this->container->healthBar->isVisible())
+					{
+						this->container->healthBar->setVisible(true);
+					}
+					this->container->healthBar->cont->setScaleX(this->health / this->healthMax);
+				}
+				else
+				{
+					this->kill();
+				}
+			}
+			else
+			{
+				this->health = this->healthMax;
+				if (this->container->healthBar->isVisible())
+				{
+					this->container->healthBar->setVisible(false);
+				}
+			}
+		 
 			//return;
 		}// end function
 
@@ -1556,13 +1562,13 @@ namespace engine
 			this->airFlag = true;
 			this->traversedPath = 0;
 			this->dampingAir = 0;
-			if(param1 == "air")
+			if (param1 == "air")
 			{
 				this->airSpacing = Main::mainClass->readXMLClass.airSpacingXML * this->airResist;
 				this->airPower = Main::mainClass->readXMLClass.airPowerXML * this->airResist;
 				this->airShockCounter = Main::mainClass->readXMLClass.airWaitTimerXML;
 			}
-			else if(param1 == "tower71")
+			else if (param1 == "tower71")
 			{
 				this->airSpacing = Main::mainClass->readXMLClass.ultraAddIceStoneSpacingXML * this->airResist;
 				this->airPower = Main::mainClass->readXMLClass.ultraAddIceStonePowerXML * this->airResist;
@@ -1572,142 +1578,142 @@ namespace engine
 		}// end function
 		void Unit::stopAllEffects(string param1) //public function stopAllEffects(param1:String = "") : void
 		{
-			if(param1 == "" || param1 == "healthBar")
+			if (param1 == "" || param1 == "healthBar")
 			{
-				if(this->container->healthBar->isVisible())
+				if (this->container->healthBar->isVisible())
 				{
 					this->container->healthBar->setVisible(false);
 					//this->container->healthBar->getDamage->setVisible(false);
 				}
 			}
-			if(param1 == "" || param1 == "shadow")
+			if (param1 == "" || param1 == "shadow")
 			{
-				if(this->container->shadow)
+				if (this->container->shadow)
 				{
-					if(this->container->shadow->isVisible())
+					if (this->container->shadow->isVisible())
 					{
 						this->container->shadow->setVisible(false);
 					}
 				}
 			}
-			if(param1 == "" || param1 == "selectUnit")
+			if (param1 == "" || param1 == "selectUnit")
 			{
-				if(this->container->selectUnit->isVisible())
+				if (this->container->selectUnit->isVisible())
 				{
 					this->container->selectUnit->setVisible(false);
 				}
 			}
-			if(param1 == "" || param1 == "buffHP")
+			if (param1 == "" || param1 == "buffHP")
 			{
-				if(this->healthPlusFlag)
+				if (this->healthPlusFlag)
 				{
 					this->healthPlusFlag = false;
 					this->healthPlusValue = 0;
 					this->container->buffHP->setVisible(false);
 				}
 			}
-			if(param1 == "" || param1 == "armor")
+			if (param1 == "" || param1 == "armor")
 			{
-				if(this->armorCounter > 0)
+				if (this->armorCounter > 0)
 				{
 					this->armorFlag = false;
 					this->armorCounter = 0;
 					this->container->armor->setVisible(false);
 				}
 			}
-			if(param1 == "" || param1 == "dust")
+			if (param1 == "" || param1 == "dust")
 			{
-				if(this->airFlag)
+				if (this->airFlag)
 				{
 					this->airFlag = false;
 					this->airGo = 0;
-					if(this->container->dust1->isVisible())
+					if (this->container->dust1->isVisible())
 					{
 						this->container->dust1->setVisible(false);
 					}
-					if(this->container->dust2->isVisible())
+					if (this->container->dust2->isVisible())
 					{
 						this->container->dust2->setVisible(false);
 					}
-					if(this->container->dust3->isVisible())
+					if (this->container->dust3->isVisible())
 					{
 						this->container->dust3->setVisible(false);
 					}
-					if(this->container->dust4->isVisible())
+					if (this->container->dust4->isVisible())
 					{
 						this->container->dust4->setVisible(false);
 					}
 				}
 			}
-			if(param1 == "" || param1 == "airShock")
+			if (param1 == "" || param1 == "airShock")
 			{
-				if(this->airShockFlag)
+				if (this->airShockFlag)
 				{
 					this->airShockFlag = false;
 					this->airShockCounter = 0;
 					this->container->airShock->setVisible(false);
 				}
 			}
-			if(param1 == "" || param1 == "buffSpeed")
+			if (param1 == "" || param1 == "buffSpeed")
 			{
-				if(this->speedPlusFlag)
+				if (this->speedPlusFlag)
 				{
 					this->speedPlusFlag = false;
 					this->speedPlusCounter = 0;
 					this->container->buffSpeed->setVisible(false);
 				}
 			}
-			if(param1 == "" || param1 == "iceFreez")
+			if (param1 == "" || param1 == "iceFreez")
 			{
-				if(this->icemanFlag)
+				if (this->icemanFlag)
 				{
 					this->icemanFlag = false;
 					this->icemanCounter = 0;
 					this->container->iceFreez->setVisible(false);
 				}
 			}
-			if(param1 == "" || param1 == "fireEffect")
+			if (param1 == "" || param1 == "fireEffect")
 			{
-				if(this->fireEffectFlag)
+				if (this->fireEffectFlag)
 				{
 					this->fireEffectFlag = false;
 					this->fireEffectCounter = 0;
 					this->container->fireEffect->setVisible(false);
 				}
 			}
-			if(param1 == "" || param1 == "iceEffect")
+			if (param1 == "" || param1 == "iceEffect")
 			{
-				if(this->iceEffectFlag)
+				if (this->iceEffectFlag)
 				{
 					this->iceEffectFlag = false;
 					this->iceEffectCounter = 0;
 					this->container->iceEffect->setVisible(false);
 				}
 			}
-			if(param1 == "" || param1 == "fireAttack")
+			if (param1 == "" || param1 == "fireAttack")
 			{
-				if(this->container->fireAttack->isVisible())
+				if (this->container->fireAttack->isVisible())
 				{
 					this->container->fireAttack->setVisible(false);
 				}
 			}
-			if(param1 == "" || param1 == "iceAttack")
+			if (param1 == "" || param1 == "iceAttack")
 			{
-				if(this->container->iceAttack->isVisible())
+				if (this->container->iceAttack->isVisible())
 				{
 					this->container->iceAttack->setVisible(false);
 				}
 			}
-			if(param1 == "" || param1 == "levinAttack")
+			if (param1 == "" || param1 == "levinAttack")
 			{
-				if(this->container->levinAttack->isVisible())
+				if (this->container->levinAttack->isVisible())
 				{
 					this->container->levinAttack->setVisible(false);
 				}
 			}
-			if(this->container->signal)
+			if (this->container->signal)
 			{
-				if(this->container->signal->isVisible())
+				if (this->container->signal->isVisible())
 				{
 					this->container->signal->gotoAndStop(1);
 					this->container->signal->setVisible(false);
@@ -1745,26 +1751,26 @@ namespace engine
 		}// end function
 		void Unit::kill() //public function kill() : void
 		{
-			if(!this->dead)return;
+			if (!this->dead)return;
 			{
 				this->dead = true;
 				this->readyDamage = false;
 				this->moveFlag = false;
 				this->stopAllEffects();
-				if(this->health <= 0)
+				if (this->health <= 0)
 				{
-					if((this->lastAttackType == "ice" || this->lastAttackType == "stone" || this->lastAttackType == "levin") && this->container->iceDeath)
+					if ((this->lastAttackType == "ice" || this->lastAttackType == "stone" || this->lastAttackType == "levin") && this->container->iceDeath)
 					{
-						if(this->lastAttackType == "ice")
+						if (this->lastAttackType == "ice")
 						{
 							this->container->iceDeath->setVisible(true);
 							//Sounds.instance.playSoundWithVol("snd_unit_iceDeath", 0.75);
 						}
-						else if(this->lastAttackType == "stone")
+						else if (this->lastAttackType == "stone")
 						{
 							this->container->stoneDeath->setVisible(true);
 						}
-						else if(this->lastAttackType == "levin")
+						else if (this->lastAttackType == "levin")
 						{
 							this->container->levinDeath->setVisible(true);
 							//Sounds.instance.playSound("snd_unit_levinDeath");
@@ -1776,10 +1782,10 @@ namespace engine
 					}
 					else
 					{
-						if(this->typeUnit != 20 && this->typeUnit != 21 && (this->typeUnit < 23 || this->typeUnit > 26) && this->typeUnit != 34)
+						if (this->typeUnit != 20 && this->typeUnit != 21 && (this->typeUnit < 23 || this->typeUnit > 26) && this->typeUnit != 34)
 						{
 							//this->tempObject = new DeathEffect(this, NULL, 6, 0.2, 1);
-							if(this->lastAttackType != "golem")
+							if (this->lastAttackType != "golem")
 							{
 								//Sounds.instance.playSound("snd_unit_fireDeath");
 							}
@@ -1787,12 +1793,12 @@ namespace engine
 						this->world->removeChild(this);
 					}
 					this->world->money = this->world->money + this->gold;
-					if(this->replacementFlag > 0)
+					if (this->replacementFlag > 0)
 					{
 						this->i = 0;
-						while(this->i < this->replacementCount)
+						while (this->i < this->replacementCount)
 						{
-							if(this->world->wavesClass->listOfReplacement.size() == 0)
+							if (this->world->wavesClass->listOfReplacement.size() == 0)
 							{
 								this->world->wavesClass->listOfReplacement[0][0] = 60;
 								this->world->wavesClass->listOfReplacement[0][1] = this->replacementFlag == 1 ? 29 : 30;
@@ -1813,12 +1819,12 @@ namespace engine
 							}
 							i++;
 						}
-						if(this->replacementFlag == 1)
+						if (this->replacementFlag == 1)
 						{
 							this->i = 0;
-							while(this->i < this->replacementCount)
+							while (this->i < this->replacementCount)
 							{
-								if(this->world->wavesClass->listOfReplacement.size() == 0)
+								if (this->world->wavesClass->listOfReplacement.size() == 0)
 								{
 									this->world->wavesClass->listOfReplacement[0][0] = 60;
 									this->world->wavesClass->listOfReplacement[0][1] = 29;
@@ -1840,18 +1846,29 @@ namespace engine
 								i++;
 							}
 						}
-						else if(this->replacementFlag == 2)
+						else if (this->replacementFlag == 2)
 						{
 							this->i = 0;
-							while(this->i < this->replacementCount)
+							while (this->i < this->replacementCount)
 							{
-								if(this->world->wavesClass->listOfReplacement.size() == 0)
+								if (this->world->wavesClass->listOfReplacement.size() == 0)
 								{
-									this->world->wavesClass->listOfReplacement.push([60, 30, this->road, this->way, this->path]);
+									//this->world->wavesClass->listOfReplacement.push({ 60, 30, this->road, this->way, this->path });
+									this->world->wavesClass->listOfReplacement[0][0] = 60;
+									this->world->wavesClass->listOfReplacement[0][1] = 30;
+									this->world->wavesClass->listOfReplacement[0][2] = this->road;
+									this->world->wavesClass->listOfReplacement[0][3] = this->way;
+									this->world->wavesClass->listOfReplacement[0][4] = this->path;
 								}
 								else
 								{
-									this->world->wavesClass->listOfReplacement.push([this->world->wavesClass->listOfReplacement[(this->world->wavesClass->listOfReplacement.length - 1)][0] + 60, 30, this->road, this->way, this->path]);
+									//this->world->wavesClass->listOfReplacement.push([this->world->wavesClass->listOfReplacement[(this->world->wavesClass->listOfReplacement.length - 1)][0] + 60, 30, this->road, this->way, this->path]);
+									int c = this->world->wavesClass->listOfReplacement.size();
+									this->world->wavesClass->listOfReplacement[c][0] = this->world->wavesClass->listOfReplacement[(c - 1)][0] + 60;
+									this->world->wavesClass->listOfReplacement[c][1] = 30;
+									this->world->wavesClass->listOfReplacement[c][2] = this->road;
+									this->world->wavesClass->listOfReplacement[c][3] = this->way;
+									this->world->wavesClass->listOfReplacement[c][4] = this->path;
 								}
 								i++;
 							}
@@ -1861,31 +1878,31 @@ namespace engine
 					this->world->saveBox->setValue("addit_killEnemiesCounter", addit_killEnemiesCounter);
 					//(this->world->saveBox.gameSave.data.addit_killEnemiesCounter + 1);
 					this->world->killEnemiesCounter++;
-					if(addit_killEnemiesCounter == 1)
+					if (addit_killEnemiesCounter == 1)
 					{
 						this->world->achieveManage("firstKill");
 					}
-					else if(addit_killEnemiesCounter == 2500)
+					else if (addit_killEnemiesCounter == 2500)
 					{
 						this->world->achieveManage("kill_2500_enemies");
 					}
-					if(this->world->killEnemiesCounter == 100)
+					if (this->world->killEnemiesCounter == 100)
 					{
 						this->world->achieveManage("kill_100_enemies");
 					}
 				}
 				else
 				{
-					if(this->world->live > 0)
+					if (this->world->live > 0)
 					{
 						//Sounds.instance.playSoundWithVol("snd_unit_finish", 0.9);
 					}
 					this->world->live = this->world->live - this->penalty;
 					this->world->removeChild(this);
-					if(this->world->live <= 0)
+					if (this->world->live <= 0)
 					{
 						this->world->live = 0;
-						if(this->world->saveBox->getIntValue("complexityLevel") < 4)
+						if (this->world->saveBox->getIntValue("complexityLevel") < 4)
 						{
 							this->world->winDefCounter = 15;
 						}
@@ -1897,47 +1914,47 @@ namespace engine
 				}
 				this->world->worldInterface->updateInfo();
 				this->i = 0;
-				while(this->i < this->world->listOfUnits.size())
+				while (this->i < this->world->listOfUnits.size())
 				{
-					if(this->world->listOfUnits[this->i] == this)
+					if (this->world->listOfUnits[this->i] == this)
 					{
 						this->world->listOfUnits.remove(this->i);
 						break;
 					}
 					i++;
 				}
-				if(this->world->selectObject == this)
+				if (this->world->selectObject == this)
 				{
 					this->world->worldInterface->barInfoManage();
 				}
-				if(this->world->live > 0 && this->world->wavesClass->nowWave == this->world->wavesClass->maxWaves && !this->world->wavesClass->waveWork)
+				if (this->world->live > 0 && this->world->wavesClass->nowWave == this->world->wavesClass->maxWaves && !this->world->wavesClass->waveWork)
 				{
-					this->tempObject = 0;
+					int tempObject = 0;
 					this->i = 0;
-					while(this->i < this->world->listOfUnits.size())
+					while (this->i < this->world->listOfUnits.size())
 					{
-						if(!this->world->listOfUnits[this->i]->replaced)
+						if (!this->world->listOfUnits[this->i]->replaced)
 						{
-							this->tempObject++;
+							 tempObject++;
 						}
 						i++;
 					}
-					if(this->tempObject <= 3)
+					if ( tempObject <= 3)
 					{
-						if(this->world->wavesClass->listOfReplacement.size() > 0)
+						if (this->world->wavesClass->listOfReplacement.size() > 0)
 						{
 							this->world->wavesClass->listOfReplacement.clear();
 						}
 						this->i = 0;
-						while(this->i < this->world->listOfUnits.size())
+						while (this->i < this->world->listOfUnits.size())
 						{
-							if(this->world->listOfUnits[this->i]->replacementFlag)
+							if (this->world->listOfUnits[this->i]->replacementFlag)
 							{
 								this->world->listOfUnits[this->i]->replacementFlag = false;
 							}
-							if(this->world->listOfUnits.size() <= 2)
+							if (this->world->listOfUnits.size() <= 2)
 							{
-								if(this->world->listOfUnits[this->i]->typeUnit == 29 || this->world->listOfUnits[this->i]->typeUnit == 30)
+								if (this->world->listOfUnits[this->i]->typeUnit == 29 || this->world->listOfUnits[this->i]->typeUnit == 30)
 								{
 									this->world->listOfUnits[this->i]->stealthCounter = 0;
 								}
@@ -1945,33 +1962,33 @@ namespace engine
 							i++;
 						}
 					}
-					if(this->world->listOfUnits.size() == 0 && this->world->wavesClass->listOfReplacement.size() == 0)
+					if (this->world->listOfUnits.size() == 0 && this->world->wavesClass->listOfReplacement.size() == 0)
 					{
-						this->tempObject = false;
-						if(this->world->wavesClass->listOfWaves.size() > 0)
+						bool tempObject = false;
+						if (this->world->wavesClass->listOfWaves.size() > 0)
 						{
-							if(this->world->wavesClass->listOfWaves[0].size() > 0)
+							if (this->world->wavesClass->listOfWaves[0].size() > 0)
 							{
-								this->tempObject = true;
+								 tempObject = true;
 							}
 						}
-						if(!this->tempObject)
+						if (! tempObject)
 						{
-							if(this->world->wavesClass->listOfWaves.size() > 1)
+							if (this->world->wavesClass->listOfWaves.size() > 1)
 							{
-								if(this->world->wavesClass->listOfWaves[1].size() > 0)
+								if (this->world->wavesClass->listOfWaves[1].size() > 0)
 								{
-									this->tempObject = true;
+									 tempObject = true;
 								}
 							}
 						}
-						if(!this->tempObject)
+						if (! tempObject)
 						{
-							if(this->world->wavesClass->listOfWaves.size() > 2)
+							if (this->world->wavesClass->listOfWaves.size() > 2)
 							{
-								if(this->world->wavesClass->listOfWaves[2].size() > 0)
+								if (this->world->wavesClass->listOfWaves[2].size() > 0)
 								{
-									this->tempObject = true;
+									 tempObject = true;
 								}
 							}
 						}
@@ -1991,9 +2008,9 @@ namespace engine
 						//		i++;
 						//	}
 						//}
-						if(!this->tempObject)
+						if (! tempObject)
 						{
-							if(this->typeUnit != 34)
+							if (this->typeUnit != 34)
 							{
 								this->world->winDefCounter = 60;
 							}

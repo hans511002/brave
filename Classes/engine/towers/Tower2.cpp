@@ -1,10 +1,13 @@
-#include "Tower2.h" 
+#include "MainClass.h"
+#include "engine/World.h"
+#include "TowerMenu.h"
+#include "Tower2.h"
 
 namespace engine
 {
 	namespace towers
 	{
-		Tower2_mc::Tower2_mc() :MovieClip("tower/", "Tower2_mc", "Tower2_mc")
+		Tower2_mc::Tower2_mc() :TowerBase("tower/", "Tower2_mc", "Tower2_mc")
 		{
 			blockTower = this->createMovieClip("blockTower", "tower/", "blockTower", "TowerBlockBone");
 			boneBlock = this->createMovieClip("boneBlock", "tower/", "boneBlock", "TowerBlockBone");
@@ -21,7 +24,7 @@ namespace engine
 			sphere2_2Bullet = sphere2_2->createMovieClip("bullet", new BulletSphereTower_mc());
 			sphere2_2BulletCont = sphere2_2Bullet->createMovieClipSub("cont");
 
-		}
+		};
 	
 
         
@@ -35,10 +38,13 @@ namespace engine
             towerType = 2;
             correctYGrPos = -15;
             radius = Main::mainClass->readXMLClass.listOfSpheresRadius[1];
-            slotsStack = [0, 0, 1, 1];
+			slotsStack[0] = 0;// [0, 0, 1, 1];
+			slotsStack[1] = 0;
+			slotsStack[2] = 1;
+			slotsStack[3] = 1;
             container = new Tower2_mc();
             container->stop();
-            container->towerCase->stop();
+            //container->towerCase->stop();
             container->blockTower->stop();
             container->boneBlock->stop();
             container->selectTower->stop();
@@ -52,12 +58,13 @@ namespace engine
             {
                 //Sounds.instance.playSoundWithVol("snd_tower_build1", 0.9);
             }
-            return;
+            return true;
         }// end function
 
         void Tower2::update() 
         {
             Tower::update();
+			Tower2_mc * container = ISTYPE(Tower2_mc ,this->container);
             if (world->frameCounter % 2)
             {
                 if (container->currentFrame < container->totalFrames)
@@ -69,7 +76,7 @@ namespace engine
                     container->gotoAndStop(1);
                 }
             }
-            if (spheresStack.length == 1)
+            if (spheresStack.size() == 1)
             {
                 if (container->sphere1->currentFrame < container->sphere1->totalFrames)
                 {
@@ -79,52 +86,52 @@ namespace engine
                 {
                     container->sphere1->gotoAndStop(1);
                 }
-                if (container->sphere1->bullet->currentFrame == 1)
+                if (container->sphere1Bullet->currentFrame == 1)
                 {
-                    if (container->sphere1->bullet->cont->currentFrame < container->sphere1->bullet->cont->totalFrames)
+                    if (container->sphere1BulletCont->currentFrame < container->sphere1BulletCont->totalFrames)
                     {
-                        container->sphere1->bullet->cont->gotoAndStop((container->sphere1->bullet->cont->currentFrame + 1));
+                        container->sphere1BulletCont->gotoAndStop((container->sphere1BulletCont->currentFrame + 1));
                     }
                     else
                     {
-                        container->sphere1->bullet->cont->gotoAndStop(1);
+                        container->sphere1BulletCont->gotoAndStop(1);
                     }
                 }
-                else if (container->sphere1->bullet->currentFrame == 2)
+                else if (container->sphere1Bullet->currentFrame == 2)
                 {
-                    if (container->sphere1->bullet->cont->currentFrame < container->sphere1->bullet->cont->totalFrames)
+                    if (container->sphere1BulletCont->currentFrame < container->sphere1BulletCont->totalFrames)
                     {
-                        container->sphere1->bullet->cont->gotoAndStop((container->sphere1->bullet->cont->currentFrame + 1));
+                        container->sphere1BulletCont->gotoAndStop((container->sphere1BulletCont->currentFrame + 1));
                     }
                     else
                     {
-                        container->sphere1->bullet->cont->gotoAndStop(1);
+                        container->sphere1BulletCont->gotoAndStop(1);
                     }
                 }
-                else if (container->sphere1->bullet->currentFrame == 3)
+                else if (container->sphere1Bullet->currentFrame == 3)
                 {
-                    if (container->sphere1->bullet->cont->currentFrame < container->sphere1->bullet->cont->totalFrames)
+                    if (container->sphere1BulletCont->currentFrame < container->sphere1BulletCont->totalFrames)
                     {
-                        container->sphere1->bullet->cont->gotoAndStop((container->sphere1->bullet->cont->currentFrame + 1));
+                        container->sphere1BulletCont->gotoAndStop((container->sphere1BulletCont->currentFrame + 1));
                     }
                     else
                     {
-                        container->sphere1->bullet->cont->gotoAndStop(1);
+                        container->sphere1BulletCont->gotoAndStop(1);
                     }
                 }
-                else if (container->sphere1->bullet->currentFrame == 4)
+                else if (container->sphere1Bullet->currentFrame == 4)
                 {
-                    if (container->sphere1->bullet->cont->currentFrame < container->sphere1->bullet->cont->totalFrames)
+                    if (container->sphere1BulletCont->currentFrame < container->sphere1BulletCont->totalFrames)
                     {
-                        container->sphere1->bullet->cont->gotoAndStop((container->sphere1->bullet->cont->currentFrame + 1));
+                        container->sphere1BulletCont->gotoAndStop((container->sphere1BulletCont->currentFrame + 1));
                     }
                     else
                     {
-                        container->sphere1->bullet->cont->gotoAndStop(1);
+                        container->sphere1BulletCont->gotoAndStop(1);
                     }
                 }
             }
-            else if (spheresStack.length == 2)
+            else if (spheresStack.size() == 2)
             {
                 if (container->sphere2_1->currentFrame < container->sphere2_1->totalFrames)
                 {
@@ -134,48 +141,48 @@ namespace engine
                 {
                     container->sphere2_1->gotoAndStop(1);
                 }
-                if (container->sphere2_1->bullet->currentFrame == 1)
+                if (container->sphere2_1Bullet->currentFrame == 1)
                 {
-                    if (container->sphere2_1->bullet->cont->currentFrame < container->sphere2_1->bullet->cont->totalFrames)
+                    if (container->sphere2_1BulletCont->currentFrame < container->sphere2_1BulletCont->totalFrames)
                     {
-                        container->sphere2_1->bullet->cont->gotoAndStop((container->sphere2_1->bullet->cont->currentFrame + 1));
+                        container->sphere2_1BulletCont->gotoAndStop((container->sphere2_1BulletCont->currentFrame + 1));
                     }
                     else
                     {
-                        container->sphere2_1->bullet->cont->gotoAndStop(1);
+                        container->sphere2_1BulletCont->gotoAndStop(1);
                     }
                 }
-                else if (container->sphere2_1->bullet->currentFrame == 2)
+                else if (container->sphere2_1Bullet->currentFrame == 2)
                 {
-                    if (container->sphere2_1->bullet->cont->currentFrame < container->sphere2_1->bullet->cont->totalFrames)
+                    if (container->sphere2_1BulletCont->currentFrame < container->sphere2_1BulletCont->totalFrames)
                     {
-                        container->sphere2_1->bullet->cont->gotoAndStop((container->sphere2_1->bullet->cont->currentFrame + 1));
+                        container->sphere2_1BulletCont->gotoAndStop((container->sphere2_1BulletCont->currentFrame + 1));
                     }
                     else
                     {
-                        container->sphere2_1->bullet->cont->gotoAndStop(1);
+                        container->sphere2_1BulletCont->gotoAndStop(1);
                     }
                 }
-                else if (container->sphere2_1->bullet->currentFrame == 3)
+                else if (container->sphere2_1Bullet->currentFrame == 3)
                 {
-                    if (container->sphere2_1->bullet->cont->currentFrame < container->sphere2_1->bullet->cont->totalFrames)
+                    if (container->sphere2_1BulletCont->currentFrame < container->sphere2_1BulletCont->totalFrames)
                     {
-                        container->sphere2_1->bullet->cont->gotoAndStop((container->sphere2_1->bullet->cont->currentFrame + 1));
+                        container->sphere2_1BulletCont->gotoAndStop((container->sphere2_1BulletCont->currentFrame + 1));
                     }
                     else
                     {
-                        container->sphere2_1->bullet->cont->gotoAndStop(1);
+                        container->sphere2_1BulletCont->gotoAndStop(1);
                     }
                 }
-                else if (container->sphere2_1->bullet->currentFrame == 4)
+                else if (container->sphere2_1Bullet->currentFrame == 4)
                 {
-                    if (container->sphere2_1->bullet->cont->currentFrame < container->sphere2_1->bullet->cont->totalFrames)
+                    if (container->sphere2_1BulletCont->currentFrame < container->sphere2_1BulletCont->totalFrames)
                     {
-                        container->sphere2_1->bullet->cont->gotoAndStop((container->sphere2_1->bullet->cont->currentFrame + 1));
+                        container->sphere2_1BulletCont->gotoAndStop((container->sphere2_1BulletCont->currentFrame + 1));
                     }
                     else
                     {
-                        container->sphere2_1->bullet->cont->gotoAndStop(1);
+                        container->sphere2_1BulletCont->gotoAndStop(1);
                     }
                 }
                 if (container->sphere2_2->currentFrame < container->sphere2_2->totalFrames)
@@ -186,48 +193,48 @@ namespace engine
                 {
                     container->sphere2_2->gotoAndStop(1);
                 }
-                if (container->sphere2_2->bullet->currentFrame == 1)
+                if (container->sphere2_2Bullet->currentFrame == 1)
                 {
-                    if (container->sphere2_2->bullet->cont->currentFrame < container->sphere2_2->bullet->cont->totalFrames)
+                    if (container->sphere2_2BulletCont->currentFrame < container->sphere2_2BulletCont->totalFrames)
                     {
-                        container->sphere2_2->bullet->cont->gotoAndStop((container->sphere2_2->bullet->cont->currentFrame + 1));
+                        container->sphere2_2BulletCont->gotoAndStop((container->sphere2_2BulletCont->currentFrame + 1));
                     }
                     else
                     {
-                        container->sphere2_2->bullet->cont->gotoAndStop(1);
+                        container->sphere2_2BulletCont->gotoAndStop(1);
                     }
                 }
-                else if (container->sphere2_2->bullet->currentFrame == 2)
+                else if (container->sphere2_2Bullet->currentFrame == 2)
                 {
-                    if (container->sphere2_2->bullet->cont->currentFrame < container->sphere2_2->bullet->cont->totalFrames)
+                    if (container->sphere2_2BulletCont->currentFrame < container->sphere2_2BulletCont->totalFrames)
                     {
-                        container->sphere2_2->bullet->cont->gotoAndStop((container->sphere2_2->bullet->cont->currentFrame + 1));
+                        container->sphere2_2BulletCont->gotoAndStop((container->sphere2_2BulletCont->currentFrame + 1));
                     }
                     else
                     {
-                        container->sphere2_2->bullet->cont->gotoAndStop(1);
+                        container->sphere2_2BulletCont->gotoAndStop(1);
                     }
                 }
-                else if (container->sphere2_2->bullet->currentFrame == 3)
+                else if (container->sphere2_2Bullet->currentFrame == 3)
                 {
-                    if (container->sphere2_2->bullet->cont->currentFrame < container->sphere2_2->bullet->cont->totalFrames)
+                    if (container->sphere2_2BulletCont->currentFrame < container->sphere2_2BulletCont->totalFrames)
                     {
-                        container->sphere2_2->bullet->cont->gotoAndStop((container->sphere2_2->bullet->cont->currentFrame + 1));
+                        container->sphere2_2BulletCont->gotoAndStop((container->sphere2_2BulletCont->currentFrame + 1));
                     }
                     else
                     {
-                        container->sphere2_2->bullet->cont->gotoAndStop(1);
+                        container->sphere2_2BulletCont->gotoAndStop(1);
                     }
                 }
-                else if (container->sphere2_2->bullet->currentFrame == 4)
+                else if (container->sphere2_2Bullet->currentFrame == 4)
                 {
-                    if (container->sphere2_2->bullet->cont->currentFrame < container->sphere2_2->bullet->cont->totalFrames)
+                    if (container->sphere2_2BulletCont->currentFrame < container->sphere2_2BulletCont->totalFrames)
                     {
-                        container->sphere2_2->bullet->cont->gotoAndStop((container->sphere2_2->bullet->cont->currentFrame + 1));
+                        container->sphere2_2BulletCont->gotoAndStop((container->sphere2_2BulletCont->currentFrame + 1));
                     }
                     else
                     {
-                        container->sphere2_2->bullet->cont->gotoAndStop(1);
+                        container->sphere2_2BulletCont->gotoAndStop(1);
                     }
                 }
             }
@@ -236,5 +243,4 @@ namespace engine
 
     
     }
-}
-#endif
+} 

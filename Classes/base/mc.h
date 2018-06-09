@@ -61,8 +61,10 @@ namespace engine
         dragonBones::Slot * slot;
         Node * display;
         string slotName;
+		bool visible;
+		virtual void setVisible(bool v);
         virtual bool reinit() ;
-		inline MovieClipSubBase() :isReady(false),mc(0), slot(0), display(0) {};
+		inline MovieClipSubBase() :isReady(false), mc(0), slot(0), display(0), visible(true){};
         //inline MovieClip * getMc() { return MC::getMc(mc); };
         //void addMCbs(MC * mc, MovieClipSubBase * mcs);
     };
@@ -101,12 +103,15 @@ namespace engine
 		virtual bool init();
 		virtual void setName(string name);
 
-        virtual bool reinit() ;
+		virtual void setVisible(bool v);
+		virtual bool reinit();
 
 		void addMcs(MovieClipSub * mcs);
         virtual void destroy(MovieClipSub * & mcs);
 		virtual bool remove(MovieClipSub * ms);
 
+		inline Vec2 convertToWorldSpace(Vec2 pos) { return BaseNode::convertToWorldSpace(pos); };
+		inline Vec2 localToGlobal(Vec2 pos) { return this->convertToWorldSpace(pos); };
 
         //virtual void addMCbs(MovieClipSubBase * mcs);
         //virtual void remove(MovieClipSubBase * ms);
@@ -130,7 +135,8 @@ namespace engine
         MovieClipSub(MC *mc, string slot, string defAniName = "");
 		virtual dragonBones::Armature *getArmature();
 		virtual dragonBones::Animation *getAnimation();
-		void setVisible(bool v);
+		virtual void setVisible(bool v);
+ 
 		bool isVisible();
 		inline bool reinit();
 		cocos2d::Point getPosition();
@@ -146,7 +152,8 @@ namespace engine
 		inline float getScale() { return getDisplayNode()->getScale(); };
 		inline float getScaleX() { return getDisplayNode()->getScaleX(); };
 		inline float getScaleY() { return getDisplayNode()->getScaleY(); };
-		Vec2 convertToWorldSpace(Vec2 pos) { return getDisplayNode()->convertToWorldSpace(pos); };
+		inline Vec2 convertToWorldSpace(Vec2 pos) { return getDisplayNode()->convertToWorldSpace(pos); };
+		inline Vec2 localToGlobal(Vec2 pos) { return getDisplayNode()->convertToWorldSpace(pos); };
         virtual void gotoAndStop(int cf, string aniName = "");
 		inline virtual void setAlpha(float op) { BaseNode::setAlpha(getDisplayNode(), op); };
 		inline virtual float getAlpha() { return  BaseNode::getAlpha(getDisplayNode()); };
@@ -157,6 +164,7 @@ namespace engine
 		MCText(MC * mc, string slotName);
 		inline virtual void setAlpha(float op) { BaseNode::setAlpha(this, op); };
 		inline virtual float getAlpha() { return  BaseNode::getAlpha(this); };
+		virtual void setVisible(bool v);
 		virtual bool reinit();
 	};
     struct MCCase :public BaseNode, MovieClipSubBase
@@ -165,6 +173,7 @@ namespace engine
         MCCase(MC * mc, string slotName, bool draw = false);
 		inline virtual void setAlpha(float op) { BaseNode::setAlpha(this, op); };
 		inline virtual float getAlpha() {return BaseNode::getAlpha(this); };
+		virtual void setVisible(bool v);
 		virtual bool reinit();
     };
 	struct MCSprite :public BaseSprite, MovieClipSubBase
@@ -173,6 +182,7 @@ namespace engine
 		MCSprite(MC * mc, string slotName, string file);
 		MCSprite(MC * mc, string slotName, cocos2d::Sprite * sprite);
 		MCSprite(MC * mc, string slotName);
+		virtual void setVisible(bool v);
 		virtual bool reinit();
 		inline virtual void setAlpha(float op) { BaseNode::setAlpha(this, op); };
 		inline virtual float getAlpha() { return  BaseNode::getAlpha(this); };
@@ -181,6 +191,7 @@ namespace engine
 	{
 		cocos2d::Sprite * mask;
 		MCMask(MC * mc, string slotName);
+		virtual void setVisible(bool v);
 		virtual bool reinit();
 	};
 

@@ -174,6 +174,7 @@ namespace engine
  //   { 
  //       mc->addMCbs(mbs);
  //   };
+	void MovieClipSubBase::setVisible(bool v){ this->visible = v; };
 	 bool MovieClipSubBase::reinit() 
 	 {
 		 if(!this->slot)
@@ -212,6 +213,7 @@ namespace engine
 					  display->setName(slotName);
 				  else if(this->slot->_displayData)
 					  display->setName(this->slot->_displayData->name);
+				  display->setVisible(visible);
 				  return true;
 			  }
 		 }
@@ -227,6 +229,10 @@ namespace engine
 		this->setName(slotName);
         reinit();
 		mc->addMCbs(this);
+	};
+	void MCText::setVisible(bool v){
+		ui::Text::setVisible(v);
+		MovieClipSubBase::setVisible(v);
 	};
     bool MCText::reinit()
     {
@@ -259,6 +265,10 @@ namespace engine
         reinit();
 		mc->addMCbs(this);
     };
+	void MCCase::setVisible(bool v){
+		BaseNode::setVisible(v);
+		MovieClipSubBase::setVisible(v);
+	};
     bool MCCase::reinit()
     {
 		if(MovieClipSubBase::reinit())
@@ -298,6 +308,10 @@ namespace engine
 		reinit();
 		mc->addMCbs(this);
 	};
+	void MCSprite::setVisible(bool v){
+		BaseSprite::setVisible(v);
+		MovieClipSubBase::setVisible(v);
+	};
 	bool MCSprite::reinit()
 	{
 		if(MovieClipSubBase::reinit())
@@ -319,6 +333,10 @@ namespace engine
 		this->setName(slotName);
 		reinit();
 		mc->addMCbs(this);
+	};
+	void MCMask::setVisible(bool v){
+		BaseNode::setVisible(v);
+		MovieClipSubBase::setVisible(v);
 	};
 	bool MCMask::reinit() 
 	{
@@ -520,6 +538,11 @@ namespace engine
 		reinit();
 		mc->addMCbs(this);
 	};
+	void MovieClip::setVisible(bool v){
+		BaseNode::setVisible(v);
+		MovieClipSubBase::setVisible(v);
+	};
+
 	bool MovieClip::reinit()
 	{
 		if(this->mc && MovieClipSubBase::reinit())
@@ -692,6 +715,9 @@ namespace engine
 	void MovieClipSub::setVisible(bool v) 
 	{
 		slot->setVisible(v);
+ 
+			MovieClipSubBase::setVisible(v);
+		 
 		const std::vector<Bone*>& bones=arm->getBones();
 		for each (Bone * bone in bones)
 		{

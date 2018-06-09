@@ -1,8 +1,12 @@
 ﻿#include "World.h"
 #include "MainClass.h"
 #include "engine/units/Unit_1.h"
+#include "engine/bullets/Bullet.h"
+ 
+
 using namespace engine;
 using namespace engine::units;
+using namespace engine::bullets;
 namespace engine
 {  
     World::World() :towerRadius(NULL),frameCounter(0), liveMax(20), unitInputBezieCounter(0), winDefCounter(-1), viewBoss(0), viewRockCrash(0), portalViewCounter(30)
@@ -929,12 +933,12 @@ namespace engine
 		return tempObject;
 	}
 
-	Bullet * World::addBullet(int param1, Point param2, Object param3, Object param4, float param5 , int param6  )
+	Bullet * World::addBullet(int param1, cocos2d::Point param2, towers::Tower *  param3, units::Unit*  param4, float param5, int param6)
 	{
-	    Bullet * tempObject1=NULL;
+		Bullet * tempObject1 = NULL;
 		if (param1 == 1)
 		{
-			tempObject1 = new Bullet_1();
+			tempObject1 = new bullets::Bullet_1();
 		}
 		else if (param1 == 2)
 		{

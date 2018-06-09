@@ -14,8 +14,8 @@ namespace engine
 		bool Unit_3::init()
 		{
 			typeUnit = 3;
-			container = new Unit_mc(this, "unit3", typeUnit); //new Unit3_mc(); 
-			container->setScale(0.9);
+			container = new Unit_mc(this, "Unit3_mc", typeUnit); //new Unit3_mc(); 
+			container->setScale(0.9f);
 			container->init();
 			Unit::init();
 			this->autorelease();
@@ -25,50 +25,42 @@ namespace engine
 
 		void Unit_3::animationHandler()
 		{
-			if(!container->stoneDeath->isVisible() && !icemanFlag)
+			if (!container->stoneDeath->isVisible() && !icemanFlag)
 			{
-				if(direction != "up")
+				if (direction != "up")
 				{
-					if(container->contMcs->currentFrame < 11)
+					if (container->cont->currentFrame < 11)
 					{
-						if(container->contMcs->currentFrame < 10)
-						{
-							container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
-						}
+						if (container->cont->currentFrame < 10)
+							container->cont->gotoAndStop((container->cont->currentFrame + 1));
 						else
-						{
-							container->contMcs->gotoAndStop(1);
-						}
+							container->cont->gotoAndStop(1);
 					}
 					else
 					{
-						container->contMcs->gotoAndStop(container->contMcs->currentFrame - 10);
+						container->cont->gotoAndStop(container->cont->currentFrame - 10);
 					}
 				}
-				else if(container->contMcs->currentFrame > 10)
+				else if (container->cont->currentFrame > 10)
 				{
-					if(container->contMcs->currentFrame < container->contMcs->totalFrames)
-					{
-						container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
-					}
+					if (container->cont->currentFrame < container->cont->totalFrames)
+						container->cont->gotoAndStop((container->cont->currentFrame + 1));
 					else
-					{
-						container->contMcs->gotoAndStop(11);
-					}
+						container->cont->gotoAndStop(11);
 				}
 				else
 				{
-					container->contMcs->gotoAndStop(container->contMcs->currentFrame + 10);
+					container->cont->gotoAndStop(container->cont->currentFrame + 10);
 				}
-				if(moveFlag && !airFlag && !airShockFlag || container->cont->currentFrame != 1)
+				if (moveFlag && !airFlag && !airShockFlag || container->currentFrame != 1)
 				{
-					if(container->cont->currentFrame < container->cont->totalFrames)
+					if (container->currentFrame < container->totalFrames)
 					{
-						container->cont->gotoAndStop((container->cont->currentFrame + 1));
+						container->gotoAndStop((container->currentFrame + 1));
 					}
 					else
 					{
-						container->cont->gotoAndStop(1);
+						container->gotoAndStop(1);
 					}
 				}
 			}

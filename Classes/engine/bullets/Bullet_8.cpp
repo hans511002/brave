@@ -20,12 +20,13 @@ namespace engine
             container = new BulletTower8_1_mc();
             container->stop();
             this->addChild(container);
-            tempObject = new BulletTower8_2_mc();//new Indexes(new BulletTower8_2_mc(), 0, 0);
+			BulletTower8_2_mc * tempObject = new BulletTower8_2_mc();//new Indexes(new BulletTower8_2_mc(), 0, 0);
             tempObject->setPosition(enemyTarget->getPosition());
+			tempObject->setOnceMove(this->world);
             //tempObject.x = enemyTarget.x;
             //tempObject.y = enemyTarget.y;
-            tempObject->container->gotoAndStop(2);
-            Bullet::init(event); 
+            tempObject->gotoAndStop(2);
+            Bullet::init( ); 
             return true;
         }// end function
 

@@ -9,25 +9,24 @@ namespace engine
 		bool Unit_1::init()
 		{
 			typeUnit = 1;
-			tempObject = cocos2d::rand_0_1();
+			float tempObject = cocos2d::rand_0_1();
 			if(tempObject < 0.35)
 			{
-				container = new Unit_mc(this, "unit1_1", typeUnit);
+				container = new Unit_mc(this, "Unit1_1_mc", typeUnit);
 			}
 			else if(tempObject < 0.7)
 			{
-				container = new Unit_mc(this, "unit1_2", typeUnit);
+				container = new Unit_mc(this, "Unit1_2_mc", typeUnit);
 			}
 			else
 			{
-				container = new Unit_mc(this, "unit1_3", typeUnit);
+				container = new Unit_mc(this, "Unit1_3_mc", typeUnit);
 			}
 			container->setPosition(0, 0);
 			container->setScaleX(0.9f);
 			container->setScaleY(0.9f);
 			container->init();
-			Unit::init();
-			//this->addChild(container);
+			Unit::init(); 
 			//this->setPosition(50, 50);
 			// this->autorelease();
 			return true;
@@ -40,24 +39,24 @@ namespace engine
 				//换肤
 				if(direction != "up")
 				{
-					if(container->contMcs->currentFrame != 1)
+					if(container->cont->currentFrame != 1)
 					{
-						container->contMcs->gotoAndStop(1);
+						container->cont->gotoAndStop(1);
 					}
 				}
-				else if(container->contMcs->currentFrame != 2)
+				else if (container->cont->currentFrame != 2)
 				{
-					container->contMcs->gotoAndStop(2);
+					container->cont->gotoAndStop(2);
 				}
 				if(!airFlag && !airShockFlag)
 				{
-					if(container->cont->currentFrame < container->cont->totalFrames)
+					if(container->currentFrame < container->totalFrames)
 					{
-						container->cont->gotoAndStop((container->cont->currentFrame + 1));
+						container->gotoAndStop((container->currentFrame + 1));
 					}
 					else
 					{
-						container->cont->gotoAndStop(1);
+						container->gotoAndStop(1);
 					}
 				}
 			}

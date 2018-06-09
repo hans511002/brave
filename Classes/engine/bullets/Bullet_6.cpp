@@ -12,11 +12,11 @@ namespace engine
             return;
         }// end function
 
-        bool init()
+		bool Bullet_6::init()
         {
             bulletType = 6;
             this->setPosition(this_pt);
-            if (whoShoot is Tower)
+			if (ISTYPE(Tower,whoShoot))
             {
                 container = new BulletTower6_1_mc();
             }
@@ -32,7 +32,7 @@ namespace engine
             Bullet::init();
             this->attack();
             //Sounds.instance.playSoundWithVol("snd_tower_shootUltra2", 0.85);
-            return;
+            return true;
         }// end function
 
         void Bullet_6::update() 
@@ -50,15 +50,18 @@ namespace engine
                 this->hypotenuse = this_pt.distance(enemyTarget->shoot_pt);
                 this->angleAlpha = std::atan2(this->cathetus2, this->cathetus1) * (180 / std::PI) - 90;
                 //container->rotation = this->angleAlpha;
-                if (container->width > container->height)
+                if (container->getWidth() > container->getHeight())
                 {
-                    container->width = this->hypotenuse;
+					//container->width = this->hypotenuse;
+					//container->setContentSize(Size(this->hypotenuse, container->getHeight()));
+					container->setScaleX(container->getWidth() / this->hypotenuse);
                     container->setScaleY(container->getScaleX());
                 }
                 else
                 {
-                    container->height = this->hypotenuse;
-                    container->setScaleX(container->getScaleY());
+                    //container->height = this->hypotenuse;
+					container->setScaleY(container->getHeight() / this->hypotenuse);
+					container->setScaleX(container->getScaleY());
                 }
                 if (!this->chainTarget)
                 {
@@ -84,7 +87,7 @@ namespace engine
                         if (this->length + tempObject < Main::mainClass->readXMLClass.ultraIceLevinLongXML)
                         {
                             tempObject2->bulletTower6Effect = true;
-                            Bullet * tempObject = world->addBullet(6, enemyTarget->shoot_pt, enemyTarget, tempObject2, damage);
+							Bullet_6 * tempObject = (Bullet_6*)world->addBullet(6, enemyTarget->shoot_pt, enemyTarget, tempObject2, damage);
                             tempObject->length = tempObject->length + this->length;
                             tempObject->unitsCout = this->unitsCout + 1;
                         }
@@ -94,9 +97,10 @@ namespace engine
                 {
                     this->close();
                 }
-                else if (whoShoot is Unit)
+                else if (ISTYPE(Unit,whoShoot ))
                 {
-                    if (whoShoot->airFlag)
+					Unit * unit = ISTYPE(Unit, whoShoot);
+					if (unit->airFlag)
                     {
                         this->close();
                     }
@@ -110,11 +114,12 @@ namespace engine
             return;
         }// end function
 
-        void attack() 
+		void Bullet_6::attack()
         {
-            if (enemyTarget->atStage() && enemyTarget->readyDamage)
+            if (enemyTarget->atStaged && enemyTarget->readyDamage)
             {
-                if (enemyTarget->getHit != 24)
+				//if (enemyTarget->getHit != 24)
+				if (enemyTarget->typeUnit != 24)
                 {
                     enemyTarget->getHit(this->damageLittle / 2, "ice", 2, true, bulletType, whoShoot);
                 }
@@ -135,7 +140,7 @@ namespace engine
             return;
         }// end function
 
-        void close() 
+		void Bullet_6::close()
         {
             enemyTarget->bulletTower6Effect = false;
             if (this->chainTarget)

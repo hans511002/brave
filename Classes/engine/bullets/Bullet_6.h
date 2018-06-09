@@ -15,7 +15,7 @@ namespace engine
             float cathetus1;
             float cathetus2;
             float angleAlpha;
-            BaseNode * chainTarget;//public var chainTarget:Object;
+			units::Unit * chainTarget;//public var chainTarget:Object;
             int length;
             int unitsCout;
 

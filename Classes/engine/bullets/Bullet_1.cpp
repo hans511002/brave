@@ -125,7 +125,7 @@ namespace engine{
             }
             else
             {
-                if (enemyTarget->Atstage() && enemyTarget->readyDamage)
+				if (enemyTarget->atStaged && enemyTarget->readyDamage)
                 {
                     if (whoShoot->fireBulletCounter >= Main::mainClass->readXMLClass.listOfFireProbability[(spherePower - 1)])
                     {

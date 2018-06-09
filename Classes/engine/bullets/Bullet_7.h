@@ -17,6 +17,7 @@ namespace engine
             float enemyPath;
             float enemySpeed;
             UnitShadow_mc * shadow;
+			int correct;
 
             Bullet_7();
 

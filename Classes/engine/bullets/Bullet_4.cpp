@@ -16,7 +16,7 @@ namespace engine{
             container = new BulletLevinTower_mc();
             //container->stop();
             this->addChild(container);
-            if (whoShoot is Tower)
+			if (ISTYPE(Tower , whoShoot ))
             {
                 whoShoot->levinBulletCounter++;
                 //Sounds.instance.playSound("snd_tower_shootLevin");
@@ -40,7 +40,7 @@ namespace engine{
             {
                 if (enemyTarget->dead)
                 {
-                    Unit * tempObject1 = null;
+                    Unit * tempObject1 = NULL;
                     i = 0;
                     while (i < world->listOfUnits.size())
                     {
@@ -67,8 +67,8 @@ namespace engine{
                         kill();
                     }
                 }
-                distanceX = enemyTarget->x - this_pt.x;
-                distanceY = enemyTarget->y - this_pt.y;
+                distanceX = enemyTarget->getPositionX() - this_pt.x;
+                distanceY = enemyTarget->getPositionY() - this_pt.y;
                 setPosition(this->getPosition().x + distanceX / (liveCounter - 3), this->getPosition().y + distanceY / (liveCounter - 3));
                 // this->x = this->x + distanceX / (liveCounter - 3);
                 // this->y = this->y + distanceY / (liveCounter - 3);
@@ -87,11 +87,11 @@ namespace engine{
             }
             else
             {
-                if (enemyTarget->atStage && enemyTarget->readyDamage)
+                if (enemyTarget->atStaged && enemyTarget->readyDamage)
                 {
                     if (this->effectFlag)
                     {
-                        if (whoShoot->levinBulletCounter >= Main.mainClass.readXMLClass.listOfLevinProbability[(spherePower - 1)])
+                        if (whoShoot->levinBulletCounter >= Main::mainClass->readXMLClass.listOfLevinProbability[(spherePower - 1)])
                         {
                             whoShoot->levinBulletCounter = 0;
                             enemyTarget->getHit(damage, "levin", spherePower, true, bulletType);

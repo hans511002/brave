@@ -1,6 +1,4 @@
 #include "TowerMenu.h"
-#include "engine/mc/mc.h"
-#include "TowerRadius_mc.h"
 #include "engine/World.h"
 
 namespace engine

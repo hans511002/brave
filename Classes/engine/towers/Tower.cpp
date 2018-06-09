@@ -23,7 +23,7 @@ namespace engine{
             }
             if (Main::mainClass->saveBoxClass->getIntValue("firstViewTowers",this->towerType - 1) == 0)
             {
-                Main::mainClass->saveBoxClass->getValue("firstViewTowers",this->towerType - 1, 1) ;
+                Main::mainClass->saveBoxClass->setValue("firstViewTowers",this->towerType - 1, 1) ;
             }
             if (!this->autoBuild)
             {

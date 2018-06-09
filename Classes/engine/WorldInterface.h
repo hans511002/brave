@@ -28,7 +28,7 @@ namespace engine
 		CastMask_mc* castMask;
 		//Common::Array<Common::Array<int> >  sphereCostHistory;//public var sphereCostHistory:Array;
 		Common::Array<int>   sphereCostHistory[4];//public var sphereCostHistory:Array;
-        Common::Array<units::Unit*> listOfNewEnemies;//public var listOfNewEnemies:Array;
+		Common::Array<MovieClip *> listOfNewEnemies;//public var listOfNewEnemies:Array;
         ui::Text * lastTime;//public var lastTime:TextField;
         Common::Array<GetAchieve_mc *> * listOfGetAhieve ;//public var listOfGetAhieve:Array;
 		Common::Array<MovieClip *> listOfAnimation;//public var listOfAnimation:Array;

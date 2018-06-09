@@ -8,16 +8,16 @@ namespace engine
 {
     namespace towers
     {
-		class Tower2_mc :public MovieClip
+		class Tower2_mc :public TowerBase
         {
         public:  
-			MovieClip * blockTower;
-			MovieClip * boneBlock;
-            MovieClipSub * selectTower;
-            MCCase * towerCase;
-            MovieClipSub * sphere1;
-			MovieClip * sphere1Bullet;
-            MovieClipSub * sphere1BulletCont;
+			//MovieClip * blockTower;
+			//MovieClip * boneBlock;
+   //         MovieClipSub * selectTower;
+   //         MCCase * towerCase;
+   //         MovieClipSub * sphere1;
+			//MovieClip * sphere1Bullet;
+   //         MovieClipSub * sphere1BulletCont;
             MovieClipSub * sphere2_1;
             MovieClip  * sphere2_1Bullet;
             MovieClipSub * sphere2_1BulletCont;

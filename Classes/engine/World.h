@@ -1,4 +1,4 @@
-#ifndef WORLD_H
+﻿#ifndef WORLD_H
 #define WORLD_H
 
 #include "BaseNode.h"
@@ -103,9 +103,9 @@ namespace engine
 
        
         //PointTimer * pointer4;
-        //public var pointer1 : MovieClip;
-        //public var pointer2 : MovieClip;
-        //public var pointer3 : MovieClip;
+		MovieClip* pointer1;
+		MovieClip* pointer2;
+		MovieClip* pointer3; 
         BaseNode * selectObject;//public var selectObject : Object;
         bool firstMusicPlay;//: Boolean;
         bool secondMusicPlay;//: Boolean;
@@ -114,7 +114,7 @@ namespace engine
         int winDefCounter;//: int = -1;
         int viewBoss;// : int = 0;
         int viewRockCrash;//: int = 0;
-        //public var boss : Unit_34;
+		Unit_34 * boss ;
         decoration::Decoration* decoration;
         int nowLevel;
         sys::SaveBox * saveBox;
@@ -180,7 +180,7 @@ namespace engine
 
 
 
-        //Bullet * addBullet(int param1, Point param2, Object param3, Object param4, float param5 = 0, int param6 = 0);
+		Bullet * addBullet(int param1, cocos2d::Point param2, ShootBase *  param3, units::Unit*  param4, float param5 = 0, int param6 = 0);
 
         void manageIndexes();
 

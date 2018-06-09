@@ -1,8 +1,8 @@
 ﻿#ifndef ENGINE_TOWERS_H
 #define ENGINE_TOWERS_H
-#include "BaseHeaders.h"
+#include "BaseHeaders.h" 
 #include "engine/units/Unit.h" 
-//#include "engine/bullets/Bullet.h" 
+#include "engine/units/Unit_mc.h"
 
 namespace engine
 {
@@ -10,9 +10,24 @@ namespace engine
     namespace bullets{
         struct BulletSphereTower_mc;
     };
+
     namespace towers
     {
-        class Tower :public BaseNode
+		struct TowerBase :public MovieClip
+		{ 
+			MovieClip * blockTower;
+			MovieClip * boneBlock;
+			MovieClipSub * selectTower;
+			MCCase * towerCase;
+			MovieClipSub * sphere1;
+			MovieClip * sphere1Bullet;
+			MovieClipSub * sphere1BulletCont;
+			inline TowerBase(string rootPath, string armName, string dbName, string defAniName = "") :towerCase(0)
+				, MovieClip(rootPath, armName, dbName, defAniName)
+			{
+			};
+		};
+		class Tower :public engine::ShootBase
         {
         public:
             int i, j;
@@ -21,13 +36,12 @@ namespace engine
             //public var tempObject2:Object;
             //public var tempObject3:Object;
             //public var tempObject4:Object;
-            MovieClip *container;// public var container : MovieClip;
+			TowerBase *container;// public var container : MovieClip;
             Sprite * myPlace;// :MovieClip;
             MovieClip * buildAnima; //public var buildAnima:MovieClip;
             Common::Array<string>  spheresStack; //public var spheresStack:Array;
             Common::Array<int>  slotsStack; //public var slotsStack:Array;
             float damage; //public var damage:Number;
-            float radius; //public var radius:Number;
             int  intervalCounter; //public var intervalCounter:int = 0;
             int  intervalTimer; //public var intervalTimer:int;
             bool  dead; //public var dead:Boolean;
@@ -51,9 +65,6 @@ namespace engine
             int  upgradeTypeAdd; //public var upgradeTypeAdd:int = 0;
             bool  blockTowerFlag; //public var blockTowerFlag:Boolean;
             int  sphereVisibleTimer; //public var sphereVisibleTimer:int = 18;
-            int  fireBulletCounter; //public var fireBulletCounter:int = 0;
-            int  iceBulletCounter; //public var iceBulletCounter:int = 0;
-            int  levinBulletCounter; //public var levinBulletCounter:int = 0;
             bool  exchangeFlag; //public var exchangeFlag:Boolean;
             bool  autoBuild; //public var autoBuild:Boolean;
 

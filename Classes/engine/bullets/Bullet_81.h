@@ -15,6 +15,8 @@ namespace engine
             float cathetus2;
             float angleAlpha;
             BaseNode *chainTarget;//:Object;
+			float myWidth;
+			float myHeight;
 
             Bullet_81();
 

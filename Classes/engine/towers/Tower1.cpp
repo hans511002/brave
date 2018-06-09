@@ -7,7 +7,7 @@ namespace engine
 {
     namespace towers
     {
-		Tower1_mc::Tower1_mc() :MovieClip("tower/", "Tower1_mc", "Tower1_mc")
+		Tower1_mc::Tower1_mc() :TowerBase("tower/", "Tower1_mc", "Tower1_mc")
 		{
 			blockTower = this->createMovieClip("blockTower", "tower/", "blockTower", "TowerBlockBone");
 			boneBlock = this->createMovieClip("boneBlock", "tower/", "boneBlock", "TowerBlockBone");
@@ -27,10 +27,10 @@ namespace engine
             slotsStack[1] = 1;
             slotsStack[2] = 1;
             slotsStack[3] = 1;
-            slotsStack[4] = 1;
+            //slotsStack[4] = 1;
             Tower1_mc * cont= new Tower1_mc();
             container->stop();
-            container->towerCase->stop();
+            //container->towerCase->stop();
             container->blockTower->stop();
             container->boneBlock->stop();
             container->selectTower->stop();
@@ -97,48 +97,48 @@ namespace engine
                 {
                     container->sphere1->gotoAndStop(1);
                 }
-                if (container->sphere1->bullet->currentFrame == 1)
+                if (container->sphere1Bullet->currentFrame == 1)
                 {
-                    if (container->sphere1->bullet->cont->currentFrame < container->sphere1->bullet->cont->totalFrames)
+                    if (container->sphere1BulletCont->currentFrame < container->sphere1BulletCont->totalFrames)
                     {
-                        container->sphere1->bullet->cont->gotoAndStop((container->sphere1->bullet->cont->currentFrame + 1));
+                        container->sphere1BulletCont->gotoAndStop((container->sphere1BulletCont->currentFrame + 1));
                     }
                     else
                     {
-                        container->sphere1->bullet->cont->gotoAndStop(1);
+                        container->sphere1BulletCont->gotoAndStop(1);
                     }
                 }
-                else if (container->sphere1->bullet->currentFrame == 2)
+                else if (container->sphere1Bullet->currentFrame == 2)
                 {
-                    if (container->sphere1->bullet->cont->currentFrame < container->sphere1->bullet->cont->totalFrames)
+                    if (container->sphere1BulletCont->currentFrame < container->sphere1BulletCont->totalFrames)
                     {
-                        container->sphere1->bullet->cont->gotoAndStop((container->sphere1->bullet->cont->currentFrame + 1));
+                        container->sphere1BulletCont->gotoAndStop((container->sphere1BulletCont->currentFrame + 1));
                     }
                     else
                     {
-                        container->sphere1->bullet->cont->gotoAndStop(1);
+                        container->sphere1BulletCont->gotoAndStop(1);
                     }
                 }
-                else if (container->sphere1->bullet->currentFrame == 3)
+                else if (container->sphere1Bullet->currentFrame == 3)
                 {
-                    if (container->sphere1->bullet->cont->currentFrame < container->sphere1->bullet->cont->totalFrames)
+                    if (container->sphere1BulletCont->currentFrame < container->sphere1BulletCont->totalFrames)
                     {
-                        container->sphere1->bullet->cont->gotoAndStop((container->sphere1->bullet->cont->currentFrame + 1));
+                        container->sphere1BulletCont->gotoAndStop((container->sphere1BulletCont->currentFrame + 1));
                     }
                     else
                     {
-                        container->sphere1->bullet->cont->gotoAndStop(1);
+                        container->sphere1BulletCont->gotoAndStop(1);
                     }
                 }
-                else if (container->sphere1->bullet->currentFrame == 4)
+                else if (container->sphere1Bullet->currentFrame == 4)
                 {
-                    if (container->sphere1->bullet->cont->currentFrame < container->sphere1->bullet->cont->totalFrames)
+                    if (container->sphere1BulletCont->currentFrame < container->sphere1BulletCont->totalFrames)
                     {
-                        container->sphere1->bullet->cont->gotoAndStop((container->sphere1->bullet->cont->currentFrame + 1));
+                        container->sphere1BulletCont->gotoAndStop((container->sphere1BulletCont->currentFrame + 1));
                     }
                     else
                     {
-                        container->sphere1->bullet->cont->gotoAndStop(1);
+                        container->sphere1BulletCont->gotoAndStop(1);
                     }
                 }
             }

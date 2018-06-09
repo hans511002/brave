@@ -23,7 +23,7 @@ namespace engine
 		}
 		this->bezierRoadXML = this->xmlData->getInt("bezier.@road");
 		this->bezierWayXML = this->xmlData->getInt("bezier.@way");
-		vector<dragonBones::XMLElement *> enemies = this->xmlData->getChildList("enemies.enemy");
+		vector<tinyxml2::XMLElement *> enemies = this->xmlData->getChildList("enemies.enemy");
 		int tempObject = enemies.size();
 		this->i = 0;
 		while ( i < tempObject)
@@ -96,7 +96,7 @@ namespace engine
 			}
 			else if (this->i == 33)
 			{ 
-				vector<dragonBones::XMLElement *> road1Phases = this->xmlData->getChildList(enemies.at(this->i), "phasePath.road1.phase");
+				vector<tinyxml2::XMLElement *> road1Phases = this->xmlData->getChildList(enemies.at(this->i), "phasePath.road1.phase");
 				this->tempObject1 = road1Phases.size();
 				//this->xmlData->getFloat(enemies.at(this->i), "phasePath.road1.phase").length();
 				this->n = 0;
@@ -106,7 +106,7 @@ namespace engine
 					//int(this->xmlData.enemies.enemy[this->i].phasePath.road1.phase[this->n].@path);
 					n++;
 				}
-				vector<dragonBones::XMLElement *> road2Phases = this->xmlData->getChildList(enemies.at(this->i), "phasePath.road2.phase");
+				vector<tinyxml2::XMLElement *> road2Phases = this->xmlData->getChildList(enemies.at(this->i), "phasePath.road2.phase");
 				this->tempObject1 = road2Phases.size(); //this->xmlData.enemies.enemy[this->i].phasePath.road2.phase.length();
 				this->n = 0;
 				while (this->n < this->tempObject1)
@@ -115,7 +115,7 @@ namespace engine
 					//int(this->xmlData.enemies.enemy[this->i].phasePath.road2.phase[this->n].@path);
 					n++;
 				}
-				vector<dragonBones::XMLElement *> phaseViewViewTimer = this->xmlData->getChildList(enemies.at(this->i), "phaseView.viewTimer");
+				vector<tinyxml2::XMLElement *> phaseViewViewTimer = this->xmlData->getChildList(enemies.at(this->i), "phaseView.viewTimer");
 				this->tempObject1 = phaseViewViewTimer.size(); //this->xmlData.enemies.enemy[this->i].phaseView.viewTimer.length();
 				this->n = 0;
 				while (this->n < this->tempObject1)
@@ -125,7 +125,7 @@ namespace engine
 					this->bossArrayOfView[this->n][1] = this->xmlData->getBool(phaseViewViewTimer.at(this->n), "@changeRoad");//"true"/"false"
 					n++;
 				}
-				vector<dragonBones::XMLElement *> phaseCallUnitsCallUnits = this->xmlData->getChildList(enemies.at(this->i), "phaseCallUnits.callUnits");
+				vector<tinyxml2::XMLElement *> phaseCallUnitsCallUnits = this->xmlData->getChildList(enemies.at(this->i), "phaseCallUnits.callUnits");
 				this->tempObject1 = phaseCallUnitsCallUnits.size();// this->xmlData.enemies.enemy[this->i].phaseCallUnits.callUnits.length();
 				this->n = 0;
 				while (this->n < this->tempObject1)
@@ -139,7 +139,7 @@ namespace engine
 							this->bossArrayOfEnemies1[this->n] = 0;
 						}
 					}
-					vector<dragonBones::XMLElement *> phaseCallUnitsCallUnitsEnemy = this->xmlData->getChildList(phaseCallUnitsCallUnits.at(this->n), "enemy");
+					vector<tinyxml2::XMLElement *> phaseCallUnitsCallUnitsEnemy = this->xmlData->getChildList(phaseCallUnitsCallUnits.at(this->n), "enemy");
 					this->tempObject2 = phaseCallUnitsCallUnitsEnemy.size();//this->xmlData.enemies.enemy[this->i].phaseCallUnits.callUnits[this->n].enemy.length();
 					this->m = 0;
 					this->bossArrayOfEnemies1[this->n] =new int[tempObject2*8];
@@ -165,7 +165,7 @@ namespace engine
 					}
 					n++;
 				}
-				vector<dragonBones::XMLElement *> phaseArmorGos = this->xmlData->getChildList(enemies.at(this->i), "phaseArmorGo.armorGo");
+				vector<tinyxml2::XMLElement *> phaseArmorGos = this->xmlData->getChildList(enemies.at(this->i), "phaseArmorGo.armorGo");
 				this->tempObject1 = phaseArmorGos.size();//this->xmlData.enemies.enemy[this->i].phaseArmorGo.armorGo.length();
 				this->n = 0;
 				while (this->n < this->tempObject1)
@@ -173,7 +173,7 @@ namespace engine
 					this->bossArrayOfArmor[n]=std::round(this->xmlData->getFloat(phaseArmorGos.at(this->n), "@timer") * Main::fps);
 					n++;
 				}
-				vector<dragonBones::XMLElement *> phaseCastGos = this->xmlData->getChildList(enemies.at(this->i), "phaseCastGo.castGo");
+				vector<tinyxml2::XMLElement *> phaseCastGos = this->xmlData->getChildList(enemies.at(this->i), "phaseCastGo.castGo");
 				this->tempObject1 = phaseCastGos.size();//this->xmlData.enemies.enemy[this->i].phaseCastGo.castGo.length();
 				this->n = 0;
 				while (this->n < this->tempObject1)
@@ -186,7 +186,7 @@ namespace engine
 			}
 			i++;
 		}
-		//vector<dragonBones::XMLElement *> packsUnits = this->xmlData->getChildList( "packs.unit");
+		//vector<tinyxml2::XMLElement *> packsUnits = this->xmlData->getChildList( "packs.unit");
 		//this->tempObject =packsUnits.size();// this->xmlData.packs.unit.length();
 		this->assasinVisTrueTimer1XML = std::round(this->xmlData->getFloat( "assasinUnit.assasinVisTrueSec.@assasinUnit1") * Main::fps);
 		//std::round(Number(this->xmlData.assasinUnit.assasinVisTrueSec.@assasinUnit1) * Main::fps);
@@ -1215,22 +1215,22 @@ namespace engine
 		//Main::mainClass->worldClass.wavesClass.listOfWaves[0] = [];
 		//Main::mainClass->worldClass.wavesClass.listOfWaves[0][0] = [0, []];
 		this->strategies = 0;
-		vector<dragonBones::XMLElement *> strategy1 = this->xmlDataLevels->getChildList("strategy1");
+		vector<tinyxml2::XMLElement *> strategy1 = this->xmlDataLevels->getChildList("strategy1");
 		if (strategy1.size()) //if (this->xmlDataLevels.strategy1.length() > 0) //this->xmlData->getInt("cost.stone.@step38");
 		{
 			this->strategies++;
 		}
-		vector<dragonBones::XMLElement *> strategy2 = this->xmlDataLevels->getChildList("strategy2");
+		vector<tinyxml2::XMLElement *> strategy2 = this->xmlDataLevels->getChildList("strategy2");
 		if (strategy2.size() > 0)
 		{
 			this->strategies++;
 		}
-		vector<dragonBones::XMLElement *> strategy3 = this->xmlDataLevels->getChildList("strategy3");
+		vector<tinyxml2::XMLElement *> strategy3 = this->xmlDataLevels->getChildList("strategy3");
 		if (strategy3.size() > 0)
 		{
 			this->strategies++;
 		}
-		vector<dragonBones::XMLElement *> waveSettings = this->xmlDataLevels->getChildList("strategy1.waveSettings");
+		vector<tinyxml2::XMLElement *> waveSettings = this->xmlDataLevels->getChildList("strategy1.waveSettings");
 		this->tempObject = waveSettings.size();// this->xmlDataLevels.strategy1.waveSettings.length();
 		this->i = 1;
 		while (this->i <= this->tempObject)
@@ -1240,7 +1240,7 @@ namespace engine
 			//Main.mainClass.worldClass.wavesClass.listOfWaves[0][this.i] = [int(Number(this.xmlDataLevels.strategy1.waveSettings[(this.i - 1)].@delay) * Main::fps), []];
 			i++;
 		}
-		vector<dragonBones::XMLElement *> waves = this->xmlDataLevels->getChildList("strategy1.wave");
+		vector<tinyxml2::XMLElement *> waves = this->xmlDataLevels->getChildList("strategy1.wave");
 		this->tempObject = waves.size();// this->xmlDataLevels.strategy1.wave.length();
 		this->i = 0;
 		while (this->i < this->tempObject)
@@ -1249,7 +1249,7 @@ namespace engine
 				//int(Number(this->xmlDataLevels.strategy1.wave[this->i].@startDelay) * Main::fps);
 			//Main::mainClass->worldClass->wavesClass->listOfWaves[0].d[this->i][1][1] = [];
 			this->j = 0;
-			vector<dragonBones::XMLElement *> enemys = this->xmlDataLevels->getChildList(waves.at(i), "enemy");
+			vector<tinyxml2::XMLElement *> enemys = this->xmlDataLevels->getChildList(waves.at(i), "enemy");
 			while (this->j < enemys.size())// this->xmlDataLevels.strategy1.wave[this->i].enemy.length())
 			{
 				//Main::mainClass->worldClass->wavesClass->listOfWaves[0][this->i][1][1][this->j] = [];
@@ -1280,7 +1280,7 @@ namespace engine
 		if (this->strategies > 1)
 		{
 			//Main::mainClass->worldClass.wavesClass.listOfWaves[1] = [];
-			vector<dragonBones::XMLElement *> waves = this->xmlDataLevels->getChildList("strategy2.wave");
+			vector<tinyxml2::XMLElement *> waves = this->xmlDataLevels->getChildList("strategy2.wave");
 			this->tempObject = waves.size();// this->xmlDataLevels.strategy2.wave.length();
 			this->i = 0;
 			while (this->i < this->tempObject)
@@ -1290,7 +1290,7 @@ namespace engine
 					// int(Number(this->xmlDataLevels.strategy2.wave[this->i].@startDelay) * Main::fps);
 				//Main::mainClass->worldClass->wavesClass->listOfWaves[1][this->i][1][1] = [];
 				this->j = 0;
-				vector<dragonBones::XMLElement *> enemys = this->xmlDataLevels->getChildList(waves.at(i), "enemy");
+				vector<tinyxml2::XMLElement *> enemys = this->xmlDataLevels->getChildList(waves.at(i), "enemy");
 				while (this->j < enemys.size())// this->xmlDataLevels.strategy2.wave[this->i].enemy.length())
 				{
 					//Main::mainClass->worldClass->wavesClass->listOfWaves[1][this->i][1][1][this->j] = [];
@@ -1322,7 +1322,7 @@ namespace engine
 		if (this->strategies > 2)
 		{
 			//Main::mainClass->worldClass.wavesClass.listOfWaves[2] = [];
-			vector<dragonBones::XMLElement *> waves = this->xmlDataLevels->getChildList("strategy3.wave");
+			vector<tinyxml2::XMLElement *> waves = this->xmlDataLevels->getChildList("strategy3.wave");
 			this->tempObject = waves.size();// this->xmlDataLevels.strategy3.wave.length();
 			this->i = 0;
 			while (this->i < this->tempObject)
@@ -1333,7 +1333,7 @@ namespace engine
 				//Main::mainClass->worldClass.wavesClass.listOfWaves[2][this->i][1][0] = int(Number(this->xmlDataLevels.strategy3.wave[this->i].@startDelay) * Main::fps);
 				//Main::mainClass->worldClass.wavesClass.listOfWaves[2][this->i][1][1] = [];
 				this->j = 0;
-				vector<dragonBones::XMLElement *> enemys = this->xmlDataLevels->getChildList(waves.at(i), "enemy");
+				vector<tinyxml2::XMLElement *> enemys = this->xmlDataLevels->getChildList(waves.at(i), "enemy");
 				while (this->j < enemys.size())
 				{
 					//Main::mainClass->worldClass->wavesClass->listOfWaves[2][this->i][1][1][this->j] = [];
@@ -1420,7 +1420,7 @@ namespace engine
 		this->ultraTower3UpgrBlock = this->xmlDataLevels->getInt("settings.sphere.@ultraTower3UpgrBlock");//int(this->xmlDataLevels.settings.sphere.@ultraTower3UpgrBlock);
 		this->ultraTower4UpgrBlock = this->xmlDataLevels->getInt("settings.sphere.@ultraTower4UpgrBlock");//int(this->xmlDataLevels.settings.sphere.@ultraTower4UpgrBlock);
 		
-		vector<dragonBones::XMLElement *> portalsFires = this->xmlDataLevels->getChildList("settings.portals.fire.location");
+		vector<tinyxml2::XMLElement *> portalsFires = this->xmlDataLevels->getChildList("settings.portals.fire.location");
 		this->tempObject = portalsFires.size();// this->xmlDataLevels.settings.portals.fire.location.length();
 		this->listOfFirePortals.clear();
 		this->i = 0;

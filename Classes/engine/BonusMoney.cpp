@@ -32,7 +32,7 @@ namespace engine
         this->mouseEnabled = false;
         //this->world->listOfIndexes3.push(this);
         //this->world->listOfClasses.push(this);
-        return;
+        return true;
     }// end function
 
     void BonusMoney::update()
@@ -50,9 +50,9 @@ namespace engine
         {
             this->counter++;
         }
-        else if (this->container->alpha > 0)
+        else if (this->container->getAlpha() > 0)
         {
-            this->container->alpha = this->container->alpha - 0.2;
+            this->container->setAlpha( this->container->getAlpha() - 0.2);
         }
         else
         {

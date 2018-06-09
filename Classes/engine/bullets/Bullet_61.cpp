@@ -20,9 +20,9 @@ namespace engine
             container = new BulletTower61_mc();
             container->stop();
             this->addChild(container);
-            Bullet::init(event);
+            Bullet::init( );
             //Sounds.instance.playSoundWithVol("snd_tower_shootUltraAdd2", 0.9);
-            return;
+            return true;
         }// end function
 
         void Bullet_61::update() 
