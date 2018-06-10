@@ -9,8 +9,8 @@ namespace engine{
 		class DecorationLevel1 :public Decoration
 		{
 		public:
-			dragonBones::DBCCArmatureNode * container1;
-			dragonBones::DBCCArmatureNode * decorationCase;
+			MovieClip * container1;
+			MovieClip * decorationCase;
 			int decorationFlag;// : int = 0;
 			int mouseDownCounter;// : int = 0;
 

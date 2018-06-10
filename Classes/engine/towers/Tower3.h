@@ -7,7 +7,7 @@ namespace engine
 {
     namespace towers
     {
-		class Tower3_mc :public TowerBase
+		class Tower3_mc :public Tower2_mc
 		{
 		public:
 			//MovieClip * blockTower;
@@ -17,23 +17,26 @@ namespace engine
 			//MovieClipSub * sphere1;
 			//MovieClip * sphere1Bullet;
 			//MovieClipSub * sphere1BulletCont;
-			MovieClipSub * sphere2_1;
-			MovieClip * sphere2_1Bullet;
-			MovieClipSub * sphere2_1BulletCont;
-			MovieClipSub * sphere2_2;
-			MovieClip * sphere2_2Bullet;
-			MovieClipSub * sphere2_2BulletCont;
+
+			//MovieClipSub * sphere2_1;
+			//BulletSphereTower_mc * sphere2_1Bullet;
+			//MovieClipSub * sphere2_1BulletCont;
+			//MovieClipSub * sphere2_2;
+			//BulletSphereTower_mc * sphere2_2Bullet;
+			//MovieClipSub * sphere2_2BulletCont;
+
 			MovieClipSub * sphere3_1;
-			MovieClip * sphere3_1Bullet;
+			BulletSphereTower_mc * sphere3_1Bullet;
 			MovieClipSub * sphere3_1BulletCont;
 			MovieClipSub * sphere3_2;
-			MovieClip * sphere3_2Bullet;
+			BulletSphereTower_mc * sphere3_2Bullet;
 			MovieClipSub * sphere3_2BulletCont;
 			MovieClipSub * sphere3_3;
-			MovieClip * sphere3_3Bullet;
+			BulletSphereTower_mc * sphere3_3Bullet;
 			MovieClipSub * sphere3_3BulletCont;
 
 
+			inline Tower3_mc(string rootPath, string armName, string dbName, string defAniName = "") : Tower2_mc(rootPath, armName, dbName, defAniName){};
 			Tower3_mc();
 		};
         class Tower3 :public  Tower

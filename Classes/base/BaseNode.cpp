@@ -340,6 +340,18 @@ namespace std
 	{
 	    return this->getContentSize().height;
     };
+	void BaseNode::setWidth(float w){
+		Size size=this->getContentSize();
+		size.width = w;
+		this->setContentSize(size);
+	};
+	void BaseNode::setHeight(float h){
+		Size size = this->getContentSize();
+		size.height= h;
+		this->setContentSize(size);
+	};
+
+
 	float BaseSprite::getWidth()
 	{
 		return this->getContentSize().width;
@@ -347,6 +359,16 @@ namespace std
 	float BaseSprite::getHeight()
 	{
 		return this->getContentSize().height;
+	};
+	void BaseSprite::setWidth(float w){
+		Size size = this->getContentSize();
+		size.width = w;
+		this->setContentSize(size);
+	};
+	void BaseSprite::setHeight(float h){
+		Size size = this->getContentSize();
+		size.height = h;
+		this->setContentSize(size);
 	};
 
 	void BaseNode::drawRange()

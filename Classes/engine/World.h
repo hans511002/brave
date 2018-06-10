@@ -7,17 +7,28 @@
 #include "sys/saveBox.h"
 #include "engine/WorldInterface.h"
 #include "Feature.h"
-#include "engine/level/Level.h"
 #include "bezier/Bezier.h"
+
+#include "MoneyAdd.h"
+#include "CastSphere.h"
+#include "GetSphere.h"
+
+#include "engine/level/Level.h"
 #include "engine/units/Unit.h"
 #include "engine/GetSphere.h"
 #include "engine/bullets/Bullet.h"
+
 #include "engine/towers/Tower.h"
 #include "engine/towers/BuildTowerMenu.h"
 #include "engine/towers/UltraTowerMenu.h"
 #include "engine/towers/TowerMenu.h"
 #include "engine/towers/TowerMenu_mc.h"
+
 #include "engine/casts/Map.h"
+#include "engine/casts/Cast.h"
+
+#include "screens/MiddleScreen.h"
+#include "screens/PauseMenu.h"
 
 //#include "animation/Hint.h"
 
@@ -36,7 +47,7 @@ namespace engine
     class Feature;
     using namespace towers;
     using namespace units;
-    
+	using namespace casts;
     class World : public BaseNode //, public  BaseLayer
     {
          
@@ -61,15 +72,15 @@ namespace engine
         Waves *wavesClass;
         int numRoads;//public var numRoads : int;
         Level * level;		//public var level : MovieClip;
-        //public var road : MovieClip;
+		MovieClip *road;//public var road : MovieClip;
         //public var levelAdditionally : MovieClip;
         //public var levelAdditionally1 : MovieClip;
         //public var levelAdditionally2 : MovieClip;
         //public var levelAdditionally3 : MovieClip;
 
         WorldInterface* worldInterface;
-        Common::Array<Node*> listOfFlags;//public var listOfFlags : Array;
-        Common::Array<Node*> listOfPlaces;//public var listOfPlaces : Array;
+		Common::Array<MovieClip *> listOfFlags;//public var listOfFlags : Array;
+		Common::Array<BuildTowerPlace *> listOfPlaces;//public var listOfPlaces : Array;
         Common::Array<RoadsignFire_mc *> listOfFirePortals;//public var listOfFirePortals : Array;
         Common::Array<RoadsignIce_mc *> listOfIcePortals;//public var listOfIcePortals : Array;
         Common::Array<RoadsignStone_mc *> listOfStonePortals;//public var listOfStonePortals : Array;
@@ -80,8 +91,10 @@ namespace engine
         int live;
         bool forseIndexFl;// : Boolean;
         GetSphere *getSphere; //public var getSphere : GetSphere;
-        //public var listOfMoveSpheres : Array;
-        //public var listOfClasses : Array;
+		Common::Array<GetSphere *>listOfMoveSpheres;//public var listOfMoveSpheres : Array;
+		
+		Common::Array<BaseNode *>listOfClasses;//public var listOfClasses : Array;
+
         Common::Array<towers::Tower *>listOfTowers;//public var listOfTowers : Array;
         Common::Array<engine::units::Unit *> listOfUnits;//public var listOfUnits : Array;
         Common::Array<engine::bullets::Bullet *> listOfBullets;//public var listOfBullets : Array;
@@ -103,9 +116,9 @@ namespace engine
 
        
         //PointTimer * pointer4;
-		MovieClip* pointer1;
-		MovieClip* pointer2;
-		MovieClip* pointer3; 
+		LevelPointer * pointer1;
+		LevelPointer * pointer2;
+		LevelPointer * pointer3;
         BaseNode * selectObject;//public var selectObject : Object;
         bool firstMusicPlay;//: Boolean;
         bool secondMusicPlay;//: Boolean;
@@ -118,10 +131,10 @@ namespace engine
         decoration::Decoration* decoration;
         int nowLevel;
         sys::SaveBox * saveBox;
-        //public var exchange : Exchange;
+		towers::Exchange * exchange;//public var exchange : Exchange;
         int portalViewCounter;//: int = 30;
         BaseNode * trainingClass;//public var trainingClass : Object;
-        //Hint* hint;// : Hint_mc;
+		Hint_mc* hint;// : Hint_mc;
         float startMusicVolume;//: Number = 0;
         bool bonusMoneyFlag;//: Boolean = true;
         bool eduOpenUpgrArrowFlag;// : Boolean = true;
@@ -174,7 +187,7 @@ namespace engine
 
         void rightMouseUpHandler(cocos2d::EventMouse* event);
 
-        Tower * addTower(std::string param1, Sprite*  param2, bool param3 = false);
+		Tower * addTower(std::string param1, BuildTowerPlace*  param2, bool param3 = false);
 
         units::Unit * addUnit(int param1, int param2, int param3 = 0, float param4 = 0, int param5 = 0, int param6 = 0);
 

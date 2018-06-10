@@ -5,7 +5,7 @@
 
 namespace engine{
     namespace bullets{
-        BulletSphereTower_mc::BulletSphereTower_mc():MovieClip("sphere/","BulletSphereTower_mc","BulletSphereTower_mc"),cont(0)
+		BulletSphereTower_mc::BulletSphereTower_mc() :MovieClip("sphere/", "BulletSphereTower_mc", "BulletSphereTower_mc"), cont(0), counter(0)
         {
             //cont=this->createMovieClip("sphere/","cont","BulletSpheresTower_mc");//合并多个在一个db中
         }

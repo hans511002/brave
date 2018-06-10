@@ -10,7 +10,21 @@ using namespace cocostudio;
 
 namespace engine{
 
-	 
+	LevelPointer::LevelPointer() :MovieClip("worldinterface/", "pointer", "LevelBase")
+	{
+		pointerCase = this->createCase("LevelBase");
+		fireAnima = this->createMovieClipSub("LevelBase");
+		eyesAnima = this->createMovieClipSub("LevelBase");
+		mask1 = this->createCase("LevelBase");
+		mask2 = this->createCase("LevelBase");
+	}
+
+	BuildTowerPlace::BuildTowerPlace(string arm) :MovieClip("worldinterface/", arm,"LevelBase")
+	{
+		placeForBuildCase = this->createCase("LevelBase");
+		buildPoint = (Sprite *)this->getArmature()->getSlot("LevelBase")->getDisplay();
+	};
+
 	Level1_mc::Level1_mc() :Level("worldinterface/", "Level1_mc", "Level1_mc")
 	{
 
@@ -20,12 +34,12 @@ namespace engine{
             
         flag1         =this    -> createMovieClip("flag1","worldinterface/","flag","LevelBase");
 		flag2 = this->createMovieClip("flag2", "worldinterface/", "flag", "LevelBase");
-        place1        =this    -> createMovieClip("place1", "worldinterface/", "placeLeft", "LevelBase");
-        place2        =this    -> createMovieClip("place2", "worldinterface/", "placeRight", "LevelBase");
-        place3        =this    -> createMovieClip("place3", "worldinterface/", "placeRight", "LevelBase");
-        place4        =this    -> createMovieClip("place4", "worldinterface/", "placeRight", "LevelBase");
-        place5        =this    -> createMovieClip("place5", "worldinterface/", "placeRight", "LevelBase");
-        pointer1      =this    -> createMovieClip("pointer1", "worldinterface/", "pointer", "LevelBase");
+		place1 = (BuildTowerPlace*) this->createMovieClip("place1", new BuildTowerPlace("placeLeft"));
+		place2 = (BuildTowerPlace*) this->createMovieClip("place2", new BuildTowerPlace("placeRight"));
+		place3 = (BuildTowerPlace*) this->createMovieClip("place3", new BuildTowerPlace("placeRight"));
+		place4 = (BuildTowerPlace*) this->createMovieClip("place4", new BuildTowerPlace("placeLeft"));
+		place5 = (BuildTowerPlace*) this->createMovieClip("place5", new BuildTowerPlace("placeRight")); 
+		pointer1 = (LevelPointer*)this->createMovieClip("pointer1", new LevelPointer());
 		flags.push(flag1);
 		flags.push(flag2);
 		places.push(place1);

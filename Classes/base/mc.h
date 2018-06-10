@@ -22,6 +22,7 @@ namespace engine
         int currentFrame;
 		string defAniName;
         int totalFrames;
+		string type;
 		virtual int getTotalFrames(string aniName = "");
 		virtual void gotoAndStop(int cf, string aniName = "");
 		virtual  void nextFram();
@@ -76,7 +77,8 @@ namespace engine
         World * world;
 		Vec2 myPoint;
 		short myFrame;
-        float speedX;
+		float speedX;
+		float speedY;
         bool isOnce;
         dragonBones::CCArmatureDisplay * cont;
 		//std::map<std::string, MovieClipSub*> mcs;
@@ -112,6 +114,12 @@ namespace engine
 
 		inline Vec2 convertToWorldSpace(Vec2 pos) { return BaseNode::convertToWorldSpace(pos); };
 		inline Vec2 localToGlobal(Vec2 pos) { return this->convertToWorldSpace(pos); };
+		inline Vec2 globalToLocal(Vec2 pos) { return this->convertToNodeSpaceAR(pos); };
+		
+		virtual float getWidth();
+		virtual float getHeight();
+		virtual   void setWidth(float w);
+		virtual   void setHeight(float h);
 
         //virtual void addMCbs(MovieClipSubBase * mcs);
         //virtual void remove(MovieClipSubBase * ms);
@@ -128,7 +136,7 @@ namespace engine
 
 	};
 	
-    struct MovieClipSub :public virtual MC, MovieClipSubBase
+	struct MovieClipSub :public virtual MC, MovieClipSubBase, public   BaseFuns
 	{
         dragonBones::Armature* arm;
 		MovieClipSub(MC *mc, dragonBones::Slot * slot, string defAniName = "");
@@ -152,14 +160,34 @@ namespace engine
 		inline float getScale() { return getDisplayNode()->getScale(); };
 		inline float getScaleX() { return getDisplayNode()->getScaleX(); };
 		inline float getScaleY() { return getDisplayNode()->getScaleY(); };
+
+		inline void setScaleX(float s) {   getDisplayNode()->setScaleX(s); };
+		inline void setScaleY(float s) { getDisplayNode()->setScaleY(s); };
+		inline void setScale(float s) { getDisplayNode()->setScale(s); };
+		
+		inline float getRotation(){ return getDisplayNode()->getRotation(); };
+		inline void 	setRotation(float r){return getDisplayNode()->setRotation(r); };
+
 		inline Vec2 convertToWorldSpace(Vec2 pos) { return getDisplayNode()->convertToWorldSpace(pos); };
 		inline Vec2 localToGlobal(Vec2 pos) { return getDisplayNode()->convertToWorldSpace(pos); };
-        virtual void gotoAndStop(int cf, string aniName = "");
+		inline Vec2 globalToLocal(Vec2 pos) { return getDisplayNode()->convertToNodeSpaceAR(pos); };
+		virtual void gotoAndStop(int cf, string aniName = "");
 		inline virtual void setAlpha(float op) { BaseNode::setAlpha(getDisplayNode(), op); };
 		inline virtual float getAlpha() { return  BaseNode::getAlpha(getDisplayNode()); };
+
+
+		virtual float getWidth();
+		virtual float getHeight();
+		virtual   void setWidth(float w);
+		virtual   void setHeight(float h);
+
 	};
 
-    struct MCText :public ui::Text, MovieClipSubBase
+#define DEFINE_MCSUB(clzName,member) struct clzName :public MovieClipSub { \
+	inline clzName(MC *mc, string solt) :MovieClipSub(mc, slot){}; member };
+
+
+	struct MCText :public ui::Text, MovieClipSubBase, public   BaseFuns
 	{
 		MCText(MC * mc, string slotName);
 		inline virtual void setAlpha(float op) { BaseNode::setAlpha(this, op); };
@@ -167,7 +195,7 @@ namespace engine
 		virtual void setVisible(bool v);
 		virtual bool reinit();
 	};
-    struct MCCase :public BaseNode, MovieClipSubBase
+	struct MCCase :public BaseNode, MovieClipSubBase 
     {
         bool _draw;
         MCCase(MC * mc, string slotName, bool draw = false);
@@ -175,8 +203,9 @@ namespace engine
 		inline virtual float getAlpha() {return BaseNode::getAlpha(this); };
 		virtual void setVisible(bool v);
 		virtual bool reinit();
-    };
-	struct MCSprite :public BaseSprite, MovieClipSubBase
+		inline void stop(){};
+	};
+	struct MCSprite :public BaseSprite, MovieClipSubBase 
 	{
 		bool initSprite;
 		MCSprite(MC * mc, string slotName, string file);
@@ -186,8 +215,9 @@ namespace engine
 		virtual bool reinit();
 		inline virtual void setAlpha(float op) { BaseNode::setAlpha(this, op); };
 		inline virtual float getAlpha() { return  BaseNode::getAlpha(this); };
+		inline void stop(){};
 	};
-	struct MCMask :public BaseNode, MovieClipSubBase
+	struct MCMask :public BaseNode, MovieClipSubBase 
 	{
 		cocos2d::Sprite * mask;
 		MCMask(MC * mc, string slotName);

@@ -30,6 +30,8 @@ namespace engine
             cocos2d::Point autoguidesObject_pt;//:Point;
             float autoguidesObjectWidth;//:Number;
             float autoguidesObjectHeight;//:Number;  
+			BaseTowerMenu();
+			virtual inline void closeMenu(bool param1 = false){};
         };
 
         class TowerMenu :public BaseTowerMenu
@@ -43,7 +45,7 @@ namespace engine
             //public var tempObject4:Object;
             TowerMenu_mc * container;// : TowerMenu_mc;
             TowerRadius_mc *  towerRadius1;// :MovieClip;
-            MovieClip *  exampleUltraTower;// :MovieClip;
+			TowerBase_mc *  exampleUltraTower;// :MovieClip;
             bool openUltraSection;// :Boolean;
             TowerMenuHint_mc* hint;// : TowerMenuHint_mc;
             TowerMenuHint_mc* hint1;// : TowerMenuHint_mc;
@@ -85,7 +87,7 @@ namespace engine
 
             int fastBuyUltraScan(string param1);
 
-            void  closeMenu(bool param1 = false);
+           virtual  void  closeMenu(bool param1 = false);
 
             void kill();
 

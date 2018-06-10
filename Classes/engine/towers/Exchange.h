@@ -2,7 +2,7 @@
 #define ENGINE_TOWERS_EXCHANGE_H
 #include "BaseHeaders.h"
 #include "engine/towers/Tower.h" 
-#include "engine/mc/mc.h" 
+ 
 
 namespace engine
 {
@@ -18,10 +18,11 @@ namespace engine
         };
         class Exchange : public BaseNode
         {
+		public:
             int i, j;
             //public var tempObject:Object;
             //public var tempObject1:Object;
-            MovieClip* container;
+			Exchange1_mc* container;
             MovieClip* graphicAtMyTower;
             bool dead;
             World* world;

@@ -4,6 +4,7 @@
 
 #include "Level.h"
 namespace engine{
+	
 	class Level1_mc : public Level{
 	public:
 		  
@@ -12,12 +13,12 @@ namespace engine{
         BaseNode * decorationCase;
 		MovieClip * flag1;
 		MovieClip * flag2;
-		MovieClip * place1;
-		MovieClip * place2;
-		MovieClip * place3;
-		MovieClip * place4;
-		MovieClip * place5;
-		MovieClip * pointer1;
+		BuildTowerPlace * place1;
+		BuildTowerPlace * place2;
+		BuildTowerPlace * place3;
+		BuildTowerPlace * place4;
+		BuildTowerPlace * place5;
+		LevelPointer * pointer1;
 
 		
 		Level1_mc();

@@ -5,9 +5,7 @@
 
 namespace engine
 {
-	namespace units
-	{
-		NewEnemy_mc::NewEnemy_mc() :MovieClip("unit/","NewEnemy_mc","NewEnemy_mc")
+		NewEnemy_mc::NewEnemy_mc() :MovieClip("unit/", "NewEnemy_mc", "NewEnemy_mc"), mouseStatus(0)
 		{
 			newEnemyCase = this->createCase("newEnemyCase");
 		};
@@ -15,6 +13,8 @@ namespace engine
 		NewElement_mc::NewElement_mc(){
 			newElementCase = this->createCase("newEnemyCase");
 		};
+	namespace units
+	{
 
 
 		bool Unit::init() //public function init(event:Event) : void event:Event

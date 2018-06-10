@@ -16,7 +16,7 @@ namespace engine
 		sphere4 = this->createMovieClipSub("sphere4");
 		sphere4Cont = sphere4->createMovieClipSub("cont");
 	};
-    GetSphere::GetSphere(string param1 ) :counter(0), myRadius(0), myDamage(0), fireCount(0), iceCount(0), stoneCount(0), levinCount(0)
+	GetSphere::GetSphere(string param1) :counter(0), myRadius(0), myDamage(0), fireCount(0), iceCount(0), stoneCount(0), levinCount(0), towerArrow(0)
     {
         //this->listOfStack = [];
         //this->addEventListener(Event.ADDED_TO_STAGE, this->init);
@@ -30,9 +30,10 @@ namespace engine
 		this->world = Main::mainClass->worldClass;
 		if(this->type == "holder")
 		{
-			this->container = new GetSphere_mc();
-			this->container->stop();
-			this->container->cont->stop();
+			GetSphere_mc * container = new GetSphere_mc();
+			this->container = container;
+			container->stop();
+			container->cont->stop();
 			container->sphere1->stop();
 			container->sphere2->stop();
 			container->sphere3->stop();
@@ -51,8 +52,8 @@ namespace engine
 		{
 			GetAll_mc * container = new GetAll_mc();
 			this->container = container;
-			this->container->stop();
-			this->container->cross->stop();
+			container->stop();
+			//container->cross->stop();
 			container->cross->setVisible(false);
 		}
 		this->addChild(this->container);
@@ -117,7 +118,7 @@ namespace engine
     {
         if (this->type == "holder")
         {
-			if(dynamic_cast<GetSphere_mc*>(this->container))
+ 			if (dynamic_cast<GetSphere_mc*>(this->container))
             {
 				GetSphere_mc* container = (GetSphere_mc*)this->container;
                 if (container->sphere1->isVisible())
@@ -164,25 +165,25 @@ namespace engine
 						container->sphere4->gotoAndStop(1);
                     }
                 }
-            }
-            else if (container->cont->currentFrame < this->container->cont.totalFrames)
-            {
-                this->container->cont->gotoAndStop((this->container->cont->currentFrame + 1));
-            }
-            else
-            {
-                this->container->cont->gotoAndStop(1);
+				if (container->cont->currentFrame < container->cont->totalFrames)
+				{
+					container->cont->gotoAndStop((container->cont->currentFrame + 1));
+				}
+				else
+				{
+					container->cont->gotoAndStop(1);
+				}
             }
         }
         else if (this->type == "getAll")
         {
-            if (this->container->currentFrame < this->container->totalFrames)
+            if (container->currentFrame < container->totalFrames)
             {
-                this->container->gotoAndStop((this->container->currentFrame + 1));
+                container->gotoAndStop((container->currentFrame + 1));
             }
             else
             {
-                this->container->gotoAndStop(1);
+                container->gotoAndStop(1);
             }
         }
         if (this->arrow->isVisible())
@@ -212,13 +213,13 @@ namespace engine
             if (this->containerChange->getOpacity() > 0)
             {
                 this->containerChange->setOpacity(this->containerChange->getOpacity() - 0.1);
-				this->container->setOpacity(this->container->getOpacity() *(1+ 0.1) );
+				container->setOpacity(container->getOpacity() *(1+ 0.1) );
             }
             else
             {
                 this->removeChild(this->containerChange);
                 this->containerChange = NULL;
-                this->container->setOpacity(255);
+                container->setOpacity(255);
             }
         }
         if (this->world->getSphere == this)
@@ -229,9 +230,9 @@ namespace engine
             {
                 if (this->radius->currentFrame == 1)
                 {
-                    //this->radius->rotation++;
+					this->radius->setRotation(this->radius->getRotation()+1);
                 }
-				if(this->radius->container->currentFrame < this->radius->cont.totalFrames)
+				if(this->radius->cont->currentFrame < this->radius->cont->totalFrames)
                 {
 					this->radius->cont->gotoAndStop((this->radius->cont->currentFrame + 1));
                 }
@@ -413,9 +414,9 @@ namespace engine
                             this->towerArrow->mouseEnabled = false;
                             this->towerArrow->myTower->addChild(this->towerArrow);
                         }
-                        if (this->container->currentFrame == 2)
+                        if (container->currentFrame == 2)
                         {
-                            this->container->gotoAndStop(1);
+                            container->gotoAndStop(1);
                         }
                     }
                     else
@@ -425,14 +426,15 @@ namespace engine
                             this->towerArrow->myTower->removeChild(this->towerArrow);
                             this->towerArrow = NULL;
                         }
-                        if (this->container->currentFrame == 1)
+                        if (container->currentFrame == 1)
                         {
-                            this->container->gotoAndStop(2);
+                            container->gotoAndStop(2);
                         }
                     }
                 }
                 else if (this->type == "getAll")
                 {
+					GetAll_mc * container = ISTYPE(GetAll_mc , this->container);
                     if (param1->target->buttonMode && param1->target->parent->parent->spheresManage("scan") == 4)
                     {
                         if (!this->towerArrow)
@@ -444,9 +446,9 @@ namespace engine
                             this->towerArrow->mouseEnabled = false;
                             this->towerArrow->myTower->addChild(this->towerArrow);
                         }
-                        if (this->container->cross->isVisible())
+                        if (container->cross->isVisible())
                         {
-                            this->container->cross->setVisible(false);
+                            container->cross->setVisible(false);
                         }
                     }
                     else
@@ -456,9 +458,9 @@ namespace engine
                             this->towerArrow->myTower->removeChild(this->towerArrow);
                             this->towerArrow = NULL;
                         }
-                        if (this->container->cross->isVisible())
+                        if (container->cross->isVisible())
                         {
-                            this->container->cross->setVisible(true);
+                            container->cross->setVisible(true);
                         }
                     }
                 }
@@ -473,16 +475,17 @@ namespace engine
             }
             if (this->type == "holder")
             {
-                if (this->container->currentFrame == 2)
+                if (container->currentFrame == 2)
                 {
-                    this->container->gotoAndStop(1);
+                    container->gotoAndStop(1);
                 }
             }
             else if (this->type == "getAll")
             {
-                if (this->container->cross->isVisible())
+				GetAll_mc * container = ISTYPE(GetAll_mc, this->container);
+				if (container->cross->isVisible())
                 {
-                    this->container->cross->setVisible(false);
+                    container->cross->setVisible(false);
                 }
             }
             if (!this->world->towerMenu && !this->world->ultraTowerMenu)
@@ -495,19 +498,20 @@ namespace engine
             }
             else
             {
+				BaseTowerMenu *tempObject=NULL;
                 if (this->world->towerMenu)
                 {
-                    this->tempObject = this->world->towerMenu;
+                    tempObject = this->world->towerMenu;
                 }
                 else if (this->world->ultraTowerMenu)
                 {
-                    this->tempObject = this->world->ultraTowerMenu;
+                    tempObject = this->world->ultraTowerMenu;
                 }
                 if (!this->radius->isVisible() && tempObject->myTower->this_pt.distance(cocos2d::Point(this->world->mouseX, this->world->mouseY)) > 86)
                 {
                     this->radius->setVisible(true);
                     this->arrow->setVisible(true);
-                    this->tempObject->closeMenu();
+                    tempObject->closeMenu();
                 }
             }
             if (param1->target->name == "road")
@@ -515,7 +519,7 @@ namespace engine
                 if (this->radius->currentFrame == 2)
                 {
                     this->radius->gotoAndStop(1);
-                    this->arrow->alpha = 0;
+                    this->arrow->setAlpha(0);
                     this->radius->cont->stop();
                     if (this->radius->cont1)
                     {
@@ -704,7 +708,8 @@ namespace engine
         }
         else if (param1->target->name == "towerCase" && param1->target->buttonMode)
         {
-            this->tempObject = param1->target->parent->parent;
+			Tower * tempObject = param1->target->parent->parent;
+					int tempObject1 = 0;
             if (this->type == "holder")
             {
                 container->sphere1->setVisible(false);
@@ -716,8 +721,8 @@ namespace engine
                 {
                     if (this->listOfStack[this->i] == "fire")
                     {
-                        this->tempObject1 = this->tempObject->spheresManage("push", "fire", 1);
-                        if (this->tempObject1 == 0)
+                          tempObject1 = tempObject->spheresManage("push", "fire", 1);
+                        if (tempObject1 == 0)
                         {
                             this->fireCount--;
                             this->listOfStack[this->i] = "none";
@@ -725,8 +730,8 @@ namespace engine
                     }
                     else if (this->listOfStack[this->i] == "ice")
                     {
-                        this->tempObject1 = this->tempObject->spheresManage("push", "ice", 1);
-                        if (this->tempObject1 == 0)
+                         tempObject1 = tempObject->spheresManage("push", "ice", 1);
+                        if (tempObject1 == 0)
                         {
                             this->iceCount--;
                             this->listOfStack[this->i] = "none";
@@ -734,8 +739,8 @@ namespace engine
                     }
                     else if (this->listOfStack[this->i] == "stone")
                     {
-                        this->tempObject1 = this->tempObject->spheresManage("push", "stone", 1);
-                        if (this->tempObject1 == 0)
+                        tempObject1 = tempObject->spheresManage("push", "stone", 1);
+                        if (tempObject1 == 0)
                         {
                             this->stoneCount--;
                             this->listOfStack[this->i] = "none";
@@ -743,8 +748,8 @@ namespace engine
                     }
                     else if (this->listOfStack[this->i] == "levin")
                     {
-                        this->tempObject1 = this->tempObject->spheresManage("push", "levin", 1);
-                        if (this->tempObject1 == 0)
+                        tempObject1 = tempObject->spheresManage("push", "levin", 1);
+                        if (tempObject1 == 0)
                         {
                             this->levinCount--;
                             this->listOfStack[this->i] = "none";
@@ -773,8 +778,8 @@ namespace engine
             else if (this->type == "getAll")
             {
                 this->getAllCount --;
-                this->tempObject1 = this->tempObject->spheresManage("push", "getAll", 1);
-                this->getAllCount = this->getAllCount + this->tempObject1;
+                tempObject1 = tempObject->spheresManage("push", "getAll", 1);
+                this->getAllCount = this->getAllCount + tempObject1;
                 if (this->getAllCount == 0)
                 {
                     this->kill();
@@ -864,15 +869,16 @@ namespace engine
         {
             if (param1->target->parent->currentFrame == 2)
             {
+				BaseTowerMenu *tempObject = NULL;
                 if (this->listOfStack.size() < 4)
                 {
                     if (this->world->towerMenu)
                     {
-                        this->tempObject = this->world->towerMenu;
+                        tempObject = this->world->towerMenu;
                     }
                     else if (this->world->ultraTowerMenu)
                     {
-                        this->tempObject = this->world->ultraTowerMenu;
+                        tempObject = this->world->ultraTowerMenu;
                     }
                     if (param1->target->parent->sphereAnima->isVisible())
                     {
@@ -880,34 +886,34 @@ namespace engine
                         {
                             if (param1->target->parent->sphereAnima->currentFrame == 1)
                             {
-                                this->tempObject->myTower->towerGetSphereManage("get", "fire");
+                                tempObject->myTower->towerGetSphereManage("get", "fire");
                                 if (!this->world->ultraTowerMenu)
                                 {
-                                    this->tempObject->spheresMonitor();
+									ISTYPE(TowerMenu,tempObject)->spheresMonitor();
                                 }
                             }
                             else if (param1->target->parent->sphereAnima->currentFrame == 2)
                             {
-                                this->tempObject->myTower->towerGetSphereManage("get", "ice");
+                                tempObject->myTower->towerGetSphereManage("get", "ice");
                                 if (!this->world->ultraTowerMenu)
                                 {
-                                    this->tempObject->spheresMonitor();
+									ISTYPE(TowerMenu, tempObject)->spheresMonitor();
                                 }
                             }
                             else if (param1->target->parent->sphereAnima->currentFrame == 3)
                             {
-                                this->tempObject->myTower->towerGetSphereManage("get", "stone");
+                                tempObject->myTower->towerGetSphereManage("get", "stone");
                                 if (!this->world->ultraTowerMenu)
                                 {
-                                    this->tempObject->spheresMonitor();
+									ISTYPE(TowerMenu, tempObject)->spheresMonitor();
                                 }
                             }
                             else if (param1->target->parent->sphereAnima->currentFrame == 4)
                             {
-                                this->tempObject->myTower->towerGetSphereManage("get", "levin");
+                                tempObject->myTower->towerGetSphereManage("get", "levin");
                                 if (!this->world->ultraTowerMenu)
                                 {
-                                    this->tempObject->spheresMonitor();
+									ISTYPE(TowerMenu, tempObject)->spheresMonitor();
                                 }
                             }
                         }
@@ -925,8 +931,8 @@ namespace engine
         {
             if (this->radius->currentFrame == 1)
             {
-                this->tempObject = new CastSphere();
-                this->world->addChild(this->tempObject);
+				CastSphere * tempObject = new CastSphere();
+                this->world->addChild(tempObject);
                 this->kill();
             }
             else if (param1->target is TowerMenu_mc || param1->target->parent is TowerMenu_mc || param1->target->parent.parent is TowerMenu_mc 
@@ -957,27 +963,27 @@ namespace engine
         if (this->fireCount > 0 && this->iceCount == 0 && this->stoneCount == 0 && this->levinCount == 0)
         {
             this->owner = this->world->worldInterface->container->fireSphere;
-            this->ownerPoint = this->world->worldInterface->container->fireSphere->myPoint;
+            this->ownerPoint = this->world->worldInterface->container->fireSphereMyPoint;
         }
         else if (this->fireCount == 0 && this->iceCount > 0 && this->stoneCount == 0 && this->levinCount == 0)
         {
             this->owner = this->world->worldInterface->container->iceSphere;
-            this->ownerPoint = this->world->worldInterface->container->iceSphere->myPoint;
+            this->ownerPoint = this->world->worldInterface->container->iceSphereMyPoint;
         }
         else if (this->fireCount == 0 && this->iceCount == 0 && this->stoneCount > 0 && this->levinCount == 0)
         {
             this->owner = this->world->worldInterface->container->stoneSphere;
-			this->ownerPoint = this->world->worldInterface->container->stoneSphere->myPoint;
+			this->ownerPoint = this->world->worldInterface->container->stoneSphereMyPoint;
         }
         else if (this->fireCount == 0 && this->iceCount == 0 && this->stoneCount == 0 && this->levinCount > 0)
         {
             this->owner = this->world->worldInterface->container->levinSphere;
-			this->ownerPoint = this->world->worldInterface->container->levinSphere->myPoint;
+			this->ownerPoint = this->world->worldInterface->container->levinSphereMyPoint;
         }
         else
         {
             this->owner = this->world->worldInterface->container->getAll;
-			this->ownerPoint = this->world->worldInterface->container->getAll->myPoint;
+			this->ownerPoint = this->world->worldInterface->container->getAllMyPoint;
         }
         this->retrieveGetSphere();
         return;
@@ -988,6 +994,7 @@ namespace engine
         {
             if (this->type == "holder")
             {
+				GetSphere_mc *container=ISTYPE(GetSphere_mc, this->container);
                 if (this->listOfStack.size() < 4)
                 {
                     this->listOfStack.push(param2);
@@ -1114,12 +1121,13 @@ namespace engine
                         this->containerChange = this->container;
                         this->listOfStack.clear();// = [];
                         this->container = new GetAll_mc();
-                        this->container->stop();
-                        this->container->cross->stop();
-                        std::setText(this->container->numTXT , this->getAllCount);
-                        //this->container->numTXT.text = this->getAllCount;
-                        this->container->cross->setVisible(false);
-                        this->container->alpha = 0;
+						GetAll_mc *container = ISTYPE(GetAll_mc, this->container);
+                        container->stop();
+                        //container->cross->stop();
+                        std::setText(container->numTXT , this->getAllCount);
+                        //container->numTXT.text = this->getAllCount;
+                        container->cross->setVisible(false);
+                        container->setAlpha(0);
                         this->addChild(this->container);
                     }
                 }
@@ -1128,13 +1136,14 @@ namespace engine
             {
                 if (this->getAllCount < 3)
                 {
-                    (this->getAllCount + 1);
-                    this->container->numTXT.text = this->getAllCount;
+					GetAll_mc *container = ISTYPE(GetAll_mc, this->container);
+					this->getAllCount++;
+                    std::setText(container->numTXT, this->getAllCount);
                 }
             }
             if (this->fireCount > 0 && this->iceCount == 0 && this->stoneCount == 0 && this->levinCount == 0)
             {
-                if (this->radius && !(this->radius is RadiusFire_mc))
+				if (this->radius && !ISTYPE(RadiusFire_mc, this->radius))
                 {
                     this->removeChild(this->radius);
                     this->radius = NULL;
@@ -1143,20 +1152,20 @@ namespace engine
                 {
                     this->radius = new RadiusFire_mc();
                     this->radius->gotoAndStop(2);
-                    this->arrow->alpha = 1;
+                    this->arrow->setAlpha(1);
                     this->radius->cont->stop(); 
-                    this->radius->height = Main::mainClass->readXMLClass.listOfMoveFireXML[0] * 2;
-                    this->radius->width = Main::mainClass->readXMLClass.listOfMoveFireXML[0] * 2;
+					this->radius->setHeight(Main::mainClass->readXMLClass.listOfMoveFireXML[0] * 2);
+					this->radius->setWidth(Main::mainClass->readXMLClass.listOfMoveFireXML[0] * 2);
                     this->radius->setVisible(false);
                     this->arrow->setVisible(false);
-                    this->addChildAt(this->radius, 0);
+                    this->addChild(this->radius, 0);
                 }
                 this->myRadius = Main::mainClass->readXMLClass.listOfMoveFireXML[0];
                 this->myDamage = Main::mainClass->readXMLClass.listOfMoveFireXML[this->fireCount];
             }
             else if (this->fireCount == 0 && this->iceCount > 0 && this->stoneCount == 0 && this->levinCount == 0)
             {
-                if (this->radius && !(this->radius is RadiusIce_mc))
+				if (this->radius && !(ISTYPE(RadiusIce_mc, this->radius)))
                 {
                     this->removeChild(this->radius);
                     this->radius = NULL;
@@ -1165,57 +1174,57 @@ namespace engine
                 {
                     this->radius = new RadiusIce_mc();
                     this->radius->gotoAndStop(2);
-                    this->arrow->alpha = 1;
+					this->arrow->setAlpha(1);
                     this->radius->cont->stop(); 
-                    this->radius->height = Main::mainClass->readXMLClass.listOfMoveIceXML[0] * 2;
-                    this->radius->width = Main::mainClass->readXMLClass.listOfMoveIceXML[0] * 2;
+					this->radius->setHeight(Main::mainClass->readXMLClass.listOfMoveIceXML[0] * 2);
+					this->radius->setWidth(Main::mainClass->readXMLClass.listOfMoveIceXML[0] * 2);
                     this->radius->setVisible(false);
                     this->arrow->setVisible(false);
-                    this->addChildAt(this->radius, 0);
+                    this->addChild(this->radius, 0);
                 }
                 this->myRadius = Main::mainClass->readXMLClass.listOfMoveIceXML[0];
                 this->myDamage = Main::mainClass->readXMLClass.listOfMoveIceXML[this->iceCount];
             }
             else if (this->fireCount == 0 && this->iceCount == 0 && this->stoneCount > 0 && this->levinCount == 0)
             {
-                if (this->radius && !(this->radius is RadiusStone_mc))
+				if (this->radius && !ISTYPE(RadiusStone_mc, this->radius)  )
                 {
                     this->removeChild(this->radius);
-                    this->radius = null;
+                    this->radius = NULL;
                 }
                 if (!this->radius)
                 {
                     this->radius = new RadiusStone_mc();
                     this->radius->gotoAndStop(2);
-                    this->arrow->alpha = 1;
+					this->arrow->setAlpha(1);
                     this->radius->cont->stop(); 
-                    this->radius->height = Main::mainClass->readXMLClass.listOfMoveStoneXML[0] * 2;
-                    this->radius->width = Main::mainClass->readXMLClass.listOfMoveStoneXML[0] * 2;
+					this->radius->setHeight( Main::mainClass->readXMLClass.listOfMoveStoneXML[0] * 2);
+					this->radius->setWidth( Main::mainClass->readXMLClass.listOfMoveStoneXML[0] * 2);
                     this->radius->setVisible(false);
                     this->arrow->setVisible(false);
-                    this->addChildAt(this->radius, 0);
+                    this->addChild(this->radius, 0);
                 }
                 this->myRadius = Main::mainClass->readXMLClass.listOfMoveStoneXML[0];
                 this->myDamage = Main::mainClass->readXMLClass.listOfMoveStoneXML[this->stoneCount];
             }
             else if (this->fireCount == 0 && this->iceCount == 0 && this->stoneCount == 0 && this->levinCount > 0)
             {
-                if (this->radius && !(this->radius is RadiusLevin_mc))
+				if (this->radius && !ISTYPE(RadiusLevin_mc, this->radius) )
                 {
                     this->removeChild(this->radius);
-                    this->radius = null;
+                    this->radius = NULL;
                 }
                 if (!this->radius)
                 {
                     this->radius = new RadiusLevin_mc();
                     this->radius->gotoAndStop(2);
-                    this->arrow->alpha = 1;
+					this->arrow->setAlpha(1);
                     this->radius->cont->stop(); 
-                    this->radius->height = Main::mainClass->readXMLClass.listOfMoveLevinXML[0] * 2;
-                    this->radius->width = Main::mainClass->readXMLClass.listOfMoveLevinXML[0] * 2;
+                    this->radius->setHeight( Main::mainClass->readXMLClass.listOfMoveLevinXML[0] * 2);
+                    this->radius->setWidth(  Main::mainClass->readXMLClass.listOfMoveLevinXML[0] * 2);
                     this->radius->setVisible(false);
                     this->arrow->setVisible(false);
-                    this->addChildAt(this->radius, 0);
+                    this->addChild(this->radius, 0);
                 }
                 this->myRadius = Main::mainClass->readXMLClass.listOfMoveLevinXML[0];
                 this->myDamage = Main::mainClass->readXMLClass.listOfMoveLevinXML[this->levinCount];
@@ -1225,13 +1234,13 @@ namespace engine
                 if (this->radius)
                 {
                     this->removeChild(this->radius);
-                    this->radius = null;
+                    this->radius = NULL;
                 }
                 if (!this->radius)
                 {
                     this->radius = new RadiusGetAll_mc();
                     this->radius->gotoAndStop(2);
-                    this->arrow->alpha = 1;
+					this->arrow->setAlpha(1);
                     this->radius->cont->stop();
                     if (this->radius->cont1)
                     {
@@ -1337,11 +1346,11 @@ namespace engine
                         this->myDamage = Main::mainClass->readXMLClass.getAllMultiply2;
                     }
                 } 
-                this->radius->height = this->myRadius * 2;
-                this->radius->width = this->myRadius * 2;
+                this->radius->setHeight(this->myRadius * 2);
+                this->radius->setWidth( this->myRadius * 2);
                 this->radius->setVisible(false);
                 this->arrow->setVisible(false);
-                this->addChildAt(this->radius, 0);
+                this->addChild(this->radius, 0);
             }
         }
         return;
@@ -1359,60 +1368,60 @@ namespace engine
             {
                 this->removeChild(this->container);
                 this->container = new MoveFire_mc();
-                this->container->stop();
-                this->container->cont->stop();
-                std::setText(this->container->numTXT, this->fireCount);
-                //this->container->numTXT.text = this->fireCount;
+                container->stop();
+                container->cont->stop();
+                std::setText(container->numTXT, this->fireCount);
+                //container->numTXT.text = this->fireCount;
                 if (this->fireCount == 1)
                 {
-                    this->container->numTXT->setVisible(false);
+                    container->numTXT->setVisible(false);
                 }
-                this->container->setScale(0.6);
+                container->setScale(0.6);
                 this->addChild(this->container);
             }
             else if (this->fireCount == 0 && this->iceCount > 0 && this->stoneCount == 0 && this->levinCount == 0)
             {
                 this->removeChild(this->container);
                 this->container = new MoveIce_mc();
-                this->container->stop();
-                this->container->cont->stop();
-                std::setText(this->container->numTXT, this->iceCount);
-                //this->container->numTXT.text = this->iceCount;
+                container->stop();
+                container->cont->stop();
+                std::setText(container->numTXT, this->iceCount);
+                //container->numTXT.text = this->iceCount;
                 if (this->iceCount == 1)
                 {
-                    this->container->numTXT->setVisible(false);
+                    container->numTXT->setVisible(false);
                 }
-                this->container->setScale(0.6);
+                container->setScale(0.6);
                 this->addChild(this->container);
             }
             else if (this->fireCount == 0 && this->iceCount == 0 && this->stoneCount > 0 && this->levinCount == 0)
             {
                 this->removeChild(this->container);
                 this->container = new MoveStone_mc();
-                this->container->stop();
-                this->container->cont->stop();
-                std::setText(this->container->numTXT, this->stoneCount);
-                //this->container->numTXT.text = this->stoneCount;
+                container->stop();
+                container->cont->stop();
+                std::setText(container->numTXT, this->stoneCount);
+                //container->numTXT.text = this->stoneCount;
                 if (this->stoneCount == 1)
                 {
-                    this->container->numTXT->setVisible(false);
+                    container->numTXT->setVisible(false);
                 }
-                this->container->setScale(0.6);
+                container->setScale(0.6);
                 this->addChild(this->container);
             }
             else if (this->fireCount == 0 && this->iceCount == 0 && this->stoneCount == 0 && this->levinCount > 0)
             {
                 this->removeChild(this->container);
                 this->container = new MoveLevin_mc();
-                this->container->stop();
-                this->container->cont->stop();
-                std::setText(this->container->numTXT, this->levinCount);
-                //this->container->numTXT.text = this->levinCount;
+                container->stop();
+                container->cont->stop();
+                std::setText(container->numTXT, this->levinCount);
+                //container->numTXT.text = this->levinCount;
                 if (this->levinCount == 1)
                 {
-                    this->container->numTXT->setVisible(false);
+                    container->numTXT->setVisible(false);
                 }
-                this->container->setScale(0.6);
+                container->setScale(0.6);
                 this->addChild(this->container);
             }
             else if (this->ownerType == "archive")

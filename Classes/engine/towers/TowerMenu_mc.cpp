@@ -38,26 +38,36 @@ namespace engine
 			btnTowerUpgr4CostTXT = btnTowerUpgr4->createText("costTXT");
 			btnUpgradeMenu = this->createMovieClipSub("btnUpgradeMenu");
 			btnUpgradeMenuBtnUpgradeMenuCase = btnUpgradeMenu->createCase("btnUpgradeMenuCase");
+			btnUpgradeMenuBtnUpgradeMenuLOCKCase = btnUpgradeMenu->createCase("btnUpgradeMenuLOCKCase");
+			btnUpgradeMenuCostTXT = btnUpgradeMenu->createText("costTXT");
+
 			cont1 = this->createMovieClipSub("cont1 ");
 			cont2 = this->createMovieClipSub("cont2 ");
 			fastBuyUltraCont = this->createMovieClipSub("fastBuyUltraCont");
 			fastBuyUltraContBtnFastBuyUltra = fastBuyUltraCont->createMovieClipSub("btnFastBuyUltra");
 			fastBuyUltraContBtnFastBuyUltraCostTXT = fastBuyUltraContBtnFastBuyUltra->createText("costTXT");
 			fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase = fastBuyUltraContBtnFastBuyUltra->createCase("fastBuyUltraCase");
+			fastBuyUltraContIndicator1 = fastBuyUltraCont->createMovieClipSub("indicator1");
+			fastBuyUltraContIndicator2 = fastBuyUltraCont->createMovieClipSub("indicator2");
+			fastBuyUltraContIndicator3 = fastBuyUltraCont->createMovieClipSub("indicator3");
+			fastBuyUltraContIndicator4 = fastBuyUltraCont->createMovieClipSub("indicator4");
+
+
 			sphereSlot1 = this->createMovieClipSub("sphereSlot1");
-			sphereSlot1SphereSlotCase = sphereSlot1->createMovieClipSub("sphereSlotCase");
+			sphereSlot1SphereSlotCase = sphereSlot1->createCase("sphereSlotCase");
 			sphereSlot1SphereAnima = sphereSlot1->createMovieClip("sphereAnima", "tower/", "TowerMenuSphere_mc", "TowerMenuSphere_mc");
 			sphereSlot1SphereAnimaCont = sphereSlot1SphereAnima->createMovieClipSub("cont");
 			sphereSlot2 = this->createMovieClipSub("sphereSlot2");
-			sphereSlot2SphereSlotCase = sphereSlot2->createMovieClipSub("sphereSlotCase");
+			sphereSlot2SphereSlotCase = sphereSlot2->createCase("sphereSlotCase");
 			sphereSlot2SphereAnima = sphereSlot2->createMovieClip("sphereAnima", "tower/", "TowerMenuSphere_mc", "TowerMenuSphere_mc");
 			sphereSlot2SphereAnimaCont = sphereSlot2SphereAnima->createMovieClipSub("cont");
 			sphereSlot3 = this->createMovieClipSub("sphereSlot3");
-			sphereSlot3SphereSlotCase = sphereSlot3->createMovieClipSub("sphereSlotCase");
+			sphereSlot3SphereSlotCase = sphereSlot3->createCase("sphereSlotCase");
 			sphereSlot3SphereAnima = sphereSlot3->createMovieClip("sphereAnima", "tower/", "TowerMenuSphere_mc", "TowerMenuSphere_mc");
 			sphereSlot3SphereAnimaCont = sphereSlot3SphereAnima->createMovieClipSub("cont");
 			sphereSlot4 = this->createMovieClipSub("sphereSlot4");
-			sphereSlot4SphereSlotCase = sphereSlot4->createMovieClipSub("sphereSlotCase");
+			sphereSlot4SphereSlotCase = sphereSlot4->createCase("sphereSlotCase");
+
 			sphereSlot4SphereAnima = sphereSlot4->createMovieClip("sphereAnima", "tower/", "TowerMenuSphere_mc", "TowerMenuSphere_mc");
 			sphereSlot4SphereAnimaCont = sphereSlot4SphereAnima->createMovieClipSub("cont");
 

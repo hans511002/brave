@@ -10,13 +10,11 @@ namespace engine
 	class World;
 	//class WaveData;
 	
-	namespace units
-	{
-		class Unit;
 		struct NewEnemy_mc :public MovieClip
 		{
 			MCCase* newEnemyCase;
 			int typeUnit;
+			int mouseStatus;
 			NewEnemy_mc();
 		};
 		struct NewElement_mc :public MovieClip
@@ -24,6 +22,9 @@ namespace engine
 			MCCase *newElementCase;
 			NewElement_mc();
 		};
+	namespace units
+	{
+		class Unit;
 		struct Roadsign_mc : public MovieClip
 		{
 			float myPath;
@@ -145,7 +146,7 @@ namespace engine
 			int newEnemyCounter;//20
 			bool atStaged;
 
-
+			int blockTowerRadius;//22
 
 			Unit() :direction("none"), world(NULL), road(0), way(0), path(0), finishPath(0), stopAnima(false), typeUnit(0), health(0), healthMax(0), speedK(0), speedKSave(0),
 				gold(0), fireDamageK(0), iceDamageK(0), stoneDamageK(0), levinDamageK(0), penalty(0), dead(false), readyDamage(true),
@@ -155,7 +156,7 @@ namespace engine
 				speedPlusFlag(false), speedPlusCounter(0), speedPlusValue(0), airGo(0), airWaitTimer(0), airSpacing(0), airPower(0), airResist(0), dampingAir(0), traversedPath(0),
 				icemanFlag(false), icemanCounter(0), icemanResist(0), fireEffectFlag(false), fireEffectCounter(0), fireEffectDamage(0), iceEffectFlag(false), iceEffectCounter(0),
 				iceEffectSlowdown(0), replacementFlag(0), replacementCount(0), mainMoveFlag(true), stealthCounter(0), hiddenFlag(false),
-				invisibleCounter(0), invisibleTimer(0), visibleCounter(0), visibleTimer(0), newEnemyCounter(0), atStaged(false), teleportAnima(NULL)
+				invisibleCounter(0), invisibleTimer(0), visibleCounter(0), visibleTimer(0), newEnemyCounter(0), atStaged(false), teleportAnima(NULL), blockTowerRadius(0)
 			{
 
 			}// end function

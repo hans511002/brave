@@ -7,17 +7,17 @@ namespace engine{
     struct CastMask_mc : public MovieClip
     {
 
-        BaseNode	* archiveCase;
-        BaseNode	* castAirCase;
-        BaseNode	* castGolemCase;
-        BaseNode	* castIcemanCase;
-        BaseNode	* fireCase;
-        BaseNode	* getAllCase;
-        BaseNode	* iceCase;
-        BaseNode	* interfaceUpCase;
-        BaseNode	* levinCase;
-        BaseNode	* sellCase;
-        BaseNode	* stoneCase;
+        MCCase	* archiveCase;
+		MCCase	* castAirCase;
+		MCCase	* castGolemCase;
+		MCCase	* castIcemanCase;
+		MCCase	* fireCase;
+		MCCase	* getAllCase;
+		MCCase	* iceCase;
+		MCCase	* interfaceUpCase;
+		MCCase	* levinCase;
+		MCCase	* sellCase;
+		MCCase	* stoneCase;
         CastMask_mc();
 
     };
@@ -58,4 +58,10 @@ namespace engine{
         };
     }
 }
+#include "Air.h"
+#include "Iceman.h"
+#include "Golem.h"
+#include "Cast_1.h"
+#include "Cast_2.h"
+#include "Cast_3.h"
 #endif

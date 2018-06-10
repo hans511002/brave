@@ -482,6 +482,7 @@ namespace engine
 		//this->autorelease(); in BaseNode::init();
 		this->setName(armName);
 		this->isReady = true;
+		return true;
 	};
 	MovieClip::MovieClip(string armName, string dbName, BaseNode *node) :cont(0)
 	{ 
@@ -651,6 +652,32 @@ namespace engine
 		//case EventData::EventType::LOOP_COMPLETE:
 		//	break;
 	};
+	float MovieClip::getWidth(){
+		Size size = this->cont->getContentSize();
+		return	size.width*this->getScaleX();
+	};
+	float MovieClip::getHeight(){
+		Size size = this->cont->getContentSize();
+		return	size.width*this->getScaleY();
+	};
+	 void MovieClip::setWidth(float w)
+	{
+		BaseNode::setWidth(w);
+		Size size = this->cont->getContentSize();
+		if (size.width > 0){
+			float r = w / (size.width*this->getScaleX());
+			this->setScaleX(this->getScaleX()*r);
+		}
+	};
+	 void MovieClip::setHeight(float h){
+		BaseNode::setHeight(h);	Size size = this->cont->getContentSize();
+		if (size.width > 0){
+			float r = h / (size.width*this->getScaleY());
+			this->setScaleY(this->getScaleY()*r);
+		}
+	};
+
+
 	MovieClipSub::MovieClipSub(MC *_mc, dragonBones::Slot * _slot, string defAniName) :arm(0)
 	{
         this->mc=_mc;
@@ -771,6 +798,31 @@ namespace engine
 	{ 
 		return (Node *)this->slot->getDisplay();
 	};
+	float MovieClipSub::getWidth(){
+		Size size = this->getDisplayNode()->getContentSize();
+		return	size.width*this->getScaleX();
+	};
+	float MovieClipSub::getHeight(){
+		Size size = this->getDisplayNode()->getContentSize();
+		return	size.width*this->getScaleY();
+	};
+	void MovieClipSub::setWidth(float w)
+	{ 
+		Size size = this->getDisplayNode()->getContentSize();
+		if (size.width > 0){
+			float r = w / (size.width*this->getScaleX());
+			this->setScaleX(this->getScaleX()*r);
+		}
+	};
+	void MovieClipSub::setHeight(float h){
+		 Size size = this->getDisplayNode()->getContentSize();
+		if (size.width > 0){
+			float r = h / (size.width*this->getScaleY());
+			this->setScaleY(this->getScaleY()*r);
+		}
+	};
+
+
 
 	dragonBones::Armature *MovieClipSub::getArmature()
 	{

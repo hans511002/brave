@@ -2,28 +2,27 @@
 #define ENGINE_TOWERS_TOWER4_H
 #include "BaseHeaders.h"
 #include "engine/towers/Tower.h" 
-#include "engine/mc/mc.h" 
 
 namespace engine
 {
     namespace towers
     {
-        struct Tower4_mc: public MovieClip
+		struct Tower4_mc : public Tower3_mc
         {
-            MovieClip * blockTower ;
-            MovieClip * boneBlock;
-            MovieClip * selectTower;
-            MovieClip * sphere1;
-            MovieClip * sphere2_1;
-            MovieClip * sphere2_2;
-            MovieClip * sphere3_1;
-            MovieClip * sphere3_2;
-            MovieClip * sphere3_3;
-            MovieClip * sphere4_1;
-            MovieClip * sphere4_2;
-            MovieClip * sphere4_3;
-            MovieClip * sphere4_4;
-            MovieClip * towerCase;
+			MovieClipSub * sphere4_1;
+			BulletSphereTower_mc * sphere4_1Bullet;
+			MovieClipSub * sphere4_1BulletCont;
+			MovieClipSub * sphere4_2;
+			BulletSphereTower_mc * sphere4_2Bullet;
+			MovieClipSub * sphere4_2BulletCont;
+			MovieClipSub * sphere4_3;
+			BulletSphereTower_mc * sphere4_3Bullet;
+			MovieClipSub * sphere4_3BulletCont;
+			MovieClipSub * sphere4_4;
+			BulletSphereTower_mc * sphere4_4Bullet;
+			MovieClipSub * sphere4_4BulletCont;
+			inline Tower4_mc(string rootPath, string armName, string dbName, string defAniName = "") : Tower3_mc(rootPath, armName, dbName, defAniName){};
+			Tower4_mc();
         };
         class Tower4 : public Tower
         {

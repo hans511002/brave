@@ -1,5 +1,5 @@
 #include "Cast_2.h"
-#include "engine/world->h"
+#include "engine/World.h"
 
 namespace engine{
     namespace    casts
@@ -87,7 +87,7 @@ namespace engine{
 
         void Cast_2::addIceman() 
         {
-            tempObject = new Point(world->mouseX, world->mouseY);
+            tempObject = cocos2d::Point(world->mouseX, world->mouseY);
             //tempObject1 = null;
             float tempObject2=0;
             float tempObject3 = 10000;
@@ -96,18 +96,19 @@ namespace engine{
             {
                 if (n == 1)
                 {
-                    map = world->map.road1;
+                    map = &world->map.road1;
                 }
                 else if (n == 2)
                 {
-                    map = world->map.road2;
+					map = &world->map.road2;
                 }
                 else if (n == 3)
                 {
-                    map = world->map.road3;
+					map = &world->map.road3;
                 }
                 i = 1;
-                while (i < map.length)
+				Common::Array<cocos2d::Point> &  map=*this->map;
+                while (i < map.size())
                 {
                     if (map[i].x == map[(i - 1)].x)
                     {

@@ -42,27 +42,35 @@ namespace engine
 			MCCase * btnTowerUpgr4BtnTowerUpgrCase;
 			MCText * btnTowerUpgr4CostTXT;
 			MovieClipSub * btnUpgradeMenu;
-			MCCase * btnUpgradeMenuBtnUpgradeMenuCase;
+			MCCase * btnUpgradeMenuBtnUpgradeMenuCase; 
+			MCCase * btnUpgradeMenuBtnUpgradeMenuLOCKCase;
+			MCText * btnUpgradeMenuCostTXT;
+
 			MovieClipSub * cont1;
 			MovieClipSub * cont2;
 			MovieClipSub * fastBuyUltraCont;
 			MovieClipSub * fastBuyUltraContBtnFastBuyUltra;
 			MCText * fastBuyUltraContBtnFastBuyUltraCostTXT;
 			MCCase * fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase;
+			MovieClipSub * fastBuyUltraContIndicator1;
+			MovieClipSub * fastBuyUltraContIndicator2;
+			MovieClipSub * fastBuyUltraContIndicator3;
+			MovieClipSub * fastBuyUltraContIndicator4; 
+
 			MovieClipSub * sphereSlot1;
-			MovieClipSub * sphereSlot1SphereSlotCase;
+			MCCase * sphereSlot1SphereSlotCase;
 			MovieClip * sphereSlot1SphereAnima;
 			MovieClipSub * sphereSlot1SphereAnimaCont;
 			MovieClipSub * sphereSlot2;
-			MovieClipSub * sphereSlot2SphereSlotCase;
+			MCCase * sphereSlot2SphereSlotCase;
 			MovieClip * sphereSlot2SphereAnima;
 			MovieClipSub * sphereSlot2SphereAnimaCont;
 			MovieClipSub * sphereSlot3;
-			MovieClipSub * sphereSlot3SphereSlotCase;
+			MCCase * sphereSlot3SphereSlotCase;
 			MovieClip * sphereSlot3SphereAnima;
 			MovieClipSub * sphereSlot3SphereAnimaCont;
 			MovieClipSub * sphereSlot4;
-			MovieClipSub * sphereSlot4SphereSlotCase;
+			MCCase * sphereSlot4SphereSlotCase;
 			MovieClip * sphereSlot4SphereAnima;
 			MovieClipSub * sphereSlot4SphereAnimaCont;
 

@@ -13,30 +13,70 @@ namespace engine
 
     namespace towers
     {
-		struct TowerBase :public MovieClip
+		struct TowerBase_mc :public MovieClip
 		{ 
 			MovieClip * blockTower;
 			MovieClip * boneBlock;
 			MovieClipSub * selectTower;
 			MCCase * towerCase;
-			MovieClipSub * sphere1;
-			MovieClip * sphere1Bullet;
-			MovieClipSub * sphere1BulletCont;
-			inline TowerBase(string rootPath, string armName, string dbName, string defAniName = "") :towerCase(0)
-				, MovieClip(rootPath, armName, dbName, defAniName)
-			{
-			};
+			Tower * myParent;
+			TowerBase_mc(string rootPath, string armName, string dbName, string defAniName = "");
 		};
+		struct ShootingTurnStack{
+			int value;
+			string name;
+			Common::Array<ShootingTurnStack> d;
+			inline ShootingTurnStack() :value(0){}
+			inline ShootingTurnStack & operator[](int i){
+				return d[i];
+			};
+			int size(){
+				return d.size();
+			}
+			inline int operator=(int i){
+				return value = i;
+			};
+			inline  operator int(){
+				return value;
+			};
+			inline string operator=(string i){
+				return name = i;
+			};
+			inline  operator string(){
+				return name;
+			};
+
+			// prefix
+			inline int operator++() { return ++value; }
+			inline int operator--() { return --value; }
+
+			// suffix
+			inline int operator++(int) { int old = value; value++; return (old); }
+			inline int operator--(int) { int old = value; value--; return  (old); }
+
+			inline int operator==(std::string s) { return name == s; }
+			inline int operator==(int s) { return value == s; }
+
+			inline ShootingTurnStack &splice(int s, int n = 1){
+				while (n){
+					d.remove(s);
+					n--;
+				}
+				return *this;
+			}
+		};
+
 		class Tower :public engine::ShootBase
         {
         public:
             int i, j;
+			BulletSphereTower_mc * tempObject2 = NULL;
             //public var tempObject:Object;
             //public var tempObject1:Object;
             //public var tempObject2:Object;
             //public var tempObject3:Object;
             //public var tempObject4:Object;
-			TowerBase *container;// public var container : MovieClip;
+			TowerBase_mc *container;// public var container : MovieClip;
             Sprite * myPlace;// :MovieClip;
             MovieClip * buildAnima; //public var buildAnima:MovieClip;
             Common::Array<string>  spheresStack; //public var spheresStack:Array;
@@ -48,15 +88,15 @@ namespace engine
             World * world;//public var world:World;
             int  towerType; //public var towerType:int = 0;
             int  correctYGrPos; //public var correctYGrPos:int;
-            Common::Array<Common::Array<int> >  shootingTurnStack; //public var shootingTurnStack:Array;
+			Common::Array<ShootingTurnStack >  shootingTurnStack; //public var shootingTurnStack:Array;
             string shootingSphere;//public var shootingSphere:String;
-            Common::Array<>  shootinAttackStack; //public var shootinAttackStack:Array;
+			Common::Array<BulletBase_mc *>  shootinAttackStack; //public var shootinAttackStack:Array;
             Common::Array<units::Unit *>  listOfTargets; //public var listOfTargets:Array;
             cocos2d::Vec2  this_pt; //public var this_pt:Point;
             cocos2d::Vec2  enemy_pt; //public var enemy_pt:Point;
             cocos2d::Vec2  shoot_pt; //public var shoot_pt:Point;
             units::Unit * enemyTarget;//public var enemyTarget:Object;
-            units::Unit * testTarget;// public var testTarget:Object;
+			cocos2d::Vec2 testTarget;// public var testTarget:Object;
             bool  greenFlag; //public var greenFlag:Boolean;
             bullets::BulletSphereTower_mc * sphereBullet1; //public var sphereBullet1:MovieClip;
             bullets::BulletSphereTower_mc * sphereBullet2; //public var sphereBullet2:MovieClip;
@@ -67,6 +107,8 @@ namespace engine
             int  sphereVisibleTimer; //public var sphereVisibleTimer:int = 18;
             bool  exchangeFlag; //public var exchangeFlag:Boolean;
             bool  autoBuild; //public var autoBuild:Boolean;
+
+			float upgr1_damage;// 5 6 7 8
 
             Tower()
             {
@@ -110,4 +152,15 @@ namespace engine
 
     }
 }
+#include "Tower1.h" 
+#include "Tower2.h" 
+#include "Tower3.h" 
+#include "Tower4.h" 
+#include "Tower5.h" 
+#include "Tower6.h" 
+#include "Tower7.h" 
+#include "Tower8.h" 
+#include "Exchange.h" 
+
+
 #endif

@@ -36,8 +36,11 @@ namespace engine
     };
     struct RadiusSphere_mc :public MovieClip
     {
-        MovieClipSub * cont;
-        inline RadiusSphere_mc(string arm):MovieClip("worldinterface/", arm, "RadiusSphere_mc")
+		MovieClipSub * cont1;
+		MovieClipSub * cont2;
+		MovieClipSub * cont3;
+		MovieClipSub * cont;
+		inline RadiusSphere_mc(string arm) :MovieClip("worldinterface/", arm, "RadiusSphere_mc"), cont1(0), cont2(0), cont3(0)
       	{
       		cont=this->createMovieClipSub("cont");
       	};
@@ -61,9 +64,9 @@ namespace engine
     };
     struct RadiusGetAll_mc :public RadiusSphere_mc
     { 
-        MovieClipSub * cont1;
-        MovieClipSub * cont2;
-        MovieClipSub * cont3; 
+        //MovieClipSub * cont1;
+        //MovieClipSub * cont2;
+        //MovieClipSub * cont3; 
         inline RadiusGetAll_mc():RadiusSphere_mc("RadiusGetAll_mc")
         {
             cont1=this->createMovieClipSub("cont1");
@@ -104,10 +107,10 @@ namespace engine
         int i, j;
         //public var tempObject:Object;
         //public var tempObject1:Object;
-		GetSphere_mc *container;//public var container:MovieClip;
-		MovieClip* radius;
+		MovieClip *container;//public var container:MovieClip;
+		RadiusSphere_mc* radius;
         int counter;
-        //public var owner:Object;
+		void * owner; //public var owner:Object;
         string ownerType;
         cocos2d::Point ownerPoint;
         float myRadius;
@@ -124,7 +127,7 @@ namespace engine
         float speedX, speedY;
 
 		Arrow_mc *  arrow;//public var arrow:Arrow_mc;
-        Sprite *  towerArrow;//public var towerArrow:Arrow_mc;
+		Arrow_mc *  towerArrow;//public var towerArrow:Arrow_mc;
         string type;
 		MovieClip* containerChange;
 

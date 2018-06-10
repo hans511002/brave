@@ -2,30 +2,25 @@
 #define ENGINE_TOWERS_TOWER6_H
 #include "BaseHeaders.h"
 #include "engine/towers/Tower.h" 
-#include "engine/mc/mc.h" 
 
 namespace engine
 {
     namespace towers
     {
-        struct Tower6_mc: public MovieClip
-        {
-            MovieClip * blockTower;
-            MovieClip * boneBlock;
+		struct Tower6_mc : public TowerBase_mc
+        { 
             MovieClip * shotAnima;
-            MovieClip * towerCase;
-        };
+		};
         class Tower6 : public Tower
         {
         public:
             int upgr1_intervalCounter, upgr1_intervalTimer;
-            float upgr1_damage;
-            int soundCounter;
+             int soundCounter;
             int soundTimer;
 
             Tower6();
 
-            void init();
+            bool init();
 
             void update() ;
 

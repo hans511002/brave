@@ -45,7 +45,8 @@ namespace engine
 
             void hintPosition(int param1 = 1);
 
-            void closeMenu(bool param1 = false);
+			virtual  void  closeMenu(bool param1 = false);
+			 
             void kill();
 
         };

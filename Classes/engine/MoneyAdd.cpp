@@ -1,8 +1,10 @@
-﻿#include "MoneyAdd.h"
+﻿#include "MainClass.h"
+#include "World.h"
+#include "MoneyAdd.h"
 
 namespace engine
 { 
-    MoneyAdd(int param1):container(NULL),money(0),dead(false),i(0)
+	MoneyAdd::MoneyAdd(int param1) :container(NULL), money(0), dead(false), i(0)
     {
         this->world = Main::mainClass->worldClass;
         //this->addEventListener(Event.ADDED_TO_STAGE, this->init);
@@ -13,7 +15,7 @@ namespace engine
 		////this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
 		this->container = new MoneyAdd_mc();
 		this->container->stop();
-		std::setText(this->noteTXT, this->money);
+		std::setText(this->container->noteTXT, this->money);
 		this->addChild(this->container);
 		this->mouseChildren = false;
 		this->mouseEnabled = false;
@@ -34,7 +36,9 @@ namespace engine
         }
         return;
     }// end function
-
+	void MoneyAdd::remove(){
+		this->world->removeChild(this, true);
+	};
     void MoneyAdd::kill()  
     {
         if (!this->dead)

@@ -2835,7 +2835,13 @@ namespace Common
 		temp+=Convert::ToString(b);
 		return temp;
 	}
-	inline String operator+(const char b,const String &a)
+	inline String operator+(const String &a, const float b)
+	{
+		String temp = a;
+		temp += Convert::ToString(b);
+		return temp;
+	}
+	inline String operator+(const char b, const String &a)
 	{
         String result=b;
 		return result.insert(result.size(),a);
@@ -2907,7 +2913,12 @@ namespace Common
 		b.append(Convert::ToString(a));
 		return b;
 	}
-	inline String & operator+=(String &b,const char a)
+	inline string & operator+=(string &b, const float a)
+	{
+		b.append(Convert::ToString(a));
+		return b;
+	}
+	inline String & operator+=(String &b, const char a)
 	{
 		b.append(String(a));
 		return b;

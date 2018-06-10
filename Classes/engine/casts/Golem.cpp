@@ -1,5 +1,7 @@
-#include "Golem.h"
-#include "engine/world.h"
+#include "BaseHeaders.h"
+#include "MainClass.h"
+#include "engine/World.h"
+#include "Cast.h"
 
 namespace engine{
     namespace    casts
@@ -12,16 +14,16 @@ namespace engine{
         Golem1_mc::Golem1_mc():Golem_mc("cast/", "Golem1_mc", "Golem_mc")
         { 
         }
-        Golem2_mc:Golem1_mc():Golem_mc("cast/", "Golem2_mc", "Golem_mc")
+        Golem2_mc::Golem2_mc():Golem_mc("cast/", "Golem2_mc", "Golem_mc")
         { 
         }
-        Golem3_mc:Golem1_mc():Golem_mc("cast/", "Golem3_mc", "Golem_mc")
+        Golem3_mc::Golem3_mc():Golem_mc("cast/", "Golem3_mc", "Golem_mc")
         { 
         }
-        Golem::Golem(cocos2d::Point param1, int param2, int param3, bool param4 = true) :direction("none"), voiceCounter(10), cameraJitterTimer(3), movePhase(1)
+        Golem::Golem(cocos2d::Point param1, int param2, int param3, bool param4 ) :direction("none"), voiceCounter(10), cameraJitterTimer(3), movePhase(1)
         {
             this->cameraJitterCounter = this->cameraJitterTimer;
-            this->addEventListener(Event.ADDED_TO_STAGE, this->init);
+            //this->addEventListener(Event.ADDED_TO_STAGE, this->init);
             this->this_pt = param1;
             this->road = param2;
             this->movePhase = param3;
@@ -47,8 +49,8 @@ namespace engine{
                 this->container = new Golem1_mc();
             }
             this->container->gotoAndStop(57);
-            this->container->dust1.stop();
-            this->container->dust2.stop();
+            this->container->dust1->stop();
+            this->container->dust2->stop();
             this->container->dust1->setVisible(false);
             this->container->dust2->setVisible(false);
             this->addChild(this->container);
@@ -106,7 +108,7 @@ namespace engine{
                     this->world->achieveManage("createGolem_5_times");
                 }
             }
-            return;
+            return true;
         }// end function
 
         void  Golem::update()
@@ -160,49 +162,49 @@ namespace engine{
                     if (this->container->currentFrame < 28)
                     {
                         this->container->currentFrame++;
-                        //this->container->gotoAndStop((this->container->currentFrame + 1));
+                        this->container->gotoAndStop((this->container->currentFrame + 1));
                     }
                     else
                     {
                         this->container->currentFrame=1;
-                        //this->container->gotoAndStop(1);
+                        this->container->gotoAndStop(1);
                     }
                 }
                 else if (this->container->currentFrame < 56)
                 {
                     this->container->currentFrame++;
-                    //this->container->gotoAndStop((this->container->currentFrame + 1));
+                    this->container->gotoAndStop((this->container->currentFrame + 1));
                 }
                 else
                 {
                     this->container->currentFrame=1;
-                    //this->container->gotoAndStop(29);
+                    this->container->gotoAndStop(29);
                 }
-                if (this->container->dust1->getVisible())
+				if (this->container->dust1->isVisible())
                 {
                     if (this->container->dust1->currentFrame < this->container->dust1->totalFrames)
                     {
                         this->container->dust1->currentFrame++;
-                        //this->container->dust1.gotoAndStop((this->container->dust1.currentFrame + 1));
+                        this->container->dust1->gotoAndStop((this->container->dust1->currentFrame));
                     }
                     else
                     {
                         this->container->dust1->currentFrame=1;
-                        //this->container->dust1.gotoAndStop(1);
+                        this->container->dust1->gotoAndStop(1);
                         this->container->dust1->setVisible(false);
                     }
                 }
-                if (this->container->dust2->getVisible())
+                if (this->container->dust2->isVisible())
                 {
                     if (this->container->dust2->currentFrame < this->container->dust2->totalFrames)
                     {
-                        this->container->dust2.currentFrame++;
-                        //this->container->dust2->gotoAndStop(this->container->dust2.currentFrame);
+                        this->container->dust2->currentFrame++;
+                        this->container->dust2->gotoAndStop(this->container->dust2->currentFrame);
                     }
                     else
                     {
-                        this->container->dust2.currentFrame=1;
-                        //this->container->dust2->gotoAndStop(1);
+                        this->container->dust2->currentFrame=1;
+                        this->container->dust2->gotoAndStop(1);
                         this->container->dust2->setVisible(false);
                     }
                 }
@@ -219,9 +221,9 @@ namespace engine{
                         //this->world->worldInterface.x = 0;
                     }
                     this->i = 0;
-                    while (this->i < this->world->listOfClasses.length)
+                    while (this->i < this->world->listOfClasses.size())
                     {
-                        if (this->world->listOfClasses[this->i] is Golem)
+						if (ISTYPE(Golem,this->world->listOfClasses[this->i]))
                         {
                             if (this->world->listOfClasses[this->i] == this)
                             {
@@ -253,7 +255,7 @@ namespace engine{
                 }
                 else
                 {
-                    (this->cameraJitterCounter - 1);
+                    this->cameraJitterCounter--;
                     this->cameraXOffset =cocos2d::rand_0_1() * 2;
                     if (cocos2d::rand_0_1() < 0.5)
                     {
@@ -364,7 +366,7 @@ namespace engine{
                 {
                     this->setPositionX(this->getPositionX() - this->speedK);
                     //this->x = this->x - this->speedK;
-                    if (this->xgetPositionX() <= roadMap[this->movePhase].x)
+                    if (this->getPositionX() <= roadMap[this->movePhase].x)
                     {
                         float tempObject = this->getPositionX();
                         this->setPositionX(roadMap[this->movePhase].x);
@@ -606,7 +608,7 @@ namespace engine{
                             this->world->listOfUnits[i]->getHit(this->world->listOfUnits[i]->health, "golem");
                             int addit_golemKillEnemiesCounter=this->world->saveBox->getIntValue("addit_golemKillEnemiesCounter")+1;
                             //this->world->saveBox.gameSave.data.addit_golemKillEnemiesCounter++;
-                            this->world->saveBox->setIntValue("addit_golemKillEnemiesCounter", addit_golemKillEnemiesCounter)  ;
+                            this->world->saveBox->setValue("addit_golemKillEnemiesCounter", addit_golemKillEnemiesCounter)  ;
                             if (addit_golemKillEnemiesCounter == 250)
                             {
                                 this->world->achieveManage("golemKill_250_enemies");
@@ -647,14 +649,14 @@ namespace engine{
                                 {
                                     tempObject1 = new Golem(roadMap[this->movePhase], this->i, (this->j + 1), false);
                                     this->brother = tempObject1;
-                                    this->tempObject1->brother = this;
+                                    tempObject1->brother = this;
                                     this->world->addChild(tempObject1);
                                     tempObject1->container->setScaleX(this->container->getScaleX());
                                     tempObject1->container->setPositionX(this->container->getPositionX());
                                     tempObject1->container->gotoAndStop(this->container->currentFrame);
                                     tempObject1->health = this->health / 2;
                                     this->health = this->health / 2;
-                                    this->tempObject1->voiceCounter = 0;
+                                    tempObject1->voiceCounter = 0;
                                     this->world->worldInterface->barInfoView();
                                     break;
                                 }
@@ -663,7 +665,7 @@ namespace engine{
                         }
                         else if (this->i == 2)
                         {
-                            this->j = this->world->map.road2.length - 2;
+                            this->j = this->world->map.road2.size() - 2;
                             while (this->j >= 0)
                             {
                                 if (this->world->map.road2[this->j].x == roadMap[this->movePhase].x && this->world->map.road2[this->j].y == roadMap[this->movePhase].y && (this->world->map.road2[(this->j + 1)].x != roadMap[(this->movePhase + 1)].x || this->world->map.road2[(this->j + 1)].y != roadMap[(this->movePhase + 1)].y))
@@ -699,47 +701,47 @@ namespace engine{
         {
             Common::Array<cocos2d::Point> &roadMap=*this->roadMap;
             this->kill();
-            OnceMovieClip * tempObject =NULL;
+			MovieClip * tempObject = NULL;
             if (this->direction != "up")
             {
                 if (dynamic_cast<Golem1_mc*>(this->container))
                 {
                     tempObject = new MovieClip(this->world,"cast/","Golem1HorisontDeath_mc","Golem1HorisontDeath_mc");
-                    tempObject->container->gotoAndStop(12);
+                    tempObject->gotoAndStop(12);
                 }
                 else if (dynamic_cast<Golem2_mc*>(this->container) )
                 {
                     tempObject = new MovieClip(this->world,"cast/","Golem2HorisontDeath_mc","Golem2HorisontDeath_mc");
-                    tempObject->container->gotoAndStop(12);
+                    tempObject->gotoAndStop(12);
                 }
                 else if (dynamic_cast<Golem3_mc*>(this->container))
                 {
                     tempObject = new MovieClip(this->world,"cast/","Golem3HorisontDeath_mc","Golem3HorisontDeath_mc");
                     //tempObject = new Indexes(new Golem3HorisontDeath_mc(), 1);
-                    tempObject->container->gotoAndStop(12);
+                    tempObject->gotoAndStop(12);
                 }
             }
             else if (dynamic_cast<Golem1_mc*>(this->container))
             {
                 tempObject = new MovieClip(this->world,"cast/","Golem1VerticalDeath_mc","Golem1VerticalDeath_mc");
                 //tempObject = new Indexes(new Golem1VerticalDeath_mc(), 1);
-                tempObject->container->gotoAndStop(12);
+                tempObject->gotoAndStop(12);
             }
             else if (dynamic_cast<Golem2_mc*>(this->container))
             {
                 //tempObject = new Indexes(new Golem2VerticalDeath_mc(), 1);
                 tempObject = new MovieClip(this->world,"cast/","Golem2VerticalDeath_mc","Golem2VerticalDeath_mc");
-                tempObject->container->gotoAndStop(12);
+                tempObject->gotoAndStop(12);
             }
             else if (dynamic_cast<Golem3_mc*>(this->container))
             {
                 //tempObject = new Indexes(new Golem3VerticalDeath_mc(), 1);
                 tempObject = new MovieClip(this->world,"cast/","Golem3VerticalDeath_mc","Golem3VerticalDeath_mc");
-                tempObject->container->gotoAndStop(12);
+                tempObject->gotoAndStop(12);
             }
             tempObject->type = "golemDeath";
-            tempObject->container->setScaleX(this->container->getScaleX());
-            tempObject->container->setPositionX(this->container->getPositionX());
+            tempObject->setScaleX(this->container->getScaleX());
+            tempObject->cont->setPositionX(this->container->getPositionX());
             tempObject->setPosition(this->this_pt);
             //tempObject->x = this->this_pt.x;
             //tempObject->y = this->this_pt.y;
@@ -774,10 +776,8 @@ namespace engine{
                 //    }
                 //   i++;
                 //}0
-                //this->world->y = 0;
-                //this->world->x = 0;0
-                //this->world->worldInterface.y = 0;
-                //this->world->worldInterface.x = 0;
+				this->world->setPosition(0, 0);
+				this->world->worldInterface->setPosition(0, 0);
                 //this->world->hint.x = Math.round(this->world->hint.x);
                 //this->world->hint.y = Math.round(this->world->hint.y);
                 if (this->world->selectObject == this)

@@ -1,11 +1,13 @@
 ﻿#include "MainClass.h"
 #include "World.h"
 #include "Waves.h"
-#include "engine/units/Unit_1.h"
-using namespace engine::units;
 #include "bezier/Bezier.h"
 #include "bezier/PathPoint.h"
 //#include "bezier/Bezier.h"
+#include "SavedCastTime.h"
+
+
+using namespace engine::units;
 using namespace bezier ;
 
 namespace engine 
@@ -23,49 +25,50 @@ namespace engine
 		int complexityLevel = this->world->saveBox->getIntValue("complexityLevel");
 		if (this->nowWave > 0)
 		{
-			int tempObject = this->listOfWaves[0][0][0] / this->world->pointer1->timer;
+			float tempObject = (float)this->listOfWaves[0][0][0] / this->world->pointer1->timer;
 			//this->tempObject = this->listOfWaves[0][0][0] / this->world->pointer1->timer;
             if (tempObject > 0)
             {
-                this->j = std::round(this->tempObject * Main::mainClass->readXMLClass.savingOfTimeCast);
+				SavedCastTime * tempObject1 = NULL;
+                this->j = std::round(tempObject * Main::mainClass->readXMLClass.savingOfTimeCast);
                 if (this->world->worldInterface->castGolemCounter > 0 && this->world->worldInterface->castGolemCounter < this->world->worldInterface->castGolemTimer)
                 {
                     if (this->j > this->world->worldInterface->castGolemTimer - this->world->worldInterface->castGolemCounter)
                     {
-                        this->tempObject1 = new SavedCastTime("golem", this->world->worldInterface->castGolemTimer - this->world->worldInterface->castGolemCounter);
+                        tempObject1 = new SavedCastTime("golem", this->world->worldInterface->castGolemTimer - this->world->worldInterface->castGolemCounter);
                     }
                     else
                     {
-                        this->tempObject1 = new SavedCastTime("golem", this->j);
+                        tempObject1 = new SavedCastTime("golem", this->j);
                     }
-                    this->world->worldInterface->addChild(this->tempObject1);
-                    this->world->listOfClasses.push(this->tempObject1);
+                    this->world->worldInterface->addChild(tempObject1);
+                    this->world->listOfClasses.push(tempObject1);
                 }
                 if (this->world->worldInterface->castIcemanCounter > 0 && this->world->worldInterface->castIcemanCounter < this->world->worldInterface->castIcemanTimer)
                 {
                     if (this->j > this->world->worldInterface->castIcemanTimer - this->world->worldInterface->castIcemanCounter)
                     {
-                        this->tempObject1 = new SavedCastTime("iceman", this->world->worldInterface->castIcemanTimer - this->world->worldInterface->castIcemanCounter);
+                        tempObject1 = new SavedCastTime("iceman", this->world->worldInterface->castIcemanTimer - this->world->worldInterface->castIcemanCounter);
                     }
                     else
                     {
-                        this->tempObject1 = new SavedCastTime("iceman", this->j);
+                        tempObject1 = new SavedCastTime("iceman", this->j);
                     }
-                    this->world->worldInterface->addChild(this->tempObject1);
-                    this->world->listOfClasses.push(this->tempObject1);
+                    this->world->worldInterface->addChild(tempObject1);
+                    this->world->listOfClasses.push(tempObject1);
                 }
                 if (this->world->worldInterface->castAirCounter > 0 && this->world->worldInterface->castAirCounter < this->world->worldInterface->castAirTimer)
                 {
                     if (this->j > this->world->worldInterface->castAirTimer - this->world->worldInterface->castAirCounter)
                     {
-                        this->tempObject1 = new SavedCastTime("air", this->world->worldInterface->castAirTimer - this->world->worldInterface->castAirCounter);
+                        tempObject1 = new SavedCastTime("air", this->world->worldInterface->castAirTimer - this->world->worldInterface->castAirCounter);
                     }
                     else
                     {
-                        this->tempObject1 = new SavedCastTime("air", this->j);
+                        tempObject1 = new SavedCastTime("air", this->j);
                     }
-                    this->world->worldInterface->addChild(this->tempObject1);
-                    this->world->listOfClasses.push(this->tempObject1);
+                    this->world->worldInterface->addChild(tempObject1);
+                    this->world->listOfClasses.push(tempObject1);
                 }
                 this->i = 0;
                 while (this->i < this->j)
@@ -73,15 +76,15 @@ namespace engine
                     this->world->worldInterface->downloadCast();
     		        i++;
                 }
-                this->tempObject = Math.round(this->tempObject * 20);
-                if (this->tempObject > 0)
+                tempObject = std::round(tempObject * 20);
+                if (tempObject > 0)
                 {
-                    this->world->money = this->world->money + this->tempObject;
+                    this->world->money = this->world->money + tempObject;
                     if (this->world->pointer1)
                     {
                         if (this->world->pointer1->isVisible())
                         {
-                            MoneyAdd *tempObject1 = new Moneyadd(this->tempObject);
+                            MoneyAdd *tempObject1 = new MoneyAdd(tempObject);
                             tempObject1->setPosition(this->world->pointer1->getPosition());
                             this->world->addChild( tempObject1);
                         }
@@ -90,7 +93,7 @@ namespace engine
                     {
                         if (this->world->pointer2->isVisible())
                         {
-                            MoneyAdd * tempObject1 = new MoneyAdd(this->tempObject);
+                            MoneyAdd * tempObject1 = new MoneyAdd(tempObject);
                             tempObject1->setPosition(this->world->pointer2->getPosition());
                             this->world->addChild( tempObject1);
                         }
@@ -99,7 +102,7 @@ namespace engine
                     {
                         if (this->world->pointer3->isVisible())
                         {
-                            MoneyAdd * tempObject1 = new MoneyAdd(this->tempObject);
+                            MoneyAdd * tempObject1 = new MoneyAdd(tempObject);
                             tempObject1->setPosition(this->world->pointer3->getPosition());
                             //tempObject1.x = this->world->pointer3.x;
                             //tempObject1.y = this->world->pointer3.y;
@@ -109,7 +112,7 @@ namespace engine
                     //Sounds.instance.playSoundWithVol("snd_menu_monetki", 0.95);
                 }
                 //(this->world->saveBox.gameSave.data.addit_earlyWavesCounter + 1);
-                int addit_earlyWavesCounter=this->world->saveBox->setIntValue("addit_earlyWavesCounter")+1;
+                int addit_earlyWavesCounter=this->world->saveBox->getIntValue("addit_earlyWavesCounter")+1;
                 this->world->earlyWaveCounter=addit_earlyWavesCounter;
                 this->world->saveBox->setValue("addit_earlyWavesCounter",addit_earlyWavesCounter);
                 if (addit_earlyWavesCounter == 100)
@@ -124,9 +127,9 @@ namespace engine
 		}
 		else
 		{
-			if (!this->world->worldInterface->container->快->fastCase->buttonMode)
+			if (!this->world->worldInterface->container->fastFastCase->buttonMode)
 			{
-			    this->world->worldInterface->container->快->fastCase->buttonMode = true;
+				this->world->worldInterface->container->fastFastCase->buttonMode = true;
 			}
 			if (complexityLevel < 4)
 			{
@@ -228,7 +231,7 @@ namespace engine
 			}
 		}
 		this->world->worldInterface->container->startWaves->gotoAndStop(21);
-		this->world->worldInterface->container->startWaves->startWavesCase.buttonMode = false;
+		this->world->worldInterface->container->startWavesStartWavesCase->buttonMode = false;
 		if (this->world->pointer1->isVisible())
 		{ 
 		    this->world->pointer1->mouseChildren = false;
@@ -731,17 +734,17 @@ namespace engine
                 if (this->nowWave < this->maxWaves)
                 {
                     this->world->worldInterface->container->startWaves->gotoAndStop(1);
-                    this->world->worldInterface->container->startWaves->startWavesCase.buttonMode = true;
+                    this->world->worldInterface->container->startWavesStartWavesCase->buttonMode = true;
                     this->world->pointer1->timer = this->listOfWaves[0][0][0];
                     this->world->pointer1->counter = 360 / this->listOfWaves[0][0][0];
-					this->world->pointer1->fireAnima->rotation = 0;
+					this->world->pointer1->fireAnima->setRotation(0);
                     if (this->world->pointer2)
                     {
-                        this->world->pointer2->fireAnima->rotation = 0;
+						this->world->pointer2->fireAnima->setRotation(0);
                     }
                     if (this->world->pointer3)
                     {
-                        this->world->pointer3->fireAnima->rotation = 0;
+						this->world->pointer3->fireAnima->setRotation(0);
                     }
                     if (this->listOfWaves.size() > 0)
                     {
@@ -827,22 +830,22 @@ namespace engine
                             {
                                 if (this->world->pointer1->currentFrame == 1)
                                 {
-                                    if (this->world->pointer1->mask1->rotation + this->world->pointer1->counter < 0)
+									if (this->world->pointer1->mask1->getRotation() + this->world->pointer1->counter < 0)
                                     {
-                                        this->world->pointer1->mask1->rotation = this->world->pointer1->mask1->rotation + this->world->pointer1->counter;
-                                        this->world->pointer1->fireAnima->rotation = this->world->pointer1->fireAnima->rotation + this->world->pointer1->counter;
+										this->world->pointer1->mask1->setRotation(this->world->pointer1->mask1->getRotation() + this->world->pointer1->counter);
+										this->world->pointer1->fireAnima->setRotation(this->world->pointer1->fireAnima->getRotation() + this->world->pointer1->counter);
                                     }
                                     else
                                     {
-                                        this->tempObject = this->world->pointer1->mask1->rotation + this->world->pointer1->counter;
+										float tempObject = this->world->pointer1->mask1->getRotation() + this->world->pointer1->counter;
                                         this->world->pointer1->gotoAndStop(2);
-                                        this->world->pointer1->mask2->rotation = this->tempObject;
+										this->world->pointer1->mask2->setRotation(tempObject);
                                     }
                                 }
                                 else
                                 {
-                                    this->world->pointer1->mask2->rotation = this->world->pointer1->mask2->rotation + this->world->pointer1->counter;
-                                    this->world->pointer1->fireAnima->rotation = this->world->pointer1->fireAnima->rotation + this->world->pointer1->counter;
+									this->world->pointer1->mask2->setRotation(this->world->pointer1->mask2->getRotation() + this->world->pointer1->counter);
+									this->world->pointer1->fireAnima->setRotation(this->world->pointer1->fireAnima->getRotation() + this->world->pointer1->counter);
                                 }
                             }
                         }
@@ -852,22 +855,22 @@ namespace engine
                             {
                                 if (this->world->pointer2->currentFrame == 1)
                                 {
-                                    if (this->world->pointer2->mask1->rotation + this->world->pointer1->counter < 0)
+									if (this->world->pointer2->mask1->getRotation() + this->world->pointer1->counter < 0)
                                     {
-                                        this->world->pointer2->mask1->rotation = this->world->pointer2->mask1->rotation + this->world->pointer1->counter;
-                                        this->world->pointer2->fireAnima->rotation = this->world->pointer2->fireAnima->rotation + this->world->pointer1->counter;
+										this->world->pointer2->mask1->setRotation(this->world->pointer2->mask1->getRotation() + this->world->pointer1->counter);
+										this->world->pointer2->fireAnima->setRotation(this->world->pointer2->fireAnima->getRotation() + this->world->pointer1->counter);
                                     }
                                     else
                                     {
-                                        this->tempObject = this->world->pointer2->mask1->rotation + this->world->pointer1->counter;
+										float tempObject = this->world->pointer2->mask1->getRotation() + this->world->pointer1->counter;
                                         this->world->pointer2->gotoAndStop(2);
-                                        this->world->pointer2->mask2->rotation = this->tempObject;
+										this->world->pointer2->mask2->setRotation(  tempObject);
                                     }
                                 }
                                 else
                                 {
-                                    this->world->pointer2->mask2->rotation = this->world->pointer2->mask2->rotation + this->world->pointer1->counter;
-                                    this->world->pointer2->fireAnima->rotation = this->world->pointer2->fireAnima->rotation + this->world->pointer1->counter;
+									this->world->pointer2->mask2->setRotation(this->world->pointer2->mask2->getRotation() + this->world->pointer1->counter);
+									this->world->pointer2->fireAnima->setRotation(this->world->pointer2->fireAnima->getRotation() + this->world->pointer1->counter);
                                 }
                             }
                         }
@@ -877,22 +880,22 @@ namespace engine
                             {
                                 if (this->world->pointer3->currentFrame == 1)
                                 {
-                                    if (this->world->pointer3->mask1->rotation + this->world->pointer1->counter < 0)
+                                    if (this->world->pointer3->mask1->getRotation()+ this->world->pointer1->counter < 0)
                                     {
-                                        this->world->pointer3->mask1->rotation = this->world->pointer3->mask1->rotation + this->world->pointer1->counter;
-                                        this->world->pointer3->fireAnima->rotation = this->world->pointer3->fireAnima->rotation + this->world->pointer1->counter;
+										this->world->pointer3->mask1->setRotation(this->world->pointer3->mask1->getRotation() + this->world->pointer1->counter);
+										this->world->pointer3->fireAnima->setRotation( this->world->pointer3->fireAnima->getRotation() + this->world->pointer1->counter);
                                     }
                                     else
                                     {
-                                        this->tempObject = this->world->pointer3->mask1->rotation + this->world->pointer1->counter;
+										float tempObject = this->world->pointer3->mask1->getRotation() + this->world->pointer1->counter;
                                         this->world->pointer3->gotoAndStop(2);
-                                        this->world->pointer3->mask2->rotation = this->tempObject;
+										this->world->pointer3->mask2->setRotation(  tempObject);
                                     }
                                 }
                                 else
                                 {
-                                    this->world->pointer3->mask2->rotation = this->world->pointer3->mask2->rotation + this->world->pointer1->counter;
-                                    this->world->pointer3->fireAnima->rotation = this->world->pointer3->fireAnima->rotation + this->world->pointer1->counter;
+									this->world->pointer3->mask2->setRotation( this->world->pointer3->mask2->getRotation() + this->world->pointer1->counter);
+									this->world->pointer3->fireAnima->setRotation(this->world->pointer3->fireAnima->getRotation() + this->world->pointer1->counter);
                                 }
                             }
                         }
@@ -906,21 +909,21 @@ namespace engine
         }
         else if (this->world->worldInterface->lastTime->isVisible())
         {
-            if (this->world->worldInterface->alpha == 1)
+            if (this->world->worldInterface->getAlpha() == 1)
             {
                 if (Main::mainClass->readXMLClass.autoStartCounter > 0)
                 {
                     Main::mainClass->readXMLClass.autoStartCounter--;
-                    this->world->worldInterface->lastTime.text = int(Main::mainClass->readXMLClass.autoStartCounter / 30) + 1;
-                    this->world->worldInterface->lastTime.setTextFormat(Main::mainClass->boldTextFormat);
+                    std::setText(this->world->worldInterface->lastTime, int(Main::mainClass->readXMLClass.autoStartCounter / 30) + 1);
+                    //this->world->worldInterface->lastTime.setTextFormat(Main::mainClass->boldTextFormat);
                 }
-                else if (this->world->worldInterface->lastTime->alpha > 0)
+				else if (this->world->worldInterface->lastTime->getAlpha()  > 0)
                 {
-                    this->world->worldInterface->lastTime->alpha = this->world->worldInterface->lastTime->alpha - 0.2;
+					this->world->worldInterface->lastTime->setAlpha(this->world->worldInterface->lastTime->getAlpha() - 0.2);
                 }
                 else
                 {
-                    this->world->worldInterface->lastTime->alpha = 1;
+					this->world->worldInterface->lastTime->setAlpha(1);
                     this->world->worldInterface->lastTime->setVisible(false);
                     //this->i = 0;
                     //while (this->i < this->world->listOfIndexes3.size())

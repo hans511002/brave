@@ -8,7 +8,7 @@ namespace engine
 {
     namespace towers
     {
-		class Tower2_mc :public TowerBase
+		class Tower2_mc :public Tower1_mc
         {
         public:  
 			//MovieClip * blockTower;
@@ -19,13 +19,14 @@ namespace engine
 			//MovieClip * sphere1Bullet;
    //         MovieClipSub * sphere1BulletCont;
             MovieClipSub * sphere2_1;
-            MovieClip  * sphere2_1Bullet;
+            BulletSphereTower_mc  * sphere2_1Bullet;
             MovieClipSub * sphere2_1BulletCont;
             MovieClipSub * sphere2_2;
-			MovieClip * sphere2_2Bullet;
+			BulletSphereTower_mc * sphere2_2Bullet;
             MovieClipSub * sphere2_2BulletCont;
 
-            Tower2_mc(); 
+			inline Tower2_mc(string rootPath, string armName, string dbName, string defAniName = "") : Tower1_mc(rootPath, armName, dbName, defAniName){};
+			Tower2_mc();
         };
         class Tower2 : public Tower
         {

@@ -32,6 +32,7 @@ namespace engine{
         struct BulletSphereTower_mc : public MovieClip
         {
             MovieClip * cont;
+			int counter;
             virtual void gotoAndStop(int cur);
 			BulletSphereTower_mc();
         };

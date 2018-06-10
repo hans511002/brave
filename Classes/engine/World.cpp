@@ -14,7 +14,7 @@ namespace engine
 		, createIcemanCounter(0), createAirCounter(0), earlyWaveCounter(0), sellFireCounter(0), sellIceCounter(0)
 		, sellStoneCounter(0), sellLevinCounter(0), sellGetAllCounter(0), icemanSlowdownEnemiesCounter(0), castFireCounter(0), castIceCounter(0)
 		, castStoneCounter(0), castLevinCounter(0), castGetAllCounter(0), golemVoiceTurn(1), icemanVoiceTurn(1), airVoiceTurn(1)
-		,firstMusicPlay(false),trainingClass(0)
+		, firstMusicPlay(false), trainingClass(0), road(0)
 	{
         menuObject = NULL;
 		pointer1 = NULL;
@@ -724,7 +724,7 @@ namespace engine
 		return;
 	}
 
-	towers::Tower * World::addTower(std::string param1, Sprite *  param2, bool param3)
+	towers::Tower * World::addTower(std::string param1, BuildTowerPlace *  param2, bool param3)
 	{
         towers::Tower * tempObject = NULL;
 		if (param1 == "tower1")

@@ -15,7 +15,7 @@ namespace engine
 
         SavedCastTime_mc() ;
     };
-    class SavedCastTime :public cocos2d::Sprite
+    class SavedCastTime :public BaseNode
     {
 	public:
 		int i, j;

@@ -5,15 +5,14 @@ namespace engine{
     namespace towers
     {
 
-        BuildTowerMenu_mc::BuildTowerMenu_mc():MovieClip("tower","BuildTowerMenu_mc","BuildTowerMenu_mc")
-        {
-            cont= this->createMovieClipSub("cont");
-contBuildTowerMenuCase= cont->createCase("buildTowerMenuCase");
-contCostTXT= cont->createText("costTXT");
-
-        }
+		BuildTowerMenu_mc::BuildTowerMenu_mc() :MovieClip("tower", "BuildTowerMenu_mc", "BuildTowerMenu_mc")
+		{
+			cont = this->createMovieClipSub("cont");
+			contBuildTowerMenuCase = cont->createCase("buildTowerMenuCase");
+			contCostTXT = cont->createText("costTXT");
+		}
    
-        BuildTowerMenu::BuildTowerMenu(Sprite *  param1)
+		BuildTowerMenu::BuildTowerMenu(BuildTowerPlace *  param1)
         {
             //this->addEventListener(Event.ADDED_TO_STAGE, this->init);
             this->myPlace = param1;
@@ -30,11 +29,10 @@ contCostTXT= cont->createText("costTXT");
             //this->x = this->myPlace->x + this->myPlace->buildPoint->x;
             //this->y = this->myPlace->y + this->myPlace->buildPoint->y;
             this->myPlace->gotoAndStop(2);
-            this->container = BuildTowerMenu_mc::create();
-            this->container->setPrice(Main::mainClass->readXMLClass.costTowerXML);
+            this->container = new BuildTowerMenu_mc();
             this->container->stop();
             this->container->cont->stop();
-            std::setText(this->container->cont->costTXT, Main::mainClass->readXMLClass.costTowerXML);
+            std::setText(this->container->contCostTXT, Main::mainClass->readXMLClass.costTowerXML);
             //this->container->cont->costTXT.text = Main::mainClass->readXMLClass.costTowerXML;
             this->container->contBuildTowerMenuCase->buttonMode = true;
             this->addChild(this->container);
@@ -77,7 +75,7 @@ contCostTXT= cont->createText("costTXT");
                 else
                 {
                     this->myPlace->gotoAndStop(1);
-                    this->myPlace->buildPoint->stop();
+                    //this->myPlace->buildPoint->stop();
                     this->myPlace->placeForBuildCase->buttonMode = true;
                     this->kill();
                 }
@@ -91,36 +89,36 @@ contCostTXT= cont->createText("costTXT");
                 else
                 {
                     this->myPlace->gotoAndStop(1);
-                    this->myPlace->buildPoint->stop();
+                    //this->myPlace->buildPoint->stop();
                     this->myPlace->placeForBuildCase->buttonMode = true;
                     this->kill();
                 }
             }
             return;
         }// end function
-        void BuildTowerMenu::mouseMoveHandler(cocos2d::Event * event)
-        {
-            if (!this->closeFlag)
-            {
-                cocos2d::EventMouse*e = (cocos2d::EventMouse*)event;
-                Node * node = event->getCurrentTarget();
-                Event::Type tp = event->getType();
-                string target = node->getName();
-                CCLOG("BuildTowerMenu::mouseMoveHandler %s", target.c_str());
+		void BuildTowerMenu::mouseMoveHandler(cocos2d::Event * event)
+		{
+			if (!this->closeFlag)
+			{
+				cocos2d::EventMouse*e = (cocos2d::EventMouse*)event;
+				Node * node = event->getCurrentTarget();
+				Event::Type tp = event->getType();
+				string target = node->getName();
+				CCLOG("BuildTowerMenu::mouseMoveHandler %s", target.c_str());
 
-                cocos2d::Point pt = e->getLocationInView();
-                CCLOG("mouse InView point %f,%f", pt.x, pt.y);
-
-                if (BaseNode::hitTest(this->container->place, pt) || BaseNode::hitTest(this->myPlace, pt)){
-                    //if (param1.target.name != "placeForBuildCase" && param1.target.name != "buildTowerMenuCase" 
-                    //    && param1.target != this->myPlace && param1.target.parent != this)
-                    //{
-                    this->closeMenu();
-                    //}
-                }
-            }
-            return;
-        }// end function
+				cocos2d::Point pt = e->getLocationInView();
+				CCLOG("mouse InView point %f,%f", pt.x, pt.y);
+				//if (target != "placeForBuildCase" &&  target != "buildTowerMenuCase" &&  target != this->myPlace->getName()
+				//	&& target != this->getName() && !std::hitTest(this->myPlace, pt))
+				if (!std::hitTest(this->container->contBuildTowerMenuCase, pt) && !std::hitTest(this->myPlace->placeForBuildCase, pt))
+					this->closeMenu();
+				//if (param1.target.name != "placeForBuildCase" && param1.target.name != "buildTowerMenuCase" && param1.target != this->myPlace && param1.target.parent != this)
+				//{
+				// this->closeMenu();
+				//}
+			}
+			return;
+		}
         void BuildTowerMenu::mouseDownHandler(cocos2d::Event * event)
         {
             if (!this->closeFlag)
@@ -133,7 +131,10 @@ contCostTXT= cont->createText("costTXT");
 
                 cocos2d::Point pt = e->getLocationInView();
                 CCLOG("mouse InView point %f,%f", pt.x, pt.y);
-                if (BaseNode::hitTest(this->container->place, pt) || BaseNode::hitTest(this->myPlace, pt)){
+				//if (event.target.name == "placeForBuildCase" || event.target.name == "buildTowerMenuCase")
+				//if (target != "placeForBuildCase" ||  target != "buildTowerMenuCase" || std::hitTest(this->myPlace, pt))
+				if (std::hitTest(this->container->contBuildTowerMenuCase, pt) || std::hitTest(this->myPlace->placeForBuildCase, pt))
+				{
                     this->world->money = this->world->money - Main::mainClass->readXMLClass.costTowerXML;
                     this->world->worldInterface->updateInfo();
                     Main::mainClass->readXMLClass.costTowerXML = Main::mainClass->readXMLClass.costTowerXML + Main::mainClass->readXMLClass.costTowerPlusXML;
@@ -171,8 +172,7 @@ contCostTXT= cont->createText("costTXT");
                 this->container->contBuildTowerMenuCase->buttonMode = false;
                 this->myPlace->placeForBuildCase->buttonMode = false;
             }
-            this->container->setPrice(Main::mainClass->readXMLClass.costTowerXML);
-            std::setText(this->container->cont->costTXT, Main::mainClass->readXMLClass.costTowerXML);
+            std::setText(this->container->contCostTXT, Main::mainClass->readXMLClass.costTowerXML);
             //this->container->cont->costTXT.text = Main::mainClass->readXMLClass.costTowerXML;
             return;
         }// end function

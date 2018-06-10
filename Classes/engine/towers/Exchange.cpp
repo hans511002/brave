@@ -1,7 +1,7 @@
- 
+#include "MainClass.h"
+#include "engine/World.h"
+#include "TowerMenu.h"
 #include "Exchange.h"
-#include "engine/towers/Tower.h" 
-#include "engine/mc/mc.h" 
 
 namespace engine
 {
@@ -86,7 +86,8 @@ namespace engine
         void Exchange::mouseMoveHandler(cocos2d::Event * param1) 
         {
             if (param1.target.name == "towerCase" && param1.target.buttonMode)
-            {
+			//if (!std::hitTest(this->container->contBuildTowerMenuCase, pt) && !std::hitTest(this->myPlace->placeForBuildCase, pt))
+			{
                 this->tempObject = param1.target.parent.parent;
                 if (this->tempObject->towerType < 5)
                 {

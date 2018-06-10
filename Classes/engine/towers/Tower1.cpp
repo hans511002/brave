@@ -9,12 +9,8 @@ namespace engine
     {
 		Tower1_mc::Tower1_mc() :TowerBase("tower/", "Tower1_mc", "Tower1_mc")
 		{
-			blockTower = this->createMovieClip("blockTower", "tower/", "blockTower", "TowerBlockBone");
-			boneBlock = this->createMovieClip("boneBlock", "tower/", "boneBlock", "TowerBlockBone");
-			selectTower = this->createMovieClipSub("selectTower");
-			towerCase = this->createCase("towerCase");
 			sphere1 = this->createMovieClipSub("sphere1");
-			sphere1Bullet = sphere1->createMovieClip("bullet", new BulletSphereTower_mc());
+			sphere1Bullet = (BulletSphereTower_mc*)sphere1->createMovieClip("bullet", new BulletSphereTower_mc());
 			sphere1BulletCont = sphere1Bullet->createMovieClipSub("cont");
 		}
 

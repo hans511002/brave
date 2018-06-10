@@ -56,14 +56,15 @@ namespace std
 		bool mouseChildren;
 		bool mouseEnabled;
 		bool buttonMode;
-		
+		bool mouseFlag;
+
 		float getStageWidth() const;
 		float getStageHeight() const;
 		dragonBones::CCArmatureDisplay * loadArmature(string rootPath, string armatureName, const string& dragonBonesName = "");
 		dragonBones::CCArmatureDisplay * buildArmature(string armatureName, const string& dragonBonesName);
-		inline string setText(ui::Text * tui, string val) { return std::setText(tui, val); };
-		inline int setText(ui::Text * tui, int val) { return std::setText(tui, val); };
-		inline float setText(ui::Text * tui, float val) { return std::setText(tui, val); };
+		//inline string setText(ui::Text * tui, string val) { return std::setText(tui, val); };
+		//inline int setText(ui::Text * tui, int val) { return std::setText(tui, val); };
+		//inline float setText(ui::Text * tui, float val) { return std::setText(tui, val); };
 		inline void logInfo(string label, cocos2d::Point pos);
 		inline void logInfo(string label, cocos2d::Size pos);
 		inline void logInfo(string label, float x, float y = 0);
@@ -123,7 +124,9 @@ namespace std
 		    
 		virtual float getWidth();
 		virtual float getHeight();
-		    
+		virtual void setWidth(float w);
+		virtual void setHeight(float h);
+
 		static void setAlpha(cocos2d::Node * node, float);
 		static float getAlpha(cocos2d::Node * node);
 	protected:
@@ -141,6 +144,8 @@ namespace std
 		BaseSprite(cocos2d::Sprite* sprite);
 		virtual float getWidth();
 		virtual float getHeight();
+		virtual void setWidth(float w);
+		virtual void setHeight(float h);
 		inline virtual bool hitTest(const Vec2 &pt){return std::hitTest(this,pt);};
 		inline virtual bool hitTest(cocos2d::EventMouse* event){return std::hitTest(this,event);};
 	private:

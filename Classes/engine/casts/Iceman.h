@@ -28,71 +28,72 @@ namespace engine{
 //    _textSprite->updateDisplayedColor(_displayedColor);
 //    _textSprite->updateDisplayedOpacity(_displayedOpacity);  <---add this
 //}
-    namespace    casts
-    {
-        struct Iceman_mc : public MovieClip
-        {
-            Iceman_mc();
-        }
-        struct BlowIce_mc : public MovieClip
-        {
-            BlowIce_mc();
-        } 
-        
-        class Iceman extends Sprite
-        {
-        public:
-            int  i ;//public var i:int;
-            int  j ;//public var j:int;
-            //Object  tempObject ;//public var tempObject:Object;
-            //Object  tempObject1 ;//public var tempObject1:Object;
-            MovieClip * container ;//public var container:MovieClip;
-            cocos2d::Point  this_pt ;//public var this_pt:Point;
-            //cocos2d::Point  enemy_pt ;//public var enemy_pt:Point;
-            World *world;
-            string  direction ;//public var direction:String = "无";
-            int  movePhase ;//public var movePhase:int = 1;
-            float  speedK ;//public var speedK:Number;
-            float  speedKSave ;//public var speedKSave:Number;
-            float  radius ;//public var radius:Number;
-            int  road ;//public var road:int;
-            Common::Array<cocos2d::Point> * roadMap;
-            bool  dead ;//public var dead:Boolean;
-            bool  openFlag ;//public var openFlag:Boolean;
-            MovieClip * blow ;//public var blow:MovieClip;
-            int  liveCounter ;//public var liveCounter:int;
-            //public var soundTimerMove:Timer;
-            //public var soundChannelMove:SoundChannel;
-            int  voiceCounter ;//public var voiceCounter:int = 10;
-            int  rotationTimer ;//public var rotationTimer:int = 4;
-            String  rotateFlag ;//public var rotateFlag:String;
-            Iceman * brother;
-            int  roadAnimaTimer ;//public var roadAnimaTimer:int = 7;
-            int  roadAnimaCounter ;//public var roadAnimaCounter:int = 0;
+	namespace    casts
+	{
+		struct Iceman_mc : public MovieClip
+		{
+			Iceman_mc();
+		};
+		struct BlowIce_mc : public MovieClip
+		{
+			BlowIce_mc();
+		};
 
-        Iceman(cocos2d::Point param1,int param2,int param3,bool param4 = true);
+		class Iceman :public  BaseNode
+		{
+		public:
+			int  i;//public var i:int;
+			int  j;//public var j:int;
+			//Object  tempObject ;//public var tempObject:Object;
+			//Object  tempObject1 ;//public var tempObject1:Object;
+			MovieClip * container;//public var container:MovieClip;
+			cocos2d::Point  this_pt;//public var this_pt:Point;
+			//cocos2d::Point  enemy_pt ;//public var enemy_pt:Point;
+			World *world;
+			string  direction;//public var direction:String = "无";
+			int  movePhase;//public var movePhase:int = 1;
+			float  speedK;//public var speedK:Number;
+			float  speedKSave;//public var speedKSave:Number;
+			float  radius;//public var radius:Number;
+			int  road;//public var road:int;
+			Common::Array<cocos2d::Point> * roadMap;
+			bool  dead;//public var dead:Boolean;
+			bool  openFlag;//public var openFlag:Boolean;
+			MovieClip * blow;//public var blow:MovieClip;
+			int  liveCounter;//public var liveCounter:int;
+			//public var soundTimerMove:Timer;
+			//public var soundChannelMove:SoundChannel;
+			int  voiceCounter;//public var voiceCounter:int = 10;
+			int  rotationTimer;//public var rotationTimer:int = 4;
+			String  rotateFlag;//public var rotateFlag:String;
+			Iceman * brother;
+			int  roadAnimaTimer;//public var roadAnimaTimer:int = 7;
+			int  roadAnimaCounter;//public var roadAnimaCounter:int = 0;
 
-        void  init() ;
+			Iceman(cocos2d::Point param1, int param2, int param3, bool param4 = true);
 
-        void  update() ;
+			bool  init();
 
-        void  moveHandler() ;
+			void  update();
 
-        void  directionManage() ;
+			void  moveHandler();
 
-        void  scanNextTurn() ;
+			void  directionManage();
 
-        void  attack() ;
+			void  scanNextTurn();
 
-        void  bifurcation() ;
+			void  attack();
 
-        void  soundTimerManageMove(bool param1) ;
+			void  bifurcation();
 
-        //void  soundTimerMoveFunk(event:TimerEvent) ;
+			void  soundTimerManageMove(bool param1);
 
-        void  kill() ;
+			//void  soundTimerMoveFunk(event:TimerEvent) ;
+			void  soundTimerMoveFunk();
 
-    }
-}
+			void  kill();
+
+		};
+	}
 }
 #endif

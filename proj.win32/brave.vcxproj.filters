@@ -294,6 +294,9 @@
     <ClCompile Include="..\Classes\engine\BonusMoney.cpp">
       <Filter>src\engine</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\engine\towers\Tower4.cpp">
+      <Filter>src\engine\towers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -466,9 +469,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\engine\decoration\DecorationLevel1.h">
       <Filter>src\engine\decoration</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\engine\units\Unit.h">
-      <Filter>src\engine\units</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\engine\units\Unit_mc.h">
       <Filter>src\engine\units</Filter>
@@ -664,6 +664,27 @@
     </ClInclude>
     <ClInclude Include="..\Classes\engine\BonusMoney.h">
       <Filter>src\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\towers\Tower4.h">
+      <Filter>src\engine\towers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\towers\Tower5.h">
+      <Filter>src\engine\towers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\towers\Tower6.h">
+      <Filter>src\engine\towers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\towers\Tower7.h">
+      <Filter>src\engine\towers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\towers\Tower8.h">
+      <Filter>src\engine\towers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\screens\PauseMenu.h">
+      <Filter>src\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\units\Unit.h">
+      <Filter>src\engine\units</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

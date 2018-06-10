@@ -8,9 +8,7 @@
 #include "Feature.h"
 #include "WorldInterface_mc.h"
 #include "engine/units/Unit.h" 
-#include "engine/casts/Cast_1.h"
-#include "engine/casts/Cast_2.h"
-#include "engine/casts/Cast_3.h"
+#include "engine/casts/Cast.h"
  
 namespace engine
 { 
@@ -28,9 +26,9 @@ namespace engine
 		CastMask_mc* castMask;
 		//Common::Array<Common::Array<int> >  sphereCostHistory;//public var sphereCostHistory:Array;
 		Common::Array<int>   sphereCostHistory[4];//public var sphereCostHistory:Array;
-		Common::Array<MovieClip *> listOfNewEnemies;//public var listOfNewEnemies:Array;
-        ui::Text * lastTime;//public var lastTime:TextField;
-        Common::Array<GetAchieve_mc *> * listOfGetAhieve ;//public var listOfGetAhieve:Array;
+		Common::Array<NewEnemy_mc *> listOfNewEnemies;//public var listOfNewEnemies:Array;
+		MCText * lastTime;//public var lastTime:TextField;
+        Common::Array<GetAchieve_mc *> listOfGetAhieve ;//public var listOfGetAhieve:Array;
 		Common::Array<MovieClip *> listOfAnimation;//public var listOfAnimation:Array;
         Hint_mc * sellHint;
         Hint_mc * getAllHint;

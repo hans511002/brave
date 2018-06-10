@@ -199,6 +199,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\engine\towers\Tower1.cpp" />
     <ClCompile Include="..\Classes\engine\towers\Tower2.cpp" />
     <ClCompile Include="..\Classes\engine\towers\Tower3.cpp" />
+    <ClCompile Include="..\Classes\engine\towers\Tower4.cpp" />
     <ClCompile Include="..\Classes\engine\towers\TowerMenu.cpp" />
     <ClCompile Include="..\Classes\engine\towers\TowerMenu_mc.cpp" />
     <ClCompile Include="..\Classes\engine\towers\UltraTowerMenu.cpp" />
@@ -316,6 +317,11 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\engine\towers\Tower1.h" />
     <ClInclude Include="..\Classes\engine\towers\Tower2.h" />
     <ClInclude Include="..\Classes\engine\towers\Tower3.h" />
+    <ClInclude Include="..\Classes\engine\towers\Tower4.h" />
+    <ClInclude Include="..\Classes\engine\towers\Tower5.h" />
+    <ClInclude Include="..\Classes\engine\towers\Tower6.h" />
+    <ClInclude Include="..\Classes\engine\towers\Tower7.h" />
+    <ClInclude Include="..\Classes\engine\towers\Tower8.h" />
     <ClInclude Include="..\Classes\engine\towers\TowerMenu.h" />
     <ClInclude Include="..\Classes\engine\towers\TowerMenu_mc.h" />
     <ClInclude Include="..\Classes\engine\towers\UltraTowerMenu.h" />
@@ -329,6 +335,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\engine\xml\XmlConfigParser.h" />
     <ClInclude Include="..\Classes\MainClass.h" />
     <ClInclude Include="..\Classes\screens\MiddleScreen.h" />
+    <ClInclude Include="..\Classes\screens\PauseMenu.h" />
     <ClInclude Include="..\Classes\sys\bezierBox.h" />
     <ClInclude Include="..\Classes\sys\saveBox.h" />
     <ClInclude Include="..\Classes\test\AnimationBase.h" />

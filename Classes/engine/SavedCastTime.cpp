@@ -22,7 +22,7 @@ namespace engine
         this->container = new SavedCastTime_mc();
         this->container->stop();
         float tempObject = std::round(this->savedFrames / 30);
-        if (this->tempObject >= 10)
+        if (tempObject >= 10)
         {
             this->container->cont->gotoAndStop(1);
         }
@@ -31,7 +31,7 @@ namespace engine
             this->container->cont->gotoAndStop(2);
         }
 
-        this->container->contNoteTXT.text = "-" + this->tempObject;
+       std::setText( this->container->contNoteTXT, Common::String("-" )+ tempObject);
         this->addChild(this->container);
         //this->world->listOfClasses.push(this);
         if (this->type == "golem")
@@ -49,7 +49,7 @@ namespace engine
             this->setPositionX(this->world->worldInterface->container->butCastAir->getPositionX());
             this->setPositionY(this->world->worldInterface->container->butCastAir->getPositionY());
         }
-        this->setPositionX(this->getPosition() + 8);
+        this->setPositionX(this->getPositionX() + 8);
         this->mouseChildren = false;
         this->mouseEnabled = false;
         return true;

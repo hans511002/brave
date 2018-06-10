@@ -2,8 +2,7 @@
 #define ENGINE_DECORATION_H
 #include "BaseNode.h"
 #include "MainClass.h"
-#include "animation/MovieClip.h"
-namespace engine
+ namespace engine
 {
 	class World;
 }
@@ -16,7 +15,7 @@ namespace engine{
 		public:
 			int i;// : int = 0;
 			int j;//: int = 0;
-			dragonBones::DBCCArmatureNode * container;
+			MovieClip * container;
 			//public var tempObject : Object; 
 			World* world ;
 			int counter;//: int = 0;

@@ -1,8 +1,7 @@
 ﻿#include "Feature.h"
 #include "MainClass.h"
 #include "World.h"
-#include "engine/level/RoadLevel1.h"
-#include "engine/level/Level1.h"
+#include "engine/level/Level1_mc.h"
 #include "engine/decoration/Decoration.h"
 #include "engine/decoration/DecorationLevel1.h"
 #include "bezier/Bezier.h"
@@ -19,7 +18,7 @@ namespace engine
 		this->world->saveBox = Main::mainClass->saveBoxClass;
 		if (this->world->nowLevel == 1)
 		{
-			this->world->level = level::Level1::create();
+			this->world->level =new  Level1_mc();
 			//this->world->road = new level::RoadLevel1_mc();
 			//this->world->decoration = new decoration::DecorationLevel1();
 			this->world->levelType = "grass";
@@ -155,22 +154,21 @@ namespace engine
 		this->world->addChild(this->world->level);
 		for (size_t i = 0; i < this->world->level->flags.size(); i++)
 		{
-			dragonBones::DBCCArmatureNode * arma=this->world->level->flags.at(i);
+			MovieClip * arma=this->world->level->flags.at(i);
 			//this->world->addChild(arma); 
 			//arma->setPosition( Main::SCREEN_WIDTH_HALF, Main::SCREEN_HEIGHT_HALF);
-
-			//arma->getAnimation()->play();
-			//arma->setVisible(true);
+			arma->play(0);// getAnimation()->play();
+			arma->setVisible(true);
 		}
 		for (size_t i = 0; i < this->world->level->additionallys.size(); i++)
 		{
-			dragonBones::DBCCArmatureNode * arma = this->world->level->additionallys.at(i);
-			this->world->addChild(arma);
+			//MovieClipSub * arma = this->world->level->additionallys.at(i);
+			//this->world->addChild(arma);
 		}
 		for (size_t i = 0; i < this->world->level->places.size(); i++)
 		{
-			dragonBones::DBCCArmatureNode * arma = this->world->level->places.at(i);
-			this->world->addChild(arma);
+			//dragonBones::DBCCArmatureNode * arma = this->world->level->places.at(i);
+			//this->world->addChild(arma);
 		}
 		//this->world->level->stop();
 		//this->i = this->world->level->getChildrenCount- 1;
@@ -249,7 +247,7 @@ namespace engine
 
 		//this->world->map = new Map();
 		this->world->towerRadius = new TowerRadius_mc();
-		this->world->towerRadius->stop(); 
+		//this->world->towerRadius->stop(); 
 		this->world->towerRadius->mouseChildren = false;
 		this->world->towerRadius->mouseEnabled = false;
 		this->world->towerRadius->setVisible(false);
@@ -590,8 +588,8 @@ namespace engine
 					if (tempObject->getScaleX() <= 0)
 					{
 						this->world->pointer1->gotoAndStop(1);
-						this->world->pointer1->mask1.rotation = -180;
-						this->world->pointer1->mask2.rotation = 0; 
+						this->world->pointer1->mask1->setRotation(-180);
+						this->world->pointer1->mask2->setRotation(0);
 						this->world->pointer1->setScaleY(0);
 						this->world->pointer1->setScaleX(0); 
 						this->world->pointer1->mouseChildren = true;
@@ -602,8 +600,8 @@ namespace engine
 						if (this->world->pointer2)
 						{
 							this->world->pointer2->gotoAndStop(1);
-							this->world->pointer2->mask1->rotation = -180;
-							this->world->pointer2->mask2->rotation = 0;
+							this->world->pointer2->mask1->setRotation(-180);
+							this->world->pointer2->mask2->setRotation(0);
 							this->world->pointer2->setScaleY(0);
 							this->world->pointer2->setScaleX(0); 
 							this->world->pointer2->mouseChildren = true;
@@ -615,8 +613,8 @@ namespace engine
 						if (this->world->pointer3)
 						{
 							this->world->pointer3->gotoAndStop(1);
-							this->world->pointer3->mask1->rotation = -180;
-							this->world->pointer3->mask2->rotation = 0; 
+							this->world->pointer3->mask1->setRotation(-180);
+							this->world->pointer3->mask2->setRotation(0);
 							this->world->pointer3->setScaleY(0);
 							this->world->pointer3->setScaleX(0); 
 							this->world->pointer3->mouseChildren = true;
