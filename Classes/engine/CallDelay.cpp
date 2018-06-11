@@ -18,7 +18,7 @@ namespace engine
         return;
     }// end function
 
-    void CallDelay::update()
+    void CallDelay::update(float dt)
     {
         if (this->counter > 0)
         {

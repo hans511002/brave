@@ -3,7 +3,7 @@
 #include "BaseHeaders.h"
 
 namespace engine{
-    class World; 
+ 
 
      class Indexes :BaseNode
     {
@@ -49,7 +49,7 @@ namespace engine{
             return;
         }// end function
 
-        void update() 
+      virtual   void update(float dt=0) 
         {
             if (this->container.currentFrame < this->container.totalFrames && this->container.alpha > 0)
             {

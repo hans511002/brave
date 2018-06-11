@@ -66,7 +66,7 @@ namespace engine
             return;
         }// end function
 
-        void Exchange::update() 
+        void Exchange::update(float dt) 
         {
             this->setPosition(this->world->mouseX,this->world->mouseY); 
             if (this->atTower)

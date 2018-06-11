@@ -20,7 +20,7 @@ namespace engine{
 
             bool init();
 
-            void update();
+virtual             void update(float dt=0);
             void kill();
         };
     }

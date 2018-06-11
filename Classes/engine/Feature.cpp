@@ -18,7 +18,7 @@ namespace engine
 		this->world->saveBox = Main::mainClass->saveBoxClass;
 		if (this->world->nowLevel == 1)
 		{
-			this->world->level =new  Level1_mc();
+			this->world->level = new  Level1_mc(this->world);
 			//this->world->road = new level::RoadLevel1_mc();
 			//this->world->decoration = new decoration::DecorationLevel1();
 			this->world->levelType = "grass";
@@ -152,92 +152,48 @@ namespace engine
 		//	this->world->levelType = "dust";
 		//}
 		this->world->addChild(this->world->level);
-		for (size_t i = 0; i < this->world->level->flags.size(); i++)
-		{
-			MovieClip * arma=this->world->level->flags.at(i);
-			//this->world->addChild(arma); 
-			//arma->setPosition( Main::SCREEN_WIDTH_HALF, Main::SCREEN_HEIGHT_HALF);
-			arma->play(0);// getAnimation()->play();
-			arma->setVisible(true);
-		}
-		for (size_t i = 0; i < this->world->level->additionallys.size(); i++)
-		{
-			//MovieClipSub * arma = this->world->level->additionallys.at(i);
-			//this->world->addChild(arma);
-		}
-		for (size_t i = 0; i < this->world->level->places.size(); i++)
-		{
-			//dragonBones::DBCCArmatureNode * arma = this->world->level->places.at(i);
-			//this->world->addChild(arma);
-		}
-		//this->world->level->stop();
-		//this->i = this->world->level->getChildrenCount- 1;
-		//while (this->i >= 0)
+		//for (size_t i = 0; i < this->world->level->flags.size(); i++)
 		//{
-		//	this->tempObject = this->world->level.getChildAt(this->i);
-		//	if (tempObject->name == "flag1" || tempObject->name == "flag2" || tempObject->name == "flag3" || tempObject->name == "flag4")
-		//	{
-		//		this->world->level.removeChild(this->tempObject);
-		//		this->world->addChild(this->tempObject);
-		//		tempObject->gotoAndStop((Math.round(Math.random() * (tempObject->totalFrames - 1)) + 1));
-		//		var _loc_1 : *= false;
-		//		tempObject->mouseChildren = false;
-		//		tempObject->mouseEnabled = _loc_1;
-		//		this->world->listOfFlags.push(this->tempObject);
-		//	}
-		//	else if (tempObject->name == "additionally")
-		//	{
-		//		this->world->levelAdditionally = this->tempObject;
-		//		this->world->levelAdditionally->stop();
-		//		var _loc_1 : *= false;
-		//		this->world->levelAdditionally->mouseChildren = false;
-		//		this->world->levelAdditionally->mouseEnabled = _loc_1;
-		//		this->world->level.removeChild(this->world->levelAdditionally);
-		//		this->world->addChild(this->world->levelAdditionally);
-		//		this->world->listOfIndexes1.push(this->world->levelAdditionally);
-		//	}
-		//	else if (tempObject->name == "additionally1")
-		//	{
-		//		this->world->levelAdditionally1 = this->tempObject;
-		//		this->world->levelAdditionally1->stop();
-		//		var _loc_1 : *= false;
-		//		this->world->levelAdditionally1->mouseChildren = false;
-		//		this->world->levelAdditionally1->mouseEnabled = _loc_1;
-		//		this->world->level.removeChild(this->world->levelAdditionally1);
-		//		this->world->addChild(this->world->levelAdditionally1);
-		//	}
-		//	else if (tempObject->name == "additionally2")
-		//	{
-		//		this->world->levelAdditionally2 = this->tempObject;
-		//		this->world->levelAdditionally2->stop();
-		//		var _loc_1 : *= false;
-		//		this->world->levelAdditionally2->mouseChildren = false;
-		//		this->world->levelAdditionally2->mouseEnabled = _loc_1;
-		//		this->world->level.removeChild(this->world->levelAdditionally2);
-		//		this->world->addChild(this->world->levelAdditionally2);
-		//	}
-		//	else if (tempObject->name == "additionally3")
-		//	{
-		//		this->world->levelAdditionally3 = this->tempObject;
-		//		this->world->levelAdditionally3->stop();
-		//		var _loc_1 : *= false;
-		//		this->world->levelAdditionally3->mouseChildren = false;
-		//		this->world->levelAdditionally3->mouseEnabled = _loc_1;
-		//		this->world->level.removeChild(this->world->levelAdditionally3);
-		//		this->world->addChild(this->world->levelAdditionally3);
-		//	}
-		//	else if (tempObject->name == "place1" || tempObject->name == "place2" || tempObject->name == "place3" || tempObject->name == "place4" || tempObject->name == "place5" || tempObject->name == "place6" || tempObject->name == "place7" || tempObject->name == "place8" || tempObject->name == "place9" || tempObject->name == "place10" || tempObject->name == "place11" || tempObject->name == "place12" || tempObject->name == "place13" || tempObject->name == "place14" || tempObject->name == "place15" || tempObject->name == "place16" || tempObject->name == "place17" || tempObject->name == "place18" || tempObject->name == "place19" || tempObject->name == "place20")
-		//	{
-		//		tempObject->stop();
-		//		tempObject->buildPoint->stop();
-		//		tempObject->placeForBuildCase->buttonMode = true;
-		//		this->world->level.removeChild(this->tempObject);
-		//		this->world->addChild(this->tempObject);
-		//		this->world->listOfPlaces.push(this->tempObject);
-		//	}
-		//	i++;
+		//	MovieClip * arma=this->world->level->flags.at(i);
+		//	//this->world->addChild(arma); 
+		//	arma->play(0);// getAnimation()->play();
+		//	arma->setVisible(true);
+		//}
+		//for (size_t i = 0; i < this->world->level->additionallys.size(); i++)
+		//{
+		//	//MovieClipSub * arma = this->world->level->additionallys.at(i);
+		//	//this->world->addChild(arma);
+		//}
+		//for (size_t i = 0; i < this->world->level->places.size(); i++)
+		//{
+		//	//dragonBones::DBCCArmatureNode * arma = this->world->level->places.at(i);
+		//	//this->world->addChild(arma);
 		//}
 
+		//this->world->level->stop();
+		for(int i = 0; i < world->level->flags.size(); i++)
+		{
+			MovieClip *place = world->level->flags.at(i);
+			place->gotoAndStop((std::round(std::random() * (place->totalFrames - 1)) + 1));
+			place->play();
+		}
+		for(int i = 0; i < world->level->additionallys.size(); i++)
+		{
+			MovieClipSub *place = world->level->additionallys.at(i);
+			if(i == 0)
+				this->world->levelAdditionally = world->level->additionallys.at(i);
+			else if(i == 1)
+				this->world->levelAdditionally1 = world->level->additionallys.at(i);
+			else if(i == 2)
+				this->world->levelAdditionally2 = world->level->additionallys.at(i);
+			else if(i == 3)
+				this->world->levelAdditionally3 = world->level->additionallys.at(i);
+		}
+		for(int i = 0; i < world->level->places.size(); i++)
+		{
+			BuildTowerPlace *place = world->level->places.at(i);
+			place->placeForBuildCase->buttonMode = true;
+ 		}
 		
 		//this->world->road->armature->getAnimation()->stop(); 
 		//this->world->road->armature->setName("road");
@@ -523,7 +479,7 @@ namespace engine
  
 	}// end function
 
-	void   Feature::update()
+	void   Feature::update(float dt)
 	{
 		if (this->world->getSphere)
 		{

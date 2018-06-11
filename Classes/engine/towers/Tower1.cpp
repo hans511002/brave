@@ -45,7 +45,7 @@ namespace engine
             }
             return true; 
         }// end function
-        void Tower1::update()
+        void Tower1::update(float dt)
         {
             Tower::update();
             if (this->firstTowerMenuCounter > -1)

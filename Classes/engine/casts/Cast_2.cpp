@@ -14,7 +14,7 @@ namespace engine{
             return true;
         }// end function
 
-        void Cast_2::update() 
+        void Cast_2::update(float dt) 
         {
             Cast::update();
             return;

@@ -6,7 +6,7 @@
 
 namespace engine
 {
-	class World;
+ 
 	
     class CallDelay :public Object
     {
@@ -21,7 +21,7 @@ namespace engine
 
         CallDelay(string param1,int param2);
 
-        void update();
+       virtual  void update(float dt=0);
 
         void kill();
     };

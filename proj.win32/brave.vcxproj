@@ -344,6 +344,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\test\BoneOffset.h" />
     <ClInclude Include="..\Classes\test\BoundingBox.h" />
     <ClInclude Include="..\Classes\test\CoreElement.h" />
+    <ClInclude Include="..\Classes\test\DBComSubTest.h" />
+    <ClInclude Include="..\Classes\test\DBComTest.h" />
     <ClInclude Include="..\Classes\test\DragHelper.h" />
     <ClInclude Include="..\Classes\test\DragonBonesEvent.h" />
     <ClInclude Include="..\Classes\test\HelloDragonBones.h" />
@@ -353,6 +355,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\test\ReplaceAnimation.h" />
     <ClInclude Include="..\Classes\test\ReplaceSkin.h" />
     <ClInclude Include="..\Classes\test\ReplaceSlotDisplay.h" />
+    <ClInclude Include="..\Classes\test\WorldInterface.h" />
     <ClInclude Include="..\cocos2d\external\tinyxml2\tinyxml2.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>

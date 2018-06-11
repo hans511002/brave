@@ -67,7 +67,7 @@ namespace engine
             this->world->worldInterface->updateInfo();
             return true;
         }// end function
-        void UltraTowerMenu::update()
+        void UltraTowerMenu::update(float dt)
         {
             if (this->closeFlag)
             {

@@ -31,7 +31,7 @@ namespace engine
 		this->currentFrame++;
 		gotoAndStop(this->currentFrame);
 	};
-	void MC::update()
+	void MC::update(float dt)
 	{
 		nextFram();
 	};
@@ -264,6 +264,7 @@ namespace engine
         this->setName(slotName);
         reinit();
 		mc->addMCbs(this);
+		addEventNode(this);
     };
 	void MCCase::setVisible(bool v){
 		BaseNode::setVisible(v);
@@ -291,6 +292,8 @@ namespace engine
 		this->setName(slotName);
 		reinit();
 		mc->addMCbs(this);
+		addEventNode(this);
+
 	};
 	MCSprite::MCSprite(MC * mc, string slotName, cocos2d::Sprite * sprite) : BaseSprite(sprite) , initSprite(false)
 	{
@@ -889,7 +892,7 @@ namespace engine
 		this->currentFrame++;
 		gotoAndStop(this->currentFrame);
 	};
-	void ImageMovieClip::update()
+	void ImageMovieClip::update(float dt)
 	{
 		nextFram();
 	}

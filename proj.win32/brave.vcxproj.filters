@@ -686,6 +686,15 @@
     <ClInclude Include="..\Classes\engine\units\Unit.h">
       <Filter>src\engine\units</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\test\DBComSubTest.h">
+      <Filter>src\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\DBComTest.h">
+      <Filter>src\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\WorldInterface.h">
+      <Filter>src\test</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">

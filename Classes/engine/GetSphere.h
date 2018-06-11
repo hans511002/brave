@@ -1,13 +1,13 @@
 ﻿#ifndef GETSPHERE_H
 #define GETSPHERE_H
-#include "BaseNode.h"
+#include "BaseHeaders.h"
 #include "MainClass.h"
 #include "base/mc.h"
 #include "engine/towers/Tower.h"
 
 namespace engine
 { 
-    class World;
+ 
 	struct Arrow_mc :public MovieClip
 	{
 		towers::Tower * myTower;

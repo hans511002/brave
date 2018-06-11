@@ -55,7 +55,7 @@ namespace engine
                 return true;
             }// end function
 
-            void update() 
+virtual             void update(float dt=0) 
             {
                 if (this->soundCounter != -1)
                 {

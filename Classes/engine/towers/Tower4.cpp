@@ -82,7 +82,7 @@ namespace engine
             return true;
         }// end function
 
-        void Tower4::update()
+        void Tower4::update(float dt)
         {
             Tower::update();
 			Tower4_mc * container = ISTYPE(Tower4_mc, this->container);

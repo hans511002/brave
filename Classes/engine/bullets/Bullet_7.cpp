@@ -78,7 +78,7 @@ namespace engine
 			return true;
 		}// end function
 
-		void Bullet_7::update()
+		void Bullet_7::update(float dt)
 		{
 			Bullet::update();
 

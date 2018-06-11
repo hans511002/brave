@@ -29,7 +29,7 @@ namespace bezier
         }
 		void drawFitLine();
 
-		void update()
+		virtual void update(float dt=0)
 		{
 			this->calculateFitArray();
 			this->path->setPoints( this->_fitPoints);

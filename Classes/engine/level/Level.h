@@ -28,13 +28,14 @@ namespace engine{
 
 	class Level : public MovieClip{
 		public:
+			World *world;
 			Common::Array<MovieClipSub * > decorations;
 			Common::Array<MovieClip * > flags;
 			Common::Array<BuildTowerPlace * > places;
 			Common::Array<LevelPointer * > pointers;
             //Common::Array<TowerPlace * > towerPlace;
 			Common::Array<MovieClipSub * > additionallys;
-			inline Level(string rootPath, string armName, string dbName) :MovieClip(rootPath, armName, dbName) {};
+			inline Level(World *world, string rootPath, string armName, string dbName) :MovieClip(rootPath, armName, dbName), world(world) {};
 		};
  
 } 

@@ -41,7 +41,7 @@ namespace engine
 			return *this;
 		}
 	};
-	class World;
+ 
     class Waves 
     {
     public:

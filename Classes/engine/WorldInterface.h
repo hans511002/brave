@@ -12,7 +12,7 @@
  
 namespace engine
 { 
-	class World;
+ 
 	class  WorldInterface :public BaseNode
     {
 	public:
@@ -24,8 +24,7 @@ namespace engine
         int fasterFlag;//int fasterFlag;////public var fasterFlag:int = 0;
 		World * world;//public var world:World;
 		CastMask_mc* castMask;
-		//Common::Array<Common::Array<int> >  sphereCostHistory;//public var sphereCostHistory:Array;
-		Common::Array<int>   sphereCostHistory[4];//public var sphereCostHistory:Array;
+		Common::Array<int>   sphereCostHistory[4];//Common::Array<Common::Array<int> >  sphereCostHistory;//public var sphereCostHistory:Array;
 		Common::Array<NewEnemy_mc *> listOfNewEnemies;//public var listOfNewEnemies:Array;
 		MCText * lastTime;//public var lastTime:TextField;
         Common::Array<GetAchieve_mc *> listOfGetAhieve ;//public var listOfGetAhieve:Array;
@@ -59,7 +58,7 @@ namespace engine
 		WorldInterface();
 		CREATE_FUNC(WorldInterface);
 		bool init();// (event:Event) : void
-		void update();
+		void update(float dt=0);
         //void clickHandler(Ref* ref);
         
         void mouseMoveHandler(cocos2d::EventMouse* param1);

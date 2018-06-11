@@ -5,7 +5,7 @@
 
 namespace engine
 {
-	class World;
+ 
 
     class InTimer :public MovieClip
     {
@@ -19,7 +19,7 @@ namespace engine
 
         InTimer(string param1);
 
-        void update();
+       virtual  void update(float dt=0);
 
         void kill() ;
 

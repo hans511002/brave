@@ -2,12 +2,7 @@
 #define SCREENS_SCREEN_H
 #include "BaseHeaders.h"   
 
-namespace engine
-{
-    class World;
-}
-using namespace engine;
-
+ 
 namespace screens
 {   
     class Screen : public BaseNode

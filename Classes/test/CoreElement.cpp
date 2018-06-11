@@ -630,7 +630,7 @@ CoreElementBullet::~CoreElementBullet()
 {
 }
 
-bool CoreElementBullet::update()
+bool CoreElementBullet::update(float dt)
 {
     const auto& position = _armatureDisplay->getPosition();
     _armatureDisplay->setPosition(position.x + _speedX, position.y + _speedY);

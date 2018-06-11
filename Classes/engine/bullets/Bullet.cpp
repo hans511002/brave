@@ -129,7 +129,7 @@ namespace engine{
             this->changeIndex = 10;
             return true;
         }// end function
-        void Bullet::update()
+        void Bullet::update(float dt)
         {
             this->mainCounter++;
             if (this->mainCounter == this->changeIndex)

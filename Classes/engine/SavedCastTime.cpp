@@ -55,7 +55,7 @@ namespace engine
         return true;
     }// end function
 
-    void SavedCastTime::update()
+    void SavedCastTime::update(float dt)
     {
         if (this->container->currentFrame < this->container->totalFrames)
         {

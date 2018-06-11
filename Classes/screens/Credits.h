@@ -2,12 +2,7 @@
 #define SCREENS_CREDITS_H
 #include "Screen.h"   
 
-namespace engine
-{
-    class World;
-}
-using namespace engine;
-
+ 
 namespace screens
 {   
     struct Credits_mc : public MovieClip

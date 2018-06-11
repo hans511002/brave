@@ -111,7 +111,7 @@ namespace engine{
             return true;
         }// end function
 
-        void  Golem::update()
+        void  Golem::update(float dt)
         {
             if (!this->openFlag)
             {

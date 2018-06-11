@@ -4,7 +4,7 @@
 #include "Cast.h"
 
 namespace engine{
-    class World;
+ 
     namespace    casts
     {
         struct Golem_mc :public MovieClip

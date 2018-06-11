@@ -35,7 +35,7 @@ namespace engine
         return true;
     }// end function
 
-    void BonusMoney::update()
+    void BonusMoney::update(float dt)
     {
         if (this->container->currentFrame < this->container->totalFrames)
         {

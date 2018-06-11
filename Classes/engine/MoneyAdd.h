@@ -7,7 +7,7 @@
 
 namespace engine
 {
-	class World;
+ 
 	struct MoneyAdd_mc :public MovieClip
 	{
 	public:
@@ -31,7 +31,7 @@ namespace engine
 		MoneyAdd(int param1);
 		bool init();
 		void remove();
-		void update();
+virtual 		void update(float dt=0);
 
 		void kill();
 

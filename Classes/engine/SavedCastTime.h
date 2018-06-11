@@ -34,7 +34,7 @@ namespace engine
 
 		bool init();
 
-		void update();
+		void update(float dt=0);
 
 		void kill();
 

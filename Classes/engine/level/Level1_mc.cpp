@@ -25,7 +25,7 @@ namespace engine{
 		buildPoint = (Sprite *)this->getArmature()->getSlot("LevelBase")->getDisplay();
 	};
 
-	Level1_mc::Level1_mc() :Level("worldinterface/", "Level1_mc", "Level1_mc")
+	Level1_mc::Level1_mc(World *world) :Level(world,"worldinterface/", "Level1_mc", "Level1_mc")
 	{
 
         decoration    = this   -> createMovieClipSub("decoration");
@@ -48,6 +48,7 @@ namespace engine{
 		places.push(place4);
 		places.push(place5);
 		pointers.push(pointer1);
+
 
         //CCActionInterval * actionBy1 = CCScaleBy::create(2.f, 2.f, 1.f);
         //neru_pSprite->runAction(actionBy1); /

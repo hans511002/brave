@@ -52,7 +52,7 @@ namespace engine{
 			return true;
 		}// end function
 
-		void Bullet_3::update()
+		void Bullet_3::update(float dt)
 		{
 			Bullet::update();
 			if (mainCounter == 11)

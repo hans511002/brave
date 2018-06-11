@@ -1,19 +1,15 @@
 #ifndef BRAVE_MAIN_H
 #define BRAVE_MAIN_H
-#include "BaseHeaders.h" 
-#include "sys/saveBox.h"
+#include "BaseHeaders.h"  
 //#include "engine/World.h"
 #include "engine/xml/ReadXML.h"
-#include "screens/MiddleScreen.h"
-#include "screens/LevelsMenu.h"
-namespace engine{
-	class World;
-}
-using namespace engine;
-using namespace screens;
-using namespace sys;
+//#include "screens/MiddleScreen.h"
+//#include "screens/LevelsMenu.h"
 
-class Main : public  cocos2d::Node //cocos2d::LayerColor //
+
+
+
+class Main : public  BaseNode //cocos2d::LayerColor //
 {
 public:
 	int frameCounter;
@@ -28,7 +24,7 @@ public:
 	//public var startMenuClass:StartMenu;
 	MiddleScreen * middleScreenClass;//public var middleScreenClass:MiddleScreen;
 	LevelsMenu * levelsMenuClass;//public var levelsMenuClass:LevelsMenu;
-	World * worldClass;
+	engine::World * worldClass;
 	//public var testingClass:Testing;
 	string lastClass;
 	//public var tracker:AnalyticsTracker;
@@ -53,7 +49,6 @@ public:
 
 	static Main *mainClass;
 
-
 	Main();
 	//CREATE_FUNC(Main);
 	virtual bool init();
@@ -65,7 +60,7 @@ public:
 
     cocos2d::Image * getBitmapData(cocos2d::Node* param1);
 
-    void keyDownHandler(EventKeyboard::KeyCode keycode, cocos2d::Event *event);
+	void keyBoardPressedHandler(EventKeyboard::KeyCode keycode, cocos2d::Event *event);
 
     void addStartLogo();
 

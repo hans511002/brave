@@ -115,7 +115,7 @@ namespace engine
 			return true;
 		} // end function
 
-		void Air::update()
+		void Air::update(float dt)
 		{
 			if (!this->openFlag)
 			{

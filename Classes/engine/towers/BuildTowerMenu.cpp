@@ -47,7 +47,7 @@ namespace engine{
             return true;
         }// end function
 
-        void BuildTowerMenu::update()
+        void BuildTowerMenu::update(float dt)
         {
             if (!this->closeFlag)
             {

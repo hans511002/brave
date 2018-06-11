@@ -225,7 +225,7 @@ namespace engine
 	//    return;
 	//}
 
-	void WorldInterface::update(){
+	void WorldInterface::update(float dt){
 		if (this->mouseEnabled)
 		{
 			if (this->container->fastCont->isReady)

@@ -35,7 +35,7 @@ namespace engine
 			return true;
 		}// end function
 
-		void   Cast::update()
+		void   Cast::update(float dt)
 		{
 			this->world->feature->scanPointersAtCast();
 			this->setPosition(cocos2d::Point(this->world->mouseX, this->world->mouseY));

@@ -3,7 +3,7 @@
 #include "BaseHeaders.h"
 
 namespace engine{
-    class World;
+ 
     namespace    casts
     {
 

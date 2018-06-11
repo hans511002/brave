@@ -2,12 +2,7 @@
 #define SCREENS_DEFEAT_H
 #include "BaseHeaders.h"   
 
-namespace engine
-{
-    class World;
-}
-using namespace engine;
-
+ 
 namespace screens
 {  
     struct DefMenu_mc : public MovieClip

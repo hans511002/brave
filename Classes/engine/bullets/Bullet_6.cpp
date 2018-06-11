@@ -35,7 +35,7 @@ namespace engine
             return true;
         }// end function
 
-        void Bullet_6::update() 
+        void Bullet_6::update(float dt) 
         {
             Bullet::update();
             if (this->getPositionX() != this_pt.x && this->getPositionY() != this_pt.y)

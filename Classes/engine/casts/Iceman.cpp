@@ -94,7 +94,7 @@ namespace engine{
 			return true;
 		}// end function
 
-		void  Iceman::update()
+		void  Iceman::update(float dt)
 		{
 			MovieClip * tempObject = NULL;
 			if (!this->openFlag)

@@ -159,7 +159,7 @@ namespace engine
 			this->world->worldInterface->updateInfo();
 			return true;
 		}// end function
-		void TowerMenu::update()
+		void TowerMenu::update(float dt)
 		{
 			if (!this->closeFlag)
 			{

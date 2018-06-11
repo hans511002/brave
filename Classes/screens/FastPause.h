@@ -10,7 +10,7 @@ namespace screens
     {
         FastPause_mc();
     };
-    class World;
+    
     class FastPause :public BaseNode
     {
     public:

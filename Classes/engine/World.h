@@ -12,6 +12,7 @@
 #include "MoneyAdd.h"
 #include "CastSphere.h"
 #include "GetSphere.h"
+#include "BonusMoney.h"
 
 #include "engine/level/Level.h"
 #include "engine/units/Unit.h"
@@ -73,10 +74,10 @@ namespace engine
         int numRoads;//public var numRoads : int;
         Level * level;		//public var level : MovieClip;
 		MovieClip *road;//public var road : MovieClip;
-        //public var levelAdditionally : MovieClip;
-        //public var levelAdditionally1 : MovieClip;
-        //public var levelAdditionally2 : MovieClip;
-        //public var levelAdditionally3 : MovieClip;
+		MovieClipSub *levelAdditionally;  //public var levelAdditionally : MovieClip;
+		MovieClipSub *levelAdditionally1;//public var levelAdditionally1 : MovieClip;
+		MovieClipSub *levelAdditionally2;//public var levelAdditionally2 : MovieClip;
+		MovieClipSub *levelAdditionally3;//public var levelAdditionally3 : MovieClip;
 
         WorldInterface* worldInterface;
 		Common::Array<MovieClip *> listOfFlags;//public var listOfFlags : Array;

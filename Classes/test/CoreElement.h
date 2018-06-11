@@ -57,7 +57,7 @@ public:
     Mecha();
     ~Mecha();
 
-    void update();
+    virtual void update(float dt=0);
     void move(int dir);
     void jump();
     void squat(bool isSquating);

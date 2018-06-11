@@ -27,7 +27,7 @@ namespace engine{
             return true;
         }// end function
 
-        void Bullet_1::update()
+        void Bullet_1::update(float dt)
         {
             Bullet::update();
             if (mainCounter == 7)

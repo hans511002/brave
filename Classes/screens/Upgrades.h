@@ -2,12 +2,6 @@
 #define SCREENS_UPGRADES_H
 #include "BaseHeaders.h"   
 
-namespace engine
-{
-    class World;
-}
-using namespace engine;
-
 namespace screens
 {   
     struct Upgrades_mc : public MovieClip

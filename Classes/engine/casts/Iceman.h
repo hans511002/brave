@@ -4,7 +4,7 @@
 #include "Cast.h"
 
 namespace engine{
-    class World;
+ 
     
     //To fix it at Label.cpp
 //void Label::createSpriteWithFontDefinition()

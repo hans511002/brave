@@ -4,7 +4,7 @@
 #include "Cast.h"
 
 namespace engine{
-    class World;
+ 
     namespace    casts
     {
         class Golem;
@@ -19,7 +19,7 @@ namespace engine{
 
              bool init();
 
-             void update();
+virtual              void update(float dt=0);
 
              virtual  void   mouseMoveHandler(cocos2d::Event * param1);
 

@@ -1,5 +1,7 @@
 #include "MainCLass.h"
 #include "engine/World.h"
+#include "screens/MiddleScreen.h"
+#include "screens/LevelsMenu.h"
 
 
 Main * Main::mainClass;
@@ -22,6 +24,7 @@ Scene* Main::createScene()
 int Main::fps;
 bool Main::init()
 {
+	this->setName("Main");
     //this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
     //this->stage.addEventListener(KeyboardEvent.KEY_DOWN, this->keyDownHandler);
 
@@ -36,25 +39,13 @@ bool Main::init()
     CCLOG("fps=%i", Main::fps);
 
     this->saveBoxClass = new SaveBox();
-    //this->readXMLClass = new ReadXML();//使用对象
+    //this->readXMLClass = new ReadXML();//不使用指针,使用对象
     //Sounds.instance.stopAll();
     //this->tracker = new GATracker(this, "UA-63231445-3", "AS3", false);
     //this->tracker.trackPageview("openGame");
     addNewScreen("World");
-    //Main::mainClass->worldClass = World::create();// new World();
-    auto myKeyListener = EventListenerKeyboard::create(); //创建事件监听器监听键盘事件
-    ////键盘按键按下时的响应
-    //myKeyListener->onKeyPressed = [](EventKeyboard::KeyCode keycode, cocos2d::Event *event)
-    //{
-    //    CCLOG("key is pressed, keycode is %d", keycode);
-    //};
-
-    myKeyListener->onKeyPressed = CC_CALLBACK_2(Main::keyDownHandler, this);
-    ////键盘按键弹回时的响应
-    //myKeyListener->onKeyReleased = [](EventKeyboard::KeyCode keycode, cocos2d::Event *event)
-    //{
-    //    CCLOG("key is released, keycode is %d", keycode);
-    //};
+	this->enableKeyHandler();
+	this->enableMouseHandler();
     return true;
 }// end function
 
@@ -142,7 +133,7 @@ cocos2d::Image * Main::getBitmapData(cocos2d::Node* param1) //: BitmapData
     return (cocos2d::Image *)NULL;
 }// end function
 
-void Main::keyDownHandler(EventKeyboard::KeyCode keycode, cocos2d::Event *event)
+void Main::keyBoardPressedHandler(EventKeyboard::KeyCode keycode, cocos2d::Event *event)
 {
     if ((int)keycode == 49)
     {
@@ -269,5 +260,9 @@ void Main::addStartLogo()
     //this->addChild(this->startMenuClass);
     return;
 }// end function
-
+//virtual void keyBoardPressedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+//virtual void keyBoardReleasedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+//virtual void mouseDownHandler(cocos2d::EventMouse* event);
+//virtual void mouseUpHandler(cocos2d::EventMouse* event);
+//virtual void mouseMovedHandler(cocos2d::EventMouse* event);
 

@@ -42,7 +42,7 @@ namespace engine
             Tower7();
 
             bool init() ;
-            void update();
+virtual             void update(float dt=0);
 
             void scan();
 

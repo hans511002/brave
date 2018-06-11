@@ -2,11 +2,7 @@
 #define SCREENS_ACHIEVEMENTS_H
 #include "Screen.h"   
 
-namespace engine
-{
-    class World;
-}
-using namespace engine;
+ 
 
 namespace screens
 {   

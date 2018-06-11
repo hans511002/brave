@@ -7,7 +7,7 @@
 
 namespace engine
 {
-	class World;
+ 
 	//class WaveData;
 	
 		struct NewEnemy_mc :public MovieClip
@@ -163,7 +163,7 @@ namespace engine
 
 			virtual bool init();
 
-			virtual void update(float dt);
+			virtual void update(float dt=0);
 
 			virtual void moveHandler();
 
@@ -226,7 +226,7 @@ public:\
 
 		UNIT_CLASS_DEFINE(Unit_23, RoadsignFire_mc * myPortal; MovieClip * portalAnima; virtual void kill(););
 		UNIT_CLASS_DEFINE(Unit_24, RoadsignIce_mc * myPortal; MovieClip * portalAnima; virtual void kill(););
-		UNIT_CLASS_DEFINE(Unit_25, RoadsignStone_mc * myPortal; MovieClip * portalAnima; virtual void kill(); virtual void update(float dt););
+		UNIT_CLASS_DEFINE(Unit_25, RoadsignStone_mc * myPortal; MovieClip * portalAnima; virtual void kill(); virtual void update(float dt=0););
 		UNIT_CLASS_DEFINE(Unit_26, RoadsignLevin_mc * myPortal; MovieClip * portalAnima; virtual void kill(););
 		UNIT_CLASS_DEFINE(Unit_27, int teleportPhase; int teleportTimer; int teleportCounter; int teleportStealthTimer; int teleportStealthCounter; float teleportDistance; float teleportRadius; Common::Array<MovieClip*> listOfTeleportUnits; int soundCounter; int soundTimer; int soundTimer1; int teleportUnitsMax; int teleportUnitsCounter; virtual void kill(););
 		UNIT_CLASS_DEFINE(Unit_28, float giveHealthRadius; int giveHeathCounter; int giveHeathTimer; float giveHeath; virtual void kill(););

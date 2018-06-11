@@ -13,7 +13,7 @@ namespace engine
         return;
     }// end function
 
-    void InTimer::update()
+    void InTimer::update(float dt)
     {
         if (this->type == "bossDeath")
         {

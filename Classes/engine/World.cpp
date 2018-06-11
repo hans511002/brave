@@ -1,7 +1,5 @@
 ﻿#include "World.h"
 #include "MainClass.h"
-#include "engine/units/Unit_1.h"
-#include "engine/bullets/Bullet.h"
  
 
 using namespace engine;
@@ -156,10 +154,10 @@ namespace engine
 			if (this->frameCounter == 30 && !this->menuObject)
 			{
 				this->bonusMoneyFlag = false;
-				if (this->saveBox->getIntValue("complexityLevel") < 4 && this->saveBox->getString("type") == "site")
+				if (this->saveBox->getIntValue("complexityLevel") < 4 && this->saveBox->getStringValue("type") == "site")
 				{
-					this->tempObject = new BonusMoney();
-					this->addChild(this->tempObject);
+					BonusMoney * tempObject = new BonusMoney();
+					this->addChild(tempObject);
 				}
 			}
 		}
@@ -356,7 +354,7 @@ namespace engine
 		{
 			if (this->frameCounter % 2)
 			{
-				this->enterFrameHandler(event);
+				this->enterFrameHandler(0);
 			}
 		}
 		return;
@@ -933,7 +931,7 @@ namespace engine
 		return tempObject;
 	}
 
-	Bullet * World::addBullet(int param1, cocos2d::Point param2, towers::Tower *  param3, units::Unit*  param4, float param5, int param6)
+	Bullet * World::addBullet(int param1, cocos2d::Point param2, ShootBase *  param3, units::Unit*  param4, float param5, int param6)
 	{
 		Bullet * tempObject1 = NULL;
 		if (param1 == 1)

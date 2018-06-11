@@ -385,7 +385,7 @@ namespace engine{
 		return true;
 	}// end function
 
-	void CastSphere::update()
+	void CastSphere::update(float dt)
 	{
 		if (dynamic_cast<CastGetAll_mc*>(this->container) && this->additAnamation)
 		{

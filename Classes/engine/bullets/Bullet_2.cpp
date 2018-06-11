@@ -25,7 +25,7 @@ namespace engine
 			return true;
 		}// end function
 
-		void Bullet_2::update()
+		void Bullet_2::update(float dt)
 		{
 			Bullet::update();
 			if(container->currentFrame < container->totalFrames)

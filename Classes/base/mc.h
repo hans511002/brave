@@ -26,7 +26,7 @@ namespace engine
 		virtual int getTotalFrames(string aniName = "");
 		virtual void gotoAndStop(int cf, string aniName = "");
 		virtual  void nextFram();
-		virtual void update();
+		virtual void update(float dt=0);
         virtual void play(string aniName = "", int times = 1);
 		virtual void play(int times);
         virtual void stop(string aniName = "");
@@ -136,8 +136,9 @@ namespace engine
 
 	};
 	
-	struct MovieClipSub :public virtual MC, MovieClipSubBase, public   BaseFuns
+	struct MovieClipSub :public virtual MC, MovieClipSubBase, public   EventNode
 	{
+		void * userData;
         dragonBones::Armature* arm;
 		MovieClipSub(MC *mc, dragonBones::Slot * slot, string defAniName = "");
         MovieClipSub(MC *mc, string slot, string defAniName = "");
@@ -181,13 +182,16 @@ namespace engine
 		virtual   void setWidth(float w);
 		virtual   void setHeight(float h);
 
+		void setUserData(void * data) { this->userData = data; };
+		void* getUserData() { return this->userData; };
+
 	};
 
 #define DEFINE_MCSUB(clzName,member) struct clzName :public MovieClipSub { \
 	inline clzName(MC *mc, string solt) :MovieClipSub(mc, slot){}; member };
 
 
-	struct MCText :public ui::Text, MovieClipSubBase, public   BaseFuns
+	struct MCText :public ui::Text, MovieClipSubBase, public   EventNode
 	{
 		MCText(MC * mc, string slotName);
 		inline virtual void setAlpha(float op) { BaseNode::setAlpha(this, op); };
@@ -237,7 +241,7 @@ namespace engine
         int getTotalFrames(string aniName = "");
         void gotoAndStop(int cf, string aniName = "");
         void nextFram();
-        void update();
+        virtual void update(float dt=0);
         void play(string aniName = "");
         void stop(string aniName = "");
         void scheduleUpdate(float dt);

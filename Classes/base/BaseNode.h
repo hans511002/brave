@@ -24,35 +24,33 @@ namespace std
 	float setText(ui::Text * tui, float val);
 	int getInt(ui::Text * tui);
 	string getText(ui::Text * tui);
-	  bool hitTest(cocos2d::Node * node, const Vec2 &pt);
-	  bool hitTest(cocos2d::Node * node, cocos2d::EventMouse* e);
+	bool hitTest(cocos2d::Node * node, const Vec2 &pt);
+	bool hitTest(cocos2d::Node * node, cocos2d::EventMouse* e);
 
 
 	extern Common::Log * gLog;
 
 	void writeLog(string msg, int type);
 	class MouseEvent : public cocos2d::EventMouse
-
 	{
 	public:
 		Common::Array<Node *> currentTargets;
 		MouseEvent(MouseEventType mouseEventCode);
 		void setCurrentTarget(Node* target);
-		MouseEvent(EventMouse * e);
+		MouseEvent(EventMouse * e, bool incSub = false);
 		void hitTest(Node *node, int level);
-		void hitTest(Node *node);
-
+		void hitTest(Node *node, bool incSub = false);
 	};
 
-	class BaseFuns
+	class EventNode
 	{
 	public:
-	    inline BaseFuns():mouseChildren(false),mouseEnabled(false),buttonMode(false){};
+		inline EventNode() :mouseChildren(false), mouseEnabled(false), buttonMode(false) {};
 		static bool debug;
 		cocos2d::Label* createLabel(const std::string& string);
-		    
-		inline virtual bool hitTest(const Vec2 &pt){return false;};
-		inline virtual bool hitTest(cocos2d::EventMouse* event){ return false; };
+
+		inline virtual bool hitTest(const Vec2 &pt) { return false; };
+		inline virtual bool hitTest(cocos2d::EventMouse* event) { return false; };
 		bool mouseChildren;
 		bool mouseEnabled;
 		bool buttonMode;
@@ -73,19 +71,33 @@ namespace std
 		inline void logInfo(string label1, string label2 = "", string label3 = "", string label4 = "", string label5 = "", string label6 = "");
 #define LOGINFO(format, ...)      cocos2d::log(format, ##__VA_ARGS__)
 		void loginfo(string mouseType, cocos2d::EventMouse* event);
-	};
+		virtual string getNamePath(Node *node);
 
-	class BaseNode :public   cocos2d::Node, public   BaseFuns
+		virtual inline void keyBoardPressedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+		virtual inline void keyBoardReleasedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+		virtual inline void mouseDownHandler(cocos2d::EventMouse* event);
+		virtual inline void mouseUpHandler(cocos2d::EventMouse* event);
+		virtual inline void mouseMovedHandler(cocos2d::EventMouse* event);
+		virtual inline void mouseScrollHandler(cocos2d::EventMouse* event);
+		virtual inline void rightMouseDownHandler(cocos2d::EventMouse* event);
+		virtual inline void rightMouseUpHandler(cocos2d::EventMouse* event);
+		virtual void touchActionHandler(cocos2d::Ref *pSender, cocos2d::ui::TouchEventType type);
+	};
+	extern Common::Array<EventNode *> EventNodes;
+	void addEventNode(EventNode *node);
+	void removeEventNode(EventNode *node);
+	std::MouseEvent * buildMouseEvent(EventMouse * e);
+
+	class BaseNode :public   cocos2d::Node, public     EventNode
 	{
 		bool schdt;
 	public:
 		static const double AnimationInterval;
-
-		inline BaseNode() :schdt(false), autoDel(true) {};//mouseEnabled(false), mouseChildren(false), 
+		cocos2d::EventListenerMouse * listener;
+		inline BaseNode() :schdt(false), autoDel(true), listener(0) {};//mouseEnabled(false), mouseChildren(false), 
 		BaseNode(float w, float h, bool draw = true);
 		bool init();
 		bool atStage();
-		void touchAction(cocos2d::Ref *pSender, cocos2d::ui::TouchEventType type);
 		virtual bool hitTest(const Vec2 &pt);
 		virtual bool hitTest(cocos2d::EventMouse* event);
 		cocos2d::Point localToGlobal(cocos2d::Point pt);
@@ -94,14 +106,13 @@ namespace std
 		virtual void onExit();
 		virtual void cleanup();
 		virtual void scheduleUpdate(float dt);
-		inline virtual void update() {};
+		inline virtual void update(float dt = 0) {};
 
 		//帧频事件
 		virtual void enterFrameHandler(float dt);
 
 		virtual void setAlpha(float);
 		virtual float getAlpha();
-		virtual string getNamePath(Node *node = NULL);
 
 		bool autoDel;
 		bool isAutoDel;
@@ -110,18 +121,19 @@ namespace std
 		virtual void drawRange();
 		void enableMouseHandler();
 		void enableKeyHandler();
-		//鼠标键盘事件
-		virtual void keyBoardPressedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-		virtual void keyBoardReleasedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-		virtual void mouseDownHandler(cocos2d::EventMouse* event);
-		virtual void mouseUpHandler(cocos2d::EventMouse* event);
-		virtual void mouseMovedHandler(cocos2d::EventMouse* event);
-		virtual void mouseScrollHandler(cocos2d::EventMouse* event);
-		virtual void rightMouseDownHandler(cocos2d::EventMouse* event);
-		virtual void rightMouseUpHandler(cocos2d::EventMouse* event);
+		////鼠标键盘事件
+		//virtual void touchActionHandler(cocos2d::Ref *pSender, cocos2d::ui::TouchEventType type);
+		//virtual void keyBoardPressedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+		//virtual void keyBoardReleasedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+		//virtual void mouseDownHandler(cocos2d::EventMouse* event);
+		//virtual void mouseUpHandler(cocos2d::EventMouse* event);
+		//virtual void mouseMovedHandler(cocos2d::EventMouse* event);
+		//virtual void mouseScrollHandler(cocos2d::EventMouse* event);
+		//virtual void rightMouseDownHandler(cocos2d::EventMouse* event);
+		//virtual void rightMouseUpHandler(cocos2d::EventMouse* event);
 
-		virtual std::MouseEvent* buildMousrEvent(Node * node = NULL, int mouseButton = 0);
-		    
+		virtual std::MouseEvent* buildMouseEvent(Node * node = NULL, int mouseButton = 0);
+
 		virtual float getWidth();
 		virtual float getHeight();
 		virtual void setWidth(float w);
@@ -132,7 +144,7 @@ namespace std
 	protected:
 
 	};
-	class BaseSprite :public   cocos2d::Sprite, public   BaseFuns
+	class BaseSprite :public   cocos2d::Sprite, public EventNode
 	{
 	protected:
 		inline BaseSprite() {};
@@ -146,12 +158,16 @@ namespace std
 		virtual float getHeight();
 		virtual void setWidth(float w);
 		virtual void setHeight(float h);
-		inline virtual bool hitTest(const Vec2 &pt){return std::hitTest(this,pt);};
-		inline virtual bool hitTest(cocos2d::EventMouse* event){return std::hitTest(this,event);};
+		inline virtual bool hitTest(const Vec2 &pt) { return std::hitTest(this, pt); };
+		inline virtual bool hitTest(cocos2d::EventMouse* event) { return std::hitTest(this, event); };
+		virtual void onEnter();
+		virtual void onExit();
+
+
 	private:
 
 	};
-	class BaseLayer : public   cocos2d::LayerColor, public   BaseFuns
+	class BaseLayer : public   cocos2d::LayerColor, public EventNode
 	{
 	protected:
 		cocos2d::Sprite* _background;

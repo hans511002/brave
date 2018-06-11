@@ -4,8 +4,7 @@
 
 namespace engine
 {
-	class World;
-	
+ 
 	namespace units
 	{
 		class Unit_5 :public Unit

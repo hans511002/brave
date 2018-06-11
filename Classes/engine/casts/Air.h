@@ -4,7 +4,7 @@
 
 namespace engine
 {
-	class World;
+ 
 	namespace casts
 	{
 		class Air_mc :public MovieClip
@@ -55,7 +55,7 @@ namespace engine
 
 			bool init();
 
-			void update();
+virtual 			void update(float dt=0);
 			void scan();
 			void attack();
 			void kill();

@@ -1,14 +1,14 @@
-#ifndef SAVEBOX_H
+ï»¿#ifndef SAVEBOX_H
 #define SAVEBOX_H
 #include "BaseHeaders.h"
- 
-#include "engine/xml/XmlConfigParser.h"
-#include "bezierBox.h"
+
+//#include "engine/xml/XmlConfigParser.h"
+//#include "bezierBox.h"
 
 namespace sys
 {
 	/**
-	±£´æÊı¾İµ½±¾µØ»ò·şÎñÆ÷£¬ÔİÊ±²»ÊµÏÖ
+	ä¿å­˜æ•°æ®åˆ°æœ¬åœ°æˆ–æœåŠ¡å™¨ï¼Œæš‚æ—¶ä¸å®ç°
 	*/
 	class SaveBox
 	{
@@ -101,7 +101,7 @@ namespace sys
 		string getStringValue(string namePath){
 			return JsonUtil::getStringValue(gameSave, namePath);
 		};
-		//Êı×é
+		//æ•°ç»„
 		bool getBoolValue(string namePath, int idx){
 			return JsonUtil::getBoolValue(gameSave, namePath, idx);
 		};

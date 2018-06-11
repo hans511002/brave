@@ -5,12 +5,11 @@
 //#include "engine/World.h"
 #include "engine/xml/ReadXML.h"
  
-
-using namespace engine;
+ 
 
 namespace screens
 {
-    class World;
+ 
     struct PauseMenu_mc : public MovieClip
     {
         MovieClip * scroll;

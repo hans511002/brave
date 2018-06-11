@@ -7,7 +7,7 @@
 
 namespace engine
 {
-    class World;
+ 
     namespace towers
     {
         class BaseTowerMenu :public BaseNode 
@@ -59,7 +59,7 @@ namespace engine
 
             bool init();
 
-            void update();
+virtual             void update(float dt=0);
 
             void mouseMoveHandler(cocos2d::Event * param1);
 

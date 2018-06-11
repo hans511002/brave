@@ -24,7 +24,7 @@ namespace engine
 		 
 		return true;
 	};
-    void MoneyAdd::update() 
+    void MoneyAdd::update(float dt) 
     {
         if (this->container->currentFrame < this->container->totalFrames)
         {

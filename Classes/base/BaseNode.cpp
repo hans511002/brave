@@ -8,10 +8,30 @@ namespace std
 {
 	Common::Log * gLog = new Common::Log("brave");
 	//Common::Log * gLog = NULL;
+	Common::Array<EventNode *> EventNodes;
+	void addEventNode(EventNode *node)
+	{
+		if(!node)return;
+		for each (EventNode * _node in EventNodes)
+			if(_node == node)return;
+		EventNodes.push(node);
+	};
+	void removeEventNode(EventNode *node) {
+		int l = EventNodes.size();
+		for(int i = 0;	i < l; i++)
+		{
+			if(EventNodes.at(i) == node)
+			{
+				EventNodes.remove(i);
+				return;
+			}
+		}
+	};
+
 
 	void writeLog(string msg, int type)
 	{
-		if(gLog)Common::writeLog(msg, gLog, BaseFuns::debug, type);
+		if(gLog)Common::writeLog(msg, gLog, EventNode::debug, type);
 	};
 	void setAnchorPoint(Node* node, bool subset)
 	{
@@ -163,6 +183,8 @@ namespace std
 
 	void BaseNode::onEnter()
 	{
+		if(this->mouseEnabled || this->buttonMode)
+			addEventNode(this);
 		Node::onEnter();
 		if(schdt)
 		{
@@ -171,6 +193,7 @@ namespace std
 	};
 	void BaseNode::onExit()
 	{
+		removeEventNode(this);
 		cleanup();
 		Node::onExit();
 	};
@@ -223,7 +246,7 @@ namespace std
 		return true;
 	}
 
-	cocos2d::Label* BaseFuns::createLabel(const std::string& string)
+	cocos2d::Label* EventNode::createLabel(const std::string& string)
 	{
 		const auto text = cocos2d::Label::create();
 		text->setPosition(0.0f, -(getStageHeight() * 0.5f - 100.f));
@@ -233,22 +256,22 @@ namespace std
 		return text;
 	}
 
-	float  BaseFuns::getStageWidth() const
+	float  EventNode::getStageWidth() const
 	{
 		const auto& stageSize = cocos2d::Director::getInstance()->getVisibleSize();
 		return stageSize.width;
 	}
 
-	float  BaseFuns::getStageHeight() const
+	float  EventNode::getStageHeight() const
 	{
 		const auto& stageSize = cocos2d::Director::getInstance()->getVisibleSize();
 		return stageSize.height;
 	}
-	dragonBones::CCArmatureDisplay * BaseFuns::loadArmature(string rootPath, string armatureName, const string& dragonBonesName)
+	dragonBones::CCArmatureDisplay * EventNode::loadArmature(string rootPath, string armatureName, const string& dragonBonesName)
 	{
 		return std::loadArmature(rootPath, armatureName, dragonBonesName);
 	};
-	dragonBones::CCArmatureDisplay * BaseFuns::buildArmature(string armatureName, const string& dragonBonesName)
+	dragonBones::CCArmatureDisplay * EventNode::buildArmature(string armatureName, const string& dragonBonesName)
 	{
 		return std::buildArmature(armatureName, dragonBonesName);
 	};
@@ -321,7 +344,7 @@ namespace std
 		return (double)ops / 255;
 	};
 
-	BaseNode::BaseNode(float w, float h, bool draw) :autoDel(true)
+	BaseNode::BaseNode(float w, float h, bool draw) :autoDel(true), listener(0)
 	{
 		this->setContentSize(Size(w, h));
 		enableMouseHandler();
@@ -370,6 +393,17 @@ namespace std
 		size.height = h;
 		this->setContentSize(size);
 	};
+	void BaseSprite::onEnter()
+	{
+		if(this->mouseEnabled || this->buttonMode)
+			addEventNode(this);
+		Sprite::onEnter();
+	};	
+	void BaseSprite::onExit()
+	{
+		removeEventNode(this);
+		Sprite::onExit();
+	};
 
 	void BaseNode::drawRange()
 	{
@@ -390,7 +424,7 @@ namespace std
 	{
 		cocos2d::EventMouse::setCurrentTarget(target);
 	};
-	std::MouseEvent* BaseNode::buildMousrEvent(Node * node, int mouseButton)
+	std::MouseEvent* BaseNode::buildMouseEvent(Node * node, int mouseButton)
 	{
 		std::MouseEvent* e = new std::MouseEvent(cocos2d::EventMouse::MouseEventType::MOUSE_DOWN);
 		e->setMouseButton(mouseButton);
@@ -407,12 +441,12 @@ namespace std
 		}
 		return e;
 	}
-	std::MouseEvent::MouseEvent(cocos2d::EventMouse * e) :EventMouse(*e)
+	std::MouseEvent::MouseEvent(cocos2d::EventMouse * e, bool incSub ) :EventMouse(*e)
 	{
 		Node * node = e->getCurrentTarget();
-		hitTest(node);
+		hitTest(node, incSub);
 	};
-	void std::MouseEvent::hitTest(Node *node)
+	void std::MouseEvent::hitTest(Node *node, bool incSub)
 	{
 		if(ISTYPE(BaseNode, node))
 		{
@@ -420,14 +454,14 @@ namespace std
 			if(n->hitTest(this))
 				currentTargets.push(n);
 		}
-		if(node->isVisible() && node->getChildrenCount())
+		if(incSub && node->isVisible() && node->getChildrenCount())
 		{
 			int len = node->getChildrenCount();
 			Vector<Node*>& nodes = node->getChildren();
 			for(int i = 0; i < len; i++)
 			{
 				node = nodes.at(i);
-				hitTest(node);
+				hitTest(node, incSub);
 			}
 		}
 	};
@@ -451,7 +485,7 @@ namespace std
 		}
 		else
 		{
-			if(std::hitTest(node, this))
+			if(!node->getName().empty() && std::hitTest(node, this))
 				currentTargets.push(node);
 			if(node->isVisible() && node->getChildrenCount())
 			{
@@ -466,15 +500,36 @@ namespace std
 		}
 	};
 
+	std::MouseEvent * buildMouseEvent(EventMouse * e)
+	{
+		std::MouseEvent * me = new std::MouseEvent(e);
+		int l = EventNodes.size();
+		for(int i = 0; i < l; i++)
+		{
+			EventNode * _node = EventNodes.at(i);
+			Node *node = ISTYPE(Node,_node);
+			if(node)
+				me->currentTargets.push(node);
+		}
+		return me;
+	};
+
 	void BaseNode::enableMouseHandler()
 	{
-		if(!this->mouseEnabled)this->mouseEnabled = true;
-		const auto listener = cocos2d::EventListenerMouse::create();
-		listener->onMouseDown = CC_CALLBACK_1(BaseNode::mouseDownHandler, this);
-		listener->onMouseUp = CC_CALLBACK_1(BaseNode::mouseUpHandler, this);
-		listener->onMouseMove = CC_CALLBACK_1(BaseNode::mouseMovedHandler, this);
-		listener->onMouseScroll = CC_CALLBACK_1(BaseNode::mouseScrollHandler, this);
-		getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+		if(!this->mouseEnabled)
+		{
+			this->mouseEnabled = true;
+			this->buttonMode = true;
+		}
+		if(listener == NULL)
+		{
+			listener = cocos2d::EventListenerMouse::create();
+			listener->onMouseDown = CC_CALLBACK_1(BaseNode::mouseDownHandler, this);
+			listener->onMouseUp = CC_CALLBACK_1(BaseNode::mouseUpHandler, this);
+			listener->onMouseMove = CC_CALLBACK_1(BaseNode::mouseMovedHandler, this);
+			listener->onMouseScroll = CC_CALLBACK_1(BaseNode::mouseScrollHandler, this);
+			getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+		}
 	};
 	void BaseNode::enableKeyHandler()
 	{
@@ -483,7 +538,7 @@ namespace std
 		keyboardListener->onKeyReleased = CC_CALLBACK_2(BaseNode::keyBoardReleasedHandler, this);
 		getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
 	}
-	void BaseNode::keyBoardPressedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event)
+	void EventNode::keyBoardPressedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event)
 	{
 		logInfo("keyBoardPressed keyCode", (int)keyCode);
 		switch(keyCode)
@@ -516,7 +571,7 @@ namespace std
 		}
 
 	};
-	void BaseNode::keyBoardReleasedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event)
+	void EventNode::keyBoardReleasedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event)
 	{
 		logInfo("keyBoardReleased keyCode", (int)keyCode);
 		switch(keyCode)
@@ -538,49 +593,54 @@ namespace std
 			break;
 		}
 	};
-	void BaseNode::mouseDownHandler(cocos2d::EventMouse* event)
+	void EventNode::mouseDownHandler(cocos2d::EventMouse* event)
 	{
 		//loginfo("mouseDown",event); 
-		if(!this->hitTest(event))return;
-		logInfo("hitTest true : mouse in ", this->getName());
+		if(!std::hitTest(event->getCurrentTarget(),event))return;
+		logInfo("hitTest true : mouse in ", event->getCurrentTarget()->getName());
 		Node * node = event->getCurrentTarget();
 		logInfo("event targetNamePath", getNamePath(node));
 		int mouseButton = event->getMouseButton();
 		if(mouseButton == 1)
 			rightMouseDownHandler(event);
 	};
-	void BaseNode::mouseUpHandler(cocos2d::EventMouse* event)
+	void EventNode::mouseUpHandler(cocos2d::EventMouse* event)
 	{
-		if(!this->hitTest(event))return;
+		if(!std::hitTest(event->getCurrentTarget(), event))return;
 		int mouseButton = event->getMouseButton();
 		//loginfo("mouseUp", event);
 		if(mouseButton == 1)rightMouseUpHandler(event);
 	};
-	void BaseNode::mouseMovedHandler(cocos2d::EventMouse* event)
+	void EventNode::mouseMovedHandler(cocos2d::EventMouse* event)
 	{
 		if(!this->hitTest(event))return;
 		//logInfo("mouseMoved", event->getCursorX(), event->getCursorY());
 	};
-	void BaseNode::mouseScrollHandler(cocos2d::EventMouse* event)
+	void EventNode::mouseScrollHandler(cocos2d::EventMouse* event)
 	{
 		if(!this->hitTest(event))return;
 	};
-	void BaseNode::rightMouseDownHandler(cocos2d::EventMouse* event)
+	void EventNode::rightMouseDownHandler(cocos2d::EventMouse* event)
 	{
 	};
-	void BaseNode::rightMouseUpHandler(cocos2d::EventMouse* event)
+	void EventNode::rightMouseUpHandler(cocos2d::EventMouse* event)
 	{
 	};
-	void BaseNode::touchAction(cocos2d::Ref *ref, cocos2d::ui::TouchEventType type)
+	void EventNode::touchActionHandler(cocos2d::Ref *ref, cocos2d::ui::TouchEventType type)
 	{
 		Node * node = (Node *)ref;
 		string target = node->getName();
 		CCLOG("touchAction %s type=%i", target.c_str(), type);
 	};
 
-	string BaseNode::getNamePath(Node *node)
+	string EventNode::getNamePath(Node *node)
 	{
-		if(!node)node = this;
+		if(!node)
+		{
+			if(ISTYPE(Node, this))
+				return getNamePath(ISTYPE(Node, this));
+			return "";
+		}
 		string name = node->getName();
 		while(node->getParent())
 		{
@@ -590,9 +650,9 @@ namespace std
 		return name;
 	};
 
-	void BaseFuns::loginfo(string mouseType, cocos2d::EventMouse* event)
+	void EventNode::loginfo(string mouseType, cocos2d::EventMouse* event)
 	{
-		if(!BaseFuns::debug)return;
+		if(!debug)return;
 		int mouseButton = event->getMouseButton();
 		logInfo(mouseType, event->getCursorX(), event->getCursorY());
 		logInfo("         mouseButton", mouseButton);
@@ -621,40 +681,40 @@ namespace std
 
 		}
 	};
-	bool BaseFuns::debug = true;
-	void BaseFuns::logInfo(string label, cocos2d::Point pos)
+	bool EventNode::debug = true;
+	void EventNode::logInfo(string label, cocos2d::Point pos)
 	{
-		if(!BaseFuns::debug)return;
+		if(!debug)return;
 		CCLOG("%s x=%f y=%f", label.c_str(), pos.x, pos.y);
 		if(gLog)writeLog(label + " x=" + Common::String(pos.x) + " y=" + Common::String(pos.y), 1);
 	};
-	void BaseFuns::logInfo(string label, cocos2d::Size pos)
+	void EventNode::logInfo(string label, cocos2d::Size pos)
 	{
-		if(!BaseFuns::debug)return;
+		if(!debug)return;
 		CCLOG("%s w=%f h=%f", label.c_str(), pos.width, pos.height);
 		if(gLog)writeLog(label + " w=" + Common::String(pos.width) + " h=" + Common::String(pos.height), 1);
 	};
-	void BaseFuns::logInfo(string label, float x, float y)
+	void EventNode::logInfo(string label, float x, float y)
 	{
-		if(!BaseFuns::debug)return;
+		if(!debug)return;
 		CCLOG("%s x=%f y=%f", label.c_str(), x, y);
 		if(gLog)writeLog(label + " x=" + Common::String(x) + " y=" + Common::String(y), 1);
 	};
-	void BaseFuns::logInfo(string label, int x)
+	void EventNode::logInfo(string label, int x)
 	{
-		if(!BaseFuns::debug)return;
+		if(!debug)return;
 		CCLOG("%s=%d ", label.c_str(), x);
 		if(gLog)writeLog(label + "=" + Common::String(x), 1);
 	};
-	void BaseFuns::logInfo(string label, int x, int y)
+	void EventNode::logInfo(string label, int x, int y)
 	{
-		if(!BaseFuns::debug)return;
+		if(!debug)return;
 		CCLOG("%s[%d , %d]", label.c_str(), x, y);
 		if(gLog)writeLog(label + " x=" + Common::String(x) + " y=" + Common::String(y), 1);
 	};
-	void BaseFuns::logInfo(string label1, string label2, string label3, string label4, string label5, string label6)
+	void EventNode::logInfo(string label1, string label2, string label3, string label4, string label5, string label6)
 	{
-		if(!BaseFuns::debug)return;
+		if(!debug)return;
 		string msg = label1;
 		if(!label2.empty())
 			msg += "=" + label2;

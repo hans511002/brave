@@ -13,7 +13,7 @@ namespace engine{
 			this->autorelease();
             return true;
         }// end function
-        void Cast_1::update()
+        void Cast_1::update(float dt)
         {
             Cast::update();
             return;

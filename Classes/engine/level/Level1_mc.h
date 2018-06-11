@@ -7,7 +7,6 @@ namespace engine{
 	
 	class Level1_mc : public Level{
 	public:
-		  
 		MovieClipSub * decoration;
         MovieClipSub * decoration1;
         BaseNode * decorationCase;
@@ -19,9 +18,7 @@ namespace engine{
 		BuildTowerPlace * place4;
 		BuildTowerPlace * place5;
 		LevelPointer * pointer1;
-
-		
-		Level1_mc();
+		Level1_mc(World *world);
 		
 	};
  

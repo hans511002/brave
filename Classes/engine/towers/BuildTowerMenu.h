@@ -7,7 +7,7 @@
 
 namespace engine
 {
-    class World;
+ 
     namespace towers
     { 
 		class BuildTowerMenu_mc : public MovieClip
@@ -36,7 +36,7 @@ namespace engine
 
             bool init();
 
-            void update();
+virtual             void update(float dt=0);
 
             void mouseMoveHandler(cocos2d::Event * event);
 

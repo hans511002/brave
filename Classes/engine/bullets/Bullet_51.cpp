@@ -67,7 +67,7 @@ namespace engine{
             return true;
         }// end function
 
-        void Bullet_51::update() 
+        void Bullet_51::update(float dt) 
         {
             Bullet::update();
             liveCounter++;

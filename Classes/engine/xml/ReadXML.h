@@ -1,8 +1,7 @@
 #ifndef XML_READXML_H
 #define XML_READXML_H
 #include "BaseHeaders.h"
-#include <math.h>  
-#include "XmlConfigParser.h"
+
 
 namespace engine
 {

@@ -3,7 +3,7 @@
 #include "BaseHeaders.h"
 #include "base/mc.h"
 namespace engine{
-    class World;
+ 
     struct CastMask_mc : public MovieClip
     {
 

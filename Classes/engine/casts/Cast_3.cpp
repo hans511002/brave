@@ -16,7 +16,7 @@ namespace engine{
             return true;
         }// end function
 
-        void Cast_3::update()
+        void Cast_3::update(float dt)
         {
             this->directionManage();
             Cast::update(); 

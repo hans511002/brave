@@ -4,7 +4,7 @@
 
 namespace engine
 {
-	class World;
+ 
 	class ShootBase :public BaseNode
 	{
 	public:

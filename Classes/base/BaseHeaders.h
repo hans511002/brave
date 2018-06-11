@@ -10,10 +10,12 @@
 #include "BaseNode.h"
 #include "cocos-ext.h"
 #include "base/mc.h"
-USING_NS_CC;
-using namespace dragonBones;
-using namespace tinyxml2;
-using namespace engine;
+#include <math.h> 
+#include "engine/xml/XmlConfigParser.h"
+#include "engine/xml/ReadXML.h"
+#include "sys/bezierBox.h"
+#include "sys/saveBox.h"
+
 
 inline static std::vector<std::string> &split(const std::string &s, char delim, std::vector<std::string> &elems) {
 	std::stringstream ss(s);
@@ -28,7 +30,28 @@ namespace std{
 double const PI = 3.14159265;
 inline float random(){ return cocos2d::rand_0_1(); }
 
-}
+};
+namespace engine
+{
+	class World;
+}; 
+namespace screens
+{
+	class LevelsMenu;
+	class MiddleScreen;
+};
+namespace sys
+{
+	class SaveBox;
+	class BezierBox;
+};
+USING_NS_CC;
+using namespace engine;
+using namespace screens;
+using namespace sys;
+using namespace dragonBones;
+using namespace tinyxml2;
+using namespace engine;
 
 #endif
  

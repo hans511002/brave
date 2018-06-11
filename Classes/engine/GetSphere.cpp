@@ -114,7 +114,7 @@ namespace engine
 		this->mouseEnabled = false;
 		return;
 	}// end function
-    void  GetSphere::update() 
+    void  GetSphere::update(float dt) 
     {
         if (this->type == "holder")
         {

@@ -1,11 +1,8 @@
 ﻿#ifndef ENGINE_DECORATION_H
 #define ENGINE_DECORATION_H
-#include "BaseNode.h"
+#include "BaseHeaders.h"
 #include "MainClass.h"
- namespace engine
-{
-	class World;
-}
+ 
 namespace engine{
 	namespace  decoration
 	{
@@ -23,7 +20,7 @@ namespace engine{
 
 			Decoration();
 
-			//void update()
+			//virtual void update(float dt=0)
 			//{
 			//	return;
 			//}// end function

@@ -73,7 +73,7 @@ namespace engine
             return true;
         }// end function
 
-        void Tower7::update()
+        void Tower7::update(float dt)
         {
             if (this->soundCounter != -1)
             {

@@ -53,7 +53,7 @@ namespace engine{
             //Sounds.instance.playSound("snd_tower_shootUltra1_1");
             return true;
         }// end function  
-        void Bullet_5::update()
+        void Bullet_5::update(float dt)
         {
             Bullet::update();
             if (container->currentFrame < container->totalFrames)

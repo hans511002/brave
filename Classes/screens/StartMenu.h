@@ -2,12 +2,7 @@
 #define SCREENS_STARTMENU_H
 #include "Screen.h"   
 
-namespace engine
-{
-    class World;
-}
-using namespace engine;
-
+ 
 namespace screens
 {  
     struct StartMenu_mc : public MovieClip

@@ -5,7 +5,7 @@
 
 
 namespace engine{
-    class World;
+ 
     namespace    casts
     { 
         class Cast_3 :public Cast
@@ -22,7 +22,7 @@ namespace engine{
 
              bool init();
 
-             void update();
+virtual              void update(float dt=0);
 
              void mouseMoveHandler(cocos2d::Event *param1);
 

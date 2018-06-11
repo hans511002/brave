@@ -8,7 +8,7 @@
 
 namespace engine
 { 
-	class World;
+ 
 	
     class Feature  
     {
