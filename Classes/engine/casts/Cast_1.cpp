@@ -19,7 +19,7 @@ namespace engine{
             return;
         }// end function
        
-        void  Cast_1::mouseMoveHandler(cocos2d::Event * param1)
+		void  Cast_1::mouseMoveHandler(cocos2d::EventMouse * param1)
         {
             if (param1->target->name == "castGolemCase")
             {
@@ -53,7 +53,7 @@ namespace engine{
             return;
         }// end function
         
-        void   Cast_1::mouseDownHandler(cocos2d::Event *event)
+		void   Cast_1::mouseDownHandler(cocos2d::EventMouse *event)
         {
             if (event)
             {
@@ -78,7 +78,7 @@ namespace engine{
             container->gotoAndStop(3);
             return;
         }// end function
-        void Cast_1::mouseUpHandler(cocos2d::Event  event)
+		void Cast_1::mouseUpHandler(cocos2d::EventMouse  event)
         {
         }
         void Cast_1::addGolem()

@@ -4,31 +4,31 @@
 #include "Cast.h"
 
 namespace engine{
- 
-    namespace    casts
-    { 
-        class Cast_2 :public Cast
-        {
+
+	namespace    casts
+	{
+		class Cast_2 :public Cast
+		{
 		public:
 
-             Cast_2()
-            {
-				 init();
-            }// end function
+			Cast_2()
+			{
+				init();
+			}// end function
 
-             bool init();
+			bool init();
 
-virtual             void update(float dt=0);
+			virtual void update(float dt = 0);
 
-            void mouseMoveHandler(cocos2d::Event *param1);
+			void mouseMoveHandler(cocos2d::EventMouse *param1);
 
-            void mouseDownHandler(cocos2d::Event *event);
+			void mouseDownHandler(cocos2d::EventMouse *event);
 
-            void mouseUpHandler(cocos2d::Event *event);
+			void mouseUpHandler(cocos2d::EventMouse *event);
 
-            void addIceman();
+			void addIceman();
 
-        };
-    }
+		};
+	}
 }
 #endif

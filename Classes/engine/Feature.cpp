@@ -1115,7 +1115,7 @@ namespace engine
         if (!this->world->getSphere)
         {
             this->getSphereBeat(param1, param2);
-            this->world->getSphere->sePosition(this->world->listOfMoveSpheres[this->i]->getPosition());
+            this->world->getSphere->setPosition(this->world->listOfMoveSpheres[this->i]->getPosition());
             this->world->getSphere->setPosition(this->world->listOfMoveSpheres[this->i]->getPosition());
             //this->world->getSphere->x = this->world->listOfMoveSpheres[this->i]->x;
             //this->world->getSphere->y = this->world->listOfMoveSpheres[this->i]->y;

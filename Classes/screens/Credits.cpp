@@ -102,7 +102,7 @@ namespace screens
         return;
     }// end function
 
-    void Credits::mouseMoveHandler(cocos2d::Event * param1) 
+    void Credits::mouseMoveHandler(cocos2d::EventMouse * param1) 
     {
         if (param1->target->name == "logoContCase")
         {
@@ -167,7 +167,7 @@ namespace screens
         return;
     }// end function
 
-    void Credits::mouseDownHandler(cocos2d::Event * event) 
+    void Credits::mouseDownHandler(cocos2d::EventMouse * event) 
     {
         if (event->target->name == "logoContCase")
         {
@@ -219,7 +219,7 @@ namespace screens
         return;
     }// end function
 
-    void Credits::mouseUpHandler(cocos2d::Event *event)
+    void Credits::mouseUpHandler(cocos2d::EventMouse *event)
     {
         if (event->target->name == "logoContCase")
         {

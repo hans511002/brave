@@ -60,10 +60,17 @@ public:
 
     cocos2d::Image * getBitmapData(cocos2d::Node* param1);
 
-	void keyBoardPressedHandler(EventKeyboard::KeyCode keycode, cocos2d::Event *event);
-
     void addStartLogo();
 
+	virtual   void keyBoardPressedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+	virtual   void keyBoardReleasedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+	virtual   void mouseDownHandler(cocos2d::EventMouse* event);
+	virtual   void mouseUpHandler(cocos2d::EventMouse* event);
+	virtual   void mouseMovedHandler(cocos2d::EventMouse* event);
+	virtual   void mouseScrollHandler(cocos2d::EventMouse* event);
+	virtual   void rightMouseDownHandler(cocos2d::EventMouse* event);
+	virtual   void rightMouseUpHandler(cocos2d::EventMouse* event);
+	virtual void touchActionHandler(cocos2d::Ref *pSender, cocos2d::ui::TouchEventType type);
 
 };
 

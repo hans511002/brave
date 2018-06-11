@@ -283,7 +283,7 @@ namespace screens
         return;
     }// end function
 
-    void Achievements::mouseDownHandler(cocos2d::Event * event)
+    void Achievements::mouseDownHandler(cocos2d::EventMouse * event)
     {
         if (!this->openFlag)
         {
@@ -367,7 +367,7 @@ namespace screens
         return;
     }// end function
 
-    void Achievements::mouseUpHandler(cocos2d::Event * event) 
+    void Achievements::mouseUpHandler(cocos2d::EventMouse * event) 
     {
         if (event->target->name == "backCase")
         {

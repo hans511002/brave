@@ -15,6 +15,8 @@
 #include "BonusMoney.h"
 
 #include "engine/level/Level.h"
+#include "engine/decoration/Decoration.h"
+
 #include "engine/units/Unit.h"
 #include "engine/GetSphere.h"
 #include "engine/bullets/Bullet.h"
@@ -172,21 +174,15 @@ namespace engine
         virtual void onExit();
         
         virtual void enterFrameHandler(float dt);//void  enterFrameHandler();  // event : Event
-        //void scheduleUpdate(float dt);
-        //void MyNode::TickMe(float dt);
-        //// wrap this function into a selector via schedule_selector marco.
-        //this->schedule(CC_SCHEDULE_SELECTOR(MyNode::TickMe), 0, 0, 0);
+    
+		virtual   void mouseDownHandler(cocos2d::EventMouse* event);
+		virtual   void mouseUpHandler(cocos2d::EventMouse* event);
+		virtual   void mouseMovedHandler(cocos2d::EventMouse* event);
+		virtual   void mouseScrollHandler(cocos2d::EventMouse* event);
+		virtual   void rightMouseDownHandler(cocos2d::EventMouse* event);
+		virtual   void rightMouseUpHandler(cocos2d::EventMouse* event);
 
-        //cocos2d::EventMouse* event
-        void mouseMoveHandler(cocos2d::EventMouse* param1);
 
-        void mouseDownHandler(cocos2d::EventMouse* event);
-
-        void mouseUpHandler(cocos2d::EventMouse* event);
-
-        void rightMouseDownHandler(cocos2d::EventMouse* event);
-
-        void rightMouseUpHandler(cocos2d::EventMouse* event);
 
 		Tower * addTower(std::string param1, BuildTowerPlace*  param2, bool param3 = false);
 

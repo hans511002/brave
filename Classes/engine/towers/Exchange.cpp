@@ -83,7 +83,7 @@ namespace engine
             return;
         }// end function
 
-        void Exchange::mouseMoveHandler(cocos2d::Event * param1) 
+        void Exchange::mouseMoveHandler(cocos2d::EventMouse * param1) 
         {
             if (param1.target.name == "towerCase" && param1.target.buttonMode)
 			//if (!std::hitTest(this->container->contBuildTowerMenuCase, pt) && !std::hitTest(this->myPlace->placeForBuildCase, pt))
@@ -119,18 +119,18 @@ namespace engine
             return;
         }// end function
 
-        void Exchange::mouseDownHandler(cocos2d::Event * param1) 
+        void Exchange::mouseDownHandler(cocos2d::EventMouse * param1) 
         {
             this->kill();
             return;
         }// end function
 
-        void Exchange::mouseUpHandler(cocos2d::Event * param1) 
+        void Exchange::mouseUpHandler(cocos2d::EventMouse * param1) 
         {
             return;
         }// end function
 
-        void Exchange::rightMouseDownHandler(cocos2d::Event * param1) 
+        void Exchange::rightMouseDownHandler(cocos2d::EventMouse * param1) 
         {
             if (param1.target.name == "towerCase" && param1.target.buttonMode)
             {
@@ -218,7 +218,7 @@ namespace engine
             return;
         }// end function
 
-        void Exchange::rightMouseUpHandler(cocos2d::Event * param1) 
+        void Exchange::rightMouseUpHandler(cocos2d::EventMouse * param1) 
         {
             return;
         }// end function

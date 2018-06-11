@@ -31,10 +31,10 @@ namespace screens
 
         void enterFrameHandler(float dt);
 
-        void mouseMoveHandler(cocos2d::Event * param1) ;
+        void mouseMoveHandler(cocos2d::EventMouse * param1) ;
 
-        void mouseDownHandler(cocos2d::Event * event) ;
-        void mouseUpHandler(cocos2d::Event *event);
+        void mouseDownHandler(cocos2d::EventMouse * event) ;
+        void mouseUpHandler(cocos2d::EventMouse *event);
 
         void autoguidersButtons();
 

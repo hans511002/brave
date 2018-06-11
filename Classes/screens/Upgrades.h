@@ -75,12 +75,12 @@ namespace screens
 
         bool init();
 
-        void enterFrameHandler(cocos2d::Event * event);
-        void mouseMoveHandler(cocos2d::Event * event);
+        void enterFrameHandler(cocos2d::EventMouse * event);
+        void mouseMoveHandler(cocos2d::EventMouse * event);
 
-        void mouseDownHandler(cocos2d::Event * event);
+        void mouseDownHandler(cocos2d::EventMouse * event);
 
-        void mouseUpHandler(cocos2d::Event * event);
+        void mouseUpHandler(cocos2d::EventMouse * event);
 
         void upgradeUpdate();
 

@@ -99,7 +99,7 @@ namespace screens
         return;
     }// end function
 
-    void StartMenu::enterFrameHandler(cocos2d::Event * event)
+    void StartMenu::enterFrameHandler(cocos2d::EventMouse * event)
     {
         if (this->frameCounter < 30)
         {
@@ -597,7 +597,7 @@ namespace screens
         return;
     }// end function
 
-    void StartMenu::mouseMoveHandler(cocos2d::Event * param1)  
+    void StartMenu::mouseMoveHandler(cocos2d::EventMouse * param1)  
     {
         if (param1->target->name == "backCase")
         {
@@ -966,7 +966,7 @@ namespace screens
         return;
     }// end function
 
-    void StartMenu::mouseDownHandler(cocos2d::Event * event)  
+    void StartMenu::mouseDownHandler(cocos2d::EventMouse * event)  
     {
         if (event->target->name == "backCase")
         {
@@ -1148,7 +1148,7 @@ namespace screens
         return;
     }// end function
 
-    void StartMenu::mouseUpHandler(cocos2d::Event * event) 
+    void StartMenu::mouseUpHandler(cocos2d::EventMouse * event) 
     {
         if (event->target->name == "backCase")
         {

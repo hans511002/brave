@@ -30,9 +30,9 @@ namespace screens
 
         void mouseMoveHandler(param1);
 
-        void mouseDownHandler(cocos2d::Event * event);
+        void mouseDownHandler(cocos2d::EventMouse * event);
 
-        void mouseUpHandler(cocos2d::Event * event);
+        void mouseUpHandler(cocos2d::EventMouse * event);
 
         void pageManage(int param1)  ;
 

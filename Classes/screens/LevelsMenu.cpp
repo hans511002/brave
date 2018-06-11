@@ -122,7 +122,7 @@ namespace screens
         return;
     }// end function
 
-    void LevelsMenu::enterFrameHandler(cocos2d::Event * event)
+    void LevelsMenu::enterFrameHandler(cocos2d::EventMouse * event)
     {
         if (this->frameCounter < 30)
         {
@@ -259,7 +259,7 @@ namespace screens
         return;
     }// end function
 
-    void LevelsMenu::mouseMoveHandler(cocos2d::Event * param1)
+    void LevelsMenu::mouseMoveHandler(cocos2d::EventMouse * param1)
     {
         if (this->mouseMoveTarget)
         {
@@ -415,7 +415,7 @@ namespace screens
         return;
     }// end function
 
-    void LevelsMenu::mouseDownHandler(cocos2d::Event * event)
+    void LevelsMenu::mouseDownHandler(cocos2d::EventMouse * event)
     {
         if (this->mouseDownTarget)
         {
@@ -485,7 +485,7 @@ namespace screens
         return;
     }// end function
 
-    void LevelsMenu::mouseUpHandler(cocos2d::Event * event)
+    void LevelsMenu::mouseUpHandler(cocos2d::EventMouse * event)
     {
         if (this->mouseDownTarget)
         {

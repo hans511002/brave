@@ -35,15 +35,15 @@ namespace engine
 
 virtual             void update(float dt=0) ;
 
-            void mouseMoveHandler(cocos2d::Event * param1) ;
+            void mouseMoveHandler(cocos2d::EventMouse * param1) ;
 
-            void mouseDownHandler(cocos2d::Event * param1) ;
+            void mouseDownHandler(cocos2d::EventMouse * param1) ;
 
-            void mouseUpHandler(cocos2d::Event * param1) ;
+            void mouseUpHandler(cocos2d::EventMouse * param1) ;
 
-            void rightMouseDownHandler(cocos2d::Event * param1);
+            void rightMouseDownHandler(cocos2d::EventMouse * param1);
 
-            void rightMouseUpHandler(cocos2d::Event * param1);
+            void rightMouseUpHandler(cocos2d::EventMouse * param1);
 
             void kill()  ;
         };

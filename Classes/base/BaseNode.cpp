@@ -186,25 +186,15 @@ namespace std
 		if(this->mouseEnabled || this->buttonMode)
 			addEventNode(this);
 		Node::onEnter();
-		if(schdt)
-		{
+		if(schdt==1)
 			this->schedule(schedule_selector(BaseNode::scheduleUpdate), AnimationInterval);
-		}
 	};
 	void BaseNode::onExit()
 	{
 		removeEventNode(this);
-		cleanup();
 		Node::onExit();
 	};
-	void BaseNode::cleanup()
-	{
-		if(schdt)
-		{
-			this->unschedule(schedule_selector(BaseNode::scheduleUpdate));
-		}
-		Node::cleanup();
-	};
+ 
 	void BaseNode::scheduleUpdate(float dt)
 	{
 		enterFrameHandler(dt);
@@ -212,24 +202,19 @@ namespace std
 	void BaseNode::enterFrameHandler(float dt)
 	{
 	};
-
-
-	void BaseSprite::mouseDownHandler(cocos2d::EventMouse *event)//(event:MouseEvent) : void
-	{
-		if (!std::hitTest(this, event))return;
-		Node * node = event->getCurrentTarget();
-		Event::Type tp = event->getType();
-		string target = node->getName();
-		CCLOG("BaseSprite::mouseDownHandler %s", target.c_str());
-	}
-	void BaseLayer::mouseDownHandler(cocos2d::EventMouse *event)//(event:MouseEvent) : void
-	{
-		if (!std::hitTest(this, event))return;
-		Node * node = event->getCurrentTarget();
-		Event::Type tp = event->getType();
-		string target = node->getName();
-		CCLOG("BaseLayer::mouseDownHandler %s", target.c_str());
-	}
+	void BaseNode::enableFrameHandler(bool init){
+		schdt = 2;
+		if (init)
+			this->schedule(schedule_selector(BaseNode::scheduleUpdate), AnimationInterval);
+		else
+			schdt = 1;
+	};
+	void BaseNode::disableFrameHandler(){
+		if (schdt){
+			schdt = 0;
+			this->unschedule(schedule_selector(BaseNode::scheduleUpdate));
+		}
+	};
 
 	bool BaseLayer::init()
 	{
@@ -245,7 +230,17 @@ namespace std
 		_onStart();
 		return true;
 	}
-
+	void BaseLayer::onEnter()
+	{
+		if (this->mouseEnabled || this->buttonMode)
+			addEventNode(this);
+		LayerColor::onEnter();
+	};
+	void BaseLayer::onExit()
+	{
+		removeEventNode(this);
+		LayerColor::onExit();
+	};
 	cocos2d::Label* EventNode::createLabel(const std::string& string)
 	{
 		const auto text = cocos2d::Label::create();
@@ -284,6 +279,10 @@ namespace std
 	{
 		if(!node->isVisible())return false;
 		if(node->getOpacity() < 2)return false;
+		if (ISTYPE(EventNode, node)){
+			EventNode* enode=ISTYPE(EventNode, node);
+			if (!enode->mouseEnabled &&!enode->buttonMode)return false;
+		} 
 		Vec2 nsp = node->convertToNodeSpace(pt);//convertToNodeSpace convertToNodeSpaceAR
 		Rect bb;
 		bb.size = node->getContentSize();
@@ -306,7 +305,6 @@ namespace std
 		}
 		return false;
 	}
-
 
 	bool BaseSprite::atStage()
 	{
@@ -374,7 +372,6 @@ namespace std
 		this->setContentSize(size);
 	};
 
-
 	float BaseSprite::getWidth()
 	{
 		return this->getContentSize().width;
@@ -417,43 +414,22 @@ namespace std
 		drawNode->setScaleY(this->getScaleY());
 	};
 
-	std::MouseEvent::MouseEvent(MouseEventType mouseEventCode) : cocos2d::EventMouse(mouseEventCode)
+	MouseEvent::MouseEvent(MouseEventType mouseEventCode) : cocos2d::EventMouse(mouseEventCode), idx(0), target(NULL)
 	{
 	};
-	inline void std::MouseEvent::setCurrentTarget(Node* target)
-	{
-		cocos2d::EventMouse::setCurrentTarget(target);
-	};
-	std::MouseEvent* BaseNode::buildMouseEvent(Node * node, int mouseButton)
-	{
-		std::MouseEvent* e = new std::MouseEvent(cocos2d::EventMouse::MouseEventType::MOUSE_DOWN);
-		e->setMouseButton(mouseButton);
-		e->setCurrentTarget(node);
-		if(node)
-		{
-			Vec2 pos = node->convertToWorldSpace(node->getPosition());
-			e->setCursorPosition(pos.x + 0.1, pos.y + 0.1);
-		}
-		else
-		{
-			Vec2 pos = this->convertToWorldSpace(this->getPosition());
-			e->setCursorPosition(pos.x + 0.1, pos.y + 0.1);
-		}
-		return e;
-	}
-	std::MouseEvent::MouseEvent(cocos2d::EventMouse * e, bool incSub ) :EventMouse(*e)
+	MouseEvent::MouseEvent(cocos2d::EventMouse * e, bool incSub) :EventMouse(*e), idx(0), target(NULL)
 	{
 		Node * node = e->getCurrentTarget();
 		hitTest(node, incSub);
 	};
-	void std::MouseEvent::hitTest(Node *node, bool incSub)
+	void  MouseEvent::hitTest(Node *node, bool incSub)
 	{
-		if(ISTYPE(BaseNode, node))
+		if(ISTYPE(EventNode, node))
 		{
-			BaseNode *n = ISTYPE(BaseNode, node);
+			EventNode *n = ISTYPE(EventNode, node);
 			if(n->hitTest(this))
-				currentTargets.push(n);
-		}
+				currentTargets.push(node);
+		} 
 		if(incSub && node->isVisible() && node->getChildrenCount())
 		{
 			int len = node->getChildrenCount();
@@ -465,17 +441,17 @@ namespace std
 			}
 		}
 	};
-	void std::MouseEvent::hitTest(Node *node, int level)
+	void  MouseEvent::hitTest(Node *node, int level)
 	{
-		if(ISTYPE(BaseNode, node))
+		if (ISTYPE(EventNode, node))
 		{
-			BaseNode *n = ISTYPE(BaseNode, node);
+			EventNode *n = ISTYPE(EventNode, node);
 			if(n->hitTest(this))
-				currentTargets.push(n);
-			if(n->mouseChildren && n->isVisible() && n->getChildrenCount())
+				currentTargets.push(node);
+			if (n->mouseChildren && node->isVisible() && node->getChildrenCount())
 			{
-				int len = n->getChildrenCount();
-				Vector<Node*>& nodes = n->getChildren();
+				int len = node->getChildrenCount();
+				Vector<Node*>& nodes = node->getChildren();
 				for(int i = 0; i < len; i++)
 				{
 					node = nodes.at(i);
@@ -499,21 +475,53 @@ namespace std
 			}
 		}
 	};
-
-	std::MouseEvent * buildMouseEvent(EventMouse * e)
+	void std::MouseEvent::setCurrentTarget(Node* target)
 	{
-		std::MouseEvent * me = new std::MouseEvent(e);
+		cocos2d::EventMouse::setCurrentTarget(target);
+		this->target = target;
+	};
+	bool MouseEvent::hasNext(){
+		if (currentTargets.size() > idx){
+			setCurrentTarget(currentTargets.at(idx));
+			idx++;
+		}
+		return false;
+	};
+
+	std::MouseEvent buildMouseEvent(EventMouse * e)
+	{
+		std::MouseEvent  me(e);
+		Node * n=	e->getCurrentTarget();
 		int l = EventNodes.size();
-		for(int i = 0; i < l; i++)
+		for (int i = 0; i < l; i++)
 		{
 			EventNode * _node = EventNodes.at(i);
-			Node *node = ISTYPE(Node,_node);
-			if(node)
-				me->currentTargets.push(node);
+			Node *node = ISTYPE(Node, _node);
+			if (n == node)continue;
+			if (!node)continue;
+			if (std::hitTest(node,e))
+				me.currentTargets.push(node);
 		}
 		return me;
 	};
 
+	MouseEvent BaseNode::buildMouseEvent(Node * node, int mouseButton)
+	{
+		std::MouseEvent e(cocos2d::EventMouse::MouseEventType::MOUSE_DOWN);
+		e.setMouseButton(mouseButton);
+		e.setCurrentTarget(node);
+		if (node)
+		{
+			Vec2 pos = node->convertToWorldSpace(node->getPosition());
+			e.setCursorPosition(pos.x + 0.1, pos.y + 0.1);
+		}
+		else
+		{
+			Vec2 pos = this->convertToWorldSpace(this->getPosition());
+			e.setCursorPosition(pos.x + 0.1, pos.y + 0.1);
+		}
+		return e;
+	}
 	void BaseNode::enableMouseHandler()
 	{
 		if(!this->mouseEnabled)
@@ -531,6 +539,14 @@ namespace std
 			getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 		}
 	};
+	void BaseNode::disableMouseHandler(){
+		if (listener){
+			getEventDispatcher()->removeEventListener(listener);
+			delete listener;
+			listener = NULL;
+		}
+	}
+
 	void BaseNode::enableKeyHandler()
 	{
 		const auto keyboardListener = cocos2d::EventListenerKeyboard::create();
@@ -569,7 +585,6 @@ namespace std
 			//->switchSkin();
 			break;
 		}
-
 	};
 	void EventNode::keyBoardReleasedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event)
 	{
@@ -599,6 +614,7 @@ namespace std
 		if(!std::hitTest(event->getCurrentTarget(),event))return;
 		logInfo("hitTest true : mouse in ", event->getCurrentTarget()->getName());
 		Node * node = event->getCurrentTarget();
+		Event::Type tp = event->getType();
 		logInfo("event targetNamePath", getNamePath(node));
 		int mouseButton = event->getMouseButton();
 		if(mouseButton == 1)
@@ -611,6 +627,7 @@ namespace std
 		//loginfo("mouseUp", event);
 		if(mouseButton == 1)rightMouseUpHandler(event);
 	};
+
 	void EventNode::mouseMovedHandler(cocos2d::EventMouse* event)
 	{
 		if(!this->hitTest(event))return;

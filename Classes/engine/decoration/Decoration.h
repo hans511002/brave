@@ -7,7 +7,7 @@ namespace engine{
 	namespace  decoration
 	{
 
-		class Decoration :public BaseLayer
+		class Decoration :public BaseNode
 		{
 		public:
 			int i;// : int = 0;

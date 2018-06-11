@@ -96,7 +96,7 @@ namespace engine{
             }
             return;
         }// end function
-		void BuildTowerMenu::mouseMoveHandler(cocos2d::Event * event)
+		void BuildTowerMenu::mouseMoveHandler(cocos2d::EventMouse * event)
 		{
 			if (!this->closeFlag)
 			{
@@ -119,7 +119,7 @@ namespace engine{
 			}
 			return;
 		}
-        void BuildTowerMenu::mouseDownHandler(cocos2d::Event * event)
+        void BuildTowerMenu::mouseDownHandler(cocos2d::EventMouse * event)
         {
             if (!this->closeFlag)
             {
@@ -145,7 +145,7 @@ namespace engine{
             }
             return;
         }// end function
-        void BuildTowerMenu::mouseUpHandler(cocos2d::Event * event)
+        void BuildTowerMenu::mouseUpHandler(cocos2d::EventMouse * event)
         {
             return;
         }// end function

@@ -203,7 +203,7 @@ namespace screens
         return;
     }// end function
 
-    void Defeat::mouseMoveHandler(cocos2d::Event * event) 
+    void Defeat::mouseMoveHandler(cocos2d::EventMouse * event) 
     {
         if (event->target->name == "continueCase")
         {
@@ -259,7 +259,7 @@ namespace screens
         return;
     }// end function
 
-    void Defeat::mouseDownHandler(cocos2d::Event * event)
+    void Defeat::mouseDownHandler(cocos2d::EventMouse * event)
     {
         if (event->target->name == "continueCase")
         {
@@ -296,7 +296,7 @@ namespace screens
         return;
     }// end function
 
-    void Defeat::mouseUpHandler(cocos2d::Event * event)
+    void Defeat::mouseUpHandler(cocos2d::EventMouse * event)
     {
         if (event->target->name == "continueCase")
         {

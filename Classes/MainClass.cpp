@@ -1,4 +1,4 @@
-#include "MainCLass.h"
+﻿#include "MainCLass.h"
 #include "engine/World.h"
 #include "screens/MiddleScreen.h"
 #include "screens/LevelsMenu.h"
@@ -45,7 +45,6 @@ bool Main::init()
     //this->tracker.trackPageview("openGame");
     addNewScreen("World");
 	this->enableKeyHandler();
-	this->enableMouseHandler();
     return true;
 }// end function
 
@@ -132,7 +131,13 @@ cocos2d::Image * Main::getBitmapData(cocos2d::Node* param1) //: BitmapData
     //return this->bd;
     return (cocos2d::Image *)NULL;
 }// end function
-
+void Main::addStartLogo()
+{
+	//this->container = new StartMenu();
+	//this->startMenuClass = new StartMenu();
+	//this->addChild(this->startMenuClass);
+	return;
+}// end function
 void Main::keyBoardPressedHandler(EventKeyboard::KeyCode keycode, cocos2d::Event *event)
 {
     if ((int)keycode == 49)
@@ -252,17 +257,67 @@ void Main::keyBoardPressedHandler(EventKeyboard::KeyCode keycode, cocos2d::Event
     }
     return;
 }// end function
-
-void Main::addStartLogo()
+void Main::keyBoardReleasedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event){
+	EventNode::keyBoardPressedHandler(keyCode, event);
+};
+void Main::mouseDownHandler(cocos2d::EventMouse* event){
+	EventNode::mouseDownHandler(event);
+	int mouseButton = event->getMouseButton();
+	if (mouseButton == 1)return;
+	std::MouseEvent * me= std::buildMouseEvent(event);
+	if (this->worldClass)
+		this->worldClass->mouseDownHandler(me);
+	if (this->levelsMenuClass)
+		this->levelsMenuClass->mouseDownHandler(me);
+	//if (this->startMenuClass)
+	//	this->startMenuClass->mouseDownHandler(me);
+};
+void Main::mouseUpHandler(cocos2d::EventMouse* event){
+	EventNode::mouseUpHandler(event);
+	int mouseButton = event->getMouseButton();
+	if (mouseButton == 1)return;
+	std::MouseEvent * me = std::buildMouseEvent(event);
+	if (this->worldClass)
+		this->worldClass->mouseUpHandler(me);
+	if (this->levelsMenuClass)
+		this->levelsMenuClass->mouseUpHandler(me);
+	//if (this->startMenuClass)
+	//	this->startMenuClass->mouseUpHandler(me);
+};
+void Main::mouseMovedHandler(cocos2d::EventMouse* event){
+	EventNode::mouseMovedHandler(event);
+	std::MouseEvent * me = std::buildMouseEvent(event);
+	if (this->worldClass)
+		this->worldClass->mouseMovedHandler(me);
+	if (this->levelsMenuClass)
+		this->levelsMenuClass->mouseMovedHandler(me);
+	//if (this->startMenuClass)
+	//	this->startMenuClass->mouseMovedHandler(me);
+};
+void Main::mouseScrollHandler(cocos2d::EventMouse* event){
+	EventNode::mouseScrollHandler(event);
+};
+void Main::rightMouseDownHandler(cocos2d::EventMouse* event){
+	EventNode::rightMouseDownHandler(event);
+	std::MouseEvent * me = std::buildMouseEvent(event);
+	if (this->worldClass)
+		this->worldClass->rightMouseDownHandler(me);
+	if (this->levelsMenuClass)
+		this->levelsMenuClass->rightMouseDownHandler(me);
+	//if (this->startMenuClass)
+	//	this->startMenuClass->rightMouseDownHandler(me);
+};
+void Main::rightMouseUpHandler(cocos2d::EventMouse* event)
 {
-    //this->container = new StartMenu();
-    //this->startMenuClass = new StartMenu();
-    //this->addChild(this->startMenuClass);
-    return;
-}// end function
-//virtual void keyBoardPressedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-//virtual void keyBoardReleasedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-//virtual void mouseDownHandler(cocos2d::EventMouse* event);
-//virtual void mouseUpHandler(cocos2d::EventMouse* event);
-//virtual void mouseMovedHandler(cocos2d::EventMouse* event);
+	EventNode::rightMouseUpHandler(event);
+	//if (this->worldClass)
+	//	this->worldClass->rightMouseUpHandler(me);
+	//if (this->levelsMenuClass)
+	//	this->levelsMenuClass->rightMouseUpHandler(me);
+	//if (this->startMenuClass)
+	//	this->startMenuClass->rightMouseUpHandler(me);
+};
+void Main::touchActionHandler(cocos2d::Ref *pSender, cocos2d::ui::TouchEventType type){
+	EventNode::touchActionHandler(pSender,type);
+};
 

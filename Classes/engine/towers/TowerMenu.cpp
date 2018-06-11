@@ -684,7 +684,7 @@ namespace engine
 			}
 			return;
 		}// end function
-		void TowerMenu::mouseMoveHandler(cocos2d::Event * param1)
+		void TowerMenu::mouseMoveHandler(cocos2d::EventMouse * param1)
 		{
 			if (this->container->currentFrame == 1)
 			{
@@ -1188,7 +1188,7 @@ namespace engine
 			}
 			return;
 		}// end function
-		void TowerMenu::mouseDownHandler(cocos2d::Event * event)
+		void TowerMenu::mouseDownHandler(cocos2d::EventMouse * event)
 		{
 			if (event->target->name == "btnUpgradeMenuCase")
 			{
@@ -1480,7 +1480,7 @@ namespace engine
 			return;
 		}// end function
 
-		void TowerMenu::mouseUpHandler(cocos2d::Event * event)
+		void TowerMenu::mouseUpHandler(cocos2d::EventMouse * event)
 		{
 			if (this->container->currentFrame == 1)
 			{

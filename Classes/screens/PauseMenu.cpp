@@ -123,7 +123,7 @@ namespace screens
         return;
     }// end function
 
-    void PauseMenu::enterFrameHandler(cocos2d::Event * event)
+    void PauseMenu::enterFrameHandler(cocos2d::EventMouse * event)
     {
         if (this->frameCounter < 30)
         {
@@ -354,7 +354,7 @@ namespace screens
         return;
     }// end function
 
-    void PauseMenu::mouseMoveHandler(cocos2d::Event *param1)  
+    void PauseMenu::mouseMoveHandler(cocos2d::EventMouse *param1)  
     {
         if (this->questionFlag == 0)
         {
@@ -563,7 +563,7 @@ namespace screens
         return;
     }// end function
 
-    void PauseMenu::mouseDownHandler(cocos2d::Event *event) 
+    void PauseMenu::mouseDownHandler(cocos2d::EventMouse *event) 
     {
         if (this->questionFlag == 0)
         {
@@ -675,7 +675,7 @@ namespace screens
         return;
     }// end function
 
-    void PauseMenu::mouseUpHandler(cocos2d::Event * event) 
+    void PauseMenu::mouseUpHandler(cocos2d::EventMouse * event) 
     {
         if (this->questionFlag == 0)
         {

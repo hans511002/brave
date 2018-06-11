@@ -1344,7 +1344,7 @@ namespace engine
 		}
 	}
 
-	void WorldInterface::mouseDownHandler(cocos2d::Event *event)//(event:MouseEvent) : void
+	void WorldInterface::mouseDownHandler(cocos2d::EventMouse *event)//(event:MouseEvent) : void
 	{
 		cocos2d::EventMouse*e = (cocos2d::EventMouse*)event;
 		Node * node = event->getCurrentTarget();
@@ -1630,7 +1630,7 @@ namespace engine
 		}
 	}
 
-	void WorldInterface::mouseUpHandler(cocos2d::Event *event)//(event:MouseEvent) : void
+	void WorldInterface::mouseUpHandler(cocos2d::EventMouse *event)//(event:MouseEvent) : void
 	{
 		if (!this->world->getSphere && !this->world->cast)
 		{

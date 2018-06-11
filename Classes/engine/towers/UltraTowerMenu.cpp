@@ -260,7 +260,7 @@ namespace engine
             return;
         }// end function
         
-        void UltraTowerMenu::mouseMoveHandler(cocos2d::Event *param1)
+        void UltraTowerMenu::mouseMoveHandler(cocos2d::EventMouse *param1)
         {
             if (param1->target->name == "btnUpgradeMenuCase")
             {
@@ -544,7 +544,7 @@ namespace engine
             return;
         }// end function
 
-        void UltraTowerMenu::mouseDownHandler(cocos2d::Event *event)
+        void UltraTowerMenu::mouseDownHandler(cocos2d::EventMouse *event)
         {
             if (event->target->name == "btnUpgradeMenuCase")
             {
@@ -807,7 +807,7 @@ namespace engine
             return;
         }// end function
 
-        void UltraTowerMenu::mouseUpHandler(cocos2d::Event *event)
+        void UltraTowerMenu::mouseUpHandler(cocos2d::EventMouse *event)
         {
             if (event->target->name == "btnUpgradeMenuCase")
             {
