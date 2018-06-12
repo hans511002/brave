@@ -22,7 +22,7 @@ namespace screens
         float startMusicVolume;
         int frameCounter;
 
-        FastPause():openFlag(true),closeFlag(false),startMusicVolume(0),frameCounter(0);
+		  FastPause();
 
         bool init();
 
@@ -48,6 +48,6 @@ namespace screens
         //    return;
         //}// end function
 
-    }
+	};
 }
 #endif

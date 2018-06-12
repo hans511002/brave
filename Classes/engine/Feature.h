@@ -21,7 +21,7 @@ namespace engine
 
 		Feature();
 
-		void   update();
+		void   update(float dt=0);
 
 		void listOfMoveSpheres();
 

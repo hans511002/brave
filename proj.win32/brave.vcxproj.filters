@@ -297,6 +297,9 @@
     <ClCompile Include="..\Classes\engine\towers\Tower4.cpp">
       <Filter>src\engine\towers</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\screens\FastPause.cpp">
+      <Filter>src\screens</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -694,6 +697,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\test\WorldInterface.h">
       <Filter>src\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\screens\FastPause.h">
+      <Filter>src\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\screens\Screen.h">
+      <Filter>src\screens</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

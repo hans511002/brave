@@ -264,11 +264,11 @@ void Main::mouseDownHandler(cocos2d::EventMouse* event){
 	EventNode::mouseDownHandler(event);
 	int mouseButton = event->getMouseButton();
 	if (mouseButton == 1)return;
-	std::MouseEvent * me= std::buildMouseEvent(event);
+	std::MouseEvent me= std::buildMouseEvent(event);
 	if (this->worldClass)
-		this->worldClass->mouseDownHandler(me);
+		this->worldClass->mouseDownHandler(&me);
 	if (this->levelsMenuClass)
-		this->levelsMenuClass->mouseDownHandler(me);
+		this->levelsMenuClass->mouseDownHandler(&me);
 	//if (this->startMenuClass)
 	//	this->startMenuClass->mouseDownHandler(me);
 };
@@ -276,21 +276,21 @@ void Main::mouseUpHandler(cocos2d::EventMouse* event){
 	EventNode::mouseUpHandler(event);
 	int mouseButton = event->getMouseButton();
 	if (mouseButton == 1)return;
-	std::MouseEvent * me = std::buildMouseEvent(event);
+	std::MouseEvent  me = std::buildMouseEvent(event);
 	if (this->worldClass)
-		this->worldClass->mouseUpHandler(me);
+		this->worldClass->mouseUpHandler(&me);
 	if (this->levelsMenuClass)
-		this->levelsMenuClass->mouseUpHandler(me);
+		this->levelsMenuClass->mouseUpHandler(&me);
 	//if (this->startMenuClass)
 	//	this->startMenuClass->mouseUpHandler(me);
 };
 void Main::mouseMovedHandler(cocos2d::EventMouse* event){
 	EventNode::mouseMovedHandler(event);
-	std::MouseEvent * me = std::buildMouseEvent(event);
+	std::MouseEvent  me = std::buildMouseEvent(event);
 	if (this->worldClass)
-		this->worldClass->mouseMovedHandler(me);
+		this->worldClass->mouseMovedHandler(&me);
 	if (this->levelsMenuClass)
-		this->levelsMenuClass->mouseMovedHandler(me);
+		this->levelsMenuClass->mouseMovedHandler(&me);
 	//if (this->startMenuClass)
 	//	this->startMenuClass->mouseMovedHandler(me);
 };
@@ -299,11 +299,11 @@ void Main::mouseScrollHandler(cocos2d::EventMouse* event){
 };
 void Main::rightMouseDownHandler(cocos2d::EventMouse* event){
 	EventNode::rightMouseDownHandler(event);
-	std::MouseEvent * me = std::buildMouseEvent(event);
+	std::MouseEvent  me = std::buildMouseEvent(event);
 	if (this->worldClass)
-		this->worldClass->rightMouseDownHandler(me);
+		this->worldClass->rightMouseDownHandler(&me);
 	if (this->levelsMenuClass)
-		this->levelsMenuClass->rightMouseDownHandler(me);
+		this->levelsMenuClass->rightMouseDownHandler(&me);
 	//if (this->startMenuClass)
 	//	this->startMenuClass->rightMouseDownHandler(me);
 };

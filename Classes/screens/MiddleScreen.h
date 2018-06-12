@@ -13,6 +13,8 @@ namespace screens
         MovieClipSub * rightDown;
         MovieClipSub * rightUp; 
         MiddleScreen_mc(); 
+		virtual	void stop();
+
 	 };
 
     struct MiddleScreenCentr_mc:public MovieClip

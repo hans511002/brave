@@ -1,4 +1,6 @@
- 
+#include "BaseHeaders.h"
+#include "MiddleScreen.h"
+#include "MainClass.h"
 #include "PauseMenu.h"
 
 namespace screens
@@ -17,10 +19,10 @@ namespace screens
         //this->addEventListener(MouseEvent.MOUSE_MOVE, this->mouseMoveHandler);
         //this->addEventListener(MouseEvent.MOUSE_DOWN, this->mouseDownHandler);
         //this->addEventListener(MouseEvent.MOUSE_UP, this->mouseUpHandler);
-        Main::mainClass->stage.frameRate = 30;
+        //Main::mainClass->stage->frameRate = 30;
         this->world = Main::mainClass->worldClass;
         this->setPosition(Vec2(0,0)); 
-        this->worldInterface->setPosition(Vec2(0,0)); 
+		this->world->worldInterface->setPosition(Vec2(0, 0));
         
         if (this->world->towerMenu)
         {
@@ -203,7 +205,7 @@ namespace screens
                 {
                     this->container->scroll->btnMusic->alpha = 1;
                     this->container->scroll->btnSound->alpha = 1;
-                    this->container->scroll->btnLow.alpha = 1;
+                    this->container->scroll->btnLow->alpha = 1;
                     this->container->scroll->btnMedium->alpha = 1;
                     this->container->scroll->btnHigh->alpha = 1;
                     this->container->scroll->btnOn->alpha = 1;
@@ -211,8 +213,8 @@ namespace screens
                     this->container->scroll->btnResume->alpha = 1;
                     this->container->scroll->btnRestart->alpha = 1;
                     this->container->scroll->btnExit->alpha = 1;
-                    this->container->scroll->qualityTXT.alpha = 1;
-                    this->container->scroll->autopauseTXT.alpha = 1; 
+                    this->container->scroll->qualityTXT->alpha = 1;
+                    this->container->scroll->autopauseTXT->alpha = 1; 
                     this->container->scroll->btnMusic->mouseChildren = true;
                     this->container->scroll->btnMusic->mouseEnabled = true; 
                     this->container->scroll->btnSound->mouseChildren = true;
@@ -843,7 +845,7 @@ namespace screens
                     this->questionFlag = 1;
                     this->container->scroll->btnMusic->alpha = 0.5;
                     this->container->scroll->btnSound->alpha = 0.5;
-                    this->container->scroll->btnLow.alpha = 0.5;
+                    this->container->scroll->btnLow->alpha = 0.5;
                     this->container->scroll->btnMedium->alpha = 0.5;
                     this->container->scroll->btnHigh->alpha = 0.5;
                     this->container->scroll->btnOn->alpha = 0.5;
@@ -851,8 +853,8 @@ namespace screens
                     this->container->scroll->btnResume->alpha = 0.5;
                     this->container->scroll->btnRestart->alpha = 0.5;
                     this->container->scroll->btnExit->alpha = 0.5;
-                    this->container->scroll->qualityTXT.alpha = 0.5;
-                    this->container->scroll->autopauseTXT.alpha = 0.5; 
+                    this->container->scroll->qualityTXT->alpha = 0.5;
+                    this->container->scroll->autopauseTXT->alpha = 0.5; 
                     this->container->scroll->btnMusic->mouseChildren = false;
                     this->container->scroll->btnMusic->mouseEnabled = false; 
                     this->container->scroll->btnSound->mouseChildren = false;
@@ -887,7 +889,7 @@ namespace screens
                     this->questionFlag = 2;
                     this->container->scroll->btnMusic->alpha = 0.5;
                     this->container->scroll->btnSound->alpha = 0.5;
-                    this->container->scroll->btnLow.alpha = 0.5;
+                    this->container->scroll->btnLow->alpha = 0.5;
                     this->container->scroll->btnMedium->alpha = 0.5;
                     this->container->scroll->btnHigh->alpha = 0.5;
                     this->container->scroll->btnOn->alpha = 0.5;
@@ -895,8 +897,8 @@ namespace screens
                     this->container->scroll->btnResume->alpha = 0.5;
                     this->container->scroll->btnRestart->alpha = 0.5;
                     this->container->scroll->btnExit->alpha = 0.5;
-                    this->container->scroll->qualityTXT.alpha = 0.5;
-                    this->container->scroll->autopauseTXT.alpha = 0.5; 
+                    this->container->scroll->qualityTXT->alpha = 0.5;
+                    this->container->scroll->autopauseTXT->alpha = 0.5; 
                     this->container->scroll->btnMusic->mouseChildren = false;
                     this->container->scroll->btnMusic->mouseEnabled = false; 
                     this->container->scroll->btnSound->mouseChildren = false;

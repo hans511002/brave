@@ -508,18 +508,19 @@ namespace std
 		return me;
 	};
 
-	MouseEvent BaseNode::buildMouseEvent(Node * node, int mouseButton)
+	std::MouseEvent BaseNode::buildMouseEvent(Node * node, int mouseButton, cocos2d::EventMouse::MouseEventType mouseEventType)
 	{
-		std::MouseEvent e(cocos2d::EventMouse::MouseEventType::MOUSE_DOWN);
+		std::MouseEvent e(mouseEventType);
 		e.setMouseButton(mouseButton);
-		e.setCurrentTarget(node);
 		if (node)
 		{
+			e.setCurrentTarget(node);
 			Vec2 pos = node->convertToWorldSpace(node->getPosition());
 			e.setCursorPosition(pos.x + 0.1, pos.y + 0.1);
 		}
 		else
 		{
+			e.setCurrentTarget(this);
 			Vec2 pos = this->convertToWorldSpace(this->getPosition());
 			e.setCursorPosition(pos.x + 0.1, pos.y + 0.1);
 		}

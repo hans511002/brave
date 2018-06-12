@@ -1,5 +1,7 @@
 ﻿ 
 #include "FastPause.h" 
+#include "engine/World.h" 
+#include "MainClass.h" 
  
 namespace screens
 {
@@ -9,7 +11,7 @@ namespace screens
     };
      
     FastPause::FastPause():openFlag(true),closeFlag(false),startMusicVolume(0),frameCounter(0)
-    {
+	{
         //this->addEventListener(Event.ADDED_TO_STAGE, this->init);
         return;
     }// end function

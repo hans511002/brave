@@ -32,6 +32,7 @@
 
 #include "screens/MiddleScreen.h"
 #include "screens/PauseMenu.h"
+#include "screens/FastPause.h"
 
 //#include "animation/Hint.h"
 

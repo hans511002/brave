@@ -18,25 +18,26 @@ namespace engine
         MovieClip *  fireLight1; 
         };
 
-        class Tower8 : public Tower
-        {
-            bool shootFlag;
-            int upgr1_intervalCounter;//:int = 1;
-            int upgr1_intervalTimer;
-             int soundCounter;//:int = 0;
-            int soundTimer;//:int = 5;
+		class Tower8 : public Tower
+		{
+		public:
+			bool shootFlag;
+			int upgr1_intervalCounter;//:int = 1;
+			int upgr1_intervalTimer;
+			int soundCounter;//:int = 0;
+			int soundTimer;//:int = 5;
 
-            Tower8();
+			Tower8();
 
-            bool init();
+			bool init();
 
-virtual             void update(float dt=0) ;
+			virtual void update(float dt = 0);
 
-            void scan();
+			void scan();
 
-            void attack();
+			void attack();
 
-        };
+		};
     }
 }
 #endif

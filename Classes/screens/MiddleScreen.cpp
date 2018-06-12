@@ -1,4 +1,4 @@
-﻿#include "BaseNode.h"
+﻿#include "BaseHeaders.h"
 
 #include "MiddleScreen.h"
 
@@ -7,7 +7,7 @@
 namespace screens
 {
     
-    Screen:Screen():frameCounter(0),openFlag(true) ,fireFrame(0),closeFlag(false),dead(false) 
+    Screen::Screen():frameCounter(0),openFlag(true) ,closeFlag(false),dead(false) 
     {
         
     };
@@ -25,7 +25,9 @@ namespace screens
     {
     }
     
-    void MiddleScreen_mc::stop(){
+    void MiddleScreen_mc::stop()
+	{
+		MovieClip::stop();
         leftDown->stop();
         leftUp->stop();
         rightDown->stop();

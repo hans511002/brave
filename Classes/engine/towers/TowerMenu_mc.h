@@ -75,6 +75,8 @@ namespace engine
 			MovieClipSub * sphereSlot4SphereAnimaCont;
 
 			TowerMenu_mc();
+			MovieClipSub * getSphereSlot(MCCase * slotCase);
+			MovieClipSub * getSphereAnima(MCCase * slotCase);
 		};
 
 		class UltraTowerMenu_mc :public MovieClip

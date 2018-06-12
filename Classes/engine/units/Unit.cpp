@@ -5,13 +5,14 @@
 
 namespace engine
 {
-		NewEnemy_mc::NewEnemy_mc() :MovieClip("unit/", "NewEnemy_mc", "NewEnemy_mc"), mouseStatus(0)
+	NewEnemy_mc::NewEnemy_mc() :MouseStatusMC("unit/", "NewEnemy_mc", "NewEnemy_mc") 
 		{
 			newEnemyCase = this->createCase("newEnemyCase");
 		};
 
-		NewElement_mc::NewElement_mc(){
-			newElementCase = this->createCase("newEnemyCase");
+	NewElement_mc::NewElement_mc() :MouseStatusMC("unit/", "NewElement_mc", "NewElement_mc")
+		{
+			newElementCase = this->createCase("newElementCase");
 		};
 	namespace units
 	{

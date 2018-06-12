@@ -12,7 +12,7 @@ namespace engine
 		int  iceBulletCounter; //public var iceBulletCounter:int = 0;
 		int  levinBulletCounter; //public var levinBulletCounter:int = 0;
 		float radius; //public var radius:Number;
-
+		Vec2 this_pt;
 	};
 
 	namespace units

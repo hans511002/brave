@@ -9,15 +9,19 @@ namespace engine
 {
  
 	//class WaveData;
-	
-		struct NewEnemy_mc :public MovieClip
+	struct MouseStatusMC :public MovieClip
+	{
+		int mouseStatus;
+		inline MouseStatusMC(string rootPath, string armName, string dbName, string defAniName = "") :mouseStatus(0), MovieClip(rootPath, armName, dbName, defAniName){};
+		
+	};
+	struct NewEnemy_mc :public MouseStatusMC
 		{
 			MCCase* newEnemyCase;
 			int typeUnit;
-			int mouseStatus;
 			NewEnemy_mc();
 		};
-		struct NewElement_mc :public MovieClip
+	struct NewElement_mc :public MouseStatusMC
 		{
 			MCCase *newElementCase;
 			NewElement_mc();
@@ -68,7 +72,7 @@ namespace engine
 			int way;//public var way:int;
 			float path;//public var path:Number = 0;
 			float finishPath;//public var finishPath:Number;
-			cocos2d::Vec2 this_pt; //public var this_pt:Point;
+			//cocos2d::Vec2 this_pt; //public var this_pt:Point;
 			cocos2d::Vec2 enemy_pt;//public var enemy_pt:Point;
 			bool stopAnima;//public var stopAnima:Boolean;
 			int typeUnit;//public var typeUnit:int;

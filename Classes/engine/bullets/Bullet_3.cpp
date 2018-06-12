@@ -18,7 +18,7 @@ namespace engine{
 			container = new BulletStoneTower_mc();
 			//container->stop();
 			this->addChild(container);
-			testTower = whoShoot;
+			testTower = ISTYPE(Tower,whoShoot);
 			radius = whoShoot->radius;
 			Bullet::init();
 			this->enemyStartPoint = enemyTarget->this_pt;

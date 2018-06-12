@@ -3,6 +3,7 @@
 #include "BaseHeaders.h" 
 #include "engine/units/Unit.h" 
 #include "engine/units/Unit_mc.h"
+#include "engine/level/Level.h"
 
 namespace engine
 {
@@ -77,7 +78,7 @@ namespace engine
             //public var tempObject3:Object;
             //public var tempObject4:Object;
 			TowerBase_mc *container;// public var container : MovieClip;
-            Sprite * myPlace;// :MovieClip;
+			BuildTowerPlace * myPlace;// :MovieClip;
             MovieClip * buildAnima; //public var buildAnima:MovieClip;
             Common::Array<string>  spheresStack; //public var spheresStack:Array;
             Common::Array<int>  slotsStack; //public var slotsStack:Array;
@@ -92,7 +93,7 @@ namespace engine
             string shootingSphere;//public var shootingSphere:String;
 			Common::Array<BulletBase_mc *>  shootinAttackStack; //public var shootinAttackStack:Array;
             Common::Array<units::Unit *>  listOfTargets; //public var listOfTargets:Array;
-            cocos2d::Vec2  this_pt; //public var this_pt:Point;
+            //cocos2d::Vec2  this_pt; //public var this_pt:Point;
             cocos2d::Vec2  enemy_pt; //public var enemy_pt:Point;
             cocos2d::Vec2  shoot_pt; //public var shoot_pt:Point;
             units::Unit * enemyTarget;//public var enemyTarget:Object;

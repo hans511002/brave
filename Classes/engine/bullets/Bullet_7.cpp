@@ -31,7 +31,7 @@ namespace engine
 			cont->smokeCont2->stop();
 			cont->setRotation(180);
 			this->addChild(container);
-			testTower = whoShoot;
+			testTower = ISTYPE(Tower, whoShoot);
 			radius = whoShoot->radius;
 			Bullet::init();
 			this->enemyStartPoint = enemyTarget->this_pt;

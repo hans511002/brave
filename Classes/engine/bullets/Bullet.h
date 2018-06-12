@@ -7,6 +7,7 @@
 
 namespace engine{
  
+	class ShootBase;
 	namespace units{
 	class Unit;
 	};
@@ -138,7 +139,7 @@ namespace engine{
             units::Unit* enemyTarget;//public var enemyTarget:Object;
             float damage;//public var damage:Number;
             int bulletType;//public var bulletType:int;
-            towers::Tower * whoShoot;//public var whoShoot:Object;
+			ShootBase * whoShoot;//public var whoShoot:Object;
             int liveCounter;//public var liveCounter:int;
             int liveTimer;//public var liveTimer:int;
             float distanceX;//public var distanceX:Number;

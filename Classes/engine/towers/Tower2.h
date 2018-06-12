@@ -28,15 +28,16 @@ namespace engine
 			inline Tower2_mc(string rootPath, string armName, string dbName, string defAniName = "") : Tower1_mc(rootPath, armName, dbName, defAniName){};
 			Tower2_mc();
         };
-        class Tower2 : public Tower
-        {
-            Tower2();
+		class Tower2 : public Tower
+		{
+		public:
+			Tower2();
 
-            bool init();
+			bool init();
 
-virtual             void update(float dt=0) ;
+			virtual void update(float dt = 0);
 
-        };
+		};
     }
 }
 #endif

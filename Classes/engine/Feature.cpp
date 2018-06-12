@@ -22,7 +22,7 @@ namespace engine
 			//this->world->road = new level::RoadLevel1_mc();
 			//this->world->decoration = new decoration::DecorationLevel1();
 			this->world->levelType = "grass";
-			if (!Main::mainClass->saveBoxClass->getBoolValue("firstViewTowers",0))
+			if (!Main::mainClass->saveBoxClass->getBoolValue("firstViewTowers", 0))
 				Main::mainClass->saveBoxClass->setValue("firstViewTowers", 0, true);
 		}
 		//else if (this->world->nowLevel == 2)
@@ -171,33 +171,33 @@ namespace engine
 		//}
 
 		//this->world->level->stop();
-		for(int i = 0; i < world->level->flags.size(); i++)
+		for (int i = 0; i < world->level->flags.size(); i++)
 		{
 			MovieClip *place = world->level->flags.at(i);
 			place->gotoAndStop((std::round(std::random() * (place->totalFrames - 1)) + 1));
 			place->play();
 		}
-		for(int i = 0; i < world->level->additionallys.size(); i++)
+		for (int i = 0; i < world->level->additionallys.size(); i++)
 		{
 			MovieClipSub *place = world->level->additionallys.at(i);
-			if(i == 0)
+			if (i == 0)
 				this->world->levelAdditionally = world->level->additionallys.at(i);
-			else if(i == 1)
+			else if (i == 1)
 				this->world->levelAdditionally1 = world->level->additionallys.at(i);
-			else if(i == 2)
+			else if (i == 2)
 				this->world->levelAdditionally2 = world->level->additionallys.at(i);
-			else if(i == 3)
+			else if (i == 3)
 				this->world->levelAdditionally3 = world->level->additionallys.at(i);
 		}
-		for(int i = 0; i < world->level->places.size(); i++)
+		for (int i = 0; i < world->level->places.size(); i++)
 		{
 			BuildTowerPlace *place = world->level->places.at(i);
 			place->placeForBuildCase->buttonMode = true;
- 		}
-		
+		}
+
 		//this->world->road->armature->getAnimation()->stop(); 
 		//this->world->road->armature->setName("road");
-		//this->world->road->alpha = 0;
+		//this->world->road->setAlpha(0);
 		//this->world->road->setVisible(false);// visible = false;
 		//this->world->addChild(this->world->road);
 
@@ -221,8 +221,8 @@ namespace engine
 		//{
 		//	this->world->quality = "high";
 		//}
-		int levelPointerSize=this->world->level->pointers.size();
-		if (levelPointerSize>0 && this->world->level->pointers[0])
+		int levelPointerSize = this->world->level->pointers.size();
+		if (levelPointerSize > 0 && this->world->level->pointers[0])
 		{
 			this->world->pointer1 = this->world->level->pointers[0];// pointer1;
 			//this->world->pointer1->statusAnima = 1;
@@ -240,60 +240,60 @@ namespace engine
 			//this->world->pointer1->setScaleY(0.9);
 			//this->world->pointer1->setScaleX(0.9);
 			//this->world->pointer1->setVisible(false);
-			//this->tempObject = this->world->pointer1->rotation;
+			//tempObject = this->world->pointer1->rotation;
 			//this->world->pointer1->rotation = 0;
-			//this->world->pointer1->arrow.rotation = this->tempObject;
+			//this->world->pointer1->arrow.rotation = tempObject;
 		}
-		if (levelPointerSize>1 && this->world->level->pointers[1])//this->world->level.pointer2)
+		if (levelPointerSize > 1 && this->world->level->pointers[1])//this->world->level.pointer2)
 		{
-		//	this->world->pointer2 = this->world->level.pointer2;
-		//	this->world->pointer2->statusAnima = 1;
-		//	this->world->pointer2->myPoint = new Point(this->world->pointer2.x, this->world->pointer2.y);
-		//	this->world->pointer2->gotoAndStop(2);
-		//	this->world->pointer2.mask2->stop();
-		//	this->world->pointer2.arrow->stop();
-		//	this->world->pointer2.fireAnima->gotoAndStop(1);
-		//	this->world->pointer2.eyesAnima->gotoAndStop(1);
-		//	this->world->pointer2->mask2->rotation = 180;
-		//	this->world->pointer2.pointerCase->buttonMode = true;
-		//	this->world->level.removeChild(this->world->pointer2);
-		//	this->world->addChild(this->world->pointer2);
-		//	this->world->listOfIndexes3.push(this->world->pointer2);
-		//	var _loc_1 : *= 0.9;
-		//	this->world->pointer2.scaleY = 0.9;
-		//	this->world->pointer2->setScaleX(_loc_1);
-		//	this->world->pointer2->setVisible(false);
-		//	this->tempObject = this->world->pointer2.rotation;
-		//	this->world->pointer2.rotation = 0;
-		//	this->world->pointer2.arrow.rotation = this->tempObject;
+			//	this->world->pointer2 = this->world->level.pointer2;
+			//	this->world->pointer2->statusAnima = 1;
+			//	this->world->pointer2->myPoint = new Point(this->world->pointer2.x, this->world->pointer2.y);
+			//	this->world->pointer2->gotoAndStop(2);
+			//	this->world->pointer2.mask2->stop();
+			//	this->world->pointer2.arrow->stop();
+			//	this->world->pointer2.fireAnima->gotoAndStop(1);
+			//	this->world->pointer2.eyesAnima->gotoAndStop(1);
+			//	this->world->pointer2->mask2->rotation = 180;
+			//	this->world->pointer2.pointerCase->buttonMode = true;
+			//	this->world->level.removeChild(this->world->pointer2);
+			//	this->world->addChild(this->world->pointer2);
+			//	this->world->listOfIndexes3.push(this->world->pointer2);
+			//	var _loc_1 : *= 0.9;
+			//	this->world->pointer2.scaleY = 0.9;
+			//	this->world->pointer2->setScaleX(_loc_1);
+			//	this->world->pointer2->setVisible(false);
+			//	tempObject = this->world->pointer2.rotation;
+			//	this->world->pointer2.rotation = 0;
+			//	this->world->pointer2.arrow.rotation = tempObject;
 		}
-		if (levelPointerSize>2 && this->world->level->pointers[2])//this->world->level.pointer3)
+		if (levelPointerSize > 2 && this->world->level->pointers[2])//this->world->level.pointer3)
 		{
-		//	this->world->pointer3 = this->world->level.pointer3;
-		//	this->world->pointer3->statusAnima = 1;
-		//	this->world->pointer3->myPoint = new Point(this->world->pointer3.x, this->world->pointer3.y);
-		//	this->world->pointer3->gotoAndStop(2);
-		//	this->world->pointer3.mask2->stop();
-		//	this->world->pointer3.arrow->stop();
-		//	this->world->pointer3.fireAnima->gotoAndStop(1);
-		//	this->world->pointer3.eyesAnima->gotoAndStop(1);
-		//	this->world->pointer3->mask2->rotation = 180;
-		//	this->world->pointer3.pointerCase->buttonMode = true;
-		//	this->world->level.removeChild(this->world->pointer3);
-		//	this->world->addChild(this->world->pointer3);
-		//	this->world->listOfIndexes3.push(this->world->pointer3);
-		//	var _loc_1 : *= 0.9;
-		//	this->world->pointer3.scaleY = 0.9;
-		//	this->world->pointer3->setScaleX(_loc_1);
-		//	this->world->pointer3->setVisible(false);
-		//	this->tempObject = this->world->pointer3.rotation;
-		//	this->world->pointer3.rotation = 0;
-		//	this->world->pointer3.arrow.rotation = this->tempObject;
+			//	this->world->pointer3 = this->world->level.pointer3;
+			//	this->world->pointer3->statusAnima = 1;
+			//	this->world->pointer3->myPoint = new Point(this->world->pointer3.x, this->world->pointer3.y);
+			//	this->world->pointer3->gotoAndStop(2);
+			//	this->world->pointer3.mask2->stop();
+			//	this->world->pointer3.arrow->stop();
+			//	this->world->pointer3.fireAnima->gotoAndStop(1);
+			//	this->world->pointer3.eyesAnima->gotoAndStop(1);
+			//	this->world->pointer3->mask2->rotation = 180;
+			//	this->world->pointer3.pointerCase->buttonMode = true;
+			//	this->world->level.removeChild(this->world->pointer3);
+			//	this->world->addChild(this->world->pointer3);
+			//	this->world->listOfIndexes3.push(this->world->pointer3);
+			//	var _loc_1 : *= 0.9;
+			//	this->world->pointer3.scaleY = 0.9;
+			//	this->world->pointer3->setScaleX(_loc_1);
+			//	this->world->pointer3->setVisible(false);
+			//	tempObject = this->world->pointer3.rotation;
+			//	this->world->pointer3.rotation = 0;
+			//	this->world->pointer3.arrow.rotation = tempObject;
 		}
 
-		int complexityLevel= this->world->saveBox->getIntValue("complexityLevel");
-		Common::String levelXmlFile="xml/";
-		if (complexityLevel< 4)
+		int complexityLevel = this->world->saveBox->getIntValue("complexityLevel");
+		Common::String levelXmlFile = "xml/";
+		if (complexityLevel < 4)
 			levelXmlFile += "levels";
 		else
 			levelXmlFile = "levelsSurvival";
@@ -470,13 +470,13 @@ namespace engine
 
 
 		this->world->hint = new Hint_mc();
-		this->world->hint->stop(); 
+		this->world->hint->stop();
 		this->world->hint->mouseChildren = false;
 		this->world->hint->mouseEnabled = false;
 		this->world->hint->setVisible(false);
 		this->world->addChild(this->world->hint);
 		this->afterLoadXML();
- 
+
 	}// end function
 
 	void   Feature::update(float dt)
@@ -485,20 +485,21 @@ namespace engine
 		{
 			this->world->getSphere->update();
 		}
-		int complexityLevel=this->world->saveBox->getIntValue("complexityLevel") ;
+		int complexityLevel = this->world->saveBox->getIntValue("complexityLevel");
 		this->listOfMoveSpheres();
 		this->i = 1;
 		while (this->i <= 3)
 		{
+			LevelPointer * tempObject = NULL;
 			if (this->i == 1)
 			{
-				this->tempObject = this->world->pointer1;
+				tempObject = this->world->pointer1;
 			}
 			else if (this->i == 2)
 			{
 				if (this->world->pointer2)
 				{
-					this->tempObject = this->world->pointer2;
+					tempObject = this->world->pointer2;
 				}
 				else
 				{
@@ -509,7 +510,7 @@ namespace engine
 			{
 				if (this->world->pointer3)
 				{
-					this->tempObject = this->world->pointer3;
+					tempObject = this->world->pointer3;
 				}
 				else
 				{
@@ -547,7 +548,7 @@ namespace engine
 						this->world->pointer1->mask1->setRotation(-180);
 						this->world->pointer1->mask2->setRotation(0);
 						this->world->pointer1->setScaleY(0);
-						this->world->pointer1->setScaleX(0); 
+						this->world->pointer1->setScaleX(0);
 						this->world->pointer1->mouseChildren = true;
 						this->world->pointer1->mouseEnabled = true;
 						this->world->pointer1->setVisible(false);
@@ -559,7 +560,7 @@ namespace engine
 							this->world->pointer2->mask1->setRotation(-180);
 							this->world->pointer2->mask2->setRotation(0);
 							this->world->pointer2->setScaleY(0);
-							this->world->pointer2->setScaleX(0); 
+							this->world->pointer2->setScaleX(0);
 							this->world->pointer2->mouseChildren = true;
 							this->world->pointer2->mouseEnabled = true;
 							this->world->pointer2->setVisible(false);
@@ -572,7 +573,7 @@ namespace engine
 							this->world->pointer3->mask1->setRotation(-180);
 							this->world->pointer3->mask2->setRotation(0);
 							this->world->pointer3->setScaleY(0);
-							this->world->pointer3->setScaleX(0); 
+							this->world->pointer3->setScaleX(0);
 							this->world->pointer3->mouseChildren = true;
 							this->world->pointer3->mouseEnabled = true;
 							this->world->pointer3->setVisible(false);
@@ -602,14 +603,14 @@ namespace engine
 					}
 					else
 					{
-						tempObject->statusAnima = 0; 
+						tempObject->statusAnima = 0;
 						tempObject->setScaleY(1);
 						tempObject->setScaleX(1);
 						if (this->world->wavesClass->nowWave == 1)
 						{
 							if (this->world->nowLevel == 1)
 							{
-								if ( complexityLevel < 4)
+								if (complexityLevel < 4)
 								{
 									//if (!this->world->trainingClass)
 									//{
@@ -634,9 +635,9 @@ namespace engine
 					tempObject->setScaleX(tempObject->getScaleX() - 0.05);
 					tempObject->setScaleY(tempObject->getScaleY() - 0.05);
 					if (tempObject->getScaleX() < 0.9)
-					{ 
-						tempObject->setScaleY(0.9);
-						tempObject->setScaleX(0.9);
+					{
+						tempObject->setScaleY(0.9f);
+						tempObject->setScaleX(0.9f);
 					}
 				}
 			}
@@ -656,19 +657,19 @@ namespace engine
 						this->i = 0;
 						while (this->i < this->world->listOfPlaces.size())
 						{
-							//if (this->world->listOfPlaces[this->i]->name == "place1" || this->world->listOfPlaces[this->i]->name == "place2" || this->world->listOfPlaces[this->i]->name == "place4" || this->world->listOfPlaces[this->i]->name == "place5" || this->world->listOfPlaces[this->i]->name == "place8")
+							//if (this->world->listOfPlaces[this->i]->getName() == "place1" || this->world->listOfPlaces[this->i]->getName() == "place2" || this->world->listOfPlaces[this->i]->getName() == "place4" || this->world->listOfPlaces[this->i]->getName() == "place5" || this->world->listOfPlaces[this->i]->getName() == "place8")
 							//{
 							//	this->world->listOfPlaces[this->i]->gotoAndStop(2);
 							//	this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
-							//	this->tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
+							//	tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
 							//	tempObject->container->towerCase->buttonMode = false;
 							//	tempObject->container->boneBlock->setVisible(true);
 							//}
-							//else if (this->world->listOfPlaces[this->i]->name == "place3" || this->world->listOfPlaces[this->i]->name == "place6" || this->world->listOfPlaces[this->i]->name == "place7")
+							//else if (this->world->listOfPlaces[this->i]->getName() == "place3" || this->world->listOfPlaces[this->i]->getName() == "place6" || this->world->listOfPlaces[this->i]->getName() == "place7")
 							//{
 							//	this->world->listOfPlaces[this->i]->gotoAndStop(2);
 							//	this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
-							//	this->tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
+							//	tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
 							//}
 							i++;
 						}
@@ -679,11 +680,11 @@ namespace engine
 						//this->i = 0;
 						//while (this->i < this->world->listOfPlaces.size())
 						//{
-						//	if (this->world->listOfPlaces[this->i]->name == "place4")
+						//	if (this->world->listOfPlaces[this->i]->getName() == "place4")
 						//	{
 						//		this->world->listOfPlaces[this->i]->gotoAndStop(2);
 						//		this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
-						//		this->tempObject = this->world->addTower("tower5", this->world->listOfPlaces[this->i], true);
+						//		tempObject = this->world->addTower("tower5", this->world->listOfPlaces[this->i], true);
 						//	}
 						//	i++;
 						//}
@@ -694,25 +695,25 @@ namespace engine
 						//this->i = 0;
 						//while (this->i < this->world->listOfPlaces.size())
 						//{
-						//	if (this->world->listOfPlaces[this->i]->name == "place1" || this->world->listOfPlaces[this->i]->name == "place2" || this->world->listOfPlaces[this->i]->name == "place5" || this->world->listOfPlaces[this->i]->name == "place6" || this->world->listOfPlaces[this->i]->name == "place8")
+						//	if (this->world->listOfPlaces[this->i]->getName() == "place1" || this->world->listOfPlaces[this->i]->getName() == "place2" || this->world->listOfPlaces[this->i]->getName() == "place5" || this->world->listOfPlaces[this->i]->getName() == "place6" || this->world->listOfPlaces[this->i]->getName() == "place8")
 						//	{
 						//		this->world->listOfPlaces[this->i]->gotoAndStop(2);
 						//		this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
-						//		this->tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
+						//		tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
 						//		tempObject->container->towerCase->buttonMode = false;
 						//		tempObject->container->boneBlock->setVisible(true);
 						//	}
-						//	else if (this->world->listOfPlaces[this->i]->name == "place3" || this->world->listOfPlaces[this->i]->name == "place7")
+						//	else if (this->world->listOfPlaces[this->i]->getName() == "place3" || this->world->listOfPlaces[this->i]->getName() == "place7")
 						//	{
 						//		this->world->listOfPlaces[this->i]->gotoAndStop(2);
 						//		this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
-						//		this->tempObject = this->world->addTower("tower5", this->world->listOfPlaces[this->i], true);
+						//		tempObject = this->world->addTower("tower5", this->world->listOfPlaces[this->i], true);
 						//	}
-						//	else if (this->world->listOfPlaces[this->i]->name == "place4" || this->world->listOfPlaces[this->i]->name == "place9")
+						//	else if (this->world->listOfPlaces[this->i]->getName() == "place4" || this->world->listOfPlaces[this->i]->getName() == "place9")
 						//	{
 						//		this->world->listOfPlaces[this->i]->gotoAndStop(2);
 						//		this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
-						//		this->tempObject = this->world->addTower("tower6", this->world->listOfPlaces[this->i], true);
+						//		tempObject = this->world->addTower("tower6", this->world->listOfPlaces[this->i], true);
 						//	}
 						//	i++;
 						//}
@@ -723,11 +724,11 @@ namespace engine
 						//this->i = 0;
 						//while (this->i < this->world->listOfPlaces.size())
 						//{
-						//	if (this->world->listOfPlaces[this->i]->name == "place5" || this->world->listOfPlaces[this->i]->name == "place10")
+						//	if (this->world->listOfPlaces[this->i]->getName() == "place5" || this->world->listOfPlaces[this->i]->getName() == "place10")
 						//	{
 						//		this->world->listOfPlaces[this->i]->gotoAndStop(2);
 						//		this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
-						//		this->tempObject = this->world->addTower("tower7", this->world->listOfPlaces[this->i], true);
+						//		tempObject = this->world->addTower("tower7", this->world->listOfPlaces[this->i], true);
 						//	}
 						//	i++;
 						//}
@@ -738,11 +739,11 @@ namespace engine
 						//this->i = 0;
 						//while (this->i < this->world->listOfPlaces.size())
 						//{
-						//	if (this->world->listOfPlaces[this->i]->name == "place1" || this->world->listOfPlaces[this->i]->name == "place2" || this->world->listOfPlaces[this->i]->name == "place8" || this->world->listOfPlaces[this->i]->name == "place10")
+						//	if (this->world->listOfPlaces[this->i]->getName() == "place1" || this->world->listOfPlaces[this->i]->getName() == "place2" || this->world->listOfPlaces[this->i]->getName() == "place8" || this->world->listOfPlaces[this->i]->getName() == "place10")
 						//	{
 						//		this->world->listOfPlaces[this->i]->gotoAndStop(2);
 						//		this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
-						//		this->tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
+						//		tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
 						//		tempObject->container->towerCase->buttonMode = false;
 						//		tempObject->container->boneBlock->setVisible(true);
 						//	}
@@ -755,11 +756,11 @@ namespace engine
 						//this->i = 0;
 						//while (this->i < this->world->listOfPlaces.size())
 						//{
-						//	if (this->world->listOfPlaces[this->i]->name == "place3" || this->world->listOfPlaces[this->i]->name == "place4" || this->world->listOfPlaces[this->i]->name == "place8" || this->world->listOfPlaces[this->i]->name == "place10")
+						//	if (this->world->listOfPlaces[this->i]->getName() == "place3" || this->world->listOfPlaces[this->i]->getName() == "place4" || this->world->listOfPlaces[this->i]->getName() == "place8" || this->world->listOfPlaces[this->i]->getName() == "place10")
 						//	{
 						//		this->world->listOfPlaces[this->i]->gotoAndStop(2);
 						//		this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
-						//		this->tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
+						//		tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
 						//		tempObject->container->towerCase->buttonMode = false;
 						//		tempObject->container->boneBlock->setVisible(true);
 						//	}
@@ -772,11 +773,11 @@ namespace engine
 						//this->i = 0;
 						//while (this->i < this->world->listOfPlaces.size())
 						//{
-						//	if (this->world->listOfPlaces[this->i]->name == "place3" || this->world->listOfPlaces[this->i]->name == "place5" || this->world->listOfPlaces[this->i]->name == "place8" || this->world->listOfPlaces[this->i]->name == "place10")
+						//	if (this->world->listOfPlaces[this->i]->getName() == "place3" || this->world->listOfPlaces[this->i]->getName() == "place5" || this->world->listOfPlaces[this->i]->getName() == "place8" || this->world->listOfPlaces[this->i]->getName() == "place10")
 						//	{
 						//		this->world->listOfPlaces[this->i]->gotoAndStop(2);
 						//		this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
-						//		this->tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
+						//		tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
 						//		tempObject->container->towerCase->buttonMode = false;
 						//		tempObject->container->boneBlock->setVisible(true);
 						//	}
@@ -789,54 +790,54 @@ namespace engine
 						//	this->i = 0;
 						//	while (this->i < this->world->listOfPlaces.size())
 						//	{
-						//		if (this->world->listOfPlaces[this->i]->name == "place1" || this->world->listOfPlaces[this->i]->name == "place6" || this->world->listOfPlaces[this->i]->name == "place10" || this->world->listOfPlaces[this->i]->name == "place15")
+						//		if (this->world->listOfPlaces[this->i]->getName() == "place1" || this->world->listOfPlaces[this->i]->getName() == "place6" || this->world->listOfPlaces[this->i]->getName() == "place10" || this->world->listOfPlaces[this->i]->getName() == "place15")
 						//		{
 						//			this->world->listOfPlaces[this->i]->gotoAndStop(2);
 						//			this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
-						//			this->tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
+						//			tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
 						//			tempObject->container->towerCase->buttonMode = false;
 						//			tempObject->container->boneBlock->setVisible(true);
 						//		}
-						//		else if (this->world->listOfPlaces[this->i]->name == "place2" || this->world->listOfPlaces[this->i]->name == "place14")
+						//		else if (this->world->listOfPlaces[this->i]->getName() == "place2" || this->world->listOfPlaces[this->i]->getName() == "place14")
 						//		{
 						//			this->world->listOfPlaces[this->i]->gotoAndStop(2);
 						//			this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
-						//			this->tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
+						//			tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
 						//			tempObject->spheresManage("push", "fire", 4);
 						//		}
-						//		else if (this->world->listOfPlaces[this->i]->name == "place5" || this->world->listOfPlaces[this->i]->name == "place11")
+						//		else if (this->world->listOfPlaces[this->i]->getName() == "place5" || this->world->listOfPlaces[this->i]->getName() == "place11")
 						//		{
 						//			this->world->listOfPlaces[this->i]->gotoAndStop(2);
 						//			this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
-						//			this->tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
+						//			tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
 						//			tempObject->spheresManage("push", "ice", 4);
 						//		}
-						//		else if (this->world->listOfPlaces[this->i]->name == "place4" || this->world->listOfPlaces[this->i]->name == "place13")
+						//		else if (this->world->listOfPlaces[this->i]->getName() == "place4" || this->world->listOfPlaces[this->i]->getName() == "place13")
 						//		{
 						//			this->world->listOfPlaces[this->i]->gotoAndStop(2);
 						//			this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
-						//			this->tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
+						//			tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
 						//			tempObject->spheresManage("push", "stone", 4);
 						//		}
-						//		else if (this->world->listOfPlaces[this->i]->name == "place3" || this->world->listOfPlaces[this->i]->name == "place12")
+						//		else if (this->world->listOfPlaces[this->i]->getName() == "place3" || this->world->listOfPlaces[this->i]->getName() == "place12")
 						//		{
 						//			this->world->listOfPlaces[this->i]->gotoAndStop(2);
 						//			this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
-						//			this->tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
+						//			tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
 						//			tempObject->spheresManage("push", "levin", 4);
 						//		}
-						//		else if (this->world->listOfPlaces[this->i]->name == "place7" || this->world->listOfPlaces[this->i]->name == "place8" || this->world->listOfPlaces[this->i]->name == "place9")
+						//		else if (this->world->listOfPlaces[this->i]->getName() == "place7" || this->world->listOfPlaces[this->i]->getName() == "place8" || this->world->listOfPlaces[this->i]->getName() == "place9")
 						//		{
 						//			this->world->listOfPlaces[this->i]->gotoAndStop(2);
 						//			this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
-						//			this->tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
+						//			tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
 						//		}
 						//		i++;
 						//	}
 					}
 				}
 			}
-		} 
+		}
 	}// end function
 
 
@@ -847,8 +848,8 @@ namespace engine
 		{
 			if (this->world->listOfMoveSpheres[this->i]->speedFrame > 0)
 			{
-				(this->world->listOfMoveSpheres[this->i]->speedFrame - 1);
-				this->world->listOfMoveSpheres[this->i]->alpha = this->world->listOfMoveSpheres[this->i]->alpha - 0.1;
+				this->world->listOfMoveSpheres[this->i]->speedFrame --;
+				this->world->listOfMoveSpheres[this->i]->setAlpha( this->world->listOfMoveSpheres[this->i]->getAlpha() - 0.1);
 				this->world->listOfMoveSpheres[this->i]->setPositionX(this->world->listOfMoveSpheres[this->i]->getPositionX() + this->world->listOfMoveSpheres[this->i]->speedX);
 				this->world->listOfMoveSpheres[this->i]->setPositionY(this->world->listOfMoveSpheres[this->i]->getPositionY() + this->world->listOfMoveSpheres[this->i]->speedY);
 				this->world->listOfMoveSpheres[this->i]->update();
@@ -926,36 +927,38 @@ namespace engine
 				}
 				else if (this->world->listOfMoveSpheres[this->i]->ownerType == "tower")
 				{
+					Tower * tower = ISTYPE(Tower,(Node*)this->world->listOfMoveSpheres[this->i]->owner);
+					int tempObject = 0;
 					if (this->world->listOfMoveSpheres[this->i]->fireCount > 0 && this->world->listOfMoveSpheres[this->i]->iceCount == 0 && this->world->listOfMoveSpheres[this->i]->stoneCount == 0 && this->world->listOfMoveSpheres[this->i]->levinCount == 0)
 					{
-						this->tempObject = this->world->listOfMoveSpheres[this->i]->owner.spheresManage("push", "fire", this->world->listOfMoveSpheres[this->i]->fireCount);
-						if (this->tempObject > 0)
+						tempObject = tower ->spheresManage("push", "fire", this->world->listOfMoveSpheres[this->i]->fireCount);
+						if (tempObject > 0)
 						{
-							this->returnGetSphereToArchive("fire", this->tempObject);
+							this->returnGetSphereToArchive("fire", tempObject);
 						}
 					}
 					else if (this->world->listOfMoveSpheres[this->i]->fireCount == 0 && this->world->listOfMoveSpheres[this->i]->iceCount > 0 && this->world->listOfMoveSpheres[this->i]->stoneCount == 0 && this->world->listOfMoveSpheres[this->i]->levinCount == 0)
 					{
-						this->tempObject = this->world->listOfMoveSpheres[this->i]->owner.spheresManage("push", "ice", this->world->listOfMoveSpheres[this->i]->iceCount);
-						if (this->tempObject > 0)
+						tempObject = tower->spheresManage("push", "ice", this->world->listOfMoveSpheres[this->i]->iceCount);
+						if (tempObject > 0)
 						{
-							this->returnGetSphereToArchive("ice", this->tempObject);
+							this->returnGetSphereToArchive("ice", tempObject);
 						}
 					}
 					else if (this->world->listOfMoveSpheres[this->i]->fireCount == 0 && this->world->listOfMoveSpheres[this->i]->iceCount == 0 && this->world->listOfMoveSpheres[this->i]->stoneCount > 0 && this->world->listOfMoveSpheres[this->i]->levinCount == 0)
 					{
-						this->tempObject = this->world->listOfMoveSpheres[this->i]->owner.spheresManage("push", "stone", this->world->listOfMoveSpheres[this->i]->stoneCount);
-						if (this->tempObject > 0)
+						tempObject = tower->spheresManage("push", "stone", this->world->listOfMoveSpheres[this->i]->stoneCount);
+						if (tempObject > 0)
 						{
-							this->returnGetSphereToArchive("stone", this->tempObject);
+							this->returnGetSphereToArchive("stone", tempObject);
 						}
 					}
 					else if (this->world->listOfMoveSpheres[this->i]->fireCount == 0 && this->world->listOfMoveSpheres[this->i]->iceCount == 0 && this->world->listOfMoveSpheres[this->i]->stoneCount == 0 && this->world->listOfMoveSpheres[this->i]->levinCount > 0)
 					{
-						this->tempObject = this->world->listOfMoveSpheres[this->i]->owner.spheresManage("push", "levin", this->world->listOfMoveSpheres[this->i]->levinCount);
-						if (this->tempObject > 0)
+						tempObject = tower->spheresManage("push", "levin", this->world->listOfMoveSpheres[this->i]->levinCount);
+						if (tempObject > 0)
 						{
-							this->returnGetSphereToArchive("levin", this->tempObject);
+							this->returnGetSphereToArchive("levin", tempObject);
 						}
 					}
 					else if (this->world->listOfMoveSpheres[this->i]->type == "holder")
@@ -965,38 +968,38 @@ namespace engine
 						{
 							if (this->world->listOfMoveSpheres[this->i]->listOfStack[this->j] == "fire")
 							{
-								this->tempObject = this->world->listOfMoveSpheres[this->i]->owner.spheresManage("push", "fire", 1);
+								tempObject = tower->spheresManage("push", "fire", 1);
 								(this->world->listOfMoveSpheres[this->i]->fireCount - 1);
-								if (this->tempObject > 0)
+								if (tempObject > 0)
 								{
-									this->returnGetSphereToArchive("fire", this->tempObject);
+									this->returnGetSphereToArchive("fire", tempObject);
 								}
 							}
 							else if (this->world->listOfMoveSpheres[this->i]->listOfStack[this->j] == "ice")
 							{
-								this->tempObject = this->world->listOfMoveSpheres[this->i]->owner.spheresManage("push", "ice", 1);
+								tempObject = tower->spheresManage("push", "ice", 1);
 								(this->world->listOfMoveSpheres[this->i]->iceCount - 1);
-								if (this->tempObject > 0)
+								if (tempObject > 0)
 								{
-									this->returnGetSphereToArchive("ice", this->tempObject);
+									this->returnGetSphereToArchive("ice", tempObject);
 								}
 							}
 							else if (this->world->listOfMoveSpheres[this->i]->listOfStack[this->j] == "stone")
 							{
-								this->tempObject = this->world->listOfMoveSpheres[this->i]->owner.spheresManage("push", "stone", 1);
+								tempObject = tower->spheresManage("push", "stone", 1);
 								(this->world->listOfMoveSpheres[this->i]->stoneCount - 1);
-								if (this->tempObject > 0)
+								if (tempObject > 0)
 								{
-									this->returnGetSphereToArchive("stone", this->tempObject);
+									this->returnGetSphereToArchive("stone", tempObject);
 								}
 							}
 							else if (this->world->listOfMoveSpheres[this->i]->listOfStack[this->j] == "levin")
 							{
-								this->tempObject = this->world->listOfMoveSpheres[this->i]->owner.spheresManage("push", "levin", 1);
+								tempObject = tower->spheresManage("push", "levin", 1);
 								(this->world->listOfMoveSpheres[this->i]->levinCount - 1);
-								if (this->tempObject > 0)
+								if (tempObject > 0)
 								{
-									this->returnGetSphereToArchive("levin", this->tempObject);
+									this->returnGetSphereToArchive("levin", tempObject);
 								}
 							}
 							j++;
@@ -1006,7 +1009,7 @@ namespace engine
 					{
 						if (this->world->listOfMoveSpheres[this->i]->getAllCount > 0)
 						{
-							this->tempObject = this->world->listOfMoveSpheres[this->i]->owner.spheresManage("push", "getAll", 1);
+							tempObject = tower->spheresManage("push", "getAll", 1);
 							(this->world->listOfMoveSpheres[this->i]->getAllCount - 1);
 							if (this->world->listOfMoveSpheres[this->i]->getAllCount > 0)
 							{
@@ -1045,7 +1048,7 @@ namespace engine
 			}
 			i++;
 		}
- 
+
 	}// end function
 	void  Feature::getSphereBeat(string param1, int param2)
 	{
@@ -1057,7 +1060,7 @@ namespace engine
 			if (param1 == "fire")
 			{
 				this->world->getSphere->owner = this->world->worldInterface->container->fireSphere;
-				this->world->getSphere->ownerPoint = this->world->worldInterface->container->fireSphere->myPoint;
+				this->world->getSphere->ownerPoint = this->world->worldInterface->container->fireSphereMyPoint;
 				while (param2 > 0)
 				{
 					param2 = param2 - 1;
@@ -1067,7 +1070,7 @@ namespace engine
 			else if (param1 == "ice")
 			{
 				this->world->getSphere->owner = this->world->worldInterface->container->iceSphere;
-				this->world->getSphere->ownerPoint = this->world->worldInterface->container->iceSphere->myPoint;
+				this->world->getSphere->ownerPoint = this->world->worldInterface->container->iceSphereMyPoint;
 				while (param2 > 0)
 				{
 					param2 = param2 - 1;
@@ -1077,7 +1080,7 @@ namespace engine
 			else if (param1 == "stone")
 			{
 				this->world->getSphere->owner = this->world->worldInterface->container->stoneSphere;
-				this->world->getSphere->ownerPoint = this->world->worldInterface->container->stoneSphere->myPoint;
+				this->world->getSphere->ownerPoint = this->world->worldInterface->container->stoneSphereMyPoint;
 				while (param2 > 0)
 				{
 					param2 = param2 - 1;
@@ -1087,7 +1090,7 @@ namespace engine
 			else if (param1 == "levin")
 			{
 				this->world->getSphere->owner = this->world->worldInterface->container->levinSphere;
-				this->world->getSphere->ownerPoint = this->world->worldInterface->container->levinSphere->myPoint;
+				this->world->getSphere->ownerPoint = this->world->worldInterface->container->levinSphereMyPoint;
 				while (param2 > 0)
 				{
 					param2 = param2 - 1;
@@ -1101,7 +1104,7 @@ namespace engine
 			this->world->addChild(this->world->getSphere);
 			this->world->getSphere->ownerType = "archive";
 			this->world->getSphere->owner = this->world->worldInterface->container->getAll;
-			this->world->getSphere->ownerPoint = this->world->worldInterface->container->getAll->myPoint;
+			this->world->getSphere->ownerPoint = this->world->worldInterface->container->getAllMyPoint;
 			while (param2 > 0)
 			{
 				param2 = param2 - 1;
@@ -1110,25 +1113,25 @@ namespace engine
 		}
 		return;
 	}// end function
-    void Feature::returnGetSphereToArchive(string param1, int param2)
-    {
-        if (!this->world->getSphere)
-        {
-            this->getSphereBeat(param1, param2);
-            this->world->getSphere->setPosition(this->world->listOfMoveSpheres[this->i]->getPosition());
-            this->world->getSphere->setPosition(this->world->listOfMoveSpheres[this->i]->getPosition());
-            //this->world->getSphere->x = this->world->listOfMoveSpheres[this->i]->x;
-            //this->world->getSphere->y = this->world->listOfMoveSpheres[this->i]->y;
-            this->world->getSphere->retrieveGetSphere();
-        }
+	void Feature::returnGetSphereToArchive(string param1, int param2)
+	{
+		if (!this->world->getSphere)
+		{
+			this->getSphereBeat(param1, param2);
+			this->world->getSphere->setPosition(this->world->listOfMoveSpheres[this->i]->getPosition());
+			this->world->getSphere->setPosition(this->world->listOfMoveSpheres[this->i]->getPosition());
+			//this->world->getSphere->x = this->world->listOfMoveSpheres[this->i]->x;
+			//this->world->getSphere->y = this->world->listOfMoveSpheres[this->i]->y;
+			this->world->getSphere->retrieveGetSphere();
+		}
 
-    }// end function
+	}// end function
 	void Feature::afterLoadXML()
 	{
 		this->world->saveBox->bezierBoxClass.bezierPoints();
 		this->world->bezierClass = bezier::Bezier::create();
-		this->world->addChild(this->world->bezierClass,9999);
-		int complexityLevel=this->world->saveBox->getIntValue("complexityLevel") ;
+		this->world->addChild(this->world->bezierClass, 9999);
+		int complexityLevel = this->world->saveBox->getIntValue("complexityLevel");
 		this->i = 0;
 		int listOfFirePortalsLen = Main::mainClass->readXMLClass.listOfFirePortals.size();
 		while (this->i < listOfFirePortalsLen)
@@ -1208,8 +1211,8 @@ namespace engine
 		}
 		this->i = 0;
 		int listOfIcePortalsLen = Main::mainClass->readXMLClass.listOfIcePortals.size();
-		while (this->i < listOfIcePortalsLen) 
-		{ 
+		while (this->i < listOfIcePortalsLen)
+		{
 			if (Main::mainClass->readXMLClass.listOfIcePortals[this->i][0] > 0 && Main::mainClass->readXMLClass.listOfIcePortals[this->i][1] > 0 && Main::mainClass->readXMLClass.listOfIcePortals[this->i][2] > 0)
 			{
 				RoadsignIce_mc * tempObject = new RoadsignIce_mc();
@@ -1218,15 +1221,15 @@ namespace engine
 				tempObject->myPath = Main::mainClass->readXMLClass.listOfIcePortals[this->i][0];
 				tempObject->myRoad = Main::mainClass->readXMLClass.listOfIcePortals[this->i][1];
 				tempObject->myWay = Main::mainClass->readXMLClass.listOfIcePortals[this->i][2];
-				tempObject->myPoint = this->world->bezierClass.getPathPoint(tempObject->myPath, tempObject->myRoad, tempObject->myWay);
-			    tempObject->setPositionX(tempObject->myPoint.x + Main::mainClass->readXMLClass.listOfIcePortals[this->i][3]);
-			    tempObject->setPositionY(tempObject->myPoint.y + Main::mainClass->readXMLClass.listOfIcePortals[this->i][4]);
+				tempObject->myPoint = this->world->bezierClass->getPathPoint(tempObject->myPath, tempObject->myRoad, tempObject->myWay);
+				tempObject->setPositionX(tempObject->myPoint.x + Main::mainClass->readXMLClass.listOfIcePortals[this->i][3]);
+				tempObject->setPositionY(tempObject->myPoint.y + Main::mainClass->readXMLClass.listOfIcePortals[this->i][4]);
 				tempObject->mouseChildren = false;
 				tempObject->mouseEnabled = false;
 				tempObject->repeatFlag = false;
 				tempObject->repeatCounter = 0;
-				world->addChild(this->tempObject);
-				world->listOfIcePortals.push(this->tempObject);
+				world->addChild(tempObject);
+				world->listOfIcePortals.push(tempObject);
 				if (complexityLevel < 4)
 				{
 					if (this->world->nowLevel == 6)
@@ -1295,9 +1298,9 @@ namespace engine
 				tempObject->myPath = Main::mainClass->readXMLClass.listOfStonePortals[this->i][0];
 				tempObject->myRoad = Main::mainClass->readXMLClass.listOfStonePortals[this->i][1];
 				tempObject->myWay = Main::mainClass->readXMLClass.listOfStonePortals[this->i][2];
-				tempObject->myPoint  = this->world->bezierClass.getPathPoint(tempObject->myPath, tempObject->myRoad, tempObject->myWay);
-			    tempObject->setPositionX(tempObject->myPoint.x + Main::mainClass->readXMLClass.listOfStonePortals[this->i][3]);
-			    tempObject->setPositionY(tempObject->myPoint.y + Main::mainClass->readXMLClass.listOfStonePortals[this->i][4]);
+				tempObject->myPoint = this->world->bezierClass->getPathPoint(tempObject->myPath, tempObject->myRoad, tempObject->myWay);
+				tempObject->setPositionX(tempObject->myPoint.x + Main::mainClass->readXMLClass.listOfStonePortals[this->i][3]);
+				tempObject->setPositionY(tempObject->myPoint.y + Main::mainClass->readXMLClass.listOfStonePortals[this->i][4]);
 				tempObject->mouseChildren = false;
 				tempObject->mouseEnabled = false;
 				tempObject->repeatFlag = false;
@@ -1372,16 +1375,16 @@ namespace engine
 				tempObject->myPath = Main::mainClass->readXMLClass.listOfLevinPortals[this->i][0];
 				tempObject->myRoad = Main::mainClass->readXMLClass.listOfLevinPortals[this->i][1];
 				tempObject->myWay = Main::mainClass->readXMLClass.listOfLevinPortals[this->i][2];
-				tempObject->myPoint = this->world->bezierClass.getPathPoint(tempObject->myPath, tempObject->myRoad, tempObject->myWay);
- 			    tempObject->setPositionX(tempObject->myPoint.x + Main::mainClass->readXMLClass.listOfLevinPortals[this->i][3]);
-			    tempObject->setPositionY(tempObject->myPoint.y + Main::mainClass->readXMLClass.listOfLevinPortals[this->i][4]);
+				tempObject->myPoint = this->world->bezierClass->getPathPoint(tempObject->myPath, tempObject->myRoad, tempObject->myWay);
+				tempObject->setPositionX(tempObject->myPoint.x + Main::mainClass->readXMLClass.listOfLevinPortals[this->i][3]);
+				tempObject->setPositionY(tempObject->myPoint.y + Main::mainClass->readXMLClass.listOfLevinPortals[this->i][4]);
 				tempObject->mouseChildren = false;
 				tempObject->mouseEnabled = false;
 				tempObject->repeatFlag = false;
 				tempObject->repeatCounter = 0;
-				this->world->addChild( tempObject);
-				this->world->listOfLevinPortals.push( tempObject);
-				if ( complexityLevel < 4)
+				this->world->addChild(tempObject);
+				this->world->listOfLevinPortals.push(tempObject);
+				if (complexityLevel < 4)
 				{
 					if (this->world->nowLevel == 6)
 					{
@@ -1438,7 +1441,7 @@ namespace engine
 			i++;
 		}
 
-		this->world->worldInterface =  WorldInterface::create();
+		this->world->worldInterface = WorldInterface::create();
 		this->world->addChild(this->world->worldInterface);
 
 		if (complexityLevel == 4)
@@ -1463,14 +1466,15 @@ namespace engine
 				this->i = 0;
 				while (this->i < this->world->listOfPlaces.size())
 				{
-					if (this->world->listOfPlaces[this->i]->name == "place1" || this->world->listOfPlaces[this->i]->name == "place2" || this->world->listOfPlaces[this->i]->name == "place4" || this->world->listOfPlaces[this->i]->name == "place5" || this->world->listOfPlaces[this->i]->name == "place8")
-					{
-						this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
-					}
-					else if (this->world->listOfPlaces[this->i]->name == "place3" || this->world->listOfPlaces[this->i]->name == "place6" || this->world->listOfPlaces[this->i]->name == "place7")
-					{
-						this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
-					}
+					this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+					//if (this->world->listOfPlaces[this->i]->getName() == "place1" || this->world->listOfPlaces[this->i]->getName() == "place2" || this->world->listOfPlaces[this->i]->getName() == "place4" || this->world->listOfPlaces[this->i]->getName() == "place5" || this->world->listOfPlaces[this->i]->getName() == "place8")
+					//{
+					//	this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+					//}
+					//else if (this->world->listOfPlaces[this->i]->getName() == "place3" || this->world->listOfPlaces[this->i]->getName() == "place6" || this->world->listOfPlaces[this->i]->getName() == "place7")
+					//{
+					//	this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+					//}
 					i++;
 				}
 				this->world->money = 10000000;
@@ -1490,7 +1494,7 @@ namespace engine
 				this->i = 0;
 				while (this->i < this->world->listOfPlaces.size())
 				{
-					if (this->world->listOfPlaces[this->i]->name == "place4")
+					if (this->world->listOfPlaces[this->i]->getName() == "place4")
 					{
 						this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
 					}
@@ -1502,15 +1506,15 @@ namespace engine
 				this->i = 0;
 				while (this->i < this->world->listOfPlaces.size())
 				{
-					if (this->world->listOfPlaces[this->i]->name == "place1" || this->world->listOfPlaces[this->i]->name == "place2" || this->world->listOfPlaces[this->i]->name == "place5" || this->world->listOfPlaces[this->i]->name == "place6" || this->world->listOfPlaces[this->i]->name == "place8")
+					if (this->world->listOfPlaces[this->i]->getName() == "place1" || this->world->listOfPlaces[this->i]->getName() == "place2" || this->world->listOfPlaces[this->i]->getName() == "place5" || this->world->listOfPlaces[this->i]->getName() == "place6" || this->world->listOfPlaces[this->i]->getName() == "place8")
 					{
 						this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
 					}
-					else if (this->world->listOfPlaces[this->i]->name == "place3" || this->world->listOfPlaces[this->i]->name == "place7")
+					else if (this->world->listOfPlaces[this->i]->getName() == "place3" || this->world->listOfPlaces[this->i]->getName() == "place7")
 					{
 						this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
 					}
-					else if (this->world->listOfPlaces[this->i]->name == "place4" || this->world->listOfPlaces[this->i]->name == "place9")
+					else if (this->world->listOfPlaces[this->i]->getName() == "place4" || this->world->listOfPlaces[this->i]->getName() == "place9")
 					{
 						this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
 					}
@@ -1522,7 +1526,7 @@ namespace engine
 				this->i = 0;
 				while (this->i < this->world->listOfPlaces.size())
 				{
-					if (this->world->listOfPlaces[this->i]->name == "place5" || this->world->listOfPlaces[this->i]->name == "place10")
+					if (this->world->listOfPlaces[this->i]->getName() == "place5" || this->world->listOfPlaces[this->i]->getName() == "place10")
 					{
 						this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
 					}
@@ -1534,7 +1538,7 @@ namespace engine
 				this->i = 0;
 				while (this->i < this->world->listOfPlaces.size())
 				{
-					if (this->world->listOfPlaces[this->i]->name == "place1" || this->world->listOfPlaces[this->i]->name == "place2" || this->world->listOfPlaces[this->i]->name == "place8" || this->world->listOfPlaces[this->i]->name == "place10")
+					if (this->world->listOfPlaces[this->i]->getName() == "place1" || this->world->listOfPlaces[this->i]->getName() == "place2" || this->world->listOfPlaces[this->i]->getName() == "place8" || this->world->listOfPlaces[this->i]->getName() == "place10")
 					{
 						this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
 					}
@@ -1546,7 +1550,7 @@ namespace engine
 				this->i = 0;
 				while (this->i < this->world->listOfPlaces.size())
 				{
-					if (this->world->listOfPlaces[this->i]->name == "place3" || this->world->listOfPlaces[this->i]->name == "place4" || this->world->listOfPlaces[this->i]->name == "place8" || this->world->listOfPlaces[this->i]->name == "place10")
+					if (this->world->listOfPlaces[this->i]->getName() == "place3" || this->world->listOfPlaces[this->i]->getName() == "place4" || this->world->listOfPlaces[this->i]->getName() == "place8" || this->world->listOfPlaces[this->i]->getName() == "place10")
 					{
 						this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
 					}
@@ -1557,8 +1561,8 @@ namespace engine
 			{
 				this->i = 0;
 				while (this->i < this->world->listOfPlaces.size())
-				{ 
-					if (this->world->listOfPlaces[this->i]->name == "place3" || this->world->listOfPlaces[this->i]->name == "place5" || this->world->listOfPlaces[this->i]->name == "place8" || this->world->listOfPlaces[this->i]->name == "place10")
+				{
+					if (this->world->listOfPlaces[this->i]->getName() == "place3" || this->world->listOfPlaces[this->i]->getName() == "place5" || this->world->listOfPlaces[this->i]->getName() == "place8" || this->world->listOfPlaces[this->i]->getName() == "place10")
 					{
 						this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
 					}
@@ -1571,27 +1575,27 @@ namespace engine
 				while (this->i < this->world->listOfPlaces.size())
 				{
 
-					if (this->world->listOfPlaces[this->i]->name == "place1" || this->world->listOfPlaces[this->i]->name == "place6" || this->world->listOfPlaces[this->i]->name == "place10" || this->world->listOfPlaces[this->i]->name == "place15")
+					if (this->world->listOfPlaces[this->i]->getName() == "place1" || this->world->listOfPlaces[this->i]->getName() == "place6" || this->world->listOfPlaces[this->i]->getName() == "place10" || this->world->listOfPlaces[this->i]->getName() == "place15")
 					{
 						this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
 					}
-					else if (this->world->listOfPlaces[this->i]->name == "place4" || this->world->listOfPlaces[this->i]->name == "place12")
+					else if (this->world->listOfPlaces[this->i]->getName() == "place4" || this->world->listOfPlaces[this->i]->getName() == "place12")
 					{
 						this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
 					}
-					else if (this->world->listOfPlaces[this->i]->name == "place5" || this->world->listOfPlaces[this->i]->name == "place14")
+					else if (this->world->listOfPlaces[this->i]->getName() == "place5" || this->world->listOfPlaces[this->i]->getName() == "place14")
 					{
 						this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
 					}
-					else if (this->world->listOfPlaces[this->i]->name == "place2" || this->world->listOfPlaces[this->i]->name == "place13")
+					else if (this->world->listOfPlaces[this->i]->getName() == "place2" || this->world->listOfPlaces[this->i]->getName() == "place13")
 					{
 						this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
 					}
-					else if (this->world->listOfPlaces[this->i]->name == "place3" || this->world->listOfPlaces[this->i]->name == "place11")
+					else if (this->world->listOfPlaces[this->i]->getName() == "place3" || this->world->listOfPlaces[this->i]->getName() == "place11")
 					{
 						this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
 					}
-					else if (this->world->listOfPlaces[this->i]->name == "place7" || this->world->listOfPlaces[this->i]->name == "place8" || this->world->listOfPlaces[this->i]->name == "place9")
+					else if (this->world->listOfPlaces[this->i]->getName() == "place7" || this->world->listOfPlaces[this->i]->getName() == "place8" || this->world->listOfPlaces[this->i]->getName() == "place9")
 					{
 						this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
 					}
@@ -1633,46 +1637,46 @@ namespace engine
 	void Feature::scanPointersAtCast()
 	{
 		cocos2d::Point tempObject(this->world->mouseX, this->world->mouseY);
-		if (tempObject->distance(this->world->pointer1->myPoint) < 30)
+		if (tempObject.distance(this->world->pointer1->myPoint) < 30)
 		{
-			if (this->world->pointer1->alpha == 1)
+			if (this->world->pointer1->getAlpha() == 1)
 			{
-				this->world->pointer1->alpha = 0;
+				this->world->pointer1->setAlpha(0);
 			}
 		}
-		else if (this->world->pointer1->alpha == 0)
+		else if (this->world->pointer1->getAlpha() == 0)
 		{
-			this->world->pointer1->alpha = 1;
+			this->world->pointer1->setAlpha(1);
 		}
 		if (this->world->pointer2)
 		{
-			if (tempObject->distance(this->world->pointer2->myPoint) < 50)
+			if (tempObject.distance(this->world->pointer2->myPoint) < 50)
 			{
-				if (this->world->pointer2->alpha == 1)
+				if (this->world->pointer2->getAlpha() == 1)
 				{
-					this->world->pointer2->alpha = 0;
+					this->world->pointer2->setAlpha(0);
 				}
 			}
-			else if (this->world->pointer2->alpha == 0)
+			else if (this->world->pointer2->getAlpha() == 0)
 			{
-				this->world->pointer2->alpha = 1;
+				this->world->pointer2->setAlpha(1);
 			}
 		}
 		if (this->world->pointer3)
 		{
-			if (tempObject->distance( this->world->pointer3->myPoint) < 50)
+			if (tempObject.distance(this->world->pointer3->myPoint) < 50)
 			{
-				if (this->world->pointer3->alpha == 1)
+				if (this->world->pointer3->getAlpha() == 1)
 				{
-					this->world->pointer3->alpha = 0;
+					this->world->pointer3->setAlpha(0);
 				}
 			}
-			else if (this->world->pointer3->alpha == 0)
+			else if (this->world->pointer3->getAlpha() == 0)
 			{
-				this->world->pointer3->alpha = 1;
+				this->world->pointer3->setAlpha(1);
 			}
 		}
 		return;
 	}// end function
-	
+
 }

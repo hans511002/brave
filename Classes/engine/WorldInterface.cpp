@@ -771,609 +771,35 @@ namespace engine
 		return;
 	};
 
-	void WorldInterface::mouseMoveHandler(cocos2d::EventMouse *param1)//MouseEvent
+	void WorldInterface::mouseDownHandler(cocos2d::EventMouse *e)//(event:MouseEvent) : void
 	{
-		if (!this->world->getSphere && !this->world->cast && !this->world->exchange)
-		{
-			if (param1->target->name == "sphereCase")
-			{
-				if (param1->target->parent->name == "fireSphere")
-				{
-					if (param1->target->buttonMode && this->container->fireBack->currentFrame == 1)
-					{
-						if (this->container->iceBack->currentFrame == 2)
-						{
-							this->container->iceBack->gotoAndStop(1);
-						}
-						if (this->container->stoneBack->currentFrame == 2)
-						{
-							this->container->stoneBack->gotoAndStop(1);
-						}
-						if (this->container->levinBack->currentFrame == 2)
-						{
-							this->container->levinBack->gotoAndStop(1);
-						}
-						if (this->container->getAll->currentFrame == 2)
-						{
-							this->container->getAll->gotoAndStop(1);
-						}
-						this->container->fireBack->gotoAndStop(2);
-						this->container->fireBackCont->stop();
-						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
-					}
-				}
-				else if (param1->target->parent->name == "iceSphere")
-				{
-					if (param1->target->buttonMode && this->container->iceBack->currentFrame == 1)
-					{
-						if (this->container->fireBack->currentFrame == 2)
-						{
-							this->container->fireBack->gotoAndStop(1);
-						}
-						if (this->container->stoneBack->currentFrame == 2)
-						{
-							this->container->stoneBack->gotoAndStop(1);
-						}
-						if (this->container->levinBack->currentFrame == 2)
-						{
-							this->container->levinBack->gotoAndStop(1);
-						}
-						if (this->container->getAll->currentFrame == 2)
-						{
-							this->container->getAll->gotoAndStop(1);
-						}
-						this->container->iceBack->gotoAndStop(2);
-						this->container->iceBackCont->stop();
-						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
-					}
-				}
-				else if (param1->target->parent->name == "stoneSphere")
-				{
-					if (param1->target->buttonMode && this->container->stoneBack->currentFrame == 1)
-					{
-						if (this->container->fireBack->currentFrame == 2)
-						{
-							this->container->fireBack->gotoAndStop(1);
-						}
-						if (this->container->iceBack->currentFrame == 2)
-						{
-							this->container->iceBack->gotoAndStop(1);
-						}
-						if (this->container->levinBack->currentFrame == 2)
-						{
-							this->container->levinBack->gotoAndStop(1);
-						}
-						if (this->container->getAll->currentFrame == 2)
-						{
-							this->container->getAll->gotoAndStop(1);
-						}
-						this->container->stoneBack->gotoAndStop(2);
-						this->container->stoneBackCont->stop();
-						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
-					}
-				}
-				else if (param1->target->parent->name == "levinSphere")
-				{
-					if (param1->target->buttonMode && this->container->levinBack->currentFrame == 1)
-					{
-						if (this->container->fireBack->currentFrame == 2)
-						{
-							this->container->fireBack->gotoAndStop(1);
-						}
-						if (this->container->iceBack->currentFrame == 2)
-						{
-							this->container->iceBack->gotoAndStop(1);
-						}
-						if (this->container->stoneBack->currentFrame == 2)
-						{
-							this->container->stoneBack->gotoAndStop(1);
-						}
-						if (this->container->getAll->currentFrame == 2)
-						{
-							this->container->getAll->gotoAndStop(1);
-						}
-						this->container->levinBack->gotoAndStop(2);
-						this->container->levinBackCont->stop();
-						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
-					}
-				}
-				else if (param1->target->parent->name == "getAll")
-				{
-					if (param1->target->buttonMode && this->container->getAll->currentFrame == 1)
-					{
-						if (this->container->fireBack->currentFrame == 2)
-						{
-							this->container->fireBack->gotoAndStop(1);
-						}
-						if (this->container->iceBack->currentFrame == 2)
-						{
-							this->container->iceBack->gotoAndStop(1);
-						}
-						if (this->container->stoneBack->currentFrame == 2)
-						{
-							this->container->stoneBack->gotoAndStop(1);
-						}
-						if (this->container->levinBack->currentFrame == 2)
-						{
-							this->container->levinBack->gotoAndStop(1);
-						}
-						this->container->getAll->gotoAndStop(2);
-						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
-					}
-					else if (this->container->getAll->currentFrame == 3)
-					{
-						if (this->container->levinSphere->isVisible() && Main::mainClass->saveBoxClass->getIntValue("saveNo") <= 3)
-						{
-							if (!this->getAllHint)
-							{
-								this->getAllHint = new Hint_mc();
-								this->getAllHint->gotoAndStop(15);
-								this->getAllHint->setPosition(540, 45); //Main::SCREEN_HEGIHT-45;
-								this->getAllHint->mouseChildren = false;
-								this->getAllHint->mouseEnabled = false;
-								this->addChild(this->getAllHint, 1);
-							}
-						}
-					}
-				}
-			}
-			else
-			{
-				if (this->container->fireBack->currentFrame == 2)
-				{
-					this->container->fireBack->gotoAndStop(1);
-				}
-				if (this->container->iceBack->currentFrame == 2)
-				{
-					this->container->iceBack->gotoAndStop(1);
-				}
-				if (this->container->stoneBack->currentFrame == 2)
-				{
-					this->container->stoneBack->gotoAndStop(1);
-				}
-				if (this->container->levinBack->currentFrame == 2)
-				{
-					this->container->levinBack->gotoAndStop(1);
-				}
-				if (this->container->getAll->currentFrame == 2)
-				{
-					this->container->getAll->gotoAndStop(1);
-				}
-				if (this->getAllHint)
-				{
-					this->removeChild(this->getAllHint);
-					this->getAllHint = NULL;
-				}
-			}
-			if (param1->target->name == "slow")
-			{
-				if (this->container->slow->currentFrame == 1)
-				{
-					this->container->slow->gotoAndStop(2);
-					//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
-				}
-			}
-			else if (this->container->slow->currentFrame == 2)
-			{
-				this->container->slow->gotoAndStop(1);
-			}
-			if (param1->target->name == "fastCase")
-			{
-				if (param1->target->buttonMode)
-				{
-					if (this->container->fast->currentFrame == 1 || this->container->fast->currentFrame == 4)
-					{
-						int tempObject = 0;
-						if (this->container->fast->currentFrame == 4)
-						{
-							tempObject = this->container->fastCont->currentFrame;
-						}
-						this->container->fast->gotoAndStop((this->container->fast->currentFrame + 1));
-						if (this->container->fast->currentFrame == 5)
-						{
-							this->container->fastCont->gotoAndStop(tempObject);
-						}
-						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
-					}
-				}
-			}
-			else if (this->container->fast->currentFrame == 2 || this->container->fast->currentFrame == 5)
-			{
-				int tempObject = 0;
-				if (this->container->fast->currentFrame == 5)
-				{
-					tempObject = this->container->fastCont->currentFrame;
-				}
-				this->container->fast->gotoAndStop((this->container->fast->currentFrame - 1));
-				if (this->container->fast->currentFrame == 4)
-				{
-					this->container->fastCont->gotoAndStop(tempObject);
-				}
-			}
-			//if (param1->target->name == "traceBezier")
-			//{
-			//	if (this->container->traceBezier->currentFrame == 1)
-			//	{
-			//		this->container->traceBezier->gotoAndStop(2);
-			//	}
-			//}
-			//else if (this->container->traceBezier->currentFrame == 2)
-			//{
-			//	this->container->traceBezier->gotoAndStop(1);
-			//}
-			if (param1->target->name == "pauseCase")
-			{
-				if (this->container->pause->currentFrame == 1)
-				{
-					this->container->pause->gotoAndStop(2);
-					this->container->pauseOpenFlag = true;
-					this->container->pauseCloseFlag = false;
-					//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
-				}
-			}
-			else if (this->container->pause->currentFrame > 1)
-			{
-				if (this->container->pause->currentFrame == this->container->pause->totalFrames)
-				{
-					this->container->pause->gotoAndStop(this->container->pause->totalFrames);
-				}
-				if (this->container->pauseOpenFlag)
-				{
-					this->container->pauseOpenFlag = false;
-				}
-				if (!this->container->pauseCloseFlag)
-				{
-					this->container->pauseCloseFlag = true;
-				}
-			}
-			if (param1->target->name == "bookCase")
-			{
-				if (this->container->book->currentFrame == 1)
-				{
-					this->container->book->gotoAndStop(2);
-					this->container->bookOpenFlag = true;
-					this->container->bookCloseFlag = false;
-					//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
-				}
-			}
-			else if (this->container->book->currentFrame > 1)
-			{
-				if (this->container->book->currentFrame == this->container->book->totalFrames)
-				{
-					this->container->book->gotoAndStop(this->container->book->totalFrames);
-				}
-				if (this->container->bookOpenFlag)
-				{
-					this->container->bookOpenFlag = false;
-				}
-				if (!this->container->bookCloseFlag)
-				{
-					this->container->bookCloseFlag = true;
-				}
-			}
-			if (param1->target->name == "startWavesCase")
-			{
-				if (this->container->startWavesStartWavesCase->buttonMode)
-				{
-					if (this->container->startWaves->currentFrame <= 10)
-					{
-						this->container->startWaves->gotoAndStop(this->container->startWaves->currentFrame + 10);
-						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
-					}
-				}
-			}
-			else if (this->container->startWavesStartWavesCase->buttonMode)
-			{
-				if (this->container->startWaves->currentFrame > 10)
-				{
-					this->container->startWaves->gotoAndStop(this->container->startWaves->currentFrame - 10);
-				}
-			}
-			if (param1->target->name == "castGolemCase")
-			{
-				if (param1->target->parent->isVisible())
-				{
-					if (this->container->butCastGolem->currentFrame == 1)
-					{
-						this->container->butCastGolem->gotoAndStop(2);
-						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
-						if (!this->world->hint->isVisible())
-						{
-							this->world->hint->setVisible(true);
-						}
-						if (this->world->hint->currentFrame != 1)
-						{
-							this->world->hint->gotoAndStop(1);
-						}
-						if (std::getText(this->world->hint->nameTXT) != "击碎者就绪!")
-						{
-							std::setText(this->world->hint->nameTXT, "击碎者就绪!");
-							std::setText(this->world->hint->noteTXT, "一路碾压所有敌人");
-							//this->world->hint->nameTXT.setTextFormat(Main::mainClass->boldTextFormat);
-							std::setText(this->world->hint->timeTXT, int(this->castGolemTimer / 30));
-							//this->world->hint->timeTXT.setTextFormat(Main::mainClass->boldTextFormat);
-							this->hintUpdate();
-						}
-					}
-					else if (this->container->butCastGolem->currentFrame == 4)
-					{
-						if (!this->world->hint->isVisible())
-						{
-							this->world->hint->setVisible(true);
-						}
-						if (this->world->hint->currentFrame != 1)
-						{
-							this->world->hint->gotoAndStop(1);
-						}
-						if (std::getText(this->world->hint->nameTXT) != "击碎者重置")
-						{
-							std::setText(this->world->hint->nameTXT, "击碎者重置");
-							std::setText(this->world->hint->noteTXT, "一路碾压所有敌人");
-							//this->world->hint->nameTXT.setTextFormat(Main::mainClass->boldTextFormat);
-							this->hintUpdate();
-						}
-					}
-				}
-			}
-			else
-			{
-				if (this->container->butCastGolem->currentFrame == 2)
-				{
-					this->container->butCastGolem->gotoAndStop(1);
-				}
-				if (this->world->hint->isVisible())
-				{
-					if (std::getText(this->world->hint->nameTXT) == "击碎者重置" || std::getText(this->world->hint->nameTXT) == "击碎者就绪!")
-					{
-						this->world->hint->setVisible(false);
-					}
-				}
-			}
-			if (param1->target->name == "castIcemanCase")
-			{
-				if (param1->target->parent->isVisible())
-				{
-					if (this->container->butCastIceman->currentFrame == 1)
-					{
-						this->container->butCastIceman->gotoAndStop(2);
-						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
-						if (!this->world->hint->isVisible())
-						{
-							this->world->hint->setVisible(true);
-						}
-						if (this->world->hint->currentFrame != 1)
-						{
-							this->world->hint->gotoAndStop(1);
-						}
-						if (std::getText(this->world->hint->nameTXT) != "冰冻者就绪!")
-						{
-							std::setText(this->world->hint->nameTXT, "冰冻者就绪!");
-							std::setText(this->world->hint->noteTXT, "一路冻结所有敌人");
-							//this->world->hint->nameTXT.setTextFormat(Main::mainClass->boldTextFormat);
-							std::setText(this->world->hint->timeTXT, int(this->castIcemanTimer / 30));
-							//this->world->hint->timeTXT.setTextFormat(Main::mainClass->boldTextFormat);
-							this->hintUpdate();
-						}
-					}
-					else if (this->container->butCastIceman->currentFrame == 4)
-					{
-						if (!this->world->hint->isVisible())
-						{
-							this->world->hint->setVisible(true);
-						}
-						if (this->world->hint->currentFrame != 1)
-						{
-							this->world->hint->gotoAndStop(1);
-						}
-						if (std::getText(this->world->hint->nameTXT) != "冰冻者重置")
-						{
-							std::setText(this->world->hint->nameTXT, "冰冻者重置");
-							std::setText(this->world->hint->noteTXT, "一路冻结所有敌人");
-							//this->world->hint->nameTXT.setTextFormat(Main::mainClass->boldTextFormat);
-							this->hintUpdate();
-						}
-					}
-				}
-			}
-			else
-			{
-				if (this->container->butCastIceman->currentFrame == 2)
-				{
-					this->container->butCastIceman->gotoAndStop(1);
-				}
-				if (this->world->hint->isVisible())
-				{
-					if (std::getText(this->world->hint->nameTXT) == "冰冻者重置" || std::getText(this->world->hint->nameTXT) == "冰冻者就绪!")
-					{
-						this->world->hint->setVisible(false);
-					}
-				}
-			}
-			if (param1->target->name == "castAirCase")
-			{
-				if (param1->target->parent->isVisible())
-				{
-					if (this->container->butCastAir->currentFrame == 1)
-					{
-						this->container->butCastAir->gotoAndStop(2);
-						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
-						if (!this->world->hint->isVisible())
-						{
-							this->world->hint->setVisible(true);
-						}
-						if (this->world->hint->currentFrame != 1)
-						{
-							this->world->hint->gotoAndStop(1);
-						}
-						if (std::getText(this->world->hint->nameTXT) != "复活岛巨像就绪!")
-						{
-							std::setText(this->world->hint->nameTXT, "复活岛巨像就绪!");
-							std::setText(this->world->hint->noteTXT, "将敌人吹飞到后面");
-							//this->world->hint->nameTXT.setTextFormat(Main::mainClass->boldTextFormat);
-							std::setText(this->world->hint->timeTXT, int(this->castAirTimer / 30));
-							//this->world->hint->timeTXT.setTextFormat(Main::mainClass->boldTextFormat);
-							this->hintUpdate();
-						}
-					}
-					else if (this->container->butCastAir->currentFrame == 4)
-					{
-						if (!this->world->hint->isVisible())
-						{
-							this->world->hint->setVisible(true);
-						}
-						if (this->world->hint->currentFrame != 1)
-						{
-							this->world->hint->gotoAndStop(1);
-						}
-						if (std::getText(this->world->hint->nameTXT) != "复活岛巨像重置")
-						{
-							std::setText(this->world->hint->nameTXT, "复活岛巨像重置");
-							std::setText(this->world->hint->noteTXT, "将敌人吹飞到后面");
-							//this->world->hint->nameTXT.setTextFormat(Main::mainClass->boldTextFormat);
-							this->hintUpdate();
-						}
-					}
-				}
-			}
-			else
-			{
-				if (this->container->butCastAir->currentFrame == 2)
-				{
-					this->container->butCastAir->gotoAndStop(1);
-				}
-				if (this->world->hint->isVisible())
-				{
-					if (std::getText(this->world->hint->nameTXT) == "复活岛巨像重置" || std::getText(this->world->hint->nameTXT) == "复活岛巨像就绪!")
-					{
-						this->world->hint->setVisible(false);
-					}
-				}
-			}
-			if (param1->target->name == "pointerCase")
-			{
-				if (!param1->target->parent.mouseFlag)
-				{
-					this->world->pointer1->mouseFlag = true;
-					if (this->world->pointer2)
-					{
-						this->world->pointer2->mouseFlag = true;
-					}
-					if (this->world->pointer3)
-					{
-						this->world->pointer3->mouseFlag = true;
-					}
-					//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
-				}
-			}
-			else
-			{
-				if (this->world->pointer1.mouseFlag)
-				{
-					this->world->pointer1->mouseFlag = false;
-				}
-				if (this->world->pointer2)
-				{
-					if (this->world->pointer2->mouseFlag)
-					{
-						this->world->pointer2->mouseFlag = false;
-					}
-				}
-				if (this->world->pointer3)
-				{
-					if (this->world->pointer3->mouseFlag)
-					{
-						this->world->pointer3->mouseFlag = false;
-					}
-				}
-			}
-			if (param1->target->name == "newEnemyCase" || param1->target->name == "newElementCase")
-			{
-				tempObject = param1->target->parent;
-				if (tempObject->mouseStatus == 1)
-				{
-					tempObject->mouseStatus = 2;
-					tempObject->setScaleY(1.1);
-					tempObject->setScaleX(1.1);
-					//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
-				}
-			}
-			else if (this->listOfNewEnemies.size() > 0)
-			{
-				this->i = 0;
-				while (this->i < this->listOfNewEnemies.size())
-				{
-					if (this->listOfNewEnemies[this->i]->mouseStatus == 2)
-					{
-						this->listOfNewEnemies[this->i]->mouseStatus = 1;
-						this->listOfNewEnemies[this->i]->setScaleY(1);
-						this->listOfNewEnemies[this->i]->setScaleX(1);
-					}
-					i++;
-				}
-			}
-			if (param1->target->name == "testRestart")
-			{
-				if (this->container->testRestart->currentFrame == 1)
-				{
-					this->container->testRestart->gotoAndStop(2);
-				}
-			}
-			else if (this->container->testRestart->currentFrame == 2)
-			{
-				this->container->testRestart->gotoAndStop(1);
-			}
-			if (param1->target->name == "sellCase")
-			{
-				if (!this->sellHint)
-				{
-					this->sellHint = new Hint_mc();
-					this->sellHint->gotoAndStop(14);
-					this->sellHint->setPosition(645, Main::SCREEN_HEIGHT - 50);
-					this->sellHint->setScaleY(0.7);
-					this->sellHint->setScaleX(0.7);
-					this->sellHint->mouseChildren = false;
-					this->sellHint->mouseEnabled = false;
-					this->addChild(this->sellHint);
-				}
-			}
-			else if (this->sellHint)
-			{
-				this->removeChild(this->sellHint);
-				this->sellHint = NULL;
-			}
-		}
-	}
-
-	void WorldInterface::mouseDownHandler(cocos2d::EventMouse *event)//(event:MouseEvent) : void
-	{
-		cocos2d::EventMouse*e = (cocos2d::EventMouse*)event;
-		Node * node = event->getCurrentTarget();
-		Event::Type tp = event->getType();
-		string target = node->getName();
-		CCLOG("WorldInterface::mouseDownHandler %s", target.c_str());
-
-
-		cocos2d::Point pt = e->getLocationInView();
-		CCLOG("mouse InView point %f,%f", pt.x, pt.y);
-		cocos2d::Point  nsp = node->convertToNodeSpaceAR(pt);
-		CCLOG("mouse ToNodeSpaceAR point %f,%f", nsp.x, nsp.y);
-		nsp = node->convertToNodeSpace(pt);
-		CCLOG("mouse ToNodeSpace point %f,%f", nsp.x, nsp.y);
-
-		nsp = this->world->pointer1->convertToNodeSpaceAR(pt);
-		CCLOG("pointer1 ToNodeSpace point %f,%f", nsp.x, nsp.y);
-
-		Rect bb;
-		bb.size = this->world->pointer1->pointerCase->getContentSize();
-		if (bb.containsPoint(nsp))
-		{
-			CCLOG("WorldInterface::containsPoint %s", target.c_str());
-		}
-		this->world->wavesClass->startWaves();
+		//cocos2d::EventMouse*e = (cocos2d::EventMouse*)event;
+		//Node * node = event->getCurrentTarget();
+		//Event::Type tp = event->getType();
+		//string target = node->getName();
+		//CCLOG("WorldInterface::mouseDownHandler %s", target.c_str());
+		//cocos2d::Point pt = e->getLocationInView();
+		//CCLOG("mouse InView point %f,%f", pt.x, pt.y);
+		//cocos2d::Point  nsp = node->convertToNodeSpaceAR(pt);
+		//CCLOG("mouse ToNodeSpaceAR point %f,%f", nsp.x, nsp.y);
+		//nsp = node->convertToNodeSpace(pt);
+		//CCLOG("mouse ToNodeSpace point %f,%f", nsp.x, nsp.y);
+		//nsp = this->world->pointer1->convertToNodeSpaceAR(pt);
+		//CCLOG("pointer1 ToNodeSpace point %f,%f", nsp.x, nsp.y);
+		//Rect bb;
+		//bb.size = this->world->pointer1->pointerCase->getContentSize();
+		//if (bb.containsPoint(nsp))
+		//{
+		//	CCLOG("WorldInterface::containsPoint %s", target.c_str());
+		//}
+		//this->world->wavesClass->startWaves();
+		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+		if (!event)
+			return;
 
 		if (!this->world->getSphere && !this->world->cast)
 		{
-			if (event->target->name == "slow")
+			if (event->target->getName() == "slow")
 			{
 				if (this->container->slow->currentFrame == 2)
 				{
@@ -1381,9 +807,9 @@ namespace engine
 					//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 				}
 			}
-			else if (event->target->name == "fastCase")
+			else if (event->target->getName() == "fastCase")
 			{
-				if (event->target->buttonMode)
+				if (ISTYPE(EventNode,event->target)->buttonMode)
 				{
 					if (this->container->fast->currentFrame == 2 || this->container->fast->currentFrame == 5)
 					{
@@ -1392,14 +818,14 @@ namespace engine
 					}
 				}
 			}
-			//else if (event->target->name == "traceBezier")
+			//else if (event->target->getName() == "traceBezier")
 			//{
 			//	if (this->container->traceBezier->currentFrame == 2)
 			//	{
 			//		this->container->traceBezier->gotoAndStop(3);
 			//	}
 			//}
-			else if (event->target->name == "pauseCase")
+			else if (event->target->getName() == "pauseCase")
 			{
 				if (this->container->pause->currentFrame != this->container->pause->totalFrames)
 				{
@@ -1409,7 +835,7 @@ namespace engine
 					//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 				}
 			}
-			else if (event->target->name == "bookCase")
+			else if (event->target->getName() == "bookCase")
 			{
 				if (this->container->book->currentFrame != this->container->book->totalFrames)
 				{
@@ -1419,9 +845,9 @@ namespace engine
 					//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 				}
 			}
-			else if (event->target->name == "sphereCase")
+			else if (event->target->getName() == "sphereCase")
 			{
-				if (event->target->buttonMode)
+				if (ISTYPE(EventNode, event->target)->buttonMode)
 				{
 					this->i = 0;
 					while (this->i < this->world->listOfMoveSpheres.size())
@@ -1433,7 +859,7 @@ namespace engine
 						i++;
 					}
 					this->world->feature->listOfMoveSpheres();
-					if (event->target->parent->name == "fireSphere")
+					if (event->target->getParent()->getName() == "fireSphere")
 					{
 						if (this->fireCount == 0)
 						{
@@ -1442,7 +868,7 @@ namespace engine
 						//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 						this->archiveManage("get", "fire");
 					}
-					else if (event->target->parent->name == "iceSphere")
+					else if (event->target->getParent()->getName() == "iceSphere")
 					{
 						if (this->iceCount == 0)
 						{
@@ -1451,7 +877,7 @@ namespace engine
 						//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 						this->archiveManage("get", "ice");
 					}
-					else if (event->target->parent->name == "stoneSphere")
+					else if (event->target->getParent()->getName() == "stoneSphere")
 					{
 						if (this->stoneCount == 0)
 						{
@@ -1460,7 +886,7 @@ namespace engine
 						//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 						this->archiveManage("get", "stone");
 					}
-					else if (event->target->parent->name == "levinSphere")
+					else if (event->target->getParent()->getName() == "levinSphere")
 					{
 						if (this->levinCount == 0)
 						{
@@ -1469,7 +895,7 @@ namespace engine
 						//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 						this->archiveManage("get", "levin");
 					}
-					else if (event->target->parent->name == "getAll")
+					else if (event->target->getParent()->getName() == "getAll")
 					{
 						if (this->getAllCount == 0)
 						{
@@ -1574,14 +1000,14 @@ namespace engine
 					}
 				}
 			}
-			else if (event->target->name == "startWavesCase")
+			else if (event->target->getName() == "startWavesCase")
 			{
 				if (this->container->startWavesStartWavesCase->buttonMode)
 				{
 					this->world->wavesClass->startWaves();
 				}
 			}
-			else if (event->target->name == "castGolemCase")
+			else if (event->target->getName() == "castGolemCase")
 			{
 				if (this->container->butCastGolem->currentFrame == 2)
 				{
@@ -1590,7 +1016,7 @@ namespace engine
 					//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 				}
 			}
-			else if (event->target->name == "castIcemanCase")
+			else if (event->target->getName() == "castIcemanCase")
 			{
 				if (this->container->butCastIceman->currentFrame == 2)
 				{
@@ -1599,7 +1025,7 @@ namespace engine
 					//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 				}
 			}
-			else if (event->target->name == "castAirCase")
+			else if (event->target->getName() == "castAirCase")
 			{
 				if (this->container->butCastAir->currentFrame == 2)
 				{
@@ -1608,19 +1034,21 @@ namespace engine
 					//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 				}
 			}
-			else if (event->target->name == "pointerCase")
+			else if (event->target->getName() == "pointerCase")
 			{
 				this->world->wavesClass->startWaves();
 			}
-			else if (event->target->name == "newEnemyCase" || event->target->name == "newElementCase")
+			else if (event->target->getName() == "newEnemyCase" || event->target->getName() == "newElementCase")
 			{
-				tempObject = event->target->parent;
-				tempObject->mouseStatus = 3;
-				tempObject->mouseChildren = false;
-				tempObject->mouseEnabled = false;
+				MouseStatusMC * tempObject = ISTYPE(MouseStatusMC, event->target->getParent());
+				if (tempObject){
+					tempObject->mouseStatus = 3;
+					tempObject->mouseChildren = false;
+					tempObject->mouseEnabled = false;
+				} 
 				//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 			}
-			else if (event->target->name == "testRestart")
+			else if (event->target->getName() == "testRestart")
 			{
 				if (this->container->testRestart->currentFrame == 2)
 				{
@@ -1629,12 +1057,14 @@ namespace engine
 			}
 		}
 	}
-
-	void WorldInterface::mouseUpHandler(cocos2d::EventMouse *event)//(event:MouseEvent) : void
+	void WorldInterface::mouseUpHandler(cocos2d::EventMouse *e)//(event:MouseEvent) : void
 	{
+		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+		if (!event)
+			return;
 		if (!this->world->getSphere && !this->world->cast)
 		{
-			if (event->target->name == "slow")
+			if (event->target->getName() == "slow")
 			{
 				if (this->container->slow->currentFrame == 3)
 				{
@@ -1660,9 +1090,9 @@ namespace engine
 					this->container->slow->gotoAndStop(1);
 				}
 			}
-			if (event->target->name == "fastCase")
+			if (event->target->getName() == "fastCase")
 			{
-				if (event->target->buttonMode)
+				if (ISTYPE(EventNode, event->target)->buttonMode)
 				{
 					if (this->container->fast->currentFrame == 3 || this->container->fast->currentFrame == 6)
 					{
@@ -1678,7 +1108,7 @@ namespace engine
 					this->container->fastCont->stop();
 				}
 			}
-			//if (event->target->name == "traceBezier")
+			//if (event->target->getName() == "traceBezier")
 			//{
 			//	if (this->container->traceBezier->currentFrame == 3)
 			//	{
@@ -1689,7 +1119,7 @@ namespace engine
 			//{
 			//	this->container->traceBezier->gotoAndStop(1);
 			//}
-			if (event->target->name == "pauseCase")
+			if (event->target->getName() == "pauseCase")
 			{
 				if (this->container->pause->currentFrame == this->container->pause->totalFrames)
 				{
@@ -1711,7 +1141,7 @@ namespace engine
 					this->container->pauseCloseFlag = true;
 				}
 			}
-			if (event->target->name == "bookCase")
+			if (event->target->getName() == "bookCase")
 			{
 				if (this->container->book->currentFrame == this->container->book->totalFrames)
 				{
@@ -1733,23 +1163,23 @@ namespace engine
 					this->container->bookCloseFlag = true;
 				}
 			}
-			if (event->target->name == "testRestart")
+			if (event->target->getName() == "testRestart")
 			{
 				if (this->container->testRestart->currentFrame == 3)
 				{
 					this->container->testRestart->gotoAndStop(2);
-					if (std::getText(this->container->testRestartBoardWaveTXT) == "")
-					{
-						//Main::mainClass->testingClass->loadWave = Main::mainClass->worldClass->wavesClass->nowWave;
-					}
-					else if (std::getInt(this->container->testRestartBoardWaveTXT) < Main::mainClass->testingClass->listOfStory.size())
-					{
-						//Main::mainClass->testingClass->loadWave = std::getInt(this->container->testRestartBoardWaveTXT);
-					}
-					else
-					{
-						//Main::mainClass->testingClass->loadWave = 0;
-					}
+					//if (std::getText(this->container->testRestartBoardWaveTXT) == "")
+					//{
+					//	//Main::mainClass->testingClass->loadWave = Main::mainClass->worldClass->wavesClass->nowWave;
+					//}
+					//else if (std::getInt(this->container->testRestartBoardWaveTXT) < Main::mainClass->testingClass->listOfStory.size())
+					//{
+					//	//Main::mainClass->testingClass->loadWave = std::getInt(this->container->testRestartBoardWaveTXT);
+					//}
+					//else
+					//{
+					//	//Main::mainClass->testingClass->loadWave = 0;
+					//}
 					Main::mainClass->addNewScreen("World");
 				}
 			}
@@ -1759,6 +1189,585 @@ namespace engine
 			}
 		}
 	}// end function
+	void WorldInterface::mouseMoveHandler(cocos2d::EventMouse *e)//MouseEvent
+	{
+		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+		if (!event)
+			return;
+		if (!this->world->getSphere && !this->world->cast && !this->world->exchange)
+		{
+			if (event->target->getName() == "sphereCase")
+			{
+				if (event->target->getParent()->getName() == "fireSphere")
+				{
+					if (ISTYPE(EventNode, event->target)->buttonMode && this->container->fireBack->currentFrame == 1)
+					{
+						if (this->container->iceBack->currentFrame == 2)
+						{
+							this->container->iceBack->gotoAndStop(1);
+						}
+						if (this->container->stoneBack->currentFrame == 2)
+						{
+							this->container->stoneBack->gotoAndStop(1);
+						}
+						if (this->container->levinBack->currentFrame == 2)
+						{
+							this->container->levinBack->gotoAndStop(1);
+						}
+						if (this->container->getAll->currentFrame == 2)
+						{
+							this->container->getAll->gotoAndStop(1);
+						}
+						this->container->fireBack->gotoAndStop(2);
+						this->container->fireBackCont->stop();
+						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+					}
+				}
+				else if (event->target->getParent()->getName() == "iceSphere")
+				{
+					if (ISTYPE(EventNode, event->target)->buttonMode && this->container->iceBack->currentFrame == 1)
+					{
+						if (this->container->fireBack->currentFrame == 2)
+						{
+							this->container->fireBack->gotoAndStop(1);
+						}
+						if (this->container->stoneBack->currentFrame == 2)
+						{
+							this->container->stoneBack->gotoAndStop(1);
+						}
+						if (this->container->levinBack->currentFrame == 2)
+						{
+							this->container->levinBack->gotoAndStop(1);
+						}
+						if (this->container->getAll->currentFrame == 2)
+						{
+							this->container->getAll->gotoAndStop(1);
+						}
+						this->container->iceBack->gotoAndStop(2);
+						this->container->iceBackCont->stop();
+						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+					}
+				}
+				else if (event->target->getParent()->getName() == "stoneSphere")
+				{
+					if (ISTYPE(EventNode, event->target)->buttonMode && this->container->stoneBack->currentFrame == 1)
+					{
+						if (this->container->fireBack->currentFrame == 2)
+						{
+							this->container->fireBack->gotoAndStop(1);
+						}
+						if (this->container->iceBack->currentFrame == 2)
+						{
+							this->container->iceBack->gotoAndStop(1);
+						}
+						if (this->container->levinBack->currentFrame == 2)
+						{
+							this->container->levinBack->gotoAndStop(1);
+						}
+						if (this->container->getAll->currentFrame == 2)
+						{
+							this->container->getAll->gotoAndStop(1);
+						}
+						this->container->stoneBack->gotoAndStop(2);
+						this->container->stoneBackCont->stop();
+						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+					}
+				}
+				else if (event->target->getParent()->getName() == "levinSphere")
+				{
+					if (ISTYPE(EventNode, event->target)->buttonMode && this->container->levinBack->currentFrame == 1)
+					{
+						if (this->container->fireBack->currentFrame == 2)
+						{
+							this->container->fireBack->gotoAndStop(1);
+						}
+						if (this->container->iceBack->currentFrame == 2)
+						{
+							this->container->iceBack->gotoAndStop(1);
+						}
+						if (this->container->stoneBack->currentFrame == 2)
+						{
+							this->container->stoneBack->gotoAndStop(1);
+						}
+						if (this->container->getAll->currentFrame == 2)
+						{
+							this->container->getAll->gotoAndStop(1);
+						}
+						this->container->levinBack->gotoAndStop(2);
+						this->container->levinBackCont->stop();
+						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+					}
+				}
+				else if (event->target->getParent()->getName() == "getAll")
+				{
+					if (ISTYPE(EventNode, event->target)->buttonMode && this->container->getAll->currentFrame == 1)
+					{
+						if (this->container->fireBack->currentFrame == 2)
+						{
+							this->container->fireBack->gotoAndStop(1);
+						}
+						if (this->container->iceBack->currentFrame == 2)
+						{
+							this->container->iceBack->gotoAndStop(1);
+						}
+						if (this->container->stoneBack->currentFrame == 2)
+						{
+							this->container->stoneBack->gotoAndStop(1);
+						}
+						if (this->container->levinBack->currentFrame == 2)
+						{
+							this->container->levinBack->gotoAndStop(1);
+						}
+						this->container->getAll->gotoAndStop(2);
+						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+					}
+					else if (this->container->getAll->currentFrame == 3)
+					{
+						if (this->container->levinSphere->isVisible() && Main::mainClass->saveBoxClass->getIntValue("saveNo") <= 3)
+						{
+							if (!this->getAllHint)
+							{
+								this->getAllHint = new Hint_mc();
+								this->getAllHint->gotoAndStop(15);
+								this->getAllHint->setPosition(540, 45); //Main::SCREEN_HEGIHT-45;
+								this->getAllHint->mouseChildren = false;
+								this->getAllHint->mouseEnabled = false;
+								this->addChild(this->getAllHint, 1);
+							}
+						}
+					}
+				}
+			}
+			else
+			{
+				if (this->container->fireBack->currentFrame == 2)
+				{
+					this->container->fireBack->gotoAndStop(1);
+				}
+				if (this->container->iceBack->currentFrame == 2)
+				{
+					this->container->iceBack->gotoAndStop(1);
+				}
+				if (this->container->stoneBack->currentFrame == 2)
+				{
+					this->container->stoneBack->gotoAndStop(1);
+				}
+				if (this->container->levinBack->currentFrame == 2)
+				{
+					this->container->levinBack->gotoAndStop(1);
+				}
+				if (this->container->getAll->currentFrame == 2)
+				{
+					this->container->getAll->gotoAndStop(1);
+				}
+				if (this->getAllHint)
+				{
+					this->removeChild(this->getAllHint);
+					this->getAllHint = NULL;
+				}
+			}
+			if (event->target->getName() == "slow")
+			{
+				if (this->container->slow->currentFrame == 1)
+				{
+					this->container->slow->gotoAndStop(2);
+					//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+				}
+			}
+			else if (this->container->slow->currentFrame == 2)
+			{
+				this->container->slow->gotoAndStop(1);
+			}
+			if (event->target->getName() == "fastCase")
+			{
+				if (ISTYPE(EventNode, event->target)->buttonMode)
+				{
+					if (this->container->fast->currentFrame == 1 || this->container->fast->currentFrame == 4)
+					{
+						int tempObject = 0;
+						if (this->container->fast->currentFrame == 4)
+						{
+							tempObject = this->container->fastCont->currentFrame;
+						}
+						this->container->fast->gotoAndStop((this->container->fast->currentFrame + 1));
+						if (this->container->fast->currentFrame == 5)
+						{
+							this->container->fastCont->gotoAndStop(tempObject);
+						}
+						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+					}
+				}
+			}
+			else if (this->container->fast->currentFrame == 2 || this->container->fast->currentFrame == 5)
+			{
+				int tempObject = 0;
+				if (this->container->fast->currentFrame == 5)
+				{
+					tempObject = this->container->fastCont->currentFrame;
+				}
+				this->container->fast->gotoAndStop((this->container->fast->currentFrame - 1));
+				if (this->container->fast->currentFrame == 4)
+				{
+					this->container->fastCont->gotoAndStop(tempObject);
+				}
+			}
+			//if (event->target->getName() == "traceBezier")
+			//{
+			//	if (this->container->traceBezier->currentFrame == 1)
+			//	{
+			//		this->container->traceBezier->gotoAndStop(2);
+			//	}
+			//}
+			//else if (this->container->traceBezier->currentFrame == 2)
+			//{
+			//	this->container->traceBezier->gotoAndStop(1);
+			//}
+			if (event->target->getName() == "pauseCase")
+			{
+				if (this->container->pause->currentFrame == 1)
+				{
+					this->container->pause->gotoAndStop(2);
+					this->container->pauseOpenFlag = true;
+					this->container->pauseCloseFlag = false;
+					//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+				}
+			}
+			else if (this->container->pause->currentFrame > 1)
+			{
+				if (this->container->pause->currentFrame == this->container->pause->totalFrames)
+				{
+					this->container->pause->gotoAndStop(this->container->pause->totalFrames);
+				}
+				if (this->container->pauseOpenFlag)
+				{
+					this->container->pauseOpenFlag = false;
+				}
+				if (!this->container->pauseCloseFlag)
+				{
+					this->container->pauseCloseFlag = true;
+				}
+			}
+			if (event->target->getName() == "bookCase")
+			{
+				if (this->container->book->currentFrame == 1)
+				{
+					this->container->book->gotoAndStop(2);
+					this->container->bookOpenFlag = true;
+					this->container->bookCloseFlag = false;
+					//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+				}
+			}
+			else if (this->container->book->currentFrame > 1)
+			{
+				if (this->container->book->currentFrame == this->container->book->totalFrames)
+				{
+					this->container->book->gotoAndStop(this->container->book->totalFrames);
+				}
+				if (this->container->bookOpenFlag)
+				{
+					this->container->bookOpenFlag = false;
+				}
+				if (!this->container->bookCloseFlag)
+				{
+					this->container->bookCloseFlag = true;
+				}
+			}
+			if (event->target->getName() == "startWavesCase")
+			{
+				if (this->container->startWavesStartWavesCase->buttonMode)
+				{
+					if (this->container->startWaves->currentFrame <= 10)
+					{
+						this->container->startWaves->gotoAndStop(this->container->startWaves->currentFrame + 10);
+						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+					}
+				}
+			}
+			else if (this->container->startWavesStartWavesCase->buttonMode)
+			{
+				if (this->container->startWaves->currentFrame > 10)
+				{
+					this->container->startWaves->gotoAndStop(this->container->startWaves->currentFrame - 10);
+				}
+			}
+			if (event->target->getName() == "castGolemCase")
+			{
+				if (event->target->getParent()->isVisible())
+				{
+					if (this->container->butCastGolem->currentFrame == 1)
+					{
+						this->container->butCastGolem->gotoAndStop(2);
+						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+						if (!this->world->hint->isVisible())
+						{
+							this->world->hint->setVisible(true);
+						}
+						if (this->world->hint->currentFrame != 1)
+						{
+							this->world->hint->gotoAndStop(1);
+						}
+						if (std::getText(this->world->hint->nameTXT) != "击碎者就绪!")
+						{
+							std::setText(this->world->hint->nameTXT, "击碎者就绪!");
+							std::setText(this->world->hint->noteTXT, "一路碾压所有敌人");
+							//this->world->hint->nameTXT.setTextFormat(Main::mainClass->boldTextFormat);
+							std::setText(this->world->hint->timeTXT, int(this->castGolemTimer / 30));
+							//this->world->hint->timeTXT.setTextFormat(Main::mainClass->boldTextFormat);
+							this->hintUpdate();
+						}
+					}
+					else if (this->container->butCastGolem->currentFrame == 4)
+					{
+						if (!this->world->hint->isVisible())
+						{
+							this->world->hint->setVisible(true);
+						}
+						if (this->world->hint->currentFrame != 1)
+						{
+							this->world->hint->gotoAndStop(1);
+						}
+						if (std::getText(this->world->hint->nameTXT) != "击碎者重置")
+						{
+							std::setText(this->world->hint->nameTXT, "击碎者重置");
+							std::setText(this->world->hint->noteTXT, "一路碾压所有敌人");
+							//this->world->hint->nameTXT.setTextFormat(Main::mainClass->boldTextFormat);
+							this->hintUpdate();
+						}
+					}
+				}
+			}
+			else
+			{
+				if (this->container->butCastGolem->currentFrame == 2)
+				{
+					this->container->butCastGolem->gotoAndStop(1);
+				}
+				if (this->world->hint->isVisible())
+				{
+					if (std::getText(this->world->hint->nameTXT) == "击碎者重置" || std::getText(this->world->hint->nameTXT) == "击碎者就绪!")
+					{
+						this->world->hint->setVisible(false);
+					}
+				}
+			}
+			if (event->target->getName() == "castIcemanCase")
+			{
+				if (event->target->getParent()->isVisible())
+				{
+					if (this->container->butCastIceman->currentFrame == 1)
+					{
+						this->container->butCastIceman->gotoAndStop(2);
+						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+						if (!this->world->hint->isVisible())
+						{
+							this->world->hint->setVisible(true);
+						}
+						if (this->world->hint->currentFrame != 1)
+						{
+							this->world->hint->gotoAndStop(1);
+						}
+						if (std::getText(this->world->hint->nameTXT) != "冰冻者就绪!")
+						{
+							std::setText(this->world->hint->nameTXT, "冰冻者就绪!");
+							std::setText(this->world->hint->noteTXT, "一路冻结所有敌人");
+							//this->world->hint->nameTXT.setTextFormat(Main::mainClass->boldTextFormat);
+							std::setText(this->world->hint->timeTXT, int(this->castIcemanTimer / 30));
+							//this->world->hint->timeTXT.setTextFormat(Main::mainClass->boldTextFormat);
+							this->hintUpdate();
+						}
+					}
+					else if (this->container->butCastIceman->currentFrame == 4)
+					{
+						if (!this->world->hint->isVisible())
+						{
+							this->world->hint->setVisible(true);
+						}
+						if (this->world->hint->currentFrame != 1)
+						{
+							this->world->hint->gotoAndStop(1);
+						}
+						if (std::getText(this->world->hint->nameTXT) != "冰冻者重置")
+						{
+							std::setText(this->world->hint->nameTXT, "冰冻者重置");
+							std::setText(this->world->hint->noteTXT, "一路冻结所有敌人");
+							//this->world->hint->nameTXT.setTextFormat(Main::mainClass->boldTextFormat);
+							this->hintUpdate();
+						}
+					}
+				}
+			}
+			else
+			{
+				if (this->container->butCastIceman->currentFrame == 2)
+				{
+					this->container->butCastIceman->gotoAndStop(1);
+				}
+				if (this->world->hint->isVisible())
+				{
+					if (std::getText(this->world->hint->nameTXT) == "冰冻者重置" || std::getText(this->world->hint->nameTXT) == "冰冻者就绪!")
+					{
+						this->world->hint->setVisible(false);
+					}
+				}
+			}
+			if (event->target->getName() == "castAirCase")
+			{
+				if (event->target->getParent()->isVisible())
+				{
+					if (this->container->butCastAir->currentFrame == 1)
+					{
+						this->container->butCastAir->gotoAndStop(2);
+						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+						if (!this->world->hint->isVisible())
+						{
+							this->world->hint->setVisible(true);
+						}
+						if (this->world->hint->currentFrame != 1)
+						{
+							this->world->hint->gotoAndStop(1);
+						}
+						if (std::getText(this->world->hint->nameTXT) != "复活岛巨像就绪!")
+						{
+							std::setText(this->world->hint->nameTXT, "复活岛巨像就绪!");
+							std::setText(this->world->hint->noteTXT, "将敌人吹飞到后面");
+							//this->world->hint->nameTXT.setTextFormat(Main::mainClass->boldTextFormat);
+							std::setText(this->world->hint->timeTXT, int(this->castAirTimer / 30));
+							//this->world->hint->timeTXT.setTextFormat(Main::mainClass->boldTextFormat);
+							this->hintUpdate();
+						}
+					}
+					else if (this->container->butCastAir->currentFrame == 4)
+					{
+						if (!this->world->hint->isVisible())
+						{
+							this->world->hint->setVisible(true);
+						}
+						if (this->world->hint->currentFrame != 1)
+						{
+							this->world->hint->gotoAndStop(1);
+						}
+						if (std::getText(this->world->hint->nameTXT) != "复活岛巨像重置")
+						{
+							std::setText(this->world->hint->nameTXT, "复活岛巨像重置");
+							std::setText(this->world->hint->noteTXT, "将敌人吹飞到后面");
+							//this->world->hint->nameTXT.setTextFormat(Main::mainClass->boldTextFormat);
+							this->hintUpdate();
+						}
+					}
+				}
+			}
+			else
+			{
+				if (this->container->butCastAir->currentFrame == 2)
+				{
+					this->container->butCastAir->gotoAndStop(1);
+				}
+				if (this->world->hint->isVisible())
+				{
+					if (std::getText(this->world->hint->nameTXT) == "复活岛巨像重置" || std::getText(this->world->hint->nameTXT) == "复活岛巨像就绪!")
+					{
+						this->world->hint->setVisible(false);
+					}
+				}
+			}
+			if (event->target->getName() == "pointerCase")
+			{
+				LevelPointer * pointer = ISTYPE(LevelPointer, event->target->getParent());
+				if (!pointer->mouseFlag)
+				{
+					this->world->pointer1->mouseFlag = true;
+					if (this->world->pointer2)
+					{
+						this->world->pointer2->mouseFlag = true;
+					}
+					if (this->world->pointer3)
+					{
+						this->world->pointer3->mouseFlag = true;
+					}
+					//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+				}
+			}
+			else
+			{
+				if (this->world->pointer1->mouseFlag)
+				{
+					this->world->pointer1->mouseFlag = false;
+				}
+				if (this->world->pointer2)
+				{
+					if (this->world->pointer2->mouseFlag)
+					{
+						this->world->pointer2->mouseFlag = false;
+					}
+				}
+				if (this->world->pointer3)
+				{
+					if (this->world->pointer3->mouseFlag)
+					{
+						this->world->pointer3->mouseFlag = false;
+					}
+				}
+			}
+			if (event->target->getName() == "newEnemyCase" || event->target->getName() == "newElementCase")
+			{
+				MouseStatusMC * tempObject = ISTYPE(MouseStatusMC, event->target->getParent());
+				if (tempObject){
+					if (tempObject->mouseStatus == 1)
+					{
+						tempObject->mouseStatus = 2;
+						tempObject->setScaleY(1.1f);
+						tempObject->setScaleX(1.1f);
+						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+					}
+				}  
+			}
+			else if (this->listOfNewEnemies.size() > 0)
+			{
+				this->i = 0;
+				while (this->i < this->listOfNewEnemies.size())
+				{
+					if (this->listOfNewEnemies[this->i]->mouseStatus == 2)
+					{
+						this->listOfNewEnemies[this->i]->mouseStatus = 1;
+						this->listOfNewEnemies[this->i]->setScaleY(1);
+						this->listOfNewEnemies[this->i]->setScaleX(1);
+					}
+					i++;
+				}
+			}
+			if (event->target->getName() == "testRestart")
+			{
+				if (this->container->testRestart->currentFrame == 1)
+				{
+					this->container->testRestart->gotoAndStop(2);
+				}
+			}
+			else if (this->container->testRestart->currentFrame == 2)
+			{
+				this->container->testRestart->gotoAndStop(1);
+			}
+			if (event->target->getName() == "sellCase")
+			{
+				if (!this->sellHint)
+				{
+					this->sellHint = new Hint_mc();
+					this->sellHint->gotoAndStop(14);
+					this->sellHint->setPosition(645, Main::SCREEN_HEIGHT - 50);
+					this->sellHint->setScaleY(0.7f);
+					this->sellHint->setScaleX(0.7f);
+					this->sellHint->mouseChildren = false;
+					this->sellHint->mouseEnabled = false;
+					this->addChild(this->sellHint);
+				}
+			}
+			else if (this->sellHint)
+			{
+				this->removeChild(this->sellHint);
+				this->sellHint = NULL;
+			}
+		}
+	}
+
 
 	void WorldInterface::addCast(string param1)
 	{
@@ -1856,58 +1865,58 @@ namespace engine
 			+ Main::mainClass->readXMLClass.listOfLevinPriceXML[this->levinBuyHistory]);
 		if (std::getInt(this->container->buyFireBuyTXT) < 10)
 		{
-			this->container->buyFireCoin->setPositionX(-5.75);
-			this->container->buyFireCoin->setPositionY(13.15);
+			this->container->buyFireCoin->setPositionX(-5.75f);
+			this->container->buyFireCoin->setPositionY(13.15f);
 		}
 		else
 		{
-			this->container->buyFireCoin->setPositionX(-9.25);
-			this->container->buyFireCoin->setPositionY(13.15);
+			this->container->buyFireCoin->setPositionX(-9.25f);
+			this->container->buyFireCoin->setPositionY(13.15f);
 		}
 		if (std::getInt(this->container->buyIceBuyTXT) < 10)
 		{
-			this->container->buyIceCoin->setPositionX(-5.75);
-			this->container->buyIceCoin->setPositionY(13.15);
+			this->container->buyIceCoin->setPositionX(-5.75f);
+			this->container->buyIceCoin->setPositionY(13.15f);
 		}
 		else
 		{
-			this->container->buyIceCoin->setPositionX(-9.25);
-			this->container->buyIceCoin->setPositionY(13.15);
+			this->container->buyIceCoin->setPositionX(-9.25f);
+			this->container->buyIceCoin->setPositionY(13.15f);
 		}
 		if (std::getInt(this->container->buyStoneBuyTXT) < 10)
 		{
-			this->container->buyStoneCoin->setPositionX(-5.75);
-			this->container->buyStoneCoin->setPositionY(13.15);
+			this->container->buyStoneCoin->setPositionX(-5.75f);
+			this->container->buyStoneCoin->setPositionY(13.15f);
 		}
 		else
 		{
-			this->container->buyStoneCoin->setPositionX(-9.25);
-			this->container->buyStoneCoin->setPositionY(13.15);
+			this->container->buyStoneCoin->setPositionX(-9.25f);
+			this->container->buyStoneCoin->setPositionY(13.15f);
 		}
 		if (std::getInt(this->container->buyLevinBuyTXT) < 10)
 		{
-			this->container->buyLevinCoin->setPositionX(-5.75);
-			this->container->buyLevinCoin->setPositionY(13.15);
+			this->container->buyLevinCoin->setPositionX(-5.75f);
+			this->container->buyLevinCoin->setPositionY(13.15f);
 		}
 		else
 		{
-			this->container->buyLevinCoin->setPositionX(-9.25);
-			this->container->buyLevinCoin->setPositionY(13.15);
+			this->container->buyLevinCoin->setPositionX(-9.25f);
+			this->container->buyLevinCoin->setPositionY(13.15f);
 		}
 		if (std::getInt(this->container->buyGetAllBuyTXT) < 10)
 		{
-			this->container->buyGetAllCoin->setPositionX(-8.6);
-			this->container->buyGetAllCoin->setPositionY(13.15);
+			this->container->buyGetAllCoin->setPositionX(-8.6f);
+			this->container->buyGetAllCoin->setPositionY(13.15f);
 		}
 		else if (std::getInt(this->container->buyGetAllBuyTXT) < 100)
 		{
 			this->container->buyGetAllCoin->setPositionX(-11);
-			this->container->buyGetAllCoin->setPositionY(13.15);
+			this->container->buyGetAllCoin->setPositionY(13.15f);
 		}
 		else
 		{
-			this->container->buyGetAllCoin->setPositionX(-14.2);
-			this->container->buyGetAllCoin->setPositionY(13.15);
+			this->container->buyGetAllCoin->setPositionX(-14.2f);
+			this->container->buyGetAllCoin->setPositionY(13.15f);
 		}
 		int firePrice = std::getInt(this->container->buyFireBuyTXT);
 		if (this->container->fireSphere->isVisible() && (this->fireCount > 0 || this->world->money >= firePrice))
@@ -1937,8 +1946,8 @@ namespace engine
 				std::setText(this->container->buyFireBuyTXT, this->container->buyFireMyCost);
 				this->container->buyFireCoin->gotoAndStop(2);
 				this->container->buyFireCoin->setPosition(this->container->buyFireCoinMyPoint);
-				this->container->buyFireCoin->setScaleY(0.8);
-				this->container->buyFireCoin->setScaleX(0.8);
+				this->container->buyFireCoin->setScaleY(0.8f);
+				this->container->buyFireCoin->setScaleX(0.8f);
 			}
 
 			if (this->container->fireSphereSphereCase->buttonMode)
@@ -2020,8 +2029,8 @@ namespace engine
 				std::setText(this->container->buyFireBuyTXT, this->container->buyFireMyCost);
 				this->container->buyFireCoin->gotoAndStop(2);
 				this->container->buyFireCoin->setPosition(this->container->buyFireCoinMyPoint);
-				this->container->buyFireCoin->setScaleY(0.8);
-				this->container->buyFireCoin->setScaleX(0.8);
+				this->container->buyFireCoin->setScaleY(0.8f);
+				this->container->buyFireCoin->setScaleX(0.8f);
 			}
 			if (this->container->fireSphere->getAlpha() != 0.5)
 			{
@@ -2058,8 +2067,8 @@ namespace engine
 				std::setText(this->container->buyIceBuyTXT, this->container->buyIceMyCost);
 				this->container->buyIceCoin->gotoAndStop(2);
 				this->container->buyIceCoin->setPosition(this->container->buyIceCoinMyPoint);
-				this->container->buyIceCoin->setScaleY(0.8);
-				this->container->buyIceCoin->setScaleX(0.8);
+				this->container->buyIceCoin->setScaleY(0.8f);
+				this->container->buyIceCoin->setScaleX(0.8f);
 			}
 			if (this->container->iceSphereSphereCase->buttonMode)
 			{
@@ -2140,8 +2149,8 @@ namespace engine
 				std::setText(this->container->buyIceBuyTXT, this->container->buyIceMyCost);
 				this->container->buyIceCoin->gotoAndStop(2);
 				this->container->buyIceCoin->setPosition(this->container->buyIceCoinMyPoint);
-				this->container->buyIceCoin->setScaleY(0.8);
-				this->container->buyIceCoin->setScaleX(0.8);
+				this->container->buyIceCoin->setScaleY(0.8f);
+				this->container->buyIceCoin->setScaleX(0.8f);
 			}
 			if (this->container->iceSphere->getAlpha() != 0.5)
 			{
@@ -2178,8 +2187,8 @@ namespace engine
 				std::setText(this->container->buyStoneBuyTXT, this->container->buyStoneMyCost);
 				this->container->buyStoneCoin->gotoAndStop(2);
 				this->container->buyStoneCoin->setPosition(this->container->buyStoneCoinMyPoint);
-				this->container->buyStoneCoin->setScaleY(0.8);
-				this->container->buyStoneCoin->setScaleX(0.8);
+				this->container->buyStoneCoin->setScaleY(0.8f);
+				this->container->buyStoneCoin->setScaleX(0.8f);
 			}
 			if (this->container->stoneSphereSphereCase->buttonMode)
 			{
@@ -2260,8 +2269,8 @@ namespace engine
 				std::setText(this->container->buyStoneBuyTXT, this->container->buyStoneMyCost);
 				this->container->buyStoneCoin->gotoAndStop(2);
 				this->container->buyStoneCoin->setPosition(this->container->buyStoneCoinMyPoint);
-				this->container->buyStoneCoin->setScaleY(0.8);
-				this->container->buyStoneCoin->setScaleX(0.8);
+				this->container->buyStoneCoin->setScaleY(0.8f);
+				this->container->buyStoneCoin->setScaleX(0.8f);
 			}
 			if (this->container->stoneSphere->getAlpha() != 0.5)
 			{
@@ -2298,8 +2307,8 @@ namespace engine
 				std::setText(this->container->buyLevinBuyTXT, this->container->buyLevinMyCost);
 				this->container->buyLevinCoin->gotoAndStop(2);
 				this->container->buyLevinCoin->setPosition(this->container->buyLevinCoinMyPoint);
-				this->container->buyLevinCoin->setScaleY(0.8);
-				this->container->buyLevinCoin->setScaleX(0.8);
+				this->container->buyLevinCoin->setScaleY(0.8f);
+				this->container->buyLevinCoin->setScaleX(0.8f);
 			}
 			if (this->container->levinSphereSphereCase->buttonMode)
 			{
@@ -2380,8 +2389,8 @@ namespace engine
 				std::setText(this->container->buyLevinBuyTXT, this->container->buyLevinMyCost);
 				this->container->buyLevinCoin->gotoAndStop(2);
 				this->container->buyLevinCoin->setPosition(this->container->buyLevinCoinMyPoint);
-				this->container->buyLevinCoin->setScaleY(0.8);
-				this->container->buyLevinCoin->setScaleX(0.8);
+				this->container->buyLevinCoin->setScaleY(0.8f);
+				this->container->buyLevinCoin->setScaleX(0.8f);
 			}
 			if (this->container->levinSphere->getAlpha() != 0.5)
 			{
@@ -2420,8 +2429,8 @@ namespace engine
 					std::setText(this->container->buyGetAllBuyTXT, this->container->buyGetAllMyCost);
 					this->container->buyGetAllCoin->gotoAndStop(2);
 					this->container->buyGetAllCoin->setPosition(this->container->buyGetAllCoinMyPoint);
-					this->container->buyGetAllCoin->setScaleY(0.8);
-					this->container->buyGetAllCoin->setScaleX(0.8);
+					this->container->buyGetAllCoin->setScaleY(0.8f);
+					this->container->buyGetAllCoin->setScaleX(0.8f);
 				}
 				if (this->container->getAllSphereCase->buttonMode)
 				{
@@ -2471,8 +2480,8 @@ namespace engine
 					std::setText(this->container->buyGetAllBuyTXT, this->container->buyGetAllMyCost);
 					this->container->buyGetAllCoin->gotoAndStop(2);
 					this->container->buyGetAllCoin->setPosition(this->container->buyGetAllCoinMyPoint);
-					this->container->buyGetAllCoin->setScaleY(0.8);
-					this->container->buyGetAllCoin->setScaleX(0.8);
+					this->container->buyGetAllCoin->setScaleY(0.8f);
+					this->container->buyGetAllCoin->setScaleX(0.8f);
 				}
 				if (this->container->getAll->getAlpha() != 0.5)
 				{
@@ -2953,7 +2962,7 @@ namespace engine
 			}
 			else if (dynamic_cast<casts::Cast_3 *>(this->world->cast))
 			{
-				std::setText(this->container->barInfoNoteTXT, Common::String(std::round(Main::mainClass->readXMLClass.airLifeSecXML / 30) ） + " 秒");
+				std::setText(this->container->barInfoNoteTXT, Common::String(std::round(Main::mainClass->readXMLClass.airLifeSecXML / 30) ) + " 秒");
 			}
 		}
 		else if (dynamic_cast<Unit *>(this->world->selectObject))
@@ -3332,9 +3341,8 @@ namespace engine
 		}
 		if (this->autoguidesObject)
 		{ //模拟event
-			tempObject = new Object();
-			tempObject->target = this->autoguidesObject;
-			this->mouseMoveHandler(tempObject);
+			MouseEvent me = buildMouseEvent(this->autoguidesObject);
+			this->mouseMoveHandler(&me);
 		}
 	}// end function
 
@@ -4096,7 +4104,7 @@ namespace engine
 		this->i = this->listOfNewEnemies.size() - 1;
 		while (this->i >= 0)
 		{
-			MovieClip * tempObject = this->listOfNewEnemies[this->i];
+			MouseStatusMC * tempObject = this->listOfNewEnemies[this->i];
 			if (tempObject->currentFrame < tempObject->totalFrames)
 			{
 				tempObject->gotoAndStop((tempObject->currentFrame + 1));
@@ -4118,7 +4126,7 @@ namespace engine
 			}
 			if (tempObject->getPositionX() == 0)
 			{
-				tempObject->setPositionX(Main::SCREEN_WIDTH - 40);
+				tempObject->setPositionX(Main::SCREEN_WIDTH - 40);				 
 				if (dynamic_cast<NewEnemy_mc *>(tempObject))
 				{
 					NewEnemy_mc * enmc = dynamic_cast<NewEnemy_mc *>(tempObject);
@@ -4394,8 +4402,8 @@ namespace engine
 				}
 				else if (dynamic_cast<NewEnemy_mc *>(tempObject))
 				{
-					this->world->menuObject = new Education("newEnemy", tempObject->typeUnit);
-					this->world->addChild(this->world->menuObject);
+					//this->world->menuObject = new Education("newEnemy", tempObject->typeUnit);
+					//this->world->addChild(this->world->menuObject);
 					this->removeChild(tempObject);
 					this->listOfNewEnemies.splice(this->i, 1);
 				}

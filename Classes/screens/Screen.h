@@ -2,7 +2,6 @@
 #define SCREENS_SCREEN_H
 #include "BaseHeaders.h"   
 
- 
 namespace screens
 {   
     class Screen : public BaseNode

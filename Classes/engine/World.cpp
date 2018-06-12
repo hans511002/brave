@@ -310,41 +310,41 @@ namespace engine
 				int i = 0;
 				while (i < this->listOfFirePortals.size())
 				{
-					//this->tempObject = new Indexes(new RoadsignFire_mc(), 0);
-					//this->tempObject.x = this->listOfFirePortals[this->i].x;
-					//this->tempObject.y = this->listOfFirePortals[this->i].y;
-					//this->tempObject.scaleX = this->listOfFirePortals[this->i].scaleX;
-					//this->tempObject.scaleY = this->listOfFirePortals[this->i].scaleY;
+					//tempObject = new Indexes(new RoadsignFire_mc(), 0);
+					//tempObject.x = this->listOfFirePortals[this->i].x;
+					//tempObject.y = this->listOfFirePortals[this->i].y;
+					//tempObject.scaleX = this->listOfFirePortals[this->i].scaleX;
+					//tempObject.scaleY = this->listOfFirePortals[this->i].scaleY;
 					i++;
 				}
 				i = 0;
 				while (i < this->listOfIcePortals.size())
 				{
-					//this->tempObject = new Indexes(new RoadsignIce_mc(), 0);
-					//this->tempObject.x = this->listOfIcePortals[this->i].x;
-					//this->tempObject.y = this->listOfIcePortals[this->i].y;
-					//this->tempObject.scaleX = this->listOfIcePortals[this->i].scaleX;
-					//this->tempObject.scaleY = this->listOfIcePortals[this->i].scaleY;
+					//tempObject = new Indexes(new RoadsignIce_mc(), 0);
+					//tempObject.x = this->listOfIcePortals[this->i].x;
+					//tempObject.y = this->listOfIcePortals[this->i].y;
+					//tempObject.scaleX = this->listOfIcePortals[this->i].scaleX;
+					//tempObject.scaleY = this->listOfIcePortals[this->i].scaleY;
 					i++;
 				}
 				i = 0;
 				while (i < this->listOfStonePortals.size())
 				{
-					//this->tempObject = new Indexes(new RoadsignStone_mc(), 0);
-					//this->tempObject.x = this->listOfStonePortals[this->i].x;
-					//this->tempObject.y = this->listOfStonePortals[this->i].y;
-					//this->tempObject.scaleX = this->listOfStonePortals[this->i].scaleX;
-					//this->tempObject.scaleY = this->listOfStonePortals[this->i].scaleY;
+					//tempObject = new Indexes(new RoadsignStone_mc(), 0);
+					//tempObject.x = this->listOfStonePortals[this->i].x;
+					//tempObject.y = this->listOfStonePortals[this->i].y;
+					//tempObject.scaleX = this->listOfStonePortals[this->i].scaleX;
+					//tempObject.scaleY = this->listOfStonePortals[this->i].scaleY;
 					i++;
 				}
 				i = 0;
 				while (i < this->listOfLevinPortals.size())
 				{
-					//this->tempObject = new Indexes(new RoadsignLevin_mc(), 0);
-					//this->tempObject.x = this->listOfLevinPortals[this->i].x;
-					//this->tempObject.y = this->listOfLevinPortals[this->i].y;
-					//this->tempObject.scaleX = this->listOfLevinPortals[this->i].scaleX;
-					//this->tempObject.scaleY = this->listOfLevinPortals[this->i].scaleY;
+					//tempObject = new Indexes(new RoadsignLevin_mc(), 0);
+					//tempObject.x = this->listOfLevinPortals[this->i].x;
+					//tempObject.y = this->listOfLevinPortals[this->i].y;
+					//tempObject.scaleX = this->listOfLevinPortals[this->i].scaleX;
+					//tempObject.scaleY = this->listOfLevinPortals[this->i].scaleY;
 					i++;
 				}
 			}
@@ -557,9 +557,11 @@ namespace engine
 					{
 						if (!this->towerRadius->isVisible() || event->target->getParent()->getParent() != this->towerRadius->myTower)
 						{
-							this->towerRadius->myTower = event->target->getParent()->getParent();
-							this->towerRadius->width = this->towerRadius->myTower->radius * 2;
-							this->towerRadius->height = this->towerRadius->myTower->radius * 2 * this->scaleRadius;
+							Node * parent = event->target->getParent()->getParent();
+							Tower *tower = ISTYPE(Tower, parent);
+							this->towerRadius->myTower = tower;
+							this->towerRadius->setWidth(this->towerRadius->myTower->radius * 2);
+							this->towerRadius->setHeight(this->towerRadius->myTower->radius * 2 * this->scaleRadius);
 							this->towerRadius->setPosition(this->towerRadius->myTower->this_pt);
 							//this->towerRadius->x = this->towerRadius->myTower->this_pt.x;
 							//this->towerRadius->y = this->towerRadius->myTower->this_pt.y;
@@ -617,7 +619,9 @@ namespace engine
 								}
 							}
 						}
-						this->towerRadius->myTower = event->target->getParent()->getParent();
+						Node * parent = event->target->getParent()->getParent();
+						Tower *tower = ISTYPE(Tower, parent);
+						this->towerRadius->myTower = tower;
 						this->towerRadius->setWidth (this->towerRadius->myTower->radius * 2);
 						this->towerRadius->setHeight ( this->towerRadius->myTower->radius * 2 * this->scaleRadius);
 						this->towerRadius->setPosition(this->towerRadius->myTower->this_pt);
@@ -661,7 +665,8 @@ namespace engine
 			{
 				if (event->target->getName() == "placeForBuildCase")//&& event->target->buttonMode
 				{
-					BuildTowerPlace * place = ISTYPE(BuildTowerPlace, event->target->getParent());
+					Node * parent = event->target->getParent()->getParent();
+					BuildTowerPlace * place = ISTYPE(BuildTowerPlace, parent);
 					if (place->currentFrame == 1)// (event->target->getParent()->currentFrame == 1)
 					{
 						if (!this->buildTowerMenu)
@@ -686,58 +691,74 @@ namespace engine
 			}
 		}
 	}
-	void World::rightMouseDownHandler(cocos2d::EventMouse* event)
+	void World::rightMouseDownHandler(cocos2d::EventMouse* e)
 	{
-		if (event->target->getName() == "towerCase")
+		EventNode::mouseDownHandler(e);
+		int mouseButton = e->getMouseButton();
+		if (mouseButton == 1)return;
+		std::MouseEvent me = std::buildMouseEvent(e);
+		std::MouseEvent * event = &me;
+		while (event->hasNext())
 		{
-			if (!this->exchange)
+			if (event->target->getName() == "towerCase")
 			{
-				if (event->target->getParent()->getParent()->towerType < 5 && !event->target->getParent()->getParent()->blockTowerFlag)
+				if (!this->exchange)
 				{
-					this->i = 0;
-					while (this->i < this->listOfTowers.size())
+					Node *parent=event->target->getParent()->getParent();
+					Tower *tower = ISTYPE(Tower, parent);
+					if (tower->towerType < 5 && !tower->blockTowerFlag)
 					{
-						if (this->listOfTowers[this->i] != event->target->getParent()->getParent() && this->listOfTowers[this->i]->towerType < 5)
+						this->i = 0;
+						while (this->i < this->listOfTowers.size())
 						{
-							this->mouseMovedHandler(event);
-							this->exchange = new Exchange(event->target->getParent()->getParent());
-							this->addChild(this->exchange);
-							break;
+							if (this->listOfTowers[this->i] != tower && this->listOfTowers[this->i]->towerType < 5)
+							{
+								this->mouseMovedHandler(event);
+								this->exchange = new Exchange(tower);
+								this->addChild(this->exchange);
+								break;
+							}
+							i++;
 						}
-						i++;
 					}
 				}
+				else
+				{
+					this->exchange->rightMouseDownHandler(event);
+				}
 			}
-			else
+			else if (this->exchange)
 			{
 				this->exchange->rightMouseDownHandler(event);
 			}
-		}
-		else if (this->exchange)
-		{
-			this->exchange->rightMouseDownHandler(event);
-		}
-		else if (this->nowLevel != 1 && !this->getSphere && !this->cast && !this->menuObject)
-		{
-			if (!Main::mainClass->saveBoxClass->getBoolValue("firstRC"))
+			else if (this->nowLevel != 1 && !this->getSphere && !this->cast && !this->menuObject)
 			{
-				Main::mainClass->saveBoxClass->setValue("firstRC", true);
-				//this->menuObject = new Training_10();
-				//this->addChild(this->menuObject);
+				if (!Main::mainClass->saveBoxClass->getBoolValue("firstRC"))
+				{
+					Main::mainClass->saveBoxClass->setValue("firstRC", true);
+					//this->menuObject = new Training_10();
+					//this->addChild(this->menuObject);
+				}
+			}
+			if (this->getSphere || this->cast)
+			{
+				this->worldInterface->breaking();
 			}
 		}
-		if (this->getSphere || this->cast)
-		{
-			this->worldInterface->breaking();
-		}
-		return;
-		// end function
 	}	
-	void World::rightMouseUpHandler(cocos2d::EventMouse* event)
+	void World::rightMouseUpHandler(cocos2d::EventMouse* e)
 	{
-		if (this->exchange)
+		EventNode::mouseDownHandler(e);
+		int mouseButton = e->getMouseButton();
+		if (mouseButton == 1)return;
+		std::MouseEvent me = std::buildMouseEvent(e);
+		std::MouseEvent * event = &me;
+		while (event->hasNext())
 		{
-			this->exchange->rightMouseUpHandler(event);
+			if (this->exchange)
+			{
+				this->exchange->rightMouseUpHandler(event);
+			}
 		}
 		return;
 	}
@@ -751,31 +772,31 @@ namespace engine
 		}
 		else if (param1 == "tower2")
 		{
-			this->tempObject = new Tower2();
+			tempObject = new Tower2();
 		}
 		else if (param1 == "tower3")
 		{
-			this->tempObject = new Tower3();
+			tempObject = new Tower3();
 		}
 		else if (param1 == "tower4")
 		{
-			this->tempObject = new Tower4();
+			tempObject = new Tower4();
 		}
 		else if (param1 == "tower5")
 		{
-			this->tempObject = new Tower5();
+			tempObject = new Tower5();
 		}
 		else if (param1 == "tower6")
 		{
-			this->tempObject = new Tower6();
+			tempObject = new Tower6();
 		}
 		else if (param1 == "tower7")
 		{
-			this->tempObject = new Tower7();
+			tempObject = new Tower7();
 		}
 		else if (param1 == "tower8")
 		{
-			this->tempObject = new Tower8();
+			tempObject = new Tower8();
 		}
 		tempObject->myPlace = param2;
 		tempObject->autoBuild = param3;
@@ -804,125 +825,125 @@ namespace engine
 		{
 			tempObject = new Unit_4();
 		}
-		else if (param1 == 5)
-		{
-			this->tempObject = new Unit_5();
-		}
-		else if (param1 == 6)
-		{
-			this->tempObject = new Unit_6();
-		}
-		else if (param1 == 7)
-		{
-			this->tempObject = new Unit_7();
-		}
-		else if (param1 == 8)
-		{
-			this->tempObject = new Unit_8();
-		}
-		else if (param1 == 9)
-		{
-			this->tempObject = new Unit_9();
-		}
+		//else if (param1 == 5)
+		//{
+		//	tempObject = new Unit_5();
+		//}
+		//else if (param1 == 6)
+		//{
+		//	tempObject = new Unit_6();
+		//}
+		//else if (param1 == 7)
+		//{
+		//	tempObject = new Unit_7();
+		//}
+		//else if (param1 == 8)
+		//{
+		//	tempObject = new Unit_8();
+		//}
+		//else if (param1 == 9)
+		//{
+		//	tempObject = new Unit_9();
+		//}
 		//else if (param1 == 10)
 		//{
-		//	this->tempObject = new Unit_10();
+		//	tempObject = new Unit_10();
 		//}
 		//else if (param1 == 11)
 		//{
-		//	this->tempObject = new Unit_11();
+		//	tempObject = new Unit_11();
 		//}
 		//else if (param1 == 12)
 		//{
-		//	this->tempObject = new Unit_12();
+		//	tempObject = new Unit_12();
 		//}
 		//else if (param1 == 13)
 		//{
-		//	this->tempObject = new Unit_13();
+		//	tempObject = new Unit_13();
 		//}
 		//else if (param1 == 14)
 		//{
-		//	this->tempObject = new Unit_14();
+		//	tempObject = new Unit_14();
 		//}
 		//else if (param1 == 15)
 		//{
-		//	this->tempObject = new Unit_15();
+		//	tempObject = new Unit_15();
 		//}
 		//else if (param1 == 16)
 		//{
-		//	this->tempObject = new Unit_16();
+		//	tempObject = new Unit_16();
 		//}
 		//else if (param1 == 17)
 		//{
-		//	this->tempObject = new Unit_17();
+		//	tempObject = new Unit_17();
 		//}
 		//else if (param1 == 18)
 		//{
-		//	this->tempObject = new Unit_18();
+		//	tempObject = new Unit_18();
 		//}
 		//else if (param1 == 19)
 		//{
-		//	this->tempObject = new Unit_19();
+		//	tempObject = new Unit_19();
 		//}
 		//else if (param1 == 20)
 		//{
-		//	this->tempObject = new Unit_20();
+		//	tempObject = new Unit_20();
 		//}
 		//else if (param1 == 21)
 		//{
-		//	this->tempObject = new Unit_21();
+		//	tempObject = new Unit_21();
 		//}
 		//else if (param1 == 22)
 		//{
-		//	this->tempObject = new Unit_22();
+		//	tempObject = new Unit_22();
 		//}
 		//else if (param1 == 23)
 		//{
-		//	this->tempObject = new Unit_23();
+		//	tempObject = new Unit_23();
 		//}
 		//else if (param1 == 24)
 		//{
-		//	this->tempObject = new Unit_24();
+		//	tempObject = new Unit_24();
 		//}
 		//else if (param1 == 25)
 		//{
-		//	this->tempObject = new Unit_25();
+		//	tempObject = new Unit_25();
 		//}
 		//else if (param1 == 26)
 		//{
-		//	this->tempObject = new Unit_26();
+		//	tempObject = new Unit_26();
 		//}
 		//else if (param1 == 27)
 		//{
-		//	this->tempObject = new Unit_27();
+		//	tempObject = new Unit_27();
 		//}
 		//else if (param1 == 28)
 		//{
-		//	this->tempObject = new Unit_28();
+		//	tempObject = new Unit_28();
 		//}
 		//else if (param1 == 29)
 		//{
-		//	this->tempObject = new Unit_29();
+		//	tempObject = new Unit_29();
 		//}
 		//else if (param1 == 30)
 		//{
-		//	this->tempObject = new Unit_30();
+		//	tempObject = new Unit_30();
 		//}
 		//else if (param1 == 31)
 		//{
-		//	this->tempObject = new Unit_31();
+		//	tempObject = new Unit_31();
 		//}
 		//else if (param1 == 32)
 		//{
-		//	this->tempObject = new Unit_32();
+		//	tempObject = new Unit_32();
 		//}
 		//else if (param1 == 33)
 		//{
-		//	this->tempObject = new Unit_33();
+		//	tempObject = new Unit_33();
 		//}
 		//else if (param1 == 34)
 		//{
-		//	this->tempObject = new Unit_34();
+		//	tempObject = new Unit_34();
 		//}
 
 		tempObject->road = param2;
@@ -1009,242 +1030,242 @@ namespace engine
 
 	void World::manageIndexes()
 	{
-		if (this->frameCounter == 10 || this->frameCounter == 20 || this->frameCounter == 30 || this->forseIndexFl)
-		{
-			if (this->forseIndexFl)
-			{
-				this->forseIndexFl = false;
-			}
-			if (this->listOfIndexes0.size() > 0)
-			{
-				//this->listOfIndexes0.sortOn(["y", "x"], [Array.NUMERIC, Array.NUMERIC]);
-				//this->m = 0;
-				//while (this->m < this->listOfIndexes0.size())
-				//{ 
-				//	this->setChildIndex(this->listOfIndexes0[this->m], (this->numChildren - 1));
-				//	m++;
-				//}
-			}
-			this->sortIndex.clear();// = [];
-			this->sortIndex = this->sortIndex.concat(this->listOfIndexes1);
-			this->sortIndex = this->sortIndex.concat(this->listOfIndexes2);
-			this->sortIndex = this->sortIndex.concat(this->listOfTowers);
-			this->sortIndex = this->sortIndex.concat(this->listOfUnits);
-			this->sortIndex = this->sortIndex.concat(this->listOfFlags);
-			if (this->buildTowerMenu)
-			{
-				this->sortIndex.push(this->buildTowerMenu);
-			}
-			//this->sortIndex.sortOn(["y", "x"], [Array.NUMERIC, Array.NUMERIC]);
-			//this->m = 0;
-			//while (this->m < this->sortIndex.size())
-			//{ 
-			//	this->setChildIndex(this->sortIndex[this->m], (this->numChildren - 1));
-			//	m++;
-			//}
-			if (this->listOfIndexes2.size() > 0)
-			{
-				this->sortIndex.clear();// = [];
-				this->sortIndex = this->sortIndex.concat(this->listOfTowers);
-				this->sortIndex = this->sortIndex.concat(this->listOfIndexes2);
-				//this->sortIndex.sortOn(["y", "x"], [Array.NUMERIC, Array.NUMERIC]);
-				this->indexesTemp1 = NULL;
-				this->m = 0;
-				while (this->m < this->sortIndex.size())
-				{
-					if (!(this->sortIndex[this->m] is Tower))
-					{
-						bool indexesTemp3 = false;
-						if (this->sortIndex[this->m] is Bullet)
-						{
-							Bullet * bullet = (Bullet*)this->sortIndex[this->m];
-							this->n = 0;
-							while (this->n < this->listOfTowers.size())
-							{
-								if (this->listOfTowers[this->n]->getPositionY() > bullet->enemyTarget->getPositionY())
-								{
-									indexesTemp3 = true;
-									this->setChildIndex(bullet, (this->getChildIndex(this->listOfTowers[this->n]) - 1));
-									break;
-								}
-								n++;
-							}
-							if (!indexesTemp3)
-							{
-								this->setChildIndex(bullet, (this->numChildren - 1));
-							}
-						}
-						else
-						{
-							if (this->sortIndex[this->m] is CastSphere)
-							{
-								CastSphere * castSphere = (CastSphere*)this->sortIndex[this->m];
-								if (this->sortIndex[this->m]->sphereType == "getAll" && this->sortIndex[this->m]->container->haze1)
-								{
-									indexesTemp3 = true;
-									tempObject4 = false;
-									this->n = 0;
-									while (this->n < this->listOfTowers.size())
-									{
-										int tempObject5 = 0;
-										if (castSphere->container->haze1->isVisible() && this->listOfTowers[this->n]->getPositionY() > this->sortIndex[this->m]->container->haze1->myPoint.y + 30)
-										{
-											tempObject5++;
-										}
-										if (castSphere->container->haze2->isVisible() && this->listOfTowers[this->n]->getPositionY() > this->sortIndex[this->m]->container->haze2->myPoint.y + 30)
-										{
-											tempObject5++;
-										}
-										if (castSphere->container->haze3->isVisible() && this->listOfTowers[this->n]->getPositionY() > castSphere->container->haze3->myPoint.y + 30)
-										{
-											tempObject5++;
-										}
-										if (castSphere->container->haze4->isVisible() && this->listOfTowers[this->n]->getPositionY() > castSphere->container->haze4->myPoint.y + 30)
-										{
-											tempObject5++;
-										}
-										if (castSphere->container->haze5->isVisible() && this->listOfTowers[this->n]->getPositionY() > castSphere->container->haze5->myPoint.y + 30)
-										{
-											tempObject5++;
-										}
-										if (castSphere->container->haze6->isVisible() && this->listOfTowers[this->n]->getPositionY() > castSphere->container->haze6->myPoint.y + 30)
-										{
-											tempObject5++;
-										}
-										if (castSphere->container->haze7->isVisible() && this->listOfTowers[this->n]->getPositionY() > castSphere->container->haze7->myPoint.y + 30)
-										{
-											tempObject5++;
-										}
-										if (castSphere->container->haze8->isVisible() && this->listOfTowers[this->n]->getPositionY() > castSphere->container->haze8->myPoint.y + 30)
-										{
-											tempObject5++;
-										}
-										if (castSphere->container->haze9->isVisible() && this->listOfTowers[this->n]->getPositionY() > castSphere->container->haze9->myPoint.y + 30)
-										{
-											tempObject5++;
-										}
-										if (tempObject5 >= 3)
-										{
-											thistempObject4 = true;
-											this->setChildIndex(castSphere, (this->getChildIndex(this->listOfTowers[this->n]) - 1));
-											break;
-										}
-										n++;
-									}
-									if (!tempObject4)
-									{
-										this->setChildIndex(castSphere, (this->numChildren - 1));
-									}
-								}
-							}
-							if (!indexesTemp3)
-							{
-								this->n = 0;
-								while (this->n < this->listOfTowers.size())
-								{
-									if (this->listOfTowers[this->n]->getPositionY() > this->sortIndex[this->m]->y)
-									{
-										indexesTemp3 = true;
-										this->setChildIndex(this->sortIndex[this->m], (this->getChildIndex(this->listOfTowers[this->n]) - 1));
-										break;
-									}
-									n++;
-								}
-								if (!this->indexesTemp3)
-								{
-									this->setChildIndex(this->sortIndex[this->m], (this->numChildren - 1));
-								}
-							}
-						}
-					}
-					m++;
-				}
-			}
-		}
-		if (this->nowLevel == 15)
-		{
-			if (this->levelAdditionally1->currentFrame != this->levelAdditionally1->totalFrames)
-			{
-				this->setChildIndex(this->levelAdditionally1, (this->numChildren - 1));
-			}
-			this->setChildIndex(this->levelAdditionally3, (this->numChildren - 1));
-		}
-		if (this->towerRadius->isVisible())
-		{
-			this->setChildIndex(this->towerRadius, (this->numChildren - 1));
-		}
-		if (this->listOfIndexes3.size() > 0)
-		{
-			this->m = 0;
-			while (this->m < this->listOfIndexes3.size())
-			{
-				this->setChildIndex(this->listOfIndexes3[this->m], (this->numChildren - 1));
-				m++;
-			}
-		}
-		this->setChildIndex(this->pointer1, (this->numChildren - 1));
-		if (this->pointer2)
-		{
-			this->setChildIndex(this->pointer2, (this->numChildren - 1));
-		}
-		if (this->pointer3)
-		{
-			this->setChildIndex(this->pointer3, (this->numChildren - 1));
-		}
-		this->setChildIndex(this->worldInterface, (this->numChildren - 1));
-		if (this->road->isVisible())
-		{
-			this->setChildIndex(this->road, (this->numChildren - 1));
-		}
-		if (this->towerMenu)
-		{
-			this->setChildIndex(this->towerMenu->towerRadius, (this->numChildren - 1));
-			this->setChildIndex(this->towerMenu->towerRadius1, (this->numChildren - 1));
-			this->setChildIndex(this->towerMenu, (this->numChildren - 1));
-			this->setChildIndex(this->towerMenu->hint, (this->numChildren - 1));
-		}
-		else if (this->ultraTowerMenu)
-		{
-			this->setChildIndex(this->ultraTowerMenu, (this->numChildren - 1));
-			this->setChildIndex(this->ultraTowerMenu->hint, (this->numChildren - 1));
-		}
-		this->m = 0;
-		while (this->m < this->listOfMoveSpheres.size())
-		{
-			this->setChildIndex(this->listOfMoveSpheres[this->m], (this->numChildren - 1));
-			m++;
-		}
-		if (this->getSphere)
-		{
-			this->setChildIndex(this->getSphere, (this->numChildren - 1));
-		}
-		if (this->cast)
-		{
-			this->setChildIndex(this->cast, (this->numChildren - 1));
-		}
-		if (this->exchange)
-		{
-			this->setChildIndex(this->exchange->graphicAtMyTower, (this->numChildren - 1));
-			this->setChildIndex(this->exchange, (this->numChildren - 1));
-		}
-		if (this->bezierClass)
-		{
-			if (this->bezierClass->isVisible())
-			{
-				this->setChildIndex(this->bezierClass, (this->numChildren - 1));
-				this->bezierClass.updateLine();
-			}
-		}
-		if (this->trainingClass)
-		{
-			this->setChildIndex(this->trainingClass, (this->numChildren - 1));
-		}
-		this->setChildIndex(this->hint, (this->numChildren - 1));
-		if (this->menuObject)
-		{
-			this->setChildIndex(this->menuObject, (this->numChildren - 1));
-		}
-		return;
+		//if (this->frameCounter == 10 || this->frameCounter == 20 || this->frameCounter == 30 || this->forseIndexFl)
+		//{
+		//	if (this->forseIndexFl)
+		//	{
+		//		this->forseIndexFl = false;
+		//	}
+		//	//if (this->listOfIndexes0.size() > 0)
+		//	//{
+		//	//	//this->listOfIndexes0.sortOn(["y", "x"], [Array.NUMERIC, Array.NUMERIC]);
+		//	//	//this->m = 0;
+		//	//	//while (this->m < this->listOfIndexes0.size())
+		//	//	//{ 
+		//	//	//	this->setChildIndex(this->listOfIndexes0[this->m], (this->numChildren - 1));
+		//	//	//	m++;
+		//	//	//}
+		//	//}
+		//	this->sortIndex.clear();// = [];
+		//	this->sortIndex = this->sortIndex.concat(this->listOfIndexes1);
+		//	this->sortIndex = this->sortIndex.concat(this->listOfIndexes2);
+		//	this->sortIndex = this->sortIndex.concat(this->listOfTowers);
+		//	this->sortIndex = this->sortIndex.concat(this->listOfUnits);
+		//	this->sortIndex = this->sortIndex.concat(this->listOfFlags);
+		//	if (this->buildTowerMenu)
+		//	{
+		//		this->sortIndex.push(this->buildTowerMenu);
+		//	}
+		//	//this->sortIndex.sortOn(["y", "x"], [Array.NUMERIC, Array.NUMERIC]);
+		//	//this->m = 0;
+		//	//while (this->m < this->sortIndex.size())
+		//	//{ 
+		//	//	this->setChildIndex(this->sortIndex[this->m], (this->numChildren - 1));
+		//	//	m++;
+		//	//}
+		//	if (this->listOfIndexes2.size() > 0)
+		//	{
+		//		this->sortIndex.clear();// = [];
+		//		this->sortIndex = this->sortIndex.concat(this->listOfTowers);
+		//		this->sortIndex = this->sortIndex.concat(this->listOfIndexes2);
+		//		//this->sortIndex.sortOn(["y", "x"], [Array.NUMERIC, Array.NUMERIC]);
+		//		this->indexesTemp1 = NULL;
+		//		this->m = 0;
+		//		while (this->m < this->sortIndex.size())
+		//		{
+		//			if (!(this->sortIndex[this->m] is Tower))
+		//			{
+		//				bool indexesTemp3 = false;
+		//				if (this->sortIndex[this->m] is Bullet)
+		//				{
+		//					Bullet * bullet = (Bullet*)this->sortIndex[this->m];
+		//					this->n = 0;
+		//					while (this->n < this->listOfTowers.size())
+		//					{
+		//						if (this->listOfTowers[this->n]->getPositionY() > bullet->enemyTarget->getPositionY())
+		//						{
+		//							indexesTemp3 = true;
+		//							this->setChildIndex(bullet, (this->getChildIndex(this->listOfTowers[this->n]) - 1));
+		//							break;
+		//						}
+		//						n++;
+		//					}
+		//					if (!indexesTemp3)
+		//					{
+		//						this->setChildIndex(bullet, (this->numChildren - 1));
+		//					}
+		//				}
+		//				else
+		//				{
+		//					if (this->sortIndex[this->m] is CastSphere)
+		//					{
+		//						CastSphere * castSphere = (CastSphere*)this->sortIndex[this->m];
+		//						if (this->sortIndex[this->m]->sphereType == "getAll" && this->sortIndex[this->m]->container->haze1)
+		//						{
+		//							indexesTemp3 = true;
+		//							tempObject4 = false;
+		//							this->n = 0;
+		//							while (this->n < this->listOfTowers.size())
+		//							{
+		//								int tempObject5 = 0;
+		//								if (castSphere->container->haze1->isVisible() && this->listOfTowers[this->n]->getPositionY() > this->sortIndex[this->m]->container->haze1->myPoint.y + 30)
+		//								{
+		//									tempObject5++;
+		//								}
+		//								if (castSphere->container->haze2->isVisible() && this->listOfTowers[this->n]->getPositionY() > this->sortIndex[this->m]->container->haze2->myPoint.y + 30)
+		//								{
+		//									tempObject5++;
+		//								}
+		//								if (castSphere->container->haze3->isVisible() && this->listOfTowers[this->n]->getPositionY() > castSphere->container->haze3->myPoint.y + 30)
+		//								{
+		//									tempObject5++;
+		//								}
+		//								if (castSphere->container->haze4->isVisible() && this->listOfTowers[this->n]->getPositionY() > castSphere->container->haze4->myPoint.y + 30)
+		//								{
+		//									tempObject5++;
+		//								}
+		//								if (castSphere->container->haze5->isVisible() && this->listOfTowers[this->n]->getPositionY() > castSphere->container->haze5->myPoint.y + 30)
+		//								{
+		//									tempObject5++;
+		//								}
+		//								if (castSphere->container->haze6->isVisible() && this->listOfTowers[this->n]->getPositionY() > castSphere->container->haze6->myPoint.y + 30)
+		//								{
+		//									tempObject5++;
+		//								}
+		//								if (castSphere->container->haze7->isVisible() && this->listOfTowers[this->n]->getPositionY() > castSphere->container->haze7->myPoint.y + 30)
+		//								{
+		//									tempObject5++;
+		//								}
+		//								if (castSphere->container->haze8->isVisible() && this->listOfTowers[this->n]->getPositionY() > castSphere->container->haze8->myPoint.y + 30)
+		//								{
+		//									tempObject5++;
+		//								}
+		//								if (castSphere->container->haze9->isVisible() && this->listOfTowers[this->n]->getPositionY() > castSphere->container->haze9->myPoint.y + 30)
+		//								{
+		//									tempObject5++;
+		//								}
+		//								if (tempObject5 >= 3)
+		//								{
+		//									thistempObject4 = true;
+		//									this->setChildIndex(castSphere, (this->getChildIndex(this->listOfTowers[this->n]) - 1));
+		//									break;
+		//								}
+		//								n++;
+		//							}
+		//							if (!tempObject4)
+		//							{
+		//								this->setChildIndex(castSphere, (this->numChildren - 1));
+		//							}
+		//						}
+		//					}
+		//					if (!indexesTemp3)
+		//					{
+		//						this->n = 0;
+		//						while (this->n < this->listOfTowers.size())
+		//						{
+		//							if (this->listOfTowers[this->n]->getPositionY() > this->sortIndex[this->m]->y)
+		//							{
+		//								indexesTemp3 = true;
+		//								this->setChildIndex(this->sortIndex[this->m], (this->getChildIndex(this->listOfTowers[this->n]) - 1));
+		//								break;
+		//							}
+		//							n++;
+		//						}
+		//						if (!this->indexesTemp3)
+		//						{
+		//							this->setChildIndex(this->sortIndex[this->m], (this->numChildren - 1));
+		//						}
+		//					}
+		//				}
+		//			}
+		//			m++;
+		//		}
+		//	}
+		//}
+		//if (this->nowLevel == 15)
+		//{
+		//	if (this->levelAdditionally1->currentFrame != this->levelAdditionally1->totalFrames)
+		//	{
+		//		this->setChildIndex(this->levelAdditionally1, (this->numChildren - 1));
+		//	}
+		//	this->setChildIndex(this->levelAdditionally3, (this->numChildren - 1));
+		//}
+		//if (this->towerRadius->isVisible())
+		//{
+		//	this->setChildIndex(this->towerRadius, (this->numChildren - 1));
+		//}
+		//if (this->listOfIndexes3.size() > 0)
+		//{
+		//	this->m = 0;
+		//	while (this->m < this->listOfIndexes3.size())
+		//	{
+		//		this->setChildIndex(this->listOfIndexes3[this->m], (this->numChildren - 1));
+		//		m++;
+		//	}
+		//}
+		//this->setChildIndex(this->pointer1, (this->numChildren - 1));
+		//if (this->pointer2)
+		//{
+		//	this->setChildIndex(this->pointer2, (this->numChildren - 1));
+		//}
+		//if (this->pointer3)
+		//{
+		//	this->setChildIndex(this->pointer3, (this->numChildren - 1));
+		//}
+		//this->setChildIndex(this->worldInterface, (this->numChildren - 1));
+		//if (this->road->isVisible())
+		//{
+		//	this->setChildIndex(this->road, (this->numChildren - 1));
+		//}
+		//if (this->towerMenu)
+		//{
+		//	this->setChildIndex(this->towerMenu->towerRadius, (this->numChildren - 1));
+		//	this->setChildIndex(this->towerMenu->towerRadius1, (this->numChildren - 1));
+		//	this->setChildIndex(this->towerMenu, (this->numChildren - 1));
+		//	this->setChildIndex(this->towerMenu->hint, (this->numChildren - 1));
+		//}
+		//else if (this->ultraTowerMenu)
+		//{
+		//	this->setChildIndex(this->ultraTowerMenu, (this->numChildren - 1));
+		//	this->setChildIndex(this->ultraTowerMenu->hint, (this->numChildren - 1));
+		//}
+		//this->m = 0;
+		//while (this->m < this->listOfMoveSpheres.size())
+		//{
+		//	this->setChildIndex(this->listOfMoveSpheres[this->m], (this->numChildren - 1));
+		//	m++;
+		//}
+		//if (this->getSphere)
+		//{
+		//	this->setChildIndex(this->getSphere, (this->numChildren - 1));
+		//}
+		//if (this->cast)
+		//{
+		//	this->setChildIndex(this->cast, (this->numChildren - 1));
+		//}
+		//if (this->exchange)
+		//{
+		//	this->setChildIndex(this->exchange->graphicAtMyTower, (this->numChildren - 1));
+		//	this->setChildIndex(this->exchange, (this->numChildren - 1));
+		//}
+		//if (this->bezierClass)
+		//{
+		//	if (this->bezierClass->isVisible())
+		//	{
+		//		this->setChildIndex(this->bezierClass, (this->numChildren - 1));
+		//		this->bezierClass.updateLine();
+		//	}
+		//}
+		//if (this->trainingClass)
+		//{
+		//	this->setChildIndex(this->trainingClass, (this->numChildren - 1));
+		//}
+		//this->setChildIndex(this->hint, (this->numChildren - 1));
+		//if (this->menuObject)
+		//{
+		//	this->setChildIndex(this->menuObject, (this->numChildren - 1));
+		//}
+		//return;
 	}// end function 
 
 	void manageMouse(string param1)
@@ -1290,7 +1311,7 @@ namespace engine
 		}
 		return;
 	}// end function
-	void deactivateHandler(cocos2d::EventMouse* event)
+	void World::deactivateHandler(cocos2d::EventMouse* event)
 	{
 		if (this->saveBox->getIntValue("complexityLevel") < 4)
 		{
