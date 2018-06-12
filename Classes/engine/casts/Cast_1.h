@@ -14,6 +14,7 @@ namespace engine{
         public:
  			Cast_1()
             {
+				setNodeType("Cast_1");
 				 init();
             }// end function
 

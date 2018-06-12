@@ -9,6 +9,7 @@ namespace engine
 
 		Air_mc::Air_mc() : MovieClip("cast/", "Air_mc", "Air_mc"), cont(0), dust1(0), dust2(0), contBlowing(0)
 		{
+			setNodeType("Air_mc");
 			cont = this->createMovieClipSub("cont");
 			contBlowing = cont->createMovieClipSub("blowing");
 			dust1 = this->createMovieClipSub("dust1");
@@ -33,6 +34,7 @@ namespace engine
 		//};
 		MoveAir_mc::MoveAir_mc() :MovieClip("cast/", "MoveAir_mc", "MoveAir_mc")
 		{
+			setNodeType("MoveAir_mc");
 			//down = new MovieClip("updown","MoveAir_m");
 			//left = new MovieClip("left","MoveAir_m");
 			//right = new MovieClip("right","MoveAir_m");
@@ -60,6 +62,7 @@ namespace engine
 			, cameraXOffset(0)
 			, cameraYOffset(0)
 		{
+			setNodeType("Air");
 			//	this->cameraJitterCounter = this->cameraJitterTimer;
 			//	this->addEventListener(Event.ADDED_TO_STAGE, this->init);
 			this->this_pt = param1;

@@ -13,6 +13,7 @@ namespace engine{
 
 			Cast_2()
 			{
+				setNodeType("Cast_2");
 				init();
 			}// end function
 

@@ -257,7 +257,9 @@ namespace engine
      
     struct AnimUpgrade_mc :public MovieClip
     {
-         inline AnimUpgrade_mc():MovieClip("tower/","AnimUpgrade_mc","AnimUpgrade_mc"){};
+         inline AnimUpgrade_mc():MovieClip("tower/","AnimUpgrade_mc","AnimUpgrade_mc"){
+			 setNodeType("AnimUpgrade_mc");
+		 };
     };
 
     //struct AnimUpgrade_mc :public BaseNode

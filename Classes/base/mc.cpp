@@ -222,6 +222,7 @@ namespace engine
 	 };
 	MCText::MCText(MC * mc, string slotName) :ui::Text()
 	{
+		setNodeType("MCText");
 		init();
 		this->autorelease();
 		this->mc = mc; 
@@ -258,6 +259,7 @@ namespace engine
     };
     MCCase::MCCase(MC * mc, string slotName, bool draw) :BaseNode(), _draw(draw)
     {
+		setNodeType("MCCase");
 		BaseNode::init();
         this->mc = mc;
         this->slotName = slotName;
@@ -287,6 +289,7 @@ namespace engine
 
 	MCSprite::MCSprite(MC * mc, string slotName, string file) :BaseSprite(file), initSprite(false)
 	{ 
+		setNodeType("MCSprite");
 		this->mc = mc;
 		this->slotName = slotName;
 		this->setName(slotName);
@@ -297,6 +300,7 @@ namespace engine
 	};
 	MCSprite::MCSprite(MC * mc, string slotName, cocos2d::Sprite * sprite) : BaseSprite(sprite) , initSprite(false)
 	{
+		setNodeType("MCSprite");
 		this->mc = mc;
 		this->slotName = slotName;
 		this->setName(slotName); 
@@ -305,7 +309,8 @@ namespace engine
 	};
 	MCSprite::MCSprite(MC * mc, string slotName) :initSprite(true)
 	{
-		this->mc = mc; 
+		setNodeType("MCSprite");
+		this->mc = mc;
 		this->slotName = slotName;
 		this->setName(slotName);
 		reinit();
@@ -331,6 +336,7 @@ namespace engine
 
 	MCMask::MCMask(MC * mc, string slotName) 
 	{
+		setNodeType("MCMask");
 		this->mc = mc;
 		this->slotName = slotName;
 		this->setName(slotName);
@@ -436,6 +442,7 @@ namespace engine
     };
 	MovieClip::MovieClip(dragonBones::CCArmatureDisplay * cont, string defAniName) :isOnce(false) 
 	{
+		setNodeType("MovieClip");
 		std::map<std::string, dragonBones::AnimationData*> & animations = cont->getArmature()->_armatureData->animations;
 		for each (std::pair<std::string, dragonBones::AnimationData*> it in animations)
 		{
@@ -460,6 +467,7 @@ namespace engine
 	};
 	MovieClip::MovieClip(string rootPath, string armName, string dbName, string defAniName) :isOnce(false) , cont(0)
 	{
+		setNodeType("MovieClip");
 		this->rootPath = rootPath;
 		this->armName = armName;
 		this->dbName = dbName; 
@@ -489,6 +497,7 @@ namespace engine
 	};
 	MovieClip::MovieClip(string armName, string dbName, BaseNode *node) :cont(0)
 	{ 
+		setNodeType("MovieClip");
 		this->armName = armName;
 		this->dbName = dbName;
 		this->display=this->cont = this->loadArmature(armName, dbName);
@@ -533,7 +542,8 @@ namespace engine
 	};
 	MovieClip::MovieClip(MC *mc, string slotName, string rootPath, string dbName) :cont(0)
 	{
- 		this->mc = mc;
+		setNodeType("MovieClip");
+		this->mc = mc;
 		this->slotName = slotName;
 		this->setName(slotName);
 		this->rootPath = rootPath; 
@@ -683,7 +693,8 @@ namespace engine
 
 	MovieClipSub::MovieClipSub(MC *_mc, dragonBones::Slot * _slot, string defAniName) :arm(0)
 	{
-        this->mc=_mc;
+		setNodeType("MovieClipSub");
+		this->mc = _mc;
         this->slot = _slot;
         this->slotName = slot->getName();
         this->display = NULL;
@@ -693,7 +704,8 @@ namespace engine
 	};
 	MovieClipSub::MovieClipSub(MC *mc, string slotName, string defAniName) :arm(0)
 	{
-        this->mc = mc;
+		setNodeType("MovieClipSub");
+		this->mc = mc;
         this->slotName = slotName;
         this->display = NULL;
 		this->slot = NULL; //mc->getArmature()->getSlot(slotName);
@@ -851,6 +863,7 @@ namespace engine
 
 	ImageMovieClip::ImageMovieClip(string rootPath, string fileNamePre, int numFormat, int imgSize)
 	{
+		setNodeType("ImageMovieClip");
 		currentFrame = 0;
 		totalFrames = imgSize - 1;
 		if(!rootPath.empty() && rootPath.at(rootPath.length() - 1) != '/')
@@ -908,6 +921,7 @@ namespace engine
 
 	SpriteClip::SpriteClip(BaseSprite * cont)
 	{
+		setNodeType("SpriteClip");
 		this->container = cont;
 	};
 

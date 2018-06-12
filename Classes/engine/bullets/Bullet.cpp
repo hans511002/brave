@@ -7,7 +7,8 @@ namespace engine{
     namespace bullets{
 		BulletSphereTower_mc::BulletSphereTower_mc() :MovieClip("sphere/", "BulletSphereTower_mc", "BulletSphereTower_mc"), cont(0), counter(0)
         {
-            //cont=this->createMovieClip("sphere/","cont","BulletSpheresTower_mc");//合并多个在一个db中
+			setNodeType("BulletSphereTower_mc");
+			//cont=this->createMovieClip("sphere/","cont","BulletSpheresTower_mc");//合并多个在一个db中
         }
         
         void BulletSphereTower_mc::gotoAndStop(int cur)
@@ -39,10 +40,12 @@ namespace engine{
 		};
 		BulletFireTower_mc::BulletFireTower_mc() :BulletBase_mc("sphere/", "BulletFireTower_mc", "BulletFireTower_mc")
         { 
-        }
+			setNodeType("BulletFireTower_mc");
+		}
 		BulletIceTower_mc::BulletIceTower_mc() : BulletBase_mc("sphere/", "BulletIceTower_mc", "BulletIceTower_mc")
-        { 
-        }
+        {
+			setNodeType("BulletIceTower_mc");
+		}
 		BulletStoneTower_mc::BulletStoneTower_mc() : BulletBase_mc("sphere/", "BulletStoneTower_mc", "BulletStoneTower_mc")
         {
         }

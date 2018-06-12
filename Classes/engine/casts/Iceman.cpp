@@ -9,16 +9,19 @@ namespace engine{
 	{
 		Iceman_mc::Iceman_mc() :MovieClip("cast/", "Iceman_mc", "Iceman_mc")
 		{
+			setNodeType("Iceman_mc");
 
 		};
 		BlowIce_mc::BlowIce_mc() :MovieClip("cast/", "BlowIce_mc", "BlowIce_mc")
 		{
+			setNodeType("BlowIce_mc");
 
 		};
 
 		Iceman::Iceman(cocos2d::Point param1, int param2, int param3, bool param4) :container(NULL), world(NULL), direction("none"), speedK(0), speedKSave(0), radius(0)
 			, roadMap(0), dead(false), blow(0), liveCounter(0), voiceCounter(10), rotationTimer(4), brother(NULL), roadAnimaTimer(7), roadAnimaCounter(0)
 		{
+			setNodeType("Iceman");
 			//this->addEventListener(Event.ADDED_TO_STAGE, this->init);
 			this->this_pt = param1;
 			this->road = param2;

@@ -17,6 +17,7 @@ namespace engine{
 
             Cast_3()
             {
+				setNodeType("Cast_3");
 				init();
             }// end function
 

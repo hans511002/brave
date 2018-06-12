@@ -39,7 +39,7 @@ namespace engine{
             int canselCounter = 0;
             int canselTimer;
 
-            Cast() :canselCounter(0), canselTimer(5),tempObject3(-1,-1){};
+			Cast() :canselCounter(0), canselTimer(5), tempObject3(-1, -1) { setNodeType("Cast"); };
 
             bool init();
 

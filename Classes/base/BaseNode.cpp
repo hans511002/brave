@@ -154,11 +154,13 @@ namespace std
 	};
 	BaseSprite::BaseSprite(string file)
 	{
+		setNodeType("BaseSprite");
 		this->initWithFile(file);
 		init();
 	}
 	BaseSprite::BaseSprite(cocos2d::Sprite* sprite)
 	{
+		setNodeType("BaseSprite");
 		this->initWithTexture(sprite->getTexture());
 		BaseSprite::init();
 	};
@@ -344,6 +346,7 @@ namespace std
 
 	BaseNode::BaseNode(float w, float h, bool draw) :autoDel(true), listener(0)
 	{
+		setNodeType( "BaseNode");
 		this->setContentSize(Size(w, h));
 		enableMouseHandler();
 		if(draw)drawRange();

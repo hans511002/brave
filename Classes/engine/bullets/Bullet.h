@@ -22,10 +22,12 @@ namespace engine{
 			inline BulletBase_mc(string rootPath, string armName, string dbName, string defAniName = "") :distX(0), distY(0), counter(0)
 				,MovieClip(rootPath, armName, dbName, defAniName)
 			{
+				setNodeType("BulletBase_mc");
 			};
 			inline BulletBase_mc(World * world, string rootPath, string armName, string dbName, string defAniName = "") :distX(0), distY(0), counter(0)
 				, MovieClip(world, rootPath, armName, dbName, defAniName)
 			{
+				setNodeType("BulletBase_mc");
 			};
 
         };

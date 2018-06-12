@@ -8,20 +8,25 @@ namespace engine{
     {
         Golem_mc::Golem_mc(string path, string arm, string db) :MovieClip(path, arm, db)
         {
-            dust1= this->createMovieClipSub("dust1");
+			setNodeType("Golem_mc");
+			dust1 = this->createMovieClipSub("dust1");
             dust2= this->createMovieClipSub("dust2");
         };
         Golem1_mc::Golem1_mc():Golem_mc("cast/", "Golem1_mc", "Golem_mc")
         { 
-        }
+			setNodeType("Golem1_mc");
+		}
         Golem2_mc::Golem2_mc():Golem_mc("cast/", "Golem2_mc", "Golem_mc")
         { 
-        }
+			setNodeType("Golem2_mc");
+		}
         Golem3_mc::Golem3_mc():Golem_mc("cast/", "Golem3_mc", "Golem_mc")
         { 
-        }
+			setNodeType("Golem3_mc");
+		}
         Golem::Golem(cocos2d::Point param1, int param2, int param3, bool param4 ) :direction("none"), voiceCounter(10), cameraJitterTimer(3), movePhase(1)
         {
+			setNodeType("Golem");
             this->cameraJitterCounter = this->cameraJitterTimer;
             //this->addEventListener(Event.ADDED_TO_STAGE, this->init);
             this->this_pt = param1;

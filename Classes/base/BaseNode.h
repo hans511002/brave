@@ -50,10 +50,12 @@ namespace std
 	class EventNode
 	{
 	public:
-		inline EventNode() :mouseChildren(false), mouseEnabled(false), buttonMode(false) {};
+		inline EventNode() :mouseChildren(false), mouseEnabled(false), buttonMode(false) { setNodeType("EventNode"); };
 		static bool debug;
 		cocos2d::Label* createLabel(const std::string& string);
 
+		string nodeType;
+		inline void setNodeType(string nt) { nodeType = typeid(*this).name(); };
 		inline virtual bool hitTest(const Vec2 &pt) { return buttonMode || mouseEnabled; };
 		inline virtual bool hitTest(cocos2d::EventMouse* event) { return buttonMode || mouseEnabled; };
 		bool mouseChildren;
@@ -99,7 +101,7 @@ namespace std
 	public:
 		static const double AnimationInterval;
 		cocos2d::EventListenerMouse * listener;
-		inline BaseNode() :schdt(0), autoDel(true), listener(0) {};//mouseEnabled(false), mouseChildren(false), 
+		inline BaseNode() :schdt(0), autoDel(true), listener(0) { setNodeType ( "BaseNode"); };//mouseEnabled(false), mouseChildren(false), 
 		BaseNode(float w, float h, bool draw = true);
 		bool init();
 		bool atStage();
@@ -183,6 +185,7 @@ namespace std
  	public:
 		BaseLayer() :_background(nullptr)
 		{
+			setNodeType("BaseLayer");
 			std::setAnchorPoint((Node*)this);
 		}
 		inline virtual bool hitTest(const Vec2 &pt) { return std::hitTest(this, pt); };
