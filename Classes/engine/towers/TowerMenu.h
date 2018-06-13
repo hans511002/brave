@@ -61,7 +61,7 @@ namespace engine
 
 virtual             void update(float dt=0);
 
-            void mouseMoveHandler(cocos2d::EventMouse * param1);
+            void mouseMovedHandler(cocos2d::EventMouse * param1);
 
             void mouseDownHandler(cocos2d::EventMouse * event);
 

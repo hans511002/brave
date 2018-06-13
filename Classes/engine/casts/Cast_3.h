@@ -6,36 +6,36 @@
 
 namespace engine{
  
-    namespace    casts
-    { 
-        class Cast_3 :public Cast
-        {
-        public:
-            string direction;
-            cocos2d::Point this_pt;// :Point;
-            
+	namespace    casts
+	{
+		class Cast_3 :public Cast
+		{
+		public:
+			string direction;
+			cocos2d::Point this_pt;// :Point;
 
-            Cast_3()
-            {
+
+			Cast_3()
+			{
 				setNodeType("Cast_3");
 				init();
-            }// end function
+			}// end function
 
-             bool init();
+			bool init();
 
-virtual              void update(float dt=0);
+			virtual void update(float dt = 0);
 
-             void mouseMoveHandler(cocos2d::EventMouse *param1);
+			void mouseMoveHandler(cocos2d::EventMouse *param1);
 
-             void mouseDownHandler(cocos2d::EventMouse *event);
+			void mouseDownHandler(cocos2d::EventMouse *event);
 
-             void mouseUpHandler(cocos2d::EventMouse *event);
+			void mouseUpHandler(cocos2d::EventMouse *event);
 
-             void directionManage();
+			void directionManage();
 
-             void  addAir();
+			void  addAir();
 
-        };
-    }
+		};
+	}
 }
 #endif

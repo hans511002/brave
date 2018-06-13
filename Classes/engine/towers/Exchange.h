@@ -6,47 +6,47 @@
 
 namespace engine
 {
-    namespace towers
-    {
-        struct Exchange_mc : public MovieClip
-        {
-           MovieClip* exchangeCase;
-        };
-        struct Exchange1_mc : public Exchange_mc
-        {
-            MovieClip* cross;
-        };
-        class Exchange : public BaseNode
-        {
+	namespace towers
+	{
+		struct Exchange_mc : public MovieClip
+		{
+			MovieClip* exchangeCase;
+		};
+		struct Exchange1_mc : public Exchange_mc
+		{
+			MovieClip* cross;
+		};
+		class Exchange : public BaseNode
+		{
 		public:
-            int i, j;
-            //public var tempObject:Object;
-            //public var tempObject1:Object;
+			int i, j;
+			//public var tempObject:Object;
+			//public var tempObject1:Object;
 			Exchange1_mc* container;
-            MovieClip* graphicAtMyTower;
-            bool dead;
-            World* world;
-            Tower* myTower;
-            bool atTower;
+			MovieClip* graphicAtMyTower;
+			bool dead;
+			World* world;
+			Tower* myTower;
+			bool atTower;
 
-            Exchange(Tower * param1);
+			Exchange(Tower * param1);
 
-            bool init() ;
+			bool init();
 
-virtual             void update(float dt=0) ;
+			virtual void update(float dt = 0);
 
-            void mouseMoveHandler(cocos2d::EventMouse * param1) ;
+			virtual void mouseMoveHandler(cocos2d::EventMouse * param1);
 
-            void mouseDownHandler(cocos2d::EventMouse * param1) ;
+			virtual void mouseDownHandler(cocos2d::EventMouse * param1);
 
-            void mouseUpHandler(cocos2d::EventMouse * param1) ;
+			virtual void mouseUpHandler(cocos2d::EventMouse * param1);
 
-            void rightMouseDownHandler(cocos2d::EventMouse * param1);
+			virtual void rightMouseDownHandler(cocos2d::EventMouse * param1);
 
-            void rightMouseUpHandler(cocos2d::EventMouse * param1);
+			virtual void rightMouseUpHandler(cocos2d::EventMouse * param1);
 
-            void kill()  ;
-        };
-    }
+			void kill();
+		};
+	}
 }
 #endif

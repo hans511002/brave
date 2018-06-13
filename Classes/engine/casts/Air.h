@@ -7,24 +7,23 @@ namespace engine
  
 	namespace casts
 	{
-		class Air_mc :public MovieClip
-    	{
-    	public:
-    		string direction;
-    		MovieClipSub* cont;//public var cont:MovieClip;
-    		MovieClipSub* contBlowing;
-    		MovieClipSub* dust1;//public var dust1:MovieClip;
-    		MovieClipSub* dust2;
-    		
-    		Air_mc();
-    	 
-    	};
-		class MoveAir_mc :public MovieClip
+		struct Air_mc :public MovieClip
 		{
-		    MovieClipSub * down;
-            MovieClipSub * left;
-            MovieClipSub * right;
-            MovieClipSub * up;
+			string direction;
+			MovieClipSub* cont;//public var cont:MovieClip;
+			MovieClipSub* contBlowing;
+			MovieClipSub* dust1;//public var dust1:MovieClip;
+			MovieClipSub* dust2;
+
+			Air_mc();
+
+		};
+		struct MoveAir_mc :public MovieClip
+		{
+			MovieClipSub * down;
+			MovieClipSub * left;
+			MovieClipSub * right;
+			MovieClipSub * up;
 			MoveAir_mc();
 		};
 		class Air :public BaseNode
@@ -55,7 +54,7 @@ namespace engine
 
 			bool init();
 
-virtual 			void update(float dt=0);
+			virtual void update(float dt = 0);
 			void scan();
 			void attack();
 			void kill();

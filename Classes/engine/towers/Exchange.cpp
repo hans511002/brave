@@ -63,7 +63,7 @@ namespace engine
                 i++;
             }
             this->world->manageMouse("hide");
-            return;
+            return true;
         }// end function
 
         void Exchange::update(float dt) 
@@ -83,15 +83,19 @@ namespace engine
             return;
         }// end function
 
-        void Exchange::mouseMoveHandler(cocos2d::EventMouse * param1) 
+        void Exchange::mouseMoveHandler(cocos2d::EventMouse * e) 
         {
-            if (param1.target.name == "towerCase" && param1.target.buttonMode)
+			std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+			if(!event)
+				return;
+			if(event->target->getName() == "towerCase" && ISTYPE(EventNode, event->target)->buttonMode)
 			//if (!std::hitTest(this->container->contBuildTowerMenuCase, pt) && !std::hitTest(this->myPlace->placeForBuildCase, pt))
 			{
-                this->tempObject = param1.target.parent.parent;
-                if (this->tempObject->towerType < 5)
+				Node * parent = event->target->getParent()->getParent();
+				Tower * tower = ISTYPE(Tower, parent);
+				if(tower->towerType < 5)
                 {
-                    if (this->tempObject->container->selectTower->isVisible())
+					if(tower->container->selectTower->isVisible())
                     {
                         if (!this->atTower)
                         {
@@ -130,12 +134,16 @@ namespace engine
             return;
         }// end function
 
-        void Exchange::rightMouseDownHandler(cocos2d::EventMouse * param1) 
+        void Exchange::rightMouseDownHandler(cocos2d::EventMouse * e) 
         {
-            if (param1.target.name == "towerCase" && param1.target.buttonMode)
+			std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+			if(!event)
+				return;
+			if(event->target->getName() == "towerCase" && ISTYPE(EventNode, event->target)->buttonMode)
             {
-                this->tempObject = param1.target.parent.parent;
-                if (this->tempObject->towerType < 5)
+				Node * parent = event->target->getParent()->getParent();
+				Tower * tower = ISTYPE(Tower, parent);
+				if(tower->towerType < 5)
                 {
                     this->i = 0;
                     while (this->i < this->world->listOfMoveSpheres.size())
@@ -174,38 +182,38 @@ namespace engine
                         this->world->getSphere->setPosition(this->myTower->this_pt);
                         //this->world->getSphere.x = this->myTower->this_pt.x;
                         //this->world->getSphere.y = this->myTower->this_pt.y;
-                        this->world->getSphere->owner = this->tempObject;
+                        this->world->getSphere->owner = tower;
                         this->world->getSphere->ownerType = "tower";
-                        this->world->getSphere->ownerPoint = this->tempObject->this_pt;
+                        this->world->getSphere->ownerPoint = tower->this_pt;
                         this->world->getSphere->retrieveGetSphere();
                     }
-                    if (this->tempObject->spheresStack.size() > 0)
+                    if (tower->spheresStack.size() > 0)
                     {
-                        while (this->tempObject->spheresStack.size()> 0)
+                        while (tower->spheresStack.size()> 0)
                         {
-                            if (this->tempObject->spheresStack[0] == "fire")
+                            if (tower->spheresStack[0] == "fire")
                             {
-                                this->tempObject->towerGetSphereManage("get", "fire");
+                                tower->towerGetSphereManage("get", "fire");
                                 continue;
                             }
-                            if (this->tempObject->spheresStack[0] == "ice")
+                            if (tower->spheresStack[0] == "ice")
                             {
-                                this->tempObject->towerGetSphereManage("get", "ice");
+                                tower->towerGetSphereManage("get", "ice");
                                 continue;
                             }
-                            if (this->tempObject->spheresStack[0] == "stone")
+                            if (tower->spheresStack[0] == "stone")
                             {
-                                this->tempObject->towerGetSphereManage("get", "stone");
+                                tower->towerGetSphereManage("get", "stone");
                                 continue;
                             }
-                            if (this->tempObject->spheresStack[0] == "levin")
+                            if (tower->spheresStack[0] == "levin")
                             {
-                                this->tempObject->towerGetSphereManage("get", "levin");
+                                tower->towerGetSphereManage("get", "levin");
                             }
                         }
-                        this->world->getSphere->setPosition(this->tempObject->this_pt);
-                        //this->world->getSphere.x = this->tempObject->this_pt.x;
-                        //this->world->getSphere.y = this->tempObject->this_pt.y;
+                        this->world->getSphere->setPosition(tower->this_pt);
+                        //this->world->getSphere.x = tower->this_pt.x;
+                        //this->world->getSphere.y = tower->this_pt.y;
                         this->world->getSphere->owner = this->myTower;
                         this->world->getSphere->ownerType = "tower";
                         this->world->getSphere->ownerPoint = this->myTower->this_pt;
@@ -214,7 +222,7 @@ namespace engine
                 }
             }
             this->kill();
-            this->world->mouseMoveHandler(param1);
+            this->world->mouseMovedHandler(event);
             return;
         }// end function
 

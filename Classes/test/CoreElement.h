@@ -13,7 +13,7 @@ public:
     CoreElementBullet(const std::string& armatureName, const std::string& effectArmatureName, float radian, float speed, const cocos2d::Vec2& position);
     ~CoreElementBullet();
 
-    bool update();
+	bool update(float dt=0);
 };
 
 class Mecha

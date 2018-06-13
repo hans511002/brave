@@ -34,6 +34,7 @@
 
 //警告等级
 #pragma warning( push ,2)
+#pragma warning(disable:4819 4003 4244)
 #ifdef UNICODE
 #undef UNICODE
 #endif

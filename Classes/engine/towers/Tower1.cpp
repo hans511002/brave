@@ -7,7 +7,7 @@ namespace engine
 {
     namespace towers
     {
-		Tower1_mc::Tower1_mc() :TowerBase("tower/", "Tower1_mc", "Tower1_mc")
+		Tower1_mc::Tower1_mc() :TowerBase_mc("tower/", "Tower1_mc", "Tower1_mc")
 		{
 			sphere1 = this->createMovieClipSub("sphere1");
 			sphere1Bullet = (BulletSphereTower_mc*)sphere1->createMovieClip("bullet", new BulletSphereTower_mc());
@@ -47,6 +47,7 @@ namespace engine
         }// end function
         void Tower1::update(float dt)
         {
+			Tower1_mc * container = ISTYPE(Tower1_mc,this->container);
             Tower::update();
             if (this->firstTowerMenuCounter > -1)
             {

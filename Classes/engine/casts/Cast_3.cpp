@@ -10,7 +10,7 @@ namespace engine{
             container = new MoveAir_mc();//("cast/", "MoveAir_mc","MoveAir_mc");
             //container->gotoAndStop(2);
             this->addChild(container);
-            Cast_3::init();
+            Cast::init();
             this->this_pt =  cocos2d::Point(world->mouseX, world->mouseY);
 			this->autorelease();
             return true;
@@ -23,9 +23,12 @@ namespace engine{
             return;
         }// end function
 
-        void Cast_3::mouseMoveHandler(cocos2d::EventMouse *param1)
+        void Cast_3::mouseMoveHandler(cocos2d::EventMouse *e)
         {
-            if (param1->target->name == "castAirCase")
+			std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+			if(!event)
+				return;
+			if(event->target->getName() == "castAirCase")
             {
                 if (container->currentFrame == 1)
                 {
@@ -46,6 +49,7 @@ namespace engine{
                 {
                     if (container->currentFrame == 2)
                     {
+						MoveAir_mc * container = ISTYPE(MoveAir_mc,this->container);
                         container->gotoAndStop(1);
                         container->left->stop();
                         container->right->stop();
@@ -65,25 +69,28 @@ namespace engine{
             return;
         }// end function
 
-        void  Cast_3::mouseDownHandler(cocos2d::EventMouse *event)
+        void  Cast_3::mouseDownHandler(cocos2d::EventMouse *e)
         {
-            if (event)
+			std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+			if(!event)
+				return;           
+			if(event)
             {
-                if (event.target.name != "castAirCase" && scanWay())
+                if (event->target->getName() != "castAirCase" && scanWay())
                 {
                     this->mouseChildren = true;
                     this->mouseEnabled = true;
                     //event = new MouseEvent(MouseEvent.MOUSE_DOWN);
                     world->worldInterface->castAirCounter++;
                     world->worldInterface->container->butCastAir->gotoAndStop(4);
-                    world->worldInterface->container->butCastAir->castAirCase.buttonMode = false;
-                    world->worldInterface->container->butCastAir->cont.contMask.scaleY = 0;
+                    world->worldInterface->container->butCastAirCastAirCase->buttonMode = false;
+                    world->worldInterface->container->butCastAirContContMask->setScaleY( 0);
                     this->addAir();
                     kill();
                 }
-                else if (event.target.name == "castGolemCase" || event.target.name == "castIcemanCase" || event.target.name == "castAirCase")
+				else if(event->target->getName() == "castGolemCase" || event->target->getName() == "castIcemanCase" || event->target->getName() == "castAirCase")
                 {
-                    world->worldInterface.container->butCastAir->gotoAndStop(1);
+                    world->worldInterface->container->butCastAir->gotoAndStop(1);
                     kill();
                 }
             }
@@ -98,13 +105,14 @@ namespace engine{
 
         void Cast_3::directionManage()
         {
-            if (container->currentFrame == 1)
+			MoveAir_mc * container = ISTYPE(MoveAir_mc, this->container);
+			if(container->currentFrame == 1)
             {
                 if (this->this_pt.x != world->mouseX || this->this_pt.y != world->mouseY)
                 {
                     this->this_pt = cocos2d::Point(world->mouseX, world->mouseY);
                     float tempObject1 = 10000;
-                    container->left->setVisible(false);
+					container->left->setVisible(false);
                     container->right->setVisible(false);
                     container->up->setVisible(false);
                     container->down->setVisible(false);
@@ -123,17 +131,19 @@ namespace engine{
                         {
                             if (n == 1)
                             {
-                                map = world->map.road1;
+                                map = &world->map.road1;
                             }
                             else if (n == 2)
                             {
-                                map = world->map.road2;
+								map = &world->map.road2;
                             }
                             else if (n == 3)
                             {
-                                map = world->map.road3;
+								map = &world->map.road3;
                             }
-                            i = map.length - 1;
+							Common::Array<cocos2d::Point> &map= *this->map;
+                            i = map.size() - 1;
+							float tempObject2 = 0;
                             while (i > 0)
                             {
                                 if (map[i].x == map[(i - 1)].x)
@@ -143,7 +153,7 @@ namespace engine{
                                         j = map[(i - 1)].y;
                                         while (j < map[i].y)
                                         {
-                                            flaot tempObject2 = this->this_pt.distance(Cocos2d::Point(map[i].x, j));
+                                              tempObject2 = this->this_pt.distance(cocos2d::Point(map[i].x, j));
                                             if (tempObject2 < 30)
                                             {
                                                 if (tempObject2 < tempObject1)
@@ -184,7 +194,7 @@ namespace engine{
                                         j = map[(i - 1)].x;
                                         while (j < map[i].x)
                                         {
-                                            float tempObject2 = this->this_pt.distance(cocos2d::Point(j, map[i].y));
+                                              tempObject2 = this->this_pt.distance(cocos2d::Point(j, map[i].y));
                                             if (tempObject2 < 30)
                                             {
                                                 if (tempObject2 < tempObject1)

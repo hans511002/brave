@@ -5,32 +5,32 @@
 
 namespace engine{
  
-    namespace    casts
-    {
-        class Golem;
-		 
-        class Cast_1 :public Cast
-        {
-        public:
- 			Cast_1()
-            {
+	namespace    casts
+	{
+		class Golem;
+
+		class Cast_1 :public Cast
+		{
+		public:
+			Cast_1()
+			{
 				setNodeType("Cast_1");
-				 init();
-            }// end function
+				init();
+			}// end function
 
-             bool init();
+			bool init();
 
-virtual              void update(float dt=0);
+			virtual void update(float dt = 0);
 
-             virtual  void   mouseMoveHandler(cocos2d::EventMouse * param1);
+			virtual  void   mouseMoveHandler(cocos2d::EventMouse * param1);
 
-             virtual  void   mouseDownHandler(cocos2d::EventMouse *event);
+			virtual  void   mouseDownHandler(cocos2d::EventMouse *event);
 
-             virtual void   mouseUpHandler(cocos2d::EventMouse  event);
+			virtual void   mouseUpHandler(cocos2d::EventMouse  event);
 
-             void addGolem();
+			void addGolem();
 
-        };
-    }
+		};
+	}
 }
 #endif

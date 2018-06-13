@@ -684,11 +684,14 @@ namespace engine
 			}
 			return;
 		}// end function
-		void TowerMenu::mouseMoveHandler(cocos2d::EventMouse * param1)
+		void TowerMenu::mouseMovedHandler(cocos2d::EventMouse * e)
 		{
-			if (this->container->currentFrame == 1)
+			std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+			if(!event)
+				return;
+			if(this->container->currentFrame == 1)
 			{
-				if (param1->target->name == "btnUpgradeMenuCase")
+				if (event->target->getName() == "btnUpgradeMenuCase")
 				{
 					if (this->container->btnUpgradeMenu->currentFrame == 1)
 					{
@@ -696,18 +699,18 @@ namespace engine
 						this->towerRadius1->setVisible(true);
 						if (this->myTower->towerType == 1)
 						{
-							this->towerRadius1->width = Main::mainClass->readXMLClass.listOfSpheresRadius[1] * 2;
-							this->towerRadius1->height = Main::mainClass->readXMLClass.listOfSpheresRadius[1] * 2 * this->world->scaleRadius;
+							this->towerRadius1->setWidth(Main::mainClass->readXMLClass.listOfSpheresRadius[1] * 2);
+							this->towerRadius1->setHeight(Main::mainClass->readXMLClass.listOfSpheresRadius[1] * 2 * this->world->scaleRadius);
 						}
 						else if (this->myTower->towerType == 2)
 						{
-							this->towerRadius1->width = Main::mainClass->readXMLClass.listOfSpheresRadius[2] * 2;
-							this->towerRadius1->height = Main::mainClass->readXMLClass.listOfSpheresRadius[2] * 2 * this->world->scaleRadius;
+							this->towerRadius1->setWidth(Main::mainClass->readXMLClass.listOfSpheresRadius[2] * 2);
+							this->towerRadius1->setHeight(Main::mainClass->readXMLClass.listOfSpheresRadius[2] * 2 * this->world->scaleRadius);
 						}
 						else if (this->myTower->towerType == 3)
 						{
-							this->towerRadius1->width = Main::mainClass->readXMLClass.listOfSpheresRadius[3] * 2;
-							this->towerRadius1->height = Main::mainClass->readXMLClass.listOfSpheresRadius[3] * 2 * this->world->scaleRadius;
+							this->towerRadius1->setWidth(Main::mainClass->readXMLClass.listOfSpheresRadius[3] * 2);
+							this->towerRadius1->setHeight(Main::mainClass->readXMLClass.listOfSpheresRadius[3] * 2 * this->world->scaleRadius);
 						}
 						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
 					}
@@ -733,7 +736,7 @@ namespace engine
 					}
 					if (this->myTower->towerType < 5)
 					{
-						if (param1->target->name == "btnUpgradeMenuBLOCKCase")
+						if (event->target->getName() == "btnUpgradeMenuBLOCKCase")
 						{
 							if (!this->hint->isVisible() && !this->openFlag && !this->closeFlag)
 							{
@@ -741,7 +744,7 @@ namespace engine
 								this->hintPosition(5);
 							}
 						}
-						else if (param1->target->name == "btnUpgradeMenuLOCKCase")
+						else if (event->target->getName() == "btnUpgradeMenuLOCKCase")
 						{
 							if (!this->hint->isVisible() && !this->openFlag && !this->closeFlag)
 							{
@@ -762,9 +765,9 @@ namespace engine
 			}
 			else if (this->container->currentFrame == this->container->totalFrames)
 			{
-				if (param1->target->name == "btnTowerUpgrCase")
+				if (event->target->getName() == "btnTowerUpgrCase")
 				{
-					if (param1->target->parent != this->container->btnTowerUpgr1)
+					if (event->target->getParent() != this->container->btnTowerUpgr1)
 					{
 						if (this->container->btnTowerUpgr1->currentFrame == 2)
 						{
@@ -773,11 +776,11 @@ namespace engine
 								string tempObject = std::getText(this->container->btnTowerUpgr1CostTXT);
 								this->container->btnTowerUpgr1->gotoAndStop(1);
 								std::setText(this->container->btnTowerUpgr1CostTXT, tempObject);
-								//this->container->btnTowerUpgr1CostTXT = this->tempObject;
+								//this->container->btnTowerUpgr1CostTXT = tempObject;
 							}
 						}
 					}
-					if (param1->target->parent != this->container->btnTowerUpgr2)
+					if (event->target->getParent() != this->container->btnTowerUpgr2)
 					{
 						if (this->container->btnTowerUpgr2->currentFrame == 2)
 						{
@@ -786,11 +789,11 @@ namespace engine
 								string tempObject = std::getText(this->container->btnTowerUpgr2CostTXT); 
 								this->container->btnTowerUpgr2->gotoAndStop(1);
 								std::setText(this->container->btnTowerUpgr2CostTXT, tempObject);
-								//this->container->btnTowerUpgr2CostTXT = this->tempObject;
+								//this->container->btnTowerUpgr2CostTXT = tempObject;
 							}
 						}
 					}
-					if (param1->target->parent != this->container->btnTowerUpgr3)
+					if (event->target->getParent() != this->container->btnTowerUpgr3)
 					{
 						if (this->container->btnTowerUpgr3->currentFrame == 2)
 						{
@@ -799,11 +802,11 @@ namespace engine
 								string tempObject = std::getText(this->container->btnTowerUpgr3CostTXT);
 								this->container->btnTowerUpgr3->gotoAndStop(1);
 								std::setText(this->container->btnTowerUpgr3CostTXT, tempObject);
-								//this->container->btnTowerUpgr3CostTXT = this->tempObject;
+								//this->container->btnTowerUpgr3CostTXT = tempObject;
 							}
 						}
 					}
-					if (param1->target->parent != this->container->btnTowerUpgr4)
+					if (event->target->getParent() != this->container->btnTowerUpgr4)
 					{
 						if (this->container->btnTowerUpgr4->currentFrame == 2)
 						{
@@ -812,18 +815,18 @@ namespace engine
 								string tempObject = std::getText(this->container->btnTowerUpgr4CostTXT);
 								this->container->btnTowerUpgr4->gotoAndStop(1);
 								std::setText(this->container->btnTowerUpgr4CostTXT, tempObject);
-								//this->container->btnTowerUpgr4CostTXT = this->tempObject;
+								//this->container->btnTowerUpgr4CostTXT = tempObject;
 							}
 						}
 					}
-					if (param1->target->parent->currentFrame == 1)
+					if (event->target->getParent()->currentFrame == 1)
 					{
-						if (param1->target->buttonMode)
+						if (event->target->buttonMode)
 						{
-							string tempObject = param1->target->parentCostTXT;
-							param1->target->parent->gotoAndStop(2);
-							std::setText(param1->target->parent->costTXT, tempObject);
-							//param1->target->parentCostTXT = this->tempObject;
+							string tempObject = event->target->getParent()->costTXT;
+							event->target->getParent()->gotoAndStop(2);
+							std::setText(event->target->getParent()->costTXT, tempObject);
+							//event->target->getParent()->costTXT = tempObject;
 							//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
 						}
 						else
@@ -833,59 +836,59 @@ namespace engine
 								string tempObject = std::getText(this->container->btnTowerUpgr1CostTXT); 
 								this->container->btnTowerUpgr1->gotoAndStop(1);
 								std::setText(this->container->btnTowerUpgr1CostTXT, tempObject);
-								//this->container->btnTowerUpgr1CostTXT = this->tempObject;
+								//this->container->btnTowerUpgr1CostTXT = tempObject;
 							}
 							if (this->container->btnTowerUpgr2->currentFrame == 2)
 							{
 								string tempObject = std::getText(this->container->btnTowerUpgr2CostTXT); 
 								this->container->btnTowerUpgr2->gotoAndStop(1);
 								std::setText(this->container->btnTowerUpgr2CostTXT, tempObject);
-								//this->container->btnTowerUpgr2CostTXT = this->tempObject;
+								//this->container->btnTowerUpgr2CostTXT = tempObject;
 							}
 							if (this->container->btnTowerUpgr3->currentFrame == 2)
 							{
 								string tempObject = std::getText(this->container->btnTowerUpgr3CostTXT); 
 								this->container->btnTowerUpgr3->gotoAndStop(1);
 								std::setText(this->container->btnTowerUpgr3CostTXT, tempObject);
-								//this->container->btnTowerUpgr3CostTXT = this->tempObject;
+								//this->container->btnTowerUpgr3CostTXT = tempObject;
 							}
 							if (this->container->btnTowerUpgr4->currentFrame == 2)
 							{ 
 								string tempObject = std::getText(this->container->btnTowerUpgr4CostTXT);
 								this->container->btnTowerUpgr4->gotoAndStop(1);
 								std::setText(this->container->btnTowerUpgr4CostTXT, tempObject);
-								//this->container->btnTowerUpgr4CostTXT = this->tempObject;
+								//this->container->btnTowerUpgr4CostTXT = tempObject;
 							}
 						}
 					}
-					if (param1->target->parent->currentFrame < 5)
+					if (event->target->getParent()->currentFrame < 5)
 					{
 						this->towerRadius1->setVisible(true);
-						if (param1->target->parent->name == "btnTowerUpgr1")
+						if (event->target->getParent()->getName() == "btnTowerUpgr1")
 						{
-							this->towerRadius1->width = Main::mainClass->readXMLClass.ultraFireStoneRadiusXML * 2;
-							this->towerRadius1->height = Main::mainClass->readXMLClass.ultraFireStoneRadiusXML * 2 * this->world->scaleRadius;
+							this->towerRadius1->setWidth(Main::mainClass->readXMLClass.ultraFireStoneRadiusXML * 2);
+							this->towerRadius1->setHeight(Main::mainClass->readXMLClass.ultraFireStoneRadiusXML * 2 * this->world->scaleRadius);
 						}
-						else if (param1->target->parent->name == "btnTowerUpgr2")
+						else if (event->target->getParent()->getName() == "btnTowerUpgr2")
 						{
-							this->towerRadius1->width = Main::mainClass->readXMLClass.ultraIceLevinRadiusXML * 2;
-							this->towerRadius1->height = Main::mainClass->readXMLClass.ultraIceLevinRadiusXML * 2 * this->world->scaleRadius;
+							this->towerRadius1->setWidth(Main::mainClass->readXMLClass.ultraIceLevinRadiusXML * 2);
+							this->towerRadius1->setHeight(Main::mainClass->readXMLClass.ultraIceLevinRadiusXML * 2 * this->world->scaleRadius);
 						}
-						else if (param1->target->parent->name == "btnTowerUpgr3")
+						else if (event->target->getParent()->getName() == "btnTowerUpgr3")
 						{
-							this->towerRadius1->width = Main::mainClass->readXMLClass.ultraIceStoneRadiusXML * 2;
-							this->towerRadius1->height = Main::mainClass->readXMLClass.ultraIceStoneRadiusXML * 2 * this->world->scaleRadius;
+							this->towerRadius1->setWidth(Main::mainClass->readXMLClass.ultraIceStoneRadiusXML * 2);
+							this->towerRadius1->setHeight(Main::mainClass->readXMLClass.ultraIceStoneRadiusXML * 2 * this->world->scaleRadius);
 						}
-						else if (param1->target->parent->name == "btnTowerUpgr4")
+						else if (event->target->getParent()->getName() == "btnTowerUpgr4")
 						{
-							this->towerRadius1->width = Main::mainClass->readXMLClass.ultraFireLevinRadiusXML * 2;
-							this->towerRadius1->height = Main::mainClass->readXMLClass.ultraFireLevinRadiusXML * 2 * this->world->scaleRadius;
+							this->towerRadius1->setWidth(Main::mainClass->readXMLClass.ultraFireLevinRadiusXML * 2);
+							this->towerRadius1->setHeight(Main::mainClass->readXMLClass.ultraFireLevinRadiusXML * 2 * this->world->scaleRadius);
 						}
 						if (this->hint->currentFrame > 4)
 						{
 							this->hintManage("ultraButtons", 1);
 						}
-						if (param1->target->parent->name == "btnTowerUpgr1")
+						if (event->target->getParent()->getName() == "btnTowerUpgr1")
 						{
 							if (this->world->worldInterface->container->iceBacklight->isVisible() || this->world->worldInterface->container->levinBacklight->isVisible())
 							{
@@ -901,7 +904,7 @@ namespace engine
 							}
 							this->hintManage("ultraButtons", 1);
 						}
-						else if (param1->target->parent->name == "btnTowerUpgr2")
+						else if (event->target->getParent()->getName() == "btnTowerUpgr2")
 						{
 							if (this->world->worldInterface->container->fireBacklight->isVisible() || this->world->worldInterface->container->stoneBacklight->isVisible())
 							{
@@ -917,7 +920,7 @@ namespace engine
 							}
 							this->hintManage("ultraButtons", 2);
 						}
-						else if (param1->target->parent->name == "btnTowerUpgr3")
+						else if (event->target->getParent()->getName() == "btnTowerUpgr3")
 						{
 							if (this->world->worldInterface->container->fireBacklight->isVisible() || this->world->worldInterface->container->levinBacklight->isVisible())
 							{
@@ -933,7 +936,7 @@ namespace engine
 							}
 							this->hintManage("ultraButtons", 3);
 						}
-						else if (param1->target->parent->name == "btnTowerUpgr4")
+						else if (event->target->getParent()->getName() == "btnTowerUpgr4")
 						{
 							if (this->world->worldInterface->container->iceBacklight->isVisible() || this->world->worldInterface->container->stoneBacklight->isVisible())
 							{
@@ -959,7 +962,7 @@ namespace engine
 						}
 						if (this->hint->currentFrame != 9 || !this->hint->isVisible())
 						{
-							this->hintManage("ultraButtons", 9, param1->target->parent);
+							this->hintManage("ultraButtons", 9, event->target->getParent());
 							if (this->exampleUltraTower)
 							{
 								this->exampleUltraManage("remove");
@@ -976,7 +979,7 @@ namespace engine
 							string tempObject = std::getText(this->container->btnTowerUpgr1CostTXT); 
 							this->container->btnTowerUpgr1->gotoAndStop(1);
 							std::setText(this->container->btnTowerUpgr1CostTXT, tempObject);
-							//this->container->btnTowerUpgr1CostTXT = this->tempObject;
+							//this->container->btnTowerUpgr1CostTXT = tempObject;
 						}
 					}
 					if (this->container->btnTowerUpgr2->currentFrame == 2)
@@ -986,7 +989,7 @@ namespace engine
 							string tempObject = std::getText(this->container->btnTowerUpgr2CostTXT);
  							this->container->btnTowerUpgr2->gotoAndStop(1);
 							std::setText(this->container->btnTowerUpgr2CostTXT, tempObject);
-							//this->container->btnTowerUpgr2CostTXT = this->tempObject;
+							//this->container->btnTowerUpgr2CostTXT = tempObject;
 						}
 					}
 					if (this->container->btnTowerUpgr3->currentFrame == 2)
@@ -996,7 +999,7 @@ namespace engine
 							string tempObject = std::getText(this->container->btnTowerUpgr3CostTXT); 
 							this->container->btnTowerUpgr3->gotoAndStop(1);
 							std::setText(this->container->btnTowerUpgr3CostTXT, tempObject);
-							//this->container->btnTowerUpgr3CostTXT = this->tempObject;
+							//this->container->btnTowerUpgr3CostTXT = tempObject;
 						}
 					}
 					if (this->container->btnTowerUpgr4->currentFrame == 2)
@@ -1006,21 +1009,21 @@ namespace engine
 							string tempObject = std::getText(this->container->btnTowerUpgr4CostTXT);
 							this->container->btnTowerUpgr4->gotoAndStop(1);
 							std::setText(this->container->btnTowerUpgr4CostTXT, tempObject);
-							//this->container->btnTowerUpgr4CostTXT = this->tempObject;
+							//this->container->btnTowerUpgr4CostTXT = tempObject;
 						}
 					}
 					if (this->towerRadius1->isVisible())
 					{
 						this->towerRadius1->setVisible(false);
 					}
-					if (param1->target->name != "fastBuyUltraCase" || !this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->buttonMode)
+					if (event->target->getName() != "fastBuyUltraCase" || !this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->buttonMode)
 					{
 						if (this->world->worldInterface->container->fireBacklight->isVisible() || this->world->worldInterface->container->iceBacklight->isVisible()
 							|| this->world->worldInterface->container->stoneBacklight->isVisible() || this->world->worldInterface->container->levinBacklight->isVisible())
 						{
 							this->world->worldInterface->archiveSphereBacklightManage("");
 						}
-						if (param1->target->name != "fastBuyUltraCase")
+						if (event->target->getName() != "fastBuyUltraCase")
 						{
 							if (this->hint->isVisible())
 							{
@@ -1035,12 +1038,12 @@ namespace engine
 				}
 				if (!this->openFastBuyUltraFlag && !this->closeFastBuyUltraFlag)
 				{
-					if (param1->target->name == "fastBuyUltraCase" && this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->buttonMode)
+					if (event->target->getName() == "fastBuyUltraCase" && this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->buttonMode)
 					{
 						if (this->container->fastBuyUltraContBtnFastBuyUltra->currentFrame == 1)
 						{
 							this->container->fastBuyUltraContBtnFastBuyUltra->gotoAndStop(2);
-							std::setText(this->container->fastBuyUltraContBtnFastBuyUltra->costTXT, fastBuyPrice);
+							std::setText(this->container->fastBuyUltraContBtnFastBuyUltraCostTXT, fastBuyPrice);
 							//this->container->fastBuyUltraContBtnFastBuyUltraCostTXT = this->fastBuyPrice;
 							if (this->hint->currentFrame > 4)
 							{
@@ -1130,41 +1133,46 @@ namespace engine
 					else if (this->container->fastBuyUltraContBtnFastBuyUltra->currentFrame == 2)
 					{
 						this->container->fastBuyUltraContBtnFastBuyUltra->gotoAndStop(1);
-						std::setText(this->container->fastBuyUltraContBtnFastBuyUltra->costTXT, fastBuyPrice);
+						std::setText(this->container->fastBuyUltraContBtnFastBuyUltraCostTXT, fastBuyPrice);
 						//this->container->fastBuyUltraContBtnFastBuyUltraCostTXT = this->fastBuyPrice;
 					}
 				}
 			}
-			if (param1->target->name == "sphereSlotCase")
+			if (event->target->getName() == "sphereSlotCase")
 			{
-				this->tempObject = param1->target->parent;
-				if (this->tempObject->sphereAnima->isVisible())
+				Node * parent = event->target->getParent()->getParent()->getParent();
+				TowerMenu_mc * towerMenuMc = ISTYPE(TowerMenu_mc, parent);
+				MCCase * scase = ISTYPE(MCCase, event->target);
+				//UltraTowerMenu_mc  event->target->getParent()->getParent()->getParent()
+				MovieClipSub *	sphereAnima = towerMenuMc->getSphereAnima(scase);
+				MovieClipSub  * sphereSlot = towerMenuMc->getSphereSlot(scase);//ISTYPE(MovieClipSub, event->target->getParent());
+ 				if (sphereAnima->isVisible())
 				{
-					if (this->tempObject != this->container->sphereSlot1 && this->container->sphereSlot1->currentFrame == 2)
+					if (sphereSlot != this->container->sphereSlot1 && this->container->sphereSlot1->currentFrame == 2)
 					{
 						this->container->sphereSlot1->gotoAndStop(1);
 					}
-					if (this->tempObject != this->container->sphereSlot2 && this->container->sphereSlot2->currentFrame == 2)
+					if (sphereSlot != this->container->sphereSlot2 && this->container->sphereSlot2->currentFrame == 2)
 					{
 						this->container->sphereSlot2->gotoAndStop(1);
 					}
-					if (this->tempObject != this->container->sphereSlot3 && this->container->sphereSlot3->currentFrame == 2)
+					if (sphereSlot != this->container->sphereSlot3 && this->container->sphereSlot3->currentFrame == 2)
 					{
 						this->container->sphereSlot3->gotoAndStop(1);
 					}
-					if (this->tempObject != this->container->sphereSlot4 && this->container->sphereSlot4->currentFrame == 2)
+					if (sphereSlot != this->container->sphereSlot4 && this->container->sphereSlot4->currentFrame == 2)
 					{
 						this->container->sphereSlot4->gotoAndStop(1);
 					}
-					if (this->tempObject->currentFrame == 1)
+					if (sphereSlot->currentFrame == 1)
 					{
-						this->tempObject->gotoAndStop(2);
+						sphereSlot->gotoAndStop(2);
 						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
 					}
 				}
-				else if (this->tempObject->currentFrame == 2)
+				else if (sphereSlot->currentFrame == 2)
 				{
-					this->tempObject->gotoAndStop(1);
+					sphereSlot->gotoAndStop(1);
 				}
 			}
 			else
@@ -1188,23 +1196,26 @@ namespace engine
 			}
 			return;
 		}// end function
-		void TowerMenu::mouseDownHandler(cocos2d::EventMouse * event)
+		void TowerMenu::mouseDownHandler(cocos2d::EventMouse * e)
 		{
-			if (event->target->name == "btnUpgradeMenuCase")
+			std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+			if(!event)
+				return;
+			if(event->target->getName() == "btnUpgradeMenuCase")
 			{
 				if (this->container->btnUpgradeMenu->currentFrame == 2)
 				{
 					this->container->btnUpgradeMenu->gotoAndStop(3);
 				}
 			}
-			else if (event->target->name == "btnTowerUpgrCase")
+			else if (event->target->getName() == "btnTowerUpgrCase")
 			{
-				if (event->target->parent->currentFrame == 2)
+				if (event->target->getParent()->currentFrame == 2)
 				{
-					string tempObject = event->target->parentCostTXT;
-					event->target->parent->gotoAndStop(3);
-					setText(event->target->parent->costTXT, tempObject);
-					//event->target->parentCostTXT = this->tempObject;
+					string tempObject = event->target->getParent()->costTXT;
+					event->target->getParent()->gotoAndStop(3);
+					setText(event->target->getParent()->costTXT, tempObject);
+					//event->target->getParent()->costTXT = tempObject;
 					//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 				}
 				if (this->world->worldInterface->container->fireBacklight->isVisible())
@@ -1240,27 +1251,32 @@ namespace engine
 					}
 				}
 			}
-			else if (event->target->name == "sphereSlotCase")
+			else if (event->target->getName() == "sphereSlotCase")
 			{
-				if (event->target->parent->sphereAnima->isVisible())
+				Node * parent = event->target->getParent()->getParent()->getParent();
+				TowerMenu_mc * towerMenuMc = ISTYPE(TowerMenu_mc, parent);
+				MCCase * scase = ISTYPE(MCCase, event->target);
+				//UltraTowerMenu_mc  event->target->getParent()->getParent()->getParent()
+				MovieClipSub *	sphereAnima = towerMenuMc->getSphereAnima(scase);
+				MovieClipSub  * sphereSlot = towerMenuMc->getSphereSlot(scase);//ISTYPE(MovieClipSub, event->target->getParent());
+				if(sphereAnima->isVisible())
 				{
-					this->tempObject = event->target->parent;
-					if (this->tempObject->sphereAnima->currentFrame == 1)
+ 					if (sphereAnima->currentFrame == 1)
 					{
 						this->myTower->towerGetSphereManage("get", "fire");
 						this->spheresMonitor();
 					}
-					else if (this->tempObject->sphereAnima->currentFrame == 2)
+					else if (sphereAnima->currentFrame == 2)
 					{
 						this->myTower->towerGetSphereManage("get", "ice");
 						this->spheresMonitor();
 					}
-					else if (this->tempObject->sphereAnima->currentFrame == 3)
+					else if (sphereAnima->currentFrame == 3)
 					{
 						this->myTower->towerGetSphereManage("get", "stone");
 						this->spheresMonitor();
 					}
-					else if (this->tempObject->sphereAnima->currentFrame == 4)
+					else if (sphereAnima->currentFrame == 4)
 					{
 						this->myTower->towerGetSphereManage("get", "levin");
 						this->spheresMonitor();
@@ -1269,25 +1285,25 @@ namespace engine
 				}
 				else
 				{
-					if (this->world->worldInterface->container->fireSphere.alpha == 1 && this->world->worldInterface->container->fireSphere->isVisible())
+					if (this->world->worldInterface->container->fireSphere->getAlpha() == 1 && this->world->worldInterface->container->fireSphere->isVisible())
 					{
 						this->world->worldInterface->container->fireBacklightTurnFlag = false;
 						this->world->worldInterface->container->fireBacklight->gotoAndStop(2);
 						this->world->worldInterface->container->fireBacklight->setVisible(true);
 					}
-					if (this->world->worldInterface->container->iceSphere.alpha == 1 && this->world->worldInterface->container->iceSphere->isVisible())
+					if (this->world->worldInterface->container->iceSphere->getAlpha() == 1 && this->world->worldInterface->container->iceSphere->isVisible())
 					{
 						this->world->worldInterface->container->iceBacklightTurnFlag = false;
 						this->world->worldInterface->container->iceBacklight->gotoAndStop(2);
 						this->world->worldInterface->container->iceBacklight->setVisible(true);
 					}
-					if (this->world->worldInterface->container->stoneSphere.alpha == 1 && this->world->worldInterface->container->stoneSphere->isVisible())
+					if (this->world->worldInterface->container->stoneSphere->getAlpha() == 1 && this->world->worldInterface->container->stoneSphere->isVisible())
 					{
 						this->world->worldInterface->container->stoneBacklightTurnFlag = false;
 						this->world->worldInterface->container->stoneBacklight->gotoAndStop(2);
 						this->world->worldInterface->container->stoneBacklight->setVisible(true);
 					}
-					if (this->world->worldInterface->container->levinSphere.alpha == 1 && this->world->worldInterface->container->levinSphere->isVisible())
+					if (this->world->worldInterface->container->levinSphere->getAlpha() == 1 && this->world->worldInterface->container->levinSphere->isVisible())
 					{
 						this->world->worldInterface->container->levinBacklightTurnFlag = false;
 						this->world->worldInterface->container->levinBacklight->gotoAndStop(2);
@@ -1295,9 +1311,9 @@ namespace engine
 					}
 				}
 			}
-			else if (event->target->name == "btnGetAllCase")
+			else if (event->target->getName() == "btnGetAllCase")
 			{
-				if (event->target->parent->btnGetAllCase->buttonMode)
+				if (event->target->getParent()->btnGetAllCase->buttonMode)
 				{
 					this->i = 0;
 					while (this->i < this->world->listOfMoveSpheres.size())
@@ -1343,7 +1359,7 @@ namespace engine
 					//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 				}
 			}
-			else if (event->target->name == "fastBuyUltraCase")
+			else if (event->target->getName() == "fastBuyUltraCase")
 			{
 				if (!this->openFastBuyUltraFlag && !this->closeFastBuyUltraFlag)
 				{
@@ -1470,9 +1486,9 @@ namespace engine
 					}
 				}
 			}
-			else if (event->target->name != "buySphereCase" && event->target->name != "sphereCase"
-				&& event->target->name != "btnUpgradeMenuBLOCKCase" && event->target->name != "fastBuyUltraCase"
-				&& event->target->parent != this->container && event->target->parent->parent != this->container)
+			else if (event->target->getName() != "buySphereCase" && event->target->getName() != "sphereCase"
+				&& event->target->getName() != "btnUpgradeMenuBLOCKCase" && event->target->getName() != "fastBuyUltraCase"
+				&& event->target->getParent() != this->container && event->target->getParent()->getParent() != this->container)
 			{
 				this->lastE = event;
 				this->closeMenu();
@@ -1480,146 +1496,160 @@ namespace engine
 			return;
 		}// end function
 
-		void TowerMenu::mouseUpHandler(cocos2d::EventMouse * event)
+		void TowerMenu::mouseUpHandler(cocos2d::EventMouse * e)
 		{
-			if (this->container->currentFrame == 1)
+			std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+			if(!event)
+				return;
+			if(this->container->currentFrame == 1)
 			{
-				if (event->target->name == "btnUpgradeMenuCase")
+				if (event->target->getName() == "btnUpgradeMenuCase")
 				{
 					if (this->container->btnUpgradeMenu->currentFrame == 3)
 					{
 						if (this->myTower->towerType == 1)
 						{
-							this->tempObject = this->myTower->myPlace;
-							Common::Array<> tempObject1;
-							Common::Array<> tempObject3;
+							BuildTowerPlace * tempObject = this->myTower->myPlace;
+							Common::Array<string> tempObject1;
+							Common::Array<ShootingTurnStack> tempObject3;
 							tempObject1 = tempObject1.concat(this->myTower->spheresStack);
-							int tempObject2 = this->myTower->container->sphere1->currentFrame;
+							//Tower1 *myTower = ISTYPE(Tower1,this->myTower);
+							int tempObject2 = ISTYPE(Tower1_mc, this->myTower->container)->sphere1->currentFrame;
 							tempObject3 = tempObject3.concat(this->myTower->shootingTurnStack);
 							this->myTower->kill();
-							this->myTower = this->world->addTower("tower2", this->tempObject);
-							this->myTower->spheresStack = this->myTower->spheresStack.concat(this->tempObject1);
-							this->myTower->shootingTurnStack = [];
-							this->myTower->shootingTurnStack = this->myTower->shootingTurnStack.concat(this->tempObject3);
+							this->myTower = this->world->addTower("tower2", tempObject);
+							this->myTower->spheresStack = this->myTower->spheresStack.concat(tempObject1);
+							this->myTower->shootingTurnStack.clear();// = [];
+							//this->myTower->shootingTurnStack = 
+							this->myTower->shootingTurnStack.concat(tempObject3);
 							this->myTower->prepareSpheresGraphic();
-							if (this->myTower->container->sphere2_1->currentFrame + this->tempObject2 > this->myTower->container->sphere2_1->totalFrames)
+							
+							Tower2 *myTower = ISTYPE(Tower2, this->myTower);
+							Tower2_mc * container = ISTYPE(Tower2_mc, this->myTower->container);
+							if(container->sphere2_1->currentFrame + tempObject2 > container->sphere2_1->totalFrames)
 							{
-								this->tempObject = this->tempObject2 + this->myTower->container->sphere2_1->currentFrame - this->myTower->container->sphere2_1->totalFrames;
-								this->myTower->container->sphere2_1->gotoAndStop(this->tempObject);
+								int tempObject = tempObject2 + container->sphere2_1->currentFrame - container->sphere2_1->totalFrames;
+								container->sphere2_1->gotoAndStop(tempObject);
 							}
 							else
 							{
-								this->myTower->container->sphere2_1->gotoAndStop(this->myTower->container->sphere2_1->currentFrame + this->tempObject2);
+								container->sphere2_1->gotoAndStop(container->sphere2_1->currentFrame + tempObject2);
 							}
-							if (this->myTower->container->sphere2_2->currentFrame + this->tempObject2 > this->myTower->container->sphere2_2->totalFrames)
+							if (container->sphere2_2->currentFrame + tempObject2 > container->sphere2_2->totalFrames)
 							{
-								this->tempObject = this->tempObject2 + this->myTower->container->sphere2_2->currentFrame - this->myTower->container->sphere2_2->totalFrames;
-								this->myTower->container->sphere2_2->gotoAndStop(this->tempObject);
+								int tempObject =  tempObject2 + container->sphere2_2->currentFrame - container->sphere2_2->totalFrames;
+								container->sphere2_2->gotoAndStop(tempObject);
 							}
 							else
 							{
-								this->myTower->container->sphere2_2->gotoAndStop(this->myTower->container->sphere2_2->currentFrame + this->tempObject2);
+								container->sphere2_2->gotoAndStop(container->sphere2_2->currentFrame + tempObject2);
 							}
-							this->world->setChildIndex(this->myTower, (this->world->getChildIndex(this) - 1));
+							this->myTower->setZOrder(2);
+							//this->world->setChildIndex(this->myTower, (this->world->getChildIndex(this) - 1));
 							this->container->btnUpgradeMenu->gotoAndStop(1);
 							this->world->money = this->world->money - Main::mainClass->readXMLClass.costSlot2XML;
 						}
 						else if (this->myTower->towerType == 2)
 						{
-							this->tempObject = this->myTower->myPlace;
-							this->tempObject1 = [];
-							this->tempObject3 = [];
-							this->tempObject1 = this->tempObject1.concat(this->myTower->spheresStack);
-							this->tempObject2 = this->myTower->container->sphere2_1->currentFrame;
-							this->tempObject3 = this->tempObject3.concat(this->myTower->shootingTurnStack);
+							BuildTowerPlace * tempObject = this->myTower->myPlace;
+							Common::Array<string> tempObject1;
+							Common::Array<ShootingTurnStack> tempObject3; 
+							tempObject1 = tempObject1.concat(this->myTower->spheresStack);
+ 							int tempObject2 = ISTYPE(Tower2_mc, this->myTower->container)->sphere2_1->currentFrame;
+							tempObject3 = tempObject3.concat(this->myTower->shootingTurnStack);
 							this->myTower->kill();
-							this->myTower = this->world->addTower("tower3", this->tempObject);
-							this->myTower->spheresStack = this->myTower->spheresStack.concat(this->tempObject1);
-							this->myTower->shootingTurnStack = [];
-							this->myTower->shootingTurnStack = this->myTower->shootingTurnStack.concat(this->tempObject3);
+							this->myTower = this->world->addTower("tower3", tempObject);
+							this->myTower->spheresStack = this->myTower->spheresStack.concat(tempObject1);
+							this->myTower->shootingTurnStack.clear();
+							this->myTower->shootingTurnStack = this->myTower->shootingTurnStack.concat(tempObject3);
 							this->myTower->prepareSpheresGraphic();
-							if (this->myTower->container->sphere3_1->currentFrame + this->tempObject2 > this->myTower->container->sphere3_1->totalFrames)
+
+							Tower3 *myTower = ISTYPE(Tower3, this->myTower);
+							Tower3_mc * container = ISTYPE(Tower3_mc, this->myTower->container);
+							if (container->sphere3_1->currentFrame + tempObject2 > container->sphere3_1->totalFrames)
 							{
-								this->tempObject = this->tempObject2 + this->myTower->container->sphere3_1->currentFrame - this->myTower->container->sphere3_1->totalFrames;
-								this->myTower->container->sphere3_1->gotoAndStop(this->tempObject);
+								int tempObject = tempObject2 + container->sphere3_1->currentFrame - container->sphere3_1->totalFrames;
+								container->sphere3_1->gotoAndStop(tempObject);
 							}
 							else
 							{
-								this->myTower->container->sphere3_1->gotoAndStop(this->myTower->container->sphere3_1->currentFrame + this->tempObject2);
+								container->sphere3_1->gotoAndStop(container->sphere3_1->currentFrame + tempObject2);
 							}
-							if (this->myTower->container->sphere3_2->currentFrame + this->tempObject2 > this->myTower->container->sphere3_2->totalFrames)
+							if (container->sphere3_2->currentFrame + tempObject2 > container->sphere3_2->totalFrames)
 							{
-								this->tempObject = this->tempObject2 + this->myTower->container->sphere3_2->currentFrame - this->myTower->container->sphere3_2->totalFrames;
-								this->myTower->container->sphere3_2->gotoAndStop(this->tempObject);
+								int tempObject = tempObject2 + container->sphere3_2->currentFrame - container->sphere3_2->totalFrames;
+								container->sphere3_2->gotoAndStop(tempObject);
 							}
 							else
 							{
-								this->myTower->container->sphere3_2->gotoAndStop(this->myTower->container->sphere3_2->currentFrame + this->tempObject2);
+								container->sphere3_2->gotoAndStop(container->sphere3_2->currentFrame + tempObject2);
 							}
-							if (this->myTower->container->sphere3_3->currentFrame + this->tempObject2 > this->myTower->container->sphere3_3->totalFrames)
+							if (container->sphere3_3->currentFrame + tempObject2 > container->sphere3_3->totalFrames)
 							{
-								this->tempObject = this->tempObject2 + this->myTower->container->sphere3_3->currentFrame - this->myTower->container->sphere3_3->totalFrames;
-								this->myTower->container->sphere3_3->gotoAndStop(this->tempObject);
+								int tempObject = tempObject2 + container->sphere3_3->currentFrame - container->sphere3_3->totalFrames;
+								container->sphere3_3->gotoAndStop(tempObject);
 							}
 							else
 							{
-								this->myTower->container->sphere3_3->gotoAndStop(this->myTower->container->sphere3_3->currentFrame + this->tempObject2);
+								container->sphere3_3->gotoAndStop(container->sphere3_3->currentFrame + tempObject2);
 							}
-							this->world->setChildIndex(this->myTower, (this->world->getChildIndex(this) - 1));
+							//this->world->setChildIndex(this->myTower, (this->world->getChildIndex(this) - 1));
 							this->container->btnUpgradeMenu->gotoAndStop(1);
 							this->world->money = this->world->money - Main::mainClass->readXMLClass.costSlot3XML;
 						}
 						else if (this->myTower->towerType == 3)
 						{
-							this->tempObject = this->myTower->myPlace;
-							this->tempObject1 = [];
-							this->tempObject3 = [];
-							this->tempObject1 = this->tempObject1.concat(this->myTower->spheresStack);
-							this->tempObject2 = this->myTower->container->sphere3_1->currentFrame;
-							this->tempObject3 = this->tempObject3.concat(this->myTower->shootingTurnStack);
+							BuildTowerPlace * tempObject = this->myTower->myPlace;
+							Common::Array<string> tempObject1;
+							Common::Array<ShootingTurnStack> tempObject3;
+							tempObject1 = tempObject1.concat(this->myTower->spheresStack);
+							int tempObject2 = ISTYPE(Tower3_mc, this->myTower->container)->sphere3_1->currentFrame;
+							tempObject3 = tempObject3.concat(this->myTower->shootingTurnStack);
 							this->myTower->kill();
-							this->myTower = this->world->addTower("tower4", this->tempObject);
-							this->myTower->spheresStack = this->myTower->spheresStack.concat(this->tempObject1);
-							this->myTower->shootingTurnStack = [];
-							this->myTower->shootingTurnStack = this->myTower->shootingTurnStack.concat(this->tempObject3);
+							this->myTower = this->world->addTower("tower4", tempObject);
+							this->myTower->spheresStack = this->myTower->spheresStack.concat(tempObject1);
+							this->myTower->shootingTurnStack.clear();
+							this->myTower->shootingTurnStack = this->myTower->shootingTurnStack.concat(tempObject3);
 							this->myTower->prepareSpheresGraphic();
-							if (this->myTower->container->sphere4_1->currentFrame + this->tempObject2 > this->myTower->container->sphere4_1->totalFrames)
+							Tower4 *myTower = ISTYPE(Tower4, this->myTower);
+							Tower4_mc * container = ISTYPE(Tower4_mc, this->myTower->container);
+							if (container->sphere4_1->currentFrame + tempObject2 > container->sphere4_1->totalFrames)
 							{
-								this->tempObject = this->tempObject2 + this->myTower->container->sphere4_1->currentFrame - this->myTower->container->sphere4_1->totalFrames;
-								this->myTower->container->sphere4_1->gotoAndStop(this->tempObject);
+								int tempObject = tempObject2 + container->sphere4_1->currentFrame - container->sphere4_1->totalFrames;
+								container->sphere4_1->gotoAndStop(tempObject);
 							}
 							else
 							{
-								this->myTower->container->sphere4_1->gotoAndStop(this->myTower->container->sphere4_1->currentFrame + this->tempObject2);
+								container->sphere4_1->gotoAndStop(container->sphere4_1->currentFrame + tempObject2);
 							}
-							if (this->myTower->container->sphere4_2->currentFrame + this->tempObject2 > this->myTower->container->sphere4_2->totalFrames)
+							if (container->sphere4_2->currentFrame + tempObject2 > container->sphere4_2->totalFrames)
 							{
-								this->tempObject = this->tempObject2 + this->myTower->container->sphere4_2->currentFrame - this->myTower->container->sphere4_2->totalFrames;
-								this->myTower->container->sphere4_2->gotoAndStop(this->tempObject);
+								int tempObject = tempObject2 + container->sphere4_2->currentFrame - container->sphere4_2->totalFrames;
+								container->sphere4_2->gotoAndStop(tempObject);
 							}
 							else
 							{
-								this->myTower->container->sphere4_2->gotoAndStop(this->myTower->container->sphere4_2->currentFrame + this->tempObject2);
+								container->sphere4_2->gotoAndStop(container->sphere4_2->currentFrame + tempObject2);
 							}
-							if (this->myTower->container->sphere4_3->currentFrame + this->tempObject2 > this->myTower->container->sphere4_3->totalFrames)
+							if (container->sphere4_3->currentFrame + tempObject2 > container->sphere4_3->totalFrames)
 							{
-								this->tempObject = this->tempObject2 + this->myTower->container->sphere4_3->currentFrame - this->myTower->container->sphere4_3->totalFrames;
-								this->myTower->container->sphere4_3->gotoAndStop(this->tempObject);
+								int tempObject = tempObject2 + container->sphere4_3->currentFrame - container->sphere4_3->totalFrames;
+								container->sphere4_3->gotoAndStop(tempObject);
 							}
 							else
 							{
-								this->myTower->container->sphere4_3->gotoAndStop(this->myTower->container->sphere4_3->currentFrame + this->tempObject2);
+								container->sphere4_3->gotoAndStop(container->sphere4_3->currentFrame + tempObject2);
 							}
-							if (this->myTower->container->sphere4_4->currentFrame + this->tempObject2 > this->myTower->container->sphere4_4->totalFrames)
+							if (container->sphere4_4->currentFrame + tempObject2 > container->sphere4_4->totalFrames)
 							{
-								this->tempObject = this->tempObject2 + this->myTower->container->sphere4_4->currentFrame - this->myTower->container->sphere4_4->totalFrames;
-								this->myTower->container->sphere4_4->gotoAndStop(this->tempObject);
+								int tempObject = tempObject2 + container->sphere4_4->currentFrame - container->sphere4_4->totalFrames;
+								container->sphere4_4->gotoAndStop(tempObject);
 							}
 							else
 							{
-								this->myTower->container->sphere4_4->gotoAndStop(this->myTower->container->sphere4_4->currentFrame + this->tempObject2);
+								container->sphere4_4->gotoAndStop(container->sphere4_4->currentFrame + tempObject2);
 							}
-							this->world->setChildIndex(this->myTower, (this->world->getChildIndex(this) - 1));
+							//this->world->setChildIndex(this->myTower, (this->world->getChildIndex(this) - 1));
 							this->container->btnUpgradeMenu->gotoAndStop(1);
 							this->world->money = this->world->money - Main::mainClass->readXMLClass.costSlot4XML;
 						}
@@ -1627,14 +1657,14 @@ namespace engine
 						{
 							this->upgradeManage();
 						}
-						this->towerRadius->width = this->myTower->radius * 2;
-						this->towerRadius->height = this->myTower->radius * 2 * this->world->scaleRadius;
+						this->towerRadius->setWidth(this->myTower->radius * 2);
+						this->towerRadius->setHeight(this->myTower->radius * 2 * this->world->scaleRadius);
 						this->world->worldInterface->updateInfo();
-						//事件模拟
-						this->tempObject = new Object();
-						this->tempObject->target = new Object();
-						this->tempObject->target.name = "btnUpgradeMenuCase";
-						this->mouseMoveHandler(this->tempObject);
+						////浜嬩欢妯℃嫙
+						//tempObject = new Object();
+						//tempObject->target = new Object();
+						//tempObject->target.name = "btnUpgradeMenuCase"; //btnUpgradeMenuCase
+						this->mouseMovedHandler(event);
 						if (this->myTower->towerType == 4)
 						{
 							this->towerRadius1->setVisible(false);
@@ -1654,61 +1684,61 @@ namespace engine
 			}
 			else if (this->container->currentFrame == this->container->totalFrames)
 			{
-				if (event->target->name == "btnTowerUpgrCase")
+				if (event->target->getName() == "btnTowerUpgrCase")
 				{
-					if (event->target->parent != this->container->btnTowerUpgr1)
+					if (event->target->getParent() != this->container->btnTowerUpgr1)
 					{
 						if (this->container->btnTowerUpgr1->currentFrame == 3)
 						{
-							this->tempObject = this->container->btnTowerUpgr1CostTXT;
+							string tempObject =std::getText( this->container->btnTowerUpgr1CostTXT);
 							this->container->btnTowerUpgr1->gotoAndStop(1);
-							this->container->btnTowerUpgr1CostTXT = this->tempObject;
+							std::setText(this->container->btnTowerUpgr1CostTXT , tempObject);
 						}
 					}
-					if (event->target->parent != this->container->btnTowerUpgr2)
+					if (event->target->getParent() != this->container->btnTowerUpgr2)
 					{
 						if (this->container->btnTowerUpgr2->currentFrame == 3)
 						{
-							this->tempObject = this->container->btnTowerUpgr2CostTXT;
+							string tempObject = std::getText(this->container->btnTowerUpgr2CostTXT);
 							this->container->btnTowerUpgr2->gotoAndStop(1);
-							this->container->btnTowerUpgr2CostTXT = this->tempObject;
-						}
+							std::setText(this->container->btnTowerUpgr2CostTXT, tempObject);
+ 						}
 					}
-					if (event->target->parent != this->container->btnTowerUpgr3)
+					if (event->target->getParent() != this->container->btnTowerUpgr3)
 					{
 						if (this->container->btnTowerUpgr3->currentFrame == 3)
 						{
-							this->tempObject = this->container->btnTowerUpgr3CostTXT;
+							string tempObject = std::getText(this->container->btnTowerUpgr3CostTXT);
 							this->container->btnTowerUpgr3->gotoAndStop(1);
-							this->container->btnTowerUpgr3CostTXT = this->tempObject;
+							std::setText(this->container->btnTowerUpgr3CostTXT, tempObject);
 						}
 					}
-					if (event->target->parent != this->container->btnTowerUpgr4)
+					if (event->target->getParent() != this->container->btnTowerUpgr4)
 					{
 						if (this->container->btnTowerUpgr4->currentFrame == 3)
 						{
-							this->tempObject = this->container->btnTowerUpgr4CostTXT;
+							string tempObject = std::getText(this->container->btnTowerUpgr4CostTXT);
 							this->container->btnTowerUpgr4->gotoAndStop(1);
-							this->container->btnTowerUpgr4CostTXT = this->tempObject;
+							std::setText(this->container->btnTowerUpgr4CostTXT, tempObject);
 						}
 					}
-					if (event->target->parent->currentFrame == 3)
+					if (event->target->getParent()->currentFrame == 3)
 					{
-						this->tempObject = event->target->parent;
-						tempObject1 = this->tempObject->costTXT;
+						tempObject = event->target->getParent();
+						tempObject1 = tempObject->costTXT;
 						tempObject->gotoAndStop(2);
 						std::setText(tempObject->costTXT , tempObject1);
 						if (!this->fastBuyUltraFlag)
 						{
-							this->fastBuyUltraFlag = event->target->parent->name;
+							this->fastBuyUltraFlag = event->target->getParent()->getName();
 							this->openFastBuyUltraFlag = true;
 							this->fastBuyUltraManage();
 						}
-						else if (event->target->parent->name == this->fastBuyUltraFlag)
+						else if (event->target->getParent()->getName() == this->fastBuyUltraFlag)
 						{
 							this->fastBuyUltraFlag = "";
 							this->closeFastBuyUltraFlag = true;
-							this->mouseMoveHandler(event);
+							this->mouseMovedHandler(event);
 						}
 						else
 						{
@@ -1718,12 +1748,12 @@ namespace engine
 								this->exampleUltraManage("remove");
 							}
 							this->closeFastBuyUltraFlag = true;
-							this->mouseMoveHandler(event);
-							this->fastBuyUltraFlag = event->target->parent->name;
+							this->mouseMovedHandler(event);
+							this->fastBuyUltraFlag = event->target->getParent()->getName();
 							this->openFastBuyUltraFlag = true;
 							this->closeFastBuyUltraFlag = false;
 							this->fastBuyUltraManage();
-							this->exampleUltraManage(event->target->parent->name);
+							this->exampleUltraManage(event->target->getParent()->getName());
 						}
 					}
 				}
@@ -2486,10 +2516,10 @@ namespace engine
 			}
 			if (this->autoguidesObject)
 			{
-				//事件
-				//this->tempObject = new Object();
-				//this->tempObject->target = this->autoguidesObject;
-				//this->mouseMoveHandler(this->tempObject);
+				//浜嬩欢
+				//tempObject = new Object();
+				//tempObject->target = this->autoguidesObject;
+				//this->mouseMoveHandler(tempObject);
 			}
 			return;
 		}// end function
@@ -2568,215 +2598,216 @@ namespace engine
 
 		void TowerMenu::hintPosition(int param1, Node* param2)
 		{
-			//if (param1 == 1)
-			//{
-			//    this->tempObject = this->container->btnTowerUpgr1->localToGlobal(new Point(this->container->btnTowerUpgr1->btnTowerUpgrCase.x, this->container->btnTowerUpgr1->btnTowerUpgrCase.y));
-			//}
-			//else if (param1 == 2)
-			//{
-			//    this->tempObject = this->container->btnTowerUpgr2->localToGlobal(new Point(this->container->btnTowerUpgr2->btnTowerUpgrCase.x, this->container->btnTowerUpgr2->btnTowerUpgrCase.y));
-			//}
-			//else if (param1 == 3)
-			//{
-			//    this->tempObject = this->container->btnTowerUpgr3->localToGlobal(new Point(this->container->btnTowerUpgr3->btnTowerUpgrCase.x, this->container->btnTowerUpgr3->btnTowerUpgrCase.y));
-			//}
-			//else if (param1 == 4)
-			//{
-			//    this->tempObject = this->container->btnTowerUpgr4->localToGlobal(new Point(this->container->btnTowerUpgr4->btnTowerUpgrCase.x, this->container->btnTowerUpgr4->btnTowerUpgrCase.y));
-			//}
-			//else if (param1 == 5)
-			//{
-			//    this->tempObject = this->container->localToGlobal(new Point(this->container->btnUpgradeMenu->x, this->container->btnUpgradeMenu->y));
-			//    this->hint->gotoAndStop((param1 - 1));
-			//}
-			//else if (param1 == 9)
-			//{
-			//    if (!param2)
-			//    {
-			//        this->tempObject = this->container->localToGlobal(new Point(this->container->btnUpgradeMenu->x, this->container->btnUpgradeMenu->y));
-			//    }
-			//    else
-			//    {
-			//        this->tempObject = param2.parent.localToGlobal(new Point(param2.x, param2.y));
-			//    }
-			//    this->hint->gotoAndStop((param1 - 1));
-			//}
-			//if (param1 < 5)
-			//{
-			//    if (this->tempObject->x < 120)
-			//    {
-			//        if (this->tempObject->y < 120)
-			//        {
-			//            this->hint->gotoAndStop(4);
-			//            this->hint->y = this->tempObject->y + 12;
-			//        }
-			//        else if (this->tempObject->y > Main.SCREEN_HEIGHT - 120)
-			//        {
-			//            this->hint->gotoAndStop(2);
-			//            this->hint->y = this->tempObject->y - 12;
-			//        }
-			//        else
-			//        {
-			//            this->hint->gotoAndStop(2);
-			//            this->hint->y = this->tempObject->y - 12;
-			//        }
-			//        this->hint->x = this->tempObject->x + 12;
-			//    }
-			//    else if (this->tempObject->x > Main.SCREEN_WIDTH - 120)
-			//    {
-			//        if (this->tempObject->y < 120)
-			//        {
-			//            this->hint->gotoAndStop(3);
-			//            this->hint->y = this->tempObject->y + 12;
-			//        }
-			//        else if (this->tempObject->y > Main.SCREEN_HEIGHT - 120)
-			//        {
-			//            this->hint->gotoAndStop(1);
-			//            this->hint->y = this->tempObject->y - 12;
-			//        }
-			//        else
-			//        {
-			//            this->hint->gotoAndStop(1);
-			//            this->hint->y = this->tempObject->y + 12;
-			//        }
-			//        this->hint->x = this->tempObject->x - 12;
-			//    }
-			//    else if (this->tempObject->y < 120)
-			//    {
-			//        if (this->tempObject->x < 120)
-			//        {
-			//            this->hint->gotoAndStop(4);
-			//            this->hint->x = this->tempObject->x + 12;
-			//            this->hint->y = this->tempObject->y + 12;
-			//        }
-			//        else if (this->tempObject->x > Main.SCREEN_WIDTH - 120)
-			//        {
-			//            this->hint->gotoAndStop(3);
-			//            this->hint->x = this->tempObject->x - 12;
-			//            this->hint->y = this->tempObject->y + 12;
-			//        }
-			//        else
-			//        {
-			//            this->hint->gotoAndStop(4);
-			//            this->hint->x = this->tempObject->x;
-			//            this->hint->y = this->tempObject->y + 12;
-			//        }
-			//    }
-			//    else if (this->tempObject->y > Main.SCREEN_HEIGHT - 120)
-			//    {
-			//        if (this->tempObject->x < 120)
-			//        {
-			//            this->hint->gotoAndStop(2);
-			//            this->hint->x = this->tempObject->x + 12;
-			//            this->hint->y = this->tempObject->y - 12;
-			//        }
-			//        else if (this->tempObject->x > Main.SCREEN_WIDTH - 120)
-			//        {
-			//            this->hint->gotoAndStop(1);
-			//            this->hint->x = this->tempObject->x - 12;
-			//            this->hint->y = this->tempObject->y - 12;
-			//        }
-			//        else
-			//        {
-			//            this->hint->gotoAndStop(2);
-			//            this->hint->x = this->tempObject->x;
-			//            this->hint->y = this->tempObject->y - 12;
-			//        }
-			//    }
-			//    else
-			//    {
-			//        this->hint->gotoAndStop(2);
-			//        this->hint->x = this->tempObject->x;
-			//        this->hint->y = this->tempObject->y - 12;
-			//    }
-			//}
-			//else if (this->tempObject->x < 120)
-			//{
-			//    if (this->tempObject->y < 120)
-			//    {
-			//        this->hint->gotoAndStop(this->hint->currentFrame + 4);
-			//        this->hint->y = this->tempObject->y + 12;
-			//    }
-			//    else if (this->tempObject->y > Main.SCREEN_HEIGHT - 120)
-			//    {
-			//        this->hint->gotoAndStop(this->hint->currentFrame + 2);
-			//        this->hint->y = this->tempObject->y - 12;
-			//    }
-			//    else
-			//    {
-			//        this->hint->gotoAndStop(this->hint->currentFrame + 2);
-			//        this->hint->y = this->tempObject->y - 12;
-			//    }
-			//    this->hint->x = this->tempObject->x + 12;
-			//}
-			//else if (this->tempObject->x > Main.SCREEN_WIDTH - 120)
-			//{
-			//    if (this->tempObject->y < 120)
-			//    {
-			//        this->hint->gotoAndStop(this->hint->currentFrame + 3);
-			//        this->hint->y = this->tempObject->y + 12;
-			//    }
-			//    else if (this->tempObject->y > Main.SCREEN_HEIGHT - 120)
-			//    {
-			//        this->hint->gotoAndStop((this->hint->currentFrame + 1));
-			//        this->hint->y = this->tempObject->y - 12;
-			//    }
-			//    else
-			//    {
-			//        this->hint->gotoAndStop((this->hint->currentFrame + 1));
-			//        this->hint->y = this->tempObject->y + 12;
-			//    }
-			//    this->hint->x = this->tempObject->x - 12;
-			//}
-			//else if (this->tempObject->y < 120)
-			//{
-			//    if (this->tempObject->x < 120)
-			//    {
-			//        this->hint->gotoAndStop(this->hint->currentFrame + 4);
-			//        this->hint->x = this->tempObject->x + 12;
-			//        this->hint->y = this->tempObject->y + 12;
-			//    }
-			//    else if (this->tempObject->x > Main.SCREEN_WIDTH - 120)
-			//    {
-			//        this->hint->gotoAndStop(this->hint->currentFrame + 3);
-			//        this->hint->x = this->tempObject->x - 12;
-			//        this->hint->y = this->tempObject->y + 12;
-			//    }
-			//    else
-			//    {
-			//        this->hint->gotoAndStop(this->hint->currentFrame + 4);
-			//        this->hint->x = this->tempObject->x;
-			//        this->hint->y = this->tempObject->y + 12;
-			//    }
-			//}
-			//else if (this->tempObject->y > Main.SCREEN_HEIGHT - 120)
-			//{
-			//    if (this->tempObject->x < 120)
-			//    {
-			//        this->hint->gotoAndStop(this->hint->currentFrame + 2);
-			//        this->hint->x = this->tempObject->x + 12;
-			//        this->hint->y = this->tempObject->y - 12;
-			//    }
-			//    else if (this->tempObject->x > Main.SCREEN_WIDTH - 120)
-			//    {
-			//        this->hint->gotoAndStop((this->hint->currentFrame + 1));
-			//        this->hint->x = this->tempObject->x - 12;
-			//        this->hint->y = this->tempObject->y - 12;
-			//    }
-			//    else
-			//    {
-			//        this->hint->gotoAndStop(this->hint->currentFrame + 2);
-			//        this->hint->x = this->tempObject->x;
-			//        this->hint->y = this->tempObject->y - 12;
-			//    }
-			//}
-			//else
-			//{
-			//    this->hint->gotoAndStop(this->hint->currentFrame + 2);
-			//    this->hint->x = this->tempObject->x;
-			//    this->hint->y = this->tempObject->y - 12;
-			//}
-			//this->tempObject = NULL;
+			Vec2 tempObject;
+			if (param1 == 1)
+			{
+			    tempObject = this->container->btnTowerUpgr1->localToGlobal(new Point(this->container->btnTowerUpgr1->btnTowerUpgrCase.x, this->container->btnTowerUpgr1->btnTowerUpgrCase.y));
+			}
+			else if (param1 == 2)
+			{
+			    tempObject = this->container->btnTowerUpgr2->localToGlobal(new Point(this->container->btnTowerUpgr2->btnTowerUpgrCase.x, this->container->btnTowerUpgr2->btnTowerUpgrCase.y));
+			}
+			else if (param1 == 3)
+			{
+			    tempObject = this->container->btnTowerUpgr3->localToGlobal(new Point(this->container->btnTowerUpgr3->btnTowerUpgrCase.x, this->container->btnTowerUpgr3->btnTowerUpgrCase.y));
+			}
+			else if (param1 == 4)
+			{
+			    tempObject = this->container->btnTowerUpgr4->localToGlobal(new Point(this->container->btnTowerUpgr4->btnTowerUpgrCase.x, this->container->btnTowerUpgr4->btnTowerUpgrCase.y));
+			}
+			else if (param1 == 5)
+			{
+			    tempObject = this->container->localToGlobal(new Point(this->container->btnUpgradeMenu->x, this->container->btnUpgradeMenu->y));
+			    this->hint->gotoAndStop((param1 - 1));
+			}
+			else if (param1 == 9)
+			{
+			    if (!param2)
+			    {
+			        tempObject = this->container->localToGlobal(new Point(this->container->btnUpgradeMenu->x, this->container->btnUpgradeMenu->y));
+			    }
+			    else
+			    {
+			        tempObject = param2.parent.localToGlobal(new Point(param2.x, param2.y));
+			    }
+			    this->hint->gotoAndStop((param1 - 1));
+			}
+			if (param1 < 5)
+			{
+			    if (tempObject->x < 120)
+			    {
+			        if (tempObject->y < 120)
+			        {
+			            this->hint->gotoAndStop(4);
+			            this->hint->y = tempObject->y + 12;
+			        }
+			        else if (tempObject->y > Main.SCREEN_HEIGHT - 120)
+			        {
+			            this->hint->gotoAndStop(2);
+			            this->hint->y = tempObject->y - 12;
+			        }
+			        else
+			        {
+			            this->hint->gotoAndStop(2);
+			            this->hint->y = tempObject->y - 12;
+			        }
+			        this->hint->x = tempObject->x + 12;
+			    }
+			    else if (tempObject->x > Main.SCREEN_WIDTH - 120)
+			    {
+			        if (tempObject->y < 120)
+			        {
+			            this->hint->gotoAndStop(3);
+			            this->hint->y = tempObject->y + 12;
+			        }
+			        else if (tempObject->y > Main.SCREEN_HEIGHT - 120)
+			        {
+			            this->hint->gotoAndStop(1);
+			            this->hint->y = tempObject->y - 12;
+			        }
+			        else
+			        {
+			            this->hint->gotoAndStop(1);
+			            this->hint->y = tempObject->y + 12;
+			        }
+			        this->hint->x = tempObject->x - 12;
+			    }
+			    else if (tempObject->y < 120)
+			    {
+			        if (tempObject->x < 120)
+			        {
+			            this->hint->gotoAndStop(4);
+			            this->hint->x = tempObject->x + 12;
+			            this->hint->y = tempObject->y + 12;
+			        }
+			        else if (tempObject->x > Main.SCREEN_WIDTH - 120)
+			        {
+			            this->hint->gotoAndStop(3);
+			            this->hint->x = tempObject->x - 12;
+			            this->hint->y = tempObject->y + 12;
+			        }
+			        else
+			        {
+			            this->hint->gotoAndStop(4);
+			            this->hint->x = tempObject->x;
+			            this->hint->y = tempObject->y + 12;
+			        }
+			    }
+			    else if (tempObject->y > Main.SCREEN_HEIGHT - 120)
+			    {
+			        if (tempObject->x < 120)
+			        {
+			            this->hint->gotoAndStop(2);
+			            this->hint->x = tempObject->x + 12;
+			            this->hint->y = tempObject->y - 12;
+			        }
+			        else if (tempObject->x > Main.SCREEN_WIDTH - 120)
+			        {
+			            this->hint->gotoAndStop(1);
+			            this->hint->x = tempObject->x - 12;
+			            this->hint->y = tempObject->y - 12;
+			        }
+			        else
+			        {
+			            this->hint->gotoAndStop(2);
+			            this->hint->x = tempObject->x;
+			            this->hint->y = tempObject->y - 12;
+			        }
+			    }
+			    else
+			    {
+			        this->hint->gotoAndStop(2);
+			        this->hint->x = tempObject->x;
+			        this->hint->y = tempObject->y - 12;
+			    }
+			}
+			else if (tempObject->x < 120)
+			{
+			    if (tempObject->y < 120)
+			    {
+			        this->hint->gotoAndStop(this->hint->currentFrame + 4);
+			        this->hint->y = tempObject->y + 12;
+			    }
+			    else if (tempObject->y > Main.SCREEN_HEIGHT - 120)
+			    {
+			        this->hint->gotoAndStop(this->hint->currentFrame + 2);
+			        this->hint->y = tempObject->y - 12;
+			    }
+			    else
+			    {
+			        this->hint->gotoAndStop(this->hint->currentFrame + 2);
+			        this->hint->y = tempObject->y - 12;
+			    }
+			    this->hint->x = tempObject->x + 12;
+			}
+			else if (tempObject->x > Main.SCREEN_WIDTH - 120)
+			{
+			    if (tempObject->y < 120)
+			    {
+			        this->hint->gotoAndStop(this->hint->currentFrame + 3);
+			        this->hint->y = tempObject->y + 12;
+			    }
+			    else if (tempObject->y > Main.SCREEN_HEIGHT - 120)
+			    {
+			        this->hint->gotoAndStop((this->hint->currentFrame + 1));
+			        this->hint->y = tempObject->y - 12;
+			    }
+			    else
+			    {
+			        this->hint->gotoAndStop((this->hint->currentFrame + 1));
+			        this->hint->y = tempObject->y + 12;
+			    }
+			    this->hint->x = tempObject->x - 12;
+			}
+			else if (tempObject->y < 120)
+			{
+			    if (tempObject->x < 120)
+			    {
+			        this->hint->gotoAndStop(this->hint->currentFrame + 4);
+			        this->hint->x = tempObject->x + 12;
+			        this->hint->y = tempObject->y + 12;
+			    }
+			    else if (tempObject->x > Main.SCREEN_WIDTH - 120)
+			    {
+			        this->hint->gotoAndStop(this->hint->currentFrame + 3);
+			        this->hint->x = tempObject->x - 12;
+			        this->hint->y = tempObject->y + 12;
+			    }
+			    else
+			    {
+			        this->hint->gotoAndStop(this->hint->currentFrame + 4);
+			        this->hint->x = tempObject->x;
+			        this->hint->y = tempObject->y + 12;
+			    }
+			}
+			else if (tempObject->y > Main.SCREEN_HEIGHT - 120)
+			{
+			    if (tempObject->x < 120)
+			    {
+			        this->hint->gotoAndStop(this->hint->currentFrame + 2);
+			        this->hint->x = tempObject->x + 12;
+			        this->hint->y = tempObject->y - 12;
+			    }
+			    else if (tempObject->x > Main.SCREEN_WIDTH - 120)
+			    {
+			        this->hint->gotoAndStop((this->hint->currentFrame + 1));
+			        this->hint->x = tempObject->x - 12;
+			        this->hint->y = tempObject->y - 12;
+			    }
+			    else
+			    {
+			        this->hint->gotoAndStop(this->hint->currentFrame + 2);
+			        this->hint->x = tempObject->x;
+			        this->hint->y = tempObject->y - 12;
+			    }
+			}
+			else
+			{
+			    this->hint->gotoAndStop(this->hint->currentFrame + 2);
+			    this->hint->x = tempObject->x;
+			    this->hint->y = tempObject->y - 12;
+			}
+			tempObject = NULL;
 			return;
 		}// end function
 
@@ -2784,363 +2815,348 @@ namespace engine
 		{
 			if (param1 == "btnTowerUpgr1")
 			{
-				//if (this->myTower->shootingTurnStack.size()>0)
-				//{
-				//    if (this->myTower->shootingTurnStack[0][3] > 1)
-				//    {
-				//        this->world->getSphere = new GetSphere();
-				//        this->world->getSphere->owner = this->world->worldInterface->container->fireSphere;
-				//        this->world->getSphere->ownerType = "archive";
-				//        this->world->getSphere->ownerPoint = this->world->worldInterface->container->fireSphere.myPoint;
-				//        this->world->addChild(this->world->getSphere);
-				//        this->i = 0;
-				//        while (this->i < (this->myTower->shootingTurnStack[0][3] - 1))
-				//        { 
-				//            (this->i + 1);
-				//            this->world->getSphere->manage("add", "fire");
-				//        }
-				//        this->myTower->spheresManage("get", "fire", (this->myTower->shootingTurnStack[0][3] - 1));
-				//        this->world->getSphere->x = this->myTower->this_pt.x;
-				//        this->world->getSphere->y = this->myTower->this_pt.y;
-				//        this->world->getSphere->retrieveGetSphere();
-				//    }
-				//}
-				//if (this->myTower->shootingTurnStack[1])
-				//{
-				//    this->world->getSphere = new GetSphere();
-				//    this->world->getSphere->owner = this->world->worldInterface->container->iceSphere;
-				//    this->world->getSphere->ownerType = "archive";
-				//    this->world->getSphere->ownerPoint = this->world->worldInterface->container->iceSphere.myPoint;
-				//    this->world->addChild(this->world->getSphere);
-				//    this->i = 0;
-				//    while (this->i < this->myTower->shootingTurnStack[1][3])
-				//    {
-				//        (this->i + 1);
-				//        this->world->getSphere->manage("add", "ice");
-				//    }
-				//    this->myTower->spheresManage("get", "ice", this->myTower->shootingTurnStack[1][3]);
-				//    this->world->getSphere->x = this->myTower->this_pt.x;
-				//    this->world->getSphere->y = this->myTower->this_pt.y;
-				//    this->world->getSphere->retrieveGetSphere();
-				//}
-				//if (this->myTower->shootingTurnStack[2])
-				//{
-				//    if (this->myTower->shootingTurnStack[2][3] > 1)
-				//    {
-				//        this->world->getSphere = new GetSphere();
-				//        this->world->getSphere->owner = this->world->worldInterface->container->stoneSphere;
-				//        this->world->getSphere->ownerType = "archive";
-				//        this->world->getSphere->ownerPoint = this->world->worldInterface->container->stoneSphere.myPoint;
-				//        this->world->addChild(this->world->getSphere);
-				//        this->i = 0;
-				//        while (this->i < (this->myTower->shootingTurnStack[2][3] - 1))
-				//        {
-				//            (this->i + 1);
-				//            this->world->getSphere->manage("add", "stone");
-				//        }
-				//        this->myTower->spheresManage("get", "stone", (this->myTower->shootingTurnStack[2][3] - 1));
-				//        this->world->getSphere->x = this->myTower->this_pt.x;
-				//        this->world->getSphere->y = this->myTower->this_pt.y;
-				//        this->world->getSphere->retrieveGetSphere();
-				//    }
-				//}
-				//if (this->myTower->shootingTurnStack[3])
-				//{
-				//    this->world->getSphere = new GetSphere();
-				//    this->world->getSphere->owner = this->world->worldInterface->container->levinSphere;
-				//    this->world->getSphere->ownerType = "archive";
-				//    this->world->getSphere->ownerPoint = this->world->worldInterface->container->levinSphere.myPoint;
-				//    this->world->addChild(this->world->getSphere);
-				//    this->i = 0;
-				//    while (this->i < this->myTower->shootingTurnStack[3][3])
-				//    {
-				//        (this->i + 1);
-				//        this->world->getSphere->manage("add", "levin");
-				//    }
-				//    this->myTower->spheresManage("get", "levin", this->myTower->shootingTurnStack[3][3]);
-				//    this->world->getSphere->x = this->myTower->this_pt.x;
-				//    this->world->getSphere->y = this->myTower->this_pt.y;
-				//    this->world->getSphere->retrieveGetSphere();
-				//}
-				//if (!param2)
-				//{
-				//    this->tempObject = this->myTower->myPlace;
-				//    this->myTower->kill();
-				//    this->myTower = this->world->addTower("tower5", this->tempObject);
-				//    this->world->setChildIndex(this->myTower, (this->world->getChildIndex(this) - 1));
-				//    this->world->money = this->world->money - Main::mainClass->readXMLClass.costUltraFireStone;
-				//    this->closeMenu();
-				//}
+				if (this->myTower->shootingTurnStack.size()>0)
+				{
+				    if (this->myTower->shootingTurnStack[0][3] > 1)
+				    {
+				        this->world->getSphere = new GetSphere();
+				        this->world->getSphere->owner = this->world->worldInterface->container->fireSphere;
+				        this->world->getSphere->ownerType = "archive";
+				        this->world->getSphere->ownerPoint = this->world->worldInterface->container->fireSphereMyPoint;
+				        this->world->addChild(this->world->getSphere);
+				        this->i = 0;
+				        while (this->i < (this->myTower->shootingTurnStack[0][3] - 1))
+				        { 
+				            (this->i + 1);
+				            this->world->getSphere->manage("add", "fire");
+				        }
+				        this->myTower->spheresManage("get", "fire", (this->myTower->shootingTurnStack[0][3] - 1));
+						this->world->getSphere->setPosition(this->myTower->this_pt);
+				        this->world->getSphere->retrieveGetSphere();
+				    }
+				}
+				if (this->myTower->shootingTurnStack[1])
+				{
+				    this->world->getSphere = new GetSphere();
+				    this->world->getSphere->owner = this->world->worldInterface->container->iceSphere;
+				    this->world->getSphere->ownerType = "archive";
+				    this->world->getSphere->ownerPoint = this->world->worldInterface->container->iceSphereMyPoint;
+				    this->world->addChild(this->world->getSphere);
+				    this->i = 0;
+				    while (this->i < this->myTower->shootingTurnStack[1][3])
+				    {
+				        (this->i + 1);
+				        this->world->getSphere->manage("add", "ice");
+				    }
+				    this->myTower->spheresManage("get", "ice", this->myTower->shootingTurnStack[1][3]);
+					this->world->getSphere->setPosition(this->myTower->this_pt);
+				    this->world->getSphere->retrieveGetSphere();
+				}
+				if (this->myTower->shootingTurnStack[2])
+				{
+				    if (this->myTower->shootingTurnStack[2][3] > 1)
+				    {
+				        this->world->getSphere = new GetSphere();
+				        this->world->getSphere->owner = this->world->worldInterface->container->stoneSphere;
+				        this->world->getSphere->ownerType = "archive";
+				        this->world->getSphere->ownerPoint = this->world->worldInterface->container->stoneSphereMyPoint;
+				        this->world->addChild(this->world->getSphere);
+				        this->i = 0;
+				        while (this->i < (this->myTower->shootingTurnStack[2][3] - 1))
+				        {
+				            (this->i + 1);
+				            this->world->getSphere->manage("add", "stone");
+				        }
+				        this->myTower->spheresManage("get", "stone", (this->myTower->shootingTurnStack[2][3] - 1));
+						this->world->getSphere->setPosition(this->myTower->this_pt);
+				        this->world->getSphere->retrieveGetSphere();
+				    }
+				}
+				if (this->myTower->shootingTurnStack[3])
+				{
+				    this->world->getSphere = new GetSphere();
+				    this->world->getSphere->owner = this->world->worldInterface->container->levinSphere;
+				    this->world->getSphere->ownerType = "archive";
+				    this->world->getSphere->ownerPoint = this->world->worldInterface->container->levinSphereMyPoint;
+				    this->world->addChild(this->world->getSphere);
+				    this->i = 0;
+				    while (this->i < this->myTower->shootingTurnStack[3][3])
+				    {
+				        (this->i + 1);
+				        this->world->getSphere->manage("add", "levin");
+				    }
+				    this->myTower->spheresManage("get", "levin", this->myTower->shootingTurnStack[3][3]);
+					this->world->getSphere->setPosition(this->myTower->this_pt);
+				    this->world->getSphere->retrieveGetSphere();
+				}
+				if (!param2)
+				{
+					BuildTowerPlace *  tempObject = this->myTower->myPlace;
+				    this->myTower->kill();
+				    this->myTower = this->world->addTower("tower5", tempObject);
+				    //this->world->setChildIndex(this->myTower, (this->world->getChildIndex(this) - 1));
+				    this->world->money = this->world->money - Main::mainClass->readXMLClass.costUltraFireStone;
+				    this->closeMenu();
+				}
 			}
 			else if (param1 == "btnTowerUpgr2")
 			{
-				//if (this->myTower->shootingTurnStack[0])
-				//{
-				//    this->world->getSphere = new GetSphere();
-				//    this->world->getSphere->owner = this->world->worldInterface->container->fireSphere;
-				//    this->world->getSphere->ownerType = "archive";
-				//    this->world->getSphere->ownerPoint = this->world->worldInterface->container->fireSphere.myPoint;
-				//    this->world->addChild(this->world->getSphere);
-				//    this->i = 0;
-				//    while (this->i < this->myTower->shootingTurnStack[0][3])
-				//    {
-				//        (this->i + 1);
-				//        this->world->getSphere->manage("add", "fire");
-				//    }
-				//    this->myTower->spheresManage("get", "fire", this->myTower->shootingTurnStack[0][3]);
-				//    this->world->getSphere->x = this->myTower->this_pt.x;
-				//    this->world->getSphere->y = this->myTower->this_pt.y;
-				//    this->world->getSphere->retrieveGetSphere();
-				//}
-				//if (this->myTower->shootingTurnStack[1])
-				//{
-				//    if (this->myTower->shootingTurnStack[1][3] > 1)
-				//    {
-				//        this->world->getSphere = new GetSphere();
-				//        this->world->getSphere->owner = this->world->worldInterface->container->iceSphere;
-				//        this->world->getSphere->ownerType = "archive";
-				//        this->world->getSphere->ownerPoint = this->world->worldInterface->container->iceSphere.myPoint;
-				//        this->world->addChild(this->world->getSphere);
-				//        this->i = 0;
-				//        while (this->i < (this->myTower->shootingTurnStack[1][3] - 1))
-				//        {
-				//            (this->i + 1);
-				//            this->world->getSphere->manage("add", "ice");
-				//        }
-				//        this->myTower->spheresManage("get", "ice", (this->myTower->shootingTurnStack[1][3] - 1));
-				//        this->world->getSphere->x = this->myTower->this_pt.x;
-				//        this->world->getSphere->y = this->myTower->this_pt.y;
-				//        this->world->getSphere->retrieveGetSphere();
-				//    }
-				//}
-				//if (this->myTower->shootingTurnStack[2])
-				//{
-				//    this->world->getSphere = new GetSphere();
-				//    this->world->getSphere->owner = this->world->worldInterface->container->stoneSphere;
-				//    this->world->getSphere->ownerType = "archive";
-				//    this->world->getSphere->ownerPoint = this->world->worldInterface->container->stoneSphere.myPoint;
-				//    this->world->addChild(this->world->getSphere);
-				//    this->i = 0;
-				//    while (this->i < this->myTower->shootingTurnStack[2][3])
-				//    {
-				//        (this->i + 1);
-				//        this->world->getSphere->manage("add", "stone");
-				//    }
-				//    this->myTower->spheresManage("get", "stone", this->myTower->shootingTurnStack[2][3]);
-				//    this->world->getSphere->x = this->myTower->this_pt.x;
-				//    this->world->getSphere->y = this->myTower->this_pt.y;
-				//    this->world->getSphere->retrieveGetSphere();
-				//}
-				//if (this->myTower->shootingTurnStack[3])
-				//{
-				//    if (this->myTower->shootingTurnStack[3][3] > 1)
-				//    {
-				//        this->world->getSphere = new GetSphere();
-				//        this->world->getSphere->owner = this->world->worldInterface->container->levinSphere;
-				//        this->world->getSphere->ownerType = "archive";
-				//        this->world->getSphere->ownerPoint = this->world->worldInterface->container->levinSphere.myPoint;
-				//        this->world->addChild(this->world->getSphere);
-				//        this->i = 0;
-				//        while (this->i < (this->myTower->shootingTurnStack[3][3] - 1))
-				//        {
-				//            (this->i + 1);
-				//            this->world->getSphere->manage("add", "levin");
-				//        }
-				//        this->myTower->spheresManage("get", "levin", (this->myTower->shootingTurnStack[3][3] - 1));
-				//        this->world->getSphere->x = this->myTower->this_pt.x;
-				//        this->world->getSphere->y = this->myTower->this_pt.y;
-				//        this->world->getSphere->retrieveGetSphere();
-				//    }
-				//}
-				//if (!param2)
-				//{
-				//    this->tempObject = this->myTower->myPlace;
-				//    this->myTower->kill();
-				//    this->myTower = this->world->addTower("tower6", this->tempObject);
-				//    this->world->setChildIndex(this->myTower, (this->world->getChildIndex(this) - 1));
-				//    this->world->money = this->world->money - Main::mainClass->readXMLClass.costUltraIceLevin;
-				//    this->closeMenu();
-				//}
+				if (this->myTower->shootingTurnStack[0])
+				{
+				    this->world->getSphere = new GetSphere();
+				    this->world->getSphere->owner = this->world->worldInterface->container->fireSphere;
+				    this->world->getSphere->ownerType = "archive";
+				    this->world->getSphere->ownerPoint = this->world->worldInterface->container->fireSphereMyPoint;
+				    this->world->addChild(this->world->getSphere);
+				    this->i = 0;
+				    while (this->i < this->myTower->shootingTurnStack[0][3])
+				    {
+				        (this->i + 1);
+				        this->world->getSphere->manage("add", "fire");
+				    }
+				    this->myTower->spheresManage("get", "fire", this->myTower->shootingTurnStack[0][3]);
+					this->world->getSphere->setPosition(this->myTower->this_pt);
+				    this->world->getSphere->retrieveGetSphere();
+				}
+				if (this->myTower->shootingTurnStack[1])
+				{
+				    if (this->myTower->shootingTurnStack[1][3] > 1)
+				    {
+				        this->world->getSphere = new GetSphere();
+				        this->world->getSphere->owner = this->world->worldInterface->container->iceSphere;
+				        this->world->getSphere->ownerType = "archive";
+				        this->world->getSphere->ownerPoint = this->world->worldInterface->container->iceSphereMyPoint;
+				        this->world->addChild(this->world->getSphere);
+				        this->i = 0;
+				        while (this->i < (this->myTower->shootingTurnStack[1][3] - 1))
+				        {
+				            (this->i + 1);
+				            this->world->getSphere->manage("add", "ice");
+				        }
+				        this->myTower->spheresManage("get", "ice", (this->myTower->shootingTurnStack[1][3] - 1));
+						this->world->getSphere->setPosition(this->myTower->this_pt);  
+				        this->world->getSphere->retrieveGetSphere();
+				    }
+				}
+				if (this->myTower->shootingTurnStack[2])
+				{
+				    this->world->getSphere = new GetSphere();
+				    this->world->getSphere->owner = this->world->worldInterface->container->stoneSphere;
+				    this->world->getSphere->ownerType = "archive";
+				    this->world->getSphere->ownerPoint = this->world->worldInterface->container->stoneSphereMyPoint;
+				    this->world->addChild(this->world->getSphere);
+				    this->i = 0;
+				    while (this->i < this->myTower->shootingTurnStack[2][3])
+				    {
+				        (this->i + 1);
+				        this->world->getSphere->manage("add", "stone");
+				    }
+				    this->myTower->spheresManage("get", "stone", this->myTower->shootingTurnStack[2][3]);
+					this->world->getSphere->setPosition(this->myTower->this_pt);
+
+				    this->world->getSphere->retrieveGetSphere();
+				}
+				if (this->myTower->shootingTurnStack[3])
+				{
+				    if (this->myTower->shootingTurnStack[3][3] > 1)
+				    {
+				        this->world->getSphere = new GetSphere();
+				        this->world->getSphere->owner = this->world->worldInterface->container->levinSphere;
+				        this->world->getSphere->ownerType = "archive";
+				        this->world->getSphere->ownerPoint = this->world->worldInterface->container->levinSphereMyPoint;
+				        this->world->addChild(this->world->getSphere);
+				        this->i = 0;
+				        while (this->i < (this->myTower->shootingTurnStack[3][3] - 1))
+				        {
+				            (this->i + 1);
+				            this->world->getSphere->manage("add", "levin");
+				        }
+				        this->myTower->spheresManage("get", "levin", (this->myTower->shootingTurnStack[3][3] - 1));
+						this->world->getSphere->setPosition(this->myTower->this_pt); 
+				        this->world->getSphere->retrieveGetSphere();
+				    }
+				}
+				if (!param2)
+				{
+					BuildTowerPlace * tempObject = this->myTower->myPlace;
+				    this->myTower->kill();
+				    this->myTower = this->world->addTower("tower6", tempObject);
+				    //this->world->setChildIndex(this->myTower, (this->world->getChildIndex(this) - 1));
+				    this->world->money = this->world->money - Main::mainClass->readXMLClass.costUltraIceLevin;
+				    this->closeMenu();
+				}
 			}
 			else if (param1 == "btnTowerUpgr3")
 			{
-				//if (this->myTower->shootingTurnStack[0])
-				//{
-				//    this->world->getSphere = new GetSphere();
-				//    this->world->getSphere->owner = this->world->worldInterface->container->fireSphere;
-				//    this->world->getSphere->ownerType = "archive";
-				//    this->world->getSphere->ownerPoint = this->world->worldInterface->container->fireSphere.myPoint;
-				//    this->world->addChild(this->world->getSphere);
-				//    this->i = 0;
-				//    while (this->i < this->myTower->shootingTurnStack[0][3])
-				//    {
-				//        (this->i + 1);
-				//        this->world->getSphere->manage("add", "fire");
-				//    }
-				//    this->myTower->spheresManage("get", "fire", this->myTower->shootingTurnStack[0][3]);
-				//    this->world->getSphere->x = this->myTower->this_pt.x;
-				//    this->world->getSphere->y = this->myTower->this_pt.y;
-				//    this->world->getSphere->retrieveGetSphere();
-				//}
-				//if (this->myTower->shootingTurnStack[1])
-				//{
-				//    if (this->myTower->shootingTurnStack[1][3] > 1)
-				//    {
-				//        this->world->getSphere = new GetSphere();
-				//        this->world->getSphere->owner = this->world->worldInterface->container->iceSphere;
-				//        this->world->getSphere->ownerType = "archive";
-				//        this->world->getSphere->ownerPoint = this->world->worldInterface->container->iceSphere.myPoint;
-				//        this->world->addChild(this->world->getSphere);
-				//        this->i = 0;
-				//        while (this->i < (this->myTower->shootingTurnStack[1][3] - 1))
-				//        {
-				//            (this->i + 1);
-				//            this->world->getSphere->manage("add", "ice");
-				//        }
-				//        this->myTower->spheresManage("get", "ice", (this->myTower->shootingTurnStack[1][3] - 1));
-				//        this->world->getSphere->x = this->myTower->this_pt.x;
-				//        this->world->getSphere->y = this->myTower->this_pt.y;
-				//        this->world->getSphere->retrieveGetSphere();
-				//    }
-				//}
-				//if (this->myTower->shootingTurnStack[2])
-				//{
-				//    if (this->myTower->shootingTurnStack[2][3] > 1)
-				//    {
-				//        this->world->getSphere = new GetSphere();
-				//        this->world->getSphere->owner = this->world->worldInterface->container->stoneSphere;
-				//        this->world->getSphere->ownerType = "archive";
-				//        this->world->getSphere->ownerPoint = this->world->worldInterface->container->stoneSphere.myPoint;
-				//        this->world->addChild(this->world->getSphere);
-				//        this->i = 0;
-				//        while (this->i < (this->myTower->shootingTurnStack[2][3] - 1))
-				//        {
-				//            (this->i + 1);
-				//            this->world->getSphere->manage("add", "stone");
-				//        }
-				//        this->myTower->spheresManage("get", "stone", (this->myTower->shootingTurnStack[2][3] - 1));
-				//        this->world->getSphere->x = this->myTower->this_pt.x;
-				//        this->world->getSphere->y = this->myTower->this_pt.y;
-				//        this->world->getSphere->retrieveGetSphere();
-				//    }
-				//}
-				//if (this->myTower->shootingTurnStack[3])
-				//{
-				//    this->world->getSphere = new GetSphere();
-				//    this->world->getSphere->owner = this->world->worldInterface->container->levinSphere;
-				//    this->world->getSphere->ownerType = "archive";
-				//    this->world->getSphere->ownerPoint = this->world->worldInterface->container->levinSphere.myPoint;
-				//    this->world->addChild(this->world->getSphere);
-				//    this->i = 0;
-				//    while (this->i < this->myTower->shootingTurnStack[3][3])
-				//    {
-				//        (this->i + 1);
-				//        this->world->getSphere->manage("add", "levin");
-				//    }
-				//    this->myTower->spheresManage("get", "levin", this->myTower->shootingTurnStack[3][3]);
-				//    this->world->getSphere->x = this->myTower->this_pt.x;
-				//    this->world->getSphere->y = this->myTower->this_pt.y;
-				//    this->world->getSphere->retrieveGetSphere();
-				//}
-				//if (!param2)
-				//{
-				//    this->tempObject = this->myTower->myPlace;
-				//    this->myTower->kill();
-				//    this->myTower = this->world->addTower("tower7", this->tempObject);
-				//    this->world->setChildIndex(this->myTower, (this->world->getChildIndex(this) - 1));
-				//    this->world->money = this->world->money - Main::mainClass->readXMLClass.costUltraIceStone;
-				//    this->closeMenu();
-				//}
+				if (this->myTower->shootingTurnStack[0])
+				{
+				    this->world->getSphere = new GetSphere();
+				    this->world->getSphere->owner = this->world->worldInterface->container->fireSphere;
+				    this->world->getSphere->ownerType = "archive";
+				    this->world->getSphere->ownerPoint = this->world->worldInterface->container->fireSphereMyPoint;
+				    this->world->addChild(this->world->getSphere);
+				    this->i = 0;
+				    while (this->i < this->myTower->shootingTurnStack[0][3])
+				    {
+				        (this->i + 1);
+				        this->world->getSphere->manage("add", "fire");
+				    }
+				    this->myTower->spheresManage("get", "fire", this->myTower->shootingTurnStack[0][3]);
+					this->world->getSphere->setPosition(this->myTower->this_pt);
+				    this->world->getSphere->retrieveGetSphere();
+				}
+				if (this->myTower->shootingTurnStack[1])
+				{
+				    if (this->myTower->shootingTurnStack[1][3] > 1)
+				    {
+				        this->world->getSphere = new GetSphere();
+				        this->world->getSphere->owner = this->world->worldInterface->container->iceSphere;
+				        this->world->getSphere->ownerType = "archive";
+				        this->world->getSphere->ownerPoint = this->world->worldInterface->container->iceSphereMyPoint;
+				        this->world->addChild(this->world->getSphere);
+				        this->i = 0;
+				        while (this->i < (this->myTower->shootingTurnStack[1][3] - 1))
+				        {
+				            (this->i + 1);
+				            this->world->getSphere->manage("add", "ice");
+				        }
+				        this->myTower->spheresManage("get", "ice", (this->myTower->shootingTurnStack[1][3] - 1));
+						this->world->getSphere->setPosition(this->myTower->this_pt);
+				        this->world->getSphere->retrieveGetSphere();
+				    }
+				}
+				if (this->myTower->shootingTurnStack[2])
+				{
+				    if (this->myTower->shootingTurnStack[2][3] > 1)
+				    {
+				        this->world->getSphere = new GetSphere();
+				        this->world->getSphere->owner = this->world->worldInterface->container->stoneSphere;
+				        this->world->getSphere->ownerType = "archive";
+				        this->world->getSphere->ownerPoint = this->world->worldInterface->container->stoneSphereMyPoint;
+				        this->world->addChild(this->world->getSphere);
+				        this->i = 0;
+				        while (this->i < (this->myTower->shootingTurnStack[2][3] - 1))
+				        {
+				            (this->i + 1);
+				            this->world->getSphere->manage("add", "stone");
+				        }
+				        this->myTower->spheresManage("get", "stone", (this->myTower->shootingTurnStack[2][3] - 1));
+						this->world->getSphere->setPosition(this->myTower->this_pt);
+				        this->world->getSphere->retrieveGetSphere();
+				    }
+				}
+				if (this->myTower->shootingTurnStack[3])
+				{
+				    this->world->getSphere = new GetSphere();
+				    this->world->getSphere->owner = this->world->worldInterface->container->levinSphere;
+				    this->world->getSphere->ownerType = "archive";
+				    this->world->getSphere->ownerPoint = this->world->worldInterface->container->levinSphereMyPoint;
+				    this->world->addChild(this->world->getSphere);
+				    this->i = 0;
+				    while (this->i < this->myTower->shootingTurnStack[3][3])
+				    {
+				        (this->i + 1);
+				        this->world->getSphere->manage("add", "levin");
+				    }
+				    this->myTower->spheresManage("get", "levin", this->myTower->shootingTurnStack[3][3]);
+					this->world->getSphere->setPosition(this->myTower->this_pt);
+				    this->world->getSphere->retrieveGetSphere();
+				}
+				if (!param2)
+				{
+					BuildTowerPlace *  tempObject = this->myTower->myPlace;
+				    this->myTower->kill();
+				    this->myTower = this->world->addTower("tower7", tempObject);
+				    //this->world->setChildIndex(this->myTower, (this->world->getChildIndex(this) - 1));
+				    this->world->money = this->world->money - Main::mainClass->readXMLClass.costUltraIceStone;
+				    this->closeMenu();
+				}
 			}
 			else if (param1 == "btnTowerUpgr4")
 			{
-				//if (this->myTower->shootingTurnStack[0])
-				//{
-				//    if (this->myTower->shootingTurnStack[0][3] > 1)
-				//    {
-				//        this->world->getSphere = new GetSphere();
-				//        this->world->getSphere->owner = this->world->worldInterface->container->fireSphere;
-				//        this->world->getSphere->ownerType = "archive";
-				//        this->world->getSphere->ownerPoint = this->world->worldInterface->container->fireSphere.myPoint;
-				//        this->world->addChild(this->world->getSphere);
-				//        this->i = 0;
-				//        while (this->i < (this->myTower->shootingTurnStack[0][3] - 1))
-				//        {
-				//            (this->i + 1);
-				//            this->world->getSphere->manage("add", "fire");
-				//        }
-				//        this->myTower->spheresManage("get", "fire", (this->myTower->shootingTurnStack[0][3] - 1));
-				//        this->world->getSphere->x = this->myTower->this_pt.x;
-				//        this->world->getSphere->y = this->myTower->this_pt.y;
-				//        this->world->getSphere->retrieveGetSphere();
-				//    }
-				//}
-				//if (this->myTower->shootingTurnStack[1])
-				//{
-				//    this->world->getSphere = new GetSphere();
-				//    this->world->getSphere->owner = this->world->worldInterface->container->iceSphere;
-				//    this->world->getSphere->ownerType = "archive";
-				//    this->world->getSphere->ownerPoint = this->world->worldInterface->container->iceSphere.myPoint;
-				//    this->world->addChild(this->world->getSphere);
-				//    this->i = 0;
-				//    while (this->i < this->myTower->shootingTurnStack[1][3])
-				//    {
-				//        (this->i + 1);
-				//        this->world->getSphere->manage("add", "ice");
-				//    }
-				//    this->myTower->spheresManage("get", "ice", this->myTower->shootingTurnStack[1][3]);
-				//    this->world->getSphere->x = this->myTower->this_pt.x;
-				//    this->world->getSphere->y = this->myTower->this_pt.y;
-				//    this->world->getSphere->retrieveGetSphere();
-				//}
-				//if (this->myTower->shootingTurnStack[2])
-				//{
-				//    this->world->getSphere = new GetSphere();
-				//    this->world->getSphere->owner = this->world->worldInterface->container->stoneSphere;
-				//    this->world->getSphere->ownerType = "archive";
-				//    this->world->getSphere->ownerPoint = this->world->worldInterface->container->stoneSphere.myPoint;
-				//    this->world->addChild(this->world->getSphere);
-				//    this->i = 0;
-				//    while (this->i < this->myTower->shootingTurnStack[2][3])
-				//    {
-				//        (this->i + 1);
-				//        this->world->getSphere->manage("add", "stone");
-				//    }
-				//    this->myTower->spheresManage("get", "stone", this->myTower->shootingTurnStack[2][3]);
-				//    this->world->getSphere->x = this->myTower->this_pt.x;
-				//    this->world->getSphere->y = this->myTower->this_pt.y;
-				//    this->world->getSphere->retrieveGetSphere();
-				//}
-				//if (this->myTower->shootingTurnStack[3])
-				//{
-				//    if (this->myTower->shootingTurnStack[3][3] > 1)
-				//    {
-				//        this->world->getSphere = new GetSphere();
-				//        this->world->getSphere->owner = this->world->worldInterface->container->levinSphere;
-				//        this->world->getSphere->ownerType = "archive";
-				//        this->world->getSphere->ownerPoint = this->world->worldInterface->container->levinSphere.myPoint;
-				//        this->world->addChild(this->world->getSphere);
-				//        this->i = 0;
-				//        while (this->i < (this->myTower->shootingTurnStack[3][3] - 1))
-				//        {
-				//            (this->i + 1);
-				//            this->world->getSphere->manage("add", "levin");
-				//        }
-				//        this->myTower->spheresManage("get", "levin", (this->myTower->shootingTurnStack[3][3] - 1));
-				//        this->world->getSphere->x = this->myTower->this_pt.x;
-				//        this->world->getSphere->y = this->myTower->this_pt.y;
-				//        this->world->getSphere->retrieveGetSphere();
-				//    }
-				//}
-				//if (!param2)
-				//{
-				//    this->tempObject = this->myTower->myPlace;
-				//    this->myTower->kill();
-				//    this->myTower = this->world->addTower("tower8", this->tempObject);
-				//    this->world->setChildIndex(this->myTower, (this->world->getChildIndex(this) - 1));
-				//    this->world->money = this->world->money - Main::mainClass->readXMLClass.costUltraFireLevin;
-				//    this->closeMenu();
-				//}
+				if (this->myTower->shootingTurnStack[0])
+				{
+				    if (this->myTower->shootingTurnStack[0][3] > 1)
+				    {
+				        this->world->getSphere = new GetSphere();
+				        this->world->getSphere->owner = this->world->worldInterface->container->fireSphere;
+				        this->world->getSphere->ownerType = "archive";
+				        this->world->getSphere->ownerPoint = this->world->worldInterface->container->fireSphereMyPoint;
+				        this->world->addChild(this->world->getSphere);
+				        this->i = 0;
+				        while (this->i < (this->myTower->shootingTurnStack[0][3] - 1))
+				        {
+				            (this->i + 1);
+				            this->world->getSphere->manage("add", "fire");
+				        }
+				        this->myTower->spheresManage("get", "fire", (this->myTower->shootingTurnStack[0][3] - 1));
+						this->world->getSphere->setPosition(this->myTower->this_pt);
+				        this->world->getSphere->retrieveGetSphere();
+				    }
+				}
+				if (this->myTower->shootingTurnStack[1])
+				{
+				    this->world->getSphere = new GetSphere();
+				    this->world->getSphere->owner = this->world->worldInterface->container->iceSphere;
+				    this->world->getSphere->ownerType = "archive";
+				    this->world->getSphere->ownerPoint = this->world->worldInterface->container->iceSphereMyPoint;
+				    this->world->addChild(this->world->getSphere);
+				    this->i = 0;
+				    while (this->i < this->myTower->shootingTurnStack[1][3])
+				    {
+				        (this->i + 1);
+				        this->world->getSphere->manage("add", "ice");
+				    }
+				    this->myTower->spheresManage("get", "ice", this->myTower->shootingTurnStack[1][3]);
+					this->world->getSphere->setPosition(this->myTower->this_pt);
+				    this->world->getSphere->retrieveGetSphere();
+				}
+				if (this->myTower->shootingTurnStack[2])
+				{
+				    this->world->getSphere = new GetSphere();
+				    this->world->getSphere->owner = this->world->worldInterface->container->stoneSphere;
+				    this->world->getSphere->ownerType = "archive";
+				    this->world->getSphere->ownerPoint = this->world->worldInterface->container->stoneSphereMyPoint;
+				    this->world->addChild(this->world->getSphere);
+				    this->i = 0;
+				    while (this->i < this->myTower->shootingTurnStack[2][3])
+				    {
+				        (this->i + 1);
+				        this->world->getSphere->manage("add", "stone");
+				    }
+				    this->myTower->spheresManage("get", "stone", this->myTower->shootingTurnStack[2][3]);
+					this->world->getSphere->setPosition(this->myTower->this_pt);
+				    this->world->getSphere->retrieveGetSphere();
+				}
+				if (this->myTower->shootingTurnStack[3])
+				{
+				    if (this->myTower->shootingTurnStack[3][3] > 1)
+				    {
+				        this->world->getSphere = new GetSphere();
+				        this->world->getSphere->owner = this->world->worldInterface->container->levinSphere;
+				        this->world->getSphere->ownerType = "archive";
+				        this->world->getSphere->ownerPoint = this->world->worldInterface->container->levinSphereMyPoint;
+				        this->world->addChild(this->world->getSphere);
+				        this->i = 0;
+				        while (this->i < (this->myTower->shootingTurnStack[3][3] - 1))
+				        {
+				            (this->i + 1);
+				            this->world->getSphere->manage("add", "levin");
+				        }
+				        this->myTower->spheresManage("get", "levin", (this->myTower->shootingTurnStack[3][3] - 1));
+				        this->world->getSphere->setPosition( this->myTower->this_pt);
+				        this->world->getSphere->retrieveGetSphere();
+				    }
+				}
+				if (!param2)
+				{
+					BuildTowerPlace * tempObject = this->myTower->myPlace;
+				    this->myTower->kill();
+				    this->myTower = this->world->addTower("tower8", tempObject);
+				    //this->world->setChildIndex(this->myTower, (this->world->getChildIndex(this) - 1));
+				    this->world->money = this->world->money - Main::mainClass->readXMLClass.costUltraFireLevin;
+				    this->closeMenu();
+				}
 			}
 			this->world->worldInterface->updateInfo();
 			return;
@@ -3703,7 +3719,7 @@ namespace engine
 				//}
 				if (this->lastE)
 				{
-					this->world->mouseMoveHandler(this->lastE);
+					this->world->mouseMovedHandler(this->lastE);
 				}
 			}
 			return;

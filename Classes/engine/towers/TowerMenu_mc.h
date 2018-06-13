@@ -98,13 +98,17 @@ namespace engine
 			MovieClipSub * sellUltraTower;
 			MCCase * sellUltraTowerSellUltraTowerCase;
 			MovieClipSub * sphereSlot1;
+			MCCase * sphereSlot1SphereSlotCase;
 			MovieClip  * sphereSlot1SphereAnima;
 			MovieClipSub * sphereSlot1SphereAnimaCont;
 			MovieClipSub * sphereSlot2;
+			MCCase * sphereSlot2SphereSlotCase;
 			MovieClip * sphereSlot2SphereAnima;
 			MovieClipSub * sphereSlot2SphereAnimaCont;
 
 
+			MovieClipSub * getSphereSlot(MCCase * slotCase);
+			MovieClipSub * getSphereAnima(MCCase * slotCase);
 
 			UltraTowerMenu_mc();
 

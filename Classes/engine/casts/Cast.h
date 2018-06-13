@@ -32,7 +32,7 @@ namespace engine{
             //        public var tempObject2:Object;
             cocos2d::Point tempObject;
             cocos2d::Point tempObject3;
-            ImageMovieClip * container;// : MovieClip;
+			MovieClip * container;// : MovieClip;
             World *world;
             bool dead;
             Common::Array<cocos2d::Point> *  map;
@@ -43,7 +43,7 @@ namespace engine{
 
             bool init();
 
-            void   update();
+            void   update(float dt=0);
 
 			virtual  void   mouseMoveHandler(cocos2d::EventMouse * param1);
 

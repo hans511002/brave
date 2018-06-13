@@ -331,7 +331,7 @@ void Mecha::aim(const cocos2d::Vec2& target)
     _target = target;
 }
 
-void Mecha::update()
+void Mecha::update(float dt)
 {
     _updatePosition();
     _updateAim();

@@ -19,9 +19,12 @@ namespace engine{
             return;
         }// end function
        
-		void  Cast_1::mouseMoveHandler(cocos2d::EventMouse * param1)
+		void  Cast_1::mouseMoveHandler(cocos2d::EventMouse * e)
         {
-            if (param1->target->name == "castGolemCase")
+			std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+			if(!event)
+				return;
+			if(event->target->getName() == "castGolemCase")
             {
                 if (container->currentFrame == 1)
                 {
@@ -53,23 +56,26 @@ namespace engine{
             return;
         }// end function
         
-		void   Cast_1::mouseDownHandler(cocos2d::EventMouse *event)
+		void   Cast_1::mouseDownHandler(cocos2d::EventMouse *e)
         {
+			std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+			if(!event)
+				return;
             if (event)
             {
-                if (event->target->name != "castGolemCase" && scanWay())
+                if (event->target->getName() != "castGolemCase" && scanWay())
                 { 
                     this->mouseChildren = true;
                     this->mouseEnabled = true;
                     //event = new MouseEvent(MouseEvent.MOUSE_DOWN);
                     world->worldInterface->castGolemCounter++;
-                    //world->worldInterface->container->butCastGolem->gotoAndStop(4);
-                    //world->worldInterface->container->butCastGolemCastGolemCase->buttonMode = false;
-                    //world->worldInterface->container->butCastGolemContContMask->setScaleY(0);
+                    world->worldInterface->container->butCastGolem->gotoAndStop(4);
+                    world->worldInterface->container->butCastGolemCastGolemCase->buttonMode = false;
+                    world->worldInterface->container->butCastGolemContContMask->setScaleY(0);
                     this->addGolem();
                     kill();
                 }
-                else if (event->target->name == "castGolemCase" || event->target->name == "castIcemanCase" || event->target->name == "castAirCase")
+				else if(event->target->getName() == "castGolemCase" || event->target->getName() == "castIcemanCase" || event->target->getName() == "castAirCase")
                 {
                     world->worldInterface->container->butCastGolem->gotoAndStop(1);
                     kill();

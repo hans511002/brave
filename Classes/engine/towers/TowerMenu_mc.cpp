@@ -9,11 +9,11 @@ namespace engine
 		{
 			cont = this->createMovieClipSub("cont");
 			contCont1 = cont->createMovieClipSub("cont1");
-			//²»¸´ÓÃ
+			//ä¸å¤ç”¨
 			//contCont1Sphere1 = contCont1->createMovieClipSub("sphere1");
 			//contCont1Sphere2 = contCont1->createMovieClipSub("sphere2");
 
-			//¸´ÓÃ
+			//å¤ç”¨
 			contCont1Sphere1 = contCont1->createMovieClip("sphere1", "worldinterface", "GetSphere_mc");
 			contCont1Sphere2 = contCont1->createMovieClip("sphere2", "worldinterface", "GetSphere_mc");
 			//nameTXT            = this     ->createText        ("nameTXT");
@@ -89,11 +89,16 @@ namespace engine
 			fastBuyUltraContBtnFastBuyUltraCostTXT = fastBuyUltraContBtnFastBuyUltra->createText("costTXT");
 			sellUltraTower = this->createMovieClipSub("sellUltraTower");
 			sellUltraTowerSellUltraTowerCase = sellUltraTower->createCase("sellUltraTowerCase");
+
 			sphereSlot1 = this->createMovieClipSub("sphereSlot1");
+			sphereSlot1SphereSlotCase = sphereSlot1->createCase("sphereSlotCase");
 			sphereSlot1SphereAnima = sphereSlot1->createMovieClip("sphereAnima", "tower/", "TowerMenuSphere_mc", "TowerMenuSphere_mc");
 			sphereSlot1SphereAnimaCont = sphereSlot1SphereAnima->createMovieClipSub("cont");
+			
+			sphereSlot1 = this->createMovieClipSub("sphereSlot2");
 			sphereSlot2SphereAnima = sphereSlot1->createMovieClip("sphereAnima", "tower/", "TowerMenuSphere_mc", "TowerMenuSphere_mc");
 			sphereSlot2SphereAnimaCont = sphereSlot1SphereAnima->createMovieClipSub("cont");
+			sphereSlot2SphereSlotCase = sphereSlot2->createCase("sphereSlotCase");
 
 
 			//sphereSlot1SphereAnima= sphereSlot1->createMovieClipSub("sphereAnima");

@@ -20,9 +20,12 @@ namespace engine{
             return;
         }// end function
 
-        void Cast_2::mouseMoveHandler(cocos2d::EventMouse *param1) 
+        void Cast_2::mouseMoveHandler(cocos2d::EventMouse *e) 
         { 
-            if (param1->target->name == "castIcemanCase")
+			std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+			if(!event)
+				return;
+			if(event->target->getName() == "castIcemanCase")
             {
                 if (container->currentFrame == 1)
                 {
@@ -54,11 +57,14 @@ namespace engine{
             return;
         }// end function
 
-        void Cast_2::mouseDownHandler(cocos2d::EventMouse *event) 
+        void Cast_2::mouseDownHandler(cocos2d::EventMouse *e) 
         {
-            if (event)
+			std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+			if(!event)
+				return;
+			if(event)
             {
-                if (event.target.name != "castIcemanCase" && scanWay())
+                if (event->target->getName() != "castIcemanCase" && scanWay())
                 { 
                     this->mouseChildren = true;
                     this->mouseEnabled = true;
@@ -70,7 +76,7 @@ namespace engine{
                     this->addIceman();
                     kill();
                 }
-                else if (event.target.name == "castGolemCase" || event.target.name == "castIcemanCase" || event.target.name == "castAirCase")
+				else if(event->target->getName() == "castGolemCase" || event->target->getName() == "castIcemanCase" || event->target->getName() == "castAirCase")
                 {
                     world->worldInterface->container->butCastIceman->gotoAndStop(1);
                     kill();
@@ -80,8 +86,11 @@ namespace engine{
             return;
         }// end function
 
-        void Cast_2::mouseUpHandler(cocos2d::EventMouse *event) 
+        void Cast_2::mouseUpHandler(cocos2d::EventMouse *e) 
         {
+			std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+			if(!event)
+				return;
             return;
         }// end function
 

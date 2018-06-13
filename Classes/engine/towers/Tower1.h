@@ -5,31 +5,31 @@
 
 namespace engine
 {
-    namespace towers
-    {
+	namespace towers
+	{
 		struct Tower1_mc :public TowerBase_mc
-        {
-        public: 
+		{
+		public:
 			MovieClipSub * sphere1;
 			BulletSphereTower_mc * sphere1Bullet;
 			MovieClipSub * sphere1BulletCont;
-			inline Tower1_mc(string rootPath, string armName, string dbName, string defAniName = "") : TowerBase_mc(rootPath, armName, dbName, defAniName){};
-            Tower1_mc(); 
-        };
-        class Tower1 :public Tower
-        {
-        public:
-            int firstTowerMenuCounter;// = 8;
+			inline Tower1_mc(string rootPath, string armName, string dbName, string defAniName = "") : TowerBase_mc(rootPath, armName, dbName, defAniName) {};
+			Tower1_mc();
+		};
+		class Tower1 :public Tower
+		{
+		public:
+			int firstTowerMenuCounter;// = 8;
 
-            Tower1() :firstTowerMenuCounter(8)
-            {
-            }// end function
+			Tower1() :firstTowerMenuCounter(8)
+			{
+			}// end function
 
-            bool init();
+			bool init();
 
-virtual             void update(float dt=0);
+			virtual void update(float dt = 0);
 
-        };
-    }
+		};
+	}
 }
 #endif

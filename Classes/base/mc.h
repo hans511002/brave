@@ -175,7 +175,7 @@ namespace engine
 		virtual void gotoAndStop(int cf, string aniName = "");
 		inline virtual void setAlpha(float op) { BaseNode::setAlpha(getDisplayNode(), op); };
 		inline virtual float getAlpha() { return  BaseNode::getAlpha(getDisplayNode()); };
-
+		inline virtual string getName() { return getDisplayNode()->getName(); };
 
 		virtual float getWidth();
 		virtual float getHeight();
