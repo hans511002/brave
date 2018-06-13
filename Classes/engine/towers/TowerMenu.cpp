@@ -767,7 +767,10 @@ namespace engine
 			{
 				if (event->target->getName() == "btnTowerUpgrCase")
 				{
-					if (event->target->getParent() != this->container->btnTowerUpgr1)
+					MCCase *scase = ISTYPE(MCCase, event->target);
+					MovieClipSub * btnTowerUpgr = this->container->getSphereSlot(scase);
+					Node * parent = event->target->getParent()->getParent();
+					if (parent != this->container->btnTowerUpgr1->display)
 					{
 						if (this->container->btnTowerUpgr1->currentFrame == 2)
 						{
@@ -780,7 +783,7 @@ namespace engine
 							}
 						}
 					}
-					if (event->target->getParent() != this->container->btnTowerUpgr2)
+					if (parent != this->container->btnTowerUpgr2->display)
 					{
 						if (this->container->btnTowerUpgr2->currentFrame == 2)
 						{
@@ -793,7 +796,7 @@ namespace engine
 							}
 						}
 					}
-					if (event->target->getParent() != this->container->btnTowerUpgr3)
+					if (parent != this->container->btnTowerUpgr3->display)
 					{
 						if (this->container->btnTowerUpgr3->currentFrame == 2)
 						{
@@ -806,7 +809,7 @@ namespace engine
 							}
 						}
 					}
-					if (event->target->getParent() != this->container->btnTowerUpgr4)
+					if (parent != this->container->btnTowerUpgr4->display)
 					{
 						if (this->container->btnTowerUpgr4->currentFrame == 2)
 						{
@@ -819,13 +822,14 @@ namespace engine
 							}
 						}
 					}
-					if (event->target->getParent()->currentFrame == 1)
+					if (btnTowerUpgr->currentFrame == 1)
 					{
-						if (event->target->buttonMode)
+						if (scase->buttonMode)
 						{
-							string tempObject = event->target->getParent()->costTXT;
-							event->target->getParent()->gotoAndStop(2);
-							std::setText(event->target->getParent()->costTXT, tempObject);
+							MCText * costTXT = this->container->getText(scase);
+							string tempObject = std::getText(costTXT);
+							btnTowerUpgr->gotoAndStop(2);
+							std::setText(costTXT, tempObject);
 							//event->target->getParent()->costTXT = tempObject;
 							//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
 						}
@@ -861,7 +865,7 @@ namespace engine
 							}
 						}
 					}
-					if (event->target->getParent()->currentFrame < 5)
+					if (btnTowerUpgr->currentFrame < 5)
 					{
 						this->towerRadius1->setVisible(true);
 						if (event->target->getParent()->getName() == "btnTowerUpgr1")
@@ -1210,11 +1214,15 @@ namespace engine
 			}
 			else if (event->target->getName() == "btnTowerUpgrCase")
 			{
-				if (event->target->getParent()->currentFrame == 2)
+				MCCase *scase = ISTYPE(MCCase, event->target);
+				MovieClipSub * btnTowerUpgr = this->container->getSphereSlot(scase);
+				Node * parent = event->target->getParent()->getParent();
+				if (btnTowerUpgr->currentFrame == 2)
 				{
-					string tempObject = event->target->getParent()->costTXT;
-					event->target->getParent()->gotoAndStop(3);
-					setText(event->target->getParent()->costTXT, tempObject);
+					MCText * 	costTXT=this->container->getText(scase);
+					string tempObject = std::getText(costTXT);
+					btnTowerUpgr->gotoAndStop(3);
+					setText(costTXT, tempObject);
 					//event->target->getParent()->costTXT = tempObject;
 					//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 				}
@@ -1313,7 +1321,9 @@ namespace engine
 			}
 			else if (event->target->getName() == "btnGetAllCase")
 			{
-				if (event->target->getParent()->btnGetAllCase->buttonMode)
+				MCCase * btnGetAllCase = ISTYPE(MCCase, event->target);
+				MovieClipSub *	btnGetAll = this->container->getSphereSlot(btnGetAllCase);
+				if (btnGetAllCase->buttonMode)
 				{
 					this->i = 0;
 					while (this->i < this->world->listOfMoveSpheres.size())
@@ -1519,8 +1529,7 @@ namespace engine
 							this->myTower->kill();
 							this->myTower = this->world->addTower("tower2", tempObject);
 							this->myTower->spheresStack = this->myTower->spheresStack.concat(tempObject1);
-							this->myTower->shootingTurnStack.clear();// = [];
-							//this->myTower->shootingTurnStack = 
+							this->myTower->shootingTurnStack.clear(); 
 							this->myTower->shootingTurnStack.concat(tempObject3);
 							this->myTower->prepareSpheresGraphic();
 							
@@ -1686,7 +1695,10 @@ namespace engine
 			{
 				if (event->target->getName() == "btnTowerUpgrCase")
 				{
-					if (event->target->getParent() != this->container->btnTowerUpgr1)
+					MCCase *scase = ISTYPE(MCCase,event->target);
+					MovieClipSub * btnTowerUpgr=this->container->getSphereSlot(scase);
+					Node * parent = event->target->getParent()->getParent();
+					if (parent != this->container->btnTowerUpgr1->display)
 					{
 						if (this->container->btnTowerUpgr1->currentFrame == 3)
 						{
@@ -1695,7 +1707,7 @@ namespace engine
 							std::setText(this->container->btnTowerUpgr1CostTXT , tempObject);
 						}
 					}
-					if (event->target->getParent() != this->container->btnTowerUpgr2)
+					if (parent != this->container->btnTowerUpgr2->display)
 					{
 						if (this->container->btnTowerUpgr2->currentFrame == 3)
 						{
@@ -1704,7 +1716,7 @@ namespace engine
 							std::setText(this->container->btnTowerUpgr2CostTXT, tempObject);
  						}
 					}
-					if (event->target->getParent() != this->container->btnTowerUpgr3)
+					if (parent != this->container->btnTowerUpgr3->display)
 					{
 						if (this->container->btnTowerUpgr3->currentFrame == 3)
 						{
@@ -1713,7 +1725,7 @@ namespace engine
 							std::setText(this->container->btnTowerUpgr3CostTXT, tempObject);
 						}
 					}
-					if (event->target->getParent() != this->container->btnTowerUpgr4)
+					if (parent != this->container->btnTowerUpgr4->display)
 					{
 						if (this->container->btnTowerUpgr4->currentFrame == 3)
 						{
@@ -1722,13 +1734,13 @@ namespace engine
 							std::setText(this->container->btnTowerUpgr4CostTXT, tempObject);
 						}
 					}
-					if (event->target->getParent()->currentFrame == 3)
+					if (btnTowerUpgr->currentFrame == 3)
 					{
-						tempObject = event->target->getParent();
-						tempObject1 = tempObject->costTXT;
-						tempObject->gotoAndStop(2);
-						std::setText(tempObject->costTXT , tempObject1);
-						if (!this->fastBuyUltraFlag)
+						MCText * costTXT=this->container->getText(scase);
+						string tempObject1 = std::getText(costTXT);
+						btnTowerUpgr->gotoAndStop(2);
+						std::setText(costTXT, tempObject1);
+						if (this->fastBuyUltraFlag.empty())
 						{
 							this->fastBuyUltraFlag = event->target->getParent()->getName();
 							this->openFastBuyUltraFlag = true;
@@ -2405,7 +2417,7 @@ namespace engine
 			{
 				if (this->container->btnUpgradeMenuBtnUpgradeMenuCase->isReady)
 				{
-					this->autoguidesObject_pt = this->container->btnUpgradeMenuBtnUpgradeMenuCase->localToGlobal(this->container->btnUpgradeMenuBtnUpgradeMenuCase->getPosition());
+					this->autoguidesObject_pt = this->container->btnUpgradeMenu->localToGlobal(this->container->btnUpgradeMenuBtnUpgradeMenuCase->getPosition());
 					this->autoguidesObjectWidth = this->container->btnUpgradeMenuBtnUpgradeMenuCase->getWidth() / 2;
 					this->autoguidesObjectHeight = this->container->btnUpgradeMenuBtnUpgradeMenuCase->getHeight() / 2;
 					if (this->container->btnUpgradeMenuBtnUpgradeMenuCase->hitTest(this->autoguidesMouse_pt))
@@ -2417,7 +2429,7 @@ namespace engine
 			}
 			else if (this->container->currentFrame == this->container->totalFrames)
 			{
-				this->autoguidesObject_pt = this->container->btnTowerUpgr1BtnTowerUpgrCase->localToGlobal(this->container->btnTowerUpgr1BtnTowerUpgrCase->getPosition());
+				this->autoguidesObject_pt = this->container->btnTowerUpgr1->localToGlobal(this->container->btnTowerUpgr1BtnTowerUpgrCase->getPosition());
 				this->autoguidesObjectWidth = this->container->btnTowerUpgr1BtnTowerUpgrCase->getWidth() / 2;
 				this->autoguidesObjectHeight = this->container->btnTowerUpgr1BtnTowerUpgrCase->getHeight() / 2;
 				if (this->container->btnTowerUpgr1BtnTowerUpgrCase->hitTest(this->autoguidesMouse_pt))
@@ -2427,7 +2439,7 @@ namespace engine
 				}
 				if (!this->autoguidesObject)
 				{
-					this->autoguidesObject_pt = this->container->btnTowerUpgr2BtnTowerUpgrCase->localToGlobal(this->container->btnTowerUpgr2BtnTowerUpgrCase->getPosition());
+					this->autoguidesObject_pt = this->container->btnTowerUpgr2->localToGlobal(this->container->btnTowerUpgr2BtnTowerUpgrCase->getPosition());
 					this->autoguidesObjectWidth = this->container->btnTowerUpgr2BtnTowerUpgrCase->getWidth() / 2;
 					this->autoguidesObjectHeight = this->container->btnTowerUpgr2BtnTowerUpgrCase->getHeight() / 2;
 					if (this->container->btnTowerUpgr2BtnTowerUpgrCase->hitTest(this->autoguidesMouse_pt))
@@ -2438,7 +2450,7 @@ namespace engine
 				}
 				if (!this->autoguidesObject)
 				{
-					this->autoguidesObject_pt = this->container->btnTowerUpgr3BtnTowerUpgrCase->localToGlobal(this->container->btnTowerUpgr3BtnTowerUpgrCase->getPosition());
+					this->autoguidesObject_pt = this->container->btnTowerUpgr3->localToGlobal(this->container->btnTowerUpgr3BtnTowerUpgrCase->getPosition());
 					this->autoguidesObjectWidth = this->container->btnTowerUpgr3BtnTowerUpgrCase->getWidth() / 2;
 					this->autoguidesObjectHeight = this->container->btnTowerUpgr3BtnTowerUpgrCase->getHeight() / 2;
 					if (this->container->btnTowerUpgr3BtnTowerUpgrCase->hitTest(this->autoguidesMouse_pt))
@@ -2449,7 +2461,7 @@ namespace engine
 				}
 				if (!this->autoguidesObject)
 				{
-					this->autoguidesObject_pt = this->container->btnTowerUpgr4BtnTowerUpgrCase->localToGlobal(this->container->btnTowerUpgr4BtnTowerUpgrCase->getPosition());
+					this->autoguidesObject_pt = this->container->btnTowerUpgr4->localToGlobal(this->container->btnTowerUpgr4BtnTowerUpgrCase->getPosition());
 					this->autoguidesObjectWidth = this->container->btnTowerUpgr4BtnTowerUpgrCase->getWidth() / 2;
 					this->autoguidesObjectHeight = this->container->btnTowerUpgr4BtnTowerUpgrCase->getHeight() / 2;
 					if (this->container->btnTowerUpgr4BtnTowerUpgrCase->hitTest(this->autoguidesMouse_pt))
@@ -2458,9 +2470,9 @@ namespace engine
 						this->autoguidesObject = this->container->btnTowerUpgr4BtnTowerUpgrCase;
 					}
 				}
-				if (!this->autoguidesObject && this->fastBuyUltraFlag)
+				if (!this->autoguidesObject && !this->fastBuyUltraFlag.empty())
 				{
-					this->autoguidesObject_pt = this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->localToGlobal(this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->getPosition());
+					this->autoguidesObject_pt = this->container->fastBuyUltraContBtnFastBuyUltra->localToGlobal(this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->getPosition());
 					this->autoguidesObjectWidth = this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->getWidth() / 2;
 					this->autoguidesObjectHeight = this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->getHeight() / 2;
 					if (this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->hitTest(this->autoguidesMouse_pt))
@@ -2472,7 +2484,7 @@ namespace engine
 			}
 			if (!this->autoguidesObject)
 			{
-				this->autoguidesObject_pt = this->container->sphereSlot1SphereSlotCase->localToGlobal(this->container->sphereSlot1SphereSlotCase->getPosition());
+				this->autoguidesObject_pt = this->container->sphereSlot1->localToGlobal(this->container->sphereSlot1SphereSlotCase->getPosition());
 				this->autoguidesObjectWidth = this->container->sphereSlot1SphereSlotCase->getWidth() / 2;
 				this->autoguidesObjectHeight = this->container->sphereSlot1SphereSlotCase->getHeight() / 2;
 				if (this->container->sphereSlot1SphereSlotCase->hitTest(this->autoguidesMouse_pt))
@@ -2482,7 +2494,7 @@ namespace engine
 				}
 				if (!this->autoguidesObject)
 				{
-					this->autoguidesObject_pt = this->container->sphereSlot2SphereSlotCase->localToGlobal(this->container->sphereSlot2SphereSlotCase->getPosition());
+					this->autoguidesObject_pt = this->container->sphereSlot2->localToGlobal(this->container->sphereSlot2SphereSlotCase->getPosition());
 					this->autoguidesObjectWidth = this->container->sphereSlot2SphereSlotCase->getWidth() / 2;
 					this->autoguidesObjectHeight = this->container->sphereSlot2SphereSlotCase->getHeight() / 2;
 					if (this->container->sphereSlot2SphereSlotCase->hitTest(this->autoguidesMouse_pt))
@@ -2493,7 +2505,7 @@ namespace engine
 				}
 				if (!this->autoguidesObject)
 				{
-					this->autoguidesObject_pt = this->container->sphereSlot3SphereSlotCase->localToGlobal(this->container->sphereSlot3SphereSlotCase->getPosition());
+					this->autoguidesObject_pt = this->container->sphereSlot3->localToGlobal(this->container->sphereSlot3SphereSlotCase->getPosition());
 					this->autoguidesObjectWidth = this->container->sphereSlot3SphereSlotCase->getWidth() / 2;
 					this->autoguidesObjectHeight = this->container->sphereSlot3SphereSlotCase->getHeight() / 2;
 					if (this->container->sphereSlot3SphereSlotCase->hitTest(this->autoguidesMouse_pt))
@@ -2504,7 +2516,7 @@ namespace engine
 				}
 				if (!this->autoguidesObject)
 				{
-					this->autoguidesObject_pt = this->container->sphereSlot4SphereSlotCase->localToGlobal(this->container->sphereSlot4SphereSlotCase->getPosition());
+					this->autoguidesObject_pt = this->container->sphereSlot4->localToGlobal(this->container->sphereSlot4SphereSlotCase->getPosition());
 					this->autoguidesObjectWidth = this->container->sphereSlot4SphereSlotCase->getWidth() / 2;
 					this->autoguidesObjectHeight = this->container->sphereSlot4SphereSlotCase->getHeight() / 2;
 					if (this->container->sphereSlot4SphereSlotCase->hitTest(this->autoguidesMouse_pt))
@@ -2601,211 +2613,211 @@ namespace engine
 			Vec2 tempObject;
 			if (param1 == 1)
 			{
-			    tempObject = this->container->btnTowerUpgr1->localToGlobal(new Point(this->container->btnTowerUpgr1->btnTowerUpgrCase.x, this->container->btnTowerUpgr1->btnTowerUpgrCase.y));
+				tempObject = this->container->btnTowerUpgr1->localToGlobal(this->container->btnTowerUpgr1BtnTowerUpgrCase->getPosition());
 			}
 			else if (param1 == 2)
 			{
-			    tempObject = this->container->btnTowerUpgr2->localToGlobal(new Point(this->container->btnTowerUpgr2->btnTowerUpgrCase.x, this->container->btnTowerUpgr2->btnTowerUpgrCase.y));
-			}
+				tempObject = this->container->btnTowerUpgr2->localToGlobal(this->container->btnTowerUpgr2BtnTowerUpgrCase->getPosition());
+ 			}
 			else if (param1 == 3)
 			{
-			    tempObject = this->container->btnTowerUpgr3->localToGlobal(new Point(this->container->btnTowerUpgr3->btnTowerUpgrCase.x, this->container->btnTowerUpgr3->btnTowerUpgrCase.y));
-			}
+				tempObject = this->container->btnTowerUpgr3->localToGlobal(this->container->btnTowerUpgr3BtnTowerUpgrCase->getPosition());
+ 			}
 			else if (param1 == 4)
 			{
-			    tempObject = this->container->btnTowerUpgr4->localToGlobal(new Point(this->container->btnTowerUpgr4->btnTowerUpgrCase.x, this->container->btnTowerUpgr4->btnTowerUpgrCase.y));
+				tempObject = this->container->btnTowerUpgr4->localToGlobal(this->container->btnTowerUpgr4BtnTowerUpgrCase->getPosition());
 			}
 			else if (param1 == 5)
 			{
-			    tempObject = this->container->localToGlobal(new Point(this->container->btnUpgradeMenu->x, this->container->btnUpgradeMenu->y));
+			    tempObject = this->container->localToGlobal(this->container->btnUpgradeMenu->getPosition()) ;
 			    this->hint->gotoAndStop((param1 - 1));
 			}
 			else if (param1 == 9)
 			{
 			    if (!param2)
 			    {
-			        tempObject = this->container->localToGlobal(new Point(this->container->btnUpgradeMenu->x, this->container->btnUpgradeMenu->y));
-			    }
+					tempObject = this->container->localToGlobal(this->container->btnUpgradeMenu->getPosition());
+ 			    }
 			    else
 			    {
-			        tempObject = param2.parent.localToGlobal(new Point(param2.x, param2.y));
+			        tempObject = param2->getParent()->convertToWorldSpace(param2->getPosition());
 			    }
 			    this->hint->gotoAndStop((param1 - 1));
 			}
 			if (param1 < 5)
 			{
-			    if (tempObject->x < 120)
+			    if (tempObject.x < 120)
 			    {
-			        if (tempObject->y < 120)
+			        if (tempObject.y < 120)
 			        {
 			            this->hint->gotoAndStop(4);
-			            this->hint->y = tempObject->y + 12;
+			            this->hint->setPositionY( tempObject.y + 12);
 			        }
-			        else if (tempObject->y > Main.SCREEN_HEIGHT - 120)
+			        else if (tempObject.y > Main::SCREEN_HEIGHT - 120)
 			        {
 			            this->hint->gotoAndStop(2);
-			            this->hint->y = tempObject->y - 12;
+			            this->hint->setPositionY( tempObject.y - 12);
 			        }
 			        else
 			        {
 			            this->hint->gotoAndStop(2);
-			            this->hint->y = tempObject->y - 12;
+			            this->hint->setPositionY(tempObject.y - 12);
 			        }
-			        this->hint->x = tempObject->x + 12;
+			        this->hint->setPositionX(tempObject.x + 12);
 			    }
-			    else if (tempObject->x > Main.SCREEN_WIDTH - 120)
+			    else if (tempObject.x > Main::SCREEN_WIDTH - 120)
 			    {
-			        if (tempObject->y < 120)
+			        if (tempObject.y < 120)
 			        {
 			            this->hint->gotoAndStop(3);
-			            this->hint->y = tempObject->y + 12;
+			            this->hint->setPositionY(tempObject.y + 12);
 			        }
-			        else if (tempObject->y > Main.SCREEN_HEIGHT - 120)
+			        else if (tempObject.y > Main::SCREEN_HEIGHT - 120)
 			        {
 			            this->hint->gotoAndStop(1);
-			            this->hint->y = tempObject->y - 12;
+			            this->hint->setPositionY(tempObject.y - 12);
 			        }
 			        else
 			        {
 			            this->hint->gotoAndStop(1);
-			            this->hint->y = tempObject->y + 12;
+			            this->hint->setPositionY(tempObject.y + 12);
 			        }
-			        this->hint->x = tempObject->x - 12;
+			        this->hint->setPositionX(tempObject.x - 12);
 			    }
-			    else if (tempObject->y < 120)
+			    else if (tempObject.y < 120)
 			    {
-			        if (tempObject->x < 120)
+			        if (tempObject.x < 120)
 			        {
 			            this->hint->gotoAndStop(4);
-			            this->hint->x = tempObject->x + 12;
-			            this->hint->y = tempObject->y + 12;
+			            this->hint->setPositionX(tempObject.x + 12);
+			            this->hint->setPositionY(tempObject.y + 12);
 			        }
-			        else if (tempObject->x > Main.SCREEN_WIDTH - 120)
+			        else if (tempObject.x > Main::SCREEN_WIDTH - 120)
 			        {
 			            this->hint->gotoAndStop(3);
-			            this->hint->x = tempObject->x - 12;
-			            this->hint->y = tempObject->y + 12;
+			            this->hint->setPositionX(tempObject.x - 12);
+			            this->hint->setPositionY(tempObject.y + 12);
 			        }
 			        else
 			        {
 			            this->hint->gotoAndStop(4);
-			            this->hint->x = tempObject->x;
-			            this->hint->y = tempObject->y + 12;
+			            this->hint->setPositionX(tempObject.x);
+			            this->hint->setPositionY(tempObject.y + 12);
 			        }
 			    }
-			    else if (tempObject->y > Main.SCREEN_HEIGHT - 120)
+			    else if (tempObject.y > Main::SCREEN_HEIGHT - 120)
 			    {
-			        if (tempObject->x < 120)
+			        if (tempObject.x < 120)
 			        {
 			            this->hint->gotoAndStop(2);
-			            this->hint->x = tempObject->x + 12;
-			            this->hint->y = tempObject->y - 12;
+			            this->hint->setPositionX(tempObject.x + 12);
+			            this->hint->setPositionY(tempObject.y - 12);
 			        }
-			        else if (tempObject->x > Main.SCREEN_WIDTH - 120)
+			        else if (tempObject.x > Main::SCREEN_WIDTH - 120)
 			        {
 			            this->hint->gotoAndStop(1);
-			            this->hint->x = tempObject->x - 12;
-			            this->hint->y = tempObject->y - 12;
+			            this->hint->setPositionX(tempObject.x - 12);
+			            this->hint->setPositionY(tempObject.y - 12);
 			        }
 			        else
 			        {
 			            this->hint->gotoAndStop(2);
-			            this->hint->x = tempObject->x;
-			            this->hint->y = tempObject->y - 12;
+			            this->hint->setPositionX(tempObject.x);
+			            this->hint->setPositionY(tempObject.y - 12);
 			        }
 			    }
 			    else
 			    {
 			        this->hint->gotoAndStop(2);
-			        this->hint->x = tempObject->x;
-			        this->hint->y = tempObject->y - 12;
+			        this->hint->setPositionX(tempObject.x);
+			        this->hint->setPositionY(tempObject.y - 12);
 			    }
 			}
-			else if (tempObject->x < 120)
+			else if (tempObject.x < 120)
 			{
-			    if (tempObject->y < 120)
+			    if (tempObject.y < 120)
 			    {
 			        this->hint->gotoAndStop(this->hint->currentFrame + 4);
-			        this->hint->y = tempObject->y + 12;
+			        this->hint->setPositionY(tempObject.y + 12);
 			    }
-			    else if (tempObject->y > Main.SCREEN_HEIGHT - 120)
+			    else if (tempObject.y > Main::SCREEN_HEIGHT - 120)
 			    {
 			        this->hint->gotoAndStop(this->hint->currentFrame + 2);
-			        this->hint->y = tempObject->y - 12;
+			        this->hint->setPositionY(tempObject.y - 12);
 			    }
 			    else
 			    {
 			        this->hint->gotoAndStop(this->hint->currentFrame + 2);
-			        this->hint->y = tempObject->y - 12;
+			        this->hint->setPositionY(tempObject.y - 12);
 			    }
-			    this->hint->x = tempObject->x + 12;
+			    this->hint->setPositionX(tempObject.x + 12);
 			}
-			else if (tempObject->x > Main.SCREEN_WIDTH - 120)
+			else if (tempObject.x > Main::SCREEN_WIDTH - 120)
 			{
-			    if (tempObject->y < 120)
+			    if (tempObject.y < 120)
 			    {
 			        this->hint->gotoAndStop(this->hint->currentFrame + 3);
-			        this->hint->y = tempObject->y + 12;
+			        this->hint->setPositionY(tempObject.y + 12);
 			    }
-			    else if (tempObject->y > Main.SCREEN_HEIGHT - 120)
+			    else if (tempObject.y > Main::SCREEN_HEIGHT - 120)
 			    {
 			        this->hint->gotoAndStop((this->hint->currentFrame + 1));
-			        this->hint->y = tempObject->y - 12;
+			        this->hint->setPositionY(tempObject.y - 12);
 			    }
 			    else
 			    {
 			        this->hint->gotoAndStop((this->hint->currentFrame + 1));
-			        this->hint->y = tempObject->y + 12;
+			        this->hint->setPositionY(tempObject.y + 12);
 			    }
-			    this->hint->x = tempObject->x - 12;
+			    this->hint->setPositionX(tempObject.x - 12);
 			}
-			else if (tempObject->y < 120)
+			else if (tempObject.y < 120)
 			{
-			    if (tempObject->x < 120)
+			    if (tempObject.x < 120)
 			    {
 			        this->hint->gotoAndStop(this->hint->currentFrame + 4);
-			        this->hint->x = tempObject->x + 12;
-			        this->hint->y = tempObject->y + 12;
+			        this->hint->setPositionX(tempObject.x + 12);
+			        this->hint->setPositionY(tempObject.y + 12);
 			    }
-			    else if (tempObject->x > Main.SCREEN_WIDTH - 120)
+			    else if (tempObject.x > Main::SCREEN_WIDTH - 120)
 			    {
 			        this->hint->gotoAndStop(this->hint->currentFrame + 3);
-			        this->hint->x = tempObject->x - 12;
-			        this->hint->y = tempObject->y + 12;
+			        this->hint->setPositionX(tempObject.x - 12);
+			        this->hint->setPositionY(tempObject.y + 12);
 			    }
 			    else
 			    {
 			        this->hint->gotoAndStop(this->hint->currentFrame + 4);
-			        this->hint->x = tempObject->x;
-			        this->hint->y = tempObject->y + 12;
+			        this->hint->setPositionX(tempObject.x);
+			        this->hint->setPositionY(tempObject.y + 12);
 			    }
 			}
-			else if (tempObject->y > Main.SCREEN_HEIGHT - 120)
+			else if (tempObject.y > Main::SCREEN_HEIGHT - 120)
 			{
-			    if (tempObject->x < 120)
+			    if (tempObject.x < 120)
 			    {
 			        this->hint->gotoAndStop(this->hint->currentFrame + 2);
-			        this->hint->x = tempObject->x + 12;
-			        this->hint->y = tempObject->y - 12;
+			        this->hint->setPositionX(tempObject.x + 12);
+			        this->hint->setPositionY(tempObject.y - 12);
 			    }
-			    else if (tempObject->x > Main.SCREEN_WIDTH - 120)
+			    else if (tempObject.x > Main::SCREEN_WIDTH - 120)
 			    {
 			        this->hint->gotoAndStop((this->hint->currentFrame + 1));
-			        this->hint->x = tempObject->x - 12;
-			        this->hint->y = tempObject->y - 12;
+			        this->hint->setPositionX(tempObject.x - 12);
+			        this->hint->setPositionY(tempObject.y - 12);
 			    }
 			    else
 			    {
 			        this->hint->gotoAndStop(this->hint->currentFrame + 2);
-			        this->hint->x = tempObject->x;
-			        this->hint->y = tempObject->y - 12;
+			        this->hint->setPositionX(tempObject.x);
+			        this->hint->setPositionY(tempObject.y - 12);
 			    }
 			}
 			else
 			{
 			    this->hint->gotoAndStop(this->hint->currentFrame + 2);
-			    this->hint->x = tempObject->x;
-			    this->hint->y = tempObject->y - 12;
+			    this->hint->setPositionX(tempObject.x);
+			    this->hint->setPositionY(tempObject.y - 12);
 			}
 			tempObject = NULL;
 			return;
@@ -2817,7 +2829,7 @@ namespace engine
 			{
 				if (this->myTower->shootingTurnStack.size()>0)
 				{
-				    if (this->myTower->shootingTurnStack[0][3] > 1)
+				    if ((int)this->myTower->shootingTurnStack[0][3] > 1)
 				    {
 				        this->world->getSphere = new GetSphere();
 				        this->world->getSphere->owner = this->world->worldInterface->container->fireSphere;
@@ -2825,12 +2837,12 @@ namespace engine
 				        this->world->getSphere->ownerPoint = this->world->worldInterface->container->fireSphereMyPoint;
 				        this->world->addChild(this->world->getSphere);
 				        this->i = 0;
-				        while (this->i < (this->myTower->shootingTurnStack[0][3] - 1))
+						while (this->i < ((int)this->myTower->shootingTurnStack[0][3] - 1))
 				        { 
 				            (this->i + 1);
 				            this->world->getSphere->manage("add", "fire");
 				        }
-				        this->myTower->spheresManage("get", "fire", (this->myTower->shootingTurnStack[0][3] - 1));
+						this->myTower->spheresManage("get", "fire", ((int)this->myTower->shootingTurnStack[0][3] - 1));
 						this->world->getSphere->setPosition(this->myTower->this_pt);
 				        this->world->getSphere->retrieveGetSphere();
 				    }
@@ -2843,7 +2855,7 @@ namespace engine
 				    this->world->getSphere->ownerPoint = this->world->worldInterface->container->iceSphereMyPoint;
 				    this->world->addChild(this->world->getSphere);
 				    this->i = 0;
-				    while (this->i < this->myTower->shootingTurnStack[1][3])
+					while (this->i < (int)this->myTower->shootingTurnStack[1][3])
 				    {
 				        (this->i + 1);
 				        this->world->getSphere->manage("add", "ice");

@@ -10,7 +10,6 @@ namespace engine{
 		{
 			blockTower = this->createMovieClip("blockTower", "tower/", "blockTower", "TowerBlockBone");
 			boneBlock = this->createMovieClip("boneBlock", "tower/", "boneBlock", "TowerBlockBone");
-			selectTower = this->createMovieClipSub("selectTower");
 			towerCase = this->createCase("towerCase");
 		};
 

@@ -21,6 +21,7 @@ namespace engine
 			MovieClipSub * sphere4_4;
 			BulletSphereTower_mc * sphere4_4Bullet;
 			MovieClipSub * sphere4_4BulletCont;
+
 			inline Tower4_mc(string rootPath, string armName, string dbName, string defAniName = "") : Tower3_mc(rootPath, armName, dbName, defAniName){};
 			Tower4_mc();
         };

@@ -82,10 +82,12 @@ namespace engine
 			fastBuyUltraCont = this->createMovieClipSub("fastBuyUltraCont");
 			fastBuyUltraContBtnFastBuyUltra = fastBuyUltraCont->createMovieClipSub("btnFastBuyUltra");
 			fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase = fastBuyUltraContBtnFastBuyUltra->createCase("fastBuyUltraCase");
-			fastBuyUltraContBtnFastBuyUltraIndicator1 = fastBuyUltraContBtnFastBuyUltra->createMovieClipSub("indicator1");
-			fastBuyUltraContBtnFastBuyUltraIndicator2 = fastBuyUltraContBtnFastBuyUltra->createMovieClipSub("indicator2");
-			fastBuyUltraContBtnFastBuyUltraIndicator3 = fastBuyUltraContBtnFastBuyUltra->createMovieClipSub("indicator3");
-			fastBuyUltraContBtnFastBuyUltraIndicator4 = fastBuyUltraContBtnFastBuyUltra->createMovieClipSub("indicator4");
+
+			fastBuyUltraContIndicator1 = fastBuyUltraCont->createMovieClipSub("indicator1");
+			fastBuyUltraContIndicator2 = fastBuyUltraCont->createMovieClipSub("indicator2");
+			fastBuyUltraContIndicator3 = fastBuyUltraCont->createMovieClipSub("indicator3");
+			fastBuyUltraContIndicator4 = fastBuyUltraCont->createMovieClipSub("indicator4");
+
 			fastBuyUltraContBtnFastBuyUltraCostTXT = fastBuyUltraContBtnFastBuyUltra->createText("costTXT");
 			sellUltraTower = this->createMovieClipSub("sellUltraTower");
 			sellUltraTowerSellUltraTowerCase = sellUltraTower->createCase("sellUltraTowerCase");

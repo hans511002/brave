@@ -8,9 +8,10 @@ namespace engine
     namespace towers
     { 
 		struct Tower5_mc : public TowerBase_mc
-        { 
-            MovieClip * bot;
-            MovieClip * upgr1;  
+        {  
+			MovieClipSub * bot; 
+			MovieClipSub * upgr1;
+			Tower5_mc();
         };
         class Tower5 : public Tower
         {

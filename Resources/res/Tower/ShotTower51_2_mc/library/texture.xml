@@ -1,0 +1,20 @@
+<TextureAtlas name="ShotTower51_2_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 8207" x="174" y="439" width="85" height="437"/>
+ <SubTexture name="Shape/shape 8209" x="0" y="0" width="85" height="437"/>
+ <SubTexture name="Shape/shape 8211" x="348" y="0" width="85" height="437"/>
+ <SubTexture name="Shape/shape 8213" x="348" y="439" width="85" height="437"/>
+ <SubTexture name="Shape/shape 8215" x="609" y="0" width="85" height="437"/>
+ <SubTexture name="Shape/shape 8217" x="783" y="0" width="85" height="437"/>
+ <SubTexture name="Shape/shape 8219" x="261" y="439" width="85" height="437"/>
+ <SubTexture name="Shape/shape 8221" x="696" y="0" width="85" height="437"/>
+ <SubTexture name="Shape/shape 8223" x="261" y="0" width="85" height="437"/>
+ <SubTexture name="Shape/shape 8225" x="522" y="439" width="85" height="437"/>
+ <SubTexture name="Shape/shape 8227" x="174" y="0" width="85" height="437"/>
+ <SubTexture name="Shape/shape 8229" x="87" y="439" width="85" height="437"/>
+ <SubTexture name="Shape/shape 8231" x="435" y="439" width="85" height="437"/>
+ <SubTexture name="Shape/shape 8233" x="87" y="0" width="85" height="437"/>
+ <SubTexture name="Shape/shape 8235" x="435" y="0" width="85" height="437"/>
+ <SubTexture name="Shape/shape 8237" x="522" y="0" width="85" height="437"/>
+ <SubTexture name="Shape/shape 8239" x="0" y="439" width="85" height="437"/>
+ <SubTexture name="Shape/shape 8241" x="870" y="0" width="85" height="437"/>
+</TextureAtlas>

@@ -18,7 +18,6 @@ namespace engine
 		{ 
 			MovieClip * blockTower;
 			MovieClip * boneBlock;
-			MovieClipSub * selectTower;
 			MCCase * towerCase;
 			Tower * myParent;
 			TowerBase_mc(string rootPath, string armName, string dbName, string defAniName = "");
@@ -36,9 +35,10 @@ namespace engine
 			}
 			inline int operator=(int i){
 				return value = i;
-			};
+			}; 
 			inline  operator int(){
-				return value;
+				if (value)return value;
+				return !name.empty();
 			};
 			inline string operator=(string i){
 				return name = i;

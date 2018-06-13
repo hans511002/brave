@@ -1,10 +1,20 @@
+
+#include "MainClass.h"
+#include "engine/World.h"
+#include "TowerMenu.h"
 #include "Tower5.h" 
 
 namespace engine
 {
     namespace towers
     {
-        Tower5::Tower5():soundTimer(5),soundCounter(0),upgr1_damage(0),upgr1_intervalTimer(0),upgr1_intervalCounter(0)
+		Tower5_mc::Tower5_mc() :TowerBase_mc("tower/", "Tower5_mc", "Tower5_mc")
+		{
+			bot = this->createMovieClipSub("bot");
+			upgr1 = this->createMovieClipSub("upgr1");
+		};
+
+        Tower5::Tower5():soundTimer(5),soundCounter(0),upgr1_intervalTimer(0),upgr1_intervalCounter(0)
         {
             return;
         }// end function
@@ -25,7 +35,8 @@ namespace engine
             this->upgr1_damage = Main::mainClass->readXMLClass.ultraAddFireStoneDamageXML;
             this->upgr1_intervalTimer = Main::mainClass->readXMLClass.ultraAddFireStoneIntervalXML;
             this->upgr1_intervalCounter = Main::mainClass->readXMLClass.ultraAddFireStoneIntervalXML;
-            container = new Tower5_mc();
+			Tower5_mc * container = new Tower5_mc();
+			this->container = container;
             container->stop();
             container->towerCase->stop();
             container->upgr1->stop();
@@ -41,15 +52,15 @@ namespace engine
             {
                 if (world->nowLevel == 7)
                 {
-                    if (myPlace->name == "place8")
+                    if (myPlace->getName() == "place8")
                     {
                         container->bot->gotoAndStop(2);
                     }
-                    else if (myPlace->name == "place9")
+					else if (myPlace->getName() == "place9")
                     {
                         container->bot->gotoAndStop(2);
                     }
-                    else if (myPlace->name == "place10")
+					else if (myPlace->getName() == "place10")
                     {
                         container->bot->gotoAndStop(2);
                     }
@@ -71,8 +82,8 @@ namespace engine
             {
                 container->setVisible(false);
             } 
-            container->setScale(0.9);
-            return;
+            container->setScale(0.9f);
+            return true;
         }// end function
 
         void Tower5::update(float dt)
@@ -110,7 +121,7 @@ namespace engine
 
         void Tower5::scan()
         {
-            if (!container->blockTower.visible)
+            if (!container->blockTower->isVisible())
             {
                 if (intervalCounter < intervalTimer)
                 {
@@ -152,7 +163,8 @@ namespace engine
 
         void Tower5::attack() 
         {
-            if (intervalCounter == 0)
+			Tower5_mc * container = ISTYPE(Tower5_mc, this->container);
+			if (intervalCounter == 0)
             {
                 Bullet * tempObject = world->addBullet(5, shoot_pt, this, enemyTarget, damage);
                 intervalCounter = 1;
@@ -164,7 +176,7 @@ namespace engine
             }
             else if (this->upgr1_intervalCounter == 0)
             {
-                if (!container->upgr1->getVisible())
+                if (!container->upgr1->isVisible())
                 {
                     container->upgr1->setVisible(true);
                     //Sounds.instance.playSound("snd_tower_firstShootUltraAdd1");
@@ -184,9 +196,9 @@ namespace engine
                 {
                     container->upgr1->gotoAndStop(1);
                     container->upgr1->setVisible(false);
-                    Point tempObject = world->bezierClass.getPathPoint(enemyTarget.path + enemyTarget.speedK * 30, enemyTarget.road, enemyTarget.way);
+                    Vec2 tempObject = world->bezierClass->getPathPoint(enemyTarget->path + enemyTarget->speedK * 30, enemyTarget->road, enemyTarget->way);
                     enemy_pt = tempObject;//cocos2d::Point(tempObject.x, tempObject.y);
-                    Bullet * tempObject = world->addBullet(51, enemy_pt, this, enemy_pt, this->upgr1_damage);
+					Bullet * bullet = world->addBullet(51, enemy_pt, this, enemyTarget, this->upgr1_damage);
                     this->upgr1_intervalCounter = 1;
                     enemyTarget = NULL;
                 }

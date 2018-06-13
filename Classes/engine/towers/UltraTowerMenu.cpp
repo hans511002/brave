@@ -836,22 +836,22 @@ namespace engine
                     container->btnUpgradeMenu->gotoAndStop(4);
                     if (this->myTower->towerType == 5)
                     {
-                        std:;setText(container->btnUpgradeMenuCostTXT, Main::mainClass->readXMLClass.costUltraAddFireStone);
+                        std::setText(container->btnUpgradeMenuCostTXT, Main::mainClass->readXMLClass.costUltraAddFireStone);
                         //container->btnUpgradeMenu->costTXT.text = Main::mainClass->readXMLClass.costUltraAddFireStone;
                     }
                     else if (this->myTower->towerType == 6)
                     {
-                        std:;setText(container->btnUpgradeMenuCostTXT, Main::mainClass->readXMLClass.costUltraAddIceLevin);
+                        std::setText(container->btnUpgradeMenuCostTXT, Main::mainClass->readXMLClass.costUltraAddIceLevin);
                         //container->btnUpgradeMenu->costTXT.text = Main::mainClass->readXMLClass.costUltraAddIceLevin;
                     }
                     else if (this->myTower->towerType == 7)
                     {
-                        std:;setText(container->btnUpgradeMenuCostTXT, Main::mainClass->readXMLClass.costUltraAddIceStone);
+                        std::setText(container->btnUpgradeMenuCostTXT, Main::mainClass->readXMLClass.costUltraAddIceStone);
                         //container->btnUpgradeMenu->costTXT.text = Main::mainClass->readXMLClass.costUltraAddIceStone;
                     }
                     else if (this->myTower->towerType == 8)
                     {
-                        std:;setText(container->btnUpgradeMenuCostTXT, Main::mainClass->readXMLClass.costUltraAddFireLevin);
+                        std::setText(container->btnUpgradeMenuCostTXT, Main::mainClass->readXMLClass.costUltraAddFireLevin);
                         //container->btnUpgradeMenu->costTXT.text = Main::mainClass->readXMLClass.costUltraAddFireLevin;
                     }
                     if (!this->fastBuyUltraFlag.empty())
@@ -964,7 +964,7 @@ namespace engine
                                 this->world->getSphere = new GetSphere();
                                 this->world->getSphere->owner = this->world->worldInterface->container->iceSphere;
                                 this->world->getSphere->ownerType = "archive";
-                                this->world->getSphere->ownerPoint = this->world->worldInterface->container->iceSphere.myPoint;
+                                this->world->getSphere->ownerPoint = this->world->worldInterface->container->iceSphereMyPoint;
                                 this->world->addChild(this->world->getSphere);
                                 this->myTower->spheresManage("get", "ice", 1);
                                 this->world->getSphere->manage("add", "ice");
@@ -976,7 +976,7 @@ namespace engine
                                 this->world->getSphere = new GetSphere();
                                 this->world->getSphere->owner = this->world->worldInterface->container->stoneSphere;
                                 this->world->getSphere->ownerType = "archive";
-                                this->world->getSphere->ownerPoint = this->world->worldInterface->container->stoneSphere.myPoint;
+                                this->world->getSphere->ownerPoint = this->world->worldInterface->container->stoneSphereMyPoint;
                                 this->world->addChild(this->world->getSphere);
                                 this->myTower->spheresManage("get", "stone", 1);
                                 this->world->getSphere->manage("add", "stone");
@@ -1080,7 +1080,7 @@ namespace engine
                     {
                         container->btnUpgradeMenu->setVisible(false);
                     }
-                    else if (this->world->money >= Main::mainClass->readXMLClass.costUltraAddFireStone && !this->fastBuyUltraFlag)
+                    else if (this->world->money >= Main::mainClass->readXMLClass.costUltraAddFireStone && !this->fastBuyUltraFlag.empty())
                     {
                         container->btnUpgradeMenu->gotoAndStop(1);
                         container->btnUpgradeMenuBtnUpgradeMenuCase->buttonMode = true;
@@ -1089,7 +1089,7 @@ namespace engine
                     {
                         container->btnUpgradeMenu->gotoAndStop(4);
                     }
-                    if (!this->fastBuyUltraFlag)
+					if (!this->fastBuyUltraFlag.empty())
                     {
                         std::setText(container->btnUpgradeMenuCostTXT, Main::mainClass->readXMLClass.costUltraAddFireStone);
                         //container->btnUpgradeMenu->costTXT.text = Main::mainClass->readXMLClass.costUltraAddFireStone;
@@ -1144,7 +1144,7 @@ namespace engine
                     {
                         container->btnUpgradeMenu->setVisible(false);
                     }
-                    else if (this->world->money >= Main::mainClass->readXMLClass.costUltraAddIceLevin && !this->fastBuyUltraFlag)
+					else if (this->world->money >= Main::mainClass->readXMLClass.costUltraAddIceLevin && !this->fastBuyUltraFlag.empty())
                     {
                         container->btnUpgradeMenu->gotoAndStop(1);
                         container->btnUpgradeMenuBtnUpgradeMenuCase->buttonMode = true;
@@ -1153,7 +1153,7 @@ namespace engine
                     {
                         container->btnUpgradeMenu->gotoAndStop(4);
                     }
-                    if (!this->fastBuyUltraFlag)
+					if (!this->fastBuyUltraFlag.empty())
                     {
                         std::setText(container->btnUpgradeMenuCostTXT, Main::mainClass->readXMLClass.costUltraAddIceLevin);
                         //container->btnUpgradeMenu->costTXT.text = Main::mainClass->readXMLClass.costUltraAddIceLevin;
@@ -1208,7 +1208,7 @@ namespace engine
                     {
                         container->btnUpgradeMenu->setVisible(false);
                     }
-                    else if (this->world->money >= Main::mainClass->readXMLClass.costUltraAddIceStone && !this->fastBuyUltraFlag)
+					else if (this->world->money >= Main::mainClass->readXMLClass.costUltraAddIceStone && !this->fastBuyUltraFlag.empty())
                     {
                         container->btnUpgradeMenu->gotoAndStop(1);
                         container->btnUpgradeMenuBtnUpgradeMenuCase->buttonMode = true;
@@ -1217,7 +1217,7 @@ namespace engine
                     {
                         container->btnUpgradeMenu->gotoAndStop(4);
                     }
-                    if (!this->fastBuyUltraFlag)
+					if (!this->fastBuyUltraFlag.empty())
                     {
                         std::setText(container->btnUpgradeMenuCostTXT, Main::mainClass->readXMLClass.costUltraAddIceStone);
                         //container->btnUpgradeMenu->costTXT.text = Main::mainClass->readXMLClass.costUltraAddIceStone;
@@ -1272,7 +1272,7 @@ namespace engine
                     {
                         container->btnUpgradeMenu->setVisible(false);
                     }
-                    else if (this->world->money >= Main::mainClass->readXMLClass.costUltraAddFireLevin && !this->fastBuyUltraFlag)
+					else if (this->world->money >= Main::mainClass->readXMLClass.costUltraAddFireLevin && !this->fastBuyUltraFlag.empty())
                     {
                         container->btnUpgradeMenu->gotoAndStop(1);
                         container->btnUpgradeMenuBtnUpgradeMenuCase->buttonMode = true;
@@ -1281,7 +1281,7 @@ namespace engine
                     {
                         container->btnUpgradeMenu->gotoAndStop(4);
                     }
-                    if (!this->fastBuyUltraFlag)
+					if (!this->fastBuyUltraFlag.empty())
                     {
                         std::setText(container->btnUpgradeMenuCostTXT, Main::mainClass->readXMLClass.costUltraAddFireLevin);
                         //container->btnUpgradeMenu->costTXT.text = Main::mainClass->readXMLClass.costUltraAddFireLevin;
@@ -1318,52 +1318,56 @@ namespace engine
         {
             this->autoguidesMouse_pt = cocos2d::Point(Main::mainClass->worldClass->mouseX, Main::mainClass->worldClass->mouseY);
             this->autoguidesObject = NULL;
-            this->autoguidesObject_pt = container->sphereSlot1->localToGlobal(container->sphereSlot1SphereSlotCase->getPosition());
+			this->autoguidesObject_pt = container->sphereSlot1SphereSlotCase->localToGlobal(container->sphereSlot1SphereSlotCase->getPosition());
             this->autoguidesObjectWidth = container->sphereSlot1SphereSlotCase->getWidth() / 2;
             this->autoguidesObjectHeight = container->sphereSlot1SphereSlotCase->getHeight() / 2;
-            if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+            //if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
+            //    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
+            //    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
+            //    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+			if (container->sphereSlot1SphereSlotCase->hitTest(autoguidesMouse_pt))
             {
                 this->autoguidesObject = container->sphereSlot1SphereSlotCase;
             }
             if (!this->autoguidesObject)
             {
-                this->autoguidesObject_pt = container->sphereSlot2->localToGlobal(container->sphereSlot2SphereSlotCase->getPosition());
+				this->autoguidesObject_pt = container->sphereSlot2SphereSlotCase->localToGlobal(container->sphereSlot2SphereSlotCase->getPosition());
 				this->autoguidesObjectWidth = container->sphereSlot2SphereSlotCase->getWidth() / 2;
 				this->autoguidesObjectHeight = container->sphereSlot2SphereSlotCase->getHeight() / 2;
-                if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-                {
+                //if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
+                //    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
+                //    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
+                //    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+				if (container->sphereSlot2SphereSlotCase->hitTest(autoguidesMouse_pt))
+				{
                     this->autoguidesObject = container->sphereSlot2SphereSlotCase;
                 }
             }
             if (!this->autoguidesObject && container->btnUpgradeMenu->isVisible() && container->btnUpgradeMenuBtnUpgradeMenuCase)
             {
-                this->autoguidesObject_pt = container->btnUpgradeMenu->localToGlobal(container->btnUpgradeMenuBtnUpgradeMenuCase->getPosition());
+				this->autoguidesObject_pt = container->btnUpgradeMenuBtnUpgradeMenuCase->localToGlobal(container->btnUpgradeMenuBtnUpgradeMenuCase->getPosition());
 				this->autoguidesObjectWidth = container->btnUpgradeMenuBtnUpgradeMenuCase->getWidth() / 2;
 				this->autoguidesObjectHeight = container->btnUpgradeMenuBtnUpgradeMenuCase->getHeight() / 2;
-                if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-                {
+                //if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
+                //    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
+                //    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
+                //    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+				if (container->btnUpgradeMenuBtnUpgradeMenuCase->hitTest(autoguidesMouse_pt))
+				{
                     this->autoguidesObject = container->btnUpgradeMenuBtnUpgradeMenuCase;
                 }
             }
             if (!this->autoguidesObject && !this->fastBuyUltraFlag.empty())
             {
-                this->autoguidesObject_pt = container->fastBuyUltraContBtnFastBuyUltra->localToGlobal(container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->getPosition());
+				this->autoguidesObject_pt = container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->localToGlobal(container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->getPosition());
 				this->autoguidesObjectWidth = container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->getWidth() / 2;
 				this->autoguidesObjectHeight = container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->getHeight() / 2;
-                if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-                {
+                //if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
+                //    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
+                //    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
+                //    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+				if (container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->hitTest(autoguidesMouse_pt))
+				{
                     this->autoguidesObject = container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase;
                 }
             }
@@ -1394,7 +1398,7 @@ namespace engine
                 {
                     container->fastBuyUltraCont->setVisible(false);
                 }
-                if (this->fastBuyUltraFlag)
+                if (!this->fastBuyUltraFlag.empty())
                 {
                     container->fastBuyUltraContBtnFastBuyUltra->gotoAndStop(1);
                     container->fastBuyUltraContIndicator1->gotoAndStop(2);
@@ -1455,8 +1459,8 @@ namespace engine
                             container->fastBuyUltraContIndicator4->gotoAndStop(1);
                         }
                     }
-                    this->fastBuyPrice = int(container->fastBuyUltraContBtnFastBuyUltraCostTXT.text);
-                    if (this->world->money >= int(container->fastBuyUltraContBtnFastBuyUltraCostTXT.text))
+                    this->fastBuyPrice = std::getInt(container->fastBuyUltraContBtnFastBuyUltraCostTXT);
+					if (this->world->money >= this->fastBuyPrice)
                     {
                         container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->buttonMode = true;
                     }
@@ -1570,7 +1574,7 @@ namespace engine
                 else
                 {
                     this->hint->gotoAndStop(param1 + 2);
-                    this->hint->y = tempObject.y - 12;
+                    this->hint->setPositionY(tempObject.y - 12);
                 }
                 this->hint->setPositionX(tempObject.x + 12);
             }
@@ -1584,7 +1588,7 @@ namespace engine
                 else if (tempObject.y > Main::SCREEN_HEIGHT - 120)
                 {
                     this->hint->gotoAndStop((param1 + 1));
-                    this->hint->y = tempObject.y - 12;
+					this->hint->setPositionY( tempObject.y - 12);
                     this->hint->setPositionY(tempObject.y - 12);
                 }
                 else
@@ -1708,7 +1712,7 @@ namespace engine
                 //}
                 if (this->lastE)
                 {
-                    this->world->mouseMoveHandler(this->lastE);
+                    this->world->mouseMovedHandler(this->lastE);
                 }
             }
             return;

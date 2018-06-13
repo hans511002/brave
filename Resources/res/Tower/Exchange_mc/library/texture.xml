@@ -1,0 +1,6 @@
+<TextureAtlas name="Exchange_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 8639" x="52" y="0" width="34" height="34"/>
+ <SubTexture name="Shape/shape 8641" x="88" y="0" width="34" height="34"/>
+ <SubTexture name="Shape/shape 8643" x="52" y="36" width="34" height="34"/>
+ <SubTexture name="case" x="0" y="0" width="50" height="50"/>
+</TextureAtlas>

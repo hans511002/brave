@@ -1,0 +1,49 @@
+<TextureAtlas name="Tower5_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 4641" x="380" y="273" width="74" height="77"/>
+ <SubTexture name="Shape/shape 4643" x="265" y="167" width="74" height="77"/>
+ <SubTexture name="Shape/shape 4645" x="76" y="230" width="74" height="77"/>
+ <SubTexture name="Shape/shape 4647" x="76" y="388" width="74" height="77"/>
+ <SubTexture name="Shape/shape 4649" x="152" y="467" width="74" height="77"/>
+ <SubTexture name="Shape/shape 4651" x="76" y="467" width="74" height="77"/>
+ <SubTexture name="Shape/shape 4653" x="0" y="353" width="74" height="77"/>
+ <SubTexture name="Shape/shape 4655" x="380" y="431" width="74" height="77"/>
+ <SubTexture name="Shape/shape 4657" x="0" y="432" width="74" height="77"/>
+ <SubTexture name="Shape/shape 4659" x="380" y="510" width="74" height="77"/>
+ <SubTexture name="Shape/shape 4661" x="76" y="546" width="74" height="77"/>
+ <SubTexture name="Shape/shape 4663" x="228" y="325" width="74" height="77"/>
+ <SubTexture name="Shape/shape 4665" x="228" y="246" width="74" height="77"/>
+ <SubTexture name="Shape/shape 4667" x="0" y="195" width="74" height="77"/>
+ <SubTexture name="Shape/shape 4669" x="417" y="194" width="74" height="77"/>
+ <SubTexture name="Shape/shape 4671" x="0" y="274" width="74" height="77"/>
+ <SubTexture name="Shape/shape 4673" x="380" y="352" width="74" height="77"/>
+ <SubTexture name="Shape/shape 4675" x="421" y="115" width="74" height="77"/>
+ <SubTexture name="Shape/shape 4677" x="304" y="404" width="74" height="77"/>
+ <SubTexture name="Shape/shape 4679" x="152" y="230" width="74" height="77"/>
+ <SubTexture name="Shape/shape 4681" x="341" y="167" width="74" height="77"/>
+ <SubTexture name="Shape/shape 4683" x="304" y="483" width="74" height="77"/>
+ <SubTexture name="Shape/shape 4685" x="304" y="246" width="74" height="77"/>
+ <SubTexture name="Shape/shape 4687" x="228" y="483" width="74" height="77"/>
+ <SubTexture name="Shape/shape 4689" x="0" y="511" width="74" height="77"/>
+ <SubTexture name="Shape/shape 4691" x="152" y="309" width="74" height="77"/>
+ <SubTexture name="Shape/shape 4693" x="228" y="404" width="74" height="77"/>
+ <SubTexture name="Shape/shape 4695" x="76" y="309" width="74" height="77"/>
+ <SubTexture name="Shape/shape 4697" x="304" y="325" width="74" height="77"/>
+ <SubTexture name="Shape/shape 4699" x="152" y="388" width="74" height="77"/>
+ <SubTexture name="boneBlock" x="265" y="115" width="50" height="50"/>
+ <SubTexture name="blockTower" x="317" y="115" width="50" height="50"/>
+ <SubTexture name="case" x="369" y="115" width="50" height="50"/>
+ <SubTexture name="Shape/shape 8244" x="152" y="562" width="86" height="37"/>
+ <SubTexture name="Shape/shape 8246" x="0" y="0" width="121" height="78"/>
+ <SubTexture name="Shape/shape 8249" x="335" y="0" width="51" height="113"/>
+ <SubTexture name="Shape/shape 8251" x="212" y="115" width="51" height="113"/>
+ <SubTexture name="Shape/shape 8253" x="388" y="0" width="51" height="113"/>
+ <SubTexture name="Shape/shape 8255" x="53" y="80" width="51" height="113"/>
+ <SubTexture name="Shape/shape 8257" x="229" y="0" width="51" height="113"/>
+ <SubTexture name="Shape/shape 8259" x="176" y="0" width="51" height="113"/>
+ <SubTexture name="Shape/shape 8261" x="159" y="115" width="51" height="113"/>
+ <SubTexture name="Shape/shape 8263" x="106" y="115" width="51" height="113"/>
+ <SubTexture name="Shape/shape 8265" x="441" y="0" width="51" height="113"/>
+ <SubTexture name="Shape/shape 8267" x="123" y="0" width="51" height="113"/>
+ <SubTexture name="Shape/shape 8269" x="282" y="0" width="51" height="113"/>
+ <SubTexture name="Shape/shape 8271" x="0" y="80" width="51" height="113"/>
+</TextureAtlas>

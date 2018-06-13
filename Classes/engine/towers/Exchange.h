@@ -10,11 +10,22 @@ namespace engine
 	{
 		struct Exchange_mc : public MovieClip
 		{
-			MovieClip* exchangeCase;
+			MCCase * exchangeCase;
+			 
+			inline Exchange_mc() :MovieClip("tower/", "Exchange_mc", "Exchange_mc")
+			{
+				exchangeCase = this->createCase("exchangeCase");
+			};
+			inline Exchange_mc(string root, string arm, string db, string ani = "") :MovieClip(root, arm, db, ani){};
 		};
 		struct Exchange1_mc : public Exchange_mc
 		{
-			MovieClip* cross;
+ 			MovieClipSub * cross;
+			inline Exchange1_mc() :Exchange_mc("tower/", "Exchange1_mc", "Exchange1_mc")
+			{
+				exchangeCase = this->createCase("exchangeCase");
+				cross = this->createMovieClipSub("cross");
+			};
 		};
 		class Exchange : public BaseNode
 		{

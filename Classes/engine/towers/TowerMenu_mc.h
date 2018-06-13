@@ -77,6 +77,8 @@ namespace engine
 			TowerMenu_mc();
 			MovieClipSub * getSphereSlot(MCCase * slotCase);
 			MovieClipSub * getSphereAnima(MCCase * slotCase);
+			MCText * getText(MovieClipSub *);
+			MCText * getText(MCCase *);
 		};
 
 		class UltraTowerMenu_mc :public MovieClip
@@ -89,11 +91,12 @@ namespace engine
 			MovieClipSub * cont1;
 			MovieClipSub * fastBuyUltraCont;
 			MovieClipSub * fastBuyUltraContBtnFastBuyUltra;
-			MCCase * fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase;
-			MovieClipSub * fastBuyUltraContBtnFastBuyUltraIndicator1;
-			MovieClipSub * fastBuyUltraContBtnFastBuyUltraIndicator2;
-			MovieClipSub * fastBuyUltraContBtnFastBuyUltraIndicator3;
-			MovieClipSub * fastBuyUltraContBtnFastBuyUltraIndicator4;
+			MCCase * fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase; 
+			MovieClipSub * fastBuyUltraContIndicator1;
+			MovieClipSub * fastBuyUltraContIndicator2;
+			MovieClipSub * fastBuyUltraContIndicator3;
+			MovieClipSub * fastBuyUltraContIndicator4;
+
 			MCText * fastBuyUltraContBtnFastBuyUltraCostTXT;
 			MovieClipSub * sellUltraTower;
 			MCCase * sellUltraTowerSellUltraTowerCase;

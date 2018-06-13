@@ -1,10 +1,8 @@
-#ifndef ENGINE_TOWERS_TOWER7_H
-#define ENGINE_TOWERS_TOWER7_H
-#include "BaseHeaders.h"
-#include "engine/towers/Tower.h" 
-#include "engine/mc/mc.h" 
-#include "engine/bullets/Bullet_7.h" 
-#include "engine/World.h" 
+
+#include "MainClass.h"
+#include "engine/World.h"
+#include "TowerMenu.h"
+#include "Tower7.h" 
 
 namespace engine
 {
@@ -31,7 +29,8 @@ namespace engine
             this->upgr1_damage = Main::mainClass->readXMLClass.ultraAddIceStoneDamageXML;
             this->upgr1_intervalTimer = Main::mainClass->readXMLClass.ultraAddIceStoneIntervalXML;
             this->upgr1_intervalCounter = Main::mainClass->readXMLClass.ultraAddIceStoneIntervalXML;
-            container = new Tower7_mc();
+			Tower7_mc * container = new Tower7_mc();
+			this->container = container;
             container->stop();
             container->towerCase->stop();
             container->cont1->stop();
@@ -94,6 +93,7 @@ namespace engine
             else
             {
                 Tower::update();
+				Tower7_mc * container = ISTYPE(Tower7_mc,this->container);
                 if (container->cont1->currentFrame < container->cont1->totalFrames)
                 {
                     container->cont1->gotoAndStop((container->cont1->currentFrame + 1));
@@ -251,15 +251,15 @@ namespace engine
                     this->ballAnima->stop();
                     this->ballAnima->ball->stop();
                     this->ballAnima->smoke->stop();
-                    this->ballAnima->smoke->cont1->stop();
-                    this->ballAnima->smoke->cont2->stop();
+                    this->ballAnima->smokeCont1->stop();
+                    this->ballAnima->smokeCont2->stop();
                     this->setPosition(0,-20);
                     //this->ballAnima->x = 0;
                     //this->ballAnima->y = -20;
                     //this->ballAnima->rotation = 180;
                     //this->ballAnima->alpha = 0;
                     this->ballAnima->smoke->setVisible(false);
-                    container->addChildAt(this->ballAnima, (container->getChildIndex(container->cont2) + 1));
+                    container->addChild(this->ballAnima, (container->getChildIndex(container->cont2) + 1));
                 }
                 else if (this->ballAnima->getOpacity() < 1)
                 {
@@ -652,4 +652,4 @@ namespace engine
 
     }
 }
-#endif
+ 

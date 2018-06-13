@@ -10,6 +10,7 @@ namespace engine
 		struct Tower1_mc :public TowerBase_mc
 		{
 		public:
+			MovieClipSub * selectTower;
 			MovieClipSub * sphere1;
 			BulletSphereTower_mc * sphere1Bullet;
 			MovieClipSub * sphere1BulletCont;

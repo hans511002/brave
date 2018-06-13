@@ -300,6 +300,18 @@
     <ClCompile Include="..\Classes\screens\FastPause.cpp">
       <Filter>src\screens</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\engine\towers\Tower5.cpp">
+      <Filter>src\engine\towers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\towers\Tower6.cpp">
+      <Filter>src\engine\towers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\towers\Tower7.cpp">
+      <Filter>src\engine\towers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\towers\Tower8.cpp">
+      <Filter>src\engine\towers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">

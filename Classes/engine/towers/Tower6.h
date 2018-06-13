@@ -10,27 +10,28 @@ namespace engine
 		struct Tower6_mc : public TowerBase_mc
         { 
             MovieClip * shotAnima;
+			Tower6_mc();
 		};
-        class Tower6 : public Tower
-        {
-        public:
-            int upgr1_intervalCounter, upgr1_intervalTimer;
-             int soundCounter;
-            int soundTimer;
+		class Tower6 : public Tower
+		{
+		public:
+			int upgr1_intervalCounter, upgr1_intervalTimer;
+			int soundCounter;
+			int soundTimer;
 
-            Tower6();
+			Tower6();
 
-            bool init();
+			bool init();
 
-virtual             void update(float dt=0) ;
+			virtual void update(float dt = 0);
 
-            void scan() ;
+			void scan();
 
-            void addScan();
+			void addScan();
 
-            void attack();
+			void attack();
 
-        };
+		};
     }
 }
 #endif
