@@ -1,14 +1,16 @@
 #ifndef BRAVE_MAIN_H
 #define BRAVE_MAIN_H
-#include "BaseHeaders.h"  
+#include "BaseNode.h"
+
+//#include "BaseHeaders.h"  
 //#include "engine/World.h"
 #include "engine/xml/ReadXML.h"
 //#include "screens/MiddleScreen.h"
 //#include "screens/LevelsMenu.h"
+//#include "sys/saveBox.h"
 
-
-
-
+#include "DefineClasses.h"
+ 
 class Main : public  BaseNode //cocos2d::LayerColor //
 {
 public:

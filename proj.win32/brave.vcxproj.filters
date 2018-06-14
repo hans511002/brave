@@ -713,6 +713,9 @@
     <ClInclude Include="..\Classes\screens\Screen.h">
       <Filter>src\screens</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\base\DefineClasses.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">

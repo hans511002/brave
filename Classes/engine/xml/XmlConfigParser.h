@@ -1,6 +1,9 @@
 #ifndef XML_CONFIG_H
 #define XML_CONFIG_H
-#include "BaseHeaders.h"
+//#include "BaseHeaders.h"
+#include "cocos2d.h"
+#include "JsonUtil.h" 
+#include "tinyxml2/tinyxml2.h"
 
 namespace engine{
 	 

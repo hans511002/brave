@@ -2,7 +2,8 @@
 #include "FastPause.h" 
 #include "engine/World.h" 
 #include "MainClass.h" 
- 
+#include "engine/WorldInterface.h"
+
 namespace screens
 {
     FastPause_mc::FastPause_mc():MovieClip("screen/","FastPause_mc","FastPause_mc")

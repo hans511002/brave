@@ -1,7 +1,9 @@
 #ifndef XML_READXML_H
 #define XML_READXML_H
-#include "BaseHeaders.h"
-
+//#include "BaseHeaders.h"
+#include "JsonUtil.h"
+#include "engine/xml/XmlConfigParser.h"
+ 
 
 namespace engine
 {

@@ -1,9 +1,10 @@
 ﻿#ifndef SAVEBOX_H
 #define SAVEBOX_H
-#include "BaseHeaders.h"
+//#include "BaseHeaders.h"
+#include "JsonUtil.h"
 
 //#include "engine/xml/XmlConfigParser.h"
-//#include "bezierBox.h"
+#include "bezierBox.h"
 
 namespace sys
 {

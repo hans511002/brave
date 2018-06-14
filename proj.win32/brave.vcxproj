@@ -235,6 +235,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\base\BaseHeaders.h" />
     <ClInclude Include="..\Classes\base\BaseLayer.h" />
     <ClInclude Include="..\Classes\base\BaseNode.h" />
+    <ClInclude Include="..\Classes\base\DefineClasses.h" />
     <ClInclude Include="..\Classes\base\JsonUtil.h" />
     <ClInclude Include="..\Classes\base\mc.h" />
     <ClInclude Include="..\Classes\bezier\Bezier.h" />

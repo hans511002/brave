@@ -1,57 +1,15 @@
 ﻿#ifndef WORLD_H
 #define WORLD_H
 
-#include "BaseNode.h"
-#include "engine/xml/ReadXML.h"
-#include "engine/Waves.h"
-#include "sys/saveBox.h"
-#include "engine/WorldInterface.h"
-#include "Feature.h"
+#include "BaseHeaders.h" 
 #include "bezier/Bezier.h"
-
-#include "MoneyAdd.h"
-#include "CastSphere.h"
-#include "GetSphere.h"
-#include "BonusMoney.h"
-
-#include "engine/level/Level.h"
-#include "engine/decoration/Decoration.h"
-
-#include "engine/units/Unit.h"
-#include "engine/GetSphere.h"
-#include "engine/bullets/Bullet.h"
-
-#include "engine/towers/Tower.h"
-#include "engine/towers/BuildTowerMenu.h"
-#include "engine/towers/UltraTowerMenu.h"
-#include "engine/towers/TowerMenu.h"
-#include "engine/towers/TowerMenu_mc.h"
-
 #include "engine/casts/Map.h"
-#include "engine/casts/Cast.h"
-
-#include "screens/MiddleScreen.h"
-#include "screens/PauseMenu.h"
-#include "screens/FastPause.h"
 
 //#include "animation/Hint.h"
 
 namespace engine
 {
-    namespace  decoration
-    {
-        class Decoration;
-    };
-    namespace  casts
-    {
-        class Cast;
-    };
-    class WorldInterface;
-    class Waves;
-    class Feature;
-    using namespace towers;
-    using namespace units;
-	using namespace casts;
+
     class World : public BaseNode //, public  BaseLayer
     {
          

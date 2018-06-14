@@ -1,6 +1,8 @@
 #ifndef BEZIERBOX_H
 #define BEZIERBOX_H
-#include "BaseHeaders.h"
+//#include "BaseHeaders.h"
+#include "cocos2d.h"
+#include "common/Common.h" 
 
 namespace sys
 {

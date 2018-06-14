@@ -5,6 +5,9 @@
 #include "bezier/PathPoint.h"
 //#include "bezier/Bezier.h"
 #include "SavedCastTime.h"
+#include "engine/WorldInterface.h"
+#include "MoneyAdd.h"
+#include "engine/level/Level.h"
 
 
 using namespace engine::units;

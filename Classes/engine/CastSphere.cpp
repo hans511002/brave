@@ -1,6 +1,7 @@
-
+#include "GetSphere.h"
 #include "CastSphere.h"
 #include "engine/World.h" 
+#include "MainClass.h"
 
 namespace engine{
 

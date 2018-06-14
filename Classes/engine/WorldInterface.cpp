@@ -1,6 +1,32 @@
-﻿#include "WorldInterface.h"
+﻿
 #include "MainClass.h"
-#include "World.h"
+#include "World.h" 
+
+#include "MoneyAdd.h"
+#include "CastSphere.h"
+#include "GetSphere.h"
+#include "BonusMoney.h"
+
+#include "engine/level/Level.h"
+#include "engine/decoration/Decoration.h"
+
+#include "engine/units/Unit.h"
+#include "engine/GetSphere.h"
+#include "engine/bullets/Bullet.h"
+
+#include "engine/towers/Tower.h"
+#include "engine/towers/BuildTowerMenu.h"
+#include "engine/towers/UltraTowerMenu.h"
+#include "engine/towers/TowerMenu.h"
+#include "engine/towers/TowerMenu_mc.h"
+
+#include "engine/casts/Map.h"
+#include "engine/casts/Cast.h"
+
+#include "screens/MiddleScreen.h"
+#include "screens/PauseMenu.h"
+#include "screens/FastPause.h"
+#include "WorldInterface.h"
 
 namespace engine
 {
