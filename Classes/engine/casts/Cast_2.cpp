@@ -1,5 +1,6 @@
 #include "Cast_2.h"
 #include "engine/World.h"
+#include "engine/WorldInterface.h"
 
 namespace engine{
     namespace    casts

@@ -2,6 +2,7 @@
 #include "Unit.h"
 #include "MainClass.h"
 #include "engine/World.h" 
+#include "engine/WorldInterface.h"
 
 namespace engine
 {

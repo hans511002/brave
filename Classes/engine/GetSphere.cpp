@@ -1,6 +1,11 @@
 ﻿
 #include "GetSphere.h"
 #include "engine/World.h"
+#include "engine/WorldInterface.h"
+#include "engine/towers/TowerMenu.h"
+#include "engine/towers/UltraTowerMenu.h"
+#include "CastSphere.h"
+#include "engine/casts/Cast.h"
 
 namespace engine
 {

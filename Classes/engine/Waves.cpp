@@ -8,6 +8,7 @@
 #include "engine/WorldInterface.h"
 #include "MoneyAdd.h"
 #include "engine/level/Level.h"
+#include "engine/units/Unit.h"
 
 
 using namespace engine::units;

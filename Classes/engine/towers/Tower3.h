@@ -2,7 +2,8 @@
 #define ENGINE_TOWERS_TOWER3_H
 #include "BaseHeaders.h"
 #include "engine/towers/Tower.h" 
- 
+#include "Tower2.h"
+
 namespace engine
 {
     namespace towers

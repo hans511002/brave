@@ -6,8 +6,10 @@ namespace engine{
 	class BuildTowerPlace :public MovieClip
 	{
 	public:
+ 
 		MCCase * placeForBuildCase;
-		Sprite * buildPoint;
+		MCCase * buildPoint;
+
 		BuildTowerPlace(string arm);
 	};
 
@@ -19,6 +21,7 @@ namespace engine{
 		MovieClipSub * eyesAnima;
 		MCCase * mask1;
 		MCCase * mask2;
+		Sprite * arrow;
 		LevelPointer();
 		int counter;
 		int timer;

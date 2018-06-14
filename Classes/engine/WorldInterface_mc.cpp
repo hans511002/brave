@@ -34,7 +34,7 @@ namespace engine
 
 		butCastAirCont = butCastAir->createMovieClipSub("cont");
 
-		butCastAirContContMask = butCastAirCont->createSprite("cont");
+		butCastAirContContMask = butCastAirCont->getSprite("contMask");
 		//butCastAirContContMask = butCastAirCont->createMovieClipSub("contMask");
 
 		butCastGolem = this->createMovieClipSub("butCastGolem"); 
@@ -49,23 +49,23 @@ namespace engine
 		buyFire = this->createMovieClipSub("buyFire");
 		buyFireBuyTXT = buyFire->createText("buyTXT");
 		buyFireCoin = buyFire->createMovieClipSub("coin");
-		buyFireLightUp = buyFire->createMovieClipSub("lightUp");
+		buyFireLightUp = buyFire->getSprite("lightUp");
 		buyGetAll = this->createMovieClipSub("buyGetAll");
 		buyGetAllBuyTXT = buyGetAll->createText("buyTXT");
 		buyGetAllCoin = buyGetAll->createMovieClipSub("coin");
-		buyGetAllLightUp = buyGetAll->createMovieClipSub("lightUp");
+		buyGetAllLightUp = buyGetAll->getSprite("lightUp");
 		buyIce = this->createMovieClipSub("buyIce");
 		buyIceBuyTXT = buyIce->createText("buyTXT");
 		buyIceCoin = buyIce->createMovieClipSub("coin");
-		buyIceLightUp = buyIce->createMovieClipSub("lightUp");
+		buyIceLightUp = buyIce->getSprite("lightUp");
 		buyLevin = this->createMovieClipSub("buyLevin");
 		buyLevinBuyTXT = buyLevin->createText("buyTXT");
 		buyLevinCoin = buyLevin->createMovieClipSub("coin");
-		buyLevinLightUp = buyLevin->createMovieClipSub("lightUp");
+		buyLevinLightUp = buyLevin->getSprite("lightUp");
 		buyStone = this->createMovieClipSub("buyStone");
 		buyStoneBuyTXT = buyStone->createText("buyTXT");
 		buyStoneCoin = buyStone->createMovieClipSub("coin");
-		buyStoneLightUp = buyStone->createMovieClipSub("lightUp");
+		buyStoneLightUp = buyStone->getSprite("lightUp");
 		fast = this->createMovieClipSub("fast");
 		fastFastCase = fast->createCase("fastCase");
 		fastCont = fast->createMovieClipSub("cont");

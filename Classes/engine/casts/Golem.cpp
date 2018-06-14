@@ -2,6 +2,8 @@
 #include "MainClass.h"
 #include "engine/World.h"
 #include "Cast.h"
+#include "engine/WorldInterface.h"
+#include "engine/units/Unit.h"
 
 namespace engine{
     namespace    casts

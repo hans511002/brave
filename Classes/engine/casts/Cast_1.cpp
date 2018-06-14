@@ -1,6 +1,7 @@
 #include "engine/world.h"
 #include "Cast_1.h"
 #include "Golem.h"
+#include "engine/WorldInterface.h"
 
 namespace engine{
     namespace    casts

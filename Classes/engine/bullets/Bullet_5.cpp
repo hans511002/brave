@@ -2,6 +2,7 @@
 #include "Bullet_5.h" 
 #include "engine/World.h"
 #include "engine/units/Unit.h"
+#include "engine/towers/Tower.h"
 
 namespace engine{
     namespace bullets{ 

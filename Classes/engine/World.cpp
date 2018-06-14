@@ -1,4 +1,4 @@
-﻿#include "World.h"
+﻿#include "engine/World.h"
 #include "MainClass.h"
 
 #include "engine/Waves.h"
@@ -6,9 +6,9 @@
 #include "engine/WorldInterface.h"
 #include "Feature.h"
 
-#include "MoneyAdd.h"
-#include "CastSphere.h"
-#include "GetSphere.h"
+#include "engine/MoneyAdd.h"
+#include "engine/CastSphere.h"
+#include "engine/GetSphere.h"
 #include "BonusMoney.h"
 
 #include "engine/level/Level.h"
@@ -22,7 +22,6 @@
 #include "engine/towers/BuildTowerMenu.h"
 #include "engine/towers/UltraTowerMenu.h"
 #include "engine/towers/TowerMenu.h"
-#include "engine/towers/TowerMenu_mc.h"
 
 #include "engine/casts/Map.h"
 #include "engine/casts/Cast.h"

@@ -1,5 +1,7 @@
 #include "TowerMenu.h"
 #include "engine/World.h"
+#include "engine/WorldInterface.h"
+#include "engine/GetSphere.h"
 
 namespace engine
 {

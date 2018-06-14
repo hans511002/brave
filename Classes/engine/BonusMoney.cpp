@@ -2,6 +2,7 @@
 #include "BonusMoney.h"
 #include "engine/World.h"
 #include "MainClass.h"
+#include "engine/WorldInterface.h"
 
 namespace engine
 {

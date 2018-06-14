@@ -23,6 +23,8 @@
 
 #include "engine/casts/Map.h"
 #include "engine/casts/Cast.h"
+#include "engine/level/Level.h"
+#include "engine/level/Level1_mc.h"
 
 
 namespace engine
@@ -238,75 +240,41 @@ namespace engine
 		//	this->world->quality = "high";
 		//}
 		int levelPointerSize = this->world->level->pointers.size();
+		for (int i = 0; i < levelPointerSize; i++)
+		{
+			LevelPointer * pointer = this->world->level->pointers[0];
+			pointer->statusAnima = 1;
+			pointer->myPoint = cocos2d::Point(pointer->getPosition());
+			pointer->gotoAndStop(2);
+			pointer->mask2->stop();
+			//pointer->arrow->stop();
+			pointer->fireAnima->gotoAndStop(1);
+			pointer->eyesAnima->gotoAndStop(1);
+			pointer->mask2->setRotation(180);
+			pointer->pointerCase->buttonMode = true;
+			//this->world->level.removeChild(this->world->pointer1);
+			//this->world->addChild(this->world->pointer1);
+			//this->world->listOfIndexes3.push(this->world->pointer1); 
+			pointer->setScaleY(0.9f);
+			pointer->setScaleX(0.9f);
+			pointer->setVisible(false);
+			float tempObject = pointer->getRotation();
+			pointer->setRotation(0);
+			pointer->arrow->setRotation(tempObject);
+		}
+
 		if (levelPointerSize > 0 && this->world->level->pointers[0])
 		{
-			this->world->pointer1 = this->world->level->pointers[0];// pointer1;
-			//this->world->pointer1->statusAnima = 1;
-			//this->world->pointer1->myPoint = new Point(this->world->pointer1->x, this->world->pointer1->y);
-			//this->world->pointer1->gotoAndStop(2);
-			//this->world->pointer1->mask2->stop();
-			//this->world->pointer1->arrow->stop();
-			//this->world->pointer1->fireAnima->gotoAndStop(1);
-			//this->world->pointer1->eyesAnima->gotoAndStop(1);
-			//this->world->pointer1->mask2.rotation = 180;
-			//this->world->pointer1->pointerCase->buttonMode = true;
-			//this->world->level.removeChild(this->world->pointer1);
-			this->world->addChild(this->world->pointer1);
-			//this->world->listOfIndexes3.push(this->world->pointer1); 
-			//this->world->pointer1->setScaleY(0.9);
-			//this->world->pointer1->setScaleX(0.9);
-			//this->world->pointer1->setVisible(false);
-			//tempObject = this->world->pointer1->rotation;
-			//this->world->pointer1->rotation = 0;
-			//this->world->pointer1->arrow.rotation = tempObject;
+			this->world->pointer1 = this->world->level->pointers[0];// pointer1; 
 		}
 		if (levelPointerSize > 1 && this->world->level->pointers[1])//this->world->level.pointer2)
-		{
-			//	this->world->pointer2 = this->world->level.pointer2;
-			//	this->world->pointer2->statusAnima = 1;
-			//	this->world->pointer2->myPoint = new Point(this->world->pointer2.x, this->world->pointer2.y);
-			//	this->world->pointer2->gotoAndStop(2);
-			//	this->world->pointer2.mask2->stop();
-			//	this->world->pointer2.arrow->stop();
-			//	this->world->pointer2.fireAnima->gotoAndStop(1);
-			//	this->world->pointer2.eyesAnima->gotoAndStop(1);
-			//	this->world->pointer2->mask2->rotation = 180;
-			//	this->world->pointer2.pointerCase->buttonMode = true;
-			//	this->world->level.removeChild(this->world->pointer2);
-			//	this->world->addChild(this->world->pointer2);
-			//	this->world->listOfIndexes3.push(this->world->pointer2);
-			//	var _loc_1 : *= 0.9;
-			//	this->world->pointer2.scaleY = 0.9;
-			//	this->world->pointer2->setScaleX(_loc_1);
-			//	this->world->pointer2->setVisible(false);
-			//	tempObject = this->world->pointer2.rotation;
-			//	this->world->pointer2.rotation = 0;
-			//	this->world->pointer2.arrow.rotation = tempObject;
+		{ 
+			this->world->pointer2 = this->world->level->pointers[1];// pointer2; 
 		}
 		if (levelPointerSize > 2 && this->world->level->pointers[2])//this->world->level.pointer3)
 		{
-			//	this->world->pointer3 = this->world->level.pointer3;
-			//	this->world->pointer3->statusAnima = 1;
-			//	this->world->pointer3->myPoint = new Point(this->world->pointer3.x, this->world->pointer3.y);
-			//	this->world->pointer3->gotoAndStop(2);
-			//	this->world->pointer3.mask2->stop();
-			//	this->world->pointer3.arrow->stop();
-			//	this->world->pointer3.fireAnima->gotoAndStop(1);
-			//	this->world->pointer3.eyesAnima->gotoAndStop(1);
-			//	this->world->pointer3->mask2->rotation = 180;
-			//	this->world->pointer3.pointerCase->buttonMode = true;
-			//	this->world->level.removeChild(this->world->pointer3);
-			//	this->world->addChild(this->world->pointer3);
-			//	this->world->listOfIndexes3.push(this->world->pointer3);
-			//	var _loc_1 : *= 0.9;
-			//	this->world->pointer3.scaleY = 0.9;
-			//	this->world->pointer3->setScaleX(_loc_1);
-			//	this->world->pointer3->setVisible(false);
-			//	tempObject = this->world->pointer3.rotation;
-			//	this->world->pointer3.rotation = 0;
-			//	this->world->pointer3.arrow.rotation = tempObject;
+			this->world->pointer3 = this->world->level->pointers[2];// pointer3; 
 		}
-
 		int complexityLevel = this->world->saveBox->getIntValue("complexityLevel");
 		Common::String levelXmlFile = "xml/";
 		if (complexityLevel < 4)

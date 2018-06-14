@@ -2,6 +2,7 @@
 #include "Bullet.h"
 #include "engine/units/Unit.h"
 #include "MainClass.h"
+#include "engine/towers/Tower.h"
 
 
 namespace engine{

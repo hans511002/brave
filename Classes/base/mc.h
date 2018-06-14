@@ -41,8 +41,9 @@ namespace engine
 		MovieClip * MC::createMovieClip(string slot, MovieClip * mc);
         MCCase * createCase(string slot, bool draw = true);
 		MCSprite * createSprite(string slot, string file);
-		MCSprite * createSprite(string slot, Sprite* file = NULL);
+		MCSprite * createSprite(string slot, Sprite* file );
 		MCMask * createMask(string slot);
+		Sprite *getSprite(string slotName);
 		
 
 		void addMcs(MC * mc, MovieClipSub * mcs);

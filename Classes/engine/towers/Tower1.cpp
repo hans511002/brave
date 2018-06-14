@@ -1,7 +1,7 @@
 #include "MainClass.h"
 #include "engine/World.h"
-#include "TowerMenu.h"
-#include "Tower1.h"
+#include "engine/towers/UltraTowerMenu.h"
+#include "engine/towers/TowerMenu.h"
 
 namespace engine
 {

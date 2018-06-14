@@ -184,14 +184,14 @@ namespace engine
 	};
 	MCSprite * MC::createSprite(string slotName, Sprite* file)
 	{ 
-		if(file)
-			return new MCSprite(this, slotName, file);
-		else
-			return new MCSprite(this, slotName);
+		return new MCSprite(this, slotName, file);
 	};
 	MCMask *  MC::createMask(string slotName)
 	{
 		return new MCMask(this, slotName);
+	};
+	Sprite * MC::getSprite(string slotName){
+		return (Sprite*)this->getArmature()->getSlot(slotName)->getDisplay();
 	};
 
 	//void MovieClipSubBase::addMCbs(MC * mc, MovieClipSubBase * mbs)
@@ -464,7 +464,7 @@ namespace engine
         //for (int i = 0; i < l; i++)
         //    this->mcase[i]->reinit();
     };
-	MovieClip::MovieClip(dragonBones::CCArmatureDisplay * cont, string defAniName) :isOnce(false) 
+	MovieClip::MovieClip(dragonBones::CCArmatureDisplay * cont, string defAniName) :isOnce(false), cont(0), world(0)
 	{
 		setNodeType("MovieClip");
 		std::map<std::string, dragonBones::AnimationData*> & animations = cont->getArmature()->_armatureData->animations;
@@ -489,7 +489,7 @@ namespace engine
 		this->setName(cont->getName());
 		this->isReady = true;
 	};
-	MovieClip::MovieClip(string rootPath, string armName, string dbName, string defAniName) :isOnce(false) , cont(0)
+	MovieClip::MovieClip(string rootPath, string armName, string dbName, string defAniName) :isOnce(false), cont(0), world(0)
 	{
 		setNodeType("MovieClip");
 		this->rootPath = rootPath;
@@ -519,7 +519,7 @@ namespace engine
 		this->isReady = true;
 		return true;
 	};
-	MovieClip::MovieClip(string armName, string dbName, BaseNode *node) :cont(0)
+	MovieClip::MovieClip(string armName, string dbName, BaseNode *node) :cont(0), world(0)
 	{ 
 		setNodeType("MovieClip");
 		this->armName = armName;
@@ -537,24 +537,22 @@ namespace engine
 		if(node)node->addChild(this);
 		this->isReady = true;
 	};
-	MovieClip::MovieClip(World * world, string rootPath, string armName, string dbName, string defAniName)
-	{
-		MovieClip(rootPath, armName, dbName, defAniName);
+	MovieClip::MovieClip(World * world, string rootPath, string armName, string dbName, string defAniName) :MovieClip(rootPath, armName, dbName, defAniName)
+	{ 
 		if(world)setOnceMove(world);
 	};
 
-	MovieClip::MovieClip(MC *mc, dragonBones::Slot * slot, string rootPath, string armName, string dbName, string defAniName )
-	{
-		MovieClip(rootPath, armName, dbName, defAniName);
+	MovieClip::MovieClip(MC *mc, dragonBones::Slot * slot, string rootPath, string armName, string dbName, string defAniName) :cont(0), world(0)
+	{ 
 		this->mc = mc;
 		this->slotName = slot->getName();
 		this->setName(slotName);
 		reinit();
 		mc->addMCbs(this);
 	};
-	MovieClip::MovieClip(MC *mc, string slotName, string rootPath, string armName, string dbName, string defAniName)
+	MovieClip::MovieClip(MC *mc, string slotName, string rootPath, string armName, string dbName, string defAniName) :cont(0), world(0)
 	{
-		MovieClip(rootPath, armName, dbName, defAniName);
+		
 		this->mc = mc;
 		this->rootPath = rootPath;
 		this->armName = armName;
@@ -564,7 +562,7 @@ namespace engine
 		reinit();
 		mc->addMCbs(this);
 	};
-	MovieClip::MovieClip(MC *mc, string slotName, string rootPath, string dbName) :cont(0)
+	MovieClip::MovieClip(MC *mc, string slotName, string rootPath, string dbName) :cont(0), world(0)
 	{
 		setNodeType("MovieClip");
 		this->mc = mc;
@@ -715,7 +713,7 @@ namespace engine
 	};
 
 
-	MovieClipSub::MovieClipSub(MC *_mc, dragonBones::Slot * _slot, string defAniName) :arm(0)
+	 MovieClipSub::MovieClipSub(MC *_mc, dragonBones::Slot * _slot, string defAniName) :arm(0)
 	{
 		setNodeType("MovieClipSub");
 		this->mc = _mc;
@@ -726,7 +724,7 @@ namespace engine
 		reinit();
 		addMcs(mc, this);
 	};
-	MovieClipSub::MovieClipSub(MC *mc, string slotName, string defAniName) :arm(0)
+	 MovieClipSub::MovieClipSub(MC *mc, string slotName, string defAniName) :arm(0)
 	{
 		setNodeType("MovieClipSub");
 		this->mc = mc;

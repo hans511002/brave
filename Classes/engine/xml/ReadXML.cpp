@@ -1,8 +1,10 @@
-﻿
+﻿#include "BaseHeaders.h"
+
 #include "ReadXML.h"
 #include "MainClass.h"
 #include "engine/Waves.h"
 #include "engine/World.h"
+#include "engine/level/Level.h"
 
 namespace engine
 { 
@@ -1495,7 +1497,7 @@ namespace engine
 			//.push(Number(this->xmlDataLevels.settings.portals.levin.location[this->i].@y));
 			i++;
 		}
-		if (Main::mainClass->saveBoxClass->getIntValue("complexityLevel") == 1)//if (Main::mainClass->saveBoxClass->gameSave.data.complexityLevel == 1)
+		if (Main::mainClass->saveBoxClass->getIntValue("complexityLevel") <= 1)//if (Main::mainClass->saveBoxClass->gameSave.data.complexityLevel == 1)
 		{
 			this->complexitySettingXML = this->xmlDataLevels->getFloat("settings.complexity.@easy") / 100 ;// Number(this->xmlDataLevels.settings.complexity.@easy) / 100;
 		}

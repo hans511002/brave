@@ -13,6 +13,10 @@ namespace engine
 	class GetSphere;
 	struct Hint_mc;
 	class ShootBase;
+	struct CastMask_mc;
+	struct MouseStatusMC;
+
+
 
 	namespace  towers
 	{

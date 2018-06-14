@@ -94,11 +94,11 @@ namespace engine
 		this->container->buyStoneCoin->stop();
 		this->container->buyLevinCoin->stop();
 		this->container->buyGetAllCoin->stop();
-		this->container->buyFireLightUp->stop();
-		this->container->buyIceLightUp->stop();
-		this->container->buyStoneLightUp->stop();
-		this->container->buyLevinLightUp->stop();
-		this->container->buyGetAllLightUp->stop();
+		//this->container->buyFireLightUp->stop();
+		//this->container->buyIceLightUp->stop();
+		//this->container->buyStoneLightUp->stop();
+		//this->container->buyLevinLightUp->stop();
+		//this->container->buyGetAllLightUp->stop();
 		this->container->sell->stop();
 		this->container->book->stop();
 		this->container->pause->stop();
@@ -118,7 +118,7 @@ namespace engine
 		this->container->butCastIcemanCastIcemanCase->buttonMode = true;
 		this->container->butCastAirCastAirCase->buttonMode = true;
 		//this->container->slow->buttonMode = true;
-		this->container->traceBezier->buttonMode = true;
+		if (this->container->traceBezier)this->container->traceBezier->buttonMode = true;
 		this->container->fireNumTXT->mouseEnabled = false;
 		this->container->iceNumTXT->mouseEnabled = false;
 		this->container->stoneNumTXT->mouseEnabled = false;
@@ -140,7 +140,6 @@ namespace engine
 		this->container->buyStone->setVisible(false);
 		this->container->buyLevin->setVisible(false);
 		//		this->container->backComponents.cacheAsBitmap = true;
-		this->addChild(this->container);
 		this->container->fireSphereMyPoint = this->container->fireSphere->localToGlobal(this->container->fireSphereSphereCase->getPosition());
 		this->container->iceSphereMyPoint = this->container->iceSphere->localToGlobal(this->container->iceSphereSphereCase->getPosition());
 		this->container->stoneSphereMyPoint = this->container->stoneSphere->localToGlobal(this->container->stoneSphereSphereCase->getPosition());
@@ -175,8 +174,8 @@ namespace engine
 		//	this->container->traceBezier->setVisible( false);
 		//}
 		this->lastTime = this->container->lastTime;
-		this->container->removeChild(this->lastTime);
-		this->world->addChild(this->lastTime);
+		//this->container->removeChild(this->lastTime);
+		//this->world->addChild(this->lastTime);
 		int complexityLevel = this->world->saveBox->getIntValue("complexityLevel");
 		if (complexityLevel == 4)
 		{

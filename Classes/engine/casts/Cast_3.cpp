@@ -1,6 +1,7 @@
 #include "Cast_3.h"
 #include "engine/world.h"
 #include "Air.h"
+#include "engine/WorldInterface.h"
 
 namespace engine{
     namespace    casts

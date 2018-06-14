@@ -18,13 +18,14 @@ namespace engine{
 		eyesAnima = this->createMovieClipSub("LevelBase");
 		mask1 = this->createCase("LevelBase");
 		mask2 = this->createCase("LevelBase");
+		arrow = (Sprite*)this->getArmature()->getSlot("arrow")->getDisplay();
 	}
 
 	BuildTowerPlace::BuildTowerPlace(string arm) :MovieClip("worldinterface/", arm,"LevelBase")
 	{
-		setNodeType("BuildTowerPlace");
+		setNodeType("BuildTowerPlace"); 
 		placeForBuildCase = this->createCase("LevelBase");
-		buildPoint = (Sprite *)this->getArmature()->getSlot("LevelBase")->getDisplay();
+		buildPoint = this->createCase("LevelBase");
 	};
 
 	Level1_mc::Level1_mc(World *world) :Level(world,"worldinterface/", "Level1_mc", "Level1_mc")
