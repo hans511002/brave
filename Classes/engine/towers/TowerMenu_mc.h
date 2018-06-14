@@ -75,10 +75,10 @@ namespace engine
 			MovieClipSub * sphereSlot4SphereAnimaCont;
 
 			TowerMenu_mc();
-			MovieClipSub * getSphereSlot(MCCase * slotCase);
-			MovieClipSub * getSphereAnima(MCCase * slotCase);
-			MCText * getText(MovieClipSub *);
-			MCText * getText(MCCase *);
+			//MovieClipSub * getSphereSlot(MCCase * slotCase);
+			//MovieClipSub * getSphereAnima(MCCase * slotCase);
+			//MCText * getText(MovieClipSub *);
+			//MCText * getText(MCCase *);
 		};
 
 		class UltraTowerMenu_mc :public MovieClip
@@ -110,8 +110,8 @@ namespace engine
 			MovieClipSub * sphereSlot2SphereAnimaCont;
 
 
-			MovieClipSub * getSphereSlot(MCCase * slotCase);
-			MovieClipSub * getSphereAnima(MCCase * slotCase);
+			//MovieClipSub * getSphereSlot(MCCase * slotCase);
+			//MovieClipSub * getSphereAnima(MCCase * slotCase);
 
 			UltraTowerMenu_mc();
 

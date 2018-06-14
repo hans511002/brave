@@ -9,6 +9,10 @@ namespace engine
 	namespace towers
 	{
 
+		Tower6_mc::Tower6_mc() :TowerBase_mc("tower/", "Tower6_mc", "Tower6_mc")
+		{
+			shotAnima = this->createMovieClipSub("shotAnima");
+ 		};
 		Tower6::Tower6() :soundCounter(0), soundTimer(5)
 		{
 			return;

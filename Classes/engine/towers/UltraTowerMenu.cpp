@@ -412,9 +412,8 @@ namespace engine
 				UltraTowerMenu_mc * towerMenuMc = ISTYPE(UltraTowerMenu_mc, parent);
 				MCCase * scase = ISTYPE(MCCase, event->target);
 				//UltraTowerMenu_mc  event->target->getParent()->getParent()->getParent()
-				MovieClipSub *	sphereAnima = towerMenuMc->getSphereAnima(scase);
-				MovieClipSub  * sphereSlot = towerMenuMc->getSphereSlot(scase);//ISTYPE(MovieClipSub, event->target->getParent());
-
+				MovieClipSub  * sphereSlot = scase->getParentMC<MovieClipSub>();// towerMenuMc->getSphereSlot(scase);//ISTYPE(MovieClipSub, event->target->getParent());
+				MovieClip *	sphereAnima = sphereSlot->getMem<MovieClip>("sphereAnima");
 				if(sphereAnima->isVisible())
 				{
 					if(event->target->getParent()->getName() == "sphereSlot1")
@@ -572,8 +571,8 @@ namespace engine
 				UltraTowerMenu_mc * towerMenuMc = ISTYPE(UltraTowerMenu_mc, parent);
 				MCCase * scase = ISTYPE(MCCase, event->target);
 				//UltraTowerMenu_mc  event->target->getParent()->getParent()->getParent()
-				MovieClipSub *	sphereAnima = towerMenuMc->getSphereAnima(scase);
-				MovieClipSub  * sphereSlot = towerMenuMc->getSphereSlot(scase);//ISTYPE(MovieClipSub, event->target->getParent());
+				MovieClipSub  * sphereSlot = scase->getParentMC<MovieClipSub>();// towerMenuMc->getSphereSlot(scase);//ISTYPE(MovieClipSub, event->target->getParent());
+				MovieClip *	sphereAnima = sphereSlot->getMem<MovieClip>("sphereAnima");
                 if (sphereSlot->currentFrame < 4)
                 {
                     if (sphereAnima->currentFrame == 1)
@@ -1712,7 +1711,7 @@ namespace engine
                 //}
                 if (this->lastE)
                 {
-                    this->world->mouseMovedHandler(this->lastE);
+                    this->world->mouseMoveHandler(this->lastE);
                 }
             }
             return;

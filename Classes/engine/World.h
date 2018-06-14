@@ -178,8 +178,8 @@ namespace engine
     
 		virtual   void mouseDownHandler(cocos2d::EventMouse* event);
 		virtual   void mouseUpHandler(cocos2d::EventMouse* event);
-		virtual   void mouseMovedHandler(cocos2d::EventMouse* event);
-		virtual   void mouseScrollHandler(cocos2d::EventMouse* event);
+		virtual   void mouseMoveHandler(cocos2d::EventMouse* event);
+		//virtual   void mouseScrollHandler(cocos2d::EventMouse* event);
 		virtual   void rightMouseDownHandler(cocos2d::EventMouse* event);
 		virtual   void rightMouseUpHandler(cocos2d::EventMouse* event);
 

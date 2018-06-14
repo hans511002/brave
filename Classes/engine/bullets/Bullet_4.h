@@ -3,22 +3,23 @@
 #include "Bullet.h" 
 
 namespace engine{
-    namespace bullets{ 
-		
-        class Bullet_4 :public Bullet
-        {
-        public:
-            float deviation;
-            bool effectFlag;
+	namespace bullets
+	{
 
-            Bullet_4():deviation(6){};
+		class Bullet_4 :public Bullet
+		{
+		public:
+			float deviation;
+			bool effectFlag;
 
-            bool init( ) ;
+			inline  Bullet_4() :deviation(6) {};
 
-virtual             void update(float dt=0) ;
-            void kill();
-        };
-    }
+			bool init();
+
+			virtual void update(float dt = 0);
+			//void kill();
+		};
+	}
 }
 #endif
       

@@ -2768,14 +2768,14 @@ namespace engine
 		this->container->pause->gotoAndStop((this->container->pause->totalFrames - 1));
 		this->container->pauseOpenFlag = false;
 		this->container->pauseCloseFlag = true;
-		this->world->menuObject = new PauseMenu();
-		this->world->addChild(this->world->menuObject);
+		//this->world->menuObject = new PauseMenu();
+		//this->world->addChild(this->world->menuObject);
 	}// end function
 
 	void WorldInterface::addFastPause()
 	{
-		this->world->menuObject = new FastPause();
-		this->world->addChild(this->world->menuObject);
+		//this->world->menuObject = new FastPause();
+		//this->world->addChild(this->world->menuObject);
 	}// end function
 
 	void WorldInterface::addEncyclopedia()

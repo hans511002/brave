@@ -9,7 +9,7 @@ namespace engine{
         {
         public:
 
-            Bullet_2(){};
+           inline Bullet_2(){};
 
             bool init();
 

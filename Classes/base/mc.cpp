@@ -52,7 +52,7 @@ namespace engine
 		if(aniName == "")aniName = defAniName;
 		this->getAnimation()->play(aniName, times);
 	}
-	MovieClip * MC::getMc(MC * mc)
+	MovieClip * MC::getRootMc(MC * mc)
 	{
 		MovieClip * mvc = dynamic_cast<MovieClip*>(mc);
 		while(mvc == NULL && mc != NULL)
@@ -67,10 +67,34 @@ namespace engine
 	void MC::addMcs(MC * mc, MovieClipSub * mcs)
 	{
 		mc->submc.push(mcs);
-		MovieClip * mvc = getMc(mc);
+		MovieClip * mvc = getRootMc(mc);
 		if(mvc && mc != mvc)
 			mvc->addMcs(mcs);
 	};
+	 MovieClipSub*  MC::getMemSubMC(string slotName)
+	{
+		for(int i = 0; i < this->submc.size(); i++)
+		{
+			if(slotName == this->submc[i]->getName())
+			{ 
+				return this->submc[i];
+			}
+		}
+		return NULL;
+	};
+	 Node *  MC::getMemNode(string slotName)
+	 {
+		 for(int i = 0; i < this->mcbs.size(); i++)
+		 {
+			 Node *node = ISTYPE(Node, this->mcbs[i]);
+			 if(node && slotName == node->getName())
+			 { 
+				  return node;
+			 }
+		 }
+		 return NULL;
+	};
+ 
     void MC::addMCbs(MovieClipSubBase * mcs){
 		this->mcbs.push(mcs);
         //if (ISTYPE(MCText, mcs)){

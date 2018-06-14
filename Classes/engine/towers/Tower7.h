@@ -11,13 +11,14 @@ namespace engine
 
 		struct Tower7_mc : public TowerBase_mc
 		{
-			MovieClip * cont1;
-			MovieClip * cont2;
-			MovieClip * cont3;
-			MovieClip * round1;
-			MovieClip * round2;
-			MovieClip * round3;
-			MovieClip * round4;
+			MovieClipSub * cont1;
+			MovieClipSub * cont2;
+			MovieClipSub * cont3;
+			MovieClipSub * round1;
+			MovieClipSub * round2;
+			MovieClipSub * round3;
+			MovieClipSub * round4;
+
 			BulletTower71_mc * upgr1_1;
 			BulletTower71_mc * upgr1_2;
 			BulletTower71_mc * upgr1_3;
@@ -26,6 +27,7 @@ namespace engine
 			BulletTower71_mc * upgr1_6;
 			BulletTower71_mc * upgr1_7;
 			BulletTower71_mc * upgr1_8;
+			Tower7_mc();
 		};
 		class Tower7 :public Tower
 		{
@@ -34,7 +36,7 @@ namespace engine
 			int visCounter;// = 0;
 			int upgr1_intervalCounter;
 			int upgr1_intervalTimer;
-			Bullet * upgr1_anima;
+			BulletTower71_mc * upgr1_anima;
 			int roundCounter;
 			int soundCounter;
 			int soundTimer;

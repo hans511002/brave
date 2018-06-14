@@ -6,6 +6,8 @@
 namespace engine{
     namespace bullets
     {
+		Bullet_51::Bullet_51() {};
+
         bool Bullet_51::init() 
         {
             bulletType = 51;

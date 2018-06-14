@@ -19,7 +19,7 @@ namespace engine
             int length;
             int unitsCout;
 
-            Bullet_6();
+			   Bullet_6();
 
             bool init();
 

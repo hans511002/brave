@@ -881,8 +881,8 @@ namespace engine
 			TowerMenu_mc * towerMenuMc = ISTYPE(TowerMenu_mc, parent);
 			MCCase * scase = ISTYPE(MCCase, event->target);
 			//TowerMenu_mc  event->target->getParent()->getParent()->getParent()
-			MovieClipSub *	sphereAnima = towerMenuMc->getSphereAnima(scase);
-			MovieClipSub  * sphereSlot = towerMenuMc->getSphereSlot(scase);//ISTYPE(MovieClipSub, event->target->getParent());
+			MovieClipSub  * sphereSlot = scase->getParentMC<MovieClipSub>();// towerMenuMc->getSphereSlot(scase);//ISTYPE(MovieClipSub, event->target->getParent());
+			MovieClip *	sphereAnima = sphereSlot->getMem<MovieClip>("sphereAnima");// towerMenuMc->getSphereAnima(scase);
 			if (sphereSlot->currentFrame == 2)
 			{
 				BaseTowerMenu *tempObject = NULL;

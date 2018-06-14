@@ -1,4 +1,4 @@
-#include "TowerMenu_mc.h"
+﻿#include "TowerMenu_mc.h"
 #include "engine/World.h"
 
 namespace engine
@@ -67,7 +67,6 @@ namespace engine
 			sphereSlot3SphereAnimaCont = sphereSlot3SphereAnima->createMovieClipSub("cont");
 			sphereSlot4 = this->createMovieClipSub("sphereSlot4");
 			sphereSlot4SphereSlotCase = sphereSlot4->createCase("sphereSlotCase");
-
 			sphereSlot4SphereAnima = sphereSlot4->createMovieClip("sphereAnima", "tower/", "TowerMenuSphere_mc", "TowerMenuSphere_mc");
 			sphereSlot4SphereAnimaCont = sphereSlot4SphereAnima->createMovieClipSub("cont");
 

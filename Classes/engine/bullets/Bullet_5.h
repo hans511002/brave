@@ -21,7 +21,7 @@ namespace engine{
             float deviation;
             bool effectFlag;
 
-            Bullet_5():deviation(0){};
+            Bullet_5();
 
             bool init( ) ;
 

@@ -20,6 +20,7 @@ namespace engine
 			MovieClip * boneBlock;
 			MCCase * towerCase;
 			Tower * myParent;
+			MovieClipSub * selectTower;
 			TowerBase_mc(string rootPath, string armName, string dbName, string defAniName = "");
 		};
 		struct ShootingTurnStack{

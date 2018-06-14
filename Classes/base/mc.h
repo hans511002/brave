@@ -47,13 +47,17 @@ namespace engine
 
 		void addMcs(MC * mc, MovieClipSub * mcs);
 		virtual bool remove(MovieClipSub * ms);
-		static MovieClip * getMc(MC * mc);
+		static MovieClip * getRootMc(MC * mc);
 
 		Common::Array<MovieClipSub*> submc;
 		//Common::Array<MCText*> mct;
 		Common::Array<MovieClipSubBase *> mcbs;
         virtual void addMCbs(MovieClipSubBase * mcs);
 		virtual bool remove(MovieClipSubBase * ms);
+
+		virtual Node * getMemNode(string slotName); 
+		MovieClipSub*  getMemSubMC(string slotName);
+		template<typename T = Node> T * getMem(string slotName) { return ISTYPE(T, getMemNode(slotName)); };
 	};
     struct MovieClipSubBase 
     {
@@ -66,8 +70,11 @@ namespace engine
 		virtual void setVisible(bool v);
         virtual bool reinit() ;
 		inline MovieClipSubBase() :isReady(false), mc(0), slot(0), display(0), visible(true){};
-        //inline MovieClip * getMc() { return MC::getMc(mc); };
+		template<typename T = MC> T * getParentMC() { return ISTYPE(T, mc); };
+        //inline MovieClip * getRootMc() { return MC::getRootMc(mc); };
         //void addMCbs(MC * mc, MovieClipSubBase * mcs);
+		 
+
     };
     struct MovieClip :public virtual BaseNode, public virtual MC,public virtual MovieClipSubBase
     {

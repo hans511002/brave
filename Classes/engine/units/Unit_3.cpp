@@ -6,10 +6,7 @@ namespace engine
 {
 	namespace units
 	{
-		Unit_3::Unit_3()
-		{
-			return;
-		}// end function
+ 
 
 		bool Unit_3::init()
 		{

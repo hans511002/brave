@@ -8,6 +8,26 @@ namespace engine
 {
     namespace towers
     { 
+		Tower7_mc::Tower7_mc() :TowerBase_mc("tower/", "Tower7_mc", "Tower7_mc")
+		{
+			cont1 = this->createMovieClipSub("cont1");
+			cont2 = this->createMovieClipSub("cont2");
+			cont3 = this->createMovieClipSub("cont3");
+			round1 = this->createMovieClipSub("round1");
+			round2 = this->createMovieClipSub("round2");
+			round3 = this->createMovieClipSub("round3");
+			round4 = this->createMovieClipSub("round4");
+
+			upgr1_1 = (BulletTower71_mc*)this->createMovieClip("upgr1_1", new BulletTower71_mc());
+			upgr1_2 = (BulletTower71_mc*)this->createMovieClip("upgr1_2", new BulletTower71_mc());
+			upgr1_3 = (BulletTower71_mc*)this->createMovieClip("upgr1_3", new BulletTower71_mc());
+			upgr1_4 = (BulletTower71_mc*)this->createMovieClip("upgr1_4", new BulletTower71_mc());
+			upgr1_5 = (BulletTower71_mc*)this->createMovieClip("upgr1_5", new BulletTower71_mc());
+			upgr1_6 = (BulletTower71_mc*)this->createMovieClip("upgr1_6", new BulletTower71_mc());
+			upgr1_7 = (BulletTower71_mc*)this->createMovieClip("upgr1_7", new BulletTower71_mc());
+			upgr1_8 = (BulletTower71_mc*)this->createMovieClip("upgr1_8", new BulletTower71_mc());
+
+		};
         Tower7::Tower7():roundCounter(0),soundCounter(0),soundTimer(5)
         {
             return;
@@ -68,7 +88,7 @@ namespace engine
             this->addChild(container);
             Tower::init();
             container->setVisible(false);
-            container->setScale(0.9);
+            container->setScale(0.9f);
             return true;
         }// end function
 
@@ -124,7 +144,8 @@ namespace engine
 
         void Tower7::scan()
         {
-            if (!container->blockTower->isVisible())
+			Tower7_mc * container = ISTYPE(Tower7_mc, this->container);
+			if(!container->blockTower->isVisible())
             {
                 if (intervalCounter < intervalTimer)
                 {
@@ -214,10 +235,10 @@ namespace engine
                         i = 0;
                         while (i < listOfTargets.size())
                         {
+							listOfTargets[i]->resLen = listOfTargets[i]->path / listOfTargets[i]->finishPath;
                             if (enemyTarget)
                             {
-                                float tempObject = listOfTargets[i]->path / listOfTargets[i]->finishPath;
-                                if (tempObject > enemyTarget->tempObject)
+								if(listOfTargets[i]->resLen > enemyTarget->resLen)
                                 {
                                     this->upgr1_anima = listOfTargets[i]->tempObject1;
                                     enemyTarget = listOfTargets[i];
@@ -243,6 +264,7 @@ namespace engine
 
         void Tower7::attack()
         {
+			Tower7_mc * container = ISTYPE( Tower7_mc,this->container);
             if (intervalCounter == 0)
             {
                 if (!this->ballAnima)
@@ -254,22 +276,22 @@ namespace engine
                     this->ballAnima->smokeCont1->stop();
                     this->ballAnima->smokeCont2->stop();
                     this->setPosition(0,-20);
-                    //this->ballAnima->x = 0;
-                    //this->ballAnima->y = -20;
-                    //this->ballAnima->rotation = 180;
-                    //this->ballAnima->alpha = 0;
+					this->ballAnima->setPosition(0, -20);
+                    this->ballAnima->setRotation(180);
+                    this->ballAnima->setAlpha(0);
                     this->ballAnima->smoke->setVisible(false);
-                    container->addChild(this->ballAnima, (container->getChildIndex(container->cont2) + 1));
+					container->addChild(this->ballAnima,2);
+					//container->addChild(this->ballAnima, (container->getChildIndex(container->cont2) + 1));
                 }
                 else if (this->ballAnima->getOpacity() < 1)
                 {
-                    this->ballAnima->setOpacity(this->ballAnima->getOpacity() + 0.1);
-                    container->cont2->setOpacity(container->cont2->getOpacity() - 0.1;
+					this->ballAnima->setAlpha(this->ballAnima->getAlpha() + 0.1);
+                    container->cont2->setAlpha(container->cont2->getAlpha() - 0.1);
                 }
                 else if (container->cont2->isVisible())
                 {
-                    this->ballAnima->setOpacity(1);
-                    container->cont2->setOpacity(1);
+					this->ballAnima->setAlpha(1);
+					container->cont2->setAlpha(1);
                     container->cont2->setVisible(false);
                 }
                 else if (this->ballAnima->getPositionY() > -40)
@@ -306,7 +328,7 @@ namespace engine
                 {
                     if (container->currentFrame < container->totalFrames)
                     {
-                        if (this->upgr1_anima->name == "upgr1_1" || this->upgr1_anima->name == "upgr1_3" || this->upgr1_anima->name == "upgr1_6" || this->upgr1_anima->name == "upgr1_7")
+                        if (this->upgr1_anima->getName() == "upgr1_1" || this->upgr1_anima->getName() == "upgr1_3" || this->upgr1_anima->getName() == "upgr1_6" || this->upgr1_anima->getName() == "upgr1_7")
                         {
                             if (container->currentFrame <= 8)
                             {
@@ -361,7 +383,7 @@ namespace engine
                                 }
                             }
                         }
-                        else if (this->upgr1_anima->name == "upgr1_2" || this->upgr1_anima->name == "upgr1_4" || this->upgr1_anima->name == "upgr1_5" || this->upgr1_anima->name == "upgr1_8")
+                        else if (this->upgr1_anima->getName() == "upgr1_2" || this->upgr1_anima->getName() == "upgr1_4" || this->upgr1_anima->getName() == "upgr1_5" || this->upgr1_anima->getName() == "upgr1_8")
                         {
                             if (container->currentFrame <= 8)
                             {
@@ -397,7 +419,7 @@ namespace engine
                                 }
                                 if (!container->round4->isVisible())
                                 {
-                                    container->round4.visible = true;
+                                    container->round4->setVisible(true);
                                 }
                                 else if (container->round4->currentFrame < container->round4->totalFrames)
                                 {
@@ -418,7 +440,7 @@ namespace engine
                         }
                         if (this->roundCounter == 1)
                         {
-                            if (this->upgr1_anima->name == "upgr1_1")
+                            if (this->upgr1_anima->getName() == "upgr1_1")
                             {
                                 if (container->currentFrame == 2)
                                 {
@@ -430,13 +452,13 @@ namespace engine
                                     tempObject->setPosition(tempObject1); 
                                 }
                             }
-                            else if (this->upgr1_anima->name == "upgr1_2")
+                            else if (this->upgr1_anima->getName() == "upgr1_2")
                             {
                                 if (container->currentFrame == 2)
                                 {
                                     this->roundCounter = 2;
                                     BulletTower71_mc * tempObject = new BulletTower71_mc();//new Indexes(new BulletTower71_mc(), 3, 0);
-                                    tempObject->rotation = 15;
+                                    tempObject->setRotation(15);
                                     tempObject->setScale(1);
                                     cocos2d::Point tempObject1 = container->localToGlobal(this->upgr1_anima->getPosition());
                                     tempObject->setPosition(tempObject1);
@@ -444,7 +466,7 @@ namespace engine
                                     //tempObject.y = tempObject1.y;
                                 }
                             }
-                            else if (this->upgr1_anima->name == "upgr1_3")
+                            else if (this->upgr1_anima->getName() == "upgr1_3")
                             {
                                 if (container->currentFrame == 10)
                                 {
@@ -457,7 +479,7 @@ namespace engine
                                     tempObject->setPosition(tempObject1);
                                 }
                             }
-                            else if (this->upgr1_anima->name == "upgr1_4")
+                            else if (this->upgr1_anima->getName() == "upgr1_4")
                             {
                                 if (container->currentFrame == 10)
                                 {
@@ -471,7 +493,7 @@ namespace engine
                                     tempObject->setPosition(tempObject1);
                                 }
                             }
-                            else if (this->upgr1_anima->name == "upgr1_5")
+                            else if (this->upgr1_anima->getName() == "upgr1_5")
                             {
                                 if (container->currentFrame == 15)
                                 {
@@ -488,7 +510,7 @@ namespace engine
                                     //tempObject.y = tempObject1.y;
                                 }
                             }
-                            else if (this->upgr1_anima->name == "upgr1_6")
+                            else if (this->upgr1_anima->getName() == "upgr1_6")
                             {
                                 if (container->currentFrame == 8)
                                 {
@@ -504,7 +526,7 @@ namespace engine
                                     //tempObject.y = tempObject1.y;
                                 }
                             }
-                            else if (this->upgr1_anima->name == "upgr1_7")
+                            else if (this->upgr1_anima->getName() == "upgr1_7")
                             {
                                 if (container->currentFrame == 15)
                                 {
@@ -517,7 +539,7 @@ namespace engine
                                     tempObject->setPosition(tempObject1); 
                                 }
                             }
-                            else if (this->upgr1_anima->name == "upgr1_8")
+                            else if (this->upgr1_anima->getName() == "upgr1_8")
                             {
                                 if (container->currentFrame == 8)
                                 {
@@ -568,7 +590,7 @@ namespace engine
                             {
                                 if (enemyTarget->shoot_pt.distance( world->listOfUnits[i]->shoot_pt) < Main::mainClass->readXMLClass.ultraAddIceStoneRadiusXML)
                                 {
-                                    if (this->upgr1_anima->name == "upgr1_1")
+                                    if (this->upgr1_anima->getName() == "upgr1_1")
                                     {
                                         if (this_pt.x + 30 >= world->listOfUnits[i]->shoot_pt.x && this_pt.y - 30 <= world->listOfUnits[i]->shoot_pt.y && this_pt.y + 150 >= world->listOfUnits[i]->shoot_pt.y)
                                         {
@@ -576,7 +598,7 @@ namespace engine
                                             world->listOfUnits[i]->getHit(this->upgr1_damage, "ice", 2, false, 71, this);
                                         }
                                     }
-                                    else if (this->upgr1_anima->name == "upgr1_2")
+                                    else if (this->upgr1_anima->getName() == "upgr1_2")
                                     {
                                         if (this_pt.x - 30 <= world->listOfUnits[i]->shoot_pt.x && this_pt.y - 30 <= world->listOfUnits[i]->shoot_pt.y && this_pt.y + 150 >= world->listOfUnits[i]->shoot_pt.y)
                                         {
@@ -584,7 +606,7 @@ namespace engine
                                             world->listOfUnits[i]->getHit(this->upgr1_damage, "ice", 2, false, 71, this);
                                         }
                                     }
-                                    else if (this->upgr1_anima->name == "upgr1_3")
+                                    else if (this->upgr1_anima->getName() == "upgr1_3")
                                     {
                                         if (this_pt.x - 30 <= world->listOfUnits[i]->shoot_pt.x && this_pt.y + 30 >= world->listOfUnits[i]->shoot_pt.y && this_pt.y - 150 <= world->listOfUnits[i]->shoot_pt.y)
                                         {
@@ -592,7 +614,7 @@ namespace engine
                                             world->listOfUnits[i]->getHit(this->upgr1_damage, "ice", 2, false, 71, this);
                                         }
                                     }
-                                    else if (this->upgr1_anima->name == "upgr1_4")
+                                    else if (this->upgr1_anima->getName() == "upgr1_4")
                                     {
                                         if (this_pt.x + 30 >= world->listOfUnits[i]->shoot_pt.x && this_pt.y + 30 >= world->listOfUnits[i]->shoot_pt.y && this_pt.y - 150 <= world->listOfUnits[i]->shoot_pt.y)
                                         {
@@ -600,7 +622,7 @@ namespace engine
                                             world->listOfUnits[i]->getHit(this->upgr1_damage, "ice", 2, false, 71, this);
                                         }
                                     }
-                                    else if (this->upgr1_anima->name == "upgr1_5")
+                                    else if (this->upgr1_anima->getName() == "upgr1_5")
                                     {
                                         if (this_pt.x + 30 >= world->listOfUnits[i]->shoot_pt.x && this_pt.x - 150 <= world->listOfUnits[i]->shoot_pt.x && this_pt.y - 30 <= world->listOfUnits[i]->shoot_pt.y)
                                         {
@@ -608,7 +630,7 @@ namespace engine
                                             world->listOfUnits[i]->getHit(this->upgr1_damage, "ice", 2, false, 71, this);
                                         }
                                     }
-                                    else if (this->upgr1_anima->name == "upgr1_6")
+                                    else if (this->upgr1_anima->getName() == "upgr1_6")
                                     {
                                         if (this_pt.x + 30 >= world->listOfUnits[i]->shoot_pt.x && this_pt.x - 150 <= world->listOfUnits[i]->shoot_pt.x && this_pt.y + 30 >= world->listOfUnits[i]->shoot_pt.y)
                                         {
@@ -616,7 +638,7 @@ namespace engine
                                             world->listOfUnits[i]->getHit(this->upgr1_damage, "ice", 2, false, 71, this);
                                         }
                                     }
-                                    else if (this->upgr1_anima->name == "upgr1_7")
+                                    else if (this->upgr1_anima->getName() == "upgr1_7")
                                     {
                                         if (this_pt.x - 30 <= world->listOfUnits[i]->shoot_pt.x && this_pt.x + 150 >= world->listOfUnits[i]->shoot_pt.x && this_pt.y - 30 <= world->listOfUnits[i]->shoot_pt.y)
                                         {
@@ -624,7 +646,7 @@ namespace engine
                                             world->listOfUnits[i]->getHit(this->upgr1_damage, "ice", 2, false, 71, this);
                                         }
                                     }
-                                    else if (this->upgr1_anima->name == "upgr1_8")
+                                    else if (this->upgr1_anima->getName() == "upgr1_8")
                                     {
                                         if (this_pt.x - 30 <= world->listOfUnits[i]->shoot_pt.x && this_pt.x + 150 >= world->listOfUnits[i]->shoot_pt.x && this_pt.y + 30 >= world->listOfUnits[i]->shoot_pt.y)
                                         {

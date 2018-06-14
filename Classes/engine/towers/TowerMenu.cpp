@@ -28,7 +28,8 @@ namespace engine
 			}
 			if (this->myTower->towerType < 5)
 			{
-				this->myTower->container->selectTower->setVisible(false);
+				Tower1_mc * container = ISTYPE(Tower1_mc, this->myTower->container);
+				container->selectTower->setVisible(false);
 			}
 			this->mouseChildren = false;
 			this->mouseEnabled = false;
@@ -684,7 +685,7 @@ namespace engine
 			}
 			return;
 		}// end function
-		void TowerMenu::mouseMovedHandler(cocos2d::EventMouse * e)
+		void TowerMenu::mouseMoveHandler(cocos2d::EventMouse * e)
 		{
 			std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
 			if(!event)
@@ -768,7 +769,7 @@ namespace engine
 				if (event->target->getName() == "btnTowerUpgrCase")
 				{
 					MCCase *scase = ISTYPE(MCCase, event->target);
-					MovieClipSub * btnTowerUpgr = this->container->getSphereSlot(scase);
+					MovieClipSub * btnTowerUpgr = ISTYPE(MovieClipSub, scase->getParentMC());// this->container->getSphereSlot(scase);
 					Node * parent = event->target->getParent()->getParent();
 					if (parent != this->container->btnTowerUpgr1->display)
 					{
@@ -826,7 +827,7 @@ namespace engine
 					{
 						if (scase->buttonMode)
 						{
-							MCText * costTXT = this->container->getText(scase);
+							MCText * costTXT = btnTowerUpgr->getMem<MCText>("costTXT");// this->container->getText(scase);
 							string tempObject = std::getText(costTXT);
 							btnTowerUpgr->gotoAndStop(2);
 							std::setText(costTXT, tempObject);
@@ -1144,13 +1145,16 @@ namespace engine
 			}
 			if (event->target->getName() == "sphereSlotCase")
 			{
-				Node * parent = event->target->getParent()->getParent()->getParent();
-				TowerMenu_mc * towerMenuMc = ISTYPE(TowerMenu_mc, parent);
+				{
+					Node * parent = event->target->getParent()->getParent()->getParent();
+					TowerMenu_mc * towerMenuMc = ISTYPE(TowerMenu_mc, parent);
+				}
 				MCCase * scase = ISTYPE(MCCase, event->target);
 				//UltraTowerMenu_mc  event->target->getParent()->getParent()->getParent()
-				MovieClipSub *	sphereAnima = towerMenuMc->getSphereAnima(scase);
-				MovieClipSub  * sphereSlot = towerMenuMc->getSphereSlot(scase);//ISTYPE(MovieClipSub, event->target->getParent());
- 				if (sphereAnima->isVisible())
+				//MovieClipSub *	sphereAnima = towerMenuMc->getSphereAnima(scase);
+				MovieClipSub  * sphereSlot = ISTYPE(MovieClipSub, scase->getParentMC());// towerMenuMc->getSphereSlot(scase);//ISTYPE(MovieClipSub, event->target->getParent());
+				MovieClip *	sphereAnima = sphereSlot->getMem<MovieClip>("sphereAnima");
+				if(sphereAnima->isVisible())
 				{
 					if (sphereSlot != this->container->sphereSlot1 && this->container->sphereSlot1->currentFrame == 2)
 					{
@@ -1215,11 +1219,11 @@ namespace engine
 			else if (event->target->getName() == "btnTowerUpgrCase")
 			{
 				MCCase *scase = ISTYPE(MCCase, event->target);
-				MovieClipSub * btnTowerUpgr = this->container->getSphereSlot(scase);
+				MovieClipSub * btnTowerUpgr = ISTYPE(MovieClipSub ,scase->getParentMC());// this->container->getSphereSlot(scase);
 				Node * parent = event->target->getParent()->getParent();
 				if (btnTowerUpgr->currentFrame == 2)
 				{
-					MCText * 	costTXT=this->container->getText(scase);
+					MCText * 	costTXT = btnTowerUpgr->getMem<MCText>("costTXT");// this->container->getText(scase);
 					string tempObject = std::getText(costTXT);
 					btnTowerUpgr->gotoAndStop(3);
 					setText(costTXT, tempObject);
@@ -1261,12 +1265,12 @@ namespace engine
 			}
 			else if (event->target->getName() == "sphereSlotCase")
 			{
-				Node * parent = event->target->getParent()->getParent()->getParent();
-				TowerMenu_mc * towerMenuMc = ISTYPE(TowerMenu_mc, parent);
+				//Node * parent = event->target->getParent()->getParent()->getParent();
+				//TowerMenu_mc * towerMenuMc = ISTYPE(TowerMenu_mc, parent);
 				MCCase * scase = ISTYPE(MCCase, event->target);
 				//UltraTowerMenu_mc  event->target->getParent()->getParent()->getParent()
-				MovieClipSub *	sphereAnima = towerMenuMc->getSphereAnima(scase);
-				MovieClipSub  * sphereSlot = towerMenuMc->getSphereSlot(scase);//ISTYPE(MovieClipSub, event->target->getParent());
+ 				MovieClipSub  * sphereSlot = scase->getParentMC<MovieClipSub>();// towerMenuMc->getSphereSlot(scase);//ISTYPE(MovieClipSub, event->target->getParent());
+				MovieClip *	sphereAnima = sphereSlot->getMem<MovieClip>("sphereAnima");// getSphereAnima(scase);
 				if(sphereAnima->isVisible())
 				{
  					if (sphereAnima->currentFrame == 1)
@@ -1322,7 +1326,7 @@ namespace engine
 			else if (event->target->getName() == "btnGetAllCase")
 			{
 				MCCase * btnGetAllCase = ISTYPE(MCCase, event->target);
-				MovieClipSub *	btnGetAll = this->container->getSphereSlot(btnGetAllCase);
+				MovieClipSub *	btnGetAll = btnGetAllCase->getParentMC<MovieClipSub>();// this->container->getSphereSlot(btnGetAllCase);
 				if (btnGetAllCase->buttonMode)
 				{
 					this->i = 0;
@@ -1673,7 +1677,7 @@ namespace engine
 						//tempObject = new Object();
 						//tempObject->target = new Object();
 						//tempObject->target.name = "btnUpgradeMenuCase"; //btnUpgradeMenuCase
-						this->mouseMovedHandler(event);
+						this->mouseMoveHandler(event);
 						if (this->myTower->towerType == 4)
 						{
 							this->towerRadius1->setVisible(false);
@@ -1696,7 +1700,7 @@ namespace engine
 				if (event->target->getName() == "btnTowerUpgrCase")
 				{
 					MCCase *scase = ISTYPE(MCCase,event->target);
-					MovieClipSub * btnTowerUpgr=this->container->getSphereSlot(scase);
+					MovieClipSub * btnTowerUpgr = scase->getParentMC<MovieClipSub>();// this->container->getSphereSlot(scase);
 					Node * parent = event->target->getParent()->getParent();
 					if (parent != this->container->btnTowerUpgr1->display)
 					{
@@ -1736,7 +1740,7 @@ namespace engine
 					}
 					if (btnTowerUpgr->currentFrame == 3)
 					{
-						MCText * costTXT=this->container->getText(scase);
+						MCText * costTXT = btnTowerUpgr->getMem<MCText>("costTXT");// this->container->getText(scase);
 						string tempObject1 = std::getText(costTXT);
 						btnTowerUpgr->gotoAndStop(2);
 						std::setText(costTXT, tempObject1);
@@ -1750,7 +1754,7 @@ namespace engine
 						{
 							this->fastBuyUltraFlag = "";
 							this->closeFastBuyUltraFlag = true;
-							this->mouseMovedHandler(event);
+							this->mouseMoveHandler(event);
 						}
 						else
 						{
@@ -1760,7 +1764,7 @@ namespace engine
 								this->exampleUltraManage("remove");
 							}
 							this->closeFastBuyUltraFlag = true;
-							this->mouseMovedHandler(event);
+							this->mouseMoveHandler(event);
 							this->fastBuyUltraFlag = event->target->getParent()->getName();
 							this->openFastBuyUltraFlag = true;
 							this->closeFastBuyUltraFlag = false;
@@ -3731,7 +3735,7 @@ namespace engine
 				//}
 				if (this->lastE)
 				{
-					this->world->mouseMovedHandler(this->lastE);
+					this->world->mouseMoveHandler(this->lastE);
 				}
 			}
 			return;

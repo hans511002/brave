@@ -9,13 +9,14 @@ namespace engine
     {
 		struct Tower8_mc : public TowerBase_mc
         { 
-        MovieClip *  cont1;
-        MovieClip *  cont2;
-        MovieClip *  cont3;
-        MovieClip *  cont4;
-        MovieClip *  cont5;
-        MovieClip *  cont6;
-        MovieClip *  fireLight1; 
+			MovieClipSub * cont1;
+			MovieClipSub * cont2;
+			MovieClipSub * cont3;
+			MovieClipSub * cont4;
+			MovieClipSub * cont5;
+			MovieClipSub * cont6;
+			MovieClipSub * fireLight1;
+			Tower8_mc();
         };
 
 		class Tower8 : public Tower

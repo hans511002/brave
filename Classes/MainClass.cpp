@@ -61,10 +61,10 @@ void Main::addNewScreen(string param1)
         }
         else if (param1 == "LevelsMenu")
         {
-            //this->container = new LevelsMenu();
-            this->levelsMenuClass = new LevelsMenu();
-            this->levelsMenuClass->init();
-            this->addChild(this->levelsMenuClass);
+            ////this->container = new LevelsMenu();
+            //this->levelsMenuClass = new LevelsMenu();
+            //this->levelsMenuClass->init();
+            //this->addChild(this->levelsMenuClass);
         }
         else if (param1 == "World")
         {
@@ -284,15 +284,15 @@ void Main::mouseUpHandler(cocos2d::EventMouse* event){
 	//if (this->startMenuClass)
 	//	this->startMenuClass->mouseUpHandler(me);
 };
-void Main::mouseMovedHandler(cocos2d::EventMouse* event){
-	EventNode::mouseMovedHandler(event);
+void Main::mouseMoveHandler(cocos2d::EventMouse* event){
+	EventNode::mouseMoveHandler(event);
 	std::MouseEvent  me = std::buildMouseEvent(event);
 	if (this->worldClass)
-		this->worldClass->mouseMovedHandler(&me);
+		this->worldClass->mouseMoveHandler(&me);
 	if (this->levelsMenuClass)
-		this->levelsMenuClass->mouseMovedHandler(&me);
+		this->levelsMenuClass->mouseMoveHandler(&me);
 	//if (this->startMenuClass)
-	//	this->startMenuClass->mouseMovedHandler(me);
+	//	this->startMenuClass->mouseMoveHandler(me);
 };
 void Main::mouseScrollHandler(cocos2d::EventMouse* event){
 	EventNode::mouseScrollHandler(event);

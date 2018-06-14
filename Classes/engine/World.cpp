@@ -522,7 +522,7 @@ namespace engine
 				this->worldInterface->mouseUpHandler(event);
 		}
 	}// end function
-	void World::mouseMovedHandler(cocos2d::EventMouse* e)
+	void World::mouseMoveHandler(cocos2d::EventMouse* e)
 	{
 		EventNode::mouseDownHandler(e);
 		int mouseButton = e->getMouseButton();
@@ -580,7 +580,7 @@ namespace engine
 			{
 				this->buildTowerMenu->mouseMoveHandler(event);
 			}
-			this->decoration->mouseMovedHandler(event);
+			this->decoration->mouseMoveHandler(event);
 			if (!this->cast && event->target->getName() == "towerCase")// && event->target->buttonMode
 			{
 				bool tempObject = false;
@@ -713,7 +713,7 @@ namespace engine
 						{
 							if (this->listOfTowers[this->i] != tower && this->listOfTowers[this->i]->towerType < 5)
 							{
-								this->mouseMovedHandler(event);
+								this->mouseMoveHandler(event);
 								this->exchange = new Exchange(tower);
 								this->addChild(this->exchange);
 								break;
@@ -1268,7 +1268,7 @@ namespace engine
 		//return;
 	}// end function 
 
-	void manageMouse(string param1)
+	void World::manageMouse(string param1)
 	{
 		if (param1 == "hide")
 		{

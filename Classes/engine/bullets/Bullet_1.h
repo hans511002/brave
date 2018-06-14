@@ -11,7 +11,7 @@ namespace engine{
             float shiftX, shiftY;
             int phase1, phase2;
 
-            Bullet_1(){};
+			inline Bullet_1() {};
 
             bool init();
 

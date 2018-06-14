@@ -5,6 +5,8 @@
 
 namespace engine{
     namespace bullets{ 
+		Bullet_5::Bullet_5() :deviation(0) {};
+
         bool Bullet_5::init()  
         {
             bulletType = 5;

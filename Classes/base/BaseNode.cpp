@@ -538,7 +538,7 @@ namespace std
 			listener = cocos2d::EventListenerMouse::create();
 			listener->onMouseDown = CC_CALLBACK_1(BaseNode::mouseDownHandler, this);
 			listener->onMouseUp = CC_CALLBACK_1(BaseNode::mouseUpHandler, this);
-			listener->onMouseMove = CC_CALLBACK_1(BaseNode::mouseMovedHandler, this);
+			listener->onMouseMove = CC_CALLBACK_1(BaseNode::mouseMoveHandler, this);
 			listener->onMouseScroll = CC_CALLBACK_1(BaseNode::mouseScrollHandler, this);
 			getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 		}
@@ -632,7 +632,7 @@ namespace std
 		if(mouseButton == 1)rightMouseUpHandler(event);
 	};
 
-	void EventNode::mouseMovedHandler(cocos2d::EventMouse* event)
+	void EventNode::mouseMoveHandler(cocos2d::EventMouse* event)
 	{
 		if(!this->hitTest(event))return;
 		//logInfo("mouseMoved", event->getCursorX(), event->getCursorY());

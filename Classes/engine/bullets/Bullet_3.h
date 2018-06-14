@@ -16,7 +16,7 @@ namespace engine{
             float enemySpeed;
 			UnitShadow_mc *shadow;//public var shadow:UnitShadow_mc;
 
-            Bullet_3(){};
+			inline    Bullet_3() {};
 
             bool init();
 

@@ -13,6 +13,7 @@ namespace engine
 		int  levinBulletCounter; //public var levinBulletCounter:int = 0;
 		float radius; //public var radius:Number;
 		Vec2 this_pt;
+		inline ShootBase() :fireBulletCounter(0), iceBulletCounter(0), levinBulletCounter(0), radius(0){};
 	};
 
 	namespace units

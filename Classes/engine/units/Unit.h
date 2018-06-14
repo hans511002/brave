@@ -61,6 +61,7 @@ namespace engine
 			int i, j, n;
 			float resLen;// tempObject:Object;
 			bool resFlag;//public var tempObject1:Object;
+			BulletTower71_mc * tempObject1;
 			//public var tempObject2:Object;
 			//public var tempObject3:Object;
 			//public var tempObject4:Object;
@@ -152,7 +153,7 @@ namespace engine
 
 			int blockTowerRadius;//22
 
-			Unit() :direction("none"), world(NULL), road(0), way(0), path(0), finishPath(0), stopAnima(false), typeUnit(0), health(0), healthMax(0), speedK(0), speedKSave(0),
+			inline Unit() :direction("none"), world(NULL), road(0), way(0), path(0), finishPath(0), stopAnima(false), typeUnit(0), health(0), healthMax(0), speedK(0), speedKSave(0),
 				gold(0), fireDamageK(0), iceDamageK(0), stoneDamageK(0), levinDamageK(0), penalty(0), dead(false), readyDamage(true),
 				bulletTower6Effect(false), airFlag(false), fireLevinKillFlag(false), moveFlag(true), gate(0), nextTurnFlag(false), nextTurnPath(0), nextTurnMidPath(0),
 				teleportFlag(false), directionFlag(false), replaced(false), speedKRun(0), speedRunTimerIce1(0), speedRunTimerIce2(0), speedRunTimerIce3(0),
@@ -194,12 +195,12 @@ namespace engine
 
 			virtual void kill();
 
-			virtual void onExit();
+			//virtual void onExit();
 		};
 
 #define UNIT_CLASS_DEFINE(unitName,MEMBER_DEFINE) struct unitName :public Unit{ \
 public:\
-	unitName(); \
+	inline unitName() {}; \
 	virtual bool init(); \
 	virtual void animationHandler(); \
 	MEMBER_DEFINE \

@@ -84,7 +84,7 @@ namespace std
 		virtual   void keyBoardReleasedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 		virtual   void mouseDownHandler(cocos2d::EventMouse* event);
 		virtual   void mouseUpHandler(cocos2d::EventMouse* event);
-		virtual   void mouseMovedHandler(cocos2d::EventMouse* event);
+		virtual   void mouseMoveHandler(cocos2d::EventMouse* event);
 		virtual   void mouseScrollHandler(cocos2d::EventMouse* event);
 		virtual   void rightMouseDownHandler(cocos2d::EventMouse* event);
 		virtual   void rightMouseUpHandler(cocos2d::EventMouse* event);
@@ -137,7 +137,7 @@ namespace std
 		//virtual void keyBoardReleasedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 		//virtual void mouseDownHandler(cocos2d::EventMouse* event);
 		//virtual void mouseUpHandler(cocos2d::EventMouse* event);
-		//virtual void mouseMovedHandler(cocos2d::EventMouse* event);
+		//virtual void mouseMoveHandler(cocos2d::EventMouse* event);
 		//virtual void mouseScrollHandler(cocos2d::EventMouse* event);
 		//virtual void rightMouseDownHandler(cocos2d::EventMouse* event);
 		//virtual void rightMouseUpHandler(cocos2d::EventMouse* event);
@@ -161,7 +161,7 @@ namespace std
 	public:
 		bool init();
 		bool atStage();
-		void mouseDownHandler(cocos2d::EventMouse *event);
+		//void mouseDownHandler(cocos2d::EventMouse *event);
 		BaseSprite(string file);
 		BaseSprite(cocos2d::Sprite* sprite);
 		virtual float getWidth();
@@ -209,7 +209,7 @@ namespace std
 	//	virtual void keyBoardReleasedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	//	virtual void mouseDownHandler(cocos2d::EventMouse* event);
 	//	virtual void mouseUpHandler(cocos2d::EventMouse* event);
-	//	virtual void mouseMovedHandler(cocos2d::EventMouse* event);
+	//	virtual void mouseMoveHandler(cocos2d::EventMouse* event);
 	//	virtual void mouseScrollHandler(cocos2d::EventMouse* event);
 	//	virtual void rightMouseDownHandler(cocos2d::EventMouse* event);
 	//	virtual void rightMouseUpHandler(cocos2d::EventMouse* event);

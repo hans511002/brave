@@ -222,7 +222,7 @@ namespace engine
                 }
             }
             this->kill();
-            this->world->mouseMovedHandler(event);
+            this->world->mouseMoveHandler(event);
             return;
         }// end function
 

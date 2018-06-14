@@ -9,7 +9,7 @@ namespace engine
     {
 		struct Tower6_mc : public TowerBase_mc
         { 
-            MovieClip * shotAnima;
+            MovieClipSub * shotAnima;
 			Tower6_mc();
 		};
 		class Tower6 : public Tower

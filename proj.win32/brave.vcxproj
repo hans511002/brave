@@ -227,7 +227,6 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\test\CoreElement.cpp" />
     <ClCompile Include="..\Classes\test\DragHelper.cpp" />
     <ClCompile Include="..\Classes\test\HelloWorldScene.cpp" />
-    <ClCompile Include="..\cocos2d\external\tinyxml2\tinyxml2.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>

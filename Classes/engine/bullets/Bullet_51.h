@@ -11,7 +11,7 @@ namespace engine{
 			bool turnFlag;//:Boolean;
 			Common::Array<BulletBase_mc*> listOfAnimation;
 
-			Bullet_51();
+			  Bullet_51() ;
 
 			bool init();
 

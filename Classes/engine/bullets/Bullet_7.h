@@ -19,7 +19,7 @@ namespace engine
             UnitShadow_mc * shadow;
 			int correct;
 
-            Bullet_7();
+			   Bullet_7();
 
             bool init();
 

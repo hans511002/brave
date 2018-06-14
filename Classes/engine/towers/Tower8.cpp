@@ -1,11 +1,22 @@
  
-#include "Tower8.h"
 #include "engine/World.h"
+#include "Tower8.h"
 
 namespace engine
 {
     namespace towers
     { 
+		Tower8_mc::Tower8_mc() :TowerBase_mc("tower/", "Tower8_mc", "Tower8_mc")
+		{
+			cont1 = this->createMovieClipSub("cont1");
+			cont2 = this->createMovieClipSub("cont2");
+			cont3 = this->createMovieClipSub("cont3");
+			cont4 = this->createMovieClipSub("cont4");
+			cont5 = this->createMovieClipSub("cont5");
+			cont6 = this->createMovieClipSub("cont6");
+			fireLight1 = this->createMovieClipSub("fireLight1");
+		};
+
         Tower8::Tower8():upgr1_intervalCounter(1),soundCounter(0),soundTimer(5)
         {
             return;
@@ -27,9 +38,10 @@ namespace engine
             this->upgr1_damage = Main::mainClass->readXMLClass.ultraAddFireLevinDamageXML; 
             this->upgr1_intervalTimer = Main::mainClass->readXMLClass.ultraAddFireLevinIntervalXML;
             this->upgr1_intervalCounter = Main::mainClass->readXMLClass.ultraAddFireLevinIntervalXML;
-            container = new Tower8_mc();
+			Tower8_mc *	container = new Tower8_mc();
+			this->container = container;
             container->stop();
-            container->towerCase.stop();
+            container->towerCase->stop();
             container->cont1->stop();
             container->cont2->stop();
             container->cont3->stop();
@@ -49,13 +61,14 @@ namespace engine
             this->addChild(container);
             Tower::init();
             container->visible = false; 
-            container->setScale(0.9); 
-            return;
+            container->setScale(0.9f); 
+            return true;
         }// end function
 
         void Tower8::update(float dt) 
         {
-            if (this->soundCounter != -1)
+			Tower8_mc *	container = ISTYPE(Tower8_mc,this->container);
+			if(this->soundCounter != -1)
             {
                 if (this->soundCounter < this->soundTimer)
                 {
@@ -101,14 +114,14 @@ namespace engine
                         container->cont3->gotoAndStop(1);
                     }
                 }
-                container->cont2->rotation = container->cont2->rotation + 3;
+                container->cont2->setRotation(container->cont2->getRotation() + 3);
             }
             return;
         }// end function
 
         void Tower8::scan()
         {
-            if (!container->blockTower->isVisible())
+			if(!container->blockTower->isVisible())
             {
                 if (intervalCounter < intervalTimer)
                 {
@@ -150,7 +163,8 @@ namespace engine
 
         void Tower8::attack()
         {
-            if (intervalCounter == 0)
+			Tower8_mc *	container = ISTYPE(Tower8_mc, this->container);
+			if(intervalCounter == 0)
             {
                 if (!this->shootFlag)
                 {
@@ -206,7 +220,7 @@ namespace engine
                         this->shootFlag = false;
                         enemy_pt = world->bezierClass->getPathPoint(enemyTarget->path + enemyTarget->speedK * 30, enemyTarget->road, enemyTarget->way);
                         //enemy_pt =tempObject;// new Point(tempObject.x, tempObject.y);
-                        Bullet* tempObject = world->addBullet(8, enemy_pt, this, enemy_pt, damage);
+						Bullet* tempObject = world->addBullet(8, enemy_pt, this, enemyTarget, damage);
                         intervalCounter = 1;
                         enemyTarget = NULL;
                         if (this->upgr1_intervalCounter == 0)
@@ -228,14 +242,14 @@ namespace engine
                     container->fireLight1->gotoAndStop((container->fireLight1->currentFrame + 1));
                     if (container->fireLight1->currentFrame == 17)
                     {
-                        if (!enemyTarget.dead)
+                        if (!enemyTarget->dead)
                         {
-                            tempObject = world->addBullet(81, shoot_pt, this, enemyTarget, this->upgr1_damage);
+							Bullet *  tempObject = world->addBullet(81, shoot_pt, this, enemyTarget, this->upgr1_damage);
                         }
                     }
                     else if (container->fireLight1->currentFrame == 16)
                     {
-                        if (enemyTarget.dead)
+                        if (enemyTarget->dead)
                         {
                             enemyTarget = NULL;
                             scanBlock();

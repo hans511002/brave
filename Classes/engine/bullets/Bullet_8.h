@@ -10,7 +10,7 @@ namespace engine
         class Bullet_8 : public Bullet
         {
         public:
-             Bullet_8();
+			    Bullet_8();
 
             bool init();
 
