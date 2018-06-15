@@ -88,18 +88,21 @@ protected:
 	{
 		BaseDemo::onEnter();
 	}
-	virtual void _onStart()
-	{
-		currentFrame = frameCounter = 0;
+    virtual void _onStart()
+    {
+        MovieClip * mc = new MovieClip("unit/", "healthBar", "UnitBase_mc");
+        this->addChild(mc);
+        mc->setPosition(100, 100);
+        currentFrame = frameCounter = 0;
         this->setName("layer");
-		//cont = new BulletSphereTower_mc();
-		cont = new TowerMenuHint_mc();
-		cont->setPosition(100, 100);
- 		this->addChild(cont);
-		//this->schedule(schedule_selector(DBComSubTest::scheduleUpdate), (float)1 / 30.0f);
-		this->schedule(static_cast<cocos2d::SEL_SCHEDULE>(&DBComSubTest::scheduleUpdate) ,0.3333333);
-		return;
-	}
+        //cont = new BulletSphereTower_mc();
+        //cont = new TowerMenuHint_mc();
+        //cont->setPosition(100, 100);
+        //	this->addChild(cont);
+        ////this->schedule(schedule_selector(DBComSubTest::scheduleUpdate), (float)1 / 30.0f);
+        //this->schedule(static_cast<cocos2d::SEL_SCHEDULE>(&DBComSubTest::scheduleUpdate) ,0.3333333);
+        return;
+    }
 	int currentFrame;
 	bool dir;
 	int totalFrames, frameCounter;

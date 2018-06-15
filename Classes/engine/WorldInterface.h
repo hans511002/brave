@@ -7,12 +7,12 @@
 #include "JsonUtil.h"
 #include "Feature.h"
 #include "WorldInterface_mc.h"
- 
+#include "screens/Screen.h"
  
 namespace engine
 { 
  
-	class  WorldInterface :public BaseNode
+    class  WorldInterface :public screens::Screen
     {
 	public:
 		int i;
@@ -48,11 +48,6 @@ namespace engine
         int castGolemTimer;////public var castGolemTimer:int;
         int castIcemanTimer;////public var castIcemanTimer:int;
         int castAirTimer;////public var castAirTimer:int;
-		cocos2d::Point autoguidesMouse_pt;//public var autoguidesMouse_pt:Point;
-		BaseNode * autoguidesObject;//public var autoguidesObject:Object;
-		cocos2d::Point autoguidesObject_pt;//public var autoguidesObject_pt:Point;
-        float autoguidesObjectWidth;////public var autoguidesObjectWidth:Number;
-        float autoguidesObjectHeight;////public var autoguidesObjectHeight:Number;
 
 		WorldInterface();
 		CREATE_FUNC(WorldInterface);

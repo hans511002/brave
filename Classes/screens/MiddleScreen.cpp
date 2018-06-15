@@ -7,7 +7,7 @@
 namespace screens
 {
     
-    Screen::Screen():frameCounter(0),openFlag(true) ,closeFlag(false),dead(false) 
+    Screen::Screen() :frameCounter(0), openFlag(true), closeFlag(false), dead(false), autoguidesObject(NULL)
     {
         
     };
@@ -33,7 +33,7 @@ namespace screens
         rightDown->stop();
         rightUp->stop();
     };
-	MiddleScreen::MiddleScreen(string param1) :frameCounter(0), gogoCounter(0), middleRound(NULL), container(NULL)
+    MiddleScreen::MiddleScreen(const string &  param1) :frameCounter(0), gogoCounter(0), middleRound(NULL), container(NULL)
     {
         //this->addEventListener(Event.ADDED_TO_STAGE, this->init);
         this->openScreenName = param1;
@@ -42,6 +42,7 @@ namespace screens
 
     bool MiddleScreen::init()
     {
+        BaseNode::init();
         //this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
         //this->addEventListener(Event.REMOVED_FROM_STAGE, this->reInit);
         //this->addEventListener(Event.ENTER_FRAME, this->enterFrameHandler);
@@ -56,18 +57,22 @@ namespace screens
         this->container->rightUp->stop();
         this->container->leftDown->stop();
         this->container->rightDown->stop();
+        this->container->setScale(0.3);
         this->addChild(this->container);
         if (this->openScreenName == "World" || Main::mainClass->worldClass)
         {
             //Sounds.instance.stopAll();
         }
         //Sounds.instance.playSoundWithVol("snd_middleScreen", 0.95);
+        enableFrameHandler(true);
         return true;
     }// end function
 
 	void MiddleScreen::onEnter()
 	{
-		this->schedule(schedule_selector(MiddleScreen::enterFrameHandler), 0.0f);
+        BaseNode::onEnter();
+        //this->schedule(static_cast<cocos2d::SEL_SCHEDULE>(&MiddleScreen::enterFrameHandler));
+		//this->schedule(schedule_selector(MiddleScreen::enterFrameHandler), 0.0f);
 	}
 	void MiddleScreen::enterFrameHandler(float dt)
 	{

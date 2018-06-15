@@ -47,7 +47,7 @@ namespace engine
 		MovieClipSub * butCastAir;
 		MCCase * butCastAirCastAirCase;
  		MovieClipSub * butCastAirCont;
-		Sprite     * butCastAirContContMask;
+		MCMask     * butCastAirContContMask;
 		MovieClipSub * butCastGolem;
 		MCCase * butCastGolemCastGolemCase;
 		MovieClipSub * butCastGolemCont;

@@ -746,7 +746,7 @@ namespace engine{
                 tempObject = new MovieClip(this->world,"cast/","Golem3VerticalDeath_mc","Golem3VerticalDeath_mc");
                 tempObject->gotoAndStop(12);
             }
-            tempObject->type = "golemDeath";
+            tempObject->setNodeType("golemDeath");
             tempObject->setScaleX(this->container->getScaleX());
             tempObject->cont->setPositionX(this->container->getPositionX());
             tempObject->setPosition(this->this_pt);

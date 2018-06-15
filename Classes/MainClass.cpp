@@ -12,7 +12,7 @@
 Main * Main::mainClass;
 const double Main::AnimationInterval = 1.0f / (double)Main::FrameRate;
 
-Main::Main() :worldClass(NULL){
+Main::Main() :worldClass(NULL), frameCounter(0), container(NULL), middleScreenClass(NULL), levelsMenuClass(NULL){
     Main::mainClass = this;
 };
 Scene* Main::createScene()
@@ -22,13 +22,14 @@ Scene* Main::createScene()
     Main *main = new Main();// Main::create();
     main->init();
     // add layer as a child to scene
-    scene->addChild(main->worldClass);
+    scene->addChild(main);
     // return the scene
     return scene;
 }
 int Main::fps;
 bool Main::init()
 {
+    BaseNode::init();
 	this->setName("Main");
     //this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
     //this->stage.addEventListener(KeyboardEvent.KEY_DOWN, this->keyDownHandler);
@@ -48,12 +49,13 @@ bool Main::init()
     //Sounds.instance.stopAll();
     //this->tracker = new GATracker(this, "UA-63231445-3", "AS3", false);
     //this->tracker.trackPageview("openGame");
-    addNewScreen("World");
 	this->enableKeyHandler();
+    this->enableKeyHandler();
+    this->enableMouseHandler();
     return true;
 }// end function
 
-void Main::addNewScreen(string param1)
+void Main::addNewScreen(const string & param1)
 {
     if (this->middleScreenClass)
     {
@@ -127,7 +129,11 @@ void Main::removeAllScreens()
     this->saveBoxClass->updateSever();
     //return;
 }// end function
-
+void Main::onEnter()
+{
+   BaseNode::onEnter();
+   addStartLogo();
+};
 
 cocos2d::Image * Main::getBitmapData(cocos2d::Node* param1) //: BitmapData
 {
@@ -138,7 +144,8 @@ cocos2d::Image * Main::getBitmapData(cocos2d::Node* param1) //: BitmapData
 }// end function
 void Main::addStartLogo()
 {
-	//this->container = new StartMenu();
+    addNewScreen("World");
+    //this->container = new StartMenu();
 	//this->startMenuClass = new StartMenu();
 	//this->addChild(this->startMenuClass);
 	return;

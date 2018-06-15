@@ -30,9 +30,7 @@
 
 namespace engine
 {
-	WorldInterface::WorldInterface() :fireCount(0), iceCount(0), stoneCount(0), levinCount(0), getAllCount(0),
-		fireBuyHistory(0), iceBuyHistory(0), stoneBuyHistory(0), levinBuyHistory(0), fasterFlag(0),
-		castGolemCounter(0), castIcemanCounter(0), castAirCounter(0)
+    WorldInterface::WorldInterface() :container(NULL), fasterFlag(0), world(NULL), castMask(NULL), lastTime(NULL), sellHint(NULL), getAllHint(NULL), fireCount(0), iceCount(0), stoneCount(0), levinCount(0), getAllCount(0), fireBuyHistory(0), iceBuyHistory(0), stoneBuyHistory(0), levinBuyHistory(0), blockCastGolem(false), blockCastIceman(false), blockCastAir(false), castGolemCounter(0), castIcemanCounter(0), castAirCounter(0), castGolemTimer(0), castIcemanTimer(0), castAirTimer(0)
 	{
 		//this->sphereCostHistory = [[], [], [], []];
 		this->sphereCostHistory[0].clear();
@@ -71,7 +69,7 @@ namespace engine
 		this->container = new WorldInterface_mc();
 		this->addChild(this->container);
 		this->container->init();
-		this->container->setPosition(0, 0);
+        this->container->setPosition(0, Main::SCREEN_HEIGHT);
 
 		this->container->stop();
 		this->container->fireBack->stop();

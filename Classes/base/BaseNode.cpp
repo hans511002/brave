@@ -487,7 +487,8 @@ namespace std
 		if (currentTargets.size() > idx){
 			setCurrentTarget(currentTargets.at(idx));
 			idx++;
-		}
+            return true;
+        }
 		return false;
 	};
 

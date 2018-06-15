@@ -22,28 +22,28 @@ namespace engine
         int currentFrame;
 		string defAniName;
         int totalFrames;
-		string type;
-		virtual int getTotalFrames(string aniName = "");
-		virtual void gotoAndStop(int cf, string aniName = "");
+		//string type;
+        virtual int getTotalFrames(const string &  aniName = "");
+        virtual void gotoAndStop(int cf, const string &  aniName = "");
 		virtual  void nextFram();
 		virtual void update(float dt=0);
-        virtual void play(string aniName = "", int times = 1);
+        virtual void play(const string &  aniName = "", int times = 1);
 		virtual void play(int times);
-        virtual void stop(string aniName = "");
+        virtual void stop(const string &  aniName = "");
 		virtual	dragonBones::Armature *getArmature() = 0;
 		virtual dragonBones::Animation *getAnimation()   = 0;
 		MC();
 
-		MCText * createText(string slot);
-        MovieClipSub * createMovieClipSub(string slot);
-		MovieClip * createMovieClip(string slot,string rootPath, string armName, string dbName, string defAniName = "");
-		MovieClip * createMovieClip(string slot,string rootPath, string dbName);
-		MovieClip * MC::createMovieClip(string slot, MovieClip * mc);
-        MCCase * createCase(string slot, bool draw = true);
-		MCSprite * createSprite(string slot, string file);
-		MCSprite * createSprite(string slot, Sprite* file );
-		MCMask * createMask(string slot);
-		Sprite *getSprite(string slotName);
+        MCText * createText(const string &  slot);
+        MovieClipSub * createMovieClipSub(const string &  slot);
+        MovieClip * createMovieClip(const string &  slot, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "");
+        MovieClip * createMovieClip(const string &  slot, const string &  rootPath, const string &  dbName);
+        MovieClip * MC::createMovieClip(const string &  slot, MovieClip * mc);
+        MCCase * createCase(const string &  slot, bool draw = true);
+        MCSprite * createSprite(const string &  slot, const string &  file);
+        MCSprite * createSprite(const string &  slot, Sprite* file);
+        MCMask * createMask(const string &  slot);
+        Sprite *getSprite(const string &  slotName);
 		
 
 		void addMcs(MC * mc, MovieClipSub * mcs);
@@ -56,9 +56,9 @@ namespace engine
         virtual void addMCbs(MovieClipSubBase * mcs);
 		virtual bool remove(MovieClipSubBase * ms);
 
-		virtual Node * getMemNode(string slotName); 
-		MovieClipSub*  getMemSubMC(string slotName);
-		template<typename T = Node> T * getMem(string slotName) { return ISTYPE(T, getMemNode(slotName)); };
+        virtual Node * getMemNode(const string &  slotName);
+        MovieClipSub*  getMemSubMC(const string &  slotName);
+        template<typename T = Node> T * getMem(const string &  slotName) { return ISTYPE(T, getMemNode(slotName)); };
 	};
     struct MovieClipSubBase 
     {
@@ -96,22 +96,22 @@ namespace engine
 		//所有全部子集群,用于自动删除
 		Common::Array<MovieClipSub*> mcs;
 
-		MovieClip(dragonBones::CCArmatureDisplay * cont, string defAniName = "");
-        MovieClip(string rootPath, string armName,string dbName, string defAniName = "");
-        MovieClip(World * world,string rootPath, string armName,string dbName, string defAniName = "");
-        MovieClip(string armName,string dbName,BaseNode *node=NULL);
+        MovieClip(dragonBones::CCArmatureDisplay * cont, const string &  defAniName = "");
+        MovieClip(const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "");
+        MovieClip(World * world, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "");
+        MovieClip(const string &  armName, const string &  dbName, BaseNode *node = NULL);
         
-        MovieClip(MC *mc, dragonBones::Slot * slot,string rootPath, string armName,string dbName,string defAniName = "");
-        MovieClip(MC *mc, string slot, string rootPath, string armName,string dbName,string defAniName = "");
-		MovieClip(MC *mc, string slot, string rootPath, string dbName);
+        MovieClip(MC *mc, dragonBones::Slot * slot, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "");
+        MovieClip(MC *mc, const string &  slot, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "");
+        MovieClip(MC *mc, const string &  slot, const string &  rootPath, const string &  dbName);
 
-		bool MovieClip::init(string rootPath, string armName, string dbName, string defAniName="");
+        bool MovieClip::init(const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "");
 
 		virtual	dragonBones::Armature *getArmature();
 		virtual dragonBones::Animation *getAnimation();
 		MovieClip() :world(0), isOnce(0){};//tmp
 		virtual bool init();
-		virtual void setName(string name);
+        virtual void setName(const string &  name);
 
 		virtual void setVisible(bool v);
 		virtual bool reinit();
@@ -140,7 +140,7 @@ namespace engine
 		virtual void onEnter();
 		virtual void onExit();
 		virtual void onceMovieHandler(cocos2d::EventCustom *event);
-        virtual void gotoAndStop(int cf, string aniName = "");
+        virtual void gotoAndStop(int cf, const string &  aniName = "");
 
 	};
 	
@@ -148,8 +148,8 @@ namespace engine
 	{
 		void * userData;
         dragonBones::Armature* arm;
-		MovieClipSub(MC *mc, dragonBones::Slot * slot, string defAniName = "");
-        MovieClipSub(MC *mc, string slot, string defAniName = "");
+        MovieClipSub(MC *mc, dragonBones::Slot * slot, const string &  defAniName = "");
+        MovieClipSub(MC *mc, const string &  slot, const string &  defAniName = "");
 		virtual dragonBones::Armature *getArmature();
 		virtual dragonBones::Animation *getAnimation();
 		virtual void setVisible(bool v);
@@ -180,7 +180,7 @@ namespace engine
 		inline Vec2 convertToWorldSpace(Vec2 pos) { return getDisplayNode()->convertToWorldSpace(pos); };
 		inline Vec2 localToGlobal(Vec2 pos) { return getDisplayNode()->convertToWorldSpace(pos); };
 		inline Vec2 globalToLocal(Vec2 pos) { return getDisplayNode()->convertToNodeSpaceAR(pos); };
-		virtual void gotoAndStop(int cf, string aniName = "");
+        virtual void gotoAndStop(int cf, const string &  aniName = "");
 		inline virtual void setAlpha(float op) { BaseNode::setAlpha(getDisplayNode(), op); };
 		inline virtual float getAlpha() { return  BaseNode::getAlpha(getDisplayNode()); };
 		inline virtual string getName() { return getDisplayNode()->getName(); };
@@ -201,7 +201,7 @@ namespace engine
 
 	struct MCText :public ui::Text, MovieClipSubBase, public   EventNode
 	{
-		MCText(MC * mc, string slotName);
+        MCText(MC * mc, const string &  slotName);
 		inline virtual void setAlpha(float op) { BaseNode::setAlpha(this, op); };
 		inline virtual float getAlpha() { return  BaseNode::getAlpha(this); };
 		virtual void setVisible(bool v);
@@ -210,7 +210,7 @@ namespace engine
 	struct MCCase :public BaseNode, MovieClipSubBase 
     {
         bool _draw;
-        MCCase(MC * mc, string slotName, bool draw = false);
+        MCCase(MC * mc, const string &  slotName, bool draw = false);
 		inline virtual void setAlpha(float op) { BaseNode::setAlpha(this, op); };
 		inline virtual float getAlpha() {return BaseNode::getAlpha(this); };
 		virtual void setVisible(bool v);
@@ -220,9 +220,9 @@ namespace engine
 	struct MCSprite :public BaseSprite, MovieClipSubBase 
 	{
 		bool initSprite;
-		MCSprite(MC * mc, string slotName, string file);
-		MCSprite(MC * mc, string slotName, cocos2d::Sprite * sprite);
-		MCSprite(MC * mc, string slotName);
+        MCSprite(MC * mc, const string &  slotName, const string &  file);
+        MCSprite(MC * mc, const string &  slotName, cocos2d::Sprite * sprite);
+        MCSprite(MC * mc, const string &  slotName);
 		virtual void setVisible(bool v);
 		virtual bool reinit();
 		inline virtual void setAlpha(float op) { BaseNode::setAlpha(this, op); };
@@ -232,7 +232,7 @@ namespace engine
 	struct MCMask :public BaseNode, MovieClipSubBase 
 	{
 		cocos2d::Sprite * mask;
-		MCMask(MC * mc, string slotName);
+        MCMask(MC * mc, const string &  slotName);
 		virtual void setVisible(bool v);
 		virtual bool reinit();
 	};
@@ -245,13 +245,13 @@ namespace engine
         BaseSprite * cont;
         string filePre;
         char numFormat[8];
-        ImageMovieClip(string rootPath, string fileNamePre,int numFormat, int imgSize=0);
-        int getTotalFrames(string aniName = "");
-        void gotoAndStop(int cf, string aniName = "");
+        ImageMovieClip(const string &  rootPath, const string &  fileNamePre, int numFormat, int imgSize = 0);
+        int getTotalFrames(const string &  aniName = "");
+        void gotoAndStop(int cf, const string &  aniName = "");
         void nextFram();
         virtual void update(float dt=0);
-        void play(string aniName = "");
-        void stop(string aniName = "");
+        void play(const string &  aniName = "");
+        void stop(const string &  aniName = "");
         void scheduleUpdate(float dt);
         void onEnter();
 

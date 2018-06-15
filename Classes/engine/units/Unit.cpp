@@ -134,7 +134,7 @@ namespace engine
 					//Sounds.instance.playSoundWithVol("snd_world_newEnemy", 0.9);
 				}
 			}
-			this->schedule(schedule_selector(Unit::update), 0.0f);
+			//this->schedule(schedule_selector(Unit::update), 0.0f);
 			return true;
 		}// end function
 		void Unit::update(float dt) //public function update() : void
@@ -1751,281 +1751,278 @@ namespace engine
 			//}
 			//return;
 		}// end function
-		void Unit::kill() //public function kill() : void
-		{
-			if (!this->dead)return;
-			{
-				this->dead = true;
-				this->readyDamage = false;
-				this->moveFlag = false;
-				this->stopAllEffects();
-				if (this->health <= 0)
-				{
-					if ((this->lastAttackType == "ice" || this->lastAttackType == "stone" || this->lastAttackType == "levin") && this->container->iceDeath)
-					{
-						if (this->lastAttackType == "ice")
-						{
-							this->container->iceDeath->setVisible(true);
-							//Sounds.instance.playSoundWithVol("snd_unit_iceDeath", 0.75);
-						}
-						else if (this->lastAttackType == "stone")
-						{
-							this->container->stoneDeath->setVisible(true);
-						}
-						else if (this->lastAttackType == "levin")
-						{
-							this->container->levinDeath->setVisible(true);
-							//Sounds.instance.playSound("snd_unit_levinDeath");
-						}
-						//this->mouseChildren = false;
-						//this->mouseEnabled = false;
-						//this->world->listOfClasses.push(this);
-						//this->world->listOfIndexes1.push(this);
-					}
-					else
-					{
-						if (this->typeUnit != 20 && this->typeUnit != 21 && (this->typeUnit < 23 || this->typeUnit > 26) && this->typeUnit != 34)
-						{
-							//this->tempObject = new DeathEffect(this, NULL, 6, 0.2, 1);
-							if (this->lastAttackType != "golem")
-							{
-								//Sounds.instance.playSound("snd_unit_fireDeath");
-							}
-						}
-						this->world->removeChild(this);
-					}
-					this->world->money = this->world->money + this->gold;
-					if (this->replacementFlag > 0)
-					{
-						this->i = 0;
-						while (this->i < this->replacementCount)
-						{
-							if (this->world->wavesClass->listOfReplacement.size() == 0)
-							{
-								this->world->wavesClass->listOfReplacement[0][0] = 60;
-								this->world->wavesClass->listOfReplacement[0][1] = this->replacementFlag == 1 ? 29 : 30;
-								this->world->wavesClass->listOfReplacement[0][2] = this->road;
-								this->world->wavesClass->listOfReplacement[0][3] = this->way;
-								this->world->wavesClass->listOfReplacement[0][4] = this->path;
-								//this->world->wavesClass->listOfReplacement.push([60, 29, this->road, this->way, this->path]);
-							}
-							else
-							{
-								int c = this->world->wavesClass->listOfReplacement.size();
-								this->world->wavesClass->listOfReplacement[c][0] = this->world->wavesClass->listOfReplacement[(c - 1)][0] + 60;
-								this->world->wavesClass->listOfReplacement[c][1] = 29;
-								this->world->wavesClass->listOfReplacement[c][2] = this->road;
-								this->world->wavesClass->listOfReplacement[c][3] = this->way;
-								this->world->wavesClass->listOfReplacement[c][4] = this->path;
-								//this->world->wavesClass->listOfReplacement.push([this->world->wavesClass->listOfReplacement[(c- 1)][0] + 60, 29, this->road, this->way, this->path]);
-							}
-							i++;
-						}
-						if (this->replacementFlag == 1)
-						{
-							this->i = 0;
-							while (this->i < this->replacementCount)
-							{
-								if (this->world->wavesClass->listOfReplacement.size() == 0)
-								{
-									this->world->wavesClass->listOfReplacement[0][0] = 60;
-									this->world->wavesClass->listOfReplacement[0][1] = 29;
-									this->world->wavesClass->listOfReplacement[0][2] = this->road;
-									this->world->wavesClass->listOfReplacement[0][3] = this->way;
-									this->world->wavesClass->listOfReplacement[0][4] = this->path;
-									//this->world->wavesClass->listOfReplacement.push([60, 29, this->road, this->way, this->path]);
-								}
-								else
-								{
-									int c = this->world->wavesClass->listOfReplacement.size();
-									this->world->wavesClass->listOfReplacement[c][0] = this->world->wavesClass->listOfReplacement[(c - 1)][0] + 60;
-									this->world->wavesClass->listOfReplacement[c][1] = 29;
-									this->world->wavesClass->listOfReplacement[c][2] = this->road;
-									this->world->wavesClass->listOfReplacement[c][3] = this->way;
-									this->world->wavesClass->listOfReplacement[c][4] = this->path;
-									//this->world->wavesClass->listOfReplacement.push([this->world->wavesClass->listOfReplacement[(c- 1)][0] + 60, 29, this->road, this->way, this->path]);
-								}
-								i++;
-							}
-						}
-						else if (this->replacementFlag == 2)
-						{
-							this->i = 0;
-							while (this->i < this->replacementCount)
-							{
-								if (this->world->wavesClass->listOfReplacement.size() == 0)
-								{
-									//this->world->wavesClass->listOfReplacement.push({ 60, 30, this->road, this->way, this->path });
-									this->world->wavesClass->listOfReplacement[0][0] = 60;
-									this->world->wavesClass->listOfReplacement[0][1] = 30;
-									this->world->wavesClass->listOfReplacement[0][2] = this->road;
-									this->world->wavesClass->listOfReplacement[0][3] = this->way;
-									this->world->wavesClass->listOfReplacement[0][4] = this->path;
-								}
-								else
-								{
-									//this->world->wavesClass->listOfReplacement.push([this->world->wavesClass->listOfReplacement[(this->world->wavesClass->listOfReplacement.length - 1)][0] + 60, 30, this->road, this->way, this->path]);
-									int c = this->world->wavesClass->listOfReplacement.size();
-									this->world->wavesClass->listOfReplacement[c][0] = this->world->wavesClass->listOfReplacement[(c - 1)][0] + 60;
-									this->world->wavesClass->listOfReplacement[c][1] = 30;
-									this->world->wavesClass->listOfReplacement[c][2] = this->road;
-									this->world->wavesClass->listOfReplacement[c][3] = this->way;
-									this->world->wavesClass->listOfReplacement[c][4] = this->path;
-								}
-								i++;
-							}
-						}
-					}
-					int addit_killEnemiesCounter = this->world->saveBox->getIntValue("addit_killEnemiesCounter") + 1;
-					this->world->saveBox->setValue("addit_killEnemiesCounter", addit_killEnemiesCounter);
-					//(this->world->saveBox.gameSave.data.addit_killEnemiesCounter + 1);
-					this->world->killEnemiesCounter++;
-					if (addit_killEnemiesCounter == 1)
-					{
-						this->world->achieveManage("firstKill");
-					}
-					else if (addit_killEnemiesCounter == 2500)
-					{
-						this->world->achieveManage("kill_2500_enemies");
-					}
-					if (this->world->killEnemiesCounter == 100)
-					{
-						this->world->achieveManage("kill_100_enemies");
-					}
-				}
-				else
-				{
-					if (this->world->live > 0)
-					{
-						//Sounds.instance.playSoundWithVol("snd_unit_finish", 0.9);
-					}
-					this->world->live = this->world->live - this->penalty;
-					this->world->removeChild(this);
-					if (this->world->live <= 0)
-					{
-						this->world->live = 0;
-						if (this->world->saveBox->getIntValue("complexityLevel") < 4)
-						{
-							this->world->winDefCounter = 15;
-						}
-						else
-						{
-							this->world->winDefCounter = 1;
-						}
-					}
-				}
-				this->world->worldInterface->updateInfo();
-				this->i = 0;
-				while (this->i < this->world->listOfUnits.size())
-				{
-					if (this->world->listOfUnits[this->i] == this)
-					{
-						this->world->listOfUnits.remove(this->i);
-						break;
-					}
-					i++;
-				}
-				if (this->world->selectObject == this)
-				{
-					this->world->worldInterface->barInfoManage();
-				}
-				if (this->world->live > 0 && this->world->wavesClass->nowWave == this->world->wavesClass->maxWaves && !this->world->wavesClass->waveWork)
-				{
-					int tempObject = 0;
-					this->i = 0;
-					while (this->i < this->world->listOfUnits.size())
-					{
-						if (!this->world->listOfUnits[this->i]->replaced)
-						{
-							 tempObject++;
-						}
-						i++;
-					}
-					if ( tempObject <= 3)
-					{
-						if (this->world->wavesClass->listOfReplacement.size() > 0)
-						{
-							this->world->wavesClass->listOfReplacement.clear();
-						}
-						this->i = 0;
-						while (this->i < this->world->listOfUnits.size())
-						{
-							if (this->world->listOfUnits[this->i]->replacementFlag)
-							{
-								this->world->listOfUnits[this->i]->replacementFlag = false;
-							}
-							if (this->world->listOfUnits.size() <= 2)
-							{
-								if (this->world->listOfUnits[this->i]->typeUnit == 29 || this->world->listOfUnits[this->i]->typeUnit == 30)
-								{
-									this->world->listOfUnits[this->i]->stealthCounter = 0;
-								}
-							}
-							i++;
-						}
-					}
-					if (this->world->listOfUnits.size() == 0 && this->world->wavesClass->listOfReplacement.size() == 0)
-					{
-						bool tempObject = false;
-						if (this->world->wavesClass->listOfWaves.size() > 0)
-						{
-							if (this->world->wavesClass->listOfWaves[0].size() > 0)
-							{
-								 tempObject = true;
-							}
-						}
-						if (! tempObject)
-						{
-							if (this->world->wavesClass->listOfWaves.size() > 1)
-							{
-								if (this->world->wavesClass->listOfWaves[1].size() > 0)
-								{
-									 tempObject = true;
-								}
-							}
-						}
-						if (! tempObject)
-						{
-							if (this->world->wavesClass->listOfWaves.size() > 2)
-							{
-								if (this->world->wavesClass->listOfWaves[2].size() > 0)
-								{
-									 tempObject = true;
-								}
-							}
-						}
-						//if (!this->tempObject)
-						//{
-						//	this->i = 0;
-						//	while(this->i < this->world->listOfClasses.size())
-						//	{
-						//		if (this->world->listOfClasses[this->i] is Unit)
-						//		{
-						//			if (!this->world->listOfClasses[this->i].dead)
-						//			{
-						//				this->tempObject = true;
-						//				break;
-						//			}
-						//		}
-						//		i++;
-						//	}
-						//}
-						if (! tempObject)
-						{
-							if (this->typeUnit != 34)
-							{
-								this->world->winDefCounter = 60;
-							}
-							else
-							{
-								this->world->winDefCounter = 250;
-							}
-						}
-					}
-				}
-			}
-			//return;
-		}// end function
-
+        void Unit::kill() //public function kill() : void
+        {
+            if(this->dead)return;
+            this->dead = true;
+            this->readyDamage = false;
+            this->moveFlag = false;
+            this->stopAllEffects();
+            if(this->health <= 0)
+            {
+                if((this->lastAttackType == "ice" || this->lastAttackType == "stone" || this->lastAttackType == "levin") && this->container->iceDeath)
+                {
+                    if(this->lastAttackType == "ice")
+                    {
+                        this->container->iceDeath->setVisible(true);
+                        //Sounds.instance.playSoundWithVol("snd_unit_iceDeath", 0.75);
+                    }
+                    else if(this->lastAttackType == "stone")
+                    {
+                        this->container->stoneDeath->setVisible(true);
+                    }
+                    else if(this->lastAttackType == "levin")
+                    {
+                        this->container->levinDeath->setVisible(true);
+                        //Sounds.instance.playSound("snd_unit_levinDeath");
+                    }
+                    //this->mouseChildren = false;
+                    //this->mouseEnabled = false;
+                    //this->world->listOfClasses.push(this);
+                    //this->world->listOfIndexes1.push(this);
+                }
+                else
+                {
+                    if(this->typeUnit != 20 && this->typeUnit != 21 && (this->typeUnit < 23 || this->typeUnit > 26) && this->typeUnit != 34)
+                    {
+                        //this->tempObject = new DeathEffect(this, NULL, 6, 0.2, 1);
+                        if(this->lastAttackType != "golem")
+                        {
+                            //Sounds.instance.playSound("snd_unit_fireDeath");
+                        }
+                    }
+                    this->world->removeChild(this);
+                }
+                this->world->money = this->world->money + this->gold;
+                if(this->replacementFlag > 0)
+                {
+                    this->i = 0;
+                    while(this->i < this->replacementCount)
+                    {
+                        if(this->world->wavesClass->listOfReplacement.size() == 0)
+                        {
+                            this->world->wavesClass->listOfReplacement[0][0] = 60;
+                            this->world->wavesClass->listOfReplacement[0][1] = this->replacementFlag == 1 ? 29 : 30;
+                            this->world->wavesClass->listOfReplacement[0][2] = this->road;
+                            this->world->wavesClass->listOfReplacement[0][3] = this->way;
+                            this->world->wavesClass->listOfReplacement[0][4] = this->path;
+                            //this->world->wavesClass->listOfReplacement.push([60, 29, this->road, this->way, this->path]);
+                        }
+                        else
+                        {
+                            int c = this->world->wavesClass->listOfReplacement.size();
+                            this->world->wavesClass->listOfReplacement[c][0] = this->world->wavesClass->listOfReplacement[(c - 1)][0] + 60;
+                            this->world->wavesClass->listOfReplacement[c][1] = 29;
+                            this->world->wavesClass->listOfReplacement[c][2] = this->road;
+                            this->world->wavesClass->listOfReplacement[c][3] = this->way;
+                            this->world->wavesClass->listOfReplacement[c][4] = this->path;
+                            //this->world->wavesClass->listOfReplacement.push([this->world->wavesClass->listOfReplacement[(c- 1)][0] + 60, 29, this->road, this->way, this->path]);
+                        }
+                        i++;
+                    }
+                    if(this->replacementFlag == 1)
+                    {
+                        this->i = 0;
+                        while(this->i < this->replacementCount)
+                        {
+                            if(this->world->wavesClass->listOfReplacement.size() == 0)
+                            {
+                                this->world->wavesClass->listOfReplacement[0][0] = 60;
+                                this->world->wavesClass->listOfReplacement[0][1] = 29;
+                                this->world->wavesClass->listOfReplacement[0][2] = this->road;
+                                this->world->wavesClass->listOfReplacement[0][3] = this->way;
+                                this->world->wavesClass->listOfReplacement[0][4] = this->path;
+                                //this->world->wavesClass->listOfReplacement.push([60, 29, this->road, this->way, this->path]);
+                            }
+                            else
+                            {
+                                int c = this->world->wavesClass->listOfReplacement.size();
+                                this->world->wavesClass->listOfReplacement[c][0] = this->world->wavesClass->listOfReplacement[(c - 1)][0] + 60;
+                                this->world->wavesClass->listOfReplacement[c][1] = 29;
+                                this->world->wavesClass->listOfReplacement[c][2] = this->road;
+                                this->world->wavesClass->listOfReplacement[c][3] = this->way;
+                                this->world->wavesClass->listOfReplacement[c][4] = this->path;
+                                //this->world->wavesClass->listOfReplacement.push([this->world->wavesClass->listOfReplacement[(c- 1)][0] + 60, 29, this->road, this->way, this->path]);
+                            }
+                            i++;
+                        }
+                    }
+                    else if(this->replacementFlag == 2)
+                    {
+                        this->i = 0;
+                        while(this->i < this->replacementCount)
+                        {
+                            if(this->world->wavesClass->listOfReplacement.size() == 0)
+                            {
+                                //this->world->wavesClass->listOfReplacement.push({ 60, 30, this->road, this->way, this->path });
+                                this->world->wavesClass->listOfReplacement[0][0] = 60;
+                                this->world->wavesClass->listOfReplacement[0][1] = 30;
+                                this->world->wavesClass->listOfReplacement[0][2] = this->road;
+                                this->world->wavesClass->listOfReplacement[0][3] = this->way;
+                                this->world->wavesClass->listOfReplacement[0][4] = this->path;
+                            }
+                            else
+                            {
+                                //this->world->wavesClass->listOfReplacement.push([this->world->wavesClass->listOfReplacement[(this->world->wavesClass->listOfReplacement.length - 1)][0] + 60, 30, this->road, this->way, this->path]);
+                                int c = this->world->wavesClass->listOfReplacement.size();
+                                this->world->wavesClass->listOfReplacement[c][0] = this->world->wavesClass->listOfReplacement[(c - 1)][0] + 60;
+                                this->world->wavesClass->listOfReplacement[c][1] = 30;
+                                this->world->wavesClass->listOfReplacement[c][2] = this->road;
+                                this->world->wavesClass->listOfReplacement[c][3] = this->way;
+                                this->world->wavesClass->listOfReplacement[c][4] = this->path;
+                            }
+                            i++;
+                        }
+                    }
+                }
+                int addit_killEnemiesCounter = this->world->saveBox->getIntValue("addit_killEnemiesCounter") + 1;
+                this->world->saveBox->setValue("addit_killEnemiesCounter", addit_killEnemiesCounter);
+                //(this->world->saveBox.gameSave.data.addit_killEnemiesCounter + 1);
+                this->world->killEnemiesCounter++;
+                if(addit_killEnemiesCounter == 1)
+                {
+                    this->world->achieveManage("firstKill");
+                }
+                else if(addit_killEnemiesCounter == 2500)
+                {
+                    this->world->achieveManage("kill_2500_enemies");
+                }
+                if(this->world->killEnemiesCounter == 100)
+                {
+                    this->world->achieveManage("kill_100_enemies");
+                }
+            }
+            else
+            {
+                if(this->world->live > 0)
+                {
+                    //Sounds.instance.playSoundWithVol("snd_unit_finish", 0.9);
+                }
+                this->world->live = this->world->live - this->penalty;
+                this->world->removeChild(this);
+                if(this->world->live <= 0)
+                {
+                    this->world->live = 0;
+                    if(this->world->saveBox->getIntValue("complexityLevel") < 4)
+                    {
+                        this->world->winDefCounter = 15;
+                    }
+                    else
+                    {
+                        this->world->winDefCounter = 1;
+                    }
+                }
+            }
+            this->world->worldInterface->updateInfo();
+            this->i = 0;
+            while(this->i < this->world->listOfUnits.size())
+            {
+                if(this->world->listOfUnits[this->i] == this)
+                {
+                    this->world->listOfUnits.remove(this->i);
+                    break;
+                }
+                i++;
+            }
+            if(this->world->selectObject == this)
+            {
+                this->world->worldInterface->barInfoManage();
+            }
+            if(this->world->live > 0 && this->world->wavesClass->nowWave == this->world->wavesClass->maxWaves && !this->world->wavesClass->waveWork)
+            {
+                int tempObject = 0;
+                this->i = 0;
+                while(this->i < this->world->listOfUnits.size())
+                {
+                    if(!this->world->listOfUnits[this->i]->replaced)
+                    {
+                        tempObject++;
+                    }
+                    i++;
+                }
+                if(tempObject <= 3)
+                {
+                    if(this->world->wavesClass->listOfReplacement.size() > 0)
+                    {
+                        this->world->wavesClass->listOfReplacement.clear();
+                    }
+                    this->i = 0;
+                    while(this->i < this->world->listOfUnits.size())
+                    {
+                        if(this->world->listOfUnits[this->i]->replacementFlag)
+                        {
+                            this->world->listOfUnits[this->i]->replacementFlag = false;
+                        }
+                        if(this->world->listOfUnits.size() <= 2)
+                        {
+                            if(this->world->listOfUnits[this->i]->typeUnit == 29 || this->world->listOfUnits[this->i]->typeUnit == 30)
+                            {
+                                this->world->listOfUnits[this->i]->stealthCounter = 0;
+                            }
+                        }
+                        i++;
+                    }
+                }
+                if(this->world->listOfUnits.size() == 0 && this->world->wavesClass->listOfReplacement.size() == 0)
+                {
+                    bool tempObject = false;
+                    if(this->world->wavesClass->listOfWaves.size() > 0)
+                    {
+                        if(this->world->wavesClass->listOfWaves[0].size() > 0)
+                        {
+                            tempObject = true;
+                        }
+                    }
+                    if(!tempObject)
+                    {
+                        if(this->world->wavesClass->listOfWaves.size() > 1)
+                        {
+                            if(this->world->wavesClass->listOfWaves[1].size() > 0)
+                            {
+                                tempObject = true;
+                            }
+                        }
+                    }
+                    if(!tempObject)
+                    {
+                        if(this->world->wavesClass->listOfWaves.size() > 2)
+                        {
+                            if(this->world->wavesClass->listOfWaves[2].size() > 0)
+                            {
+                                tempObject = true;
+                            }
+                        }
+                    }
+                    //if (!this->tempObject)
+                    //{
+                    //	this->i = 0;
+                    //	while(this->i < this->world->listOfClasses.size())
+                    //	{
+                    //		if (this->world->listOfClasses[this->i] is Unit)
+                    //		{
+                    //			if (!this->world->listOfClasses[this->i].dead)
+                    //			{
+                    //				this->tempObject = true;
+                    //				break;
+                    //			}
+                    //		}
+                    //		i++;
+                    //	}
+                    //}
+                    if(!tempObject)
+                    {
+                        if(this->typeUnit != 34)
+                        {
+                            this->world->winDefCounter = 60;
+                        }
+                        else
+                        {
+                            this->world->winDefCounter = 250;
+                        }
+                    }
+                }
+            }
+            //return;
+        }
 	}
 }

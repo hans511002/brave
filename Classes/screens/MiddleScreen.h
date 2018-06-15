@@ -21,7 +21,7 @@ namespace screens
     {
 		MiddleScreenCentr_mc();
 	};
-    class MiddleScreen : public cocos2d::Node
+    class MiddleScreen : public BaseNode
     {
 	public:
 		int i;// public var i : int;
@@ -32,11 +32,11 @@ namespace screens
 		int gogoCounter;// public var gogoCounter : int = 0;
 		string openScreenName;// public var openScreenName : String;
 
-        MiddleScreen(string param1);
+        MiddleScreen(const string &  param1);
 
-        bool init();
+        virtual bool init();
 		virtual void onEnter( );
-		void MiddleScreen::enterFrameHandler(float dt);
+        virtual void enterFrameHandler(float dt);
 
 
 	};

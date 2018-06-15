@@ -50,7 +50,7 @@ namespace std
 	class EventNode
 	{
 	public:
-		inline EventNode() :mouseChildren(false), mouseEnabled(false), buttonMode(false) { setNodeType("EventNode"); };
+        inline EventNode() :mouseChildren(false), mouseEnabled(false), buttonMode(false), mouseFlag(false){ setNodeType("EventNode"); };
 		static bool debug;
 		cocos2d::Label* createLabel(const std::string& string);
 
@@ -103,8 +103,8 @@ namespace std
 		cocos2d::EventListenerMouse * listener;
 		inline BaseNode() :schdt(0), autoDel(true), listener(0) { setNodeType ( "BaseNode"); };//mouseEnabled(false), mouseChildren(false), 
 		BaseNode(float w, float h, bool draw = true);
-		bool init();
-		bool atStage();
+        virtual bool init();
+        virtual bool atStage();
 		virtual bool hitTest(const Vec2 &pt);
 		virtual bool hitTest(cocos2d::EventMouse* event);
 		cocos2d::Point localToGlobal(cocos2d::Point pt);

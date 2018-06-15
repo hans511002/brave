@@ -95,7 +95,7 @@ namespace engine
 			bool bulletTower6Effect;//public var bulletTower6Effect:Boolean;
 			bool airFlag;//public var airFlag:Boolean;
 			bool fireLevinKillFlag;//public var fireLevinKillFlag:Boolean;
-			string direction;//:String = "无";
+			string direction;//:String = "none";
 			bool moveFlag;//public var moveFlag:Boolean = true;
 			cocos2d::Vec2 shoot_pt;// : Point;
 			int gate;//public var gate:int = 0;

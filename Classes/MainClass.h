@@ -17,7 +17,7 @@ public:
 	int frameCounter;
 	int i;
 	int j;
-	void * tempObject;
+	//void * tempObject;
 	Node * container;
 	SaveBox * saveBoxClass;
 	//加载配置数据 
@@ -55,8 +55,9 @@ public:
 	//CREATE_FUNC(Main);
 	virtual bool init();
 	static Scene* createScene();
+    virtual void onEnter();
 
-	void addNewScreen(string param1);
+    void addNewScreen(const string &  param1);
 
 	void removeAllScreens();
 

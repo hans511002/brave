@@ -122,7 +122,7 @@ namespace JsonUtil{
 		}
 	};
 	string getString(Value *a){
-		if (!a)return NULL;
+		if (!a)return "";
 		if (a->IsString()){
 			return a->GetString();
 		}

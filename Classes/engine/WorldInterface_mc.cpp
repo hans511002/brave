@@ -1,4 +1,4 @@
-#include "WorldInterface_mc.h"  
+﻿#include "WorldInterface_mc.h"  
 using namespace cocos2d::ui;
 #include "cocostudio/DictionaryHelper.h"
 #include "cocostudio/CocoStudio.h"
@@ -32,9 +32,9 @@ namespace engine
 		butCastAir = this->createMovieClipSub("butCastAir");
 		butCastAirCastAirCase = butCastAir->createCase("castAirCase");
 
-		butCastAirCont = butCastAir->createMovieClipSub("cont");
+		butCastAirCont = butCastAir->createMovieClipSub("cont");//3甯ф墠鏈?
 
-		butCastAirContContMask = butCastAirCont->getSprite("contMask");
+		butCastAirContContMask = butCastAirCont->createMask("contMask");
 		//butCastAirContContMask = butCastAirCont->createMovieClipSub("contMask");
 
 		butCastGolem = this->createMovieClipSub("butCastGolem"); 
