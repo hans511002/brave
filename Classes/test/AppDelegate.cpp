@@ -14,7 +14,6 @@
 #include "test/CoreElement.h"
 #include "test/PerformanceTest.h"
 #include "test/DBComTest.h"
-#include "test/WorldInterface.h"
 // #include "DragonBonesTest.h"
 #include "test/DBComSubTest.h"
 
@@ -44,10 +43,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
-        glview = GLViewImpl::createWithRect("test", cocos2d::Rect(600, 100, 400, 300));
+        glview = GLViewImpl::createWithRect("test", cocos2d::Rect(600, 100, 800, 600));
         director->setOpenGLView(glview);
     }
-	director->getOpenGLView()->setDesignResolutionSize(400, 300, ResolutionPolicy::SHOW_ALL);
+	director->getOpenGLView()->setDesignResolutionSize(800, 600, ResolutionPolicy::SHOW_ALL);
 
     // turn on display FPS
     director->setDisplayStats(true);
@@ -59,7 +58,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     // create a scene. it's an autorelease object
     //auto scene = HelloDragonBones::createScene();
-   // auto scene = WorldInterface::createScene();
+    //auto scene = ::WorldInterface::createScene();
    // auto scene = DBComTest::createScene();
 	auto scene = DBComSubTest::createScene();
    

@@ -191,9 +191,9 @@ namespace engine
 		//this->world->level->stop();
 		for (int i = 0; i < world->level->flags.size(); i++)
 		{
-			MovieClip *place = world->level->flags.at(i);
-			place->gotoAndStop((std::round(std::random() * (place->totalFrames - 1)) + 1));
-			place->play();
+			MovieClip *flag = world->level->flags.at(i);
+			flag->gotoAndStop((std::round(std::random() * (flag->totalFrames - 1)) + 1));
+			flag->play("", 0);
 		}
 		for (int i = 0; i < world->level->additionallys.size(); i++)
 		{
@@ -210,7 +210,7 @@ namespace engine
 		for (int i = 0; i < world->level->places.size(); i++)
 		{
 			BuildTowerPlace *place = world->level->places.at(i);
-			place->placeForBuildCase->buttonMode = true;
+			place->placeForBuildCase->setMouseEnabled(true);
 		}
 
 		//this->world->road->armature->getAnimation()->stop(); 
@@ -222,7 +222,7 @@ namespace engine
 		//this->world->map = new Map();
 		this->world->towerRadius = new TowerRadius_mc();
 		//this->world->towerRadius->stop(); 
-		this->world->towerRadius->mouseChildren = false;
+		this->world->towerRadius->setMouseChildren(false);
 		this->world->towerRadius->mouseEnabled = false;
 		this->world->towerRadius->setVisible(false);
 		this->world->addChild(this->world->towerRadius);
@@ -246,12 +246,12 @@ namespace engine
 			pointer->statusAnima = 1;
 			pointer->myPoint = cocos2d::Point(pointer->getPosition());
 			pointer->gotoAndStop(2);
-			pointer->mask2->stop();
+			//pointer->mask2->stop();
 			//pointer->arrow->stop();
 			pointer->fireAnima->gotoAndStop(1);
 			pointer->eyesAnima->gotoAndStop(1);
 			pointer->mask2->setRotation(180);
-			pointer->pointerCase->buttonMode = true;
+			pointer->pointerCase->setMouseEnabled(true);
 			//this->world->level.removeChild(this->world->pointer1);
 			//this->world->addChild(this->world->pointer1);
 			//this->world->listOfIndexes3.push(this->world->pointer1); 
@@ -455,7 +455,7 @@ namespace engine
 
 		this->world->hint = new Hint_mc();
 		this->world->hint->stop();
-		this->world->hint->mouseChildren = false;
+		this->world->hint->setMouseChildren(false);
 		this->world->hint->mouseEnabled = false;
 		this->world->hint->setVisible(false);
 		this->world->addChild(this->world->hint);
@@ -533,8 +533,8 @@ namespace engine
 						this->world->pointer1->mask2->setRotation(0);
 						this->world->pointer1->setScaleY(0);
 						this->world->pointer1->setScaleX(0);
-						this->world->pointer1->mouseChildren = true;
-						this->world->pointer1->mouseEnabled = true;
+						this->world->pointer1->setMouseChildren(true);
+						this->world->pointer1->setMouseEnabled(true);
 						this->world->pointer1->setVisible(false);
 						this->world->pointer1->mouseFlag = false;
 						this->world->pointer1->statusAnima = 1;
@@ -545,8 +545,8 @@ namespace engine
 							this->world->pointer2->mask2->setRotation(0);
 							this->world->pointer2->setScaleY(0);
 							this->world->pointer2->setScaleX(0);
-							this->world->pointer2->mouseChildren = true;
-							this->world->pointer2->mouseEnabled = true;
+							this->world->pointer2->setMouseChildren(true);
+							this->world->pointer2->setMouseEnabled(true);
 							this->world->pointer2->setVisible(false);
 							this->world->pointer2->mouseFlag = false;
 							this->world->pointer2->statusAnima = 1;
@@ -558,8 +558,8 @@ namespace engine
 							this->world->pointer3->mask2->setRotation(0);
 							this->world->pointer3->setScaleY(0);
 							this->world->pointer3->setScaleX(0);
-							this->world->pointer3->mouseChildren = true;
-							this->world->pointer3->mouseEnabled = true;
+							this->world->pointer3->setMouseChildren(true);
+							this->world->pointer3->setMouseEnabled(true);
 							this->world->pointer3->setVisible(false);
 							this->world->pointer3->mouseFlag = false;
 							this->world->pointer3->statusAnima = 1;
@@ -644,15 +644,15 @@ namespace engine
 							//if (this->world->listOfPlaces[this->i]->getName() == "place1" || this->world->listOfPlaces[this->i]->getName() == "place2" || this->world->listOfPlaces[this->i]->getName() == "place4" || this->world->listOfPlaces[this->i]->getName() == "place5" || this->world->listOfPlaces[this->i]->getName() == "place8")
 							//{
 							//	this->world->listOfPlaces[this->i]->gotoAndStop(2);
-							//	this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+							//	this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 							//	tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
-							//	tempObject->container->towerCase->buttonMode = false;
+							//	tempObject->container->towerCase->mouseEnabled = false;
 							//	tempObject->container->boneBlock->setVisible(true);
 							//}
 							//else if (this->world->listOfPlaces[this->i]->getName() == "place3" || this->world->listOfPlaces[this->i]->getName() == "place6" || this->world->listOfPlaces[this->i]->getName() == "place7")
 							//{
 							//	this->world->listOfPlaces[this->i]->gotoAndStop(2);
-							//	this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+							//	this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 							//	tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
 							//}
 							i++;
@@ -667,7 +667,7 @@ namespace engine
 						//	if (this->world->listOfPlaces[this->i]->getName() == "place4")
 						//	{
 						//		this->world->listOfPlaces[this->i]->gotoAndStop(2);
-						//		this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+						//		this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 						//		tempObject = this->world->addTower("tower5", this->world->listOfPlaces[this->i], true);
 						//	}
 						//	i++;
@@ -682,21 +682,21 @@ namespace engine
 						//	if (this->world->listOfPlaces[this->i]->getName() == "place1" || this->world->listOfPlaces[this->i]->getName() == "place2" || this->world->listOfPlaces[this->i]->getName() == "place5" || this->world->listOfPlaces[this->i]->getName() == "place6" || this->world->listOfPlaces[this->i]->getName() == "place8")
 						//	{
 						//		this->world->listOfPlaces[this->i]->gotoAndStop(2);
-						//		this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+						//		this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 						//		tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
-						//		tempObject->container->towerCase->buttonMode = false;
+						//		tempObject->container->towerCase->mouseEnabled = false;
 						//		tempObject->container->boneBlock->setVisible(true);
 						//	}
 						//	else if (this->world->listOfPlaces[this->i]->getName() == "place3" || this->world->listOfPlaces[this->i]->getName() == "place7")
 						//	{
 						//		this->world->listOfPlaces[this->i]->gotoAndStop(2);
-						//		this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+						//		this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 						//		tempObject = this->world->addTower("tower5", this->world->listOfPlaces[this->i], true);
 						//	}
 						//	else if (this->world->listOfPlaces[this->i]->getName() == "place4" || this->world->listOfPlaces[this->i]->getName() == "place9")
 						//	{
 						//		this->world->listOfPlaces[this->i]->gotoAndStop(2);
-						//		this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+						//		this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 						//		tempObject = this->world->addTower("tower6", this->world->listOfPlaces[this->i], true);
 						//	}
 						//	i++;
@@ -711,7 +711,7 @@ namespace engine
 						//	if (this->world->listOfPlaces[this->i]->getName() == "place5" || this->world->listOfPlaces[this->i]->getName() == "place10")
 						//	{
 						//		this->world->listOfPlaces[this->i]->gotoAndStop(2);
-						//		this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+						//		this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 						//		tempObject = this->world->addTower("tower7", this->world->listOfPlaces[this->i], true);
 						//	}
 						//	i++;
@@ -726,9 +726,9 @@ namespace engine
 						//	if (this->world->listOfPlaces[this->i]->getName() == "place1" || this->world->listOfPlaces[this->i]->getName() == "place2" || this->world->listOfPlaces[this->i]->getName() == "place8" || this->world->listOfPlaces[this->i]->getName() == "place10")
 						//	{
 						//		this->world->listOfPlaces[this->i]->gotoAndStop(2);
-						//		this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+						//		this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 						//		tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
-						//		tempObject->container->towerCase->buttonMode = false;
+						//		tempObject->container->towerCase->mouseEnabled = false;
 						//		tempObject->container->boneBlock->setVisible(true);
 						//	}
 						//	i++;
@@ -743,9 +743,9 @@ namespace engine
 						//	if (this->world->listOfPlaces[this->i]->getName() == "place3" || this->world->listOfPlaces[this->i]->getName() == "place4" || this->world->listOfPlaces[this->i]->getName() == "place8" || this->world->listOfPlaces[this->i]->getName() == "place10")
 						//	{
 						//		this->world->listOfPlaces[this->i]->gotoAndStop(2);
-						//		this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+						//		this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 						//		tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
-						//		tempObject->container->towerCase->buttonMode = false;
+						//		tempObject->container->towerCase->mouseEnabled = false;
 						//		tempObject->container->boneBlock->setVisible(true);
 						//	}
 						//	i++;
@@ -760,9 +760,9 @@ namespace engine
 						//	if (this->world->listOfPlaces[this->i]->getName() == "place3" || this->world->listOfPlaces[this->i]->getName() == "place5" || this->world->listOfPlaces[this->i]->getName() == "place8" || this->world->listOfPlaces[this->i]->getName() == "place10")
 						//	{
 						//		this->world->listOfPlaces[this->i]->gotoAndStop(2);
-						//		this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+						//		this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 						//		tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
-						//		tempObject->container->towerCase->buttonMode = false;
+						//		tempObject->container->towerCase->mouseEnabled = false;
 						//		tempObject->container->boneBlock->setVisible(true);
 						//	}
 						//	i++;
@@ -777,43 +777,43 @@ namespace engine
 						//		if (this->world->listOfPlaces[this->i]->getName() == "place1" || this->world->listOfPlaces[this->i]->getName() == "place6" || this->world->listOfPlaces[this->i]->getName() == "place10" || this->world->listOfPlaces[this->i]->getName() == "place15")
 						//		{
 						//			this->world->listOfPlaces[this->i]->gotoAndStop(2);
-						//			this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+						//			this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 						//			tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
-						//			tempObject->container->towerCase->buttonMode = false;
+						//			tempObject->container->towerCase->mouseEnabled = false;
 						//			tempObject->container->boneBlock->setVisible(true);
 						//		}
 						//		else if (this->world->listOfPlaces[this->i]->getName() == "place2" || this->world->listOfPlaces[this->i]->getName() == "place14")
 						//		{
 						//			this->world->listOfPlaces[this->i]->gotoAndStop(2);
-						//			this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+						//			this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 						//			tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
 						//			tempObject->spheresManage("push", "fire", 4);
 						//		}
 						//		else if (this->world->listOfPlaces[this->i]->getName() == "place5" || this->world->listOfPlaces[this->i]->getName() == "place11")
 						//		{
 						//			this->world->listOfPlaces[this->i]->gotoAndStop(2);
-						//			this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+						//			this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 						//			tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
 						//			tempObject->spheresManage("push", "ice", 4);
 						//		}
 						//		else if (this->world->listOfPlaces[this->i]->getName() == "place4" || this->world->listOfPlaces[this->i]->getName() == "place13")
 						//		{
 						//			this->world->listOfPlaces[this->i]->gotoAndStop(2);
-						//			this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+						//			this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 						//			tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
 						//			tempObject->spheresManage("push", "stone", 4);
 						//		}
 						//		else if (this->world->listOfPlaces[this->i]->getName() == "place3" || this->world->listOfPlaces[this->i]->getName() == "place12")
 						//		{
 						//			this->world->listOfPlaces[this->i]->gotoAndStop(2);
-						//			this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+						//			this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 						//			tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
 						//			tempObject->spheresManage("push", "levin", 4);
 						//		}
 						//		else if (this->world->listOfPlaces[this->i]->getName() == "place7" || this->world->listOfPlaces[this->i]->getName() == "place8" || this->world->listOfPlaces[this->i]->getName() == "place9")
 						//		{
 						//			this->world->listOfPlaces[this->i]->gotoAndStop(2);
-						//			this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+						//			this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 						//			tempObject = this->world->addTower("tower4", this->world->listOfPlaces[this->i], true);
 						//		}
 						//		i++;
@@ -1131,7 +1131,7 @@ namespace engine
 				tempObject->myPoint = this->world->bezierClass->getPathPoint(tempObject->myPath, tempObject->myRoad, tempObject->myWay);
 				tempObject->setPositionX(tempObject->myPoint.x + Main::mainClass->readXMLClass.listOfFirePortals[this->i][3]);
 				tempObject->setPositionY(tempObject->myPoint.y + Main::mainClass->readXMLClass.listOfFirePortals[this->i][4]);
-				tempObject->mouseChildren = false;
+				tempObject->setMouseChildren(false);
 				tempObject->mouseEnabled = false;
 				tempObject->repeatFlag = false;
 				tempObject->repeatCounter = 0;
@@ -1208,7 +1208,7 @@ namespace engine
 				tempObject->myPoint = this->world->bezierClass->getPathPoint(tempObject->myPath, tempObject->myRoad, tempObject->myWay);
 				tempObject->setPositionX(tempObject->myPoint.x + Main::mainClass->readXMLClass.listOfIcePortals[this->i][3]);
 				tempObject->setPositionY(tempObject->myPoint.y + Main::mainClass->readXMLClass.listOfIcePortals[this->i][4]);
-				tempObject->mouseChildren = false;
+				tempObject->setMouseChildren(false);
 				tempObject->mouseEnabled = false;
 				tempObject->repeatFlag = false;
 				tempObject->repeatCounter = 0;
@@ -1285,7 +1285,7 @@ namespace engine
 				tempObject->myPoint = this->world->bezierClass->getPathPoint(tempObject->myPath, tempObject->myRoad, tempObject->myWay);
 				tempObject->setPositionX(tempObject->myPoint.x + Main::mainClass->readXMLClass.listOfStonePortals[this->i][3]);
 				tempObject->setPositionY(tempObject->myPoint.y + Main::mainClass->readXMLClass.listOfStonePortals[this->i][4]);
-				tempObject->mouseChildren = false;
+				tempObject->setMouseChildren(false);
 				tempObject->mouseEnabled = false;
 				tempObject->repeatFlag = false;
 				tempObject->repeatCounter = 0;
@@ -1362,7 +1362,7 @@ namespace engine
 				tempObject->myPoint = this->world->bezierClass->getPathPoint(tempObject->myPath, tempObject->myRoad, tempObject->myWay);
 				tempObject->setPositionX(tempObject->myPoint.x + Main::mainClass->readXMLClass.listOfLevinPortals[this->i][3]);
 				tempObject->setPositionY(tempObject->myPoint.y + Main::mainClass->readXMLClass.listOfLevinPortals[this->i][4]);
-				tempObject->mouseChildren = false;
+				tempObject->setMouseChildren(false);
 				tempObject->mouseEnabled = false;
 				tempObject->repeatFlag = false;
 				tempObject->repeatCounter = 0;
@@ -1428,6 +1428,10 @@ namespace engine
 		this->world->worldInterface = WorldInterface::create();
 		this->world->addChild(this->world->worldInterface);
 
+		//world->logInfo("buyFireBuyTXT", world->worldInterface->container->buyFireBuyTXT->getPosition());
+		//world->logInfo("buyFireBuyTXT", world->worldInterface->container->buyFireBuyTXT->getNamePath());
+		//world->logInfo("buyFireBuyTXT", world->worldInterface->container->buyFire->convertToWorldSpace(world->worldInterface->container->buyFireBuyTXT->getPosition()));
+
 		if (complexityLevel == 4)
 		{
 			if (this->world->pointer1)
@@ -1443,21 +1447,21 @@ namespace engine
 				this->world->pointer3->setVisible(false);
 			}
 			this->world->worldInterface->container->lastTime->setVisible(true);
-			this->world->liveMax = 1;
-			this->world->live = 1;
+			this->world->liveMax = 20;
+			this->world->live = 20;
 			if (this->world->nowLevel == 3)
 			{
 				this->i = 0;
 				while (this->i < this->world->listOfPlaces.size())
 				{
-					this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+					this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 					//if (this->world->listOfPlaces[this->i]->getName() == "place1" || this->world->listOfPlaces[this->i]->getName() == "place2" || this->world->listOfPlaces[this->i]->getName() == "place4" || this->world->listOfPlaces[this->i]->getName() == "place5" || this->world->listOfPlaces[this->i]->getName() == "place8")
 					//{
-					//	this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+					//	this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 					//}
 					//else if (this->world->listOfPlaces[this->i]->getName() == "place3" || this->world->listOfPlaces[this->i]->getName() == "place6" || this->world->listOfPlaces[this->i]->getName() == "place7")
 					//{
-					//	this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+					//	this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 					//}
 					i++;
 				}
@@ -1480,7 +1484,7 @@ namespace engine
 				{
 					if (this->world->listOfPlaces[this->i]->getName() == "place4")
 					{
-						this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+						this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 					}
 					i++;
 				}
@@ -1492,15 +1496,15 @@ namespace engine
 				{
 					if (this->world->listOfPlaces[this->i]->getName() == "place1" || this->world->listOfPlaces[this->i]->getName() == "place2" || this->world->listOfPlaces[this->i]->getName() == "place5" || this->world->listOfPlaces[this->i]->getName() == "place6" || this->world->listOfPlaces[this->i]->getName() == "place8")
 					{
-						this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+						this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 					}
 					else if (this->world->listOfPlaces[this->i]->getName() == "place3" || this->world->listOfPlaces[this->i]->getName() == "place7")
 					{
-						this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+						this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 					}
 					else if (this->world->listOfPlaces[this->i]->getName() == "place4" || this->world->listOfPlaces[this->i]->getName() == "place9")
 					{
-						this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+						this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 					}
 					i++;
 				}
@@ -1512,7 +1516,7 @@ namespace engine
 				{
 					if (this->world->listOfPlaces[this->i]->getName() == "place5" || this->world->listOfPlaces[this->i]->getName() == "place10")
 					{
-						this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+						this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 					}
 					i++;
 				}
@@ -1524,7 +1528,7 @@ namespace engine
 				{
 					if (this->world->listOfPlaces[this->i]->getName() == "place1" || this->world->listOfPlaces[this->i]->getName() == "place2" || this->world->listOfPlaces[this->i]->getName() == "place8" || this->world->listOfPlaces[this->i]->getName() == "place10")
 					{
-						this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+						this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 					}
 					i++;
 				}
@@ -1536,7 +1540,7 @@ namespace engine
 				{
 					if (this->world->listOfPlaces[this->i]->getName() == "place3" || this->world->listOfPlaces[this->i]->getName() == "place4" || this->world->listOfPlaces[this->i]->getName() == "place8" || this->world->listOfPlaces[this->i]->getName() == "place10")
 					{
-						this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+						this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 					}
 					i++;
 				}
@@ -1548,7 +1552,7 @@ namespace engine
 				{
 					if (this->world->listOfPlaces[this->i]->getName() == "place3" || this->world->listOfPlaces[this->i]->getName() == "place5" || this->world->listOfPlaces[this->i]->getName() == "place8" || this->world->listOfPlaces[this->i]->getName() == "place10")
 					{
-						this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+						this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 					}
 					i++;
 				}
@@ -1561,27 +1565,27 @@ namespace engine
 
 					if (this->world->listOfPlaces[this->i]->getName() == "place1" || this->world->listOfPlaces[this->i]->getName() == "place6" || this->world->listOfPlaces[this->i]->getName() == "place10" || this->world->listOfPlaces[this->i]->getName() == "place15")
 					{
-						this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+						this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 					}
 					else if (this->world->listOfPlaces[this->i]->getName() == "place4" || this->world->listOfPlaces[this->i]->getName() == "place12")
 					{
-						this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+						this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 					}
 					else if (this->world->listOfPlaces[this->i]->getName() == "place5" || this->world->listOfPlaces[this->i]->getName() == "place14")
 					{
-						this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+						this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 					}
 					else if (this->world->listOfPlaces[this->i]->getName() == "place2" || this->world->listOfPlaces[this->i]->getName() == "place13")
 					{
-						this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+						this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 					}
 					else if (this->world->listOfPlaces[this->i]->getName() == "place3" || this->world->listOfPlaces[this->i]->getName() == "place11")
 					{
-						this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+						this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 					}
 					else if (this->world->listOfPlaces[this->i]->getName() == "place7" || this->world->listOfPlaces[this->i]->getName() == "place8" || this->world->listOfPlaces[this->i]->getName() == "place9")
 					{
-						this->world->listOfPlaces[this->i]->placeForBuildCase->buttonMode = false;
+						this->world->listOfPlaces[this->i]->placeForBuildCase->mouseEnabled = false;
 					}
 					i++;
 				}

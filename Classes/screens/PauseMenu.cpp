@@ -67,18 +67,18 @@ namespace screens
         this->container->scroll->btnExit->stop();
         this->container->scroll->btnExit->arrow->stop();
         this->container->scroll->btnExit->exitCase->stop();
-        this->container->scroll->btnMusic->musicCase->buttonMode = true;
-        this->container->scroll->btnSound->soundCase->buttonMode = true;
-        this->container->scroll->btnLow->lowCase->buttonMode = true;
-        this->container->scroll->btnMedium->mediumCase->buttonMode = true;
-        this->container->scroll->btnHigh->highCase->buttonMode = true;
-        this->container->scroll->btnOn->onCase->buttonMode = true;
-        this->container->scroll->btnOff->offCase->buttonMode = true;
-        this->container->scroll->btnResume->resumeCase->buttonMode = true;
-        this->container->scroll->btnRestart->restartCase->buttonMode = true;
-        this->container->scroll->btnExit->exitCase->buttonMode = true; 
-        this->container->scroll->mouseChildren = false;
-        this->container->scroll->mouseEnabled = false;
+        this->container->scroll->btnMusic->musicCase->setMouseEnabled(true);
+        this->container->scroll->btnSound->soundCase->setMouseEnabled(true);
+        this->container->scroll->btnLow->lowCase->setMouseEnabled(true);
+        this->container->scroll->btnMedium->mediumCase->setMouseEnabled(true);
+        this->container->scroll->btnHigh->highCase->setMouseEnabled(true);
+        this->container->scroll->btnOn->onCase->setMouseEnabled(true);
+        this->container->scroll->btnOff->offCase->setMouseEnabled(true);
+        this->container->scroll->btnResume->resumeCase->setMouseEnabled(true);
+        this->container->scroll->btnRestart->restartCase->setMouseEnabled(true);
+        this->container->scroll->btnExit->exitCase->setMouseEnabled(true); 
+        this->container->scroll->setMouseChildren(false);
+        this->container->scroll->setMouseEnabled(false);
         this->container->scroll->btnResume->arrow->setVisible(false);
         this->container->scroll->btnRestart->arrow->setVisible(false);
         this->container->scroll->btnExit->arrow->setVisible(false);
@@ -86,7 +86,7 @@ namespace screens
         this->container->scroll->btnY8->y8Case->stop();
         if (!Main::mainClass->IDIClass.isSponsor)
         {
-            this->container->scroll->btnY8->y8Case->buttonMode = true;
+            this->container->scroll->btnY8->y8Case->setMouseEnabled(true);
         }
         this->addChild(this->container);
         //if (!//Sounds.instance.musicOn)
@@ -100,27 +100,27 @@ namespace screens
         //if (Main::mainClass->saveBoxClass.gameSave.data.quality == "low")
         //{
         //    this->container->scroll->btnLow->gotoAndStop(4);
-        //    this->container->scroll->btnLow->lowCase->buttonMode = false;
+        //    this->container->scroll->btnLow->lowCase->setMouseEnabled(false);
         //}
         //else if (Main::mainClass->saveBoxClass.gameSave.data.quality == "medium")
         //{
         //    this->container->scroll->btnMedium->gotoAndStop(4);
-        //    this->container->scroll->btnMedium->mediumCase->buttonMode = false;
+        //    this->container->scroll->btnMedium->mediumCase->setMouseEnabled(false);
         //}
         //else if (Main::mainClass->saveBoxClass.gameSave.data.quality == "high")
         //{
         //    this->container->scroll->btnHigh->gotoAndStop(4);
-        //    this->container->scroll->btnHigh->highCase->buttonMode = false;
+        //    this->container->scroll->btnHigh->highCase->setMouseEnabled(false);
         //}
         if (Main::mainClass->saveBoxClass->getBoolValue("autoPause"))
         {
             this->container->scroll->btnOn->gotoAndStop(4);
-            this->container->scroll->btnOn->onCase->buttonMode = false;
+            this->container->scroll->btnOn->onCase->setMouseEnabled(false);
         }
         else
         {
             this->container->scroll->btnOff->gotoAndStop(4);
-            this->container->scroll->btnOff->offCase->buttonMode = false;
+            this->container->scroll->btnOff->offCase->setMouseEnabled(false);
         }
         return;
     }// end function
@@ -160,8 +160,8 @@ namespace screens
             {
                 if (this->container->scroll->currentFrame == 18)
                 { 
-                    this->container->scroll->mouseChildren = true;
-                    this->container->scroll->mouseEnabled = true;
+                    this->container->scroll->setMouseChildren(true);
+                    this->container->scroll->setMouseEnabled(true);
                     this->autoguidersButtons();
                 }
                 else if (this->container->scroll->currentFrame == 24)
@@ -215,26 +215,26 @@ namespace screens
                     this->container->scroll->btnExit->alpha = 1;
                     this->container->scroll->qualityTXT->alpha = 1;
                     this->container->scroll->autopauseTXT->alpha = 1; 
-                    this->container->scroll->btnMusic->mouseChildren = true;
-                    this->container->scroll->btnMusic->mouseEnabled = true; 
-                    this->container->scroll->btnSound->mouseChildren = true;
-                    this->container->scroll->btnSound->mouseEnabled = true; 
-                    this->container->scroll->btnLow->mouseChildren = true;
-                    this->container->scroll->btnLow->mouseEnabled = true; 
-                    this->container->scroll->btnMedium->mouseChildren = true;
-                    this->container->scroll->btnMedium->mouseEnabled = true; 
-                    this->container->scroll->btnHigh->mouseChildren = true;
-                    this->container->scroll->btnHigh->mouseEnabled = true; 
-                    this->container->scroll->btnOn->mouseChildren = true;
-                    this->container->scroll->btnOn->mouseEnabled = true; 
-                    this->container->scroll->btnOff->mouseChildren = true;
-                    this->container->scroll->btnOff->mouseEnabled = true; 
-                    this->container->scroll->btnResume->mouseChildren = true;
-                    this->container->scroll->btnResume->mouseEnabled = true; 
-                    this->container->scroll->btnRestart->mouseChildren = true;
-                    this->container->scroll->btnRestart->mouseEnabled = true; 
-                    this->container->scroll->btnExit->mouseChildren = true;
-                    this->container->scroll->btnExit->mouseEnabled = true;
+                    this->container->scroll->btnMusic->setMouseChildren(true);
+                    this->container->scroll->btnMusic->setMouseEnabled(true); 
+                    this->container->scroll->btnSound->setMouseChildren(true);
+                    this->container->scroll->btnSound->setMouseEnabled(true); 
+                    this->container->scroll->btnLow->setMouseChildren(true);
+                    this->container->scroll->btnLow->setMouseEnabled(true); 
+                    this->container->scroll->btnMedium->setMouseChildren(true);
+                    this->container->scroll->btnMedium->setMouseEnabled(true); 
+                    this->container->scroll->btnHigh->setMouseChildren(true);
+                    this->container->scroll->btnHigh->setMouseEnabled(true); 
+                    this->container->scroll->btnOn->setMouseChildren(true);
+                    this->container->scroll->btnOn->setMouseEnabled(true); 
+                    this->container->scroll->btnOff->setMouseChildren(true);
+                    this->container->scroll->btnOff->setMouseEnabled(true); 
+                    this->container->scroll->btnResume->setMouseChildren(true);
+                    this->container->scroll->btnResume->setMouseEnabled(true); 
+                    this->container->scroll->btnRestart->setMouseChildren(true);
+                    this->container->scroll->btnRestart->setMouseEnabled(true); 
+                    this->container->scroll->btnExit->setMouseChildren(true);
+                    this->container->scroll->btnExit->setMouseEnabled(true);
                     this->autoguidersButtons();
                 }
             }
@@ -249,10 +249,10 @@ namespace screens
                     this->container->scroll->question->stop();
                     this->container->scroll->question->btnYes->stop();
                     this->container->scroll->question->btnNo->stop();
-                    this->container->scroll->question->btnYes->yesCase->buttonMode = true;
-                    this->container->scroll->question->btnNo->noCase->buttonMode = true; 
-                    this->container->scroll->question->mouseChildren = false;
-                    this->container->scroll->question->mouseEnabled = false;
+                    this->container->scroll->question->btnYes->yesCase->setMouseEnabled(true);
+                    this->container->scroll->question->btnNo->noCase->setMouseEnabled(true); 
+                    this->container->scroll->question->setMouseChildren(false);
+                    this->container->scroll->question->setMouseEnabled(false);
                 }
             }
             else if (this->container->scroll->question->currentFrame < this->container->scroll->question->totalFrames)
@@ -260,8 +260,8 @@ namespace screens
                 this->container->scroll->question->gotoAndStop((this->container->scroll->question->currentFrame + 1));
                 if (this->container->scroll->question->currentFrame == this->container->scroll->question->totalFrames)
                 { 
-                    this->container->scroll->question->mouseChildren = true;
-                    this->container->scroll->question->mouseEnabled = true;;
+                    this->container->scroll->question->setMouseChildren(true);
+                    this->container->scroll->question->setMouseEnabled(true);;
                     this->autoguidersButtons();
                 }
             }
@@ -513,7 +513,7 @@ namespace screens
             {
                 this->container->scroll->btnExit->gotoAndStop(1);
             }
-            if (this->container->scroll->btnY8->y8Case->buttonMode)
+            if (this->container->scroll->btnY8->y8Case->mouseEnabled)
             {
                 if (param1->target->name == "y8Case")
                 {
@@ -731,16 +731,16 @@ namespace screens
                     this->world->stage.quality = "low";
                     Main::mainClass->saveBoxClass->setValue(quality , "low");
                     this->container->scroll->btnLow->gotoAndStop(4);
-                    this->container->scroll->btnLow->lowCase->buttonMode = false;
+                    this->container->scroll->btnLow->lowCase->setMouseEnabled(false);
                     if (this->container->scroll->btnMedium->currentFrame != 1)
                     {
                         this->container->scroll->btnMedium->gotoAndStop(1);
-                        this->container->scroll->btnMedium->mediumCase->buttonMode = true;
+                        this->container->scroll->btnMedium->mediumCase->setMouseEnabled(true);
                     }
                     if (this->container->scroll->btnHigh->currentFrame != 1)
                     {
                         this->container->scroll->btnHigh->gotoAndStop(1);
-                        this->container->scroll->btnHigh->highCase->buttonMode = true;
+                        this->container->scroll->btnHigh->highCase->setMouseEnabled(true);
                     }
                 }
             }
@@ -755,16 +755,16 @@ namespace screens
                     this->world->stage.quality = "medium";
                     Main::mainClass->saveBoxClass->setValue(quality , "medium"); 
                     this->container->scroll->btnMedium->gotoAndStop(4);
-                    this->container->scroll->btnMedium->mediumCase->buttonMode = false;
+                    this->container->scroll->btnMedium->mediumCase->setMouseEnabled(false);
                     if (this->container->scroll->btnLow->currentFrame != 1)
                     {
                         this->container->scroll->btnLow->gotoAndStop(1);
-                        this->container->scroll->btnLow->lowCase->buttonMode = true;
+                        this->container->scroll->btnLow->lowCase->setMouseEnabled(true);
                     }
                     if (this->container->scroll->btnHigh->currentFrame != 1)
                     {
                         this->container->scroll->btnHigh->gotoAndStop(1);
-                        this->container->scroll->btnHigh->highCase->buttonMode = true;
+                        this->container->scroll->btnHigh->highCase->setMouseEnabled(true);
                     }
                 }
             }
@@ -779,16 +779,16 @@ namespace screens
                     this->world->stage.quality = "high";
                     Main::mainClass->saveBoxClass->setValue(quality , "high"); ;
                     this->container->scroll->btnHigh->gotoAndStop(4);
-                    this->container->scroll->btnHigh->highCase->buttonMode = false;
+                    this->container->scroll->btnHigh->highCase->setMouseEnabled(false);
                     if (this->container->scroll->btnLow->currentFrame != 1)
                     {
                         this->container->scroll->btnLow->gotoAndStop(1);
-                        this->container->scroll->btnLow->lowCase->buttonMode = true;
+                        this->container->scroll->btnLow->lowCase->setMouseEnabled(true);
                     }
                     if (this->container->scroll->btnMedium->currentFrame != 1)
                     {
                         this->container->scroll->btnMedium->gotoAndStop(1);
-                        this->container->scroll->btnMedium->mediumCase->buttonMode = true;
+                        this->container->scroll->btnMedium->mediumCase->setMouseEnabled(true);
                     }
                 }
             }
@@ -801,9 +801,9 @@ namespace screens
                 if (this->container->scroll->btnOn->currentFrame == 3)
                 {
                     this->container->scroll->btnOn->gotoAndStop(4);
-                    this->container->scroll->btnOn->onCase->buttonMode = false;
+                    this->container->scroll->btnOn->onCase->setMouseEnabled(false);
                     this->container->scroll->btnOff->gotoAndStop(1);
-                    this->container->scroll->btnOff->offCase->buttonMode = true;
+                    this->container->scroll->btnOff->offCase->setMouseEnabled(true);
                     Main::mainClass->saveBoxClass->setValue("autoPause",true);
                 }
             }
@@ -816,9 +816,9 @@ namespace screens
                 if (this->container->scroll->btnOff->currentFrame == 3)
                 {
                     this->container->scroll->btnOff->gotoAndStop(4);
-                    this->container->scroll->btnOff->offCase->buttonMode = false;
+                    this->container->scroll->btnOff->offCase->setMouseEnabled(false);
                     this->container->scroll->btnOn->gotoAndStop(1);
-                    this->container->scroll->btnOn->onCase->buttonMode = true;
+                    this->container->scroll->btnOn->onCase->setMouseEnabled(true);
                     Main::mainClass->saveBoxClass->setValue("autoPause",false);
                 }
             }
@@ -855,26 +855,26 @@ namespace screens
                     this->container->scroll->btnExit->alpha = 0.5;
                     this->container->scroll->qualityTXT->alpha = 0.5;
                     this->container->scroll->autopauseTXT->alpha = 0.5; 
-                    this->container->scroll->btnMusic->mouseChildren = false;
-                    this->container->scroll->btnMusic->mouseEnabled = false; 
-                    this->container->scroll->btnSound->mouseChildren = false;
-                    this->container->scroll->btnSound->mouseEnabled = false; 
-                    this->container->scroll->btnLow->mouseChildren = false;
-                    this->container->scroll->btnLow->mouseEnabled = false; 
-                    this->container->scroll->btnMedium->mouseChildren = false;
-                    this->container->scroll->btnMedium->mouseEnabled = false; 
-                    this->container->scroll->btnHigh->mouseChildren = false;
-                    this->container->scroll->btnHigh->mouseEnabled = false; 
-                    this->container->scroll->btnOn->mouseChildren = false;
-                    this->container->scroll->btnOn->mouseEnabled = false; 
-                    this->container->scroll->btnOff->mouseChildren = false;
-                    this->container->scroll->btnOff->mouseEnabled = false; 
-                    this->container->scroll->btnResume->mouseChildren = false;
-                    this->container->scroll->btnResume->mouseEnabled = false; 
-                    this->container->scroll->btnRestart->mouseChildren = false;
-                    this->container->scroll->btnRestart->mouseEnabled = false; 
-                    this->container->scroll->btnExit->mouseChildren = false;
-                    this->container->scroll->btnExit->mouseEnabled = false;
+                    this->container->scroll->btnMusic->setMouseChildren(false);
+                    this->container->scroll->btnMusic->setMouseEnabled(false); 
+                    this->container->scroll->btnSound->setMouseChildren(false);
+                    this->container->scroll->btnSound->setMouseEnabled(false); 
+                    this->container->scroll->btnLow->setMouseChildren(false);
+                    this->container->scroll->btnLow->setMouseEnabled(false); 
+                    this->container->scroll->btnMedium->setMouseChildren(false);
+                    this->container->scroll->btnMedium->setMouseEnabled(false); 
+                    this->container->scroll->btnHigh->setMouseChildren(false);
+                    this->container->scroll->btnHigh->setMouseEnabled(false); 
+                    this->container->scroll->btnOn->setMouseChildren(false);
+                    this->container->scroll->btnOn->setMouseEnabled(false); 
+                    this->container->scroll->btnOff->setMouseChildren(false);
+                    this->container->scroll->btnOff->setMouseEnabled(false); 
+                    this->container->scroll->btnResume->setMouseChildren(false);
+                    this->container->scroll->btnResume->setMouseEnabled(false); 
+                    this->container->scroll->btnRestart->setMouseChildren(false);
+                    this->container->scroll->btnRestart->setMouseEnabled(false); 
+                    this->container->scroll->btnExit->setMouseChildren(false);
+                    this->container->scroll->btnExit->setMouseEnabled(false);
                 }
             }
             else if (this->container->scroll->btnRestart->currentFrame == 3)
@@ -899,26 +899,26 @@ namespace screens
                     this->container->scroll->btnExit->alpha = 0.5;
                     this->container->scroll->qualityTXT->alpha = 0.5;
                     this->container->scroll->autopauseTXT->alpha = 0.5; 
-                    this->container->scroll->btnMusic->mouseChildren = false;
-                    this->container->scroll->btnMusic->mouseEnabled = false; 
-                    this->container->scroll->btnSound->mouseChildren = false;
-                    this->container->scroll->btnSound->mouseEnabled = false; 
-                    this->container->scroll->btnLow->mouseChildren = false;
-                    this->container->scroll->btnLow->mouseEnabled = false; 
-                    this->container->scroll->btnMedium->mouseChildren = false;
-                    this->container->scroll->btnMedium->mouseEnabled = false; 
-                    this->container->scroll->btnHigh->mouseChildren = false;
-                    this->container->scroll->btnHigh->mouseEnabled = false; 
-                    this->container->scroll->btnOn->mouseChildren = false;
-                    this->container->scroll->btnOn->mouseEnabled = false; 
-                    this->container->scroll->btnOff->mouseChildren = false;
-                    this->container->scroll->btnOff->mouseEnabled = false; 
-                    this->container->scroll->btnResume->mouseChildren = false;
-                    this->container->scroll->btnResume->mouseEnabled = false; 
-                    this->container->scroll->btnRestart->mouseChildren = false;
-                    this->container->scroll->btnRestart->mouseEnabled = false; 
-                    this->container->scroll->btnExit->mouseChildren = false;
-                    this->container->scroll->btnExit->mouseEnabled = false;
+                    this->container->scroll->btnMusic->setMouseChildren(false);
+                    this->container->scroll->btnMusic->setMouseEnabled(false); 
+                    this->container->scroll->btnSound->setMouseChildren(false);
+                    this->container->scroll->btnSound->setMouseEnabled(false); 
+                    this->container->scroll->btnLow->setMouseChildren(false);
+                    this->container->scroll->btnLow->setMouseEnabled(false); 
+                    this->container->scroll->btnMedium->setMouseChildren(false);
+                    this->container->scroll->btnMedium->setMouseEnabled(false); 
+                    this->container->scroll->btnHigh->setMouseChildren(false);
+                    this->container->scroll->btnHigh->setMouseEnabled(false); 
+                    this->container->scroll->btnOn->setMouseChildren(false);
+                    this->container->scroll->btnOn->setMouseEnabled(false); 
+                    this->container->scroll->btnOff->setMouseChildren(false);
+                    this->container->scroll->btnOff->setMouseEnabled(false); 
+                    this->container->scroll->btnResume->setMouseChildren(false);
+                    this->container->scroll->btnResume->setMouseEnabled(false); 
+                    this->container->scroll->btnRestart->setMouseChildren(false);
+                    this->container->scroll->btnRestart->setMouseEnabled(false); 
+                    this->container->scroll->btnExit->setMouseChildren(false);
+                    this->container->scroll->btnExit->setMouseEnabled(false);
                 }
             }
             else if (this->container->scroll->btnExit->currentFrame == 3)
@@ -1154,8 +1154,8 @@ namespace screens
         {
             this->closeFlag = true;
             this->container->scroll->btnResume->gotoAndStop(2); 
-            this->container->mouseChildren = false;
-            this->container->mouseEnabled = false;
+            this->container->setMouseChildren(false);
+            this->container->setMouseEnabled(false);
         }
         return;
     }// end function

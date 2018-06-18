@@ -11,14 +11,14 @@
 
 #include "DefineClasses.h"
  
-class Main : public  BaseNode //cocos2d::LayerColor //
+class Main : public  BaseLayer //cocos2d::LayerColor //
 {
 public:
 	int frameCounter;
 	int i;
 	int j;
 	//void * tempObject;
-	Node * container;
+	ListenInterface * container;
 	SaveBox * saveBoxClass;
 	//加载配置数据 
 	ReadXML readXMLClass;
@@ -56,6 +56,7 @@ public:
 	virtual bool init();
 	static Scene* createScene();
     virtual void onEnter();
+	virtual void _onStart();
 
     void addNewScreen(const string &  param1);
 

@@ -43,21 +43,21 @@ namespace screens
         this->container->first->scroll->btnContinue->arrow->stop();
         this->container->first->scroll->btnRestart->stop();
         this->container->first->scroll->btnRestart->arrow->stop();
-        this->container->first->scroll->btnContinue->continueCase->buttonMode = true;
-        this->container->first->scroll->btnRestart->restartCase->buttonMode = true;
-        this->container->first->mouseChildren = false;
-        this->container->first->mouseEnabled = false;
+        this->container->first->scroll->btnContinue->continueCase->setMouseEnabled(true);
+        this->container->first->scroll->btnRestart->restartCase->setMouseEnabled(true);
+        this->container->first->setMouseChildren(false);
+        this->container->first->setMouseEnabled(false);
         this->container->first->scroll->btnContinue->arrow->setVisible(false);
         this->container->first->scroll->btnRestart->arrow->setVisible(false);
         //this->container->first->scroll->btnY8->stop();
         //this->container->first->scroll->btnY8->y8Case->stop();
         //if (!Main::mainClass->IDIClass.isSponsor)
         //{
-        //    this->container->first->scroll->btnY8->y8Case->buttonMode = true;
+        //    this->container->first->scroll->btnY8->y8Case->setMouseEnabled(true);
         //}
         this->container->first->forum->stop();
         this->container->first->forum.forumCase->stop();
-        this->container->first->forum.forumCase->buttonMode = true;
+        this->container->first->forum.forumCase->setMouseEnabled(true);
         
         if (addit_levelsDefeatCounter >= 3)
         {
@@ -118,8 +118,8 @@ namespace screens
             else
             {
                 this->openFlag = false; 
-                this->container->first->mouseChildren = true;
-                this->container->first->mouseEnabled = true;
+                this->container->first->setMouseChildren(true);
+                this->container->first->setMouseEnabled(true);
                 cocos2d::Point tempObject(this->mouseX, this->mouseY);
                 tempObject1 = this->container->first->scroll->btnContinue->localToGlobal(this->container->first->scroll->btnContinue->continueCase->getPosition());
                 if (tempObject.x > tempObject1.x - this->container->first->scroll->btnContinue->continueCase.width / 2 
@@ -147,8 +147,8 @@ namespace screens
                     this->container->first->scroll->btnContinue->arrow->stop();
                     this->container->first->scroll->btnRestart->stop();
                     this->container->first->scroll->btnRestart->arrow->stop();
-                    this->container->first->scroll->btnContinue->continueCase->buttonMode = true;
-                    this->container->first->scroll->btnRestart->restartCase->buttonMode = true;
+                    this->container->first->scroll->btnContinue->continueCase->setMouseEnabled(true);
+                    this->container->first->scroll->btnRestart->restartCase->setMouseEnabled(true);
                     this->container->first->scroll->btnContinue->arrow->setVisible(false);
                     this->container->first->scroll->btnRestart->arrow->setVisible(false);
                 }
@@ -229,7 +229,7 @@ namespace screens
         {
             this->container->first->scroll->btnRestart->gotoAndStop(1);
         }
-        if (this->container->first->scroll->btnY8->y8Case->buttonMode)
+        if (this->container->first->scroll->btnY8->y8Case->mouseEnabled)
         {
             if (event->target->name == "y8Case")
             {

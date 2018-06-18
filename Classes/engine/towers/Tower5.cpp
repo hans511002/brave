@@ -42,7 +42,7 @@ namespace engine
             container->upgr1->stop();
             container->blockTower->stop();
             container->boneBlock->stop();
-            container->towerCase->buttonMode = true;
+            container->towerCase->setMouseEnabled(true);
             container->upgr1->setVisible(false);
             container->blockTower->setVisible(false); 
             container->boneBlock->setVisible(false);

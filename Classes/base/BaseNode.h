@@ -8,8 +8,12 @@
 #include "JsonUtil.h"
 #include "ui/CocosGUI.h"
 using namespace cocos2d;
+#include "DefineClasses.h"
 
 #define ISTYPE(CLZTYPE,POINTER)  dynamic_cast<CLZTYPE *>(POINTER)
+namespace engine{
+	struct MovieClipSub;
+}
 
 namespace std
 {
@@ -26,6 +30,9 @@ namespace std
 	string getText(ui::Text * tui);
 	bool hitTest(cocos2d::Node * node, const Vec2 &pt);
 	bool hitTest(cocos2d::Node * node, cocos2d::EventMouse* e);
+	string getNamePath(Node *node);
+	Common::Array<Node*>  getChildNodes(Node *node);
+	bool getNodeVisible(Node * node);
 
 
 	extern Common::Log * gLog;
@@ -50,18 +57,26 @@ namespace std
 	class EventNode
 	{
 	public:
-        inline EventNode() :mouseChildren(false), mouseEnabled(false), buttonMode(false), mouseFlag(false){ setNodeType("EventNode"); };
+		inline EventNode() :mouseChildren(false), mouseEnabled(false),  mouseFlag(false){ nodeType = getTypeName(); };
 		static bool debug;
 		cocos2d::Label* createLabel(const std::string& string);
 
 		string nodeType;
+		string getTypeName();
 		inline void setNodeType(string nt) { nodeType = typeid(*this).name(); };
-		inline virtual bool hitTest(const Vec2 &pt) { return buttonMode || mouseEnabled; };
-		inline virtual bool hitTest(cocos2d::EventMouse* event) { return buttonMode || mouseEnabled; };
+		inline virtual bool hitTest(const Vec2 &pt) { return mouseEnabled ; };
+		inline virtual bool hitTest(cocos2d::EventMouse* event) { return   mouseEnabled; };
 		bool mouseChildren;
 		bool mouseEnabled;
-		bool buttonMode;
 		bool mouseFlag;
+		virtual void setMouseChildren(bool v);
+		virtual void setMouseEnabled(bool v);
+		virtual void setMouseFlag(bool v);
+		static void setNodeMouse(EventNode * en,int type,bool v);
+
+		virtual bool isMouseChildren();
+		virtual bool isMouseEnabled();
+		virtual bool isMouseFlag();
 
 		float getStageWidth() const;
 		float getStageHeight() const;
@@ -70,15 +85,25 @@ namespace std
 		//inline string setText(ui::Text * tui, string val) { return std::setText(tui, val); };
 		//inline int setText(ui::Text * tui, int val) { return std::setText(tui, val); };
 		//inline float setText(ui::Text * tui, float val) { return std::setText(tui, val); };
-		inline void logInfo(string label, cocos2d::Point pos);
-		inline void logInfo(string label, cocos2d::Size pos);
-		inline void logInfo(string label, float x, float y = 0);
-		inline void logInfo(string label, int x);
-		inline void logInfo(string label, int x, int y);
-		inline void logInfo(string label1, string label2 = "", string label3 = "", string label4 = "", string label5 = "", string label6 = "");
+		void logInfo(string label, cocos2d::Point pos, const cocos2d::Point* pos2 = NULL, const  cocos2d::Point* pos3 = NULL, const  cocos2d::Point* pos4 = NULL);
+		void logInfo(string label, cocos2d::Size pos);
+		void logInfo(string label, float x, float y = 0);
+		void logInfo(string label, int x);
+		void logInfo(string label, int x, int y);
+		void logInfo(string label, int i, Vec2 p);
+		void logInfo(string label1, string label2 = "", string label3 = "", string label4 = "", string label5 = "", string label6 = "");
+		void logInfo(string label, dragonBones::Transform t);
+		void logInfo(string label, dragonBones::Transform*t);
+		void logInfo(string label, dragonBones::Transform const*t);
+		 
+
 #define LOGINFO(format, ...)      cocos2d::log(format, ##__VA_ARGS__)
-		void loginfo(string mouseType, cocos2d::EventMouse* event);
-		virtual string getNamePath(Node *node);
+		void logInfo(string mouseType, cocos2d::EventMouse* event);
+		virtual string getNamePath(Node *node= NULL);
+		void printChildNodes(Node *node=NULL);
+		void printNodePos(Node *node);
+		void printNodePos(MovieClipSub *node);
+
 
 		virtual   void keyBoardPressedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 		virtual   void keyBoardReleasedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
@@ -101,7 +126,7 @@ namespace std
 	public:
 		static const double AnimationInterval;
 		cocos2d::EventListenerMouse * listener;
-		inline BaseNode() :schdt(0), autoDel(true), listener(0) { setNodeType ( "BaseNode"); };//mouseEnabled(false), mouseChildren(false), 
+		inline BaseNode() :schdt(0), autoDel(true), listener(0) { setName(getTypeName()); };//mouseEnabled(false), mouseChildren(false), 
 		BaseNode(float w, float h, bool draw = true);
         virtual bool init();
         virtual bool atStage();
@@ -151,6 +176,7 @@ namespace std
 
 		static void setAlpha(cocos2d::Node * node, float);
 		static float getAlpha(cocos2d::Node * node);
+		virtual bool isVisible();
 	protected:
 
 	};
@@ -173,6 +199,7 @@ namespace std
 		virtual void onEnter();
 		virtual void onExit();
 
+		virtual bool isVisible();
 
 	private:
 
@@ -183,38 +210,28 @@ namespace std
 		cocos2d::Sprite* _background;
 		virtual void _onStart() = 0;
  	public:
-		BaseLayer() :_background(nullptr)
-		{
-			setNodeType("BaseLayer");
-			std::setAnchorPoint((Node*)this);
-		}
+		cocos2d::EventListenerMouse * listener;
+		BaseLayer();
 		inline virtual bool hitTest(const Vec2 &pt) { return std::hitTest(this, pt); };
 		inline virtual bool hitTest(cocos2d::EventMouse* event) { return std::hitTest(this, event); };
 
 		virtual bool init();
 		virtual void onEnter();
 		virtual void onExit();
-
+		virtual void enableMouseHandler();
+		virtual void enableKeyHandler();
+		virtual void disableMouseHandler();
 		//cocos2d::Label* createText(const std::string& string);
+		virtual bool isVisible();
 
 		//float getStageWidth() const;
 		//float getStageHeight() const;
 	};
-
-	//class CaseNode : public BaseNode{
-	//public:
-	//    CaseNode(float w, float h);
-	//	void enableKeyHandler();
-	// 	virtual void keyBoardPressedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-	//	virtual void keyBoardReleasedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-	//	virtual void mouseDownHandler(cocos2d::EventMouse* event);
-	//	virtual void mouseUpHandler(cocos2d::EventMouse* event);
-	//	virtual void mouseMoveHandler(cocos2d::EventMouse* event);
-	//	virtual void mouseScrollHandler(cocos2d::EventMouse* event);
-	//	virtual void rightMouseDownHandler(cocos2d::EventMouse* event);
-	//	virtual void rightMouseUpHandler(cocos2d::EventMouse* event);
-	// 
-	//};
+	class ListenInterface : public BaseNode
+	{
+	public:
+		virtual inline void manageListeners(string param1){};
+	}; 
 }
 
 #endif

@@ -25,7 +25,7 @@ namespace screens
         this->container->stop();
         this->container->back->stop();
         this->container->back->backCase->stop();
-        this->container->back->backCase->buttonMode = true;
+        this->container->back->backCase->setMouseEnabled(true);
         this->container->board->stop();
         this->container->board->description->stop();
         this->container->board->infoAdd->stop();
@@ -45,9 +45,9 @@ namespace screens
         this->container->board->currentComplexity->stop();
         this->container->board->currentComplexity->fire->gotoAndStop(std::round(std::random() * (this->container->board->currentComplexity->fire->totalFrames - 1) + 1));
         this->container->board->start->gotoAndStop(1);
-        this->container->board->currentComplexity->complexityCase->buttonMode = true;
-        this->container->board->mouseChildren = false;
-        this->container->board->mouseEnabled = false;
+        this->container->board->currentComplexity->complexityCase->setMouseEnabled(true);
+        this->container->board->setMouseChildren(false);
+        this->container->board->setMouseEnabled(false);
         this->container->board->infoAdd->setVisible(false);
         this->addChild(this->container);
         this->container->board->gotoAndStop(this->playLevel);
@@ -59,7 +59,7 @@ namespace screens
         {
             this->container->board->survivalMode->eyes1->stop();
             this->container->board->survivalMode->eyes1.alpha = 0;
-            this->container->board->survivalMode->survivalModeCase->buttonMode = true;
+            this->container->board->survivalMode->survivalModeCase->setMouseEnabled(true);
             if (!Main::mainClass->saveBoxClass.gameSave.data.eduSurvHint)
             {
                 //this->openSurvEdu = new Training_91_mc();
@@ -67,12 +67,12 @@ namespace screens
                 //this->openSurvEdu->x = 367;
                 //this->openSurvEdu->y = 372;
                 //this->openSurvEdu->setVisible(false); 
-                //this->openSurvEdu->mouseChildren = false;
-                //this->openSurvEdu->mouseEnabled = false;
+                //this->openSurvEdu->setMouseChildren(false);
+                //this->openSurvEdu->setMouseEnabled(false);
                 //this->addChild(this->openSurvEdu);
             }
         }
-        this->container->board->start->startCase->buttonMode = true;
+        this->container->board->start->startCase->setMouseEnabled(true);
         this->statusManage();
 		int starsOfLevel = Main::mainClass->saveBoxClass->getIntValue("starsOfLevels", (this->playLevel - 1));
 		if(starsOfLevel >= 1)
@@ -157,8 +157,8 @@ namespace screens
             else
             {
                 this->openFlag = false; 
-                this->container->board->mouseChildren = true;
-                this->container->board->mouseEnabled = true;
+                this->container->board->setMouseChildren(true);
+                this->container->board->setMouseEnabled(true);
                 this->stage.frameRate = 30;
                 if (this->openSurvEdu)
                 {
@@ -394,8 +394,8 @@ namespace screens
                     this->hintSurvival = new HintSurvival_mc();
                     this->hintSurvival->stop();
                     this->hintSurvival->setPosition(this->mouseX,this->mouseY); 
-                    this->hintSurvival->mouseChildren = false;
-                    this->hintSurvival->mouseEnabled = false;
+                    this->hintSurvival->setMouseChildren(false);
+                    this->hintSurvival->setMouseEnabled(false);
                     this->addChild(this->hintSurvival);
                 }
             }
@@ -556,10 +556,10 @@ namespace screens
                 this->container->board->survivalMode->gotoAndStop(1);
                 this->container->board->survivalMode->eyes1->stop();
                 this->container->board->survivalMode->eyes1->alpha = 0;
-                this->container->board->mainMode->mainModeCase->buttonMode = false;
-                this->container->board->survivalMode->survivalModeCase->buttonMode = true; 
-                this->container->board->currentComplexity->mouseChildren = true;
-                this->container->board->currentComplexity->mouseEnabled = true;
+                this->container->board->mainMode->mainModeCase->setMouseEnabled(false);
+                this->container->board->survivalMode->survivalModeCase->setMouseEnabled(true); 
+                this->container->board->currentComplexity->setMouseChildren(true);
+                this->container->board->currentComplexity->setMouseEnabled(true);
                 if (this->oldComplexity == 1)
                 {
                     this->complexityManage(1);
@@ -713,10 +713,10 @@ namespace screens
             this->container->board->mainMode->gotoAndStop(1);
             this->container->board->survivalMode->gotoAndStop(4);
             this->container->board->currentComplexity->gotoAndStop(10);
-            this->container->board->mainMode->mainModeCase->buttonMode = true;
-            this->container->board->survivalMode->survivalModeCase->buttonMode = false; 
-            this->container->board->currentComplexity->mouseChildren = false;
-            this->container->board->currentComplexity->mouseEnabled = false;
+            this->container->board->mainMode->mainModeCase->setMouseEnabled(true);
+            this->container->board->survivalMode->survivalModeCase->setMouseEnabled(false); 
+            this->container->board->currentComplexity->setMouseChildren(false);
+            this->container->board->currentComplexity->setMouseEnabled(false);
             this->oldComplexity = Main::mainClass->saveBoxClass->getIntValue("complexityLevel");
             Main::mainClass->saveBoxClass->setValue("complexityLevel", 4);
             if (!this->container->board->infoAdd->isVisible())
@@ -891,8 +891,8 @@ namespace screens
         if (!this->closeFlag)
         {
             this->closeFlag = true; 
-            this->container->board->mouseChildren = false;
-            this->container->board->mouseEnabled = false;
+            this->container->board->setMouseChildren(false);
+            this->container->board->setMouseEnabled(false);
             this->stage.frameRate = 60;
             if (Main::mainClass->saveBoxClass->getIntValue("complexityLevel") == 4)
             {

@@ -67,12 +67,12 @@ namespace engine{
             {
                 if (event->target->getName() != "castIcemanCase" && scanWay())
                 { 
-                    this->mouseChildren = true;
-                    this->mouseEnabled = true;
+                    this->setMouseChildren(true);
+                    this->setMouseEnabled(true);
                     //event = new MouseEvent(MouseEvent.MOUSE_DOWN);
                     world->worldInterface->castIcemanCounter++;
                     world->worldInterface->container->butCastIceman->gotoAndStop(4);
-                    world->worldInterface->container->butCastIcemanCastIcemanCase->buttonMode = false;
+                    world->worldInterface->container->butCastIcemanCastIcemanCase->setMouseEnabled(false);
                     world->worldInterface->container->butCastIcemanContContMask->setScaleY(0);
                     this->addIceman();
                     kill();

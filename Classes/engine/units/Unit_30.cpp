@@ -27,8 +27,8 @@ namespace engine
 			this->autorelease();  
             container->contMcs->gotoAndStop(68);
             this->alpha = 0; 
-            this->mouseChildren = false;
-            this->mouseEnabled = false;
+            this->setMouseChildren(false);
+            this->setMouseEnabled(false);
             i = 0;
             while (i < world->listOfUnits.size())
             { 
@@ -383,8 +383,8 @@ namespace engine
                                     world->listOfUnits.push(this);
                                     readyDamage = true;
                                     moveFlag = true; 
-                                    this->mouseChildren = true;
-                                    this->mouseEnabled = true;
+                                    this->setMouseChildren(true);
+                                    this->setMouseEnabled(true);
                                     this->stealthCounter = this->stealthTimer;
                                     this->phase = 2;
                                 }
@@ -526,8 +526,8 @@ namespace engine
                             container->healthBar->cont->setScaleX((double)health / healthMax);
                             readyDamage = true;
                             moveFlag = true; 
-                            this->mouseChildren = true;
-                            this->mouseEnabled = true;
+                            this->setMouseChildren(true);
+                            this->setMouseEnabled(true);
                             this->phase = 5;
                         }
                     }
@@ -598,8 +598,8 @@ namespace engine
                     health = 0;
                     readyDamage = false;
                     moveFlag = false; 
-                    this->mouseChildren = false;
-                    this->mouseEnabled = false;
+                    this->setMouseChildren(false);
+                    this->setMouseEnabled(false);
                     //world->listOfClasses.push(this);
                     //if (lastAttackType == "golem")
                     //{

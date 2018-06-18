@@ -1,17 +1,17 @@
 <TextureAtlas name="BuildTowerMenu_mc" imagePath="texture.png">
- <SubTexture name="Shape/shape 12119" x="223" y="109" width="25" height="29"/>
- <SubTexture name="Shape/shape 12123" x="223" y="0" width="31" height="38"/>
- <SubTexture name="Shape/shape 12125" x="89" y="59" width="35" height="44"/>
- <SubTexture name="Shape/shape 12127" x="137" y="58" width="40" height="52"/>
+ <SubTexture name="Shape/shape 12119" x="0" y="113" width="25" height="29"/>
+ <SubTexture name="Shape/shape 12123" x="126" y="108" width="31" height="38"/>
+ <SubTexture name="Shape/shape 12125" x="91" y="60" width="35" height="44"/>
+ <SubTexture name="Shape/shape 12127" x="183" y="59" width="40" height="52"/>
  <SubTexture name="Shape/shape 12129" x="0" y="0" width="46" height="58"/>
- <SubTexture name="Shape/shape 12131" x="93" y="0" width="43" height="58"/>
- <SubTexture name="Shape/shape 12133" x="47" y="58" width="41" height="54"/>
- <SubTexture name="Shape/shape 12135" x="223" y="78" width="26" height="30"/>
- <SubTexture name="Shape/shape 12137" x="223" y="39" width="29" height="38"/>
- <SubTexture name="Shape/shape 12139" x="89" y="104" width="33" height="45"/>
- <SubTexture name="Shape/shape 12141" x="0" y="59" width="39" height="51"/>
- <SubTexture name="Shape/shape 12143" x="47" y="0" width="45" height="57"/>
- <SubTexture name="Shape/shape 12145" x="137" y="0" width="43" height="57"/>
- <SubTexture name="Shape/shape 12147" x="181" y="55" width="41" height="54"/>
- <SubTexture name="cont" x="181" y="0" width="41" height="54"/>
+ <SubTexture name="Shape/shape 12131" x="95" y="0" width="43" height="58"/>
+ <SubTexture name="Shape/shape 12133" x="48" y="59" width="41" height="54"/>
+ <SubTexture name="Shape/shape 12135" x="225" y="99" width="26" height="30"/>
+ <SubTexture name="Shape/shape 12137" x="225" y="59" width="29" height="38"/>
+ <SubTexture name="Shape/shape 12139" x="91" y="106" width="33" height="45"/>
+ <SubTexture name="Shape/shape 12141" x="0" y="60" width="39" height="51"/>
+ <SubTexture name="Shape/shape 12143" x="48" y="0" width="45" height="57"/>
+ <SubTexture name="Shape/shape 12145" x="192" y="0" width="43" height="57"/>
+ <SubTexture name="Shape/shape 12147" x="140" y="52" width="41" height="54"/>
+ <SubTexture name="case" x="140" y="0" width="50" height="50"/>
 </TextureAtlas>

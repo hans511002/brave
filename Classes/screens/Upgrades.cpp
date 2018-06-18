@@ -36,7 +36,7 @@ namespace screens
         this->container->stop();
         this->container->back->stop();
         this->container->back->backCase->stop();
-        this->container->back->backCase->buttonMode = true;
+        this->container->back->backCase->setMouseEnabled(true);
         this->container->cont->stop();
         this->container->cont->btnReset->stop();
         this->container->cont->btnAccept->stop();
@@ -68,8 +68,8 @@ namespace screens
         this->container->cont->levinArrow2->stop();
         this->container->cont->levinArrow3->stop();
         this->container->cont->levinArrow4->stop();
-        this->container->cont->btnReset->resetCase->buttonMode = true;
-        this->container->cont->btnAccept->acceptCase->buttonMode = true;
+        this->container->cont->btnReset->resetCase->setMouseEnabled(true);
+        this->container->cont->btnAccept->acceptCase->setMouseEnabled(true);
         this->container->cont->golemArrow1->setVisible(false);
         this->container->cont->golemArrow2->setVisible(false);
         this->container->cont->golemArrow3->setVisible(false);
@@ -102,13 +102,13 @@ namespace screens
         this->hint = new HintUpgrade_mc();
         this->hint->stop();
         this->hint->myTarget = NULL; 
-        this->hint->mouseChildren = false;
-        this->hint->mouseEnabled = false;
+        this->hint->setMouseChildren(false);
+        this->hint->setMouseEnabled(false);
         this->hint->setVisible(false);
         this->addChild(this->hint);
         this->upgradeUpdate(); 
-        this->container->cont->mouseChildren = false;
-        this->container->cont->mouseEnabled = false;
+        this->container->cont->setMouseChildren(false);
+        this->container->cont->setMouseEnabled(false);
         //Sounds.instance.playSound("snd_menu_openBoard");
         return;
     }// end function
@@ -132,8 +132,8 @@ namespace screens
             else
             {
                 this->openFlag = false; 
-                this->container->cont->mouseChildren = true;
-                this->container->cont->mouseEnabled = true;
+                this->container->cont->setMouseChildren(true);
+                this->container->cont->setMouseEnabled(true);
                 this->upgradeUpdate();
                 //this->stage.frameRate = 30;
             }
@@ -451,8 +451,8 @@ namespace screens
                         AnimUpgrade_mc * tempObject1 = new AnimUpgrade_mc();
                         tempObject1->stop();
                         tempObject1->setPosition( tempObject); 
-                        tempObject1->mouseChildren = false;
-                        tempObject1->mouseEnabled = false;
+                        tempObject1->setMouseChildren(false);
+                        tempObject1->setMouseEnabled(false);
                         this->addChild(tempObject1);
                         this->listOfUpgradeAnima.push(tempObject1);
                         //Sounds.instance.playSound("snd_menu_upgrIconMouseDown");
@@ -865,26 +865,26 @@ namespace screens
             if (Main::mainClass->saveBoxClass->getBoolValue("upgradeGolem1"))
             {
                 this->container->cont->golemUpgrade1->gotoAndStop(3);
-                this->container->cont->golemUpgrade1->upgradeCase->buttonMode = false;
+                this->container->cont->golemUpgrade1->upgradeCase->setMouseEnabled(false);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costGolemUpgrade1)
             {
                 this->container->cont->golemUpgrade1->gotoAndStop(1);
                 std::setText(this->container->cont->golemUpgrade1->starsTXT,this->costGolemUpgrade1);
                 this->container->cont->golemUpgrade1->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->golemUpgrade1->upgradeCase->buttonMode = true;
+                this->container->cont->golemUpgrade1->upgradeCase->setMouseEnabled(true);
             }
             else
             {
                 this->container->cont->golemUpgrade1->gotoAndStop(4);
                 std::setText(this->container->cont->golemUpgrade1->starsTXT,this->costGolemUpgrade1);
                 this->container->cont->golemUpgrade1->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->golemUpgrade1->upgradeCase->buttonMode = false;
+                this->container->cont->golemUpgrade1->upgradeCase->setMouseEnabled(false);
             }
             if (Main::mainClass->saveBoxClass->geBoolValue("upgradeGolem2"))
             {
                 this->container->cont->golemUpgrade2->gotoAndStop(3);
-                this->container->cont->golemUpgrade2->upgradeCase->buttonMode = false;
+                this->container->cont->golemUpgrade2->upgradeCase->setMouseEnabled(false);
                 this->container->cont->golemArrow1->setVisible(true);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costGolemUpgrade2 && Main::mainClass->saveBoxClass->geBoolValue("upgradeGolem1"))
@@ -892,7 +892,7 @@ namespace screens
                 this->container->cont->golemUpgrade2->gotoAndStop(1);
                 std::setText(this->container->cont->golemUpgrade2->starsTXT,this->costGolemUpgrade2);
                 this->container->cont->golemUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->golemUpgrade2->upgradeCase->buttonMode = true;
+                this->container->cont->golemUpgrade2->upgradeCase->setMouseEnabled(true);
                 this->container->cont->golemArrow1->setVisible(false);
             }
             else
@@ -900,13 +900,13 @@ namespace screens
                 this->container->cont->golemUpgrade2->gotoAndStop(4);
                 std::setText(this->container->cont->golemUpgrade2->starsTXT,this->costGolemUpgrade2);
                 this->container->cont->golemUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->golemUpgrade2->upgradeCase->buttonMode = false;
+                this->container->cont->golemUpgrade2->upgradeCase->setMouseEnabled(false);
                 this->container->cont->golemArrow1->setVisible(false);
             }
             if (Main::mainClass->saveBoxClass->geBoolValue("upgradeGolem3"))
             {
                 this->container->cont->golemUpgrade3->gotoAndStop(3);
-                this->container->cont->golemUpgrade3->upgradeCase->buttonMode = false;
+                this->container->cont->golemUpgrade3->upgradeCase->setMouseEnabled(false);
                 this->container->cont->golemArrow2->setVisible(true);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costGolemUpgrade3 && Main::mainClass->saveBoxClass->geBoolValue("upgradeGolem2"))
@@ -914,7 +914,7 @@ namespace screens
                 this->container->cont->golemUpgrade3->gotoAndStop(1);
                 std::setText(this->container->cont->golemUpgrade3->starsTXT,this->costGolemUpgrade3);
                 this->container->cont->golemUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->golemUpgrade3->upgradeCase->buttonMode = true;
+                this->container->cont->golemUpgrade3->upgradeCase->setMouseEnabled(true);
                 this->container->cont->golemArrow2->setVisible(false);
             }
             else
@@ -922,13 +922,13 @@ namespace screens
                 this->container->cont->golemUpgrade3->gotoAndStop(4);
                 std::setText(this->container->cont->golemUpgrade3->starsTXT,this->costGolemUpgrade3);
                 this->container->cont->golemUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->golemUpgrade3->upgradeCase->buttonMode = false;
+                this->container->cont->golemUpgrade3->upgradeCase->setMouseEnabled(false);
                 this->container->cont->golemArrow2->setVisible(false);
             }
             if (Main::mainClass->saveBoxClass->geBoolValue("upgradeGolem4"))
             {
                 this->container->cont->golemUpgrade4->gotoAndStop(3);
-                this->container->cont->golemUpgrade4->upgradeCase->buttonMode = false;
+                this->container->cont->golemUpgrade4->upgradeCase->setMouseEnabled(false);
                 this->container->cont->golemArrow3->setVisible(true);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costGolemUpgrade4 && Main::mainClass->saveBoxClass->geBoolValue("upgradeGolem3"))
@@ -936,7 +936,7 @@ namespace screens
                 this->container->cont->golemUpgrade4->gotoAndStop(1);
                 std::setText(this->container->cont->golemUpgrade4->starsTXT,this->costGolemUpgrade4);
                 this->container->cont->golemUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->golemUpgrade4->upgradeCase->buttonMode = true;
+                this->container->cont->golemUpgrade4->upgradeCase->setMouseEnabled(true);
                 this->container->cont->golemArrow3->setVisible(false);
             }
             else
@@ -944,13 +944,13 @@ namespace screens
                 this->container->cont->golemUpgrade4->gotoAndStop(4);
                 std::setText(this->container->cont->golemUpgrade4->starsTXT,this->costGolemUpgrade4);
                 this->container->cont->golemUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->golemUpgrade4->upgradeCase->buttonMode = false;
+                this->container->cont->golemUpgrade4->upgradeCase->setMouseEnabled(false);
                 this->container->cont->golemArrow3->setVisible(false);
             }
             if (Main::mainClass->saveBoxClass->geBoolValue("upgradeGolem5"))
             {
                 this->container->cont->golemUpgrade5->gotoAndStop(3);
-                this->container->cont->golemUpgrade5->upgradeCase->buttonMode = false;
+                this->container->cont->golemUpgrade5->upgradeCase->setMouseEnabled(false);
                 this->container->cont->golemArrow4->setVisible(true);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costGolemUpgrade5 && Main::mainClass->saveBoxClass->geBoolValue("upgradeGolem4"))
@@ -958,7 +958,7 @@ namespace screens
                 this->container->cont->golemUpgrade5->gotoAndStop(1);
                 std::setText(this->container->cont->golemUpgrade5->starsTXT,this->costGolemUpgrade5);
                 this->container->cont->golemUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->golemUpgrade5->upgradeCase->buttonMode = true;
+                this->container->cont->golemUpgrade5->upgradeCase->setMouseEnabled(true);
                 this->container->cont->golemArrow4->setVisible(false);
             }
             else
@@ -966,7 +966,7 @@ namespace screens
                 this->container->cont->golemUpgrade5->gotoAndStop(4);
                 std::setText(this->container->cont->golemUpgrade5->starsTXT,this->costGolemUpgrade5);
                 this->container->cont->golemUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->golemUpgrade5->upgradeCase->buttonMode = false;
+                this->container->cont->golemUpgrade5->upgradeCase->setMouseEnabled(false);
                 this->container->cont->golemArrow4->setVisible(false);
             }
         }
@@ -975,26 +975,26 @@ namespace screens
             this->container->cont->golemUpgrade1->gotoAndStop(5);
             std::setText(this->container->cont->golemUpgrade1->starsTXT,this->costGolemUpgrade1);
             this->container->cont->golemUpgrade1->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->golemUpgrade1->upgradeCase->buttonMode = false;
+            this->container->cont->golemUpgrade1->upgradeCase->setMouseEnabled(false);
             this->container->cont->golemUpgrade2->gotoAndStop(5);
             std::setText(this->container->cont->golemUpgrade2->starsTXT,this->costGolemUpgrade2);
             this->container->cont->golemUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->golemUpgrade2->upgradeCase->buttonMode = false;
+            this->container->cont->golemUpgrade2->upgradeCase->setMouseEnabled(false);
             this->container->cont->golemArrow1->setVisible(false);
             this->container->cont->golemUpgrade3->gotoAndStop(5);
             std::setText(this->container->cont->golemUpgrade3->starsTXT,this->costGolemUpgrade3);
             this->container->cont->golemUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->golemUpgrade3->upgradeCase->buttonMode = false;
+            this->container->cont->golemUpgrade3->upgradeCase->setMouseEnabled(false);
             this->container->cont->golemArrow2->setVisible(false);
             this->container->cont->golemUpgrade4->gotoAndStop(5);
             std::setText(this->container->cont->golemUpgrade4->starsTXT,this->costGolemUpgrade4);
             this->container->cont->golemUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->golemUpgrade4->upgradeCase->buttonMode = false;
+            this->container->cont->golemUpgrade4->upgradeCase->setMouseEnabled(false);
             this->container->cont->golemArrow3->setVisible(false);
             this->container->cont->golemUpgrade5->gotoAndStop(5);
             std::setText(this->container->cont->golemUpgrade5->starsTXT,this->costGolemUpgrade5);
             this->container->cont->golemUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->golemUpgrade5->upgradeCase->buttonMode = false;
+            this->container->cont->golemUpgrade5->upgradeCase->setMouseEnabled(false);
             this->container->cont->golemArrow4->setVisible(false);
         }
         if (Main::mainClass->saveBoxClass.gameSave.data.openLevels[1] > 0 || Main::mainClass->saveBoxClass.gameSave.data.saveNo > 3)
@@ -1002,26 +1002,26 @@ namespace screens
             if (Main::mainClass->saveBoxClass->geBoolValue("upgradeIceman1"))
             {
                 this->container->cont->icemanUpgrade1->gotoAndStop(3);
-                this->container->cont->icemanUpgrade1->upgradeCase->buttonMode = false;
+                this->container->cont->icemanUpgrade1->upgradeCase->setMouseEnabled(false);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costIcemanUpgrade1)
             {
                 this->container->cont->icemanUpgrade1->gotoAndStop(1);
                 std::setText(this->container->cont->icemanUpgrade1->starsTXT,this->costIcemanUpgrade1);
                 this->container->cont->icemanUpgrade1->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->icemanUpgrade1->upgradeCase->buttonMode = true;
+                this->container->cont->icemanUpgrade1->upgradeCase->setMouseEnabled(true);
             }
             else
             {
                 this->container->cont->icemanUpgrade1->gotoAndStop(4);
                 std::setText(this->container->cont->icemanUpgrade1->starsTXT,this->costIcemanUpgrade1);
                 this->container->cont->icemanUpgrade1->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->icemanUpgrade1->upgradeCase->buttonMode = false;
+                this->container->cont->icemanUpgrade1->upgradeCase->setMouseEnabled(false);
             }
             if (Main::mainClass->saveBoxClass->geBoolValue("upgradeIceman2"))
             {
                 this->container->cont->icemanUpgrade2->gotoAndStop(3);
-                this->container->cont->icemanUpgrade2->upgradeCase->buttonMode = false;
+                this->container->cont->icemanUpgrade2->upgradeCase->setMouseEnabled(false);
                 this->container->cont->icemanArrow1->setVisible(true);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costIcemanUpgrade2 && Main::mainClass->saveBoxClass->geBoolValue("upgradeIceman1"))
@@ -1029,7 +1029,7 @@ namespace screens
                 this->container->cont->icemanUpgrade2->gotoAndStop(1);
                 std::setText(this->container->cont->icemanUpgrade2->starsTXT,this->costIcemanUpgrade2);
                 this->container->cont->icemanUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->icemanUpgrade2->upgradeCase->buttonMode = true;
+                this->container->cont->icemanUpgrade2->upgradeCase->setMouseEnabled(true);
                 this->container->cont->icemanArrow1->setVisible(false);
             }
             else
@@ -1037,13 +1037,13 @@ namespace screens
                 this->container->cont->icemanUpgrade2->gotoAndStop(4);
                 std::setText(this->container->cont->icemanUpgrade2->starsTXT,this->costIcemanUpgrade2);
                 this->container->cont->icemanUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->icemanUpgrade2->upgradeCase->buttonMode = false;
+                this->container->cont->icemanUpgrade2->upgradeCase->setMouseEnabled(false);
                 this->container->cont->icemanArrow1->setVisible(false);
             }
             if (Main::mainClass->saveBoxClass->geBoolValue("upgradeIceman3"))
             {
                 this->container->cont->icemanUpgrade3->gotoAndStop(3);
-                this->container->cont->icemanUpgrade3->upgradeCase->buttonMode = false;
+                this->container->cont->icemanUpgrade3->upgradeCase->setMouseEnabled(false);
                 this->container->cont->icemanArrow2->setVisible(true);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costIcemanUpgrade3 && Main::mainClass->saveBoxClass->geBoolValue("upgradeIceman2"))
@@ -1051,7 +1051,7 @@ namespace screens
                 this->container->cont->icemanUpgrade3->gotoAndStop(1);
                 std::setText(this->container->cont->icemanUpgrade3->starsTXT,this->costIcemanUpgrade3);
                 this->container->cont->icemanUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->icemanUpgrade3->upgradeCase->buttonMode = true;
+                this->container->cont->icemanUpgrade3->upgradeCase->setMouseEnabled(true);
                 this->container->cont->icemanArrow2->setVisible(false);
             }
             else
@@ -1059,13 +1059,13 @@ namespace screens
                 this->container->cont->icemanUpgrade3->gotoAndStop(4);
                 std::setText(this->container->cont->icemanUpgrade3->starsTXT,this->costIcemanUpgrade3);
                 this->container->cont->icemanUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->icemanUpgrade3->upgradeCase->buttonMode = false;
+                this->container->cont->icemanUpgrade3->upgradeCase->setMouseEnabled(false);
                 this->container->cont->icemanArrow2->setVisible(false);
             }
             if (Main::mainClass->saveBoxClass->geBoolValue("upgradeIceman4"))
             {
                 this->container->cont->icemanUpgrade4->gotoAndStop(3);
-                this->container->cont->icemanUpgrade4->upgradeCase->buttonMode = false;
+                this->container->cont->icemanUpgrade4->upgradeCase->setMouseEnabled(false);
                 this->container->cont->icemanArrow3->setVisible(true);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costIcemanUpgrade4 && Main::mainClass->saveBoxClass->geBoolValue("upgradeIceman3"))
@@ -1073,7 +1073,7 @@ namespace screens
                 this->container->cont->icemanUpgrade4->gotoAndStop(1);
                 std::setText(this->container->cont->icemanUpgrade4->starsTXT,this->costIcemanUpgrade4);
                 this->container->cont->icemanUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->icemanUpgrade4->upgradeCase->buttonMode = true;
+                this->container->cont->icemanUpgrade4->upgradeCase->setMouseEnabled(true);
                 this->container->cont->icemanArrow3->setVisible(false);
             }
             else
@@ -1081,13 +1081,13 @@ namespace screens
                 this->container->cont->icemanUpgrade4->gotoAndStop(4);
                 std::setText(this->container->cont->icemanUpgrade4->starsTXT,this->costIcemanUpgrade4);
                 this->container->cont->icemanUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->icemanUpgrade4->upgradeCase->buttonMode = false;
+                this->container->cont->icemanUpgrade4->upgradeCase->setMouseEnabled(false);
                 this->container->cont->icemanArrow3->setVisible(false);
             }
             if (Main::mainClass->saveBoxClass->geBoolValue("upgradeIceman5"))
             {
                 this->container->cont->icemanUpgrade5->gotoAndStop(3);
-                this->container->cont->icemanUpgrade5->upgradeCase->buttonMode = false;
+                this->container->cont->icemanUpgrade5->upgradeCase->setMouseEnabled(false);
                 this->container->cont->icemanArrow4->setVisible(true);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costIcemanUpgrade5 && Main::mainClass->saveBoxClass->geBoolValue("upgradeIceman4"))
@@ -1095,7 +1095,7 @@ namespace screens
                 this->container->cont->icemanUpgrade5->gotoAndStop(1);
                 std::setText(this->container->cont->icemanUpgrade5->starsTXT,this->costIcemanUpgrade5);
                 this->container->cont->icemanUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->icemanUpgrade5->upgradeCase->buttonMode = true;
+                this->container->cont->icemanUpgrade5->upgradeCase->setMouseEnabled(true);
                 this->container->cont->icemanArrow4->setVisible(false);
             }
             else
@@ -1103,7 +1103,7 @@ namespace screens
                 this->container->cont->icemanUpgrade5->gotoAndStop(4);
                 std::setText(this->container->cont->icemanUpgrade5->starsTXT,this->costIcemanUpgrade5);
                 this->container->cont->icemanUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->icemanUpgrade5->upgradeCase->buttonMode = false;
+                this->container->cont->icemanUpgrade5->upgradeCase->setMouseEnabled(false);
                 this->container->cont->icemanArrow4->setVisible(false);
             }
         }
@@ -1112,26 +1112,26 @@ namespace screens
             this->container->cont->icemanUpgrade1->gotoAndStop(5);
             std::setText(this->container->cont->icemanUpgrade1->starsTXT,this->costIcemanUpgrade1);
             this->container->cont->icemanUpgrade1->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->icemanUpgrade1->upgradeCase->buttonMode = false;
+            this->container->cont->icemanUpgrade1->upgradeCase->setMouseEnabled(false);
             this->container->cont->icemanUpgrade2->gotoAndStop(5);
             std::setText(this->container->cont->icemanUpgrade2->starsTXT,this->costIcemanUpgrade2);
             this->container->cont->icemanUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->icemanUpgrade2->upgradeCase->buttonMode = false;
+            this->container->cont->icemanUpgrade2->upgradeCase->setMouseEnabled(false);
             this->container->cont->icemanArrow1->setVisible(false);
             this->container->cont->icemanUpgrade3->gotoAndStop(5);
             std::setText(this->container->cont->icemanUpgrade3->starsTXT,this->costIcemanUpgrade3);
             this->container->cont->icemanUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->icemanUpgrade3->upgradeCase->buttonMode = false;
+            this->container->cont->icemanUpgrade3->upgradeCase->setMouseEnabled(false);
             this->container->cont->icemanArrow2->setVisible(false);
             this->container->cont->icemanUpgrade4->gotoAndStop(5);
             std::setText(this->container->cont->icemanUpgrade4->starsTXT,this->costIcemanUpgrade4);
             this->container->cont->icemanUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->icemanUpgrade4->upgradeCase->buttonMode = false;
+            this->container->cont->icemanUpgrade4->upgradeCase->setMouseEnabled(false);
             this->container->cont->icemanArrow3->setVisible(false);
             this->container->cont->icemanUpgrade5->gotoAndStop(5);
             std::setText(this->container->cont->icemanUpgrade5->starsTXT,this->costIcemanUpgrade5);
             this->container->cont->icemanUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->icemanUpgrade5->upgradeCase->buttonMode = false;
+            this->container->cont->icemanUpgrade5->upgradeCase->setMouseEnabled(false);
             this->container->cont->icemanArrow4->setVisible(false);
         }
         if (Main::mainClass->saveBoxClass.gameSave.data.openLevels[2] > 0)
@@ -1139,26 +1139,26 @@ namespace screens
             if (Main::mainClass->saveBoxClass->geBoolValue("upgradeAir1"))
             {
                 this->container->cont->airUpgrade1->gotoAndStop(3);
-                this->container->cont->airUpgrade1->upgradeCase->buttonMode = false;
+                this->container->cont->airUpgrade1->upgradeCase->setMouseEnabled(false);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costAirUpgrade1)
             {
                 this->container->cont->airUpgrade1->gotoAndStop(1);
                 std::setText(this->container->cont->airUpgrade1->starsTXT,this->costAirUpgrade1);
                 this->container->cont->airUpgrade1->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->airUpgrade1->upgradeCase->buttonMode = true;
+                this->container->cont->airUpgrade1->upgradeCase->setMouseEnabled(true);
             }
             else
             {
                 this->container->cont->airUpgrade1->gotoAndStop(4);
                 std::setText(this->container->cont->airUpgrade1->starsTXT,this->costAirUpgrade1);
                 this->container->cont->airUpgrade1->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->airUpgrade1->upgradeCase->buttonMode = false;
+                this->container->cont->airUpgrade1->upgradeCase->setMouseEnabled(false);
             }
             if (Main::mainClass->saveBoxClass->geBoolValue("upgradeAir2"))
             {
                 this->container->cont->airUpgrade2->gotoAndStop(3);
-                this->container->cont->airUpgrade2->upgradeCase->buttonMode = false;
+                this->container->cont->airUpgrade2->upgradeCase->setMouseEnabled(false);
                 this->container->cont->airArrow1->setVisible(true);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costAirUpgrade2 && Main::mainClass->saveBoxClass->geBoolValue("upgradeAir1"))
@@ -1166,7 +1166,7 @@ namespace screens
                 this->container->cont->airUpgrade2->gotoAndStop(1);
                 std::setText(this->container->cont->airUpgrade2->starsTXT,this->costAirUpgrade2);
                 this->container->cont->airUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->airUpgrade2->upgradeCase->buttonMode = true;
+                this->container->cont->airUpgrade2->upgradeCase->setMouseEnabled(true);
                 this->container->cont->airArrow1->setVisible(false);
             }
             else
@@ -1174,13 +1174,13 @@ namespace screens
                 this->container->cont->airUpgrade2->gotoAndStop(4);
                 std::setText(this->container->cont->airUpgrade2->starsTXT,this->costAirUpgrade2);
                 this->container->cont->airUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->airUpgrade2->upgradeCase->buttonMode = false;
+                this->container->cont->airUpgrade2->upgradeCase->setMouseEnabled(false);
                 this->container->cont->airArrow1->setVisible(false);
             }
             if (Main::mainClass->saveBoxClass->geBoolValue("upgradeAir3"))
             {
                 this->container->cont->airUpgrade3->gotoAndStop(3);
-                this->container->cont->airUpgrade3->upgradeCase->buttonMode = false;
+                this->container->cont->airUpgrade3->upgradeCase->setMouseEnabled(false);
                 this->container->cont->airArrow2->setVisible(true);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costAirUpgrade3 && Main::mainClass->saveBoxClass->geBoolValue("upgradeAir2"))
@@ -1188,7 +1188,7 @@ namespace screens
                 this->container->cont->airUpgrade3->gotoAndStop(1);
                 std::setText(this->container->cont->airUpgrade3->starsTXT,this->costAirUpgrade3);
                 this->container->cont->airUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->airUpgrade3->upgradeCase->buttonMode = true;
+                this->container->cont->airUpgrade3->upgradeCase->setMouseEnabled(true);
                 this->container->cont->airArrow2->setVisible(false);
             }
             else
@@ -1196,13 +1196,13 @@ namespace screens
                 this->container->cont->airUpgrade3->gotoAndStop(4);
                 std::setText(this->container->cont->airUpgrade3->starsTXT,this->costAirUpgrade3);
                 this->container->cont->airUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->airUpgrade3->upgradeCase->buttonMode = false;
+                this->container->cont->airUpgrade3->upgradeCase->setMouseEnabled(false);
                 this->container->cont->airArrow2->setVisible(false);
             }
             if (Main::mainClass->saveBoxClass->geBoolValue("upgradeAir4"))
             {
                 this->container->cont->airUpgrade4->gotoAndStop(3);
-                this->container->cont->airUpgrade4->upgradeCase->buttonMode = false;
+                this->container->cont->airUpgrade4->upgradeCase->setMouseEnabled(false);
                 this->container->cont->airArrow3->setVisible(true);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costAirUpgrade4 && Main::mainClass->saveBoxClass->geBoolValue("upgradeAir3"))
@@ -1210,7 +1210,7 @@ namespace screens
                 this->container->cont->airUpgrade4->gotoAndStop(1);
                 std::setText(this->container->cont->airUpgrade4->starsTXT,this->costAirUpgrade4);
                 this->container->cont->airUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->airUpgrade4->upgradeCase->buttonMode = true;
+                this->container->cont->airUpgrade4->upgradeCase->setMouseEnabled(true);
                 this->container->cont->airArrow3->setVisible(false);
             }
             else
@@ -1218,13 +1218,13 @@ namespace screens
                 this->container->cont->airUpgrade4->gotoAndStop(4);
                 std::setText(this->container->cont->airUpgrade4->starsTXT,this->costAirUpgrade4);
                 this->container->cont->airUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->airUpgrade4->upgradeCase->buttonMode = false;
+                this->container->cont->airUpgrade4->upgradeCase->setMouseEnabled(false);
                 this->container->cont->airArrow3->setVisible(false);
             }
             if (Main::mainClass->saveBoxClass->geBoolValue("upgradeAir5"))
             {
                 this->container->cont->airUpgrade5->gotoAndStop(3);
-                this->container->cont->airUpgrade5->upgradeCase->buttonMode = false;
+                this->container->cont->airUpgrade5->upgradeCase->setMouseEnabled(false);
                 this->container->cont->airArrow4->setVisible(true);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costAirUpgrade5 && Main::mainClass->saveBoxClass->geBoolValue("upgradeAir4"))
@@ -1232,7 +1232,7 @@ namespace screens
                 this->container->cont->airUpgrade5->gotoAndStop(1);
                 std::setText(this->container->cont->airUpgrade5->starsTXT,this->costAirUpgrade5);
                 this->container->cont->airUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->airUpgrade5->upgradeCase->buttonMode = true;
+                this->container->cont->airUpgrade5->upgradeCase->setMouseEnabled(true);
                 this->container->cont->airArrow4->setVisible(false);
             }
             else
@@ -1240,7 +1240,7 @@ namespace screens
                 this->container->cont->airUpgrade5->gotoAndStop(4);
                 std::setText(this->container->cont->airUpgrade5->starsTXT,this->costAirUpgrade5);
                 this->container->cont->airUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->airUpgrade5->upgradeCase->buttonMode = false;
+                this->container->cont->airUpgrade5->upgradeCase->setMouseEnabled(false);
                 this->container->cont->airArrow4->setVisible(false);
             }
         }
@@ -1249,26 +1249,26 @@ namespace screens
             this->container->cont->airUpgrade1->gotoAndStop(5);
             std::setText(this->container->cont->airUpgrade1->starsTXT,this->costAirUpgrade1);
             this->container->cont->airUpgrade1->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->airUpgrade1->upgradeCase->buttonMode = false;
+            this->container->cont->airUpgrade1->upgradeCase->setMouseEnabled(false);
             this->container->cont->airUpgrade2->gotoAndStop(5);
             std::setText(this->container->cont->airUpgrade2->starsTXT,this->costAirUpgrade2);
             this->container->cont->airUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->airUpgrade2->upgradeCase->buttonMode = false;
+            this->container->cont->airUpgrade2->upgradeCase->setMouseEnabled(false);
             this->container->cont->airArrow1->setVisible(false);
             this->container->cont->airUpgrade3->gotoAndStop(5);
             std::setText(this->container->cont->airUpgrade3->starsTXT,this->costAirUpgrade3);
             this->container->cont->airUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->airUpgrade3->upgradeCase->buttonMode = false;
+            this->container->cont->airUpgrade3->upgradeCase->setMouseEnabled(false);
             this->container->cont->airArrow2->setVisible(false);
             this->container->cont->airUpgrade4->gotoAndStop(5);
             std::setText(this->container->cont->airUpgrade4->starsTXT,this->costAirUpgrade4);
             this->container->cont->airUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->airUpgrade4->upgradeCase->buttonMode = false;
+            this->container->cont->airUpgrade4->upgradeCase->setMouseEnabled(false);
             this->container->cont->airArrow3->setVisible(false);
             this->container->cont->airUpgrade5->gotoAndStop(5);
             std::setText(this->container->cont->airUpgrade5->starsTXT,this->costAirUpgrade5);
             this->container->cont->airUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->airUpgrade5->upgradeCase->buttonMode = false;
+            this->container->cont->airUpgrade5->upgradeCase->setMouseEnabled(false);
             this->container->cont->airArrow4->setVisible(false);
         }
         if (Main::mainClass->saveBoxClass.gameSave.data.openLevels[1] > 0 || Main::mainClass->saveBoxClass.gameSave.data.saveNo > 3)
@@ -1276,26 +1276,26 @@ namespace screens
             if (Main::mainClass->saveBoxClass->geBoolValue("upgradeFire1"))
             {
                 this->container->cont->fireUpgrade1->gotoAndStop(3);
-                this->container->cont->fireUpgrade1->upgradeCase->buttonMode = false;
+                this->container->cont->fireUpgrade1->upgradeCase->setMouseEnabled(false);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costFireUpgrade1)
             {
                 this->container->cont->fireUpgrade1->gotoAndStop(1);
                 std::setText(this->container->cont->fireUpgrade1->starsTXT,this->costFireUpgrade1);
                 this->container->cont->fireUpgrade1->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->fireUpgrade1->upgradeCase->buttonMode = true;
+                this->container->cont->fireUpgrade1->upgradeCase->setMouseEnabled(true);
             }
             else
             {
                 this->container->cont->fireUpgrade1->gotoAndStop(4);
                 std::setText(this->container->cont->fireUpgrade1->starsTXT,this->costFireUpgrade1);
                 this->container->cont->fireUpgrade1->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->fireUpgrade1->upgradeCase->buttonMode = false;
+                this->container->cont->fireUpgrade1->upgradeCase->setMouseEnabled(false);
             }
             if (Main::mainClass->saveBoxClass->geBoolValue("upgradeFire2"))
             {
                 this->container->cont->fireUpgrade2->gotoAndStop(3);
-                this->container->cont->fireUpgrade2->upgradeCase->buttonMode = false;
+                this->container->cont->fireUpgrade2->upgradeCase->setMouseEnabled(false);
                 this->container->cont->fireArrow1->setVisible(true);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costFireUpgrade2 && Main::mainClass->saveBoxClass->geBoolValue("upgradeFire1"))
@@ -1303,7 +1303,7 @@ namespace screens
                 this->container->cont->fireUpgrade2->gotoAndStop(1);
                 std::setText(this->container->cont->fireUpgrade2->starsTXT,this->costFireUpgrade2);
                 this->container->cont->fireUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->fireUpgrade2->upgradeCase->buttonMode = true;
+                this->container->cont->fireUpgrade2->upgradeCase->setMouseEnabled(true);
                 this->container->cont->fireArrow1->setVisible(false);
             }
             else
@@ -1311,13 +1311,13 @@ namespace screens
                 this->container->cont->fireUpgrade2->gotoAndStop(4);
                 std::setText(this->container->cont->fireUpgrade2->starsTXT,this->costFireUpgrade2);
                 this->container->cont->fireUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->fireUpgrade2->upgradeCase->buttonMode = false;
+                this->container->cont->fireUpgrade2->upgradeCase->setMouseEnabled(false);
                 this->container->cont->fireArrow1->setVisible(false);
             }
             if (Main::mainClass->saveBoxClass->geBoolValue("upgradeFire3"))
             {
                 this->container->cont->fireUpgrade3->gotoAndStop(3);
-                this->container->cont->fireUpgrade3->upgradeCase->buttonMode = false;
+                this->container->cont->fireUpgrade3->upgradeCase->setMouseEnabled(false);
                 this->container->cont->fireArrow2->setVisible(true);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costFireUpgrade3 && Main::mainClass->saveBoxClass->geBoolValue("upgradeFire2"))
@@ -1325,7 +1325,7 @@ namespace screens
                 this->container->cont->fireUpgrade3->gotoAndStop(1);
                 std::setText(this->container->cont->fireUpgrade3->starsTXT,this->costFireUpgrade3);
                 this->container->cont->fireUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->fireUpgrade3->upgradeCase->buttonMode = true;
+                this->container->cont->fireUpgrade3->upgradeCase->setMouseEnabled(true);
                 this->container->cont->fireArrow2->setVisible(false);
             }
             else
@@ -1333,13 +1333,13 @@ namespace screens
                 this->container->cont->fireUpgrade3->gotoAndStop(4);
                 std::setText(this->container->cont->fireUpgrade3->starsTXT,this->costFireUpgrade3);
                 this->container->cont->fireUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->fireUpgrade3->upgradeCase->buttonMode = false;
+                this->container->cont->fireUpgrade3->upgradeCase->setMouseEnabled(false);
                 this->container->cont->fireArrow2->setVisible(false);
             }
             if (Main::mainClass->saveBoxClass->geBoolValue("upgradeFire4"))
             {
                 this->container->cont->fireUpgrade4->gotoAndStop(3);
-                this->container->cont->fireUpgrade4->upgradeCase->buttonMode = false;
+                this->container->cont->fireUpgrade4->upgradeCase->setMouseEnabled(false);
                 this->container->cont->fireArrow3->setVisible(true);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costFireUpgrade4 && Main::mainClass->saveBoxClass->geBoolValue("upgradeFire3"))
@@ -1347,7 +1347,7 @@ namespace screens
                 this->container->cont->fireUpgrade4->gotoAndStop(1);
                 std::setText(this->container->cont->fireUpgrade4->starsTXT,this->costFireUpgrade4);
                 this->container->cont->fireUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->fireUpgrade4->upgradeCase->buttonMode = true;
+                this->container->cont->fireUpgrade4->upgradeCase->setMouseEnabled(true);
                 this->container->cont->fireArrow3->setVisible(false);
             }
             else
@@ -1355,13 +1355,13 @@ namespace screens
                 this->container->cont->fireUpgrade4->gotoAndStop(4);
                 std::setText(this->container->cont->fireUpgrade4->starsTXT,this->costFireUpgrade4);
                 this->container->cont->fireUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->fireUpgrade4->upgradeCase->buttonMode = false;
+                this->container->cont->fireUpgrade4->upgradeCase->setMouseEnabled(false);
                 this->container->cont->fireArrow3->setVisible(false);
             }
             if (Main::mainClass->saveBoxClass->geBoolValue("upgradeFire5"))
             {
                 this->container->cont->fireUpgrade5->gotoAndStop(3);
-                this->container->cont->fireUpgrade5->upgradeCase->buttonMode = false;
+                this->container->cont->fireUpgrade5->upgradeCase->setMouseEnabled(false);
                 this->container->cont->fireArrow4->setVisible(true);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costFireUpgrade5 && Main::mainClass->saveBoxClass->geBoolValue("upgradeFire4"))
@@ -1369,7 +1369,7 @@ namespace screens
                 this->container->cont->fireUpgrade5->gotoAndStop(1);
                 std::setText(this->container->cont->fireUpgrade5->starsTXT,this->costFireUpgrade5);
                 this->container->cont->fireUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->fireUpgrade5->upgradeCase->buttonMode = true;
+                this->container->cont->fireUpgrade5->upgradeCase->setMouseEnabled(true);
                 this->container->cont->fireArrow4->setVisible(false);
             }
             else
@@ -1377,7 +1377,7 @@ namespace screens
                 this->container->cont->fireUpgrade5->gotoAndStop(4);
                 std::setText(this->container->cont->fireUpgrade5->starsTXT,this->costFireUpgrade5);
                 this->container->cont->fireUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->fireUpgrade5->upgradeCase->buttonMode = false;
+                this->container->cont->fireUpgrade5->upgradeCase->setMouseEnabled(false);
                 this->container->cont->fireArrow4->setVisible(false);
             }
         }
@@ -1386,26 +1386,26 @@ namespace screens
             this->container->cont->fireUpgrade1->gotoAndStop(5);
             std::setText(this->container->cont->fireUpgrade1->starsTXT,this->costFireUpgrade1);
             this->container->cont->fireUpgrade1->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->fireUpgrade1->upgradeCase->buttonMode = false;
+            this->container->cont->fireUpgrade1->upgradeCase->setMouseEnabled(false);
             this->container->cont->fireUpgrade2->gotoAndStop(5);
             std::setText(this->container->cont->fireUpgrade2->starsTXT,this->costFireUpgrade2);
             this->container->cont->fireUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->fireUpgrade2->upgradeCase->buttonMode = false;
+            this->container->cont->fireUpgrade2->upgradeCase->setMouseEnabled(false);
             this->container->cont->fireArrow1->setVisible(false);
             this->container->cont->fireUpgrade3->gotoAndStop(5);
             std::setText(this->container->cont->fireUpgrade3->starsTXT,this->costFireUpgrade3);
             this->container->cont->fireUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->fireUpgrade3->upgradeCase->buttonMode = false;
+            this->container->cont->fireUpgrade3->upgradeCase->setMouseEnabled(false);
             this->container->cont->fireArrow2->setVisible(false);
             this->container->cont->fireUpgrade4->gotoAndStop(5);
             std::setText(this->container->cont->fireUpgrade4->starsTXT,this->costFireUpgrade4);
             this->container->cont->fireUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->fireUpgrade4->upgradeCase->buttonMode = false;
+            this->container->cont->fireUpgrade4->upgradeCase->setMouseEnabled(false);
             this->container->cont->fireArrow3->setVisible(false);
             this->container->cont->fireUpgrade5->gotoAndStop(5);
             std::setText(this->container->cont->fireUpgrade5->starsTXT,this->costFireUpgrade5);
             this->container->cont->fireUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->fireUpgrade5->upgradeCase->buttonMode = false;
+            this->container->cont->fireUpgrade5->upgradeCase->setMouseEnabled(false);
             this->container->cont->fireArrow4->setVisible(false);
         }
         if (Main::mainClass->saveBoxClass.gameSave.data.openLevels[1] > 0 || Main::mainClass->saveBoxClass.gameSave.data.saveNo > 3)
@@ -1413,26 +1413,26 @@ namespace screens
             if (Main::mainClass->saveBoxClass->geBoolValue("upgradeIce1"))
             {
                 this->container->cont->iceUpgrade1->gotoAndStop(3);
-                this->container->cont->iceUpgrade1->upgradeCase->buttonMode = false;
+                this->container->cont->iceUpgrade1->upgradeCase->setMouseEnabled(false);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costIceUpgrade1)
             {
                 this->container->cont->iceUpgrade1->gotoAndStop(1);
                 std::setText(this->container->cont->iceUpgrade1->starsTXT,this->costIceUpgrade1);
                 this->container->cont->iceUpgrade1->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->iceUpgrade1->upgradeCase->buttonMode = true;
+                this->container->cont->iceUpgrade1->upgradeCase->setMouseEnabled(true);
             }
             else
             {
                 this->container->cont->iceUpgrade1->gotoAndStop(4);
                 std::setText(this->container->cont->iceUpgrade1->starsTXT,this->costIceUpgrade1);
                 this->container->cont->iceUpgrade1->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->iceUpgrade1->upgradeCase->buttonMode = false;
+                this->container->cont->iceUpgrade1->upgradeCase->setMouseEnabled(false);
             }
             if (Main::mainClass->saveBoxClass->geBoolValue("upgradeIce2"))
             {
                 this->container->cont->iceUpgrade2->gotoAndStop(3);
-                this->container->cont->iceUpgrade2->upgradeCase->buttonMode = false;
+                this->container->cont->iceUpgrade2->upgradeCase->setMouseEnabled(false);
                 this->container->cont->iceArrow1->setVisible(true);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costIceUpgrade2 && Main::mainClass->saveBoxClass->geBoolValue("upgradeIce1"))
@@ -1440,7 +1440,7 @@ namespace screens
                 this->container->cont->iceUpgrade2->gotoAndStop(1);
                 std::setText(this->container->cont->iceUpgrade2->starsTXT,this->costIceUpgrade2);
                 this->container->cont->iceUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->iceUpgrade2->upgradeCase->buttonMode = true;
+                this->container->cont->iceUpgrade2->upgradeCase->setMouseEnabled(true);
                 this->container->cont->iceArrow1->setVisible(false);
             }
             else
@@ -1448,13 +1448,13 @@ namespace screens
                 this->container->cont->iceUpgrade2->gotoAndStop(4);
                 std::setText(this->container->cont->iceUpgrade2->starsTXT,this->costIceUpgrade2);
                 this->container->cont->iceUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->iceUpgrade2->upgradeCase->buttonMode = false;
+                this->container->cont->iceUpgrade2->upgradeCase->setMouseEnabled(false);
                 this->container->cont->iceArrow1->setVisible(false);
             }
             if (Main::mainClass->saveBoxClass->geBoolValue("upgradeIce3"))
             {
                 this->container->cont->iceUpgrade3->gotoAndStop(3);
-                this->container->cont->iceUpgrade3->upgradeCase->buttonMode = false;
+                this->container->cont->iceUpgrade3->upgradeCase->setMouseEnabled(false);
                 this->container->cont->iceArrow2->setVisible(true);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costIceUpgrade3 && Main::mainClass->saveBoxClass->geBoolValue("upgradeIce2"))
@@ -1462,7 +1462,7 @@ namespace screens
                 this->container->cont->iceUpgrade3->gotoAndStop(1);
                 std::setText(this->container->cont->iceUpgrade3->starsTXT,this->costIceUpgrade3);
                 this->container->cont->iceUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->iceUpgrade3->upgradeCase->buttonMode = true;
+                this->container->cont->iceUpgrade3->upgradeCase->setMouseEnabled(true);
                 this->container->cont->iceArrow2->setVisible(false);
             }
             else
@@ -1470,13 +1470,13 @@ namespace screens
                 this->container->cont->iceUpgrade3->gotoAndStop(4);
                 std::setText(this->container->cont->iceUpgrade3->starsTXT,this->costIceUpgrade3);
                 this->container->cont->iceUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->iceUpgrade3->upgradeCase->buttonMode = false;
+                this->container->cont->iceUpgrade3->upgradeCase->setMouseEnabled(false);
                 this->container->cont->iceArrow2->setVisible(false);
             }
             if (Main::mainClass->saveBoxClass->geBoolValue("upgradeIce4"))
             {
                 this->container->cont->iceUpgrade4->gotoAndStop(3);
-                this->container->cont->iceUpgrade4->upgradeCase->buttonMode = false;
+                this->container->cont->iceUpgrade4->upgradeCase->setMouseEnabled(false);
                 this->container->cont->iceArrow3->setVisible(true);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costIceUpgrade4 && Main::mainClass->saveBoxClass->geBoolValue("upgradeIce3"))
@@ -1484,7 +1484,7 @@ namespace screens
                 this->container->cont->iceUpgrade4->gotoAndStop(1);
                 std::setText(this->container->cont->iceUpgrade4->starsTXT,this->costIceUpgrade4);
                 this->container->cont->iceUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->iceUpgrade4->upgradeCase->buttonMode = true;
+                this->container->cont->iceUpgrade4->upgradeCase->setMouseEnabled(true);
                 this->container->cont->iceArrow3->setVisible(false);
             }
             else
@@ -1492,13 +1492,13 @@ namespace screens
                 this->container->cont->iceUpgrade4->gotoAndStop(4);
                 std::setText(this->container->cont->iceUpgrade4->starsTXT,this->costIceUpgrade4);
                 this->container->cont->iceUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->iceUpgrade4->upgradeCase->buttonMode = false;
+                this->container->cont->iceUpgrade4->upgradeCase->setMouseEnabled(false);
                 this->container->cont->iceArrow3->setVisible(false);
             }
             if (Main::mainClass->saveBoxClass->geBoolValue("upgradeIce5"))
             {
                 this->container->cont->iceUpgrade5->gotoAndStop(3);
-                this->container->cont->iceUpgrade5->upgradeCase->buttonMode = false;
+                this->container->cont->iceUpgrade5->upgradeCase->setMouseEnabled(false);
                 this->container->cont->iceArrow4->setVisible(true);
             }
             else if (Main::mainClass->saveBoxClass->geIntValue("stars") >= this->costIceUpgrade5 && Main::mainClass->saveBoxClass->geBoolValue("upgradeIce4"))
@@ -1506,7 +1506,7 @@ namespace screens
                 this->container->cont->iceUpgrade5->gotoAndStop(1);
                 std::setText(this->container->cont->iceUpgrade5->starsTXT,this->costIceUpgrade5);
                 this->container->cont->iceUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->iceUpgrade5->upgradeCase->buttonMode = true;
+                this->container->cont->iceUpgrade5->upgradeCase->setMouseEnabled(true);
                 this->container->cont->iceArrow4->setVisible(false);
             }
             else
@@ -1514,7 +1514,7 @@ namespace screens
                 this->container->cont->iceUpgrade5->gotoAndStop(4);
                 std::setText(this->container->cont->iceUpgrade5->starsTXT,this->costIceUpgrade5);
                 this->container->cont->iceUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->iceUpgrade5->upgradeCase->buttonMode = false;
+                this->container->cont->iceUpgrade5->upgradeCase->setMouseEnabled(false);
                 this->container->cont->iceArrow4->setVisible(false);
             }
         }
@@ -1523,26 +1523,26 @@ namespace screens
             this->container->cont->iceUpgrade1->gotoAndStop(5);
             std::setText(this->container->cont->iceUpgrade1->starsTXT,this->costIceUpgrade1);
             this->container->cont->iceUpgrade1->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->iceUpgrade1->upgradeCase->buttonMode = false;
+            this->container->cont->iceUpgrade1->upgradeCase->setMouseEnabled(false);
             this->container->cont->iceUpgrade2->gotoAndStop(5);
             std::setText(this->container->cont->iceUpgrade2->starsTXT,this->costIceUpgrade2);
             this->container->cont->iceUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->iceUpgrade2->upgradeCase->buttonMode = false;
+            this->container->cont->iceUpgrade2->upgradeCase->setMouseEnabled(false);
             this->container->cont->iceArrow1->setVisible(false);
             this->container->cont->iceUpgrade3->gotoAndStop(5);
             std::setText(this->container->cont->iceUpgrade3->starsTXT,this->costIceUpgrade3);
             this->container->cont->iceUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->iceUpgrade3->upgradeCase->buttonMode = false;
+            this->container->cont->iceUpgrade3->upgradeCase->setMouseEnabled(false);
             this->container->cont->iceArrow2->setVisible(false);
             this->container->cont->iceUpgrade4->gotoAndStop(5);
             std::setText(this->container->cont->iceUpgrade4->starsTXT,this->costIceUpgrade4);
             this->container->cont->iceUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->iceUpgrade4->upgradeCase->buttonMode = false;
+            this->container->cont->iceUpgrade4->upgradeCase->setMouseEnabled(false);
             this->container->cont->iceArrow3->setVisible(false);
             this->container->cont->iceUpgrade5->gotoAndStop(5);
             std::setText(this->container->cont->iceUpgrade5->starsTXT,this->costIceUpgrade5);
             this->container->cont->iceUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->iceUpgrade5->upgradeCase->buttonMode = false;
+            this->container->cont->iceUpgrade5->upgradeCase->setMouseEnabled(false);
             this->container->cont->iceArrow4->setVisible(false);
         }
         if (Main::mainClass->saveBoxClass.gameSave.data.openLevels[2] > 0)
@@ -1550,26 +1550,26 @@ namespace screens
             if (Main::mainClass->saveBoxClass->getBoolValue("upgradeStone1"))
             {
                 this->container->cont->stoneUpgrade1->gotoAndStop(3);
-                this->container->cont->stoneUpgrade1->upgradeCase->buttonMode = false;
+                this->container->cont->stoneUpgrade1->upgradeCase->setMouseEnabled(false);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costStoneUpgrade1)
             {
                 this->container->cont->stoneUpgrade1->gotoAndStop(1);
                 std::setText(this->container->cont->stoneUpgrade1->starsTXT,this->costStoneUpgrade1);
                 this->container->cont->stoneUpgrade1->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->stoneUpgrade1->upgradeCase->buttonMode = true;
+                this->container->cont->stoneUpgrade1->upgradeCase->setMouseEnabled(true);
             }
             else
             {
                 this->container->cont->stoneUpgrade1->gotoAndStop(4);
                 std::setText(this->container->cont->stoneUpgrade1->starsTXT,this->costStoneUpgrade1);
                 this->container->cont->stoneUpgrade1->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->stoneUpgrade1->upgradeCase->buttonMode = false;
+                this->container->cont->stoneUpgrade1->upgradeCase->setMouseEnabled(false);
             }
             if (Main::mainClass->saveBoxClass->getBoolValue("upgradeStone2"))
             {
                 this->container->cont->stoneUpgrade2->gotoAndStop(3);
-                this->container->cont->stoneUpgrade2->upgradeCase->buttonMode = false;
+                this->container->cont->stoneUpgrade2->upgradeCase->setMouseEnabled(false);
                 this->container->cont->stoneArrow1->setVisible(true);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costStoneUpgrade2 && Main::mainClass->saveBoxClass->getBoolValue("upgradeStone1"))
@@ -1577,7 +1577,7 @@ namespace screens
                 this->container->cont->stoneUpgrade2->gotoAndStop(1);
                 std::setText(this->container->cont->stoneUpgrade2->starsTXT,this->costStoneUpgrade2);
                 this->container->cont->stoneUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->stoneUpgrade2->upgradeCase->buttonMode = true;
+                this->container->cont->stoneUpgrade2->upgradeCase->setMouseEnabled(true);
                 this->container->cont->stoneArrow1->setVisible(false);
             }
             else
@@ -1585,13 +1585,13 @@ namespace screens
                 this->container->cont->stoneUpgrade2->gotoAndStop(4);
                 std::setText(this->container->cont->stoneUpgrade2->starsTXT,this->costStoneUpgrade2);
                 this->container->cont->stoneUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->stoneUpgrade2->upgradeCase->buttonMode = false;
+                this->container->cont->stoneUpgrade2->upgradeCase->setMouseEnabled(false);
                 this->container->cont->stoneArrow1->setVisible(false);
             }
             if (Main::mainClass->saveBoxClass->getBoolValue("upgradeStone3"))
             {
                 this->container->cont->stoneUpgrade3->gotoAndStop(3);
-                this->container->cont->stoneUpgrade3->upgradeCase->buttonMode = false;
+                this->container->cont->stoneUpgrade3->upgradeCase->setMouseEnabled(false);
                 this->container->cont->stoneArrow2->setVisible(true);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costStoneUpgrade3 && Main::mainClass->saveBoxClass->getBoolValue("upgradeStone2"))
@@ -1599,7 +1599,7 @@ namespace screens
                 this->container->cont->stoneUpgrade3->gotoAndStop(1);
                 std::setText(this->container->cont->stoneUpgrade3->starsTXT,this->costStoneUpgrade3);
                 this->container->cont->stoneUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->stoneUpgrade3->upgradeCase->buttonMode = true;
+                this->container->cont->stoneUpgrade3->upgradeCase->setMouseEnabled(true);
                 this->container->cont->stoneArrow2->setVisible(false);
             }
             else
@@ -1607,13 +1607,13 @@ namespace screens
                 this->container->cont->stoneUpgrade3->gotoAndStop(4);
                 std::setText(this->container->cont->stoneUpgrade3->starsTXT,this->costStoneUpgrade3);
                 this->container->cont->stoneUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->stoneUpgrade3->upgradeCase->buttonMode = false;
+                this->container->cont->stoneUpgrade3->upgradeCase->setMouseEnabled(false);
                 this->container->cont->stoneArrow2->setVisible(false);
             }
             if (Main::mainClass->saveBoxClass->getBoolValue("upgradeStone4"))
             {
                 this->container->cont->stoneUpgrade4->gotoAndStop(3);
-                this->container->cont->stoneUpgrade4->upgradeCase->buttonMode = false;
+                this->container->cont->stoneUpgrade4->upgradeCase->setMouseEnabled(false);
                 this->container->cont->stoneArrow3->setVisible(true);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costStoneUpgrade4 && Main::mainClass->saveBoxClass->getBoolValue("upgradeStone3"))
@@ -1621,7 +1621,7 @@ namespace screens
                 this->container->cont->stoneUpgrade4->gotoAndStop(1);
                 std::setText(this->container->cont->stoneUpgrade4->starsTXT,this->costStoneUpgrade4);
                 this->container->cont->stoneUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->stoneUpgrade4->upgradeCase->buttonMode = true;
+                this->container->cont->stoneUpgrade4->upgradeCase->setMouseEnabled(true);
                 this->container->cont->stoneArrow3->setVisible(false);
             }
             else
@@ -1629,13 +1629,13 @@ namespace screens
                 this->container->cont->stoneUpgrade4->gotoAndStop(4);
                 std::setText(this->container->cont->stoneUpgrade4->starsTXT,this->costStoneUpgrade4);
                 this->container->cont->stoneUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->stoneUpgrade4->upgradeCase->buttonMode = false;
+                this->container->cont->stoneUpgrade4->upgradeCase->setMouseEnabled(false);
                 this->container->cont->stoneArrow3->setVisible(false);
             }
             if (Main::mainClass->saveBoxClass->getBoolValue("upgradeStone5"))
             {
                 this->container->cont->stoneUpgrade5->gotoAndStop(3);
-                this->container->cont->stoneUpgrade5->upgradeCase->buttonMode = false;
+                this->container->cont->stoneUpgrade5->upgradeCase->setMouseEnabled(false);
                 this->container->cont->stoneArrow4->setVisible(true);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costStoneUpgrade5 && Main::mainClass->saveBoxClass->getBoolValue("upgradeStone4"))
@@ -1643,7 +1643,7 @@ namespace screens
                 this->container->cont->stoneUpgrade5->gotoAndStop(1);
                 std::setText(this->container->cont->stoneUpgrade5->starsTXT,this->costStoneUpgrade5);
                 this->container->cont->stoneUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->stoneUpgrade5->upgradeCase->buttonMode = true;
+                this->container->cont->stoneUpgrade5->upgradeCase->setMouseEnabled(true);
                 this->container->cont->stoneArrow4->setVisible(false);
             }
             else
@@ -1651,7 +1651,7 @@ namespace screens
                 this->container->cont->stoneUpgrade5->gotoAndStop(4);
                 std::setText(this->container->cont->stoneUpgrade5->starsTXT,this->costStoneUpgrade5);
                 this->container->cont->stoneUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->stoneUpgrade5->upgradeCase->buttonMode = false;
+                this->container->cont->stoneUpgrade5->upgradeCase->setMouseEnabled(false);
                 this->container->cont->stoneArrow4->setVisible(false);
             }
         }
@@ -1660,26 +1660,26 @@ namespace screens
             this->container->cont->stoneUpgrade1->gotoAndStop(5);
             std::setText(this->container->cont->stoneUpgrade1->starsTXT,this->costStoneUpgrade1);
             this->container->cont->stoneUpgrade1->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->stoneUpgrade1->upgradeCase->buttonMode = false;
+            this->container->cont->stoneUpgrade1->upgradeCase->setMouseEnabled(false);
             this->container->cont->stoneUpgrade2->gotoAndStop(5);
             std::setText(this->container->cont->stoneUpgrade2->starsTXT,this->costStoneUpgrade2);
             this->container->cont->stoneUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->stoneUpgrade2->upgradeCase->buttonMode = false;
+            this->container->cont->stoneUpgrade2->upgradeCase->setMouseEnabled(false);
             this->container->cont->stoneArrow1->setVisible(false);
             this->container->cont->stoneUpgrade3->gotoAndStop(5);
             std::setText(this->container->cont->stoneUpgrade3->starsTXT,this->costStoneUpgrade3);
             this->container->cont->stoneUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->stoneUpgrade3->upgradeCase->buttonMode = false;
+            this->container->cont->stoneUpgrade3->upgradeCase->setMouseEnabled(false);
             this->container->cont->stoneArrow2->setVisible(false);
             this->container->cont->stoneUpgrade4->gotoAndStop(5);
             std::setText(this->container->cont->stoneUpgrade4->starsTXT,this->costStoneUpgrade4);
             this->container->cont->stoneUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->stoneUpgrade4->upgradeCase->buttonMode = false;
+            this->container->cont->stoneUpgrade4->upgradeCase->setMouseEnabled(false);
             this->container->cont->stoneArrow3->setVisible(false);
             this->container->cont->stoneUpgrade5->gotoAndStop(5);
             std::setText(this->container->cont->stoneUpgrade5->starsTXT,this->costStoneUpgrade5);
             this->container->cont->stoneUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->stoneUpgrade5->upgradeCase->buttonMode = false;
+            this->container->cont->stoneUpgrade5->upgradeCase->setMouseEnabled(false);
             this->container->cont->stoneArrow4->setVisible(false);
         }
         if (Main::mainClass->saveBoxClass.gameSave.data.openLevels[3] > 0)
@@ -1687,26 +1687,26 @@ namespace screens
             if (Main::mainClass->saveBoxClass->getBoolValue("upgradeLevin1"))
             {
                 this->container->cont->levinUpgrade1->gotoAndStop(3);
-                this->container->cont->levinUpgrade1->upgradeCase->buttonMode = false;
+                this->container->cont->levinUpgrade1->upgradeCase->setMouseEnabled(false);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costLevinUpgrade1)
             {
                 this->container->cont->levinUpgrade1->gotoAndStop(1);
                 std::setText(this->container->cont->levinUpgrade1->starsTXT,this->costLevinUpgrade1);
                 this->container->cont->levinUpgrade1->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->levinUpgrade1->upgradeCase->buttonMode = true;
+                this->container->cont->levinUpgrade1->upgradeCase->setMouseEnabled(true);
             }
             else
             {
                 this->container->cont->levinUpgrade1->gotoAndStop(4);
                 std::setText(this->container->cont->levinUpgrade1->starsTXT,this->costLevinUpgrade1);
                 this->container->cont->levinUpgrade1->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->levinUpgrade1->upgradeCase->buttonMode = false;
+                this->container->cont->levinUpgrade1->upgradeCase->setMouseEnabled(false);
             }
             if (Main::mainClass->saveBoxClass->getBoolValue("upgradeLevin2"))
             {
                 this->container->cont->levinUpgrade2->gotoAndStop(3);
-                this->container->cont->levinUpgrade2->upgradeCase->buttonMode = false;
+                this->container->cont->levinUpgrade2->upgradeCase->setMouseEnabled(false);
                 this->container->cont->levinArrow1->setVisible(true);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costLevinUpgrade2 && Main::mainClass->saveBoxClass->getBoolValue("upgradeLevin1"))
@@ -1714,7 +1714,7 @@ namespace screens
                 this->container->cont->levinUpgrade2->gotoAndStop(1);
                 std::setText(this->container->cont->levinUpgrade2->starsTXT,this->costLevinUpgrade2);
                 this->container->cont->levinUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->levinUpgrade2->upgradeCase->buttonMode = true;
+                this->container->cont->levinUpgrade2->upgradeCase->setMouseEnabled(true);
                 this->container->cont->levinArrow1->setVisible(false);
             }
             else
@@ -1722,13 +1722,13 @@ namespace screens
                 this->container->cont->levinUpgrade2->gotoAndStop(4);
                 std::setText(this->container->cont->levinUpgrade2->starsTXT,this->costLevinUpgrade2);
                 this->container->cont->levinUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->levinUpgrade2->upgradeCase->buttonMode = false;
+                this->container->cont->levinUpgrade2->upgradeCase->setMouseEnabled(false);
                 this->container->cont->levinArrow1->setVisible(false);
             }
             if (Main::mainClass->saveBoxClass->getBoolValue("upgradeLevin3"))
             {
                 this->container->cont->levinUpgrade3->gotoAndStop(3);
-                this->container->cont->levinUpgrade3->upgradeCase->buttonMode = false;
+                this->container->cont->levinUpgrade3->upgradeCase->setMouseEnabled(false);
                 this->container->cont->levinArrow2->setVisible(true);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costLevinUpgrade3 && Main::mainClass->saveBoxClass->getBoolValue("upgradeLevin2"))
@@ -1736,7 +1736,7 @@ namespace screens
                 this->container->cont->levinUpgrade3->gotoAndStop(1);
                 std::setText(this->container->cont->levinUpgrade3->starsTXT,this->costLevinUpgrade3);
                 this->container->cont->levinUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->levinUpgrade3->upgradeCase->buttonMode = true;
+                this->container->cont->levinUpgrade3->upgradeCase->setMouseEnabled(true);
                 this->container->cont->levinArrow2->setVisible(false);
             }
             else
@@ -1744,13 +1744,13 @@ namespace screens
                 this->container->cont->levinUpgrade3->gotoAndStop(4);
                 std::setText(this->container->cont->levinUpgrade3->starsTXT,this->costLevinUpgrade3);
                 this->container->cont->levinUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->levinUpgrade3->upgradeCase->buttonMode = false;
+                this->container->cont->levinUpgrade3->upgradeCase->setMouseEnabled(false);
                 this->container->cont->levinArrow2->setVisible(false);
             }
             if (Main::mainClass->saveBoxClass->getBoolValue("upgradeLevin4"))
             {
                 this->container->cont->levinUpgrade4->gotoAndStop(3);
-                this->container->cont->levinUpgrade4->upgradeCase->buttonMode = false;
+                this->container->cont->levinUpgrade4->upgradeCase->setMouseEnabled(false);
                 this->container->cont->levinArrow3->setVisible(true);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costLevinUpgrade4 && Main::mainClass->saveBoxClass->getBoolValue("upgradeLevin3"))
@@ -1758,7 +1758,7 @@ namespace screens
                 this->container->cont->levinUpgrade4->gotoAndStop(1);
                 std::setText(this->container->cont->levinUpgrade4->starsTXT,this->costLevinUpgrade4);
                 this->container->cont->levinUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->levinUpgrade4->upgradeCase->buttonMode = true;
+                this->container->cont->levinUpgrade4->upgradeCase->setMouseEnabled(true);
                 this->container->cont->levinArrow3->setVisible(false);
             }
             else
@@ -1766,13 +1766,13 @@ namespace screens
                 this->container->cont->levinUpgrade4->gotoAndStop(4);
                 std::setText(this->container->cont->levinUpgrade4->starsTXT,this->costLevinUpgrade4);
                 this->container->cont->levinUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->levinUpgrade4->upgradeCase->buttonMode = false;
+                this->container->cont->levinUpgrade4->upgradeCase->setMouseEnabled(false);
                 this->container->cont->levinArrow3->setVisible(false);
             }
             if (Main::mainClass->saveBoxClass->getBoolValue("upgradeLevin5"))
             {
                 this->container->cont->levinUpgrade5->gotoAndStop(3);
-                this->container->cont->levinUpgrade5->upgradeCase->buttonMode = false;
+                this->container->cont->levinUpgrade5->upgradeCase->setMouseEnabled(false);
                 this->container->cont->levinArrow4->setVisible(true);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costLevinUpgrade5 && Main::mainClass->saveBoxClass->getBoolValue("upgradeLevin4"))
@@ -1780,7 +1780,7 @@ namespace screens
                 this->container->cont->levinUpgrade5->gotoAndStop(1);
                 std::setText(this->container->cont->levinUpgrade5->starsTXT,this->costLevinUpgrade5);
                 this->container->cont->levinUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->levinUpgrade5->upgradeCase->buttonMode = true;
+                this->container->cont->levinUpgrade5->upgradeCase->setMouseEnabled(true);
                 this->container->cont->levinArrow4->setVisible(false);
             }
             else
@@ -1788,7 +1788,7 @@ namespace screens
                 this->container->cont->levinUpgrade5->gotoAndStop(4);
                 std::setText(this->container->cont->levinUpgrade5->starsTXT,this->costLevinUpgrade5);
                 this->container->cont->levinUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                this->container->cont->levinUpgrade5->upgradeCase->buttonMode = false;
+                this->container->cont->levinUpgrade5->upgradeCase->setMouseEnabled(false);
                 this->container->cont->levinArrow4->setVisible(false);
             }
         }
@@ -1797,26 +1797,26 @@ namespace screens
             this->container->cont->levinUpgrade1->gotoAndStop(5);
             std::setText(this->container->cont->levinUpgrade1->starsTXT,this->costLevinUpgrade1);
             this->container->cont->levinUpgrade1->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->levinUpgrade1->upgradeCase->buttonMode = false;
+            this->container->cont->levinUpgrade1->upgradeCase->setMouseEnabled(false);
             this->container->cont->levinUpgrade2->gotoAndStop(5);
             std::setText(this->container->cont->levinUpgrade2->starsTXT,this->costLevinUpgrade2);
             this->container->cont->levinUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->levinUpgrade2->upgradeCase->buttonMode = false;
+            this->container->cont->levinUpgrade2->upgradeCase->setMouseEnabled(false);
             this->container->cont->levinArrow1->setVisible(false);
             this->container->cont->levinUpgrade3->gotoAndStop(5);
             std::setText(this->container->cont->levinUpgrade3->starsTXT,this->costLevinUpgrade3);
             this->container->cont->levinUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->levinUpgrade3->upgradeCase->buttonMode = false;
+            this->container->cont->levinUpgrade3->upgradeCase->setMouseEnabled(false);
             this->container->cont->levinArrow2->setVisible(false);
             this->container->cont->levinUpgrade4->gotoAndStop(5);
             std::setText(this->container->cont->levinUpgrade4->starsTXT,this->costLevinUpgrade4);
             this->container->cont->levinUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->levinUpgrade4->upgradeCase->buttonMode = false;
+            this->container->cont->levinUpgrade4->upgradeCase->setMouseEnabled(false);
             this->container->cont->levinArrow3->setVisible(false);
             this->container->cont->levinUpgrade5->gotoAndStop(5);
             std::setText(this->container->cont->levinUpgrade5->starsTXT,this->costLevinUpgrade5);
             this->container->cont->levinUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-            this->container->cont->levinUpgrade5->upgradeCase->buttonMode = false;
+            this->container->cont->levinUpgrade5->upgradeCase->setMouseEnabled(false);
             this->container->cont->levinArrow4->setVisible(false);
         }
         if (Main::mainClass->saveBoxClass->getBoolValue("upgradeFire1") || Main::mainClass->saveBoxClass->getBoolValue("upgradeIce1") || Main::mainClass->saveBoxClass->getBoolValue("upgradeStone1") || Main::mainClass->saveBoxClass->getBoolValue("upgradeLevin1") || Main::mainClass->saveBoxClass->getBoolValue("upgradeGolem1") || Main::mainClass->saveBoxClass->getBoolValue("upgradeIceman1") || Main::mainClass->saveBoxClass->getBoolValue("upgradeAir1"))
@@ -1824,13 +1824,13 @@ namespace screens
             if (this->container->cont->btnReset->currentFrame == 4)
             {
                 this->container->cont->btnReset->gotoAndStop(1);
-                this->container->cont->btnReset->resetCase->buttonMode = true;
+                this->container->cont->btnReset->resetCase->setMouseEnabled(true);
             }
         }
         else if (this->container->cont->btnReset->currentFrame != 4)
         {
             this->container->cont->btnReset->gotoAndStop(4);
-            this->container->cont->btnReset->resetCase->buttonMode = false;
+            this->container->cont->btnReset->resetCase->setMouseEnabled(false);
         }
         std::setText(this->container->cont->starsTXT,Main::mainClass->saveBoxClass->getIntValue("stars"));
         this->container->cont->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
@@ -1863,8 +1863,8 @@ namespace screens
         if (!this->closeFlag)
         {
             this->closeFlag = true; 
-            this->container->cont->mouseChildren = false;
-            this->container->cont->mouseEnabled = false;
+            this->container->cont->setMouseChildren(false);
+            this->container->cont->setMouseEnabled(false);
             Main::mainClass->levelsMenuClass->container->upgrades->gotoAndStop(1);
             //this->stage.frameRate = 60;
             if (Main::mainClass->saveBoxClass->getIntValue("stars") == 0)

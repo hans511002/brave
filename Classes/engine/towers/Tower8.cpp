@@ -51,7 +51,7 @@ namespace engine
             container->fireLight1->stop();
             container->blockTower->stop();
             container->boneBlock->stop();
-            container->towerCase->buttonMode = true;
+            container->towerCase->setMouseEnabled(true);
             container->cont4->setVisible(false);
             container->cont5->setVisible(false);
             container->cont6->setVisible(false);

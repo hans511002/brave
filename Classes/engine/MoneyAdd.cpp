@@ -17,8 +17,8 @@ namespace engine
 		this->container->stop();
 		std::setText(this->container->noteTXT, this->money);
 		this->addChild(this->container);
-		this->mouseChildren = false;
-		this->mouseEnabled = false;
+		this->setMouseChildren(false);
+		this->setMouseEnabled(false);
 		//this->world->listOfClasses.push(this);
 		//this->world->listOfIndexes3.push(this);
 		 

@@ -25,7 +25,7 @@ namespace screens
         this->container = new Credits_mc();
         this->stopManage(); 
         this->container->cont->mouseChildren  = false;
-        this->container->cont->mouseEnabled = false;
+        this->container->cont->setMouseEnabled(false);
         this->addChild(this->container);
         return true;
     }// end function
@@ -45,11 +45,11 @@ namespace screens
         this->container->cont->facebook->facebookCase->stop();
         this->container->cont->twitter->twitterCase->stop();
         this->container->cont->btnOk->okCase->stop();
-        this->container->cont->logoCont->logoContCase->buttonMode = true;
-        this->container->cont->noteCont->noteContCase->buttonMode = true;
-        this->container->cont->facebook->facebookCase->buttonMode = true;
-        this->container->cont->twitter->twitterCase->buttonMode = true;
-        this->container->cont->btnOk->okCase->buttonMode = true;
+        this->container->cont->logoCont->logoContCase->setMouseEnabled(true);
+        this->container->cont->noteCont->noteContCase->setMouseEnabled(true);
+        this->container->cont->facebook->facebookCase->setMouseEnabled(true);
+        this->container->cont->twitter->twitterCase->setMouseEnabled(true);
+        this->container->cont->btnOk->okCase->setMouseEnabled(true);
         return;
     }// end function
 
@@ -78,7 +78,7 @@ namespace screens
             {
                 this->openFlag = false; 
                 this->container->cont->mouseChildren  = true;
-                this->container->cont->mouseEnabled = true;
+                this->container->cont->setMouseEnabled(true);
                 this->autoguidersButtons();
             }
         }
@@ -364,7 +364,7 @@ namespace screens
     {
         this->closeFlag = true; 
         this->container->cont->mouseChildren  = false;
-        this->container->cont->mouseEnabled = false;
+        this->container->cont->setMouseEnabled(false);
         return;
     }// end function
 

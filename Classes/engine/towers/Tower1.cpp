@@ -26,20 +26,21 @@ namespace engine
             slotsStack[3] = 1;
             //slotsStack[4] = 1;
             Tower1_mc * cont= new Tower1_mc();
+			container = cont;
             container->stop();
             //container->towerCase->stop();
             container->blockTower->stop();
             container->boneBlock->stop();
             container->selectTower->stop();
-            container->towerCase->buttonMode = true;
+            container->towerCase->setMouseEnabled(true);
             cont->blockTower->setVisible(false);
             cont->boneBlock->setVisible(false);
             cont->selectTower->setVisible(false);
-            this->addChild(container = cont);
+            this->addChild(cont);
             cont->init();
             Tower::init(); 
-            //this->mouseChildren = false;
-            //this->mouseEnabled = false;
+            //this->setMouseChildren(false);
+            //this->setMouseEnabled(false);
             if (!autoBuild)
             {
                 //Sounds.instance.playSoundWithVol("snd_tower_build", 0.95);
@@ -70,8 +71,8 @@ namespace engine
                     world->towerMenu = new TowerMenu(this);
                     world->addChild(world->towerMenu);
                     world->towerMenu->monitor();
-                    this->mouseChildren = true;
-                    this->mouseEnabled = true;
+                    this->setMouseChildren(true);
+                    this->setMouseEnabled(true);
                 }
             }
             if (world->frameCounter % 2)

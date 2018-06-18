@@ -75,9 +75,9 @@ namespace engine
 			{
 				if (this->world->towerMenu->container->btnUpgradeMenuBtnUpgradeMenuCase->isReady)
 				{
-					if (this->world->towerMenu->container->btnUpgradeMenuBtnUpgradeMenuCase->buttonMode)
+					if (this->world->towerMenu->container->btnUpgradeMenuBtnUpgradeMenuCase->mouseEnabled)
 					{
-						this->world->towerMenu->container->btnUpgradeMenuBtnUpgradeMenuCase->buttonMode = false;
+						this->world->towerMenu->container->btnUpgradeMenuBtnUpgradeMenuCase->setMouseEnabled(false);
 					}
 				}
 			}
@@ -85,19 +85,19 @@ namespace engine
 			{
 				if (this->world->towerMenu->container->btnTowerUpgr1)
 				{
-					this->world->towerMenu->container->btnTowerUpgr1BtnTowerUpgrCase->buttonMode = false;
+					this->world->towerMenu->container->btnTowerUpgr1BtnTowerUpgrCase->setMouseEnabled(false);
 				}
 				if (this->world->towerMenu->container->btnTowerUpgr2)
 				{
-					this->world->towerMenu->container->btnTowerUpgr2BtnTowerUpgrCase->buttonMode = false;
+					this->world->towerMenu->container->btnTowerUpgr2BtnTowerUpgrCase->setMouseEnabled(false);
 				}
 				if (this->world->towerMenu->container->btnTowerUpgr3)
 				{
-					this->world->towerMenu->container->btnTowerUpgr3BtnTowerUpgrCase->buttonMode = false;
+					this->world->towerMenu->container->btnTowerUpgr3BtnTowerUpgrCase->setMouseEnabled(false);
 				}
 				if (this->world->towerMenu->container->btnTowerUpgr4)
 				{
-					this->world->towerMenu->container->btnTowerUpgr4BtnTowerUpgrCase->buttonMode = false;
+					this->world->towerMenu->container->btnTowerUpgr4BtnTowerUpgrCase->setMouseEnabled(false);
 				}
 			}
 		}
@@ -107,16 +107,16 @@ namespace engine
 			{
 				if (this->world->ultraTowerMenu->container->btnUpgradeMenuBtnUpgradeMenuCase->isReady)
 				{
-					if (this->world->ultraTowerMenu->container->btnUpgradeMenuBtnUpgradeMenuCase->buttonMode)
+					if (this->world->ultraTowerMenu->container->btnUpgradeMenuBtnUpgradeMenuCase->mouseEnabled)
 					{
-						this->world->ultraTowerMenu->container->btnUpgradeMenuBtnUpgradeMenuCase->buttonMode = false;
+						this->world->ultraTowerMenu->container->btnUpgradeMenuBtnUpgradeMenuCase->setMouseEnabled(false);
 					}
 				}
 			}
 		}
 		this->setPosition(this->world->mouseX, this->world->mouseY);
-		this->mouseChildren = false;
-		this->mouseEnabled = false;
+		this->setMouseChildren(false);
+		this->setMouseEnabled(false);
 		return true;
 	}// end function
 	void  GetSphere::update(float dt)
@@ -256,7 +256,7 @@ namespace engine
 			return;
 		if (event->target->getName() == "fireCase")
 		{
-			if (ISTYPE(EventNode, event->target)->buttonMode && this->world->worldInterface->container->fireBack->currentFrame == 1)
+			if (ISTYPE(EventNode, event->target)->mouseEnabled && this->world->worldInterface->container->fireBack->currentFrame == 1)
 			{
 				if (this->world->worldInterface->container->iceBack->currentFrame == 2)
 				{
@@ -285,7 +285,7 @@ namespace engine
 		}
 		if (event->target->getName() == "iceCase")
 		{
-			if (ISTYPE(EventNode, event->target)->buttonMode && this->world->worldInterface->container->iceBack->currentFrame == 1)
+			if (ISTYPE(EventNode, event->target)->mouseEnabled && this->world->worldInterface->container->iceBack->currentFrame == 1)
 			{
 				if (this->world->worldInterface->container->fireBack->currentFrame == 2)
 				{
@@ -314,7 +314,7 @@ namespace engine
 		}
 		if (event->target->getName() == "stoneCase")
 		{
-			if (ISTYPE(EventNode, event->target)->buttonMode && this->world->worldInterface->container->stoneBack->currentFrame == 1)
+			if (ISTYPE(EventNode, event->target)->mouseEnabled && this->world->worldInterface->container->stoneBack->currentFrame == 1)
 			{
 				if (this->world->worldInterface->container->fireBack->currentFrame == 2)
 				{
@@ -343,7 +343,7 @@ namespace engine
 		}
 		if (event->target->getName() == "levinCase")
 		{
-			if (ISTYPE(EventNode, event->target)->buttonMode && this->world->worldInterface->container->levinBack->currentFrame == 1)
+			if (ISTYPE(EventNode, event->target)->mouseEnabled && this->world->worldInterface->container->levinBack->currentFrame == 1)
 			{
 				if (this->world->worldInterface->container->fireBack->currentFrame == 2)
 				{
@@ -372,7 +372,7 @@ namespace engine
 		}
 		if (event->target->getName() == "getAllCase")
 		{
-			if (ISTYPE(EventNode, event->target)->buttonMode && this->world->worldInterface->container->getAll->currentFrame == 1)
+			if (ISTYPE(EventNode, event->target)->mouseEnabled && this->world->worldInterface->container->getAll->currentFrame == 1)
 			{
 				if (this->world->worldInterface->container->fireBack->currentFrame == 2)
 				{
@@ -413,15 +413,15 @@ namespace engine
 				Tower * tower = ISTYPE(Tower, parent);
 				if (this->type == "holder")
 				{
-					if (ISTYPE(EventNode, event->target)->buttonMode && tower->spheresManage("scan") > 0)
+					if (ISTYPE(EventNode, event->target)->mouseEnabled && tower->spheresManage("scan") > 0)
 					{
 						if (!this->towerArrow)
 						{
 							this->towerArrow = new Arrow_mc();
 							this->towerArrow->stop();
 							this->towerArrow->myTower = tower;
-							this->towerArrow->mouseChildren = false;
-							this->towerArrow->mouseEnabled = false;
+							this->towerArrow->setMouseChildren(false);
+							this->towerArrow->setMouseEnabled(false);
 							this->towerArrow->myTower->addChild(this->towerArrow);
 						}
 						if (container->currentFrame == 2)
@@ -445,15 +445,15 @@ namespace engine
 				else if (this->type == "getAll")
 				{
 					GetAll_mc * container = ISTYPE(GetAll_mc, this->container);
-					if (ISTYPE(EventNode, event->target)->buttonMode && tower->spheresManage("scan") == 4)
+					if (ISTYPE(EventNode, event->target)->mouseEnabled && tower->spheresManage("scan") == 4)
 					{
 						if (!this->towerArrow)
 						{
 							this->towerArrow = new Arrow_mc();
 							this->towerArrow->stop();
 							this->towerArrow->myTower = tower;
-							this->towerArrow->mouseChildren = false;
-							this->towerArrow->mouseEnabled = false;
+							this->towerArrow->setMouseChildren(false);
+							this->towerArrow->setMouseEnabled(false);
 							this->towerArrow->myTower->addChild(this->towerArrow);
 						}
 						if (container->cross->isVisible())
@@ -719,7 +719,7 @@ namespace engine
 			this->kill();
 			//Sounds.instance.playSound("snd_world_sell");
 		}
-		else if (event->target->getName() == "towerCase" && ISTYPE(EventNode, event->target)->buttonMode)
+		else if (event->target->getName() == "towerCase" && ISTYPE(EventNode, event->target)->mouseEnabled)
 		{
 			Node * parent = event->target->getParent()->getParent();
 			Tower * tempObject = ISTYPE(Tower, parent);
@@ -807,7 +807,7 @@ namespace engine
 		}
 		else if (event->target->getName() == "fireCase")
 		{
-			if (ISTYPE(EventNode, event->target)->buttonMode)
+			if (ISTYPE(EventNode, event->target)->mouseEnabled)
 			{
 				if (this->listOfStack.size() < 4)
 				{
@@ -822,7 +822,7 @@ namespace engine
 		}
 		else if (event->target->getName() == "iceCase")
 		{
-			if (ISTYPE(EventNode, event->target)->buttonMode)
+			if (ISTYPE(EventNode, event->target)->mouseEnabled)
 			{
 				if (this->listOfStack.size() < 4)
 				{
@@ -837,7 +837,7 @@ namespace engine
 		}
 		else if (event->target->getName() == "stoneCase")
 		{
-			if (ISTYPE(EventNode, event->target)->buttonMode)
+			if (ISTYPE(EventNode, event->target)->mouseEnabled)
 			{
 				if (this->listOfStack.size() < 4)
 				{
@@ -852,7 +852,7 @@ namespace engine
 		}
 		else if (event->target->getName() == "levinCase")
 		{
-			if (ISTYPE(EventNode, event->target)->buttonMode)
+			if (ISTYPE(EventNode, event->target)->mouseEnabled)
 			{
 				if (this->listOfStack.size() < 4)
 				{
@@ -867,7 +867,7 @@ namespace engine
 		}
 		else if (event->target->getName() == "getAllCase")
 		{
-			if (ISTYPE(EventNode, event->target)->buttonMode)
+			if (ISTYPE(EventNode, event->target)->mouseEnabled)
 			{
 				if (this->getAllCount < 3)
 				{
@@ -1557,85 +1557,85 @@ namespace engine
 		{
 			if (this->world->worldInterface->fireCount > 0 || this->world->money >= std::getInt(this->world->worldInterface->container->buyFireBuyTXT) && this->world->worldInterface->container->fireSphere->isVisible())
 			{
-				if (!this->world->worldInterface->castMask->fireCase->buttonMode)
+				if (!this->world->worldInterface->castMask->fireCase->mouseEnabled)
 				{
-					this->world->worldInterface->castMask->fireCase->buttonMode = true;
+					this->world->worldInterface->castMask->fireCase->setMouseEnabled(true);
 				}
 			}
-			else if (this->world->worldInterface->castMask->fireCase->buttonMode)
+			else if (this->world->worldInterface->castMask->fireCase->mouseEnabled)
 			{
-				this->world->worldInterface->castMask->fireCase->buttonMode = false;
+				this->world->worldInterface->castMask->fireCase->setMouseEnabled(false);
 			}
 			if (this->world->worldInterface->iceCount > 0 || this->world->money >= std::getInt(this->world->worldInterface->container->buyIceBuyTXT) && this->world->worldInterface->container->iceSphere->isVisible())
 			{
-				if (!this->world->worldInterface->castMask->iceCase->buttonMode)
+				if (!this->world->worldInterface->castMask->iceCase->mouseEnabled)
 				{
-					this->world->worldInterface->castMask->iceCase->buttonMode = true;
+					this->world->worldInterface->castMask->iceCase->setMouseEnabled(true);
 				}
 			}
-			else if (this->world->worldInterface->castMask->iceCase->buttonMode)
+			else if (this->world->worldInterface->castMask->iceCase->mouseEnabled)
 			{
-				this->world->worldInterface->castMask->iceCase->buttonMode = false;
+				this->world->worldInterface->castMask->iceCase->setMouseEnabled(false);
 			}
 			if (this->world->worldInterface->stoneCount > 0 || this->world->money >= std::getInt(this->world->worldInterface->container->buyStoneBuyTXT) && this->world->worldInterface->container->stoneSphere->isVisible())
 			{
-				if (!this->world->worldInterface->castMask->stoneCase->buttonMode)
+				if (!this->world->worldInterface->castMask->stoneCase->mouseEnabled)
 				{
-					this->world->worldInterface->castMask->stoneCase->buttonMode = true;
+					this->world->worldInterface->castMask->stoneCase->setMouseEnabled(true);
 				}
 			}
-			else if (this->world->worldInterface->castMask->stoneCase->buttonMode)
+			else if (this->world->worldInterface->castMask->stoneCase->mouseEnabled)
 			{
-				this->world->worldInterface->castMask->stoneCase->buttonMode = false;
+				this->world->worldInterface->castMask->stoneCase->setMouseEnabled(false);
 			}
 			if (this->world->worldInterface->levinCount > 0 || this->world->money >= std::getInt(this->world->worldInterface->container->buyLevinBuyTXT) && this->world->worldInterface->container->levinSphere->isVisible())
 			{
-				if (!this->world->worldInterface->castMask->levinCase->buttonMode)
+				if (!this->world->worldInterface->castMask->levinCase->mouseEnabled)
 				{
-					this->world->worldInterface->castMask->levinCase->buttonMode = true;
+					this->world->worldInterface->castMask->levinCase->setMouseEnabled(true);
 				}
 			}
-			else if (this->world->worldInterface->castMask->levinCase->buttonMode)
+			else if (this->world->worldInterface->castMask->levinCase->mouseEnabled)
 			{
-				this->world->worldInterface->castMask->levinCase->buttonMode = false;
+				this->world->worldInterface->castMask->levinCase->setMouseEnabled(false);
 			}
 		}
 		else
 		{
-			if (this->world->worldInterface->castMask->fireCase->buttonMode)
+			if (this->world->worldInterface->castMask->fireCase->mouseEnabled)
 			{
-				this->world->worldInterface->castMask->fireCase->buttonMode = false;
+				this->world->worldInterface->castMask->fireCase->setMouseEnabled(false);
 			}
-			if (this->world->worldInterface->castMask->iceCase->buttonMode)
+			if (this->world->worldInterface->castMask->iceCase->mouseEnabled)
 			{
-				this->world->worldInterface->castMask->iceCase->buttonMode = false;
+				this->world->worldInterface->castMask->iceCase->setMouseEnabled(false);
 			}
-			if (this->world->worldInterface->castMask->stoneCase->buttonMode)
+			if (this->world->worldInterface->castMask->stoneCase->mouseEnabled)
 			{
-				this->world->worldInterface->castMask->stoneCase->buttonMode = false;
+				this->world->worldInterface->castMask->stoneCase->setMouseEnabled(false);
 			}
-			if (this->world->worldInterface->castMask->levinCase->buttonMode)
+			if (this->world->worldInterface->castMask->levinCase->mouseEnabled)
 			{
-				this->world->worldInterface->castMask->levinCase->buttonMode = false;
+				this->world->worldInterface->castMask->levinCase->setMouseEnabled(false);
 			}
 		}
 		if (this->listOfStack.size() == 0)
 		{
 			if (this->getAllCount < 3)
 			{
-				if (!this->world->worldInterface->castMask->getAllCase->buttonMode)
+				if (!this->world->worldInterface->castMask->getAllCase->mouseEnabled)
 				{
-					this->world->worldInterface->castMask->getAllCase->buttonMode = true;
+					this->world->worldInterface->castMask->getAllCase->setMouseEnabled(true);
 				}
 			}
-			else if (this->world->worldInterface->castMask->getAllCase->buttonMode)
+			else if (this->world->worldInterface->castMask->getAllCase->mouseEnabled)
 			{
-				this->world->worldInterface->castMask->getAllCase->buttonMode = false;
+				this->world->worldInterface->castMask->getAllCase->setMouseEnabled(false);
 			}
 		}
-		else if (this->world->worldInterface->castMask->getAllCase->buttonMode)
+		else if (this->world->worldInterface->castMask->getAllCase->mouseEnabled)
 		{
-			this->world->worldInterface->castMask->getAllCase->buttonMode = false;
+			this->world->worldInterface->castMask->getAllCase->setMouseEnabled(false);
 		}
 		return;
 	}// end function
@@ -1652,11 +1652,11 @@ namespace engine
 				this->towerArrow->myTower->removeChild(this->towerArrow);
 				this->towerArrow = NULL;
 			}
-			this->world->worldInterface->castMask->fireCase->buttonMode = false;
-			this->world->worldInterface->castMask->iceCase->buttonMode = false;
-			this->world->worldInterface->castMask->stoneCase->buttonMode = false;
-			this->world->worldInterface->castMask->levinCase->buttonMode = false;
-			this->world->worldInterface->castMask->getAllCase->buttonMode = false;
+			this->world->worldInterface->castMask->fireCase->setMouseEnabled(false);
+			this->world->worldInterface->castMask->iceCase->setMouseEnabled(false);
+			this->world->worldInterface->castMask->stoneCase->setMouseEnabled(false);
+			this->world->worldInterface->castMask->levinCase->setMouseEnabled(false);
+			this->world->worldInterface->castMask->getAllCase->setMouseEnabled(false);
 			this->world->worldInterface->updateInfo();
 		}
 		return;

@@ -76,16 +76,16 @@
             this.container = new Encyclopedia_mc();
             this.container.stop();
             this.container.back.stop();
-            this.container.back.backCase.buttonMode = true;
+            this.container.back.backCase.setMouseEnabled(true);
             this.container.book.stop();
             this.container.book.btnEnemy.gotoAndStop(4);
             this.container.book.btnGuide.stop();
             this.container.book.btnTower.stop();
-            this.container.book.btnEnemy.btnEnemyCase.buttonMode = false;
-            this.container.book.btnGuide.btnGuideCase.buttonMode = true;
-            this.container.book.btnTower.btnTowerCase.buttonMode = true;
+            this.container.book.btnEnemy.btnEnemyCase.setMouseEnabled(false);
+            this.container.book.btnGuide.btnGuideCase.setMouseEnabled(true);
+            this.container.book.btnTower.btnTowerCase.setMouseEnabled(true);
             var _loc_2:* = false;
-            this.container.book.mouseChildren = false;
+            this.container.book.setMouseChildren(false);
             this.container.book.mouseEnabled = _loc_2;
             this.container.book.btnGuide.visible = false;
             this.addChild(this.container);
@@ -121,7 +121,7 @@
                 {
                     this.openFlag = false;
                     var _loc_2:* = true;
-                    this.container.book.mouseChildren = true;
+                    this.container.book.setMouseChildren(true);
                     this.container.book.mouseEnabled = _loc_2;
                     this.stage.frameRate = 30;
                 }
@@ -167,7 +167,7 @@
                 {
                     this.gotoPage = "";
                     var _loc_2:* = true;
-                    this.container.book.mouseChildren = true;
+                    this.container.book.setMouseChildren(true);
                     this.container.book.mouseEnabled = _loc_2;
                     this.container.book.gotoAndStop(1);
                     this.nowPage = 2;
@@ -213,7 +213,7 @@
                 {
                     this.gotoPage = "";
                     var _loc_2:* = true;
-                    this.container.book.mouseChildren = true;
+                    this.container.book.setMouseChildren(true);
                     this.container.book.mouseEnabled = _loc_2;
                     this.container.book.gotoAndStop(1);
                     this.nowPage = 1;
@@ -289,7 +289,7 @@
                 {
                     this.gotoPage = "";
                     var _loc_2:* = true;
-                    this.container.book.mouseChildren = true;
+                    this.container.book.setMouseChildren(true);
                     this.container.book.mouseEnabled = _loc_2;
                     this.container.book.gotoAndStop(9);
                     this.nowPage = this.oldTowerPage;
@@ -358,7 +358,7 @@
                 {
                     this.gotoPage = "";
                     var _loc_2:* = true;
-                    this.container.book.mouseChildren = true;
+                    this.container.book.setMouseChildren(true);
                     this.container.book.mouseEnabled = _loc_2;
                     this.container.book.gotoAndStop(9);
                     this.nowPage = 12;
@@ -404,7 +404,7 @@
                 {
                     this.gotoPage = "";
                     var _loc_2:* = true;
-                    this.container.book.mouseChildren = true;
+                    this.container.book.setMouseChildren(true);
                     this.container.book.mouseEnabled = _loc_2;
                     this.container.book.gotoAndStop(9);
                     this.nowPage = 13;
@@ -450,7 +450,7 @@
                 {
                     this.gotoPage = "";
                     var _loc_2:* = true;
-                    this.container.book.mouseChildren = true;
+                    this.container.book.setMouseChildren(true);
                     this.container.book.mouseEnabled = _loc_2;
                     this.container.book.gotoAndStop(9);
                     this.nowPage = 12;
@@ -489,7 +489,7 @@
                 {
                     this.gotoPage = "";
                     var _loc_2:* = true;
-                    this.container.book.mouseChildren = true;
+                    this.container.book.setMouseChildren(true);
                     this.container.book.mouseEnabled = _loc_2;
                     this.container.book.gotoAndStop(9);
                     this.nowPage = 11;
@@ -616,7 +616,7 @@
                 {
                     this.gotoPage = "";
                     var _loc_2:* = true;
-                    this.container.book.mouseChildren = true;
+                    this.container.book.setMouseChildren(true);
                     this.container.book.mouseEnabled = _loc_2;
                     this.container.book.gotoAndStop(1);
                     this.nowPage = this.oldEnemyPage;
@@ -1050,7 +1050,7 @@
                         this.hint = new Hint_mc();
                         this.hint.stop();
                         var _loc_2:* = false;
-                        this.hint.mouseChildren = false;
+                        this.hint.setMouseChildren(false);
                         this.hint.mouseEnabled = _loc_2;
                         this.addChild(this.hint);
                     }
@@ -1211,8 +1211,8 @@
                     {
                         this.container.book.btnEnemy.gotoAndStop(4);
                         this.container.book.btnTower.gotoAndStop(1);
-                        this.container.book.btnEnemy.btnEnemyCase.buttonMode = false;
-                        this.container.book.btnTower.btnTowerCase.buttonMode = true;
+                        this.container.book.btnEnemy.btnEnemyCase.setMouseEnabled(false);
+                        this.container.book.btnTower.btnTowerCase.setMouseEnabled(true);
                         this.gotoPage = "10-00";
                         this.oldTowerPage = this.nowPage;
                         if (this.nowTarget)
@@ -1333,7 +1333,7 @@
                             this.contentManager("", this.nowPage);
                         }
                         var _loc_2:* = false;
-                        this.container.book.mouseChildren = false;
+                        this.container.book.setMouseChildren(false);
                         this.container.book.mouseEnabled = _loc_2;
                         this.nowTarget = null;
                     }
@@ -1359,8 +1359,8 @@
                     {
                         this.container.book.btnTower.gotoAndStop(4);
                         this.container.book.btnEnemy.gotoAndStop(1);
-                        this.container.book.btnEnemy.btnEnemyCase.buttonMode = true;
-                        this.container.book.btnTower.btnTowerCase.buttonMode = false;
+                        this.container.book.btnEnemy.btnEnemyCase.setMouseEnabled(true);
+                        this.container.book.btnTower.btnTowerCase.setMouseEnabled(false);
                         this.gotoPage = "00-10";
                         this.oldEnemyPage = this.nowPage;
                         if (this.nowTarget)
@@ -1465,7 +1465,7 @@
                             this.contentManager("", -this.nowPage);
                         }
                         var _loc_2:* = false;
-                        this.container.book.mouseChildren = false;
+                        this.container.book.setMouseChildren(false);
                         this.container.book.mouseEnabled = _loc_2;
                         this.nowTarget = null;
                     }
@@ -1681,7 +1681,7 @@
                             }
                         }
                         var _loc_2:* = false;
-                        this.container.book.mouseChildren = false;
+                        this.container.book.setMouseChildren(false);
                         this.container.book.mouseEnabled = _loc_2;
                         this.nowTarget = null;
                     }
@@ -1775,11 +1775,11 @@
                 param1.enemy1.cont.enemyCont.cont.stop();
                 if (this.nowTarget != param1.enemy1)
                 {
-                    param1.enemy1.enemyCase.buttonMode = true;
+                    param1.enemy1.enemyCase.setMouseEnabled(true);
                 }
                 else
                 {
-                    param1.enemy1.enemyCase.buttonMode = false;
+                    param1.enemy1.enemyCase.setMouseEnabled(false);
                 }
             }
             if (param1.enemy2.cont)
@@ -1789,11 +1789,11 @@
                 param1.enemy2.cont.enemyCont.cont.stop();
                 if (this.nowTarget != param1.enemy2)
                 {
-                    param1.enemy2.enemyCase.buttonMode = true;
+                    param1.enemy2.enemyCase.setMouseEnabled(true);
                 }
                 else
                 {
-                    param1.enemy2.enemyCase.buttonMode = false;
+                    param1.enemy2.enemyCase.setMouseEnabled(false);
                 }
             }
             if (param1.enemy3.cont)
@@ -1803,11 +1803,11 @@
                 param1.enemy3.cont.enemyCont.cont.stop();
                 if (this.nowTarget != param1.enemy3)
                 {
-                    param1.enemy3.enemyCase.buttonMode = true;
+                    param1.enemy3.enemyCase.setMouseEnabled(true);
                 }
                 else
                 {
-                    param1.enemy3.enemyCase.buttonMode = false;
+                    param1.enemy3.enemyCase.setMouseEnabled(false);
                 }
             }
             if (param1.enemy4.cont)
@@ -1817,11 +1817,11 @@
                 param1.enemy4.cont.enemyCont.cont.stop();
                 if (this.nowTarget != param1.enemy4)
                 {
-                    param1.enemy4.enemyCase.buttonMode = true;
+                    param1.enemy4.enemyCase.setMouseEnabled(true);
                 }
                 else
                 {
-                    param1.enemy4.enemyCase.buttonMode = false;
+                    param1.enemy4.enemyCase.setMouseEnabled(false);
                 }
             }
             if (param1.enemy5.cont)
@@ -1831,11 +1831,11 @@
                 param1.enemy5.cont.enemyCont.cont.stop();
                 if (this.nowTarget != param1.enemy5)
                 {
-                    param1.enemy5.enemyCase.buttonMode = true;
+                    param1.enemy5.enemyCase.setMouseEnabled(true);
                 }
                 else
                 {
-                    param1.enemy5.enemyCase.buttonMode = false;
+                    param1.enemy5.enemyCase.setMouseEnabled(false);
                 }
             }
             if (param1.enemy6.cont)
@@ -1845,11 +1845,11 @@
                 param1.enemy6.cont.enemyCont.cont.stop();
                 if (this.nowTarget != param1.enemy6)
                 {
-                    param1.enemy6.enemyCase.buttonMode = true;
+                    param1.enemy6.enemyCase.setMouseEnabled(true);
                 }
                 else
                 {
-                    param1.enemy6.enemyCase.buttonMode = false;
+                    param1.enemy6.enemyCase.setMouseEnabled(false);
                 }
             }
             if (param1.enemy7.cont)
@@ -1859,11 +1859,11 @@
                 param1.enemy7.cont.enemyCont.cont.stop();
                 if (this.nowTarget != param1.enemy7)
                 {
-                    param1.enemy7.enemyCase.buttonMode = true;
+                    param1.enemy7.enemyCase.setMouseEnabled(true);
                 }
                 else
                 {
-                    param1.enemy7.enemyCase.buttonMode = false;
+                    param1.enemy7.enemyCase.setMouseEnabled(false);
                 }
             }
             if (param1.enemy8.cont)
@@ -1873,11 +1873,11 @@
                 param1.enemy8.cont.enemyCont.cont.stop();
                 if (this.nowTarget != param1.enemy8)
                 {
-                    param1.enemy8.enemyCase.buttonMode = true;
+                    param1.enemy8.enemyCase.setMouseEnabled(true);
                 }
                 else
                 {
-                    param1.enemy8.enemyCase.buttonMode = false;
+                    param1.enemy8.enemyCase.setMouseEnabled(false);
                 }
             }
             if (param1.enemy9.cont)
@@ -1887,11 +1887,11 @@
                 param1.enemy9.cont.enemyCont.cont.stop();
                 if (this.nowTarget != param1.enemy9)
                 {
-                    param1.enemy9.enemyCase.buttonMode = true;
+                    param1.enemy9.enemyCase.setMouseEnabled(true);
                 }
                 else
                 {
-                    param1.enemy9.enemyCase.buttonMode = false;
+                    param1.enemy9.enemyCase.setMouseEnabled(false);
                 }
             }
             if (param1.enemy10.cont)
@@ -1901,11 +1901,11 @@
                 param1.enemy10.cont.enemyCont.cont.stop();
                 if (this.nowTarget != param1.enemy10)
                 {
-                    param1.enemy10.enemyCase.buttonMode = true;
+                    param1.enemy10.enemyCase.setMouseEnabled(true);
                 }
                 else
                 {
-                    param1.enemy10.enemyCase.buttonMode = false;
+                    param1.enemy10.enemyCase.setMouseEnabled(false);
                 }
             }
             if (param1.enemy11.cont)
@@ -1915,11 +1915,11 @@
                 param1.enemy11.cont.enemyCont.cont.stop();
                 if (this.nowTarget != param1.enemy11)
                 {
-                    param1.enemy11.enemyCase.buttonMode = true;
+                    param1.enemy11.enemyCase.setMouseEnabled(true);
                 }
                 else
                 {
-                    param1.enemy11.enemyCase.buttonMode = false;
+                    param1.enemy11.enemyCase.setMouseEnabled(false);
                 }
             }
             if (param1.enemy12.cont)
@@ -1929,11 +1929,11 @@
                 param1.enemy12.cont.enemyCont.cont.stop();
                 if (this.nowTarget != param1.enemy12)
                 {
-                    param1.enemy12.enemyCase.buttonMode = true;
+                    param1.enemy12.enemyCase.setMouseEnabled(true);
                 }
                 else
                 {
-                    param1.enemy12.enemyCase.buttonMode = false;
+                    param1.enemy12.enemyCase.setMouseEnabled(false);
                 }
             }
             if (param1.enemy13.cont)
@@ -1943,11 +1943,11 @@
                 param1.enemy13.cont.enemyCont.cont.stop();
                 if (this.nowTarget != param1.enemy13)
                 {
-                    param1.enemy13.enemyCase.buttonMode = true;
+                    param1.enemy13.enemyCase.setMouseEnabled(true);
                 }
                 else
                 {
-                    param1.enemy13.enemyCase.buttonMode = false;
+                    param1.enemy13.enemyCase.setMouseEnabled(false);
                 }
             }
             if (param1.enemy14.cont)
@@ -1957,11 +1957,11 @@
                 param1.enemy14.cont.enemyCont.cont.stop();
                 if (this.nowTarget != param1.enemy14)
                 {
-                    param1.enemy14.enemyCase.buttonMode = true;
+                    param1.enemy14.enemyCase.setMouseEnabled(true);
                 }
                 else
                 {
-                    param1.enemy14.enemyCase.buttonMode = false;
+                    param1.enemy14.enemyCase.setMouseEnabled(false);
                 }
             }
             if (param1.enemy15.cont)
@@ -1971,11 +1971,11 @@
                 param1.enemy15.cont.enemyCont.cont.stop();
                 if (this.nowTarget != param1.enemy15)
                 {
-                    param1.enemy15.enemyCase.buttonMode = true;
+                    param1.enemy15.enemyCase.setMouseEnabled(true);
                 }
                 else
                 {
-                    param1.enemy15.enemyCase.buttonMode = false;
+                    param1.enemy15.enemyCase.setMouseEnabled(false);
                 }
             }
             if (param1.enemy16.cont)
@@ -1985,15 +1985,15 @@
                 param1.enemy16.cont.enemyCont.cont.stop();
                 if (this.nowTarget != param1.enemy16)
                 {
-                    param1.enemy16.enemyCase.buttonMode = true;
+                    param1.enemy16.enemyCase.setMouseEnabled(true);
                 }
                 else
                 {
-                    param1.enemy16.enemyCase.buttonMode = false;
+                    param1.enemy16.enemyCase.setMouseEnabled(false);
                 }
             }
             param1.btnLeft.stop();
-            param1.btnLeft.arrowCase.buttonMode = true;
+            param1.btnLeft.arrowCase.setMouseEnabled(true);
             return;
         }// end function
 
@@ -2005,7 +2005,7 @@
                 param1.icons.stop();
             }
             param1.btnRight.stop();
-            param1.btnRight.arrowCase.buttonMode = true;
+            param1.btnRight.arrowCase.setMouseEnabled(true);
             return;
         }// end function
 
@@ -2022,11 +2022,11 @@
                 param1.tower1.cont.towerCont.stop();
                 if (this.nowTarget != param1.tower1)
                 {
-                    param1.tower1.towerCase.buttonMode = true;
+                    param1.tower1.towerCase.setMouseEnabled(true);
                 }
                 else
                 {
-                    param1.tower1.towerCase.buttonMode = false;
+                    param1.tower1.towerCase.setMouseEnabled(false);
                 }
             }
             if (param1.tower2.cont)
@@ -2035,11 +2035,11 @@
                 param1.tower2.cont.towerCont.stop();
                 if (this.nowTarget != param1.tower2)
                 {
-                    param1.tower2.towerCase.buttonMode = true;
+                    param1.tower2.towerCase.setMouseEnabled(true);
                 }
                 else
                 {
-                    param1.tower2.towerCase.buttonMode = false;
+                    param1.tower2.towerCase.setMouseEnabled(false);
                 }
             }
             if (param1.tower3.cont)
@@ -2048,11 +2048,11 @@
                 param1.tower3.cont.towerCont.stop();
                 if (this.nowTarget != param1.tower3)
                 {
-                    param1.tower3.towerCase.buttonMode = true;
+                    param1.tower3.towerCase.setMouseEnabled(true);
                 }
                 else
                 {
-                    param1.tower3.towerCase.buttonMode = false;
+                    param1.tower3.towerCase.setMouseEnabled(false);
                 }
             }
             if (param1.tower4.cont)
@@ -2061,11 +2061,11 @@
                 param1.tower4.cont.towerCont.stop();
                 if (this.nowTarget != param1.tower4)
                 {
-                    param1.tower4.towerCase.buttonMode = true;
+                    param1.tower4.towerCase.setMouseEnabled(true);
                 }
                 else
                 {
-                    param1.tower4.towerCase.buttonMode = false;
+                    param1.tower4.towerCase.setMouseEnabled(false);
                 }
             }
             if (param1.tower5)
@@ -2098,7 +2098,7 @@
                             param1.tower5.cont.levin.stop();
                         }
                     }
-                    param1.tower5.towerCase.buttonMode = true;
+                    param1.tower5.towerCase.setMouseEnabled(true);
                 }
                 if (param1.tower6.cont)
                 {
@@ -2126,11 +2126,11 @@
                             param1.tower6.cont.levin.stop();
                         }
                     }
-                    param1.tower6.towerCase.buttonMode = true;
+                    param1.tower6.towerCase.setMouseEnabled(true);
                 }
             }
             param1.btnLeft.stop();
-            param1.btnLeft.arrowCase.buttonMode = true;
+            param1.btnLeft.arrowCase.setMouseEnabled(true);
             return;
         }// end function
 
@@ -2138,7 +2138,7 @@
         {
             param1.stop();
             param1.btnRight.stop();
-            param1.btnRight.buttonMode = true;
+            param1.btnRight.setMouseEnabled(true);
             return;
         }// end function
 
@@ -2149,11 +2149,11 @@
                 this.nowTarget.gotoAndStop(1);
                 if (this.nowTarget.enemyCase)
                 {
-                    this.nowTarget.enemyCase.buttonMode = true;
+                    this.nowTarget.enemyCase.setMouseEnabled(true);
                 }
                 else if (this.nowTarget.towerCase)
                 {
-                    this.nowTarget.towerCase.buttonMode = true;
+                    this.nowTarget.towerCase.setMouseEnabled(true);
                 }
             }
             this.nowTarget = param1;
@@ -3413,7 +3413,7 @@
             {
                 this.closeFlag = true;
                 var _loc_1:* = false;
-                this.container.book.mouseChildren = false;
+                this.container.book.setMouseChildren(false);
                 this.container.book.mouseEnabled = _loc_1;
                 if (Main.mainClass.levelsMenuClass)
                 {

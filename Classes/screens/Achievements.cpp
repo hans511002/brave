@@ -31,7 +31,7 @@ namespace screens
         this->container->stop();
         this->container->back->stop();
         this->container->back->backCase->stop();
-        this->container->back->backCase->buttonMode = true;
+        this->container->back->backCase->setMouseEnabled(true);
         this->container->cont->stop();
         this->container->cont->achieve1->stop();
         this->container->cont->achieve2->stop();
@@ -59,12 +59,12 @@ namespace screens
         this->container->cont->fire3Case->stop();
         this->container->cont->fire4Case->stop();
         this->container->cont->fire5Case->stop();
-        this->container->cont->btnBack->arrowCase->buttonMode = true;
-        this->container->cont->btnForward->arrowCase->buttonMode = true;
-        this->container->cont->btnClose->closeCase->buttonMode = true;
+        this->container->cont->btnBack->arrowCase->setMouseEnabled(true);
+        this->container->cont->btnForward->arrowCase->setMouseEnabled(true);
+        this->container->cont->btnClose->closeCase->setMouseEnabled(true);
         this->pageManage(1); 
-        this->container->cont->mouseChildren = false;
-        this->container->cont->mouseEnabled = false;
+        this->container->cont->setMouseChildren(false);
+        this->container->cont->setMouseEnabled(false);
         this->addChild(this->container);
         //Sounds.instance.playSound("snd_menu_openBoard");
         return true;
@@ -89,8 +89,8 @@ namespace screens
             else
             {
                 this->openFlag = false; 
-                this->container->cont->mouseChildren = true;
-                this->container->cont->mouseEnabled = true;
+                this->container->cont->setMouseChildren(true);
+                this->container->cont->setMouseEnabled(true);
                 this->autoguidersButtons();
                 //this->stage.frameRate = 30;
             }
@@ -321,7 +321,7 @@ namespace screens
             }
             else if (event->target->name == "fire1Case")
             {
-                if (this->container->cont->fire1Case->buttonMode)
+                if (this->container->cont->fire1Case->mouseEnabled)
                 {
                     this->pageManage(1);
                     //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
@@ -329,7 +329,7 @@ namespace screens
             }
             else if (event->target->name == "fire2Case")
             {
-                if (this->container->cont->fire2Case->buttonMode)
+                if (this->container->cont->fire2Case->mouseEnabled)
                 {
                     this->pageManage(2);
                     //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
@@ -337,7 +337,7 @@ namespace screens
             }
             else if (event->target->name == "fire3Case")
             {
-                if (this->container->cont->fire3Case->buttonMode)
+                if (this->container->cont->fire3Case->mouseEnabled)
                 {
                     this->pageManage(3);
                     //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
@@ -345,7 +345,7 @@ namespace screens
             }
             else if (event->target->name == "fire4Case")
             {
-                if (this->container->cont->fire4Case->buttonMode)
+                if (this->container->cont->fire4Case->mouseEnabled)
                 {
                     this->pageManage(4);
                     //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
@@ -353,7 +353,7 @@ namespace screens
             }
             else if (event->target->name == "fire5Case")
             {
-                if (this->container->cont->fire5Case->buttonMode)
+                if (this->container->cont->fire5Case->mouseEnabled)
                 {
                     this->pageManage(5);
                     //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
@@ -491,25 +491,25 @@ namespace screens
         {
             this->container->cont->fire5->setVisible(false);
         }
-        if (!this->container->cont->fire1Case->buttonMode)
+        if (!this->container->cont->fire1Case->mouseEnabled)
         {
-            this->container->cont->fire1Case->buttonMode = true;
+            this->container->cont->fire1Case->setMouseEnabled(true);
         }
-        if (!this->container->cont->fire2Case->buttonMode)
+        if (!this->container->cont->fire2Case->mouseEnabled)
         {
-            this->container->cont->fire2Case->buttonMode = true;
+            this->container->cont->fire2Case->setMouseEnabled(true);
         }
-        if (!this->container->cont->fire3Case->buttonMode)
+        if (!this->container->cont->fire3Case->mouseEnabled)
         {
-            this->container->cont->fire3Case->buttonMode = true;
+            this->container->cont->fire3Case->setMouseEnabled(true);
         }
-        if (!this->container->cont->fire4Case->buttonMode)
+        if (!this->container->cont->fire4Case->mouseEnabled)
         {
-            this->container->cont->fire4Case->buttonMode = true;
+            this->container->cont->fire4Case->setMouseEnabled(true);
         }
-        if (!this->container->cont->fire5Case->buttonMode)
+        if (!this->container->cont->fire5Case->mouseEnabled)
         {
-            this->container->cont->fire5Case->buttonMode = true;
+            this->container->cont->fire5Case->setMouseEnabled(true);
         }
         if (param1 == 1)
         {
@@ -624,7 +624,7 @@ namespace screens
             std::setText(this->container->cont->achieve10->nameTxt,"破坏者");
             std::setText(this->container->cont->achieve10->noteTxt,"一场任务中出售所有类型元素");
             this->container->cont->fire1->setVisible(true);
-            this->container->cont->fire1Case->buttonMode = false;
+            this->container->cont->fire1Case->setMouseEnabled(false);
         }
         else if (param1 == 2)
         {
@@ -739,7 +739,7 @@ namespace screens
             std::setText(this->container->cont->achieve10->nameTxt,"策略建造者");
             std::setText(this->container->cont->achieve10->noteTxt,"一场游戏中每种类型建造一座超级塔楼总计 4 座");
             this->container->cont->fire2->setVisible(true);
-            this->container->cont->fire2Case->buttonMode = false;
+            this->container->cont->fire2Case->setMouseEnabled(false);
         }
         else if (param1 == 3)
         {
@@ -854,7 +854,7 @@ namespace screens
             std::setText(this->container->cont->achieve10->nameTxt,"勇猛战士");
             std::setText(this->container->cont->achieve10->noteTxt,"困难难度下通过 10 关");
             this->container->cont->fire3->setVisible(true);
-            this->container->cont->fire3Case->buttonMode = false;
+            this->container->cont->fire3Case->setMouseEnabled(false);
         }
         else if (param1 == 4)
         {
@@ -969,7 +969,7 @@ namespace screens
             std::setText(this->container->cont->achieve10->nameTxt,"老烟枪");
             std::setText(this->container->cont->achieve10->noteTxt,"牛仔和仙人掌");
             this->container->cont->fire4->setVisible(true);
-            this->container->cont->fire4Case->buttonMode = false;
+            this->container->cont->fire4Case->setMouseEnabled(false);
         }
         else if (param1 == 5)
         {
@@ -1044,7 +1044,7 @@ namespace screens
             this->container->cont->achieve9->setVisible(false);
             this->container->cont->achieve10->setVisible(false);
             this->container->cont->fire5->setVisible(true);
-            this->container->cont->fire5Case->buttonMode = false;
+            this->container->cont->fire5Case->setMouseEnabled(false);
         }
         return;
     }// end function
@@ -1077,8 +1077,8 @@ namespace screens
         if (!this->closeFlag)
         {
             this->closeFlag = true; 
-            this->container->cont->mouseChildren = false;
-            this->container->cont->mouseEnabled = false;
+            this->container->cont->setMouseChildren(false);
+            this->container->cont->setMouseEnabled(false);
             Main::mainClass->levelsMenuClass->container->achieves->gotoAndStop(1);
             //this->stage.frameRate = 60;
         }

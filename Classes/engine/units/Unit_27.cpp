@@ -129,8 +129,8 @@ namespace engine
                         teleportAnima->setPosition(container->unitCase->getPosition());
                         //teleportAnima->x = container->unitCase.x;
                         //teleportAnima->y = container->unitCase.y;
-                        teleportAnima->mouseChildren = false;
-                        teleportAnima->mouseEnabled = false;
+                        teleportAnima->setMouseChildren(false);
+                        teleportAnima->setMouseEnabled(false);
                         this->addChild(teleportAnima);
                         i = 0;
                         while (i < this->listOfTeleportUnits.size())
@@ -140,8 +140,8 @@ namespace engine
                             this->listOfTeleportUnits[i]->teleportAnima->setPosition(this->listOfTeleportUnits[i]->container->unitCase->getPosition());
                             //this->listOfTeleportUnits[i]->teleportAnima->x = this->listOfTeleportUnits[i]->container->unitCase.x;
                             //this->listOfTeleportUnits[i]->teleportAnima->y = this->listOfTeleportUnits[i]->container->unitCase.y;
-                            this->listOfTeleportUnits[i]->teleportAnima->mouseChildren = false;
-                            this->listOfTeleportUnits[i]->teleportAnima->mouseEnabled = false;
+                            this->listOfTeleportUnits[i]->teleportAnima->setMouseChildren(false);
+                            this->listOfTeleportUnits[i]->teleportAnima->setMouseEnabled(false);
                             this->listOfTeleportUnits[i]->addChild(this->listOfTeleportUnits[i]->teleportAnima);
                             i++;
                         }
@@ -222,8 +222,8 @@ namespace engine
                         teleportAnima->setPosition(container->unitCase->getPosition());
                         //teleportAnima->x = container->unitCase.x;
                         //teleportAnima->y = container->unitCase.y; 
-                        teleportAnima->mouseChildren = false;
-                        teleportAnima->mouseEnabled = false;
+                        teleportAnima->setMouseChildren(false);
+                        teleportAnima->setMouseEnabled(false);
                         this->addChild(teleportAnima);
                         i = 0;
                         while (i < this->listOfTeleportUnits.size())
@@ -239,8 +239,8 @@ namespace engine
                             this->listOfTeleportUnits[i]->teleportAnima->setPosition(this->listOfTeleportUnits[i]->container->unitCase->getPosition());
                             //this->listOfTeleportUnits[i]->teleportAnima->x = this->listOfTeleportUnits[i]->container->unitCase.x;
                             //this->listOfTeleportUnits[i]->teleportAnima->y = this->listOfTeleportUnits[i]->container->unitCase.y; 
-                            this->listOfTeleportUnits[i]->teleportAnima->mouseChildren = false;
-                            this->listOfTeleportUnits[i]->teleportAnima->mouseEnabled = false;
+                            this->listOfTeleportUnits[i]->teleportAnima->setMouseChildren(false);
+                            this->listOfTeleportUnits[i]->teleportAnima->setMouseEnabled(false);
                             this->listOfTeleportUnits[i]->addChild(this->listOfTeleportUnits[i]->teleportAnima);
                             i++;
                         }

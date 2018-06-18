@@ -19,8 +19,8 @@ namespace engine{
 		MCCase * pointerCase;
 		MovieClipSub * fireAnima;
 		MovieClipSub * eyesAnima;
-		MCCase * mask1;
-		MCCase * mask2;
+		MCMask * mask1;
+		MCMask * mask2;
 		Sprite * arrow;
 		LevelPointer();
 		int counter;

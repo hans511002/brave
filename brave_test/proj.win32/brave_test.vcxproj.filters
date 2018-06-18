@@ -275,9 +275,6 @@
     <ClInclude Include="..\..\brave\Classes\test\AppDelegate.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\brave\Classes\test\WorldInterface.h">
-      <Filter>src\tmp</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\brave\Classes\base\AllHeaders.h">
       <Filter>src\base</Filter>
     </ClInclude>

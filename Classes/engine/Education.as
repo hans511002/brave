@@ -47,9 +47,9 @@
                 this.container.first.card.note.stop();
                 this.container.first.card.icon.stop();
                 this.container.first.card.btnOk.stop();
-                this.container.first.card.btnOk.okCase.buttonMode = true;
+                this.container.first.card.btnOk.okCase.setMouseEnabled(true);
                 var _loc_2:* = false;
-                this.container.first.mouseChildren = false;
+                this.container.first.setMouseChildren(false);
                 this.container.first.mouseEnabled = _loc_2;
                 this.addChild(this.container);
                 this.prepareEnemyInfo();
@@ -83,9 +83,9 @@
                         this.container.first.card.gotoAndStop((this.container.first.card.currentFrame + 1));
                         this.container.first.card.icon.stop();
                         this.container.first.card.btnOk.stop();
-                        this.container.first.card.btnOk.okCase.buttonMode = true;
+                        this.container.first.card.btnOk.okCase.setMouseEnabled(true);
                         var _loc_2:* = false;
-                        this.container.first.mouseChildren = false;
+                        this.container.first.setMouseChildren(false);
                         this.container.first.mouseEnabled = _loc_2;
                         this.prepareEnemyInfo();
                     }
@@ -93,7 +93,7 @@
                     {
                         this.openFlag = false;
                         var _loc_2:* = true;
-                        this.container.first.mouseChildren = true;
+                        this.container.first.setMouseChildren(true);
                         this.container.first.mouseEnabled = _loc_2;
                         this.tempObject = new Point(this.mouseX, this.mouseY);
                         this.tempObject1 = this.container.first.card.btnOk.localToGlobal(new Point(this.container.first.card.btnOk.okCase.x, this.container.first.card.btnOk.okCase.y));
@@ -114,9 +114,9 @@
                         this.container.first.card.gotoAndStop((this.container.first.card.currentFrame - 1));
                         this.container.first.card.icon.stop();
                         this.container.first.card.btnOk.stop();
-                        this.container.first.card.btnOk.okCase.buttonMode = true;
+                        this.container.first.card.btnOk.okCase.setMouseEnabled(true);
                         var _loc_2:* = false;
-                        this.container.first.mouseChildren = false;
+                        this.container.first.setMouseChildren(false);
                         this.container.first.mouseEnabled = _loc_2;
                         this.prepareEnemyInfo();
                     }
@@ -179,7 +179,7 @@
                         this.container.first.card.btnOk.gotoAndStop(2);
                         this.closeFlag = true;
                         var _loc_2:* = false;
-                        this.container.first.mouseChildren = false;
+                        this.container.first.setMouseChildren(false);
                         this.container.first.mouseEnabled = _loc_2;
                         Sounds.instance.playSound("snd_menu_pageScrolling");
                     }

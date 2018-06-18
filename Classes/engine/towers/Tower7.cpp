@@ -70,7 +70,7 @@ namespace engine
             container->round4->stop();
             container->blockTower->stop();
             container->boneBlock->stop();
-            container->towerCase->buttonMode = true;
+            container->towerCase->setMouseEnabled(true);
             container->upgr1_1->setVisible(false);
             container->upgr1_2->setVisible(false);
             container->upgr1_3->setVisible(false);

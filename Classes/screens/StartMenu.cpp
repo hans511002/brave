@@ -28,10 +28,10 @@ namespace screens
         this->container->btnMusic->stop();
         this->container->btnSound->stop();
         this->container->back->stop();
-        this->container->logOut->buttonMode = true;
-        this->container->btnMusic->musicCase->buttonMode = true;
-        this->container->btnSound->soundCase->buttonMode = true;
-        this->container->back->backCase->buttonMode = true;
+        this->container->logOut->setMouseEnabled(true);
+        this->container->btnMusic->musicCase->setMouseEnabled(true);
+        this->container->btnSound->soundCase->setMouseEnabled(true);
+        this->container->back->backCase->setMouseEnabled(true);
         this->container->back->setVisible(false);
         this->container->btnY8->stop();
         this->container->btnIdnet->stop();
@@ -39,9 +39,9 @@ namespace screens
         this->container->btnIdnet->idnetCase->stop();
         //if (!Main::mainClass->IDIClass.isSponsor)
         //{
-        //    this->container->btnY8->y8Case->buttonMode = true;
+        //    this->container->btnY8->y8Case->setMouseEnabled(true);
         //}
-        this->container->btnIdnet->idnetCase->buttonMode = true;
+        this->container->btnIdnet->idnetCase->setMouseEnabled(true);
         this->container->logOut->setVisible(false);
         this->addChild(this->container);
         //if (//Sounds.instance.musicOn)
@@ -94,8 +94,8 @@ namespace screens
             }
             this->container->back->setVisible(true);
         } 
-        this->container->mouseChildren = false;
-        this->container->mouseEnabled = false;
+        this->container->setMouseChildren(false);
+        this->container->setMouseEnabled(false);
         return;
     }// end function
 
@@ -147,10 +147,10 @@ namespace screens
                     }
                     else if (this->container->currentFrame == 28)
                     {
-                        this->container->start->startCase->buttonMode = true;
-                        this->container->credits->creditsCase->buttonMode = true; 
-                        this->container->mouseChildren = true;
-                        this->container->mouseEnabled = true;
+                        this->container->start->startCase->setMouseEnabled(true);
+                        this->container->credits->creditsCase->setMouseEnabled(true); 
+                        this->container->setMouseChildren(true);
+                        this->container->setMouseEnabled(true);
                         this->container->back->setVisible(false);
                         this->autoguidersButtons();
                     }
@@ -165,10 +165,10 @@ namespace screens
                     }
                     else if (this->container->currentFrame == 28)
                     {
-                        this->container->start->startCase->buttonMode = true;
-                        this->container->credits->creditsCase->buttonMode = true; 
-                        this->container->mouseChildren = true;
-                        this->container->mouseEnabled = true;
+                        this->container->start->startCase->setMouseEnabled(true);
+                        this->container->credits->creditsCase->setMouseEnabled(true); 
+                        this->container->setMouseChildren(true);
+                        this->container->setMouseEnabled(true);
                         this->container->back->setVisible(false);
                         this->autoguidersButtons();
                     }
@@ -202,14 +202,14 @@ namespace screens
                             this->nickText = this->container->saveType->onlineSave->nickTXT.text;
                             this->container->saveType->onlineSave->nickTXT.setTextFormat(Main::mainClass->boldTextFormat);
                         }
-                        this->container->saveType->localSave->localSaveCase->buttonMode = true;
-                        this->container->saveType->onlineSave->onlineSaveCase->buttonMode = true;
+                        this->container->saveType->localSave->localSaveCase->setMouseEnabled(true);
+                        this->container->saveType->onlineSave->onlineSaveCase->setMouseEnabled(true);
                         this->container->back->setVisible(true);
                     }
                     else if (this->container->currentFrame == 44)
                     { 
-                        this->container->mouseChildren = true;
-                        this->container->mouseEnabled = true;
+                        this->container->setMouseChildren(true);
+                        this->container->setMouseEnabled(true);
                         this->autoguidersButtons();
                     }
                 }
@@ -237,16 +237,16 @@ namespace screens
                                 {
                                     this->container->game1->gotoAndStop(4);
                                     this->container->game1->newGame1Case->stop();
-                                    this->container->game1->newGame1Case->buttonMode = true;
+                                    this->container->game1->newGame1Case->setMouseEnabled(true);
                                 }
                                 else
                                 {
                                     this->container->game1->gotoAndStop(1);
                                     this->container->game1->game1Case->stop();
-                                    this->container->game1->game1Case->buttonMode = true;
+                                    this->container->game1->game1Case->setMouseEnabled(true);
                                     this->container->game1->syncSlot->stop();
                                     this->container->game1->syncSlot->syncSlotCase->stop();
-                                    this->container->game1->syncSlot->syncSlotCase->buttonMode = true;
+                                    this->container->game1->syncSlot->syncSlotCase->setMouseEnabled(true);
                                     //if (Main::mainClass->IDIClass.idnet)
                                     //{
                                     //    if (!Main::mainClass->IDIClass.idnet.userData)
@@ -264,7 +264,7 @@ namespace screens
                                     //}
                                     this->container->game1->deleteSlot->stop();
                                     this->container->game1->deleteSlot->deleteSlotCase->stop();
-                                    this->container->game1->deleteSlot->deleteSlotCase->buttonMode = true;
+                                    this->container->game1->deleteSlot->deleteSlotCase->setMouseEnabled(true);
                                     int tempObject = 0;
                                     this->i = 0;
                                     while (this->i < Main::mainClass->saveBoxClass->gameSave1.data.starsOfLevels.length)
@@ -280,16 +280,16 @@ namespace screens
                                 {
                                     this->container->game2->gotoAndStop(4);
                                     this->container->game2->newGame2Case->stop();
-                                    this->container->game2->newGame2Case->buttonMode = true;
+                                    this->container->game2->newGame2Case->setMouseEnabled(true);
                                 }
                                 else
                                 {
                                     this->container->game2->gotoAndStop(1);
                                     this->container->game2->game2Case->stop();
-                                    this->container->game2->game2Case->buttonMode = true;
+                                    this->container->game2->game2Case->setMouseEnabled(true);
                                     this->container->game2->syncSlot->stop();
                                     this->container->game2->syncSlot->syncSlotCase->stop();
-                                    this->container->game2->syncSlot->syncSlotCase->buttonMode = true;
+                                    this->container->game2->syncSlot->syncSlotCase->setMouseEnabled(true);
                                     if (Main::mainClass->IDIClass.idnet)
                                     {
                                         if (!Main::mainClass->IDIClass.idnet.userData)
@@ -307,7 +307,7 @@ namespace screens
                                     }
                                     this->container->game2->deleteSlot->stop();
                                     this->container->game2->deleteSlot->deleteSlotCase->stop();
-                                    this->container->game2->deleteSlot->deleteSlotCase->buttonMode = true;
+                                    this->container->game2->deleteSlot->deleteSlotCase->setMouseEnabled(true);
                                     int tempObject = 0;
                                     this->i = 0;
                                     while (this->i < Main::mainClass->saveBoxClass->gameSave2.data.starsOfLevels.length)
@@ -323,16 +323,16 @@ namespace screens
                                 {
                                     this->container->game3->gotoAndStop(4);
                                     this->container->game3->newGame3Case->stop();
-                                    this->container->game3->newGame3Case->buttonMode = true;
+                                    this->container->game3->newGame3Case->setMouseEnabled(true);
                                 }
                                 else
                                 {
                                     this->container->game3->gotoAndStop(1);
                                     this->container->game3->game3Case->stop();
-                                    this->container->game3->game3Case->buttonMode = true;
+                                    this->container->game3->game3Case->setMouseEnabled(true);
                                     this->container->game3->syncSlot->stop();
                                     this->container->game3->syncSlot->syncSlotCase->stop();
-                                    this->container->game3->syncSlot->syncSlotCase->buttonMode = true;
+                                    this->container->game3->syncSlot->syncSlotCase->setMouseEnabled(true);
                                     if (Main::mainClass->IDIClass.idnet)
                                     {
                                         if (!Main::mainClass->IDIClass.idnet.userData)
@@ -350,7 +350,7 @@ namespace screens
                                     }
                                     this->container->game3->deleteSlot->stop();
                                     this->container->game3->deleteSlot->deleteSlotCase->stop();
-                                    this->container->game3->deleteSlot->deleteSlotCase->buttonMode = true;
+                                    this->container->game3->deleteSlot->deleteSlotCase->setMouseEnabled(true);
                                     tempObject = 0;
                                     this->i = 0;
                                     while (this->i < Main::mainClass->saveBoxClass->gameSave3.data.starsOfLevels.length)
@@ -369,20 +369,20 @@ namespace screens
                                 {
                                     this->container->game1->gotoAndStop(4);
                                     this->container->game1->newGame1Case->stop();
-                                    this->container->game1->newGame1Case->buttonMode = true;
+                                    this->container->game1->newGame1Case->setMouseEnabled(true);
                                 }
                                 else
                                 {
                                     this->container->game1->gotoAndStop(1);
                                     this->container->game1->game1Case->stop();
-                                    this->container->game1->game1Case->buttonMode = true;
+                                    this->container->game1->game1Case->setMouseEnabled(true);
                                     this->container->game1->syncSlot->stop();
                                     this->container->game1->syncSlot->syncSlotCase->stop();
-                                    this->container->game1->syncSlot->syncSlotCase->buttonMode = true;
+                                    this->container->game1->syncSlot->syncSlotCase->setMouseEnabled(true);
                                     this->container->game1->syncSlot->setVisible(false);
                                     this->container->game1->deleteSlot->stop();
                                     this->container->game1->deleteSlot->deleteSlotCase->stop();
-                                    this->container->game1->deleteSlot->deleteSlotCase->buttonMode = true;
+                                    this->container->game1->deleteSlot->deleteSlotCase->setMouseEnabled(true);
                                     int tempObject = 0;
                                     this->i = 0;
                                     while (this->i < Main::mainClass->saveBoxClass->gameSave4.data.starsOfLevels.length)
@@ -399,20 +399,20 @@ namespace screens
                                 {
                                     this->container->game2->gotoAndStop(4);
                                     this->container->game2->newGame2Case->stop();
-                                    this->container->game2->newGame2Case->buttonMode = true;
+                                    this->container->game2->newGame2Case->setMouseEnabled(true);
                                 }
                                 else
                                 {
                                     this->container->game2->gotoAndStop(1);
                                     this->container->game2->game2Case->stop();
-                                    this->container->game2->game2Case->buttonMode = true;
+                                    this->container->game2->game2Case->setMouseEnabled(true);
                                     this->container->game2->syncSlot->stop();
                                     this->container->game2->syncSlot->syncSlotCase->stop();
-                                    this->container->game2->syncSlot->syncSlotCase->buttonMode = true;
+                                    this->container->game2->syncSlot->syncSlotCase->setMouseEnabled(true);
                                     this->container->game2->syncSlot->setVisible(false);
                                     this->container->game2->deleteSlot->stop();
                                     this->container->game2->deleteSlot->deleteSlotCase->stop();
-                                    this->container->game2->deleteSlot->deleteSlotCase->buttonMode = true;
+                                    this->container->game2->deleteSlot->deleteSlotCase->setMouseEnabled(true);
                                     tempObject = 0;
                                     this->i = 0;
                                     while (this->i < Main::mainClass->saveBoxClass->gameSave5.data.starsOfLevels.length)
@@ -428,20 +428,20 @@ namespace screens
                                 {
                                     this->container->game3->gotoAndStop(4);
                                     this->container->game3->newGame3Case->stop();
-                                    this->container->game3->newGame3Case->buttonMode = true;
+                                    this->container->game3->newGame3Case->setMouseEnabled(true);
                                 }
                                 else
                                 {
                                     this->container->game3->gotoAndStop(1);
                                     this->container->game3->game3Case->stop();
-                                    this->container->game3->game3Case->buttonMode = true;
+                                    this->container->game3->game3Case->setMouseEnabled(true);
                                     this->container->game3->syncSlot->stop();
                                     this->container->game3->syncSlot->syncSlotCase->stop();
-                                    this->container->game3->syncSlot->syncSlotCase->buttonMode = true;
+                                    this->container->game3->syncSlot->syncSlotCase->setMouseEnabled(true);
                                     this->container->game3->syncSlot->setVisible(false);
                                     this->container->game3->deleteSlot->stop();
                                     this->container->game3->deleteSlot->deleteSlotCase->stop();
-                                    this->container->game3->deleteSlot->deleteSlotCase->buttonMode = true;
+                                    this->container->game3->deleteSlot->deleteSlotCase->setMouseEnabled(true);
                                     tempObject = 0;
                                     this->i = 0;
                                     while (this->i < Main::mainClass->saveBoxClass->gameSave6.data.starsOfLevels.length)
@@ -459,8 +459,8 @@ namespace screens
                         }
                         else if (this->container->currentFrame == 79)
                         { 
-                            this->container->mouseChildren = true;
-                            this->container->mouseEnabled = true;
+                            this->container->setMouseChildren(true);
+                            this->container->setMouseEnabled(true);
                             this->autoguidersButtons();
                         }
                     }
@@ -476,10 +476,10 @@ namespace screens
                                 this->container->question->btnYes->yesCase->stop();
                                 this->container->question->btnNo->stop();
                                 this->container->question->btnNo->noCase->stop();
-                                this->container->question->btnYes->yesCase->buttonMode = true;
-                                this->container->question->btnNo->noCase->buttonMode = true; 
-                                this->container->question->mouseChildren = false;
-                                this->container->question->mouseEnabled = false;
+                                this->container->question->btnYes->yesCase->setMouseEnabled(true);
+                                this->container->question->btnNo->noCase->setMouseEnabled(true); 
+                                this->container->question->setMouseChildren(false);
+                                this->container->question->setMouseEnabled(false);
                                 if (this->question < 11)
                                 {
                                     std::setText(this->container->question->noteTXT,"Delete save slot?");
@@ -495,8 +495,8 @@ namespace screens
                             this->container->question->gotoAndStop((this->container->question->currentFrame + 1));
                             if (this->container->question->currentFrame == this->container->question->totalFrames)
                             { 
-                                this->container->question->mouseChildren = true;
-                                this->container->question->mouseEnabled = true;
+                                this->container->question->setMouseChildren(true);
+                                this->container->question->setMouseEnabled(true);
                             }
                         }
                     }
@@ -520,17 +520,17 @@ namespace screens
                             else
                             {
                                 this->question = 0; 
-                                this->container->game1->mouseChildren = true;
-                                this->container->game1->mouseEnabled = true; 
-                                this->container->game2->mouseChildren = true;
-                                this->container->game2->mouseEnabled = true; 
-                                this->container->game3->mouseChildren = true;
-                                this->container->game3->mouseEnabled = true;
+                                this->container->game1->setMouseChildren(true);
+                                this->container->game1->setMouseEnabled(true); 
+                                this->container->game2->setMouseChildren(true);
+                                this->container->game2->setMouseEnabled(true); 
+                                this->container->game3->setMouseChildren(true);
+                                this->container->game3->setMouseEnabled(true);
                                 this->container->game1->alpha = 1;
                                 this->container->game2->alpha = 1;
                                 this->container->game3->alpha = 1; 
-                                this->container->mouseChildren = true;
-                                this->container->mouseEnabled = true;
+                                this->container->setMouseChildren(true);
+                                this->container->setMouseEnabled(true);
                                 this->autoguidersButtons();
                             }
                         }
@@ -545,8 +545,8 @@ namespace screens
                     {
                         this->loginFlag = false;
                         this->page = 4; 
-                        this->container->mouseChildren = false;
-                        this->container->mouseEnabled = false;
+                        this->container->setMouseChildren(false);
+                        this->container->setMouseEnabled(false);
                         this->waitCounter = 0;
                         Main::mainClass->saveBoxClass->gameSave4.data.haveSave = false;
                         Main::mainClass->saveBoxClass->gameSave5.data.haveSave = false;
@@ -580,12 +580,12 @@ namespace screens
                         {
                             this->container->game3->syncSlot->gotoAndStop(4);
                         } 
-                        this->container->game1->mouseChildren = false;
-                        this->container->game1->mouseEnabled = false; 
-                        this->container->game2->mouseChildren = false;
-                        this->container->game2->mouseEnabled = false; 
-                        this->container->game3->mouseChildren = false;
-                        this->container->game3->mouseEnabled = false;
+                        this->container->game1->setMouseChildren(false);
+                        this->container->game1->setMouseEnabled(false); 
+                        this->container->game2->setMouseChildren(false);
+                        this->container->game2->setMouseEnabled(false); 
+                        this->container->game3->setMouseChildren(false);
+                        this->container->game3->setMouseEnabled(false);
                         this->container->game1->alpha = 0.5;
                         this->container->game2->alpha = 0.5;
                         this->container->game3->alpha = 0.5;
@@ -635,7 +635,7 @@ namespace screens
         {
             this->container->btnSound->gotoAndStop((this->container->btnSound->currentFrame - 1));
         }
-        if (this->container->btnY8->y8Case->buttonMode)
+        if (this->container->btnY8->y8Case->mouseEnabled)
         {
             if (param1->target->name == "y8Case")
             {
@@ -664,7 +664,7 @@ namespace screens
         }
         if (this->container->start)
         {
-            if (this->container->start->startCase->buttonMode)
+            if (this->container->start->startCase->mouseEnabled)
             {
                 if (param1->target->name == "startCase")
                 {
@@ -831,7 +831,7 @@ namespace screens
                             this->syncHint.y = this->container->game3->y + this->container->game3->syncSlot->y + this->container->game3->syncSlot->syncSlotCase.y - 5;
                         }
                         var _loc_2:* = false;
-                        this->syncHint.mouseChildren = false;
+                        this->syncHint.setMouseChildren(false);
                         this->syncHint.mouseEnabled = _loc_2;
                         this->addChild(this->syncHint);
                     }
@@ -1167,8 +1167,8 @@ namespace screens
                 {
                     this->page = 2;
                 } 
-                this->container->mouseChildren = false;
-                this->container->mouseEnabled = false;
+                this->container->setMouseChildren(false);
+                this->container->setMouseEnabled(false);
             }
         }
         else if (this->container->back->currentFrame == 3)
@@ -1248,7 +1248,7 @@ namespace screens
                 {
                     this->page = 2;
                     var _loc_2:* = false;
-                    this->container->mouseChildren = false;
+                    this->container->setMouseChildren(false);
                     this->container->mouseEnabled = _loc_2;
                 }
             }
@@ -1279,7 +1279,7 @@ namespace screens
                     this->container->saveType->localSave->gotoAndStop(2);
                     this->page = 3;
                     var _loc_2:* = false;
-                    this->container->mouseChildren = false;
+                    this->container->setMouseChildren(false);
                     this->container->mouseEnabled = _loc_2;
                     //Sounds.instance.playSound("snd_menu_stoneMouseMove");
                 }
@@ -1310,7 +1310,7 @@ namespace screens
                         {
                             this->page = 4;
                             var _loc_2:* = false;
-                            this->container->mouseChildren = false;
+                            this->container->setMouseChildren(false);
                             this->container->mouseEnabled = _loc_2;
                             this->waitCounter = 0;
                             Main::mainClass->saveBoxClass->gameSave4.data.haveSave = false;
@@ -1461,12 +1461,12 @@ namespace screens
                         if (Main::mainClass->IDIClass.idnet.userData)
                         {
                             this->question = 11; 
-                            this->container->game1->mouseChildren = false;
-                            this->container->game1->mouseEnabled = false; 
-                            this->container->game2->mouseChildren = false;
-                            this->container->game2->mouseEnabled = false; 
-                            this->container->game3->mouseChildren = false;
-                            this->container->game3->mouseEnabled = false;
+                            this->container->game1->setMouseChildren(false);
+                            this->container->game1->setMouseEnabled(false); 
+                            this->container->game2->setMouseChildren(false);
+                            this->container->game2->setMouseEnabled(false); 
+                            this->container->game3->setMouseChildren(false);
+                            this->container->game3->setMouseEnabled(false);
                             this->container->game1->alpha = 0.5;
                             this->container->game2->alpha = 0.5;
                             this->container->game3->alpha = 0.5;
@@ -1501,12 +1501,12 @@ namespace screens
                         if (Main::mainClass->IDIClass.idnet.userData)
                         {
                             this->question = 12; 
-                            this->container->game1->mouseChildren = false;
-                            this->container->game1->mouseEnabled = false; 
-                            this->container->game2->mouseChildren = false;
-                            this->container->game2->mouseEnabled = false; 
-                            this->container->game3->mouseChildren = false;
-                            this->container->game3->mouseEnabled = false;
+                            this->container->game1->setMouseChildren(false);
+                            this->container->game1->setMouseEnabled(false); 
+                            this->container->game2->setMouseChildren(false);
+                            this->container->game2->setMouseEnabled(false); 
+                            this->container->game3->setMouseChildren(false);
+                            this->container->game3->setMouseEnabled(false);
                             this->container->game1->alpha = 0.5;
                             this->container->game2->alpha = 0.5;
                             this->container->game3->alpha = 0.5;
@@ -1541,12 +1541,12 @@ namespace screens
                         if (Main::mainClass->IDIClass.idnet.userData)
                         {
                             this->question = 13; 
-                            this->container->game1->mouseChildren = false;
-                            this->container->game1->mouseEnabled = false; 
-                            this->container->game2->mouseChildren = false;
-                            this->container->game2->mouseEnabled = false; 
-                            this->container->game3->mouseChildren = false;
-                            this->container->game3->mouseEnabled = false;
+                            this->container->game1->setMouseChildren(false);
+                            this->container->game1->setMouseEnabled(false); 
+                            this->container->game2->setMouseChildren(false);
+                            this->container->game2->setMouseEnabled(false); 
+                            this->container->game3->setMouseChildren(false);
+                            this->container->game3->setMouseEnabled(false);
                             this->container->game1->alpha = 0.5;
                             this->container->game2->alpha = 0.5;
                             this->container->game3->alpha = 0.5;
@@ -1584,12 +1584,12 @@ namespace screens
                     {
                         this->question = 4;
                     } 
-                    this->container->game1->mouseChildren = false;
-                    this->container->game1->mouseEnabled = false; 
-                    this->container->game2->mouseChildren = false;
-                    this->container->game2->mouseEnabled = false; 
-                    this->container->game3->mouseChildren = false;
-                    this->container->game3->mouseEnabled = false;
+                    this->container->game1->setMouseChildren(false);
+                    this->container->game1->setMouseEnabled(false); 
+                    this->container->game2->setMouseChildren(false);
+                    this->container->game2->setMouseEnabled(false); 
+                    this->container->game3->setMouseChildren(false);
+                    this->container->game3->setMouseEnabled(false);
                     this->container->game1->alpha = 0.5;
                     this->container->game2->alpha = 0.5;
                     this->container->game3->alpha = 0.5;
@@ -1615,12 +1615,12 @@ namespace screens
                     {
                         this->question = 5;
                     } 
-                    this->container->game1->mouseChildren = false;
-                    this->container->game1->mouseEnabled = false; 
-                    this->container->game2->mouseChildren = false;
-                    this->container->game2->mouseEnabled = false; 
-                    this->container->game3->mouseChildren = false;
-                    this->container->game3->mouseEnabled = false;
+                    this->container->game1->setMouseChildren(false);
+                    this->container->game1->setMouseEnabled(false); 
+                    this->container->game2->setMouseChildren(false);
+                    this->container->game2->setMouseEnabled(false); 
+                    this->container->game3->setMouseChildren(false);
+                    this->container->game3->setMouseEnabled(false);
                     this->container->game1->alpha = 0.5;
                     this->container->game2->alpha = 0.5;
                     this->container->game3->alpha = 0.5;
@@ -1646,12 +1646,12 @@ namespace screens
                     {
                         this->question = 6;
                     } 
-                    this->container->game1->mouseChildren = false;
-                    this->container->game1->mouseEnabled = false; 
-                    this->container->game2->mouseChildren = false;
-                    this->container->game2->mouseEnabled = false; 
-                    this->container->game3->mouseChildren = false;
-                    this->container->game3->mouseEnabled = false;
+                    this->container->game1->setMouseChildren(false);
+                    this->container->game1->setMouseEnabled(false); 
+                    this->container->game2->setMouseChildren(false);
+                    this->container->game2->setMouseEnabled(false); 
+                    this->container->game3->setMouseChildren(false);
+                    this->container->game3->setMouseEnabled(false);
                     this->container->game1->alpha = 0.5;
                     this->container->game2->alpha = 0.5;
                     this->container->game3->alpha = 0.5;
@@ -1675,7 +1675,7 @@ namespace screens
                         {
                             this->container->game1->gotoAndStop(4);
                             this->container->game1->newGame1Case->stop();
-                            this->container->game1->newGame1Case->buttonMode = true;
+                            this->container->game1->newGame1Case->setMouseEnabled(true);
                             if (this->question == 1)
                             {
                                 Main::mainClass->saveBoxClass->gameSave1.data.haveSave = false;
@@ -1690,7 +1690,7 @@ namespace screens
                         {
                             this->container->game2->gotoAndStop(4);
                             this->container->game2->newGame2Case->stop();
-                            this->container->game2->newGame2Case->buttonMode = true;
+                            this->container->game2->newGame2Case->setMouseEnabled(true);
                             if (this->question == 2)
                             {
                                 Main::mainClass->saveBoxClass->gameSave2.data.haveSave = false;
@@ -1705,7 +1705,7 @@ namespace screens
                         {
                             this->container->game3->gotoAndStop(4);
                             this->container->game3->newGame3Case->stop();
-                            this->container->game3->newGame3Case->buttonMode = true;
+                            this->container->game3->newGame3Case->setMouseEnabled(true);
                             if (this->question == 3)
                             {
                                 Main::mainClass->saveBoxClass->gameSave3.data.haveSave = false;

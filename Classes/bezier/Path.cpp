@@ -4,12 +4,12 @@ namespace bezier
 {
 	Path::Path(Common::Array<cocos2d::Point>  &param1) :points(param1)
 	{
-		CCLOG("================Path points=======================\n");
-		for(size_t i = 0; i < points.size(); i++)
-		{
-			CCLOG("%f,%f   ", points[i].x, points[i].y);
-		}
-		CCLOG("================end Path points=======================\n");
+		//CCLOG("================Path points=======================\n");
+		//for(size_t i = 0; i < points.size(); i++)
+		//{
+		//	CCLOG("%f,%f   ", points[i].x, points[i].y);
+		//}
+		//CCLOG("================end Path points=======================\n");
 		this->update();
 
 		return;

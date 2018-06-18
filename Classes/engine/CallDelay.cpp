@@ -38,7 +38,7 @@ namespace engine
                 this->tempObject->newElementCase->stop();
                 this->tempObject->type = this->type1;
                 //this->tempObject->soundFlag = true;
-                this->tempObject->newElementCase->buttonMode = true;
+                this->tempObject->newElementCase->setMouseEnabled(true);
                 this->world->worldInterface->addChild(this->tempObject);
                 this->world->worldInterface->listOfNewEnemies->push(this->tempObject);
                 this->world->worldInterface->newEnemyUpdate();

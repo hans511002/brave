@@ -65,8 +65,8 @@ namespace engine
 			}
 			this->shadow = new UnitShadow_mc();// new UnitShadow_mc();
 			//this->shadow->stop(); 
-			this->shadow->mouseChildren = false;
-			this->shadow->mouseEnabled = false;
+			this->shadow->setMouseChildren(false);
+			this->shadow->setMouseEnabled(false);
 			this->shadow->setPosition(this_pt.x, whoShoot->getPositionY());
 			//this->shadow.x = this_pt.x;
 			//this->shadow.y = whoShoot.y;

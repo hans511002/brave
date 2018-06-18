@@ -340,6 +340,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\engine\xml\XmlConfigParser.h" />
     <ClInclude Include="..\Classes\MainClass.h" />
     <ClInclude Include="..\Classes\screens\FastPause.h" />
+    <ClInclude Include="..\Classes\screens\LevelsMenu.h" />
     <ClInclude Include="..\Classes\screens\MiddleScreen.h" />
     <ClInclude Include="..\Classes\screens\PauseMenu.h" />
     <ClInclude Include="..\Classes\screens\Screen.h" />

@@ -48,7 +48,7 @@
             this.container.x = Main.SCREEN_WIDTH_HALF;
             this.container.y = Main.SCREEN_HEIGHT_HALF;
             var _loc_2:* = false;
-            this.container.cont.mouseChildren = false;
+            this.container.cont.setMouseChildren(false);
             this.container.cont.mouseEnabled = _loc_2;
             this.addChild(this.container);
             return;
@@ -71,7 +71,7 @@
                 {
                     this.openFlag = false;
                     var _loc_2:* = true;
-                    this.container.cont.mouseChildren = true;
+                    this.container.cont.setMouseChildren(true);
                     this.container.cont.mouseEnabled = _loc_2;
                     this.autoguidersButtons();
                 }
@@ -103,7 +103,7 @@
                         this.loginFlag = false;
                         this.transformationFlag = 1;
                         var _loc_2:* = false;
-                        this.container.cont.mouseChildren = false;
+                        this.container.cont.setMouseChildren(false);
                         this.container.cont.mouseEnabled = _loc_2;
                     }
                 }
@@ -132,7 +132,7 @@
                     this.transformationFlag = 3;
                     this.container.cont.cont1.alpha = 1;
                     var _loc_2:* = true;
-                    this.container.cont.mouseChildren = true;
+                    this.container.cont.setMouseChildren(true);
                     this.container.cont.mouseEnabled = _loc_2;
                 }
             }
@@ -163,7 +163,7 @@
                     this.transformationFlag = 6;
                     this.container.cont.cont1.alpha = 1;
                     var _loc_2:* = true;
-                    this.container.cont.mouseChildren = true;
+                    this.container.cont.setMouseChildren(true);
                     this.container.cont.mouseEnabled = _loc_2;
                     if (Main.mainClass.saveBoxClass.gameSave.data.saveNo == 1)
                     {
@@ -368,7 +368,7 @@
                     this.container.cont.cont1.yes.gotoAndStop(2);
                     this.transformationFlag = 4;
                     var _loc_2:* = false;
-                    this.container.cont.mouseChildren = false;
+                    this.container.cont.setMouseChildren(false);
                     this.container.cont.mouseEnabled = _loc_2;
                 }
             }
@@ -432,31 +432,31 @@
             {
                 this.container.cont.cont1.login.stop();
                 this.container.cont.cont1.login.loginCase.stop();
-                this.container.cont.cont1.login.loginCase.buttonMode = true;
+                this.container.cont.cont1.login.loginCase.setMouseEnabled(true);
             }
             if (this.container.cont.cont1.register)
             {
                 this.container.cont.cont1.register.stop();
                 this.container.cont.cont1.register.registerCase.stop();
-                this.container.cont.cont1.register.registerCase.buttonMode = true;
+                this.container.cont.cont1.register.registerCase.setMouseEnabled(true);
             }
             if (this.container.cont.cont1.yes)
             {
                 this.container.cont.cont1.yes.stop();
                 this.container.cont.cont1.yes.yesCase.stop();
-                this.container.cont.cont1.yes.yesCase.buttonMode = true;
+                this.container.cont.cont1.yes.yesCase.setMouseEnabled(true);
             }
             if (this.container.cont.cont1.no)
             {
                 this.container.cont.cont1.no.stop();
                 this.container.cont.cont1.no.noCase.stop();
-                this.container.cont.cont1.no.noCase.buttonMode = true;
+                this.container.cont.cont1.no.noCase.setMouseEnabled(true);
             }
             if (this.container.cont.cont1.ok)
             {
                 this.container.cont.cont1.ok.stop();
                 this.container.cont.cont1.ok.okCase.stop();
-                this.container.cont.cont1.ok.okCase.buttonMode = true;
+                this.container.cont.cont1.ok.okCase.setMouseEnabled(true);
             }
             return;
         }// end function
@@ -530,7 +530,7 @@
             {
                 this.closeFlag = true;
                 var _loc_1:* = false;
-                this.container.cont.mouseChildren = false;
+                this.container.cont.setMouseChildren(false);
                 this.container.cont.mouseEnabled = _loc_1;
             }
             return;

@@ -16,6 +16,7 @@ namespace engine
         
 	WorldInterface_mc::WorldInterface_mc():MovieClip("worldinterface/", "WorldInterface_mc", "WorldInterface_mc")
 	{
+		//this->container->setPosition(0, Main::SCREEN_HEIGHT);
 		//backComponents = this->createMovieClipSub("backComponents");//image
 		barInfo = this->createMovieClipSub("barInfo");
 		barInfoFireTXT = barInfo->createText("fireTXT");
@@ -32,7 +33,7 @@ namespace engine
 		butCastAir = this->createMovieClipSub("butCastAir");
 		butCastAirCastAirCase = butCastAir->createCase("castAirCase");
 
-		butCastAirCont = butCastAir->createMovieClipSub("cont");//3甯ф墠鏈?
+		butCastAirCont = butCastAir->createMovieClipSub("cont");//
 
 		butCastAirContContMask = butCastAirCont->createMask("contMask");
 		//butCastAirContContMask = butCastAirCont->createMovieClipSub("contMask");
@@ -74,6 +75,14 @@ namespace engine
 		fireBacklight = this->createMovieClipSub("fireBacklight");
 		fireNumTXT = this->createText("fireNumTXT");
  		fireSphere = this->createMovieClipSub("fireSphere");
+		 
+		//Vec2 pos = this->fireSphere->convertToWorldSpace(Vec2(0, 0));
+		//Vec2 wp = this->container->convertToNodeSpaceAR(pos);
+		//logInfo("fireSphere", pos, &wp);
+		//this->fireSphere->setPosition(wp);
+		//logInfo("fireSphere", this->fireSphere ->getPosition());
+		//logInfo("this->fireSphere->display", getNamePath(this->fireSphere->display));
+ 
 		fireSphereSphereCase = fireSphere->createCase("sphereCase");
 		getAll = this->createMovieClipSub("getAll");
 		getAllFire = getAll->createMovieClipSub("fire");
@@ -114,8 +123,33 @@ namespace engine
 		testRestartBoard = this->createMovieClipSub("testRestartBoard");
 		testRestartBoardWaveTXT = testRestartBoard->createText("waveTXT");
 		waveTXT = this->createText("waveTXT");
-		
+		MCText * wavesTXT = this->createText("wavesTXT");
+		std::setText(wavesTXT, "波次:");
 		traceBezier=NULL;
+
+		this->pauseOpenFlag = 0;
+		this->pauseCloseFlag = 0;
+		this->bookOpenFlag = 0;
+		this->bookCloseFlag = 0;
+		this->fireSphereOpened = 0;
+		this->iceSphereOpened = 0;
+		this->stoneSphereOpened = 0;
+		this->levinSphereOpened = 0;
+		this->getAllOpened = 0;
+		this->fireBacklightTurnFlag = 0;
+		this->iceBacklightTurnFlag = 0;
+		this->stoneBacklightTurnFlag = 0;
+		this->levinBacklightTurnFlag = 0;
+		this->buyFireMyCost = 0;
+		this->buyIceMyCost = 0;
+		this->buyStoneMyCost = 0;
+		this->buyLevinMyCost = 0;
+		this->buyGetAllMyCost = 0;
+		this->getAll->gotoAndStop(3);
+		this->fireBack->gotoAndStop(3);
+		this->iceBack->gotoAndStop(3);
+		this->stoneBack->gotoAndStop(3);
+		this->levinBack->gotoAndStop(3);
 	};
 	
 	

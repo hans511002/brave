@@ -37,6 +37,7 @@ namespace engine
 {
 	World::World() :frameCounter(0), feature(NULL), bezierClass(NULL), wavesClass(NULL), numRoads(0), level(NULL), road(NULL), levelAdditionally(NULL), levelAdditionally1(NULL), levelAdditionally2(NULL), levelAdditionally3(NULL), worldInterface(NULL), money(0), bonusMoney(0), liveMax(20), live(0), forseIndexFl(false), getSphere(NULL), buildTowerMenu(NULL), towerMenu(NULL), ultraTowerMenu(NULL), scaleRadius(85), towerRadius(NULL), unitInputBezieCounter(0), cast(NULL), menuObject(NULL), pointer1(NULL), pointer2(NULL), pointer3(NULL), selectObject(NULL), firstMusicPlay(false), secondMusicPlay(false), secondMusicCounter(0), winDefCounter(1), viewBoss(0), viewRockCrash(0), boss(NULL), decoration(NULL), nowLevel(0), saveBox(NULL), exchange(NULL), portalViewCounter(30), trainingClass(NULL), hint(NULL), startMusicVolume(0), bonusMoneyFlag(true), eduOpenUpgrArrowFlag(true), killEnemiesCounter(0), createGolemCounter(0), createIcemanCounter(0), createAirCounter(0), earlyWaveCounter(0), sellFireCounter(0), sellIceCounter(0), sellStoneCounter(0), sellLevinCounter(0), sellGetAllCounter(0), icemanSlowdownEnemiesCounter(0), castFireCounter(0), castIceCounter(0), castStoneCounter(0), castLevinCounter(0), castGetAllCounter(0), golemVoiceTurn(1), icemanVoiceTurn(1), airVoiceTurn(1), mouseX(0), mouseY(0)
 	{
+		this->setName("World");
 		menuObject = NULL;
 		pointer1 = NULL;
 		pointer2 = NULL;
@@ -74,8 +75,7 @@ namespace engine
 		this->wavesClass = new Waves();
 		this->feature = new Feature();
 		BaseNode::init();
-		this->enableFrameHandler(false);
-		this->manageListeners("on");
+
 		return true;
 	};
 	void World::onEnter()
@@ -88,10 +88,11 @@ namespace engine
 		{
 			if (this->nowLevel < 12 || this->nowLevel == 13)
 			{
-				this->mouseChildren = false;
-				this->mouseEnabled = false;
+				this->setMouseChildren(false);
+				this->setMouseEnabled(false);
 			}
 		}
+		//this->schedule(schedule_selector(World::enterFrameHandler), 0.033f);
 		//Main::mainClass->tracker.trackPageview("openLevel_" + this->nowLevel);
 	}// end function
 
@@ -105,7 +106,6 @@ namespace engine
 	//void  World::enterFrameHandler()  // event : Event
 	void  World::enterFrameHandler(float dt)
 	{
-		//dragonBones::CCFactory::getFactory()->getClock()->timeScale=2;
 		if (this->frameCounter < 30)
 		{
 			this->frameCounter++;
@@ -127,37 +127,37 @@ namespace engine
 					{
 						//this->menuObject = new Training_2();
 						//this->addChild(this->menuObject); 
-						//this->mouseChildren = true;
-						//this->mouseEnabled = true;
+						//this->setMouseChildren(true);
+						//this->setMouseEnabled(true);
 					}
 					else if (this->nowLevel >= 2 && this->nowLevel <= 11)
 					{
 						//this->menuObject = new Training_92(this->nowLevel - 1);
 						//this->addChild(this->menuObject); 
-						//this->mouseChildren = true;
-						//this->mouseEnabled = true;
+						//this->setMouseChildren(true);
+						//this->setMouseEnabled(true);
 					}
 					else if (this->nowLevel == 13)
 					{
 						//this->menuObject = new Training_92(11);
 						//this->addChild(this->menuObject); 
-						//this->mouseChildren = true;
-						//this->mouseEnabled = true;
+						//this->setMouseChildren(true);
+						//this->setMouseEnabled(true);
 					}
 				}
 				else if (this->nowLevel == 1)
 				{
 					//this->menuObject = new Training_92(13);
 					//this->addChild(this->menuObject); 
-					//this->mouseChildren = true;
-					//this->mouseEnabled = true;
+					//this->setMouseChildren(true);
+					//this->setMouseEnabled(true);
 				}
 				else if (this->nowLevel == 2)
 				{
 					//this->menuObject = new Training_5(3);
 					//this->addChild(this->menuObject); 
-					//this->mouseChildren = true;
-					//this->mouseEnabled = true;
+					//this->setMouseChildren(true);
+					//this->setMouseEnabled(true);
 				}
 			}
 		}
@@ -186,7 +186,7 @@ namespace engine
 			}
 		}
 		this->wavesClass->wavesHandler();
-		int i = 0;
+		i = 0;
 		while (i < this->listOfFlags.size())
 		{
 			if (this->listOfFlags[this->i]->currentFrame < this->listOfFlags[this->i]->totalFrames)
@@ -211,13 +211,13 @@ namespace engine
 		while (this->i >= 0)
 		{
 			this->listOfClasses[this->i]->update();
-			i++;
+			i--;
 		}
 		this->i = this->listOfTowers.size() - 1;
 		while (this->i >= 0)
 		{
 			this->listOfTowers[this->i]->update();
-			i++;
+			i--;
 		}
 
 		//怪播放
@@ -225,13 +225,14 @@ namespace engine
 		while (this->i >= 0)
 		{
 			this->listOfUnits[this->i]->update();
-			i++;
+			i--;
 		}
+	
 		this->i = this->listOfBullets.size() - 1;
 		while (this->i >= 0)
 		{
 			this->listOfBullets[this->i]->update();
-			i++;
+			i--;
 		}
 		//this->i = this->listOfSoundChannels.size() - 1;
 		//while (this->i >= 0)
@@ -394,6 +395,9 @@ namespace engine
 		std::MouseEvent * event = &me;
 		while (event->hasNext())
 		{
+			logInfo("mouseDownHandler.target", getNamePath(event->target));
+			logInfo("mouseDownHandler.target.pos", event->getLocation(),&event->target->getPosition()
+				, &event->target->getParent()->convertToWorldSpace(event->target->getPosition()));
 			if (this->getSphere)
 			{
 				this->getSphere->mouseDownHandler(event);
@@ -427,7 +431,7 @@ namespace engine
 				this->buildTowerMenu->mouseDownHandler(event);
 			if (this->decoration)
 				this->decoration->mouseDownHandler(event);
-			if (!this->cast && event->target->getName() == "towerCase")// && event->target->buttonMode
+			if (!this->cast && event->target->getName() == "towerCase")// && event->target->mouseEnabled
 			{
 				Node * parent = event->target->getParent()->getParent();
 				Tower *tower = ISTYPE(Tower, parent);
@@ -451,7 +455,7 @@ namespace engine
 			{
 				if (event->target->getName() == "unitCase")
 				{
-					Node * parent = event->target->getParent()->getParent();
+					Node * parent = event->target->getParent()->getParent()->getParent()->getParent();
 					Unit * unit = ISTYPE(Unit, parent);
 					this->worldInterface->barInfoManage(unit);
 				}
@@ -512,6 +516,7 @@ namespace engine
 		std::MouseEvent * event = &me;
 		while (event->hasNext())
 		{
+			logInfo("mouseUpHandler.target", getNamePath(event->target));
 			if (this->getSphere)
 			{
 				this->getSphere->mouseUpHandler(event);
@@ -552,8 +557,10 @@ namespace engine
 		if (mouseButton == 1)return;
 		std::MouseEvent me = std::buildMouseEvent(e);
 		std::MouseEvent * event = &me;
+		//return;
 		while (event->hasNext())
 		{
+			//logInfo("mouseMoveHandler.target", getNamePath(event->target));
 			if (this->getSphere)
 			{
 				this->getSphere->mouseMoveHandler(event);
@@ -603,7 +610,7 @@ namespace engine
 				this->buildTowerMenu->mouseMoveHandler(event); 
             if(this->decoration)
                 this->decoration->mouseMoveHandler(event);
-			if (!this->cast && event->target->getName() == "towerCase")// && event->target->buttonMode
+			if (!this->cast && event->target->getName() == "towerCase")// && event->target->mouseEnabled
 			{
 				bool tempObject = false;
 				if (this->towerMenu || this->ultraTowerMenu)
@@ -685,9 +692,9 @@ namespace engine
 			}
 			if (!this->getSphere && !this->cast)
 			{
-				if (event->target->getName() == "placeForBuildCase")//&& event->target->buttonMode
+				if (event->target->getName() == "placeForBuildCase")//&& event->target->mouseEnabled
 				{
-					Node * parent = event->target->getParent()->getParent();
+					Node * parent = event->target->getParent()->getParent()->getParent();
 					BuildTowerPlace * place = ISTYPE(BuildTowerPlace, parent);
 					if (place->currentFrame == 1)// (event->target->getParent()->currentFrame == 1)
 					{
@@ -820,6 +827,7 @@ namespace engine
 		{
 			tempObject = new Tower8();
 		}
+		tempObject->init();
 		tempObject->myPlace = param2;
 		tempObject->autoBuild = param3;
 		this->addChild(tempObject);
@@ -1309,27 +1317,14 @@ namespace engine
 		if (param1 == "on")
 		{
 			this->enableMouseHandler();
-			//this->addEventListener(Event.ENTER_FRAME, this->enterFrameHandler);
-			//this->addEventListener(MouseEvent.MOUSE_MOVE, this->mouseMoveHandler);
-			//this->addEventListener(MouseEvent.MOUSE_DOWN, this->mouseDownHandler);
-			//this->addEventListener(MouseEvent.MOUSE_UP, this->mouseUpHandler);
-			//this->addEventListener(MouseEvent.RIGHT_MOUSE_DOWN, this->rightMouseDownHandler);
-			//this->addEventListener(MouseEvent.RIGHT_MOUSE_UP, this->rightMouseUpHandler);
-			//if (this->saveBox.gameSave.data.autoPause)
-			//{
-			//	this->addEventListener(Event.DEACTIVATE, this->deactivateHandler);
-			//}
+			this->enableFrameHandler(true);
+			 
 		}
 		else if (param1 == "off")
 		{
 			this->disableMouseHandler();
-			//this->removeEventListener(Event.ENTER_FRAME, this->enterFrameHandler);
-			//this->removeEventListener(MouseEvent.MOUSE_MOVE, this->mouseMoveHandler);
-			//this->removeEventListener(MouseEvent.MOUSE_DOWN, this->mouseDownHandler);
-			//this->removeEventListener(MouseEvent.MOUSE_UP, this->mouseUpHandler);
-			//this->removeEventListener(MouseEvent.RIGHT_MOUSE_DOWN, this->rightMouseDownHandler);
-			//this->removeEventListener(MouseEvent.RIGHT_MOUSE_UP, this->rightMouseUpHandler);
-			//this->removeEventListener(Event.DEACTIVATE, this->deactivateHandler);
+			this->disableFrameHandler();
+			 
 		}
 		return;
 	}// end function

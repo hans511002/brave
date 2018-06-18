@@ -2,6 +2,7 @@
 #define WORLD_H
 
 #include "BaseHeaders.h" 
+#include "screens/Screen.h" 
 #include "bezier/Bezier.h"
 #include "engine/casts/Map.h"
 
@@ -10,7 +11,7 @@
 namespace engine
 {
 
-    class World : public BaseNode //, public  BaseLayer
+	class World : public ListenInterface //, public  BaseLayer
     {
          
     public:
@@ -157,7 +158,7 @@ namespace engine
 
         void manageMouse(string param1);
 
-        void manageListeners(string param1);
+		virtual void manageListeners(string param1);
 
         void deactivateHandler(cocos2d::EventMouse* event);//event:Event
 

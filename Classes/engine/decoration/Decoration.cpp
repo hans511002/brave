@@ -24,7 +24,7 @@ namespace engine{
 			//container.stop();
 			//this.container1.stop();
 			//this.decorationCase.stop();
-			//this.decorationCase.buttonMode = true;
+			//this.decorationCase.setMouseEnabled(true);
 			//this.container1.visible = false;
 		}// end function
 	}

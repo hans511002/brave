@@ -32,8 +32,8 @@ namespace engine
 			this->blockRadiusGr->setScale(scale);
             //this->blockRadiusGr.width = this->blockTowerRadius * 2;
             //this->blockRadiusGr.scaleY = this->blockRadiusGr.scaleX;
-            this->blockRadiusGr->mouseChildren = false;
-            this->blockRadiusGr->mouseEnabled = false;
+            this->blockRadiusGr->setMouseChildren(false);
+            this->blockRadiusGr->setMouseEnabled(false);
             this->blockRadiusGr->setVisible(false);
             world->addChild(this->blockRadiusGr);
             //world->listOfIndexes0.push(this->blockRadiusGr);
@@ -66,8 +66,8 @@ namespace engine
                                             world->exchange->kill();
                                         }
                                     } 
-                                    world->listOfTowers[i]->mouseChildren = false;
-                                    world->listOfTowers[i]->mouseEnabled = false;
+                                    world->listOfTowers[i]->setMouseChildren(false);
+                                    world->listOfTowers[i]->setMouseEnabled(false);
                                     if (world->towerMenu)
                                     {
                                         if (world->towerMenu->myTower == world->listOfTowers[i])

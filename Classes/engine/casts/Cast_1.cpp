@@ -66,12 +66,12 @@ namespace engine{
             {
                 if (event->target->getName() != "castGolemCase" && scanWay())
                 { 
-                    this->mouseChildren = true;
-                    this->mouseEnabled = true;
+                    this->setMouseChildren(true);
+                    this->setMouseEnabled(true);
                     //event = new MouseEvent(MouseEvent.MOUSE_DOWN);
                     world->worldInterface->castGolemCounter++;
                     world->worldInterface->container->butCastGolem->gotoAndStop(4);
-                    world->worldInterface->container->butCastGolemCastGolemCase->buttonMode = false;
+                    world->worldInterface->container->butCastGolemCastGolemCase->setMouseEnabled(false);
                     world->worldInterface->container->butCastGolemContContMask->setScaleY(0);
                     this->addGolem();
                     kill();

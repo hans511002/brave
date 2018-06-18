@@ -33,8 +33,8 @@ namespace engine
 				Tower1_mc * container = ISTYPE(Tower1_mc, this->myTower->container);
 				container->selectTower->setVisible(false);
 			}
-			this->mouseChildren = false;
-			this->mouseEnabled = false;
+			this->setMouseChildren(false);
+			this->setMouseEnabled(false);
 
 			this->setPosition(this->myTower->this_pt);
 			//this->x = this->myTower->this_pt.x;
@@ -48,8 +48,8 @@ namespace engine
 			//this->towerRadius->y = this->y;
 			this->towerRadius->setPosition(this->getPosition());
 
-			//this->towerRadius->mouseChildren = false;
-			//this->towerRadius->mouseEnabled = false;
+			//this->towerRadius->setMouseChildren(false);
+			//this->towerRadius->setMouseEnabled(false);
 			this->world->addChild(this->towerRadius);
 			this->towerRadius1 = new TowerRadius_mc();
 			//this->towerRadius1->stop();
@@ -59,8 +59,8 @@ namespace engine
 			this->towerRadius1->setPosition(this->getPosition());
 			//this->towerRadius1->x = this->x;
 			//this->towerRadius1->y = this->y; 
-			//this->towerRadius1->mouseChildren = false;
-			//this->towerRadius1->mouseEnabled = false;
+			//this->towerRadius1->setMouseChildren(false);
+			//this->towerRadius1->setMouseEnabled(false);
 			this->towerRadius1->setVisible(false);
 			this->world->addChild(this->towerRadius1);
 			this->container = new TowerMenu_mc();
@@ -85,14 +85,14 @@ namespace engine
 			//this->world->listOfClasses.push(this);
 			if (this->myTower->spheresStack.size() > 0)
 			{
-				this->container->btnGetAllBtnGetAllCase->buttonMode = true;
+				this->container->btnGetAllBtnGetAllCase->setMouseEnabled(true);
 			}
 			if (this->myTower->towerType == 4)
 			{
 				this->container->gotoAndStop(this->container->totalFrames);
 			}
-			this->myTower->mouseChildren = false;
-			this->myTower->mouseEnabled = false;
+			this->myTower->setMouseChildren(false);
+			this->myTower->setMouseEnabled(false);
 			this->world->worldInterface->barInfoManage(this);
 			if (!this->hint)
 			{
@@ -102,8 +102,8 @@ namespace engine
 				this->hint->contCont1->stop();
 				this->hint->contCont1Sphere1->stop();
 				this->hint->contCont1Sphere2->stop();
-				this->hint->mouseChildren = false;
-				this->hint->mouseEnabled = false;
+				this->hint->setMouseChildren(false);
+				this->hint->setMouseEnabled(false);
 				this->hint->setVisible(false);
 				this->world->addChild(this->hint);
 			}
@@ -139,16 +139,16 @@ namespace engine
 					this->container1->sphereSlot3->setVisible(false);
 					this->container1->sphereSlot4->setVisible(false);
 
-					this->container1->mouseChildren = false;
-					this->container1->mouseEnabled = false;
+					this->container1->setMouseChildren(false);
+					this->container1->setMouseEnabled(false);
 					this->addChild(this->container1);
 					this->starsAnima = new AnimUpgrade_mc();
 					this->starsAnima->stop();
 					this->starsAnima->setPosition(this->container->btnUpgradeMenu->getPosition());
 					//this->starsAnima->x = this->container->btnUpgradeMenu->x;
 					//this->starsAnima->y = this->container->btnUpgradeMenu->y;
-					this->starsAnima->mouseChildren = false;
-					this->starsAnima->mouseEnabled = false;
+					this->starsAnima->setMouseChildren(false);
+					this->starsAnima->setMouseEnabled(false);
 					this->addChild(this->starsAnima);
 					//Sounds.instance.playSound("snd_menu_upgrIconMouseDown");
 				}
@@ -181,8 +181,8 @@ namespace engine
 						this->container->setScale(1);
 						//this->container->scaleY = 1;
 						//this->container->scaleX = 1;
-						this->mouseChildren = true;
-						this->mouseEnabled = true;
+						this->setMouseChildren(true);
+						this->setMouseEnabled(true);
 						this->autoguidersButtons();
 						if (!this->training_12 && this->world->nowLevel > 1 && this->world->nowLevel < 5)
 						{
@@ -289,8 +289,8 @@ namespace engine
 						else
 						{
 							this->openUltraSection = false;
-							this->mouseChildren = true;
-							this->mouseEnabled = true;
+							this->setMouseChildren(true);
+							this->setMouseEnabled(true);
 							this->upgradeManage();
 							this->autoguidersButtons();
 						}
@@ -637,14 +637,14 @@ namespace engine
 						{
 							if (this->mouseEnabled)
 							{
-								this->mouseChildren = false;
-								this->mouseEnabled = false;
+								this->setMouseChildren(false);
+								this->setMouseEnabled(false);
 							}
 						}
 						else if (!this->mouseEnabled)
 						{
-							this->mouseChildren = true;
-							this->mouseEnabled = true;
+							this->setMouseChildren(true);
+							this->setMouseEnabled(true);
 						}
 					}
 					else if (this->fastBuyUltraFlag == "btnTowerUpgr1")
@@ -827,7 +827,7 @@ namespace engine
 					}
 					if (btnTowerUpgr->currentFrame == 1)
 					{
-						if (scase->buttonMode)
+						if (scase->mouseEnabled)
 						{
 							MCText * costTXT = btnTowerUpgr->getMem<MCText>("costTXT");// this->container->getText(scase);
 							string tempObject = std::getText(costTXT);
@@ -1023,7 +1023,7 @@ namespace engine
 					{
 						this->towerRadius1->setVisible(false);
 					}
-					if (event->target->getName() != "fastBuyUltraCase" || !this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->buttonMode)
+					if (event->target->getName() != "fastBuyUltraCase" || !this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->mouseEnabled)
 					{
 						if (this->world->worldInterface->container->fireBacklight->isVisible() || this->world->worldInterface->container->iceBacklight->isVisible()
 							|| this->world->worldInterface->container->stoneBacklight->isVisible() || this->world->worldInterface->container->levinBacklight->isVisible())
@@ -1045,7 +1045,7 @@ namespace engine
 				}
 				if (!this->openFastBuyUltraFlag && !this->closeFastBuyUltraFlag)
 				{
-					if (event->target->getName() == "fastBuyUltraCase" && this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->buttonMode)
+					if (event->target->getName() == "fastBuyUltraCase" && this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->mouseEnabled)
 					{
 						if (this->container->fastBuyUltraContBtnFastBuyUltra->currentFrame == 1)
 						{
@@ -1329,7 +1329,7 @@ namespace engine
 			{
 				MCCase * btnGetAllCase = ISTYPE(MCCase, event->target);
 				MovieClipSub *	btnGetAll = btnGetAllCase->getParentMC<MovieClipSub>();// this->container->getSphereSlot(btnGetAllCase);
-				if (btnGetAllCase->buttonMode)
+				if (btnGetAllCase->mouseEnabled)
 				{
 					this->i = 0;
 					while (this->i < this->world->listOfMoveSpheres.size())
@@ -1379,7 +1379,7 @@ namespace engine
 			{
 				if (!this->openFastBuyUltraFlag && !this->closeFastBuyUltraFlag)
 				{
-					if (this->container->fastBuyUltraContBtnFastBuyUltra->currentFrame == 2 && this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->buttonMode)
+					if (this->container->fastBuyUltraContBtnFastBuyUltra->currentFrame == 2 && this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->mouseEnabled)
 					{
 						this->container->fastBuyUltraContBtnFastBuyUltra->gotoAndStop(1);
 						std::setText(this->container->fastBuyUltraContBtnFastBuyUltraCostTXT, this->fastBuyPrice);
@@ -1387,8 +1387,8 @@ namespace engine
 						this->fastBuyBlockCost = true;
 						this->fastBuyUltraManage();
 						this->ultraUpgradeTower(this->fastBuyUltraFlag, true);
-						this->myTower->mouseChildren = false;
-						this->myTower->mouseEnabled = false;
+						this->myTower->setMouseChildren(false);
+						this->myTower->setMouseEnabled(false);
 						this->readyFastBuyUltraFlag = true;
 						if (this->fastBuyUltraFlag == "btnTowerUpgr1")
 						{
@@ -1813,8 +1813,8 @@ namespace engine
 				if (this->container->currentFrame == 1)
 				{
 					this->openUltraSection = true;
-					this->mouseChildren = false;
-					this->mouseEnabled = false;
+					this->setMouseChildren(false);
+					this->setMouseEnabled(false);
 				}
 				else
 				{
@@ -1833,12 +1833,12 @@ namespace engine
 								{
 									this->container->btnTowerUpgr1->stop();
 								}
-								this->container->btnTowerUpgr1BtnTowerUpgrCase->buttonMode = true;
+								this->container->btnTowerUpgr1BtnTowerUpgrCase->setMouseEnabled(true);
 							}
 							else
 							{
 								this->container->btnTowerUpgr1->gotoAndStop(4);
-								this->container->btnTowerUpgr1BtnTowerUpgrCase->buttonMode = false;
+								this->container->btnTowerUpgr1BtnTowerUpgrCase->setMouseEnabled(false);
 							}
 							std::setText(this->container->btnTowerUpgr1CostTXT,Main::mainClass->readXMLClass.costUltraFireStone);
 						}
@@ -1861,12 +1861,12 @@ namespace engine
 								{
 									this->container->btnTowerUpgr2->stop();
 								}
-								this->container->btnTowerUpgr2BtnTowerUpgrCase->buttonMode = true;
+								this->container->btnTowerUpgr2BtnTowerUpgrCase->setMouseEnabled(true);
 							}
 							else
 							{
 								this->container->btnTowerUpgr2->gotoAndStop(4);
-								this->container->btnTowerUpgr2BtnTowerUpgrCase->buttonMode = false;
+								this->container->btnTowerUpgr2BtnTowerUpgrCase->setMouseEnabled(false);
 							}
 							std::setText(this->container->btnTowerUpgr2CostTXT, Main::mainClass->readXMLClass.costUltraIceLevin);
 						}
@@ -1889,12 +1889,12 @@ namespace engine
 								{
 									this->container->btnTowerUpgr3->stop();
 								}
-								this->container->btnTowerUpgr3BtnTowerUpgrCase->buttonMode = true;
+								this->container->btnTowerUpgr3BtnTowerUpgrCase->setMouseEnabled(true);
 							}
 							else
 							{
 								this->container->btnTowerUpgr3->gotoAndStop(4);
-								this->container->btnTowerUpgr3BtnTowerUpgrCase->buttonMode = false;
+								this->container->btnTowerUpgr3BtnTowerUpgrCase->setMouseEnabled(false);
 							}
 							std::setText(this->container->btnTowerUpgr3CostTXT, Main::mainClass->readXMLClass.costUltraIceStone);
 						}
@@ -1917,12 +1917,12 @@ namespace engine
 								{
 									this->container->btnTowerUpgr4->stop();
 								}
-								this->container->btnTowerUpgr4BtnTowerUpgrCase->buttonMode = true;
+								this->container->btnTowerUpgr4BtnTowerUpgrCase->setMouseEnabled(true);
 							}
 							else
 							{
 								this->container->btnTowerUpgr4->gotoAndStop(4);
-								this->container->btnTowerUpgr4BtnTowerUpgrCase->buttonMode = false;
+								this->container->btnTowerUpgr4BtnTowerUpgrCase->setMouseEnabled(false);
 							}
 							std::setText(this->container->btnTowerUpgr4CostTXT, Main::mainClass->readXMLClass.costUltraFireLevin);
 						}
@@ -1951,7 +1951,7 @@ namespace engine
 						{
 							this->container->btnUpgradeMenu->gotoAndStop(1);
 						}
-						this->container->btnUpgradeMenuBtnUpgradeMenuCase->buttonMode = true;
+						this->container->btnUpgradeMenuBtnUpgradeMenuCase->setMouseEnabled(true);
 					}
 					else
 					{
@@ -1989,7 +1989,7 @@ namespace engine
 						{
 							this->container->btnUpgradeMenu->gotoAndStop(1);
 						}
-						this->container->btnUpgradeMenuBtnUpgradeMenuCase->buttonMode = true;
+						this->container->btnUpgradeMenuBtnUpgradeMenuCase->setMouseEnabled(true);
 					}
 					else
 					{
@@ -2027,7 +2027,7 @@ namespace engine
 						{
 							this->container->btnUpgradeMenu->gotoAndStop(1);
 						}
-						this->container->btnUpgradeMenuBtnUpgradeMenuCase->buttonMode = true;
+						this->container->btnUpgradeMenuBtnUpgradeMenuCase->setMouseEnabled(true);
 					}
 					else
 					{
@@ -2068,11 +2068,11 @@ namespace engine
 
 		void TowerMenu::spheresMonitor()
 		{
-			this->container->sphereSlot1SphereSlotCase->buttonMode = false;
-			this->container->sphereSlot2SphereSlotCase->buttonMode = false;
-			this->container->sphereSlot3SphereSlotCase->buttonMode = false;
-			this->container->sphereSlot4SphereSlotCase->buttonMode = false;
-			this->container->btnGetAllBtnGetAllCase->buttonMode = false;
+			this->container->sphereSlot1SphereSlotCase->setMouseEnabled(false);
+			this->container->sphereSlot2SphereSlotCase->setMouseEnabled(false);
+			this->container->sphereSlot3SphereSlotCase->setMouseEnabled(false);
+			this->container->sphereSlot4SphereSlotCase->setMouseEnabled(false);
+			this->container->btnGetAllBtnGetAllCase->setMouseEnabled(false);
 			this->container->sphereSlot1SphereAnima->setVisible(false);
 			this->container->sphereSlot2SphereAnima->setVisible(false);
 			this->container->sphereSlot3SphereAnima->setVisible(false);
@@ -2110,12 +2110,12 @@ namespace engine
 			}
 			if (this->myTower->spheresStack.size() >= 1)
 			{
-				this->container->btnGetAllBtnGetAllCase->buttonMode = true;
+				this->container->btnGetAllBtnGetAllCase->setMouseEnabled(true);
 				if (this->container->sphereSlot1->currentFrame == 5)
 				{
 					this->container->sphereSlot1->gotoAndStop(1);
 				}
-				this->container->sphereSlot1SphereSlotCase->buttonMode = true;
+				this->container->sphereSlot1SphereSlotCase->setMouseEnabled(true);
 				this->container->sphereSlot1SphereAnima->setVisible(true);
 				if (this->myTower->spheresStack[0] == "fire")
 				{
@@ -2156,7 +2156,7 @@ namespace engine
 				{
 					this->container->sphereSlot2->gotoAndStop(1);
 				}
-				this->container->sphereSlot2SphereSlotCase->buttonMode = true;
+				this->container->sphereSlot2SphereSlotCase->setMouseEnabled(true);
 				this->container->sphereSlot2SphereAnima->setVisible(true);
 				if (this->myTower->spheresStack[1] == "fire")
 				{
@@ -2197,7 +2197,7 @@ namespace engine
 				{
 					//this->container->sphereSlot3->gotoAndStop(1);
 				}
-				this->container->sphereSlot3SphereSlotCase->buttonMode = true;
+				this->container->sphereSlot3SphereSlotCase->setMouseEnabled(true);
 				this->container->sphereSlot3SphereAnima->setVisible(true);
 				if (this->myTower->spheresStack[2] == "fire")
 				{
@@ -2238,7 +2238,7 @@ namespace engine
 				{
 					this->container->sphereSlot4->gotoAndStop(1);
 				}
-				this->container->sphereSlot4SphereSlotCase->buttonMode = true;
+				this->container->sphereSlot4SphereSlotCase->setMouseEnabled(true);
 				this->container->sphereSlot4SphereAnima->setVisible(true);
 				if (this->myTower->spheresStack[3] == "fire")
 				{
@@ -3569,13 +3569,13 @@ namespace engine
 					this->fastBuyPrice = int(this->container->fastBuyUltraContBtnFastBuyUltraCostTXT);
 					if (this->world->money >= int(this->container->fastBuyUltraContBtnFastBuyUltraCostTXT))
 					{
-						this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->buttonMode = true;
+						this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->setMouseEnabled(true);
 					}
 					else
 					{
 						this->container->fastBuyUltraContBtnFastBuyUltra->gotoAndStop(4);
 						std::setText(this->container->fastBuyUltraContBtnFastBuyUltraCostTXT , this->fastBuyPrice);
-						this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->buttonMode = false;
+						this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->setMouseEnabled(false);
 					}
 				}
 			}
@@ -3668,8 +3668,8 @@ namespace engine
 				{
 					this->exampleUltraManage("remove");
 				}
-				this->mouseChildren = false;
-				this->mouseEnabled = false;
+				this->setMouseChildren(false);
+				this->setMouseEnabled(false);
 				this->closeFlag = true;
 				this->towerRadius->setVisible(false);
 				if (this->myTower->towerType < 5)
@@ -3679,8 +3679,8 @@ namespace engine
 				this->world->towerMenu = NULL;
 				if (!this->myTower->blockTowerFlag)
 				{
-					this->myTower->mouseChildren = true;
-					this->myTower->mouseEnabled = true;
+					this->myTower->setMouseChildren(true);
+					this->myTower->setMouseEnabled(true);
 				}
 				this->world->worldInterface->archiveSphereBacklightManage("");
 				if (this->hint)

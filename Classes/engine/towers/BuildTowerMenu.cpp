@@ -14,40 +14,45 @@ namespace engine{
 			contCostTXT = cont->createText("costTXT");
 		}
    
-		BuildTowerMenu::BuildTowerMenu(BuildTowerPlace *  param1)
+		BuildTowerMenu::BuildTowerMenu(BuildTowerPlace *  param1) :world(NULL), dead(false), closeFlag(false), tempObject(NULL), myPlace(NULL)
         {
             //this->addEventListener(Event.ADDED_TO_STAGE, this->init);
             this->myPlace = param1;
+			init();
             return;
         }// end function
 
-        bool BuildTowerMenu::init()
-        {
-            //this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
-            this->world = Main::mainClass->worldClass;
-            std::setAnchorPoint(this, this->myPlace->getPosition());
-            this->setPosition(this->myPlace->getPositionX() + this->myPlace->buildPoint->getPositionX()
-                ,this->myPlace->getPositionY() + this->myPlace->buildPoint->getPositionY());
-            //this->x = this->myPlace->x + this->myPlace->buildPoint->x;
-            //this->y = this->myPlace->y + this->myPlace->buildPoint->y;
-            this->myPlace->gotoAndStop(2);
-            this->container = new BuildTowerMenu_mc();
-            this->container->stop();
-            this->container->cont->stop();
-            std::setText(this->container->contCostTXT, Main::mainClass->readXMLClass.costTowerXML);
-            //this->container->cont->costTXT.text = Main::mainClass->readXMLClass.costTowerXML;
-            this->container->contBuildTowerMenuCase->buttonMode = true;
-            this->addChild(this->container);
-            //this->world->listOfClasses.push(this);
+		bool BuildTowerMenu::init()
+		{
+			BaseNode::init();
+			//this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
+			this->world = Main::mainClass->worldClass;
+			std::setAnchorPoint(this);
+			Vec2 pos = this->myPlace->getPosition();
+			pos = this->myPlace->convertToWorldSpace(Vec2(0,0));
+			pos = this->world->convertToNodeSpaceAR(pos);
+			Vec2 bpos = this->myPlace->buildPoint->getPosition();
+			this->setPosition(pos + bpos);
+			//this->x = this->myPlace->x + this->myPlace->buildPoint->x;
+			//this->y = this->myPlace->y + this->myPlace->buildPoint->y;
+			this->myPlace->gotoAndStop(2);
+			this->container = new BuildTowerMenu_mc();
+			this->container->stop();
+			this->container->cont->stop();
+			std::setText(this->container->contCostTXT, Main::mainClass->readXMLClass.costTowerXML);
+			//this->container->cont->costTXT.text = Main::mainClass->readXMLClass.costTowerXML;
+			this->container->contBuildTowerMenuCase->setMouseEnabled(true);
+			this->addChild(this->container);
+			//this->world->listOfClasses.push(this);
 
-            EventListenerMouse *mouseListener = cocos2d::EventListenerMouse::create();
-            mouseListener->onMouseDown = CC_CALLBACK_1(BuildTowerMenu::mouseDownHandler, this);
-            mouseListener->onMouseUp = CC_CALLBACK_1(BuildTowerMenu::mouseUpHandler, this);
-            mouseListener->onMouseMove = CC_CALLBACK_1(BuildTowerMenu::mouseMoveHandler, this);
-            this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
-            this->monitor();
-            return true;
-        }// end function
+			//EventListenerMouse *mouseListener = cocos2d::EventListenerMouse::create();
+			//mouseListener->onMouseDown = CC_CALLBACK_1(BuildTowerMenu::mouseDownHandler, this);
+			//mouseListener->onMouseUp = CC_CALLBACK_1(BuildTowerMenu::mouseUpHandler, this);
+			//mouseListener->onMouseMove = CC_CALLBACK_1(BuildTowerMenu::mouseMoveHandler, this);
+			//this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
+			this->monitor();
+			return true;
+		}
 
         void BuildTowerMenu::update(float dt)
         {
@@ -78,7 +83,7 @@ namespace engine{
                 {
                     this->myPlace->gotoAndStop(1);
                     //this->myPlace->buildPoint->stop();
-                    this->myPlace->placeForBuildCase->buttonMode = true;
+                    this->myPlace->placeForBuildCase->setMouseEnabled(true);
                     this->kill();
                 }
             }
@@ -92,45 +97,38 @@ namespace engine{
                 {
                     this->myPlace->gotoAndStop(1);
                     //this->myPlace->buildPoint->stop();
-                    this->myPlace->placeForBuildCase->buttonMode = true;
+                    this->myPlace->placeForBuildCase->setMouseEnabled(true);
                     this->kill();
                 }
             }
             return;
         }// end function
-		void BuildTowerMenu::mouseMoveHandler(cocos2d::EventMouse * event)
+		void BuildTowerMenu::mouseMoveHandler(cocos2d::EventMouse * e)
 		{
+			std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+			if (!event)
+				return;
 			if (!this->closeFlag)
 			{
-				cocos2d::EventMouse*e = (cocos2d::EventMouse*)event;
-				Node * node = event->getCurrentTarget();
-				Event::Type tp = event->getType();
-				string target = node->getName();
-				CCLOG("BuildTowerMenu::mouseMoveHandler %s", target.c_str());
-
-				cocos2d::Point pt = e->getLocationInView();
-				CCLOG("mouse InView point %f,%f", pt.x, pt.y);
 				//if (target != "placeForBuildCase" &&  target != "buildTowerMenuCase" &&  target != this->myPlace->getName()
 				//	&& target != this->getName() && !std::hitTest(this->myPlace, pt))
+				Vec2 pt=e->getLocationInView();
 				if (!std::hitTest(this->container->contBuildTowerMenuCase, pt) && !std::hitTest(this->myPlace->placeForBuildCase, pt))
 					this->closeMenu();
-				//if (param1.target.name != "placeForBuildCase" && param1.target.name != "buildTowerMenuCase" && param1.target != this->myPlace && param1.target.parent != this)
+				//if (event->target->getNname() != "placeForBuildCase" && event->target->getNname() != "buildTowerMenuCase" && param1.target != this->myPlace && param1.target.parent != this)
 				//{
 				// this->closeMenu();
 				//}
 			}
 			return;
 		}
-        void BuildTowerMenu::mouseDownHandler(cocos2d::EventMouse * event)
+        void BuildTowerMenu::mouseDownHandler(cocos2d::EventMouse * e)
         {
+			std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+			if (!event)
+				return;
             if (!this->closeFlag)
             {
-                cocos2d::EventMouse*e = (cocos2d::EventMouse*)event;
-                Node * node = event->getCurrentTarget();
-                Event::Type tp = event->getType();
-                string target = node->getName();
-                CCLOG("BuildTowerMenu::mouseMoveHandler %s", target.c_str());
-
                 cocos2d::Point pt = e->getLocationInView();
                 CCLOG("mouse InView point %f,%f", pt.x, pt.y);
 				//if (event.target.name == "placeForBuildCase" || event.target.name == "buildTowerMenuCase")
@@ -161,8 +159,8 @@ namespace engine{
                     this->container->gotoAndStop(this->container->currentFrame - 7);
                     this->container->cont->stop();
                 }
-                this->container->contBuildTowerMenuCase->buttonMode = true;
-                this->myPlace->placeForBuildCase->buttonMode = true;
+                this->container->contBuildTowerMenuCase->setMouseEnabled(true);
+                this->myPlace->placeForBuildCase->setMouseEnabled(true);
             }
             else
             {
@@ -171,8 +169,8 @@ namespace engine{
                     this->container->gotoAndStop(this->container->currentFrame + 7);
                     this->container->cont->stop();
                 }
-                this->container->contBuildTowerMenuCase->buttonMode = false;
-                this->myPlace->placeForBuildCase->buttonMode = false;
+                this->container->contBuildTowerMenuCase->setMouseEnabled(false);
+                this->myPlace->placeForBuildCase->setMouseEnabled(false);
             }
             std::setText(this->container->contCostTXT, Main::mainClass->readXMLClass.costTowerXML);
             //this->container->cont->costTXT.text = Main::mainClass->readXMLClass.costTowerXML;
@@ -181,9 +179,10 @@ namespace engine{
         void BuildTowerMenu::closeMenu()
         {
             this->closeFlag = true;
-            this->mouseChildren = false;
-            this->mouseEnabled = false;
+            this->setMouseChildren(false);
+            this->setMouseEnabled(false);
             this->world->buildTowerMenu = NULL;
+			//kill();
             return;
         }// end function
 

@@ -20,5 +20,6 @@ namespace screens
         float autoguidesObjectHeight;
         Screen();
     };
+
 }
 #endif

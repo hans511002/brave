@@ -158,8 +158,8 @@ namespace engine{
 			this->world->achieveManage("castGetAll_100_times");
 		}
 		this->this_pt = this->getPosition();// new Point(this->x, this->y); 
-		this->mouseChildren = false;
-		this->mouseEnabled = false;
+		this->setMouseChildren(false);
+		this->setMouseEnabled(false);
 		if (this->sphereType == "fire")
 		{
 			this->container = new CastFire_mc();
@@ -222,8 +222,8 @@ namespace engine{
 					this->additAnamation = new CastGetAllSwamp_mc();
 					this->additAnamation->stop();
 					this->additAnamation->setPosition(this->getPosition());
-					this->additAnamation->mouseChildren = false;
-					this->additAnamation->mouseEnabled = false;
+					this->additAnamation->setMouseChildren(false);
+					this->additAnamation->setMouseEnabled(false);
 					this->world->addChild(this->additAnamation, 2);
 					//this->world->listOfIndexes0.push(this->additAnamation);
 					float tempObject = 1000;

@@ -7,18 +7,17 @@ namespace engine
 {
     CastMask_mc::CastMask_mc() :MovieClip("worldinterface/", "CastMask_mc", "CastMask_mc")
     {
-        archiveCase = this->createCase("archiveCase");
-        castAirCase = this->createCase("castAirCase");
-        castGolemCase = this->createCase("castGolemCase");
-        castIcemanCase = this->createCase("castIcemanCase");
-        fireCase = this->createCase("fireCase");
-        getAllCase = this->createCase("getAllCase");
-        iceCase = this->createCase("iceCase");
-        interfaceUpCase = this->createCase("interfaceUpCase");
-        levinCase = this->createCase("levinCase");
-        sellCase = this->createCase("sellCase");
-        stoneCase = this->createCase("stoneCase");
-
+        archiveCase = this->createCase("archiveCase",false);
+		castAirCase = this->createCase("castAirCase", false);
+		castGolemCase = this->createCase("castGolemCase", false);
+		castIcemanCase = this->createCase("castIcemanCase", false);
+		fireCase = this->createCase("fireCase", false);
+		getAllCase = this->createCase("getAllCase", false);
+		iceCase = this->createCase("iceCase", false);
+		interfaceUpCase = this->createCase("interfaceUpCase", false);
+		levinCase = this->createCase("levinCase", false);
+		sellCase = this->createCase("sellCase", false);
+		stoneCase = this->createCase("stoneCase", false);
         return;
     }// end function	
 	namespace    casts
@@ -30,8 +29,8 @@ namespace engine
 
 			//this->x = this->world->mouseX;
 			//this->y = this->world->mouseY;
-			this->mouseChildren = false;
-			this->mouseEnabled = false;
+			this->setMouseChildren(false);
+			this->setMouseEnabled(false);
 			//this->world->hint.visible = false;
 			this->world->worldInterface->barInfoManage(this);
 			return true;

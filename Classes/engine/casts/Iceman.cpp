@@ -80,8 +80,8 @@ namespace engine{
 				//this->x = this->x + 84;
 				//this->y = this->y - 238;
 			}
-			this->mouseChildren = false;
-			this->mouseEnabled = false;
+			this->setMouseChildren(false);
+			this->setMouseEnabled(false);
 			//this->world->listOfClasses.push(this);
 			//this->world->listOfIndexes1.push(this);
 			if (!this->world->selectObject)

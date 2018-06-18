@@ -14,8 +14,8 @@ namespace engine
         {
             //this->addEventListener(Event.ADDED_TO_STAGE, this->init);
             this->myTower = param1; 
-            this->myTower->mouseChildren = false;
-            this->myTower->mouseEnabled = false;
+            this->myTower->setMouseChildren(false);
+            this->myTower->setMouseEnabled(false);
             return;
         }// end function
 
@@ -27,16 +27,16 @@ namespace engine
             this->graphicAtMyTower = new Exchange_mc();
             this->graphicAtMyTower->stop();
             this->graphicAtMyTower->setPosition(this->myTower->getPosition()); 
-            this->graphicAtMyTower->mouseChildren = false;
-            this->graphicAtMyTower->mouseEnabled = false;
+            this->graphicAtMyTower->setMouseChildren(false);
+            this->graphicAtMyTower->setMouseEnabled(false);
             this->world->addChild(this->graphicAtMyTower);
             this->container = new Exchange1_mc();
             this->container->stop();
             this->container->cross->stop();
             this->addChild(this->container);
             this->setPosition(this->world->mouseX,this->world->mouseY); 
-            this->mouseChildren = false;
-            this->mouseEnabled = false;
+            this->setMouseChildren(false);
+            this->setMouseEnabled(false);
             if (this->world->towerMenu)
             {
                 this->world->towerMenu->closeMenu();
@@ -91,7 +91,7 @@ namespace engine
 			std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
 			if(!event)
 				return;
-			if(event->target->getName() == "towerCase" && ISTYPE(EventNode, event->target)->buttonMode)
+			if(event->target->getName() == "towerCase" && ISTYPE(EventNode, event->target)->mouseEnabled)
 			//if (!std::hitTest(this->container->contBuildTowerMenuCase, pt) && !std::hitTest(this->myPlace->placeForBuildCase, pt))
 			{
 				Node * parent = event->target->getParent()->getParent();
@@ -142,7 +142,7 @@ namespace engine
 			std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
 			if(!event)
 				return;
-			if(event->target->getName() == "towerCase" && ISTYPE(EventNode, event->target)->buttonMode)
+			if(event->target->getName() == "towerCase" && ISTYPE(EventNode, event->target)->mouseEnabled)
             {
 				Node * parent = event->target->getParent()->getParent();
 				Tower * tower = ISTYPE(Tower, parent);
@@ -239,8 +239,8 @@ namespace engine
             if (!this->dead)
             {
                 this->dead = true; 
-                this->myTower->mouseChildren = true;
-                this->myTower->mouseEnabled = true;
+                this->myTower->setMouseChildren(true);
+                this->myTower->setMouseEnabled(true);
                 this->i = 0;
                 while (this->i < this->world->listOfTowers.size())
                 { 

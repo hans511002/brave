@@ -131,9 +131,9 @@ namespace engine
 		}
 		else
 		{
-			if (!this->world->worldInterface->container->fastFastCase->buttonMode)
+			if (!this->world->worldInterface->container->fastFastCase->mouseEnabled)
 			{
-				this->world->worldInterface->container->fastFastCase->buttonMode = true;
+				this->world->worldInterface->container->fastFastCase->setMouseEnabled(true);
 			}
 			if (complexityLevel < 4)
 			{
@@ -235,26 +235,26 @@ namespace engine
 			}
 		}
 		this->world->worldInterface->container->startWaves->gotoAndStop(21);
-		this->world->worldInterface->container->startWavesStartWavesCase->buttonMode = false;
+		this->world->worldInterface->container->startWavesStartWavesCase->setMouseEnabled(false);
 		if (this->world->pointer1->isVisible())
 		{ 
-		    this->world->pointer1->mouseChildren = false;
-		    this->world->pointer1->mouseEnabled = false;
+		    this->world->pointer1->setMouseChildren(false);
+		    this->world->pointer1->setMouseEnabled(false);
 		}
 		if (this->world->pointer2)
 		{
 		    if (this->world->pointer2->isVisible())
 		    { 
-		        this->world->pointer2->mouseChildren = false;
-		        this->world->pointer2->mouseEnabled = false;
+		        this->world->pointer2->setMouseChildren(false);
+		        this->world->pointer2->setMouseEnabled(false);
 		    }
 		}
 		if (this->world->pointer3)
 		{
 		    if (this->world->pointer3->isVisible())
 		    { 
-		        this->world->pointer3->mouseChildren = false;
-		        this->world->pointer3->mouseEnabled = false;
+		        this->world->pointer3->setMouseChildren(false);
+		        this->world->pointer3->setMouseEnabled(false);
 		    }
 		}
 		this->nowWave++;
@@ -738,7 +738,7 @@ namespace engine
                 if (this->nowWave < this->maxWaves)
                 {
                     this->world->worldInterface->container->startWaves->gotoAndStop(1);
-                    this->world->worldInterface->container->startWavesStartWavesCase->buttonMode = true;
+                    this->world->worldInterface->container->startWavesStartWavesCase->setMouseEnabled(true);
                     this->world->pointer1->timer = this->listOfWaves[0][0][0];
                     this->world->pointer1->counter = 360 / this->listOfWaves[0][0][0];
 					this->world->pointer1->fireAnima->setRotation(0);

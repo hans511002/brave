@@ -59,8 +59,8 @@ namespace engine
 				//container->setVisible(false);
 				container->setOpacity(0);//container->alpha = 0;
 
-                this->mouseChildren = false;
-                this->mouseEnabled = false;
+                this->setMouseChildren(false);
+                this->setMouseEnabled(false);
                 this->portalAnima = new MovieClip("unit/", "RoadUnitIce_mc");// RoadUnitIce_mc();
 				this->portalAnima->stop();
 				this->portalAnima->setVisible(false);
@@ -135,8 +135,8 @@ namespace engine
                         this->removeChild(this->portalAnima);
                         this->portalAnima = NULL;
                         container->setOpacity(255);
-                        this->mouseChildren = true;
-                        this->mouseEnabled = true;
+                        this->setMouseChildren(true);
+                        this->setMouseEnabled(true);
                         readyDamage = true;
                         moveFlag = true;
                     }

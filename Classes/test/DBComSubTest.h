@@ -1,6 +1,9 @@
 #include "BaseDemo.h"
 #include "BaseHeaders.h"
 #include "BaseNode.h"
+#include "engine/World.h"
+#include "engine/WorldInterface.h"
+ 
 /**
 * How to use
 * 1. Load data.
@@ -90,17 +93,34 @@ protected:
 	}
     virtual void _onStart()
     {
-        MovieClip * mc = new MovieClip("unit/", "healthBar", "UnitBase_mc");
-        this->addChild(mc);
-        mc->setPosition(100, 100);
+		//this->world->worldInterface = WorldInterface::create();
+		//this->world->addChild(this->world->worldInterface);
+
+ 
+
+		worldInterface = new WorldInterface_mc();
+		worldInterface->setName("WorldInterface_mc");
+		this->addChild(worldInterface);
+		this->worldInterface->levinBack->gotoAndStop(3);
+		this->worldInterface->levinBacklight->setVisible(false);
+		this->worldInterface->levinSphere->setVisible(false);
+
+		this->worldInterface->iceBack->gotoAndStop(3);
+		this->worldInterface->iceBacklight->setVisible(false);
+		this->worldInterface->iceSphere->setVisible(false);
+		this->worldInterface->stoneBack->gotoAndStop(3);
+		this->worldInterface->stoneBacklight->setVisible(false);
+		this->worldInterface->stoneSphere->setVisible(false);
+
         currentFrame = frameCounter = 0;
         this->setName("layer");
+
         //cont = new BulletSphereTower_mc();
         //cont = new TowerMenuHint_mc();
         //cont->setPosition(100, 100);
         //	this->addChild(cont);
         ////this->schedule(schedule_selector(DBComSubTest::scheduleUpdate), (float)1 / 30.0f);
-        //this->schedule(static_cast<cocos2d::SEL_SCHEDULE>(&DBComSubTest::scheduleUpdate) ,0.3333333);
+        this->schedule(static_cast<cocos2d::SEL_SCHEDULE>(&DBComSubTest::scheduleUpdate) ,0.3333333f);
         return;
     }
 	int currentFrame;
@@ -108,6 +128,7 @@ protected:
 	int totalFrames, frameCounter;
 	string direction;
 	MovieClip *mc;
+	WorldInterface_mc * worldInterface;
 
 	virtual void  scheduleUpdate(float dt)
 	{
@@ -118,8 +139,11 @@ protected:
 		else
 		{
 			this->frameCounter = 1;
+			this->worldInterface->getAll->gotoAndStop(this->currentFrame / 30 + 1);
 		}
 		currentFrame++;
+		this->worldInterface->getAllFire->nextFram();
+		return;
 		cont->gotoAndStop(this->currentFrame / 30 + 1);
 		cont->cont->nextFram();
 		cont->contCont1->nextFram();

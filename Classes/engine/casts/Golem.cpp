@@ -99,8 +99,8 @@ namespace engine{
                 //this->container->alpha = 0.1;
                 this->setPositionY( this->getPositionY() - 200);
             }
-            this->mouseChildren = false;
-            this->mouseEnabled = false;
+            this->setMouseChildren(false);
+            this->setMouseEnabled(false);
             //this->world->listOfClasses.push(this);
             //this->world->listOfIndexes1.push(this);
             if (!this->world->selectObject)
@@ -748,7 +748,7 @@ namespace engine{
             }
             tempObject->setNodeType("golemDeath");
             tempObject->setScaleX(this->container->getScaleX());
-            tempObject->cont->setPositionX(this->container->getPositionX());
+            tempObject->setPositionX(this->container->getPositionX());
             tempObject->setPosition(this->this_pt);
             //tempObject->x = this->this_pt.x;
             //tempObject->y = this->this_pt.y;

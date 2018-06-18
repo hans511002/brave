@@ -201,7 +201,7 @@ namespace engine
 
 #define UNIT_CLASS_DEFINE(unitName,MEMBER_DEFINE) struct unitName :public Unit{ \
 public:\
-	inline unitName() {}; \
+	inline unitName() { setName(getTypeName()); }; \
 	virtual bool init(); \
 	virtual void animationHandler(); \
 	MEMBER_DEFINE \

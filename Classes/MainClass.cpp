@@ -27,9 +27,14 @@ Scene* Main::createScene()
     return scene;
 }
 int Main::fps;
+void Main::_onStart(){
+
+};
+
 bool Main::init()
 {
-    BaseNode::init();
+	BaseLayer::init();
+	//BaseNode::init();
 	this->setName("Main");
     //this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
     //this->stage.addEventListener(KeyboardEvent.KEY_DOWN, this->keyDownHandler);
@@ -50,8 +55,7 @@ bool Main::init()
     //this->tracker = new GATracker(this, "UA-63231445-3", "AS3", false);
     //this->tracker.trackPageview("openGame");
 	this->enableKeyHandler();
-    this->enableKeyHandler();
-    this->enableMouseHandler();
+    //this->enableMouseHandler();//world及screen中监听
     return true;
 }// end function
 
@@ -75,14 +79,14 @@ void Main::addNewScreen(const string & param1)
         }
         else if (param1 == "World")
         {
-            //this->container = new World();
-            this->worldClass = new World();
+            this->container = this->worldClass = new World();
             this->worldClass->init();
             this->addChild(this->worldClass);
         }
         //this->bmp = new Bitmap(this->getBitmapData(this->container));
         //this->addChild(Main.mainClass.bmp);
-        if (this->container)this->container->setVisible(false);
+        if (this->container)
+			this->container->setVisible(false);
         this->middleScreenClass->setZOrder(99);
         //this->setChildIndex(this->middleScreenClass, (this->numChildren - 1));
         //this->setChildIndex(this->IDIClass, (this->numChildren - 1));
@@ -131,7 +135,8 @@ void Main::removeAllScreens()
 }// end function
 void Main::onEnter()
 {
-   BaseNode::onEnter();
+	BaseLayer::onEnter();
+	//BaseNode::onEnter();
    addStartLogo();
 };
 
@@ -144,6 +149,8 @@ cocos2d::Image * Main::getBitmapData(cocos2d::Node* param1) //: BitmapData
 }// end function
 void Main::addStartLogo()
 {
+
+
     addNewScreen("World");
     //this->container = new StartMenu();
 	//this->startMenuClass = new StartMenu();

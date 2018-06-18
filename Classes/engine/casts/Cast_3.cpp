@@ -79,12 +79,12 @@ namespace engine{
             {
                 if (event->target->getName() != "castAirCase" && scanWay())
                 {
-                    this->mouseChildren = true;
-                    this->mouseEnabled = true;
+                    this->setMouseChildren(true);
+                    this->setMouseEnabled(true);
                     //event = new MouseEvent(MouseEvent.MOUSE_DOWN);
                     world->worldInterface->castAirCounter++;
                     world->worldInterface->container->butCastAir->gotoAndStop(4);
-                    world->worldInterface->container->butCastAirCastAirCase->buttonMode = false;
+                    world->worldInterface->container->butCastAirCastAirCase->setMouseEnabled(false);
                     world->worldInterface->container->butCastAirContContMask->setScaleY( 0);
                     this->addAir();
                     kill();

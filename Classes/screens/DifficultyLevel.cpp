@@ -52,9 +52,9 @@ namespace screens
             this->container->firstEasyComplexityCase->stop();
             this->container->firstNormalComplexityCase->stop();
             this->container->firstHardComplexityCase->stop();
-            this->container->firstEasyComplexityCase->buttonMode = false;
-            this->container->firstNormalComplexityCase->buttonMode = false;
-            this->container->firstHardComplexityCase->buttonMode = false;
+            this->container->firstEasyComplexityCase->setMouseEnabled(false);
+            this->container->firstNormalComplexityCase->setMouseEnabled(false);
+            this->container->firstHardComplexityCase->setMouseEnabled(false);
             this->addChild(this->container);
             this->setPosition(Main::SCREEN_WIDTH_HALF, Main::SCREEN_HEIGHT_HALF);
             //Sounds.instance.playSound("snd_menu_pageScrolling");
@@ -86,16 +86,16 @@ namespace screens
                     this->container->firstEasyComplexityCase->stop();
                     this->container->firstNormalComplexityCase->stop();
                     this->container->firstHardComplexityCase->stop();
-                    this->container->firstEasyComplexityCase->buttonMode = false;
-                    this->container->firstNormalComplexityCase->buttonMode = false;
-                    this->container->firstHardComplexityCase->buttonMode = false;
+                    this->container->firstEasyComplexityCase->setMouseEnabled(false);
+                    this->container->firstNormalComplexityCase->setMouseEnabled(false);
+                    this->container->firstHardComplexityCase->setMouseEnabled(false);
                 }
                 if (this->container->currentFrame == this->container->totalFrames && this->container->first->currentFrame == this->container->first->totalFrames)
                 {
                     this->openFlag = false;
-                    this->container->firstEasyComplexityCase->buttonMode = true;
-                    this->container->firstNormalComplexityCase->buttonMode = true;
-                    this->container->firstHardComplexityCase->buttonMode = true;
+                    this->container->firstEasyComplexityCase->setMouseEnabled(true);
+                    this->container->firstNormalComplexityCase->setMouseEnabled(true);
+                    this->container->firstHardComplexityCase->setMouseEnabled(true);
                 }
             }
             else if (this->closeFlag)
@@ -113,17 +113,17 @@ namespace screens
                     this->container->firstEasyComplexityCase->stop();
                     this->container->firstNormalComplexityCase->stop();
                     this->container->firstHardComplexityCase->stop();
-                    this->container->firstEasyComplexityCase->buttonMode = false;
-                    this->container->firstNormalComplexityCase->buttonMode = false;
-                    this->container->firstHardComplexityCase->buttonMode = false;
+                    this->container->firstEasyComplexityCase->setMouseEnabled(false);
+                    this->container->firstNormalComplexityCase->setMouseEnabled(false);
+                    this->container->firstHardComplexityCase->setMouseEnabled(false);
                 }
                 if (this->container->currentFrame == 1 && this->container->first->currentFrame == 1)
                 {
                     Main::mainClass->levelsMenuClass->removeChild(this);
                     Main::mainClass->levelsMenuClass->difficultyLevel = null;
                     Main::mainClass->levelsMenuClass->manageListeners("on"); 
-                    Main::mainClass->levelsMenuClass->container->mouseChildren = true;
-                    Main::mainClass->levelsMenuClass->container->mouseEnabled = true;
+                    Main::mainClass->levelsMenuClass->container->setMouseChildren(true);
+                    Main::mainClass->levelsMenuClass->container->setMouseEnabled(true);
                 }
             }
             return;
@@ -133,7 +133,7 @@ namespace screens
         {
             if (param1.target.parent.name == "easy")
             {
-                if (param1.target->buttonMode)
+                if (param1.target->mouseEnabled)
                 {
                     if (this->container->firstEasy->currentFrame == 1)
                     {
@@ -148,7 +148,7 @@ namespace screens
             }
             if (param1.target.parent.name == "normal")
             {
-                if (param1.target->buttonMode)
+                if (param1.target->mouseEnabled)
                 {
                     if (this->container->firstNormal->currentFrame == 1)
                     {
@@ -163,7 +163,7 @@ namespace screens
             }
             if (param1.target.parent.name == "hard")
             {
-                if (param1.target->buttonMode)
+                if (param1.target->mouseEnabled)
                 {
                     if (this->container->firstHard->currentFrame == 1)
                     {
@@ -183,7 +183,7 @@ namespace screens
         {
             if (event.target.parent.name == "easy")
             {
-                if (event.target->buttonMode)
+                if (event.target->mouseEnabled)
                 {
                     if (this->container->firstEasy->currentFrame == 2)
                     {
@@ -194,7 +194,7 @@ namespace screens
             }
             else if (event.target.parent.name == "normal")
             {
-                if (event.target->buttonMode)
+                if (event.target->mouseEnabled)
                 {
                     if (this->container->firstNormal->currentFrame == 2)
                     {
@@ -205,7 +205,7 @@ namespace screens
             }
             else if (event.target.parent.name == "hard")
             {
-                if (event.target->buttonMode)
+                if (event.target->mouseEnabled)
                 {
                     if (this->container->firstHard->currentFrame == 2)
                     {
@@ -221,7 +221,7 @@ namespace screens
         {
             if (event.target.parent.name == "easy")
             {
-                if (event.target->buttonMode)
+                if (event.target->mouseEnabled)
                 {
                     if (this->container->firstEasy->currentFrame == 3)
                     {
@@ -239,7 +239,7 @@ namespace screens
             }
             if (event.target.parent.name == "normal")
             {
-                if (event.target->buttonMode)
+                if (event.target->mouseEnabled)
                 {
                     if (this->container->firstNormal->currentFrame == 3)
                     {
@@ -257,7 +257,7 @@ namespace screens
             }
             if (event.target.parent.name == "hard")
             {
-                if (event.target->buttonMode)
+                if (event.target->mouseEnabled)
                 {
                     if (this->container->firstHard->currentFrame == 3)
                     {

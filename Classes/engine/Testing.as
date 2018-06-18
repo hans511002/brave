@@ -124,7 +124,7 @@
                     {
                         this.world.listOfPlaces[this.i].gotoAndStop(2);
                         var _loc_1:* = false;
-                        this.world.listOfPlaces[this.i].mouseChildren = false;
+                        this.world.listOfPlaces[this.i].setMouseChildren(false);
                         this.world.listOfPlaces[this.i].mouseEnabled = _loc_1;
                         if (this.listOfStory[this.loadWave][11][this.j][0] == 1)
                         {
@@ -213,7 +213,7 @@
             this.world.worldInterface.blockCastGolem = false;
             this.world.worldInterface.blockCastIceman = false;
             this.world.worldInterface.blockCastAir = false;
-            this.world.worldInterface.container.快.fastCase.buttonMode = true;
+            this.world.worldInterface.container.快.fastCase.setMouseEnabled(true);
             this.world.worldInterface.updateInfo();
             return;
         }// end function

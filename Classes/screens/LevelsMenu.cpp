@@ -40,13 +40,13 @@ namespace screens
         this->container->achieves->stop();
         this->container->achieves->achievesCase1->stop();
         this->container->achieves->achievesCase2->stop();
-        this->container->back->backCase->buttonMode = true;
-        this->container->upgrades->upgradesCase1->buttonMode = true;
-        this->container->upgrades->upgradesCase2->buttonMode = true;
-        this->container->book->bookCase1->buttonMode = true;
-        this->container->book->bookCase2->buttonMode = true;
-        this->container->achieves->achievesCase1->buttonMode = true;
-        this->container->achieves->achievesCase2->buttonMode = true;
+        this->container->back->backCase->setMouseEnabled(true);
+        this->container->upgrades->upgradesCase1->setMouseEnabled(true);
+        this->container->upgrades->upgradesCase2->setMouseEnabled(true);
+        this->container->book->bookCase1->setMouseEnabled(true);
+        this->container->book->bookCase2->setMouseEnabled(true);
+        this->container->achieves->achievesCase1->setMouseEnabled(true);
+        this->container->achieves->achievesCase2->setMouseEnabled(true);
         this->container->wavesAnimation->stop();
         this->tempObject1 = this->container->wavesAnimation->numChildren;
         this->i = 0;
@@ -75,12 +75,12 @@ namespace screens
         this->preparationLevels();
         this->container->btnMusic->stop();
         this->container->btnSound->stop();
-        this->container->btnMusic->musicCase->buttonMode = true;
-        this->container->btnSound->soundCase->buttonMode = true;
+        this->container->btnMusic->musicCase->setMouseEnabled(true);
+        this->container->btnSound->soundCase->setMouseEnabled(true);
         this->container->freeStars->stop();
         this->container->freeStars->cont->stop();
-        this->container->freeStars->mouseChildren = false;
-        this->container->freeStars->mouseEnabled = false;
+        this->container->freeStars->setMouseChildren(false);
+        this->container->freeStars->setMouseEnabled(false);
         if (Main::mainClass->saveBoxClass->getIntValue("stars") == 0)
         {
             this->container->freeStars->setVisible(false);
@@ -104,8 +104,8 @@ namespace screens
         //}
         if (!Main::mainClass->saveBoxClass->getBoolValue("difficultyLevel"))
         {
-            this->container->mouseChildren = false;
-            this->container->mouseEnabled = false;
+            this->container->setMouseChildren(false);
+            this->container->setMouseEnabled(false);
         }
         //if (Main::mainClass->saveBoxClass.gameSave.data.training_9 == 1)
         //{
@@ -961,7 +961,7 @@ namespace screens
                     {
                         this->listOfLevels[this->i]->gotoAndStop(8);
                         this->listOfLevels[this->i]->levelCase->stop();
-                        this->listOfLevels[this->i]->levelCase->buttonMode = true;
+                        this->listOfLevels[this->i]->levelCase->setMouseEnabled(true);
                     }
                 }
             }
@@ -1066,7 +1066,7 @@ namespace screens
             if (this->listOfLevels[this->i]->levelCase)
             {
                 this->listOfLevels[this->i]->levelCase->stop();
-                this->listOfLevels[this->i]->levelCase->buttonMode = true;
+                this->listOfLevels[this->i]->levelCase->setMouseEnabled(true);
             }
             i++;
         }

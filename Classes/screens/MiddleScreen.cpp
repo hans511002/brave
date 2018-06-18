@@ -3,6 +3,8 @@
 #include "MiddleScreen.h"
 
 #include "MainClass.h"
+#include "engine/World.h"
+#include "engine/WorldInterface.h"
 
 namespace screens
 {
@@ -52,12 +54,28 @@ namespace screens
         }
         //this->stage.frameRate = 60;
         this->container = new MiddleScreen_mc();
-        this->container->stop();
+		this->container->stop();
         this->container->leftUp->stop();
         this->container->rightUp->stop();
         this->container->leftDown->stop();
-        this->container->rightDown->stop();
-        this->container->setScale(0.3);
+        this->container->rightDown->stop(); 
+		this->container->leftUp->setPosition(this->container->convertToNodeSpaceAR(this->container->leftUp->convertToWorldSpace(Vec2(0, 0))));
+		this->container->leftDown->setPosition(this->container->convertToNodeSpaceAR(this->container->leftDown->convertToWorldSpace(Vec2(0, 0))));
+		this->container->rightUp->setPosition(this->container->convertToNodeSpaceAR(this->container->rightUp->convertToWorldSpace(Vec2(0, 0))));
+		this->container->rightDown->setPosition(this->container->convertToNodeSpaceAR(this->container->rightDown->convertToWorldSpace(Vec2(0, 0))));
+		
+		
+
+		logInfo("container->leftUp", this->container->leftUp->display->getParent()->getPosition());
+		logInfo("container->leftUp", this->container->leftUp->display->getParent()->getParent()->getPosition());
+
+		logInfo("container->rightUp", this->container->rightUp->convertToWorldSpace(Vec2(0, 0)));
+		//this->container->leftUp->setPosition(0, Main::SCREEN_HEIGHT);
+		//this->container->leftDown->setPosition(0, 0);
+		//this->container->rightUp->setPosition(Main::SCREEN_WIDTH, Main::SCREEN_HEIGHT);
+		//this->container->rightDown->setPosition(Main::SCREEN_WIDTH, 0);
+        this->container->setScale(1.0f);
+		//this->container->setPosition(400, 300);
         this->addChild(this->container);
         if (this->openScreenName == "World" || Main::mainClass->worldClass)
         {
@@ -72,7 +90,7 @@ namespace screens
 	{
         BaseNode::onEnter();
         //this->schedule(static_cast<cocos2d::SEL_SCHEDULE>(&MiddleScreen::enterFrameHandler));
-		//this->schedule(schedule_selector(MiddleScreen::enterFrameHandler), 0.0f);
+		//this->schedule(schedule_selector(MiddleScreen::enterFrameHandler), 1.0f);
 	}
 	void MiddleScreen::enterFrameHandler(float dt)
 	{
@@ -107,14 +125,29 @@ namespace screens
 				offsetX = 2;
 				offsetY = 2;
 			}
-			this->container->leftUp->setPositionX(this->container->leftUp->getPositionX() + offsetX);
-			this->container->leftUp->setPositionY(this->container->leftUp->getPositionY() + offsetY);
-			this->container->leftDown->setPositionX(this->container->leftDown->getPositionX() + offsetX);
-			this->container->leftDown->setPositionY(this->container->leftDown->getPositionY() - offsetY);
-			this->container->rightUp->setPositionX(this->container->rightUp->getPositionX() - offsetX);
-			this->container->rightUp->setPositionY(this->container->rightUp->getPositionY() + offsetY);
-			this->container->rightDown->setPositionX(this->container->rightDown->getPositionX() - offsetX);
-			this->container->rightDown->setPositionY(this->container->rightDown->getPositionY() - offsetY);
+			float x = this->container->leftUp->getPositionX() + offsetX;
+			float y = this->container->leftUp->getPositionY() - offsetY;
+			if (x > Main::SCREEN_WIDTH_HALF)x = Main::SCREEN_WIDTH_HALF;
+			if (y < Main::SCREEN_HEIGHT_HALF)y = Main::SCREEN_HEIGHT_HALF;
+			this->container->leftUp->setPosition(x, y);
+
+			x = this->container->leftDown->getPositionX() + offsetX;
+			y = this->container->leftDown->getPositionY() + offsetY;
+			if (x > Main::SCREEN_WIDTH_HALF)x = Main::SCREEN_WIDTH_HALF;
+			if (y > Main::SCREEN_HEIGHT_HALF)y = Main::SCREEN_HEIGHT_HALF;
+			this->container->leftDown->setPosition(x, y);
+			 
+			x = this->container->rightUp->getPositionX() - offsetX;
+			y = this->container->rightUp->getPositionY() - offsetY;
+			if (x < Main::SCREEN_WIDTH_HALF)x = Main::SCREEN_WIDTH_HALF;
+			if (y < Main::SCREEN_HEIGHT_HALF)y = Main::SCREEN_HEIGHT_HALF;
+			this->container->rightUp->setPosition(x, y);
+			 
+			x = this->container->rightDown->getPositionX() - offsetX;
+			y = this->container->rightDown->getPositionY() + offsetY;
+			if (x < Main::SCREEN_WIDTH_HALF)x = Main::SCREEN_WIDTH_HALF;
+			if (y > Main::SCREEN_HEIGHT_HALF)y = Main::SCREEN_HEIGHT_HALF;
+			this->container->rightDown->setPosition(x, y);
         }
         else if (this->frameCounter > 15 && this->frameCounter < 23)
         {
@@ -127,7 +160,7 @@ namespace screens
                 this->addChild(this->middleRound);
                 Main::mainClass->removeAllScreens();
                 Main::mainClass->addNewScreen(this->openScreenName);
-                //Main::mainClass->container->manageListeners("off");
+                Main::mainClass->container->manageListeners("off");
             }
 			if(this->middleRound->currentFrame < this->middleRound->totalFrames)
             {
@@ -219,15 +252,23 @@ namespace screens
 			 {
 				 offsetX = 44;
 				 offsetY = 30;
-			 }
+			 } 
 			 this->container->leftUp->setPositionX(this->container->leftUp->getPositionX() - offsetX);
-			 this->container->leftUp->setPositionY(this->container->leftUp->getPositionY() - offsetY);
+			 this->container->leftUp->setPositionY(this->container->leftUp->getPositionY() + offsetY);
 			 this->container->leftDown->setPositionX(this->container->leftDown->getPositionX() - offsetX);
-			 this->container->leftDown->setPositionY(this->container->leftDown->getPositionY() + offsetY);
+			 this->container->leftDown->setPositionY(this->container->leftDown->getPositionY() - offsetY);
 			 this->container->rightUp->setPositionX(this->container->rightUp->getPositionX() + offsetX);
-			 this->container->rightUp->setPositionY(this->container->rightUp->getPositionY() - offsetY);
+			 this->container->rightUp->setPositionY(this->container->rightUp->getPositionY() + offsetY);
 			 this->container->rightDown->setPositionX(this->container->rightDown->getPositionX() + offsetX);
-			 this->container->rightDown->setPositionY(this->container->rightDown->getPositionY() + offsetY);
+			 this->container->rightDown->setPositionY(this->container->rightDown->getPositionY() - offsetY);
+			 //this->container->leftUp->setPositionX(this->container->leftUp->getPositionX() - offsetX);
+			 //this->container->leftUp->setPositionY(this->container->leftUp->getPositionY() - offsetY);
+			 //this->container->leftDown->setPositionX(this->container->leftDown->getPositionX() - offsetX);
+			 //this->container->leftDown->setPositionY(this->container->leftDown->getPositionY() + offsetY);
+			 //this->container->rightUp->setPositionX(this->container->rightUp->getPositionX() + offsetX);
+			 //this->container->rightUp->setPositionY(this->container->rightUp->getPositionY() - offsetY);
+			 //this->container->rightDown->setPositionX(this->container->rightDown->getPositionX() + offsetX);
+			 //this->container->rightDown->setPositionY(this->container->rightDown->getPositionY() + offsetY);
 			        
             if (this->frameCounter == 38)
             {
@@ -239,7 +280,7 @@ namespace screens
                 if (Main::mainClass->container)
                 {
 					Main::mainClass->container->setVisible( true);
-                    //Main::mainClass->container->manageListeners("on");
+                    Main::mainClass->container->manageListeners("on");
                 }
             }
         }

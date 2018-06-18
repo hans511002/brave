@@ -39,7 +39,7 @@ namespace engine
         MovieClip * createMovieClip(const string &  slot, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "");
         MovieClip * createMovieClip(const string &  slot, const string &  rootPath, const string &  dbName);
         MovieClip * MC::createMovieClip(const string &  slot, MovieClip * mc);
-        MCCase * createCase(const string &  slot, bool draw = true);
+		MCCase * createCase(const string &  slot, bool mouseEnabled=true, bool draw = true);
         MCSprite * createSprite(const string &  slot, const string &  file);
         MCSprite * createSprite(const string &  slot, Sprite* file);
         MCMask * createMask(const string &  slot);
@@ -65,16 +65,21 @@ namespace engine
 		bool isReady;
         MC * mc;
         dragonBones::Slot * slot;
+		dragonBones::Bone * bone;
+		dragonBones::Bone * root;
         Node * display;
+		Vec2 disPos;
         string slotName;
 		bool visible;
 		virtual void setVisible(bool v);
         virtual bool reinit() ;
-		inline MovieClipSubBase() :isReady(false), mc(0), slot(0), display(0), visible(true){};
+		inline MovieClipSubBase() :isReady(false), mc(0), slot(NULL), bone(NULL), display(0), visible(true){};
 		template<typename T = MC> T * getParentMC() { return ISTYPE(T, mc); };
         //inline MovieClip * getRootMc() { return MC::getRootMc(mc); };
         //void addMCbs(MC * mc, MovieClipSubBase * mcs);
-		 
+		virtual Vec2 getDisPosition();
+		virtual Vec2 getDisArPos();
+		void MovieClipSubBase::setDisScale();
 
     };
     struct MovieClip :public virtual BaseNode, public virtual MC,public virtual MovieClipSubBase
@@ -88,7 +93,7 @@ namespace engine
 		float speedX;
 		float speedY;
         bool isOnce;
-        dragonBones::CCArmatureDisplay * cont;
+        dragonBones::CCArmatureDisplay * container;
 		//std::map<std::string, MovieClipSub*> mcs;
         //Common::Array<MCText*> mct;
         //Common::Array<MCCase*> mcase;
@@ -96,7 +101,7 @@ namespace engine
 		//所有全部子集群,用于自动删除
 		Common::Array<MovieClipSub*> mcs;
 
-        MovieClip(dragonBones::CCArmatureDisplay * cont, const string &  defAniName = "");
+        MovieClip(dragonBones::CCArmatureDisplay * container, const string &  defAniName = "");
         MovieClip(const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "");
         MovieClip(World * world, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "");
         MovieClip(const string &  armName, const string &  dbName, BaseNode *node = NULL);
@@ -210,7 +215,7 @@ namespace engine
 	struct MCCase :public BaseNode, MovieClipSubBase 
     {
         bool _draw;
-        MCCase(MC * mc, const string &  slotName, bool draw = false);
+		MCCase(MC * mc, const string &  slotName, bool mouseEnabled=true, bool draw = false);
 		inline virtual void setAlpha(float op) { BaseNode::setAlpha(this, op); };
 		inline virtual float getAlpha() {return BaseNode::getAlpha(this); };
 		virtual void setVisible(bool v);
@@ -242,7 +247,7 @@ namespace engine
         int currentFrame; 
         int totalFrames;
         byte playing;
-        BaseSprite * cont;
+        BaseSprite * container;
         string filePre;
         char numFormat[8];
         ImageMovieClip(const string &  rootPath, const string &  fileNamePre, int numFormat, int imgSize = 0);
@@ -260,7 +265,7 @@ namespace engine
     {
     public:
         BaseSprite * container;  
-        SpriteClip(BaseSprite * cont);
+        SpriteClip(BaseSprite * container);
     };
      
     struct AnimUpgrade_mc :public MovieClip
@@ -272,10 +277,10 @@ namespace engine
 
     //struct AnimUpgrade_mc :public BaseNode
     //{
-    //    dragonBones::CCArmatureDisplay * cont;
+    //    dragonBones::CCArmatureDisplay * container;
     //};
 
-#define MC_STRUCT(clsName) inline  clsName(dragonBones::CCArmatureDisplay * cont, string defAniName = ""):MovieClip(cont,defAniName){};\
+#define MC_STRUCT(clsName) inline  clsName(dragonBones::CCArmatureDisplay * container, string defAniName = ""):MovieClip(container,defAniName){};\
     inline  clsName(string rootPath, string armName, string dbName, string defAniName = "") :MovieClip(rootPath, armName, dbName, defAniName){}; \
     inline  clsName(World * world, string rootPath, string armName, string dbName, string defAniName = "") :MovieClip(world, rootPath, armName, dbName, defAniName){}; \
     inline  clsName(string armName, string dbName, BaseNode *node = NULL) :MovieClip(armName, dbName, node){};

@@ -42,11 +42,11 @@
             this.decoration2Case.stop();
             this.decoration3Case.stop();
             this.decoration4Case.stop();
-            this.decorationCase.buttonMode = true;
-            this.decoration1Case.buttonMode = true;
-            this.decoration2Case.buttonMode = true;
-            this.decoration3Case.buttonMode = true;
-            this.decoration4Case.buttonMode = true;
+            this.decorationCase.setMouseEnabled(true);
+            this.decoration1Case.setMouseEnabled(true);
+            this.decoration2Case.setMouseEnabled(true);
+            this.decoration3Case.setMouseEnabled(true);
+            this.decoration4Case.setMouseEnabled(true);
             this.decoration1Case.visible = false;
             return;
         }// end function

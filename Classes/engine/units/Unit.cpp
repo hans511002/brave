@@ -17,14 +17,12 @@ namespace engine
 		};
 	namespace units
 	{
-
-
 		bool Unit::init() //public function init(event:Event) : void event:Event
 		{
 			//this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
 			this->container->stop();
 			BaseNode::init();
-			//this->container->unitCase.buttonMode = true;
+			//this->container->unitCase.setMouseEnabled(true);
 			//this->container->healthBar->setVisible(false) ;
 			//this->container->healthBar->getDamage->setVisible(false);
 
@@ -128,17 +126,39 @@ namespace engine
  					tempObject->stop();
 					//tempObject->newEnemyCase->stop();
 					tempObject->typeUnit = this->typeUnit;
-					//this->tempObject.newEnemyCase.buttonMode = true;
+					//this->tempObject.newEnemyCase.setMouseEnabled(true);
 					this->world->worldInterface->addChild(tempObject);
 					this->world->worldInterface->listOfNewEnemies.push(tempObject);
 					//Sounds.instance.playSoundWithVol("snd_world_newEnemy", 0.9);
 				}
 			}
 			//this->schedule(schedule_selector(Unit::update), 0.0f);
+			Node *hbDis = (Node*)this->container->getArmature()->getSlot("healthBar")->getDisplay();
+			Vec2 wpos = hbDis->getParent()->convertToWorldSpace(hbDis->getPosition());
+			logInfo("hbDis pos=", wpos, &hbDis->getPosition(), &hbDis->getAnchorPoint());
+			if (hbDis != this->container->healthBar->display){
+				hbDis = this->container->healthBar->display;
+				wpos = hbDis->getParent()->convertToWorldSpace(hbDis->getPosition());
+				logInfo("hbDis pos=", wpos, &hbDis->getPosition(), &hbDis->getAnchorPoint());
+			}
+
+			Node * parent =this->container->healthBar;
+			while (parent->getParent()){
+				string parStr = getNamePath(parent); 
+				Vec2 wpos = parent->getParent()->convertToWorldSpace(parent->getPosition());
+				logInfo(parStr + " pos=", wpos, &parent->getPosition(), &parent->getAnchorPoint());
+ 				parent = parent->getParent();
+			}
+
 			return true;
 		}// end function
 		void Unit::update(float dt) //public function update() : void
 		{
+			//logInfo("healthBar->bone->origin", this->container->healthBar->bone->getOrigin());
+			//Vec2 pos=this->container->healthBar->getPosition();
+			//logInfo("healthBar.getPosition", pos);
+			//Vec2 wpos = this->container->healthBar->localToGlobal(pos);
+			//logInfo("healthBar.localToGlobal", wpos);
 			this->moveHandler();
 			if (this->path >= this->finishPath)
 			{
@@ -611,12 +631,12 @@ namespace engine
 					if (this->health + this->healthPlusValue < this->healthMax)
 					{
 						this->health = this->health + this->healthPlusValue;
-						this->container->healthBar->cont->setScaleX(this->health / this->healthMax);
+						this->container->healthBar->setScaleX(this->health / this->healthMax);
 					}
 					else if (this->container->healthBar->isVisible())
 					{
 						this->container->healthBar->setVisible(false);
-						this->container->healthBar->cont->setScaleX(1);
+						this->container->healthBar->setScaleX(1);
 						this->health = this->healthMax;
 					}
 				}
@@ -1540,7 +1560,7 @@ namespace engine
 					{
 						this->container->healthBar->setVisible(true);
 					}
-					this->container->healthBar->cont->setScaleX(this->health / this->healthMax);
+					this->container->healthBar->setScaleX(this->health / this->healthMax);
 				}
 				else
 				{
@@ -1776,8 +1796,8 @@ namespace engine
                         this->container->levinDeath->setVisible(true);
                         //Sounds.instance.playSound("snd_unit_levinDeath");
                     }
-                    //this->mouseChildren = false;
-                    //this->mouseEnabled = false;
+                    //this->setMouseChildren(false);
+                    //this->setMouseEnabled(false);
                     //this->world->listOfClasses.push(this);
                     //this->world->listOfIndexes1.push(this);
                 }

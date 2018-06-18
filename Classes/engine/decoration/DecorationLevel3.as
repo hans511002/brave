@@ -24,9 +24,9 @@
             this.pumpkin1Case.stop();
             this.pumpkin2Case.stop();
             this.pumpkin3Case.stop();
-            this.pumpkin1Case.buttonMode = true;
-            this.pumpkin2Case.buttonMode = true;
-            this.pumpkin3Case.buttonMode = true;
+            this.pumpkin1Case.setMouseEnabled(true);
+            this.pumpkin2Case.setMouseEnabled(true);
+            this.pumpkin3Case.setMouseEnabled(true);
             return;
         }// end function
 
@@ -34,21 +34,21 @@
         {
             if (this.phase == 0)
             {
-                if (!this.pumpkin1Case.buttonMode)
+                if (!this.pumpkin1Case.mouseEnabled)
                 {
                     if (container.pumpkin1.currentFrame < (container.pumpkin1.totalFrames - 1))
                     {
                         container.pumpkin1.gotoAndStop((container.pumpkin1.currentFrame + 1));
                     }
                 }
-                if (!this.pumpkin2Case.buttonMode)
+                if (!this.pumpkin2Case.mouseEnabled)
                 {
                     if (container.pumpkin2.currentFrame < (container.pumpkin2.totalFrames - 1))
                     {
                         container.pumpkin2.gotoAndStop((container.pumpkin2.currentFrame + 1));
                     }
                 }
-                if (!this.pumpkin3Case.buttonMode)
+                if (!this.pumpkin3Case.mouseEnabled)
                 {
                     if (container.pumpkin3.currentFrame < (container.pumpkin3.totalFrames - 1))
                     {
@@ -80,9 +80,9 @@
                     container.pumpkin1.stop();
                     container.pumpkin2.stop();
                     container.pumpkin3.stop();
-                    this.pumpkin1Case.buttonMode = true;
-                    this.pumpkin2Case.buttonMode = true;
-                    this.pumpkin3Case.buttonMode = true;
+                    this.pumpkin1Case.setMouseEnabled(true);
+                    this.pumpkin2Case.setMouseEnabled(true);
+                    this.pumpkin3Case.setMouseEnabled(true);
                 }
             }
             super.update();
@@ -93,23 +93,23 @@
         {
             if (event.target.name == "pumpkin1Case")
             {
-                if (this.pumpkin1Case.buttonMode)
+                if (this.pumpkin1Case.mouseEnabled)
                 {
-                    this.pumpkin1Case.buttonMode = false;
+                    this.pumpkin1Case.setMouseEnabled(false);
                 }
             }
             else if (event.target.name == "pumpkin2Case")
             {
-                if (this.pumpkin2Case.buttonMode)
+                if (this.pumpkin2Case.mouseEnabled)
                 {
-                    this.pumpkin2Case.buttonMode = false;
+                    this.pumpkin2Case.setMouseEnabled(false);
                 }
             }
             else if (event.target.name == "pumpkin3Case")
             {
-                if (this.pumpkin3Case.buttonMode)
+                if (this.pumpkin3Case.mouseEnabled)
                 {
-                    this.pumpkin3Case.buttonMode = false;
+                    this.pumpkin3Case.setMouseEnabled(false);
                 }
             }
             return;

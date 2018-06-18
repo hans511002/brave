@@ -43,8 +43,8 @@ namespace engine{
             }
             this->world->addChild(this);
             //this->world->listOfClasses.push(this);
-            this->mouseChildren = false;
-            this->mouseEnabled = false;
+            this->setMouseChildren(false);
+            this->setMouseEnabled(false);
             this->world->forseIndexFl = true;
             return;
         }// end function

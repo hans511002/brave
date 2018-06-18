@@ -58,8 +58,8 @@ namespace engine
 				this_pt = this->myPortal->myPoint;
 				this->setPosition(this_pt);
 				container->setVisible(false);
-				this->mouseChildren = false;
-				this->mouseEnabled = false;
+				this->setMouseChildren(false);
+				this->setMouseEnabled(false);
 				this->portalAnima = new MovieClip("unit/", "RoadUnitStone_mc");// RoadUnitStone_mc();
 				this->portalAnima->stop();
 				this->portalAnima->setVisible(false);
@@ -141,8 +141,8 @@ namespace engine
                         this->portalAnima = NULL;
 						container->maskCont->setVisible(false); //visible = false;
                         //container->cont->mask = NULL; 
-                        this->mouseChildren = true;
-                        this->mouseEnabled = true;
+                        this->setMouseChildren(true);
+                        this->setMouseEnabled(true);
                         readyDamage = true;
                         moveFlag = true;
                     }

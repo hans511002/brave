@@ -42,8 +42,8 @@ namespace engine{
 			}
 			this->shadow = new UnitShadow_mc();// MovieClip("sphere", "UnitShadow_mc", "UnitShadow_mc");//UnitShadow_mc();
 			//this->shadow->stop();
-			this->shadow->mouseChildren = false;
-			this->shadow->mouseEnabled = false;
+			this->shadow->setMouseChildren(false);
+			this->shadow->setMouseEnabled(false);
 			this->shadow->setPositionX(this_pt.x);
 			this->shadow->setPositionY(whoShoot->getPositionY());
 			this->shadow->setScale(0.5, 0.5);

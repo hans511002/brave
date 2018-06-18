@@ -53,6 +53,7 @@ namespace engine
 		CREATE_FUNC(WorldInterface);
 		bool init();// (event:Event) : void
 		void update(float dt=0);
+		virtual void onEnter();
         //void clickHandler(Ref* ref);
         
         void mouseMoveHandler(cocos2d::EventMouse* param1);

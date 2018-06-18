@@ -46,8 +46,8 @@
                 {
                     this.container = new WinMenuFinish_mc();
                     this.container.first.sponsor.stop();
-                    this.container.first.sponsor.mouseEnabled = false;
-                    this.container.first.sponsor.mouseChildren = false;
+                    this.container.first.sponsor.setMouseEnabled(false);
+                    this.container.first.sponsor.setMouseChildren(false);
                 }
             }
             else
@@ -62,10 +62,10 @@
             this.container.first.scroll.btnContinue.arrow.stop();
             this.container.first.scroll.btnRestart.stop();
             this.container.first.scroll.btnRestart.arrow.stop();
-            this.container.first.scroll.btnContinue.continueCase.buttonMode = true;
-            this.container.first.scroll.btnRestart.restartCase.buttonMode = true;
+            this.container.first.scroll.btnContinue.continueCase.setMouseEnabled(true);
+            this.container.first.scroll.btnRestart.restartCase.setMouseEnabled(true);
             var _loc_2:* = false;
-            this.container.first.mouseChildren = false;
+            this.container.first.setMouseChildren(false);
             this.container.first.mouseEnabled = _loc_2;
             this.container.first.scroll.btnContinue.arrow.visible = false;
             this.container.first.scroll.btnRestart.arrow.visible = false;
@@ -73,7 +73,7 @@
             this.container.first.scroll.btnY8.y8Case.stop();
             if (!Main.mainClass.IDIClass.isSponsor)
             {
-                this.container.first.scroll.btnY8.y8Case.buttonMode = true;
+                this.container.first.scroll.btnY8.y8Case.setMouseEnabled(true);
             }
             this.addChild(this.container);
             if (this.world.saveBox.gameSave.data.complexityLevel < 4)
@@ -218,7 +218,7 @@
                 {
                     this.openFlag = false;
                     var _loc_2:* = true;
-                    this.container.first.mouseChildren = true;
+                    this.container.first.setMouseChildren(true);
                     this.container.first.mouseEnabled = _loc_2;
                     this.tempObject = new Point(this.mouseX, this.mouseY);
                     this.tempObject1 = this.container.first.scroll.btnContinue.localToGlobal(new Point(this.container.first.scroll.btnContinue.continueCase.x, this.container.first.scroll.btnContinue.continueCase.y));
@@ -241,8 +241,8 @@
                         this.container.first.scroll.btnContinue.arrow.stop();
                         this.container.first.scroll.btnRestart.stop();
                         this.container.first.scroll.btnRestart.arrow.stop();
-                        this.container.first.scroll.btnContinue.continueCase.buttonMode = true;
-                        this.container.first.scroll.btnRestart.restartCase.buttonMode = true;
+                        this.container.first.scroll.btnContinue.continueCase.setMouseEnabled(true);
+                        this.container.first.scroll.btnRestart.restartCase.setMouseEnabled(true);
                         this.container.first.scroll.btnContinue.arrow.visible = false;
                         this.container.first.scroll.btnRestart.arrow.visible = false;
                     }
@@ -347,41 +347,41 @@
                         this.container.first.sponsor.gotoAndStop((this.container.first.sponsor.currentFrame + 1));
                         if (this.container.first.sponsor.link1)
                         {
-                            if (!this.container.first.sponsor.link1.link1Case.buttonMode)
+                            if (!this.container.first.sponsor.link1.link1Case.mouseEnabled)
                             {
                                 this.container.first.sponsor.link1.stop();
                                 this.container.first.sponsor.link1.cont.stop();
                                 this.container.first.sponsor.link1.link1Case.stop();
-                                this.container.first.sponsor.link1.link1Case.buttonMode = true;
+                                this.container.first.sponsor.link1.link1Case.setMouseEnabled(true);
                                 (this.container.first.sponsor.link1.cont.aa_video as FLVPlayback).addEventListener(VideoEvent.COMPLETE, this.link1Play);
                             }
                         }
                         if (this.container.first.sponsor.link2)
                         {
-                            if (!this.container.first.sponsor.link2.link2Case.buttonMode)
+                            if (!this.container.first.sponsor.link2.link2Case.mouseEnabled)
                             {
                                 this.container.first.sponsor.link2.stop();
                                 this.container.first.sponsor.link2.cont.stop();
                                 this.container.first.sponsor.link2.link2Case.stop();
-                                this.container.first.sponsor.link2.link2Case.buttonMode = true;
+                                this.container.first.sponsor.link2.link2Case.setMouseEnabled(true);
                                 (this.container.first.sponsor.link2.cont.wh_video as FLVPlayback).addEventListener(VideoEvent.COMPLETE, this.link2Play);
                             }
                         }
                         if (this.container.first.sponsor.link3)
                         {
-                            if (!this.container.first.sponsor.link3.link3Case.buttonMode)
+                            if (!this.container.first.sponsor.link3.link3Case.mouseEnabled)
                             {
                                 this.container.first.sponsor.link3.stop();
                                 this.container.first.sponsor.link3.cont.stop();
                                 this.container.first.sponsor.link3.link3Case.stop();
-                                this.container.first.sponsor.link3.link3Case.buttonMode = true;
+                                this.container.first.sponsor.link3.link3Case.setMouseEnabled(true);
                                 (this.container.first.sponsor.link3.cont.mk_video as FLVPlayback).addEventListener(VideoEvent.COMPLETE, this.link3Play);
                             }
                         }
                         if (this.container.first.sponsor.currentFrame == this.container.first.sponsor.totalFrames)
                         {
-                            this.container.first.sponsor.mouseEnabled = true;
-                            this.container.first.sponsor.mouseChildren = true;
+                            this.container.first.sponsor.setMouseEnabled(true);
+                            this.container.first.sponsor.setMouseChildren(true);
                         }
                     }
                 }
@@ -415,7 +415,7 @@
             {
                 this.container.first.scroll.btnRestart.gotoAndStop(1);
             }
-            if (this.container.first.scroll.btnY8.y8Case.buttonMode)
+            if (this.container.first.scroll.btnY8.y8Case.mouseEnabled)
             {
                 if (event.target.name == "y8Case")
                 {

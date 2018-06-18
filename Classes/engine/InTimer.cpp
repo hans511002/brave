@@ -52,8 +52,8 @@ namespace engine
                 this->tempObject = new AnimUpgrade_mc();
                 this->tempObject->stop();
                 this->tempObject->setPosition(this->world->worldInterface->container->iceSphere->getPosition()); 
-                this->tempObject->mouseChildren = false;
-                this->tempObject->mouseEnabled = false;
+                this->tempObject->setMouseChildren(false);
+                this->tempObject->setMouseEnabled(false);
                 this->world->worldInterface->addChild(this->tempObject);
                 this->world->worldInterface->listOfAnimation->push(this->tempObject);
                 //Sounds.instance.playSound("snd_menu_upgrIconMouseDown");
@@ -73,8 +73,8 @@ namespace engine
                 this->tempObject = new AnimUpgrade_mc();
                 this->tempObject->stop();
                 this->tempObject->setPosition(this->world->worldInterface->container->levinSphere->getPosition());
-                this->tempObject->mouseChildren = false;
-                this->tempObject->mouseEnabled = false;
+                this->tempObject->setMouseChildren(false);
+                this->tempObject->setMouseEnabled(false);
                 this->world->worldInterface->addChild(this->tempObject);
                 this->world->worldInterface->listOfAnimation->push(this->tempObject);
                 //Sounds.instance.playSound("snd_menu_upgrIconMouseDown");

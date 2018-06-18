@@ -61,7 +61,7 @@ namespace engine
             {
                 world->worldInterface->fasterManage(false);
             }
-            world->worldInterface->container->快.fastCase.buttonMode = false;
+            world->worldInterface->container->快.fastCase.setMouseEnabled(false);
             //Sounds.instance.playSound("snd_boss_start");
             return true;
         }// end function
@@ -177,8 +177,8 @@ namespace engine
                             {
                                 container->healthBar->setVisible(true);
                             } 
-                            this->mouseChildren = false;
-                            this->mouseEnabled = false;
+                            this->setMouseChildren(false);
+                            this->setMouseEnabled(false);
                             //Sounds.instance.playSound("snd_boss_appearDisappear");
                         }
                         else if (container->walkIn->currentFrame < container->walkIn->totalFrames)
@@ -278,8 +278,8 @@ namespace engine
                             {
                                 readyDamage = true;
                             } 
-                            this->mouseChildren = true;
-                            this->mouseEnabled = true;
+                            this->setMouseChildren(true);
+                            this->setMouseEnabled(true);
                         }
                     }
                 }
@@ -360,24 +360,24 @@ namespace engine
                         tempObject->stop();
                         tempObject->x = world->worldInterface->container->butCastGolem.x + world->worldInterface->container->butCastGolem.castGolemCase.x;
                         tempObject->y = world->worldInterface->container->butCastGolem.y + world->worldInterface->container->butCastGolem.castGolemCase.y;
-                        tempObject->mouseChildren = false;
-                        tempObject->mouseEnabled = false;
+                        tempObject->setMouseChildren(false);
+                        tempObject->setMouseEnabled(false);
                         world->worldInterface->addChild(tempObject);
                         world->worldInterface->listOfAnimation.push(tempObject);
                         tempObject = new MovieClip("unit/","AnimUpgrade_mc");//AnimUpgrade_mc();
                         tempObject->stop();
                         tempObject->x = world->worldInterface->container->butCastIceman.x + world->worldInterface->container->butCastIceman.castIcemanCase.x;
                         tempObject->y = world->worldInterface->container->butCastIceman.y + world->worldInterface->container->butCastIceman.castIcemanCase.y;
-                        tempObject->mouseChildren = false;
-                        tempObject->mouseEnabled = false;
+                        tempObject->setMouseChildren(false);
+                        tempObject->setMouseEnabled(false);
                         world->worldInterface->addChild(tempObject);
                         world->worldInterface->listOfAnimation.push(tempObject);
                         tempObject = new MovieClip("unit/","AnimUpgrade_mc");//AnimUpgrade_mc();
                         tempObject->stop();
                         tempObject->x = world->worldInterface->container->butCastAir.x + world->worldInterface->container->butCastAir.castAirCase.x;
                         tempObject->y = world->worldInterface->container->butCastAir.y + world->worldInterface->container->butCastAir.castAirCase.y;
-                        tempObject->mouseChildren = false;
-                        tempObject->mouseEnabled = false;
+                        tempObject->setMouseChildren(false);
+                        tempObject->setMouseEnabled(false);
                         world->worldInterface->addChild(tempObject);
                         world->worldInterface->listOfAnimation.push(tempObject);
                         if (world->cast)
@@ -386,15 +386,15 @@ namespace engine
                         }
                         world->worldInterface->castGolemCounter = 1;
                         world->worldInterface->container->butCastGolem.gotoAndStop(4);
-                        world->worldInterface->container->butCastGolem.castGolemCase.buttonMode = false;
+                        world->worldInterface->container->butCastGolem.castGolemCase.setMouseEnabled(false);
                         world->worldInterface->container->butCastGolem.cont.contMask.scaleY = 0;
                         world->worldInterface->castIcemanCounter = 1;
                         world->worldInterface->container->butCastIceman.gotoAndStop(4);
-                        world->worldInterface->container->butCastIceman.castIcemanCase.buttonMode = false;
+                        world->worldInterface->container->butCastIceman.castIcemanCase.setMouseEnabled(false);
                         world->worldInterface->container->butCastIceman.cont.contMask.scaleY = 0;
                         world->worldInterface->castAirCounter = 1;
                         world->worldInterface->container->butCastAir.gotoAndStop(4);
-                        world->worldInterface->container->butCastAir.castAirCase.buttonMode = false;
+                        world->worldInterface->container->butCastAir.castAirCase.setMouseEnabled(false);
                         world->worldInterface->container->butCastAir.cont.contMask.scaleY = 0;
                         Sounds.instance.playSound("snd_boss_castReset");
                     }
@@ -425,9 +425,9 @@ namespace engine
                         this->speakFlag = false;
                         container->speak.gotoAndStop(1);
                         container->speak->setVisible(false);
-                        if (!world->worldInterface->container->快.fastCase.buttonMode)
+                        if (!world->worldInterface->container->快.fastCase.mouseEnabled)
                         {
-                            world->worldInterface->container->快.fastCase.buttonMode = true;
+                            world->worldInterface->container->快.fastCase.setMouseEnabled(true);
                         }
                     }
                 }
@@ -534,7 +534,7 @@ namespace engine
                 {
                     world->worldInterface->fasterManage(false);
                 }
-                world->worldInterface->container->快.fastCase.buttonMode = false;
+                world->worldInterface->container->快.fastCase.setMouseEnabled(false);
                 this->musicVolumeManageCounter = 3;
                 return;
             }

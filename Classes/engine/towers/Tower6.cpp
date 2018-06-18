@@ -42,7 +42,7 @@ namespace engine
 			container->blockTower->stop();
 			container->boneBlock->stop();
 			container->shotAnima->stop();
-			container->towerCase->buttonMode = true;
+			container->towerCase->setMouseEnabled(true);
 			container->blockTower->setVisible(false);
 			container->boneBlock->setVisible(false);
 			container->shotAnima->setVisible(false);

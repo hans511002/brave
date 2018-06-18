@@ -35,13 +35,11 @@ namespace engine
 			dust4 = this->createMovieClip("dust4", "unit/", "dust4", "UnitBase_mc");
 			cont = this->createMovieClipSub("cont");
 			unitCase = this->createCase("unitCase");
+			
+		
 
 			healthBarGetDamage = (Sprite*)healthBar->getArmature()->getSlot("getDamage")->getDisplay();
 			healthBarCont = (Sprite*)healthBar->getArmature()->getSlot("cont")->getDisplay();
-
-
-			this->setPosition(0, 0);
-
 
 			if (typeUnit == 28){
 				this->giveHealth1 = this->createMovieClipSub("giveHealth1");// DBCCFactory::getInstance()->buildArmatureNode("giveHealth1");
@@ -114,28 +112,28 @@ namespace engine
 
 		bool Unit_mc::init(){
 			MovieClip::init();
-			this->levinDeath->setVisible(false);
-			this->stoneDeath->setVisible(false);
-			this->iceDeath->setVisible(false);
-			this->buffHP->setVisible(false);
-			this->airShock->setVisible(false);
-			this->buffSpeed->setVisible(false);
-			this->dust1->setVisible(false);
-			this->dust2->setVisible(false);
-			this->dust3->setVisible(false);
-			this->fireAttack->setVisible(false);
-			this->iceAttack->setVisible(false);
-			this->levinAttack->setVisible(false);
-			this->iceFreez->setVisible(false);
-			this->fireEffect->setVisible(false);
-			this->iceEffect->setVisible(false);
-			this->armor->setVisible(false);
-			this->healthBar->setVisible(false);
-			this->shadow->setVisible(false);
-			this->selectUnit->setVisible(false);
-			this->dust4->setVisible(false);
+			//this->levinDeath->setVisible(false);
+			//this->stoneDeath->setVisible(false);
+			//this->iceDeath->setVisible(false);
+			//this->buffHP->setVisible(false);
+			//this->airShock->setVisible(false);
+			//this->buffSpeed->setVisible(false);
+			//this->dust1->setVisible(false);
+			//this->dust2->setVisible(false);
+			//this->dust3->setVisible(false);
+			//this->fireAttack->setVisible(false);
+			//this->iceAttack->setVisible(false);
+			//this->levinAttack->setVisible(false);
+			//this->iceFreez->setVisible(false);
+			//this->fireEffect->setVisible(false);
+			//this->iceEffect->setVisible(false);
+			//this->armor->setVisible(false);
+			//this->healthBar->setVisible(false);
+			//this->shadow->setVisible(false);
+			//this->selectUnit->setVisible(false);
+			//this->dust4->setVisible(false);
 
-			this->healthBarGetDamage->setVisible(false);
+			//this->healthBarGetDamage->setVisible(false);
 
 
 
@@ -145,10 +143,13 @@ namespace engine
 
 			cont->setVisible(true);
 
-			return true;
+			this->setPosition(0, 0);
+			
+ 			return true;
 		};
 		void Unit_mc::stop(){
 			MovieClip::stop();
+
 			//this->cont->stop();  
 			//this->buffHP->stop();
 			//this->airShock->stop();

@@ -45,33 +45,20 @@ namespace engine
 
 	bool WorldInterface::init()// (event:Event) : void
 	{
+		BaseNode::init();
 		//this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
 		this->world = Main::mainClass->worldClass;
-
-		//事件统一从world触发
-		//BaseNode *point = this->world->pointer1;// Sprite::create("public/point.png");
-		//point->setPosition(400, 250);
-		//EventListenerMouse *mouseListener= cocos2d::EventListenerMouse::create();
-		//mouseListener->onMouseDown = CC_CALLBACK_1(WorldInterface::mouseDownHandler, this);
-		//mouseListener->onMouseUp = CC_CALLBACK_1(WorldInterface::mouseUpHandler, this);
-		//mouseListener->onMouseMove = CC_CALLBACK_1(WorldInterface::mouseMoveHandler, this); 
-		//this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
-		//point->setVisible(true); 
-
-		//this->addChild(point);
-
-
-
 		//////////////////////////begin////////////////////////////////
-		this->mouseChildren = false;
-		this->mouseEnabled = false;
-		this->setAlpha(0);
+		this->setMouseChildren(false);
+		this->setMouseEnabled(false);
+		//this->setAlpha(0);
 		this->container = new WorldInterface_mc();
 		this->addChild(this->container);
-		this->container->init();
-        this->container->setPosition(0, Main::SCREEN_HEIGHT);
 
+		//printChildNodes();
+		 
 		this->container->stop();
+
 		this->container->fireBack->stop();
 		this->container->iceBack->stop();
 		this->container->stoneBack->stop();
@@ -83,6 +70,8 @@ namespace engine
 		this->container->levinSphere->stop();
 		this->container->getAll->stop();
 		this->container->buyFire->stop();
+		printNodePos(this->container->buyFireBuyTXT);
+
 		this->container->buyIce->stop();
 		this->container->buyStone->stop();
 		this->container->buyLevin->stop();
@@ -91,12 +80,7 @@ namespace engine
 		this->container->buyIceCoin->stop();
 		this->container->buyStoneCoin->stop();
 		this->container->buyLevinCoin->stop();
-		this->container->buyGetAllCoin->stop();
-		//this->container->buyFireLightUp->stop();
-		//this->container->buyIceLightUp->stop();
-		//this->container->buyStoneLightUp->stop();
-		//this->container->buyLevinLightUp->stop();
-		//this->container->buyGetAllLightUp->stop();
+		this->container->buyGetAllCoin->stop(); 
 		this->container->sell->stop();
 		this->container->book->stop();
 		this->container->pause->stop();
@@ -109,34 +93,41 @@ namespace engine
 		this->container->fast->stop();
 		//this->container->traceBezier->stop();
 		this->container->barInfo->setPositionY(15);//Main:: - 585
-		this->container->bookBookCase->buttonMode = true;
-		this->container->pausePauseCase->buttonMode = true;
-		this->container->startWavesStartWavesCase->buttonMode = true;
-		this->container->butCastGolemCastGolemCase->buttonMode = true;
-		this->container->butCastIcemanCastIcemanCase->buttonMode = true;
-		this->container->butCastAirCastAirCase->buttonMode = true;
-		//this->container->slow->buttonMode = true;
-		if (this->container->traceBezier)this->container->traceBezier->buttonMode = true;
-		this->container->fireNumTXT->mouseEnabled = false;
-		this->container->iceNumTXT->mouseEnabled = false;
-		this->container->stoneNumTXT->mouseEnabled = false;
-		this->container->levinNumTXT->mouseEnabled = false;
-		this->container->barInfo->mouseChildren = false;
-		this->container->barInfo->mouseEnabled = false;
-		this->container->lastTime->mouseEnabled = false;
+		this->container->bookBookCase->setMouseEnabled(true);
+		this->container->pausePauseCase->setMouseEnabled(true);
+		this->container->startWavesStartWavesCase->setMouseEnabled(true);
+		this->container->butCastGolemCastGolemCase->setMouseEnabled(true);
+		this->container->butCastIcemanCastIcemanCase->setMouseEnabled(true);
+		this->container->butCastAirCastAirCase->setMouseEnabled(true);
+		//this->container->slow->setMouseEnabled(true);
+		if (this->container->traceBezier)this->container->traceBezier->setMouseEnabled(true);
+		//this->container->fireNumTXT->setMouseEnabled(false);
+		//this->container->iceNumTXT->setMouseEnabled(false);
+		//this->container->stoneNumTXT->setMouseEnabled(false);
+		//this->container->levinNumTXT->setMouseEnabled(false);
+		//this->container->barInfo->setMouseChildren(false);
+		//this->container->barInfo->setMouseEnabled(false);
+		//this->container->lastTime->setMouseEnabled(false);
+
 		this->container->butCastGolem->setAlpha(0);
 		this->container->butCastIceman->setAlpha(0);
 		this->container->butCastAir->setAlpha(0);
 
-		this->container->butCastGolem->setVisible(false);
-		this->container->butCastIceman->setVisible(false);
-		this->container->butCastAir->setVisible(false);
-		this->container->barInfo->setVisible(false);
+		//this->container->butCastGolem->setVisible(false);
+		//this->container->butCastIceman->setVisible(false);
+		//this->container->butCastAir->setVisible(false);
+		//this->container->barInfo->setVisible(false);
+
 		this->container->lastTime->setVisible(false);
-		this->container->buyFire->setVisible(false);
-		this->container->buyIce->setVisible(false);
-		this->container->buyStone->setVisible(false);
-		this->container->buyLevin->setVisible(false);
+		printNodePos(this->container->lastTime);
+
+		//this->container->buyFire->setVisible(false);
+		//this->container->buyIce->setVisible(false);
+		//this->container->buyStone->setVisible(false);
+		//this->container->buyLevin->setVisible(false);
+		//this->container->buyGetAll->setVisible(false);
+
+
 		//		this->container->backComponents.cacheAsBitmap = true;
 		this->container->fireSphereMyPoint = this->container->fireSphere->localToGlobal(this->container->fireSphereSphereCase->getPosition());
 		this->container->iceSphereMyPoint = this->container->iceSphere->localToGlobal(this->container->iceSphereSphereCase->getPosition());
@@ -161,7 +152,7 @@ namespace engine
 		this->container->buyGetAll->setVisible(false);
 		this->container->testRestart->stop();
 		this->container->testRestartBoard->stop();
-		this->container->testRestart->buttonMode = true;
+		this->container->testRestart->setMouseEnabled(true);
 		//if (Main::mainClass->readXMLClass.bezierBuildXML)
 		//{
 		//	this->world->bezierClass->tracePoints = this->container->traceBezier;
@@ -172,8 +163,17 @@ namespace engine
 		//	this->container->traceBezier->setVisible( false);
 		//}
 		this->lastTime = this->container->lastTime;
+		
+		if (!this->world)
+		{
+			return true;
+		}
+		
 		//this->container->removeChild(this->lastTime);
 		//this->world->addChild(this->lastTime);
+
+
+
 		int complexityLevel = this->world->saveBox->getIntValue("complexityLevel");
 		if (complexityLevel == 4)
 		{
@@ -208,14 +208,22 @@ namespace engine
 		this->castMask->interfaceUpCase->stop();
 		this->castMask->sellCase->stop();
 		this->castMask->setVisible(false);
+
 		this->addChild(this->castMask);
 		this->world->forseIndexFl = true;
 		this->blockCastGolem = true;
 		this->blockCastIceman = true;
 		this->blockCastAir = true;
-		this->spheresBlockManage();
 		return true;
 	};
+
+	void WorldInterface::onEnter(){
+		this->spheresBlockManage();
+		BaseNode::onEnter();
+
+	};
+
+
 	//void WorldInterface::clickHandler(Ref* ref)
 	//{
 	//    ui::Button * node = (ui::Button *)ref;
@@ -787,8 +795,8 @@ namespace engine
 		}
 		else
 		{
-			this->mouseChildren = true;
-			this->mouseEnabled = true;
+			this->setMouseChildren(true);
+			this->setMouseEnabled(true);
 			this->setAlpha(1);
 		}
 		return;
@@ -832,7 +840,7 @@ namespace engine
 			}
 			else if (event->target->getName() == "fastCase")
 			{
-				if (ISTYPE(EventNode,event->target)->buttonMode)
+				if (ISTYPE(EventNode,event->target)->mouseEnabled)
 				{
 					if (this->container->fast->currentFrame == 2 || this->container->fast->currentFrame == 5)
 					{
@@ -870,7 +878,7 @@ namespace engine
 			}
 			else if (event->target->getName() == "sphereCase")
 			{
-				if (ISTYPE(EventNode, event->target)->buttonMode)
+				if (ISTYPE(EventNode, event->target)->mouseEnabled)
 				{
 					this->i = 0;
 					while (this->i < this->world->listOfMoveSpheres.size())
@@ -1025,7 +1033,7 @@ namespace engine
 			}
 			else if (event->target->getName() == "startWavesCase")
 			{
-				if (this->container->startWavesStartWavesCase->buttonMode)
+				if (this->container->startWavesStartWavesCase->mouseEnabled)
 				{
 					this->world->wavesClass->startWaves();
 				}
@@ -1066,8 +1074,8 @@ namespace engine
 				MouseStatusMC * tempObject = ISTYPE(MouseStatusMC, event->target->getParent());
 				if (tempObject){
 					tempObject->mouseStatus = 3;
-					tempObject->mouseChildren = false;
-					tempObject->mouseEnabled = false;
+					tempObject->setMouseChildren(false);
+					tempObject->setMouseEnabled(false);
 				} 
 				//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 			}
@@ -1115,7 +1123,7 @@ namespace engine
 			}
 			if (event->target->getName() == "fastCase")
 			{
-				if (ISTYPE(EventNode, event->target)->buttonMode)
+				if (ISTYPE(EventNode, event->target)->mouseEnabled)
 				{
 					if (this->container->fast->currentFrame == 3 || this->container->fast->currentFrame == 6)
 					{
@@ -1221,9 +1229,10 @@ namespace engine
 		{
 			if (event->target->getName() == "sphereCase")
 			{
-				if (event->target->getParent()->getName() == "fireSphere")
+				Node * parent = event->target->getParent()->getParent();
+				if (parent->getName() == "fireSphere")
 				{
-					if (ISTYPE(EventNode, event->target)->buttonMode && this->container->fireBack->currentFrame == 1)
+					if (ISTYPE(EventNode, event->target)->mouseEnabled && this->container->fireBack->currentFrame == 1)
 					{
 						if (this->container->iceBack->currentFrame == 2)
 						{
@@ -1248,7 +1257,7 @@ namespace engine
 				}
 				else if (event->target->getParent()->getName() == "iceSphere")
 				{
-					if (ISTYPE(EventNode, event->target)->buttonMode && this->container->iceBack->currentFrame == 1)
+					if (ISTYPE(EventNode, event->target)->mouseEnabled && this->container->iceBack->currentFrame == 1)
 					{
 						if (this->container->fireBack->currentFrame == 2)
 						{
@@ -1273,7 +1282,7 @@ namespace engine
 				}
 				else if (event->target->getParent()->getName() == "stoneSphere")
 				{
-					if (ISTYPE(EventNode, event->target)->buttonMode && this->container->stoneBack->currentFrame == 1)
+					if (ISTYPE(EventNode, event->target)->mouseEnabled && this->container->stoneBack->currentFrame == 1)
 					{
 						if (this->container->fireBack->currentFrame == 2)
 						{
@@ -1298,7 +1307,7 @@ namespace engine
 				}
 				else if (event->target->getParent()->getName() == "levinSphere")
 				{
-					if (ISTYPE(EventNode, event->target)->buttonMode && this->container->levinBack->currentFrame == 1)
+					if (ISTYPE(EventNode, event->target)->mouseEnabled && this->container->levinBack->currentFrame == 1)
 					{
 						if (this->container->fireBack->currentFrame == 2)
 						{
@@ -1323,7 +1332,7 @@ namespace engine
 				}
 				else if (event->target->getParent()->getName() == "getAll")
 				{
-					if (ISTYPE(EventNode, event->target)->buttonMode && this->container->getAll->currentFrame == 1)
+					if (ISTYPE(EventNode, event->target)->mouseEnabled && this->container->getAll->currentFrame == 1)
 					{
 						if (this->container->fireBack->currentFrame == 2)
 						{
@@ -1353,8 +1362,8 @@ namespace engine
 								this->getAllHint = new Hint_mc();
 								this->getAllHint->gotoAndStop(15);
 								this->getAllHint->setPosition(540, 45); //Main::SCREEN_HEGIHT-45;
-								this->getAllHint->mouseChildren = false;
-								this->getAllHint->mouseEnabled = false;
+								this->getAllHint->setMouseChildren(false);
+								this->getAllHint->setMouseEnabled(false);
 								this->addChild(this->getAllHint, 1);
 							}
 						}
@@ -1403,7 +1412,7 @@ namespace engine
 			}
 			if (event->target->getName() == "fastCase")
 			{
-				if (ISTYPE(EventNode, event->target)->buttonMode)
+				if (ISTYPE(EventNode, event->target)->mouseEnabled)
 				{
 					if (this->container->fast->currentFrame == 1 || this->container->fast->currentFrame == 4)
 					{
@@ -1497,7 +1506,7 @@ namespace engine
 			}
 			if (event->target->getName() == "startWavesCase")
 			{
-				if (this->container->startWavesStartWavesCase->buttonMode)
+				if (this->container->startWavesStartWavesCase->mouseEnabled)
 				{
 					if (this->container->startWaves->currentFrame <= 10)
 					{
@@ -1506,7 +1515,7 @@ namespace engine
 					}
 				}
 			}
-			else if (this->container->startWavesStartWavesCase->buttonMode)
+			else if (this->container->startWavesStartWavesCase->mouseEnabled)
 			{
 				if (this->container->startWaves->currentFrame > 10)
 				{
@@ -1695,17 +1704,18 @@ namespace engine
 			}
 			if (event->target->getName() == "pointerCase")
 			{
-				LevelPointer * pointer = ISTYPE(LevelPointer, event->target->getParent());
+				Node * parent=event->target->getParent()->getParent()->getParent()->getParent();
+				LevelPointer * pointer = ISTYPE(LevelPointer, parent);
 				if (!pointer->mouseFlag)
 				{
-					this->world->pointer1->mouseFlag = true;
+					this->world->pointer1->setMouseFlag(true);
 					if (this->world->pointer2)
 					{
-						this->world->pointer2->mouseFlag = true;
+						this->world->pointer2->setMouseFlag(true);
 					}
 					if (this->world->pointer3)
 					{
-						this->world->pointer3->mouseFlag = true;
+						this->world->pointer3->setMouseFlag(true);
 					}
 					//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
 				}
@@ -1714,20 +1724,20 @@ namespace engine
 			{
 				if (this->world->pointer1->mouseFlag)
 				{
-					this->world->pointer1->mouseFlag = false;
+					this->world->pointer1->setMouseFlag(false);
 				}
 				if (this->world->pointer2)
 				{
 					if (this->world->pointer2->mouseFlag)
 					{
-						this->world->pointer2->mouseFlag = false;
+						this->world->pointer2->setMouseFlag(false);
 					}
 				}
 				if (this->world->pointer3)
 				{
 					if (this->world->pointer3->mouseFlag)
 					{
-						this->world->pointer3->mouseFlag = false;
+						this->world->pointer3->setMouseFlag(false);
 					}
 				}
 			}
@@ -1778,8 +1788,8 @@ namespace engine
 					this->sellHint->setPosition(645, Main::SCREEN_HEIGHT - 50);
 					this->sellHint->setScaleY(0.7f);
 					this->sellHint->setScaleX(0.7f);
-					this->sellHint->mouseChildren = false;
-					this->sellHint->mouseEnabled = false;
+					this->sellHint->setMouseChildren(false);
+					this->sellHint->setMouseEnabled(false);
 					this->addChild(this->sellHint);
 				}
 			}
@@ -1818,6 +1828,7 @@ namespace engine
 		sprintf(tmp, "%i/%i", this->world->wavesClass->nowWave, this->world->wavesClass->maxWaves);
 		this->container->waveTXT->setText(tmp);
 		this->container->fireNumTXT->setText(itoa(this->fireCount, tmp, 10));
+		printNodePos(this->container->buyFireBuyTXT);
 
 		if (this->fireCount > 0)
 		{
@@ -1886,94 +1897,120 @@ namespace engine
 		std::setText(this->container->buyGetAllBuyTXT, Main::mainClass->readXMLClass.listOfFirePriceXML[this->fireBuyHistory]
 			+ Main::mainClass->readXMLClass.listOfIcePriceXML[this->iceBuyHistory] + Main::mainClass->readXMLClass.listOfStonePriceXML[this->stoneBuyHistory]
 			+ Main::mainClass->readXMLClass.listOfLevinPriceXML[this->levinBuyHistory]);
-		if (std::getInt(this->container->buyFireBuyTXT) < 10)
-		{
-			this->container->buyFireCoin->setPositionX(-5.75f);
-			this->container->buyFireCoin->setPositionY(13.15f);
-		}
-		else
-		{
-			this->container->buyFireCoin->setPositionX(-9.25f);
-			this->container->buyFireCoin->setPositionY(13.15f);
-		}
-		if (std::getInt(this->container->buyIceBuyTXT) < 10)
-		{
-			this->container->buyIceCoin->setPositionX(-5.75f);
-			this->container->buyIceCoin->setPositionY(13.15f);
-		}
-		else
-		{
-			this->container->buyIceCoin->setPositionX(-9.25f);
-			this->container->buyIceCoin->setPositionY(13.15f);
-		}
-		if (std::getInt(this->container->buyStoneBuyTXT) < 10)
-		{
-			this->container->buyStoneCoin->setPositionX(-5.75f);
-			this->container->buyStoneCoin->setPositionY(13.15f);
-		}
-		else
-		{
-			this->container->buyStoneCoin->setPositionX(-9.25f);
-			this->container->buyStoneCoin->setPositionY(13.15f);
-		}
-		if (std::getInt(this->container->buyLevinBuyTXT) < 10)
-		{
-			this->container->buyLevinCoin->setPositionX(-5.75f);
-			this->container->buyLevinCoin->setPositionY(13.15f);
-		}
-		else
-		{
-			this->container->buyLevinCoin->setPositionX(-9.25f);
-			this->container->buyLevinCoin->setPositionY(13.15f);
-		}
-		if (std::getInt(this->container->buyGetAllBuyTXT) < 10)
-		{
-			this->container->buyGetAllCoin->setPositionX(-8.6f);
-			this->container->buyGetAllCoin->setPositionY(13.15f);
-		}
-		else if (std::getInt(this->container->buyGetAllBuyTXT) < 100)
-		{
-			this->container->buyGetAllCoin->setPositionX(-11);
-			this->container->buyGetAllCoin->setPositionY(13.15f);
-		}
-		else
-		{
-			this->container->buyGetAllCoin->setPositionX(-14.2f);
-			this->container->buyGetAllCoin->setPositionY(13.15f);
-		}
+		//if (std::getInt(this->container->buyFireBuyTXT) < 10)
+		//{
+		//	this->container->buyFireCoin->setPositionX(-5.75f);
+		//	this->container->buyFireCoin->setPositionY(13.15f);
+		//}
+		//else
+		//{
+		//	this->container->buyFireCoin->setPositionX(-9.25f);
+		//	this->container->buyFireCoin->setPositionY(13.15f);
+		//}
+		//if (std::getInt(this->container->buyIceBuyTXT) < 10)
+		//{
+		//	this->container->buyIceCoin->setPositionX(-5.75f);
+		//	this->container->buyIceCoin->setPositionY(13.15f);
+		//}
+		//else
+		//{
+		//	this->container->buyIceCoin->setPositionX(-9.25f);
+		//	this->container->buyIceCoin->setPositionY(13.15f);
+		//}
+		//if (std::getInt(this->container->buyStoneBuyTXT) < 10)
+		//{
+		//	this->container->buyStoneCoin->setPositionX(-5.75f);
+		//	this->container->buyStoneCoin->setPositionY(13.15f);
+		//}
+		//else
+		//{
+		//	this->container->buyStoneCoin->setPositionX(-9.25f);
+		//	this->container->buyStoneCoin->setPositionY(13.15f);
+		//}
+		//if (std::getInt(this->container->buyLevinBuyTXT) < 10)
+		//{
+		//	this->container->buyLevinCoin->setPositionX(-5.75f);
+		//	this->container->buyLevinCoin->setPositionY(13.15f);
+		//}
+		//else
+		//{
+		//	this->container->buyLevinCoin->setPositionX(-9.25f);
+		//	this->container->buyLevinCoin->setPositionY(13.15f);
+		//}
+		//if (std::getInt(this->container->buyGetAllBuyTXT) < 10)
+		//{
+		//	this->container->buyGetAllCoin->setPositionX(-8.6f);
+		//	this->container->buyGetAllCoin->setPositionY(13.15f);
+		//}
+		//else if (std::getInt(this->container->buyGetAllBuyTXT) < 100)
+		//{
+		//	this->container->buyGetAllCoin->setPositionX(-11);
+		//	this->container->buyGetAllCoin->setPositionY(13.15f);
+		//}
+		//else
+		//{
+		//	this->container->buyGetAllCoin->setPositionX(-14.2f);
+		//	this->container->buyGetAllCoin->setPositionY(13.15f);
+		//}
+		printNodePos(this->container->fireSphere); 
+
 		int firePrice = std::getInt(this->container->buyFireBuyTXT);
 		if (this->container->fireSphere->isVisible() && (this->fireCount > 0 || this->world->money >= firePrice))
 		{
-			if (!this->container->fireSphereSphereCase->buttonMode)
+			if (!this->container->fireSphereSphereCase->mouseEnabled)
 			{
-				this->container->fireSphereSphereCase->buttonMode = true;
+				this->container->fireSphereSphereCase->setMouseEnabled(true);
 				this->container->fireSphere->setAlpha(1);
 			}
 			if (this->world->money >= firePrice)
 			{
 				if (this->container->buyFire->currentFrame == 2)
 				{
-					this->container->buyFireMyCost = firePrice;
+					if (this->container->buyFireMyCost = firePrice)
+					{
+						this->container->buyFireMyCost = firePrice;
+						std::setText(this->container->buyFireBuyTXT, this->container->buyFireMyCost);
+					}
 					this->container->buyFireCoinMyPoint = this->container->buyFireCoin->getPosition();
 					this->container->buyFire->gotoAndStop(1);
-					std::setText(this->container->buyFireBuyTXT, this->container->buyFireMyCost);
 					this->container->buyFireCoin->gotoAndStop(1);
-					this->container->buyFireCoin->setPosition(this->container->buyFireCoinMyPoint);
+					//this->container->buyFireCoin->setPosition(this->container->buyFireCoinMyPoint);
 				}
 			}
 			else if (this->container->buyFire->currentFrame == 1)
 			{
-				this->container->buyFireMyCost = firePrice;
+				if (this->container->buyFireMyCost = firePrice)
+				{
+					this->container->buyFireMyCost = firePrice;
+					std::setText(this->container->buyFireBuyTXT, this->container->buyFireMyCost);
+				} 
 				this->container->buyFireCoinMyPoint = this->container->buyFireCoin->getPosition();
 				this->container->buyFire->gotoAndStop(2);
-				std::setText(this->container->buyFireBuyTXT, this->container->buyFireMyCost);
 				this->container->buyFireCoin->gotoAndStop(2);
-				this->container->buyFireCoin->setPosition(this->container->buyFireCoinMyPoint);
+				//this->container->buyFireCoin->setPosition(this->container->buyFireCoinMyPoint);
 				this->container->buyFireCoin->setScaleY(0.8f);
 				this->container->buyFireCoin->setScaleX(0.8f);
 			}
+			//this->container->buyFireMyCost = firePrice;
+			//this->container->buyFireCoinMyPoint = this->container->buyFireCoin->getPosition();
+			////std::setText(this->container->buyFireBuyTXT, this->container->buyFireMyCost);
+			//if (this->world->money >= firePrice)
+			//{
+			//	if (this->container->buyFire->currentFrame != 1)
+			//	{
+			//		this->container->buyFire->gotoAndStop(1);
+			//		this->container->buyFireCoin->gotoAndStop(1);
+			//	}
+			//}
+			//else if (this->container->buyFire->currentFrame != 2)
+			//{ 
+ 		//	  this->container->buyFire->gotoAndStop(2);
+			//	this->container->buyFireCoin->gotoAndStop(2);
+			//	this->container->buyFireCoin->setScaleY(0.8f);
+			//	this->container->buyFireCoin->setScaleX(0.8f);
+			//}
 
-			if (this->container->fireSphereSphereCase->buttonMode)
+			if (this->container->fireSphereSphereCase->mouseEnabled)
 			{
 				if (!this->world->getSphere)
 				{
@@ -2035,9 +2072,9 @@ namespace engine
 		}
 		else
 		{
-			if (this->container->fireSphereSphereCase->buttonMode)
+			if (this->container->fireSphereSphereCase->mouseEnabled)
 			{
-				this->container->fireSphereSphereCase->buttonMode = false;
+				this->container->fireSphereSphereCase->setMouseEnabled(false);
 				this->container->fireBack->gotoAndStop(1);
 				if (this->container->buyFireLightUp->isVisible())
 				{
@@ -2051,10 +2088,20 @@ namespace engine
 				this->container->buyFire->gotoAndStop(2);
 				std::setText(this->container->buyFireBuyTXT, this->container->buyFireMyCost);
 				this->container->buyFireCoin->gotoAndStop(2);
-				this->container->buyFireCoin->setPosition(this->container->buyFireCoinMyPoint);
+				//this->container->buyFireCoin->setPosition(this->container->buyFireCoinMyPoint);
 				this->container->buyFireCoin->setScaleY(0.8f);
 				this->container->buyFireCoin->setScaleX(0.8f);
 			}
+			//this->container->buyFireMyCost = std::getInt(this->container->buyFireBuyTXT);
+			//this->container->buyFireCoinMyPoint = this->container->buyFireCoin->getPosition();
+			//std::setText(this->container->buyFireBuyTXT, this->container->buyFireMyCost);
+			//if (this->container->buyFire->currentFrame != 2)
+			//{
+			//	this->container->buyFire->gotoAndStop(2);
+			//	this->container->buyFireCoin->gotoAndStop(2);
+			//	this->container->buyFireCoin->setScaleY(0.8f);
+			//	this->container->buyFireCoin->setScaleX(0.8f);
+			//}
 			if (this->container->fireSphere->getAlpha() != 0.5)
 			{
 				this->container->fireSphere->setAlpha(0.5);
@@ -2063,9 +2110,9 @@ namespace engine
 
 		if (this->container->iceSphere->isVisible() && (this->iceCount > 0 || this->world->money >= std::getInt(this->container->buyIceBuyTXT)))
 		{
-			if (!this->container->iceSphereSphereCase->buttonMode)
+			if (!this->container->iceSphereSphereCase->mouseEnabled)
 			{
-				this->container->iceSphereSphereCase->buttonMode = true;
+				this->container->iceSphereSphereCase->setMouseEnabled(true);
 				this->container->iceSphere->setAlpha(1);
 			}
 			if (this->world->money >= std::getInt(this->container->buyIceBuyTXT))
@@ -2093,7 +2140,7 @@ namespace engine
 				this->container->buyIceCoin->setScaleY(0.8f);
 				this->container->buyIceCoin->setScaleX(0.8f);
 			}
-			if (this->container->iceSphereSphereCase->buttonMode)
+			if (this->container->iceSphereSphereCase->mouseEnabled)
 			{
 				if (!this->world->getSphere)
 				{
@@ -2155,9 +2202,9 @@ namespace engine
 		}
 		else
 		{
-			if (this->container->iceSphereSphereCase->buttonMode)
+			if (this->container->iceSphereSphereCase->mouseEnabled)
 			{
-				this->container->iceSphereSphereCase->buttonMode = false;
+				this->container->iceSphereSphereCase->setMouseEnabled(false);
 				this->container->iceBack->gotoAndStop(1);
 				if (this->container->buyIceLightUp->isVisible())
 				{
@@ -2183,9 +2230,9 @@ namespace engine
 
 		if (this->container->stoneSphere->isVisible() && (this->stoneCount > 0 || this->world->money >= std::getInt(this->container->buyStoneBuyTXT)))
 		{
-			if (!this->container->stoneSphereSphereCase->buttonMode)
+			if (!this->container->stoneSphereSphereCase->mouseEnabled)
 			{
-				this->container->stoneSphereSphereCase->buttonMode = true;
+				this->container->stoneSphereSphereCase->setMouseEnabled(true);
 				this->container->stoneSphere->setAlpha(1);
 			}
 			if (this->world->money >= std::getInt(this->container->buyStoneBuyTXT))
@@ -2213,7 +2260,7 @@ namespace engine
 				this->container->buyStoneCoin->setScaleY(0.8f);
 				this->container->buyStoneCoin->setScaleX(0.8f);
 			}
-			if (this->container->stoneSphereSphereCase->buttonMode)
+			if (this->container->stoneSphereSphereCase->mouseEnabled)
 			{
 				if (!this->world->getSphere)
 				{
@@ -2275,9 +2322,9 @@ namespace engine
 		}
 		else
 		{
-			if (this->container->stoneSphereSphereCase->buttonMode)
+			if (this->container->stoneSphereSphereCase->mouseEnabled)
 			{
-				this->container->stoneSphereSphereCase->buttonMode = false;
+				this->container->stoneSphereSphereCase->setMouseEnabled(false);
 				this->container->stoneBack->gotoAndStop(1);
 				if (this->container->buyStoneLightUp->isVisible())
 				{
@@ -2303,9 +2350,9 @@ namespace engine
 
 		if (this->container->levinSphere->isVisible() && (this->levinCount > 0 || this->world->money >= std::getInt(this->container->buyLevinBuyTXT)))
 		{
-			if (!this->container->levinSphereSphereCase->buttonMode)
+			if (!this->container->levinSphereSphereCase->mouseEnabled)
 			{
-				this->container->levinSphereSphereCase->buttonMode = true;
+				this->container->levinSphereSphereCase->setMouseEnabled(true);
 				this->container->levinSphere->setAlpha(1);
 			}
 			if (this->world->money >= std::getInt(this->container->buyLevinBuyTXT))
@@ -2333,7 +2380,7 @@ namespace engine
 				this->container->buyLevinCoin->setScaleY(0.8f);
 				this->container->buyLevinCoin->setScaleX(0.8f);
 			}
-			if (this->container->levinSphereSphereCase->buttonMode)
+			if (this->container->levinSphereSphereCase->mouseEnabled)
 			{
 				if (!this->world->getSphere)
 				{
@@ -2395,9 +2442,9 @@ namespace engine
 		}
 		else
 		{
-			if (this->container->levinSphereSphereCase->buttonMode)
+			if (this->container->levinSphereSphereCase->mouseEnabled)
 			{
-				this->container->levinSphereSphereCase->buttonMode = false;
+				this->container->levinSphereSphereCase->setMouseEnabled(false);
 				this->container->levinBack->gotoAndStop(1);
 				if (this->container->buyLevinLightUp->isVisible())
 				{
@@ -2425,9 +2472,9 @@ namespace engine
 		{
 			if (this->container->getAll->isVisible() && (this->getAllCount > 0 || this->world->money >= std::getInt(this->container->buyGetAllBuyTXT)))
 			{
-				if (!this->container->getAllSphereCase->buttonMode)
+				if (!this->container->getAllSphereCase->mouseEnabled)
 				{
-					this->container->getAllSphereCase->buttonMode = true;
+					this->container->getAllSphereCase->setMouseEnabled(true);
 					this->container->getAll->setAlpha(1);
 				}
 				if (this->world->money >= std::getInt(this->container->buyGetAllBuyTXT))
@@ -2455,7 +2502,7 @@ namespace engine
 					this->container->buyGetAllCoin->setScaleY(0.8f);
 					this->container->buyGetAllCoin->setScaleX(0.8f);
 				}
-				if (this->container->getAllSphereCase->buttonMode)
+				if (this->container->getAllSphereCase->mouseEnabled)
 				{
 					if (!this->world->getSphere)
 					{
@@ -2486,9 +2533,9 @@ namespace engine
 			}
 			else
 			{
-				if (this->container->getAllSphereCase->buttonMode)
+				if (this->container->getAllSphereCase->mouseEnabled)
 				{
-					this->container->getAllSphereCase->buttonMode = false;
+					this->container->getAllSphereCase->setMouseEnabled(false);
 					this->container->getAll->gotoAndStop(1);
 					if (this->container->buyGetAllLightUp->isVisible())
 					{
@@ -2782,7 +2829,7 @@ namespace engine
 		this->container->butCastAir->gotoAndStop(6);
 		//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 		this->castRegime("on");
-		this->world->road->setVisible(false);
+		if (this->world->road)this->world->road->setVisible(false);
 		this->addCast("air");
 	}// end function
 
@@ -2824,7 +2871,7 @@ namespace engine
 				this->castGolemCounter = 0;
 				this->container->butCastGolemContContMask->setScaleY(1);
 				this->container->butCastGolem->gotoAndStop(1);
-				this->container->butCastGolemCastGolemCase->buttonMode = true;
+				this->container->butCastGolemCastGolemCase->setMouseEnabled(true);
 				this->autoguidersButtons();
 				//Sounds.instance.playSound("snd_cast_ready");
 			}
@@ -2841,7 +2888,7 @@ namespace engine
 				this->castIcemanCounter = 0;
 				this->container->butCastIcemanContContMask->setScaleY(1);
 				this->container->butCastIceman->gotoAndStop(1);
-				this->container->butCastIcemanCastIcemanCase->buttonMode = true;
+				this->container->butCastIcemanCastIcemanCase->setMouseEnabled(true);
 				this->autoguidersButtons();
 				//Sounds.instance.playSound("snd_cast_ready");
 			}
@@ -2858,7 +2905,7 @@ namespace engine
 				this->castAirCounter = 0;
 				this->container->butCastAirContContMask->setScaleY(1);
 				this->container->butCastAir->gotoAndStop(1);
-				this->container->butCastAirCastAirCase->buttonMode = true;
+				this->container->butCastAirCastAirCase->setMouseEnabled(true);
 				this->autoguidersButtons();
 				//Sounds.instance.playSound("snd_cast_ready");
 			}
@@ -2871,31 +2918,31 @@ namespace engine
 		{
 			this->castMask->setVisible(true);
 			this->world->manageMouse("hide");
-			this->container->mouseChildren = false;
-			this->container->mouseEnabled = false;
+			this->container->setMouseChildren(false);
+			this->container->setMouseEnabled(false);
 			this->i = 0;
 			while (this->i < this->world->listOfPlaces.size())
 			{
-				this->world->listOfPlaces[this->i]->mouseChildren = false;
-				this->world->listOfPlaces[this->i]->mouseEnabled = false;
+				this->world->listOfPlaces[this->i]->setMouseChildren(false);
+				this->world->listOfPlaces[this->i]->setMouseEnabled(false);
 				i++;
 			}
-			this->world->road->setVisible(true);
+			if (this->world->road)this->world->road->setVisible(true);
 		}
 		else if (param1 == "off")
 		{
 			this->castMask->setVisible(false);
 			this->world->manageMouse("show");
-			this->container->mouseChildren = true;
-			this->container->mouseEnabled = true;
+			this->container->setMouseChildren(true);
+			this->container->setMouseEnabled(true);
 			this->i = 0;
 			while (this->i < this->world->listOfPlaces.size())
 			{
-				this->world->listOfPlaces[this->i]->mouseChildren = true;
-				this->world->listOfPlaces[this->i]->mouseEnabled = true;
+				this->world->listOfPlaces[this->i]->setMouseChildren(true);
+				this->world->listOfPlaces[this->i]->setMouseEnabled(true);
 				i++;
 			}
-			this->world->road->setVisible(false);
+			if (this->world->road)this->world->road->setVisible(false);
 			if (this->world->pointer1)
 			{
 				this->world->pointer1->setAlpha(1);
@@ -3376,53 +3423,67 @@ namespace engine
 			this->container->fireSphere->setAlpha(0);
 			this->container->fireNumTXT->setAlpha(0);
 			this->container->buyFire->setAlpha(0);
-			this->container->fireSphere->mouseChildren = false;
-			this->container->fireSphere->mouseEnabled = false;
-			this->container->fireNumTXT->mouseEnabled = false;
-			this->container->buyFire->mouseChildren = false;
-			this->container->buyFire->mouseEnabled = false;
+			this->container->fireSphere->setMouseChildren(false);
+			this->container->fireSphere->setMouseEnabled(false);
+			this->container->fireNumTXT->setMouseEnabled(false); 
+			this->container->buyFire->setMouseChildren(false);
+			this->container->buyFire->setMouseEnabled(false);
 			this->container->fireSphere->setVisible(false);
+			printNodePos(this->container->buyFireBuyTXT);
+
+			//this->container->buyFire->gotoAndStop(2);
+			//this->container->buyIce->gotoAndStop(2);
+			//this->container->buyStone->gotoAndStop(2);
+			//this->container->buyLevin->gotoAndStop(2);
+			//this->container->buyGetAll->gotoAndStop(2);
+
 			this->container->iceSphere->setAlpha(0);
 			this->container->iceNumTXT->setAlpha(0);
 			this->container->buyIce->setAlpha(0);
-			this->container->iceSphere->mouseChildren = false;
-			this->container->iceSphere->mouseEnabled = false;
-			this->container->iceNumTXT->mouseEnabled = false;
-			this->container->buyIce->mouseChildren = false;
-			this->container->buyIce->mouseEnabled = false;
+			this->container->iceSphere->setMouseChildren(false);
+			this->container->iceSphere->setMouseEnabled(false);
+			this->container->iceNumTXT->setMouseEnabled(false);
+			this->container->buyIce->setMouseChildren(false);
+			this->container->buyIce->setMouseEnabled(false);
 			this->container->iceSphere->setVisible(false);
+
 			this->container->stoneSphere->setAlpha(0);
 			this->container->stoneNumTXT->setAlpha(0);
 			this->container->buyStone->setAlpha(0);
-			this->container->stoneSphere->mouseChildren = false;
-			this->container->stoneSphere->mouseEnabled = false;
-			this->container->stoneNumTXT->mouseEnabled = false;
-			this->container->buyStone->mouseChildren = false;
-			this->container->buyStone->mouseEnabled = false;
+			this->container->stoneSphere->setMouseChildren(false);
+			this->container->stoneSphere->setMouseEnabled(false);
+			this->container->stoneNumTXT->setMouseEnabled(false);
+			this->container->buyStone->setMouseChildren(false);
+			this->container->buyStone->setMouseEnabled(false);
 			this->container->stoneSphere->setVisible(false);
+
 			this->container->levinSphere->setAlpha(0);
 			this->container->levinNumTXT->setAlpha(0);
 			this->container->buyLevin->setAlpha(0);
-			this->container->levinSphere->mouseChildren = false;
-			this->container->levinSphere->mouseEnabled = false;
-			this->container->levinNumTXT->mouseEnabled = false;
-			this->container->buyLevin->mouseChildren = false;
-			this->container->buyLevin->mouseEnabled = false;
+			this->container->levinSphere->setMouseChildren(false);
+			this->container->levinSphere->setMouseEnabled(false);
+			this->container->levinNumTXT->setMouseEnabled(false);
+			this->container->buyLevin->setMouseChildren(false);
+			this->container->buyLevin->setMouseEnabled(false);
 			this->container->levinSphere->setVisible(false);
-			this->container->getAll->gotoAndStop(3);
+
 			this->container->buyGetAll->setAlpha(0);
 			this->container->getAllNumTXT->setAlpha(0);
-			this->container->getAllNumTXT->mouseEnabled = false;
-			this->container->buyGetAll->mouseChildren = false;
-			this->container->buyGetAll->mouseEnabled = false;
+			this->container->getAllNumTXT->setMouseEnabled(false);
+			this->container->buyGetAll->setMouseChildren(false);
+			this->container->buyGetAll->setMouseEnabled(false); 
+
+			this->container->getAll->gotoAndStop(3);
 			this->container->fireBack->gotoAndStop(3);
 			this->container->iceBack->gotoAndStop(3);
 			this->container->stoneBack->gotoAndStop(3);
 			this->container->levinBack->gotoAndStop(3);
+ 
 			if (Main::mainClass->readXMLClass.archiveSphereBlock == 3)
 			{
 				this->container->fireSphere->setVisible(true);
 				this->container->fireBack->gotoAndStop(1);
+				//printNodePos(this->container->fireSphere);
 			}
 			else if (Main::mainClass->readXMLClass.archiveSphereBlock == 2)
 			{
@@ -3501,11 +3562,11 @@ namespace engine
 			this->container->fireSphere->setAlpha(1);
 			this->container->fireNumTXT->setAlpha(1);
 			this->container->buyFire->setAlpha(1);
-			this->container->fireSphere->mouseChildren = true;
-			this->container->fireSphere->mouseEnabled = true;
-			this->container->fireNumTXT->mouseEnabled = false;
-			this->container->buyFire->mouseChildren = true;
-			this->container->buyFire->mouseEnabled = true;
+			this->container->fireSphere->setMouseChildren(true);
+			this->container->fireSphere->setMouseEnabled(true);
+			this->container->fireNumTXT->setMouseEnabled(false);
+			this->container->buyFire->setMouseChildren(true);
+			this->container->buyFire->setMouseEnabled(true);
 			this->container->fireBack->gotoAndStop(1);
 		}
 		else if (param1 == "unblockIce")
@@ -3515,11 +3576,11 @@ namespace engine
 			this->container->iceSphere->setAlpha(1);
 			this->container->iceNumTXT->setAlpha(1);
 			this->container->buyIce->setAlpha(1);
-			this->container->iceSphere->mouseChildren = true;
-			this->container->iceSphere->mouseEnabled = true;
-			this->container->iceNumTXT->mouseEnabled = false;
-			this->container->buyIce->mouseChildren = true;
-			this->container->buyIce->mouseEnabled = true;
+			this->container->iceSphere->setMouseChildren(true);
+			this->container->iceSphere->setMouseEnabled(true);
+			this->container->iceNumTXT->setMouseEnabled(false);
+			this->container->buyIce->setMouseChildren(true);
+			this->container->buyIce->setMouseEnabled(true);
 			this->container->iceBack->gotoAndStop(1);
 		}
 		else if (param1 == "unblockStone")
@@ -3529,11 +3590,11 @@ namespace engine
 			this->container->stoneSphere->setAlpha(1);
 			this->container->stoneNumTXT->setAlpha(1);
 			this->container->buyStone->setAlpha(1);
-			this->container->stoneSphere->mouseChildren = true;
-			this->container->stoneSphere->mouseEnabled = true;
-			this->container->stoneNumTXT->mouseEnabled = false;
-			this->container->buyStone->mouseChildren = true;
-			this->container->buyStone->mouseEnabled = true;
+			this->container->stoneSphere->setMouseChildren(true);
+			this->container->stoneSphere->setMouseEnabled(true);
+			this->container->stoneNumTXT->setMouseEnabled(false);
+			this->container->buyStone->setMouseChildren(true);
+			this->container->buyStone->setMouseEnabled(true);
 			this->container->stoneBack->gotoAndStop(1);
 		}
 		else if (param1 == "unblockLevin")
@@ -3543,11 +3604,11 @@ namespace engine
 			this->container->levinSphere->setAlpha(1);
 			this->container->levinNumTXT->setAlpha(1);
 			this->container->buyLevin->setAlpha(1);
-			this->container->levinSphere->mouseChildren = true;
-			this->container->levinSphere->mouseEnabled = true;
-			this->container->levinNumTXT->mouseEnabled = false;
-			this->container->buyLevin->mouseChildren = true;
-			this->container->buyLevin->mouseEnabled = true;
+			this->container->levinSphere->setMouseChildren(true);
+			this->container->levinSphere->setMouseEnabled(true);
+			this->container->levinNumTXT->setMouseEnabled(false);
+			this->container->buyLevin->setMouseChildren(true);
+			this->container->buyLevin->setMouseEnabled(true);
 			this->container->levinBack->gotoAndStop(1);
 		}
 		else if (param1 == "unblockGetAll")
@@ -3561,9 +3622,9 @@ namespace engine
 			this->container->getAllLevin->stop();
 			this->container->buyGetAll->setAlpha(1);
 			this->container->getAllNumTXT->setAlpha(1);
-			this->container->getAllNumTXT->mouseEnabled = false;
-			this->container->buyGetAll->mouseChildren = true;
-			this->container->buyGetAll->mouseEnabled = true;
+			this->container->getAllNumTXT->setMouseEnabled(false);
+			this->container->buyGetAll->setMouseChildren(true);
+			this->container->buyGetAll->setMouseEnabled(true);
 		}
 		this->updateInfo();
 		return;
@@ -3839,8 +3900,8 @@ namespace engine
 		tempObject->setPositionY(this->container->barInfo->getPositionY() - 42);
 		tempObject->closeFlag = false;
 		tempObject->counter = 30;
-		tempObject->mouseChildren = false;
-		tempObject->mouseEnabled = false;
+		tempObject->setMouseChildren(false);
+		tempObject->setMouseEnabled(false);
 		this->addChild(tempObject);
 		this->listOfGetAhieve.push(tempObject);
 		if (param1 == "firstKill")
@@ -4153,12 +4214,12 @@ namespace engine
 				if (dynamic_cast<NewEnemy_mc *>(tempObject))
 				{
 					NewEnemy_mc * enmc = dynamic_cast<NewEnemy_mc *>(tempObject);
-					enmc->newEnemyCase->buttonMode = true;
+					enmc->newEnemyCase->setMouseEnabled(true);
 				}
 				else if (dynamic_cast<NewElement_mc *>(tempObject))
 				{
 					NewElement_mc * enmc = dynamic_cast<NewElement_mc *>(tempObject);
-					enmc->newElementCase->buttonMode = true;
+					enmc->newElementCase->setMouseEnabled(true);
 				}
 				tempObject->mouseStatus = 1;
 				tempObject->setScaleY(0);
@@ -4166,26 +4227,26 @@ namespace engine
 				if (this->listOfNewEnemies.size() > 3)
 				{
 					this->listOfNewEnemies[0]->mouseStatus = 4;
-					this->listOfNewEnemies[0]->mouseEnabled = false;
-					this->listOfNewEnemies[0]->mouseChildren = false;
+					this->listOfNewEnemies[0]->setMouseEnabled(false);
+					this->listOfNewEnemies[0]->setMouseChildren(false);
 				}
 				if (this->listOfNewEnemies.size() > 4)
 				{
 					this->listOfNewEnemies[1]->mouseStatus = 4;
-					this->listOfNewEnemies[1]->mouseEnabled = false;
-					this->listOfNewEnemies[1]->mouseChildren = false;
+					this->listOfNewEnemies[1]->setMouseEnabled(false);
+					this->listOfNewEnemies[1]->setMouseChildren(false);
 				}
 				if (this->listOfNewEnemies.size() > 5)
 				{
 					this->listOfNewEnemies[2]->mouseStatus = 4;
-					this->listOfNewEnemies[2]->mouseEnabled = false;
-					this->listOfNewEnemies[2]->mouseChildren = false;
+					this->listOfNewEnemies[2]->setMouseEnabled(false);
+					this->listOfNewEnemies[2]->setMouseChildren(false);
 				}
 				if (this->listOfNewEnemies.size() > 6)
 				{
 					this->listOfNewEnemies[3]->mouseStatus = 4;
-					this->listOfNewEnemies[3]->mouseEnabled = false;
-					this->listOfNewEnemies[3]->mouseChildren = false;
+					this->listOfNewEnemies[3]->setMouseEnabled(false);
+					this->listOfNewEnemies[3]->setMouseChildren(false);
 				}
 			}
 			if (tempObject->mouseStatus != 3 && tempObject->mouseStatus != 4)

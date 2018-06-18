@@ -55,8 +55,8 @@ namespace engine
             this->setPositionY(this->world->worldInterface->container->butCastAir->getPositionY());
         }
         this->setPositionX(this->getPositionX() + 8);
-        this->mouseChildren = false;
-        this->mouseEnabled = false;
+        this->setMouseChildren(false);
+        this->setMouseEnabled(false);
         return true;
     }// end function
 

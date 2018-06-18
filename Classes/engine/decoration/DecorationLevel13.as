@@ -14,7 +14,7 @@
             this.decorationCase = world.level.decorationCase;
             container.stop();
             this.decorationCase.stop();
-            this.decorationCase.buttonMode = true;
+            this.decorationCase.setMouseEnabled(true);
             return;
         }// end function
 

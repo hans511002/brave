@@ -29,8 +29,8 @@ namespace engine
         this->container->contNoteTXT->setText(Common::String("+") + this->world->bonusMoney);
         this->container->setPosition(Main::SCREEN_WIDTH_HALF,Main::SCREEN_HEIGHT_HALF);
         this->addChild(this->container);
-        this->mouseChildren = false;
-        this->mouseEnabled = false;
+        this->setMouseChildren(false);
+        this->setMouseEnabled(false);
         //this->world->listOfIndexes3.push(this);
         //this->world->listOfClasses.push(this);
         return true;

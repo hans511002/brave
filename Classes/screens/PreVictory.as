@@ -40,7 +40,7 @@
             this.container.y = Main.SCREEN_HEIGHT_HALF;
             this.addChild(this.container);
             var _loc_2:* = false;
-            this.container.cont.mouseChildren = false;
+            this.container.cont.setMouseChildren(false);
             this.container.cont.mouseEnabled = _loc_2;
             return;
         }// end function
@@ -62,7 +62,7 @@
                 {
                     this.openFlag = false;
                     var _loc_2:* = true;
-                    this.container.cont.mouseChildren = true;
+                    this.container.cont.setMouseChildren(true);
                     this.container.cont.mouseEnabled = _loc_2;
                     this.autoguidersButtons();
                 }
@@ -143,7 +143,7 @@
             this.container.cont.stop();
             this.container.cont.btnOk.stop();
             this.container.cont.btnOk.okCase.stop();
-            this.container.cont.btnOk.okCase.buttonMode = true;
+            this.container.cont.btnOk.okCase.setMouseEnabled(true);
             return;
         }// end function
 
@@ -173,7 +173,7 @@
             {
                 this.closeFlag = true;
                 var _loc_1:* = false;
-                this.container.cont.mouseChildren = false;
+                this.container.cont.setMouseChildren(false);
                 this.container.cont.mouseEnabled = _loc_1;
             }
             return;

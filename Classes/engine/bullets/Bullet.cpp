@@ -126,8 +126,8 @@ namespace engine{
         bool Bullet::init()
         {
             //this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
-            this->mouseChildren = false;
-            this->mouseEnabled = false;
+            this->setMouseChildren(false);
+            this->setMouseEnabled(false);
             this->world = Main::mainClass->worldClass;
             this->world->listOfBullets.push(this);
             //this->world->listOfIndexes3.push(this);

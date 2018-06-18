@@ -122,10 +122,19 @@ namespace Common
 			}
 			return res;
 		};
-		inline Array<T> & concat(Array<T> & vals)
+		inline Array<T> & concat(vector<T> & vals)
 		{
 			int len = vals.size();
 			for(int i = 0; i < len; i++)
+			{
+				this->push(vals[i]);
+			}
+			return *this;
+		};
+		inline Array<T> & concat(Array<T> & vals)
+		{
+			int len = vals.size();
+			for (int i = 0; i < len; i++)
 			{
 				this->push(vals[i]);
 			}

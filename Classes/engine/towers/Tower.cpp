@@ -25,7 +25,7 @@ namespace engine{
 			this->setPosition(this->myPlace->getPosition());
 			//this->x = this->myPlace.x;
 			//this->y = this->myPlace.y;
-			//this->myPlace->placeForBuildCase->buttonMode = false;
+			//this->myPlace->placeForBuildCase->setMouseEnabled(false);
 			this->this_pt = cocos2d::Point(this->getPositionX() + container->getPositionX() + container->towerCase->getPositionX()
 				, this->getPositionY() + container->getPositionY() + container->towerCase->getPositionY());
 			this->shoot_pt = cocos2d::Point(this->getPositionX(), this->getPositionY() + this->correctYGrPos);
@@ -1886,8 +1886,8 @@ namespace engine{
 				this->buildAnima = new MovieClip("tower/", "BuildTowerSmoke_mc", "BuildTowerSmoke_mc");// BuildTowerSmoke_mc();
 				this->buildAnima->stop();
 				this->buildAnima->setPositionY(5);
-				this->buildAnima->mouseChildren = false;
-				this->buildAnima->mouseEnabled = false;
+				this->buildAnima->setMouseChildren(false);
+				this->buildAnima->setMouseEnabled(false);
 				this->addChild(this->buildAnima);
 			}
 			else
@@ -1968,8 +1968,8 @@ namespace engine{
 				else
 				{
 					container->blockTower->setVisible(false);
-					this->mouseChildren = true;
-					this->mouseEnabled = true;
+					this->setMouseChildren(true);
+					this->setMouseEnabled(true);
 				}
 			}
 			return;
