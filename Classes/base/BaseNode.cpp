@@ -352,13 +352,15 @@ namespace std
 	};
 	void BaseNode::setAlpha(cocos2d::Node * node, float op)
 	{
+        if(!node)return;
 		op = op<0 ? 0 : op>1 ? 1 : op;
 		int ops = op * 255;
 		node->setOpacity(ops);
 	};
 	float BaseNode::getAlpha(cocos2d::Node * node)
 	{
-		int ops = node->getOpacity();
+        if(!node)return 0;
+        int ops = node->getOpacity();
 		float alpha= (double)ops / 255*10;
 		alpha = std::floor(alpha) / 10;
 		return alpha;

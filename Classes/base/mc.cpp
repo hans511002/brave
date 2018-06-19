@@ -1,4 +1,4 @@
-#include "BaseHeaders.h"
+ï»¿#include "BaseHeaders.h"
 #include "engine/World.h"
 
 namespace engine
@@ -397,7 +397,7 @@ namespace engine
 			//Size size = display->getContentSize();
 			const dragonBones::Transform * origin = slot->getOrigin(); 
 			//this->setContentSize(Size(origin->scaleX*size.width, origin->scaleY*size.height));
-			////enableMouseHandler(); //²»Ê¹ÓÃµ¥¶ÀÊÂ¼þ
+			////enableMouseHandler(); //æ¶“å¶„å¨‡é¢ã„¥å´Ÿé™îƒ¿ç°¨æµ ?
 			////this->setMouseEnabled(true);
 			//if (_draw)drawRange();
 			//this->setPosition(origin->x, origin->y);
@@ -406,7 +406,7 @@ namespace engine
 			Size size = display->getContentSize();
 			//size=Size(this->display->getScaleX()*size.width, this->display->getScaleY()*size.height);
 			this->setContentSize(size);
-			//enableMouseHandler(); //²»Ê¹ÓÃµ¥¶ÀÊÂ¼þ
+			//enableMouseHandler(); //æ¶“å¶„å¨‡é¢ã„¥å´Ÿé™îƒ¿ç°¨æµ ?
 			//this->setMouseEnabled(true);
 			if (_draw)drawRange();
 			this->setPosition(origin->x, origin->y);
@@ -475,6 +475,8 @@ namespace engine
 	void MCMask::setVisible(bool v){
 		BaseNode::setVisible(v);
 		MovieClipSubBase::setVisible(v);
+        if(this->mask)
+            mask->setVisible(v);
 	};
 	bool MCMask::reinit() 
 	{
@@ -577,7 +579,7 @@ namespace engine
 		//for each (std::pair<std::string, dragonBones::AnimationData*> it in animations)
 		//{
 		//	std::string aniName = it.first;
-		//	int totalFrames = it.second->frameCount;//+1;
+		//	int totalFrames = it.second->frameCount+1;//;
 		//	float duration = it.second->duration;
 		//	CCLOG("load %s totalFrames=%i duration=%f", aniName.c_str(), totalFrames, duration);
 		//}
@@ -585,7 +587,7 @@ namespace engine
         this->defAniName = defAniName;
 		if(defAniName == "")
 			this->defAniName = defAniName = container->getArmature()->_armatureData->defaultAnimation->name;
-		totalFrames = container->getArmature()->_armatureData->animations[defAniName]->frameCount;// +1;
+		totalFrames = container->getArmature()->_armatureData->animations[defAniName]->frameCount+1;// ;
 		float duration = container->getArmature()->_armatureData->animations[defAniName]->duration;
 		CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
 		this->display = this->container = container;
@@ -620,7 +622,7 @@ namespace engine
         this->defAniName = defAniName;
 		if(defAniName == "")
 			this->defAniName = defAniName = this->getArmature()->_armatureData->defaultAnimation->name;
-		totalFrames = this->getArmature()->_armatureData->animations[defAniName]->frameCount;//+ 1;
+		totalFrames = this->getArmature()->_armatureData->animations[defAniName]->frameCount+ 1;//;
 		float duration = this->getArmature()->_armatureData->animations[defAniName]->duration;
 		CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
 		BaseNode::init();
@@ -641,7 +643,7 @@ namespace engine
 		this->display=this->container = this->loadArmature(armName, dbName);
 		if(defAniName == "")
 			this->defAniName = defAniName = this->getArmature()->_armatureData->defaultAnimation->name;
-		totalFrames = this->getArmature()->_armatureData->animations[defAniName]->frameCount;//+ 1;
+		totalFrames = this->getArmature()->_armatureData->animations[defAniName]->frameCount+ 1;//;
 		float duration = this->getArmature()->_armatureData->animations[defAniName]->duration;
 		CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
 		BaseNode::init();
@@ -886,7 +888,7 @@ namespace engine
 				//for each (std::pair<std::string, dragonBones::AnimationData*> it in animations)
 				//{
 				//    std::string aniName = it.first;
-				//    int totalFrames = it.second->frameCount;//+ 1;
+				//    int totalFrames = it.second->frameCount+ 1;//;
 				//    float duration = it.second->duration;
 				//    CCLOG("load %s totalFrames=%i duration=%f", aniName.c_str(), totalFrames, duration);
 				//}
@@ -896,7 +898,7 @@ namespace engine
 				/*string defAniName = this->defAniName;
 				if (defAniName == "")*/
 				defAniName = this->arm->_armatureData->defaultAnimation->name;
-				totalFrames = this->arm->_armatureData->animations[defAniName]->frameCount;//+ 1;
+				totalFrames = this->arm->_armatureData->animations[defAniName]->frameCount+ 1;//;
 				float duration = this->arm->_armatureData->animations[defAniName]->duration;
 				CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
 				this->gotoAndStop(1);
@@ -1027,7 +1029,7 @@ namespace engine
 	{
 		setNodeType("ImageMovieClip");
 		currentFrame = 0;
-		totalFrames = imgSize - 1;
+		totalFrames = imgSize ;
         string rootPath = _rootPath;
         if(!rootPath.empty() && rootPath.at(rootPath.length() - 1) != '/')
 		{
@@ -1057,7 +1059,7 @@ namespace engine
 	};
     void ImageMovieClip::gotoAndStop(int cf, const string &  aniName)
 	{
-		this->currentFrame = (cf) % (totalFrames + 1);
+		this->currentFrame = cf % totalFrames + 1;
 		char tmp[8];
 		sprintf(tmp, "%04d", currentFrame);
 		container->setTexture(filePre + tmp + ".png");// = new BaseSprite(filePre + tmp + ".png");

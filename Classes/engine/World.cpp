@@ -382,6 +382,8 @@ namespace engine
 				this->enterFrameHandler(0);
 			}
 		}
+        if(this->buildTowerMenu)
+            this->buildTowerMenu->update();
 		return;
 	}// end function
 
@@ -827,9 +829,9 @@ namespace engine
 		{
 			tempObject = new Tower8();
 		}
-		tempObject->init();
 		tempObject->myPlace = param2;
 		tempObject->autoBuild = param3;
+		tempObject->init();
 		this->addChild(tempObject);
 		this->listOfTowers.push(tempObject);
 		//this->listOfTowers.sortOn("y", Array.NUMERIC);

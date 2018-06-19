@@ -9,7 +9,7 @@ namespace engine
     {
 		Tower1_mc::Tower1_mc() :TowerBase_mc("tower/", "Tower1_mc", "Tower1_mc")
 		{
-			selectTower = this->createMovieClipSub("selectTower");
+			selectTower = this->createMask("selectTower");
 			sphere1 = this->createMovieClipSub("sphere1");
 			sphere1Bullet = (BulletSphereTower_mc*)sphere1->createMovieClip("bullet", new BulletSphereTower_mc());
 			sphere1BulletCont = sphere1Bullet->createMovieClipSub("cont");
@@ -31,7 +31,7 @@ namespace engine
             //container->towerCase->stop();
             container->blockTower->stop();
             container->boneBlock->stop();
-            container->selectTower->stop();
+            //container->selectTower->stop();
             container->towerCase->setMouseEnabled(true);
             cont->blockTower->setVisible(false);
             cont->boneBlock->setVisible(false);

@@ -238,8 +238,22 @@ namespace engine
 	{
 		cocos2d::Sprite * mask;
         MCMask(MC * mc, const string &  slotName);
-		virtual void setVisible(bool v);
-		virtual bool reinit();
+        virtual bool reinit();
+        virtual void setVisible(bool v);
+        virtual bool isVisible() { if(mask)return mask->isVisible(); return false; };
+        inline virtual void setAlpha(float op) { BaseNode::setAlpha(mask, op); };
+        inline virtual float getAlpha() { return  BaseNode::getAlpha(mask); };
+        inline float getScale() {   if(mask)return mask->getScale(); return 1; };
+        inline float getScaleX() {   if(mask) return mask->getScaleX(); return 1; };
+        inline float getScaleY() { if(mask) return mask->getScaleY(); return 1; };
+
+        inline void setScaleX(float s) { if(mask)   mask->setScaleX(s); };
+        inline void setScaleY(float s) { if(mask)   mask->setScaleY(s); };
+        inline void setScale(float s) { if(mask)   mask->setScale(s); };
+
+        inline float getRotation() { if(mask)return mask->getRotation(); return 0; };
+        inline void  setRotation(float r) { if(mask)  mask->setRotation(r); };
+
 	};
 
 	struct ImageMovieClip :public BaseNode

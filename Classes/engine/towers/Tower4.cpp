@@ -68,7 +68,7 @@ namespace engine
             //container->towerCase->stop();
             container->blockTower->stop();
             container->boneBlock->stop();
-            container->selectTower->stop();
+            //container->selectTower->stop();
             container->towerCase->setMouseEnabled(true);
             container->blockTower->setVisible(false);
             container->boneBlock->setVisible(false);

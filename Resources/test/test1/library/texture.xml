@@ -1,0 +1,8 @@
+<TextureAtlas name="test1" imagePath="texture.png">
+ <SubTexture name="__dbTextures/sub/2_1" x="0" y="0" width="370" height="68"/>
+ <SubTexture name="元件 1" x="116" y="70" width="104" height="33"/>
+ <SubTexture name="元件 2" x="222" y="70" width="104" height="17"/>
+ <SubTexture name="元件 3" x="328" y="80" width="104" height="17"/>
+ <SubTexture name="__dbTextures/sub/1_0" x="372" y="0" width="121" height="78"/>
+ <SubTexture name="__dbTextures/sub/1_2" x="0" y="70" width="114" height="75"/>
+</TextureAtlas>

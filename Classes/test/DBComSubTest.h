@@ -91,26 +91,41 @@ protected:
 	{
 		BaseDemo::onEnter();
 	}
+
+    MovieClip * test = NULL;
+    MovieClip * test1 = NULL;
+    MovieClipSub * testSub = NULL;
+    MovieClipSub * test1Sub = NULL;
+
     virtual void _onStart()
     {
 		//this->world->worldInterface = WorldInterface::create();
 		//this->world->addChild(this->world->worldInterface);
-
+        test = new MovieClip("", "test", "test");
+        test1 = new MovieClip("", "test", "test1");
  
+        testSub = test->createMovieClipSub("sub");
+        test1Sub = test1->createMovieClipSub("sub");
 
-		worldInterface = new WorldInterface_mc();
-		worldInterface->setName("WorldInterface_mc");
-		this->addChild(worldInterface);
-		this->worldInterface->levinBack->gotoAndStop(3);
-		this->worldInterface->levinBacklight->setVisible(false);
-		this->worldInterface->levinSphere->setVisible(false);
+        this->addChild(test);
+        this->addChild(test1);
+        test->setPosition(100, 200);
+        test1->setPosition(200, 300);
 
-		this->worldInterface->iceBack->gotoAndStop(3);
-		this->worldInterface->iceBacklight->setVisible(false);
-		this->worldInterface->iceSphere->setVisible(false);
-		this->worldInterface->stoneBack->gotoAndStop(3);
-		this->worldInterface->stoneBacklight->setVisible(false);
-		this->worldInterface->stoneSphere->setVisible(false);
+		//worldInterface = new WorldInterface_mc();
+		//worldInterface->setName("WorldInterface_mc");
+		//this->addChild(worldInterface);
+		//this->worldInterface->levinBack->gotoAndStop(3);
+		//this->worldInterface->levinBacklight->setVisible(false);
+		//this->worldInterface->levinSphere->setVisible(false);
+
+		//this->worldInterface->iceBack->gotoAndStop(3);
+		//this->worldInterface->iceBacklight->setVisible(false);
+		//this->worldInterface->iceSphere->setVisible(false);
+		//this->worldInterface->stoneBack->gotoAndStop(3);
+		//this->worldInterface->stoneBacklight->setVisible(false);
+		//this->worldInterface->stoneSphere->setVisible(false);
+
 
         currentFrame = frameCounter = 0;
         this->setName("layer");
@@ -139,10 +154,16 @@ protected:
 		else
 		{
 			this->frameCounter = 1;
-			this->worldInterface->getAll->gotoAndStop(this->currentFrame / 30 + 1);
+			//this->worldInterface->getAll->gotoAndStop(this->currentFrame / 30 + 1);
 		}
 		currentFrame++;
-		this->worldInterface->getAllFire->nextFram();
+		//this->worldInterface->getAllFire->nextFram();
+
+        test->gotoAndStop(this->currentFrame / 30);
+        testSub->gotoAndStop(this->currentFrame % 4+1);
+        test1->gotoAndStop(this->currentFrame / 30);
+        test1Sub->gotoAndStop(this->currentFrame % 4 + 1);
+
 		return;
 		cont->gotoAndStop(this->currentFrame / 30 + 1);
 		cont->cont->nextFram();
