@@ -164,6 +164,7 @@ namespace engine
 
         void achieveManage(string param1);
 
+        void removeClasses(BaseNode * node);
         void reInit(cocos2d::EventMouse*event);//event:Event 
 
     };

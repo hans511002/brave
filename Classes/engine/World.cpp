@@ -51,7 +51,7 @@ namespace engine
 		//this->listOfLevinPortals = [];
 		//this->live = this->liveMax;
 		//this->listOfMoveSpheres = [];
-		//this->listOfClasses = [];
+		this->listOfClasses.clear();
 		//this->listOfTowers = [];
 		//this->listOfUnits = [];
 		//this->listOfBullets = [];
@@ -381,9 +381,7 @@ namespace engine
 			{
 				this->enterFrameHandler(0);
 			}
-		}
-        if(this->buildTowerMenu)
-            this->buildTowerMenu->update();
+		} 
 		return;
 	}// end function
 
@@ -559,7 +557,9 @@ namespace engine
 		if (mouseButton == 1)return;
 		std::MouseEvent me = std::buildMouseEvent(e);
 		std::MouseEvent * event = &me;
-		//return;
+        if(!event->currentTargets.size())
+            event->currentTargets.push(this);
+        //return;
 		while (event->hasNext())
 		{
 			//logInfo("mouseMoveHandler.target", getNamePath(event->target));
@@ -706,7 +706,7 @@ namespace engine
 							this->addChild(this->buildTowerMenu);
 							//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
 						}
-						else if (this->buildTowerMenu->myPlace != event->target->getParent())
+                        else if(this->buildTowerMenu->myPlace != place)
 						{
 							this->buildTowerMenu->closeMenu();
 							this->buildTowerMenu = new BuildTowerMenu(place);
@@ -2031,6 +2031,20 @@ namespace engine
 		//this->removeEventListener(Event.DEACTIVATE, this->deactivateHandler);
 		//return;
 	}// end function
+    void World::removeClasses(BaseNode * node) 
+    {
+        int i = 0;
+        int len = listOfClasses.size();
+        while(i < len)
+        {
+            if(listOfClasses[this->i] == this)
+            {
+                listOfClasses.remove(i);
+                break;
+            }
+            i++;
+        }
+    };
 
 }
 

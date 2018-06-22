@@ -11,13 +11,20 @@ namespace engine{
 	namespace towers{
 
 		TowerBase_mc::TowerBase_mc(string rootPath, string armName, string dbName, string defAniName) :towerCase(0)
-			, MovieClip(rootPath, armName, dbName, defAniName), myParent(0)
+            , MovieClip(rootPath, armName, dbName, defAniName), myParent(0)
 		{
 			blockTower = this->createMovieClip("blockTower", "tower/", "blockTower", "TowerBlockBone");
 			boneBlock = this->createMovieClip("boneBlock", "tower/", "boneBlock", "TowerBlockBone");
 			towerCase = this->createCase("towerCase");
 		};
-
+        Tower::Tower() : tempObject2(NULL), container(NULL), myPlace(NULL), buildAnima(NULL), damage(0), intervalCounter(0), intervalTimer(0), dead(false), world(NULL), towerType(0), correctYGrPos(0), enemyTarget(NULL), greenFlag(false), sphereBullet1(NULL), sphereBullet2(NULL), sphereBullet3(NULL), sphereBullet4(NULL), upgradeTypeAdd(0), blockTowerFlag(false), sphereVisibleTimer(0), exchangeFlag(false), autoBuild(false), upgr1_damage(0)
+        {
+            //this->spheresStack = [];
+            //this->shootingTurnStack = [null, null, null, null];
+            //this->shootinAttackStack = [];
+            //this->addEventListener(Event.ADDED_TO_STAGE, this->init);
+            return;
+        }// end function
 		bool Tower::init()
 		{
 			////this->removeEventListener(Event.ADDED_TO_STAGE, this->init);

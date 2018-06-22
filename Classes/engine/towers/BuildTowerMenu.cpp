@@ -43,7 +43,7 @@ namespace engine{
 			//this->container->cont->costTXT.text = Main::mainClass->readXMLClass.costTowerXML;
 			this->container->contBuildTowerMenuCase->setMouseEnabled(true);
 			this->addChild(this->container);
-			//this->world->listOfClasses.push(this);
+			this->world->listOfClasses.push(this);
 
 			//EventListenerMouse *mouseListener = cocos2d::EventListenerMouse::create();
 			//mouseListener->onMouseDown = CC_CALLBACK_1(BuildTowerMenu::mouseDownHandler, this);
@@ -110,12 +110,13 @@ namespace engine{
 				return;
 			if (!this->closeFlag)
 			{
-				//if (target != "placeForBuildCase" &&  target != "buildTowerMenuCase" &&  target != this->myPlace->getName()
-				//	&& target != this->getName() && !std::hitTest(this->myPlace, pt))
+                string target = event->target->getName();
 				Vec2 pt=e->getLocationInView();
-				if (!std::hitTest(this->container->contBuildTowerMenuCase, pt) && !std::hitTest(this->myPlace->placeForBuildCase, pt))
+				if (target != "placeForBuildCase" &&  target != "buildTowerMenuCase" &&  !std::hitTest(this->myPlace, pt))
+                //logInfo(getNamePath( event->target) , event->getLocationInView());
+				//if (!std::hitTest(this->container->contBuildTowerMenuCase, pt) && !std::hitTest(this->myPlace->placeForBuildCase, pt))
 					this->closeMenu();
-				//if (event->target->getNname() != "placeForBuildCase" && event->target->getNname() != "buildTowerMenuCase" && param1.target != this->myPlace && param1.target.parent != this)
+				//if (event->target->getName() != "placeForBuildCase" && event->target->getName() != "buildTowerMenuCase" && param1.target != this->myPlace && param1.target.parent != this)
 				//{
 				// this->closeMenu();
 				//}
@@ -129,11 +130,12 @@ namespace engine{
 				return;
             if (!this->closeFlag)
             {
+                string target = event->target->getName();
                 cocos2d::Point pt = e->getLocationInView();
-                CCLOG("mouse InView point %f,%f", pt.x, pt.y);
+                 if(target == "placeForBuildCase" ||  target == "buildTowerMenuCase" ||  !std::hitTest(this->myPlace, pt))
 				//if (event.target.name == "placeForBuildCase" || event.target.name == "buildTowerMenuCase")
 				//if (target != "placeForBuildCase" ||  target != "buildTowerMenuCase" || std::hitTest(this->myPlace, pt))
-				if (std::hitTest(this->container->contBuildTowerMenuCase, pt) || std::hitTest(this->myPlace->placeForBuildCase, pt))
+				//if (std::hitTest(this->container->contBuildTowerMenuCase, pt) || std::hitTest(this->myPlace->placeForBuildCase, pt))
 				{
                     this->world->money = this->world->money - Main::mainClass->readXMLClass.costTowerXML;
                     this->world->worldInterface->updateInfo();
@@ -191,17 +193,8 @@ namespace engine{
             if (!this->dead)
             {
                 this->dead = true;
+                this->world->removeClasses(this);
                 this->world->removeChild(this);
-                this->i = 0;
-                //while (this->i < this->world->listOfClasses.length)
-                //{
-                //    if (this->world->listOfClasses[this->i] == this)
-                //    {
-                //        this->world->listOfClasses.splice(this->i, 1);
-                //        break;
-                //    }
-                //    i++;
-                //}
             }
             return;
         }// end function

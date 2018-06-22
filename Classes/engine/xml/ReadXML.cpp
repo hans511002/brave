@@ -232,12 +232,11 @@ namespace engine
 		//Number(this->xmlData.cast.air.@spacing);
 		this->airWaitTimerXML = std::round(this->xmlData->getFloat("cast.air.@shockTimer") * Main::fps);
 		//std::round(Number(this->xmlData.cast.air.@shockTimer) * Main::fps);
-		this->costTowerXML = this->xmlData->getInt("cast.tower.@cost");
-		//int(this->xmlData.cost.tower.@cost);
-		this->costTowerPlusXML = this->xmlData->getInt("cast.tower.@costPlus");//int(this->xmlData.cost.tower.@costPlus);
-		this->costSlot2XML = this->xmlData->getInt("cast.tower.@slot2");//int(this->xmlData.cost.towerSlots.@slot2);
-		this->costSlot3XML = this->xmlData->getInt("cast.tower.@slot3");//int(this->xmlData.cost.towerSlots.@slot3);
-		this->costSlot4XML = this->xmlData->getInt("cast.tower.@slot4");//int(this->xmlData.cost.towerSlots.@slot4);
+		this->costTowerXML = this->xmlData->getInt("cost.tower.@cost");//int(this->xmlData.cost.tower.@cost);
+		this->costTowerPlusXML = this->xmlData->getInt("cost.tower.@costPlus");//int(this->xmlData.cost.tower.@costPlus);
+		this->costSlot2XML = this->xmlData->getInt("cost.tower.@slot2");//int(this->xmlData.cost.towerSlots.@slot2);
+		this->costSlot3XML = this->xmlData->getInt("cost.tower.@slot3");//int(this->xmlData.cost.towerSlots.@slot3);
+		this->costSlot4XML = this->xmlData->getInt("cost.tower.@slot4");//int(this->xmlData.cost.towerSlots.@slot4);
 		
 		this->listOfFirePriceXML[0] = this->xmlData->getInt("cost.fire.@step1");//int(this->xmlData.cost.fire.@step1);
 		this->listOfFirePriceXML[1] = this->xmlData->getInt("cost.fire.@step2");//int(this->xmlData.cost.fire.@step2);

@@ -26,6 +26,7 @@ namespace engine{
 		setNodeType("BuildTowerPlace");
 		placeForBuildCase = this->createCase("placeForBuildCase");
 		buildPoint = this->createCase("buildPoint");
+        buildPoint->setMouseEnabled(false);
 	};
 
 	Level1_mc::Level1_mc(World *world) :Level(world, "worldinterface/", "Level1_mc", "Level1_mc")
