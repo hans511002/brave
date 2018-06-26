@@ -21,11 +21,12 @@ namespace engine
 		sphere4 = this->createMovieClipSub("sphere4");
 		sphere4Cont = sphere4->createMovieClipSub("cont");
 	};
-	GetSphere::GetSphere(string param1) :counter(0), myRadius(0), myDamage(0), fireCount(0), iceCount(0), stoneCount(0), levinCount(0), towerArrow(0)
+	GetSphere::GetSphere(string param1) :container(NULL), radius(NULL), counter(0), owner(NULL), myRadius(0), myDamage(0), fireCount(0), iceCount(0), stoneCount(0), levinCount(0), getAllCount(0), world(NULL), dead(0), speedFrame(0), speedY(0), arrow(NULL), towerArrow(NULL), containerChange(NULL)
 	{
 		//this->listOfStack = [];
 		//this->addEventListener(Event.ADDED_TO_STAGE, this->init);
 		this->type = param1;
+		init();
 		return;
 	}// end function
 	bool GetSphere::init()
@@ -128,46 +129,46 @@ namespace engine
 				GetSphere_mc* container = (GetSphere_mc*)this->container;
 				if (container->sphere1->isVisible())
 				{
-					if (container->sphere1->currentFrame < container->sphere1->totalFrames)
+					if (container->sphere1Cont->currentFrame < container->sphere1Cont->totalFrames)
 					{
-						container->sphere1->gotoAndStop((container->sphere1->currentFrame + 1));
+						container->sphere1Cont->gotoAndStop((container->sphere1Cont->currentFrame + 1));
 					}
 					else
 					{
-						container->sphere1->gotoAndStop(1);
+						container->sphere1Cont->gotoAndStop(1);
 					}
 				}
 				if (container->sphere2->isVisible())
 				{
-					if (container->sphere2->currentFrame < container->sphere2->totalFrames)
+					if (container->sphere2Cont->currentFrame < container->sphere2Cont->totalFrames)
 					{
-						container->sphere2->gotoAndStop((container->sphere2->currentFrame + 1));
+						container->sphere2Cont->gotoAndStop((container->sphere2Cont->currentFrame + 1));
 					}
 					else
 					{
-						container->sphere2->gotoAndStop(1);
+						container->sphere2Cont->gotoAndStop(1);
 					}
 				}
 				if (container->sphere3->isVisible())
 				{
-					if (container->sphere3->currentFrame < container->sphere3->totalFrames)
+					if (container->sphere3Cont->currentFrame < container->sphere3Cont->totalFrames)
 					{
-						container->sphere3->gotoAndStop((container->sphere3->currentFrame + 1));
+						container->sphere3Cont->gotoAndStop((container->sphere3Cont->currentFrame + 1));
 					}
 					else
 					{
-						container->sphere3->gotoAndStop(1);
+						container->sphere3Cont->gotoAndStop(1);
 					}
 				}
 				if (container->sphere4->isVisible())
 				{
-					if (container->sphere4->currentFrame < container->sphere4->totalFrames)
+					if (container->sphere4Cont->currentFrame < container->sphere4Cont->totalFrames)
 					{
-						container->sphere4->gotoAndStop((container->sphere4->currentFrame + 1));
+						container->sphere4Cont->gotoAndStop((container->sphere4Cont->currentFrame + 1));
 					}
 					else
 					{
-						container->sphere4->gotoAndStop(1);
+						container->sphere4Cont->gotoAndStop(1);
 					}
 				}
 				if (container->cont->currentFrame < container->cont->totalFrames)
@@ -687,6 +688,7 @@ namespace engine
 		if (!event)
 			return;
         string targetName = event->target->getName();
+		if (targetName == "World")return;
         if(targetName == "sellCase")
 		{
 			this->world->worldInterface->container->sell->gotoAndStop(1);

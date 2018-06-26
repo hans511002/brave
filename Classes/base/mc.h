@@ -51,7 +51,7 @@ namespace engine
 
 		Common::Array<MovieClipSub*> submc;
 		//Common::Array<MCText*> mct;
-		Common::Array<MovieClipSubBase *> mcbs;
+		Common::Array<MovieClipSubBase *> submcbs;
         virtual void addMCbs(MovieClipSubBase * mcs);
 		virtual bool remove(MovieClipSubBase * ms);
 
@@ -99,6 +99,7 @@ namespace engine
 
 		//所有全部子集群,用于自动删除
 		Common::Array<MovieClipSub*> mcs;
+		Common::Array<MovieClipSubBase*> mcbs;
 
         MovieClip(dragonBones::CCArmatureDisplay * container, const string &  defAniName = "");
         MovieClip(const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "");

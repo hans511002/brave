@@ -7,16 +7,15 @@ namespace engine
 {
 	namespace towers
 	{
-		BaseTowerMenu::BaseTowerMenu() : myTower(NULL), world(NULL), dead(false), closeFlag(false), openFlag(true), towerRadius(NULL),
-			openFastBuyUltraFlag(false), closeFastBuyUltraFlag(false), readyFastBuyUltraFlag(false), fastBuyBlockCost(false), fastBuyPrice(0)
+		BaseTowerMenu::BaseTowerMenu() : myTower(NULL), dead(0), world(NULL), closeFlag(0), openFlag(true), towerRadius(NULL), openFastBuyUltraFlag(0), closeFastBuyUltraFlag(0), readyFastBuyUltraFlag(0), fastBuyPrice(0), fastBuyBlockCost(0), autoguidesObject(NULL), autoguidesObjectWidth(0), autoguidesObjectHeight(0)
 		{
 		};
 
-		TowerMenu::TowerMenu(Tower * param1) :container(NULL), towerRadius1(NULL), exampleUltraTower(NULL), openUltraSection(false), hint(NULL),
-			hint1(NULL), container1(NULL), starsAnima(NULL), training_12(NULL)
+		TowerMenu::TowerMenu(Tower * param1) :container(NULL), towerRadius1(NULL), exampleUltraTower(NULL), openUltraSection(0), hint(NULL), hint1(NULL), lastE(NULL), training_12(NULL), container1(NULL), starsAnima(NULL)
 		{
 			//this->addEventListener(Event.ADDED_TO_STAGE, this->init);
 			this->myTower = param1;
+			init();
 			return;
 		}// end function
 
@@ -1213,6 +1212,7 @@ namespace engine
 			std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
 			if(!event)
 				return;
+			this->lastE = NULL;
             string targetName = event->target->getName();
             if(targetName == "btnUpgradeMenuCase")
 			{
@@ -3678,7 +3678,7 @@ namespace engine
 				this->towerRadius->setVisible(false);
 				if (this->myTower->towerType < 5)
 				{
-					//this->myTower->container->selectTower->setVisible(false);
+					this->myTower->container->selectTower->setVisible(false);
 				}
 				this->world->towerMenu = NULL;
 				if (!this->myTower->blockTowerFlag)
@@ -3698,7 +3698,7 @@ namespace engine
 				}
 				if (!param1)
 				{
-					//this->world->listOfIndexes3.push(this);
+					this->world->listOfClasses.push(this);
 				}
 				else
 				{
@@ -3719,16 +3719,16 @@ namespace engine
 				this->world->removeChild(this->towerRadius1);
 				this->towerRadius1 = NULL;
 				this->world->removeChild(this);
-				//this->i = 0;
-				//while (this->i < this->world->listOfClasses.size())
-				//{
-				//    if (this->world->listOfClasses[this->i] == this)
-				//    {
-				//        this->world->listOfClasses.splice(this->i, 1);
-				//        break;
-				//    }
-				//    i++;
-				//}
+				this->i = 0;
+				while (this->i < this->world->listOfClasses.size())
+				{
+				    if (this->world->listOfClasses[this->i] == this)
+				    {
+				        this->world->listOfClasses.splice(this->i, 1);
+				        break;
+				    }
+				    i++;
+				}
 				//this->i = 0;
 				//while (this->i < this->world->listOfIndexes3.size())
 				//{

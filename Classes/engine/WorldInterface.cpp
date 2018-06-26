@@ -41,6 +41,7 @@ namespace engine
 		//this->listOfGetAhieve = [];
 		//this->listOfAnimation = [];
 		//this->addEventListener(Event.ADDED_TO_STAGE, this->init);
+		setName(getTypeName());
 	}// end function
 
 	bool WorldInterface::init()// (event:Event) : void
@@ -828,6 +829,7 @@ namespace engine
 		if (!event)
 			return;
         string targetName=event->target->getName();
+		logInfo("mouseMoveHandler.target", getNamePath(event->target));
 		if (!this->world->getSphere && !this->world->cast)
 		{
             if(targetName == "slow")
@@ -3228,7 +3230,6 @@ namespace engine
 			this->i = this->world->listOfClasses.size() - 1;
 			while (this->i >= 0)
 			{
-
 				if (dynamic_cast<Golem *>(this->world->listOfClasses[this->i]) || dynamic_cast<Iceman *>(this->world->listOfClasses[this->i])
 					|| dynamic_cast<Air *>(this->world->listOfClasses[this->i]))
 				{
@@ -3246,8 +3247,8 @@ namespace engine
 						this->world->worldInterface->container->barInfo->gotoAndStop(2);
 					}
 					break;
-					i--;
 				}
+				i--;
 			}
 		}
 		else

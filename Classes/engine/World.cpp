@@ -389,6 +389,7 @@ namespace engine
             event->currentTargets.push(this);
         while(event->hasNext())
 		{
+			string targetName = event->target->getName();
 			logInfo("mouseDownHandler.target", getNamePath(event->target));
 			logInfo("mouseDownHandler.target.pos", event->getLocation(),&event->target->getPosition()
 				, &event->target->getParent()->convertToWorldSpace(event->target->getPosition()));
@@ -441,7 +442,7 @@ namespace engine
                 if(event->processed)
                     continue;
             }
-            if(!this->cast && event->target->getName() == "towerCase")// && event->target->mouseEnabled
+            if(!this->cast && targetName == "towerCase")// && event->target->mouseEnabled
 			{
 				Node * parent = event->target->getParent()->getParent();
 				Tower *tower = ISTYPE(Tower, parent);
@@ -465,7 +466,7 @@ namespace engine
             }
 			if (!this->getSphere && !this->cast)
 			{
-				if (event->target->getName() == "unitCase")
+				if (targetName == "unitCase")
 				{
 					Node * parent = event->target->getParent()->getParent()->getParent()->getParent();
 					Unit * unit = ISTYPE(Unit, parent);
@@ -530,7 +531,8 @@ namespace engine
             event->currentTargets.push(this);
         while(event->hasNext())
         {
-            logInfo("mouseUpHandler.target", getNamePath(event->target));
+			string targetName = event->target->getName();
+			logInfo("mouseUpHandler.target", getNamePath(event->target));
             if(this->getSphere)
             {
                 this->getSphere->mouseUpHandler(event);
@@ -582,6 +584,8 @@ namespace engine
 	}// end function
 	void World::mouseMoveHandler(cocos2d::EventMouse* e)
 	{
+		this->mouseX = e->getCursorX();
+		this->mouseY = e->getCursorY();
 		EventNode::mouseDownHandler(e);
 		int mouseButton = e->getMouseButton();
 		if (mouseButton == 1)return;
@@ -592,7 +596,7 @@ namespace engine
         //return;
 		while (event->hasNext())
 		{
-			//logInfo("mouseMoveHandler.target", getNamePath(event->target));
+			string targetName = event->target->getName();
 			if (this->getSphere)
 			{
 				this->getSphere->mouseMoveHandler(event);
@@ -615,7 +619,7 @@ namespace engine
 				else if (this->exchange)
 				{
 					this->exchange->mouseMoveHandler(event);
-					if (event->target->getName() == "towerCase")
+					if (targetName == "towerCase")
 					{
 						if (!this->towerRadius->isVisible() || event->target->getParent()->getParent() != this->towerRadius->myTower)
 						{
@@ -642,21 +646,22 @@ namespace engine
 				this->buildTowerMenu->mouseMoveHandler(event); 
             if(this->decoration)
                 this->decoration->mouseMoveHandler(event);
-			if (!this->cast && event->target->getName() == "towerCase")// && event->target->mouseEnabled
+			if (!this->cast && targetName == "towerCase")// && event->target->mouseEnabled
 			{
 				bool tempObject = false;
+				Node * parent = event->target->getParent()->getParent()->getParent()->getParent();
 				if (this->towerMenu || this->ultraTowerMenu)
 				{
 					if (this->towerMenu)
 					{
-						if (this->towerMenu->myTower != event->target->getParent()->getParent())
+						if (this->towerMenu->myTower != parent)
 						{
 							tempObject = true;
 						}
 					}
 					else if (this->ultraTowerMenu)
 					{
-						if (this->ultraTowerMenu->myTower != event->target->getParent()->getParent())
+						if (this->ultraTowerMenu->myTower != parent)
 						{
 							tempObject = true;
 						}
@@ -668,7 +673,7 @@ namespace engine
 				}
 				if (tempObject)
 				{
-					if (!this->towerRadius->isVisible() || event->target->getParent()->getParent() != this->towerRadius->myTower)
+					if (!this->towerRadius->isVisible() || parent != this->towerRadius->myTower)
 					{
 						if (this->towerRadius->myTower)
 						{
@@ -680,8 +685,7 @@ namespace engine
 								}
 							}
 						}
-						Node * parent = event->target->getParent()->getParent();
-						Tower *tower = ISTYPE(Tower, parent);
+ 						Tower *tower = ISTYPE(Tower, parent);
 						this->towerRadius->myTower = tower;
 						this->towerRadius->setWidth (this->towerRadius->myTower->radius * 2);
 						this->towerRadius->setHeight ( this->towerRadius->myTower->radius * 2 * this->scaleRadius);
@@ -724,7 +728,7 @@ namespace engine
 			}
 			if (!this->getSphere && !this->cast)
 			{
-				if (event->target->getName() == "placeForBuildCase")//&& event->target->mouseEnabled
+				if (targetName == "placeForBuildCase")//&& event->target->mouseEnabled
 				{
 					Node * parent = event->target->getParent()->getParent()->getParent();
 					BuildTowerPlace * place = ISTYPE(BuildTowerPlace, parent);
@@ -761,7 +765,8 @@ namespace engine
 		std::MouseEvent * event = &me;
 		while (event->hasNext())
 		{
-			if (event->target->getName() == "towerCase")
+			string targetName = event->target->getName();
+			if (targetName == "towerCase")
 			{
 				if (!this->exchange)
 				{

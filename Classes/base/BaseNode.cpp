@@ -362,7 +362,7 @@ namespace std
         if(!node)return 0;
         int ops = node->getOpacity();
 		float alpha= (double)ops / 255*10;
-		alpha = std::floor(alpha) / 10;
+		alpha = std::floor(alpha+0.5) / 10;
 		return alpha;
 	};
 

@@ -29,12 +29,13 @@ namespace engine{
 		{
 			////this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
 			this->world = Main::mainClass->worldClass;
-			this->setPosition(this->myPlace->getPosition());
+			Vec2 pos = this->myPlace->convertToWorldSpace(Vec2(0, 0));
+			this->setPosition(pos);
 			//this->x = this->myPlace.x;
 			//this->y = this->myPlace.y;
 			//this->myPlace->placeForBuildCase->setMouseEnabled(false);
-			this->this_pt = cocos2d::Point(this->getPositionX() + container->getPositionX() + container->towerCase->getPositionX()
-				, this->getPositionY() + container->getPositionY() + container->towerCase->getPositionY());
+			this->this_pt = cocos2d::Point(pos.x + container->getPositionX() + container->towerCase->getPositionX()
+				, pos.y + container->getPositionY() + container->towerCase->getPositionY());
 			this->shoot_pt = cocos2d::Point(this->getPositionX(), this->getPositionY() + this->correctYGrPos);
 			this->addBuildAnima();
 			if (this->towerType < 5)

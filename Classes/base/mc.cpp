@@ -54,15 +54,17 @@ namespace engine
 	}
 	MovieClip * MC::getRootMc(MC * mc)
 	{
-		MovieClip * mvc = dynamic_cast<MovieClip*>(mc);
-		while(mvc == NULL && mc != NULL)
+		while (mc != NULL)
 		{
-			MovieClipSub * mcvs = dynamic_cast<MovieClipSub*>(mc);
-			mc = mcvs->mc;
-			if(!mc)return NULL;
-			mvc = dynamic_cast<MovieClip*>(mc);
+			if (ISTYPE(MovieClip, mc))
+				return ISTYPE(MovieClip, mc); 
+			else if (ISTYPE(MovieClipSub, mc)){
+				MovieClipSub * mcvs = ISTYPE(MovieClipSub, mc);// dynamic_cast<MovieClipSub*>(mc);
+				mc = mcvs->mc;
+				if (!mc)return NULL;
+			}
 		}
-		return mvc;
+		return NULL;
 	}
 	void MC::addMcs(MC * mc, MovieClipSub * mcs)
 	{
@@ -84,9 +86,9 @@ namespace engine
 	};
     Node *  MC::getMemNode(const string &  slotName)
 	 {
-		 for(int i = 0; i < this->mcbs.size(); i++)
+		for (int i = 0; i < this->submcbs.size(); i++)
 		 {
-			 Node *node = ISTYPE(Node, this->mcbs[i]);
+			Node *node = ISTYPE(Node, this->submcbs[i]);
 			 if(node && slotName == node->getName())
 			 { 
 				  return node;
@@ -96,7 +98,13 @@ namespace engine
 	};
  
     void MC::addMCbs(MovieClipSubBase * mcs){
-		this->mcbs.push(mcs);
+		this->submcbs.push(mcs);
+		if (ISTYPE(Node, mcs)){
+			ISTYPE(Node, mcs)->retain();
+		}
+		MovieClip * mvc = getRootMc(this);
+		if (mvc)
+			mvc->mcbs.push(mcs);
         //if (ISTYPE(MCText, mcs)){
         //    this->mct.push((MCText*)mcs);
         //}
@@ -117,11 +125,11 @@ namespace engine
 	};
 
     bool MC::remove(MovieClipSubBase * mcs){
-		for(int i = 0; i < this->mcbs.size(); i++)
+		for (int i = 0; i < this->submcbs.size(); i++)
 		{
-			if(mcs == this->mcbs[i])
+			if (mcs == this->submcbs[i])
 			{
-				this->mcbs.remove(i);
+				this->submcbs.remove(i);
 				return true;
 			}
 		}
@@ -489,11 +497,22 @@ namespace engine
 	void MovieClip::destroy()
 	{
 		int l = this->mcs.size();
-		for(int i = l - 1; i >= 0; i--)
+		for (int i = l - 1; i >= 0; i--)
 		{
 			delete this->mcs[i];
 			this->mcs[i] = NULL;
 		}
+		this->mcs.clear();
+		l = this->mcbs.size();
+		for (int i = l - 1; i >= 0; i--)
+		{
+			if (ISTYPE(Node, this->mcbs[i]))
+				ISTYPE(Node, this->mcbs[i])->release();
+			else
+				delete this->mcbs[i];
+			this->mcbs[i] = NULL;
+		}
+		this->mcbs.clear();
 	}
 	void MovieClip::destroy(MovieClipSub * & ms)
 	{ 
@@ -1020,9 +1039,9 @@ namespace engine
 		int l = this->submc.size();
 		for(int i = 0; i < l; i++)
 			this->submc[i]->reinit();
-		l = this->mcbs.size();
+		l = this->submcbs.size();
 		for(int i = 0; i < l; i++)
-			this->mcbs[i]->reinit();
+			this->submcbs[i]->reinit();
 		//l = this->mcase.size();
 		//for (int i = 0; i < l; i++)
 		//    this->mcase[i]->reinit();

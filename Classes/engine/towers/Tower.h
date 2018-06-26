@@ -124,7 +124,7 @@ namespace engine
 
             Tower();
 
-            bool init();
+			virtual bool init();
             virtual void update(float dt = 0);
 
             void scan();
