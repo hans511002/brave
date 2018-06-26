@@ -827,20 +827,22 @@ namespace engine
 		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
 		if (!event)
 			return;
-
+        string targetName=event->target->getName();
 		if (!this->world->getSphere && !this->world->cast)
 		{
-			if (event->target->getName() == "slow")
+            if(targetName == "slow")
 			{
-				if (this->container->slow->currentFrame == 2)
+                event->processed = true;
+                if(this->container->slow->currentFrame == 2)
 				{
 					this->container->slow->gotoAndStop(3);
 					//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 				}
 			}
-			else if (event->target->getName() == "fastCase")
+            else if(targetName == "fastCase")
 			{
-				if (ISTYPE(EventNode,event->target)->mouseEnabled)
+                event->processed = true;
+                if(ISTYPE(EventNode, event->target)->mouseEnabled)
 				{
 					if (this->container->fast->currentFrame == 2 || this->container->fast->currentFrame == 5)
 					{
@@ -848,37 +850,40 @@ namespace engine
 						//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 					}
 				}
-			}
-			//else if (event->target->getName() == "traceBezier")
+            }
+			//else if (targetName == "traceBezier")
 			//{
 			//	if (this->container->traceBezier->currentFrame == 2)
 			//	{
 			//		this->container->traceBezier->gotoAndStop(3);
 			//	}
 			//}
-			else if (event->target->getName() == "pauseCase")
+            else if(targetName == "pauseCase")
 			{
-				if (this->container->pause->currentFrame != this->container->pause->totalFrames)
+                event->processed = true;
+                if(this->container->pause->currentFrame != this->container->pause->totalFrames)
 				{
 					this->container->pause->gotoAndStop(this->container->pause->totalFrames);
 					this->container->pauseOpenFlag = false;
 					this->container->pauseCloseFlag = false;
 					//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 				}
-			}
-			else if (event->target->getName() == "bookCase")
+            }
+            else if(targetName == "bookCase")
 			{
-				if (this->container->book->currentFrame != this->container->book->totalFrames)
+                event->processed = true;
+                if(this->container->book->currentFrame != this->container->book->totalFrames)
 				{
 					this->container->book->gotoAndStop(this->container->book->totalFrames);
 					this->container->bookOpenFlag = false;
 					this->container->bookCloseFlag = false;
 					//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 				}
-			}
-			else if (event->target->getName() == "sphereCase")
+            }
+            else if(targetName == "sphereCase")
 			{
-				if (ISTYPE(EventNode, event->target)->mouseEnabled)
+                event->processed = true;
+                if(ISTYPE(EventNode, event->target)->mouseEnabled)
 				{
 					this->i = 0;
 					while (this->i < this->world->listOfMoveSpheres.size())
@@ -890,7 +895,9 @@ namespace engine
 						i++;
 					}
 					this->world->feature->listOfMoveSpheres();
-					if (event->target->getParent()->getName() == "fireSphere")
+                    Node * parent = event->target->getParent()->getParent();//display -> dbdisplay
+                    string parName = parent->getName();
+                    if(parName == "fireSphere")
 					{
 						if (this->fireCount == 0)
 						{
@@ -899,7 +906,7 @@ namespace engine
 						//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 						this->archiveManage("get", "fire");
 					}
-					else if (event->target->getParent()->getName() == "iceSphere")
+                    else if(parName == "iceSphere")
 					{
 						if (this->iceCount == 0)
 						{
@@ -908,7 +915,7 @@ namespace engine
 						//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 						this->archiveManage("get", "ice");
 					}
-					else if (event->target->getParent()->getName() == "stoneSphere")
+                    else if(parName == "stoneSphere")
 					{
 						if (this->stoneCount == 0)
 						{
@@ -917,7 +924,7 @@ namespace engine
 						//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 						this->archiveManage("get", "stone");
 					}
-					else if (event->target->getParent()->getName() == "levinSphere")
+                    else if(parName == "levinSphere")
 					{
 						if (this->levinCount == 0)
 						{
@@ -926,7 +933,7 @@ namespace engine
 						//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 						this->archiveManage("get", "levin");
 					}
-					else if (event->target->getParent()->getName() == "getAll")
+                    else if(parName == "getAll")
 					{
 						if (this->getAllCount == 0)
 						{
@@ -1031,47 +1038,54 @@ namespace engine
 					}
 				}
 			}
-			else if (event->target->getName() == "startWavesCase")
+			else if (targetName == "startWavesCase")
 			{
-				if (this->container->startWavesStartWavesCase->mouseEnabled)
+                event->processed = true;
+                if(this->container->startWavesStartWavesCase->mouseEnabled)
 				{
 					this->world->wavesClass->startWaves();
 				}
 			}
-			else if (event->target->getName() == "castGolemCase")
+			else if (targetName == "castGolemCase")
 			{
-				if (this->container->butCastGolem->currentFrame == 2)
+                event->processed = true;
+                if(this->container->butCastGolem->currentFrame == 2)
 				{
 					this->container->butCastGolem->gotoAndStop(3);
 					this->castGolem();
 					//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 				}
 			}
-			else if (event->target->getName() == "castIcemanCase")
+			else if (targetName == "castIcemanCase")
 			{
-				if (this->container->butCastIceman->currentFrame == 2)
+                event->processed = true;
+                if(this->container->butCastIceman->currentFrame == 2)
 				{
 					this->container->butCastIceman->gotoAndStop(3);
 					this->castIceman();
 					//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 				}
 			}
-			else if (event->target->getName() == "castAirCase")
+			else if (targetName == "castAirCase")
 			{
-				if (this->container->butCastAir->currentFrame == 2)
+                event->processed = true;
+                if(this->container->butCastAir->currentFrame == 2)
 				{
 					this->container->butCastAir->gotoAndStop(3);
 					this->castAir();
 					//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 				}
 			}
-			else if (event->target->getName() == "pointerCase")
+			else if (targetName == "pointerCase")
 			{
-				this->world->wavesClass->startWaves();
+                event->processed = true;
+                this->world->wavesClass->startWaves();
 			}
-			else if (event->target->getName() == "newEnemyCase" || event->target->getName() == "newElementCase")
+			else if (targetName == "newEnemyCase" || targetName == "newElementCase")
 			{
-				MouseStatusMC * tempObject = ISTYPE(MouseStatusMC, event->target->getParent());
+                event->processed = true;
+                Node * parent = event->target->getParent()->getParent()->getParent();
+                MouseStatusMC * tempObject = ISTYPE(MouseStatusMC, parent);
 				if (tempObject){
 					tempObject->mouseStatus = 3;
 					tempObject->setMouseChildren(false);
@@ -1079,9 +1093,10 @@ namespace engine
 				} 
 				//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 			}
-			else if (event->target->getName() == "testRestart")
+			else if (targetName == "testRestart")
 			{
-				if (this->container->testRestart->currentFrame == 2)
+                event->processed = true;
+                if(this->container->testRestart->currentFrame == 2)
 				{
 					this->container->testRestart->gotoAndStop(3);
 				}
@@ -1093,11 +1108,13 @@ namespace engine
 		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
 		if (!event)
 			return;
-		if (!this->world->getSphere && !this->world->cast)
+        string targetName = event->target->getName();
+        if(!this->world->getSphere && !this->world->cast)
 		{
-			if (event->target->getName() == "slow")
+			if (targetName == "slow")
 			{
-				if (this->container->slow->currentFrame == 3)
+                event->processed = true;
+                if(this->container->slow->currentFrame == 3)
 				{
 					if (this->fasterFlag != 1)
 					{
@@ -1121,9 +1138,10 @@ namespace engine
 					this->container->slow->gotoAndStop(1);
 				}
 			}
-			if (event->target->getName() == "fastCase")
+			if (targetName == "fastCase")
 			{
-				if (ISTYPE(EventNode, event->target)->mouseEnabled)
+                event->processed = true;
+                if(ISTYPE(EventNode, event->target)->mouseEnabled)
 				{
 					if (this->container->fast->currentFrame == 3 || this->container->fast->currentFrame == 6)
 					{
@@ -1139,7 +1157,7 @@ namespace engine
 					this->container->fastCont->stop();
 				}
 			}
-			//if (event->target->getName() == "traceBezier")
+			//if (targetName == "traceBezier")
 			//{
 			//	if (this->container->traceBezier->currentFrame == 3)
 			//	{
@@ -1150,9 +1168,10 @@ namespace engine
 			//{
 			//	this->container->traceBezier->gotoAndStop(1);
 			//}
-			if (event->target->getName() == "pauseCase")
+			if (targetName == "pauseCase")
 			{
-				if (this->container->pause->currentFrame == this->container->pause->totalFrames)
+                event->processed = true;
+                if(this->container->pause->currentFrame == this->container->pause->totalFrames)
 				{
 					this->addPause();
 				}
@@ -1172,9 +1191,10 @@ namespace engine
 					this->container->pauseCloseFlag = true;
 				}
 			}
-			if (event->target->getName() == "bookCase")
+			if (targetName == "bookCase")
 			{
-				if (this->container->book->currentFrame == this->container->book->totalFrames)
+                event->processed = true;
+                if(this->container->book->currentFrame == this->container->book->totalFrames)
 				{
 					this->addEncyclopedia();
 				}
@@ -1194,9 +1214,10 @@ namespace engine
 					this->container->bookCloseFlag = true;
 				}
 			}
-			if (event->target->getName() == "testRestart")
+			if (targetName == "testRestart")
 			{
-				if (this->container->testRestart->currentFrame == 3)
+                event->processed = true;
+                if(this->container->testRestart->currentFrame == 3)
 				{
 					this->container->testRestart->gotoAndStop(2);
 					//if (std::getText(this->container->testRestartBoardWaveTXT) == "")
@@ -1225,12 +1246,15 @@ namespace engine
 		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
 		if (!event)
 			return;
-		if (!this->world->getSphere && !this->world->cast && !this->world->exchange)
+        string targetName = event->target->getName();
+        if(!this->world->getSphere && !this->world->cast && !this->world->exchange)
 		{
-			if (event->target->getName() == "sphereCase")
+            if(targetName == "sphereCase")
 			{
-				Node * parent = event->target->getParent()->getParent();
-				if (parent->getName() == "fireSphere")
+                event->processed = true;
+                Node * parent = event->target->getParent()->getParent();//display -> dbdisplay
+                string parName = parent->getName();
+                if(parName == "fireSphere")
 				{
 					if (ISTYPE(EventNode, event->target)->mouseEnabled && this->container->fireBack->currentFrame == 1)
 					{
@@ -1255,7 +1279,7 @@ namespace engine
 						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
 					}
 				}
-				else if (event->target->getParent()->getName() == "iceSphere")
+                else if(parName == "iceSphere")
 				{
 					if (ISTYPE(EventNode, event->target)->mouseEnabled && this->container->iceBack->currentFrame == 1)
 					{
@@ -1280,7 +1304,7 @@ namespace engine
 						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
 					}
 				}
-				else if (event->target->getParent()->getName() == "stoneSphere")
+                else if(parName == "stoneSphere")
 				{
 					if (ISTYPE(EventNode, event->target)->mouseEnabled && this->container->stoneBack->currentFrame == 1)
 					{
@@ -1305,7 +1329,7 @@ namespace engine
 						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
 					}
 				}
-				else if (event->target->getParent()->getName() == "levinSphere")
+                else if(parName == "levinSphere")
 				{
 					if (ISTYPE(EventNode, event->target)->mouseEnabled && this->container->levinBack->currentFrame == 1)
 					{
@@ -1330,7 +1354,7 @@ namespace engine
 						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
 					}
 				}
-				else if (event->target->getParent()->getName() == "getAll")
+                else if(parName == "getAll")
 				{
 					if (ISTYPE(EventNode, event->target)->mouseEnabled && this->container->getAll->currentFrame == 1)
 					{
@@ -1398,8 +1422,9 @@ namespace engine
 					this->getAllHint = NULL;
 				}
 			}
-			if (event->target->getName() == "slow")
+            if(targetName == "slow")
 			{
+                event->processed = true;
 				if (this->container->slow->currentFrame == 1)
 				{
 					this->container->slow->gotoAndStop(2);
@@ -1410,9 +1435,10 @@ namespace engine
 			{
 				this->container->slow->gotoAndStop(1);
 			}
-			if (event->target->getName() == "fastCase")
+            if(targetName == "fastCase")
 			{
-				if (ISTYPE(EventNode, event->target)->mouseEnabled)
+                event->processed = true;
+                if(ISTYPE(EventNode, event->target)->mouseEnabled)
 				{
 					if (this->container->fast->currentFrame == 1 || this->container->fast->currentFrame == 4)
 					{
@@ -1443,7 +1469,7 @@ namespace engine
 					this->container->fastCont->gotoAndStop(tempObject);
 				}
 			}
-			//if (event->target->getName() == "traceBezier")
+			//if (targetName == "traceBezier")
 			//{
 			//	if (this->container->traceBezier->currentFrame == 1)
 			//	{
@@ -1454,9 +1480,10 @@ namespace engine
 			//{
 			//	this->container->traceBezier->gotoAndStop(1);
 			//}
-			if (event->target->getName() == "pauseCase")
+            if(targetName == "pauseCase")
 			{
-				if (this->container->pause->currentFrame == 1)
+                event->processed = true;
+                if(this->container->pause->currentFrame == 1)
 				{
 					this->container->pause->gotoAndStop(2);
 					this->container->pauseOpenFlag = true;
@@ -1479,9 +1506,10 @@ namespace engine
 					this->container->pauseCloseFlag = true;
 				}
 			}
-			if (event->target->getName() == "bookCase")
+            if(targetName == "bookCase")
 			{
-				if (this->container->book->currentFrame == 1)
+                event->processed = true;
+                if(this->container->book->currentFrame == 1)
 				{
 					this->container->book->gotoAndStop(2);
 					this->container->bookOpenFlag = true;
@@ -1504,9 +1532,10 @@ namespace engine
 					this->container->bookCloseFlag = true;
 				}
 			}
-			if (event->target->getName() == "startWavesCase")
+            if(targetName == "startWavesCase")
 			{
-				if (this->container->startWavesStartWavesCase->mouseEnabled)
+                event->processed = true;
+                if(this->container->startWavesStartWavesCase->mouseEnabled)
 				{
 					if (this->container->startWaves->currentFrame <= 10)
 					{
@@ -1522,9 +1551,10 @@ namespace engine
 					this->container->startWaves->gotoAndStop(this->container->startWaves->currentFrame - 10);
 				}
 			}
-			if (event->target->getName() == "castGolemCase")
+            if(targetName == "castGolemCase")
 			{
-				if (event->target->getParent()->isVisible())
+                event->processed = true;
+                if(event->target->getParent()->isVisible())
 				{
 					if (this->container->butCastGolem->currentFrame == 1)
 					{
@@ -1582,9 +1612,10 @@ namespace engine
 					}
 				}
 			}
-			if (event->target->getName() == "castIcemanCase")
+            if(targetName == "castIcemanCase")
 			{
-				if (event->target->getParent()->isVisible())
+                event->processed = true;
+                if(event->target->getParent()->getParent()->isVisible())
 				{
 					if (this->container->butCastIceman->currentFrame == 1)
 					{
@@ -1642,9 +1673,10 @@ namespace engine
 					}
 				}
 			}
-			if (event->target->getName() == "castAirCase")
+            if(targetName == "castAirCase")
 			{
-				if (event->target->getParent()->isVisible())
+                event->processed = true;
+                if(event->target->getParent()->getParent()->isVisible())
 				{
 					if (this->container->butCastAir->currentFrame == 1)
 					{
@@ -1702,9 +1734,10 @@ namespace engine
 					}
 				}
 			}
-			if (event->target->getName() == "pointerCase")
+			if (targetName == "pointerCase")
 			{
-				Node * parent=event->target->getParent()->getParent()->getParent()->getParent();
+                event->processed = true;
+                Node * parent = event->target->getParent()->getParent()->getParent()->getParent();
 				LevelPointer * pointer = ISTYPE(LevelPointer, parent);
 				if (!pointer->mouseFlag)
 				{
@@ -1741,9 +1774,10 @@ namespace engine
 					}
 				}
 			}
-			if (event->target->getName() == "newEnemyCase" || event->target->getName() == "newElementCase")
+            if(targetName == "newEnemyCase" || targetName == "newElementCase")
 			{
-				MouseStatusMC * tempObject = ISTYPE(MouseStatusMC, event->target->getParent());
+                event->processed = true;
+                MouseStatusMC * tempObject = ISTYPE(MouseStatusMC, event->target->getParent()->getParent()->getParent());
 				if (tempObject){
 					if (tempObject->mouseStatus == 1)
 					{
@@ -1768,9 +1802,10 @@ namespace engine
 					i++;
 				}
 			}
-			if (event->target->getName() == "testRestart")
+            if(targetName == "testRestart")
 			{
-				if (this->container->testRestart->currentFrame == 1)
+                event->processed = true;
+                if(this->container->testRestart->currentFrame == 1)
 				{
 					this->container->testRestart->gotoAndStop(2);
 				}
@@ -1779,9 +1814,10 @@ namespace engine
 			{
 				this->container->testRestart->gotoAndStop(1);
 			}
-			if (event->target->getName() == "sellCase")
+			if (targetName == "sellCase")
 			{
-				if (!this->sellHint)
+                event->processed = true;
+                if(!this->sellHint)
 				{
 					this->sellHint = new Hint_mc();
 					this->sellHint->gotoAndStop(14);

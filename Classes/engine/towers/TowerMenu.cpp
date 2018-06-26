@@ -692,9 +692,10 @@ namespace engine
 			std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
 			if(!event)
 				return;
-			if(this->container->currentFrame == 1)
+            string targetName = event->target->getName();
+            if(this->container->currentFrame == 1)
 			{
-				if (event->target->getName() == "btnUpgradeMenuCase")
+				if (targetName == "btnUpgradeMenuCase")
 				{
 					if (this->container->btnUpgradeMenu->currentFrame == 1)
 					{
@@ -739,7 +740,7 @@ namespace engine
 					}
 					if (this->myTower->towerType < 5)
 					{
-						if (event->target->getName() == "btnUpgradeMenuBLOCKCase")
+						if (targetName == "btnUpgradeMenuBLOCKCase")
 						{
 							if (!this->hint->isVisible() && !this->openFlag && !this->closeFlag)
 							{
@@ -747,7 +748,7 @@ namespace engine
 								this->hintPosition(5);
 							}
 						}
-						else if (event->target->getName() == "btnUpgradeMenuLOCKCase")
+						else if (targetName == "btnUpgradeMenuLOCKCase")
 						{
 							if (!this->hint->isVisible() && !this->openFlag && !this->closeFlag)
 							{
@@ -768,7 +769,7 @@ namespace engine
 			}
 			else if (this->container->currentFrame == this->container->totalFrames)
 			{
-				if (event->target->getName() == "btnTowerUpgrCase")
+				if (targetName == "btnTowerUpgrCase")
 				{
 					MCCase *scase = ISTYPE(MCCase, event->target);
 					MovieClipSub * btnTowerUpgr = ISTYPE(MovieClipSub, scase->getParentMC());// this->container->getSphereSlot(scase);
@@ -871,22 +872,23 @@ namespace engine
 					if (btnTowerUpgr->currentFrame < 5)
 					{
 						this->towerRadius1->setVisible(true);
-						if (event->target->getParent()->getName() == "btnTowerUpgr1")
+                        string parentName = event->target->getParent()->getName();
+                        if(parentName == "btnTowerUpgr1")
 						{
 							this->towerRadius1->setWidth(Main::mainClass->readXMLClass.ultraFireStoneRadiusXML * 2);
 							this->towerRadius1->setHeight(Main::mainClass->readXMLClass.ultraFireStoneRadiusXML * 2 * this->world->scaleRadius);
 						}
-						else if (event->target->getParent()->getName() == "btnTowerUpgr2")
+                        else if(parentName == "btnTowerUpgr2")
 						{
 							this->towerRadius1->setWidth(Main::mainClass->readXMLClass.ultraIceLevinRadiusXML * 2);
 							this->towerRadius1->setHeight(Main::mainClass->readXMLClass.ultraIceLevinRadiusXML * 2 * this->world->scaleRadius);
 						}
-						else if (event->target->getParent()->getName() == "btnTowerUpgr3")
+                        else if(parentName == "btnTowerUpgr3")
 						{
 							this->towerRadius1->setWidth(Main::mainClass->readXMLClass.ultraIceStoneRadiusXML * 2);
 							this->towerRadius1->setHeight(Main::mainClass->readXMLClass.ultraIceStoneRadiusXML * 2 * this->world->scaleRadius);
 						}
-						else if (event->target->getParent()->getName() == "btnTowerUpgr4")
+                        else if(parentName == "btnTowerUpgr4")
 						{
 							this->towerRadius1->setWidth(Main::mainClass->readXMLClass.ultraFireLevinRadiusXML * 2);
 							this->towerRadius1->setHeight(Main::mainClass->readXMLClass.ultraFireLevinRadiusXML * 2 * this->world->scaleRadius);
@@ -895,7 +897,7 @@ namespace engine
 						{
 							this->hintManage("ultraButtons", 1);
 						}
-						if (event->target->getParent()->getName() == "btnTowerUpgr1")
+                        if(parentName == "btnTowerUpgr1")
 						{
 							if (this->world->worldInterface->container->iceBacklight->isVisible() || this->world->worldInterface->container->levinBacklight->isVisible())
 							{
@@ -911,7 +913,7 @@ namespace engine
 							}
 							this->hintManage("ultraButtons", 1);
 						}
-						else if (event->target->getParent()->getName() == "btnTowerUpgr2")
+                        else if(parentName == "btnTowerUpgr2")
 						{
 							if (this->world->worldInterface->container->fireBacklight->isVisible() || this->world->worldInterface->container->stoneBacklight->isVisible())
 							{
@@ -927,7 +929,7 @@ namespace engine
 							}
 							this->hintManage("ultraButtons", 2);
 						}
-						else if (event->target->getParent()->getName() == "btnTowerUpgr3")
+                        else if(parentName == "btnTowerUpgr3")
 						{
 							if (this->world->worldInterface->container->fireBacklight->isVisible() || this->world->worldInterface->container->levinBacklight->isVisible())
 							{
@@ -943,7 +945,7 @@ namespace engine
 							}
 							this->hintManage("ultraButtons", 3);
 						}
-						else if (event->target->getParent()->getName() == "btnTowerUpgr4")
+                        else if(parentName == "btnTowerUpgr4")
 						{
 							if (this->world->worldInterface->container->iceBacklight->isVisible() || this->world->worldInterface->container->stoneBacklight->isVisible())
 							{
@@ -1023,14 +1025,14 @@ namespace engine
 					{
 						this->towerRadius1->setVisible(false);
 					}
-					if (event->target->getName() != "fastBuyUltraCase" || !this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->mouseEnabled)
+					if (targetName != "fastBuyUltraCase" || !this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->mouseEnabled)
 					{
 						if (this->world->worldInterface->container->fireBacklight->isVisible() || this->world->worldInterface->container->iceBacklight->isVisible()
 							|| this->world->worldInterface->container->stoneBacklight->isVisible() || this->world->worldInterface->container->levinBacklight->isVisible())
 						{
 							this->world->worldInterface->archiveSphereBacklightManage("");
 						}
-						if (event->target->getName() != "fastBuyUltraCase")
+						if (targetName != "fastBuyUltraCase")
 						{
 							if (this->hint->isVisible())
 							{
@@ -1045,7 +1047,7 @@ namespace engine
 				}
 				if (!this->openFastBuyUltraFlag && !this->closeFastBuyUltraFlag)
 				{
-					if (event->target->getName() == "fastBuyUltraCase" && this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->mouseEnabled)
+					if (targetName == "fastBuyUltraCase" && this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->mouseEnabled)
 					{
 						if (this->container->fastBuyUltraContBtnFastBuyUltra->currentFrame == 1)
 						{
@@ -1145,7 +1147,7 @@ namespace engine
 					}
 				}
 			}
-			if (event->target->getName() == "sphereSlotCase")
+			if (targetName == "sphereSlotCase")
 			{
 				{
 					Node * parent = event->target->getParent()->getParent()->getParent();
@@ -1211,14 +1213,15 @@ namespace engine
 			std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
 			if(!event)
 				return;
-			if(event->target->getName() == "btnUpgradeMenuCase")
+            string targetName = event->target->getName();
+            if(targetName == "btnUpgradeMenuCase")
 			{
 				if (this->container->btnUpgradeMenu->currentFrame == 2)
 				{
 					this->container->btnUpgradeMenu->gotoAndStop(3);
 				}
 			}
-			else if (event->target->getName() == "btnTowerUpgrCase")
+			else if (targetName == "btnTowerUpgrCase")
 			{
 				MCCase *scase = ISTYPE(MCCase, event->target);
 				MovieClipSub * btnTowerUpgr = ISTYPE(MovieClipSub ,scase->getParentMC());// this->container->getSphereSlot(scase);
@@ -1265,7 +1268,7 @@ namespace engine
 					}
 				}
 			}
-			else if (event->target->getName() == "sphereSlotCase")
+			else if (targetName == "sphereSlotCase")
 			{
 				//Node * parent = event->target->getParent()->getParent()->getParent();
 				//TowerMenu_mc * towerMenuMc = ISTYPE(TowerMenu_mc, parent);
@@ -1325,7 +1328,7 @@ namespace engine
 					}
 				}
 			}
-			else if (event->target->getName() == "btnGetAllCase")
+			else if (targetName == "btnGetAllCase")
 			{
 				MCCase * btnGetAllCase = ISTYPE(MCCase, event->target);
 				MovieClipSub *	btnGetAll = btnGetAllCase->getParentMC<MovieClipSub>();// this->container->getSphereSlot(btnGetAllCase);
@@ -1375,7 +1378,7 @@ namespace engine
 					//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 				}
 			}
-			else if (event->target->getName() == "fastBuyUltraCase")
+			else if (targetName == "fastBuyUltraCase")
 			{
 				if (!this->openFastBuyUltraFlag && !this->closeFastBuyUltraFlag)
 				{
@@ -1502,8 +1505,8 @@ namespace engine
 					}
 				}
 			}
-			else if (event->target->getName() != "buySphereCase" && event->target->getName() != "sphereCase"
-				&& event->target->getName() != "btnUpgradeMenuBLOCKCase" && event->target->getName() != "fastBuyUltraCase"
+			else if (targetName != "buySphereCase" && targetName != "sphereCase"
+				&& targetName != "btnUpgradeMenuBLOCKCase" && targetName != "fastBuyUltraCase"
 				&& event->target->getParent() != this->container && event->target->getParent()->getParent() != this->container)
 			{
 				this->lastE = event;
@@ -1517,9 +1520,10 @@ namespace engine
 			std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
 			if(!event)
 				return;
-			if(this->container->currentFrame == 1)
+            string targetName = event->target->getName();
+            if(this->container->currentFrame == 1)
 			{
-				if (event->target->getName() == "btnUpgradeMenuCase")
+				if (targetName == "btnUpgradeMenuCase")
 				{
 					if (this->container->btnUpgradeMenu->currentFrame == 3)
 					{
@@ -1699,7 +1703,7 @@ namespace engine
 			}
 			else if (this->container->currentFrame == this->container->totalFrames)
 			{
-				if (event->target->getName() == "btnTowerUpgrCase")
+				if (targetName == "btnTowerUpgrCase")
 				{
 					MCCase *scase = ISTYPE(MCCase,event->target);
 					MovieClipSub * btnTowerUpgr = scase->getParentMC<MovieClipSub>();// this->container->getSphereSlot(scase);

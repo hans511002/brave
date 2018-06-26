@@ -26,7 +26,6 @@ namespace engine
         virtual int getTotalFrames(const string &  aniName = "");
         virtual void gotoAndStop(int cf, const string &  aniName = "");
 		virtual  void nextFram();
-		virtual void update(float dt=0);
         virtual void play(const string &  aniName = "", int times = 1);
 		virtual void play(int times);
         virtual void stop(const string &  aniName = "");
@@ -121,6 +120,7 @@ namespace engine
 		virtual void setVisible(bool v);
 		virtual bool reinit();
 
+
 		void addMcs(MovieClipSub * mcs);
         virtual void destroy(MovieClipSub * & mcs);
 		virtual bool remove(MovieClipSub * ms);
@@ -146,6 +146,8 @@ namespace engine
 		virtual void onExit();
 		virtual void onceMovieHandler(cocos2d::EventCustom *event);
         virtual void gotoAndStop(int cf, const string &  aniName = "");
+
+        virtual void update(float dt = 0);
 
 	};
 	
@@ -197,6 +199,7 @@ namespace engine
 
 		void setUserData(void * data) { this->userData = data; };
 		void* getUserData() { return this->userData; };
+        virtual void update(float dt = 0);
 
 	};
 

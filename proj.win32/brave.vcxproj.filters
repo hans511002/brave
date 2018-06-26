@@ -309,6 +309,9 @@
     <ClCompile Include="..\Classes\engine\towers\Tower8.cpp">
       <Filter>src\engine\towers</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\base\Indexes.cpp">
+      <Filter>src\base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -718,6 +721,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\screens\LevelsMenu.h">
       <Filter>src\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\base\Indexes.h">
+      <Filter>src\base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

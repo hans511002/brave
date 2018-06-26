@@ -18,6 +18,8 @@ namespace engine{
 namespace std
 {
 	class BaseNode;
+    class EventNode;
+
 	void setAnchorPoint(cocos2d::Node* node, bool subset = false);
 	void setAnchorPoint(cocos2d::Node* node, float x, float y, bool subset = false);
 	void setAnchorPoint(cocos2d::Node* node, const cocos2d::Vec2 & pos, bool subset = false);
@@ -38,21 +40,7 @@ namespace std
 	extern Common::Log * gLog;
 
 	void writeLog(string msg, int type);
-	class MouseEvent : public cocos2d::EventMouse
-	{
-		int idx;
-	public:
-		Common::Array<Node *> currentTargets;
-		MouseEvent(MouseEventType mouseEventCode);
-		void setCurrentTarget(Node* target);
-		MouseEvent(EventMouse * e, bool incSub = false);
-		void hitTest(Node *node, int level);
-		void hitTest(Node *node, bool incSub = false);
-		bool hasNext(); 
-		inline void reset(){ idx =0; };
 
-		Node * target; 
-	};
 
 	class EventNode
 	{
@@ -104,7 +92,6 @@ namespace std
 		void printNodePos(Node *node);
 		void printNodePos(MovieClipSub *node);
 
-
 		virtual   void keyBoardPressedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 		virtual   void keyBoardReleasedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 		virtual   void mouseDownHandler(cocos2d::EventMouse* event);
@@ -118,7 +105,24 @@ namespace std
 	extern Common::Array<EventNode *> EventNodes;
 	void addEventNode(EventNode *node);
 	void removeEventNode(EventNode *node);
-	std::MouseEvent buildMouseEvent(EventMouse * e);
+	class MouseEvent : public cocos2d::EventMouse
+	{
+		int idx;
+	public:
+        bool processed;
+
+		Common::Array<Node *> currentTargets;
+		MouseEvent(MouseEventType mouseEventCode);
+		void setCurrentTarget(Node* target);
+		MouseEvent(EventMouse * e, bool incSub = false);
+		void hitTest(Node *node, int level);
+		void hitTest(Node *node, bool incSub = false);
+		bool hasNext(); 
+		inline void reset(){ idx =0; };
+		Node * target; 
+        EventNode * enode;
+	};	
+    std::MouseEvent buildMouseEvent(EventMouse * e);
 
 	class BaseNode :public cocos2d::Node, public EventNode
 	{

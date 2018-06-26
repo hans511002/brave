@@ -439,10 +439,10 @@ namespace std
 		drawNode->setScaleY(this->getScaleY());
 	};
 
-	MouseEvent::MouseEvent(MouseEventType mouseEventCode) : cocos2d::EventMouse(mouseEventCode), idx(0), target(NULL)
+    MouseEvent::MouseEvent(MouseEventType mouseEventCode) : cocos2d::EventMouse(mouseEventCode), idx(0), target(NULL), processed(false), enode(NULL)
 	{
 	};
-	MouseEvent::MouseEvent(cocos2d::EventMouse * e, bool incSub) :EventMouse(*e), idx(0), target(NULL)
+    MouseEvent::MouseEvent(cocos2d::EventMouse * e, bool incSub) :EventMouse(*e), idx(0), target(NULL), processed(false), enode(NULL)
 	{
 		Node * node = e->getCurrentTarget();
 		hitTest(node, incSub);
@@ -504,10 +504,12 @@ namespace std
 	{
 		cocos2d::EventMouse::setCurrentTarget(target);
 		this->target = target;
+        enode=ISTYPE(EventNode, this->target);
 	};
 	bool MouseEvent::hasNext(){
 		if (currentTargets.size() > idx){
 			setCurrentTarget(currentTargets.at(idx));
+            processed = false;
 			idx++;
 			return true;
 		}

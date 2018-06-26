@@ -318,10 +318,7 @@ namespace engine
 		}
 
 		if (this->exchange)
-		{
 			this->exchange->update();
-		}
-
 		if (this->portalViewCounter > -1)
 		{
 			if (this->portalViewCounter > 0)
@@ -334,47 +331,42 @@ namespace engine
 				int i = 0;
 				while (i < this->listOfFirePortals.size())
 				{
-					//tempObject = new Indexes(new RoadsignFire_mc(), 0);
-					//tempObject.x = this->listOfFirePortals[this->i].x;
-					//tempObject.y = this->listOfFirePortals[this->i].y;
-					//tempObject.scaleX = this->listOfFirePortals[this->i].scaleX;
-					//tempObject.scaleY = this->listOfFirePortals[this->i].scaleY;
+                    Indexes * tempObject = new Indexes(new RoadsignFire_mc(), 0);
+                    tempObject->setPosition(this->listOfFirePortals[this->i]->getPosition());
+                    tempObject->setScaleX(this->listOfFirePortals[this->i]->getScaleX());
+                    tempObject->setScaleY(this->listOfFirePortals[this->i]->getScaleY()); 
 					i++;
 				}
 				i = 0;
 				while (i < this->listOfIcePortals.size())
 				{
-					//tempObject = new Indexes(new RoadsignIce_mc(), 0);
-					//tempObject.x = this->listOfIcePortals[this->i].x;
-					//tempObject.y = this->listOfIcePortals[this->i].y;
-					//tempObject.scaleX = this->listOfIcePortals[this->i].scaleX;
-					//tempObject.scaleY = this->listOfIcePortals[this->i].scaleY;
+                    Indexes * tempObject = new Indexes(new RoadsignIce_mc(), 0);
+                    tempObject->setPosition(this->listOfIcePortals[this->i]->getPosition());
+                    tempObject->setScaleX(this->listOfIcePortals[this->i]->getScaleX());
+                    tempObject->setScaleY(this->listOfIcePortals[this->i]->getScaleY());
 					i++;
 				}
 				i = 0;
 				while (i < this->listOfStonePortals.size())
 				{
-					//tempObject = new Indexes(new RoadsignStone_mc(), 0);
-					//tempObject.x = this->listOfStonePortals[this->i].x;
-					//tempObject.y = this->listOfStonePortals[this->i].y;
-					//tempObject.scaleX = this->listOfStonePortals[this->i].scaleX;
-					//tempObject.scaleY = this->listOfStonePortals[this->i].scaleY;
+                    Indexes * tempObject = new Indexes(new RoadsignStone_mc(), 0);
+                    tempObject->setPosition(this->listOfStonePortals[this->i]->getPosition());
+                    tempObject->setScaleX(this->listOfStonePortals[this->i]->getScaleX());
+                    tempObject->setScaleY(this->listOfStonePortals[this->i]->getScaleY());
 					i++;
 				}
 				i = 0;
 				while (i < this->listOfLevinPortals.size())
-				{
-					//tempObject = new Indexes(new RoadsignLevin_mc(), 0);
-					//tempObject.x = this->listOfLevinPortals[this->i].x;
-					//tempObject.y = this->listOfLevinPortals[this->i].y;
-					//tempObject.scaleX = this->listOfLevinPortals[this->i].scaleX;
-					//tempObject.scaleY = this->listOfLevinPortals[this->i].scaleY;
+                {
+                    Indexes * tempObject = new Indexes(new RoadsignLevin_mc(), 0);
+                    tempObject->setPosition(this->listOfLevinPortals[this->i]->getPosition());
+                    tempObject->setScaleX(this->listOfLevinPortals[this->i]->getScaleX());
+                    tempObject->setScaleY(this->listOfLevinPortals[this->i]->getScaleY());
 					i++;
 				}
 			}
 		}
 		this->manageIndexes();
-
 		if (this->worldInterface->fasterFlag == 2)
 		{
 			if (this->frameCounter % 2)
@@ -393,7 +385,9 @@ namespace engine
 		if (mouseButton == 1)return;
 		std::MouseEvent me = std::buildMouseEvent(e);
 		std::MouseEvent * event = &me;
-		while (event->hasNext())
+        if(!event->currentTargets.size())
+            event->currentTargets.push(this);
+        while(event->hasNext())
 		{
 			logInfo("mouseDownHandler.target", getNamePath(event->target));
 			logInfo("mouseDownHandler.target.pos", event->getLocation(),&event->target->getPosition()
@@ -401,37 +395,53 @@ namespace engine
 			if (this->getSphere)
 			{
 				this->getSphere->mouseDownHandler(event);
-				if (!this->getSphere)
-				{
-					return;
-				}
+                if(event->processed)
+                    continue;
+                //if (!this->getSphere)
+				//{
+					//return;
+				//}
 			}
 			else
 			{
 				if (this->cast)
 				{
 					this->cast->mouseDownHandler(event);
-					return;
+                    if(event->processed)
+                        continue;//return;
 				}
 				if (this->towerMenu)
 				{
 					this->towerMenu->mouseDownHandler(event);
-				}
+                    if(event->processed)
+                        continue;
+                }
 				else if (this->ultraTowerMenu)
 				{
 					this->ultraTowerMenu->mouseDownHandler(event);
-				}
+                    if(event->processed)
+                        continue;
+                }
 				else if (this->exchange)
 				{
 					this->exchange->mouseDownHandler(event);
-					return;
+                    if(event->processed)
+                        continue;	//return;
 				}
 			}
-			if (this->buildTowerMenu)
-				this->buildTowerMenu->mouseDownHandler(event);
-			if (this->decoration)
-				this->decoration->mouseDownHandler(event);
-			if (!this->cast && event->target->getName() == "towerCase")// && event->target->mouseEnabled
+            if(this->buildTowerMenu)
+            {
+                this->buildTowerMenu->mouseDownHandler(event);
+                if(event->processed)
+                    continue;
+            }
+            if(this->decoration)
+            {
+                this->decoration->mouseDownHandler(event);
+                if(event->processed)
+                    continue;
+            }
+            if(!this->cast && event->target->getName() == "towerCase")// && event->target->mouseEnabled
 			{
 				Node * parent = event->target->getParent()->getParent();
 				Tower *tower = ISTYPE(Tower, parent);
@@ -450,7 +460,9 @@ namespace engine
 			if (this->worldInterface)
 			{
 				this->worldInterface->mouseDownHandler(event);
-			}
+                //if(event->processed)
+                //    continue;
+            }
 			if (!this->getSphere && !this->cast)
 			{
 				if (event->target->getName() == "unitCase")
@@ -514,41 +526,59 @@ namespace engine
 		if (mouseButton == 1)return;
 		std::MouseEvent me = std::buildMouseEvent(e);
 		std::MouseEvent * event = &me;
-		while (event->hasNext())
-		{
-			logInfo("mouseUpHandler.target", getNamePath(event->target));
-			if (this->getSphere)
-			{
-				this->getSphere->mouseUpHandler(event);
-			}
-			else
-			{
-				if (this->cast)
-				{
-					this->cast->mouseUpHandler(event);
-					return;
-				}
-				if (this->towerMenu)
-				{
-					this->towerMenu->mouseUpHandler(event);
-				}
-				else if (this->ultraTowerMenu)
-				{
-					this->ultraTowerMenu->mouseUpHandler(event);
-				}
-				else if (this->exchange)
-				{
-					this->exchange->mouseUpHandler(event);
-					return;
-				}
-			}
-			if (this->buildTowerMenu)
-				this->buildTowerMenu->mouseUpHandler(event);
-			if (this->decoration)
-				this->decoration->mouseUpHandler(event);
-			if (this->worldInterface)
-				this->worldInterface->mouseUpHandler(event);
-		}
+        if(!event->currentTargets.size())
+            event->currentTargets.push(this);
+        while(event->hasNext())
+        {
+            logInfo("mouseUpHandler.target", getNamePath(event->target));
+            if(this->getSphere)
+            {
+                this->getSphere->mouseUpHandler(event);
+                if(event->processed)
+                    continue;
+            }
+            else
+            {
+                if(this->cast)
+                {
+                    this->cast->mouseUpHandler(event);
+                    if(event->processed)
+                        continue; //return;
+                }
+                if(this->towerMenu)
+                {
+                    this->towerMenu->mouseUpHandler(event);
+                }
+                else if(this->ultraTowerMenu)
+                {
+                    this->ultraTowerMenu->mouseUpHandler(event);
+                }
+                else if(this->exchange)
+                {
+                    this->exchange->mouseUpHandler(event);
+                    if(event->processed)
+                        continue;  //return;
+                }
+            }
+            if(this->buildTowerMenu)
+            {
+                this->buildTowerMenu->mouseUpHandler(event);
+                if(event->processed)
+                    continue;
+            }
+            if(this->decoration)
+            {
+                this->decoration->mouseUpHandler(event);
+                if(event->processed)
+                    continue;
+            }
+            if(this->worldInterface)
+            {
+                this->worldInterface->mouseUpHandler(event);
+                if(event->processed)
+                    continue;
+            }
+        }
 	}// end function
 	void World::mouseMoveHandler(cocos2d::EventMouse* e)
 	{
@@ -1009,7 +1039,7 @@ namespace engine
 		Bullet * tempObject1 = NULL;
 		if (param1 == 1)
 		{
-			tempObject1 = new bullets::Bullet_1();
+			tempObject1 = new Bullet_1();
 		}
 		else if (param1 == 2)
 		{

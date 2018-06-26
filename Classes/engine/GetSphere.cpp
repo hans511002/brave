@@ -254,7 +254,8 @@ namespace engine
 		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
 		if (!event)
 			return;
-		if (event->target->getName() == "fireCase")
+        string targetName = event->target->getName();
+        if(targetName == "fireCase")
 		{
 			if (ISTYPE(EventNode, event->target)->mouseEnabled && this->world->worldInterface->container->fireBack->currentFrame == 1)
 			{
@@ -283,7 +284,7 @@ namespace engine
 		{
 			this->world->worldInterface->container->fireBack->gotoAndStop(1);
 		}
-		if (event->target->getName() == "iceCase")
+		if (targetName == "iceCase")
 		{
 			if (ISTYPE(EventNode, event->target)->mouseEnabled && this->world->worldInterface->container->iceBack->currentFrame == 1)
 			{
@@ -312,7 +313,7 @@ namespace engine
 		{
 			this->world->worldInterface->container->iceBack->gotoAndStop(1);
 		}
-		if (event->target->getName() == "stoneCase")
+		if (targetName == "stoneCase")
 		{
 			if (ISTYPE(EventNode, event->target)->mouseEnabled && this->world->worldInterface->container->stoneBack->currentFrame == 1)
 			{
@@ -341,7 +342,7 @@ namespace engine
 		{
 			this->world->worldInterface->container->stoneBack->gotoAndStop(1);
 		}
-		if (event->target->getName() == "levinCase")
+		if (targetName == "levinCase")
 		{
 			if (ISTYPE(EventNode, event->target)->mouseEnabled && this->world->worldInterface->container->levinBack->currentFrame == 1)
 			{
@@ -370,7 +371,7 @@ namespace engine
 		{
 			this->world->worldInterface->container->levinBack->gotoAndStop(1);
 		}
-		if (event->target->getName() == "getAllCase")
+		if (targetName == "getAllCase")
 		{
 			if (ISTYPE(EventNode, event->target)->mouseEnabled && this->world->worldInterface->container->getAll->currentFrame == 1)
 			{
@@ -398,16 +399,16 @@ namespace engine
 		{
 			this->world->worldInterface->container->getAll->gotoAndStop(1);
 		}
-		if (event->target->getName() == "fireCase" || event->target->getName() == "iceCase" || event->target->getName() == "stoneCase"
-			|| event->target->getName() == "levinCase" || event->target->getName() == "getAllCase" || event->target->getName() == "archiveCase"
-			|| event->target->getName() == "interfaceUpCase" || event->target->getName() == "sellCase" || event->target->getName() == "towerCase")
+		if (targetName == "fireCase" || targetName == "iceCase" || targetName == "stoneCase"
+			|| targetName == "levinCase" || targetName == "getAllCase" || targetName == "archiveCase"
+			|| targetName == "interfaceUpCase" || targetName == "sellCase" || targetName == "towerCase")
 		{
 			if (this->radius->isVisible())
 			{
 				this->radius->setVisible(false);
 				this->arrow->setVisible(false);
 			}
-			if (event->target->getName() == "towerCase")
+			if (targetName == "towerCase")
 			{
 				Node * parent = event->target->getParent()->getParent();
 				Tower * tower = ISTYPE(Tower, parent);
@@ -524,7 +525,7 @@ namespace engine
 					tempObject->closeMenu();
 				}
 			}
-			if (event->target->getName() == "road")
+			if (targetName == "road")
 			{
 				if (this->radius->currentFrame == 2)
 				{
@@ -624,7 +625,7 @@ namespace engine
 				}
 			}
 		}
-		if (event->target->getName() == "sphereSlotCase")
+		if (targetName == "sphereSlotCase")
 		{
 			if (this->world->towerMenu)
 			{
@@ -665,7 +666,7 @@ namespace engine
 				this->world->ultraTowerMenu->container->sphereSlot2->gotoAndStop(1);
 			}
 		}
-		if (event->target->getName() == "sellCase")
+		if (targetName == "sellCase")
 		{
 			if (this->world->worldInterface->container->sell->currentFrame == 1)
 			{
@@ -685,7 +686,8 @@ namespace engine
 		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
 		if (!event)
 			return;
-		if (event->target->getName() == "sellCase")
+        string targetName = event->target->getName();
+        if(targetName == "sellCase")
 		{
 			this->world->worldInterface->container->sell->gotoAndStop(1);
 			while (this->fireCount > 0)
@@ -719,9 +721,9 @@ namespace engine
 			this->kill();
 			//Sounds.instance.playSound("snd_world_sell");
 		}
-		else if (event->target->getName() == "towerCase" && ISTYPE(EventNode, event->target)->mouseEnabled)
+		else if (targetName == "towerCase" && ISTYPE(EventNode, event->target)->mouseEnabled)
 		{
-			Node * parent = event->target->getParent()->getParent();
+            Node * parent = event->target->getParent()->getParent()->getParent();
 			Tower * tempObject = ISTYPE(Tower, parent);
 			int tempObject1 = 0;
 			if (this->type == "holder")
@@ -805,7 +807,7 @@ namespace engine
 				}
 			}
 		}
-		else if (event->target->getName() == "fireCase")
+		else if (targetName == "fireCase")
 		{
 			if (ISTYPE(EventNode, event->target)->mouseEnabled)
 			{
@@ -820,7 +822,7 @@ namespace engine
 				}
 			}
 		}
-		else if (event->target->getName() == "iceCase")
+		else if (targetName == "iceCase")
 		{
 			if (ISTYPE(EventNode, event->target)->mouseEnabled)
 			{
@@ -835,7 +837,7 @@ namespace engine
 				}
 			}
 		}
-		else if (event->target->getName() == "stoneCase")
+		else if (targetName == "stoneCase")
 		{
 			if (ISTYPE(EventNode, event->target)->mouseEnabled)
 			{
@@ -850,7 +852,7 @@ namespace engine
 				}
 			}
 		}
-		else if (event->target->getName() == "levinCase")
+		else if (targetName == "levinCase")
 		{
 			if (ISTYPE(EventNode, event->target)->mouseEnabled)
 			{
@@ -865,7 +867,7 @@ namespace engine
 				}
 			}
 		}
-		else if (event->target->getName() == "getAllCase")
+		else if (targetName == "getAllCase")
 		{
 			if (ISTYPE(EventNode, event->target)->mouseEnabled)
 			{
@@ -880,7 +882,7 @@ namespace engine
 				}
 			}
 		}
-		else if (event->target->getName() == "sphereSlotCase")
+		else if (targetName == "sphereSlotCase")
 		{
 			Node * parent = event->target->getParent()->getParent()->getParent();
 			TowerMenu_mc * towerMenuMc = ISTYPE(TowerMenu_mc, parent);
@@ -948,7 +950,7 @@ namespace engine
 				this->speedFrame = 0;
 			}
 		}
-		else if (event->target->getName() != "archiveCase" && event->target->getName() != "getAllCase")
+		else if (targetName != "archiveCase" && targetName != "getAllCase")
 		{
 			if (this->radius->currentFrame == 1)
 			{
@@ -956,19 +958,27 @@ namespace engine
 				this->world->addChild(tempObject);
 				this->kill();
 			}
-			else if (ISTYPE(TowerMenu_mc, event->target) || ISTYPE(TowerMenu_mc, event->target->getParent()) || ISTYPE(TowerMenu_mc, event->target->getParent()->getParent())
-				|| ISTYPE(UltraTowerMenu_mc, event->target) || ISTYPE(UltraTowerMenu_mc, event->target->getParent()) || ISTYPE(UltraTowerMenu_mc, event->target->getParent()->getParent()))
-			{
-				if (this->world->towerMenu || this->world->ultraTowerMenu)
-				{
-					this->getSphereFromArchiveToTower();
-					this->speedFrame = 0;
-				}
-			}
-			else
-			{
-				this->retrieveGetSphereToArchive();
-			}
+            else
+            {
+                Node *parent = event->target->getParent()->getParent()->getParent();
+                Node *parent1 = 0;
+                if(parent->getParent() && parent->getParent()->getParent())
+                {
+                    parent1 = parent->getParent()->getParent();
+                }
+                if(ISTYPE(TowerMenu_mc, parent) || ISTYPE(TowerMenu_mc, parent1) || ISTYPE(UltraTowerMenu_mc, parent) || ISTYPE(UltraTowerMenu_mc, parent1 ))
+                {
+                    if(this->world->towerMenu || this->world->ultraTowerMenu)
+                    {
+                        this->getSphereFromArchiveToTower();
+                        this->speedFrame = 0;
+                    }
+                }
+                else
+                {
+                    this->retrieveGetSphereToArchive();
+                }
+            }
 		}
 		return;
 	}// end function

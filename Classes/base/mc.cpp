@@ -33,10 +33,6 @@ namespace engine
 		this->currentFrame++;
 		gotoAndStop(this->currentFrame);
 	};
-	void MC::update(float dt)
-	{
-		nextFram();
-	};
     void MC::stop(const string &  _aniName)
 	{
 		if(this->getArmature() == NULL || this->getAnimation() == NULL)return;
@@ -728,7 +724,14 @@ namespace engine
 		return this->isReady;
 	};
 
-
+    void MovieClip::update(float dt)
+    {
+        nextFram();
+    };	
+    void MovieClipSub::update(float dt)
+    {
+        nextFram();
+    };
 	bool MovieClip::setOnceMove(World * _world)
 	{
 		this->world = _world;
