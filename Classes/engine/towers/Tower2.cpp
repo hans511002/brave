@@ -32,7 +32,6 @@ namespace engine
         
         Tower2::Tower2()
         {
-            SET_NODETYPENAME();
             return;
         }// end function
 

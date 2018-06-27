@@ -7,23 +7,23 @@ namespace engine
     namespace bullets
     {
         
-        class Bullet_81 : public Bullet
-        {
-        public:
-            float hypotenuse;
-            float cathetus1;
-            float cathetus2;
-            float angleAlpha;
-            BaseNode *chainTarget;//:Object;
+		class Bullet_81 : public Bullet
+		{
+		public:
+			float hypotenuse;
+			float cathetus1;
+			float cathetus2;
+			float angleAlpha;
+			BaseNode *chainTarget;//:Object;
 			float myWidth;
 			float myHeight;
 
-            Bullet_81();
+			 Bullet_81();
 
-            bool init();
+			virtual bool init();
 
-virtual             void update(float dt=0) ;
-        };
+			virtual void update(float dt = 0);
+		};
     }
 }
 #endif

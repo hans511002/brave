@@ -17,23 +17,22 @@ namespace engine{
 
 			Cast_3()
 			{
-				setNodeType("Cast_3");
 				init();
 			}// end function
 
-			bool init();
+			virtual bool init();
 
 			virtual void update(float dt = 0);
 
-			void mouseMoveHandler(cocos2d::EventMouse *param1);
+			virtual void mouseMoveHandler(cocos2d::EventMouse *param1);
 
-			void mouseDownHandler(cocos2d::EventMouse *event);
+			virtual void mouseDownHandler(cocos2d::EventMouse *event);
 
-			void mouseUpHandler(cocos2d::EventMouse *event);
+			virtual void mouseUpHandler(cocos2d::EventMouse *event);
 
-			void directionManage();
+			virtual void directionManage();
 
-			void  addAir();
+			virtual void  addAir();
 
 		};
 	}

@@ -19,6 +19,7 @@ namespace engine{
 
 	bool CastSphere::init()
 	{
+		BaseNode::init();
 		//this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
 		this->world = Main::mainClass->worldClass;
 		this->radius = this->world->getSphere->myRadius;

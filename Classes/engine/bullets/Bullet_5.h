@@ -6,28 +6,28 @@ namespace engine{
     namespace bullets{
 
 		
-        class Bullet_5 :public Bullet
-        {
-        public:
-            
-            float correct;//:Number;
-            bool rotationFlag;//:Boolean;
-            cocos2d::Point enemyStartPoint;//:Point;
-            int enemyRoad;//:int;
-            int enemyWay;
-            float enemyPath;//:Number;
-            float enemySpeed;//:Number;
-            MovieClip *shadow;
-            float deviation;
-            bool effectFlag;
+		class Bullet_5 :public Bullet
+		{
+		public:
 
-            Bullet_5();
+			float correct;//:Number;
+			bool rotationFlag;//:Boolean;
+			cocos2d::Point enemyStartPoint;//:Point;
+			int enemyRoad;//:int;
+			int enemyWay;
+			float enemyPath;//:Number;
+			float enemySpeed;//:Number;
+			MovieClip *shadow;
+			float deviation;
+			bool effectFlag;
 
-            bool init( ) ;
+			Bullet_5();
 
-virtual             void update(float dt=0) ;
-            void kill();
-        };
+			virtual bool init();
+
+			virtual void update(float dt = 0);
+			virtual void kill();
+		};
     }
 }
 #endif

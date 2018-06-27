@@ -9,6 +9,7 @@ namespace engine
 {
 	Hint_mc::Hint_mc() :MovieClip("worldinterface/", "Hint_mc", "Hint_mc")
 	{
+		SET_NODETYPENAME();
 		nameTXT = this->createText("nameTXT");
 		noteTXT = this->createText("noteTXT");
 		timeTXT = this->createText("timeTXT");
@@ -16,6 +17,7 @@ namespace engine
         
 	WorldInterface_mc::WorldInterface_mc():MovieClip("worldinterface/", "WorldInterface_mc", "WorldInterface_mc")
 	{
+		SET_NODETYPENAME();
 		//this->container->setPosition(0, Main::SCREEN_HEIGHT);
 		//backComponents = this->createMovieClipSub("backComponents");//image
 		barInfo = this->createMovieClipSub("barInfo");

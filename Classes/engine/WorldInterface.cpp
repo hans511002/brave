@@ -41,7 +41,6 @@ namespace engine
 		//this->listOfGetAhieve = [];
 		//this->listOfAnimation = [];
 		//this->addEventListener(Event.ADDED_TO_STAGE, this->init);
-		setName(getTypeName());
 	}// end function
 
 	bool WorldInterface::init()// (event:Event) : void
@@ -120,7 +119,6 @@ namespace engine
 		//this->container->barInfo->setVisible(false);
 
 		this->container->lastTime->setVisible(false);
-		printNodePos(this->container->lastTime);
 
 		//this->container->buyFire->setVisible(false);
 		//this->container->buyIce->setVisible(false);

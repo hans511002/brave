@@ -40,15 +40,15 @@ namespace engine
 			inline Tower3_mc(string rootPath, string armName, string dbName, string defAniName = "") : Tower2_mc(rootPath, armName, dbName, defAniName){};
 			Tower3_mc();
 		};
-        class Tower3 :public  Tower
-        {
-        public:
-            Tower3();
+		class Tower3 :public  Tower
+		{
+		public:
+			Tower3();
 
-            bool init();
+			virtual bool init();
 
-virtual             void update(float dt=0);
-        };
+			virtual void update(float dt = 0);
+		};
     }
 }
 #endif

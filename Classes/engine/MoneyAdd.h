@@ -14,6 +14,7 @@ namespace engine
 		ui::Text	* noteTXT;
 		inline MoneyAdd_mc() :MovieClip("worldinterface/", "MoneyAdd_mc", "MoneyAdd_mc")
 		{
+			SET_NODETYPENAME();
 			noteTXT = this->createText("noteTXT");
 		}
 	};
@@ -26,14 +27,14 @@ namespace engine
 		MoneyAdd_mc * container;// MoneyAdd_mc;
 		int money;
 		bool dead;
-		World *world; 
+		World *world;
 
 		MoneyAdd(int param1);
-		bool init();
-		void remove();
-virtual 		void update(float dt=0);
+		virtual bool init();
+		virtual void remove();
+		virtual void update(float dt = 0);
 
-		void kill();
+		virtual void kill();
 
 	};
 }

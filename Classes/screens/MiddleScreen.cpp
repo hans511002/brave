@@ -16,7 +16,8 @@ namespace screens
     
     MiddleScreen_mc::MiddleScreen_mc():MovieClip("screen/","MiddleScreen_mc","MiddleScreen_mc")
     {
-        leftDown= this->createMovieClipSub("leftDown");
+		SET_NODETYPENAME();
+		leftDown = this->createMovieClipSub("leftDown");
         leftUp= this->createMovieClipSub("leftUp");
         rightDown= this->createMovieClipSub("rightDown");
         rightUp= this->createMovieClipSub("rightUp");
@@ -25,7 +26,8 @@ namespace screens
     
     MiddleScreenCentr_mc::MiddleScreenCentr_mc():MovieClip("screen/","MiddleScreenCentr_mc","MiddleScreenCentr_mc")
     {
-    }
+		SET_NODETYPENAME();
+	}
     
     void MiddleScreen_mc::stop()
 	{

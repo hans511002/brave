@@ -34,7 +34,7 @@ namespace engine
 		public:
 			Tower2();
 
-			bool init();
+			virtual bool init();
 
 			virtual void update(float dt = 0);
 

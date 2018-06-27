@@ -154,6 +154,7 @@ namespace engine
 	
 	struct MovieClipSub :public virtual MC, MovieClipSubBase, public   EventNode
 	{
+		string name;
 		void * userData;
         dragonBones::Armature* arm;
         MovieClipSub(MC *mc, dragonBones::Slot * slot, const string &  defAniName = "");
@@ -201,7 +202,7 @@ namespace engine
 		void setUserData(void * data) { this->userData = data; };
 		void* getUserData() { return this->userData; };
         virtual void update(float dt = 0);
-
+		virtual void setName(string name){ this->name = name; };
 	};
 
 #define DEFINE_MCSUB(clzName,member) struct clzName :public MovieClipSub { \

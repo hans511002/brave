@@ -11,6 +11,7 @@ namespace engine
 
 		Tower6_mc::Tower6_mc() :TowerBase_mc("tower/", "Tower6_mc", "Tower6_mc")
 		{
+			SET_NODETYPENAME();
 			shotAnima = this->createMovieClipSub("shotAnima");
  		};
 		Tower6::Tower6() :soundCounter(0), soundTimer(5)

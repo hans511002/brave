@@ -21,6 +21,7 @@ namespace engine
 
 		bool TowerMenu::init()
 		{
+			BaseNode::init();
 			//this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
 			this->world = Main::mainClass->worldClass;
 			if (this->world->towerRadius->isVisible())

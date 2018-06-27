@@ -4,19 +4,20 @@
 
 namespace engine
 {
-    namespace bullets
-    {
-        
-        class Bullet_61 : public Bullet
-        {
-        public:
-            Bullet_61();
+	namespace bullets
+	{
 
-            bool init() ;
+		class Bullet_61 : public Bullet
+		{
+		public:
+			Bullet_61();
 
-virtual             void update(float dt=0) ;
+			virtual bool init();
 
-        };
-    }
+			virtual void update(float dt = 0);
+
+
+		};
+	}
 }
 #endif

@@ -13,25 +13,25 @@ namespace engine
 			MovieClipSub * upgr1;
 			Tower5_mc();
         };
-        class Tower5 : public Tower
-        {
-            public:
-            int upgr1_intervalCounter;//:int;
-            int upgr1_intervalTimer;//:int;
-            int soundCounter;//:int = 0;
-            int soundTimer;//:int = 5;
+		class Tower5 : public Tower
+		{
+		public:
+			int upgr1_intervalCounter;//:int;
+			int upgr1_intervalTimer;//:int;
+			int soundCounter;//:int = 0;
+			int soundTimer;//:int = 5;
 
-            Tower5();
+			Tower5();
 
-            bool init() ;
+			virtual bool init();
 
-virtual             void update(float dt=0);
+			virtual void update(float dt = 0);
 
-            void scan();
+			void scan();
 
-            void attack() ;
+			void attack();
 
-        };
+		};
     }
 }
 #endif

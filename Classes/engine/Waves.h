@@ -58,9 +58,9 @@ namespace engine
 
 		Waves();
 
-        void startWaves();
+		virtual  void startWaves();
 
-        void wavesHandler() ;
+		virtual void wavesHandler();
 
 	};
 }

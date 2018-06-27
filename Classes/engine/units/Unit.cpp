@@ -6,22 +6,24 @@
 
 namespace engine
 {
-	NewEnemy_mc::NewEnemy_mc() :MouseStatusMC("unit/", "NewEnemy_mc", "NewEnemy_mc") 
-		{
-			newEnemyCase = this->createCase("newEnemyCase");
-		};
+	NewEnemy_mc::NewEnemy_mc() :MouseStatusMC("unit/", "NewEnemy_mc", "NewEnemy_mc")
+	{
+		SET_NODETYPENAME();
+		newEnemyCase = this->createCase("newEnemyCase");
+	};
 
 	NewElement_mc::NewElement_mc() :MouseStatusMC("unit/", "NewElement_mc", "NewElement_mc")
-		{
-			newElementCase = this->createCase("newElementCase");
-		};
+	{
+		SET_NODETYPENAME();
+		newElementCase = this->createCase("newElementCase");
+	};
 	namespace units
 	{
 		bool Unit::init() //public function init(event:Event) : void event:Event
 		{
+			BaseNode::init();
 			//this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
 			this->container->stop();
-			BaseNode::init();
 			//this->container->unitCase.setMouseEnabled(true);
 			//this->container->healthBar->setVisible(false) ;
 			//this->container->healthBar->getDamage->setVisible(false);

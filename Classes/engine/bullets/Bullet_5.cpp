@@ -6,7 +6,9 @@
 
 namespace engine{
     namespace bullets{ 
-		Bullet_5::Bullet_5() :deviation(0) {};
+		Bullet_5::Bullet_5() :deviation(0) {
+			SET_NODETYPENAME();
+		};
 
         bool Bullet_5::init()  
         {

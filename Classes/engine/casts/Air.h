@@ -52,12 +52,12 @@ namespace engine
 
 			Air(cocos2d::Point param1, string param2 = "none");
 
-			bool init();
+			virtual bool init();
 
 			virtual void update(float dt = 0);
-			void scan();
-			void attack();
-			void kill();
+			virtual void scan();
+			virtual void attack();
+			virtual void kill();
 		};
 	}
 }

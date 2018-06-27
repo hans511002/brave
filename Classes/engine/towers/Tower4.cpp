@@ -9,6 +9,7 @@ namespace engine
     {
 		Tower4_mc::Tower4_mc() :Tower3_mc("tower/", "Tower4_mc", "Tower4_mc")
 		{
+			SET_NODETYPENAME();
 			//blockTower = this->createMovieClip("blockTower", "tower/", "blockTower", "TowerBlockBone");
 			//boneBlock = this->createMovieClip("boneBlock", "tower/", "boneBlock", "TowerBlockBone");
 			//selectTower = this->createMovieClipSub("selectTower");

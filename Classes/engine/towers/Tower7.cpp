@@ -10,6 +10,7 @@ namespace engine
     { 
 		Tower7_mc::Tower7_mc() :TowerBase_mc("tower/", "Tower7_mc", "Tower7_mc")
 		{
+			SET_NODETYPENAME();
 			cont1 = this->createMovieClipSub("cont1");
 			cont2 = this->createMovieClipSub("cont2");
 			cont3 = this->createMovieClipSub("cont3");

@@ -8,7 +8,8 @@ namespace screens
 {
     FastPause_mc::FastPause_mc():MovieClip("screen/","FastPause_mc","FastPause_mc")
     {
-    
+		SET_NODETYPENAME();
+
     };
      
     FastPause::FastPause():openFlag(true),closeFlag(false),startMusicVolume(0),frameCounter(0)

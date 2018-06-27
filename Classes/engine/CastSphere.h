@@ -16,51 +16,75 @@ namespace engine
 
 	struct   CastFire_mc : public CastSphereBase_mc
 	{
-		inline CastFire_mc() :CastSphereBase_mc("worldinterface/", "CastFire_mc", "CastFire_mc"){};
+		inline CastFire_mc() :CastSphereBase_mc("worldinterface/", "CastFire_mc", "CastFire_mc"){
+			SET_NODETYPENAME();
+		};
 	};
 	struct   CastIce_mc : public CastSphereBase_mc
 	{
-		inline CastIce_mc() :CastSphereBase_mc("worldinterface/", "CastIce_mc", "CastIce_mc"){};
+		inline CastIce_mc() :CastSphereBase_mc("worldinterface/", "CastIce_mc", "CastIce_mc"){
+			SET_NODETYPENAME();
+		};
 	};
 	struct   CastStone_mc : public CastSphereBase_mc
 	{
-		inline CastStone_mc() :CastSphereBase_mc("worldinterface/", "CastStone_mc", "CastStone_mc"){};
+		inline CastStone_mc() :CastSphereBase_mc("worldinterface/", "CastStone_mc", "CastStone_mc"){
+			SET_NODETYPENAME();
+		};
 	};
 	struct   CastLevin_mc : public CastSphereBase_mc
 	{
-		inline CastLevin_mc() :CastSphereBase_mc("worldinterface/", "CastLevin_mc", "CastLevin_mc"){};
+		inline CastLevin_mc() :CastSphereBase_mc("worldinterface/", "CastLevin_mc", "CastLevin_mc"){
+			SET_NODETYPENAME();
+		};
 	};
 	struct   CastFireIce_mc : public CastSphereBase_mc
 	{
-		inline CastFireIce_mc() :CastSphereBase_mc("worldinterface/", "CastFireIce_mc", "CastFireIce_mc"){};
+		inline CastFireIce_mc() :CastSphereBase_mc("worldinterface/", "CastFireIce_mc", "CastFireIce_mc"){
+			SET_NODETYPENAME();
+		};
 	};
 	struct   CastFireStone_mc : public CastSphereBase_mc
 	{
-		inline CastFireStone_mc() :CastSphereBase_mc("worldinterface/", "CastFireStone_mc", "CastFireStone_mc"){};
+		inline CastFireStone_mc() :CastSphereBase_mc("worldinterface/", "CastFireStone_mc", "CastFireStone_mc"){
+			SET_NODETYPENAME();
+		};
 	};
 	struct   CastFireLevin_mc : public CastSphereBase_mc
 	{
-		inline CastFireLevin_mc() :CastSphereBase_mc("worldinterface/", "CastFireLevin_mc", "CastFireLevin_mc"){};
+		inline CastFireLevin_mc() :CastSphereBase_mc("worldinterface/", "CastFireLevin_mc", "CastFireLevin_mc"){
+			SET_NODETYPENAME();
+		};
 	};
 	struct   CastIceStone_mc : public CastSphereBase_mc
 	{
-		inline CastIceStone_mc() :CastSphereBase_mc("worldinterface/", "CastIceStone_mc", "CastIceStone_mc"){};
+		inline CastIceStone_mc() :CastSphereBase_mc("worldinterface/", "CastIceStone_mc", "CastIceStone_mc"){
+			SET_NODETYPENAME();
+		};
 	};
 	struct   CastIceLevin_mc : public CastSphereBase_mc
 	{
-		inline CastIceLevin_mc() :CastSphereBase_mc("worldinterface/", "CastIceLevin_mc", "CastIceLevin_mc"){};
+		inline CastIceLevin_mc() :CastSphereBase_mc("worldinterface/", "CastIceLevin_mc", "CastIceLevin_mc"){
+			SET_NODETYPENAME();
+		};
 	};
 	struct   CastStoneLevin_mc : public CastSphereBase_mc
 	{
-		inline CastStoneLevin_mc() :CastSphereBase_mc("worldinterface/", "CastStoneLevin_mc", "CastStoneLevin_mc"){};
+		inline CastStoneLevin_mc() :CastSphereBase_mc("worldinterface/", "CastStoneLevin_mc", "CastStoneLevin_mc"){
+			SET_NODETYPENAME();
+		};
 	};
 	struct   CastGetAllLittle_mc : public CastSphereBase_mc
 	{
-		inline CastGetAllLittle_mc() :CastSphereBase_mc("worldinterface/", "CastGetAllLittle_mc", "CastGetAllLittle_mc"){};
+		inline CastGetAllLittle_mc() :CastSphereBase_mc("worldinterface/", "CastGetAllLittle_mc", "CastGetAllLittle_mc"){
+			SET_NODETYPENAME();
+		};
 	};
 	struct MovieClipSubMyFrame :public MovieClipSub
 	{
-		inline MovieClipSubMyFrame(MC *mc, string solt) :MovieClipSub(mc, slot){};
+		inline MovieClipSubMyFrame(MC *mc, string solt) :MovieClipSub(mc, slot){
+			SET_NODETYPENAME();
+		};
 		int myFrame;
 		Vec2 myPoint;
 	};
@@ -77,6 +101,7 @@ namespace engine
 		MovieClipSubMyFrame * haze9;
 		inline CastGetAll_mc() :CastSphereBase_mc("worldinterface/", "CastGetAll_mc", "CastGetAll_mc")
 		{
+			SET_NODETYPENAME();
 			haze1 = new MovieClipSubMyFrame(this, "haze1");
 			haze2 = new MovieClipSubMyFrame(this, "haze2");
 			haze3 = new MovieClipSubMyFrame(this, "haze3");
@@ -106,6 +131,7 @@ namespace engine
 		MovieClipSubMyFrame * swamp5;
 		inline CastGetAllSwamp_mc() :CastSphereBase_mc("worldinterface/", "CastGetAllSwamp_mc", "CastGetAllSwamp_mc")
 		{
+			SET_NODETYPENAME();
 			//swamp1 = this->createMovieClipSub("swamp1");
 			//swamp2 = this->createMovieClipSub("swamp2");
 			//swamp3 = this->createMovieClipSub("swamp3");
@@ -146,11 +172,11 @@ namespace engine
 
 		CastSphere();
 
-		bool init();
+		virtual bool init();
 
 		virtual void update(float dt = 0);
 
-		void kill();
+		virtual void kill();
 
 	};
 }

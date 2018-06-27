@@ -37,7 +37,6 @@ namespace engine
 {
 	World::World() :frameCounter(0), feature(NULL), bezierClass(NULL), wavesClass(NULL), numRoads(0), level(NULL), road(NULL), levelAdditionally(NULL), levelAdditionally1(NULL), levelAdditionally2(NULL), levelAdditionally3(NULL), worldInterface(NULL), money(0), bonusMoney(0), liveMax(20), live(0), forseIndexFl(false), getSphere(NULL), buildTowerMenu(NULL), towerMenu(NULL), ultraTowerMenu(NULL), scaleRadius(85), towerRadius(NULL), unitInputBezieCounter(0), cast(NULL), menuObject(NULL), pointer1(NULL), pointer2(NULL), pointer3(NULL), selectObject(NULL), firstMusicPlay(false), secondMusicPlay(false), secondMusicCounter(0), winDefCounter(1), viewBoss(0), viewRockCrash(0), boss(NULL), decoration(NULL), nowLevel(0), saveBox(NULL), exchange(NULL), portalViewCounter(30), trainingClass(NULL), hint(NULL), startMusicVolume(0), bonusMoneyFlag(true), eduOpenUpgrArrowFlag(true), killEnemiesCounter(0), createGolemCounter(0), createIcemanCounter(0), createAirCounter(0), earlyWaveCounter(0), sellFireCounter(0), sellIceCounter(0), sellStoneCounter(0), sellLevinCounter(0), sellGetAllCounter(0), icemanSlowdownEnemiesCounter(0), castFireCounter(0), castIceCounter(0), castStoneCounter(0), castLevinCounter(0), castGetAllCounter(0), golemVoiceTurn(1), icemanVoiceTurn(1), airVoiceTurn(1), mouseX(0), mouseY(0)
 	{
-		this->setName("World");
 		menuObject = NULL;
 		pointer1 = NULL;
 		pointer2 = NULL;
@@ -72,9 +71,9 @@ namespace engine
 	}// end function
 	bool World::init()
 	{
+		BaseNode::init();
 		this->wavesClass = new Waves();
 		this->feature = new Feature();
-		BaseNode::init();
 
 		return true;
 	};
@@ -1355,7 +1354,7 @@ namespace engine
 	{
 		if (param1 == "on")
 		{
-			this->enableMouseHandler();
+			this->enableMouseHandler(true);
 			this->enableFrameHandler(true);
 			 
 		}

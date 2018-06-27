@@ -12,9 +12,11 @@ namespace engine{
 			float deviation;
 			bool effectFlag;
 
-			inline  Bullet_4() :deviation(6) {};
+			inline  Bullet_4() :deviation(6) {
+				SET_NODETYPENAME();
+			};
 
-			bool init();
+			virtual bool init();
 
 			virtual void update(float dt = 0);
 			//void kill();

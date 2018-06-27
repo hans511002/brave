@@ -11,7 +11,9 @@ namespace engine
 	struct Arrow_mc :public MovieClip
 	{
 		towers::Tower * myTower;
-		inline Arrow_mc() : MovieClip("worldinterface/", "Arrow_mc", "Arrow_mc"), myTower(0){};
+		inline Arrow_mc() : MovieClip("worldinterface/", "Arrow_mc", "Arrow_mc"), myTower(0){
+			SET_NODETYPENAME();
+		};
 	};
 	struct GetSphere_mc :public MovieClip{
 		MovieClipSub * cont;
@@ -31,6 +33,7 @@ namespace engine
 		Sprite * cross;
 		inline GetAll_mc() :MovieClip("worldinterface/", "GetAll_mc", "GetAll_mc")
 		{
+			SET_NODETYPENAME();
 			numTXT = this->createText("numTXT");
 			cross = (Sprite*)this->getArmature()->getSlot("cross")->getDisplay();
 		};
@@ -49,19 +52,27 @@ namespace engine
 	};
 	struct RadiusFire_mc :public RadiusSphere_mc
 	{
-		inline  RadiusFire_mc() :RadiusSphere_mc("RadiusFire_mc"){};
+		inline  RadiusFire_mc() :RadiusSphere_mc("RadiusFire_mc"){
+			SET_NODETYPENAME();
+		};
 	};
 	struct RadiusIce_mc :public RadiusSphere_mc
 	{
-		inline RadiusIce_mc() :RadiusSphere_mc("RadiusIce_mc"){};
+		inline RadiusIce_mc() :RadiusSphere_mc("RadiusIce_mc"){
+			SET_NODETYPENAME();
+		};
 	};
 	struct RadiusStone_mc :public RadiusSphere_mc
 	{
-		inline RadiusStone_mc() :RadiusSphere_mc("RadiusStone_mc"){};
+		inline RadiusStone_mc() :RadiusSphere_mc("RadiusStone_mc"){
+			SET_NODETYPENAME();
+		};
 	};
 	struct RadiusLevin_mc :public RadiusSphere_mc
 	{
-		inline RadiusLevin_mc() :RadiusSphere_mc("RadiusLevin_mc"){};
+		inline RadiusLevin_mc() :RadiusSphere_mc("RadiusLevin_mc"){
+			SET_NODETYPENAME();
+		};
 	};
 	struct RadiusGetAll_mc :public RadiusSphere_mc
 	{
@@ -70,6 +81,7 @@ namespace engine
 		//MovieClipSub * cont3; 
 		inline RadiusGetAll_mc() :RadiusSphere_mc("RadiusGetAll_mc")
 		{
+			SET_NODETYPENAME();
 			cont1 = this->createMovieClipSub("cont1");
 			cont2 = this->createMovieClipSub("cont2");
 			cont3 = this->createMovieClipSub("cont3");
@@ -83,23 +95,32 @@ namespace engine
 		{
 			cont = new MovieClip("worldinterface/", arm, "GetSphere_mc");
 			numTXT = this->createText("numTXT");
+			this->addChild(cont);
 		};
 	};
 	struct MoveFire_mc :public MoveSphere_mc
 	{
-		inline MoveFire_mc() :MoveSphere_mc("fire"){};
+		inline MoveFire_mc() :MoveSphere_mc("fire"){
+			SET_NODETYPENAME();
+		};
 	};
 	struct MoveIce_mc :public MoveSphere_mc
 	{
-		inline MoveIce_mc() :MoveSphere_mc("ice"){};
+		inline MoveIce_mc() :MoveSphere_mc("ice"){
+			SET_NODETYPENAME();
+		};
 	};
 	struct MoveStone_mc :public MoveSphere_mc
 	{
-		inline MoveStone_mc() :MoveSphere_mc("stone"){};
+		inline MoveStone_mc() :MoveSphere_mc("stone"){
+			SET_NODETYPENAME();
+		};
 	};
 	struct MoveLevin_mc :public MoveSphere_mc
 	{
-		inline MoveLevin_mc() :MoveSphere_mc("levin"){};
+		inline MoveLevin_mc() :MoveSphere_mc("levin"){
+			SET_NODETYPENAME();
+		};
 	};
 
 	class GetSphere :public BaseNode
@@ -134,27 +155,27 @@ namespace engine
 
 		GetSphere(string param1 = "holder");
 
-		bool init();
+		virtual bool init();
 
-		void  update(float dt=0);
+		virtual void  update(float dt = 0);
 
-		void  mouseMoveHandler(cocos2d::Event* param1);
+		virtual void  mouseMoveHandler(cocos2d::Event* param1);
 
-		void   mouseDownHandler(cocos2d::Event* param1);
+		virtual void   mouseDownHandler(cocos2d::Event* param1);
 
-		void mouseUpHandler(cocos2d::Event* param1);
+		virtual void mouseUpHandler(cocos2d::Event* param1);
 
-		void retrieveGetSphereToArchive();
+		virtual void retrieveGetSphereToArchive();
 
-		void manage(string param1, string param2 = "");
+		virtual void manage(string param1, string param2 = "");
 
-		void retrieveGetSphere();
+		virtual void retrieveGetSphere();
 
-		void getSphereFromArchiveToTower();
+		virtual void getSphereFromArchiveToTower();
 
-		void monitor();
+		virtual void monitor();
 
-		void kill();
+		virtual void kill();
 
 	};
 }

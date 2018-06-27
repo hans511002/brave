@@ -37,19 +37,19 @@ namespace screens
 
         PauseMenu();
 
-        bool init();
+		virtual bool init();
 
-        void enterFrameHandler(cocos2d::EventMouse * event);
+		virtual void enterFrameHandler(cocos2d::EventMouse * event);
 
-        void mouseMoveHandler(cocos2d::EventMouse *param1);
+		virtual void mouseMoveHandler(cocos2d::EventMouse *param1);
 
-        void mouseDownHandler(cocos2d::EventMouse *event);
+		virtual void mouseDownHandler(cocos2d::EventMouse *event);
 
-        void mouseUpHandler(cocos2d::EventMouse * event);
+		virtual void mouseUpHandler(cocos2d::EventMouse * event);
 
-        void autoguidersButtons() ;
+		virtual void autoguidersButtons();
 
-        void close();
+		virtual void close();
 
         //void reInit(event:Event);
 

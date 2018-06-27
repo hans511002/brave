@@ -39,11 +39,11 @@ namespace engine{
             int canselCounter = 0;
             int canselTimer;
 
-			Cast() :canselCounter(0), canselTimer(5), tempObject3(-1, -1) { setNodeType("Cast"); };
+			Cast() :canselCounter(0), canselTimer(5), tempObject3(-1, -1) {   };
 
-            bool init();
+			virtual bool init();
 
-            void   update(float dt=0);
+			virtual void update(float dt = 0);
 
 			//virtual  void   mouseMoveHandler(cocos2d::EventMouse * param1);
 
@@ -51,9 +51,9 @@ namespace engine{
 
 			//virtual void   mouseUpHandler(cocos2d::EventMouse * event);
 
-            bool scanWay();
+			virtual bool scanWay();
 
-            void   kill();
+			virtual void   kill();
 
         };
     }

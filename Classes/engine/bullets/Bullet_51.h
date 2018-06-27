@@ -11,11 +11,11 @@ namespace engine{
 			bool turnFlag;//:Boolean;
 			Common::Array<BulletBase_mc*> listOfAnimation;
 
-			  Bullet_51() ;
+			Bullet_51();
 
-			bool init();
+			virtual bool init();
 
-virtual 			void update(float dt=0);
+			virtual void update(float dt = 0);
 		};
 	}
 }

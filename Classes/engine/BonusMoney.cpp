@@ -8,7 +8,8 @@ namespace engine
 {
     BonusMoney_mc::BonusMoney_mc() :MovieClip("worldinterface/", "BonusMoney_mc", "BonusMoney_mc")
     {
-        cont = this->createMovieClipSub("cont");
+		SET_NODETYPENAME();
+		cont = this->createMovieClipSub("cont");
         contNoteTXT = cont->createText("noteTXT");
     };
  
@@ -22,6 +23,7 @@ namespace engine
 
     bool BonusMoney::init()
     {
+		BaseNode::init();
         //this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
         this->container = new BonusMoney_mc();
         this->container->stop();

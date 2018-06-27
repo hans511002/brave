@@ -12,7 +12,8 @@ namespace engine
     { 
         Exchange::Exchange(Tower * param1)
         {
-            //this->addEventListener(Event.ADDED_TO_STAGE, this->init);
+			SET_NODETYPENAME();
+			//this->addEventListener(Event.ADDED_TO_STAGE, this->init);
             this->myTower = param1; 
             this->myTower->setMouseChildren(false);
             this->myTower->setMouseEnabled(false);

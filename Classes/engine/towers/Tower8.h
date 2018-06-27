@@ -30,13 +30,13 @@ namespace engine
 
 			Tower8();
 
-			bool init();
+			virtual bool init();
 
 			virtual void update(float dt = 0);
 
-			void scan();
+			virtual void scan();
 
-			void attack();
+			virtual void attack();
 
 		};
     }

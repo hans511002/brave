@@ -8,7 +8,8 @@ namespace engine
     {
         Bullet_61::Bullet_61()
         {
-            return;
+			SET_NODETYPENAME();
+			return;
         }// end function
 
         bool Bullet_61::init() 

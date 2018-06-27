@@ -12,44 +12,44 @@ namespace engine
     namespace towers
     {
       
-        class UltraTowerMenu :public BaseTowerMenu
-        {
-        public:
-            int i, j;
-            //public var tempObject:Object;
-            //public var tempObject1:Object;
-            UltraTowerMenu_mc * container;// : UltraTowerMenu_mc;
-            cocos2d::EventMouse * lastE;// : MouseEvent;
-            float sellTax;//:Number = 0.4;
-            UltraTowerMenuHint_mc* hint;//:UltraTowerMenuHint_mc;
-           
-            UltraTowerMenu(Tower *param1);
+		class UltraTowerMenu :public BaseTowerMenu
+		{
+		public:
+			int i, j;
+			//public var tempObject:Object;
+			//public var tempObject1:Object;
+			UltraTowerMenu_mc * container;// : UltraTowerMenu_mc;
+			cocos2d::EventMouse * lastE;// : MouseEvent;
+			float sellTax;//:Number = 0.4;
+			UltraTowerMenuHint_mc* hint;//:UltraTowerMenuHint_mc;
 
-            bool init();
+			UltraTowerMenu(Tower *param1);
 
-virtual             void update(float dt=0);
+			virtual bool init();
 
-            void mouseMoveHandler(cocos2d::EventMouse *param1);
+			virtual void update(float dt = 0);
 
-            void mouseDownHandler(cocos2d::EventMouse *event);
+			virtual void mouseMoveHandler(cocos2d::EventMouse *param1);
 
-            void mouseUpHandler(cocos2d::EventMouse *event);
+			virtual void mouseDownHandler(cocos2d::EventMouse *event);
 
-            void monitor();
+			virtual  void mouseUpHandler(cocos2d::EventMouse *event);
 
-            void autoguidersButtons();
+			virtual void monitor();
 
-            void fastBuyUltraManage();
+			virtual void autoguidersButtons();
 
-            int fastBuyUltraScan();
+			virtual void fastBuyUltraManage();
 
-            void hintPosition(int param1 = 1);
+			virtual int fastBuyUltraScan();
+
+			virtual void hintPosition(int param1 = 1);
 
 			virtual  void  closeMenu(bool param1 = false);
-			 
-            void kill();
 
-        };
+			virtual void kill();
+
+		};
     }
 }
 #endif

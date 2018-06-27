@@ -10,6 +10,7 @@ namespace engine
     {
 		Tower5_mc::Tower5_mc() :TowerBase_mc("tower/", "Tower5_mc", "Tower5_mc")
 		{
+			SET_NODETYPENAME();
 			bot = this->createMovieClipSub("bot");
 			upgr1 = this->createMovieClipSub("upgr1");
 		};

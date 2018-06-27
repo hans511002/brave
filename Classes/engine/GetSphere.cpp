@@ -11,6 +11,7 @@ namespace engine
 {
 	GetSphere_mc::GetSphere_mc() :MovieClip("worldinterface/", "GetSphere_mc", "GetSphere_mc")
 	{
+		SET_NODETYPENAME();
 		cont = this->createMovieClipSub("cont");
 		sphere1 = this->createMovieClipSub("sphere1");
 		sphere1Cont = sphere1->createMovieClipSub("cont");
@@ -31,6 +32,7 @@ namespace engine
 	}// end function
 	bool GetSphere::init()
 	{
+		BaseNode::init();
 		//this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
 		//this->addEventListener(Event.REMOVED_FROM_STAGE, this->reInit);
 		this->world = Main::mainClass->worldClass;
@@ -50,7 +52,7 @@ namespace engine
 			container->sphere4Cont->stop();
 
 			container->sphere1->setVisible(false);
-			container->sphere2->setVisible(false);
+			//container->sphere2->setVisible(false);
 			container->sphere3->setVisible(false);
 			container->sphere4->setVisible(false);
 		}
@@ -67,7 +69,7 @@ namespace engine
 		this->arrow = new Arrow_mc();
 		this->arrow->stop();
 		this->arrow->setScaleY(-1);
-		this->arrow->setPositionY(this->arrow->getPositionY() - 30);
+		this->arrow->setPositionY(this->arrow->getPositionY() + 30);
 		this->arrow->setVisible(false);
 		this->addChild(this->arrow);
 		if (this->world->towerMenu)
@@ -412,7 +414,7 @@ namespace engine
 			}
 			if (targetName == "towerCase")
 			{
-				Node * parent = event->target->getParent()->getParent();
+				Node * parent = event->target->getParent()->getParent()->getParent()->getParent();
 				Tower * tower = ISTYPE(Tower, parent);
 				if (this->type == "holder")
 				{
@@ -689,7 +691,7 @@ namespace engine
 		if (!event)
 			return;
         string targetName = event->target->getName();
-		if (targetName == "World")return;
+		//if (targetName == "World")return;
         if(targetName == "sellCase")
 		{
 			this->world->worldInterface->container->sell->gotoAndStop(1);
@@ -963,13 +965,16 @@ namespace engine
 			}
             else
             {
-                Node *parent = event->target->getParent()->getParent()->getParent();
-                Node *parent1 = 0;
-                if(parent->getParent() && parent->getParent()->getParent())
-                {
-                    parent1 = parent->getParent()->getParent();
-                }
-                if(ISTYPE(TowerMenu_mc, parent) || ISTYPE(TowerMenu_mc, parent1) || ISTYPE(UltraTowerMenu_mc, parent) || ISTYPE(UltraTowerMenu_mc, parent1 ))
+				Node *parent = event->target;
+				bool isTowerMenu = false;
+				while (parent && parent->getName() != "World"){
+					if (ISTYPE(TowerMenu_mc, parent) || ISTYPE(UltraTowerMenu_mc, parent)){
+						isTowerMenu = true;
+						break;
+					}
+ 					parent = parent->getParent();
+				}
+				if (isTowerMenu)
                 {
                     if(this->world->towerMenu || this->world->ultraTowerMenu)
                     {
@@ -1041,6 +1046,7 @@ namespace engine
 							container->sphere1->gotoAndStop(1);
 							container->sphere1Cont->stop();
 							container->sphere1->setVisible(true);
+							logInfo("container->sphere1",container->sphere1->getScale());
 						}
 						else if (this->listOfStack.size() == 2)
 						{
@@ -1413,7 +1419,7 @@ namespace engine
 				{
 					container->numTXT->setVisible(false);
 				}
-				container->setScale(0.6f);
+				container->setScale(1.0f);
 				this->addChild(this->container);
 			}
 			else if (this->fireCount == 0 && this->iceCount > 0 && this->stoneCount == 0 && this->levinCount == 0)
@@ -1429,7 +1435,7 @@ namespace engine
 				{
 					container->numTXT->setVisible(false);
 				}
-				container->setScale(0.6f);
+				container->setScale(1.0f);
 				this->addChild(this->container);
 			}
 			else if (this->fireCount == 0 && this->iceCount == 0 && this->stoneCount > 0 && this->levinCount == 0)
@@ -1445,7 +1451,7 @@ namespace engine
 				{
 					container->numTXT->setVisible(false);
 				}
-				container->setScale(0.6f);
+				container->setScale(1.0f);
 				this->addChild(this->container);
 			}
 			else if (this->fireCount == 0 && this->iceCount == 0 && this->stoneCount == 0 && this->levinCount > 0)

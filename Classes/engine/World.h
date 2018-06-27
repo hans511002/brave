@@ -129,7 +129,7 @@ namespace engine
         World();
         //CREATE_FUNC(World);
  
-        bool init();
+		virtual bool init();
 
         virtual void onEnter();
         virtual void onExit();
@@ -142,31 +142,25 @@ namespace engine
 		//virtual   void mouseScrollHandler(cocos2d::EventMouse* event);
 		virtual   void rightMouseDownHandler(cocos2d::EventMouse* event);
 		virtual   void rightMouseUpHandler(cocos2d::EventMouse* event);
-
-
-
+		 
 		Tower * addTower(std::string param1, BuildTowerPlace*  param2, bool param3 = false);
 
-        units::Unit * addUnit(int param1, int param2, int param3 = 0, float param4 = 0, int param5 = 0, int param6 = 0);
-
-
+        units::Unit * addUnit(int param1, int param2, int param3 = 0, float param4 = 0, int param5 = 0, int param6 = 0); 
 
 		Bullet * addBullet(int param1, cocos2d::Point param2, ShootBase *  param3, units::Unit*  param4, float param5 = 0, int param6 = 0);
 
-        void manageIndexes();
-
-
-
-        void manageMouse(string param1);
+		virtual void manageIndexes();
+		 
+		virtual void manageMouse(string param1);
 
 		virtual void manageListeners(string param1);
 
-        void deactivateHandler(cocos2d::EventMouse* event);//event:Event
+		virtual void deactivateHandler(cocos2d::EventMouse* event);//event:Event
 
-        void achieveManage(string param1);
+		virtual void achieveManage(string param1);
 
-        void removeClasses(BaseNode * node);
-        void reInit(cocos2d::EventMouse*event);//event:Event 
+		virtual void removeClasses(BaseNode * node);
+		virtual void reInit(cocos2d::EventMouse*event);//event:Event 
 
     };
 

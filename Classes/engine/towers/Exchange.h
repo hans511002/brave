@@ -14,6 +14,7 @@ namespace engine
 			 
 			inline Exchange_mc() :MovieClip("tower/", "Exchange_mc", "Exchange_mc")
 			{
+				SET_NODETYPENAME();
 				exchangeCase = this->createCase("exchangeCase");
 			};
 			inline Exchange_mc(string root, string arm, string db, string ani = "") :MovieClip(root, arm, db, ani){};
@@ -23,6 +24,7 @@ namespace engine
  			MovieClipSub * cross;
 			inline Exchange1_mc() :Exchange_mc("tower/", "Exchange1_mc", "Exchange1_mc")
 			{
+				SET_NODETYPENAME();
 				exchangeCase = this->createCase("exchangeCase");
 				cross = this->createMovieClipSub("cross");
 			};
@@ -42,7 +44,7 @@ namespace engine
 
 			Exchange(Tower * param1);
 
-			bool init();
+			virtual bool init();
 
 			virtual void update(float dt = 0);
 

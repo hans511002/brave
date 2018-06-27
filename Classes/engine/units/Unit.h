@@ -13,7 +13,8 @@ namespace engine
 	struct MouseStatusMC :public MovieClip
 	{
 		int mouseStatus;
-		inline MouseStatusMC(string rootPath, string armName, string dbName, string defAniName = "") :mouseStatus(0), MovieClip(rootPath, armName, dbName, defAniName){};
+		inline MouseStatusMC(string rootPath, string armName, string dbName, string defAniName = "") :mouseStatus(0), MovieClip(rootPath, armName, dbName, defAniName){
+		};
 		
 	};
 	struct NewEnemy_mc :public MouseStatusMC
@@ -42,19 +43,27 @@ namespace engine
 		};
 		struct RoadsignFire_mc : public Roadsign_mc
 		{
-			inline RoadsignFire_mc() :Roadsign_mc("worldinterface/", "RoadsignFire_mc", "RoadsignFire_mc"){};
+			inline RoadsignFire_mc() :Roadsign_mc("worldinterface/", "RoadsignFire_mc", "RoadsignFire_mc"){
+				SET_NODETYPENAME();
+			};
 		};
 		struct RoadsignIce_mc : public Roadsign_mc
 		{
-			inline RoadsignIce_mc() :Roadsign_mc("worldinterface/", "RoadsignIce_mc", "RoadsignIce_mc"){};
+			inline RoadsignIce_mc() :Roadsign_mc("worldinterface/", "RoadsignIce_mc", "RoadsignIce_mc"){
+				SET_NODETYPENAME();
+			};
 		};
 		struct RoadsignStone_mc : public Roadsign_mc
 		{
-			inline RoadsignStone_mc() :Roadsign_mc("worldinterface/", "RoadsignStone_mc", "RoadsignStone_mc"){};
+			inline RoadsignStone_mc() :Roadsign_mc("worldinterface/", "RoadsignStone_mc", "RoadsignStone_mc"){
+				SET_NODETYPENAME();
+			};
 		};
 		struct RoadsignLevin_mc : public Roadsign_mc
 		{
-			inline RoadsignLevin_mc() :Roadsign_mc("worldinterface/", "RoadsignLevin_mc", "RoadsignLevin_mc"){};
+			inline RoadsignLevin_mc() :Roadsign_mc("worldinterface/", "RoadsignLevin_mc", "RoadsignLevin_mc"){
+				SET_NODETYPENAME();
+			};
 		};
 		class Unit :public ShootBase
 		{
@@ -201,7 +210,7 @@ namespace engine
 
 #define UNIT_CLASS_DEFINE(unitName,MEMBER_DEFINE) struct unitName :public Unit{ \
 public:\
-	inline unitName() { setName(getTypeName()); }; \
+	inline unitName() { SET_NODETYPENAME();	}; \
 	virtual bool init(); \
 	virtual void animationHandler(); \
 	MEMBER_DEFINE \
@@ -228,7 +237,7 @@ public:\
 		UNIT_CLASS_DEFINE(Unit_19);
 		UNIT_CLASS_DEFINE(Unit_20, virtual void kill(););
 		UNIT_CLASS_DEFINE(Unit_21, virtual void kill(););
-		UNIT_CLASS_DEFINE(Unit_22, int blockTowerRadius; MovieClip * blockRadiusGr; bool greenFlag; cocos2d::Point testTarget; void scanAtRadius(); virtual void kill(););
+		UNIT_CLASS_DEFINE(Unit_22, int blockTowerRadius; MovieClip * blockRadiusGr; bool greenFlag; cocos2d::Point testTarget; virtual void scanAtRadius(); virtual void kill(););
 
 		UNIT_CLASS_DEFINE(Unit_23, RoadsignFire_mc * myPortal; MovieClip * portalAnima; virtual void kill(););
 		UNIT_CLASS_DEFINE(Unit_24, RoadsignIce_mc * myPortal; MovieClip * portalAnima; virtual void kill(););

@@ -43,7 +43,8 @@ namespace screens
 
 		LevelsMenu_mc() :MovieClip("","","")
         {
-            return;
+			SET_NODETYPENAME();
+			return;
         }// end function
 
     };
@@ -80,25 +81,25 @@ namespace screens
 
         LevelsMenu();
 
-        bool init();
+		virtual bool init();
 
-        void enterFrameHandler(cocos2d::EventMouse * event);
+		virtual void enterFrameHandler(cocos2d::EventMouse * event);
 
-        void mouseMoveHandler(cocos2d::EventMouse * param1);
+		virtual void mouseMoveHandler(cocos2d::EventMouse * param1);
 
-        void mouseDownHandler(cocos2d::EventMouse * event);
+		virtual  void mouseDownHandler(cocos2d::EventMouse * event);
 
-        void mouseUpHandler(cocos2d::EventMouse * event);
+		virtual void mouseUpHandler(cocos2d::EventMouse * event);
 
-        void preparationLevels();
+		virtual  void preparationLevels();
 
-        void openNewLevel();
+		virtual void openNewLevel();
 
-        void openNewStarsForLevel();
+		virtual void openNewStarsForLevel();
 
-        void autoguidersButtons();
+		virtual void autoguidersButtons();
 
-        void manageListeners(string param1);
+		virtual void manageListeners(string param1);
 
         //void reInit(event:Event) 
         //{

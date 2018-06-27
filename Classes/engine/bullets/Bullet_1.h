@@ -5,19 +5,21 @@
 namespace engine{
     namespace bullets{
 		
-        class Bullet_1 :public Bullet
-        {
-        public:
-            float shiftX, shiftY;
-            int phase1, phase2;
+		class Bullet_1 :public Bullet
+		{
+		public:
+			float shiftX, shiftY;
+			int phase1, phase2;
 
-			inline Bullet_1() {};
+			inline Bullet_1() {
+				SET_NODETYPENAME();
+			};
 
-            bool init();
+			virtual bool init();
 
-virtual             void update(float dt=0);
+			virtual void update(float dt = 0);
 
-        };
+		};
     }
 }
 #endif

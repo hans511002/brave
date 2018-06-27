@@ -12,6 +12,7 @@ namespace engine
     }// end function
 	bool MoneyAdd::init()//(event:Event) : void
 	{
+		BaseNode::init();
 		////this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
 		this->container = new MoneyAdd_mc();
 		this->container->stop();

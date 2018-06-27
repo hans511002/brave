@@ -72,26 +72,26 @@ namespace engine{
 
 			Iceman(cocos2d::Point param1, int param2, int param3, bool param4 = true);
 
-			bool  init();
+			virtual bool  init();
 
-			void  update(float dt=0);
+			virtual void  update(float dt = 0);
 
-			void  moveHandler();
+			virtual void  moveHandler();
 
-			void  directionManage();
+			virtual void  directionManage();
 
-			void  scanNextTurn();
+			virtual void  scanNextTurn();
 
-			void  attack();
+			virtual void  attack();
 
-			void  bifurcation();
+			virtual void  bifurcation();
 
-			void  soundTimerManageMove(bool param1);
+			virtual void  soundTimerManageMove(bool param1);
 
 			//void  soundTimerMoveFunk(event:TimerEvent) ;
-			void  soundTimerMoveFunk();
+			virtual void  soundTimerMoveFunk();
 
-			void  kill();
+			virtual void  kill();
 
 		};
 	}

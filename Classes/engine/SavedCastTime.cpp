@@ -9,7 +9,8 @@ namespace engine
 
     SavedCastTime_mc::SavedCastTime_mc() :MovieClip("worldinterface/", "SavedCastTime_mc", "SavedCastTime_mc")
     {
-        cont = this->createMovieClipSub("cont");
+		SET_NODETYPENAME();
+		cont = this->createMovieClipSub("cont");
         contNoteTXT = cont->createText("noteTXT");
     }
 
@@ -22,6 +23,7 @@ namespace engine
 
     bool SavedCastTime::init()
     {
+		BaseNode::init();
         //this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
         this->world = Main::mainClass->worldClass;
         this->container = new SavedCastTime_mc();

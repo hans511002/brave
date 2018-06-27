@@ -127,31 +127,31 @@ namespace engine
 			virtual bool init();
             virtual void update(float dt = 0);
 
-            void scan();
+			virtual void scan();
 
-            void attack();
+			virtual void attack();
 
-            void scanAtRadius();
+			virtual void scanAtRadius();
 
-            int spheresManage(string param1, string param2 = "", int param3 = 0);
+			virtual int spheresManage(string param1, string param2 = "", int param3 = 0);
 
-            void shootingStackManage(string param1, string param2);
+			virtual void shootingStackManage(string param1, string param2);
 
-            void prepareSpheresGraphic();
+			virtual void prepareSpheresGraphic();
 
-            void prepareSpheresGraphicAid(int param1);
+			virtual void prepareSpheresGraphicAid(int param1);
 
-            void addBuildAnima();
+			virtual void addBuildAnima();
 
-            void blockTowerFunk();
+			virtual void blockTowerFunk();
 
-            void scanBlock();
+			virtual void scanBlock();
 
-            void scanAndPush();
+			virtual void scanAndPush();
 
-            void towerGetSphereManage(string param1, string param2);
+			virtual void towerGetSphereManage(string param1, string param2);
 
-            void kill();
+			virtual void kill();
 
         };
 

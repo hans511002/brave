@@ -57,39 +57,39 @@ namespace engine
 
 			TowerMenu(Tower * param1);
 
-			bool init();
+			virtual bool init();
 
 			virtual void update(float dt = 0);
 
-			void mouseMoveHandler(cocos2d::EventMouse * param1);
+			virtual void mouseMoveHandler(cocos2d::EventMouse * param1);
 
-			void mouseDownHandler(cocos2d::EventMouse * event);
+			virtual void mouseDownHandler(cocos2d::EventMouse * event);
 
-			void mouseUpHandler(cocos2d::EventMouse * event);
+			virtual void mouseUpHandler(cocos2d::EventMouse * event);
 
-			void upgradeManage();
+			virtual void upgradeManage();
 
-			void monitor();
+			virtual void monitor();
 
-			void spheresMonitor();
+			virtual void spheresMonitor();
 
-			void exampleUltraManage(string param1);
+			virtual void exampleUltraManage(string param1);
 
-			void autoguidersButtons();
+			virtual void autoguidersButtons();
 
-			void hintManage(string param1, int param2 = 1, Node * param3 = NULL);
+			virtual void hintManage(string param1, int param2 = 1, Node * param3 = NULL);
 
-			void hintPosition(int param1 = 1, Node* param2 = NULL);
+			virtual void hintPosition(int param1 = 1, Node* param2 = NULL);
 
-			void ultraUpgradeTower(string param1, bool param2 = false);
+			virtual void ultraUpgradeTower(string param1, bool param2 = false);
 
-			void fastBuyUltraManage();
+			virtual void fastBuyUltraManage();
 
-			int fastBuyUltraScan(string param1);
+			virtual int fastBuyUltraScan(string param1);
 
-			virtual  void  closeMenu(bool param1 = false);
+			virtual void closeMenu(bool param1 = false);
 
-			void kill();
+			virtual void kill();
 
 		};
 	}

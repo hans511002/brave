@@ -20,36 +20,36 @@ namespace engine
 
 		};
 
-        class BuildTowerMenu :public BaseNode
-        {
-        public:
-            int i;
-            Tower * tempObject; //public var tempObject : Object;
-            BuildTowerMenu_mc * container;// public var container : BuildTowerMenu_mc;
-            bool dead;// : Boolean;
-            bool closeFlag;// : Boolean;
+		class BuildTowerMenu :public BaseNode
+		{
+		public:
+			int i;
+			Tower * tempObject; //public var tempObject : Object;
+			BuildTowerMenu_mc * container;// public var container : BuildTowerMenu_mc;
+			bool dead;// : Boolean;
+			bool closeFlag;// : Boolean;
 			BuildTowerPlace *  myPlace;// : MovieClip;
-            World *world;// : World;
+			World *world;// : World;
 
 			BuildTowerMenu(BuildTowerPlace *  param1);
 
 
-            bool init();
+			virtual bool init();
 
-virtual             void update(float dt=0);
+			virtual void update(float dt = 0);
 
-            void mouseMoveHandler(cocos2d::EventMouse * event);
+			virtual void mouseMoveHandler(cocos2d::EventMouse * event);
 
-            void mouseDownHandler(cocos2d::EventMouse * event);
+			virtual void mouseDownHandler(cocos2d::EventMouse * event);
 
-            void mouseUpHandler(cocos2d::EventMouse * event);
+			virtual void mouseUpHandler(cocos2d::EventMouse * event);
 
-            void monitor();
+			virtual void monitor();
 
-            void closeMenu();
+			virtual void closeMenu();
 
-            void kill();
-        }; 
+			virtual void kill();
+		};
     }
 }
 #endif

@@ -12,7 +12,7 @@ namespace engine{
 
 	LevelPointer::LevelPointer() :MovieClip("worldinterface/", "pointer", "LevelBase")
 	{
-		setNodeType("LevelPointer");
+		SET_NODETYPENAME();
 		pointerCase = this->createCase("pointerCase");
 		fireAnima = this->createMovieClipSub("fireAnima");
 		eyesAnima = this->createMovieClipSub("eyesAnima");
@@ -23,7 +23,8 @@ namespace engine{
 
 	BuildTowerPlace::BuildTowerPlace(string arm) :MovieClip("worldinterface/", arm, "LevelBase")
 	{
-		setNodeType("BuildTowerPlace");
+		SET_NODETYPENAME();
+	 
 		placeForBuildCase = this->createCase("placeForBuildCase");
 		buildPoint = this->createCase("buildPoint");
         buildPoint->setMouseEnabled(false);

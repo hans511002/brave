@@ -7,27 +7,27 @@ namespace engine
     namespace bullets
     {
         
-        class Bullet_7 :public Bullet
-        {
-        public:
-            bool rotationFlag;
-            cocos2d::Point enemyStartPoint;
-            int enemyRoad;
-            int enemyWay;
-            float enemyPath;
-            float enemySpeed;
-            UnitShadow_mc * shadow;
+		class Bullet_7 :public Bullet
+		{
+		public:
+			bool rotationFlag;
+			cocos2d::Point enemyStartPoint;
+			int enemyRoad;
+			int enemyWay;
+			float enemyPath;
+			float enemySpeed;
+			UnitShadow_mc * shadow;
 			int correct;
 
-			   Bullet_7();
+			Bullet_7();
 
-            bool init();
+			virtual bool init();
 
-virtual             void update(float dt=0);
+			virtual void update(float dt = 0);
 
-            void kill() ;
+			virtual void kill();
 
-        };
+		};
     }
 }
 #endif

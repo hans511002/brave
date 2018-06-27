@@ -7,7 +7,8 @@ namespace engine
 {
     CastMask_mc::CastMask_mc() :MovieClip("worldinterface/", "CastMask_mc", "CastMask_mc")
     {
-        archiveCase = this->createCase("archiveCase",false);
+		SET_NODETYPENAME();
+		archiveCase = this->createCase("archiveCase", false);
 		castAirCase = this->createCase("castAirCase", false);
 		castGolemCase = this->createCase("castGolemCase", false);
 		castIcemanCase = this->createCase("castIcemanCase", false);

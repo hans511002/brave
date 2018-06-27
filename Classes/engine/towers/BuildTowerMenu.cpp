@@ -9,6 +9,7 @@ namespace engine{
 
 		BuildTowerMenu_mc::BuildTowerMenu_mc() :MovieClip("tower", "BuildTowerMenu_mc", "BuildTowerMenu_mc")
 		{
+			SET_NODETYPENAME();
 			cont = this->createMovieClipSub("cont");
 			contBuildTowerMenuCase = cont->createCase("buildTowerMenuCase");
 			contCostTXT = cont->createText("costTXT");

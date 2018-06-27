@@ -12,23 +12,23 @@ namespace engine
 	    BonusMoney_mc();
 	};
 
-    class BonusMoney :public BaseNode
-    {
-    public:
-        int i;
-        bool dead;
-        World * world;
-        BonusMoney_mc* container;
-        int counter;
+	class BonusMoney :public BaseNode
+	{
+	public:
+		int i;
+		bool dead;
+		World * world;
+		BonusMoney_mc* container;
+		int counter;
 
-        BonusMoney();
+		BonusMoney();
 
-        bool init();
+		virtual bool init();
 
-       virtual  void update(float dt=0);
+		virtual  void update(float dt = 0);
 
-        void kill();
+		virtual void kill();
 
-    };
+	};
 }
 #endif 

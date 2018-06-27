@@ -7,7 +7,7 @@ namespace engine{
     {
         bool Cast_2::init()
         {
-            container = new MovieClip("cast/", "MoveIceman_mc","MoveCast_mc");
+            container = new MovieClip("cast/", "MoveIceman_mc","MoveIceman_mc");
             //container->gotoAndStop(2);
             this->addChild(container);
             Cast::init();

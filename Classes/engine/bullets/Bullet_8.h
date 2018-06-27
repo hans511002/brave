@@ -7,16 +7,16 @@ namespace engine
     namespace bullets
     {
         
-        class Bullet_8 : public Bullet
-        {
-        public:
-			    Bullet_8();
+		class Bullet_8 : public Bullet
+		{
+		public:
+			Bullet_8();
 
-            bool init();
+			virtual bool init();
 
-virtual             void update(float dt=0);
+			virtual void update(float dt = 0);
 
-        };
+		};
     }
 }
 #endif

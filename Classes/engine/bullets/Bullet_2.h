@@ -5,17 +5,19 @@
 namespace engine{
     namespace bullets{
 		
-        class Bullet_2 :public Bullet
-        {
-        public:
+		class Bullet_2 :public Bullet
+		{
+		public:
 
-           inline Bullet_2(){};
+			inline Bullet_2(){
+				SET_NODETYPENAME();
+			};
 
-            bool init();
+			virtual bool init();
 
-virtual             void update(float dt=0);
+			virtual void update(float dt = 0);
 
-        };
+		};
     }
 }
 #endif

@@ -10,7 +10,8 @@ namespace engine
     {  
         Bullet_6::Bullet_6():length(0),unitsCout(1)
         { 
-            return;
+			SET_NODETYPENAME();
+			return;
         }// end function
 
 		bool Bullet_6::init()

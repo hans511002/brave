@@ -38,7 +38,6 @@ namespace engine
 		}
         Tower3::Tower3()
         {
-            SET_NODETYPENAME();
             return;
         }// end function
  

@@ -32,11 +32,11 @@ namespace engine
 
         SavedCastTime(string param1, int param2);
 
-		bool init();
+		virtual bool init();
 
-		void update(float dt=0);
+		virtual void update(float dt = 0);
 
-		void kill();
+		virtual void kill();
 
 	};
 }

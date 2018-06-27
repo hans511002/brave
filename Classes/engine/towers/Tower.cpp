@@ -19,7 +19,7 @@ namespace engine{
 		};
         Tower::Tower() : tempObject2(NULL), container(NULL), myPlace(NULL), buildAnima(NULL), damage(0), intervalCounter(0), intervalTimer(0), dead(false), world(NULL), towerType(0), correctYGrPos(0), enemyTarget(NULL), greenFlag(false), sphereBullet1(NULL), sphereBullet2(NULL), sphereBullet3(NULL), sphereBullet4(NULL), upgradeTypeAdd(0), blockTowerFlag(false), sphereVisibleTimer(0), exchangeFlag(false), autoBuild(false), upgr1_damage(0)
         {
-            //this->spheresStack = [];
+			//this->spheresStack = [];
             //this->shootingTurnStack = [null, null, null, null];
             //this->shootinAttackStack = [];
             //this->addEventListener(Event.ADDED_TO_STAGE, this->init);
@@ -27,6 +27,7 @@ namespace engine{
         }// end function
 		bool Tower::init()
 		{
+			BaseNode::init();
 			////this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
 			this->world = Main::mainClass->worldClass;
 			Vec2 pos = this->myPlace->convertToWorldSpace(Vec2(0, 0));

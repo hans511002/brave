@@ -194,7 +194,7 @@ namespace engine
 			MovieClip *flag = world->level->flags.at(i);
 			flag->gotoAndStop((std::round(std::random() * (flag->totalFrames - 1)) + 1));
 			flag->play("", 0);
-            world->listOfFlags.push_back(world->level->flags.at(i));
+			world->listOfFlags.push_back(world->level->flags.at(i));
 		}
 		for (int i = 0; i < world->level->additionallys.size(); i++)
 		{
@@ -207,13 +207,13 @@ namespace engine
 				this->world->levelAdditionally2 = world->level->additionallys.at(i);
 			else if (i == 3)
 				this->world->levelAdditionally3 = world->level->additionallys.at(i);
-        }
+		}
 		for (int i = 0; i < world->level->places.size(); i++)
 		{
 			BuildTowerPlace *place = world->level->places.at(i);
 			place->placeForBuildCase->setMouseEnabled(true);
-            world->listOfPlaces.push_back(world->level->places.at(i));
-        }
+			world->listOfPlaces.push_back(world->level->places.at(i));
+		}
 
 		//this->world->road->armature->getAnimation()->stop(); 
 		//this->world->road->armature->setName("road");
@@ -228,7 +228,7 @@ namespace engine
 		this->world->towerRadius->mouseEnabled = false;
 		this->world->towerRadius->setVisible(false);
 		this->world->addChild(this->world->towerRadius);
-        std::setAnchorPoint(this->world->towerRadius, 0.5, 0.5);
+		std::setAnchorPoint(this->world->towerRadius, 0.5, 0.5);
 
 		//this->world->quality = this->world->saveBox->getStringValue("quality");
 		//if (quality == "low")
@@ -272,7 +272,7 @@ namespace engine
 			this->world->pointer1 = this->world->level->pointers[0];// pointer1; 
 		}
 		if (levelPointerSize > 1 && this->world->level->pointers[1])//this->world->level.pointer2)
-		{ 
+		{
 			this->world->pointer2 = this->world->level->pointers[1];// pointer2; 
 		}
 		if (levelPointerSize > 2 && this->world->level->pointers[2])//this->world->level.pointer3)
@@ -839,8 +839,8 @@ namespace engine
 		{
 			if (this->world->listOfMoveSpheres[this->i]->speedFrame > 0)
 			{
-				this->world->listOfMoveSpheres[this->i]->speedFrame --;
-				this->world->listOfMoveSpheres[this->i]->setAlpha( this->world->listOfMoveSpheres[this->i]->getAlpha() - 0.1);
+				this->world->listOfMoveSpheres[this->i]->speedFrame--;
+				this->world->listOfMoveSpheres[this->i]->setAlpha(this->world->listOfMoveSpheres[this->i]->getAlpha() - 0.1);
 				this->world->listOfMoveSpheres[this->i]->setPositionX(this->world->listOfMoveSpheres[this->i]->getPositionX() + this->world->listOfMoveSpheres[this->i]->speedX);
 				this->world->listOfMoveSpheres[this->i]->setPositionY(this->world->listOfMoveSpheres[this->i]->getPositionY() + this->world->listOfMoveSpheres[this->i]->speedY);
 				this->world->listOfMoveSpheres[this->i]->update();
@@ -918,11 +918,11 @@ namespace engine
 				}
 				else if (this->world->listOfMoveSpheres[this->i]->ownerType == "tower")
 				{
-					Tower * tower = ISTYPE(Tower,(Node*)this->world->listOfMoveSpheres[this->i]->owner);
+					Tower * tower = ISTYPE(Tower, (Node*)this->world->listOfMoveSpheres[this->i]->owner);
 					int tempObject = 0;
 					if (this->world->listOfMoveSpheres[this->i]->fireCount > 0 && this->world->listOfMoveSpheres[this->i]->iceCount == 0 && this->world->listOfMoveSpheres[this->i]->stoneCount == 0 && this->world->listOfMoveSpheres[this->i]->levinCount == 0)
 					{
-						tempObject = tower ->spheresManage("push", "fire", this->world->listOfMoveSpheres[this->i]->fireCount);
+						tempObject = tower->spheresManage("push", "fire", this->world->listOfMoveSpheres[this->i]->fireCount);
 						if (tempObject > 0)
 						{
 							this->returnGetSphereToArchive("fire", tempObject);
@@ -960,7 +960,7 @@ namespace engine
 							if (this->world->listOfMoveSpheres[this->i]->listOfStack[this->j] == "fire")
 							{
 								tempObject = tower->spheresManage("push", "fire", 1);
-								this->world->listOfMoveSpheres[this->i]->fireCount --;
+								this->world->listOfMoveSpheres[this->i]->fireCount--;
 								if (tempObject > 0)
 								{
 									this->returnGetSphereToArchive("fire", tempObject);
@@ -969,7 +969,7 @@ namespace engine
 							else if (this->world->listOfMoveSpheres[this->i]->listOfStack[this->j] == "ice")
 							{
 								tempObject = tower->spheresManage("push", "ice", 1);
-								this->world->listOfMoveSpheres[this->i]->iceCount --;
+								this->world->listOfMoveSpheres[this->i]->iceCount--;
 								if (tempObject > 0)
 								{
 									this->returnGetSphereToArchive("ice", tempObject);
@@ -1001,7 +1001,7 @@ namespace engine
 						if (this->world->listOfMoveSpheres[this->i]->getAllCount > 0)
 						{
 							tempObject = tower->spheresManage("push", "getAll", 1);
-							this->world->listOfMoveSpheres[this->i]->getAllCount --;
+							this->world->listOfMoveSpheres[this->i]->getAllCount--;
 							if (this->world->listOfMoveSpheres[this->i]->getAllCount > 0)
 							{
 								this->returnGetSphereToArchive("getAll", this->world->listOfMoveSpheres[this->i]->getAllCount);
@@ -1037,7 +1037,7 @@ namespace engine
 				this->world->worldInterface->container->getAllSphereCase->setVisible(false);
 				this->world->worldInterface->container->getAllSphereCase->setVisible(true);
 			}
-			i++;
+			i--;
 		}
 
 	}// end function
@@ -1109,8 +1109,8 @@ namespace engine
 		if (!this->world->getSphere)
 		{
 			this->getSphereBeat(param1, param2);
-            Vec2 pos = this->world->listOfMoveSpheres[this->i]->getPosition();
-            this->world->getSphere->setPosition(pos);
+			Vec2 pos = this->world->listOfMoveSpheres[this->i]->getPosition();
+			this->world->getSphere->setPosition(pos);
 			//this->world->getSphere->setPosition(this->world->listOfMoveSpheres[this->i]->getPosition());
 			//this->world->getSphere->x = this->world->listOfMoveSpheres[this->i]->x;
 			//this->world->getSphere->y = this->world->listOfMoveSpheres[this->i]->y;

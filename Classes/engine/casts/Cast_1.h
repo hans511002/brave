@@ -14,11 +14,10 @@ namespace engine{
 		public:
 			Cast_1()
 			{
-				setNodeType("Cast_1");
 				init();
 			}// end function
 
-			bool init();
+			virtual bool init();
 
 			virtual void update(float dt = 0);
 
@@ -28,7 +27,7 @@ namespace engine{
 
 			virtual void   mouseUpHandler(cocos2d::EventMouse  event);
 
-			void addGolem();
+			virtual void addGolem();
 
 		};
 	}

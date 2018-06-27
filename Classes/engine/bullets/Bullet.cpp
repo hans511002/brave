@@ -9,7 +9,7 @@ namespace engine{
     namespace bullets{
 		BulletSphereTower_mc::BulletSphereTower_mc() :MovieClip("sphere/", "BulletSphereTower_mc", "BulletSphereTower_mc"), cont(0), counter(0)
         {
-			setNodeType("BulletSphereTower_mc");
+			SET_NODETYPENAME();
 			//cont=this->createMovieClip("sphere/","cont","BulletSpheresTower_mc");//合并多个在一个db中
         }
         
@@ -42,52 +42,64 @@ namespace engine{
 		};
 		BulletFireTower_mc::BulletFireTower_mc() :BulletBase_mc("sphere/", "BulletFireTower_mc", "BulletFireTower_mc")
         { 
-			setNodeType("BulletFireTower_mc");
+			SET_NODETYPENAME();
 		}
 		BulletIceTower_mc::BulletIceTower_mc() : BulletBase_mc("sphere/", "BulletIceTower_mc", "BulletIceTower_mc")
         {
-			setNodeType("BulletIceTower_mc");
+			SET_NODETYPENAME();
 		}
 		BulletStoneTower_mc::BulletStoneTower_mc() : BulletBase_mc("sphere/", "BulletStoneTower_mc", "BulletStoneTower_mc")
         {
-        }
+			SET_NODETYPENAME();
+		}
 		BulletLevinTower_mc::BulletLevinTower_mc() : BulletBase_mc("sphere/", "BulletLevinTower_mc", "BulletLevinTower_mc")
         { 
-        }
+			SET_NODETYPENAME();
+		}
 		BulletTower5_1_mc::BulletTower5_1_mc() : BulletBase_mc("sphere/", "BulletTower5_1_mc", "BulletTower5_1_mc")
         { 
-        }
+			SET_NODETYPENAME();
+		}
 		BulletTower5_1Bang_mc::BulletTower5_1Bang_mc(World * world) : MovieClip(world, "sphere/", "BulletTower5_1Bang_mc", "BulletTower5_1Bang_mc")
         { 
-        }
+			SET_NODETYPENAME();
+		}
 		BulletTower5_1Smoke1_mc::BulletTower5_1Smoke1_mc(World * world) : MovieClip(world, "sphere/", "BulletTower5_1Smoke1_mc", "BulletTower5_1Smoke1_mc")
         {
-        };
+			SET_NODETYPENAME();
+		};
 		BulletTower51_1_mc::BulletTower51_1_mc() :BulletBase_mc("sphere/", "BulletTower51_1_mc", "BulletTower51_1_mc")
         { 
-        }
+			SET_NODETYPENAME();
+		}
 		BulletTower51_2_mc::BulletTower51_2_mc() : BulletBase_mc("sphere/", "BulletTower51_2_mc", "BulletTower51_2_mc")
         { 
-        }
+			SET_NODETYPENAME();
+		}
 		BulletTower6_1_mc::BulletTower6_1_mc() : BulletBase_mc("sphere/", "BulletTower6_1_mc", "BulletTower6_1_mc")
         { 
-        }
+			SET_NODETYPENAME();
+		}
 		BulletTower6_2_mc::BulletTower6_2_mc() : BulletBase_mc("sphere/", "BulletTower6_2_mc", "BulletTower6_2_mc")
         { 
-        }
+			SET_NODETYPENAME();
+		}
 		BulletTower61_mc::BulletTower61_mc() : BulletBase_mc("sphere/", "BulletTower61_mc", "BulletTower61_mc")
         { 
-        }
+			SET_NODETYPENAME();
+		}
 		BulletTower7_smoke_mc::BulletTower7_smoke_mc(World * world) : MovieClip(world, "sphere/", "BulletTower7_smoke_mc", "BulletTower7_smoke_mc")
         { 
-        }
+			SET_NODETYPENAME();
+		}
 		BulletTower71_mc::BulletTower71_mc() : BulletBase_mc("sphere/", "BulletTower71_mc", "BulletTower71_mc")
         {
-            
-        }
+			SET_NODETYPENAME();
+		}
 		BulletTower7_mc::BulletTower7_mc() : BulletBase_mc("sphere/", "BulletTower7_mc", "BulletTower7_mc")
         {
-            ////cont=new MovieClip("sphere/","BulletTower7_mc","BulletTower7_mc");
+			SET_NODETYPENAME();
+			////cont=new MovieClip("sphere/","BulletTower7_mc","BulletTower7_mc");
             //ball=new MovieClip("sphere/","ball","BulletTower7_mc");
             //smokeCont1=new MovieClip("sphere/","smokeCont1","BulletTower7_mc");
             //smokeCont2=new MovieClip("sphere/","smokeCont2","BulletTower7_mc");
@@ -100,17 +112,21 @@ namespace engine{
        
 		BulletTower8_1_mc::BulletTower8_1_mc() :BulletBase_mc("sphere/", "BulletTower8_1_mc", "BulletTower8_1_mc")
         { 
-        }
+			SET_NODETYPENAME();
+		}
 		BulletTower8_2_mc::BulletTower8_2_mc() : BulletBase_mc("sphere/", "BulletTower8_2_mc", "BulletTower8_2_mc")
         { 
-        }
+			SET_NODETYPENAME();
+		}
 		BulletTower81_mc::BulletTower81_mc() : BulletBase_mc("sphere/", "BulletTower81_mc", "BulletTower81_mc")
         { 
-        }
+			SET_NODETYPENAME();
+		}
         
         UnitShadow_mc::UnitShadow_mc():BaseSprite("sphere/UnitShadow_mc.png")
         {
-            
+			SET_NODETYPENAME();
+
         }
         
         Bullet::Bullet() :dead(false), world(NULL), container(NULL), enemyTarget(NULL), damage(0), bulletType(0), whoShoot(NULL)
@@ -118,7 +134,8 @@ namespace engine{
 			, testTarget(NULL), testTower(NULL), greenFlag(false), effectFlag(false)
         {
             //this->addEventListener(Event.ADDED_TO_STAGE, this->init);
-            return;
+			SET_NODETYPENAME();
+			return;
         }// end function
 
 

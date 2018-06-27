@@ -11,6 +11,7 @@ namespace engine
 
 		Bullet_7::Bullet_7()
 		{
+			SET_NODETYPENAME();
 			return;
 		}// end function
 

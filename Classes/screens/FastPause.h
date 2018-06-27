@@ -11,42 +11,42 @@ namespace screens
         FastPause_mc();
     };
     
-    class FastPause :public BaseNode
-    {
-    public:
-        bool dead;
-        FastPause_mc *container;
-        bool openFlag   ;
-        bool closeFlag;
-        World * world;
-        float startMusicVolume;
-        int frameCounter;
+	class FastPause :public BaseNode
+	{
+	public:
+		bool dead;
+		FastPause_mc *container;
+		bool openFlag;
+		bool closeFlag;
+		World * world;
+		float startMusicVolume;
+		int frameCounter;
 
-		  FastPause();
+		FastPause();
 
-        bool init();
+		virtual bool init();
 
-        void enterFrameHandler(float dt) ;
+		virtual void enterFrameHandler(float dt);
 
-        void mouseClickHandler(cocos2d::EventMouse * event);
+		virtual void mouseClickHandler(cocos2d::EventMouse * event);
 
-        void kill();
+		virtual void kill();
 
-        //void reInit(event:Event) 
-        //{
-        //    this->removeEventListener(Event.REMOVED_FROM_STAGE, this->reInit);
-        //    this->removeEventListener(Event.ENTER_FRAME, this->enterFrameHandler);
-        //    this->removeEventListener(MouseEvent.CLICK, this->mouseClickHandler);
-        //    if (Sounds.instance.musicChanel)
-        //    {
-        //        Sounds.instance.musicChanel.soundTransform = new SoundTransform(this->startMusicVolume, 0);
-        //    }
-        //    if (this->world->getSphere || this->world->cast)
-        //    {
-        //        this->world->manageMouse("hide");
-        //    }
-        //    return;
-        //}// end function
+		//void reInit(event:Event) 
+		//{
+		//    this->removeEventListener(Event.REMOVED_FROM_STAGE, this->reInit);
+		//    this->removeEventListener(Event.ENTER_FRAME, this->enterFrameHandler);
+		//    this->removeEventListener(MouseEvent.CLICK, this->mouseClickHandler);
+		//    if (Sounds.instance.musicChanel)
+		//    {
+		//        Sounds.instance.musicChanel.soundTransform = new SoundTransform(this->startMusicVolume, 0);
+		//    }
+		//    if (this->world->getSphere || this->world->cast)
+		//    {
+		//        this->world->manageMouse("hide");
+		//    }
+		//    return;
+		//}// end function
 
 	};
 }

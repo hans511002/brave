@@ -21,15 +21,15 @@ namespace engine
 
 			Tower6();
 
-			bool init();
+			virtual bool init();
 
 			virtual void update(float dt = 0);
 
-			void scan();
+			virtual void scan();
 
-			void addScan();
+			virtual void addScan();
 
-			void attack();
+			virtual void attack();
 
 		};
     }

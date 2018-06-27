@@ -7,6 +7,7 @@ namespace engine
 	{
 		TowerMenuHint_mc::TowerMenuHint_mc() :MovieClip("tower/", "TowerMenuHint_mc", "TowerMenuHint_mc")
 		{
+			SET_NODETYPENAME();
 			cont = this->createMovieClipSub("cont");
 			contCont1 = cont->createMovieClipSub("cont1");
 			//不复用
@@ -20,8 +21,10 @@ namespace engine
 		};// end function
 		TowerRadius_mc::TowerRadius_mc() :BaseSprite("tower/TowerRadius_mc.png"), myTower(NULL)
 		{
+			SET_NODETYPENAME();
 		}
 		TowerMenu_mc::TowerMenu_mc() : MovieClip("tower/", "TowerMenu_mc", "TowerMenu_mc"){
+			SET_NODETYPENAME();
 			btnGetAll = this->createMovieClipSub("btnGetAll");
 			btnGetAllBtnGetAllCase = btnGetAll->createCase("btnGetAllCase");
 			btnTowerUpgr1 = this->createMovieClipSub("btnTowerUpgr1");
@@ -74,6 +77,7 @@ namespace engine
 
 		UltraTowerMenu_mc::UltraTowerMenu_mc() :MovieClip("tower/", "UltraTowerMenu_mc", "UltraTowerMenu_mc")
 		{
+			SET_NODETYPENAME();
 			btnUpgradeMenu = this->createMovieClipSub("btnUpgradeMenu");
 			btnUpgradeMenuBtnUpgradeMenuCase = btnUpgradeMenu->createCase("btnUpgradeMenuCase");
 			btnUpgradeMenuCostTXT = btnUpgradeMenu->createText("costTXT");
@@ -117,6 +121,7 @@ namespace engine
 		}
 		UltraTowerMenuHint_mc::UltraTowerMenuHint_mc() :MovieClip("tower/", "UltraTowerMenuHint_mc", "UltraTowerMenuHint_mc")
 		{
+			SET_NODETYPENAME();
 			damageTXT = this->createText("damageTXT");
 			nameTXT = this->createText("nameTXT");
 			noteTXT = this->createText("noteTXT");
