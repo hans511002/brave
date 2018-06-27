@@ -303,21 +303,25 @@ namespace std
 			EventNode* enode = ISTYPE(EventNode, node);
 			if (!enode->mouseEnabled)return false;
 		}
+        MovieClipSubBase * mcbs = ISTYPE(MovieClipSubBase, node);
+        if(mcbs && !mcbs->isReady)
+            return false;
 		Vec2 nsp = node->convertToNodeSpace(pt);//convertToNodeSpace convertToNodeSpaceAR
 		Rect bb;
 		bb.size = node->getContentSize(); //node->convertToWorldSpace(node->getPosition())
 		if (bb.size.height == 0 || bb.size.width == 0)
 		{
-			if (node->getChildrenCount())
-			{
-				cocos2d::Vector<Node*> cld = node->getChildren();
-				for each (Node *n in cld)
-				{
-					Size t = (n->getContentSize() - bb.size);
-					if (t.width > 0 && t.height > 0)
-						bb.size = n->getContentSize();
-				}
-			}
+            return false;
+			//if (node->getChildrenCount())
+			//{
+			//	cocos2d::Vector<Node*> cld = node->getChildren();
+			//	for each (Node *n in cld)
+			//	{
+			//		Size t = (n->getContentSize() - bb.size);
+			//		if (t.width > 0 && t.height > 0)
+			//			bb.size = n->getContentSize();
+			//	}
+			//}
 		}
 		if (bb.containsPoint(nsp))
 		{
@@ -447,6 +451,10 @@ namespace std
 		Node * node = e->getCurrentTarget();
 		hitTest(node, incSub);
 	};
+    MouseEvent::MouseEvent(cocos2d::EventMouse * e) :EventMouse(*e), idx(0), target(NULL), processed(false), enode(NULL)
+    {
+    };
+
 	void  MouseEvent::hitTest(Node *node, bool incSub)
 	{
 		if (ISTYPE(EventNode, node))
@@ -519,17 +527,17 @@ namespace std
 	std::MouseEvent buildMouseEvent(EventMouse * e)
 	{
 		std::MouseEvent  me(e);
-		Node * n = e->getCurrentTarget();
+		//Node * n = e->getCurrentTarget();
 		int l = EventNodes.size();
-		for (int i = 0; i < l; i++)
-		{
-			EventNode * _node = EventNodes.at(i);
-			Node *node = ISTYPE(Node, _node);
-			if (n == node)continue;
-			if (!node)continue;
-			if (std::hitTest(node, e))
-				me.currentTargets.push(node);
-		}
+        for(int i = 0; i < l; i++)
+        {
+            EventNode * _node = EventNodes.at(i);
+            Node *node = ISTYPE(Node, _node);
+            //if (n == node)continue;
+            if(!node)continue;
+            if(std::hitTest(node, e))
+                me.currentTargets.push(node);
+        }
 		return me;
 	};
 

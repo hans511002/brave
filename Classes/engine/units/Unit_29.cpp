@@ -446,7 +446,7 @@ namespace engine
                         {
                             if (this->stealthCounter > 0)
                             {
-                                (this->stealthCounter - 1);
+                                this->stealthCounter--;
                                 if (this->stealthCounter <= 5)
                                 {
                                     if (container->dustAnima->alpha > 0)

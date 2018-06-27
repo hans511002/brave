@@ -1518,7 +1518,7 @@ namespace engine{
 						{
 							if (this->shootingTurnStack[this->j][3] > 1)
 							{
-								(this->shootingTurnStack[this->j][3] - 1);
+								this->shootingTurnStack[this->j][3] --;
 							}
 							else
 							{

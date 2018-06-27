@@ -650,7 +650,7 @@ namespace engine
 			{
 				if (this->armorCounter > 0 && this->armorPower > 0)
 				{
-					(this->armorCounter - 1);
+					this->armorCounter--;
 					if (!this->container->armor->isVisible())
 					{
 						this->container->armor->setVisible(true);

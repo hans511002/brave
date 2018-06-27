@@ -630,7 +630,7 @@ namespace engine
 		{
 			this->intervalTimerAirXML = this->intervalTimerAirXML - std::round(30 * 2);
 			this->airLifeSecXML = this->airLifeSecXML + std::round(30 * 1);
-			(this->airPowerXML + 1);
+			this->airPowerXML++;
 			this->airSpacingXML = this->airSpacingXML + 5;
 			this->airWaitTimerXML = this->airWaitTimerXML + std::round(30 * 0);
 		}
@@ -986,7 +986,7 @@ namespace engine
 		else if (Main::mainClass->saveBoxClass->getBoolValue("upgradeLevin4"))//if (Main::mainClass->saveBoxClass->gameSave.data.upgradeLevin4)
 		{
 			this->levinSellTax = this->levinSellTax + 0.1;
-			(this->levinCountPlus + 1);
+			this->levinCountPlus++;
 			this->levinTowerIntervalXML = this->levinTowerIntervalXML - std::round(30 * 0.2);
 			this->listOfMoveLevinXML[0] = std::round(this->listOfMoveLevinXML[0] * 1.1);
 			this->listOfMoveLevinXML[1] = std::round(this->listOfMoveLevinXML[1] * 1.22);
@@ -1009,7 +1009,7 @@ namespace engine
 		else if (Main::mainClass->saveBoxClass->getBoolValue("upgradeLevin4"))//if (Main::mainClass->saveBoxClass->gameSave.data.upgradeLevin4)
 		{
 			this->levinSellTax = this->levinSellTax + 0.1;
-			(this->levinCountPlus + 1);
+			this->levinCountPlus++;
 			this->levinTowerIntervalXML = this->levinTowerIntervalXML - std::round(30 * 0.2);
 			this->listOfMoveLevinXML[0] = std::round(this->listOfMoveLevinXML[0] * 1.1);
 			this->listOfMoveLevinXML[1] = std::round(this->listOfMoveLevinXML[1] * 1.15);
@@ -1032,7 +1032,7 @@ namespace engine
 		else if (Main::mainClass->saveBoxClass->getBoolValue("upgradeLevin4"))//if (Main::mainClass->saveBoxClass->gameSave.data.upgradeLevin4)
 		{
 			this->levinSellTax = this->levinSellTax + 0.1;
-			(this->levinCountPlus + 1);
+			this->levinCountPlus++;
 			this->levinTowerIntervalXML = this->levinTowerIntervalXML - std::round(30 * 0);
 			this->listOfMoveLevinXML[0] = std::round(this->listOfMoveLevinXML[0] * 1.1);
 			this->listOfMoveLevinXML[1] = std::round(this->listOfMoveLevinXML[1] * 1.1);

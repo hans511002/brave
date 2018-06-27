@@ -396,20 +396,16 @@ namespace engine
 			if (this->getSphere)
 			{
 				this->getSphere->mouseDownHandler(event);
-                if(event->processed)
-                    continue;
-                //if (!this->getSphere)
-				//{
-					//return;
-				//}
+                if (!this->getSphere)
+					return;
 			}
 			else
 			{
 				if (this->cast)
 				{
 					this->cast->mouseDownHandler(event);
-                    if(event->processed)
-                        continue;//return;
+                    if(!this->cast)
+                        return;
 				}
 				if (this->towerMenu)
 				{
@@ -444,8 +440,8 @@ namespace engine
             }
             if(!this->cast && targetName == "towerCase")// && event->target->mouseEnabled
 			{
-				Node * parent = event->target->getParent()->getParent();
-				Tower *tower = ISTYPE(Tower, parent);
+                Node * parent = event->target->getParent()->getParent()->getParent()->getParent();
+                Tower *tower = ISTYPE(Tower, parent);
 				if (tower->towerType <= 4)
 				{
 					this->towerMenu = new TowerMenu(tower);
@@ -522,7 +518,7 @@ namespace engine
 	}
 	void World::mouseUpHandler(cocos2d::EventMouse* e)
 	{
-		EventNode::mouseDownHandler(e);
+        EventNode::mouseUpHandler(e);
 		int mouseButton = e->getMouseButton();
 		if (mouseButton == 1)return;
 		std::MouseEvent me = std::buildMouseEvent(e);
@@ -586,7 +582,7 @@ namespace engine
 	{
 		this->mouseX = e->getCursorX();
 		this->mouseY = e->getCursorY();
-		EventNode::mouseDownHandler(e);
+        EventNode::mouseMoveHandler(e);
 		int mouseButton = e->getMouseButton();
 		if (mouseButton == 1)return;
 		std::MouseEvent me = std::buildMouseEvent(e);
@@ -623,12 +619,13 @@ namespace engine
 					{
 						if (!this->towerRadius->isVisible() || event->target->getParent()->getParent() != this->towerRadius->myTower)
 						{
-							Node * parent = event->target->getParent()->getParent();
+                            Node * parent = event->target->getParent()->getParent()->getParent()->getParent();
 							Tower *tower = ISTYPE(Tower, parent);
 							this->towerRadius->myTower = tower;
 							this->towerRadius->setWidth(this->towerRadius->myTower->radius * 2);
 							this->towerRadius->setHeight(this->towerRadius->myTower->radius * 2 * this->scaleRadius);
 							this->towerRadius->setPosition(this->towerRadius->myTower->this_pt);
+                            std::setAnchorPoint(this->towerRadius, 0.5, 0.5);
 							//this->towerRadius->x = this->towerRadius->myTower->this_pt.x;
 							//this->towerRadius->y = this->towerRadius->myTower->this_pt.y;
 							this->towerRadius->setVisible(true);
@@ -649,8 +646,8 @@ namespace engine
 			if (!this->cast && targetName == "towerCase")// && event->target->mouseEnabled
 			{
 				bool tempObject = false;
-				Node * parent = event->target->getParent()->getParent()->getParent()->getParent();
-				if (this->towerMenu || this->ultraTowerMenu)
+                Node * parent = event->target->getParent()->getParent()->getParent()->getParent();
+ 				if (this->towerMenu || this->ultraTowerMenu)
 				{
 					if (this->towerMenu)
 					{
@@ -690,7 +687,8 @@ namespace engine
 						this->towerRadius->setWidth (this->towerRadius->myTower->radius * 2);
 						this->towerRadius->setHeight ( this->towerRadius->myTower->radius * 2 * this->scaleRadius);
 						this->towerRadius->setPosition(this->towerRadius->myTower->this_pt);
-						//this->towerRadius->x = this->towerRadius->myTower->this_pt.x;
+                        std::setAnchorPoint(this->towerRadius, 0.5, 0.5);
+                        //this->towerRadius->x = this->towerRadius->myTower->this_pt.x;
 						//this->towerRadius->y = this->towerRadius->myTower->this_pt.y;
 						if (this->towerRadius->myTower->towerType < 5)
 						{
@@ -763,7 +761,9 @@ namespace engine
 		if (mouseButton == 1)return;
 		std::MouseEvent me = std::buildMouseEvent(e);
 		std::MouseEvent * event = &me;
-		while (event->hasNext())
+        if(!event->currentTargets.size())
+            event->currentTargets.push(this);
+        while(event->hasNext())
 		{
 			string targetName = event->target->getName();
 			if (targetName == "towerCase")
@@ -819,7 +819,9 @@ namespace engine
 		if (mouseButton == 1)return;
 		std::MouseEvent me = std::buildMouseEvent(e);
 		std::MouseEvent * event = &me;
-		while (event->hasNext())
+        if(!event->currentTargets.size())
+            event->currentTargets.push(this);
+        while(event->hasNext())
 		{
 			if (this->exchange)
 			{

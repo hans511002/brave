@@ -114,7 +114,8 @@ namespace std
 		Common::Array<Node *> currentTargets;
 		MouseEvent(MouseEventType mouseEventCode);
 		void setCurrentTarget(Node* target);
-		MouseEvent(EventMouse * e, bool incSub = false);
+        MouseEvent(EventMouse * e, bool incSub);
+        MouseEvent(EventMouse * e);
 		void hitTest(Node *node, int level);
 		void hitTest(Node *node, bool incSub = false);
 		bool hasNext(); 

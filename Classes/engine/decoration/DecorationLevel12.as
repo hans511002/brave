@@ -55,7 +55,7 @@
                 }
                 else if (counter < 90)
                 {
-                    (counter + 1);
+                    counter++;
                 }
                 else
                 {

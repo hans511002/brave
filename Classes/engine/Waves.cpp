@@ -520,7 +520,7 @@ namespace engine
                                         {
                                             this->additArr[0][0] = this->listOfWaves[0][0][1][1][0][2];
 											Unit * unit1 = this->world->addUnit(this->listOfWaves[0][0][1][1][0][0], 1, this->listOfWaves[0][0][1][1][0][3], this->listOfWaves[0][0][1][1][0][4], this->listOfWaves[0][0][1][1][0][5], this->listOfWaves[0][0][1][1][0][6]);
-                                            (this->listOfWaves[0][0][1][1][0][1] - 1);
+                                            this->listOfWaves[0][0][1][1][0][1]--;
                                         }
                                         if (this->listOfWaves[0][0][1][1][0][1] == 0)
                                         {
@@ -581,7 +581,7 @@ namespace engine
                                 {
                                     if (this->listOfWaves[1][0][1][0] > 0)
                                     {
-                                        (this->listOfWaves[1][0][1][0] - 1);
+                                        this->listOfWaves[1][0][1][0]--;
                                     }
 									else if (this->listOfWaves[1][0][1][1][0].size() > 0)
                                     {
@@ -593,7 +593,7 @@ namespace engine
                                         }
                                         else if (this->additArr[1][0] > 0)
                                         {
-                                            (this->additArr[1][0] - 1);
+                                            this->additArr[1][0]--;
                                         }
                                         else
                                         {
@@ -660,7 +660,7 @@ namespace engine
                                 {
                                     if (this->listOfWaves[2][0][1][0] > 0)
                                     {
-                                        (this->listOfWaves[2][0][1][0] - 1);
+                                        this->listOfWaves[2][0][1][0]--;
                                         if (this->listOfWaves[2][0][1][0] < 91)
                                         {
                                             if (this->world->viewRockCrash == 0)
@@ -679,7 +679,7 @@ namespace engine
                                         }
                                         else if (this->additArr[2][0] > 0)
                                         {
-                                            (this->additArr[2][0] - 1);
+                                            this->additArr[2][0]--;
                                         }
                                         else
                                         {
@@ -827,7 +827,7 @@ namespace engine
                 {
                     if (this->listOfWaves[0][0][0] > 0)
                     {
-                        (this->listOfWaves[0][0][0] - 1);
+                        this->listOfWaves[0][0][0]--;
                         if (this->world->pointer1)
                         {
                             if (this->world->pointer1->isVisible())

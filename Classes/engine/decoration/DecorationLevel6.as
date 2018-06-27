@@ -31,7 +31,7 @@
                         {
                             if (counter < 60)
                             {
-                                (counter + 1);
+                                counter++;
                             }
                             else
                             {
@@ -61,7 +61,7 @@
                         {
                             if (counter < 60)
                             {
-                                (counter + 1);
+                                counter++;
                             }
                             else
                             {
@@ -95,7 +95,7 @@
                         {
                             if (counter < 60)
                             {
-                                (counter + 1);
+                                counter++;
                             }
                             else
                             {
@@ -107,7 +107,7 @@
                         {
                             if (counter < 60)
                             {
-                                (counter + 1);
+                                counter++;
                             }
                             else
                             {
@@ -126,7 +126,7 @@
                     }
                     else if (counter < 60)
                     {
-                        (counter + 1);
+                        counter++;
                     }
                     else
                     {
@@ -152,7 +152,7 @@
         {
             if (event.target.name == "decorationCase")
             {
-                (this.mouseDownCounter + 1);
+                this.mouseDownCounter++;
                 if (this.mouseDownCounter == 1)
                 {
                     this.decorationFlag = 1;

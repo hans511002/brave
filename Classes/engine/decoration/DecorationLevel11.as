@@ -47,7 +47,7 @@
             {
                 if (counter < 90)
                 {
-                    (counter + 1);
+                    counter++;
                 }
                 else if (container.currentFrame < 456)
                 {
@@ -74,7 +74,7 @@
             {
                 if (counter < 90)
                 {
-                    (counter + 1);
+                    counter++;
                 }
                 else if (container.currentFrame < 456)
                 {

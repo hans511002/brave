@@ -45,7 +45,9 @@ namespace engine
 			//this->towerRadius->height = this->myTower->radius * 2 * this->world->scaleRadius;
 			//this->towerRadius->x = this->x;
 			//this->towerRadius->y = this->y;
-			this->towerRadius->setPosition(this->getPosition());
+            Vec2 pos = this->getPosition();
+            this->towerRadius->setPosition(pos);
+            std::setAnchorPoint(this->towerRadius, 0.5, 0.5);
 
 			//this->towerRadius->setMouseChildren(false);
 			//this->towerRadius->setMouseEnabled(false);
@@ -55,13 +57,14 @@ namespace engine
 			this->towerRadius1->setContentSize(Size(this->myTower->radius * 2, this->myTower->radius * 2 * this->world->scaleRadius));
 			//this->towerRadius1->width = this->myTower->radius * 2;
 			//this->towerRadius1->height = this->myTower->radius * 2 * this->world->scaleRadius;
-			this->towerRadius1->setPosition(this->getPosition());
+            this->towerRadius1->setPosition(pos);
 			//this->towerRadius1->x = this->x;
 			//this->towerRadius1->y = this->y; 
 			//this->towerRadius1->setMouseChildren(false);
 			//this->towerRadius1->setMouseEnabled(false);
 			this->towerRadius1->setVisible(false);
-			this->world->addChild(this->towerRadius1);
+            std::setAnchorPoint(this->towerRadius1, 0.5, 0.5);
+            this->world->addChild(this->towerRadius1);
 			this->container = new TowerMenu_mc();
 			this->container->stop();
 			this->container->btnUpgradeMenu->stop();
@@ -1509,7 +1512,7 @@ namespace engine
 				&& targetName != "btnUpgradeMenuBLOCKCase" && targetName != "fastBuyUltraCase"
 				&& event->target->getParent() != this->container && event->target->getParent()->getParent() != this->container)
 			{
-				this->lastE = event;
+				//this->lastE = event;
 				this->closeMenu();
 			}
 			return;
@@ -2849,7 +2852,7 @@ namespace engine
 				        this->i = 0;
 						while (this->i < ((int)this->myTower->shootingTurnStack[0][3] - 1))
 				        { 
-				            (this->i + 1);
+				            this->i ++;
 				            this->world->getSphere->manage("add", "fire");
 				        }
 						this->myTower->spheresManage("get", "fire", ((int)this->myTower->shootingTurnStack[0][3] - 1));
@@ -2867,7 +2870,7 @@ namespace engine
 				    this->i = 0;
 					while (this->i < (int)this->myTower->shootingTurnStack[1][3])
 				    {
-				        (this->i + 1);
+				        this->i++;
 				        this->world->getSphere->manage("add", "ice");
 				    }
 				    this->myTower->spheresManage("get", "ice", this->myTower->shootingTurnStack[1][3]);
@@ -2886,7 +2889,7 @@ namespace engine
 				        this->i = 0;
 				        while (this->i < (this->myTower->shootingTurnStack[2][3] - 1))
 				        {
-				            (this->i + 1);
+				            this->i++;
 				            this->world->getSphere->manage("add", "stone");
 				        }
 				        this->myTower->spheresManage("get", "stone", (this->myTower->shootingTurnStack[2][3] - 1));
@@ -2904,7 +2907,7 @@ namespace engine
 				    this->i = 0;
 				    while (this->i < this->myTower->shootingTurnStack[3][3])
 				    {
-				        (this->i + 1);
+				        this->i ++;
 				        this->world->getSphere->manage("add", "levin");
 				    }
 				    this->myTower->spheresManage("get", "levin", this->myTower->shootingTurnStack[3][3]);
@@ -2933,7 +2936,7 @@ namespace engine
 				    this->i = 0;
 				    while (this->i < this->myTower->shootingTurnStack[0][3])
 				    {
-				        (this->i + 1);
+				        this->i++;
 				        this->world->getSphere->manage("add", "fire");
 				    }
 				    this->myTower->spheresManage("get", "fire", this->myTower->shootingTurnStack[0][3]);
@@ -2952,7 +2955,7 @@ namespace engine
 				        this->i = 0;
 				        while (this->i < (this->myTower->shootingTurnStack[1][3] - 1))
 				        {
-				            (this->i + 1);
+				            this->i++;
 				            this->world->getSphere->manage("add", "ice");
 				        }
 				        this->myTower->spheresManage("get", "ice", (this->myTower->shootingTurnStack[1][3] - 1));
@@ -2970,7 +2973,7 @@ namespace engine
 				    this->i = 0;
 				    while (this->i < this->myTower->shootingTurnStack[2][3])
 				    {
-				        (this->i + 1);
+				        this->i++;
 				        this->world->getSphere->manage("add", "stone");
 				    }
 				    this->myTower->spheresManage("get", "stone", this->myTower->shootingTurnStack[2][3]);
@@ -2990,7 +2993,7 @@ namespace engine
 				        this->i = 0;
 				        while (this->i < (this->myTower->shootingTurnStack[3][3] - 1))
 				        {
-				            (this->i + 1);
+				            this->i++;
 				            this->world->getSphere->manage("add", "levin");
 				        }
 				        this->myTower->spheresManage("get", "levin", (this->myTower->shootingTurnStack[3][3] - 1));
@@ -3020,7 +3023,7 @@ namespace engine
 				    this->i = 0;
 				    while (this->i < this->myTower->shootingTurnStack[0][3])
 				    {
-				        (this->i + 1);
+				        this->i++;
 				        this->world->getSphere->manage("add", "fire");
 				    }
 				    this->myTower->spheresManage("get", "fire", this->myTower->shootingTurnStack[0][3]);
@@ -3039,7 +3042,7 @@ namespace engine
 				        this->i = 0;
 				        while (this->i < (this->myTower->shootingTurnStack[1][3] - 1))
 				        {
-				            (this->i + 1);
+				            this->i++;
 				            this->world->getSphere->manage("add", "ice");
 				        }
 				        this->myTower->spheresManage("get", "ice", (this->myTower->shootingTurnStack[1][3] - 1));
@@ -3059,7 +3062,7 @@ namespace engine
 				        this->i = 0;
 				        while (this->i < (this->myTower->shootingTurnStack[2][3] - 1))
 				        {
-				            (this->i + 1);
+				            this->i++;
 				            this->world->getSphere->manage("add", "stone");
 				        }
 				        this->myTower->spheresManage("get", "stone", (this->myTower->shootingTurnStack[2][3] - 1));
@@ -3077,7 +3080,7 @@ namespace engine
 				    this->i = 0;
 				    while (this->i < this->myTower->shootingTurnStack[3][3])
 				    {
-				        (this->i + 1);
+				        this->i++;
 				        this->world->getSphere->manage("add", "levin");
 				    }
 				    this->myTower->spheresManage("get", "levin", this->myTower->shootingTurnStack[3][3]);
@@ -3108,7 +3111,7 @@ namespace engine
 				        this->i = 0;
 				        while (this->i < (this->myTower->shootingTurnStack[0][3] - 1))
 				        {
-				            (this->i + 1);
+				            this->i++;
 				            this->world->getSphere->manage("add", "fire");
 				        }
 				        this->myTower->spheresManage("get", "fire", (this->myTower->shootingTurnStack[0][3] - 1));
@@ -3126,7 +3129,7 @@ namespace engine
 				    this->i = 0;
 				    while (this->i < this->myTower->shootingTurnStack[1][3])
 				    {
-				        (this->i + 1);
+				        this->i++;
 				        this->world->getSphere->manage("add", "ice");
 				    }
 				    this->myTower->spheresManage("get", "ice", this->myTower->shootingTurnStack[1][3]);
@@ -3143,7 +3146,7 @@ namespace engine
 				    this->i = 0;
 				    while (this->i < this->myTower->shootingTurnStack[2][3])
 				    {
-				        (this->i + 1);
+				        this->i++;
 				        this->world->getSphere->manage("add", "stone");
 				    }
 				    this->myTower->spheresManage("get", "stone", this->myTower->shootingTurnStack[2][3]);
@@ -3162,7 +3165,7 @@ namespace engine
 				        this->i = 0;
 				        while (this->i < (this->myTower->shootingTurnStack[3][3] - 1))
 				        {
-				            (this->i + 1);
+				            this->i++;
 				            this->world->getSphere->manage("add", "levin");
 				        }
 				        this->myTower->spheresManage("get", "levin", (this->myTower->shootingTurnStack[3][3] - 1));
@@ -3368,7 +3371,7 @@ namespace engine
 							{
 								if (this->myTower->spheresStack[this->i] != "ice" && this->myTower->spheresStack[this->i] != "levin")
 								{
-									(this->j - 1);
+									this->j--;
 									if (this->i == 0)
 									{
 										this->container->fastBuyUltraContIndicator1->gotoAndStop(3);
@@ -3418,7 +3421,7 @@ namespace engine
 								{
 									this->container->fastBuyUltraContIndicator4->gotoAndStop(1);
 								}
-								(this->j + 1);
+								this->j++;
 								break;
 							}
 							i++;
@@ -3444,7 +3447,7 @@ namespace engine
 								{
 									this->container->fastBuyUltraContIndicator4->gotoAndStop(1);
 								}
-								(this->j + 1);
+								this->j++;
 								break;
 							}
 							i++;
@@ -3456,7 +3459,7 @@ namespace engine
 							{
 								if (this->myTower->spheresStack[this->i] != "ice" && this->myTower->spheresStack[this->i] != "stone")
 								{
-									(this->j - 1);
+									this->j--;
 									if (this->i == 0)
 									{
 										this->container->fastBuyUltraContIndicator1->gotoAndStop(3);
@@ -3506,7 +3509,7 @@ namespace engine
 								{
 									this->container->fastBuyUltraContIndicator4->gotoAndStop(1);
 								}
-								(this->j + 1);
+								this->j++;
 								break;
 							}
 							i++;
@@ -3532,7 +3535,7 @@ namespace engine
 								{
 									this->container->fastBuyUltraContIndicator4->gotoAndStop(1);
 								}
-								(this->j + 1);
+								this->j++;
 								break;
 							}
 							i++;
@@ -3544,7 +3547,7 @@ namespace engine
 							{
 								if (this->myTower->spheresStack[this->i] != "fire" && this->myTower->spheresStack[this->i] != "levin")
 								{
-									(this->j - 1);
+									this->j--;
 									if (this->i == 0)
 									{
 										this->container->fastBuyUltraContIndicator1->gotoAndStop(3);
@@ -3690,6 +3693,7 @@ namespace engine
 				if (this->hint)
 				{
 					this->world->removeChild(this->hint);
+                    this->hint = NULL;
 				}
 				this->world->worldInterface->updateInfo();
 				if (!this->world->getSphere && !this->world->cast)

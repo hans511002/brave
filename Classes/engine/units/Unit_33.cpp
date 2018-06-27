@@ -46,7 +46,7 @@ namespace engine
                     }
                     else if (this->counter > 0)
                     {
-                        (this->counter - 1);
+                        this->counter--;
                         this->x = this->x + this->distanceX;
                         this->y = this->y + this->distanceY;
                         if (this->alpha < 1)

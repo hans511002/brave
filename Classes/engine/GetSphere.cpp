@@ -255,6 +255,7 @@ namespace engine
 		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
 		if (!event)
 			return;
+        //this->setPosition(this->world->mouseX, this->world->mouseY);
         string targetName = event->target->getName();
         if(targetName == "fireCase")
 		{
@@ -1059,7 +1060,7 @@ namespace engine
 							container->sphere4Cont->stop();
 							container->sphere4->setVisible(true);
 						}
-						(this->fireCount + 1);
+						this->fireCount ++;
 					}
 					else if (param2 == "ice")
 					{
@@ -1087,7 +1088,7 @@ namespace engine
 							container->sphere4Cont->stop();
 							container->sphere4->setVisible(true);
 						}
-						(this->iceCount + 1);
+						this->iceCount ++;
 					}
 					else if (param2 == "stone")
 					{
@@ -1115,7 +1116,7 @@ namespace engine
 							container->sphere4Cont->stop();
 							container->sphere4->setVisible(true);
 						}
-						(this->stoneCount + 1);
+						this->stoneCount++;
 					}
 					else if (param2 == "levin")
 					{
@@ -1143,7 +1144,7 @@ namespace engine
 							container->sphere4Cont->stop();
 							container->sphere4->setVisible(true);
 						}
-						(this->levinCount + 1);
+						this->levinCount++;
 					}
 					if (this->fireCount == 1 && this->iceCount == 1 && this->stoneCount == 1 && this->levinCount == 1)
 					{

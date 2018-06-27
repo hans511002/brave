@@ -128,7 +128,7 @@ namespace engine
 			{
 				if (this->voiceCounter > 0)
 				{
-					(this->voiceCounter - 1);
+					this->voiceCounter--;
 					if (this->voiceCounter == 0)
 					{
 						if (this->world->airVoiceTurn == 1)

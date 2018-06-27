@@ -106,9 +106,9 @@
                 this.starsFlag = 1;
                 if (Main.mainClass.saveBoxClass.gameSave.data.starsOfLevels[(Main.mainClass.saveBoxClass.playLevel - 1)] == 3)
                 {
-                    (Main.mainClass.saveBoxClass.gameSave.data.stars + 1);
+                    Main.mainClass.saveBoxClass.gameSave.data.stars++;
                     Main.mainClass.saveBoxClass.gameSave.data.newStarsForLevel = Main.mainClass.saveBoxClass.playLevel;
-                    (Main.mainClass.saveBoxClass.gameSave.data.starsOfLevels[(Main.mainClass.saveBoxClass.playLevel - 1)] + 1);
+                    Main.mainClass.saveBoxClass.gameSave.data.starsOfLevels[(Main.mainClass.saveBoxClass.playLevel - 1)]++;
                 }
             }
             if (Main.mainClass.saveBoxClass.playLevel < 15)
@@ -139,23 +139,23 @@
             }
             if (this.world.saveBox.gameSave.data.complexityLevel == 1)
             {
-                (this.world.saveBox.gameSave.data.addit_completeEasyLevelsCounter + 1);
+                this.world.saveBox.gameSave.data.addit_completeEasyLevelsCounter++;
             }
             if (this.world.saveBox.gameSave.data.complexityLevel == 2)
             {
-                (this.world.saveBox.gameSave.data.addit_completeNormalLevelsCounter + 1);
+                this.world.saveBox.gameSave.data.addit_completeNormalLevelsCounter++;
             }
             if (this.world.saveBox.gameSave.data.complexityLevel == 3)
             {
-                (this.world.saveBox.gameSave.data.addit_completeHardLevelsCounter + 1);
+                this.world.saveBox.gameSave.data.addit_completeHardLevelsCounter++;
             }
             if (this.world.saveBox.gameSave.data.complexityLevel == 4)
             {
-                (this.world.saveBox.gameSave.data.addit_completeSurvivalLevelsCounter + 1);
+                this.world.saveBox.gameSave.data.addit_completeSurvivalLevelsCounter++;
             }
             if (this.world.live == this.world.liveMax)
             {
-                (this.world.saveBox.gameSave.data.addit_completeLevelsWithAllLivesCounter + 1);
+                this.world.saveBox.gameSave.data.addit_completeLevelsWithAllLivesCounter++;
             }
             if (this.world.saveBox.gameSave.data.addit_completeHardLevelsCounter == 10)
             {

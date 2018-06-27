@@ -64,7 +64,7 @@ namespace engine{
 			//{
 			//	if (event.target.name == "decorationCase")
 			//	{
-			//		(this.mouseDownCounter + 1);
+			//		this.mouseDownCounter++;
 			//		if (this.mouseDownCounter == 1)
 			//		{
 			//			this.decorationFlag = 1;

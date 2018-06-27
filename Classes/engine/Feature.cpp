@@ -194,6 +194,7 @@ namespace engine
 			MovieClip *flag = world->level->flags.at(i);
 			flag->gotoAndStop((std::round(std::random() * (flag->totalFrames - 1)) + 1));
 			flag->play("", 0);
+            world->listOfFlags.push_back(world->level->flags.at(i));
 		}
 		for (int i = 0; i < world->level->additionallys.size(); i++)
 		{
@@ -206,12 +207,13 @@ namespace engine
 				this->world->levelAdditionally2 = world->level->additionallys.at(i);
 			else if (i == 3)
 				this->world->levelAdditionally3 = world->level->additionallys.at(i);
-		}
+        }
 		for (int i = 0; i < world->level->places.size(); i++)
 		{
 			BuildTowerPlace *place = world->level->places.at(i);
 			place->placeForBuildCase->setMouseEnabled(true);
-		}
+            world->listOfPlaces.push_back(world->level->places.at(i));
+        }
 
 		//this->world->road->armature->getAnimation()->stop(); 
 		//this->world->road->armature->setName("road");
@@ -226,6 +228,8 @@ namespace engine
 		this->world->towerRadius->mouseEnabled = false;
 		this->world->towerRadius->setVisible(false);
 		this->world->addChild(this->world->towerRadius);
+        std::setAnchorPoint(this->world->towerRadius, 0.5, 0.5);
+
 		//this->world->quality = this->world->saveBox->getStringValue("quality");
 		//if (quality == "low")
 		//{
@@ -275,6 +279,9 @@ namespace engine
 		{
 			this->world->pointer3 = this->world->level->pointers[2];// pointer3; 
 		}
+
+
+
 		int complexityLevel = this->world->saveBox->getIntValue("complexityLevel");
 		Common::String levelXmlFile = "xml/";
 		if (complexityLevel < 4)
@@ -846,7 +853,7 @@ namespace engine
 					{
 						while (this->world->listOfMoveSpheres[this->i]->fireCount > 0)
 						{
-							(this->world->listOfMoveSpheres[this->i]->fireCount - 1);
+							this->world->listOfMoveSpheres[this->i]->fireCount--;
 							this->world->worldInterface->archiveManage("push", "fire");
 						}
 					}
@@ -854,7 +861,7 @@ namespace engine
 					{
 						while (this->world->listOfMoveSpheres[this->i]->iceCount > 0)
 						{
-							(this->world->listOfMoveSpheres[this->i]->iceCount - 1);
+							this->world->listOfMoveSpheres[this->i]->iceCount--;
 							this->world->worldInterface->archiveManage("push", "ice");
 						}
 					}
@@ -862,7 +869,7 @@ namespace engine
 					{
 						while (this->world->listOfMoveSpheres[this->i]->stoneCount > 0)
 						{
-							(this->world->listOfMoveSpheres[this->i]->stoneCount - 1);
+							this->world->listOfMoveSpheres[this->i]->stoneCount--;
 							this->world->worldInterface->archiveManage("push", "stone");
 						}
 					}
@@ -870,7 +877,7 @@ namespace engine
 					{
 						while (this->world->listOfMoveSpheres[this->i]->levinCount > 0)
 						{
-							(this->world->listOfMoveSpheres[this->i]->levinCount - 1);
+							this->world->listOfMoveSpheres[this->i]->levinCount--;
 							this->world->worldInterface->archiveManage("push", "levin");
 						}
 					}
@@ -880,22 +887,22 @@ namespace engine
 						{
 							if (this->world->listOfMoveSpheres[this->i]->fireCount > 0)
 							{
-								(this->world->listOfMoveSpheres[this->i]->fireCount - 1);
+								this->world->listOfMoveSpheres[this->i]->fireCount--;
 								this->world->worldInterface->archiveManage("push", "fire");
 							}
 							if (this->world->listOfMoveSpheres[this->i]->iceCount > 0)
 							{
-								(this->world->listOfMoveSpheres[this->i]->iceCount - 1);
+								this->world->listOfMoveSpheres[this->i]->iceCount--;
 								this->world->worldInterface->archiveManage("push", "ice");
 							}
 							if (this->world->listOfMoveSpheres[this->i]->stoneCount > 0)
 							{
-								(this->world->listOfMoveSpheres[this->i]->stoneCount - 1);
+								this->world->listOfMoveSpheres[this->i]->stoneCount--;
 								this->world->worldInterface->archiveManage("push", "stone");
 							}
 							if (this->world->listOfMoveSpheres[this->i]->levinCount > 0)
 							{
-								(this->world->listOfMoveSpheres[this->i]->levinCount - 1);
+								this->world->listOfMoveSpheres[this->i]->levinCount--;
 								this->world->worldInterface->archiveManage("push", "levin");
 							}
 						}
@@ -904,7 +911,7 @@ namespace engine
 					{
 						while (this->world->listOfMoveSpheres[this->i]->getAllCount > 0)
 						{
-							(this->world->listOfMoveSpheres[this->i]->getAllCount - 1);
+							this->world->listOfMoveSpheres[this->i]->getAllCount--;
 							this->world->worldInterface->archiveManage("push", "getAll");
 						}
 					}
@@ -953,7 +960,7 @@ namespace engine
 							if (this->world->listOfMoveSpheres[this->i]->listOfStack[this->j] == "fire")
 							{
 								tempObject = tower->spheresManage("push", "fire", 1);
-								(this->world->listOfMoveSpheres[this->i]->fireCount - 1);
+								this->world->listOfMoveSpheres[this->i]->fireCount --;
 								if (tempObject > 0)
 								{
 									this->returnGetSphereToArchive("fire", tempObject);
@@ -962,7 +969,7 @@ namespace engine
 							else if (this->world->listOfMoveSpheres[this->i]->listOfStack[this->j] == "ice")
 							{
 								tempObject = tower->spheresManage("push", "ice", 1);
-								(this->world->listOfMoveSpheres[this->i]->iceCount - 1);
+								this->world->listOfMoveSpheres[this->i]->iceCount --;
 								if (tempObject > 0)
 								{
 									this->returnGetSphereToArchive("ice", tempObject);
@@ -971,7 +978,7 @@ namespace engine
 							else if (this->world->listOfMoveSpheres[this->i]->listOfStack[this->j] == "stone")
 							{
 								tempObject = tower->spheresManage("push", "stone", 1);
-								(this->world->listOfMoveSpheres[this->i]->stoneCount - 1);
+								this->world->listOfMoveSpheres[this->i]->stoneCount--;
 								if (tempObject > 0)
 								{
 									this->returnGetSphereToArchive("stone", tempObject);
@@ -980,7 +987,7 @@ namespace engine
 							else if (this->world->listOfMoveSpheres[this->i]->listOfStack[this->j] == "levin")
 							{
 								tempObject = tower->spheresManage("push", "levin", 1);
-								(this->world->listOfMoveSpheres[this->i]->levinCount - 1);
+								this->world->listOfMoveSpheres[this->i]->levinCount--;
 								if (tempObject > 0)
 								{
 									this->returnGetSphereToArchive("levin", tempObject);
@@ -994,7 +1001,7 @@ namespace engine
 						if (this->world->listOfMoveSpheres[this->i]->getAllCount > 0)
 						{
 							tempObject = tower->spheresManage("push", "getAll", 1);
-							(this->world->listOfMoveSpheres[this->i]->getAllCount - 1);
+							this->world->listOfMoveSpheres[this->i]->getAllCount --;
 							if (this->world->listOfMoveSpheres[this->i]->getAllCount > 0)
 							{
 								this->returnGetSphereToArchive("getAll", this->world->listOfMoveSpheres[this->i]->getAllCount);
@@ -1102,8 +1109,9 @@ namespace engine
 		if (!this->world->getSphere)
 		{
 			this->getSphereBeat(param1, param2);
-			this->world->getSphere->setPosition(this->world->listOfMoveSpheres[this->i]->getPosition());
-			this->world->getSphere->setPosition(this->world->listOfMoveSpheres[this->i]->getPosition());
+            Vec2 pos = this->world->listOfMoveSpheres[this->i]->getPosition();
+            this->world->getSphere->setPosition(pos);
+			//this->world->getSphere->setPosition(this->world->listOfMoveSpheres[this->i]->getPosition());
 			//this->world->getSphere->x = this->world->listOfMoveSpheres[this->i]->x;
 			//this->world->getSphere->y = this->world->listOfMoveSpheres[this->i]->y;
 			this->world->getSphere->retrieveGetSphere();

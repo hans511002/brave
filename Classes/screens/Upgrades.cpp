@@ -117,7 +117,7 @@ namespace screens
     {
         if (this->frameCounter < 30)
         {
-            (this->frameCounter + 1);
+            this->frameCounter++;
         }
         else
         {

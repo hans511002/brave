@@ -86,7 +86,7 @@ namespace engine{
                 }
                 else if (this->phase2 > 0)
                 {
-                    (this->phase2 - 1);
+                    this->phase2--;
                     if (distanceX > 0)
                     {
                         this->setPositionX(this->getPosition().x + this->shiftX);//this->x = this->x + this->shiftX;
