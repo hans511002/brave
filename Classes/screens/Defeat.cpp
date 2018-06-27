@@ -203,9 +203,13 @@ namespace screens
         return;
     }// end function
 
-    void Defeat::mouseMoveHandler(cocos2d::EventMouse * event) 
+    void Defeat::mouseMoveHandler(cocos2d::EventMouse * e) 
     {
-        if (event->target->name == "continueCase")
+		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+		if(!event)
+			return;
+        string targetName = event->target->getName();
+        if (targetName == "continueCase")
         {
             if (this->container->first->scroll->btnContinue->currentFrame == 1)
             {
@@ -217,7 +221,7 @@ namespace screens
         {
             this->container->first->scroll->btnContinue->gotoAndStop(1);
         }
-        if (event->target->name == "restartCase")
+        if (targetName == "restartCase")
         {
             if (this->container->first->scroll->btnRestart->currentFrame == 1)
             {
@@ -231,7 +235,7 @@ namespace screens
         }
         if (this->container->first->scroll->btnY8->y8Case->mouseEnabled)
         {
-            if (event->target->name == "y8Case")
+            if (targetName == "y8Case")
             {
                 if (this->container->first->scroll->btnY8->currentFrame == 1)
                 {
@@ -244,7 +248,7 @@ namespace screens
                 this->container->first->scroll->btnY8->gotoAndStop(1);
             }
         }
-        if (event->target->name == "forumCase")
+        if (targetName == "forumCase")
         {
             if (this->container->first->forum->currentFrame == 1)
             {
@@ -259,9 +263,13 @@ namespace screens
         return;
     }// end function
 
-    void Defeat::mouseDownHandler(cocos2d::EventMouse * event)
+    void Defeat::mouseDownHandler(cocos2d::EventMouse * e)
     {
-        if (event->target->name == "continueCase")
+		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+		if(!event)
+			return;
+        string targetName = event->target->getName();
+        if (targetName == "continueCase")
         {
             if (this->container->first->scroll->btnContinue->currentFrame == 2)
             {
@@ -269,7 +277,7 @@ namespace screens
                 //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
             }
         }
-        else if (event->target->name == "restartCase")
+        else if (targetName == "restartCase")
         {
             if (this->container->first->scroll->btnRestart->currentFrame == 2)
             {
@@ -277,7 +285,7 @@ namespace screens
                 //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
             }
         }
-        else if (event->target->name == "y8Case")
+        else if (targetName == "y8Case")
         {
             if (this->container->first->scroll->btnY8->currentFrame == 2)
             {
@@ -285,7 +293,7 @@ namespace screens
                 //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
             }
         }
-        else if (event->target->name == "forumCase")
+        else if (targetName == "forumCase")
         {
             if (this->container->first->forum->currentFrame == 2)
             {
@@ -296,9 +304,13 @@ namespace screens
         return;
     }// end function
 
-    void Defeat::mouseUpHandler(cocos2d::EventMouse * event)
+    void Defeat::mouseUpHandler(cocos2d::EventMouse * e)
     {
-        if (event->target->name == "continueCase")
+		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+		if (!event)
+			return;
+        string targetName = event->target->getName();
+        if (targetName == "continueCase")
         {
             if (this->container->first->scroll->btnContinue->currentFrame == 3)
             {
@@ -311,7 +323,7 @@ namespace screens
         {
             this->container->first->scroll->btnContinue->gotoAndStop(1);
         }
-        if (event->target->name == "restartCase")
+        if (targetName == "restartCase")
         {
             if (this->container->first->scroll->btnRestart->currentFrame == 3)
             {
@@ -324,7 +336,7 @@ namespace screens
         {
             this->container->first->scroll->btnRestart->gotoAndStop(1);
         }
-        //if (event->target->name == "y8Case")
+        //if (targetName == "y8Case")
         //{
         //    if (this->container->first->scroll->btnY8->currentFrame == 3)
         //    {
@@ -336,7 +348,7 @@ namespace screens
         //{
         //    this->container->first->scroll->btnY8->gotoAndStop(1);
         //}
-        if (event->target->name == "forumCase")
+        if (targetName == "forumCase")
         {
             if (this->container->first->forum->currentFrame == 3)
             {

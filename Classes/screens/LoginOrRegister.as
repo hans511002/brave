@@ -191,7 +191,7 @@
 
         public function mouseMoveHandler(param1) : void
         {
-            if (param1.target.name == "loginCase")
+            if (targetName == "loginCase")
             {
                 if (this.container.cont.cont1.login.currentFrame == 1)
                 {
@@ -206,7 +206,7 @@
                     this.container.cont.cont1.login.gotoAndStop(1);
                 }
             }
-            if (param1.target.name == "registerCase")
+            if (targetName == "registerCase")
             {
                 if (this.container.cont.cont1.register.currentFrame == 1)
                 {
@@ -221,7 +221,7 @@
                     this.container.cont.cont1.register.gotoAndStop(1);
                 }
             }
-            if (param1.target.name == "yesCase")
+            if (targetName == "yesCase")
             {
                 if (this.container.cont.cont1.yes.currentFrame == 1)
                 {
@@ -236,7 +236,7 @@
                     this.container.cont.cont1.yes.gotoAndStop(1);
                 }
             }
-            if (param1.target.name == "noCase")
+            if (targetName == "noCase")
             {
                 if (this.container.cont.cont1.no.currentFrame == 1)
                 {
@@ -251,7 +251,7 @@
                     this.container.cont.cont1.no.gotoAndStop(1);
                 }
             }
-            if (param1.target.name == "okCase")
+            if (targetName == "okCase")
             {
                 if (this.container.cont.cont1.ok.currentFrame == 1)
                 {

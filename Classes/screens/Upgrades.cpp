@@ -175,9 +175,13 @@ namespace screens
         return;
     }// end function
 
-    void Upgrades::mouseMoveHandler(cocos2d::EventMouse * event)
+    void Upgrades::mouseMoveHandler(cocos2d::EventMouse * e)
     {
-        if (event->target->name == "backCase")
+		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+		if(!event)
+			return;
+        string targetName = event->target->getName();
+        if (targetName == "backCase")
         {
             if (this->container->back->currentFrame == 1)
             {
@@ -189,7 +193,7 @@ namespace screens
         {
             this->container->back->gotoAndStop(1);
         }
-        if (event->target->name == "resetCase")
+        if (targetName == "resetCase")
         {
             if (this->container->cont->btnReset->currentFrame == 1)
             {
@@ -201,7 +205,7 @@ namespace screens
         {
             this->container->cont->btnReset->gotoAndStop(1);
         }
-        if (event->target->name == "acceptCase")
+        if (targetName == "acceptCase")
         {
             if (this->container->cont->btnAccept->currentFrame == 1)
             {
@@ -213,7 +217,7 @@ namespace screens
         {
             this->container->cont->btnAccept->gotoAndStop(1);
         }
-        if (event->target->name == "upgradeCase")
+        if (targetName == "upgradeCase")
         {
             if (this->nowUpgradeButton)
             {
@@ -401,11 +405,15 @@ namespace screens
         return;
     }// end function
 
-    void Upgrades::mouseDownHandler(cocos2d::EventMouse * event)
+    void Upgrades::mouseDownHandler(cocos2d::EventMouse * e)
     {
+		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+		if(!event)
+			return;
+        string targetName = event->target->getName();
         if (!this->openFlag)
         {
-            if (event->target->name == "backCase")
+            if (targetName == "backCase")
             {
                 if (this->container->back->currentFrame == 2)
                 {
@@ -413,7 +421,7 @@ namespace screens
                     //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
                 }
             }
-            else if (event->target->name == "resetCase")
+            else if (targetName == "resetCase")
             {
                 if (this->container->cont->btnReset->currentFrame == 2)
                 {
@@ -421,7 +429,7 @@ namespace screens
                     //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
                 }
             }
-            else if (event->target->name == "acceptCase")
+            else if (targetName == "acceptCase")
             {
                 if (this->container->cont->btnAccept->currentFrame == 2)
                 {
@@ -429,11 +437,11 @@ namespace screens
                     //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
                 }
             }
-            else if (event->target->name == "shadow")
+            else if (targetName == "shadow")
             {
                 this->close();
             }
-            else if (event->target->name == "upgradeCase")
+            else if (targetName == "upgradeCase")
             {
                 if (this->nowUpgradeButton)
                 {
@@ -640,9 +648,13 @@ namespace screens
         return;
     }// end function
 
-    void Upgrades::mouseUpHandler(cocos2d::EventMouse * event)
+    void Upgrades::mouseUpHandler(cocos2d::EventMouse * e)
     {
-        if (event->target->name == "backCase")
+		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+		if (!event)
+			return;
+        string targetName = event->target->getName();
+        if (targetName == "backCase")
         {
             if (this->container->back->currentFrame == 3)
             {
@@ -654,7 +666,7 @@ namespace screens
         {
             this->container->back->gotoAndStop(1);
         }
-        if (event->target->name == "resetCase")
+        if (targetName == "resetCase")
         {
             if (this->container->cont->btnReset->currentFrame == 3)
             {
@@ -843,7 +855,7 @@ namespace screens
         {
             this->container->cont->btnReset->gotoAndStop(1);
         }
-        if (event->target->name == "acceptCase")
+        if (targetName == "acceptCase")
         {
             if (this->container->cont->btnAccept->currentFrame == 3)
             {

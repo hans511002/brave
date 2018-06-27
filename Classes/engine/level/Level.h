@@ -39,7 +39,7 @@ namespace engine{
             //Common::Array<TowerPlace * > towerPlace;
 			Common::Array<MovieClipSub * > additionallys;
 			inline Level(World *world, string rootPath, string armName, string dbName) :MovieClip(rootPath, armName, dbName), world(world) {
-				setNodeType("Level");
+                
 			};
 		};
  

@@ -9,12 +9,16 @@ namespace engine
     {
 		Tower1_mc::Tower1_mc() :TowerBase_mc("tower/", "Tower1_mc", "Tower1_mc")
 		{
-			selectTower = this->createMask("selectTower");
+            SET_NODETYPENAME();
+            selectTower = this->createMask("selectTower");
 			sphere1 = this->createMovieClipSub("sphere1");
 			sphere1Bullet = (BulletSphereTower_mc*)sphere1->createMovieClip("bullet", new BulletSphereTower_mc());
 			sphere1BulletCont = sphere1Bullet->createMovieClipSub("cont");
 		}
-
+        Tower1::Tower1() :firstTowerMenuCounter(8)
+        {
+            SET_NODETYPENAME();
+        }// end function
         bool Tower1::init()
         {
             towerType = 1;

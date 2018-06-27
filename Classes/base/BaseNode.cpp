@@ -7,6 +7,32 @@ const double BaseNode::AnimationInterval = 1.0f / (double)Main::FrameRate;
 
 namespace std
 {
+    EventNode::EventNode() :mouseChildren(false), mouseEnabled(false),  mouseFlag(false)
+    { 
+    };
+	BaseNode::BaseNode() :schdt(0), autoDel(true), listener(0)
+    {
+        //setName(getTypeName());
+    };
+
+	BaseNode::BaseNode(float w, float h, bool draw) :autoDel(true), listener(0)
+	{
+		setNodeType("BaseNode");
+		this->setContentSize(Size(w, h));
+		enableMouseHandler();
+		if (draw)drawRange();
+	};    
+	string EventNode::getTypeName(){
+		Common::String clzName = typeid(*this).name();
+		Common::Array<Common::String> names = clzName.Split(" ");
+		clzName = names.at(names.size() - 1);
+		names = clzName.Split("::");
+		clzName = names.at(names.size() - 1);
+		return clzName;
+	};
+ //   string BaseNode::getTypeName(){
+ //       return EventNode::getTypeName();
+	//};
 	Common::Log * gLog = new Common::Log("brave");
 	//Common::Log * gLog = NULL;
 	Common::Array<EventNode *> EventNodes;
@@ -138,6 +164,9 @@ namespace std
 		}
 		std::setAnchorPoint(this);
 		this->autorelease();
+		string name=getTypeName();
+		setName(name);
+        setNodeType(name);
 		return true;
 	};
 	void BaseNode::autorelease()
@@ -153,6 +182,9 @@ namespace std
 	{
 		this->autorelease();
 		std::setAnchorPoint(this);
+		string name=getTypeName();
+		setName(name);
+        setNodeType(name);
 		return true;
 	};
 	BaseSprite::BaseSprite(string file)
@@ -237,6 +269,7 @@ namespace std
 		_background = cocos2d::Sprite::create("background.png");
 		addChild(_background, 0);
 		_onStart();
+		SET_NODETYPENAME();
 		return true;
 	}
 	void BaseLayer::onEnter()
@@ -370,13 +403,6 @@ namespace std
 		return alpha;
 	};
 
-	BaseNode::BaseNode(float w, float h, bool draw) :autoDel(true), listener(0)
-	{
-		setNodeType("BaseNode");
-		this->setContentSize(Size(w, h));
-		enableMouseHandler();
-		if (draw)drawRange();
-	};
 	void BaseNode::setSize(float w, float h, bool draw)
 	{
 		this->setContentSize(Size(w, h));
@@ -559,14 +585,13 @@ namespace std
 		}
 		return e;
 	}
-	void BaseNode::enableMouseHandler()
+	void BaseNode::enableMouseHandler(bool listen)
 	{
 		if (!this->mouseEnabled)
 		{
 			this->setMouseEnabled(true);
-			this->setMouseEnabled(true);
 		}
-		if (listener == NULL)
+		if (listen && listener == NULL)
 		{
 			listener = cocos2d::EventListenerMouse::create();
 			listener->onMouseDown = CC_CALLBACK_1(BaseNode::mouseDownHandler, this);
@@ -883,15 +908,6 @@ namespace std
 	string EventNode::getNamePath(Node *node)
 	{
 		return std::getNamePath(node ? node : ISTYPE(Node, this));
-	};
-
-	string EventNode::getTypeName(){
-		Common::String clzName = typeid(*this).name();
-		Common::Array<Common::String> names = clzName.Split(" ");
-		clzName = names.at(names.size() - 1);
-		names = clzName.Split("::");
-		clzName = names.at(names.size() - 1);
-		return clzName;
 	};
 
 	void EventNode::logInfo(string mouseType, cocos2d::EventMouse* event)

@@ -108,6 +108,7 @@ namespace engine{
 			std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
 			if (!event)
 				return;
+            string targetName = event->target->getName();
 			if (!this->closeFlag)
 			{
                 string target = event->target->getName();
@@ -116,7 +117,7 @@ namespace engine{
                 //logInfo(getNamePath( event->target) , event->getLocationInView());
 				//if (!std::hitTest(this->container->contBuildTowerMenuCase, pt) && !std::hitTest(this->myPlace->placeForBuildCase, pt))
 					this->closeMenu();
-				//if (event->target->getName() != "placeForBuildCase" && event->target->getName() != "buildTowerMenuCase" && param1.target != this->myPlace && param1.target.parent != this)
+				//if (targetName != "placeForBuildCase" && targetName != "buildTowerMenuCase" && param1.target != this->myPlace && param1.target.parent != this)
 				//{
 				// this->closeMenu();
 				//}

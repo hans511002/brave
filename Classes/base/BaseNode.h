@@ -36,22 +36,20 @@ namespace std
 	Common::Array<Node*>  getChildNodes(Node *node);
 	bool getNodeVisible(Node * node);
 
-
 	extern Common::Log * gLog;
 
 	void writeLog(string msg, int type);
 
-
 	class EventNode
 	{
 	public:
-		inline EventNode() :mouseChildren(false), mouseEnabled(false),  mouseFlag(false){ nodeType = getTypeName(); };
+		EventNode();
 		static bool debug;
 		cocos2d::Label* createLabel(const std::string& string);
 
 		string nodeType;
-		string getTypeName();
-		inline void setNodeType(string nt) { nodeType = typeid(*this).name(); };
+		virtual string getTypeName();
+		inline void setNodeType(string nt) { nodeType = nt; };
 		inline virtual bool hitTest(const Vec2 &pt) { return mouseEnabled ; };
 		inline virtual bool hitTest(cocos2d::EventMouse* event) { return   mouseEnabled; };
 		bool mouseChildren;
@@ -125,14 +123,16 @@ namespace std
 	};	
     std::MouseEvent buildMouseEvent(EventMouse * e);
 
+#define SET_NODETYPENAME() string name=getTypeName();setName(name);setNodeType(name)
 	class BaseNode :public cocos2d::Node, public EventNode
 	{
 		int schdt;
 	public:
 		static const double AnimationInterval;
 		cocos2d::EventListenerMouse * listener;
-		inline BaseNode() :schdt(0), autoDel(true), listener(0) { setName(getTypeName()); };//mouseEnabled(false), mouseChildren(false), 
+		BaseNode();
 		BaseNode(float w, float h, bool draw = true);
+		//virtual string getTypeName();
         virtual bool init();
         virtual bool atStage();
 		virtual bool hitTest(const Vec2 &pt);
@@ -157,7 +157,7 @@ namespace std
 		virtual void autorelease();
 		virtual void setSize(float w, float h, bool draw = true);
 		virtual void drawRange();
-		virtual void enableMouseHandler();
+		virtual void enableMouseHandler(bool listen=false);
 		virtual void enableKeyHandler();
 		virtual void disableMouseHandler();
 

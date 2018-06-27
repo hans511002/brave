@@ -267,7 +267,8 @@ namespace engine
 			std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
 			if(!event)
 				return;
-            if (event->target->getName() == "btnUpgradeMenuCase")
+            string targetName = event->target->getName();
+            if (targetName == "btnUpgradeMenuCase")
             {
                 if (container->btnUpgradeMenu->currentFrame == 1)
                 {
@@ -301,7 +302,7 @@ namespace engine
                 {
                     container->btnUpgradeMenu->gotoAndStop(1);
                 }
-                if (event->target->getName() == "btnUpgradeMenuBLOCKCase")
+                if (targetName == "btnUpgradeMenuBLOCKCase")
                 {
                     if (!this->hint->isVisible() && !this->openFlag && !this->closeFlag)
                     {
@@ -324,7 +325,7 @@ namespace engine
                         }
                     }
                 }
-                else if (event->target->getName() == "btnUpgradeMenuLOCKCase")
+                else if (targetName == "btnUpgradeMenuLOCKCase")
                 {
                     if (!this->hint->isVisible() && !this->openFlag && !this->closeFlag)
                     {
@@ -337,7 +338,7 @@ namespace engine
                     this->hint->setVisible(false);
                 }
             }
-            if (event->target->getName() == "btnUpgradeMenuCase" || event->target->getName() == "btnUpgradeMenuBLOCKCase" || event->target->getName() == "fastBuyUltraCase")
+            if (targetName == "btnUpgradeMenuCase" || targetName == "btnUpgradeMenuBLOCKCase" || targetName == "fastBuyUltraCase")
             {
                 if (this->myTower->towerType == 5)
                 {
@@ -400,7 +401,7 @@ namespace engine
                     }
                 }
             }
-            else if (event->target->getName() != "sphereSlotCase")
+            else if (targetName != "sphereSlotCase")
             {
                 if (this->world->worldInterface->container->fireBacklight->isVisible() || this->world->worldInterface->container->iceBacklight->isVisible() 
                     || this->world->worldInterface->container->stoneBacklight->isVisible() || this->world->worldInterface->container->levinBacklight->isVisible())
@@ -408,7 +409,7 @@ namespace engine
                     this->world->worldInterface->archiveSphereBacklightManage("");
                 }
             }
-			if(event->target->getName() == "sphereSlotCase")
+			if(targetName == "sphereSlotCase")
 			{
 				Node * parent = event->target->getParent()->getParent()->getParent();
 				UltraTowerMenu_mc * towerMenuMc = ISTYPE(UltraTowerMenu_mc, parent);
@@ -454,7 +455,7 @@ namespace engine
                     container->sphereSlot2->gotoAndStop(1);
                 }
             }
-            if (event->target->getName() == "sellUltraTowerCase")
+            if (targetName == "sellUltraTowerCase")
             {
                 if (container->sellUltraTower->currentFrame == 1)
                 {
@@ -468,7 +469,7 @@ namespace engine
             }
             if (!this->openFastBuyUltraFlag && !this->closeFastBuyUltraFlag)
             {
-                if (event->target->getName() == "fastBuyUltraCase" && container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->mouseEnabled)
+                if (targetName == "fastBuyUltraCase" && container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->mouseEnabled)
                 {
                     if (container->fastBuyUltraContBtnFastBuyUltra->currentFrame == 1)
                     {
@@ -559,7 +560,8 @@ namespace engine
 			std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
 			if(!event)
 				return;
-            if (event->target->getName() == "btnUpgradeMenuCase")
+            string targetName = event->target->getName();
+            if (targetName == "btnUpgradeMenuCase")
             {
                 if (container->btnUpgradeMenu->currentFrame == 2)
                 {
@@ -567,7 +569,7 @@ namespace engine
                     //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
                 }
             }
-            else if (event->target->getName() == "sphereSlotCase")
+            else if (targetName == "sphereSlotCase")
             {
 				Node * parent = event->target->getParent()->getParent()->getParent();
 				UltraTowerMenu_mc * towerMenuMc = ISTYPE(UltraTowerMenu_mc, parent);
@@ -677,7 +679,7 @@ namespace engine
                     //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
                 }
             }
-            else if (event->target->getName() == "sellUltraTowerCase")
+            else if (targetName == "sellUltraTowerCase")
             {
                 if (container->sellUltraTower->currentFrame == 2)
                 {
@@ -685,7 +687,7 @@ namespace engine
                     //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
                 }
             }
-            else if (event->target->getName() == "fastBuyUltraCase")
+            else if (targetName == "fastBuyUltraCase")
             {
                 if (!this->openFastBuyUltraFlag && !this->closeFastBuyUltraFlag)
                 {
@@ -816,10 +818,10 @@ namespace engine
                     }
                 }
             }
-            else if (event->target->getName() != "buySphereCase" && event->target->getName() != "sphereCase" && event->target->getName() != "btnUpgradeMenuBLOCKCase"
+            else if (targetName != "buySphereCase" && targetName != "sphereCase" && targetName != "btnUpgradeMenuBLOCKCase"
                  && event->target->getParent() != container && event->target->getParent()->getParent() != container)
             {
-                this->lastE = event;
+                //this->lastE = event;
                 this->closeMenu();
             }
             return;
@@ -827,10 +829,11 @@ namespace engine
 
         void UltraTowerMenu::mouseUpHandler(cocos2d::EventMouse *e)
         {
-			std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
-			if(!event)
-				return;
-            if (event->target->getName() == "btnUpgradeMenuCase")
+    		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+    		if (!event)
+    			return;
+            string targetName = event->target->getName();
+            if (targetName == "btnUpgradeMenuCase")
             {
                 if (container->btnUpgradeMenu->currentFrame == 3)
                 {
@@ -873,7 +876,7 @@ namespace engine
             {
                 container->btnUpgradeMenu->gotoAndStop(1);
             }
-            if (event->target->getName() == "sellUltraTowerCase")
+            if (targetName == "sellUltraTowerCase")
             {
                 if (container->sellUltraTower->currentFrame == 3)
                 {

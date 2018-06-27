@@ -89,7 +89,7 @@
 
         public function mouseMoveHandler(param1) : void
         {
-            if (param1.target.name == "okCase")
+            if (targetName == "okCase")
             {
                 if (this.container.cont.btnOk.currentFrame == 1)
                 {

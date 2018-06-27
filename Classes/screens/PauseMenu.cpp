@@ -356,8 +356,12 @@ namespace screens
         return;
     }// end function
 
-    void PauseMenu::mouseMoveHandler(cocos2d::EventMouse *param1)  
+    void PauseMenu::mouseMoveHandler(cocos2d::EventMouse *e)  
     {
+		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+		if(!event)
+			return;
+        string targetName = event->target->getName();
         if (this->questionFlag == 0)
         {
             if (param1->target->name == "musicCase")
@@ -565,8 +569,12 @@ namespace screens
         return;
     }// end function
 
-    void PauseMenu::mouseDownHandler(cocos2d::EventMouse *event) 
+    void PauseMenu::mouseDownHandler(cocos2d::EventMouse *e) 
     {
+		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+		if(!event)
+			return;
+        string targetName = event->target->getName();
         if (this->questionFlag == 0)
         {
             if (event.target.name == "musicCase")

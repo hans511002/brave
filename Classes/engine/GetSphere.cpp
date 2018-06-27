@@ -726,7 +726,7 @@ namespace engine
 		}
 		else if (targetName == "towerCase" && ISTYPE(EventNode, event->target)->mouseEnabled)
 		{
-            Node * parent = event->target->getParent()->getParent()->getParent();
+            Node * parent = event->target->getParent()->getParent()->getParent()->getParent();
 			Tower * tempObject = ISTYPE(Tower, parent);
 			int tempObject1 = 0;
 			if (this->type == "holder")

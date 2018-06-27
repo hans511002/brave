@@ -21,9 +21,7 @@ namespace engine
 		public:
 			int firstTowerMenuCounter;// = 8;
 
-			Tower1() :firstTowerMenuCounter(8)
-			{
-			}// end function
+            Tower1();
 
 			bool init();
 

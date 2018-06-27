@@ -932,7 +932,7 @@
         {
             if (this.gotoPage == "")
             {
-                if (param1.target.name == "backCase")
+                if (targetName == "backCase")
                 {
                     if (this.container.back.currentFrame == 1)
                     {
@@ -944,7 +944,7 @@
                 {
                     this.container.back.gotoAndStop(1);
                 }
-                if (param1.target.name == "btnEnemyCase")
+                if (targetName == "btnEnemyCase")
                 {
                     if (this.container.book.btnEnemy.currentFrame == 1)
                     {
@@ -956,7 +956,7 @@
                 {
                     this.container.book.btnEnemy.gotoAndStop(1);
                 }
-                if (param1.target.name == "btnGuideCase")
+                if (targetName == "btnGuideCase")
                 {
                     if (this.container.book.btnGuide.currentFrame == 1)
                     {
@@ -968,7 +968,7 @@
                 {
                     this.container.book.btnGuide.gotoAndStop(1);
                 }
-                if (param1.target.name == "btnTowerCase")
+                if (targetName == "btnTowerCase")
                 {
                     if (this.container.book.btnTower.currentFrame == 1)
                     {
@@ -980,7 +980,7 @@
                 {
                     this.container.book.btnTower.gotoAndStop(1);
                 }
-                if (param1.target.name == "enemyCase")
+                if (targetName == "enemyCase")
                 {
                     if (param1.target.parent.currentFrame == 1)
                     {
@@ -993,7 +993,7 @@
                 {
                     this.enemiesMouseMoveDefault();
                 }
-                if (param1.target.name == "towerCase")
+                if (targetName == "towerCase")
                 {
                     if (param1.target.parent.currentFrame == 1)
                     {
@@ -1006,15 +1006,15 @@
                 {
                     this.towersMouseMoveDefault();
                 }
-                if (param1.target.name == "arrowCase")
+                if (targetName == "arrowCase")
                 {
                     if (param1.target.parent.currentFrame == 1)
                     {
-                        if (param1.target.parent.name == "btnLeft")
+                        if (event->target->getParent()->getName() == "btnLeft")
                         {
                             Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
                         }
-                        else if (param1.target.parent.name == "btnRight")
+                        else if (event->target->getParent()->getName() == "btnRight")
                         {
                             Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
                         }
@@ -1043,7 +1043,7 @@
                         this.container.book.towerPageRight1.btnRight.gotoAndStop(1);
                     }
                 }
-                if (param1.target.name == "healthCase" || param1.target.name == "speedCase" || param1.target.name == "penaltyCase" || param1.target.name == "fireResistCase" || param1.target.name == "iceResistCase" || param1.target.name == "stoneResistCase" || param1.target.name == "levinResistCase" || param1.target.name == "damageCase" || param1.target.name == "castDamageCase" || param1.target.name == "shootIntervalCase" || param1.target.name == "radiusCase" || param1.target.name == "addDamageCase")
+                if (targetName == "healthCase" || targetName == "speedCase" || targetName == "penaltyCase" || targetName == "fireResistCase" || targetName == "iceResistCase" || targetName == "stoneResistCase" || targetName == "levinResistCase" || targetName == "damageCase" || targetName == "castDamageCase" || targetName == "shootIntervalCase" || targetName == "radiusCase" || targetName == "addDamageCase")
                 {
                     if (!this.hint)
                     {
@@ -1054,51 +1054,51 @@
                         this.hint.mouseEnabled = _loc_2;
                         this.addChild(this.hint);
                     }
-                    if (param1.target.name == "healthCase")
+                    if (targetName == "healthCase")
                     {
                         this.hint.gotoAndStop(2);
                     }
-                    else if (param1.target.name == "speedCase")
+                    else if (targetName == "speedCase")
                     {
                         this.hint.gotoAndStop(3);
                     }
-                    else if (param1.target.name == "penaltyCase")
+                    else if (targetName == "penaltyCase")
                     {
                         this.hint.gotoAndStop(4);
                     }
-                    else if (param1.target.name == "fireResistCase")
+                    else if (targetName == "fireResistCase")
                     {
                         this.hint.gotoAndStop(5);
                     }
-                    else if (param1.target.name == "iceResistCase")
+                    else if (targetName == "iceResistCase")
                     {
                         this.hint.gotoAndStop(6);
                     }
-                    else if (param1.target.name == "stoneResistCase")
+                    else if (targetName == "stoneResistCase")
                     {
                         this.hint.gotoAndStop(7);
                     }
-                    else if (param1.target.name == "levinResistCase")
+                    else if (targetName == "levinResistCase")
                     {
                         this.hint.gotoAndStop(8);
                     }
-                    else if (param1.target.name == "damageCase")
+                    else if (targetName == "damageCase")
                     {
                         this.hint.gotoAndStop(9);
                     }
-                    else if (param1.target.name == "castDamageCase")
+                    else if (targetName == "castDamageCase")
                     {
                         this.hint.gotoAndStop(10);
                     }
-                    else if (param1.target.name == "shootIntervalCase")
+                    else if (targetName == "shootIntervalCase")
                     {
                         this.hint.gotoAndStop(11);
                     }
-                    else if (param1.target.name == "radiusCase")
+                    else if (targetName == "radiusCase")
                     {
                         this.hint.gotoAndStop(12);
                     }
-                    else if (param1.target.name == "addDamageCase")
+                    else if (targetName == "addDamageCase")
                     {
                         this.hint.gotoAndStop(13);
                     }

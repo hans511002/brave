@@ -9,7 +9,8 @@ namespace engine
 	{
 		Tower2_mc::Tower2_mc() :Tower1_mc("tower/", "Tower2_mc", "Tower2_mc")
 		{
-			//blockTower = this->createMovieClip("blockTower", "tower/", "blockTower", "TowerBlockBone");
+            SET_NODETYPENAME();
+            //blockTower = this->createMovieClip("blockTower", "tower/", "blockTower", "TowerBlockBone");
 			//boneBlock = this->createMovieClip("boneBlock", "tower/", "boneBlock", "TowerBlockBone");
 			//selectTower = this->createMovieClipSub("selectTower");
 			//towerCase = this->createCase("towerCase");
@@ -31,6 +32,7 @@ namespace engine
         
         Tower2::Tower2()
         {
+            SET_NODETYPENAME();
             return;
         }// end function
 

@@ -31,7 +31,7 @@ namespace engine{
 
 	Level1_mc::Level1_mc(World *world) :Level(world, "worldinterface/", "Level1_mc", "Level1_mc")
 	{
-		setNodeType("Level1_mc");
+        SET_NODETYPENAME(); 
 		decoration = this->createMovieClipSub("decoration");
 		decoration1 = this->createMovieClipSub("decoration1");
 		decorationCase = this->createCase("decorationCase");
@@ -52,7 +52,6 @@ namespace engine{
 		places.push(place4);
 		places.push(place5);
 		pointers.push(pointer1);
-
 
 		//CCActionInterval * actionBy1 = CCScaleBy::create(2.f, 2.f, 1.f);
 		//neru_pSprite->runAction(actionBy1); /

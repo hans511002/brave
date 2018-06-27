@@ -259,13 +259,17 @@ namespace screens
         return;
     }// end function
 
-    void LevelsMenu::mouseMoveHandler(cocos2d::EventMouse * param1)
+    void LevelsMenu::mouseMoveHandler(cocos2d::EventMouse * e)
     {
+		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+		if(!event)
+			return;
+        string targetName = event->target->getName();
         if (this->mouseMoveTarget)
         {
             this->mouseMoveTarget = NULL;
         }
-        if (param1.target.name == "musicCase")
+        if (targetName == "musicCase")
         {
             if (this->container->btnMusic->currentFrame == 1 || this->container->btnMusic->currentFrame == 4)
             {
@@ -277,7 +281,7 @@ namespace screens
         {
             this->container->btnMusic->gotoAndStop((this->container->btnMusic->currentFrame - 1));
         }
-        if (param1.target.name == "soundCase")
+        if (targetName == "soundCase")
         {
             if (this->container->btnSound->currentFrame == 1 || this->container->btnSound->currentFrame == 4)
             {
@@ -289,7 +293,7 @@ namespace screens
         {
             this->container->btnSound->gotoAndStop((this->container->btnSound->currentFrame - 1));
         }
-        if (param1.target.name == "backCase")
+        if (targetName == "backCase")
         {
             this->mouseMoveTarget = param1->target->parent;
             if (this->container->back->currentFrame == 1)
@@ -302,7 +306,7 @@ namespace screens
         {
             this->container->back->gotoAndStop(1);
         }
-        if (param1.target.name == "upgradesCase1" || param1.target.name == "upgradesCase2")
+        if (targetName == "upgradesCase1" || targetName == "upgradesCase2")
         {
             this->mouseMoveTarget = param1->target->parent;
             if (!this->container->upgrades->mouseMoveFlag)
@@ -315,7 +319,7 @@ namespace screens
         {
             this->container->upgrades->mouseMoveFlag = false;
         }
-        if (param1.target.name == "bookCase1" || param1.target.name == "bookCase2")
+        if (targetName == "bookCase1" || targetName == "bookCase2")
         {
             this->mouseMoveTarget = param1->target->parent;
             if (!this->container->book->mouseMoveFlag)
@@ -328,7 +332,7 @@ namespace screens
         {
             this->container->book->mouseMoveFlag = false;
         }
-        if (param1.target.name == "achievesCase1" || param1.target.name == "achievesCase2")
+        if (targetName == "achievesCase1" || targetName == "achievesCase2")
         {
             this->mouseMoveTarget = param1->target->parent;
             if (!this->container->achieves->mouseMoveFlag)
@@ -341,7 +345,7 @@ namespace screens
         {
             this->container->achieves->mouseMoveFlag = false;
         }
-        if (param1.target.name == "levelCase")
+        if (targetName == "levelCase")
         {
             if (param1->target->parent->currentFrame == 1 || param1->target->parent->currentFrame == 5 || param1->target->parent->currentFrame == 8)
             {
@@ -415,13 +419,17 @@ namespace screens
         return;
     }// end function
 
-    void LevelsMenu::mouseDownHandler(cocos2d::EventMouse * event)
+    void LevelsMenu::mouseDownHandler(cocos2d::EventMouse * e)
     {
+		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+		if(!event)
+			return;
+        string targetName = event->target->getName();
         if (this->mouseDownTarget)
         {
             this->mouseDownTarget = null;
         }
-        if (event->target->name == "musicCase")
+        if (targetName == "musicCase")
         {
             if (this->container->btnMusic->currentFrame == 2 || this->container->btnMusic->currentFrame == 5)
             {
@@ -429,7 +437,7 @@ namespace screens
                 //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
             }
         }
-        else if (event->target->name == "soundCase")
+        else if (targetName == "soundCase")
         {
             if (this->container->btnSound->currentFrame == 2 || this->container->btnSound->currentFrame == 5)
             {
@@ -437,7 +445,7 @@ namespace screens
                 //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
             }
         }
-        else if (event->target->name == "backCase")
+        else if (targetName == "backCase")
         {
             this->mouseDownTarget = event->target->parent;
             if (this->container->back->currentFrame == 2)
@@ -446,7 +454,7 @@ namespace screens
                 //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
             }
         }
-        else if (event->target->name == "upgradesCase1" || event->target->name == "upgradesCase2")
+        else if (targetName == "upgradesCase1" || targetName == "upgradesCase2")
         {
             this->mouseDownTarget = event->target->parent;
             if (this->container->upgrades->currentFrame != this->container->upgrades->totalFrames)
@@ -455,7 +463,7 @@ namespace screens
                 //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
             }
         }
-        else if (event->target->name == "bookCase1" || event->target->name == "bookCase2")
+        else if (targetName == "bookCase1" || targetName == "bookCase2")
         {
             this->mouseDownTarget = event->target->parent;
             if (this->container->book->currentFrame != this->container->book->totalFrames)
@@ -464,7 +472,7 @@ namespace screens
                 //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
             }
         }
-        else if (event->target->name == "achievesCase1" || event->target->name == "achievesCase2")
+        else if (targetName == "achievesCase1" || targetName == "achievesCase2")
         {
             this->mouseDownTarget = event->target->parent;
             if (this->container->achieves->currentFrame != this->container->achieves->totalFrames)
@@ -473,7 +481,7 @@ namespace screens
                 //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
             }
         }
-        else if (event->target->name == "levelCase")
+        else if (targetName == "levelCase")
         {
             this->mouseDownTarget = event->target->parent;
             if (event->target->parent->currentFrame == 2 || event->target->parent->currentFrame == 6 || event->target->parent->currentFrame == 9)
@@ -485,13 +493,17 @@ namespace screens
         return;
     }// end function
 
-    void LevelsMenu::mouseUpHandler(cocos2d::EventMouse * event)
+    void LevelsMenu::mouseUpHandler(cocos2d::EventMouse * e)
     {
+		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+		if (!event)
+			return;
+        string targetName = event->target->getName();
         if (this->mouseDownTarget)
         {
             this->mouseDownTarget = NULL;
         }
-        if (event->target->name == "musicCase")
+        if (targetName == "musicCase")
         {
             if (this->container->btnMusic->currentFrame == 3 || this->container->btnMusic->currentFrame == 6)
             {
@@ -512,7 +524,7 @@ namespace screens
         {
             this->container->btnMusic->gotoAndStop(this->container->btnMusic->currentFrame - 2);
         }
-        if (event->target->name == "soundCase")
+        if (targetName == "soundCase")
         {
             if (this->container->btnSound->currentFrame == 3 || this->container->btnSound->currentFrame == 6)
             {
@@ -532,7 +544,7 @@ namespace screens
         {
             this->container->btnSound->gotoAndStop(this->container->btnSound->currentFrame - 2);
         }
-        if (event->target->name == "backCase")
+        if (targetName == "backCase")
         {
             if (this->container->back->currentFrame == 3)
             {
@@ -544,7 +556,7 @@ namespace screens
         {
             this->container->back->gotoAndStop(1);
         }
-        if (event->target->name == "upgradesCase1" || event->target->name == "upgradesCase2")
+        if (targetName == "upgradesCase1" || targetName == "upgradesCase2")
         {
             this->mouseMoveTarget = null;
             this->mouseDownTarget = null;
@@ -557,7 +569,7 @@ namespace screens
         {
             this->container->upgrades->gotoAndStop((this->container->upgrades->totalFrames - 1));
         }
-        if (event->target->name == "bookCase1" || event->target->name == "bookCase2")
+        if (targetName == "bookCase1" || targetName == "bookCase2")
         {
             this->mouseMoveTarget = null;
             this->mouseDownTarget = null;
@@ -570,7 +582,7 @@ namespace screens
         {
             this->container->book->gotoAndStop((this->container->book->totalFrames - 1));
         }
-        if (event->target->name == "achievesCase1" || event->target->name == "achievesCase2")
+        if (targetName == "achievesCase1" || targetName == "achievesCase2")
         {
             this->mouseMoveTarget = null;
             this->mouseDownTarget = null;
@@ -583,7 +595,7 @@ namespace screens
         {
             this->container->achieves->gotoAndStop((this->container->achieves->totalFrames - 1));
         }
-        if (event->target->name == "levelCase")
+        if (targetName == "levelCase")
         {
             if (event->target->parent->currentFrame == 3 || event->target->parent->currentFrame == 7 || event->target->parent->currentFrame == 10)
             {

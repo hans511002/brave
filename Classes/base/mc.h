@@ -100,7 +100,7 @@ namespace engine
 		//所有全部子集群,用于自动删除
 		Common::Array<MovieClipSub*> mcs;
 		Common::Array<MovieClipSubBase*> mcbs;
-
+        
         MovieClip(dragonBones::CCArmatureDisplay * container, const string &  defAniName = "");
         MovieClip(const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "");
         MovieClip(World * world, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "");

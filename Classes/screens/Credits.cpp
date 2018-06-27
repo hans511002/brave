@@ -102,8 +102,12 @@ namespace screens
         return;
     }// end function
 
-    void Credits::mouseMoveHandler(cocos2d::EventMouse * param1) 
+    void Credits::mouseMoveHandler(cocos2d::EventMouse * e) 
     {
+		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+		if(!event)
+			return;
+        string targetName = event->target->getName();
         if (param1->target->name == "logoContCase")
         {
             if (this->container->cont->logoCont->currentFrame == 1)
@@ -167,9 +171,13 @@ namespace screens
         return;
     }// end function
 
-    void Credits::mouseDownHandler(cocos2d::EventMouse * event) 
+    void Credits::mouseDownHandler(cocos2d::EventMouse * e) 
     {
-        if (event->target->name == "logoContCase")
+		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+		if(!event)
+			return;
+        string targetName = event->target->getName();
+        if (targetName == "logoContCase")
         {
             if (this->container->cont->logoCont->currentFrame == 2)
             {
@@ -177,7 +185,7 @@ namespace screens
                 //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
             }
         }
-        else if (event->target->name == "noteContCase")
+        else if (targetName == "noteContCase")
         {
             if (this->container->cont->noteCont->currentFrame == 2)
             {
@@ -185,7 +193,7 @@ namespace screens
                 //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
             }
         }
-        else if (event->target->name == "facebookCase")
+        else if (targetName == "facebookCase")
         {
             if (this->container->cont->facebook->currentFrame == 2)
             {
@@ -193,7 +201,7 @@ namespace screens
                 //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
             }
         }
-        else if (event->target->name == "twitterCase")
+        else if (targetName == "twitterCase")
         {
             if (this->container->cont->twitter->currentFrame == 2)
             {
@@ -201,7 +209,7 @@ namespace screens
                 //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
             }
         }
-        else if (event->target->name == "okCase")
+        else if (targetName == "okCase")
         {
             if (this->container->cont->btnOk->currentFrame == 2)
             {
@@ -209,7 +217,7 @@ namespace screens
                 //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
             }
         }
-        else if (event->target->name == "shadow")
+        else if (targetName == "shadow")
         {
             if (!this->openFlag && !this->closeFlag)
             {
@@ -219,9 +227,13 @@ namespace screens
         return;
     }// end function
 
-    void Credits::mouseUpHandler(cocos2d::EventMouse *event)
+    void Credits::mouseUpHandler(cocos2d::EventMouse *e)
     {
-        if (event->target->name == "logoContCase")
+		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+		if (!event)
+			return;
+        string targetName = event->target->getName();
+        if (targetName == "logoContCase")
         {
             if (this->container->cont->logoCont->currentFrame == 3)
             {
@@ -233,7 +245,7 @@ namespace screens
         {
             this->container->cont->logoCont->gotoAndStop(1);
         }
-        if (event->target->name == "noteContCase")
+        if (targetName == "noteContCase")
         {
             if (this->container->cont->noteCont->currentFrame == 3)
             {
@@ -245,7 +257,7 @@ namespace screens
         {
             this->container->cont->noteCont->gotoAndStop(1);
         }
-        if (event->target->name == "facebookCase")
+        if (targetName == "facebookCase")
         {
             if (this->container->cont->facebook->currentFrame == 3)
             {
@@ -257,7 +269,7 @@ namespace screens
         {
             this->container->cont->facebook->gotoAndStop(1);
         }
-        if (event->target->name == "twitterCase")
+        if (targetName == "twitterCase")
         {
             if (this->container->cont->twitter->currentFrame == 3)
             {
@@ -269,7 +281,7 @@ namespace screens
         {
             this->container->cont->twitter->gotoAndStop(1);
         }
-        if (event->target->name == "okCase")
+        if (targetName == "okCase")
         {
             if (this->container->cont->btnOk->currentFrame == 3)
             {

@@ -597,8 +597,12 @@ namespace screens
         return;
     }// end function
 
-    void StartMenu::mouseMoveHandler(cocos2d::EventMouse * param1)  
+    void StartMenu::mouseMoveHandler(cocos2d::EventMouse * e)  
     {
+		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+		if(!event)
+			return;
+        string targetName = event->target->getName();
         if (param1->target->name == "backCase")
         {
             if (this->container->back->currentFrame == 1)
@@ -966,9 +970,13 @@ namespace screens
         return;
     }// end function
 
-    void StartMenu::mouseDownHandler(cocos2d::EventMouse * event)  
+    void StartMenu::mouseDownHandler(cocos2d::EventMouse * e)  
     {
-        if (event->target->name == "backCase")
+		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+		if(!event)
+			return;
+        string targetName = event->target->getName();
+        if (targetName == "backCase")
         {
             if (this->container->back->currentFrame == 2)
             {
@@ -976,7 +984,7 @@ namespace screens
                 //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
             }
         }
-        else if (event->target->name == "musicCase")
+        else if (targetName == "musicCase")
         {
             if (this->container->btnMusic->currentFrame == 2 || this->container->btnMusic->currentFrame == 5)
             {
@@ -984,7 +992,7 @@ namespace screens
                 //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
             }
         }
-        else if (event->target->name == "soundCase")
+        else if (targetName == "soundCase")
         {
             if (this->container->btnSound->currentFrame == 2 || this->container->btnSound->currentFrame == 5)
             {
@@ -992,7 +1000,7 @@ namespace screens
                 //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
             }
         }
-        else if (event->target->name == "y8Case")
+        else if (targetName == "y8Case")
         {
             if (this->container->btnY8->currentFrame == 2)
             {
@@ -1000,7 +1008,7 @@ namespace screens
                 //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
             }
         }
-        else if (event->target->name == "idnetCase")
+        else if (targetName == "idnetCase")
         {
             if (this->container->btnIdnet->currentFrame == 2)
             {
@@ -1008,7 +1016,7 @@ namespace screens
                 //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
             }
         }
-        else if (event->target->name == "logOut")
+        else if (targetName == "logOut")
         {
             if (Main::mainClass->IDIClass.idnet)
             {
@@ -1017,7 +1025,7 @@ namespace screens
         }
         if (this->container->start)
         {
-            if (event->target->name == "startCase")
+            if (targetName == "startCase")
             {
                 if (this->container->start->currentFrame == 2)
                 {
@@ -1025,7 +1033,7 @@ namespace screens
                     //Sounds.instance.playSound("snd_menu_stoneMouseDown");
                 }
             }
-            else if (event->target->name == "creditsCase")
+            else if (targetName == "creditsCase")
             {
                 if (this->container->credits->currentFrame == 2)
                 {
@@ -1036,7 +1044,7 @@ namespace screens
         }
         else if (this->container->saveType)
         {
-            if (event->target->name == "localSaveCase")
+            if (targetName == "localSaveCase")
             {
                 if (this->container->saveType->localSave->currentFrame == 2)
                 {
@@ -1044,7 +1052,7 @@ namespace screens
                     //Sounds.instance.playSound("snd_menu_stoneMouseDown");
                 }
             }
-            else if (event->target->name == "onlineSaveCase")
+            else if (targetName == "onlineSaveCase")
             {
                 if (this->container->saveType->onlineSave->currentFrame == 2)
                 {
@@ -1061,7 +1069,7 @@ namespace screens
         }
         else if (this->container->game1)
         {
-            if (event->target->name == "game1Case")
+            if (targetName == "game1Case")
             {
                 if (this->container->game1->currentFrame == 2)
                 {
@@ -1069,7 +1077,7 @@ namespace screens
                     //Sounds.instance.playSound("snd_menu_stoneMouseDown");
                 }
             }
-            else if (event->target->name == "game2Case")
+            else if (targetName == "game2Case")
             {
                 if (this->container->game2->currentFrame == 2)
                 {
@@ -1077,7 +1085,7 @@ namespace screens
                     //Sounds.instance.playSound("snd_menu_stoneMouseDown");
                 }
             }
-            else if (event->target->name == "game3Case")
+            else if (targetName == "game3Case")
             {
                 if (this->container->game3->currentFrame == 2)
                 {
@@ -1085,7 +1093,7 @@ namespace screens
                     //Sounds.instance.playSound("snd_menu_stoneMouseDown");
                 }
             }
-            else if (event->target->name == "newGame1Case")
+            else if (targetName == "newGame1Case")
             {
                 if (this->container->game1->currentFrame == 5)
                 {
@@ -1093,7 +1101,7 @@ namespace screens
                     //Sounds.instance.playSound("snd_menu_stoneMouseDown");
                 }
             }
-            else if (event->target->name == "newGame2Case")
+            else if (targetName == "newGame2Case")
             {
                 if (this->container->game2->currentFrame == 5)
                 {
@@ -1101,7 +1109,7 @@ namespace screens
                     //Sounds.instance.playSound("snd_menu_stoneMouseDown");
                 }
             }
-            else if (event->target->name == "newGame3Case")
+            else if (targetName == "newGame3Case")
             {
                 if (this->container->game3->currentFrame == 5)
                 {
@@ -1109,7 +1117,7 @@ namespace screens
                     //Sounds.instance.playSound("snd_menu_stoneMouseDown");
                 }
             }
-            else if (event->target->name == "syncSlotCase")
+            else if (targetName == "syncSlotCase")
             {
                 if (event.target.parent->currentFrame == 2 || event.target.parent->currentFrame == 5)
                 {
@@ -1117,7 +1125,7 @@ namespace screens
                     //Sounds.instance.playSound("snd_menu_stoneMouseDown");
                 }
             }
-            else if (event->target->name == "deleteSlotCase")
+            else if (targetName == "deleteSlotCase")
             {
                 if (event.target.parent->currentFrame == 2)
                 {
@@ -1127,7 +1135,7 @@ namespace screens
             }
             if (this->container->question)
             {
-                if (event->target->name == "yesCase")
+                if (targetName == "yesCase")
                 {
                     if (event.target.parent->currentFrame == 2)
                     {
@@ -1135,7 +1143,7 @@ namespace screens
                         //Sounds.instance.playSound("snd_menu_stoneMouseDown");
                     }
                 }
-                else if (event->target->name == "noCase")
+                else if (targetName == "noCase")
                 {
                     if (event.target.parent->currentFrame == 2)
                     {
@@ -1148,9 +1156,13 @@ namespace screens
         return;
     }// end function
 
-    void StartMenu::mouseUpHandler(cocos2d::EventMouse * event) 
+    void StartMenu::mouseUpHandler(cocos2d::EventMouse * e) 
     {
-        if (event->target->name == "backCase")
+		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+		if (!event)
+			return;
+        string targetName = event->target->getName();
+        if (targetName == "backCase")
         {
             if (this->container->back->currentFrame == 3)
             {
@@ -1175,7 +1187,7 @@ namespace screens
         {
             this->container->back->gotoAndStop(1);
         }
-        if (event->target->name == "musicCase")
+        if (targetName == "musicCase")
         {
             if (this->container->btnMusic->currentFrame == 3 || this->container->btnMusic->currentFrame == 6)
             {
@@ -1196,7 +1208,7 @@ namespace screens
         {
             this->container->btnMusic->gotoAndStop(this->container->btnMusic->currentFrame - 2);
         }
-        if (event->target->name == "soundCase")
+        if (targetName == "soundCase")
         {
             if (this->container->btnSound->currentFrame == 3 || this->container->btnSound->currentFrame == 6)
             {
@@ -1216,7 +1228,7 @@ namespace screens
         {
             this->container->btnSound->gotoAndStop(this->container->btnSound->currentFrame - 2);
         }
-        if (event->target->name == "y8Case")
+        if (targetName == "y8Case")
         {
             if (this->container->btnY8->currentFrame == 3)
             {
@@ -1228,7 +1240,7 @@ namespace screens
         {
             this->container->btnY8->gotoAndStop(1);
         }
-        if (event->target->name == "idnetCase")
+        if (targetName == "idnetCase")
         {
             if (this->container->btnIdnet->currentFrame == 3)
             {
@@ -1242,7 +1254,7 @@ namespace screens
         }
         if (this->container->start)
         {
-            if (event->target->name == "startCase")
+            if (targetName == "startCase")
             {
                 if (this->container->start->currentFrame == 3)
                 {
@@ -1256,7 +1268,7 @@ namespace screens
             {
                 this->container->start->gotoAndStop(1);
             }
-            if (event->target->name == "creditsCase")
+            if (targetName == "creditsCase")
             {
                 if (this->container->credits->currentFrame == 3)
                 {
@@ -1272,7 +1284,7 @@ namespace screens
         }
         else if (this->container->saveType)
         {
-            if (event->target->name == "localSaveCase")
+            if (targetName == "localSaveCase")
             {
                 if (this->container->saveType->localSave->currentFrame == 3)
                 {
@@ -1288,7 +1300,7 @@ namespace screens
             {
                 this->container->saveType->localSave->gotoAndStop(1);
             }
-            if (event->target->name == "onlineSaveCase")
+            if (targetName == "onlineSaveCase")
             {
                 if (this->container->saveType->onlineSave->currentFrame == 3)
                 {
@@ -1337,7 +1349,7 @@ namespace screens
         }
         else if (this->container->game1)
         {
-            if (event->target->name == "game1Case")
+            if (targetName == "game1Case")
             {
                 if (this->container->game1->currentFrame == 3)
                 {
@@ -1356,7 +1368,7 @@ namespace screens
             {
                 this->container->game1->gotoAndStop(1);
             }
-            if (event->target->name == "game2Case")
+            if (targetName == "game2Case")
             {
                 if (this->container->game2->currentFrame == 3)
                 {
@@ -1375,7 +1387,7 @@ namespace screens
             {
                 this->container->game2->gotoAndStop(1);
             }
-            if (event->target->name == "game3Case")
+            if (targetName == "game3Case")
             {
                 if (this->container->game3->currentFrame == 3)
                 {
@@ -1394,7 +1406,7 @@ namespace screens
             {
                 this->container->game3->gotoAndStop(1);
             }
-            if (event->target->name == "newGame1Case")
+            if (targetName == "newGame1Case")
             {
                 if (this->container->game1->currentFrame == 6)
                 {
@@ -1413,7 +1425,7 @@ namespace screens
             {
                 this->container->game1->gotoAndStop(4);
             }
-            if (event->target->name == "newGame2Case")
+            if (targetName == "newGame2Case")
             {
                 if (this->container->game2->currentFrame == 6)
                 {
@@ -1432,7 +1444,7 @@ namespace screens
             {
                 this->container->game2->gotoAndStop(4);
             }
-            if (event->target->name == "newGame3Case")
+            if (targetName == "newGame3Case")
             {
                 if (this->container->game3->currentFrame == 6)
                 {
@@ -1451,7 +1463,7 @@ namespace screens
             {
                 this->container->game3->gotoAndStop(4);
             }
-            if (event->target->name == "syncSlotCase" && event.target.parent.parent.name == "game1")
+            if (targetName == "syncSlotCase" && event.target.parent.parent.name == "game1")
             {
                 if (this->container->game1->syncSlot->currentFrame == 3 || this->container->game1->syncSlot->currentFrame == 6)
                 {
@@ -1491,7 +1503,7 @@ namespace screens
                     this->container->game1->syncSlot->gotoAndStop(this->container->game1->syncSlot->currentFrame - 2);
                 }
             }
-            if (event->target->name == "syncSlotCase" && event.target.parent.parent.name == "game2")
+            if (targetName == "syncSlotCase" && event.target.parent.parent.name == "game2")
             {
                 if (this->container->game2->syncSlot->currentFrame == 3 || this->container->game2->syncSlot->currentFrame == 6)
                 {
@@ -1531,7 +1543,7 @@ namespace screens
                     this->container->game2->syncSlot->gotoAndStop(this->container->game2->syncSlot->currentFrame - 2);
                 }
             }
-            if (event->target->name == "syncSlotCase" && event.target.parent.parent.name == "game3")
+            if (targetName == "syncSlotCase" && event.target.parent.parent.name == "game3")
             {
                 if (this->container->game3->syncSlot->currentFrame == 3 || this->container->game3->syncSlot->currentFrame == 6)
                 {
@@ -1571,7 +1583,7 @@ namespace screens
                     this->container->game3->syncSlot->gotoAndStop(this->container->game3->syncSlot->currentFrame - 2);
                 }
             }
-            if (event->target->name == "deleteSlotCase" && event.target.parent.parent.name == "game1")
+            if (targetName == "deleteSlotCase" && event.target.parent.parent.name == "game1")
             {
                 if (this->container->game1->deleteSlot->currentFrame == 3)
                 {
@@ -1602,7 +1614,7 @@ namespace screens
                     this->container->game1->deleteSlot->gotoAndStop(1);
                 }
             }
-            if (event->target->name == "deleteSlotCase" && event.target.parent.parent.name == "game2")
+            if (targetName == "deleteSlotCase" && event.target.parent.parent.name == "game2")
             {
                 if (this->container->game2->deleteSlot->currentFrame == 3)
                 {
@@ -1633,7 +1645,7 @@ namespace screens
                     this->container->game2->deleteSlot->gotoAndStop(1);
                 }
             }
-            if (event->target->name == "deleteSlotCase" && event.target.parent.parent.name == "game3")
+            if (targetName == "deleteSlotCase" && event.target.parent.parent.name == "game3")
             {
                 if (this->container->game3->deleteSlot->currentFrame == 3)
                 {
@@ -1666,7 +1678,7 @@ namespace screens
             }
             if (this->container->question)
             {
-                if (event->target->name == "yesCase")
+                if (targetName == "yesCase")
                 {
                     if (event.target.parent->currentFrame == 3)
                     {
@@ -1741,7 +1753,7 @@ namespace screens
                 {
                     this->container->question->btnYes->gotoAndStop(2);
                 }
-                if (event->target->name == "noCase")
+                if (targetName == "noCase")
                 {
                     if (event.target.parent->currentFrame == 3)
                     {

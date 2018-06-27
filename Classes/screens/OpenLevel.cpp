@@ -353,8 +353,12 @@ namespace screens
         return;
     }// end function
 
-    void OpenLevel::mouseMoveHandler(cocos2d::EventMouse * param1) 
+    void OpenLevel::mouseMoveHandler(cocos2d::EventMouse * e) 
     {
+		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+		if(!event)
+			return;
+        string targetName = event->target->getName();
         if (param1->target->name == "backCase")
         {
             if (this->container->back->currentFrame == 1)
@@ -439,11 +443,15 @@ namespace screens
         return;
     }// end function
 
-    void OpenLevel::mouseDownHandler(cocos2d::EventMouse * event) 
+    void OpenLevel::mouseDownHandler(cocos2d::EventMouse * e) 
     {
+		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+		if(!event)
+			return;
+        string targetName = event->target->getName();
         if (!this->openFlag)
         {
-            if (event->target->name == "backCase")
+            if (targetName == "backCase")
             {
                 if (this->container->back->currentFrame == 2)
                 {
@@ -451,7 +459,7 @@ namespace screens
                     //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
                 }
             }
-            else if (event->target->name == "complexityCase")
+            else if (targetName == "complexityCase")
             {
                 if (this->container->board->currentComplexity->currentFrame == 2 || this->container->board->currentComplexity->currentFrame == 5 || this->container->board->currentComplexity->currentFrame == 8)
                 {
@@ -459,7 +467,7 @@ namespace screens
                     //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
                 }
             }
-            else if (event->target->name == "survivalModeCase")
+            else if (targetName == "survivalModeCase")
             {
                 if (this->container->board->survivalMode->currentFrame == 2)
                 {
@@ -467,7 +475,7 @@ namespace screens
                     //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
                 }
             }
-            else if (event->target->name == "mainModeCase")
+            else if (targetName == "mainModeCase")
             {
                 if (this->container->board->mainMode->currentFrame == 2)
                 {
@@ -475,7 +483,7 @@ namespace screens
                     //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
                 }
             }
-            else if (event->target->name == "startCase")
+            else if (targetName == "startCase")
             {
                 if (this->container->board->start->currentFrame == 2)
                 {
@@ -483,7 +491,7 @@ namespace screens
                     //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
                 }
             }
-            else if (event->target->name == "shadow")
+            else if (targetName == "shadow")
             {
                 this->close();
             }
@@ -491,9 +499,13 @@ namespace screens
         return;
     }// end function
 
-    void OpenLevel::mouseUpHandler(cocos2d::EventMouse * event) 
+    void OpenLevel::mouseUpHandler(cocos2d::EventMouse * e) 
     {
-        if (event->target->name == "backCase")
+		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+		if (!event)
+			return;
+        string targetName = event->target->getName();
+        if (targetName == "backCase")
         {
             if (this->container->back->currentFrame == 3)
             {
@@ -505,7 +517,7 @@ namespace screens
         {
             this->container->back->gotoAndStop(1);
         }
-        if (event->target->name == "complexityCase")
+        if (targetName == "complexityCase")
         {
             if (this->container->board->currentComplexity->currentFrame == 3 || this->container->board->currentComplexity->currentFrame == 6 || this->container->board->currentComplexity->currentFrame == 9)
             {
@@ -529,7 +541,7 @@ namespace screens
         {
             this->container->board->currentComplexity->gotoAndStop(this->container->board->currentComplexity->currentFrame - 2);
         }
-        if (event->target->name == "survivalModeCase")
+        if (targetName == "survivalModeCase")
         {
             if (this->container->board->survivalMode->currentFrame == 3)
             {
@@ -548,7 +560,7 @@ namespace screens
         {
             this->container->board->survivalMode->gotoAndStop(1);
         }
-        if (event->target->name == "mainModeCase")
+        if (targetName == "mainModeCase")
         {
             if (this->container->board->mainMode->currentFrame == 3)
             {
@@ -581,7 +593,7 @@ namespace screens
         {
             this->container->board->mainMode->gotoAndStop(1);
         }
-        if (event->target->name == "startCase")
+        if (targetName == "startCase")
         {
             if (this->container->board->start->currentFrame == 3)
             {

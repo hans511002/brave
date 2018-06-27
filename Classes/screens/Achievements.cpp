@@ -170,8 +170,12 @@ namespace screens
         return;
     }// end function
 
-    void Achievements::mouseMoveHandler(param1)
+    void Achievements::mouseMoveHandler(cocos2d::EventMouse *e)
     {
+		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+		if(!event)
+			return;
+        string targetName = event->target->getName();
         if (param1->target->name == "backCase")
         {
             if (this->container->back->currentFrame == 1)
@@ -283,11 +287,15 @@ namespace screens
         return;
     }// end function
 
-    void Achievements::mouseDownHandler(cocos2d::EventMouse * event)
+    void Achievements::mouseDownHandler(cocos2d::EventMouse * e)
     {
+		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+		if(!event)
+			return;
+        string targetName = event->target->getName();
         if (!this->openFlag)
         {
-            if (event->target->name == "backCase")
+            if (targetName == "backCase")
             {
                 if (this->container->back->currentFrame == 2)
                 {
@@ -295,7 +303,7 @@ namespace screens
                     //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
                 }
             }
-            else if (event->target->name == "closeCase")
+            else if (targetName == "closeCase")
             {
                 if (this->container->cont->btnClose->currentFrame == 2)
                 {
@@ -319,7 +327,7 @@ namespace screens
                     //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
                 }
             }
-            else if (event->target->name == "fire1Case")
+            else if (targetName == "fire1Case")
             {
                 if (this->container->cont->fire1Case->mouseEnabled)
                 {
@@ -327,7 +335,7 @@ namespace screens
                     //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
                 }
             }
-            else if (event->target->name == "fire2Case")
+            else if (targetName == "fire2Case")
             {
                 if (this->container->cont->fire2Case->mouseEnabled)
                 {
@@ -335,7 +343,7 @@ namespace screens
                     //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
                 }
             }
-            else if (event->target->name == "fire3Case")
+            else if (targetName == "fire3Case")
             {
                 if (this->container->cont->fire3Case->mouseEnabled)
                 {
@@ -343,7 +351,7 @@ namespace screens
                     //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
                 }
             }
-            else if (event->target->name == "fire4Case")
+            else if (targetName == "fire4Case")
             {
                 if (this->container->cont->fire4Case->mouseEnabled)
                 {
@@ -351,7 +359,7 @@ namespace screens
                     //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
                 }
             }
-            else if (event->target->name == "fire5Case")
+            else if (targetName == "fire5Case")
             {
                 if (this->container->cont->fire5Case->mouseEnabled)
                 {
@@ -359,7 +367,7 @@ namespace screens
                     //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
                 }
             }
-            else if (event->target->name == "shadow")
+            else if (targetName == "shadow")
             {
                 this->close();
             }
@@ -369,7 +377,11 @@ namespace screens
 
     void Achievements::mouseUpHandler(cocos2d::EventMouse * event) 
     {
-        if (event->target->name == "backCase")
+		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
+		if (!event)
+			return;
+        string targetName = event->target->getName();
+        if (targetName == "backCase")
         {
             if (this->container->back->currentFrame == 3)
             {
@@ -381,7 +393,7 @@ namespace screens
         {
             this->container->back->gotoAndStop(1);
         }
-        if (event->target->name == "closeCase")
+        if (targetName == "closeCase")
         {
             if (this->container->cont->btnClose->currentFrame == 3)
             {

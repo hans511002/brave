@@ -29,7 +29,8 @@ namespace engine{
 			std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
 			if(!event)
 				return;
-			if(event->target->getName() == "castAirCase")
+            string targetName = event->target->getName();
+			if(targetName == "castAirCase")
             {
                 if (container->currentFrame == 1)
                 {
@@ -77,7 +78,8 @@ namespace engine{
 				return;           
 			if(event)
             {
-                if (event->target->getName() != "castAirCase" && scanWay())
+                string targetName = event->target->getName();
+                if (targetName != "castAirCase" && scanWay())
                 {
                     this->setMouseChildren(true);
                     this->setMouseEnabled(true);
@@ -89,7 +91,7 @@ namespace engine{
                     this->addAir();
                     kill();
                 }
-				else if(event->target->getName() == "castGolemCase" || event->target->getName() == "castIcemanCase" || event->target->getName() == "castAirCase")
+				else if(targetName == "castGolemCase" || targetName == "castIcemanCase" || targetName == "castAirCase")
                 {
                     world->worldInterface->container->butCastAir->gotoAndStop(1);
                     kill();

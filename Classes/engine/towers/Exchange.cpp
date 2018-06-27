@@ -91,10 +91,11 @@ namespace engine
 			std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
 			if(!event)
 				return;
-			if(event->target->getName() == "towerCase" && ISTYPE(EventNode, event->target)->mouseEnabled)
+            string targetName = event->target->getName();
+			if(targetName == "towerCase" && ISTYPE(EventNode, event->target)->mouseEnabled)
 			//if (!std::hitTest(this->container->contBuildTowerMenuCase, pt) && !std::hitTest(this->myPlace->placeForBuildCase, pt))
 			{
-				Node * parent = event->target->getParent()->getParent();
+				Node * parent = event->target->getParent()->getParent()->getParent()->getParent();
 				Tower * tower = ISTYPE(Tower, parent);
 				if(tower->towerType < 5)
                 {
@@ -142,9 +143,10 @@ namespace engine
 			std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
 			if(!event)
 				return;
-			if(event->target->getName() == "towerCase" && ISTYPE(EventNode, event->target)->mouseEnabled)
+            string targetName = event->target->getName();
+            if(targetName == "towerCase" && ISTYPE(EventNode, event->target)->mouseEnabled)
             {
-				Node * parent = event->target->getParent()->getParent();
+				Node * parent = event->target->getParent()->getParent()->getParent()->getParent();
 				Tower * tower = ISTYPE(Tower, parent);
 				if(tower->towerType < 5)
                 {
