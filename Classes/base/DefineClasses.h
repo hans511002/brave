@@ -8,6 +8,7 @@ namespace engine
 	class Feature;
 	class World;
 	class Level;
+	class RoadLevels_mc;
 	class BuildTowerPlace;
 	class LevelPointer;
 	class GetSphere;

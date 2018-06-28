@@ -51,8 +51,8 @@ namespace engine
 			container->sphere3Cont->stop();
 			container->sphere4Cont->stop();
 
-			container->sphere1->setVisible(false);
-			//container->sphere2->setVisible(false);
+			//container->sphere1->setVisible(false);
+			container->sphere2->setVisible(false);
 			container->sphere3->setVisible(false);
 			container->sphere4->setVisible(false);
 		}
@@ -218,16 +218,16 @@ namespace engine
 		}
 		if (this->containerChange)
 		{
-			if (this->containerChange->getOpacity() > 0)
+			if (this->containerChange->getAlpha() > 0)
 			{
-				this->containerChange->setOpacity(this->containerChange->getOpacity() - 0.1);
-				container->setOpacity(container->getOpacity() *(1 + 0.1));
+				this->containerChange->setOpacity(this->containerChange->getAlpha() - 0.1);
+				container->setAlpha(container->getAlpha() *(1 + 0.1));
 			}
 			else
 			{
 				this->removeChild(this->containerChange);
 				this->containerChange = NULL;
-				container->setOpacity(255);
+				container->setAlpha(1);
 			}
 		}
 		if (this->world->getSphere == this)
@@ -535,6 +535,7 @@ namespace engine
 				{
 					this->radius->gotoAndStop(1);
 					this->arrow->setAlpha(0);
+					//this->arrow->setVisible(false);
 					this->radius->cont->stop();
 					if (this->radius->cont1)
 					{
@@ -583,7 +584,7 @@ namespace engine
 			else if (this->radius->currentFrame == 1)
 			{
 				this->radius->gotoAndStop(2);
-				this->arrow->setOpacity(255);
+				this->arrow->setAlpha(1);
 				this->radius->stop();
 				if (this->radius->cont1)
 				{

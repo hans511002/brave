@@ -192,6 +192,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\engine\Feature.cpp" />
     <ClCompile Include="..\Classes\engine\GetSphere.cpp" />
     <ClCompile Include="..\Classes\engine\level\Level1_mc.cpp" />
+    <ClCompile Include="..\Classes\engine\level\RoadLevels_mc.cpp" />
     <ClCompile Include="..\Classes\engine\MoneyAdd.cpp" />
     <ClCompile Include="..\Classes\engine\SavedCastTime.cpp" />
     <ClCompile Include="..\Classes\engine\towers\BuildTowerMenu.cpp" />
@@ -316,6 +317,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\engine\GetSphere.h" />
     <ClInclude Include="..\Classes\engine\level\Level.h" />
     <ClInclude Include="..\Classes\engine\level\Level1_mc.h" />
+    <ClInclude Include="..\Classes\engine\level\RoadLevels_mc.h" />
     <ClInclude Include="..\Classes\engine\MoneyAdd.h" />
     <ClInclude Include="..\Classes\engine\SavedCastTime.h" />
     <ClInclude Include="..\Classes\engine\towers\BuildTowerMenu.h" />

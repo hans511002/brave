@@ -37,7 +37,7 @@ namespace engine
 		if (this->world->nowLevel == 1)
 		{
 			this->world->level = new  Level1_mc(this->world);
-			//this->world->road = new level::RoadLevel1_mc();
+			this->world->road = new  RoadLevels_mc(1);
 			//this->world->decoration = new decoration::DecorationLevel1();
 			this->world->levelType = "grass";
 			if (!Main::mainClass->saveBoxClass->getBoolValue("firstViewTowers", 0))
@@ -219,7 +219,11 @@ namespace engine
 		//this->world->road->armature->setName("road");
 		//this->world->road->setAlpha(0);
 		//this->world->road->setVisible(false);// visible = false;
-		//this->world->addChild(this->world->road);
+		
+		this->world->addChild(this->world->road);
+		//this->world->road->init();
+		//this->world->road->setPosition(this->world->road->initPos);
+		//this->world->logInfo("this->world->road->getPosition",this->world->road->getPosition());
 
 		//this->world->map = new Map();
 		this->world->towerRadius = new TowerRadius_mc();

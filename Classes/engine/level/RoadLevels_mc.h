@@ -8,6 +8,7 @@ namespace engine{
 	{
 	    float x,y;
 	    float w,h;
+		inline Sector(){};
 	    inline Sector(float x,float y,float w,float h)
 	    {
 	        this->x=x;
@@ -18,6 +19,7 @@ namespace engine{
 	};
 	class RoadLevels_mc : public BaseNode{
 	public:
+		Vec2 initPos;
 		int level;
 		Common::Array<Sector> sectors;
         Common::Array<BaseNode *> segments;

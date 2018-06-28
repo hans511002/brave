@@ -2847,7 +2847,7 @@ namespace engine
 		this->container->butCastGolem->gotoAndStop(6);
 		//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 		this->castRegime("on");
-		if (this->world->road)this->world->road->setVisible(false);
+		//if (this->world->road)this->world->road->setVisible(false);
 		this->addCast("golem");
 	}// end function
 

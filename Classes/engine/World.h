@@ -36,7 +36,7 @@ namespace engine
         Waves *wavesClass;
         int numRoads;//public var numRoads : int;
         Level * level;		//public var level : MovieClip;
-		MovieClip *road;//public var road : MovieClip;
+		RoadLevels_mc *road;//public var road : MovieClip;
 		MovieClipSub *levelAdditionally;  //public var levelAdditionally : MovieClip;
 		MovieClipSub *levelAdditionally1;//public var levelAdditionally1 : MovieClip;
 		MovieClipSub *levelAdditionally2;//public var levelAdditionally2 : MovieClip;

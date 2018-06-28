@@ -45,7 +45,8 @@ namespace engine
             inline  operator int()
             {
                 if(value)return value;
-                return !name.empty();
+				if (!name.empty())return name.size();
+				return d.size();
             };
             inline string operator=(string i)
             {

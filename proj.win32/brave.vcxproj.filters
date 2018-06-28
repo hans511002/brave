@@ -312,6 +312,9 @@
     <ClCompile Include="..\Classes\base\Indexes.cpp">
       <Filter>src\base</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\engine\level\RoadLevels_mc.cpp">
+      <Filter>src\engine\level</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -724,6 +727,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\base\Indexes.h">
       <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\level\RoadLevels_mc.h">
+      <Filter>src\engine\level</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

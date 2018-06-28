@@ -13,6 +13,8 @@ namespace engine
 		towers::Tower * myTower;
 		inline Arrow_mc() : MovieClip("worldinterface/", "Arrow_mc", "Arrow_mc"), myTower(0){
 			SET_NODETYPENAME();
+			const dragonBones::Rectangle & aabb = this->getArmature()->getArmatureData()->aabb;
+			this->setContentSize(Size(aabb.width,aabb.height));
 		};
 	};
 	struct GetSphere_mc :public MovieClip{

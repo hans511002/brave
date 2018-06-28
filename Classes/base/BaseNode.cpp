@@ -393,6 +393,9 @@ namespace std
 		op = op<0 ? 0 : op>1 ? 1 : op;
 		int ops = op * 255;
 		node->setOpacity(ops);
+		if (ISTYPE(MovieClip,node)){
+			ISTYPE(MovieClip, node)->container->setOpacity(ops);
+		}
 	};
 	float BaseNode::getAlpha(cocos2d::Node * node)
 	{
