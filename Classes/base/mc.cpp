@@ -342,9 +342,13 @@ namespace engine
 		 return false;
 	 };
      MCText::MCText(MC * mc, const string &  slotName) :ui::Text()
-	{
-		setNodeType("MCText");
+    { 
 		init();
+        this->setFontName("Arial");//Arial
+        //this->setFontName("宋体");//Arial
+        this->setFontSize(12);
+		//setNodeType("MCText");
+        this->setColor(Color3B::YELLOW);
 		this->autorelease();
 		this->mc = mc; 
 		this->slotName = slotName;
