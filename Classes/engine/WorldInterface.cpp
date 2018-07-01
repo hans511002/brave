@@ -63,7 +63,7 @@ namespace engine
 		this->container->iceBack->stop();
 		this->container->stoneBack->stop();
 		this->container->levinBack->stop();
-		//		this->container->backComponents->stop();
+		//this->container->backComponents->stop();
 		this->container->fireSphere->stop();
 		this->container->iceSphere->stop();
 		this->container->stoneSphere->stop();
@@ -113,18 +113,17 @@ namespace engine
 		this->container->butCastIceman->setAlpha(0);
 		this->container->butCastAir->setAlpha(0);
 
-		//this->container->butCastGolem->setVisible(false);
-		//this->container->butCastIceman->setVisible(false);
-		//this->container->butCastAir->setVisible(false);
-		//this->container->barInfo->setVisible(false);
+		this->container->butCastGolem->setVisible(false);
+		this->container->butCastIceman->setVisible(false);
+		this->container->butCastAir->setVisible(false);
+		this->container->barInfo->setVisible(false);
 
 		this->container->lastTime->setVisible(false);
-
-		//this->container->buyFire->setVisible(false);
-		//this->container->buyIce->setVisible(false);
-		//this->container->buyStone->setVisible(false);
-		//this->container->buyLevin->setVisible(false);
-		//this->container->buyGetAll->setVisible(false);
+		this->container->buyFire->setVisible(false);
+		this->container->buyIce->setVisible(false);
+		this->container->buyStone->setVisible(false);
+		this->container->buyLevin->setVisible(false);
+		this->container->buyGetAll->setVisible(false);
 
 
 		//		this->container->backComponents.cacheAsBitmap = true;
@@ -642,6 +641,7 @@ namespace engine
 					{
 						this->container->fireBacklightTurnFlag = true;
 						this->container->fireBacklight->gotoAndStop(2);
+						logInfo("container->fireBacklight", this->container->fireBacklight->getPosition(), &this->container->fireBacklight->convertToWorldSpace(this->container->fireBacklight->getPosition()));
 					}
 				}
 			}

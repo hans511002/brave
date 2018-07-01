@@ -116,7 +116,7 @@ namespace Common
 		{
 			Array<T> res;
 			int ri = 0;
-			while(ri < len && this->size() > start)
+			while(ri++ < len && this->size() > start)
 			{
 				res.push(this->remove(start));
 			}

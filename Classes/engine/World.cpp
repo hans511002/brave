@@ -35,7 +35,7 @@ using namespace engine::units;
 using namespace engine::bullets;
 namespace engine
 {
-	World::World() :frameCounter(0), feature(NULL), bezierClass(NULL), wavesClass(NULL), numRoads(0), level(NULL), road(NULL), levelAdditionally(NULL), levelAdditionally1(NULL), levelAdditionally2(NULL), levelAdditionally3(NULL), worldInterface(NULL), money(0), bonusMoney(0), liveMax(20), live(0), forseIndexFl(false), getSphere(NULL), buildTowerMenu(NULL), towerMenu(NULL), ultraTowerMenu(NULL), scaleRadius(85), towerRadius(NULL), unitInputBezieCounter(0), cast(NULL), menuObject(NULL), pointer1(NULL), pointer2(NULL), pointer3(NULL), selectObject(NULL), firstMusicPlay(false), secondMusicPlay(false), secondMusicCounter(0), winDefCounter(1), viewBoss(0), viewRockCrash(0), boss(NULL), decoration(NULL), nowLevel(0), saveBox(NULL), exchange(NULL), portalViewCounter(30), trainingClass(NULL), hint(NULL), startMusicVolume(0), bonusMoneyFlag(true), eduOpenUpgrArrowFlag(true), killEnemiesCounter(0), createGolemCounter(0), createIcemanCounter(0), createAirCounter(0), earlyWaveCounter(0), sellFireCounter(0), sellIceCounter(0), sellStoneCounter(0), sellLevinCounter(0), sellGetAllCounter(0), icemanSlowdownEnemiesCounter(0), castFireCounter(0), castIceCounter(0), castStoneCounter(0), castLevinCounter(0), castGetAllCounter(0), golemVoiceTurn(1), icemanVoiceTurn(1), airVoiceTurn(1), mouseX(0), mouseY(0)
+	World::World() :frameCounter(0), feature(NULL), bezierClass(NULL), wavesClass(NULL), numRoads(0), level(NULL), road(NULL), levelAdditionally(NULL), levelAdditionally1(NULL), levelAdditionally2(NULL), levelAdditionally3(NULL), worldInterface(NULL), money(0), bonusMoney(0), liveMax(20), live(0), forseIndexFl(false), getSphere(NULL), buildTowerMenu(NULL), towerMenu(NULL), ultraTowerMenu(NULL), scaleRadius(0.85f), towerRadius(NULL), unitInputBezieCounter(0), cast(NULL), menuObject(NULL), pointer1(NULL), pointer2(NULL), pointer3(NULL), selectObject(NULL), firstMusicPlay(false), secondMusicPlay(false), secondMusicCounter(0), winDefCounter(1), viewBoss(0), viewRockCrash(0), boss(NULL), decoration(NULL), nowLevel(0), saveBox(NULL), exchange(NULL), portalViewCounter(30), trainingClass(NULL), hint(NULL), startMusicVolume(0), bonusMoneyFlag(true), eduOpenUpgrArrowFlag(true), killEnemiesCounter(0), createGolemCounter(0), createIcemanCounter(0), createAirCounter(0), earlyWaveCounter(0), sellFireCounter(0), sellIceCounter(0), sellStoneCounter(0), sellLevinCounter(0), sellGetAllCounter(0), icemanSlowdownEnemiesCounter(0), castFireCounter(0), castIceCounter(0), castStoneCounter(0), castLevinCounter(0), castGetAllCounter(0), golemVoiceTurn(1), icemanVoiceTurn(1), airVoiceTurn(1), mouseX(0), mouseY(0)
 	{
 		menuObject = NULL;
 		pointer1 = NULL;
@@ -87,8 +87,8 @@ namespace engine
 		{
 			if (this->nowLevel < 12 || this->nowLevel == 13)
 			{
-				this->setMouseChildren(false);
-				this->setMouseEnabled(false);
+				//this->setMouseChildren(false);
+				//this->setMouseEnabled(false);
 			}
 		}
 		//this->schedule(schedule_selector(World::enterFrameHandler), 0.033f);
@@ -375,6 +375,29 @@ namespace engine
 		} 
 		return;
 	}// end function
+	void World::removeEventTarget(std::MouseEvent * event,BaseNode* node, string caseName){
+		if (!node)return;
+		int ri = event->getIndex(caseName);
+		if (ri >= 0){
+			Vec2 pos = event->getLocationInView();
+			if (std::hitTest(node, pos, false)){
+				event->remove(ri);
+			}
+		}
+	}
+	bool World::preCheckEventTarget(std::MouseEvent * event){
+		Vec2 pos= event->getLocationInView();
+		if (this->towerMenu){
+			removeEventTarget(event, this->towerMenu, "road");
+			removeEventTarget(event, this->towerMenu, "towerCase");
+		}
+		if (this->getSphere)
+		{
+			removeEventTarget(event, this->getSphere, "sphereCase");
+		}
+		event->reset();
+		return false;
+	};
 
 	//cocos2d::EventMouse* event
 	void World::mouseDownHandler(cocos2d::EventMouse* e)
@@ -386,12 +409,14 @@ namespace engine
 		std::MouseEvent * event = &me;
         if(!event->currentTargets.size())
             event->currentTargets.push(this);
-        while(event->hasNext())
+		if (preCheckEventTarget(event))return;
+		while (event->hasNext())
 		{
 			string targetName = event->target->getName();
 			logInfo("mouseDownHandler.target", getNamePath(event->target));
 			logInfo("mouseDownHandler.target.pos", event->getLocation(),&event->target->getPosition()
 				, &event->target->getParent()->convertToWorldSpace(event->target->getPosition()));
+			logInfo("mouseDownHandler.target。zindex", event->target->getZOrder(),0);
 			if (this->getSphere)
 			{
 				this->getSphere->mouseDownHandler(event);
@@ -524,9 +549,10 @@ namespace engine
 		std::MouseEvent * event = &me;
         if(!event->currentTargets.size())
             event->currentTargets.push(this);
-        while(event->hasNext())
+		if (preCheckEventTarget(event))return;
+		while (event->hasNext())
         {
-			string targetName = event->target->getName();
+ 			string targetName = event->target->getName();
 			logInfo("mouseUpHandler.target", getNamePath(event->target));
             if(this->getSphere)
             {
@@ -588,10 +614,11 @@ namespace engine
 		std::MouseEvent * event = &me;
         if(!event->currentTargets.size())
             event->currentTargets.push(this);
-        //return;
+		if (preCheckEventTarget(event))return;
+		//return;
 		while (event->hasNext())
 		{
-			string targetName = event->target->getName();
+ 			string targetName = event->target->getName();
 			if (this->getSphere)
 			{
 				this->getSphere->mouseMoveHandler(event);
@@ -682,13 +709,16 @@ namespace engine
 							}
 						}
  						Tower *tower = ISTYPE(Tower, parent);
+						this->towerRadius->setVisible(true);
 						this->towerRadius->myTower = tower;
 						this->towerRadius->setWidth (this->towerRadius->myTower->radius * 2);
 						this->towerRadius->setHeight ( this->towerRadius->myTower->radius * 2 * this->scaleRadius);
 						this->towerRadius->setPosition(this->towerRadius->myTower->this_pt);
-                        std::setAnchorPoint(this->towerRadius, 0.5, 0.5);
+
+                        //std::setAnchorPoint(this->towerRadius, tower->getAnchorPoint());
                         //this->towerRadius->x = this->towerRadius->myTower->this_pt.x;
 						//this->towerRadius->y = this->towerRadius->myTower->this_pt.y;
+
 						if (this->towerRadius->myTower->towerType < 5)
 						{
 							if (!this->towerRadius->myTower->container->selectTower->isVisible())
@@ -696,7 +726,7 @@ namespace engine
 								this->towerRadius->myTower->container->selectTower->setVisible(true);
 							}
 						}
-						this->towerRadius->setVisible(true);
+						this->towerRadius->drawRange();
 						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
 					}
 				}
@@ -762,9 +792,10 @@ namespace engine
 		std::MouseEvent * event = &me;
         if(!event->currentTargets.size())
             event->currentTargets.push(this);
-        while(event->hasNext())
+		if (preCheckEventTarget(event))return;
+		while (event->hasNext())
 		{
-			string targetName = event->target->getName();
+ 			string targetName = event->target->getName();
 			if (targetName == "towerCase")
 			{
 				if (!this->exchange)
@@ -820,9 +851,10 @@ namespace engine
 		std::MouseEvent * event = &me;
         if(!event->currentTargets.size())
             event->currentTargets.push(this);
-        while(event->hasNext())
+		if (preCheckEventTarget(event))return;
+		while (event->hasNext())
 		{
-			if (this->exchange)
+ 			if (this->exchange)
 			{
 				this->exchange->rightMouseUpHandler(event);
 			}
@@ -867,8 +899,8 @@ namespace engine
 		}
 		tempObject->myPlace = param2;
 		tempObject->autoBuild = param3;
-		tempObject->init();
 		this->addChild(tempObject);
+		tempObject->init();
 		this->listOfTowers.push(tempObject);
 		//this->listOfTowers.sortOn("y", Array.NUMERIC);
 		return tempObject;
@@ -2073,7 +2105,7 @@ namespace engine
         int len = listOfClasses.size();
         while(i < len)
         {
-            if(listOfClasses[this->i] == this)
+            if(listOfClasses.at(i) == node)
             {
                 listOfClasses.remove(i);
                 break;
@@ -2081,6 +2113,49 @@ namespace engine
             i++;
         }
     };
+	void World::removeIndexes(BaseNode * node)
+	{
+		int i = 0;
+		int len = listOfIndexes1.size();
+		while (i < len)
+		{
+			if (listOfIndexes1[i] == node)
+			{
+				listOfIndexes1.remove(i);
+				break;
+			}
+			i++;
+		}
+		i = 0; len = listOfIndexes2.size();
+		while (i < len)
+		{
+			if (listOfIndexes2[i] == node)
+			{
+				listOfIndexes2.remove(i);
+				break;
+			}
+			i++;
+		}
+		i = 0; len = listOfIndexes3.size();
+		while (i < len)
+		{
+			if (listOfIndexes3[i] == node)
+			{
+				listOfIndexes3.remove(i);
+				break;
+			}
+			i++;
+		}
+	};
+
+	void World::removeChild(Node* child, bool cleanup /* = true */){
+		if (ISTYPE(BaseNode, child))
+		{
+			removeClasses(ISTYPE(BaseNode, child));
+			removeIndexes(ISTYPE(BaseNode, child));
+		}
+		BaseNode::removeChild(child, cleanup);
+	};
 
 }
 

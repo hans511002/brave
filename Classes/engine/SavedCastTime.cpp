@@ -40,7 +40,7 @@ namespace engine
 
        std::setText( this->container->contNoteTXT, Common::String("-" )+ tempObject);
         this->addChild(this->container);
-        //this->world->listOfClasses.push(this);
+        this->world->listOfClasses.push(this);
         if (this->type == "golem")
         {
             this->setPositionX(this->world->worldInterface->container->butCastGolem->getPositionX());
@@ -79,16 +79,16 @@ namespace engine
         {
             this->dead = true;
             this->world->worldInterface->removeChild(this);
-            //this->i = 0;
-            //while (this->i <this->world->listOfClasses.size())
-            //{
-            //	if (this->world->listOfClasses[this->i] == this)
-            //	{
-            //		this->world->listOfClasses.splice(this->i, 1);
-            //		break;
-            //	}
-            //	i++;
-            //}
+            this->i = 0;
+            while (this->i <this->world->listOfClasses.size())
+            {
+            	if (this->world->listOfClasses[this->i] == this)
+            	{
+            		this->world->listOfClasses.splice(this->i, 1);
+            		break;
+            	}
+            	i++;
+            }
         }
     }// end function
 }

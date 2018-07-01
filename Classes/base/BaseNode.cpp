@@ -162,7 +162,9 @@ namespace std
 		cocos2d::Node::init();
 		if (!ISTYPE(MovieClip, this)){
 		}
-		std::setAnchorPoint(this);
+		//logInfo("node:getAnchorPoint", this->getAnchorPoint());
+		//logInfo("node:getAnchorPoint", this->getAnchorPointInPoints());
+		//std::setAnchorPoint(this);
 		this->autorelease();
 		string name=getTypeName();
 		setName(name);
@@ -181,7 +183,7 @@ namespace std
 	bool BaseSprite::init()
 	{
 		this->autorelease();
-		std::setAnchorPoint(this);
+		//std::setAnchorPoint(this);
 		string name=getTypeName();
 		setName(name);
         setNodeType(name);
@@ -327,12 +329,13 @@ namespace std
 			par = par->getParent();
 		}
 		return true;
-	}
-	bool  hitTest(Node * node, const Vec2 &pt)
+	} 
+
+	bool  hitTest(Node * node, const Vec2 &pt, bool mouseEvent /*= true*/)
 	{
 		if (!getNodeVisible(node))return false;
 		if (node->getOpacity() < 2)return false;
-		if (ISTYPE(EventNode, node)){
+		if (mouseEvent && ISTYPE(EventNode, node)){
 			EventNode* enode = ISTYPE(EventNode, node);
 			if (!enode->mouseEnabled)return false;
 		}
@@ -439,14 +442,16 @@ namespace std
 		return this->getContentSize().height;
 	};
 	void BaseSprite::setWidth(float w){
-		Size size = this->getContentSize();
-		size.width = w;
-		this->setContentSize(size);
+		Size size = this->getContentSize(); 
+		this->setScaleX((w/size.width));
+		//size.width = w;
+		//this->setContentSize(size);
 	};
 	void BaseSprite::setHeight(float h){
 		Size size = this->getContentSize();
-		size.height = h;
-		this->setContentSize(size);
+		this->setScaleY((h / size.height));
+		//size.height = h;
+		//this->setContentSize(size);
 	};
 	void BaseSprite::onEnter()
 	{
@@ -459,7 +464,37 @@ namespace std
 		removeEventNode(this);
 		Sprite::onExit();
 	};
+	void BaseNode::addChild(Node *child){
+		Node::addChild(child);
+		if (basePoint.x && basePoint.y)
+			child->setPosition(basePoint);
+	};
+	void BaseNode::addChild(Node * child, int localZOrder){
+		Node::addChild(child, localZOrder);
+		if (basePoint.x && basePoint.y)
+			child->setPosition(basePoint);
+	};
+	  void BaseNode::addChild(Node* child, int localZOrder, int tag){
+		  Node::addChild(child, localZOrder,tag);
+		  if (basePoint.x && basePoint.y)
+			  child->setPosition(basePoint);
+	  };
+	  void BaseNode::addChild(Node* child, int localZOrder, const std::string &name){
+		  Node::addChild(child, localZOrder, name);
+		  if (basePoint.x && basePoint.y)
+			  child->setPosition(basePoint);
+	  };
 
+
+	void BaseNode::setMCRange(MovieClip * mc)
+	{
+		this->setAnchorPoint(Vec2(0.5, 0.5));
+		const dragonBones::Rectangle & aabb = mc->getRectangle();
+		this->setContentSize(Size(aabb.width, aabb.height));
+		mc->setPosition(aabb.width / 2, aabb.height / 2);
+		this->drawRange();
+		basePoint = this->convertToNodeSpace(Vec2(0, 0));
+	}
 	void BaseNode::drawRange()
 	{
 		DrawNode* drawNode = DrawNode::create();
@@ -467,11 +502,35 @@ namespace std
 		Vec2 pos = this->getPosition();
 		Size size = this->getContentSize();
 		Vec2 dest(pos.x + size.width, pos.y + size.height);
-		drawNode->drawRect(pos, dest, Color4F::GREEN);
-		drawNode->setScaleX(this->getScaleX());
-		drawNode->setScaleY(this->getScaleY());
+		drawNode->drawRect(Vec2(0, 0), size, Color4F::GREEN);
+		logInfo(getNamePath(this), this->getPosition(), &this->convertToWorldSpace(this->getPosition()), &(Vec2)this->getContentSize());
+		//drawNode->setScaleX(this->getScaleX());
+		//drawNode->setScaleY(this->getScaleY());
+ 	};
+	void BaseSprite::drawRange()
+	{
+		DrawNode* drawNode = DrawNode::create();
+		this->addChild(drawNode);
+		Vec2 pos = this->getPosition();
+		Size size = this->getContentSize();
+		Vec2 dest(pos.x + size.width, pos.y + size.height);
+		drawNode->drawRect(Vec2(0, 0), size, Color4F::YELLOW);
+		//drawNode->setScaleX(this->getScaleX());
+		//drawNode->setScaleY(this->getScaleY());
+		logInfo(getNamePath(this), this->getPosition(), &this->convertToWorldSpace(this->getPosition()),&(Vec2)this->getContentSize());
 	};
-
+	void BaseLayer::drawRange()
+	{
+		DrawNode* drawNode = DrawNode::create();
+		this->addChild(drawNode);
+		Vec2 pos = this->getPosition();
+		Size size = this->getContentSize();
+		Vec2 dest(pos.x + size.width, pos.y + size.height);
+		drawNode->drawRect(Vec2(0, 0), size, Color4F::YELLOW);
+		logInfo(getNamePath(this), this->getPosition(), &this->convertToWorldSpace(this->getPosition()), &(Vec2)this->getContentSize());
+		//drawNode->setScaleX(this->getScaleX());
+		//drawNode->setScaleY(this->getScaleY());
+	};
     MouseEvent::MouseEvent(MouseEventType mouseEventCode) : cocos2d::EventMouse(mouseEventCode), idx(0), target(NULL), processed(false), enode(NULL)
 	{
 	};
@@ -542,7 +601,7 @@ namespace std
 		cocos2d::EventMouse::setCurrentTarget(target);
 		this->target = target;
         enode=ISTYPE(EventNode, this->target);
-	};
+	}; 
 	bool MouseEvent::hasNext(){
 		if (currentTargets.size() > idx){
 			setCurrentTarget(currentTargets.at(idx));
@@ -552,19 +611,35 @@ namespace std
 		}
 		return false;
 	};
+	int MouseEvent::getIndex(string name){
+		int len=currentTargets.size();
+		for (int i = 0; i < len; i++)
+		{
+			if (currentTargets.at(i)->getName() == name)
+				return i;
+		}
+		return -1;
+	};
+	void MouseEvent::remove(int i){
+		if (currentTargets.size() > i)
+			currentTargets.remove(i);
+	};
+
 
 	std::MouseEvent buildMouseEvent(EventMouse * e)
 	{
 		std::MouseEvent  me(e);
 		//Node * n = e->getCurrentTarget();
 		int l = EventNodes.size();
-        for(int i = 0; i < l; i++)
+		Vec2 ep = e->getLocationInView();
+        for(int i = l-1; i >=0; i--)
         {
             EventNode * _node = EventNodes.at(i);
             Node *node = ISTYPE(Node, _node);
             //if (n == node)continue;
             if(!node)continue;
-            if(std::hitTest(node, e))
+			if (!node->isVisible()) continue;
+			if (std::hitTest(node, ep))
                 me.currentTargets.push(node);
         }
 		return me;

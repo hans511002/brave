@@ -69,10 +69,10 @@ namespace engine
         towers::TowerRadius_mc* towerRadius;// : MovieClip;
         Common::Array<int> unitInputBezieArr; //public var unitInputBezieArr : Array;
         int unitInputBezieCounter;// : int = 0;
-        //public var listOfIndexes0 : Array;
-        //public var listOfIndexes1 : Array;
-        //public var listOfIndexes2 : Array;
-        //public var listOfIndexes3 : Array;
+		Common::Array<BaseNode *> listOfIndexes0 ;
+		Common::Array<BaseNode *> listOfIndexes1 ;
+		Common::Array<BaseNode *> listOfIndexes2 ;
+		Common::Array<BaseNode *> listOfIndexes3 ;
         casts::Cast* cast;
         casts::Map map; //public var map : Map;
         BaseNode * menuObject;//public var menuObject : Object;//՝�� �ˠѧϰ
@@ -136,6 +136,8 @@ namespace engine
         
         virtual void enterFrameHandler(float dt);//void  enterFrameHandler();  // event : Event
     
+		virtual void removeEventTarget(std::MouseEvent * event, BaseNode* node, string caseName);
+		virtual bool preCheckEventTarget(std::MouseEvent * event);
 		virtual   void mouseDownHandler(cocos2d::EventMouse* event);
 		virtual   void mouseUpHandler(cocos2d::EventMouse* event);
 		virtual   void mouseMoveHandler(cocos2d::EventMouse* event);
@@ -159,6 +161,9 @@ namespace engine
 
 		virtual void achieveManage(string param1);
 
+		virtual void removeChild(Node* child, bool cleanup  = true );
+
+		virtual void removeIndexes(BaseNode * node);
 		virtual void removeClasses(BaseNode * node);
 		virtual void reInit(cocos2d::EventMouse*event);//event:Event 
 

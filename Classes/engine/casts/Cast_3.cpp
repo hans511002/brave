@@ -235,7 +235,7 @@ namespace engine{
                                 {
                                     break;
                                 }
-                                i++;
+                                i--;
                             }
                             if (tempObject1 < tempObject2)
                             {

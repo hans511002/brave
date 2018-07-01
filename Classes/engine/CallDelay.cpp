@@ -5,7 +5,8 @@
 
 namespace engine
 {
-    CallDelay::CallDelay(string param1,int param2)
+     
+     CallDelay::CallDelay(string param1,int param2)£ºdead(0),counter(0)
     {
         this->world = Main::mainClass->worldClass;
         this->type = param1;
@@ -14,7 +15,7 @@ namespace engine
         {
             this->counter = 60;
         }
-        //this->world.listOfClasses.push(this);
+        this->world.listOfClasses.push(this);
         return;
     }// end function
 
@@ -54,16 +55,16 @@ namespace engine
         if (!this->dead)
         {
             this->dead = true;
-            //this->i = 0;
-            //while (this->i < this->world.listOfClasses.length)
-            //{
-            //    if (this->world.listOfClasses[this->i] == this)
-            //    {
-            //        this->world.listOfClasses.splice(this->i, 1);
-            //        break;
-            //    }
-            //    i++;
-            //}
+            this->i = 0;
+            while (this->i < this->world.listOfClasses.length)
+            {
+                if (this->world.listOfClasses[this->i] == this)
+                {
+                    this->world.listOfClasses.splice(this->i, 1);
+                    break;
+                }
+                i++;
+            }
         }
         return;
     }// end function

@@ -112,7 +112,7 @@ namespace engine
 			//      this->y = this->y - 200;
 			this->setMouseChildren(false);
 			this->setMouseEnabled(false);
-			//      this->world->listOfClasses.push (this);
+			this->world->listOfClasses.push (this);
 			//      this->world->listOfIndexes1.push (this);
 			this->world->worldInterface->barInfoManage(this);
 			this->world->createAirCounter++;
@@ -451,16 +451,8 @@ namespace engine
 			{
 				this->dead = true;
 				this->world->removeChild(this);
-				//	  this->i = 0;
-				//	  while (this->i < this->world->listOfClasses.length)
-				//	    {
-				//	      if (this->world->listOfClasses[this->i] == this)
-				//		{
-				//		  this->world->listOfClasses.splice (this->i, 1);
-				//		  break;
-				//		}
-				//	      i++;
-				//	    }
+				this->world->removeClasses(this);
+				 
 				//	  this->i = 0;
 				//	  while (this->i < this->world->listOfIndexes1.length)
 				//	    {

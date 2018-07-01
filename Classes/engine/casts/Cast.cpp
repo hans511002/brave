@@ -194,16 +194,7 @@ namespace engine
 			{
 				this->dead = true;
 				this->world->worldInterface->castRegime("off");
-				//this->i = 0;
-				//while (this->i < this->world->listOfClasses.length)
-				//{
-				//    if (this->world->listOfClasses[this->i] == this)
-				//    {
-				//        this->world->listOfClasses.splice(this->i, 1);
-				//        break;
-				//    }
-				//   i++;
-				//}
+				this->world->removeClasses(this);
 				this->world->removeChild(this->world->cast);
 				this->world->cast = NULL;
 				this->world->worldInterface->autoguidersButtons();

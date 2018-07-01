@@ -143,8 +143,10 @@ namespace engine{
                     this->world->worldInterface->updateInfo();
                     Main::mainClass->readXMLClass.costTowerXML = Main::mainClass->readXMLClass.costTowerXML + Main::mainClass->readXMLClass.costTowerPlusXML;
                     this->tempObject = this->world->addTower("tower1", this->myPlace);
-                    this->kill();
                     this->world->buildTowerMenu = NULL;
+					this->myPlace->setVisible(false);
+                    this->kill();
+					//this->myPlace->setMouseEnabled(false);
                 }
             }
             return;
@@ -197,6 +199,7 @@ namespace engine{
                 this->dead = true;
                 this->world->removeClasses(this);
                 this->world->removeChild(this);
+				//this->container = NULL;
             }
             return;
         }// end function

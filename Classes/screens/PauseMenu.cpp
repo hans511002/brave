@@ -341,18 +341,18 @@ namespace screens
                 this->container->scroll->btnExit->arrow->setVisible(false);
             }
         }
-        //this->i = 0;
-        //while (this->i < this->world->listOfClasses.size())
-        //{ 
-        //    if (this->world->listOfClasses[this->i] is Indexes)
-        //    {
-        //        if (this->world->listOfClasses[this->i]->type == "golemDeath" || this->world->listOfClasses[this->i]->type == "icemanDeath" || this->world->listOfClasses[this->i]->type == "airDeath")
-        //        {
-        //            this->world->listOfClasses[this->i]->update();
-        //        }
-        //    }
-        //    i++;
-        //}
+        this->i = 0;
+        while (this->i < this->world->listOfClasses.size())
+        { 
+            if (this->world->listOfClasses[this->i] is Indexes)
+            {
+                if (this->world->listOfClasses[this->i]->type == "golemDeath" || this->world->listOfClasses[this->i]->type == "icemanDeath" || this->world->listOfClasses[this->i]->type == "airDeath")
+                {
+                    this->world->listOfClasses[this->i]->update();
+                }
+            }
+            i++;
+        }
         return;
     }// end function
 

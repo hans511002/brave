@@ -16,7 +16,7 @@ namespace engine
 	class ShootBase;
 	struct CastMask_mc;
 	struct MouseStatusMC;
-
+	struct MovieClip;
 
 
 	namespace  towers

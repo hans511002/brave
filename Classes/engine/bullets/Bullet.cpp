@@ -131,7 +131,7 @@ namespace engine{
         
         Bullet::Bullet() :dead(false), world(NULL), container(NULL), enemyTarget(NULL), damage(0), bulletType(0), whoShoot(NULL)
             , liveCounter(0), liveTimer(0), distanceX(0), distanceY(0), spherePower(0), mainCounter(0), changeIndex(0), radius(0)
-			, testTarget(NULL), testTower(NULL), greenFlag(false), effectFlag(false)
+			,   testTower(NULL), greenFlag(false), effectFlag(false)
         {
             //this->addEventListener(Event.ADDED_TO_STAGE, this->init);
 			SET_NODETYPENAME();

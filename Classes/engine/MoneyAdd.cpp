@@ -20,7 +20,7 @@ namespace engine
 		this->addChild(this->container);
 		this->setMouseChildren(false);
 		this->setMouseEnabled(false);
-		//this->world->listOfClasses.push(this);
+		this->world->listOfClasses.push(this);
 		//this->world->listOfIndexes3.push(this);
 		 
 		return true;
@@ -57,16 +57,16 @@ namespace engine
             //    i++;
             //}
             //this->i = 0;
-            //while (this->i < this->world->listOfClasses.size())
-            //{
-            //    
-            //    if (this->world->listOfClasses[this->i] == this)
-            //    {
-            //        this->world->listOfClasses.splice(this->i, 1);
-            //        break;
-            //    }
-            //    i++;
-            //}
+            while (this->i < this->world->listOfClasses.size())
+            {
+                
+                if (this->world->listOfClasses[this->i] == this)
+                {
+                    this->world->listOfClasses.splice(this->i, 1);
+                    break;
+                }
+                i++;
+            }
             this->world->removeChild(this);
         }
         return;

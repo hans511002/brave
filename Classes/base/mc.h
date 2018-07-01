@@ -149,11 +149,15 @@ namespace engine
         virtual void gotoAndStop(int cf, const string &  aniName = "");
 
         virtual void update(float dt = 0);
-
+		virtual const dragonBones::Rectangle & getRectangle();
+		virtual  void drawRange();
 	};
 	
 	struct MovieClipSub :public virtual MC, MovieClipSubBase, public   EventNode
 	{
+		cocos2d::Mat4 transform;
+		bool setTrans;
+
 		string name;
 		void * userData;
         dragonBones::Armature* arm;

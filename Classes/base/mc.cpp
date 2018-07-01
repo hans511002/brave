@@ -88,10 +88,10 @@ namespace engine
 	 {
 		for (int i = 0; i < this->submcbs.size(); i++)
 		 {
-			Node *node = ISTYPE(Node, this->submcbs[i]);
-			 if(node && slotName == node->getName())
+			MovieClipSubBase *_node = ISTYPE(MovieClipSubBase, this->submcbs[i]);
+			if (_node && slotName == _node->slotName)
 			 { 
-				  return node;
+				return ISTYPE(Node, this->submcbs[i]);
 			 }
 		 }
 		 return NULL;
@@ -395,8 +395,8 @@ namespace engine
 		addEventNode(this);
     };
 	void MCCase::setVisible(bool v){
-		BaseNode::setVisible(v);
 		MovieClipSubBase::setVisible(v);
+		BaseNode::setVisible(v);
 	};
     bool MCCase::reinit()
     {
@@ -454,8 +454,8 @@ namespace engine
 		mc->addMCbs(this);
 	};
 	void MCSprite::setVisible(bool v){
-		BaseSprite::setVisible(v);
 		MovieClipSubBase::setVisible(v);
+		BaseSprite::setVisible(v);
 	};
 	bool MCSprite::reinit()
 	{
@@ -644,7 +644,6 @@ namespace engine
 		totalFrames = this->getArmature()->_armatureData->animations[defAniName]->frameCount+ 1;//;
 		float duration = this->getArmature()->_armatureData->animations[defAniName]->duration;
 		CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
-		BaseNode::init();
 		addChild(container);
         this->gotoAndStop(1);
 		//std::setAnchorPoint(display, true);
@@ -652,6 +651,8 @@ namespace engine
 		//this->autorelease(); in BaseNode::init();
 		this->setName(armName);
 		this->isReady = true;
+		init();
+	
 		return true;
 	};
     MovieClip::MovieClip(const string &  armName, const string &  dbName, BaseNode *node) :container(0), world(0), myFrame(0), speedX(0), speedY(0)
@@ -771,8 +772,37 @@ namespace engine
 	}
 	bool MovieClip::init()
 	{
-		return BaseNode::init();
+		  BaseNode::init();
+		  Size size = this->container->getContentSize();
+		  const dragonBones::Rectangle & aabb = this->getArmature()->getArmatureData()->aabb;
+		  if (size.width = 0 || size.height == 0){
+			  this->setContentSize(Size(aabb.width, aabb.height));
+  		  }
+		  //this->container->setPosition(Vec2(aabb.x, aabb.y));
+		  return true;
 	}
+	void MovieClip::drawRange(){
+		const dragonBones::Rectangle & aabb = this->getArmature()->getArmatureData()->aabb;
+		DrawNode* drawNode = DrawNode::create();
+		this->addChild(drawNode);
+		Vec2 ap = this->getAnchorPoint();
+		//Vec2 st = this->convertToWorldSpace(Vec2(aabb.x, aabb.y));
+		//st = this->convertToNodeSpaceAR(st);
+		//Vec2 et = this->convertToWorldSpace(Vec2(aabb.x + aabb.width, aabb.y + aabb.height));
+		//et = this->convertToNodeSpaceAR(et);
+		//drawNode->drawRect(st, et, Color4F::RED);
+		Vec2 st = Vec2(0 - aabb.width / 2, 0 - aabb.height / 2);
+		Vec2 et = Vec2(aabb.width / 2, aabb.height / 2);
+		drawNode->drawRect(st, et, Color4F::RED);
+		//if (ap.x > 0 && ap.y>0){
+		//}else
+		//drawNode->drawRect(Vec2(aabb.x, aabb.y), Vec2(aabb.x + aabb.width, aabb.y + aabb.height), Color4F::RED);
+
+
+	};
+	const dragonBones::Rectangle & MovieClip::getRectangle(){
+		return this->getArmature()->getArmatureData()->aabb;
+	};
 	dragonBones::Animation *MovieClip::getAnimation()
 	{
  		if(container)
@@ -857,7 +887,7 @@ namespace engine
 	};
 
 
-     MovieClipSub::MovieClipSub(MC *_mc, dragonBones::Slot * _slot, const string &  defAniName) :arm(0), userData(0)
+	 MovieClipSub::MovieClipSub(MC *_mc, dragonBones::Slot * _slot, const string &  defAniName) :arm(0), userData(0), setTrans(0)
 	{
 		setNodeType("MovieClipSub");
 		this->mc = _mc;
@@ -869,7 +899,7 @@ namespace engine
 		reinit();
 		addMcs(mc, this);
 	};
-     MovieClipSub::MovieClipSub(MC *mc, const string &  slotName, const string &  defAniName) :arm(0), userData(0)
+	 MovieClipSub::MovieClipSub(MC *mc, const string &  slotName, const string &  defAniName) :arm(0), userData(0), setTrans(0)
 	{
 		setNodeType("MovieClipSub");
 		this->mc = mc;
@@ -904,7 +934,10 @@ namespace engine
 				this->display->setVisible(this->visible);
 				this->container = NULL;
 				if (ISTYPE(CCArmatureDisplay, display))
+				{
 					this->container = ISTYPE(CCArmatureDisplay, display);
+					this->transform=this->container->getNodeToWorldTransform();
+				}
 				isReady = true;
 				//disPos = getDisPosition();
 				//disPos=this->display->getParent()->convertToNodeSpaceAR(disPos);
@@ -939,16 +972,23 @@ namespace engine
 	}
 	void MovieClipSub::setVisible(bool v)
 	{
-		MovieClipSubBase::setVisible(v);
-		if (this->container)
+		if(this->visible!=v)
+			MovieClipSubBase::setVisible(v);
+		if (this->container && this->container->isVisible() != v)
 		{
+			cocos2d::Mat4 _transform = this->container->getNodeToWorldTransform();
 			if (!this->container->isRunning()){
-				const cocos2d::Mat4 _transform = this->container->getNodeToWorldTransform();
 				this->container->setVisible(v);
 				this->container->setNodeToParentTransform(_transform);
 			}
 			else{
-				this->container->setVisible(v);
+ 				this->container->setVisible(v);
+				if (v && !setTrans){// && _transform.m[12] != transform.m[12] && _transform.m[13] != transform.m[13]
+					//_transform.m[12] += transform.m[12];
+					//_transform.m[13] += transform.m[13];
+					this->container->setNodeToParentTransform(transform);
+					setTrans = true;
+				}
 			}
 		}
 	};

@@ -6,7 +6,7 @@
 namespace engine{
 
 
-	CastSphere::CastSphere() :fireCount(0), iceCount(0), stoneCount(0), levinCount(0), getAllCount(0)
+	CastSphere::CastSphere() :container(NULL), fireCount(0), iceCount(0), stoneCount(0), levinCount(0), getAllCount(0), world(NULL), radius(0), additAnamation(NULL), dead(0), liveCounter(0)
 	{
 		//this->getAllForm = [false, false, false, false];
 		this->getAllForm[0] = false;
@@ -14,6 +14,7 @@ namespace engine{
 		this->getAllForm[2] = false;
 		this->getAllForm[3] = false;
 		//this->addEventListener(Event.ADDED_TO_STAGE, this->init);
+		init();
 		return;
 	}// end function
 
@@ -381,7 +382,7 @@ namespace engine{
 		}
 		this->container->stop();
 		this->addChild(this->container);
-		//this->world->listOfClasses.push(this);
+		this->world->listOfClasses.push(this);
 		//this->world->listOfIndexes2.push(this);
 		this->world->forseIndexFl = true;
 		return true;
@@ -1253,17 +1254,17 @@ namespace engine{
 		if (!this->dead)
 		{
 			this->dead = true;
-			//this->i = 0;
-			//while (this->i < this->world->listOfClasses.length)
-			//{ 
-			//    if (this->world->listOfClasses[this->i] == this)
-			//    {
-			//        this->world->removeChild(this->world->listOfClasses[this->i]);
-			//        this->world->listOfClasses.splice(this->i, 1);
-			//        break;
-			//    }
-			//    i++;
-			//}
+			this->i = 0;
+			while (this->i < this->world->listOfClasses.size())
+			{ 
+			    if (this->world->listOfClasses[this->i] == this)
+			    {
+			        this->world->removeChild(this->world->listOfClasses[this->i]);
+			        this->world->listOfClasses.splice(this->i, 1);
+			        break;
+			    }
+			    i++;
+			}
 			//this->i = 0;
 			//while (this->i < this->world->listOfIndexes2.length)
 			//{

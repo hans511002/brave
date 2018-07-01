@@ -28,6 +28,10 @@ namespace engine
 			{
 				this->world->towerRadius->setVisible(false);
 			}
+			this->container = new TowerMenu_mc();
+			this->addChild(this->container);
+			this->world->listOfClasses.push(this);
+
 			if (this->myTower->towerType < 5)
 			{
 				Tower1_mc * container = ISTYPE(Tower1_mc, this->myTower->container);
@@ -40,33 +44,33 @@ namespace engine
 			//this->x = this->myTower->this_pt.x;
 			//this->y = this->myTower->this_pt.y;
 			this->towerRadius = new TowerRadius_mc();
+			this->world->addChild(this->towerRadius);
 			//this->towerRadius->stop();
 			this->towerRadius->setContentSize(Size(this->myTower->radius * 2, this->myTower->radius * 2 * this->world->scaleRadius));
 			//this->towerRadius->width = this->myTower->radius * 2;
 			//this->towerRadius->height = this->myTower->radius * 2 * this->world->scaleRadius;
 			//this->towerRadius->x = this->x;
 			//this->towerRadius->y = this->y;
-            Vec2 pos = this->getPosition();
-            this->towerRadius->setPosition(pos);
-            std::setAnchorPoint(this->towerRadius, 0.5, 0.5);
+            //Vec2 pos = this->getPosition();
+            //this->towerRadius->setPosition(pos);
+            //std::setAnchorPoint(this->towerRadius, 0.5, 0.5);
 
 			//this->towerRadius->setMouseChildren(false);
 			//this->towerRadius->setMouseEnabled(false);
-			this->world->addChild(this->towerRadius);
 			this->towerRadius1 = new TowerRadius_mc();
+            this->world->addChild(this->towerRadius1);
 			//this->towerRadius1->stop();
 			this->towerRadius1->setContentSize(Size(this->myTower->radius * 2, this->myTower->radius * 2 * this->world->scaleRadius));
 			//this->towerRadius1->width = this->myTower->radius * 2;
 			//this->towerRadius1->height = this->myTower->radius * 2 * this->world->scaleRadius;
-            this->towerRadius1->setPosition(pos);
+            //this->towerRadius1->setPosition(pos);
 			//this->towerRadius1->x = this->x;
 			//this->towerRadius1->y = this->y; 
 			//this->towerRadius1->setMouseChildren(false);
 			//this->towerRadius1->setMouseEnabled(false);
 			this->towerRadius1->setVisible(false);
-            std::setAnchorPoint(this->towerRadius1, 0.5, 0.5);
-            this->world->addChild(this->towerRadius1);
-			this->container = new TowerMenu_mc();
+            //std::setAnchorPoint(this->towerRadius1, 0.5, 0.5);
+
 			this->container->stop();
 			this->container->btnUpgradeMenu->stop();
 			this->container->btnGetAll->stop();
@@ -84,8 +88,7 @@ namespace engine
 			this->container->sphereSlot4SphereAnimaCont->stop();
 			this->container->cont1->stop();
 			this->container->cont2->stop();
-			this->addChild(this->container);
-			//this->world->listOfClasses.push(this);
+		
 			if (this->myTower->spheresStack.size() > 0)
 			{
 				this->container->btnGetAllBtnGetAllCase->setMouseEnabled(true);
@@ -163,6 +166,15 @@ namespace engine
 			this->upgradeManage();
 			this->spheresMonitor();
 			this->world->worldInterface->updateInfo();
+
+			this->setMCRange(this->container);
+			//this->setAnchorPoint(Vec2(0.5, 0.5));
+			//const dragonBones::Rectangle & aabb = this->container->getRectangle();
+			//this->setContentSize(Size(aabb.width, aabb.height));
+			////this->container->setPosition(aabb.x, aabb.y );
+			//this->container->setPosition(aabb.width / 2, aabb.height / 2);
+			//this->drawRange(); 
+
 			return true;
 		}// end function
 		void TowerMenu::update(float dt)
@@ -2076,7 +2088,7 @@ namespace engine
 
 		void TowerMenu::spheresMonitor()
 		{
-			this->container->sphereSlot1SphereSlotCase->setMouseEnabled(false);
+			//this->container->sphereSlot1SphereSlotCase->setMouseEnabled(false);
 			this->container->sphereSlot2SphereSlotCase->setMouseEnabled(false);
 			this->container->sphereSlot3SphereSlotCase->setMouseEnabled(false);
 			this->container->sphereSlot4SphereSlotCase->setMouseEnabled(false);
@@ -2833,7 +2845,7 @@ namespace engine
 			    this->hint->setPositionX(tempObject.x);
 			    this->hint->setPositionY(tempObject.y - 12);
 			}
-			tempObject = NULL;
+			//tempObject = NULL;
 			return;
 		}// end function
 
@@ -3703,7 +3715,7 @@ namespace engine
 				}
 				if (!param1)
 				{
-					this->world->listOfClasses.push(this);
+					this->world->listOfIndexes3.push(this);
 				}
 				else
 				{
@@ -3724,16 +3736,8 @@ namespace engine
 				this->world->removeChild(this->towerRadius1);
 				this->towerRadius1 = NULL;
 				this->world->removeChild(this);
-				this->i = 0;
-				while (this->i < this->world->listOfClasses.size())
-				{
-				    if (this->world->listOfClasses[this->i] == this)
-				    {
-				        this->world->listOfClasses.splice(this->i, 1);
-				        break;
-				    }
-				    i++;
-				}
+				this->world->removeClasses(this);
+				 
 				//this->i = 0;
 				//while (this->i < this->world->listOfIndexes3.size())
 				//{

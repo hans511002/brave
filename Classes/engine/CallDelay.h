@@ -8,7 +8,7 @@ namespace engine
 {
  
 	
-    class CallDelay :public Object
+    class CallDelay :public BaseNode
     {
     public:
         int i;

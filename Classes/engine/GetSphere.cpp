@@ -22,6 +22,17 @@ namespace engine
 		sphere4 = this->createMovieClipSub("sphere4");
 		sphere4Cont = sphere4->createMovieClipSub("cont");
 	};
+	void GetSphere_mc::onEnter()
+	{
+		MovieClip::onEnter();
+		//this->sphere1->setVisible(false);
+		//this->sphere2->setVisible(false);
+		//this->sphere3->setVisible(false);
+		//this->sphere4->setVisible(false);
+	};
+
+
+
 	GetSphere::GetSphere(string param1) :container(NULL), radius(NULL), counter(0), owner(NULL), myRadius(0), myDamage(0), fireCount(0), iceCount(0), stoneCount(0), levinCount(0), getAllCount(0), world(NULL), dead(0), speedFrame(0), speedY(0), arrow(NULL), towerArrow(NULL), containerChange(NULL)
 	{
 		//this->listOfStack = [];
@@ -36,7 +47,7 @@ namespace engine
 		//this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
 		//this->addEventListener(Event.REMOVED_FROM_STAGE, this->reInit);
 		this->world = Main::mainClass->worldClass;
-		if (this->type == "holder")
+ 		if (this->type == "holder")
 		{
 			GetSphere_mc * container = new GetSphere_mc();
 			this->container = container;
@@ -50,8 +61,8 @@ namespace engine
 			container->sphere2Cont->stop();
 			container->sphere3Cont->stop();
 			container->sphere4Cont->stop();
-
-			//container->sphere1->setVisible(false);
+			container->gotoAndStop(1);
+			container->sphere1->setVisible(false);
 			container->sphere2->setVisible(false);
 			container->sphere3->setVisible(false);
 			container->sphere4->setVisible(false);
@@ -60,18 +71,20 @@ namespace engine
 		{
 			GetAll_mc * container = new GetAll_mc();
 			this->container = container;
-			container->stop();
+ 			container->stop();
 			//container->cross->stop();
 			container->cross->setVisible(false);
 		}
 		this->addChild(this->container);
+		this->setMCRange(this->container);
+
 		this->world->worldInterface->castRegime("on");
 		this->arrow = new Arrow_mc();
 		this->arrow->stop();
 		this->arrow->setScaleY(-1);
+		this->addChild(this->arrow);
 		this->arrow->setPositionY(this->arrow->getPositionY() + 30);
 		this->arrow->setVisible(false);
-		this->addChild(this->arrow);
 		if (this->world->towerMenu)
 		{
 			if (this->world->towerMenu->container->btnUpgradeMenu)
@@ -120,8 +133,14 @@ namespace engine
 		this->setPosition(this->world->mouseX, this->world->mouseY);
 		this->setMouseChildren(false);
 		this->setMouseEnabled(false);
+
 		return true;
 	}// end function
+	//void GetSphere::addChild(Node *child){
+	//	Node::addChild(child);
+	//	child->setPosition(this->convertToNodeSpace(Vec2(0, 0)));
+	//};
+
 	void  GetSphere::update(float dt)
 	{
 		if (this->type == "holder")
@@ -692,7 +711,7 @@ namespace engine
 		if (!event)
 			return;
         string targetName = event->target->getName();
-		//if (targetName == "World")return;
+		if (targetName == "sphereCase")return;
         if(targetName == "sellCase")
 		{
 			this->world->worldInterface->container->sell->gotoAndStop(1);
@@ -1044,28 +1063,28 @@ namespace engine
 					{
 						if (this->listOfStack.size() == 1)
 						{
+							container->sphere1->setVisible(true);
 							container->sphere1->gotoAndStop(1);
 							container->sphere1Cont->stop();
-							container->sphere1->setVisible(true);
 							logInfo("container->sphere1",container->sphere1->getScale());
 						}
 						else if (this->listOfStack.size() == 2)
 						{
+							container->sphere2->setVisible(true);
 							container->sphere2->gotoAndStop(1);
 							container->sphere2Cont->stop();
-							container->sphere2->setVisible(true);
 						}
 						else if (this->listOfStack.size() == 3)
 						{
+							container->sphere3->setVisible(true);
 							container->sphere3->gotoAndStop(1);
 							container->sphere3Cont->stop();
-							container->sphere3->setVisible(true);
 						}
 						else if (this->listOfStack.size() == 4)
 						{
+							container->sphere4->setVisible(true);
 							container->sphere4->gotoAndStop(1);
 							container->sphere4Cont->stop();
-							container->sphere4->setVisible(true);
 						}
 						this->fireCount ++;
 					}
@@ -1073,27 +1092,27 @@ namespace engine
 					{
 						if (this->listOfStack.size() == 1)
 						{
+							container->sphere1->setVisible(true);
 							container->sphere1->gotoAndStop(2);
 							container->sphere1Cont->stop();
-							container->sphere1->setVisible(true);
 						}
 						else if (this->listOfStack.size() == 2)
 						{
+							container->sphere2->setVisible(true);
 							container->sphere2->gotoAndStop(2);
 							container->sphere2Cont->stop();
-							container->sphere2->setVisible(true);
 						}
 						else if (this->listOfStack.size() == 3)
 						{
+							container->sphere3->setVisible(true);
 							container->sphere3->gotoAndStop(2);
 							container->sphere3Cont->stop();
-							container->sphere3->setVisible(true);
 						}
 						else if (this->listOfStack.size() == 4)
 						{
+							container->sphere4->setVisible(true);
 							container->sphere4->gotoAndStop(2);
 							container->sphere4Cont->stop();
-							container->sphere4->setVisible(true);
 						}
 						this->iceCount ++;
 					}
@@ -1101,27 +1120,27 @@ namespace engine
 					{
 						if (this->listOfStack.size() == 1)
 						{
+							container->sphere1->setVisible(true);
 							container->sphere1->gotoAndStop(3);
 							container->sphere1Cont->stop();
-							container->sphere1->setVisible(true);
 						}
 						else if (this->listOfStack.size() == 2)
 						{
+							container->sphere2->setVisible(true);
 							container->sphere2->gotoAndStop(3);
 							container->sphere2Cont->stop();
-							container->sphere2->setVisible(true);
 						}
 						else if (this->listOfStack.size() == 3)
 						{
+							container->sphere3->setVisible(true);
 							container->sphere3->gotoAndStop(3);
 							container->sphere3Cont->stop();
-							container->sphere3->setVisible(true);
 						}
 						else if (this->listOfStack.size() == 4)
 						{
+							container->sphere4->setVisible(true);
 							container->sphere4->gotoAndStop(3);
 							container->sphere4Cont->stop();
-							container->sphere4->setVisible(true);
 						}
 						this->stoneCount++;
 					}
@@ -1129,27 +1148,27 @@ namespace engine
 					{
 						if (this->listOfStack.size() == 1)
 						{
+							container->sphere1->setVisible(true);
 							container->sphere1->gotoAndStop(4);
 							container->sphere1Cont->stop();
-							container->sphere1->setVisible(true);
 						}
 						else if (this->listOfStack.size() == 2)
 						{
+							container->sphere2->setVisible(true);
 							container->sphere2->gotoAndStop(4);
 							container->sphere2Cont->stop();
-							container->sphere2->setVisible(true);
 						}
 						else if (this->listOfStack.size() == 3)
 						{
+							container->sphere3->setVisible(true);
 							container->sphere3->gotoAndStop(4);
 							container->sphere3Cont->stop();
-							container->sphere3->setVisible(true);
 						}
 						else if (this->listOfStack.size() == 4)
 						{
+							container->sphere4->setVisible(true);
 							container->sphere4->gotoAndStop(4);
 							container->sphere4Cont->stop();
-							container->sphere4->setVisible(true);
 						}
 						this->levinCount++;
 					}
@@ -1164,6 +1183,7 @@ namespace engine
 						this->containerChange = this->container;
 						this->listOfStack.clear();// = [];
 						this->container = new GetAll_mc();
+						this->addChild(this->container);
 						GetAll_mc *container = ISTYPE(GetAll_mc, this->container);
 						container->stop();
 						//container->cross->stop();
@@ -1171,7 +1191,6 @@ namespace engine
 						//container->numTXT.text = this->getAllCount;
 						container->cross->setVisible(false);
 						container->setAlpha(0);
-						this->addChild(this->container);
 					}
 				}
 			}
@@ -1194,6 +1213,7 @@ namespace engine
 				if (!this->radius)
 				{
 					this->radius = new RadiusFire_mc();
+					this->addChild(this->radius, 0);
 					this->radius->gotoAndStop(2);
 					this->arrow->setAlpha(1);
 					this->radius->cont->stop();
@@ -1201,7 +1221,6 @@ namespace engine
 					this->radius->setWidth(Main::mainClass->readXMLClass.listOfMoveFireXML[0] * 2);
 					this->radius->setVisible(false);
 					this->arrow->setVisible(false);
-					this->addChild(this->radius, 0);
 				}
 				this->myRadius = Main::mainClass->readXMLClass.listOfMoveFireXML[0];
 				this->myDamage = Main::mainClass->readXMLClass.listOfMoveFireXML[this->fireCount];
@@ -1216,6 +1235,7 @@ namespace engine
 				if (!this->radius)
 				{
 					this->radius = new RadiusIce_mc();
+					this->addChild(this->radius, 0);
 					this->radius->gotoAndStop(2);
 					this->arrow->setAlpha(1);
 					this->radius->cont->stop();
@@ -1223,7 +1243,6 @@ namespace engine
 					this->radius->setWidth(Main::mainClass->readXMLClass.listOfMoveIceXML[0] * 2);
 					this->radius->setVisible(false);
 					this->arrow->setVisible(false);
-					this->addChild(this->radius, 0);
 				}
 				this->myRadius = Main::mainClass->readXMLClass.listOfMoveIceXML[0];
 				this->myDamage = Main::mainClass->readXMLClass.listOfMoveIceXML[this->iceCount];
@@ -1238,6 +1257,7 @@ namespace engine
 				if (!this->radius)
 				{
 					this->radius = new RadiusStone_mc();
+					this->addChild(this->radius, 0);
 					this->radius->gotoAndStop(2);
 					this->arrow->setAlpha(1);
 					this->radius->cont->stop();
@@ -1245,7 +1265,6 @@ namespace engine
 					this->radius->setWidth(Main::mainClass->readXMLClass.listOfMoveStoneXML[0] * 2);
 					this->radius->setVisible(false);
 					this->arrow->setVisible(false);
-					this->addChild(this->radius, 0);
 				}
 				this->myRadius = Main::mainClass->readXMLClass.listOfMoveStoneXML[0];
 				this->myDamage = Main::mainClass->readXMLClass.listOfMoveStoneXML[this->stoneCount];
@@ -1260,6 +1279,7 @@ namespace engine
 				if (!this->radius)
 				{
 					this->radius = new RadiusLevin_mc();
+					this->addChild(this->radius, 0);
 					this->radius->gotoAndStop(2);
 					this->arrow->setAlpha(1);
 					this->radius->cont->stop();
@@ -1267,7 +1287,6 @@ namespace engine
 					this->radius->setWidth(Main::mainClass->readXMLClass.listOfMoveLevinXML[0] * 2);
 					this->radius->setVisible(false);
 					this->arrow->setVisible(false);
-					this->addChild(this->radius, 0);
 				}
 				this->myRadius = Main::mainClass->readXMLClass.listOfMoveLevinXML[0];
 				this->myDamage = Main::mainClass->readXMLClass.listOfMoveLevinXML[this->levinCount];
@@ -1412,6 +1431,7 @@ namespace engine
 				this->removeChild(this->container);
 				MoveFire_mc *container = new MoveFire_mc();
 				this->container = container;
+				this->addChild(this->container);
 				container->stop();
 				container->cont->stop();
 				std::setText(container->numTXT, this->fireCount);
@@ -1421,13 +1441,13 @@ namespace engine
 					container->numTXT->setVisible(false);
 				}
 				container->setScale(1.0f);
-				this->addChild(this->container);
 			}
 			else if (this->fireCount == 0 && this->iceCount > 0 && this->stoneCount == 0 && this->levinCount == 0)
 			{
 				this->removeChild(this->container);
 				MoveIce_mc *container = new MoveIce_mc();
 				this->container = container;
+				this->addChild(this->container);
 				container->stop();
 				container->cont->stop();
 				std::setText(container->numTXT, this->iceCount);
@@ -1437,13 +1457,13 @@ namespace engine
 					container->numTXT->setVisible(false);
 				}
 				container->setScale(1.0f);
-				this->addChild(this->container);
 			}
 			else if (this->fireCount == 0 && this->iceCount == 0 && this->stoneCount > 0 && this->levinCount == 0)
 			{
 				this->removeChild(this->container);
 				MoveStone_mc *container = new MoveStone_mc();
 				this->container = container;
+				this->addChild(this->container);
 				container->stop();
 				container->cont->stop();
 				std::setText(container->numTXT, this->stoneCount);
@@ -1453,13 +1473,13 @@ namespace engine
 					container->numTXT->setVisible(false);
 				}
 				container->setScale(1.0f);
-				this->addChild(this->container);
 			}
 			else if (this->fireCount == 0 && this->iceCount == 0 && this->stoneCount == 0 && this->levinCount > 0)
 			{
 				this->removeChild(this->container);
 				MoveLevin_mc *container = new MoveLevin_mc();
 				this->container = container;
+				this->addChild(this->container);
 				container->stop();
 				container->cont->stop();
 				std::setText(container->numTXT, this->levinCount);
@@ -1469,7 +1489,6 @@ namespace engine
 					container->numTXT->setVisible(false);
 				}
 				container->setScale(0.6f);
-				this->addChild(this->container);
 			}
 			else if (this->ownerType == "archive")
 			{

@@ -93,19 +93,19 @@ namespace screens
                 this->kill();
             }
         }
-        //i = 0;
-        //while (i < this->world->listOfClasses.size())
-        //{
-        //    
-        //    if (this->world->listOfClasses[i] is Indexes)
-        //    {
-        //        if (this->world->listOfClasses[i].type == "golemDeath" || this->world->listOfClasses[i].type == "icemanDeath" || this->world->listOfClasses[i].type == "airDeath")
-        //        {
-        //            this->world->listOfClasses[i].update();
-        //        }
-        //    }
-        //    i++;
-        //}
+        int i = 0;
+        while (i < this->world->listOfClasses.size())
+        {
+			if (ISTYPE(Indexes,this->world->listOfClasses[i] ))
+            {
+				Indexes * idx=ISTYPE(Indexes, this->world->listOfClasses[i]);
+				if (idx->type == "golemDeath" || idx->type == "icemanDeath" || idx->type == "airDeath")
+                {
+					idx->update();
+                }
+            }
+            i++;
+        }
         return;
     }// end function
 

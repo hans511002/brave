@@ -1750,16 +1750,7 @@ namespace engine
 			//if (this->parent)
 			//{
 			this->world->removeChild(this, true);
-			//this->i = 0;
-			//while (this->i < this->world->listOfClasses.length)
-			//{
-			//	if (this->world->listOfClasses[this->i] == this)
-			//	{
-			//		this->world->listOfClasses.splice(this->i, 1);
-			//		break;
-			//	}
-			//	i++;
-			//}
+			this->world->removeClasses(this);
 			//this->i = 0;
 			//while (this->i < this->world->listOfIndexes1.length)
 			//{
@@ -2015,22 +2006,23 @@ namespace engine
                             }
                         }
                     }
-                    //if (!this->tempObject)
-                    //{
-                    //	this->i = 0;
-                    //	while(this->i < this->world->listOfClasses.size())
-                    //	{
-                    //		if (this->world->listOfClasses[this->i] is Unit)
-                    //		{
-                    //			if (!this->world->listOfClasses[this->i].dead)
-                    //			{
-                    //				this->tempObject = true;
-                    //				break;
-                    //			}
-                    //		}
-                    //		i++;
-                    //	}
-                    //}
+                    if (!tempObject)
+                    {
+                    	this->i = 0;
+                    	while(this->i < this->world->listOfClasses.size())
+                    	{
+							if (ISTYPE(Unit,this->world->listOfClasses[this->i] ))
+                    		{
+								Unit * unit=ISTYPE(Unit, this->world->listOfClasses[this->i]);
+								if (!unit->dead)
+                    			{
+                    				tempObject = true;
+                    				break;
+                    			}
+                    		}
+                    		i++;
+                    	}
+                    }
                     if(!tempObject)
                     {
                         if(this->typeUnit != 34)

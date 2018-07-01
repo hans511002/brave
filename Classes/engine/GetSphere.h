@@ -28,6 +28,7 @@ namespace engine
 		MovieClipSub * sphere4;
 		MovieClipSub * sphere4Cont;
 		GetSphere_mc();
+		virtual void onEnter();
 	};
 	struct GetAll_mc :public MovieClip
 	{
@@ -158,6 +159,7 @@ namespace engine
 		GetSphere(string param1 = "holder");
 
 		virtual bool init();
+		//virtual void addChild(Node *child);
 
 		virtual void  update(float dt = 0);
 

@@ -29,9 +29,10 @@ namespace std
 	int setText(ui::Text * tui, int val);
 	float setText(ui::Text * tui, float val);
 	int getInt(ui::Text * tui);
-	string getText(ui::Text * tui);
-	bool hitTest(cocos2d::Node * node, const Vec2 &pt);
+	string getText(ui::Text * tui); 
+	bool hitTest(cocos2d::Node * node, const Vec2 &pt,bool mouseEvent=true);
 	bool hitTest(cocos2d::Node * node, cocos2d::EventMouse* e);
+
 	string getNamePath(Node *node);
 	Common::Array<Node*>  getChildNodes(Node *node);
 	bool getNodeVisible(Node * node);
@@ -108,7 +109,7 @@ namespace std
 		int idx;
 	public:
         bool processed;
-
+		 
 		Common::Array<Node *> currentTargets;
 		MouseEvent(MouseEventType mouseEventCode);
 		void setCurrentTarget(Node* target);
@@ -118,6 +119,8 @@ namespace std
 		void hitTest(Node *node, bool incSub = false);
 		bool hasNext(); 
 		inline void reset(){ idx =0; };
+		int getIndex(string name);
+		void remove(int i);
 		Node * target; 
         EventNode * enode;
 	};	
@@ -128,6 +131,7 @@ namespace std
 	{
 		int schdt;
 	public:
+		Vec2 basePoint;
 		static const double AnimationInterval;
 		cocos2d::EventListenerMouse * listener;
 		BaseNode();
@@ -143,6 +147,10 @@ namespace std
 		virtual void onExit();
 		virtual void scheduleUpdate(float dt);
 		inline virtual void update(float dt = 0) {};
+		virtual void addChild(Node *child);
+		virtual void addChild(Node * child, int localZOrder);
+		virtual void addChild(Node* child, int localZOrder, int tag);
+		virtual void addChild(Node* child, int localZOrder, const std::string &name);
 
 		//帧频事件
 		virtual void enterFrameHandler(float dt);
@@ -156,6 +164,7 @@ namespace std
 		bool isAutoDel;
 		virtual void autorelease();
 		virtual void setSize(float w, float h, bool draw = true);
+		virtual void setMCRange(MovieClip * mc);
 		virtual void drawRange();
 		virtual void enableMouseHandler(bool listen=false);
 		virtual void enableKeyHandler();
@@ -203,6 +212,7 @@ namespace std
 		inline virtual bool hitTest(cocos2d::EventMouse* event) { return std::hitTest(this, event); };
 		virtual void onEnter();
 		virtual void onExit();
+		virtual void drawRange();
 
 		virtual bool isVisible();
 
@@ -228,6 +238,7 @@ namespace std
 		virtual void disableMouseHandler();
 		//cocos2d::Label* createText(const std::string& string);
 		virtual bool isVisible();
+		virtual void drawRange();
 
 		//float getStageWidth() const;
 		//float getStageHeight() const;

@@ -1693,17 +1693,8 @@ namespace engine
                 this->dead = true;
                 this->world->worldInterface->updateInfo();
                 this->world->removeChild(this);
-                //this->i = 0;
-                //while (this->i < this->world->listOfClasses.length)
-                //{
-                //    
-                //    if (this->world->listOfClasses[this->i] == this)
-                //    {
-                //        this->world->listOfClasses.splice(this->i, 1);
-                //        break;
-                //    }
-                //    i++;
-                //}
+				this->world->removeClasses(this);
+
                 //this->i = 0;
                 //while (this->i < this->world->listOfIndexes3.length)
                 //{

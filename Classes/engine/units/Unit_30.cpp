@@ -39,7 +39,7 @@ namespace engine
                 }
                 i++;
             }
-            //world->listOfClasses.push(this);
+            world->listOfClasses.push(this);
             //world->listOfIndexes0.push(this);
             return true;
         }// end function
@@ -554,26 +554,26 @@ namespace engine
             {
                 if (readyDamage)
                 {
-                    //i = 0;
-                    //while (i < world->listOfUnits.size())
-                    //{ 
-                    //    if (world->listOfUnits[i] == this)
-                    //    {
-                    //        world->listOfUnits.splice(i, 1);
-                    //        break;
-                    //    }
-                    //    i++;
-                    //}
-                    //i = 0;
-                    //while (i < world->listOfClasses.size())
-                    //{ 
-                    //    if (world->listOfClasses[i] == this)
-                    //    {
-                    //        world->listOfClasses.splice(i, 1);
-                    //        break;
-                    //    }
-                    //    i++;
-                    //}
+                    i = 0;
+                    while (i < world->listOfUnits.size())
+                    { 
+                        if (world->listOfUnits[i] == this)
+                        {
+                            world->listOfUnits.splice(i, 1);
+                            break;
+                        }
+                        i++;
+                    }
+                    i = 0;
+                    while (i < world->listOfClasses.size())
+                    { 
+                        if (world->listOfClasses[i] == this)
+                        {
+                            world->listOfClasses.splice(i, 1);
+                            break;
+                        }
+                        i++;
+                    }
                     //i = 0;
                     //while (i < world->listOfIndexes0.size())
                     //{ 
@@ -600,7 +600,7 @@ namespace engine
                     moveFlag = false; 
                     this->setMouseChildren(false);
                     this->setMouseEnabled(false);
-                    //world->listOfClasses.push(this);
+                    world->listOfClasses.push(this);
                     //if (lastAttackType == "golem")
                     //{
                     //    world->listOfIndexes0.push(this);
@@ -615,16 +615,16 @@ namespace engine
             {
                 if (!dead)
                 {
-                    //i = 0;
-                    //while (i < world->listOfClasses.size())
-                    //{ 
-                    //    if (world->listOfClasses[i] == this)
-                    //    {
-                    //        world->listOfClasses.splice(i, 1);
-                    //        break;
-                    //    }
-                    //    i++;
-                    //}
+                    i = 0;
+                    while (i < world->listOfClasses.size())
+                    { 
+                        if (world->listOfClasses[i] == this)
+                        {
+                            world->listOfClasses.splice(i, 1);
+                            break;
+                        }
+                        i++;
+                    }
                     //i = 0;
                     //while (i < world->listOfIndexes0.size())
                     //{
