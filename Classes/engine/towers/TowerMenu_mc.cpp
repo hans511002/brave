@@ -60,6 +60,8 @@ namespace engine
 			sphereSlot1SphereSlotCase = sphereSlot1->createCase("sphereSlotCase");
 			sphereSlot1SphereAnima = sphereSlot1->createMovieClip("sphereAnima", "tower/", "TowerMenuSphere_mc", "TowerMenuSphere_mc");
 			sphereSlot1SphereAnimaCont = sphereSlot1SphereAnima->createMovieClipSub("cont");
+			
+
 			sphereSlot2 = this->createMovieClipSub("sphereSlot2");
 			sphereSlot2SphereSlotCase = sphereSlot2->createCase("sphereSlotCase");
 			sphereSlot2SphereAnima = sphereSlot2->createMovieClip("sphereAnima", "tower/", "TowerMenuSphere_mc", "TowerMenuSphere_mc");

@@ -244,7 +244,7 @@ namespace engine
 	Vec2 MovieClipSubBase::getDisArPos(){
  		Vec2 thisPos;
 		//return  thisPos;
-		if (!ISTYPE(MCCase, this) && !ISTYPE(MCText, this))//
+		if (!ISTYPE(MCCase, this) && !ISTYPE(MCText, this) )//&& !ISTYPE(MovieClip, this)
 		{ 
 			Node * dis = (Node *) this->slot->getDisplay();
 			std::setAnchorPoint(dis, Vec2(0.5, 0.5));
@@ -261,9 +261,11 @@ namespace engine
 	};
 	void MovieClipSubBase::setDisScale(){
 		if (!ISTYPE(MCText, this)){
-			float scx = slot->getOrigin()->scaleX * bone->getOrigin()->scaleX *root->getOrigin()->scaleX;
+			float scx = slot->getOrigin()->scaleX * bone->getOrigin()->scaleX;
+			if (root) scx *= root->getOrigin()->scaleX;
 			display->setScaleX(scx);
-			float scy = slot->getOrigin()->scaleY * bone->getOrigin()->scaleY *root->getOrigin()->scaleY;
+			float scy = slot->getOrigin()->scaleY * bone->getOrigin()->scaleY;
+			if (root) scy *= root->getOrigin()->scaleY;
 			display->setScaleY(scy);
 		}
 		else{
@@ -296,19 +298,22 @@ namespace engine
 		 {
 			isReady = true;
 			Vec2 disPos=getDisPosition();
-			bool isCase = ISTYPE(MCCase, this);
+			bool expCase = !ISTYPE(MCCase, this) && !ISTYPE(MCText, this);// && !ISTYPE(MovieClip, this);
 			 if(this->display )
 			 {
 				 thsi->retain();
 				 this->display->removeChild(thsi);
 				 this->display = dis;
-				 if (!isCase)std::setAnchorPoint(display);
+				 if (expCase)std::setAnchorPoint(display);
 				 else std::setAnchorPoint(display, Vec2(0.5, 0.5));
 				 display->addChild(thsi);
 				 dis->setPosition(disPos);
 				 setDisScale();
-				 Vec2 thisPos = getDisArPos();
-				 thsi->setPosition(thisPos);
+				 if (expCase){
+					Vec2 thisPos = getDisArPos();
+					thsi->setPosition(thisPos);
+				 }
+
 				 //std::setAnchorPoint(display, Vec2(0.5, 0.5));
 				 if (!ISTYPE(MovieClip, this))
 					display->setName(slotName);
@@ -321,13 +326,15 @@ namespace engine
 			  else
 			  {
 				  this->display = dis;
-				  if (!isCase) std::setAnchorPoint(display);
+				  if (expCase) std::setAnchorPoint(display);
 				  else std::setAnchorPoint(display, Vec2(0.5, 0.5));
 				  display->addChild(thsi);
 				  dis->setPosition(disPos);
 				  setDisScale();
-				  Vec2 thisPos = getDisArPos();
-				  thsi->setPosition(thisPos);
+				  if (expCase){
+					  Vec2 thisPos = getDisArPos();
+					  thsi->setPosition(thisPos);
+				  }
 				  //std::setAnchorPoint(display, Vec2(0.5, 0.5));
 
 				  if(!ISTYPE(MovieClip, this))
@@ -655,7 +662,7 @@ namespace engine
 	
 		return true;
 	};
-    MovieClip::MovieClip(const string &  armName, const string &  dbName, BaseNode *node) :container(0), world(0), myFrame(0), speedX(0), speedY(0)
+	MovieClip::MovieClip(const string &  armName, const string &  dbName, BaseNode *node) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0)
 	{ 
 		setNodeType("MovieClip");
 		this->armName = armName;
@@ -680,7 +687,7 @@ namespace engine
 		if(world)setOnceMove(world);
 	};
 
-    MovieClip::MovieClip(MC *mc, dragonBones::Slot * slot, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName) :container(0), world(0), myFrame(0), speedX(0), speedY(0)
+	MovieClip::MovieClip(MC *mc, dragonBones::Slot * slot, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0)
 	{ 
 		this->mc = mc;
 		this->slotName = slot->getName();
@@ -688,7 +695,7 @@ namespace engine
 		reinit();
 		mc->addMCbs(this);
 	};
-    MovieClip::MovieClip(MC *mc, const string &  slotName, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName) :container(0), world(0), myFrame(0), speedX(0), speedY(0)
+	MovieClip::MovieClip(MC *mc, const string &  slotName, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0)
 	{
 		
 		this->mc = mc;
@@ -700,7 +707,7 @@ namespace engine
 		reinit();
 		mc->addMCbs(this);
 	};
-    MovieClip::MovieClip(MC *mc, const string &  slotName, const string &  rootPath, const string &  dbName) :container(0), world(0), myFrame(0), speedX(0), speedY(0)
+	MovieClip::MovieClip(MC *mc, const string &  slotName, const string &  rootPath, const string &  dbName) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0)
 	{
 		setNodeType("MovieClip");
 		this->mc = mc;

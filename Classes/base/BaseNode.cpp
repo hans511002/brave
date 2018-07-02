@@ -157,6 +157,18 @@ namespace std
 	{
 		return tui->getString();
 	};
+	void drawRange(Node * node, Color4F c)
+	{
+		DrawNode* drawNode = DrawNode::create();
+		node->addChild(drawNode);
+		Vec2 pos = node->convertToNodeSpace(node->getPosition());
+		Size size = node->getContentSize();
+		Vec2 dest(pos.x + size.width, pos.y + size.height);
+		drawNode->drawRect(Vec2(0,0), size, c);
+ 		//drawNode->setScaleX(this->getScaleX());
+		//drawNode->setScaleY(this->getScaleY());
+	};
+
 	bool BaseNode::init()
 	{
 		cocos2d::Node::init();

@@ -1568,23 +1568,28 @@ namespace engine
 		this->ownerType = "tower";
 		if (this->fireCount > 0 && this->iceCount == 0 && this->stoneCount == 0 && this->levinCount == 0)
 		{
-			this->setPosition(this->world->worldInterface->container->fireSphere->getPositionX(), this->world->worldInterface->container->fireSphere->getPositionY());
+			Vec2 pos = this->world->worldInterface->container->fireSphere->convertToWorldSpace(this->world->worldInterface->container->fireSphere->getPosition());
+			this->setPosition(pos);
 		}
 		else if (this->fireCount == 0 && this->iceCount > 0 && this->stoneCount == 0 && this->levinCount == 0)
 		{
-			this->setPosition(this->world->worldInterface->container->iceSphere->getPositionX(), this->world->worldInterface->container->iceSphere->getPositionY());
-		}
+			Vec2 pos = this->world->worldInterface->container->iceSphere->convertToWorldSpace(this->world->worldInterface->container->iceSphere->getPosition());
+			this->setPosition(pos);
+ 		}
 		else if (this->fireCount == 0 && this->iceCount == 0 && this->stoneCount > 0 && this->levinCount == 0)
 		{
-			this->setPosition(this->world->worldInterface->container->stoneSphere->getPositionX(), this->world->worldInterface->container->stoneSphere->getPositionY());
+			Vec2 pos = this->world->worldInterface->container->stoneSphere->convertToWorldSpace(this->world->worldInterface->container->stoneSphere->getPosition());
+			this->setPosition(pos);
 		}
 		else if (this->fireCount == 0 && this->iceCount == 0 && this->stoneCount == 0 && this->levinCount > 0)
 		{
-			this->setPosition(this->world->worldInterface->container->levinSphere->getPositionX(), this->world->worldInterface->container->levinSphere->getPositionY());
-		}
+			Vec2 pos = this->world->worldInterface->container->levinSphere->convertToWorldSpace(this->world->worldInterface->container->levinSphere->getPosition());
+			this->setPosition(pos);
+ 		}
 		else
 		{
-			this->setPosition(this->world->worldInterface->container->getAll->getPositionX(), this->world->worldInterface->container->getAll->getPositionY());
+			Vec2 pos = this->world->worldInterface->container->getAll->convertToWorldSpace(this->world->worldInterface->container->getAll->getPosition());
+			this->setPosition(pos);
 		}
 		this->retrieveGetSphere();
 		this->world->worldInterface->updateInfo();

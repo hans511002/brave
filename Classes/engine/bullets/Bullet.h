@@ -36,7 +36,6 @@ namespace engine{
 		{
 			MovieClip * cont;
 			int counter;
-			virtual void gotoAndStop(int cur);
 			BulletSphereTower_mc();
 		};
 		struct BulletFireTower_mc :public BulletBase_mc

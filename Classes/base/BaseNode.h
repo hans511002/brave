@@ -32,6 +32,7 @@ namespace std
 	string getText(ui::Text * tui); 
 	bool hitTest(cocos2d::Node * node, const Vec2 &pt,bool mouseEvent=true);
 	bool hitTest(cocos2d::Node * node, cocos2d::EventMouse* e);
+	void drawRange(cocos2d::Node * node, Color4F c = Color4F::RED);
 
 	string getNamePath(Node *node);
 	Common::Array<Node*>  getChildNodes(Node *node);

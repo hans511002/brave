@@ -12,47 +12,20 @@ namespace engine{
 			SET_NODETYPENAME();
 			//cont=this->createMovieClip("sphere/","cont","BulletSpheresTower_mc");//合并多个在一个db中
         }
-        
-        void BulletSphereTower_mc::gotoAndStop(int cur)
-		{
-		    int oldIdx = this->currentFrame;
-			MovieClip::gotoAndStop(cur);
-			if(oldIdx == this->currentFrame)return;
-			if(cont)display->removeChild(cont);
-			cont = NULL;
-			if(this->currentFrame == 1)
-			{
-				cont = new MovieClip("sphere/", "BulletFireTower_mc", "BulletFireTower_mc");
-			}
-			else if(this->currentFrame == 2)
-			{
-				cont = new MovieClip("sphere/", "BulletIceTower_mc", "BulletIceTower_mc");
-			}
-			else if(this->currentFrame == 3)
-			{
-				cont = new MovieClip("sphere/", "BulletStoneTower_mc", "BulletStoneTower_mc");
-			}
-			else if(this->currentFrame == 4)
-			{
-				cont = new MovieClip("sphere/", "BulletLevinTower_mc", "BulletLevinTower_mc");
-			}
-			if(cont)
-			    display->addChild(cont);
-
-		};
-		BulletFireTower_mc::BulletFireTower_mc() :BulletBase_mc("sphere/", "BulletFireTower_mc", "BulletFireTower_mc")
+         
+		BulletFireTower_mc::BulletFireTower_mc() :BulletBase_mc("sphere/", "BulletFireTower_mc", "BulletSphereTower_mc")
         { 
 			SET_NODETYPENAME();
 		}
-		BulletIceTower_mc::BulletIceTower_mc() : BulletBase_mc("sphere/", "BulletIceTower_mc", "BulletIceTower_mc")
+		BulletIceTower_mc::BulletIceTower_mc() : BulletBase_mc("sphere/", "BulletIceTower_mc", "BulletSphereTower_mc")
         {
 			SET_NODETYPENAME();
 		}
-		BulletStoneTower_mc::BulletStoneTower_mc() : BulletBase_mc("sphere/", "BulletStoneTower_mc", "BulletStoneTower_mc")
+		BulletStoneTower_mc::BulletStoneTower_mc() : BulletBase_mc("sphere/", "BulletStoneTower_mc", "BulletSphereTower_mc")
         {
 			SET_NODETYPENAME();
 		}
-		BulletLevinTower_mc::BulletLevinTower_mc() : BulletBase_mc("sphere/", "BulletLevinTower_mc", "BulletLevinTower_mc")
+		BulletLevinTower_mc::BulletLevinTower_mc() : BulletBase_mc("sphere/", "BulletLevinTower_mc", "BulletSphereTower_mc")
         { 
 			SET_NODETYPENAME();
 		}

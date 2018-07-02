@@ -175,10 +175,21 @@ namespace engine
 			//this->container->setPosition(aabb.width / 2, aabb.height / 2);
 			//this->drawRange(); 
 
+			std::drawRange(container->sphereSlot1SphereSlotCase,Color4F::YELLOW);
+			std::drawRange(container->sphereSlot1SphereAnima->display, Color4F::WHITE);
+			std::drawRange(container->sphereSlot1SphereAnima, Color4F::RED);
+			logInfo(getNamePath(container->sphereSlot1SphereAnima), container->sphereSlot1SphereAnima->getPosition());
 			return true;
 		}// end function
 		void TowerMenu::update(float dt)
 		{
+			//logInfo(getNamePath(container->sphereSlot1SphereAnima), container->sphereSlot1SphereAnima->getPosition(),
+			//	&container->sphereSlot1SphereAnima->convertToWorldSpace(container->sphereSlot1SphereAnima->getPosition()));
+			//logInfo(getNamePath(container->sphereSlot1SphereAnima->display), container->sphereSlot1SphereAnima->display->getPosition(),
+			//	&container->sphereSlot1SphereAnima->display->convertToWorldSpace(container->sphereSlot1SphereAnima->display->getPosition()));
+			//logInfo(getNamePath(container->sphereSlot1SphereSlotCase), container->sphereSlot1SphereSlotCase->getPosition(),
+			//	&container->sphereSlot1SphereSlotCase->convertToWorldSpace(container->sphereSlot1SphereSlotCase->getPosition()));
+
 			if (!this->closeFlag)
 			{
 				if (this->openFlag)
@@ -2089,14 +2100,14 @@ namespace engine
 		void TowerMenu::spheresMonitor()
 		{
 			//this->container->sphereSlot1SphereSlotCase->setMouseEnabled(false);
-			this->container->sphereSlot2SphereSlotCase->setMouseEnabled(false);
-			this->container->sphereSlot3SphereSlotCase->setMouseEnabled(false);
-			this->container->sphereSlot4SphereSlotCase->setMouseEnabled(false);
-			this->container->btnGetAllBtnGetAllCase->setMouseEnabled(false);
-			this->container->sphereSlot1SphereAnima->setVisible(false);
-			this->container->sphereSlot2SphereAnima->setVisible(false);
-			this->container->sphereSlot3SphereAnima->setVisible(false);
-			this->container->sphereSlot4SphereAnima->setVisible(false);
+			//this->container->sphereSlot2SphereSlotCase->setMouseEnabled(false);
+			//this->container->sphereSlot3SphereSlotCase->setMouseEnabled(false);
+			//this->container->sphereSlot4SphereSlotCase->setMouseEnabled(false);
+			//this->container->btnGetAllBtnGetAllCase->setMouseEnabled(false);
+			//this->container->sphereSlot1SphereAnima->setVisible(false);
+			//this->container->sphereSlot2SphereAnima->setVisible(false);
+			//this->container->sphereSlot3SphereAnima->setVisible(false);
+			//this->container->sphereSlot4SphereAnima->setVisible(false);
 			if (this->myTower->spheresStack.size() == 0)
 			{
 				if (this->container->sphereSlot1->currentFrame == 2)
