@@ -76,7 +76,8 @@ namespace engine
 			container->cross->setVisible(false);
 		}
 		this->addChild(this->container);
-		this->setMCRange(this->container);
+		this->changeAnchorPoint(0.5);
+		this->container->changeAnchorPoint(0.5);
 
 		this->world->worldInterface->castRegime("on");
 		this->arrow = new Arrow_mc();

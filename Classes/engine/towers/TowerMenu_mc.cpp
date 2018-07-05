@@ -22,6 +22,7 @@ namespace engine
 		TowerRadius_mc::TowerRadius_mc() :BaseSprite("tower/TowerRadius_mc.png"), myTower(NULL)
 		{
 			SET_NODETYPENAME();
+			std::changeAnchorPoint(this, 0.5);
 		}
 		TowerMenu_mc::TowerMenu_mc() : MovieClip("tower/", "TowerMenu_mc", "TowerMenu_mc"){
 			SET_NODETYPENAME();

@@ -159,14 +159,19 @@ namespace std
 	};
 	void drawRange(Node * node, Color4F c)
 	{
-		DrawNode* drawNode = DrawNode::create();
-		node->addChild(drawNode);
-		Vec2 pos = node->convertToNodeSpace(node->getPosition());
-		Size size = node->getContentSize();
-		Vec2 dest(pos.x + size.width, pos.y + size.height);
-		drawNode->drawRect(Vec2(0,0), size, c);
- 		//drawNode->setScaleX(this->getScaleX());
-		//drawNode->setScaleY(this->getScaleY());
+		Node * draw=node->getChildByName("drawNode");
+		if (!draw){
+			DrawNode* drawNode = DrawNode::create();
+			std::setAnchorPoint(drawNode, node->getAnchorPoint());
+			node->addChild(drawNode);
+			Vec2 arpos = node->getAnchorPointInPoints();
+			//Vec2 pos = node->convertToNodeSpace(node->getPosition());
+			Size size = node->getContentSize();
+			//Vec2 dest(pos.x + size.width, pos.y + size.height);
+			drawNode->drawRect(Vec2(0, 0) - arpos, (Vec2)size - arpos, c);
+			//drawNode->setScaleX(this->getScaleX());
+			//drawNode->setScaleY(this->getScaleY());
+		}
 	};
 
 	bool BaseNode::init()
@@ -496,52 +501,64 @@ namespace std
 		  if (basePoint.x && basePoint.y)
 			  child->setPosition(basePoint);
 	  };
+	  void changeAnchorPoint(Node * node,float xy){
+ 		  Vec2 absPos1 = node->getAnchorPointInPoints();
+		  node->setAnchorPoint(Vec2(xy, xy));
+		  Vec2 absPos2 = node->getAnchorPointInPoints();
+		  node->setPosition(node->getPosition() + absPos2 - absPos1);
 
-
-	void BaseNode::setMCRange(MovieClip * mc)
-	{
-		this->setAnchorPoint(Vec2(0.5, 0.5));
-		const dragonBones::Rectangle & aabb = mc->getRectangle();
-		this->setContentSize(Size(aabb.width, aabb.height));
-		mc->setPosition(aabb.width / 2, aabb.height / 2);
-		this->drawRange();
-		basePoint = this->convertToNodeSpace(Vec2(0, 0));
-	}
+		  //this->getAnchorPoint();
+		  //if (xy == 0.5){
+		  //Vec2 orgpos = this->getPosition();
+		  //Vec2 pos = this->convertToWorldSpace(Vec2(0, 0));
+		  //this->setAnchorPoint(Vec2(xy, xy));
+		  //Vec2 pos1 = this->convertToNodeSpace(pos);
+		  //this->setPosition(orgpos+pos1);
+		  //}
+		  //else{
+		  //}
+	  };
+	void BaseNode::changeAnchorPoint(float xy){
+		std::changeAnchorPoint(this, xy); 
+	};
 	void BaseNode::drawRange()
 	{
-		DrawNode* drawNode = DrawNode::create();
-		this->addChild(drawNode);
-		Vec2 pos = this->getPosition();
-		Size size = this->getContentSize();
-		Vec2 dest(pos.x + size.width, pos.y + size.height);
-		drawNode->drawRect(Vec2(0, 0), size, Color4F::GREEN);
-		logInfo(getNamePath(this), this->getPosition(), &this->convertToWorldSpace(this->getPosition()), &(Vec2)this->getContentSize());
-		//drawNode->setScaleX(this->getScaleX());
-		//drawNode->setScaleY(this->getScaleY());
+		std::drawRange(this, Color4F::GREEN);
+		//DrawNode* drawNode = DrawNode::create();
+		//this->addChild(drawNode);
+		//Vec2 pos = this->getPosition();
+		//Size size = this->getContentSize();
+		//Vec2 dest(pos.x + size.width, pos.y + size.height);
+		//drawNode->drawRect(Vec2(0, 0), size, Color4F::GREEN);
+		//logInfo(getNamePath(this), this->getPosition(), &this->convertToWorldSpace(this->getPosition()), &(Vec2)this->getContentSize());
+		////drawNode->setScaleX(this->getScaleX());
+		////drawNode->setScaleY(this->getScaleY());
  	};
 	void BaseSprite::drawRange()
 	{
-		DrawNode* drawNode = DrawNode::create();
-		this->addChild(drawNode);
-		Vec2 pos = this->getPosition();
-		Size size = this->getContentSize();
-		Vec2 dest(pos.x + size.width, pos.y + size.height);
-		drawNode->drawRect(Vec2(0, 0), size, Color4F::YELLOW);
-		//drawNode->setScaleX(this->getScaleX());
-		//drawNode->setScaleY(this->getScaleY());
-		logInfo(getNamePath(this), this->getPosition(), &this->convertToWorldSpace(this->getPosition()),&(Vec2)this->getContentSize());
+		std::drawRange(this, Color4F::YELLOW);
+		//DrawNode* drawNode = DrawNode::create();
+		//this->addChild(drawNode);
+		//Vec2 pos = this->getPosition();
+		//Size size = this->getContentSize();
+		//Vec2 dest(pos.x + size.width, pos.y + size.height);
+		//drawNode->drawRect(Vec2(0, 0), size, Color4F::YELLOW);
+		////drawNode->setScaleX(this->getScaleX());
+		////drawNode->setScaleY(this->getScaleY());
+		//logInfo(getNamePath(this), this->getPosition(), &this->convertToWorldSpace(this->getPosition()),&(Vec2)this->getContentSize());
 	};
 	void BaseLayer::drawRange()
 	{
-		DrawNode* drawNode = DrawNode::create();
-		this->addChild(drawNode);
-		Vec2 pos = this->getPosition();
-		Size size = this->getContentSize();
-		Vec2 dest(pos.x + size.width, pos.y + size.height);
-		drawNode->drawRect(Vec2(0, 0), size, Color4F::YELLOW);
-		logInfo(getNamePath(this), this->getPosition(), &this->convertToWorldSpace(this->getPosition()), &(Vec2)this->getContentSize());
-		//drawNode->setScaleX(this->getScaleX());
-		//drawNode->setScaleY(this->getScaleY());
+		std::drawRange(this, Color4F::YELLOW);
+		//DrawNode* drawNode = DrawNode::create();
+		//this->addChild(drawNode);
+		//Vec2 pos = this->getPosition();
+		//Size size = this->getContentSize();
+		//Vec2 dest(pos.x + size.width, pos.y + size.height);
+		//drawNode->drawRect(Vec2(0, 0), size, Color4F::YELLOW);
+		//logInfo(getNamePath(this), this->getPosition(), &this->convertToWorldSpace(this->getPosition()), &(Vec2)this->getContentSize());
+		////drawNode->setScaleX(this->getScaleX());
+		////drawNode->setScaleY(this->getScaleY());
 	};
     MouseEvent::MouseEvent(MouseEventType mouseEventCode) : cocos2d::EventMouse(mouseEventCode), idx(0), target(NULL), processed(false), enode(NULL)
 	{

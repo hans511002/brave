@@ -44,6 +44,7 @@ namespace engine{
 		place3 = (BuildTowerPlace*) this->createMovieClip("place3", new BuildTowerPlace("placeRight"));
 		place4 = (BuildTowerPlace*) this->createMovieClip("place4", new BuildTowerPlace("placeLeft"));
 		place5 = (BuildTowerPlace*) this->createMovieClip("place5", new BuildTowerPlace("placeRight"));
+		
 		pointer1 = (LevelPointer*)this->createMovieClip("pointer1", new LevelPointer());
 		flags.push(flag1);
 		flags.push(flag2);

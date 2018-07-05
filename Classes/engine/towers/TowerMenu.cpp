@@ -167,7 +167,8 @@ namespace engine
 			this->spheresMonitor();
 			this->world->worldInterface->updateInfo();
 
-			this->setMCRange(this->container);
+			this->changeAnchorPoint(0.5);
+			this->container->changeAnchorPoint(0.5); 
 			//this->setAnchorPoint(Vec2(0.5, 0.5));
 			//const dragonBones::Rectangle & aabb = this->container->getRectangle();
 			//this->setContentSize(Size(aabb.width, aabb.height));
@@ -175,9 +176,22 @@ namespace engine
 			//this->container->setPosition(aabb.width / 2, aabb.height / 2);
 			//this->drawRange(); 
 
-			std::drawRange(container->sphereSlot1SphereSlotCase,Color4F::YELLOW);
+			//std::drawRange(container->sphereSlot1SphereSlotCase,Color4F::YELLOW);
+
+			//container->sphereSlot1SphereAnima->display->setPosition(container->sphereSlot1SphereAnima->display->getPosition() + container->sphereSlot1SphereAnima->display->getAnchorPointInPoints());
+
+
 			std::drawRange(container->sphereSlot1SphereAnima->display, Color4F::WHITE);
 			std::drawRange(container->sphereSlot1SphereAnima, Color4F::RED);
+			container->sphereSlot1SphereAnima->container->setContentSize(container->sphereSlot1SphereAnima->getContentSize());
+			std::drawRange(container->sphereSlot1SphereAnima->container, Color4F::YELLOW);
+			std::drawRange(container->sphereSlot1SphereAnimaCont->display, Color4F::BLACK);
+			  
+			this->world->logInfo(getNamePath(container->sphereSlot1SphereAnima), container->sphereSlot1SphereAnima->getAnchorPoint(), &container->sphereSlot1SphereAnima->getPosition(), &container->sphereSlot1SphereAnima->convertToWorldSpace(container->sphereSlot1SphereAnima->getPosition()));
+			this->world->logInfo(getNamePath(container->sphereSlot1SphereAnima->display), container->sphereSlot1SphereAnima->display->getAnchorPoint(), &container->sphereSlot1SphereAnima->display->getPosition(), &container->sphereSlot1SphereAnima->display->convertToWorldSpace(container->sphereSlot1SphereAnima->display->getPosition()));
+			this->world->logInfo(getNamePath(container->sphereSlot1SphereAnima->container), container->sphereSlot1SphereAnima->container->getAnchorPoint(), &container->sphereSlot1SphereAnima->container->getPosition(), &container->sphereSlot1SphereAnima->container->convertToWorldSpace(container->sphereSlot1SphereAnima->container->getPosition()));
+			this->world->logInfo(getNamePath(container->sphereSlot1SphereAnimaCont->display), container->sphereSlot1SphereAnimaCont->display->getAnchorPoint(), &container->sphereSlot1SphereAnimaCont->display->getPosition(), &container->sphereSlot1SphereAnimaCont->display->convertToWorldSpace(container->sphereSlot1SphereAnimaCont->display->getPosition()));
+
 			logInfo(getNamePath(container->sphereSlot1SphereAnima), container->sphereSlot1SphereAnima->getPosition());
 			return true;
 		}// end function

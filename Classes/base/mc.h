@@ -134,6 +134,7 @@ namespace engine
 		virtual float getHeight();
 		virtual   void setWidth(float w);
 		virtual   void setHeight(float h);
+		virtual   void resetSize();
 
         //virtual void addMCbs(MovieClipSubBase * mcs);
         //virtual void remove(MovieClipSubBase * ms);
@@ -150,6 +151,7 @@ namespace engine
 
         virtual void update(float dt = 0);
 		virtual const dragonBones::Rectangle & getRectangle();
+		virtual void changeAnchorPoint(float xy);
 		virtual  void drawRange();
 	};
 	

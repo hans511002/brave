@@ -7,49 +7,49 @@ namespace engine
 	{
 	}
 
-    int MC::getTotalFrames(const string &  _aniName)
+	int MC::getTotalFrames(const string &  _aniName)
 	{
-        string aniName = _aniName;
-		if(aniName == "")aniName = defAniName;
+		string aniName = _aniName;
+		if (aniName == "")aniName = defAniName;
 		AnimationData *aniData = this->getArmature()->_armatureData->animations[aniName];
-		if(aniData)
+		if (aniData)
 			return aniData->frameCount + 1;
 		return 0;
 	};
-    void MC::gotoAndStop(int cf, const string & _aniName)
+	void MC::gotoAndStop(int cf, const string & _aniName)
 	{
-		if(this->getArmature() == NULL || this->getAnimation() == NULL)return;
-		if(cf == 0)cf = 1;
-        string aniName = _aniName;
-        if(aniName == "")aniName = defAniName;
-		if(this->getAnimation()->getLastAnimationName() != aniName)
+		if (this->getArmature() == NULL || this->getAnimation() == NULL)return;
+		if (cf == 0)cf = 1;
+		string aniName = _aniName;
+		if (aniName == "")aniName = defAniName;
+		if (this->getAnimation()->getLastAnimationName() != aniName)
 			this->getAnimation()->play(aniName, 1);
 		this->currentFrame = (cf - 1) % totalFrames + 1;
 		this->getAnimation()->gotoAndStopByFrame(aniName, currentFrame - 1);
 	};
 	void MC::nextFram()
 	{
-		if(this->getArmature() == NULL || this->getAnimation() == NULL)return;
+		if (this->getArmature() == NULL || this->getAnimation() == NULL)return;
 		this->currentFrame++;
 		gotoAndStop(this->currentFrame);
 	};
-    void MC::stop(const string &  _aniName)
+	void MC::stop(const string &  _aniName)
 	{
-		if(this->getArmature() == NULL || this->getAnimation() == NULL)return;
-        string aniName = _aniName;
-        if(aniName == "")aniName = defAniName;
+		if (this->getArmature() == NULL || this->getAnimation() == NULL)return;
+		string aniName = _aniName;
+		if (aniName == "")aniName = defAniName;
 		this->getAnimation()->stop(aniName);
 	}
 	void MC::play(int times)
 	{
-		if(this->getArmature() == NULL || this->getAnimation() == NULL)return;
+		if (this->getArmature() == NULL || this->getAnimation() == NULL)return;
 		this->getAnimation()->play(defAniName, times);
 	}
-    void MC::play(const string &  _aniName, int times)
+	void MC::play(const string &  _aniName, int times)
 	{
-		if(this->getArmature() == NULL || this->getAnimation() == NULL)return;
-        string aniName = _aniName;
-        if(aniName == "")aniName = defAniName;
+		if (this->getArmature() == NULL || this->getAnimation() == NULL)return;
+		string aniName = _aniName;
+		if (aniName == "")aniName = defAniName;
 		this->getAnimation()->play(aniName, times);
 	}
 	MovieClip * MC::getRootMc(MC * mc)
@@ -57,7 +57,7 @@ namespace engine
 		while (mc != NULL)
 		{
 			if (ISTYPE(MovieClip, mc))
-				return ISTYPE(MovieClip, mc); 
+				return ISTYPE(MovieClip, mc);
 			else if (ISTYPE(MovieClipSub, mc)){
 				MovieClipSub * mcvs = ISTYPE(MovieClipSub, mc);// dynamic_cast<MovieClipSub*>(mc);
 				mc = mcvs->mc;
@@ -70,34 +70,34 @@ namespace engine
 	{
 		mc->submc.push(mcs);
 		MovieClip * mvc = getRootMc(mc);
-		if(mvc)// && mc != mvc
+		if (mvc)// && mc != mvc
 			mvc->addMcs(mcs);
 	};
-    MovieClipSub*  MC::getMemSubMC(const string &  slotName)
+	MovieClipSub*  MC::getMemSubMC(const string &  slotName)
 	{
-		for(int i = 0; i < this->submc.size(); i++)
+		for (int i = 0; i < this->submc.size(); i++)
 		{
-			if(slotName == this->submc[i]->getName())
-			{ 
+			if (slotName == this->submc[i]->getName())
+			{
 				return this->submc[i];
 			}
 		}
 		return NULL;
 	};
-    Node *  MC::getMemNode(const string &  slotName)
-	 {
+	Node *  MC::getMemNode(const string &  slotName)
+	{
 		for (int i = 0; i < this->submcbs.size(); i++)
-		 {
+		{
 			MovieClipSubBase *_node = ISTYPE(MovieClipSubBase, this->submcbs[i]);
 			if (_node && slotName == _node->slotName)
-			 { 
+			{
 				return ISTYPE(Node, this->submcbs[i]);
-			 }
-		 }
-		 return NULL;
+			}
+		}
+		return NULL;
 	};
- 
-    void MC::addMCbs(MovieClipSubBase * mcs){
+
+	void MC::addMCbs(MovieClipSubBase * mcs){
 		this->submcbs.push(mcs);
 		if (ISTYPE(Node, mcs)){
 			ISTYPE(Node, mcs)->retain();
@@ -105,17 +105,17 @@ namespace engine
 		MovieClip * mvc = getRootMc(this);
 		if (mvc)
 			mvc->mcbs.push(mcs);
-        //if (ISTYPE(MCText, mcs)){
-        //    this->mct.push((MCText*)mcs);
-        //}
-        //else if (ISTYPE(MCCase, mcs)){
-        //    this->mcase.push((MCCase*)mcs);
-        //}
-    };
+		//if (ISTYPE(MCText, mcs)){
+		//    this->mct.push((MCText*)mcs);
+		//}
+		//else if (ISTYPE(MCCase, mcs)){
+		//    this->mcase.push((MCCase*)mcs);
+		//}
+	};
 	bool MC::remove(MovieClipSub * mcs) {
-		for(int i = 0; i < this->submc.size(); i++)
+		for (int i = 0; i < this->submc.size(); i++)
 		{
-			if(mcs == this->submc[i])
+			if (mcs == this->submc[i])
 			{
 				this->submc.remove(i);
 				return true;
@@ -124,7 +124,7 @@ namespace engine
 		return false;
 	};
 
-    bool MC::remove(MovieClipSubBase * mcs){
+	bool MC::remove(MovieClipSubBase * mcs){
 		for (int i = 0; i < this->submcbs.size(); i++)
 		{
 			if (mcs == this->submcbs[i])
@@ -135,80 +135,82 @@ namespace engine
 		}
 		return false;
 
-        //if (ISTYPE(MCText, mcs)){
-        //    for (int i = 0; i < this->mct.size(); i++)
-        //    {
-        //        if (mcs == this->mct[i])
-        //        {
-        //            this->mct.remove(i);
-        //            break;
-        //        }
-        //    }
-        //}
-        //else if (ISTYPE(MCCase, mcs)){
-        //    for (int i = 0; i < this->mcase.size(); i++)
-        //    {
-        //        if (mcs == this->mcase[i])
-        //        {
-        //            this->mcase.remove(i);
-        //            break;
-        //        }
-        //    }
-        //}
-    };
-    MCText * MC::createText(const string &  slotName)
-    {
+		//if (ISTYPE(MCText, mcs)){
+		//    for (int i = 0; i < this->mct.size(); i++)
+		//    {
+		//        if (mcs == this->mct[i])
+		//        {
+		//            this->mct.remove(i);
+		//            break;
+		//        }
+		//    }
+		//}
+		//else if (ISTYPE(MCCase, mcs)){
+		//    for (int i = 0; i < this->mcase.size(); i++)
+		//    {
+		//        if (mcs == this->mcase[i])
+		//        {
+		//            this->mcase.remove(i);
+		//            break;
+		//        }
+		//    }
+		//}
+	};
+	MCText * MC::createText(const string &  slotName)
+	{
 		return new MCText(this, slotName);
-    };
-	 
-    MovieClipSub * MC::createMovieClipSub(const string &  slotName)
-    {
+	};
+
+	MovieClipSub * MC::createMovieClipSub(const string &  slotName)
+	{
 		return  new MovieClipSub(this, slotName);
-    }
-    MovieClip * MC::createMovieClip(const string &  slot, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName)
+	}
+	MovieClip * MC::createMovieClip(const string &  slot, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName)
 	{
-		return  new MovieClip(this, slot,rootPath, armName, dbName, defAniName);
+		//return  createMovieClip(slot, new MovieClip(rootPath, armName, dbName, defAniName));
+		return  new MovieClip(this, slot, rootPath, armName, dbName, defAniName);
 	};
-    MovieClip * MC::createMovieClip(const string &  slot, const string &  rootPath, const string &  dbName)
+	MovieClip * MC::createMovieClip(const string &  slot, const string &  rootPath, const string &  dbName)
 	{
-		return  new MovieClip(this, slot,rootPath,  dbName);
+		return  new MovieClip(this, slot, rootPath, dbName);
+		//return  createMovieClip(slot, new MovieClip(rootPath, dbName));
 	};
-    MovieClip * MC::createMovieClip(const string &  slot, MovieClip * mc)
+	MovieClip * MC::createMovieClip(const string &  slot, MovieClip * mc)
 	{
-		mc->mc=this;
-		mc->display=NULL;
-		mc->slotName=slot;
+		mc->mc = this;
+		mc->display = NULL;
+		mc->slotName = slot;
 		mc->reinit();
 		this->addMCbs(mc);
 		return mc;
 	};
-	
+
 	MCCase * MC::createCase(const string &  slotName, bool mouseEnabled, bool draw)
 	{
 		return  new MCCase(this, slotName, mouseEnabled, draw);
-    };
-    MCSprite * MC::createSprite(const string &  slotName, const string &  file)
-	{ 
+	};
+	MCSprite * MC::createSprite(const string &  slotName, const string &  file)
+	{
 		return new MCSprite(this, slotName, file);
 	};
-    MCSprite * MC::createSprite(const string &  slotName, Sprite* file)
-	{ 
+	MCSprite * MC::createSprite(const string &  slotName, Sprite* file)
+	{
 		return new MCSprite(this, slotName, file);
 	};
-    MCMask *  MC::createMask(const string &  slotName)
+	MCMask *  MC::createMask(const string &  slotName)
 	{
 		return new MCMask(this, slotName);
 	};
-    Sprite * MC::getSprite(const string &  slotName)
-    {
+	Sprite * MC::getSprite(const string &  slotName)
+	{
 		return (Sprite*)this->getArmature()->getSlot(slotName)->getDisplay();
 	};
 
 	//void MovieClipSubBase::addMCbs(MC * mc, MovieClipSubBase * mbs)
- //   { 
- //       mc->addMCbs(mbs);
- //   };
-	void MovieClipSubBase::setVisible(bool v){ 
+	//   { 
+	//       mc->addMCbs(mbs);
+	//   };
+	void MovieClipSubBase::setVisible(bool v){
 		this->visible = v;
 		//if (this->display)this->display->setVisible(v);
 	};
@@ -238,14 +240,14 @@ namespace engine
 		//	y = y;
 		//}
 		disPos.x = x;
-		disPos.y= y;// = disPar->convertToNodeSpaceAR(Vec2(x, y));
+		disPos.y = y;// = disPar->convertToNodeSpaceAR(Vec2(x, y));
 		return disPos;
 	};
 	Vec2 MovieClipSubBase::getDisArPos(){
- 		Vec2 thisPos;
+		Vec2 thisPos;
 		//return  thisPos;
-		if (!ISTYPE(MCCase, this) && !ISTYPE(MCText, this) )//&& !ISTYPE(MovieClip, this)
-		{ 
+		if (!ISTYPE(MCCase, this) && !ISTYPE(MCText, this))//&& !ISTYPE(MovieClip, this)
+		{
 			Node * dis = (Node *) this->slot->getDisplay();
 			std::setAnchorPoint(dis, Vec2(0.5, 0.5));
 			thisPos = dis->convertToNodeSpace(dis->getPosition());
@@ -272,167 +274,50 @@ namespace engine
 			display->setContentSize(Size(40, 25));
 			display->setScaleX(1);
 			display->setScaleY(1);
-			MCText * text=ISTYPE(MCText, this);
-			std::setText(text,"TEST");
+			MCText * text = ISTYPE(MCText, this);
+			std::setText(text, "TEST");
 		}
 	}
-	 bool MovieClipSubBase::reinit() 
-	 {
-		 if(!this->slot)
-		 {
-			 if (mc->getArmature())
-			 {
-				 this->slot = mc->getArmature()->getSlot(slotName);
-				 this->bone = mc->getArmature()->getBone(slotName);
-				 this->root = mc->getArmature()->getBone("root");
-			 }
-			 else
-				 return false;
-		 }
-		 if(!this->slot) return false;
-		 if(this->display == this->slot->getDisplay())
-			 return false;
-		 Node* thsi = ISTYPE(Node, this);
- 		 Node * dis = (Node *) this->slot->getDisplay();
-		 if (dis &&  ISTYPE(cocos2d::Sprite, dis))
-		 {
-			isReady = true;
-			Vec2 disPos=getDisPosition();
-			bool expCase = !ISTYPE(MCCase, this) && !ISTYPE(MCText, this);// && !ISTYPE(MovieClip, this);
-			 if(this->display )
-			 {
-				 thsi->retain();
-				 this->display->removeChild(thsi);
-				 this->display = dis;
-				 if (expCase)std::setAnchorPoint(display);
-				 else std::setAnchorPoint(display, Vec2(0.5, 0.5));
-				 display->addChild(thsi);
-				 dis->setPosition(disPos);
-				 setDisScale();
-				 if (expCase){
-					Vec2 thisPos = getDisArPos();
-					thsi->setPosition(thisPos);
-				 }
-
-				 //std::setAnchorPoint(display, Vec2(0.5, 0.5));
-				 if (!ISTYPE(MovieClip, this))
-					display->setName(slotName);
-				 else if(this->slot->_displayData)
-					 display->setName(this->slot->_displayData->name);
-				 thsi->release();
-				 display->setVisible(visible);
-				 return true;
-			  }
-			  else
-			  {
-				  this->display = dis;
-				  if (expCase) std::setAnchorPoint(display);
-				  else std::setAnchorPoint(display, Vec2(0.5, 0.5));
-				  display->addChild(thsi);
-				  dis->setPosition(disPos);
-				  setDisScale();
-				  if (expCase){
-					  Vec2 thisPos = getDisArPos();
-					  thsi->setPosition(thisPos);
-				  }
-				  //std::setAnchorPoint(display, Vec2(0.5, 0.5));
-
-				  if(!ISTYPE(MovieClip, this))
-					  display->setName(slotName);
-				  else if(this->slot->_displayData)
-					  display->setName(this->slot->_displayData->name);
-				  display->setVisible(visible);
-				  return true;
-			  }
-		 }
-		 isReady = false;
-		 return false;
-	 };
-     MCText::MCText(MC * mc, const string &  slotName) :ui::Text()
-    { 
+	MCText::MCText(MC * mc, const string &  slotName) :ui::Text()
+	{
 		init();
-        this->setFontName("Arial");//Arial
-        //this->setFontName("宋体");//Arial
-        this->setFontSize(12);
+		this->setFontName("Arial");//Arial
+		//this->setFontName("宋体");//Arial
+		this->setFontSize(12);
 		//setNodeType("MCText");
-        this->setColor(Color3B::YELLOW);
+		this->setColor(Color3B::YELLOW);
 		this->autorelease();
-		this->mc = mc; 
+		this->mc = mc;
 		this->slotName = slotName;
 		this->setName(slotName);
-        reinit();
+		reinit();
 		mc->addMCbs(this);
 	};
 	void MCText::setVisible(bool v){
 		ui::Text::setVisible(v);
 		MovieClipSubBase::setVisible(v);
 	};
-    bool MCText::reinit()
-    {
-		return MovieClipSubBase::reinit();
-   //     if (this->display == this->slot->getDisplay())
-			//return false;
-   //     Node * dis = (Node *) this->slot->getDisplay();
-   //     if (!this->display)
-   //     {
-   //         this->display = dis;
-   //         display->addChild(this);
-   //         display->setName(slotName);
-   //     }
-   //     else if (this->display && dis)
-   //     {
-   //         this->retain();
-   //         this->display->removeChild(this);
-   //         this->display = (Node*)this->slot->getDisplay();
-   //         display->addChild(this);
-   //         display->setName(slotName);
-   //         this->release();
-   //     }
-    };
+	
 	MCCase::MCCase(MC * mc, const string &  slotName, bool mouseEnabled, bool draw) :BaseNode(), _draw(draw)
-    {
+	{
 		setNodeType("MCCase");
 		BaseNode::init();
-        this->mc = mc;
-		this->mouseEnabled=mouseEnabled;
-        this->slotName = slotName;
-        this->setName(slotName);
-        reinit();
+		this->mc = mc;
+		this->mouseEnabled = mouseEnabled;
+		this->slotName = slotName;
+		this->setName(slotName);
+		reinit();
 		mc->addMCbs(this);
 		addEventNode(this);
-    };
+	};
 	void MCCase::setVisible(bool v){
 		MovieClipSubBase::setVisible(v);
 		BaseNode::setVisible(v);
 	};
-    bool MCCase::reinit()
-    {
-		if(MovieClipSubBase::reinit())
-		{
-			//Size size = display->getContentSize();
-			const dragonBones::Transform * origin = slot->getOrigin(); 
-			//this->setContentSize(Size(origin->scaleX*size.width, origin->scaleY*size.height));
-			////enableMouseHandler(); //涓嶄娇鐢ㄥ崟鐙簨浠?
-			////this->setMouseEnabled(true);
-			//if (_draw)drawRange();
-			//this->setPosition(origin->x, origin->y);
-			//return true;
+	
 
-			Size size = display->getContentSize();
-			//size=Size(this->display->getScaleX()*size.width, this->display->getScaleY()*size.height);
-			this->setContentSize(size);
-			//enableMouseHandler(); //涓嶄娇鐢ㄥ崟鐙簨浠?
-			//this->setMouseEnabled(true);
-			if (_draw)drawRange();
-			this->setPosition(origin->x, origin->y);
-			return true;
-
-		}
-		return false;
-	};
-
-    MCSprite::MCSprite(MC * mc, const string &  slotName, const string &  file) :BaseSprite(file), initSprite(false)
-	{ 
+	MCSprite::MCSprite(MC * mc, const string &  slotName, const string &  file) :BaseSprite(file), initSprite(false)
+	{
 		setNodeType("MCSprite");
 		this->mc = mc;
 		this->slotName = slotName;
@@ -442,16 +327,16 @@ namespace engine
 		addEventNode(this);
 
 	};
-    MCSprite::MCSprite(MC * mc, const string &  slotName, cocos2d::Sprite * sprite) : BaseSprite(sprite), initSprite(false)
+	MCSprite::MCSprite(MC * mc, const string &  slotName, cocos2d::Sprite * sprite) : BaseSprite(sprite), initSprite(false)
 	{
 		setNodeType("MCSprite");
 		this->mc = mc;
 		this->slotName = slotName;
-		this->setName(slotName); 
+		this->setName(slotName);
 		reinit();
 		mc->addMCbs(this);
 	};
-    MCSprite::MCSprite(MC * mc, const string &  slotName) :initSprite(true)
+	MCSprite::MCSprite(MC * mc, const string &  slotName) :initSprite(true)
 	{
 		setNodeType("MCSprite");
 		this->mc = mc;
@@ -464,21 +349,9 @@ namespace engine
 		MovieClipSubBase::setVisible(v);
 		BaseSprite::setVisible(v);
 	};
-	bool MCSprite::reinit()
-	{
-		if(MovieClipSubBase::reinit())
-		{
-			if(initSprite && ISTYPE(cocos2d::Sprite, this->display))
-			{
-				cocos2d::Sprite * sprite = (Sprite*)this->display;
-				this->initWithTexture(sprite->getTexture());
-			}
-			return true;
-		}
-		return false;
-	};
+	
 
-    MCMask::MCMask(MC * mc, const string &  slotName) :mask(0)
+	MCMask::MCMask(MC * mc, const string &  slotName) :mask(0)
 	{
 		setNodeType("MCMask");
 		this->mc = mc;
@@ -490,17 +363,10 @@ namespace engine
 	void MCMask::setVisible(bool v){
 		BaseNode::setVisible(v);
 		MovieClipSubBase::setVisible(v);
-        if(this->mask)
-            mask->setVisible(v);
+		if (this->mask)
+			mask->setVisible(v);
 	};
-	bool MCMask::reinit() 
-	{
-		MovieClipSubBase::reinit();
-		if(this->display)
-			this->mask = ISTYPE(Sprite,this->display);
-		return this->mask != NULL;
-	};
-
+	
 	void MovieClip::addMcs(MovieClipSub * mcs)
 	{
 		this->mcs.push(mcs);
@@ -526,79 +392,79 @@ namespace engine
 		this->mcbs.clear();
 	}
 	void MovieClip::destroy(MovieClipSub * & ms)
-	{ 
- 		MC * par = NULL;
-		for(int i = 0; i < this->mcs.size(); i++)
+	{
+		MC * par = NULL;
+		for (int i = 0; i < this->mcs.size(); i++)
 		{
-			if(ms == this->mcs[i])
+			if (ms == this->mcs[i])
 			{
 				this->mcs.remove(i);
-				par=ms->mc;
+				par = ms->mc;
 				par->remove(ms);
-                delete ms;
-                ms = NULL; 
-                break;
+				delete ms;
+				ms = NULL;
+				break;
 			}
 		}
 	};
 	bool MovieClip::remove(MovieClipSub * ms)
-    {
+	{
 		MC * par = NULL;
-        for (int i = 0; i < this->mcs.size(); i++)
-        {
-            if (ms == this->mcs[i])
-            {
-                this->mcs.remove(i);
+		for (int i = 0; i < this->mcs.size(); i++)
+		{
+			if (ms == this->mcs[i])
+			{
+				this->mcs.remove(i);
 				par = ms->mc;
-				if(par)
+				if (par)
 					par->remove(ms);
 				else
 					MC::remove(ms);
 				return true;
-            }
-        }
+			}
+		}
 		return false;
-    };
-   
-    //void MovieClip::destroy(MCText * & mcs){
-    //    for (int i = 0; i < this->mcs.size(); i++)
-    //    {
-    //        if (mcs == this->mct[i])
-    //        {
-    //            this->mct.remove(i);
-    //            delete mcs;
-    //            mcs = NULL;
-    //            break;
-    //        }
-    //    }
-    //};
-    //void MovieClip::destroy(MCCase * & mcs){
-    //    for (int i = 0; i < this->mcase.size(); i++)
-    //    {
-    //        if (mcs == this->mcase[i])
-    //        {
-    //            this->mcase.remove(i);
-    //            delete mcs;
-    //            mcs = NULL;
-    //            break;
-    //        }
-    //    }
-    //};
+	};
 
-    void MovieClip::gotoAndStop(int cf, const string &  aniName)
-    {
-        MC::gotoAndStop(cf, aniName);
+	//void MovieClip::destroy(MCText * & mcs){
+	//    for (int i = 0; i < this->mcs.size(); i++)
+	//    {
+	//        if (mcs == this->mct[i])
+	//        {
+	//            this->mct.remove(i);
+	//            delete mcs;
+	//            mcs = NULL;
+	//            break;
+	//        }
+	//    }
+	//};
+	//void MovieClip::destroy(MCCase * & mcs){
+	//    for (int i = 0; i < this->mcase.size(); i++)
+	//    {
+	//        if (mcs == this->mcase[i])
+	//        {
+	//            this->mcase.remove(i);
+	//            delete mcs;
+	//            mcs = NULL;
+	//            break;
+	//        }
+	//    }
+	//};
+
+	void MovieClip::gotoAndStop(int cf, const string &  aniName)
+	{
+		MC::gotoAndStop(cf, aniName);
 		int l = this->submc.size();
-        for (int i = 0; i < l; i++)
+		for (int i = 0; i < l; i++)
 			this->submc[i]->reinit();
-        l = this->mcbs.size();
-        for (int i = 0; i < l; i++)
+		l = this->mcbs.size();
+		for (int i = 0; i < l; i++)
 			this->mcbs[i]->reinit();
-        //l = this->mcase.size();
-        //for (int i = 0; i < l; i++)
-        //    this->mcase[i]->reinit();
-    };
-    MovieClip::MovieClip(dragonBones::CCArmatureDisplay * container, const string &  _defAniName) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0)
+		//l = this->mcase.size();
+		//for (int i = 0; i < l; i++)
+		//    this->mcase[i]->reinit();
+	};
+	MovieClip::MovieClip(dragonBones::CCArmatureDisplay * container, const string &  _defAniName) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0)
 	{
 		setNodeType("MovieClip");
 		//std::map<std::string, dragonBones::AnimationData*> & animations = container->getArmature()->_armatureData->animations;
@@ -609,86 +475,105 @@ namespace engine
 		//	float duration = it.second->duration;
 		//	CCLOG("load %s totalFrames=%i duration=%f", aniName.c_str(), totalFrames, duration);
 		//}
-        string defAniName = _defAniName;
-        this->defAniName = defAniName;
-		if(defAniName == "")
+		string defAniName = _defAniName;
+		this->defAniName = defAniName;
+		if (defAniName == "")
 			this->defAniName = defAniName = container->getArmature()->_armatureData->defaultAnimation->name;
-		totalFrames = container->getArmature()->_armatureData->animations[defAniName]->frameCount+1;// ;
+		totalFrames = container->getArmature()->_armatureData->animations[defAniName]->frameCount + 1;// ;
 		float duration = container->getArmature()->_armatureData->animations[defAniName]->duration;
 		CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
 		this->display = this->container = container;
-		this->armName = container->getArmature()->getName(); 
+		this->armName = container->getArmature()->getName();
 		BaseNode::init();
 		addChild(display);
+		resetSize();
 		this->setName(container->getName());
-        this->gotoAndStop(1);
+		this->gotoAndStop(1);
 		//std::setAnchorPoint(display, true);
-        //this->autorelease(); in BaseNode::init();
+		//this->autorelease(); in BaseNode::init();
 		this->isReady = true;
 	};
-    MovieClip::MovieClip(const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0)
+	MovieClip::MovieClip(const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0)
 	{
 		setNodeType("MovieClip");
 		this->rootPath = rootPath;
 		this->armName = armName;
-		this->dbName = dbName; 
+		this->dbName = dbName;
 		init(rootPath, armName, dbName, defAniName);
 	};
-    bool MovieClip::init(const string &  rootPath, const string &  armName, const string &  dbName, const string &  _defAniName)
-	{ 
-        if(isReady && this->container && this->getName() == armName)
-        {
+	bool MovieClip::init(const string &  rootPath, const string &  armName, const string &  dbName, const string &  _defAniName)
+	{
+		if (isReady && this->container && this->getName() == armName)
+		{
 			return true;
 		}
-		if(this->mc) 
+		if (this->mc)
+		{
 			this->container = this->loadArmature(rootPath, armName, dbName);
-		else 
+			const dragonBones::Rectangle aabb = getRectangle();
+			this->container->setContentSize(Size(aabb.width , aabb.height ));
+			std::changeAnchorPoint(this->container,0.5);
+			//this->container->setAnchorPoint(Vec2(0.5,0.5));
+			//this->container->setPosition(Vec2(aabb.width/2, aabb.height/2));
+
+/*
+			Vec2 absPos1 = this->getAnchorPointInPoints();
+			this->setAnchorPoint(Vec2(xy, xy));
+			Vec2 absPos2 = this->getAnchorPointInPoints();
+			this->setPosition(this->getPosition() + absPos2 - absPos1);*/
+
+		} 
+		else
+		{
 			this->display = this->container = this->loadArmature(rootPath, armName, dbName);
-        string defAniName = _defAniName;
-        this->defAniName = defAniName;
-		if(defAniName == "")
+		}
+		string defAniName = _defAniName;
+		this->defAniName = defAniName;
+		if (defAniName == "")
 			this->defAniName = defAniName = this->getArmature()->_armatureData->defaultAnimation->name;
-		totalFrames = this->getArmature()->_armatureData->animations[defAniName]->frameCount+ 1;//;
+		totalFrames = this->getArmature()->_armatureData->animations[defAniName]->frameCount + 1;//;
 		float duration = this->getArmature()->_armatureData->animations[defAniName]->duration;
 		CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
 		addChild(container);
-        this->gotoAndStop(1);
+		this->gotoAndStop(1);
 		//std::setAnchorPoint(display, true);
+		resetSize();
 
 		//this->autorelease(); in BaseNode::init();
 		this->setName(armName);
 		this->isReady = true;
 		init();
-	
+
 		return true;
 	};
 	MovieClip::MovieClip(const string &  armName, const string &  dbName, BaseNode *node) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0)
-	{ 
+	{
 		setNodeType("MovieClip");
 		this->armName = armName;
 		this->dbName = dbName;
-		this->display=this->container = this->loadArmature(armName, dbName);
-		if(defAniName == "")
+		this->display = this->container = this->loadArmature(armName, dbName);
+		if (defAniName == "")
 			this->defAniName = defAniName = this->getArmature()->_armatureData->defaultAnimation->name;
-		totalFrames = this->getArmature()->_armatureData->animations[defAniName]->frameCount+ 1;//;
+		totalFrames = this->getArmature()->_armatureData->animations[defAniName]->frameCount + 1;//;
 		float duration = this->getArmature()->_armatureData->animations[defAniName]->duration;
 		CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
 		BaseNode::init();
 		addChild(display);
 		//this->autorelease(); in BaseNode::init();
-		this->setName(armName); 
-        this->gotoAndStop(1);
+		this->setName(armName);
+		resetSize();
+		this->gotoAndStop(1);
 		//std::setAnchorPoint(display,true);
 		if (node)node->addChild(this);
 		this->isReady = true;
 	};
-    MovieClip::MovieClip(World * world, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName) :MovieClip(rootPath, armName, dbName, defAniName)
-	{ 
-		if(world)setOnceMove(world);
+	MovieClip::MovieClip(World * world, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName) :MovieClip(rootPath, armName, dbName, defAniName)
+	{
+		if (world)setOnceMove(world);
 	};
 
 	MovieClip::MovieClip(MC *mc, dragonBones::Slot * slot, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0)
-	{ 
+	{
 		this->mc = mc;
 		this->slotName = slot->getName();
 		this->setName(slotName);
@@ -697,7 +582,7 @@ namespace engine
 	};
 	MovieClip::MovieClip(MC *mc, const string &  slotName, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0)
 	{
-		
+
 		this->mc = mc;
 		this->rootPath = rootPath;
 		this->armName = armName;
@@ -713,7 +598,7 @@ namespace engine
 		this->mc = mc;
 		this->slotName = slotName;
 		this->setName(slotName);
-		this->rootPath = rootPath; 
+		this->rootPath = rootPath;
 		this->dbName = dbName;
 		this->defAniName = "";
 		reinit();
@@ -724,49 +609,19 @@ namespace engine
 		MovieClipSubBase::setVisible(v);
 	};
 
-	bool MovieClip::reinit()
+	
+	void MovieClip::update(float dt)
 	{
-		if(this->mc && MovieClipSubBase::reinit())
-		{ 
-			string _armName = armName;
-			if(_armName.empty()) 
-			//{
-			//	if(ISTYPE(dragonBones::CCArmatureDisplay, this->display))
-			//	{
-			//		//dragonBones::CCArmatureDisplay * dis = ISTYPE(dragonBones::CCArmatureDisplay, this->display);
-			//		Slot * _slot=this->getArmature()->getSlot(slotName);
-			//		if(_slot)
-			//		{
-			//			Node * n = (Node *)_slot->getDisplay();
-			//			if(_slot->_displayData)
-			//			n->setName(this->slot->_displayData->name);
-			//			_armName = n->getName();
-			//		}
-			//	}
-			//	else if(ISTYPE(Sprite, this->display))
-			//	{
-			//		_armName = this->display->getName();
-			//	}
-			//	logInfo("_displayData->name", _armName);
-			//} 
-			_armName = this->display->getName();
-			init(rootPath, _armName, dbName, defAniName);//display=_armName
-		}
-		return this->isReady;
+		nextFram();
 	};
-
-    void MovieClip::update(float dt)
-    {
-        nextFram();
-    };	
-    void MovieClipSub::update(float dt)
-    {
-        nextFram();
-    };
+	void MovieClipSub::update(float dt)
+	{
+		nextFram();
+	};
 	bool MovieClip::setOnceMove(World * _world)
 	{
 		this->world = _world;
-		if(world)
+		if (world)
 		{
 			this->isOnce = true;
 			this->world->addChild(this);
@@ -779,31 +634,36 @@ namespace engine
 	}
 	bool MovieClip::init()
 	{
-		  BaseNode::init();
-		  Size size = this->container->getContentSize();
-		  const dragonBones::Rectangle & aabb = this->getArmature()->getArmatureData()->aabb;
-		  if (size.width = 0 || size.height == 0){
-			  this->setContentSize(Size(aabb.width, aabb.height));
-  		  }
-		  //this->container->setPosition(Vec2(aabb.x, aabb.y));
-		  return true;
+		BaseNode::init();
+		Size size = this->container->getContentSize();
+		const dragonBones::Rectangle & aabb = this->getArmature()->getArmatureData()->aabb;
+		if (size.width = 0 || size.height == 0){
+			this->container->setContentSize(Size(aabb.width, aabb.height));
+		}
+		//this->container->setPosition(Vec2(aabb.x, aabb.y));
+		return true;
 	}
 	void MovieClip::drawRange(){
-		const dragonBones::Rectangle & aabb = this->getArmature()->getArmatureData()->aabb;
-		DrawNode* drawNode = DrawNode::create();
-		this->addChild(drawNode);
-		Vec2 ap = this->getAnchorPoint();
-		//Vec2 st = this->convertToWorldSpace(Vec2(aabb.x, aabb.y));
-		//st = this->convertToNodeSpaceAR(st);
-		//Vec2 et = this->convertToWorldSpace(Vec2(aabb.x + aabb.width, aabb.y + aabb.height));
-		//et = this->convertToNodeSpaceAR(et);
+
+		std::drawRange(this, Color4F::GREEN);
+
+
+
+		//const dragonBones::Rectangle & aabb = this->getArmature()->getArmatureData()->aabb;
+		//DrawNode* drawNode = DrawNode::create();
+		//this->addChild(drawNode);
+		//Vec2 ap = this->getAnchorPoint();
+		////Vec2 st = this->convertToWorldSpace(Vec2(aabb.x, aabb.y));
+		////st = this->convertToNodeSpaceAR(st);
+		////Vec2 et = this->convertToWorldSpace(Vec2(aabb.x + aabb.width, aabb.y + aabb.height));
+		////et = this->convertToNodeSpaceAR(et);
+		////drawNode->drawRect(st, et, Color4F::RED);
+		//Vec2 st = Vec2(0 - aabb.width / 2, 0 - aabb.height / 2);
+		//Vec2 et = Vec2(aabb.width / 2, aabb.height / 2);
 		//drawNode->drawRect(st, et, Color4F::RED);
-		Vec2 st = Vec2(0 - aabb.width / 2, 0 - aabb.height / 2);
-		Vec2 et = Vec2(aabb.width / 2, aabb.height / 2);
-		drawNode->drawRect(st, et, Color4F::RED);
-		//if (ap.x > 0 && ap.y>0){
-		//}else
-		//drawNode->drawRect(Vec2(aabb.x, aabb.y), Vec2(aabb.x + aabb.width, aabb.y + aabb.height), Color4F::RED);
+		////if (ap.x > 0 && ap.y>0){
+		////}else
+		////drawNode->drawRect(Vec2(aabb.x, aabb.y), Vec2(aabb.x + aabb.width, aabb.y + aabb.height), Color4F::RED);
 
 
 	};
@@ -812,30 +672,30 @@ namespace engine
 	};
 	dragonBones::Animation *MovieClip::getAnimation()
 	{
- 		if(container)
+		if (container)
 			return container->getAnimation();
-		else 
+		else
 			return NULL;
 	};
 	dragonBones::Armature *MovieClip::getArmature()
 	{
- 		if(container)
+		if (container)
 			return container->getArmature();
 		else
-			return NULL; 
+			return NULL;
 	};
 
-    void MovieClip::setName(const string &  name)
+	void MovieClip::setName(const string &  name)
 	{
 		BaseNode::setName(name);
-		if(this->mc && this->container)
-				this->container->setName(name);
-		else if(!this->mc && this->display)
+		if (this->mc && this->container)
+			this->container->setName(name);
+		else if (!this->mc && this->display)
 			this->display->setName(name);
 	};
 	void MovieClip::onEnter()
 	{
- 		if(world && isOnce && container)
+		if (world && isOnce && container)
 		{
 			container->getEventDispatcher()->setEnabled(true);
 			//container->getEventDispatcher()->addCustomEventListener(EventObject::FRAME_EVENT, std::bind(&MovieClip::onceMovieHandler, this, std::placeholders::_1));
@@ -855,7 +715,7 @@ namespace engine
 		EventObject *eventObject = (EventObject*)(event->getUserData());
 		string eventName = event->getEventName();//eventObject->type
 		//eventObject->animationState->name aniName
-		if(eventObject->type == dragonBones::EventObject::COMPLETE)
+		if (eventObject->type == dragonBones::EventObject::COMPLETE)
 		{
 			this->world->removeChild(this);
 			//}
@@ -876,110 +736,73 @@ namespace engine
 		Size size = this->container->getContentSize();
 		return	size.width*this->getScaleY();
 	};
-	 void MovieClip::setWidth(float w)
+	void MovieClip::setWidth(float w)
 	{
-		BaseNode::setWidth(w);
-		Size size = this->container->getContentSize();
+		//BaseNode::setWidth(w);
+		Size size = this->getContentSize();
 		if (size.width > 0){
 			float r = w / (size.width*this->getScaleX());
 			this->setScaleX(this->getScaleX()*r);
 		}
 	};
-	 void MovieClip::setHeight(float h){
-		BaseNode::setHeight(h);	Size size = this->container->getContentSize();
+	void MovieClip::setHeight(float h){
+		//BaseNode::setHeight(h);	
+		Size size = this->getContentSize();
 		if (size.width > 0){
 			float r = h / (size.width*this->getScaleY());
 			this->setScaleY(this->getScaleY()*r);
 		}
 	};
+	void MovieClip::resetSize(){
+		dragonBones::Rectangle  aabb = getRectangle();
+		this->setContentSize(Size(aabb.width, aabb.height));
+	};
+	void MovieClip::changeAnchorPoint(float xy){
+		Vec2 absPos1 = this->getAnchorPointInPoints();
+		this->setAnchorPoint(Vec2(xy, xy));
+		Vec2 absPos2 = this->getAnchorPointInPoints();
+		this->setPosition(this->getPosition() + absPos2 - absPos1);
+
+		//this->getAnchorPoint();
+		//if (xy == 0.5){
+		//Vec2 orgpos = this->getPosition();
+		//Vec2 pos = this->convertToWorldSpace(Vec2(0, 0));
+		//this->setAnchorPoint(Vec2(xy, xy));
+		//Vec2 pos1 = this->convertToNodeSpace(pos);
+		//this->setPosition(orgpos+pos1);
+		//}
+		//else{
+		//}
+	};
 
 
-	 MovieClipSub::MovieClipSub(MC *_mc, dragonBones::Slot * _slot, const string &  defAniName) :arm(0), userData(0), setTrans(0)
+	MovieClipSub::MovieClipSub(MC *_mc, dragonBones::Slot * _slot, const string &  defAniName) :arm(0), userData(0), setTrans(0)
 	{
 		setNodeType("MovieClipSub");
 		this->mc = _mc;
-        this->slot = _slot;
-        this->slotName = slot->getName();
+		this->slot = _slot;
+		this->slotName = slot->getName();
 		this->display = container = NULL;
 		this->slot = NULL;
 		this->bone = NULL;
 		reinit();
 		addMcs(mc, this);
 	};
-	 MovieClipSub::MovieClipSub(MC *mc, const string &  slotName, const string &  defAniName) :arm(0), userData(0), setTrans(0)
+	MovieClipSub::MovieClipSub(MC *mc, const string &  slotName, const string &  defAniName) :arm(0), userData(0), setTrans(0)
 	{
 		setNodeType("MovieClipSub");
 		this->mc = mc;
-        this->slotName = slotName;
+		this->slotName = slotName;
 		this->display = container = NULL;
 		this->slot = NULL; //mc->getArmature()->getSlot(slotName);
 		this->bone = NULL;
 		reinit();
 		addMcs(mc, this);
-	}; 
-	bool MovieClipSub::reinit()
-    {
-		if(!this->slot)
-		{
-			if (mc->getArmature())
-			{
-				this->slot = mc->getArmature()->getSlot(slotName);
-				this->bone = mc->getArmature()->getBone(slotName);
-				this->root = mc->getArmature()->getBone("root");
-			}
-			else
-				return false;
-		}
-		if(!this->slot) return false;
-		if(this->arm == this->slot->getChildArmature())return false;
-		this->arm = this->slot->getChildArmature();
-        if (arm){
-			this->display=(Node *)this->slot->getDisplay();
-			if (this->display)
-			{
-				this->display->setName(slot->getName());
-				this->display->setVisible(this->visible);
-				this->container = NULL;
-				if (ISTYPE(CCArmatureDisplay, display))
-				{
-					this->container = ISTYPE(CCArmatureDisplay, display);
-					this->transform=this->container->getNodeToWorldTransform();
-				}
-				isReady = true;
-				//disPos = getDisPosition();
-				//disPos=this->display->getParent()->convertToNodeSpaceAR(disPos);
-				//this->display->setPosition(disPos);
-				//std::setAnchorPoint(display);
-				std::map<std::string, dragonBones::AnimationData*> & animations = this->arm->_armatureData->animations;
-				//for each (std::pair<std::string, dragonBones::AnimationData*> it in animations)
-				//{
-				//    std::string aniName = it.first;
-				//    int totalFrames = it.second->frameCount+ 1;//;
-				//    float duration = it.second->duration;
-				//    CCLOG("load %s totalFrames=%i duration=%f", aniName.c_str(), totalFrames, duration);
-				//}
-				//if (Common::String(slotName).EndsWith("Sphere")){
-				//	this->setPosition(100, 100);
-				//}
-				/*string defAniName = this->defAniName;
-				if (defAniName == "")*/
-				defAniName = this->arm->_armatureData->defaultAnimation->name;
-				totalFrames = this->arm->_armatureData->animations[defAniName]->frameCount+ 1;//;
-				float duration = this->arm->_armatureData->animations[defAniName]->duration;
-				CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
-				this->gotoAndStop(1);
-				return true;
-			}
-		}
-		else
-		{
-			isReady = false;
-		}
-		return false;
-	}
+	};
+	
 	void MovieClipSub::setVisible(bool v)
 	{
-		if(this->visible!=v)
+		if (this->visible != v)
 			MovieClipSubBase::setVisible(v);
 		if (this->container && this->container->isVisible() != v)
 		{
@@ -989,7 +812,7 @@ namespace engine
 				this->container->setNodeToParentTransform(_transform);
 			}
 			else{
- 				this->container->setVisible(v);
+				this->container->setVisible(v);
 				if (v && !setTrans){// && _transform.m[12] != transform.m[12] && _transform.m[13] != transform.m[13]
 					//_transform.m[12] += transform.m[12];
 					//_transform.m[13] += transform.m[13];
@@ -999,7 +822,7 @@ namespace engine
 			}
 		}
 	};
-	bool MovieClipSub::isVisible() 
+	bool MovieClipSub::isVisible()
 	{
 		return this->visible &&  getNodeVisible(display);
 	};
@@ -1030,7 +853,7 @@ namespace engine
 	void MovieClipSub::setPosition(float x, float y)
 	{
 		Node * sp = (Node *)this->slot->getDisplay();
-		sp->setPosition(x,y);
+		sp->setPosition(x, y);
 	};
 	void MovieClipSub::setPositionX(float x)
 	{
@@ -1047,7 +870,7 @@ namespace engine
 		return sp->getContentSize();
 	};
 	Node* MovieClipSub::getDisplayNode()
-	{ 
+	{
 		return (Node *)this->slot->getDisplay();
 	};
 	float MovieClipSub::getWidth(){
@@ -1059,7 +882,7 @@ namespace engine
 		return	size.width*this->getScaleY();
 	};
 	void MovieClipSub::setWidth(float w)
-	{ 
+	{
 		Size size = this->getDisplayNode()->getContentSize();
 		if (size.width > 0){
 			float r = w / (size.width*this->getScaleX());
@@ -1067,7 +890,7 @@ namespace engine
 		}
 	};
 	void MovieClipSub::setHeight(float h){
-		 Size size = this->getDisplayNode()->getContentSize();
+		Size size = this->getDisplayNode()->getContentSize();
 		if (size.width > 0){
 			float r = h / (size.width*this->getScaleY());
 			this->setScaleY(this->getScaleY()*r);
@@ -1084,27 +907,27 @@ namespace engine
 	{
 		return arm->getAnimation();
 	};
-    void MovieClipSub::gotoAndStop(int cf, const string &  aniName)
+	void MovieClipSub::gotoAndStop(int cf, const string &  aniName)
 	{
 		MC::gotoAndStop(cf, aniName);
 		int l = this->submc.size();
-		for(int i = 0; i < l; i++)
+		for (int i = 0; i < l; i++)
 			this->submc[i]->reinit();
 		l = this->submcbs.size();
-		for(int i = 0; i < l; i++)
+		for (int i = 0; i < l; i++)
 			this->submcbs[i]->reinit();
 		//l = this->mcase.size();
 		//for (int i = 0; i < l; i++)
 		//    this->mcase[i]->reinit();
 	};
 
-    ImageMovieClip::ImageMovieClip(const string &  _rootPath, const string &  fileNamePre, int numFormat, int imgSize)
+	ImageMovieClip::ImageMovieClip(const string &  _rootPath, const string &  fileNamePre, int numFormat, int imgSize)
 	{
 		setNodeType("ImageMovieClip");
 		currentFrame = 0;
-		totalFrames = imgSize ;
-        string rootPath = _rootPath;
-        if(!rootPath.empty() && rootPath.at(rootPath.length() - 1) != '/')
+		totalFrames = imgSize;
+		string rootPath = _rootPath;
+		if (!rootPath.empty() && rootPath.at(rootPath.length() - 1) != '/')
 		{
 			rootPath += "/";
 		}
@@ -1122,15 +945,15 @@ namespace engine
 	}
 	void ImageMovieClip::scheduleUpdate(float dt)
 	{
-		if(playing != -1)return;
+		if (playing != -1)return;
 		nextFram();
 	};
 
-    int ImageMovieClip::getTotalFrames(const string &  aniName)
+	int ImageMovieClip::getTotalFrames(const string &  aniName)
 	{
 		return totalFrames;
 	};
-    void ImageMovieClip::gotoAndStop(int cf, const string &  aniName)
+	void ImageMovieClip::gotoAndStop(int cf, const string &  aniName)
 	{
 		this->currentFrame = cf % totalFrames + 1;
 		char tmp[8];
@@ -1147,12 +970,12 @@ namespace engine
 	{
 		nextFram();
 	}
-    void ImageMovieClip::play(const string &  aniName)
+	void ImageMovieClip::play(const string &  aniName)
 	{
 		playing = 1;
 	}
 	;
-    void ImageMovieClip::stop(const string &  aniName)
+	void ImageMovieClip::stop(const string &  aniName)
 	{
 		playing = 0;
 	};
@@ -1162,6 +985,258 @@ namespace engine
 		setNodeType("SpriteClip");
 		this->container = container;
 	};
+	bool MCText::reinit()
+	{
+		return MovieClipSubBase::reinit();
+		//     if (this->display == this->slot->getDisplay())
+		//return false;
+		//     Node * dis = (Node *) this->slot->getDisplay();
+		//     if (!this->display)
+		//     {
+		//         this->display = dis;
+		//         display->addChild(this);
+		//         display->setName(slotName);
+		//     }
+		//     else if (this->display && dis)
+		//     {
+		//         this->retain();
+		//         this->display->removeChild(this);
+		//         this->display = (Node*)this->slot->getDisplay();
+		//         display->addChild(this);
+		//         display->setName(slotName);
+		//         this->release();
+		//     }
+	};
+	bool MovieClipSubBase::reinit()
+	{
+		if (!this->slot)
+		{
+			if (mc->getArmature())
+			{
+				this->slot = mc->getArmature()->getSlot(slotName);
+				this->bone = mc->getArmature()->getBone(slotName);
+				this->root = mc->getArmature()->getBone("root");
+			}
+			else
+				return false;
+		}
+		if (!this->slot) return false;
+		if (this->display == this->slot->getDisplay())
+			return false;
+		Node* thsi = ISTYPE(Node, this);
+		Node * dis = (Node *) this->slot->getDisplay();
+		if (dis &&  ISTYPE(cocos2d::Sprite, dis))
+		{
+			isReady = true;
+			Vec2 disPos = getDisPosition();
+			if (!this->display)
+			{
+				this->display = dis;
+				if (!ISTYPE(MovieClip, this))
+					display->addChild(thsi);
+				std::setAnchorPoint(display, Vec2(0.5, 0.5));
+				display->setPosition(disPos  );
+				this->disPos = display->getAnchorPointInPoints();
+				//display->setPosition(disPos - display->getAnchorPointInPoints());
+				std::changeAnchorPoint(dis, 0);
+				setDisScale();
+				if (!ISTYPE(MovieClip, this))
+					display->setName(slotName);
+				else if (this->slot->_displayData)
+					display->setName(this->slot->_displayData->name);
+				display->setVisible(visible);
+				return true;
+			}
+			else
+			{
+				if (!ISTYPE(MovieClip, this))
+					thsi->retain();
+				this->display->removeChild(thsi);
+				this->display = dis;
+				std::setAnchorPoint(display, Vec2(0.5, 0.5));
+				display->setPosition(disPos);
+				this->disPos = display->getAnchorPointInPoints();
+				//display->setPosition(disPos - display->getAnchorPointInPoints());
+				std::changeAnchorPoint(dis, 0);
+				if (!ISTYPE(MovieClip, this))
+					display->addChild(thsi);
+				else
+					thsi->removeAllChildren();
+				setDisScale();
+				if (!ISTYPE(MovieClip, this))
+					display->setName(slotName);
+				else if (this->slot->_displayData)
+					display->setName(this->slot->_displayData->name);
+				if (!ISTYPE(MovieClip, this))thsi->release();
+				display->setVisible(visible);
+				return true;
+			}
+		}
+		isReady = false;
+		return false;
+	};
+	bool MCCase::reinit()
+	{
+		if (MovieClipSubBase::reinit())
+		{
+			//Size size = display->getContentSize();
+			const dragonBones::Transform * origin = slot->getOrigin();
+			//this->setContentSize(Size(origin->scaleX*size.width, origin->scaleY*size.height));
+			////enableMouseHandler(); //涓嶄娇鐢ㄥ崟鐙簨浠?
+			////this->setMouseEnabled(true);
+			//if (_draw)drawRange();
+			//this->setPosition(origin->x, origin->y);
+			//return true;
 
+			Size size = display->getContentSize();
+			//size=Size(this->display->getScaleX()*size.width, this->display->getScaleY()*size.height);
+			this->setContentSize(size);
+			//enableMouseHandler(); //涓嶄娇鐢ㄥ崟鐙簨浠?
+			//this->setMouseEnabled(true);
+			if (_draw)drawRange();
+			this->setPosition(origin->x, origin->y);
+			return true;
 
+		}
+		return false;
+	};
+	bool MovieClip::reinit()
+	{
+		this->retain();
+		if (this->mc && MovieClipSubBase::reinit())
+		{
+			string _armName = armName;
+			if (_armName.empty())
+				//{
+				//	if(ISTYPE(dragonBones::CCArmatureDisplay, this->display))
+				//	{
+				//		//dragonBones::CCArmatureDisplay * dis = ISTYPE(dragonBones::CCArmatureDisplay, this->display);
+				//		Slot * _slot=this->getArmature()->getSlot(slotName);
+				//		if(_slot)
+				//		{
+				//			Node * n = (Node *)_slot->getDisplay();
+				//			if(_slot->_displayData)
+				//			n->setName(this->slot->_displayData->name);
+				//			_armName = n->getName();
+				//		}
+				//	}
+				//	else if(ISTYPE(Sprite, this->display))
+				//	{
+				//		_armName = this->display->getName();
+				//	}
+				//	logInfo("_displayData->name", _armName);
+				//} 
+				_armName = this->display->getName();
+			//必需先初始化db 再加入节点
+			init(rootPath, _armName, dbName, defAniName);//display=_armName
+			this->display->addChild(this);
+			this->changeAnchorPoint(0.5);
+			this->setPosition(this->getPosition() + this->disPos);
+			//this->display->setAnchorPoint(Vec2(0, 0));
+			//display->setPosition(display->getPosition()+display->getAnchorPointInPoints());//dis 会被重算
+			std::drawRange(this);
+			std::drawRange(display);
+		}
+		this->release();
+		return this->isReady;
+	};
+	bool MCMask::reinit()
+	{
+		MovieClipSubBase::reinit();
+		if (this->display)
+			this->mask = ISTYPE(Sprite, this->display);
+		return this->mask != NULL;
+	};
+	bool MCSprite::reinit()
+	{
+		if (MovieClipSubBase::reinit())
+		{
+			if (initSprite && ISTYPE(cocos2d::Sprite, this->display))
+			{
+				cocos2d::Sprite * sprite = (Sprite*)this->display;
+				this->initWithTexture(sprite->getTexture());
+			}
+			return true;
+		}
+		return false;
+	};
+	bool MovieClipSub::reinit()
+	{
+		if (!this->slot)
+		{
+			if (mc->getArmature())
+			{
+				this->slot = mc->getArmature()->getSlot(slotName);
+				this->bone = mc->getArmature()->getBone(slotName);
+				this->root = mc->getArmature()->getBone("root");
+			}
+			else
+				return false;
+		}
+		if (!this->slot) return false;
+		if (this->arm == this->slot->getChildArmature())return false;
+		this->arm = this->slot->getChildArmature();
+		if (arm){
+			this->display = (Node *)this->slot->getDisplay();
+			if (this->display)
+			{
+				this->display->setName(slot->getName());
+				this->display->setVisible(this->visible);
+				this->container = NULL;
+
+				Vec2 disPos = getDisPosition();
+				std::setAnchorPoint(display, Vec2(0.5, 0.5));
+				display->setPosition(disPos);
+				setDisScale();
+				//std::changeAnchorPoint(display, 0.5);
+				if (ISTYPE(CCArmatureDisplay, display))
+				{
+					this->container = ISTYPE(CCArmatureDisplay, display);
+					this->transform = this->container->getNodeToWorldTransform();
+					std::changeAnchorPoint(container, 0.5);
+					//display->setPosition(display->getPosition() + display->getAnchorPointInPoints());
+				}
+				isReady = true;
+				//if (ISTYPE(MovieClip, this->mc)){
+				//	MovieClip *smc = ISTYPE(MovieClip, this->mc);
+				//	if (ISTYPE(MovieClipSub, smc->mc)){
+				//		std::changeAnchorPoint(display, 0.5);
+				//		smc->display->setPosition(smc->display->getPosition() + smc->display->getAnchorPointInPoints());
+				//	}
+				//	//smc->changeAnchorPoint(0.5);
+				//	//Vec2 absPos1 = smc->display->getAnchorPointInPoints();
+				//	//smc->setPosition(smc->getPosition() + absPos1);
+				//}
+
+				//disPos = getDisPosition();
+				//disPos=this->display->getParent()->convertToNodeSpaceAR(disPos);
+				//this->display->setPosition(disPos);
+				//std::setAnchorPoint(display);
+				std::map<std::string, dragonBones::AnimationData*> & animations = this->arm->_armatureData->animations;
+				//for each (std::pair<std::string, dragonBones::AnimationData*> it in animations)
+				//{
+				//    std::string aniName = it.first;
+				//    int totalFrames = it.second->frameCount+ 1;//;
+				//    float duration = it.second->duration;
+				//    CCLOG("load %s totalFrames=%i duration=%f", aniName.c_str(), totalFrames, duration);
+				//}
+				//if (Common::String(slotName).EndsWith("Sphere")){
+				//	this->setPosition(100, 100);
+				//}
+				/*string defAniName = this->defAniName;
+				if (defAniName == "")*/
+				defAniName = this->arm->_armatureData->defaultAnimation->name;
+				totalFrames = this->arm->_armatureData->animations[defAniName]->frameCount + 1;//;
+				float duration = this->arm->_armatureData->animations[defAniName]->duration;
+				CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
+				this->gotoAndStop(1);
+				return true;
+			}
+		}
+		else
+		{
+			isReady = false;
+		}
+		return false;
+	}
 }

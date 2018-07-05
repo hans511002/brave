@@ -214,7 +214,6 @@ namespace engine
 			world->listOfPlaces.push_back(world->level->places.at(i));
 		}
 
-
 		//this->world->map = new Map();
 		this->world->towerRadius = new TowerRadius_mc();
 		//this->world->towerRadius->stop(); 
@@ -222,7 +221,7 @@ namespace engine
 		this->world->towerRadius->mouseEnabled = false;
 		this->world->towerRadius->setVisible(false);
 		this->world->addChild(this->world->towerRadius);
-		std::setAnchorPoint(this->world->towerRadius, 0.5, 0.5);
+		//std::setAnchorPoint(this->world->towerRadius, 0.5, 0.5);
 
 		//this->world->quality = this->world->saveBox->getStringValue("quality");
 		//if (quality == "low")

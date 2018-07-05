@@ -33,6 +33,7 @@ namespace std
 	bool hitTest(cocos2d::Node * node, const Vec2 &pt,bool mouseEvent=true);
 	bool hitTest(cocos2d::Node * node, cocos2d::EventMouse* e);
 	void drawRange(cocos2d::Node * node, Color4F c = Color4F::RED);
+	void changeAnchorPoint(Node * node, float xy);
 
 	string getNamePath(Node *node);
 	Common::Array<Node*>  getChildNodes(Node *node);
@@ -165,8 +166,7 @@ namespace std
 		bool isAutoDel;
 		virtual void autorelease();
 		virtual void setSize(float w, float h, bool draw = true);
-		virtual void setMCRange(MovieClip * mc);
-		virtual void drawRange();
+ 		virtual void drawRange();
 		virtual void enableMouseHandler(bool listen=false);
 		virtual void enableKeyHandler();
 		virtual void disableMouseHandler();
@@ -188,6 +188,7 @@ namespace std
 		virtual float getHeight();
 		virtual void setWidth(float w);
 		virtual void setHeight(float h);
+		virtual void  changeAnchorPoint(float xy);
 
 		static void setAlpha(cocos2d::Node * node, float);
 		static float getAlpha(cocos2d::Node * node);

@@ -651,7 +651,7 @@ namespace engine
 							this->towerRadius->setWidth(this->towerRadius->myTower->radius * 2);
 							this->towerRadius->setHeight(this->towerRadius->myTower->radius * 2 * this->scaleRadius);
 							this->towerRadius->setPosition(this->towerRadius->myTower->this_pt);
-                            std::setAnchorPoint(this->towerRadius, 0.5, 0.5);
+                            //std::setAnchorPoint(this->towerRadius, 0.5, 0.5);
 							//this->towerRadius->x = this->towerRadius->myTower->this_pt.x;
 							//this->towerRadius->y = this->towerRadius->myTower->this_pt.y;
 							this->towerRadius->setVisible(true);
@@ -727,6 +727,7 @@ namespace engine
 							}
 						}
 						this->towerRadius->drawRange();
+						logInfo("towerRadius", this->towerRadius->getAnchorPoint(),&this->towerRadius->getPosition());
 						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
 					}
 				}
