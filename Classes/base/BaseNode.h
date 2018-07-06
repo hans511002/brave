@@ -127,11 +127,25 @@ namespace std
         EventNode * enode;
 	};	
     std::MouseEvent buildMouseEvent(EventMouse * e);
-
+    enum LinkNodeType{
+        LinkRuleNone=0,
+        LinkPos=1,
+        LinkSize=2,
+        LinkVisible=4,
+        LinkScale=8,
+        LinkAlpha=16,
+        LinkZOrder=32,
+        LinkAnchorPoint=64,
+        LinkRotation=128
+    };
+    static const defaultLinkFlag=255;
+    typedef std::map<Node * , int> LinkRuleMap;
 #define SET_NODETYPENAME() string name=getTypeName();setName(name);setNodeType(name)
 	class BaseNode :public cocos2d::Node, public EventNode
 	{
+    protected:
 		int schdt;
+		LinkRuleMap linkNodes;
 	public:
 		Vec2 basePoint;
 		static const double AnimationInterval;
@@ -193,7 +207,42 @@ namespace std
 		static void setAlpha(cocos2d::Node * node, float);
 		static float getAlpha(cocos2d::Node * node);
 		virtual bool isVisible();
-	protected:
+		//////////////////////////////////////////////////
+		virtual void setLocalZOrder(int localZOrder);
+        virtual void setGlobalZOrder(float globalZOrder);
+        virtual void setScaleX(float scaleX); 
+        virtual void setScaleY(float scaleY); 
+        virtual void setScaleZ(float scaleZ); 
+        virtual void setScale(float scale); 
+        virtual void setScale(float scaleX, float scaleY); 
+        virtual void setPosition(const Vec2 &position);
+        virtual void setNormalizedPosition(const Vec2 &position);
+        virtual void setPosition(float x, float y); 
+        virtual void setPositionX(float x); 
+        virtual void setPositionY(float y); 
+        virtual void setPosition3D(const Vec3& position); 
+        virtual void setPositionZ(float positionZ);
+        virtual void setSkewX(float skewX); 
+        virtual void setSkewY(float skewY);
+        virtual void setAnchorPoint(const Vec2& anchorPoint);
+        virtual void setContentSize(const Size& contentSize);
+        virtual void setVisible(bool visible);
+        virtual void setRotation(float rotation); 
+        virtual void setRotation3D(const Vec3& rotation); 
+        virtual void setRotationQuat(const Quaternion& quat); 
+        virtual void setRotationSkewX(float rotationX); 
+        virtual void setRotationSkewY(float rotationY); 
+        virtual void setOpacity(GLubyte opacity);
+        virtual void setCascadeOpacityEnabled(bool cascadeOpacityEnabled);
+        virtual void setColor(const Color3B& color);
+        virtual void setCascadeColorEnabled(bool cascadeColorEnabled);
+        virtual void setOpacityModifyRGB(bool value);
+        
+        ///////////////////
+        virtual void addLinkNode(Node * node,int linkFlag=defaultLinkFlag);
+        virtual void addLinkNodeFlag(Node * node,int linkFlag);
+        virtual void removeLinkNode(Node * node);
+	    virtual void removeLinkNodeFlag(Node * node,int linkFlag);
 
 	};
 	class BaseSprite :public   cocos2d::Sprite, public EventNode

@@ -162,6 +162,10 @@ namespace std
 		Node * draw=node->getChildByName("drawNode");
 		if (!draw){
 			DrawNode* drawNode = DrawNode::create();
+		    if(ISTYPE(BaseNode,node)){
+		        ISTYPE(BaseNode,node)->setLinkNode(drawNode);
+		    }
+			drawNode->setName("drawNode");
 			std::setAnchorPoint(drawNode, node->getAnchorPoint());
 			node->addChild(drawNode);
 			Vec2 arpos = node->getAnchorPointInPoints();
@@ -398,11 +402,6 @@ namespace std
 		// p = this->convertToNodeSpace(p);
 		return !(p.x < 0 || p.y<0 || p.x > stageSize.width || p.y > stageSize.height);
 	}
-
-	void BaseNode::setAlpha(float op)
-	{
-		setAlpha(this, op);
-	};
 	float BaseNode::getAlpha()
 	{
 		return getAlpha(this);
@@ -1116,4 +1115,142 @@ namespace std
 	void EventNode::logInfo(string label, dragonBones::Transform t){
 		logInfo(label, (dragonBones::Transform const *)(&t));
 	};
+	////////////////////////////////////////////////////
+	void BaseNode::setLocalZOrder(int localZOrder)
+    {
+        Node::setLocalZOrder(localZOrder);
+    };
+    void BaseNode::setGlobalZOrder(float globalZOrder)
+    {
+        Node::setGlobalZOrder(globalZOrder);
+    };
+    void BaseNode::setScaleX(float scaleX)
+    {
+        Node::setScaleX(scaleX);
+    }; 
+    void BaseNode::setScaleY(float scaleY)
+    {
+        Node::setScaleY(scaleY);
+    }; 
+    void BaseNode::setScaleZ(float scaleZ)
+    {
+        Node::setScaleZ(scaleZ);
+    }; 
+    void BaseNode::setScale(float scale)
+    {
+        Node::setScale(scale);
+    }; 
+    void BaseNode::setScale(float scaleX, float scaleY)
+    {
+        Node::setScale(scaleX, scaleY);
+    }; 
+    void BaseNode::setPosition(const Vec2 &position)
+    {
+        Node::setPosition(position);
+    };
+    void BaseNode::setNormalizedPosition(const Vec2 &position)
+    {
+        Node::setNormalizedPosition(position);
+    };
+    void BaseNode::setPosition(float x, float y)
+    {
+        Node::setPosition(x,y);
+    }; 
+    void BaseNode::setPositionX(float x)
+    {
+        Node::setPositionX(x);
+    }; 
+    void BaseNode::setPositionY(float y)
+    {
+        Node::setPositionY(y);
+    }; 
+    void BaseNode::setPosition3D(const Vec3& position)
+    {
+        Node::setPosition3D(position);
+    }; 
+    void BaseNode::setPositionZ(float positionZ)
+    {
+        Node::setPositionZ(positionZ);
+    };
+    void BaseNode::setSkewX(float skewX)
+    {
+        Node::setSkewX(skewX);
+    }; 
+    void BaseNode::setSkewY(float skewY)
+    {
+        Node::setSkewY(skewY);
+    };
+    void BaseNode::setAnchorPoint(const Vec2& anchorPoint)
+    {
+        Node::setAnchorPoint(anchorPoint);
+    };
+    void BaseNode::setContentSize(const Size& contentSize)
+    {
+        Node::setContentSize(contentSize);
+    };
+    void BaseNode::setVisible(bool visible)
+    {
+        Node::setVisible(visible);
+    };
+    void BaseNode::setRotation(float rotation)
+    {
+        Node::setRotation(rotation);
+    }; 
+    void BaseNode::setRotation3D(const Vec3& rotation)
+    {
+        Node::setRotation3D(rotation);
+    }; 
+    void BaseNode::setRotationQuat(const Quaternion& quat)
+    {
+        Node::setRotationQuat(quat);
+    }; 
+    void BaseNode::setRotationSkewX(float rotationX)
+    {
+        Node::setRotationSkewX(rotationX);
+    }; 
+    void BaseNode::setRotationSkewY(float rotationY)
+    {
+        Node::setRotationSkewY(rotationY);
+    }; 
+    void BaseNode::setCascadeOpacityEnabled(bool cascadeOpacityEnabled)
+    {
+        Node::setCascadeOpacityEnabled(cascadeOpacityEnabled);
+    };
+    void BaseNode::setColor(const Color3B& color)
+    {
+        Node::setColor(color);
+    };
+    void BaseNode::setCascadeColorEnabled(bool cascadeColorEnabled)
+    {
+        Node::setCascadeColorEnabled(cascadeColorEnabled);
+    };
+    void BaseNode::setOpacityModifyRGB(bool value)
+    {
+        Node::setOpacityModifyRGB(value);
+    };
+    void BaseNode::setOpacity(GLubyte opacity)
+	{
+		Node::setOpacity(opacity);
+	};
+    void BaseNode::setAlpha(float op)
+	{
+		setAlpha(this, op);
+	};
+    void BaseNode::addLinkNode(Node * node,int linkFlag)
+    {
+        
+    };
+    void BaseNode::removeLinkNode(Node * node)
+    {
+        
+    };
+    void BaseNode::addLinkNodeFlag(Node * node,int linkFlag)
+    {
+        
+    };
+    void BaseNode::removeLinkNodeFlag(Node * node,int linkFlag)
+    {
+        
+    };
+    
 }
