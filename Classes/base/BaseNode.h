@@ -34,6 +34,7 @@ namespace std
 	bool hitTest(cocos2d::Node * node, cocos2d::EventMouse* e);
 	void drawRange(cocos2d::Node * node, Color4F c = Color4F::RED);
 	void changeAnchorPoint(Node * node, float xy);
+	void changeAnchorPoint(Node * node, const Vec2& xy);
 
 	string getNamePath(Node *node);
 	Common::Array<Node*>  getChildNodes(Node *node);
@@ -130,22 +131,25 @@ namespace std
     enum LinkNodeType{
         LinkRuleNone=0,
         LinkPos=1,
-        LinkSize=2,
-        LinkVisible=4,
-        LinkScale=8,
-        LinkAlpha=16,
-        LinkZOrder=32,
-        LinkAnchorPoint=64,
-        LinkRotation=128
+        LinkVisible=2,
+        LinkScale=4,
+		LinkAlpha = 8,
+		LinkSize = 16,
+		LinkRotation = 32,
+		LinkSekw = 64,
+		LinkZOrder = 128,
+        LinkAnchorPoint=256
     };
-    static const defaultLinkFlag=255;
-    typedef std::map<Node * , int> LinkRuleMap;
+    static const int defaultLinkFlag=255;
+	typedef std::map<BaseNode *, int> LinkRuleMap;
 #define SET_NODETYPENAME() string name=getTypeName();setName(name);setNodeType(name)
 	class BaseNode :public cocos2d::Node, public EventNode
 	{
     protected:
 		int schdt;
 		LinkRuleMap linkNodes;
+		//static LinkRuleMap linkBaseNodes;
+		BaseNode * linkParent;
 	public:
 		Vec2 basePoint;
 		static const double AnimationInterval;
@@ -234,16 +238,13 @@ namespace std
         virtual void setRotationSkewY(float rotationY); 
         virtual void setOpacity(GLubyte opacity);
         virtual void setCascadeOpacityEnabled(bool cascadeOpacityEnabled);
-        virtual void setColor(const Color3B& color);
-        virtual void setCascadeColorEnabled(bool cascadeColorEnabled);
         virtual void setOpacityModifyRGB(bool value);
         
         ///////////////////
-        virtual void addLinkNode(Node * node,int linkFlag=defaultLinkFlag);
-        virtual void addLinkNodeFlag(Node * node,int linkFlag);
-        virtual void removeLinkNode(Node * node);
-	    virtual void removeLinkNodeFlag(Node * node,int linkFlag);
-
+		virtual void addLinkNode(BaseNode * node, int linkFlag = defaultLinkFlag);
+		virtual void addLinkNodeFlag(BaseNode * node, int linkFlag);
+		virtual void removeLinkNode(BaseNode * node);
+		virtual void removeLinkNodeFlag(BaseNode * node, int linkFlag);
 	};
 	class BaseSprite :public   cocos2d::Sprite, public EventNode
 	{

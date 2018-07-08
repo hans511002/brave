@@ -18,7 +18,7 @@ namespace engine
 	WorldInterface_mc::WorldInterface_mc():MovieClip("worldinterface/", "WorldInterface_mc", "WorldInterface_mc")
 	{
 		SET_NODETYPENAME();
-		//this->container->setPosition(0, Main::SCREEN_HEIGHT);
+		this->setPosition(0, Main::SCREEN_HEIGHT);
 		//backComponents = this->createMovieClipSub("backComponents");//image
 		barInfo = this->createMovieClipSub("barInfo");
 		barInfoFireTXT = barInfo->createText("fireTXT");
@@ -125,8 +125,8 @@ namespace engine
 		testRestartBoard = this->createMovieClipSub("testRestartBoard");
 		testRestartBoardWaveTXT = testRestartBoard->createText("waveTXT");
 		waveTXT = this->createText("waveTXT");
-		MCText * wavesTXT = this->createText("wavesTXT");
-		std::setText(wavesTXT, "波次:");
+		//MCText * wavesTXT = this->createText("wavesTXT");
+		//std::setText(wavesTXT, "波次:");
 		traceBezier=NULL;
 
 		this->pauseOpenFlag = 0;

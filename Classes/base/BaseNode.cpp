@@ -10,12 +10,12 @@ namespace std
     EventNode::EventNode() :mouseChildren(false), mouseEnabled(false),  mouseFlag(false)
     { 
     };
-	BaseNode::BaseNode() :schdt(0), autoDel(true), listener(0)
+	BaseNode::BaseNode() :schdt(0), autoDel(true), listener(0), linkParent(NULL)
     {
         //setName(getTypeName());
     };
 
-	BaseNode::BaseNode(float w, float h, bool draw) :autoDel(true), listener(0)
+	BaseNode::BaseNode(float w, float h, bool draw) :autoDel(true), listener(0), linkParent(NULL)
 	{
 		setNodeType("BaseNode");
 		this->setContentSize(Size(w, h));
@@ -162,9 +162,6 @@ namespace std
 		Node * draw=node->getChildByName("drawNode");
 		if (!draw){
 			DrawNode* drawNode = DrawNode::create();
-		    if(ISTYPE(BaseNode,node)){
-		        ISTYPE(BaseNode,node)->setLinkNode(drawNode);
-		    }
 			drawNode->setName("drawNode");
 			std::setAnchorPoint(drawNode, node->getAnchorPoint());
 			node->addChild(drawNode);
@@ -252,6 +249,8 @@ namespace std
 	void BaseNode::onExit()
 	{
 		removeEventNode(this);
+		this->linkNodes.clear();
+		if (this->linkParent)this->linkParent->removeLinkNode(this);
 		Node::onExit();
 	};
 
@@ -500,9 +499,12 @@ namespace std
 		  if (basePoint.x && basePoint.y)
 			  child->setPosition(basePoint);
 	  };
-	  void changeAnchorPoint(Node * node,float xy){
+	  void changeAnchorPoint(Node * node, float xy){
+		  changeAnchorPoint(node,Vec2(xy,xy));
+	  }
+	  void changeAnchorPoint(Node * node, const Vec2& xy){
  		  Vec2 absPos1 = node->getAnchorPointInPoints();
-		  node->setAnchorPoint(Vec2(xy, xy));
+		  node->setAnchorPoint(xy);
 		  Vec2 absPos2 = node->getAnchorPointInPoints();
 		  node->setPosition(node->getPosition() + absPos2 - absPos1);
 
@@ -1119,138 +1121,302 @@ namespace std
 	void BaseNode::setLocalZOrder(int localZOrder)
     {
         Node::setLocalZOrder(localZOrder);
+		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end();it++)
+		{
+			if (it->second & LinkNodeType::LinkZOrder)
+				it->first->setLocalZOrder(localZOrder);
+		}
     };
     void BaseNode::setGlobalZOrder(float globalZOrder)
     {
         Node::setGlobalZOrder(globalZOrder);
+		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
+		{
+			if (it->second & LinkNodeType::LinkZOrder)
+				it->first->setGlobalZOrder(globalZOrder);
+		}
     };
     void BaseNode::setScaleX(float scaleX)
     {
         Node::setScaleX(scaleX);
-    }; 
+		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
+		{
+			if (it->second & LinkNodeType::LinkScale)
+				it->first->setScaleX(scaleX);
+		}
+	};
     void BaseNode::setScaleY(float scaleY)
     {
         Node::setScaleY(scaleY);
-    }; 
+		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
+		{
+			if (it->second & LinkNodeType::LinkScale)
+				it->first->setScaleY(scaleY);
+		}
+	};
     void BaseNode::setScaleZ(float scaleZ)
     {
         Node::setScaleZ(scaleZ);
-    }; 
+		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
+		{
+			if (it->second & LinkNodeType::LinkScale)
+				it->first->setScaleZ(scaleZ);
+		}
+	};
     void BaseNode::setScale(float scale)
     {
         Node::setScale(scale);
-    }; 
+		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
+		{
+			if (it->second & LinkNodeType::LinkScale)
+				it->first->setScale(scale);
+		}
+	};
     void BaseNode::setScale(float scaleX, float scaleY)
     {
         Node::setScale(scaleX, scaleY);
-    }; 
+		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
+		{
+			if (it->second & LinkNodeType::LinkScale)
+				it->first->setScale(scaleX, scaleY);
+		}
+	};
     void BaseNode::setPosition(const Vec2 &position)
     {
         Node::setPosition(position);
-    };
+		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
+		{
+			if (it->second & LinkNodeType::LinkPos)
+				it->first->setPosition(position);
+		}
+	};
     void BaseNode::setNormalizedPosition(const Vec2 &position)
     {
         Node::setNormalizedPosition(position);
-    };
+		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
+		{
+			if (it->second & LinkNodeType::LinkPos)
+				it->first->setNormalizedPosition(position);
+		}
+	};
     void BaseNode::setPosition(float x, float y)
     {
         Node::setPosition(x,y);
-    }; 
+		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
+		{
+			if (it->second & LinkNodeType::LinkPos)
+				it->first->setPosition(x, y);
+		}
+	};
     void BaseNode::setPositionX(float x)
     {
         Node::setPositionX(x);
-    }; 
+		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
+		{
+			if (it->second & LinkNodeType::LinkPos)
+				it->first->setPositionX(x);
+		}
+	};
     void BaseNode::setPositionY(float y)
     {
         Node::setPositionY(y);
-    }; 
+		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
+		{
+			if (it->second & LinkNodeType::LinkPos)
+				it->first->setPositionY(y);
+		}
+	};
     void BaseNode::setPosition3D(const Vec3& position)
     {
         Node::setPosition3D(position);
-    }; 
+		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
+		{
+			if (it->second & LinkNodeType::LinkPos)
+				it->first->setPosition3D(position);
+		}
+	};
     void BaseNode::setPositionZ(float positionZ)
     {
         Node::setPositionZ(positionZ);
-    };
+		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
+		{
+			if (it->second & LinkNodeType::LinkPos)
+				it->first->setPositionZ(positionZ);
+		}
+	};
     void BaseNode::setSkewX(float skewX)
     {
         Node::setSkewX(skewX);
-    }; 
+		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
+		{
+			if (it->second & LinkNodeType::LinkSekw)
+				it->first->setSkewX(skewX);
+		}
+	};
     void BaseNode::setSkewY(float skewY)
     {
         Node::setSkewY(skewY);
-    };
+		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
+		{
+			if (it->second & LinkNodeType::LinkSekw)
+				it->first->setSkewY(skewY);
+		}
+	};
     void BaseNode::setAnchorPoint(const Vec2& anchorPoint)
     {
         Node::setAnchorPoint(anchorPoint);
-    };
+		//Vec2 absPos1 = Node::getAnchorPointInPoints();
+		//Node::setAnchorPoint(anchorPoint);
+		//Vec2 absPos2 = Node::getAnchorPointInPoints();
+		//Node::setPosition(Node::getPosition() + absPos2 - absPos1);
+		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
+		{
+			if (it->second & LinkNodeType::LinkAnchorPoint)
+				it->first->setAnchorPoint(anchorPoint);
+		}
+	};
     void BaseNode::setContentSize(const Size& contentSize)
     {
         Node::setContentSize(contentSize);
-    };
+		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
+		{
+			if (it->second & LinkNodeType::LinkSize)
+				it->first->setContentSize(contentSize);
+		}
+	};
     void BaseNode::setVisible(bool visible)
     {
         Node::setVisible(visible);
-    };
+		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
+		{
+			if (it->second & LinkNodeType::LinkSize)
+				it->first->setVisible(visible);
+		}
+	};
     void BaseNode::setRotation(float rotation)
     {
         Node::setRotation(rotation);
-    }; 
+		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
+		{
+			if (it->second & LinkNodeType::LinkRotation)
+				it->first->setRotation(rotation);
+		}
+	};
     void BaseNode::setRotation3D(const Vec3& rotation)
     {
         Node::setRotation3D(rotation);
-    }; 
+		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
+		{
+			if (it->second & LinkNodeType::LinkRotation)
+				it->first->setRotation3D(rotation);
+		}
+	};
     void BaseNode::setRotationQuat(const Quaternion& quat)
     {
         Node::setRotationQuat(quat);
-    }; 
+		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
+		{
+			if (it->second & LinkNodeType::LinkRotation)
+				it->first->setRotationQuat(quat);
+		}
+	};
     void BaseNode::setRotationSkewX(float rotationX)
     {
         Node::setRotationSkewX(rotationX);
-    }; 
+		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
+		{
+			if (it->second & LinkNodeType::LinkRotation)
+				it->first->setRotationSkewX(rotationX);
+		}
+	};
     void BaseNode::setRotationSkewY(float rotationY)
     {
         Node::setRotationSkewY(rotationY);
-    }; 
+		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
+		{
+			if (it->second & LinkNodeType::LinkRotation)
+				it->first->setRotationSkewY(rotationY);
+		}
+	};
     void BaseNode::setCascadeOpacityEnabled(bool cascadeOpacityEnabled)
     {
         Node::setCascadeOpacityEnabled(cascadeOpacityEnabled);
-    };
-    void BaseNode::setColor(const Color3B& color)
-    {
-        Node::setColor(color);
-    };
-    void BaseNode::setCascadeColorEnabled(bool cascadeColorEnabled)
-    {
-        Node::setCascadeColorEnabled(cascadeColorEnabled);
-    };
+		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
+		{
+			if (it->second & LinkNodeType::LinkAlpha)
+				it->first->setCascadeOpacityEnabled(cascadeOpacityEnabled);
+		}
+	};
+ 
     void BaseNode::setOpacityModifyRGB(bool value)
     {
         Node::setOpacityModifyRGB(value);
-    };
+		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
+		{
+			if (it->second & LinkNodeType::LinkAlpha)
+				it->first->setOpacityModifyRGB(value);
+		}
+	};
     void BaseNode::setOpacity(GLubyte opacity)
 	{
 		Node::setOpacity(opacity);
+		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
+		{
+			if (it->second & LinkNodeType::LinkAlpha)
+				it->first->setOpacity(opacity);
+		}
 	};
     void BaseNode::setAlpha(float op)
 	{
 		setAlpha(this, op);
 	};
-    void BaseNode::addLinkNode(Node * node,int linkFlag)
+	void BaseNode::addLinkNode(BaseNode * node, int linkFlag)
     {
-        
+		//Node * _node = node; 
+		addLinkNodeFlag(node, linkFlag);
     };
-    void BaseNode::removeLinkNode(Node * node)
+	void BaseNode::addLinkNodeFlag(BaseNode * node, int linkFlag)
     {
-        
-    };
-    void BaseNode::addLinkNodeFlag(Node * node,int linkFlag)
+		LinkRuleMap::iterator it = linkNodes.find(node);
+		if (it == linkNodes.end())
+		{
+			linkNodes.insert(LinkRuleMap::value_type(node, linkFlag));
+			node->linkParent=this;
+		}
+		else
+			linkNodes[node] = it->second | linkFlag;
+		//it = linkBaseNodes.find(this);
+		//if (it == linkBaseNodes.end()){
+		//	linkBaseNodes.insert(LinkRuleMap::value_type(this, 1));
+		//}
+	};
+	void BaseNode::removeLinkNode(BaseNode * node)
     {
-        
+		LinkRuleMap::iterator it = linkNodes.find(node);
+		if (it != linkNodes.end())
+		{
+			linkNodes.erase(node); 
+			node->setUserObject(NULL);
+		}
     };
-    void BaseNode::removeLinkNodeFlag(Node * node,int linkFlag)
+	void BaseNode::removeLinkNodeFlag(BaseNode * node, int linkFlag)
     {
-        
+		LinkRuleMap::iterator it = linkNodes.find(node);
+		if (it != linkNodes.end())
+		{
+			if (it->second & linkFlag)
+			{
+				int flag = it->second - linkFlag;
+				if (flag == 0){
+					linkNodes.erase(node);
+					node->setUserObject(NULL);
+				}
+				else{
+					linkNodes[node] = it->second - linkFlag;
+				}
+			}
+		}
     };
-    
+ 
+
 }

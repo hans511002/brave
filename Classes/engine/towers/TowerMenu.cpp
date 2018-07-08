@@ -2113,15 +2113,15 @@ namespace engine
 
 		void TowerMenu::spheresMonitor()
 		{
-			//this->container->sphereSlot1SphereSlotCase->setMouseEnabled(false);
-			//this->container->sphereSlot2SphereSlotCase->setMouseEnabled(false);
-			//this->container->sphereSlot3SphereSlotCase->setMouseEnabled(false);
-			//this->container->sphereSlot4SphereSlotCase->setMouseEnabled(false);
-			//this->container->btnGetAllBtnGetAllCase->setMouseEnabled(false);
-			//this->container->sphereSlot1SphereAnima->setVisible(false);
-			//this->container->sphereSlot2SphereAnima->setVisible(false);
-			//this->container->sphereSlot3SphereAnima->setVisible(false);
-			//this->container->sphereSlot4SphereAnima->setVisible(false);
+			this->container->sphereSlot1SphereSlotCase->setMouseEnabled(false);
+			this->container->sphereSlot2SphereSlotCase->setMouseEnabled(false);
+			this->container->sphereSlot3SphereSlotCase->setMouseEnabled(false);
+			this->container->sphereSlot4SphereSlotCase->setMouseEnabled(false);
+			this->container->btnGetAllBtnGetAllCase->setMouseEnabled(false);
+			this->container->sphereSlot1SphereAnima->setVisible(false);
+			this->container->sphereSlot2SphereAnima->setVisible(false);
+			this->container->sphereSlot3SphereAnima->setVisible(false);
+			this->container->sphereSlot4SphereAnima->setVisible(false);
 			if (this->myTower->spheresStack.size() == 0)
 			{
 				if (this->container->sphereSlot1->currentFrame == 2)

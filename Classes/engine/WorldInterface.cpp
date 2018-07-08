@@ -119,11 +119,11 @@ namespace engine
 		this->container->barInfo->setVisible(false);
 
 		this->container->lastTime->setVisible(false);
-		this->container->buyFire->setVisible(false);
-		this->container->buyIce->setVisible(false);
-		this->container->buyStone->setVisible(false);
-		this->container->buyLevin->setVisible(false);
-		this->container->buyGetAll->setVisible(false);
+		this->container->buyFireLightUp->setVisible(false);
+		this->container->buyIceLightUp->setVisible(false);
+		this->container->buyStoneLightUp->setVisible(false);
+		this->container->buyLevinLightUp->setVisible(false);
+		this->container->buyGetAllLightUp->setVisible(false);
 
 
 		//		this->container->backComponents.cacheAsBitmap = true;
