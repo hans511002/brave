@@ -18,7 +18,7 @@ namespace engine
 	WorldInterface_mc::WorldInterface_mc():MovieClip("worldinterface/", "WorldInterface_mc", "WorldInterface_mc")
 	{
 		SET_NODETYPENAME();
-		this->setPosition(0, Main::SCREEN_HEIGHT);
+		//this->setPosition(0, Main::SCREEN_HEIGHT);
 		//backComponents = this->createMovieClipSub("backComponents");//image
 		barInfo = this->createMovieClipSub("barInfo");
 		barInfoFireTXT = barInfo->createText("fireTXT");

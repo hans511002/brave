@@ -137,6 +137,7 @@ namespace engine
         virtual void enterFrameHandler(float dt);//void  enterFrameHandler();  // event : Event
     
 		virtual void removeEventTarget(std::MouseEvent * event, BaseNode* node, string caseName);
+		virtual void removeEventTarget(std::MouseEvent * event, string case1, string caseName);
 		virtual bool preCheckEventTarget(std::MouseEvent * event);
 		virtual   void mouseDownHandler(cocos2d::EventMouse* event);
 		virtual   void mouseUpHandler(cocos2d::EventMouse* event);

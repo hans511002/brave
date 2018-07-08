@@ -165,9 +165,10 @@ namespace std
 			drawNode->setName("drawNode");
 			std::setAnchorPoint(drawNode, node->getAnchorPoint());
 			node->addChild(drawNode);
+			Size size = node->getContentSize();
+			drawNode->setContentSize(size);
 			Vec2 arpos = node->getAnchorPointInPoints();
 			//Vec2 pos = node->convertToNodeSpace(node->getPosition());
-			Size size = node->getContentSize();
 			//Vec2 dest(pos.x + size.width, pos.y + size.height);
 			drawNode->drawRect(Vec2(0, 0) - arpos, (Vec2)size - arpos, c);
 			//drawNode->setScaleX(this->getScaleX());
@@ -507,7 +508,8 @@ namespace std
 		  node->setAnchorPoint(xy);
 		  Vec2 absPos2 = node->getAnchorPointInPoints();
 		  Vec2 dif = absPos2 - absPos1;
-		  node->setPosition(node->getPosition() + Vec2(node->getScaleX()*dif.x, node->getScaleY()*dif.y));
+		  dif= Vec2(node->getScaleX()*dif.x, node->getScaleY()*dif.y);
+		  node->setPosition(node->getPosition() + dif);
 
 		  //this->getAnchorPoint();
 		  //if (xy == 0.5){

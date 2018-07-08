@@ -385,6 +385,14 @@ namespace engine
 			}
 		}
 	}
+	void World::removeEventTarget(std::MouseEvent * event, string case1, string caseName){
+		int ri = event->getIndex(case1);
+		if (ri >= 0){
+			ri = event->getIndex(caseName);
+			if (ri >= 0)
+				event->remove(ri);
+		}
+	}
 	bool World::preCheckEventTarget(std::MouseEvent * event){
 		Vec2 pos= event->getLocationInView();
 		if (this->towerMenu){
@@ -407,9 +415,9 @@ namespace engine
 		if (mouseButton == 1)return;
 		std::MouseEvent me = std::buildMouseEvent(e);
 		std::MouseEvent * event = &me;
+		if (preCheckEventTarget(event))return;
         if(!event->currentTargets.size())
             event->currentTargets.push(this);
-		if (preCheckEventTarget(event))return;
 		while (event->hasNext())
 		{
 			string targetName = event->target->getName();
@@ -547,9 +555,9 @@ namespace engine
 		if (mouseButton == 1)return;
 		std::MouseEvent me = std::buildMouseEvent(e);
 		std::MouseEvent * event = &me;
+		if (preCheckEventTarget(event))return;
         if(!event->currentTargets.size())
             event->currentTargets.push(this);
-		if (preCheckEventTarget(event))return;
 		while (event->hasNext())
         {
  			string targetName = event->target->getName();
@@ -612,9 +620,9 @@ namespace engine
 		if (mouseButton == 1)return;
 		std::MouseEvent me = std::buildMouseEvent(e);
 		std::MouseEvent * event = &me;
+		if (preCheckEventTarget(event))return;
         if(!event->currentTargets.size())
             event->currentTargets.push(this);
-		if (preCheckEventTarget(event))return;
 		//return;
 		while (event->hasNext())
 		{
@@ -726,7 +734,7 @@ namespace engine
 								this->towerRadius->myTower->container->selectTower->setVisible(true);
 							}
 						}
-						this->towerRadius->drawRange();
+						
 						logInfo("towerRadius", this->towerRadius->getAnchorPoint(),&this->towerRadius->getPosition());
 						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
 					}
@@ -791,9 +799,9 @@ namespace engine
 		if (mouseButton == 1)return;
 		std::MouseEvent me = std::buildMouseEvent(e);
 		std::MouseEvent * event = &me;
+		if (preCheckEventTarget(event))return;
         if(!event->currentTargets.size())
             event->currentTargets.push(this);
-		if (preCheckEventTarget(event))return;
 		while (event->hasNext())
 		{
  			string targetName = event->target->getName();
@@ -850,9 +858,9 @@ namespace engine
 		if (mouseButton == 1)return;
 		std::MouseEvent me = std::buildMouseEvent(e);
 		std::MouseEvent * event = &me;
+		if (preCheckEventTarget(event))return;
         if(!event->currentTargets.size())
             event->currentTargets.push(this);
-		if (preCheckEventTarget(event))return;
 		while (event->hasNext())
 		{
  			if (this->exchange)

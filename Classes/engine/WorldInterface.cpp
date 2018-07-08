@@ -3602,6 +3602,10 @@ namespace engine
 			this->container->buyFire->setMouseChildren(true);
 			this->container->buyFire->setMouseEnabled(true);
 			this->container->fireBack->gotoAndStop(1);
+			logInfo(getNamePath(this->container->fireSphere->display), 
+				this->container->fireSphere->getPosition(),
+				&this->container->fireSphere->display->getPosition()
+				, &this->container->fireSphere->display->getParent()->convertToWorldSpace(this->container->fireSphere->display->getPosition()));
 		}
 		else if (param1 == "unblockIce")
 		{

@@ -283,7 +283,7 @@ namespace engine
 		ui::Text::init();
 		//this->setFontName("Arial");//Arial
 		//this->setFontName("宋体");//Arial
-		this->setFontSize(16);
+		this->setFontSize(12);
 		//setNodeType("MCText");
 		this->setColor(Color3B::YELLOW);
 		this->setTextHorizontalAlignment(TextHAlignment::LEFT);
@@ -468,7 +468,7 @@ namespace engine
 		//for (int i = 0; i < l; i++)
 		//    this->mcase[i]->reinit();
 	};
-	MovieClip::MovieClip(dragonBones::CCArmatureDisplay * container, const string &  _defAniName) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0)
+	MovieClip::MovieClip(dragonBones::CCArmatureDisplay * container, const string &  _defAniName) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0), setAr(false)
 	{
 		setNodeType("MovieClip");
 		//std::map<std::string, dragonBones::AnimationData*> & animations = container->getArmature()->_armatureData->animations;
@@ -497,7 +497,7 @@ namespace engine
 		//this->autorelease(); in BaseNode::init();
 		this->isReady = true;
 	};
-	MovieClip::MovieClip(const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0)
+	MovieClip::MovieClip(const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0), setAr(false)
 	{
 		setNodeType("MovieClip");
 		this->rootPath = rootPath;
@@ -514,9 +514,6 @@ namespace engine
 		if (this->mc)
 		{
 			this->container = this->loadArmature(rootPath, armName, dbName);
-			const dragonBones::Rectangle aabb = getRectangle();
-			this->container->setContentSize(Size(aabb.width , aabb.height ));
-			std::changeAnchorPoint(this->container,0.5);
 			//this->container->setAnchorPoint(Vec2(0.5,0.5));
 			//this->container->setPosition(Vec2(aabb.width/2, aabb.height/2));
 
@@ -541,16 +538,15 @@ namespace engine
 		addChild(container);
 		this->gotoAndStop(1);
 		//std::setAnchorPoint(display, true);
+		init();
 		resetSize();
-
 		//this->autorelease(); in BaseNode::init();
 		this->setName(armName);
 		this->isReady = true;
-		init();
 
 		return true;
 	};
-	MovieClip::MovieClip(const string &  armName, const string &  dbName, BaseNode *node) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0)
+	MovieClip::MovieClip(const string &  armName, const string &  dbName, BaseNode *node) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0), setAr(false)
 	{
 		setNodeType("MovieClip");
 		this->armName = armName;
@@ -576,7 +572,7 @@ namespace engine
 		if (world)setOnceMove(world);
 	};
 
-	MovieClip::MovieClip(MC *mc, dragonBones::Slot * slot, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0)
+	MovieClip::MovieClip(MC *mc, dragonBones::Slot * slot, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0), setAr(false)
 	{
 		this->mc = mc;
 		this->slotName = slot->getName();
@@ -584,7 +580,7 @@ namespace engine
 		reinit();
 		mc->addMCbs(this);
 	};
-	MovieClip::MovieClip(MC *mc, const string &  slotName, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0)
+	MovieClip::MovieClip(MC *mc, const string &  slotName, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0), setAr(false)
 	{
 
 		this->mc = mc;
@@ -596,7 +592,7 @@ namespace engine
 		reinit();
 		mc->addMCbs(this);
 	};
-	MovieClip::MovieClip(MC *mc, const string &  slotName, const string &  rootPath, const string &  dbName) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0)
+	MovieClip::MovieClip(MC *mc, const string &  slotName, const string &  rootPath, const string &  dbName) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0), setAr(false)
 	{
 		setNodeType("MovieClip");
 		this->mc = mc;
@@ -705,6 +701,16 @@ namespace engine
 			//container->getEventDispatcher()->addCustomEventListener(EventObject::FRAME_EVENT, std::bind(&MovieClip::onceMovieHandler, this, std::placeholders::_1));
 			container->getEventDispatcher()->addCustomEventListener(EventObject::COMPLETE, std::bind(&MovieClip::onceMovieHandler, this, std::placeholders::_1));
 		}
+		if (this->setAr){
+			//std::changeAnchorPoint(this, arPoint);
+			////std::changeAnchorPoint(this->container, arPoint);
+			//this->container->setPosition(this->getAnchorPointInPoints());
+			/*cocos2d::Vector<Node * > chlds = this->container->getChildren();
+			for (size_t i = 0; i < chlds.size(); i++)
+			{
+				std::setAnchorPoint(chlds.at(i), pos, subset);
+			}*/
+		}
 		BaseNode::onEnter();
 	};
 	void MovieClip::onExit()
@@ -760,12 +766,14 @@ namespace engine
 	void MovieClip::resetSize(){
 		dragonBones::Rectangle  aabb = getRectangle();
 		this->setContentSize(Size(aabb.width, aabb.height));
+		this->container->setContentSize(Size(aabb.width, aabb.height)-Size(2,2));
 	};
 	void MovieClip::changeAnchorPoint(float xy){
-		Vec2 absPos1 = this->getAnchorPointInPoints();
-		this->setAnchorPoint(Vec2(xy, xy));
-		Vec2 absPos2 = this->getAnchorPointInPoints();
-		this->setPosition(this->getPosition() + absPos2 - absPos1);
+		std::changeAnchorPoint(this, xy);
+		//Vec2 absPos1 = this->getAnchorPointInPoints();
+		//this->setAnchorPoint(Vec2(xy, xy));
+		//Vec2 absPos2 = this->getAnchorPointInPoints();
+		//this->setPosition(this->getPosition() + absPos2 - absPos1);
 
 		//this->getAnchorPoint();
 		//if (xy == 0.5){
@@ -1056,7 +1064,7 @@ namespace engine
 					display->setName(this->slot->_displayData->name);
 				display->setVisible(visible);
 				if (!ISTYPE(MovieClip, this))
-					display->addChild(thsi);
+					display->addChild(thsi, 9999);
 				return true;
 			}
 			else
@@ -1083,7 +1091,7 @@ namespace engine
 				if (ISTYPE(MovieClip, this))
 					thsi->removeAllChildren();
 				else
-					display->addChild(thsi);
+					display->addChild(thsi, 9999);
 				return true;
 			}
 		}
@@ -1145,12 +1153,34 @@ namespace engine
 			//必需先初始化db 再加入节点
 			init(rootPath, _armName, dbName, defAniName);//display=_armName
 			this->display->addChild(this);
-			this->changeAnchorPoint(0.5);
-			this->setPosition(this->getPosition() + this->disPos);
+			//std::setAnchorPoint(this, 0.5,0.5);
+			//Vec2 dpos = this->display->getPosition();
+			//this->setPosition(dpos  );
+			this->setAr = false;
+			this->arPoint=Vec2(0.5,0.5);
+			//std::changeAnchorPoint(this, 0.5);
+			//std::changeAnchorPoint(this, 0);
+			//std::setAnchorPoint(this, 0,0);
+			//std::setAnchorPoint(this->container, 0.5,0.5);
+			//std::changeAnchorPoint(this->container, 0.5);
+			//this->setPosition(this->getPosition() + this->disPos);
 			//this->display->setAnchorPoint(Vec2(0, 0));
 			//display->setPosition(display->getPosition()+display->getAnchorPointInPoints());//dis 会被重算
-			std::drawRange(this);
-			std::drawRange(display);
+
+
+			std::changeAnchorPoint(this, arPoint);
+			this->setPosition(this->getPosition()+this->disPos);
+			//std::setAnchorPoint(this, 0, 0);
+			//std::changeAnchorPoint(this->container, arPoint);
+			Node *cnode=Node::create();
+			this->addChild(cnode);
+			cnode->setContentSize(this->getContentSize() - Size(3, 3));
+			cnode->setPosition(Vec2(0, 0) - this->getContentSize()/2);
+			std::drawRange(cnode, Color4F::YELLOW);
+
+			//std::drawRange(this, Color4F::WHITE);
+			//std::drawRange(this->container, Color4F::BLACK);
+			std::drawRange(display, Color4F::ORANGE);
 		}
 		this->release();
 		return this->isReady;

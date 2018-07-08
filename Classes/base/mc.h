@@ -92,6 +92,10 @@ namespace engine
 		float speedX;
 		float speedY;
         bool isOnce;
+		
+		Vec2 arPoint;
+		bool setAr;
+
         dragonBones::CCArmatureDisplay * container;
 		//std::map<std::string, MovieClipSub*> mcs;
         //Common::Array<MCText*> mct;
