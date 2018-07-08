@@ -262,28 +262,28 @@ namespace engine
 		return  thisPos;
 	};
 	void MovieClipSubBase::setDisScale(){
-		if (!ISTYPE(MCText, this)){
+		//if (!ISTYPE(MCText, this)){
 			float scx = slot->getOrigin()->scaleX * bone->getOrigin()->scaleX;
 			if (root) scx *= root->getOrigin()->scaleX;
 			display->setScaleX(scx);
 			float scy = slot->getOrigin()->scaleY * bone->getOrigin()->scaleY;
 			if (root) scy *= root->getOrigin()->scaleY;
 			display->setScaleY(scy);
-		}
-		else{
-			display->setContentSize(Size(40, 25));
-			display->setScaleX(1);
-			display->setScaleY(1);
-			MCText * text = ISTYPE(MCText, this);
-			std::setText(text, "TEST");
-		}
+		//}
+		//else{
+		//	display->setContentSize(Size(40, 25));
+		//	display->setScaleX(1);
+		//	display->setScaleY(1);
+		//	MCText * text = ISTYPE(MCText, this);
+		//	std::setText(text, "TEST");
+		//}
 	}
 	MCText::MCText(MC * mc, const string &  slotName) :ui::Text()
 	{
 		ui::Text::init();
-		this->setFontName("Arial");//Arial
+		//this->setFontName("Arial");//Arial
 		//this->setFontName("宋体");//Arial
-		this->setFontSize(12);
+		this->setFontSize(16);
 		//setNodeType("MCText");
 		this->setColor(Color3B::YELLOW);
 		this->setTextHorizontalAlignment(TextHAlignment::LEFT);
@@ -992,65 +992,26 @@ namespace engine
 	bool MCText::reinit()
 	{
 		if (MovieClipSubBase::reinit()){
-			this->setContentSize(display->getContentSize()-Size(2,2));
-			logInfo(getNamePath(this), this->getAnchorPoint(), &this->getPosition(), &(Vec2)(this->getContentSize()));
-			logInfo(getNamePath(display), display->getAnchorPoint(), &display->getPosition(), &(Vec2)(display->getContentSize()));
-
-			std::setAnchorPoint(this, 0);
-			std::changeAnchorPoint(display, 0.5f);
-			std::setAnchorPoint(display, 0);
-			//this->setPosition(this->disPos);
-
-
-			//std::setAnchorPoint(display, 0.5);
-			if (ISTYPE(MovieClip, this->mc))
-			{
-				this->display->setPosition(display->getPosition()-Vec2(this->disPos.x,0));
-				//Size difSize = (display->getContentSize() - this->getContentSize()) / 2;
-				//this->setPosition(difSize/2);
-				//this->setPosition(this->disPos);
-				//std::changeAnchorPoint(this, 0);
-				//std::changeAnchorPoint(display, 0);
-			}
-			else
-			{
-				//this->display->setPosition(display->getPosition() - Vec2(this->disPos.x, 0));
-				//Size difSize=(display->getContentSize() - this->getContentSize()) / 2;
-				//this->setPosition(Vec2(difSize.width, difSize.height));
-				//display->setPosition(display->getPosition() - difSize);
-				//std::setAnchorPoint(this, 0);
-				////std::changeAnchorPoint(this, 0); 
-				//std::changeAnchorPoint(display, 0.5);
-				//std::setAnchorPoint(display, 0);
-				////std::setAnchorPoint(this, 0.5);
-				////this->setPosition(Vec2(0,0));
-			}
-			logInfo(getNamePath(this), this->getAnchorPoint(), &this->getPosition());
-			logInfo(getNamePath(display), display->getAnchorPoint(), &display->getPosition());
+			this->retain();
+			display->removeChild(this);
+			display->getParent()->addChild(this,9999);//取消绽放造成的字体大小变化
+			this->release();
+			this->setPosition(display->getPosition());
+			Size size=display->getContentSize();
+			this->setContentSize(Size(size.width* display->getScaleX(), size.height*  display->getScaleY()) - Size(1, 1));
+			//logInfo(getNamePath(display), display->getScaleX(), display->getScaleY());
+			//logInfo(getNamePath(this), this->getAnchorPoint(), &this->getPosition(), &(Vec2)(this->getContentSize()));
+			//logInfo(getNamePath(display), display->getAnchorPoint(), &display->getPosition(), &(Vec2)(display->getContentSize()));
+			std::setText(this, "TEST");
 			std::drawRange(this, Color4F::RED);
 			std::drawRange(this->display, Color4F::YELLOW);
 		}
 		return this->isReady;
-
-		//     if (this->display == this->slot->getDisplay())
-		//return false;
-		//     Node * dis = (Node *) this->slot->getDisplay();
-		//     if (!this->display)
-		//     {
-		//         this->display = dis;
-		//         display->addChild(this);
-		//         display->setName(slotName);
-		//     }
-		//     else if (this->display && dis)
-		//     {
-		//         this->retain();
-		//         this->display->removeChild(this);
-		//         this->display = (Node*)this->slot->getDisplay();
-		//         display->addChild(this);
-		//         display->setName(slotName);
-		//         this->release();
-		//     }
 	};
+	void MovieClipSubBase::initPos()
+	{
+	};
+
 	bool MovieClipSubBase::reinit()
 	{
 		if (!this->slot)
@@ -1077,6 +1038,7 @@ namespace engine
 			{
 				this->display = dis;
 				display->setPosition(disPos  );
+				setDisScale();
 				std::setAnchorPoint(display, Vec2(0.5, 0.5));
 				//std::setAnchorPoint(display, Vec2(0, 0));
 				//std::changeAnchorPoint(display, 0.5);
@@ -1088,7 +1050,6 @@ namespace engine
 					//std::setAnchorPoint(display, Vec2(0, 0));
 					//std::setAnchorPoint(ISTYPE(Node, this), Vec2(0.5, 0.5));
 				}
-				setDisScale();
 				if (!ISTYPE(MovieClip, this))
 					display->setName(slotName);
 				else if (this->slot->_displayData)
@@ -1105,13 +1066,13 @@ namespace engine
 				this->display->removeChild(thsi);
 				this->display = dis;
 				display->setPosition(disPos);
+				setDisScale();
 				std::setAnchorPoint(display, Vec2(0.5, 0.5));
 				this->disPos = display->getAnchorPointInPoints();
 				//display->setPosition(disPos - display->getAnchorPointInPoints());
 				if (!ISTYPE(MCCase, this) && !ISTYPE(MCText, this))
 					std::changeAnchorPoint(dis, 0);
 
-				setDisScale();
 				if (!ISTYPE(MovieClip, this))
 					display->setName(slotName);
 				else if (this->slot->_displayData)

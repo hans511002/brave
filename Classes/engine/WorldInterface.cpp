@@ -119,11 +119,11 @@ namespace engine
 		this->container->barInfo->setVisible(false);
 
 		this->container->lastTime->setVisible(false);
-		this->container->buyFireLightUp->setVisible(false);
-		this->container->buyIceLightUp->setVisible(false);
-		this->container->buyStoneLightUp->setVisible(false);
-		this->container->buyLevinLightUp->setVisible(false);
-		this->container->buyGetAllLightUp->setVisible(false);
+		//this->container->buyFireLightUp->setVisible(false);
+		//this->container->buyIceLightUp->setVisible(false);
+		//this->container->buyStoneLightUp->setVisible(false);
+		//this->container->buyLevinLightUp->setVisible(false);
+		//this->container->buyGetAllLightUp->setVisible(false);
 
 
 		//		this->container->backComponents.cacheAsBitmap = true;
@@ -3464,13 +3464,12 @@ namespace engine
 			this->container->buyFire->setMouseChildren(false);
 			this->container->buyFire->setMouseEnabled(false);
 			this->container->fireSphere->setVisible(false);
-			printNodePos(this->container->buyFireBuyTXT);
-
-			//this->container->buyFire->gotoAndStop(2);
-			//this->container->buyIce->gotoAndStop(2);
-			//this->container->buyStone->gotoAndStop(2);
-			//this->container->buyLevin->gotoAndStop(2);
-			//this->container->buyGetAll->gotoAndStop(2);
+ 
+			this->container->buyFire->gotoAndStop(2);
+			this->container->buyIce->gotoAndStop(2);
+			this->container->buyStone->gotoAndStop(2);
+			this->container->buyLevin->gotoAndStop(2);
+			this->container->buyGetAll->gotoAndStop(2);
 
 			this->container->iceSphere->setAlpha(0);
 			this->container->iceNumTXT->setAlpha(0);

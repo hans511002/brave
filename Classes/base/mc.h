@@ -79,7 +79,7 @@ namespace engine
 		virtual Vec2 getDisPosition();
 		virtual Vec2 getDisArPos();
 		void MovieClipSubBase::setDisScale();
-
+		virtual void initPos();
     };
     struct MovieClip :public virtual BaseNode, public virtual MC,public virtual MovieClipSubBase
     {

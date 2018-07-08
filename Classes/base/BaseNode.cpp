@@ -503,10 +503,11 @@ namespace std
 		  changeAnchorPoint(node,Vec2(xy,xy));
 	  }
 	  void changeAnchorPoint(Node * node, const Vec2& xy){
- 		  Vec2 absPos1 = node->getAnchorPointInPoints();
+		  Vec2 absPos1 = node->getAnchorPointInPoints();
 		  node->setAnchorPoint(xy);
 		  Vec2 absPos2 = node->getAnchorPointInPoints();
-		  node->setPosition(node->getPosition() + absPos2 - absPos1);
+		  Vec2 dif = absPos2 - absPos1;
+		  node->setPosition(node->getPosition() + Vec2(node->getScaleX()*dif.x, node->getScaleY()*dif.y));
 
 		  //this->getAnchorPoint();
 		  //if (xy == 0.5){
