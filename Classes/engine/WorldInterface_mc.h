@@ -51,11 +51,11 @@ namespace engine
 		MovieClipSub * butCastGolem;
 		MCCase * butCastGolemCastGolemCase;
 		MovieClipSub * butCastGolemCont;
-		MovieClipSub * butCastGolemContContMask;
+		MCMask * butCastGolemContContMask;
 		MovieClipSub * butCastIceman; 
 		 MCCase     * butCastIcemanCastIcemanCase;
 		MovieClipSub * butCastIcemanCont;
-		MovieClipSub * butCastIcemanContContMask;
+		MCMask * butCastIcemanContContMask;
 		MovieClipSub * buyFire;
 		MCText     * buyFireBuyTXT;
 		MovieClipSub * buyFireCoin;

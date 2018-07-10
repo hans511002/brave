@@ -33,26 +33,29 @@ namespace engine
 		virtual dragonBones::Animation *getAnimation()   = 0;
 		MC();
 
-        MCText * createText(const string &  slot);
-        MovieClipSub * createMovieClipSub(const string &  slot);
-        MovieClip * createMovieClip(const string &  slot, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "");
+        MCText * createText(const string &  slot, bool reinit = false);
+        MovieClipSub * createMovieClipSub(const string &  slot,bool reinit=false);
+        MovieClip * createMovieClip(const string &  slot, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "", bool reinit = false);
         MovieClip * createMovieClip(const string &  slot, const string &  rootPath, const string &  dbName);
-        MovieClip * MC::createMovieClip(const string &  slot, MovieClip * mc);
-		MCCase * createCase(const string &  slot, bool mouseEnabled=true, bool draw = true);
-        MCSprite * createSprite(const string &  slot, const string &  file);
-        MCSprite * createSprite(const string &  slot, Sprite* file);
-        MCMask * createMask(const string &  slot);
+        MovieClip * MC::createMovieClip(const string &  slot, MovieClip * mc, bool reinit = false);
+        MCCase * createCase(const string &  slot, bool reinit = false);
+        MCSprite * createSprite(const string &  slot, const string &  file, bool reinit = false);
+        MCSprite * createSprite(const string &  slot, Sprite* file, bool reinit = false);
+        MCMask * createMask(const string &  slot, bool reinit = false);
         Sprite *getSprite(const string &  slotName);
 		
 
-		void addMcs(MC * mc, MovieClipSub * mcs);
+        void addMcs(MC * mc, MovieClipSub * mcs, bool reinit=false);
 		virtual bool remove(MovieClipSub * ms);
 		static MovieClip * getRootMc(MC * mc);
 
-		Common::Array<MovieClipSub*> submc;
-		//Common::Array<MCText*> mct;
+		Common::Array<MovieClipSub*> submc; 
 		Common::Array<MovieClipSubBase *> submcbs;
-        virtual void addMCbs(MovieClipSubBase * mcs);
+
+        Common::Array<MovieClipSubBase*> updateMcbs;
+
+
+        virtual void addMCbs(MovieClipSubBase * mcs, bool reinit=false);
 		virtual bool remove(MovieClipSubBase * ms);
 
         virtual Node * getMemNode(const string &  slotName);
@@ -91,7 +94,7 @@ namespace engine
 		short myFrame;
 		float speedX;
 		float speedY;
-        bool isOnce;
+        bool isOnce; 
 		
 		Vec2 arPoint;
 		bool setAr;
@@ -103,7 +106,7 @@ namespace engine
 
 		//所有全部子集群,用于自动删除
 		Common::Array<MovieClipSub*> mcs;
-		Common::Array<MovieClipSubBase*> mcbs;
+        Common::Array<MovieClipSubBase*> mcbs;
         
         MovieClip(dragonBones::CCArmatureDisplay * container, const string &  defAniName = "");
         MovieClip(const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "");
@@ -129,11 +132,7 @@ namespace engine
 		void addMcs(MovieClipSub * mcs);
         virtual void destroy(MovieClipSub * & mcs);
 		virtual bool remove(MovieClipSub * ms);
-
-		inline Vec2 convertToWorldSpace(Vec2 pos) { return BaseNode::convertToWorldSpace(pos); };
-		inline Vec2 localToGlobal(Vec2 pos) { return this->convertToWorldSpace(pos); };
-		inline Vec2 globalToLocal(Vec2 pos) { return this->convertToNodeSpaceAR(pos); };
-		
+	
 		virtual float getWidth();
 		virtual float getHeight();
 		virtual   void setWidth(float w);
@@ -178,7 +177,7 @@ namespace engine
 		cocos2d::Point getPosition();
 		float getPositionX();
 		float getPositionY();
-		void setPosition(cocos2d::Point pos);
+		void setPosition(const cocos2d::Point &pos);
 		void setPosition(float x,float y);
 		void setPositionX(float x);
 		void setPositionY(float y);
@@ -196,9 +195,10 @@ namespace engine
 		inline float getRotation(){ return getDisplayNode()->getRotation(); };
 		inline void 	setRotation(float r){return getDisplayNode()->setRotation(r); };
 
-		inline Vec2 convertToWorldSpace(Vec2 pos) { return getDisplayNode()->convertToWorldSpace(pos); };
-		inline Vec2 localToGlobal(Vec2 pos) { return getDisplayNode()->convertToWorldSpace(pos); };
-		inline Vec2 globalToLocal(Vec2 pos) { return getDisplayNode()->convertToNodeSpaceAR(pos); };
+        virtual Vec2 convertToWorldSpace(const Vec2 & pos);
+        virtual Vec2 localToGlobal(const Vec2 &  pos);
+        virtual Vec2 globalToLocal(const Vec2 &  pos);
+
         virtual void gotoAndStop(int cf, const string &  aniName = "");
 		inline virtual void setAlpha(float op) { BaseNode::setAlpha(getDisplayNode(), op); };
 		inline virtual float getAlpha() { return  BaseNode::getAlpha(getDisplayNode()); };
@@ -212,7 +212,7 @@ namespace engine
 		void setUserData(void * data) { this->userData = data; };
 		void* getUserData() { return this->userData; };
         virtual void update(float dt = 0);
-		virtual void setName(string name){ this->name = name; };
+        virtual void setName(const string & name) { this->name = name; };
 	};
 
 #define DEFINE_MCSUB(clzName,member) struct clzName :public MovieClipSub { \

@@ -12,34 +12,34 @@ namespace engine
 			stoneDeathFlag = 0;
 			levinDeathFlag = 0;
 			healthBarCounter = 0;
+            Common::DateTime dt;
 
 			levinDeath = this->createMovieClip("levinDeath", "unit/", "levinDeath", "UnitBase_mc");
-			stoneDeath = this->createMovieClip("stoneDeath", "unit/", "stoneDeath", "UnitBase_mc");
-			iceDeath = this->createMovieClip("iceDeath", "unit/", "iceDeath", "UnitBase_mc");
-			buffHP = this->createMovieClip("buffHP", "unit/", "buffHP", "UnitBase_mc");
-			airShock = this->createMovieClip("airShock", "unit/", "airShock", "UnitBase_mc");
-			buffSpeed = this->createMovieClip("buffSpeed", "unit/", "buffSpeed", "UnitBase_mc");
-			dust1 = this->createMovieClip("dust1", "unit/", "dust1", "UnitBase_mc");
-			dust2 = this->createMovieClip("dust2", "unit/", "dust2", "UnitBase_mc");
-			dust3 = this->createMovieClip("dust3", "unit/", "dust3", "UnitBase_mc");
-			fireAttack = this->createMovieClip("fireAttack", "unit/", "fireAttack", "UnitBase_mc");
-			iceAttack = this->createMovieClip("iceAttack", "unit/", "iceAttack", "UnitBase_mc");
-			levinAttack = this->createMovieClip("levinAttack", "unit/", "levinAttack", "UnitBase_mc");
-			iceFreez = this->createMovieClip("iceFreez", "unit/", "iceFreez", "UnitBase_mc");
-			fireEffect = this->createMovieClip("fireEffect", "unit/", "fireEffect", "UnitBase_mc");
-			iceEffect = this->createMovieClip("iceEffect", "unit/", "iceEffect", "UnitBase_mc");
-			armor = this->createMovieClip("armor", "unit/", "armor", "UnitBase_mc");
-			healthBar = this->createMovieClip("healthBar", "unit/", "healthBar", "UnitBase_mc");
-			shadow = this->createMovieClip("shadow", "unit/", "shadow", "UnitBase_mc");
-			selectUnit = this->createMovieClip("selectUnit", "unit/", "selectUnit", "UnitBase_mc");
-			dust4 = this->createMovieClip("dust4", "unit/", "dust4", "UnitBase_mc");
-			cont = this->createMovieClipSub("cont");
-			unitCase = this->createCase("unitCase");
-			
-		
+            stoneDeath = this->createMovieClip("stoneDeath", "unit/", "stoneDeath", "UnitBase_mc");
+            iceDeath = this->createMovieClip("iceDeath", "unit/", "iceDeath", "UnitBase_mc");
+            buffHP = this->createMovieClip("buffHP", "unit/", "buffHP", "UnitBase_mc");
+            airShock = this->createMovieClip("airShock", "unit/", "airShock", "UnitBase_mc");
+            buffSpeed = this->createMovieClip("buffSpeed", "unit/", "buffSpeed", "UnitBase_mc");
+            dust1 = this->createMovieClip("dust1", "unit/", "dust1", "UnitBase_mc");
+            dust2 = this->createMovieClip("dust2", "unit/", "dust2", "UnitBase_mc");
+            dust3 = this->createMovieClip("dust3", "unit/", "dust3", "UnitBase_mc");
+            fireAttack = this->createMovieClip("fireAttack", "unit/", "fireAttack", "UnitBase_mc");
+            iceAttack = this->createMovieClip("iceAttack", "unit/", "iceAttack", "UnitBase_mc");
+            levinAttack = this->createMovieClip("levinAttack", "unit/", "levinAttack", "UnitBase_mc");
+            iceFreez = this->createMovieClip("iceFreez", "unit/", "iceFreez", "UnitBase_mc");
+            fireEffect = this->createMovieClip("fireEffect", "unit/", "fireEffect", "UnitBase_mc");
+            iceEffect = this->createMovieClip("iceEffect", "unit/", "iceEffect", "UnitBase_mc");
+            armor = this->createMovieClip("armor", "unit/", "armor", "UnitBase_mc");
+            healthBar = this->createMovieClip("healthBar", "unit/", "healthBar", "UnitBase_mc");
+            shadow = this->createMovieClip("shadow", "unit/", "shadow", "UnitBase_mc");
+            selectUnit = this->createMovieClip("selectUnit", "unit/", "selectUnit", "UnitBase_mc");
+            dust4 = this->createMovieClip("dust4", "unit/", "dust4", "UnitBase_mc");
+            logInfo("time:", Common::String(Common::DateTime().GetTicks() - dt.GetTicks()));
+            unitCase = this->createCase("unitCase");
+            cont = this->createMovieClipSub("cont");
 
 			healthBarGetDamage = (Sprite*)healthBar->getArmature()->getSlot("getDamage")->getDisplay();
-			healthBarCont = (Sprite*)healthBar->getArmature()->getSlot("cont")->getDisplay();
+            healthBarCont = (Sprite*)healthBar->getArmature()->getSlot("cont")->getDisplay();
 
 			if (typeUnit == 28){
 				this->giveHealth1 = this->createMovieClipSub("giveHealth1");// DBCCFactory::getInstance()->buildArmatureNode("giveHealth1");
@@ -112,28 +112,28 @@ namespace engine
 
 		bool Unit_mc::init(){
 			MovieClip::init();
-			//this->levinDeath->setVisible(false);
-			//this->stoneDeath->setVisible(false);
-			//this->iceDeath->setVisible(false);
-			//this->buffHP->setVisible(false);
-			//this->airShock->setVisible(false);
-			//this->buffSpeed->setVisible(false);
-			//this->dust1->setVisible(false);
-			//this->dust2->setVisible(false);
-			//this->dust3->setVisible(false);
-			//this->fireAttack->setVisible(false);
-			//this->iceAttack->setVisible(false);
-			//this->levinAttack->setVisible(false);
-			//this->iceFreez->setVisible(false);
-			//this->fireEffect->setVisible(false);
-			//this->iceEffect->setVisible(false);
-			//this->armor->setVisible(false);
-			//this->healthBar->setVisible(false);
-			//this->shadow->setVisible(false);
-			//this->selectUnit->setVisible(false);
-			//this->dust4->setVisible(false);
+			this->levinDeath->setVisible(false);
+			this->stoneDeath->setVisible(false);
+			this->iceDeath->setVisible(false);
+			this->buffHP->setVisible(false);
+			this->airShock->setVisible(false);
+			this->buffSpeed->setVisible(false);
+			this->dust1->setVisible(false);
+			this->dust2->setVisible(false);
+			this->dust3->setVisible(false);
+			this->fireAttack->setVisible(false);
+			this->iceAttack->setVisible(false);
+			this->levinAttack->setVisible(false);
+			this->iceFreez->setVisible(false);
+			this->fireEffect->setVisible(false);
+			this->iceEffect->setVisible(false);
+			this->armor->setVisible(false);
+			this->healthBar->setVisible(false);
+			this->shadow->setVisible(false);
+			this->selectUnit->setVisible(false);
+			this->dust4->setVisible(false);
 
-			//this->healthBarGetDamage->setVisible(false);
+			this->healthBarGetDamage->setVisible(false);
 
 
 

@@ -56,7 +56,12 @@ namespace engine
             {
                 return name;
             };
-
+            inline void clear()
+            {
+                name = "";
+                value = 0;
+                d.clear();
+            };
             // prefix
             inline int operator++() { return ++value; }
             inline int operator--() { return --value; }

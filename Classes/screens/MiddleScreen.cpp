@@ -46,7 +46,6 @@ namespace screens
 
     bool MiddleScreen::init()
     {
-        BaseNode::init();
         //this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
         //this->addEventListener(Event.REMOVED_FROM_STAGE, this->reInit);
         //this->addEventListener(Event.ENTER_FRAME, this->enterFrameHandler);
@@ -68,10 +67,11 @@ namespace screens
 		
 		
 
-		logInfo("container->leftUp", this->container->leftUp->display->getParent()->getPosition());
-		logInfo("container->leftUp", this->container->leftUp->display->getParent()->getParent()->getPosition());
+		//logInfo("container->leftUp", this->container->leftUp->display->getParent()->getPosition());
+		//logInfo("container->leftUp", this->container->leftUp->display->getParent()->getParent()->getPosition());
 
-		logInfo("container->rightUp", this->container->rightUp->convertToWorldSpace(Vec2(0, 0)));
+		//logInfo("container->rightUp", this->container->rightUp->convertToWorldSpace(Vec2(0, 0)));
+		//
 		//this->container->leftUp->setPosition(0, Main::SCREEN_HEIGHT);
 		//this->container->leftDown->setPosition(0, 0);
 		//this->container->rightUp->setPosition(Main::SCREEN_WIDTH, Main::SCREEN_HEIGHT);
@@ -84,13 +84,14 @@ namespace screens
             //Sounds.instance.stopAll();
         }
         //Sounds.instance.playSoundWithVol("snd_middleScreen", 0.95);
-        enableFrameHandler(true);
+        BaseNode::init();
         return true;
     }// end function
 
 	void MiddleScreen::onEnter()
 	{
         BaseNode::onEnter();
+        enableFrameHandler(true);
         //this->schedule(static_cast<cocos2d::SEL_SCHEDULE>(&MiddleScreen::enterFrameHandler));
 		//this->schedule(schedule_selector(MiddleScreen::enterFrameHandler), 1.0f);
 	}

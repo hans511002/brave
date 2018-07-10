@@ -48,7 +48,7 @@ namespace engine
 		//this->listOfIcePortals = [];
 		//this->listOfStonePortals = [];
 		//this->listOfLevinPortals = [];
-		//this->live = this->liveMax;
+		this->live = this->liveMax;
 		//this->listOfMoveSpheres = [];
 		this->listOfClasses.clear();
 		//this->listOfTowers = [];
@@ -393,16 +393,59 @@ namespace engine
 				event->remove(ri);
 		}
 	}
-	bool World::preCheckEventTarget(std::MouseEvent * event){
-		Vec2 pos= event->getLocationInView();
-		if (this->towerMenu){
-			removeEventTarget(event, this->towerMenu, "road");
-			removeEventTarget(event, this->towerMenu, "towerCase");
-		}
-		if (this->getSphere)
-		{
-			removeEventTarget(event, this->getSphere, "sphereCase");
-		}
+    bool World::preCheckEventTarget(std::MouseEvent * event, EventMouse::MouseEventType _mouseEventType)
+    {
+
+         //this->castMask->fireCase->stop();
+        //this->castMask->iceCase->stop();
+        //this->castMask->stoneCase->stop();
+        //this->castMask->levinCase->stop();
+        //this->castMask->getAllCase->stop();
+        //this->castMask->archiveCase->stop();
+        //this->castMask->interfaceUpCase->stop();
+        //this->castMask->sellCase->stop();
+        removeEventTarget(event, "fireCase", "interfaceUpCase");
+        removeEventTarget(event, "iceCase", "interfaceUpCase");
+        removeEventTarget(event, "stoneCase", "interfaceUpCase");
+        removeEventTarget(event, "levinCase", "interfaceUpCase");
+        removeEventTarget(event, "getAllCase", "interfaceUpCase");
+        removeEventTarget(event, "fireCase", "archiveCase");
+        removeEventTarget(event, "iceCase", "archiveCase");
+        removeEventTarget(event, "stoneCase", "archiveCase");
+        removeEventTarget(event, "levinCase", "archiveCase");
+        removeEventTarget(event, "getAllCase", "archiveCase");
+        removeEventTarget(event, "archiveCase", "interfaceUpCase");
+        removeEventTarget(event, "sellCase", "interfaceUpCase");   
+        Vec2 pos = event->getLocationInView();
+        switch(_mouseEventType)
+        {
+        case cocos2d::EventMouse::MouseEventType::MOUSE_NONE:
+            break;
+        case cocos2d::EventMouse::MouseEventType::MOUSE_DOWN:
+            if(this->towerMenu)
+            {
+                removeEventTarget(event, this->towerMenu, "road");
+                removeEventTarget(event, this->towerMenu, "towerCase");
+            }
+            if(this->getSphere)
+            {
+                removeEventTarget(event, this->getSphere, "sphereCase");
+                removeEventTarget(event, "fireCase", "sphereCase");
+                removeEventTarget(event, "iceCase", "sphereCase");
+                removeEventTarget(event, "stoneCase", "sphereCase");
+                removeEventTarget(event, "levinCase", "sphereCase");
+                removeEventTarget(event, "getAllCase", "sphereCase");
+            }
+            break;
+        case cocos2d::EventMouse::MouseEventType::MOUSE_UP:
+            break;
+        case cocos2d::EventMouse::MouseEventType::MOUSE_MOVE:
+            break;
+        case cocos2d::EventMouse::MouseEventType::MOUSE_SCROLL:
+            break;
+        default:
+            break;
+        } 
 		event->reset();
 		return false;
 	};
@@ -415,7 +458,7 @@ namespace engine
 		if (mouseButton == 1)return;
 		std::MouseEvent me = std::buildMouseEvent(e);
 		std::MouseEvent * event = &me;
-		if (preCheckEventTarget(event))return;
+        if(preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_DOWN))return;
         if(!event->currentTargets.size())
             event->currentTargets.push(this);
 		while (event->hasNext())
@@ -555,7 +598,7 @@ namespace engine
 		if (mouseButton == 1)return;
 		std::MouseEvent me = std::buildMouseEvent(e);
 		std::MouseEvent * event = &me;
-		if (preCheckEventTarget(event))return;
+        if(preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_UP))return;
         if(!event->currentTargets.size())
             event->currentTargets.push(this);
 		while (event->hasNext())
@@ -620,7 +663,7 @@ namespace engine
 		if (mouseButton == 1)return;
 		std::MouseEvent me = std::buildMouseEvent(e);
 		std::MouseEvent * event = &me;
-		if (preCheckEventTarget(event))return;
+        if(preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_MOVE))return;
         if(!event->currentTargets.size())
             event->currentTargets.push(this);
 		//return;
@@ -799,7 +842,7 @@ namespace engine
 		if (mouseButton == 1)return;
 		std::MouseEvent me = std::buildMouseEvent(e);
 		std::MouseEvent * event = &me;
-		if (preCheckEventTarget(event))return;
+        if(preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_DOWN))return;
         if(!event->currentTargets.size())
             event->currentTargets.push(this);
 		while (event->hasNext())
@@ -858,7 +901,7 @@ namespace engine
 		if (mouseButton == 1)return;
 		std::MouseEvent me = std::buildMouseEvent(e);
 		std::MouseEvent * event = &me;
-		if (preCheckEventTarget(event))return;
+        if(preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_DOWN))return;
         if(!event->currentTargets.size())
             event->currentTargets.push(this);
 		while (event->hasNext())
@@ -1076,7 +1119,7 @@ namespace engine
 		tempObject->gate = param6;
 		tempObject->path = param4;
 		this->addChild(tempObject, 2);
-		tempObject->init();
+        tempObject->init();
 		tempObject->setPosition(50, 420);
 		return tempObject;
 	}
@@ -1134,6 +1177,7 @@ namespace engine
 		tempObject1->enemyTarget = param4;
 		tempObject1->damage = param5;
 		this->addChild(tempObject1);
+        tempObject1->init();
 		return tempObject1;
 	}// end function
 

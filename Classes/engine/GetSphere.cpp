@@ -76,7 +76,8 @@ namespace engine
 			container->cross->setVisible(false);
 		}
 		this->addChild(this->container);
-		this->changeAnchorPoint(0.5);
+        this->setContentSize(this->container->getContentSize());
+		//this->changeAnchorPoint(0.5);
 		this->container->changeAnchorPoint(0.5);
 
 		this->world->worldInterface->castRegime("on");

@@ -1523,7 +1523,7 @@ namespace engine{
 							}
 							else
 							{
-								this->shootingTurnStack[this->j] = NULL;
+                                this->shootingTurnStack[this->j].clear();// = NULL;
 							}
 							break;
 						}

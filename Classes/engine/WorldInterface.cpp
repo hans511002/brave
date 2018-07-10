@@ -767,7 +767,7 @@ namespace engine
 						this->removeChild(this->listOfGetAhieve[this->i]);
 						this->listOfGetAhieve.splice(this->i, 1);
 					}
-					i++;
+					i--;
 				}
 			}
 			if (this->listOfAnimation.size() > 0)
@@ -784,7 +784,7 @@ namespace engine
 						this->removeChild(this->listOfAnimation[this->i]);
 						this->listOfAnimation.splice(this->i, 1);
 					}
-					i++;
+					i--;
 				}
 			}
 		}
@@ -1737,7 +1737,7 @@ namespace engine
 			if (targetName == "pointerCase")
 			{
                 event->processed = true;
-                Node * parent = event->target->getParent()->getParent()->getParent()->getParent();
+                Node * parent = event->target->getParent()->getParent()->getParent();
 				LevelPointer * pointer = ISTYPE(LevelPointer, parent);
 				if (!pointer->mouseFlag)
 				{

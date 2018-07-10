@@ -315,6 +315,9 @@
     <ClCompile Include="..\Classes\engine\level\RoadLevels_mc.cpp">
       <Filter>src\engine\level</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\base\PThread.cpp">
+      <Filter>src\base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -710,9 +713,6 @@
     <ClInclude Include="..\Classes\test\DBComTest.h">
       <Filter>src\test</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\test\WorldInterface.h">
-      <Filter>src\test</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\screens\FastPause.h">
       <Filter>src\screens</Filter>
     </ClInclude>
@@ -730,6 +730,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\engine\level\RoadLevels_mc.h">
       <Filter>src\engine\level</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\base\PThread.h">
+      <Filter>src\base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

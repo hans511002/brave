@@ -135,22 +135,22 @@ namespace engine
 				}
 			}
 			//this->schedule(schedule_selector(Unit::update), 0.0f);
-			Node *hbDis = (Node*)this->container->getArmature()->getSlot("healthBar")->getDisplay();
-			Vec2 wpos = hbDis->getParent()->convertToWorldSpace(hbDis->getPosition());
-			logInfo("hbDis pos=", wpos, &hbDis->getPosition(), &hbDis->getAnchorPoint());
-			if (hbDis != this->container->healthBar->display){
-				hbDis = this->container->healthBar->display;
-				wpos = hbDis->getParent()->convertToWorldSpace(hbDis->getPosition());
-				logInfo("hbDis pos=", wpos, &hbDis->getPosition(), &hbDis->getAnchorPoint());
-			}
+			//Node *hbDis = (Node*)this->container->getArmature()->getSlot("healthBar")->getDisplay();
+			//Vec2 wpos = hbDis->getParent()->convertToWorldSpace(hbDis->getPosition());
+			//logInfo("hbDis pos=", wpos, &hbDis->getPosition(), &hbDis->getAnchorPoint());
+			//if (hbDis != this->container->healthBar->display){
+			//	hbDis = this->container->healthBar->display;
+			//	wpos = hbDis->getParent()->convertToWorldSpace(hbDis->getPosition());
+			//	logInfo("hbDis pos=", wpos, &hbDis->getPosition(), &hbDis->getAnchorPoint());
+			//}
 
-			Node * parent =this->container->healthBar;
-			while (parent->getParent()){
-				string parStr = getNamePath(parent); 
-				Vec2 wpos = parent->getParent()->convertToWorldSpace(parent->getPosition());
-				logInfo(parStr + " pos=", wpos, &parent->getPosition(), &parent->getAnchorPoint());
- 				parent = parent->getParent();
-			}
+			//Node * parent =this->container->healthBar;
+			//while (parent->getParent()){
+			//	string parStr = getNamePath(parent); 
+			//	Vec2 wpos = parent->getParent()->convertToWorldSpace(parent->getPosition());
+			//	logInfo(parStr + " pos=", wpos, &parent->getPosition(), &parent->getAnchorPoint());
+ 			//	parent = parent->getParent();
+			//}
 
 			return true;
 		}// end function
@@ -1047,7 +1047,7 @@ namespace engine
 					if (!this->container->fireAttack->isVisible() && this->typeUnit != 34)
 					{
 						this->container->fireAttack->setVisible(true);
-						this->container->fireAttack->play("fireattack");
+						this->container->fireAttack->play();//"fireAttack"
 					}
 					if (this->typeUnit != 23)
 					{
@@ -1090,7 +1090,7 @@ namespace engine
 					if (!this->container->iceAttack->isVisible() && this->typeUnit != 34)
 					{
 						this->container->iceAttack->setVisible(true);
-						this->container->iceAttack->play("iceattack");
+						this->container->iceAttack->play();//"iceAttack"
 					}
 					if (this->typeUnit != 24 && this->typeUnit != 34)
 					{
@@ -1465,7 +1465,7 @@ namespace engine
 					if (!this->container->levinAttack->isVisible())
 					{
 						this->container->levinAttack->setVisible(true);
-						this->container->levinAttack->play("levinattack");
+						this->container->levinAttack->play();//"levinAttack"
 					}
 					if (this->typeUnit != 26)
 					{

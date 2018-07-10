@@ -1460,8 +1460,8 @@ namespace engine
 				this->world->pointer3->setVisible(false);
 			}
 			this->world->worldInterface->container->lastTime->setVisible(true);
-			this->world->liveMax = 20;
-			this->world->live = 20;
+			this->world->liveMax = 1;
+			this->world->live = 1;
 			if (this->world->nowLevel == 3)
 			{
 				this->i = 0;

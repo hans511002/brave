@@ -138,7 +138,7 @@ namespace engine
     
 		virtual void removeEventTarget(std::MouseEvent * event, BaseNode* node, string caseName);
 		virtual void removeEventTarget(std::MouseEvent * event, string case1, string caseName);
-		virtual bool preCheckEventTarget(std::MouseEvent * event);
+        virtual bool preCheckEventTarget(std::MouseEvent * event, EventMouse::MouseEventType _mouseEventType);
 		virtual   void mouseDownHandler(cocos2d::EventMouse* event);
 		virtual   void mouseUpHandler(cocos2d::EventMouse* event);
 		virtual   void mouseMoveHandler(cocos2d::EventMouse* event);

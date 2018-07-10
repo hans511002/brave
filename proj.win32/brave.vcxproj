@@ -149,6 +149,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\base\Indexes.cpp" />
     <ClCompile Include="..\Classes\base\JsonUtil.cpp" />
     <ClCompile Include="..\Classes\base\mc.cpp" />
+    <ClCompile Include="..\Classes\base\PThread.cpp" />
     <ClCompile Include="..\Classes\bezier\Bezier.cpp" />
     <ClCompile Include="..\Classes\bezier\FitLine.cpp" />
     <ClCompile Include="..\Classes\bezier\Path.cpp" />
@@ -241,6 +242,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\base\Indexes.h" />
     <ClInclude Include="..\Classes\base\JsonUtil.h" />
     <ClInclude Include="..\Classes\base\mc.h" />
+    <ClInclude Include="..\Classes\base\PThread.h" />
     <ClInclude Include="..\Classes\bezier\Bezier.h" />
     <ClInclude Include="..\Classes\bezier\FitLine.h" />
     <ClInclude Include="..\Classes\bezier\Path.h" />
@@ -367,7 +369,6 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\test\ReplaceAnimation.h" />
     <ClInclude Include="..\Classes\test\ReplaceSkin.h" />
     <ClInclude Include="..\Classes\test\ReplaceSlotDisplay.h" />
-    <ClInclude Include="..\Classes\test\WorldInterface.h" />
     <ClInclude Include="..\cocos2d\external\tinyxml2\tinyxml2.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>

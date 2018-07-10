@@ -9,6 +9,7 @@
 #include "ui/CocosGUI.h"
 using namespace cocos2d;
 #include "DefineClasses.h"
+#include "PThread.h"
 
 #define ISTYPE(CLZTYPE,POINTER)  dynamic_cast<CLZTYPE *>(POINTER)
 namespace engine{
@@ -23,9 +24,9 @@ namespace std
 	void setAnchorPoint(cocos2d::Node* node, bool subset = false);
 	void setAnchorPoint(cocos2d::Node* node, float x, float y, bool subset = false);
 	void setAnchorPoint(cocos2d::Node* node, const cocos2d::Vec2 & pos, bool subset = false);
-	dragonBones::CCArmatureDisplay * loadArmature(string rootPath, string armatureName, const string& dragonBonesName = "");
-	dragonBones::CCArmatureDisplay * buildArmature(string armatureName, const string& dragonBonesName);
-	string setText(ui::Text * tui, string val);
+    dragonBones::CCArmatureDisplay * loadArmature(const string & rootPath, const string &  armatureName, const string& dragonBonesName = "");
+    dragonBones::CCArmatureDisplay * buildArmature(const string &  armatureName, const string& dragonBonesName);
+    string setText(ui::Text * tui, const string &  val);
 	int setText(ui::Text * tui, int val);
 	float setText(ui::Text * tui, float val);
 	int getInt(ui::Text * tui);
@@ -70,21 +71,21 @@ namespace std
 
 		float getStageWidth() const;
 		float getStageHeight() const;
-		dragonBones::CCArmatureDisplay * loadArmature(string rootPath, string armatureName, const string& dragonBonesName = "");
-		dragonBones::CCArmatureDisplay * buildArmature(string armatureName, const string& dragonBonesName);
+        dragonBones::CCArmatureDisplay * loadArmature(const string &  rootPath, const string & armatureName, const string& dragonBonesName = "");
+        dragonBones::CCArmatureDisplay * buildArmature(const string &  armatureName, const string& dragonBonesName);
 		//inline string setText(ui::Text * tui, string val) { return std::setText(tui, val); };
 		//inline int setText(ui::Text * tui, int val) { return std::setText(tui, val); };
 		//inline float setText(ui::Text * tui, float val) { return std::setText(tui, val); };
-		void logInfo(string label, cocos2d::Point pos, const cocos2d::Point* pos2 = NULL, const  cocos2d::Point* pos3 = NULL, const  cocos2d::Point* pos4 = NULL);
-		void logInfo(string label, cocos2d::Size pos);
-		void logInfo(string label, float x, float y = 0);
-		void logInfo(string label, int x);
-		void logInfo(string label, int x, int y);
-		void logInfo(string label, int i, Vec2 p);
-		void logInfo(string label1, string label2 = "", string label3 = "", string label4 = "", string label5 = "", string label6 = "");
-		void logInfo(string label, dragonBones::Transform t);
-		void logInfo(string label, dragonBones::Transform*t);
-		void logInfo(string label, dragonBones::Transform const*t);
+        void logInfo(const string &  label, const cocos2d::Point & pos, const cocos2d::Point* pos2 = NULL, const  cocos2d::Point* pos3 = NULL, const  cocos2d::Point* pos4 = NULL);
+        void logInfo(const string &  label, const cocos2d::Size & pos);
+        void logInfo(const string &  label, float x, float y = 0);
+        void logInfo(const string &  label, int x);
+        void logInfo(const string &  label, int x, int y);
+        void logInfo(const string &  label, int i, Vec2 p);
+        void logInfo(const string &  label1, const string & label2 = "", const string & label3 = "", const string & label4 = "", const string & label5 = "", const string & label6 = "");
+        void logInfo(const string &  label, dragonBones::Transform t);
+        void logInfo(const string &  label, dragonBones::Transform*t);
+        void logInfo(const string &  label, dragonBones::Transform const*t);
 		 
 
 #define LOGINFO(format, ...)      cocos2d::log(format, ##__VA_ARGS__)
@@ -122,7 +123,7 @@ namespace std
 		void hitTest(Node *node, bool incSub = false);
 		bool hasNext(); 
 		inline void reset(){ idx =0; };
-		int getIndex(string name);
+        int getIndex(const string & name);
 		void remove(int i);
 		Node * target; 
         EventNode * enode;
@@ -161,7 +162,8 @@ namespace std
         virtual bool atStage();
 		virtual bool hitTest(const Vec2 &pt);
 		virtual bool hitTest(cocos2d::EventMouse* event);
-		cocos2d::Point localToGlobal(cocos2d::Point pt);
+        inline Vec2 localToGlobal(const Vec2 &  pos) { return this->convertToWorldSpace(pos); };
+        inline Vec2 globalToLocal(const Vec2 &  pos) { return this->convertToNodeSpaceAR(pos); };
 
 		virtual void onEnter();
 		virtual void onExit();
@@ -254,7 +256,7 @@ namespace std
 		bool init();
 		bool atStage();
 		//void mouseDownHandler(cocos2d::EventMouse *event);
-		BaseSprite(string file);
+		BaseSprite(const string &file);
 		BaseSprite(cocos2d::Sprite* sprite);
 		virtual float getWidth();
 		virtual float getHeight();

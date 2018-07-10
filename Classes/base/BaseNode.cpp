@@ -96,22 +96,29 @@ namespace std
 			}
 		}
 	};
-	dragonBones::CCArmatureDisplay * loadArmature(string rootPath, string armatureName, const string& dragonBonesName)
+    dragonBones::CCArmatureDisplay * loadArmature(const string & _rootPath, const string & armatureName, const string& dragonBonesName)
 	{
-		//dragonBones::DBCCFactory::getInstance()->loadDragonBonesData(rootPath + aniName + "/skeleton.xml", aniName);
+        Common::DateTime dt;
+        //dragonBones::DBCCFactory::getInstance()->loadDragonBonesData(rootPath + aniName + "/skeleton.xml", aniName);
 		//dragonBones::DBCCFactory::getInstance()->loadTextureAtlas(rootPath + aniName + "/texture.xml", aniName);
 		//return dragonBones::DBCCFactory::getInstance()->buildArmatureNode(aniName);
-		if (!rootPath.empty() && rootPath.at(rootPath.length() - 1) != '/')
+        string rootPath = _rootPath;
+        if (!rootPath.empty() && rootPath.at(rootPath.length() - 1) != '/')
 		{
 			rootPath += "/";
 		}
 		string dbName = dragonBonesName == "" ? armatureName : dragonBonesName;
 		const auto factory = dragonBones::CCFactory::getFactory();
-		factory->loadDragonBonesData(rootPath + dbName + "/" + dbName + "_ske.json", dbName);
-		//factory->loadDragonBonesData(rootPath + armatureName + "/" + armatureName + "_ske.dbbin");
-		factory->loadTextureAtlasData(rootPath + dbName + "/" + dbName + "_tex.json", dbName);
-		//const std::string& armatureName, const std::string& dragonBonesName = "", const std::string& skinName = "", const std::string& textureAtlasName = ""
-		const auto armatureDisplay = factory->buildArmatureDisplay(armatureName, dbName);
+        string fileSke = rootPath + dbName + "/" + dbName + "_ske.json";
+        string fileTex =rootPath + dbName + "/" + dbName + "_tex.json";
+        if(!factory->getDragonBonesData(dbName))
+        {
+            factory->loadDragonBonesData(fileSke, dbName);
+		    //factory->loadDragonBonesData(rootPath + armatureName + "/" + armatureName + "_ske.dbbin");
+            factory->loadTextureAtlasData(fileTex, dbName);
+        }
+        //const std::string& armatureName, const std::string& dragonBonesName = "", const std::string& skinName = "", const std::string& textureAtlasName = ""
+        const auto armatureDisplay =  factory->buildArmatureDisplay(armatureName, dbName);
 		//scene->addChild(armatureDisplay);
 		////std::string name = armatureDisplay->getArmature()->getSlot("handL")->getName();
 		//armatureDisplay->getAnimation()->play("icemandead", 999999);
@@ -119,14 +126,18 @@ namespace std
 		////std::setAnchorPoint(armatureDisplay,0,0);
 		//armatureDisplay->setPosition(200.0f, 200.0f);
 		//armatureDisplay->setVisible(true);
-		return armatureDisplay;
+        int time = (Common::DateTime().GetTicks() - dt.GetTicks());
+        CCLOG("%s.%s load time:%i", dragonBonesName.c_str(), armatureName.c_str(),   time);
+        return armatureDisplay;// factory->buildArmatureDisplay(armatureName, dragonBonesName);
 	};
-	dragonBones::CCArmatureDisplay * buildArmature(string armatureName, const string& dragonBonesName)
+    dragonBones::CCArmatureDisplay * buildArmature(const string & armatureName, const string& dragonBonesName)
 	{
-		const auto factory = dragonBones::CCFactory::getFactory();
-		return   factory->buildArmatureDisplay(armatureName, dragonBonesName);
+        const auto factory = dragonBones::CCFactory::getFactory();
+        const auto armatureDisplay = factory->buildArmatureDisplay(armatureName, dragonBonesName, "", dragonBonesName);
+        return armatureDisplay;
+
 	};
-	string setText(ui::Text * tui, string val)
+    string setText(ui::Text * tui, const string & val)
 	{
 		string old = tui->getString();
 		tui->setString(val);
@@ -208,7 +219,7 @@ namespace std
         setNodeType(name);
 		return true;
 	};
-	BaseSprite::BaseSprite(string file)
+    BaseSprite::BaseSprite(const string & file)
 	{
 		setNodeType("BaseSprite");
 		this->initWithFile(file);
@@ -232,11 +243,6 @@ namespace std
 		if (!mouseEnabled)return false;
 		if (!this->isVisible())return false;
 		return std::hitTest(this, event);
-	};
-
-	cocos2d::Point BaseNode::localToGlobal(cocos2d::Point pt)
-	{
-		return this->convertToWorldSpace(pt);
 	};
 
 	void BaseNode::onEnter()
@@ -327,11 +333,11 @@ namespace std
 		const auto& stageSize = cocos2d::Director::getInstance()->getVisibleSize();
 		return stageSize.height;
 	}
-	dragonBones::CCArmatureDisplay * EventNode::loadArmature(string rootPath, string armatureName, const string& dragonBonesName)
+    dragonBones::CCArmatureDisplay * EventNode::loadArmature(const string & rootPath, const string & armatureName, const string& dragonBonesName)
 	{
 		return std::loadArmature(rootPath, armatureName, dragonBonesName);
 	};
-	dragonBones::CCArmatureDisplay * EventNode::buildArmature(string armatureName, const string& dragonBonesName)
+    dragonBones::CCArmatureDisplay * EventNode::buildArmature(const string & armatureName, const string& dragonBonesName)
 	{
 		return std::buildArmature(armatureName, dragonBonesName);
 	};
@@ -398,7 +404,7 @@ namespace std
 	{
 		const auto& stageSize = cocos2d::Director::getInstance()->getVisibleSize();
 		Vec2 p = this->getPosition();
-		p = this->convertToWorldSpace(p);
+		p = this->getParent()->convertToWorldSpace(p);
 		// p = this->convertToNodeSpace(p);
 		return !(p.x < 0 || p.y<0 || p.x > stageSize.width || p.y > stageSize.height);
 	}
@@ -644,7 +650,8 @@ namespace std
 		}
 		return false;
 	};
-	int MouseEvent::getIndex(string name){
+    int MouseEvent::getIndex(const string & name)
+    {
 		int len=currentTargets.size();
 		for (int i = 0; i < len; i++)
 		{
@@ -1053,7 +1060,7 @@ namespace std
 		}
 	};
 	bool EventNode::debug = true;
-	void EventNode::logInfo(string label, cocos2d::Point pos, const cocos2d::Point* pos2, const cocos2d::Point* pos3, const cocos2d::Point* pos4)
+    void EventNode::logInfo(const string & label, const cocos2d::Point & pos, const cocos2d::Point* pos2, const cocos2d::Point* pos3, const cocos2d::Point* pos4)
 	{
 		if (!debug)return;
 		if (pos4)
@@ -1066,37 +1073,37 @@ namespace std
 			CCLOG("%s x=%f y=%f", label.c_str(), pos.x, pos.y);
 		if (gLog)writeLog(label + " x=" + Common::String(pos.x) + " y=" + Common::String(pos.y), 1);
 	};
-	void EventNode::logInfo(string label, cocos2d::Size pos)
+    void EventNode::logInfo(const string & label, const cocos2d::Size &pos)
 	{
 		if (!debug)return;
 		CCLOG("%s w=%f h=%f", label.c_str(), pos.width, pos.height);
 		if (gLog)writeLog(label + " w=" + Common::String(pos.width) + " h=" + Common::String(pos.height), 1);
 	};
-	void EventNode::logInfo(string label, float x, float y)
+    void EventNode::logInfo(const string & label, float x, float y)
 	{
 		if (!debug)return;
 		CCLOG("%s x=%f y=%f", label.c_str(), x, y);
 		if (gLog)writeLog(label + " x=" + Common::String(x) + " y=" + Common::String(y), 1);
 	};
-	void EventNode::logInfo(string label, int x)
+    void EventNode::logInfo(const string & label, int x)
 	{
 		if (!debug)return;
 		CCLOG("%s=%d ", label.c_str(), x);
 		if (gLog)writeLog(label + "=" + Common::String(x), 1);
 	};
-	void EventNode::logInfo(string label, int x, int y)
+    void EventNode::logInfo(const string & label, int x, int y)
 	{
 		if (!debug)return;
 		CCLOG("%s[%d , %d]", label.c_str(), x, y);
 		if (gLog)writeLog(label + " x=" + Common::String(x) + " y=" + Common::String(y), 1);
 	};
-	void EventNode::logInfo(string label, int i, Vec2 p)
+    void EventNode::logInfo(const string & label, int i, Vec2 p)
 	{
 		if (!debug)return;
 		CCLOG("%s[%i] x=%f , y=%f", label.c_str(), i, p.x, p.y);
 		if (gLog)writeLog(label + " x=" + Common::String(p.x) + " y=" + Common::String(p.y), 1);
 	};
-	void EventNode::logInfo(string label1, string label2, string label3, string label4, string label5, string label6)
+    void EventNode::logInfo(const string & label1, const string & label2, const string & label3, const string & label4, const string & label5, const string & label6)
 	{
 		if (!debug)return;
 		string msg = label1;
@@ -1110,14 +1117,17 @@ namespace std
 		if (gLog)writeLog(msg, 1);
 	};
 
-	void EventNode::logInfo(string label, dragonBones::Transform const * t){
+    void EventNode::logInfo(const string & label, dragonBones::Transform const * t)
+    {
 		if (!debug)return;
 		CCLOG("%s[%f , %f]  [sx=%f sy=%f r=%f]", label.c_str(), t->x, t->y, t->scaleX, t->scaleX, t->rotation);
 	};
-	void EventNode::logInfo(string label, dragonBones::Transform * t){
+    void EventNode::logInfo(const string & label, dragonBones::Transform * t)
+    {
 		logInfo(label, (dragonBones::Transform const *)(t));
 	};
-	void EventNode::logInfo(string label, dragonBones::Transform t){
+    void EventNode::logInfo(const string & label, dragonBones::Transform t)
+    {
 		logInfo(label, (dragonBones::Transform const *)(&t));
 	};
 	////////////////////////////////////////////////////

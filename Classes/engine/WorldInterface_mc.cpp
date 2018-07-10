@@ -14,7 +14,15 @@ namespace engine
 		noteTXT = this->createText("noteTXT");
 		timeTXT = this->createText("timeTXT");
 	}
-        
+	
+    //实现遮罩的两种方法
+    //auto clip = CCClippingNode::create();
+    //auto stencil = CCSprite::create("mask.png");
+    //clip->setStencil(stencil);
+    //clip->setInverted(false);
+    //clip->setAlphaThreshold(0);
+    //clip->addChild(CCSprite::create("head.png"));
+   
 	WorldInterface_mc::WorldInterface_mc():MovieClip("worldinterface/", "WorldInterface_mc", "WorldInterface_mc")
 	{
 		SET_NODETYPENAME();
@@ -44,11 +52,11 @@ namespace engine
 		butCastGolemCastGolemCase = butCastGolem->createCase("castGolemCase");
 
 		butCastGolemCont = butCastGolem->createMovieClipSub("cont");
-		butCastGolemContContMask = butCastGolemCont->createMovieClipSub("contMask");
+		butCastGolemContContMask = butCastGolemCont->createMask("contMask");
 		butCastIceman = this->createMovieClipSub("butCastIceman");
 		butCastIcemanCastIcemanCase = butCastIceman->createCase("castIcemanCase");
 		butCastIcemanCont = butCastIceman->createMovieClipSub("cont");
-		butCastIcemanContContMask = butCastIcemanCont->createMovieClipSub("contMask");
+        butCastIcemanContContMask = butCastIcemanCont->createMask("contMask");
 		buyFire = this->createMovieClipSub("buyFire");
 		buyFireBuyTXT = buyFire->createText("buyTXT");
 		buyFireCoin = buyFire->createMovieClipSub("coin");
