@@ -1,0 +1,21 @@
+﻿实现遮罩的两种方法
+auto clip = CCClippingNode::create();
+auto stencil = CCSprite::create("mask.png");
+clip->setStencil(stencil);
+clip->setInverted(false);
+clip->setAlphaThreshold(0);
+clip->addChild(CCSprite::create("head.png"));
+
+
+
+CCTextureCache::addImageAsync(
+
+std::mutex mutex;//线程互斥对象  
+std::thread t1(&HelloWorld::myThread,this,10,20);//创建一个分支线程，回调到myThread函数里   
+t1.join();   
+
+mutex.lock();//加锁   
+mutex.unlock();   
+
+
+ 

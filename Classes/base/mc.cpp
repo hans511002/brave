@@ -196,7 +196,7 @@ namespace engine
 
     MCCase * MC::createCase(const string &  slotName, bool reinit)
 	{
-        MCCase *mc=  new MCCase(this, slotName, true, true);
+        MCCase *mc=  new MCCase(this, slotName, true, false);
         this->addMCbs(mc, reinit);
         return mc;
 	};
