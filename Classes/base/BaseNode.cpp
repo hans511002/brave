@@ -350,11 +350,11 @@ namespace std
 	{
 		if (!node)return false;
 		if (!node->isVisible())return false;
-		Node * par = node->getParent();
-		while (par){
-			if (!par->isVisible())return false;
-			par = par->getParent();
-		}
+		//Node * par = node->getParent();
+		//while (par){
+		//	if (!par->isVisible())return false;
+		//	par = par->getParent();
+		//}
 		return true;
 	} 
 

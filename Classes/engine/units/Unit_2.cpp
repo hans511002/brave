@@ -37,15 +37,23 @@ namespace engine
 				}
 				if (!airFlag && !airShockFlag)
 				{
-					if (container->currentFrame < container->totalFrames)
-					{
-						container->gotoAndStop((container->currentFrame + 1));
-					}
-					else
-					{
-						container->gotoAndStop(1);
-					}
-				}
+                    if(!this->container->isPlay())
+                    {
+                        this->container->play(1);
+                    }
+                    //if (container->currentFrame < container->totalFrames)
+					//{
+					//	container->gotoAndStop((container->currentFrame + 1));
+					//}
+					//else
+					//{
+					//	container->gotoAndStop(1);
+					//}
+                }
+                else
+                {
+                    container->stop();
+                }
 			}
 			Unit::animationHandler();
 			return;

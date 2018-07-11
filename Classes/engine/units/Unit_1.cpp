@@ -11,18 +11,18 @@ namespace engine
 		{
 			typeUnit = 1;
 			float tempObject = cocos2d::rand_0_1();
-			container = new Unit_mc(this, "Unit1_1_mc", typeUnit);
-			//if(tempObject < 0.35)
-			//{
-			//}
-			//else if(tempObject < 0.7)
-			//{
-			//	container = new Unit_mc(this, "Unit1_2_mc", typeUnit);
-			//}
-			//else
-			//{
-			//	container = new Unit_mc(this, "Unit1_3_mc", typeUnit);
-			//}
+			if(tempObject < 0.35)
+			{
+			    container = new Unit_mc(this, "Unit1_1_mc", typeUnit);
+			}
+			else if(tempObject < 0.7)
+			{
+				container = new Unit_mc(this, "Unit1_2_mc", typeUnit);
+			}
+			else
+			{
+				container = new Unit_mc(this, "Unit1_3_mc", typeUnit);
+			}
 			container->setPosition(0, 0);
 			container->setScaleX(0.9f);
 			container->setScaleY(0.9f);
@@ -51,15 +51,23 @@ namespace engine
 				}
 				if(!airFlag && !airShockFlag)
 				{
-					if(container->currentFrame < container->totalFrames)
-					{
-						container->gotoAndStop((container->currentFrame + 1));
-					}
-					else
-					{
-						container->gotoAndStop(1);
-					}
-				}
+                    if(!this->container->isPlay())
+                    {
+                        this->container->play(1);
+                    }
+					//if(container->currentFrame < container->totalFrames)
+					//{
+					//	container->gotoAndStop((container->currentFrame + 1));
+					//}
+					//else
+					//{
+					//	container->gotoAndStop(1);
+					//}
+                }
+                else
+                {
+                    container->stop();
+                }
 			}
 			Unit::animationHandler();
 			return;

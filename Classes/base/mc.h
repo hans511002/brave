@@ -22,6 +22,10 @@ namespace engine
         int currentFrame;
 		string defAniName;
         int totalFrames;
+        bool inPlay;
+        int playTimes;
+        int bindListenType;
+
 		//string type;
         virtual int getTotalFrames(const string &  aniName = "");
         virtual void gotoAndStop(int cf, const string &  aniName = "");
@@ -29,15 +33,20 @@ namespace engine
         virtual void play(const string &  aniName = "", int times = 1);
 		virtual void play(int times);
         virtual void stop(const string &  aniName = "");
-		virtual	dragonBones::Armature *getArmature() = 0;
-		virtual dragonBones::Animation *getAnimation()   = 0;
-		MC();
+        inline virtual	dragonBones::Armature *getArmature()=0;
+        virtual dragonBones::Animation *getAnimation()  = 0;
+        virtual bool isPlay();
+        virtual void onceMovieHandler(cocos2d::EventCustom *event);
+        virtual void bindMovieListen(int type);
+        MC();
 
         MCText * createText(const string &  slot, bool reinit = false);
         MovieClipSub * createMovieClipSub(const string &  slot,bool reinit=false);
-        MovieClip * createMovieClip(const string &  slot, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "", bool reinit = false);
+      //  MovieClip * createMovieClip(const string &  slot, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "", bool reinit = false, bool delay = false);
+        MovieClip * createMovieClip(const string &  slot, const string &  rootPath, const string &  armName, const string &  dbName, bool reinit = false,bool delay=false);
         MovieClip * createMovieClip(const string &  slot, const string &  rootPath, const string &  dbName);
-        MovieClip * MC::createMovieClip(const string &  slot, MovieClip * mc, bool reinit = false);
+        MovieClip * createMovieClip(const string &  slot, MovieClip * mc, bool reinit = false);
+
         MCCase * createCase(const string &  slot, bool reinit = false);
         MCSprite * createSprite(const string &  slot, const string &  file, bool reinit = false);
         MCSprite * createSprite(const string &  slot, Sprite* file, bool reinit = false);
@@ -113,13 +122,15 @@ namespace engine
         MovieClip(World * world, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "");
         MovieClip(const string &  armName, const string &  dbName, BaseNode *node = NULL);
         
-        MovieClip(MC *mc, dragonBones::Slot * slot, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "");
-        MovieClip(MC *mc, const string &  slot, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "");
-        MovieClip(MC *mc, const string &  slot, const string &  rootPath, const string &  dbName);
+        MovieClip(MC *mc, dragonBones::Slot * slot, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "", bool delay=false);
+        MovieClip(MC *mc, const string &  slot, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "", bool delay=false);
+        MovieClip(MC *mc, const string &  slot, const string &  rootPath, const string &  dbName, bool delay=false);
 
         bool MovieClip::init(const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "");
 
-		virtual	dragonBones::Armature *getArmature();
+
+        virtual bool checkInit();
+        virtual	dragonBones::Armature *getArmature();
 		virtual dragonBones::Animation *getAnimation();
 		MovieClip() :world(0), isOnce(0){};//tmp
 		virtual bool init();

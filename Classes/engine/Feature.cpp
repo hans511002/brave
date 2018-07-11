@@ -193,7 +193,7 @@ namespace engine
 			MovieClip *flag = world->level->flags.at(i);
 			flag->gotoAndStop((std::round(std::random() * (flag->totalFrames - 1)) + 1));
 			flag->play("", 0);
-			world->listOfFlags.push_back(world->level->flags.at(i));
+			//world->listOfFlags.push_back(world->level->flags.at(i));
 		}
 		for (int i = 0; i < world->level->additionallys.size(); i++)
 		{

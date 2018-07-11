@@ -3,7 +3,7 @@
 
 namespace engine
 {
-	MC::MC() :currentFrame(0), totalFrames(0)
+    MC::MC() :currentFrame(0), totalFrames(0), inPlay(false), playTimes(-1), bindListenType(0)
 	{
 	}
 
@@ -40,11 +40,15 @@ namespace engine
 		string aniName = _aniName;
 		if (aniName == "")aniName = defAniName;
 		this->getAnimation()->stop(aniName);
-	}
+        this->inPlay = true;
+    }
 	void MC::play(int times)
 	{
 		if (this->getArmature() == NULL || this->getAnimation() == NULL)return;
 		this->getAnimation()->play(defAniName, times);
+        this->inPlay = true;
+        this->playTimes = times;
+        if(times==1)bindMovieListen(1);
 	}
 	void MC::play(const string &  _aniName, int times)
 	{
@@ -52,7 +56,60 @@ namespace engine
 		string aniName = _aniName;
 		if (aniName == "")aniName = defAniName;
 		this->getAnimation()->play(aniName, times);
-	}
+        this->playTimes = times;
+        this->inPlay = true;
+        if(times == 1)bindMovieListen(1);
+    }
+    bool MC::isPlay()
+    {
+        return inPlay;
+    }
+    void MC::bindMovieListen(int type)
+    {
+        if(type == 1)
+        {
+            if(ISTYPE(MovieClip, this))
+            {
+                MovieClip *mc = ISTYPE(MovieClip, this);
+                if(mc->container)
+                {
+                    if((this->bindListenType & type)!=type)
+                    {
+                        mc->container->getEventDispatcher()->setEnabled(true);
+                        mc->container->getEventDispatcher()->addCustomEventListener(dragonBones::EventObject::COMPLETE, std::bind(&MC::onceMovieHandler, this, std::placeholders::_1));
+                        this->bindListenType = this->bindListenType | type;
+                    }
+                }
+            }
+            else if(ISTYPE(MovieClipSub, this))
+            {
+                MovieClipSub *mc = ISTYPE(MovieClipSub, this);
+                if(mc->container)
+                {
+                    if((this->bindListenType & type) != type)
+                    {
+                        mc->container->getEventDispatcher()->setEnabled(true);
+                        mc->container->getEventDispatcher()->addCustomEventListener(dragonBones::EventObject::COMPLETE, std::bind(&MC::onceMovieHandler, this, std::placeholders::_1));
+                        this->bindListenType = this->bindListenType | type;
+                    }
+                }
+            }
+            inPlay = false;
+        }
+    };
+    void MC::onceMovieHandler(cocos2d::EventCustom *event)
+    {
+        Node * target = event->getCurrentTarget();
+        EventObject *eventObject = (EventObject*)(event->getUserData());
+        string eventName = event->getEventName();//eventObject->type
+        if(eventObject->type == dragonBones::EventObject::COMPLETE)
+        {
+            if(this->playTimes == 1)
+            if(eventObject->getAnimationState() == this->getAnimation()->getLastAnimationState())
+                this->inPlay = false;
+        }
+
+    }
 	MovieClip * MC::getRootMc(MC * mc)
 	{
 		while (mc != NULL)
@@ -157,6 +214,7 @@ namespace engine
 		//    }
 		//}
 	};
+    
     MCText * MC::createText(const string &  slotName, bool reinit)
 	{
         MCText* mt= new MCText(this, slotName);
@@ -170,21 +228,27 @@ namespace engine
         mcs->addMcs(this, mcs, reinit);
         return mcs;
     }
-    MovieClip * MC::createMovieClip(const string &  slot, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName, bool reinit)
-	{
-		//return  createMovieClip(slot, new MovieClip(rootPath, armName, dbName, defAniName));
-        MovieClip * mc = new MovieClip(this, slot, rootPath, armName, dbName, defAniName);
+ //   MovieClip * MC::createMovieClip(const string &  slot, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName, bool reinit, bool delay)
+	//{
+	//	//return  createMovieClip(slot, new MovieClip(rootPath, armName, dbName, defAniName));
+ //       MovieClip * mc = new MovieClip(this, slot, rootPath, armName, dbName, defAniName, delay);
+ //       this->addMCbs(mc, reinit);
+ //       return mc;
+ //   };
+    MovieClip * MC::createMovieClip(const string &  slot, const string &  rootPath, const string &  armName, const string &  dbName, bool reinit , bool delay )
+    {
+        MovieClip * mc = new MovieClip(this, slot, rootPath, armName, dbName, "", delay);
         this->addMCbs(mc, reinit);
         return mc;
-    };
+    }
     MovieClip * MC::createMovieClip(const string &  slot, const string &  rootPath, const string &  dbName)
 	{
-        MovieClip * mc=  new MovieClip(this, slot, rootPath, dbName);
+        MovieClip * mc=  new MovieClip(this, slot, rootPath, dbName,false);
         this->addMCbs(mc, true);
         return mc;
 		//return  createMovieClip(slot, new MovieClip(rootPath, dbName));
 	};
-	MovieClip * MC::createMovieClip(const string &  slot, MovieClip * mc,bool reinit)
+    MovieClip * MC::createMovieClip(const string &  slot, MovieClip * mc, bool reinit )
 	{
 		mc->mc = this;
 		mc->display = NULL;
@@ -594,14 +658,15 @@ namespace engine
 		if (world)setOnceMove(world);
 	};
 
-	MovieClip::MovieClip(MC *mc, dragonBones::Slot * slot, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0), setAr(false)
+    MovieClip::MovieClip(MC *mc, dragonBones::Slot * slot, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName, bool delay) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0), setAr(false)
 	{
 		this->mc = mc;
 		this->slotName = slot->getName();
 		this->setName(slotName);
-		reinit();
+        if(!delay)
+            reinit();
 	};
-	MovieClip::MovieClip(MC *mc, const string &  slotName, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0), setAr(false)
+    MovieClip::MovieClip(MC *mc, const string &  slotName, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName, bool delay) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0), setAr(false)
 	{
 
 		this->mc = mc;
@@ -611,11 +676,12 @@ namespace engine
 		this->slotName = slotName;
 		this->setName(slotName);
         Common::DateTime dt;
-        reinit();
+        if(!delay)
+            reinit();
         int time = (Common::DateTime().GetTicks() - dt.GetTicks());
         CCLOG("MovieClip %s.%s load time:%i", dbName.c_str(), armName.c_str(), time);
 	};
-	MovieClip::MovieClip(MC *mc, const string &  slotName, const string &  rootPath, const string &  dbName) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0), setAr(false)
+    MovieClip::MovieClip(MC *mc, const string &  slotName, const string &  rootPath, const string &  dbName, bool delay) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0), setAr(false)
 	{
 		setNodeType("MovieClip");
 		this->mc = mc;
@@ -624,7 +690,8 @@ namespace engine
 		this->rootPath = rootPath;
 		this->dbName = dbName;
 		this->defAniName = "";
-		reinit();
+		if(!delay)
+            reinit();
 	};
 	void MovieClip::setVisible(bool v){
 		BaseNode::setVisible(v);
@@ -692,8 +759,15 @@ namespace engine
 	const dragonBones::Rectangle & MovieClip::getRectangle(){
 		return this->getArmature()->getArmatureData()->aabb;
 	};
+    bool MovieClip::checkInit()
+    {
+        if(this->mc && !this->isReady)
+            this->reinit();
+        return this->isReady;
+    };
 	dragonBones::Animation *MovieClip::getAnimation()
 	{
+        checkInit();
 		if (container)
 			return container->getAnimation();
 		else
@@ -701,7 +775,8 @@ namespace engine
 	};
 	dragonBones::Armature *MovieClip::getArmature()
 	{
-		if (container)
+        checkInit();
+        if(container)
 			return container->getArmature();
 		else
 			return NULL;
@@ -743,6 +818,7 @@ namespace engine
 
 	void MovieClip::onceMovieHandler(cocos2d::EventCustom *event)
 	{
+        MC::onceMovieHandler(event);
 		Node * target = event->getCurrentTarget();
 		EventObject *eventObject = (EventObject*)(event->getUserData());
 		string eventName = event->getEventName();//eventObject->type
@@ -960,7 +1036,7 @@ namespace engine
 	};
 	dragonBones::Animation *MovieClipSub::getAnimation()
 	{
-		return arm->getAnimation();
+        return arm->getAnimation();
 	};
 	void MovieClipSub::gotoAndStop(int cf, const string &  aniName)
 	{
@@ -1173,7 +1249,8 @@ namespace engine
 	bool MovieClip::reinit()
 	{
         Common::DateTime dt;
-        this->retain();
+        bool isReinit = this->display != NULL;
+        if(isReinit) this->retain();
         if(this->mc && MovieClipSubBase::reinit())
 		{
             string _armName = armName;
@@ -1228,8 +1305,14 @@ namespace engine
 			//std::drawRange(this, Color4F::WHITE);
 			//std::drawRange(this->container, Color4F::BLACK);
 			//std::drawRange(display, Color4F::ORANGE);
+            if(bindListenType)
+            {
+                int type = bindListenType;
+                bindListenType = 0;
+                bindMovieListen(type);
+            }
 		}
-		this->release();
+        if(isReinit)this->release();
         int time = (Common::DateTime().GetTicks() - dt.GetTicks());
         CCLOG("MovieClip %s.%s load time:%i", dbName.c_str(), armName.c_str(), time);
 
@@ -1290,6 +1373,12 @@ namespace engine
 					this->container = ISTYPE(CCArmatureDisplay, display);
 					this->transform = this->container->getNodeToWorldTransform();
 					std::changeAnchorPoint(container, 0.5);
+                    if(bindListenType)
+                    {
+                        int type = bindListenType;
+                        bindListenType = 0;
+                        bindMovieListen(type);
+                    }
 					//display->setPosition(display->getPosition() + display->getAnchorPointInPoints());
 				}
 				isReady = true;
