@@ -7,10 +7,10 @@
 #include "engine/xml/ReadXML.h"
 //#include "screens/MiddleScreen.h"
 //#include "screens/LevelsMenu.h"
-//#include "sys/saveBox.h"
+#include "DbPreload.h"
 
 #include "DefineClasses.h"
- 
+
 class Main : public  BaseLayer //cocos2d::LayerColor //
 {
 public:
@@ -33,7 +33,7 @@ public:
 	//public var IDIClass:Object;
 	bool ourNet;
 	string domainName;
-
+	DbPreload preload;
 	static int fps;
 	
 

@@ -53,7 +53,8 @@ namespace Common
 		inline bool operator==(Array<T> &arr);
 		inline bool operator!=(Array<T> &arr){return !(this->operator ==(arr));};
 		inline int size();
-		//Array & operator=(Array &arr);
+		inline const int size() const;
+			//Array & operator=(Array &arr);
 		//operator T *();
 		//Array &operator=(const Array &arr);
 
@@ -279,7 +280,10 @@ namespace Common
 	{
 		return (int)vector<T>::size();
 	}
-
+	template <class T> inline const int  Array<T>::size() const
+	{
+		return (int)vector<T>::size();
+	}
 }
 
 #endif

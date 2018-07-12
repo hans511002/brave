@@ -1,4 +1,4 @@
-
+﻿
 #ifndef STD_PTHREAD_H
 #define STD_PTHREAD_H
 #include "cocos2d.h"

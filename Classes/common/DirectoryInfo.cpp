@@ -178,8 +178,8 @@ namespace Common
 			{
 				if(szBuff[0]==32 || szBuff[0]=='\n')continue;
 				if(szBuff[strlen(szBuff)-1]=='\n')szBuff[strlen(szBuff)-1]=0;	//去除回车
-				if(search==false || String::IndexOf(szBuff,searchPattern,ignoreCase)!=-1)
-					res[res.size()]=path+szBuff+Path::DirectorySeparatorChar;
+				if (search == false || String::IndexOf(szBuff, searchPattern, ignoreCase) != -1)
+					res[res.size()] = path + szBuff;// +Path::DirectorySeparatorChar;
 				memset(szBuff,0,sizeof(szBuff));
 			}
 		}
@@ -210,8 +210,8 @@ namespace Common
 			{
 				if(szBuff[0]==32 || szBuff[0]=='\n')continue;
 				if(szBuff[strlen(szBuff)-1]=='\n')szBuff[strlen(szBuff)-1]=0;	//去除回车
-				if(search==false || String::IndexOf(szBuff,searchPattern,ignoreCase)!=-1)
-					res[res.size()]=path+szBuff+Path::DirectorySeparatorChar;
+				if (search == false || String::IndexOf(szBuff, searchPattern, ignoreCase) != -1)
+					res[res.size()] = path + szBuff;// +Path::DirectorySeparatorChar;
 				memset(szBuff,0,sizeof(szBuff));
 			}
 		}

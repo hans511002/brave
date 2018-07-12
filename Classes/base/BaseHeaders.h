@@ -16,6 +16,7 @@
 #include "sys/bezierBox.h"
 #include "sys/saveBox.h"
 #include "MainClass.h"
+#include "DbPreload.h"
 
 inline static std::vector<std::string> &split(const std::string &s, char delim, std::vector<std::string> &elems)
 {

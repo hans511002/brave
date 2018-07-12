@@ -56,6 +56,12 @@ bool Main::init()
     //this->tracker.trackPageview("openGame");
 	this->enableKeyHandler();
     //this->enableMouseHandler();//world及screen中监听
+	preload.addPreLoadDir("cast");
+	preload.addPreLoadDir("worldinterface");
+	preload.addPreLoadDir("unit");
+	preload.addPreLoadDir("sphere");
+	preload.addPreLoadDir("tower"); 
+	preload.addPreLoadDir("screen"); 
     return true;
 }// end function
 
