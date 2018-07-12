@@ -1,7 +1,7 @@
 #include "PThread.h"
 namespace std
 {
-    PMutex::PMutex() :locked(false)
+    PMutex::PMutex(std::mutex & m) :locked(false), m(m)
     {
         m.lock();
         this->locked = true;

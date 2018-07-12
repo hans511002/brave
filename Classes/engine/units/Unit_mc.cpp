@@ -128,7 +128,7 @@ namespace engine
 			this->fireEffect->setVisible(false);
 			this->iceEffect->setVisible(false);
 			this->armor->setVisible(false);
-			this->healthBar->setVisible(false);
+			//this->healthBar->setVisible(false);
 			this->shadow->setVisible(false);
 			this->selectUnit->setVisible(false);
 			this->dust4->setVisible(false);

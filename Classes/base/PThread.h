@@ -5,6 +5,8 @@
 #include <iostream>
 #include <thread>
 #include <mutex>
+#include <iostream>
+#include <chrono>
 namespace std
 {
 
@@ -19,10 +21,10 @@ namespace std
 
 class PMutex
 {
-    std::mutex m;
+    std::mutex &m;
     bool locked;
 public:
-    PMutex();
+    PMutex(std::mutex & m);
     ~PMutex();
     void lock();
     void unlock();

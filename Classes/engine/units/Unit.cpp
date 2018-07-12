@@ -420,8 +420,8 @@ namespace engine
 				if (this->container->getScaleX() > 0)
 				{
 					this->container->setScaleX(this->container->getScaleX() * -1);
-					this->container->healthBar->setScaleX(this->container->healthBar->getScaleX() * -1);
-					this->container->healthBar->setPositionX(this->container->healthBar->getPositionX() * -1);
+					//this->container->healthBar->setScaleX(this->container->healthBar->getScaleX() * -1);
+					//this->container->healthBar->setPositionX(this->container->healthBar->getPositionX() * -1);
 				}
 			}
 			else if (param1 == "right")
@@ -429,8 +429,8 @@ namespace engine
 				if (this->container->getScaleX() < 0)
 				{
 					this->container->setScaleX(this->container->getScaleX() * -1);
-					this->container->healthBar->setScaleX(this->container->healthBar->getScaleX() * -1);
-					this->container->healthBar->setPositionX(this->container->healthBar->getPositionX() * -1);
+					//this->container->healthBar->setScaleX(this->container->healthBar->getScaleX() * -1);
+					//this->container->healthBar->setPositionX(this->container->healthBar->getPositionX() * -1);
 				}
 			}
 			//return;
@@ -637,7 +637,7 @@ namespace engine
 					}
 					else if (this->container->healthBar->isVisible())
 					{
-						this->container->healthBar->setVisible(false);
+						//this->container->healthBar->setVisible(false);
 						this->container->healthBar->setScaleX(1);
 						this->health = this->healthMax;
 					}
@@ -1562,6 +1562,7 @@ namespace engine
 					{
 						this->container->healthBar->setVisible(true);
 					}
+                    logInfo("healthBar->setScaleX", this->container->getScaleX(), this->container->healthBar->getScaleX());
 					this->container->healthBar->setScaleX(this->health / this->healthMax);
 				}
 				else
@@ -1574,7 +1575,7 @@ namespace engine
 				this->health = this->healthMax;
 				if (this->container->healthBar->isVisible())
 				{
-					this->container->healthBar->setVisible(false);
+					//this->container->healthBar->setVisible(false);
 				}
 			}
 		 
@@ -1606,7 +1607,7 @@ namespace engine
 			{
 				if (this->container->healthBar->isVisible())
 				{
-					this->container->healthBar->setVisible(false);
+					//this->container->healthBar->setVisible(false);
 					//this->container->healthBar->getDamage->setVisible(false);
 				}
 			}
