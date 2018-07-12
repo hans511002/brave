@@ -193,7 +193,7 @@ namespace std
 		for (int i = 0; i < sfiles.size(); i++)
 		{
 			Common::String &file = sfiles.at(i);
-			if (file.EndsWith(".png")){
+			if (file.EndsWith(".png") && file.LastIndexOf("_")>0){
 				Common::String dname=fileMap.find(file)->second;
 				Common::String texFile = dir + Common::Path::DirectorySeparatorChar + dname + "_tex.json";
 				Common::String skeFile = dir + Common::Path::DirectorySeparatorChar + dname + "_ske.json";
