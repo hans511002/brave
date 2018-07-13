@@ -1,4 +1,4 @@
-#include "BaseNode.h"
+﻿#include "BaseNode.h"
 #include "MainClass.h"
 #include "base/mc.h"
 
@@ -12,7 +12,7 @@ namespace std
          // 1
         int w = maskSprite->getContentSize().width * maskSprite->getScaleX();
         int h = maskSprite->getContentSize().height * maskSprite->getScaleY();
-        CCRenderTexture* rt = CCRenderTexture::renderTextureWithWidthAndHeight(w, h);
+		RenderTexture* rt = RenderTexture::create(w, h);
      
         // 2
         maskSprite->setPosition( ccp(maskSprite->getContentSize().width *  maskSprite->getScaleX()/2, 
@@ -37,7 +37,7 @@ namespace std
         rt->end();
      
         // 5
-        CCSprite* retval = CCSprite::spriteWithTexture(rt->getSprite()->getTexture());
+        Sprite* retval = Sprite::createWithTexture(rt->getSprite()->getTexture());
         retval->setFlipY(true);
         return retval;
     };

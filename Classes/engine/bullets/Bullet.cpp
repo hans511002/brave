@@ -190,16 +190,15 @@ namespace engine{
             {
                 this->dead = true;
                 this->i = 0;
-                //while (this->i < this->world->listOfBullets.length)
-                //{
-                //    
-                //    if (this->world->listOfBullets[this->i] == this)
-                //    {
-                //        this->world->listOfBullets.splice(this->i, 1);
-                //        break;
-                //    }
-                //    i++;
-                //}
+                while (this->i < this->world->listOfBullets.size())
+                {
+                    if (this->world->listOfBullets[this->i] == this)
+                    {
+                        this->world->listOfBullets.splice(this->i, 1);
+                        break;
+                    }
+                    i++;
+                }
                 //this->i = 0;
                 //while (this->i < this->world->listOfIndexes2.length)
                 //{
@@ -223,7 +222,6 @@ namespace engine{
                 //    i++;
                 //}
                 this->world->removeChild(this);
-
             }
             return;
         }// end function

@@ -15,11 +15,13 @@ namespace std
 		DbFile(string ske = "", string tex = "", string dbName = "") :state(0), ske(ske), tex(tex), dbName(dbName){};
 	};
 	typedef map<string, DbFile*> DbFileMap; 
-	class DbPreload
+	class DbPreload : public Ref
     {
     protected:
+		bool startSch;
+
         Common::Array<string> preLoadDirs;
-		Common::Array<DbFile> loadDbFiles;
+		Common::Array<DbFile *> loadDbFiles;
 		//DbFileMap loadPathMap;
 		DbFileMap dbNameMap;
         bool running;
@@ -27,11 +29,13 @@ namespace std
         bool autoStart;
         std::mutex m;
         std::thread *thr;
-        int loadNum;
+		int loadSkeNum;
+		int loadTexNum;
         //std::thread::hardware_concurrency()
 		Common::Array<DbFile> listDbFiles(const string & dir, const string & dbName="");
 		void loadDbData(DbFile & dir);
-    public:
+		void addImageAsyncCallBack(float dt);
+	public:
         DbPreload(const string & dir, bool autoStart = true);
         DbPreload(bool autoStart = true);
         ~DbPreload();

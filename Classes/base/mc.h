@@ -36,7 +36,7 @@ namespace engine
         inline virtual	dragonBones::Armature *getArmature()=0;
         virtual dragonBones::Animation *getAnimation()  = 0;
         virtual bool isPlay();
-        virtual void onceMovieHandler(cocos2d::EventCustom *event);
+		virtual void completeHandler(cocos2d::EventCustom *event);
         virtual void bindMovieListen(int type);
         MC();
 

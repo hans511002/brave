@@ -2,12 +2,12 @@
 #include "FileUtil.h"
 namespace std
 {
-    DbPreload::DbPreload(const string & dir, bool autoStart) : running(true), thr(NULL), autoClose(true), autoStart(autoStart), loadNum(0)
+	DbPreload::DbPreload(const string & dir, bool autoStart) : running(true), thr(NULL), autoClose(true), autoStart(autoStart), loadSkeNum(0), loadTexNum(0)
     {
         thr = new std::thread(&DbPreload::run, this);
     };
 
-    DbPreload::DbPreload(bool autoStart) :running(true), thr(NULL), autoClose(false), autoStart(autoStart), loadNum(0)
+	DbPreload::DbPreload(bool autoStart) :running(true), thr(NULL), autoClose(false), autoStart(autoStart), loadSkeNum(0), loadTexNum(0)
     {
         thr=new std::thread(&DbPreload::run, this); 
     }; 
@@ -18,6 +18,18 @@ namespace std
     DbPreload::~DbPreload() 
     {
         close();
+		int len = loadDbFiles.size();
+		for (int i = 0; i < len; i++)
+		{
+			DbFile * db = loadDbFiles.at(i);
+			delete db;
+		}
+		this->loadDbFiles.clear();
+		this->loadSkeNum = 0;
+		this->loadTexNum = 0; 
+		this->dbNameMap.clear();
+		this->preLoadDirs.clear();
+
     };
     void DbPreload::setAutoClose()
     {
@@ -41,9 +53,9 @@ namespace std
 				DbFile & dbf = dbs.at(i);
 				if (this->dbNameMap.find(dbf.dbName) == this->dbNameMap.end())
 				{
-					loadDbFiles.push(dbf);
-					DbFile * dbp = &loadDbFiles.at(loadDbFiles.size() - 1);
-					this->dbNameMap.insert(DbFileMap::value_type(dbName, dbp));
+					DbFile *dbp = new DbFile(dbf);
+					loadDbFiles.push(dbp);
+ 					this->dbNameMap.insert(DbFileMap::value_type(dbName, dbp));
 				}
 			}
 		}
@@ -55,8 +67,8 @@ namespace std
 		PMutex m(this->m);
 		if (this->dbNameMap.find(dbf.dbName) == this->dbNameMap.end())
 		{
-			loadDbFiles.push(dbf);
-			DbFile * dbp = &loadDbFiles.at(loadDbFiles.size() - 1);
+			DbFile *dbp = new DbFile(dbf);
+			loadDbFiles.push(dbp); 
 			this->dbNameMap.insert(DbFileMap::value_type(dbf.dbName, dbp));
 		}
 	}
@@ -67,8 +79,8 @@ namespace std
 			const DbFile & dbf = dbs.at(i);
 			if (this->dbNameMap.find(dbf.dbName) == this->dbNameMap.end())
 			{
-				loadDbFiles.push(dbf);
-				DbFile * dbp = &loadDbFiles.at(loadDbFiles.size() - 1);
+				DbFile *dbp = new DbFile(dbf);
+				loadDbFiles.push(dbp);
 				this->dbNameMap.insert(DbFileMap::value_type(dbf.dbName, dbp));
 			}
 		}
@@ -101,6 +113,7 @@ namespace std
     };
     void DbPreload::run()
     {
+		startSch = false;
         int loadIdx = 0;
         while(running) 
         {
@@ -113,11 +126,7 @@ namespace std
             FileUtils * fu = cocos2d::FileUtils::getInstance();
             const std::vector<std::string>& spath = fu->getSearchPaths();
             try
-            {
-                //Common::Array<string> preLoadDirs;
-                //Common::Array<string> loadPath;
-                //StringIntMap loadPathMap;
-                //StringStringMap dbNameMap;
+            { 
                 string dirPath;
                 {
                     PMutex m(this->m);
@@ -145,7 +154,8 @@ namespace std
                     }
                 }
                 if(dirPath.empty()){
-                    if(running)
+					if (autoClose)break;
+					if (running)
                         Sleep(100);//0.1s
                     continue;
                 }
@@ -168,17 +178,19 @@ namespace std
                             addPreLoadDb(sdbs);
 					}
 				}
-				if (this->autoClose){
-					break;
+				if (!startSch)
+				{
+					Director::getInstance()->getScheduler()->schedule(schedule_selector(DbPreload::addImageAsyncCallBack), this, 0, false);
+					startSch = true;
 				}
 				int len = loadDbFiles.size();
                 for(int i = loadIdx; i < len; i++)
 				{
-					loadDbData(loadDbFiles.at(i));
-                    loadNum++;
+					loadDbData(*loadDbFiles.at(i));
+					loadSkeNum++;
 				}
                 loadIdx = len;
-				if (this->autoClose)
+				if (this->autoClose && preLoadDirs.empty())
 					break;
             }
             catch(...)
@@ -217,9 +229,13 @@ namespace std
 			if (file.EndsWith(".png") ){
 				Common::String dname=fileMap.find(file)->second;
 				Common::String texFile = dir + '/' + dname + "_tex.json";
-                Common::String skeFile = dir + '/' + dname + "_ske.json";
-				if (fileMap.find(texFile) != fileMap.end() && fileMap.find(skeFile) != fileMap.end()){
-					res.push_back(DbFile(skeFile, texFile, dname));
+				Common::String skeFile = dir + '/' + dname + "_ske.json";
+				Common::String skeFileBin = dir + '/' + dname + "_ske.dbbin";
+				if (fileMap.find(texFile) != fileMap.end()){
+					if (fileMap.find(skeFileBin) != fileMap.end())
+						res.push_back(DbFile(skeFileBin, texFile, dname));
+					else if (fileMap.find(skeFile) != fileMap.end())
+						res.push_back(DbFile(skeFile, texFile, dname));
 				}
 			}
 		}
@@ -234,13 +250,32 @@ namespace std
 		if (!factory->getDragonBonesData(db.dbName))
 		{
 			factory->loadDragonBonesData(db.ske, db.dbName); 
-			factory->loadTextureAtlasData(db.tex, db.dbName);
-            this->dbNameMap[db.dbName]->state = 1;
+			PMutex m(this->m);
+			this->dbNameMap[db.dbName]->state |= 1;
 		}
 	};
+	void DbPreload::addImageAsyncCallBack(float dt){
+		const auto factory = dragonBones::CCFactory::getFactory();
+		int i = 0;
+		while (i < loadDbFiles.size())
+		{
+			DbFile * db = loadDbFiles.at(i);
+			int state=this->dbNameMap[db->dbName]->state;
+			if (!(state & 2)){
+				factory->loadTextureAtlasData(db->tex, db->dbName);
+				PMutex m(this->m);
+				this->dbNameMap[db->dbName]->state |= 2;
+				loadTexNum++;
+			}
+			i++;
+		}
+		Director::getInstance()->getScheduler()->unschedule(CC_SCHEDULE_SELECTOR(DbPreload::addImageAsyncCallBack), this);
+		startSch = false;
+	}
+
     float DbPreload::getProgress() {
-        double d = loadNum;
-        double l = loadDbFiles.size();
+		double d = loadSkeNum + loadTexNum;
+        double l = loadDbFiles.size()*2;
         return d/l;
     };
 }

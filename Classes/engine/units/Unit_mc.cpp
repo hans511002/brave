@@ -40,6 +40,9 @@ namespace engine
 
 			healthBarGetDamage = (Sprite*)healthBar->getArmature()->getSlot("getDamage")->getDisplay();
             healthBarCont = (Sprite*)healthBar->getArmature()->getSlot("cont")->getDisplay();
+			std::setAnchorPoint(this->healthBarGetDamage, Vec2(0.5, 0.5));
+			std::setAnchorPoint(this->healthBarCont, Vec2(0.5, 0.5));
+			std::changeAnchorPoint(this->healthBarCont, 0);
 
 			if (typeUnit == 28){
 				this->giveHealth1 = this->createMovieClipSub("giveHealth1");// DBCCFactory::getInstance()->buildArmatureNode("giveHealth1");
@@ -132,7 +135,7 @@ namespace engine
 			this->shadow->setVisible(false);
 			this->selectUnit->setVisible(false);
 			this->dust4->setVisible(false);
-
+			//this->healthBar->setAr = true;
 			this->healthBarGetDamage->setVisible(false);
 
 

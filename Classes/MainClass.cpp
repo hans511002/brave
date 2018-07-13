@@ -64,7 +64,6 @@ bool Main::init()
 	preload.addPreLoadDir("tower"); 
 	preload.addPreLoadDir("screen"); 
     preload.start();
-    preload.join();
     return true;
 }// end function
 

@@ -76,7 +76,7 @@ namespace engine
                     if((this->bindListenType & type)!=type)
                     {
                         mc->container->getEventDispatcher()->setEnabled(true);
-                        mc->container->getEventDispatcher()->addCustomEventListener(dragonBones::EventObject::COMPLETE, std::bind(&MC::onceMovieHandler, this, std::placeholders::_1));
+						mc->container->getEventDispatcher()->addCustomEventListener(dragonBones::EventObject::COMPLETE, std::bind(&MC::completeHandler, this, std::placeholders::_1));
                         this->bindListenType = this->bindListenType | type;
                     }
                 }
@@ -89,7 +89,7 @@ namespace engine
                     if((this->bindListenType & type) != type)
                     {
                         mc->container->getEventDispatcher()->setEnabled(true);
-                        mc->container->getEventDispatcher()->addCustomEventListener(dragonBones::EventObject::COMPLETE, std::bind(&MC::onceMovieHandler, this, std::placeholders::_1));
+						mc->container->getEventDispatcher()->addCustomEventListener(dragonBones::EventObject::COMPLETE, std::bind(&MC::completeHandler, this, std::placeholders::_1));
                         this->bindListenType = this->bindListenType | type;
                     }
                 }
@@ -97,7 +97,7 @@ namespace engine
             inPlay = false;
         }
     };
-    void MC::onceMovieHandler(cocos2d::EventCustom *event)
+    void MC::completeHandler(cocos2d::EventCustom *event)
     {
         Node * target = event->getCurrentTarget();
         EventObject *eventObject = (EventObject*)(event->getUserData());
@@ -799,14 +799,14 @@ namespace engine
 			container->getEventDispatcher()->addCustomEventListener(EventObject::COMPLETE, std::bind(&MovieClip::onceMovieHandler, this, std::placeholders::_1));
 		}
 		if (this->setAr){
-			//std::changeAnchorPoint(this, arPoint);
-			////std::changeAnchorPoint(this->container, arPoint);
+			std::changeAnchorPoint(this, arPoint);
+			std::changeAnchorPoint(this->container, arPoint);
 			//this->container->setPosition(this->getAnchorPointInPoints());
-			/*cocos2d::Vector<Node * > chlds = this->container->getChildren();
-			for (size_t i = 0; i < chlds.size(); i++)
-			{
-				std::setAnchorPoint(chlds.at(i), pos, subset);
-			}*/
+			//cocos2d::Vector<Node * > chlds = this->container->getChildren();
+			//for (size_t i = 0; i < chlds.size(); i++)
+			//{
+			//	std::setAnchorPoint(chlds.at(i), arPoint, true);
+			//}
 		}
 		BaseNode::onEnter();
 	};
@@ -818,14 +818,15 @@ namespace engine
 
 	void MovieClip::onceMovieHandler(cocos2d::EventCustom *event)
 	{
-        MC::onceMovieHandler(event);
+		MC::completeHandler(event);
 		Node * target = event->getCurrentTarget();
 		EventObject *eventObject = (EventObject*)(event->getUserData());
 		string eventName = event->getEventName();//eventObject->type
 		//eventObject->animationState->name aniName
 		if (eventObject->type == dragonBones::EventObject::COMPLETE)
 		{
-			this->world->removeChild(this);
+			if (isOnce)
+				this->world->removeChild(this);
 			//}
 			//else if(eventName == EventObject::FRAME_EVENT)
 			//{
@@ -1281,8 +1282,7 @@ namespace engine
 			//std::setAnchorPoint(this, 0.5,0.5);
 			//Vec2 dpos = this->display->getPosition();
 			//this->setPosition(dpos  );
-			this->setAr = false;
-			this->arPoint=Vec2(0.5,0.5);
+			
 			//std::changeAnchorPoint(this, 0.5);
 			//std::changeAnchorPoint(this, 0);
 			//std::setAnchorPoint(this, 0,0);
@@ -1292,10 +1292,8 @@ namespace engine
 			//this->display->setAnchorPoint(Vec2(0, 0));
 			//display->setPosition(display->getPosition()+display->getAnchorPointInPoints());//dis 会被重算
 
-
-			std::changeAnchorPoint(this, arPoint);
+			std::changeAnchorPoint(this, 0.5);
 			this->setPosition(this->getPosition()+this->disPos);
- 
 			//Node *cnode=Node::create();
 			//this->addChild(cnode);
 			//cnode->setContentSize(this->getContentSize() - Size(3, 3));

@@ -164,6 +164,7 @@ namespace screens
                 Main::mainClass->removeAllScreens();
                 Main::mainClass->addNewScreen(this->openScreenName);
                 Main::mainClass->container->manageListeners("off");
+				Main::mainClass->preload.join();
             }
 			if(this->middleRound->currentFrame < this->middleRound->totalFrames)
             {

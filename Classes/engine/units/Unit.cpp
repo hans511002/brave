@@ -492,7 +492,7 @@ namespace engine
 		}// end function
 		void Unit::animationHandler() //public function animationHandler() : void
 		{
-			if (this->container->healthBarCont->isVisible())
+			if (this->container->healthBarGetDamage->isVisible())
 			{
 				if (this->container->healthBarCounter < 2)
 				{
@@ -500,7 +500,7 @@ namespace engine
 				}
 				else
 				{
-					this->container->healthBarCont->setVisible(false);
+					this->container->healthBarGetDamage->setVisible(false);
 				}
 			}
 			//播放火击中效果
@@ -633,12 +633,12 @@ namespace engine
 					if (this->health + this->healthPlusValue < this->healthMax)
 					{
 						this->health = this->health + this->healthPlusValue;
-						this->container->healthBar->setScaleX(this->health / this->healthMax);
+						this->container->healthBarCont->setScaleX(this->health / this->healthMax);
 					}
 					else if (this->container->healthBar->isVisible())
 					{
-						//this->container->healthBar->setVisible(false);
-						this->container->healthBar->setScaleX(1);
+						this->container->healthBar->setVisible(false);
+						this->container->healthBarCont->setScaleX(1);
 						this->health = this->healthMax;
 					}
 				}
@@ -1032,7 +1032,8 @@ namespace engine
 			if (param1 > 0)
 			{
 				this->container->healthBarCounter = 0;
-				this->container->healthBar->setVisible(true);
+				this->container->healthBarGetDamage->setVisible(true); 
+				//this->container->healthBarGetDamage->setPosition(this->container->healthBarGetDamage->getPosition());
 			}
 			float tempObject = param1;
 			if (param2 != "none")
@@ -1560,10 +1561,10 @@ namespace engine
 				{
 					if (!this->container->healthBar->isVisible())
 					{
-						this->container->healthBar->setVisible(true);
+						this->container->healthBar->setVisible(true); 
 					}
-                    logInfo("healthBar->setScaleX", this->container->getScaleX(), this->container->healthBar->getScaleX());
-					this->container->healthBar->setScaleX(this->health / this->healthMax);
+					logInfo("healthBar->setScaleX", this->container->getScaleX(), this->container->healthBarCont->getScaleX());
+					this->container->healthBarCont->setScaleX(this->health / this->healthMax);
 				}
 				else
 				{
@@ -1575,7 +1576,7 @@ namespace engine
 				this->health = this->healthMax;
 				if (this->container->healthBar->isVisible())
 				{
-					//this->container->healthBar->setVisible(false);
+					this->container->healthBar->setVisible(false);
 				}
 			}
 		 
@@ -1607,8 +1608,8 @@ namespace engine
 			{
 				if (this->container->healthBar->isVisible())
 				{
-					//this->container->healthBar->setVisible(false);
-					//this->container->healthBar->getDamage->setVisible(false);
+					this->container->healthBar->setVisible(false);
+					this->container->healthBarGetDamage->setVisible(false);
 				}
 			}
 			if (param1 == "" || param1 == "shadow")

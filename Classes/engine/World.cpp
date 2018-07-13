@@ -435,7 +435,11 @@ namespace engine
                 removeEventTarget(event, "stoneCase", "sphereCase");
                 removeEventTarget(event, "levinCase", "sphereCase");
                 removeEventTarget(event, "getAllCase", "sphereCase");
-            }
+			}
+			else{
+				removeEventTarget(event, "sphereCase", "archiveCase");
+				removeEventTarget(event, "sphereCase", "fireCase");
+			}
             break;
         case cocos2d::EventMouse::MouseEventType::MOUSE_UP:
             break;
