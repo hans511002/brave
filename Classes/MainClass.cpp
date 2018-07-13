@@ -12,7 +12,8 @@
 Main * Main::mainClass;
 const double Main::AnimationInterval = 1.0f / (double)Main::FrameRate;
 
-Main::Main() :worldClass(NULL), frameCounter(0), container(NULL), middleScreenClass(NULL), levelsMenuClass(NULL){
+Main::Main() :worldClass(NULL), frameCounter(0), container(NULL), middleScreenClass(NULL), levelsMenuClass(NULL), preload(false)
+{
     Main::mainClass = this;
 };
 Scene* Main::createScene()
@@ -59,9 +60,11 @@ bool Main::init()
 	preload.addPreLoadDir("cast");
 	preload.addPreLoadDir("worldinterface");
 	preload.addPreLoadDir("unit");
-	preload.addPreLoadDir("sphere");
+	preload.addPreLoadDir("sphere"); 
 	preload.addPreLoadDir("tower"); 
 	preload.addPreLoadDir("screen"); 
+    preload.start();
+    preload.join();
     return true;
 }// end function
 

@@ -147,6 +147,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\base\BaseNode.cpp" />
     <ClCompile Include="..\Classes\base\DbPreload.cpp" />
+    <ClCompile Include="..\Classes\base\FileUtil.cpp" />
     <ClCompile Include="..\Classes\base\Indexes.cpp" />
     <ClCompile Include="..\Classes\base\JsonUtil.cpp" />
     <ClCompile Include="..\Classes\base\mc.cpp" />
@@ -241,6 +242,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\base\BaseNode.h" />
     <ClInclude Include="..\Classes\base\DbPreload.h" />
     <ClInclude Include="..\Classes\base\DefineClasses.h" />
+    <ClInclude Include="..\Classes\base\FileUtil.h" />
     <ClInclude Include="..\Classes\base\Indexes.h" />
     <ClInclude Include="..\Classes\base\JsonUtil.h" />
     <ClInclude Include="..\Classes\base\mc.h" />

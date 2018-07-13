@@ -24,14 +24,16 @@ namespace std
 		DbFileMap dbNameMap;
         bool running;
         bool autoClose;
+        bool autoStart;
         std::mutex m;
         std::thread *thr;
+        int loadNum;
         //std::thread::hardware_concurrency()
 		Common::Array<DbFile> listDbFiles(const string & dir, const string & dbName="");
 		void loadDbData(DbFile & dir);
     public:
-        DbPreload(const string & dir,bool autoClose=false);
-        DbPreload();
+        DbPreload(const string & dir, bool autoStart = true);
+        DbPreload(bool autoStart = true);
         ~DbPreload();
         //PMutex mutex;
         virtual void addPreLoadDir(const string & dir);
@@ -40,6 +42,7 @@ namespace std
 		virtual void addPreLoadDb(const DbFile & db);
 		virtual void addPreLoadDb(const Common::Array<DbFile> & dbs);
         virtual void setAutoClose();
+        virtual void start();
         virtual void join();
         virtual thread::id get_id();
         virtual void detach();
@@ -47,6 +50,7 @@ namespace std
         virtual bool isRunning();
         virtual void close();
         virtual void run();
+        virtual float getProgress();
     };
 
 }

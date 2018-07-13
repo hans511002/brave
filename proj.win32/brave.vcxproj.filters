@@ -321,6 +321,9 @@
     <ClCompile Include="..\Classes\base\DbPreload.cpp">
       <Filter>src\base</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\base\FileUtil.cpp">
+      <Filter>src\base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -738,6 +741,9 @@
       <Filter>src\base</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\base\DbPreload.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\base\FileUtil.h">
       <Filter>src\base</Filter>
     </ClInclude>
   </ItemGroup>

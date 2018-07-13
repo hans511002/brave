@@ -1,15 +1,20 @@
 ﻿#include "DbPreload.h"
+#include "FileUtil.h"
 namespace std
 {
-    DbPreload::DbPreload(const string & dir, bool autoClose) : running(true), thr(NULL), autoClose(autoClose)
+    DbPreload::DbPreload(const string & dir, bool autoStart) : running(true), thr(NULL), autoClose(true), autoStart(autoStart), loadNum(0)
     {
         thr = new std::thread(&DbPreload::run, this);
     };
 
-	DbPreload::DbPreload() :running(true), thr(NULL), autoClose(false)
+    DbPreload::DbPreload(bool autoStart) :running(true), thr(NULL), autoClose(false), autoStart(autoStart), loadNum(0)
     {
         thr=new std::thread(&DbPreload::run, this); 
+    }; 
+    void DbPreload::start() {
+        this->autoStart = true;
     };
+
     DbPreload::~DbPreload() 
     {
         close();
@@ -79,6 +84,7 @@ namespace std
     };
     void DbPreload::join()
     {
+        autoClose = true;
         thr->join();
     };
     void DbPreload::close() {
@@ -95,10 +101,17 @@ namespace std
     };
     void DbPreload::run()
     {
+        int loadIdx = 0;
         while(running) 
         {
-			const std::vector<std::string>& spath=cocos2d::FileUtils::getInstance()->getSearchPaths();
-			 
+            if(!autoStart)
+            {
+                if(running)
+                    Sleep(100);//0.1s
+                continue;
+            }
+            FileUtils * fu = cocos2d::FileUtils::getInstance();
+            const std::vector<std::string>& spath = fu->getSearchPaths();
             try
             {
                 //Common::Array<string> preLoadDirs;
@@ -122,8 +135,8 @@ namespace std
 									_npath = spath.at(i) + tdir;
 								else
 									_npath = spath.at(i) + "/" + tdir;
-								Common::DirectoryInfo dir(_npath);
-								if (dir.Exists()){
+                                 if(fu->isDirectoryExist(_npath))
+                                {
 									dirPath = _npath;
 									break;;
 								}
@@ -144,23 +157,27 @@ namespace std
 					addPreLoadDb(dbs);
 				}
 				Common::DirectoryInfo dir(dirPath);
-				Common::Array<Common::String>  subDirs = dir.GetDirectories("", false, Common::SearchOption::AllDirectories);
+                vector<string> subDirs = FileUtil::getAllFiles(dirPath, true, false, true);
+				//Common::Array<Common::String>  subDirs = dir.GetDirectories("", false, Common::SearchOption::AllDirectories);
 				if (!subDirs.empty()){
 					for (int i = 0; i < subDirs.size(); i++)
 					{
 						string sbdir=subDirs.at(i);
 						Common::Array<DbFile> sdbs = listDbFiles(sbdir);
-						if (!sdbs.empty())	addPreLoadDb(sdbs);
+						if (!sdbs.empty())	
+                            addPreLoadDb(sdbs);
 					}
 				}
 				if (this->autoClose){
 					break;
 				}
 				int len = loadDbFiles.size();
-				for (int i = 0; i < len; i++)
+                for(int i = loadIdx; i < len; i++)
 				{
 					loadDbData(loadDbFiles.at(i));
+                    loadNum++;
 				}
+                loadIdx = len;
 				if (this->autoClose)
 					break;
             }
@@ -175,28 +192,32 @@ namespace std
     };
 	Common::Array<DbFile>  DbPreload::listDbFiles(const string & dir, const string & dbName){
 		Common::Array<DbFile> res;
-		Common::DirectoryInfo sdir(dir);
-		Common::Array<Common::String> sfiles =sdir.GetFiles();
+        vector<string> sfiles = FileUtil::getAllFiles(dir,  false,true, false);
+        FileUtils * fu = cocos2d::FileUtils::getInstance();
+
+		//Common::DirectoryInfo sdir(dir);
+		//Common::Array<Common::String> sfiles =sdir.GetFiles();
 		if (sfiles.empty())return res;
 		map<string, string>  fileMap;
 		for (int i = 0; i < sfiles.size(); i++)
 		{
-			Common::String &file = sfiles.at(i);
-			Common::FileInfo f(file);
-			Common::String fileName=f.getName();
+            string &file = sfiles.at(i);
+			//Common::FileInfo f(file);
+            Common::String fileName = FileUtil::getFileName(file);// f.getName();
 			int idx = fileName.LastIndexOf("_");
-			if (idx>0){
+            if(idx>0 && (fileName.EndsWith(".json") || fileName.EndsWith(".png") || fileName.EndsWith(".dbbin")))
+            {
 				Common::String dname=	fileName.SubString(0, idx);
 				fileMap.insert(map<string, string>::value_type(file, dname));
 			}
 		}
-		for (int i = 0; i < sfiles.size(); i++)
-		{
-			Common::String &file = sfiles.at(i);
-			if (file.EndsWith(".png") && file.LastIndexOf("_")>0){
+        for(map<string, string>::iterator it = fileMap.begin(); it != fileMap.end(); it++)
+        {
+            Common::String file = it->first;
+			if (file.EndsWith(".png") ){
 				Common::String dname=fileMap.find(file)->second;
-				Common::String texFile = dir + Common::Path::DirectorySeparatorChar + dname + "_tex.json";
-				Common::String skeFile = dir + Common::Path::DirectorySeparatorChar + dname + "_ske.json";
+				Common::String texFile = dir + '/' + dname + "_tex.json";
+                Common::String skeFile = dir + '/' + dname + "_ske.json";
 				if (fileMap.find(texFile) != fileMap.end() && fileMap.find(skeFile) != fileMap.end()){
 					res.push_back(DbFile(skeFile, texFile, dname));
 				}
@@ -214,8 +235,14 @@ namespace std
 		{
 			factory->loadDragonBonesData(db.ske, db.dbName); 
 			factory->loadTextureAtlasData(db.tex, db.dbName);
+            this->dbNameMap[db.dbName]->state = 1;
 		}
 	};
+    float DbPreload::getProgress() {
+        double d = loadNum;
+        double l = loadDbFiles.size();
+        return d/l;
+    };
 }
 
 
