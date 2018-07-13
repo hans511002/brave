@@ -36,6 +36,8 @@ namespace std
 	void drawRange(cocos2d::Node * node, Color4F c = Color4F::RED);
 	void changeAnchorPoint(Node * node, float xy);
 	void changeAnchorPoint(Node * node, const Vec2& xy);
+    cocos2d::Sprite* maskedSpriteWithSprite(cocos2d::Sprite* textureSprite, cocos2d::Sprite* maskSprite);
+    cocos2d::CCClippingNode* maskedWithClippingNode(cocos2d::Sprite* textureSprite, cocos2d::Sprite* maskSprite);
 
 	string getNamePath(Node *node);
 	Common::Array<Node*>  getChildNodes(Node *node);

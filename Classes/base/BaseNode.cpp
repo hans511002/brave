@@ -7,6 +7,50 @@ const double BaseNode::AnimationInterval = 1.0f / (double)Main::FrameRate;
 
 namespace std
 {
+    cocos2d::CCSprite* maskedSpriteWithSprite(cocos2d::CCSprite* textureSprite, cocos2d::CCSprite* maskSprite)
+    {
+         // 1
+        int w = maskSprite->getContentSize().width * maskSprite->getScaleX();
+        int h = maskSprite->getContentSize().height * maskSprite->getScaleY();
+        CCRenderTexture* rt = CCRenderTexture::renderTextureWithWidthAndHeight(w, h);
+     
+        // 2
+        maskSprite->setPosition( ccp(maskSprite->getContentSize().width *  maskSprite->getScaleX()/2, 
+            maskSprite->getContentSize().height * maskSprite->getScaleY()/2));
+        textureSprite->setPosition( ccp(textureSprite->getContentSize().width *  textureSprite->getScaleX() /2, 
+            textureSprite->getContentSize().height * textureSprite->getScaleY()/2));
+     
+        // 3
+        ccBlendFunc blendFunc;
+        blendFunc.src = GL_ONE;
+        blendFunc.dst = GL_ZERO;
+        maskSprite->setBlendFunc(blendFunc);
+     
+        blendFunc.src = GL_DST_ALPHA;            // mask图片的当前alpha值是多少，如果是0（完全透明），那么就显示mask的。如果是1（完全不透明）
+        blendFunc.dst = GL_ZERO;                // maskSprite不可见
+        textureSprite->setBlendFunc(blendFunc);
+     
+        // 4
+        rt->begin();
+        maskSprite->visit();
+        textureSprite->visit();
+        rt->end();
+     
+        // 5
+        CCSprite* retval = CCSprite::spriteWithTexture(rt->getSprite()->getTexture());
+        retval->setFlipY(true);
+        return retval;
+    };
+    cocos2d::CCClippingNode* maskedWithClippingNode(cocos2d::Sprite* textureSprite, cocos2d::Sprite* maskSprite)
+    {
+        auto clip = CCClippingNode::create();
+        clip->setStencil(maskSprite);
+        clip->setInverted(false);
+        clip->setAlphaThreshold(0);
+        clip->addChild(textureSprite);
+        return clip;
+    };
+
     EventNode::EventNode() :mouseChildren(false), mouseEnabled(false),  mouseFlag(false)
     { 
     };
