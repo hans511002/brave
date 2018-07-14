@@ -852,19 +852,18 @@ namespace std
 	};
 
 	void EventNode::setNodeMouse(Node * n, int type, bool v, bool setSub){
-		if (!n)return;
+		if (!n)
+			return;
 		EventNode *en = ISTYPE(EventNode, n);
 		if (en){
 			if (type == 1)en->mouseChildren = v;
-			else if (type == 3)en->mouseEnabled = v;
+			else if (type == 2)en->mouseEnabled = v;
 			else if (type == 3)en->mouseFlag = v;
 		}
-		else if (setSub){
+		else if (!setSub){
 			return;
 		}
-		Node *node = ISTYPE(Node, en);
-		if (!node)return;
-		Vector<Node*>& chlds = node->getChildren();
+		Vector<Node*>& chlds = n->getChildren();
 		int len = chlds.size();
 		for (int i = 0; i < len; i++)
 			setNodeMouse(ISTYPE(Node, chlds.at(i)), type, v, setSub);

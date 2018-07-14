@@ -148,7 +148,7 @@ namespace engine{
 					removeEventNode(this->myPlace->placeForBuildCase);
 					removeEventNode(this->myPlace->buildPoint);
 					//this->myPlace->placeForBuildCase->setMouseEnabled(false);
-					this->myPlace->buildPoint->setMouseEnabled(false);
+					//this->myPlace->buildPoint->setMouseEnabled(false);
                     this->kill();
 					//this->myPlace->setMouseEnabled(false);
                 }

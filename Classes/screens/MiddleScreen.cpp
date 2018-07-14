@@ -156,6 +156,11 @@ namespace screens
         {
             if (!this->middleRound)
             {
+				//Main::mainClass->preload.join();
+				//if (Main::mainClass->preload.getProgress() < 1){
+				//	this->frameCounter--;
+				//	return;
+				//}
                 this->middleRound = new  MiddleScreenCentr_mc();
                 this->middleRound->stop();
 				this->middleRound->setPositionX(Main::SCREEN_WIDTH_HALF);

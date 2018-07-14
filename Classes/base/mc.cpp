@@ -541,9 +541,9 @@ namespace engine
 		l = this->submcbs.size();
         for(int i = 0; i < l; i++)
 			this->submcbs[i]->reinit();
-        //l = this->mcase.size();
+        //l = this->mcbs.size();
         //for (int i = 0; i < l; i++)
-        //    this->mcase[i]->reinit();
+		//	this->mcbs[i]->reinit();
     }
     MovieClip::MovieClip(dragonBones::CCArmatureDisplay * container, const string &  _defAniName) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0), setAr(false)
 	{

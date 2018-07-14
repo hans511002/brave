@@ -94,11 +94,15 @@ namespace std
     {
        return this->thr->get_id();
     };
-    void DbPreload::join()
-    {
-        autoClose = true;
-        thr->join();
-    };
+	void DbPreload::join()
+	{
+		if (thr){
+			autoClose = true;
+			start();
+			thr->join();
+			thr = NULL;
+		}
+	}
     void DbPreload::close() {
         running = false;
         join();
