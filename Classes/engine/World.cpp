@@ -454,13 +454,54 @@ namespace engine
 		return false;
 	};
 
+	void MCCase::mouseDownHandler(cocos2d::EventMouse* event){
+		//BaseNode::mouseDownHandler(event);
+
+		//loginfo("mouseDown",event); 
+		if (!std::hitTest(event->getCurrentTarget(), event))return;
+		logInfo("hitTest true : mouse in ", event->getCurrentTarget()->getName());
+		Node * node = event->getCurrentTarget();
+		Event::Type tp = event->getType();
+		logInfo("event targetNamePath", getNamePath(node));
+		event->stopPropagation();
+		Main::mainClass->worldClass->mouseDownHandler(event);
+		//int mouseButton = event->getMouseButton();
+		//if (mouseButton == 1)
+		//	rightMouseDownHandler(event);
+
+	};
+	void MCCase::mouseUpHandler(cocos2d::EventMouse* event){
+		if (!std::hitTest(event->getCurrentTarget(), event))return;
+		logInfo("hitTest true : mouse in ", event->getCurrentTarget()->getName());
+		Node * node = event->getCurrentTarget();
+		Event::Type tp = event->getType();
+		logInfo("event targetNamePath", getNamePath(node));
+		event->stopPropagation();
+		Main::mainClass->worldClass->mouseUpHandler(event);
+		//int mouseButton = event->getMouseButton();
+		//if (mouseButton == 1)
+		//	rightMouseDownHandler(event);
+	};
+	void MCCase::mouseMoveHandler(cocos2d::EventMouse* event){
+		if (!std::hitTest(event->getCurrentTarget(), event))return;
+		logInfo("hitTest true : mouse in ", event->getCurrentTarget()->getName());
+		Node * node = event->getCurrentTarget();
+		Event::Type tp = event->getType();
+		logInfo("event targetNamePath", getNamePath(node));
+		event->stopPropagation();
+		Main::mainClass->worldClass->mouseMoveHandler(event);
+	};
+ 
 	//cocos2d::EventMouse* event
 	void World::mouseDownHandler(cocos2d::EventMouse* e)
 	{
 		EventNode::mouseDownHandler(e);
 		int mouseButton = e->getMouseButton();
 		if (mouseButton == 1)return;
-		std::MouseEvent me = std::buildMouseEvent(e);
+		std::MouseEvent me(e);
+		if (!useNodeEvent){
+			me = std::buildMouseEvent(e);
+		}
 		std::MouseEvent * event = &me;
         if(preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_DOWN))return;
         if(!event->currentTargets.size())
@@ -600,7 +641,10 @@ namespace engine
         EventNode::mouseUpHandler(e);
 		int mouseButton = e->getMouseButton();
 		if (mouseButton == 1)return;
-		std::MouseEvent me = std::buildMouseEvent(e);
+		std::MouseEvent me(e);
+		if (!useNodeEvent){
+			me = std::buildMouseEvent(e);
+		} 
 		std::MouseEvent * event = &me;
         if(preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_UP))return;
         if(!event->currentTargets.size())
@@ -665,7 +709,10 @@ namespace engine
         EventNode::mouseMoveHandler(e);
 		int mouseButton = e->getMouseButton();
 		if (mouseButton == 1)return;
-		std::MouseEvent me = std::buildMouseEvent(e);
+		std::MouseEvent me(e);
+		if (!useNodeEvent){
+			me = std::buildMouseEvent(e);
+		}
 		std::MouseEvent * event = &me;
         if(preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_MOVE))return;
         if(!event->currentTargets.size())

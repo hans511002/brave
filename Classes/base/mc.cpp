@@ -1243,7 +1243,7 @@ namespace engine
 			this->setPosition(origin->x, origin->y);
 			//std::setAnchorPoint(this, 0.5);
 			//std::changeAnchorPoint(this, 0.5);
-			//enableMouseHandler(); //涓嶄娇鐢ㄥ崟鐙簨浠?
+			enableMouseHandler(useNodeEvent);
 			//this->setMouseEnabled(true);
 			if (_draw)drawRange();
  		}

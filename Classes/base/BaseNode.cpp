@@ -7,6 +7,8 @@ const double BaseNode::AnimationInterval = 1.0f / (double)Main::FrameRate;
 
 namespace std
 {
+	bool useNodeEvent = false;
+
 	cocos2d::CCSprite* maskedSpriteWithSprite(cocos2d::CCSprite* textureSprite, cocos2d::CCSprite* maskSprite)
 	{
 		// 1
@@ -82,6 +84,7 @@ namespace std
 	Common::Array<EventNode *> EventNodes;
 	void addEventNode(EventNode *node)
 	{
+		if (useNodeEvent)return;
 		if (!node)return;
 		for each (EventNode * _node in EventNodes)
 		if (_node == node)return;
@@ -291,7 +294,7 @@ namespace std
 
 	void BaseNode::onEnter()
 	{
-		if (this->mouseEnabled || this->mouseEnabled)
+		if (!useNodeEvent && this->mouseEnabled)
 			addEventNode(this);
 		Node::onEnter();
 		if (schdt == 1)
@@ -394,11 +397,11 @@ namespace std
 	{
 		if (!node)return false;
 		if (!node->isVisible())return false;
-		//Node * par = node->getParent();
-		//while (par){
-		//	if (!par->isVisible())return false;
-		//	par = par->getParent();
-		//}
+		Node * par = node->getParent();
+		while (par){
+			if (!par->isVisible())return false;
+			par = par->getParent();
+		}
 		return true;
 	}
 
@@ -624,6 +627,7 @@ namespace std
 	};
 	MouseEvent::MouseEvent(cocos2d::EventMouse * e) :EventMouse(*e), idx(0), target(NULL), processed(false), enode(NULL)
 	{
+		hitTest(e->getCurrentTarget(), false);
 	};
 
 	void  MouseEvent::hitTest(Node *node, bool incSub)

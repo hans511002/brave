@@ -20,6 +20,7 @@ namespace std
 {
 	class BaseNode;
     class EventNode;
+	extern bool useNodeEvent;
 
 	void setAnchorPoint(cocos2d::Node* node, bool subset = false);
 	void setAnchorPoint(cocos2d::Node* node, float x, float y, bool subset = false);

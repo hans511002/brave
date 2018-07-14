@@ -250,6 +250,9 @@ namespace engine
 		virtual void setVisible(bool v);
 		virtual bool reinit();
 		inline void stop(){};
+		virtual   void mouseDownHandler(cocos2d::EventMouse* event);
+		virtual   void mouseUpHandler(cocos2d::EventMouse* event);
+		virtual   void mouseMoveHandler(cocos2d::EventMouse* event);
 	};
 	struct MCSprite :public BaseSprite, MovieClipSubBase 
 	{

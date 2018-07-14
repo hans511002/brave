@@ -101,6 +101,8 @@ namespace engine
             node->setPosition(sec.x, sec.y);
             node->mouseEnabled = true;
             this->addChild(node);
+			this->enableMouseHandler(useNodeEvent);
+
             node->setName("road");
             segments.push_back(node);
         }
