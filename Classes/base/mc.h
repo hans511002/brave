@@ -61,6 +61,9 @@ namespace engine
 		Common::Array<MovieClipSub*> submc; 
 		Common::Array<MovieClipSubBase *> submcbs;
 
+		Common::Array<MovieClipSubBase *> allSubMcbs;
+
+
         Common::Array<MovieClipSubBase*> updateMcbs;
 
 

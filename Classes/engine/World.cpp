@@ -524,12 +524,12 @@ namespace engine
 				if (tower->towerType <= 4)
 				{
 					this->towerMenu = new TowerMenu(tower);
-					this->addChild(this->towerMenu);
+					this->addChild(this->towerMenu, 3);
 				}
 				else
 				{
 					this->ultraTowerMenu = new UltraTowerMenu(tower);
-					this->addChild(this->ultraTowerMenu);
+					this->addChild(this->ultraTowerMenu, 3);
 				}
 				//Sounds.instance.playSound("snd_tower_openMenu");
 			}
@@ -955,7 +955,7 @@ namespace engine
 		}
 		tempObject->myPlace = param2;
 		tempObject->autoBuild = param3;
-		this->addChild(tempObject);
+		this->addChild(tempObject,2);
 		tempObject->init();
 		this->listOfTowers.push(tempObject);
 		//this->listOfTowers.sortOn("y", Array.NUMERIC);

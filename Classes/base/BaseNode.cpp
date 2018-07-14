@@ -7,57 +7,57 @@ const double BaseNode::AnimationInterval = 1.0f / (double)Main::FrameRate;
 
 namespace std
 {
-    cocos2d::CCSprite* maskedSpriteWithSprite(cocos2d::CCSprite* textureSprite, cocos2d::CCSprite* maskSprite)
-    {
-         // 1
-        int w = maskSprite->getContentSize().width * maskSprite->getScaleX();
-        int h = maskSprite->getContentSize().height * maskSprite->getScaleY();
+	cocos2d::CCSprite* maskedSpriteWithSprite(cocos2d::CCSprite* textureSprite, cocos2d::CCSprite* maskSprite)
+	{
+		// 1
+		int w = maskSprite->getContentSize().width * maskSprite->getScaleX();
+		int h = maskSprite->getContentSize().height * maskSprite->getScaleY();
 		RenderTexture* rt = RenderTexture::create(w, h);
-     
-        // 2
-        maskSprite->setPosition( ccp(maskSprite->getContentSize().width *  maskSprite->getScaleX()/2, 
-            maskSprite->getContentSize().height * maskSprite->getScaleY()/2));
-        textureSprite->setPosition( ccp(textureSprite->getContentSize().width *  textureSprite->getScaleX() /2, 
-            textureSprite->getContentSize().height * textureSprite->getScaleY()/2));
-     
-        // 3
-        ccBlendFunc blendFunc;
-        blendFunc.src = GL_ONE;
-        blendFunc.dst = GL_ZERO;
-        maskSprite->setBlendFunc(blendFunc);
-     
-        blendFunc.src = GL_DST_ALPHA;            // mask图片的当前alpha值是多少，如果是0（完全透明），那么就显示mask的。如果是1（完全不透明）
-        blendFunc.dst = GL_ZERO;                // maskSprite不可见
-        textureSprite->setBlendFunc(blendFunc);
-     
-        // 4
-        rt->begin();
-        maskSprite->visit();
-        textureSprite->visit();
-        rt->end();
-     
-        // 5
-        Sprite* retval = Sprite::createWithTexture(rt->getSprite()->getTexture());
-        retval->setFlipY(true);
-        return retval;
-    };
-    cocos2d::CCClippingNode* maskedWithClippingNode(cocos2d::Sprite* textureSprite, cocos2d::Sprite* maskSprite)
-    {
-        auto clip = CCClippingNode::create();
-        clip->setStencil(maskSprite);
-        clip->setInverted(false);
-        clip->setAlphaThreshold(0);
-        clip->addChild(textureSprite);
-        return clip;
-    };
 
-    EventNode::EventNode() :mouseChildren(false), mouseEnabled(false),  mouseFlag(false)
-    { 
-    };
+		// 2
+		maskSprite->setPosition(ccp(maskSprite->getContentSize().width *  maskSprite->getScaleX() / 2,
+			maskSprite->getContentSize().height * maskSprite->getScaleY() / 2));
+		textureSprite->setPosition(ccp(textureSprite->getContentSize().width *  textureSprite->getScaleX() / 2,
+			textureSprite->getContentSize().height * textureSprite->getScaleY() / 2));
+
+		// 3
+		ccBlendFunc blendFunc;
+		blendFunc.src = GL_ONE;
+		blendFunc.dst = GL_ZERO;
+		maskSprite->setBlendFunc(blendFunc);
+
+		blendFunc.src = GL_DST_ALPHA;            // mask图片的当前alpha值是多少，如果是0（完全透明），那么就显示mask的。如果是1（完全不透明）
+		blendFunc.dst = GL_ZERO;                // maskSprite不可见
+		textureSprite->setBlendFunc(blendFunc);
+
+		// 4
+		rt->begin();
+		maskSprite->visit();
+		textureSprite->visit();
+		rt->end();
+
+		// 5
+		Sprite* retval = Sprite::createWithTexture(rt->getSprite()->getTexture());
+		retval->setFlipY(true);
+		return retval;
+	};
+	cocos2d::CCClippingNode* maskedWithClippingNode(cocos2d::Sprite* textureSprite, cocos2d::Sprite* maskSprite)
+	{
+		auto clip = CCClippingNode::create();
+		clip->setStencil(maskSprite);
+		clip->setInverted(false);
+		clip->setAlphaThreshold(0);
+		clip->addChild(textureSprite);
+		return clip;
+	};
+
+	EventNode::EventNode() :mouseChildren(false), mouseEnabled(false), mouseFlag(false)
+	{
+	};
 	BaseNode::BaseNode() :schdt(0), autoDel(true), listener(0), linkParent(NULL)
-    {
-        //setName(getTypeName());
-    };
+	{
+		//setName(getTypeName());
+	};
 
 	BaseNode::BaseNode(float w, float h, bool draw) :autoDel(true), listener(0), linkParent(NULL)
 	{
@@ -65,7 +65,7 @@ namespace std
 		this->setContentSize(Size(w, h));
 		enableMouseHandler();
 		if (draw)drawRange();
-	};    
+	};
 	string EventNode::getTypeName(){
 		Common::String clzName = typeid(*this).name();
 		Common::Array<Common::String> names = clzName.Split(" ");
@@ -74,8 +74,8 @@ namespace std
 		clzName = names.at(names.size() - 1);
 		return clzName;
 	};
- //   string BaseNode::getTypeName(){
- //       return EventNode::getTypeName();
+	//   string BaseNode::getTypeName(){
+	//       return EventNode::getTypeName();
 	//};
 	Common::Log * gLog = new Common::Log("brave");
 	//Common::Log * gLog = NULL;
@@ -140,29 +140,29 @@ namespace std
 			}
 		}
 	};
-    dragonBones::CCArmatureDisplay * loadArmature(const string & _rootPath, const string & armatureName, const string& dragonBonesName)
+	dragonBones::CCArmatureDisplay * loadArmature(const string & _rootPath, const string & armatureName, const string& dragonBonesName)
 	{
-        Common::DateTime dt;
-        //dragonBones::DBCCFactory::getInstance()->loadDragonBonesData(rootPath + aniName + "/skeleton.xml", aniName);
+		Common::DateTime dt;
+		//dragonBones::DBCCFactory::getInstance()->loadDragonBonesData(rootPath + aniName + "/skeleton.xml", aniName);
 		//dragonBones::DBCCFactory::getInstance()->loadTextureAtlas(rootPath + aniName + "/texture.xml", aniName);
 		//return dragonBones::DBCCFactory::getInstance()->buildArmatureNode(aniName);
-        string rootPath = _rootPath;
-        if (!rootPath.empty() && rootPath.at(rootPath.length() - 1) != '/')
+		string rootPath = _rootPath;
+		if (!rootPath.empty() && rootPath.at(rootPath.length() - 1) != '/')
 		{
 			rootPath += "/";
 		}
 		string dbName = dragonBonesName == "" ? armatureName : dragonBonesName;
 		const auto factory = dragonBones::CCFactory::getFactory();
-        string fileSke = rootPath + dbName + "/" + dbName + "_ske.json";
-        string fileTex =rootPath + dbName + "/" + dbName + "_tex.json";
-        if(!factory->getDragonBonesData(dbName))
-        {
-            factory->loadDragonBonesData(fileSke, dbName);
-		    //factory->loadDragonBonesData(rootPath + armatureName + "/" + armatureName + "_ske.dbbin");
-            factory->loadTextureAtlasData(fileTex, dbName);
-        }
-        //const std::string& armatureName, const std::string& dragonBonesName = "", const std::string& skinName = "", const std::string& textureAtlasName = ""
-        const auto armatureDisplay =  factory->buildArmatureDisplay(armatureName, dbName);
+		string fileSke = rootPath + dbName + "/" + dbName + "_ske.json";
+		string fileTex = rootPath + dbName + "/" + dbName + "_tex.json";
+		if (!factory->getDragonBonesData(dbName))
+		{
+			factory->loadDragonBonesData(fileSke, dbName);
+			//factory->loadDragonBonesData(rootPath + armatureName + "/" + armatureName + "_ske.dbbin");
+			factory->loadTextureAtlasData(fileTex, dbName);
+		}
+		//const std::string& armatureName, const std::string& dragonBonesName = "", const std::string& skinName = "", const std::string& textureAtlasName = ""
+		const auto armatureDisplay = factory->buildArmatureDisplay(armatureName, dbName);
 		//scene->addChild(armatureDisplay);
 		////std::string name = armatureDisplay->getArmature()->getSlot("handL")->getName();
 		//armatureDisplay->getAnimation()->play("icemandead", 999999);
@@ -170,18 +170,18 @@ namespace std
 		////std::setAnchorPoint(armatureDisplay,0,0);
 		//armatureDisplay->setPosition(200.0f, 200.0f);
 		//armatureDisplay->setVisible(true);
-        int time = (Common::DateTime().GetTicks() - dt.GetTicks());
-        CCLOG("%s.%s load time:%i", dragonBonesName.c_str(), armatureName.c_str(),   time);
-        return armatureDisplay;// factory->buildArmatureDisplay(armatureName, dragonBonesName);
+		int time = (Common::DateTime().GetTicks() - dt.GetTicks());
+		CCLOG("%s.%s load time:%i", dragonBonesName.c_str(), armatureName.c_str(), time);
+		return armatureDisplay;// factory->buildArmatureDisplay(armatureName, dragonBonesName);
 	};
-    dragonBones::CCArmatureDisplay * buildArmature(const string & armatureName, const string& dragonBonesName)
+	dragonBones::CCArmatureDisplay * buildArmature(const string & armatureName, const string& dragonBonesName)
 	{
-        const auto factory = dragonBones::CCFactory::getFactory();
-        const auto armatureDisplay = factory->buildArmatureDisplay(armatureName, dragonBonesName, "", dragonBonesName);
-        return armatureDisplay;
+		const auto factory = dragonBones::CCFactory::getFactory();
+		const auto armatureDisplay = factory->buildArmatureDisplay(armatureName, dragonBonesName, "", dragonBonesName);
+		return armatureDisplay;
 
 	};
-    string setText(ui::Text * tui, const string & val)
+	string setText(ui::Text * tui, const string & val)
 	{
 		string old = tui->getString();
 		tui->setString(val);
@@ -214,7 +214,7 @@ namespace std
 	};
 	void drawRange(Node * node, Color4F c)
 	{
-		Node * draw=node->getChildByName("drawNode");
+		Node * draw = node->getChildByName("drawNode");
 		if (!draw){
 			DrawNode* drawNode = DrawNode::create();
 			drawNode->setName("drawNode");
@@ -240,9 +240,9 @@ namespace std
 		//logInfo("node:getAnchorPoint", this->getAnchorPointInPoints());
 		//std::setAnchorPoint(this);
 		this->autorelease();
-		string name=getTypeName();
+		string name = getTypeName();
 		setName(name);
-        setNodeType(name);
+		setNodeType(name);
 		return true;
 	};
 	void BaseNode::autorelease()
@@ -258,12 +258,12 @@ namespace std
 	{
 		this->autorelease();
 		//std::setAnchorPoint(this);
-		string name=getTypeName();
+		string name = getTypeName();
 		setName(name);
-        setNodeType(name);
+		setNodeType(name);
 		return true;
 	};
-    BaseSprite::BaseSprite(const string & file)
+	BaseSprite::BaseSprite(const string & file)
 	{
 		setNodeType("BaseSprite");
 		this->initWithFile(file);
@@ -377,11 +377,11 @@ namespace std
 		const auto& stageSize = cocos2d::Director::getInstance()->getVisibleSize();
 		return stageSize.height;
 	}
-    dragonBones::CCArmatureDisplay * EventNode::loadArmature(const string & rootPath, const string & armatureName, const string& dragonBonesName)
+	dragonBones::CCArmatureDisplay * EventNode::loadArmature(const string & rootPath, const string & armatureName, const string& dragonBonesName)
 	{
 		return std::loadArmature(rootPath, armatureName, dragonBonesName);
 	};
-    dragonBones::CCArmatureDisplay * EventNode::buildArmature(const string & armatureName, const string& dragonBonesName)
+	dragonBones::CCArmatureDisplay * EventNode::buildArmature(const string & armatureName, const string& dragonBonesName)
 	{
 		return std::buildArmature(armatureName, dragonBonesName);
 	};
@@ -400,7 +400,7 @@ namespace std
 		//	par = par->getParent();
 		//}
 		return true;
-	} 
+	}
 
 	bool  hitTest(Node * node, const Vec2 &pt, bool mouseEvent /*= true*/)
 	{
@@ -410,15 +410,15 @@ namespace std
 			EventNode* enode = ISTYPE(EventNode, node);
 			if (!enode->mouseEnabled)return false;
 		}
-        MovieClipSubBase * mcbs = ISTYPE(MovieClipSubBase, node);
-        if(mcbs && !mcbs->isReady)
-            return false;
+		MovieClipSubBase * mcbs = ISTYPE(MovieClipSubBase, node);
+		if (mcbs && !mcbs->isReady)
+			return false;
 		Vec2 nsp = node->convertToNodeSpace(pt);//convertToNodeSpace convertToNodeSpaceAR
 		Rect bb;
 		bb.size = node->getContentSize(); //node->convertToWorldSpace(node->getPosition())
 		if (bb.size.height == 0 || bb.size.width == 0)
 		{
-            return false;
+			return false;
 			//if (node->getChildrenCount())
 			//{
 			//	cocos2d::Vector<Node*> cld = node->getChildren();
@@ -458,20 +458,20 @@ namespace std
 	};
 	void BaseNode::setAlpha(cocos2d::Node * node, float op)
 	{
-        if(!node)return;
+		if (!node)return;
 		op = op<0 ? 0 : op>1 ? 1 : op;
 		int ops = op * 255;
 		node->setOpacity(ops);
-		if (ISTYPE(MovieClip,node)){
+		if (ISTYPE(MovieClip, node)){
 			ISTYPE(MovieClip, node)->container->setOpacity(ops);
 		}
 	};
 	float BaseNode::getAlpha(cocos2d::Node * node)
 	{
-        if(!node)return 0;
-        int ops = node->getOpacity();
-		float alpha= (double)ops / 255*10;
-		alpha = std::floor(alpha+0.5) / 10;
+		if (!node)return 0;
+		int ops = node->getOpacity();
+		float alpha = (double)ops / 255 * 10;
+		alpha = std::floor(alpha + 0.5) / 10;
 		return alpha;
 	};
 
@@ -508,8 +508,8 @@ namespace std
 		return this->getContentSize().height;
 	};
 	void BaseSprite::setWidth(float w){
-		Size size = this->getContentSize(); 
-		this->setScaleX((w/size.width));
+		Size size = this->getContentSize();
+		this->setScaleX((w / size.width));
 		//size.width = w;
 		//this->setContentSize(size);
 	};
@@ -540,40 +540,40 @@ namespace std
 		if (basePoint.x && basePoint.y)
 			child->setPosition(basePoint);
 	};
-	  void BaseNode::addChild(Node* child, int localZOrder, int tag){
-		  Node::addChild(child, localZOrder,tag);
-		  if (basePoint.x && basePoint.y)
-			  child->setPosition(basePoint);
-	  };
-	  void BaseNode::addChild(Node* child, int localZOrder, const std::string &name){
-		  Node::addChild(child, localZOrder, name);
-		  if (basePoint.x && basePoint.y)
-			  child->setPosition(basePoint);
-	  };
-	  void changeAnchorPoint(Node * node, float xy){
-		  changeAnchorPoint(node,Vec2(xy,xy));
-	  }
-	  void changeAnchorPoint(Node * node, const Vec2& xy){
-		  Vec2 absPos1 = node->getAnchorPointInPoints();
-		  node->setAnchorPoint(xy);
-		  Vec2 absPos2 = node->getAnchorPointInPoints();
-		  Vec2 dif = absPos2 - absPos1;
-		  dif= Vec2(node->getScaleX()*dif.x, node->getScaleY()*dif.y);
-		  node->setPosition(node->getPosition() + dif);
+	void BaseNode::addChild(Node* child, int localZOrder, int tag){
+		Node::addChild(child, localZOrder, tag);
+		if (basePoint.x && basePoint.y)
+			child->setPosition(basePoint);
+	};
+	void BaseNode::addChild(Node* child, int localZOrder, const std::string &name){
+		Node::addChild(child, localZOrder, name);
+		if (basePoint.x && basePoint.y)
+			child->setPosition(basePoint);
+	};
+	void changeAnchorPoint(Node * node, float xy){
+		changeAnchorPoint(node, Vec2(xy, xy));
+	}
+	void changeAnchorPoint(Node * node, const Vec2& xy){
+		Vec2 absPos1 = node->getAnchorPointInPoints();
+		node->setAnchorPoint(xy);
+		Vec2 absPos2 = node->getAnchorPointInPoints();
+		Vec2 dif = absPos2 - absPos1;
+		dif = Vec2(node->getScaleX()*dif.x, node->getScaleY()*dif.y);
+		node->setPosition(node->getPosition() + dif);
 
-		  //this->getAnchorPoint();
-		  //if (xy == 0.5){
-		  //Vec2 orgpos = this->getPosition();
-		  //Vec2 pos = this->convertToWorldSpace(Vec2(0, 0));
-		  //this->setAnchorPoint(Vec2(xy, xy));
-		  //Vec2 pos1 = this->convertToNodeSpace(pos);
-		  //this->setPosition(orgpos+pos1);
-		  //}
-		  //else{
-		  //}
-	  };
+		//this->getAnchorPoint();
+		//if (xy == 0.5){
+		//Vec2 orgpos = this->getPosition();
+		//Vec2 pos = this->convertToWorldSpace(Vec2(0, 0));
+		//this->setAnchorPoint(Vec2(xy, xy));
+		//Vec2 pos1 = this->convertToNodeSpace(pos);
+		//this->setPosition(orgpos+pos1);
+		//}
+		//else{
+		//}
+	};
 	void BaseNode::changeAnchorPoint(float xy){
-		std::changeAnchorPoint(this, xy); 
+		std::changeAnchorPoint(this, xy);
 	};
 	void BaseNode::drawRange()
 	{
@@ -587,7 +587,7 @@ namespace std
 		//logInfo(getNamePath(this), this->getPosition(), &this->convertToWorldSpace(this->getPosition()), &(Vec2)this->getContentSize());
 		////drawNode->setScaleX(this->getScaleX());
 		////drawNode->setScaleY(this->getScaleY());
- 	};
+	};
 	void BaseSprite::drawRange()
 	{
 		std::drawRange(this, Color4F::YELLOW);
@@ -614,17 +614,17 @@ namespace std
 		////drawNode->setScaleX(this->getScaleX());
 		////drawNode->setScaleY(this->getScaleY());
 	};
-    MouseEvent::MouseEvent(MouseEventType mouseEventCode) : cocos2d::EventMouse(mouseEventCode), idx(0), target(NULL), processed(false), enode(NULL)
+	MouseEvent::MouseEvent(MouseEventType mouseEventCode) : cocos2d::EventMouse(mouseEventCode), idx(0), target(NULL), processed(false), enode(NULL)
 	{
 	};
-    MouseEvent::MouseEvent(cocos2d::EventMouse * e, bool incSub) :EventMouse(*e), idx(0), target(NULL), processed(false), enode(NULL)
+	MouseEvent::MouseEvent(cocos2d::EventMouse * e, bool incSub) :EventMouse(*e), idx(0), target(NULL), processed(false), enode(NULL)
 	{
 		Node * node = e->getCurrentTarget();
 		hitTest(node, incSub);
 	};
-    MouseEvent::MouseEvent(cocos2d::EventMouse * e) :EventMouse(*e), idx(0), target(NULL), processed(false), enode(NULL)
-    {
-    };
+	MouseEvent::MouseEvent(cocos2d::EventMouse * e) :EventMouse(*e), idx(0), target(NULL), processed(false), enode(NULL)
+	{
+	};
 
 	void  MouseEvent::hitTest(Node *node, bool incSub)
 	{
@@ -683,20 +683,20 @@ namespace std
 	{
 		cocos2d::EventMouse::setCurrentTarget(target);
 		this->target = target;
-        enode=ISTYPE(EventNode, this->target);
-	}; 
+		enode = ISTYPE(EventNode, this->target);
+	};
 	bool MouseEvent::hasNext(){
 		if (currentTargets.size() > idx){
 			setCurrentTarget(currentTargets.at(idx));
-            processed = false;
+			processed = false;
 			idx++;
 			return true;
 		}
 		return false;
 	};
-    int MouseEvent::getIndex(const string & name)
-    {
-		int len=currentTargets.size();
+	int MouseEvent::getIndex(const string & name)
+	{
+		int len = currentTargets.size();
 		for (int i = 0; i < len; i++)
 		{
 			if (currentTargets.at(i)->getName() == name)
@@ -716,16 +716,16 @@ namespace std
 		//Node * n = e->getCurrentTarget();
 		int l = EventNodes.size();
 		Vec2 ep = e->getLocationInView();
-        for(int i = l-1; i >=0; i--)
-        {
-            EventNode * _node = EventNodes.at(i);
-            Node *node = ISTYPE(Node, _node);
-            //if (n == node)continue;
-            if(!node)continue;
+		for (int i = l - 1; i >= 0; i--)
+		{
+			EventNode * _node = EventNodes.at(i);
+			Node *node = ISTYPE(Node, _node);
+			//if (n == node)continue;
+			if (!node)continue;
 			if (!node->isVisible()) continue;
 			if (std::hitTest(node, ep))
-                me.currentTargets.push(node);
-        }
+				me.currentTargets.push(node);
+		}
 		return me;
 	};
 
@@ -851,55 +851,34 @@ namespace std
 		return true;
 	};
 
-	void EventNode::setNodeMouse(EventNode * en, int type, bool v){
-		if (!en)return;
-		if (type == 1){
-			en->mouseChildren = v;
-			Node *node = ISTYPE(Node, en);
-			if (node){
-				Vector<Node*>& chlds = node->getChildren();
-				int len = chlds.size();
-				for (int i = 0; i < len; i++)
-				{
-					setNodeMouse(ISTYPE(EventNode, chlds.at(i)), type, v);
-				}
-			}
+	void EventNode::setNodeMouse(Node * n, int type, bool v, bool setSub){
+		if (!n)return;
+		EventNode *en = ISTYPE(EventNode, n);
+		if (en){
+			if (type == 1)en->mouseChildren = v;
+			else if (type == 3)en->mouseEnabled = v;
+			else if (type == 3)en->mouseFlag = v;
 		}
-		else if (type == 2){
-			en->mouseEnabled = v;
-			Node *node = ISTYPE(Node, en);
-			if (node){
-				Vector<Node*>& chlds = node->getChildren();
-				int len = chlds.size();
-				for (int i = 0; i < len; i++)
-				{
-					setNodeMouse(ISTYPE(EventNode, chlds.at(i)), type, v);
-				}
-			}
+		else if (setSub){
+			return;
 		}
-		else if (type == 3){
-			en->mouseFlag = v;
-			Node *node = ISTYPE(Node, en);
-			if (node){
-				Vector<Node*>& chlds = node->getChildren();
-				int len = chlds.size();
-				for (int i = 0; i < len; i++)
-				{
-					setNodeMouse(ISTYPE(EventNode, chlds.at(i)), type, v);
-				}
-			}
-		}
+		Node *node = ISTYPE(Node, en);
+		if (!node)return;
+		Vector<Node*>& chlds = node->getChildren();
+		int len = chlds.size();
+		for (int i = 0; i < len; i++)
+			setNodeMouse(ISTYPE(Node, chlds.at(i)), type, v, setSub);
 	};
 
-	void EventNode::setMouseChildren(bool v){
-		setNodeMouse(this, 1, v);
+	void EventNode::setMouseChildren(bool v, bool setSub){
+		setNodeMouse(ISTYPE(Node, this), 1, v, setSub);
 	}
 
-	void EventNode::setMouseEnabled(bool v){
-		setNodeMouse(this, 2, v);
+	void EventNode::setMouseEnabled(bool v, bool setSub){
+		setNodeMouse(ISTYPE(Node, this), 2, v, setSub);
 	};
-	void EventNode::setMouseFlag(bool v){
-		setNodeMouse(this, 3, v);
+	void EventNode::setMouseFlag(bool v, bool setSub){
+		setNodeMouse(ISTYPE(Node, this), 3, v, setSub);
 	};
 
 	void EventNode::keyBoardPressedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event)
@@ -1028,11 +1007,11 @@ namespace std
 	};
 
 	void EventNode::printNodePos(Node *node){
-		logInfo(node->getName()+".isVisible", node->isVisible());
+		logInfo(node->getName() + ".isVisible", node->isVisible());
 		logInfo(node->getName() + ".position", node->getPosition());
-		logInfo(node->getName()+".worldPos", node->convertToWorldSpace(node->getPosition()));
-		if (ISTYPE(EventNode,node)){
-			EventNode *en=	ISTYPE(EventNode, node);
+		logInfo(node->getName() + ".worldPos", node->convertToWorldSpace(node->getPosition()));
+		if (ISTYPE(EventNode, node)){
+			EventNode *en = ISTYPE(EventNode, node);
 			logInfo(node->getName() + ".mouseEnabled", en->mouseEnabled);
 		}
 		if (ISTYPE(BaseNode, node)){
@@ -1062,7 +1041,7 @@ namespace std
 		{
 			Node *snode = chds.at(i);
 			logInfo(nam + "[" + Common::String(i) + "] ", getNamePath(snode));
-			logInfo(nam + "[" + Common::String(i) + "].pos ",  node->convertToWorldSpace(node->getPosition()));
+			logInfo(nam + "[" + Common::String(i) + "].pos ", node->convertToWorldSpace(node->getPosition()));
 			if (snode->getChildrenCount())
 				printChildNodes(snode);
 		}
@@ -1104,7 +1083,7 @@ namespace std
 		}
 	};
 	bool EventNode::debug = true;
-    void EventNode::logInfo(const string & label, const cocos2d::Point & pos, const cocos2d::Point* pos2, const cocos2d::Point* pos3, const cocos2d::Point* pos4)
+	void EventNode::logInfo(const string & label, const cocos2d::Point & pos, const cocos2d::Point* pos2, const cocos2d::Point* pos3, const cocos2d::Point* pos4)
 	{
 		if (!debug)return;
 		if (pos4)
@@ -1117,37 +1096,37 @@ namespace std
 			CCLOG("%s x=%f y=%f", label.c_str(), pos.x, pos.y);
 		if (gLog)writeLog(label + " x=" + Common::String(pos.x) + " y=" + Common::String(pos.y), 1);
 	};
-    void EventNode::logInfo(const string & label, const cocos2d::Size &pos)
+	void EventNode::logInfo(const string & label, const cocos2d::Size &pos)
 	{
 		if (!debug)return;
 		CCLOG("%s w=%f h=%f", label.c_str(), pos.width, pos.height);
 		if (gLog)writeLog(label + " w=" + Common::String(pos.width) + " h=" + Common::String(pos.height), 1);
 	};
-    void EventNode::logInfo(const string & label, float x, float y)
+	void EventNode::logInfo(const string & label, float x, float y)
 	{
 		if (!debug)return;
 		CCLOG("%s x=%f y=%f", label.c_str(), x, y);
 		if (gLog)writeLog(label + " x=" + Common::String(x) + " y=" + Common::String(y), 1);
 	};
-    void EventNode::logInfo(const string & label, int x)
+	void EventNode::logInfo(const string & label, int x)
 	{
 		if (!debug)return;
 		CCLOG("%s=%d ", label.c_str(), x);
 		if (gLog)writeLog(label + "=" + Common::String(x), 1);
 	};
-    void EventNode::logInfo(const string & label, int x, int y)
+	void EventNode::logInfo(const string & label, int x, int y)
 	{
 		if (!debug)return;
 		CCLOG("%s[%d , %d]", label.c_str(), x, y);
 		if (gLog)writeLog(label + " x=" + Common::String(x) + " y=" + Common::String(y), 1);
 	};
-    void EventNode::logInfo(const string & label, int i, Vec2 p)
+	void EventNode::logInfo(const string & label, int i, Vec2 p)
 	{
 		if (!debug)return;
 		CCLOG("%s[%i] x=%f , y=%f", label.c_str(), i, p.x, p.y);
 		if (gLog)writeLog(label + " x=" + Common::String(p.x) + " y=" + Common::String(p.y), 1);
 	};
-    void EventNode::logInfo(const string & label1, const string & label2, const string & label3, const string & label4, const string & label5, const string & label6)
+	void EventNode::logInfo(const string & label1, const string & label2, const string & label3, const string & label4, const string & label5, const string & label6)
 	{
 		if (!debug)return;
 		string msg = label1;
@@ -1161,167 +1140,167 @@ namespace std
 		if (gLog)writeLog(msg, 1);
 	};
 
-    void EventNode::logInfo(const string & label, dragonBones::Transform const * t)
-    {
+	void EventNode::logInfo(const string & label, dragonBones::Transform const * t)
+	{
 		if (!debug)return;
 		CCLOG("%s[%f , %f]  [sx=%f sy=%f r=%f]", label.c_str(), t->x, t->y, t->scaleX, t->scaleX, t->rotation);
 	};
-    void EventNode::logInfo(const string & label, dragonBones::Transform * t)
-    {
+	void EventNode::logInfo(const string & label, dragonBones::Transform * t)
+	{
 		logInfo(label, (dragonBones::Transform const *)(t));
 	};
-    void EventNode::logInfo(const string & label, dragonBones::Transform t)
-    {
+	void EventNode::logInfo(const string & label, dragonBones::Transform t)
+	{
 		logInfo(label, (dragonBones::Transform const *)(&t));
 	};
 	////////////////////////////////////////////////////
 	void BaseNode::setLocalZOrder(int localZOrder)
-    {
-        Node::setLocalZOrder(localZOrder);
-		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end();it++)
+	{
+		Node::setLocalZOrder(localZOrder);
+		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
 		{
 			if (it->second & LinkNodeType::LinkZOrder)
 				it->first->setLocalZOrder(localZOrder);
 		}
-    };
-    void BaseNode::setGlobalZOrder(float globalZOrder)
-    {
-        Node::setGlobalZOrder(globalZOrder);
+	};
+	void BaseNode::setGlobalZOrder(float globalZOrder)
+	{
+		Node::setGlobalZOrder(globalZOrder);
 		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
 		{
 			if (it->second & LinkNodeType::LinkZOrder)
 				it->first->setGlobalZOrder(globalZOrder);
 		}
-    };
-    void BaseNode::setScaleX(float scaleX)
-    {
-        Node::setScaleX(scaleX);
+	};
+	void BaseNode::setScaleX(float scaleX)
+	{
+		Node::setScaleX(scaleX);
 		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
 		{
 			if (it->second & LinkNodeType::LinkScale)
 				it->first->setScaleX(scaleX);
 		}
 	};
-    void BaseNode::setScaleY(float scaleY)
-    {
-        Node::setScaleY(scaleY);
+	void BaseNode::setScaleY(float scaleY)
+	{
+		Node::setScaleY(scaleY);
 		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
 		{
 			if (it->second & LinkNodeType::LinkScale)
 				it->first->setScaleY(scaleY);
 		}
 	};
-    void BaseNode::setScaleZ(float scaleZ)
-    {
-        Node::setScaleZ(scaleZ);
+	void BaseNode::setScaleZ(float scaleZ)
+	{
+		Node::setScaleZ(scaleZ);
 		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
 		{
 			if (it->second & LinkNodeType::LinkScale)
 				it->first->setScaleZ(scaleZ);
 		}
 	};
-    void BaseNode::setScale(float scale)
-    {
-        Node::setScale(scale);
+	void BaseNode::setScale(float scale)
+	{
+		Node::setScale(scale);
 		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
 		{
 			if (it->second & LinkNodeType::LinkScale)
 				it->first->setScale(scale);
 		}
 	};
-    void BaseNode::setScale(float scaleX, float scaleY)
-    {
-        Node::setScale(scaleX, scaleY);
+	void BaseNode::setScale(float scaleX, float scaleY)
+	{
+		Node::setScale(scaleX, scaleY);
 		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
 		{
 			if (it->second & LinkNodeType::LinkScale)
 				it->first->setScale(scaleX, scaleY);
 		}
 	};
-    void BaseNode::setPosition(const Vec2 &position)
-    {
-        Node::setPosition(position);
+	void BaseNode::setPosition(const Vec2 &position)
+	{
+		Node::setPosition(position);
 		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
 		{
 			if (it->second & LinkNodeType::LinkPos)
 				it->first->setPosition(position);
 		}
 	};
-    void BaseNode::setNormalizedPosition(const Vec2 &position)
-    {
-        Node::setNormalizedPosition(position);
+	void BaseNode::setNormalizedPosition(const Vec2 &position)
+	{
+		Node::setNormalizedPosition(position);
 		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
 		{
 			if (it->second & LinkNodeType::LinkPos)
 				it->first->setNormalizedPosition(position);
 		}
 	};
-    void BaseNode::setPosition(float x, float y)
-    {
-        Node::setPosition(x,y);
+	void BaseNode::setPosition(float x, float y)
+	{
+		Node::setPosition(x, y);
 		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
 		{
 			if (it->second & LinkNodeType::LinkPos)
 				it->first->setPosition(x, y);
 		}
 	};
-    void BaseNode::setPositionX(float x)
-    {
-        Node::setPositionX(x);
+	void BaseNode::setPositionX(float x)
+	{
+		Node::setPositionX(x);
 		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
 		{
 			if (it->second & LinkNodeType::LinkPos)
 				it->first->setPositionX(x);
 		}
 	};
-    void BaseNode::setPositionY(float y)
-    {
-        Node::setPositionY(y);
+	void BaseNode::setPositionY(float y)
+	{
+		Node::setPositionY(y);
 		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
 		{
 			if (it->second & LinkNodeType::LinkPos)
 				it->first->setPositionY(y);
 		}
 	};
-    void BaseNode::setPosition3D(const Vec3& position)
-    {
-        Node::setPosition3D(position);
+	void BaseNode::setPosition3D(const Vec3& position)
+	{
+		Node::setPosition3D(position);
 		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
 		{
 			if (it->second & LinkNodeType::LinkPos)
 				it->first->setPosition3D(position);
 		}
 	};
-    void BaseNode::setPositionZ(float positionZ)
-    {
-        Node::setPositionZ(positionZ);
+	void BaseNode::setPositionZ(float positionZ)
+	{
+		Node::setPositionZ(positionZ);
 		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
 		{
 			if (it->second & LinkNodeType::LinkPos)
 				it->first->setPositionZ(positionZ);
 		}
 	};
-    void BaseNode::setSkewX(float skewX)
-    {
-        Node::setSkewX(skewX);
+	void BaseNode::setSkewX(float skewX)
+	{
+		Node::setSkewX(skewX);
 		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
 		{
 			if (it->second & LinkNodeType::LinkSekw)
 				it->first->setSkewX(skewX);
 		}
 	};
-    void BaseNode::setSkewY(float skewY)
-    {
-        Node::setSkewY(skewY);
+	void BaseNode::setSkewY(float skewY)
+	{
+		Node::setSkewY(skewY);
 		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
 		{
 			if (it->second & LinkNodeType::LinkSekw)
 				it->first->setSkewY(skewY);
 		}
 	};
-    void BaseNode::setAnchorPoint(const Vec2& anchorPoint)
-    {
-        Node::setAnchorPoint(anchorPoint);
+	void BaseNode::setAnchorPoint(const Vec2& anchorPoint)
+	{
+		Node::setAnchorPoint(anchorPoint);
 		//Vec2 absPos1 = Node::getAnchorPointInPoints();
 		//Node::setAnchorPoint(anchorPoint);
 		//Vec2 absPos2 = Node::getAnchorPointInPoints();
@@ -1332,89 +1311,89 @@ namespace std
 				it->first->setAnchorPoint(anchorPoint);
 		}
 	};
-    void BaseNode::setContentSize(const Size& contentSize)
-    {
-        Node::setContentSize(contentSize);
+	void BaseNode::setContentSize(const Size& contentSize)
+	{
+		Node::setContentSize(contentSize);
 		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
 		{
 			if (it->second & LinkNodeType::LinkSize)
 				it->first->setContentSize(contentSize);
 		}
 	};
-    void BaseNode::setVisible(bool visible)
-    {
-        Node::setVisible(visible);
+	void BaseNode::setVisible(bool visible)
+	{
+		Node::setVisible(visible);
 		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
 		{
 			if (it->second & LinkNodeType::LinkSize)
 				it->first->setVisible(visible);
 		}
 	};
-    void BaseNode::setRotation(float rotation)
-    {
-        Node::setRotation(rotation);
+	void BaseNode::setRotation(float rotation)
+	{
+		Node::setRotation(rotation);
 		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
 		{
 			if (it->second & LinkNodeType::LinkRotation)
 				it->first->setRotation(rotation);
 		}
 	};
-    void BaseNode::setRotation3D(const Vec3& rotation)
-    {
-        Node::setRotation3D(rotation);
+	void BaseNode::setRotation3D(const Vec3& rotation)
+	{
+		Node::setRotation3D(rotation);
 		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
 		{
 			if (it->second & LinkNodeType::LinkRotation)
 				it->first->setRotation3D(rotation);
 		}
 	};
-    void BaseNode::setRotationQuat(const Quaternion& quat)
-    {
-        Node::setRotationQuat(quat);
+	void BaseNode::setRotationQuat(const Quaternion& quat)
+	{
+		Node::setRotationQuat(quat);
 		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
 		{
 			if (it->second & LinkNodeType::LinkRotation)
 				it->first->setRotationQuat(quat);
 		}
 	};
-    void BaseNode::setRotationSkewX(float rotationX)
-    {
-        Node::setRotationSkewX(rotationX);
+	void BaseNode::setRotationSkewX(float rotationX)
+	{
+		Node::setRotationSkewX(rotationX);
 		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
 		{
 			if (it->second & LinkNodeType::LinkRotation)
 				it->first->setRotationSkewX(rotationX);
 		}
 	};
-    void BaseNode::setRotationSkewY(float rotationY)
-    {
-        Node::setRotationSkewY(rotationY);
+	void BaseNode::setRotationSkewY(float rotationY)
+	{
+		Node::setRotationSkewY(rotationY);
 		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
 		{
 			if (it->second & LinkNodeType::LinkRotation)
 				it->first->setRotationSkewY(rotationY);
 		}
 	};
-    void BaseNode::setCascadeOpacityEnabled(bool cascadeOpacityEnabled)
-    {
-        Node::setCascadeOpacityEnabled(cascadeOpacityEnabled);
+	void BaseNode::setCascadeOpacityEnabled(bool cascadeOpacityEnabled)
+	{
+		Node::setCascadeOpacityEnabled(cascadeOpacityEnabled);
 		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
 		{
 			if (it->second & LinkNodeType::LinkAlpha)
 				it->first->setCascadeOpacityEnabled(cascadeOpacityEnabled);
 		}
 	};
- 
-    void BaseNode::setOpacityModifyRGB(bool value)
-    {
-        Node::setOpacityModifyRGB(value);
+
+	void BaseNode::setOpacityModifyRGB(bool value)
+	{
+		Node::setOpacityModifyRGB(value);
 		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
 		{
 			if (it->second & LinkNodeType::LinkAlpha)
 				it->first->setOpacityModifyRGB(value);
 		}
 	};
-    void BaseNode::setOpacity(GLubyte opacity)
+	void BaseNode::setOpacity(GLubyte opacity)
 	{
 		Node::setOpacity(opacity);
 		for (LinkRuleMap::iterator it = linkNodes.begin(); it != linkNodes.end(); it++)
@@ -1423,22 +1402,22 @@ namespace std
 				it->first->setOpacity(opacity);
 		}
 	};
-    void BaseNode::setAlpha(float op)
+	void BaseNode::setAlpha(float op)
 	{
 		setAlpha(this, op);
 	};
 	void BaseNode::addLinkNode(BaseNode * node, int linkFlag)
-    {
+	{
 		//Node * _node = node; 
 		addLinkNodeFlag(node, linkFlag);
-    };
+	};
 	void BaseNode::addLinkNodeFlag(BaseNode * node, int linkFlag)
-    {
+	{
 		LinkRuleMap::iterator it = linkNodes.find(node);
 		if (it == linkNodes.end())
 		{
 			linkNodes.insert(LinkRuleMap::value_type(node, linkFlag));
-			node->linkParent=this;
+			node->linkParent = this;
 		}
 		else
 			linkNodes[node] = it->second | linkFlag;
@@ -1448,16 +1427,16 @@ namespace std
 		//}
 	};
 	void BaseNode::removeLinkNode(BaseNode * node)
-    {
+	{
 		LinkRuleMap::iterator it = linkNodes.find(node);
 		if (it != linkNodes.end())
 		{
-			linkNodes.erase(node); 
+			linkNodes.erase(node);
 			node->setUserObject(NULL);
 		}
-    };
+	};
 	void BaseNode::removeLinkNodeFlag(BaseNode * node, int linkFlag)
-    {
+	{
 		LinkRuleMap::iterator it = linkNodes.find(node);
 		if (it != linkNodes.end())
 		{
@@ -1473,7 +1452,7 @@ namespace std
 				}
 			}
 		}
-    };
- 
+	};
+
 
 }

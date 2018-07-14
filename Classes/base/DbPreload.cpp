@@ -269,8 +269,10 @@ namespace std
 			}
 			i++;
 		}
-		Director::getInstance()->getScheduler()->unschedule(CC_SCHEDULE_SELECTOR(DbPreload::addImageAsyncCallBack), this);
-		startSch = false;
+		if (loadTexNum == loadSkeNum){
+			Director::getInstance()->getScheduler()->unschedule(CC_SCHEDULE_SELECTOR(DbPreload::addImageAsyncCallBack), this);
+			startSch = false;
+		}
 	}
 
     float DbPreload::getProgress() {

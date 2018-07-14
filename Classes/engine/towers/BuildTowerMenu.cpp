@@ -145,6 +145,10 @@ namespace engine{
                     this->tempObject = this->world->addTower("tower1", this->myPlace);
                     this->world->buildTowerMenu = NULL;
 					this->myPlace->setVisible(false);
+					removeEventNode(this->myPlace->placeForBuildCase);
+					removeEventNode(this->myPlace->buildPoint);
+					//this->myPlace->placeForBuildCase->setMouseEnabled(false);
+					this->myPlace->buildPoint->setMouseEnabled(false);
                     this->kill();
 					//this->myPlace->setMouseEnabled(false);
                 }

@@ -127,6 +127,7 @@ namespace engine
     void MC::addMcs(MC * mc, MovieClipSub * mcs, bool reinit)
 	{
         if(reinit)mc->submc.push(mcs);
+		allSubMcbs.push(mcs);
 		MovieClip * mvc = getRootMc(mc);
 		if (mvc)// && mc != mvc
 			mvc->addMcs(mcs);
@@ -144,12 +145,12 @@ namespace engine
 	};
 	Node *  MC::getMemNode(const string &  slotName)
 	{
-		for (int i = 0; i < this->submcbs.size(); i++)
+		for (int i = 0; i < this->allSubMcbs.size(); i++)
 		{
-			MovieClipSubBase *_node = ISTYPE(MovieClipSubBase, this->submcbs[i]);
+			MovieClipSubBase *_node = ISTYPE(MovieClipSubBase, this->allSubMcbs[i]);
 			if (_node && slotName == _node->slotName)
 			{
-				return ISTYPE(Node, this->submcbs[i]);
+				return ISTYPE(Node, this->allSubMcbs[i]);
 			}
 		}
 		return NULL;
@@ -157,6 +158,7 @@ namespace engine
 
 	void MC::addMCbs(MovieClipSubBase * mcs,bool reinit){
         if(reinit)this->submcbs.push(mcs);
+		allSubMcbs.push(mcs);
 		if (ISTYPE(Node, mcs)){
 			ISTYPE(Node, mcs)->retain();
 		}
@@ -536,9 +538,9 @@ namespace engine
         int l = this->submc.size();
         for(int i = 0; i < l; i++)
             this->submc[i]->reinit();
-        l = this->mcbs.size();
+		l = this->submcbs.size();
         for(int i = 0; i < l; i++)
-            this->mcbs[i]->reinit();
+			this->submcbs[i]->reinit();
         //l = this->mcase.size();
         //for (int i = 0; i < l; i++)
         //    this->mcase[i]->reinit();

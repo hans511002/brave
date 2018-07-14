@@ -44,7 +44,7 @@ namespace engine
 			//this->x = this->myTower->this_pt.x;
 			//this->y = this->myTower->this_pt.y;
 			this->towerRadius = new TowerRadius_mc();
-			this->world->addChild(this->towerRadius);
+			this->world->addChild(this->towerRadius,3);
 			//this->towerRadius->stop();
 			this->towerRadius->setContentSize(Size(this->myTower->radius * 2, this->myTower->radius * 2 * this->world->scaleRadius));
 			//this->towerRadius->width = this->myTower->radius * 2;
@@ -58,7 +58,7 @@ namespace engine
 			//this->towerRadius->setMouseChildren(false);
 			//this->towerRadius->setMouseEnabled(false);
 			this->towerRadius1 = new TowerRadius_mc();
-            this->world->addChild(this->towerRadius1);
+            this->world->addChild(this->towerRadius1,3);
 			//this->towerRadius1->stop();
 			this->towerRadius1->setContentSize(Size(this->myTower->radius * 2, this->myTower->radius * 2 * this->world->scaleRadius));
 			//this->towerRadius1->width = this->myTower->radius * 2;
@@ -1216,8 +1216,9 @@ namespace engine
 			if (targetName == "sphereSlotCase")
 			{
 				{
-					Node * parent = event->target->getParent()->getParent()->getParent();
+					Node * parent = event->target->getParent()->getParent()->getParent()->getParent();
 					TowerMenu_mc * towerMenuMc = ISTYPE(TowerMenu_mc, parent);
+					logInfo("towerMenuMc", towerMenuMc->getPosition());
 				}
 				MCCase * scase = ISTYPE(MCCase, event->target);
 				//UltraTowerMenu_mc  event->target->getParent()->getParent()->getParent()

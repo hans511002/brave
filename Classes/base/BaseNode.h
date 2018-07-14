@@ -62,10 +62,10 @@ namespace std
 		bool mouseChildren;
 		bool mouseEnabled;
 		bool mouseFlag;
-		virtual void setMouseChildren(bool v);
-		virtual void setMouseEnabled(bool v);
-		virtual void setMouseFlag(bool v);
-		static void setNodeMouse(EventNode * en,int type,bool v);
+		virtual void setMouseChildren(bool v,bool setSub=true);
+		virtual void setMouseEnabled(bool v, bool setSub = true);
+		virtual void setMouseFlag(bool v, bool setSub = true);
+		static void setNodeMouse(Node * en, int type, bool v, bool setSub = true);
 
 		virtual bool isMouseChildren();
 		virtual bool isMouseEnabled();

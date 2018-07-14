@@ -73,7 +73,7 @@ namespace engine
                         world->ultraTowerMenu->closeMenu();
                     }
                     world->towerMenu = new TowerMenu(this);
-                    world->addChild(world->towerMenu);
+                    world->addChild(world->towerMenu,3);
                     world->towerMenu->monitor();
                     this->setMouseChildren(true);
                     this->setMouseEnabled(true);
