@@ -60,7 +60,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     //auto scene = HelloDragonBones::createScene();
     //auto scene = ::WorldInterface::createScene();
    // auto scene = DBComTest::createScene();
-	auto scene = DBComSubTest::createScene();
+	auto scene = DBComTest::createScene();
    
     
      //auto scene1 = AnimationBase::createScene();
