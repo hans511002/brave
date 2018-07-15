@@ -54,7 +54,7 @@ namespace engine
         Sprite *getSprite(const string &  slotName);
 		
 
-        void addMcs(MC * mc, MovieClipSub * mcs, bool reinit=false);
+		virtual void addMcs(MovieClipSub * mcs, bool reinit = false);
 		virtual bool remove(MovieClipSub * ms);
 		static MovieClip * getRootMc(MC * mc);
 
@@ -77,6 +77,7 @@ namespace engine
     struct MovieClipSubBase 
     {
 		bool isReady;
+		int reinitType;
         MC * mc;
         dragonBones::Slot * slot;
 		dragonBones::Bone * bone;
@@ -87,7 +88,7 @@ namespace engine
 		bool visible;
 		virtual void setVisible(bool v);
         virtual bool reinit() ;
-		inline MovieClipSubBase() :isReady(false), mc(0), slot(NULL), bone(NULL), display(0), visible(true){};
+		inline MovieClipSubBase() :isReady(false), reinitType(0), mc(0), slot(NULL), bone(NULL), display(0), visible(true){};
 		template<typename T = MC> T * getParentMC() { return ISTYPE(T, mc); };
         //inline MovieClip * getRootMc() { return MC::getRootMc(mc); };
         //void addMCbs(MC * mc, MovieClipSubBase * mcs);

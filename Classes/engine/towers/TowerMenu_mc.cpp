@@ -29,16 +29,16 @@ namespace engine
 			SET_NODETYPENAME();
 			btnGetAll = this->createMovieClipSub("btnGetAll");
 			btnGetAllBtnGetAllCase = btnGetAll->createCase("btnGetAllCase");
-			btnTowerUpgr1 = this->createMovieClipSub("btnTowerUpgr1");
+			btnTowerUpgr1 = this->createMovieClipSub("btnTowerUpgr1",true);//13 帧后才有
 			btnTowerUpgr1BtnTowerUpgrCase = btnTowerUpgr1->createCase("btnTowerUpgrCase");
 			btnTowerUpgr1CostTXT = btnTowerUpgr1->createText("costTXT");
-			btnTowerUpgr2 = this->createMovieClipSub("btnTowerUpgr2");
+			btnTowerUpgr2 = this->createMovieClipSub("btnTowerUpgr2", true);//15 帧后才有
 			btnTowerUpgr2BtnTowerUpgrCase = btnTowerUpgr2->createCase("btnTowerUpgrCase");
 			btnTowerUpgr2CostTXT = btnTowerUpgr2->createText("costTXT");
-			btnTowerUpgr3 = this->createMovieClipSub("btnTowerUpgr3");
+			btnTowerUpgr3 = this->createMovieClipSub("btnTowerUpgr3", true);//17 帧后才有
 			btnTowerUpgr3BtnTowerUpgrCase = btnTowerUpgr3->createCase("btnTowerUpgrCase");
 			btnTowerUpgr3CostTXT = btnTowerUpgr3->createText("costTXT");
-			btnTowerUpgr4 = this->createMovieClipSub("btnTowerUpgr4");
+			btnTowerUpgr4 = this->createMovieClipSub("btnTowerUpgr4", true);//19 帧后才有
 			btnTowerUpgr4BtnTowerUpgrCase = btnTowerUpgr4->createCase("btnTowerUpgrCase");
 			btnTowerUpgr4CostTXT = btnTowerUpgr4->createText("costTXT");
 			btnUpgradeMenu = this->createMovieClipSub("btnUpgradeMenu");
@@ -46,9 +46,9 @@ namespace engine
 			btnUpgradeMenuBtnUpgradeMenuLOCKCase = btnUpgradeMenu->createCase("btnUpgradeMenuLOCKCase");
 			btnUpgradeMenuCostTXT = btnUpgradeMenu->createText("costTXT");
 
-			cont1 = this->createMovieClipSub("cont1 ");
-			cont2 = this->createMovieClipSub("cont2 ");
-			fastBuyUltraCont = this->createMovieClipSub("fastBuyUltraCont");
+			cont1 = this->createMovieClipSub("cont1");
+			cont2 = this->createMovieClipSub("cont2");
+			fastBuyUltraCont = this->createMovieClipSub("fastBuyUltraCont", true);//13 帧后才有
 			fastBuyUltraContBtnFastBuyUltra = fastBuyUltraCont->createMovieClipSub("btnFastBuyUltra");
 			fastBuyUltraContBtnFastBuyUltraCostTXT = fastBuyUltraContBtnFastBuyUltra->createText("costTXT");
 			fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase = fastBuyUltraContBtnFastBuyUltra->createCase("fastBuyUltraCase");

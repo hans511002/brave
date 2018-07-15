@@ -109,7 +109,6 @@ namespace engine
 		MCText     * moneyTXT;
 		MovieClipSub * pause;
 		MCCase     * pausePauseCase;
-		MovieClipSub * selectUnit;
 		MovieClipSub * sell;
 		MovieClipSub * slow;
 		MovieClipSub * startWaves;

@@ -43,7 +43,7 @@ namespace engine
 		butCastAir = this->createMovieClipSub("butCastAir");
 		butCastAirCastAirCase = butCastAir->createCase("castAirCase");
 
-		butCastAirCont = butCastAir->createMovieClipSub("cont");//
+		butCastAirCont = butCastAir->createMovieClipSub("cont", true);//4帧才有
 
 		butCastAirContContMask = butCastAirCont->createMask("contMask");
 		//butCastAirContContMask = butCastAirCont->createMovieClipSub("contMask");
@@ -51,11 +51,11 @@ namespace engine
 		butCastGolem = this->createMovieClipSub("butCastGolem"); 
 		butCastGolemCastGolemCase = butCastGolem->createCase("castGolemCase");
 
-		butCastGolemCont = butCastGolem->createMovieClipSub("cont");
+		butCastGolemCont = butCastGolem->createMovieClipSub("cont", true);//4帧才有
 		butCastGolemContContMask = butCastGolemCont->createMask("contMask");
 		butCastIceman = this->createMovieClipSub("butCastIceman");
 		butCastIcemanCastIcemanCase = butCastIceman->createCase("castIcemanCase");
-		butCastIcemanCont = butCastIceman->createMovieClipSub("cont");
+		butCastIcemanCont = butCastIceman->createMovieClipSub("cont", true);//4帧才有
         butCastIcemanContContMask = butCastIcemanCont->createMask("contMask");
 		buyFire = this->createMovieClipSub("buyFire");
 		buyFireBuyTXT = buyFire->createText("buyTXT");
@@ -79,9 +79,9 @@ namespace engine
 		buyStoneLightUp = buyStone->getSprite("lightUp");
 		fast = this->createMovieClipSub("fast");
 		fastFastCase = fast->createCase("fastCase");
-		fastCont = fast->createMovieClipSub("cont");
+		fastCont = fast->createMovieClipSub("cont", true);// 4 5帧 才有
 		fireBack = this->createMovieClipSub("fireBack");
-		fireBackCont = fireBack->createMovieClipSub("cont");
+		fireBackCont = fireBack->createMovieClipSub("cont", true);// 2帧 才有
 		fireBacklight = this->createMovieClipSub("fireBacklight");
 		fireNumTXT = this->createText("fireNumTXT");
  		fireSphere = this->createMovieClipSub("fireSphere");
@@ -102,14 +102,14 @@ namespace engine
 		getAllStone = getAll->createMovieClipSub("stone");
 		getAllNumTXT = this->createText("getAllNumTXT");
 		iceBack = this->createMovieClipSub("iceBack");
-		iceBackCont = iceBack->createMovieClipSub("cont");
+		iceBackCont = iceBack->createMovieClipSub("cont", true);//2帧 才有
 		iceBacklight = this->createMovieClipSub("iceBacklight");
 		iceNumTXT = this->createText("iceNumTXT");
 		iceSphere = this->createMovieClipSub("iceSphere");
 		iceSphereSphereCase = iceSphere->createCase("sphereCase");
 		lastTime = this->createText("lastTime");
 		levinBack = this->createMovieClipSub("levinBack");
-		levinBackCont = levinBack->createMovieClipSub("cont");
+		levinBackCont = levinBack->createMovieClipSub("cont", true);//2帧 才有
 		levinBacklight = this->createMovieClipSub("levinBacklight");
 		levinNumTXT = this->createText("levinNumTXT");
 		levinSphere = this->createMovieClipSub("levinSphere");
@@ -118,13 +118,13 @@ namespace engine
 		moneyTXT = this->createText("moneyTXT");
 		pause = this->createMovieClipSub("pause");
 		pausePauseCase = pause->createCase("pauseCase");
-		selectUnit = this->createMovieClipSub("selectUnit");
+		//selectUnit = this->createMovieClipSub("selectUnit");
 		sell = this->createMovieClipSub("sell");
 		slow = this->createMovieClipSub("slow");
 		startWaves = this->createMovieClipSub("startWaves");
 		startWavesStartWavesCase = startWaves->createCase("startWavesCase");
 		stoneBack = this->createMovieClipSub("stoneBack");
-		stoneBackCont = stoneBack->createMovieClipSub("cont");
+		stoneBackCont = stoneBack->createMovieClipSub("cont",true);//2帧 才有
 		stoneBacklight = this->createMovieClipSub("stoneBacklight");
 		stoneNumTXT = this->createText("stoneNumTXT");
 		stoneSphere = this->createMovieClipSub("stoneSphere");
