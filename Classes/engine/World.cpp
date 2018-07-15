@@ -496,8 +496,8 @@ namespace engine
 	void World::mouseDownHandler(cocos2d::EventMouse* e)
 	{
 		EventNode::mouseDownHandler(e);
-		int mouseButton = e->getMouseButton();
-		if (mouseButton == 1)return;
+		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
+		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
 		std::MouseEvent me(e);
 		if (!useNodeEvent){
 			me = std::buildMouseEvent(e);
@@ -639,8 +639,8 @@ namespace engine
 	void World::mouseUpHandler(cocos2d::EventMouse* e)
 	{
         EventNode::mouseUpHandler(e);
-		int mouseButton = e->getMouseButton();
-		if (mouseButton == 1)return;
+		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
+		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
 		std::MouseEvent me(e);
 		if (!useNodeEvent){
 			me = std::buildMouseEvent(e);
@@ -707,8 +707,8 @@ namespace engine
 		this->mouseX = e->getCursorX();
 		this->mouseY = e->getCursorY();
         EventNode::mouseMoveHandler(e);
-		int mouseButton = e->getMouseButton();
-		if (mouseButton == 1)return;
+		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
+		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
 		std::MouseEvent me(e);
 		if (!useNodeEvent){
 			me = std::buildMouseEvent(e);
@@ -889,8 +889,8 @@ namespace engine
 	void World::rightMouseDownHandler(cocos2d::EventMouse* e)
 	{
 		EventNode::mouseDownHandler(e);
-		int mouseButton = e->getMouseButton();
-		if (mouseButton == 1)return;
+		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
+		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
 		std::MouseEvent me = std::buildMouseEvent(e);
 		std::MouseEvent * event = &me;
         if(preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_DOWN))return;
@@ -948,8 +948,8 @@ namespace engine
 	void World::rightMouseUpHandler(cocos2d::EventMouse* e)
 	{
 		EventNode::mouseDownHandler(e);
-		int mouseButton = e->getMouseButton();
-		if (mouseButton == 1)return;
+		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
+		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
 		std::MouseEvent me = std::buildMouseEvent(e);
 		std::MouseEvent * event = &me;
         if(preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_DOWN))return;

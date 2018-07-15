@@ -733,7 +733,7 @@ namespace std
 		return me;
 	};
 
-	std::MouseEvent BaseNode::buildMouseEvent(Node * node, int mouseButton, cocos2d::EventMouse::MouseEventType mouseEventType)
+	std::MouseEvent BaseNode::buildMouseEvent(Node * node, cocos2d::EventMouse::MouseButton mouseButton, cocos2d::EventMouse::MouseEventType mouseEventType)
 	{
 		std::MouseEvent e(mouseEventType);
 		e.setMouseButton(mouseButton);
@@ -946,16 +946,16 @@ namespace std
 		Node * node = event->getCurrentTarget();
 		Event::Type tp = event->getType();
 		logInfo("event targetNamePath", getNamePath(node));
-		int mouseButton = event->getMouseButton();
-		if (mouseButton == 1)
+		cocos2d::EventMouse::MouseButton mouseButton = event->getMouseButton();
+		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)
 			rightMouseDownHandler(event);
 	};
 	void EventNode::mouseUpHandler(cocos2d::EventMouse* event)
 	{
 		if (!std::hitTest(event->getCurrentTarget(), event))return;
-		int mouseButton = event->getMouseButton();
+		cocos2d::EventMouse::MouseButton mouseButton = event->getMouseButton();
 		//loginfo("mouseUp", event);
-		if (mouseButton == 1)rightMouseUpHandler(event);
+		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)rightMouseUpHandler(event);
 	};
 
 	void EventNode::mouseMoveHandler(cocos2d::EventMouse* event)
@@ -1057,9 +1057,9 @@ namespace std
 	void EventNode::logInfo(string mouseType, cocos2d::EventMouse* event)
 	{
 		if (!debug)return;
-		int mouseButton = event->getMouseButton();
+		cocos2d::EventMouse::MouseButton mouseButton = event->getMouseButton();
 		logInfo(mouseType, event->getCursorX(), event->getCursorY());
-		logInfo("         mouseButton", mouseButton);
+		logInfo("         mouseButton", (int)mouseButton);
 
 		Node * node = event->getCurrentTarget();
 		Event::Type tp = event->getType();

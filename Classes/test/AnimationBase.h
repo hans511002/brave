@@ -64,7 +64,7 @@ private:
 
     void _mouseMovedHandler(cocos2d::EventMouse* event)
     {
-        if (event->getMouseButton() != 0)
+		if (event->getMouseButton() != cocos2d::EventMouse::MouseButton::BUTTON_LEFT)
         {
             return;
         }

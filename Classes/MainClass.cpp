@@ -289,8 +289,8 @@ void Main::keyBoardReleasedHandler(cocos2d::EventKeyboard::KeyCode keyCode, coco
 };
 void Main::mouseDownHandler(cocos2d::EventMouse* event){
 	EventNode::mouseDownHandler(event);
-	int mouseButton = event->getMouseButton();
-	if (mouseButton == 1)return;
+	cocos2d::EventMouse::MouseButton mouseButton = event->getMouseButton();
+	if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
 	std::MouseEvent me= std::buildMouseEvent(event);
 	if (this->worldClass)
 		this->worldClass->mouseDownHandler(&me);
@@ -301,8 +301,8 @@ void Main::mouseDownHandler(cocos2d::EventMouse* event){
 };
 void Main::mouseUpHandler(cocos2d::EventMouse* event){
 	EventNode::mouseUpHandler(event);
-	int mouseButton = event->getMouseButton();
-	if (mouseButton == 1)return;
+	cocos2d::EventMouse::MouseButton  mouseButton = event->getMouseButton();
+	if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
 	std::MouseEvent  me = std::buildMouseEvent(event);
 	if (this->worldClass)
 		this->worldClass->mouseUpHandler(&me);
