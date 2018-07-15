@@ -20,11 +20,11 @@ namespace engine{
 		MCCase * pointerCase;
 		MovieClipSub * fireAnima;
 		MovieClipSub * eyesAnima;
-		MCMask * mask1;
-		MCMask * mask2;
+		Sprite * mask1;
+		Sprite * mask2;
 		Sprite * arrow;
 		LevelPointer();
-		int counter;
+		float counter;
 		int timer;
 		Vec2 myPoint;
 		int statusAnima;

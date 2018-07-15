@@ -10,14 +10,16 @@ using namespace cocostudio;
 
 namespace engine{
 
-	LevelPointer::LevelPointer() :MovieClip("worldinterface/", "pointer", "LevelBase")
+	LevelPointer::LevelPointer() :MovieClip("worldinterface/", "pointer", "LevelBase"), statusAnima(0), timer(0), counter(0)
 	{
 		SET_NODETYPENAME();
 		pointerCase = this->createCase("pointerCase");
 		fireAnima = this->createMovieClipSub("fireAnima");
 		eyesAnima = this->createMovieClipSub("eyesAnima");
-		mask1 = this->createMask("mask1");
-		mask2 = this->createMask("mask2");
+		//mask1 = this->createMask("mask1");
+		//mask2 = this->createMask("mask2");
+		mask1 = (Sprite*)this->getArmature()->getSlot("mask1")->getDisplay();
+		mask2 = (Sprite*)this->getArmature()->getSlot("mask2")->getDisplay();
 		arrow = (Sprite*)this->getArmature()->getSlot("arrow")->getDisplay();
 	}
 

@@ -247,7 +247,9 @@ namespace engine
 			//pointer->arrow->stop();
 			pointer->fireAnima->gotoAndStop(1);
 			pointer->eyesAnima->gotoAndStop(1);
-			pointer->mask2->setRotation(180);
+			//std::changeAnchorPoint(pointer->mask2,Vec2(1,0.5));
+			//pointer->getArmature()->getBone("mask2")->offset.rotation=180;
+			//pointer->mask2->setRotation(180);
 			pointer->pointerCase->setMouseEnabled(true);
 			//this->world->level.removeChild(this->world->pointer1);
 			//this->world->addChild(this->world->pointer1);
@@ -515,22 +517,18 @@ namespace engine
 			}
 			if (tempObject->isVisible())
 			{
-				if (tempObject->fireAnima->currentFrame < tempObject->fireAnima->totalFrames)
-				{
-					tempObject->fireAnima->gotoAndStop((tempObject->fireAnima->currentFrame + 1));
-				}
-				else
-				{
-					tempObject->fireAnima->gotoAndStop(1);
-				}
-				if (tempObject->eyesAnima->currentFrame < tempObject->eyesAnima->totalFrames)
-				{
-					tempObject->eyesAnima->gotoAndStop((tempObject->eyesAnima->currentFrame + 1));
-				}
-				else
-				{
-					tempObject->eyesAnima->gotoAndStop(1);
-				}
+				if(!tempObject->fireAnima->inPlay)
+					tempObject->fireAnima->play(1); 
+				//if (tempObject->fireAnima->currentFrame < tempObject->fireAnima->totalFrames)
+				//	tempObject->fireAnima->gotoAndStop((tempObject->fireAnima->currentFrame + 1));
+				//else
+				//	tempObject->fireAnima->gotoAndStop(1);
+				if (!tempObject->eyesAnima->inPlay)
+					tempObject->eyesAnima->play(1);
+				//if (tempObject->eyesAnima->currentFrame < tempObject->eyesAnima->totalFrames)
+				//	tempObject->eyesAnima->gotoAndStop((tempObject->eyesAnima->currentFrame + 1));
+				//else
+				//	tempObject->eyesAnima->gotoAndStop(1);
 				if (!tempObject->mouseEnabled)
 				{
 					if (tempObject->getScaleX() > 0)

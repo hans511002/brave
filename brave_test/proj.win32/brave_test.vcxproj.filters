@@ -299,6 +299,9 @@
     <ClInclude Include="..\..\brave\Classes\test\DBComSubTest.h">
       <Filter>src\tmp</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\brave\Classes\test\MaskTest.h">
+      <Filter>src\tmp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">

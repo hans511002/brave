@@ -7,7 +7,7 @@ const double BaseNode::AnimationInterval = 1.0f / (double)Main::FrameRate;
 
 namespace std
 {
-	bool useNodeEvent = false;
+	bool useNodeEvent = true;
 
 	cocos2d::CCSprite* maskedSpriteWithSprite(cocos2d::CCSprite* textureSprite, cocos2d::CCSprite* maskSprite)
 	{
@@ -298,7 +298,7 @@ namespace std
 			addEventNode(this);
 		Node::onEnter();
 		if (schdt == 1)
-			this->schedule(schedule_selector(BaseNode::scheduleUpdate), AnimationInterval);
+			this->schedule(schedule_selector(BaseNode::scheduleUpdate), (float)AnimationInterval);
 	};
 	void BaseNode::onExit()
 	{
@@ -318,7 +318,7 @@ namespace std
 	void BaseNode::enableFrameHandler(bool init){
 		schdt = 2;
 		if (init)
-			this->schedule(schedule_selector(BaseNode::scheduleUpdate), AnimationInterval);
+			this->schedule(schedule_selector(BaseNode::scheduleUpdate), (float)AnimationInterval);
 		else
 			schdt = 1;
 	};

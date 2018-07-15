@@ -37,6 +37,11 @@ namespace engine
 {
 	World::World() :frameCounter(0), feature(NULL), bezierClass(NULL), wavesClass(NULL), numRoads(0), level(NULL), road(NULL), levelAdditionally(NULL), levelAdditionally1(NULL), levelAdditionally2(NULL), levelAdditionally3(NULL), worldInterface(NULL), money(0), bonusMoney(0), liveMax(20), live(0), forseIndexFl(false), getSphere(NULL), buildTowerMenu(NULL), towerMenu(NULL), ultraTowerMenu(NULL), scaleRadius(0.85f), towerRadius(NULL), unitInputBezieCounter(0), cast(NULL), menuObject(NULL), pointer1(NULL), pointer2(NULL), pointer3(NULL), selectObject(NULL), firstMusicPlay(false), secondMusicPlay(false), secondMusicCounter(0), winDefCounter(1), viewBoss(0), viewRockCrash(0), boss(NULL), decoration(NULL), nowLevel(0), saveBox(NULL), exchange(NULL), portalViewCounter(30), trainingClass(NULL), hint(NULL), startMusicVolume(0), bonusMoneyFlag(true), eduOpenUpgrArrowFlag(true), killEnemiesCounter(0), createGolemCounter(0), createIcemanCounter(0), createAirCounter(0), earlyWaveCounter(0), sellFireCounter(0), sellIceCounter(0), sellStoneCounter(0), sellLevinCounter(0), sellGetAllCounter(0), icemanSlowdownEnemiesCounter(0), castFireCounter(0), castIceCounter(0), castStoneCounter(0), castLevinCounter(0), castGetAllCounter(0), golemVoiceTurn(1), icemanVoiceTurn(1), airVoiceTurn(1), mouseX(0), mouseY(0)
 	{
+		MCCase::worldMouseHandlerNode = this;
+		//MCCase::worldMouseHandler.node = this;
+		//MCCase::worldMouseHandler.mouseDownHandler = NODE_MOUSEHANDLER_SELECTOR(World::mouseDownHandler);
+		//MCCase::worldMouseHandler.mouseMoveHandler =   NODE_MOUSEHANDLER_SELECTOR (World::mouseMoveHandler);
+		//MCCase::worldMouseHandler.mouseUpHandler = NODE_MOUSEHANDLER_SELECTOR(World::mouseUpHandler);
 		menuObject = NULL;
 		pointer1 = NULL;
 		pointer2 = NULL;
@@ -454,44 +459,6 @@ namespace engine
 		return false;
 	};
 
-	void MCCase::mouseDownHandler(cocos2d::EventMouse* event){
-		//BaseNode::mouseDownHandler(event);
-
-		//loginfo("mouseDown",event); 
-		if (!std::hitTest(event->getCurrentTarget(), event))return;
-		logInfo("hitTest true : mouse in ", event->getCurrentTarget()->getName());
-		Node * node = event->getCurrentTarget();
-		Event::Type tp = event->getType();
-		logInfo("event targetNamePath", getNamePath(node));
-		event->stopPropagation();
-		Main::mainClass->worldClass->mouseDownHandler(event);
-		//int mouseButton = event->getMouseButton();
-		//if (mouseButton == 1)
-		//	rightMouseDownHandler(event);
-
-	};
-	void MCCase::mouseUpHandler(cocos2d::EventMouse* event){
-		if (!std::hitTest(event->getCurrentTarget(), event))return;
-		logInfo("hitTest true : mouse in ", event->getCurrentTarget()->getName());
-		Node * node = event->getCurrentTarget();
-		Event::Type tp = event->getType();
-		logInfo("event targetNamePath", getNamePath(node));
-		event->stopPropagation();
-		Main::mainClass->worldClass->mouseUpHandler(event);
-		//int mouseButton = event->getMouseButton();
-		//if (mouseButton == 1)
-		//	rightMouseDownHandler(event);
-	};
-	void MCCase::mouseMoveHandler(cocos2d::EventMouse* event){
-		if (!std::hitTest(event->getCurrentTarget(), event))return;
-		logInfo("hitTest true : mouse in ", event->getCurrentTarget()->getName());
-		Node * node = event->getCurrentTarget();
-		Event::Type tp = event->getType();
-		logInfo("event targetNamePath", getNamePath(node));
-		event->stopPropagation();
-		Main::mainClass->worldClass->mouseMoveHandler(event);
-	};
- 
 	//cocos2d::EventMouse* event
 	void World::mouseDownHandler(cocos2d::EventMouse* e)
 	{

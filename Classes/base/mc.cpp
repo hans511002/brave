@@ -417,7 +417,55 @@ namespace engine
 		MovieClipSubBase::setVisible(v);
 		BaseNode::setVisible(v);
 	};
-	
+
+	WORLD_NODE_MOUSEHANDLER MCCase::worldMouseHandler;
+	EventNode *MCCase::worldMouseHandlerNode=NULL;
+	void MCCase::mouseDownHandler(cocos2d::EventMouse* event) {
+		//BaseNode::mouseDownHandler(event);
+
+		//loginfo("mouseDown",event); 
+		if (!std::hitTest(event->getCurrentTarget(), event))return;
+		logInfo("hitTest true : mouse in ", event->getCurrentTarget()->getName());
+		Node * node = event->getCurrentTarget();
+		Event::Type tp = event->getType();
+		logInfo("event targetNamePath", getNamePath(node));
+		event->stopPropagation();
+		if (worldMouseHandlerNode)worldMouseHandlerNode->mouseDownHandler(event);
+
+		//if(worldMouseHandler.node && worldMouseHandler.mouseDownHandler)
+		//	(worldMouseHandler.node->*worldMouseHandler.mouseDownHandler)(event);
+		//int mouseButton = event->getMouseButton();
+		//if (mouseButton == 1)
+		//	rightMouseDownHandler(event);
+
+	};
+	void MCCase::mouseUpHandler(cocos2d::EventMouse* event) {
+		if (!std::hitTest(event->getCurrentTarget(), event))return;
+		logInfo("hitTest true : mouse in ", event->getCurrentTarget()->getName());
+		Node * node = event->getCurrentTarget();
+		Event::Type tp = event->getType();
+		logInfo("event targetNamePath", getNamePath(node));
+		event->stopPropagation();
+		if (worldMouseHandlerNode)worldMouseHandlerNode->mouseUpHandler(event);
+		//if (worldMouseHandler.node && worldMouseHandler.mouseUpHandler)
+		//	(worldMouseHandler.node->*worldMouseHandler.mouseUpHandler)(event);
+		//Main::mainClass->worldClass->mouseUpHandler(event);
+		//int mouseButton = event->getMouseButton();
+		//if (mouseButton == 1)
+		//	rightMouseDownHandler(event);
+	};
+	void MCCase::mouseMoveHandler(cocos2d::EventMouse* event) {
+		if (!std::hitTest(event->getCurrentTarget(), event))return;
+		logInfo("hitTest true : mouse in ", event->getCurrentTarget()->getName());
+		Node * node = event->getCurrentTarget();
+		Event::Type tp = event->getType();
+		logInfo("event targetNamePath", getNamePath(node));
+		event->stopPropagation();
+		if (worldMouseHandlerNode)worldMouseHandlerNode->mouseMoveHandler(event);
+		//if (worldMouseHandler.node && worldMouseHandler.mouseMoveHandler)
+		//	(worldMouseHandler.node->*worldMouseHandler.mouseMoveHandler)(event); 
+		//Main::mainClass->worldClass->mouseMoveHandler(event);
+	};
 
 	MCSprite::MCSprite(MC * mc, const string &  slotName, const string &  file) :BaseSprite(file), initSprite(false)
 	{
@@ -1059,9 +1107,7 @@ namespace engine
 			this->setScaleY(this->getScaleY()*r);
 		}
 	};
-
-
-
+	 
 	dragonBones::Armature *MovieClipSub::getArmature()
 	{
 		return this->arm;

@@ -21,6 +21,14 @@ namespace std
 	class BaseNode;
     class EventNode;
 	extern bool useNodeEvent;
+	typedef void (EventNode::*NODE_MOUSEHANDLER)(cocos2d::EventMouse* event);
+#define NODE_MOUSEHANDLER_SELECTOR(_SELECTOR) static_cast<std::NODE_MOUSEHANDLER>(&_SELECTOR)
+	struct WORLD_NODE_MOUSEHANDLER {
+		EventNode*  node;
+		NODE_MOUSEHANDLER mouseDownHandler;
+		NODE_MOUSEHANDLER mouseUpHandler;
+		NODE_MOUSEHANDLER mouseMoveHandler;
+	};
 
 	void setAnchorPoint(cocos2d::Node* node, bool subset = false);
 	void setAnchorPoint(cocos2d::Node* node, float x, float y, bool subset = false);
@@ -36,9 +44,9 @@ namespace std
 	bool hitTest(cocos2d::Node * node, cocos2d::EventMouse* e);
 	void drawRange(cocos2d::Node * node, Color4F c = Color4F::RED);
 	void changeAnchorPoint(Node * node, float xy);
-	void changeAnchorPoint(Node * node, const Vec2& xy);
-    cocos2d::Sprite* maskedSpriteWithSprite(cocos2d::Sprite* textureSprite, cocos2d::Sprite* maskSprite);
-    cocos2d::CCClippingNode* maskedWithClippingNode(cocos2d::Sprite* textureSprite, cocos2d::Sprite* maskSprite);
+	void changeAnchorPoint(Node * node, const Vec2& xy); 
+	cocos2d::CCSprite* maskedSpriteWithSprite(cocos2d::CCSprite* textureSprite, cocos2d::CCSprite* maskSprite);
+	cocos2d::CCClippingNode* maskedWithClippingNode(cocos2d::Sprite* textureSprite, cocos2d::Sprite* maskSprite);
 
 	string getNamePath(Node *node);
 	Common::Array<Node*>  getChildNodes(Node *node);
@@ -147,8 +155,10 @@ namespace std
     static const int defaultLinkFlag=255;
 	typedef std::map<BaseNode *, int> LinkRuleMap;
 #define SET_NODETYPENAME() string name=getTypeName();setName(name);setNodeType(name)
+
 	class BaseNode :public cocos2d::Node, public EventNode
 	{
+
     protected:
 		int schdt;
 		LinkRuleMap linkNodes;

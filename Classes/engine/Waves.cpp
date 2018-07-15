@@ -740,7 +740,7 @@ namespace engine
                     this->world->worldInterface->container->startWaves->gotoAndStop(1);
                     this->world->worldInterface->container->startWavesStartWavesCase->setMouseEnabled(true);
                     this->world->pointer1->timer = this->listOfWaves[0][0][0];
-                    this->world->pointer1->counter = 360 / this->listOfWaves[0][0][0];
+                    this->world->pointer1->counter = (double)360 / this->listOfWaves[0][0][0];
 					this->world->pointer1->fireAnima->setRotation(0);
                     if (this->world->pointer2)
                     {

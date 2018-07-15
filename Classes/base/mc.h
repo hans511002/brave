@@ -233,7 +233,6 @@ namespace engine
 #define DEFINE_MCSUB(clzName,member) struct clzName :public MovieClipSub { \
 	inline clzName(MC *mc, string solt) :MovieClipSub(mc, slot){}; member };
 
-
 	struct MCText :public ui::Text, MovieClipSubBase, public   EventNode
 	{
         MCText(MC * mc, const string &  slotName);
@@ -244,6 +243,8 @@ namespace engine
 	};
 	struct MCCase :public BaseNode, MovieClipSubBase 
     {
+		static WORLD_NODE_MOUSEHANDLER worldMouseHandler;
+		static EventNode *worldMouseHandlerNode;
         bool _draw;
 		MCCase(MC * mc, const string &  slotName, bool mouseEnabled=true, bool draw = false);
 		inline virtual void setAlpha(float op) { BaseNode::setAlpha(this, op); };
