@@ -370,6 +370,10 @@ namespace engine
 			float scy = slot->getOrigin()->scaleY * bone->getOrigin()->scaleY;
 			if (root) scy *= root->getOrigin()->scaleY;
 			display->setScaleY(scy);
+			float r = slot->getOrigin()->rotation * bone->getOrigin()->rotation;
+			if (root) r *= root->getOrigin()->rotation;
+			display->setRotation(r);
+
 		//}
 		//else{
 		//	display->setContentSize(Size(40, 25));

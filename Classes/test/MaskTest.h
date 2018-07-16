@@ -8,8 +8,8 @@ public:
 	MCCase * pointerCase;
 	MovieClipSub * fireAnima;
 	MovieClipSub * eyesAnima;
-	Sprite * mask1;
-	Sprite * mask2;
+	MCMask * mask1;
+	MCMask * mask2;
 	Sprite * arrow;
 	MCMask * mask3;//1
 	MCMask * mask4;//2
@@ -27,14 +27,14 @@ LevelPointer::LevelPointer() :MovieClip("worldinterface/", "pointer", "LevelBase
 	pointerCase = this->createCase("pointerCase");
 	fireAnima = this->createMovieClipSub("fireAnima");
 	eyesAnima = this->createMovieClipSub("eyesAnima");
-	//mask1 = this->createMask("mask1");
-	//mask2 = this->createMask("mask2");
-	mask1 = (Sprite*)this->getArmature()->getSlot("mask1")->getDisplay();
-	mask2 = (Sprite*)this->getArmature()->getSlot("mask2")->getDisplay();
+	mask1 = this->createMask("mask1");
+	mask2 = this->createMask("mask2");
+	//mask1 = (Sprite*)this->getArmature()->getSlot("mask1")->getDisplay();
+	//mask2 = (Sprite*)this->getArmature()->getSlot("mask2")->getDisplay();
 	arrow = (Sprite*)this->getArmature()->getSlot("arrow")->getDisplay();
 	mask3 = this->createMask("mask3");
 	mask4 = this->createMask("mask4");
-	mask5= (Sprite*)this->getArmature()->getSlot("arrow")->getDisplay();
+	mask5= (Sprite*)this->getArmature()->getSlot("mask5")->getDisplay();
 
 
 }
