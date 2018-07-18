@@ -28,6 +28,7 @@ namespace engine{
 			this->road = param2;
 			this->movePhase = param3;
 			this->openFlag = param4;
+			init();
 			return;
 		}// end function
 
@@ -72,13 +73,13 @@ namespace engine{
 			//this->y = this->this_pt.y;
 			if (this->openFlag)
 			{
-				this->container->setOpacity(0);
+				this->container->setAlpha(0);
 				this->blow = new BlowIce_mc();//MovieClip("cast/","BlowIce_mc","BlowIce_mc");// new BlowIce_mc();
 				this->blow->stop();
 				this->addChild(this->blow);
-				this->setPosition(Vec2(this->getPositionX() + 84, this->getPositionY() - 238));
+				this->setPosition(Vec2(this->getPositionX() + 84, this->getPositionY() + 238));
 				//this->x = this->x + 84;
-				//this->y = this->y - 238;
+				//this->y = this->y + 238;
 			}
 			this->setMouseChildren(false);
 			this->setMouseEnabled(false);
@@ -253,11 +254,11 @@ namespace engine{
 					if (this->blow->currentFrame < this->blow->totalFrames)
 					{
 						this->blow->gotoAndStop((this->blow->currentFrame + 1));
-						this->container->setAlpha(this->container->getAlpha() + 1 / this->blow->totalFrames);
+						this->container->setAlpha(this->container->getAlpha() + (float)1 / this->blow->totalFrames);
 					}
 					else
 					{
-						this->container->setOpacity(1);
+						this->container->setAlpha(1);
 						this->removeChild(this->blow);
 						this->blow = NULL;
 					}
@@ -265,9 +266,9 @@ namespace engine{
 			}
 			else if (std::abs(this->getPositionX() - this->this_pt.x) > 1 || std::abs(this->getPositionY() - this->this_pt.y) > 1)
 			{
-				this->setPosition(Vec2(this->getPositionX() - 8.4, this->getPositionY() + 23.8));
+				this->setPosition(Vec2(this->getPositionX() - 8.4, this->getPositionY() - 23.8));
 				//this->x = this->x - 8.4;
-				//this->y = this->y + 23.8;
+				//this->y = this->y - 23.8;
 			}
 			else
 			{

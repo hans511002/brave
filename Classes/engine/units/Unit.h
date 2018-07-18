@@ -26,6 +26,7 @@ namespace engine
 	struct NewElement_mc :public MouseStatusMC
 		{
 			MCCase *newElementCase;
+			int type;
 			NewElement_mc();
 		};
 	namespace units

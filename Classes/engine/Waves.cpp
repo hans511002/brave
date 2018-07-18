@@ -9,6 +9,8 @@
 #include "MoneyAdd.h"
 #include "engine/level/Level.h"
 #include "engine/units/Unit.h"
+#include "InTimer.h"
+#include "CallDelay.h"
 
 
 using namespace engine::units;
@@ -140,7 +142,7 @@ namespace engine
 				if (this->world->nowLevel == 1)
 				{
 					this->world->worldInterface->blockCastGolem = true;
-					this->world->worldInterface->blockCastIceman = true;
+					this->world->worldInterface->blockCastIceman = false;// true;
 					this->world->worldInterface->blockCastAir = true;
 				}
 				else if (this->world->nowLevel == 2)
@@ -291,8 +293,8 @@ namespace engine
 			{
 				if (this->world->nowLevel == 1)
 				{
-					//new InTimer("openIce");
-					//new CallDelay("newElement", 2);
+					new InTimer("openIce");
+					new CallDelay("newElement", 2);
 				}
 				else if (this->world->nowLevel == 2)
 				{
@@ -304,8 +306,8 @@ namespace engine
 				}
 				else if (this->world->nowLevel == 3)
 				{
-					//new InTimer("openLevin");
-					//new CallDelay("newElement", 4);
+					new InTimer("openLevin");
+					new CallDelay("newElement", 4);
 				}
 			}
 			else if (this->nowWave == 3)
@@ -343,7 +345,7 @@ namespace engine
 				}
 				else if (this->world->nowLevel == 2)
 				{
-					//this->world->worldInterface->blockCastAir = false;
+					this->world->worldInterface->blockCastAir = false;
 					//if (!this->world->menuObject)
 					//{
 					//    this->world->menuObject = new Training_5(7);
@@ -352,7 +354,7 @@ namespace engine
 				}
 				else if (this->world->nowLevel == 3)
 				{
-					//this->world->worldInterface->blockCastGolem = false;
+					this->world->worldInterface->blockCastGolem = false;
 					//if (!this->world->menuObject)
 					//{
 					//    this->world->menuObject = new Training_5(5);

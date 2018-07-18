@@ -324,6 +324,12 @@
     <ClCompile Include="..\Classes\base\FileUtil.cpp">
       <Filter>src\base</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\engine\InTimer.cpp">
+      <Filter>src\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\CallDelay.cpp">
+      <Filter>src\engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -745,6 +751,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\base\FileUtil.h">
       <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\InTimer.h">
+      <Filter>src\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\CallDelay.h">
+      <Filter>src\engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

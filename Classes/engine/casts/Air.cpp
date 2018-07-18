@@ -71,6 +71,7 @@ namespace engine
 			//	this->addEventListener(Event.ADDED_TO_STAGE, this->init);
 			this->this_pt = param1;
 			this->direction = param2;
+			init();
 			return;
 		} // end function
 

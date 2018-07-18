@@ -878,6 +878,7 @@ namespace engine
 			container->getEventDispatcher()->setEnabled(true);
 			//container->getEventDispatcher()->addCustomEventListener(EventObject::FRAME_EVENT, std::bind(&MovieClip::onceMovieHandler, this, std::placeholders::_1));
 			container->getEventDispatcher()->addCustomEventListener(EventObject::COMPLETE, std::bind(&MovieClip::onceMovieHandler, this, std::placeholders::_1));
+			this->play(1);
 		}
 		if (this->setAr){
 			std::changeAnchorPoint(this, arPoint);

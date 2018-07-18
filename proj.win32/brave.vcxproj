@@ -184,6 +184,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\engine\bullets\Bullet_7.cpp" />
     <ClCompile Include="..\Classes\engine\bullets\Bullet_8.cpp" />
     <ClCompile Include="..\Classes\engine\bullets\Bullet_81.cpp" />
+    <ClCompile Include="..\Classes\engine\CallDelay.cpp" />
     <ClCompile Include="..\Classes\engine\CastSphere.cpp" />
     <ClCompile Include="..\Classes\engine\casts\Air.cpp" />
     <ClCompile Include="..\Classes\engine\casts\Cast.cpp" />
@@ -196,6 +197,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\engine\decoration\Decoration.cpp" />
     <ClCompile Include="..\Classes\engine\Feature.cpp" />
     <ClCompile Include="..\Classes\engine\GetSphere.cpp" />
+    <ClCompile Include="..\Classes\engine\InTimer.cpp" />
     <ClCompile Include="..\Classes\engine\level\Level1_mc.cpp" />
     <ClCompile Include="..\Classes\engine\level\RoadLevels_mc.cpp" />
     <ClCompile Include="..\Classes\engine\MoneyAdd.cpp" />
@@ -310,6 +312,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\engine\bullets\Bullet_7.h" />
     <ClInclude Include="..\Classes\engine\bullets\Bullet_8.h" />
     <ClInclude Include="..\Classes\engine\bullets\Bullet_81.h" />
+    <ClInclude Include="..\Classes\engine\CallDelay.h" />
     <ClInclude Include="..\Classes\engine\CastSphere.h" />
     <ClInclude Include="..\Classes\engine\casts\Air.h" />
     <ClInclude Include="..\Classes\engine\casts\Cast.h" />
@@ -323,6 +326,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\engine\decoration\DecorationLevel1.h" />
     <ClInclude Include="..\Classes\engine\Feature.h" />
     <ClInclude Include="..\Classes\engine\GetSphere.h" />
+    <ClInclude Include="..\Classes\engine\InTimer.h" />
     <ClInclude Include="..\Classes\engine\level\Level.h" />
     <ClInclude Include="..\Classes\engine\level\Level1_mc.h" />
     <ClInclude Include="..\Classes\engine\level\RoadLevels_mc.h" />

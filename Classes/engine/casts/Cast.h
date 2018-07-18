@@ -23,39 +23,39 @@ namespace engine{
     };
     namespace    casts
     { 
-        class Cast : public BaseNode
-        {
-        public:
-            int i, j, n;
-            //        public var tempObject:Object;
-            //        public var tempObject1:Object;
-            //        public var tempObject2:Object;
-            cocos2d::Point tempObject;
-            cocos2d::Point tempObject3;
+		class Cast : public BaseNode
+		{
+		public:
+			int i, j, n;
+			//        public var tempObject:Object;
+			//        public var tempObject1:Object;
+			//        public var tempObject2:Object;
+			cocos2d::Point tempObject;
+			cocos2d::Point tempObject3;
 			MovieClip * container;// : MovieClip;
-            World *world;
-            bool dead;
-            Common::Array<cocos2d::Point> *  map;
-            int canselCounter = 0;
-            int canselTimer;
+			World *world;
+			bool dead;
+			Common::Array<cocos2d::Point> *  map;
+			int canselCounter;// = 0;
+			int canselTimer;
 
-			Cast() :canselCounter(0), canselTimer(5), tempObject3(-1, -1) {   };
+			Cast() :canselCounter(0), map(NULL), dead(false), container(NULL), canselTimer(5), tempObject3(-1, -1) {   };
 
 			virtual bool init();
 
 			virtual void update(float dt = 0);
 
-			//virtual  void   mouseMoveHandler(cocos2d::EventMouse * param1);
+			virtual void mouseMoveHandler(cocos2d::EventMouse * param1) {};
 
-			//virtual  void   mouseDownHandler(cocos2d::EventMouse *event);
+			virtual void mouseDownHandler(cocos2d::EventMouse *event) {};
 
-			//virtual void   mouseUpHandler(cocos2d::EventMouse * event);
+			virtual void mouseUpHandler(cocos2d::EventMouse * event) {};
 
 			virtual bool scanWay();
 
 			virtual void   kill();
 
-        };
+		};
     }
 }
 #include "Air.h"

@@ -6,6 +6,7 @@
 #include "bezier/Bezier.h"
 #include "engine/casts/Map.h"
 #include "base/Indexes.h"
+#include "WorldInterface.h"
 
 //#include "animation/Hint.h"
 

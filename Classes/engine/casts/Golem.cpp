@@ -35,6 +35,7 @@ namespace engine{
             this->road = param2;
             this->movePhase = param3;
             this->openFlag = param4;
+			init();
             return;
         }// end function
 

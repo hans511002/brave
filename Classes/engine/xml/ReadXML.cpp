@@ -216,7 +216,7 @@ namespace engine
 		//Number(this->xmlData.cast.golem.@speed);
 		this->castIcemanSpeedXML = this->xmlData->getFloat( "cast.iceman.@speed");
 		// Number(this->xmlData.cast.iceman.@speed);
-		this->castIcemanFreezTimerXML = this->xmlData->getFloat( "cast.iceman.@freezTimer");
+		this->castIcemanFreezTimerXML = this->xmlData->getFloat( "cast.iceman.@freezTimer") * Main::fps;
 		// std::round(Number(this->xmlData.cast.iceman.@freezTimer) * Main::fps);
 		this->castIcemanLifeTimerXML = std::round(this->xmlData->getFloat( "cast.iceman.@lifeTimer") * Main::fps);
 		//std::round(Number(this->xmlData.cast.iceman.@lifeTimer) * Main::fps);

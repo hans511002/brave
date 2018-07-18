@@ -4227,14 +4227,17 @@ namespace engine
 		while (this->i >= 0)
 		{
 			MouseStatusMC * tempObject = this->listOfNewEnemies[this->i];
-			if (tempObject->currentFrame < tempObject->totalFrames)
-			{
-				tempObject->gotoAndStop((tempObject->currentFrame + 1));
+			if (!tempObject->inPlay) {
+				tempObject->play(1);
 			}
-			else
-			{
-				tempObject->gotoAndStop(1);
-			}
+			//if (tempObject->currentFrame < tempObject->totalFrames)
+			//{
+			//	tempObject->gotoAndStop((tempObject->currentFrame + 1));
+			//}
+			//else
+			//{
+			//	tempObject->gotoAndStop(1);
+			//}
 			if (this->world->getSphere || this->world->cast)
 			{
 				if (tempObject->isVisible())

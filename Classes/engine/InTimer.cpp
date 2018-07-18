@@ -1,7 +1,6 @@
-#ifndef ENGINE_INTIMER_H
-#define ENGINE_INTIMER_H
+ 
 #include "InTimer.h" 
-#include "engine/World.h"
+#include "World.h"
 
 namespace engine
 { 
@@ -10,6 +9,7 @@ namespace engine
         this->world = Main::mainClass->worldClass;
         this->type = param1;
         this->world->listOfClasses.push(this);
+		BaseNode::init();
         return;
     }// end function
 
@@ -49,13 +49,14 @@ namespace engine
             {
                 this->world->worldInterface->container->iceSphere->setVisible(true); 
                 this->world->worldInterface->container->iceSphere->setScale(0);
-                this->tempObject = new AnimUpgrade_mc();
-                this->tempObject->stop();
-                this->tempObject->setPosition(this->world->worldInterface->container->iceSphere->getPosition()); 
-                this->tempObject->setMouseChildren(false);
-                this->tempObject->setMouseEnabled(false);
-                this->world->worldInterface->addChild(this->tempObject);
-                this->world->worldInterface->listOfAnimation->push(this->tempObject);
+				AnimUpgrade_mc * tempObject = new AnimUpgrade_mc();
+                tempObject->stop();
+                tempObject->setPosition(this->world->worldInterface->container->iceSphere->getPosition()); 
+                tempObject->setMouseChildren(false);
+                tempObject->setMouseEnabled(false);
+				tempObject->setOnceMove(this->world);//一次性动画
+                //this->world->worldInterface->addChild(tempObject);
+                //this->world->worldInterface->listOfAnimation.push(tempObject);
                 //Sounds.instance.playSound("snd_menu_upgrIconMouseDown");
                 this->kill();
             }
@@ -70,13 +71,14 @@ namespace engine
             {
                 this->world->worldInterface->container->levinSphere->setVisible(true); 
                 this->world->worldInterface->container->levinSphere->setScale(0);
-                this->tempObject = new AnimUpgrade_mc();
-                this->tempObject->stop();
-                this->tempObject->setPosition(this->world->worldInterface->container->levinSphere->getPosition());
-                this->tempObject->setMouseChildren(false);
-                this->tempObject->setMouseEnabled(false);
-                this->world->worldInterface->addChild(this->tempObject);
-                this->world->worldInterface->listOfAnimation->push(this->tempObject);
+				AnimUpgrade_mc * tempObject = new AnimUpgrade_mc();
+                tempObject->stop();
+                tempObject->setPosition(this->world->worldInterface->container->levinSphere->getPosition());
+                tempObject->setMouseChildren(false);
+                tempObject->setMouseEnabled(false);
+				tempObject->setOnceMove(this->world);//一次性动画
+				//this->world->worldInterface->addChild(tempObject);
+    //            this->world->worldInterface->listOfAnimation.push(tempObject);
                 //Sounds.instance.playSound("snd_menu_upgrIconMouseDown");
                 if (Main::mainClass->saveBoxClass->getIntValue("saveNo") > 3)
                 {
@@ -94,19 +96,20 @@ namespace engine
         if (!this->dead)
         {
             this->dead = true;
-            this->i = 0;
-            while (this->i < this->world->listOfClasses.length)
-            { 
-                if (this->world->listOfClasses[this->i] == this)
-                {
-                    this->world->listOfClasses.splice(this->i, 1);
-                    break;
-                }
-                i++;
-            }
+			this->world->removeChild(this);
+			//this->world->removeClasses(this);
+            //this->i = 0;
+            //while (this->i < this->world->listOfClasses.size())
+            //{ 
+            //    if (this->world->listOfClasses[this->i] == this)
+            //    {
+            //        this->world->listOfClasses.splice(this->i, 1);
+            //        break;
+            //    }
+            //    i++;
+            //}
         }
         return;
     }// end function
 
-}
-#endif
+} 

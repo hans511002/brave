@@ -16,6 +16,7 @@ namespace engine
 	{
 		SET_NODETYPENAME();
 		newElementCase = this->createCase("newElementCase");
+		type = 0;
 	};
 	namespace units
 	{
