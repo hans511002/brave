@@ -3,6 +3,8 @@
 #define STD_FILEUTIL_H
 #include "BaseNode.h"
 #include <io.h>
+#include "JsonUtil.h"
+
 namespace std
 {
     class FileUtil
@@ -16,7 +18,10 @@ namespace std
             getAllFiles(files, path, incDir, incFile, incSubDir);
             return files;
         };
-
+        static string getFilePath(string fileName);
+        static int writeFile(string fileName,string cnt);
+        static int readFile(rapidjson::Document * doc,string jsonFile);
+     
     };
 
 }

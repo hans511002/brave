@@ -134,7 +134,7 @@ namespace engine
 		testRestartBoardWaveTXT = testRestartBoard->createText("waveTXT");
 		waveTXT = this->createText("waveTXT");
 		//MCText * wavesTXT = this->createText("wavesTXT");
-		//std::setText(wavesTXT, "波次:");
+		//std::setText(wavesTXT, I18N_VALUE(I18N_CODE::U071));
 		traceBezier=NULL;
 
 		this->pauseOpenFlag = 0;

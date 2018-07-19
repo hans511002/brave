@@ -151,6 +151,7 @@ namespace rapidjson{
 	string getStringValue(Value *node, string namePath, int idx);
 	const char * getCharsValue(Value *node, string namePath, int idx);
 
+
 	//快速设置.,未做类型检查
 	template <class T = int> void setValue(Document &doc, string namePath,T val ){
 		Common::String tmp = namePath;

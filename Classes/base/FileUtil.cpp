@@ -53,6 +53,58 @@ namespace std
         }
         return path;
     };
+    string FileUtil::getFilePath(string fileName)
+    {
+        if(fileName[0]=='/'){
+            return fileName;
+        }
+        FileUtils * fu = cocos2d::FileUtils::getInstance();
+        const std::vector<std::string>& spath = fu->getSearchPaths();
+        for (int i = 0; i < spath.size(); i++)
+	    {
+			const string &sp = spath.at(i);
+			if (sp[sp.size() - 1] == '/')
+				_npath = spath.at(i) + fileName;
+			else
+				_npath = spath.at(i) + "/" + fileName;
+             if(fu->isFileExist(_npath))
+            {
+				 return _npath;
+			}
+		}
+		return  fu->getWritablePath() + fileName;
+    };
+
+
+
+    int FileUtil::writeFile(string fileName,string cnt)
+    {
+        //写到文件
+        std::string strPath = FileUtils::getInstance()->getWritablePath() + fileName;
+        FILE* myFile = fopen(strPath.c_str(), "wb");
+        if (myFile) {
+            fputs(cnt, myFile);
+            fclose(myFile);
+            return 0;
+        }
+        return -1;
+    }
+    
+    static int readFile(rapidjson::Document * doc,string jsonFile);
+    { 
+        rapidjson::Document &newDoc=*doc;
+        FILE* myFile = fopen(jsonFile.c_str(), "rb");   
+        if (myFile) {
+            rapidjson::FileStream inputStream(myFile);  //创建一个输入流
+            newDoc.ParseStream<0>(inputStream); //将读取的内容转换为dom元素
+            fclose(myFile); //关闭文件，很重要
+        }
+        if (newDoc.HasParseError()) {
+            //log("Json Parse error:%d", newDoc.GetParseError()); //打印错误编号
+            return newDoc.GetParseError();
+        }
+        return 0;
+    }
 }
 
 

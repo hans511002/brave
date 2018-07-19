@@ -21,6 +21,9 @@ namespace std
 	class BaseNode;
     class EventNode;
 	extern bool useNodeEvent;
+    extern I18n i18n;
+
+#define I18N_VALUE(code) i18n[code]
 	typedef void (EventNode::*NODE_MOUSEHANDLER)(cocos2d::EventMouse* event);
 #define NODE_MOUSEHANDLER_SELECTOR(_SELECTOR) static_cast<std::NODE_MOUSEHANDLER>(&_SELECTOR)
 	struct WORLD_NODE_MOUSEHANDLER {

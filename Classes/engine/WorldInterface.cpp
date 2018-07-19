@@ -1568,10 +1568,11 @@ namespace engine
 						{
 							this->world->hint->gotoAndStop(1);
 						}
-						if (std::getText(this->world->hint->nameTXT) != "击碎者就绪!")
+						string cnVal=I18N_VALUE(I18N_CODE::U001);
+						if (std::getText(this->world->hint->nameTXT) != cnVal)
 						{
-							std::setText(this->world->hint->nameTXT, "击碎者就绪!");
-							std::setText(this->world->hint->noteTXT, "一路碾压所有敌人");
+							std::setText(this->world->hint->nameTXT, cnVal);
+							std::setText(this->world->hint->noteTXT, I18N_VALUE(I18N_CODE::U002));
 							//this->world->hint->nameTXT.setTextFormat(Main::mainClass->boldTextFormat);
 							std::setText(this->world->hint->timeTXT, int(this->castGolemTimer / 30));
 							//this->world->hint->timeTXT.setTextFormat(Main::mainClass->boldTextFormat);
@@ -1588,10 +1589,10 @@ namespace engine
 						{
 							this->world->hint->gotoAndStop(1);
 						}
-						if (std::getText(this->world->hint->nameTXT) != "击碎者重置")
+						if (std::getText(this->world->hint->nameTXT) != I18N_VALUE(I18N_CODE::U003))
 						{
-							std::setText(this->world->hint->nameTXT, "击碎者重置");
-							std::setText(this->world->hint->noteTXT, "一路碾压所有敌人");
+							std::setText(this->world->hint->nameTXT, I18N_VALUE(I18N_CODE::U003));
+							std::setText(this->world->hint->noteTXT, I18N_VALUE(I18N_CODE::U002));
 							//this->world->hint->nameTXT.setTextFormat(Main::mainClass->boldTextFormat);
 							this->hintUpdate();
 						}
@@ -1606,7 +1607,7 @@ namespace engine
 				}
 				if (this->world->hint->isVisible())
 				{
-					if (std::getText(this->world->hint->nameTXT) == "击碎者重置" || std::getText(this->world->hint->nameTXT) == "击碎者就绪!")
+					if (std::getText(this->world->hint->nameTXT) == I18N_VALUE(I18N_CODE::U003) || std::getText(this->world->hint->nameTXT) == I18N_VALUE(I18N_CODE::U001))
 					{
 						this->world->hint->setVisible(false);
 					}
@@ -1629,10 +1630,10 @@ namespace engine
 						{
 							this->world->hint->gotoAndStop(1);
 						}
-						if (std::getText(this->world->hint->nameTXT) != "冰冻者就绪!")
+						if (std::getText(this->world->hint->nameTXT) != I18N_VALUE(I18N_CODE::U004))
 						{
-							std::setText(this->world->hint->nameTXT, "冰冻者就绪!");
-							std::setText(this->world->hint->noteTXT, "一路冻结所有敌人");
+							std::setText(this->world->hint->nameTXT, I18N_VALUE(I18N_CODE::U004));
+							std::setText(this->world->hint->noteTXT, I18N_VALUE(I18N_CODE::U006));
 							//this->world->hint->nameTXT.setTextFormat(Main::mainClass->boldTextFormat);
 							std::setText(this->world->hint->timeTXT, int(this->castIcemanTimer / 30));
 							//this->world->hint->timeTXT.setTextFormat(Main::mainClass->boldTextFormat);
@@ -1649,10 +1650,10 @@ namespace engine
 						{
 							this->world->hint->gotoAndStop(1);
 						}
-						if (std::getText(this->world->hint->nameTXT) != "冰冻者重置")
+						if (std::getText(this->world->hint->nameTXT) != I18N_VALUE(I18N_CODE::U005))
 						{
-							std::setText(this->world->hint->nameTXT, "冰冻者重置");
-							std::setText(this->world->hint->noteTXT, "一路冻结所有敌人");
+							std::setText(this->world->hint->nameTXT, I18N_VALUE(I18N_CODE::U005));
+							std::setText(this->world->hint->noteTXT, I18N_VALUE(I18N_CODE::U006));
 							//this->world->hint->nameTXT.setTextFormat(Main::mainClass->boldTextFormat);
 							this->hintUpdate();
 						}
@@ -1667,7 +1668,7 @@ namespace engine
 				}
 				if (this->world->hint->isVisible())
 				{
-					if (std::getText(this->world->hint->nameTXT) == "冰冻者重置" || std::getText(this->world->hint->nameTXT) == "冰冻者就绪!")
+					if (std::getText(this->world->hint->nameTXT) == I18N_VALUE(I18N_CODE::U005) || std::getText(this->world->hint->nameTXT) == I18N_VALUE(I18N_CODE::U004))
 					{
 						this->world->hint->setVisible(false);
 					}
@@ -1690,10 +1691,10 @@ namespace engine
 						{
 							this->world->hint->gotoAndStop(1);
 						}
-						if (std::getText(this->world->hint->nameTXT) != "复活岛巨像就绪!")
+						if (std::getText(this->world->hint->nameTXT) != I18N_VALUE(I18N_CODE::U007))
 						{
-							std::setText(this->world->hint->nameTXT, "复活岛巨像就绪!");
-							std::setText(this->world->hint->noteTXT, "将敌人吹飞到后面");
+							std::setText(this->world->hint->nameTXT, I18N_VALUE(I18N_CODE::U007));
+							std::setText(this->world->hint->noteTXT, I18N_VALUE(I18N_CODE::U009));
 							//this->world->hint->nameTXT.setTextFormat(Main::mainClass->boldTextFormat);
 							std::setText(this->world->hint->timeTXT, int(this->castAirTimer / 30));
 							//this->world->hint->timeTXT.setTextFormat(Main::mainClass->boldTextFormat);
@@ -1710,10 +1711,10 @@ namespace engine
 						{
 							this->world->hint->gotoAndStop(1);
 						}
-						if (std::getText(this->world->hint->nameTXT) != "复活岛巨像重置")
+						if (std::getText(this->world->hint->nameTXT) != I18N_VALUE(I18N_CODE::U008))
 						{
-							std::setText(this->world->hint->nameTXT, "复活岛巨像重置");
-							std::setText(this->world->hint->noteTXT, "将敌人吹飞到后面");
+							std::setText(this->world->hint->nameTXT, I18N_VALUE(I18N_CODE::U008));
+							std::setText(this->world->hint->noteTXT, I18N_VALUE(I18N_CODE::U009));
 							//this->world->hint->nameTXT.setTextFormat(Main::mainClass->boldTextFormat);
 							this->hintUpdate();
 						}
@@ -1728,7 +1729,7 @@ namespace engine
 				}
 				if (this->world->hint->isVisible())
 				{
-					if (std::getText(this->world->hint->nameTXT) == "复活岛巨像重置" || std::getText(this->world->hint->nameTXT) == "复活岛巨像就绪!")
+					if (std::getText(this->world->hint->nameTXT) == I18N_VALUE(I18N_CODE::U008) || std::getText(this->world->hint->nameTXT) == I18N_VALUE(I18N_CODE::U007))
 					{
 						this->world->hint->setVisible(false);
 					}
@@ -3019,23 +3020,23 @@ namespace engine
 		{
 			if (this->world->getSphere->fireCount > 0 && this->world->getSphere->iceCount == 0 && this->world->getSphere->stoneCount == 0 && this->world->getSphere->levinCount == 0)
 			{
-				std::setText(this->container->barInfoNoteTXT, Common::String("范围: ") + std::round(this->world->getSphere->myRadius) + " ; 火焰伤害: " + std::round(this->world->getSphere->myDamage));
+				std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + std::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U011) + std::round(this->world->getSphere->myDamage));
 			}
 			else if (this->world->getSphere->fireCount == 0 && this->world->getSphere->iceCount > 0 && this->world->getSphere->stoneCount == 0 && this->world->getSphere->levinCount == 0)
 			{
-				std::setText(this->container->barInfoNoteTXT, Common::String("范围: ") + std::round(this->world->getSphere->myRadius) + " ; 寒冰伤害: " + std::round(this->world->getSphere->myDamage));
+				std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + std::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U012) + std::round(this->world->getSphere->myDamage));
 			}
 			else if (this->world->getSphere->fireCount == 0 && this->world->getSphere->iceCount == 0 && this->world->getSphere->stoneCount > 0 && this->world->getSphere->levinCount == 0)
 			{
-				std::setText(this->container->barInfoNoteTXT, Common::String("范围: ") + std::round(this->world->getSphere->myRadius) + " ; 岩石伤害: " + std::round(this->world->getSphere->myDamage));
+				std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + std::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U013) + std::round(this->world->getSphere->myDamage));
 			}
 			else if (this->world->getSphere->fireCount == 0 && this->world->getSphere->iceCount == 0 && this->world->getSphere->stoneCount == 0 && this->world->getSphere->levinCount > 0)
 			{
-				std::setText(this->container->barInfoNoteTXT, Common::String("范围: ") + std::round(this->world->getSphere->myRadius) + " ; 闪电伤害: " + std::round(this->world->getSphere->myDamage));
+				std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + std::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U014) + std::round(this->world->getSphere->myDamage));
 			}
 			else if (this->world->getSphere->getAllCount > 0)
 			{
-				std::setText(this->container->barInfoNoteTXT, Common::String("范围: ") + std::round(this->world->getSphere->myRadius) + " ; 伤害: " + std::round(this->world->getSphere->myDamage));
+				std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + std::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U015) + std::round(this->world->getSphere->myDamage));
 			}
 			else if ((this->world->getSphere->fireCount > 0 && this->world->getSphere->iceCount > 0 && this->world->getSphere->stoneCount > 0 && this->world->getSphere->levinCount == 0)
 				|| (this->world->getSphere->fireCount > 0 && this->world->getSphere->iceCount > 0 && this->world->getSphere->stoneCount == 0 && this->world->getSphere->levinCount > 0)
@@ -3044,16 +3045,16 @@ namespace engine
 			{
 				if (this->world->getSphere->fireCount > 1 || this->world->getSphere->iceCount > 1 || this->world->getSphere->stoneCount > 1 || this->world->getSphere->levinCount > 1)
 				{
-					std::setText(this->container->barInfoNoteTXT, Common::String("范围: ") + std::round(this->world->getSphere->myRadius) + " ; 伤害: " + std::round(this->world->getSphere->myDamage * Main::mainClass->readXMLClass.getAllLittleDoubleMultiply));
+					std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + std::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U015) + std::round(this->world->getSphere->myDamage * Main::mainClass->readXMLClass.getAllLittleDoubleMultiply));
 				}
 				else
 				{
-					std::setText(this->container->barInfoNoteTXT, Common::String("范围: ") + std::round(this->world->getSphere->myRadius) + " ; 伤害: " + std::round(this->world->getSphere->myDamage * Main::mainClass->readXMLClass.getAllLittleMultiply));
+					std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + std::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U015) + std::round(this->world->getSphere->myDamage * Main::mainClass->readXMLClass.getAllLittleMultiply));
 				}
 			}
 			else
 			{
-				std::setText(this->container->barInfoNoteTXT, Common::String("范围: ") + std::round(this->world->getSphere->myRadius) + " ; 伤害: " + std::round(this->world->getSphere->myDamage));
+				std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + std::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U015) + std::round(this->world->getSphere->myDamage));
 			}
 		}
 		else if (dynamic_cast<casts::Cast *>(this->world->selectObject) && this->world->cast)
@@ -3064,11 +3065,11 @@ namespace engine
 			}
 			else if (dynamic_cast<casts::Cast_2 *>(this->world->cast))
 			{
-				std::setText(this->container->barInfoNoteTXT, Common::String(std::round(Main::mainClass->readXMLClass.castIcemanLifeTimerXML / 30)) + " 秒");
+				std::setText(this->container->barInfoNoteTXT, Common::String(std::round(Main::mainClass->readXMLClass.castIcemanLifeTimerXML / 30)) + I18N_VALUE(I18N_CODE::U016));
 			}
 			else if (dynamic_cast<casts::Cast_3 *>(this->world->cast))
 			{
-				std::setText(this->container->barInfoNoteTXT, Common::String(std::round(Main::mainClass->readXMLClass.airLifeSecXML / 30) ) + " 秒");
+				std::setText(this->container->barInfoNoteTXT, Common::String(std::round(Main::mainClass->readXMLClass.airLifeSecXML / 30) ) + I18N_VALUE(I18N_CODE::U016));
 			}
 		}
 		else if (dynamic_cast<Unit *>(this->world->selectObject))
@@ -3118,7 +3119,7 @@ namespace engine
 			int tempObject = (int)(iceman->liveCounter / 30 + 0.99);
 			if (tempObject > 0)
 			{
-				std::setText(this->container->barInfoNoteTXT, Common::String(tempObject) + " 秒");
+				std::setText(this->container->barInfoNoteTXT, Common::String(tempObject) + I18N_VALUE(I18N_CODE::U016));
 			}
 			else
 			{
@@ -3131,7 +3132,7 @@ namespace engine
 			int tempObject = (int)(air->liveCounter / 30 + 0.99);
 			if (tempObject > 0)
 			{
-				std::setText(this->container->barInfoNoteTXT, Common::String(tempObject) + " 秒");
+				std::setText(this->container->barInfoNoteTXT, Common::String(tempObject) + I18N_VALUE(I18N_CODE::U016));
 			}
 			else
 			{
@@ -3146,25 +3147,25 @@ namespace engine
 				std::setText(this->container->barInfoNoteTXT, "");
 				if (towerMenu->myTower->shootingTurnStack[0])
 				{
-					std::setText(this->container->barInfoNoteTXT, Common::String("火焰: ") +
-						std::round(Main::mainClass->readXMLClass.listOfFireTowerDamageXML[(towerMenu->myTower->shootingTurnStack[0][3] - 1)]) + " ; ");
+					std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U017)) +
+						std::round(Main::mainClass->readXMLClass.listOfFireTowerDamageXML[(towerMenu->myTower->shootingTurnStack[0][3] - 1)]) + I18N_VALUE(I18N_CODE::U018));
 				}
 				if (towerMenu->myTower->shootingTurnStack[1])
 				{
 					std::setText(this->container->barInfoNoteTXT, Common::String(std::getText(this->container->barInfoNoteTXT))
-						+ Common::String("寒冰: ") + Common::String(std::round(Main::mainClass->readXMLClass.listOfIceTowerDamageXML[(towerMenu->myTower->shootingTurnStack[1][3] - 1)])) + Common::String(" ; "));
+						+ Common::String(I18N_VALUE(I18N_CODE::U019)) + Common::String(std::round(Main::mainClass->readXMLClass.listOfIceTowerDamageXML[(towerMenu->myTower->shootingTurnStack[1][3] - 1)])) + Common::String(I18N_VALUE(I18N_CODE::U018)));
 				}
 				if (towerMenu->myTower->shootingTurnStack[2])
 				{
-					std::setText(this->container->barInfoNoteTXT, std::getText(this->container->barInfoNoteTXT) + Common::String("岩石: ") + Common::String(std::round(Main::mainClass->readXMLClass.listOfStoneTowerDamageXML[(towerMenu->myTower->shootingTurnStack[2][3] - 1)])) + " ; ");
+					std::setText(this->container->barInfoNoteTXT, std::getText(this->container->barInfoNoteTXT) + Common::String(I18N_VALUE(I18N_CODE::U020)) + Common::String(std::round(Main::mainClass->readXMLClass.listOfStoneTowerDamageXML[(towerMenu->myTower->shootingTurnStack[2][3] - 1)])) + I18N_VALUE(I18N_CODE::U018));
 				}
 				if (towerMenu->myTower->shootingTurnStack[3])
 				{
-					std::setText(this->container->barInfoNoteTXT, std::getText(this->container->barInfoNoteTXT) + Common::String("闪电: ") + Common::String(std::round(Main::mainClass->readXMLClass.listOfLevinTowerDamageXML[(towerMenu->myTower->shootingTurnStack[3][3] - 1)])) + " ; ");
+					std::setText(this->container->barInfoNoteTXT, std::getText(this->container->barInfoNoteTXT) + Common::String(I18N_VALUE(I18N_CODE::U021)) + Common::String(std::round(Main::mainClass->readXMLClass.listOfLevinTowerDamageXML[(towerMenu->myTower->shootingTurnStack[3][3] - 1)])) + I18N_VALUE(I18N_CODE::U018));
 				}
 				if (std::getText(this->container->barInfoNoteTXT) == "")
 				{
-					std::setText(this->container->barInfoNoteTXT, "无元素");
+					std::setText(this->container->barInfoNoteTXT, I18N_VALUE(I18N_CODE::U022));
 				}
 				else
 				{
@@ -3176,22 +3177,22 @@ namespace engine
 			{
 				if (towerMenu->myTower->towerType == 8)
 				{
-					std::setText(this->container->barInfoNoteTXT, Common::String("伤害: ") + std::round(towerMenu->myTower->damage * 3));
+					std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U023)) + std::round(towerMenu->myTower->damage * 3));
 				}
 				else
 				{
-					std::setText(this->container->barInfoNoteTXT, Common::String("伤害: ") + std::round(towerMenu->myTower->damage));
+					std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U023)) + std::round(towerMenu->myTower->damage));
 				}
 				if (towerMenu->myTower->upgradeTypeAdd == 1)
 				{
 					if (towerMenu->myTower->towerType == 5)
 					{
-						std::setText(this->container->barInfoNoteTXT, std::getText(this->container->barInfoNoteTXT) + Common::String(" ; 额外伤害: ")
+						std::setText(this->container->barInfoNoteTXT, std::getText(this->container->barInfoNoteTXT) + Common::String(I18N_VALUE(I18N_CODE::U024))
 							+ Common::String(std::round(towerMenu->myTower->upgr1_damage * 49)));
 					}
 					else
 					{
-						std::setText(this->container->barInfoNoteTXT, std::getText(this->container->barInfoNoteTXT) + Common::String(" ; 额外伤害: ")
+						std::setText(this->container->barInfoNoteTXT, std::getText(this->container->barInfoNoteTXT) + Common::String(I18N_VALUE(I18N_CODE::U024))
 							+ Common::String(std::round(towerMenu->myTower->upgr1_damage)));
 					}
 				}
@@ -3313,7 +3314,7 @@ namespace engine
 			this->world->hint->setPosition(this->world->mouseX, this->world->mouseY);
 			if (this->world->hint->currentFrame == 1)
 			{
-				if (std::getText(this->world->hint->nameTXT) == "击碎者重置")
+				if (std::getText(this->world->hint->nameTXT) == I18N_VALUE(I18N_CODE::U003))
 				{
 					if (this->container->butCastGolem->currentFrame == 4)
 					{
@@ -3325,7 +3326,7 @@ namespace engine
 						this->world->hint->setVisible(false);
 					}
 				}
-				else if (std::getText(this->world->hint->nameTXT) == "冰冻者重置")
+				else if (std::getText(this->world->hint->nameTXT) == I18N_VALUE(I18N_CODE::U005))
 				{
 					if (this->container->butCastIceman->currentFrame == 4)
 					{
@@ -3337,7 +3338,7 @@ namespace engine
 						this->world->hint->setVisible(false);
 					}
 				}
-				else if (std::getText(this->world->hint->nameTXT) == "复活岛巨像重置")
+				else if (std::getText(this->world->hint->nameTXT) == I18N_VALUE(I18N_CODE::U008))
 				{
 					if (this->container->butCastAir->currentFrame == 4)
 					{
@@ -3945,278 +3946,278 @@ namespace engine
 		if (param1 == "firstKill")
 		{
 			tempObject->icon->gotoAndStop(1);
-			tempObject->myText = "第一滴血";
-			std::setText(tempObject->boardNoteTXT, "第一滴血");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U025);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U025));
 		}
 		else if (param1 == "kill_100_enemies")
 		{
 			tempObject->icon->gotoAndStop(2);
-			tempObject->myText = "热烈无比";
-			std::setText(tempObject->boardNoteTXT, "热烈无比");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U026);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U026));
 		}
 		else if (param1 == "kill_2500_enemies")
 		{
 			tempObject->icon->gotoAndStop(3);
-			tempObject->myText = "杀手";
-			std::setText(tempObject->boardNoteTXT, "杀手");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U027);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U027));
 		}
 		else if (param1 == "call_100_earlyWaves")
 		{
 			tempObject->icon->gotoAndStop(4);
-			tempObject->myText = "毫无畏惧";
-			std::setText(tempObject->boardNoteTXT, "毫无畏惧");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U028);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U028));
 		}
 		else if (param1 == "build_100_towers")
 		{
 			tempObject->icon->gotoAndStop(5);
-			tempObject->myText = "建造者";
-			std::setText(tempObject->boardNoteTXT, "建造者");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U029);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U029));
 		}
 		else if (param1 == "createGolem_5_times")
 		{
 			tempObject->icon->gotoAndStop(6);
-			tempObject->myText = "巨型支援";
-			std::setText(tempObject->boardNoteTXT, "巨型支援");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U030);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U030));
 		}
 		else if (param1 == "createIceman_15_times")
 		{
 			tempObject->icon->gotoAndStop(7);
-			tempObject->myText = "缓和";
-			std::setText(tempObject->boardNoteTXT, "缓和");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U031);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U031));
 		}
 		else if (param1 == "createAir_7_times")
 		{
 			tempObject->icon->gotoAndStop(8);
-			tempObject->myText = "远古支援";
-			std::setText(tempObject->boardNoteTXT, "远古支援");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U032);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U032));
 		}
 		else if (param1 == "callAllWavesInLevel")
 		{
 			tempObject->icon->gotoAndStop(9);
-			tempObject->myText = "大胆";
-			std::setText(tempObject->boardNoteTXT, "大胆");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U033);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U033));
 		}
 		else if (param1 == "sellFireIceStoneLevin")
 		{
 			tempObject->icon->gotoAndStop(10);
-			tempObject->myText = "破坏者";
-			std::setText(tempObject->boardNoteTXT, "破坏者");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U034);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U034));
 		}
 		else if (param1 == "sellFire_10_times")
 		{
 			tempObject->icon->gotoAndStop(11);
-			tempObject->myText = "火焰破坏者";
-			std::setText(tempObject->boardNoteTXT, "火焰破坏者");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U035);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U035));
 		}
 		else if (param1 == "sellIce_10_times")
 		{
 			tempObject->icon->gotoAndStop(12);
-			tempObject->myText = "寒冰破坏者";
-			std::setText(tempObject->boardNoteTXT, "寒冰破坏者");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U036);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U036));
 		}
 		else if (param1 == "sellStone_10_times")
 		{
 			tempObject->icon->gotoAndStop(13);
-			tempObject->myText = "巨石破坏者";
-			std::setText(tempObject->boardNoteTXT, "巨石破坏者");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U037);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U037));
 		}
 		else if (param1 == "sellLevin_10_times")
 		{
 			tempObject->icon->gotoAndStop(14);
-			tempObject->myText = "闪电破坏者";
-			std::setText(tempObject->boardNoteTXT, "闪电破坏者");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U038);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U038));
 		}
 		else if (param1 == "golemKill_250_enemies")
 		{
 			tempObject->icon->gotoAndStop(15);
-			tempObject->myText = "粉碎者";
-			std::setText(tempObject->boardNoteTXT, "粉碎者");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U039);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U039));
 		}
 		else if (param1 == "icemanSlowdown_75_enemies")
 		{
 			tempObject->icon->gotoAndStop(16);
-			tempObject->myText = "有点冷";
-			std::setText(tempObject->boardNoteTXT, "有点冷");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U040);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U040));
 		}
 		else if (param1 == "icemanSlowdown_500_enemies")
 		{
 			tempObject->icon->gotoAndStop(17);
-			tempObject->myText = "霜冻力量";
-			std::setText(tempObject->boardNoteTXT, "霜冻力量");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U041);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U041));
 		}
 		else if (param1 == "buildUltraTower")
 		{
 			tempObject->icon->gotoAndStop(18);
-			tempObject->myText = "进阶建造者";
-			std::setText(tempObject->boardNoteTXT, "进阶建造者");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U042);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U042));
 		}
 		else if (param1 == "buildUltraTower_50_times")
 		{
 			tempObject->icon->gotoAndStop(19);
-			tempObject->myText = "专家建造者";
-			std::setText(tempObject->boardNoteTXT, "专家建造者");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U043);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U043));
 		}
 		else if (param1 == "buildAllUltraTowers")
 		{
 			tempObject->icon->gotoAndStop(20);
-			tempObject->myText = "策略建造者";
-			std::setText(tempObject->boardNoteTXT, "策略建造者");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U044);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U044));
 		}
 		else if (param1 == "notCast")
 		{
 			tempObject->icon->gotoAndStop(21);
-			tempObject->myText = "上手";
-			std::setText(tempObject->boardNoteTXT, "上手");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U045);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U045));
 		}
 		else if (param1 == "castFire_150_times")
 		{
 			tempObject->icon->gotoAndStop(22);
-			tempObject->myText = "火焰大师";
-			std::setText(tempObject->boardNoteTXT, "火焰大师");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U046);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U046));
 		}
 		else if (param1 == "castIce_150_times")
 		{
 			tempObject->icon->gotoAndStop(23);
-			tempObject->myText = "寒冰大师";
-			std::setText(tempObject->boardNoteTXT, "寒冰大师");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U047);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U047));
 		}
 		else if (param1 == "castStone_150_times")
 		{
 			tempObject->icon->gotoAndStop(24);
-			tempObject->myText = "岩石大师";
-			std::setText(tempObject->boardNoteTXT, "岩石大师");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U048);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U048));
 		}
 		else if (param1 == "castLevin_150_times")
 		{
 			tempObject->icon->gotoAndStop(25);
-			tempObject->myText = "闪电大师";
-			std::setText(tempObject->boardNoteTXT, "闪电大师");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U049);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U049));
 		}
 		else if (param1 == "castGetAll_10_times")
 		{
 			tempObject->icon->gotoAndStop(26);
-			tempObject->myText = "策略爆破者";
-			std::setText(tempObject->boardNoteTXT, "策略爆破者");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U050);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U050));
 		}
 		else if (param1 == "castGetAll_100_times")
 		{
 			tempObject->icon->gotoAndStop(27);
-			tempObject->myText = "爆破者";
-			std::setText(tempObject->boardNoteTXT, "爆破者");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U051);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U051));
 		}
 		else if (param1 == "castKill_1_enemy")
 		{
 			tempObject->icon->gotoAndStop(28);
-			tempObject->myText = "施法者";
-			std::setText(tempObject->boardNoteTXT, "施法者");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U052);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U052));
 		}
 		else if (param1 == "castKill_100_enemy")
 		{
 			tempObject->icon->gotoAndStop(29);
-			tempObject->myText = "法术杀手";
-			std::setText(tempObject->boardNoteTXT, "法术杀手");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U053);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U053));
 		}
 		else if (param1 == "complete_10_hardLevels")
 		{
 			tempObject->icon->gotoAndStop(30);
-			tempObject->myText = "勇猛战士";
-			std::setText(tempObject->boardNoteTXT, "勇猛战士");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U054);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U054));
 		}
 		else if (param1 == "complete_10_survivalLevels")
 		{
 			tempObject->icon->gotoAndStop(31);
-			tempObject->myText = "幸存者";
-			std::setText(tempObject->boardNoteTXT, "幸存者");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U055);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U055));
 		}
 		else if (param1 == "complete_10_withAllLives")
 		{
 			tempObject->icon->gotoAndStop(32);
-			tempObject->myText = "活力四射";
-			std::setText(tempObject->boardNoteTXT, "活力四射");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U056);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U056));
 		}
 		else if (param1 == "achieve_dude_01")
 		{
 			tempObject->icon->gotoAndStop(33);
-			tempObject->myText = "伐木工";
-			std::setText(tempObject->boardNoteTXT, "伐木工");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U057);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U057));
 		}
 		else if (param1 == "achieve_dude_02")
 		{
 			tempObject->icon->gotoAndStop(34);
-			tempObject->myText = "忙忙碌碌";
-			std::setText(tempObject->boardNoteTXT, "忙忙碌碌");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U058);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U058));
 		}
 		else if (param1 == "achieve_dude_03")
 		{
 			tempObject->icon->gotoAndStop(35);
-			tempObject->myText = "南瓜节";
-			std::setText(tempObject->boardNoteTXT, "南瓜节");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U059);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U059));
 		}
 		else if (param1 == "achieve_dude_04")
 		{
 			tempObject->icon->gotoAndStop(36);
-			tempObject->myText = "修理工";
-			std::setText(tempObject->boardNoteTXT, "修理工");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U060);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U060));
 		}
 		else if (param1 == "achieve_dude_05")
 		{
 			tempObject->icon->gotoAndStop(37);
-			tempObject->myText = "勇士";
-			std::setText(tempObject->boardNoteTXT, "勇士");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U061);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U061));
 		}
 		else if (param1 == "achieve_dude_06")
 		{
 			tempObject->icon->gotoAndStop(38);
-			tempObject->myText = "睡眼阑珊";
-			std::setText(tempObject->boardNoteTXT, "睡眼阑珊");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U062);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U062));
 		}
 		else if (param1 == "achieve_dude_07")
 		{
 			tempObject->icon->gotoAndStop(39);
-			tempObject->myText = "超级女声";
-			std::setText(tempObject->boardNoteTXT, "超级女声");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U063);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U063));
 		}
 		else if (param1 == "achieve_dude_08")
 		{
 			tempObject->icon->gotoAndStop(40);
-			tempObject->myText = "老烟枪";
-			std::setText(tempObject->boardNoteTXT, "老烟枪");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U064);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U064));
 		}
 		else if (param1 == "achieve_dude_09")
 		{
 			tempObject->icon->gotoAndStop(41);
-			tempObject->myText = "渔夫";
-			std::setText(tempObject->boardNoteTXT, "渔夫");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U065);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U065));
 		}
 		else if (param1 == "achieve_dude_10")
 		{
 			tempObject->icon->gotoAndStop(42);
-			tempObject->myText = "决斗";
-			std::setText(tempObject->boardNoteTXT, "决斗");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U066);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U066));
 		}
 		else if (param1 == "achieve_dude_11")
 		{
 			tempObject->icon->gotoAndStop(43);
-			tempObject->myText = "萨满";
-			std::setText(tempObject->boardNoteTXT, "萨满");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U067);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U067));
 		}
 		else if (param1 == "achieve_dude_12")
 		{
 			tempObject->icon->gotoAndStop(44);
-			tempObject->myText = "疯狂射手";
-			std::setText(tempObject->boardNoteTXT, "疯狂射手");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U068);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U068));
 		}
 		else if (param1 == "achieve_dude_13")
 		{
 			tempObject->icon->gotoAndStop(45);
-			tempObject->myText = "勇猛大头";
-			std::setText(tempObject->boardNoteTXT, "勇猛大头");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U069);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U069));
 		}
 		else if (param1 == "achieve_dude_14")
 		{
 			tempObject->icon->gotoAndStop(46);
-			tempObject->myText = "寻路无门";
-			std::setText(tempObject->boardNoteTXT, "寻路无门");
+			tempObject->myText = I18N_VALUE(I18N_CODE::U070);
+			std::setText(tempObject->boardNoteTXT, I18N_VALUE(I18N_CODE::U070));
 		}
 
 	}// end function

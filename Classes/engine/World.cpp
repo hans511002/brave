@@ -1503,7 +1503,7 @@ namespace engine
 			//{
 			//	if (Main::mainClass->IDIClass.idnet.userData)
 			//	{
-			//		Main::mainClass->IDIClass.idnet.achievementsSave("第一滴血", "83409581c3f54d89fab5", String(Main::mainClass->IDIClass.currentUser));
+			//		Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U025), "83409581c3f54d89fab5", String(Main::mainClass->IDIClass.currentUser));
 			//	}
 			//} 
 		}
@@ -1513,7 +1513,7 @@ namespace engine
 			//{
 			//	if (Main::mainClass->IDIClass.idnet.userData)
 			//	{
-			//		Main::mainClass->IDIClass.idnet.achievementsSave("热烈无比", "ccff354b538ba9d981c6", String(Main::mainClass->IDIClass.currentUser));
+			//		Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U026), "ccff354b538ba9d981c6", String(Main::mainClass->IDIClass.currentUser));
 			//	}
 			//} 
 		}
@@ -1523,7 +1523,7 @@ namespace engine
 			//{
 			//	if (Main::mainClass->IDIClass.idnet.userData)
 			//	{
-			//		Main::mainClass->IDIClass.idnet.achievementsSave("杀手", "11963b14f22a7bce56b1", String(Main::mainClass->IDIClass.currentUser));
+			//		Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U027), "11963b14f22a7bce56b1", String(Main::mainClass->IDIClass.currentUser));
 			//	}
 			//} 
 		}
@@ -1533,7 +1533,7 @@ namespace engine
 			//{
 			//	if (Main::mainClass->IDIClass.idnet.userData)
 			//	{
-			//		Main::mainClass->IDIClass.idnet.achievementsSave("毫无畏惧", "9505fe07aec600010632", String(Main::mainClass->IDIClass.currentUser));
+			//		Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U028), "9505fe07aec600010632", String(Main::mainClass->IDIClass.currentUser));
 			//	}
 			//} 
 		}
@@ -1543,7 +1543,7 @@ namespace engine
 			//{
 			//	if (Main::mainClass->IDIClass.idnet.userData)
 			//	{
-			//		Main::mainClass->IDIClass.idnet.achievementsSave("建造者", "45b808416d58aa9ec362", String(Main::mainClass->IDIClass.currentUser));
+			//		Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U029), "45b808416d58aa9ec362", String(Main::mainClass->IDIClass.currentUser));
 			//	}
 			//} 
 		}
@@ -1553,7 +1553,7 @@ namespace engine
 			//{
 			//	if (Main::mainClass->IDIClass.idnet.userData)
 			//	{
-			//		Main::mainClass->IDIClass.idnet.achievementsSave("巨型支援", "4933337d00fe765e2d76", String(Main::mainClass->IDIClass.currentUser));
+			//		Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U030), "4933337d00fe765e2d76", String(Main::mainClass->IDIClass.currentUser));
 			//	}
 			//} 
 		}
@@ -1567,7 +1567,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("缓和", "7cb9e2506e2cff60188e", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U031), "7cb9e2506e2cff60188e", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -1582,7 +1582,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("远古支援", "eae07af8c3fbf6969aaa", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U032), "eae07af8c3fbf6969aaa", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -1597,7 +1597,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("大胆", "29337500f9599ccc64dc", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U033), "29337500f9599ccc64dc", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -1612,7 +1612,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("破坏者", "ae6966c4ffcbf75ff494", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U034), "ae6966c4ffcbf75ff494", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -1627,7 +1627,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("火焰破坏者", "de7be8dc61d39246d6d0", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U035), "de7be8dc61d39246d6d0", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -1642,7 +1642,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("寒冰破坏者", "1f24299530577258bbf6", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U036), "1f24299530577258bbf6", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -1657,7 +1657,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("巨石破坏者", "3c5c886f47920ec924d1", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U037), "3c5c886f47920ec924d1", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -1672,7 +1672,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("闪电破坏者", "6b63e564bf6e744f8e78", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U038), "6b63e564bf6e744f8e78", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -1687,7 +1687,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("粉碎者", "052b407c061f43d90593", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U039), "052b407c061f43d90593", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -1702,7 +1702,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("有点冷", "cd3fd0815ded9b849e6d", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U040), "cd3fd0815ded9b849e6d", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -1717,7 +1717,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("霜冻力量", "1c64fdbcbc270a0aa41c", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U041), "1c64fdbcbc270a0aa41c", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -1732,7 +1732,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("进阶建造者", "955bdd689299e80fb0ae", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U042), "955bdd689299e80fb0ae", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -1747,7 +1747,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("专家建造者", "9a578115947a76ccdc7a", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U043), "9a578115947a76ccdc7a", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -1762,7 +1762,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("策略建造者", "225f541c6876ebd07590", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U044), "225f541c6876ebd07590", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -1777,7 +1777,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("上手", "81cb72a77902ea9d9e8a", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U045), "81cb72a77902ea9d9e8a", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -1792,7 +1792,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("火焰大师", "d622abbd1bed287c5680", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U046), "d622abbd1bed287c5680", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -1807,7 +1807,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("寒冰大师", "7484bbb391fe85f8bfd2", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U047), "7484bbb391fe85f8bfd2", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -1822,7 +1822,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("岩石大师", "7658bfe01730e286ab12", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U048), "7658bfe01730e286ab12", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -1837,7 +1837,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("闪电大师", "57af93676b7cc1bd8d7a", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U049), "57af93676b7cc1bd8d7a", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -1852,7 +1852,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("策略爆破者", "0400fd8ee26fc4e6111e", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U050), "0400fd8ee26fc4e6111e", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -1867,7 +1867,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("爆破者", "252127936ed8d209e5d8", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U051), "252127936ed8d209e5d8", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -1882,7 +1882,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("施法者", "06235f228a30f51541a2", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U052), "06235f228a30f51541a2", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -1897,7 +1897,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("法术杀手", "28108715890214c48efe", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U053), "28108715890214c48efe", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -1912,7 +1912,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("勇猛战士", "7e8c5c8fda54a7f755a5", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U054), "7e8c5c8fda54a7f755a5", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -1927,7 +1927,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("幸存者", "5252af2b31911dfec2ca", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U055), "5252af2b31911dfec2ca", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -1942,7 +1942,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("活力四射", "be199456485a296baa27", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U056), "be199456485a296baa27", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -1957,7 +1957,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("伐木工", "e52e865a96cad6434c71", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U057), "e52e865a96cad6434c71", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -1972,7 +1972,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("忙忙碌碌", "fbe8c2abc522477828ab", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U058), "fbe8c2abc522477828ab", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -1987,7 +1987,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("南瓜节", "de48d1b211ea73656394", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U059), "de48d1b211ea73656394", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -2002,7 +2002,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("修理工", "5e33b77fe8788d480d4d", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U060), "5e33b77fe8788d480d4d", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -2017,7 +2017,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("勇士", "0b08fac999ba500f9e56", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U061), "0b08fac999ba500f9e56", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -2032,7 +2032,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("睡眼阑珊", "28324f0179eb9d4a0c29", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U062), "28324f0179eb9d4a0c29", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -2047,7 +2047,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("超级女声", "8ec85ce03c6475fbcc58", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U063), "8ec85ce03c6475fbcc58", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -2062,7 +2062,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("老烟枪", "aee2716c8d18fa744acd", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U064), "aee2716c8d18fa744acd", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -2077,7 +2077,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("渔夫", "59cb9735aadd73823c6b", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U065), "59cb9735aadd73823c6b", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -2092,7 +2092,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("决斗", "26fa27c7ac79a9ff0dbb", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U066), "26fa27c7ac79a9ff0dbb", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -2107,7 +2107,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("萨满", "25188a8e66ef59bf2504", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U067), "25188a8e66ef59bf2504", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -2122,7 +2122,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("疯狂射手", "b79f6ade296b72ea2d3c", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U068), "b79f6ade296b72ea2d3c", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -2137,7 +2137,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("勇猛大头", "1d2c8f2227466dde4a7b", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U069), "1d2c8f2227466dde4a7b", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}
@@ -2152,7 +2152,7 @@ namespace engine
 		//		{
 		//			if (Main::mainClass->IDIClass.idnet.userData)
 		//			{
-		//				Main::mainClass->IDIClass.idnet.achievementsSave("寻路无门", "1529e481b9b5e124cba2", String(Main::mainClass->IDIClass.currentUser));
+		//				Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U070), "1529e481b9b5e124cba2", String(Main::mainClass->IDIClass.currentUser));
 		//			}
 		//		}
 		//	}

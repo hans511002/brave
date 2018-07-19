@@ -190,12 +190,12 @@ namespace screens
                         {
                             //if (Main::mainClass->IDIClass.idnet.userData)
                             //{
-                            //    std::setText(this->container->saveType->onlineSave->welcomeTXT,"Welcome,");
-                            //    std::setText(this->container->saveType->onlineSave->nickTXT,Main::mainClass->IDIClass.currentUser + "!");
+                            //    std::setText(this->container->saveType->onlineSave->welcomeTXT,I18N_VALUE(I18N_CODE::U119));
+                            //    std::setText(this->container->saveType->onlineSave->nickTXT,Main::mainClass->IDIClass.currentUser + I18N_VALUE(I18N_CODE::U120));
                             //}
                             //else
                             //{
-                            //    std::setText(this->container->saveType->onlineSave->welcomeTXT,"登录使用在线存档");
+                            //    std::setText(this->container->saveType->onlineSave->welcomeTXT,I18N_VALUE(I18N_CODE::U118));
                             //    std::setText(this->container->saveType->onlineSave->nickTXT,"");
                             //}
                             this->welcomeText = this->container->saveType->onlineSave->welcomeTXT.text;
@@ -482,11 +482,11 @@ namespace screens
                                 this->container->question->setMouseEnabled(false);
                                 if (this->question < 11)
                                 {
-                                    std::setText(this->container->question->noteTXT,"Delete save slot?");
+                                    std::setText(this->container->question->noteTXT,I18N_VALUE(I18N_CODE::U121));
                                 }
                                 else
                                 {
-                                    std::setText(this->container->question->noteTXT,"Are you sure?");
+                                    std::setText(this->container->question->noteTXT,I18N_VALUE(I18N_CODE::U122));
                                 }
                             }
                         }
