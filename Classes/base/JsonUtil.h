@@ -2,13 +2,21 @@
 #define JSON_UTIL_H
 //#include "BaseHeaders.h"
 #include "common/Common.h"
-
 #include "rapidjson/document.h"
 #include "rapidjson/prettywriter.h"  
 #include "rapidjson/filereadstream.h"  
 #include "rapidjson/filewritestream.h"  
 #include "rapidjson/stringbuffer.h"
-#include "rapidjson/pointer.h"
+#include "rapidjson/pointer.h"  
+#include "rapidjson/filereadstream.h" 
+#include "rapidjson/filewritestream.h" 
+#include "rapidjson/rapidjson.h" 
+#include "rapidjson/reader.h" 
+#include "rapidjson/writer.h" 
+#include "rapidjson/istreamwrapper.h"  
+#include "rapidjson/fwd.h" 
+
+
 using namespace std;
 
 #define JsonUtil rapidjson
@@ -151,6 +159,8 @@ namespace rapidjson{
 	string getStringValue(Value *node, string namePath, int idx);
 	const char * getCharsValue(Value *node, string namePath, int idx);
 
+	int readFile(rapidjson::Document * doc, string jsonFile);
+	int writeFile(rapidjson::Document * doc, string jsonFile);
 
 	//快速设置.,未做类型检查
 	template <class T = int> void setValue(Document &doc, string namePath,T val ){

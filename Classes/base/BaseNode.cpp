@@ -8,8 +8,7 @@ const double BaseNode::AnimationInterval = 1.0f / (double)Main::FrameRate;
 namespace std
 {
 	bool useNodeEvent = true;
-	I18n i18n;
-
+	sys::I18n i18n;
 	cocos2d::CCSprite* maskedSpriteWithSprite(cocos2d::CCSprite* textureSprite, cocos2d::CCSprite* maskSprite)
 	{
 		// 1

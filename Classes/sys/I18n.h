@@ -2,39 +2,16 @@
 #define I18N_H
 //#include "BaseHeaders.h"
 #include "JsonUtil.h"
-#include "FileUtil.h"
 
 namespace sys
 {
-
-	/**
-	保存数据到本地或服务器，暂时不实现
-	*/
 	class I18n
 	{
 	public: 
  		rapidjson::Document * doc; 
 
-		I18n()  
-		{ 
-			doc = new rapidjson::Document(); 
-			doc->SetObject(); 
-			FileUtil::readFile(doc,"i18n/cn.json");
- 			//SetValueByPointer(d, "/project", "RapidJSON");
-			//SetValueByPointer(d, "/stars", 10);
-			//if (Value* stars = GetValueByPointer(d, "/stars"))
-			//	stars->SetInt(stars->GetInt() + 1);
-			//CreateValueByPointer(d, "/a/b/0");
-			//Value& hello = GetValueByPointerWithDefault(d, "/hello", "world");
-			//Value x("C++");
-			//SwapValueByPointer(d, "/hello", x);
-			//bool success = EraseValueByPointer(d, "/a");
-			//assert(success);
-		};
-		~I18n(){
-			delete doc;
-			doc = NULL;
-		}
+		I18n();
+		~I18n();
 
 		template <class T = int> void setValue(string namePath,T val){
 			JsonUtil::setValue<T>(*doc, namePath, val);
@@ -77,11 +54,11 @@ namespace sys
 		string getStringValue(string namePath){
 			return JsonUtil::getStringValue(doc, namePath);
 		};
-		string getValue(string namePath){
+		string getString(string namePath){
 			return JsonUtil::getStringValue(doc, namePath);
 		};
-		inline string operator[](string namePath){
-			return JsonUtil::getStringValue(doc, namePath);
+		inline const char* operator[](string namePath){
+			return JsonUtil::getCharsValue(doc, namePath);
 		};
 		
 		//数组
@@ -103,11 +80,9 @@ namespace sys
 		const char* getCharsValue(string namePath, int idx){
 			return JsonUtil::getCharsValue(doc, namePath, idx);
 		};
-        
-
 	};
 
-    struct I18N_CODE
+	namespace I18N_CODE
     {
     static const string U001="U001";//:  "击碎者就绪!"
     static const string U002="U002";//:  "一路碾压所有敌人"

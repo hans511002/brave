@@ -330,6 +330,9 @@
     <ClCompile Include="..\Classes\engine\CallDelay.cpp">
       <Filter>src\engine</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\sys\I18n.cpp">
+      <Filter>src\sys</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -757,6 +760,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\engine\CallDelay.h">
       <Filter>src\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\sys\I18n.h">
+      <Filter>src\sys</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

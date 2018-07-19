@@ -1,6 +1,45 @@
+#include "FileUtil.h"
 #include "JsonUtil.h"
- 
-namespace JsonUtil{
+
+namespace rapidjson {
+
+	int readFile(rapidjson::Document * doc, string jsonFile)
+	{
+		rapidjson::Document &newDoc = *doc;
+		//auto File = cocos2d::FileUtils::getInstance();
+		//string sFullPath = File->fullPathForFilename(jsonFile);
+		//string beffer = File->getStringFromFile(sFullPath);
+		//newDoc.Parse(beffer.c_str());
+		//if (!newDoc.HasParseError())return 0;
+
+		FILE* myFile = fopen(jsonFile.c_str(), "r");
+		if (myFile) {
+			char buf[6556];
+			rapidjson::FileReadStream inputStream(myFile,buf, sizeof(buf));  //创建一个输入流
+			newDoc.ParseStream(inputStream); //将读取的内容转换为dom元素
+			fclose(myFile); //关闭文件，很重要
+		}
+		if (newDoc.HasParseError()) {
+			ifstream ifs(jsonFile);
+			IStreamWrapper isw(ifs);
+			doc->ParseStream(isw);
+			//log("Json Parse error:%d", newDoc.GetParseError()); //打印错误编号
+			if (newDoc.HasParseError())
+				return newDoc.GetParseError();
+		}
+		return 0;
+	}
+	int writeFile(rapidjson::Document * doc, string jsonFile)
+	{
+		FILE *fp;
+		auto err = fopen_s(&fp, jsonFile.c_str(), "wb");
+		char writeBuffer[512];
+		rapidjson::FileWriteStream os(fp, writeBuffer, sizeof(writeBuffer));
+		rapidjson::Writer<rapidjson::FileWriteStream> writer(os);
+		auto e = doc->Accept(writer);
+		fclose(fp);
+		return 0;
+	}
 	inline static std::vector<std::string> &split(const std::string &s, char delim, std::vector<std::string> &elems) {
 		std::stringstream ss(s);
 		std::string item;
@@ -212,3 +251,5 @@ namespace JsonUtil{
 	};
 
 }
+
+ 

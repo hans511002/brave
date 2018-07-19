@@ -10,18 +10,19 @@
 using namespace cocos2d;
 #include "DefineClasses.h"
 #include "PThread.h"
+#include "sys/I18n.h"
 
 #define ISTYPE(CLZTYPE,POINTER)  dynamic_cast<CLZTYPE *>(POINTER)
 namespace engine{
 	struct MovieClipSub;
 }
-
+using namespace sys;
 namespace std
 {
 	class BaseNode;
     class EventNode;
 	extern bool useNodeEvent;
-    extern I18n i18n;
+    extern sys::I18n i18n;
 
 #define I18N_VALUE(code) i18n[code]
 	typedef void (EventNode::*NODE_MOUSEHANDLER)(cocos2d::EventMouse* event);

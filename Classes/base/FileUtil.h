@@ -20,7 +20,6 @@ namespace std
         };
         static string getFilePath(string fileName);
         static int writeFile(string fileName,string cnt);
-        static int readFile(rapidjson::Document * doc,string jsonFile);
      
     };
 
