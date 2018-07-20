@@ -25,6 +25,9 @@
     <Filter Include="src\xml">
       <UniqueIdentifier>{e81c2f8f-f289-415c-a1f8-c0b957e51dba}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\sys">
+      <UniqueIdentifier>{75ad56c7-a92e-4a77-b9dc-61ccbfbd6cd9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -88,6 +91,12 @@
       <Filter>src\base</Filter>
     </ClCompile>
     <ClCompile Include="..\..\brave\Classes\base\mc.cpp">
+      <Filter>src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\brave\Classes\base\FileUtil.cpp">
+      <Filter>src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\brave\Classes\sys\I18n.cpp">
       <Filter>src\base</Filter>
     </ClCompile>
   </ItemGroup>
@@ -301,6 +310,12 @@
     </ClInclude>
     <ClInclude Include="..\..\brave\Classes\test\MaskTest.h">
       <Filter>src\tmp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\brave\Classes\base\FileUtil.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\brave\Classes\sys\I18n.h">
+      <Filter>src\base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

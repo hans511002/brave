@@ -42,14 +42,90 @@ protected:
 	{
 		currentFrame = frameCounter = 0;
         this->setName("layer");
+		this->schedule(static_cast<cocos2d::SEL_SCHEDULE>(&DBComTest::scheduleUpdate) );
 		  
+		//addPointer();
+		addTest();
+		return;
+	}
+	int currentFrame;
+	bool dir;
+	int totalFrames, frameCounter;
+	string direction;
+	MovieClip *mc;
+	ui::Text *text;
+
+	virtual void  scheduleUpdate(float dt)
+	{
+		if(this->frameCounter < 30)
+		{
+			this->frameCounter++;
+			//pointer->mask1->setRotation(-180);
+			//pointer->mask1->setScaleX(180);
+			//std::changeAnchorPoint(pointer->mask1, Vec2(0, 0.5));
+		}
+		else
+		{
+			//pointer->mask1->setVisible(false);
+			//pointer->mask2->setVisible(false);
+			this->frameCounter = 1;
+		}
+		//std::changeAnchorPoint(pointer->mask1, Vec2(0, 0.5));
+		currentFrame++;
+		//if (currentFrame<=255) {
+		//	//pointer->mask5 ->setOpacity(256-currentFrame);
+		//	pointer->mask2 ->mask->setOpacity(256-currentFrame);
+		//}
+		//else {
+		//	//pointer->mask5->setOpacity(currentFrame%256);
+		//	pointer->mask2->mask->setOpacity(currentFrame % 256);
+		//}
+		//pointer->mask1->setRotation(pointer->mask1->getRotation()+1);
+		//pointer->mask2->setRotation(pointer->mask2->getRotation()+1);
+		//pointer->fireAnima->setRotation(currentFrame);
+		//logInfo("pointer->mask1->getPosition ", pointer->mask1->mask->getPosition(), &pointer->mask1->mask->getAnchorPointInPoints());
+		//logInfo("pointer->mask2->getPosition ", pointer->mask2->mask->getPosition(), &pointer->mask2->mask->getAnchorPointInPoints());
+
+		if (currentFrame > 30) {
+			//text->setText(I18N_VALUE(I18N_CODE::U102));
+			std::setText(text, I18N_VALUE(I18N_CODE::U102));
+		}
+	}
+	void addTest() {
+		string str1 = I18N_VALUE(I18N_CODE::U001);
+		auto * label1 = Label::create(str1, "Arial", 36);
+		label1->setPosition(320, 270);
+		addChild(label1);
+
+		string str2 = I18N_VALUE(I18N_CODE::U002);
+ 		auto* label2 = Label::create(str2, "Arial", 36);
+		label2->setPosition(320, 230);
+		addChild(label2);
+
+		string str3 = I18N_VALUE(I18N_CODE::U003);
+		text = ui::Text::create();
+		text->setPosition(Vec2(320, 190));
+		text->setText(str3);
+		addChild(text);
+
+		auto* label4 = cocos2d::TextFieldTTF::create(str3, "Arial", 36);
+		label4->setPosition(Vec2(320, 150));
+		addChild(label4);
+
+		auto start_button = ui::Button::create( );
+		start_button->setContentSize(Size(100,30));
+		start_button->setTitleText(str1);
+		start_button->setTitleFontName("微软雅黑");
+		start_button->setTitleFontSize(16);
+		start_button->setPosition(Vec2(100,100));
+		this->addChild(start_button);
+	}
+	void addPointer(){
 		pointer = new LevelPointer();
 		pointer->eyesAnima->play(0);
 		pointer->fireAnima->play(0);
 		pointer->setPosition(200, 200);
 		this->addChild(pointer);
-		//this->schedule(schedule_selector(DBComTest::scheduleUpdate), (float)1 / 30.0f);
-		this->schedule(static_cast<cocos2d::SEL_SCHEDULE>(&DBComTest::scheduleUpdate) );
 		pointer->statusAnima = 1;
 		pointer->myPoint = cocos2d::Point(pointer->getPosition());
 		pointer->gotoAndStop(1);
@@ -92,7 +168,7 @@ protected:
 		//blendFunc.src = GL_DST_ALPHA;            // mask图片的当前alpha值是多少，如果是0（完全透明），那么就显示mask的。如果是1（完全不透明）
 		//blendFunc.dst = GL_ZERO;                // maskSprite不可见
 
-		pointer->mask2->mask->setPosition(pointer->mask2->mask->getPosition()+Vec2(50, 50));
+		pointer->mask2->mask->setPosition(pointer->mask2->mask->getPosition() + Vec2(50, 50));
 		blendFunc.src = GL_DST_ALPHA;            // mask图片的当前alpha值是多少，如果是0（完全透明），那么就显示mask的。如果是1（完全不透明）
 		blendFunc.dst = GL_ZERO;                // maskSprite不可见
 
@@ -108,61 +184,21 @@ protected:
 		//pointer->mask5 ->setOpacity(0);
 		//pointer->mask2 ->mask->setOpacity(0);
 
- 
+
 
 
 		//pointer->mask5->setVisible(false);
 		pointer->mask3->setVisible(false);
-		pointer->mask4->setVisible(false);  
-			pointer->arrow->setVisible(false);
+		pointer->mask4->setVisible(false);
+		pointer->arrow->setVisible(false);
 		//pointer->mask1->setRotation(-180);
 		Sprite *mask6 = (Sprite*)pointer->getArmature()->getSlot("Layer 3")->getDisplay();
 		mask6->setVisible(false);
 		mask6 = (Sprite*)pointer->getArmature()->getSlot("Layer 14")->getDisplay();
 		mask6->setVisible(false);
-
-		logInfo("pointer->mask1->getPosition ", pointer->mask1->mask->getPosition(), &pointer->mask1->mask->getAnchorPointInPoints() );
-
-		return;
-	}
-	int currentFrame;
-	bool dir;
-	int totalFrames, frameCounter;
-	string direction;
-	MovieClip *mc;
-
-	virtual void  scheduleUpdate(float dt)
-	{
-		if(this->frameCounter < 30)
-		{
-			this->frameCounter++;
-			//pointer->mask1->setRotation(-180);
-			//pointer->mask1->setScaleX(180);
-			//std::changeAnchorPoint(pointer->mask1, Vec2(0, 0.5));
-		}
-		else
-		{
-			//pointer->mask1->setVisible(false);
-			//pointer->mask2->setVisible(false);
-			this->frameCounter = 1;
-		}
-		if (currentFrame<=255) {
-			//pointer->mask5 ->setOpacity(256-currentFrame);
-			pointer->mask2 ->mask->setOpacity(256-currentFrame);
-		}
-		else {
-			//pointer->mask5->setOpacity(currentFrame%256);
-			pointer->mask2->mask->setOpacity(currentFrame % 256);
-
-		}
-		//std::changeAnchorPoint(pointer->mask1, Vec2(0, 0.5));
-		currentFrame++;
-		//pointer->mask1->setRotation(pointer->mask1->getRotation()+1);
-		pointer->mask2->setRotation(pointer->mask2->getRotation()+1);
-		pointer->fireAnima->setRotation(currentFrame);
 		logInfo("pointer->mask1->getPosition ", pointer->mask1->mask->getPosition(), &pointer->mask1->mask->getAnchorPointInPoints());
-		logInfo("pointer->mask2->getPosition ", pointer->mask2->mask->getPosition(), &pointer->mask2->mask->getAnchorPointInPoints());
 
-	    
 	}
-};
+}
+
+;
