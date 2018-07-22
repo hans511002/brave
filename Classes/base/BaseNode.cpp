@@ -187,7 +187,7 @@ namespace std
 	string setText(ui::Text * tui, const string & val)
 	{
 		string old = tui->getString();
-		tui->setString(val);
+		tui->setText(val);
 		return old;
 	};
 	int setText(ui::Text * tui, int val)

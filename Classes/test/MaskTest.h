@@ -14,6 +14,7 @@ public:
 	MCMask * mask3;//1
 	MCMask * mask4;//2
 	Sprite * mask5;//1 2
+	MCText * text;
 
 	LevelPointer();
 	float counter;
@@ -35,7 +36,7 @@ LevelPointer::LevelPointer() :MovieClip("worldinterface/", "pointer", "LevelBase
 	mask3 = this->createMask("mask3");
 	mask4 = this->createMask("mask4");
 	mask5= (Sprite*)this->getArmature()->getSlot("mask5")->getDisplay();
-
+	text = this->createText("pointerCase");
 
 }
 

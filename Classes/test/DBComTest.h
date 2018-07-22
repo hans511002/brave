@@ -44,7 +44,7 @@ protected:
         this->setName("layer");
 		this->schedule(static_cast<cocos2d::SEL_SCHEDULE>(&DBComTest::scheduleUpdate) );
 		  
-		//addPointer();
+		addPointer();
 		addTest();
 		return;
 	}
@@ -147,14 +147,15 @@ protected:
 		pointer->setRotation(0);
 		pointer->arrow->setRotation(tempObject);
 
+		std::setText(pointer->text, I18N_VALUE(I18N_CODE::U003));
 		//std::setAnchorPoint(pointer->mask1, Vec2(1, 0.5));
 		std::changeAnchorPoint(pointer->mask1->mask, Vec2(0, 0.5));
 		std::changeAnchorPoint(pointer->mask2->mask, Vec2(1, 0.5));
 		//pointer->mask1->setRotation(-180);
 
-		pointer->mask2->mask->setOpacityModifyRGB(true);
-		pointer->mask5->setOpacityModifyRGB(true);
-		glEnable(GL_BLEND);
+		//pointer->mask2->mask->setOpacityModifyRGB(true);
+		//pointer->mask5->setOpacityModifyRGB(true);
+		//glEnable(GL_BLEND);
 		//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		//glBlendFunc(GL_ONE, GL_ONE);GL_DST_ALPHA
 
@@ -168,12 +169,12 @@ protected:
 		//blendFunc.src = GL_DST_ALPHA;            // mask图片的当前alpha值是多少，如果是0（完全透明），那么就显示mask的。如果是1（完全不透明）
 		//blendFunc.dst = GL_ZERO;                // maskSprite不可见
 
-		pointer->mask2->mask->setPosition(pointer->mask2->mask->getPosition() + Vec2(50, 50));
-		blendFunc.src = GL_DST_ALPHA;            // mask图片的当前alpha值是多少，如果是0（完全透明），那么就显示mask的。如果是1（完全不透明）
-		blendFunc.dst = GL_ZERO;                // maskSprite不可见
+		//pointer->mask2->mask->setPosition(pointer->mask2->mask->getPosition() + Vec2(50, 50));
+		//blendFunc.src = GL_DST_ALPHA;            // mask图片的当前alpha值是多少，如果是0（完全透明），那么就显示mask的。如果是1（完全不透明）
+		//blendFunc.dst = GL_ZERO;                // maskSprite不可见
 
-		pointer->mask5->visit();
-		pointer->mask2->mask->visit();
+		//pointer->mask5->visit();
+		//pointer->mask2->mask->visit();
 
 		//pointer->mask1->setVisible(false); 
 		//pointer->mask2->setVisible(false);
