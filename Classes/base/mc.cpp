@@ -386,15 +386,15 @@ namespace engine
 	MCText::MCText(MC * mc, const string &  slotName) :ui::Text()
 	{
 		ui::Text::init();
-		//this->setFontName("Arial");//Arial
+		this->setFontName("Arial");//Arial
 		//this->setFontName("宋体");//Arial
-		this->setFontSize(12);
+		this->setFontSize(14);
 		//setNodeType("MCText");
 		this->setColor(Color3B::YELLOW);
 		this->setTextHorizontalAlignment(TextHAlignment::LEFT);
 		this->setTextVerticalAlignment(TextVAlignment::CENTER);
 		std::setAnchorPoint(this, 0);
-		this->ignoreContentAdaptWithSize(false);
+		//this->ignoreContentAdaptWithSize(false);
 		this->autorelease();
 		this->mc = mc;
 		this->slotName = slotName;
@@ -1323,7 +1323,7 @@ namespace engine
 			//Size size = display->getContentSize();
 			const dragonBones::Transform * origin = slot->getOrigin();
 			//this->setContentSize(Size(origin->scaleX*size.width, origin->scaleY*size.height));
-			////enableMouseHandler(); //涓嶄娇鐢ㄥ崟鐙簨浠?
+			////enableMouseHandler(); 
 			////this->setMouseEnabled(true);
 			//if (_draw)drawRange();
 			//this->setPosition(origin->x, origin->y);

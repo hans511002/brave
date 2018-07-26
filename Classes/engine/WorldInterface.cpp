@@ -3936,7 +3936,7 @@ namespace engine
 		tempObject->icon->stop();
 		tempObject->board->stop();
 		tempObject->setPositionX(435);
-		tempObject->setPositionY(this->container->barInfo->getPositionY() - 42);
+		tempObject->setPositionY(this->container->barInfo->getPositionY() + 42);
 		tempObject->closeFlag = false;
 		tempObject->counter = 30;
 		tempObject->setMouseChildren(false);

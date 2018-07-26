@@ -14,7 +14,6 @@ namespace engine
 		MCMask * mask3;//1
 		MCMask * mask4;//2
 		Sprite * mask5;//1 2
-
 		MCCase * tcase1;
 		MCCase * tcase2;
 
@@ -40,7 +39,6 @@ namespace engine
 		mask5 = (Sprite*)this->getArmature()->getSlot("mask5")->getDisplay();
 		tcase1 = fireAnima->createCase("Layer 1");
 		tcase2 = eyesAnima->createCase("Layer 1");
-
-	}
+	};
 
 }
