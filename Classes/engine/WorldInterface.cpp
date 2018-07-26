@@ -1625,6 +1625,7 @@ namespace engine
 						if (!this->world->hint->isVisible())
 						{
 							this->world->hint->setVisible(true);
+							this->world->hint->setZOrder(3);
 						}
 						if (this->world->hint->currentFrame != 1)
 						{
@@ -1854,7 +1855,7 @@ namespace engine
 			this->world->cast = new casts::Cast_3();
 		}
 		this->world->addChild(this->world->cast);
-		//this->world->listOfClasses.push(this->world->cast);
+		this->world->listOfClasses.push(this->world->cast);
 	}// end function
 
 	void WorldInterface::updateInfo()

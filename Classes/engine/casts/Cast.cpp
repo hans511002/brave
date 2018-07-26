@@ -27,12 +27,12 @@ namespace engine
 		{
 			//this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
 			this->world = Main::mainClass->worldClass;
-
+			this->setPosition(Vec2(this->world->mouseX, this->world->mouseY));
 			//this->x = this->world->mouseX;
 			//this->y = this->world->mouseY;
 			this->setMouseChildren(false);
 			this->setMouseEnabled(false);
-			//this->world->hint.visible = false;
+			this->world->hint->setVisible( false);
 			this->world->worldInterface->barInfoManage(this);
 			return true;
 		}// end function

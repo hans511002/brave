@@ -43,15 +43,6 @@ namespace std
 		retval->setFlipY(true);
 		return retval;
 	};
-	cocos2d::CCClippingNode* maskedWithClippingNode(cocos2d::Sprite* textureSprite, cocos2d::Sprite* maskSprite)
-	{
-		auto clip = CCClippingNode::create();
-		clip->setStencil(maskSprite);
-		clip->setInverted(false);
-		clip->setAlphaThreshold(0);
-		clip->addChild(textureSprite);
-		return clip;
-	};
 
 	EventNode::EventNode() :mouseChildren(false), mouseEnabled(false), mouseFlag(false)
 	{
@@ -416,6 +407,18 @@ namespace std
 		MovieClipSubBase * mcbs = ISTYPE(MovieClipSubBase, node);
 		if (mcbs && !mcbs->isReady)
 			return false;
+
+		//Vec2 arpos=node->getAnchorPointInPoints();
+		//Size ns= node->getContentSize();
+		//Rect rt; 
+		//Vec2 sp = node->convertToWorldSpace(Vec2(0, 0) - arpos);
+		//Vec2 ep=node->convertToWorldSpace((Vec2)ns -arpos)-sp;
+		//rt.setRect(sp.x, sp.y, ep.x, ep.y);
+		//if (rt.containsPoint(pt))
+		//{
+		//	return true;
+		//}
+
 		Vec2 nsp = node->convertToNodeSpace(pt);//convertToNodeSpace convertToNodeSpaceAR
 		Rect bb;
 		bb.size = node->getContentSize(); //node->convertToWorldSpace(node->getPosition())
@@ -764,7 +767,8 @@ namespace std
 			listener->onMouseUp = CC_CALLBACK_1(BaseNode::mouseUpHandler, this);
 			listener->onMouseMove = CC_CALLBACK_1(BaseNode::mouseMoveHandler, this);
 			listener->onMouseScroll = CC_CALLBACK_1(BaseNode::mouseScrollHandler, this);
-			getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+			this->getEventDispatcher()->setEnabled(true);
+			this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 		}
 	};
 	void BaseNode::disableMouseHandler(){
@@ -942,7 +946,7 @@ namespace std
 	{
 		//loginfo("mouseDown",event); 
 		if (!std::hitTest(event->getCurrentTarget(), event))return;
-		logInfo("hitTest true : mouse in ", event->getCurrentTarget()->getName());
+		logInfo("hitTest true : mouse down in ", event->getCurrentTarget()->getName());
 		Node * node = event->getCurrentTarget();
 		Event::Type tp = event->getType();
 		logInfo("event targetNamePath", getNamePath(node));

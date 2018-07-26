@@ -426,11 +426,13 @@ namespace engine
 	EventNode *MCCase::worldMouseHandlerNode=NULL;
 	void MCCase::mouseDownHandler(cocos2d::EventMouse* event) {
 		//BaseNode::mouseDownHandler(event);
-
-		//loginfo("mouseDown",event); 
-		if (!std::hitTest(event->getCurrentTarget(), event))return;
-		logInfo("hitTest true : mouse in ", event->getCurrentTarget()->getName());
 		Node * node = event->getCurrentTarget();
+		Vec2 pt = node->getPosition();
+ 		logInfo(getNamePath(node), pt,&node->convertToWorldSpace(pt), &node->convertToNodeSpace(node->convertToWorldSpace(pt)));
+		 
+		//loginfo("mouseDown",event); 
+		if (!std::hitTest(node, event))return;
+		logInfo("hitTest true : mouse down in ", node->getName());
 		Event::Type tp = event->getType();
 		logInfo("event targetNamePath", getNamePath(node));
 		event->stopPropagation();
@@ -445,7 +447,7 @@ namespace engine
 	};
 	void MCCase::mouseUpHandler(cocos2d::EventMouse* event) {
 		if (!std::hitTest(event->getCurrentTarget(), event))return;
-		logInfo("hitTest true : mouse in ", event->getCurrentTarget()->getName());
+		logInfo("hitTest true : mouse up in ", event->getCurrentTarget()->getName());
 		Node * node = event->getCurrentTarget();
 		Event::Type tp = event->getType();
 		logInfo("event targetNamePath", getNamePath(node));
@@ -459,11 +461,12 @@ namespace engine
 		//	rightMouseDownHandler(event);
 	};
 	void MCCase::mouseMoveHandler(cocos2d::EventMouse* event) {
+		string tgName=event->getCurrentTarget()->getName();
 		if (!std::hitTest(event->getCurrentTarget(), event))return;
-		logInfo("hitTest true : mouse in ", event->getCurrentTarget()->getName());
+		//logInfo("hitTest true : mouse move in ", event->getCurrentTarget()->getName());
 		Node * node = event->getCurrentTarget();
 		Event::Type tp = event->getType();
-		logInfo("event targetNamePath", getNamePath(node));
+		//logInfo("event targetNamePath", getNamePath(node));
 		event->stopPropagation();
 		if (worldMouseHandlerNode)worldMouseHandlerNode->mouseMoveHandler(event);
 		//if (worldMouseHandler.node && worldMouseHandler.mouseMoveHandler)
@@ -604,7 +607,7 @@ namespace engine
 
     void MovieClip::gotoAndStop(int cf, const string &  aniName)
     {
-		if (!this->isReady && this->reinitType){
+		if (this->mc && !this->isReady){
 			this->reinit();
 		}
 		if (this->mc && !this->isReady)return;
@@ -1465,8 +1468,8 @@ namespace engine
 				if (ISTYPE(CCArmatureDisplay, display))
 				{
 					this->container = ISTYPE(CCArmatureDisplay, display);
-					this->transform = this->container->getNodeToWorldTransform();
 					std::changeAnchorPoint(container, 0.5);
+					this->transform = this->container->getNodeToWorldTransform();
                     if(bindListenType)
                     {
                         int type = bindListenType;

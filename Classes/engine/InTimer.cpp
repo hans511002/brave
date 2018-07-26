@@ -48,7 +48,7 @@ namespace engine
             else
             {
                 this->world->worldInterface->container->iceSphere->setVisible(true); 
-                this->world->worldInterface->container->iceSphere->setScale(0);
+                //this->world->worldInterface->container->iceSphere->setScale(0);
 				AnimUpgrade_mc * tempObject = new AnimUpgrade_mc();
                 tempObject->stop();
                 tempObject->setPosition(this->world->worldInterface->container->iceSphere->getPosition()); 
@@ -70,7 +70,7 @@ namespace engine
             else
             {
                 this->world->worldInterface->container->levinSphere->setVisible(true); 
-                this->world->worldInterface->container->levinSphere->setScale(0);
+                //this->world->worldInterface->container->levinSphere->setScale(0);
 				AnimUpgrade_mc * tempObject = new AnimUpgrade_mc();
                 tempObject->stop();
                 tempObject->setPosition(this->world->worldInterface->container->levinSphere->getPosition());

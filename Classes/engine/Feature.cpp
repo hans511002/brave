@@ -460,7 +460,7 @@ namespace engine
 		this->world->hint->setMouseChildren(false);
 		this->world->hint->mouseEnabled = false;
 		this->world->hint->setVisible(false);
-		this->world->addChild(this->world->hint);
+		this->world->addChild(this->world->hint,3);
 		this->afterLoadXML();
 		
 		//this->world->road->armature->getAnimation()->stop(); 
@@ -469,8 +469,8 @@ namespace engine
 		//this->world->road->setVisible(false);// visible = false;
 		
         this->world->road = new  RoadLevels_mc(this->world->nowLevel);
-		this->world->addChild(this->world->road);
-		//this->world->road->init();
+		this->world->addChild(this->world->road); 
+		this->world->road->init();
 		//this->world->road->setPosition(this->world->road->initPos);
 		//this->world->logInfo("this->world->road->getPosition",this->world->road->getPosition());
 

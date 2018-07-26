@@ -88,7 +88,7 @@ namespace engine
             calcSectors(bezierBox.level15_path11, bezierBox.level15_path12, bezierBox.level15_path13);
             calcSectors(bezierBox.level15_path11, bezierBox.level15_path12, bezierBox.level15_path1);
         }
-        init();
+        //init();
     };
     bool RoadLevels_mc::init()
     {
@@ -101,8 +101,7 @@ namespace engine
             node->setPosition(sec.x, sec.y);
             node->mouseEnabled = true;
             this->addChild(node);
-			this->enableMouseHandler(useNodeEvent);
-
+			node->enableMouseHandler(useNodeEvent);
             node->setName("road");
             segments.push_back(node);
         }

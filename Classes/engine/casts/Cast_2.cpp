@@ -9,7 +9,7 @@ namespace engine{
         {
             container = new MovieClip("cast/", "MoveIceman_mc","MoveIceman_mc");
             //container->gotoAndStop(2);
-            this->addChild(container);
+            this->addChild(container,3);
             Cast::init();
 			this->autorelease();
             return true;
