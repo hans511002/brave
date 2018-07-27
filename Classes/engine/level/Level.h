@@ -30,8 +30,7 @@ namespace engine{
 		int statusAnima;
 	};
 
-	class Level : public MovieClip{
-		public:
+	struct Level : public MovieClip{
 			World *world;
 			Common::Array<MovieClipSub * > decorations;
 			Common::Array<MovieClip * > flags;
