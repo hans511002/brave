@@ -1,0 +1,11 @@
+<TextureAtlas name="Level5_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 10202" x="0" y="0" width="840" height="604"/>
+ <SubTexture name="case" x="842" y="0" width="50" height="50"/>
+ <SubTexture name="Shape/shape 8906" x="894" y="0" width="17" height="32"/>
+ <SubTexture name="Shape/shape 8908" x="913" y="0" width="18" height="12"/>
+ <SubTexture name="Shape/shape 8910" x="952" y="0" width="16" height="11"/>
+ <SubTexture name="Shape/shape 8912" x="1006" y="0" width="13" height="12"/>
+ <SubTexture name="Shape/shape 8914" x="933" y="0" width="17" height="10"/>
+ <SubTexture name="Shape/shape 8916" x="970" y="0" width="16" height="10"/>
+ <SubTexture name="Shape/shape 8918" x="988" y="0" width="16" height="10"/>
+</TextureAtlas>

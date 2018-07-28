@@ -243,8 +243,7 @@ namespace engine
 	};
 	struct MCCase :public BaseNode, MovieClipSubBase 
     {
-		static WORLD_NODE_MOUSEHANDLER worldMouseHandler;
-		static EventNode *worldMouseHandlerNode;
+		//static WORLD_NODE_MOUSEHANDLER worldMouseHandler;
         bool _draw;
 		MCCase(MC * mc, const string &  slotName, bool mouseEnabled=true, bool draw = false);
 		inline virtual void setAlpha(float op) { BaseNode::setAlpha(this, op); };
@@ -252,9 +251,9 @@ namespace engine
 		virtual void setVisible(bool v);
 		virtual bool reinit();
 		inline void stop(){};
-		virtual   void mouseDownHandler(cocos2d::EventMouse* event);
-		virtual   void mouseUpHandler(cocos2d::EventMouse* event);
-		virtual   void mouseMoveHandler(cocos2d::EventMouse* event);
+		//virtual   void mouseDownHandler(cocos2d::EventMouse* event);
+		//virtual   void mouseUpHandler(cocos2d::EventMouse* event);
+		//virtual   void mouseMoveHandler(cocos2d::EventMouse* event);
 	};
 	struct MCSprite :public BaseSprite, MovieClipSubBase 
 	{

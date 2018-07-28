@@ -37,7 +37,7 @@ namespace engine
 {
 	World::World() :frameCounter(0), feature(NULL), bezierClass(NULL), wavesClass(NULL), numRoads(0), level(NULL), road(NULL), levelAdditionally(NULL), levelAdditionally1(NULL), levelAdditionally2(NULL), levelAdditionally3(NULL), worldInterface(NULL), money(0), bonusMoney(0), liveMax(20), live(0), forseIndexFl(false), getSphere(NULL), buildTowerMenu(NULL), towerMenu(NULL), ultraTowerMenu(NULL), scaleRadius(0.85f), towerRadius(NULL), unitInputBezieCounter(0), cast(NULL), menuObject(NULL), pointer1(NULL), pointer2(NULL), pointer3(NULL), selectObject(NULL), firstMusicPlay(false), secondMusicPlay(false), secondMusicCounter(0), winDefCounter(1), viewBoss(0), viewRockCrash(0), boss(NULL), decoration(NULL), nowLevel(0), saveBox(NULL), exchange(NULL), portalViewCounter(30), trainingClass(NULL), hint(NULL), startMusicVolume(0), bonusMoneyFlag(true), eduOpenUpgrArrowFlag(true), killEnemiesCounter(0), createGolemCounter(0), createIcemanCounter(0), createAirCounter(0), earlyWaveCounter(0), sellFireCounter(0), sellIceCounter(0), sellStoneCounter(0), sellLevinCounter(0), sellGetAllCounter(0), icemanSlowdownEnemiesCounter(0), castFireCounter(0), castIceCounter(0), castStoneCounter(0), castLevinCounter(0), castGetAllCounter(0), golemVoiceTurn(1), icemanVoiceTurn(1), airVoiceTurn(1), mouseX(0), mouseY(0)
 	{
-		MCCase::worldMouseHandlerNode = this;
+		std::globalNode= this;
 		//MCCase::worldMouseHandler.node = this;
 		//MCCase::worldMouseHandler.mouseDownHandler = NODE_MOUSEHANDLER_SELECTOR(World::mouseDownHandler);
 		//MCCase::worldMouseHandler.mouseMoveHandler =   NODE_MOUSEHANDLER_SELECTOR (World::mouseMoveHandler);
@@ -462,7 +462,7 @@ namespace engine
 	//cocos2d::EventMouse* event
 	void World::mouseDownHandler(cocos2d::EventMouse* e)
 	{
-		EventNode::mouseDownHandler(e);
+		if (!globalNode)EventNode::mouseDownHandler(e);
 		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
 		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
 		std::MouseEvent me(e);
@@ -605,7 +605,7 @@ namespace engine
 	}
 	void World::mouseUpHandler(cocos2d::EventMouse* e)
 	{
-        EventNode::mouseUpHandler(e);
+		if (!globalNode)EventNode::mouseUpHandler(e);
 		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
 		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
 		std::MouseEvent me(e);
@@ -673,7 +673,7 @@ namespace engine
 	{
 		this->mouseX = e->getCursorX();
 		this->mouseY = e->getCursorY();
-        EventNode::mouseMoveHandler(e);
+        if(!globalNode)EventNode::mouseMoveHandler(e);
 		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
 		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
 		std::MouseEvent me(e);
@@ -855,7 +855,7 @@ namespace engine
 	}
 	void World::rightMouseDownHandler(cocos2d::EventMouse* e)
 	{
-		EventNode::mouseDownHandler(e);
+		if (!globalNode)EventNode::mouseDownHandler(e);
 		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
 		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
 		std::MouseEvent me = std::buildMouseEvent(e);
@@ -914,7 +914,7 @@ namespace engine
 	}	
 	void World::rightMouseUpHandler(cocos2d::EventMouse* e)
 	{
-		EventNode::mouseDownHandler(e);
+		if (!globalNode)EventNode::mouseDownHandler(e);
 		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
 		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
 		std::MouseEvent me = std::buildMouseEvent(e);

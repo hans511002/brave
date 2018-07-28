@@ -421,59 +421,7 @@ namespace engine
 		MovieClipSubBase::setVisible(v);
 		BaseNode::setVisible(v);
 	};
-
-	WORLD_NODE_MOUSEHANDLER MCCase::worldMouseHandler;
-	EventNode *MCCase::worldMouseHandlerNode=NULL;
-	void MCCase::mouseDownHandler(cocos2d::EventMouse* event) {
-		//BaseNode::mouseDownHandler(event);
-		Node * node = event->getCurrentTarget();
-		Vec2 pt = node->getPosition();
- 		logInfo(getNamePath(node), pt,&node->convertToWorldSpace(pt), &node->convertToNodeSpace(node->convertToWorldSpace(pt)));
-		 
-		//loginfo("mouseDown",event); 
-		if (!std::hitTest(node, event))return;
-		logInfo("hitTest true : mouse down in ", node->getName());
-		Event::Type tp = event->getType();
-		logInfo("event targetNamePath", getNamePath(node));
-		event->stopPropagation();
-		if (worldMouseHandlerNode)worldMouseHandlerNode->mouseDownHandler(event);
-
-		//if(worldMouseHandler.node && worldMouseHandler.mouseDownHandler)
-		//	(worldMouseHandler.node->*worldMouseHandler.mouseDownHandler)(event);
-		//int mouseButton = event->getMouseButton();
-		//if (mouseButton == 1)
-		//	rightMouseDownHandler(event);
-
-	};
-	void MCCase::mouseUpHandler(cocos2d::EventMouse* event) {
-		if (!std::hitTest(event->getCurrentTarget(), event))return;
-		logInfo("hitTest true : mouse up in ", event->getCurrentTarget()->getName());
-		Node * node = event->getCurrentTarget();
-		Event::Type tp = event->getType();
-		logInfo("event targetNamePath", getNamePath(node));
-		event->stopPropagation();
-		if (worldMouseHandlerNode)worldMouseHandlerNode->mouseUpHandler(event);
-		//if (worldMouseHandler.node && worldMouseHandler.mouseUpHandler)
-		//	(worldMouseHandler.node->*worldMouseHandler.mouseUpHandler)(event);
-		//Main::mainClass->worldClass->mouseUpHandler(event);
-		//int mouseButton = event->getMouseButton();
-		//if (mouseButton == 1)
-		//	rightMouseDownHandler(event);
-	};
-	void MCCase::mouseMoveHandler(cocos2d::EventMouse* event) {
-		string tgName=event->getCurrentTarget()->getName();
-		if (!std::hitTest(event->getCurrentTarget(), event))return;
-		//logInfo("hitTest true : mouse move in ", event->getCurrentTarget()->getName());
-		Node * node = event->getCurrentTarget();
-		Event::Type tp = event->getType();
-		//logInfo("event targetNamePath", getNamePath(node));
-		event->stopPropagation();
-		if (worldMouseHandlerNode)worldMouseHandlerNode->mouseMoveHandler(event);
-		//if (worldMouseHandler.node && worldMouseHandler.mouseMoveHandler)
-		//	(worldMouseHandler.node->*worldMouseHandler.mouseMoveHandler)(event); 
-		//Main::mainClass->worldClass->mouseMoveHandler(event);
-	};
-
+ 
 	MCSprite::MCSprite(MC * mc, const string &  slotName, const string &  file) :BaseSprite(file), initSprite(false)
 	{
 		setNodeType("MCSprite");
@@ -670,14 +618,14 @@ namespace engine
 		{
 			return true;
 		}
-        Common::DateTime dt;
+        //Common::DateTime dt;
         if(this->mc)
 			this->container = this->loadArmature(rootPath, armName, dbName);
 		else
 			this->display = this->container = this->loadArmature(rootPath, armName, dbName);
-        int time = (Common::DateTime().GetTicks() - dt.GetTicks());
-        CCLOG("MovieClip %s.%s 1 init time:%i", dbName.c_str(), armName.c_str(), time);
-        dt = Common::DateTime();
+        //int time = (Common::DateTime().GetTicks() - dt.GetTicks());
+        //CCLOG("MovieClip %s.%s 1 init time:%i", dbName.c_str(), armName.c_str(), time);
+        //dt = Common::DateTime();
 
         string defAniName = _defAniName;
 		this->defAniName = defAniName;
@@ -686,34 +634,31 @@ namespace engine
 		totalFrames = this->getArmature()->_armatureData->animations[defAniName]->frameCount + 1;//;
 		float duration = this->getArmature()->_armatureData->animations[defAniName]->duration;
 		//CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
-        time = (Common::DateTime().GetTicks() - dt.GetTicks());
-        CCLOG("MovieClip %s.%s 2 init time:%i", dbName.c_str(), armName.c_str(), time);
-        dt = Common::DateTime();
+        //time = (Common::DateTime().GetTicks() - dt.GetTicks());
+        //CCLOG("MovieClip %s.%s 2 init time:%i", dbName.c_str(), armName.c_str(), time);
+        //dt = Common::DateTime();
 
 		addChild(container);
 
-        time = (Common::DateTime().GetTicks() - dt.GetTicks());
-        CCLOG("MovieClip %s.%s 3 init time:%i", dbName.c_str(), armName.c_str(), time);
-        dt = Common::DateTime();
+        //time = (Common::DateTime().GetTicks() - dt.GetTicks());
+        //CCLOG("MovieClip %s.%s 3 init time:%i", dbName.c_str(), armName.c_str(), time);
+        //dt = Common::DateTime();
         this->gotoAndStop(1);
 
-        time = (Common::DateTime().GetTicks() - dt.GetTicks());
-        CCLOG("MovieClip %s.%s 4 init time:%i", dbName.c_str(), armName.c_str(), time);
-        dt = Common::DateTime();
+        //time = (Common::DateTime().GetTicks() - dt.GetTicks());
+        //CCLOG("MovieClip %s.%s 4 init time:%i", dbName.c_str(), armName.c_str(), time);
+        //dt = Common::DateTime();
         //std::setAnchorPoint(display, true);
 		init();
-        time = (Common::DateTime().GetTicks() - dt.GetTicks());
-        CCLOG("MovieClip %s.%s 5 init time:%i", dbName.c_str(), armName.c_str(), time);
-        dt = Common::DateTime();
+        //time = (Common::DateTime().GetTicks() - dt.GetTicks());
+        //CCLOG("MovieClip %s.%s 5 init time:%i", dbName.c_str(), armName.c_str(), time);
+        //dt = Common::DateTime();
         resetSize();
 		this->setName(armName);
-        time = (Common::DateTime().GetTicks() - dt.GetTicks());
-        CCLOG("MovieClip %s.%s 6 init time:%i", dbName.c_str(), armName.c_str(), time);
+        //time = (Common::DateTime().GetTicks() - dt.GetTicks());
+        //CCLOG("MovieClip %s.%s 6 init time:%i", dbName.c_str(), armName.c_str(), time);
 		//this->autorelease(); in BaseNode::init();
 		//this->isReady = true;
-
-
-
 		return true;
 	};
 	MovieClip::MovieClip(const string &  armName, const string &  dbName, BaseNode *node) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0), setAr(false)
@@ -763,7 +708,7 @@ namespace engine
         if(!delay)
             reinit();
         int time = (Common::DateTime().GetTicks() - dt.GetTicks());
-        CCLOG("MovieClip %s.%s load time:%i", dbName.c_str(), armName.c_str(), time);
+        //CCLOG("MovieClip %s.%s load time:%i", dbName.c_str(), armName.c_str(), time);
 	};
     MovieClip::MovieClip(MC *mc, const string &  slotName, const string &  rootPath, const string &  dbName, bool delay) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0), setAr(false)
 	{
@@ -1253,10 +1198,10 @@ namespace engine
 		if (!this->slot) return false;
 		if (this->display == this->slot->getDisplay())
 			return false;
-        if(isReady)
-        { 
-            CCLOG("%ll %ll %i", this->display, this->slot->getDisplay(), mc->currentFrame);
-        }
+        //if(isReady)
+        //{ 
+        //    CCLOG("%ll %ll %i", this->display, this->slot->getDisplay(), mc->currentFrame);
+        //}
 		Node* thsi = ISTYPE(Node, this);
 		Node * dis = (Node *) this->slot->getDisplay();
 		if (dis &&  ISTYPE(cocos2d::Sprite, dis))
@@ -1409,7 +1354,7 @@ namespace engine
 		}
         if(isReinit)this->release();
         int time = (Common::DateTime().GetTicks() - dt.GetTicks());
-        CCLOG("MovieClip %s.%s load time:%i", dbName.c_str(), armName.c_str(), time);
+        //CCLOG("MovieClip %s.%s load time:%i", dbName.c_str(), armName.c_str(), time);
 
 		return this->isReady;
 	};
@@ -1507,10 +1452,11 @@ namespace engine
 				//}
 				/*string defAniName = this->defAniName;
 				if (defAniName == "")*/
-				defAniName = this->arm->_armatureData->defaultAnimation->name;
-				totalFrames = this->arm->_armatureData->animations[defAniName]->frameCount + 1;//;
-				float duration = this->arm->_armatureData->animations[defAniName]->duration;
-				CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
+
+				//defAniName = this->arm->_armatureData->defaultAnimation->name;
+				//totalFrames = this->arm->_armatureData->animations[defAniName]->frameCount + 1;//;
+				//float duration = this->arm->_armatureData->animations[defAniName]->duration;
+				//CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
 				this->gotoAndStop(1);
 				return true;
 			}

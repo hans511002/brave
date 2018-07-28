@@ -1,0 +1,4 @@
+<TextureAtlas name="Level3_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 9473" x="0" y="0" width="840" height="604"/>
+ <SubTexture name="case" x="842" y="0" width="50" height="50"/>
+</TextureAtlas>

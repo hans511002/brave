@@ -23,6 +23,7 @@ namespace std
     class EventNode;
 	extern bool useNodeEvent;
     extern sys::I18n i18n;
+	extern EventNode *globalNode;
 
 #define I18N_VALUE(code) i18n[code]
 	typedef void (EventNode::*NODE_MOUSEHANDLER)(cocos2d::EventMouse* event);

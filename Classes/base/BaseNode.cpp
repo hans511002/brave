@@ -8,6 +8,7 @@ const double BaseNode::AnimationInterval = 1.0f / (double)Main::FrameRate;
 namespace std
 {
 	bool useNodeEvent = true;
+	EventNode *globalNode=NULL;
 	sys::I18n i18n;
 	cocos2d::CCSprite* maskedSpriteWithSprite(cocos2d::CCSprite* textureSprite, cocos2d::CCSprite* maskSprite)
 	{
@@ -422,20 +423,6 @@ namespace std
 		Vec2 nsp = node->convertToNodeSpace(pt);//convertToNodeSpace convertToNodeSpaceAR
 		Rect bb;
 		bb.size = node->getContentSize(); //node->convertToWorldSpace(node->getPosition())
-		if (bb.size.height == 0 || bb.size.width == 0)
-		{
-			return false;
-			//if (node->getChildrenCount())
-			//{
-			//	cocos2d::Vector<Node*> cld = node->getChildren();
-			//	for each (Node *n in cld)
-			//	{
-			//		Size t = (n->getContentSize() - bb.size);
-			//		if (t.width > 0 && t.height > 0)
-			//			bb.size = n->getContentSize();
-			//	}
-			//}
-		}
 		if (bb.containsPoint(nsp))
 		{
 			return true;
@@ -943,29 +930,67 @@ namespace std
 		}
 	};
 	void EventNode::mouseDownHandler(cocos2d::EventMouse* event)
-	{
-		//loginfo("mouseDown",event); 
-		if (!std::hitTest(event->getCurrentTarget(), event))return;
-		logInfo("hitTest true : mouse down in ", event->getCurrentTarget()->getName());
+	{ 
 		Node * node = event->getCurrentTarget();
+		//Vec2 pt = node->getPosition();
+		//logInfo(getNamePath(node), pt, &node->convertToWorldSpace(pt), &node->convertToNodeSpace(node->convertToWorldSpace(pt)));
+
+		//loginfo("mouseDown",event); 
+		if (!std::hitTest(node, event))return;
+		logInfo("hitTest true : mouse down in ", getNamePath(node));
 		Event::Type tp = event->getType();
-		logInfo("event targetNamePath", getNamePath(node));
+		//logInfo("event targetNamePath", getNamePath(node));
+		event->stopPropagation();
 		cocos2d::EventMouse::MouseButton mouseButton = event->getMouseButton();
-		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)
-			rightMouseDownHandler(event);
+		if (globalNode) {
+			if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)
+				globalNode->rightMouseDownHandler(event);
+			else
+				globalNode->mouseDownHandler(event);
+		}
+		else {
+			if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)
+				rightMouseDownHandler(event);
+			else
+				mouseDownHandler(event);
+		}
 	};
 	void EventNode::mouseUpHandler(cocos2d::EventMouse* event)
 	{
-		if (!std::hitTest(event->getCurrentTarget(), event))return;
+		Node * node = event->getCurrentTarget();
+		if (!std::hitTest(node, event))return;
+		logInfo("hitTest true : mouse up in ", getNamePath(node));
+		Event::Type tp = event->getType();
+		//logInfo("event targetNamePath", getNamePath(node));
+		event->stopPropagation();
 		cocos2d::EventMouse::MouseButton mouseButton = event->getMouseButton();
-		//loginfo("mouseUp", event);
-		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)rightMouseUpHandler(event);
+		if (globalNode) {
+			if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)
+				globalNode->rightMouseUpHandler(event);
+			else
+				globalNode->mouseUpHandler(event);
+		}
+		else {
+			if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)
+				rightMouseUpHandler(event);
+			else 
+				mouseUpHandler(event);
+		}
 	};
 
 	void EventNode::mouseMoveHandler(cocos2d::EventMouse* event)
 	{
-		if (!this->hitTest(event))return;
-		//logInfo("mouseMoved", event->getCursorX(), event->getCursorY());
+		string tgName = event->getCurrentTarget()->getName();
+		if (!std::hitTest(event->getCurrentTarget(), event))return;
+		//logInfo("hitTest true : mouse move in ", event->getCurrentTarget()->getName());
+		Node * node = event->getCurrentTarget();
+		Event::Type tp = event->getType();
+		//logInfo("event targetNamePath", getNamePath(node));
+		event->stopPropagation();
+		if (globalNode)
+			globalNode->mouseMoveHandler(event);
+		else
+			mouseMoveHandler(event);
 	};
 	void EventNode::mouseScrollHandler(cocos2d::EventMouse* event)
 	{

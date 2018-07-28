@@ -7,7 +7,7 @@ namespace engine
 	class Waves;
 	class Feature;
 	class World;
-	class Level;
+	struct Level;
 	class RoadLevels_mc;
 	class BuildTowerPlace;
 	class LevelPointer;
