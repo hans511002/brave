@@ -1453,8 +1453,8 @@ namespace engine
 				/*string defAniName = this->defAniName;
 				if (defAniName == "")*/
 
-				//defAniName = this->arm->_armatureData->defaultAnimation->name;
-				//totalFrames = this->arm->_armatureData->animations[defAniName]->frameCount + 1;//;
+				this->defAniName = this->arm->_armatureData->defaultAnimation->name;
+				this->totalFrames = this->arm->_armatureData->animations[defAniName]->frameCount + 1;//;
 				//float duration = this->arm->_armatureData->animations[defAniName]->duration;
 				//CCLOG("load %s totalFrames=%i duration=%f", defAniName.c_str(), totalFrames, duration);
 				this->gotoAndStop(1);

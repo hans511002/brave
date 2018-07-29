@@ -39,135 +39,125 @@ namespace engine
 			this->world->level = new  Level1_mc(this->world);
 			//this->world->decoration = new decoration::DecorationLevel1();
 			this->world->levelType = "grass";
-			if (!Main::mainClass->saveBoxClass->getBoolValue("firstViewTowers", 0))
-				Main::mainClass->saveBoxClass->setValue("firstViewTowers", 0, true);
+			int firstViewTowerIdx = 0;
+			if (!Main::mainClass->saveBoxClass->getBoolValue("firstViewTowers", firstViewTowerIdx))
+				Main::mainClass->saveBoxClass->setValue("firstViewTowers", firstViewTowerIdx, true);
 		}
-		//else if (this->world->nowLevel == 2)
-		//{
-		//	this->world->level = new Level2_mc();
-		//	this->world->road = new RoadLevel2_mc();
-		//	this->world->decoration = new DecorationLevel2();
-		//	this->world->levelType = "grass";
-		//	if (!Main::mainClass->saveBoxClass.gameSave.data.firstViewTowers[1])
-		//	{
-		//		Main::mainClass->saveBoxClass.gameSave.data.firstViewTowers[1] = true;
-		//	}
-		//}
-		//else if (this->world->nowLevel == 3)
-		//{
-		//	this->world->level = new Level3_mc();
-		//	this->world->road = new RoadLevel3_mc();
-		//	this->world->decoration = new DecorationLevel3();
-		//	this->world->levelType = "grass";
-		//	if (!Main::mainClass->saveBoxClass.gameSave.data.firstViewTowers[2])
-		//	{
-		//		Main::mainClass->saveBoxClass.gameSave.data.firstViewTowers[2] = true;
-		//	}
-		//}
-		//else if (this->world->nowLevel == 4)
-		//{
-		//	this->world->level = new Level4_mc();
-		//	this->world->road = new RoadLevel4_mc();
-		//	this->world->decoration = new DecorationLevel4();
-		//	this->world->levelType = "grass";
-		//	if (!Main::mainClass->saveBoxClass.gameSave.data.firstViewTowers[3])
-		//	{
-		//		Main::mainClass->saveBoxClass.gameSave.data.firstViewTowers[3] = true;
-		//	}
-		//}
-		//else if (this->world->nowLevel == 5)
-		//{
-		//	this->world->level = new Level5_mc();
-		//	this->world->road = new RoadLevel5_mc();
-		//	this->world->decoration = new DecorationLevel5();
-		//	this->world->levelType = "grass";
-		//}
-		//else if (this->world->nowLevel == 6)
-		//{
-		//	this->world->level = new Level6_mc();
-		//	this->world->road = new RoadLevel6_mc();
-		//	this->world->decoration = new DecorationLevel6();
-		//	this->world->levelType = "grass";
-		//	if (!Main::mainClass->saveBoxClass.gameSave.data.firstViewTowers[4])
-		//	{
-		//		Main::mainClass->saveBoxClass.gameSave.data.firstViewTowers[4] = true;
-		//	}
-		//}
-		//else if (this->world->nowLevel == 7)
-		//{
-		//	this->world->level = new Level7_mc();
-		//	this->world->road = new RoadLevel7_mc();
-		//	this->world->decoration = new DecorationLevel7();
-		//	this->world->levelType = "grass";
-		//	if (!Main::mainClass->saveBoxClass.gameSave.data.firstViewTowers[5])
-		//	{
-		//		Main::mainClass->saveBoxClass.gameSave.data.firstViewTowers[5] = true;
-		//	}
-		//}
-		//else if (this->world->nowLevel == 8)
-		//{
-		//	this->world->level = new Level8_mc();
-		//	this->world->road = new RoadLevel8_mc();
-		//	this->world->decoration = new DecorationLevel8();
-		//	this->world->levelType = "dust";
-		//}
-		//else if (this->world->nowLevel == 9)
-		//{
-		//	this->world->level = new Level9_mc();
-		//	this->world->road = new RoadLevel9_mc();
-		//	this->world->decoration = new DecorationLevel9();
-		//	this->world->levelType = "grass";
-		//	if (!Main::mainClass->saveBoxClass.gameSave.data.firstViewTowers[6])
-		//	{
-		//		Main::mainClass->saveBoxClass.gameSave.data.firstViewTowers[6] = true;
-		//	}
-		//}
-		//else if (this->world->nowLevel == 10)
-		//{
-		//	this->world->level = new Level10_mc();
-		//	this->world->road = new RoadLevel10_mc();
-		//	this->world->decoration = new DecorationLevel10();
-		//	this->world->levelType = "dust";
-		//}
-		//else if (this->world->nowLevel == 11)
-		//{
-		//	this->world->level = new Level11_mc();
-		//	this->world->road = new RoadLevel11_mc();
-		//	this->world->decoration = new DecorationLevel11();
-		//	this->world->levelType = "dust";
-		//	if (!Main::mainClass->saveBoxClass.gameSave.data.firstViewTowers[7])
-		//	{
-		//		Main::mainClass->saveBoxClass.gameSave.data.firstViewTowers[7] = true;
-		//	}
-		//}
-		//else if (this->world->nowLevel == 12)
-		//{
-		//	this->world->level = new Level12_mc();
-		//	this->world->road = new RoadLevel12_mc();
-		//	this->world->decoration = new DecorationLevel12();
-		//	this->world->levelType = "dust";
-		//}
-		//else if (this->world->nowLevel == 13)
-		//{
-		//	this->world->level = new Level13_mc();
-		//	this->world->road = new RoadLevel13_mc();
-		//	this->world->decoration = new DecorationLevel13();
-		//	this->world->levelType = "dust";
-		//}
-		//else if (this->world->nowLevel == 14)
-		//{
-		//	this->world->level = new Level14_mc();
-		//	this->world->road = new RoadLevel14_mc();
-		//	this->world->decoration = new DecorationLevel14();
-		//	this->world->levelType = "dust";
-		//}
-		//else if (this->world->nowLevel == 15)
-		//{
-		//	this->world->level = new Level15_mc();
-		//	this->world->road = new RoadLevel15_mc();
-		//	this->world->decoration = new DecorationLevel15();
-		//	this->world->levelType = "dust";
-		//}
+		else if (this->world->nowLevel == 2)
+		{
+			this->world->level = new  Level2_mc(this->world);
+ 			//this->world->decoration = new DecorationLevel2();
+			this->world->levelType = "grass";
+			int firstViewTowerIdx = 1;
+			if (!Main::mainClass->saveBoxClass->getBoolValue("firstViewTowers", firstViewTowerIdx))
+				Main::mainClass->saveBoxClass->setValue("firstViewTowers", firstViewTowerIdx, true);
+		}
+		else if (this->world->nowLevel == 3)
+		{
+			this->world->level = new  Level3_mc(this->world); 
+			//this->world->road = new RoadLevel3_mc();
+			//this->world->decoration = new DecorationLevel3();
+			this->world->levelType = "grass";
+			int firstViewTowerIdx = 2;
+			if (!Main::mainClass->saveBoxClass->getBoolValue("firstViewTowers", firstViewTowerIdx))
+				Main::mainClass->saveBoxClass->setValue("firstViewTowers", firstViewTowerIdx, true);
+		}
+		else if (this->world->nowLevel == 4)
+		{
+			this->world->level = new  Level4_mc(this->world);
+			//this->world->decoration = new DecorationLevel4();
+			this->world->levelType = "grass";
+			int firstViewTowerIdx = 3;
+			if (!Main::mainClass->saveBoxClass->getBoolValue("firstViewTowers", firstViewTowerIdx))
+				Main::mainClass->saveBoxClass->setValue("firstViewTowers", firstViewTowerIdx, true);
+		}
+		else if (this->world->nowLevel == 5)
+		{
+			this->world->level = new  Level5_mc(this->world);
+			//this->world->decoration = new DecorationLevel5();
+			this->world->levelType = "grass";
+		}
+		else if (this->world->nowLevel == 6)
+		{
+			this->world->level = new  Level6_mc(this->world);
+			//this->world->road = new RoadLevel6_mc();
+			//this->world->decoration = new DecorationLevel6();
+			this->world->levelType = "grass";
+			int firstViewTowerIdx = 4;
+			if (!Main::mainClass->saveBoxClass->getBoolValue("firstViewTowers", firstViewTowerIdx))
+				Main::mainClass->saveBoxClass->setValue("firstViewTowers", firstViewTowerIdx, true);
+		}
+		else if (this->world->nowLevel == 7)
+		{ 
+			this->world->level = new  Level7_mc(this->world);
+			//this->world->road = new RoadLevel7_mc();
+			//this->world->decoration = new DecorationLevel7();
+			this->world->levelType = "grass";
+			int firstViewTowerIdx = 5;
+			if (!Main::mainClass->saveBoxClass->getBoolValue("firstViewTowers", firstViewTowerIdx))
+				Main::mainClass->saveBoxClass->setValue("firstViewTowers", firstViewTowerIdx, true);
+		}
+		else if (this->world->nowLevel == 8)
+		{
+			this->world->level = new  Level8_mc(this->world); 
+			//this->world->road = new RoadLevel8_mc();
+			//this->world->decoration = new DecorationLevel8();
+			this->world->levelType = "dust";
+		}
+		else if (this->world->nowLevel == 9)
+		{
+			this->world->level = new  Level9_mc(this->world);
+			//this->world->road = new RoadLevel9_mc();
+			//this->world->decoration = new DecorationLevel9();
+			this->world->levelType = "grass";
+			int firstViewTowerIdx = 6;
+			if (!Main::mainClass->saveBoxClass->getBoolValue("firstViewTowers", firstViewTowerIdx))
+				Main::mainClass->saveBoxClass->setValue("firstViewTowers", firstViewTowerIdx, true);
+ 		}
+		else if (this->world->nowLevel == 10)
+		{
+			this->world->level = new  Level10_mc(this->world);
+			//this->world->road = new RoadLevel10_mc();
+			//this->world->decoration = new DecorationLevel10();
+			this->world->levelType = "dust";
+		}
+		else if (this->world->nowLevel == 11)
+		{
+			this->world->level = new  Level11_mc(this->world);
+ 			//this->world->decoration = new DecorationLevel11();
+			this->world->levelType = "dust";
+			int firstViewTowerIdx = 7;
+			if (!Main::mainClass->saveBoxClass->getBoolValue("firstViewTowers", firstViewTowerIdx))
+				Main::mainClass->saveBoxClass->setValue("firstViewTowers", firstViewTowerIdx, true);
+		}
+		else if (this->world->nowLevel == 12)
+		{
+			this->world->level = new Level12_mc(this->world);
+			//this->world->road = new RoadLevel12_mc();
+			//this->world->decoration = new DecorationLevel12();
+			this->world->levelType = "dust";
+		}
+		else if (this->world->nowLevel == 13)
+		{
+			this->world->level = new Level13_mc(this->world);
+			//this->world->road = new RoadLevel13_mc();
+			//this->world->decoration = new DecorationLevel13();
+			this->world->levelType = "dust";
+		}
+		else if (this->world->nowLevel == 14)
+		{
+			this->world->level = new Level14_mc(this->world);
+			//this->world->road = new RoadLevel14_mc();
+			//this->world->decoration = new DecorationLevel14();
+			this->world->levelType = "dust";
+		}
+		else if (this->world->nowLevel == 15)
+		{
+			this->world->level = new Level15_mc(this->world);
+			//this->world->road = new RoadLevel15_mc();
+			//this->world->decoration = new DecorationLevel15();
+			this->world->levelType = "dust";
+		}
 		this->world->addChild(this->world->level);
 		//for (size_t i = 0; i < this->world->level->flags.size(); i++)
 		//{

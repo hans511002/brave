@@ -2627,7 +2627,10 @@ namespace engine
 				if (this->world->money >= Main::mainClass->readXMLClass.listOfFirePriceXML[this->fireBuyHistory])
 				{
 					this->fireCount++;
-					this->world->money = this->world->money - Main::mainClass->readXMLClass.listOfFirePriceXML[this->fireBuyHistory];
+					if(Main::moneyDebug)
+						this->world->money = this->world->money + Main::mainClass->readXMLClass.listOfFirePriceXML[this->fireBuyHistory];
+					else
+						this->world->money = this->world->money - Main::mainClass->readXMLClass.listOfFirePriceXML[this->fireBuyHistory];
 					this->sphereCostHistory[0].push(Main::mainClass->readXMLClass.listOfFirePriceXML[this->fireBuyHistory]);
 					if (this->fireBuyHistory < (Main::mainClass->readXMLClass.listOfFirePriceXML.size() - 1))
 					{
@@ -2640,7 +2643,10 @@ namespace engine
 				if (this->world->money >= Main::mainClass->readXMLClass.listOfIcePriceXML[this->iceBuyHistory])
 				{
 					this->iceCount++;
-					this->world->money = this->world->money - Main::mainClass->readXMLClass.listOfIcePriceXML[this->iceBuyHistory];
+					if (Main::moneyDebug)
+						this->world->money = this->world->money + Main::mainClass->readXMLClass.listOfIcePriceXML[this->iceBuyHistory];
+					else
+						this->world->money = this->world->money - Main::mainClass->readXMLClass.listOfIcePriceXML[this->iceBuyHistory];
 					this->sphereCostHistory[1].push(Main::mainClass->readXMLClass.listOfIcePriceXML[this->iceBuyHistory]);
 					if (this->iceBuyHistory < (Main::mainClass->readXMLClass.listOfIcePriceXML.size() - 1))
 					{
@@ -2653,7 +2659,10 @@ namespace engine
 				if (this->world->money >= Main::mainClass->readXMLClass.listOfStonePriceXML[this->stoneBuyHistory])
 				{
 					this->stoneCount++;
-					this->world->money = this->world->money - Main::mainClass->readXMLClass.listOfStonePriceXML[this->stoneBuyHistory];
+					if (Main::moneyDebug)
+						this->world->money = this->world->money + Main::mainClass->readXMLClass.listOfStonePriceXML[this->stoneBuyHistory];
+					else
+						this->world->money = this->world->money - Main::mainClass->readXMLClass.listOfStonePriceXML[this->stoneBuyHistory];
 					this->sphereCostHistory[2].push(Main::mainClass->readXMLClass.listOfStonePriceXML[this->stoneBuyHistory]);
 					if (this->stoneBuyHistory < (Main::mainClass->readXMLClass.listOfStonePriceXML.size() - 1))
 					{
@@ -2666,7 +2675,10 @@ namespace engine
 				if (this->world->money >= Main::mainClass->readXMLClass.listOfLevinPriceXML[this->levinBuyHistory])
 				{
 					this->levinCount++;
-					this->world->money = this->world->money - Main::mainClass->readXMLClass.listOfLevinPriceXML[this->levinBuyHistory];
+					if (Main::moneyDebug)
+						this->world->money = this->world->money + Main::mainClass->readXMLClass.listOfLevinPriceXML[this->levinBuyHistory];
+					else
+						this->world->money = this->world->money - Main::mainClass->readXMLClass.listOfLevinPriceXML[this->levinBuyHistory];
 					this->sphereCostHistory[3].push(Main::mainClass->readXMLClass.listOfLevinPriceXML[this->levinBuyHistory]);
 					if (this->levinBuyHistory < (Main::mainClass->readXMLClass.listOfLevinPriceXML.size() - 1))
 					{
@@ -2680,7 +2692,10 @@ namespace engine
 				{
 					this->getAllCount++;
 					int tempObject = Main::mainClass->readXMLClass.listOfFirePriceXML[this->fireBuyHistory] + Main::mainClass->readXMLClass.listOfIcePriceXML[this->iceBuyHistory] + Main::mainClass->readXMLClass.listOfStonePriceXML[this->stoneBuyHistory] + Main::mainClass->readXMLClass.listOfLevinPriceXML[this->levinBuyHistory];
-					this->world->money = this->world->money - tempObject;
+					if (Main::moneyDebug)
+						this->world->money = this->world->money + tempObject;
+					else
+						this->world->money = this->world->money - tempObject;
 					if (this->fireBuyHistory < (Main::mainClass->readXMLClass.listOfFirePriceXML.size() - 1))
 					{
 						this->fireBuyHistory++;

@@ -550,7 +550,7 @@ namespace engine
 					tempObject->closeMenu();
 				}
 			}
-			if (targetName == "road")
+			if (targetName == "road" || targetName == "unitCase")
 			{
 				if (this->radius->currentFrame == 2)
 				{

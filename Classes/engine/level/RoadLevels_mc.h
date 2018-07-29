@@ -23,7 +23,8 @@ namespace engine{
 		int level;
 		Common::Array<Sector> sectors;
         Common::Array<BaseNode *> segments;
-        
+		Common::Array<Sector> effectPos;
+
 		RoadLevels_mc(int level);
 		virtual bool init();
 		

@@ -43,6 +43,9 @@ namespace engine {
 		buildPoint->setMouseEnabled(false);
 	};
 
+	Level::Level(World *world, string rootPath, string armName, string dbName) :MovieClip(rootPath, armName, dbName), world(world) {
+		this->setPosition(0,Main::SCREEN_HEIGHT+2);
+	};
 	Level1_mc::Level1_mc(World *world) :Level(world, "worldinterface/", "Level1_mc", "Level1_mc")
 	{
 		SET_NODETYPENAME();
@@ -95,7 +98,7 @@ namespace engine {
 		places.push(place5);
 		places.push(place6);
 		pointers.push(pointer1);
-		decorations.push(decoration);
+		//decorations.push(decoration);
 	};
 	Level3_mc::Level3_mc(World *world) :Level(world, "worldinterface/", "Level3_mc", "Level3_mc")
 	{
@@ -132,7 +135,7 @@ namespace engine {
 		places.push(place8);
 		pointers.push(pointer1);
 		pointers.push(pointer2);
-		decorations.push(decoration);
+		//decorations.push(decoration);
 	};
 	Level4_mc::Level4_mc(World *world) :Level(world, "worldinterface/", "Level4_mc", "Level4_mc")
 	{
@@ -172,7 +175,7 @@ namespace engine {
 		places.push(place9);
 		pointers.push(pointer1);
 		pointers.push(pointer2);
-		decorations.push(decoration);
+		//decorations.push(decoration);
 	};
 	Level5_mc::Level5_mc(World *world) :Level(world, "worldinterface/", "Level5_mc", "Level5_mc")
 	{
@@ -208,7 +211,7 @@ namespace engine {
 		places.push(place9);
 		pointers.push(pointer1);
 		pointers.push(pointer2);
-		decorations.push(decoration);
+		//decorations.push(decoration);
 	};
 
 	Level6_mc::Level6_mc(World *world) :Level(world, "worldinterface/", "Level6_mc", "Level6_mc")

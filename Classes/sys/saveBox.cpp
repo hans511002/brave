@@ -5,6 +5,39 @@
 
 namespace sys
 {
+	SaveBox::SaveBox() :maxStars(63), playLevel(1)
+	{
+		//Document d;
+		//d.Parse<0>("");
+		//Value & ques = d["questions"];
+		gameSave1 = new rapidjson::Document();
+		gameSave2 = new rapidjson::Document();
+		gameSave3 = new rapidjson::Document();
+		gameSave4 = new rapidjson::Document();
+		gameSave5 = new rapidjson::Document();
+		gameSave6 = new rapidjson::Document();
+		gameSave1->SetObject();
+		gameSave2->SetObject();
+		gameSave3->SetObject();
+		gameSave4->SetObject();
+		gameSave5->SetObject();
+		gameSave6->SetObject();
+		gameSave = gameSave1;
+		//SetValueByPointer(d, "/project", "RapidJSON");
+		//SetValueByPointer(d, "/stars", 10);
+		//if (Value* stars = GetValueByPointer(d, "/stars"))
+		//	stars->SetInt(stars->GetInt() + 1);
+		//CreateValueByPointer(d, "/a/b/0");
+		//Value& hello = GetValueByPointerWithDefault(d, "/hello", "world");
+		//Value x("C++");
+		//SwapValueByPointer(d, "/hello", x);
+		//bool success = EraseValueByPointer(d, "/a");
+		//assert(success);
+	};
+	SaveBox::~SaveBox() {
+		delete gameSave1, gameSave2, gameSave3, gameSave4, gameSave5, gameSave6;
+		gameSave1 = gameSave2 = gameSave3 = gameSave4 = gameSave5 = gameSave6 = NULL;
+	}
 
 	void  SaveBox::checkSaves(int param1)
 	{

@@ -49,6 +49,7 @@ public:
     static const double AnimationInterval ;
 
 	static Main *mainClass;
+	static bool moneyDebug;
 
 	Main();
 	//CREATE_FUNC(Main);

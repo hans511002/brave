@@ -9,20 +9,38 @@ namespace engine
         BezierBox & bezierBox = Main::mainClass->worldClass->saveBox->bezierBoxClass;
         if(level == 1)
         {
-            sectors.push(Sector(0, 309 - 46, 247, 46));
-            sectors.push(Sector(247 - 46, 309 - 205, 46, 162));
-            sectors.push(Sector(247, 309 - 205, 204 - 46, 46));
-            sectors.push(Sector(247 + 204 - 92, 0, 46, 150 - 46));
-            sectors.push(Sector(247 + 204 - 46, 0, 416 - 46, 46));
-            sectors.push(Sector(247 + 204 + 416 - 138, 46, 46, 203 - 46));
-            sectors.push(Sector(247 + 204 + 416 - 92, 203 - 46, 218 - 46, 46));
-            sectors.clear();
+            //sectors.push(Sector(0, 309 - 46, 247, 46));
+            //sectors.push(Sector(247 - 46, 309 - 205, 46, 162));
+            //sectors.push(Sector(247, 309 - 205, 204 - 46, 46));
+            //sectors.push(Sector(247 + 204 - 92, 0, 46, 150 - 46));
+            //sectors.push(Sector(247 + 204 - 46, 0, 416 - 46, 46));
+            //sectors.push(Sector(247 + 204 + 416 - 138, 46, 46, 203 - 46));
+            //sectors.push(Sector(247 + 204 + 416 - 92, 203 - 46, 218 - 46, 46));
+            //sectors.clear();
             calcSectors(bezierBox.level1_path1, bezierBox.level1_path2, bezierBox.level1_path3);
+
+			effectPos.push(Sector(0, 0, 0, 10));
+			effectPos.push(Sector(-10, 0, 0, 0));
+			effectPos.push(Sector(0, -10, 0, 0));
+			effectPos.push(Sector(-10, 0, 0, 0));
+			effectPos.push(Sector(0, 0, 0, 0));
+			effectPos.push(Sector(-5, 0, 0, 0));
+			effectPos.push(Sector(0, 0, 0, 10)); 
         }
         else if(level == 2)
         {
             calcSectors(bezierBox.level2_path1, bezierBox.level2_path2, bezierBox.level2_path3);
-        }
+			effectPos.push(Sector(0, 0, 0, 0));
+			effectPos.push(Sector(-10, 0, 10, 10));
+			effectPos.push(Sector(-10, 0, 10, 10));
+			effectPos.push(Sector(-10, -10, 10, 20));
+			effectPos.push(Sector(-10, -10, 10, 10));
+			effectPos.push(Sector(-10, 0, 10, 10));
+			effectPos.push(Sector(-10, -10, 10, 20));
+			effectPos.push(Sector(0, 0, 10, 0));
+			effectPos.push(Sector(0, 0, 10, 10));
+			effectPos.push(Sector(-10, 0, 10, 0));
+		}
         else if(level == 3)
         {
             calcSectors(bezierBox.level3_path1, bezierBox.level3_path2, bezierBox.level3_path3);
@@ -94,9 +112,16 @@ namespace engine
     {
         BaseNode::init();
         int len = sectors.size();
+		int effLen = effectPos.size();
         for(int i = 0; i < len; i++)
         {
             Sector & sec = sectors.at(i);
+			if (effLen > i) {
+				sec.x += effectPos.at(i).x;
+				sec.y += effectPos.at(i).y;
+				sec.w += effectPos.at(i).w;
+				sec.h += effectPos.at(i).h;
+			} 
             BaseNode * node = new BaseNode(sec.w, sec.h, true);
             node->setPosition(sec.x, sec.y);
             node->mouseEnabled = true;
@@ -118,11 +143,11 @@ namespace engine
         Common::Array<Sector> sect1;
         Common::Array<Sector> sect2;
         Common::Array<Sector> sect3;
-        calcSectors(sect1, path1, 30);
-        calcSectors(sect2, path2, 30);
-        calcSectors(sect3, path3, 30);
+        calcSectors(sect1, path1, 20);
+        calcSectors(sect2, path2, 20);
+        calcSectors(sect3, path3, 20);
         Common::Array<Sector> res;
-        comPathSectors(res, sect1, sect2, sect3, 50);
+        comPathSectors(res, sect1, sect2, sect3, 60);
         Sector rect;
         int len = res.size();
         for(int i = 0; i < len; i++)
@@ -351,28 +376,48 @@ namespace engine
         for(int i = 1; i < len; i++)
         {
             rect = &res.at(i);
-            if(ldir == "h")
-            {
-                if(lrect->w <= rect->w)
-                    lrect->w = rect->w;
-                else
-                    lrect->x = rect->x;
-                if(lrect->h <= rect->h)//up
-                    rect->y = lrect->y;
-                else//down
-                    rect->h = lrect->y;
-            }
-            else
-            {//
-                if(lrect->h <= rect->h)
-                    lrect->h = rect->h;
-                else
-                    lrect->y = rect->y;
-                if(lrect->w <= rect->w)//right
-                    rect->x = lrect->w;
-                else//left
-                    rect->w = lrect->x;
-            }
+			if (ldir == "h")
+			{
+				if (lrect->w <= rect->w)
+				{
+					rect->x = std::min(rect->x, lrect->w);
+					lrect->w =   rect->w;
+				}
+				else
+				{
+					rect->x = lrect->x = std::min(rect->x, lrect->x); 
+				}
+				if (lrect->h <= rect->h)//up
+				{
+					lrect->h = std::max(rect->y, lrect->h);
+					rect->y = lrect->y = std::min(rect->y, lrect->y);
+				}
+				else//down
+				{
+					rect->h = lrect->h = std::max(rect->h, lrect->h); 
+				}
+			}
+			else
+			{//
+				if (lrect->h <= rect->h)
+				{
+					rect->h = lrect->h = std::max(rect->h, lrect->h);
+				}
+				else
+				{
+					rect->y = lrect->y = std::min(rect->y, lrect->y);
+				}
+				if (lrect->w <= rect->w)//right
+				{
+					rect->x = lrect->x = std::min(rect->x, lrect->x);
+					lrect->w = std::max(rect->x, lrect->w);
+				}
+				else//left
+				{
+					rect->w = lrect->w = std::max(rect->w, lrect->w);
+					lrect->x = std::min(rect->w, lrect->x);
+				}
+			}
             //drawFitLine(g, lrect, i);
             lrect = rect;
             if(lrect->w - lrect->x > lrect->h - lrect->y)
