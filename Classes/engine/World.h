@@ -17,10 +17,10 @@ namespace engine
     {
          
     public:
-        int i;
-        int j;
-        int n;
-        int m;
+        //int i;
+        //int j;
+        //int n;
+        //int m;
         //public var tempObject : Object;
         //public var tempObject1 : Object;
         //public var tempObject2 : Object;

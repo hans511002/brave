@@ -48,16 +48,7 @@ namespace engine
         else
         {
             this->world->removeChild(this);
-            this->i = 0;
-            while(this->i < this->world->listOfClasses.size())
-            {
-                if(this->world->listOfClasses[this->i] == this)
-                {
-                    this->world->listOfClasses.splice(this->i, 1);
-                    break;
-                }
-                i++;
-            }
+             
             //if(this->indexParam == 0)
             //{
             //    this->i = 0;

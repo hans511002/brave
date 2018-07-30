@@ -1016,8 +1016,8 @@ namespace engine
 				this->world->worldInterface->updateInfo();
 				if (this->world->listOfMoveSpheres[this->i]->speedFrame == 0)
 				{
-					this->world->removeChild(this->world->listOfMoveSpheres[this->i]);
 					this->world->listOfMoveSpheres.splice(this->i, 1);
+					this->world->removeChild(this->world->listOfMoveSpheres[this->i]);
 				}
 				this->world->worldInterface->container->fireSphereSphereCase->setVisible(false);
 				this->world->worldInterface->container->fireSphereSphereCase->setVisible(true);

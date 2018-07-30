@@ -906,13 +906,14 @@ namespace engine
 			{
 				if (this->container->iceDeath->isVisible())
 				{
+					if (!this->container->iceDeath->isPlay()) {
+						this->container->iceDeath->play(1);
+					}
 					if (this->container->iceDeath->currentFrame < this->container->iceDeath->totalFrames)
 					{
-						this->container->iceDeath->gotoAndStop((this->container->iceDeath->currentFrame + 1));
+						this->container->iceDeath->currentFrame++;
 						if (this->container->iceDeath->currentFrame == 9)
-						{
 							this->container->cont->setVisible(false);
-						}
 					}
 					else if (this->container->getOpacity() > 0)
 						this->container->setOpacity(this->container->getOpacity() - 0.25 * this->container->getOpacity());
@@ -921,22 +922,15 @@ namespace engine
 				}
 				else if (this->container->stoneDeath->isVisible())
 				{
-					if (this->container->stoneDeath->currentFrame < this->container->stoneDeath->totalFrames)
-					{
-						this->container->stoneDeath->gotoAndStop((this->container->stoneDeath->currentFrame + 1));
-						if (this->container->stoneDeath->currentFrame == 9)
-						{
-							this->container->cont->setVisible(false);
-						}
+					if (!this->container->stoneDeath->isPlay()) {
+						this->container->stoneDeath->play(1);
 					}
 					if (this->container->stoneDeath->currentFrame < this->container->stoneDeath->totalFrames)
 					{
-						this->container->stoneDeath->gotoAndStop((this->container->stoneDeath->currentFrame + 1));
+						this->container->stoneDeath->currentFrame++;
 						if (this->container->stoneDeath->currentFrame == 3)
-						{
 							this->container->cont->setVisible(false);
-						}
-					}
+					} 
 					else
 					{
 						this->removeUnitAfterDeathAnima();
@@ -944,13 +938,14 @@ namespace engine
 				}
 				else if (this->container->levinDeath->isVisible())
 				{
+					if (!this->container->levinDeath->isPlay()) {
+						this->container->levinDeath->play(1);
+					}
 					if (this->container->levinDeath->currentFrame < this->container->levinDeath->totalFrames)
 					{
-						this->container->levinDeath->gotoAndStop((this->container->levinDeath->currentFrame + 1));
+						this->container->levinDeath->currentFrame++;
 						if (this->container->levinDeath->currentFrame == 6)
-						{
 							this->container->cont->setVisible(false);
-						}
 					}
 					else if (this->container->getOpacity() > 0)
 						this->container->setOpacity(this->container->getOpacity() - 0.25 * this->container->getOpacity());
@@ -1752,8 +1747,8 @@ namespace engine
 		{
 			//if (this->parent)
 			//{
-			this->world->removeChild(this, true);
 			this->world->removeClasses(this);
+			this->world->removeChild(this, true);
 			//this->i = 0;
 			//while (this->i < this->world->listOfIndexes1.length)
 			//{
@@ -1792,9 +1787,9 @@ namespace engine
                         this->container->levinDeath->setVisible(true);
                         //Sounds.instance.playSound("snd_unit_levinDeath");
                     }
-                    //this->setMouseChildren(false);
-                    //this->setMouseEnabled(false);
-                    //this->world->listOfClasses.push(this);
+                    this->setMouseChildren(false);
+                    this->setMouseEnabled(false);
+                    this->world->listOfClasses.push(this);
                     //this->world->listOfIndexes1.push(this);
                 }
                 else

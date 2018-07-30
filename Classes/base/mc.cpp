@@ -527,7 +527,11 @@ namespace engine
 		}
 		return false;
 	};
-
+	bool MovieClip::isVisible() {
+		if (this->mc && !this->isReady)
+			this->reinit();
+		return getNodeVisible(this);
+	};
 	//void MovieClip::destroy(MCText * & mcs){
 	//    for (int i = 0; i < this->mcs.size(); i++)
 	//    {

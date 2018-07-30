@@ -701,8 +701,8 @@ namespace engine{
 						this->j = this->shootinAttackStack.size() - 1;
 						while (this->j >= 0)
 						{
-							container->removeChild(this->shootinAttackStack[this->j]);
 							this->shootinAttackStack.splice(this->j, 1);
+							container->removeChild(this->shootinAttackStack[this->j]);
 							j--;
 						}
 						break;
@@ -3049,8 +3049,8 @@ namespace engine{
 				{
 					if (this->world->listOfTowers[this->i] == this)
 					{
-						this->world->removeChild(this);
 						this->world->listOfTowers.splice(this->i, 1);
+						this->world->removeChild(this);
 						break;
 					}
 					i++;

@@ -190,16 +190,16 @@ namespace engine
 			}
 		}
 		this->wavesClass->wavesHandler();
-		i = 0;
+		int i = 0;
 		while (i < this->listOfFlags.size())
 		{
-			if (this->listOfFlags[this->i]->currentFrame < this->listOfFlags[this->i]->totalFrames)
+			if (this->listOfFlags[i]->currentFrame < this->listOfFlags[i]->totalFrames)
 			{
-				this->listOfFlags[this->i]->gotoAndStop((this->listOfFlags[this->i]->currentFrame + 1));
+				this->listOfFlags[i]->gotoAndStop((this->listOfFlags[i]->currentFrame + 1));
 			}
 			else
 			{
-				this->listOfFlags[this->i]->gotoAndStop(1);
+				this->listOfFlags[i]->gotoAndStop(1);
 			}
 			i++;
 		}
@@ -211,44 +211,44 @@ namespace engine
 
 		this->feature->update();
 		//子类播放
-		this->i = this->listOfClasses.size() - 1;
-		while (this->i >= 0)
+		i = this->listOfClasses.size() - 1;
+		while (i >= 0)
 		{
-			this->listOfClasses[this->i]->update();
+			this->listOfClasses[i]->update();
 			i--;
 		}
-		this->i = this->listOfTowers.size() - 1;
-		while (this->i >= 0)
+		i = this->listOfTowers.size() - 1;
+		while (i >= 0)
 		{
-			this->listOfTowers[this->i]->update();
+			this->listOfTowers[i]->update();
 			i--;
 		}
 
 		//怪播放
-		this->i = this->listOfUnits.size() - 1;
-		while (this->i >= 0)
+		i = this->listOfUnits.size() - 1;
+		while (i >= 0)
 		{
-			this->listOfUnits[this->i]->update();
+			this->listOfUnits[i]->update();
 			i--;
 		}
 	
-		this->i = this->listOfBullets.size() - 1;
-		while (this->i >= 0)
+		i = this->listOfBullets.size() - 1;
+		while (i >= 0)
 		{
-			this->listOfBullets[this->i]->update();
+			this->listOfBullets[i]->update();
 			i--;
 		}
-		//this->i = this->listOfSoundChannels.size() - 1;
-		//while (this->i >= 0)
+		//i = this->listOfSoundChannels.size() - 1;
+		//while (i >= 0)
 		//{ 
-		//	if (this->listOfSoundChannels[this->i]->soundTransform->volume - 0.0186667 > 0)
+		//	if (this->listOfSoundChannels[i]->soundTransform->volume - 0.0186667 > 0)
 		//	{
-		//		this->listOfSoundChannels[this->i]->soundTransform = new SoundTransform(this->listOfSoundChannels[this->i].soundTransform.volume - 0.0186667, 0);
+		//		this->listOfSoundChannels[i]->soundTransform = new SoundTransform(this->listOfSoundChannels[i].soundTransform.volume - 0.0186667, 0);
 		//	}
 		//	else
 		//	{
-		//		this->listOfSoundChannels[this->i]->soundTransform = new SoundTransform(0, 0);
-		//		this->listOfSoundChannels.splice(this->i, 1);
+		//		this->listOfSoundChannels[i]->soundTransform = new SoundTransform(0, 0);
+		//		this->listOfSoundChannels.splice(i, 1);
 		//	}
 		//	i++;
 		//}
@@ -336,36 +336,36 @@ namespace engine
 				while (i < this->listOfFirePortals.size())
 				{
                     Indexes * tempObject = new Indexes(new RoadsignFire_mc(), 0);
-                    tempObject->setPosition(this->listOfFirePortals[this->i]->getPosition());
-                    tempObject->setScaleX(this->listOfFirePortals[this->i]->getScaleX());
-                    tempObject->setScaleY(this->listOfFirePortals[this->i]->getScaleY()); 
+                    tempObject->setPosition(this->listOfFirePortals[i]->getPosition());
+                    tempObject->setScaleX(this->listOfFirePortals[i]->getScaleX());
+                    tempObject->setScaleY(this->listOfFirePortals[i]->getScaleY()); 
 					i++;
 				}
 				i = 0;
 				while (i < this->listOfIcePortals.size())
 				{
                     Indexes * tempObject = new Indexes(new RoadsignIce_mc(), 0);
-                    tempObject->setPosition(this->listOfIcePortals[this->i]->getPosition());
-                    tempObject->setScaleX(this->listOfIcePortals[this->i]->getScaleX());
-                    tempObject->setScaleY(this->listOfIcePortals[this->i]->getScaleY());
+                    tempObject->setPosition(this->listOfIcePortals[i]->getPosition());
+                    tempObject->setScaleX(this->listOfIcePortals[i]->getScaleX());
+                    tempObject->setScaleY(this->listOfIcePortals[i]->getScaleY());
 					i++;
 				}
 				i = 0;
 				while (i < this->listOfStonePortals.size())
 				{
                     Indexes * tempObject = new Indexes(new RoadsignStone_mc(), 0);
-                    tempObject->setPosition(this->listOfStonePortals[this->i]->getPosition());
-                    tempObject->setScaleX(this->listOfStonePortals[this->i]->getScaleX());
-                    tempObject->setScaleY(this->listOfStonePortals[this->i]->getScaleY());
+                    tempObject->setPosition(this->listOfStonePortals[i]->getPosition());
+                    tempObject->setScaleX(this->listOfStonePortals[i]->getScaleX());
+                    tempObject->setScaleY(this->listOfStonePortals[i]->getScaleY());
 					i++;
 				}
 				i = 0;
 				while (i < this->listOfLevinPortals.size())
                 {
                     Indexes * tempObject = new Indexes(new RoadsignLevin_mc(), 0);
-                    tempObject->setPosition(this->listOfLevinPortals[this->i]->getPosition());
-                    tempObject->setScaleX(this->listOfLevinPortals[this->i]->getScaleX());
-                    tempObject->setScaleY(this->listOfLevinPortals[this->i]->getScaleY());
+                    tempObject->setPosition(this->listOfLevinPortals[i]->getPosition());
+                    tempObject->setScaleX(this->listOfLevinPortals[i]->getScaleX());
+                    tempObject->setScaleY(this->listOfLevinPortals[i]->getScaleY());
 					i++;
 				}
 			}
@@ -874,10 +874,10 @@ namespace engine
 					Tower *tower = ISTYPE(Tower, parent);
 					if (tower->towerType < 5 && !tower->blockTowerFlag)
 					{
-						this->i = 0;
-						while (this->i < this->listOfTowers.size())
+						int i = 0;
+						while (i < this->listOfTowers.size())
 						{
-							if (this->listOfTowers[this->i] != tower && this->listOfTowers[this->i]->towerType < 5)
+							if (this->listOfTowers[i] != tower && this->listOfTowers[i]->towerType < 5)
 							{
 								this->mouseMoveHandler(event);
 								this->exchange = new Exchange(tower);
@@ -2172,16 +2172,15 @@ namespace engine
 	}// end function
     void World::removeClasses(BaseNode * node) 
     {
-        int i = 0;
-        int len = listOfClasses.size();
-        while(i < len)
+        int i = listOfClasses.size()-1;
+        while(i >=0)
         {
             if(listOfClasses.at(i) == node)
             {
                 listOfClasses.remove(i);
                 break;
             }
-            i++;
+            i--;
         }
     };
 	void World::removeIndexes(BaseNode * node)

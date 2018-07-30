@@ -1254,17 +1254,17 @@ namespace engine{
 		if (!this->dead)
 		{
 			this->dead = true;
-			this->i = 0;
-			while (this->i < this->world->listOfClasses.size())
-			{ 
-			    if (this->world->listOfClasses[this->i] == this)
-			    {
-			        this->world->removeChild(this->world->listOfClasses[this->i]);
-			        this->world->listOfClasses.splice(this->i, 1);
-			        break;
-			    }
-			    i++;
-			}
+			this->world->removeChild(this);
+			//this->i = 0;
+			//while (this->i < this->world->listOfClasses.size())
+			//{ 
+			//    if (this->world->listOfClasses[this->i] == this)
+			//    {
+			//        this->world->removeChild(this->world->listOfClasses[this->i]);
+ 			//			break;
+			//    }
+			//    i++;
+			//}
 			//this->i = 0;
 			//while (this->i < this->world->listOfIndexes2.length)
 			//{

@@ -121,8 +121,8 @@ namespace engine{
                         }
                         j--;
                     }
-                    this->removeChild(this->listOfAnimation[i]);
                     this->listOfAnimation.splice(i, 1);
+                    this->removeChild(this->listOfAnimation[i]);
                 }
                 i--;
             }
@@ -133,8 +133,8 @@ namespace engine{
                 {   
                     if (this->listOfAnimation[i]->currentFrame == 1)
                     {
-                        this->removeChild(this->listOfAnimation[i]);
                         this->listOfAnimation.splice(i, 1);
+                        this->removeChild(this->listOfAnimation[i]);
                     }
                     i--;
                 }

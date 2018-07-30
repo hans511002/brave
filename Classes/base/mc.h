@@ -142,7 +142,7 @@ namespace engine
 
 		virtual void setVisible(bool v);
 		virtual bool reinit();
-
+		virtual bool isVisible();
 
 		void addMcs(MovieClipSub * mcs);
         virtual void destroy(MovieClipSub * & mcs);
