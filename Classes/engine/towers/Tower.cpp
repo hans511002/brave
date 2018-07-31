@@ -10,14 +10,14 @@
 namespace engine{
 	namespace towers{
 
-		TowerBase_mc::TowerBase_mc(string rootPath, string armName, string dbName, string defAniName) :towerCase(0)
+		TowerBase_mc::TowerBase_mc(const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName) :towerCase(0)
             , MovieClip(rootPath, armName, dbName, defAniName), myParent(0)
 		{
 			blockTower = this->createMovieClip("blockTower", "tower/", "blockTower", "TowerBlockBone");
 			boneBlock = this->createMovieClip("boneBlock", "tower/", "boneBlock", "TowerBlockBone");
 			towerCase = this->createCase("towerCase");
 		};
-        Tower::Tower() : tempObject2(NULL), container(NULL), myPlace(NULL), buildAnima(NULL), damage(0), intervalCounter(0), intervalTimer(0), dead(false), world(NULL), towerType(0), correctYGrPos(0), enemyTarget(NULL), greenFlag(false), sphereBullet1(NULL), sphereBullet2(NULL), sphereBullet3(NULL), sphereBullet4(NULL), upgradeTypeAdd(0), blockTowerFlag(false), sphereVisibleTimer(0), exchangeFlag(false), autoBuild(false), upgr1_damage(0)
+        Tower::Tower() : tempObject2(NULL), container(NULL), myPlace(NULL), buildAnima(NULL), damage(0), intervalCounter(0), intervalTimer(0), dead(false), world(NULL), towerType(0), correctYGrPos(0), enemyTarget(NULL), greenFlag(false), sphereBullet1(NULL), sphereBullet2(NULL), sphereBullet3(NULL), sphereBullet4(NULL), upgradeTypeAdd(0), blockTowerFlag(false), sphereVisibleTimer(18), exchangeFlag(false), autoBuild(false), upgr1_damage(0)
         {
 			//this->spheresStack = [];
             //this->shootingTurnStack = [null, null, null, null];
@@ -305,7 +305,7 @@ namespace engine{
 											//tempObject1->y = this->tempObject.y;
 											tempObject1->counter = 3;
 											tempObject1->distX = -tempObject.x / tempObject1->counter;
-											tempObject1->distY = (-70 - tempObject.y) / tempObject1->counter;
+											tempObject1->distY = (70 - tempObject.y) / tempObject1->counter;
 											container->addChild(tempObject1);
 											this->shootinAttackStack.push(tempObject1);
 										}
@@ -626,23 +626,17 @@ namespace engine{
 			}
 			else
 			{
-				this->i = 0;
-				while (this->i < this->shootinAttackStack.size())
+				int i = 0;
+				while (i < this->shootinAttackStack.size())
 				{
-					if (this->shootinAttackStack[this->i]->currentFrame < this->shootinAttackStack[this->i]->totalFrames)
+					if (!this->shootinAttackStack[i]->isPlay()) {
+						this->shootinAttackStack[i]->play(1);
+					} 
+					if (this->shootinAttackStack[i]->counter > 0)
 					{
-						this->shootinAttackStack[this->i]->gotoAndStop((this->shootinAttackStack[this->i]->currentFrame + 1));
-					}
-					else
-					{
-						this->shootinAttackStack[this->i]->gotoAndStop(1);
-					}
-					if (this->shootinAttackStack[this->i]->counter > 0)
-					{
-						this->shootinAttackStack[this->i]->counter--;
-
-						this->shootinAttackStack[this->i]->setPositionX(this->shootinAttackStack[this->i]->getPositionX() + this->shootinAttackStack[this->i]->distX);
-						this->shootinAttackStack[this->i]->setPositionY(this->shootinAttackStack[this->i]->getPositionY() + this->shootinAttackStack[this->i]->distY);
+						this->shootinAttackStack[i]->counter--;
+						this->shootinAttackStack[i]->setPositionX(this->shootinAttackStack[i]->getPositionX() + this->shootinAttackStack[i]->distX);
+						this->shootinAttackStack[i]->setPositionY(this->shootinAttackStack[i]->getPositionY() + this->shootinAttackStack[i]->distY);
 					}
 					else
 					{
@@ -701,8 +695,8 @@ namespace engine{
 						this->j = this->shootinAttackStack.size() - 1;
 						while (this->j >= 0)
 						{
-							this->shootinAttackStack.splice(this->j, 1);
 							container->removeChild(this->shootinAttackStack[this->j]);
+							this->shootinAttackStack.splice(this->j, 1);
 							j--;
 						}
 						break;
@@ -1542,7 +1536,7 @@ namespace engine{
 				container->sphere1->gotoAndStop(1);
 				container->sphere1Bullet->gotoAndStop(1);
 				container->sphere1BulletCont->gotoAndStop(1);
-				container->sphere1->setVisible(false);
+				container->sphere1Bullet->setVisible(false);
 			}
 			if (this->towerType >= 2)
 			{
@@ -1653,7 +1647,7 @@ namespace engine{
 			{
 				Tower1_mc * container = ISTYPE(Tower1_mc, this->container);
 				container->sphere1->gotoAndStop(1);
-				container->sphere1->setVisible(true);
+				container->sphere1Bullet->setVisible(true);
 				if (this->spheresStack[0] == "fire")
 				{
 					container->sphere1Bullet->gotoAndStop(1);

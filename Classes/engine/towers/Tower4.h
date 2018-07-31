@@ -9,7 +9,7 @@ namespace engine
     namespace towers
     {
 		struct Tower4_mc : public Tower3_mc
-        {
+		{
 			MovieClipSub * sphere4_1;
 			BulletSphereTower_mc * sphere4_1Bullet;
 			MovieClipSub * sphere4_1BulletCont;
@@ -23,9 +23,12 @@ namespace engine
 			BulletSphereTower_mc * sphere4_4Bullet;
 			MovieClipSub * sphere4_4BulletCont;
 
-			inline Tower4_mc(string rootPath, string armName, string dbName, string defAniName = "") : Tower3_mc(rootPath, armName, dbName, defAniName){};
+			inline Tower4_mc(const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "") : Tower3_mc(rootPath, armName, dbName, defAniName) {
+				init();
+			};
 			Tower4_mc();
-        };
+			virtual bool init();
+		};
 		class Tower4 : public Tower
 		{
 		public:

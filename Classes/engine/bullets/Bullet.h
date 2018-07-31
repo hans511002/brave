@@ -34,7 +34,7 @@ namespace engine{
 		};
 		struct BulletSphereTower_mc : public MovieClip
 		{
-			MovieClip * cont;
+			MovieClipSub * cont;
 			int counter;
 			BulletSphereTower_mc();
 		};

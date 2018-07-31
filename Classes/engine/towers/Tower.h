@@ -22,7 +22,7 @@ namespace engine
             MCCase * towerCase;
             Tower * myParent;
             MCMask * selectTower;
-            TowerBase_mc(string rootPath, string armName, string dbName, string defAniName = "");
+            TowerBase_mc(const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "");
         };
         struct ShootingTurnStack
         {

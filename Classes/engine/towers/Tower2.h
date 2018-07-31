@@ -26,9 +26,13 @@ namespace engine
 			BulletSphereTower_mc * sphere2_2Bullet;
             MovieClipSub * sphere2_2BulletCont;
 
-			inline Tower2_mc(string rootPath, string armName, string dbName, string defAniName = "") : Tower1_mc(rootPath, armName, dbName, defAniName){};
+			inline Tower2_mc(const string & rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "")
+				: Tower1_mc(rootPath, armName, dbName, defAniName){
+				init();
+			};
 			Tower2_mc();
-        };
+			virtual bool init();
+		};
 		class Tower2 : public Tower
 		{
 		public:

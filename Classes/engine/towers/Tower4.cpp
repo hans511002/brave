@@ -36,20 +36,30 @@ namespace engine
 			//sphere3_3Bullet = (BulletSphereTower_mc*)sphere3_3->createMovieClip("bullet", new BulletSphereTower_mc());
 			//sphere3_3BulletCont = sphere3_3Bullet->createMovieClipSub("cont");
 
+		}
+		bool Tower4_mc::init() {
+			Tower3_mc::init();
+			SET_NODETYPENAME();
 			sphere4_1 = this->createMovieClipSub("sphere4_1");
 			sphere4_1Bullet = (BulletSphereTower_mc*)sphere4_1->createMovieClip("bullet", new BulletSphereTower_mc());
-			sphere4_1BulletCont = sphere4_1Bullet->createMovieClipSub("cont");
+			sphere4_1BulletCont = sphere4_1Bullet->cont;//createMovieClipSub("cont", true);
 			sphere4_2 = this->createMovieClipSub("sphere4_2");
 			sphere4_2Bullet = (BulletSphereTower_mc*)sphere4_2->createMovieClip("bullet", new BulletSphereTower_mc());
-			sphere4_2BulletCont = sphere4_2Bullet->createMovieClipSub("cont");
+			sphere4_2BulletCont = sphere4_2Bullet->cont;//createMovieClipSub("cont", true);
 			sphere4_3 = this->createMovieClipSub("sphere4_3");
 			sphere4_3Bullet = (BulletSphereTower_mc*)sphere4_3->createMovieClip("bullet", new BulletSphereTower_mc());
-			sphere4_3BulletCont = sphere4_3Bullet->createMovieClipSub("cont");
+			sphere4_3BulletCont = sphere4_3Bullet->cont;//createMovieClipSub("cont", true);
 			sphere4_4 = this->createMovieClipSub("sphere4_4");
 			sphere4_4Bullet = (BulletSphereTower_mc*)sphere4_4->createMovieClip("bullet", new BulletSphereTower_mc());
-			sphere4_4BulletCont = sphere4_4Bullet->createMovieClipSub("cont");
+			sphere4_4BulletCont = sphere4_4Bullet->cont;//createMovieClipSub("cont", true);
+			sphere4_1Bullet->gotoAndStop(5);
+			sphere4_2Bullet->gotoAndStop(5);
+			sphere4_3Bullet->gotoAndStop(5);
+			sphere4_4Bullet->gotoAndStop(5);
+			return true;
 		}
 
+		 
         Tower4::Tower4()
         {
             return;

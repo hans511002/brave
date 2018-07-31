@@ -7,14 +7,27 @@ namespace engine
 {
     namespace towers
     {
+		Tower1_mc::Tower1_mc(const string &  rootPath, const string &  armName, const string &  dbName, const string & defAniName) : TowerBase_mc(rootPath, armName, dbName, defAniName)
+		{
+			init();
+		};
+
 		Tower1_mc::Tower1_mc() :TowerBase_mc("tower/", "Tower1_mc", "Tower1_mc")
 		{
-            SET_NODETYPENAME();
-            selectTower = this->createMask("selectTower");
+			init();
+		}
+		bool Tower1_mc::init() {
+			TowerBase_mc::init();
+			SET_NODETYPENAME();
+			selectTower = this->createMask("selectTower");
 			sphere1 = this->createMovieClipSub("sphere1");
 			sphere1Bullet = (BulletSphereTower_mc*)sphere1->createMovieClip("bullet", new BulletSphereTower_mc());
-			sphere1BulletCont = sphere1Bullet->createMovieClipSub("cont");
+			sphere1BulletCont = sphere1Bullet->cont;
+			sphere1Bullet->gotoAndStop(5);
+			return true;
 		}
+
+
         Tower1::Tower1() :firstTowerMenuCounter(8)
         {
             SET_NODETYPENAME();
@@ -92,6 +105,8 @@ namespace engine
             }
             if (spheresStack.size() == 1)
             {
+				//container->sphere1Bullet->nextFram();
+
                 if (container->sphere1->currentFrame < container->sphere1->totalFrames)
                 {
                     container->sphere1->gotoAndStop((container->sphere1->currentFrame + 1));

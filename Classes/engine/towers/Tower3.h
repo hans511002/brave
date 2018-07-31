@@ -37,8 +37,11 @@ namespace engine
 			MovieClipSub * sphere3_3BulletCont;
 
 
-			inline Tower3_mc(string rootPath, string armName, string dbName, string defAniName = "") : Tower2_mc(rootPath, armName, dbName, defAniName){};
+			inline Tower3_mc(const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "") : Tower2_mc(rootPath, armName, dbName, defAniName){
+				init();
+			};
 			Tower3_mc();
+			virtual bool init();
 		};
 		class Tower3 :public  Tower
 		{

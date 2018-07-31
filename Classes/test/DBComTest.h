@@ -34,7 +34,7 @@ public:
 	dragonBones::CCArmatureDisplay* armatureDisplay;
 protected:
 	LevelPointer * pointer=NULL;
-
+	Tower1_mc * tower = NULL;
 	void onEnter()
 	{
 		BaseDemo::onEnter();
@@ -47,7 +47,8 @@ protected:
 
 		//addPointer();
 		//addTest();
-		addWorldInterface();
+		//addWorldInterface();
+		addTower();
 		return;
 	}
 	int currentFrame;
@@ -89,39 +90,52 @@ protected:
 		//logInfo("pointer->mask1->getPosition ", pointer->mask1->mask->getPosition(), &pointer->mask1->mask->getAnchorPointInPoints());
 		//logInfo("pointer->mask2->getPosition ", pointer->mask2->mask->getPosition(), &pointer->mask2->mask->getAnchorPointInPoints());
 
-		if (currentFrame > 30) {
-			//text->setText(I18N_VALUE(I18N_CODE::U102));
-			if (text)
-				std::setText(text, I18N_VALUE(I18N_CODE::U102));
-			if (pointer) {
-				pointer->fireAnima->setVisible(true);
-				Vec2 pt = pointer->fireAnima->container->getPosition();
-				Vec2 wpt = pointer->fireAnima->container->convertToWorldSpace(pt);
-				logInfo(getNamePath(pointer->fireAnima->container), pt, &wpt, &pointer->fireAnima->container->convertToNodeSpace(wpt));
+		//if (currentFrame > 30) {
+		//	//text->setText(I18N_VALUE(I18N_CODE::U102));
+		//	if (text)
+		//		std::setText(text, I18N_VALUE(I18N_CODE::U102));
+		//	if (pointer) {
+		//		pointer->fireAnima->setVisible(true);
+		//		Vec2 pt = pointer->fireAnima->container->getPosition();
+		//		Vec2 wpt = pointer->fireAnima->container->convertToWorldSpace(pt);
+		//		logInfo(getNamePath(pointer->fireAnima->container), pt, &wpt, &pointer->fireAnima->container->convertToNodeSpace(wpt));
 
-				pt = pointer->tcase1->getPosition();
-				wpt = pointer->tcase1->convertToWorldSpace(pt);
-				logInfo(getNamePath(pointer->tcase1), pt, &wpt, &pointer->tcase1->convertToNodeSpace(wpt));
-				pt = pointer->tcase2->getPosition();
-				wpt = pointer->tcase2->convertToWorldSpace(pt);
-				logInfo(getNamePath(pointer->tcase2), pt, &wpt, &pointer->tcase2->convertToNodeSpace(wpt));
+		//		pt = pointer->tcase1->getPosition();
+		//		wpt = pointer->tcase1->convertToWorldSpace(pt);
+		//		logInfo(getNamePath(pointer->tcase1), pt, &wpt, &pointer->tcase1->convertToNodeSpace(wpt));
+		//		pt = pointer->tcase2->getPosition();
+		//		wpt = pointer->tcase2->convertToWorldSpace(pt);
+		//		logInfo(getNamePath(pointer->tcase2), pt, &wpt, &pointer->tcase2->convertToNodeSpace(wpt));
+		//	}
+		//	if (container) {
+		//		printSphereCase();
+		//		if (currentFrame < 40) {
+		//			spheresBlockManage("unblockFire");
+		//		}else if (currentFrame < 50) {
+		//			spheresBlockManage("unblockIce");
+		//		}
+		//		else if (currentFrame < 60) {
+		//			spheresBlockManage("unblockStone");
+		//		}
+		//		else if (currentFrame < 70) {
+		//			spheresBlockManage("unblockLevin");
+		//		} 
+		//		printSphereCase();
+		//	}
+		//}
+
+		if (currentFrame > 100) {
+			tower->sphere1->setVisible(true);
+			if(!tower->sphere1->isPlay())
+				tower->sphere1->play(0);
+			if (((currentFrame / 100 ) %4+1) != tower->sphere1Bullet->currentFrame) {
+				tower->sphere1Bullet->gotoAndStop((currentFrame / 100) % 4 + 1);
+				if (!tower->sphere1BulletCont->isPlay())
+					tower->sphere1BulletCont->play(1); 
 			}
-			if (container) {
-				printSphereCase();
-				if (currentFrame < 40) {
-					spheresBlockManage("unblockFire");
-				}else if (currentFrame < 50) {
-					spheresBlockManage("unblockIce");
-				}
-				else if (currentFrame < 60) {
-					spheresBlockManage("unblockStone");
-				}
-				else if (currentFrame < 70) {
-					spheresBlockManage("unblockLevin");
-				} 
-				printSphereCase();
-			}
+
 		}
+
 	}
 	void printSphereCase() {
 		printNodePos(container->fireSphereSphereCase);
@@ -487,6 +501,12 @@ protected:
 			this->container->getAll->setVisible(true);
 		}
  		return;
+	}
+	void addTower() {
+		tower = new Tower1_mc();
+		this->addChild(tower);
+		tower->setPosition(200, 200);
+		tower->sphere1->setVisible(false);
 	}
 }
 

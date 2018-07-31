@@ -7,10 +7,10 @@
 
 namespace engine{
     namespace bullets{
-		BulletSphereTower_mc::BulletSphereTower_mc() :MovieClip("sphere/", "BulletSphereTower_mc", "BulletSphereTower_mc"), cont(0), counter(0)
+		BulletSphereTower_mc::BulletSphereTower_mc() :MovieClip("sphere/", "BulletSphereTower_mc", "BulletSphereTower_mc"),  counter(0)
         {
 			SET_NODETYPENAME();
-			//cont=this->createMovieClip("sphere/","cont","BulletSpheresTower_mc");//合并多个在一个db中
+			cont=this->createMovieClipSub("cont", true);
         }
          
 		BulletFireTower_mc::BulletFireTower_mc() :BulletBase_mc("sphere/", "BulletFireTower_mc", "BulletSphereTower_mc")

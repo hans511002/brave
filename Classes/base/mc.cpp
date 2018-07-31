@@ -758,8 +758,8 @@ namespace engine
 	{
 		BaseNode::init();
 		Size size = this->container->getContentSize();
-		const dragonBones::Rectangle & aabb = this->getArmature()->getArmatureData()->aabb;
 		if (size.width = 0 || size.height == 0){
+			const dragonBones::Rectangle & aabb = this->getArmature()->getArmatureData()->aabb;
 			this->container->setContentSize(Size(aabb.width, aabb.height));
 		}
 		//this->container->setPosition(Vec2(aabb.x, aabb.y));
@@ -1338,6 +1338,7 @@ namespace engine
 			//this->display->setAnchorPoint(Vec2(0, 0));
 			//display->setPosition(display->getPosition()+display->getAnchorPointInPoints());//dis 会被重算
 
+			//std::changeAnchorPoint(this->display, 0.5);
 			std::changeAnchorPoint(this, 0.5);
 			this->setPosition(this->getPosition()+this->disPos);
 			//Node *cnode=Node::create();
@@ -1402,6 +1403,7 @@ namespace engine
 			return false;
 		this->arm = this->slot->getChildArmature();
 		if (arm){
+			Node * oldDis = this->display;
 			this->display = (Node *)this->slot->getDisplay();
 			if (this->display)
 			{
@@ -1417,6 +1419,7 @@ namespace engine
 				if (ISTYPE(CCArmatureDisplay, display))
 				{
 					this->container = ISTYPE(CCArmatureDisplay, display);
+					std::setAnchorPoint(display, Vec2(0, 0));
 					std::changeAnchorPoint(container, 0.5);
 					this->transform = this->container->getNodeToWorldTransform();
                     if(bindListenType)
@@ -1426,6 +1429,9 @@ namespace engine
                         bindMovieListen(type);
                     }
 					//display->setPosition(display->getPosition() + display->getAnchorPointInPoints());
+				}
+				if (oldDis) {
+					this->display->setPosition(oldDis->getPosition());
 				}
 				isReady = true;
 				//if (ISTYPE(MovieClip, this->mc)){
