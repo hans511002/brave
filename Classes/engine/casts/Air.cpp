@@ -108,8 +108,8 @@ namespace engine
 			this->setPosition(this->this_pt);
 			//      this->x = this->this_pt.x;
 			//      this->y = this->this_pt.y;
-			this->container->setOpacity(0.1);
-			this->setPositionY(this->getPositionY() - 200);
+			this->container->setAlpha(0.1);
+			this->setPositionY(this->getPositionY() + 200);
 			//      this->y = this->y - 200;
 			this->setMouseChildren(false);
 			this->setMouseEnabled(false);
@@ -126,6 +126,49 @@ namespace engine
 
 		void Air::update(float dt)
 		{
+			if (this->container->dust1->isVisible())
+			{
+				this->container->dust1->currentFrame++;
+				if (!this->container->dust1->isPlay() && this->container->dust1->currentFrame < 5)
+				{
+					this->container->dust1->play(1);
+				}
+				else {
+					this->container->dust1->gotoAndStop(1);
+					this->container->dust1->setVisible(false);
+				}
+				//if (this->container->dust1->currentFrame < 47)
+				//{
+				//	this->container->dust1->gotoAndStop(this->container->dust1->currentFrame++);
+				//}
+				//else
+				//{
+				//	this->container->dust1->gotoAndStop(1);
+				//	this->container->dust1->setVisible(false);
+				//}
+			}
+			if (this->container->dust2->isVisible())
+			{
+				this->container->dust2->currentFrame++;
+				if (!this->container->dust2->isPlay() && this->container->dust2->currentFrame < 5)
+				{
+					this->container->dust2->play(1);
+				}
+				else {
+					this->container->dust2->gotoAndStop(1);
+					this->container->dust2->setVisible(false);
+				}
+				//if (this->container->dust2->currentFrame < 47)
+				//{
+				//	this->container->dust2->gotoAndStop(this->container->dust2->currentFrame++);
+				//}
+				//else
+				//{
+				//	//this->container->dust2->currentFrame = 1;
+				//	this->container->dust2->gotoAndStop(1);
+				//	this->container->dust2->setVisible(false);
+				//}
+			}
 			if (!this->openFlag)
 			{
 				if (this->voiceCounter > 0)
@@ -199,10 +242,10 @@ namespace engine
 				{
 					//Sounds.instance.playSound("snd_air_addToWorld");
 				}
-				if (this->container->getOpacity() < 1)
+				if (this->container->getAlpha() < 1)
 				{
-					this->container->setOpacity(this->container->getOpacity() + 0.2);
-					this->setPositionY(this->getPositionY() + 40);
+					this->container->setAlpha(this->container->getAlpha() + 0.2);
+					this->setPositionY(this->getPositionY() - 40);
 					//this->y = this->y + 40;
 				}
 				else
@@ -213,19 +256,15 @@ namespace engine
 						this->container->dust2->setVisible(true);
 						this->setPositionY(this->this_pt.y);
 						//this->y = this->this_pt.y;
-						this->container->setOpacity(1);
+						this->container->setAlpha(1);
 					}
 					if (this->cameraJitterCounter <= 0)
 					{
 						if (this->cameraJitterCounter == 0)
 						{
 							this->cameraJitterCounter = -1;
-							this->world->setPosition(Vec2(0, 0));
-							//this->world->y = 0;
-							//this->world->x = 0; 
-							this->world->worldInterface->setPosition(Vec2(0, 0));
-							//this->world->worldInterface.y = 0;
-							//this->world->worldInterface.x = 0;
+							this->world->setPosition(Vec2(0, 0)); 
+							this->world->worldInterface->setPosition(Vec2(0, 0)); 
 							this->openFlag = false;
 							//this->world->decoration->earthquakeFlag = true;
 							this->shoot_pt = this->container->cont->convertToWorldSpace(this->container->cont->getPosition());
@@ -270,31 +309,7 @@ namespace engine
 					}
 				}
 			}
-			if (this->container->dust1->isVisible())
-			{
-				if (this->container->dust1->currentFrame < 47)
-				{
-					this->container->dust1->gotoAndStop(this->container->dust1->currentFrame++);
-				}
-				else
-				{
-					this->container->dust1->gotoAndStop(1);
-					this->container->dust1->setVisible(false);
-				}
-			}
-			if (this->container->dust2->isVisible())
-			{
-				if (this->container->dust2->currentFrame < 47)
-				{
-					this->container->dust2->gotoAndStop(this->container->dust2->currentFrame++);
-				}
-				else
-				{
-					//this->container->dust2->currentFrame = 1;
-					this->container->dust2->gotoAndStop(1);
-					this->container->dust2->setVisible(false);
-				}
-			}
+			
 			return;
 		} // end function
 
@@ -453,21 +468,8 @@ namespace engine
 				this->dead = true;
 				this->world->removeChild(this);
 				this->world->removeClasses(this);
-				 
-				//	  this->i = 0;
-				//	  while (this->i < this->world->listOfIndexes1.length)
-				//	    {
-				//	      if (this->world->listOfIndexes1[this->i] == this)
-				//		{
-				//		  this->world->listOfIndexes1.splice (this->i, 1);
-				//		  break;
-				//		}
-				//	      i++;
-				//	    }
-				//                this->world->y = 0;
-				//                this->world->x = 0;
-				//                this->world->worldInterface.y = 0;
-				//                this->world->worldInterface.x = 0;
+				this->world->setPosition(Vec2(0,0) ); 
+				this->world->worldInterface->setPosition(Vec2(0, 0)); 
 				if (this->world->selectObject == this)
 				{
 					this->world->worldInterface->barInfoManage();

@@ -209,9 +209,9 @@ namespace engine
 
 		this->addChild(this->castMask);
 		this->world->forseIndexFl = true;
-		this->blockCastGolem = true;
-		this->blockCastIceman = true;
-		this->blockCastAir = true;
+		//this->blockCastGolem = true;
+		//this->blockCastIceman = true;
+		//this->blockCastAir = true;
 		return true;
 	};
 

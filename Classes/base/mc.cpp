@@ -40,7 +40,7 @@ namespace engine
 		string aniName = _aniName;
 		if (aniName == "")aniName = defAniName;
 		this->getAnimation()->stop(aniName);
-        this->inPlay = true;
+        this->inPlay = false;
     }
 	void MC::play(int times)
 	{
@@ -1232,7 +1232,8 @@ namespace engine
 					display->setName(slotName);
 				else if (this->slot->_displayData)
 					display->setName(this->slot->_displayData->name);
-				display->setVisible(visible);
+				if(ISTYPE(MovieClipSub,this) || ISTYPE(MCMask, this))
+					display->setVisible(visible);
 				if (!ISTYPE(MovieClip, this))
 					display->addChild(thsi, 9999);
 				return true;
@@ -1257,7 +1258,8 @@ namespace engine
 					display->setName(this->slot->_displayData->name);
 				if (!ISTYPE(MovieClip, this))
 					thsi->release();
-				display->setVisible(visible);
+				if (ISTYPE(MovieClipSub, this) || ISTYPE(MCMask, this))
+					display->setVisible(visible);
 				if (ISTYPE(MovieClip, this))
 					thsi->removeAllChildren();
 				else

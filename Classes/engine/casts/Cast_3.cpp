@@ -151,7 +151,7 @@ namespace engine{
                             {
                                 if (map[i].x == map[(i - 1)].x)
                                 {
-                                    if (map[i].y >= map[(i - 1)].y)
+                                    if (map[i].y <= map[(i - 1)].y)
                                     {
                                         j = map[(i - 1)].y;
                                         while (j < map[i].y)

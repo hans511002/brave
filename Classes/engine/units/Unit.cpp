@@ -592,10 +592,14 @@ namespace engine
 					this->iceEffectCounter--;
 					if (this->container->iceEffect->currentFrame < this->container->iceEffect->totalFrames)
 					{
-						this->container->iceEffect->gotoAndStop((this->container->iceEffect->currentFrame + 1));
+						this->container->iceEffect->currentFrame++;
+						if (!this->container->iceEffect->isPlay()) 
+							this->container->iceEffect->play(1);
+						//this->container->iceEffect->gotoAndStop((this->container->iceEffect->currentFrame + 1));
 					}
 					else
 					{
+						this->container->iceEffect->currentFrame=16;
 						this->container->iceEffect->gotoAndStop(16);
 					}
 				}
@@ -603,10 +607,14 @@ namespace engine
 				{
 					if (this->container->iceEffect->currentFrame < this->container->iceEffect->totalFrames)
 					{
-						this->container->iceEffect->gotoAndStop((this->container->iceEffect->currentFrame + 1));
+						this->container->iceEffect->currentFrame++;
+						if (!this->container->iceEffect->isPlay())
+							this->container->iceEffect->play(1);
+						//this->container->iceEffect->gotoAndStop((this->container->iceEffect->currentFrame + 1));
 					}
 					else
 					{
+						this->container->iceEffect->currentFrame = 16;
 						this->container->iceEffect->gotoAndStop(16);
 					}
 				}
@@ -856,7 +864,8 @@ namespace engine
 			{
 				if (!this->container->iceFreez->isVisible())
 				{
-					this->container->iceFreez->setVisible(true);
+					this->container->iceFreez->setVisible(true); 
+					printNodePos(this->container->iceFreez);
 					this->container->iceFreez->gotoAndStop(1);
 					this->stopAllEffects("fireEffect");
 					this->stopAllEffects("iceEffect");
