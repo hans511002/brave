@@ -241,7 +241,7 @@ namespace engine
 		{
 			if (this->containerChange->getAlpha() > 0)
 			{
-				this->containerChange->setOpacity(this->containerChange->getAlpha() - 0.1);
+				this->containerChange->setAlpha(this->containerChange->getAlpha() - 0.1);
 				container->setAlpha(container->getAlpha() *(1 + 0.1));
 			}
 			else

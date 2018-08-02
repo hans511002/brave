@@ -190,7 +190,7 @@ namespace engine
                     tempObject->moveFlag = false;
                     tempObject->setPosition(this->getPosition());// x = this->x;
                     //tempObject.y = this->y;
-					tempObject->setOpacity(0);// alpha = 0;
+					tempObject->setAlpha(0);// alpha = 0;
                     i++;
                 }
             }

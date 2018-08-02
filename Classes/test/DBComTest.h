@@ -130,10 +130,10 @@ protected:
 				tower->sphere1->play(0);
 			if (((currentFrame / 100 ) %4+1) != tower->sphere1Bullet->currentFrame) {
 				tower->sphere1Bullet->gotoAndStop((currentFrame / 100) % 4 + 1);
-				if (!tower->sphere1BulletCont->isPlay())
-					tower->sphere1BulletCont->play(1); 
+				//if (!tower->sphere1BulletCont->isPlay())
+				//	tower->sphere1BulletCont->play(1); 
 			}
-
+			tower->sphere1BulletCont->tryPlay();
 		}
 
 	}

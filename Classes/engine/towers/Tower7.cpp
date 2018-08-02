@@ -284,7 +284,7 @@ namespace engine
 					container->addChild(this->ballAnima,2);
 					//container->addChild(this->ballAnima, (container->getChildIndex(container->cont2) + 1));
                 }
-                else if (this->ballAnima->getOpacity() < 1)
+                else if (this->ballAnima->getAlpha() < 1)
                 {
 					this->ballAnima->setAlpha(this->ballAnima->getAlpha() + 0.1);
                     container->cont2->setAlpha(container->cont2->getAlpha() - 0.1);

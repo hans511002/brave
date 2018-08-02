@@ -57,7 +57,7 @@ namespace engine
                 this_pt = this->myPortal->myPoint;
 				this->setPosition(this_pt);
 				//container->setVisible(false);
-				container->setOpacity(0);//container->alpha = 0;
+				container->setAlpha(0);//container->alpha = 0;
 
                 this->setMouseChildren(false);
                 this->setMouseEnabled(false);
@@ -115,9 +115,9 @@ namespace engine
                                 this->portalAnima->gotoAndStop((this->portalAnima->currentFrame + 1));
                                 if (this->portalAnima->currentFrame > 8)
                                 {
-                                    if (container->getOpacity() < 1)
+                                    if (container->getAlpha() < 1)
                                     {
-                                        container->setOpacity(container->getOpacity()* 1.1);
+                                        container->setAlpha(container->getAlpha()* 1.1);
                                     }
                                 }
                             }
@@ -134,7 +134,7 @@ namespace engine
                         this->myPortal->myStack.splice(0, 1);
                         this->removeChild(this->portalAnima);
                         this->portalAnima = NULL;
-                        container->setOpacity(255);
+                        container->setAlpha(1);
                         this->setMouseChildren(true);
                         this->setMouseEnabled(true);
                         readyDamage = true;

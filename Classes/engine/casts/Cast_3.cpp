@@ -151,7 +151,7 @@ namespace engine{
                             {
                                 if (map[i].x == map[(i - 1)].x)
                                 {
-                                    if (map[i].y <= map[(i - 1)].y)
+                                    if (map[i].y >= map[(i - 1)].y)
                                     {
                                         j = map[(i - 1)].y;
                                         while (j < map[i].y)
@@ -163,8 +163,8 @@ namespace engine{
                                                 {
                                                     tempObject1 = tempObject2;
                                                     tempObject3 = cocos2d::Point(map[i].x, j);
-                                                    this->direction = "down";
-                                                    container->down->setVisible(true);
+                                                    this->direction = "up";
+                                                    container->up->setVisible(true);
                                                 }
                                             }
                                             j = j + 5;
@@ -182,8 +182,8 @@ namespace engine{
                                                 {
                                                     tempObject1 = tempObject2;
                                                     tempObject3 = cocos2d::Point(map[i].x, j);
-                                                    this->direction = "up";
-                                                    container->up->setVisible(true);
+                                                    this->direction = "down";
+                                                    container->down->setVisible(true);
                                                 }
                                             }
                                             j = j - 5;

@@ -125,50 +125,7 @@ namespace engine
 		} // end function
 
 		void Air::update(float dt)
-		{
-			if (this->container->dust1->isVisible())
-			{
-				this->container->dust1->currentFrame++;
-				if (!this->container->dust1->isPlay() && this->container->dust1->currentFrame < 5)
-				{
-					this->container->dust1->play(1);
-				}
-				else {
-					this->container->dust1->gotoAndStop(1);
-					this->container->dust1->setVisible(false);
-				}
-				//if (this->container->dust1->currentFrame < 47)
-				//{
-				//	this->container->dust1->gotoAndStop(this->container->dust1->currentFrame++);
-				//}
-				//else
-				//{
-				//	this->container->dust1->gotoAndStop(1);
-				//	this->container->dust1->setVisible(false);
-				//}
-			}
-			if (this->container->dust2->isVisible())
-			{
-				this->container->dust2->currentFrame++;
-				if (!this->container->dust2->isPlay() && this->container->dust2->currentFrame < 5)
-				{
-					this->container->dust2->play(1);
-				}
-				else {
-					this->container->dust2->gotoAndStop(1);
-					this->container->dust2->setVisible(false);
-				}
-				//if (this->container->dust2->currentFrame < 47)
-				//{
-				//	this->container->dust2->gotoAndStop(this->container->dust2->currentFrame++);
-				//}
-				//else
-				//{
-				//	//this->container->dust2->currentFrame = 1;
-				//	this->container->dust2->gotoAndStop(1);
-				//	this->container->dust2->setVisible(false);
-				//}
-			}
+		{ 
 			if (!this->openFlag)
 			{
 				if (this->voiceCounter > 0)
@@ -309,7 +266,66 @@ namespace engine
 					}
 				}
 			}
-			
+			if (!this->dead)
+			{
+				if (this->container->dust1->isVisible())
+				{
+					this->container->dust1->tryPlay();
+					if(this->container->dust1->currentFrame== this->container->dust1->totalFrames)
+					{
+							this->container->dust1->gotoAndStop(1);
+							this->container->dust1->setVisible(false);
+						}
+					//this->container->dust1->currentFrame++;
+					//if (!this->container->dust1->isPlay() && this->container->dust1->currentFrame < 5)
+					//{
+					//	this->container->dust1->play(1);
+					//}
+					//else {
+					//	this->container->dust1->gotoAndStop(1);
+					//	this->container->dust1->setVisible(false);
+					//}
+
+					//if (this->container->dust1->currentFrame < 47)
+					//{
+					//	this->container->dust1->gotoAndStop(this->container->dust1->currentFrame++);
+					//}
+					//else
+					//{
+					//	this->container->dust1->gotoAndStop(1);
+					//	this->container->dust1->setVisible(false);
+					//}
+				}
+				if (this->container->dust2->isVisible())
+				{
+					this->container->dust2->tryPlay();
+					if (this->container->dust2->currentFrame == this->container->dust2->totalFrames)
+					{
+						this->container->dust2->gotoAndStop(1);
+						this->container->dust2->setVisible(false);
+					}
+					//this->container->dust2->currentFrame++;
+					//if (!this->container->dust2->isPlay() && this->container->dust2->currentFrame < 5)
+					//{
+					//	this->container->dust2->play(1);
+					//}
+					//else {
+					//	this->container->dust2->gotoAndStop(1);
+					//	this->container->dust2->setVisible(false);
+					//}
+
+					//if (this->container->dust2->currentFrame < 47)
+					//{
+					//	this->container->dust2->gotoAndStop(this->container->dust2->currentFrame++);
+					//}
+					//else
+					//{
+					//	//this->container->dust2->currentFrame = 1;
+					//	this->container->dust2->gotoAndStop(1);
+					//	this->container->dust2->setVisible(false);
+					//}
+				}
+			}
 			return;
 		} // end function
 
@@ -384,10 +400,16 @@ namespace engine
 			}
 			else if (this->container->cont->currentFrame < 47)
 			{
-				this->container->cont->currentFrame++;
-				this->container->cont->gotoAndStop(this->container->cont->currentFrame);
-				this->container->contBlowing->currentFrame++; // 				this->container->contBlowing->currentFrame++;
-				this->container->contBlowing->gotoAndStop(this->container->contBlowing->currentFrame); // 				this->container->contBlowing->gotoAndStop(this->container->contBlowing->currentFrame);
+				
+				this->container->cont->tryPlay();
+				//this->container->cont->gotoAndStop(this->container->cont->currentFrame);
+
+				this->container->contBlowing->tryPlay();
+				//this->container->contBlowing->currentFrame++; // 				this->container->contBlowing->currentFrame++;
+				//if (!this->container->contBlowing->isPlay()) {
+				//	this->container->contBlowing->play(1);
+				//}
+				//this->container->contBlowing->gotoAndStop(this->container->contBlowing->currentFrame); // 				this->container->contBlowing->gotoAndStop(this->container->contBlowing->currentFrame);
 				if (this->container->cont->currentFrame == 2)
 				{
 					//Sounds.instance.playSoundWithVol("snd_air_blow", 0.65);

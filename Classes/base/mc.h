@@ -32,6 +32,9 @@ namespace engine
 		virtual  void nextFram();
         virtual void play(const string &  aniName = "", int times = 1);
 		virtual void play(int times);
+		virtual bool tryPlay();
+		virtual bool isPlayEnd();
+
         virtual void stop(const string &  aniName = "");
         inline virtual	dragonBones::Armature *getArmature()=0;
         virtual dragonBones::Animation *getAnimation()  = 0;

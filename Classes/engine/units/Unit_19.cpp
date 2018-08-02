@@ -15,7 +15,7 @@ namespace engine
 		{
 			typeUnit = 19;
 			this->hiddenFlag = true;
-			this->setOpacity(255 * 0.5);
+			this->setAlpha( 0.5);
 			readyDamage = false;
 			this->invisibleTimer = Main::mainClass->readXMLClass.listOfEnemiesXML[(typeUnit - 1)][30];
 			this->visibleTimer = Main::mainClass->readXMLClass.listOfEnemiesXML[(typeUnit - 1)][31];
@@ -642,7 +642,7 @@ namespace engine
 					container->signal->setVisible(false);
 					this->visibleCounter = 0;
 					this->hiddenFlag = true;
-					this->setOpacity(255 * 0.5);
+					this->setAlpha( 0.5);
 				}
 			}
 			Unit::animationHandler();

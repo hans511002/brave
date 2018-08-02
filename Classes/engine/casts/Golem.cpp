@@ -291,8 +291,8 @@ namespace engine{
                 this->moveHandler();
                 this->attack();
             }
-            else if (this->container->getOpacity() < 1) {
-    			this->container->setOpacity(this->container->getOpacity() + 0.1);
+            else if (this->container->getAlpha() < 1) {
+    			this->container->setAlpha(this->container->getAlpha() + 0.1);
     			this->setPositionY(this->getPositionY() + 20);
 			    //this->y = this->y + 20;
 		    }
@@ -300,7 +300,7 @@ namespace engine{
             {
                 this->openFlag = false;
                 this->container->gotoAndStop(58);
-                this->container->setOpacity(1);
+                this->container->setAlpha(1);
                 this->container->dust1->setVisible(true);
                 this->container->dust2->setVisible(true) ;
                 //this->world->decoration->earthquakeFlag = true;

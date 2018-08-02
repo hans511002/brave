@@ -3,7 +3,7 @@
 
 namespace engine
 {
-    MC::MC() :currentFrame(0), totalFrames(0), inPlay(false), playTimes(-1), bindListenType(0)
+    MC::MC() :currentFrame(1), totalFrames(0), inPlay(false), playTimes(-1), bindListenType(0)
 	{
 	}
 
@@ -26,7 +26,8 @@ namespace engine
 		//if (this->getAnimation()->getLastAnimationName() != aniName)
   //          this->getAnimation()->gotoAndStopByFrame(aniName, currentFrame - 1);
   //      else 
-		    this->getAnimation()->gotoAndStopByFrame(aniName, currentFrame - 1);
+		this->inPlay = false;
+		this->getAnimation()->gotoAndStopByFrame(aniName, currentFrame - 1);
 	};
 	void MC::nextFram()
 	{
@@ -64,6 +65,21 @@ namespace engine
     {
         return inPlay;
     }
+	bool MC::tryPlay()
+	{
+		this->currentFrame++;
+		this->currentFrame = (currentFrame-1) % totalFrames + 1;
+		if (!this->inPlay)
+		{
+			this->play(1);
+			return this->inPlay;
+		}
+		return false;
+	}
+	bool MC::isPlayEnd()
+	{
+		return this->currentFrame == this->totalFrames;
+	}
     void MC::bindMovieListen(int type)
     {
         if(type == 1)
@@ -94,7 +110,6 @@ namespace engine
                     }
                 }
             }
-            inPlay = false;
         }
     };
     void MC::completeHandler(cocos2d::EventCustom *event)
@@ -474,10 +489,14 @@ namespace engine
 		this->mcs.push(mcs);
 	};
 	void MovieClip::destroy()
-	{
+	{ 
+		this->container->getEventDispatcher()->removeAllEventListeners();
+		//this->container->getEventDispatcher()->removeCustomEventListeners(dragonBones::EventObject::COMPLETE);
 		int l = this->mcs.size();
 		for (int i = l - 1; i >= 0; i--)
 		{
+			if(this->mcs[i]->container)
+				this->mcs[i]->container->getEventDispatcher()->removeCustomEventListeners(dragonBones::EventObject::COMPLETE);
 			delete this->mcs[i];
 			this->mcs[i] = NULL;
 		}
@@ -485,6 +504,10 @@ namespace engine
 		l = this->mcbs.size();
 		for (int i = l - 1; i >= 0; i--)
 		{
+			MovieClipSub * _mcs=ISTYPE(MovieClipSub, mcbs[i]);
+			if(_mcs && _mcs->container)
+				_mcs->container->getEventDispatcher()->removeAllEventListeners();
+				//ISTYPE(MovieClipSub, mcbs[i])->container->getEventDispatcher()->removeCustomEventListeners(dragonBones::EventObject::COMPLETE);
 			if (ISTYPE(Node, this->mcbs[i]))
 				ISTYPE(Node, this->mcbs[i])->release();
 			else
