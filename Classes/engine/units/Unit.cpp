@@ -933,7 +933,7 @@ namespace engine
 						this->container->iceDeath->tryPlay(); 
 					}
 					else if (this->container->getAlpha() > 0)
-						this->container->setAlpha(this->container->getAlpha() - 0.25 * this->container->getAlpha());
+						this->container->setAlpha(this->container->getAlpha() - 0.25  );
 					else
 						this->removeUnitAfterDeathAnima();
 				}
@@ -959,7 +959,7 @@ namespace engine
 							this->container->cont->setVisible(false);
 					}
 					else if (this->container->getAlpha() > 0)
-						this->container->setAlpha(this->container->getAlpha() - 0.25 * this->container->getAlpha());
+						this->container->setAlpha(this->container->getAlpha() - 0.25);
 					else
 						this->removeUnitAfterDeathAnima();
 				}
