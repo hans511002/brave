@@ -926,11 +926,11 @@ namespace engine
 			{
 				if (this->container->iceDeath->isVisible())
 				{ 
-					this->container->iceDeath->tryPlay(); 
 					if (this->container->iceDeath->currentFrame < this->container->iceDeath->totalFrames)
 					{ 
 						if (this->container->iceDeath->currentFrame == 9)
 							this->container->cont->setVisible(false);
+						this->container->iceDeath->tryPlay(); 
 					}
 					else if (this->container->getAlpha() > 0)
 						this->container->setAlpha(this->container->getAlpha() - 0.25 * this->container->getAlpha());

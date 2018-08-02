@@ -3,7 +3,7 @@
 
 namespace engine
 {
-    MC::MC() :currentFrame(1), totalFrames(0), inPlay(false), playTimes(-1), bindListenType(0)
+    MC::MC() :currentFrame(0), totalFrames(0), inPlay(false), playTimes(-1), bindListenType(0)
 	{
 	}
 
