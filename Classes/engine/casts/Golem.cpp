@@ -171,35 +171,32 @@ namespace engine{
                 {
                     if (this->container->currentFrame < 28)
                     {
-                        this->container->currentFrame++;
-                        this->container->gotoAndStop((this->container->currentFrame + 1));
+                        this->container->tryPlay();
+                        //this->container->gotoAndStop((this->container->currentFrame + 1));
                     }
                     else
-                    {
-                        this->container->currentFrame=1;
+                    { 
                         this->container->gotoAndStop(1);
                     }
                 }
                 else if (this->container->currentFrame < 56)
                 {
-                    this->container->currentFrame++;
-                    this->container->gotoAndStop((this->container->currentFrame + 1));
+                    this->container->tryPlay();
+                    //this->container->gotoAndStop((this->container->currentFrame + 1));
                 }
                 else
-                {
-                    this->container->currentFrame=1;
+                { 
                     this->container->gotoAndStop(29);
                 }
 				if (this->container->dust1->isVisible())
                 {
                     if (this->container->dust1->currentFrame < this->container->dust1->totalFrames)
                     {
-                        this->container->dust1->currentFrame++;
-                        this->container->dust1->gotoAndStop((this->container->dust1->currentFrame));
+                        this->container->dust1->tryPlay();
+                        //this->container->dust1->gotoAndStop(this->container->dust1->currentFrame+1);
                     }
                     else
-                    {
-                        this->container->dust1->currentFrame=1;
+                    { 
                         this->container->dust1->gotoAndStop(1);
                         this->container->dust1->setVisible(false);
                     }
@@ -208,12 +205,11 @@ namespace engine{
                 {
                     if (this->container->dust2->currentFrame < this->container->dust2->totalFrames)
                     {
-                        this->container->dust2->currentFrame++;
-                        this->container->dust2->gotoAndStop(this->container->dust2->currentFrame);
+                        this->container->dust2->tryPlay();
+                        //this->container->dust2->gotoAndStop(this->container->dust2->currentFrame+1);
                     }
                     else
-                    {
-                        this->container->dust2->currentFrame=1;
+                    { 
                         this->container->dust2->gotoAndStop(1);
                         this->container->dust2->setVisible(false);
                     }

@@ -153,7 +153,8 @@ namespace engine
                         i = 0;
                         while (i < this->listOfTeleportUnits.size())
                         {
-                            this->listOfTeleportUnits[i]->teleportAnima->gotoAndStop((this->listOfTeleportUnits[i]->teleportAnima->currentFrame + 1));
+                            this->listOfTeleportUnits[i]->teleportAnima->tryPlay();
+				            //this->listOfTeleportUnits[i]->teleportAnima->gotoAndStop((this->listOfTeleportUnits[i]->teleportAnima->currentFrame + 1));
                             this->listOfTeleportUnits[i]->container->alpha = this->listOfTeleportUnits[i]->container->alpha - 0.1;
                             i++;
                         }
@@ -255,7 +256,8 @@ namespace engine
                         i = 0;
                         while (i < this->listOfTeleportUnits.size())
                         {
-                            this->listOfTeleportUnits[i]->teleportAnima->gotoAndStop((this->listOfTeleportUnits[i]->teleportAnima->currentFrame + 1));
+                            this->listOfTeleportUnits[i]->teleportAnima->tryPlay();
+				            //this->listOfTeleportUnits[i]->teleportAnima->gotoAndStop((this->listOfTeleportUnits[i]->teleportAnima->currentFrame + 1));
                             this->listOfTeleportUnits[i]->container->alpha = this->listOfTeleportUnits[i]->container->alpha + 0.1;
                             i++;
                         }
@@ -297,7 +299,8 @@ namespace engine
                     {
                         if (container->contMcs->currentFrame < 8)
                         {
-                            container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
+                            container->contMcs->tryPlay();
+				            //container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
                         }
                         else
                         {
@@ -313,7 +316,8 @@ namespace engine
                 {
                     if (container->contMcs->currentFrame < container->contMcs->totalFrames)
                     {
-                        container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
+                        container->contMcs->tryPlay();
+				        //container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
                     }
                     else
                     {
@@ -332,7 +336,8 @@ namespace engine
                         {
                             if (container->cont->currentFrame < container->cont->totalFrames)
                             {
-                                container->cont->gotoAndStop((container->cont->currentFrame + 1));
+                                container->cont->tryPlay();
+				                //container->cont->gotoAndStop((container->cont->currentFrame + 1));
                             }
                             else
                             {
@@ -341,7 +346,8 @@ namespace engine
                         }
                         else if (container->cont->currentFrame < 16)
                         {
-                            container->cont->gotoAndStop((container->cont->currentFrame + 1));
+                            container->cont->tryPlay();
+				            //container->cont->gotoAndStop((container->cont->currentFrame + 1));
                         }
                         else
                         {
@@ -355,7 +361,8 @@ namespace engine
                     {
                         if (container->cont->currentFrame < container->cont->totalFrames)
                         {
-                            container->cont->gotoAndStop((container->cont->currentFrame + 1));
+                            container->cont->tryPlay();
+				            //container->cont->gotoAndStop((container->cont->currentFrame + 1));
                         }
                         else
                         {
@@ -364,7 +371,8 @@ namespace engine
                     }
                     else if (container->cont->currentFrame < 16)
                     {
-                        container->cont->gotoAndStop((container->cont->currentFrame + 1));
+                        container->cont->tryPlay();
+				        //container->cont->gotoAndStop((container->cont->currentFrame + 1));
                     }
                     else
                     {

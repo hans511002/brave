@@ -275,7 +275,7 @@ namespace engine
 					{
 							this->container->dust1->gotoAndStop(1);
 							this->container->dust1->setVisible(false);
-						}
+					}
 					//this->container->dust1->currentFrame++;
 					//if (!this->container->dust1->isPlay() && this->container->dust1->currentFrame < 5)
 					//{

@@ -31,7 +31,8 @@ namespace engine
             Bullet::update();
             if (container->currentFrame < container->totalFrames)
             {
-                container->gotoAndStop((container->currentFrame + 1));
+                container->tryPlay();
+			    //container->gotoAndStop((container->currentFrame + 1));
                 if (container->currentFrame == 4) 
                 {
                     i = world->listOfUnits.size()- 1;

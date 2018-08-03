@@ -63,11 +63,13 @@ namespace engine
 						}
 						else if(container->contMcs->currentFrame < 9)
 						{
-							container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
+							container->contMcs->tryPlay();
+				            //container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
 						}
 						if(container->cont->currentFrame > 24)
 						{
-							container->cont->gotoAndStop((container->cont->currentFrame + 1));
+							container->cont->tryPlay();
+				            //container->cont->gotoAndStop((container->cont->currentFrame + 1));
 							if(container->cont->getPositionX() >= -1 && container->cont->getPositionX() <= 1
 							   && container->cont->getPositionY() >= -1 && container->cont->getPositionY() <= 1)
 							{
@@ -106,7 +108,8 @@ namespace engine
 						{
 							if(container->cont->currentFrame < 24)
 							{
-								container->cont->gotoAndStop((container->cont->currentFrame + 1));
+								container->cont->tryPlay();
+				                //container->cont->gotoAndStop((container->cont->currentFrame + 1));
 							}
 							else
 							{
@@ -150,7 +153,8 @@ namespace engine
 						}
 						if(container->cont->currentFrame < 25)
 						{
-							container->cont->gotoAndStop((container->cont->currentFrame + 1));
+							container->cont->tryPlay();
+				            //container->cont->gotoAndStop((container->cont->currentFrame + 1));
 							if(container->cont->getPositionX() >= -1 && container->cont->getPositionX() <= 1 && container->cont->getPositionY() >= -1 && container->cont->getPositionY() <= 1)
 							{
 								container->cont->gotoAndStop(25);
@@ -188,7 +192,8 @@ namespace engine
 						{
 							if(container->cont->currentFrame < container->cont->totalFrames)
 							{
-								container->cont->gotoAndStop((container->cont->currentFrame + 1));
+								container->cont->tryPlay();
+				            //container->cont->gotoAndStop((container->cont->currentFrame + 1));
 							}
 							else
 							{
@@ -243,11 +248,13 @@ namespace engine
 						}
 						else if(container->contMcs->currentFrame < 9)
 						{
-							container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
+							container->contMcs->tryPlay();
+				            //container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
 						}
 						if(container->cont->currentFrame < 25)
 						{
-							container->cont->gotoAndStop((container->cont->currentFrame + 1));
+							container->cont->tryPlay();
+				            //container->cont->gotoAndStop((container->cont->currentFrame + 1));
 							if(container->cont->getPositionX() >= -1 && container->cont->getPositionX() <= 1
 							   && container->cont->getPositionY() >= -1 && container->cont->getPositionY() <= 1)
 							{
@@ -286,7 +293,8 @@ namespace engine
 						{
 							if(container->cont->currentFrame < container->cont->totalFrames)
 							{
-								container->cont->gotoAndStop((container->cont->currentFrame + 1));
+								container->cont->tryPlay();
+				                //container->cont->gotoAndStop((container->cont->currentFrame + 1));
 							}
 							else
 							{
@@ -342,11 +350,13 @@ namespace engine
 					}
 					else if(container->contMcs->currentFrame < 9)
 					{
-						container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
+						container->contMcs->tryPlay();
+				        //container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
 					}
 					if(container->cont->currentFrame > 24)
 					{
-						container->cont->gotoAndStop((container->cont->currentFrame + 1));
+						container->cont->tryPlay();
+				        //container->cont->gotoAndStop((container->cont->currentFrame + 1));
 						if(container->cont->getPositionX() >= -1 && container->cont->getPositionX() <= 1
 						   && container->cont->getPositionY() >= -1 && container->cont->getPositionY() <= 1)
 						{
@@ -385,7 +395,8 @@ namespace engine
 					{
 						if(container->cont->currentFrame != 1 && container->cont->currentFrame < 24)
 						{
-							container->cont->gotoAndStop((container->cont->currentFrame + 1));
+							container->cont->tryPlay();
+				            //container->cont->gotoAndStop((container->cont->currentFrame + 1));
 						}
 						else if(container->cont->currentFrame != 1)
 						{
@@ -429,7 +440,8 @@ namespace engine
 					}
 					if(container->cont->currentFrame < 25)
 					{
-						container->cont->gotoAndStop((container->cont->currentFrame + 1));
+						container->cont->tryPlay();
+				        //container->cont->gotoAndStop((container->cont->currentFrame + 1));
 						if(container->cont->getPositionX() >= -1 && container->cont->getPositionX() <= 1
 						   && container->cont->getPositionY() >= -1 && container->cont->getPositionY() <= 1)
 						{
@@ -468,7 +480,8 @@ namespace engine
 					{
 						if(container->cont->currentFrame != 25 && container->cont->currentFrame < container->cont->totalFrames)
 						{
-							container->cont->gotoAndStop((container->cont->currentFrame + 1));
+							container->cont->tryPlay();
+				            //container->cont->gotoAndStop((container->cont->currentFrame + 1));
 						}
 						else if(container->cont->currentFrame != 25)
 						{
@@ -523,11 +536,13 @@ namespace engine
 					}
 					else if(container->contMcs->currentFrame < 9)
 					{
-						container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
+						container->contMcs->tryPlay();
+				        //container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
 					}
 					if(container->cont->currentFrame < 25)
 					{
-						container->cont->gotoAndStop((container->cont->currentFrame + 1));
+						container->cont->tryPlay();
+				        //container->cont->gotoAndStop((container->cont->currentFrame + 1));
 						if(container->cont->getPositionX() >= -1 && container->cont->getPositionX() <= 1
 						   && container->cont->getPositionY() >= -1 && container->cont->getPositionY() <= 1)
 						{
@@ -566,7 +581,8 @@ namespace engine
 					{
 						if(container->cont->currentFrame != 25 && container->cont->currentFrame < container->cont->totalFrames)
 						{
-							container->cont->gotoAndStop((container->cont->currentFrame + 1));
+							container->cont->tryPlay();
+				            //container->cont->gotoAndStop((container->cont->currentFrame + 1));
 						}
 						else if(container->cont->currentFrame != 25)
 						{
@@ -611,7 +627,8 @@ namespace engine
 				}
 				else if(container->signal->currentFrame < container->signal->totalFrames)
 				{
-					container->signal->gotoAndStop((container->signal->currentFrame + 1));
+					container->signal->tryPlay();
+				    //container->signal->gotoAndStop((container->signal->currentFrame + 1));
 				}
 				else
 				{
@@ -632,7 +649,8 @@ namespace engine
 				}
 				else if(container->signal->currentFrame < container->signal->totalFrames)
 				{
-					container->signal->gotoAndStop((container->signal->currentFrame + 1));
+					container->signal->tryPlay();
+				    //container->signal->gotoAndStop((container->signal->currentFrame + 1));
 				}
 				else
 				{

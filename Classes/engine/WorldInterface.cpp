@@ -263,7 +263,8 @@ namespace engine
 				{
 					if (this->container->fastCont->currentFrame < this->container->fastCont->totalFrames)
 					{
-						this->container->fastCont->gotoAndStop((this->container->fastCont->currentFrame + 1));
+						this->container->fastCont->tryPlay();
+					    //this->container->fastCont->gotoAndStop((this->container->fastCont->currentFrame + 1));
 					}
 					else
 					{
@@ -275,7 +276,8 @@ namespace engine
 			{
 				if (this->container->pause->currentFrame < (this->container->pause->totalFrames - 1))
 				{
-					this->container->pause->gotoAndStop((this->container->pause->currentFrame + 1));
+					this->container->pause->tryPlay();
+					//this->container->pause->gotoAndStop((this->container->pause->currentFrame + 1));
 				}
 				else
 				{
@@ -297,7 +299,8 @@ namespace engine
 			{
 				if (this->container->book->currentFrame < (this->container->book->totalFrames - 1))
 				{
-					this->container->book->gotoAndStop((this->container->book->currentFrame + 1));
+					this->container->book->tryPlay();
+					//this->container->book->gotoAndStop((this->container->book->currentFrame + 1));
 				}
 				else
 				{
@@ -308,7 +311,8 @@ namespace engine
 			{
 				if (this->container->book->currentFrame > 1 && this->container->book->currentFrame < this->container->book->totalFrames)
 				{
-					this->container->book->gotoAndStop((this->container->book->currentFrame - 1));
+					this->container->book->tryPlay();
+					//this->container->book->gotoAndStop((this->container->book->currentFrame - 1));
 				}
 				else
 				{
@@ -319,7 +323,8 @@ namespace engine
 			{
 				if (this->container->fireSphere->currentFrame < this->container->fireSphere->totalFrames)
 				{
-					this->container->fireSphere->gotoAndStop((this->container->fireSphere->currentFrame + 1));
+					this->container->fireSphere->tryPlay();
+					//this->container->fireSphere->gotoAndStop((this->container->fireSphere->currentFrame + 1));
 				}
 				else
 				{
@@ -330,7 +335,8 @@ namespace engine
 			{
 				if (this->container->iceSphere->currentFrame < this->container->iceSphere->totalFrames)
 				{
-					this->container->iceSphere->gotoAndStop((this->container->iceSphere->currentFrame + 1));
+					this->container->iceSphere->tryPlay();
+					//this->container->iceSphere->gotoAndStop((this->container->iceSphere->currentFrame + 1));
 				}
 				else
 				{
@@ -341,7 +347,8 @@ namespace engine
 			{
 				if (this->container->stoneSphere->currentFrame < this->container->stoneSphere->totalFrames)
 				{
-					this->container->stoneSphere->gotoAndStop((this->container->stoneSphere->currentFrame + 1));
+					this->container->stoneSphere->tryPlay();
+					//this->container->stoneSphere->gotoAndStop((this->container->stoneSphere->currentFrame + 1));
 				}
 				else
 				{
@@ -352,7 +359,8 @@ namespace engine
 			{
 				if (this->container->levinSphere->currentFrame < this->container->levinSphere->totalFrames)
 				{
-					this->container->levinSphere->gotoAndStop((this->container->levinSphere->currentFrame + 1));
+					this->container->levinSphere->tryPlay();
+					//this->container->levinSphere->gotoAndStop((this->container->levinSphere->currentFrame + 1));
 				}
 				else
 				{
@@ -365,7 +373,8 @@ namespace engine
 				{
 					if (this->container->getAllFire->currentFrame < this->container->getAllFire->totalFrames)
 					{
-						this->container->getAllFire->gotoAndStop((this->container->getAllFire->currentFrame + 1));
+						this->container->getAllFire->tryPlay();
+					    //this->container->getAllFire->gotoAndStop((this->container->getAllFire->currentFrame + 1));
 					}
 					else
 					{
@@ -373,7 +382,8 @@ namespace engine
 					}
 					if (this->container->getAllIce->currentFrame < this->container->getAllIce->totalFrames)
 					{
-						this->container->getAllIce->gotoAndStop((this->container->getAllIce->currentFrame + 1));
+						this->container->getAllIce->tryPlay();
+					    //this->container->getAllIce->gotoAndStop((this->container->getAllIce->currentFrame + 1));
 					}
 					else
 					{
@@ -381,7 +391,8 @@ namespace engine
 					}
 					if (this->container->getAllStone->currentFrame < this->container->getAllStone->totalFrames)
 					{
-						this->container->getAllStone->gotoAndStop((this->container->getAllStone->currentFrame + 1));
+						this->container->getAllStone->tryPlay();
+					    //this->container->getAllStone->gotoAndStop((this->container->getAllStone->currentFrame + 1));
 					}
 					else
 					{
@@ -389,7 +400,8 @@ namespace engine
 					}
 					if (this->container->getAllLevin->currentFrame < this->container->getAllLevin->totalFrames)
 					{
-						this->container->getAllLevin->gotoAndStop((this->container->getAllLevin->currentFrame + 1));
+						this->container->getAllLevin->tryPlay();
+					    //this->container->getAllLevin->gotoAndStop((this->container->getAllLevin->currentFrame + 1));
 					}
 					else
 					{
@@ -401,7 +413,8 @@ namespace engine
 			{
 				if (this->container->startWaves->currentFrame < 10)
 				{
-					this->container->startWaves->gotoAndStop((this->container->startWaves->currentFrame + 1));
+					this->container->startWaves->tryPlay();
+					//this->container->startWaves->gotoAndStop((this->container->startWaves->currentFrame + 1));
 				}
 				else
 				{
@@ -412,7 +425,8 @@ namespace engine
 			{
 				if (this->container->startWaves->currentFrame < 20)
 				{
-					this->container->startWaves->gotoAndStop((this->container->startWaves->currentFrame + 1));
+					this->container->startWaves->tryPlay();
+					//this->container->startWaves->gotoAndStop((this->container->startWaves->currentFrame + 1));
 				}
 				else
 				{
@@ -635,7 +649,8 @@ namespace engine
 				{
 					if (this->container->fireBacklight->currentFrame < this->container->fireBacklight->totalFrames)
 					{
-						this->container->fireBacklight->gotoAndStop((this->container->fireBacklight->currentFrame + 1));
+						this->container->fireBacklight->tryPlay();
+						//this->container->fireBacklight->gotoAndStop((this->container->fireBacklight->currentFrame + 1));
 					}
 					else if (!this->container->fireBacklightTurnFlag)
 					{
@@ -651,7 +666,8 @@ namespace engine
 				{
 					if (this->container->iceBacklight->currentFrame < this->container->iceBacklight->totalFrames)
 					{
-						this->container->iceBacklight->gotoAndStop((this->container->iceBacklight->currentFrame + 1));
+						this->container->iceBacklight->tryPlay();
+						//this->container->iceBacklight->gotoAndStop((this->container->iceBacklight->currentFrame + 1));
 					}
 					else if (!this->container->iceBacklightTurnFlag)
 					{
@@ -666,7 +682,8 @@ namespace engine
 				{
 					if (this->container->stoneBacklight->currentFrame < this->container->stoneBacklight->totalFrames)
 					{
-						this->container->stoneBacklight->gotoAndStop((this->container->stoneBacklight->currentFrame + 1));
+						this->container->stoneBacklight->tryPlay();
+						//this->container->stoneBacklight->gotoAndStop((this->container->stoneBacklight->currentFrame + 1));
 					}
 					else if (!this->container->stoneBacklightTurnFlag)
 					{
@@ -681,7 +698,8 @@ namespace engine
 				{
 					if (this->container->levinBacklight->currentFrame < this->container->levinBacklight->totalFrames)
 					{
-						this->container->levinBacklight->gotoAndStop((this->container->levinBacklight->currentFrame + 1));
+					    this->container->levinBacklight->tryPlay();
+						//this->container->levinBacklight->gotoAndStop((this->container->levinBacklight->currentFrame + 1));
 					}
 					else if (!this->container->levinBacklightTurnFlag)
 					{
@@ -744,7 +762,8 @@ namespace engine
 					{
 						if (this->listOfGetAhieve[this->i]->currentFrame < this->listOfGetAhieve[this->i]->totalFrames)
 						{
-							this->listOfGetAhieve[this->i]->gotoAndStop((this->listOfGetAhieve[this->i]->currentFrame + 1));
+						    this->listOfGetAhieve[this->i]->tryPlay();
+							//this->listOfGetAhieve[this->i]->gotoAndStop((this->listOfGetAhieve[this->i]->currentFrame + 1));
 							std::setText(this->listOfGetAhieve[this->i]->boardNoteTXT, this->listOfGetAhieve[this->i]->myText);
 						}
 						else if (this->listOfGetAhieve[this->i]->counter > 0)
@@ -777,7 +796,8 @@ namespace engine
 				{
 					if (this->listOfAnimation[this->i]->currentFrame < this->listOfAnimation[this->i]->totalFrames)
 					{
-						this->listOfAnimation[this->i]->gotoAndStop((this->listOfAnimation[this->i]->currentFrame + 1));
+						this->listOfAnimation[this->i]->tryPlay();
+						//this->listOfAnimation[this->i]->gotoAndStop((this->listOfAnimation[this->i]->currentFrame + 1));
 					}
 					else
 					{
@@ -846,7 +866,8 @@ namespace engine
 				{
 					if (this->container->fast->currentFrame == 2 || this->container->fast->currentFrame == 5)
 					{
-						this->container->fast->gotoAndStop((this->container->fast->currentFrame + 1));
+						this->container->fast->tryPlay();
+						//this->container->fast->gotoAndStop((this->container->fast->currentFrame + 1));
 						//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 					}
 				}
@@ -1447,7 +1468,8 @@ namespace engine
 						{
 							tempObject = this->container->fastCont->currentFrame;
 						}
-						this->container->fast->gotoAndStop((this->container->fast->currentFrame + 1));
+						this->container->fast->tryPlay();
+						//this->container->fast->gotoAndStop((this->container->fast->currentFrame + 1));
 						if (this->container->fast->currentFrame == 5)
 						{
 							this->container->fastCont->gotoAndStop(tempObject);
@@ -1495,7 +1517,7 @@ namespace engine
 			{
 				if (this->container->pause->currentFrame == this->container->pause->totalFrames)
 				{
-					this->container->pause->gotoAndStop(this->container->pause->totalFrames);
+					this->container->pause->gotoAndStop(this->container->pause->totalFrames-1);
 				}
 				if (this->container->pauseOpenFlag)
 				{
@@ -1521,7 +1543,7 @@ namespace engine
 			{
 				if (this->container->book->currentFrame == this->container->book->totalFrames)
 				{
-					this->container->book->gotoAndStop(this->container->book->totalFrames);
+					this->container->book->gotoAndStop(this->container->book->totalFrames-1);
 				}
 				if (this->container->bookOpenFlag)
 				{
@@ -4244,9 +4266,7 @@ namespace engine
 		while (this->i >= 0)
 		{
 			MouseStatusMC * tempObject = this->listOfNewEnemies[this->i];
-			if (!tempObject->inPlay) {
-				tempObject->play(1);
-			}
+			tempObject->tryPlay(1);
 			//if (tempObject->currentFrame < tempObject->totalFrames)
 			//{
 			//	tempObject->gotoAndStop((tempObject->currentFrame + 1));

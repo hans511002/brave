@@ -79,7 +79,8 @@ namespace engine
 				{
 					if (container->currentFrame < container->totalFrames)
 					{
-						container->gotoAndStop((container->currentFrame + 1));
+						container->->tryPlay();
+                        //container->gotoAndStop((container->currentFrame + 1));
 					}
 					else
 					{
@@ -195,7 +196,8 @@ namespace engine
 				}
 				else if (container->shotAnima->currentFrame < container->shotAnima->totalFrames)
 				{
-					container->shotAnima->gotoAndStop((container->shotAnima->currentFrame + 1));
+					container->shotAnima->tryPlay();
+                    //container->shotAnima->gotoAndStop((container->shotAnima->currentFrame + 1));
 					if (container->shotAnima->currentFrame == 32)
 					{
 						//Sounds.instance.playSoundWithVol("snd_tower_firstShootUltraAdd1", 0.85);

@@ -101,7 +101,8 @@ namespace engine
                     {
                         if (container->sphereSlot1SphereAnimaCont->currentFrame < container->sphereSlot1SphereAnimaCont->totalFrames)
                         {
-                            container->sphereSlot1SphereAnimaCont->gotoAndStop((container->sphereSlot1SphereAnimaCont->currentFrame + 1));
+                            container->sphereSlot1SphereAnimaCont->tryPlay();
+					        //container->sphereSlot1SphereAnimaCont->gotoAndStop((container->sphereSlot1SphereAnimaCont->currentFrame + 1));
                         }
                         else
                         {
@@ -112,7 +113,8 @@ namespace engine
                     {
                         if (container->sphereSlot1SphereAnimaCont->currentFrame < container->sphereSlot1SphereAnimaCont->totalFrames)
                         {
-                            container->sphereSlot1SphereAnimaCont->gotoAndStop((container->sphereSlot1SphereAnimaCont->currentFrame + 1));
+                            container->sphereSlot1SphereAnimaCont->tryPlay();
+					        //container->sphereSlot1SphereAnimaCont->gotoAndStop((container->sphereSlot1SphereAnimaCont->currentFrame + 1));
                         }
                         else
                         {
@@ -123,7 +125,8 @@ namespace engine
                     {
                         if (container->sphereSlot1SphereAnimaCont->currentFrame < container->sphereSlot1SphereAnimaCont->totalFrames)
                         {
-                            container->sphereSlot1SphereAnimaCont->gotoAndStop((container->sphereSlot1SphereAnimaCont->currentFrame + 1));
+                            container->sphereSlot1SphereAnimaCont->tryPlay();
+					        //container->sphereSlot1SphereAnimaCont->gotoAndStop((container->sphereSlot1SphereAnimaCont->currentFrame + 1));
                         }
                         else
                         {
@@ -134,7 +137,8 @@ namespace engine
                     {
                         if (container->sphereSlot1SphereAnimaCont->currentFrame < container->sphereSlot1SphereAnimaCont->totalFrames)
                         {
-                            container->sphereSlot1SphereAnimaCont->gotoAndStop((container->sphereSlot1SphereAnimaCont->currentFrame + 1));
+                            container->sphereSlot1SphereAnimaCont->tryPlay();
+					        //container->sphereSlot1SphereAnimaCont->gotoAndStop((container->sphereSlot1SphereAnimaCont->currentFrame + 1));
                         }
                         else
                         {
@@ -148,7 +152,8 @@ namespace engine
                     {
                         if (container->sphereSlot2SphereAnimaCont->currentFrame < container->sphereSlot2SphereAnimaCont->totalFrames)
                         {
-                            container->sphereSlot2SphereAnimaCont->gotoAndStop((container->sphereSlot2SphereAnimaCont->currentFrame + 1));
+                            container->sphereSlot2SphereAnimaCont->tryPlay();
+					        //container->sphereSlot2SphereAnimaCont->gotoAndStop((container->sphereSlot2SphereAnimaCont->currentFrame + 1));
                         }
                         else
                         {
@@ -159,7 +164,8 @@ namespace engine
                     {
                         if (container->sphereSlot2SphereAnimaCont->currentFrame < container->sphereSlot2SphereAnimaCont->totalFrames)
                         {
-                            container->sphereSlot2SphereAnimaCont->gotoAndStop((container->sphereSlot2SphereAnimaCont->currentFrame + 1));
+                            container->sphereSlot2SphereAnimaCont->tryPlay();
+					        //container->sphereSlot2SphereAnimaCont->gotoAndStop((container->sphereSlot2SphereAnimaCont->currentFrame + 1));
                         }
                         else
                         {
@@ -170,7 +176,8 @@ namespace engine
                     {
                         if (container->sphereSlot2SphereAnimaCont->currentFrame < container->sphereSlot2SphereAnimaCont->totalFrames)
                         {
-                            container->sphereSlot2SphereAnimaCont->gotoAndStop((container->sphereSlot2SphereAnimaCont->currentFrame + 1));
+                            container->sphereSlot2SphereAnimaCont->tryPlay();
+					        //container->sphereSlot2SphereAnimaCont->gotoAndStop((container->sphereSlot2SphereAnimaCont->currentFrame + 1));
                         }
                         else
                         {
@@ -181,7 +188,8 @@ namespace engine
                     {
                         if (container->sphereSlot2SphereAnimaCont->currentFrame < container->sphereSlot2SphereAnimaCont->totalFrames)
                         {
-                            container->sphereSlot2SphereAnimaCont->gotoAndStop((container->sphereSlot2SphereAnimaCont->currentFrame + 1));
+                            container->sphereSlot2SphereAnimaCont->tryPlay();
+					        //container->sphereSlot2SphereAnimaCont->gotoAndStop((container->sphereSlot2SphereAnimaCont->currentFrame + 1));
                         }
                         else
                         {
@@ -223,7 +231,8 @@ namespace engine
                     }
                     else if (container->fastBuyUltraCont->currentFrame < container->fastBuyUltraCont->totalFrames)
                     {
-                        container->fastBuyUltraCont->gotoAndStop((container->fastBuyUltraCont->currentFrame + 1));
+                        container->fastBuyUltraCont->tryPlay();
+					    //container->fastBuyUltraCont->gotoAndStop((container->fastBuyUltraCont->currentFrame + 1));
                     }
                     else
                     {

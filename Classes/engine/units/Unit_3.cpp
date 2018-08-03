@@ -31,7 +31,8 @@ namespace engine
 					if (container->cont->currentFrame < 11)
 					{
 						if (container->cont->currentFrame < 10)
-							container->cont->gotoAndStop((container->cont->currentFrame + 1));
+							container->cont->tryPlay();
+				            //container->cont->gotoAndStop((container->cont->currentFrame + 1));
 						else
 							container->cont->gotoAndStop(1);
 					}
@@ -43,7 +44,8 @@ namespace engine
 				else if (container->cont->currentFrame > 10)
 				{
 					if (container->cont->currentFrame < container->cont->totalFrames)
-						container->cont->gotoAndStop((container->cont->currentFrame + 1));
+						container->cont->tryPlay();
+				        //container->cont->gotoAndStop((container->cont->currentFrame + 1));
 					else
 						container->cont->gotoAndStop(11);
 				}
@@ -52,12 +54,9 @@ namespace engine
 					container->cont->gotoAndStop(container->cont->currentFrame + 10);
 				}
 				if (moveFlag && !airFlag && !airShockFlag || container->currentFrame != 1)
-				{
-                    if(!this->container->isPlay())
-                    {
-                        this->container->play(1);
-                    }
-					//if (container->currentFrame < container->totalFrames)
+				{ 
+					this->container->tryPlay();
+				    //if (container->currentFrame < container->totalFrames)
 					//{
 					//	container->gotoAndStop((container->currentFrame + 1));
 					//}

@@ -249,7 +249,8 @@ namespace engine{
                 {
                     if (container->left->currentFrame < container->left->totalFrames)
                     {
-                        container->left->gotoAndStop((container->left->currentFrame + 1));
+                        container->left->tryPlay();
+			            //container->left->gotoAndStop((container->left->currentFrame + 1));
                     }
                     else
                     {
@@ -260,7 +261,8 @@ namespace engine{
                 {
                     if (container->right->currentFrame < container->right->totalFrames)
                     {
-                        container->right->gotoAndStop((container->right->currentFrame + 1));
+                        container->right->tryPlay();
+			            //container->right->gotoAndStop((container->right->currentFrame + 1));
                     }
                     else
                     {
@@ -271,7 +273,8 @@ namespace engine{
                 {
                     if (container->up->currentFrame < container->up->totalFrames)
                     {
-                        container->up->gotoAndStop((container->up->currentFrame + 1));
+                        container->up->tryPlay();
+			            //container->up->gotoAndStop((container->up->currentFrame + 1));
                     }
                     else
                     {
@@ -282,7 +285,8 @@ namespace engine{
                 {
                     if (container->down->currentFrame < container->down->totalFrames)
                     {
-                        container->down->gotoAndStop((container->down->currentFrame + 1));
+                        container->down->tryPlay();
+			            //container->down->gotoAndStop((container->down->currentFrame + 1));
                     }
                     else
                     {

@@ -195,7 +195,8 @@ namespace engine
 		{
 			if (this->listOfFlags[i]->currentFrame < this->listOfFlags[i]->totalFrames)
 			{
-				this->listOfFlags[i]->gotoAndStop((this->listOfFlags[i]->currentFrame + 1));
+				this->listOfFlags[i]->tryPlay();
+                //this->listOfFlags[i]->gotoAndStop((this->listOfFlags[i]->currentFrame + 1));
 			}
 			else
 			{
@@ -296,7 +297,8 @@ namespace engine
 				//}
 				if (this->levelAdditionally->currentFrame < this->levelAdditionally->totalFrames)
 				{
-					this->levelAdditionally->gotoAndStop((this->levelAdditionally->currentFrame + 1));
+					this->levelAdditionally1->tryPlay();
+                    //this->levelAdditionally->gotoAndStop((this->levelAdditionally->currentFrame + 1));
 				}
 				if (this->levelAdditionally->currentFrame == 182)
 				{
@@ -308,7 +310,8 @@ namespace engine
 			{
 				if (this->levelAdditionally1->currentFrame < this->levelAdditionally1->totalFrames)
 				{
-					this->levelAdditionally1->gotoAndStop((this->levelAdditionally1->currentFrame + 1));
+					this->levelAdditionally1->tryPlay();
+                    //this->levelAdditionally1->gotoAndStop((this->levelAdditionally1->currentFrame + 1));
 					if (this->levelAdditionally1->currentFrame == 90)
 					{
 						//Sounds.instance.playSound("snd_world_openRoad");

@@ -31,7 +31,8 @@ namespace engine
 					{
 						if(container->contMcs->currentFrame < 20)
 						{
-							container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
+							container->contMcs->tryPlay();
+					        //container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
 						}
 						else
 						{
@@ -47,7 +48,8 @@ namespace engine
 				{
 					if(container->contMcs->currentFrame < container->contMcs->totalFrames)
 					{
-						container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
+						container->contMcs->tryPlay();
+					    //container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
 					}
 					else
 					{
@@ -66,7 +68,8 @@ namespace engine
 						{
 							if(container->cont->currentFrame < container->cont->totalFrames)
 							{
-								container->cont->gotoAndStop((container->cont->currentFrame + 1));
+								container->cont->tryPlay();
+							    //container->cont->gotoAndStop((container->cont->currentFrame + 1));
 							}
 							else
 							{
@@ -75,7 +78,8 @@ namespace engine
 						}
 						else if(container->cont->currentFrame < 20)
 						{
-							container->cont->gotoAndStop((container->cont->currentFrame + 1));
+							container->cont->tryPlay();
+							//container->cont->gotoAndStop((container->cont->currentFrame + 1));
 						}
 						else
 						{
@@ -89,7 +93,8 @@ namespace engine
 					{
 						if(container->cont->currentFrame < 20)
 						{
-							container->cont->gotoAndStop((container->cont->currentFrame + 1));
+							container->cont->tryPlay();
+							//container->cont->gotoAndStop((container->cont->currentFrame + 1));
 						}
 						else
 						{
@@ -98,7 +103,8 @@ namespace engine
 					}
 					else if(container->cont->currentFrame < container->cont->totalFrames)
 					{
-						container->cont->gotoAndStop((container->cont->currentFrame + 1));
+						container->cont->tryPlay();
+					    //container->cont->gotoAndStop((container->cont->currentFrame + 1));
 					}
 					else
 					{

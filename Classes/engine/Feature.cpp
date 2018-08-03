@@ -507,14 +507,12 @@ namespace engine
 			}
 			if (tempObject->isVisible())
 			{
-				if(!tempObject->fireAnima->inPlay)
-					tempObject->fireAnima->play(1); 
+ 				tempObject->fireAnima->tryPlay(1); 
 				//if (tempObject->fireAnima->currentFrame < tempObject->fireAnima->totalFrames)
 				//	tempObject->fireAnima->gotoAndStop((tempObject->fireAnima->currentFrame + 1));
 				//else
-				//	tempObject->fireAnima->gotoAndStop(1);
-				if (!tempObject->eyesAnima->inPlay)
-					tempObject->eyesAnima->play(1);
+				//	tempObject->fireAnima->gotoAndStop(1); 
+				tempObject->eyesAnima->tryPlay(1);
 				//if (tempObject->eyesAnima->currentFrame < tempObject->eyesAnima->totalFrames)
 				//	tempObject->eyesAnima->gotoAndStop((tempObject->eyesAnima->currentFrame + 1));
 				//else

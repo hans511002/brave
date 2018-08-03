@@ -42,7 +42,8 @@ namespace engine
     {
         if (this->container->currentFrame < this->container->totalFrames)
         {
-            this->container->gotoAndStop((this->container->currentFrame + 1));
+            //this->container->gotoAndStop((this->container->currentFrame + 1));
+            this->container->tryPlay();
             if (this->container->currentFrame == this->container->totalFrames)
             {
                 this->world->money = this->world->money + this->world->bonusMoney;

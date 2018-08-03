@@ -117,7 +117,8 @@ namespace engine
 				Tower7_mc * container = ISTYPE(Tower7_mc,this->container);
                 if (container->cont1->currentFrame < container->cont1->totalFrames)
                 {
-                    container->cont1->gotoAndStop((container->cont1->currentFrame + 1));
+                    container->cont1->tryPlay();
+                    //container->cont1->gotoAndStop((container->cont1->currentFrame + 1));
                 }
                 else
                 {
@@ -125,7 +126,8 @@ namespace engine
                 }
                 if (container->cont2->currentFrame < container->cont2->totalFrames)
                 {
-                    container->cont2->gotoAndStop((container->cont2->currentFrame + 1));
+                    container->cont2->tryPlay();
+                    //container->cont2->gotoAndStop((container->cont2->currentFrame + 1));
                 }
                 else
                 {
@@ -133,7 +135,8 @@ namespace engine
                 }
                 if (container->cont3->currentFrame < container->cont3->totalFrames)
                 {
-                    container->cont3->gotoAndStop((container->cont3->currentFrame + 1));
+                    container->cont3->tryPlay();
+                    //container->cont3->gotoAndStop((container->cont3->currentFrame + 1));
                 }
                 else
                 {
@@ -339,7 +342,8 @@ namespace engine
                                 }
                                 else if (container->round1->currentFrame < container->round1->totalFrames)
                                 {
-                                    container->round1->gotoAndStop((container->round1->currentFrame + 1));
+                                    container->round1->tryPlay();
+                                    //container->round1->gotoAndStop((container->round1->currentFrame + 1));
                                     if (this->roundCounter == 0)
                                     {
                                         if (container->round1->currentFrame == 2)
@@ -369,7 +373,8 @@ namespace engine
                                 }
                                 else if (container->round2->currentFrame < container->round2->totalFrames)
                                 {
-                                    container->round2->gotoAndStop((container->round2->currentFrame + 1));
+                                    container->round2->tryPlay();
+                                    //container->round2->gotoAndStop((container->round2->currentFrame + 1));
                                     if (this->roundCounter == 0)
                                     {
                                         if (container->round2->currentFrame == 2)
@@ -394,7 +399,8 @@ namespace engine
                                 }
                                 else if (container->round3->currentFrame < container->round3->totalFrames)
                                 {
-                                    container->round3->gotoAndStop((container->round3->currentFrame + 1));
+                                    container->round3->tryPlay();
+                                    //container->round3->gotoAndStop((container->round3->currentFrame + 1));
                                     if (this->roundCounter == 0)
                                     {
                                         if (container->round3->currentFrame == 2)
@@ -424,7 +430,8 @@ namespace engine
                                 }
                                 else if (container->round4->currentFrame < container->round4->totalFrames)
                                 {
-                                    container->round4->gotoAndStop((container->round4->currentFrame + 1));
+                                    container->round4->tryPlay();
+                                    //container->round4->gotoAndStop((container->round4->currentFrame + 1));
                                     if (this->roundCounter == 0)
                                     {
                                         if (container->round4->currentFrame == 2)
@@ -569,7 +576,8 @@ namespace engine
                         }
                         else
                         {
-                            container->gotoAndStop((container->currentFrame + 1));
+                            container->tryPlay();
+                            //container->gotoAndStop((container->currentFrame + 1));
                         }
                     }
                     else
@@ -580,7 +588,8 @@ namespace engine
                 }
                 else if (this->upgr1_anima->currentFrame < this->upgr1_anima->totalFrames)
                 {
-                    this->upgr1_anima->gotoAndStop((this->upgr1_anima->currentFrame + 1));
+                    this->upgr1_anima->tryPlay();
+                    //this->upgr1_anima->gotoAndStop((this->upgr1_anima->currentFrame + 1));
                     if (this->upgr1_anima->currentFrame == 4)
                     {
                         //Sounds.instance.playSoundWithVol("snd_tower_shootUltraAdd3", 0.95);

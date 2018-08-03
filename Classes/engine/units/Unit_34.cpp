@@ -287,7 +287,8 @@ namespace engine
                 {
                     if (container->contMcs->currentFrame < 18)
                     {
-                        container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
+                        container->contMcs->tryPlay();
+				        //container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
                         if (container->contMcs->currentFrame == 2)
                         {
                             //Sounds.instance.playSound("snd_boss_eyes");
@@ -313,7 +314,8 @@ namespace engine
                     }
                     else if (container->contMcs->currentFrame < 36)
                     {
-                        container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
+                        container->contMcs->tryPlay();
+				        //container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
                     }
                     else if (this->eyesCounter1 == 0)
                     {
@@ -345,7 +347,8 @@ namespace engine
                     }
                     else if (container->contMcs->currentFrame < 54)
                     {
-                        container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
+                        container->contMcs->tryPlay();
+				        //container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
                     }
                     else if (this->eyesCounter2 == 0)
                     {

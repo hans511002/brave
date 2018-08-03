@@ -36,11 +36,9 @@ namespace engine
 					container->cont->gotoAndStop(2);
 				}
 				if (!airFlag && !airShockFlag)
-				{
-                    if(!this->container->isPlay())
-                    {
-                        this->container->play(1);
-                    }
+				{ 
+                    container->->tryPlay();
+				    //
                     //if (container->currentFrame < container->totalFrames)
 					//{
 					//	container->gotoAndStop((container->currentFrame + 1));

@@ -269,7 +269,8 @@ namespace engine
 					{
 						if (this->container1->btnGetAll->currentFrame < this->container1->btnGetAll->totalFrames)
 						{
-							this->container1->btnGetAll->gotoAndStop((this->container1->btnGetAll->currentFrame + 1));
+							this->container1->btnGetAll->tryPlay();
+					        //this->container1->btnGetAll->gotoAndStop((this->container1->btnGetAll->currentFrame + 1));
 						}
 						else
 						{
@@ -277,7 +278,8 @@ namespace engine
 						}
 						if (this->container1->cont1->currentFrame < this->container1->cont1->totalFrames)
 						{
-							this->container1->cont1->gotoAndStop((this->container1->cont1->currentFrame + 1));
+							this->container1->cont1->tryPlay();
+					        //this->container1->cont1->gotoAndStop((this->container1->cont1->currentFrame + 1));
 						}
 						else
 						{
@@ -285,7 +287,8 @@ namespace engine
 						}
 						if (this->container1->cont2->currentFrame < this->container1->cont2->totalFrames)
 						{
-							this->container1->cont2->gotoAndStop((this->container1->cont2->currentFrame + 1));
+							this->container1->cont2->tryPlay();
+					        //this->container1->cont2->gotoAndStop((this->container1->cont2->currentFrame + 1));
 						}
 						else
 						{
@@ -294,7 +297,8 @@ namespace engine
 
 						if (this->starsAnima->currentFrame < this->starsAnima->totalFrames)
 						{
-							this->starsAnima->gotoAndStop((this->starsAnima->currentFrame + 1));
+							this->starsAnima->tryPlay();
+					        //this->starsAnima->gotoAndStop((this->starsAnima->currentFrame + 1));
 							if (this->starsAnima->currentFrame == 12)
 							{
 								this->container1->btnUpgradeMenu->gotoAndStop(1);
@@ -315,7 +319,8 @@ namespace engine
 					}
 					if (this->container->btnGetAll->currentFrame < this->container->btnGetAll->totalFrames)
 					{
-						this->container->btnGetAll->gotoAndStop((this->container->btnGetAll->currentFrame + 1));
+						this->container->btnGetAll->tryPlay();
+					    //this->container->btnGetAll->gotoAndStop((this->container->btnGetAll->currentFrame + 1));
 					}
 					else
 					{
@@ -323,7 +328,8 @@ namespace engine
 					}
 					if (this->container->cont1->currentFrame < this->container->cont1->totalFrames)
 					{
-						this->container->cont1->gotoAndStop((this->container->cont1->currentFrame + 1));
+						this->container->cont1->tryPlay();
+					    //this->container->cont1->gotoAndStop((this->container->cont1->currentFrame + 1));
 					}
 					else
 					{
@@ -331,7 +337,8 @@ namespace engine
 					}
 					if (this->container->cont2->currentFrame < this->container->cont2->totalFrames)
 					{
-						this->container->cont2->gotoAndStop((this->container->cont2->currentFrame + 1));
+						this->container->cont2->tryPlay();
+					    //this->container->cont2->gotoAndStop((this->container->cont2->currentFrame + 1));
 					}
 					else
 					{
@@ -341,7 +348,8 @@ namespace engine
 					{
 						if (this->container->currentFrame < this->container->totalFrames)
 						{
-							this->container->gotoAndStop((this->container->currentFrame + 1));
+							this->hint->container->tryPlay();
+						    //this->container->gotoAndStop((this->container->currentFrame + 1));
 							if (this->container->currentFrame == 4 || this->container->currentFrame == 6 || this->container->currentFrame == 9 || this->container->currentFrame == 11)
 							{
 								std::setText(this->container->btnUpgradeMenuCostTXT, Main::mainClass->readXMLClass.costSlot4XML);
@@ -369,7 +377,8 @@ namespace engine
 							{
 								if (this->hint->contCont1Sphere1->currentFrame < this->hint->contCont1Sphere1->totalFrames)
 								{
-									this->hint->contCont1Sphere1->gotoAndStop((this->hint->contCont1Sphere1->currentFrame + 1));
+									this->hint->contCont1Sphere1->tryPlay();
+							        //this->hint->contCont1Sphere1->gotoAndStop((this->hint->contCont1Sphere1->currentFrame + 1));
 								}
 								else
 								{
@@ -377,7 +386,8 @@ namespace engine
 								}
 								if (this->hint->contCont1Sphere2->currentFrame < this->hint->contCont1Sphere2->totalFrames)
 								{
-									this->hint->contCont1Sphere2->gotoAndStop((this->hint->contCont1Sphere2->currentFrame + 1));
+									this->hint->contCont1Sphere2->tryPlay();
+							        //this->hint->contCont1Sphere2->gotoAndStop((this->hint->contCont1Sphere2->currentFrame + 1));
 								}
 								else
 								{
@@ -395,7 +405,8 @@ namespace engine
 							{
 								if (tower->currentFrame < tower->totalFrames)
 								{
-									tower->gotoAndStop((tower->currentFrame + 1));
+									tower->tryPlay();
+							        //tower->gotoAndStop((tower->currentFrame + 1));
 								}
 								else
 								{
@@ -410,7 +421,8 @@ namespace engine
 							{
 								if (tower->currentFrame < exampleUltraTower->totalFrames)
 								{
-									tower->gotoAndStop((tower->currentFrame + 1));
+									tower->tryPlay();
+							        //tower->gotoAndStop((tower->currentFrame + 1));
 								}
 								else
 								{
@@ -423,7 +435,8 @@ namespace engine
 							Tower7_mc * tower = ISTYPE(Tower7_mc, this->exampleUltraTower);
 							if (tower->cont1->currentFrame < tower->cont1->totalFrames)
 							{
-								tower->cont1->gotoAndStop((tower->cont1->currentFrame + 1));
+								tower->cont1->tryPlay();
+							    //tower->cont1->gotoAndStop((tower->cont1->currentFrame + 1));
 							}
 							else
 							{
@@ -431,7 +444,8 @@ namespace engine
 							}
 							if (tower->cont2->currentFrame < tower->cont2->totalFrames)
 							{
-								tower->cont2->gotoAndStop((tower->cont2->currentFrame + 1));
+								tower->cont2->tryPlay();
+							    //tower->cont2->gotoAndStop((tower->cont2->currentFrame + 1));
 							}
 							else
 							{
@@ -439,7 +453,8 @@ namespace engine
 							}
 							if (tower->cont3->currentFrame < tower->cont3->totalFrames)
 							{
-								tower->cont3->gotoAndStop((tower->cont3->currentFrame + 1));
+								tower->cont3->tryPlay();
+							    //tower->cont3->gotoAndStop((tower->cont3->currentFrame + 1));
 							}
 							else
 							{
@@ -453,7 +468,8 @@ namespace engine
 							{
 								if (tower->cont1->currentFrame < tower->cont1->totalFrames)
 								{
-									tower->cont1->gotoAndStop((tower->cont1->currentFrame + 1));
+									tower->cont1->tryPlay();
+								    //tower->cont1->gotoAndStop((tower->cont1->currentFrame + 1));
 								}
 								else
 								{
@@ -461,7 +477,8 @@ namespace engine
 								}
 								if (tower->cont2->currentFrame < tower->cont2->totalFrames)
 								{
-									tower->cont2->gotoAndStop((tower->cont2->currentFrame + 1));
+									tower->cont2->tryPlay();
+								    //tower->cont2->gotoAndStop((tower->cont2->currentFrame + 1));
 								}
 								else
 								{
@@ -469,7 +486,8 @@ namespace engine
 								}
 								if (tower->cont3->currentFrame < tower->cont3->totalFrames)
 								{
-									tower->cont3->gotoAndStop((tower->cont3->currentFrame + 1));
+									tower->cont3->tryPlay();
+								    //tower->cont3->gotoAndStop((tower->cont3->currentFrame + 1));
 								}
 								else
 								{
@@ -485,7 +503,8 @@ namespace engine
 						{
 							if (this->container->sphereSlot1SphereAnimaCont->currentFrame < this->container->sphereSlot1SphereAnimaCont->totalFrames)
 							{
-								this->container->sphereSlot1SphereAnimaCont->gotoAndStop((this->container->sphereSlot1SphereAnimaCont->currentFrame + 1));
+								this->container->sphereSlot1SphereAnimaCont->tryPlay();
+								//this->container->sphereSlot1SphereAnimaCont->gotoAndStop((this->container->sphereSlot1SphereAnimaCont->currentFrame + 1));
 							}
 							else
 							{
@@ -496,7 +515,8 @@ namespace engine
 						{
 							if (this->container->sphereSlot1SphereAnimaCont->currentFrame < this->container->sphereSlot1SphereAnimaCont->totalFrames)
 							{
-								this->container->sphereSlot1SphereAnimaCont->gotoAndStop((this->container->sphereSlot1SphereAnimaCont->currentFrame + 1));
+								this->container->sphereSlot1SphereAnimaCont->tryPlay();
+								//this->container->sphereSlot1SphereAnimaCont->gotoAndStop((this->container->sphereSlot1SphereAnimaCont->currentFrame + 1));
 							}
 							else
 							{
@@ -507,7 +527,8 @@ namespace engine
 						{
 							if (this->container->sphereSlot1SphereAnimaCont->currentFrame < this->container->sphereSlot1SphereAnimaCont->totalFrames)
 							{
-								this->container->sphereSlot1SphereAnimaCont->gotoAndStop((this->container->sphereSlot1SphereAnimaCont->currentFrame + 1));
+								this->container->sphereSlot1SphereAnimaCont->tryPlay();
+								//this->container->sphereSlot1SphereAnimaCont->gotoAndStop((this->container->sphereSlot1SphereAnimaCont->currentFrame + 1));
 							}
 							else
 							{
@@ -518,7 +539,8 @@ namespace engine
 						{
 							if (this->container->sphereSlot1SphereAnimaCont->currentFrame < this->container->sphereSlot1SphereAnimaCont->totalFrames)
 							{
-								this->container->sphereSlot1SphereAnimaCont->gotoAndStop((this->container->sphereSlot1SphereAnimaCont->currentFrame + 1));
+								this->container->sphereSlot1SphereAnimaCont->tryPlay();
+								//this->container->sphereSlot1SphereAnimaCont->gotoAndStop((this->container->sphereSlot1SphereAnimaCont->currentFrame + 1));
 							}
 							else
 							{
@@ -532,7 +554,8 @@ namespace engine
 						{
 							if (this->container->sphereSlot2SphereAnimaCont->currentFrame < this->container->sphereSlot2SphereAnimaCont->totalFrames)
 							{
-								this->container->sphereSlot2SphereAnimaCont->gotoAndStop((this->container->sphereSlot2SphereAnimaCont->currentFrame + 1));
+								this->container->sphereSlot2SphereAnimaCont->tryPlay();
+								//this->container->sphereSlot2SphereAnimaCont->gotoAndStop((this->container->sphereSlot2SphereAnimaCont->currentFrame + 1));
 							}
 							else
 							{
@@ -543,7 +566,8 @@ namespace engine
 						{
 							if (this->container->sphereSlot2SphereAnimaCont->currentFrame < this->container->sphereSlot2SphereAnimaCont->totalFrames)
 							{
-								this->container->sphereSlot2SphereAnimaCont->gotoAndStop((this->container->sphereSlot2SphereAnimaCont->currentFrame + 1));
+								this->container->sphereSlot2SphereAnimaCont->tryPlay();
+								//this->container->sphereSlot2SphereAnimaCont->gotoAndStop((this->container->sphereSlot2SphereAnimaCont->currentFrame + 1));
 							}
 							else
 							{
@@ -554,7 +578,8 @@ namespace engine
 						{
 							if (this->container->sphereSlot2SphereAnimaCont->currentFrame < this->container->sphereSlot2SphereAnimaCont->totalFrames)
 							{
-								this->container->sphereSlot2SphereAnimaCont->gotoAndStop((this->container->sphereSlot2SphereAnimaCont->currentFrame + 1));
+								this->container->sphereSlot2SphereAnimaCont->tryPlay();
+								//this->container->sphereSlot2SphereAnimaCont->gotoAndStop((this->container->sphereSlot2SphereAnimaCont->currentFrame + 1));
 							}
 							else
 							{
@@ -565,7 +590,8 @@ namespace engine
 						{
 							if (this->container->sphereSlot2SphereAnimaCont->currentFrame < this->container->sphereSlot2SphereAnimaCont->totalFrames)
 							{
-								this->container->sphereSlot2SphereAnimaCont->gotoAndStop((this->container->sphereSlot2SphereAnimaCont->currentFrame + 1));
+								this->container->sphereSlot2SphereAnimaCont->tryPlay();
+								//this->container->sphereSlot2SphereAnimaCont->gotoAndStop((this->container->sphereSlot2SphereAnimaCont->currentFrame + 1));
 							}
 							else
 							{
@@ -579,7 +605,8 @@ namespace engine
 						{
 							if (this->container->sphereSlot3SphereAnimaCont->currentFrame < this->container->sphereSlot3SphereAnimaCont->totalFrames)
 							{
-								this->container->sphereSlot3SphereAnimaCont->gotoAndStop((this->container->sphereSlot3SphereAnimaCont->currentFrame + 1));
+								this->container->sphereSlot3SphereAnimaCont->tryPlay();
+								//this->container->sphereSlot3SphereAnimaCont->gotoAndStop((this->container->sphereSlot3SphereAnimaCont->currentFrame + 1));
 							}
 							else
 							{
@@ -590,7 +617,8 @@ namespace engine
 						{
 							if (this->container->sphereSlot3SphereAnimaCont->currentFrame < this->container->sphereSlot3SphereAnimaCont->totalFrames)
 							{
-								this->container->sphereSlot3SphereAnimaCont->gotoAndStop((this->container->sphereSlot3SphereAnimaCont->currentFrame + 1));
+								this->container->sphereSlot3SphereAnimaCont->tryPlay();
+								//this->container->sphereSlot3SphereAnimaCont->gotoAndStop((this->container->sphereSlot3SphereAnimaCont->currentFrame + 1));
 							}
 							else
 							{
@@ -601,7 +629,8 @@ namespace engine
 						{
 							if (this->container->sphereSlot3SphereAnimaCont->currentFrame < this->container->sphereSlot3SphereAnimaCont->totalFrames)
 							{
-								this->container->sphereSlot3SphereAnimaCont->gotoAndStop((this->container->sphereSlot3SphereAnimaCont->currentFrame + 1));
+								this->container->sphereSlot3SphereAnimaCont->tryPlay();
+								//this->container->sphereSlot3SphereAnimaCont->gotoAndStop((this->container->sphereSlot3SphereAnimaCont->currentFrame + 1));
 							}
 							else
 							{
@@ -612,7 +641,8 @@ namespace engine
 						{
 							if (this->container->sphereSlot3SphereAnimaCont->currentFrame < this->container->sphereSlot3SphereAnimaCont->totalFrames)
 							{
-								this->container->sphereSlot3SphereAnimaCont->gotoAndStop((this->container->sphereSlot3SphereAnimaCont->currentFrame + 1));
+								this->container->sphereSlot3SphereAnimaCont->tryPlay();
+								//this->container->sphereSlot3SphereAnimaCont->gotoAndStop((this->container->sphereSlot3SphereAnimaCont->currentFrame + 1));
 							}
 							else
 							{
@@ -626,7 +656,8 @@ namespace engine
 						{
 							if (this->container->sphereSlot4SphereAnimaCont->currentFrame < this->container->sphereSlot4SphereAnimaCont->totalFrames)
 							{
-								this->container->sphereSlot4SphereAnimaCont->gotoAndStop((this->container->sphereSlot4SphereAnimaCont->currentFrame + 1));
+								this->container->sphereSlot4SphereAnimaCont->tryPlay();
+								//this->container->sphereSlot4SphereAnimaCont->gotoAndStop((this->container->sphereSlot4SphereAnimaCont->currentFrame + 1));
 							}
 							else
 							{
@@ -637,7 +668,8 @@ namespace engine
 						{
 							if (this->container->sphereSlot4SphereAnimaCont->currentFrame < this->container->sphereSlot4SphereAnimaCont->totalFrames)
 							{
-								this->container->sphereSlot4SphereAnimaCont->gotoAndStop((this->container->sphereSlot4SphereAnimaCont->currentFrame + 1));
+								this->container->sphereSlot4SphereAnimaCont->tryPlay();
+								//this->container->sphereSlot4SphereAnimaCont->gotoAndStop((this->container->sphereSlot4SphereAnimaCont->currentFrame + 1));
 							}
 							else
 							{
@@ -648,7 +680,8 @@ namespace engine
 						{
 							if (this->container->sphereSlot4SphereAnimaCont->currentFrame < this->container->sphereSlot4SphereAnimaCont->totalFrames)
 							{
-								this->container->sphereSlot4SphereAnimaCont->gotoAndStop((this->container->sphereSlot4SphereAnimaCont->currentFrame + 1));
+								this->container->sphereSlot4SphereAnimaCont->tryPlay();
+								//this->container->sphereSlot4SphereAnimaCont->gotoAndStop((this->container->sphereSlot4SphereAnimaCont->currentFrame + 1));
 							}
 							else
 							{
@@ -659,7 +692,8 @@ namespace engine
 						{
 							if (this->container->sphereSlot4SphereAnimaCont->currentFrame < this->container->sphereSlot4SphereAnimaCont->totalFrames)
 							{
-								this->container->sphereSlot4SphereAnimaCont->gotoAndStop((this->container->sphereSlot4SphereAnimaCont->currentFrame + 1));
+							    this->container->sphereSlot4SphereAnimaCont->tryPlay();
+								//this->container->sphereSlot4SphereAnimaCont->gotoAndStop((this->container->sphereSlot4SphereAnimaCont->currentFrame + 1));
 							}
 							else
 							{
@@ -688,7 +722,8 @@ namespace engine
 						}
 						else if (this->container->fastBuyUltraCont->currentFrame < this->container->fastBuyUltraCont->totalFrames)
 						{
-							this->container->fastBuyUltraCont->gotoAndStop((this->container->fastBuyUltraCont->currentFrame + 1));
+						    this->container->fastBuyUltraCont->tryPlay();
+							//this->container->fastBuyUltraCont->gotoAndStop((this->container->fastBuyUltraCont->currentFrame + 1));
 						}
 						else
 						{

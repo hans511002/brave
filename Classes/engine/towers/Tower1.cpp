@@ -96,7 +96,8 @@ namespace engine
             {
                 if (container->currentFrame < container->totalFrames)
                 {
-                    container->gotoAndStop((container->currentFrame + 1));
+                    container->tryPlay();
+                    //container->gotoAndStop((container->currentFrame + 1));
                 }
                 else
                 {
@@ -109,7 +110,8 @@ namespace engine
 
                 if (container->sphere1->currentFrame < container->sphere1->totalFrames)
                 {
-                    container->sphere1->gotoAndStop((container->sphere1->currentFrame + 1));
+                    container->sphere1->tryPlay();
+                    //container->sphere1->gotoAndStop((container->sphere1->currentFrame + 1));
                 }
                 else
                 {
@@ -119,7 +121,8 @@ namespace engine
                 {
                     if (container->sphere1BulletCont->currentFrame < container->sphere1BulletCont->totalFrames)
                     {
-                        container->sphere1BulletCont->gotoAndStop((container->sphere1BulletCont->currentFrame + 1));
+                        container->sphere1BulletCont->tryPlay();
+                        //container->sphere1BulletCont->gotoAndStop((container->sphere1BulletCont->currentFrame + 1));
                     }
                     else
                     {
@@ -130,7 +133,8 @@ namespace engine
                 {
                     if (container->sphere1BulletCont->currentFrame < container->sphere1BulletCont->totalFrames)
                     {
-                        container->sphere1BulletCont->gotoAndStop((container->sphere1BulletCont->currentFrame + 1));
+                        container->sphere1BulletCont->tryPlay();
+                        //container->sphere1BulletCont->gotoAndStop((container->sphere1BulletCont->currentFrame + 1));
                     }
                     else
                     {
@@ -141,7 +145,8 @@ namespace engine
                 {
                     if (container->sphere1BulletCont->currentFrame < container->sphere1BulletCont->totalFrames)
                     {
-                        container->sphere1BulletCont->gotoAndStop((container->sphere1BulletCont->currentFrame + 1));
+                        container->sphere1BulletCont->tryPlay();
+                        //container->sphere1BulletCont->gotoAndStop((container->sphere1BulletCont->currentFrame + 1));
                     }
                     else
                     {
@@ -152,7 +157,8 @@ namespace engine
                 {
                     if (container->sphere1BulletCont->currentFrame < container->sphere1BulletCont->totalFrames)
                     {
-                        container->sphere1BulletCont->gotoAndStop((container->sphere1BulletCont->currentFrame + 1));
+                        container->sphere1BulletCont->tryPlay();
+                        //container->sphere1BulletCont->gotoAndStop((container->sphere1BulletCont->currentFrame + 1));
                     }
                     else
                     {

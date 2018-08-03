@@ -154,7 +154,8 @@ namespace engine
 				{
 					if (container->sphere1Cont->currentFrame < container->sphere1Cont->totalFrames)
 					{
-						container->sphere1Cont->gotoAndStop((container->sphere1Cont->currentFrame + 1));
+						container->sphere1Cont->tryPlay();
+						//container->sphere1Cont->gotoAndStop((container->sphere1Cont->currentFrame + 1));
 					}
 					else
 					{
@@ -165,7 +166,8 @@ namespace engine
 				{
 					if (container->sphere2Cont->currentFrame < container->sphere2Cont->totalFrames)
 					{
-						container->sphere2Cont->gotoAndStop((container->sphere2Cont->currentFrame + 1));
+						container->sphere2Cont->tryPlay();
+						//container->sphere2Cont->gotoAndStop((container->sphere2Cont->currentFrame + 1));
 					}
 					else
 					{
@@ -176,7 +178,8 @@ namespace engine
 				{
 					if (container->sphere3Cont->currentFrame < container->sphere3Cont->totalFrames)
 					{
-						container->sphere3Cont->gotoAndStop((container->sphere3Cont->currentFrame + 1));
+						container->sphere3Cont->tryPlay();
+						//container->sphere3Cont->gotoAndStop((container->sphere3Cont->currentFrame + 1));
 					}
 					else
 					{
@@ -187,7 +190,8 @@ namespace engine
 				{
 					if (container->sphere4Cont->currentFrame < container->sphere4Cont->totalFrames)
 					{
-						container->sphere4Cont->gotoAndStop((container->sphere4Cont->currentFrame + 1));
+						container->sphere4Cont->tryPlay();
+						//container->sphere4Cont->gotoAndStop((container->sphere4Cont->currentFrame + 1));
 					}
 					else
 					{
@@ -196,7 +200,8 @@ namespace engine
 				}
 				if (container->cont->currentFrame < container->cont->totalFrames)
 				{
-					container->cont->gotoAndStop((container->cont->currentFrame + 1));
+					container->cont->tryPlay();
+					//container->cont->gotoAndStop((container->cont->currentFrame + 1));
 				}
 				else
 				{
@@ -208,7 +213,8 @@ namespace engine
 		{
 			if (container->currentFrame < container->totalFrames)
 			{
-				container->gotoAndStop((container->currentFrame + 1));
+				container->tryPlay();
+				//container->gotoAndStop((container->currentFrame + 1));
 			}
 			else
 			{
@@ -219,7 +225,8 @@ namespace engine
 		{
 			if (this->arrow->currentFrame < this->arrow->totalFrames)
 			{
-				this->arrow->gotoAndStop((this->arrow->currentFrame + 1));
+				this->arrow->tryPlay();
+				//this->arrow->gotoAndStop((this->arrow->currentFrame + 1));
 			}
 			else
 			{
@@ -230,7 +237,8 @@ namespace engine
 		{
 			if (this->towerArrow->currentFrame < this->towerArrow->totalFrames)
 			{
-				this->towerArrow->gotoAndStop((this->towerArrow->currentFrame + 1));
+				this->towerArrow->tryPlay();
+				//this->towerArrow->gotoAndStop((this->towerArrow->currentFrame + 1));
 			}
 			else
 			{
@@ -263,7 +271,8 @@ namespace engine
 				}
 				if (this->radius->cont->currentFrame < this->radius->cont->totalFrames)
 				{
-					this->radius->cont->gotoAndStop((this->radius->cont->currentFrame + 1));
+				    this->radius->cont->tryPlay();
+					//this->radius->cont->gotoAndStop((this->radius->cont->currentFrame + 1));
 				}
 				else
 				{

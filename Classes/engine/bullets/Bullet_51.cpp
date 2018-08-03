@@ -95,7 +95,8 @@ namespace engine{
                 }
                 else if (this->listOfAnimation[i]->currentFrame < this->listOfAnimation[i]->totalFrames)
                 {
-                    this->listOfAnimation[i]->gotoAndStop((this->listOfAnimation[i]->currentFrame + 1));
+                    this->listOfAnimation[i]->tryPlay();
+				    //this->listOfAnimation[i]->gotoAndStop((this->listOfAnimation[i]->currentFrame + 1));
                 }
                 else
                 {

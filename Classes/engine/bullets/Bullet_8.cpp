@@ -36,7 +36,8 @@ namespace engine
             Bullet::update();
             if (container->currentFrame < container->totalFrames)
             {
-                container->gotoAndStop((container->currentFrame + 1));
+                container->tryPlay();
+			    //container->gotoAndStop((container->currentFrame + 1));
                 if (container->currentFrame == 2 || container->currentFrame == 16 || container->currentFrame == 25)
                 {
                     if (container->currentFrame == 2)

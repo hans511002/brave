@@ -101,7 +101,8 @@ namespace engine
             {
                 if (container->currentFrame < container->totalFrames)
                 {
-                    container->gotoAndStop((container->currentFrame + 1));
+                    container->tryPlay();
+                    //container->gotoAndStop((container->currentFrame + 1));
                 }
                 else
                 {
@@ -112,533 +113,193 @@ namespace engine
             {
                 if (container->sphere1->currentFrame < container->sphere1->totalFrames)
                 {
-                    container->sphere1->gotoAndStop((container->sphere1->currentFrame + 1));
+                    container->sphere1->tryPlay();
+                    //container->sphere1->gotoAndStop((container->sphere1->currentFrame + 1));
                 }
                 else
                 {
                     container->sphere1->gotoAndStop(1);
-                }
-                if (container->sphere1Bullet->currentFrame == 1)
+                } 
+                if (container->sphere1BulletCont->currentFrame < container->sphere1BulletCont->totalFrames)
                 {
-                    if (container->sphere1BulletCont->currentFrame < container->sphere1BulletCont->totalFrames)
-                    {
-                        container->sphere1BulletCont->gotoAndStop((container->sphere1BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere1BulletCont->gotoAndStop(1);
-                    }
+                    container->sphere1BulletCont->tryPlay();
+                    //container->sphere1BulletCont->gotoAndStop((container->sphere1BulletCont->currentFrame + 1));
                 }
-                else if (container->sphere1Bullet->currentFrame == 2)
+                else
                 {
-                    if (container->sphere1BulletCont->currentFrame < container->sphere1BulletCont->totalFrames)
-                    {
-                        container->sphere1BulletCont->gotoAndStop((container->sphere1BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere1BulletCont->gotoAndStop(1);
-                    }
-                }
-                else if (container->sphere1Bullet->currentFrame == 3)
-                {
-                    if (container->sphere1BulletCont->currentFrame < container->sphere1BulletCont->totalFrames)
-                    {
-                        container->sphere1BulletCont->gotoAndStop((container->sphere1BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere1BulletCont->gotoAndStop(1);
-                    }
-                }
-                else if (container->sphere1Bullet->currentFrame == 4)
-                {
-                    if (container->sphere1BulletCont->currentFrame < container->sphere1BulletCont->totalFrames)
-                    {
-                        container->sphere1BulletCont->gotoAndStop((container->sphere1BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere1BulletCont->gotoAndStop(1);
-                    }
-                }
+                    container->sphere1BulletCont->gotoAndStop(1);
+                } 
             }
             else if (spheresStack.size() == 2)
             {
                 if (container->sphere2_1->currentFrame < container->sphere2_1->totalFrames)
                 {
-                    container->sphere2_1->gotoAndStop((container->sphere2_1->currentFrame + 1));
+                    container->sphere2_1->tryPlay();
+                    //container->sphere2_1->gotoAndStop((container->sphere2_1->currentFrame + 1));
                 }
                 else
                 {
                     container->sphere2_1->gotoAndStop(1);
-                }
-                if (container->sphere2_1Bullet->currentFrame == 1)
+                } 
+                if (container->sphere2_1BulletCont->currentFrame < container->sphere2_1BulletCont->totalFrames)
                 {
-                    if (container->sphere2_1BulletCont->currentFrame < container->sphere2_1BulletCont->totalFrames)
-                    {
-                        container->sphere2_1BulletCont->gotoAndStop((container->sphere2_1BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere2_1BulletCont->gotoAndStop(1);
-                    }
+                    container->sphere2_1BulletCont->tryPlay();
+                    //container->sphere2_1BulletCont->gotoAndStop((container->sphere2_1BulletCont->currentFrame + 1));
                 }
-                else if (container->sphere2_1Bullet->currentFrame == 2)
+                else
                 {
-                    if (container->sphere2_1BulletCont->currentFrame < container->sphere2_1BulletCont->totalFrames)
-                    {
-                        container->sphere2_1BulletCont->gotoAndStop((container->sphere2_1BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere2_1BulletCont->gotoAndStop(1);
-                    }
-                }
-                else if (container->sphere2_1Bullet->currentFrame == 3)
-                {
-                    if (container->sphere2_1BulletCont->currentFrame < container->sphere2_1BulletCont->totalFrames)
-                    {
-                        container->sphere2_1BulletCont->gotoAndStop((container->sphere2_1BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere2_1BulletCont->gotoAndStop(1);
-                    }
-                }
-                else if (container->sphere2_1Bullet->currentFrame == 4)
-                {
-                    if (container->sphere2_1BulletCont->currentFrame < container->sphere2_1BulletCont->totalFrames)
-                    {
-                        container->sphere2_1BulletCont->gotoAndStop((container->sphere2_1BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere2_1BulletCont->gotoAndStop(1);
-                    }
-                }
+                    container->sphere2_1BulletCont->gotoAndStop(1);
+                } 
                 if (container->sphere2_2->currentFrame < container->sphere2_2->totalFrames)
                 {
-                    container->sphere2_2->gotoAndStop((container->sphere2_2->currentFrame + 1));
+                    container->sphere2_2->tryPlay();
+                    //container->sphere2_2->gotoAndStop((container->sphere2_2->currentFrame + 1));
                 }
                 else
                 {
                     container->sphere2_2->gotoAndStop(1);
-                }
-                if (container->sphere2_2Bullet->currentFrame == 1)
+                } 
+                if (container->sphere2_2BulletCont->currentFrame < container->sphere2_2BulletCont->totalFrames)
                 {
-                    if (container->sphere2_2BulletCont->currentFrame < container->sphere2_2BulletCont->totalFrames)
-                    {
-                        container->sphere2_2BulletCont->gotoAndStop((container->sphere2_2BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere2_2BulletCont->gotoAndStop(1);
-                    }
+                    container->sphere2_2BulletCont->tryPlay();
+                    //container->sphere2_2BulletCont->gotoAndStop((container->sphere2_2BulletCont->currentFrame + 1));
                 }
-                else if (container->sphere2_2Bullet->currentFrame == 2)
+                else
                 {
-                    if (container->sphere2_2BulletCont->currentFrame < container->sphere2_2BulletCont->totalFrames)
-                    {
-                        container->sphere2_2BulletCont->gotoAndStop((container->sphere2_2BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere2_2BulletCont->gotoAndStop(1);
-                    }
-                }
-                else if (container->sphere2_2Bullet->currentFrame == 3)
-                {
-                    if (container->sphere2_2BulletCont->currentFrame < container->sphere2_2BulletCont->totalFrames)
-                    {
-                        container->sphere2_2BulletCont->gotoAndStop((container->sphere2_2BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere2_2BulletCont->gotoAndStop(1);
-                    }
-                }
-                else if (container->sphere2_2Bullet->currentFrame == 4)
-                {
-                    if (container->sphere2_2BulletCont->currentFrame < container->sphere2_2BulletCont->totalFrames)
-                    {
-                        container->sphere2_2BulletCont->gotoAndStop((container->sphere2_2BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere2_2BulletCont->gotoAndStop(1);
-                    }
-                }
+                    container->sphere2_2BulletCont->gotoAndStop(1);
+                } 
             }
             else if (spheresStack.size() == 3)
             {
                 if (container->sphere3_1->currentFrame < container->sphere3_1->totalFrames)
                 {
-                    container->sphere3_1->gotoAndStop((container->sphere3_1->currentFrame + 1));
+                    container->sphere3_1->tryPlay();
+                    //container->sphere3_1->gotoAndStop((container->sphere3_1->currentFrame + 1));
                 }
                 else
                 {
                     container->sphere3_1->gotoAndStop(1);
-                }
-                if (container->sphere3_1Bullet->currentFrame == 1)
+                } 
+                if (container->sphere3_1BulletCont->currentFrame < container->sphere3_1BulletCont->totalFrames)
                 {
-                    if (container->sphere3_1BulletCont->currentFrame < container->sphere3_1BulletCont->totalFrames)
-                    {
-                        container->sphere3_1BulletCont->gotoAndStop((container->sphere3_1BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere3_1BulletCont->gotoAndStop(1);
-                    }
+                    container->sphere3_1BulletCont->tryPlay();
+                    //container->sphere3_1BulletCont->gotoAndStop((container->sphere3_1BulletCont->currentFrame + 1));
                 }
-                else if (container->sphere3_1Bullet->currentFrame == 2)
+                else
                 {
-                    if (container->sphere3_1BulletCont->currentFrame < container->sphere3_1BulletCont->totalFrames)
-                    {
-                        container->sphere3_1BulletCont->gotoAndStop((container->sphere3_1BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere3_1BulletCont->gotoAndStop(1);
-                    }
-                }
-                else if (container->sphere3_1Bullet->currentFrame == 3)
-                {
-                    if (container->sphere3_1BulletCont->currentFrame < container->sphere3_1BulletCont->totalFrames)
-                    {
-                        container->sphere3_1BulletCont->gotoAndStop((container->sphere3_1BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere3_1BulletCont->gotoAndStop(1);
-                    }
-                }
-                else if (container->sphere3_1Bullet->currentFrame == 4)
-                {
-                    if (container->sphere3_1BulletCont->currentFrame < container->sphere3_1BulletCont->totalFrames)
-                    {
-                        container->sphere3_1BulletCont->gotoAndStop((container->sphere3_1BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere3_1BulletCont->gotoAndStop(1);
-                    }
-                }
+                    container->sphere3_1BulletCont->gotoAndStop(1);
+                } 
                 if (container->sphere3_2->currentFrame < container->sphere3_2->totalFrames)
                 {
-                    container->sphere3_2->gotoAndStop((container->sphere3_2->currentFrame + 1));
+                    container->sphere3_2->tryPlay();
+                    //container->sphere3_2->gotoAndStop((container->sphere3_2->currentFrame + 1));
                 }
                 else
                 {
                     container->sphere3_2->gotoAndStop(1);
-                }
-                if (container->sphere3_2Bullet->currentFrame == 1)
+                } 
+                if (container->sphere3_2BulletCont->currentFrame < container->sphere3_2BulletCont->totalFrames)
                 {
-                    if (container->sphere3_2BulletCont->currentFrame < container->sphere3_2BulletCont->totalFrames)
-                    {
-                        container->sphere3_2BulletCont->gotoAndStop((container->sphere3_2BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere3_2BulletCont->gotoAndStop(1);
-                    }
+                    container->sphere3_2BulletCont->tryPlay();
+                    //container->sphere3_2BulletCont->gotoAndStop((container->sphere3_2BulletCont->currentFrame + 1));
                 }
-                else if (container->sphere3_2Bullet->currentFrame == 2)
+                else
                 {
-                    if (container->sphere3_2BulletCont->currentFrame < container->sphere3_2BulletCont->totalFrames)
-                    {
-                        container->sphere3_2BulletCont->gotoAndStop((container->sphere3_2BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere3_2BulletCont->gotoAndStop(1);
-                    }
-                }
-                else if (container->sphere3_2Bullet->currentFrame == 3)
-                {
-                    if (container->sphere3_2BulletCont->currentFrame < container->sphere3_2BulletCont->totalFrames)
-                    {
-                        container->sphere3_2BulletCont->gotoAndStop((container->sphere3_2BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere3_2BulletCont->gotoAndStop(1);
-                    }
-                }
-                else if (container->sphere3_2Bullet->currentFrame == 4)
-                {
-                    if (container->sphere3_2BulletCont->currentFrame < container->sphere3_2BulletCont->totalFrames)
-                    {
-                        container->sphere3_2BulletCont->gotoAndStop((container->sphere3_2BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere3_2BulletCont->gotoAndStop(1);
-                    }
-                }
+                    container->sphere3_2BulletCont->gotoAndStop(1);
+                } 
                 if (container->sphere3_3->currentFrame < container->sphere3_3->totalFrames)
                 {
-                    container->sphere3_3->gotoAndStop((container->sphere3_3->currentFrame + 1));
+                    container->sphere3_3->tryPlay();
+                    //container->sphere3_3->gotoAndStop((container->sphere3_3->currentFrame + 1));
                 }
                 else
                 {
                     container->sphere3_3->gotoAndStop(1);
-                }
-                if (container->sphere3_3Bullet->currentFrame == 1)
+                } 
+                if (container->sphere3_3BulletCont->currentFrame < container->sphere3_3BulletCont->totalFrames)
                 {
-                    if (container->sphere3_3BulletCont->currentFrame < container->sphere3_3BulletCont->totalFrames)
-                    {
-                        container->sphere3_3BulletCont->gotoAndStop((container->sphere3_3BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere3_3BulletCont->gotoAndStop(1);
-                    }
+                    container->sphere3_3BulletCont->tryPlay();
+                    //container->sphere3_3BulletCont->gotoAndStop((container->sphere3_3BulletCont->currentFrame + 1));
                 }
-                else if (container->sphere3_3Bullet->currentFrame == 2)
+                else
                 {
-                    if (container->sphere3_3BulletCont->currentFrame < container->sphere3_3BulletCont->totalFrames)
-                    {
-                        container->sphere3_3BulletCont->gotoAndStop((container->sphere3_3BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere3_3BulletCont->gotoAndStop(1);
-                    }
-                }
-                else if (container->sphere3_3Bullet->currentFrame == 3)
-                {
-                    if (container->sphere3_3BulletCont->currentFrame < container->sphere3_3BulletCont->totalFrames)
-                    {
-                        container->sphere3_3BulletCont->gotoAndStop((container->sphere3_3BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere3_3BulletCont->gotoAndStop(1);
-                    }
-                }
-                else if (container->sphere3_3Bullet->currentFrame == 4)
-                {
-                    if (container->sphere3_3BulletCont->currentFrame < container->sphere3_3BulletCont->totalFrames)
-                    {
-                        container->sphere3_3BulletCont->gotoAndStop((container->sphere3_3BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere3_3BulletCont->gotoAndStop(1);
-                    }
-                }
+                    container->sphere3_3BulletCont->gotoAndStop(1);
+                } 
             }
             else if (spheresStack.size() == 4)
             {
                 if (container->sphere4_1->currentFrame < container->sphere4_1->totalFrames)
                 {
-                    container->sphere4_1->gotoAndStop((container->sphere4_1->currentFrame + 1));
+                    container->sphere4_1->tryPlay();
+                    //container->sphere4_1->gotoAndStop((container->sphere4_1->currentFrame + 1));
                 }
                 else
                 {
                     container->sphere4_1->gotoAndStop(1);
-                }
-                if (container->sphere4_1Bullet->currentFrame == 1)
+                } 
+                if (container->sphere4_1BulletCont->currentFrame < container->sphere4_1BulletCont->totalFrames)
                 {
-                    if (container->sphere4_1BulletCont->currentFrame < container->sphere4_1BulletCont->totalFrames)
-                    {
-                        container->sphere4_1BulletCont->gotoAndStop((container->sphere4_1BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere4_1BulletCont->gotoAndStop(1);
-                    }
+                    container->sphere4_1BulletCont->tryPlay();
+                    //container->sphere4_1BulletCont->gotoAndStop((container->sphere4_1BulletCont->currentFrame + 1));
                 }
-                else if (container->sphere4_1Bullet->currentFrame == 2)
+                else
                 {
-                    if (container->sphere4_1BulletCont->currentFrame < container->sphere4_1BulletCont->totalFrames)
-                    {
-                        container->sphere4_1BulletCont->gotoAndStop((container->sphere4_1BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere4_1BulletCont->gotoAndStop(1);
-                    }
-                }
-                else if (container->sphere4_1Bullet->currentFrame == 3)
-                {
-                    if (container->sphere4_1BulletCont->currentFrame < container->sphere4_1BulletCont->totalFrames)
-                    {
-                        container->sphere4_1BulletCont->gotoAndStop((container->sphere4_1BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere4_1BulletCont->gotoAndStop(1);
-                    }
-                }
-                else if (container->sphere4_1Bullet->currentFrame == 4)
-                {
-                    if (container->sphere4_1BulletCont->currentFrame < container->sphere4_1BulletCont->totalFrames)
-                    {
-                        container->sphere4_1BulletCont->gotoAndStop((container->sphere4_1BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere4_1BulletCont->gotoAndStop(1);
-                    }
-                }
+                    container->sphere4_1BulletCont->gotoAndStop(1);
+                } 
                 if (container->sphere4_2->currentFrame < container->sphere4_2->totalFrames)
                 {
-                    container->sphere4_2->gotoAndStop((container->sphere4_2->currentFrame + 1));
+                    container->sphere4_2->tryPlay();
+                    //container->sphere4_2->gotoAndStop((container->sphere4_2->currentFrame + 1));
                 }
                 else
                 {
                     container->sphere4_2->gotoAndStop(1);
-                }
-                if (container->sphere4_2Bullet->currentFrame == 1)
+                } 
+                if (container->sphere4_2BulletCont->currentFrame < container->sphere4_2BulletCont->totalFrames)
                 {
-                    if (container->sphere4_2BulletCont->currentFrame < container->sphere4_2BulletCont->totalFrames)
-                    {
-                        container->sphere4_2BulletCont->gotoAndStop((container->sphere4_2BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere4_2BulletCont->gotoAndStop(1);
-                    }
+                    container->sphere4_2BulletCont->tryPlay();
+                    //container->sphere4_2BulletCont->gotoAndStop((container->sphere4_2BulletCont->currentFrame + 1));
                 }
-                else if (container->sphere4_2Bullet->currentFrame == 2)
+                else
                 {
-                    if (container->sphere4_2BulletCont->currentFrame < container->sphere4_2BulletCont->totalFrames)
-                    {
-                        container->sphere4_2BulletCont->gotoAndStop((container->sphere4_2BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere4_2BulletCont->gotoAndStop(1);
-                    }
-                }
-                else if (container->sphere4_2Bullet->currentFrame == 3)
-                {
-                    if (container->sphere4_2BulletCont->currentFrame < container->sphere4_2BulletCont->totalFrames)
-                    {
-                        container->sphere4_2BulletCont->gotoAndStop((container->sphere4_2BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere4_2BulletCont->gotoAndStop(1);
-                    }
-                }
-                else if (container->sphere4_2Bullet->currentFrame == 4)
-                {
-                    if (container->sphere4_2BulletCont->currentFrame < container->sphere4_2BulletCont->totalFrames)
-                    {
-                        container->sphere4_2BulletCont->gotoAndStop((container->sphere4_2BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere4_2BulletCont->gotoAndStop(1);
-                    }
-                }
+                    container->sphere4_2BulletCont->gotoAndStop(1);
+                } 
                 if (container->sphere4_3->currentFrame < container->sphere4_3->totalFrames)
                 {
-                    container->sphere4_3->gotoAndStop((container->sphere4_3->currentFrame + 1));
+                    container->sphere4_3->tryPlay();
+                    //container->sphere4_3->gotoAndStop((container->sphere4_3->currentFrame + 1));
                 }
                 else
                 {
                     container->sphere4_3->gotoAndStop(1);
-                }
-                if (container->sphere4_3Bullet->currentFrame == 1)
+                } 
+                if (container->sphere4_3BulletCont->currentFrame < container->sphere4_3BulletCont->totalFrames)
                 {
-                    if (container->sphere4_3BulletCont->currentFrame < container->sphere4_3BulletCont->totalFrames)
-                    {
-                        container->sphere4_3BulletCont->gotoAndStop((container->sphere4_3BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere4_3BulletCont->gotoAndStop(1);
-                    }
+                    container->sphere4_3BulletCont->tryPlay();
+                    //container->sphere4_3BulletCont->gotoAndStop((container->sphere4_3BulletCont->currentFrame + 1));
                 }
-                else if (container->sphere4_3Bullet->currentFrame == 2)
+                else
                 {
-                    if (container->sphere4_3BulletCont->currentFrame < container->sphere4_3BulletCont->totalFrames)
-                    {
-                        container->sphere4_3BulletCont->gotoAndStop((container->sphere4_3BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere4_3BulletCont->gotoAndStop(1);
-                    }
-                }
-                else if (container->sphere4_3Bullet->currentFrame == 3)
-                {
-                    if (container->sphere4_3BulletCont->currentFrame < container->sphere4_3BulletCont->totalFrames)
-                    {
-                        container->sphere4_3BulletCont->gotoAndStop((container->sphere4_3BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere4_3BulletCont->gotoAndStop(1);
-                    }
-                }
-                else if (container->sphere4_3Bullet->currentFrame == 4)
-                {
-                    if (container->sphere4_3BulletCont->currentFrame < container->sphere4_3BulletCont->totalFrames)
-                    {
-                        container->sphere4_3BulletCont->gotoAndStop((container->sphere4_3BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere4_3BulletCont->gotoAndStop(1);
-                    }
-                }
+                    container->sphere4_3BulletCont->gotoAndStop(1);
+                } 
                 if (container->sphere4_4->currentFrame < container->sphere4_4->totalFrames)
                 {
-                    container->sphere4_4->gotoAndStop((container->sphere4_4->currentFrame + 1));
+                    container->sphere4_4->tryPlay();
+                    //container->sphere4_4->gotoAndStop((container->sphere4_4->currentFrame + 1));
                 }
                 else
                 {
                     container->sphere4_4->gotoAndStop(1);
-                }
-                if (container->sphere4_4Bullet->currentFrame == 1)
+                } 
+                if (container->sphere4_4BulletCont->currentFrame < container->sphere4_4BulletCont->totalFrames)
                 {
-                    if (container->sphere4_4BulletCont->currentFrame < container->sphere4_4BulletCont->totalFrames)
-                    {
-                        container->sphere4_4BulletCont->gotoAndStop((container->sphere4_4BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere4_4BulletCont->gotoAndStop(1);
-                    }
+                    container->sphere4_4BulletCont->tryPlay();
+                    //container->sphere4_4BulletCont->gotoAndStop((container->sphere4_4BulletCont->currentFrame + 1));
                 }
-                else if (container->sphere4_4Bullet->currentFrame == 2)
+                else
                 {
-                    if (container->sphere4_4BulletCont->currentFrame < container->sphere4_4BulletCont->totalFrames)
-                    {
-                        container->sphere4_4BulletCont->gotoAndStop((container->sphere4_4BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere4_4BulletCont->gotoAndStop(1);
-                    }
-                }
-                else if (container->sphere4_4Bullet->currentFrame == 3)
-                {
-                    if (container->sphere4_4BulletCont->currentFrame < container->sphere4_4BulletCont->totalFrames)
-                    {
-                        container->sphere4_4BulletCont->gotoAndStop((container->sphere4_4BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere4_4BulletCont->gotoAndStop(1);
-                    }
-                }
-                else if (container->sphere4_4Bullet->currentFrame == 4)
-                {
-                    if (container->sphere4_4BulletCont->currentFrame < container->sphere4_4BulletCont->totalFrames)
-                    {
-                        container->sphere4_4BulletCont->gotoAndStop((container->sphere4_4BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere4_4BulletCont->gotoAndStop(1);
-                    }
-                }
+                    container->sphere4_4BulletCont->gotoAndStop(1);
+                } 
             }
             return;
         }// end function

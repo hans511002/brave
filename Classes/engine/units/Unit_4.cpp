@@ -44,10 +44,8 @@ namespace engine
 					//{
 					//	container->gotoAndStop(1);
 					//}
-                    if(!this->container->isPlay())
-                    {
-                        this->container->play(1);
-                    }
+                    this->container->tryPlay();
+				    // 
                 }
                 else
                 {

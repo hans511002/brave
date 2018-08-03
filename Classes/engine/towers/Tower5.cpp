@@ -109,7 +109,8 @@ namespace engine
                 {
                     if (container->currentFrame < container->totalFrames)
                     {
-                        container->gotoAndStop((container->currentFrame + 1));
+                        container->tryPlay();
+                        //container->gotoAndStop((container->currentFrame + 1));
                     }
                     else
                     {
@@ -184,7 +185,8 @@ namespace engine
                 }
                 else if (container->upgr1->currentFrame < container->upgr1->totalFrames)
                 {
-                    container->upgr1->gotoAndStop((container->upgr1->currentFrame + 1));
+                    container->upgr1->tryPlay();
+                    //container->upgr1->gotoAndStop((container->upgr1->currentFrame + 1));
                     if (container->upgr1->currentFrame == 4)
                     {
                         MovieClip * tempObject = new MovieClip(world,"tower","ShotTower51_2_mc","ShotTower51_2_mc");//new Indexes(new ShotTower51_2_mc(), 3);

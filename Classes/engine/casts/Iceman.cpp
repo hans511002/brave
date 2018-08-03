@@ -219,7 +219,8 @@ namespace engine{
 					{
 						if (this->container->currentFrame < 50)
 						{
-							this->container->gotoAndStop((this->container->currentFrame + 1));
+							this->container->tryPlay();
+                            //this->container->gotoAndStop((this->container->currentFrame + 1));
 						}
 						else
 						{
@@ -230,7 +231,8 @@ namespace engine{
 					{
 						if (this->container->currentFrame < this->container->totalFrames)
 						{
-							this->container->gotoAndStop((this->container->currentFrame + 1));
+							this->container->tryPlay();
+                            //this->container->gotoAndStop((this->container->currentFrame + 1));
 						}
 						else
 						{
@@ -241,7 +243,8 @@ namespace engine{
 					{
 						if (this->container->currentFrame < 100)
 						{
-							this->container->gotoAndStop((this->container->currentFrame + 1));
+							this->container->tryPlay();
+                            //this->container->gotoAndStop((this->container->currentFrame + 1));
 						}
 						else
 						{
@@ -253,7 +256,8 @@ namespace engine{
 				{
 					if (this->blow->currentFrame < this->blow->totalFrames)
 					{
-						this->blow->gotoAndStop((this->blow->currentFrame + 1));
+						this->blow->tryPlay();
+                        //this->blow->gotoAndStop((this->blow->currentFrame + 1));
 						this->container->setAlpha(this->container->getAlpha() + (float)1 / this->blow->totalFrames);
 					}
 					else

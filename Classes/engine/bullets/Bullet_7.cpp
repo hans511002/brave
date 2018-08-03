@@ -91,7 +91,8 @@ namespace engine
 				{
 					if (container->smokeCont1->currentFrame < container->smokeCont1->totalFrames)
 					{
-						container->smokeCont1->gotoAndStop((container->smokeCont1->currentFrame + 1));
+						container->smokeCont1->tryPlay();
+			            //container->smokeCont1->gotoAndStop((container->smokeCont1->currentFrame + 1));
 					}
 					else
 					{
@@ -99,7 +100,8 @@ namespace engine
 					}
 					if (container->smokeCont2->currentFrame < container->smokeCont2->totalFrames)
 					{
-						container->smokeCont2->gotoAndStop((container->smokeCont2->currentFrame + 1));
+						container->smokeCont2->tryPlay();
+			            //container->smokeCont2->gotoAndStop((container->smokeCont2->currentFrame + 1));
 					}
 					else
 					{
@@ -120,7 +122,8 @@ namespace engine
 			{
 				if (container->currentFrame < container->totalFrames)
 				{
-					container->gotoAndStop((container->currentFrame + 1));
+					this->container->tryPlay();
+			        //container->gotoAndStop((container->currentFrame + 1));
 				}
 			}
 			if (liveCounter > 0)

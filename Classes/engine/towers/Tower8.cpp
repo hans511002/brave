@@ -92,7 +92,8 @@ namespace engine
                 {
                     if (container->cont1->currentFrame < container->cont1->totalFrames)
                     {
-                        container->cont1->gotoAndStop((container->cont1->currentFrame + 1));
+                        container->cont1->tryPlay();
+                        //container->cont1->gotoAndStop((container->cont1->currentFrame + 1));
                     }
                     else
                     {
@@ -100,7 +101,8 @@ namespace engine
                     }
                     if (container->cont2->currentFrame < container->cont2->totalFrames)
                     {
-                        container->cont2->gotoAndStop((container->cont2->currentFrame + 1));
+                        container->cont2->tryPlay();
+                        //container->cont2->gotoAndStop((container->cont2->currentFrame + 1));
                     }
                     else
                     {
@@ -108,7 +110,8 @@ namespace engine
                     }
                     if (container->cont3->currentFrame < container->cont3->totalFrames)
                     {
-                        container->cont3->gotoAndStop((container->cont3->currentFrame + 1));
+                        container->cont3->tryPlay();
+                        //container->cont3->gotoAndStop((container->cont3->currentFrame + 1));
                     }
                     else
                     {
@@ -180,7 +183,8 @@ namespace engine
                     {
                         if (container->cont4->currentFrame < container->cont4->totalFrames)
                         {
-                            container->cont4->gotoAndStop((container->cont4->currentFrame + 1));
+                            container->cont4->tryPlay();
+                            //container->cont4->gotoAndStop((container->cont4->currentFrame + 1));
                         }
                         else
                         {
@@ -192,7 +196,8 @@ namespace engine
                     {
                         if (container->cont5->currentFrame < container->cont5->totalFrames)
                         {
-                            container->cont5->gotoAndStop((container->cont5->currentFrame + 1));
+                            container->cont5->tryPlay();
+                            //container->cont5->gotoAndStop((container->cont5->currentFrame + 1));
                         }
                         else
                         {
@@ -204,7 +209,8 @@ namespace engine
                     {
                         if (container->cont6->currentFrame < container->cont6->totalFrames)
                         {
-                            container->cont6->gotoAndStop((container->cont6->currentFrame + 1));
+                            container->cont6->tryPlay();
+                            //container->cont6->gotoAndStop((container->cont6->currentFrame + 1));
                             if (container->cont6->currentFrame == 21)
                             {
                                 //Sounds.instance.playSound("snd_tower_firstShootUltraAdd1");
@@ -240,7 +246,8 @@ namespace engine
                 }
                 else if (container->fireLight1->currentFrame < container->fireLight1->totalFrames)
                 {
-                    container->fireLight1->gotoAndStop((container->fireLight1->currentFrame + 1));
+                    container->fireLight1->tryPlay();
+                    //container->fireLight1->gotoAndStop((container->fireLight1->currentFrame + 1));
                     if (container->fireLight1->currentFrame == 17)
                     {
                         if (!enemyTarget->dead)

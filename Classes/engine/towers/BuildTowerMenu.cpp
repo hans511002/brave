@@ -63,14 +63,16 @@ namespace engine{
                 {
                     if (this->container->currentFrame < 7)
                     {
-                        this->container->gotoAndStop((this->container->currentFrame + 1));
+                        this->container->tryPlay();
+                        //this->container->gotoAndStop((this->container->currentFrame + 1));
                     }
                 }
                 else if (this->container->currentFrame > 7)
                 {
                     if (this->container->currentFrame < this->container->totalFrames)
                     {
-                        this->container->gotoAndStop((this->container->currentFrame + 1));
+                        this->container->tryPlay();
+                        //this->container->gotoAndStop((this->container->currentFrame + 1));
                     }
                 }
             }

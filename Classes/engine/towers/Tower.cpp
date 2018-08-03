@@ -171,7 +171,8 @@ namespace engine{
 			}
 			else if (this->buildAnima->currentFrame < this->buildAnima->totalFrames)
 			{
-				this->buildAnima->gotoAndStop((this->buildAnima->currentFrame + 1));
+				this->buildAnima->tryPlay();
+                //this->buildAnima->gotoAndStop((this->buildAnima->currentFrame + 1));
 			}
 			else
 			{
@@ -1909,7 +1910,8 @@ namespace engine{
 				}
 				else if (container->boneBlock->currentFrame < 11)
 				{
-					container->boneBlock->gotoAndStop((container->boneBlock->currentFrame + 1));
+					this->container->boneBlock->tryPlay();
+                    //container->boneBlock->gotoAndStop((container->boneBlock->currentFrame + 1));
 				}
 				else
 				{
@@ -1946,7 +1948,8 @@ namespace engine{
 					}
 					if (container->blockTower->currentFrame < container->blockTower->totalFrames)
 					{
-						container->blockTower->gotoAndStop((container->blockTower->currentFrame + 1));
+						this->container->blockTower->tryPlay();
+                        //container->blockTower->gotoAndStop((container->blockTower->currentFrame + 1));
 					}
 					else
 					{
@@ -1957,7 +1960,8 @@ namespace engine{
 				{
 					if (container->blockTower->currentFrame < container->blockTower->totalFrames)
 					{
-						container->blockTower->gotoAndStop((container->blockTower->currentFrame + 1));
+						this->container->blockTower->tryPlay();
+                        //container->blockTower->gotoAndStop((container->blockTower->currentFrame + 1));
 					}
 					else
 					{

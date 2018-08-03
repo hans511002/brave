@@ -399,7 +399,8 @@ namespace engine{
 			}
 			if (this->container->currentFrame < this->container->totalFrames)
 			{
-				this->container->gotoAndStop((this->container->currentFrame + 1));
+			    this->container->tryPlay();
+				//this->container->gotoAndStop((this->container->currentFrame + 1));
 			}
 			if (this->container->currentFrame > 3 && this->container->currentFrame < 6)
 			{
@@ -457,7 +458,8 @@ namespace engine{
 				}
 				if (container->haze1->myFrame < 60)
 				{
-					container->haze1->gotoAndStop((container->haze1->myFrame + 1));
+				    container->haze1->tryPlay();
+					//container->haze1->gotoAndStop((container->haze1->myFrame + 1));
 				}
 				else
 				{
@@ -465,7 +467,8 @@ namespace engine{
 				}
 				if (container->haze2->myFrame < 60)
 				{
-					container->haze2->gotoAndStop((container->haze2->myFrame + 1));
+					container->haze2->tryPlay();
+					//container->haze2->gotoAndStop((container->haze2->myFrame + 1));
 				}
 				else
 				{
@@ -473,7 +476,8 @@ namespace engine{
 				}
 				if (container->haze3->myFrame < 60)
 				{
-					container->haze3->gotoAndStop((container->haze3->myFrame + 1));
+					container->haze3->tryPlay();
+					//container->haze3->gotoAndStop((container->haze3->myFrame + 1));
 				}
 				else
 				{
@@ -481,7 +485,8 @@ namespace engine{
 				}
 				if (container->haze4->myFrame < 60)
 				{
-					container->haze4->gotoAndStop((container->haze4->myFrame + 1));
+					container->haze4->tryPlay();
+					//container->haze4->gotoAndStop((container->haze4->myFrame + 1));
 				}
 				else
 				{
@@ -489,7 +494,8 @@ namespace engine{
 				}
 				if (container->haze5->myFrame < 60)
 				{
-					container->haze5->gotoAndStop((container->haze5->myFrame + 1));
+					container->haze5->tryPlay();
+					//container->haze5->gotoAndStop((container->haze5->myFrame + 1));
 				}
 				else
 				{
@@ -497,7 +503,8 @@ namespace engine{
 				}
 				if (container->haze6->myFrame < 60)
 				{
-					container->haze6->gotoAndStop((container->haze6->myFrame + 1));
+					container->haze6->tryPlay();
+					//container->haze6->gotoAndStop((container->haze6->myFrame + 1));
 				}
 				else
 				{
@@ -505,7 +512,8 @@ namespace engine{
 				}
 				if (container->haze7->myFrame < 60)
 				{
-					container->haze7->gotoAndStop((container->haze7->myFrame + 1));
+					container->haze7->tryPlay();
+					//container->haze7->gotoAndStop((container->haze7->myFrame + 1));
 				}
 				else
 				{
@@ -513,7 +521,8 @@ namespace engine{
 				}
 				if (container->haze8->myFrame < 60)
 				{
-					container->haze8->gotoAndStop((container->haze8->myFrame + 1));
+					container->haze8->tryPlay();
+					//container->haze8->gotoAndStop((container->haze8->myFrame + 1));
 				}
 				else
 				{
@@ -521,7 +530,8 @@ namespace engine{
 				}
 				if (container->haze9->myFrame < 60)
 				{
-					container->haze9->gotoAndStop((container->haze9->myFrame + 1));
+					container->haze9->tryPlay();
+					//container->haze9->gotoAndStop((container->haze9->myFrame + 1));
 				}
 				else
 				{
@@ -534,7 +544,8 @@ namespace engine{
 				{
 					if (container->haze1->currentFrame < 60)
 					{
-						container->haze1->gotoAndStop((container->haze1->currentFrame + 1));
+						container->haze1->tryPlay();
+					    //container->haze1->gotoAndStop((container->haze1->currentFrame + 1));
 					}
 					else
 					{
@@ -542,7 +553,8 @@ namespace engine{
 					}
 					if (container->haze2->currentFrame < 60)
 					{
-						container->haze2->gotoAndStop((container->haze2->currentFrame + 1));
+						container->haze2->tryPlay();
+					    //container->haze2->gotoAndStop((container->haze2->currentFrame + 1));
 					}
 					else
 					{
@@ -550,7 +562,8 @@ namespace engine{
 					}
 					if (container->haze3->currentFrame < 60)
 					{
-						container->haze3->gotoAndStop((container->haze3->currentFrame + 1));
+						container->haze3->tryPlay();
+					    //container->haze3->gotoAndStop((container->haze3->currentFrame + 1));
 					}
 					else
 					{
@@ -558,7 +571,8 @@ namespace engine{
 					}
 					if (container->haze4->currentFrame < 60)
 					{
-						container->haze4->gotoAndStop((container->haze4->currentFrame + 1));
+						container->haze4->tryPlay();
+					    //container->haze4->gotoAndStop((container->haze4->currentFrame + 1));
 					}
 					else
 					{
@@ -566,7 +580,8 @@ namespace engine{
 					}
 					if (container->haze5->currentFrame < 60)
 					{
-						container->haze5->gotoAndStop((container->haze5->currentFrame + 1));
+						container->haze5->tryPlay();
+					    //container->haze5->gotoAndStop((container->haze5->currentFrame + 1));
 					}
 					else
 					{
@@ -574,7 +589,8 @@ namespace engine{
 					}
 					if (container->haze6->currentFrame < 60)
 					{
-						container->haze6->gotoAndStop((container->haze6->currentFrame + 1));
+						container->haze6->tryPlay();
+					    //container->haze6->gotoAndStop((container->haze6->currentFrame + 1));
 					}
 					else
 					{
@@ -582,7 +598,8 @@ namespace engine{
 					}
 					if (container->haze7->currentFrame < 60)
 					{
-						container->haze7->gotoAndStop((container->haze7->currentFrame + 1));
+						container->haze7->tryPlay();
+					    //container->haze7->gotoAndStop((container->haze7->currentFrame + 1));
 					}
 					else
 					{
@@ -590,7 +607,8 @@ namespace engine{
 					}
 					if (container->haze8->currentFrame < 60)
 					{
-						container->haze8->gotoAndStop((container->haze8->currentFrame + 1));
+						container->haze8->tryPlay();
+					    //container->haze8->gotoAndStop((container->haze8->currentFrame + 1));
 					}
 					else
 					{
@@ -598,7 +616,8 @@ namespace engine{
 					}
 					if (container->haze9->currentFrame < 60)
 					{
-						container->haze9->gotoAndStop((container->haze9->currentFrame + 1));
+						container->haze9->tryPlay();
+					    //container->haze9->gotoAndStop((container->haze9->currentFrame + 1));
 					}
 					else
 					{
@@ -609,39 +628,48 @@ namespace engine{
 				{
 					if (container->haze1->currentFrame < container->haze1->totalFrames)
 					{
-						container->haze1->gotoAndStop((container->haze1->currentFrame + 1));
+						container->haze1->tryPlay();
+					    //container->haze1->gotoAndStop((container->haze1->currentFrame + 1));
 					}
 					if (container->haze2->currentFrame < container->haze2->totalFrames)
 					{
-						container->haze2->gotoAndStop((container->haze2->currentFrame + 1));
+						container->haze2->tryPlay();
+					    //container->haze2->gotoAndStop((container->haze2->currentFrame + 1));
 					}
 					if (container->haze3->currentFrame < container->haze3->totalFrames)
 					{
-						container->haze3->gotoAndStop((container->haze3->currentFrame + 1));
+						container->haze3->tryPlay();
+					    //container->haze3->gotoAndStop((container->haze3->currentFrame + 1));
 					}
 					if (container->haze4->currentFrame < container->haze4->totalFrames)
 					{
-						container->haze4->gotoAndStop((container->haze4->currentFrame + 1));
+						container->haze4->tryPlay();
+					    //container->haze4->gotoAndStop((container->haze4->currentFrame + 1));
 					}
 					if (container->haze5->currentFrame < container->haze5->totalFrames)
 					{
-						container->haze5->gotoAndStop((container->haze5->currentFrame + 1));
+						container->haze5->tryPlay();
+					    //container->haze5->gotoAndStop((container->haze5->currentFrame + 1));
 					}
 					if (container->haze6->currentFrame < container->haze6->totalFrames)
 					{
-						container->haze6->gotoAndStop((container->haze6->currentFrame + 1));
+						container->haze6->tryPlay();
+					    //container->haze6->gotoAndStop((container->haze6->currentFrame + 1));
 					}
 					if (container->haze7->currentFrame < container->haze7->totalFrames)
 					{
-						container->haze7->gotoAndStop((container->haze7->currentFrame + 1));
+						container->haze7->tryPlay();
+					    //container->haze7->gotoAndStop((container->haze7->currentFrame + 1));
 					}
 					if (container->haze8->currentFrame < container->haze8->totalFrames)
 					{
-						container->haze8->gotoAndStop((container->haze8->currentFrame + 1));
+						container->haze8->tryPlay();
+					    //container->haze8->gotoAndStop((container->haze8->currentFrame + 1));
 					}
 					if (container->haze9->currentFrame < container->haze9->totalFrames)
 					{
-						container->haze9->gotoAndStop((container->haze9->currentFrame + 1));
+						container->haze9->tryPlay();
+					    //container->haze9->gotoAndStop((container->haze9->currentFrame + 1));
 					}
 				}
 				this->i = this->world->listOfUnits.size() - 1;
@@ -704,7 +732,8 @@ namespace engine{
 			}
 			if (this->additAnamation->currentFrame < this->additAnamation->totalFrames)
 			{
-				this->additAnamation->gotoAndStop((this->additAnamation->currentFrame + 1));
+				this->additAnamation->tryPlay();
+				//this->additAnamation->gotoAndStop((this->additAnamation->currentFrame + 1));
 			}
 			if (this->additAnamation->currentFrame == 4 || this->additAnamation->currentFrame == 5 || this->additAnamation->currentFrame == 6)
 			{
@@ -729,7 +758,8 @@ namespace engine{
 				}
 				if (this->additAnamation->swamp1->myFrame < 62)
 				{
-					this->additAnamation->swamp1->gotoAndStop((this->additAnamation->swamp1->currentFrame + 1));
+					this->additAnamation->swamp1->tryPlay();
+					//this->additAnamation->swamp1->gotoAndStop((this->additAnamation->swamp1->currentFrame + 1));
 				}
 				else
 				{
@@ -737,7 +767,8 @@ namespace engine{
 				}
 				if (this->additAnamation->swamp2->myFrame < 62)
 				{
-					this->additAnamation->swamp2->gotoAndStop((this->additAnamation->swamp2->currentFrame + 1));
+					this->additAnamation->swamp2->tryPlay();
+					//this->additAnamation->swamp2->gotoAndStop((this->additAnamation->swamp2->currentFrame + 1));
 				}
 				else
 				{
@@ -745,7 +776,8 @@ namespace engine{
 				}
 				if (this->additAnamation->swamp3->myFrame < 62)
 				{
-					this->additAnamation->swamp3->gotoAndStop((this->additAnamation->swamp3->currentFrame + 1));
+					this->additAnamation->swamp3->tryPlay();
+					//this->additAnamation->swamp3->gotoAndStop((this->additAnamation->swamp3->currentFrame + 1));
 				}
 				else
 				{
@@ -753,7 +785,8 @@ namespace engine{
 				}
 				if (this->additAnamation->swamp4->myFrame < 62)
 				{
-					this->additAnamation->swamp4->gotoAndStop((this->additAnamation->swamp4->currentFrame + 1));
+					this->additAnamation->swamp4->tryPlay();
+					//this->additAnamation->swamp4->gotoAndStop((this->additAnamation->swamp4->currentFrame + 1));
 				}
 				else
 				{
@@ -761,7 +794,8 @@ namespace engine{
 				}
 				if (this->additAnamation->swamp5->myFrame < 62)
 				{
-					this->additAnamation->swamp5->gotoAndStop((this->additAnamation->swamp5->currentFrame + 1));
+					this->additAnamation->swamp5->tryPlay();
+					//this->additAnamation->swamp5->gotoAndStop((this->additAnamation->swamp5->currentFrame + 1));
 				}
 				else
 				{
@@ -774,7 +808,8 @@ namespace engine{
 				{
 					if (this->additAnamation->swamp1->currentFrame < 62)
 					{
-						this->additAnamation->swamp1->gotoAndStop((this->additAnamation->swamp1->currentFrame + 1));
+						this->additAnamation->swamp1->tryPlay();
+					    //this->additAnamation->swamp1->gotoAndStop((this->additAnamation->swamp1->currentFrame + 1));
 					}
 					else
 					{
@@ -782,7 +817,8 @@ namespace engine{
 					}
 					if (this->additAnamation->swamp2->currentFrame < 62)
 					{
-						this->additAnamation->swamp2->gotoAndStop((this->additAnamation->swamp2->currentFrame + 1));
+						this->additAnamation->swamp2->tryPlay();
+					    //this->additAnamation->swamp2->gotoAndStop((this->additAnamation->swamp2->currentFrame + 1));
 					}
 					else
 					{
@@ -790,7 +826,8 @@ namespace engine{
 					}
 					if (this->additAnamation->swamp3->currentFrame < 62)
 					{
-						this->additAnamation->swamp3->gotoAndStop((this->additAnamation->swamp3->currentFrame + 1));
+						this->additAnamation->swamp3->tryPlay();
+					    //this->additAnamation->swamp3->gotoAndStop((this->additAnamation->swamp3->currentFrame + 1));
 					}
 					else
 					{
@@ -798,7 +835,8 @@ namespace engine{
 					}
 					if (this->additAnamation->swamp4->currentFrame < 62)
 					{
-						this->additAnamation->swamp4->gotoAndStop((this->additAnamation->swamp4->currentFrame + 1));
+						this->additAnamation->swamp4->tryPlay();
+					    //this->additAnamation->swamp4->gotoAndStop((this->additAnamation->swamp4->currentFrame + 1));
 					}
 					else
 					{
@@ -806,7 +844,8 @@ namespace engine{
 					}
 					if (this->additAnamation->swamp5->currentFrame < 62)
 					{
-						this->additAnamation->swamp5->gotoAndStop((this->additAnamation->swamp5->currentFrame + 1));
+						this->additAnamation->swamp5->tryPlay();
+					    //this->additAnamation->swamp5->gotoAndStop((this->additAnamation->swamp5->currentFrame + 1));
 					}
 					else
 					{
@@ -817,23 +856,28 @@ namespace engine{
 				{
 					if (this->additAnamation->swamp1->currentFrame < this->additAnamation->swamp1->totalFrames)
 					{
-						this->additAnamation->swamp1->gotoAndStop((this->additAnamation->swamp1->currentFrame + 1));
+						this->additAnamation->swamp1->tryPlay();
+					    //this->additAnamation->swamp1->gotoAndStop((this->additAnamation->swamp1->currentFrame + 1));
 					}
 					if (this->additAnamation->swamp2->currentFrame < this->additAnamation->swamp2->totalFrames)
 					{
-						this->additAnamation->swamp2->gotoAndStop((this->additAnamation->swamp2->currentFrame + 1));
+						this->additAnamation->swamp2->tryPlay();
+					    //this->additAnamation->swamp2->gotoAndStop((this->additAnamation->swamp2->currentFrame + 1));
 					}
 					if (this->additAnamation->swamp3->currentFrame < this->additAnamation->swamp3->totalFrames)
 					{
-						this->additAnamation->swamp3->gotoAndStop((this->additAnamation->swamp3->currentFrame + 1));
+						this->additAnamation->swamp3->tryPlay();
+					    //this->additAnamation->swamp3->gotoAndStop((this->additAnamation->swamp3->currentFrame + 1));
 					}
 					if (this->additAnamation->swamp4->currentFrame < this->additAnamation->swamp4->totalFrames)
 					{
-						this->additAnamation->swamp4->gotoAndStop((this->additAnamation->swamp4->currentFrame + 1));
+						this->additAnamation->swamp4->tryPlay();
+					    //this->additAnamation->swamp4->gotoAndStop((this->additAnamation->swamp4->currentFrame + 1));
 					}
 					if (this->additAnamation->swamp5->currentFrame < this->additAnamation->swamp5->totalFrames)
 					{
-						this->additAnamation->swamp5->gotoAndStop((this->additAnamation->swamp5->currentFrame + 1));
+						this->additAnamation->swamp5->tryPlay();
+					    //this->additAnamation->swamp5->gotoAndStop((this->additAnamation->swamp5->currentFrame + 1));
 					}
 				}
 			}
@@ -885,7 +929,8 @@ namespace engine{
 		{
 			if (this->sphereType == "fire")
 			{
-				this->container->gotoAndStop((this->container->currentFrame + 1));
+			    this->container->tryPlay();
+				//this->container->gotoAndStop((this->container->currentFrame + 1));
 				if (this->container->currentFrame == 2)
 				{
 					this->i = this->world->listOfUnits.size() - 1;
@@ -910,7 +955,8 @@ namespace engine{
 			}
 			else if (this->sphereType == "ice")
 			{
-				this->container->gotoAndStop((this->container->currentFrame + 1));
+			    this->container->tryPlay();
+				//this->container->gotoAndStop((this->container->currentFrame + 1));
 				if (this->container->currentFrame == 2)
 				{
 					this->i = this->world->listOfUnits.size() - 1;
@@ -945,7 +991,8 @@ namespace engine{
 				}
 				else
 				{
-					this->container->gotoAndStop((this->container->currentFrame + 1));
+					this->container->tryPlay();
+					//this->container->gotoAndStop((this->container->currentFrame + 1));
 					if (this->container->currentFrame == 2)
 					{
 						this->i = this->world->listOfUnits.size() - 1;
@@ -971,7 +1018,8 @@ namespace engine{
 			}
 			else if (this->sphereType == "levin")
 			{
-				this->container->gotoAndStop((this->container->currentFrame + 1));
+				this->container->tryPlay();
+				//this->container->gotoAndStop((this->container->currentFrame + 1));
 				if (this->container->currentFrame == 2)
 				{
 					this->i = this->world->listOfUnits.size() - 1;
@@ -996,7 +1044,8 @@ namespace engine{
 			}
 			else if (this->sphereType == "fireIce")
 			{
-				this->container->gotoAndStop((this->container->currentFrame + 1));
+				this->container->tryPlay();
+				//this->container->gotoAndStop((this->container->currentFrame + 1));
 				if (this->container->currentFrame == 2)
 				{
 					this->i = this->world->listOfUnits.size() - 1;
@@ -1022,7 +1071,8 @@ namespace engine{
 			}
 			else if (this->sphereType == "fireStone")
 			{
-				this->container->gotoAndStop((this->container->currentFrame + 1));
+				this->container->tryPlay();
+				//this->container->gotoAndStop((this->container->currentFrame + 1));
 				if (this->container->currentFrame == 2)
 				{
 					this->i = this->world->listOfUnits.size() - 1;
@@ -1049,7 +1099,8 @@ namespace engine{
 			}
 			else if (this->sphereType == "fireLevin")
 			{
-				this->container->gotoAndStop((this->container->currentFrame + 1));
+				this->container->tryPlay();
+				//this->container->gotoAndStop((this->container->currentFrame + 1));
 				if (this->container->currentFrame == 2)
 				{
 					this->i = this->world->listOfUnits.size() - 1;
@@ -1076,7 +1127,8 @@ namespace engine{
 			}
 			else if (this->sphereType == "iceStone")
 			{
-				this->container->gotoAndStop((this->container->currentFrame + 1));
+				this->container->tryPlay();
+				//this->container->gotoAndStop((this->container->currentFrame + 1));
 				if (this->container->currentFrame == 2)
 				{
 					this->i = this->world->listOfUnits.size() - 1;
@@ -1103,7 +1155,8 @@ namespace engine{
 			}
 			else if (this->sphereType == "iceLevin")
 			{
-				this->container->gotoAndStop((this->container->currentFrame + 1));
+				this->container->tryPlay();
+				//this->container->gotoAndStop((this->container->currentFrame + 1));
 				if (this->container->currentFrame == 2)
 				{
 					this->i = this->world->listOfUnits.size() - 1;
@@ -1130,7 +1183,8 @@ namespace engine{
 			}
 			else if (this->sphereType == "stoneLevin")
 			{
-				this->container->gotoAndStop((this->container->currentFrame + 1));
+				this->container->tryPlay();
+				//this->container->gotoAndStop((this->container->currentFrame + 1));
 				if (this->container->currentFrame == 2)
 				{
 					this->i = this->world->listOfUnits.size() - 1;
@@ -1157,7 +1211,8 @@ namespace engine{
 			}
 			else if (this->sphereType == "getAllLittle")
 			{
-				this->container->gotoAndStop((this->container->currentFrame + 1));
+				this->container->tryPlay();
+				//this->container->gotoAndStop((this->container->currentFrame + 1));
 				if (this->container->currentFrame == 4)
 				{
 					this->i = this->world->listOfUnits.size() - 1;
@@ -1208,7 +1263,8 @@ namespace engine{
 			}
 			else if (this->sphereType == "getAll")
 			{
-				this->container->gotoAndStop((this->container->currentFrame + 1));
+				this->container->tryPlay();
+				//this->container->gotoAndStop((this->container->currentFrame + 1));
 				if (this->container->currentFrame == 4)
 				{
 					this->i = this->world->listOfUnits.size() - 1;

@@ -92,7 +92,8 @@ namespace engine
                         }
                         else if (this->myPortal->currentFrame < this->myPortal->totalFrames)
                         {
-                            this->myPortal->gotoAndStop((this->myPortal->currentFrame + 1));
+                            this->myPortal->tryPlay();
+				            //this->myPortal->gotoAndStop((this->myPortal->currentFrame + 1));
                         }
                         else
                         {
@@ -103,7 +104,8 @@ namespace engine
                     }
                     else if (this->myPortal->currentFrame < this->myPortal->totalFrames)
                     {
-                        this->myPortal->gotoAndStop((this->myPortal->currentFrame + 1));
+                        this->myPortal->tryPlay();
+				        //this->myPortal->gotoAndStop((this->myPortal->currentFrame + 1));
                         if (this->myPortal->currentFrame == 14)
                         {
                             this->portalAnima->setVisible(true);
@@ -112,7 +114,8 @@ namespace engine
                         {
                             if (this->portalAnima->currentFrame < this->portalAnima->totalFrames)
                             {
-                                this->portalAnima->gotoAndStop((this->portalAnima->currentFrame + 1));
+                                this->portalAnima->tryPlay();
+				                //this->portalAnima->gotoAndStop((this->portalAnima->currentFrame + 1));
                                 if (this->portalAnima->currentFrame > 8)
                                 {
                                     if (container->getAlpha() < 1)
@@ -150,7 +153,8 @@ namespace engine
                     {
                         if (container->contMcs->currentFrame < 60)
                         {
-                            container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
+                            container->contMcs->tryPlay();
+				            //container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
                         }
                         else
                         {
@@ -166,7 +170,8 @@ namespace engine
                 {
                     if (container->contMcs->currentFrame < container->contMcs->totalFrames)
                     {
-                        container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
+                        container->contMcs->tryPlay();
+				        //container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
                     }
                     else
                     {
