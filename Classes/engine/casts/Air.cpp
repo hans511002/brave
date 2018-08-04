@@ -108,7 +108,7 @@ namespace engine
 			this->setPosition(this->this_pt);
 			//      this->x = this->this_pt.x;
 			//      this->y = this->this_pt.y;
-			this->container->setAlpha(0.1);
+			this->container->setAlpha(0.01f);
 			this->setPositionY(this->getPositionY() + 200);
 			//      this->y = this->y - 200;
 			this->setMouseChildren(false);

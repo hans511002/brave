@@ -91,8 +91,10 @@ namespace engine
                 {
                     if((this->bindListenType & type)!=type)
                     {
-                        mc->container->getEventDispatcher()->setEnabled(true);
-						mc->container->getEventDispatcher()->addCustomEventListener(dragonBones::EventObject::COMPLETE, std::bind(&MC::completeHandler, this, std::placeholders::_1));
+						if (!mc->isOnce) {
+							mc->container->getEventDispatcher()->setEnabled(true);
+							mc->container->getEventDispatcher()->addCustomEventListener(dragonBones::EventObject::COMPLETE, std::bind(&MC::completeHandler, this, std::placeholders::_1));
+						}
                         this->bindListenType = this->bindListenType | type;
                     }
                 }
@@ -769,7 +771,7 @@ namespace engine
 		if (world)
 		{
 			this->isOnce = true;
-			this->world->addChild(this);
+			this->world->addChild(this,3);
 		}
 		else
 		{

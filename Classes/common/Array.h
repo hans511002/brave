@@ -166,9 +166,14 @@ namespace Common
 	}
 	template <class T> inline T& Array<T>::operator[](int i)
 	{
-		while(i<0)
-			i=this->size()+i;
-		if(i<=(int)(this->size()-1))
+		while (i < 0)
+		{
+			if (this->size() < -i) {
+				this->resize(-i);
+			}
+			i = this->size() + i;
+		}
+		if (i <= (int)(this->size() - 1))
 		{
 			return this->at(i);
 		}

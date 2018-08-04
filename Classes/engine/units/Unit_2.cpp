@@ -37,7 +37,7 @@ namespace engine
 				}
 				if (!airFlag && !airShockFlag)
 				{ 
-                    container->->tryPlay();
+                    container->tryPlay();
 				    //
                     //if (container->currentFrame < container->totalFrames)
 					//{

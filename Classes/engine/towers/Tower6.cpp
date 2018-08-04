@@ -79,7 +79,7 @@ namespace engine
 				{
 					if (container->currentFrame < container->totalFrames)
 					{
-						container->->tryPlay();
+						container->tryPlay();
                         //container->gotoAndStop((container->currentFrame + 1));
 					}
 					else

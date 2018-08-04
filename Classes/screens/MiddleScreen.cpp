@@ -157,20 +157,26 @@ namespace screens
             if (!this->middleRound)
             {
 				//Main::mainClass->preload.join();
-				//if (Main::mainClass->preload.getProgress() < 1){
-				//	this->frameCounter--;
-				//	return;
-				//}
-                this->middleRound = new  MiddleScreenCentr_mc();
-                this->middleRound->stop();
+				this->middleRound = new  MiddleScreenCentr_mc();
+				this->middleRound->stop();
 				this->middleRound->setPositionX(Main::SCREEN_WIDTH_HALF);
 				this->middleRound->setPositionY(Main::SCREEN_HEIGHT_HALF); 
-                this->addChild(this->middleRound);
+				this->addChild(this->middleRound);
+			 
                 Main::mainClass->removeAllScreens();
                 Main::mainClass->addNewScreen(this->openScreenName);
                 Main::mainClass->container->manageListeners("off");
-				Main::mainClass->preload.join();
             }
+			if (this->frameCounter == 17 && Main::mainClass->preload.getProgress() < 1) {
+				this->frameCounter--;
+				Main::mainClass->preload.setAutoClose();
+				if (!Main::mainClass->preload.isStartSch())
+					Main::mainClass->preload.startSch();
+				return;
+			}
+			else {
+				Main::mainClass->preload.join();
+			}
 			if(this->middleRound->currentFrame < this->middleRound->totalFrames)
             {
 				this->middleRound->gotoAndStop((this->middleRound->currentFrame + 1));

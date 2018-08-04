@@ -2,17 +2,20 @@
 #include "FileUtil.h"
 namespace std
 {
-	DbPreload::DbPreload(const string & dir, bool autoStart) : running(true), thr(NULL), autoClose(true), autoStart(autoStart), loadSkeNum(0), loadTexNum(0)
+	mutex DbPreload::dbloadMutex;
+
+	DbPreload::DbPreload(const string & dir, bool autoStart) : running(true), thr(NULL), autoClose(true), autoStart(autoStart), loadSkeNum(0), loadTexNum(0), _startSch(false)
     {
         thr = new std::thread(&DbPreload::run, this);
     };
 
-	DbPreload::DbPreload(bool autoStart) :running(true), thr(NULL), autoClose(false), autoStart(autoStart), loadSkeNum(0), loadTexNum(0)
+	DbPreload::DbPreload(bool autoStart) :running(true), thr(NULL), autoClose(false), autoStart(autoStart), loadSkeNum(0), loadTexNum(0), _startSch(false)
     {
         thr=new std::thread(&DbPreload::run, this); 
     }; 
     void DbPreload::start() {
         this->autoStart = true;
+		this->startSch();
     };
 
     DbPreload::~DbPreload() 
@@ -40,14 +43,18 @@ namespace std
     void DbPreload::addPreLoadDir(const string & dir)
     {
         //std::mutex mutex;//线程互斥对象   std::ref(n)引用传递参数
-        PMutex m(this->m);
+        PMutex m(&this->m);
         preLoadDirs.push_back(dir);
+		if (thr = NULL) {
+			autoStart = true;
+			thr = new std::thread(&DbPreload::run, this);
+		}
     };
     void DbPreload::addPreLoadDb(const string & dir, const string & dbName)
     {
 		Common::Array<DbFile> dbs = DbPreload::listDbFiles(dir, dbName);
 		if (!dbs.empty()){
-			PMutex m(this->m);
+			PMutex m(&this->m);
 			for (int i = 0; i < dbs.size(); i++)
 			{
 				DbFile & dbf = dbs.at(i);
@@ -56,6 +63,10 @@ namespace std
 					DbFile *dbp = new DbFile(dbf);
 					loadDbFiles.push(dbp);
  					this->dbNameMap.insert(DbFileMap::value_type(dbName, dbp));
+					if (thr = NULL) {
+						autoStart = true;
+						thr = new std::thread(&DbPreload::run, this);
+					}
 				}
 			}
 		}
@@ -64,16 +75,20 @@ namespace std
 		addPreLoadDb(DbFile(ske, tex, dbName));
 	};
 	void  DbPreload::addPreLoadDb(const DbFile & dbf){
-		PMutex m(this->m);
+		PMutex m(&this->m);
 		if (this->dbNameMap.find(dbf.dbName) == this->dbNameMap.end())
 		{
 			DbFile *dbp = new DbFile(dbf);
 			loadDbFiles.push(dbp); 
 			this->dbNameMap.insert(DbFileMap::value_type(dbf.dbName, dbp));
+			if (thr = NULL) {
+				autoStart = true;
+				thr = new std::thread(&DbPreload::run, this);
+			}
 		}
 	}
 	void DbPreload::addPreLoadDb(const Common::Array<DbFile> & dbs){
-		PMutex m(this->m);
+		PMutex m(&this->m);
 		for (int i = 0; i < dbs.size(); i++)
 		{
 			const DbFile & dbf = dbs.at(i);
@@ -82,6 +97,10 @@ namespace std
 				DbFile *dbp = new DbFile(dbf);
 				loadDbFiles.push(dbp);
 				this->dbNameMap.insert(DbFileMap::value_type(dbf.dbName, dbp));
+				if (thr = NULL) {
+					autoStart = true;
+					thr = new std::thread(&DbPreload::run, this);
+				}
 			}
 		}
 	};
@@ -117,7 +136,6 @@ namespace std
     };
     void DbPreload::run()
     {
-		startSch = false;
         int loadIdx = 0;
         while(running) 
         {
@@ -133,7 +151,7 @@ namespace std
             { 
                 string dirPath;
                 {
-                    PMutex m(this->m);
+                    PMutex m(&this->m);
                     if(!preLoadDirs.empty())
                     {
                         dirPath = preLoadDirs.remove(0);
@@ -157,36 +175,45 @@ namespace std
 						}
                     }
                 }
-                if(dirPath.empty()){
-					if (autoClose)break;
-					if (running)
-                        Sleep(100);//0.1s
-                    continue;
-                }
-				if (dirPath[dirPath.size() - 1] != '/')
-					dirPath = dirPath + "/";
-                //扫描子文件夹
-				Common::Array<DbFile> dbs=listDbFiles(dirPath);
-				if (!dbs.empty()){
-					addPreLoadDb(dbs);
-				}
-				Common::DirectoryInfo dir(dirPath);
-                vector<string> subDirs = FileUtil::getAllFiles(dirPath, true, false, true);
-				//Common::Array<Common::String>  subDirs = dir.GetDirectories("", false, Common::SearchOption::AllDirectories);
-				if (!subDirs.empty()){
-					for (int i = 0; i < subDirs.size(); i++)
-					{
-						string sbdir=subDirs.at(i);
-						Common::Array<DbFile> sdbs = listDbFiles(sbdir);
-						if (!sdbs.empty())	
-                            addPreLoadDb(sdbs);
+                if(dirPath.empty() ){
+					if (getProgress() == 1) {
+						if (autoClose)
+						{
+							break;
+						}
+						else
+						{
+							Sleep(100);//0.1s
+							continue;
+						}
+					}
+					else if(loadIdx = loadDbFiles.size() ){
+						Sleep(100);//0.1s
+						continue;
 					}
 				}
-				if (!startSch)
-				{
-					Director::getInstance()->getScheduler()->schedule(schedule_selector(DbPreload::addImageAsyncCallBack), this, 0, false);
-					startSch = true;
+				else {
+					if (dirPath[dirPath.size() - 1] != '/')
+						dirPath = dirPath + "/";
+					//扫描子文件夹
+					Common::Array<DbFile> dbs=listDbFiles(dirPath);
+					if (!dbs.empty()){
+						addPreLoadDb(dbs);
+					}
+					Common::DirectoryInfo dir(dirPath);
+					vector<string> subDirs = FileUtil::getAllFiles(dirPath, true, false, true);
+					//Common::Array<Common::String>  subDirs = dir.GetDirectories("", false, Common::SearchOption::AllDirectories);
+					if (!subDirs.empty()){
+						for (int i = 0; i < subDirs.size(); i++)
+						{
+							string sbdir=subDirs.at(i);
+							Common::Array<DbFile> sdbs = listDbFiles(sbdir);
+							if (!sdbs.empty())	
+								addPreLoadDb(sdbs);
+						}
+					}
 				}
+				
 				int len = loadDbFiles.size();
                 for(int i = loadIdx; i < len; i++)
 				{
@@ -205,7 +232,20 @@ namespace std
             } 
         }
 		running = false;
+		thr = NULL;
     };
+
+	void DbPreload::startSch() {
+		if (!_startSch)
+		{
+			Director::getInstance()->getScheduler()->schedule(schedule_selector(DbPreload::addImageAsyncCallBack), this, 0, false);
+			_startSch = true;
+		}
+	}
+	bool DbPreload::isStartSch() {
+		return this->_startSch;
+	};
+
 	Common::Array<DbFile>  DbPreload::listDbFiles(const string & dir, const string & dbName){
 		Common::Array<DbFile> res;
         vector<string> sfiles = FileUtil::getAllFiles(dir,  false,true, false);
@@ -251,12 +291,15 @@ namespace std
  
 	void DbPreload::loadDbData(DbFile & db){
 		const auto factory = dragonBones::CCFactory::getFactory();
+		PMutex loadm(&dbloadMutex);
 		if (!factory->getDragonBonesData(db.dbName))
 		{
+			LOGINFO("DbPreload:%s,%s", db.dbName.c_str(),db.ske.c_str());
 			factory->loadDragonBonesData(db.ske, db.dbName); 
-			PMutex m(this->m);
+			PMutex m(&this->m);
 			this->dbNameMap[db.dbName]->state |= 1;
 		}
+		//loadm.unlock();
 	};
 	void DbPreload::addImageAsyncCallBack(float dt){
 		const auto factory = dragonBones::CCFactory::getFactory();
@@ -266,22 +309,27 @@ namespace std
 			DbFile * db = loadDbFiles.at(i);
 			int state=this->dbNameMap[db->dbName]->state;
 			if (!(state & 2)){
+				//PMutex loadm(&dbloadMutex);
 				factory->loadTextureAtlasData(db->tex, db->dbName);
-				PMutex m(this->m);
+				//loadm.unlock();
+				PMutex m(&this->m);
 				this->dbNameMap[db->dbName]->state |= 2;
 				loadTexNum++;
 			}
 			i++;
 		}
-		if (loadTexNum == loadSkeNum){
+		if (loadTexNum == loadSkeNum && loadSkeNum>0){
 			Director::getInstance()->getScheduler()->unschedule(CC_SCHEDULE_SELECTOR(DbPreload::addImageAsyncCallBack), this);
-			startSch = false;
+			_startSch = false;
 		}
 	}
 
     float DbPreload::getProgress() {
 		double d = loadSkeNum + loadTexNum;
         double l = loadDbFiles.size()*2;
+		if (!preLoadDirs.empty()) {
+			l += 10;
+		}
         return d/l;
     };
 }

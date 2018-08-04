@@ -44,7 +44,7 @@ bool Main::init()
     //this->stage.align = StageAlign.TOP_LEFT;
     //this->boldTextFormat = new TextFormat();
     //this->boldTextFormat.bold = true;
-    double aniInterval = Director::getInstance()->getAnimationInterval() - 0.00000001;
+    double aniInterval = Director::getInstance()->getAnimationInterval() - 0.0000001;
     aniInterval = 1 / aniInterval;
     Main::fps = aniInterval;
     float psf = Director::getInstance()->getSecondsPerFrame();

@@ -230,6 +230,7 @@ namespace engine
 		for (int i = 0; i < levelPointerSize; i++)
 		{
 			LevelPointer * pointer = this->world->level->pointers[0];
+			pointer->retain();
 			pointer->statusAnima = 1;
 			pointer->myPoint = cocos2d::Point(pointer->getPosition());
 			pointer->gotoAndStop(2);
@@ -241,8 +242,12 @@ namespace engine
 			//pointer->getArmature()->getBone("mask2")->offset.rotation=180;
 			//pointer->mask2->setRotation(180);
 			pointer->pointerCase->setMouseEnabled(true);
-			//this->world->level.removeChild(this->world->pointer1);
-			//this->world->addChild(this->world->pointer1);
+			Vec2 pos = pointer->display->convertToWorldSpace(pointer->getPosition());
+			pointer->display->removeChild(pointer,false);
+			//this->world->level->removeChild(pointer);
+			this->world->addChild(pointer,3);
+			pointer->setPosition(pos);
+			//pointer->pointerCase->enableMouseHandler(useNodeEvent);
 			//this->world->listOfIndexes3.push(this->world->pointer1); 
 			pointer->setScaleY(0.9f);
 			pointer->setScaleX(0.9f);
@@ -250,6 +255,8 @@ namespace engine
 			float tempObject = pointer->getRotation();
 			pointer->setRotation(0);
 			pointer->arrow->setRotation(tempObject);
+
+			pointer->release();
 		}
 
 		if (levelPointerSize > 0 && this->world->level->pointers[0])
@@ -507,12 +514,12 @@ namespace engine
 			}
 			if (tempObject->isVisible())
 			{
- 				tempObject->fireAnima->tryPlay(1); 
+ 				tempObject->fireAnima->tryPlay(); 
 				//if (tempObject->fireAnima->currentFrame < tempObject->fireAnima->totalFrames)
 				//	tempObject->fireAnima->gotoAndStop((tempObject->fireAnima->currentFrame + 1));
 				//else
 				//	tempObject->fireAnima->gotoAndStop(1); 
-				tempObject->eyesAnima->tryPlay(1);
+				tempObject->eyesAnima->tryPlay();
 				//if (tempObject->eyesAnima->currentFrame < tempObject->eyesAnima->totalFrames)
 				//	tempObject->eyesAnima->gotoAndStop((tempObject->eyesAnima->currentFrame + 1));
 				//else

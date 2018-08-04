@@ -1197,7 +1197,7 @@ namespace engine
 		tempObject1->whoShoot = param3;
 		tempObject1->enemyTarget = param4;
 		tempObject1->damage = param5;
-		this->addChild(tempObject1);
+		this->addChild(tempObject1,3);
         tempObject1->init();
 		return tempObject1;
 	}// end function

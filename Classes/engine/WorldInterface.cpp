@@ -3037,6 +3037,8 @@ namespace engine
 	{
 		if (param1 == 0)
 		{
+			const auto factory = dragonBones::CCFactory::getFactory();
+			factory->getClock()->timeScale = 1;
 			this->fasterFlag = 0;
 			//Main::mainClass->stage.frameRate = 30;
 		}
@@ -3047,6 +3049,8 @@ namespace engine
 		}
 		else if (param1 == 2)
 		{
+			const auto factory = dragonBones::CCFactory::getFactory();
+			factory->getClock()->timeScale = 2;
 			this->fasterFlag = 2;
 			//Main::mainClass->stage.frameRate = 30;
 		}
@@ -4266,7 +4270,7 @@ namespace engine
 		while (this->i >= 0)
 		{
 			MouseStatusMC * tempObject = this->listOfNewEnemies[this->i];
-			tempObject->tryPlay(1);
+			tempObject->tryPlay();
 			//if (tempObject->currentFrame < tempObject->totalFrames)
 			//{
 			//	tempObject->gotoAndStop((tempObject->currentFrame + 1));

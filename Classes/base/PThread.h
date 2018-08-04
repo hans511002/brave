@@ -21,10 +21,10 @@ namespace std
 
 class PMutex
 {
-    std::mutex &m;
+    std::mutex *m;
     bool locked;
 public:
-    PMutex(std::mutex & m);
+    PMutex(std::mutex * m,bool locked=true);
     ~PMutex();
     void lock();
     void unlock();

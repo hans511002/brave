@@ -17,8 +17,10 @@ namespace std
 	typedef map<string, DbFile*> DbFileMap; 
 	class DbPreload : public Ref
     {
-    protected:
-		bool startSch;
+	public:
+		static  mutex dbloadMutex;
+	protected:
+		bool _startSch;
 
         Common::Array<string> preLoadDirs;
 		Common::Array<DbFile *> loadDbFiles;
@@ -45,7 +47,10 @@ namespace std
 		virtual void addPreLoadDb(const string & ske, const string & tex, const string & dbName);
 		virtual void addPreLoadDb(const DbFile & db);
 		virtual void addPreLoadDb(const Common::Array<DbFile> & dbs);
-        virtual void setAutoClose();
+		virtual void startSch();
+		virtual bool isStartSch();
+
+		virtual void setAutoClose();
         virtual void start();
         virtual void join();
         virtual thread::id get_id();

@@ -1,6 +1,7 @@
 ﻿#include "BaseNode.h"
 #include "MainClass.h"
 #include "base/mc.h"
+#include "DbPreload.h"
 
 using namespace cocos2d;
 const double BaseNode::AnimationInterval = 1.0f / (double)Main::FrameRate;
@@ -10,6 +11,8 @@ namespace std
 	bool useNodeEvent = true;
 	EventNode *globalNode=NULL;
 	sys::I18n i18n;
+	//mutex dbloadMutex;
+
 	cocos2d::CCSprite* maskedSpriteWithSprite(cocos2d::CCSprite* textureSprite, cocos2d::CCSprite* maskSprite)
 	{
 		// 1
@@ -150,11 +153,15 @@ namespace std
 		const auto factory = dragonBones::CCFactory::getFactory();
 		string fileSke = rootPath + dbName + "/" + dbName + "_ske.json";
 		string fileTex = rootPath + dbName + "/" + dbName + "_tex.json";
-		if (!factory->getDragonBonesData(dbName))
 		{
-			factory->loadDragonBonesData(fileSke, dbName);
-			//factory->loadDragonBonesData(rootPath + armatureName + "/" + armatureName + "_ske.dbbin");
-			factory->loadTextureAtlasData(fileTex, dbName);
+			PMutex loadm(&DbPreload::dbloadMutex);
+			if (!factory->getDragonBonesData(dbName))
+			{
+				factory->loadTextureAtlasData(fileTex, dbName);
+				factory->loadDragonBonesData(fileSke, dbName);
+				//factory->loadDragonBonesData(rootPath + armatureName + "/" + armatureName + "_ske.dbbin");
+			}
+			loadm.unlock();
 		}
 		//const std::string& armatureName, const std::string& dragonBonesName = "", const std::string& skinName = "", const std::string& textureAtlasName = ""
 		const auto armatureDisplay = factory->buildArmatureDisplay(armatureName, dbName);

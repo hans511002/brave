@@ -88,7 +88,13 @@ namespace engine
 			this->container->sphereSlot4SphereAnimaCont->stop();
 			this->container->cont1->stop();
 			this->container->cont2->stop();
-		
+			this->setContentSize(this->container->getContentSize() + Size(2, 2));
+			std::setAnchorPoint(this, 0.5, 0.5);
+			this->setPosition(this->myTower->this_pt);
+			this->container->setPosition(this->getAnchorPointInPoints());
+			std::changeAnchorPoint(this->container, 0.5);
+			this->container->setAlpha(0);
+
 			if (this->myTower->spheresStack.size() > 0)
 			{
 				this->container->btnGetAllBtnGetAllCase->setMouseEnabled(true);
@@ -148,9 +154,12 @@ namespace engine
 					this->container1->setMouseChildren(false);
 					this->container1->setMouseEnabled(false);
 					this->addChild(this->container1);
+					this->container1->setPosition(this->getAnchorPointInPoints());
+					std::changeAnchorPoint(this->container1, 0.5);
 					this->starsAnima = new AnimUpgrade_mc();
 					this->starsAnima->stop();
-					this->starsAnima->setPosition(this->container->btnUpgradeMenu->getPosition());
+
+					this->starsAnima->setPosition(this->container->btnUpgradeMenu->getPosition()+ this->getAnchorPointInPoints());
 					//this->starsAnima->x = this->container->btnUpgradeMenu->x;
 					//this->starsAnima->y = this->container->btnUpgradeMenu->y;
 					this->starsAnima->setMouseChildren(false);
@@ -166,19 +175,12 @@ namespace engine
 
 			//this->setAnchorPoint(Vec2(0.5, 0.5));
 			//const dragonBones::Rectangle & aabb = this->container->getRectangle();
-			this->setContentSize(this->container->getContentSize()+Size(2,2));
 			////this->container->setPosition(aabb.x, aabb.y );
 			//this->container->setPosition(aabb.width / 2, aabb.height / 2);
 
 			
 			//this->setAnchorPoint(Vec2(0.5,0.5));
-			std::setAnchorPoint(this, 0.5, 0.5);
 			//std::setAnchorPoint(this->container, 0.5, 0.5);
-			this->setPosition(this->myTower->this_pt);
-			this->container->setPosition(this->getAnchorPointInPoints());
-			std::changeAnchorPoint(this->container, 0.5);
-
-
 			//Node *cnode = Node::create();
 			//this->addChild(cnode);
 			//cnode->setContentSize(this->getContentSize() - Size(3, 3));
@@ -207,12 +209,12 @@ namespace engine
 			//std::drawRange(container->sphereSlot1SphereAnima->container, Color4F::YELLOW);
 			//std::drawRange(container->sphereSlot1SphereAnimaCont->display, Color4F::BLACK);
 			  
-			this->world->logInfo(getNamePath(container->sphereSlot1SphereAnima), container->sphereSlot1SphereAnima->getAnchorPoint(), &container->sphereSlot1SphereAnima->getPosition(), &container->sphereSlot1SphereAnima->convertToWorldSpace(container->sphereSlot1SphereAnima->getPosition()));
-			this->world->logInfo(getNamePath(container->sphereSlot1SphereAnima->display), container->sphereSlot1SphereAnima->display->getAnchorPoint(), &container->sphereSlot1SphereAnima->display->getPosition(), &container->sphereSlot1SphereAnima->display->convertToWorldSpace(container->sphereSlot1SphereAnima->display->getPosition()));
-			this->world->logInfo(getNamePath(container->sphereSlot1SphereAnima->container), container->sphereSlot1SphereAnima->container->getAnchorPoint(), &container->sphereSlot1SphereAnima->container->getPosition(), &container->sphereSlot1SphereAnima->container->convertToWorldSpace(container->sphereSlot1SphereAnima->container->getPosition()));
-			this->world->logInfo(getNamePath(container->sphereSlot1SphereAnimaCont->display), container->sphereSlot1SphereAnimaCont->display->getAnchorPoint(), &container->sphereSlot1SphereAnimaCont->display->getPosition(), &container->sphereSlot1SphereAnimaCont->display->convertToWorldSpace(container->sphereSlot1SphereAnimaCont->display->getPosition()));
+			//this->world->logInfo(getNamePath(container->sphereSlot1SphereAnima), container->sphereSlot1SphereAnima->getAnchorPoint(), &container->sphereSlot1SphereAnima->getPosition(), &container->sphereSlot1SphereAnima->convertToWorldSpace(container->sphereSlot1SphereAnima->getPosition()));
+			//this->world->logInfo(getNamePath(container->sphereSlot1SphereAnima->display), container->sphereSlot1SphereAnima->display->getAnchorPoint(), &container->sphereSlot1SphereAnima->display->getPosition(), &container->sphereSlot1SphereAnima->display->convertToWorldSpace(container->sphereSlot1SphereAnima->display->getPosition()));
+			//this->world->logInfo(getNamePath(container->sphereSlot1SphereAnima->container), container->sphereSlot1SphereAnima->container->getAnchorPoint(), &container->sphereSlot1SphereAnima->container->getPosition(), &container->sphereSlot1SphereAnima->container->convertToWorldSpace(container->sphereSlot1SphereAnima->container->getPosition()));
+			//this->world->logInfo(getNamePath(container->sphereSlot1SphereAnimaCont->display), container->sphereSlot1SphereAnimaCont->display->getAnchorPoint(), &container->sphereSlot1SphereAnimaCont->display->getPosition(), &container->sphereSlot1SphereAnimaCont->display->convertToWorldSpace(container->sphereSlot1SphereAnimaCont->display->getPosition()));
 
-			logInfo(getNamePath(container->sphereSlot1SphereAnima), container->sphereSlot1SphereAnima->getPosition());
+			//logInfo(getNamePath(container->sphereSlot1SphereAnima), container->sphereSlot1SphereAnima->getPosition());
 			world->towerMenu = this;
 			this->world->listOfClasses.push(this);
 			this->upgradeManage();
@@ -233,11 +235,11 @@ namespace engine
 			if (!this->closeFlag)
 			{
 				if (this->openFlag)
-				{
-					if (this->container->getScaleX() < 1)
+				{ 
+					if (this->container->getAlpha() < 1)
 					{
-						this->container->setScaleX(this->container->getScaleX() + 0.2);
-						this->container->setScaleY(this->container->getScaleY() + 0.2);
+						this->container->setAlpha(this->container->getAlpha() + 0.2);
+						//this->container->setScaleY(this->container->getAlpha() + 0.2);
 						//this->container->scaleX = this->container->scaleX + 0.2;
 						//this->container->scaleY = this->container->scaleY + 0.2;
 					}
@@ -348,7 +350,7 @@ namespace engine
 					{
 						if (this->container->currentFrame < this->container->totalFrames)
 						{
-							this->hint->container->tryPlay();
+							this->container->tryPlay();
 						    //this->container->gotoAndStop((this->container->currentFrame + 1));
 							if (this->container->currentFrame == 4 || this->container->currentFrame == 6 || this->container->currentFrame == 9 || this->container->currentFrame == 11)
 							{

@@ -1,30 +1,32 @@
 ﻿#include "PThread.h"
 namespace std
 {
-    PMutex::PMutex(std::mutex & m) :locked(false), m(m)
-    {
-        m.lock();
-        this->locked = true;
-    }
+	PMutex::PMutex(std::mutex * m, bool locked) :locked(locked), m(m)
+	{
+		if (locked)
+			this->locked = m->try_lock();
+	}
 
     PMutex::~PMutex()
     {
-        m.unlock();
+        if(this->locked)
+			m->unlock();
         this->locked = false;
     }
 
     void PMutex::lock() {
-        m.lock();
+        m->lock();
         this->locked = true;
     };
     void PMutex::unlock() {
-        m.unlock();
+        if(this->locked )
+			m->unlock();
         this->locked = false;
     };
     bool PMutex::tryLock() {
         if(!this->locked)
         {
-            this->lock();
+			this->locked=m->try_lock();
             return this->locked;
         }
         else
