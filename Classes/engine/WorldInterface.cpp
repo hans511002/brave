@@ -311,8 +311,8 @@ namespace engine
 			{
 				if (this->container->book->currentFrame > 1 && this->container->book->currentFrame < this->container->book->totalFrames)
 				{
-					this->container->book->tryPlay();
-					//this->container->book->gotoAndStop((this->container->book->currentFrame - 1));
+					//this->container->book->tryPlay();
+					this->container->book->gotoAndStop((this->container->book->currentFrame - 1));
 				}
 				else
 				{
