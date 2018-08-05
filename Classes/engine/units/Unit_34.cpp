@@ -1,19 +1,23 @@
 ﻿#include "Unit.h"
 #include "MainClass.h"
 #include "engine/World.h"
+#include "engine/towers/Tower.h"
+#include "engine/towers/TowerMenu.h"
+#include "engine/towers/UltraTowerMenu.h"
+#include "engine/casts/Cast.h"
 
 namespace engine
 {
 	namespace units
-	{
-		Unit_34::Unit_34():phase(0),teleportStatus(0),eyesFlag(false),eyesCounter(0),eyesCounter1(0),eyesCounter2(0),phaseRoad1(0),phaseRoad2(0),giveArmorFlag(false),takeAwayCastsFlag(false),speakFlag(false),notAtRoad(0),musicVolumeManageCounter(0),greenFlag(0),callUnitsCounter(0),roadFlag(false)
- 		{
-            this->readXML = &Main::mainClass->readXMLClass;
-			return;
-		}// end function 
+	{ 
 
         bool Unit_34::init()
         {
+
+			phase = (0), teleportStatus = (0), eyesFlag = (false), eyesCounter = (0), eyesCounter1 = (0), eyesCounter2 = (0), phaseRoad1 = (0), phaseRoad2 = (0), giveArmorFlag = (false), takeAwayCastsFlag = (false), speakFlag = (false), notAtRoad = (0), musicVolumeManageCounter = (0), greenFlag = (0), callUnitsCounter = (0), roadFlag = (false);
+
+
+            this->readXML = &Main::mainClass->readXMLClass;
             typeUnit = 34;
             container = new Unit_mc(this, "unit34", typeUnit);  
 			container->setScale(0.85);
@@ -55,20 +59,20 @@ namespace engine
             //this->x = 398;
             //this->y = 158;
             this_pt =this->getPosition();// new Point(this->x, this->y);
-            shoot_pt = container->localToGlobal(this_pt);//new Point(container->cont->x, container->cont->y));
+            shoot_pt = container->localToGlobal(this_pt);//new Point(container->x, container->y));
             this->speakFlag = true;
             if (world->worldInterface->fasterFlag == 2)
             {
                 world->worldInterface->fasterManage(false);
             }
-            world->worldInterface->container->快.fastCase.setMouseEnabled(false);
+            world->worldInterface->container->fastFastCase->setMouseEnabled(false);
             //Sounds.instance.playSound("snd_boss_start");
             return true;
         }// end function
 
         void Unit_34::animationHandler()
         {
-            if (!dead && this->visible && !icemanFlag)
+            if (!dead && this->isVisible()&& !icemanFlag)
             {
                 if (!airFlag && this->teleportStatus == 0 && !this->eyesFlag && !this->giveArmorFlag && !this->takeAwayCastsFlag && !this->speakFlag)
                 {
@@ -123,15 +127,14 @@ namespace engine
                                 if (this->callUnitsCounter == 1)
                                 {
                                     this->eyesFlag = true;
-                                }
-                                tempObject = [];
-                                tempObject = tempObject.concat(this->readXML->bossArrayOfEnemies[0]);
+                                } 
+								engine::WaveData<int> tempObject=this->readXML->bossArrayOfEnemies[0];
                                 this->arrayTurn.push(tempObject);
                                 this->readXML->bossArrayOfEnemies.splice(0, 1);
                             }
                         }
                     }
-                    if (this->readXML->bossArrayOfArmor.length > 0)
+                    if (this->readXML->bossArrayOfArmor.size() > 0)
                     {
                         if (this->readXML->bossArrayOfArmor[0] > 0)
                         {
@@ -144,7 +147,7 @@ namespace engine
                             //Sounds.instance.playSound("snd_boss_eyes");
                         }
                     }
-                    if (this->readXML->bossArrayOfCasts.length > 0)
+                    if (this->readXML->bossArrayOfCasts.size() > 0)
                     {
                         if (this->readXML->bossArrayOfCasts[0] > 0)
                         {
@@ -169,7 +172,7 @@ namespace engine
                     }
                     else if (this->teleportStatus == 1)
                     {
-                        if (!container->walkIn->setVisible())
+                        if (!container->walkIn->isVisible())
                         {
                             container->walkIn->setVisible(true);
                             stopAllEffects();
@@ -183,18 +186,18 @@ namespace engine
                         }
                         else if (container->walkIn->currentFrame < container->walkIn->totalFrames)
                         {
-                            container->walkIn.gotoAndStop((container->walkIn->currentFrame + 1));
-                            if (container->cont->alpha > 0)
+							container->walkIn->tryPlay();// gotoAndStop((container->walkIn->currentFrame + 1));
+                            if (container->getAlpha()> 0)
                             {
-                                container->cont->alpha = container->cont->alpha - 0.2;
+                                container->setAlpha (container->getAlpha() - 0.2);
                             }
                         }
                         else
                         {
-                            container->walkIn.gotoAndStop(1);
+                            container->walkIn->gotoAndStop(1);
                             container->walkIn->setVisible(false);
-                            container->cont->alpha = 0;
-                            container->contMcs->gotoAndStop(1);
+                            container->setAlpha (0);
+                            container->cont->gotoAndStop(1);
                             this->teleportStatus = 2;
                             direction = "none";
                             if ((!this->roadFlag || this->changeRoad == "true") && health > 0)
@@ -203,9 +206,9 @@ namespace engine
                                 cocos2d::Point tempObject;
                                 if (road == 1)
                                 {
-                                    if (this->phaseRoad1 < this->readXML->bossArrayPhasePath[0].length)
+                                    if (this->phaseRoad1 < this->readXML->bossArrayPhasePath[0].size())
                                     {
-                                        (this->phaseRoad1 + 1);
+                                        this->phaseRoad1 ++;
                                     }
                                     road = 2;
                                     path = this->readXML->bossArrayPhasePath[1][this->phaseRoad2];
@@ -213,7 +216,7 @@ namespace engine
                                 }
                                 else
                                 {
-                                    if (this->phaseRoad2 < this->readXML->bossArrayPhasePath[1].length)
+                                    if (this->phaseRoad2 < this->readXML->bossArrayPhasePath[1].size())
                                     {
                                         this->phaseRoad2 ++;
                                     }
@@ -226,7 +229,7 @@ namespace engine
                                 this->setPosition(tempObject);//x = tempObject.x;
                                 //this->y = tempObject.y;
                                 this_pt =tempObject;// new Point(this->x, this->y);
-                                shoot_pt = container->localToGlobal(container->cont->getPosition());// new Point(container->cont->x, container->cont->y));
+                                shoot_pt = container->localToGlobal(container->getPosition());// new Point(container->x, container->y));
                             }
                             else
                             {
@@ -236,7 +239,7 @@ namespace engine
                                 //this->x = 398;
                                 //this->y = 158;
                                 this_pt =this->getPosition();// new Point(this->x, this->y);
-                                shoot_pt = container->localToGlobal(container->cont->getPosition());// new Point(container->cont->x, container->cont->y));
+                                shoot_pt = container->localToGlobal(container->getPosition());// new Point(container->x, container->y));
                                 notAtRoad++;
                                 if (health > 0)
                                 {
@@ -255,24 +258,24 @@ namespace engine
                     }
                     else if (this->teleportStatus == 2)
                     {
-                        if (!container->walkOut->setVisible())
+                        if (!container->walkOut->isVisible())
                         {
                             container->walkOut->setVisible(true);
                             //Sounds.instance.playSound("snd_boss_appearDisappear");
                         }
                         else if (container->walkOut->currentFrame < container->walkOut->totalFrames)
                         {
-                            container->walkOut.gotoAndStop((container->walkOut->currentFrame + 1));
-                            if (container->cont->alpha < 1)
+							container->walkOut->tryPlay();// gotoAndStop((container->walkOut->currentFrame + 1));
+                            if (container->getAlpha() < 1)
                             {
-                                container->cont->alpha = container->cont->alpha + 0.2;
+                                container->setAlpha ( container->getAlpha() + 0.2);
                             }
                         }
                         else
                         {
-                            container->walkOut.gotoAndStop(1);
+                            container->walkOut->gotoAndStop(1);
                             container->walkOut->setVisible(false);
-                            container->cont->alpha = 1;
+                            container->setAlpha(1);
                             this->teleportStatus = 0;
                             if (this->roadFlag)
                             {
@@ -285,11 +288,11 @@ namespace engine
                 }
                 else if (this->eyesFlag)
                 {
-                    if (container->contMcs->currentFrame < 18)
+                    if (container->cont->currentFrame < 18)
                     {
-                        container->contMcs->tryPlay();
-				        //container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
-                        if (container->contMcs->currentFrame == 2)
+                        container->cont->tryPlay();
+				        //container->cont->gotoAndStop((container->cont->currentFrame + 1));
+                        if (container->cont->currentFrame == 2)
                         {
                             //Sounds.instance.playSound("snd_boss_eyes");
                         }
@@ -297,36 +300,36 @@ namespace engine
                     else if (this->eyesCounter == 0)
                     {
                         this->eyesCounter ++;
-                        container->contMcs->gotoAndStop(1);
+                        container->cont->gotoAndStop(1);
                     }
                     else
                     {
                         this->eyesFlag = false;
                         this->eyesCounter = 0;
-                        container->contMcs->gotoAndStop(1);
+                        container->cont->gotoAndStop(1);
                     }
                 }
                 else if (this->giveArmorFlag)
                 {
-                    if (container->contMcs->currentFrame < 19)
+                    if (container->cont->currentFrame < 19)
                     {
-                        container->contMcs->gotoAndStop(19);
+                        container->cont->gotoAndStop(19);
                     }
-                    else if (container->contMcs->currentFrame < 36)
+                    else if (container->cont->currentFrame < 36)
                     {
-                        container->contMcs->tryPlay();
-				        //container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
+                        container->cont->tryPlay();
+				        //container->cont->gotoAndStop((container->cont->currentFrame + 1));
                     }
                     else if (this->eyesCounter1 == 0)
                     {
                         this->eyesCounter1 ++;
-                        container->contMcs->gotoAndStop(19);
+                        container->cont->gotoAndStop(19);
                     }
                     else if (this->eyesCounter1 == 1)
                     {
                         this->giveArmorFlag = false;
                         this->eyesCounter1 = 0;
-                        container->contMcs->gotoAndStop(1);
+                        container->cont->gotoAndStop(1);
                         i = 0;
                         while (i < world->listOfUnits.size())
                         { 
@@ -341,19 +344,19 @@ namespace engine
                 }
                 else if (this->takeAwayCastsFlag)
                 {
-                    if (container->contMcs->currentFrame < 37)
+                    if (container->cont->currentFrame < 37)
                     {
-                        container->contMcs->gotoAndStop(37);
+                        container->cont->gotoAndStop(37);
                     }
-                    else if (container->contMcs->currentFrame < 54)
+                    else if (container->cont->currentFrame < 54)
                     {
-                        container->contMcs->tryPlay();
-				        //container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
+                        container->cont->tryPlay();
+				        //container->cont->gotoAndStop((container->cont->currentFrame + 1));
                     }
                     else if (this->eyesCounter2 == 0)
                     {
                         this->eyesCounter2 ++;
-                        container->contMcs->gotoAndStop(37);
+                        container->cont->gotoAndStop(37);
                     }
                     else if (this->eyesCounter2 == 1)
                     {
@@ -361,62 +364,66 @@ namespace engine
                         this->eyesCounter2 = 0;
                         MovieClip* tempObject = new MovieClip("unit/","AnimUpgrade_mc");// AnimUpgrade_mc();
                         tempObject->stop();
-                        tempObject->x = world->worldInterface->container->butCastGolem.x + world->worldInterface->container->butCastGolem.castGolemCase.x;
-                        tempObject->y = world->worldInterface->container->butCastGolem.y + world->worldInterface->container->butCastGolem.castGolemCase.y;
+                        tempObject->setPositionX( world->worldInterface->container->butCastGolem->getPositionX() + world->worldInterface->container->butCastGolemCastGolemCase->getPositionX());
+                        tempObject->setPositionY( world->worldInterface->container->butCastGolem->getPositionY() + world->worldInterface->container->butCastGolemCastGolemCase->getPositionY());
                         tempObject->setMouseChildren(false);
                         tempObject->setMouseEnabled(false);
                         world->worldInterface->addChild(tempObject);
                         world->worldInterface->listOfAnimation.push(tempObject);
                         tempObject = new MovieClip("unit/","AnimUpgrade_mc");//AnimUpgrade_mc();
                         tempObject->stop();
-                        tempObject->x = world->worldInterface->container->butCastIceman.x + world->worldInterface->container->butCastIceman.castIcemanCase.x;
-                        tempObject->y = world->worldInterface->container->butCastIceman.y + world->worldInterface->container->butCastIceman.castIcemanCase.y;
+                        tempObject->setPositionX( world->worldInterface->container->butCastIceman->getPositionX() + world->worldInterface->container->butCastIcemanCastIcemanCase->getPositionX());
+                        tempObject->setPositionY( world->worldInterface->container->butCastIceman->getPositionY() + world->worldInterface->container->butCastIcemanCastIcemanCase->getPositionY());
+
+
                         tempObject->setMouseChildren(false);
                         tempObject->setMouseEnabled(false);
                         world->worldInterface->addChild(tempObject);
                         world->worldInterface->listOfAnimation.push(tempObject);
                         tempObject = new MovieClip("unit/","AnimUpgrade_mc");//AnimUpgrade_mc();
                         tempObject->stop();
-                        tempObject->x = world->worldInterface->container->butCastAir.x + world->worldInterface->container->butCastAir.castAirCase.x;
-                        tempObject->y = world->worldInterface->container->butCastAir.y + world->worldInterface->container->butCastAir.castAirCase.y;
+                        //tempObject->x = world->worldInterface->container->butCastAir.x + world->worldInterface->container->butCastAir.castAirCase.x;
+                        //tempObject->y = world->worldInterface->container->butCastAir.y + world->worldInterface->container->butCastAir.castAirCase.y;
+						tempObject->setPosition(world->worldInterface->container->butCastAir->getPosition()+ world->worldInterface->container->butCastAirCastAirCase->getPosition());
+
                         tempObject->setMouseChildren(false);
                         tempObject->setMouseEnabled(false);
                         world->worldInterface->addChild(tempObject);
                         world->worldInterface->listOfAnimation.push(tempObject);
                         if (world->cast)
                         {
-                            world->cast.kill();
+                            world->cast->kill();
                         }
                         world->worldInterface->castGolemCounter = 1;
-                        world->worldInterface->container->butCastGolem.gotoAndStop(4);
-                        world->worldInterface->container->butCastGolem.castGolemCase.setMouseEnabled(false);
-                        world->worldInterface->container->butCastGolem.cont.contMask.scaleY = 0;
+                        world->worldInterface->container->butCastGolem->gotoAndStop(4);
+                        world->worldInterface->container->butCastGolemCastGolemCase->setMouseEnabled(false);
+                        world->worldInterface->container->butCastGolemContContMask->setScaleY( 0);
                         world->worldInterface->castIcemanCounter = 1;
-                        world->worldInterface->container->butCastIceman.gotoAndStop(4);
-                        world->worldInterface->container->butCastIceman.castIcemanCase.setMouseEnabled(false);
-                        world->worldInterface->container->butCastIceman.cont.contMask.scaleY = 0;
+                        world->worldInterface->container->butCastIceman->gotoAndStop(4);
+                        world->worldInterface->container->butCastIcemanCastIcemanCase->setMouseEnabled(false);
+                        world->worldInterface->container->butCastIcemanContContMask->setScaleY (0);
                         world->worldInterface->castAirCounter = 1;
-                        world->worldInterface->container->butCastAir.gotoAndStop(4);
-                        world->worldInterface->container->butCastAir.castAirCase.setMouseEnabled(false);
-                        world->worldInterface->container->butCastAir.cont.contMask.scaleY = 0;
-                        Sounds.instance.playSound("snd_boss_castReset");
+                        world->worldInterface->container->butCastAir->gotoAndStop(4);
+                        world->worldInterface->container->butCastAirCastAirCase->setMouseEnabled(false);
+                        world->worldInterface->container->butCastAirContContMask->setScaleY (0);
+                        //Sounds.instance.playSound("snd_boss_castReset");
                     }
                 }
                 else if (this->speakFlag)
                 {
-                    if (!container->speak->setVisible())
+                    if (!container->speak->isVisible())
                     {
                         container->speak->setVisible(true);
                         //Sounds.instance.playSound("snd_boss_speak");
                     }
                     else if (container->speak->currentFrame < container->speak->totalFrames)
                     {
-                        container->speak.gotoAndStop((container->speak->currentFrame + 1));
+						container->speak->tryPlay();// gotoAndStop((container->speak->currentFrame + 1));
                     }
-                    else if (!container->speak.flag)
+                    else if (!container->speakFlag)
                     {
-                        container->speak.flag = true;
-                        container->speak.gotoAndStop(1);
+                        container->speakFlag = true;
+                        container->speak->gotoAndStop(1);
                         if (this->musicVolumeManageCounter == 0)
                         {
                             this->musicVolumeManageCounter = 1;
@@ -424,20 +431,20 @@ namespace engine
                     }
                     else
                     {
-                        container->speak.flag = false;
+                        container->speakFlag = false;
                         this->speakFlag = false;
-                        container->speak.gotoAndStop(1);
+                        container->speak->gotoAndStop(1);
                         container->speak->setVisible(false);
-                        if (!world->worldInterface->container->快.fastCase.mouseEnabled)
+                        if (!world->worldInterface->container->fastFastCase->mouseEnabled)
                         {
-                            world->worldInterface->container->快.fastCase.setMouseEnabled(true);
+                            world->worldInterface->container->fastFastCase->setMouseEnabled(true);
                         }
                     }
                 }
             }
-            if (this->arrayTurn.length > 0)
+            if (this->arrayTurn.size() > 0)
             {
-                if (this->arrayTurn[0][1].length > 0)
+                if (this->arrayTurn[0][1].size() > 0)
                 {
                     if (!this->arrayTurn[0][2])
                     {
@@ -476,45 +483,45 @@ namespace engine
             }
             if (this->musicVolumeManageCounter == 1)
             {
-                if (Sounds.instance.musicChanel)
-                {
-                    if (Sounds.instance.musicChanel.soundTransform.volume < world->startMusicVolume)
-                    {
-                        Sounds.instance.musicChanel.soundTransform = new SoundTransform(Sounds.instance.musicChanel.soundTransform.volume + world->startMusicVolume * 0.035, 0);
-                    }
-                    else
-                    {
-                        world->startMusicVolume = 0;
-                        this->musicVolumeManageCounter = 2;
-                    }
-                }
-                else
-                {
-                    world->startMusicVolume = 0;
-                    this->musicVolumeManageCounter = 2;
-                }
+                //if (Sounds.instance.musicChanel)
+                //{
+                //    if (Sounds.instance.musicChanel.soundTransform.volume < world->startMusicVolume)
+                //    {
+                //        Sounds.instance.musicChanel.soundTransform = new SoundTransform(Sounds.instance.musicChanel.soundTransform.volume + world->startMusicVolume * 0.035, 0);
+                //    }
+                //    else
+                //    {
+                //        world->startMusicVolume = 0;
+                //        this->musicVolumeManageCounter = 2;
+                //    }
+                //}
+                //else
+                //{
+                //    world->startMusicVolume = 0;
+                //    this->musicVolumeManageCounter = 2;
+                //}
             }
             if (this->musicVolumeManageCounter == 3)
             {
-                if (Sounds.instance.musicChanel)
-                {
-                    if (world->startMusicVolume == 0)
-                    {
-                        world->startMusicVolume = Sounds.instance.musicChanel.soundTransform.volume;
-                    }
-                    if (Sounds.instance.musicChanel.soundTransform.volume > world->startMusicVolume * 0.35)
-                    {
-                        Sounds.instance.musicChanel.soundTransform = new SoundTransform(Sounds.instance.musicChanel.soundTransform.volume - world->startMusicVolume * 0.035, 0);
-                    }
-                    else
-                    {
-                        this->musicVolumeManageCounter = 4;
-                    }
-                }
-                else
-                {
-                    this->musicVolumeManageCounter = 4;
-                }
+                //if (Sounds.instance.musicChanel)
+                //{
+                //    if (world->startMusicVolume == 0)
+                //    {
+                //        world->startMusicVolume = Sounds.instance.musicChanel.soundTransform.volume;
+                //    }
+                //    if (Sounds.instance.musicChanel.soundTransform.volume > world->startMusicVolume * 0.35)
+                //    {
+                //        Sounds.instance.musicChanel.soundTransform = new SoundTransform(Sounds.instance.musicChanel.soundTransform.volume - world->startMusicVolume * 0.035, 0);
+                //    }
+                //    else
+                //    {
+                //        this->musicVolumeManageCounter = 4;
+                //    }
+                //}
+                //else
+                //{
+                //    this->musicVolumeManageCounter = 4;
+                //}
             }
             Unit::animationHandler();
             return;
@@ -537,13 +544,13 @@ namespace engine
                 {
                     world->worldInterface->fasterManage(false);
                 }
-                world->worldInterface->container->快.fastCase.setMouseEnabled(false);
+                world->worldInterface->container->fastFastCase->setMouseEnabled(false);
                 this->musicVolumeManageCounter = 3;
                 return;
             }
             if (!dead && health <= 0)
             {
-                tempObject =new MovieClip(world,"unit/","Unit34Death_mc","Unit34Death_mc");// new Indexes(new Unit34Death_mc(), 3);
+				MovieClip* tempObject =new MovieClip(world,"unit/","Unit34Death_mc","Unit34Death_mc");// new Indexes(new Unit34Death_mc(), 3);
                 tempObject->setPosition(shoot_pt.x,shoot_pt.y - 44.5);//.x = shoot_pt.x;
                 //tempObject.y = shoot_pt.y - 44.5;
                 //new InTimer("bossDeath");
@@ -562,7 +569,7 @@ namespace engine
                     }
                     i--;
                 }
-                i = world->listOfUnits.length - 1;
+                i = world->listOfUnits.size() - 1;
                 while (i >= 0)
                 { 
                     if (world->listOfUnits[i] != this)

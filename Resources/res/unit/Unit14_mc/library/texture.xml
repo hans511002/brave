@@ -1,0 +1,25 @@
+<TextureAtlas name="Unit14_mc" imagePath="texture.png">
+ <SubTexture name="dust4" x="0" y="0" width="50" height="50"/>
+ <SubTexture name="selectUnit" x="0" y="260" width="50" height="50"/>
+ <SubTexture name="sprite 7652" x="0" y="208" width="50" height="50"/>
+ <SubTexture name="healthBar" x="156" y="208" width="50" height="50"/>
+ <SubTexture name="armor" x="52" y="208" width="50" height="50"/>
+ <SubTexture name="iceEffect" x="156" y="156" width="50" height="50"/>
+ <SubTexture name="fireEffect" x="52" y="52" width="50" height="50"/>
+ <SubTexture name="iceFreez" x="104" y="0" width="50" height="50"/>
+ <SubTexture name="levinattack" x="0" y="52" width="50" height="50"/>
+ <SubTexture name="iceattack" x="0" y="156" width="50" height="50"/>
+ <SubTexture name="fireattack" x="156" y="0" width="50" height="50"/>
+ <SubTexture name="dust3" x="104" y="208" width="50" height="50"/>
+ <SubTexture name="dust2" x="52" y="104" width="50" height="50"/>
+ <SubTexture name="dust1" x="104" y="52" width="50" height="50"/>
+ <SubTexture name="buffSpeed" x="156" y="52" width="50" height="50"/>
+ <SubTexture name="airShock" x="52" y="156" width="50" height="50"/>
+ <SubTexture name="buffHP" x="104" y="104" width="50" height="50"/>
+ <SubTexture name="iceDeath" x="104" y="156" width="50" height="50"/>
+ <SubTexture name="stonedeath" x="52" y="0" width="50" height="50"/>
+ <SubTexture name="levindeath" x="156" y="104" width="50" height="50"/>
+ <SubTexture name="case" x="0" y="104" width="50" height="50"/>
+ <SubTexture name="Shape/shape 2810" x="208" y="0" width="36" height="32"/>
+ <SubTexture name="Shape/shape 2812" x="208" y="34" width="33" height="32"/>
+</TextureAtlas>

@@ -73,6 +73,9 @@ namespace engine
 
 			cocos2d::Point myFirstPoint, coordOrigin;
 
+			//34
+			MovieClipSub * walkIn; MovieClipSub *walkOut; MovieClipSub *speak;
+			bool speakFlag;
 
 			Unit_mc(Unit* unit, string contName, int typeUnit);
 			void mcHandler(cocos2d::EventCustom *event);

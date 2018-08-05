@@ -133,35 +133,28 @@ namespace engine
 				while (this->n < this->tempObject1)
 				{
 					//this->bossArrayOfEnemies[this->n] = [];
-					this->bossArrayOfEnemies0[this->n] = std::round(this->xmlData->getFloat(phaseCallUnitsCallUnits.at(this->n), "@timer") * Main::fps);
-					//this->bossArrayOfEnemies[this->n][1] = [];
-					if (this->bossArrayOfEnemies1.size()>this->n){
-						if (this->bossArrayOfEnemies1[this->n]){
-							delete[]  bossArrayOfEnemies1[this->n] ;
-							this->bossArrayOfEnemies1[this->n] = 0;
-						}
-					}
+					this->bossArrayOfEnemies[this->n][0] = std::round(this->xmlData->getFloat(phaseCallUnitsCallUnits.at(this->n), "@timer") * Main::fps);
+					this->bossArrayOfEnemies[this->n][1].clear(); 
 					vector<tinyxml2::XMLElement *> phaseCallUnitsCallUnitsEnemy = this->xmlData->getChildList(phaseCallUnitsCallUnits.at(this->n), "enemy");
 					this->tempObject2 = phaseCallUnitsCallUnitsEnemy.size();//this->xmlData.enemies.enemy[this->i].phaseCallUnits.callUnits[this->n].enemy.length();
 					this->m = 0;
-					this->bossArrayOfEnemies1[this->n] =new int[tempObject2*8];
-					while (this->m < this->tempObject2)
+ 					while (this->m < this->tempObject2)
 					{
 						//this->bossArrayOfEnemies[this->n][1][this->m] = [];
-						this->bossArrayOfEnemies1[this->n][this->m *8+ 0] = this->xmlData->getInt(phaseCallUnitsCallUnitsEnemy.at(this->m), "@typeUnit");
+						this->bossArrayOfEnemies[this->n][1][this->m][0] = this->xmlData->getInt(phaseCallUnitsCallUnitsEnemy.at(this->m), "@typeUnit");
 						// int(this->xmlData.enemies.enemy[this->i].phaseCallUnits.callUnits[this->n].enemy[this->m].@typeUnit);
-						this->bossArrayOfEnemies1[this->n][this->m * 8 + 1] = this->xmlData->getInt(phaseCallUnitsCallUnitsEnemy.at(this->m), "@count");
+						this->bossArrayOfEnemies[this->n][1][this->m][1] = this->xmlData->getInt(phaseCallUnitsCallUnitsEnemy.at(this->m), "@count");
 						//int(this->xmlData.enemies.enemy[this->i].phaseCallUnits.callUnits[this->n].enemy[this->m].@count);
-						this->bossArrayOfEnemies1[this->n][this->m * 8 + 2] = std::round(this->xmlData->getFloat(phaseCallUnitsCallUnitsEnemy.at(this->m), "@interval") * Main::fps);
-						this->bossArrayOfEnemies1[this->n][this->m * 8 + 3] = this->xmlData->getInt(phaseCallUnitsCallUnitsEnemy.at(this->m), "@way");
+						this->bossArrayOfEnemies[this->n][1][this->m][2] = std::round(this->xmlData->getFloat(phaseCallUnitsCallUnitsEnemy.at(this->m), "@interval") * Main::fps);
+						this->bossArrayOfEnemies[this->n][1][this->m][3] = this->xmlData->getInt(phaseCallUnitsCallUnitsEnemy.at(this->m), "@way");
 						//int(this->xmlData.enemies.enemy[this->i].phaseCallUnits.callUnits[this->n].enemy[this->m].@way);
-						this->bossArrayOfEnemies1[this->n][this->m * 8 + 4] = this->xmlData->getInt(phaseCallUnitsCallUnitsEnemy.at(this->m), "@path");
+						this->bossArrayOfEnemies[this->n][1][this->m][4] = this->xmlData->getInt(phaseCallUnitsCallUnitsEnemy.at(this->m), "@path");
 						//int(this->xmlData.enemies.enemy[this->i].phaseCallUnits.callUnits[this->n].enemy[this->m].@path);
-						this->bossArrayOfEnemies1[this->n][this->m * 8 + 5] = this->xmlData->getInt(phaseCallUnitsCallUnitsEnemy.at(this->m), "@replacement");
+						this->bossArrayOfEnemies[this->n][1][this->m][5] = this->xmlData->getInt(phaseCallUnitsCallUnitsEnemy.at(this->m), "@replacement");
 						//int(this->xmlData.enemies.enemy[this->i].phaseCallUnits.callUnits[this->n].enemy[this->m].@replacement);
-						this->bossArrayOfEnemies1[this->n][this->m * 8 + 6] = this->xmlData->getInt(phaseCallUnitsCallUnitsEnemy.at(this->m), "@gate");
+						this->bossArrayOfEnemies[this->n][1][this->m][6] = this->xmlData->getInt(phaseCallUnitsCallUnitsEnemy.at(this->m), "@gate");
 						//int(this->xmlData.enemies.enemy[this->i].phaseCallUnits.callUnits[this->n].enemy[this->m].@gate);
-						this->bossArrayOfEnemies1[this->n][this->m * 8 + 7] = this->xmlData->getInt(phaseCallUnitsCallUnitsEnemy.at(this->m), "@road");
+						this->bossArrayOfEnemies[this->n][1][this->m][7] = this->xmlData->getInt(phaseCallUnitsCallUnitsEnemy.at(this->m), "@road");
 						//int(this->xmlData.enemies.enemy[this->i].phaseCallUnits.callUnits[this->n].enemy[this->m].@road);
 						m++;
 					}

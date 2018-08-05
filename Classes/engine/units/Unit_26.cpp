@@ -6,11 +6,7 @@
 namespace engine 
 {
 	namespace units
-	{
-		Unit_26::Unit_26()
-		{
-			return;
-		}// end function
+	{ 
 
 		bool Unit_26::init()
 		{
@@ -30,7 +26,7 @@ namespace engine
                 }
                 else
                 {
-                    tempObject = std::random();
+                    float tempObject = std::random();
                     i = world->listOfLevinPortals.size() - 1;
                     while (i >= 0)
                     {
@@ -145,38 +141,38 @@ namespace engine
             {
                 if (direction != "up")
                 {
-                    if (container->contMcs->currentFrame < 61)
+                    if (container->cont->currentFrame < 61)
                     {
-                        if (container->contMcs->currentFrame < 60)
+                        if (container->cont->currentFrame < 60)
                         {
-                            container->contMcs->tryPlay();
-				            //container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
+                            container->cont->tryPlay();
+				            //container->cont->gotoAndStop((container->cont->currentFrame + 1));
                         }
                         else
                         {
-                            container->contMcs->gotoAndStop(1);
+                            container->cont->gotoAndStop(1);
                         }
                     }
                     else
                     {
-                        container->contMcs->gotoAndStop(container->contMcs->currentFrame - 60);
+                        container->cont->gotoAndStop(container->cont->currentFrame - 60);
                     }
                 }
-                else if (container->contMcs->currentFrame > 60)
+                else if (container->cont->currentFrame > 60)
                 {
-                    if (container->contMcs->currentFrame < container->contMcs->totalFrames)
+                    if (container->cont->currentFrame < container->cont->totalFrames)
                     {
-                        container->contMcs->tryPlay();
-				        //container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
+                        container->cont->tryPlay();
+				        //container->cont->gotoAndStop((container->cont->currentFrame + 1));
                     }
                     else
                     {
-                        container->contMcs->gotoAndStop(61);
+                        container->cont->gotoAndStop(61);
                     }
                 }
                 else
                 {
-                    container->contMcs->gotoAndStop(container->contMcs->currentFrame + 60);
+                    container->cont->gotoAndStop(container->cont->currentFrame + 60);
                 }
                 if (listOfTornado.size() > 0)
                 {

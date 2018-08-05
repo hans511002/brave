@@ -4,16 +4,12 @@
 namespace engine
 {
 	namespace units
-	{
-		Unit_12::Unit_12()
-		{
-			return;
-		}// end function
+	{ 
 
 		bool Unit_12::init()
 		{ 
 			typeUnit = 12;
-			container = new Unit_mc(this, "unit12", typeUnit); //new Unit12_mc(); 
+			container = new Unit_mc(this, "Unit12_mc", typeUnit); //new Unit12_mc(); 
 			container->setScale(0.82);
 			container->init();
 			Unit::init();
@@ -27,64 +23,64 @@ namespace engine
 			{
 				if(direction != "up")
 				{
-					if(container->contMcs->currentFrame != 1)
+					if(container->cont->currentFrame != 1)
 					{
-						container->contMcs->gotoAndStop(1);
+						container->cont->gotoAndStop(1);
 					}
 				}
-				else if(container->contMcs->currentFrame != 2)
+				else if(container->cont->currentFrame != 2)
 				{
-					container->contMcs->gotoAndStop(2);
+					container->cont->gotoAndStop(2);
 				}
 				if(direction == "left" || direction == "right")
 				{
-					if(!airFlag && !airShockFlag || container->cont->currentFrame != 1)
+					if(!airFlag && !airShockFlag || container->currentFrame != 1)
 					{
-						if(container->cont->currentFrame > 26)
+						if(container->currentFrame > 26)
 						{
-							if(container->cont->currentFrame < container->cont->totalFrames)
+							if(container->currentFrame < container->totalFrames)
 							{
-								container->cont->tryPlay();
-					            //container->cont->gotoAndStop((container->cont->currentFrame + 1));
+								container->tryPlay();
+					            //container->gotoAndStop((container->currentFrame + 1));
 							}
 							else
 							{
-								container->cont->gotoAndStop(1);
+								container->gotoAndStop(1);
 							}
 						}
-						else if(container->cont->currentFrame < 26)
+						else if(container->currentFrame < 26)
 						{
-							container->cont->tryPlay();
-					    //container->cont->gotoAndStop((container->cont->currentFrame + 1));
+							container->tryPlay();
+					    //container->gotoAndStop((container->currentFrame + 1));
 						}
 						else
 						{
-							container->cont->gotoAndStop(1);
+							container->gotoAndStop(1);
 						}
 					}
 				}
-				else if(!airFlag && !airShockFlag || container->cont->currentFrame != 27)
+				else if(!airFlag && !airShockFlag || container->currentFrame != 27)
 				{
-					if(container->cont->currentFrame < 27)
+					if(container->currentFrame < 27)
 					{
-						if(container->cont->currentFrame < 26)
+						if(container->currentFrame < 26)
 						{
-							container->cont->tryPlay();
-					    //container->cont->gotoAndStop((container->cont->currentFrame + 1));
+							container->tryPlay();
+					    //container->gotoAndStop((container->currentFrame + 1));
 						}
 						else
 						{
-							container->cont->gotoAndStop(27);
+							container->gotoAndStop(27);
 						}
 					}
-					else if(container->cont->currentFrame < container->cont->totalFrames)
+					else if(container->currentFrame < container->totalFrames)
 					{
-						container->cont->tryPlay();
-					    //container->cont->gotoAndStop((container->cont->currentFrame + 1));
+						container->tryPlay();
+					    //container->gotoAndStop((container->currentFrame + 1));
 					}
 					else
 					{
-						container->cont->gotoAndStop(27);
+						container->gotoAndStop(27);
 					}
 				}
 			}

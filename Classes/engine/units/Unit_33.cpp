@@ -7,80 +7,74 @@ namespace engine
 {
 	namespace units
 	{
-		Unit_32::Unit_33():distanceX(0),distanceY(0),counter(-1),firstView(false)
+		bool Unit_33::init()
 		{
-			return;
-		}// end function
-    
-        bool Unit_33::init()
-        {  
-            typeUnit = 33;
-            container = new Unit_mc(this, "unit33", typeUnit);  
+			distanceX = (0), distanceY = (0), counter = (-1), firstView = (false);
+			typeUnit = 33;
+			container = new Unit_mc(this, "unit33", typeUnit);
 			container->setScale(0.9);
 			container->init();
 			Unit::init();
-			this->autorelease();  
-            return true;
-        }// end function
- 
-        void Unit_33::moveHandler()
-        {
-            if (readyDamage)
-            {
-                Unit::moveHandler();
-            }
-            return;
-        }// end function
+			this->autorelease();
+			return true;
+		}// end function
 
-        void Unit_33::animationHandler() 
-        {
-            if (!dead)
-            {
-                if (!readyDamage && !this->firstView)
-                {
-                    if (this->counter == -1)
-                    {
-                        this->counter = 5;
-                        this->distanceX = (this_pt.x - this->x) / this->counter;
-                        this->distanceY = (this_pt.y - this->y) / this->counter;
-                    }
-                    else if (this->counter > 0)
-                    {
-                        this->counter--;
-                        this->x = this->x + this->distanceX;
-                        this->y = this->y + this->distanceY;
-                        if (this->alpha < 1)
-                        {
-                            this->alpha = this->alpha + 0.3;
-                        }
-                    }
-                    else
-                    {
-                        this->firstView = true;
-                        this->x = this_pt.x;
-                        this->y = this_pt.y;
-                        this->alpha = 1;
-                        readyDamage = true;
-                        moveFlag = true;
-                        this->moveHandler();
-                    }
-                }
-                else if (!icemanFlag)
-                {
-                    if (container->contMcs->currentFrame < container->contMcs->totalFrames)
-                    {
-                        container->contMcs->tryPlay();
-				        //container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->contMcs->gotoAndStop(1);
-                    }
-                }
-            }
-            Unit::animationHandler();
-            return;
-        }// end function
+		void Unit_33::moveHandler()
+		{
+			if (readyDamage)
+			{
+				Unit::moveHandler();
+			}
+			return;
+		}// end function
 
-    }
+		void Unit_33::animationHandler()
+		{
+			if (!dead)
+			{
+				if (!readyDamage && !this->firstView)
+				{
+					if (this->counter == -1)
+					{
+						this->counter = 5;
+						this->distanceX = (this_pt.x - this->getPositionX()) / this->counter;
+						this->distanceY = (this_pt.y - this->getPositionY()) / this->counter;
+					}
+					else if (this->counter > 0)
+					{
+						this->counter--;
+						this->setPosition(this->getPositionX() + this->distanceX, this->getPositionY() + this->distanceY);
+						if (this->getAlpha() < 1)
+						{
+							this->setAlpha(this->getAlpha() + 0.3);
+						}
+					}
+					else
+					{
+						this->firstView = true;
+						this->setPosition(this->this_pt);
+						this->setAlpha(1);
+						readyDamage = true;
+						moveFlag = true;
+						this->moveHandler();
+					}
+				}
+				else if (!icemanFlag)
+				{
+					if (container->cont->currentFrame < container->cont->totalFrames)
+					{
+						container->cont->tryPlay();
+						//container->cont->gotoAndStop((container->cont->currentFrame + 1));
+					}
+					else
+					{
+						container->cont->gotoAndStop(1);
+					}
+				}
+			}
+			Unit::animationHandler();
+			return;
+		}// end function
+
+	}
 }

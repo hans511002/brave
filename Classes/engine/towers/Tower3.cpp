@@ -24,6 +24,7 @@ namespace engine
 			//sphere2_2 = this->createMovieClipSub("sphere2_2");
 			//sphere2_2Bullet = (BulletSphereTower_mc*)sphere2_2->createMovieClip("bullet", new BulletSphereTower_mc());
 			//sphere2_2BulletCont = sphere2_2Bullet->createMovieClipSub("cont");
+			init();
 		}
 		bool Tower3_mc::init() {
 			Tower2_mc::init();

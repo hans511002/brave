@@ -1,52 +1,52 @@
 <data>   <!--1 - вправо; 2 - влево--> <!--23, 24, 25-->
 				<strategy1>
 				<wave startDelay = "0" replacement = "0">
-				<enemy typeUnit = "23" count = "1" interval = "15" way = "0" path = "0" gate = "1">< / enemy>
-				<enemy typeUnit = "24" count = "1" interval = "22" way = "0" path = "0" gate = "1">< / enemy>
-				<enemy typeUnit = "25" count = "1" interval = "1" way = "0" path = "0" gate = "1">< / enemy>
-				<enemy typeUnit = "23" count = "1" interval = "15" way = "0" path = "0" gate = "1">< / enemy>
-				<enemy typeUnit = "24" count = "1" interval = "18" way = "0" path = "0" gate = "1">< / enemy>
-				<enemy typeUnit = "25" count = "1" interval = "14" way = "0" path = "0" gate = "1">< / enemy>
-				<enemy typeUnit = "23" count = "1" interval = "5" way = "0" path = "0" gate = "1">< / enemy>
-				<enemy typeUnit = "25" count = "1" interval = "2" way = "0" path = "0" gate = "1">< / enemy>
-				<enemy typeUnit = "23" count = "1" interval = "2" way = "0" path = "0" gate = "1">< / enemy>
-				<enemy typeUnit = "24" count = "1" interval = "0" way = "0" path = "0" gate = "1">< / enemy>
-				< / wave>
-				< / strategy1>
+				<enemy typeUnit = "23" count = "1" interval = "15" way = "0" path = "0" gate = "1"></enemy>
+				<enemy typeUnit = "24" count = "1" interval = "22" way = "0" path = "0" gate = "1"></enemy>
+				<enemy typeUnit = "25" count = "1" interval = "1" way = "0" path = "0" gate = "1"></enemy>
+				<enemy typeUnit = "23" count = "1" interval = "15" way = "0" path = "0" gate = "1"></enemy>
+				<enemy typeUnit = "24" count = "1" interval = "18" way = "0" path = "0" gate = "1"></enemy>
+				<enemy typeUnit = "25" count = "1" interval = "14" way = "0" path = "0" gate = "1"></enemy>
+				<enemy typeUnit = "23" count = "1" interval = "5" way = "0" path = "0" gate = "1"></enemy>
+				<enemy typeUnit = "25" count = "1" interval = "2" way = "0" path = "0" gate = "1"></enemy>
+				<enemy typeUnit = "23" count = "1" interval = "2" way = "0" path = "0" gate = "1"></enemy>
+				<enemy typeUnit = "24" count = "1" interval = "0" way = "0" path = "0" gate = "1"></enemy>
+				</wave>
+				</strategy1>
 				<strategy2>
 				<wave startDelay = "3" replacement = "0">
-				<enemy typeUnit = "23" count = "1" interval = "12" way = "0" path = "0" gate = "2">< / enemy>
-				<enemy typeUnit = "24" count = "1" interval = "15" way = "0" path = "0" gate = "2">< / enemy>
-				<enemy typeUnit = "25" count = "1" interval = "4" way = "0" path = "0" gate = "2">< / enemy>
-				<enemy typeUnit = "23" count = "1" interval = "15" way = "0" path = "0" gate = "2">< / enemy>
-				<enemy typeUnit = "23" count = "1" interval = "10" way = "0" path = "0" gate = "2">< / enemy>
-				<enemy typeUnit = "24" count = "1" interval = "4" way = "0" path = "0" gate = "2">< / enemy>
-				<enemy typeUnit = "23" count = "1" interval = "10" way = "0" path = "0" gate = "2">< / enemy>
-				<enemy typeUnit = "25" count = "1" interval = "7" way = "0" path = "0" gate = "2">< / enemy>
-				<enemy typeUnit = "24" count = "1" interval = "2" way = "0" path = "0" gate = "2">< / enemy>
-				<enemy typeUnit = "23" count = "1" interval = "2" way = "0" path = "0" gate = "2">< / enemy>
-				<enemy typeUnit = "25" count = "1" interval = "0" way = "0" path = "0" gate = "2">< / enemy>
-				< / wave>
-				< / strategy2>
+				<enemy typeUnit = "23" count = "1" interval = "12" way = "0" path = "0" gate = "2"></enemy>
+				<enemy typeUnit = "24" count = "1" interval = "15" way = "0" path = "0" gate = "2"></enemy>
+				<enemy typeUnit = "25" count = "1" interval = "4" way = "0" path = "0" gate = "2"></enemy>
+				<enemy typeUnit = "23" count = "1" interval = "15" way = "0" path = "0" gate = "2"></enemy>
+				<enemy typeUnit = "23" count = "1" interval = "10" way = "0" path = "0" gate = "2"></enemy>
+				<enemy typeUnit = "24" count = "1" interval = "4" way = "0" path = "0" gate = "2"></enemy>
+				<enemy typeUnit = "23" count = "1" interval = "10" way = "0" path = "0" gate = "2"></enemy>
+				<enemy typeUnit = "25" count = "1" interval = "7" way = "0" path = "0" gate = "2"></enemy>
+				<enemy typeUnit = "24" count = "1" interval = "2" way = "0" path = "0" gate = "2"></enemy>
+				<enemy typeUnit = "23" count = "1" interval = "2" way = "0" path = "0" gate = "2"></enemy>
+				<enemy typeUnit = "25" count = "1" interval = "0" way = "0" path = "0" gate = "2"></enemy>
+				</wave>
+				</strategy2>
 				<settings money = "2700" autoStartTimer = "20">
-				<testing towerStep = "0" fireStep = "0" iceStep = "0" stoneStep = "0" levinStep = "0">< / testing>
-				<sphere archiveSphereBlock = "1" towerSlotBlock = "0" ultraTower1Block = "0" ultraTower2Block = "1" ultraTower3Block = "0" ultraTower4Block = "1" ultraTower1UpgrBlock = "0" ultraTower2UpgrBlock = "0" ultraTower3UpgrBlock = "0" ultraTower4UpgrBlock = "0">< / sphere>
+				<testing towerStep = "0" fireStep = "0" iceStep = "0" stoneStep = "0" levinStep = "0"></testing>
+				<sphere archiveSphereBlock = "1" towerSlotBlock = "0" ultraTower1Block = "0" ultraTower2Block = "1" ultraTower3Block = "0" ultraTower4Block = "1" ultraTower1UpgrBlock = "0" ultraTower2UpgrBlock = "0" ultraTower3UpgrBlock = "0" ultraTower4UpgrBlock = "0"></sphere>
 				<portals>
 				<fire>
-				<location path = "285" road = "1" way = "3" x = "-1" y = "0">< / location>
-				<location path = "285" road = "2" way = "3" x = "-1" y = "0">< / location>
-				< / fire>
+				<location path = "285" road = "1" way = "3" x = "-1" y = "0"></location>
+				<location path = "285" road = "2" way = "3" x = "-1" y = "0"></location>
+				</fire>
 				<ice>
-				<location path = "500" road = "1" way = "3">< / location>
-				<location path = "503" road = "2" way = "3">< / location>
-				< / ice>
+				<location path = "500" road = "1" way = "3"></location>
+				<location path = "503" road = "2" way = "3"></location>
+				</ice>
 				<stone>
-				<location path = "420" road = "1" way = "3" x = "-2" y = "0">< / location>
-				<location path = "423" road = "2" way = "3" x = "2" y = "0">< / location>
-				< / stone>
+				<location path = "420" road = "1" way = "3" x = "-2" y = "0"></location>
+				<location path = "423" road = "2" way = "3" x = "2" y = "0"></location>
+				</stone>
 				<levin>
-				<location path = "0" road = "0" way = "0">< / location>
-				< / levin>
-				< / portals>
-				< / settings>
-				< / data>
+				<location path = "0" road = "0" way = "0"></location>
+				</levin>
+				</portals>
+				</settings>
+				</data>

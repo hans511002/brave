@@ -5,15 +5,11 @@ namespace engine
 {
 	namespace units
 	{
-		Unit_13::Unit_13()
-		{
-			return;
-		}// end function
- 
+
 		bool Unit_13::init()
 		{
 			typeUnit = 13;
-			container = new Unit_mc(this, "unit13", typeUnit); //new Unit13_mc(); 
+			container = new Unit_mc(this, "Unit13_mc", typeUnit); //new Unit13_mc(); 
 			container->setScale(0.85);
 			container->init();
 			Unit::init();
@@ -23,53 +19,53 @@ namespace engine
 
 		void Unit_13::animationHandler()
 		{
-			if(!container->stoneDeath->isVisible() && !icemanFlag)
+			if (!container->stoneDeath->isVisible() && !icemanFlag)
 			{
-				if(direction != "up")
+				if (direction != "up")
 				{
-					if(container->contMcs->currentFrame < 11)
+					if (container->cont->currentFrame < 11)
 					{
-						if(container->contMcs->currentFrame < 10)
+						if (container->cont->currentFrame < 10)
 						{
-							container->contMcs->tryPlay();
-					        //container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
+							container->cont->tryPlay();
+							//container->cont->gotoAndStop((container->cont->currentFrame + 1));
 						}
 						else
 						{
-							container->contMcs->gotoAndStop(1);
+							container->cont->gotoAndStop(1);
 						}
 					}
 					else
 					{
-						container->contMcs->gotoAndStop(container->contMcs->currentFrame - 10);
+						container->cont->gotoAndStop(container->cont->currentFrame - 10);
 					}
 				}
-				else if(container->contMcs->currentFrame > 10)
+				else if (container->cont->currentFrame > 10)
 				{
-					if(container->contMcs->currentFrame < container->contMcs->totalFrames)
+					if (container->cont->currentFrame < container->cont->totalFrames)
 					{
-						container->contMcs->tryPlay();
-					    //container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
+						container->cont->tryPlay();
+						//container->cont->gotoAndStop((container->cont->currentFrame + 1));
 					}
 					else
 					{
-						container->contMcs->gotoAndStop(11);
+						container->cont->gotoAndStop(11);
 					}
 				}
 				else
 				{
-					container->contMcs->gotoAndStop(container->contMcs->currentFrame + 10);
+					container->cont->gotoAndStop(container->cont->currentFrame + 10);
 				}
-				if(moveFlag && !airFlag && !airShockFlag || container->cont->currentFrame != 1)
+				if (moveFlag && !airFlag && !airShockFlag || container->currentFrame != 1)
 				{
-					if(container->cont->currentFrame < container->cont->totalFrames)
+					if (container->currentFrame < container->totalFrames)
 					{
-						container->cont->tryPlay();
-					    //container->cont->gotoAndStop((container->cont->currentFrame + 1));
+						container->tryPlay();
+						//container->gotoAndStop((container->currentFrame + 1));
 					}
 					else
 					{
-						container->cont->gotoAndStop(1);
+						container->gotoAndStop(1);
 					}
 				}
 			}

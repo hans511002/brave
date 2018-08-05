@@ -4,17 +4,13 @@
 namespace engine
 {
 	namespace units
-	{ 
-		Unit_10::Unit_10()
-		{
-			return;
-		}// end function
+	{  
 
 		bool Unit_10::init()
 		{
 			typeUnit = 10;
 			moveFlag = false;
-			container = new Unit_mc(this, "unit10", typeUnit); //new Unit10_mc(); 
+			container = new Unit_mc(this, "Unit10_mc", typeUnit); //new Unit10_mc(); 
 			container->setScale(0.87);
 			container->init();
 			Unit::init();
@@ -31,24 +27,24 @@ namespace engine
 				{
 					if(direction == "left" || direction == "right")
 					{
-						if(container->contMcs->currentFrame != 1)
-						{
-							container->contMcs->gotoAndStop(1);
-						}
-						if(container->cont->currentFrame > 18)
-						{
-							container->cont->gotoAndStop(container->cont->currentFrame - 18);
-						}
-						else if(container->cont->currentFrame < 18)
-						{
-							container->cont->tryPlay();
-							//container->cont->gotoAndStop((container->cont->currentFrame + 1));
-						}
-						else
+						if(container->cont->currentFrame != 1)
 						{
 							container->cont->gotoAndStop(1);
 						}
-						if(container->cont->currentFrame < 9)
+						if(container->currentFrame > 18)
+						{
+							container->gotoAndStop(container->currentFrame - 18);
+						}
+						else if(container->currentFrame < 18)
+						{
+							container->tryPlay();
+							//container->gotoAndStop((container->currentFrame + 1));
+						}
+						else
+						{
+							container->gotoAndStop(1);
+						}
+						if(container->currentFrame < 9)
 						{
 							if(moveFlag)
 							{
@@ -62,24 +58,24 @@ namespace engine
 					}
 					else if(direction == "up")
 					{
-						if(container->contMcs->currentFrame != 2)
+						if(container->cont->currentFrame != 2)
 						{
-							container->contMcs->gotoAndStop(2);
+							container->cont->gotoAndStop(2);
 						}
-						if(container->cont->currentFrame < 19)
+						if(container->currentFrame < 19)
 						{
-							container->cont->gotoAndStop(container->cont->currentFrame + 18);
+							container->gotoAndStop(container->currentFrame + 18);
 						}
-						else if(container->cont->currentFrame < container->cont->totalFrames)
+						else if(container->currentFrame < container->totalFrames)
 						{
-							container->cont->tryPlay();
-							//container->cont->gotoAndStop((container->cont->currentFrame + 1));
+							container->tryPlay();
+							//container->gotoAndStop((container->currentFrame + 1));
 						}
 						else
 						{
-							container->cont->gotoAndStop(19);
+							container->gotoAndStop(19);
 						}
-						if(container->cont->currentFrame < 27)
+						if(container->currentFrame < 27)
 						{
 							if(moveFlag)
 							{
@@ -93,24 +89,24 @@ namespace engine
 					}
 					else if(direction == "down")
 					{
-						if(container->contMcs->currentFrame != 1)
+						if(container->cont->currentFrame != 1)
 						{
-							container->contMcs->gotoAndStop(1);
+							container->cont->gotoAndStop(1);
 						}
-						if(container->cont->currentFrame < 19)
+						if(container->currentFrame < 19)
 						{
-							container->cont->gotoAndStop(container->cont->currentFrame + 18);
+							container->gotoAndStop(container->currentFrame + 18);
 						}
-						else if(container->cont->currentFrame < container->cont->totalFrames)
+						else if(container->currentFrame < container->totalFrames)
 						{
-							container->cont->tryPlay();
-							//container->cont->gotoAndStop((container->cont->currentFrame + 1));
+							container->tryPlay();
+							//container->gotoAndStop((container->currentFrame + 1));
 						}
 						else
 						{
-							container->cont->gotoAndStop(19);
+							container->gotoAndStop(19);
 						}
-						if(container->cont->currentFrame < 27)
+						if(container->currentFrame < 27)
 						{
 							if(moveFlag)
 							{
@@ -125,24 +121,24 @@ namespace engine
 				}
 				else if(direction == "left" || direction == "right")
 				{
-					if(container->contMcs->currentFrame != 1)
-					{
-						container->contMcs->gotoAndStop(1);
-					}
-					if(container->cont->currentFrame > 18)
-					{
-						container->cont->gotoAndStop(container->cont->currentFrame - 18);
-					}
-					else if(container->cont->currentFrame != 1 && container->cont->currentFrame < 18)
-					{
-						container->cont->tryPlay();
-					    //container->cont->gotoAndStop((container->cont->currentFrame + 1));
-					}
-					else if(container->cont->currentFrame != 1)
+					if(container->cont->currentFrame != 1)
 					{
 						container->cont->gotoAndStop(1);
 					}
-					if(container->cont->currentFrame < 9)
+					if(container->currentFrame > 18)
+					{
+						container->gotoAndStop(container->currentFrame - 18);
+					}
+					else if(container->currentFrame != 1 && container->currentFrame < 18)
+					{
+						container->tryPlay();
+					    //container->gotoAndStop((container->currentFrame + 1));
+					}
+					else if(container->currentFrame != 1)
+					{
+						container->gotoAndStop(1);
+					}
+					if(container->currentFrame < 9)
 					{
 						if(moveFlag)
 						{
@@ -156,24 +152,24 @@ namespace engine
 				}
 				else if(direction == "up")
 				{
-					if(container->contMcs->currentFrame != 2)
+					if(container->cont->currentFrame != 2)
 					{
-						container->contMcs->gotoAndStop(2);
+						container->cont->gotoAndStop(2);
 					}
-					if(container->cont->currentFrame < 19)
+					if(container->currentFrame < 19)
 					{
-						container->cont->gotoAndStop(container->cont->currentFrame + 18);
+						container->gotoAndStop(container->currentFrame + 18);
 					}
-					else if(container->cont->currentFrame != 19 && container->cont->currentFrame < container->cont->totalFrames)
+					else if(container->currentFrame != 19 && container->currentFrame < container->totalFrames)
 					{
-						container->cont->tryPlay();
-					    //container->cont->gotoAndStop((container->cont->currentFrame + 1));
+						container->tryPlay();
+					    //container->gotoAndStop((container->currentFrame + 1));
 					}
-					else if(container->cont->currentFrame != 19)
+					else if(container->currentFrame != 19)
 					{
-						container->cont->gotoAndStop(19);
+						container->gotoAndStop(19);
 					}
-					if(container->cont->currentFrame < 27)
+					if(container->currentFrame < 27)
 					{
 						if(moveFlag)
 						{
@@ -187,24 +183,24 @@ namespace engine
 				}
 				else if(direction == "down")
 				{
-					if(container->contMcs->currentFrame != 1)
+					if(container->cont->currentFrame != 1)
 					{
-						container->contMcs->gotoAndStop(1);
+						container->cont->gotoAndStop(1);
 					}
-					if(container->cont->currentFrame < 19)
+					if(container->currentFrame < 19)
 					{
-						container->cont->gotoAndStop(container->cont->currentFrame + 18);
+						container->gotoAndStop(container->currentFrame + 18);
 					}
-					else if(container->cont->currentFrame != 19 && container->cont->currentFrame < container->cont->totalFrames)
+					else if(container->currentFrame != 19 && container->currentFrame < container->totalFrames)
 					{
-						container->cont->tryPlay();
-					    //container->cont->gotoAndStop((container->cont->currentFrame + 1));
+						container->tryPlay();
+					    //container->gotoAndStop((container->currentFrame + 1));
 					}
-					else if(container->cont->currentFrame != 19)
+					else if(container->currentFrame != 19)
 					{
-						container->cont->gotoAndStop(19);
+						container->gotoAndStop(19);
 					}
-					if(container->cont->currentFrame < 27)
+					if(container->currentFrame < 27)
 					{
 						if(moveFlag)
 						{

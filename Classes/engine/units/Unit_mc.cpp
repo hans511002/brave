@@ -5,7 +5,7 @@ namespace engine
 {
 	namespace units
 	{
-		Unit_mc::Unit_mc(Unit* unit, string contName, int typeUnit) : unit(unit), typeUnit(typeUnit), giveHealth1(NULL), giveHealth2(NULL), giveHealth3(NULL), signal(0),
+		Unit_mc::Unit_mc(Unit* unit, string contName, int typeUnit) : unit(unit), typeUnit(typeUnit), giveHealth1(NULL), giveHealth2(NULL), giveHealth3(NULL), signal(0), speakFlag(0),
 			contName(contName), MovieClip("unit/", contName, contName)
 		{
 			iceDeathFlag = 0;
@@ -49,9 +49,15 @@ namespace engine
 				this->giveHealth2 = this->createMovieClipSub("giveHealth2");// DBCCFactory::getInstance()->buildArmatureNode("giveHealth2");
 				this->giveHealth3 = this->createMovieClipSub("giveHealth3");// DBCCFactory::getInstance()->buildArmatureNode("giveHealth3");
 			}
-			else if (this->typeUnit == 29 || this->typeUnit == 30){
+			else if (this->typeUnit == 29 || this->typeUnit == 30) {
 				this->dustAnima = this->createMovieClipSub("dustAnima");// DBCCFactory::getInstance()->buildArmatureNode("dustAnima");
 			}
+			else if (this->typeUnit == 34) {
+				this->walkIn = this->createMovieClipSub("walkIn");
+				this->walkOut = this->createMovieClipSub("walkOut");
+				this->speak = this->createMovieClipSub("speak"); 
+			}
+
 			////this->fireEffect->getEventDispatcher()->addCustomEventListener(EventObject::COMPLETE, std::bind(&Unit_mc::mcHandler, this, std::placeholders::_1));
 			////this->fireEffect->getCCEventDispatcher()->addCustomEventListener(EventData::LOOP_COMPLETE, std::bind(&Unit_mc::mcHandler, this, std::placeholders::_1));
 			////this->fireEffect->getCCEventDispatcher()->addCustomEventListener(EventData::FRAME_EVENT, std::bind(&Unit_mc::mcHandler, this, std::placeholders::_1));

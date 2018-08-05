@@ -333,6 +333,96 @@
     <ClCompile Include="..\Classes\sys\I18n.cpp">
       <Filter>src\sys</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_5.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_6.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_7.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_8.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_9.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_10.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_11.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_12.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_13.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_14.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_15.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_16.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_17.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_18.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_19.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_20.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_21.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_22.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_23.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_24.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_25.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_26.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_27.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_28.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_29.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_30.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_31.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_32.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_33.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\units\Unit_34.cpp">
+      <Filter>src\engine\units</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">

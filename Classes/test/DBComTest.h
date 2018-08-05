@@ -133,7 +133,6 @@ protected:
 				//if (!tower->sphere1BulletCont->isPlay())
 				//	tower->sphere1BulletCont->play(1); 
 			}
-			tower->sphere1BulletCont->tryPlay();
 		}
 
 	}

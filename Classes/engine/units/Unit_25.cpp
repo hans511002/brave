@@ -6,11 +6,7 @@
 namespace engine
 {
 	namespace units
-	{
-		Unit_25::Unit_25()
-		{
-			return;
-		}// end function
+	{ 
 
 		bool Unit_25::init()
 		{
@@ -23,18 +19,18 @@ namespace engine
 			portalAnima = NULL;
 			myPortal = NULL;
             container->maskCont->stop();
-            container->myFirstPoint =container->getPosition();// new Point(container->cont->x, container->cont->y);
+            container->myFirstPoint =container->getPosition();// new Point(container->x, container->y);
             if (world->listOfStonePortals.size() > 0)
             {
-                //container->cont->mask = container->maskCont;
-                container->cont->getArmature()->getSlot("shadow")->setDisplayIndex(-1);// setVisible(false);//container->shadow.visible = false;
+                //container->mask = container->maskCont;
+                container->getArmature()->getSlot("shadow")->setDisplayIndex(-1);// setVisible(false);//container->shadow.visible = false;
                 if ((gate - 1) >= 0 && (gate - 1) < world->listOfStonePortals.size())
                 {
                     this->myPortal = world->listOfStonePortals[(gate - 1)];
                 }
                 else
                 {
-                    tempObject = std::random();
+                    float tempObject = std::random();
                     i = world->listOfStonePortals.size() - 1;
                     while (i >= 0)
                     { 
@@ -124,14 +120,14 @@ namespace engine
                                 {
                                     container->setPositionY(container->getPositionY() - container->myFirstPoint.y / this->portalAnima->totalFrames);
                                 }
-                                //if (container->cont->y > 0) 
-                                //    container->cont->y = container->cont->y - container->cont->myFirstPoint.y / this->portalAnima->totalFrames;
+                                //if (container->y > 0) 
+                                //    container->y = container->y - container->myFirstPoint.y / this->portalAnima->totalFrames;
                             }
                             else if (this->portalAnima->isVisible())
                             {
                                 this->portalAnima->setVisible(false); //visible = false;
                                 container->setPositionY(0);//cont->y = 0;
-                                container->cont->getArmature()->getSlot("shadow")->setDisplayIndex(-1); //setVisible(false);//container->shadow->setVisible(true); //visible = true;
+                                container->getArmature()->getSlot("shadow")->setDisplayIndex(-1); //setVisible(false);//container->shadow->setVisible(true); //visible = true;
                             }
                         }
                     }
@@ -143,7 +139,7 @@ namespace engine
                         this->removeChild(this->portalAnima);
                         this->portalAnima = NULL;
 						container->maskCont->setVisible(false); //visible = false;
-                        //container->cont->mask = NULL; 
+                        //container->mask = NULL; 
                         this->setMouseChildren(true);
                         this->setMouseEnabled(true);
                         readyDamage = true;
@@ -164,38 +160,38 @@ namespace engine
             {
                 if (direction != "up")
                 {
-                    if (container->contMcs->currentFrame < 41)
+                    if (container->cont->currentFrame < 41)
                     {
-                        if (container->contMcs->currentFrame < 40)
+                        if (container->cont->currentFrame < 40)
                         {
-                            container->contMcs->tryPlay();
-				            //container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
+                            container->cont->tryPlay();
+				            //container->cont->gotoAndStop((container->cont->currentFrame + 1));
                         }
                         else
                         {
-                            container->contMcs->gotoAndStop(1);
+                            container->cont->gotoAndStop(1);
                         }
                     }
                     else
                     {
-                        container->contMcs->gotoAndStop(container->contMcs->currentFrame - 40);
+                        container->cont->gotoAndStop(container->cont->currentFrame - 40);
                     }
                 }
-                else if (container->contMcs->currentFrame > 40)
+                else if (container->cont->currentFrame > 40)
                 {
-                    if (container->contMcs->currentFrame < container->contMcs->totalFrames)
+                    if (container->cont->currentFrame < container->cont->totalFrames)
                     {
-                        container->contMcs->tryPlay();
-				        //container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
+                        container->cont->tryPlay();
+				        //container->cont->gotoAndStop((container->cont->currentFrame + 1));
                     }
                     else
                     {
-                        container->contMcs->gotoAndStop(41);
+                        container->cont->gotoAndStop(41);
                     }
                 }
                 else
                 {
-                    container->contMcs->gotoAndStop(container->contMcs->currentFrame + 40);
+                    container->cont->gotoAndStop(container->cont->currentFrame + 40);
                 }
             }
             Unit::animationHandler();

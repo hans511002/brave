@@ -6,18 +6,14 @@
 namespace engine
 {
 	namespace units
-	{
-		Unit_21::Unit_21()
-		{
-			return;
-		}// end function
+	{ 
 
 		bool Unit_21::init()
 		{
 			typeUnit = 21;
 			this->newEnemyCounter = Main::mainClass->readXMLClass.listOfEnemiesXML[(typeUnit - 1)][30];
-			container = new Unit_mc(this, "unit21", typeUnit); //new Unit21_mc(); 
-			container->setScale(0.88);
+			container = new Unit_mc(this, "Unit21_mc", typeUnit); //new Unit21_mc(); 
+			container->setScale(0.88f);
 			container->init();
 			Unit::init();
 			this->autorelease();
@@ -30,24 +26,24 @@ namespace engine
 			{
 				if(direction != "up")
 				{
-					if(container->contMcs->currentFrame != 1)
+					if(container->cont->currentFrame != 1)
 					{
-						container->contMcs->gotoAndStop(1);
+						container->cont->gotoAndStop(1);
 					}
 				}
-				else if(container->contMcs->currentFrame != 2)
+				else if(container->cont->currentFrame != 2)
 				{
-					container->contMcs->gotoAndStop(2);
+					container->cont->gotoAndStop(2);
 				}
-				if(!airFlag && !airShockFlag || container->cont->currentFrame != 1)
+				if(!airFlag && !airShockFlag || container->currentFrame != 1)
 				{
-					if(container->cont->currentFrame < container->cont->totalFrames)
+					if(container->currentFrame < container->totalFrames)
 					{
-						container->cont->gotoAndStop((container->cont->currentFrame + 1));
+						container->gotoAndStop((container->currentFrame + 1));
 					}
 					else
 					{
-						container->cont->gotoAndStop(1);
+						container->gotoAndStop(1);
 					}
 				}
 			}
@@ -59,24 +55,24 @@ namespace engine
 		{
 			if(!dead && health <= 0)
 			{
-				if(container->contMcs->currentFrame == 1)
+				if(container->cont->currentFrame == 1)
 				{
 					MovieClip * tempObject = new MovieClip(world, "unit/", "Unit21_frontDeath_mc", "Unit21_frontDeath_mc");//Indexes(new Unit20_frontDeath_mc(), 1);
-					cocos2d::Point pos = container->cont->getPosition();
+					cocos2d::Point pos = container->getPosition();
 					pos = container->localToGlobal(pos);
 					tempObject->setPosition(pos);
 					//tempObject = new Indexes(new Unit21_frontDeath_mc(), 1);
 				}
-				else if(container->contMcs->currentFrame == 2)
+				else if(container->cont->currentFrame == 2)
 				{
 					MovieClip * tempObject = new MovieClip(world, "unit/", "Unit21_backDeath_mc", "Unit21_backDeath_mc");//Indexes(new Unit20_frontDeath_mc(), 1);
-					cocos2d::Point pos = container->cont->getPosition();
+					cocos2d::Point pos = container->getPosition();
 					pos = container->localToGlobal(pos);
 					tempObject->setPosition(pos);
 					//tempObject = new Indexes(new Unit21_backDeath_mc(), 1);
 				}
 				//Sounds.instance.playSound("snd_unit_orderDeath");
-				//tempObject1 = container->localToGlobal(new Point(container->cont->x, container->cont->y));
+				//tempObject1 = container->localToGlobal(new Point(container->x, container->y));
 				//tempObject.x = tempObject1.x;
 				//tempObject.y = tempObject1.y;
 				float tempObject1 = 0;

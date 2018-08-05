@@ -6,11 +6,7 @@
 namespace engine 
 {
 	namespace units
-	{
-		Unit_23::Unit_23()
-		{
-			return;
-		}// end function
+	{ 
 
 		bool Unit_23::init()
 		{
@@ -141,38 +137,38 @@ namespace engine
 			{
 				if(direction != "up")
 				{
-					if(container->contMcs->currentFrame < 31)
+					if(container->cont->currentFrame < 31)
 					{
-						if(container->contMcs->currentFrame < 30)
+						if(container->cont->currentFrame < 30)
 						{
-							container->contMcs->tryPlay();
-				            //container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
+							container->cont->tryPlay();
+				            //container->cont->gotoAndStop((container->cont->currentFrame + 1));
 						}
 						else
 						{
-							container->contMcs->gotoAndStop(1);
+							container->cont->gotoAndStop(1);
 						}
 					}
 					else
 					{
-						container->contMcs->gotoAndStop(container->contMcs->currentFrame - 30);
+						container->cont->gotoAndStop(container->cont->currentFrame - 30);
 					}
 				}
-				else if(container->contMcs->currentFrame > 30)
+				else if(container->cont->currentFrame > 30)
 				{
-					if(container->contMcs->currentFrame < container->contMcs->totalFrames)
+					if(container->cont->currentFrame < container->cont->totalFrames)
 					{
-						container->contMcs->tryPlay();
-				        //container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
+						container->cont->tryPlay();
+				        //container->cont->gotoAndStop((container->cont->currentFrame + 1));
 					}
 					else
 					{
-						container->contMcs->gotoAndStop(31);
+						container->cont->gotoAndStop(31);
 					}
 				}
 				else
 				{
-					container->contMcs->gotoAndStop(container->contMcs->currentFrame + 30);
+					container->cont->gotoAndStop(container->cont->currentFrame + 30);
 				}
 			}
 			Unit::animationHandler();

@@ -116,6 +116,7 @@ namespace engine
 			Common::Array<int>listOfTornado; //public var listOfTornado:Array;
 			MovieClip * teleportAnima;
 			bool teleportFlag;//public var teleportFlag:Object;
+			Unit* teleportFlagObj;//public var teleportFlag:Object;
 			bool directionFlag;//public var directionFlag:Boolean;
 			bool replaced;//public var replaced:Boolean;
 			float speedKRun;//public var speedKRun:Number;
@@ -172,7 +173,7 @@ namespace engine
 				speedPlusFlag(false), speedPlusCounter(0), speedPlusValue(0), airGo(0), airWaitTimer(0), airSpacing(0), airPower(0), airResist(0), dampingAir(0), traversedPath(0),
 				icemanFlag(false), icemanCounter(0), icemanResist(0), fireEffectFlag(false), fireEffectCounter(0), fireEffectDamage(0), iceEffectFlag(false), iceEffectCounter(0),
 				iceEffectSlowdown(0), replacementFlag(0), replacementCount(0), mainMoveFlag(true), stealthCounter(0), hiddenFlag(false),
-				invisibleCounter(0), invisibleTimer(0), visibleCounter(0), visibleTimer(0), newEnemyCounter(0), atStaged(false), teleportAnima(NULL), blockTowerRadius(0)
+				invisibleCounter(0), invisibleTimer(0), visibleCounter(0), visibleTimer(0), newEnemyCounter(0), atStaged(false), teleportAnima(NULL), blockTowerRadius(0), teleportFlagObj(0)
 			{
 
 			}// end function
@@ -225,7 +226,7 @@ public:\
 		UNIT_CLASS_DEFINE(Unit_6);
 		UNIT_CLASS_DEFINE(Unit_7);
 		UNIT_CLASS_DEFINE(Unit_8);
-		UNIT_CLASS_DEFINE(Unit_9);
+		UNIT_CLASS_DEFINE(Unit_9 );
 		UNIT_CLASS_DEFINE(Unit_10);
 		UNIT_CLASS_DEFINE(Unit_11);
 		UNIT_CLASS_DEFINE(Unit_12);
@@ -233,9 +234,9 @@ public:\
 		UNIT_CLASS_DEFINE(Unit_14);
 		UNIT_CLASS_DEFINE(Unit_15);
 		UNIT_CLASS_DEFINE(Unit_16);
-		UNIT_CLASS_DEFINE(Unit_17);
+		UNIT_CLASS_DEFINE(Unit_17 );
 		UNIT_CLASS_DEFINE(Unit_18);
-		UNIT_CLASS_DEFINE(Unit_19);
+		UNIT_CLASS_DEFINE(Unit_19 );
 		UNIT_CLASS_DEFINE(Unit_20, virtual void kill(););
 		UNIT_CLASS_DEFINE(Unit_21, virtual void kill(););
 		UNIT_CLASS_DEFINE(Unit_22, int blockTowerRadius; MovieClip * blockRadiusGr; bool greenFlag; cocos2d::Point testTarget; virtual void scanAtRadius(); virtual void kill(););
@@ -244,14 +245,14 @@ public:\
 		UNIT_CLASS_DEFINE(Unit_24, RoadsignIce_mc * myPortal; MovieClip * portalAnima; virtual void kill(););
 		UNIT_CLASS_DEFINE(Unit_25, RoadsignStone_mc * myPortal; MovieClip * portalAnima; virtual void kill(); virtual void update(float dt=0););
 		UNIT_CLASS_DEFINE(Unit_26, RoadsignLevin_mc * myPortal; MovieClip * portalAnima; virtual void kill(););
-		UNIT_CLASS_DEFINE(Unit_27, int teleportPhase; int teleportTimer; int teleportCounter; int teleportStealthTimer; int teleportStealthCounter; float teleportDistance; float teleportRadius; Common::Array<MovieClip*> listOfTeleportUnits; int soundCounter; int soundTimer; int soundTimer1; int teleportUnitsMax; int teleportUnitsCounter; virtual void kill(););
-		UNIT_CLASS_DEFINE(Unit_28, float giveHealthRadius; int giveHeathCounter; int giveHeathTimer; float giveHeath; virtual void kill(););
+		UNIT_CLASS_DEFINE(Unit_27, int teleportPhase; int teleportTimer; int teleportCounter; int teleportStealthTimer; int teleportStealthCounter; float teleportDistance; float teleportRadius; Common::Array<Unit*> listOfTeleportUnits; int soundCounter; int soundTimer; int soundTimer1; int teleportUnitsMax; int teleportUnitsCounter; virtual void kill(););
+		UNIT_CLASS_DEFINE(Unit_28, float giveHealthRadius; int giveHeathCounter; int giveHeathTimer; float giveHeath;);
 		UNIT_CLASS_DEFINE(Unit_29, float returnHealth; int stealthCounter; int stealthTimer; int phase; virtual void kill(););
 		UNIT_CLASS_DEFINE(Unit_30, float returnHealth; int stealthCounter; int stealthTimer; int phase; virtual void kill(););
 		UNIT_CLASS_DEFINE(Unit_31, float distanceX; float distanceY; int counter; bool firstView; virtual void moveHandler(););
 		UNIT_CLASS_DEFINE(Unit_32, float distanceX; float distanceY; int counter; bool firstView; virtual void moveHandler(););
 		UNIT_CLASS_DEFINE(Unit_33, float distanceX; float distanceY; int counter; bool firstView; virtual void moveHandler(););
-		UNIT_CLASS_DEFINE(Unit_34, int phase; int teleportStatus; bool eyesFlag; int eyesCounter; int eyesCounter1; int eyesCounter2; ReadXML * readXML; int phaseRoad1; int phaseRoad2; bool giveArmorFlag; bool takeAwayCastsFlag; string changeRoad; bool speakFlag; int notAtRoad; int musicVolumeManageCounter; bool greenFlag; Common::Array<engine::WaveData> arrayTurn; int callUnitsCounter; bool roadFlag; virtual void kill(););
+		UNIT_CLASS_DEFINE(Unit_34, int phase; int teleportStatus; bool eyesFlag; int eyesCounter; int eyesCounter1; int eyesCounter2; ReadXML * readXML; int phaseRoad1; int phaseRoad2; bool giveArmorFlag; bool takeAwayCastsFlag; string changeRoad; bool speakFlag; int notAtRoad; int musicVolumeManageCounter; bool greenFlag;  Common::Array<engine::WaveData<int> > arrayTurn; int callUnitsCounter; bool roadFlag; virtual void kill(););
 	}
 }
 #endif

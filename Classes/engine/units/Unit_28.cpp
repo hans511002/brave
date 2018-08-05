@@ -6,12 +6,7 @@
 namespace engine
 {
 	namespace units
-	{
-		Unit_28::Unit_28():giveHealthRadius(0),giveHeathCounter(0),giveHeathTimer(0),giveHeath(0)
-		{
-			return;
-		}// end function
-
+	{ 
 		bool Unit_28::init()
 		{
             typeUnit = 28;
@@ -20,7 +15,7 @@ namespace engine
             this->giveHeathCounter = Main::mainClass->readXMLClass.listOfEnemiesXML[(typeUnit - 1)][31];
             this->giveHeath = Main::mainClass->readXMLClass.listOfEnemiesXML[(typeUnit - 1)][32];
             container = new Unit_mc(this, "unit28", typeUnit);  
-			container->setScale(0.8);
+			container->setScale(0.8f);
 			container->init();
 			Unit::init();
 			this->autorelease(); 
@@ -33,37 +28,37 @@ namespace engine
             {
                 if (direction != "up")
                 {
-                    if (container->contMcs->currentFrame < 12)
+                    if (container->cont->currentFrame < 12)
                     {
-                        if (container->contMcs->currentFrame < 11)
+                        if (container->cont->currentFrame < 11)
                         {
-                            container->contMcs->tryPlay();
-				            //container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
+                            container->cont->tryPlay();
+				            //container->cont->gotoAndStop((container->cont->currentFrame + 1));
                         }
                         else
                         {
-                            container->contMcs->gotoAndStop(1);
+                            container->cont->gotoAndStop(1);
                         }
-                    }
-                    else
-                    {
-                        container->contMcs->gotoAndStop(1);
-                    }
-                }
-                else if (container->contMcs->currentFrame != 12)
-                {
-                    container->contMcs->gotoAndStop(12);
-                }
-                if (!airFlag && !airShockFlag || container->cont->currentFrame != 1)
-                {
-                    if (container->cont->currentFrame < container->cont->totalFrames)
-                    {
-                        container->cont->tryPlay();
-				        //container->cont->gotoAndStop((container->cont->currentFrame + 1));
                     }
                     else
                     {
                         container->cont->gotoAndStop(1);
+                    }
+                }
+                else if (container->cont->currentFrame != 12)
+                {
+                    container->cont->gotoAndStop(12);
+                }
+                if (!airFlag && !airShockFlag || container->currentFrame != 1)
+                {
+                    if (container->currentFrame < container->totalFrames)
+                    {
+                        container->tryPlay();
+				        //container->gotoAndStop((container->currentFrame + 1));
+                    }
+                    else
+                    {
+                        container->gotoAndStop(1);
                     }
                 }
                 if (this->giveHeathCounter > 0)

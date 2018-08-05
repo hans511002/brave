@@ -998,126 +998,126 @@ namespace engine
 		{
 			tempObject = new Unit_4();
 		}
-		//else if (param1 == 5)
-		//{
-		//	tempObject = new Unit_5();
-		//}
-		//else if (param1 == 6)
-		//{
-		//	tempObject = new Unit_6();
-		//}
-		//else if (param1 == 7)
-		//{
-		//	tempObject = new Unit_7();
-		//}
-		//else if (param1 == 8)
-		//{
-		//	tempObject = new Unit_8();
-		//}
-		//else if (param1 == 9)
-		//{
-		//	tempObject = new Unit_9();
-		//}
-		//else if (param1 == 10)
-		//{
-		//	tempObject = new Unit_10();
-		//}
-		//else if (param1 == 11)
-		//{
-		//	tempObject = new Unit_11();
-		//}
-		//else if (param1 == 12)
-		//{
-		//	tempObject = new Unit_12();
-		//}
-		//else if (param1 == 13)
-		//{
-		//	tempObject = new Unit_13();
-		//}
-		//else if (param1 == 14)
-		//{
-		//	tempObject = new Unit_14();
-		//}
-		//else if (param1 == 15)
-		//{
-		//	tempObject = new Unit_15();
-		//}
-		//else if (param1 == 16)
-		//{
-		//	tempObject = new Unit_16();
-		//}
-		//else if (param1 == 17)
-		//{
-		//	tempObject = new Unit_17();
-		//}
-		//else if (param1 == 18)
-		//{
-		//	tempObject = new Unit_18();
-		//}
-		//else if (param1 == 19)
-		//{
-		//	tempObject = new Unit_19();
-		//}
-		//else if (param1 == 20)
-		//{
-		//	tempObject = new Unit_20();
-		//}
-		//else if (param1 == 21)
-		//{
-		//	tempObject = new Unit_21();
-		//}
-		//else if (param1 == 22)
-		//{
-		//	tempObject = new Unit_22();
-		//}
-		//else if (param1 == 23)
-		//{
-		//	tempObject = new Unit_23();
-		//}
-		//else if (param1 == 24)
-		//{
-		//	tempObject = new Unit_24();
-		//}
-		//else if (param1 == 25)
-		//{
-		//	tempObject = new Unit_25();
-		//}
-		//else if (param1 == 26)
-		//{
-		//	tempObject = new Unit_26();
-		//}
-		//else if (param1 == 27)
-		//{
-		//	tempObject = new Unit_27();
-		//}
-		//else if (param1 == 28)
-		//{
-		//	tempObject = new Unit_28();
-		//}
-		//else if (param1 == 29)
-		//{
-		//	tempObject = new Unit_29();
-		//}
-		//else if (param1 == 30)
-		//{
-		//	tempObject = new Unit_30();
-		//}
-		//else if (param1 == 31)
-		//{
-		//	tempObject = new Unit_31();
-		//}
-		//else if (param1 == 32)
-		//{
-		//	tempObject = new Unit_32();
-		//}
-		//else if (param1 == 33)
-		//{
-		//	tempObject = new Unit_33();
-		//}
-		//else if (param1 == 34)
-		//{
-		//	tempObject = new Unit_34();
-		//}
+		else if (param1 == 5)
+		{
+			tempObject = new Unit_5();
+		}
+		else if (param1 == 6)
+		{
+			tempObject = new Unit_6();
+		}
+		else if (param1 == 7)
+		{
+			tempObject = new Unit_7();
+		}
+		else if (param1 == 8)
+		{
+			tempObject = new Unit_8();
+		}
+		else if (param1 == 9)
+		{
+			tempObject = new Unit_9();
+		}
+		else if (param1 == 10)
+		{
+			tempObject = new Unit_10();
+		}
+		else if (param1 == 11)
+		{
+			tempObject = new Unit_11();
+		}
+		else if (param1 == 12)
+		{
+			tempObject = new Unit_12();
+		}
+		else if (param1 == 13)
+		{
+			tempObject = new Unit_13();
+		}
+		else if (param1 == 14)
+		{
+			tempObject = new Unit_14();
+		}
+		else if (param1 == 15)
+		{
+			tempObject = new Unit_15();
+		}
+		else if (param1 == 16)
+		{
+			tempObject = new Unit_16();
+		}
+		else if (param1 == 17)
+		{
+			tempObject = new Unit_17();
+		}
+		else if (param1 == 18)
+		{
+			tempObject = new Unit_18();
+		}
+		else if (param1 == 19)
+		{
+			tempObject = new Unit_19();
+		}
+		else if (param1 == 20)
+		{
+			tempObject = new Unit_20();
+		}
+		else if (param1 == 21)
+		{
+			tempObject = new Unit_21();
+		}
+		else if (param1 == 22)
+		{
+			tempObject = new Unit_22();
+		}
+		else if (param1 == 23)
+		{
+			tempObject = new Unit_23();
+		}
+		else if (param1 == 24)
+		{
+			tempObject = new Unit_24();
+		}
+		else if (param1 == 25)
+		{
+			tempObject = new Unit_25();
+		}
+		else if (param1 == 26)
+		{
+			tempObject = new Unit_26();
+		}
+		else if (param1 == 27)
+		{
+			tempObject = new Unit_27();
+		}
+		else if (param1 == 28)
+		{
+			tempObject = new Unit_28();
+		}
+		else if (param1 == 29)
+		{
+			tempObject = new Unit_29();
+		}
+		else if (param1 == 30)
+		{
+			tempObject = new Unit_30();
+		}
+		else if (param1 == 31)
+		{
+			tempObject = new Unit_31();
+		}
+		else if (param1 == 32)
+		{
+			tempObject = new Unit_32();
+		}
+		else if (param1 == 33)
+		{
+			tempObject = new Unit_33();
+		}
+		else if (param1 == 34)
+		{
+			tempObject = new Unit_34();
+		}
 
 		tempObject->road = param2;
 		if (param3 == 0)

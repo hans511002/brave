@@ -7,8 +7,8 @@
 
 namespace engine
 { 
-	struct WaveData{
-		int value;
+	template <class T = int> struct WaveData{
+		T value;
 		Common::Array<WaveData> d;
 		WaveData() :value(0)
 		{}
@@ -18,21 +18,24 @@ namespace engine
 		int size(){
 			return d.size();
 		}
-		inline int operator=(int i){
+		inline T operator=(T i){
 			return value=i;
 		};
-		inline  operator int (){
+		inline  operator T (){
 			return value ;
 		};
  
 		// prefix
-		inline int operator++() { return ++value; }
-		inline int operator--() { return --value; }
+		inline T operator++() { return ++value; }
+		inline T operator--() { return --value; }
 
 		// suffix
-		inline int operator++(int) { int old = value; value++; return (old); }
-		inline int operator--(int) { int old = value; value--; return  (old); }
+		inline T operator++(int) { T old = value; value++; return (old); }
+		inline T operator--(int) { T old = value; value--; return  (old); }
 
+		inline void clear() {
+			this->d.clear();
+		}
 		inline WaveData &splice(int s, int n = 1){
 			while (n){
 				d.remove(s);
@@ -52,7 +55,7 @@ namespace engine
         bool waveWork,waveWorkSt1, waveWorkSt2,waveWorkSt3;
         int nowWave;
         int maxWaves;
-		Common::Array<WaveData> listOfWaves;
+		Common::Array<WaveData<int> > listOfWaves;
 		Common::Array<Common::Array<int> > additArr;
 		Common::Array<Common::Array<int> > listOfReplacement;
 

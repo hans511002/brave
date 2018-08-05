@@ -229,7 +229,7 @@ namespace engine
 		int levelPointerSize = this->world->level->pointers.size();
 		for (int i = 0; i < levelPointerSize; i++)
 		{
-			LevelPointer * pointer = this->world->level->pointers[0];
+			LevelPointer * pointer = this->world->level->pointers[i];
 			pointer->retain();
 			pointer->statusAnima = 1;
 			pointer->myPoint = cocos2d::Point(pointer->getPosition());

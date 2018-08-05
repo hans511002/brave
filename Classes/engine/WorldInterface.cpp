@@ -209,6 +209,7 @@ namespace engine
 
 		this->addChild(this->castMask);
 		this->world->forseIndexFl = true;
+		//测试cast
 		//this->blockCastGolem = true;
 		//this->blockCastIceman = true;
 		//this->blockCastAir = true;

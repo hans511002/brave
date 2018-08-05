@@ -6,17 +6,13 @@
 namespace engine
 {
 	namespace units
-	{  
-        Unit_20::Unit_20()
-        {
-            return;
-        }// end function
+	{   
 
         bool Unit_20::init()
         {
             typeUnit = 20;
             this->newEnemyCounter = Main::mainClass->readXMLClass.listOfEnemiesXML[(typeUnit - 1)][30];
-            container = new Unit_mc(this,"unit20", typeUnit); //new Unit20_mc(); 
+            container = new Unit_mc(this,"Unit20_mc", typeUnit); //new Unit20_mc(); 
             container->setScale(0.85);
             container->init();
             Unit::init();
@@ -30,25 +26,25 @@ namespace engine
             {
                 if (direction != "up")
                 {
-                    if (container->contMcs->currentFrame != 1)
+                    if (container->cont->currentFrame != 1)
                     {
-                        container->contMcs->gotoAndStop(1);
+                        container->cont->gotoAndStop(1);
                     }
                 }
-                else if (container->contMcs->currentFrame != 2)
+                else if (container->cont->currentFrame != 2)
                 {
-                    container->contMcs->gotoAndStop(2);
+                    container->cont->gotoAndStop(2);
                 }
-                if (!airFlag && !airShockFlag || container->cont->currentFrame != 1)
+                if (!airFlag && !airShockFlag || container->currentFrame != 1)
                 {
-                    if (container->cont->currentFrame < container->cont->totalFrames)
+                    if (container->currentFrame < container->totalFrames)
                     {
-                        container->cont->tryPlay();
-				        //container->cont->gotoAndStop((container->cont->currentFrame + 1));
+                        container->tryPlay();
+				        //container->gotoAndStop((container->currentFrame + 1));
                     }
                     else
                     {
-                        container->cont->gotoAndStop(1);
+                        container->gotoAndStop(1);
                     }
                 }
             }
@@ -61,22 +57,22 @@ namespace engine
             if (!dead && health <= 0)
             {
                 //MovieClip * tempObject=NULL;//MovieClip(World * world, string rootPath, string aniName, string defAniName = "");
-                if (container->contMcs->currentFrame == 1)
+                if (container->cont->currentFrame == 1)
                 {
                     MovieClip * tempObject = new MovieClip(world, "unit/", "Unit20_frontDeath_mc", "Unit20_frontDeath_mc");//Indexes(new Unit20_frontDeath_mc(), 1);
-                    cocos2d::Point pos=container->cont->getPosition();
+                    cocos2d::Point pos=container->getPosition();
                     pos=container->localToGlobal(pos);
                     tempObject->setPosition(pos);
                 }
-                else if (container->contMcs->currentFrame == 2)
+                else if (container->cont->currentFrame == 2)
                 {
                     MovieClip * tempObject = new MovieClip(world, "unit/", "Unit20_backDeath_mc", "Unit20_backDeath_mc");//Indexes(new Unit20_backDeath_mc(), 1);
-                    cocos2d::Point pos=container->cont->getPosition();
+                    cocos2d::Point pos=container->getPosition();
                     pos=container->localToGlobal(pos);
                     tempObject->setPosition(pos);
                 }
                 //Sounds.instance.playSound("snd_unit_orderDeath");
-                //cocos2d::Point tempObject1 = container->localToGlobal(container->cont->getPosition());//new Point(container->cont->x, container->cont->y));
+                //cocos2d::Point tempObject1 = container->localToGlobal(container->getPosition());//new Point(container->x, container->y));
                 //tempObject.x = tempObject1.x;
                 //tempObject.y = tempObject1.y;
                 float tempObject1 = 0;

@@ -3,7 +3,8 @@
 //#include "BaseHeaders.h"
 #include "JsonUtil.h"
 #include "engine/xml/XmlConfigParser.h"
- 
+#include "engine/Waves.h"
+
 
 namespace engine
 {
@@ -197,15 +198,24 @@ namespace engine
 		Common::Array<NUM5<float> >  listOfStonePortals ;
 		Common::Array<NUM5<float> >  listOfLevinPortals ;
 		float complexitySettingXML;// = 1;
-		int bossArrayPhasePath[2][32];//14
-		Common::Array<int> bossArrayOfEnemies0;
-		Common::Array<int *> bossArrayOfEnemies1;
+		Common::Array<Common::Array<int> >bossArrayPhasePath;
+		//int bossArrayPhasePath[2][32];//14
+		//Common::Array<int> bossArrayOfEnemies0;
+		//Common::Array<int *> bossArrayOfEnemies1;
 
+		Common::Array<WaveData<int> > bossArrayOfEnemies;
 		//long long bossArrayOfEnemies[32][2];//[n][1] void * 4ά˽ة
+		template <class T = int,const int len=2> struct ARR {
+			T v[len];
+			inline T & operator[](int i) {
+				return v[i];
+			};
+		};
+		Common::Array<ARR<int,2> > bossArrayOfView;
 
-		int bossArrayOfView[32][2];
-		int bossArrayOfArmor[16];
-		int bossArrayOfCasts[16];
+		//int bossArrayOfView[32][2];
+		Common::Array<int > bossArrayOfArmor;
+		Common::Array<int > bossArrayOfCasts;
 		int testTowerStep;
 		int testFireStep;
 		int testIceStep;

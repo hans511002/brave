@@ -7,14 +7,12 @@ namespace engine
 {
 	namespace units
 	{
-		Unit_27::Unit_27():teleportPhase(0),teleportTimer(0),teleportCounter(0),teleportStealthTimer(0),teleportStealthCounter(0),teleportDistance(0)
-		    ,teleportRadius(0),soundCounter(0),soundTimer(5),soundTimer1(4),teleportUnitsMax(5),teleportUnitsCounter(0)
-		{
-			return;
-		}// end function
+		 
 
 		bool Unit_27::init()
 		{
+			teleportPhase=(0), teleportTimer=(0), teleportCounter=(0), teleportStealthTimer=(0), teleportStealthCounter=(0), teleportDistance=(0)
+				, teleportRadius=(0), soundCounter=(0), soundTimer=(5), soundTimer1=(4), teleportUnitsMax=(5), teleportUnitsCounter=(0);
             typeUnit = 27;
             this->teleportCounter = Main::mainClass->readXMLClass.listOfEnemiesXML[(typeUnit - 1)][30];
             this->teleportTimer = Main::mainClass->readXMLClass.listOfEnemiesXML[(typeUnit - 1)][30];
@@ -24,7 +22,7 @@ namespace engine
             this->teleportRadius = Main::mainClass->readXMLClass.listOfEnemiesXML[(typeUnit - 1)][33];
             this->teleportUnitsMax = Main::mainClass->readXMLClass.listOfEnemiesXML[(typeUnit - 1)][34];
             container = new Unit_mc(this, "unit27", typeUnit);  
-			container->setScale(0.9);
+			container->setScale(0.9f);
 			container->init();
 			Unit::init();
 			this->autorelease(); 
@@ -61,7 +59,7 @@ namespace engine
                         {
                             if (world->listOfUnits[i]->road == road)
                             {
-                                if (!world->listOfUnits[i]->dead && world->listOfUnits[i]->readyDamage && world->listOfUnits[i]->atStage && !world->listOfUnits[i]->teleportAnima)
+                                if (!world->listOfUnits[i]->dead && world->listOfUnits[i]->readyDamage && world->listOfUnits[i]->atStaged && !world->listOfUnits[i]->teleportAnima)
                                 {
                                     if (world->listOfUnits[i]->typeUnit != 27 && world->listOfUnits[i]->typeUnit != 34)
                                     {
@@ -70,7 +68,7 @@ namespace engine
                                             if (this->teleportUnitsCounter < this->teleportUnitsMax)
                                             {
                                                 this->teleportUnitsCounter ++;
-                                                world->listOfUnits[i]->teleportFlag = this;
+                                                world->listOfUnits[i]->teleportFlagObj = this;
                                                 world->listOfUnits[i]->readyDamage = false;
                                                 world->listOfUnits[i]->mainMoveFlag = false;
                                                 this->listOfTeleportUnits.push(world->listOfUnits[i]);
@@ -92,16 +90,16 @@ namespace engine
                             {
                                 if (world->listOfUnits[i]->road != road)
                                 {
-                                    if (!world->listOfUnits[i]->dead && world->listOfUnits[i]->readyDamage && world->listOfUnits[i]->atStage && !world->listOfUnits[i]->teleportAnima)
+                                    if (!world->listOfUnits[i]->dead && world->listOfUnits[i]->readyDamage && world->listOfUnits[i]->atStaged && !world->listOfUnits[i]->teleportAnima)
                                     {
                                         if (world->listOfUnits[i]->typeUnit != 27 && world->listOfUnits[i]->typeUnit != 34)
                                         {
-                                            if (Point.distance(this_pt, world->listOfUnits[i]->this_pt) < this->teleportRadius)
+                                            if (this_pt.distance(world->listOfUnits[i]->this_pt) < this->teleportRadius)
                                             {
                                                 if (this->teleportUnitsCounter < this->teleportUnitsMax)
                                                 {
                                                     this->teleportUnitsCounter ++;
-                                                    world->listOfUnits[i]->teleportFlag = this;
+                                                    world->listOfUnits[i]->teleportFlagObj = this;
                                                     world->listOfUnits[i]->readyDamage = false;
                                                     world->listOfUnits[i]->mainMoveFlag = false;
                                                     this->listOfTeleportUnits.push(world->listOfUnits[i]);
@@ -149,29 +147,29 @@ namespace engine
                     else if (teleportAnima->currentFrame < teleportAnima->totalFrames)
                     {
                         teleportAnima->gotoAndStop((teleportAnima->currentFrame + 1));
-                        container->alpha = container->alpha - 0.1;
+                        container->setAlpha(container->getAlpha() - 0.1);
                         i = 0;
                         while (i < this->listOfTeleportUnits.size())
                         {
                             this->listOfTeleportUnits[i]->teleportAnima->tryPlay();
 				            //this->listOfTeleportUnits[i]->teleportAnima->gotoAndStop((this->listOfTeleportUnits[i]->teleportAnima->currentFrame + 1));
-                            this->listOfTeleportUnits[i]->container->alpha = this->listOfTeleportUnits[i]->container->alpha - 0.1;
+                            this->listOfTeleportUnits[i]->container->setAlpha (this->listOfTeleportUnits[i]->container->getAlpha() - 0.1);
                             i++;
                         }
                     }
                     else
                     {
                         this->teleportPhase = 1;
-                        container->alpha = 0;
+                        container->setAlpha(0);
                         container->setVisible(false);
                         this->removeChild(teleportAnima);
                         teleportAnima = NULL;
                         i = 0;
-                        while (i < this->listOfTeleportUnits.length)
+                        while (i < this->listOfTeleportUnits.size())
                         {
                             if (this->listOfTeleportUnits[i]->teleportAnima)
                             {
-                                this->listOfTeleportUnits[i]->container->alpha = 0;
+                                this->listOfTeleportUnits[i]->container->setAlpha(0);
                                 this->listOfTeleportUnits[i]->setVisible(false);
                                 this->listOfTeleportUnits[i]->removeChild(this->listOfTeleportUnits[i]->teleportAnima);
                                 this->listOfTeleportUnits[i]->teleportAnima = NULL;
@@ -217,7 +215,7 @@ namespace engine
                         this_pt = world->bezierClass->getPathPoint(path, road, way);
                         this->setPosition(this_pt); 
                         shoot_pt = container->localToGlobal(container->getPosition());
-                        //shoot_pt = container->localToGlobal(new Point(container->cont->x, container->cont->y));
+                        //shoot_pt = container->localToGlobal(new Point(container->x, container->y));
                         teleportAnima = new MovieClip("unit/","UnitTeleportIn_mc");//new UnitTeleportIn_mc();
                         teleportAnima->stop();
                         teleportAnima->setPosition(container->unitCase->getPosition());
@@ -234,7 +232,7 @@ namespace engine
                             cocos2d::Point tempObject = world->bezierClass->getPathPoint(this->listOfTeleportUnits[i]->path, this->listOfTeleportUnits[i]->road, this->listOfTeleportUnits[i]->way);
                             this->listOfTeleportUnits[i]->setPosition(tempObject);
                             this->listOfTeleportUnits[i]->this_pt = tempObject;//new Point(this->listOfTeleportUnits[i]->x, this->listOfTeleportUnits[i]->y);
-                            this->listOfTeleportUnits[i]->shoot_pt = tempObject;//this->listOfTeleportUnits[i]->container->localToGlobal(new Point(this->listOfTeleportUnits[i]->container->cont->x, this->listOfTeleportUnits[i]->container->cont->y));
+                            this->listOfTeleportUnits[i]->shoot_pt = tempObject;//this->listOfTeleportUnits[i]->container->localToGlobal(new Point(this->listOfTeleportUnits[i]->container->x, this->listOfTeleportUnits[i]->container->y));
                             this->listOfTeleportUnits[i]->teleportAnima = new MovieClip("unit/","UnitTeleportIn_mc");//new UnitTeleportIn_mc();
                             this->listOfTeleportUnits[i]->teleportAnima->stop();
                             this->listOfTeleportUnits[i]->teleportAnima->setPosition(this->listOfTeleportUnits[i]->container->unitCase->getPosition());
@@ -252,20 +250,20 @@ namespace engine
                     if (teleportAnima->currentFrame < teleportAnima->totalFrames)
                     {
                         teleportAnima->gotoAndStop((teleportAnima->currentFrame + 1));
-                        container->alpha = container->alpha + 0.1;
+                        container->setAlpha(container->getAlpha()+ 0.1);
                         i = 0;
                         while (i < this->listOfTeleportUnits.size())
                         {
                             this->listOfTeleportUnits[i]->teleportAnima->tryPlay();
 				            //this->listOfTeleportUnits[i]->teleportAnima->gotoAndStop((this->listOfTeleportUnits[i]->teleportAnima->currentFrame + 1));
-                            this->listOfTeleportUnits[i]->container->alpha = this->listOfTeleportUnits[i]->container->alpha + 0.1;
+                            this->listOfTeleportUnits[i]->container->setAlpha( this->listOfTeleportUnits[i]->container->getAlpha() + 0.1);
                             i++;
                         }
                     }
                     else
                     {
                         this->teleportPhase = 0;
-                        container->alpha = 1;
+                        container->setAlpha(1);
                         teleportFlag = false;
                         readyDamage = true;
                         mainMoveFlag = true;
@@ -276,10 +274,11 @@ namespace engine
                         i = 0;
                         while (i < this->listOfTeleportUnits.size())
                         {
-                            if (this->listOfTeleportUnits[i]->teleportFlag == this)
+                            if (this->listOfTeleportUnits[i]->teleportFlagObj == this)
                             {
-                                this->listOfTeleportUnits[i]->container->alpha = 1;
-                                this->listOfTeleportUnits[i]->teleportFlag = false;
+                                this->listOfTeleportUnits[i]->container->setAlpha(1);
+								this->listOfTeleportUnits[i]->teleportFlag = false;
+								this->listOfTeleportUnits[i]->teleportFlagObj = NULL;
                                 this->listOfTeleportUnits[i]->readyDamage = true;
                                 this->listOfTeleportUnits[i]->mainMoveFlag = true;
                                 this->listOfTeleportUnits[i]->removeChild(this->listOfTeleportUnits[i]->teleportAnima);
@@ -295,56 +294,9 @@ namespace engine
                 }
                 if (direction != "up")
                 {
-                    if (container->contMcs->currentFrame < 9)
+                    if (container->cont->currentFrame < 9)
                     {
-                        if (container->contMcs->currentFrame < 8)
-                        {
-                            container->contMcs->tryPlay();
-				            //container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
-                        }
-                        else
-                        {
-                            container->contMcs->gotoAndStop(1);
-                        }
-                    }
-                    else
-                    {
-                        container->contMcs->gotoAndStop(container->contMcs->currentFrame - 8);
-                    }
-                }
-                else if (container->contMcs->currentFrame > 8)
-                {
-                    if (container->contMcs->currentFrame < container->contMcs->totalFrames)
-                    {
-                        container->contMcs->tryPlay();
-				        //container->contMcs->gotoAndStop((container->contMcs->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->contMcs->gotoAndStop(9);
-                    }
-                }
-                else
-                {
-                    container->contMcs->gotoAndStop(container->contMcs->currentFrame + 8);
-                }
-                if (direction == "left" || direction == "right")
-                {
-                    if (!airFlag && !airShockFlag || container->cont->currentFrame != 1)
-                    {
-                        if (container->cont->currentFrame > 16)
-                        {
-                            if (container->cont->currentFrame < container->cont->totalFrames)
-                            {
-                                container->cont->tryPlay();
-				                //container->cont->gotoAndStop((container->cont->currentFrame + 1));
-                            }
-                            else
-                            {
-                                container->cont->gotoAndStop(1);
-                            }
-                        }
-                        else if (container->cont->currentFrame < 16)
+                        if (container->cont->currentFrame < 8)
                         {
                             container->cont->tryPlay();
 				            //container->cont->gotoAndStop((container->cont->currentFrame + 1));
@@ -354,29 +306,76 @@ namespace engine
                             container->cont->gotoAndStop(1);
                         }
                     }
-                }
-                else if (!airFlag && !airShockFlag || container->cont->currentFrame != 17)
-                {
-                    if (container->cont->currentFrame > 16)
+                    else
                     {
-                        if (container->cont->currentFrame < container->cont->totalFrames)
-                        {
-                            container->cont->tryPlay();
-				            //container->cont->gotoAndStop((container->cont->currentFrame + 1));
-                        }
-                        else
-                        {
-                            container->cont->gotoAndStop(17);
-                        }
+                        container->cont->gotoAndStop(container->cont->currentFrame - 8);
                     }
-                    else if (container->cont->currentFrame < 16)
+                }
+                else if (container->cont->currentFrame > 8)
+                {
+                    if (container->cont->currentFrame < container->cont->totalFrames)
                     {
                         container->cont->tryPlay();
 				        //container->cont->gotoAndStop((container->cont->currentFrame + 1));
                     }
                     else
                     {
-                        container->cont->gotoAndStop(17);
+                        container->cont->gotoAndStop(9);
+                    }
+                }
+                else
+                {
+                    container->cont->gotoAndStop(container->cont->currentFrame + 8);
+                }
+                if (direction == "left" || direction == "right")
+                {
+                    if (!airFlag && !airShockFlag || container->currentFrame != 1)
+                    {
+                        if (container->currentFrame > 16)
+                        {
+                            if (container->currentFrame < container->totalFrames)
+                            {
+                                container->tryPlay();
+				                //container->gotoAndStop((container->currentFrame + 1));
+                            }
+                            else
+                            {
+                                container->gotoAndStop(1);
+                            }
+                        }
+                        else if (container->currentFrame < 16)
+                        {
+                            container->tryPlay();
+				            //container->gotoAndStop((container->currentFrame + 1));
+                        }
+                        else
+                        {
+                            container->gotoAndStop(1);
+                        }
+                    }
+                }
+                else if (!airFlag && !airShockFlag || container->currentFrame != 17)
+                {
+                    if (container->currentFrame > 16)
+                    {
+                        if (container->currentFrame < container->totalFrames)
+                        {
+                            container->tryPlay();
+				            //container->gotoAndStop((container->currentFrame + 1));
+                        }
+                        else
+                        {
+                            container->gotoAndStop(17);
+                        }
+                    }
+                    else if (container->currentFrame < 16)
+                    {
+                        container->tryPlay();
+				        //container->gotoAndStop((container->currentFrame + 1));
+                    }
+                    else
+                    {
+                        container->gotoAndStop(17);
                     }
                 }
             }
