@@ -14,10 +14,17 @@ namespace engine
 			healthBarCounter = 0;
             Common::DateTime dt;
 
-            levinDeath = this->createMovieClip("levinDeath", "unit/", "levinDeath", "UnitBase_mc", false, true);
-            stoneDeath = this->createMovieClip("stoneDeath", "unit/", "stoneDeath", "UnitBase_mc",false,true);
-            iceDeath = this->createMovieClip("iceDeath", "unit/", "iceDeath", "UnitBase_mc", false, true);
-            buffHP = this->createMovieClip("buffHP", "unit/", "buffHP", "UnitBase_mc", false, true);
+			if (this->typeUnit != 20 && this->typeUnit != 21 && this->typeUnit != 23 && this->typeUnit != 24 && this->typeUnit != 25 && this->typeUnit != 26 && this->typeUnit != 23) {
+				levinDeath = this->createMovieClip("levinDeath", "unit/", "levinDeath", "UnitBase_mc", false, true);
+				stoneDeath = this->createMovieClip("stoneDeath", "unit/", "stoneDeath", "UnitBase_mc",false,true);
+				iceDeath = this->createMovieClip("iceDeath", "unit/", "iceDeath", "UnitBase_mc", false, true);
+			}
+			else {
+
+			}
+           
+			shadow = this->createMovieClip("shadow", "unit/", "shadow", "UnitBase_mc", false, true);
+			buffHP = this->createMovieClip("buffHP", "unit/", "buffHP", "UnitBase_mc", false, true);
             airShock = this->createMovieClip("airShock", "unit/", "airShock", "UnitBase_mc", false, true);
             buffSpeed = this->createMovieClip("buffSpeed", "unit/", "buffSpeed", "UnitBase_mc", false, true);
             dust1 = this->createMovieClip("dust1", "unit/", "dust1", "UnitBase_mc", false, true);
@@ -31,7 +38,6 @@ namespace engine
             iceEffect = this->createMovieClip("iceEffect", "unit/", "iceEffect", "UnitBase_mc", false, true);
             armor = this->createMovieClip("armor", "unit/", "armor", "UnitBase_mc", false, true);
             healthBar = this->createMovieClip("healthBar", "unit/", "healthBar", "UnitBase_mc", false, true);
-            shadow = this->createMovieClip("shadow", "unit/", "shadow", "UnitBase_mc", false, true);
             selectUnit = this->createMovieClip("selectUnit", "unit/", "selectUnit", "UnitBase_mc", false, true);
             dust4 = this->createMovieClip("dust4", "unit/", "dust4", "UnitBase_mc", false, true);
             logInfo("time:", Common::String(Common::DateTime().GetTicks() - dt.GetTicks()));
@@ -43,6 +49,9 @@ namespace engine
 			std::setAnchorPoint(this->healthBarGetDamage, Vec2(0.5, 0.5));
 			std::setAnchorPoint(this->healthBarCont, Vec2(0.5, 0.5));
 			std::changeAnchorPoint(this->healthBarCont, 0);
+			if (typeUnit == 18 || typeUnit == 19) {
+				this->signal = this->createMovieClipSub("signal");
+			}
 
 			if (typeUnit == 28){
 				this->giveHealth1 = this->createMovieClipSub("giveHealth1");// DBCCFactory::getInstance()->buildArmatureNode("giveHealth1");
