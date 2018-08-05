@@ -1819,83 +1819,18 @@ namespace engine
                 if(this->replacementFlag > 0)
                 {
                     this->i = 0;
-                    while(this->i < this->replacementCount)
-                    {
-                        if(this->world->wavesClass->listOfReplacement.size() == 0)
-                        {
-                            this->world->wavesClass->listOfReplacement[0][0] = 60;
-                            this->world->wavesClass->listOfReplacement[0][1] = this->replacementFlag == 1 ? 29 : 30;
-                            this->world->wavesClass->listOfReplacement[0][2] = this->road;
-                            this->world->wavesClass->listOfReplacement[0][3] = this->way;
-                            this->world->wavesClass->listOfReplacement[0][4] = this->path;
-                            //this->world->wavesClass->listOfReplacement.push([60, 29, this->road, this->way, this->path]);
-                        }
-                        else
-                        {
-                            int c = this->world->wavesClass->listOfReplacement.size();
-                            this->world->wavesClass->listOfReplacement[c][0] = this->world->wavesClass->listOfReplacement[(c - 1)][0] + 60;
-                            this->world->wavesClass->listOfReplacement[c][1] = 29;
-                            this->world->wavesClass->listOfReplacement[c][2] = this->road;
-                            this->world->wavesClass->listOfReplacement[c][3] = this->way;
-                            this->world->wavesClass->listOfReplacement[c][4] = this->path;
-                            //this->world->wavesClass->listOfReplacement.push([this->world->wavesClass->listOfReplacement[(c- 1)][0] + 60, 29, this->road, this->way, this->path]);
-                        }
-                        i++;
-                    }
-                    if(this->replacementFlag == 1)
-                    {
-                        this->i = 0;
-                        while(this->i < this->replacementCount)
-                        {
-                            if(this->world->wavesClass->listOfReplacement.size() == 0)
-                            {
-                                this->world->wavesClass->listOfReplacement[0][0] = 60;
-                                this->world->wavesClass->listOfReplacement[0][1] = 29;
-                                this->world->wavesClass->listOfReplacement[0][2] = this->road;
-                                this->world->wavesClass->listOfReplacement[0][3] = this->way;
-                                this->world->wavesClass->listOfReplacement[0][4] = this->path;
-                                //this->world->wavesClass->listOfReplacement.push([60, 29, this->road, this->way, this->path]);
-                            }
-                            else
-                            {
-                                int c = this->world->wavesClass->listOfReplacement.size();
-                                this->world->wavesClass->listOfReplacement[c][0] = this->world->wavesClass->listOfReplacement[(c - 1)][0] + 60;
-                                this->world->wavesClass->listOfReplacement[c][1] = 29;
-                                this->world->wavesClass->listOfReplacement[c][2] = this->road;
-                                this->world->wavesClass->listOfReplacement[c][3] = this->way;
-                                this->world->wavesClass->listOfReplacement[c][4] = this->path;
-                                //this->world->wavesClass->listOfReplacement.push([this->world->wavesClass->listOfReplacement[(c- 1)][0] + 60, 29, this->road, this->way, this->path]);
-                            }
-                            i++;
-                        }
-                    }
-                    else if(this->replacementFlag == 2)
-                    {
-                        this->i = 0;
-                        while(this->i < this->replacementCount)
-                        {
-                            if(this->world->wavesClass->listOfReplacement.size() == 0)
-                            {
-                                //this->world->wavesClass->listOfReplacement.push({ 60, 30, this->road, this->way, this->path });
-                                this->world->wavesClass->listOfReplacement[0][0] = 60;
-                                this->world->wavesClass->listOfReplacement[0][1] = 30;
-                                this->world->wavesClass->listOfReplacement[0][2] = this->road;
-                                this->world->wavesClass->listOfReplacement[0][3] = this->way;
-                                this->world->wavesClass->listOfReplacement[0][4] = this->path;
-                            }
-                            else
-                            {
-                                //this->world->wavesClass->listOfReplacement.push([this->world->wavesClass->listOfReplacement[(this->world->wavesClass->listOfReplacement.length - 1)][0] + 60, 30, this->road, this->way, this->path]);
-                                int c = this->world->wavesClass->listOfReplacement.size();
-                                this->world->wavesClass->listOfReplacement[c][0] = this->world->wavesClass->listOfReplacement[(c - 1)][0] + 60;
-                                this->world->wavesClass->listOfReplacement[c][1] = 30;
-                                this->world->wavesClass->listOfReplacement[c][2] = this->road;
-                                this->world->wavesClass->listOfReplacement[c][3] = this->way;
-                                this->world->wavesClass->listOfReplacement[c][4] = this->path;
-                            }
-                            i++;
-                        }
-                    }
+					while (this->i < this->replacementCount)
+					{
+						int c = this->world->wavesClass->listOfReplacement.size();
+						this->world->wavesClass->listOfReplacement[c][0] = c>0?this->world->wavesClass->listOfReplacement[(c - 1)][0]:0 + 60;
+						this->world->wavesClass->listOfReplacement[c][1] = this->replacementFlag == 1 ? 29 : 30;
+						this->world->wavesClass->listOfReplacement[c][2] = this->road;
+						this->world->wavesClass->listOfReplacement[c][3] = this->way;
+						this->world->wavesClass->listOfReplacement[c][4] = this->path;
+						//this->world->wavesClass->listOfReplacement.push([this->world->wavesClass->listOfReplacement[(c- 1)][0] + 60, 29, this->road, this->way, this->path]);
+						i++;
+					}
+                     
                 }
                 int addit_killEnemiesCounter = this->world->saveBox->getIntValue("addit_killEnemiesCounter") + 1;
                 this->world->saveBox->setValue("addit_killEnemiesCounter", addit_killEnemiesCounter);

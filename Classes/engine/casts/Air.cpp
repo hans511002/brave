@@ -162,25 +162,25 @@ namespace engine
 				if (this->liveCounter == 0 && !this->workFlag)
 				{
 					this->kill();
-					if (this->direction == "left")
+					MovieClip *tempObject = NULL;
+					if (this->direction == "left" || this->direction == "right")
 					{
-						//this->tempObject = new Indexes(new DeathAit1_mc(), 1);
-					}
-					else if (this->direction == "right")
-					{
+						tempObject = new MovieClip(this->world,"cast/","DeathAit1_mc","DeathAit_mc");
 						//this->tempObject = new Indexes(new DeathAit1_mc(), 1);
 					}
 					else if (this->direction == "up")
 					{
+						tempObject = new MovieClip(this->world, "cast/", "DeathAit2_mc", "DeathAit_mc");
 						//this->tempObject = new Indexes(new DeathAit2_mc(), 1);
 					}
 					else if (this->direction == "down")
 					{
+						tempObject = new MovieClip(this->world, "cast/", "DeathAit3_mc", "DeathAit_mc");
 						//this->tempObject = new Indexes(new DeathAit3_mc(), 1);
 					}
-					//this->tempObject->container->setScaleX(this->container->getScaleX());
-					//this->tempObject.type = "airDeath";
-					//this->tempObject->setPosition( this->this_pt) ;
+					tempObject->container->setScaleX(this->container->getScaleX());
+					//tempObject.type = "airDeath";
+					tempObject->setPosition( this->this_pt) ;
 					//Sounds.instance.playSound("snd_air_goodBye");
 				}
 				else if (!this->workFlag)

@@ -323,7 +323,7 @@ namespace engine{
 										{
 											if (this->i == 0)
 											{
-												tempObject = container->sphere3_1Bullet->localToGlobal(container->sphere3_1Bullet->getPosition());
+												tempObject = container->sphere3_1Bullet->localToGlobal(container->sphere3_1Bullet->getPosition()); 
 												if (this->sphereBullet1)
 												{
 													this->sphereBullet1->setVisible(true);
@@ -417,7 +417,7 @@ namespace engine{
 											tempObject1->setPosition(tempObject);
 											tempObject1->counter = 3;
 											tempObject1->distX = -tempObject.x / tempObject1->counter;
-											tempObject1->distY = (-70 - tempObject.y) / tempObject1->counter;
+											tempObject1->distY = (70 - tempObject.y) / tempObject1->counter;
 											container->addChild(tempObject1);
 											this->shootinAttackStack.push(tempObject1);
 										}
@@ -558,7 +558,7 @@ namespace engine{
 											tempObject1->setPosition(tempObject);
 											tempObject1->counter = 3;
 											tempObject1->distX = -tempObject.x / tempObject1->counter;
-											tempObject1->distY = (-70 - tempObject.y) / tempObject1->counter;
+											tempObject1->distY = (70 - tempObject.y) / tempObject1->counter;
 											container->addChild(tempObject1);
 											this->shootinAttackStack.push(tempObject1);
 										}

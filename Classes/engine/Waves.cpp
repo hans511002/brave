@@ -458,7 +458,7 @@ namespace engine
                     }
                     this->listOfReplacement.remove(this->i);
                 }
-                i++;
+                i--;
             }
         }
 
