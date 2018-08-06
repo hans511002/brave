@@ -1700,7 +1700,6 @@ namespace engine
 		{
 			this->dead = true;
 			this->world->worldInterface->castRegime("off");
-			this->world->removeChild(this);
 			this->world->getSphere = NULL;
 			if (this->towerArrow)
 			{
@@ -1713,6 +1712,7 @@ namespace engine
 			this->world->worldInterface->castMask->levinCase->setMouseEnabled(false);
 			this->world->worldInterface->castMask->getAllCase->setMouseEnabled(false);
 			this->world->worldInterface->updateInfo();
+			this->world->removeChild(this);
 		}
 		return;
 	}// end function
