@@ -11,7 +11,7 @@ namespace engine{
 			bulletType = 3;
 			liveTimer = 24;
 			liveCounter = 24;
-			this->correct = liveCounter / 12;
+			this->correct = (float)liveCounter / 12;
 			this->setPosition(this_pt.x, this_pt.y);
 			//this->x = this_pt.x;
 			//this->y = this_pt.y;
@@ -83,9 +83,11 @@ namespace engine{
 				if (liveCounter > this->correct)
 				{
 					this->setPosition(this->getPosition().x + distanceX / (liveCounter - this->correct),
-						this->getPosition().y + (distanceY / (liveCounter - this->correct) - 12));
+						this->getPosition().y + (distanceY / (liveCounter - this->correct) + 12));
 					//this->x = this->x + distanceX / (liveCounter - this->correct);
-					//this->y = this->y + (distanceY / (liveCounter - this->correct) - 12);               
+					//this->y = this->y + (distanceY / (liveCounter - this->correct) - 12);  
+					Vec2 shpos = this->shadow->getPosition();
+					this->shadow->setPosition(shpos .x+ (this->enemyStartPoint.x - shpos.x) / (liveCounter - this->correct),shpos.y+ (this->enemyStartPoint.y - shpos.y) / (liveCounter - this->correct));
 					//this->shadow.x = this->shadow.x + (this->enemyStartPoint.x - this->shadow.x) / (liveCounter - this->correct);
 					//this->shadow.y = this->shadow.y + (this->enemyStartPoint.y - this->shadow.y) / (liveCounter - this->correct);
 				}
@@ -94,6 +96,8 @@ namespace engine{
 					this->setPosition(this->getPosition().x + distanceX / liveCounter, this->getPosition().y + distanceY / liveCounter);
 					//this->x = this->x + distanceX / liveCounter;
 					//this->y = this->y + distanceY / liveCounter;
+					Vec2 shpos = this->shadow->getPosition();
+					this->shadow->setPosition(shpos.x + (this->enemyStartPoint.x - shpos.x) / liveCounter,shpos.y + (this->enemyStartPoint.y - shpos.y) / liveCounter);
 					//this->shadow.x = this->shadow.x + (this->enemyStartPoint.x - this->shadow.x) / liveCounter;
 					//this->shadow.y = this->shadow.y + (this->enemyStartPoint.y - this->shadow.y) / liveCounter;
 				}

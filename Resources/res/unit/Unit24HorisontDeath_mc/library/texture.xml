@@ -1,0 +1,21 @@
+<TextureAtlas name="Unit24HorisontDeath_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 11559" x="54" y="0" width="52" height="62"/>
+ <SubTexture name="Shape/shape 11561" x="54" y="64" width="52" height="62"/>
+ <SubTexture name="Shape/shape 11563" x="0" y="0" width="52" height="62"/>
+ <SubTexture name="Shape/shape 11565" x="54" y="128" width="52" height="62"/>
+ <SubTexture name="Shape/shape 11567" x="0" y="64" width="52" height="62"/>
+ <SubTexture name="Shape/shape 11569" x="108" y="128" width="52" height="62"/>
+ <SubTexture name="Shape/shape 11571" x="162" y="128" width="52" height="62"/>
+ <SubTexture name="Shape/shape 11573" x="108" y="256" width="52" height="62"/>
+ <SubTexture name="Shape/shape 11575" x="54" y="192" width="52" height="62"/>
+ <SubTexture name="Shape/shape 11577" x="0" y="128" width="52" height="62"/>
+ <SubTexture name="Shape/shape 11579" x="108" y="64" width="52" height="62"/>
+ <SubTexture name="Shape/shape 11581" x="0" y="192" width="52" height="62"/>
+ <SubTexture name="Shape/shape 11583" x="54" y="256" width="52" height="62"/>
+ <SubTexture name="Shape/shape 11585" x="0" y="256" width="52" height="62"/>
+ <SubTexture name="Shape/shape 11587" x="162" y="192" width="52" height="62"/>
+ <SubTexture name="Shape/shape 11589" x="162" y="64" width="52" height="62"/>
+ <SubTexture name="Shape/shape 11591" x="108" y="192" width="52" height="62"/>
+ <SubTexture name="Shape/shape 11593" x="162" y="0" width="52" height="62"/>
+ <SubTexture name="Shape/shape 11595" x="108" y="0" width="52" height="62"/>
+</TextureAtlas>

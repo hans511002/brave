@@ -108,63 +108,27 @@ namespace engine
             {
 				//container->sphere1Bullet->nextFram();
 
-                if (container->sphere1->currentFrame < container->sphere1->totalFrames)
-                {
-                    container->sphere1->tryPlay();
-                    //container->sphere1->gotoAndStop((container->sphere1->currentFrame + 1));
-                }
-                else
-                {
-                    container->sphere1->gotoAndStop(1);
-                }
-                if (container->sphere1Bullet->currentFrame == 1)
-                {
-                    if (container->sphere1BulletCont->currentFrame < container->sphere1BulletCont->totalFrames)
-                    {
-                        container->sphere1BulletCont->tryPlay();
-                        //container->sphere1BulletCont->gotoAndStop((container->sphere1BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere1BulletCont->gotoAndStop(1);
-                    }
-                }
-                else if (container->sphere1Bullet->currentFrame == 2)
-                {
-                    if (container->sphere1BulletCont->currentFrame < container->sphere1BulletCont->totalFrames)
-                    {
-                        container->sphere1BulletCont->tryPlay();
-                        //container->sphere1BulletCont->gotoAndStop((container->sphere1BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere1BulletCont->gotoAndStop(1);
-                    }
-                }
-                else if (container->sphere1Bullet->currentFrame == 3)
-                {
-                    if (container->sphere1BulletCont->currentFrame < container->sphere1BulletCont->totalFrames)
-                    {
-                        container->sphere1BulletCont->tryPlay();
-                        //container->sphere1BulletCont->gotoAndStop((container->sphere1BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere1BulletCont->gotoAndStop(1);
-                    }
-                }
-                else if (container->sphere1Bullet->currentFrame == 4)
-                {
-                    if (container->sphere1BulletCont->currentFrame < container->sphere1BulletCont->totalFrames)
-                    {
-                        container->sphere1BulletCont->tryPlay();
-                        //container->sphere1BulletCont->gotoAndStop((container->sphere1BulletCont->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->sphere1BulletCont->gotoAndStop(1);
-                    }
-                }
+				container->sphere1->tryPlay();
+				//if (container->sphere1->currentFrame < container->sphere1->totalFrames)
+	//            {
+	//                container->sphere1->tryPlay();
+	//                //container->sphere1->gotoAndStop((container->sphere1->currentFrame + 1));
+	//            }
+	//            else
+	//            {
+	//                container->sphere1->gotoAndStop(1);
+	//            }
+				container->sphere1BulletCont->tryPlay();
+                //if (container->sphere1BulletCont->currentFrame < container->sphere1BulletCont->totalFrames)
+                //{
+                //    container->sphere1BulletCont->tryPlay();
+                //    //container->sphere1BulletCont->gotoAndStop((container->sphere1BulletCont->currentFrame + 1));
+                //}
+                //else
+                //{
+                //    container->sphere1BulletCont->gotoAndStop(1);
+                //}
+                
             }
             return;
         }// end function

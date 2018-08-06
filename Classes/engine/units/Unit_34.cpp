@@ -19,7 +19,7 @@ namespace engine
 
             this->readXML = &Main::mainClass->readXMLClass;
             typeUnit = 34;
-            container = new Unit_mc(this, "unit34", typeUnit);  
+            container = new Unit_mc(this, "Unit34_mc", typeUnit);  
 			container->setScale(0.85);
 			container->init();
 			Unit::init();

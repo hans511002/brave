@@ -21,7 +21,7 @@ namespace engine
             this->teleportDistance = Main::mainClass->readXMLClass.listOfEnemiesXML[(typeUnit - 1)][32];
             this->teleportRadius = Main::mainClass->readXMLClass.listOfEnemiesXML[(typeUnit - 1)][33];
             this->teleportUnitsMax = Main::mainClass->readXMLClass.listOfEnemiesXML[(typeUnit - 1)][34];
-            container = new Unit_mc(this, "unit27", typeUnit);  
+            container = new Unit_mc(this, "Unit27_mc", typeUnit);  
 			container->setScale(0.9f);
 			container->init();
 			Unit::init();

@@ -11,7 +11,7 @@ namespace engine
 		{
 			distanceX = (0), distanceY = (0), counter = (-1), firstView = (false);
 			typeUnit = 32;
-			container = new Unit_mc(this, "unit32", typeUnit);
+			container = new Unit_mc(this, "Unit32_mc", typeUnit);
 			container->setScale(0.81f);
 			container->init();
 			Unit::init();

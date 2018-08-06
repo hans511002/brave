@@ -11,7 +11,7 @@ namespace engine
 		bool Unit_23::init()
 		{
 			typeUnit = 23;
-			container = new Unit_mc(this, "unit23", typeUnit); //new Unit23_mc(); 
+			container = new Unit_mc(this, "Unit23_mc", typeUnit); //new Unit23_mc(); 
 			container->setScale(0.81);
 			container->init();
 			Unit::init();

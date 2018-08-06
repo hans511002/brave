@@ -16,7 +16,7 @@ namespace engine
             speedRunTimerIce2 = Main::mainClass->readXMLClass.listOfEnemiesXML[(typeUnit - 1)][32];
             speedRunTimerIce3 = Main::mainClass->readXMLClass.listOfEnemiesXML[(typeUnit - 1)][33];
             speedRunTimerIce4 = Main::mainClass->readXMLClass.listOfEnemiesXML[(typeUnit - 1)][34];
-            container = new Unit_mc(this, "unit24", typeUnit); //new Unit24_mc(); 
+            container = new Unit_mc(this, "Unit24_mc", typeUnit); //new Unit24_mc(); 
 			container->setScale(0.81);
 			container->init();
 			Unit::init();

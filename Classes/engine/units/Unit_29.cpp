@@ -16,7 +16,7 @@ namespace engine
 			this->returnHealth = Main::mainClass->readXMLClass.listOfEnemiesXML[(typeUnit - 1)][33];
 			this->stealthTimer = Main::mainClass->readXMLClass.listOfEnemiesXML[(typeUnit - 1)][34];
 			this->stealthCounter = Main::mainClass->readXMLClass.listOfEnemiesXML[(typeUnit - 1)][34];
-			container = new Unit_mc(this, "unit29", typeUnit);
+			container = new Unit_mc(this, "Unit29_mc", typeUnit);
 			container->setScale(0.85);
 			container->init();
 			Unit::init();

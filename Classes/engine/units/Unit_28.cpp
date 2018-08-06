@@ -14,7 +14,7 @@ namespace engine
             this->giveHeathTimer = Main::mainClass->readXMLClass.listOfEnemiesXML[(typeUnit - 1)][31];
             this->giveHeathCounter = Main::mainClass->readXMLClass.listOfEnemiesXML[(typeUnit - 1)][31];
             this->giveHeath = Main::mainClass->readXMLClass.listOfEnemiesXML[(typeUnit - 1)][32];
-            container = new Unit_mc(this, "unit28", typeUnit);  
+            container = new Unit_mc(this, "Unit28_mc", typeUnit);  
 			container->setScale(0.8f);
 			container->init();
 			Unit::init();

@@ -1,0 +1,35 @@
+<TextureAtlas name="Unit33_mc" imagePath="texture.png">
+ <SubTexture name="dust4" x="156" y="156" width="50" height="50"/>
+ <SubTexture name="selectUnit" x="0" y="156" width="50" height="50"/>
+ <SubTexture name="sprite 7652" x="52" y="104" width="50" height="50"/>
+ <SubTexture name="healthBar" x="104" y="104" width="50" height="50"/>
+ <SubTexture name="armor" x="0" y="208" width="50" height="50"/>
+ <SubTexture name="iceEffect" x="156" y="0" width="50" height="50"/>
+ <SubTexture name="fireEffect" x="0" y="104" width="50" height="50"/>
+ <SubTexture name="iceFreez" x="0" y="0" width="50" height="50"/>
+ <SubTexture name="levinattack" x="104" y="0" width="50" height="50"/>
+ <SubTexture name="iceattack" x="52" y="0" width="50" height="50"/>
+ <SubTexture name="fireattack" x="156" y="104" width="50" height="50"/>
+ <SubTexture name="dust3" x="52" y="52" width="50" height="50"/>
+ <SubTexture name="dust2" x="0" y="52" width="50" height="50"/>
+ <SubTexture name="dust1" x="104" y="52" width="50" height="50"/>
+ <SubTexture name="buffSpeed" x="52" y="156" width="50" height="50"/>
+ <SubTexture name="airShock" x="104" y="156" width="50" height="50"/>
+ <SubTexture name="buffHP" x="52" y="208" width="50" height="50"/>
+ <SubTexture name="case" x="156" y="52" width="50" height="50"/>
+ <SubTexture name="Shape/shape 3930" x="140" y="243" width="34" height="33"/>
+ <SubTexture name="Shape/shape 3932" x="208" y="35" width="34" height="33"/>
+ <SubTexture name="Shape/shape 3934" x="176" y="245" width="34" height="33"/>
+ <SubTexture name="Shape/shape 3936" x="212" y="210" width="34" height="33"/>
+ <SubTexture name="Shape/shape 3938" x="208" y="175" width="34" height="33"/>
+ <SubTexture name="Shape/shape 3940" x="140" y="208" width="34" height="33"/>
+ <SubTexture name="Shape/shape 3942" x="176" y="210" width="34" height="33"/>
+ <SubTexture name="Shape/shape 3944" x="104" y="208" width="34" height="33"/>
+ <SubTexture name="Shape/shape 3946" x="208" y="140" width="34" height="33"/>
+ <SubTexture name="Shape/shape 3948" x="104" y="243" width="34" height="33"/>
+ <SubTexture name="Shape/shape 3950" x="208" y="105" width="34" height="33"/>
+ <SubTexture name="Shape/shape 3952" x="208" y="70" width="34" height="33"/>
+ <SubTexture name="Shape/shape 3954" x="0" y="260" width="34" height="33"/>
+ <SubTexture name="Shape/shape 3956" x="208" y="0" width="34" height="33"/>
+ <SubTexture name="Shape/shape 3958" x="212" y="245" width="34" height="33"/>
+</TextureAtlas>

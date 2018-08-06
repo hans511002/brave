@@ -952,9 +952,9 @@ namespace engine
 				}
 				else if (this->container->levinDeath->isVisible())
 				{ 
-					this->container->levinDeath->tryPlay(); 
 					if (this->container->levinDeath->currentFrame < this->container->levinDeath->totalFrames)
 					{ 
+						this->container->levinDeath->tryPlay(); 
 						if (this->container->levinDeath->currentFrame == 6)
 							this->container->cont->setVisible(false);
 					}

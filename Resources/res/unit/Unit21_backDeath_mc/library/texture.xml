@@ -1,0 +1,30 @@
+<TextureAtlas name="Unit21_backDeath_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 3151" x="0" y="345" width="46" height="44"/>
+ <SubTexture name="Shape/shape 11301" x="555" y="115" width="109" height="113"/>
+ <SubTexture name="Shape/shape 11303" x="444" y="0" width="109" height="113"/>
+ <SubTexture name="Shape/shape 11305" x="0" y="0" width="109" height="113"/>
+ <SubTexture name="Shape/shape 11307" x="0" y="230" width="109" height="113"/>
+ <SubTexture name="Shape/shape 11309" x="222" y="115" width="109" height="113"/>
+ <SubTexture name="Shape/shape 11311" x="777" y="115" width="109" height="113"/>
+ <SubTexture name="Shape/shape 11313" x="111" y="230" width="109" height="113"/>
+ <SubTexture name="Shape/shape 11315" x="666" y="0" width="109" height="113"/>
+ <SubTexture name="Shape/shape 11317" x="666" y="115" width="109" height="113"/>
+ <SubTexture name="Shape/shape 11319" x="0" y="115" width="109" height="113"/>
+ <SubTexture name="Shape/shape 11321" x="555" y="230" width="109" height="113"/>
+ <SubTexture name="Shape/shape 11323" x="777" y="230" width="109" height="113"/>
+ <SubTexture name="Shape/shape 11325" x="111" y="115" width="109" height="113"/>
+ <SubTexture name="Shape/shape 11327" x="888" y="0" width="109" height="113"/>
+ <SubTexture name="Shape/shape 11329" x="555" y="0" width="109" height="113"/>
+ <SubTexture name="Shape/shape 11331" x="111" y="0" width="109" height="113"/>
+ <SubTexture name="Shape/shape 11333" x="666" y="230" width="109" height="113"/>
+ <SubTexture name="Shape/shape 11335" x="444" y="115" width="109" height="113"/>
+ <SubTexture name="Shape/shape 11337" x="333" y="115" width="109" height="113"/>
+ <SubTexture name="Shape/shape 11339" x="888" y="230" width="109" height="113"/>
+ <SubTexture name="Shape/shape 11341" x="777" y="0" width="109" height="113"/>
+ <SubTexture name="Shape/shape 11343" x="333" y="230" width="109" height="113"/>
+ <SubTexture name="Shape/shape 11345" x="333" y="0" width="109" height="113"/>
+ <SubTexture name="Shape/shape 11347" x="888" y="115" width="109" height="113"/>
+ <SubTexture name="Shape/shape 11349" x="444" y="230" width="109" height="113"/>
+ <SubTexture name="Shape/shape 11351" x="222" y="230" width="109" height="113"/>
+ <SubTexture name="Shape/shape 11353" x="222" y="0" width="109" height="113"/>
+</TextureAtlas>

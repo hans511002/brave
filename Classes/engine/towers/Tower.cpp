@@ -643,7 +643,7 @@ namespace engine{
 					{
 						Bullet * tempObject = NULL;
 						cocos2d::Point tempPos = container->localToGlobal(this->shootinAttackStack[0]->getPosition());
-						if (this->shootingSphere == "fire")
+ 						if (this->shootingSphere == "fire")
 						{
 							if (this->shootingTurnStack[0])
 							{

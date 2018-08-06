@@ -174,7 +174,7 @@ namespace engine{
 		{
 			this->container = new CastStone_mc();
 			this->container->setVisible(false);
-			//this->container->myCounter = 3;
+			this->container->myCounter = 3;
 		}
 		else if (this->sphereType == "levin")
 		{

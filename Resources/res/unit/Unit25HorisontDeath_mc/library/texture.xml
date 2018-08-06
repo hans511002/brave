@@ -1,0 +1,37 @@
+<TextureAtlas name="Unit25HorisontDeath_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 11682" x="280" y="0" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11684" x="140" y="248" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11686" x="280" y="62" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11688" x="70" y="124" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11690" x="210" y="0" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11692" x="280" y="124" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11694" x="420" y="248" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11696" x="420" y="62" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11698" x="350" y="124" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11700" x="70" y="0" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11702" x="140" y="186" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11704" x="70" y="186" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11706" x="140" y="62" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11708" x="280" y="186" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11710" x="210" y="124" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11712" x="210" y="62" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11714" x="0" y="248" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11716" x="420" y="0" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11718" x="350" y="186" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11720" x="210" y="248" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11722" x="0" y="62" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11724" x="350" y="62" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11726" x="280" y="248" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11728" x="140" y="0" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11730" x="420" y="124" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11732" x="70" y="248" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11734" x="0" y="124" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11736" x="420" y="186" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11738" x="0" y="186" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11740" x="350" y="248" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11742" x="70" y="62" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11744" x="140" y="124" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11746" x="210" y="186" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11748" x="0" y="0" width="68" height="60"/>
+ <SubTexture name="Shape/shape 11750" x="350" y="0" width="68" height="60"/>
+</TextureAtlas>
