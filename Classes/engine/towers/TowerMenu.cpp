@@ -15,6 +15,7 @@ namespace engine
 		{
 			//this->addEventListener(Event.ADDED_TO_STAGE, this->init);
 			this->myTower = param1;
+			this->world = Main::mainClass->worldClass;
 			init();
 			return;
 		}// end function
@@ -23,7 +24,6 @@ namespace engine
 		{
 			BaseNode::init();
 			//this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
-			this->world = Main::mainClass->worldClass;
 			if (this->world->towerRadius->isVisible())
 			{
 				this->world->towerRadius->setVisible(false);
@@ -3824,9 +3824,7 @@ namespace engine
 				this->towerRadius = NULL;
 				this->world->removeChild(this->towerRadius1);
 				this->towerRadius1 = NULL;
-				this->world->removeChild(this);
 				this->world->removeClasses(this);
-				 
 				//this->i = 0;
 				//while (this->i < this->world->listOfIndexes3.size())
 				//{
@@ -3841,6 +3839,7 @@ namespace engine
 				{
 					this->world->mouseMoveHandler(this->lastE);
 				}
+				this->world->removeChild(this);
 			}
 			return;
 		}// end function

@@ -1324,7 +1324,8 @@ namespace engine
 	{
         Common::DateTime dt;
         bool isReinit = this->display != NULL;
-        if(isReinit) this->retain();
+        if(isReinit) 
+			this->retain();
         if(this->mc && MovieClipSubBase::reinit())
 		{
             string _armName = armName;
@@ -1384,7 +1385,8 @@ namespace engine
                 bindMovieListen(type);
             }
 		}
-        if(isReinit)this->release();
+        if(isReinit)
+			this->release();
         int time = (Common::DateTime().GetTicks() - dt.GetTicks());
         //CCLOG("MovieClip %s.%s load time:%i", dbName.c_str(), armName.c_str(), time);
 

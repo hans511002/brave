@@ -1780,6 +1780,7 @@ namespace engine
             this->readyDamage = false;
             this->moveFlag = false;
             this->stopAllEffects();
+			bool needRemove = false;
             if(this->health <= 0)
             {
                 if((this->lastAttackType == "ice" || this->lastAttackType == "stone" || this->lastAttackType == "levin") && this->container->iceDeath)
@@ -1813,7 +1814,7 @@ namespace engine
                             //Sounds.instance.playSound("snd_unit_fireDeath");
                         }
                     }
-                    this->world->removeChild(this);
+					needRemove = true;//this->world->removeChild(this);
                 }
                 this->world->money = this->world->money + this->gold;
                 if(this->replacementFlag > 0)
@@ -1856,7 +1857,7 @@ namespace engine
                     //Sounds.instance.playSoundWithVol("snd_unit_finish", 0.9);
                 }
                 this->world->live = this->world->live - this->penalty;
-                this->world->removeChild(this);
+				needRemove = true;//this->world->removeChild(this);
                 if(this->world->live <= 0)
                 {
                     this->world->live = 0;
@@ -1980,6 +1981,9 @@ namespace engine
                     }
                 }
             }
+			if (needRemove) {
+				this->world->removeChild(this);
+			}
             //return;
         }
 	}

@@ -3048,6 +3048,9 @@ namespace engine{
 					if (this->world->listOfTowers[this->i] == this)
 					{
 						this->world->listOfTowers.splice(this->i, 1);
+						if (this->world->towerRadius->myTower == this) {
+							this->world->towerRadius->myTower = NULL;
+						}
 						this->world->removeChild(this);
 						break;
 					}

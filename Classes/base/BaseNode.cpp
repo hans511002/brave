@@ -51,12 +51,12 @@ namespace std
 	EventNode::EventNode() :mouseChildren(false), mouseEnabled(false), mouseFlag(false)
 	{
 	};
-	BaseNode::BaseNode() :schdt(0), autoDel(true), listener(0), linkParent(NULL)
+	BaseNode::BaseNode() :schdt(0), autoDel(true), isAutoDel(false), listener(0), linkParent(NULL)
 	{
 		//setName(getTypeName());
 	};
 
-	BaseNode::BaseNode(float w, float h, bool draw) :autoDel(true), listener(0), linkParent(NULL)
+	BaseNode::BaseNode(float w, float h, bool draw) :autoDel(true), isAutoDel(false), listener(0), linkParent(NULL)
 	{
 		setNodeType("BaseNode");
 		this->setContentSize(Size(w, h));
@@ -165,6 +165,7 @@ namespace std
 		}
 		//const std::string& armatureName, const std::string& dragonBonesName = "", const std::string& skinName = "", const std::string& textureAtlasName = ""
 		const auto armatureDisplay = factory->buildArmatureDisplay(armatureName, dbName);
+		//armatureDisplay->autorelease();
 		//scene->addChild(armatureDisplay);
 		////std::string name = armatureDisplay->getArmature()->getSlot("handL")->getName();
 		//armatureDisplay->getAnimation()->play("icemandead", 999999);
