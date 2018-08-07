@@ -732,8 +732,6 @@ namespace engine{
 			{
 				this->dead = true;
 				this->soundTimerManageMove(false);
-				this->world->removeChild(this);
-				this->world->removeClasses(this);
 				//this->i = 0;
 				//while (this->i < this->world->listOfIndexes1.length)
 				//{ 
@@ -748,6 +746,8 @@ namespace engine{
 				{
 					this->world->worldInterface->barInfoManage();
 				}
+				this->world->removeClasses(this);
+				this->world->removeChild(this);
 			}
 			return;
 		}// end function

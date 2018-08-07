@@ -81,7 +81,6 @@ namespace engine
             //    }
             //    i++;
             //}
-			this->world->removeClasses(this);
         }
         return;
     }// end function

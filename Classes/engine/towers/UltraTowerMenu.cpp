@@ -1701,9 +1701,6 @@ namespace engine
             {
                 this->dead = true;
                 this->world->worldInterface->updateInfo();
-                this->world->removeChild(this);
-				this->world->removeClasses(this);
-
                 //this->i = 0;
                 //while (this->i < this->world->listOfIndexes3.length)
                 //{
@@ -1719,6 +1716,8 @@ namespace engine
                 {
                     this->world->mouseMoveHandler(this->lastE);
                 }
+				this->world->removeClasses(this);
+                this->world->removeChild(this);
             }
             return;
         }// end function

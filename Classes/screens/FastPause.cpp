@@ -124,8 +124,8 @@ namespace screens
         {
             this->dead = true;
             this->world->manageListeners("on");
-            this->world->removeChild(this);
             this->world->menuObject = NULL;
+            this->world->removeChild(this);
         }
         return;
     }// end function

@@ -1775,7 +1775,8 @@ namespace engine
 		}// end function
         void Unit::kill() //public function kill() : void
         {
-            if(this->dead)return;
+            if(this->dead)
+                return;
             this->dead = true;
             this->readyDamage = false;
             this->moveFlag = false;

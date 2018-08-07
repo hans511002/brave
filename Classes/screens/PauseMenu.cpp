@@ -192,8 +192,8 @@ namespace screens
             {
                 this->closeFlag = false;
                 this->world->manageListeners("on");
-                this->world->removeChild(this);
                 this->world->menuObject = NULL;
+                this->world->removeChild(this);
             }
         }
         if (this->questionFlag == 0)

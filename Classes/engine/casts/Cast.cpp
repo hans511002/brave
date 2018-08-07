@@ -194,10 +194,10 @@ namespace engine
 			{
 				this->dead = true;
 				this->world->worldInterface->castRegime("off");
-				this->world->removeClasses(this);
-				this->world->removeChild(this->world->cast);
-				this->world->cast = NULL;
 				this->world->worldInterface->autoguidersButtons();
+				this->world->cast = NULL;
+				this->world->removeClasses(this);
+				this->world->removeChild(this);
 			}
 			return;
 		}// end function

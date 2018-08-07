@@ -385,7 +385,7 @@ namespace screens
         if (!this->dead)
         {
             this->dead = true;
-            Main::mainClass->startMenuClass->removeChild(this->;
+            Main::mainClass->startMenuClass->removeChild(this);
             Main::mainClass->startMenuClass->creditsClass = NULL;
         }
         return;

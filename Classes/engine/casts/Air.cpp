@@ -488,14 +488,12 @@ namespace engine
 			if (!this->dead)
 			{
 				this->dead = true;
-				this->world->removeChild(this);
 				this->world->removeClasses(this);
 				this->world->setPosition(Vec2(0,0) ); 
 				this->world->worldInterface->setPosition(Vec2(0, 0)); 
-				if (this->world->selectObject == this)
-				{
-					this->world->worldInterface->barInfoManage();
-				}
+				if (this->world->selectObject == this) 
+					this->world->worldInterface->barInfoManage(); 
+				this->world->removeChild(this);
 			}
 			return;
 		} // end function

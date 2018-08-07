@@ -1552,15 +1552,18 @@ namespace engine
 		{
 			//Sounds.instance.playSound("snd_world_sphereMoveBack");
 		}
+		bool del=false;
 		if (this->fireCount == 0 && this->iceCount == 0 && this->stoneCount == 0 && this->levinCount == 0 && this->getAllCount == 0)
 		{
-			this->world->removeChild(this);
+		    del=true;
 		}
 		else
 		{
 			this->world->listOfMoveSpheres.push(this);
 		}
 		this->world->worldInterface->autoguidersButtons();
+		if(del)
+		    this->world->removeChild(this);
 		return;
 	}// end function
 

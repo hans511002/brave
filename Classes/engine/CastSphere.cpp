@@ -1310,7 +1310,6 @@ namespace engine{
 		if (!this->dead)
 		{
 			this->dead = true;
-			this->world->removeChild(this);
 			//this->i = 0;
 			//while (this->i < this->world->listOfClasses.size())
 			//{ 
@@ -1340,6 +1339,7 @@ namespace engine{
 			{
 				this->world->achieveManage("castKill_100_enemy");
 			}
+			this->world->removeChild(this);
 		}
 		return;
 	}// end function

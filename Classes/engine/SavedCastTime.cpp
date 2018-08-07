@@ -80,8 +80,8 @@ namespace engine
         if (!this->dead)
         {
             this->dead = true;
-            this->world->worldInterface->removeChild(this);
 			this->world->removeClasses(this);
+            this->world->worldInterface->removeChild(this);
             //this->i = 0;
             //while (this->i <this->world->listOfClasses.size())
             //{
