@@ -149,6 +149,7 @@ namespace engine{
 					//tempObject->x = this->this_pt.x;
 					//tempObject->y = this->this_pt.y;
 					this->kill();
+					return;
 				}
 				else
 				{
