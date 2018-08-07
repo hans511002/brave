@@ -710,7 +710,6 @@ namespace engine {
 		void Golem::closeGolem()
 		{
 			Common::Array<cocos2d::Point> &roadMap = *this->roadMap;
-			this->kill();
 			MovieClip * tempObject = NULL;
 			if (this->direction != "up")
 			{
@@ -762,6 +761,7 @@ namespace engine {
 			//tempObject->x = this->this_pt.x;
 			//tempObject->y = this->this_pt.y;
 			//Sounds.instance.playSound("snd_golem_death");
+			this->kill();
 			return;
 		}// end function
 
