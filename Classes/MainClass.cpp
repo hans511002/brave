@@ -51,7 +51,7 @@ bool Main::init()
     CCLOG("fps=%i", Main::fps);
 
     this->saveBoxClass = new SaveBox();
-	this->saveBoxClass->playLevel = 3;
+	this->saveBoxClass->playLevel = 4;
     //this->readXMLClass = new ReadXML();//不使用指针,使用对象
     //Sounds.instance.stopAll();
     //this->tracker = new GATracker(this, "UA-63231445-3", "AS3", false);

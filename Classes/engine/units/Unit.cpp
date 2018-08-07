@@ -963,6 +963,9 @@ namespace engine
 					else
 						this->removeUnitAfterDeathAnima();
 				}
+				else {
+					logInfo(getNamePath(this),this->getPosition());
+				}
 			}
 			//this->container->unitCase.x = this->container->unitCase.coordOrigin.x + this->container->cont.x;
 			//this->container->unitCase.y = this->container->unitCase.coordOrigin.y + this->container->cont.y;
@@ -1832,7 +1835,6 @@ namespace engine
 						//this->world->wavesClass->listOfReplacement.push([this->world->wavesClass->listOfReplacement[(c- 1)][0] + 60, 29, this->road, this->way, this->path]);
 						i++;
 					}
-                     
                 }
                 int addit_killEnemiesCounter = this->world->saveBox->getIntValue("addit_killEnemiesCounter") + 1;
                 this->world->saveBox->setValue("addit_killEnemiesCounter", addit_killEnemiesCounter);

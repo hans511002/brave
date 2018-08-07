@@ -38,36 +38,36 @@ namespace engine
 			{
 				container->gotoAndStop(1);
 			}
-			if(liveCounter > 0)
+			if (liveCounter > 0)
 			{
-				if(enemyTarget->dead)
+				if (enemyTarget->dead)
 				{
 					units::Unit* tempObject1 = NULL;
 					i = 0;
-					while(i < world->listOfUnits.size())
+					while (i < world->listOfUnits.size())
 					{
-
 						float tempObject = this_pt.distance(world->listOfUnits[i]->shoot_pt);// Point.distance(this_pt, world->listOfUnits[i]->shoot_pt);
-						if(tempObject < 50)
+						if (tempObject < 50)
 						{
-							if(!tempObject1)
+							if (!tempObject1)
 							{
 								tempObject1 = world->listOfUnits[i];
 							}
-							else if(this_pt.distance(tempObject1->shoot_pt) > tempObject)
+							else if (this_pt.distance(tempObject1->shoot_pt) > tempObject)
 							{
 								tempObject1 = world->listOfUnits[i];
 							}
 						}
 						i++;
 					}
-					if(tempObject1)
+					if (tempObject1)
 					{
 						enemyTarget = tempObject1;
 					}
 					else
 					{
 						kill();
+						return;
 					}
 				}
 				distanceX = enemyTarget->getPosition().x - this_pt.x;

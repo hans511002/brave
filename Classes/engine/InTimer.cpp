@@ -9,6 +9,7 @@ namespace engine
         this->world = Main::mainClass->worldClass;
         this->type = param1;
         this->world->listOfClasses.push(this);
+		this->world->addChild(this);
 		BaseNode::init();
         return;
     }// end function

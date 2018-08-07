@@ -67,7 +67,8 @@ namespace engine{
                     else
                     {
                         kill();
-                    }
+						return;
+					}
                 }
                 distanceX = enemyTarget->getPositionX() - this_pt.x;
                 distanceY = enemyTarget->getPositionY() - this_pt.y;

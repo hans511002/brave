@@ -161,7 +161,6 @@ namespace engine
 				}
 				if (this->liveCounter == 0 && !this->workFlag)
 				{
-					this->kill();
 					MovieClip *tempObject = NULL;
 					if (this->direction == "left" || this->direction == "right")
 					{
@@ -182,6 +181,7 @@ namespace engine
 					//tempObject.type = "airDeath";
 					tempObject->setPosition( this->this_pt) ;
 					//Sounds.instance.playSound("snd_air_goodBye");
+					this->kill();
 				}
 				else if (!this->workFlag)
 				{

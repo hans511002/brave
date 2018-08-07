@@ -9,6 +9,7 @@ namespace engine
         this->world = Main::mainClass->worldClass;
         //this->addEventListener(Event.ADDED_TO_STAGE, this->init);
         this->money = param1;
+		init();
     }// end function
 	bool MoneyAdd::init()//(event:Event) : void
 	{

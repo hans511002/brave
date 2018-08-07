@@ -75,7 +75,8 @@ namespace engine{
                     else
                     {
                         kill();
-                    }
+						return;
+					}
                 }
                 distanceX = enemyTarget->shoot_pt.x - this_pt.x;
                 distanceY = enemyTarget->shoot_pt.y - this_pt.y;

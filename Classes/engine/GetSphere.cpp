@@ -1703,6 +1703,8 @@ namespace engine
 		{
 			this->dead = true;
 			this->world->worldInterface->castRegime("off");
+			if (this->world->selectObject == this->world->getSphere)
+				this->world->selectObject = NULL;
 			this->world->getSphere = NULL;
 			if (this->towerArrow)
 			{

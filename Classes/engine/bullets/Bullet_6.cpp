@@ -106,7 +106,8 @@ namespace engine
 					if (unit->airFlag)
                     {
                         this->close();
-                    }
+						return;
+					}
                 }
                 this->attack();
             }

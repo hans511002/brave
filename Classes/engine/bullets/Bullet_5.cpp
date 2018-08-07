@@ -95,7 +95,7 @@ namespace engine{
                     //this->shadow.y = this->shadow.y + (this->enemyStartPoint.y - this->shadow.y) / (liveCounter - this->correct);
                     if (!this->rotationFlag)
                     {
-                        //container->rotation = container->rotation - 7;
+						container->setRotation(container->getRotation() - 7);
                         //if (container->ball)
                         //{
                         //    container->ball->rotation = container->ball->rotation - 7;
@@ -103,7 +103,7 @@ namespace engine{
                     }
                     else
                     {
-                        //container->rotation = container->rotation + 7;
+						container->setRotation(container->getRotation() + 7);
                         //if (container->ball)
                         //{
                         //    container->ball.rotation = container->ball->rotation + 7;
@@ -161,7 +161,8 @@ namespace engine{
                             i--;
                         }
                         this->kill();
-                    }
+						return;
+					}
                 }
                 if (liveCounter > 15)
                 {

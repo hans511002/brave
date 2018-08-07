@@ -196,6 +196,8 @@ namespace engine
 				this->world->worldInterface->castRegime("off");
 				this->world->worldInterface->autoguidersButtons();
 				this->world->cast = NULL;
+				if (this->world->selectObject == this)
+					this->world->selectObject = NULL;
 				this->world->removeClasses(this);
 				this->world->removeChild(this);
 			}

@@ -40,7 +40,7 @@ namespace engine
 			if (container->currentFrame < container->totalFrames && enemyTarget->readyDamage)
 			{
 				container->tryPlay();
-			    //container->gotoAndStop((container->currentFrame + 1));
+				//container->gotoAndStop((container->currentFrame + 1));
 				this->cathetus1 = enemyTarget->shoot_pt.x - this_pt.x;
 				this->cathetus2 = enemyTarget->shoot_pt.y - this_pt.y;
 				this->hypotenuse = this_pt.distance(enemyTarget->shoot_pt);

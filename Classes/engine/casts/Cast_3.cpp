@@ -76,6 +76,7 @@ namespace engine {
 			std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
 			if (!event)
 				return;
+			bool deled = false;
 			if (event)
 			{
 				string targetName = event->target->getName();
@@ -90,14 +91,17 @@ namespace engine {
 					world->worldInterface->container->butCastAirContContMask->setScaleY(0);
 					this->addAir();
 					kill();
+					deled = true;
 				}
 				else if (targetName == "castGolemCase" || targetName == "castIcemanCase" || targetName == "castAirCase")
 				{
 					world->worldInterface->container->butCastAir->gotoAndStop(1);
 					kill();
+					deled = true;
 				}
 			}
-			container->gotoAndStop(3);
+			if(!deled)
+				container->gotoAndStop(3);
 			return;
 		}// end function
 

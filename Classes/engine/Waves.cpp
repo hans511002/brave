@@ -76,12 +76,15 @@ namespace engine
                     this->world->worldInterface->addChild(tempObject1);
                     this->world->listOfClasses.push(tempObject1);
                 }
-                this->i = 0;
-                while (this->i < this->j)
-                {
-                    this->world->worldInterface->downloadCast();
-    		        i++;
-                }
+				if (this->world->worldInterface->castGolemCounter > 0 || this->world->worldInterface->castIcemanCounter ||
+					this->world->worldInterface->castAirCounter) {
+					this->i = 0;
+					while (this->i < this->j)
+					{
+						this->world->worldInterface->downloadCast();
+    					i++;
+					}
+				}
                 tempObject = std::round(tempObject * 20);
                 if (tempObject > 0)
                 {
