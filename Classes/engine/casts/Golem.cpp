@@ -331,6 +331,7 @@ namespace engine {
 						else
 						{
 							this->kill();
+							return;
 						}
 					}
 					else if (this->speedK != this->speedKSave)
@@ -358,6 +359,7 @@ namespace engine {
 						else
 						{
 							this->kill();
+							return;
 						}
 					}
 					else if (this->speedK != this->speedKSave)
@@ -389,6 +391,7 @@ namespace engine {
 						else
 						{
 							this->kill();
+							return;
 						}
 					}
 					else if (this->speedK != this->speedKSave)
@@ -417,6 +420,7 @@ namespace engine {
 						else
 						{
 							this->kill();
+							return;
 						}
 					}
 					else if (this->speedK != this->speedKSave)

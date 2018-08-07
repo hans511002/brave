@@ -111,8 +111,7 @@ namespace engine{
 					this->liveCounter--;
 				}
 				if (this->liveCounter == 0)
-				{
-					this->kill();
+				{ 
 					if (this->direction == "left")
 					{
 						tempObject = new MovieClip(this->world, "cast/", "IcemanHorisontDeath_mc", "IcemanHorisontDeath_mc");
@@ -149,6 +148,7 @@ namespace engine{
 					tempObject->setPosition(this->this_pt);
 					//tempObject->x = this->this_pt.x;
 					//tempObject->y = this->this_pt.y;
+					this->kill();
 				}
 				else
 				{
@@ -315,6 +315,7 @@ namespace engine{
 						else
 						{
 							this->kill();
+							return;
 						}
 					}
 					else if (this->speedK != this->speedKSave)
@@ -343,6 +344,7 @@ namespace engine{
 						else
 						{
 							this->kill();
+							return;
 						}
 					}
 					else if (this->speedK != this->speedKSave)
@@ -374,6 +376,7 @@ namespace engine{
 						else
 						{
 							this->kill();
+							return;
 						}
 					}
 					else if (this->speedK != this->speedKSave)
@@ -402,6 +405,7 @@ namespace engine{
 						else
 						{
 							this->kill();
+							return;
 						}
 					}
 					else if (this->speedK != this->speedKSave)
