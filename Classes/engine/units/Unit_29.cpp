@@ -553,16 +553,17 @@ namespace engine
 		{
 			if (!dead)
 			{
-				i = 0;
-				while (i < world->listOfClasses.size())
-				{
-					if (world->listOfClasses[i] == this)
-					{
-						world->listOfClasses.splice(i, 1);
-						break;
-					}
-					i++;
-				}
+			    this->world->removeClasses(this);
+				//i = 0;
+				//while (i < world->listOfClasses.size())
+				//{
+				//	if (world->listOfClasses[i] == this)
+				//	{
+				//		world->listOfClasses.splice(i, 1);
+				//		break;
+				//	}
+				//	i++;
+				//}
 				//i = 0;
 				//while (i < world->listOfIndexes0.size())
 				//{
