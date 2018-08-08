@@ -155,7 +155,7 @@ namespace engine {
 		place6 = (BuildTowerPlace*)this->createMovieClip("place6", new BuildTowerPlace("placeRight"));
 		place7 = (BuildTowerPlace*)this->createMovieClip("place7", new BuildTowerPlace("placeLeft"));
 		place8 = (BuildTowerPlace*)this->createMovieClip("place8", new BuildTowerPlace("placeLeft"));
-		place9 = (BuildTowerPlace*)this->createMovieClip("place8", new BuildTowerPlace("placeRight"));
+		place9 = (BuildTowerPlace*)this->createMovieClip("place9", new BuildTowerPlace("placeRight"));
 
 		pointer1 = (LevelPointer*)this->createMovieClip("pointer1", new LevelPointer());
 		pointer2 = (LevelPointer*)this->createMovieClip("pointer2", new LevelPointer());

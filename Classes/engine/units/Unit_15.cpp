@@ -11,7 +11,7 @@ namespace engine
 			typeUnit = 15;
 			moveFlag = false;
 			container = new Unit_mc(this, "Unit15_mc", typeUnit); //new Unit15_mc(); 
-			container->setScale(0.85);
+			container->setScale(0.85f);
 			container->init();
 			Unit::init();
 			this->autorelease();

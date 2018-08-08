@@ -677,43 +677,44 @@ namespace engine{
 				{
 					if (this->world->listOfUnits[this->i]->atStage() && this->world->listOfUnits[this->i]->readyDamage)
 					{
+						bool dead = false;
 						units::Unit * tempObject = this->world->listOfUnits[this->i];
 						if (container->haze9->isVisible())
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < container->haze9->getWidth())
 							{
-								tempObject->getHit(Main::mainClass->readXMLClass.getAllDamagePerSec);
+								dead = tempObject->getHit(Main::mainClass->readXMLClass.getAllDamagePerSec);
 							}
 						}
 						if (container->haze5->isVisible())
 						{
 							if (this->leftSmoke_pt.distance(tempObject->shoot_pt) < container->haze5->getWidth())
 							{
-								tempObject->getHit(Main::mainClass->readXMLClass.getAllDamagePerSec);
+								dead = tempObject->getHit(Main::mainClass->readXMLClass.getAllDamagePerSec);
 							}
 						}
 						if (container->haze7->isVisible())
 						{
 							if (this->rightSmoke_pt.distance(tempObject->shoot_pt) < container->haze7->getWidth())
 							{
-								tempObject->getHit(Main::mainClass->readXMLClass.getAllDamagePerSec);
+								dead = tempObject->getHit(Main::mainClass->readXMLClass.getAllDamagePerSec);
 							}
 						}
 						if (container->haze6->isVisible())
 						{
 							if (this->upSmoke_pt.distance(tempObject->shoot_pt) < container->haze6->getWidth())
 							{
-								tempObject->getHit(Main::mainClass->readXMLClass.getAllDamagePerSec);
+								dead = tempObject->getHit(Main::mainClass->readXMLClass.getAllDamagePerSec);
 							}
 						}
 						if (container->haze8->isVisible())
 						{
 							if (this->downSmoke_pt.distance(tempObject->shoot_pt) < container->haze8->getWidth())
 							{
-								tempObject->getHit(Main::mainClass->readXMLClass.getAllDamagePerSec);
+								dead = tempObject->getHit(Main::mainClass->readXMLClass.getAllDamagePerSec);
 							}
 						}
-						if (tempObject->dead)
+						if (dead)
 						{
 							int addit_castKillEnemiesCounter = this->world->saveBox->getIntValue("addit_castKillEnemiesCounter");
 							//(this->world->saveBox.gameSave.data.addit_castKillEnemiesCounter + 1);
@@ -894,8 +895,8 @@ namespace engine{
 							{
 								units::Unit * tempObject = this->world->listOfUnits[this->i];
 								float tempObject1 = Main::mainClass->readXMLClass.getAllMultiply2;
-								tempObject->getHit(tempObject1, "getAll");
-								if (tempObject->dead)
+								bool dead = tempObject->getHit(tempObject1, "getAll");
+								if (dead)
 								{
 									int addit_castKillEnemiesCounter = this->world->saveBox->getIntValue("addit_castKillEnemiesCounter");
 									this->world->saveBox->setValue("addit_castKillEnemiesCounter", addit_castKillEnemiesCounter + 1);
@@ -941,8 +942,8 @@ namespace engine{
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{
-								tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveFireXML[this->fireCount], this->sphereType, this->fireCount, true);
-								if (tempObject->dead)
+								bool dead = tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveFireXML[this->fireCount], this->sphereType, this->fireCount, true);
+								if (dead)
 								{
 									int addit_castKillEnemiesCounter = this->world->saveBox->getIntValue("addit_castKillEnemiesCounter");
 									this->world->saveBox->setValue("addit_castKillEnemiesCounter", addit_castKillEnemiesCounter + 1);
@@ -967,8 +968,8 @@ namespace engine{
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{
-								tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveIceXML[this->iceCount], this->sphereType, this->iceCount, true);
-								if (tempObject->dead)
+								bool dead = tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveIceXML[this->iceCount], this->sphereType, this->iceCount, true);
+								if (dead)
 								{
 									int addit_castKillEnemiesCounter = this->world->saveBox->getIntValue("addit_castKillEnemiesCounter");
 									this->world->saveBox->setValue("addit_castKillEnemiesCounter", addit_castKillEnemiesCounter + 1);
@@ -1003,8 +1004,8 @@ namespace engine{
 							{
 								if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 								{
-									tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveStoneXML[this->stoneCount], this->sphereType, this->stoneCount, true);
-									if (tempObject->dead)
+									bool dead = tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveStoneXML[this->stoneCount], this->sphereType, this->stoneCount, true);
+									if (dead)
 									{
 										int addit_castKillEnemiesCounter = this->world->saveBox->getIntValue("addit_castKillEnemiesCounter");
 										this->world->saveBox->setValue("addit_castKillEnemiesCounter", addit_castKillEnemiesCounter + 1);
@@ -1030,8 +1031,8 @@ namespace engine{
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{
-								tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveLevinXML[this->levinCount], this->sphereType, this->levinCount, true);
-								if (tempObject->dead)
+								bool dead = tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveLevinXML[this->levinCount], this->sphereType, this->levinCount, true);
+								if (dead)
 								{
 									int addit_castKillEnemiesCounter = this->world->saveBox->getIntValue("addit_castKillEnemiesCounter");
 									this->world->saveBox->setValue("addit_castKillEnemiesCounter", addit_castKillEnemiesCounter + 1);
@@ -1056,9 +1057,10 @@ namespace engine{
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{
-								tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveFireXML[this->fireCount], "fire", this->fireCount, true);
-								tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveIceXML[this->iceCount], "ice", this->iceCount, true);
-								if (tempObject->dead)
+								bool dead = tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveFireXML[this->fireCount], "fire", this->fireCount, true);
+								if (!dead)
+									dead = tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveIceXML[this->iceCount], "ice", this->iceCount, true);
+								if (dead)
 								{
 									int addit_castKillEnemiesCounter = this->world->saveBox->getIntValue("addit_castKillEnemiesCounter");
 									this->world->saveBox->setValue("addit_castKillEnemiesCounter", addit_castKillEnemiesCounter + 1);
@@ -1083,9 +1085,10 @@ namespace engine{
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{
-								tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveFireXML[this->fireCount], "fire", this->fireCount, true);
-								tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveStoneXML[this->stoneCount], "stone", this->stoneCount, true);
-								if (tempObject->dead)
+								bool dead=tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveFireXML[this->fireCount], "fire", this->fireCount, true);
+								if(!dead)
+									dead = tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveStoneXML[this->stoneCount], "stone", this->stoneCount, true);
+								if (dead)
 								{
 									int addit_castKillEnemiesCounter = this->world->saveBox->getIntValue("addit_castKillEnemiesCounter");
 									this->world->saveBox->setValue("addit_castKillEnemiesCounter", addit_castKillEnemiesCounter + 1);
@@ -1111,9 +1114,10 @@ namespace engine{
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{
-								tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveFireXML[this->fireCount], "fire", this->fireCount, true);
-								tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveLevinXML[this->levinCount], "levin", this->levinCount, true);
-								if (tempObject->dead)
+								bool dead=tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveFireXML[this->fireCount], "fire", this->fireCount, true);
+								if (!dead)
+									dead = tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveLevinXML[this->levinCount], "levin", this->levinCount, true);
+								if (dead)
 								{
 									int addit_castKillEnemiesCounter = this->world->saveBox->getIntValue("addit_castKillEnemiesCounter");
 									this->world->saveBox->setValue("addit_castKillEnemiesCounter", addit_castKillEnemiesCounter + 1);
@@ -1139,9 +1143,10 @@ namespace engine{
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{
-								tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveIceXML[this->iceCount], "ice", this->iceCount, true);
-								tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveStoneXML[this->stoneCount], "stone", this->stoneCount, true);
-								if (tempObject->dead)
+								bool dead = tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveIceXML[this->iceCount], "ice", this->iceCount, true);
+								if (!dead)
+									dead = tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveStoneXML[this->stoneCount], "stone", this->stoneCount, true);
+								if (dead)
 								{
 									int addit_castKillEnemiesCounter = this->world->saveBox->getIntValue("addit_castKillEnemiesCounter");
 									this->world->saveBox->setValue("addit_castKillEnemiesCounter", addit_castKillEnemiesCounter + 1);
@@ -1167,9 +1172,10 @@ namespace engine{
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{
-								tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveIceXML[this->iceCount], "ice", this->iceCount, true);
-								tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveLevinXML[this->levinCount], "levin", this->levinCount, true);
-								if (tempObject->dead)
+								bool dead=tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveIceXML[this->iceCount], "ice", this->iceCount, true);
+								if (!dead)
+									dead = tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveLevinXML[this->levinCount], "levin", this->levinCount, true);
+								if (dead)
 								{
 									int addit_castKillEnemiesCounter = this->world->saveBox->getIntValue("addit_castKillEnemiesCounter");
 									this->world->saveBox->setValue("addit_castKillEnemiesCounter", addit_castKillEnemiesCounter + 1);
@@ -1195,9 +1201,10 @@ namespace engine{
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{
-								tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveStoneXML[this->stoneCount], "stone", this->stoneCount, true);
-								tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveLevinXML[this->levinCount], "levin", this->levinCount, true);
-								if (tempObject->dead)
+								bool dead=tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveStoneXML[this->stoneCount], "stone", this->stoneCount, true);
+								if (!dead)
+									dead = tempObject->getHit(Main::mainClass->readXMLClass.listOfMoveLevinXML[this->levinCount], "levin", this->levinCount, true);
+								if (dead)
 								{
 									int addit_castKillEnemiesCounter = this->world->saveBox->getIntValue("addit_castKillEnemiesCounter");
 									this->world->saveBox->setValue("addit_castKillEnemiesCounter", addit_castKillEnemiesCounter + 1);
@@ -1248,8 +1255,8 @@ namespace engine{
 								{
 									tempObject1 = tempObject1 * Main::mainClass->readXMLClass.getAllLittleMultiply;
 								}
-								tempObject->getHit(tempObject1, "getAllLittle");
-								if (tempObject->dead)
+								bool dead = tempObject->getHit(tempObject1, "getAllLittle");
+								if (dead)
 								{
 									int addit_castKillEnemiesCounter = this->world->saveBox->getIntValue("addit_castKillEnemiesCounter");
 									this->world->saveBox->setValue("addit_castKillEnemiesCounter", addit_castKillEnemiesCounter + 1);
@@ -1284,8 +1291,8 @@ namespace engine{
 								{
 									tempObject1 = Main::mainClass->readXMLClass.getAllMultiply1;
 								}
-								tempObject->getHit(tempObject1, "getAll");
-								if (tempObject->dead)
+								bool dead = tempObject->getHit(tempObject1, "getAll");
+								if (dead)
 								{
 									int addit_castKillEnemiesCounter = this->world->saveBox->getIntValue("addit_castKillEnemiesCounter");
 									this->world->saveBox->setValue("addit_castKillEnemiesCounter", addit_castKillEnemiesCounter + 1);

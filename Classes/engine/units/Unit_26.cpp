@@ -12,7 +12,7 @@ namespace engine
 		{
             typeUnit = 26;
             container = new Unit_mc(this, "Unit26_mc", typeUnit);  
-			container->setScale(0.81);
+			container->setScale(0.81f);
 			container->init();
 			Unit::init();
 			this->autorelease();

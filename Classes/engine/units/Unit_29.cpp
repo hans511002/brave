@@ -17,7 +17,7 @@ namespace engine
 			this->stealthTimer = Main::mainClass->readXMLClass.listOfEnemiesXML[(typeUnit - 1)][34];
 			this->stealthCounter = Main::mainClass->readXMLClass.listOfEnemiesXML[(typeUnit - 1)][34];
 			container = new Unit_mc(this, "Unit29_mc", typeUnit);
-			container->setScale(0.85);
+			container->setScale(0.85f);
 			container->init();
 			Unit::init();
 			this->autorelease();

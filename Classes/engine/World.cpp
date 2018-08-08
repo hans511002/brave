@@ -1141,7 +1141,7 @@ namespace engine
 		tempObject->path = param4;
 		this->addChild(tempObject, 2);
         tempObject->init();
-		tempObject->setPosition(50, 420);
+		//tempObject->setPosition(50, 420);
 		return tempObject;
 	}
 

@@ -13,7 +13,7 @@ namespace engine
             typeUnit = 20;
             this->newEnemyCounter = Main::mainClass->readXMLClass.listOfEnemiesXML[(typeUnit - 1)][30];
             container = new Unit_mc(this,"Unit20_mc", typeUnit); //new Unit20_mc(); 
-            container->setScale(0.85);
+            container->setScale(0.85f);
             container->init();
             Unit::init();
             this->autorelease();  

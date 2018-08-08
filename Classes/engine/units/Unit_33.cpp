@@ -12,7 +12,7 @@ namespace engine
 			distanceX = (0), distanceY = (0), counter = (-1), firstView = (false);
 			typeUnit = 33;
 			container = new Unit_mc(this, "Unit33_mc", typeUnit);
-			container->setScale(0.9);
+			container->setScale(0.9f);
 			container->init();
 			Unit::init();
 			this->autorelease();

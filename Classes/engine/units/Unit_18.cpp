@@ -16,7 +16,7 @@ namespace engine
 			this->invisibleTimer = Main::mainClass->readXMLClass.listOfEnemiesXML[(typeUnit - 1)][30];
 			this->visibleTimer = Main::mainClass->readXMLClass.listOfEnemiesXML[(typeUnit - 1)][31];
 			container = new Unit_mc(this, "Unit18_mc", typeUnit); //new Unit18_mc(); 
-			container->setScale(0.84);
+			container->setScale(0.84f);
 			container->init();
 			Unit::init();
 			this->autorelease();

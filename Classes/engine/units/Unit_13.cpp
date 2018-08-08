@@ -10,7 +10,7 @@ namespace engine
 		{
 			typeUnit = 13;
 			container = new Unit_mc(this, "Unit13_mc", typeUnit); //new Unit13_mc(); 
-			container->setScale(0.85);
+			container->setScale(0.85f);
 			container->init();
 			Unit::init();
 			//this->autorelease();

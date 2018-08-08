@@ -90,8 +90,6 @@ namespace engine
 			this->airWaitTimer = Main::mainClass->readXMLClass.airWaitTimerXML;
 			this->finishPath = this->world->bezierClass->getPathLength(this->road, this->way);
 			this->setPosition(this->world->bezierClass->getPathPoint(this->path, this->road, this->way));
-
-
 			this->this_pt = this->getPosition();// cocos2d::Vec2();
 			//this->this_pt = new Point(this->x, this->y);
 			this->shoot_pt = this->container->cont->convertToWorldSpace(this->container->cont->getPosition());
@@ -1036,7 +1034,7 @@ namespace engine
 		}// end function
 
 		////public function getHit(param1:Number, param2:String = "无", param3:int = 0, param4:Boolean = false, param5:int = 0, param6:Object = null) : void
-		void Unit::getHit(float param1, string param2, int  param3, bool param4, int param5, ShootBase * param6)
+		bool Unit::getHit(float param1, string param2, int  param3, bool param4, int param5, ShootBase * param6)
 		{
 			if (!this->readyDamage)return; 
 			if (param1 > 0)
@@ -1579,6 +1577,7 @@ namespace engine
 				else
 				{
 					this->kill();
+					return true;
 				}
 			}
 			else
@@ -1589,8 +1588,7 @@ namespace engine
 					this->container->healthBar->setVisible(false);
 				}
 			}
-		 
-			//return;
+			return false;
 		}// end function
 
 		void Unit::setAirSettings(string param1) //public function setAirSettings(param1:String) : void

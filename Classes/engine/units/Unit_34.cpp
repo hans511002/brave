@@ -20,7 +20,7 @@ namespace engine
             this->readXML = &Main::mainClass->readXMLClass;
             typeUnit = 34;
             container = new Unit_mc(this, "Unit34_mc", typeUnit);  
-			container->setScale(0.85);
+			container->setScale(0.85f);
 			container->init();
 			Unit::init();
 			this->autorelease();  
@@ -224,7 +224,7 @@ namespace engine
                                     path = this->readXML->bossArrayPhasePath[0][this->phaseRoad1];
                                     tempObject = world->bezierClass->getPathPoint(path, road, way);
                                 } 
-                                container->setScale(0.67);
+                                container->setScale(0.67f);
                                 //container->scaleX = 0.67;
                                 this->setPosition(tempObject);//x = tempObject.x;
                                 //this->y = tempObject.y;
@@ -234,7 +234,7 @@ namespace engine
                             else
                             {
                                 this->roadFlag = false;
-                                container->setScale(0.85);
+                                container->setScale(0.85f);
                                 this->setPosition(398,158);
                                 //this->x = 398;
                                 //this->y = 158;

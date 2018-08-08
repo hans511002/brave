@@ -16,7 +16,7 @@ namespace engine
             typeUnit = 22;
             this->blockTowerRadius = Main::mainClass->readXMLClass.listOfEnemiesXML[(typeUnit - 1)][30];
             container = new Unit_mc(this,"Unit22_mc", typeUnit); //new Unit22_mc(); 
-            container->setScale(0.85);
+            container->setScale(0.85f);
             container->init();
             Unit::init();
             this->autorelease();   

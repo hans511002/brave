@@ -197,7 +197,7 @@ namespace engine
 			virtual void animationHandler();
 
 			////public function getHit(param1:Number, param2:String = "无", param3:int = 0, param4:Boolean = false, param5:int = 0, param6:Object = null) : void
-			virtual void getHit(float param1, string param2 = "none", int  param3 = 0, bool param4 = false, int param5 = 0, ShootBase * param6 = NULL);
+			virtual bool getHit(float param1, string param2 = "none", int  param3 = 0, bool param4 = false, int param5 = 0, ShootBase * param6 = NULL);
 
 			virtual void setAirSettings(string param1);
 
