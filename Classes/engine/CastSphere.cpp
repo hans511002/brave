@@ -1317,6 +1317,8 @@ namespace engine{
 		if (!this->dead)
 		{
 			this->dead = true;
+			if (this->world->selectObject == this)
+				this->world->selectObject = NULL;
 			//this->i = 0;
 			//while (this->i < this->world->listOfClasses.size())
 			//{ 

@@ -203,7 +203,9 @@ namespace engine{
             if (!this->dead)
             {
                 this->dead = true;
-                this->world->removeClasses(this);
+				if (this->world->selectObject == this)
+					this->world->selectObject = NULL;
+				this->world->removeClasses(this);
                 this->world->removeChild(this);
 				//this->container = NULL;
             }

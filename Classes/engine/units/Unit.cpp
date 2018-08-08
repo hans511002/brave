@@ -1036,7 +1036,7 @@ namespace engine
 		////public function getHit(param1:Number, param2:String = "无", param3:int = 0, param4:Boolean = false, param5:int = 0, param6:Object = null) : void
 		bool Unit::getHit(float param1, string param2, int  param3, bool param4, int param5, ShootBase * param6)
 		{
-			if (!this->readyDamage)return; 
+			if (!this->readyDamage)return false; 
 			if (param1 > 0)
 			{
 				this->container->healthBarCounter = 0;

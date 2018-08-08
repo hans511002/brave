@@ -90,7 +90,7 @@ namespace engine
 			this->container->cont2->stop();
 			this->setContentSize(this->container->getContentSize() + Size(2, 2));
 			std::setAnchorPoint(this, 0.5, 0.5);
-			this->setPosition(this->myTower->this_pt);
+			this->setPosition(this->myTower->this_pt+Vec2(0,20));
 			this->container->setPosition(this->getAnchorPointInPoints());
 			std::changeAnchorPoint(this->container, 0.5);
 			this->container->setAlpha(0);
@@ -3825,6 +3825,9 @@ namespace engine
 				this->world->removeChild(this->towerRadius1);
 				this->towerRadius1 = NULL;
 				this->world->removeClasses(this);
+				if (this->world->selectObject == this)
+					this->world->selectObject = NULL;
+
 				//this->i = 0;
 				//while (this->i < this->world->listOfIndexes3.size())
 				//{
