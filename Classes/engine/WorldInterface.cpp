@@ -1878,7 +1878,7 @@ namespace engine
 			this->world->cast = new casts::Cast_3();
 		}
 		this->world->addChild(this->world->cast);
-		this->world->listOfClasses.push(this->world->cast);
+		this->world->addClasses(this->world->cast);
 	}// end function
 
 	void WorldInterface::updateInfo()

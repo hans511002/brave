@@ -36,7 +36,7 @@ namespace engine
 				}
 				i++;
 			}
-			world->listOfClasses.push(this);
+			world->addClasses(this);
 			//world->listOfIndexes0.push(this);
 			return true;
 		}// end function
@@ -611,7 +611,7 @@ namespace engine
 					moveFlag = false;
 					this->setMouseChildren(false);
 					this->setMouseEnabled(false);
-					world->listOfClasses.push(this);
+					world->addClasses(this);
 					//if (lastAttackType == "golem")
 					//{
 					//    world->listOfIndexes0.push(this);

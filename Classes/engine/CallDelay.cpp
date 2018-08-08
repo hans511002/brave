@@ -14,7 +14,7 @@ namespace engine
             this->counter = 60;
 		BaseNode::init();
 		this->world->addChild(this);
-        this->world->listOfClasses.push(this);
+        this->world->addClasses(this);
 		return;
     }// end function
 

@@ -113,7 +113,7 @@ namespace engine
 			//      this->y = this->y - 200;
 			this->setMouseChildren(false);
 			this->setMouseEnabled(false);
-			this->world->listOfClasses.push (this);
+			this->world->addClasses(this);
 			//      this->world->listOfIndexes1.push (this);
 			this->world->worldInterface->barInfoManage(this);
 			this->world->createAirCounter++;

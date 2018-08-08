@@ -216,7 +216,7 @@ namespace engine
 
 			//logInfo(getNamePath(container->sphereSlot1SphereAnima), container->sphereSlot1SphereAnima->getPosition());
 			world->towerMenu = this;
-			this->world->listOfClasses.push(this);
+			this->world->addClasses(this);
 			this->upgradeManage();
 			this->spheresMonitor();
 			this->world->worldInterface->updateInfo();

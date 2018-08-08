@@ -21,7 +21,7 @@ namespace engine
 		this->addChild(this->container);
 		this->setMouseChildren(false);
 		this->setMouseEnabled(false);
-		this->world->listOfClasses.push(this);
+		this->world->addClasses(this);
 		//this->world->listOfIndexes3.push(this);
 		 
 		return true;

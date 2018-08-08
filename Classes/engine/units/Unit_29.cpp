@@ -35,7 +35,7 @@ namespace engine
 				}
 				i++;
 			}
-			world->listOfClasses.push(this);
+			world->addClasses(this);
 			//world->listOfIndexes0.push(this);
 			return true;
 		}// end function

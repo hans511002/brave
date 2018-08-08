@@ -48,7 +48,7 @@ namespace engine
                         tempObject1 = new SavedCastTime("golem", this->j);
                     }
                     this->world->worldInterface->addChild(tempObject1);
-                    this->world->listOfClasses.push(tempObject1);
+                    this->world->addClasses(tempObject1);
                 }
                 if (this->world->worldInterface->castIcemanCounter > 0 && this->world->worldInterface->castIcemanCounter < this->world->worldInterface->castIcemanTimer)
                 {
@@ -61,7 +61,7 @@ namespace engine
                         tempObject1 = new SavedCastTime("iceman", this->j);
                     }
                     this->world->worldInterface->addChild(tempObject1);
-                    this->world->listOfClasses.push(tempObject1);
+                    this->world->addClasses(tempObject1);
                 }
                 if (this->world->worldInterface->castAirCounter > 0 && this->world->worldInterface->castAirCounter < this->world->worldInterface->castAirTimer)
                 {
@@ -74,7 +74,7 @@ namespace engine
                         tempObject1 = new SavedCastTime("air", this->j);
                     }
                     this->world->worldInterface->addChild(tempObject1);
-                    this->world->listOfClasses.push(tempObject1);
+                    this->world->addClasses(tempObject1);
                 }
 				if (this->world->worldInterface->castGolemCounter > 0 || this->world->worldInterface->castIcemanCounter ||
 					this->world->worldInterface->castAirCounter) {

@@ -44,7 +44,7 @@ namespace engine{
 			//this->container->cont->costTXT.text = Main::mainClass->readXMLClass.costTowerXML;
 			this->container->contBuildTowerMenuCase->setMouseEnabled(true);
 			this->addChild(this->container);
-			this->world->listOfClasses.push(this);
+			this->world->addClasses(this);
 
 			//EventListenerMouse *mouseListener = cocos2d::EventListenerMouse::create();
 			//mouseListener->onMouseDown = CC_CALLBACK_1(BuildTowerMenu::mouseDownHandler, this);

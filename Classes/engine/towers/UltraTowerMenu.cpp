@@ -48,7 +48,7 @@ namespace engine
             container->sellUltraTowerSellUltraTowerCase->stop();
             container->sellUltraTowerSellUltraTowerCase->setMouseEnabled(true);
             this->addChild(container);
-            this->world->listOfClasses.push(this);
+            this->world->addClasses(this);
             if (this->myTower->upgradeTypeAdd == 1)
             {
                 container->sphereSlot1->setVisible(false);

@@ -30,7 +30,7 @@ namespace engine
             //this->world->listOfIndexes3.push(this);
         }
         this->world->addChild(this);
-        this->world->listOfClasses.push(this);
+        this->world->addClasses(this);
         this->setMouseChildren(false);
         this->setMouseEnabled(false);
         this->world->forseIndexFl = true;

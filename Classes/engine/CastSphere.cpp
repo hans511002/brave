@@ -382,7 +382,7 @@ namespace engine{
 		}
 		this->container->stop();
 		this->addChild(this->container);
-		this->world->listOfClasses.push(this);
+		this->world->addClasses(this);
 		//this->world->listOfIndexes2.push(this);
 		this->world->forseIndexFl = true;
 		return true;

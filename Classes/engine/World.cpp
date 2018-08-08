@@ -2186,6 +2186,18 @@ namespace engine
             i--;
         }
     };
+    void World::addClasses(BaseNode * node)
+    {
+        int i = listOfClasses.size()-1;
+        while(i >=0)
+        {
+            if(listOfClasses.at(i) == node)
+                 return;
+            i--;
+        }
+        listOfClasses.push(node);
+    };
+
 	void World::removeIndexes(BaseNode * node)
 	{
 		int i = 0;

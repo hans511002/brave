@@ -1805,7 +1805,7 @@ namespace engine
                     }
                     this->setMouseChildren(false);
                     this->setMouseEnabled(false);
-                    this->world->listOfClasses.push(this);
+                    this->world->addClasses(this);
                     //this->world->listOfIndexes1.push(this);
                 }
                 else

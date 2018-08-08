@@ -10,7 +10,7 @@ namespace engine{
 		Decoration::Decoration()
 		{
 			this->world = Main::mainClass->worldClass;
-			this->world->listOfClasses.push(this);
+			this->world->addClasses(this);
 
 		}// end function
 

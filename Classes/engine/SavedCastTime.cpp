@@ -39,9 +39,9 @@ namespace engine
             this->container->cont->gotoAndStop(2);
         }
 
-       std::setText( this->container->contNoteTXT, Common::String("-" )+ tempObject);
+        std::setText( this->container->contNoteTXT, Common::String("-" )+ tempObject);
         this->addChild(this->container);
-        //this->world->listOfClasses.push(this);
+        this->world->addClasses(this);
         if (this->type == "golem")
         {
             this->setPositionX(this->world->worldInterface->container->butCastGolem->getPositionX());
