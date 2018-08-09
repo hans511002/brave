@@ -5,7 +5,9 @@
 
 namespace engine{
 
-
+	MovieClipSubMyFrame::MovieClipSubMyFrame(MC *_mc, string _slot):MovieClipSub(_mc, _slot) {
+		SET_NODETYPENAME();
+	};
 	CastSphere::CastSphere() :container(NULL), fireCount(0), iceCount(0), stoneCount(0), levinCount(0), getAllCount(0), world(NULL), radius(0), additAnamation(NULL), dead(0), liveCounter(0)
 	{
 		//this->getAllForm = [false, false, false, false];

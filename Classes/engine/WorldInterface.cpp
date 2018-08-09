@@ -867,8 +867,7 @@ namespace engine
 				{
 					if (this->container->fast->currentFrame == 2 || this->container->fast->currentFrame == 5)
 					{
-						this->container->fast->tryPlay();
-						//this->container->fast->gotoAndStop((this->container->fast->currentFrame + 1));
+						this->container->fast->gotoAndStop((this->container->fast->currentFrame + 1));
 						//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
 					}
 				}

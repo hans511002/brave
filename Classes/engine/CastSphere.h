@@ -82,9 +82,7 @@ namespace engine
 	};
 	struct MovieClipSubMyFrame :public MovieClipSub
 	{
-		inline MovieClipSubMyFrame(MC *mc, string solt) :MovieClipSub(mc, slot){
-			SET_NODETYPENAME();
-		};
+		MovieClipSubMyFrame(MC *_mc, string solt);
 		int myFrame;
 		Vec2 myPoint;
 	};

@@ -102,7 +102,7 @@ protected:
 		addChild(mc);
 		mc->getAnimation()->play("cont",0);
 		Armature * arm = mc->getArmature()->getSlot("contSlot")->getChildArmature();
-		mc->setUserData(new MovieClipSub(mc, mc->getArmature()->getSlot("contSlot")));
+		mc->setUserData(new MovieClipSub(mc, "contSlot"));
 		mc->getAnimation()->play();
 		direction = "right";
  

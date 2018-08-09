@@ -67,12 +67,21 @@ namespace engine
     }
 	bool MC::tryPlay()
 	{
-		this->currentFrame++;
-		this->currentFrame = (currentFrame-1) % totalFrames + 1;
+		MovieClipSub *mcs=ISTYPE(MovieClipSub, this);
+		if (mcs) {
+			if (!mcs->isReady){
+				if(!mcs->reinit())
+					return false;
+			}
+		}
 		if (!this->inPlay)
 		{
 			this->play(1);
 			return this->inPlay;
+		}
+		else {
+			this->currentFrame++;
+			this->currentFrame = (currentFrame-1) % totalFrames + 1;
 		}
 		return false;
 	}
@@ -957,7 +966,7 @@ namespace engine
 		this->bone = NULL;
 		reinit();
  	};
-	MovieClipSub::MovieClipSub(MC *mc, const string &  slotName, const string &  defAniName) :arm(0), userData(0), setTrans(0)
+	MovieClipSub::MovieClipSub(MC *mc, const string & slotName, const string &  defAniName) :arm(0), userData(0), setTrans(0)
 	{
 		setNodeType("MovieClipSub");
 		this->mc = mc;
@@ -1022,8 +1031,13 @@ namespace engine
 
 	cocos2d::Point MovieClipSub::getPosition()
 	{
+		if (!this->isReady)
+			this->reinit();
 		Node * sp = (Node *)this->slot->getDisplay();
-		return sp->getPosition();
+		if (sp)
+			return sp->getPosition();
+		else
+			return Vec2(0,0);
 		Node * parent = sp->getParent();
 		Vec2 p = sp->getPosition();
 		p = parent->convertToWorldSpace(sp->getPosition());

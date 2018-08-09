@@ -185,7 +185,7 @@ namespace engine
 		void * userData;
         dragonBones::Armature* arm;
         MovieClipSub(MC *mc, dragonBones::Slot * slot, const string &  defAniName = "");
-        MovieClipSub(MC *mc, const string &  slot, const string &  defAniName = "");
+		MovieClipSub(MC *mc, const std::string &  slot, const string &  defAniName = "");
 		virtual dragonBones::Armature *getArmature();
 		virtual dragonBones::Animation *getAnimation();
 		virtual void setVisible(bool v);
