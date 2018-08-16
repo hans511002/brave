@@ -168,6 +168,7 @@ namespace engine
 		virtual void removeIndexes(BaseNode * node);
 		virtual void removeClasses(BaseNode * node);
 		virtual void addClasses(BaseNode * node);
+		virtual void removeUnit(units::Unit *);
 		virtual void reInit(cocos2d::EventMouse*event);//event:Event 
 
     };

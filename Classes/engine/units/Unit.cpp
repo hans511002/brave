@@ -1759,6 +1759,10 @@ namespace engine
 		{
 			//if (this->parent)
 			//{
+			if (this->world->selectObject == this) {
+				this->world->selectObject = NULL;
+			}
+			this->world->removeUnit(this);
 			this->world->removeClasses(this);
 			this->world->removeChild(this, true);
 			//this->i = 0;
@@ -1983,6 +1987,10 @@ namespace engine
                 }
             }
 			if (needRemove) {
+				if (this->world->selectObject == this) {
+					this->world->selectObject = NULL;
+				}
+				this->world->removeUnit(this);
 				this->world->removeChild(this);
 			}
             //return;

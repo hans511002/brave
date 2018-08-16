@@ -2232,6 +2232,27 @@ namespace engine
 			i++;
 		}
 	};
+	void World::removeUnit(units::Unit *unit) {
+		int i = 0;
+		while (i < this->listOfUnits.size())
+		{
+			if (this->listOfUnits[i] == unit)
+			{
+				this->listOfUnits.remove(i);
+				i = this->listOfBullets.size() - 1;
+				while (i >= 0)
+				{
+					if (this->listOfBullets[i]->enemyTarget == unit) {
+						this->listOfBullets[i]->kill();
+						break;
+					};
+					i--;
+				}
+				break;
+			}
+			i++;
+		}
+	};
 
 	void World::removeChild(Node* child, bool cleanup /* = true */){
 		if (ISTYPE(BaseNode, child))

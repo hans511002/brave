@@ -284,8 +284,8 @@ namespace engine {
 					//this->world->hint.x = this->world->hint.x + this->tempObject.x;
 					//this->world->hint.y = this->world->hint.y + this->tempObject.y;
 				}
-				this->moveHandler();
-				this->attack();
+				if (!this->moveHandler())
+					this->attack();
 			}
 			else if (this->container->getAlpha() < 1) {
 				this->container->setAlpha(this->container->getAlpha() + 0.1);
@@ -305,7 +305,7 @@ namespace engine {
 			return;
 		}// end function
 
-		void  Golem::moveHandler()
+		bool  Golem::moveHandler()
 		{
 			Common::Array<cocos2d::Point> &roadMap = *this->roadMap;
 			if (this->this_pt.x == roadMap[this->movePhase].x)
@@ -325,13 +325,14 @@ namespace engine {
 							if (tempObject < roadMap[this->movePhase].y)
 							{
 								this->speedK = roadMap[this->movePhase].y - tempObject;
-								this->moveHandler();
+								if(this->moveHandler())
+									return true;
 							}
 						}
 						else
 						{
 							this->kill();
-							return;
+							return true;
 						}
 					}
 					else if (this->speedK != this->speedKSave)
@@ -353,13 +354,14 @@ namespace engine {
 							if (tempObject > roadMap[this->movePhase].y)
 							{
 								this->speedK = tempObject - roadMap[this->movePhase].y;
-								this->moveHandler();
+								if (this->moveHandler())
+									return true;
 							}
 						}
 						else
 						{
 							this->kill();
-							return;
+							return true;
 						}
 					}
 					else if (this->speedK != this->speedKSave)
@@ -385,13 +387,14 @@ namespace engine {
 							if (tempObject < roadMap[this->movePhase].x)
 							{
 								this->speedK = roadMap[this->movePhase].x - tempObject;
-								this->moveHandler();
+								if (this->moveHandler())
+									return true;
 							}
 						}
 						else
 						{
 							this->kill();
-							return;
+							return true;
 						}
 					}
 					else if (this->speedK != this->speedKSave)
@@ -414,13 +417,14 @@ namespace engine {
 							if (tempObject > roadMap[this->movePhase].x)
 							{
 								this->speedK = tempObject - roadMap[this->movePhase].x;
-								this->moveHandler();
+								if (this->moveHandler())
+									return true;
 							}
 						}
 						else
 						{
 							this->kill();
-							return;
+							return true;
 						}
 					}
 					else if (this->speedK != this->speedKSave)
@@ -453,7 +457,7 @@ namespace engine {
 					}
 				}
 			}
-			return;
+			return false;
 		}// end function
 
 		void  Golem::directionManage()
@@ -785,9 +789,8 @@ namespace engine {
 				this->world->worldInterface->setPosition(0, 0);
 				//this->world->hint.x = Math.round(this->world->hint.x);
 				//this->world->hint.y = Math.round(this->world->hint.y);
-				if (this->world->selectObject == this)
-				{
-					this->world->worldInterface->barInfoManage();
+				if (this->world->selectObject == this) {
+					this->world->selectObject = NULL;
 				}
 				this->world->removeClasses(this);
 				this->world->removeChild(this);

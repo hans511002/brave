@@ -491,8 +491,9 @@ namespace engine
 				this->world->removeClasses(this);
 				this->world->setPosition(Vec2(0,0) ); 
 				this->world->worldInterface->setPosition(Vec2(0, 0)); 
-				if (this->world->selectObject == this) 
-					this->world->worldInterface->barInfoManage(); 
+				if (this->world->selectObject == this) {
+					this->world->selectObject = NULL;
+				}
 				this->world->removeChild(this);
 			}
 			return;

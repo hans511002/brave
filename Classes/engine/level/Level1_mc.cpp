@@ -217,25 +217,25 @@ namespace engine {
 	Level6_mc::Level6_mc(World *world) :Level(world, "worldinterface/", "Level6_mc", "Level6_mc")
 	{
 		SET_NODETYPENAME();
-		decoration = this->createMovieClipSub("decoration");
+		//decoration = this->createMovieClipSub("decoration");
 		decorationCase = this->createCase("decorationCase");
 
 		flag1 = this->createMovieClip("flag1", "worldinterface/", "flag", "LevelBase");
 		flag2 = this->createMovieClip("flag2", "worldinterface/", "flag", "LevelBase");
 
-		place1 = (BuildTowerPlace*)this->createMovieClip("place1", new BuildTowerPlace("placeLeft"));
-		place2 = (BuildTowerPlace*)this->createMovieClip("place2", new BuildTowerPlace("placeRight"));
+		place1 = (BuildTowerPlace*)this->createMovieClip("place1", new BuildTowerPlace("placeRight"));
+		place2 = (BuildTowerPlace*)this->createMovieClip("place2", new BuildTowerPlace("placeMid"));
 		place3 = (BuildTowerPlace*)this->createMovieClip("place3", new BuildTowerPlace("placeRight"));
 		place4 = (BuildTowerPlace*)this->createMovieClip("place4", new BuildTowerPlace("placeLeft"));
 		place5 = (BuildTowerPlace*)this->createMovieClip("place5", new BuildTowerPlace("placeRight"));
 		place6 = (BuildTowerPlace*)this->createMovieClip("place6", new BuildTowerPlace("placeRight"));
-		place7 = (BuildTowerPlace*)this->createMovieClip("place7", new BuildTowerPlace("placeRight"));
-		place8 = (BuildTowerPlace*)this->createMovieClip("place8", new BuildTowerPlace("placeRight"));
+		place7 = (BuildTowerPlace*)this->createMovieClip("place7", new BuildTowerPlace("placeLeft"));
+		place8 = (BuildTowerPlace*)this->createMovieClip("place8", new BuildTowerPlace("placeLeft"));
 
 		pointer1 = (LevelPointer*)this->createMovieClip("pointer1", new LevelPointer());
 		pointer2 = (LevelPointer*)this->createMovieClip("pointer2", new LevelPointer());
 
-		additionally = this->createMovieClipSub("additionally");
+		//additionally = this->createMovieClipSub("additionally");
 
 		flags.push(flag1);
 		flags.push(flag2);
@@ -249,8 +249,8 @@ namespace engine {
 		places.push(place8);
 		pointers.push(pointer1);
 		pointers.push(pointer2);
-		decorations.push(decoration);
-		additionallys.push(additionally);
+		//decorations.push(decoration);
+		//additionallys.push(additionally);
 	};
 
 	Level7_mc::Level7_mc(World *world) :Level(world, "worldinterface/", "Level7_mc", "Level7_mc")
