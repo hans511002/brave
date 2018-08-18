@@ -657,7 +657,6 @@ namespace engine
 					{
 						this->container->fireBacklightTurnFlag = true;
 						this->container->fireBacklight->gotoAndStop(2);
-						logInfo("container->fireBacklight", this->container->fireBacklight->getPosition(), &this->container->fireBacklight->convertToWorldSpace(this->container->fireBacklight->getPosition()));
 					}
 				}
 			}
@@ -1647,7 +1646,7 @@ namespace engine
 						if (!this->world->hint->isVisible())
 						{
 							this->world->hint->setVisible(true);
-							this->world->hint->setZOrder(3);
+							this->world->hint->setLocalZOrder(3);
 						}
 						if (this->world->hint->currentFrame != 1)
 						{
@@ -1883,11 +1882,14 @@ namespace engine
 	void WorldInterface::updateInfo()
 	{
 		char tmp[32];
-		this->container->moneyTXT->setText(itoa(this->world->money, tmp, 10));
-		this->container->liveTXT->setText(itoa(this->world->live, tmp, 10));
+		sprintf(tmp, "%d", this->world->money);
+		this->container->moneyTXT->setString(tmp);
+		sprintf(tmp, "%d", this->world->live);
+		this->container->liveTXT->setString(tmp);
 		sprintf(tmp, "%i/%i", this->world->wavesClass->nowWave, this->world->wavesClass->maxWaves);
-		this->container->waveTXT->setText(tmp);
-		this->container->fireNumTXT->setText(itoa(this->fireCount, tmp, 10));
+		this->container->waveTXT->setString(tmp);
+		sprintf(tmp, "%d", this->fireCount);
+		this->container->fireNumTXT->setString(tmp);
 		printNodePos(this->container->buyFireBuyTXT);
 
 		if (this->fireCount > 0)
@@ -1901,7 +1903,8 @@ namespace engine
 		{
 			this->container->fireNumTXT->setVisible(false);
 		}
-		this->container->iceNumTXT->setText(itoa(this->iceCount, tmp, 10));
+		sprintf(tmp, "%d", this->fireCount);
+		this->container->iceNumTXT->setString(  tmp );
 		if (this->iceCount > 0)
 		{
 			if (!this->container->iceNumTXT->isVisible())
@@ -1913,7 +1916,8 @@ namespace engine
 		{
 			this->container->iceNumTXT->setVisible(false);
 		}
-		this->container->stoneNumTXT->setText(itoa(this->stoneCount, tmp, 10));
+		sprintf(tmp, "%d", this->stoneCount);
+		this->container->stoneNumTXT->setString(tmp);
 		if (this->stoneCount > 0)
 		{
 			if (!this->container->stoneNumTXT->isVisible())
@@ -1925,7 +1929,8 @@ namespace engine
 		{
 			this->container->stoneNumTXT->setVisible(false);
 		}
-		this->container->levinNumTXT->setText(itoa(this->levinCount, tmp, 10));
+		sprintf(tmp, "%d", this->levinCount);
+		this->container->levinNumTXT->setString(tmp);
 		if (this->levinCount > 0)
 		{
 			if (!this->container->levinNumTXT->isVisible())
@@ -1937,7 +1942,8 @@ namespace engine
 		{
 			this->container->levinNumTXT->setVisible(false);
 		}
-		this->container->getAllNumTXT->setText(itoa(this->getAllCount, tmp, 10));
+		sprintf(tmp, "%d", this->getAllCount);
+		this->container->getAllNumTXT->setString(tmp);
 		if (this->getAllCount > 0)
 		{
 			if (!this->container->getAllNumTXT->isVisible())
@@ -3062,23 +3068,23 @@ namespace engine
 		{
 			if (this->world->getSphere->fireCount > 0 && this->world->getSphere->iceCount == 0 && this->world->getSphere->stoneCount == 0 && this->world->getSphere->levinCount == 0)
 			{
-				std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + std::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U011) + std::round(this->world->getSphere->myDamage));
+				std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + ::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U011) + ::round(this->world->getSphere->myDamage));
 			}
 			else if (this->world->getSphere->fireCount == 0 && this->world->getSphere->iceCount > 0 && this->world->getSphere->stoneCount == 0 && this->world->getSphere->levinCount == 0)
 			{
-				std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + std::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U012) + std::round(this->world->getSphere->myDamage));
+				std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + ::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U012) + ::round(this->world->getSphere->myDamage));
 			}
 			else if (this->world->getSphere->fireCount == 0 && this->world->getSphere->iceCount == 0 && this->world->getSphere->stoneCount > 0 && this->world->getSphere->levinCount == 0)
 			{
-				std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + std::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U013) + std::round(this->world->getSphere->myDamage));
+				std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + ::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U013) + ::round(this->world->getSphere->myDamage));
 			}
 			else if (this->world->getSphere->fireCount == 0 && this->world->getSphere->iceCount == 0 && this->world->getSphere->stoneCount == 0 && this->world->getSphere->levinCount > 0)
 			{
-				std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + std::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U014) + std::round(this->world->getSphere->myDamage));
+				std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + ::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U014) + ::round(this->world->getSphere->myDamage));
 			}
 			else if (this->world->getSphere->getAllCount > 0)
 			{
-				std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + std::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U015) + std::round(this->world->getSphere->myDamage));
+				std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + ::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U015) + ::round(this->world->getSphere->myDamage));
 			}
 			else if ((this->world->getSphere->fireCount > 0 && this->world->getSphere->iceCount > 0 && this->world->getSphere->stoneCount > 0 && this->world->getSphere->levinCount == 0)
 				|| (this->world->getSphere->fireCount > 0 && this->world->getSphere->iceCount > 0 && this->world->getSphere->stoneCount == 0 && this->world->getSphere->levinCount > 0)
@@ -3087,37 +3093,37 @@ namespace engine
 			{
 				if (this->world->getSphere->fireCount > 1 || this->world->getSphere->iceCount > 1 || this->world->getSphere->stoneCount > 1 || this->world->getSphere->levinCount > 1)
 				{
-					std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + std::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U015) + std::round(this->world->getSphere->myDamage * Main::mainClass->readXMLClass.getAllLittleDoubleMultiply));
+					std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + ::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U015) + ::round(this->world->getSphere->myDamage * Main::mainClass->readXMLClass.getAllLittleDoubleMultiply));
 				}
 				else
 				{
-					std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + std::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U015) + std::round(this->world->getSphere->myDamage * Main::mainClass->readXMLClass.getAllLittleMultiply));
+					std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + ::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U015) + ::round(this->world->getSphere->myDamage * Main::mainClass->readXMLClass.getAllLittleMultiply));
 				}
 			}
 			else
 			{
-				std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + std::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U015) + std::round(this->world->getSphere->myDamage));
+				std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + ::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U015) + ::round(this->world->getSphere->myDamage));
 			}
 		}
 		else if (dynamic_cast<casts::Cast *>(this->world->selectObject) && this->world->cast)
 		{
 			if (dynamic_cast<casts::Cast_1 *>(this->world->cast))
 			{
-				std::setText(this->container->barInfoHealthTXT, std::round(Main::mainClass->readXMLClass.castGolemHealthXML));
+				std::setText(this->container->barInfoHealthTXT, ::round(Main::mainClass->readXMLClass.castGolemHealthXML));
 			}
 			else if (dynamic_cast<casts::Cast_2 *>(this->world->cast))
 			{
-				std::setText(this->container->barInfoNoteTXT, Common::String(std::round(Main::mainClass->readXMLClass.castIcemanLifeTimerXML / 30)) + I18N_VALUE(I18N_CODE::U016));
+				std::setText(this->container->barInfoNoteTXT, Common::String(::round(Main::mainClass->readXMLClass.castIcemanLifeTimerXML / 30)) + I18N_VALUE(I18N_CODE::U016));
 			}
 			else if (dynamic_cast<casts::Cast_3 *>(this->world->cast))
 			{
-				std::setText(this->container->barInfoNoteTXT, Common::String(std::round(Main::mainClass->readXMLClass.airLifeSecXML / 30) ) + I18N_VALUE(I18N_CODE::U016));
+				std::setText(this->container->barInfoNoteTXT, Common::String(::round(Main::mainClass->readXMLClass.airLifeSecXML / 30) ) + I18N_VALUE(I18N_CODE::U016));
 			}
 		}
 		else if (dynamic_cast<Unit *>(this->world->selectObject))
 		{
 			Unit * unit = dynamic_cast<Unit *>(this->world->selectObject);
-			std::setText(this->container->barInfoHealthTXT, std::round(unit->health) + Common::String("/") + std::round(unit->healthMax));
+			std::setText(this->container->barInfoHealthTXT, ::round(unit->health) + Common::String("/") + ::round(unit->healthMax));
 			if (this->container->barInfoMyTarget != this->world->selectObject)
 			{
 				this->container->barInfoMyTarget = this->world->selectObject;
@@ -3135,24 +3141,24 @@ namespace engine
 			Golem * golem = dynamic_cast<Golem *>(this->world->selectObject);
 			if (!golem->brother)
 			{
-				std::setText(this->container->barInfoHealthTXT, std::round(golem->health));
+				std::setText(this->container->barInfoHealthTXT, ::round(golem->health));
 			}
 			else
 			{
 				float tempObject = 0;
 				if (!golem->dead && !golem->brother->dead)
 				{
-					tempObject = std::round(golem->health) + std::round(golem->brother->health);
+					tempObject = ::round(golem->health) + ::round(golem->brother->health);
 				}
 				else if (!golem->dead)
 				{
-					tempObject = std::round(golem->health);
+					tempObject = ::round(golem->health);
 				}
 				else if (!golem->brother->dead)
 				{
-					tempObject = std::round(golem->brother->health);
+					tempObject = ::round(golem->brother->health);
 				}
-				std::setText(this->container->barInfoHealthTXT, std::round(tempObject));
+				std::setText(this->container->barInfoHealthTXT, ::round(tempObject));
 			}
 		}
 		else if (dynamic_cast<Iceman *>(this->world->selectObject))
@@ -3190,20 +3196,20 @@ namespace engine
 				if (towerMenu->myTower->shootingTurnStack[0])
 				{
 					std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U017)) +
-						std::round(Main::mainClass->readXMLClass.listOfFireTowerDamageXML[(towerMenu->myTower->shootingTurnStack[0][3] - 1)]) + I18N_VALUE(I18N_CODE::U018));
+						::round(Main::mainClass->readXMLClass.listOfFireTowerDamageXML[(towerMenu->myTower->shootingTurnStack[0][3] - 1)]) + I18N_VALUE(I18N_CODE::U018));
 				}
 				if (towerMenu->myTower->shootingTurnStack[1])
 				{
 					std::setText(this->container->barInfoNoteTXT, Common::String(std::getText(this->container->barInfoNoteTXT))
-						+ Common::String(I18N_VALUE(I18N_CODE::U019)) + Common::String(std::round(Main::mainClass->readXMLClass.listOfIceTowerDamageXML[(towerMenu->myTower->shootingTurnStack[1][3] - 1)])) + Common::String(I18N_VALUE(I18N_CODE::U018)));
+						+ Common::String(I18N_VALUE(I18N_CODE::U019)) + Common::String(::round(Main::mainClass->readXMLClass.listOfIceTowerDamageXML[(towerMenu->myTower->shootingTurnStack[1][3] - 1)])) + Common::String(I18N_VALUE(I18N_CODE::U018)));
 				}
 				if (towerMenu->myTower->shootingTurnStack[2])
 				{
-					std::setText(this->container->barInfoNoteTXT, std::getText(this->container->barInfoNoteTXT) + Common::String(I18N_VALUE(I18N_CODE::U020)) + Common::String(std::round(Main::mainClass->readXMLClass.listOfStoneTowerDamageXML[(towerMenu->myTower->shootingTurnStack[2][3] - 1)])) + I18N_VALUE(I18N_CODE::U018));
+					std::setText(this->container->barInfoNoteTXT, std::getText(this->container->barInfoNoteTXT) + Common::String(I18N_VALUE(I18N_CODE::U020)) + Common::String(::round(Main::mainClass->readXMLClass.listOfStoneTowerDamageXML[(towerMenu->myTower->shootingTurnStack[2][3] - 1)])) + I18N_VALUE(I18N_CODE::U018));
 				}
 				if (towerMenu->myTower->shootingTurnStack[3])
 				{
-					std::setText(this->container->barInfoNoteTXT, std::getText(this->container->barInfoNoteTXT) + Common::String(I18N_VALUE(I18N_CODE::U021)) + Common::String(std::round(Main::mainClass->readXMLClass.listOfLevinTowerDamageXML[(towerMenu->myTower->shootingTurnStack[3][3] - 1)])) + I18N_VALUE(I18N_CODE::U018));
+					std::setText(this->container->barInfoNoteTXT, std::getText(this->container->barInfoNoteTXT) + Common::String(I18N_VALUE(I18N_CODE::U021)) + Common::String(::round(Main::mainClass->readXMLClass.listOfLevinTowerDamageXML[(towerMenu->myTower->shootingTurnStack[3][3] - 1)])) + I18N_VALUE(I18N_CODE::U018));
 				}
 				if (std::getText(this->container->barInfoNoteTXT) == "")
 				{
@@ -3219,23 +3225,23 @@ namespace engine
 			{
 				if (towerMenu->myTower->towerType == 8)
 				{
-					std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U023)) + std::round(towerMenu->myTower->damage * 3));
+					std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U023)) + ::round(towerMenu->myTower->damage * 3));
 				}
 				else
 				{
-					std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U023)) + std::round(towerMenu->myTower->damage));
+					std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U023)) + ::round(towerMenu->myTower->damage));
 				}
 				if (towerMenu->myTower->upgradeTypeAdd == 1)
 				{
 					if (towerMenu->myTower->towerType == 5)
 					{
 						std::setText(this->container->barInfoNoteTXT, std::getText(this->container->barInfoNoteTXT) + Common::String(I18N_VALUE(I18N_CODE::U024))
-							+ Common::String(std::round(towerMenu->myTower->upgr1_damage * 49)));
+							+ Common::String(::round(towerMenu->myTower->upgr1_damage * 49)));
 					}
 					else
 					{
 						std::setText(this->container->barInfoNoteTXT, std::getText(this->container->barInfoNoteTXT) + Common::String(I18N_VALUE(I18N_CODE::U024))
-							+ Common::String(std::round(towerMenu->myTower->upgr1_damage)));
+							+ Common::String(::round(towerMenu->myTower->upgr1_damage)));
 					}
 				}
 			}
@@ -3645,10 +3651,6 @@ namespace engine
 			this->container->buyFire->setMouseChildren(true);
 			this->container->buyFire->setMouseEnabled(true);
 			this->container->fireBack->gotoAndStop(1);
-			logInfo(getNamePath(this->container->fireSphere->display), 
-				this->container->fireSphere->getPosition(),
-				&this->container->fireSphere->display->getPosition()
-				, &this->container->fireSphere->display->getParent()->convertToWorldSpace(this->container->fireSphere->display->getPosition()));
 		}
 		else if (param1 == "unblockIce")
 		{
@@ -3893,7 +3895,7 @@ namespace engine
 			{
 				tempObject = Main::mainClass->readXMLClass.listOfFirePriceXML[0];
 			}
-			this->world->money = this->world->money + std::round(tempObject * Main::mainClass->readXMLClass.fireSellTax);
+			this->world->money = this->world->money + ::round(tempObject * Main::mainClass->readXMLClass.fireSellTax);
 			this->world->sellFireCounter++;
 			int addit_sellFireCounter = this->world->saveBox->getIntValue("addit_sellFireCounter") + 1;
 			this->world->saveBox->setValue("addit_sellFireCounter", addit_sellFireCounter);//.gameSave.data.addit_sellFireCounter + 1);
@@ -3912,7 +3914,7 @@ namespace engine
 			{
 				tempObject = Main::mainClass->readXMLClass.listOfIcePriceXML[0];
 			}
-			this->world->money = this->world->money + std::round(tempObject * Main::mainClass->readXMLClass.iceSellTax);
+			this->world->money = this->world->money + ::round(tempObject * Main::mainClass->readXMLClass.iceSellTax);
 			this->world->sellIceCounter++;
 			int addit_sellIceCounter = this->world->saveBox->getIntValue("addit_sellIceCounter") + 1;
 			this->world->saveBox->setValue("addit_sellIceCounter", addit_sellIceCounter);
@@ -3931,7 +3933,7 @@ namespace engine
 			{
 				tempObject = Main::mainClass->readXMLClass.listOfStonePriceXML[0];
 			}
-			this->world->money = this->world->money + std::round(tempObject * Main::mainClass->readXMLClass.stoneSellTax);
+			this->world->money = this->world->money + ::round(tempObject * Main::mainClass->readXMLClass.stoneSellTax);
 			this->world->sellStoneCounter++;
 			int addit_sellStoneCounter = this->world->saveBox->getIntValue("addit_sellStoneCounter") + 1;
 			this->world->saveBox->setValue("addit_sellStoneCounter", addit_sellStoneCounter);
@@ -3950,7 +3952,7 @@ namespace engine
 			{
 				tempObject = Main::mainClass->readXMLClass.listOfLevinPriceXML[0];
 			}
-			this->world->money = this->world->money + std::round(tempObject * Main::mainClass->readXMLClass.levinSellTax);
+			this->world->money = this->world->money + ::round(tempObject * Main::mainClass->readXMLClass.levinSellTax);
 			this->world->sellLevinCounter++;
 			int addit_sellLevinCounter = this->world->saveBox->getIntValue("addit_sellLevinCounter") + 1;
 			this->world->saveBox->setValue("addit_sellLevinCounter", addit_sellLevinCounter);

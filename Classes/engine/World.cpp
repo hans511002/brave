@@ -482,7 +482,7 @@ namespace engine
 			logInfo("mouseDownHandler.target", getNamePath(event->target));
 			logInfo("mouseDownHandler.target.pos", event->getLocation(),&event->target->getPosition()
 				, &event->target->getParent()->convertToWorldSpace(event->target->getPosition()));
-			logInfo("mouseDownHandler.target。zindex", event->target->getZOrder(),0);
+			logInfo("mouseDownHandler.target.zindex", event->target->getLocalZOrder(),0);
 			if (this->getSphere)
 			{
 				this->getSphere->mouseDownHandler(event);

@@ -204,7 +204,7 @@ namespace engine{
 							else
 							{
 								this->greenFlag = true;
-								this->shootingSphere = this->shootingTurnStack[this->i][0];
+								this->shootingSphere = this->shootingTurnStack[this->i][0].name;
 								break;
 							}
 						}
@@ -1459,47 +1459,47 @@ namespace engine{
 				}
 				if (this->shootingTurnStack[0] && this->shootingTurnStack[1] && this->shootingTurnStack[2] && this->shootingTurnStack[3])
 				{
-					this->shootingTurnStack[0][1] = std::round(this->shootingTurnStack[0][1] * 0.85);
-					this->shootingTurnStack[1][1] = std::round(this->shootingTurnStack[1][1] * 0.85);
-					this->shootingTurnStack[2][1] = std::round(this->shootingTurnStack[2][1] * 0.85);
-					this->shootingTurnStack[3][1] = std::round(this->shootingTurnStack[3][1] * 0.85);
+					this->shootingTurnStack[0][1] = ::round(this->shootingTurnStack[0][1] * 0.85);
+					this->shootingTurnStack[1][1] = ::round(this->shootingTurnStack[1][1] * 0.85);
+					this->shootingTurnStack[2][1] = ::round(this->shootingTurnStack[2][1] * 0.85);
+					this->shootingTurnStack[3][1] = ::round(this->shootingTurnStack[3][1] * 0.85);
 				}
 				else if (!this->shootingTurnStack[0] && this->shootingTurnStack[1] && this->shootingTurnStack[2] && this->shootingTurnStack[3] || this->shootingTurnStack[0] && !this->shootingTurnStack[1] && this->shootingTurnStack[2] && this->shootingTurnStack[3] || this->shootingTurnStack[0] && this->shootingTurnStack[1] && !this->shootingTurnStack[2] && this->shootingTurnStack[3] || this->shootingTurnStack[0] && this->shootingTurnStack[1] && this->shootingTurnStack[2] && !this->shootingTurnStack[3])
 				{
 					if (this->shootingTurnStack[0])
 					{
-						this->shootingTurnStack[0][1] = std::round(this->shootingTurnStack[0][1] * 0.9);
+						this->shootingTurnStack[0][1] = ::round(this->shootingTurnStack[0][1] * 0.9);
 					}
 					if (this->shootingTurnStack[1])
 					{
-						this->shootingTurnStack[1][1] = std::round(this->shootingTurnStack[1][1] * 0.9);
+						this->shootingTurnStack[1][1] = ::round(this->shootingTurnStack[1][1] * 0.9);
 					}
 					if (this->shootingTurnStack[2])
 					{
-						this->shootingTurnStack[2][1] = std::round(this->shootingTurnStack[2][1] * 0.9);
+						this->shootingTurnStack[2][1] = ::round(this->shootingTurnStack[2][1] * 0.9);
 					}
 					if (this->shootingTurnStack[3])
 					{
-						this->shootingTurnStack[3][1] = std::round(this->shootingTurnStack[3][1] * 0.9);
+						this->shootingTurnStack[3][1] = ::round(this->shootingTurnStack[3][1] * 0.9);
 					}
 				}
 				else if (this->shootingTurnStack[0] && this->shootingTurnStack[1] && !this->shootingTurnStack[2] && !this->shootingTurnStack[3] || !this->shootingTurnStack[0] && this->shootingTurnStack[1] && this->shootingTurnStack[2] && !this->shootingTurnStack[3] || !this->shootingTurnStack[0] && !this->shootingTurnStack[1] && this->shootingTurnStack[2] && this->shootingTurnStack[3] || !this->shootingTurnStack[0] && this->shootingTurnStack[1] && !this->shootingTurnStack[2] && this->shootingTurnStack[3] || this->shootingTurnStack[0] && !this->shootingTurnStack[1] && this->shootingTurnStack[2] && !this->shootingTurnStack[3] || this->shootingTurnStack[0] && !this->shootingTurnStack[1] && !this->shootingTurnStack[2] && this->shootingTurnStack[3])
 				{
 					if (this->shootingTurnStack[0])
 					{
-						this->shootingTurnStack[0][1] = std::round(this->shootingTurnStack[0][1] * 0.95);
+						this->shootingTurnStack[0][1] = ::round(this->shootingTurnStack[0][1] * 0.95);
 					}
 					if (this->shootingTurnStack[1])
 					{
-						this->shootingTurnStack[1][1] = std::round(this->shootingTurnStack[1][1] * 0.95);
+						this->shootingTurnStack[1][1] = ::round(this->shootingTurnStack[1][1] * 0.95);
 					}
 					if (this->shootingTurnStack[2])
 					{
-						this->shootingTurnStack[2][1] = std::round(this->shootingTurnStack[2][1] * 0.95);
+						this->shootingTurnStack[2][1] = ::round(this->shootingTurnStack[2][1] * 0.95);
 					}
 					if (this->shootingTurnStack[3])
 					{
-						this->shootingTurnStack[3][1] = std::round(this->shootingTurnStack[3][1] * 0.95);
+						this->shootingTurnStack[3][1] = ::round(this->shootingTurnStack[3][1] * 0.95);
 					}
 				}
 			}

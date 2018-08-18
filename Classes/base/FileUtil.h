@@ -2,8 +2,23 @@
 #ifndef STD_FILEUTIL_H
 #define STD_FILEUTIL_H
 #include "BaseNode.h"
-#include <io.h>
+
 #include "JsonUtil.h"
+
+#if CC_TARGET_PLATFORM == CC_PLATFORM_MAC
+
+#elif CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+
+#elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+//#include <dirent.h> 
+
+#elif CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
+#include <io.h>
+#elif CC_TARGET_PLATFORM == CC_PLATFORM_WP8 || CC_TARGET_PLATFORM == CC_PLATFORM_WINRT
+
+#elif CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
+//#include <dirent.h> 
+#endif
 
 namespace std
 {

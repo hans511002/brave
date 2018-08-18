@@ -36,7 +36,7 @@ namespace engine
             if (tempObject > 0)
             {
 				SavedCastTime * tempObject1 = NULL;
-                this->j = std::round(tempObject * Main::mainClass->readXMLClass.savingOfTimeCast);
+                this->j = ::round(tempObject * Main::mainClass->readXMLClass.savingOfTimeCast);
                 if (this->world->worldInterface->castGolemCounter > 0 && this->world->worldInterface->castGolemCounter < this->world->worldInterface->castGolemTimer)
                 {
                     if (this->j > this->world->worldInterface->castGolemTimer - this->world->worldInterface->castGolemCounter)
@@ -85,7 +85,7 @@ namespace engine
     					i++;
 					}
 				}
-                tempObject = std::round(tempObject * 20);
+                tempObject = ::round(tempObject * 20);
                 if (tempObject > 0)
                 {
                     this->world->money = this->world->money + tempObject;
@@ -402,29 +402,29 @@ namespace engine
                         if (this->listOfReplacement[this->i][1] == 29)
                         {
 							//Math.random()
-                            tempObject = tempObject - std::round(cocos2d::rand_0_1() * Main::mainClass->readXMLClass.listOfEnemiesXML[28][30]);
+                            tempObject = tempObject - ::round(cocos2d::rand_0_1() * Main::mainClass->readXMLClass.listOfEnemiesXML[28][30]);
                             if (tempObject < Main::mainClass->readXMLClass.listOfEnemiesXML[28][31] + 100)
                             {
-								tempObject = std::round(cocos2d::rand_0_1() * Main::mainClass->readXMLClass.listOfEnemiesXML[28][31]) + 100;
+								tempObject = ::round(cocos2d::rand_0_1() * Main::mainClass->readXMLClass.listOfEnemiesXML[28][31]) + 100;
                             }
                             else if (tempObject > this->world->bezierClass->getPathLength(this->listOfReplacement[this->i][2], 
 								this->listOfReplacement[this->i][3]) - Main::mainClass->readXMLClass.listOfEnemiesXML[28][32] - 80)
                             {
                                 tempObject = this->world->bezierClass->getPathLength(this->listOfReplacement[this->i][2], this->listOfReplacement[this->i][3]) -
-									std::round(cocos2d::rand_0_1() * Main::mainClass->readXMLClass.listOfEnemiesXML[28][32]) - 80;
+									::round(cocos2d::rand_0_1() * Main::mainClass->readXMLClass.listOfEnemiesXML[28][32]) - 80;
                             }
                         }
                         else if (this->listOfReplacement[this->i][1] == 30)
                         {
-                            tempObject = tempObject - std::round(std::random() * Main::mainClass->readXMLClass.listOfEnemiesXML[29][30]);
+                            tempObject = tempObject - ::round(std::random() * Main::mainClass->readXMLClass.listOfEnemiesXML[29][30]);
                             if (tempObject < Main::mainClass->readXMLClass.listOfEnemiesXML[29][31] + 100)
                             {
-								tempObject = std::round(std::random() * Main::mainClass->readXMLClass.listOfEnemiesXML[29][31]) + 100;
+								tempObject = ::round(std::random() * Main::mainClass->readXMLClass.listOfEnemiesXML[29][31]) + 100;
                             }
                             else if (tempObject > this->world->bezierClass->getPathLength(this->listOfReplacement[this->i][2], this->listOfReplacement[this->i][3]) - Main::mainClass->readXMLClass.listOfEnemiesXML[29][32] - 80)
                             {
                                 tempObject = this->world->bezierClass->getPathLength(this->listOfReplacement[this->i][2], this->listOfReplacement[this->i][3]) -
-									std::round(std::random() * Main::mainClass->readXMLClass.listOfEnemiesXML[29][32]) - 80;
+									::round(std::random() * Main::mainClass->readXMLClass.listOfEnemiesXML[29][32]) - 80;
                             }
                         }
 						PathPoint tempObject1 = this->world->bezierClass->getPathPoint(tempObject, this->listOfReplacement[this->i][2], this->listOfReplacement[this->i][3]);

@@ -47,8 +47,8 @@ namespace engine
 			 
 			if (this->i == 17 || this->i == 18)
 			{
-				this->listOfEnemiesXML[this->i][30] = std::round(this->xmlData->getFloat(enemies.at(this->i), "@invisibleTimer") * Main::fps);
-				this->listOfEnemiesXML[this->i][31] = std::round(this->xmlData->getFloat(enemies.at(this->i),"@visibleTimer") * Main::fps);
+				this->listOfEnemiesXML[this->i][30] = ::round(this->xmlData->getFloat(enemies.at(this->i), "@invisibleTimer") * Main::fps);
+				this->listOfEnemiesXML[this->i][31] = ::round(this->xmlData->getFloat(enemies.at(this->i),"@visibleTimer") * Main::fps);
 			}
 			else if (this->i == 19 || this->i == 20)
 			{
@@ -64,28 +64,28 @@ namespace engine
 			}
 			else if (this->i == 23)
 			{
-				this->listOfEnemiesXML[this->i][30] = std::round(this->xmlData->getFloat(enemies.at(this->i), "@speedRunPerc") / 100);
-				this->listOfEnemiesXML[this->i][31] = std::round(this->xmlData->getFloat(enemies.at(this->i), "@speedRunTimerIce1") * Main::fps);
-				this->listOfEnemiesXML[this->i][32] = std::round(this->xmlData->getFloat(enemies.at(this->i), "@speedRunTimerIce2") * Main::fps);
-				this->listOfEnemiesXML[this->i][33] = std::round(this->xmlData->getFloat(enemies.at(this->i), "@speedRunTimerIce3") * Main::fps);
-				this->listOfEnemiesXML[this->i][34] = std::round(this->xmlData->getFloat(enemies.at(this->i), "@speedRunTimerIce4") * Main::fps);
+				this->listOfEnemiesXML[this->i][30] = ::round(this->xmlData->getFloat(enemies.at(this->i), "@speedRunPerc") / 100);
+				this->listOfEnemiesXML[this->i][31] = ::round(this->xmlData->getFloat(enemies.at(this->i), "@speedRunTimerIce1") * Main::fps);
+				this->listOfEnemiesXML[this->i][32] = ::round(this->xmlData->getFloat(enemies.at(this->i), "@speedRunTimerIce2") * Main::fps);
+				this->listOfEnemiesXML[this->i][33] = ::round(this->xmlData->getFloat(enemies.at(this->i), "@speedRunTimerIce3") * Main::fps);
+				this->listOfEnemiesXML[this->i][34] = ::round(this->xmlData->getFloat(enemies.at(this->i), "@speedRunTimerIce4") * Main::fps);
 			}
 			else if (this->i == 24)
 			{
-				this->listOfEnemiesXML[this->i][30] = std::round(this->xmlData->getFloat(enemies.at(this->i), "@armorTimer") * Main::fps);
+				this->listOfEnemiesXML[this->i][30] = ::round(this->xmlData->getFloat(enemies.at(this->i), "@armorTimer") * Main::fps);
 			}
 			else if (this->i == 26)
 			{
-				this->listOfEnemiesXML[this->i][30] = std::round(this->xmlData->getFloat(enemies.at(this->i), "@teleportTimer") * Main::fps);
-				this->listOfEnemiesXML[this->i][31] = std::round(this->xmlData->getFloat(enemies.at(this->i), "@teleportStealthTimer") * Main::fps);
+				this->listOfEnemiesXML[this->i][30] = ::round(this->xmlData->getFloat(enemies.at(this->i), "@teleportTimer") * Main::fps);
+				this->listOfEnemiesXML[this->i][31] = ::round(this->xmlData->getFloat(enemies.at(this->i), "@teleportStealthTimer") * Main::fps);
 				this->listOfEnemiesXML[this->i][32] = this->xmlData->getFloat(enemies.at(this->i), "@teleportDistance");
 				this->listOfEnemiesXML[this->i][33] = this->xmlData->getFloat(enemies.at(this->i), "@teleportRadius");
-				this->listOfEnemiesXML[this->i][34] = std::round(this->xmlData->getFloat(enemies.at(this->i), "@unitsCount"));
+				this->listOfEnemiesXML[this->i][34] = ::round(this->xmlData->getFloat(enemies.at(this->i), "@unitsCount"));
 			}
 			else if (this->i == 27)
 			{
 				this->listOfEnemiesXML[this->i][30] = this->xmlData->getFloat(enemies.at(this->i), "@giveHealthRadius");
-				this->listOfEnemiesXML[this->i][31] = std::round(this->xmlData->getFloat(enemies.at(this->i), "@giveHealthInterval") * Main::fps);
+				this->listOfEnemiesXML[this->i][31] = ::round(this->xmlData->getFloat(enemies.at(this->i), "@giveHealthInterval") * Main::fps);
 				this->listOfEnemiesXML[this->i][32] = this->xmlData->getFloat(enemies.at(this->i), "@giveHealth") / 100;
 			}
 			else if (this->i == 28 || this->i == 29)
@@ -94,7 +94,7 @@ namespace engine
 				this->listOfEnemiesXML[this->i][31] = this->xmlData->getFloat(enemies.at(this->i), "@beginZone");
 				this->listOfEnemiesXML[this->i][32] = this->xmlData->getFloat(enemies.at(this->i), "@endZone");
 				this->listOfEnemiesXML[this->i][33] = this->xmlData->getFloat(enemies.at(this->i), "@returnHealth") / 100;
-				this->listOfEnemiesXML[this->i][34] = std::round(this->xmlData->getFloat(enemies.at(this->i), "@stealthTimer") * Main::fps);
+				this->listOfEnemiesXML[this->i][34] = ::round(this->xmlData->getFloat(enemies.at(this->i), "@stealthTimer") * Main::fps);
 			}
 			else if (this->i == 33)
 			{ 
@@ -122,8 +122,8 @@ namespace engine
 				this->n = 0;
 				while (this->n < this->tempObject1)
 				{
-					this->bossArrayOfView[this->n][0] = std::round(this->xmlData->getFloat(phaseViewViewTimer.at(this->n), "@timer") * Main::fps);
-					//std::round(Number(this->xmlData.enemies.enemy[this->i].phaseView.viewTimer[this->n].@timer) * Main::fps);
+					this->bossArrayOfView[this->n][0] = ::round(this->xmlData->getFloat(phaseViewViewTimer.at(this->n), "@timer") * Main::fps);
+					//::round(Number(this->xmlData.enemies.enemy[this->i].phaseView.viewTimer[this->n].@timer) * Main::fps);
 					this->bossArrayOfView[this->n][1] = this->xmlData->getBool(phaseViewViewTimer.at(this->n), "@changeRoad");//"true"/"false"
 					n++;
 				}
@@ -133,7 +133,7 @@ namespace engine
 				while (this->n < this->tempObject1)
 				{
 					//this->bossArrayOfEnemies[this->n] = [];
-					this->bossArrayOfEnemies[this->n][0] = std::round(this->xmlData->getFloat(phaseCallUnitsCallUnits.at(this->n), "@timer") * Main::fps);
+					this->bossArrayOfEnemies[this->n][0] = ::round(this->xmlData->getFloat(phaseCallUnitsCallUnits.at(this->n), "@timer") * Main::fps);
 					this->bossArrayOfEnemies[this->n][1].clear(); 
 					vector<tinyxml2::XMLElement *> phaseCallUnitsCallUnitsEnemy = this->xmlData->getChildList(phaseCallUnitsCallUnits.at(this->n), "enemy");
 					this->tempObject2 = phaseCallUnitsCallUnitsEnemy.size();//this->xmlData.enemies.enemy[this->i].phaseCallUnits.callUnits[this->n].enemy.length();
@@ -145,7 +145,7 @@ namespace engine
 						// int(this->xmlData.enemies.enemy[this->i].phaseCallUnits.callUnits[this->n].enemy[this->m].@typeUnit);
 						this->bossArrayOfEnemies[this->n][1][this->m][1] = this->xmlData->getInt(phaseCallUnitsCallUnitsEnemy.at(this->m), "@count");
 						//int(this->xmlData.enemies.enemy[this->i].phaseCallUnits.callUnits[this->n].enemy[this->m].@count);
-						this->bossArrayOfEnemies[this->n][1][this->m][2] = std::round(this->xmlData->getFloat(phaseCallUnitsCallUnitsEnemy.at(this->m), "@interval") * Main::fps);
+						this->bossArrayOfEnemies[this->n][1][this->m][2] = ::round(this->xmlData->getFloat(phaseCallUnitsCallUnitsEnemy.at(this->m), "@interval") * Main::fps);
 						this->bossArrayOfEnemies[this->n][1][this->m][3] = this->xmlData->getInt(phaseCallUnitsCallUnitsEnemy.at(this->m), "@way");
 						//int(this->xmlData.enemies.enemy[this->i].phaseCallUnits.callUnits[this->n].enemy[this->m].@way);
 						this->bossArrayOfEnemies[this->n][1][this->m][4] = this->xmlData->getInt(phaseCallUnitsCallUnitsEnemy.at(this->m), "@path");
@@ -165,7 +165,7 @@ namespace engine
 				this->n = 0;
 				while (this->n < this->tempObject1)
 				{
-					this->bossArrayOfArmor[n]=std::round(this->xmlData->getFloat(phaseArmorGos.at(this->n), "@timer") * Main::fps);
+					this->bossArrayOfArmor[n]=::round(this->xmlData->getFloat(phaseArmorGos.at(this->n), "@timer") * Main::fps);
 					n++;
 				}
 				vector<tinyxml2::XMLElement *> phaseCastGos = this->xmlData->getChildList(enemies.at(this->i), "phaseCastGo.castGo");
@@ -174,8 +174,8 @@ namespace engine
 				while (this->n < this->tempObject1)
 				{
 
-					this->bossArrayOfCasts[n]=std::round(this->xmlData->getFloat(phaseCastGos.at(this->n), "@timer") * Main::fps);
-					//this->bossArrayOfCasts.push(std::round(Number(this->xmlData.enemies.enemy[this->i].phaseCastGo.castGo[this->n].@timer) * Main::fps));
+					this->bossArrayOfCasts[n]=::round(this->xmlData->getFloat(phaseCastGos.at(this->n), "@timer") * Main::fps);
+					//this->bossArrayOfCasts.push(::round(Number(this->xmlData.enemies.enemy[this->i].phaseCastGo.castGo[this->n].@timer) * Main::fps));
 					n++;
 				}
 			}
@@ -183,26 +183,26 @@ namespace engine
 		}
 		//vector<tinyxml2::XMLElement *> packsUnits = this->xmlData->getChildList( "packs.unit");
 		//this->tempObject =packsUnits.size();// this->xmlData.packs.unit.length();
-		this->assasinVisTrueTimer1XML = std::round(this->xmlData->getFloat( "assasinUnit.assasinVisTrueSec.@assasinUnit1") * Main::fps);
-		//std::round(Number(this->xmlData.assasinUnit.assasinVisTrueSec.@assasinUnit1) * Main::fps);
-		this->assasinVisTrueTimer2XML = std::round(this->xmlData->getFloat( "assasinUnit.assasinVisTrueSec.@assasinUnit2") * Main::fps);
-		//std::round(Number(this->xmlData.assasinUnit.assasinVisTrueSec.@assasinUnit2) * Main::fps);
-		this->assasinVisFalseTimer1XML = std::round(this->xmlData->getFloat( "assasinUnit.assasinVisFalseSec.@assasinUnit1") * Main::fps);
-		//std::round(Number(this->xmlData.assasinUnit.assasinVisFalseSec.@assasinUnit1) * Main::fps);
-		this->assasinVisFalseTimer2XML = std::round(this->xmlData->getFloat( "assasinUnit.assasinVisFalseSec.@assasinUnit2") * Main::fps);
-		//std::round(Number(this->xmlData.assasinUnit.assasinVisFalseSec.@assasinUnit2) * Main::fps);
+		this->assasinVisTrueTimer1XML = ::round(this->xmlData->getFloat( "assasinUnit.assasinVisTrueSec.@assasinUnit1") * Main::fps);
+		//::round(Number(this->xmlData.assasinUnit.assasinVisTrueSec.@assasinUnit1) * Main::fps);
+		this->assasinVisTrueTimer2XML = ::round(this->xmlData->getFloat( "assasinUnit.assasinVisTrueSec.@assasinUnit2") * Main::fps);
+		//::round(Number(this->xmlData.assasinUnit.assasinVisTrueSec.@assasinUnit2) * Main::fps);
+		this->assasinVisFalseTimer1XML = ::round(this->xmlData->getFloat( "assasinUnit.assasinVisFalseSec.@assasinUnit1") * Main::fps);
+		//::round(Number(this->xmlData.assasinUnit.assasinVisFalseSec.@assasinUnit1) * Main::fps);
+		this->assasinVisFalseTimer2XML = ::round(this->xmlData->getFloat( "assasinUnit.assasinVisFalseSec.@assasinUnit2") * Main::fps);
+		//::round(Number(this->xmlData.assasinUnit.assasinVisFalseSec.@assasinUnit2) * Main::fps);
 		this->creationOfNewUnits1XML = this->xmlData->getFloat( "creationOfNewUnits.count.@creationOfNewUnits1");
 		//int(this->xmlData.creationOfNewUnits.count.@creationOfNewUnits1);
 		this->creationOfNewUnits2XML =this->xmlData->getFloat( "creationOfNewUnits.count.@creationOfNewUnits2");
 		// int(this->xmlData.creationOfNewUnits.count.@creationOfNewUnits2);
-		this->intervalTimerGolemXML = std::round(this->xmlData->getFloat( "cast.download.@golemInterval") * Main::fps);
-		//std::round(Number(this->xmlData.cast.download.@golemInterval) * Main::fps);
-		this->intervalTimerIcemanXML = std::round(this->xmlData->getFloat( "cast.download.@icemanInterval") * Main::fps);
-		//std::round(Number(this->xmlData.cast.download.@icemanInterval) * Main::fps);
-		this->intervalTimerAirXML = std::round(this->xmlData->getFloat( "cast.download.@airInterval") * Main::fps);
-		//std::round(Number(this->xmlData.cast.download.@airInterval) * Main::fps);
-		this->savingOfTimeCast = std::round(this->xmlData->getFloat( "cast.download.@savingOfTime") * Main::fps);
-		//std::round(Number(this->xmlData.cast.download.@savingOfTime) * Main::fps);
+		this->intervalTimerGolemXML = ::round(this->xmlData->getFloat( "cast.download.@golemInterval") * Main::fps);
+		//::round(Number(this->xmlData.cast.download.@golemInterval) * Main::fps);
+		this->intervalTimerIcemanXML = ::round(this->xmlData->getFloat( "cast.download.@icemanInterval") * Main::fps);
+		//::round(Number(this->xmlData.cast.download.@icemanInterval) * Main::fps);
+		this->intervalTimerAirXML = ::round(this->xmlData->getFloat( "cast.download.@airInterval") * Main::fps);
+		//::round(Number(this->xmlData.cast.download.@airInterval) * Main::fps);
+		this->savingOfTimeCast = ::round(this->xmlData->getFloat( "cast.download.@savingOfTime") * Main::fps);
+		//::round(Number(this->xmlData.cast.download.@savingOfTime) * Main::fps);
 		this->castGolemHealthXML = this->xmlData->getFloat( "cast.golem.@health");
 		//Number(this->xmlData.cast.golem.@health);
 		this->castGolemSpeedXML = this->xmlData->getFloat( "cast.golem.@speed");
@@ -210,21 +210,21 @@ namespace engine
 		this->castIcemanSpeedXML = this->xmlData->getFloat( "cast.iceman.@speed");
 		// Number(this->xmlData.cast.iceman.@speed);
 		this->castIcemanFreezTimerXML = this->xmlData->getFloat( "cast.iceman.@freezTimer") * Main::fps;
-		// std::round(Number(this->xmlData.cast.iceman.@freezTimer) * Main::fps);
-		this->castIcemanLifeTimerXML = std::round(this->xmlData->getFloat( "cast.iceman.@lifeTimer") * Main::fps);
-		//std::round(Number(this->xmlData.cast.iceman.@lifeTimer) * Main::fps);
+		// ::round(Number(this->xmlData.cast.iceman.@freezTimer) * Main::fps);
+		this->castIcemanLifeTimerXML = ::round(this->xmlData->getFloat( "cast.iceman.@lifeTimer") * Main::fps);
+		//::round(Number(this->xmlData.cast.iceman.@lifeTimer) * Main::fps);
 		this->castIcemanDamageXML = this->xmlData->getFloat("cast.iceman.@damagePerSec");
 		//Number(this->xmlData.cast.iceman.@damagePerSec);
 		this->airPowerXML = this->xmlData->getFloat("cast.air.@power");
 		//Number(this->xmlData.cast.air.@power);
 		this->airRadiusXML = this->xmlData->getFloat("cast.air.@radius");
 		//Number(this->xmlData.cast.air.@radius);
-		this->airLifeSecXML = std::round(this->xmlData->getFloat("cast.air.@lifeTimer") * Main::fps);
-		//std::round(Number(this->xmlData.cast.air.@lifeTimer) * Main::fps);
+		this->airLifeSecXML = ::round(this->xmlData->getFloat("cast.air.@lifeTimer") * Main::fps);
+		//::round(Number(this->xmlData.cast.air.@lifeTimer) * Main::fps);
 		this->airSpacingXML = this->xmlData->getFloat("cast.air.@spacing");
 		//Number(this->xmlData.cast.air.@spacing);
-		this->airWaitTimerXML = std::round(this->xmlData->getFloat("cast.air.@shockTimer") * Main::fps);
-		//std::round(Number(this->xmlData.cast.air.@shockTimer) * Main::fps);
+		this->airWaitTimerXML = ::round(this->xmlData->getFloat("cast.air.@shockTimer") * Main::fps);
+		//::round(Number(this->xmlData.cast.air.@shockTimer) * Main::fps);
 		this->costTowerXML = this->xmlData->getInt("cost.tower.@cost");//int(this->xmlData.cost.tower.@cost);
 		this->costTowerPlusXML = this->xmlData->getInt("cost.tower.@costPlus");//int(this->xmlData.cost.tower.@costPlus);
 		this->costSlot2XML = this->xmlData->getInt("cost.towerSlots.@slot2");//int(this->xmlData.cost.towerSlots.@slot2);
@@ -402,10 +402,10 @@ namespace engine
 		this->iceEffectSlowdown2XML = this->xmlData->getFloat("sphere.iceEffect.@slowdown2Perc") / 100;//Number(this->xmlData.sphere.iceEffect.@slowdown2Perc) / 100;
 		this->iceEffectSlowdown3XML = this->xmlData->getFloat("sphere.iceEffect.@slowdown3Perc") / 100;//Number(this->xmlData.sphere.iceEffect.@slowdown3Perc) / 100;
 		this->iceEffectSlowdown4XML = this->xmlData->getFloat("sphere.iceEffect.@slowdown4Perc") / 100;//Number(this->xmlData.sphere.iceEffect.@slowdown4Perc) / 100;
-		this->iceEffectSlowdown1TimerXML = std::round(this->xmlData->getFloat("sphere.iceEffect.@slowdown1Timer") * Main::fps);//Number(this->xmlData.sphere.iceEffect.@slowdown1Timer) * Main::fps);
-		this->iceEffectSlowdown2TimerXML = std::round(this->xmlData->getFloat("sphere.iceEffect.@slowdown2Timer") * Main::fps);//Number(this->xmlData.sphere.iceEffect.@slowdown2Timer) * Main::fps);
-		this->iceEffectSlowdown3TimerXML = std::round(this->xmlData->getFloat("sphere.iceEffect.@slowdown3Timer") * Main::fps);//Number(this->xmlData.sphere.iceEffect.@slowdown3Timer) * Main::fps);
-		this->iceEffectSlowdown4TimerXML = std::round(this->xmlData->getFloat("sphere.iceEffect.@slowdown4Timer") * Main::fps);//Number(this->xmlData.sphere.iceEffect.@slowdown4Timer) * Main::fps);
+		this->iceEffectSlowdown1TimerXML = ::round(this->xmlData->getFloat("sphere.iceEffect.@slowdown1Timer") * Main::fps);//Number(this->xmlData.sphere.iceEffect.@slowdown1Timer) * Main::fps);
+		this->iceEffectSlowdown2TimerXML = ::round(this->xmlData->getFloat("sphere.iceEffect.@slowdown2Timer") * Main::fps);//Number(this->xmlData.sphere.iceEffect.@slowdown2Timer) * Main::fps);
+		this->iceEffectSlowdown3TimerXML = ::round(this->xmlData->getFloat("sphere.iceEffect.@slowdown3Timer") * Main::fps);//Number(this->xmlData.sphere.iceEffect.@slowdown3Timer) * Main::fps);
+		this->iceEffectSlowdown4TimerXML = ::round(this->xmlData->getFloat("sphere.iceEffect.@slowdown4Timer") * Main::fps);//Number(this->xmlData.sphere.iceEffect.@slowdown4Timer) * Main::fps);
 		this->stoneEffectRadiusXML = this->xmlData->getFloat("sphere.stoneEffect.@radius");//Number(this->xmlData.sphere.stoneEffect.@radius);
 		this->levinEffectDamageXML = this->xmlData->getFloat("sphere.levinEffect.@damagePerc") / 100;//Number(this->xmlData.sphere.levinEffect.@damagePerc) / 100;
 		this->levinEffectRadiusXML = this->xmlData->getFloat("sphere.levinEffect.@radius");//Number(this->xmlData.sphere.levinEffect.@radius);
@@ -429,7 +429,7 @@ namespace engine
 		this->listOfMoveLevinXML[2] = this->xmlData->getFloat("sphere.sphereOneMoveLevinDamage.@step2") * this->complexitySettingXML;//Number(this->xmlData.sphere.sphereOneMoveLevinDamage.@step2) * this->complexitySettingXML;
 		this->listOfMoveLevinXML[3] = this->xmlData->getFloat("sphere.sphereOneMoveLevinDamage.@step3") * this->complexitySettingXML;//Number(this->xmlData.sphere.sphereOneMoveLevinDamage.@step3) * this->complexitySettingXML;
 		this->listOfMoveLevinXML[4] = this->xmlData->getFloat("sphere.sphereOneMoveLevinDamage.@step4") * this->complexitySettingXML;//Number(this->xmlData.sphere.sphereOneMoveLevinDamage.@step4) * this->complexitySettingXML;
-		this->getAllLiveTimer = std::round(this->xmlData->getFloat("sphere.getAll.@liveTimer") * Main::fps);//Number(this->xmlData.sphere.getAll.@liveTimer) * Main::fps);
+		this->getAllLiveTimer = ::round(this->xmlData->getFloat("sphere.getAll.@liveTimer") * Main::fps);//Number(this->xmlData.sphere.getAll.@liveTimer) * Main::fps);
 		this->getAllDamagePerSec = this->xmlData->getFloat("sphere.getAll.@damagePerSecond") / 30 * this->complexitySettingXML;//Number(this->xmlData.sphere.getAll.@damagePerSecond) / 30 * this->complexitySettingXML;
 		this->getAllLittleMultiply = this->xmlData->getFloat("sphere.getAll.@getAllLittleMultiply") / 100;//Number(this->xmlData.sphere.getAll.@getAllLittleMultiply) / 100);
 		this->getAllLittleDoubleMultiply = this->xmlData->getFloat("sphere.getAll.@getAllLittleDoubleMultiply") / 100;//Number(this->xmlData.sphere.getAll.@getAllLittleDoubleMultiply) / 100);
@@ -461,17 +461,17 @@ namespace engine
 		this->towerIceEffectSlowdownXML[1] = this->xmlData->getFloat("towers.iceEffect.@slowdown2Perc") / 100;//Number(this->xmlData.towers.iceEffect.@slowdown2Perc) / 100;
 		this->towerIceEffectSlowdownXML[2] = this->xmlData->getFloat("towers.iceEffect.@slowdown3Perc") / 100;//Number(this->xmlData.towers.iceEffect.@slowdown3Perc) / 100;
 		this->towerIceEffectSlowdownXML[3] = this->xmlData->getFloat("towers.iceEffect.@slowdown4Perc") / 100;//Number(this->xmlData.towers.iceEffect.@slowdown4Perc) / 100;
-		this->towerIceEffectSlowdownXML[4] = std::round(this->xmlData->getFloat("towers.iceEffect.@slowdown1Timer") * Main::fps);//Number(this->xmlData.towers.iceEffect.@slowdown1Timer) * Main::fps);
-		this->towerIceEffectSlowdownXML[5] = std::round(this->xmlData->getFloat("towers.iceEffect.@slowdown2Timer") * Main::fps);//Number(this->xmlData.towers.iceEffect.@slowdown2Timer) * Main::fps);
-		this->towerIceEffectSlowdownXML[6] = std::round(this->xmlData->getFloat("towers.iceEffect.@slowdown3Timer") * Main::fps);//Number(this->xmlData.towers.iceEffect.@slowdown3Timer) * Main::fps);
-		this->towerIceEffectSlowdownXML[7] = std::round(this->xmlData->getFloat("towers.iceEffect.@slowdown4Timer") * Main::fps);//Number(this->xmlData.towers.iceEffect.@slowdown4Timer) * Main::fps);
+		this->towerIceEffectSlowdownXML[4] = ::round(this->xmlData->getFloat("towers.iceEffect.@slowdown1Timer") * Main::fps);//Number(this->xmlData.towers.iceEffect.@slowdown1Timer) * Main::fps);
+		this->towerIceEffectSlowdownXML[5] = ::round(this->xmlData->getFloat("towers.iceEffect.@slowdown2Timer") * Main::fps);//Number(this->xmlData.towers.iceEffect.@slowdown2Timer) * Main::fps);
+		this->towerIceEffectSlowdownXML[6] = ::round(this->xmlData->getFloat("towers.iceEffect.@slowdown3Timer") * Main::fps);//Number(this->xmlData.towers.iceEffect.@slowdown3Timer) * Main::fps);
+		this->towerIceEffectSlowdownXML[7] = ::round(this->xmlData->getFloat("towers.iceEffect.@slowdown4Timer") * Main::fps);//Number(this->xmlData.towers.iceEffect.@slowdown4Timer) * Main::fps);
 		this->towerStoneEffectRadiusXML = this->xmlData->getFloat("towers.stoneEffect.@radius");//Number(this->xmlData.towers.stoneEffect.@radius);
 		this->towerLevinEffectDamageXML = this->xmlData->getFloat("towers.levinEffect.@damagePerc") / 100 * this->complexitySettingXML;//Number(this->xmlData.towers.levinEffect.@damagePerc) / 100 * this->complexitySettingXML;
 		this->towerLevinEffectRadiusXML = this->xmlData->getFloat("towers.levinEffect.@radius");//Number(this->xmlData.towers.levinEffect.@radius);
-		this->fireTowerIntervalXML = std::round(this->xmlData->getFloat("towers.spheresInterval.@fire") * Main::fps);//Number(this->xmlData.towers.spheresInterval.@fire) * Main::fps);
-		this->iceTowerIntervalXML = std::round(this->xmlData->getFloat("towers.spheresInterval.@ice") * Main::fps);//Number(this->xmlData.towers.spheresInterval.@ice) * Main::fps);
-		this->stoneTowerIntervalXML = std::round(this->xmlData->getFloat("towers.spheresInterval.@stone") * Main::fps);//Number(this->xmlData.towers.spheresInterval.@stone) * Main::fps);
-		this->levinTowerIntervalXML = std::round(this->xmlData->getFloat("towers.spheresInterval.@levin") * Main::fps);//Number(this->xmlData.towers.spheresInterval.@levin) * Main::fps);
+		this->fireTowerIntervalXML = ::round(this->xmlData->getFloat("towers.spheresInterval.@fire") * Main::fps);//Number(this->xmlData.towers.spheresInterval.@fire) * Main::fps);
+		this->iceTowerIntervalXML = ::round(this->xmlData->getFloat("towers.spheresInterval.@ice") * Main::fps);//Number(this->xmlData.towers.spheresInterval.@ice) * Main::fps);
+		this->stoneTowerIntervalXML = ::round(this->xmlData->getFloat("towers.spheresInterval.@stone") * Main::fps);//Number(this->xmlData.towers.spheresInterval.@stone) * Main::fps);
+		this->levinTowerIntervalXML = ::round(this->xmlData->getFloat("towers.spheresInterval.@levin") * Main::fps);//Number(this->xmlData.towers.spheresInterval.@levin) * Main::fps);
 		this->listOfFireProbability[0] = this->xmlData->getInt("towers.probability.fire.@step1");//int(this->xmlData.towers.probability.fire.@step1);
 		this->listOfFireProbability[1] = this->xmlData->getInt("towers.probability.fire.@step2");//int(this->xmlData.towers.probability.fire.@step2);
 		this->listOfFireProbability[2] = this->xmlData->getInt("towers.probability.fire.@step3");//int(this->xmlData.towers.probability.fire.@step3);
@@ -485,42 +485,42 @@ namespace engine
 		this->listOfLevinProbability[2] = this->xmlData->getInt("towers.probability.levin.@step3");//int(this->xmlData.towers.probability.levin.@step3);
 		this->listOfLevinProbability[3] = this->xmlData->getInt("towers.probability.levin.@step4");//int(this->xmlData.towers.probability.levin.@step4);
 		this->ultraFireStoneDamageXML = this->xmlData->getFloat("towers.ultraFireStone.@damage") * this->complexitySettingXML;//Number(this->xmlData.towers.ultraFireStone.@damage) * this->complexitySettingXML;
-		this->ultraFireStoneIntervalXML = std::round(this->xmlData->getFloat("towers.ultraFireStone.@interval") * Main::fps);//Number(this->xmlData.towers.ultraFireStone.@interval) * Main::fps);
+		this->ultraFireStoneIntervalXML = ::round(this->xmlData->getFloat("towers.ultraFireStone.@interval") * Main::fps);//Number(this->xmlData.towers.ultraFireStone.@interval) * Main::fps);
 		this->ultraFireStoneRadiusXML = this->xmlData->getFloat("towers.ultraFireStone.@radius");//Number(this->xmlData.towers.ultraFireStone.@radius);
 		this->ultraFireStoneDamageRadiusXML = this->xmlData->getFloat("towers.ultraFireStone.@damageRadius");//Number(this->xmlData.towers.ultraFireStone.@damageRadius);
 		this->ultraAddFireStoneDamageXML = this->xmlData->getFloat("towers.ultraAdditionalFireStone.@damage") * this->complexitySettingXML;//Number(this->xmlData.towers.ultraAdditionalFireStone.@damage) * this->complexitySettingXML;
-		this->ultraAddFireStoneIntervalXML = std::round(this->xmlData->getFloat("towers.ultraAdditionalFireStone.@interval") * Main::fps);//Number(this->xmlData.towers.ultraAdditionalFireStone.@interval) * Main::fps);
+		this->ultraAddFireStoneIntervalXML = ::round(this->xmlData->getFloat("towers.ultraAdditionalFireStone.@interval") * Main::fps);//Number(this->xmlData.towers.ultraAdditionalFireStone.@interval) * Main::fps);
 		this->ultraAddFireStoneRadiusXML = this->xmlData->getFloat("towers.ultraAdditionalFireStone.@radius");//Number(this->xmlData.towers.ultraAdditionalFireStone.@radius);
-		this->ultraAddFireStoneSlowdownTimerXML = std::round(this->xmlData->getFloat("towers.ultraAdditionalFireStone.@slowdownInterval") * Main::fps);//Number(this->xmlData.towers.ultraAdditionalFireStone.@slowdownInterval) * Main::fps);
+		this->ultraAddFireStoneSlowdownTimerXML = ::round(this->xmlData->getFloat("towers.ultraAdditionalFireStone.@slowdownInterval") * Main::fps);//Number(this->xmlData.towers.ultraAdditionalFireStone.@slowdownInterval) * Main::fps);
 		this->ultraIceLevinDamageXML = this->xmlData->getFloat("towers.ultraIceLevin.@damage") * this->complexitySettingXML;//Number(this->xmlData.towers.ultraIceLevin.@damage) * this->complexitySettingXML;
-		this->ultraIceLevinIntervalXML = std::round(this->xmlData->getFloat("towers.ultraIceLevin.@interval") * Main::fps);//Number(this->xmlData.towers.ultraIceLevin.@interval) * Main::fps);
+		this->ultraIceLevinIntervalXML = ::round(this->xmlData->getFloat("towers.ultraIceLevin.@interval") * Main::fps);//Number(this->xmlData.towers.ultraIceLevin.@interval) * Main::fps);
 		this->ultraIceLevinRadiusXML = this->xmlData->getFloat("towers.ultraIceLevin.@radius");//Number(this->xmlData.towers.ultraIceLevin.@radius);
 		this->ultraIceLevinSlowdownPowerXML = this->xmlData->getFloat("towers.ultraIceLevin.@slowdownPower") / 100;//Number(this->xmlData.towers.ultraIceLevin.@slowdownPower) / 100;
-		this->ultraIceLevinSlowdownTimerXML = std::round(this->xmlData->getFloat("towers.ultraIceLevin.@slowdownTimer") * Main::fps);//Number(this->xmlData.towers.ultraIceLevin.@slowdownTimer) * Main::fps);
+		this->ultraIceLevinSlowdownTimerXML = ::round(this->xmlData->getFloat("towers.ultraIceLevin.@slowdownTimer") * Main::fps);//Number(this->xmlData.towers.ultraIceLevin.@slowdownTimer) * Main::fps);
 		this->ultraIceLevinLongXML = this->xmlData->getFloat("towers.ultraIceLevin.@long");//Number(this->xmlData.towers.ultraIceLevin.@long);
 		this->ultraIceLevinMaxUnitsXML = this->xmlData->getInt("towers.ultraIceLevin.@maxUnits");//int(this->xmlData.towers.ultraIceLevin.@maxUnits);
 		this->ultraAddIceLevinDamageXML = this->xmlData->getFloat("towers.ultraAdditionalIceLevin.@damage") * this->complexitySettingXML;//Number(this->xmlData.towers.ultraAdditionalIceLevin.@damage) * this->complexitySettingXML;
-		this->ultraAddIceLevinIntervalXML = std::round(this->xmlData->getFloat("towers.ultraAdditionalIceLevin.@interval") * Main::fps);//Number(this->xmlData.towers.ultraAdditionalIceLevin.@interval) * Main::fps);
+		this->ultraAddIceLevinIntervalXML = ::round(this->xmlData->getFloat("towers.ultraAdditionalIceLevin.@interval") * Main::fps);//Number(this->xmlData.towers.ultraAdditionalIceLevin.@interval) * Main::fps);
 		this->ultraAddIceLevinDamageRadiusXML = this->xmlData->getFloat("towers.ultraAdditionalIceLevin.@damageRadius");//Number(this->xmlData.towers.ultraAdditionalIceLevin.@damageRadius);
-		this->ultraAddIceLevinSlowdownTimerXML = std::round(this->xmlData->getFloat("towers.ultraAdditionalIceLevin.@slowdownInterval") * Main::fps);//Number(this->xmlData.towers.ultraAdditionalIceLevin.@slowdownInterval) * Main::fps);
+		this->ultraAddIceLevinSlowdownTimerXML = ::round(this->xmlData->getFloat("towers.ultraAdditionalIceLevin.@slowdownInterval") * Main::fps);//Number(this->xmlData.towers.ultraAdditionalIceLevin.@slowdownInterval) * Main::fps);
 		this->ultraIceStoneDamageXML = this->xmlData->getFloat("towers.ultraIceStone.@damage") * this->complexitySettingXML;//Number(this->xmlData.towers.ultraIceStone.@damage) * this->complexitySettingXML;
-		this->ultraIceStoneIntervalXML = std::round(this->xmlData->getFloat("towers.ultraIceStone.@interval") * Main::fps);//Number(this->xmlData.towers.ultraIceStone.@interval) * Main::fps);
+		this->ultraIceStoneIntervalXML = ::round(this->xmlData->getFloat("towers.ultraIceStone.@interval") * Main::fps);//Number(this->xmlData.towers.ultraIceStone.@interval) * Main::fps);
 		this->ultraIceStoneRadiusXML = this->xmlData->getFloat("towers.ultraIceStone.@radius");//Number(this->xmlData.towers.ultraIceStone.@radius);
 		this->ultraIceStoneDamageRadiusXML = this->xmlData->getFloat("towers.ultraIceStone.@damageRadius");//Number(this->xmlData.towers.ultraIceStone.@damageRadius);
 		this->ultraIceStoneSlowdownPowerXML = this->xmlData->getFloat("towers.ultraIceStone.@slowdownPower") / 100;//Number(this->xmlData.towers.ultraIceStone.@slowdownPower) / 100;
-		this->ultraIceStoneSlowdownTimerXML = std::round(this->xmlData->getFloat("towers.ultraIceStone.@slowdownTimer") * Main::fps);//Number(this->xmlData.towers.ultraIceStone.@slowdownTimer) * Main::fps);
+		this->ultraIceStoneSlowdownTimerXML = ::round(this->xmlData->getFloat("towers.ultraIceStone.@slowdownTimer") * Main::fps);//Number(this->xmlData.towers.ultraIceStone.@slowdownTimer) * Main::fps);
 		this->ultraAddIceStoneDamageXML = this->xmlData->getFloat("towers.ultraAdditionalIceStone.@damage") * this->complexitySettingXML;//Number(this->xmlData.towers.ultraAdditionalIceStone.@damage) * this->complexitySettingXML;
-		this->ultraAddIceStoneIntervalXML = std::round(this->xmlData->getFloat("towers.ultraAdditionalIceStone.@interval") * Main::fps);//Number(this->xmlData.towers.ultraAdditionalIceStone.@interval) * Main::fps);
+		this->ultraAddIceStoneIntervalXML = ::round(this->xmlData->getFloat("towers.ultraAdditionalIceStone.@interval") * Main::fps);//Number(this->xmlData.towers.ultraAdditionalIceStone.@interval) * Main::fps);
 		this->ultraAddIceStoneRadiusXML = this->xmlData->getFloat("towers.ultraAdditionalIceStone.@radius");//Number(this->xmlData.towers.ultraAdditionalIceStone.@radius);
 		this->ultraAddIceStoneSpacingXML = this->xmlData->getFloat("towers.ultraAdditionalIceStone.@spacing");//Number(this->xmlData.towers.ultraAdditionalIceStone.@spacing);
 		this->ultraAddIceStonePowerXML = this->xmlData->getFloat("towers.ultraAdditionalIceStone.@power");//Number(this->xmlData.towers.ultraAdditionalIceStone.@power);
-		this->ultraAddIceStoneSlowdownTimerXML = std::round(this->xmlData->getFloat("towers.ultraAdditionalIceStone.@slowdownTimer") * Main::fps);//Number(this->xmlData.towers.ultraAdditionalIceStone.@slowdownTimer) * Main::fps);
+		this->ultraAddIceStoneSlowdownTimerXML = ::round(this->xmlData->getFloat("towers.ultraAdditionalIceStone.@slowdownTimer") * Main::fps);//Number(this->xmlData.towers.ultraAdditionalIceStone.@slowdownTimer) * Main::fps);
 		this->ultraFireLevinDamageXML = this->xmlData->getFloat("towers.ultraFireLevin.@damage") * this->complexitySettingXML;//Number(this->xmlData.towers.ultraFireLevin.@damage) * this->complexitySettingXML;
-		this->ultraFireLevinIntervalXML = std::round(this->xmlData->getFloat("towers.ultraFireLevin.@interval") * Main::fps);//Number(this->xmlData.towers.ultraFireLevin.@interval) * Main::fps);
+		this->ultraFireLevinIntervalXML = ::round(this->xmlData->getFloat("towers.ultraFireLevin.@interval") * Main::fps);//Number(this->xmlData.towers.ultraFireLevin.@interval) * Main::fps);
 		this->ultraFireLevinRadiusXML = this->xmlData->getFloat("towers.ultraFireLevin.@radius");//Number(this->xmlData.towers.ultraFireLevin.@radius);
 		this->ultraFireLevinDamageRadiusXML = this->xmlData->getFloat("towers.ultraFireLevin.@damageRadius");//Number(this->xmlData.towers.ultraFireLevin.@damageRadius);
 		this->ultraAddFireLevinDamageXML = this->xmlData->getFloat("towers.ultraAdditionalFireLevin.@damage") * this->complexitySettingXML;//Number(this->xmlData.towers.ultraAdditionalFireLevin.@damage) * this->complexitySettingXML;
-		this->ultraAddFireLevinIntervalXML = std::round(this->xmlData->getFloat("towers.ultraAdditionalFireLevin.@interval") * Main::fps);//Number(this->xmlData.towers.ultraAdditionalFireLevin.@interval) * Main::fps);
+		this->ultraAddFireLevinIntervalXML = ::round(this->xmlData->getFloat("towers.ultraAdditionalFireLevin.@interval") * Main::fps);//Number(this->xmlData.towers.ultraAdditionalFireLevin.@interval) * Main::fps);
 		this->ultraAddFireLevinRadiusXML = this->xmlData->getFloat("towers.ultraAdditionalFireLevin.@radius");//Number(this->xmlData.towers.ultraAdditionalFireLevin.@radius);
 		//this->xmlLoaderLevels = NULL;
 		if (this->xmlDataLevels){
@@ -534,112 +534,112 @@ namespace engine
 		this->levinCountPlus = 0;
 		if (Main::mainClass->saveBoxClass->getBoolValue("upgradeGolem5"))
 		{
-			this->intervalTimerGolemXML = this->intervalTimerGolemXML - std::round(30 * 15);
+			this->intervalTimerGolemXML = this->intervalTimerGolemXML - ::round(30 * 15);
 			this->castGolemHealthXML = this->castGolemHealthXML * 3.5;
 		}
 		else if (Main::mainClass->saveBoxClass->getBoolValue("upgradeGolem4"))
 		{
-			this->intervalTimerGolemXML = this->intervalTimerGolemXML - std::round(30 * 10);
-			this->castGolemHealthXML = std::round(this->castGolemHealthXML * 2.75);
+			this->intervalTimerGolemXML = this->intervalTimerGolemXML - ::round(30 * 10);
+			this->castGolemHealthXML = ::round(this->castGolemHealthXML * 2.75);
 		}
 		else if (Main::mainClass->saveBoxClass->getBoolValue("upgradeGolem3"))
 		{
-			this->intervalTimerGolemXML = this->intervalTimerGolemXML - std::round(30 * 8);
-			this->castGolemHealthXML = std::round(this->castGolemHealthXML * 2);
+			this->intervalTimerGolemXML = this->intervalTimerGolemXML - ::round(30 * 8);
+			this->castGolemHealthXML = ::round(this->castGolemHealthXML * 2);
 		}
 		else if (Main::mainClass->saveBoxClass->getBoolValue("upgradeGolem2"))
 		{
-			this->intervalTimerGolemXML = this->intervalTimerGolemXML - std::round(30 * 5);
-			this->castGolemHealthXML = std::round(this->castGolemHealthXML * 1.6);
+			this->intervalTimerGolemXML = this->intervalTimerGolemXML - ::round(30 * 5);
+			this->castGolemHealthXML = ::round(this->castGolemHealthXML * 1.6);
 		}
 		else if (Main::mainClass->saveBoxClass->getBoolValue("upgradeGolem1"))
 		{
-			this->intervalTimerGolemXML = this->intervalTimerGolemXML - std::round(30 * 3);
-			this->castGolemHealthXML = std::round(this->castGolemHealthXML * 1.3);
+			this->intervalTimerGolemXML = this->intervalTimerGolemXML - ::round(30 * 3);
+			this->castGolemHealthXML = ::round(this->castGolemHealthXML * 1.3);
 		}
 		if (Main::mainClass->saveBoxClass->getBoolValue("upgradeIceman5"))//if (Main::mainClass->saveBoxClass.gameSave.data.upgradeIceman5)
 		{
-			this->intervalTimerIcemanXML = this->intervalTimerIcemanXML - std::round(30 * 10);
-			this->castIcemanLifeTimerXML = this->castIcemanLifeTimerXML + std::round(30 * 5);
-			this->castIcemanFreezTimerXML = this->castIcemanFreezTimerXML + std::round(30 * 3);
+			this->intervalTimerIcemanXML = this->intervalTimerIcemanXML - ::round(30 * 10);
+			this->castIcemanLifeTimerXML = this->castIcemanLifeTimerXML + ::round(30 * 5);
+			this->castIcemanFreezTimerXML = this->castIcemanFreezTimerXML + ::round(30 * 3);
 		}
 		else if (Main::mainClass->saveBoxClass->getBoolValue("upgradeIceman4"))//if (Main::mainClass->saveBoxClass.gameSave.data.upgradeIceman4)
 		{
-			this->intervalTimerIcemanXML = this->intervalTimerIcemanXML - std::round(30 * 7);
-			this->castIcemanLifeTimerXML = this->castIcemanLifeTimerXML + std::round(30 * 4);
-			this->castIcemanFreezTimerXML = this->castIcemanFreezTimerXML + std::round(30 * 2);
+			this->intervalTimerIcemanXML = this->intervalTimerIcemanXML - ::round(30 * 7);
+			this->castIcemanLifeTimerXML = this->castIcemanLifeTimerXML + ::round(30 * 4);
+			this->castIcemanFreezTimerXML = this->castIcemanFreezTimerXML + ::round(30 * 2);
 		}
 		else if (Main::mainClass->saveBoxClass->getBoolValue("upgradeIceman3"))//if (Main::mainClass->saveBoxClass.gameSave.data.upgradeIceman3)
 		{
-			this->intervalTimerIcemanXML = this->intervalTimerIcemanXML - std::round(30 * 5);
-			this->castIcemanLifeTimerXML = this->castIcemanLifeTimerXML + std::round(30 * 3);
-			this->castIcemanFreezTimerXML = this->castIcemanFreezTimerXML + std::round(30 * 0.5);
+			this->intervalTimerIcemanXML = this->intervalTimerIcemanXML - ::round(30 * 5);
+			this->castIcemanLifeTimerXML = this->castIcemanLifeTimerXML + ::round(30 * 3);
+			this->castIcemanFreezTimerXML = this->castIcemanFreezTimerXML + ::round(30 * 0.5);
 		}
 		else if (Main::mainClass->saveBoxClass->getBoolValue("upgradeIceman2"))//if (Main::mainClass->saveBoxClass.gameSave.data.upgradeIceman2)
 		{
-			this->intervalTimerIcemanXML = this->intervalTimerIcemanXML - std::round(30 * 3);
-			this->castIcemanLifeTimerXML = this->castIcemanLifeTimerXML + std::round(30 * 2);
-			this->castIcemanFreezTimerXML = this->castIcemanFreezTimerXML + std::round(30 * 0.5);
+			this->intervalTimerIcemanXML = this->intervalTimerIcemanXML - ::round(30 * 3);
+			this->castIcemanLifeTimerXML = this->castIcemanLifeTimerXML + ::round(30 * 2);
+			this->castIcemanFreezTimerXML = this->castIcemanFreezTimerXML + ::round(30 * 0.5);
 		}
 		else if (Main::mainClass->saveBoxClass->getBoolValue("upgradeIceman1"))//if (Main::mainClass->saveBoxClass.gameSave.data.upgradeIceman1)
 		{
-			this->intervalTimerIcemanXML = this->intervalTimerIcemanXML - std::round(30 * 1);
-			this->castIcemanLifeTimerXML = this->castIcemanLifeTimerXML + std::round(30 * 1);
-			this->castIcemanFreezTimerXML = this->castIcemanFreezTimerXML + std::round(30 * 0);
+			this->intervalTimerIcemanXML = this->intervalTimerIcemanXML - ::round(30 * 1);
+			this->castIcemanLifeTimerXML = this->castIcemanLifeTimerXML + ::round(30 * 1);
+			this->castIcemanFreezTimerXML = this->castIcemanFreezTimerXML + ::round(30 * 0);
 		}
 		if (Main::mainClass->saveBoxClass->getBoolValue("upgradeAir5"))//if (Main::mainClass->saveBoxClass.gameSave.data.upgradeAir5)
 		{
-			this->intervalTimerAirXML = this->intervalTimerAirXML - std::round(30 * 15);
-			this->airLifeSecXML = this->airLifeSecXML + std::round(30 * 6);
+			this->intervalTimerAirXML = this->intervalTimerAirXML - ::round(30 * 15);
+			this->airLifeSecXML = this->airLifeSecXML + ::round(30 * 6);
 			this->airPowerXML = this->airPowerXML + 8;
 			this->airSpacingXML = this->airSpacingXML + 50;
-			this->airWaitTimerXML = this->airWaitTimerXML + std::round(30 * 2);
+			this->airWaitTimerXML = this->airWaitTimerXML + ::round(30 * 2);
 		}
 		else if (Main::mainClass->saveBoxClass->getBoolValue("upgradeAir4"))//if (Main::mainClass->saveBoxClass.gameSave.data.upgradeAir4)
 		{
-			this->intervalTimerAirXML = this->intervalTimerAirXML - std::round(30 * 10);
-			this->airLifeSecXML = this->airLifeSecXML + std::round(30 * 4);
+			this->intervalTimerAirXML = this->intervalTimerAirXML - ::round(30 * 10);
+			this->airLifeSecXML = this->airLifeSecXML + ::round(30 * 4);
 			this->airPowerXML = this->airPowerXML + 4;
 			this->airSpacingXML = this->airSpacingXML + 25;
-			this->airWaitTimerXML = this->airWaitTimerXML + std::round(30 * 1);
+			this->airWaitTimerXML = this->airWaitTimerXML + ::round(30 * 1);
 		}
 		else if (Main::mainClass->saveBoxClass->getBoolValue("upgradeAir3"))//if (Main::mainClass->saveBoxClass->gameSave.data.upgradeAir3)
 		{
-			this->intervalTimerAirXML = this->intervalTimerAirXML - std::round(30 * 7);
-			this->airLifeSecXML = this->airLifeSecXML + std::round(30 * 3);
+			this->intervalTimerAirXML = this->intervalTimerAirXML - ::round(30 * 7);
+			this->airLifeSecXML = this->airLifeSecXML + ::round(30 * 3);
 			this->airPowerXML = this->airPowerXML + 3;
 			this->airSpacingXML = this->airSpacingXML + 15;
-			this->airWaitTimerXML = this->airWaitTimerXML + std::round(30 * 1);
+			this->airWaitTimerXML = this->airWaitTimerXML + ::round(30 * 1);
 		}
 		else if (Main::mainClass->saveBoxClass->getBoolValue("upgradeAir2"))//if (Main::mainClass->saveBoxClass->gameSave.data.upgradeAir2)
 		{
-			this->intervalTimerAirXML = this->intervalTimerAirXML - std::round(30 * 4);
-			this->airLifeSecXML = this->airLifeSecXML + std::round(30 * 2);
+			this->intervalTimerAirXML = this->intervalTimerAirXML - ::round(30 * 4);
+			this->airLifeSecXML = this->airLifeSecXML + ::round(30 * 2);
 			this->airPowerXML = this->airPowerXML + 2;
 			this->airSpacingXML = this->airSpacingXML + 10;
-			this->airWaitTimerXML = this->airWaitTimerXML + std::round(30 * 0.5);
+			this->airWaitTimerXML = this->airWaitTimerXML + ::round(30 * 0.5);
 		}
 		else if (Main::mainClass->saveBoxClass->getBoolValue("upgradeAir1"))//if (Main::mainClass->saveBoxClass->gameSave.data.upgradeAir1)
 		{
-			this->intervalTimerAirXML = this->intervalTimerAirXML - std::round(30 * 2);
-			this->airLifeSecXML = this->airLifeSecXML + std::round(30 * 1);
+			this->intervalTimerAirXML = this->intervalTimerAirXML - ::round(30 * 2);
+			this->airLifeSecXML = this->airLifeSecXML + ::round(30 * 1);
 			this->airPowerXML++;
 			this->airSpacingXML = this->airSpacingXML + 5;
-			this->airWaitTimerXML = this->airWaitTimerXML + std::round(30 * 0);
+			this->airWaitTimerXML = this->airWaitTimerXML + ::round(30 * 0);
 		}
 		if (Main::mainClass->saveBoxClass->getBoolValue("upgradeFire5"))//if (Main::mainClass->saveBoxClass->gameSave.data.upgradeFire5)
 		{
 			this->fireSellTax = this->fireSellTax + 0.1;
-			this->fireTowerIntervalXML = this->fireTowerIntervalXML - std::round(30 * 0.2);
-			this->listOfMoveFireXML[0] = std::round(this->listOfMoveFireXML[0] * 1.1);
-			this->listOfMoveFireXML[1] = std::round(this->listOfMoveFireXML[1] * 1.32);
-			this->listOfMoveFireXML[2] = std::round(this->listOfMoveFireXML[2] * 1.32);
-			this->listOfMoveFireXML[3] = std::round(this->listOfMoveFireXML[3] * 1.32);
-			this->listOfMoveFireXML[4] = std::round(this->listOfMoveFireXML[4] * 1.32);
+			this->fireTowerIntervalXML = this->fireTowerIntervalXML - ::round(30 * 0.2);
+			this->listOfMoveFireXML[0] = ::round(this->listOfMoveFireXML[0] * 1.1);
+			this->listOfMoveFireXML[1] = ::round(this->listOfMoveFireXML[1] * 1.32);
+			this->listOfMoveFireXML[2] = ::round(this->listOfMoveFireXML[2] * 1.32);
+			this->listOfMoveFireXML[3] = ::round(this->listOfMoveFireXML[3] * 1.32);
+			this->listOfMoveFireXML[4] = ::round(this->listOfMoveFireXML[4] * 1.32);
 			this->i = 0;
 			while (this->i < this->listOfFirePriceXML.size())
 			{
-				this->listOfFirePriceXML[this->i] = std::round(this->listOfFirePriceXML[this->i] * 0.75);
+				this->listOfFirePriceXML[this->i] = ::round(this->listOfFirePriceXML[this->i] * 0.75);
 				i++;
 			}
 			this->listOfFireTowerDamageXML[0] = this->listOfFireTowerDamageXML[0] * 1.32;
@@ -650,16 +650,16 @@ namespace engine
 		else if (Main::mainClass->saveBoxClass->getBoolValue("upgradeFire4"))//if (Main::mainClass->saveBoxClass->gameSave.data.upgradeFire4)
 		{
 			this->fireSellTax = this->fireSellTax + 0.1;
-			this->fireTowerIntervalXML = this->fireTowerIntervalXML - std::round(30 * 0.2);
-			this->listOfMoveFireXML[0] = std::round(this->listOfMoveFireXML[0] * 1.1);
-			this->listOfMoveFireXML[1] = std::round(this->listOfMoveFireXML[1] * 1.22);
-			this->listOfMoveFireXML[2] = std::round(this->listOfMoveFireXML[2] * 1.22);
-			this->listOfMoveFireXML[3] = std::round(this->listOfMoveFireXML[3] * 1.22);
-			this->listOfMoveFireXML[4] = std::round(this->listOfMoveFireXML[4] * 1.22);
+			this->fireTowerIntervalXML = this->fireTowerIntervalXML - ::round(30 * 0.2);
+			this->listOfMoveFireXML[0] = ::round(this->listOfMoveFireXML[0] * 1.1);
+			this->listOfMoveFireXML[1] = ::round(this->listOfMoveFireXML[1] * 1.22);
+			this->listOfMoveFireXML[2] = ::round(this->listOfMoveFireXML[2] * 1.22);
+			this->listOfMoveFireXML[3] = ::round(this->listOfMoveFireXML[3] * 1.22);
+			this->listOfMoveFireXML[4] = ::round(this->listOfMoveFireXML[4] * 1.22);
 			this->i = 0;
 			while (this->i < this->listOfFirePriceXML.size())
 			{
-				this->listOfFirePriceXML[this->i] = std::round(this->listOfFirePriceXML[this->i] * 0.85);
+				this->listOfFirePriceXML[this->i] = ::round(this->listOfFirePriceXML[this->i] * 0.85);
 				i++;
 			}
 			this->listOfFireTowerDamageXML[0] = this->listOfFireTowerDamageXML[0] * 1.22;
@@ -670,16 +670,16 @@ namespace engine
 		else if (Main::mainClass->saveBoxClass->getBoolValue("upgradeFire3"))//if (Main::mainClass->saveBoxClass->gameSave.data.upgradeFire3)
 		{
 			this->fireSellTax = this->fireSellTax + 0.1;
-			this->fireTowerIntervalXML = this->fireTowerIntervalXML - std::round(30 * 0.2);
-			this->listOfMoveFireXML[0] = std::round(this->listOfMoveFireXML[0] * 1.05);
-			this->listOfMoveFireXML[1] = std::round(this->listOfMoveFireXML[1] * 1.15);
-			this->listOfMoveFireXML[2] = std::round(this->listOfMoveFireXML[2] * 1.15);
-			this->listOfMoveFireXML[3] = std::round(this->listOfMoveFireXML[3] * 1.15);
-			this->listOfMoveFireXML[4] = std::round(this->listOfMoveFireXML[4] * 1.15);
+			this->fireTowerIntervalXML = this->fireTowerIntervalXML - ::round(30 * 0.2);
+			this->listOfMoveFireXML[0] = ::round(this->listOfMoveFireXML[0] * 1.05);
+			this->listOfMoveFireXML[1] = ::round(this->listOfMoveFireXML[1] * 1.15);
+			this->listOfMoveFireXML[2] = ::round(this->listOfMoveFireXML[2] * 1.15);
+			this->listOfMoveFireXML[3] = ::round(this->listOfMoveFireXML[3] * 1.15);
+			this->listOfMoveFireXML[4] = ::round(this->listOfMoveFireXML[4] * 1.15);
 			this->i = 0;
 			while (this->i < this->listOfFirePriceXML.size())
 			{
-				this->listOfFirePriceXML[this->i] = std::round(this->listOfFirePriceXML[this->i] * 0.85);
+				this->listOfFirePriceXML[this->i] = ::round(this->listOfFirePriceXML[this->i] * 0.85);
 				i++;
 			}
 			this->listOfFireTowerDamageXML[0] = this->listOfFireTowerDamageXML[0] * 1.15;
@@ -690,16 +690,16 @@ namespace engine
 		else if (Main::mainClass->saveBoxClass->getBoolValue("upgradeFire2"))//if (Main::mainClass->saveBoxClass->gameSave.data.upgradeFire2)
 		{
 			this->fireSellTax = this->fireSellTax + 0.1;
-			this->fireTowerIntervalXML = this->fireTowerIntervalXML - std::round(30 * 0.2);
-			this->listOfMoveFireXML[0] = std::round(this->listOfMoveFireXML[0] * 1.05);
-			this->listOfMoveFireXML[1] = std::round(this->listOfMoveFireXML[1] * 1.1);
-			this->listOfMoveFireXML[2] = std::round(this->listOfMoveFireXML[2] * 1.1);
-			this->listOfMoveFireXML[3] = std::round(this->listOfMoveFireXML[3] * 1.1);
-			this->listOfMoveFireXML[4] = std::round(this->listOfMoveFireXML[4] * 1.1);
+			this->fireTowerIntervalXML = this->fireTowerIntervalXML - ::round(30 * 0.2);
+			this->listOfMoveFireXML[0] = ::round(this->listOfMoveFireXML[0] * 1.05);
+			this->listOfMoveFireXML[1] = ::round(this->listOfMoveFireXML[1] * 1.1);
+			this->listOfMoveFireXML[2] = ::round(this->listOfMoveFireXML[2] * 1.1);
+			this->listOfMoveFireXML[3] = ::round(this->listOfMoveFireXML[3] * 1.1);
+			this->listOfMoveFireXML[4] = ::round(this->listOfMoveFireXML[4] * 1.1);
 			this->i = 0;
 			while (this->i < this->listOfFirePriceXML.size())
 			{
-				this->listOfFirePriceXML[this->i] = std::round(this->listOfFirePriceXML[this->i] * 0.95);
+				this->listOfFirePriceXML[this->i] = ::round(this->listOfFirePriceXML[this->i] * 0.95);
 				i++;
 			}
 			this->listOfFireTowerDamageXML[0] = this->listOfFireTowerDamageXML[0] * 1.1;
@@ -710,17 +710,17 @@ namespace engine
 		else if (Main::mainClass->saveBoxClass->getBoolValue("upgradeFire1"))//if (Main::mainClass->saveBoxClass->gameSave.data.upgradeFire1)
 		{
 			this->fireSellTax = this->fireSellTax + 0.1;
-			this->fireTowerIntervalXML = this->fireTowerIntervalXML - std::round(30 * 0);
-			this->listOfMoveFireXML[0] = std::round(this->listOfMoveFireXML[0] * 1.05);
-			this->listOfMoveFireXML[1] = std::round(this->listOfMoveFireXML[1] * 1.05);
-			this->listOfMoveFireXML[2] = std::round(this->listOfMoveFireXML[2] * 1.05);
-			this->listOfMoveFireXML[3] = std::round(this->listOfMoveFireXML[3] * 1.05);
-			this->listOfMoveFireXML[4] = std::round(this->listOfMoveFireXML[4] * 1.05);
+			this->fireTowerIntervalXML = this->fireTowerIntervalXML - ::round(30 * 0);
+			this->listOfMoveFireXML[0] = ::round(this->listOfMoveFireXML[0] * 1.05);
+			this->listOfMoveFireXML[1] = ::round(this->listOfMoveFireXML[1] * 1.05);
+			this->listOfMoveFireXML[2] = ::round(this->listOfMoveFireXML[2] * 1.05);
+			this->listOfMoveFireXML[3] = ::round(this->listOfMoveFireXML[3] * 1.05);
+			this->listOfMoveFireXML[4] = ::round(this->listOfMoveFireXML[4] * 1.05);
 			this->i = 0;
 			while (this->i < this->listOfFirePriceXML.size())
 			{
 
-				this->listOfFirePriceXML[this->i] = std::round(this->listOfFirePriceXML[this->i] * 0.95);
+				this->listOfFirePriceXML[this->i] = ::round(this->listOfFirePriceXML[this->i] * 0.95);
 				i++;
 			}
 			this->listOfFireTowerDamageXML[0] = this->listOfFireTowerDamageXML[0] * 1.05;
@@ -735,16 +735,16 @@ namespace engine
 			this->iceEffectSlowdown2XML = this->iceEffectSlowdown2XML * 1.1;
 			this->iceEffectSlowdown3XML = this->iceEffectSlowdown3XML * 1.1;
 			this->iceEffectSlowdown4XML = this->iceEffectSlowdown4XML * 1.1;
-			this->iceTowerIntervalXML = this->iceTowerIntervalXML - std::round(30 * 0.2);
-			this->listOfMoveIceXML[0] = std::round(this->listOfMoveIceXML[0] * 1.1);
-			this->listOfMoveIceXML[1] = std::round(this->listOfMoveIceXML[1] * 1.32);
-			this->listOfMoveIceXML[2] = std::round(this->listOfMoveIceXML[2] * 1.32);
-			this->listOfMoveIceXML[3] = std::round(this->listOfMoveIceXML[3] * 1.32);
-			this->listOfMoveIceXML[4] = std::round(this->listOfMoveIceXML[4] * 1.32);
+			this->iceTowerIntervalXML = this->iceTowerIntervalXML - ::round(30 * 0.2);
+			this->listOfMoveIceXML[0] = ::round(this->listOfMoveIceXML[0] * 1.1);
+			this->listOfMoveIceXML[1] = ::round(this->listOfMoveIceXML[1] * 1.32);
+			this->listOfMoveIceXML[2] = ::round(this->listOfMoveIceXML[2] * 1.32);
+			this->listOfMoveIceXML[3] = ::round(this->listOfMoveIceXML[3] * 1.32);
+			this->listOfMoveIceXML[4] = ::round(this->listOfMoveIceXML[4] * 1.32);
 			this->i = 0;
 			while (this->i < this->listOfIcePriceXML.size())
 			{
-				this->listOfIcePriceXML[this->i] = std::round(this->listOfIcePriceXML[this->i] * 0.75);
+				this->listOfIcePriceXML[this->i] = ::round(this->listOfIcePriceXML[this->i] * 0.75);
 				i++;
 			}
 			this->listOfIceTowerDamageXML[0] = this->listOfIceTowerDamageXML[0] * 1.32;
@@ -759,16 +759,16 @@ namespace engine
 			this->iceEffectSlowdown2XML = this->iceEffectSlowdown2XML * 1.05;
 			this->iceEffectSlowdown3XML = this->iceEffectSlowdown3XML * 1.05;
 			this->iceEffectSlowdown4XML = this->iceEffectSlowdown4XML * 1.05;
-			this->iceTowerIntervalXML = this->iceTowerIntervalXML - std::round(30 * 0.2);
-			this->listOfMoveIceXML[0] = std::round(this->listOfMoveIceXML[0] * 1.1);
-			this->listOfMoveIceXML[1] = std::round(this->listOfMoveIceXML[1] * 1.22);
-			this->listOfMoveIceXML[2] = std::round(this->listOfMoveIceXML[2] * 1.22);
-			this->listOfMoveIceXML[3] = std::round(this->listOfMoveIceXML[3] * 1.22);
-			this->listOfMoveIceXML[4] = std::round(this->listOfMoveIceXML[4] * 1.22);
+			this->iceTowerIntervalXML = this->iceTowerIntervalXML - ::round(30 * 0.2);
+			this->listOfMoveIceXML[0] = ::round(this->listOfMoveIceXML[0] * 1.1);
+			this->listOfMoveIceXML[1] = ::round(this->listOfMoveIceXML[1] * 1.22);
+			this->listOfMoveIceXML[2] = ::round(this->listOfMoveIceXML[2] * 1.22);
+			this->listOfMoveIceXML[3] = ::round(this->listOfMoveIceXML[3] * 1.22);
+			this->listOfMoveIceXML[4] = ::round(this->listOfMoveIceXML[4] * 1.22);
 			this->i = 0;
 			while (this->i < this->listOfIcePriceXML.size())
 			{
-				this->listOfIcePriceXML[this->i] = std::round(this->listOfIcePriceXML[this->i] * 0.85);
+				this->listOfIcePriceXML[this->i] = ::round(this->listOfIcePriceXML[this->i] * 0.85);
 				i++;
 			}
 			this->listOfIceTowerDamageXML[0] = this->listOfIceTowerDamageXML[0] * 1.22;
@@ -783,16 +783,16 @@ namespace engine
 			this->iceEffectSlowdown2XML = this->iceEffectSlowdown2XML * 1.05;
 			this->iceEffectSlowdown3XML = this->iceEffectSlowdown3XML * 1.05;
 			this->iceEffectSlowdown4XML = this->iceEffectSlowdown4XML * 1.05;
-			this->iceTowerIntervalXML = this->iceTowerIntervalXML - std::round(30 * 0.2);
-			this->listOfMoveIceXML[0] = std::round(this->listOfMoveIceXML[0] * 1.05);
-			this->listOfMoveIceXML[1] = std::round(this->listOfMoveIceXML[1] * 1.15);
-			this->listOfMoveIceXML[2] = std::round(this->listOfMoveIceXML[2] * 1.15);
-			this->listOfMoveIceXML[3] = std::round(this->listOfMoveIceXML[3] * 1.15);
-			this->listOfMoveIceXML[4] = std::round(this->listOfMoveIceXML[4] * 1.15);
+			this->iceTowerIntervalXML = this->iceTowerIntervalXML - ::round(30 * 0.2);
+			this->listOfMoveIceXML[0] = ::round(this->listOfMoveIceXML[0] * 1.05);
+			this->listOfMoveIceXML[1] = ::round(this->listOfMoveIceXML[1] * 1.15);
+			this->listOfMoveIceXML[2] = ::round(this->listOfMoveIceXML[2] * 1.15);
+			this->listOfMoveIceXML[3] = ::round(this->listOfMoveIceXML[3] * 1.15);
+			this->listOfMoveIceXML[4] = ::round(this->listOfMoveIceXML[4] * 1.15);
 			this->i = 0;
 			while (this->i < this->listOfIcePriceXML.size())
 			{ 
-				this->listOfIcePriceXML[this->i] = std::round(this->listOfIcePriceXML[this->i] * 0.95);
+				this->listOfIcePriceXML[this->i] = ::round(this->listOfIcePriceXML[this->i] * 0.95);
 				i++;
 			}
 			this->listOfIceTowerDamageXML[0] = this->listOfIceTowerDamageXML[0] * 1.15;
@@ -807,16 +807,16 @@ namespace engine
 			this->iceEffectSlowdown2XML = this->iceEffectSlowdown2XML * 1.05;
 			this->iceEffectSlowdown3XML = this->iceEffectSlowdown3XML * 1.05;
 			this->iceEffectSlowdown4XML = this->iceEffectSlowdown4XML * 1.05;
-			this->iceTowerIntervalXML = this->iceTowerIntervalXML - std::round(30 * 0);
-			this->listOfMoveIceXML[0] = std::round(this->listOfMoveIceXML[0] * 1.05);
-			this->listOfMoveIceXML[1] = std::round(this->listOfMoveIceXML[1] * 1.1);
-			this->listOfMoveIceXML[2] = std::round(this->listOfMoveIceXML[2] * 1.1);
-			this->listOfMoveIceXML[3] = std::round(this->listOfMoveIceXML[3] * 1.1);
-			this->listOfMoveIceXML[4] = std::round(this->listOfMoveIceXML[4] * 1.1);
+			this->iceTowerIntervalXML = this->iceTowerIntervalXML - ::round(30 * 0);
+			this->listOfMoveIceXML[0] = ::round(this->listOfMoveIceXML[0] * 1.05);
+			this->listOfMoveIceXML[1] = ::round(this->listOfMoveIceXML[1] * 1.1);
+			this->listOfMoveIceXML[2] = ::round(this->listOfMoveIceXML[2] * 1.1);
+			this->listOfMoveIceXML[3] = ::round(this->listOfMoveIceXML[3] * 1.1);
+			this->listOfMoveIceXML[4] = ::round(this->listOfMoveIceXML[4] * 1.1);
 			this->i = 0;
 			while (this->i < this->listOfIcePriceXML.size())
 			{ 
-				this->listOfIcePriceXML[this->i] = std::round(this->listOfIcePriceXML[this->i] * 0.95);
+				this->listOfIcePriceXML[this->i] = ::round(this->listOfIcePriceXML[this->i] * 0.95);
 				i++;
 			}
 			this->listOfIceTowerDamageXML[0] = this->listOfIceTowerDamageXML[0] * 1.1;
@@ -831,16 +831,16 @@ namespace engine
 			this->iceEffectSlowdown2XML = this->iceEffectSlowdown2XML * 1;
 			this->iceEffectSlowdown3XML = this->iceEffectSlowdown3XML * 1;
 			this->iceEffectSlowdown4XML = this->iceEffectSlowdown4XML * 1;
-			this->iceTowerIntervalXML = this->iceTowerIntervalXML - std::round(30 * 0);
-			this->listOfMoveIceXML[0] = std::round(this->listOfMoveIceXML[0] * 1.05);
-			this->listOfMoveIceXML[1] = std::round(this->listOfMoveIceXML[1] * 1.05);
-			this->listOfMoveIceXML[2] = std::round(this->listOfMoveIceXML[2] * 1.05);
-			this->listOfMoveIceXML[3] = std::round(this->listOfMoveIceXML[3] * 1.05);
-			this->listOfMoveIceXML[4] = std::round(this->listOfMoveIceXML[4] * 1.05);
+			this->iceTowerIntervalXML = this->iceTowerIntervalXML - ::round(30 * 0);
+			this->listOfMoveIceXML[0] = ::round(this->listOfMoveIceXML[0] * 1.05);
+			this->listOfMoveIceXML[1] = ::round(this->listOfMoveIceXML[1] * 1.05);
+			this->listOfMoveIceXML[2] = ::round(this->listOfMoveIceXML[2] * 1.05);
+			this->listOfMoveIceXML[3] = ::round(this->listOfMoveIceXML[3] * 1.05);
+			this->listOfMoveIceXML[4] = ::round(this->listOfMoveIceXML[4] * 1.05);
 			this->i = 0;
 			while (this->i < this->listOfIcePriceXML.size())
 			{ 
-				this->listOfIcePriceXML[this->i] = std::round(this->listOfIcePriceXML[this->i] * 1);
+				this->listOfIcePriceXML[this->i] = ::round(this->listOfIcePriceXML[this->i] * 1);
 				i++;
 			}
 			this->listOfIceTowerDamageXML[0] = this->listOfIceTowerDamageXML[0] * 1.05;
@@ -850,18 +850,18 @@ namespace engine
 		}
 		if (Main::mainClass->saveBoxClass->getBoolValue("upgradeStone5"))//if (Main::mainClass->saveBoxClass->gameSave.data.upgradeStone5)
 		{
-			this->stoneTowerIntervalXML = this->stoneTowerIntervalXML - std::round(30 * 0.2);
+			this->stoneTowerIntervalXML = this->stoneTowerIntervalXML - ::round(30 * 0.2);
 			this->stoneSellTax = this->stoneSellTax + 0.1;
-			this->stoneEffectRadiusXML = std::round(this->stoneEffectRadiusXML * 1.1);
-			this->listOfMoveStoneXML[0] = std::round(this->listOfMoveStoneXML[0] * 1.1);
-			this->listOfMoveStoneXML[1] = std::round(this->listOfMoveStoneXML[1] * 1.32);
-			this->listOfMoveStoneXML[2] = std::round(this->listOfMoveStoneXML[2] * 1.32);
-			this->listOfMoveStoneXML[3] = std::round(this->listOfMoveStoneXML[3] * 1.32);
-			this->listOfMoveStoneXML[4] = std::round(this->listOfMoveStoneXML[4] * 1.32);
+			this->stoneEffectRadiusXML = ::round(this->stoneEffectRadiusXML * 1.1);
+			this->listOfMoveStoneXML[0] = ::round(this->listOfMoveStoneXML[0] * 1.1);
+			this->listOfMoveStoneXML[1] = ::round(this->listOfMoveStoneXML[1] * 1.32);
+			this->listOfMoveStoneXML[2] = ::round(this->listOfMoveStoneXML[2] * 1.32);
+			this->listOfMoveStoneXML[3] = ::round(this->listOfMoveStoneXML[3] * 1.32);
+			this->listOfMoveStoneXML[4] = ::round(this->listOfMoveStoneXML[4] * 1.32);
 			this->i = 0;
 			while (this->i < this->listOfStonePriceXML.size())
 			{ 
-				this->listOfStonePriceXML[this->i] = std::round(this->listOfStonePriceXML[this->i] * 0.75);
+				this->listOfStonePriceXML[this->i] = ::round(this->listOfStonePriceXML[this->i] * 0.75);
 				i++;
 			}
 			this->listOfStoneTowerDamageXML[0] = this->listOfStoneTowerDamageXML[0] * 1.32;
@@ -871,18 +871,18 @@ namespace engine
 		}
 		else if (Main::mainClass->saveBoxClass->getBoolValue("upgradeStone4"))//if (Main::mainClass->saveBoxClass->gameSave.data.upgradeStone4)
 		{
-			this->stoneTowerIntervalXML = this->stoneTowerIntervalXML - std::round(30 * 0.2);
+			this->stoneTowerIntervalXML = this->stoneTowerIntervalXML - ::round(30 * 0.2);
 			this->stoneSellTax = this->stoneSellTax + 0.1;
-			this->stoneEffectRadiusXML = std::round(this->stoneEffectRadiusXML * 1.05);
-			this->listOfMoveStoneXML[0] = std::round(this->listOfMoveStoneXML[0] * 1.1);
-			this->listOfMoveStoneXML[1] = std::round(this->listOfMoveStoneXML[1] * 1.22);
-			this->listOfMoveStoneXML[2] = std::round(this->listOfMoveStoneXML[2] * 1.22);
-			this->listOfMoveStoneXML[3] = std::round(this->listOfMoveStoneXML[3] * 1.22);
-			this->listOfMoveStoneXML[4] = std::round(this->listOfMoveStoneXML[4] * 1.22);
+			this->stoneEffectRadiusXML = ::round(this->stoneEffectRadiusXML * 1.05);
+			this->listOfMoveStoneXML[0] = ::round(this->listOfMoveStoneXML[0] * 1.1);
+			this->listOfMoveStoneXML[1] = ::round(this->listOfMoveStoneXML[1] * 1.22);
+			this->listOfMoveStoneXML[2] = ::round(this->listOfMoveStoneXML[2] * 1.22);
+			this->listOfMoveStoneXML[3] = ::round(this->listOfMoveStoneXML[3] * 1.22);
+			this->listOfMoveStoneXML[4] = ::round(this->listOfMoveStoneXML[4] * 1.22);
 			this->i = 0;
 			while (this->i < this->listOfStonePriceXML.size())
 			{ 
-				this->listOfStonePriceXML[this->i] = std::round(this->listOfStonePriceXML[this->i] * 0.85);
+				this->listOfStonePriceXML[this->i] = ::round(this->listOfStonePriceXML[this->i] * 0.85);
 				i++;
 			}
 			this->listOfStoneTowerDamageXML[0] = this->listOfStoneTowerDamageXML[0] * 1.22;
@@ -892,18 +892,18 @@ namespace engine
 		}
 		else if (Main::mainClass->saveBoxClass->getBoolValue("upgradeStone3"))//if (Main::mainClass->saveBoxClass->gameSave.data.upgradeStone3)
 		{
-			this->stoneTowerIntervalXML = this->stoneTowerIntervalXML - std::round(30 * 0.2);
+			this->stoneTowerIntervalXML = this->stoneTowerIntervalXML - ::round(30 * 0.2);
 			this->stoneSellTax = this->stoneSellTax + 0.1;
-			this->stoneEffectRadiusXML = std::round(this->stoneEffectRadiusXML * 1.05);
-			this->listOfMoveStoneXML[0] = std::round(this->listOfMoveStoneXML[0] * 1.05);
-			this->listOfMoveStoneXML[1] = std::round(this->listOfMoveStoneXML[1] * 1.15);
-			this->listOfMoveStoneXML[2] = std::round(this->listOfMoveStoneXML[2] * 1.15);
-			this->listOfMoveStoneXML[3] = std::round(this->listOfMoveStoneXML[3] * 1.15);
-			this->listOfMoveStoneXML[4] = std::round(this->listOfMoveStoneXML[4] * 1.15);
+			this->stoneEffectRadiusXML = ::round(this->stoneEffectRadiusXML * 1.05);
+			this->listOfMoveStoneXML[0] = ::round(this->listOfMoveStoneXML[0] * 1.05);
+			this->listOfMoveStoneXML[1] = ::round(this->listOfMoveStoneXML[1] * 1.15);
+			this->listOfMoveStoneXML[2] = ::round(this->listOfMoveStoneXML[2] * 1.15);
+			this->listOfMoveStoneXML[3] = ::round(this->listOfMoveStoneXML[3] * 1.15);
+			this->listOfMoveStoneXML[4] = ::round(this->listOfMoveStoneXML[4] * 1.15);
 			this->i = 0;
 			while (this->i < this->listOfStonePriceXML.size())
 			{ 
-				this->listOfStonePriceXML[this->i] = std::round(this->listOfStonePriceXML[this->i] * 0.95);
+				this->listOfStonePriceXML[this->i] = ::round(this->listOfStonePriceXML[this->i] * 0.95);
 				i++;
 			}
 			this->listOfStoneTowerDamageXML[0] = this->listOfStoneTowerDamageXML[0] * 1.15;
@@ -913,18 +913,18 @@ namespace engine
 		}
 		else if (Main::mainClass->saveBoxClass->getBoolValue("upgradeStone2"))//if (Main::mainClass->saveBoxClass->gameSave.data.upgradeStone2)
 		{
-			this->stoneTowerIntervalXML = this->stoneTowerIntervalXML - std::round(30 * 0.2);
+			this->stoneTowerIntervalXML = this->stoneTowerIntervalXML - ::round(30 * 0.2);
 			this->stoneSellTax = this->stoneSellTax + 0.1;
-			this->stoneEffectRadiusXML = std::round(this->stoneEffectRadiusXML * 1.05);
-			this->listOfMoveStoneXML[0] = std::round(this->listOfMoveStoneXML[0] * 1.05);
-			this->listOfMoveStoneXML[1] = std::round(this->listOfMoveStoneXML[1] * 1.1);
-			this->listOfMoveStoneXML[2] = std::round(this->listOfMoveStoneXML[2] * 1.1);
-			this->listOfMoveStoneXML[3] = std::round(this->listOfMoveStoneXML[3] * 1.1);
-			this->listOfMoveStoneXML[4] = std::round(this->listOfMoveStoneXML[4] * 1.1);
+			this->stoneEffectRadiusXML = ::round(this->stoneEffectRadiusXML * 1.05);
+			this->listOfMoveStoneXML[0] = ::round(this->listOfMoveStoneXML[0] * 1.05);
+			this->listOfMoveStoneXML[1] = ::round(this->listOfMoveStoneXML[1] * 1.1);
+			this->listOfMoveStoneXML[2] = ::round(this->listOfMoveStoneXML[2] * 1.1);
+			this->listOfMoveStoneXML[3] = ::round(this->listOfMoveStoneXML[3] * 1.1);
+			this->listOfMoveStoneXML[4] = ::round(this->listOfMoveStoneXML[4] * 1.1);
 			this->i = 0;
 			while (this->i < this->listOfStonePriceXML.size())
 			{ 
-				this->listOfStonePriceXML[this->i] = std::round(this->listOfStonePriceXML[this->i] * 1);
+				this->listOfStonePriceXML[this->i] = ::round(this->listOfStonePriceXML[this->i] * 1);
 				i++;
 			}
 			this->listOfStoneTowerDamageXML[0] = this->listOfStoneTowerDamageXML[0] * 1.1;
@@ -934,18 +934,18 @@ namespace engine
 		}
 		else if (Main::mainClass->saveBoxClass->getBoolValue("upgradeStone1"))//if (Main::mainClass->saveBoxClass->gameSave.data.upgradeStone1)
 		{
-			this->stoneTowerIntervalXML = this->stoneTowerIntervalXML - std::round(30 * 0.2);
+			this->stoneTowerIntervalXML = this->stoneTowerIntervalXML - ::round(30 * 0.2);
 			this->stoneSellTax = this->stoneSellTax + 0;
-			this->stoneEffectRadiusXML = std::round(this->stoneEffectRadiusXML * 1);
-			this->listOfMoveStoneXML[0] = std::round(this->listOfMoveStoneXML[0] * 1);
-			this->listOfMoveStoneXML[1] = std::round(this->listOfMoveStoneXML[1] * 1.05);
-			this->listOfMoveStoneXML[2] = std::round(this->listOfMoveStoneXML[2] * 1.05);
-			this->listOfMoveStoneXML[3] = std::round(this->listOfMoveStoneXML[3] * 1.05);
-			this->listOfMoveStoneXML[4] = std::round(this->listOfMoveStoneXML[4] * 1.05);
+			this->stoneEffectRadiusXML = ::round(this->stoneEffectRadiusXML * 1);
+			this->listOfMoveStoneXML[0] = ::round(this->listOfMoveStoneXML[0] * 1);
+			this->listOfMoveStoneXML[1] = ::round(this->listOfMoveStoneXML[1] * 1.05);
+			this->listOfMoveStoneXML[2] = ::round(this->listOfMoveStoneXML[2] * 1.05);
+			this->listOfMoveStoneXML[3] = ::round(this->listOfMoveStoneXML[3] * 1.05);
+			this->listOfMoveStoneXML[4] = ::round(this->listOfMoveStoneXML[4] * 1.05);
 			this->i = 0;
 			while (this->i < this->listOfStonePriceXML.size())
 			{ 
-				this->listOfStonePriceXML[this->i] = std::round(this->listOfStonePriceXML[this->i] * 1);
+				this->listOfStonePriceXML[this->i] = ::round(this->listOfStonePriceXML[this->i] * 1);
 				i++;
 			}
 			this->listOfStoneTowerDamageXML[0] = this->listOfStoneTowerDamageXML[0] * 1.05;
@@ -957,20 +957,20 @@ namespace engine
 		{
 			this->levinSellTax = this->levinSellTax + 0.1;
 			this->levinCountPlus = this->levinCountPlus + 2;
-			this->levinTowerIntervalXML = this->levinTowerIntervalXML - std::round(30 * 0.2);
-			this->listOfMoveLevinXML[0] = std::round(this->listOfMoveLevinXML[0] * 1.1);
-			this->listOfMoveLevinXML[1] = std::round(this->listOfMoveLevinXML[1] * 1.32);
-			this->listOfMoveLevinXML[2] = std::round(this->listOfMoveLevinXML[2] * 1.32);
-			this->listOfMoveLevinXML[3] = std::round(this->listOfMoveLevinXML[3] * 1.32);
-			this->listOfMoveLevinXML[4] = std::round(this->listOfMoveLevinXML[4] * 1.32);
+			this->levinTowerIntervalXML = this->levinTowerIntervalXML - ::round(30 * 0.2);
+			this->listOfMoveLevinXML[0] = ::round(this->listOfMoveLevinXML[0] * 1.1);
+			this->listOfMoveLevinXML[1] = ::round(this->listOfMoveLevinXML[1] * 1.32);
+			this->listOfMoveLevinXML[2] = ::round(this->listOfMoveLevinXML[2] * 1.32);
+			this->listOfMoveLevinXML[3] = ::round(this->listOfMoveLevinXML[3] * 1.32);
+			this->listOfMoveLevinXML[4] = ::round(this->listOfMoveLevinXML[4] * 1.32);
 			this->i = 0;
 			while (this->i < this->listOfLevinPriceXML.size())
 			{ 
-				this->listOfLevinPriceXML[this->i] = std::round(this->listOfLevinPriceXML[this->i] * 0.75);
+				this->listOfLevinPriceXML[this->i] = ::round(this->listOfLevinPriceXML[this->i] * 0.75);
 				i++;
 			}
 			this->levinEffectDamageXML = this->levinEffectDamageXML + 0.1;
-			this->levinEffectRadiusXML = std::round(this->levinEffectRadiusXML * 1.1);
+			this->levinEffectRadiusXML = ::round(this->levinEffectRadiusXML * 1.1);
 			this->listOfLevinTowerDamageXML[0] = this->listOfLevinTowerDamageXML[0] * 1.32;
 			this->listOfLevinTowerDamageXML[1] = this->listOfLevinTowerDamageXML[1] * 1.32;
 			this->listOfLevinTowerDamageXML[2] = this->listOfLevinTowerDamageXML[2] * 1.32;
@@ -980,20 +980,20 @@ namespace engine
 		{
 			this->levinSellTax = this->levinSellTax + 0.1;
 			this->levinCountPlus++;
-			this->levinTowerIntervalXML = this->levinTowerIntervalXML - std::round(30 * 0.2);
-			this->listOfMoveLevinXML[0] = std::round(this->listOfMoveLevinXML[0] * 1.1);
-			this->listOfMoveLevinXML[1] = std::round(this->listOfMoveLevinXML[1] * 1.22);
-			this->listOfMoveLevinXML[2] = std::round(this->listOfMoveLevinXML[2] * 1.22);
-			this->listOfMoveLevinXML[3] = std::round(this->listOfMoveLevinXML[3] * 1.22);
-			this->listOfMoveLevinXML[4] = std::round(this->listOfMoveLevinXML[4] * 1.22);
+			this->levinTowerIntervalXML = this->levinTowerIntervalXML - ::round(30 * 0.2);
+			this->listOfMoveLevinXML[0] = ::round(this->listOfMoveLevinXML[0] * 1.1);
+			this->listOfMoveLevinXML[1] = ::round(this->listOfMoveLevinXML[1] * 1.22);
+			this->listOfMoveLevinXML[2] = ::round(this->listOfMoveLevinXML[2] * 1.22);
+			this->listOfMoveLevinXML[3] = ::round(this->listOfMoveLevinXML[3] * 1.22);
+			this->listOfMoveLevinXML[4] = ::round(this->listOfMoveLevinXML[4] * 1.22);
 			this->i = 0;
 			while (this->i < this->listOfLevinPriceXML.size())
 			{ 
-				this->listOfLevinPriceXML[this->i] = std::round(this->listOfLevinPriceXML[this->i] * 0.85);
+				this->listOfLevinPriceXML[this->i] = ::round(this->listOfLevinPriceXML[this->i] * 0.85);
 				i++;
 			}
 			this->levinEffectDamageXML = this->levinEffectDamageXML + 0.1;
-			this->levinEffectRadiusXML = std::round(this->levinEffectRadiusXML * 1.1);
+			this->levinEffectRadiusXML = ::round(this->levinEffectRadiusXML * 1.1);
 			this->listOfLevinTowerDamageXML[0] = this->listOfLevinTowerDamageXML[0] * 1.22;
 			this->listOfLevinTowerDamageXML[1] = this->listOfLevinTowerDamageXML[1] * 1.22;
 			this->listOfLevinTowerDamageXML[2] = this->listOfLevinTowerDamageXML[2] * 1.22;
@@ -1003,20 +1003,20 @@ namespace engine
 		{
 			this->levinSellTax = this->levinSellTax + 0.1;
 			this->levinCountPlus++;
-			this->levinTowerIntervalXML = this->levinTowerIntervalXML - std::round(30 * 0.2);
-			this->listOfMoveLevinXML[0] = std::round(this->listOfMoveLevinXML[0] * 1.1);
-			this->listOfMoveLevinXML[1] = std::round(this->listOfMoveLevinXML[1] * 1.15);
-			this->listOfMoveLevinXML[2] = std::round(this->listOfMoveLevinXML[2] * 1.15);
-			this->listOfMoveLevinXML[3] = std::round(this->listOfMoveLevinXML[3] * 1.15);
-			this->listOfMoveLevinXML[4] = std::round(this->listOfMoveLevinXML[4] * 1.15);
+			this->levinTowerIntervalXML = this->levinTowerIntervalXML - ::round(30 * 0.2);
+			this->listOfMoveLevinXML[0] = ::round(this->listOfMoveLevinXML[0] * 1.1);
+			this->listOfMoveLevinXML[1] = ::round(this->listOfMoveLevinXML[1] * 1.15);
+			this->listOfMoveLevinXML[2] = ::round(this->listOfMoveLevinXML[2] * 1.15);
+			this->listOfMoveLevinXML[3] = ::round(this->listOfMoveLevinXML[3] * 1.15);
+			this->listOfMoveLevinXML[4] = ::round(this->listOfMoveLevinXML[4] * 1.15);
 			this->i = 0;
 			while (this->i < this->listOfLevinPriceXML.size())
 			{ 
-				this->listOfLevinPriceXML[this->i] = std::round(this->listOfLevinPriceXML[this->i] * 0.85);
+				this->listOfLevinPriceXML[this->i] = ::round(this->listOfLevinPriceXML[this->i] * 0.85);
 				i++;
 			}
 			this->levinEffectDamageXML = this->levinEffectDamageXML + 0;
-			this->levinEffectRadiusXML = std::round(this->levinEffectRadiusXML * 1);
+			this->levinEffectRadiusXML = ::round(this->levinEffectRadiusXML * 1);
 			this->listOfLevinTowerDamageXML[0] = this->listOfLevinTowerDamageXML[0] * 1.15;
 			this->listOfLevinTowerDamageXML[1] = this->listOfLevinTowerDamageXML[1] * 1.15;
 			this->listOfLevinTowerDamageXML[2] = this->listOfLevinTowerDamageXML[2] * 1.15;
@@ -1026,20 +1026,20 @@ namespace engine
 		{
 			this->levinSellTax = this->levinSellTax + 0.1;
 			this->levinCountPlus++;
-			this->levinTowerIntervalXML = this->levinTowerIntervalXML - std::round(30 * 0);
-			this->listOfMoveLevinXML[0] = std::round(this->listOfMoveLevinXML[0] * 1.1);
-			this->listOfMoveLevinXML[1] = std::round(this->listOfMoveLevinXML[1] * 1.1);
-			this->listOfMoveLevinXML[2] = std::round(this->listOfMoveLevinXML[2] * 1.1);
-			this->listOfMoveLevinXML[3] = std::round(this->listOfMoveLevinXML[3] * 1.1);
-			this->listOfMoveLevinXML[4] = std::round(this->listOfMoveLevinXML[4] * 1.1);
+			this->levinTowerIntervalXML = this->levinTowerIntervalXML - ::round(30 * 0);
+			this->listOfMoveLevinXML[0] = ::round(this->listOfMoveLevinXML[0] * 1.1);
+			this->listOfMoveLevinXML[1] = ::round(this->listOfMoveLevinXML[1] * 1.1);
+			this->listOfMoveLevinXML[2] = ::round(this->listOfMoveLevinXML[2] * 1.1);
+			this->listOfMoveLevinXML[3] = ::round(this->listOfMoveLevinXML[3] * 1.1);
+			this->listOfMoveLevinXML[4] = ::round(this->listOfMoveLevinXML[4] * 1.1);
 			this->i = 0;
 			while (this->i < this->listOfLevinPriceXML.size())
 			{ 
-				this->listOfLevinPriceXML[this->i] = std::round(this->listOfLevinPriceXML[this->i] * 0.95);
+				this->listOfLevinPriceXML[this->i] = ::round(this->listOfLevinPriceXML[this->i] * 0.95);
 				i++;
 			}
 			this->levinEffectDamageXML = this->levinEffectDamageXML + 0;
-			this->levinEffectRadiusXML = std::round(this->levinEffectRadiusXML * 1);
+			this->levinEffectRadiusXML = ::round(this->levinEffectRadiusXML * 1);
 			this->listOfLevinTowerDamageXML[0] = this->listOfLevinTowerDamageXML[0] * 1.1;
 			this->listOfLevinTowerDamageXML[1] = this->listOfLevinTowerDamageXML[1] * 1.1;
 			this->listOfLevinTowerDamageXML[2] = this->listOfLevinTowerDamageXML[2] * 1.1;
@@ -1049,20 +1049,20 @@ namespace engine
 		{
 			this->levinSellTax = this->levinSellTax + 0.1;
 			this->levinCountPlus = this->levinCountPlus + 0;
-			this->levinTowerIntervalXML = this->levinTowerIntervalXML - std::round(30 * 0);
-			this->listOfMoveLevinXML[0] = std::round(this->listOfMoveLevinXML[0] * 1);
-			this->listOfMoveLevinXML[1] = std::round(this->listOfMoveLevinXML[1] * 1.05);
-			this->listOfMoveLevinXML[2] = std::round(this->listOfMoveLevinXML[2] * 1.05);
-			this->listOfMoveLevinXML[3] = std::round(this->listOfMoveLevinXML[3] * 1.05);
-			this->listOfMoveLevinXML[4] = std::round(this->listOfMoveLevinXML[4] * 1.05);
+			this->levinTowerIntervalXML = this->levinTowerIntervalXML - ::round(30 * 0);
+			this->listOfMoveLevinXML[0] = ::round(this->listOfMoveLevinXML[0] * 1);
+			this->listOfMoveLevinXML[1] = ::round(this->listOfMoveLevinXML[1] * 1.05);
+			this->listOfMoveLevinXML[2] = ::round(this->listOfMoveLevinXML[2] * 1.05);
+			this->listOfMoveLevinXML[3] = ::round(this->listOfMoveLevinXML[3] * 1.05);
+			this->listOfMoveLevinXML[4] = ::round(this->listOfMoveLevinXML[4] * 1.05);
 			this->i = 0;
 			while (this->i < this->listOfLevinPriceXML.size())
 			{ 
-				this->listOfLevinPriceXML[this->i] = std::round(this->listOfLevinPriceXML[this->i] * 1);
+				this->listOfLevinPriceXML[this->i] = ::round(this->listOfLevinPriceXML[this->i] * 1);
 				i++;
 			}
 			this->levinEffectDamageXML = this->levinEffectDamageXML + 0;
-			this->levinEffectRadiusXML = std::round(this->levinEffectRadiusXML * 1);
+			this->levinEffectRadiusXML = ::round(this->levinEffectRadiusXML * 1);
 			this->listOfLevinTowerDamageXML[0] = this->listOfLevinTowerDamageXML[0] * 1.05;
 			this->listOfLevinTowerDamageXML[1] = this->listOfLevinTowerDamageXML[1] * 1.05;
 			this->listOfLevinTowerDamageXML[2] = this->listOfLevinTowerDamageXML[2] * 1.05;
@@ -1251,8 +1251,8 @@ namespace engine
 				//int(this->xmlDataLevels.strategy1.wave[this->i].enemy[this->j].@typeUnit);
 				Main::mainClass->worldClass->wavesClass->listOfWaves[0][this->i][1][1][this->j][1] = this->xmlDataLevels->getInt(enemys.at(j), "@count");
 				//int(this->xmlDataLevels.strategy1.wave[this->i].enemy[this->j].@count);
-				Main::mainClass->worldClass->wavesClass->listOfWaves[0][this->i][1][1][this->j][2] = std::round(this->xmlDataLevels->getFloat(enemys.at(j), "@interval") * Main::fps);
-				// std::round(Number(this->xmlDataLevels.strategy1.wave[this->i].enemy[this->j].@interval) * Main::fps);
+				Main::mainClass->worldClass->wavesClass->listOfWaves[0][this->i][1][1][this->j][2] = ::round(this->xmlDataLevels->getFloat(enemys.at(j), "@interval") * Main::fps);
+				// ::round(Number(this->xmlDataLevels.strategy1.wave[this->i].enemy[this->j].@interval) * Main::fps);
 				Main::mainClass->worldClass->wavesClass->listOfWaves[0][this->i][1][1][this->j][3] = this->xmlDataLevels->getInt(enemys.at(j), "@way");
 				//int(this->xmlDataLevels.strategy1.wave[this->i].enemy[this->j].@way);
 				Main::mainClass->worldClass->wavesClass->listOfWaves[0][this->i][1][1][this->j][4] = this->xmlDataLevels->getInt(enemys.at(j), "@path");
@@ -1292,8 +1292,8 @@ namespace engine
 					//int(this->xmlDataLevels.strategy2.wave[this->i].enemy[this->j].@typeUnit);
 					Main::mainClass->worldClass->wavesClass->listOfWaves[1][this->i][1][1][this->j][1] = this->xmlDataLevels->getInt(enemys.at(j), "@count"); 
 					//int(this->xmlDataLevels.strategy2.wave[this->i].enemy[this->j].@count);
-					Main::mainClass->worldClass->wavesClass->listOfWaves[1][this->i][1][1][this->j][2] = std::round(this->xmlDataLevels->getFloat(enemys.at(j), "@interval") * Main::fps);
-					//std::round(Number(this->xmlDataLevels.strategy2.wave[this->i].enemy[this->j].@interval) * Main::fps);
+					Main::mainClass->worldClass->wavesClass->listOfWaves[1][this->i][1][1][this->j][2] = ::round(this->xmlDataLevels->getFloat(enemys.at(j), "@interval") * Main::fps);
+					//::round(Number(this->xmlDataLevels.strategy2.wave[this->i].enemy[this->j].@interval) * Main::fps);
 					Main::mainClass->worldClass->wavesClass->listOfWaves[1][this->i][1][1][this->j][3] = this->xmlDataLevels->getInt(enemys.at(j), "@way"); 
 					//int(this->xmlDataLevels.strategy2.wave[this->i].enemy[this->j].@way);
 					Main::mainClass->worldClass->wavesClass->listOfWaves[1][this->i][1][1][this->j][4] = this->xmlDataLevels->getInt(enemys.at(j), "@path"); 
@@ -1335,8 +1335,8 @@ namespace engine
 					//int(this->xmlDataLevels.strategy2.wave[this->i].enemy[this->j].@typeUnit);
 					Main::mainClass->worldClass->wavesClass->listOfWaves[2][this->i][1][1][this->j][1] = this->xmlDataLevels->getInt(enemys.at(j), "@count");
 					//int(this->xmlDataLevels.strategy2.wave[this->i].enemy[this->j].@count);
-					Main::mainClass->worldClass->wavesClass->listOfWaves[2][this->i][1][1][this->j][2] = std::round(this->xmlDataLevels->getFloat(enemys.at(j), "@interval") * Main::fps);
-					//std::round(Number(this->xmlDataLevels.strategy2.wave[this->i].enemy[this->j].@interval) * Main::fps);
+					Main::mainClass->worldClass->wavesClass->listOfWaves[2][this->i][1][1][this->j][2] = ::round(this->xmlDataLevels->getFloat(enemys.at(j), "@interval") * Main::fps);
+					//::round(Number(this->xmlDataLevels.strategy2.wave[this->i].enemy[this->j].@interval) * Main::fps);
 					Main::mainClass->worldClass->wavesClass->listOfWaves[2][this->i][1][1][this->j][3] = this->xmlDataLevels->getInt(enemys.at(j), "@way");
 					//int(this->xmlDataLevels.strategy2.wave[this->i].enemy[this->j].@way);
 					Main::mainClass->worldClass->wavesClass->listOfWaves[2][this->i][1][1][this->j][4] = this->xmlDataLevels->getInt(enemys.at(j), "@path");
@@ -1504,7 +1504,7 @@ namespace engine
 		else if (Main::mainClass->saveBoxClass->getIntValue("complexityLevel") == 4)//if (Main::mainClass->saveBoxClass.gameSave.data.complexityLevel == 4)
 		{
 			this->complexitySettingXML = 1;
-			this->autoStartCounter = std::round(this->xmlDataLevels->getFloat("settings.@autoStartTimer")  * Main::fps); // Number(this->xmlDataLevels.settings.@autoStartTimer)
+			this->autoStartCounter = ::round(this->xmlDataLevels->getFloat("settings.@autoStartTimer")  * Main::fps); // Number(this->xmlDataLevels.settings.@autoStartTimer)
 		}
 		//this->xmlLoaderLevels = null;
 		this->xmlDataLevels->~XMLConfigParser();

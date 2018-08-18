@@ -25,22 +25,22 @@ namespace screens
             return;
         }// end function
 
-        bool init();
+		virtual bool init();
 
-        void stopManage();
+		virtual void stopManage();
 
-        void enterFrameHandler(float dt);
+		virtual void enterFrameHandler(float dt);
 
-        void mouseMoveHandler(cocos2d::EventMouse * param1) ;
+		virtual void mouseMoveHandler(cocos2d::EventMouse * param1) ;
 
-        void mouseDownHandler(cocos2d::EventMouse * event) ;
-        void mouseUpHandler(cocos2d::EventMouse *event);
+		virtual void mouseDownHandler(cocos2d::EventMouse * event) ;
+		virtual void mouseUpHandler(cocos2d::EventMouse *event);
 
-        void autoguidersButtons();
+		virtual void autoguidersButtons();
 
-        void close();
+		virtual void close();
 
-        void kill();
+		virtual void kill();
 
         //void reInit(event:Event) ;
     }

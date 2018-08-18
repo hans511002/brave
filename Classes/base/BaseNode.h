@@ -9,7 +9,7 @@
 #include "ui/CocosGUI.h"
 using namespace cocos2d;
 #include "DefineClasses.h"
-#include "PThread.h"
+#include "MYPThread.h"
 #include "sys/I18n.h"
 
 #define ISTYPE(CLZTYPE,POINTER)  dynamic_cast<CLZTYPE *>(POINTER)
@@ -43,6 +43,7 @@ namespace std
     string setText(ui::Text * tui, const string &  val);
 	int setText(ui::Text * tui, int val);
 	float setText(ui::Text * tui, float val);
+	inline float setText(ui::Text * tui, double val){setText(tui,(float)val);};
 	int getInt(ui::Text * tui);
 	string getText(ui::Text * tui); 
 	bool hitTest(cocos2d::Node * node, const Vec2 &pt,bool mouseEvent=true);
@@ -50,8 +51,8 @@ namespace std
 	void drawRange(cocos2d::Node * node, Color4F c = Color4F::RED);
 	void changeAnchorPoint(Node * node, float xy);
 	void changeAnchorPoint(Node * node, const Vec2& xy); 
-	cocos2d::CCSprite* maskedSpriteWithSprite(cocos2d::CCSprite* textureSprite, cocos2d::CCSprite* maskSprite);
-	cocos2d::CCClippingNode* maskedWithClippingNode(cocos2d::Sprite* textureSprite, cocos2d::Sprite* maskSprite);
+	cocos2d::Sprite* maskedSpriteWithSprite(cocos2d::Sprite* textureSprite, cocos2d::Sprite* maskSprite);
+	cocos2d::ClippingNode* maskedWithClippingNode(cocos2d::Sprite* textureSprite, cocos2d::Sprite* maskSprite);
 
 	string getNamePath(Node *node);
 	Common::Array<Node*>  getChildNodes(Node *node);

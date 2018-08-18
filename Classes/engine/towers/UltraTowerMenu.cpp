@@ -894,7 +894,7 @@ namespace engine
                     container->sellUltraTower->gotoAndStop(2);
                     if (this->myTower->towerType == 5)
                     {
-                          tempObject = std::round(Main::mainClass->readXMLClass.costUltraFireStone - Main::mainClass->readXMLClass.costUltraFireStone * this->sellTax);
+                          tempObject = ::round(Main::mainClass->readXMLClass.costUltraFireStone - Main::mainClass->readXMLClass.costUltraFireStone * this->sellTax);
                         if (this->myTower->upgradeTypeAdd == 0)
                         {
                             if (this->myTower->shootingTurnStack[0])
@@ -926,14 +926,14 @@ namespace engine
                         }
                         else if (this->myTower->upgradeTypeAdd == 1)
                         {
-                            tempObject = tempObject + std::round(Main::mainClass->readXMLClass.costUltraAddFireStone - Main::mainClass->readXMLClass.costUltraAddFireStone * this->sellTax);
+                            tempObject = tempObject + ::round(Main::mainClass->readXMLClass.costUltraAddFireStone - Main::mainClass->readXMLClass.costUltraAddFireStone * this->sellTax);
                             this->world->worldInterface->sellSphere("fire");
                             this->world->worldInterface->sellSphere("stone");
                         }
                     }
                     else if (this->myTower->towerType == 6)
                     {
-                          tempObject = std::round(Main::mainClass->readXMLClass.costUltraIceLevin - Main::mainClass->readXMLClass.costUltraIceLevin * this->sellTax);
+                          tempObject = ::round(Main::mainClass->readXMLClass.costUltraIceLevin - Main::mainClass->readXMLClass.costUltraIceLevin * this->sellTax);
                         if (this->myTower->upgradeTypeAdd == 0)
                         {
                             if (this->myTower->shootingTurnStack[1])
@@ -963,14 +963,14 @@ namespace engine
                         }
                         else if (this->myTower->upgradeTypeAdd == 1)
                         {
-                            tempObject = tempObject + std::round(Main::mainClass->readXMLClass.costUltraAddIceLevin - Main::mainClass->readXMLClass.costUltraAddIceLevin * this->sellTax);
+                            tempObject = tempObject + ::round(Main::mainClass->readXMLClass.costUltraAddIceLevin - Main::mainClass->readXMLClass.costUltraAddIceLevin * this->sellTax);
                             this->world->worldInterface->sellSphere("ice");
                             this->world->worldInterface->sellSphere("levin");
                         }
                     }
                     else if (this->myTower->towerType == 7)
                     {
-                          tempObject = std::round(Main::mainClass->readXMLClass.costUltraIceStone - Main::mainClass->readXMLClass.costUltraIceStone * this->sellTax);
+                          tempObject = ::round(Main::mainClass->readXMLClass.costUltraIceStone - Main::mainClass->readXMLClass.costUltraIceStone * this->sellTax);
                         if (this->myTower->upgradeTypeAdd == 0)
                         {
                             if (this->myTower->shootingTurnStack[1])
@@ -1000,14 +1000,14 @@ namespace engine
                         }
                         else if (this->myTower->upgradeTypeAdd == 1)
                         {
-                            tempObject = tempObject + std::round(Main::mainClass->readXMLClass.costUltraAddIceStone - Main::mainClass->readXMLClass.costUltraAddIceStone * this->sellTax);
+                            tempObject = tempObject + ::round(Main::mainClass->readXMLClass.costUltraAddIceStone - Main::mainClass->readXMLClass.costUltraAddIceStone * this->sellTax);
                             this->world->worldInterface->sellSphere("ice");
                             this->world->worldInterface->sellSphere("stone");
                         }
                     }
                     else if (this->myTower->towerType == 8)
                     {
-                        tempObject = std::round(Main::mainClass->readXMLClass.costUltraFireLevin - Main::mainClass->readXMLClass.costUltraFireLevin * this->sellTax);
+                        tempObject = ::round(Main::mainClass->readXMLClass.costUltraFireLevin - Main::mainClass->readXMLClass.costUltraFireLevin * this->sellTax);
                         if (this->myTower->upgradeTypeAdd == 0)
                         {
                             if (this->myTower->shootingTurnStack[0])
@@ -1037,7 +1037,7 @@ namespace engine
                         }
                         else if (this->myTower->upgradeTypeAdd == 1)
                         {
-                            tempObject = tempObject + std::round(Main::mainClass->readXMLClass.costUltraAddFireLevin - Main::mainClass->readXMLClass.costUltraAddFireLevin * this->sellTax);
+                            tempObject = tempObject + ::round(Main::mainClass->readXMLClass.costUltraAddFireLevin - Main::mainClass->readXMLClass.costUltraAddFireLevin * this->sellTax);
                             this->world->worldInterface->sellSphere("fire");
                             this->world->worldInterface->sellSphere("levin");
                         }

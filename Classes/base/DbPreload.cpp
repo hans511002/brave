@@ -142,7 +142,7 @@ namespace std
             if(!autoStart)
             {
                 if(running)
-                    Sleep(100);//0.1s
+                    SLEEP(100);//0.1s
                 continue;
             }
             FileUtils * fu = cocos2d::FileUtils::getInstance();
@@ -183,12 +183,12 @@ namespace std
 						}
 						else
 						{
-							Sleep(100);//0.1s
+							SLEEP(100);//0.1s
 							continue;
 						}
 					}
 					else if(loadIdx = loadDbFiles.size() ){
-						Sleep(100);//0.1s
+						SLEEP(100);//0.1s
 						continue;
 					}
 				}
@@ -200,7 +200,7 @@ namespace std
 					if (!dbs.empty()){
 						addPreLoadDb(dbs);
 					}
-					Common::DirectoryInfo dir(dirPath);
+					//Common::DirectoryInfo dir(dirPath);
 					vector<string> subDirs = FileUtil::getAllFiles(dirPath, true, false, true);
 					//Common::Array<Common::String>  subDirs = dir.GetDirectories("", false, Common::SearchOption::AllDirectories);
 					if (!subDirs.empty()){
@@ -227,7 +227,7 @@ namespace std
             catch(...)
             {
 				if (running)
-					Sleep(100);//0.1s
+					SLEEP(100);//0.1s
 				continue;
             } 
         }

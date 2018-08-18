@@ -13,7 +13,7 @@ namespace std
 	sys::I18n i18n;
 	//mutex dbloadMutex;
 
-	cocos2d::CCSprite* maskedSpriteWithSprite(cocos2d::CCSprite* textureSprite, cocos2d::CCSprite* maskSprite)
+	cocos2d::Sprite* maskedSpriteWithSprite(cocos2d::Sprite* textureSprite, cocos2d::Sprite* maskSprite)
 	{
 		// 1
 		int w = maskSprite->getContentSize().width * maskSprite->getScaleX();
@@ -21,13 +21,13 @@ namespace std
 		RenderTexture* rt = RenderTexture::create(w, h);
 
 		// 2
-		maskSprite->setPosition(ccp(maskSprite->getContentSize().width *  maskSprite->getScaleX() / 2,
+		maskSprite->setPosition(Vec2(maskSprite->getContentSize().width *  maskSprite->getScaleX() / 2,
 			maskSprite->getContentSize().height * maskSprite->getScaleY() / 2));
-		textureSprite->setPosition(ccp(textureSprite->getContentSize().width *  textureSprite->getScaleX() / 2,
+		textureSprite->setPosition(Vec2(textureSprite->getContentSize().width *  textureSprite->getScaleX() / 2,
 			textureSprite->getContentSize().height * textureSprite->getScaleY() / 2));
 
 		// 3
-		ccBlendFunc blendFunc;
+		BlendFunc blendFunc;
 		blendFunc.src = GL_ONE;
 		blendFunc.dst = GL_ZERO;
 		maskSprite->setBlendFunc(blendFunc);
@@ -44,7 +44,7 @@ namespace std
 
 		// 5
 		Sprite* retval = Sprite::createWithTexture(rt->getSprite()->getTexture());
-		retval->setFlipY(true);
+		retval->setFlippedY(true);
 		return retval;
 	};
 
@@ -81,8 +81,12 @@ namespace std
 	{
 		if (useNodeEvent)return;
 		if (!node)return;
-		for each (EventNode * _node in EventNodes)
-		if (_node == node)return;
+		int len = EventNodes.size();
+		for (int i = 0; i < len; i++)
+		{
+			if (EventNodes.at(i) == node)
+				return;
+		} 
 		EventNodes.push(node);
 	};
 	void removeEventNode(EventNode *node) {
@@ -195,7 +199,7 @@ namespace std
 		string old = tui->getString();
 		char tmp[12];
 		sprintf(tmp, "%d", val);
-		tui->setText(tmp);
+		tui->setString(tmp);
 		return atoi(old.c_str());
 	};
 	float setText(ui::Text * tui, float val)
@@ -203,7 +207,7 @@ namespace std
 		string old = tui->getString();
 		char tmp[15];
 		sprintf(tmp, "%0.2f", val);
-		tui->setText(tmp);
+		tui->setString(tmp);
 		return atof(old.c_str());
 	};
 	int getInt(ui::Text * tui)
@@ -1176,7 +1180,7 @@ namespace std
 			msg += label3 + "=" + label4;
 		if (!label5.empty() && !label6.empty())
 			msg += label5 + "=" + label6;
-		CCLOG(msg.c_str());
+		CCLOG("%s",msg.c_str());
 		if (gLog)writeLog(msg, 1);
 	};
 

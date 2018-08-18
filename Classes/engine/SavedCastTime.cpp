@@ -29,7 +29,7 @@ namespace engine
         this->world = Main::mainClass->worldClass;
         this->container = new SavedCastTime_mc();
         this->container->stop();
-        float tempObject = std::round(this->savedFrames / 30);
+        float tempObject = ::round((double)this->savedFrames / 30);
         if (tempObject >= 10)
         {
             this->container->cont->gotoAndStop(1);

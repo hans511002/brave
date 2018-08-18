@@ -25,10 +25,10 @@ namespace bezier{
 		{
 			_loc_2 = this->_fitPoints[_loc_4];
 			_loc_3 = this->_fitPoints[(_loc_4 + 1)];
-			if (this->_fitMode != CUBIC)
-				DrawPrimitives::drawQuadBezier(_loc_1, _loc_2, _loc_3, 10);
-			else
-				DrawPrimitives::drawCubicBezier(_loc_1, _loc_2, _loc_2, _loc_3, 10);
+//			if (this->_fitMode != CUBIC)
+//				DrawPrimitives::drawQuadBezier(_loc_1, _loc_2, _loc_3, 10);
+//			else
+//				DrawPrimitives::drawCubicBezier(_loc_1, _loc_2, _loc_2, _loc_3, 10);
 			_loc_1 = _loc_3;
 			//参数依次为起点、控制点、终点、段数  
 			//DrawPrimitives::drawQuadBezier(VisibleRect::leftTop(), VisibleRect::center(), 

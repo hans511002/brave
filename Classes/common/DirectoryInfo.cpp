@@ -14,6 +14,7 @@
 #include "Common.h"
 //#define CPP_FILE 2
 //#include "Common.h" // "includeHead.h"	//unix FTP
+#include "cocos2d.h"
 
 namespace Common
 {
@@ -101,153 +102,61 @@ namespace Common
 	void Directory::InternalGetFileDirectoryNames(Array<String> &res,String path,bool includeFiles,
 		bool includeDirs,String searchPattern,bool ignoreCase,SearchOption searchOption)
 	{
-		if(includeFiles==false && includeDirs==false)return;
-		path=Path::GetFullPath(path,true);
-		int index=0;
-		
+		if (includeFiles == false && includeDirs == false)return;
+		path = Path::GetFullPath(path, true);
+		int index = 0;
 		char szBuff[1024];
-		memset(szBuff,0,sizeof(szBuff));
+		memset(szBuff, 0, sizeof(szBuff));
 		String subPath;
-		bool search=(searchPattern.empty()==false);
-        //文件句柄
-        intptr_t hFile = 0;
-        //文件信息
-        struct _finddata_t fileinfo;  //很少用的文件信息读取结构
-        if(path[path.length() - 1] != Path::DirectorySeparatorChar)
-            path = path + Path::DirectorySeparatorChar;
-        string p ;  //string类很有意思的一个赋值函数:assign()，有很多重载版本
-        if ((hFile = _findfirst(p.assign(path).append("*").c_str(),&fileinfo))) {
-            do {
-                if ((fileinfo.attrib & _A_SUBDIR)) {  //比较文件类型是否是文件夹
-                    if (strcmp(fileinfo.name,".") != 0 && strcmp(fileinfo.name,"..") != 0) {
-                        String subPath = path +  fileinfo.name;
-                        if(searchOption == AllDirectories)
-                        {
-                            InternalGetFileDirectoryNames(res, subPath, includeFiles, includeDirs, searchPattern, ignoreCase, searchOption);
-                        }
-                        if(!includeDirs)continue;
-                        if(search == false || String::IndexOf(fileinfo.name, searchPattern, ignoreCase) != -1)
-                            res.push_back(subPath); 
-                    }
-                } else {
-                    if(includeFiles == false)continue;
-                    String subPath = path +  fileinfo.name;
-                    res.push_back(subPath);
-                }
-            } while (_findnext(hFile, &fileinfo) == 0);  //寻找下一个，成功返回0，否则-1
-            _findclose(hFile);
-        }
-        return ;
-//#if OSTYPE>10
-//        FILE * hFile;
-//		hFile=POPEN(("ls -l \""+path+"\"").c_str(),"r");
-//		if(!hFile)
-//			EXP("执行目录列表命令失败");
-//		char * dest[100];
-//		while(fgets(szBuff, sizeof(szBuff)-1, hFile))
-//		{
-//			if(index++==0)continue;   //去除 total 19584
-//			int len=String::Split(dest,szBuff,' ');
-//			if(dest[len-1][strlen(dest[len-1])-1]=='\n')dest[len-1][strlen(dest[len-1])-1]=0;	//去除回车
-//			char ch=dest[0][0];
-//			switch(ch)							//If the first character is:
-//			{
-//			case 'd':								//d The entry is a directory.
-//				subPath=path+dest[len-1]+Path::DirectorySeparatorChar;
-//				if(searchOption==AllDirectories)
-//				{
-//					InternalGetFileDirectoryNames(res,subPath,includeFiles, includeDirs,searchPattern,ignoreCase,searchOption);
-//				}
-//				if(includeDirs==false)continue;
-//				if(search==false || String::IndexOf(dest[len-1],searchPattern,ignoreCase)!=-1)
-//					res[res.size()]=subPath;
-//				break;
-//			case 'b':								//b The entry is a block special file.
-//			case 'c':								//c The entry is a character special file.
-//			case 'l':								//l The entry is a symbolic link, and either the -N flag was specified or the symbolic link did not point to an existing file.
-//			case 'p':								//p The entry is a first-in,first-out (FIFO) special file.
-//			case 's':								//s The entry is a local socket.
-//			case '-':								//- The entry is an ordinary file.
-//                if(includeFiles==false)continue;
-//				subPath=path+dest[len-1];
-//				if(search==false || String::IndexOf(dest[len-1],searchPattern,ignoreCase)!=-1)
-//					res[res.size()]=subPath;
-//				break;
-//			}
-//			memset(szBuff,0,sizeof(szBuff));
-//		}
-//		PCLOSE(hFile);
-//#else
-//        FILE * hFile;
-//		if(includeDirs==true && includeFiles==false)//dir /AD /B
-//		{
-//			hFile=POPEN(("dir /AD-S /B \""+path+"\"").c_str(),"r");
-//			if(!hFile)
-//				EXP("执行目录列表命令失败");
-//			string filePath="";
-//			while(fgets(szBuff, sizeof(szBuff)-1, hFile))
-//			{
-//				if(szBuff[0]==32 || szBuff[0]=='\n')continue;
-//				if(szBuff[strlen(szBuff)-1]=='\n')szBuff[strlen(szBuff)-1]=0;	//去除回车
-//				subPath=path+szBuff+Path::DirectorySeparatorChar;
-//				if(searchOption==AllDirectories)
-//				{
-//					InternalGetFileDirectoryNames(res,subPath,includeFiles, includeDirs,searchPattern,ignoreCase,searchOption);
-//				}
-//				if(search==false || String::IndexOf(szBuff,searchPattern,ignoreCase)!=-1)
-//					res[res.size()]=subPath;
-//				memset(szBuff,0,sizeof(szBuff));
-//			}
-//		}
-//		else if(includeDirs==false && includeFiles==true)
-//		{
-//			hFile=POPEN(("dir /A-S-D /B \""+path+"\"").c_str(),"r");
-//			if(!hFile)
-//				EXP("执行目录列表命令失败");
-//			string filePath="";
-//			while(fgets(szBuff, sizeof(szBuff)-1, hFile))
-//			{
-//				if(szBuff[0]==32 || szBuff[0]=='\n')continue;
-//				if(szBuff[strlen(szBuff)-1]=='\n')szBuff[strlen(szBuff)-1]=0;	//去除回车
-//				if (search == false || String::IndexOf(szBuff, searchPattern, ignoreCase) != -1)
-//					res[res.size()] = path + szBuff;// +Path::DirectorySeparatorChar;
-//				memset(szBuff,0,sizeof(szBuff));
-//			}
-//		}
-//		else
-//		{
-//			hFile=POPEN(("dir /AD-S /B \""+path+"\"").c_str(),"r");
-//			if(!hFile)
-//				EXP("执行目录列表命令失败");
-//			string filePath="";
-//			while(fgets(szBuff, sizeof(szBuff)-1, hFile))
-//			{
-//				if(szBuff[0]==32 || szBuff[0]=='\n')continue;
-//				if(szBuff[strlen(szBuff)-1]=='\n')szBuff[strlen(szBuff)-1]=0;	//去除回车
-//				subPath=path+szBuff+Path::DirectorySeparatorChar;
-//				if(searchOption==AllDirectories)
-//				{
-//					InternalGetFileDirectoryNames(res,subPath,includeFiles, includeDirs,searchPattern,ignoreCase,searchOption);
-//				}
-//				if(search==false || String::IndexOf(szBuff,searchPattern,ignoreCase)!=-1)
-//					res[res.size()]=subPath;
-//				memset(szBuff,0,sizeof(szBuff));
-//			}
-//			PCLOSE(hFile);
-//			hFile=POPEN(("dir /A-D-S /B \""+path+"\"").c_str(),"r");
-//			if(!hFile)
-//				EXP("执行目录列表命令失败");
-//			while(fgets(szBuff, sizeof(szBuff)-1, hFile))
-//			{
-//				if(szBuff[0]==32 || szBuff[0]=='\n')continue;
-//				if(szBuff[strlen(szBuff)-1]=='\n')szBuff[strlen(szBuff)-1]=0;	//去除回车
-//				if (search == false || String::IndexOf(szBuff, searchPattern, ignoreCase) != -1)
-//					res[res.size()] = path + szBuff;// +Path::DirectorySeparatorChar;
-//				memset(szBuff,0,sizeof(szBuff));
-//			}
-//		}
-//		PCLOSE(hFile);
-//#endif
+		bool search = (searchPattern.empty() == false);
+		if (!includeFiles && !includeDirs)return;
+
+		cocos2d::FileUtils * fs = cocos2d::FileUtils::getInstance();
+		std::vector<std::string> subs = fs->listFiles(path);
+		for (int i = 0; i < subs.size(); i++)
+		{
+			string file = subs.at(i);
+			if (fs->isDirectoryExist(file)) {
+				if (includeDirs && (search == false || String::IndexOf(Path::GetFileName(file), searchPattern, ignoreCase) != -1) )
+					res.push_back(file); 
+				if (searchOption == AllDirectories)
+					InternalGetFileDirectoryNames(res, file, includeFiles, includeDirs, searchPattern, ignoreCase, searchOption);
+			}
+			else if (fs->isFileExist(file)) {
+				if (includeFiles && (search == false || String::IndexOf(Path::GetFileName(file), searchPattern, ignoreCase) != -1))
+					res.push_back(file);
+			}
+		}
+
+        ////文件句柄
+        //intptr_t hFile = 0;
+        ////文件信息
+        //struct _finddata_t fileinfo;  //很少用的文件信息读取结构
+        //if(path[path.length() - 1] != Path::DirectorySeparatorChar)
+        //    path = path + Path::DirectorySeparatorChar;
+        //string p ;  //string类很有意思的一个赋值函数:assign()，有很多重载版本
+        //if ((hFile = _findfirst(p.assign(path).append("*").c_str(),&fileinfo))) {
+        //    do {
+        //        if ((fileinfo.attrib & _A_SUBDIR)) {  //比较文件类型是否是文件夹
+        //            if (strcmp(fileinfo.name,".") != 0 && strcmp(fileinfo.name,"..") != 0) {
+        //                String subPath = path +  fileinfo.name;
+        //                if(searchOption == AllDirectories)
+        //                {
+        //                    InternalGetFileDirectoryNames(res, subPath, includeFiles, includeDirs, searchPattern, ignoreCase, searchOption);
+        //                }
+        //                if(!includeDirs)continue;
+        //                if(search == false || String::IndexOf(fileinfo.name, searchPattern, ignoreCase) != -1)
+        //                    res.push_back(subPath); 
+        //            }
+        //        } else {
+        //            if(includeFiles == false)continue;
+        //            String subPath = path +  fileinfo.name;
+        //            res.push_back(subPath);
+        //        }
+        //    } while (_findnext(hFile, &fileinfo) == 0);  //寻找下一个，成功返回0，否则-1
+        //    _findclose(hFile);
+        //}
+        return ; 
 	}
 	//获取子目录列表
 	Array<DirectoryInfo> DirectoryInfo::GetDirectoryInfos(String searchPattern,bool ignoreCase, SearchOption searchOption)

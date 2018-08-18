@@ -1,4 +1,4 @@
-﻿#include "PThread.h"
+﻿#include "MYPThread.h"
 namespace std
 {
 	PMutex::PMutex(std::mutex * m, bool locked) :locked(locked), m(m)

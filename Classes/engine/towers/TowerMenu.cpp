@@ -1668,7 +1668,7 @@ namespace engine
 							{
 								container->sphere2_2->gotoAndStop(container->sphere2_2->currentFrame + tempObject2);
 							}
-							this->myTower->setZOrder(2);
+							this->myTower->setLocalZOrder(2);
 							//this->world->setChildIndex(this->myTower, (this->world->getChildIndex(this) - 1));
 							this->container->btnUpgradeMenu->gotoAndStop(1);
 							this->world->money = this->world->money - Main::mainClass->readXMLClass.costSlot2XML;

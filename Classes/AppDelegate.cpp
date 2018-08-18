@@ -4,19 +4,19 @@
 
 
 
-#include "./test/HelloWorldScene.h"
-#include "./test/HelloDragonBones.h"
-#include "./test/AnimationBase.h"
-#include "./test/DragonBonesEvent.h"
-#include "./test/AnimationLayer.h"
-#include "./test/BoneOffset.h"
-#include "./test/InverseKinematics.h"
-#include "./test/BoundingBox.h"
-#include "./test/ReplaceSlotDisplay.h" 
-#include "./test/ReplaceSkin.h"
-#include "./test/ReplaceAnimation.h"
-#include "./test/CoreElement.h"
-#include "./test/PerformanceTest.h" 
+//#include "./test/HelloWorldScene.h"
+//#include "./test/HelloDragonBones.h"
+//#include "./test/AnimationBase.h"
+//#include "./test/DragonBonesEvent.h"
+//#include "./test/AnimationLayer.h"
+//#include "./test/BoneOffset.h"
+//#include "./test/InverseKinematics.h"
+//#include "./test/BoundingBox.h"
+//#include "./test/ReplaceSlotDisplay.h" 
+//#include "./test/ReplaceSkin.h"
+//#include "./test/ReplaceAnimation.h"
+//#include "./test/CoreElement.h"
+//#include "./test/PerformanceTest.h" 
 
 // #include "DragonBonesTest.h"
 

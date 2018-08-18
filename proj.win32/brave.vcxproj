@@ -153,7 +153,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\base\Indexes.cpp" />
     <ClCompile Include="..\Classes\base\JsonUtil.cpp" />
     <ClCompile Include="..\Classes\base\mc.cpp" />
-    <ClCompile Include="..\Classes\base\PThread.cpp" />
+    <ClCompile Include="..\Classes\base\MYPThread.cpp" />
     <ClCompile Include="..\Classes\bezier\Bezier.cpp" />
     <ClCompile Include="..\Classes\bezier\FitLine.cpp" />
     <ClCompile Include="..\Classes\bezier\Path.cpp" />
@@ -168,9 +168,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\common\Log.cpp" />
     <ClCompile Include="..\Classes\common\md5.cpp" />
     <ClCompile Include="..\Classes\common\NetConstDefine.cpp" />
-    <ClCompile Include="..\Classes\common\Socket.cpp" />
+    <ClCompile Include="..\Classes\common\MYSocket.cpp" />
     <ClCompile Include="..\Classes\common\strCodeing.cpp" />
-    <ClCompile Include="..\Classes\common\String.cpp" />
+    <ClCompile Include="..\Classes\common\MYString.cpp" />
     <ClCompile Include="..\Classes\engine\BonusMoney.cpp" />
     <ClCompile Include="..\Classes\engine\bullets\Bullet.cpp" />
     <ClCompile Include="..\Classes\engine\bullets\Bullet_1.cpp" />
@@ -281,7 +281,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\base\Indexes.h" />
     <ClInclude Include="..\Classes\base\JsonUtil.h" />
     <ClInclude Include="..\Classes\base\mc.h" />
-    <ClInclude Include="..\Classes\base\PThread.h" />
+    <ClInclude Include="..\Classes\base\MYPThread.h" />
     <ClInclude Include="..\Classes\bezier\Bezier.h" />
     <ClInclude Include="..\Classes\bezier\FitLine.h" />
     <ClInclude Include="..\Classes\bezier\Path.h" />
@@ -322,10 +322,10 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\common\NetConstDefine.h" />
     <ClInclude Include="..\Classes\common\NetworkStream.h" />
     <ClInclude Include="..\Classes\common\numMap.hpp" />
-    <ClInclude Include="..\Classes\common\platform.h" />
-    <ClInclude Include="..\Classes\common\Socket.h" />
+    <ClInclude Include="..\Classes\common\MYPlatform.h" />
+    <ClInclude Include="..\Classes\common\MYSocket.h" />
     <ClInclude Include="..\Classes\common\strCoding.h" />
-    <ClInclude Include="..\Classes\common\String.h" />
+    <ClInclude Include="..\Classes\common\MYString.h" />
     <ClInclude Include="..\Classes\common\TcpClient.h" />
     <ClInclude Include="..\Classes\common\TcpListener.h" />
     <ClInclude Include="..\Classes\common\TimeSpan.h" />
@@ -386,6 +386,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\engine\xml\ReadXML.h" />
     <ClInclude Include="..\Classes\engine\xml\XmlConfigParser.h" />
     <ClInclude Include="..\Classes\MainClass.h" />
+    <ClInclude Include="..\Classes\screens\Credits.h" />
     <ClInclude Include="..\Classes\screens\FastPause.h" />
     <ClInclude Include="..\Classes\screens\LevelsMenu.h" />
     <ClInclude Include="..\Classes\screens\MiddleScreen.h" />

@@ -12,7 +12,7 @@
 //				in all copies.
 // ==============================================================
 
-#include "platform.h"
+#include "MYPlatform.h"
 #include "Encoding.h"
 
 namespace Common

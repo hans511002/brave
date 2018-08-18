@@ -41,9 +41,9 @@
 //#ifndef NDEBUG
 //#define NDEBUG
 //#endif
-#include "CCStdC.h"
+#include "platform/CCStdC.h"
 using namespace std;
-#include "platform.h"
+#include "MYPlatform.h"
 
 
 
@@ -87,7 +87,7 @@ namespace Common
 #include "hashMath.h"
 #include "Encoding.h"	//编码
 #include "Decoding.h"
-#include "String.h"	//字符串
+#include "MYString.h"	//字符串
 #include "Functions.h"	//	普通函数
 #include "DateTimeFun.h"	//	时间类
 #include "TimeSpan.h"	//时间片
@@ -123,7 +123,7 @@ namespace Common
 
 #include "NetConstDefine.h"		//	网络部分
 #include "IPAddress.h"
-#include "Socket.h"
+#include "MYSocket.h"
 #include "NetworkStream.h"
 #include "TcpClient.h"
 #include "UdpClient.h"

@@ -65,7 +65,7 @@ namespace engine{
 			//public var soundChannelMove:SoundChannel;
 			int  voiceCounter;//public var voiceCounter:int = 10;
 			int  rotationTimer;//public var rotationTimer:int = 4;
-			String  rotateFlag;//public var rotateFlag:String;
+			std::string  rotateFlag;//public var rotateFlag:String;
 			Iceman * brother;
 			int  roadAnimaTimer;//public var roadAnimaTimer:int = 7;
 			int  roadAnimaCounter;//public var roadAnimaCounter:int = 0;

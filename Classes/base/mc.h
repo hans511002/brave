@@ -36,7 +36,7 @@ namespace engine
 		virtual bool isPlayEnd();
 
         virtual void stop(const string &  aniName = "");
-        inline virtual	dragonBones::Armature *getArmature()=0;
+        virtual	 dragonBones::Armature *getArmature()=0;
         virtual dragonBones::Animation *getAnimation()  = 0;
         virtual bool isPlay();
 		virtual void completeHandler(cocos2d::EventCustom *event);
@@ -97,7 +97,7 @@ namespace engine
         //void addMCbs(MC * mc, MovieClipSubBase * mcs);
 		virtual Vec2 getDisPosition();
 		virtual Vec2 getDisArPos();
-		void MovieClipSubBase::setDisScale();
+		virtual void setDisScale();
 		virtual void initPos();
     };
     struct MovieClip :public virtual BaseNode, public virtual MC,public virtual MovieClipSubBase
@@ -133,7 +133,7 @@ namespace engine
         MovieClip(MC *mc, const string &  slot, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "", bool delay=false);
         MovieClip(MC *mc, const string &  slot, const string &  rootPath, const string &  dbName, bool delay=false);
 
-        bool MovieClip::init(const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "");
+		virtual bool init(const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "");
 
 
         virtual bool checkInit();
@@ -164,7 +164,7 @@ namespace engine
 
 		virtual void destroy();
 		//增加删除事件
-		inline bool setOnceMove(World * world);
+		virtual bool setOnceMove(World * world);
 		virtual void onEnter();
 		virtual void onExit();
 		virtual void onceMovieHandler(cocos2d::EventCustom *event);
@@ -189,10 +189,10 @@ namespace engine
 		virtual dragonBones::Armature *getArmature();
 		virtual dragonBones::Animation *getAnimation();
 		virtual void setVisible(bool v);
- 
-		bool isVisible();
-		inline bool reinit();
-		cocos2d::Point getPosition();
+
+		virtual bool isVisible();
+		virtual bool reinit();
+		virtual cocos2d::Point getPosition();
 		float getPositionX();
 		float getPositionY();
 		void setPosition(const cocos2d::Point &pos);
@@ -296,7 +296,7 @@ namespace engine
     {
         int currentFrame; 
         int totalFrames;
-        byte playing;
+		unsigned char playing;
         BaseSprite * container;
         string filePre;
         char numFormat[8];

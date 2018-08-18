@@ -102,9 +102,6 @@
     <ClCompile Include="..\Classes\common\Decoding.cpp">
       <Filter>src\common</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\common\DirectoryInfo.cpp">
-      <Filter>src\common</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\common\Encoding.cpp">
       <Filter>src\common</Filter>
     </ClCompile>
@@ -123,13 +120,7 @@
     <ClCompile Include="..\Classes\common\NetConstDefine.cpp">
       <Filter>src\common</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\common\Socket.cpp">
-      <Filter>src\common</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\common\strCodeing.cpp">
-      <Filter>src\common</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\common\String.cpp">
       <Filter>src\common</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\engine\xml\XmlConfigParser.cpp">
@@ -315,9 +306,6 @@
     <ClCompile Include="..\Classes\engine\level\RoadLevels_mc.cpp">
       <Filter>src\engine\level</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\base\PThread.cpp">
-      <Filter>src\base</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\base\DbPreload.cpp">
       <Filter>src\base</Filter>
     </ClCompile>
@@ -423,6 +411,18 @@
     <ClCompile Include="..\Classes\engine\units\Unit_34.cpp">
       <Filter>src\engine\units</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\base\MYPThread.cpp">
+      <Filter>src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\common\MYString.cpp">
+      <Filter>src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\common\MYSocket.cpp">
+      <Filter>src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\common\DirectoryInfo.cpp">
+      <Filter>src\common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -464,9 +464,6 @@
     <ClInclude Include="..\Classes\common\Decoding.h">
       <Filter>src\common</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\common\DirectoryInfo.hpp">
-      <Filter>src\common</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\common\Encoding.h">
       <Filter>src\common</Filter>
     </ClInclude>
@@ -483,9 +480,6 @@
       <Filter>src\common</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\common\ExpEval.hpp">
-      <Filter>src\common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\common\FileInfo.hpp">
       <Filter>src\common</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\common\FTP.h">
@@ -527,16 +521,7 @@
     <ClInclude Include="..\Classes\common\numMap.hpp">
       <Filter>src\common</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\common\platform.h">
-      <Filter>src\common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\common\Socket.h">
-      <Filter>src\common</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\common\strCoding.h">
-      <Filter>src\common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\common\String.h">
       <Filter>src\common</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\common\TcpClient.h">
@@ -836,9 +821,6 @@
     <ClInclude Include="..\Classes\engine\level\RoadLevels_mc.h">
       <Filter>src\engine\level</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\base\PThread.h">
-      <Filter>src\base</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\base\DbPreload.h">
       <Filter>src\base</Filter>
     </ClInclude>
@@ -853,6 +835,27 @@
     </ClInclude>
     <ClInclude Include="..\Classes\sys\I18n.h">
       <Filter>src\sys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\base\MYPThread.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\MYString.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\MYSocket.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\MYPlatform.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\DirectoryInfo.hpp">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\FileInfo.hpp">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\screens\Credits.h">
+      <Filter>src\screens</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -96,7 +96,7 @@ void Main::addNewScreen(const string & param1)
         //this->addChild(Main.mainClass.bmp);
         if (this->container)
 			this->container->setVisible(false);
-        this->middleScreenClass->setZOrder(99);
+        this->middleScreenClass->setLocalZOrder(99);
         //this->setChildIndex(this->middleScreenClass, (this->numChildren - 1));
         //this->setChildIndex(this->IDIClass, (this->numChildren - 1));
     }

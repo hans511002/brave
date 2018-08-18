@@ -28,7 +28,7 @@ namespace engine
         this->container = new BonusMoney_mc();
         this->container->stop();
         this->container->cont->stop();
-        this->container->contNoteTXT->setText(Common::String("+") + this->world->bonusMoney);
+        this->container->contNoteTXT->setString(Common::String("+") + this->world->bonusMoney);
         this->container->setPosition(Main::SCREEN_WIDTH_HALF,Main::SCREEN_HEIGHT_HALF);
         this->addChild(this->container);
         this->setMouseChildren(false);

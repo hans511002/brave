@@ -20,7 +20,7 @@ namespace engine
 	    bool closeFlag;
 		string myText;
 		int counter;
-		inline GetAchieve_mc::GetAchieve_mc() :MovieClip("worldinterface/", "GetAchieve_mc", "GetAchieve_mc")
+		inline GetAchieve_mc() :MovieClip("worldinterface/", "GetAchieve_mc", "GetAchieve_mc")
 		{
 			board = this->createMovieClipSub("board");
 			boardNoteTXT = board->createText("noteTXT");

@@ -178,7 +178,7 @@ namespace engine
                 {
                     if (world->frameCounter == 10 || world->frameCounter == 20 || world->frameCounter == 30)
                     {
-                        float tempObject1 = std::round(std::random() * (3 - 1)) + 1;// Math.round(Math.random() * (3 - 1)) + 1;
+                        float tempObject1 = ::round(std::random() * (3 - 1)) + 1;// Math.round(Math.random() * (3 - 1)) + 1;
                         float tempObject2 = world->bezierClass->getPathLength(road, tempObject1);
                         float tempObject6 = 10000;
                         j = 0;

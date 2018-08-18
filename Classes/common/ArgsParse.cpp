@@ -58,30 +58,9 @@ namespace Common
 		paramsValue.erase(_prefix);
 	}
 
-#if OSTYPE>10
-#define OTL_COPYRIGHT "this otl lib is no right,if del this info,some Function is Invalid."
-#ifndef UNCHECK_YEAR
-#define CHECK_YEAR		if(_copyRights.IndexOf(String(DateTime().GetYear()))==-1){throw Exception(OTL_COPYRIGHT);}
-#else
-#define CHECK_YEAR
-#endif
-#define ISUNIX1() inline void checkCopyRigth(){char* _copyRight = getenv("COMMON_LIB");		\
-		if(_copyRight==NULL){throw Exception(OTL_COPYRIGHT);}						\
-		else if(strcmp(_copyRight,copyRight)!=0){throw Exception(OTL_COPYRIGHT);}	\
-		String _copyRights=_copyRight;									\
-		if(_copyRights.IndexOf("Athor:hans")==-1){EXP(OTL_COPYRIGHT);}CHECK_YEAR	\
-		}
-#ifndef UNCHECK_COPYRIGHT
-		ISUNIX1()
-#endif
-#endif
 	bool	ArgsParse::parse()
 	{
-#if OSTYPE>10
-#ifndef UNCHECK_COPYRIGHT
-		checkCopyRigth();
-#endif
-#endif
+
 		if(this->_argc==0)
 		{
 			if(log)

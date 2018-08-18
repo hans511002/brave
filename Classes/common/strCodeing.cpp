@@ -12,6 +12,10 @@
 //				in all copies.
 // ==============================================================
 #include "Common.h"
+#ifdef __ANDROID_API__
+#include "iconv.h"
+
+#endif // __ANDROID_API__
 
 namespace Common
 {
@@ -379,78 +383,78 @@ namespace Common
 		}
 		pOut[j]='\0';
 	};
-	//gb2312转utf8
-	bool strCoding::GB2312ToUTF8(char* pstrOut, size_t dwOutLen, const char* pstrIn, size_t dwInLen)
-	{
-		if (NULL == pstrOut)
-		{
-			return false;
-		}
-#ifdef WIN32
-		int i = MultiByteToWideChar(CP_ACP, 0, pstrIn, -1, NULL, 0);
-		wchar_t * strSrc = new wchar_t[i+1];
-		MultiByteToWideChar(CP_ACP, 0, pstrIn, -1, strSrc, i);
-		i = WideCharToMultiByte(CP_UTF8, 0, strSrc, -1, NULL, 0, NULL, NULL);
-		if (i >= dwOutLen)
-		{
-			i = dwOutLen - 1;
-		}
-		WideCharToMultiByte(CP_UTF8, 0, strSrc, -1, pstrOut, i, NULL, NULL);
-		delete strSrc;
-#else
-		iconv_t iConv = iconv_open("UTF-8","GBK"); 
-		if(iConv == (iconv_t)(-1))
-		{
-			EXP("iconv_open error");
-			return false;
-		}
-
-		if(-1== iconv(iConv, (char **)&pstrIn, (size_t *)&dwInLen, (char **)&pstrOut, (size_t *)&dwOutLen) )
-		{
-			EXP("iconv error");
-			iconv_close(iConv);
-			return false;
-		}
-		iconv_close(iConv);
-#endif
-		return true;
-	}
-
-	//utf8转gb2312
-	bool strCoding::UTF8ToGB2312(char* pstrOut, size_t dwOutLen, const char* pstrIn, size_t dwInLen)
-	{
-		if (NULL == pstrOut)
-		{
-			return false;
-		}
-#ifdef WIN32
-		int i = MultiByteToWideChar(CP_UTF8, 0, pstrIn, -1, NULL, 0);
-		wchar_t * strSrc = new wchar_t[i+1];
-		MultiByteToWideChar(CP_UTF8, 0, pstrIn, -1, strSrc, i);
-		i = WideCharToMultiByte(CP_ACP, 0, strSrc, -1, NULL, 0, NULL, NULL);
-		if (i >= dwOutLen)
-		{
-			i = dwOutLen - 1;
-		}
-		WideCharToMultiByte(CP_ACP, 0, strSrc, -1, pstrOut, i, NULL, NULL);
-		delete strSrc;
-#else
-		iconv_t iConv = iconv_open("GBK","UTF-8"); 
-		if(iConv == (iconv_t)(-1))
-		{
-			EXP("iconv_open error\n");
-		}
-		if(-1== iconv(iConv, (char **)&pstrIn, (size_t *)&dwInLen, (char **)&pstrOut, (size_t *)&dwOutLen) )
-		{
-			EXP("iconv error\n");
-			iconv_close(iConv);
-			return false;
-		}
-		iconv_close(iConv);
-#endif
-		return true;
-	}
-
+//	//gb2312转utf8
+//	bool strCoding::GB2312ToUTF8(char* pstrOut, size_t dwOutLen, const char* pstrIn, size_t dwInLen)
+//	{
+//		if (NULL == pstrOut)
+//		{
+//			return false;
+//		}
+//#ifdef WIN32
+//		int i = MultiByteToWideChar(CP_ACP, 0, pstrIn, -1, NULL, 0);
+//		wchar_t * strSrc = new wchar_t[i+1];
+//		MultiByteToWideChar(CP_ACP, 0, pstrIn, -1, strSrc, i);
+//		i = WideCharToMultiByte(CP_UTF8, 0, strSrc, -1, NULL, 0, NULL, NULL);
+//		if (i >= dwOutLen)
+//		{
+//			i = dwOutLen - 1;
+//		}
+//		WideCharToMultiByte(CP_UTF8, 0, strSrc, -1, pstrOut, i, NULL, NULL);
+//		delete strSrc;
+//#else
+//		iconv_t iConv = iconv_open("UTF-8","GBK"); 
+//		if(iConv == (iconv_t)(-1))
+//		{
+//			EXP("iconv_open error");
+//			return false;
+//		}
+//
+//		if(-1== iconv(iConv, (char **)&pstrIn, (size_t *)&dwInLen, (char **)&pstrOut, (size_t *)&dwOutLen) )
+//		{
+//			EXP("iconv error");
+//			iconv_close(iConv);
+//			return false;
+//		}
+//		iconv_close(iConv);
+//#endif
+//		return true;
+//	}
+//
+//	//utf8转gb2312
+//	bool strCoding::UTF8ToGB2312(char* pstrOut, size_t dwOutLen, const char* pstrIn, size_t dwInLen)
+//	{
+//		if (NULL == pstrOut)
+//		{
+//			return false;
+//		}
+//#ifdef WIN32
+//		int i = MultiByteToWideChar(CP_UTF8, 0, pstrIn, -1, NULL, 0);
+//		wchar_t * strSrc = new wchar_t[i+1];
+//		MultiByteToWideChar(CP_UTF8, 0, pstrIn, -1, strSrc, i);
+//		i = WideCharToMultiByte(CP_ACP, 0, strSrc, -1, NULL, 0, NULL, NULL);
+//		if (i >= dwOutLen)
+//		{
+//			i = dwOutLen - 1;
+//		}
+//		WideCharToMultiByte(CP_ACP, 0, strSrc, -1, pstrOut, i, NULL, NULL);
+//		delete strSrc;
+//#else
+//		iconv_t iConv = iconv_open("GBK","UTF-8"); 
+//		if(iConv == (iconv_t)(-1))
+//		{
+//			EXP("iconv_open error\n");
+//		}
+//		if(-1== iconv(iConv, (char **)&pstrIn, (size_t *)&dwInLen, (char **)&pstrOut, (size_t *)&dwOutLen) )
+//		{
+//			EXP("iconv error\n");
+//			iconv_close(iConv);
+//			return false;
+//		}
+//		iconv_close(iConv);
+//#endif
+//		return true;
+//	}
+//
 	//把str编码为网页中的 GB2312DATA url encode ,英文不变，汉字双字节  如%3D%AE
 	string strCoding::UrlGB2312(char * str)
 	{

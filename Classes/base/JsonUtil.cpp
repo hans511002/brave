@@ -31,8 +31,7 @@ namespace rapidjson {
 	}
 	int writeFile(rapidjson::Document * doc, string jsonFile)
 	{
-		FILE *fp;
-		auto err = fopen_s(&fp, jsonFile.c_str(), "wb");
+		FILE *fp = fopen( jsonFile.c_str(), "wb");
 		char writeBuffer[512];
 		rapidjson::FileWriteStream os(fp, writeBuffer, sizeof(writeBuffer));
 		rapidjson::Writer<rapidjson::FileWriteStream> writer(os);

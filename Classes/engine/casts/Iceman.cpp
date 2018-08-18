@@ -269,7 +269,7 @@ namespace engine{
 					}
 				}
 			}
-			else if (std::abs(this->getPositionX() - this->this_pt.x) > 1 || std::abs(this->getPositionY() - this->this_pt.y) > 1)
+			else if (abs(this->getPositionX() - this->this_pt.x) > 1 || std::abs(this->getPositionY() - this->this_pt.y) > 1)
 			{
 				this->setPosition(Vec2(this->getPositionX() - 8.4, this->getPositionY() - 23.8));
 				//this->x = this->x - 8.4;
@@ -594,7 +594,7 @@ namespace engine{
 						this->world->listOfUnits[this->i]->icemanFlag = true;
 						if (this->world->listOfUnits[this->i]->typeUnit != 24)
 						{
-							this->world->listOfUnits[this->i]->icemanCounter = std::round(Main::mainClass->readXMLClass.castIcemanFreezTimerXML * this->world->listOfUnits[this->i]->icemanResist);
+							this->world->listOfUnits[this->i]->icemanCounter = ::round(Main::mainClass->readXMLClass.castIcemanFreezTimerXML * this->world->listOfUnits[this->i]->icemanResist);
 						}
 						else
 						{

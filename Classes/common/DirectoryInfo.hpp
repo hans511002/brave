@@ -552,7 +552,7 @@ namespace Common
 #if OSTYPE>10 
 			char templates[]="template-XXXXXX";
 			int fd=mkstemp(templates);
-			if(fd==NULL)
+			if(!fd)
 				return "";
 			else
 				close(fd);

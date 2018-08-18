@@ -83,7 +83,7 @@
 #include <algorithm>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <sys/timeb.h>
+//#include <sys/timeb.h>
 
 using namespace std;
 
@@ -110,7 +110,7 @@ using namespace std;
 # include <netinet/in.h>
 # include <arpa/inet.h>
 # include <dirent.h> 
-# include <sys/dir.h>
+//# include <sys/dir.h>
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <sys/socket.h>
@@ -122,7 +122,7 @@ using namespace std;
 # include <termio.h>
 # include <netdb.h>
 # include <utime.h>
-# include <sys/io.h>
+//# include <sys/io.h>
 # include <iconv.h>
 # include <sys/time.h>
 # include <sys/select.h>

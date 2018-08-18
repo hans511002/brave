@@ -119,7 +119,7 @@ namespace Common
 			return *this;
 #endif
 		};
-		bool isNull(){return this->m_socket==NULL;};
+		bool isNull(){return !this->m_socket;};
 		inline static String getErrMsg(){return strerror(errno);};
 		inline static String getErrMsg(int errCode){return strerror(errCode);};
 		inline int getErrCode(){return errno;};

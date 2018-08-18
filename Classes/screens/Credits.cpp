@@ -1,4 +1,4 @@
-#include "Scredits.h"   
+#include "Credits.h"   
  
 namespace screens
 {    
@@ -34,22 +34,22 @@ namespace screens
     {
         this->container->stop();
         this->container->cont->stop();
-        this->container->cont->logoCont->stop();
-        this->container->cont->noteCont->stop();
-        this->container->cont->noteCont->stop();
-        this->container->cont->facebook->stop();
-        this->container->cont->facebook->stop();
-        this->container->cont->btnOk->stop();
-        this->container->cont->logoCont->logoContCase->stop();
-        this->container->cont->noteCont->noteContCase->stop();
-        this->container->cont->facebook->facebookCase->stop();
-        this->container->cont->twitter->twitterCase->stop();
-        this->container->cont->btnOk->okCase->stop();
-        this->container->cont->logoCont->logoContCase->setMouseEnabled(true);
-        this->container->cont->noteCont->noteContCase->setMouseEnabled(true);
-        this->container->cont->facebook->facebookCase->setMouseEnabled(true);
-        this->container->cont->twitter->twitterCase->setMouseEnabled(true);
-        this->container->cont->btnOk->okCase->setMouseEnabled(true);
+        //this->container->cont->logoCont->stop();
+        //this->container->cont->noteCont->stop();
+        //this->container->cont->noteCont->stop();
+        //this->container->cont->facebook->stop();
+        //this->container->cont->facebook->stop();
+        //this->container->cont->btnOk->stop();
+        //this->container->cont->logoCont->logoContCase->stop();
+        //this->container->cont->noteCont->noteContCase->stop();
+        //this->container->cont->facebook->facebookCase->stop();
+        //this->container->cont->twitter->twitterCase->stop();
+        //this->container->cont->btnOk->okCase->stop();
+        //this->container->cont->logoCont->logoContCase->setMouseEnabled(true);
+        //this->container->cont->noteCont->noteContCase->setMouseEnabled(true);
+        //this->container->cont->facebook->facebookCase->setMouseEnabled(true);
+        //this->container->cont->twitter->twitterCase->setMouseEnabled(true);
+        //this->container->cont->btnOk->okCase->setMouseEnabled(true);
         return;
     }// end function
 

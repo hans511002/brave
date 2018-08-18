@@ -16,6 +16,8 @@
 #ifndef __Common_MulHashTable2_H__
 #define __Common_MulHashTable2_H__
 
+#include "HashTable2.hpp"
+
 namespace Common
 {
 	template <class KEYT,class VALUET> class MulHashTable2

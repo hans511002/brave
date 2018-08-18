@@ -201,7 +201,7 @@ namespace Common
 	{
 		Send(preBuffer,strlen(preBuffer));
 		FILE * dFile=fopen(fileName.c_str(),"rb");
-		subFileStream sf(dFile);
+		//subFileStream sf(dFile);
 		char buffer[2048];
 		int len=0;
 		memset(buffer,0,2048);
@@ -211,6 +211,7 @@ namespace Common
 			memset(buffer,0,2048);
 		}
 		Send(postBuffer,strlen(postBuffer));
+		fclose(dFile);
 	};
 	void Socket::SendFile(string fileName)
 	{

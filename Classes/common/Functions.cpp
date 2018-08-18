@@ -854,10 +854,10 @@ namespace Common
 		if( recordRead>0 && recordReject>0 )
 		{
 			bSuccess=false;
-			sprintf(s_temp,"SQL*Loader 失败,目标表:[%s],记录总数:[%ld],异常记录数:[%ld]\0",tableName,recordRead,recordReject);
+			sprintf(s_temp,"SQL*Loader 失败,目标表:[%s],记录总数:[%ld],异常记录数:[%ld]",tableName,recordRead,recordReject);
 		}
 		if(bSuccess)
-			sprintf(s_temp,"SQL*Loader 成功,目标表:[%s],记录总数:[%ld],异常记录数:[%ld]\0",tableName,recordRead,recordReject);
+			sprintf(s_temp,"SQL*Loader 成功,目标表:[%s],记录总数:[%ld],异常记录数:[%ld]",tableName,recordRead,recordReject);
 		out_msg=s_temp;
 		return bSuccess;
 	}

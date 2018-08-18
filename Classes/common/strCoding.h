@@ -7721,10 +7721,10 @@ namespace Common
 
 		//Unicode 转为 UTF8
 		static void UnicodeToUTF8(char *pOut,char *pText,int len);
-		//gb2312转utf8
-		static bool GB2312ToUTF8(char* pstrOut, size_t dwOutLen, const char* pstrIn, size_t dwInLen);
-		//utf8转gb2312
-		static bool UTF8ToGB2312(char* pstrOut, size_t dwOutLen, const char* pstrIn, size_t dwInLen);
+		////gb2312转utf8
+		//static bool GB2312ToUTF8(char* pstrOut, size_t dwOutLen, const char* pstrIn, size_t dwInLen);
+		////utf8转gb2312
+		//static bool UTF8ToGB2312(char* pstrOut, size_t dwOutLen, const char* pstrIn, size_t dwInLen);
 
 		//把str编码为网页中的 GB2312DATA url encode ,英文不变，汉字双字节  如%3D%AE
 		static string UrlGB2312(char * str);
