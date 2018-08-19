@@ -87,15 +87,16 @@ namespace std
             return fileName;
         }
         FileUtils * fu = cocos2d::FileUtils::getInstance();
+        std::string defPath=fu->getDefaultResourceRootPath();
         const std::vector<std::string>& spath = fu->getSearchPaths();
         for (int i = 0; i < spath.size(); i++)
 	    {
 			const string &sp = spath.at(i);
 			string _npath;
 			if (sp[sp.size() - 1] == '/')
-				_npath = spath.at(i) + fileName;
+				_npath = sp + fileName;
 			else
-				_npath = spath.at(i) + "/" + fileName;
+				_npath = sp + "/" + fileName;
              if(fu->isFileExist(_npath))
             {
 				 return _npath;
