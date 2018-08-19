@@ -46,6 +46,7 @@ namespace engine
 		pointer1 = NULL;
 		pointer2 = NULL;
 		pointer3 = NULL;
+		this->setContentSize(Size(Main::SCREEN_WIDTH,Main::SCREEN_HEIGHT));
 		//Main::mainClass->worldClass = this;
 		//this->listOfFlags = [];
 		//this->listOfPlaces = [];

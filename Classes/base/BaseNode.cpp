@@ -775,7 +775,7 @@ namespace std
 			touchOnelistener->onTouchEnded = CC_CALLBACK_2(BaseNode::onTouchEnded, this);
 			touchOnelistener->onTouchCancelled = CC_CALLBACK_2(BaseNode::onTouchCancelled, this);
 			touchOnelistener->onTouchMoved = CC_CALLBACK_2(BaseNode::onTouchMoved, this);
-			touchOnelistener->setSwallowTouches(true);
+			//touchOnelistener->setSwallowTouches(true);
 			this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchOnelistener, this);
 		}
 	};
@@ -1051,6 +1051,7 @@ namespace std
 	bool EventNode::onTouchBegan(Touch *touch, cocos2d::Event *event) {
 		 
 		Node * node = event->getCurrentTarget();
+		logInfo("check touch : ", getNamePath(node));
 		Vec2 tpos = touch->getLocationInView();
 		tpos.y = Main::SCREEN_HEIGHT - tpos.y;
 		if (!std::hitTest(node, tpos))return false;

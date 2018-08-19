@@ -214,7 +214,7 @@ namespace engine{
 							tempObject->setPositionX(tempObject->getPositionX() - 10);
 						}
 					}
-					this->moveHandler();
+					if(this->moveHandler())return;
 					this->attack();
 					if (this->direction == "left" || this->direction == "right")
 					{
