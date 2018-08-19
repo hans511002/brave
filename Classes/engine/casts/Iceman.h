@@ -76,7 +76,7 @@ namespace engine{
 
 			virtual void  update(float dt = 0);
 
-			virtual void  moveHandler();
+			virtual bool  moveHandler();
 
 			virtual void  directionManage();
 

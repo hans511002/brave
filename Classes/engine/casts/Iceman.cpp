@@ -291,7 +291,7 @@ namespace engine{
 			return;
 		}// end function
 
-		void  Iceman::moveHandler()
+		bool  Iceman::moveHandler()
 		{
 			Common::Array<cocos2d::Point> &roadMap = *this->roadMap;
 			if (this->this_pt.x == roadMap[this->movePhase].x)
@@ -310,13 +310,13 @@ namespace engine{
 							if (tempObject < roadMap[this->movePhase].y)
 							{
 								this->speedK = roadMap[this->movePhase].y - tempObject;
-								this->moveHandler();
+								return this->moveHandler();
 							}
 						}
 						else
 						{
 							this->kill();
-							return;
+							return true;
 						}
 					}
 					else if (this->speedK != this->speedKSave)
@@ -339,13 +339,13 @@ namespace engine{
 							if (tempObject > roadMap[this->movePhase].y)
 							{
 								this->speedK = tempObject - roadMap[this->movePhase].y;
-								this->moveHandler();
+								return this->moveHandler();
 							}
 						}
 						else
 						{
 							this->kill();
-							return;
+							return true;
 						}
 					}
 					else if (this->speedK != this->speedKSave)
@@ -371,13 +371,13 @@ namespace engine{
 							if (tempObject < roadMap[this->movePhase].x)
 							{
 								this->speedK = roadMap[this->movePhase].x - tempObject;
-								this->moveHandler();
+								return this->moveHandler();
 							}
 						}
 						else
 						{
 							this->kill();
-							return;
+							return true;
 						}
 					}
 					else if (this->speedK != this->speedKSave)
@@ -400,13 +400,13 @@ namespace engine{
 							if (tempObject > roadMap[this->movePhase].x)
 							{
 								this->speedK = roadMap[this->movePhase].x - tempObject;
-								this->moveHandler();
+								return this->moveHandler();
 							}
 						}
 						else
 						{
 							this->kill();
-							return;
+							return true;
 						}
 					}
 					else if (this->speedK != this->speedKSave)
@@ -439,7 +439,7 @@ namespace engine{
 					}
 				}
 			}
-			return;
+			return false;
 		}// end function
 
 		void  Iceman::directionManage()

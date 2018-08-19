@@ -20,7 +20,9 @@ namespace engine
 				iceDeath = this->createMovieClip("iceDeath", "unit/", "iceDeath", "UnitBase_mc", false, true);
 			}
 			else {
-
+				levinDeath = NULL;
+				stoneDeath = NULL;
+				iceDeath = NULL;
 			}
            
 			shadow = this->createMovieClip("shadow", "unit/", "shadow", "UnitBase_mc", false, true);
@@ -130,9 +132,12 @@ namespace engine
 
 		bool Unit_mc::init(){
 			MovieClip::init();
+			if(this->levinDeath)
 			this->levinDeath->setVisible(false);
-			this->stoneDeath->setVisible(false);
-			this->iceDeath->setVisible(false);
+			if (this->stoneDeath)
+				this->stoneDeath->setVisible(false);
+			if (this->iceDeath)
+				this->iceDeath->setVisible(false);
 			this->buffHP->setVisible(false);
 			this->airShock->setVisible(false);
 			this->buffSpeed->setVisible(false);
