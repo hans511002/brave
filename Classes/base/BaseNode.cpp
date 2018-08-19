@@ -768,7 +768,7 @@ namespace std
 			//listener->onMouseUp = CC_CALLBACK_1(BaseNode::mouseUpHandler, this);
 			listener->onMouseMove = CC_CALLBACK_1(BaseNode::mouseMoveHandler, this);
 			//listener->onMouseScroll = CC_CALLBACK_1(BaseNode::mouseScrollHandler, this);
-			//this->geteventdispatcher()->addeventlistenerwithscenegraphpriority(listener, this);
+			this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 
 			touchOnelistener = cocos2d::EventListenerTouchOneByOne::create();
 			touchOnelistener->onTouchBegan = CC_CALLBACK_2(BaseNode::onTouchBegan, this);
