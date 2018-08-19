@@ -94,7 +94,8 @@ namespace engine{
 			XMLConfigParser(std::string fileName, std::string name,bool del=false) ;
 			~XMLConfigParser(){
 			    if(del){
-			        this->doc->~XMLDocument();
+			        //this->doc->~XMLDocument();
+					tinyxml2::XMLDocument * _doc = doc;
 					delete this->doc;
 					doc = NULL;
 			    }

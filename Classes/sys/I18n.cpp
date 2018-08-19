@@ -9,10 +9,10 @@ namespace sys
 	{
 		doc = new rapidjson::Document();
 		doc->SetObject();
-		int res=JsonUtil::readFile(doc, std::FileUtil::getFilePath("res/i18n/cn.json"));
-		if (res != 0) {
-			exit(res);
-		}
+		//int res=JsonUtil::readFile(doc, std::FileUtil::getFilePath("i18n/cn.json"));
+		//if (res != 0) {
+		//	exit(res);
+		//}
 		//SetValueByPointer(d, "/project", "RapidJSON");
 		//SetValueByPointer(d, "/stars", 10);
 		//if (Value* stars = GetValueByPointer(d, "/stars"))
@@ -24,6 +24,11 @@ namespace sys
 		//bool success = EraseValueByPointer(d, "/a");
 		//assert(success);
 	};
+	bool I18n::init() {
+		int res = JsonUtil::readFile(doc, std::FileUtil::getFilePath("i18n/cn.json"));
+		return res == 0;
+	};
+
 	I18n::~I18n() {
 		delete doc;
 		doc = NULL;

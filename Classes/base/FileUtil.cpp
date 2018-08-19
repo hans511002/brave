@@ -9,6 +9,10 @@ namespace std
 		for (int i = 0; i < subs.size(); i++)
 		{
 			string file = subs.at(i);
+			string fileName=getFileName(file);
+			if (fileName == "." || fileName == "..") {
+				continue;
+			}
 			if (fs->isDirectoryExist(file)) {
 				if (incDir)
 					files.push_back(file);
@@ -59,13 +63,19 @@ namespace std
         { 
             int length = path.size();
             int num2 = length;
+			char ch = path[num2-1];
+			if ((ch == '/' || ch == '\\'))
+			{
+				length--;
+				num2--;
+			}
             while(--num2 >= 0)
             {
-                char ch = path[num2];
+                ch = path[num2];
                 if((ch == '/' || ch == '\\'))
                 {
-                    return path.substr(num2 + 1);
-                    //return path.substr(num2 + 1, (length - num2) - 1);
+					// return path.substr(num2 + 1);
+                    return path.substr(num2 + 1, (length - num2) - 1);
                 }
             }
         }

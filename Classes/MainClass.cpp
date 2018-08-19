@@ -12,8 +12,14 @@
 Main * Main::mainClass;
 const double Main::AnimationInterval = 1.0f / (double)Main::FrameRate;
 bool Main::moneyDebug=true;
+namespace std {
+	sys::I18n i18n;
+
+}
+
 Main::Main() :worldClass(NULL), frameCounter(0), container(NULL), middleScreenClass(NULL), levelsMenuClass(NULL), preload(false)
 {
+	i18n.init();
     Main::mainClass = this;
 };
 Scene* Main::createScene()

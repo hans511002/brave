@@ -140,12 +140,17 @@ namespace engine
 		virtual void removeEventTarget(std::MouseEvent * event, BaseNode* node, string caseName);
 		virtual void removeEventTarget(std::MouseEvent * event, string case1, string caseName);
         virtual bool preCheckEventTarget(std::MouseEvent * event, EventMouse::MouseEventType _mouseEventType);
-		virtual   void mouseDownHandler(cocos2d::EventMouse* event);
-		virtual   void mouseUpHandler(cocos2d::EventMouse* event);
-		virtual   void mouseMoveHandler(cocos2d::EventMouse* event);
+		virtual void mouseDownHandler(cocos2d::EventMouse* event);
+		virtual void mouseUpHandler(cocos2d::EventMouse* event);
+		virtual void mouseMoveHandler(cocos2d::EventMouse* event);
 		//virtual   void mouseScrollHandler(cocos2d::EventMouse* event);
-		virtual   void rightMouseDownHandler(cocos2d::EventMouse* event);
-		virtual   void rightMouseUpHandler(cocos2d::EventMouse* event);
+		virtual void rightMouseDownHandler(cocos2d::EventMouse* event);
+		virtual void rightMouseUpHandler(cocos2d::EventMouse* event);
+
+		//virtual bool onTouchBegan(Touch *touch, Event *unused_event);
+		//virtual void onTouchEnded(Touch *touch, Event *unused_event);
+		//virtual void onTouchCancelled(Touch *touch, Event *unused_event);
+		//virtual void onTouchMoved(Touch *touch, Event *unused_event);
 		 
 		Tower * addTower(std::string param1, BuildTowerPlace*  param2, bool param3 = false);
 

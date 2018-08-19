@@ -8,9 +8,9 @@ $(call import-add-path,$(LOCAL_PATH)/../../../cocos2d/cocos)
 $(call import-add-path,$(LOCAL_PATH)/../../../cocos2d/cocos/audio/include)
 
 
-LOCAL_MODULE := cpp_tests_shared
+LOCAL_MODULE := brave_shared
 
-LOCAL_MODULE_FILENAME := libcpp_tests
+LOCAL_MODULE_FILENAME := libbrave
 
 LOCAL_ARM_MODE := arm
 

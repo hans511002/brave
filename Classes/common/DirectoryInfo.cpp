@@ -11,10 +11,10 @@
 //				without fee, provided that the above copyright notice appear
 //				in all copies.
 // ==============================================================
+#include "cocos2d.h"
 #include "Common.h"
 //#define CPP_FILE 2
 //#include "Common.h" // "includeHead.h"	//unix FTP
-#include "cocos2d.h"
 
 namespace Common
 {

@@ -935,6 +935,69 @@ namespace engine
 		return;
 	}
 
+	//bool World::onTouchBegan(Touch *touch, cocos2d::Event *event) {
+	//	Node * node = event->getCurrentTarget();
+	//	Vec2 tpos = touch->getLocationInView();
+	//	if (!std::hitTest(node, tpos))return false;
+	//	logInfo("hitTest true : touch in ", getNamePath(node));
+	//	Event::Type tp = event->getType();
+	//	event->stopPropagation();
+	//	MouseEvent mevent(cocos2d::EventMouse::MouseEventType::MOUSE_DOWN);
+	//	mevent.setMouseButton(cocos2d::EventMouse::MouseButton::BUTTON_LEFT);
+	//	mevent.setCursorPosition(tpos.x, tpos.y);
+	//	mevent.setCurrentTarget(node);
+	//	if (globalNode) {
+	//		globalNode->mouseDownHandler(&mevent);
+	//	}
+	//	else {
+	//		mouseDownHandler(&mevent);
+	//	}
+	//	return true;
+	//};
+	//void World::onTouchEnded(Touch *touch, Event *event) {
+	//	Node * node = event->getCurrentTarget();
+	//	Vec2 tpos = touch->getLocationInView();
+	//	if (!std::hitTest(node, tpos))return;
+	//	logInfo("hitTest true : mouse up in ", getNamePath(node));
+	//	Event::Type tp = event->getType();
+	//	//logInfo("event targetNamePath", getNamePath(node));
+	//	event->stopPropagation();
+	//	MouseEvent mevent(cocos2d::EventMouse::MouseEventType::MOUSE_UP);
+	//	mevent.setMouseButton(cocos2d::EventMouse::MouseButton::BUTTON_LEFT);
+	//	mevent.setCursorPosition(tpos.x, tpos.y);
+	//	mevent.setCurrentTarget(node);
+	//	if (globalNode) {
+	//		globalNode->mouseUpHandler(&mevent);
+	//	}
+	//	else {
+	//		mouseUpHandler(&mevent);
+	//	}
+	//};
+	//void World::onTouchCancelled(Touch *touch, Event *unused_event) {
+	//};
+	//void World::onTouchMoved(Touch *touch, Event *event) {
+	//	Vec2 tpos = touch->getLocationInView();
+	//	Node * node = event->getCurrentTarget();
+	//	if (!std::hitTest(node, tpos))return;
+	//	Node * node = event->getCurrentTarget();
+	//	Event::Type tp = event->getType();
+	//	event->stopPropagation();
+	//	MouseEvent mevent(cocos2d::EventMouse::MouseEventType::MOUSE_MOVE);
+	//	mevent.setMouseButton(cocos2d::EventMouse::MouseButton::BUTTON_LEFT);
+	//	mevent.setCursorPosition(tpos.x, tpos.y);
+	//	mevent.setCurrentTarget(node);
+	//	//node->setUserData((void*)1);
+	//	if (globalNode) {
+	//		globalNode->mouseMoveHandler(&mevent);
+	//	}
+	//	else {
+	//		mouseMoveHandler(&mevent);
+	//	}
+	//};
+
+
+
+
 	towers::Tower * World::addTower(std::string param1, BuildTowerPlace *  param2, bool param3)
 	{
 		towers::Tower * tempObject = NULL;

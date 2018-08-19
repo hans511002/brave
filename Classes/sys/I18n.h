@@ -11,6 +11,7 @@ namespace sys
  		rapidjson::Document * doc; 
 
 		I18n();
+		virtual bool init();
 		~I18n();
 
 		template <class T = int> void setValue(string namePath,T val){

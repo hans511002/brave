@@ -52,7 +52,7 @@ namespace std
 	void changeAnchorPoint(Node * node, float xy);
 	void changeAnchorPoint(Node * node, const Vec2& xy); 
 	cocos2d::Sprite* maskedSpriteWithSprite(cocos2d::Sprite* textureSprite, cocos2d::Sprite* maskSprite);
-	cocos2d::ClippingNode* maskedWithClippingNode(cocos2d::Sprite* textureSprite, cocos2d::Sprite* maskSprite);
+	//cocos2d::ClippingNode* maskedWithClippingNode(cocos2d::Sprite* textureSprite, cocos2d::Sprite* maskSprite);
 
 	string getNamePath(Node *node);
 	Common::Array<Node*>  getChildNodes(Node *node);
@@ -112,15 +112,21 @@ namespace std
 		void printNodePos(Node *node);
 		void printNodePos(MovieClipSub *node);
 
-		virtual   void keyBoardPressedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-		virtual   void keyBoardReleasedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-		virtual   void mouseDownHandler(cocos2d::EventMouse* event);
-		virtual   void mouseUpHandler(cocos2d::EventMouse* event);
-		virtual   void mouseMoveHandler(cocos2d::EventMouse* event);
-		virtual   void mouseScrollHandler(cocos2d::EventMouse* event);
-		virtual   void rightMouseDownHandler(cocos2d::EventMouse* event);
-		virtual   void rightMouseUpHandler(cocos2d::EventMouse* event);
+		virtual void keyBoardPressedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+		virtual void keyBoardReleasedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+		virtual void mouseDownHandler(cocos2d::EventMouse* event);
+		virtual void mouseUpHandler(cocos2d::EventMouse* event);
+		virtual void mouseMoveHandler(cocos2d::EventMouse* event);
+		virtual void mouseScrollHandler(cocos2d::EventMouse* event);
+		virtual void rightMouseDownHandler(cocos2d::EventMouse* event);
+		virtual void rightMouseUpHandler(cocos2d::EventMouse* event);
+		//ui touch
 		virtual void touchActionHandler(cocos2d::Ref *pSender, cocos2d::ui::TouchEventType type);
+
+		virtual bool onTouchBegan(Touch *touch, Event *unused_event);
+		virtual void onTouchEnded(Touch *touch, Event *unused_event);
+		virtual void onTouchCancelled(Touch *touch, Event *unused_event);
+		virtual void onTouchMoved(Touch *touch, Event *unused_event);
 	};
 	extern Common::Array<EventNode *> EventNodes;
 	void addEventNode(EventNode *node);
@@ -174,6 +180,8 @@ namespace std
 		Vec2 basePoint;
 		static const double AnimationInterval;
 		cocos2d::EventListenerMouse * listener;
+		cocos2d::EventListenerTouchOneByOne * touchOnelistener;
+
 		BaseNode();
 		BaseNode(float w, float h, bool draw = true);
 		//virtual string getTypeName();
@@ -299,6 +307,7 @@ namespace std
 		virtual void _onStart() = 0;
  	public:
 		cocos2d::EventListenerMouse * listener;
+		cocos2d::EventListenerTouchOneByOne * touchOnelistener;
 		BaseLayer();
 		inline virtual bool hitTest(const Vec2 &pt) { return std::hitTest(this, pt); };
 		inline virtual bool hitTest(cocos2d::EventMouse* event) { return std::hitTest(this, event); };

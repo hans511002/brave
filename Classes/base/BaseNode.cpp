@@ -10,7 +10,7 @@ namespace std
 {
 	bool useNodeEvent = true;
 	EventNode *globalNode=NULL;
-	sys::I18n i18n;
+	
 	//mutex dbloadMutex;
 
 	cocos2d::Sprite* maskedSpriteWithSprite(cocos2d::Sprite* textureSprite, cocos2d::Sprite* maskSprite)
@@ -51,12 +51,12 @@ namespace std
 	EventNode::EventNode() :mouseChildren(false), mouseEnabled(false), mouseFlag(false)
 	{
 	};
-	BaseNode::BaseNode() :schdt(0), autoDel(true), isAutoDel(false), listener(0), linkParent(NULL)
+	BaseNode::BaseNode() :schdt(0), autoDel(true), isAutoDel(false), listener(0), linkParent(NULL), touchOnelistener(NULL)
 	{
 		//setName(getTypeName());
 	};
 
-	BaseNode::BaseNode(float w, float h, bool draw) :autoDel(true), isAutoDel(false), listener(0), linkParent(NULL)
+	BaseNode::BaseNode(float w, float h, bool draw) :autoDel(true), isAutoDel(false), listener(0), linkParent(NULL), touchOnelistener(NULL)
 	{
 		setNodeType("BaseNode");
 		this->setContentSize(Size(w, h));
@@ -332,7 +332,7 @@ namespace std
 			this->unschedule(schedule_selector(BaseNode::scheduleUpdate));
 		}
 	};
-	BaseLayer::BaseLayer() :_background(nullptr), listener(NULL)
+	BaseLayer::BaseLayer() :_background(nullptr), listener(NULL), touchOnelistener(NULL)
 	{
 		setNodeType("BaseLayer");
 		std::setAnchorPoint((Node*)this);
@@ -759,15 +759,24 @@ namespace std
 		{
 			this->setMouseEnabled(true);
 		}
-		if (listen && listener == NULL)
+		if (listen && (listener == NULL && touchOnelistener==NULL))
 		{
-			listener = cocos2d::EventListenerMouse::create();
-			listener->onMouseDown = CC_CALLBACK_1(BaseNode::mouseDownHandler, this);
-			listener->onMouseUp = CC_CALLBACK_1(BaseNode::mouseUpHandler, this);
-			listener->onMouseMove = CC_CALLBACK_1(BaseNode::mouseMoveHandler, this);
-			listener->onMouseScroll = CC_CALLBACK_1(BaseNode::mouseScrollHandler, this);
 			this->getEventDispatcher()->setEnabled(true);
-			this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+
+			listener = cocos2d::EventListenerMouse::create();
+			//listener->onMouseDown = CC_CALLBACK_1(BaseNode::mouseDownHandler, this);
+			//listener->onMouseUp = CC_CALLBACK_1(BaseNode::mouseUpHandler, this);
+			listener->onMouseMove = CC_CALLBACK_1(BaseNode::mouseMoveHandler, this);
+			//listener->onMouseScroll = CC_CALLBACK_1(BaseNode::mouseScrollHandler, this);
+			//this->geteventdispatcher()->addeventlistenerwithscenegraphpriority(listener, this);
+
+			touchOnelistener = cocos2d::EventListenerTouchOneByOne::create();
+			touchOnelistener->onTouchBegan = CC_CALLBACK_2(BaseNode::onTouchBegan, this);
+			touchOnelistener->onTouchEnded = CC_CALLBACK_2(BaseNode::onTouchEnded, this);
+			touchOnelistener->onTouchCancelled = CC_CALLBACK_2(BaseNode::onTouchCancelled, this);
+			touchOnelistener->onTouchMoved = CC_CALLBACK_2(BaseNode::onTouchMoved, this);
+			touchOnelistener->setSwallowTouches(true);
+			this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchOnelistener, this);
 		}
 	};
 	void BaseNode::disableMouseHandler(){
@@ -775,6 +784,11 @@ namespace std
 			getEventDispatcher()->removeEventListener(listener);
 			delete listener;
 			listener = NULL;
+		}
+		if (touchOnelistener) {
+			getEventDispatcher()->removeEventListener(touchOnelistener);
+			delete touchOnelistener;
+			touchOnelistener = NULL;
 		}
 	}
 
@@ -800,13 +814,26 @@ namespace std
 			listener->onMouseMove = CC_CALLBACK_1(BaseNode::mouseMoveHandler, this);
 			listener->onMouseScroll = CC_CALLBACK_1(BaseNode::mouseScrollHandler, this);
 			getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+
+			touchOnelistener = cocos2d::EventListenerTouchOneByOne::create();
+			touchOnelistener->onTouchBegan = CC_CALLBACK_2(BaseNode::onTouchBegan, this);
+			touchOnelistener->onTouchEnded = CC_CALLBACK_2(BaseNode::onTouchEnded, this);
+			touchOnelistener->onTouchCancelled = CC_CALLBACK_2(BaseNode::onTouchCancelled, this);
+			touchOnelistener->onTouchMoved = CC_CALLBACK_2(BaseNode::onTouchMoved, this);
+			touchOnelistener->setSwallowTouches(true);
+			this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchOnelistener, this);
 		}
 	};
-	void BaseLayer::disableMouseHandler(){
-		if (listener){
+	void BaseLayer::disableMouseHandler() {
+		if (listener) {
 			getEventDispatcher()->removeEventListener(listener);
 			delete listener;
 			listener = NULL;
+		}
+		if (touchOnelistener) {
+			getEventDispatcher()->removeEventListener(touchOnelistener);
+			delete touchOnelistener;
+			touchOnelistener = NULL;
 		}
 	}
 
@@ -1020,6 +1047,72 @@ namespace std
 		string target = node->getName();
 		CCLOG("touchAction %s type=%i", target.c_str(), type);
 	};
+
+	bool EventNode::onTouchBegan(Touch *touch, cocos2d::Event *event) {
+		 
+		Node * node = event->getCurrentTarget();
+		Vec2 tpos = touch->getLocationInView();
+		tpos.y = Main::SCREEN_HEIGHT - tpos.y;
+		if (!std::hitTest(node, tpos))return false;
+		logInfo("hitTest true : touch in ", getNamePath(node));
+		Event::Type tp = event->getType();
+		event->stopPropagation();
+		MouseEvent mevent(cocos2d::EventMouse::MouseEventType::MOUSE_DOWN);
+		mevent.setMouseButton(cocos2d::EventMouse::MouseButton::BUTTON_LEFT);
+		mevent.setCursorPosition(tpos.x, tpos.y);
+		mevent.setCurrentTarget(node);
+		if (globalNode) {
+			globalNode->mouseDownHandler(&mevent);
+		}
+		else {
+			mouseDownHandler(&mevent);
+		}
+		return true;
+	};
+	void EventNode::onTouchEnded(Touch *touch, Event *event) {
+		Node * node = event->getCurrentTarget();
+		Vec2 tpos = touch->getLocationInView();
+		tpos.y = Main::SCREEN_HEIGHT - tpos.y;
+		if (!std::hitTest(node, tpos))return;
+		logInfo("hitTest true : mouse up in ", getNamePath(node));
+		Event::Type tp = event->getType();
+		//logInfo("event targetNamePath", getNamePath(node));
+		event->stopPropagation();
+		MouseEvent mevent(cocos2d::EventMouse::MouseEventType::MOUSE_UP);
+		mevent.setMouseButton(cocos2d::EventMouse::MouseButton::BUTTON_LEFT);
+		mevent.setCursorPosition(tpos.x, tpos.y);
+		mevent.setCurrentTarget(node);
+		if (globalNode) {
+			globalNode->mouseUpHandler(&mevent);
+		}
+		else {
+			mouseUpHandler(&mevent);
+		}
+	};
+	void EventNode::onTouchCancelled(Touch *touch, Event *unused_event) {
+
+	};
+	void EventNode::onTouchMoved(Touch *touch, Event *event) {
+		Vec2 tpos = touch->getLocationInView();
+		tpos.y = Main::SCREEN_HEIGHT - tpos.y;
+		Node * node = event->getCurrentTarget();
+		if (!std::hitTest(node, tpos))return; 
+		Event::Type tp = event->getType();
+ 		event->stopPropagation(); 
+		MouseEvent mevent(cocos2d::EventMouse::MouseEventType::MOUSE_MOVE);
+		mevent.setMouseButton(cocos2d::EventMouse::MouseButton::BUTTON_LEFT);
+		mevent.setCursorPosition(tpos.x, tpos.y);
+		mevent.setCurrentTarget(node);
+		//node->setUserData((void*)1);
+		if (globalNode) {
+			globalNode->mouseMoveHandler(&mevent);
+		}
+		else {
+			mouseMoveHandler(&mevent);
+		}
+	};
+
+
 	string getNamePath(Node *node){
 		if (!node)return "";
 		string name = node->getName();
