@@ -42,13 +42,7 @@ android {
         res.srcDir "res"
         manifest.srcFile "AndroidManifest.xml"
         assets.srcDir "../../Resources/res"
-//        assets.exclude (project.projectDir.absolutePath + "\\src\\main\\assets\\mainIngoreTest.txt")
-        assets.exclude
-                {
-                    File f = it.file
-                    println f.absolutePath
-                    f.absolutePath.endsWith("library")||f.absolutePath.endsWith(".zip")
-                }
+        assets.exclude "**/*.zip"
     }
     externalNativeBuild {
         ndkBuild {
@@ -101,7 +95,9 @@ android {
         disable 'TypographyFractions', 'TypographyQuotes'
     }
     productFlavors {
+
     }
+
 }
 
 android.applicationVariants.all { variant ->
@@ -112,12 +108,34 @@ android.applicationVariants.all { variant ->
         copy {
            from "${buildDir}/../../../Resources/res"
            into "${buildDir}/intermediates/assets/${variant.dirName}"
-           exclude "**/*.gz"
+            exclude "**/*.gz"
+            exclude "${buildDir}/../../../Resources/res/**/**/*.zip","${buildDir}/../../../Resources/res/**/**/library/**"
+            //excludes.add("**/*.zip")
+            //delete ("${buildDir}/../../Resources/res\\cast\\Air_mc\\Air_mc.zip")
+            exclude{
+                File f = it.file
+                //println f.absolutePath
+                 f.absolutePath.endsWith(".zip") || f.absolutePath.indexOf("library")>0
+            }
+        }
+        copy {
+            from "${buildDir}/intermediates/assets/${variant.dirName}"
+            into "${buildDir}/tmp/assets/${variant.dirName}"
+            exclude{
+                File f = it.file
+                //println f.absolutePath
+                if(f.absolutePath.endsWith(".zip") || f.absolutePath.indexOf("library")>0 ||f.absolutePath.endsWith(".dbproj")){
+                    delete f.absolutePath
+                }
+            }
         }
     }
+
+
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':libcocos2dx')
+
 }
