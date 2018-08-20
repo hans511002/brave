@@ -42,6 +42,13 @@ android {
         res.srcDir "res"
         manifest.srcFile "AndroidManifest.xml"
         assets.srcDir "../../Resources/res"
+//        assets.exclude (project.projectDir.absolutePath + "\\src\\main\\assets\\mainIngoreTest.txt")
+        assets.exclude
+                {
+                    File f = it.file
+                    println f.absolutePath
+                    f.absolutePath.endsWith("library")||f.absolutePath.endsWith(".zip")
+                }
     }
     externalNativeBuild {
         ndkBuild {
@@ -64,8 +71,9 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             if (project.hasProperty("RELEASE_STORE_FILE")) {
                 signingConfig signingConfigs.release
             }
@@ -78,6 +86,9 @@ android {
         }
 
         debug {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             externalNativeBuild {
                 ndkBuild {
                     arguments 'NDK_DEBUG=1'
