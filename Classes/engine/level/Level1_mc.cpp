@@ -3,10 +3,10 @@
 #include "MainClass.h"
 #include "engine/World.h"
 #include "JsonUtil.h"
-#include "cocostudio/DictionaryHelper.h"
-#include "cocostudio/CocoStudio.h"
-#include "cocostudio/WidgetReader/WidgetReader.h"
-using namespace cocostudio;
+//#include "cocostudio/DictionaryHelper.h"
+//#include "cocostudio/CocoStudio.h"
+//#include "cocostudio/WidgetReader/WidgetReader.h"
+//using namespace cocostudio;
 
 //CCActionInterval * actionBy1 = CCScaleBy::create(2.f, 2.f, 1.f);
 //neru_pSprite->runAction(actionBy1); /

@@ -67,6 +67,8 @@ namespace std
 	public:
 		EventNode();
 		static bool debug;
+		static Node * beginTouchNode;
+		static Vec2 beginTouchPos;
 		cocos2d::Label* createLabel(const std::string& string);
 
 		string nodeType;

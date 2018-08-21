@@ -8,7 +8,7 @@
 #include "ui/CocosGUI.h"
 #include "common/Common.h" 
 #include "BaseNode.h"
-#include "cocos-ext.h"
+//#include "cocos-ext.h"
 #include "base/mc.h"
 #include <math.h> 
 #include "engine/xml/XmlConfigParser.h"

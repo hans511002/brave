@@ -10,7 +10,10 @@ namespace std
 {
 	bool useNodeEvent = true;
 	EventNode *globalNode=NULL;
-	
+	bool EventNode::debug = true;
+	Node * EventNode::beginTouchNode=NULL;
+	Vec2 EventNode::beginTouchPos;
+
 	//mutex dbloadMutex;
 
 	cocos2d::Sprite* maskedSpriteWithSprite(cocos2d::Sprite* textureSprite, cocos2d::Sprite* maskSprite)
@@ -1049,7 +1052,6 @@ namespace std
 	};
 
 	bool EventNode::onTouchBegan(Touch *touch, cocos2d::Event *event) {
-		 
 		Node * node = event->getCurrentTarget();
 		logInfo("check touch : ", getNamePath(node));
 		Vec2 tpos = touch->getLocationInView();
@@ -1062,6 +1064,9 @@ namespace std
 		mevent.setMouseButton(cocos2d::EventMouse::MouseButton::BUTTON_LEFT);
 		mevent.setCursorPosition(tpos.x, tpos.y);
 		mevent.setCurrentTarget(node);
+		EventNode::beginTouchNode=node;
+		EventNode::beginTouchPos=tpos;
+
 		if (globalNode) {
 			globalNode->mouseDownHandler(&mevent);
 		}
@@ -1079,6 +1084,22 @@ namespace std
 		Event::Type tp = event->getType();
 		//logInfo("event targetNamePath", getNamePath(node));
 		event->stopPropagation();
+
+		if(EventNode::beginTouchNode && EventNode::beginTouchNode!=node){
+			if(tpos.distance(EventNode::beginTouchPos)>20){
+				MouseEvent mevent(cocos2d::EventMouse::MouseEventType::MOUSE_MOVE);
+				mevent.setMouseButton(cocos2d::EventMouse::MouseButton::BUTTON_LEFT);
+				mevent.setCursorPosition(tpos.x, tpos.y);
+				mevent.setCurrentTarget(node);
+				if (globalNode) {
+					globalNode->mouseMoveHandler(&mevent);
+				}
+				else {
+					mouseMoveHandler(&mevent);
+				}
+			}
+		}
+		EventNode::beginTouchNode=NULL;
 		MouseEvent mevent(cocos2d::EventMouse::MouseEventType::MOUSE_UP);
 		mevent.setMouseButton(cocos2d::EventMouse::MouseButton::BUTTON_LEFT);
 		mevent.setCursorPosition(tpos.x, tpos.y);
@@ -1191,7 +1212,7 @@ namespace std
 
 	void EventNode::logInfo(string mouseType, cocos2d::EventMouse* event)
 	{
-		if (!debug)return;
+		if (!EventNode::debug)return;
 		cocos2d::EventMouse::MouseButton mouseButton = event->getMouseButton();
 		logInfo(mouseType, event->getCursorX(), event->getCursorY());
 		logInfo("         mouseButton", (int)mouseButton);
@@ -1220,7 +1241,7 @@ namespace std
 
 		}
 	};
-	bool EventNode::debug = true;
+
 	void EventNode::logInfo(const string & label, const cocos2d::Point & pos, const cocos2d::Point* pos2, const cocos2d::Point* pos3, const cocos2d::Point* pos4)
 	{
 		if (!debug)return;

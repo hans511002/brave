@@ -477,6 +477,8 @@ namespace engine
         if(preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_DOWN))return;
         if(!event->currentTargets.size())
             event->currentTargets.push(this);
+		this->mouseX = e->getCursorX();
+		this->mouseY = e->getCursorY();
 		while (event->hasNext())
 		{
 			string targetName = event->target->getName();
@@ -620,6 +622,8 @@ namespace engine
         if(preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_UP))return;
         if(!event->currentTargets.size())
             event->currentTargets.push(this);
+		this->mouseX = e->getCursorX();
+		this->mouseY = e->getCursorY();
 		while (event->hasNext())
         {
  			string targetName = event->target->getName();

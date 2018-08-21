@@ -1,9 +1,9 @@
 ﻿#include "WorldInterface_mc.h"  
 using namespace cocos2d::ui;
-#include "cocostudio/DictionaryHelper.h"
-#include "cocostudio/CocoStudio.h"
-#include "cocostudio/WidgetReader/WidgetReader.h"
-using namespace cocostudio;
+//#include "cocostudio/DictionaryHelper.h"
+//#include "cocostudio/CocoStudio.h"
+//#include "cocostudio/WidgetReader/WidgetReader.h"
+//using namespace cocostudio;
 
 namespace engine
 {
