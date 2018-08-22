@@ -1079,17 +1079,19 @@ namespace std
 		logInfo("hitTest true : touch in ", getNamePath(node));
 		Event::Type tp = event->getType();
 		event->stopPropagation();
+
 		MouseEvent mevent(cocos2d::EventMouse::MouseEventType::MOUSE_DOWN);
 		mevent.setMouseButton(cocos2d::EventMouse::MouseButton::BUTTON_LEFT);
 		mevent.setCursorPosition(tpos.x, tpos.y);
 		mevent.setCurrentTarget(node);
 		EventNode::beginTouchNode=node;
 		EventNode::beginTouchPos=tpos;
-
 		if (globalNode) {
-			globalNode->mouseDownHandler(&mevent);
+            globalNode->mouseMoveHandler(&mevent);
+            globalNode->mouseDownHandler(&mevent);
 		}
 		else {
+            mouseMoveHandler(&mevent); 
 			mouseDownHandler(&mevent);
 		}
 		return true;

@@ -553,7 +553,6 @@ namespace engine {
             return;
         string targetName = event->target->getName();
         if (targetName == "sphereCase")return;
-        MOBILE_MOVE_SUPPORT
         if (targetName == "sellCase") {
             this->world->worldInterface->container->sell->gotoAndStop(1);
             while (this->fireCount > 0) {
