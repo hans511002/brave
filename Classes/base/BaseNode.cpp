@@ -2,7 +2,9 @@
 #include "MainClass.h"
 #include "base/mc.h"
 #include "DbPreload.h"
-
+#if defined(__GNUC__)
+#include <cxxabi.h>
+#endif
 using namespace cocos2d;
 const double BaseNode::AnimationInterval = 1.0f / (double)Main::FrameRate;
 
@@ -67,11 +69,28 @@ namespace std
 		if (draw)drawRange();
 	};
 	string EventNode::getTypeName(){
-		Common::String clzName = typeid(*this).name();
-		Common::Array<Common::String> names = clzName.Split(" ");
-		clzName = names.at(names.size() - 1);
-		names = clzName.Split("::");
-		clzName = names.at(names.size() - 1);
+        string clzName = "";
+        const char * nmname=typeid(*this).name();
+#if defined(__GNUC__)
+        char* real_name = abi::__cxa_demangle(nmname, nullptr, nullptr, nullptr);
+        clzName=real_name;
+        free(real_name);
+#else
+        clzName=nmname;
+#endif
+        int size=clzName.size();
+        int i=size-1;
+        const char * p=clzName.c_str();
+        while(i>=0){
+            if(p[i]==' ' || p[i]==':'){
+                return clzName.substr(i+1);
+            }
+            i--;
+        }
+//		Common::Array<Common::String> names = clzName.Split(" ");
+//		clzName = names.at(names.size() - 1);
+//		names = clzName.Split("::");
+//		clzName = names.at(names.size() - 1);
 		return clzName;
 	};
 	//   string BaseNode::getTypeName(){

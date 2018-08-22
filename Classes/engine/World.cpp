@@ -469,6 +469,7 @@ namespace engine
 		if (!globalNode)EventNode::mouseDownHandler(e);
 		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
 		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
+		MOBILE_MOVE_SUPPORT
 		std::MouseEvent me(e);
 		if (!useNodeEvent){
 			me = std::buildMouseEvent(e);
