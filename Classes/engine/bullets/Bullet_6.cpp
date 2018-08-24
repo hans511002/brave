@@ -33,7 +33,7 @@ namespace engine
             this->damageLittle = damage / container->totalFrames;
             Bullet::init();
             this->attack();
-            //Sounds.instance.playSoundWithVol("snd_tower_shootUltra2", 0.85);
+            AudioUtil::playSoundWithVol("Snd_tower_shootUltra2.mp3", 0.85);
             return true;
         }// end function
 

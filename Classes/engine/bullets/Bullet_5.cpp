@@ -54,8 +54,8 @@ namespace engine{
             //this->shadow->y = whoShoot.y;
             this->shadow->setScale(0.5,0.5);
             world->addChild(this->shadow, 2);
-            //world->listOfIndexes2.push(this->shadow);
-            //Sounds.instance.playSound("snd_tower_shootUltra1_1");
+            world->addIndexes(this->shadow,2);
+            AudioUtil::playSound("Snd_tower_shootUltra1_1.mp3");
             return true;
         }// end function  
         void Bullet_5::update(float dt)
@@ -125,7 +125,7 @@ namespace engine{
                     if (liveCounter == 4)
                     {
                         BulletTower5_1Bang_mc * tempObject =  new BulletTower5_1Bang_mc(this->world) ;
-                        //Sounds.instance.playSound("snd_tower_shootUltra1_2");
+                        AudioUtil::playSound("Snd_tower_shootUltra1_2.mp3");
                         tempObject->setPosition(this_pt);
                         //tempObject.x = this_pt.x;
                         //tempObject.y = this_pt.y;
@@ -192,17 +192,8 @@ namespace engine{
         {
             if (this->shadow)
             {
+                world->removeIndexes(this,2); 
                 world->removeChild(this->shadow);
-                //i = 0;
-                //while (i < world->listOfIndexes2.length)
-                //{
-                //    if (world->listOfIndexes2[i] == this->shadow)
-                //    {
-                //        world->listOfIndexes2.splice(i, 1);
-                //        break;
-                //    }
-                //    i++;
-                //}
                 this->shadow = NULL;
             }
             Bullet::kill();

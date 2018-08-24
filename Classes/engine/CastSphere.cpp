@@ -33,7 +33,7 @@ namespace engine{
 			{
 				this->sphereType = "fire";
 				this->fireCount = this->world->getSphere->fireCount;
-				//Sounds.instance.playSoundWithVol("snd_cast_fire", 0.7);
+				AudioUtil::playSoundWithVol("Snd_cast_fire.mp3", 0.7);
 				this->world->castFireCounter++;
 				int addit_castFireCounter = this->world->saveBox->getIntValue("addit_castFireCounter");
 				this->world->saveBox->setValue("addit_castFireCounter", addit_castFireCounter + 1);
@@ -42,7 +42,7 @@ namespace engine{
 			{
 				this->sphereType = "ice";
 				this->iceCount = this->world->getSphere->iceCount;
-				//Sounds.instance.playSoundWithVol("snd_cast_ice", 0.7);
+				AudioUtil::playSoundWithVol("Snd_cast_ice.mp3", 0.7);
 				this->world->castIceCounter++;
 				this->world->saveBox->setValue("addit_castStoneCounter", this->world->castIceCounter);
 			}
@@ -50,7 +50,7 @@ namespace engine{
 			{
 				this->sphereType = "stone";
 				this->stoneCount = this->world->getSphere->stoneCount;
-				//Sounds.instance.playSound("snd_cast_stone");
+				AudioUtil::playSound("Snd_cast_stone.mp3");
 				this->world->castStoneCounter++;
 				this->world->saveBox->setValue("addit_castStoneCounter", this->world->castStoneCounter);
 			}
@@ -58,7 +58,7 @@ namespace engine{
 			{
 				this->sphereType = "levin";
 				this->levinCount = this->world->getSphere->levinCount;
-				//Sounds.instance.playSoundWithVol("snd_cast_levin", 0.8);
+				AudioUtil::playSoundWithVol("Snd_cast_levin.mp3", 0.8);
 				this->world->castLevinCounter++;
 				this->world->saveBox->setValue("addit_castLevinCounter", this->world->castLevinCounter);
 			}
@@ -71,7 +71,7 @@ namespace engine{
 				if (this->fireCount > 0 && this->iceCount > 0 && this->stoneCount == 0 && this->levinCount == 0)
 				{
 					this->sphereType = "fireIce";
-					//Sounds.instance.playSoundWithVol("snd_cast_fireIce", 0.9);
+					AudioUtil::playSoundWithVol("Snd_cast_fireIce.mp3", 0.9);
 					this->world->castFireCounter++;
 					this->world->castIceCounter++;
 					this->world->saveBox->setValue("addit_castFireCounter", this->world->castFireCounter);
@@ -80,7 +80,7 @@ namespace engine{
 				else if (this->fireCount > 0 && this->iceCount == 0 && this->stoneCount > 0 && this->levinCount == 0)
 				{
 					this->sphereType = "fireStone";
-					//Sounds.instance.playSound("snd_cast_fireStone");
+					AudioUtil::playSound("Snd_cast_fireStone.mp3");
 					this->world->castFireCounter++;
 					this->world->castStoneCounter++;
 					this->world->saveBox->setValue("addit_castFireCounter", this->world->castFireCounter);
@@ -89,7 +89,7 @@ namespace engine{
 				else if (this->fireCount > 0 && this->iceCount == 0 && this->stoneCount == 0 && this->levinCount > 0)
 				{
 					this->sphereType = "fireLevin";
-					//Sounds.instance.playSoundWithVol("snd_cast_fireLevin", 0.7);
+					AudioUtil::playSoundWithVol("Snd_cast_fireLevin.mp3", 0.7);
 					this->world->castFireCounter++;
 					this->world->castLevinCounter++;
 					this->world->saveBox->setValue("addit_castFireCounter", this->world->castFireCounter);
@@ -98,7 +98,7 @@ namespace engine{
 				else if (this->fireCount == 0 && this->iceCount > 0 && this->stoneCount > 0 && this->levinCount == 0)
 				{
 					this->sphereType = "iceStone";
-					//Sounds.instance.playSound("snd_cast_iceStone");
+					AudioUtil::playSound("Snd_cast_iceStone.mp3");
 					this->world->castIceCounter++;
 					this->world->castStoneCounter++;
 					this->world->saveBox->setValue("addit_castIceCounter", this->world->castIceCounter);
@@ -107,7 +107,7 @@ namespace engine{
 				else if (this->fireCount == 0 && this->iceCount > 0 && this->stoneCount == 0 && this->levinCount > 0)
 				{
 					this->sphereType = "iceLevin";
-					//Sounds.instance.playSoundWithVol("snd_cast_iceLevin", 0.9);
+					AudioUtil::playSoundWithVol("Snd_cast_iceLevin.mp3", 0.9);
 					this->world->castIceCounter++;
 					this->world->castLevinCounter++;
 					this->world->saveBox->setValue("addit_castIceCounter", this->world->castIceCounter);
@@ -116,7 +116,7 @@ namespace engine{
 				else if (this->fireCount == 0 && this->iceCount == 0 && this->stoneCount > 0 && this->levinCount > 0)
 				{
 					this->sphereType = "stoneLevin";
-					//Sounds.instance.playSoundWithVol("snd_cast_stoneLevin", 0.9);
+					AudioUtil::playSoundWithVol("Snd_cast_stoneLevin.mp3", 0.9);
 					this->world->castStoneCounter++;
 					this->world->castLevinCounter++;
 					this->world->saveBox->setValue("addit_castStoneCounter", this->world->castStoneCounter);
@@ -125,7 +125,7 @@ namespace engine{
 				else
 				{
 					this->sphereType = "getAllLittle";
-					//Sounds.instance.playSoundWithVol("snd_cast_getAllLittle", 0.9);
+					AudioUtil::playSoundWithVol("Snd_cast_getAllLittle.mp3", 0.9);
 					this->world->castGetAllCounter++;
 					this->world->saveBox->setValue("addit_castGetAllCounter", this->world->castGetAllCounter);
 				}
@@ -135,7 +135,7 @@ namespace engine{
 		{
 			this->sphereType = "getAll";
 			this->getAllCount = this->world->getSphere->getAllCount;
-			//Sounds.instance.playSoundWithVol("snd_cast_getAll", 0.95);
+			AudioUtil::playSoundWithVol("Snd_cast_getAll.mp3", 0.95);
 		}
 		if (this->world->saveBox->getIntValue("addit_castFireCounter") == 150)
 		{
@@ -229,7 +229,7 @@ namespace engine{
 					this->additAnamation->setMouseChildren(false);
 					this->additAnamation->setMouseEnabled(false);
 					this->world->addChild(this->additAnamation, 2);
-					//this->world->listOfIndexes0.push(this->additAnamation);
+					this->world->addIndexes(this->additAnamation,0);
 					float tempObject = 1000;
 					if (this->world->map.road1.size())
 					{
@@ -385,7 +385,7 @@ namespace engine{
 		this->container->stop();
 		this->addChild(this->container);
 		this->world->addClasses(this);
-		//this->world->listOfIndexes2.push(this);
+        //this->world->addIndexes(this,2);
 		this->world->forseIndexFl = true;
 		return true;
 	}// end function
@@ -719,7 +719,7 @@ namespace engine{
 						if (dead)
 						{
 							int addit_castKillEnemiesCounter = this->world->saveBox->getIntValue("addit_castKillEnemiesCounter");
-							//(this->world->saveBox.gameSave.data.addit_castKillEnemiesCounter + 1);
+							this->world->saveBox->setValue("addit_castKillEnemiesCounter", addit_castKillEnemiesCounter + 1);
 						}
 					}
 					i--;
@@ -913,18 +913,9 @@ namespace engine{
 			{
 				if (container->haze1->currentFrame == container->haze1->totalFrames && this->additAnamation->swamp1->currentFrame == this->additAnamation->swamp1->totalFrames)
 				{
-					this->kill();
-					//this->i = 0;
-					//while (this->i < this->world->listOfIndexes0.length)
-					//{ 
-					//    if (this->world->listOfIndexes0[this->i] == this->additAnamation)
-					//    {
-					//        this->world->removeChild(this->additAnamation);
-					//        this->world->listOfIndexes0.splice(this->i, 1);
-					//        break;
-					//    }
-					//    i++;
-					//}
+					this->world->removeIndexes(this->additAnamation,0);
+				    this->world->removeChild(this->additAnamation);
+					this->kill(); 
 				}
 			}
 		}
@@ -1094,7 +1085,6 @@ namespace engine{
 								{
 									int addit_castKillEnemiesCounter = this->world->saveBox->getIntValue("addit_castKillEnemiesCounter");
 									this->world->saveBox->setValue("addit_castKillEnemiesCounter", addit_castKillEnemiesCounter + 1);
-									//(this->world->saveBox.gameSave.data.addit_castKillEnemiesCounter + 1);
 								}
 							}
 						}
@@ -1123,7 +1113,6 @@ namespace engine{
 								{
 									int addit_castKillEnemiesCounter = this->world->saveBox->getIntValue("addit_castKillEnemiesCounter");
 									this->world->saveBox->setValue("addit_castKillEnemiesCounter", addit_castKillEnemiesCounter + 1);
-									//(this->world->saveBox.gameSave.data.addit_castKillEnemiesCounter + 1);
 								}
 							}
 						}
@@ -1152,7 +1141,6 @@ namespace engine{
 								{
 									int addit_castKillEnemiesCounter = this->world->saveBox->getIntValue("addit_castKillEnemiesCounter");
 									this->world->saveBox->setValue("addit_castKillEnemiesCounter", addit_castKillEnemiesCounter + 1);
-									//(this->world->saveBox.gameSave.data.addit_castKillEnemiesCounter + 1);
 								}
 							}
 						}
@@ -1181,7 +1169,6 @@ namespace engine{
 								{
 									int addit_castKillEnemiesCounter = this->world->saveBox->getIntValue("addit_castKillEnemiesCounter");
 									this->world->saveBox->setValue("addit_castKillEnemiesCounter", addit_castKillEnemiesCounter + 1);
-									//(this->world->saveBox.gameSave.data.addit_castKillEnemiesCounter + 1);
 								}
 							}
 						}
@@ -1210,7 +1197,6 @@ namespace engine{
 								{
 									int addit_castKillEnemiesCounter = this->world->saveBox->getIntValue("addit_castKillEnemiesCounter");
 									this->world->saveBox->setValue("addit_castKillEnemiesCounter", addit_castKillEnemiesCounter + 1);
-									//(this->world->saveBox.gameSave.data.addit_castKillEnemiesCounter + 1);
 								}
 							}
 						}
@@ -1262,7 +1248,6 @@ namespace engine{
 								{
 									int addit_castKillEnemiesCounter = this->world->saveBox->getIntValue("addit_castKillEnemiesCounter");
 									this->world->saveBox->setValue("addit_castKillEnemiesCounter", addit_castKillEnemiesCounter + 1);
-									//(this->world->saveBox.gameSave.data.addit_castKillEnemiesCounter + 1);
 								}
 							}
 						}
@@ -1298,7 +1283,6 @@ namespace engine{
 								{
 									int addit_castKillEnemiesCounter = this->world->saveBox->getIntValue("addit_castKillEnemiesCounter");
 									this->world->saveBox->setValue("addit_castKillEnemiesCounter", addit_castKillEnemiesCounter + 1);
-									//(this->world->saveBox.gameSave.data.addit_castKillEnemiesCounter + 1);
 								}
 							}
 						}
@@ -1321,27 +1305,8 @@ namespace engine{
 			this->dead = true;
 			if (this->world->selectObject == this)
 				this->world->selectObject = NULL;
-			//this->i = 0;
-			//while (this->i < this->world->listOfClasses.size())
-			//{ 
-			//    if (this->world->listOfClasses[this->i] == this)
-			//    {
-			//        this->world->removeChild(this->world->listOfClasses[this->i]);
- 			//			break;
-			//    }
-			//    i++;
-			//}
-			//this->i = 0;
-			//while (this->i < this->world->listOfIndexes2.length)
-			//{
-			//    
-			//    if (this->world->listOfIndexes2[this->i] == this)
-			//    {
-			//        this->world->listOfIndexes2.splice(this->i, 1);
-			//        break;
-			//    }
-			//    i++;
-			//}
+		    //this->world->removeClasses(this);
+			//this->world->removeIndexes(this,2);
 			if (this->world->saveBox->getIntValue("addit_castKillEnemiesCounter") > 0)
 			{
 				this->world->achieveManage("castKill_1_enemy");

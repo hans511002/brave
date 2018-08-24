@@ -58,11 +58,11 @@ namespace screens
             //{
             //    if (this->startMusicVolume == 0)
             //    {
-            //        this->startMusicVolume = Sounds.instance.musicChanel.soundTransform.volume;
+            //        this->startMusicVolume = AudioUtil::getMusicVolume();
             //    }
-            //    if (Sounds.instance.musicChanel.soundTransform.volume > this->startMusicVolume * 0.35)
+            //    if (AudioUtil::getMusicVolume() > this->startMusicVolume * 0.35)
             //    {
-            //        Sounds.instance.musicChanel.soundTransform = new SoundTransform(Sounds.instance.musicChanel.soundTransform.volume - this->startMusicVolume * 0.035, 0);
+            //       AudioUtil::setMusicVolume(AudioUtil::getMusicVolume()- this->startMusicVolume * 0.035);
             //    }
             //}
             if (this->container->currentFrame < this->container->totalFrames)
@@ -78,9 +78,9 @@ namespace screens
         {
             //if (Sounds.instance.musicChanel)
             //{
-            //    if (Sounds.instance.musicChanel.soundTransform.volume < this->startMusicVolume)
+            //    if (AudioUtil::getMusicVolume() < this->startMusicVolume)
             //    {
-            //        Sounds.instance.musicChanel.soundTransform = new SoundTransform(Sounds.instance.musicChanel.soundTransform.volume + this->startMusicVolume * 0.035, 0);
+            //        AudioUtil::setMusicVolume(AudioUtil::getMusicVolume() + this->startMusicVolume * 0.035);
             //    }
             //}
             if (this->container->currentFrame > 1)
@@ -137,7 +137,7 @@ namespace screens
     //    this->removeEventListener(MouseEvent.CLICK, this->mouseClickHandler);
     //    if (Sounds.instance.musicChanel)
     //    {
-    //        Sounds.instance.musicChanel.soundTransform = new SoundTransform(this->startMusicVolume, 0);
+    //        AudioUtil::setMusicVolume(this->startMusicVolume);
     //    }
     //    if (this->world->getSphere || this->world->cast)
     //    {

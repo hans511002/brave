@@ -196,7 +196,7 @@
                 if (this.container.cont.cont1.login.currentFrame == 1)
                 {
                     this.container.cont.cont1.login.gotoAndStop(2);
-                    Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                    Sounds.instance.playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                 }
             }
             else if (this.container.cont.cont1.login)
@@ -211,7 +211,7 @@
                 if (this.container.cont.cont1.register.currentFrame == 1)
                 {
                     this.container.cont.cont1.register.gotoAndStop(2);
-                    Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                    Sounds.instance.playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                 }
             }
             else if (this.container.cont.cont1.register)
@@ -226,7 +226,7 @@
                 if (this.container.cont.cont1.yes.currentFrame == 1)
                 {
                     this.container.cont.cont1.yes.gotoAndStop(2);
-                    Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                    Sounds.instance.playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                 }
             }
             else if (this.container.cont.cont1.yes)
@@ -241,7 +241,7 @@
                 if (this.container.cont.cont1.no.currentFrame == 1)
                 {
                     this.container.cont.cont1.no.gotoAndStop(2);
-                    Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                    Sounds.instance.playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                 }
             }
             else if (this.container.cont.cont1.no)
@@ -256,7 +256,7 @@
                 if (this.container.cont.cont1.ok.currentFrame == 1)
                 {
                     this.container.cont.cont1.ok.gotoAndStop(2);
-                    Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                    Sounds.instance.playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                 }
             }
             else if (this.container.cont.cont1.ok)
@@ -278,7 +278,7 @@
                     if (this.container.cont.cont1.login.currentFrame == 2)
                     {
                         this.container.cont.cont1.login.gotoAndStop(3);
-                        Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                        Sounds.instance.playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                     }
                 }
                 else if (event.target.name == "registerCase")
@@ -286,7 +286,7 @@
                     if (this.container.cont.cont1.register.currentFrame == 2)
                     {
                         this.container.cont.cont1.register.gotoAndStop(3);
-                        Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                        Sounds.instance.playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                     }
                 }
                 else if (event.target.name == "yesCase")
@@ -294,7 +294,7 @@
                     if (this.container.cont.cont1.yes.currentFrame == 2)
                     {
                         this.container.cont.cont1.yes.gotoAndStop(3);
-                        Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                        Sounds.instance.playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                     }
                 }
                 else if (event.target.name == "noCase")
@@ -302,7 +302,7 @@
                     if (this.container.cont.cont1.no.currentFrame == 2)
                     {
                         this.container.cont.cont1.no.gotoAndStop(3);
-                        Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                        Sounds.instance.playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                     }
                 }
                 else if (event.target.name == "okCase")
@@ -310,7 +310,7 @@
                     if (this.container.cont.cont1.ok.currentFrame == 2)
                     {
                         this.container.cont.cont1.ok.gotoAndStop(3);
-                        Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                        Sounds.instance.playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                     }
                 }
                 else if (event.target.name == "shadow")

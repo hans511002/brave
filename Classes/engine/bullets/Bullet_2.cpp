@@ -22,7 +22,7 @@ namespace engine
 			this->addChild(container);
 			whoShoot->iceBulletCounter++;
 			Bullet::init();
-			//Sounds.instance.playSoundWithVol("snd_tower_shootIce", 0.83);
+			AudioUtil::playSoundWithVol("Snd_tower_shootIce.mp3", 0.83);
 			return true;
 		}// end function
 

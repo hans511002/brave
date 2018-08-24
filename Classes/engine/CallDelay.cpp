@@ -42,7 +42,7 @@ namespace engine
                 this->world->worldInterface->addChild(tempObject);
                 this->world->worldInterface->listOfNewEnemies.push(tempObject);
                 this->world->worldInterface->newEnemyUpdate();
-                //Sounds.instance.playSoundWithVol("snd_world_newEnemy", 0.9);
+                AudioUtil::playSoundWithVol("snd_world_newEnemy.mp3", 0.9);
             }
             this->kill();
         }
@@ -54,18 +54,8 @@ namespace engine
         if (!this->dead)
         {
             this->dead = true;
-			this->world->removeChild(this);
-			//this->world->removeClasses(this);
-            //this->i = 0;
-            //while (this->i < this->world.listOfClasses.length)
-            //{
-            //    if (this->world.listOfClasses[this->i] == this)
-            //    {
-            //        this->world.listOfClasses.splice(this->i, 1);
-            //        break;
-            //    }
-            //    i++;
-            //}
+			this->world->removeChild(this);//this->world->removeClasses(this);
+             
         }
         return;
     }// end function

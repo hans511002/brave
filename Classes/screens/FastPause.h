@@ -39,7 +39,7 @@ namespace screens
 		//    this->removeEventListener(MouseEvent.CLICK, this->mouseClickHandler);
 		//    if (Sounds.instance.musicChanel)
 		//    {
-		//        Sounds.instance.musicChanel.soundTransform = new SoundTransform(this->startMusicVolume, 0);
+		//        AudioUtil::setMusicVolume(this->startMusicVolume);
 		//    }
 		//    if (this->world->getSphere || this->world->cast)
 		//    {

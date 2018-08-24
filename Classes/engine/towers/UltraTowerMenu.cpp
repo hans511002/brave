@@ -259,7 +259,7 @@ namespace engine
                 }
                 else if (this->fastBuyUltraFlag == "upgrade")
                 {
-                    //Sounds.instance.playSoundWithVol("snd_tower_build1", 0.9);
+                    AudioUtil::playSoundWithVol("Snd_tower_build1.mp3", 0.9);
                     container->btnUpgradeMenuCostTXT->setVisible(false);
                     this->myTower->upgradeTypeAdd ++;
                     if (!this->myTower->enemyTarget)
@@ -283,7 +283,7 @@ namespace engine
                 if (container->btnUpgradeMenu->currentFrame == 1)
                 {
                     container->btnUpgradeMenu->gotoAndStop(2);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                 }
                 if (!this->hint->isVisible() && !this->openFlag && !this->closeFlag)
                 {
@@ -446,7 +446,7 @@ namespace engine
 					if(sphereSlot->currentFrame == 1)
 					{
 						sphereSlot->gotoAndStop(2);
-						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
 					}
 				}
 				else if(sphereSlot->currentFrame == 2)
@@ -470,7 +470,7 @@ namespace engine
                 if (container->sellUltraTower->currentFrame == 1)
                 {
                     container->sellUltraTower->gotoAndStop(2);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                 }
             }
             else if (container->sellUltraTower->currentFrame == 2)
@@ -548,7 +548,7 @@ namespace engine
                                 }
                             }
                         }
-                        //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                        AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                     }
                 }
                 else if (container->fastBuyUltraContBtnFastBuyUltra->currentFrame == 2)
@@ -576,7 +576,7 @@ namespace engine
                 if (container->btnUpgradeMenu->currentFrame == 2)
                 {
                     container->btnUpgradeMenu->gotoAndStop(3);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                 }
             }
             else if (targetName == "sphereSlotCase")
@@ -686,7 +686,7 @@ namespace engine
                             }
                         }
                     }
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                 }
             }
             else if (targetName == "sellUltraTowerCase")
@@ -694,7 +694,7 @@ namespace engine
                 if (container->sellUltraTower->currentFrame == 2)
                 {
                     container->sellUltraTower->gotoAndStop(3);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                 }
             }
             else if (targetName == "fastBuyUltraCase")
@@ -824,7 +824,7 @@ namespace engine
                             }
                         }
                         this->world->worldInterface->updateInfo();
-                        //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                        AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                     }
                 }
             }
@@ -1049,7 +1049,7 @@ namespace engine
                     //this->myTower->myPlace->buildPoint->stop();
                     this->myTower->myPlace->placeForBuildCase->setMouseEnabled(true);
                     this->myTower->kill();
-                    //Sounds.instance.playSound("snd_tower_sell");
+                    AudioUtil::playSound("Snd_tower_sell.mp3");
                 }
             }
             else if (container->sellUltraTower->currentFrame == 3)
@@ -1686,7 +1686,7 @@ namespace engine
             }
             if (!param1)
             {
-                //this->world->listOfIndexes3.push(this);
+                this->world->addIndexes(this,3);
             }
             else
             {
@@ -1701,17 +1701,7 @@ namespace engine
             {
                 this->dead = true;
                 this->world->worldInterface->updateInfo();
-                //this->i = 0;
-                //while (this->i < this->world->listOfIndexes3.length)
-                //{
-                //    
-                //    if (this->world->listOfIndexes3[this->i] == this)
-                //    {
-                //        this->world->listOfIndexes3.splice(this->i, 1);
-                //        break;
-                //    }
-                //   i++;
-                //}
+                world->removeIndexes(this,3); 
                 if (this->lastE)
                 {
                     this->world->mouseMoveHandler(this->lastE);

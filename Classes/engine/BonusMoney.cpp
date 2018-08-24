@@ -33,7 +33,7 @@ namespace engine
         this->addChild(this->container);
         this->setMouseChildren(false);
         this->setMouseEnabled(false);
-        //this->world->listOfIndexes3.push(this);
+        this->world->addIndexes(this,3);
         this->world->addClasses(this);
         return true;
     }// end function
@@ -71,16 +71,7 @@ namespace engine
         {
             this->dead = true;
             this->world->removeChild(this);
-            //this->i = 0;
-            //while (this->i < this->world->listOfIndexes3.length)
-            //{ 
-            //    if (this->world->listOfIndexes3[this->i] == this)
-            //    {
-            //        this->world->listOfIndexes3.splice(this->i, 1);
-            //        break;
-            //    }
-            //    i++;
-            //}
+            this->world->removeIndexes(this,3); 
         }
         return;
     }// end function

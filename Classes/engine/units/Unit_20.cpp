@@ -71,7 +71,7 @@ namespace engine
                     pos=container->localToGlobal(pos);
                     tempObject->setPosition(pos);
                 }
-                //Sounds.instance.playSound("snd_unit_orderDeath");
+                AudioUtil::playSound("Snd_unit_orderDeath.mp3");
                 //cocos2d::Point tempObject1 = container->localToGlobal(container->getPosition());//new Point(container->x, container->y));
                 //tempObject.x = tempObject1.x;
                 //tempObject.y = tempObject1.y;

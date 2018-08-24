@@ -118,7 +118,7 @@ namespace engine
                             this->world->addChild(tempObject1);
                         }
                     }
-                    //Sounds.instance.playSoundWithVol("snd_menu_monetki", 0.95);
+                    AudioUtil::playSoundWithVol("Snd_menu_monetki.mp3", 0.95);
                 }
                 //(this->world->saveBox.gameSave.data.addit_earlyWavesCounter + 1);
                 int addit_earlyWavesCounter=this->world->saveBox->getIntValue("addit_earlyWavesCounter")+1;
@@ -376,7 +376,7 @@ namespace engine
 			//}
 		}
 		this->world->worldInterface->updateInfo();
-		//     Sounds.instance.playSoundWithVol("snd_world_startWave", 0.9);
+		AudioUtil::playSoundWithVol("Snd_world_startWave.mp3", 0.9);
 	}// end function
     void Waves::wavesHandler()
     {
@@ -768,7 +768,7 @@ namespace engine
                                         if (!this->world->pointer1->isVisible())
                                         {
                                             this->world->pointer1->setVisible(true);
-                                            //Sounds.instance.playSoundWithVol("snd_world_openMarker", 0.55);
+                                            AudioUtil::playSoundWithVol("Snd_world_openMarker.mp3", 0.55);
                                         }
                                     }
                                 }
@@ -790,7 +790,7 @@ namespace engine
 											this->world->pointer2->setVisible(true);
                                             if (!this->world->pointer1->isVisible())
                                             {
-                                                //Sounds.instance.playSoundWithVol("snd_world_openMarker", 0.55);
+                                                AudioUtil::playSoundWithVol("Snd_world_openMarker.mp3", 0.55);
                                             }
                                         }
                                     }
@@ -813,7 +813,7 @@ namespace engine
                                             this->world->pointer3->setVisible(true);
                                             if (!this->world->pointer1->isVisible() && !this->world->pointer2->isVisible())
                                             {
-                                                //Sounds.instance.playSoundWithVol("snd_world_openMarker", 0.55);
+                                                AudioUtil::playSoundWithVol("Snd_world_openMarker.mp3", 0.55);
                                             }
                                         }
                                     }
@@ -933,18 +933,8 @@ namespace engine
                 else
                 {
 					this->world->worldInterface->lastTime->setAlpha(1);
-                    this->world->worldInterface->lastTime->setVisible(false);
-                    //this->i = 0;
-                    //while (this->i < this->world->listOfIndexes3.size())
-                    //{
-                    //    
-                    //    if (this->world->listOfIndexes3[this->i] == this->world->worldInterface->lastTime)
-                    //    {
-                    //        this->world->listOfIndexes3.splice(this->i, 1);
-                    //        break;
-                    //    }
-                    //    i++;
-                    //}
+                    this->world->worldInterface->lastTime->setVisible(false); 
+                    this->world->removeIndexes(this->world->worldInterface->lastTime,3);
                     this->startWaves();
                 }
             }

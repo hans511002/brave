@@ -48,7 +48,7 @@ namespace engine{
 			this->shadow->setPositionY(whoShoot->getPositionY());
 			this->shadow->setScale(0.5, 0.5);
 			world->addChild(this->shadow, 2);
-			//world->listOfIndexes2.push(this->shadow);
+			world->addIndexes(this->shadow,2);
 			return true;
 		}// end function
 
@@ -57,7 +57,7 @@ namespace engine{
 			Bullet::update();
 			if (mainCounter == 11)
 			{
-				//Sounds.instance.playSoundWithVol("snd_tower_shootStone", 0.8);
+				AudioUtil::playSoundWithVol("Snd_tower_shootStone.mp3", 0.8);
 			}
 			if (container->currentFrame < container->totalFrames)
 			{
@@ -113,15 +113,16 @@ namespace engine{
 				//tempObject.x = this_pt.x;
 				//tempObject.y = this_pt.y;
 				i = world->listOfUnits.size() - 1;
+				float stoneEffectRadiusXML= Main::mainClass->readXMLClass.stoneEffectRadiusXML;
 				while (i >= 0)
 				{
-					if (world->listOfUnits[i]->atStage() && world->listOfUnits[i]->readyDamage)
+				    Unit * unit=world->listOfUnits[i];
+					if (unit->atStage() && unit->readyDamage && abs(unit->shoot_pt.x -this_pt.x) < stoneEffectRadiusXML && abs(unit->shoot_pt.y -this_pt.y) < stoneEffectRadiusXML)
 					{
 						//if (Point.distance(this_pt, world->listOfUnits[i]->shoot_pt) < Main::mainClass->readXMLClass.stoneEffectRadiusXML)
-						if (this_pt.distance(world->listOfUnits[i]->shoot_pt) < Main::mainClass->readXMLClass.stoneEffectRadiusXML)
+						if (this_pt.distance(unit->shoot_pt) < stoneEffectRadiusXML)
 						{
-							Unit * tempObject = world->listOfUnits[i];
-							tempObject->getHit(damage, "stone", spherePower, true, bulletType);
+							unit->getHit(damage, "stone", spherePower, true, bulletType);
 						}
 					}
 					i--;
@@ -135,18 +136,8 @@ namespace engine{
 		{
 			if (this->shadow)
 			{
+				world->removeIndexes(this,2); 
 				world->removeChild(this->shadow);
-				//    i = 0;
-				//    while (i < world->listOfIndexes2.length)
-				//    {
-				//        
-				//        if (world->listOfIndexes2[i] == this->shadow)
-				//        {
-				//            world->listOfIndexes2.splice(i, 1);
-				//            break;
-				//        }
-				//        i++;
-				//    }
 				this->shadow = NULL;
 			}
 			Bullet::kill();

@@ -937,7 +937,7 @@
                     if (this.container.back.currentFrame == 1)
                     {
                         this.container.back.gotoAndStop(2);
-                        Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                        AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                     }
                 }
                 else if (this.container.back.currentFrame == 2)
@@ -949,7 +949,7 @@
                     if (this.container.book.btnEnemy.currentFrame == 1)
                     {
                         this.container.book.btnEnemy.gotoAndStop(2);
-                        Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                        AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                     }
                 }
                 else if (this.container.book.btnEnemy.currentFrame == 2)
@@ -961,7 +961,7 @@
                     if (this.container.book.btnGuide.currentFrame == 1)
                     {
                         this.container.book.btnGuide.gotoAndStop(2);
-                        Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                        AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                     }
                 }
                 else if (this.container.book.btnGuide.currentFrame == 2)
@@ -973,7 +973,7 @@
                     if (this.container.book.btnTower.currentFrame == 1)
                     {
                         this.container.book.btnTower.gotoAndStop(2);
-                        Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                        AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                     }
                 }
                 else if (this.container.book.btnTower.currentFrame == 2)
@@ -986,7 +986,7 @@
                     {
                         this.enemiesMouseMoveDefault();
                         param1.target.parent.gotoAndStop(2);
-                        Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                        AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                     }
                 }
                 else if (this.nowPage < 11)
@@ -999,7 +999,7 @@
                     {
                         this.towersMouseMoveDefault();
                         param1.target.parent.gotoAndStop(2);
-                        Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                        AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                     }
                 }
                 else if (this.nowPage > 10)
@@ -1012,11 +1012,11 @@
                     {
                         if (event->target->getParent()->getName() == "btnLeft")
                         {
-                            Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                            AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                         }
                         else if (event->target->getParent()->getName() == "btnRight")
                         {
-                            Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                            AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                         }
                         param1.target.parent.gotoAndStop(2);
                     }
@@ -1123,7 +1123,7 @@
                     if (this.container.back.currentFrame == 2)
                     {
                         this.container.back.gotoAndStop(3);
-                        Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                        AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                     }
                 }
                 else if (event.target.name == "btnEnemyCase")
@@ -1131,7 +1131,7 @@
                     if (this.container.book.btnEnemy.currentFrame == 2)
                     {
                         this.container.book.btnEnemy.gotoAndStop(3);
-                        Sounds.instance.playSound("snd_menu_pageScrolling");
+                        AudioUtil::playSound("Snd_menu_pageScrolling.mp3");
                     }
                 }
                 else if (event.target.name == "btnGuideCase")
@@ -1139,7 +1139,7 @@
                     if (this.container.book.btnGuide.currentFrame == 2)
                     {
                         this.container.book.btnGuide.gotoAndStop(3);
-                        Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                        AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                     }
                 }
                 else if (event.target.name == "btnTowerCase")
@@ -1147,7 +1147,7 @@
                     if (this.container.book.btnTower.currentFrame == 2)
                     {
                         this.container.book.btnTower.gotoAndStop(3);
-                        Sounds.instance.playSound("snd_menu_pageScrolling");
+                        AudioUtil::playSound("Snd_menu_pageScrolling.mp3");
                     }
                 }
                 else if (event.target.name == "enemyCase")
@@ -1155,7 +1155,7 @@
                     if (event.target.parent.currentFrame == 2 && event.target.parent != this.nowTarget)
                     {
                         this.targetManager(event.target.parent);
-                        Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                        AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                     }
                 }
                 else if (event.target.name == "towerCase")
@@ -1163,7 +1163,7 @@
                     if (event.target.parent.currentFrame == 2 && event.target.parent != this.nowTarget)
                     {
                         this.targetManager(event.target.parent);
-                        Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                        AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                     }
                 }
                 else if (event.target.name == "arrowCase")
@@ -1172,11 +1172,11 @@
                     {
                         if (event.target.parent.name == "btnLeft")
                         {
-                            Sounds.instance.playSound("snd_menu_pageScrolling");
+                            AudioUtil::playSound("Snd_menu_pageScrolling.mp3");
                         }
                         else if (event.target.parent.name == "btnRight")
                         {
-                            Sounds.instance.playSound("snd_menu_pageScrolling");
+                            AudioUtil::playSound("Snd_menu_pageScrolling.mp3");
                         }
                         event.target.parent.gotoAndStop(3);
                     }

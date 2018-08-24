@@ -20,7 +20,7 @@ namespace engine{
 			if (ISTYPE(Tower , whoShoot ))
             {
                 whoShoot->levinBulletCounter++;
-                //Sounds.instance.playSound("snd_tower_shootLevin");
+                AudioUtil::playSound("Snd_tower_shootLevin.mp3");
             }
             Bullet::init( );
             return true;

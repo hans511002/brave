@@ -113,7 +113,7 @@ namespace screens
             if (this->container->cont->logoCont->currentFrame == 1)
             {
                 this->container->cont->logoCont->gotoAndStop(2);
-                //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
             }
         }
         else if (this->container->cont->logoCont->currentFrame == 2)
@@ -125,7 +125,7 @@ namespace screens
             if (this->container->cont->noteCont->currentFrame == 1)
             {
                 this->container->cont->noteCont->gotoAndStop(2);
-                //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
             }
         }
         else if (this->container->cont->noteCont->currentFrame == 2)
@@ -137,7 +137,7 @@ namespace screens
             if (this->container->cont->facebook->currentFrame == 1)
             {
                 this->container->cont->facebook->gotoAndStop(2);
-                //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
             }
         }
         else if (this->container->cont->facebook->currentFrame == 2)
@@ -149,7 +149,7 @@ namespace screens
             if (this->container->cont->twitter->currentFrame == 1)
             {
                 this->container->cont->twitter->gotoAndStop(2);
-                //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
             }
         }
         else if (this->container->cont->twitter->currentFrame == 2)
@@ -161,7 +161,7 @@ namespace screens
             if (this->container->cont->btnOk->currentFrame == 1)
             {
                 this->container->cont->btnOk->gotoAndStop(2);
-                //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
             }
         }
         else if (this->container->cont->btnOk->currentFrame == 2)
@@ -182,7 +182,7 @@ namespace screens
             if (this->container->cont->logoCont->currentFrame == 2)
             {
                 this->container->cont->logoCont->gotoAndStop(3);
-                //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
             }
         }
         else if (targetName == "noteContCase")
@@ -190,7 +190,7 @@ namespace screens
             if (this->container->cont->noteCont->currentFrame == 2)
             {
                 this->container->cont->noteCont->gotoAndStop(3);
-                //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
             }
         }
         else if (targetName == "facebookCase")
@@ -198,7 +198,7 @@ namespace screens
             if (this->container->cont->facebook->currentFrame == 2)
             {
                 this->container->cont->facebook->gotoAndStop(3);
-                //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
             }
         }
         else if (targetName == "twitterCase")
@@ -206,7 +206,7 @@ namespace screens
             if (this->container->cont->twitter->currentFrame == 2)
             {
                 this->container->cont->twitter->gotoAndStop(3);
-                //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
             }
         }
         else if (targetName == "okCase")
@@ -214,7 +214,7 @@ namespace screens
             if (this->container->cont->btnOk->currentFrame == 2)
             {
                 this->container->cont->btnOk->gotoAndStop(3);
-                //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
             }
         }
         else if (targetName == "shadow")

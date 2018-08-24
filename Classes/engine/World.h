@@ -169,10 +169,12 @@ namespace engine
 		virtual void achieveManage(string param1);
 
 		virtual void removeChild(Node* child, bool cleanup  = true );
-
-		virtual void removeIndexes(BaseNode * node);
+        virtual void removeBullet(Bullet *);
+	    virtual void addIndexes(Node * node, int indexParam);
+		virtual void removeIndexes(Node * node,int indexType=-1);
 		virtual void removeClasses(BaseNode * node);
 		virtual void addClasses(BaseNode * node);
+		virtual bool existClasses(BaseNode * node);
 		virtual void removeUnit(units::Unit *);
 		virtual void reInit(cocos2d::EventMouse*event);//event:Event 
 

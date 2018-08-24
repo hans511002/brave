@@ -42,15 +42,15 @@ namespace engine
                 {
                     if (container->currentFrame == 2)
                     {
-                        //Sounds.instance.playSound("snd_tower_shootUltra4_1");
+                        AudioUtil::playSound("Snd_tower_shootUltra4_1.mp3");
                     }
                     else if (container->currentFrame == 16)
                     {
-                        //Sounds.instance.playSound("snd_tower_shootUltra4_2");
+                        AudioUtil::playSound("Snd_tower_shootUltra4_2.mp3");
                     }
                     else if (container->currentFrame == 25)
                     {
-                        //Sounds.instance.playSound("snd_tower_shootUltra4_3");
+                        AudioUtil::playSound("Snd_tower_shootUltra4_3.mp3");
                     }
                     i = world->listOfUnits.size() - 1;
                     while (i >= 0)

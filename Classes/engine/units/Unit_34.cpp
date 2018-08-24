@@ -66,7 +66,7 @@ namespace engine
                 world->worldInterface->fasterManage(false);
             }
             world->worldInterface->container->fastFastCase->setMouseEnabled(false);
-            //Sounds.instance.playSound("snd_boss_start");
+            AudioUtil::playSound("Snd_boss_start.mp3");
             return true;
         }// end function
 
@@ -144,7 +144,7 @@ namespace engine
                         {
                             this->readXML->bossArrayOfArmor.splice(0, 1);
                             this->giveArmorFlag = true;
-                            //Sounds.instance.playSound("snd_boss_eyes");
+                            AudioUtil::playSound("Snd_boss_eyes.mp3");
                         }
                     }
                     if (this->readXML->bossArrayOfCasts.size() > 0)
@@ -157,7 +157,7 @@ namespace engine
                         {
                             this->readXML->bossArrayOfCasts.splice(0, 1);
                             this->takeAwayCastsFlag = true;
-                            //Sounds.instance.playSound("snd_boss_eyes");
+                            AudioUtil::playSound("Snd_boss_eyes.mp3");
                         }
                     }
                 }
@@ -182,7 +182,7 @@ namespace engine
                             } 
                             this->setMouseChildren(false);
                             this->setMouseEnabled(false);
-                            //Sounds.instance.playSound("snd_boss_appearDisappear");
+                            AudioUtil::playSound("Snd_boss_appearDisappear.mp3");
                         }
                         else if (container->walkIn->currentFrame < container->walkIn->totalFrames)
                         {
@@ -261,7 +261,7 @@ namespace engine
                         if (!container->walkOut->isVisible())
                         {
                             container->walkOut->setVisible(true);
-                            //Sounds.instance.playSound("snd_boss_appearDisappear");
+                            AudioUtil::playSound("Snd_boss_appearDisappear.mp3");
                         }
                         else if (container->walkOut->currentFrame < container->walkOut->totalFrames)
                         {
@@ -294,7 +294,7 @@ namespace engine
 				        //container->cont->gotoAndStop((container->cont->currentFrame + 1));
                         if (container->cont->currentFrame == 2)
                         {
-                            //Sounds.instance.playSound("snd_boss_eyes");
+                            AudioUtil::playSound("Snd_boss_eyes.mp3");
                         }
                     }
                     else if (this->eyesCounter == 0)
@@ -406,7 +406,7 @@ namespace engine
                         world->worldInterface->container->butCastAir->gotoAndStop(4);
                         world->worldInterface->container->butCastAirCastAirCase->setMouseEnabled(false);
                         world->worldInterface->container->butCastAirContContMask->setScaleY (0);
-                        //Sounds.instance.playSound("snd_boss_castReset");
+                        AudioUtil::playSound("Snd_boss_castReset.mp3");
                     }
                 }
                 else if (this->speakFlag)
@@ -414,7 +414,7 @@ namespace engine
                     if (!container->speak->isVisible())
                     {
                         container->speak->setVisible(true);
-                        //Sounds.instance.playSound("snd_boss_speak");
+                        AudioUtil::playSound("Snd_boss_speak.mp3");
                     }
                     else if (container->speak->currentFrame < container->speak->totalFrames)
                     {
@@ -485,9 +485,9 @@ namespace engine
             {
                 //if (Sounds.instance.musicChanel)
                 //{
-                //    if (Sounds.instance.musicChanel.soundTransform.volume < world->startMusicVolume)
+                //    if (AudioUtil::getMusicVolume() < world->startMusicVolume)
                 //    {
-                //        Sounds.instance.musicChanel.soundTransform = new SoundTransform(Sounds.instance.musicChanel.soundTransform.volume + world->startMusicVolume * 0.035, 0);
+                //        AudioUtil::setMusicVolume(AudioUtil::getMusicVolume() + world->startMusicVolume * 0.035);
                 //    }
                 //    else
                 //    {
@@ -507,11 +507,11 @@ namespace engine
                 //{
                 //    if (world->startMusicVolume == 0)
                 //    {
-                //        world->startMusicVolume = Sounds.instance.musicChanel.soundTransform.volume;
+                //        world->startMusicVolume = AudioUtil::getMusicVolume();
                 //    }
-                //    if (Sounds.instance.musicChanel.soundTransform.volume > world->startMusicVolume * 0.35)
+                //    if (AudioUtil::getMusicVolume() > world->startMusicVolume * 0.35)
                 //    {
-                //        Sounds.instance.musicChanel.soundTransform = new SoundTransform(Sounds.instance.musicChanel.soundTransform.volume - world->startMusicVolume * 0.035, 0);
+                //        AudioUtil::setMusicVolume(AudioUtil::getMusicVolume() - world->startMusicVolume * 0.035 );
                 //    }
                 //    else
                 //    {

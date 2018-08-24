@@ -26,7 +26,7 @@ namespace engine
 			this->addChild(container);
 			enemyTarget->bulletTower6Effect = true;
 			Bullet::init();
-			//Sounds.instance.playSound("snd_tower_shootUltraAdd4");
+			AudioUtil::playSound("Snd_tower_shootUltraAdd4.mp3");
 			return true;
 		}// end function
 

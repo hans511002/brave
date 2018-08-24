@@ -89,11 +89,11 @@ namespace screens
             this->container->scroll->btnY8->y8Case->setMouseEnabled(true);
         }
         this->addChild(this->container);
-        //if (!//Sounds.instance.musicOn)
+        //if (!AudioUtil::musicOn)
         //{
         //    this->container->scroll->btnMusic->gotoAndStop(4);
         //}
-        //if (!//Sounds.instance.soundOn)
+        //if (!AudioUtil::soundOn)
         //{
         //    this->container->scroll->btnSound->gotoAndStop(4);
         //}
@@ -137,17 +137,17 @@ namespace screens
         }
         if (this->openFlag)
         {
-            //if (//Sounds.instance.musicChanel)
-            //{
-            //    if (this->startMusicVolume == 0)
-            //    {
-            //        this->startMusicVolume = //Sounds.instance.musicChanel.soundTransform.volume;
-            //    }
-            //    if (//Sounds.instance.musicChanel.soundTransform.volume > this->startMusicVolume * 0.35)
-            //    {
-            //        //Sounds.instance.musicChanel.soundTransform = new SoundTransform(//Sounds.instance.musicChanel.soundTransform.volume - this->startMusicVolume * 0.035, 0);
-            //    }
-            //}
+            if (AudioUtil::soundOn)
+            {
+                if (this->startMusicVolume == 0)
+                {
+                    this->startMusicVolume = AudioUtil::getMusicVolume();
+                }
+                if (AudioUtil::getMusicVolume() > this->startMusicVolume * 0.35)
+                {
+                    AudioUtil::setMusicVolume(AudioUtil::getMusicVolume() - this->startMusicVolume * 0.035 );
+                }
+            }
             if (this->container->currentFrame < this->container->totalFrames)
             {
                 this->container->gotoAndStop((this->container->currentFrame + 1));
@@ -173,13 +173,13 @@ namespace screens
         }
         else if (this->closeFlag)
         {
-            //if (//Sounds.instance.musicChanel)
-            //{
-            //    if (//Sounds.instance.musicChanel.soundTransform.volume < this->startMusicVolume)
-            //    {
-            //        //Sounds.instance.musicChanel.soundTransform = new SoundTransform(//Sounds.instance.musicChanel.soundTransform.volume + this->startMusicVolume * 0.035, 0);
-            //    }
-            //}
+            if (AudioUtil::soundOn)
+            { 
+                if (AudioUtil::getMusicVolume() < this->startMusicVolume )
+                {
+                    AudioUtil::setMusicVolume(AudioUtil::getMusicVolume() - this->startMusicVolume * 0.035 );
+                }
+            }
             if (this->container->scroll->currentFrame > 1)
             {
                 this->container->scroll->gotoAndStop((this->container->scroll->currentFrame - 1));
@@ -369,7 +369,7 @@ namespace screens
                 if (this->container->scroll->btnMusic->currentFrame == 1 || this->container->scroll->btnMusic->currentFrame == 4)
                 {
                     this->container->scroll->btnMusic->gotoAndStop((this->container->scroll->btnMusic->currentFrame + 1));
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                 }
             }
             else if (this->container->scroll->btnMusic->currentFrame == 2 || this->container->scroll->btnMusic->currentFrame == 5)
@@ -381,7 +381,7 @@ namespace screens
                 if (this->container->scroll->btnSound->currentFrame == 1 || this->container->scroll->btnSound->currentFrame == 4)
                 {
                     this->container->scroll->btnSound->gotoAndStop((this->container->scroll->btnSound->currentFrame + 1));
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                 }
             }
             else if (this->container->scroll->btnSound->currentFrame == 2 || this->container->scroll->btnSound->currentFrame == 5)
@@ -393,7 +393,7 @@ namespace screens
                 if (this->container->scroll->btnLow->currentFrame == 1)
                 {
                     this->container->scroll->btnLow->gotoAndStop(2);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                 }
             }
             else if (this->container->scroll->btnLow->currentFrame == 2)
@@ -412,7 +412,7 @@ namespace screens
                 if (this->container->scroll->btnMedium->currentFrame == 1)
                 {
                     this->container->scroll->btnMedium->gotoAndStop(2);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                 }
             }
             else if (this->container->scroll->btnMedium->currentFrame == 2)
@@ -431,7 +431,7 @@ namespace screens
                 if (this->container->scroll->btnHigh->currentFrame == 1)
                 {
                     this->container->scroll->btnHigh->gotoAndStop(2);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                 }
             }
             else if (this->container->scroll->btnHigh->currentFrame == 2)
@@ -450,7 +450,7 @@ namespace screens
                 if (this->container->scroll->btnOn->currentFrame == 1)
                 {
                     this->container->scroll->btnOn->gotoAndStop(2);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                 }
             }
             else if (this->container->scroll->btnOn->currentFrame == 2)
@@ -462,7 +462,7 @@ namespace screens
                 if (this->container->scroll->btnOff->currentFrame == 1)
                 {
                     this->container->scroll->btnOff->gotoAndStop(2);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                 }
             }
             else if (this->container->scroll->btnOff->currentFrame == 2)
@@ -474,7 +474,7 @@ namespace screens
                 if (this->container->scroll->btnResume->currentFrame == 1)
                 {
                     this->container->scroll->btnResume->gotoAndStop(2);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                     if (!this->container->scroll->btnResume->arrow->isVisible())
                     {
                         this->container->scroll->btnResume->arrow->visible(true);
@@ -490,7 +490,7 @@ namespace screens
                 if (this->container->scroll->btnRestart->currentFrame == 1)
                 {
                     this->container->scroll->btnRestart->gotoAndStop(2);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                     if (!this->container->scroll->btnRestart->arrow->isVisible())
                     {
                         this->container->scroll->btnRestart->arrow->visible(true);
@@ -506,7 +506,7 @@ namespace screens
                 if (this->container->scroll->btnExit->currentFrame == 1)
                 {
                     this->container->scroll->btnExit->gotoAndStop(2);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                     if (!this->container->scroll->btnExit->arrow->isVisible())
                     {
                         this->container->scroll->btnExit->arrow->visible(true);
@@ -524,7 +524,7 @@ namespace screens
                     if (this->container->scroll->btnY8->currentFrame == 1)
                     {
                         this->container->scroll->btnY8->gotoAndStop(2);
-                        //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                        AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                     }
                 }
                 else if (this->container->scroll->btnY8->currentFrame == 2)
@@ -540,7 +540,7 @@ namespace screens
                 if (this->container->scroll->question->btnYes->currentFrame == 1)
                 {
                     this->container->scroll->question->btnYes->gotoAndStop(2);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                 }
             }
             else if (this->container->scroll->question)
@@ -555,7 +555,7 @@ namespace screens
                 if (this->container->scroll->question->btnNo->currentFrame == 1)
                 {
                     this->container->scroll->question->btnNo->gotoAndStop(2);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                 }
             }
             else if (this->container->scroll->question)
@@ -582,7 +582,7 @@ namespace screens
                 if (this->container->scroll->btnMusic->currentFrame == 2 || this->container->scroll->btnMusic->currentFrame == 5)
                 {
                     this->container->scroll->btnMusic->gotoAndStop((this->container->scroll->btnMusic->currentFrame + 1));
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                 }
             }
             else if (event.target.name == "soundCase")
@@ -590,7 +590,7 @@ namespace screens
                 if (this->container->scroll->btnSound->currentFrame == 2 || this->container->scroll->btnSound->currentFrame == 5)
                 {
                     this->container->scroll->btnSound->gotoAndStop((this->container->scroll->btnSound->currentFrame + 1));
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                 }
             }
             else if (event.target.name == "lowCase")
@@ -598,7 +598,7 @@ namespace screens
                 if (this->container->scroll->btnLow->currentFrame == 2)
                 {
                     this->container->scroll->btnLow->gotoAndStop(3);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                 }
             }
             else if (event.target.name == "mediumCase")
@@ -606,7 +606,7 @@ namespace screens
                 if (this->container->scroll->btnMedium->currentFrame == 2)
                 {
                     this->container->scroll->btnMedium->gotoAndStop(3);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                 }
             }
             else if (event.target.name == "highCase")
@@ -614,7 +614,7 @@ namespace screens
                 if (this->container->scroll->btnHigh->currentFrame == 2)
                 {
                     this->container->scroll->btnHigh->gotoAndStop(3);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                 }
             }
             else if (event.target.name == "onCase")
@@ -622,7 +622,7 @@ namespace screens
                 if (this->container->scroll->btnOn->currentFrame == 2)
                 {
                     this->container->scroll->btnOn->gotoAndStop(3);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                 }
             }
             else if (event.target.name == "offCase")
@@ -630,7 +630,7 @@ namespace screens
                 if (this->container->scroll->btnOff->currentFrame == 2)
                 {
                     this->container->scroll->btnOff->gotoAndStop(3);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                 }
             }
             else if (event.target.name == "resumeCase")
@@ -638,7 +638,7 @@ namespace screens
                 if (this->container->scroll->btnResume->currentFrame == 2)
                 {
                     this->container->scroll->btnResume->gotoAndStop(3);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                 }
             }
             else if (event.target.name == "restartCase")
@@ -646,7 +646,7 @@ namespace screens
                 if (this->container->scroll->btnRestart->currentFrame == 2)
                 {
                     this->container->scroll->btnRestart->gotoAndStop(3);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                 }
             }
             else if (event.target.name == "exitCase")
@@ -654,7 +654,7 @@ namespace screens
                 if (this->container->scroll->btnExit->currentFrame == 2)
                 {
                     this->container->scroll->btnExit->gotoAndStop(3);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                 }
             }
             else if (event.target.name == "y8Case")
@@ -662,7 +662,7 @@ namespace screens
                 if (this->container->scroll->btnY8->currentFrame == 2)
                 {
                     this->container->scroll->btnY8->gotoAndStop(3);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                 }
             }
         }
@@ -671,7 +671,7 @@ namespace screens
             if (this->container->scroll->question->btnYes->currentFrame == 2)
             {
                 this->container->scroll->question->btnYes->gotoAndStop(3);
-                //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
             }
         }
         else if (event.target.name == "noCase")
@@ -679,7 +679,7 @@ namespace screens
             if (this->container->scroll->question->btnNo->currentFrame == 2)
             {
                 this->container->scroll->question->btnNo->gotoAndStop(3);
-                //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
             }
         }
         return;
@@ -694,20 +694,20 @@ namespace screens
                 if (this->container->scroll->btnMusic->currentFrame == 3)
                 {
                     this->container->scroll->btnMusic->gotoAndStop(5);
-                    //Sounds.instance.musicPausePosition = //Sounds.instance.musicChanel.position;
-                    //Sounds.instance.musicManage("off");
+                    //AudioUtil::musicPausePosition = AudioUtil::musicChanel.position;
+                    AudioUtil::musicManage("off");
                 }
                 else if (this->container->scroll->btnMusic->currentFrame == 6)
                 {
                     this->container->scroll->btnMusic->gotoAndStop(2);
-                    //Sounds.instance.musicManage("on");
-                    if (this->world->wavesClass.nowWave == 0)
+                    AudioUtil::musicManage("on");
+                    if (this->world->wavesClass->nowWave == 0)
                     {
-                        //Sounds.instance.playMusic(1);
+                        AudioUtil::playMusic(1);
                     }
                     else
                     {
-                        //Sounds.instance.playMusic(2);
+                        AudioUtil::playMusic(2);
                     }
                 }
             }
@@ -720,12 +720,12 @@ namespace screens
                 if (this->container->scroll->btnSound->currentFrame == 3)
                 {
                     this->container->scroll->btnSound->gotoAndStop(5);
-                    //Sounds.instance.soundManage("off");
+                    AudioUtil::soundManage("off");
                 }
                 else if (this->container->scroll->btnSound->currentFrame == 6)
                 {
                     this->container->scroll->btnSound->gotoAndStop(2);
-                    //Sounds.instance.soundManage("on");
+                    AudioUtil::soundManage("on");
                 }
             }
             else if (this->container->scroll->btnSound->currentFrame == 3 || this->container->scroll->btnSound->currentFrame == 6)
@@ -1175,17 +1175,24 @@ namespace screens
     //    this->removeEventListener(MouseEvent.MOUSE_MOVE, this->mouseMoveHandler);
     //    this->removeEventListener(MouseEvent.MOUSE_DOWN, this->mouseDownHandler);
     //    this->removeEventListener(MouseEvent.MOUSE_UP, this->mouseUpHandler);
-    //    if (//Sounds.instance.musicPausePosition != 0)
+    //    if (AudioUtil::musicPausePosition != 0)
     //    {
-    //        //Sounds.instance.musicPausePosition = 0;
+    //        AudioUtil::musicPausePosition = 0;
     //    }
-    //    if (//Sounds.instance.musicChanel)
+    //    if (AudioUtil::musicChanel)
     //    {
     //        if (this->startMusicVolume > 0)
     //        {
-    //            //Sounds.instance.musicChanel.soundTransform = new SoundTransform(this->startMusicVolume, 0);
+    //            AudioUtil::musicChanel.soundTransform = new SoundTransform(this->startMusicVolume, 0);
     //        }
     //    }
+    //   if (AudioUtil::soundOn)
+    //   { 
+    //       if ( this->startMusicVolume > 0)
+    //       {
+    //           AudioUtil::setMusicVolume(startMusicVolume);
+    //       }
+    //   }
     //    if (this->world->getSphere || this->world->cast)
     //    {
     //        this->world->manageMouse("hide");

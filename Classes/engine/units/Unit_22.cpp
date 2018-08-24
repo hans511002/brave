@@ -35,7 +35,7 @@ namespace engine
             this->blockRadiusGr->setMouseEnabled(false);
             this->blockRadiusGr->setVisible(false);
             world->addChild(this->blockRadiusGr);
-            //world->listOfIndexes0.push(this->blockRadiusGr);
+            world->addIndexes(this->blockRadiusGr,0);
             return true;
         }// end function
 
@@ -218,21 +218,11 @@ namespace engine
         {
             if (!dead)
             {
+                world->removeIndexes(this->blockRadiusGr,0);
                 if(this->blockRadiusGr){
                     world->removeChild(this->blockRadiusGr);
                     this->blockRadiusGr=NULL;
-                }
-                //i = 0;
-                //while (i < world->listOfIndexes0.length)
-                //{
-                //    if (world->listOfIndexes0[i] == this->blockRadiusGr)
-                //    {
-                //        world->removeChild(this->blockRadiusGr);
-                //        world->listOfIndexes0.splice(i, 1);
-                //        break;
-                //    }
-                //    i++;
-                //}
+                } 
             }
             Unit::kill();
             return;

@@ -24,7 +24,7 @@ namespace engine
             }
             else
             {
-                //Sounds.instance.playSound("snd_boss_death");
+                AudioUtil::playSound("Snd_boss_death.mp3");
                 this->kill();
             }
         }
@@ -36,7 +36,7 @@ namespace engine
             }
             else
             {
-                //Sounds.instance.playSound("snd_boss_speak");
+                AudioUtil::playSound("Snd_boss_speak.mp3");
                 this->kill();
             }
         }
@@ -55,10 +55,10 @@ namespace engine
                 tempObject->setPosition(this->world->worldInterface->container->iceSphere->getPosition()); 
                 tempObject->setMouseChildren(false);
                 tempObject->setMouseEnabled(false);
-				tempObject->setOnceMove(this->world);//一次性动画
+				tempObject->setOnceMove(this->world);//
                 //this->world->worldInterface->addChild(tempObject);
                 //this->world->worldInterface->listOfAnimation.push(tempObject);
-                //Sounds.instance.playSound("snd_menu_upgrIconMouseDown");
+                AudioUtil::playSound("Snd_menu_upgrIconMouseDown.mp3");
                 this->kill();
             }
         }
@@ -77,10 +77,10 @@ namespace engine
                 tempObject->setPosition(this->world->worldInterface->container->levinSphere->getPosition());
                 tempObject->setMouseChildren(false);
                 tempObject->setMouseEnabled(false);
-				tempObject->setOnceMove(this->world);//一次性动画
+				tempObject->setOnceMove(this->world);//一锟较愒讹拷锟斤拷
 				//this->world->worldInterface->addChild(tempObject);
     //            this->world->worldInterface->listOfAnimation.push(tempObject);
-                //Sounds.instance.playSound("snd_menu_upgrIconMouseDown");
+                AudioUtil::playSound("Snd_menu_upgrIconMouseDown.mp3");
                 if (Main::mainClass->saveBoxClass->getIntValue("saveNo") > 3)
                 {
                     this->world->worldInterface->spheresBlockManage("unblockGetAll");
@@ -98,17 +98,7 @@ namespace engine
         {
             this->dead = true;
 			this->world->removeChild(this);
-			//this->world->removeClasses(this);
-            //this->i = 0;
-            //while (this->i < this->world->listOfClasses.size())
-            //{ 
-            //    if (this->world->listOfClasses[this->i] == this)
-            //    {
-            //        this->world->listOfClasses.splice(this->i, 1);
-            //        break;
-            //    }
-            //    i++;
-            //}
+			//this->world->removeClasses(this); 
         }
         return;
     }// end function

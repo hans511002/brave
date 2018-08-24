@@ -109,7 +109,7 @@ namespace screens
         this->upgradeUpdate(); 
         this->container->cont->setMouseChildren(false);
         this->container->cont->setMouseEnabled(false);
-        //Sounds.instance.playSound("snd_menu_openBoard");
+        AudioUtil::playSound("Snd_menu_openBoard.mp3");
         return;
     }// end function
 
@@ -186,7 +186,7 @@ namespace screens
             if (this->container->back->currentFrame == 1)
             {
                 this->container->back->gotoAndStop(2);
-                //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
             }
         }
         else if (this->container->back->currentFrame == 2)
@@ -198,7 +198,7 @@ namespace screens
             if (this->container->cont->btnReset->currentFrame == 1)
             {
                 this->container->cont->btnReset->gotoAndStop(2);
-                //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
             }
         }
         else if (this->container->cont->btnReset->currentFrame == 2)
@@ -210,7 +210,7 @@ namespace screens
             if (this->container->cont->btnAccept->currentFrame == 1)
             {
                 this->container->cont->btnAccept->gotoAndStop(2);
-                //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
             }
         }
         else if (this->container->cont->btnAccept->currentFrame == 2)
@@ -239,7 +239,7 @@ namespace screens
                 this->nowUpgradeButton->gotoAndStop(2);
                 std::setText(this->nowUpgradeButton->starsTXT,tempObject);
                 this->nowUpgradeButton->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
             }
             if (!this->hint->isVisible() || this->hint->myTarget != this->nowUpgradeButton)
             {
@@ -418,7 +418,7 @@ namespace screens
                 if (this->container->back->currentFrame == 2)
                 {
                     this->container->back->gotoAndStop(3);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                 }
             }
             else if (targetName == "resetCase")
@@ -426,7 +426,7 @@ namespace screens
                 if (this->container->cont->btnReset->currentFrame == 2)
                 {
                     this->container->cont->btnReset->gotoAndStop(3);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                 }
             }
             else if (targetName == "acceptCase")
@@ -434,7 +434,7 @@ namespace screens
                 if (this->container->cont->btnAccept->currentFrame == 2)
                 {
                     this->container->cont->btnAccept->gotoAndStop(3);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                 }
             }
             else if (targetName == "shadow")
@@ -463,7 +463,7 @@ namespace screens
                         tempObject1->setMouseEnabled(false);
                         this->addChild(tempObject1);
                         this->listOfUpgradeAnima.push(tempObject1);
-                        //Sounds.instance.playSound("snd_menu_upgrIconMouseDown");
+                        AudioUtil::playSound("Snd_menu_upgrIconMouseDown.mp3");
                         int stars=Main::mainClass->saveBoxClass->getIntValue("stars");
                         if (this->nowUpgradeButton->name == "golemUpgrade1")
                         {
@@ -671,7 +671,7 @@ namespace screens
             if (this->container->cont->btnReset->currentFrame == 3)
             {
                 this->container->cont->btnReset->gotoAndStop(2);
-                //Sounds.instance.playSound("snd_menu_upgrReset");
+                AudioUtil::playSound("Snd_menu_upgrReset.mp3");
                 int stars=Main::mainClass->saveBoxClass->getIntValue("stars");
                 if (Main::mainClass->saveBoxClass->geBoolValue("upgradeGolem1"))
                 {

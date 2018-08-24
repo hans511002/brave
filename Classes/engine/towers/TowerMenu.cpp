@@ -165,7 +165,7 @@ namespace engine
 					this->starsAnima->setMouseChildren(false);
 					this->starsAnima->setMouseEnabled(false);
 					this->addChild(this->starsAnima);
-					//Sounds.instance.playSound("snd_menu_upgrIconMouseDown");
+					AudioUtil::playSound("Snd_menu_upgrIconMouseDown.mp3");
 				}
 				else
 				{
@@ -819,7 +819,7 @@ namespace engine
 							this->towerRadius1->setWidth(Main::mainClass->readXMLClass.listOfSpheresRadius[3] * 2);
 							this->towerRadius1->setHeight(Main::mainClass->readXMLClass.listOfSpheresRadius[3] * 2 * this->world->scaleRadius);
 						}
-						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
 					}
 					if (this->myTower->towerType < 5)
 					{
@@ -938,7 +938,7 @@ namespace engine
 							btnTowerUpgr->gotoAndStop(2);
 							std::setText(costTXT, tempObject);
 							//event->target->getParent()->costTXT = tempObject;
-							//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+							AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
 						}
 						else
 						{
@@ -1239,7 +1239,7 @@ namespace engine
 							}
 							this->hint->setPositionX(this->getPositionX() + this->container->getPositionX() + this->container->fastBuyUltraCont->getPositionX() + this->container->fastBuyUltraContBtnFastBuyUltra->getPositionX());
 							this->hint->setPositionY(this->getPositionY() + this->container->getPositionY() + this->container->fastBuyUltraCont->getPositionY() + this->container->fastBuyUltraContBtnFastBuyUltra->getPositionY() - 15);
-							//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+							AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
 						}
 					}
 					else if (this->container->fastBuyUltraContBtnFastBuyUltra->currentFrame == 2)
@@ -1283,7 +1283,7 @@ namespace engine
 					if (sphereSlot->currentFrame == 1)
 					{
 						sphereSlot->gotoAndStop(2);
-						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
 					}
 				}
 				else if (sphereSlot->currentFrame == 2)
@@ -1338,7 +1338,7 @@ namespace engine
 					btnTowerUpgr->gotoAndStop(3);
 					setText(costTXT, tempObject);
 					//event->target->getParent()->costTXT = tempObject;
-					//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
 				}
 				if (this->world->worldInterface->container->fireBacklight->isVisible())
 				{
@@ -1403,7 +1403,7 @@ namespace engine
 						this->myTower->towerGetSphereManage("get", "levin");
 						this->spheresMonitor();
 					}
-					//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
 				}
 				else
 				{
@@ -1480,7 +1480,7 @@ namespace engine
 						this->spheresMonitor();
 						i++;
 					}
-					//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
 				}
 			}
 			else if (targetName == "fastBuyUltraCase")
@@ -1606,7 +1606,7 @@ namespace engine
 								}
 							}
 						}
-						//Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
 					}
 				}
 			}
@@ -3804,7 +3804,7 @@ namespace engine
 				}
 				if (!param1)
 				{
-					this->world->listOfIndexes3.push(this);
+					this->world->addIndexes(this,3);
 				}
 				else
 				{
@@ -3827,17 +3827,7 @@ namespace engine
 				this->world->removeClasses(this);
 				if (this->world->selectObject == this)
 					this->world->selectObject = NULL;
-
-				//this->i = 0;
-				//while (this->i < this->world->listOfIndexes3.size())
-				//{
-				//    if (this->world->listOfIndexes3[this->i] == this)
-				//    {
-				//        this->world->listOfIndexes3.splice(this->i, 1);
-				//        break;
-				//    }
-				//    i++;
-				//}
+                world->removeIndexes(this,3); 
 				if (this->lastE)
 				{
 					this->world->mouseMoveHandler(this->lastE);

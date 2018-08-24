@@ -84,7 +84,7 @@ namespace engine{
 			this->setMouseChildren(false);
 			this->setMouseEnabled(false);
 			this->world->addClasses(this);
-			//this->world->listOfIndexes1.push(this);
+			this->world->addIndexes(this,1);
 			if (!this->world->selectObject)
 			{
 				this->world->worldInterface->barInfoManage(this);
@@ -161,22 +161,22 @@ namespace engine{
 							if (this->world->icemanVoiceTurn == 1)
 							{
 								this->world->icemanVoiceTurn = 2;
-								//Sounds.instance.playSoundWithVol("snd_iceman_voice2", 0.5);
+								AudioUtil::playSoundWithVol("Snd_iceman_voice2.mp3", 0.5);
 							}
 							else if (this->world->icemanVoiceTurn == 2)
 							{
 								this->world->icemanVoiceTurn = 3;
-								//Sounds.instance.playSoundWithVol("snd_iceman_voice3", 0.5);
+								AudioUtil::playSoundWithVol("Snd_iceman_voice3.mp3", 0.5);
 							}
 							else if (this->world->icemanVoiceTurn == 3)
 							{
 								this->world->icemanVoiceTurn = 4;
-								//Sounds.instance.playSoundWithVol("snd_iceman_voice4", 0.5);
+								AudioUtil::playSoundWithVol("Snd_iceman_voice4.mp3", 0.5);
 							}
 							else if (this->world->icemanVoiceTurn == 4)
 							{
 								this->world->icemanVoiceTurn = 1;
-								//Sounds.instance.playSoundWithVol("snd_iceman_voice5", 0.5);
+								AudioUtil::playSoundWithVol("Snd_iceman_voice5.mp3", 0.5);
 							}
 						}
 					}
@@ -600,7 +600,7 @@ namespace engine{
 						{
 							this->world->listOfUnits[this->i]->icemanCounter = Main::mainClass->readXMLClass.castIcemanFreezTimerXML;
 						}
-						//Sounds.instance.playSoundWithVol("snd_iceman_freezes", 0.5);
+						AudioUtil::playSoundWithVol("Snd_iceman_freezes.mp3", 0.5);
 						this->world->icemanSlowdownEnemiesCounter++;
 						int addit_icemanSlowdownEnemiesCounter = this->world->saveBox->getIntValue("addit_icemanSlowdownEnemiesCounter") + 1;
 						this->world->saveBox->setValue("addit_icemanSlowdownEnemiesCounter", addit_icemanSlowdownEnemiesCounter);
@@ -692,9 +692,9 @@ namespace engine{
 		{
 			//if (param1)
 			//{
-			//    if (!this->soundTimerMove && !this->world->menuObject)// && Sounds.instance.soundOn
+			//    if (!this->soundTimerMove && !this->world->menuObject && AudioUtil::soundOn)
 			//    {
-			//        //this->soundTimerMove = new Timer(Sounds.instance.playSoundWithVol("snd_iceman_move", 0.28), 99999);
+			//        //this->soundTimerMove = new Timer(AudioUtil::playSoundWithVol("Snd_iceman_move.mp3", 0.28), 99999);
 			//        //this->soundChannelMove = Sounds.instance.soundChanel;
 			//        //this->soundTimerMove.addEventListener(TimerEvent.TIMER, this->soundTimerMoveFunk);
 			//        //this->soundTimerMove.start();
@@ -705,7 +705,7 @@ namespace engine{
 			//    //this->world->listOfSoundChannels.push(this->soundChannelMove);
 			//    //this->soundTimerMove.removeEventListener(TimerEvent.TIMER, this->soundTimerMoveFunk);
 			//    //this->soundTimerMove.stop();
-			//    //this->soundTimerMove = null;
+			//    //this->soundTimerMove = NULL;
 			//}
 			return;
 		}// end function
@@ -716,7 +716,7 @@ namespace engine{
 			{
 				if (!Main::mainClass->worldClass->menuObject)
 				{
-					//Sounds.instance.playSoundWithVol("snd_iceman_move", 0.28);
+					AudioUtil::playSoundWithVol("Snd_iceman_move.mp3", 0.28);
 					//this->soundChannelMove = Sounds.instance.soundChanel;
 				}
 				else
@@ -736,20 +736,11 @@ namespace engine{
 			if (!this->dead)
 			{
 				this->dead = true;
-				this->soundTimerManageMove(false);
-				//this->i = 0;
-				//while (this->i < this->world->listOfIndexes1.length)
-				//{ 
-				//    if (this->world->listOfIndexes1[this->i] == this)
-				//    {
-				//        this->world->listOfIndexes1.splice(this->i, 1);
-				//        break;
-				//    }
-				//    i++;
-				//}
+				this->soundTimerManageMove(false); 
 				if (this->world->selectObject == this) {
 					this->world->selectObject = NULL;
 				}
+				this->world->removeIndexes(this,1);
 				this->world->removeClasses(this);
 				this->world->removeChild(this);
 			}

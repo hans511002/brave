@@ -71,7 +71,7 @@ namespace engine
 					tempObject->setPosition(pos);
 					//tempObject = new Indexes(new Unit21_backDeath_mc(), 1);
 				}
-				//Sounds.instance.playSound("snd_unit_orderDeath");
+				AudioUtil::playSound("Snd_unit_orderDeath.mp3");
 				//tempObject1 = container->localToGlobal(new Point(container->x, container->y));
 				//tempObject.x = tempObject1.x;
 				//tempObject.y = tempObject1.y;

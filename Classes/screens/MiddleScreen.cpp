@@ -81,9 +81,9 @@ namespace screens
         this->addChild(this->container);
         if (this->openScreenName == "World" || Main::mainClass->worldClass)
         {
-            //Sounds.instance.stopAll();
+            AudioUtil::stopAll();
         }
-        //Sounds.instance.playSoundWithVol("snd_middleScreen", 0.95);
+        AudioUtil::playSoundWithVol("Snd_middleScreen.mp3", 0.95);
         BaseNode::init();
         return true;
     }// end function

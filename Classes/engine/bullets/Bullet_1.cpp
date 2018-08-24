@@ -32,7 +32,7 @@ namespace engine{
             Bullet::update();
             if (mainCounter == 7)
             {
-                //Sounds.instance.playSound("snd_tower_shootFire");
+                AudioUtil::playSound("Snd_tower_shootFire.mp3");
             }
             if (container->currentFrame < container->totalFrames)
             {

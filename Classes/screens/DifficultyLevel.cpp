@@ -57,7 +57,7 @@ namespace screens
         this->container->firstHardComplexityCase->setMouseEnabled(false);
         this->addChild(this->container);
         this->setPosition(Main::SCREEN_WIDTH_HALF, Main::SCREEN_HEIGHT_HALF);
-        //Sounds.instance.playSound("snd_menu_pageScrolling");
+        AudioUtil::playSound("Snd_menu_pageScrolling.mp3");
         return true;
     }// end function
 
@@ -142,7 +142,7 @@ namespace screens
                 if (this->container->firstEasy->currentFrame == 1)
                 {
                     this->container->firstEasy->gotoAndStop(2);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                 }
             }
         }
@@ -157,7 +157,7 @@ namespace screens
                 if (this->container->firstNormal->currentFrame == 1)
                 {
                     this->container->firstNormal->gotoAndStop(2);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                 }
             }
         }
@@ -172,7 +172,7 @@ namespace screens
                 if (this->container->firstHard->currentFrame == 1)
                 {
                     this->container->firstHard->gotoAndStop(2);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                 }
             }
         }
@@ -192,7 +192,7 @@ namespace screens
                 if (this->container->firstEasy->currentFrame == 2)
                 {
                     this->container->firstEasy->gotoAndStop(3);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                 }
             }
         }
@@ -203,7 +203,7 @@ namespace screens
                 if (this->container->firstNormal->currentFrame == 2)
                 {
                     this->container->firstNormal->gotoAndStop(3);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                 }
             }
         }
@@ -214,7 +214,7 @@ namespace screens
                 if (this->container->firstHard->currentFrame == 2)
                 {
                     this->container->firstHard->gotoAndStop(3);
-                    //Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                 }
             }
         }
@@ -237,7 +237,7 @@ namespace screens
                     this->closeFlag = true;
                     Main::mainClass->saveBoxClass->setValue("difficultyLevel", true);
                     Main::mainClass->saveBoxClass->setValue("complexityLevel", 1);
-                    //Sounds.instance.playSound("snd_menu_pageScrolling");
+                    AudioUtil::playSound("Snd_menu_pageScrolling.mp3");
                 }
             }
         }
@@ -255,7 +255,7 @@ namespace screens
                     this->closeFlag = true;
                     Main::mainClass->saveBoxClass->setValue("difficultyLevel", true);
                     Main::mainClass->saveBoxClass->setValue("complexityLevel", 2); 
-                    //Sounds.instance.playSound("snd_menu_pageScrolling");
+                    AudioUtil::playSound("Snd_menu_pageScrolling.mp3");
                 }
             }
         }
@@ -273,7 +273,7 @@ namespace screens
                     this->closeFlag = true;
                     Main::mainClass->saveBoxClass->setValue("difficultyLevel", true);
                     Main::mainClass->saveBoxClass->setValue("complexityLevel", 3); 
-                    //Sounds.instance.playSound("snd_menu_pageScrolling");
+                    AudioUtil::playSound("Snd_menu_pageScrolling.mp3");
                 }
             }
         }

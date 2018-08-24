@@ -22,7 +22,7 @@ namespace engine
 			container->stop();
 			this->addChild(container);
 			Bullet::init();
-			//Sounds.instance.playSoundWithVol("snd_tower_shootUltraAdd2", 0.9);
+			AudioUtil::playSoundWithVol("Snd_tower_shootUltraAdd2.mp3", 0.9);
 			return true;
 		}// end function
 

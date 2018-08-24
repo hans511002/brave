@@ -89,7 +89,7 @@ namespace engine
             Tower::init();
             if (!autoBuild)
             {
-                //Sounds.instance.playSoundWithVol("snd_tower_build1", 0.9);
+                AudioUtil::playSoundWithVol("Snd_tower_build1.mp3", 0.9);
             }
             return true;
         }// end function
@@ -112,24 +112,26 @@ namespace engine
             }
             if (spheresStack.size() == 1)
             {
-                if (container->sphere1->currentFrame < container->sphere1->totalFrames)
-                {
-                    container->sphere1->tryPlay();
-                    //container->sphere1->gotoAndStop((container->sphere1->currentFrame + 1));
-                }
-                else
-                {
-                    container->sphere1->gotoAndStop(1);
-                } 
-                if (container->sphere1BulletCont->currentFrame < container->sphere1BulletCont->totalFrames)
-                {
-                    container->sphere1BulletCont->tryPlay();
-                    //container->sphere1BulletCont->gotoAndStop((container->sphere1BulletCont->currentFrame + 1));
-                }
-                else
-                {
-                    container->sphere1BulletCont->gotoAndStop(1);
-                } 
+                container->sphere1->tryPlay();
+                container->sphere1BulletCont->tryPlay();
+                //if (container->sphere1->currentFrame < container->sphere1->totalFrames)
+                //{
+                //    container->sphere1->tryPlay();
+                //    //container->sphere1->gotoAndStop((container->sphere1->currentFrame + 1));
+                //}
+                //else
+                //{
+                //    container->sphere1->gotoAndStop(1);
+                //} 
+                //if (container->sphere1BulletCont->currentFrame < container->sphere1BulletCont->totalFrames)
+                //{
+                //    container->sphere1BulletCont->tryPlay();
+                //    //container->sphere1BulletCont->gotoAndStop((container->sphere1BulletCont->currentFrame + 1));
+                //}
+                //else
+                //{
+                //    container->sphere1BulletCont->gotoAndStop(1);
+                //} 
             }
             else if (spheresStack.size() == 2)
             {

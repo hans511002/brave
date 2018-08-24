@@ -37,7 +37,7 @@ namespace engine
 				i++;
 			}
 			world->addClasses(this);
-			//world->listOfIndexes0.push(this);
+			world->addIndexes(this,0);
 			return true;
 		}// end function
 
@@ -348,17 +348,8 @@ namespace engine
 								{
 									container->dustAnima->setVisible(false);
 									container->dustAnima->setAlpha(0);
-									i = 0;
-									while (i < world->listOfIndexes0.size())
-									{
-										if (world->listOfIndexes0[i] == this)
-										{
-											world->listOfIndexes0.splice(i, 1);
-											break;
-										}
-										i++;
-									}
-									world->listOfIndexes1.push(this);
+									world->removeIndexes(this,0);
+									world->addIndexes(this,1);
 								}
 								if (container->cont->currentFrame > 34)
 								{
@@ -366,26 +357,9 @@ namespace engine
 								}
 								else
 								{
-									i = 0;
-									while (i < world->listOfClasses.size())
-									{
-										if (world->listOfClasses[i] == this)
-										{
-											world->listOfClasses.splice(i, 1);
-											break;
-										}
-										i++;
-									}
-									i = 0;
-									while (i < world->listOfIndexes1.size())
-									{
-										if (world->listOfIndexes1[i] == this)
-										{
-											world->listOfIndexes1.splice(i, 1);
-											break;
-										}
-										i++;
-									}
+								    world->removeUnit(this); 
+								    world->removeClasses(this); 
+								    world->removeIndexes(this); 
 									world->listOfUnits.push(this);
 									readyDamage = true;
 									moveFlag = true;
@@ -431,27 +405,9 @@ namespace engine
 							if (container->dustAnima->getAlpha() > 1)
 							{
 								container->dustAnima->setAlpha(1);
-								i = 0;
-								while (i < world->listOfIndexes0.size())
-								{
-									if (world->listOfIndexes0[i] == this)
-									{
-										world->listOfIndexes0.splice(i, 1);
-										break;
-									}
-									i++;
-								}
-								i = 0;
-								while (i < world->listOfIndexes1.size())
-								{
-									if (world->listOfIndexes1[i] == this)
-									{
-										world->listOfIndexes1.splice(i, 1);
-										break;
-									}
-									i++;
-								}
-								world->listOfIndexes0.push(this);
+								world->removeIndexes(this,0); 
+								world->removeIndexes(this,1); 
+								world->addIndexes(this,0);
 								this->phase = 3;
 							}
 						}
@@ -475,17 +431,8 @@ namespace engine
 							{
 								container->dustAnima->setVisible(false);
 								container->dustAnima->setAlpha(0);
-								i = 0;
-								while (i < world->listOfIndexes0.size())
-								{
-									if (world->listOfIndexes0[i] == this)
-									{
-										world->listOfIndexes0.splice(i, 1);
-										break;
-									}
-									i++;
-								}
-								world->listOfIndexes1.push(this);
+								world->removeIndexes(this,0);
+								world->addIndexes(this,1);
 								this->phase = 4;
 							}
 						}
@@ -510,26 +457,9 @@ namespace engine
 						}
 						if (container->cont->currentFrame == 33 || container->cont->currentFrame == 101)
 						{
-							i = 0;
-							while (i < world->listOfClasses.size())
-							{
-								if (world->listOfClasses[i] == this)
-								{
-									world->listOfClasses.splice(i, 1);
-									break;
-								}
-								i++;
-							}
-							i = 0;
-							while (i < world->listOfIndexes1.size())
-							{
-								if (world->listOfIndexes1[i] == this)
-								{
-									world->listOfIndexes1.splice(i, 1);
-									break;
-								}
-								i++;
-							}
+							world->removeUnit(this); 
+						    world->removeClasses(this); 
+						    world->removeIndexes(this); 
 							world->listOfUnits.push(this);
 							container->healthBar->setVisible(true);
 							health = healthMax * this->returnHealth;
@@ -565,46 +495,9 @@ namespace engine
 			{
 				if (readyDamage)
 				{
-					i = 0;
-					while (i < world->listOfUnits.size())
-					{
-						if (world->listOfUnits[i] == this)
-						{
-							world->listOfUnits.splice(i, 1);
-							break;
-						}
-						i++;
-					}
-					i = 0;
-					while (i < world->listOfClasses.size())
-					{
-						if (world->listOfClasses[i] == this)
-						{
-							world->listOfClasses.splice(i, 1);
-							break;
-						}
-						i++;
-					}
-					//i = 0;
-					//while (i < world->listOfIndexes0.size())
-					//{ 
-					//    if (world->listOfIndexes0[i] == this)
-					//    {
-					//        world->listOfIndexes0.splice(i, 1);
-					//        break;
-					//    }
-					//    i++;
-					//}
-					//i = 0;
-					//while (i < world->listOfIndexes1.size())
-					//{ 
-					//    if (world->listOfIndexes1[i] == this)
-					//    {
-					//        world->listOfIndexes1.splice(i, 1);
-					//        break;
-					//    }
-					//    i++;
-					//}
+				    world->removeUnit(this); 
+				    world->removeClasses(this);  
+				    world->removeIndexes(this);   
 					stopAllEffects();
 					health = 0;
 					readyDamage = false;
@@ -612,52 +505,18 @@ namespace engine
 					this->setMouseChildren(false);
 					this->setMouseEnabled(false);
 					world->addClasses(this);
-					//if (lastAttackType == "golem")
-					//{
-					//    world->listOfIndexes0.push(this);
-					//}
-					//else
-					//{
-					//    world->listOfIndexes1.push(this);
-					//}
+					if (lastAttackType == "golem")
+					    world->addIndexes(this,0); 
+					else
+					    world->addIndexes(this,1);
 				}
 			}
 			else
 			{
 				if (!dead)
 				{
-					i = 0;
-					while (i < world->listOfClasses.size())
-					{
-						if (world->listOfClasses[i] == this)
-						{
-							world->listOfClasses.splice(i, 1);
-							break;
-						}
-						i++;
-					}
-					//i = 0;
-					//while (i < world->listOfIndexes0.size())
-					//{
-					//    
-					//    if (world->listOfIndexes0[i] == this)
-					//    {
-					//        world->listOfIndexes0.splice(i, 1);
-					//        break;
-					//    }
-					//    i++;
-					//}
-					//i = 0;
-					//while (i < world->listOfIndexes1.size())
-					//{
-					//    
-					//    if (world->listOfIndexes1[i] == this)
-					//    {
-					//        world->listOfIndexes1.splice(i, 1);
-					//        break;
-					//    }
-					//    i++;
-					//}
+				    world->removeClasses(this);  
+ 				    world->removeIndexes(this);   
 				}
 				Unit::kill();
 			}

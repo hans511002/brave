@@ -54,7 +54,7 @@
                 this.addChild(this.container);
                 this.prepareEnemyInfo();
             }
-            Sounds.instance.playSound("snd_menu_pageScrolling");
+            AudioUtil::playSound("Snd_menu_pageScrolling.mp3");
             return;
         }// end function
 
@@ -141,7 +141,7 @@
                     if (this.container.first.card.btnOk.currentFrame == 1)
                     {
                         this.container.first.card.btnOk.gotoAndStop(2);
-                        Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                        AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                     }
                 }
                 else if (this.container.first.card.btnOk.currentFrame == 2)
@@ -161,7 +161,7 @@
                     if (this.container.first.card.btnOk.currentFrame == 2)
                     {
                         this.container.first.card.btnOk.gotoAndStop(3);
-                        Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                        AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                     }
                 }
             }
@@ -181,7 +181,7 @@
                         var _loc_2:* = false;
                         this.container.first.setMouseChildren(false);
                         this.container.first.mouseEnabled = _loc_2;
-                        Sounds.instance.playSound("snd_menu_pageScrolling");
+                        AudioUtil::playSound("Snd_menu_pageScrolling.mp3");
                     }
                 }
                 else if (this.container.first.card.btnOk.currentFrame == 3)

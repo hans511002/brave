@@ -81,17 +81,7 @@ namespace engine
         {
             this->dead = true;
 			this->world->removeClasses(this);
-            this->world->worldInterface->removeChild(this);
-            //this->i = 0;
-            //while (this->i <this->world->listOfClasses.size())
-            //{
-            //	if (this->world->listOfClasses[this->i] == this)
-            //	{
-            //		this->world->listOfClasses.splice(this->i, 1);
-            //		break;
-            //	}
-            //	i++;
-            //}
+            this->world->worldInterface->removeChild(this); 
         }
     }// end function
 }

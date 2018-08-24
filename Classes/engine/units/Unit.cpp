@@ -130,7 +130,7 @@ namespace engine
 					//this->tempObject.newEnemyCase.setMouseEnabled(true);
 					this->world->worldInterface->addChild(tempObject);
 					this->world->worldInterface->listOfNewEnemies.push(tempObject);
-					//Sounds.instance.playSoundWithVol("snd_world_newEnemy", 0.9);
+					AudioUtil::playSoundWithVol("Snd_world_newEnemy.mp3", 0.9);
 				}
 			}
 			//this->schedule(schedule_selector(Unit::update), 0.0f);
@@ -908,7 +908,7 @@ namespace engine
 						//this->container->iceFreez->gotoAndStop((this->container->iceFreez->currentFrame + 1));
 						if (this->container->iceFreez->currentFrame == 46)
 						{
-							//Sounds.instance.playSound("snd_unit_floeCrash");
+							AudioUtil::playSound("Snd_unit_floeCrash.mp3");
 						}
 					}
 					else
@@ -916,7 +916,7 @@ namespace engine
 						this->container->iceFreez->stop();
 						this->icemanFlag = false;
 						this->container->iceFreez->setVisible(false);
-						//Sounds.instance.playSound("snd_unit_floeShards");
+						AudioUtil::playSound("Snd_unit_floeShards.mp3");
 					}
 				}
 			}
@@ -1765,17 +1765,7 @@ namespace engine
 			this->world->removeUnit(this);
 			this->world->removeClasses(this);
 			this->world->removeChild(this, true);
-			//this->i = 0;
-			//while (this->i < this->world->listOfIndexes1.length)
-			//{
-			//	if (this->world->listOfIndexes1[this->i] == this)
-			//	{
-			//		this->world->listOfIndexes1.splice(this->i, 1);
-			//		break;
-			//	}
-			//	i++;
-			//}
-			//}
+			this->world->removeIndexes(this,1); 
 			//return;
 		}// end function
         void Unit::kill() //public function kill() : void
@@ -1794,7 +1784,7 @@ namespace engine
                     if(this->lastAttackType == "ice")
                     {
                         this->container->iceDeath->setVisible(true);
-                        //Sounds.instance.playSoundWithVol("snd_unit_iceDeath", 0.75);
+                        AudioUtil::playSoundWithVol("Snd_unit_iceDeath.mp3", 0.75);
                     }
                     else if(this->lastAttackType == "stone")
                     {
@@ -1803,12 +1793,12 @@ namespace engine
                     else if(this->lastAttackType == "levin")
                     {
                         this->container->levinDeath->setVisible(true);
-                        //Sounds.instance.playSound("snd_unit_levinDeath");
+                        AudioUtil::playSound("Snd_unit_levinDeath.mp3");
                     }
                     this->setMouseChildren(false);
                     this->setMouseEnabled(false);
                     this->world->addClasses(this);
-                    //this->world->listOfIndexes1.push(this);
+                    //this->world->addIndexes(this,1);
                 }
                 else
                 {
@@ -1817,7 +1807,7 @@ namespace engine
                         //this->tempObject = new DeathEffect(this, NULL, 6, 0.2, 1);
                         if(this->lastAttackType != "golem")
                         {
-                            //Sounds.instance.playSound("snd_unit_fireDeath");
+                            AudioUtil::playSound("Snd_unit_fireDeath.mp3");
                         }
                     }
 					needRemove = true;//this->world->removeChild(this);
@@ -1859,7 +1849,7 @@ namespace engine
             {
                 if(this->world->live > 0)
                 {
-                    //Sounds.instance.playSoundWithVol("snd_unit_finish", 0.9);
+                    AudioUtil::playSoundWithVol("Snd_unit_finish.mp3", 0.9);
                 }
                 this->world->live = this->world->live - this->penalty;
 				needRemove = true;//this->world->removeChild(this);

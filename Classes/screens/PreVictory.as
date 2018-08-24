@@ -94,7 +94,7 @@
                 if (this.container.cont.btnOk.currentFrame == 1)
                 {
                     this.container.cont.btnOk.gotoAndStop(2);
-                    Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+                    Sounds.instance.playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
                 }
             }
             else if (this.container.cont.btnOk.currentFrame == 2)
@@ -113,7 +113,7 @@
                     if (this.container.cont.btnOk.currentFrame == 2)
                     {
                         this.container.cont.btnOk.gotoAndStop(3);
-                        Sounds.instance.playSoundWithVol("snd_menu_mouseDown", 0.9);
+                        Sounds.instance.playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
                     }
                 }
             }

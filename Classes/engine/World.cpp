@@ -80,8 +80,17 @@ namespace engine
 		BaseNode::init();
 		this->wavesClass = new Waves();
 		this->feature = new Feature();
-
-		return true;
+		//test bezier getPathPoint
+		int r=0,w=0;
+		float finishPath = this->bezierClass->getPathLength(r, w);
+        Common::DateTime dt;
+		float path=0;
+		for (int i = 0; i < 100000; ++i) {
+			path=std::random()*finishPath;
+			bezier::PathPoint ppo = this->bezierClass->getPathPoint(path, r,w);
+		}
+		long ts=Common::DateTime().GetTicks() -dt.GetTicks();
+        return true;
 	};
 	void World::onEnter()
 	{
@@ -125,7 +134,7 @@ namespace engine
 			if (this->frameCounter == 10)
 			{
 				this->firstMusicPlay = true;
-				//Sounds.instance.playMusic(1);
+				AudioUtil::playMusic(1);
 				if (complexityLevel < 4)
 				{
 					if (this->nowLevel == 1)
@@ -175,7 +184,7 @@ namespace engine
 			else
 			{
 				this->secondMusicPlay = false;
-				//Sounds.instance.playMusic(2);
+				AudioUtil::playMusic(2);
 			}
 		}
 		if (this->bonusMoneyFlag)
@@ -186,7 +195,7 @@ namespace engine
 				if (this->saveBox->getIntValue("complexityLevel") < 4 && this->saveBox->getStringValue("type") == "site")
 				{
 					BonusMoney * tempObject = new BonusMoney();
-					this->addChild(tempObject);
+                    this->addChild(tempObject,3);
 				}
 			}
 		}
@@ -289,11 +298,11 @@ namespace engine
 				//{
 				//	if (this->startMusicVolume == 0)
 				//	{
-				//		this->startMusicVolume = Sounds.instance.musicChanel.soundTransform.volume;
+				//		this->startMusicVolume =AudioUtil::getMusicVolume();
 				//	}
-				//	if (Sounds.instance.musicChanel.soundTransform.volume > this->startMusicVolume * 0.35)
+				//	if (AudioUtil::getMusicVolume() > this->startMusicVolume * 0.35)
 				//	{
-				//		Sounds.instance.musicChanel.soundTransform = new SoundTransform(Sounds.instance.musicChanel.soundTransform.volume - this->startMusicVolume * 0.035, 0);
+				//		AudioUtil::setMusicVolume(AudioUtil::getMusicVolume() - this->startMusicVolume * 0.035);
 				//	}
 				//}
 				if (this->levelAdditionally->currentFrame < this->levelAdditionally->totalFrames)
@@ -315,7 +324,7 @@ namespace engine
                     //this->levelAdditionally1->gotoAndStop((this->levelAdditionally1->currentFrame + 1));
 					if (this->levelAdditionally1->currentFrame == 90)
 					{
-						//Sounds.instance.playSound("snd_world_openRoad");
+						AudioUtil::playSound("Snd_world_openRoad.mp3");
 					}
 				}
 				else
@@ -545,7 +554,7 @@ namespace engine
 					this->ultraTowerMenu = new UltraTowerMenu(tower);
 					this->addChild(this->ultraTowerMenu, 3);
 				}
-				//Sounds.instance.playSound("snd_tower_openMenu");
+				AudioUtil::playSound("Snd_tower_openMenu.mp3");
 			}
 			if (this->worldInterface)
 			{
@@ -732,7 +741,7 @@ namespace engine
 							//this->towerRadius->x = this->towerRadius->myTower->this_pt.x;
 							//this->towerRadius->y = this->towerRadius->myTower->this_pt.y;
 							this->towerRadius->setVisible(true);
-							//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+							AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
 						}
 					}
 					else if (this->towerRadius->isVisible())
@@ -805,7 +814,7 @@ namespace engine
 						}
 						
 						logInfo("towerRadius", this->towerRadius->getAnchorPoint(),&this->towerRadius->getPosition());
-						//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
 					}
 				}
 				else if (this->towerRadius->isVisible())
@@ -843,14 +852,14 @@ namespace engine
 						{
 							this->buildTowerMenu = new BuildTowerMenu(place);
 							this->addChild(this->buildTowerMenu);
-							//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+							AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
 						}
                         else if(this->buildTowerMenu->myPlace != place)
 						{
 							this->buildTowerMenu->closeMenu();
 							this->buildTowerMenu = new BuildTowerMenu(place);
 							this->addChild(this->buildTowerMenu);
-							//Sounds.instance.playSoundWithVol("snd_menu_mouseMove", 0.95);
+							AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
 						}
 					}
 				}
@@ -2265,41 +2274,90 @@ namespace engine
         }
         listOfClasses.push(node);
     };
+    bool World::existClasses(BaseNode * node){
+        int i = listOfClasses.size()-1;
+        while(i >=0)
+        {
+            if(listOfClasses.at(i) == node)
+                 return true;
+            i--;
+        }
+        return false;
+    };
 
-	void World::removeIndexes(BaseNode * node)
+	void World::removeIndexes(Node * node,int indexType)
 	{
-		int i = 0;
-		int len = listOfIndexes1.size();
-		while (i < len)
-		{
-			if (listOfIndexes1[i] == node)
-			{
-				listOfIndexes1.remove(i);
-				break;
-			}
-			i++;
+	    return;
+		int i = 0,len=0;
+		if(indexType==-1 ||indexType==0){
+		    len = listOfIndexes0.size();
+    		while (i < len)
+    		{
+    			if (listOfIndexes0[i] == node)
+    			{
+    				listOfIndexes0.remove(i);
+    				break;
+    			}
+    			i++;
+    		}
 		}
-		i = 0; len = listOfIndexes2.size();
-		while (i < len)
-		{
-			if (listOfIndexes2[i] == node)
-			{
-				listOfIndexes2.remove(i);
-				break;
-			}
-			i++;
+		if(indexType==-1 ||indexType==1){
+		    len = listOfIndexes1.size();
+    		while (i < len)
+    		{
+    			if (listOfIndexes1[i] == node)
+    			{
+    				listOfIndexes1.remove(i);
+    				break;
+    			}
+    			i++;
+    		}
 		}
-		i = 0; len = listOfIndexes3.size();
-		while (i < len)
-		{
-			if (listOfIndexes3[i] == node)
-			{
-				listOfIndexes3.remove(i);
-				break;
-			}
-			i++;
+		if(indexType==-1 ||indexType==2){
+		    i = 0; len = listOfIndexes2.size();
+    		while (i < len)
+    		{
+    			if (listOfIndexes2[i] == node)
+    			{
+    				listOfIndexes2.remove(i);
+    				break;
+    			}
+    			i++;
+    		}
+		}
+		if(indexType==-1 ||indexType==3){
+		    i = 0; len = listOfIndexes3.size();
+    		while (i < len)
+    		{
+    			if (listOfIndexes3[i] == node)
+    			{
+    				listOfIndexes3.remove(i);
+    				break;
+    			}
+    			i++;
+    		}
 		}
 	};
+	void World::addIndexes(Node * node, int indexParam)
+    {
+        return;
+        if (indexParam == 0)
+        {
+            listOfIndexes0.push(this);
+        }
+        else if (indexParam == 1)
+        {
+            listOfIndexes1.push(this);
+        }
+        else if (indexParam == 2)
+        {
+            listOfIndexes2.push(this);
+        }
+        else if (indexParam == 3)
+        {
+            listOfIndexes3.push(this);
+        }
+    }
 	void World::removeUnit(units::Unit *unit) {
 		int i = 0;
 		while (i < this->listOfUnits.size())
@@ -2307,21 +2365,30 @@ namespace engine
 			if (this->listOfUnits[i] == unit)
 			{
 				this->listOfUnits.remove(i);
-				i = this->listOfBullets.size() - 1;
-				while (i >= 0)
-				{
-					if (this->listOfBullets[i]->enemyTarget == unit) {
-						this->listOfBullets[i]->kill();
-						break;
-					};
-					i--;
-				}
 				break;
 			}
 			i++;
 		}
+		i = this->listOfBullets.size() - 1;
+		while (i >= 0)
+		{
+			if (this->listOfBullets[i]->enemyTarget == unit) {
+				this->listOfBullets[i]->kill();
+			};
+			i--;
+		}
 	};
-
+    void World::removeBullet(Bullet * blt){
+        int i = this->listOfBullets.size() - 1;
+		while (i >= 0)
+		{
+			if (this->listOfBullets[i] == blt) {
+			    this->listOfBullets.remove(i); 
+				break;
+			};
+			i--;
+		}
+    };
 	void World::removeChild(Node* child, bool cleanup /* = true */){
 		if (ISTYPE(BaseNode, child))
 		{

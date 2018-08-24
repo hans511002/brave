@@ -120,7 +120,7 @@ namespace engine{
             this->setMouseEnabled(false);
             this->world = Main::mainClass->worldClass;
             this->world->listOfBullets.push(this);
-            //this->world->listOfIndexes3.push(this);
+            this->world->addIndexes(this,3);
             this->changeIndex = 10;
             return true;
         }// end function
@@ -157,18 +157,8 @@ namespace engine{
 
         void Bullet::defaultIndex()
         {
-            //this->i = 0;
-            //while (this->i < this->world->listOfIndexes3.length)
-            //{
-            //    
-            //    if (this->world->listOfIndexes3[this->i] == this)
-            //    {
-            //        this->world->listOfIndexes3.splice(this->i, 1);
-            //        break;
-            //    }
-            //    i++;
-            //}
-            //this->world->listOfIndexes2.push(this);
+            this->world->removeIndexes(this,3); 
+            this->world->addIndexes(this,2);
             return;
         }// end function
 
@@ -190,37 +180,9 @@ namespace engine{
             {
                 this->dead = true;
                 this->i = 0;
-                while (this->i < this->world->listOfBullets.size())
-                {
-                    if (this->world->listOfBullets[this->i] == this)
-                    {
-                        this->world->listOfBullets.splice(this->i, 1);
-                        break;
-                    }
-                    i++;
-                }
-                //this->i = 0;
-                //while (this->i < this->world->listOfIndexes2.length)
-                //{
-                //    
-                //    if (this->world->listOfIndexes2[this->i] == this)
-                //    {
-                //        this->world->listOfIndexes2.splice(this->i, 1);
-                //        break;
-                //    }
-                //    i++;
-                //}
-                //this->i = 0;
-                //while (this->i < this->world->listOfIndexes3.length)
-                //{
-                //    
-                //    if (this->world->listOfIndexes3[this->i] == this)
-                //    {
-                //        this->world->listOfIndexes3.splice(this->i, 1);
-                //        break;
-                //    }
-                //    i++;
-                //}
+                world->removeBullet(this);
+                world->removeIndexes(this,2);
+                world->removeIndexes(this,3); 
                 this->world->removeChild(this);
             }
             return;

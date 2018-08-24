@@ -140,7 +140,7 @@ namespace engine{
 				//if (event.target.name == "placeForBuildCase" || event.target.name == "buildTowerMenuCase")
 				//if (target != "placeForBuildCase" ||  target != "buildTowerMenuCase" || std::hitTest(this->myPlace, pt))
 				//if (std::hitTest(this->container->contBuildTowerMenuCase, pt) || std::hitTest(this->myPlace->placeForBuildCase, pt))
-				{
+				if(this->world->money >= Main::mainClass->readXMLClass.costTowerXML){
                     this->world->money = this->world->money - Main::mainClass->readXMLClass.costTowerXML;
                     this->world->worldInterface->updateInfo();
                     Main::mainClass->readXMLClass.costTowerXML = Main::mainClass->readXMLClass.costTowerXML + Main::mainClass->readXMLClass.costTowerPlusXML;

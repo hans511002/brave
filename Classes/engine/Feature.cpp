@@ -248,7 +248,7 @@ namespace engine
 			this->world->addChild(pointer,3);
 			pointer->setPosition(pos);
 			//pointer->pointerCase->enableMouseHandler(useNodeEvent);
-			//this->world->listOfIndexes3.push(this->world->pointer1); 
+			//this->world->adIndexes(this->world->pointer1,3); 
 			pointer->setScaleY(0.9f);
 			pointer->setScaleX(0.9f);
 			pointer->setVisible(false);
@@ -642,7 +642,7 @@ namespace engine
 				{
 					if (this->world->nowLevel == 3)
 					{
-						//Sounds.instance.playSoundWithVol("snd_tower_build", 0.95);
+						AudioUtil::playSoundWithVol("Snd_tower_build.mp3", 0.95);
 						this->i = 0;
 						while (this->i < this->world->listOfPlaces.size())
 						{
@@ -665,7 +665,7 @@ namespace engine
 					}
 					else if (this->world->nowLevel == 5)
 					{
-						//Sounds.instance.playSoundWithVol("snd_tower_build", 0.95);
+						AudioUtil::playSoundWithVol("Snd_tower_build.mp3", 0.95);
 						//this->i = 0;
 						//while (this->i < this->world->listOfPlaces.size())
 						//{
@@ -680,7 +680,7 @@ namespace engine
 					}
 					else if (this->world->nowLevel == 7)
 					{
-						//Sounds.instance.playSoundWithVol("snd_tower_build", 0.95);
+						AudioUtil::playSoundWithVol("Snd_tower_build.mp3", 0.95);
 						//this->i = 0;
 						//while (this->i < this->world->listOfPlaces.size())
 						//{
@@ -709,7 +709,7 @@ namespace engine
 					}
 					else if (this->world->nowLevel == 9)
 					{
-						//Sounds.instance.playSoundWithVol("snd_tower_build", 0.95);
+						AudioUtil::playSoundWithVol("Snd_tower_build.mp3", 0.95);
 						//this->i = 0;
 						//while (this->i < this->world->listOfPlaces.size())
 						//{
@@ -724,7 +724,7 @@ namespace engine
 					}
 					else if (this->world->nowLevel == 10)
 					{
-						//Sounds.instance.playSoundWithVol("snd_tower_build", 0.95);
+						AudioUtil::playSoundWithVol("Snd_tower_build.mp3", 0.95);
 						//this->i = 0;
 						//while (this->i < this->world->listOfPlaces.size())
 						//{
@@ -741,7 +741,7 @@ namespace engine
 					}
 					else if (this->world->nowLevel == 11)
 					{
-						//Sounds.instance.playSoundWithVol("snd_tower_build", 0.95);
+						AudioUtil::playSoundWithVol("Snd_tower_build.mp3", 0.95);
 						//this->i = 0;
 						//while (this->i < this->world->listOfPlaces.size())
 						//{
@@ -758,7 +758,7 @@ namespace engine
 					}
 					else if (this->world->nowLevel == 14)
 					{
-						//Sounds.instance.playSoundWithVol("snd_tower_build", 0.95);
+						AudioUtil::playSoundWithVol("Snd_tower_build.mp3", 0.95);
 						//this->i = 0;
 						//while (this->i < this->world->listOfPlaces.size())
 						//{
@@ -775,7 +775,7 @@ namespace engine
 					}
 					else if (this->world->nowLevel == 15)
 					{
-						//	Sounds.instance.playSoundWithVol("snd_tower_build", 0.95);
+						AudioUtil::playSoundWithVol("Snd_tower_build.mp3", 0.95);
 						//	this->i = 0;
 						//	while (this->i < this->world->listOfPlaces.size())
 						//	{

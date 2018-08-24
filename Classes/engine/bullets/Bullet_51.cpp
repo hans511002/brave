@@ -67,7 +67,7 @@ namespace engine {
 				i++;
 			}
 			Bullet::init();
-			//Sounds.instance.playSound("snd_tower_shootUltraAdd1");
+			AudioUtil::playSound("Snd_tower_shootUltraAdd1.mp3");
 			return true;
 		}// end function
 

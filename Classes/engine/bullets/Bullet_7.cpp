@@ -75,8 +75,8 @@ namespace engine
 			//this->shadow.scaleY = 0.5;
 			//this->shadow.scaleX = 0.5;
 			world->addChild(this->shadow, 2);
-			//world->listOfIndexes2.push(this->shadow);
-			//Sounds.instance.playSound("snd_tower_shootUltra1_1");
+			world->addIndexes(this->shadow,2);
+			AudioUtil::playSound("Snd_tower_shootUltra1_1.mp3");
 			return true;
 		}// end function
 
@@ -164,7 +164,7 @@ namespace engine
 					//this->shadow.y = this->shadow.y + (this->enemyStartPoint.y - this->shadow.y) / (liveCounter * 10);
 					if (liveCounter == 4)
 					{
-						//Sounds.instance.playSound("snd_tower_shootUltra3");
+						AudioUtil::playSound("Snd_tower_shootUltra3.mp3");
 						container->gotoAndStop(2);
 						this->shadow->setVisible(false);
 						i = world->listOfUnits.size() - 1;
@@ -218,18 +218,8 @@ namespace engine
 		{
 			if (this->shadow)
 			{
+				world->removeIndexes(this,2); 
 				world->removeChild(this->shadow);
-				//i = 0;
-				//while (i < world->listOfIndexes2.size())
-				//{
-				//    
-				//    if (world->listOfIndexes2[i] == this->shadow)
-				//    {
-				//        world->listOfIndexes2.splice(i, 1);
-				//        break;
-				//    }
-				//    i++;
-				//}
 				this->shadow = NULL;
 			}
 			Bullet::kill();

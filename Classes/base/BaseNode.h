@@ -11,6 +11,7 @@ using namespace cocos2d;
 #include "DefineClasses.h"
 #include "MYPThread.h"
 #include "sys/I18n.h"
+#include "AudioUtil.h"
 
 #define ISTYPE(CLZTYPE,POINTER)  dynamic_cast<CLZTYPE *>(POINTER)
 #if CC_TARGET_PLATFORM == CC_PLATFORM_MAC

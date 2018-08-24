@@ -59,7 +59,8 @@ bool Main::init()
     this->saveBoxClass = new SaveBox();
 	this->saveBoxClass->playLevel = 4;
     //this->readXMLClass = new ReadXML();//不使用指针,使用对象
-    //Sounds.instance.stopAll();
+    AudioUtil::setAudioDir("sound");
+    AudioUtil::stopAll();
     //this->tracker = new GATracker(this, "UA-63231445-3", "AS3", false);
     //this->tracker.trackPageview("openGame");
 	this->enableKeyHandler();
@@ -265,28 +266,20 @@ void Main::keyBoardPressedHandler(EventKeyboard::KeyCode keycode, cocos2d::Event
     {
         if (this->worldClass)
         {
-            //if (Sounds.instance.musicOn)
-            //{
-            //    Sounds.instance.musicManage("off");
-            //}
-            //else
-            //{
-            //    Sounds.instance.musicManage("on");
-            //}
+            if (AudioUtil::musicOn) 
+                AudioUtil::musicManage("off"); 
+            else 
+                AudioUtil::musicManage("on"); 
         }
     }
     else if ((int)keycode == 115 || (int)keycode == 83)
     {
         if (this->worldClass)
         {
-            //if (Sounds.instance.soundOn)
-            //{
-            //    Sounds.instance.soundManage("off");
-            //}
-            //else
-            //{
-            //    Sounds.instance.soundManage("on");
-            //}
+            if (AudioUtil::soundOn) 
+                AudioUtil::soundManage("off"); 
+            else 
+                AudioUtil::soundManage("on"); 
         }
     }
     return;

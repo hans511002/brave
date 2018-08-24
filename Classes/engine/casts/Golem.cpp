@@ -105,7 +105,7 @@ namespace engine {
 			this->setMouseChildren(false);
 			this->setMouseEnabled(false);
 			this->world->addClasses(this);
-			//this->world->listOfIndexes1.push(this);
+			this->world->addIndexes(this,1); 
 			if (!this->world->selectObject)
 			{
 				this->world->worldInterface->barInfoManage(this);
@@ -133,37 +133,37 @@ namespace engine {
 						if (this->world->golemVoiceTurn == 1)
 						{
 							this->world->golemVoiceTurn = 2;
-							//Sounds.instance.playSound("snd_golem_voice1");
+							AudioUtil::playSound("Snd_golem_voice1.mp3");
 						}
 						else if (this->world->golemVoiceTurn == 2)
 						{
 							this->world->golemVoiceTurn = 3;
-							//Sounds.instance.playSound("snd_golem_voice2");
+							AudioUtil::playSound("Snd_golem_voice2.mp3");
 						}
 						else if (this->world->golemVoiceTurn == 3)
 						{
 							this->world->golemVoiceTurn = 4;
-							//Sounds.instance.playSound("snd_golem_voice3");
+							AudioUtil::playSound("Snd_golem_voice3.mp3");
 						}
 						else if (this->world->golemVoiceTurn == 4)
 						{
 							this->world->golemVoiceTurn = 5;
-							//Sounds.instance.playSound("snd_golem_voice4");
+							AudioUtil::playSound("Snd_golem_voice4.mp3");
 						}
 						else if (this->world->golemVoiceTurn == 5)
 						{
 							this->world->golemVoiceTurn = 6;
-							//Sounds.instance.playSound("snd_golem_voice5");
+							AudioUtil::playSound("Snd_golem_voice5.mp3");
 						}
 						else if (this->world->golemVoiceTurn == 6)
 						{
 							this->world->golemVoiceTurn = 7;
-							//Sounds.instance.playSound("snd_golem_voice6");
+							AudioUtil::playSound("Snd_golem_voice6.mp3");
 						}
 						else if (this->world->golemVoiceTurn == 7)
 						{
 							this->world->golemVoiceTurn = 1;
-							//Sounds.instance.playSound("snd_golem_voice8");
+							AudioUtil::playSound("Snd_golem_voice8.mp3");
 						}
 					}
 				}
@@ -219,44 +219,27 @@ namespace engine {
 					if (this->cameraJitterCounter == 0)
 					{
 						this->cameraJitterCounter = -1;
-						this->world->setPosition(Vec2(0, 0));
-						//this->world->y = 0;
-						//this->world->x = 0; 
-						this->world->worldInterface->setPosition(Vec2(0, 0));
-						//this->world->worldInterface.y = 0;
-						//this->world->worldInterface.x = 0;
+						this->world->setPosition(Vec2(0, 0)); 
+						this->world->worldInterface->setPosition(Vec2(0, 0)); 
 					}
-					this->i = 0;
-					while (this->i < this->world->listOfClasses.size())
+					if(this->world->existClasses(this))
 					{
-						if (ISTYPE(Golem, this->world->listOfClasses[this->i]))
+					    if (dynamic_cast<Golem1_mc*>(this->container))
 						{
-							if (this->world->listOfClasses[this->i] == this)
+							if (this->container->currentFrame == 9 || this->container->currentFrame == 22 || this->container->currentFrame == 37 || this->container->currentFrame == 50)
 							{
-								if (dynamic_cast<Golem1_mc*>(this->container))
-								{
-									if (this->container->currentFrame == 9 || this->container->currentFrame == 22 || this->container->currentFrame == 37 || this->container->currentFrame == 50)
-									{
-										this->cameraJitterCounter = this->cameraJitterTimer;
-										//Sounds.instance.playSoundWithVol("snd_golem_move", 0.5);
-									}
-								}
-								else if (dynamic_cast<Golem2_mc*>(this->container) || dynamic_cast<Golem3_mc*>(this->container))
-								{
-									if (this->container->currentFrame == 10 || this->container->currentFrame == 24 || this->container->currentFrame == 38 || this->container->currentFrame == 52)
-									{
-										this->cameraJitterCounter = this->cameraJitterTimer;
-										//Sounds.instance.playSoundWithVol("snd_golem_move", 0.5);
-									}
-								}
-								break;
-							}
-							else
-							{
-								break;
+								this->cameraJitterCounter = this->cameraJitterTimer;
+								AudioUtil::playSoundWithVol("Snd_golem_move.mp3", 0.5);
 							}
 						}
-						i++;
+						else if (dynamic_cast<Golem2_mc*>(this->container) || dynamic_cast<Golem3_mc*>(this->container))
+						{
+							if (this->container->currentFrame == 10 || this->container->currentFrame == 24 || this->container->currentFrame == 38 || this->container->currentFrame == 52)
+							{
+								this->cameraJitterCounter = this->cameraJitterTimer;
+								AudioUtil::playSoundWithVol("Snd_golem_move.mp3", 0.5);
+							}
+						}
 					}
 				}
 				else
@@ -300,7 +283,7 @@ namespace engine {
 				this->container->dust1->setVisible(true);
 				this->container->dust2->setVisible(true);
 				//this->world->decoration->earthquakeFlag = true;
-				//Sounds.instance.playSound("snd_air_addToWorld");
+				AudioUtil::playSound("Snd_air_addToWorld.mp3");
 			}
 			return;
 		}// end function
@@ -764,7 +747,7 @@ namespace engine {
 			tempObject->setPosition(this->this_pt);
 			//tempObject->x = this->this_pt.x;
 			//tempObject->y = this->this_pt.y;
-			//Sounds.instance.playSound("snd_golem_death");
+			AudioUtil::playSound("Snd_golem_death.mp3");
 			this->kill();
 			return;
 		}// end function
@@ -774,17 +757,7 @@ namespace engine {
 			if (!this->dead)
 			{
 				this->dead = true;
-				//this->i = 0;
-				//while (this->i < this->world->listOfIndexes1.length)
-				//{
-
-				//    if (this->world->listOfIndexes1[this->i] == this)
-				//    {
-				//        this->world->listOfIndexes1.splice(this->i, 1);
-				//        break;
-				//    }
-				//   i++;
-				//}0
+				this->world->removeIndexes(this,1);
 				this->world->setPosition(0, 0);
 				this->world->worldInterface->setPosition(0, 0);
 				//this->world->hint.x = Math.round(this->world->hint.x);

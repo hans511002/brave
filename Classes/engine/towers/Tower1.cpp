@@ -60,7 +60,7 @@ namespace engine
             //this->setMouseEnabled(false);
             if (!autoBuild)
             {
-                //Sounds.instance.playSoundWithVol("snd_tower_build", 0.95);
+                AudioUtil::playSoundWithVol("Snd_tower_build.mp3", 0.95);
             }
             return true; 
         }// end function

@@ -114,7 +114,7 @@ namespace engine
 			this->setMouseChildren(false);
 			this->setMouseEnabled(false);
 			this->world->addClasses(this);
-			//      this->world->listOfIndexes1.push (this);
+			// this->world->addIndexes(this,1); 
 			this->world->worldInterface->barInfoManage(this);
 			this->world->createAirCounter++;
 			if (this->world->createAirCounter == 7)
@@ -136,22 +136,22 @@ namespace engine
 						if (this->world->airVoiceTurn == 1)
 						{
 							this->world->airVoiceTurn = 2;
-							//		      Sounds.instance.playSoundWithVol ("snd_air_voice1", 0.9);
+							AudioUtil::playSoundWithVol ("Snd_air_voice1.mp3", 0.9);
 						}
 						else if (this->world->airVoiceTurn == 2)
 						{
 							this->world->airVoiceTurn = 3;
-							//		      Sounds.instance.playSoundWithVol ("snd_air_voice2", 0.9);
+							AudioUtil::playSoundWithVol ("Snd_air_voice2.mp3", 0.9);
 						}
 						else if (this->world->airVoiceTurn == 3)
 						{
 							this->world->airVoiceTurn = 4;
-							//		      Sounds.instance.playSoundWithVol ("snd_air_voice4", 0.9);
+							AudioUtil::playSoundWithVol ("Snd_air_voice4.mp3", 0.9);
 						}
 						else if (this->world->airVoiceTurn == 4)
 						{
 							this->world->airVoiceTurn = 1;
-							//		      Sounds.instance.playSoundWithVol ("snd_air_voice5", 0.9);
+							AudioUtil::playSoundWithVol ("Snd_air_voice5.mp3", 0.9);
 						}
 					}
 				}
@@ -180,7 +180,7 @@ namespace engine
 					tempObject->container->setScaleX(this->container->getScaleX());
 					//tempObject.type = "airDeath";
 					tempObject->setPosition( this->this_pt) ;
-					//Sounds.instance.playSound("snd_air_goodBye");
+					AudioUtil::playSound("Snd_air_goodBye.mp3");
 					this->kill();
 				}
 				else if (!this->workFlag)
@@ -197,7 +197,7 @@ namespace engine
 				this->openCounter++;
 				if (this->openCounter == 5)
 				{
-					//Sounds.instance.playSound("snd_air_addToWorld");
+					AudioUtil::playSound("Snd_air_addToWorld.mp3");
 				}
 				if (this->container->getAlpha() < 1)
 				{
@@ -412,7 +412,7 @@ namespace engine
 				//this->container->contBlowing->gotoAndStop(this->container->contBlowing->currentFrame); // 				this->container->contBlowing->gotoAndStop(this->container->contBlowing->currentFrame);
 				if (this->container->cont->currentFrame == 2)
 				{
-					//Sounds.instance.playSoundWithVol("snd_air_blow", 0.65);
+					AudioUtil::playSoundWithVol("Snd_air_blow.mp3", 0.65);
 				}
 				else if (this->container->cont->currentFrame > 20)
 				{
