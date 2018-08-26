@@ -229,7 +229,7 @@ namespace engine {
 							if (this->container->currentFrame == 9 || this->container->currentFrame == 22 || this->container->currentFrame == 37 || this->container->currentFrame == 50)
 							{
 								this->cameraJitterCounter = this->cameraJitterTimer;
-								AudioUtil::playSoundWithVol("Snd_golem_move.mp3", 0.5);
+								AudioUtil::playSoundWithVol("Snd_golem_move.mp3", 0.5f);
 							}
 						}
 						else if (dynamic_cast<Golem2_mc*>(this->container) || dynamic_cast<Golem3_mc*>(this->container))
@@ -237,7 +237,7 @@ namespace engine {
 							if (this->container->currentFrame == 10 || this->container->currentFrame == 24 || this->container->currentFrame == 38 || this->container->currentFrame == 52)
 							{
 								this->cameraJitterCounter = this->cameraJitterTimer;
-								AudioUtil::playSoundWithVol("Snd_golem_move.mp3", 0.5);
+								AudioUtil::playSoundWithVol("Snd_golem_move.mp3", 0.5f);
 							}
 						}
 					}

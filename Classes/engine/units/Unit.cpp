@@ -130,7 +130,7 @@ namespace engine
 					//this->tempObject.newEnemyCase.setMouseEnabled(true);
 					this->world->worldInterface->addChild(tempObject);
 					this->world->worldInterface->listOfNewEnemies.push(tempObject);
-					AudioUtil::playSoundWithVol("Snd_world_newEnemy.mp3", 0.9);
+					AudioUtil::playSoundWithVol("Snd_world_newEnemy.mp3", 0.9f);
 				}
 			}
 			//this->schedule(schedule_selector(Unit::update), 0.0f);
@@ -1764,8 +1764,8 @@ namespace engine
 			}
 			this->world->removeUnit(this);
 			this->world->removeClasses(this);
-			this->world->removeChild(this, true);
 			this->world->removeIndexes(this,1); 
+			this->world->removeChild(this, true);
 			//return;
 		}// end function
         void Unit::kill() //public function kill() : void
@@ -1784,7 +1784,7 @@ namespace engine
                     if(this->lastAttackType == "ice")
                     {
                         this->container->iceDeath->setVisible(true);
-                        AudioUtil::playSoundWithVol("Snd_unit_iceDeath.mp3", 0.75);
+                        AudioUtil::playSoundWithVol("Snd_unit_iceDeath.mp3", 0.75f);
                     }
                     else if(this->lastAttackType == "stone")
                     {
@@ -1849,7 +1849,7 @@ namespace engine
             {
                 if(this->world->live > 0)
                 {
-                    AudioUtil::playSoundWithVol("Snd_unit_finish.mp3", 0.9);
+                    AudioUtil::playSoundWithVol("Snd_unit_finish.mp3", 0.9f);
                 }
                 this->world->live = this->world->live - this->penalty;
 				needRemove = true;//this->world->removeChild(this);

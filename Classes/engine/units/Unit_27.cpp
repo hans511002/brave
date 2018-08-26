@@ -44,7 +44,7 @@ namespace engine
                         this->soundCounter++;
                         if (this->soundCounter == 1)
                         {
-                            AudioUtil::playSoundWithVol("Snd_unit_teleport.mp3", 0.85);
+                            AudioUtil::playSoundWithVol("Snd_unit_teleport.mp3", 0.85f);
                         }
                     }
                     else
@@ -202,7 +202,7 @@ namespace engine
                         this->soundCounter ++;
                         if (this->soundCounter == 1)
                         {
-                            AudioUtil::playSoundWithVol("Snd_unit_teleport.mp3", 0.85);
+                            AudioUtil::playSoundWithVol("Snd_unit_teleport.mp3", 0.85f);
                         }
                     }
                     else

@@ -89,7 +89,7 @@ namespace engine
             Tower::init();
             if (!autoBuild)
             {
-                AudioUtil::playSoundWithVol("Snd_tower_build1.mp3", 0.9);
+                AudioUtil::playSoundWithVol("Snd_tower_build1.mp3", 0.9f);
             }
             return true;
         }// end function

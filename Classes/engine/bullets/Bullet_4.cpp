@@ -40,7 +40,7 @@ namespace engine{
             }
             if (liveCounter > 0)
             {
-                if (enemyTarget->dead)
+                if (!enemyTarget || enemyTarget->dead)
                 {
                     Unit * tempObject1 = NULL;
                     i = 0;
@@ -90,7 +90,7 @@ namespace engine{
             }
             else
             {
-                if (enemyTarget->atStaged && enemyTarget->readyDamage)
+                if (enemyTarget && enemyTarget->atStaged && enemyTarget->readyDamage)
                 {
                     if (this->effectFlag)
                     {

@@ -60,7 +60,7 @@ namespace engine
             //this->setMouseEnabled(false);
             if (!autoBuild)
             {
-                AudioUtil::playSoundWithVol("Snd_tower_build.mp3", 0.95);
+                AudioUtil::playSoundWithVol("Snd_tower_build.mp3", 0.95f);
             }
             return true; 
         }// end function
@@ -87,6 +87,7 @@ namespace engine
                     }
                     world->towerMenu = new TowerMenu(this);
                     world->addChild(world->towerMenu,3);
+                    world->towerMenu->init();
                     world->towerMenu->monitor();
                     this->setMouseChildren(true);
                     this->setMouseEnabled(true);

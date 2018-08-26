@@ -72,7 +72,7 @@ namespace screens
         if (!StartMenu::firstMusicPlay)
         {
             StartMenu::firstMusicPlay = true;
-            //AudioUtil::playMusic(0);
+            //AudioUtil::playMusic(0f);
         }
         if (Main::mainClass->lastClass == "LevelsMenu")
         {
@@ -608,7 +608,7 @@ namespace screens
             if (this->container->back->currentFrame == 1)
             {
                 this->container->back->gotoAndStop(2);
-                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
             }
         }
         else if (this->container->back->currentFrame == 2)
@@ -620,7 +620,7 @@ namespace screens
             if (this->container->btnMusic->currentFrame == 1 || this->container->btnMusic->currentFrame == 4)
             {
                 this->container->btnMusic->gotoAndStop((this->container->btnMusic->currentFrame + 1));
-                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
             }
         }
         else if (this->container->btnMusic->currentFrame == 2 || this->container->btnMusic->currentFrame == 5)
@@ -632,7 +632,7 @@ namespace screens
             if (this->container->btnSound->currentFrame == 1 || this->container->btnSound->currentFrame == 4)
             {
                 this->container->btnSound->gotoAndStop((this->container->btnSound->currentFrame + 1));
-                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
             }
         }
         else if (this->container->btnSound->currentFrame == 2 || this->container->btnSound->currentFrame == 5)
@@ -646,7 +646,7 @@ namespace screens
                 if (this->container->btnY8->currentFrame == 1)
                 {
                     this->container->btnY8->gotoAndStop(2);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
                 }
             }
             else if (this->container->btnY8->currentFrame == 2)
@@ -659,7 +659,7 @@ namespace screens
             if (this->container->btnIdnet->currentFrame == 1)
             {
                 this->container->btnIdnet->gotoAndStop(2);
-                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
             }
         }
         else if (this->container->btnIdnet->currentFrame == 2)
@@ -981,7 +981,7 @@ namespace screens
             if (this->container->back->currentFrame == 2)
             {
                 this->container->back->gotoAndStop(3);
-                AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+                AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
             }
         }
         else if (targetName == "musicCase")
@@ -989,7 +989,7 @@ namespace screens
             if (this->container->btnMusic->currentFrame == 2 || this->container->btnMusic->currentFrame == 5)
             {
                 this->container->btnMusic->gotoAndStop((this->container->btnMusic->currentFrame + 1));
-                AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+                AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
             }
         }
         else if (targetName == "soundCase")
@@ -997,7 +997,7 @@ namespace screens
             if (this->container->btnSound->currentFrame == 2 || this->container->btnSound->currentFrame == 5)
             {
                 this->container->btnSound->gotoAndStop((this->container->btnSound->currentFrame + 1));
-                AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+                AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
             }
         }
         else if (targetName == "y8Case")
@@ -1005,7 +1005,7 @@ namespace screens
             if (this->container->btnY8->currentFrame == 2)
             {
                 this->container->btnY8->gotoAndStop(3);
-                AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+                AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
             }
         }
         else if (targetName == "idnetCase")
@@ -1013,7 +1013,7 @@ namespace screens
             if (this->container->btnIdnet->currentFrame == 2)
             {
                 this->container->btnIdnet->gotoAndStop(3);
-                AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+                AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
             }
         }
         else if (targetName == "logOut")
@@ -1200,7 +1200,7 @@ namespace screens
                 {
                     this->container->btnMusic->gotoAndStop(2);
                     AudioUtil::musicManage("on");
-                    AudioUtil::playMusic(0);
+                    AudioUtil::playMusic(0f);
                 }
             }
         }

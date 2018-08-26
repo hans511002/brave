@@ -487,7 +487,7 @@ namespace engine
                 //{
                 //    if (AudioUtil::getMusicVolume() < world->startMusicVolume)
                 //    {
-                //        AudioUtil::setMusicVolume(AudioUtil::getMusicVolume() + world->startMusicVolume * 0.035);
+                //        AudioUtil::setMusicVolume(AudioUtil::getMusicVolume() + world->startMusicVolume * 0.035f);
                 //    }
                 //    else
                 //    {

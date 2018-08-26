@@ -21,7 +21,7 @@ namespace screens
         leftUp= this->createMovieClipSub("leftUp");
         rightDown= this->createMovieClipSub("rightDown");
         rightUp= this->createMovieClipSub("rightUp");
-
+		this->setAutoRemoveData(true);
     }// end function
     
     MiddleScreenCentr_mc::MiddleScreenCentr_mc():MovieClip("screen/","MiddleScreenCentr_mc","MiddleScreenCentr_mc")
@@ -83,7 +83,7 @@ namespace screens
         {
             AudioUtil::stopAll();
         }
-        AudioUtil::playSoundWithVol("Snd_middleScreen.mp3", 0.95);
+        AudioUtil::playSoundWithVol("Snd_middleScreen.mp3", 0.95f);
         BaseNode::init();
         return true;
     }// end function
@@ -95,6 +95,11 @@ namespace screens
         //this->schedule(static_cast<cocos2d::SEL_SCHEDULE>(&MiddleScreen::enterFrameHandler));
 		//this->schedule(schedule_selector(MiddleScreen::enterFrameHandler), 1.0f);
 	}
+	void MiddleScreen::onExit() {
+		
+		BaseNode::onExit();
+	};
+
 	void MiddleScreen::enterFrameHandler(float dt)
 	{
         this->frameCounter++;
@@ -167,7 +172,7 @@ namespace screens
                 Main::mainClass->addNewScreen(this->openScreenName);
                 Main::mainClass->container->manageListeners("off");
             }
-			if (this->frameCounter == 17 && Main::mainClass->preload.getProgress() < 1) {
+			if (this->frameCounter == 16 && Main::mainClass->preload.getProgress() < 1) {
 				this->frameCounter--;
 				Main::mainClass->preload.setAutoClose();
 				if (!Main::mainClass->preload.isStartSch())

@@ -1,0 +1,105 @@
+//
+// Created by hans on 2018/8/25.
+//
+
+#include "AudioUtil.h"
+#include "preloadSound.h"
+using namespace std;
+
+void preloadSound()
+{
+	AudioUtil::preloadMusic("Music_menu_main.mp3");
+	AudioUtil::preloadMusic("Music_world_battle.mp3");
+	AudioUtil::preloadMusic("Music_world_beforeBattle.mp3");
+	AudioUtil::preloadEffect("Snd_air_addToWorld.mp3");
+	AudioUtil::preloadEffect("Snd_air_blow.mp3");
+	AudioUtil::preloadEffect("Snd_air_goodBye.mp3");
+	AudioUtil::preloadEffect("Snd_air_voice1.mp3");
+	AudioUtil::preloadEffect("Snd_air_voice2.mp3");
+	AudioUtil::preloadEffect("Snd_air_voice4.mp3");
+	AudioUtil::preloadEffect("Snd_air_voice5.mp3");
+	AudioUtil::preloadEffect("Snd_boss_appearDisappear.mp3");
+	AudioUtil::preloadEffect("Snd_boss_castReset.mp3");
+	AudioUtil::preloadEffect("Snd_boss_death.mp3");
+	AudioUtil::preloadEffect("Snd_boss_eyes.mp3");
+	AudioUtil::preloadEffect("Snd_boss_speak.mp3");
+	AudioUtil::preloadEffect("Snd_boss_start.mp3");
+	AudioUtil::preloadEffect("Snd_cast_fire.mp3");
+	AudioUtil::preloadEffect("Snd_cast_fireIce_mp3.mp3");
+	AudioUtil::preloadEffect("Snd_cast_fireLevin.mp3");
+	AudioUtil::preloadEffect("Snd_cast_fireStone.mp3");
+	AudioUtil::preloadEffect("Snd_cast_getAll.mp3");
+	AudioUtil::preloadEffect("Snd_cast_getAllLittle.mp3");
+	AudioUtil::preloadEffect("Snd_cast_ice.mp3");
+	AudioUtil::preloadEffect("Snd_cast_iceLevin.mp3");
+	AudioUtil::preloadEffect("Snd_cast_iceStone.mp3");
+	AudioUtil::preloadEffect("Snd_cast_levin.mp3");
+	AudioUtil::preloadEffect("Snd_cast_ready.mp3");
+	AudioUtil::preloadEffect("Snd_cast_stone.mp3");
+	AudioUtil::preloadEffect("Snd_cast_stoneLevin.mp3");
+	AudioUtil::preloadEffect("Snd_golem_death.mp3");
+	AudioUtil::preloadEffect("Snd_golem_move.mp3");
+	AudioUtil::preloadEffect("Snd_golem_voice1.mp3");
+	AudioUtil::preloadEffect("Snd_golem_voice2.mp3");
+	AudioUtil::preloadEffect("Snd_golem_voice3.mp3");
+	AudioUtil::preloadEffect("Snd_golem_voice4.mp3");
+	AudioUtil::preloadEffect("Snd_golem_voice5.mp3");
+	AudioUtil::preloadEffect("Snd_golem_voice6.mp3");
+	AudioUtil::preloadEffect("Snd_golem_voice8.mp3");
+	AudioUtil::preloadEffect("Snd_iceman_freezes.mp3");
+	AudioUtil::preloadEffect("Snd_iceman_move.mp3");
+	AudioUtil::preloadEffect("Snd_iceman_voice2.mp3");
+	AudioUtil::preloadEffect("Snd_iceman_voice3.mp3");
+	AudioUtil::preloadEffect("Snd_iceman_voice4.mp3");
+	AudioUtil::preloadEffect("Snd_iceman_voice5.mp3");
+	AudioUtil::preloadEffect("Snd_menu_defeat.mp3");
+	AudioUtil::preloadEffect("Snd_menu_monetki.mp3");
+	AudioUtil::preloadEffect("Snd_menu_mouseDown.mp3");
+	AudioUtil::preloadEffect("Snd_menu_mouseMove.mp3");
+	AudioUtil::preloadEffect("Snd_menu_openBoard.mp3");
+	AudioUtil::preloadEffect("Snd_menu_pageScrolling.mp3");
+	AudioUtil::preloadEffect("Snd_menu_stoneMouseDown.mp3");
+	AudioUtil::preloadEffect("Snd_menu_stoneMouseMove.mp3");
+	AudioUtil::preloadEffect("Snd_menu_upgrIconMouseDown.mp3");
+	AudioUtil::preloadEffect("Snd_menu_upgrReset.mp3");
+	AudioUtil::preloadEffect("Snd_menu_victory.mp3");
+	AudioUtil::preloadEffect("Snd_menu_victoryStar.mp3");
+	AudioUtil::preloadEffect("Snd_middleScreen.mp3");
+	AudioUtil::preloadEffect("Snd_tower_build.mp3");
+	AudioUtil::preloadEffect("Snd_tower_build1.mp3");
+	AudioUtil::preloadEffect("Snd_tower_buildUltra.mp3");
+	AudioUtil::preloadEffect("Snd_tower_firstShootUltraAdd1.mp3");
+	AudioUtil::preloadEffect("Snd_tower_openMenu.mp3");
+	AudioUtil::preloadEffect("Snd_tower_sell.mp3");
+	AudioUtil::preloadEffect("Snd_tower_shootFire.mp3");
+	AudioUtil::preloadEffect("Snd_tower_shootIce.mp3");
+	AudioUtil::preloadEffect("Snd_tower_shootLevin.mp3");
+	AudioUtil::preloadEffect("Snd_tower_shootStone.mp3");
+	AudioUtil::preloadEffect("Snd_tower_shootUltra1_1.mp3");
+	AudioUtil::preloadEffect("Snd_tower_shootUltra1_2.mp3");
+	AudioUtil::preloadEffect("Snd_tower_shootUltra2.mp3");
+	AudioUtil::preloadEffect("Snd_tower_shootUltra3.mp3");
+	AudioUtil::preloadEffect("Snd_tower_shootUltra4_1.mp3");
+	AudioUtil::preloadEffect("Snd_tower_shootUltra4_2.mp3");
+	AudioUtil::preloadEffect("Snd_tower_shootUltra4_3.mp3");
+	AudioUtil::preloadEffect("Snd_tower_shootUltraAdd1.mp3");
+	AudioUtil::preloadEffect("Snd_tower_shootUltraAdd2.mp3");
+	AudioUtil::preloadEffect("Snd_tower_shootUltraAdd3.mp3");
+	AudioUtil::preloadEffect("Snd_tower_shootUltraAdd4.mp3");
+	AudioUtil::preloadEffect("Snd_unit_finish.mp3");
+	AudioUtil::preloadEffect("Snd_unit_fireDeath.mp3");
+	AudioUtil::preloadEffect("Snd_unit_floeCrash.mp3");
+	AudioUtil::preloadEffect("Snd_unit_floeShards.mp3");
+	AudioUtil::preloadEffect("Snd_unit_iceDeath.mp3");
+	AudioUtil::preloadEffect("Snd_unit_levinDeath.mp3");
+	AudioUtil::preloadEffect("Snd_unit_orderDeath.mp3");
+	AudioUtil::preloadEffect("Snd_unit_teleport.mp3");
+	AudioUtil::preloadEffect("Snd_world_newEnemy.mp3");
+	AudioUtil::preloadEffect("Snd_world_openMarker.mp3");
+	AudioUtil::preloadEffect("Snd_world_openRoad.mp3");
+	AudioUtil::preloadEffect("Snd_world_sell.mp3");
+	AudioUtil::preloadEffect("Snd_world_sphereGoToArchive.mp3");
+	AudioUtil::preloadEffect("Snd_world_sphereMoveBack.mp3");
+	AudioUtil::preloadEffect("Snd_world_startWave.mp3");
+
+}

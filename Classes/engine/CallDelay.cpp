@@ -42,7 +42,7 @@ namespace engine
                 this->world->worldInterface->addChild(tempObject);
                 this->world->worldInterface->listOfNewEnemies.push(tempObject);
                 this->world->worldInterface->newEnemyUpdate();
-                AudioUtil::playSoundWithVol("snd_world_newEnemy.mp3", 0.9);
+                AudioUtil::playSoundWithVol("snd_world_newEnemy.mp3", 0.9f);
             }
             this->kill();
         }

@@ -10,11 +10,15 @@ const double BaseNode::AnimationInterval = 1.0f / (double)Main::FrameRate;
 
 namespace std
 {
-	bool useNodeEvent = true;
+	bool useNodeEvent = false;
+	bool useGlobalNode = true;
+	bool sortGlobalNode = false;
+	
 	EventNode *globalNode=NULL;
 	bool EventNode::debug = true;
 	Node * EventNode::beginTouchNode=NULL;
 	Vec2 EventNode::beginTouchPos;
+	std::mutex globalMutex;
 
 	//mutex dbloadMutex;
 
@@ -96,33 +100,39 @@ namespace std
 	//   string BaseNode::getTypeName(){
 	//       return EventNode::getTypeName();
 	//};
-	Common::Log * gLog = new Common::Log("brave");
-	//Common::Log * gLog = NULL;
-	Common::Array<EventNode *> EventNodes;
+	//Common::Log * gLog = new Common::Log("brave");
+	Common::Log * gLog = NULL;
+	Common::Array<EventNode *> globalEventNodes;
+	std::unordered_map<float, std::vector<EventNode*>> globalZOrderNodeMap;
+	std::unordered_map<EventNode*, int> nodePriorityMap;
+	int nodePriorityIndex = 0;
+
 	void addEventNode(EventNode *node)
 	{
 		if (useNodeEvent)return;
 		if (!node)return;
-		int len = EventNodes.size();
+		PMutex pm(&globalMutex);
+		int len = globalEventNodes.size();
 		for (int i = 0; i < len; i++)
 		{
-			if (EventNodes.at(i) == node)
+			if (globalEventNodes.at(i) == node)
 				return;
 		} 
-		EventNodes.push(node);
+		globalEventNodes.push(node);
+		sortGlobalNode = false;
 	};
 	void removeEventNode(EventNode *node) {
-		int l = EventNodes.size();
+		PMutex pm(&globalMutex);
+		int l = globalEventNodes.size();
 		for (int i = 0; i < l; i++)
 		{
-			if (EventNodes.at(i) == node)
+			if (globalEventNodes.at(i) == node)
 			{
-				EventNodes.remove(i);
+				globalEventNodes.remove(i);
 				return;
 			}
 		}
 	};
-
 
 	void writeLog(string msg, int type)
 	{
@@ -207,9 +217,15 @@ namespace std
 	{
 		const auto factory = dragonBones::CCFactory::getFactory();
 		const auto armatureDisplay = factory->buildArmatureDisplay(armatureName, dragonBonesName, "", dragonBonesName);
-		return armatureDisplay;
-
+		return armatureDisplay; 
 	};
+	void removeArmature(const std::string& name, bool disposeData ) 
+	{
+		const auto factory = dragonBones::CCFactory::getFactory();
+		factory->removeDragonBonesData(name, disposeData);
+		factory->removeTextureAtlasData(name, disposeData);
+	};
+
 	string setText(ui::Text * tui, const string & val)
 	{
 		string old = tui->getString();
@@ -651,7 +667,7 @@ namespace std
 	};
 	MouseEvent::MouseEvent(cocos2d::EventMouse * e) :EventMouse(*e), idx(0), target(NULL), processed(false), enode(NULL)
 	{
-		hitTest(e->getCurrentTarget(), false);
+		//hitTest(e->getCurrentTarget(), false);
 	};
 
 	void  MouseEvent::hitTest(Node *node, bool incSub)
@@ -741,18 +757,51 @@ namespace std
 	std::MouseEvent buildMouseEvent(EventMouse * e)
 	{
 		std::MouseEvent  me(e);
-		//Node * n = e->getCurrentTarget();
-		int l = EventNodes.size();
-		Vec2 ep = e->getLocationInView();
-		for (int i = l - 1; i >= 0; i--)
-		{
-			EventNode * _node = EventNodes.at(i);
-			Node *node = ISTYPE(Node, _node);
-			//if (n == node)continue;
-			if (!node)continue;
-			if (!node->isVisible()) continue;
-			if (std::hitTest(node, ep))
-				me.currentTargets.push(node);
+		Node * n = e->getCurrentTarget();
+		assert (n !=NULL);
+		EventNode * evRootNode=ISTYPE(EventNode, n);
+		assert(evRootNode != NULL); 
+		//只允许一个根
+		if (useGlobalNode ) {
+			if (!sortGlobalNode) {
+				nodePriorityIndex = 0; 
+ 				evRootNode->visitTarget(NULL,n,true);
+			}
+			int l = globalEventNodes.size();
+			Vec2 ep = e->getLocationInView();
+			for (int i = l - 1; i >= 0; i--)
+			{
+				EventNode * _node = globalEventNodes.at(i);
+				Node *node = ISTYPE(Node, _node);
+				//if (n == node)continue;
+				if (!node)continue;
+				if (!node->isVisible()) continue;
+				if (std::hitTest(node, ep)){
+					me.currentTargets.push(node);
+					break;
+				}
+			}
+		}
+		else {
+			nodePriorityIndex = 0;
+			nodePriorityMap.clear();
+			globalZOrderNodeMap.clear();
+			std::vector<EventNode *> _eventNodes;
+			evRootNode->visitTarget(&_eventNodes, n, true);
+			int l = _eventNodes.size();
+			Vec2 ep = e->getLocationInView();
+			for (int i = l - 1; i >= 0; i--)
+			{
+				EventNode * _node = _eventNodes.at(i);
+				Node *node = ISTYPE(Node, _node);
+				//if (n == node)continue;
+				if (!node)continue;
+				if (!node->isVisible()) continue;
+				if (std::hitTest(node, ep)) {
+					me.currentTargets.push(node);
+					break;
+				}
+			}
 		}
 		return me;
 	};
@@ -1009,12 +1058,12 @@ namespace std
 			else
 				globalNode->mouseDownHandler(event);
 		}
-		else {
-			if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)
-				rightMouseDownHandler(event);
-			else
-				mouseDownHandler(event);
-		}
+		//else {
+		//	if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)
+		//		rightMouseDownHandler(event);
+		//	else
+		//		mouseDownHandler(event);
+		//}
 	};
 	void EventNode::mouseUpHandler(cocos2d::EventMouse* event)
 	{
@@ -1031,12 +1080,12 @@ namespace std
 			else
 				globalNode->mouseUpHandler(event);
 		}
-		else {
-			if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)
-				rightMouseUpHandler(event);
-			else 
-				mouseUpHandler(event);
-		}
+		//else {
+		//	if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)
+		//		rightMouseUpHandler(event);
+		//	else 
+		//		mouseUpHandler(event);
+		//}
 	};
 
 	void EventNode::mouseMoveHandler(cocos2d::EventMouse* event)
@@ -1050,8 +1099,8 @@ namespace std
 		event->stopPropagation();
 		if (globalNode)
 			globalNode->mouseMoveHandler(event);
-		else
-			mouseMoveHandler(event);
+		//else
+		//	mouseMoveHandler(event);
 	};
 	void EventNode::mouseScrollHandler(cocos2d::EventMouse* event)
 	{
@@ -1634,5 +1683,97 @@ namespace std
 		}
 	};
 
-
+	std::vector<EventNode *> EventNode::visitTarget(Node* node, bool isRootNode)
+	{
+		std::vector<EventNode *>res;
+		visitTarget(&res,node,isRootNode);
+		return res;
+	}
+	void EventNode::visitTarget(std::vector<EventNode *> *_res, Node* node, bool isRootNode)
+	{ 
+		std::vector<EventNode *> &res = *_res;
+ 		int i = 0;
+		auto& children = node->getChildren();
+		auto childrenCount = children.size();
+		EventNode * enode = ISTYPE(EventNode, node);
+		if (childrenCount > 0)
+		{
+			Node* child = nullptr;
+			// visit children zOrder < 0
+			for (; i < childrenCount; i++)
+			{
+				child = children.at(i);
+ 				if (child->getLocalZOrder() < 0)
+					visitTarget(child, false);
+				else
+					break;
+			}
+			if (enode && nodePriorityMap.find(enode) == nodePriorityMap.end())
+				globalZOrderNodeMap[node->getGlobalZOrder()].push_back(enode);
+			for (; i < childrenCount; i++)
+			{
+				child = children.at(i);
+				visitTarget(child, false);
+			}
+		}
+		else
+		{
+			if (enode && nodePriorityMap.find(enode) == nodePriorityMap.end())
+				globalZOrderNodeMap[node->getGlobalZOrder()].push_back(enode);
+		}
+		if (isRootNode)
+		{
+			std::vector<float> globalZOrders;
+			globalZOrders.reserve(globalZOrderNodeMap.size());
+			for (const auto& e : globalZOrderNodeMap)
+				globalZOrders.push_back(e.first);
+			std::stable_sort(globalZOrders.begin(), globalZOrders.end(), [](const float a, const float b) {
+				return a < b;
+			});
+			for (const auto& globalZ : globalZOrders)
+			{
+				for (const auto& n : globalZOrderNodeMap[globalZ])
+					nodePriorityMap[n] = ++nodePriorityIndex;
+			}
+			if (useGlobalNode) {
+				PMutex pm(&globalMutex);
+				for (const auto & snode : globalEventNodes)
+				{
+					if (nodePriorityMap.find(snode) == nodePriorityMap.end())
+						nodePriorityMap[snode] = ++nodePriorityIndex;
+				}
+				std::stable_sort(globalEventNodes.begin(), globalEventNodes.end(), [](EventNode * a, EventNode * b) {
+					std::unordered_map<EventNode*, int>::iterator itend = nodePriorityMap.end();
+					std::unordered_map<EventNode*, int>::iterator ita = nodePriorityMap.find(a);
+					std::unordered_map<EventNode*, int>::iterator itb = nodePriorityMap.find(b);
+					if (ita == itend && itb == itend) {
+						return true;
+					}
+					else if (ita == itend) {
+						return true;
+					}
+					else if (itb == itend) {
+						return false;
+					}
+					else {
+						return ita->second < itb->second;
+					}
+				});
+				sortGlobalNode = true;
+			}
+			else {
+				res.clear();
+				for (const auto & snode : globalEventNodes)
+				{
+					if (nodePriorityMap.find(snode) != nodePriorityMap.end())
+						res.push_back(snode);
+				}
+				std::stable_sort(res.begin(), res.end(), [](EventNode * a, EventNode * b) {
+					return nodePriorityMap[a] < nodePriorityMap[b];
+				});
+			}
+			globalZOrders.clear();
+			globalZOrderNodeMap.clear();
+		}
+	}
 }

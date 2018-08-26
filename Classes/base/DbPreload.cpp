@@ -272,9 +272,9 @@ namespace std
             Common::String file = it->first;
 			if (file.EndsWith(".png") ){
 				Common::String dname=fileMap.find(file)->second;
-				Common::String texFile = dir + '/' + dname + "_tex.json";
-				Common::String skeFile = dir + '/' + dname + "_ske.json";
-				Common::String skeFileBin = dir + '/' + dname + "_ske.dbbin";
+				Common::String texFile = dir + dname + "_tex.json";//+ '/' 
+				Common::String skeFile = dir  + dname + "_ske.json";
+				Common::String skeFileBin = dir + dname + "_ske.dbbin";
 				if (fileMap.find(texFile) != fileMap.end()){
 					if (fileMap.find(skeFileBin) != fileMap.end())
 						res.push_back(DbFile(skeFileBin, texFile, dname));

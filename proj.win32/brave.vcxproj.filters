@@ -423,6 +423,12 @@
     <ClCompile Include="..\Classes\common\DirectoryInfo.cpp">
       <Filter>src\common</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\base\AudioUtil.cpp">
+      <Filter>src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\sys\preloadSound.cpp">
+      <Filter>src\sys</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -856,6 +862,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\screens\Credits.h">
       <Filter>src\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\base\AudioUtil.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\sys\preloadSound.h">
+      <Filter>src\sys</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

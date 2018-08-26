@@ -854,7 +854,7 @@ namespace engine
                 if(this->container->slow->currentFrame == 2)
 				{
 					this->container->slow->gotoAndStop(3);
-					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
 				}
 			}
             else if(targetName == "fastCase")
@@ -865,7 +865,7 @@ namespace engine
 					if (this->container->fast->currentFrame == 2 || this->container->fast->currentFrame == 5)
 					{
 						this->container->fast->gotoAndStop((this->container->fast->currentFrame + 1));
-						AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
 					}
 				}
             }
@@ -884,7 +884,7 @@ namespace engine
 					this->container->pause->gotoAndStop(this->container->pause->totalFrames);
 					this->container->pauseOpenFlag = false;
 					this->container->pauseCloseFlag = false;
-					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
 				}
             }
             else if(targetName == "bookCase")
@@ -895,7 +895,7 @@ namespace engine
 					this->container->book->gotoAndStop(this->container->book->totalFrames);
 					this->container->bookOpenFlag = false;
 					this->container->bookCloseFlag = false;
-					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
 				}
             }
             else if(targetName == "sphereCase")
@@ -921,7 +921,7 @@ namespace engine
 						{
 							this->archiveManage("buy", "fire");
 						}
-						AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
 						this->archiveManage("get", "fire");
 					}
                     else if(parName == "iceSphere")
@@ -930,7 +930,7 @@ namespace engine
 						{
 							this->archiveManage("buy", "ice");
 						}
-						AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
 						this->archiveManage("get", "ice");
 					}
                     else if(parName == "stoneSphere")
@@ -939,7 +939,7 @@ namespace engine
 						{
 							this->archiveManage("buy", "stone");
 						}
-						AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
 						this->archiveManage("get", "stone");
 					}
                     else if(parName == "levinSphere")
@@ -948,7 +948,7 @@ namespace engine
 						{
 							this->archiveManage("buy", "levin");
 						}
-						AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
 						this->archiveManage("get", "levin");
 					}
                     else if(parName == "getAll")
@@ -957,7 +957,7 @@ namespace engine
 						{
 							this->archiveManage("buy", "getAll");
 						}
-						AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
 						this->archiveManage("get", "getAll");
 					}
 					if (this->world->getSphere)
@@ -1071,7 +1071,7 @@ namespace engine
 				{
 					this->container->butCastGolem->gotoAndStop(3);
 					this->castGolem();
-					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
 				}
 			}
 			else if (targetName == "castIcemanCase")
@@ -1081,7 +1081,7 @@ namespace engine
 				{
 					this->container->butCastIceman->gotoAndStop(3);
 					this->castIceman();
-					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
 				}
 			}
 			else if (targetName == "castAirCase")
@@ -1091,7 +1091,7 @@ namespace engine
 				{
 					this->container->butCastAir->gotoAndStop(3);
 					this->castAir();
-					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
 				}
 			}
 			else if (targetName == "pointerCase")
@@ -1109,7 +1109,7 @@ namespace engine
 					tempObject->setMouseChildren(false);
 					tempObject->setMouseEnabled(false);
 				} 
-				AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+				AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
 			}
 			else if (targetName == "testRestart")
 			{
@@ -1294,7 +1294,7 @@ namespace engine
 						}
 						this->container->fireBack->gotoAndStop(2);
 						this->container->fireBackCont->stop();
-						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
 					}
 				}
                 else if(parName == "iceSphere")
@@ -1319,7 +1319,7 @@ namespace engine
 						}
 						this->container->iceBack->gotoAndStop(2);
 						this->container->iceBackCont->stop();
-						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
 					}
 				}
                 else if(parName == "stoneSphere")
@@ -1344,7 +1344,7 @@ namespace engine
 						}
 						this->container->stoneBack->gotoAndStop(2);
 						this->container->stoneBackCont->stop();
-						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
 					}
 				}
                 else if(parName == "levinSphere")
@@ -1369,7 +1369,7 @@ namespace engine
 						}
 						this->container->levinBack->gotoAndStop(2);
 						this->container->levinBackCont->stop();
-						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
 					}
 				}
                 else if(parName == "getAll")
@@ -1393,7 +1393,7 @@ namespace engine
 							this->container->levinBack->gotoAndStop(1);
 						}
 						this->container->getAll->gotoAndStop(2);
-						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
 					}
 					else if (this->container->getAll->currentFrame == 3)
 					{
@@ -1446,7 +1446,7 @@ namespace engine
 				if (this->container->slow->currentFrame == 1)
 				{
 					this->container->slow->gotoAndStop(2);
-					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
 				}
 			}
 			else if (this->container->slow->currentFrame == 2)
@@ -1471,7 +1471,7 @@ namespace engine
 						{
 							this->container->fastCont->gotoAndStop(tempObject);
 						}
-						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
 					}
 				}
 			}
@@ -1507,7 +1507,7 @@ namespace engine
 					this->container->pause->gotoAndStop(2);
 					this->container->pauseOpenFlag = true;
 					this->container->pauseCloseFlag = false;
-					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
 				}
 			}
 			else if (this->container->pause->currentFrame > 1)
@@ -1533,7 +1533,7 @@ namespace engine
 					this->container->book->gotoAndStop(2);
 					this->container->bookOpenFlag = true;
 					this->container->bookCloseFlag = false;
-					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
 				}
 			}
 			else if (this->container->book->currentFrame > 1)
@@ -1559,7 +1559,7 @@ namespace engine
 					if (this->container->startWaves->currentFrame <= 10)
 					{
 						this->container->startWaves->gotoAndStop(this->container->startWaves->currentFrame + 10);
-						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
 					}
 				}
 			}
@@ -1578,7 +1578,7 @@ namespace engine
 					if (this->container->butCastGolem->currentFrame == 1)
 					{
 						this->container->butCastGolem->gotoAndStop(2);
-						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
 						if (!this->world->hint->isVisible())
 						{
 							this->world->hint->setVisible(true);
@@ -1640,7 +1640,7 @@ namespace engine
 					if (this->container->butCastIceman->currentFrame == 1)
 					{
 						this->container->butCastIceman->gotoAndStop(2);
-						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
 						if (!this->world->hint->isVisible())
 						{
 							this->world->hint->setVisible(true);
@@ -1702,7 +1702,7 @@ namespace engine
 					if (this->container->butCastAir->currentFrame == 1)
 					{
 						this->container->butCastAir->gotoAndStop(2);
-						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
 						if (!this->world->hint->isVisible())
 						{
 							this->world->hint->setVisible(true);
@@ -1771,7 +1771,7 @@ namespace engine
 					{
 						this->world->pointer3->setMouseFlag(true);
 					}
-					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
 				}
 			}
 			else
@@ -1805,7 +1805,7 @@ namespace engine
 						tempObject->mouseStatus = 2;
 						tempObject->setScaleY(1.1f);
 						tempObject->setScaleX(1.1f);
-						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
 					}
 				}  
 			}
@@ -2888,7 +2888,7 @@ namespace engine
 	void WorldInterface::castGolem()// : void
 	{
 		this->container->butCastGolem->gotoAndStop(6);
-		AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+		AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
 		this->castRegime("on");
 		//if (this->world->road)this->world->road->setVisible(false);
 		this->addCast("golem");
@@ -2897,7 +2897,7 @@ namespace engine
 	void WorldInterface::castIceman()
 	{
 		this->container->butCastIceman->gotoAndStop(6);
-		AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+		AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
 		this->castRegime("on");
 		if (this->world->road) this->world->road->setVisible(false);
 		this->addCast("iceman");
@@ -2906,7 +2906,7 @@ namespace engine
 	void WorldInterface::castAir()
 	{
 		this->container->butCastAir->gotoAndStop(6);
-		AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+		AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
 		this->castRegime("on");
 		if (this->world->road)this->world->road->setVisible(false);
 		this->addCast("air");

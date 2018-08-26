@@ -141,7 +141,7 @@
                     if (this.container.first.card.btnOk.currentFrame == 1)
                     {
                         this.container.first.card.btnOk.gotoAndStop(2);
-                        AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+                        AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
                     }
                 }
                 else if (this.container.first.card.btnOk.currentFrame == 2)
@@ -161,7 +161,7 @@
                     if (this.container.first.card.btnOk.currentFrame == 2)
                     {
                         this.container.first.card.btnOk.gotoAndStop(3);
-                        AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+                        AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
                     }
                 }
             }

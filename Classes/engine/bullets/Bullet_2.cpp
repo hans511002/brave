@@ -22,7 +22,7 @@ namespace engine
 			this->addChild(container);
 			whoShoot->iceBulletCounter++;
 			Bullet::init();
-			AudioUtil::playSoundWithVol("Snd_tower_shootIce.mp3", 0.83);
+			AudioUtil::playSoundWithVol("Snd_tower_shootIce.mp3", 0.83f);
 			return true;
 		}// end function
 
@@ -40,7 +40,7 @@ namespace engine
 			}
 			if (liveCounter > 0)
 			{
-				if (enemyTarget->dead)
+				if (!enemyTarget || enemyTarget->dead)
 				{
 					units::Unit* tempObject1 = NULL;
 					i = 0;
@@ -80,7 +80,7 @@ namespace engine
 			}
 			else
 			{
-				if(enemyTarget->atStage() && enemyTarget->readyDamage)
+				if(enemyTarget && enemyTarget->atStage() && enemyTarget->readyDamage)
 				{
 					if(whoShoot->iceBulletCounter >= Main::mainClass->readXMLClass.listOfIceProbability[(spherePower - 1)])
 					{

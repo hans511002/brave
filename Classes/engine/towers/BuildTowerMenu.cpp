@@ -136,7 +136,7 @@ namespace engine{
             {
                 string target = event->target->getName();
                 cocos2d::Point pt = e->getLocationInView();
-                 if(target == "placeForBuildCase" ||  target == "buildTowerMenuCase" ||  !std::hitTest(this->myPlace, pt))
+                 if(target == "placeForBuildCase" ||  target == "buildTowerMenuCase" ||  std::hitTest(this->myPlace, pt))
 				//if (event.target.name == "placeForBuildCase" || event.target.name == "buildTowerMenuCase")
 				//if (target != "placeForBuildCase" ||  target != "buildTowerMenuCase" || std::hitTest(this->myPlace, pt))
 				//if (std::hitTest(this->container->contBuildTowerMenuCase, pt) || std::hitTest(this->myPlace->placeForBuildCase, pt))

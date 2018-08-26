@@ -1,22 +1,16 @@
-﻿ 
-#include "AudioUtil.h"
+﻿#include "BaseHeaders.h" 
 #include "SimpleAudioEngine.h"
 
 using namespace CocosDenshion;
 
 namespace std
-{
-
-    
-        audioengine->preloadBackgroundMusic("sound/bgmusic.mp3");
-        audioengine->playBackgroundMusic("sound/bgmusic.mp3", true);
-        SimpleAudioEngine::getInstance()->playEffect("sound/enemy1_down.wav");
-
+{ 
 //    namespace AudioUtil
 //    {
-        bool AudioUtil::soundOn=true;
+		bool AudioUtil::soundOn = true; 
+		bool AudioUtil::musicOn =true;  
         string AudioUtil::audioDir;
-        Map<string,unsigned int> AudioUtil::soundEffect;
+        map<string,unsigned int> AudioUtil::soundEffect;
             
         string AudioUtil::getAudioPath(const char * file){
             if(file[0]!='/' && !audioDir.empty()){
@@ -34,13 +28,23 @@ namespace std
         void AudioUtil::musicManage(const string & onoff)
         {
             if(onoff=="on"){
-                soundOn=true;
+				musicOn =true;
             }else if(onoff=="off"){
-                soundOn=false;
-                stopAll();
+				musicOn =false;
+                stopMusic();
             }            
         };
-        
+		void AudioUtil::soundManage(const string & onoff)
+		{
+			if (onoff == "on") {
+				soundOn = true;
+			}
+			else if (onoff == "off") {
+				soundOn = false;
+				stopAllEffects();
+			}
+		};
+
         void AudioUtil::preloadMusic(const char * file)
         {
             auto audioengine = SimpleAudioEngine::getInstance();
@@ -79,9 +83,10 @@ namespace std
         unsigned int AudioUtil::playSoundWithVol(const char * file,float vol,bool loop)
         {
             auto audioengine = SimpleAudioEngine::getInstance();
-            audioengine->playEffect(getAudioPath(file).c_str(),loop,1.0f,0.0f,std::abs(vol));
+			unsigned int sid=audioengine->playEffect(getAudioPath(file).c_str(),loop,1.0f,0.0f,std::abs(vol));
             if(vol>=0)
                 setEffectsVolume(vol);
+			return sid;
         }
         void AudioUtil::stopEffect (unsigned int soundId )
         {
@@ -106,14 +111,15 @@ namespace std
             SimpleAudioEngine::getInstance()->resumeAllEffects();
         }
         void AudioUtil::setEffectsVolume(float vol){
-            SimpleAudioEngine::getInstance()->setEffectsVolume();
+            SimpleAudioEngine::getInstance()->setEffectsVolume(vol);
         }
         float AudioUtil::getEffectsVolume(){
             return SimpleAudioEngine::getInstance()->getEffectsVolume(); 
         };
         
         void AudioUtil::stopAll(){
-            SimpleAudioEngine::getInstance()->stopAll();
+			SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+			SimpleAudioEngine::getInstance()->stopAllEffects();
         };
    
 ////开始播放背景音效，false表示不循环
@@ -163,11 +169,5 @@ namespace std
 //virtual void unloadEffect ( const char * filePath )
 
 
-    };    
-    
-
-}
-
- 
-#endif
+} 
 

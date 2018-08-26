@@ -118,7 +118,7 @@ namespace engine
                             this->world->addChild(tempObject1);
                         }
                     }
-                    AudioUtil::playSoundWithVol("Snd_menu_monetki.mp3", 0.95);
+                    AudioUtil::playSoundWithVol("Snd_menu_monetki.mp3", 0.95f);
                 }
                 //(this->world->saveBox.gameSave.data.addit_earlyWavesCounter + 1);
                 int addit_earlyWavesCounter=this->world->saveBox->getIntValue("addit_earlyWavesCounter")+1;
@@ -376,7 +376,7 @@ namespace engine
 			//}
 		}
 		this->world->worldInterface->updateInfo();
-		AudioUtil::playSoundWithVol("Snd_world_startWave.mp3", 0.9);
+		AudioUtil::playSoundWithVol("Snd_world_startWave.mp3", 0.9f);
 	}// end function
     void Waves::wavesHandler()
     {
@@ -768,7 +768,7 @@ namespace engine
                                         if (!this->world->pointer1->isVisible())
                                         {
                                             this->world->pointer1->setVisible(true);
-                                            AudioUtil::playSoundWithVol("Snd_world_openMarker.mp3", 0.55);
+                                            AudioUtil::playSoundWithVol("Snd_world_openMarker.mp3", 0.55f);
                                         }
                                     }
                                 }
@@ -790,7 +790,7 @@ namespace engine
 											this->world->pointer2->setVisible(true);
                                             if (!this->world->pointer1->isVisible())
                                             {
-                                                AudioUtil::playSoundWithVol("Snd_world_openMarker.mp3", 0.55);
+                                                AudioUtil::playSoundWithVol("Snd_world_openMarker.mp3", 0.55f);
                                             }
                                         }
                                     }
@@ -813,7 +813,7 @@ namespace engine
                                             this->world->pointer3->setVisible(true);
                                             if (!this->world->pointer1->isVisible() && !this->world->pointer2->isVisible())
                                             {
-                                                AudioUtil::playSoundWithVol("Snd_world_openMarker.mp3", 0.55);
+                                                AudioUtil::playSoundWithVol("Snd_world_openMarker.mp3", 0.55f);
                                             }
                                         }
                                     }

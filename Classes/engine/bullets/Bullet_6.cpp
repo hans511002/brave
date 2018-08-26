@@ -33,7 +33,7 @@ namespace engine
             this->damageLittle = damage / container->totalFrames;
             Bullet::init();
             this->attack();
-            AudioUtil::playSoundWithVol("Snd_tower_shootUltra2.mp3", 0.85);
+            AudioUtil::playSoundWithVol("Snd_tower_shootUltra2.mp3", 0.85f);
             return true;
         }// end function
 
@@ -44,7 +44,7 @@ namespace engine
             {
                 this_pt =this->getPosition();// cocos2d::Point(this->x, this->y);
             }
-            if (container->currentFrame < container->totalFrames)
+            if (enemyTarget && container->currentFrame < container->totalFrames)
             {
                 container->tryPlay();
 			    //container->gotoAndStop((container->currentFrame + 1));
@@ -120,7 +120,7 @@ namespace engine
 
 		void Bullet_6::attack()
         {
-            if (enemyTarget->atStaged && enemyTarget->readyDamage)
+            if (enemyTarget && enemyTarget->atStaged && enemyTarget->readyDamage)
             {
 				//if (enemyTarget->getHit != 24)
 				if (enemyTarget->typeUnit != 24)
@@ -146,7 +146,7 @@ namespace engine
 
 		void Bullet_6::close()
         {
-            enemyTarget->bulletTower6Effect = false;
+            if(enemyTarget)enemyTarget->bulletTower6Effect = false;
             if (this->chainTarget)
             {
                 this->chainTarget->bulletTower6Effect = false;

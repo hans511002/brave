@@ -136,22 +136,22 @@ namespace engine
 						if (this->world->airVoiceTurn == 1)
 						{
 							this->world->airVoiceTurn = 2;
-							AudioUtil::playSoundWithVol ("Snd_air_voice1.mp3", 0.9);
+							AudioUtil::playSoundWithVol ("Snd_air_voice1.mp3", 0.9f);
 						}
 						else if (this->world->airVoiceTurn == 2)
 						{
 							this->world->airVoiceTurn = 3;
-							AudioUtil::playSoundWithVol ("Snd_air_voice2.mp3", 0.9);
+							AudioUtil::playSoundWithVol ("Snd_air_voice2.mp3", 0.9f);
 						}
 						else if (this->world->airVoiceTurn == 3)
 						{
 							this->world->airVoiceTurn = 4;
-							AudioUtil::playSoundWithVol ("Snd_air_voice4.mp3", 0.9);
+							AudioUtil::playSoundWithVol ("Snd_air_voice4.mp3", 0.9f);
 						}
 						else if (this->world->airVoiceTurn == 4)
 						{
 							this->world->airVoiceTurn = 1;
-							AudioUtil::playSoundWithVol ("Snd_air_voice5.mp3", 0.9);
+							AudioUtil::playSoundWithVol ("Snd_air_voice5.mp3", 0.9f);
 						}
 					}
 				}
@@ -412,7 +412,7 @@ namespace engine
 				//this->container->contBlowing->gotoAndStop(this->container->contBlowing->currentFrame); // 				this->container->contBlowing->gotoAndStop(this->container->contBlowing->currentFrame);
 				if (this->container->cont->currentFrame == 2)
 				{
-					AudioUtil::playSoundWithVol("Snd_air_blow.mp3", 0.65);
+					AudioUtil::playSoundWithVol("Snd_air_blow.mp3", 0.65f);
 				}
 				else if (this->container->cont->currentFrame > 20)
 				{

@@ -642,7 +642,7 @@ namespace engine
 				{
 					if (this->world->nowLevel == 3)
 					{
-						AudioUtil::playSoundWithVol("Snd_tower_build.mp3", 0.95);
+						AudioUtil::playSoundWithVol("Snd_tower_build.mp3", 0.95f);
 						this->i = 0;
 						while (this->i < this->world->listOfPlaces.size())
 						{
@@ -665,7 +665,7 @@ namespace engine
 					}
 					else if (this->world->nowLevel == 5)
 					{
-						AudioUtil::playSoundWithVol("Snd_tower_build.mp3", 0.95);
+						AudioUtil::playSoundWithVol("Snd_tower_build.mp3", 0.95f);
 						//this->i = 0;
 						//while (this->i < this->world->listOfPlaces.size())
 						//{
@@ -680,7 +680,7 @@ namespace engine
 					}
 					else if (this->world->nowLevel == 7)
 					{
-						AudioUtil::playSoundWithVol("Snd_tower_build.mp3", 0.95);
+						AudioUtil::playSoundWithVol("Snd_tower_build.mp3", 0.95f);
 						//this->i = 0;
 						//while (this->i < this->world->listOfPlaces.size())
 						//{
@@ -709,7 +709,7 @@ namespace engine
 					}
 					else if (this->world->nowLevel == 9)
 					{
-						AudioUtil::playSoundWithVol("Snd_tower_build.mp3", 0.95);
+						AudioUtil::playSoundWithVol("Snd_tower_build.mp3", 0.95f);
 						//this->i = 0;
 						//while (this->i < this->world->listOfPlaces.size())
 						//{
@@ -724,7 +724,7 @@ namespace engine
 					}
 					else if (this->world->nowLevel == 10)
 					{
-						AudioUtil::playSoundWithVol("Snd_tower_build.mp3", 0.95);
+						AudioUtil::playSoundWithVol("Snd_tower_build.mp3", 0.95f);
 						//this->i = 0;
 						//while (this->i < this->world->listOfPlaces.size())
 						//{
@@ -741,7 +741,7 @@ namespace engine
 					}
 					else if (this->world->nowLevel == 11)
 					{
-						AudioUtil::playSoundWithVol("Snd_tower_build.mp3", 0.95);
+						AudioUtil::playSoundWithVol("Snd_tower_build.mp3", 0.95f);
 						//this->i = 0;
 						//while (this->i < this->world->listOfPlaces.size())
 						//{
@@ -758,7 +758,7 @@ namespace engine
 					}
 					else if (this->world->nowLevel == 14)
 					{
-						AudioUtil::playSoundWithVol("Snd_tower_build.mp3", 0.95);
+						AudioUtil::playSoundWithVol("Snd_tower_build.mp3", 0.95f);
 						//this->i = 0;
 						//while (this->i < this->world->listOfPlaces.size())
 						//{
@@ -775,7 +775,7 @@ namespace engine
 					}
 					else if (this->world->nowLevel == 15)
 					{
-						AudioUtil::playSoundWithVol("Snd_tower_build.mp3", 0.95);
+						AudioUtil::playSoundWithVol("Snd_tower_build.mp3", 0.95f);
 						//	this->i = 0;
 						//	while (this->i < this->world->listOfPlaces.size())
 						//	{

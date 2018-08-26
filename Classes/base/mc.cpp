@@ -130,9 +130,15 @@ namespace engine
         string eventName = event->getEventName();//eventObject->type
         if(eventObject->type == dragonBones::EventObject::COMPLETE)
         {
-            if(this->playTimes == 1)
-            if(eventObject->getAnimationState() == this->getAnimation()->getLastAnimationState())
-                this->inPlay = false;
+			if (this->playTimes == 1) {
+				if (this->getAnimation() && this->inPlay) {
+					if (eventObject->getAnimationState() == this->getAnimation()->getLastAnimationState())
+						this->inPlay = false;
+				}
+				else {
+					this->inPlay = false;
+				}
+			}
         }
 
     }
@@ -441,7 +447,7 @@ namespace engine
 		this->slotName = slotName;
 		this->setName(slotName);
 		reinit();
-		addEventNode(this);
+		//addEventNode(this);
 	};
 	void MCCase::setVisible(bool v){
 		MovieClipSubBase::setVisible(v);
@@ -455,8 +461,7 @@ namespace engine
 		this->slotName = slotName;
 		this->setName(slotName);
 		reinit();
-		addEventNode(this);
-
+		//addEventNode(this);
 	};
 	MCSprite::MCSprite(MC * mc, const string &  slotName, cocos2d::Sprite * sprite) : BaseSprite(sprite), initSprite(false)
 	{
@@ -499,9 +504,23 @@ namespace engine
 	{
 		this->mcs.push(mcs);
 	};
+	void MovieClip::setAutoRemoveData(bool remove) {
+		this->_autoRemoveData = remove;
+	};
+	void MovieClip::removeArmature() {
+		if(!dbName.empty())
+			std::removeArmature(dbName);
+	};
+
 	void MovieClip::destroy()
 	{ 
-		this->container->getEventDispatcher()->removeAllEventListeners();
+		if (this->container) {
+			this->container->dispose();
+			if (_autoRemoveData) {
+				removeArmature();
+			}
+			//this->container->getEventDispatcher()->removeAllEventListeners();
+		}
 		//this->container->getEventDispatcher()->removeCustomEventListeners(dragonBones::EventObject::COMPLETE);
 		int l = this->mcs.size();
 		for (int i = l - 1; i >= 0; i--)
@@ -613,7 +632,7 @@ namespace engine
 				this->submcbs[i]->reinit();
 		}
     }
-    MovieClip::MovieClip(dragonBones::CCArmatureDisplay * container, const string &  _defAniName) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0), setAr(false)
+    MovieClip::MovieClip(dragonBones::CCArmatureDisplay * container, const string &  _defAniName) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0), setAr(false), _autoRemoveData(false)
 	{
 		setNodeType("MovieClip");
 		//std::map<std::string, dragonBones::AnimationData*> & animations = container->getArmature()->_armatureData->animations;
@@ -642,7 +661,7 @@ namespace engine
 		//this->autorelease(); in BaseNode::init();
 		//this->isReady = true;
 	};
-	MovieClip::MovieClip(const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0), setAr(false)
+	MovieClip::MovieClip(const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0), setAr(false), _autoRemoveData(false)
 	{
 		setNodeType("MovieClip");
 		this->rootPath = rootPath;
@@ -699,7 +718,7 @@ namespace engine
 		//this->isReady = true;
 		return true;
 	};
-	MovieClip::MovieClip(const string &  armName, const string &  dbName, BaseNode *node) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0), setAr(false)
+	MovieClip::MovieClip(const string &  armName, const string &  dbName, BaseNode *node) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0), setAr(false), _autoRemoveData(false)
 	{
 		setNodeType("MovieClip");
 		this->armName = armName;
@@ -720,12 +739,12 @@ namespace engine
 		if (node)node->addChild(this);
 		//this->isReady = true;
 	};
-	MovieClip::MovieClip(World * world, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName) :MovieClip(rootPath, armName, dbName, defAniName)
+	MovieClip::MovieClip(World * world, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName) :MovieClip(rootPath, armName, dbName, defAniName) 
 	{
 		if (world)setOnceMove(world);
 	};
 
-    MovieClip::MovieClip(MC *mc, dragonBones::Slot * slot, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName, bool delay) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0), setAr(false)
+    MovieClip::MovieClip(MC *mc, dragonBones::Slot * slot, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName, bool delay) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0), setAr(false), _autoRemoveData(false)
 	{
 		this->mc = mc;
 		this->slotName = slot->getName();
@@ -733,7 +752,7 @@ namespace engine
         if(!delay)
             reinit();
 	};
-    MovieClip::MovieClip(MC *mc, const string &  slotName, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName, bool delay) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0), setAr(false)
+    MovieClip::MovieClip(MC *mc, const string &  slotName, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName, bool delay) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0), setAr(false), _autoRemoveData(false)
 	{
 
 		this->mc = mc;
@@ -748,7 +767,7 @@ namespace engine
         int time = (Common::DateTime().GetTicks() - dt.GetTicks());
         //CCLOG("MovieClip %s.%s load time:%i", dbName.c_str(), armName.c_str(), time);
 	};
-    MovieClip::MovieClip(MC *mc, const string &  slotName, const string &  rootPath, const string &  dbName, bool delay) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0), setAr(false)
+    MovieClip::MovieClip(MC *mc, const string &  slotName, const string &  rootPath, const string &  dbName, bool delay) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0), setAr(false), _autoRemoveData(false)
 	{
 		setNodeType("MovieClip");
 		this->mc = mc;
@@ -1110,6 +1129,7 @@ namespace engine
 	};
 	dragonBones::Animation *MovieClipSub::getAnimation()
 	{
+		if (!arm)return NULL;
         return arm->getAnimation();
 	};
 	void MovieClipSub::gotoAndStop(int cf, const string &  aniName)

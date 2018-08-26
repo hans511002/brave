@@ -1,20 +1,21 @@
 ﻿#ifndef BASE_AUDIOUTIL_H
 #define BASE_AUDIOUTIL_H
-
-using namespace CocosDenshion;
-
+#include "cocos2d.h"
+ 
 namespace std
 {
     namespace AudioUtil
     {
-        bool soundOn;
-        bool musicOn;
-        string audioDir;
-        Map<string,unsigned int> soundEffect;
+        extern bool soundOn;
+		extern bool musicOn;
+		extern string audioDir;
+		extern map<string,unsigned int> soundEffect;
         
         string getAudioPath(const char * file);
         void setAudioDir(const char * path);
-        void musicManage(const string & onoff);
+		void musicManage(const string & onoff);
+		void soundManage(const string & onoff);
+		
         
         void preloadMusic(const char * path);
         void playMusic(const char * file,bool loop=true);

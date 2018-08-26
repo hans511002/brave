@@ -37,7 +37,8 @@ namespace engine
 {
 	World::World() :frameCounter(0), feature(NULL), bezierClass(NULL), wavesClass(NULL), numRoads(0), level(NULL), road(NULL), levelAdditionally(NULL), levelAdditionally1(NULL), levelAdditionally2(NULL), levelAdditionally3(NULL), worldInterface(NULL), money(0), bonusMoney(0), liveMax(20), live(0), forseIndexFl(false), getSphere(NULL), buildTowerMenu(NULL), towerMenu(NULL), ultraTowerMenu(NULL), scaleRadius(0.85f), towerRadius(NULL), unitInputBezieCounter(0), cast(NULL), menuObject(NULL), pointer1(NULL), pointer2(NULL), pointer3(NULL), selectObject(NULL), firstMusicPlay(false), secondMusicPlay(false), secondMusicCounter(0), winDefCounter(1), viewBoss(0), viewRockCrash(0), boss(NULL), decoration(NULL), nowLevel(0), saveBox(NULL), exchange(NULL), portalViewCounter(30), trainingClass(NULL), hint(NULL), startMusicVolume(0), bonusMoneyFlag(true), eduOpenUpgrArrowFlag(true), killEnemiesCounter(0), createGolemCounter(0), createIcemanCounter(0), createAirCounter(0), earlyWaveCounter(0), sellFireCounter(0), sellIceCounter(0), sellStoneCounter(0), sellLevinCounter(0), sellGetAllCounter(0), icemanSlowdownEnemiesCounter(0), castFireCounter(0), castIceCounter(0), castStoneCounter(0), castLevinCounter(0), castGetAllCounter(0), golemVoiceTurn(1), icemanVoiceTurn(1), airVoiceTurn(1), mouseX(0), mouseY(0)
 	{
-		std::globalNode= this;
+		if(useNodeEvent)
+			std::globalNode= this;
 		//MCCase::worldMouseHandler.node = this;
 		//MCCase::worldMouseHandler.mouseDownHandler = NODE_MOUSEHANDLER_SELECTOR(World::mouseDownHandler);
 		//MCCase::worldMouseHandler.mouseMoveHandler =   NODE_MOUSEHANDLER_SELECTOR (World::mouseMoveHandler);
@@ -80,16 +81,17 @@ namespace engine
 		BaseNode::init();
 		this->wavesClass = new Waves();
 		this->feature = new Feature();
-		//test bezier getPathPoint
-		int r=0,w=0;
-		float finishPath = this->bezierClass->getPathLength(r, w);
-        Common::DateTime dt;
-		float path=0;
-		for (int i = 0; i < 100000; ++i) {
-			path=std::random()*finishPath;
-			bezier::PathPoint ppo = this->bezierClass->getPathPoint(path, r,w);
-		}
-		long ts=Common::DateTime().GetTicks() -dt.GetTicks();
+		////test bezier getPathPoint
+		//int r=1,w=1;
+		//float finishPath = this->bezierClass->getPathLength(r, w);
+		//Common::DateTime dt;
+		//float path=0;
+		//for (int i = 0; i < 100000; ++i) {
+		//	path=std::random()*finishPath;
+		//	bezier::PathPoint ppo = this->bezierClass->getPathPoint(path, r,w);
+		//}
+		//long ts=Common::DateTime().GetTicks() -dt.GetTicks();
+  
         return true;
 	};
 	void World::onEnter()
@@ -121,20 +123,17 @@ namespace engine
 	void  World::enterFrameHandler(float dt)
 	{
 		if (this->frameCounter < 30)
-		{
 			this->frameCounter++;
-		}
 		else
-		{
 			this->frameCounter = 1;
-		}
+		Common::DateTime stime,gstime;
 		if (!this->firstMusicPlay)
 		{
 			int complexityLevel = this->saveBox->getIntValue("complexityLevel");
 			if (this->frameCounter == 10)
 			{
 				this->firstMusicPlay = true;
-				AudioUtil::playMusic(1);
+				AudioUtil::playMusic("Music_world_beforeBattle.mp3");// (1f);
 				if (complexityLevel < 4)
 				{
 					if (this->nowLevel == 1)
@@ -184,7 +183,7 @@ namespace engine
 			else
 			{
 				this->secondMusicPlay = false;
-				AudioUtil::playMusic(2);
+				AudioUtil::playMusic("Music_world_battle.mp3");// (2f);
 			}
 		}
 		if (this->bonusMoneyFlag)
@@ -199,41 +198,35 @@ namespace engine
 				}
 			}
 		}
+		int ts = Common::DateTime().GetTicks() - stime.GetTicks();
+		stime = Common::DateTime(); logInfo("begin", ts);
 		this->wavesClass->wavesHandler();
-		int i = 0;
-		while (i < this->listOfFlags.size())
-		{
-			if (this->listOfFlags[i]->currentFrame < this->listOfFlags[i]->totalFrames)
-			{
-				this->listOfFlags[i]->tryPlay();
-                //this->listOfFlags[i]->gotoAndStop((this->listOfFlags[i]->currentFrame + 1));
-			}
-			else
-			{
-				this->listOfFlags[i]->gotoAndStop(1);
-			}
-			i++;
-		}
-
+		ts = Common::DateTime().GetTicks() - stime.GetTicks();
+		stime = Common::DateTime(); logInfo("wavesHandler", ts);
 		if (this->worldInterface)
-		{
 			this->worldInterface->update();
-		}
-
+		ts = Common::DateTime().GetTicks() - stime.GetTicks();
+		stime = Common::DateTime(); logInfo("worldInterface", ts);
 		this->feature->update();
+		ts = Common::DateTime().GetTicks() - stime.GetTicks();
+		stime = Common::DateTime(); logInfo("feature", ts);
 		//子类播放
-		i = this->listOfClasses.size() - 1;
+		int i = this->listOfClasses.size() - 1;
 		while (i >= 0)
 		{
 			this->listOfClasses[i]->update();
 			i--;
 		}
+		ts = Common::DateTime().GetTicks() - stime.GetTicks();
+		stime = Common::DateTime();logInfo("listOfClasses", ts); 
 		i = this->listOfTowers.size() - 1;
 		while (i >= 0)
 		{
 			this->listOfTowers[i]->update();
 			i--;
 		}
+		ts = Common::DateTime().GetTicks() - stime.GetTicks();
+		stime = Common::DateTime(); logInfo("listOfTowers", ts);
 
 		//怪播放
 		i = this->listOfUnits.size() - 1;
@@ -242,27 +235,16 @@ namespace engine
 			this->listOfUnits[i]->update();
 			i--;
 		}
-	
+		ts = Common::DateTime().GetTicks() - stime.GetTicks();
+		stime = Common::DateTime(); logInfo("listOfUnits", ts);
 		i = this->listOfBullets.size() - 1;
 		while (i >= 0)
 		{
 			this->listOfBullets[i]->update();
 			i--;
 		}
-		//i = this->listOfSoundChannels.size() - 1;
-		//while (i >= 0)
-		//{ 
-		//	if (this->listOfSoundChannels[i]->soundTransform->volume - 0.0186667 > 0)
-		//	{
-		//		this->listOfSoundChannels[i]->soundTransform = new SoundTransform(this->listOfSoundChannels[i].soundTransform.volume - 0.0186667, 0);
-		//	}
-		//	else
-		//	{
-		//		this->listOfSoundChannels[i]->soundTransform = new SoundTransform(0, 0);
-		//		this->listOfSoundChannels.splice(i, 1);
-		//	}
-		//	i++;
-		//}
+		ts = Common::DateTime().GetTicks() - stime.GetTicks();
+		stime = Common::DateTime(); logInfo("listOfBullets", ts);
 		if (this->winDefCounter > -1)
 		{
 			if (this->winDefCounter > 0)
@@ -302,7 +284,7 @@ namespace engine
 				//	}
 				//	if (AudioUtil::getMusicVolume() > this->startMusicVolume * 0.35)
 				//	{
-				//		AudioUtil::setMusicVolume(AudioUtil::getMusicVolume() - this->startMusicVolume * 0.035);
+				//		AudioUtil::setMusicVolume(AudioUtil::getMusicVolume() - this->startMusicVolume * 0.035f);
 				//	}
 				//}
 				if (this->levelAdditionally->currentFrame < this->levelAdditionally->totalFrames)
@@ -384,6 +366,10 @@ namespace engine
 			}
 		}
 		this->manageIndexes();
+		ts = Common::DateTime().GetTicks() - stime.GetTicks();
+		stime = Common::DateTime(); logInfo("end", ts);
+		ts = Common::DateTime().GetTicks() - gstime.GetTicks();
+		logInfo("all", ts);  
 		if (this->worldInterface->fasterFlag == 2)
 		{
 			if (this->frameCounter % 2)
@@ -391,6 +377,7 @@ namespace engine
 				this->enterFrameHandler(0);
 			}
 		} 
+
 		return;
 	}// end function
 	void World::removeEventTarget(std::MouseEvent * event,BaseNode* node, string caseName){
@@ -491,10 +478,12 @@ namespace engine
 		while (event->hasNext())
 		{
 			string targetName = event->target->getName();
-			logInfo("mouseDownHandler.target", getNamePath(event->target));
-			logInfo("mouseDownHandler.target.pos", event->getLocation(),&event->target->getPosition()
-				, &event->target->getParent()->convertToWorldSpace(event->target->getPosition()));
-			logInfo("mouseDownHandler.target.zindex", event->target->getLocalZOrder(),0);
+			{
+				logInfo("mouseDownHandler.target", getNamePath(event->target));
+				Vec2 gpos=event->target->getParent()->convertToWorldSpace(event->target->getPosition());
+				logInfo("mouseDownHandler.target.pos", event->getLocation(),&event->target->getPosition(), &gpos);
+				logInfo("mouseDownHandler.target.zindex", event->target->getLocalZOrder(),0);
+			}
 			if (this->getSphere)
 			{
 				this->getSphere->mouseDownHandler(event);
@@ -548,11 +537,13 @@ namespace engine
 				{
 					this->towerMenu = new TowerMenu(tower);
 					this->addChild(this->towerMenu, 3);
+					this->towerMenu->init();
 				}
 				else
 				{
 					this->ultraTowerMenu = new UltraTowerMenu(tower);
 					this->addChild(this->ultraTowerMenu, 3);
+					this->ultraTowerMenu->init();
 				}
 				AudioUtil::playSound("Snd_tower_openMenu.mp3");
 			}
@@ -741,7 +732,7 @@ namespace engine
 							//this->towerRadius->x = this->towerRadius->myTower->this_pt.x;
 							//this->towerRadius->y = this->towerRadius->myTower->this_pt.y;
 							this->towerRadius->setVisible(true);
-							AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+							AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
 						}
 					}
 					else if (this->towerRadius->isVisible())
@@ -814,7 +805,7 @@ namespace engine
 						}
 						
 						logInfo("towerRadius", this->towerRadius->getAnchorPoint(),&this->towerRadius->getPosition());
-						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
 					}
 				}
 				else if (this->towerRadius->isVisible())
@@ -852,14 +843,14 @@ namespace engine
 						{
 							this->buildTowerMenu = new BuildTowerMenu(place);
 							this->addChild(this->buildTowerMenu);
-							AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+							AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
 						}
                         else if(this->buildTowerMenu->myPlace != place)
 						{
 							this->buildTowerMenu->closeMenu();
 							this->buildTowerMenu = new BuildTowerMenu(place);
 							this->addChild(this->buildTowerMenu);
-							AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+							AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
 						}
 					}
 				}
@@ -2373,8 +2364,8 @@ namespace engine
 		while (i >= 0)
 		{
 			if (this->listOfBullets[i]->enemyTarget == unit) {
-				this->listOfBullets[i]->kill();
-			};
+				this->listOfBullets[i]->enemyTarget=NULL;
+			}
 			i--;
 		}
 	};

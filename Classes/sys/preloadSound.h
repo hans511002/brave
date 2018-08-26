@@ -1,0 +1,12 @@
+//
+// Created by hans on 2018/8/25.
+//
+
+#ifndef PROJ_ANDROID_STUDIO_PRELOADSOUND_H
+#define PROJ_ANDROID_STUDIO_PRELOADSOUND_H
+
+
+void preloadSound ();
+
+
+#endif //PROJ_ANDROID_STUDIO_PRELOADSOUND_H

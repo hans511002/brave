@@ -16,13 +16,13 @@ namespace rapidjson {
 		if (data.getSize()) {
 			//char buf[6556];
 			//rapidjson::FileReadStream inputStream(myFile,buf, sizeof(buf));  //创建一个输入流
-			newDoc.Parse(reinterpret_cast<char*>(data.getBytes()));//.ParseStream(inputStream); //将读取的内容转换为dom元素
+			newDoc.Parse<kParseStopWhenDoneFlag>(reinterpret_cast<char*>(data.getBytes()));//.ParseStream(inputStream); //将读取的内容转换为dom元素
             //fclose(myFile); //关闭文件，很重要
 		}
 		if (newDoc.HasParseError()) {
 			ifstream ifs(jsonFile);
 			IStreamWrapper isw(ifs);
-			doc->ParseStream(isw);
+			doc->ParseStream<kParseStopWhenDoneFlag>(isw);
 			//log("Json Parse error:%d", newDoc.GetParseError()); //打印错误编号
 			if (newDoc.HasParseError())
 				return newDoc.GetParseError();

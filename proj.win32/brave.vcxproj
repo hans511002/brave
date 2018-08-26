@@ -147,6 +147,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
+    <ClCompile Include="..\Classes\base\AudioUtil.cpp" />
     <ClCompile Include="..\Classes\base\BaseNode.cpp" />
     <ClCompile Include="..\Classes\base\DbPreload.cpp" />
     <ClCompile Include="..\Classes\base\FileUtil.cpp" />
@@ -263,6 +264,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\screens\MiddleScreen.cpp" />
     <ClCompile Include="..\Classes\sys\bezierBox.cpp" />
     <ClCompile Include="..\Classes\sys\I18n.cpp" />
+    <ClCompile Include="..\Classes\sys\preloadSound.cpp" />
     <ClCompile Include="..\Classes\sys\saveBox.cpp" />
     <ClCompile Include="..\Classes\test\CoreElement.cpp" />
     <ClCompile Include="..\Classes\test\DragHelper.cpp" />
@@ -272,6 +274,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\base\AllHeaders.h" />
+    <ClInclude Include="..\Classes\base\AudioUtil.h" />
     <ClInclude Include="..\Classes\base\BaseHeaders.h" />
     <ClInclude Include="..\Classes\base\BaseLayer.h" />
     <ClInclude Include="..\Classes\base\BaseNode.h" />
@@ -394,6 +397,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\screens\Screen.h" />
     <ClInclude Include="..\Classes\sys\bezierBox.h" />
     <ClInclude Include="..\Classes\sys\I18n.h" />
+    <ClInclude Include="..\Classes\sys\preloadSound.h" />
     <ClInclude Include="..\Classes\sys\saveBox.h" />
     <ClInclude Include="..\Classes\test\AnimationBase.h" />
     <ClInclude Include="..\Classes\test\AnimationLayer.h" />

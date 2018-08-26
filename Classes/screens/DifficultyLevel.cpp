@@ -142,7 +142,7 @@ namespace screens
                 if (this->container->firstEasy->currentFrame == 1)
                 {
                     this->container->firstEasy->gotoAndStop(2);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
                 }
             }
         }
@@ -157,7 +157,7 @@ namespace screens
                 if (this->container->firstNormal->currentFrame == 1)
                 {
                     this->container->firstNormal->gotoAndStop(2);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
                 }
             }
         }
@@ -172,7 +172,7 @@ namespace screens
                 if (this->container->firstHard->currentFrame == 1)
                 {
                     this->container->firstHard->gotoAndStop(2);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
                 }
             }
         }
@@ -192,7 +192,7 @@ namespace screens
                 if (this->container->firstEasy->currentFrame == 2)
                 {
                     this->container->firstEasy->gotoAndStop(3);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
                 }
             }
         }
@@ -203,7 +203,7 @@ namespace screens
                 if (this->container->firstNormal->currentFrame == 2)
                 {
                     this->container->firstNormal->gotoAndStop(3);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
                 }
             }
         }
@@ -214,7 +214,7 @@ namespace screens
                 if (this->container->firstHard->currentFrame == 2)
                 {
                     this->container->firstHard->gotoAndStop(3);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
                 }
             }
         }

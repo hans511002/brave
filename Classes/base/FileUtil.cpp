@@ -5,6 +5,8 @@ namespace std
     {
         if(!incDir &&!incFile)return;
 		FileUtils * fs = cocos2d::FileUtils::getInstance();
+        if (path[path.size() - 1] == '/')
+            path = path.substr(0,path.size() - 1);
 		std::vector<std::string> subs= fs->listFiles(path);
 		for (int i = 0; i < subs.size(); i++)
 		{

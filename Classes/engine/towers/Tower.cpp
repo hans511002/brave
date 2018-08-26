@@ -1487,19 +1487,19 @@ namespace engine{
 				{
 					if (this->shootingTurnStack[0])
 					{
-						this->shootingTurnStack[0][1] = ::round(this->shootingTurnStack[0][1] * 0.95);
+						this->shootingTurnStack[0][1] = ::round(this->shootingTurnStack[0][1] * 0.95f);
 					}
 					if (this->shootingTurnStack[1])
 					{
-						this->shootingTurnStack[1][1] = ::round(this->shootingTurnStack[1][1] * 0.95);
+						this->shootingTurnStack[1][1] = ::round(this->shootingTurnStack[1][1] * 0.95f);
 					}
 					if (this->shootingTurnStack[2])
 					{
-						this->shootingTurnStack[2][1] = ::round(this->shootingTurnStack[2][1] * 0.95);
+						this->shootingTurnStack[2][1] = ::round(this->shootingTurnStack[2][1] * 0.95f);
 					}
 					if (this->shootingTurnStack[3])
 					{
-						this->shootingTurnStack[3][1] = ::round(this->shootingTurnStack[3][1] * 0.95);
+						this->shootingTurnStack[3][1] = ::round(this->shootingTurnStack[3][1] * 0.95f);
 					}
 				}
 			}

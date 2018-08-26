@@ -699,7 +699,7 @@ namespace engine
 			this->i = 0;
 			while (this->i < this->listOfFirePriceXML.size())
 			{
-				this->listOfFirePriceXML[this->i] = ::round(this->listOfFirePriceXML[this->i] * 0.95);
+				this->listOfFirePriceXML[this->i] = ::round(this->listOfFirePriceXML[this->i] * 0.95f);
 				i++;
 			}
 			this->listOfFireTowerDamageXML[0] = this->listOfFireTowerDamageXML[0] * 1.1;
@@ -720,7 +720,7 @@ namespace engine
 			while (this->i < this->listOfFirePriceXML.size())
 			{
 
-				this->listOfFirePriceXML[this->i] = ::round(this->listOfFirePriceXML[this->i] * 0.95);
+				this->listOfFirePriceXML[this->i] = ::round(this->listOfFirePriceXML[this->i] * 0.95f);
 				i++;
 			}
 			this->listOfFireTowerDamageXML[0] = this->listOfFireTowerDamageXML[0] * 1.05;
@@ -792,7 +792,7 @@ namespace engine
 			this->i = 0;
 			while (this->i < this->listOfIcePriceXML.size())
 			{ 
-				this->listOfIcePriceXML[this->i] = ::round(this->listOfIcePriceXML[this->i] * 0.95);
+				this->listOfIcePriceXML[this->i] = ::round(this->listOfIcePriceXML[this->i] * 0.95f);
 				i++;
 			}
 			this->listOfIceTowerDamageXML[0] = this->listOfIceTowerDamageXML[0] * 1.15;
@@ -816,7 +816,7 @@ namespace engine
 			this->i = 0;
 			while (this->i < this->listOfIcePriceXML.size())
 			{ 
-				this->listOfIcePriceXML[this->i] = ::round(this->listOfIcePriceXML[this->i] * 0.95);
+				this->listOfIcePriceXML[this->i] = ::round(this->listOfIcePriceXML[this->i] * 0.95f);
 				i++;
 			}
 			this->listOfIceTowerDamageXML[0] = this->listOfIceTowerDamageXML[0] * 1.1;
@@ -903,7 +903,7 @@ namespace engine
 			this->i = 0;
 			while (this->i < this->listOfStonePriceXML.size())
 			{ 
-				this->listOfStonePriceXML[this->i] = ::round(this->listOfStonePriceXML[this->i] * 0.95);
+				this->listOfStonePriceXML[this->i] = ::round(this->listOfStonePriceXML[this->i] * 0.95f);
 				i++;
 			}
 			this->listOfStoneTowerDamageXML[0] = this->listOfStoneTowerDamageXML[0] * 1.15;
@@ -1035,7 +1035,7 @@ namespace engine
 			this->i = 0;
 			while (this->i < this->listOfLevinPriceXML.size())
 			{ 
-				this->listOfLevinPriceXML[this->i] = ::round(this->listOfLevinPriceXML[this->i] * 0.95);
+				this->listOfLevinPriceXML[this->i] = ::round(this->listOfLevinPriceXML[this->i] * 0.95f);
 				i++;
 			}
 			this->levinEffectDamageXML = this->levinEffectDamageXML + 0;

@@ -99,7 +99,7 @@ namespace engine
                 {
                     this->soundCounter = -1;
                     container->setVisible(true);
-                    AudioUtil::playSoundWithVol("Snd_tower_buildUltra.mp3", 0.8);
+                    AudioUtil::playSoundWithVol("Snd_tower_buildUltra.mp3", 0.8f);
                 }
             }
             else

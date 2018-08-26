@@ -35,7 +35,8 @@ namespace screens
         MiddleScreen(const string &  param1);
 
         virtual bool init();
-		virtual void onEnter( );
+		virtual void onEnter();
+		virtual void onExit();
         virtual void enterFrameHandler(float dt);
 
 

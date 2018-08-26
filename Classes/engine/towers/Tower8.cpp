@@ -81,7 +81,7 @@ namespace engine
                     container->visible = true;
                     if (!autoBuild)
                     {
-                        AudioUtil::playSoundWithVol("Snd_tower_buildUltra.mp3", 0.8);
+                        AudioUtil::playSoundWithVol("Snd_tower_buildUltra.mp3", 0.8f);
                     }
                 }
             }

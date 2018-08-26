@@ -15,11 +15,12 @@ LOCAL_ARM_MODE := arm
 #
 LOCAL_SRC_FILES := main.cpp \
 ../../../Classes/AppDelegate.cpp \
-   ../../../Classes/base/BaseNode.cpp                                             \
-   ../../../Classes/base/DbPreload.cpp                                            \
-   ../../../Classes/base/Indexes.cpp                                              \
-   ../../../Classes/base/JsonUtil.cpp                                             \
-   ../../../Classes/base/mc.cpp                                                   \
+   ../../../Classes/base/AudioUtil.cpp                                              \
+   ../../../Classes/base/BaseNode.cpp                                               \
+   ../../../Classes/base/DbPreload.cpp                                              \
+   ../../../Classes/base/Indexes.cpp                                                \
+   ../../../Classes/base/JsonUtil.cpp                                               \
+   ../../../Classes/base/mc.cpp                                                     \
    ../../../Classes/base/MYPThread.cpp                                              \
    ../../../Classes/base/FileUtil.cpp                                            \
    ../../../Classes/bezier/Bezier.cpp                                             \
@@ -166,7 +167,8 @@ LOCAL_SRC_FILES := main.cpp \
    ../../../Classes/screens/MiddleScreen.cpp                                      \
    ../../../Classes/sys/bezierBox.cpp                                             \
    ../../../Classes/sys/I18n.cpp                                                  \
-   ../../../Classes/sys/saveBox.cpp        
+   ../../../Classes/sys/saveBox.cpp        \
+   ../../../Classes/sys/preloadSound.cpp
 
 #   ../../../Classes/screens/StartMenu.cpp                                         \
 #   ../../../Classes/screens/Credits.cpp                                           \

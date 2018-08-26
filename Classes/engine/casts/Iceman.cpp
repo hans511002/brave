@@ -161,22 +161,22 @@ namespace engine{
 							if (this->world->icemanVoiceTurn == 1)
 							{
 								this->world->icemanVoiceTurn = 2;
-								AudioUtil::playSoundWithVol("Snd_iceman_voice2.mp3", 0.5);
+								AudioUtil::playSoundWithVol("Snd_iceman_voice2.mp3", 0.5f);
 							}
 							else if (this->world->icemanVoiceTurn == 2)
 							{
 								this->world->icemanVoiceTurn = 3;
-								AudioUtil::playSoundWithVol("Snd_iceman_voice3.mp3", 0.5);
+								AudioUtil::playSoundWithVol("Snd_iceman_voice3.mp3", 0.5f);
 							}
 							else if (this->world->icemanVoiceTurn == 3)
 							{
 								this->world->icemanVoiceTurn = 4;
-								AudioUtil::playSoundWithVol("Snd_iceman_voice4.mp3", 0.5);
+								AudioUtil::playSoundWithVol("Snd_iceman_voice4.mp3", 0.5f);
 							}
 							else if (this->world->icemanVoiceTurn == 4)
 							{
 								this->world->icemanVoiceTurn = 1;
-								AudioUtil::playSoundWithVol("Snd_iceman_voice5.mp3", 0.5);
+								AudioUtil::playSoundWithVol("Snd_iceman_voice5.mp3", 0.5f);
 							}
 						}
 					}
@@ -600,7 +600,7 @@ namespace engine{
 						{
 							this->world->listOfUnits[this->i]->icemanCounter = Main::mainClass->readXMLClass.castIcemanFreezTimerXML;
 						}
-						AudioUtil::playSoundWithVol("Snd_iceman_freezes.mp3", 0.5);
+						AudioUtil::playSoundWithVol("Snd_iceman_freezes.mp3", 0.5f);
 						this->world->icemanSlowdownEnemiesCounter++;
 						int addit_icemanSlowdownEnemiesCounter = this->world->saveBox->getIntValue("addit_icemanSlowdownEnemiesCounter") + 1;
 						this->world->saveBox->setValue("addit_icemanSlowdownEnemiesCounter", addit_icemanSlowdownEnemiesCounter);
@@ -694,7 +694,7 @@ namespace engine{
 			//{
 			//    if (!this->soundTimerMove && !this->world->menuObject && AudioUtil::soundOn)
 			//    {
-			//        //this->soundTimerMove = new Timer(AudioUtil::playSoundWithVol("Snd_iceman_move.mp3", 0.28), 99999);
+			//        //this->soundTimerMove = new Timer(AudioUtil::playSoundWithVol("Snd_iceman_move.mp3", 0.28f), 99999 );
 			//        //this->soundChannelMove = Sounds.instance.soundChanel;
 			//        //this->soundTimerMove.addEventListener(TimerEvent.TIMER, this->soundTimerMoveFunk);
 			//        //this->soundTimerMove.start();
@@ -716,7 +716,7 @@ namespace engine{
 			{
 				if (!Main::mainClass->worldClass->menuObject)
 				{
-					AudioUtil::playSoundWithVol("Snd_iceman_move.mp3", 0.28);
+					AudioUtil::playSoundWithVol("Snd_iceman_move.mp3", 0.28f);
 					//this->soundChannelMove = Sounds.instance.soundChanel;
 				}
 				else

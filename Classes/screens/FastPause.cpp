@@ -62,7 +62,7 @@ namespace screens
             //    }
             //    if (AudioUtil::getMusicVolume() > this->startMusicVolume * 0.35)
             //    {
-            //       AudioUtil::setMusicVolume(AudioUtil::getMusicVolume()- this->startMusicVolume * 0.035);
+            //       AudioUtil::setMusicVolume(AudioUtil::getMusicVolume()- this->startMusicVolume * 0.035f);
             //    }
             //}
             if (this->container->currentFrame < this->container->totalFrames)
@@ -80,7 +80,7 @@ namespace screens
             //{
             //    if (AudioUtil::getMusicVolume() < this->startMusicVolume)
             //    {
-            //        AudioUtil::setMusicVolume(AudioUtil::getMusicVolume() + this->startMusicVolume * 0.035);
+            //        AudioUtil::setMusicVolume(AudioUtil::getMusicVolume() + this->startMusicVolume * 0.035f);
             //    }
             //}
             if (this->container->currentFrame > 1)

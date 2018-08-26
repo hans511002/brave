@@ -28,7 +28,7 @@ namespace engine{
         }// end function
 
         void Bullet_1::update(float dt)
-        {
+        { 
             Bullet::update();
             if (mainCounter == 7)
             {
@@ -45,7 +45,7 @@ namespace engine{
             }
             if (liveCounter > 0)
             {
-                if (enemyTarget->dead)
+                if (!enemyTarget ||enemyTarget->dead)
                 {
                     units::Unit * tempObject1 = NULL;
                     i = 0;
@@ -126,8 +126,8 @@ namespace engine{
                 liveCounter--;
             }
             else
-            {
-				if (enemyTarget->atStaged && enemyTarget->readyDamage)
+            { 
+				if (enemyTarget && enemyTarget->atStaged && enemyTarget->readyDamage)
                 {
                     if (whoShoot->fireBulletCounter >= Main::mainClass->readXMLClass.listOfFireProbability[(spherePower - 1)])
                     {

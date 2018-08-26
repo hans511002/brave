@@ -33,7 +33,7 @@ namespace engine{
 			{
 				this->sphereType = "fire";
 				this->fireCount = this->world->getSphere->fireCount;
-				AudioUtil::playSoundWithVol("Snd_cast_fire.mp3", 0.7);
+				AudioUtil::playSoundWithVol("Snd_cast_fire.mp3", 0.7f);
 				this->world->castFireCounter++;
 				int addit_castFireCounter = this->world->saveBox->getIntValue("addit_castFireCounter");
 				this->world->saveBox->setValue("addit_castFireCounter", addit_castFireCounter + 1);
@@ -42,7 +42,7 @@ namespace engine{
 			{
 				this->sphereType = "ice";
 				this->iceCount = this->world->getSphere->iceCount;
-				AudioUtil::playSoundWithVol("Snd_cast_ice.mp3", 0.7);
+				AudioUtil::playSoundWithVol("Snd_cast_ice.mp3", 0.7f);
 				this->world->castIceCounter++;
 				this->world->saveBox->setValue("addit_castStoneCounter", this->world->castIceCounter);
 			}
@@ -58,7 +58,7 @@ namespace engine{
 			{
 				this->sphereType = "levin";
 				this->levinCount = this->world->getSphere->levinCount;
-				AudioUtil::playSoundWithVol("Snd_cast_levin.mp3", 0.8);
+				AudioUtil::playSoundWithVol("Snd_cast_levin.mp3", 0.8f);
 				this->world->castLevinCounter++;
 				this->world->saveBox->setValue("addit_castLevinCounter", this->world->castLevinCounter);
 			}
@@ -71,7 +71,7 @@ namespace engine{
 				if (this->fireCount > 0 && this->iceCount > 0 && this->stoneCount == 0 && this->levinCount == 0)
 				{
 					this->sphereType = "fireIce";
-					AudioUtil::playSoundWithVol("Snd_cast_fireIce.mp3", 0.9);
+					AudioUtil::playSoundWithVol("Snd_cast_fireIce.mp3", 0.9f);
 					this->world->castFireCounter++;
 					this->world->castIceCounter++;
 					this->world->saveBox->setValue("addit_castFireCounter", this->world->castFireCounter);
@@ -89,7 +89,7 @@ namespace engine{
 				else if (this->fireCount > 0 && this->iceCount == 0 && this->stoneCount == 0 && this->levinCount > 0)
 				{
 					this->sphereType = "fireLevin";
-					AudioUtil::playSoundWithVol("Snd_cast_fireLevin.mp3", 0.7);
+					AudioUtil::playSoundWithVol("Snd_cast_fireLevin.mp3", 0.7f);
 					this->world->castFireCounter++;
 					this->world->castLevinCounter++;
 					this->world->saveBox->setValue("addit_castFireCounter", this->world->castFireCounter);
@@ -107,7 +107,7 @@ namespace engine{
 				else if (this->fireCount == 0 && this->iceCount > 0 && this->stoneCount == 0 && this->levinCount > 0)
 				{
 					this->sphereType = "iceLevin";
-					AudioUtil::playSoundWithVol("Snd_cast_iceLevin.mp3", 0.9);
+					AudioUtil::playSoundWithVol("Snd_cast_iceLevin.mp3", 0.9f);
 					this->world->castIceCounter++;
 					this->world->castLevinCounter++;
 					this->world->saveBox->setValue("addit_castIceCounter", this->world->castIceCounter);
@@ -116,7 +116,7 @@ namespace engine{
 				else if (this->fireCount == 0 && this->iceCount == 0 && this->stoneCount > 0 && this->levinCount > 0)
 				{
 					this->sphereType = "stoneLevin";
-					AudioUtil::playSoundWithVol("Snd_cast_stoneLevin.mp3", 0.9);
+					AudioUtil::playSoundWithVol("Snd_cast_stoneLevin.mp3", 0.9f);
 					this->world->castStoneCounter++;
 					this->world->castLevinCounter++;
 					this->world->saveBox->setValue("addit_castStoneCounter", this->world->castStoneCounter);
@@ -125,7 +125,7 @@ namespace engine{
 				else
 				{
 					this->sphereType = "getAllLittle";
-					AudioUtil::playSoundWithVol("Snd_cast_getAllLittle.mp3", 0.9);
+					AudioUtil::playSoundWithVol("Snd_cast_getAllLittle.mp3", 0.9f);
 					this->world->castGetAllCounter++;
 					this->world->saveBox->setValue("addit_castGetAllCounter", this->world->castGetAllCounter);
 				}
@@ -135,7 +135,7 @@ namespace engine{
 		{
 			this->sphereType = "getAll";
 			this->getAllCount = this->world->getSphere->getAllCount;
-			AudioUtil::playSoundWithVol("Snd_cast_getAll.mp3", 0.95);
+			AudioUtil::playSoundWithVol("Snd_cast_getAll.mp3", 0.95f);
 		}
 		if (this->world->saveBox->getIntValue("addit_castFireCounter") == 150)
 		{

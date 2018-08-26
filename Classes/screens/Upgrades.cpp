@@ -186,7 +186,7 @@ namespace screens
             if (this->container->back->currentFrame == 1)
             {
                 this->container->back->gotoAndStop(2);
-                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
             }
         }
         else if (this->container->back->currentFrame == 2)
@@ -198,7 +198,7 @@ namespace screens
             if (this->container->cont->btnReset->currentFrame == 1)
             {
                 this->container->cont->btnReset->gotoAndStop(2);
-                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
             }
         }
         else if (this->container->cont->btnReset->currentFrame == 2)
@@ -210,7 +210,7 @@ namespace screens
             if (this->container->cont->btnAccept->currentFrame == 1)
             {
                 this->container->cont->btnAccept->gotoAndStop(2);
-                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
             }
         }
         else if (this->container->cont->btnAccept->currentFrame == 2)
@@ -239,7 +239,7 @@ namespace screens
                 this->nowUpgradeButton->gotoAndStop(2);
                 std::setText(this->nowUpgradeButton->starsTXT,tempObject);
                 this->nowUpgradeButton->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
             }
             if (!this->hint->isVisible() || this->hint->myTarget != this->nowUpgradeButton)
             {
@@ -418,7 +418,7 @@ namespace screens
                 if (this->container->back->currentFrame == 2)
                 {
                     this->container->back->gotoAndStop(3);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
                 }
             }
             else if (targetName == "resetCase")
@@ -426,7 +426,7 @@ namespace screens
                 if (this->container->cont->btnReset->currentFrame == 2)
                 {
                     this->container->cont->btnReset->gotoAndStop(3);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
                 }
             }
             else if (targetName == "acceptCase")
@@ -434,7 +434,7 @@ namespace screens
                 if (this->container->cont->btnAccept->currentFrame == 2)
                 {
                     this->container->cont->btnAccept->gotoAndStop(3);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
                 }
             }
             else if (targetName == "shadow")

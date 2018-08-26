@@ -11,7 +11,6 @@ using namespace cocos2d;
 #include "DefineClasses.h"
 #include "MYPThread.h"
 #include "sys/I18n.h"
-#include "AudioUtil.h"
 
 #define ISTYPE(CLZTYPE,POINTER)  dynamic_cast<CLZTYPE *>(POINTER)
 #if CC_TARGET_PLATFORM == CC_PLATFORM_MAC
@@ -55,7 +54,9 @@ namespace std
 	void setAnchorPoint(cocos2d::Node* node, const cocos2d::Vec2 & pos, bool subset = false);
     dragonBones::CCArmatureDisplay * loadArmature(const string & rootPath, const string &  armatureName, const string& dragonBonesName = "");
     dragonBones::CCArmatureDisplay * buildArmature(const string &  armatureName, const string& dragonBonesName);
-    string setText(ui::Text * tui, const string &  val);
+	void removeArmature(const std::string& name, bool disposeData = true);
+
+	string setText(ui::Text * tui, const string &  val);
 	int setText(ui::Text * tui, int val);
 	float setText(ui::Text * tui, float val);
 	inline float setText(ui::Text * tui, double val){setText(tui,(float)val);};
@@ -144,8 +145,18 @@ namespace std
 		virtual void onTouchEnded(Touch *touch, Event *unused_event);
 		virtual void onTouchCancelled(Touch *touch, Event *unused_event);
 		virtual void onTouchMoved(Touch *touch, Event *unused_event);
+
+		/////////
+		virtual std::vector<EventNode *> visitTarget(Node* node, bool isRootNode);
+		virtual void visitTarget(std::vector<EventNode *> *res, Node* node, bool isRootNode);
+
 	};
-	extern Common::Array<EventNode *> EventNodes;
+	extern Common::Array<EventNode *> globalEventNodes;
+	extern std::unordered_map<float, std::vector<EventNode*> > globalZOrderNodeMap;
+	extern std::unordered_map<EventNode*, int> nodePriorityMap;
+	extern int nodePriorityIndex;
+	extern std::mutex globalMutex;
+
 	void addEventNode(EventNode *node);
 	void removeEventNode(EventNode *node);
 	class MouseEvent : public cocos2d::EventMouse
@@ -187,7 +198,6 @@ namespace std
 
 	class BaseNode :public cocos2d::Node, public EventNode
 	{
-
     protected:
 		int schdt;
 		LinkRuleMap linkNodes;
@@ -291,6 +301,7 @@ namespace std
 		virtual void addLinkNodeFlag(BaseNode * node, int linkFlag);
 		virtual void removeLinkNode(BaseNode * node);
 		virtual void removeLinkNodeFlag(BaseNode * node, int linkFlag);
+
 	};
 	class BaseSprite :public   cocos2d::Sprite, public EventNode
 	{

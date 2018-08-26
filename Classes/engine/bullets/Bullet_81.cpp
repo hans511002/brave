@@ -37,7 +37,7 @@ namespace engine
 			{
 				this_pt = this->getPosition();// cocos2d::Point(this->x, this->y);
 			}
-			if (container->currentFrame < container->totalFrames && enemyTarget->readyDamage)
+			if (enemyTarget && container->currentFrame < container->totalFrames && enemyTarget->readyDamage)
 			{
 				container->tryPlay();
 				//container->gotoAndStop((container->currentFrame + 1));
@@ -74,7 +74,7 @@ namespace engine
 			}
 			else
 			{
-				enemyTarget->bulletTower6Effect = false;
+				if(enemyTarget )enemyTarget->bulletTower6Effect = false;
 				kill();
 			}
 			return;

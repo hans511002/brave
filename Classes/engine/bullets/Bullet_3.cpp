@@ -57,7 +57,7 @@ namespace engine{
 			Bullet::update();
 			if (mainCounter == 11)
 			{
-				AudioUtil::playSoundWithVol("Snd_tower_shootStone.mp3", 0.8);
+				AudioUtil::playSoundWithVol("Snd_tower_shootStone.mp3", 0.8f);
 			}
 			if (container->currentFrame < container->totalFrames)
 			{

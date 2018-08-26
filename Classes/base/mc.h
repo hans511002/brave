@@ -114,6 +114,7 @@ namespace engine
 		
 		Vec2 arPoint;
 		bool setAr;
+		bool _autoRemoveData;
 
         dragonBones::CCArmatureDisplay * container;
 		//std::map<std::string, MovieClipSub*> mcs;
@@ -163,6 +164,9 @@ namespace engine
         //virtual void destroy(MCCase * & mcs);
 
 		virtual void destroy();
+		
+		virtual void setAutoRemoveData(bool remove);
+		virtual void removeArmature();
 		//增加删除事件
 		virtual bool setOnceMove(World * world);
 		virtual void onEnter();

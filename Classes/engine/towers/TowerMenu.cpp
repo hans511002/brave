@@ -16,7 +16,6 @@ namespace engine
 			//this->addEventListener(Event.ADDED_TO_STAGE, this->init);
 			this->myTower = param1;
 			this->world = Main::mainClass->worldClass;
-			init();
 			return;
 		}// end function
 
@@ -25,9 +24,7 @@ namespace engine
 			BaseNode::init();
 			//this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
 			if (this->world->towerRadius->isVisible())
-			{
 				this->world->towerRadius->setVisible(false);
-			}
 			//this->world->addChild(this);
 			this->container = new TowerMenu_mc();
 			this->addChild(this->container);
@@ -42,34 +39,41 @@ namespace engine
 			this->setMouseEnabled(false);
 
 			//this->x = this->myTower->this_pt.x;
-			//this->y = this->myTower->this_pt.y;
+			//this->y = this->myTower->this_pt.y; 
+			this->setContentSize(this->container->getContentSize() + Size(2, 2));
+			std::setAnchorPoint(this, 0.5, 0.5);
+			this->setPosition(this->myTower->this_pt+Vec2(0,20));
+			this->container->setPosition(this->getAnchorPointInPoints());
+			std::changeAnchorPoint(this->container, 0.5);
+			this->container->setAlpha(0);
+
 			this->towerRadius = new TowerRadius_mc();
-			this->world->addChild(this->towerRadius,3);
+			this->world->addChild(this->towerRadius, 3);
 			//this->towerRadius->stop();
 			this->towerRadius->setContentSize(Size(this->myTower->radius * 2, this->myTower->radius * 2 * this->world->scaleRadius));
 			//this->towerRadius->width = this->myTower->radius * 2;
 			//this->towerRadius->height = this->myTower->radius * 2 * this->world->scaleRadius;
 			//this->towerRadius->x = this->x;
 			//this->towerRadius->y = this->y;
-            //Vec2 pos = this->getPosition();
-            //this->towerRadius->setPosition(pos);
-            //std::setAnchorPoint(this->towerRadius, 0.5, 0.5);
+			Vec2 pos = this->getPosition();
+			this->towerRadius->setPosition(pos);
+			std::changeAnchorPoint(this->towerRadius, 0.5f);
 
 			//this->towerRadius->setMouseChildren(false);
 			//this->towerRadius->setMouseEnabled(false);
 			this->towerRadius1 = new TowerRadius_mc();
-            this->world->addChild(this->towerRadius1,3);
+			this->world->addChild(this->towerRadius1, 3);
 			//this->towerRadius1->stop();
 			this->towerRadius1->setContentSize(Size(this->myTower->radius * 2, this->myTower->radius * 2 * this->world->scaleRadius));
 			//this->towerRadius1->width = this->myTower->radius * 2;
 			//this->towerRadius1->height = this->myTower->radius * 2 * this->world->scaleRadius;
-            //this->towerRadius1->setPosition(pos);
+			this->towerRadius1->setPosition(pos);
 			//this->towerRadius1->x = this->x;
 			//this->towerRadius1->y = this->y; 
 			//this->towerRadius1->setMouseChildren(false);
 			//this->towerRadius1->setMouseEnabled(false);
 			this->towerRadius1->setVisible(false);
-            //std::setAnchorPoint(this->towerRadius1, 0.5, 0.5);
+			std::changeAnchorPoint(this->towerRadius1, 0.5f);
 
 			this->container->stop();
 			this->container->btnUpgradeMenu->stop();
@@ -88,12 +92,6 @@ namespace engine
 			this->container->sphereSlot4SphereAnimaCont->stop();
 			this->container->cont1->stop();
 			this->container->cont2->stop();
-			this->setContentSize(this->container->getContentSize() + Size(2, 2));
-			std::setAnchorPoint(this, 0.5, 0.5);
-			this->setPosition(this->myTower->this_pt+Vec2(0,20));
-			this->container->setPosition(this->getAnchorPointInPoints());
-			std::changeAnchorPoint(this->container, 0.5);
-			this->container->setAlpha(0);
 
 			if (this->myTower->spheresStack.size() > 0)
 			{
@@ -172,48 +170,7 @@ namespace engine
 					this->world->eduOpenUpgrArrowFlag = false;
 				}
 			}
-
-			//this->setAnchorPoint(Vec2(0.5, 0.5));
-			//const dragonBones::Rectangle & aabb = this->container->getRectangle();
-			////this->container->setPosition(aabb.x, aabb.y );
-			//this->container->setPosition(aabb.width / 2, aabb.height / 2);
-
-			
-			//this->setAnchorPoint(Vec2(0.5,0.5));
-			//std::setAnchorPoint(this->container, 0.5, 0.5);
-			//Node *cnode = Node::create();
-			//this->addChild(cnode);
-			//cnode->setContentSize(this->getContentSize() - Size(3, 3));
-			//cnode->setPosition(Vec2(0, 0) - this->getContentSize() / 2);
-			//std::drawRange(cnode, Color4F::YELLOW);
-
-
-			//this->changeAnchorPoint(0.5);
-			//std::setAnchorPoint(this->container, 0.5, 0.5);
-
-			//std::changeAnchorPoint(this->container, 0.5);
-			//std::changeAnchorPoint(this->container->container, 0.5);
-
-			//std::drawRange(this, Color4F::RED);
- 		//	std::drawRange(this->container, Color4F::WHITE);
-			//std::drawRange(this->container->container, Color4F::GREEN);
-
-			//std::drawRange(container->sphereSlot1SphereSlotCase,Color4F::YELLOW);
-
-			//container->sphereSlot1SphereAnima->display->setPosition(container->sphereSlot1SphereAnima->display->getPosition() + container->sphereSlot1SphereAnima->display->getAnchorPointInPoints());
-
-
-			//std::drawRange(container->sphereSlot1SphereAnima->display, Color4F::WHITE);
-			//std::drawRange(container->sphereSlot1SphereAnima, Color4F::RED);
-			//container->sphereSlot1SphereAnima->container->setContentSize(container->sphereSlot1SphereAnima->getContentSize());
-			//std::drawRange(container->sphereSlot1SphereAnima->container, Color4F::YELLOW);
-			//std::drawRange(container->sphereSlot1SphereAnimaCont->display, Color4F::BLACK);
-			  
-			//this->world->logInfo(getNamePath(container->sphereSlot1SphereAnima), container->sphereSlot1SphereAnima->getAnchorPoint(), &container->sphereSlot1SphereAnima->getPosition(), &container->sphereSlot1SphereAnima->convertToWorldSpace(container->sphereSlot1SphereAnima->getPosition()));
-			//this->world->logInfo(getNamePath(container->sphereSlot1SphereAnima->display), container->sphereSlot1SphereAnima->display->getAnchorPoint(), &container->sphereSlot1SphereAnima->display->getPosition(), &container->sphereSlot1SphereAnima->display->convertToWorldSpace(container->sphereSlot1SphereAnima->display->getPosition()));
-			//this->world->logInfo(getNamePath(container->sphereSlot1SphereAnima->container), container->sphereSlot1SphereAnima->container->getAnchorPoint(), &container->sphereSlot1SphereAnima->container->getPosition(), &container->sphereSlot1SphereAnima->container->convertToWorldSpace(container->sphereSlot1SphereAnima->container->getPosition()));
-			//this->world->logInfo(getNamePath(container->sphereSlot1SphereAnimaCont->display), container->sphereSlot1SphereAnimaCont->display->getAnchorPoint(), &container->sphereSlot1SphereAnimaCont->display->getPosition(), &container->sphereSlot1SphereAnimaCont->display->convertToWorldSpace(container->sphereSlot1SphereAnimaCont->display->getPosition()));
-
+ 
 			//logInfo(getNamePath(container->sphereSlot1SphereAnima), container->sphereSlot1SphereAnima->getPosition());
 			world->towerMenu = this;
 			this->world->addClasses(this);
@@ -819,7 +776,7 @@ namespace engine
 							this->towerRadius1->setWidth(Main::mainClass->readXMLClass.listOfSpheresRadius[3] * 2);
 							this->towerRadius1->setHeight(Main::mainClass->readXMLClass.listOfSpheresRadius[3] * 2 * this->world->scaleRadius);
 						}
-						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
 					}
 					if (this->myTower->towerType < 5)
 					{
@@ -938,7 +895,7 @@ namespace engine
 							btnTowerUpgr->gotoAndStop(2);
 							std::setText(costTXT, tempObject);
 							//event->target->getParent()->costTXT = tempObject;
-							AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+							AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
 						}
 						else
 						{
@@ -1239,7 +1196,7 @@ namespace engine
 							}
 							this->hint->setPositionX(this->getPositionX() + this->container->getPositionX() + this->container->fastBuyUltraCont->getPositionX() + this->container->fastBuyUltraContBtnFastBuyUltra->getPositionX());
 							this->hint->setPositionY(this->getPositionY() + this->container->getPositionY() + this->container->fastBuyUltraCont->getPositionY() + this->container->fastBuyUltraContBtnFastBuyUltra->getPositionY() - 15);
-							AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+							AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
 						}
 					}
 					else if (this->container->fastBuyUltraContBtnFastBuyUltra->currentFrame == 2)
@@ -1283,7 +1240,7 @@ namespace engine
 					if (sphereSlot->currentFrame == 1)
 					{
 						sphereSlot->gotoAndStop(2);
-						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
 					}
 				}
 				else if (sphereSlot->currentFrame == 2)
@@ -1338,7 +1295,7 @@ namespace engine
 					btnTowerUpgr->gotoAndStop(3);
 					setText(costTXT, tempObject);
 					//event->target->getParent()->costTXT = tempObject;
-					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
 				}
 				if (this->world->worldInterface->container->fireBacklight->isVisible())
 				{
@@ -1403,7 +1360,7 @@ namespace engine
 						this->myTower->towerGetSphereManage("get", "levin");
 						this->spheresMonitor();
 					}
-					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
 				}
 				else
 				{
@@ -1480,7 +1437,7 @@ namespace engine
 						this->spheresMonitor();
 						i++;
 					}
-					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
 				}
 			}
 			else if (targetName == "fastBuyUltraCase")
@@ -1606,7 +1563,7 @@ namespace engine
 								}
 							}
 						}
-						AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
 					}
 				}
 			}

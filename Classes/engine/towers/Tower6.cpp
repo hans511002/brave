@@ -68,7 +68,7 @@ namespace engine
 					container->setVisible(true);
 					if (!autoBuild)
 					{
-						AudioUtil::playSoundWithVol("Snd_tower_buildUltra.mp3", 0.8);
+						AudioUtil::playSoundWithVol("Snd_tower_buildUltra.mp3", 0.8f);
 					}
 				}
 			}
@@ -200,7 +200,7 @@ namespace engine
                     //container->shotAnima->gotoAndStop((container->shotAnima->currentFrame + 1));
 					if (container->shotAnima->currentFrame == 32)
 					{
-						AudioUtil::playSoundWithVol("Snd_tower_firstShootUltraAdd1.mp3", 0.85);
+						AudioUtil::playSoundWithVol("Snd_tower_firstShootUltraAdd1.mp3", 0.85f);
 					}
 				}
 				else
