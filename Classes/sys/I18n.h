@@ -85,6 +85,7 @@ namespace sys
 
 	namespace I18N_CODE
     {
+    static const string U000="U000";//"无"
     static const string U001="U001";//:  "击碎者就绪!"
     static const string U002="U002";//:  "一路碾压所有敌人"
     static const string U003="U003";//:  "击碎者重置"
@@ -207,6 +208,50 @@ namespace sys
     static const string U120="U120";//:  "!"
     static const string U121="U121";//:  "Delete save slot?"
     static const string U122="U122";//:  "Are you sure?"
+    
+    static const string U123="U123";//"木头脑袋"
+    static const string U124="U124";//"一般"
+    static const string U125="U125";//"骑士"
+    static const string U126="U126";//"慢"
+    static const string U127="U127";//有翼跳跃者
+    static const string U128="U128";//"非常快"
+    static const string U129="U129";//"日光骑士"
+    static const string U130="U130";//"勇猛骑士"
+    static const string U131="U131";//"非常慢"
+    static const string U132="U132";//"低"
+    static const string U133="U133";//"火焰大头"
+    static const string U134="U134";//"中"
+    static const string U135="U135";//寒冰大头
+    static const string U136="U136";//"迅捷跳跃者"
+    static const string U137="U137";//"霜冻巨石"
+    static const string U138="U138";//"维京"
+    static const string U139="U139";//"快"
+    static const string U140="U140";//"火焰巨石"
+    static const string U141="U141";//"巨石大头"
+    static const string U142="U142";//"有翼指挥官"
+    static const string U143="U143";//"勇猛维京"
+    static const string U144="U144";//"维京首领"
+    static const string U145="U145";//"闪电大头"
+    static const string U146="U146";//"闪电巨石"
+    static const string U147="U147";//"刺客"
+    static const string U148="U148";//"暗影刺客"
+    static const string U149="U149";//"罗马盾牌"
+    static const string U150="U150";//"罗马 «乌龟»"
+    static const string U151="U151";//"法师"
+    static const string U152="U152";//"火焰精灵"
+    static const string U153="U153";//"寒冰精灵"
+    static const string U154="U154";//"高"
+    static const string U155="U155";//"岩石精灵"
+    static const string U156="U156";//"闪电精灵"
+    static const string U157="U157";//"传送大师"
+    static const string U158="U158";//"高等萨满"
+    static const string U159="U159";//"沙质大头"
+    static const string U160="U160";//"沙漠大头"
+    static const string U161="U161";//"突击手"
+    static const string U162="U162";//"兰博"
+    static const string U163="U163";//"暴风"
+    static const string U164="U164";//"Boss"
+
     };
 }
 #endif
