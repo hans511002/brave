@@ -43,52 +43,73 @@ namespace sys
 		bool eraseValue(string namePath, int idx){
 			return JsonUtil::eraseValue(*gameSave, namePath, idx);
 		};
-
-
-		inline rapidjson::Value * getValue(string namePath){
-			if (!gameSave)return NULL;
-			return rapidjson::getValue(gameSave, namePath);
+		inline rapidjson::Document * getDoc(int save) {
+			if (save == 1)return gameSave1;
+			else if (save == 2)return gameSave2;
+			else if (save == 3)return gameSave3;
+			else if (save == 4)return gameSave4;
+			else if (save == 5)return gameSave5;
+			else if (save == 6)return gameSave6;
+			else return gameSave;
+		};
+		inline rapidjson::Document * getDoc(rapidjson::Document * save) {
+			if (save)return save;
+			else return gameSave;
+		}
+		inline rapidjson::Value * getValue(string namePath, rapidjson::Document * save = NULL){
+			if (!getDoc(save))return NULL;
+			return rapidjson::getValue(getDoc(save), namePath);
 		}
 		//gameSave.data.upgradeGolem5
-		inline bool HasMember(string namePath){
-		    return getValue(namePath)!=NULL;
+		inline bool HasMember(string namePath, rapidjson::Document * save = NULL){
+		    return getValue(namePath, save)!=NULL;
 		}
-		bool getBoolValue(string namePath){
-			return JsonUtil::getBoolValue(gameSave, namePath);
+		bool getBoolValue(string namePath, rapidjson::Document * save = NULL){
+			return JsonUtil::getBoolValue(getDoc(save), namePath);
 		};
-		int getIntValue(string namePath){
-			return JsonUtil::getIntValue(gameSave, namePath);
+		int getIntValue(string namePath, rapidjson::Document * save = NULL){
+			return JsonUtil::getIntValue(getDoc(save), namePath);
 		};
-		long long getLLongValue(string namePath){
-			return JsonUtil::getLLongValue(gameSave, namePath);
+		long long getLLongValue(string namePath, rapidjson::Document * save = NULL){
+			return JsonUtil::getLLongValue(getDoc(save), namePath);
 		};
-		double getDoubleValue(string namePath){
-			return JsonUtil::getDoubleValue(gameSave, namePath);
+		double getDoubleValue(string namePath, rapidjson::Document * save = NULL){
+			return JsonUtil::getDoubleValue(getDoc(save), namePath);
 		};
-		const char* getCharsValue(string namePath){
-			return JsonUtil::getCharsValue(gameSave, namePath);
+		const char* getCharsValue(string namePath, rapidjson::Document * save = NULL){
+			return JsonUtil::getCharsValue(getDoc(save), namePath);
 		};
-		string getStringValue(string namePath){
-			return JsonUtil::getStringValue(gameSave, namePath);
+		string getStringValue(string namePath, rapidjson::Document * save = NULL){
+			return JsonUtil::getStringValue(getDoc(save), namePath);
 		};
 		//数组
-		bool getBoolValue(string namePath, int idx){
-			return JsonUtil::getBoolValue(gameSave, namePath, idx);
+		int getLength(string namePath, int save = 1) {
+			rapidjson::Value * a = JsonUtil::getValue(getDoc(save), namePath);
+			if (!a)return 0;
+			if (a->IsArray()) {
+				rapidjson::Value::Array arr = a->GetArray();
+				return arr.Size();
+			}
+			return 0; 
 		};
-		int getIntValue(string namePath, int idx){
-			return JsonUtil::getIntValue(gameSave, namePath, idx);
+	 
+		bool getBoolValue(string namePath, int idx, int save = 1){
+			return JsonUtil::getBoolValue(getDoc(save), namePath, idx);
 		};
-		long long getLLongValue(string namePath, int idx){
-			return JsonUtil::getLLongValue(gameSave, namePath, idx);
+		int getIntValue(string namePath, int idx, int save = 1){
+			return JsonUtil::getIntValue(getDoc(save), namePath, idx);
 		};
-		double getDoubleValue(string namePath, int idx){
-			return JsonUtil::getDoubleValue(gameSave, namePath,idx);
+		long long getLLongValue(string namePath, int idx, int save = 1){
+			return JsonUtil::getLLongValue(getDoc(save), namePath, idx);
 		};
-		string getStringValue(string namePath, int idx){
-			return JsonUtil::getStringValue(gameSave, namePath, idx);
+		double getDoubleValue(string namePath, int idx, int save = 1){
+			return JsonUtil::getDoubleValue(getDoc(save), namePath,idx);
 		};
-		const char* getCharsValue(string namePath, int idx){
-			return JsonUtil::getCharsValue(gameSave, namePath, idx);
+		string getStringValue(string namePath, int idx, int save = 1){
+			return JsonUtil::getStringValue(getDoc(save), namePath, idx);
+		};
+		const char* getCharsValue(string namePath, int idx, int save = 1){
+			return JsonUtil::getCharsValue(getDoc(save), namePath, idx);
 		};
 
 		

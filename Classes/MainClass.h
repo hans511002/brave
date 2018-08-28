@@ -14,6 +14,8 @@
 class Main : public  BaseLayer //cocos2d::LayerColor //
 {
 public:
+	string currentUser;
+
 	int frameCounter;
 	int i;
 	int j;

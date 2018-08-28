@@ -1,10 +1,76 @@
-#include "Screen.h"   
+#include "StartMenu.h"   
 #include "engine/World.h" 
   
 namespace screens
 {  
     StartMenu_mc::StartMenu_mc()
     {
+		logOut = this->createCase("logOut");
+		start = this->createMovieClipSub("start");
+		startStartCase = start->createCase("startCase");
+		credits = this->createMovieClipSub("credits");
+		creditsCreditsCase = credits->createCase("creditsCase");
+		btnMusic = this->createMovieClipSub("btnMusic");
+		btnMusicMusicCase = btnMusic->createCase("musicCase");
+		btnSound = this->createMovieClipSub("btnSound");
+		btnSoundSoundCase = btnSound->createCase("soundCase");
+		back = this->createMovieClipSub("back");
+		backBackCase = back->createCase("backCase");
+		glitter = this->createMovieClipSub("glitter",true);
+		saveType = this->createMovieClipSub("saveType", true);
+		saveTypeLocalSave = saveType->createMovieClipSub("localSave");
+		saveTypeLocalSaveLocalSaveCase = saveTypeLocalSave->createCase("localSaveCase");
+		saveTypeLocalSaveTitle = saveTypeLocalSave->createText("title");
+		saveTypeLocalSaveTips = saveTypeLocalSave->createText("tips");
+		saveTypeOnlineSave = saveType->createMovieClipSub("onlineSave");
+		saveTypeOnlineSaveOnlineSaveCase = saveTypeOnlineSave->createCase("onlineSaveCase");
+		saveTypeOnlineSaveNickTXT = saveTypeOnlineSave->createText("nickTXT");
+		saveTypeOnlineSaveWelcomeTXT = saveTypeOnlineSave->createText("welcomeTXT");
+		saveTypeOnlineSaveModel = saveTypeOnlineSave->createText("model");
+		saveTypeOnlineSaveAddSphere = saveTypeOnlineSave->createText("addSphere");
+		saveTypeOnlineSaveStar = saveTypeOnlineSave->createText("star");
+		saveTypeOnlineSaveCoin = saveTypeOnlineSave->createText("coin");
+		saveTypeOnlineSaveTitle = saveTypeOnlineSave->createText("title");
+		question = this->createMovieClipSub("question", true);
+		questionNoteTXT = question->createText("noteTXT"); 
+		questionBtnYes = question->createMovieClipSub("btnYes");
+		questionBtnYesYesCase = questionBtnYes->createCase("yesCase");
+		questionBtnNo = question->createMovieClipSub("btnNo");
+		questionBtnNoNoCase = questionBtnNo->createCase("noCase");
+		back = this->createMovieClipSub("back");
+		backBackCase = back->createCase("backCase");
+		comlogo = this->createCase("comlogo");
+		copyright = this->createText("copyright");
+		tips = this->createText("tips");
+
+		game1 = this->createMovieClipSub("game1", true);
+		game1Game1Case = game1->createCase("game1Case"); 
+		game1NewGame1Case = game1->createCase("newGame1Case");
+		game1SyncSlot = game1->createMovieClipSub("syncSlot");
+		game1SyncSlotSyncSlotCase = game1SyncSlot->createCase("syncSlotCase");
+		game1DeleteSlot = game1->createMovieClipSub("deleteSlot");
+		game1DeleteSlotDeleteSlotCase = game1DeleteSlot->createCase("deleteSlotCase");
+		game1NumTXT = game1->createText("numTXT");
+		game1Name = game1->createText("name");
+		game2 = this->createMovieClipSub("game2", true);
+		game2Game2Case = game1->createCase("game2Case");
+		game2NewGame2Case = game2->createCase("newGame2Case");
+		game2SyncSlot = game2->createMovieClipSub("syncSlot");
+		game2SyncSlotSyncSlotCase = game2SyncSlot->createCase("syncSlotCase");
+		game2DeleteSlot = game2->createMovieClipSub("deleteSlot");
+		game2DeleteSlotDeleteSlotCase = game2DeleteSlot->createCase("deleteSlotCase");
+		game2NumTXT = game2->createText("numTXT");
+		game2Name = game2->createText("name");
+		game3 = this->createMovieClipSub("game3", true);
+		game3Game3Case = game1->createCase("game3Case"); 
+		game3NewGame3Case = game3->createCase("newGame3Case");
+		game3SyncSlot = game3->createMovieClipSub("syncSlot");
+		game3SyncSlotSyncSlotCase = game3SyncSlot->createCase("syncSlotCase");
+		game3DeleteSlot = game3->createMovieClipSub("deleteSlot");
+		game3DeleteSlotDeleteSlotCase = game3DeleteSlot->createCase("deleteSlotCase");
+		game3NumTXT = game3->createText("numTXT");
+		game3Name = game3->createText("name");
+
         return;
     }// end function
 
@@ -22,51 +88,35 @@ namespace screens
         this->container = new StartMenu_mc();
         this->container->stop();
         this->container->logOut->stop();
-        this->container->logo->stop();
         this->container->start->stop();
         this->container->credits->stop();
         this->container->btnMusic->stop();
         this->container->btnSound->stop();
         this->container->back->stop();
         this->container->logOut->setMouseEnabled(true);
-        this->container->btnMusic->musicCase->setMouseEnabled(true);
-        this->container->btnSound->soundCase->setMouseEnabled(true);
-        this->container->back->backCase->setMouseEnabled(true);
+        this->container->btnMusicMusicCase->setMouseEnabled(true);
+        this->container->btnSoundSoundCase->setMouseEnabled(true);
+        this->container->backBackCase->setMouseEnabled(true);
         this->container->back->setVisible(false);
-        this->container->btnY8->stop();
-        this->container->btnIdnet->stop();
-        this->container->btnY8->y8Case->stop();
-        this->container->btnIdnet->idnetCase->stop();
-        //if (!Main::mainClass->IDIClass.isSponsor)
-        //{
-        //    this->container->btnY8->y8Case->setMouseEnabled(true);
-        //}
-        this->container->btnIdnet->idnetCase->setMouseEnabled(true);
         this->container->logOut->setVisible(false);
+		
         this->addChild(this->container);
-        //if (AudioUtil::musicOn)
-        //{
-        //    this->container->btnMusic->gotoAndStop(1);
-        //}
-        //else
-        //{
-        //    this->container->btnMusic->gotoAndStop(4);
-        //}
-        //if (AudioUtil::soundOn)
-        //{
-        //    this->container->btnSound->gotoAndStop(1);
-        //}
-        //else
-        //{
-        //    this->container->btnSound->gotoAndStop(4);
-        //}
+        if (AudioUtil::musicOn)
+            this->container->btnMusic->gotoAndStop(1);
+        else
+            this->container->btnMusic->gotoAndStop(4);
+        if (AudioUtil::soundOn)
+            this->container->btnSound->gotoAndStop(1);
+        else
+            this->container->btnSound->gotoAndStop(4);
         if (!Main::mainClass->middleScreenClass)
         {
             this->firstPlay = true;
-            Main::mainClass->bmp = new Bitmap(Main::mainClass->getBitmapData(this));
-            Main::mainClass->bmp.alpha = 0;
-            this->addChild(Main::mainClass->bmp);
-            this->container->setVisible(false);
+			this->container->setAlpha(0);
+            //Main::mainClass->bmp = new Bitmap(Main::mainClass->getBitmapData(this));
+            //Main::mainClass->bmp.alpha = 0;
+            //this->addChild(Main::mainClass->bmp);
+            //this->container->setVisible(false);
             this->manageListeners("on");
         }
         if (!StartMenu::firstMusicPlay)
@@ -122,16 +172,16 @@ namespace screens
         }
         if (this->firstPlay)
         {
-            if (Main::mainClass->bmp.alpha < 1)
+            if (container->getAlpha()< 1)
             {
-                Main::mainClass->bmp.alpha = Main::mainClass->bmp.alpha + 0.2;
+				container->setAlpha(container->getAlpha() + 0.2);
             }
             else
             {
                 this->firstPlay = false;
-                this->container->setVisible(true);
-                this->removeChild(Main::mainClass->bmp);
-                Main::mainClass->bmp = NULL;
+                //this->container->setVisible(true);
+                //this->removeChild(Main::mainClass->bmp);
+                //Main::mainClass->bmp = NULL;
             }
         }
         else
@@ -147,8 +197,8 @@ namespace screens
                     }
                     else if (this->container->currentFrame == 28)
                     {
-                        this->container->start->startCase->setMouseEnabled(true);
-                        this->container->credits->creditsCase->setMouseEnabled(true); 
+                        this->container->startStartCase->setMouseEnabled(true);
+                        this->container->creditsCreditsCase->setMouseEnabled(true); 
                         this->container->setMouseChildren(true);
                         this->container->setMouseEnabled(true);
                         this->container->back->setVisible(false);
@@ -165,8 +215,8 @@ namespace screens
                     }
                     else if (this->container->currentFrame == 28)
                     {
-                        this->container->start->startCase->setMouseEnabled(true);
-                        this->container->credits->creditsCase->setMouseEnabled(true); 
+                        this->container->startStartCase->setMouseEnabled(true);
+                        this->container->creditsCreditsCase->setMouseEnabled(true); 
                         this->container->setMouseChildren(true);
                         this->container->setMouseEnabled(true);
                         this->container->back->setVisible(false);
@@ -182,28 +232,27 @@ namespace screens
                     if (this->container->currentFrame == 35)
                     {
                         this->container->saveType->stop();
-                        this->container->saveType->localSave->stop();
-                        this->container->saveType->onlineSave->stop();
-                        this->container->saveType->localSave->localSaveCase->stop();
-                        this->container->saveType->onlineSave->onlineSaveCase->stop();
-                        if (Main::mainClass->IDIClass.idnet)
+                        this->container->saveTypeLocalSave->stop();
+                        this->container->saveTypeOnlineSave->stop();
+                        this->container->saveTypeLocalSaveLocalSaveCase->stop();
+                        this->container->saveTypeOnlineSaveOnlineSaveCase->stop();
+                        if (this->container->saveTypeOnlineSave->isReady)
                         {
-                            //if (Main::mainClass->IDIClass.idnet.userData)
-                            //{
-                            //    std::setText(this->container->saveType->onlineSave->welcomeTXT,I18N_VALUE(I18N_CODE::U119));
-                            //    std::setText(this->container->saveType->onlineSave->nickTXT,Main::mainClass->IDIClass.currentUser + I18N_VALUE(I18N_CODE::U120));
-                            //}
-                            //else
-                            //{
-                            //    std::setText(this->container->saveType->onlineSave->welcomeTXT,I18N_VALUE(I18N_CODE::U118));
-                            //    std::setText(this->container->saveType->onlineSave->nickTXT,"");
-                            //}
-                            this->welcomeText = this->container->saveType->onlineSave->welcomeTXT.text;
-                            this->nickText = this->container->saveType->onlineSave->nickTXT.text;
-                            this->container->saveType->onlineSave->nickTXT.setTextFormat(Main::mainClass->boldTextFormat);
+                            if (!Main::mainClass->currentUser.empty())
+                            {
+                                std::setText(this->container->saveTypeOnlineSaveWelcomeTXT,I18N_VALUE(I18N_CODE::U119));
+                                std::setText(this->container->saveTypeOnlineSaveNickTXT,Main::mainClass->currentUser + I18N_VALUE(I18N_CODE::U120));
+                            }
+                            else
+                            {
+                                std::setText(this->container->saveTypeOnlineSaveWelcomeTXT,I18N_VALUE(I18N_CODE::U118));
+                                std::setText(this->container->saveTypeOnlineSaveNickTXT,"");
+                            }
+                            this->welcomeText = this->container->saveTypeOnlineSaveWelcomeTXT->getString();
+                            this->nickText = this->container->saveTypeOnlineSaveNickTXT->getString();
                         }
-                        this->container->saveType->localSave->localSaveCase->setMouseEnabled(true);
-                        this->container->saveType->onlineSave->onlineSaveCase->setMouseEnabled(true);
+                        this->container->saveTypeLocalSaveLocalSaveCase->setMouseEnabled(true);
+                        this->container->saveTypeOnlineSaveOnlineSaveCase->setMouseEnabled(true);
                         this->container->back->setVisible(true);
                     }
                     else if (this->container->currentFrame == 44)
@@ -233,227 +282,238 @@ namespace screens
                         {
                             if (this->page == 3)
                             {
-                                if (!Main::mainClass->saveBoxClass->gameSave1.data.haveSave)
+                                if (!Main::mainClass->saveBoxClass->getBoolValue("haveSave", Main::mainClass->saveBoxClass->gameSave1))
                                 {
                                     this->container->game1->gotoAndStop(4);
-                                    this->container->game1->newGame1Case->stop();
-                                    this->container->game1->newGame1Case->setMouseEnabled(true);
+                                    this->container->game1NewGame1Case->stop();
+                                    this->container->game1NewGame1Case->setMouseEnabled(true);
                                 }
                                 else
                                 {
                                     this->container->game1->gotoAndStop(1);
-                                    this->container->game1->game1Case->stop();
-                                    this->container->game1->game1Case->setMouseEnabled(true);
-                                    this->container->game1->syncSlot->stop();
-                                    this->container->game1->syncSlot->syncSlotCase->stop();
-                                    this->container->game1->syncSlot->syncSlotCase->setMouseEnabled(true);
+                                    this->container->game1Game1Case->stop();
+                                    this->container->game1Game1Case->setMouseEnabled(true);
+                                    this->container->game1SyncSlot->stop();
+                                    this->container->game1SyncSlotSyncSlotCase->stop();
+                                    this->container->game1SyncSlotSyncSlotCase->setMouseEnabled(true);
                                     //if (Main::mainClass->IDIClass.idnet)
                                     //{
                                     //    if (!Main::mainClass->IDIClass.idnet.userData)
                                     //    {
-                                    //        this->container->game1->syncSlot->gotoAndStop(1);
+                                    //        this->container->game1SyncSlot->gotoAndStop(1);
                                     //    }
                                     //    else
                                     //    {
-                                    //        this->container->game1->syncSlot->gotoAndStop(4);
+                                    //        this->container->game1SyncSlot->gotoAndStop(4);
                                     //    }
                                     //}
                                     //else
                                     //{
-                                    //    this->container->game1->syncSlot->setVisible(false);
+                                        this->container->game1SyncSlot->setVisible(false);
                                     //}
-                                    this->container->game1->deleteSlot->stop();
-                                    this->container->game1->deleteSlot->deleteSlotCase->stop();
-                                    this->container->game1->deleteSlot->deleteSlotCase->setMouseEnabled(true);
+                                    this->container->game1DeleteSlot->stop();
+                                    this->container->game1DeleteSlotDeleteSlotCase->stop();
+                                    this->container->game1DeleteSlotDeleteSlotCase->setMouseEnabled(true);
                                     int tempObject = 0;
-                                    this->i = 0;
-                                    while (this->i < Main::mainClass->saveBoxClass->gameSave1.data.starsOfLevels.length)
-                                    {
-                                        
-                                        tempObject = tempObject + Main::mainClass->saveBoxClass->gameSave1.data.starsOfLevels[this->i];
-                                        i++;
-                                    }
-                                    std::setText(this->container->game1->numTXT,tempObject + "/" + Main::mainClass->saveBoxClass->maxStars);
-                                    this->container->game1->numTXT.setTextFormat(Main::mainClass->boldTextFormat);
+									rapidjson::Value * a = JsonUtil::getValue(Main::mainClass->saveBoxClass->gameSave1, "starsOfLevels");
+									if (a && a->IsArray()) {
+										JsonUtil::Value::Array arr = a->GetArray();
+										this->i = 0;
+										while (this->i < arr.Size())
+										{
+											tempObject = tempObject + JsonUtil::getInt(&arr[i]);
+											i++;
+										} 
+									}
+                                    std::setText(this->container->game1NumTXT,tempObject + "/" + Main::mainClass->saveBoxClass->maxStars);
+                                    //this->container->game1NumTXT.setTextFormat(Main::mainClass->boldTextFormat);
                                 }
-                                if (!Main::mainClass->saveBoxClass->gameSave2.data.haveSave)
+								if (!Main::mainClass->saveBoxClass->getBoolValue("haveSave", Main::mainClass->saveBoxClass->gameSave2))
+									//if (!Main::mainClass->saveBoxClass->gameSave2.data.haveSave)
                                 {
                                     this->container->game2->gotoAndStop(4);
-                                    this->container->game2->newGame2Case->stop();
-                                    this->container->game2->newGame2Case->setMouseEnabled(true);
+                                    this->container->game2NewGame2Case->stop();
+                                    this->container->game2NewGame2Case->setMouseEnabled(true);
                                 }
                                 else
                                 {
                                     this->container->game2->gotoAndStop(1);
-                                    this->container->game2->game2Case->stop();
-                                    this->container->game2->game2Case->setMouseEnabled(true);
-                                    this->container->game2->syncSlot->stop();
-                                    this->container->game2->syncSlot->syncSlotCase->stop();
-                                    this->container->game2->syncSlot->syncSlotCase->setMouseEnabled(true);
-                                    if (Main::mainClass->IDIClass.idnet)
-                                    {
-                                        if (!Main::mainClass->IDIClass.idnet.userData)
-                                        {
-                                            this->container->game2->syncSlot->gotoAndStop(1);
-                                        }
-                                        else
-                                        {
-                                            this->container->game2->syncSlot->gotoAndStop(4);
-                                        }
-                                    }
-                                    else
-                                    {
-                                        this->container->game2->syncSlot->setVisible(false);
-                                    }
-                                    this->container->game2->deleteSlot->stop();
-                                    this->container->game2->deleteSlot->deleteSlotCase->stop();
-                                    this->container->game2->deleteSlot->deleteSlotCase->setMouseEnabled(true);
+                                    this->container->game2Game2Case->stop();
+                                    this->container->game2Game2Case->setMouseEnabled(true);
+                                    this->container->game2SyncSlot->stop();
+                                    this->container->game2SyncSlotSyncSlotCase->stop();
+                                    this->container->game2SyncSlotSyncSlotCase->setMouseEnabled(true);
+                                    //if (Main::mainClass->IDIClass.idnet)
+                                    //{
+                                    //    if (!Main::mainClass->IDIClass.idnet.userData)
+                                    //    {
+                                    //        this->container->game2SyncSlot->gotoAndStop(1);
+                                    //    }
+                                    //    else
+                                    //    {
+                                    //        this->container->game2SyncSlot->gotoAndStop(4);
+                                    //    }
+                                    //}
+                                    //else
+                                    //{
+                                        this->container->game2SyncSlot->setVisible(false);
+                                    //}
+                                    this->container->game2DeleteSlot->stop();
+                                    this->container->game2DeleteSlotDeleteSlotCase->stop();
+                                    this->container->game2DeleteSlotDeleteSlotCase->setMouseEnabled(true);
                                     int tempObject = 0;
-                                    this->i = 0;
-                                    while (this->i < Main::mainClass->saveBoxClass->gameSave2.data.starsOfLevels.length)
-                                    {
-                                        
-                                        tempObject = tempObject + Main::mainClass->saveBoxClass->gameSave2.data.starsOfLevels[this->i];
-                                        i++;
-                                    }
-                                    std::setText(this->container->game2->numTXT,tempObject + "/" + Main::mainClass->saveBoxClass->maxStars);
-                                    this->container->game2->numTXT.setTextFormat(Main::mainClass->boldTextFormat);
+									rapidjson::Value * a = JsonUtil::getValue(Main::mainClass->saveBoxClass->gameSave2, "starsOfLevels");
+									if (a && a->IsArray()) {
+										JsonUtil::Value::Array arr = a->GetArray();
+										this->i = 0;
+										while (this->i < arr.Size())
+										{
+											tempObject = tempObject + JsonUtil::getInt(&arr[i]);
+											i++;
+										}
+									} 
+                                    std::setText(this->container->game2NumTXT,tempObject + "/" + Main::mainClass->saveBoxClass->maxStars);
+                                    //this->container->game2NumTXT.setTextFormat(Main::mainClass->boldTextFormat);
                                 }
-                                if (!Main::mainClass->saveBoxClass->gameSave3.data.haveSave)
+								if (!Main::mainClass->saveBoxClass->getBoolValue("haveSave", Main::mainClass->saveBoxClass->gameSave3))
+									//if (!Main::mainClass->saveBoxClass->gameSave3.data.haveSave)
                                 {
                                     this->container->game3->gotoAndStop(4);
-                                    this->container->game3->newGame3Case->stop();
-                                    this->container->game3->newGame3Case->setMouseEnabled(true);
+                                    this->container->game3NewGame3Case->stop();
+                                    this->container->game3NewGame3Case->setMouseEnabled(true);
                                 }
                                 else
                                 {
                                     this->container->game3->gotoAndStop(1);
-                                    this->container->game3->game3Case->stop();
-                                    this->container->game3->game3Case->setMouseEnabled(true);
-                                    this->container->game3->syncSlot->stop();
-                                    this->container->game3->syncSlot->syncSlotCase->stop();
-                                    this->container->game3->syncSlot->syncSlotCase->setMouseEnabled(true);
-                                    if (Main::mainClass->IDIClass.idnet)
-                                    {
-                                        if (!Main::mainClass->IDIClass.idnet.userData)
-                                        {
-                                            this->container->game3->syncSlot->gotoAndStop(1);
-                                        }
-                                        else
-                                        {
-                                            this->container->game3->syncSlot->gotoAndStop(4);
-                                        }
-                                    }
-                                    else
-                                    {
-                                        this->container->game3->syncSlot->setVisible(false);
-                                    }
-                                    this->container->game3->deleteSlot->stop();
-                                    this->container->game3->deleteSlot->deleteSlotCase->stop();
-                                    this->container->game3->deleteSlot->deleteSlotCase->setMouseEnabled(true);
-                                    tempObject = 0;
-                                    this->i = 0;
-                                    while (this->i < Main::mainClass->saveBoxClass->gameSave3.data.starsOfLevels.length)
-                                    {
-                                        
-                                        tempObject = tempObject + Main::mainClass->saveBoxClass->gameSave3.data.starsOfLevels[this->i];
-                                        i++;
-                                    }
-                                    std::setText(this->container->game3->numTXT,tempObject + "/" + Main::mainClass->saveBoxClass->maxStars);
-                                    this->container->game3->numTXT.setTextFormat(Main::mainClass->boldTextFormat);
+                                    this->container->game3Game3Case->stop();
+                                    this->container->game3Game3Case->setMouseEnabled(true);
+                                    this->container->game3SyncSlot->stop();
+                                    this->container->game3SyncSlotSyncSlotCase->stop();
+                                    this->container->game3SyncSlotSyncSlotCase->setMouseEnabled(true);
+                                    //if (Main::mainClass->IDIClass.idnet)
+                                    //{
+                                    //    if (!Main::mainClass->IDIClass.idnet.userData)
+                                    //    {
+                                    //        this->container->game3SyncSlot->gotoAndStop(1);
+                                    //    }
+                                    //    else
+                                    //    {
+                                    //        this->container->game3SyncSlot->gotoAndStop(4);
+                                    //    }
+                                    //}
+                                    //else
+                                    //{
+                                        this->container->game3SyncSlot->setVisible(false);
+                                    //}
+                                    this->container->game3DeleteSlot->stop();
+                                    this->container->game3DeleteSlotDeleteSlotCase->stop();
+                                    this->container->game3DeleteSlotDeleteSlotCase->setMouseEnabled(true);
+									int tempObject = 0;
+									rapidjson::Value * a = JsonUtil::getValue(Main::mainClass->saveBoxClass->gameSave3, "starsOfLevels");
+									if (a && a->IsArray()) {
+										JsonUtil::Value::Array arr = a->GetArray();
+										this->i = 0;
+										while (this->i < arr.Size())
+										{
+											tempObject = tempObject + JsonUtil::getInt(&arr[i]);
+											i++;
+										}
+									}
+									std::setText(this->container->game1NumTXT, tempObject + "/" + Main::mainClass->saveBoxClass->maxStars); 
+                                    //this->container->game3->numTXT.setTextFormat(Main::mainClass->boldTextFormat);
                                 }
                             }
                             else if (this->page == 4)
                             {
-                                if (!Main::mainClass->saveBoxClass->gameSave4.data.haveSave)
-                                {
-                                    this->container->game1->gotoAndStop(4);
-                                    this->container->game1->newGame1Case->stop();
-                                    this->container->game1->newGame1Case->setMouseEnabled(true);
-                                }
-                                else
-                                {
-                                    this->container->game1->gotoAndStop(1);
-                                    this->container->game1->game1Case->stop();
-                                    this->container->game1->game1Case->setMouseEnabled(true);
-                                    this->container->game1->syncSlot->stop();
-                                    this->container->game1->syncSlot->syncSlotCase->stop();
-                                    this->container->game1->syncSlot->syncSlotCase->setMouseEnabled(true);
-                                    this->container->game1->syncSlot->setVisible(false);
-                                    this->container->game1->deleteSlot->stop();
-                                    this->container->game1->deleteSlot->deleteSlotCase->stop();
-                                    this->container->game1->deleteSlot->deleteSlotCase->setMouseEnabled(true);
-                                    int tempObject = 0;
-                                    this->i = 0;
-                                    while (this->i < Main::mainClass->saveBoxClass->gameSave4.data.starsOfLevels.length)
-                                    {
-                                        
-                                        tempObject = tempObject + Main::mainClass->saveBoxClass->gameSave4.data.starsOfLevels[this->i];
-                                        i++;
-                                    }
-                                    tempObject =  tempObject + 3;
-                                    std::setText(this->container->game1->numTXT,tempObject + "/" + Main::mainClass->saveBoxClass->maxStars);
-                                    this->container->game1->numTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                                }
-                                if (!Main::mainClass->saveBoxClass->gameSave5.data.haveSave)
-                                {
-                                    this->container->game2->gotoAndStop(4);
-                                    this->container->game2->newGame2Case->stop();
-                                    this->container->game2->newGame2Case->setMouseEnabled(true);
-                                }
-                                else
-                                {
-                                    this->container->game2->gotoAndStop(1);
-                                    this->container->game2->game2Case->stop();
-                                    this->container->game2->game2Case->setMouseEnabled(true);
-                                    this->container->game2->syncSlot->stop();
-                                    this->container->game2->syncSlot->syncSlotCase->stop();
-                                    this->container->game2->syncSlot->syncSlotCase->setMouseEnabled(true);
-                                    this->container->game2->syncSlot->setVisible(false);
-                                    this->container->game2->deleteSlot->stop();
-                                    this->container->game2->deleteSlot->deleteSlotCase->stop();
-                                    this->container->game2->deleteSlot->deleteSlotCase->setMouseEnabled(true);
-                                    tempObject = 0;
-                                    this->i = 0;
-                                    while (this->i < Main::mainClass->saveBoxClass->gameSave5.data.starsOfLevels.length)
-                                    { 
-                                        tempObject = tempObject + Main::mainClass->saveBoxClass->gameSave5.data.starsOfLevels[this->i];
-                                        i++;
-                                    }
-                                    tempObject = tempObject + 3;
-                                    std::setText(this->container->game2->numTXT,tempObject + "/" + Main::mainClass->saveBoxClass->maxStars);
-                                    this->container->game2->numTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                                }
-                                if (!Main::mainClass->saveBoxClass->gameSave6.data.haveSave)
-                                {
-                                    this->container->game3->gotoAndStop(4);
-                                    this->container->game3->newGame3Case->stop();
-                                    this->container->game3->newGame3Case->setMouseEnabled(true);
-                                }
-                                else
-                                {
-                                    this->container->game3->gotoAndStop(1);
-                                    this->container->game3->game3Case->stop();
-                                    this->container->game3->game3Case->setMouseEnabled(true);
-                                    this->container->game3->syncSlot->stop();
-                                    this->container->game3->syncSlot->syncSlotCase->stop();
-                                    this->container->game3->syncSlot->syncSlotCase->setMouseEnabled(true);
-                                    this->container->game3->syncSlot->setVisible(false);
-                                    this->container->game3->deleteSlot->stop();
-                                    this->container->game3->deleteSlot->deleteSlotCase->stop();
-                                    this->container->game3->deleteSlot->deleteSlotCase->setMouseEnabled(true);
-                                    tempObject = 0;
-                                    this->i = 0;
-                                    while (this->i < Main::mainClass->saveBoxClass->gameSave6.data.starsOfLevels.length)
-                                    {
-                                        
-                                        tempObject = tempObject + Main::mainClass->saveBoxClass->gameSave6.data.starsOfLevels[this->i];
-                                        i++;
-                                    }
-                                    tempObject = tempObject + 3;
-                                    std::setText(this->container->game3->numTXT,tempObject + "/" + Main::mainClass->saveBoxClass->maxStars);
-                                    this->container->game3->numTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                                }
+                                //if (!Main::mainClass->saveBoxClass->gameSave4.data.haveSave)
+                                //{
+                                //    this->container->game1->gotoAndStop(4);
+                                //    this->container->game1NewGame1Case->stop();
+                                //    this->container->game1NewGame1Case->setMouseEnabled(true);
+                                //}
+                                //else
+                                //{
+                                //    this->container->game1->gotoAndStop(1);
+                                //    this->container->game1Game1Case->stop();
+                                //    this->container->game1Game1Case->setMouseEnabled(true);
+                                //    this->container->game1SyncSlot->stop();
+                                //    this->container->game1SyncSlotSyncSlotCase->stop();
+                                //    this->container->game1SyncSlotSyncSlotCase->setMouseEnabled(true);
+                                //    this->container->game1SyncSlot->setVisible(false);
+                                //    this->container->game1DeleteSlot->stop();
+                                //    this->container->game1DeleteSlotDeleteSlotCase->stop();
+                                //    this->container->game1DeleteSlotDeleteSlotCase->setMouseEnabled(true);
+                                //    int tempObject = 0;
+                                //    this->i = 0;
+                                //    while (this->i < Main::mainClass->saveBoxClass->gameSave4.data.starsOfLevels.length)
+                                //    {
+                                //        
+                                //        tempObject = tempObject + Main::mainClass->saveBoxClass->gameSave4.data.starsOfLevels[this->i];
+                                //        i++;
+                                //    }
+                                //    tempObject =  tempObject + 3;
+                                //    std::setText(this->container->game1->numTXT,tempObject + "/" + Main::mainClass->saveBoxClass->maxStars);
+                                //    this->container->game1->numTXT.setTextFormat(Main::mainClass->boldTextFormat);
+                                //}
+                                //if (!Main::mainClass->saveBoxClass->gameSave5.data.haveSave)
+                                //{
+                                //    this->container->game2->gotoAndStop(4);
+                                //    this->container->game2NewGame2Case->stop();
+                                //    this->container->game2NewGame2Case->setMouseEnabled(true);
+                                //}
+                                //else
+                                //{
+                                //    this->container->game2->gotoAndStop(1);
+                                //    this->container->game2Game2Case->stop();
+                                //    this->container->game2Game2Case->setMouseEnabled(true);
+                                //    this->container->game2SyncSlot->stop();
+                                //    this->container->game2SyncSlotSyncSlotCase->stop();
+                                //    this->container->game2SyncSlotSyncSlotCase->setMouseEnabled(true);
+                                //    this->container->game2SyncSlot->setVisible(false);
+                                //    this->container->game2DeleteSlot->stop();
+                                //    this->container->game2DeleteSlotDeleteSlotCase->stop();
+                                //    this->container->game2DeleteSlotDeleteSlotCase->setMouseEnabled(true);
+                                //    int tempObject = 0;
+                                //    this->i = 0;
+                                //    while (this->i < Main::mainClass->saveBoxClass->gameSave5.data.starsOfLevels.length)
+                                //    { 
+                                //        tempObject = tempObject + Main::mainClass->saveBoxClass->gameSave5.data.starsOfLevels[this->i];
+                                //        i++;
+                                //    }
+                                //    tempObject = tempObject + 3;
+                                //    std::setText(this->container->game2->numTXT,tempObject + "/" + Main::mainClass->saveBoxClass->maxStars);
+                                //    this->container->game2->numTXT.setTextFormat(Main::mainClass->boldTextFormat);
+                                //}
+                                //if (!Main::mainClass->saveBoxClass->gameSave6.data.haveSave)
+                                //{
+                                //    this->container->game3->gotoAndStop(4);
+                                //    this->container->game3NewGame3Case->stop();
+                                //    this->container->game3NewGame3Case->setMouseEnabled(true);
+                                //}
+                                //else
+                                //{
+                                //    this->container->game3->gotoAndStop(1);
+                                //    this->container->game3Game3Case->stop();
+                                //    this->container->game3Game3Case->setMouseEnabled(true);
+                                //    this->container->game3SyncSlot->stop();
+                                //    this->container->game3SyncSlotSyncSlotCase->stop();
+                                //    this->container->game3SyncSlotSyncSlotCase->setMouseEnabled(true);
+                                //    this->container->game3SyncSlot->setVisible(false);
+                                //    this->container->game3DeleteSlot->stop();
+                                //    this->container->game3DeleteSlotDeleteSlotCase->stop();
+                                //    this->container->game3DeleteSlotDeleteSlotCase->setMouseEnabled(true);
+                                //    tempObject = 0;
+                                //    this->i = 0;
+                                //    while (this->i < Main::mainClass->saveBoxClass->gameSave6.data.starsOfLevels.length)
+                                //    {
+                                //        
+                                //        tempObject = tempObject + Main::mainClass->saveBoxClass->gameSave6.data.starsOfLevels[this->i];
+                                //        i++;
+                                //    }
+                                //    tempObject = tempObject + 3;
+                                //    std::setText(this->container->game3->numTXT,tempObject + "/" + Main::mainClass->saveBoxClass->maxStars);
+                                //    this->container->game3->numTXT.setTextFormat(Main::mainClass->boldTextFormat);
+                                //}
                             }
                             this->container->back->setVisible(true);
                         }
@@ -472,21 +532,21 @@ namespace screens
                             if (this->container->currentFrame == 80)
                             {
                                 this->container->question->stop();
-                                this->container->question->btnYes->stop();
-                                this->container->question->btnYes->yesCase->stop();
-                                this->container->question->btnNo->stop();
-                                this->container->question->btnNo->noCase->stop();
-                                this->container->question->btnYes->yesCase->setMouseEnabled(true);
-                                this->container->question->btnNo->noCase->setMouseEnabled(true); 
+                                this->container->questionBtnYes->stop();
+                                this->container->questionBtnYesYesCase->stop();
+                                this->container->questionBtnNo->stop();
+                                this->container->questionBtnNoNoCase->stop();
+                                this->container->questionBtnYesYesCase->setMouseEnabled(true);
+                                this->container->questionBtnNoNoCase->setMouseEnabled(true); 
                                 this->container->question->setMouseChildren(false);
                                 this->container->question->setMouseEnabled(false);
                                 if (this->question < 11)
                                 {
-                                    std::setText(this->container->question->noteTXT,I18N_VALUE(I18N_CODE::U121));
+                                    std::setText(this->container->questionNoteTXT,I18N_VALUE(I18N_CODE::U121));
                                 }
                                 else
                                 {
-                                    std::setText(this->container->question->noteTXT,I18N_VALUE(I18N_CODE::U122));
+                                    std::setText(this->container->questionNoteTXT,I18N_VALUE(I18N_CODE::U122));
                                 }
                             }
                         }
@@ -502,7 +562,7 @@ namespace screens
                     }
                     else if (this->question == -1)
                     {
-                        tempObject = false;
+                        bool tempObject = false;
                         if (this->container->question)
                         {
                             if (this->container->question->currentFrame > 1)
@@ -526,9 +586,9 @@ namespace screens
                                 this->container->game2->setMouseEnabled(true); 
                                 this->container->game3->setMouseChildren(true);
                                 this->container->game3->setMouseEnabled(true);
-                                this->container->game1->alpha = 1;
-                                this->container->game2->alpha = 1;
-                                this->container->game3->alpha = 1; 
+								this->container->game1->setAlpha(1);
+								this->container->game2->setAlpha(1);
+								this->container->game3->setAlpha(1);
                                 this->container->setMouseChildren(true);
                                 this->container->setMouseEnabled(true);
                                 this->autoguidersButtons();
@@ -539,23 +599,23 @@ namespace screens
             }
             if (this->loginFlag)
             {
-                if (Main::mainClass->IDIClass.idnet)
-                {
-                    if (Main::mainClass->IDIClass.idnet.userData)
-                    {
-                        this->loginFlag = false;
-                        this->page = 4; 
-                        this->container->setMouseChildren(false);
-                        this->container->setMouseEnabled(false);
-                        this->waitCounter = 0;
-                        Main::mainClass->saveBoxClass->gameSave4.data.haveSave = false;
-                        Main::mainClass->saveBoxClass->gameSave5.data.haveSave = false;
-                        Main::mainClass->saveBoxClass->gameSave6.data.haveSave = false;
-                        Main::mainClass->IDIClass.getData(4);
-                        Main::mainClass->IDIClass.getData(5);
-                        Main::mainClass->IDIClass.getData(6);
-                    }
-                }
+                //if (Main::mainClass->IDIClass.idnet)
+                //{
+                //    if (Main::mainClass->IDIClass.idnet.userData)
+                //    {
+                //        this->loginFlag = false;
+                //        this->page = 4; 
+                //        this->container->setMouseChildren(false);
+                //        this->container->setMouseEnabled(false);
+                //        this->waitCounter = 0;
+                //        Main::mainClass->saveBoxClass->gameSave4.data.haveSave = false;
+                //        Main::mainClass->saveBoxClass->gameSave5.data.haveSave = false;
+                //        Main::mainClass->saveBoxClass->gameSave6.data.haveSave = false;
+                //        Main::mainClass->IDIClass.getData(4);
+                //        Main::mainClass->IDIClass.getData(5);
+                //        Main::mainClass->IDIClass.getData(6);
+                //    }
+                //}
             }
             else if (this->loginFlag1 > 0)
             {
@@ -563,22 +623,22 @@ namespace screens
                 {
                     this->loginFlag1 = 0;
                 }
-                else if (Main::mainClass->IDIClass.idnet)
+                else if (!Main::mainClass->currentUser.empty())
                 {
-                    if (Main::mainClass->IDIClass.idnet.userData)
+                    if (!Main::mainClass->currentUser.empty())
                     {
                         this->question = this->loginFlag1;
-                        if (this->container->game1->syncSlot)
+                        if (this->container->game1SyncSlot)
                         {
-                            this->container->game1->syncSlot->gotoAndStop(4);
+                            this->container->game1SyncSlot->gotoAndStop(4);
                         }
-                        if (this->container->game2->syncSlot)
+                        if (this->container->game2SyncSlot->isReady)
                         {
-                            this->container->game2->syncSlot->gotoAndStop(4);
+                            this->container->game2SyncSlot->gotoAndStop(4);
                         }
-                        if (this->container->game3->syncSlot)
+                        if (this->container->game3SyncSlot->isReady)
                         {
-                            this->container->game3->syncSlot->gotoAndStop(4);
+                            this->container->game3SyncSlot->gotoAndStop(4);
                         } 
                         this->container->game1->setMouseChildren(false);
                         this->container->game1->setMouseEnabled(false); 
@@ -586,9 +646,9 @@ namespace screens
                         this->container->game2->setMouseEnabled(false); 
                         this->container->game3->setMouseChildren(false);
                         this->container->game3->setMouseEnabled(false);
-                        this->container->game1->alpha = 0.5;
-                        this->container->game2->alpha = 0.5;
-                        this->container->game3->alpha = 0.5;
+						this->container->game1->setAlpha(0.5);
+						this->container->game2->setAlpha(0.5);
+						this->container->game3->setAlpha(0.5);
                         this->loginFlag1 = 0;
                     }
                 }
@@ -602,8 +662,11 @@ namespace screens
 		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
 		if(!event)
 			return;
+		this->mouseX = event->getCursorX();
+		this->mouseY = event->getCursorY();
+
         string targetName = event->target->getName();
-        if (param1->target->name == "backCase")
+        if (targetName == "backCase")
         {
             if (this->container->back->currentFrame == 1)
             {
@@ -615,7 +678,7 @@ namespace screens
         {
             this->container->back->gotoAndStop(1);
         }
-        if (param1->target->name == "musicCase")
+        if (targetName == "musicCase")
         {
             if (this->container->btnMusic->currentFrame == 1 || this->container->btnMusic->currentFrame == 4)
             {
@@ -627,7 +690,7 @@ namespace screens
         {
             this->container->btnMusic->gotoAndStop((this->container->btnMusic->currentFrame - 1));
         }
-        if (param1->target->name == "soundCase")
+        if (targetName == "soundCase")
         {
             if (this->container->btnSound->currentFrame == 1 || this->container->btnSound->currentFrame == 4)
             {
@@ -639,38 +702,12 @@ namespace screens
         {
             this->container->btnSound->gotoAndStop((this->container->btnSound->currentFrame - 1));
         }
-        if (this->container->btnY8->y8Case->mouseEnabled)
-        {
-            if (param1->target->name == "y8Case")
-            {
-                if (this->container->btnY8->currentFrame == 1)
-                {
-                    this->container->btnY8->gotoAndStop(2);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-                }
-            }
-            else if (this->container->btnY8->currentFrame == 2)
-            {
-                this->container->btnY8->gotoAndStop(1);
-            }
-        }
-        if (param1->target->name == "idnetCase")
-        {
-            if (this->container->btnIdnet->currentFrame == 1)
-            {
-                this->container->btnIdnet->gotoAndStop(2);
-                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-            }
-        }
-        else if (this->container->btnIdnet->currentFrame == 2)
-        {
-            this->container->btnIdnet->gotoAndStop(1);
-        }
+      
         if (this->container->start)
         {
-            if (this->container->start->startCase->mouseEnabled)
+            if (this->container->startStartCase->mouseEnabled)
             {
-                if (param1->target->name == "startCase")
+                if (targetName == "startCase")
                 {
                     if (this->container->start->currentFrame == 1)
                     {
@@ -682,7 +719,7 @@ namespace screens
                 {
                     this->container->start->gotoAndStop(1);
                 }
-                if (param1->target->name == "creditsCase")
+                if (targetName == "creditsCase")
                 {
                     if (this->container->credits->currentFrame == 1)
                     {
@@ -698,48 +735,48 @@ namespace screens
         }
         else if (this->container->saveType)
         {
-            if (param1->target->name == "localSaveCase")
+            if (targetName == "localSaveCase")
             {
-                if (this->container->saveType->localSave->currentFrame == 1)
+                if (this->container->saveTypeLocalSave->currentFrame == 1)
                 {
-                    this->container->saveType->localSave->gotoAndStop(2);
-                    this->container->saveType->setChildIndex(this->container->saveType->localSave, (this->container->saveType->numChildren - 1));
+                    this->container->saveTypeLocalSave->gotoAndStop(2);
+                    //this->container->saveType->setChildIndex(this->container->saveTypeLocalSave, (this->container->saveType->numChildren - 1));
                     AudioUtil::playSound("Snd_menu_stoneMouseMove.mp3");
                 }
             }
-            else if (this->container->saveType->localSave->currentFrame == 2)
+            else if (this->container->saveTypeLocalSave->currentFrame == 2)
             {
-                this->container->saveType->localSave->gotoAndStop(1);
+                this->container->saveTypeLocalSave->gotoAndStop(1);
             }
-            if (param1->target->name == "onlineSaveCase")
+            if (targetName == "onlineSaveCase")
             {
-                if (this->container->saveType->onlineSave->currentFrame == 1)
+                if (this->container->saveTypeOnlineSave->currentFrame == 1)
                 {
-                    this->container->saveType->onlineSave->gotoAndStop(2);
-                    if (this->welcomeText)
+                    this->container->saveTypeOnlineSave->gotoAndStop(2);
+                    if (!this->welcomeText.empty())
                     {
-                        std::setText(this->container->saveType->onlineSave->welcomeTXT,this->welcomeText);
-                        std::setText(this->container->saveType->onlineSave->nickTXT,this->nickText);
-                        this->container->saveType->onlineSave->nickTXT.setTextFormat(Main::mainClass->boldTextFormat);
+                        std::setText(this->container->saveTypeOnlineSaveWelcomeTXT,this->welcomeText);
+                        std::setText(this->container->saveTypeOnlineSaveNickTXT,this->nickText);
+                        //this->container->saveTypeOnlineSave->nickTXT.setTextFormat(Main::mainClass->boldTextFormat);
                     }
-                    this->container->saveType->setChildIndex(this->container->saveType->onlineSave, (this->container->saveType->numChildren - 1));
+                    //this->container->saveType->setChildIndex(this->container->saveTypeOnlineSave, (this->container->saveType->numChildren - 1));
                     AudioUtil::playSound("Snd_menu_stoneMouseMove.mp3");
                 }
             }
-            else if (this->container->saveType->onlineSave->currentFrame == 2)
+            else if (this->container->saveTypeOnlineSave->currentFrame == 2)
             {
-                this->container->saveType->onlineSave->gotoAndStop(1);
-                if (this->welcomeText)
+                this->container->saveTypeOnlineSave->gotoAndStop(1);
+				if (!this->welcomeText.empty())
                 {
-                    std::setText(this->container->saveType->onlineSave->welcomeTXT,this->welcomeText);
-                    std::setText(this->container->saveType->onlineSave->nickTXT,this->nickText);
-                    this->container->saveType->onlineSave->nickTXT.setTextFormat(Main::mainClass->boldTextFormat);
+                    std::setText(this->container->saveTypeOnlineSaveWelcomeTXT,this->welcomeText);
+                    std::setText(this->container->saveTypeOnlineSaveNickTXT,this->nickText);
+                    //this->container->saveTypeOnlineSave->nickTXT.setTextFormat(Main::mainClass->boldTextFormat);
                 }
             }
         }
         else if (this->container->game1)
         {
-            if (param1->target->name == "game1Case")
+            if (targetName == "game1Case")
             {
                 if (this->container->game1->currentFrame == 1)
                 {
@@ -751,7 +788,7 @@ namespace screens
             {
                 this->container->game1->gotoAndStop(1);
             }
-            if (param1->target->name == "game2Case")
+            if (targetName == "game2Case")
             {
                 if (this->container->game2->currentFrame == 1)
                 {
@@ -763,7 +800,7 @@ namespace screens
             {
                 this->container->game2->gotoAndStop(1);
             }
-            if (param1->target->name == "game3Case")
+            if (targetName == "game3Case")
             {
                 if (this->container->game3->currentFrame == 1)
                 {
@@ -775,7 +812,7 @@ namespace screens
             {
                 this->container->game3->gotoAndStop(1);
             }
-            if (param1->target->name == "newGame1Case")
+            if (targetName == "newGame1Case")
             {
                 if (this->container->game1->currentFrame == 4)
                 {
@@ -787,7 +824,7 @@ namespace screens
             {
                 this->container->game1->gotoAndStop(4);
             }
-            if (param1->target->name == "newGame2Case")
+            if (targetName == "newGame2Case")
             {
                 if (this->container->game2->currentFrame == 4)
                 {
@@ -799,7 +836,7 @@ namespace screens
             {
                 this->container->game2->gotoAndStop(4);
             }
-            if (param1->target->name == "newGame3Case")
+            if (targetName == "newGame3Case")
             {
                 if (this->container->game3->currentFrame == 4)
                 {
@@ -811,56 +848,59 @@ namespace screens
             {
                 this->container->game3->gotoAndStop(4);
             }
-            if (param1->target->name == "syncSlotCase")
+            if (targetName == "syncSlotCase")
             {
-                if (param1.target.parent->currentFrame < 4)
+				//displayNode
+				MCCase * scase = ISTYPE(MCCase, event->target);
+				MovieClipSub  * syncSlot = scase->getParentMC<MovieClipSub>();
+				MovieClipSub * game = syncSlot->getParentMC<MovieClipSub>();
+                if (game->currentFrame < 4)
                 {
                     if (!this->syncHint)
                     {
                         this->syncHint = new Hint_mc();
                         this->syncHint->gotoAndStop(16);
-                        if (param1.target.parent.parent.name == "game1")
+                        if (game->getName() == "game1")
                         {
-                            this->syncHint.x = this->container->game1->x + this->container->game1->syncSlot->x + this->container->game1->syncSlot->syncSlotCase.x + 10;
-                            this->syncHint.y = this->container->game1->y + this->container->game1->syncSlot->y + this->container->game1->syncSlot->syncSlotCase.y - 5;
+                            this->syncHint->setPositionX(this->container->game1->getPositionX() + this->container->game1SyncSlot->getPositionX() + this->container->game1SyncSlotSyncSlotCase->getPositionX() + 10);
+                            this->syncHint->setPositionY( this->container->game1->getPositionY() + this->container->game1SyncSlot->getPositionY() + this->container->game1SyncSlotSyncSlotCase->getPositionY() + 5);
                         }
-                        else if (param1.target.parent.parent.name == "game2")
+                        else if (game->getName() == "game2")
                         {
-                            this->syncHint.x = this->container->game2->x + this->container->game2->syncSlot->x + this->container->game2->syncSlot->syncSlotCase.x + 10;
-                            this->syncHint.y = this->container->game2->y + this->container->game2->syncSlot->y + this->container->game2->syncSlot->syncSlotCase.y - 5;
+							this->syncHint->setPositionX(this->container->game2->getPositionX() + this->container->game2SyncSlot->getPositionX() + this->container->game2SyncSlotSyncSlotCase->getPositionX() + 10);
+							this->syncHint->setPositionY(this->container->game2->getPositionY() + this->container->game2SyncSlot->getPositionY() + this->container->game2SyncSlotSyncSlotCase->getPositionY() + 5);
                         }
-                        else if (param1.target.parent.parent.name == "game3")
+                        else if (game->getName() == "game3")
                         {
-                            this->syncHint.x = this->container->game3->x + this->container->game3->syncSlot->x + this->container->game3->syncSlot->syncSlotCase.x + 10;
-                            this->syncHint.y = this->container->game3->y + this->container->game3->syncSlot->y + this->container->game3->syncSlot->syncSlotCase.y - 5;
+							this->syncHint->setPositionX(this->container->game3->getPositionX() + this->container->game3SyncSlot->getPositionX() + this->container->game3SyncSlotSyncSlotCase->getPositionX() + 10);
+							this->syncHint->setPositionY(this->container->game3->getPositionY() + this->container->game3SyncSlot->getPositionY() + this->container->game3SyncSlotSyncSlotCase->getPositionY() + 5);
                         }
-                        var _loc_2:* = false;
-                        this->syncHint.setMouseChildren(false);
-                        this->syncHint.mouseEnabled = _loc_2;
+                        this->syncHint->setMouseChildren(false);
+                        this->syncHint->mouseEnabled = false;
                         this->addChild(this->syncHint);
                     }
                 }
-                if (param1.target.parent.parent.name == "game1")
+                if (game->getName() == "game1")
                 {
-                    if (this->container->game1->syncSlot->currentFrame == 1 || this->container->game1->syncSlot->currentFrame == 4)
+                    if (this->container->game1SyncSlot->currentFrame == 1 || this->container->game1SyncSlot->currentFrame == 4)
                     {
-                        this->container->game1->syncSlot->gotoAndStop((this->container->game1->syncSlot->currentFrame + 1));
+                        this->container->game1SyncSlot->gotoAndStop((this->container->game1SyncSlot->currentFrame + 1));
                         AudioUtil::playSound("Snd_menu_stoneMouseMove.mp3");
                     }
                 }
-                else if (param1.target.parent.parent.name == "game2")
+                else if (game->getName() == "game2")
                 {
-                    if (this->container->game2->syncSlot->currentFrame == 1 || this->container->game2->syncSlot->currentFrame == 4)
+                    if (this->container->game2SyncSlot->currentFrame == 1 || this->container->game2SyncSlot->currentFrame == 4)
                     {
-                        this->container->game2->syncSlot->gotoAndStop((this->container->game2->syncSlot->currentFrame + 1));
+                        this->container->game2SyncSlot->gotoAndStop((this->container->game2SyncSlot->currentFrame + 1));
                         AudioUtil::playSound("Snd_menu_stoneMouseMove.mp3");
                     }
                 }
-                else if (param1.target.parent.parent.name == "game3")
+                else if (game->getName() == "game3")
                 {
-                    if (this->container->game3->syncSlot->currentFrame == 1 || this->container->game3->syncSlot->currentFrame == 4)
+                    if (this->container->game3SyncSlot->currentFrame == 1 || this->container->game3SyncSlot->currentFrame == 4)
                     {
-                        this->container->game3->syncSlot->gotoAndStop((this->container->game3->syncSlot->currentFrame + 1));
+                        this->container->game3SyncSlot->gotoAndStop((this->container->game3SyncSlot->currentFrame + 1));
                         AudioUtil::playSound("Snd_menu_stoneMouseMove.mp3");
                     }
                 }
@@ -874,96 +914,105 @@ namespace screens
                 }
                 if (this->container->game1->currentFrame < 4)
                 {
-                    if (this->container->game1->syncSlot->currentFrame == 2 || this->container->game1->syncSlot->currentFrame == 5)
+                    if (this->container->game1SyncSlot->currentFrame == 2 || this->container->game1SyncSlot->currentFrame == 5)
                     {
-                        this->container->game1->syncSlot->gotoAndStop((this->container->game1->syncSlot->currentFrame - 1));
+                        this->container->game1SyncSlot->gotoAndStop((this->container->game1SyncSlot->currentFrame - 1));
                     }
                 }
                 if (this->container->game2->currentFrame < 4)
                 {
-                    if (this->container->game2->syncSlot->currentFrame == 2 || this->container->game2->syncSlot->currentFrame == 5)
+                    if (this->container->game2SyncSlot->currentFrame == 2 || this->container->game2SyncSlot->currentFrame == 5)
                     {
-                        this->container->game2->syncSlot->gotoAndStop((this->container->game2->syncSlot->currentFrame - 1));
+                        this->container->game2SyncSlot->gotoAndStop((this->container->game2SyncSlot->currentFrame - 1));
                     }
                 }
                 if (this->container->game3->currentFrame < 4)
                 {
-                    if (this->container->game3->syncSlot->currentFrame == 2 || this->container->game3->syncSlot->currentFrame == 5)
+                    if (this->container->game3SyncSlot->currentFrame == 2 || this->container->game3SyncSlot->currentFrame == 5)
                     {
-                        this->container->game3->syncSlot->gotoAndStop((this->container->game3->syncSlot->currentFrame - 1));
+                        this->container->game3SyncSlot->gotoAndStop((this->container->game3SyncSlot->currentFrame - 1));
                     }
                 }
             }
-            if (param1->target->name == "deleteSlotCase" && param1.target.parent.parent.name == "game1")
+            if (targetName == "deleteSlotCase" )
             {
-                if (this->container->game1->deleteSlot->currentFrame == 1)
-                {
-                    this->container->game1->deleteSlot->gotoAndStop(2);
-                    AudioUtil::playSound("Snd_menu_stoneMouseMove.mp3");
-                }
+				MCCase * scase = ISTYPE(MCCase, event->target);
+				MovieClipSub  * syncSlot = scase->getParentMC<MovieClipSub>();
+				MovieClipSub * game = syncSlot->getParentMC<MovieClipSub>();
+				if (game->getName() == "game1") {
+					if (this->container->game1DeleteSlot->currentFrame == 1)
+					{
+						this->container->game1DeleteSlot->gotoAndStop(2);
+						AudioUtil::playSound("Snd_menu_stoneMouseMove.mp3");
+					}
+				}
+				else if (this->container->game1->currentFrame < 4)
+				{
+					if (this->container->game1DeleteSlot->currentFrame == 2)
+					{
+						this->container->game1DeleteSlot->gotoAndStop(1);
+					}
+				}
+				if ( game->getName() == "game2")
+				{
+					if (this->container->game2DeleteSlot->currentFrame == 1)
+					{
+						this->container->game2DeleteSlot->gotoAndStop(2);
+						AudioUtil::playSound("Snd_menu_stoneMouseMove.mp3");
+					}
+				}
+				else if (this->container->game2->currentFrame < 4)
+				{
+					if (this->container->game2DeleteSlot->currentFrame == 2)
+					{
+						this->container->game2DeleteSlot->gotoAndStop(1);
+					}
+				}
+				if (game->getName() == "game3")
+				{
+					if (this->container->game3DeleteSlot->currentFrame == 1)
+					{
+						this->container->game3DeleteSlot->gotoAndStop(2);
+						AudioUtil::playSound("Snd_menu_stoneMouseMove.mp3");
+					}
+				}
+				else if (this->container->game3->currentFrame < 4)
+				{
+					if (this->container->game3DeleteSlot->currentFrame == 2)
+					{
+						this->container->game3DeleteSlot->gotoAndStop(1);
+					}
+				}
             }
-            else if (this->container->game1->currentFrame < 4)
+            if (this->container->question->isReady)
             {
-                if (this->container->game1->deleteSlot->currentFrame == 2)
+                if (targetName == "yesCase")
                 {
-                    this->container->game1->deleteSlot->gotoAndStop(1);
-                }
-            }
-            if (param1->target->name == "deleteSlotCase" && param1.target.parent.parent.name == "game2")
-            {
-                if (this->container->game2->deleteSlot->currentFrame == 1)
-                {
-                    this->container->game2->deleteSlot->gotoAndStop(2);
-                    AudioUtil::playSound("Snd_menu_stoneMouseMove.mp3");
-                }
-            }
-            else if (this->container->game2->currentFrame < 4)
-            {
-                if (this->container->game2->deleteSlot->currentFrame == 2)
-                {
-                    this->container->game2->deleteSlot->gotoAndStop(1);
-                }
-            }
-            if (param1->target->name == "deleteSlotCase" && param1.target.parent.parent.name == "game3")
-            {
-                if (this->container->game3->deleteSlot->currentFrame == 1)
-                {
-                    this->container->game3->deleteSlot->gotoAndStop(2);
-                    AudioUtil::playSound("Snd_menu_stoneMouseMove.mp3");
-                }
-            }
-            else if (this->container->game3->currentFrame < 4)
-            {
-                if (this->container->game3->deleteSlot->currentFrame == 2)
-                {
-                    this->container->game3->deleteSlot->gotoAndStop(1);
-                }
-            }
-            if (this->container->question)
-            {
-                if (param1->target->name == "yesCase")
-                {
-                    if (param1.target.parent->currentFrame == 1)
+					MCCase * scase = ISTYPE(MCCase, event->target);
+					MovieClipSub  * btnYes = scase->getParentMC<MovieClipSub>();
+                     if (btnYes->currentFrame == 1)
                     {
-                        param1.target.parent->gotoAndStop(2);
+						 btnYes->gotoAndStop(2);
                         AudioUtil::playSound("Snd_menu_stoneMouseMove.mp3");
                     }
                 }
-                else if (this->container->question->btnYes->currentFrame == 2)
+                else if (this->container->questionBtnYes->currentFrame == 2)
                 {
-                    this->container->question->btnYes->gotoAndStop(1);
+                    this->container->questionBtnYes->gotoAndStop(1);
                 }
-                if (param1->target->name == "noCase")
+                if (targetName == "noCase")
                 {
-                    if (param1.target.parent->currentFrame == 1)
+					MCCase * scase = ISTYPE(MCCase, event->target);
+					MovieClipSub  * btnNo = scase->getParentMC<MovieClipSub>();
+					if (btnNo->currentFrame == 1)
                     {
-                        param1.target.parent->gotoAndStop(2);
+						btnNo->gotoAndStop(2);
                         AudioUtil::playSound("Snd_menu_stoneMouseMove.mp3");
                     }
                 }
-                else if (this->container->question->btnNo->currentFrame == 2)
+                else if (this->container->questionBtnNo->currentFrame == 2)
                 {
-                    this->container->question->btnNo->gotoAndStop(1);
+                    this->container->questionBtnNo->gotoAndStop(1);
                 }
             }
         }
@@ -1000,28 +1049,10 @@ namespace screens
                 AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
             }
         }
-        else if (targetName == "y8Case")
-        {
-            if (this->container->btnY8->currentFrame == 2)
-            {
-                this->container->btnY8->gotoAndStop(3);
-                AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-            }
-        }
-        else if (targetName == "idnetCase")
-        {
-            if (this->container->btnIdnet->currentFrame == 2)
-            {
-                this->container->btnIdnet->gotoAndStop(3);
-                AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-            }
-        }
+         
         else if (targetName == "logOut")
         {
-            if (Main::mainClass->IDIClass.idnet)
-            {
-                Main::mainClass->IDIClass.idnet.logout();
-            }
+            
         }
         if (this->container->start)
         {
@@ -1046,22 +1077,22 @@ namespace screens
         {
             if (targetName == "localSaveCase")
             {
-                if (this->container->saveType->localSave->currentFrame == 2)
+                if (this->container->saveTypeLocalSave->currentFrame == 2)
                 {
-                    this->container->saveType->localSave->gotoAndStop(3);
+                    this->container->saveTypeLocalSave->gotoAndStop(3);
                     AudioUtil::playSound("Snd_menu_stoneMouseDown.mp3");
                 }
             }
             else if (targetName == "onlineSaveCase")
             {
-                if (this->container->saveType->onlineSave->currentFrame == 2)
+                if (this->container->saveTypeOnlineSave->currentFrame == 2)
                 {
-                    this->container->saveType->onlineSave->gotoAndStop(3);
-                    if (this->welcomeText)
+                    this->container->saveTypeOnlineSave->gotoAndStop(3);
+                    if (!this->welcomeText.empty())
                     {
-                        std::setText(this->container->saveType->onlineSave->welcomeTXT,this->welcomeText);
-                        std::setText(this->container->saveType->onlineSave->nickTXT,this->nickText);
-                        this->container->saveType->onlineSave->nickTXT.setTextFormat(Main::mainClass->boldTextFormat);
+                        std::setText(this->container->saveTypeOnlineSaveWelcomeTXT,this->welcomeText);
+                        std::setText(this->container->saveTypeOnlineSaveNickTXT,this->nickText);
+                        //this->container->saveTypeOnlineSaveNickTXT.setTextFormat(Main::mainClass->boldTextFormat);
                     }
                     AudioUtil::playSound("Snd_menu_stoneMouseDown.mp3");
                 }
@@ -1119,17 +1150,21 @@ namespace screens
             }
             else if (targetName == "syncSlotCase")
             {
-                if (event.target.parent->currentFrame == 2 || event.target.parent->currentFrame == 5)
+				MCCase * scase = ISTYPE(MCCase, event->target);
+				MovieClipSub  * parent = scase->getParentMC<MovieClipSub>();
+				if (parent->currentFrame == 2 || parent->currentFrame == 5)
                 {
-                    event.target.parent->gotoAndStop((event.target.parent->currentFrame + 1));
+                    parent->gotoAndStop((parent->currentFrame + 1));
                     AudioUtil::playSound("Snd_menu_stoneMouseDown.mp3");
                 }
             }
             else if (targetName == "deleteSlotCase")
             {
-                if (event.target.parent->currentFrame == 2)
+				MCCase * scase = ISTYPE(MCCase, event->target);
+				MovieClipSub  * parent = scase->getParentMC<MovieClipSub>();
+                if (parent->currentFrame == 2)
                 {
-                    event.target.parent->gotoAndStop(3);
+                    parent->gotoAndStop(3);
                     AudioUtil::playSound("Snd_menu_stoneMouseDown.mp3");
                 }
             }
@@ -1137,17 +1172,21 @@ namespace screens
             {
                 if (targetName == "yesCase")
                 {
-                    if (event.target.parent->currentFrame == 2)
+					MCCase * scase = ISTYPE(MCCase, event->target);
+					MovieClipSub  * parent = scase->getParentMC<MovieClipSub>();
+                    if (parent->currentFrame == 2)
                     {
-                        event.target.parent->gotoAndStop(3);
+                        parent->gotoAndStop(3);
                         AudioUtil::playSound("Snd_menu_stoneMouseDown.mp3");
                     }
                 }
                 else if (targetName == "noCase")
                 {
-                    if (event.target.parent->currentFrame == 2)
+					MCCase * scase = ISTYPE(MCCase, event->target);
+					MovieClipSub  * parent = scase->getParentMC<MovieClipSub>(); 
+					if (parent->currentFrame == 2)
                     {
-                        event.target.parent->gotoAndStop(3);
+                        parent->gotoAndStop(3);
                         AudioUtil::playSound("Snd_menu_stoneMouseDown.mp3");
                     }
                 }
@@ -1200,7 +1239,8 @@ namespace screens
                 {
                     this->container->btnMusic->gotoAndStop(2);
                     AudioUtil::musicManage("on");
-                    AudioUtil::playMusic(0f);
+					//"music_menu_main", "music_world_beforeBattle", "music_world_battle"
+                    AudioUtil::playMusic("Music_menu_main.mp3");
                 }
             }
         }
@@ -1228,30 +1268,6 @@ namespace screens
         {
             this->container->btnSound->gotoAndStop(this->container->btnSound->currentFrame - 2);
         }
-        if (targetName == "y8Case")
-        {
-            if (this->container->btnY8->currentFrame == 3)
-            {
-                this->container->btnY8->gotoAndStop(2);
-                //navigateToURL(new URLRequest("http://www.y8.com/?utm_source=" + Main::mainClass->domainName + "&utm_medium=g_prelogo&utm_campaign=brave_heads"));
-            }
-        }
-        else if (this->container->btnY8->currentFrame == 3)
-        {
-            this->container->btnY8->gotoAndStop(1);
-        }
-        if (targetName == "idnetCase")
-        {
-            if (this->container->btnIdnet->currentFrame == 3)
-            {
-                this->container->btnIdnet->gotoAndStop(2);
-                navigateToURL(new URLRequest("http://www.id.net"));
-            }
-        }
-        else if (this->container->btnIdnet->currentFrame == 3)
-        {
-            this->container->btnIdnet->gotoAndStop(1);
-        }
         if (this->container->start)
         {
             if (targetName == "startCase")
@@ -1259,9 +1275,8 @@ namespace screens
                 if (this->container->start->currentFrame == 3)
                 {
                     this->page = 2;
-                    var _loc_2:* = false;
                     this->container->setMouseChildren(false);
-                    this->container->mouseEnabled = _loc_2;
+                    this->container->mouseEnabled = false;
                 }
             }
             else if (this->container->start->currentFrame == 3)
@@ -1273,8 +1288,8 @@ namespace screens
                 if (this->container->credits->currentFrame == 3)
                 {
                     this->container->credits->gotoAndStop(2);
-                    this->creditsClass = new Credits();
-                    this->addChild(this->creditsClass);
+                    //this->creditsClass = new Credits();
+                    //this->addChild(this->creditsClass);
                 }
             }
             else if (this->container->credits->currentFrame == 3)
@@ -1286,408 +1301,420 @@ namespace screens
         {
             if (targetName == "localSaveCase")
             {
-                if (this->container->saveType->localSave->currentFrame == 3)
+                if (this->container->saveTypeLocalSave->currentFrame == 3)
                 {
-                    this->container->saveType->localSave->gotoAndStop(2);
-                    this->page = 3;
-                    var _loc_2:* = false;
+                    this->container->saveTypeLocalSave->gotoAndStop(2);
+                    this->page = 3; 
                     this->container->setMouseChildren(false);
-                    this->container->mouseEnabled = _loc_2;
+                    this->container->mouseEnabled = false;
                     AudioUtil::playSound("Snd_menu_stoneMouseMove.mp3");
                 }
             }
-            else if (this->container->saveType->localSave->currentFrame == 3)
+            else if (this->container->saveTypeLocalSave->currentFrame == 3)
             {
-                this->container->saveType->localSave->gotoAndStop(1);
+                this->container->saveTypeLocalSave->gotoAndStop(1);
             }
             if (targetName == "onlineSaveCase")
             {
-                if (this->container->saveType->onlineSave->currentFrame == 3)
+                if (this->container->saveTypeOnlineSave->currentFrame == 3)
                 {
-                    this->container->saveType->onlineSave->gotoAndStop(2);
-                    if (this->welcomeText)
+                    this->container->saveTypeOnlineSave->gotoAndStop(2);
+                    if (!this->welcomeText.empty())
                     {
-                        std::setText(this->container->saveType->onlineSave->welcomeTXT,this->welcomeText);
-                        std::setText(this->container->saveType->onlineSave->nickTXT,this->nickText);
-                        this->container->saveType->onlineSave->nickTXT.setTextFormat(Main::mainClass->boldTextFormat);
+                        std::setText(this->container->saveTypeOnlineSaveWelcomeTXT,this->welcomeText);
+                        std::setText(this->container->saveTypeOnlineSaveNickTXT,this->nickText);
+                        //this->container->saveTypeOnlineSave->nickTXT.setTextFormat(Main::mainClass->boldTextFormat);
                     }
-                    if (Main::mainClass->IDIClass.idnet)
-                    {
-                        if (!Main::mainClass->IDIClass.idnet.userData)
-                        {
-                            this->loginFlag = true;
-                            Main::mainClass->IDIClass.idnet.toggleInterface();
-                        }
-                        else
-                        {
-                            this->page = 4;
-                            var _loc_2:* = false;
-                            this->container->setMouseChildren(false);
-                            this->container->mouseEnabled = _loc_2;
-                            this->waitCounter = 0;
-                            Main::mainClass->saveBoxClass->gameSave4.data.haveSave = false;
-                            Main::mainClass->saveBoxClass->gameSave5.data.haveSave = false;
-                            Main::mainClass->saveBoxClass->gameSave6.data.haveSave = false;
-                            Main::mainClass->IDIClass.getData(4);
-                            Main::mainClass->IDIClass.getData(5);
-                            Main::mainClass->IDIClass.getData(6);
-                        }
-                    }
+                    //if (Main::mainClass->IDIClass.idnet)
+                    //{
+                    //    if (!Main::mainClass->IDIClass.idnet.userData)
+                    //    {
+                    //        this->loginFlag = true;
+                    //        Main::mainClass->IDIClass.idnet.toggleInterface();
+                    //    }
+                    //    else
+                    //    {
+                    //        this->page = 4; 
+                    //        this->container->setMouseChildren(false);
+                    //        this->container->mouseEnabled = false;
+                    //        this->waitCounter = 0;
+                    //        Main::mainClass->saveBoxClass->gameSave4.data.haveSave = false;
+                    //        Main::mainClass->saveBoxClass->gameSave5.data.haveSave = false;
+                    //        Main::mainClass->saveBoxClass->gameSave6.data.haveSave = false;
+                    //        Main::mainClass->IDIClass.getData(4);
+                    //        Main::mainClass->IDIClass.getData(5);
+                    //        Main::mainClass->IDIClass.getData(6);
+                    //    }
+                    //}
                     AudioUtil::playSound("Snd_menu_stoneMouseMove.mp3");
                 }
             }
-            else if (this->container->saveType->onlineSave->currentFrame == 3)
+            else if (this->container->saveTypeOnlineSave->currentFrame == 3)
             {
-                this->container->saveType->onlineSave->gotoAndStop(1);
-                if (this->welcomeText)
+                this->container->saveTypeOnlineSave->gotoAndStop(1);
+                if (!this->welcomeText.empty())
                 {
-                    std::setText(this->container->saveType->onlineSave->welcomeTXT,this->welcomeText);
-                    std::setText(this->container->saveType->onlineSave->nickTXT,this->nickText);
-                    this->container->saveType->onlineSave->nickTXT.setTextFormat(Main::mainClass->boldTextFormat);
+                    std::setText(this->container->saveTypeOnlineSaveWelcomeTXT,this->welcomeText);
+                    std::setText(this->container->saveTypeOnlineSaveNickTXT,this->nickText);
+                    //this->container->saveTypeOnlineSave->nickTXT.setTextFormat(Main::mainClass->boldTextFormat);
                 }
             }
         }
-        else if (this->container->game1)
-        {
-            if (targetName == "game1Case")
-            {
-                if (this->container->game1->currentFrame == 3)
-                {
-                    if (this->page == 3)
-                    {
-                        Main::mainClass->saveBoxClass->checkSaves(1);
-                    }
-                    else if (this->page == 4)
-                    {
-                        Main::mainClass->saveBoxClass->checkSaves(4);
-                    }
-                    Main::mainClass->addNewScreen("LevelsMenu");
-                }
-            }
-            else if (this->container->game1->currentFrame == 3)
-            {
-                this->container->game1->gotoAndStop(1);
-            }
-            if (targetName == "game2Case")
-            {
-                if (this->container->game2->currentFrame == 3)
-                {
-                    if (this->page == 3)
-                    {
-                        Main::mainClass->saveBoxClass->checkSaves(2);
-                    }
-                    else if (this->page == 4)
-                    {
-                        Main::mainClass->saveBoxClass->checkSaves(5);
-                    }
-                    Main::mainClass->addNewScreen("LevelsMenu");
-                }
-            }
-            else if (this->container->game2->currentFrame == 3)
-            {
-                this->container->game2->gotoAndStop(1);
-            }
-            if (targetName == "game3Case")
-            {
-                if (this->container->game3->currentFrame == 3)
-                {
-                    if (this->page == 3)
-                    {
-                        Main::mainClass->saveBoxClass->checkSaves(3);
-                    }
-                    else if (this->page == 4)
-                    {
-                        Main::mainClass->saveBoxClass->checkSaves(6);
-                    }
-                    Main::mainClass->addNewScreen("LevelsMenu");
-                }
-            }
-            else if (this->container->game3->currentFrame == 3)
-            {
-                this->container->game3->gotoAndStop(1);
-            }
-            if (targetName == "newGame1Case")
-            {
-                if (this->container->game1->currentFrame == 6)
-                {
-                    if (this->page == 3)
-                    {
-                        Main::mainClass->saveBoxClass->checkSaves(1);
-                    }
-                    else if (this->page == 4)
-                    {
-                        Main::mainClass->saveBoxClass->checkSaves(4);
-                    }
-                    Main::mainClass->addNewScreen("LevelsMenu");
-                }
-            }
-            else if (this->container->game1->currentFrame == 6)
-            {
-                this->container->game1->gotoAndStop(4);
-            }
-            if (targetName == "newGame2Case")
-            {
-                if (this->container->game2->currentFrame == 6)
-                {
-                    if (this->page == 3)
-                    {
-                        Main::mainClass->saveBoxClass->checkSaves(2);
-                    }
-                    else if (this->page == 4)
-                    {
-                        Main::mainClass->saveBoxClass->checkSaves(5);
-                    }
-                    Main::mainClass->addNewScreen("LevelsMenu");
-                }
-            }
-            else if (this->container->game2->currentFrame == 6)
-            {
-                this->container->game2->gotoAndStop(4);
-            }
-            if (targetName == "newGame3Case")
-            {
-                if (this->container->game3->currentFrame == 6)
-                {
-                    if (this->page == 3)
-                    {
-                        Main::mainClass->saveBoxClass->checkSaves(3);
-                    }
-                    else if (this->page == 4)
-                    {
-                        Main::mainClass->saveBoxClass->checkSaves(6);
-                    }
-                    Main::mainClass->addNewScreen("LevelsMenu");
-                }
-            }
-            else if (this->container->game3->currentFrame == 6)
-            {
-                this->container->game3->gotoAndStop(4);
-            }
-            if (targetName == "syncSlotCase" && event.target.parent.parent.name == "game1")
-            {
-                if (this->container->game1->syncSlot->currentFrame == 3 || this->container->game1->syncSlot->currentFrame == 6)
-                {
-                    this->container->game1->syncSlot->gotoAndStop((this->container->game1->syncSlot->currentFrame - 1));
-                    if (Main::mainClass->IDIClass.idnet)
-                    {
-                        if (Main::mainClass->IDIClass.idnet.userData)
-                        {
-                            this->question = 11; 
-                            this->container->game1->setMouseChildren(false);
-                            this->container->game1->setMouseEnabled(false); 
-                            this->container->game2->setMouseChildren(false);
-                            this->container->game2->setMouseEnabled(false); 
-                            this->container->game3->setMouseChildren(false);
-                            this->container->game3->setMouseEnabled(false);
-                            this->container->game1->alpha = 0.5;
-                            this->container->game2->alpha = 0.5;
-                            this->container->game3->alpha = 0.5;
-                        }
-                        else
-                        {
-                            Main::mainClass->IDIClass.idnet.toggleInterface();
-                            this->loginFlag1 = 11;
-                        }
-                        if (this->syncHint)
-                        {
-                            this->removeChild(this->syncHint);
-                            this->syncHint = NULL;
-                        }
-                    }
-                }
-            }
-            else if (this->container->game1->currentFrame < 4)
-            {
-                if (this->container->game1->syncSlot->currentFrame == 3 || this->container->game1->syncSlot->currentFrame == 6)
-                {
-                    this->container->game1->syncSlot->gotoAndStop(this->container->game1->syncSlot->currentFrame - 2);
-                }
-            }
-            if (targetName == "syncSlotCase" && event.target.parent.parent.name == "game2")
-            {
-                if (this->container->game2->syncSlot->currentFrame == 3 || this->container->game2->syncSlot->currentFrame == 6)
-                {
-                    this->container->game2->syncSlot->gotoAndStop((this->container->game2->syncSlot->currentFrame - 1));
-                    if (Main::mainClass->IDIClass.idnet)
-                    {
-                        if (Main::mainClass->IDIClass.idnet.userData)
-                        {
-                            this->question = 12; 
-                            this->container->game1->setMouseChildren(false);
-                            this->container->game1->setMouseEnabled(false); 
-                            this->container->game2->setMouseChildren(false);
-                            this->container->game2->setMouseEnabled(false); 
-                            this->container->game3->setMouseChildren(false);
-                            this->container->game3->setMouseEnabled(false);
-                            this->container->game1->alpha = 0.5;
-                            this->container->game2->alpha = 0.5;
-                            this->container->game3->alpha = 0.5;
-                        }
-                        else
-                        {
-                            Main::mainClass->IDIClass.idnet.toggleInterface();
-                            this->loginFlag1 = 12;
-                        }
-                        if (this->syncHint)
-                        {
-                            this->removeChild(this->syncHint);
-                            this->syncHint = NULL;
-                        }
-                    }
-                }
-            }
-            else if (this->container->game2->currentFrame < 4)
-            {
-                if (this->container->game2->syncSlot->currentFrame == 3 || this->container->game2->syncSlot->currentFrame == 6)
-                {
-                    this->container->game2->syncSlot->gotoAndStop(this->container->game2->syncSlot->currentFrame - 2);
-                }
-            }
-            if (targetName == "syncSlotCase" && event.target.parent.parent.name == "game3")
-            {
-                if (this->container->game3->syncSlot->currentFrame == 3 || this->container->game3->syncSlot->currentFrame == 6)
-                {
-                    this->container->game3->syncSlot->gotoAndStop((this->container->game3->syncSlot->currentFrame - 1));
-                    if (Main::mainClass->IDIClass.idnet)
-                    {
-                        if (Main::mainClass->IDIClass.idnet.userData)
-                        {
-                            this->question = 13; 
-                            this->container->game1->setMouseChildren(false);
-                            this->container->game1->setMouseEnabled(false); 
-                            this->container->game2->setMouseChildren(false);
-                            this->container->game2->setMouseEnabled(false); 
-                            this->container->game3->setMouseChildren(false);
-                            this->container->game3->setMouseEnabled(false);
-                            this->container->game1->alpha = 0.5;
-                            this->container->game2->alpha = 0.5;
-                            this->container->game3->alpha = 0.5;
-                        }
-                        else
-                        {
-                            Main::mainClass->IDIClass.idnet.toggleInterface();
-                            this->loginFlag1 = 13;
-                        }
-                        if (this->syncHint)
-                        {
-                            this->removeChild(this->syncHint);
-                            this->syncHint = NULL;
-                        }
-                    }
-                }
-            }
-            else if (this->container->game3->currentFrame < 4)
-            {
-                if (this->container->game3->syncSlot->currentFrame == 3 || this->container->game3->syncSlot->currentFrame == 6)
-                {
-                    this->container->game3->syncSlot->gotoAndStop(this->container->game3->syncSlot->currentFrame - 2);
-                }
-            }
-            if (targetName == "deleteSlotCase" && event.target.parent.parent.name == "game1")
-            {
-                if (this->container->game1->deleteSlot->currentFrame == 3)
-                {
-                    this->container->game1->deleteSlot->gotoAndStop(2);
-                    if (this->page == 3)
-                    {
-                        this->question = 1;
-                    }
-                    else if (this->page == 4)
-                    {
-                        this->question = 4;
-                    } 
-                    this->container->game1->setMouseChildren(false);
-                    this->container->game1->setMouseEnabled(false); 
-                    this->container->game2->setMouseChildren(false);
-                    this->container->game2->setMouseEnabled(false); 
-                    this->container->game3->setMouseChildren(false);
-                    this->container->game3->setMouseEnabled(false);
-                    this->container->game1->alpha = 0.5;
-                    this->container->game2->alpha = 0.5;
-                    this->container->game3->alpha = 0.5;
-                }
-            }
-            else if (this->container->game1->currentFrame < 4)
-            {
-                if (this->container->game1->deleteSlot->currentFrame == 3)
-                {
-                    this->container->game1->deleteSlot->gotoAndStop(1);
-                }
-            }
-            if (targetName == "deleteSlotCase" && event.target.parent.parent.name == "game2")
-            {
-                if (this->container->game2->deleteSlot->currentFrame == 3)
-                {
-                    this->container->game2->deleteSlot->gotoAndStop(2);
-                    if (this->page == 3)
-                    {
-                        this->question = 2;
-                    }
-                    else if (this->page == 4)
-                    {
-                        this->question = 5;
-                    } 
-                    this->container->game1->setMouseChildren(false);
-                    this->container->game1->setMouseEnabled(false); 
-                    this->container->game2->setMouseChildren(false);
-                    this->container->game2->setMouseEnabled(false); 
-                    this->container->game3->setMouseChildren(false);
-                    this->container->game3->setMouseEnabled(false);
-                    this->container->game1->alpha = 0.5;
-                    this->container->game2->alpha = 0.5;
-                    this->container->game3->alpha = 0.5;
-                }
-            }
-            else if (this->container->game2->currentFrame < 4)
-            {
-                if (this->container->game2->deleteSlot->currentFrame == 3)
-                {
-                    this->container->game2->deleteSlot->gotoAndStop(1);
-                }
-            }
-            if (targetName == "deleteSlotCase" && event.target.parent.parent.name == "game3")
-            {
-                if (this->container->game3->deleteSlot->currentFrame == 3)
-                {
-                    this->container->game3->deleteSlot->gotoAndStop(2);
-                    if (this->page == 3)
-                    {
-                        this->question = 3;
-                    }
-                    else if (this->page == 4)
-                    {
-                        this->question = 6;
-                    } 
-                    this->container->game1->setMouseChildren(false);
-                    this->container->game1->setMouseEnabled(false); 
-                    this->container->game2->setMouseChildren(false);
-                    this->container->game2->setMouseEnabled(false); 
-                    this->container->game3->setMouseChildren(false);
-                    this->container->game3->setMouseEnabled(false);
-                    this->container->game1->alpha = 0.5;
-                    this->container->game2->alpha = 0.5;
-                    this->container->game3->alpha = 0.5;
-                }
-            }
-            else if (this->container->game3->currentFrame < 4)
-            {
-                if (this->container->game3->deleteSlot->currentFrame == 3)
-                {
-                    this->container->game3->deleteSlot->gotoAndStop(1);
-                }
-            }
+		else if (this->container->game1)
+		{
+			if (targetName == "game1Case")
+			{
+				if (this->container->game1->currentFrame == 3)
+				{
+					if (this->page == 3)
+					{
+						Main::mainClass->saveBoxClass->checkSaves(1);
+					}
+					else if (this->page == 4)
+					{
+						Main::mainClass->saveBoxClass->checkSaves(4);
+					}
+					Main::mainClass->addNewScreen("LevelsMenu");
+				}
+			}
+			else if (this->container->game1->currentFrame == 3)
+			{
+				this->container->game1->gotoAndStop(1);
+			}
+			if (targetName == "game2Case")
+			{
+				if (this->container->game2->currentFrame == 3)
+				{
+					if (this->page == 3)
+					{
+						Main::mainClass->saveBoxClass->checkSaves(2);
+					}
+					else if (this->page == 4)
+					{
+						Main::mainClass->saveBoxClass->checkSaves(5);
+					}
+					Main::mainClass->addNewScreen("LevelsMenu");
+				}
+			}
+			else if (this->container->game2->currentFrame == 3)
+			{
+				this->container->game2->gotoAndStop(1);
+			}
+			if (targetName == "game3Case")
+			{
+				if (this->container->game3->currentFrame == 3)
+				{
+					if (this->page == 3)
+					{
+						Main::mainClass->saveBoxClass->checkSaves(3);
+					}
+					else if (this->page == 4)
+					{
+						Main::mainClass->saveBoxClass->checkSaves(6);
+					}
+					Main::mainClass->addNewScreen("LevelsMenu");
+				}
+			}
+			else if (this->container->game3->currentFrame == 3)
+			{
+				this->container->game3->gotoAndStop(1);
+			}
+			if (targetName == "newGame1Case")
+			{
+				if (this->container->game1->currentFrame == 6)
+				{
+					if (this->page == 3)
+					{
+						Main::mainClass->saveBoxClass->checkSaves(1);
+					}
+					else if (this->page == 4)
+					{
+						Main::mainClass->saveBoxClass->checkSaves(4);
+					}
+					Main::mainClass->addNewScreen("LevelsMenu");
+				}
+			}
+			else if (this->container->game1->currentFrame == 6)
+			{
+				this->container->game1->gotoAndStop(4);
+			}
+			if (targetName == "newGame2Case")
+			{
+				if (this->container->game2->currentFrame == 6)
+				{
+					if (this->page == 3)
+					{
+						Main::mainClass->saveBoxClass->checkSaves(2);
+					}
+					else if (this->page == 4)
+					{
+						Main::mainClass->saveBoxClass->checkSaves(5);
+					}
+					Main::mainClass->addNewScreen("LevelsMenu");
+				}
+			}
+			else if (this->container->game2->currentFrame == 6)
+			{
+				this->container->game2->gotoAndStop(4);
+			}
+			if (targetName == "newGame3Case")
+			{
+				if (this->container->game3->currentFrame == 6)
+				{
+					if (this->page == 3)
+					{
+						Main::mainClass->saveBoxClass->checkSaves(3);
+					}
+					else if (this->page == 4)
+					{
+						Main::mainClass->saveBoxClass->checkSaves(6);
+					}
+					Main::mainClass->addNewScreen("LevelsMenu");
+				}
+			}
+			else if (this->container->game3->currentFrame == 6)
+			{
+				this->container->game3->gotoAndStop(4);
+			}
+			if (targetName == "syncSlotCase")
+			{
+				MCCase * scase = ISTYPE(MCCase, event->target);
+				MovieClipSub  * parent = scase->getParentMC<MovieClipSub>();
+				parent = parent->getParentMC<MovieClipSub>();
+				if (parent->getName() == "game1") {
+					if (this->container->game1SyncSlot->currentFrame == 3 || this->container->game1SyncSlot->currentFrame == 6)
+					{
+						this->container->game1SyncSlot->gotoAndStop((this->container->game1SyncSlot->currentFrame - 1));
+						//if (Main::mainClass->IDIClass.idnet)
+						//{
+						//    if (Main::mainClass->IDIClass.idnet.userData)
+						//    {
+						//        this->question = 11; 
+						//        this->container->game1->setMouseChildren(false);
+						//        this->container->game1->setMouseEnabled(false); 
+						//        this->container->game2->setMouseChildren(false);
+						//        this->container->game2->setMouseEnabled(false); 
+						//        this->container->game3->setMouseChildren(false);
+						//        this->container->game3->setMouseEnabled(false);
+						//        this->container->game1->alpha = 0.5;
+						//        this->container->game2->alpha = 0.5;
+						//        this->container->game3->alpha = 0.5;
+						//    }
+						//    else
+						//    {
+						//        Main::mainClass->IDIClass.idnet.toggleInterface();
+						//        this->loginFlag1 = 11;
+						//    }
+						//    if (this->syncHint)
+						//    {
+						//        this->removeChild(this->syncHint);
+						//        this->syncHint = NULL;
+						//    }
+						//}
+					}
+				}
+				else if (this->container->game1->currentFrame < 4)
+				{
+					if (this->container->game1SyncSlot->currentFrame == 3 || this->container->game1SyncSlot->currentFrame == 6)
+					{
+						this->container->game1SyncSlot->gotoAndStop(this->container->game1SyncSlot->currentFrame - 2);
+					}
+				}
+				if (parent->getName() == "game2")
+				{
+					if (this->container->game2SyncSlot->currentFrame == 3 || this->container->game2SyncSlot->currentFrame == 6)
+					{
+						this->container->game2SyncSlot->gotoAndStop((this->container->game2SyncSlot->currentFrame - 1));
+						//if (Main::mainClass->IDIClass.idnet)
+						//{
+						//    if (Main::mainClass->IDIClass.idnet.userData)
+						//    {
+						//        this->question = 12; 
+						//        this->container->game1->setMouseChildren(false);
+						//        this->container->game1->setMouseEnabled(false); 
+						//        this->container->game2->setMouseChildren(false);
+						//        this->container->game2->setMouseEnabled(false); 
+						//        this->container->game3->setMouseChildren(false);
+						//        this->container->game3->setMouseEnabled(false);
+						//        this->container->game1->alpha = 0.5;
+						//        this->container->game2->alpha = 0.5;
+						//        this->container->game3->alpha = 0.5;
+						//    }
+						//    else
+						//    {
+						//        Main::mainClass->IDIClass.idnet.toggleInterface();
+						//        this->loginFlag1 = 12;
+						//    }
+						//    if (this->syncHint)
+						//    {
+						//        this->removeChild(this->syncHint);
+						//        this->syncHint = NULL;
+						//    }
+						//}
+					}
+				}
+				else if (this->container->game2->currentFrame < 4)
+				{
+					if (this->container->game2SyncSlot->currentFrame == 3 || this->container->game2SyncSlot->currentFrame == 6)
+					{
+						this->container->game2SyncSlot->gotoAndStop(this->container->game2SyncSlot->currentFrame - 2);
+					}
+				}
+				if (parent->getName() == "game3")
+				{
+					if (this->container->game3SyncSlot->currentFrame == 3 || this->container->game3SyncSlot->currentFrame == 6)
+					{
+						this->container->game3SyncSlot->gotoAndStop((this->container->game3SyncSlot->currentFrame - 1));
+						//if (Main::mainClass->IDIClass.idnet)
+						//{
+						//    if (Main::mainClass->IDIClass.idnet.userData)
+						//    {
+						//        this->question = 13; 
+						//        this->container->game1->setMouseChildren(false);
+						//        this->container->game1->setMouseEnabled(false); 
+						//        this->container->game2->setMouseChildren(false);
+						//        this->container->game2->setMouseEnabled(false); 
+						//        this->container->game3->setMouseChildren(false);
+						//        this->container->game3->setMouseEnabled(false);
+						//        this->container->game1->alpha = 0.5;
+						//        this->container->game2->alpha = 0.5;
+						//        this->container->game3->alpha = 0.5;
+						//    }
+						//    else
+						//    {
+						//        Main::mainClass->IDIClass.idnet.toggleInterface();
+						//        this->loginFlag1 = 13;
+						//    }
+						//    if (this->syncHint)
+						//    {
+						//        this->removeChild(this->syncHint);
+						//        this->syncHint = NULL;
+						//    }
+						//}
+					}
+				}
+				else if (this->container->game3->currentFrame < 4)
+				{
+					if (this->container->game3SyncSlot->currentFrame == 3 || this->container->game3SyncSlot->currentFrame == 6)
+					{
+						this->container->game3SyncSlot->gotoAndStop(this->container->game3SyncSlot->currentFrame - 2);
+					}
+				}
+
+			}
+
+			if (targetName == "deleteSlotCase") {
+				MCCase * scase = ISTYPE(MCCase, event->target);
+				MovieClipSub  * parent = scase->getParentMC<MovieClipSub>();
+				parent = parent->getParentMC<MovieClipSub>();
+				if (  parent->getName() == "game1")
+				{
+					if (this->container->game1DeleteSlot->currentFrame == 3)
+					{
+						this->container->game1DeleteSlot->gotoAndStop(2);
+						if (this->page == 3)
+						{
+							this->question = 1;
+						}
+						else if (this->page == 4)
+						{
+							this->question = 4;
+						}
+						this->container->game1->setMouseChildren(false);
+						this->container->game1->setMouseEnabled(false);
+						this->container->game2->setMouseChildren(false);
+						this->container->game2->setMouseEnabled(false);
+						this->container->game3->setMouseChildren(false);
+						this->container->game3->setMouseEnabled(false);
+						this->container->game1->setAlpha(0.5);
+						this->container->game2->setAlpha(0.5);
+						this->container->game3->setAlpha(0.5);
+					}
+				}
+				else if (this->container->game1->currentFrame < 4)
+				{
+					if (this->container->game1DeleteSlot->currentFrame == 3)
+					{
+						this->container->game1DeleteSlot->gotoAndStop(1);
+					}
+				}
+				if (parent->getName() == "game2")
+				{
+					if (this->container->game2DeleteSlot->currentFrame == 3)
+					{
+						this->container->game2DeleteSlot->gotoAndStop(2);
+						if (this->page == 3)
+						{
+							this->question = 2;
+						}
+						else if (this->page == 4)
+						{
+							this->question = 5;
+						}
+						this->container->game1->setMouseChildren(false);
+						this->container->game1->setMouseEnabled(false);
+						this->container->game2->setMouseChildren(false);
+						this->container->game2->setMouseEnabled(false);
+						this->container->game3->setMouseChildren(false);
+						this->container->game3->setMouseEnabled(false);
+						this->container->game1->setAlpha(0.5);
+						this->container->game2->setAlpha(0.5);
+						this->container->game3->setAlpha(0.5);
+					}
+				}
+				else if (this->container->game2->currentFrame < 4)
+				{
+					if (this->container->game2DeleteSlot->currentFrame == 3)
+					{
+						this->container->game2DeleteSlot->gotoAndStop(1);
+					}
+				}
+				if (parent->getName() == "game3")
+				{
+					if (this->container->game3DeleteSlot->currentFrame == 3)
+					{
+						this->container->game3DeleteSlot->gotoAndStop(2);
+						if (this->page == 3)
+						{
+							this->question = 3;
+						}
+						else if (this->page == 4)
+						{
+							this->question = 6;
+						}
+						this->container->game1->setMouseChildren(false);
+						this->container->game1->setMouseEnabled(false);
+						this->container->game2->setMouseChildren(false);
+						this->container->game2->setMouseEnabled(false);
+						this->container->game3->setMouseChildren(false);
+						this->container->game3->setMouseEnabled(false);
+						this->container->game1->setAlpha(0.5);
+						this->container->game2->setAlpha(0.5);
+						this->container->game3->setAlpha(0.5);
+					}
+				}
+				else if (this->container->game3->currentFrame < 4)
+				{
+					if (this->container->game3DeleteSlot->currentFrame == 3)
+					{
+						this->container->game3DeleteSlot->gotoAndStop(1);
+					}
+				}
+			}
             if (this->container->question)
             {
                 if (targetName == "yesCase")
                 {
-                    if (event.target.parent->currentFrame == 3)
+					MCCase * scase = ISTYPE(MCCase, event->target);
+					MovieClipSub  * parent = scase->getParentMC<MovieClipSub>();
+                    if (parent->currentFrame == 3)
                     {
-                        event.target.parent->gotoAndStop(2);
+                        parent->gotoAndStop(2);
                         if (this->question == 1 || this->question == 4)
                         {
                             this->container->game1->gotoAndStop(4);
-                            this->container->game1->newGame1Case->stop();
-                            this->container->game1->newGame1Case->setMouseEnabled(true);
+                            this->container->game1NewGame1Case->stop();
+                            this->container->game1NewGame1Case->setMouseEnabled(true);
                             if (this->question == 1)
                             {
                                 Main::mainClass->saveBoxClass->gameSave1.data.haveSave = false;
@@ -1701,8 +1728,8 @@ namespace screens
                         else if (this->question == 2 || this->question == 5)
                         {
                             this->container->game2->gotoAndStop(4);
-                            this->container->game2->newGame2Case->stop();
-                            this->container->game2->newGame2Case->setMouseEnabled(true);
+                            this->container->game2NewGame2Case->stop();
+                            this->container->game2NewGame2Case->setMouseEnabled(true);
                             if (this->question == 2)
                             {
                                 Main::mainClass->saveBoxClass->gameSave2.data.haveSave = false;
@@ -1716,8 +1743,8 @@ namespace screens
                         else if (this->question == 3 || this->question == 6)
                         {
                             this->container->game3->gotoAndStop(4);
-                            this->container->game3->newGame3Case->stop();
-                            this->container->game3->newGame3Case->setMouseEnabled(true);
+                            this->container->game3NewGame3Case->stop();
+                            this->container->game3NewGame3Case->setMouseEnabled(true);
                             if (this->question == 3)
                             {
                                 Main::mainClass->saveBoxClass->gameSave3.data.haveSave = false;
@@ -1733,37 +1760,39 @@ namespace screens
                             if (this->question == 11)
                             {
                                 Main::mainClass->saveBoxClass->synchronizationLocalToSite(1);
-                                this->container->game1->syncSlot->gotoAndStop(7);
+                                this->container->game1SyncSlot->gotoAndStop(7);
                             }
                             else if (this->question == 12)
                             {
                                 Main::mainClass->saveBoxClass->synchronizationLocalToSite(2);
-                                this->container->game2->syncSlot->gotoAndStop(7);
+                                this->container->game2SyncSlot->gotoAndStop(7);
                             }
                             else if (this->question == 13)
                             {
                                 Main::mainClass->saveBoxClass->synchronizationLocalToSite(3);
-                                this->container->game3->syncSlot->gotoAndStop(7);
+                                this->container->game3SyncSlot->gotoAndStop(7);
                             }
                         }
                         this->question = -1;
                     }
                 }
-                else if (this->container->question->btnYes->currentFrame == 3)
+                else if (this->container->questionBtnYes->currentFrame == 3)
                 {
-                    this->container->question->btnYes->gotoAndStop(2);
+                    this->container->questionBtnYes->gotoAndStop(2);
                 }
                 if (targetName == "noCase")
                 {
-                    if (event.target.parent->currentFrame == 3)
+					MCCase * scase = ISTYPE(MCCase, event->target);
+					MovieClipSub  * parent = scase->getParentMC<MovieClipSub>();
+                    if (parent->currentFrame == 3)
                     {
-                        event.target.parent->gotoAndStop(2);
+                        parent->gotoAndStop(2);
                         this->question = -1;
                     }
                 }
-                else if (this->container->question->btnNo->currentFrame == 3)
+                else if (this->container->questionBtnNo->currentFrame == 3)
                 {
-                    this->container->question->btnNo->gotoAndStop(2);
+                    this->container->questionBtnNo->gotoAndStop(2);
                 }
             }
         }
@@ -1776,53 +1805,53 @@ namespace screens
         this->autoguidesObject = NULL;
         if (this->page == 1)
         {
-            this->autoguidesObject_pt = this->container->start->localToGlobal(this->container->start->startCase->getPosition());
-            this->autoguidesObjectWidth = this->container->start->startCase.width / 2;
-            this->autoguidesObjectHeight = this->container->start->startCase.height / 2;
+            this->autoguidesObject_pt = this->container->start->localToGlobal(this->container->startStartCase->getPosition());
+            this->autoguidesObjectWidth = this->container->startStartCase->getWidth() / 2;
+            this->autoguidesObjectHeight = this->container->startStartCase->getHeight() / 2;
             if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
                 && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
                 && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
                 && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
             {
-                this->autoguidesObject = this->container->start->startCase;
+                this->autoguidesObject = this->container->startStartCase;
             }
             if (!this->autoguidesObject)
             {
-                this->autoguidesObject_pt = this->container->credits->localToGlobal( this->container->credits->creditsCase->getPosition());
-                this->autoguidesObjectWidth = this->container->credits->creditsCase.width / 2;
-                this->autoguidesObjectHeight = this->container->credits->creditsCase.height / 2;
+                this->autoguidesObject_pt = this->container->credits->localToGlobal( this->container->creditsCreditsCase->getPosition());
+                this->autoguidesObjectWidth = this->container->creditsCreditsCase->getWidth() / 2;
+                this->autoguidesObjectHeight = this->container->creditsCreditsCase.height / 2;
                 if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
                     && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
                     && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
                     && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
                 {
-                    this->autoguidesObject = this->container->credits->creditsCase;
+                    this->autoguidesObject = this->container->creditsCreditsCase;
                 }
             }
         }
         else if (this->page == 2)
         {
-            this->autoguidesObject_pt = this->container->saveType->localSave->localToGlobal( this->container->saveType->localSave->localSaveCase->getPosition());
-            this->autoguidesObjectWidth = this->container->saveType->localSave->localSaveCase.width / 2;
-            this->autoguidesObjectHeight = this->container->saveType->localSave->localSaveCase.height / 2;
+            this->autoguidesObject_pt = this->container->saveTypeLocalSave->localToGlobal( this->container->saveTypeLocalSaveLocalSaveCase->getPosition());
+            this->autoguidesObjectWidth = this->container->saveTypeLocalSaveLocalSaveCase->getWidth() / 2;
+            this->autoguidesObjectHeight = this->container->saveTypeLocalSaveLocalSaveCase.height / 2;
             if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
                 && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
                 && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
                 && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
             {
-                this->autoguidesObject = this->container->saveType->localSave->localSaveCase;
+                this->autoguidesObject = this->container->saveTypeLocalSaveLocalSaveCase;
             }
             if (!this->autoguidesObject)
             {
-                this->autoguidesObject_pt = this->container->saveType->onlineSave->localToGlobal( this->container->saveType->onlineSave->onlineSaveCase->getPosition());
-                this->autoguidesObjectWidth = this->container->saveType->onlineSave->onlineSaveCase.width / 2;
-                this->autoguidesObjectHeight = this->container->saveType->onlineSave->onlineSaveCase.height / 2;
+                this->autoguidesObject_pt = this->container->saveTypeOnlineSave->localToGlobal( this->container->saveTypeOnlineSaveOnlineSaveCase->getPosition());
+                this->autoguidesObjectWidth = this->container->saveTypeOnlineSaveOnlineSaveCase->getWidth() / 2;
+                this->autoguidesObjectHeight = this->container->saveTypeOnlineSaveOnlineSaveCase.height / 2;
                 if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
                     && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
                     && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
                     && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
                 {
-                    this->autoguidesObject = this->container->saveType->onlineSave->onlineSaveCase;
+                    this->autoguidesObject = this->container->saveTypeOnlineSaveOnlineSaveCase;
                 }
             }
         }
@@ -1830,8 +1859,8 @@ namespace screens
         {
             if (this->container->game1->currentFrame < 4)
             {
-                this->autoguidesObject_pt = this->container->game1->localToGlobal( this->container->game1->game1Case->getPosition());
-                this->autoguidesObjectWidth = this->container->game1->game1Case.width / 2;
+                this->autoguidesObject_pt = this->container->game1->localToGlobal( this->container->game1Game1Case->getPosition());
+                this->autoguidesObjectWidth = this->container->game1->game1Case->getWidth() / 2;
                 this->autoguidesObjectHeight = this->container->game1->game1Case.height / 2;
                 if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
                     && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
@@ -1842,22 +1871,22 @@ namespace screens
                 }
                 if (!this->autoguidesObject)
                 {
-                    this->autoguidesObject_pt = this->container->game1->deleteSlot->localToGlobal( this->container->game1->deleteSlot->deleteSlotCase->getPosition());
-                    this->autoguidesObjectWidth = this->container->game1->deleteSlot->deleteSlotCase.width / 2;
-                    this->autoguidesObjectHeight = this->container->game1->deleteSlot->deleteSlotCase.height / 2;
+                    this->autoguidesObject_pt = this->container->game1DeleteSlot->localToGlobal( this->container->game1DeleteSlotDeleteSlotCase->getPosition());
+                    this->autoguidesObjectWidth = this->container->game1DeleteSlotDeleteSlotCase->getWidth() / 2;
+                    this->autoguidesObjectHeight = this->container->game1DeleteSlotDeleteSlotCase.height / 2;
                     if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
                         && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
                         && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
                         && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
                     {
-                        this->autoguidesObject = this->container->game1->deleteSlot->deleteSlotCase;
+                        this->autoguidesObject = this->container->game1DeleteSlotDeleteSlotCase;
                     }
                 }
             }
             else
             {
-                this->autoguidesObject_pt = this->container->game1->localToGlobal(this->container->game1->newGame1Case->getPosition());
-                this->autoguidesObjectWidth = this->container->game1->newGame1Case.width / 2;
+                this->autoguidesObject_pt = this->container->game1->localToGlobal(this->container->game1NewGame1Case->getPosition());
+                this->autoguidesObjectWidth = this->container->game1->newGame1Case->getWidth() / 2;
                 this->autoguidesObjectHeight = this->container->game1->newGame1Case.height / 2;
                 if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
                     && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
@@ -1871,8 +1900,8 @@ namespace screens
             {
                 if (!this->autoguidesObject)
                 {
-                    this->autoguidesObject_pt = this->container->game2->localToGlobal(this->container->game2->game2Case->getPosition());
-                    this->autoguidesObjectWidth = this->container->game2->game2Case.width / 2;
+                    this->autoguidesObject_pt = this->container->game2->localToGlobal(this->container->game2Game2Case->getPosition());
+                    this->autoguidesObjectWidth = this->container->game2->game2Case->getWidth() / 2;
                     this->autoguidesObjectHeight = this->container->game2->game2Case.height / 2;
                     if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
                         && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
@@ -1884,37 +1913,37 @@ namespace screens
                 }
                 if (!this->autoguidesObject)
                 {
-                    this->autoguidesObject_pt = this->container->game2->deleteSlot->localToGlobal(this->container->game2->deleteSlot->deleteSlotCase->getPosition());
-                    this->autoguidesObjectWidth = this->container->game2->deleteSlot->deleteSlotCase.width / 2;
-                    this->autoguidesObjectHeight = this->container->game2->deleteSlot->deleteSlotCase.height / 2;
+                    this->autoguidesObject_pt = this->container->game2DeleteSlot->localToGlobal(this->container->game2DeleteSlotDeleteSlotCase->getPosition());
+                    this->autoguidesObjectWidth = this->container->game2DeleteSlot->deleteSlotCase->getWidth() / 2;
+                    this->autoguidesObjectHeight = this->container->game2DeleteSlot->deleteSlotCase.height / 2;
                     if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
                         && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
                         && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
                         && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
                     {
-                        this->autoguidesObject = this->container->game2->deleteSlot->deleteSlotCase;
+                        this->autoguidesObject = this->container->game2DeleteSlot->deleteSlotCase;
                     }
                 }
             }
             else if (!this->autoguidesObject)
             {
-                this->autoguidesObject_pt = this->container->game2->localToGlobal(this->container->game2->newGame2Case->getPosition());
-                this->autoguidesObjectWidth = this->container->game2->newGame2Case.width / 2;
-                this->autoguidesObjectHeight = this->container->game2->newGame2Case.height / 2;
+                this->autoguidesObject_pt = this->container->game2->localToGlobal(this->container->game2NewGame2Case->getPosition());
+                this->autoguidesObjectWidth = this->container->game2NewGame2Case->getWidth() / 2;
+                this->autoguidesObjectHeight = this->container->game2NewGame2Case.height / 2;
                 if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
                     && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
                     && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
                     && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
                 {
-                    this->autoguidesObject = this->container->game2->newGame2Case;
+                    this->autoguidesObject = this->container->game2NewGame2Case;
                 }
             }
             if (this->container->game3->currentFrame < 4)
             {
                 if (!this->autoguidesObject)
                 {
-                    this->autoguidesObject_pt = this->container->game3->localToGlobal(this->container->game3->game3Case->getPosition());
-                    this->autoguidesObjectWidth = this->container->game3->game3Case.width / 2;
+                    this->autoguidesObject_pt = this->container->game3->localToGlobal(this->container->game3Game3Case->getPosition());
+                    this->autoguidesObjectWidth = this->container->game3->game3Case->getWidth() / 2;
                     this->autoguidesObjectHeight = this->container->game3->game3Case.height / 2;
                     if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
                         && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
@@ -1926,22 +1955,22 @@ namespace screens
                 }
                 if (!this->autoguidesObject)
                 {
-                    this->autoguidesObject_pt = this->container->game3->deleteSlot->localToGlobal(this->container->game3->deleteSlot->deleteSlotCase->getPosition());
-                    this->autoguidesObjectWidth = this->container->game3->deleteSlot->deleteSlotCase.width / 2;
-                    this->autoguidesObjectHeight = this->container->game3->deleteSlot->deleteSlotCase.height / 2;
+                    this->autoguidesObject_pt = this->container->game3DeleteSlot->localToGlobal(this->container->game3DeleteSlotDeleteSlotCase->getPosition());
+                    this->autoguidesObjectWidth = this->container->game3DeleteSlot->deleteSlotCase->getWidth() / 2;
+                    this->autoguidesObjectHeight = this->container->game3DeleteSlot->deleteSlotCase.height / 2;
                     if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
                         && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
                         && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
                         && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
                     {
-                        this->autoguidesObject = this->container->game3->deleteSlot->deleteSlotCase;
+                        this->autoguidesObject = this->container->game3DeleteSlot->deleteSlotCase;
                     }
                 }
             }
             else if (!this->autoguidesObject)
             {
-                this->autoguidesObject_pt = this->container->game3->localToGlobal(this->container->game3->newGame3Case->getPosition());
-                this->autoguidesObjectWidth = this->container->game3->newGame3Case.width / 2;
+                this->autoguidesObject_pt = this->container->game3->localToGlobal(this->container->game3NewGame3Case->getPosition());
+                this->autoguidesObjectWidth = this->container->game3->newGame3Case->getWidth() / 2;
                 this->autoguidesObjectHeight = this->container->game3->newGame3Case.height / 2;
                 if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
                     && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
@@ -1955,28 +1984,28 @@ namespace screens
             {
                 if (!this->autoguidesObject)
                 {
-                    this->autoguidesObject_pt = this->container->question->btnYes->localToGlobal(this->container->question->btnYes->yesCase->getPosition());
-                    this->autoguidesObjectWidth = this->container->question->btnYes->yesCase.width / 2;
-                    this->autoguidesObjectHeight = this->container->question->btnYes->yesCase.height / 2;
+                    this->autoguidesObject_pt = this->container->questionBtnYes->localToGlobal(this->container->questionBtnYesYesCase->getPosition());
+                    this->autoguidesObjectWidth = this->container->questionBtnYes->yesCase->getWidth() / 2;
+                    this->autoguidesObjectHeight = this->container->questionBtnYes->yesCase.height / 2;
                     if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
                         && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
                         && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
                         && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
                     {
-                        this->autoguidesObject = this->container->question->btnYes->yesCase;
+                        this->autoguidesObject = this->container->questionBtnYes->yesCase;
                     }
                 }
                 if (!this->autoguidesObject)
                 {
-                    this->autoguidesObject_pt = this->container->question->btnNo->localToGlobal(this->container->question->btnNo->noCase->getPosition());
-                    this->autoguidesObjectWidth = this->container->question->btnNo->noCase.width / 2;
-                    this->autoguidesObjectHeight = this->container->question->btnNo->noCase.height / 2;
+                    this->autoguidesObject_pt = this->container->questionBtnNo->localToGlobal(this->container->questionBtnNoNoCase->getPosition());
+                    this->autoguidesObjectWidth = this->container->questionBtnNo->noCase->getWidth() / 2;
+                    this->autoguidesObjectHeight = this->container->questionBtnNo->noCase.height / 2;
                     if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
                         && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
                         && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
                         && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
                     {
-                        this->autoguidesObject = this->container->question->btnNo->noCase;
+                        this->autoguidesObject = this->container->questionBtnNo->noCase;
                     }
                 }
             }
@@ -1986,8 +2015,8 @@ namespace screens
             if (this->container->back->visible)
             {
                 this->autoguidesObject_pt = this->container->back->localToGlobal(this->container->back->backCase.x, this->container->back->backCase.y));
-                this->autoguidesObjectWidth = this->container->back->backCase.width / 2;
-                this->autoguidesObjectHeight = this->container->back->backCase.height / 2;
+                this->autoguidesObjectWidth = this->container->backBackCase->getWidth() / 2;
+                this->autoguidesObjectHeight = this->container->backBackCase.height / 2;
                 if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
                     && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
                     && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
@@ -2006,7 +2035,7 @@ namespace screens
         return;
     }// end function
 
-    void StartMenu::manageListeners(param1:String)  
+    void StartMenu::manageListeners(string param1)  
     {
         if (param1 == "on")
         {
