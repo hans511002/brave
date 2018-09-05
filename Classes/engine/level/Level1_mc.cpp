@@ -43,9 +43,12 @@ namespace engine {
 		buildPoint->setMouseEnabled(false);
 	};
 
-	Level::Level(World *world, string rootPath, string armName, string dbName) :MovieClip(rootPath, armName, dbName), world(world) {
-		this->setPosition(0,Main::SCREEN_HEIGHT+2);
+	Level::Level(World *world, string rootPath, string armName, string dbName) :MovieClip(rootPath, armName, dbName), world(world), offsetY(0){
 	};
+	void Level::setPos() {
+		this->setPosition(0, (Main::SCREEN_HEIGHT + 2) + Main::SCREEN_HEIGHT_OUT_TOP+ offsetY);
+	}
+
 	Level1_mc::Level1_mc(World *world) :Level(world, "worldinterface/", "Level1_mc", "Level1_mc")
 	{
 		SET_NODETYPENAME();
@@ -139,6 +142,7 @@ namespace engine {
 	};
 	Level4_mc::Level4_mc(World *world) :Level(world, "worldinterface/", "Level4_mc", "Level4_mc")
 	{
+		offsetY = 40;
 		SET_NODETYPENAME();
 		//decoration = this->createMovieClipSub("decoration");
 		decorationCase = this->createCase("decorationCase");

@@ -75,7 +75,7 @@ namespace engine
 		Common::Array<BaseNode *> listOfIndexes2 ;
 		Common::Array<BaseNode *> listOfIndexes3 ;
         casts::Cast* cast;
-        casts::Map map; //public var map : Map;
+        casts::Map * map; //public var map : Map;
         BaseNode * menuObject;//public var menuObject : Object;//՝�� �ˠѧϰ
         //public var sortIndex : Array;
 

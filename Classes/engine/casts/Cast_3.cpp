@@ -138,15 +138,15 @@ namespace engine {
 						{
 							if (n == 1)
 							{
-								map = &world->map.road1;
+								map = &world->map->road1;
 							}
 							else if (n == 2)
 							{
-								map = &world->map.road2;
+								map = &world->map->road2;
 							}
 							else if (n == 3)
 							{
-								map = &world->map.road3;
+								map = &world->map->road3;
 							}
 							Common::Array<cocos2d::Point> &map = *this->map;
 							i = map.size() - 1;

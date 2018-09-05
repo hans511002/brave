@@ -55,6 +55,8 @@ namespace screens
         }
         //this->stage.frameRate = 60;
         this->container = new MiddleScreen_mc();
+		this->container->setPosition(Vec2(-Main::SCREEN_WIDTH_OUT_LEFT, -Main::SCREEN_HEIGHT_OUT_DOWN));
+
 		this->container->stop();
         this->container->leftUp->stop();
         this->container->rightUp->stop();
@@ -135,26 +137,26 @@ namespace screens
 			}
 			float x = this->container->leftUp->getPositionX() + offsetX;
 			float y = this->container->leftUp->getPositionY() - offsetY;
-			if (x > Main::SCREEN_WIDTH_HALF)x = Main::SCREEN_WIDTH_HALF;
-			if (y < Main::SCREEN_HEIGHT_HALF)y = Main::SCREEN_HEIGHT_HALF;
+			if (x > Main::SCREEN_WIDTH_HALF + Main::SCREEN_WIDTH_OUT_LEFT)x = Main::SCREEN_WIDTH_HALF + Main::SCREEN_WIDTH_OUT_LEFT;
+			if (y < Main::SCREEN_HEIGHT_HALF + Main::SCREEN_HEIGHT_OUT_TOP)y = Main::SCREEN_HEIGHT_HALF + Main::SCREEN_HEIGHT_OUT_TOP;
 			this->container->leftUp->setPosition(x, y);
 
 			x = this->container->leftDown->getPositionX() + offsetX;
 			y = this->container->leftDown->getPositionY() + offsetY;
-			if (x > Main::SCREEN_WIDTH_HALF)x = Main::SCREEN_WIDTH_HALF;
-			if (y > Main::SCREEN_HEIGHT_HALF)y = Main::SCREEN_HEIGHT_HALF;
+			if (x > Main::SCREEN_WIDTH_HALF + Main::SCREEN_WIDTH_OUT_LEFT)x = Main::SCREEN_WIDTH_HALF + Main::SCREEN_WIDTH_OUT_LEFT;
+			if (y > Main::SCREEN_HEIGHT_HALF + Main::SCREEN_HEIGHT_OUT_DOWN)y = Main::SCREEN_HEIGHT_HALF + Main::SCREEN_HEIGHT_OUT_DOWN;
 			this->container->leftDown->setPosition(x, y);
 			 
 			x = this->container->rightUp->getPositionX() - offsetX;
 			y = this->container->rightUp->getPositionY() - offsetY;
-			if (x < Main::SCREEN_WIDTH_HALF)x = Main::SCREEN_WIDTH_HALF;
-			if (y < Main::SCREEN_HEIGHT_HALF)y = Main::SCREEN_HEIGHT_HALF;
+			if (x < Main::SCREEN_WIDTH_HALF + Main::SCREEN_WIDTH_OUT_LEFT)x = Main::SCREEN_WIDTH_HALF + Main::SCREEN_WIDTH_OUT_LEFT;
+			if (y < Main::SCREEN_HEIGHT_HALF + Main::SCREEN_HEIGHT_OUT_TOP)y = Main::SCREEN_HEIGHT_HALF + Main::SCREEN_HEIGHT_OUT_TOP;
 			this->container->rightUp->setPosition(x, y);
 			 
 			x = this->container->rightDown->getPositionX() - offsetX;
 			y = this->container->rightDown->getPositionY() + offsetY;
-			if (x < Main::SCREEN_WIDTH_HALF)x = Main::SCREEN_WIDTH_HALF;
-			if (y > Main::SCREEN_HEIGHT_HALF)y = Main::SCREEN_HEIGHT_HALF;
+			if (x < Main::SCREEN_WIDTH_HALF+Main::SCREEN_WIDTH_OUT_LEFT)x = Main::SCREEN_WIDTH_HALF+ Main::SCREEN_WIDTH_OUT_LEFT;
+			if (y > Main::SCREEN_HEIGHT_HALF+ Main::SCREEN_HEIGHT_OUT_DOWN)y = Main::SCREEN_HEIGHT_HALF+ Main::SCREEN_HEIGHT_OUT_DOWN;
 			this->container->rightDown->setPosition(x, y);
         }
         else if (this->frameCounter > 15 && this->frameCounter < 23)

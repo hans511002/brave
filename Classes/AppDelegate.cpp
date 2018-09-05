@@ -46,14 +46,14 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
-        glview = GLViewImpl::createWithRect("brave", cocos2d::Rect(0, 0, 800, 600));
+        glview = GLViewImpl::createWithRect("brave", cocos2d::Rect(0, 0, Main::SCREEN_WIDTH, Main::SCREEN_HEIGHT));
         director->setOpenGLView(glview);
     }
 
     //director->getOpenGLView()->setDesignResolutionSize(1136, 640, ResolutionPolicy::SHOW_ALL);
-    director->getOpenGLView()->setDesignResolutionSize(800, 600, ResolutionPolicy::EXACT_FIT);
-    director->getOpenGLView()->setFrameSize(800, 600);
-    director->getOpenGLView()->setViewPortInPoints(0,0,800, 600);
+    director->getOpenGLView()->setDesignResolutionSize(Main::SCREEN_WIDTH, Main::SCREEN_HEIGHT, ResolutionPolicy::EXACT_FIT);
+    director->getOpenGLView()->setFrameSize(Main::SCREEN_WIDTH, Main::SCREEN_HEIGHT);
+    director->getOpenGLView()->setViewPortInPoints(0,0, Main::SCREEN_WIDTH, Main::SCREEN_HEIGHT);
 
     // turn on display FPS
     director->setDisplayStats(true);

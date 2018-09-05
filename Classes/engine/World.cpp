@@ -81,6 +81,7 @@ namespace engine
 		BaseNode::init();
 		this->wavesClass = new Waves();
 		this->feature = new Feature();
+		map = new casts::Map();
 		////test bezier getPathPoint
 		//int r=1,w=1;
 		//float finishPath = this->bezierClass->getPathLength(r, w);
@@ -114,6 +115,8 @@ namespace engine
 
 	void World::onExit()
 	{
+		delete this->map;
+		this->map = NULL;
 		delete this->wavesClass;
 		this->wavesClass = NULL;
 		delete this->feature;

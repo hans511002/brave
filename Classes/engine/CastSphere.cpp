@@ -231,82 +231,82 @@ namespace engine{
 					this->world->addChild(this->additAnamation, 2);
 					this->world->addIndexes(this->additAnamation,0);
 					float tempObject = 1000;
-					if (this->world->map.road1.size())
+					if (this->world->map->road1.size())
 					{
 						this->i = 0;
-						while (this->i < this->world->map.allPointsRoad1.size())
+						while (this->i < this->world->map->allPointsRoad1.size())
 						{
-							float tempObject1 = this->this_pt.distance(this->world->map.allPointsRoad1[this->i]);
+							float tempObject1 = this->this_pt.distance(this->world->map->allPointsRoad1[this->i]);
 							if (tempObject1 < tempObject)
 							{
 								tempObject = tempObject1;
-								this->setPosition(this->world->map.allPointsRoad1[this->i]);
-								//this->x = this->world->map.allPointsRoad1[this->i].x;
-								//this->y = this->world->map.allPointsRoad1[this->i].y;
+								this->setPosition(this->world->map->allPointsRoad1[this->i]);
+								//this->x = this->world->map->allPointsRoad1[this->i].x;
+								//this->y = this->world->map->allPointsRoad1[this->i].y;
 							}
 							i++;
 						}
 					}
-					if (this->world->map.road2.size())
+					if (this->world->map->road2.size())
 					{
 						this->i = 0;
-						while (this->i < this->world->map.allPointsRoad2.size())
+						while (this->i < this->world->map->allPointsRoad2.size())
 						{
-							float tempObject1 = this->this_pt.distance(this->world->map.allPointsRoad2[this->i]);
+							float tempObject1 = this->this_pt.distance(this->world->map->allPointsRoad2[this->i]);
 							if (tempObject1 < tempObject)
 							{
 								tempObject = tempObject1;
-								this->setPosition(this->world->map.allPointsRoad2[this->i]);
-								//this->x = this->world->map.allPointsRoad2[this->i].x;
-								//this->y = this->world->map.allPointsRoad2[this->i].y;
+								this->setPosition(this->world->map->allPointsRoad2[this->i]);
+								//this->x = this->world->map->allPointsRoad2[this->i].x;
+								//this->y = this->world->map->allPointsRoad2[this->i].y;
 							}
 							i++;
 						}
 					}
-					if (this->world->map.road3.size())
+					if (this->world->map->road3.size())
 					{
 						this->i = 0;
-						while (this->i < this->world->map.allPointsRoad3.size())
+						while (this->i < this->world->map->allPointsRoad3.size())
 						{
-							float tempObject1 = this->this_pt.distance(this->world->map.allPointsRoad3[this->i]);
+							float tempObject1 = this->this_pt.distance(this->world->map->allPointsRoad3[this->i]);
 							if (tempObject1 < tempObject)
 							{
 								tempObject = tempObject1;
-								this->setPosition(this->world->map.allPointsRoad3[this->i]);
-								//this->x = this->world->map.allPointsRoad3[this->i].x;
-								//this->y = this->world->map.allPointsRoad3[this->i].y;
+								this->setPosition(this->world->map->allPointsRoad3[this->i]);
+								//this->x = this->world->map->allPointsRoad3[this->i].x;
+								//this->y = this->world->map->allPointsRoad3[this->i].y;
 							}
 							i++;
 						}
 					}
 					this->this_pt = this->getPosition();// new Point(this->x, this->y);
 					this->i = 0;
-					while (this->i < this->world->map.allPointsRoad1.size())
+					while (this->i < this->world->map->allPointsRoad1.size())
 					{
 						if (!this->getAllForm[0])
 						{
-							if (this->this_pt.x - this->world->map.allPointsRoad1[this->i].x >= 22 && this->this_pt.x - this->world->map.allPointsRoad1[this->i].x <= 45 && (this->this_pt.y >= this->world->map.allPointsRoad1[this->i].y - 22 && this->this_pt.y <= this->world->map.allPointsRoad1[this->i].y + 22))
+							if (this->this_pt.x - this->world->map->allPointsRoad1[this->i].x >= 22 && this->this_pt.x - this->world->map->allPointsRoad1[this->i].x <= 45 && (this->this_pt.y >= this->world->map->allPointsRoad1[this->i].y - 22 && this->this_pt.y <= this->world->map->allPointsRoad1[this->i].y + 22))
 							{
 								this->getAllForm[0] = true;
 							}
 						}
 						if (!this->getAllForm[1])
 						{
-							if (this->world->map.allPointsRoad1[this->i].x - this->this_pt.x >= 22 && this->world->map.allPointsRoad1[this->i].x - this->this_pt.x <= 45 && (this->this_pt.y >= this->world->map.allPointsRoad1[this->i].y - 22 && this->this_pt.y <= this->world->map.allPointsRoad1[this->i].y + 22))
+							if (this->world->map->allPointsRoad1[this->i].x - this->this_pt.x >= 22 && this->world->map->allPointsRoad1[this->i].x - this->this_pt.x <= 45 && (this->this_pt.y >= this->world->map->allPointsRoad1[this->i].y - 22 && this->this_pt.y <= this->world->map->allPointsRoad1[this->i].y + 22))
 							{
 								this->getAllForm[1] = true;
 							}
 						}
 						if (!this->getAllForm[3])
 						{
-							if (this->world->map.allPointsRoad1[this->i].y - this->this_pt.y >= 22 && this->world->map.allPointsRoad1[this->i].y - this->this_pt.y <= 45 && (this->this_pt.x >= this->world->map.allPointsRoad1[this->i].x - 22 && this->this_pt.x <= this->world->map.allPointsRoad1[this->i].x + 22))
+							if (this->world->map->allPointsRoad1[this->i].y - this->this_pt.y >= 22 && this->world->map->allPointsRoad1[this->i].y - this->this_pt.y <= 45 && (this->this_pt.x >= this->world->map->allPointsRoad1[this->i].x - 22 && this->this_pt.x <= this->world->map->allPointsRoad1[this->i].x + 22))
 							{
 								this->getAllForm[3] = true;
 							}
 						}
 						if (!this->getAllForm[2])
 						{
-							if (this->this_pt.y - this->world->map.allPointsRoad1[this->i].y >= 22 && this->this_pt.y - this->world->map.allPointsRoad1[this->i].y <= 45 && (this->this_pt.x >= this->world->map.allPointsRoad1[this->i].x - 22 && this->this_pt.x <= this->world->map.allPointsRoad1[this->i].x + 22))
+							if (this->this_pt.y - this->world->map->allPointsRoad1[this->i].y >= 22 && this->this_pt.y - this->world->map->allPointsRoad1[this->i].y <= 45 && (this->this_pt.x >= this->world->map->allPointsRoad1[this->i].x - 22 && this->this_pt.x <= this->world->map->allPointsRoad1[this->i].x + 22))
 							{
 								this->getAllForm[2] = true;
 							}
@@ -314,32 +314,32 @@ namespace engine{
 						i++;
 					}
 					this->i = 0;
-					while (this->i < this->world->map.allPointsRoad2.size())
+					while (this->i < this->world->map->allPointsRoad2.size())
 					{
 						if (!this->getAllForm[0])
 						{
-							if (this->this_pt.x - this->world->map.allPointsRoad2[this->i].x >= 22 && this->this_pt.x - this->world->map.allPointsRoad2[this->i].x <= 45 && (this->this_pt.y >= this->world->map.allPointsRoad2[this->i].y - 22 && this->this_pt.y <= this->world->map.allPointsRoad2[this->i].y + 22))
+							if (this->this_pt.x - this->world->map->allPointsRoad2[this->i].x >= 22 && this->this_pt.x - this->world->map->allPointsRoad2[this->i].x <= 45 && (this->this_pt.y >= this->world->map->allPointsRoad2[this->i].y - 22 && this->this_pt.y <= this->world->map->allPointsRoad2[this->i].y + 22))
 							{
 								this->getAllForm[0] = true;
 							}
 						}
 						if (!this->getAllForm[1])
 						{
-							if (this->world->map.allPointsRoad2[this->i].x - this->this_pt.x >= 22 && this->world->map.allPointsRoad2[this->i].x - this->this_pt.x <= 45 && (this->this_pt.y >= this->world->map.allPointsRoad2[this->i].y - 22 && this->this_pt.y <= this->world->map.allPointsRoad2[this->i].y + 22))
+							if (this->world->map->allPointsRoad2[this->i].x - this->this_pt.x >= 22 && this->world->map->allPointsRoad2[this->i].x - this->this_pt.x <= 45 && (this->this_pt.y >= this->world->map->allPointsRoad2[this->i].y - 22 && this->this_pt.y <= this->world->map->allPointsRoad2[this->i].y + 22))
 							{
 								this->getAllForm[1] = true;
 							}
 						}
 						if (!this->getAllForm[3])
 						{
-							if (this->world->map.allPointsRoad2[this->i].y - this->this_pt.y >= 22 && this->world->map.allPointsRoad2[this->i].y - this->this_pt.y <= 45 && (this->this_pt.x >= this->world->map.allPointsRoad2[this->i].x - 22 && this->this_pt.x <= this->world->map.allPointsRoad2[this->i].x + 22))
+							if (this->world->map->allPointsRoad2[this->i].y - this->this_pt.y >= 22 && this->world->map->allPointsRoad2[this->i].y - this->this_pt.y <= 45 && (this->this_pt.x >= this->world->map->allPointsRoad2[this->i].x - 22 && this->this_pt.x <= this->world->map->allPointsRoad2[this->i].x + 22))
 							{
 								this->getAllForm[3] = true;
 							}
 						}
 						if (!this->getAllForm[2])
 						{
-							if (this->this_pt.y - this->world->map.allPointsRoad2[this->i].y >= 22 && this->this_pt.y - this->world->map.allPointsRoad2[this->i].y <= 45 && (this->this_pt.x >= this->world->map.allPointsRoad2[this->i].x - 22 && this->this_pt.x <= this->world->map.allPointsRoad2[this->i].x + 22))
+							if (this->this_pt.y - this->world->map->allPointsRoad2[this->i].y >= 22 && this->this_pt.y - this->world->map->allPointsRoad2[this->i].y <= 45 && (this->this_pt.x >= this->world->map->allPointsRoad2[this->i].x - 22 && this->this_pt.x <= this->world->map->allPointsRoad2[this->i].x + 22))
 							{
 								this->getAllForm[2] = true;
 							}
@@ -347,32 +347,32 @@ namespace engine{
 						i++;
 					}
 					this->i = 0;
-					while (this->i < this->world->map.allPointsRoad3.size())
+					while (this->i < this->world->map->allPointsRoad3.size())
 					{
 						if (!this->getAllForm[0])
 						{
-							if (this->this_pt.x - this->world->map.allPointsRoad3[this->i].x >= 22 && this->this_pt.x - this->world->map.allPointsRoad3[this->i].x <= 45 && (this->this_pt.y >= this->world->map.allPointsRoad3[this->i].y - 22 && this->this_pt.y <= this->world->map.allPointsRoad3[this->i].y + 22))
+							if (this->this_pt.x - this->world->map->allPointsRoad3[this->i].x >= 22 && this->this_pt.x - this->world->map->allPointsRoad3[this->i].x <= 45 && (this->this_pt.y >= this->world->map->allPointsRoad3[this->i].y - 22 && this->this_pt.y <= this->world->map->allPointsRoad3[this->i].y + 22))
 							{
 								this->getAllForm[0] = true;
 							}
 						}
 						if (!this->getAllForm[1])
 						{
-							if (this->world->map.allPointsRoad3[this->i].x - this->this_pt.x >= 22 && this->world->map.allPointsRoad3[this->i].x - this->this_pt.x <= 45 && (this->this_pt.y >= this->world->map.allPointsRoad3[this->i].y - 22 && this->this_pt.y <= this->world->map.allPointsRoad3[this->i].y + 22))
+							if (this->world->map->allPointsRoad3[this->i].x - this->this_pt.x >= 22 && this->world->map->allPointsRoad3[this->i].x - this->this_pt.x <= 45 && (this->this_pt.y >= this->world->map->allPointsRoad3[this->i].y - 22 && this->this_pt.y <= this->world->map->allPointsRoad3[this->i].y + 22))
 							{
 								this->getAllForm[1] = true;
 							}
 						}
 						if (!this->getAllForm[3])
 						{
-							if (this->world->map.allPointsRoad3[this->i].y - this->this_pt.y >= 22 && this->world->map.allPointsRoad3[this->i].y - this->this_pt.y <= 45 && (this->this_pt.x >= this->world->map.allPointsRoad3[this->i].x - 22 && this->this_pt.x <= this->world->map.allPointsRoad3[this->i].x + 22))
+							if (this->world->map->allPointsRoad3[this->i].y - this->this_pt.y >= 22 && this->world->map->allPointsRoad3[this->i].y - this->this_pt.y <= 45 && (this->this_pt.x >= this->world->map->allPointsRoad3[this->i].x - 22 && this->this_pt.x <= this->world->map->allPointsRoad3[this->i].x + 22))
 							{
 								this->getAllForm[3] = true;
 							}
 						}
 						if (!this->getAllForm[2])
 						{
-							if (this->this_pt.y - this->world->map.allPointsRoad3[this->i].y >= 22 && this->this_pt.y - this->world->map.allPointsRoad3[this->i].y <= 45 && (this->this_pt.x >= this->world->map.allPointsRoad3[this->i].x - 22 && this->this_pt.x <= this->world->map.allPointsRoad3[this->i].x + 22))
+							if (this->this_pt.y - this->world->map->allPointsRoad3[this->i].y >= 22 && this->this_pt.y - this->world->map->allPointsRoad3[this->i].y <= 45 && (this->this_pt.x >= this->world->map->allPointsRoad3[this->i].x - 22 && this->this_pt.x <= this->world->map->allPointsRoad3[this->i].x + 22))
 							{
 								this->getAllForm[2] = true;
 							}

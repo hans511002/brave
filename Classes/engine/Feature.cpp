@@ -159,6 +159,7 @@ namespace engine
 			this->world->levelType = "dust";
 		}
 		this->world->addChild(this->world->level);
+		this->world->level->setPos();
 		//for (size_t i = 0; i < this->world->level->flags.size(); i++)
 		//{
 		//	MovieClip * arma=this->world->level->flags.at(i);
@@ -1431,9 +1432,9 @@ namespace engine
 			i++;
 		}
 
-		this->world->worldInterface = WorldInterface::create();
+		this->world->worldInterface = new WorldInterface();
 		this->world->addChild(this->world->worldInterface);
-
+		this->world->worldInterface->init();
 		//world->logInfo("buyFireBuyTXT", world->worldInterface->container->buyFireBuyTXT->getPosition());
 		//world->logInfo("buyFireBuyTXT", world->worldInterface->container->buyFireBuyTXT->getNamePath());
 		//world->logInfo("buyFireBuyTXT", world->worldInterface->container->buyFire->convertToWorldSpace(world->worldInterface->container->buyFireBuyTXT->getPosition()));

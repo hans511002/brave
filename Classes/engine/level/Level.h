@@ -31,6 +31,7 @@ namespace engine{
 	};
 
 	struct Level : public MovieClip{
+		float offsetY ;
 			World *world;
 			Common::Array<MovieClipSub * > decorations;
 			Common::Array<MovieClip * > flags;
@@ -39,6 +40,8 @@ namespace engine{
             //Common::Array<TowerPlace * > towerPlace;
 			Common::Array<MovieClipSub * > additionallys;
 			Level(World *world, string rootPath, string armName, string dbName)  ;
+			virtual void setPos();
+
 		};
  
 } 

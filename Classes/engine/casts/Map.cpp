@@ -1,5 +1,6 @@
 #include "Map.h"
 #include "engine/World.h"
+#include "engine/level/Level.h"
 
 namespace engine{
     namespace    casts
@@ -11,7 +12,7 @@ namespace engine{
                 double x = road1[i].x;
                 double y = road1[i].y;
                 x -= Main::SCREEN_WIDTH_OUT_LEFT;
-                y = Main::SCREEN_HEIGHT + Main::SCREEN_HEIGHT_OUT_DOWN - y;
+                y = Main::SCREEN_HEIGHT + Main::SCREEN_HEIGHT_OUT_DOWN - y+Main::mainClass->worldClass->level->offsetY;
                 path[i] = cocos2d::Point(x, y);
             }
         }

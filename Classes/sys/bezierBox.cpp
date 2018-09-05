@@ -3,7 +3,8 @@
 #include "sys/saveBox.h"
 #include "bezierBox.h"
 #include "MainClass.h"
-//#include "bezierBox.h"
+#include "engine/World.h"
+#include "engine/level/Level.h"
 
 namespace sys
 {
@@ -14,7 +15,7 @@ namespace sys
 			double x = level[i][0];
 			double y = level[i][1];
 			x -= Main::SCREEN_WIDTH_OUT_LEFT;
-			y=Main::SCREEN_HEIGHT + Main::SCREEN_HEIGHT_OUT_DOWN - y;
+			y=Main::SCREEN_HEIGHT + Main::SCREEN_HEIGHT_OUT_DOWN - y+Main::mainClass-> worldClass->level->offsetY;
 			path[i] = cocos2d::Point(x, y);
 		}
 	}

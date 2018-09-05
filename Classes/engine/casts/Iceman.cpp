@@ -46,15 +46,15 @@ namespace engine{
 			this->liveCounter = Main::mainClass->readXMLClass.castIcemanLifeTimerXML;
 			if (this->road == 1)
 			{
-				this->roadMap = &this->world->map.road1;
+				this->roadMap = &this->world->map->road1;
 			}
 			else if (this->road == 2)
 			{
-				this->roadMap = &this->world->map.road2;
+				this->roadMap = &this->world->map->road2;
 			}
 			else if (this->road == 3)
 			{
-				this->roadMap = &this->world->map.road3;
+				this->roadMap = &this->world->map->road3;
 			}
 			Common::Array<cocos2d::Point> &roadMap = *this->roadMap;
 			if (roadMap[this->movePhase].x != roadMap[(this->movePhase - 1)].x)
@@ -632,11 +632,11 @@ namespace engine{
 					{
 						if (this->i == 1)
 						{
-							this->j = this->world->map.road1.size() - 2;
+							this->j = this->world->map->road1.size() - 2;
 							while (this->j >= 0)
 							{
-								if (this->world->map.road1[this->j].x == roadMap[this->movePhase].x && this->world->map.road1[this->j].y == roadMap[this->movePhase].y
-									&& (this->world->map.road1[(this->j + 1)].x != roadMap[(this->movePhase + 1)].x || this->world->map.road1[(this->j + 1)].y != roadMap[(this->movePhase + 1)].y))
+								if (this->world->map->road1[this->j].x == roadMap[this->movePhase].x && this->world->map->road1[this->j].y == roadMap[this->movePhase].y
+									&& (this->world->map->road1[(this->j + 1)].x != roadMap[(this->movePhase + 1)].x || this->world->map->road1[(this->j + 1)].y != roadMap[(this->movePhase + 1)].y))
 								{
 									tempObject1 = new Iceman(roadMap[this->movePhase], this->i, (this->j + 1), false);
 									this->brother = tempObject1;
@@ -655,12 +655,12 @@ namespace engine{
 						}
 						else if (this->i == 2)
 						{
-							this->j = this->world->map.road2.size() - 2;
+							this->j = this->world->map->road2.size() - 2;
 							while (this->j >= 0)
 							{
-								if (this->world->map.road2[this->j].x == roadMap[this->movePhase].x && this->world->map.road2[this->j].y == roadMap[this->movePhase].y
-									&& (this->world->map.road2[(this->j + 1)].x != roadMap[(this->movePhase + 1)].x
-									|| this->world->map.road2[(this->j + 1)].y != roadMap[(this->movePhase + 1)].y))
+								if (this->world->map->road2[this->j].x == roadMap[this->movePhase].x && this->world->map->road2[this->j].y == roadMap[this->movePhase].y
+									&& (this->world->map->road2[(this->j + 1)].x != roadMap[(this->movePhase + 1)].x
+									|| this->world->map->road2[(this->j + 1)].y != roadMap[(this->movePhase + 1)].y))
 								{
 									tempObject1 = new Iceman(roadMap[this->movePhase], this->i, (this->j + 1), false);
 									this->brother = tempObject1;

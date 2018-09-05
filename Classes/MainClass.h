@@ -39,13 +39,13 @@ public:
 	static int fps;
 	
 	static const int SCREEN_WIDTH = 800;
-	static const int SCREEN_HEIGHT = 600;
+	static const int SCREEN_HEIGHT = 450;
 	static const int SCREEN_WIDTH_HALF = 400;
-	static const int SCREEN_HEIGHT_HALF = 300;
+	static const int SCREEN_HEIGHT_HALF = 225;
 
 	static const int SCREEN_WIDTH_OUT_LEFT = 0;
-	static const int SCREEN_HEIGHT_OUT_TOP = 0;
-	static const int SCREEN_HEIGHT_OUT_DOWN = 0;
+	static const int SCREEN_HEIGHT_OUT_TOP = 75;
+	static const int SCREEN_HEIGHT_OUT_DOWN = 75;
 	
     static const int FrameRate=30;
     static const double AnimationInterval ;
