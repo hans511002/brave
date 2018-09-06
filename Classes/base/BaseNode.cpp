@@ -13,7 +13,7 @@ namespace std
 	bool useNodeEvent = false;
 	bool useGlobalNode = true;
 	bool sortGlobalNode = false;
-	
+
 	EventNode *globalNode=NULL;
 	bool EventNode::debug = true;
 	Node * EventNode::beginTouchNode=NULL;
@@ -117,7 +117,7 @@ namespace std
 		{
 			if (globalEventNodes.at(i) == node)
 				return;
-		} 
+		}
 		globalEventNodes.push(node);
 		sortGlobalNode = false;
 	};
@@ -217,9 +217,9 @@ namespace std
 	{
 		const auto factory = dragonBones::CCFactory::getFactory();
 		const auto armatureDisplay = factory->buildArmatureDisplay(armatureName, dragonBonesName, "", dragonBonesName);
-		return armatureDisplay; 
+		return armatureDisplay;
 	};
-	void removeArmature(const std::string& name, bool disposeData ) 
+	void removeArmature(const std::string& name, bool disposeData )
 	{
 		const auto factory = dragonBones::CCFactory::getFactory();
 		factory->removeDragonBonesData(name, disposeData);
@@ -461,7 +461,7 @@ namespace std
 
 		//Vec2 arpos=node->getAnchorPointInPoints();
 		//Size ns= node->getContentSize();
-		//Rect rt; 
+		//Rect rt;
 		//Vec2 sp = node->convertToWorldSpace(Vec2(0, 0) - arpos);
 		//Vec2 ep=node->convertToWorldSpace((Vec2)ns -arpos)-sp;
 		//rt.setRect(sp.x, sp.y, ep.x, ep.y);
@@ -760,11 +760,11 @@ namespace std
 		Node * n = e->getCurrentTarget();
 		assert (n !=NULL);
 		EventNode * evRootNode=ISTYPE(EventNode, n);
-		assert(evRootNode != NULL); 
+		assert(evRootNode != NULL);
 		//只允许一个根
 		if (useGlobalNode ) {
 			if (!sortGlobalNode) {
-				nodePriorityIndex = 0; 
+				nodePriorityIndex = 0;
  				evRootNode->visitTarget(NULL,n,true);
 			}
 			int l = globalEventNodes.size();
@@ -1024,11 +1024,11 @@ namespace std
 		{
 		case cocos2d::EventKeyboard::KeyCode::KEY_A:
 		case cocos2d::EventKeyboard::KeyCode::KEY_LEFT_ARROW:
-			//_left = false;		 
+			//_left = false;
 			break;
 		case cocos2d::EventKeyboard::KeyCode::KEY_D:
 		case cocos2d::EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
-			//_right = false; 
+			//_right = false;
 			break;
 		case cocos2d::EventKeyboard::KeyCode::KEY_W:
 		case cocos2d::EventKeyboard::KeyCode::KEY_UP_ARROW:
@@ -1040,12 +1040,12 @@ namespace std
 		}
 	};
 	void EventNode::mouseDownHandler(cocos2d::EventMouse* event)
-	{ 
+	{
 		Node * node = event->getCurrentTarget();
 		//Vec2 pt = node->getPosition();
 		//logInfo(getNamePath(node), pt, &node->convertToWorldSpace(pt), &node->convertToNodeSpace(node->convertToWorldSpace(pt)));
 
-		//loginfo("mouseDown",event); 
+		//loginfo("mouseDown",event);
 		if (!std::hitTest(node, event))return;
 		logInfo("hitTest true : mouse down in ", getNamePath(node));
 		Event::Type tp = event->getType();
@@ -1083,7 +1083,7 @@ namespace std
 		//else {
 		//	if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)
 		//		rightMouseUpHandler(event);
-		//	else 
+		//	else
 		//		mouseUpHandler(event);
 		//}
 	};
@@ -1140,7 +1140,7 @@ namespace std
             globalNode->mouseDownHandler(&mevent);
 		}
 		else {
-            mouseMoveHandler(&mevent); 
+            mouseMoveHandler(&mevent);
 			mouseDownHandler(&mevent);
 		}
 		return true;
@@ -1161,12 +1161,10 @@ namespace std
 				mevent.setMouseButton(cocos2d::EventMouse::MouseButton::BUTTON_LEFT);
 				mevent.setCursorPosition(tpos.x, tpos.y);
 				mevent.setCurrentTarget(node);
-				if (globalNode) {
+				if (globalNode)
 					globalNode->mouseMoveHandler(&mevent);
-				}
-				else {
-					mouseMoveHandler(&mevent);
-				}
+//				else
+//					mouseMoveHandler(&mevent);
 			}
 		}
 		EventNode::beginTouchNode=NULL;
@@ -1174,12 +1172,10 @@ namespace std
 		mevent.setMouseButton(cocos2d::EventMouse::MouseButton::BUTTON_LEFT);
 		mevent.setCursorPosition(tpos.x, tpos.y);
 		mevent.setCurrentTarget(node);
-		if (globalNode) {
+		if (globalNode)
 			globalNode->mouseUpHandler(&mevent);
-		}
-		else {
-			mouseUpHandler(&mevent);
-		}
+//		else
+//			mouseUpHandler(&mevent);
 	};
 	void EventNode::onTouchCancelled(Touch *touch, Event *unused_event) {
 
@@ -1188,20 +1184,18 @@ namespace std
 		Vec2 tpos = touch->getLocationInView();
 		tpos.y = Main::SCREEN_HEIGHT - tpos.y;
 		Node * node = event->getCurrentTarget();
-		if (!std::hitTest(node, tpos))return; 
+		if (!std::hitTest(node, tpos))return;
 		Event::Type tp = event->getType();
- 		event->stopPropagation(); 
+ 		event->stopPropagation();
 		MouseEvent mevent(cocos2d::EventMouse::MouseEventType::MOUSE_MOVE);
 		mevent.setMouseButton(cocos2d::EventMouse::MouseButton::BUTTON_LEFT);
 		mevent.setCursorPosition(tpos.x, tpos.y);
 		mevent.setCurrentTarget(node);
 		//node->setUserData((void*)1);
-		if (globalNode) {
+		if (globalNode)
 			globalNode->mouseMoveHandler(&mevent);
-		}
-		else {
-			mouseMoveHandler(&mevent);
-		}
+//		else
+//			mouseMoveHandler(&mevent);
 	};
 
 
@@ -1637,7 +1631,7 @@ namespace std
 	};
 	void BaseNode::addLinkNode(BaseNode * node, int linkFlag)
 	{
-		//Node * _node = node; 
+		//Node * _node = node;
 		addLinkNodeFlag(node, linkFlag);
 	};
 	void BaseNode::addLinkNodeFlag(BaseNode * node, int linkFlag)
@@ -1690,7 +1684,7 @@ namespace std
 		return res;
 	}
 	void EventNode::visitTarget(std::vector<EventNode *> *_res, Node* node, bool isRootNode)
-	{ 
+	{
 		std::vector<EventNode *> &res = *_res;
  		int i = 0;
 		auto& children = node->getChildren();

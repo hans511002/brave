@@ -2,7 +2,7 @@
 #define BRAVE_MAIN_H
 #include "BaseNode.h"
 
-//#include "BaseHeaders.h"  
+//#include "BaseHeaders.h"
 //#include "engine/World.h"
 #include "engine/xml/ReadXML.h"
 //#include "screens/MiddleScreen.h"
@@ -22,7 +22,7 @@ public:
 	//void * tempObject;
 	ListenInterface * container;
 	SaveBox * saveBoxClass;
-	//加载配置数据 
+	//加载配置数据
 	ReadXML readXMLClass;
 	//public var startLogoClass:StartLogo;
 	//public var startMenuClass:StartMenu;
@@ -37,16 +37,19 @@ public:
 	string domainName;
 	DbPreload preload;
 	static int fps;
-	
+
 	static const int SCREEN_WIDTH = 800;
 	static const int SCREEN_HEIGHT = 450;
-	static const int SCREEN_WIDTH_HALF = 400;
-	static const int SCREEN_HEIGHT_HALF = 225;
+	static const int SCREEN_WIDTH_HALF = SCREEN_WIDTH/2;
+	static const int SCREEN_HEIGHT_HALF = SCREEN_HEIGHT/2;
 
-	static const int SCREEN_WIDTH_OUT_LEFT = 0;
-	static const int SCREEN_HEIGHT_OUT_TOP = 75;
-	static const int SCREEN_HEIGHT_OUT_DOWN = 75;
-	
+	static const int LEVEL_MAP_WIDTH = 800;
+	static const int LEVEL_MAP_HEIGHT = 600;
+
+	static const int SCREEN_WIDTH_OUT_LEFT = (SCREEN_WIDTH - LEVEL_MAP_WIDTH) / 2;
+	static const int SCREEN_HEIGHT_OUT_TOP = (LEVEL_MAP_HEIGHT - SCREEN_HEIGHT)/2;
+	static const int SCREEN_HEIGHT_OUT_DOWN = (LEVEL_MAP_HEIGHT - SCREEN_HEIGHT)/2;
+
     static const int FrameRate=30;
     static const double AnimationInterval ;
 

@@ -1,8 +1,8 @@
 ﻿#ifndef WORLD_H
 #define WORLD_H
 
-#include "BaseHeaders.h" 
-#include "screens/Screen.h" 
+#include "BaseHeaders.h"
+#include "screens/Screen.h"
 #include "bezier/Bezier.h"
 #include "engine/casts/Map.h"
 #include "base/Indexes.h"
@@ -12,10 +12,8 @@
 
 namespace engine
 {
-
 	class World : public ListenInterface //, public  BaseLayer
     {
-         
     public:
         //int i;
         //int j;
@@ -50,6 +48,8 @@ namespace engine
         Common::Array<RoadsignIce_mc *> listOfIcePortals;//public var listOfIcePortals : Array;
         Common::Array<RoadsignStone_mc *> listOfStonePortals;//public var listOfStonePortals : Array;
         Common::Array<RoadsignLevin_mc *> listOfLevinPortals;//public var listOfLevinPortals : Array;
+        
+        Node * fixedRoot;
         int money;
         int bonusMoney;
         int liveMax;//: int = 20;
@@ -57,7 +57,7 @@ namespace engine
         bool forseIndexFl;// : Boolean;
         GetSphere *getSphere; //public var getSphere : GetSphere;
 		Common::Array<GetSphere *>listOfMoveSpheres;//public var listOfMoveSpheres : Array;
-		
+
 		Common::Array<BaseNode *>listOfClasses;//public var listOfClasses : Array;
 
         Common::Array<towers::Tower *>listOfTowers;//public var listOfTowers : Array;
@@ -79,7 +79,7 @@ namespace engine
         BaseNode * menuObject;//public var menuObject : Object;//՝�� �ˠѧϰ
         //public var sortIndex : Array;
 
-       
+
         //PointTimer * pointer4;
 		LevelPointer * pointer1;
 		LevelPointer * pointer2;
@@ -129,21 +129,21 @@ namespace engine
 
         World();
         //CREATE_FUNC(World);
- 
+
 		virtual bool init();
 
         virtual void onEnter();
         virtual void onExit();
-        
+
         virtual void enterFrameHandler(float dt);//void  enterFrameHandler();  // event : Event
-    
+
 		virtual void removeEventTarget(std::MouseEvent * event, BaseNode* node, string caseName);
 		virtual void removeEventTarget(std::MouseEvent * event, string case1, string caseName);
         virtual bool preCheckEventTarget(std::MouseEvent * event, EventMouse::MouseEventType _mouseEventType);
 		virtual void mouseDownHandler(cocos2d::EventMouse* event);
 		virtual void mouseUpHandler(cocos2d::EventMouse* event);
 		virtual void mouseMoveHandler(cocos2d::EventMouse* event);
-		//virtual   void mouseScrollHandler(cocos2d::EventMouse* event);
+		//virtual void mouseScrollHandler(cocos2d::EventMouse* event);
 		virtual void rightMouseDownHandler(cocos2d::EventMouse* event);
 		virtual void rightMouseUpHandler(cocos2d::EventMouse* event);
 
@@ -151,15 +151,15 @@ namespace engine
 		//virtual void onTouchEnded(Touch *touch, Event *unused_event);
 		//virtual void onTouchCancelled(Touch *touch, Event *unused_event);
 		//virtual void onTouchMoved(Touch *touch, Event *unused_event);
-		 
+
 		Tower * addTower(std::string param1, BuildTowerPlace*  param2, bool param3 = false);
 
-        units::Unit * addUnit(int param1, int param2, int param3 = 0, float param4 = 0, int param5 = 0, int param6 = 0); 
+        units::Unit * addUnit(int param1, int param2, int param3 = 0, float param4 = 0, int param5 = 0, int param6 = 0);
 
 		Bullet * addBullet(int param1, cocos2d::Point param2, ShootBase *  param3, units::Unit*  param4, float param5 = 0, int param6 = 0);
 
 		virtual void manageIndexes();
-		 
+
 		virtual void manageMouse(string param1);
 
 		virtual void manageListeners(string param1);
@@ -176,7 +176,7 @@ namespace engine
 		virtual void addClasses(BaseNode * node);
 		virtual bool existClasses(BaseNode * node);
 		virtual void removeUnit(units::Unit *);
-		virtual void reInit(cocos2d::EventMouse*event);//event:Event 
+		virtual void reInit(cocos2d::EventMouse*event);//event:Event
 
     };
 

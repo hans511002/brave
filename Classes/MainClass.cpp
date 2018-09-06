@@ -98,8 +98,8 @@ void Main::addNewScreen(const string & param1)
         else if (param1 == "World")
         {
             this->container = this->worldClass = new World();
-            this->worldClass->init();
             this->addChild(this->worldClass);
+            this->worldClass->init();
         }
         //this->bmp = new Bitmap(this->getBitmapData(this->container));
         //this->addChild(Main.mainClass.bmp);

@@ -47,7 +47,7 @@ namespace engine
 		pointer1 = NULL;
 		pointer2 = NULL;
 		pointer3 = NULL;
-		this->setContentSize(Size(Main::SCREEN_WIDTH,Main::SCREEN_HEIGHT));
+		this->setContentSize(Size(Main::LEVEL_MAP_WIDTH,Main::LEVEL_MAP_HEIGHT));
 		//Main::mainClass->worldClass = this;
 		//this->listOfFlags = [];
 		//this->listOfPlaces = [];
@@ -79,6 +79,9 @@ namespace engine
 	bool World::init()
 	{
 		BaseNode::init();
+		fixedRoot = Node::create();
+		fixedRoot->setContentSize(Size(Main::SCREEN_WIDTH, Main::SCREEN_HEIGHT));
+		this->getParent()->addChild(fixedRoot);
 		this->wavesClass = new Waves();
 		this->feature = new Feature();
 		map = new casts::Map();
@@ -92,7 +95,6 @@ namespace engine
 		//	bezier::PathPoint ppo = this->bezierClass->getPathPoint(path, r,w);
 		//}
 		//long ts=Common::DateTime().GetTicks() -dt.GetTicks();
-  
         return true;
 	};
 	void World::onEnter()
@@ -142,21 +144,21 @@ namespace engine
 					if (this->nowLevel == 1)
 					{
 						//this->menuObject = new Training_2();
-						//this->addChild(this->menuObject); 
+						//this->addChild(this->menuObject);
 						//this->setMouseChildren(true);
 						//this->setMouseEnabled(true);
 					}
 					else if (this->nowLevel >= 2 && this->nowLevel <= 11)
 					{
 						//this->menuObject = new Training_92(this->nowLevel - 1);
-						//this->addChild(this->menuObject); 
+						//this->addChild(this->menuObject);
 						//this->setMouseChildren(true);
 						//this->setMouseEnabled(true);
 					}
 					else if (this->nowLevel == 13)
 					{
 						//this->menuObject = new Training_92(11);
-						//this->addChild(this->menuObject); 
+						//this->addChild(this->menuObject);
 						//this->setMouseChildren(true);
 						//this->setMouseEnabled(true);
 					}
@@ -164,14 +166,14 @@ namespace engine
 				else if (this->nowLevel == 1)
 				{
 					//this->menuObject = new Training_92(13);
-					//this->addChild(this->menuObject); 
+					//this->addChild(this->menuObject);
 					//this->setMouseChildren(true);
 					//this->setMouseEnabled(true);
 				}
 				else if (this->nowLevel == 2)
 				{
 					//this->menuObject = new Training_5(3);
-					//this->addChild(this->menuObject); 
+					//this->addChild(this->menuObject);
 					//this->setMouseChildren(true);
 					//this->setMouseEnabled(true);
 				}
@@ -221,7 +223,7 @@ namespace engine
 			i--;
 		}
 		ts = Common::DateTime().GetTicks() - stime.GetTicks();
-		stime = Common::DateTime();logInfo("listOfClasses", ts); 
+		stime = Common::DateTime();logInfo("listOfClasses", ts);
 		i = this->listOfTowers.size() - 1;
 		while (i >= 0)
 		{
@@ -336,7 +338,7 @@ namespace engine
                     Indexes * tempObject = new Indexes(new RoadsignFire_mc(), 0);
                     tempObject->setPosition(this->listOfFirePortals[i]->getPosition());
                     tempObject->setScaleX(this->listOfFirePortals[i]->getScaleX());
-                    tempObject->setScaleY(this->listOfFirePortals[i]->getScaleY()); 
+                    tempObject->setScaleY(this->listOfFirePortals[i]->getScaleY());
 					i++;
 				}
 				i = 0;
@@ -372,14 +374,14 @@ namespace engine
 		ts = Common::DateTime().GetTicks() - stime.GetTicks();
 		stime = Common::DateTime(); logInfo("end", ts);
 		ts = Common::DateTime().GetTicks() - gstime.GetTicks();
-		logInfo("all", ts);  
+		logInfo("all", ts);
 		if (this->worldInterface->fasterFlag == 2)
 		{
 			if (this->frameCounter % 2)
 			{
 				this->enterFrameHandler(0);
 			}
-		} 
+		}
 
 		return;
 	}// end function
@@ -423,7 +425,7 @@ namespace engine
         removeEventTarget(event, "levinCase", "archiveCase");
         removeEventTarget(event, "getAllCase", "archiveCase");
         removeEventTarget(event, "archiveCase", "interfaceUpCase");
-        removeEventTarget(event, "sellCase", "interfaceUpCase");   
+        removeEventTarget(event, "sellCase", "interfaceUpCase");
         Vec2 pos = event->getLocationInView();
         switch(_mouseEventType)
         {
@@ -457,7 +459,7 @@ namespace engine
             break;
         default:
             break;
-        } 
+        }
 		event->reset();
 		return false;
 	};
@@ -610,7 +612,7 @@ namespace engine
 					}
 				}
 			}
-		} 
+		}
 	}
 	void World::mouseUpHandler(cocos2d::EventMouse* e)
 	{
@@ -620,7 +622,7 @@ namespace engine
 		std::MouseEvent me(e);
 		if (!useNodeEvent){
 			me = std::buildMouseEvent(e);
-		} 
+		}
 		std::MouseEvent * event = &me;
         if(preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_UP))return;
         if(!event->currentTargets.size())
@@ -745,8 +747,8 @@ namespace engine
 					return;
 				}
 			}
-			if (this->buildTowerMenu) 
-				this->buildTowerMenu->mouseMoveHandler(event); 
+			if (this->buildTowerMenu)
+				this->buildTowerMenu->mouseMoveHandler(event);
             if(this->decoration)
                 this->decoration->mouseMoveHandler(event);
 			if (!this->cast && targetName == "towerCase")// && event->target->mouseEnabled
@@ -806,7 +808,7 @@ namespace engine
 								this->towerRadius->myTower->container->selectTower->setVisible(true);
 							}
 						}
-						
+
 						logInfo("towerRadius", this->towerRadius->getAnchorPoint(),&this->towerRadius->getPosition());
 						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
 					}
@@ -922,7 +924,7 @@ namespace engine
 				this->worldInterface->breaking();
 			}
 		}
-	}	
+	}
 	void World::rightMouseUpHandler(cocos2d::EventMouse* e)
 	{
 		if (!globalNode)EventNode::mouseDownHandler(e);
@@ -1286,7 +1288,7 @@ namespace engine
 		//	//	//this->listOfIndexes0.sortOn(["y", "x"], [Array.NUMERIC, Array.NUMERIC]);
 		//	//	//this->m = 0;
 		//	//	//while (this->m < this->listOfIndexes0.size())
-		//	//	//{ 
+		//	//	//{
 		//	//	//	this->setChildIndex(this->listOfIndexes0[this->m], (this->numChildren - 1));
 		//	//	//	m++;
 		//	//	//}
@@ -1304,7 +1306,7 @@ namespace engine
 		//	//this->sortIndex.sortOn(["y", "x"], [Array.NUMERIC, Array.NUMERIC]);
 		//	//this->m = 0;
 		//	//while (this->m < this->sortIndex.size())
-		//	//{ 
+		//	//{
 		//	//	this->setChildIndex(this->sortIndex[this->m], (this->numChildren - 1));
 		//	//	m++;
 		//	//}
@@ -1511,7 +1513,7 @@ namespace engine
 		//	this->setChildIndex(this->menuObject, (this->numChildren - 1));
 		//}
 		//return;
-	}// end function 
+	}// end function
 
 	void World::manageMouse(string param1)
 	{
@@ -1533,13 +1535,13 @@ namespace engine
 		{
 			this->enableMouseHandler(true);
 			this->enableFrameHandler(true);
-			 
+
 		}
 		else if (param1 == "off")
 		{
 			this->disableMouseHandler();
 			this->disableFrameHandler();
-			 
+
 		}
 		return;
 	}// end function
@@ -1579,7 +1581,7 @@ namespace engine
 			//	{
 			//		Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U025), "83409581c3f54d89fab5", String(Main::mainClass->IDIClass.currentUser));
 			//	}
-			//} 
+			//}
 		}
 		else if (param1 == "kill_100_enemies")
 		{
@@ -1589,7 +1591,7 @@ namespace engine
 			//	{
 			//		Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U026), "ccff354b538ba9d981c6", String(Main::mainClass->IDIClass.currentUser));
 			//	}
-			//} 
+			//}
 		}
 		else if (param1 == "kill_2500_enemies")
 		{
@@ -1599,7 +1601,7 @@ namespace engine
 			//	{
 			//		Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U027), "11963b14f22a7bce56b1", String(Main::mainClass->IDIClass.currentUser));
 			//	}
-			//} 
+			//}
 		}
 		else if (param1 == "call_100_earlyWaves")
 		{
@@ -1609,7 +1611,7 @@ namespace engine
 			//	{
 			//		Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U028), "9505fe07aec600010632", String(Main::mainClass->IDIClass.currentUser));
 			//	}
-			//} 
+			//}
 		}
 		else if (param1 == "build_100_towers")
 		{
@@ -1619,7 +1621,7 @@ namespace engine
 			//	{
 			//		Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U029), "45b808416d58aa9ec362", String(Main::mainClass->IDIClass.currentUser));
 			//	}
-			//} 
+			//}
 		}
 		else if (param1 == "createGolem_5_times")
 		{
@@ -1629,7 +1631,7 @@ namespace engine
 			//	{
 			//		Main::mainClass->IDIClass.idnet.achievementsSave(I18N_VALUE(I18N_CODE::U030), "4933337d00fe765e2d76", String(Main::mainClass->IDIClass.currentUser));
 			//	}
-			//} 
+			//}
 		}
 		//else if (param1 == "createIceman_15_times")
 		//{
@@ -2244,7 +2246,7 @@ namespace engine
 		//this->removeEventListener(Event.DEACTIVATE, this->deactivateHandler);
 		//return;
 	}// end function
-    void World::removeClasses(BaseNode * node) 
+    void World::removeClasses(BaseNode * node)
     {
         int i = listOfClasses.size()-1;
         while(i >=0)
@@ -2377,7 +2379,7 @@ namespace engine
 		while (i >= 0)
 		{
 			if (this->listOfBullets[i] == blt) {
-			    this->listOfBullets.remove(i); 
+			    this->listOfBullets.remove(i);
 				break;
 			};
 			i--;

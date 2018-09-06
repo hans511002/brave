@@ -29,7 +29,7 @@ namespace engine
         this->container->stop();
         this->container->cont->stop();
         this->container->contNoteTXT->setString(Common::String("+") + this->world->bonusMoney);
-        this->container->setPosition(Main::SCREEN_WIDTH_HALF,Main::SCREEN_HEIGHT_HALF);
+        this->container->setPosition(Main::LEVEL_MAP_WIDTH/2,Main::LEVEL_MAP_HEIGHT/2);
         this->addChild(this->container);
         this->setMouseChildren(false);
         this->setMouseEnabled(false);
