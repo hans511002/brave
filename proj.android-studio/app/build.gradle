@@ -114,21 +114,21 @@ android {
 android.applicationVariants.all { variant ->
     // delete previous files first
     delete "${buildDir}/intermediates/assets/${variant.dirName}"
+    copy {
+        from "${buildDir}/../../../Resources/res"
+        into "${buildDir}/intermediates/assets/${variant.dirName}"
+        exclude "**/*.gz"
+        exclude "${buildDir}/../../../Resources/res/**/**/*.zip","${buildDir}/../../../Resources/res/**/**/library/**"
+        //excludes.add("**/*.zip")
+        //delete ("${buildDir}/../../Resources/res\\cast\\Air_mc\\Air_mc.zip")
+        exclude{
+            File f = it.file
+            //println f.absolutePath
+            f.absolutePath.endsWith(".zip") || f.absolutePath.indexOf("library")>0
+        }
+    }
 
     variant.mergeAssets.doLast {
-        copy {
-           from "${buildDir}/../../../Resources/res"
-           into "${buildDir}/intermediates/assets/${variant.dirName}"
-            exclude "**/*.gz"
-            exclude "${buildDir}/../../../Resources/res/**/**/*.zip","${buildDir}/../../../Resources/res/**/**/library/**"
-            //excludes.add("**/*.zip")
-            //delete ("${buildDir}/../../Resources/res\\cast\\Air_mc\\Air_mc.zip")
-            exclude{
-                File f = it.file
-                //println f.absolutePath
-                 f.absolutePath.endsWith(".zip") || f.absolutePath.indexOf("library")>0
-            }
-        }
         copy {
             from "${buildDir}/intermediates/assets/${variant.dirName}"
             into "${buildDir}/tmp/assets/${variant.dirName}"
