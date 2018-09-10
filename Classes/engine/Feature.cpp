@@ -1433,8 +1433,8 @@ namespace engine
 		}
 
 		this->world->worldInterface = new WorldInterface();
-		this->world->fixedRoot->addChild(this->world->worldInterface);
 		this->world->worldInterface->init();
+		this->world->fixedRoot->addChild(this->world->worldInterface);
 		//world->logInfo("buyFireBuyTXT", world->worldInterface->container->buyFireBuyTXT->getPosition());
 		//world->logInfo("buyFireBuyTXT", world->worldInterface->container->buyFireBuyTXT->getNamePath());
 		//world->logInfo("buyFireBuyTXT", world->worldInterface->container->buyFire->convertToWorldSpace(world->worldInterface->container->buyFireBuyTXT->getPosition()));

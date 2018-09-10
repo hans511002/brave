@@ -242,6 +242,7 @@ namespace engine
 
 	struct MCText :public ui::Text, MovieClipSubBase, public   EventNode
 	{
+		MCText();
         MCText(MC * mc, const string &  slotName);
 		inline virtual void setAlpha(float op) { BaseNode::setAlpha(this, op); };
 		inline virtual float getAlpha() { return  BaseNode::getAlpha(this); };

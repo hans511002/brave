@@ -54,10 +54,10 @@ namespace engine
 		//this->setAlpha(0);
 		this->container = new WorldInterface_mc();
 		this->addChild(this->container);
-
+		this->container->init();
 		//printChildNodes();
 		 
-		this->container->stop();
+		//this->container->stop();
 
 		this->container->fireBack->stop();
 		this->container->iceBack->stop();
@@ -88,11 +88,11 @@ namespace engine
 		this->container->butCastGolem->stop();
 		this->container->butCastIceman->stop();
 		this->container->butCastAir->stop();
-		this->container->barInfo->stop();
-		this->container->slow->stop();
+		//this->container->barInfo->stop();
+		//this->container->slow->stop();
 		this->container->fast->stop();
 		//this->container->traceBezier->stop();
-		this->container->barInfo->setPositionY(15);//Main:: - 585
+		//this->container->barInfo->setPositionY(15);//Main:: - 585
 		this->container->bookBookCase->setMouseEnabled(true);
 		this->container->pausePauseCase->setMouseEnabled(true);
 		this->container->startWavesStartWavesCase->setMouseEnabled(true);
@@ -100,7 +100,7 @@ namespace engine
 		this->container->butCastIcemanCastIcemanCase->setMouseEnabled(true);
 		this->container->butCastAirCastAirCase->setMouseEnabled(true);
 		//this->container->slow->setMouseEnabled(true);
-		if (this->container->traceBezier)this->container->traceBezier->setMouseEnabled(true);
+		//if (this->container->traceBezier)this->container->traceBezier->setMouseEnabled(true);
 		//this->container->fireNumTXT->setMouseEnabled(false);
 		//this->container->iceNumTXT->setMouseEnabled(false);
 		//this->container->stoneNumTXT->setMouseEnabled(false);
@@ -116,7 +116,7 @@ namespace engine
 		this->container->butCastGolem->setVisible(false);
 		this->container->butCastIceman->setVisible(false);
 		this->container->butCastAir->setVisible(false);
-		this->container->barInfo->setVisible(false);
+		//this->container->barInfo->setVisible(false);
 
 		this->container->lastTime->setVisible(false);
 		//this->container->buyFireLightUp->setVisible(false);
@@ -148,9 +148,9 @@ namespace engine
 		this->container->stoneBacklight->setVisible(false);
 		this->container->levinBacklight->setVisible(false);
 		this->container->buyGetAll->setVisible(false);
-		this->container->testRestart->stop();
-		this->container->testRestartBoard->stop();
-		this->container->testRestart->setMouseEnabled(true);
+		//this->container->testRestart->stop();
+		//this->container->testRestartBoard->stop();
+		//this->container->testRestart->setMouseEnabled(true);
 		//if (Main::mainClass->readXMLClass.bezierBuildXML)
 		//{
 		//	this->world->bezierClass->tracePoints = this->container->traceBezier;
@@ -175,9 +175,9 @@ namespace engine
 		{
 			this->world->addIndexes(this->lastTime,3);
 		}
-		this->container->testRestart->setVisible(false);
-		this->container->testRestartBoard->setVisible(false);
-		this->container->slow->setVisible(false);
+		//this->container->testRestart->setVisible(false);
+		//this->container->testRestartBoard->setVisible(false);
+		//this->container->slow->setVisible(false);
 
 
 
@@ -629,18 +629,18 @@ namespace engine
 				}
 			}
 			this->downloadCast();
-			if (this->world->selectObject)
-			{
-				if (!this->container->barInfo->isVisible())
-				{
-					this->container->barInfo->setVisible(true);
-				}
-				this->barInfoView();
-			}
-			else if (this->container->barInfo->isVisible())
-			{
-				this->container->barInfo->setVisible(false);
-			}
+			//if (this->world->selectObject)
+			//{
+			//	//if (!this->container->barInfo->isVisible())
+			//	//{
+			//	//	this->container->barInfo->setVisible(true);
+			//	//}
+			//	//this->barInfoView();
+			//}
+			//else if (this->container->barInfo->isVisible())
+			//{
+			//	this->container->barInfo->setVisible(false);
+			//}
 			this->newEnemyUpdate();
 			if (this->container->fireBacklight->isVisible())
 			{
@@ -772,7 +772,8 @@ namespace engine
 						{
 							this->listOfGetAhieve[this->i]->closeFlag = true;
 						}
-						this->listOfGetAhieve[this->i]->setPositionY(this->container->barInfo->getPositionY() + 42);// - 42
+						this->listOfGetAhieve[this->i]->setPositionY(20 +42);// - 42
+						//this->listOfGetAhieve[this->i]->setPositionY(this->container->barInfo->getPositionY() + 42);// - 42
 					}
 					else if (this->listOfGetAhieve[this->i]->currentFrame > 1)
 					{
@@ -821,26 +822,6 @@ namespace engine
 
 	void WorldInterface::mouseDownHandler(cocos2d::EventMouse *e)//(event:MouseEvent) : void
 	{
-		//cocos2d::EventMouse*e = (cocos2d::EventMouse*)event;
-		//Node * node = event->getCurrentTarget();
-		//Event::Type tp = event->getType();
-		//string target = node->getName();
-		//CCLOG("WorldInterface::mouseDownHandler %s", target.c_str());
-		//cocos2d::Point pt = e->getLocationInView();
-		//CCLOG("mouse InView point %f,%f", pt.x, pt.y);
-		//cocos2d::Point  nsp = node->convertToNodeSpaceAR(pt);
-		//CCLOG("mouse ToNodeSpaceAR point %f,%f", nsp.x, nsp.y);
-		//nsp = node->convertToNodeSpace(pt);
-		//CCLOG("mouse ToNodeSpace point %f,%f", nsp.x, nsp.y);
-		//nsp = this->world->pointer1->convertToNodeSpaceAR(pt);
-		//CCLOG("pointer1 ToNodeSpace point %f,%f", nsp.x, nsp.y);
-		//Rect bb;
-		//bb.size = this->world->pointer1->pointerCase->getContentSize();
-		//if (bb.containsPoint(nsp))
-		//{
-		//	CCLOG("WorldInterface::containsPoint %s", target.c_str());
-		//}
-		//this->world->wavesClass->startWaves();
 		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
 		if (!event)
 			return;
@@ -848,16 +829,17 @@ namespace engine
 		logInfo("mouseMoveHandler.target", getNamePath(event->target));
 		if (!this->world->getSphere && !this->world->cast)
 		{
-            if(targetName == "slow")
-			{
-                event->processed = true;
-                if(this->container->slow->currentFrame == 2)
-				{
-					this->container->slow->gotoAndStop(3);
-					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-				}
-			}
-            else if(targetName == "fastCase")
+   //         if(targetName == "slow")
+			//{
+   //             event->processed = true;
+   //             if(this->container->slow->currentFrame == 2)
+			//	{
+			//		this->container->slow->gotoAndStop(3);
+			//		AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+			//	}
+			//}
+   //         else 
+			if(targetName == "fastCase")
 			{
                 event->processed = true;
                 if(ISTYPE(EventNode, event->target)->mouseEnabled)
@@ -1111,14 +1093,14 @@ namespace engine
 				} 
 				AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
 			}
-			else if (targetName == "testRestart")
-			{
-                event->processed = true;
-                if(this->container->testRestart->currentFrame == 2)
-				{
-					this->container->testRestart->gotoAndStop(3);
-				}
-			}
+			//else if (targetName == "testRestart")
+			//{
+   //             event->processed = true;
+   //             if(this->container->testRestart->currentFrame == 2)
+			//	{
+			//		this->container->testRestart->gotoAndStop(3);
+			//	}
+			//}
 		}
 	}
 	void WorldInterface::mouseUpHandler(cocos2d::EventMouse *e)//(event:MouseEvent) : void
@@ -1129,33 +1111,33 @@ namespace engine
         string targetName = event->target->getName();
         if(!this->world->getSphere && !this->world->cast)
 		{
-			if (targetName == "slow")
-			{
-                event->processed = true;
-                if(this->container->slow->currentFrame == 3)
-				{
-					if (this->fasterFlag != 1)
-					{
-						this->fastPlayControl(1);
-						if (this->container->fast->currentFrame != 1)
-						{
-							this->container->fast->gotoAndStop(1);
-						}
-					}
-					else
-					{
-						this->fastPlayControl(0);
-						this->container->slow->gotoAndStop(2);
-					}
-				}
-			}
-			else if (this->container->slow->currentFrame == 3)
-			{
-				if (this->fasterFlag != 1)
-				{
-					this->container->slow->gotoAndStop(1);
-				}
-			}
+			//if (targetName == "slow")
+			//{
+   //             event->processed = true;
+   //             if(this->container->slow->currentFrame == 3)
+			//	{
+			//		if (this->fasterFlag != 1)
+			//		{
+			//			this->fastPlayControl(1);
+			//			if (this->container->fast->currentFrame != 1)
+			//			{
+			//				this->container->fast->gotoAndStop(1);
+			//			}
+			//		}
+			//		else
+			//		{
+			//			this->fastPlayControl(0);
+			//			this->container->slow->gotoAndStop(2);
+			//		}
+			//	}
+			//}
+			//else if (this->container->slow->currentFrame == 3)
+			//{
+			//	if (this->fasterFlag != 1)
+			//	{
+			//		this->container->slow->gotoAndStop(1);
+			//	}
+			//}
 			if (targetName == "fastCase")
 			{
                 event->processed = true;
@@ -1232,31 +1214,31 @@ namespace engine
 					this->container->bookCloseFlag = true;
 				}
 			}
-			if (targetName == "testRestart")
-			{
-                event->processed = true;
-                if(this->container->testRestart->currentFrame == 3)
-				{
-					this->container->testRestart->gotoAndStop(2);
-					//if (std::getText(this->container->testRestartBoardWaveTXT) == "")
-					//{
-					//	//Main::mainClass->testingClass->loadWave = Main::mainClass->worldClass->wavesClass->nowWave;
-					//}
-					//else if (std::getInt(this->container->testRestartBoardWaveTXT) < Main::mainClass->testingClass->listOfStory.size())
-					//{
-					//	//Main::mainClass->testingClass->loadWave = std::getInt(this->container->testRestartBoardWaveTXT);
-					//}
-					//else
-					//{
-					//	//Main::mainClass->testingClass->loadWave = 0;
-					//}
-					Main::mainClass->addNewScreen("World");
-				}
-			}
-			else if (this->container->testRestart->currentFrame == 3)
-			{
-				this->container->testRestart->gotoAndStop(1);
-			}
+			//if (targetName == "testRestart")
+			//{
+   //             event->processed = true;
+   //             if(this->container->testRestart->currentFrame == 3)
+			//	{
+			//		this->container->testRestart->gotoAndStop(2);
+			//		//if (std::getText(this->container->testRestartBoardWaveTXT) == "")
+			//		//{
+			//		//	//Main::mainClass->testingClass->loadWave = Main::mainClass->worldClass->wavesClass->nowWave;
+			//		//}
+			//		//else if (std::getInt(this->container->testRestartBoardWaveTXT) < Main::mainClass->testingClass->listOfStory.size())
+			//		//{
+			//		//	//Main::mainClass->testingClass->loadWave = std::getInt(this->container->testRestartBoardWaveTXT);
+			//		//}
+			//		//else
+			//		//{
+			//		//	//Main::mainClass->testingClass->loadWave = 0;
+			//		//}
+			//		Main::mainClass->addNewScreen("World");
+			//	}
+			//}
+			//else if (this->container->testRestart->currentFrame == 3)
+			//{
+			//	this->container->testRestart->gotoAndStop(1);
+			//}
 		}
 	}// end function
 	void WorldInterface::mouseMoveHandler(cocos2d::EventMouse *e)//MouseEvent
@@ -1440,19 +1422,19 @@ namespace engine
 					this->getAllHint = NULL;
 				}
 			}
-            if(targetName == "slow")
-			{
-                event->processed = true;
-				if (this->container->slow->currentFrame == 1)
-				{
-					this->container->slow->gotoAndStop(2);
-					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-				}
-			}
-			else if (this->container->slow->currentFrame == 2)
-			{
-				this->container->slow->gotoAndStop(1);
-			}
+   //         if(targetName == "slow")
+			//{
+   //             event->processed = true;
+			//	if (this->container->slow->currentFrame == 1)
+			//	{
+			//		this->container->slow->gotoAndStop(2);
+			//		AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+			//	}
+			//}
+			//else if (this->container->slow->currentFrame == 2)
+			//{
+			//	this->container->slow->gotoAndStop(1);
+			//}
             if(targetName == "fastCase")
 			{
                 event->processed = true;
@@ -1823,18 +1805,18 @@ namespace engine
 					i++;
 				}
 			}
-            if(targetName == "testRestart")
-			{
-                event->processed = true;
-                if(this->container->testRestart->currentFrame == 1)
-				{
-					this->container->testRestart->gotoAndStop(2);
-				}
-			}
-			else if (this->container->testRestart->currentFrame == 2)
-			{
-				this->container->testRestart->gotoAndStop(1);
-			}
+   //         if(targetName == "testRestart")
+			//{
+   //             event->processed = true;
+   //             if(this->container->testRestart->currentFrame == 1)
+			//	{
+			//		this->container->testRestart->gotoAndStop(2);
+			//	}
+			//}
+			//else if (this->container->testRestart->currentFrame == 2)
+			//{
+			//	this->container->testRestart->gotoAndStop(1);
+			//}
 			if (targetName == "sellCase")
 			{
                 event->processed = true;
@@ -3062,265 +3044,265 @@ namespace engine
 
 	void  WorldInterface::barInfoView()
 	{
-		if (dynamic_cast<GetSphere *>(this->world->selectObject) && this->world->getSphere)
-		{
-			if (this->world->getSphere->fireCount > 0 && this->world->getSphere->iceCount == 0 && this->world->getSphere->stoneCount == 0 && this->world->getSphere->levinCount == 0)
-			{
-				std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + ::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U011) + ::round(this->world->getSphere->myDamage));
-			}
-			else if (this->world->getSphere->fireCount == 0 && this->world->getSphere->iceCount > 0 && this->world->getSphere->stoneCount == 0 && this->world->getSphere->levinCount == 0)
-			{
-				std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + ::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U012) + ::round(this->world->getSphere->myDamage));
-			}
-			else if (this->world->getSphere->fireCount == 0 && this->world->getSphere->iceCount == 0 && this->world->getSphere->stoneCount > 0 && this->world->getSphere->levinCount == 0)
-			{
-				std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + ::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U013) + ::round(this->world->getSphere->myDamage));
-			}
-			else if (this->world->getSphere->fireCount == 0 && this->world->getSphere->iceCount == 0 && this->world->getSphere->stoneCount == 0 && this->world->getSphere->levinCount > 0)
-			{
-				std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + ::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U014) + ::round(this->world->getSphere->myDamage));
-			}
-			else if (this->world->getSphere->getAllCount > 0)
-			{
-				std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + ::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U015) + ::round(this->world->getSphere->myDamage));
-			}
-			else if ((this->world->getSphere->fireCount > 0 && this->world->getSphere->iceCount > 0 && this->world->getSphere->stoneCount > 0 && this->world->getSphere->levinCount == 0)
-				|| (this->world->getSphere->fireCount > 0 && this->world->getSphere->iceCount > 0 && this->world->getSphere->stoneCount == 0 && this->world->getSphere->levinCount > 0)
-				|| (this->world->getSphere->fireCount > 0 && this->world->getSphere->iceCount == 0 && this->world->getSphere->stoneCount > 0 && this->world->getSphere->levinCount > 0)
-				|| (this->world->getSphere->fireCount == 0 && this->world->getSphere->iceCount > 0 && this->world->getSphere->stoneCount > 0 && this->world->getSphere->levinCount > 0))
-			{
-				if (this->world->getSphere->fireCount > 1 || this->world->getSphere->iceCount > 1 || this->world->getSphere->stoneCount > 1 || this->world->getSphere->levinCount > 1)
-				{
-					std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + ::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U015) + ::round(this->world->getSphere->myDamage * Main::mainClass->readXMLClass.getAllLittleDoubleMultiply));
-				}
-				else
-				{
-					std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + ::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U015) + ::round(this->world->getSphere->myDamage * Main::mainClass->readXMLClass.getAllLittleMultiply));
-				}
-			}
-			else
-			{
-				std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + ::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U015) + ::round(this->world->getSphere->myDamage));
-			}
-		}
-		else if (dynamic_cast<casts::Cast *>(this->world->selectObject) && this->world->cast)
-		{
-			if (dynamic_cast<casts::Cast_1 *>(this->world->cast))
-			{
-				std::setText(this->container->barInfoHealthTXT, ::round(Main::mainClass->readXMLClass.castGolemHealthXML));
-			}
-			else if (dynamic_cast<casts::Cast_2 *>(this->world->cast))
-			{
-				std::setText(this->container->barInfoNoteTXT, Common::String(::round(Main::mainClass->readXMLClass.castIcemanLifeTimerXML / 30)) + I18N_VALUE(I18N_CODE::U016));
-			}
-			else if (dynamic_cast<casts::Cast_3 *>(this->world->cast))
-			{
-				std::setText(this->container->barInfoNoteTXT, Common::String(::round(Main::mainClass->readXMLClass.airLifeSecXML / 30) ) + I18N_VALUE(I18N_CODE::U016));
-			}
-		}
-		else if (dynamic_cast<Unit *>(this->world->selectObject))
-		{
-			Unit * unit = dynamic_cast<Unit *>(this->world->selectObject);
-			std::setText(this->container->barInfoHealthTXT, ::round(unit->health) + Common::String("/") + ::round(unit->healthMax));
-			if (this->container->barInfoMyTarget != this->world->selectObject)
-			{
-				this->container->barInfoMyTarget = this->world->selectObject;
-				//Common::Array<string> tempObject = Encyclopedia::enemyInfo(this->world->selectObject->typeUnit); 
-				//std::setText(this->container->barInfoSpeedTXT , tempObject[2] );
-				//std::setText(this->container->barInfoPenaltyTXT , tempObject[3] ); 
-				//std::setText(this->container->barInfoFireTXT , tempObject[4] );
-				//std::setText(this->container->barInfoIceTXT , tempObject[5] );
-				//std::setText(this->container->barInfoStoneTXT , tempObject[6] );
-				//std::setText(this->container->barInfoLevinTXT , tempObject[7] );
-			}
-		}
-		else if (dynamic_cast<Golem *>(this->world->selectObject))
-		{
-			Golem * golem = dynamic_cast<Golem *>(this->world->selectObject);
-			if (!golem->brother)
-			{
-				std::setText(this->container->barInfoHealthTXT, ::round(golem->health));
-			}
-			else
-			{
-				float tempObject = 0;
-				if (!golem->dead && !golem->brother->dead)
-				{
-					tempObject = ::round(golem->health) + ::round(golem->brother->health);
-				}
-				else if (!golem->dead)
-				{
-					tempObject = ::round(golem->health);
-				}
-				else if (!golem->brother->dead)
-				{
-					tempObject = ::round(golem->brother->health);
-				}
-				std::setText(this->container->barInfoHealthTXT, ::round(tempObject));
-			}
-		}
-		else if (dynamic_cast<Iceman *>(this->world->selectObject))
-		{
-			Iceman * iceman = dynamic_cast<Iceman *>(this->world->selectObject);
-			int tempObject = (int)(iceman->liveCounter / 30 + 0.99);
-			if (tempObject > 0)
-			{
-				std::setText(this->container->barInfoNoteTXT, Common::String(tempObject) + I18N_VALUE(I18N_CODE::U016));
-			}
-			else
-			{
-				this->barInfoManage();
-			}
-		}
-		else if (dynamic_cast<Air *>(this->world->selectObject))
-		{
-			Air * air = dynamic_cast<Air *>(this->world->selectObject);
-			int tempObject = (int)(air->liveCounter / 30 + 0.99);
-			if (tempObject > 0)
-			{
-				std::setText(this->container->barInfoNoteTXT, Common::String(tempObject) + I18N_VALUE(I18N_CODE::U016));
-			}
-			else
-			{
-				this->barInfoManage();
-			}
-		}
-		else if (dynamic_cast<TowerMenu *>(this->world->selectObject) || dynamic_cast<UltraTowerMenu *>(this->world->selectObject))
-		{
-			TowerMenu * towerMenu = dynamic_cast<TowerMenu *>(this->world->selectObject);
-			if (towerMenu->myTower->towerType < 5)
-			{
-				std::setText(this->container->barInfoNoteTXT, "");
-				if (towerMenu->myTower->shootingTurnStack[0])
-				{
-					std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U017)) +
-						::round(Main::mainClass->readXMLClass.listOfFireTowerDamageXML[(towerMenu->myTower->shootingTurnStack[0][3] - 1)]) + I18N_VALUE(I18N_CODE::U018));
-				}
-				if (towerMenu->myTower->shootingTurnStack[1])
-				{
-					std::setText(this->container->barInfoNoteTXT, Common::String(std::getText(this->container->barInfoNoteTXT))
-						+ Common::String(I18N_VALUE(I18N_CODE::U019)) + Common::String(::round(Main::mainClass->readXMLClass.listOfIceTowerDamageXML[(towerMenu->myTower->shootingTurnStack[1][3] - 1)])) + Common::String(I18N_VALUE(I18N_CODE::U018)));
-				}
-				if (towerMenu->myTower->shootingTurnStack[2])
-				{
-					std::setText(this->container->barInfoNoteTXT, std::getText(this->container->barInfoNoteTXT) + Common::String(I18N_VALUE(I18N_CODE::U020)) + Common::String(::round(Main::mainClass->readXMLClass.listOfStoneTowerDamageXML[(towerMenu->myTower->shootingTurnStack[2][3] - 1)])) + I18N_VALUE(I18N_CODE::U018));
-				}
-				if (towerMenu->myTower->shootingTurnStack[3])
-				{
-					std::setText(this->container->barInfoNoteTXT, std::getText(this->container->barInfoNoteTXT) + Common::String(I18N_VALUE(I18N_CODE::U021)) + Common::String(::round(Main::mainClass->readXMLClass.listOfLevinTowerDamageXML[(towerMenu->myTower->shootingTurnStack[3][3] - 1)])) + I18N_VALUE(I18N_CODE::U018));
-				}
-				if (std::getText(this->container->barInfoNoteTXT) == "")
-				{
-					std::setText(this->container->barInfoNoteTXT, I18N_VALUE(I18N_CODE::U022));
-				}
-				else
-				{
-					string noteText = std::getText(this->container->barInfoNoteTXT);
-					std::setText(this->container->barInfoNoteTXT, noteText.substr(0, noteText.size() - 2));
-				}
-			}
-			else
-			{
-				if (towerMenu->myTower->towerType == 8)
-				{
-					std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U023)) + ::round(towerMenu->myTower->damage * 3));
-				}
-				else
-				{
-					std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U023)) + ::round(towerMenu->myTower->damage));
-				}
-				if (towerMenu->myTower->upgradeTypeAdd == 1)
-				{
-					if (towerMenu->myTower->towerType == 5)
-					{
-						std::setText(this->container->barInfoNoteTXT, std::getText(this->container->barInfoNoteTXT) + Common::String(I18N_VALUE(I18N_CODE::U024))
-							+ Common::String(::round(towerMenu->myTower->upgr1_damage * 49)));
-					}
-					else
-					{
-						std::setText(this->container->barInfoNoteTXT, std::getText(this->container->barInfoNoteTXT) + Common::String(I18N_VALUE(I18N_CODE::U024))
-							+ Common::String(::round(towerMenu->myTower->upgr1_damage)));
-					}
-				}
-			}
-		}
-		else if (this->world->selectObject)
-		{
-			if (!this->world->towerMenu)
-			{
-				this->barInfoManage();
-			}
-			else
-			{
-				this->barInfoManage(this->world->towerMenu);
-			}
-		}
-		return;
+		//if (dynamic_cast<GetSphere *>(this->world->selectObject) && this->world->getSphere)
+		//{
+		//	if (this->world->getSphere->fireCount > 0 && this->world->getSphere->iceCount == 0 && this->world->getSphere->stoneCount == 0 && this->world->getSphere->levinCount == 0)
+		//	{
+		//		std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + ::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U011) + ::round(this->world->getSphere->myDamage));
+		//	}
+		//	else if (this->world->getSphere->fireCount == 0 && this->world->getSphere->iceCount > 0 && this->world->getSphere->stoneCount == 0 && this->world->getSphere->levinCount == 0)
+		//	{
+		//		std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + ::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U012) + ::round(this->world->getSphere->myDamage));
+		//	}
+		//	else if (this->world->getSphere->fireCount == 0 && this->world->getSphere->iceCount == 0 && this->world->getSphere->stoneCount > 0 && this->world->getSphere->levinCount == 0)
+		//	{
+		//		std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + ::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U013) + ::round(this->world->getSphere->myDamage));
+		//	}
+		//	else if (this->world->getSphere->fireCount == 0 && this->world->getSphere->iceCount == 0 && this->world->getSphere->stoneCount == 0 && this->world->getSphere->levinCount > 0)
+		//	{
+		//		std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + ::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U014) + ::round(this->world->getSphere->myDamage));
+		//	}
+		//	else if (this->world->getSphere->getAllCount > 0)
+		//	{
+		//		std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + ::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U015) + ::round(this->world->getSphere->myDamage));
+		//	}
+		//	else if ((this->world->getSphere->fireCount > 0 && this->world->getSphere->iceCount > 0 && this->world->getSphere->stoneCount > 0 && this->world->getSphere->levinCount == 0)
+		//		|| (this->world->getSphere->fireCount > 0 && this->world->getSphere->iceCount > 0 && this->world->getSphere->stoneCount == 0 && this->world->getSphere->levinCount > 0)
+		//		|| (this->world->getSphere->fireCount > 0 && this->world->getSphere->iceCount == 0 && this->world->getSphere->stoneCount > 0 && this->world->getSphere->levinCount > 0)
+		//		|| (this->world->getSphere->fireCount == 0 && this->world->getSphere->iceCount > 0 && this->world->getSphere->stoneCount > 0 && this->world->getSphere->levinCount > 0))
+		//	{
+		//		if (this->world->getSphere->fireCount > 1 || this->world->getSphere->iceCount > 1 || this->world->getSphere->stoneCount > 1 || this->world->getSphere->levinCount > 1)
+		//		{
+		//			std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + ::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U015) + ::round(this->world->getSphere->myDamage * Main::mainClass->readXMLClass.getAllLittleDoubleMultiply));
+		//		}
+		//		else
+		//		{
+		//			std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + ::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U015) + ::round(this->world->getSphere->myDamage * Main::mainClass->readXMLClass.getAllLittleMultiply));
+		//		}
+		//	}
+		//	else
+		//	{
+		//		std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U010)) + ::round(this->world->getSphere->myRadius) + I18N_VALUE(I18N_CODE::U015) + ::round(this->world->getSphere->myDamage));
+		//	}
+		//}
+		//else if (dynamic_cast<casts::Cast *>(this->world->selectObject) && this->world->cast)
+		//{
+		//	if (dynamic_cast<casts::Cast_1 *>(this->world->cast))
+		//	{
+		//		std::setText(this->container->barInfoHealthTXT, ::round(Main::mainClass->readXMLClass.castGolemHealthXML));
+		//	}
+		//	else if (dynamic_cast<casts::Cast_2 *>(this->world->cast))
+		//	{
+		//		std::setText(this->container->barInfoNoteTXT, Common::String(::round(Main::mainClass->readXMLClass.castIcemanLifeTimerXML / 30)) + I18N_VALUE(I18N_CODE::U016));
+		//	}
+		//	else if (dynamic_cast<casts::Cast_3 *>(this->world->cast))
+		//	{
+		//		std::setText(this->container->barInfoNoteTXT, Common::String(::round(Main::mainClass->readXMLClass.airLifeSecXML / 30) ) + I18N_VALUE(I18N_CODE::U016));
+		//	}
+		//}
+		//else if (dynamic_cast<Unit *>(this->world->selectObject))
+		//{
+		//	Unit * unit = dynamic_cast<Unit *>(this->world->selectObject);
+		//	std::setText(this->container->barInfoHealthTXT, ::round(unit->health) + Common::String("/") + ::round(unit->healthMax));
+		//	if (this->container->barInfoMyTarget != this->world->selectObject)
+		//	{
+		//		this->container->barInfoMyTarget = this->world->selectObject;
+		//		//Common::Array<string> tempObject = Encyclopedia::enemyInfo(this->world->selectObject->typeUnit); 
+		//		//std::setText(this->container->barInfoSpeedTXT , tempObject[2] );
+		//		//std::setText(this->container->barInfoPenaltyTXT , tempObject[3] ); 
+		//		//std::setText(this->container->barInfoFireTXT , tempObject[4] );
+		//		//std::setText(this->container->barInfoIceTXT , tempObject[5] );
+		//		//std::setText(this->container->barInfoStoneTXT , tempObject[6] );
+		//		//std::setText(this->container->barInfoLevinTXT , tempObject[7] );
+		//	}
+		//}
+		//else if (dynamic_cast<Golem *>(this->world->selectObject))
+		//{
+		//	Golem * golem = dynamic_cast<Golem *>(this->world->selectObject);
+		//	if (!golem->brother)
+		//	{
+		//		std::setText(this->container->barInfoHealthTXT, ::round(golem->health));
+		//	}
+		//	else
+		//	{
+		//		float tempObject = 0;
+		//		if (!golem->dead && !golem->brother->dead)
+		//		{
+		//			tempObject = ::round(golem->health) + ::round(golem->brother->health);
+		//		}
+		//		else if (!golem->dead)
+		//		{
+		//			tempObject = ::round(golem->health);
+		//		}
+		//		else if (!golem->brother->dead)
+		//		{
+		//			tempObject = ::round(golem->brother->health);
+		//		}
+		//		std::setText(this->container->barInfoHealthTXT, ::round(tempObject));
+		//	}
+		//}
+		//else if (dynamic_cast<Iceman *>(this->world->selectObject))
+		//{
+		//	Iceman * iceman = dynamic_cast<Iceman *>(this->world->selectObject);
+		//	int tempObject = (int)(iceman->liveCounter / 30 + 0.99);
+		//	if (tempObject > 0)
+		//	{
+		//		std::setText(this->container->barInfoNoteTXT, Common::String(tempObject) + I18N_VALUE(I18N_CODE::U016));
+		//	}
+		//	else
+		//	{
+		//		this->barInfoManage();
+		//	}
+		//}
+		//else if (dynamic_cast<Air *>(this->world->selectObject))
+		//{
+		//	Air * air = dynamic_cast<Air *>(this->world->selectObject);
+		//	int tempObject = (int)(air->liveCounter / 30 + 0.99);
+		//	if (tempObject > 0)
+		//	{
+		//		std::setText(this->container->barInfoNoteTXT, Common::String(tempObject) + I18N_VALUE(I18N_CODE::U016));
+		//	}
+		//	else
+		//	{
+		//		this->barInfoManage();
+		//	}
+		//}
+		//else if (dynamic_cast<TowerMenu *>(this->world->selectObject) || dynamic_cast<UltraTowerMenu *>(this->world->selectObject))
+		//{
+		//	TowerMenu * towerMenu = dynamic_cast<TowerMenu *>(this->world->selectObject);
+		//	if (towerMenu->myTower->towerType < 5)
+		//	{
+		//		std::setText(this->container->barInfoNoteTXT, "");
+		//		if (towerMenu->myTower->shootingTurnStack[0])
+		//		{
+		//			std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U017)) +
+		//				::round(Main::mainClass->readXMLClass.listOfFireTowerDamageXML[(towerMenu->myTower->shootingTurnStack[0][3] - 1)]) + I18N_VALUE(I18N_CODE::U018));
+		//		}
+		//		if (towerMenu->myTower->shootingTurnStack[1])
+		//		{
+		//			std::setText(this->container->barInfoNoteTXT, Common::String(std::getText(this->container->barInfoNoteTXT))
+		//				+ Common::String(I18N_VALUE(I18N_CODE::U019)) + Common::String(::round(Main::mainClass->readXMLClass.listOfIceTowerDamageXML[(towerMenu->myTower->shootingTurnStack[1][3] - 1)])) + Common::String(I18N_VALUE(I18N_CODE::U018)));
+		//		}
+		//		if (towerMenu->myTower->shootingTurnStack[2])
+		//		{
+		//			std::setText(this->container->barInfoNoteTXT, std::getText(this->container->barInfoNoteTXT) + Common::String(I18N_VALUE(I18N_CODE::U020)) + Common::String(::round(Main::mainClass->readXMLClass.listOfStoneTowerDamageXML[(towerMenu->myTower->shootingTurnStack[2][3] - 1)])) + I18N_VALUE(I18N_CODE::U018));
+		//		}
+		//		if (towerMenu->myTower->shootingTurnStack[3])
+		//		{
+		//			std::setText(this->container->barInfoNoteTXT, std::getText(this->container->barInfoNoteTXT) + Common::String(I18N_VALUE(I18N_CODE::U021)) + Common::String(::round(Main::mainClass->readXMLClass.listOfLevinTowerDamageXML[(towerMenu->myTower->shootingTurnStack[3][3] - 1)])) + I18N_VALUE(I18N_CODE::U018));
+		//		}
+		//		if (std::getText(this->container->barInfoNoteTXT) == "")
+		//		{
+		//			std::setText(this->container->barInfoNoteTXT, I18N_VALUE(I18N_CODE::U022));
+		//		}
+		//		else
+		//		{
+		//			string noteText = std::getText(this->container->barInfoNoteTXT);
+		//			std::setText(this->container->barInfoNoteTXT, noteText.substr(0, noteText.size() - 2));
+		//		}
+		//	}
+		//	else
+		//	{
+		//		if (towerMenu->myTower->towerType == 8)
+		//		{
+		//			std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U023)) + ::round(towerMenu->myTower->damage * 3));
+		//		}
+		//		else
+		//		{
+		//			std::setText(this->container->barInfoNoteTXT, Common::String(I18N_VALUE(I18N_CODE::U023)) + ::round(towerMenu->myTower->damage));
+		//		}
+		//		if (towerMenu->myTower->upgradeTypeAdd == 1)
+		//		{
+		//			if (towerMenu->myTower->towerType == 5)
+		//			{
+		//				std::setText(this->container->barInfoNoteTXT, std::getText(this->container->barInfoNoteTXT) + Common::String(I18N_VALUE(I18N_CODE::U024))
+		//					+ Common::String(::round(towerMenu->myTower->upgr1_damage * 49)));
+		//			}
+		//			else
+		//			{
+		//				std::setText(this->container->barInfoNoteTXT, std::getText(this->container->barInfoNoteTXT) + Common::String(I18N_VALUE(I18N_CODE::U024))
+		//					+ Common::String(::round(towerMenu->myTower->upgr1_damage)));
+		//			}
+		//		}
+		//	}
+		//}
+		//else if (this->world->selectObject)
+		//{
+		//	if (!this->world->towerMenu)
+		//	{
+		//		this->barInfoManage();
+		//	}
+		//	else
+		//	{
+		//		this->barInfoManage(this->world->towerMenu);
+		//	}
+		//}
+		//return;
 	}// end function
 
 	void WorldInterface::barInfoManage(BaseNode * param1)
 	{
-		if (this->world->selectObject)
-		{
-			if (dynamic_cast<Unit *>(this->world->selectObject))
-			{
-				Unit * unit = dynamic_cast<Unit *>(this->world->selectObject);
-				unit->container->selectUnit->setVisible(false);
-			}
-		}
-		if (!param1)
-		{
-			this->world->selectObject = NULL;
-			this->world->worldInterface->container->barInfo->gotoAndStop(1);
-			this->i = this->world->listOfClasses.size() - 1;
-			while (this->i >= 0)
-			{
-				if (dynamic_cast<Golem *>(this->world->listOfClasses[this->i]) || dynamic_cast<Iceman *>(this->world->listOfClasses[this->i])
-					|| dynamic_cast<Air *>(this->world->listOfClasses[this->i]))
-				{
-					this->world->selectObject = this->world->listOfClasses[this->i];
-					if (dynamic_cast<Golem *>(this->world->listOfClasses[this->i]))
-					{
-						this->world->worldInterface->container->barInfo->gotoAndStop(4);
-					}
-					else if (dynamic_cast<Iceman *>(this->world->listOfClasses[this->i]) || dynamic_cast<Air *>(this->world->listOfClasses[this->i]))
-					{
-						this->world->worldInterface->container->barInfo->gotoAndStop(5);
-					}
-					else
-					{
-						this->world->worldInterface->container->barInfo->gotoAndStop(2);
-					}
-					break;
-				}
-				i--;
-			}
-		}
-		else
-		{
-			this->world->selectObject = param1;
-			if (dynamic_cast<Unit *>(this->world->selectObject))
-			{
-				Unit * unit = dynamic_cast<Unit *>(this->world->selectObject);
-				unit->container->selectUnit->setVisible(true);
-				this->world->worldInterface->container->barInfo->gotoAndStop(3);
-				this->container->barInfoMyTarget = NULL;
-			}
-			else if (dynamic_cast<Golem *>(this->world->selectObject) || dynamic_cast<Cast_1 *>(this->world->selectObject))
-			{
-				this->world->worldInterface->container->barInfo->gotoAndStop(4);
-			}
-			else if (dynamic_cast<Iceman *>(this->world->selectObject) || dynamic_cast<Cast_2 *>(this->world->selectObject)
-				|| dynamic_cast<Air *>(this->world->selectObject) || dynamic_cast<Cast_3 *>(this->world->selectObject))
-			{
-				this->world->worldInterface->container->barInfo->gotoAndStop(5);
-			}
-			else
-			{
-				this->world->worldInterface->container->barInfo->gotoAndStop(2);
-			}
-			this->barInfoView();
-		}
+		//if (this->world->selectObject)
+		//{
+		//	if (dynamic_cast<Unit *>(this->world->selectObject))
+		//	{
+		//		Unit * unit = dynamic_cast<Unit *>(this->world->selectObject);
+		//		unit->container->selectUnit->setVisible(false);
+		//	}
+		//}
+		//if (!param1)
+		//{
+		//	this->world->selectObject = NULL;
+		//	this->world->worldInterface->container->barInfo->gotoAndStop(1);
+		//	this->i = this->world->listOfClasses.size() - 1;
+		//	while (this->i >= 0)
+		//	{
+		//		if (dynamic_cast<Golem *>(this->world->listOfClasses[this->i]) || dynamic_cast<Iceman *>(this->world->listOfClasses[this->i])
+		//			|| dynamic_cast<Air *>(this->world->listOfClasses[this->i]))
+		//		{
+		//			this->world->selectObject = this->world->listOfClasses[this->i];
+		//			if (dynamic_cast<Golem *>(this->world->listOfClasses[this->i]))
+		//			{
+		//				this->world->worldInterface->container->barInfo->gotoAndStop(4);
+		//			}
+		//			else if (dynamic_cast<Iceman *>(this->world->listOfClasses[this->i]) || dynamic_cast<Air *>(this->world->listOfClasses[this->i]))
+		//			{
+		//				this->world->worldInterface->container->barInfo->gotoAndStop(5);
+		//			}
+		//			else
+		//			{
+		//				this->world->worldInterface->container->barInfo->gotoAndStop(2);
+		//			}
+		//			break;
+		//		}
+		//		i--;
+		//	}
+		//}
+		//else
+		//{
+		//	this->world->selectObject = param1;
+		//	if (dynamic_cast<Unit *>(this->world->selectObject))
+		//	{
+		//		Unit * unit = dynamic_cast<Unit *>(this->world->selectObject);
+		//		unit->container->selectUnit->setVisible(true);
+		//		this->world->worldInterface->container->barInfo->gotoAndStop(3);
+		//		this->container->barInfoMyTarget = NULL;
+		//	}
+		//	else if (dynamic_cast<Golem *>(this->world->selectObject) || dynamic_cast<Cast_1 *>(this->world->selectObject))
+		//	{
+		//		this->world->worldInterface->container->barInfo->gotoAndStop(4);
+		//	}
+		//	else if (dynamic_cast<Iceman *>(this->world->selectObject) || dynamic_cast<Cast_2 *>(this->world->selectObject)
+		//		|| dynamic_cast<Air *>(this->world->selectObject) || dynamic_cast<Cast_3 *>(this->world->selectObject))
+		//	{
+		//		this->world->worldInterface->container->barInfo->gotoAndStop(5);
+		//	}
+		//	else
+		//	{
+		//		this->world->worldInterface->container->barInfo->gotoAndStop(2);
+		//	}
+		//	this->barInfoView();
+		//}
 	}// end function
 
 	void WorldInterface::breaking()
@@ -3861,10 +3843,10 @@ namespace engine
 			}
 			this->container->fastCont->stop();
 			this->fastPlayControl(2);
-			if (this->container->slow->currentFrame != 1)
-			{
-				this->container->slow->gotoAndStop(1);
-			}
+			//if (this->container->slow->currentFrame != 1)
+			//{
+			//	this->container->slow->gotoAndStop(1);
+			//}
 		}
 		else
 		{
@@ -3978,7 +3960,8 @@ namespace engine
 		tempObject->icon->stop();
 		tempObject->board->stop();
 		tempObject->setPositionX(435);
-		tempObject->setPositionY(this->container->barInfo->getPositionY() + 42);
+		tempObject->setPositionY(20 + 42);
+		//tempObject->setPositionY(this->container->barInfo->getPositionY() + 42);
 		tempObject->closeFlag = false;
 		tempObject->counter = 30;
 		tempObject->setMouseChildren(false);

@@ -1,0 +1,42 @@
+<TextureAtlas name="worldStart_mc" imagePath="texture.png">
+ <SubTexture name="__dbTextures/worldStart_mc/bg2_0" x="0" y="0" width="306" height="29"/>
+ <SubTexture name="__dbTextures/worldStart_mc/bg1_0" x="308" y="0" width="140" height="65"/>
+ <SubTexture name="Shape/shape 12653" x="49" y="31" width="41" height="44"/>
+ <SubTexture name="Shape/shape 12659" x="0" y="31" width="48" height="51"/>
+ <SubTexture name="Shape/shape 12665" x="91" y="31" width="41" height="44"/>
+ <SubTexture name="Shape/shape 12654" x="86" y="140" width="40" height="21"/>
+ <SubTexture name="Shape/shape 12655" x="0" y="125" width="40" height="21"/>
+ <SubTexture name="Shape/shape 12656" x="86" y="118" width="40" height="21"/>
+ <SubTexture name="Shape/shape 12657" x="299" y="151" width="40" height="21"/>
+ <SubTexture name="Shape/shape 12658" x="0" y="147" width="40" height="21"/>
+ <SubTexture name="Shape/shape 12660" x="177" y="157" width="49" height="26"/>
+ <SubTexture name="Shape/shape 12661" x="127" y="157" width="49" height="26"/>
+ <SubTexture name="Shape/shape 12662" x="434" y="136" width="49" height="26"/>
+ <SubTexture name="Shape/shape 12663" x="340" y="151" width="49" height="26"/>
+ <SubTexture name="Shape/shape 12664" x="227" y="157" width="49" height="26"/>
+ <SubTexture name="Case" x="450" y="0" width="50" height="50"/>
+ <SubTexture name="Shape/shape 12693" x="348" y="109" width="41" height="40"/>
+ <SubTexture name="Shape/shape 12695" x="219" y="73" width="41" height="40"/>
+ <SubTexture name="Shape/shape 12696" x="260" y="115" width="38" height="37"/>
+ <SubTexture name="Shape/shape 12739" x="49" y="76" width="38" height="37"/>
+ <SubTexture name="Shape/shape 12698" x="348" y="67" width="41" height="40"/>
+ <SubTexture name="Shape/shape 12700" x="219" y="31" width="41" height="40"/>
+ <SubTexture name="Shape/shape 12702" x="133" y="73" width="41" height="40"/>
+ <SubTexture name="Shape/shape 12704" x="434" y="94" width="41" height="40"/>
+ <SubTexture name="Shape/shape 12706" x="176" y="73" width="41" height="40"/>
+ <SubTexture name="Shape/shape 12708" x="176" y="31" width="41" height="40"/>
+ <SubTexture name="Shape/shape 12710" x="450" y="52" width="41" height="40"/>
+ <SubTexture name="Shape/shape 12712" x="43" y="114" width="41" height="40"/>
+ <SubTexture name="Shape/shape 12714" x="391" y="67" width="41" height="40"/>
+ <SubTexture name="Shape/shape 12716" x="174" y="115" width="41" height="40"/>
+ <SubTexture name="Shape/shape 12719" x="0" y="83" width="41" height="40"/>
+ <SubTexture name="Shape/shape 12721" x="217" y="115" width="41" height="40"/>
+ <SubTexture name="Shape/shape 12723" x="262" y="31" width="41" height="40"/>
+ <SubTexture name="Shape/shape 12725" x="305" y="67" width="41" height="40"/>
+ <SubTexture name="Shape/shape 12727" x="262" y="73" width="41" height="40"/>
+ <SubTexture name="Shape/shape 12729" x="391" y="109" width="41" height="40"/>
+ <SubTexture name="Shape/shape 12731" x="305" y="109" width="41" height="40"/>
+ <SubTexture name="Shape/shape 12733" x="133" y="31" width="41" height="40"/>
+ <SubTexture name="Shape/shape 12735" x="131" y="115" width="41" height="40"/>
+ <SubTexture name="Shape/shape 12737" x="88" y="76" width="41" height="40"/>
+</TextureAtlas>

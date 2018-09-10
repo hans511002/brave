@@ -28,20 +28,20 @@ namespace engine
 		}; 
 	}; 
     
-	class WorldInterface_mc :public MovieClip
+	class WorldInterface_mc :public BaseNode
 	{
 	public:
 		//MovieClipSub * backComponents;
-		MovieClipSub * barInfo;
-		MCText     * barInfoFireTXT;
-		MCText     * barInfoHealthTXT;
-		MCText     * barInfoIceTXT;
-		MCText     * barInfoLevinTXT;
-		Node         * barInfoMyTarget;
-		MCText     * barInfoNoteTXT;
-		MCText     * barInfoPenaltyTXT;
-		MCText     * barInfoSpeedTXT;
-		MCText     * barInfoStoneTXT;
+		//MovieClipSub * barInfo;
+		//MCText     * barInfoFireTXT;
+		//MCText     * barInfoHealthTXT;
+		//MCText     * barInfoIceTXT;
+		//MCText     * barInfoLevinTXT;
+		//Node         * barInfoMyTarget;
+		//MCText     * barInfoNoteTXT;
+		//MCText     * barInfoPenaltyTXT;
+		//MCText     * barInfoSpeedTXT;
+		//MCText     * barInfoStoneTXT;
 		MovieClipSub * book;
 		MCCase     * bookBookCase;
 		MovieClipSub * butCastAir;
@@ -110,7 +110,7 @@ namespace engine
 		MovieClipSub * pause;
 		MCCase     * pausePauseCase;
 		MovieClipSub * sell;
-		MovieClipSub * slow;
+		//MovieClipSub * slow;
 		MovieClipSub * startWaves;
 		MCCase     * startWavesStartWavesCase;
 		MovieClipSub * stoneBack;
@@ -119,14 +119,15 @@ namespace engine
 		MCText     * stoneNumTXT;
 		MovieClipSub * stoneSphere;
 		MCCase     * stoneSphereSphereCase;
-		MovieClipSub * testRestart;
-		MovieClipSub * testRestartBoard;
-		MCText     * testRestartBoardWaveTXT;
+		//MovieClipSub * testRestart;
+		//MovieClipSub * testRestartBoard;
+		//MCText     * testRestartBoardWaveTXT;
 		MCText     * waveTXT;
-		MCCase     * traceBezier;
+		//MCCase     * traceBezier;
 		
 		WorldInterface_mc();
-		
+		virtual bool init();
+
 		///////////////////////////
         Vec2 fireSphereMyPoint  ;
 		Vec2 iceSphereMyPoint   ;

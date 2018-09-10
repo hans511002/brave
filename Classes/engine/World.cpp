@@ -35,10 +35,10 @@ using namespace engine::units;
 using namespace engine::bullets;
 namespace engine
 {
-	World::World() :frameCounter(0), feature(NULL), bezierClass(NULL), wavesClass(NULL), numRoads(0), level(NULL), road(NULL), levelAdditionally(NULL), levelAdditionally1(NULL), levelAdditionally2(NULL), levelAdditionally3(NULL), worldInterface(NULL), money(0), bonusMoney(0), liveMax(20), live(0), forseIndexFl(false), getSphere(NULL), buildTowerMenu(NULL), towerMenu(NULL), ultraTowerMenu(NULL), scaleRadius(0.85f), towerRadius(NULL), unitInputBezieCounter(0), cast(NULL), menuObject(NULL), pointer1(NULL), pointer2(NULL), pointer3(NULL), selectObject(NULL), firstMusicPlay(false), secondMusicPlay(false), secondMusicCounter(0), winDefCounter(1), viewBoss(0), viewRockCrash(0), boss(NULL), decoration(NULL), nowLevel(0), saveBox(NULL), exchange(NULL), portalViewCounter(30), trainingClass(NULL), hint(NULL), startMusicVolume(0), bonusMoneyFlag(true), eduOpenUpgrArrowFlag(true), killEnemiesCounter(0), createGolemCounter(0), createIcemanCounter(0), createAirCounter(0), earlyWaveCounter(0), sellFireCounter(0), sellIceCounter(0), sellStoneCounter(0), sellLevinCounter(0), sellGetAllCounter(0), icemanSlowdownEnemiesCounter(0), castFireCounter(0), castIceCounter(0), castStoneCounter(0), castLevinCounter(0), castGetAllCounter(0), golemVoiceTurn(1), icemanVoiceTurn(1), airVoiceTurn(1), mouseX(0), mouseY(0)
+	World::World() :frameCounter(0), feature(NULL), bezierClass(NULL), wavesClass(NULL), numRoads(0), level(NULL), road(NULL), levelAdditionally(NULL), levelAdditionally1(NULL), levelAdditionally2(NULL), levelAdditionally3(NULL), worldInterface(NULL), money(0), bonusMoney(0), liveMax(20), live(0), forseIndexFl(false), getSphere(NULL), buildTowerMenu(NULL), towerMenu(NULL), ultraTowerMenu(NULL), scaleRadius(0.85f), towerRadius(NULL), unitInputBezieCounter(0), cast(NULL), menuObject(NULL), pointer1(NULL), pointer2(NULL), pointer3(NULL), selectObject(NULL), firstMusicPlay(false), secondMusicPlay(false), secondMusicCounter(0), winDefCounter(1), viewBoss(0), viewRockCrash(0), boss(NULL), decoration(NULL), nowLevel(0), saveBox(NULL), exchange(NULL), portalViewCounter(30), trainingClass(NULL), hint(NULL), startMusicVolume(0), bonusMoneyFlag(true), eduOpenUpgrArrowFlag(true), killEnemiesCounter(0), createGolemCounter(0), createIcemanCounter(0), createAirCounter(0), earlyWaveCounter(0), sellFireCounter(0), sellIceCounter(0), sellStoneCounter(0), sellLevinCounter(0), sellGetAllCounter(0), icemanSlowdownEnemiesCounter(0), castFireCounter(0), castIceCounter(0), castStoneCounter(0), castLevinCounter(0), castGetAllCounter(0), golemVoiceTurn(1), icemanVoiceTurn(1), airVoiceTurn(1), mouseX(0), mouseY(0), fixedRoot(NULL)
 	{
-		if(useNodeEvent)
-			std::globalNode= this;
+		if (useNodeEvent)
+			std::globalNode = this;
 		//MCCase::worldMouseHandler.node = this;
 		//MCCase::worldMouseHandler.mouseDownHandler = NODE_MOUSEHANDLER_SELECTOR(World::mouseDownHandler);
 		//MCCase::worldMouseHandler.mouseMoveHandler =   NODE_MOUSEHANDLER_SELECTOR (World::mouseMoveHandler);
@@ -47,7 +47,7 @@ namespace engine
 		pointer1 = NULL;
 		pointer2 = NULL;
 		pointer3 = NULL;
-		this->setContentSize(Size(Main::LEVEL_MAP_WIDTH,Main::LEVEL_MAP_HEIGHT));
+		this->setContentSize(Size(Main::LEVEL_MAP_WIDTH, Main::LEVEL_MAP_HEIGHT));
 		//Main::mainClass->worldClass = this;
 		//this->listOfFlags = [];
 		//this->listOfPlaces = [];
@@ -81,7 +81,16 @@ namespace engine
 		BaseNode::init();
 		fixedRoot = Node::create();
 		fixedRoot->setContentSize(Size(Main::SCREEN_WIDTH, Main::SCREEN_HEIGHT));
-		this->getParent()->addChild(fixedRoot);
+		if (this->getParent())
+			this->getParent()->addChild(fixedRoot);
+		if (Main::SCREEN_WIDTH != Main::LEVEL_MAP_WIDTH || Main::LEVEL_MAP_HEIGHT != Main::SCREEN_HEIGHT)
+		{
+			this->setMouseDrag(true);
+			float h=Main::LEVEL_MAP_HEIGHT - Main::SCREEN_HEIGHT;
+			float w = Main::LEVEL_MAP_WIDTH - Main::SCREEN_WIDTH;
+			this->minDragPos = Vec2(-w, -h);
+			this->maxDragPos = Vec2(0, 0);
+		}
 		this->wavesClass = new Waves();
 		this->feature = new Feature();
 		map = new casts::Map();
@@ -95,13 +104,6 @@ namespace engine
 		//	bezier::PathPoint ppo = this->bezierClass->getPathPoint(path, r,w);
 		//}
 		//long ts=Common::DateTime().GetTicks() -dt.GetTicks();
-        return true;
-	};
-	void World::onEnter()
-	{
-		//this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
-		//this->addEventListener(Event.REMOVED_FROM_STAGE, this->reInit);
-		BaseNode::onEnter();
 		int complexityLevel = this->saveBox->getIntValue("complexityLevel");
 		if (complexityLevel < 4)
 		{
@@ -111,6 +113,17 @@ namespace engine
 				//this->setMouseEnabled(false);
 			}
 		}
+		return true;
+	};
+	void World::onEnter()
+	{
+		//this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
+		//this->addEventListener(Event.REMOVED_FROM_STAGE, this->reInit);
+		BaseNode::onEnter();
+		if (fixedRoot && !fixedRoot->getParent())
+			this->getParent()->addChild(fixedRoot);
+
+
 		//this->schedule(schedule_selector(World::enterFrameHandler), 0.033f);
 		//Main::mainClass->tracker.trackPageview("openLevel_" + this->nowLevel);
 	}// end function
@@ -131,7 +144,7 @@ namespace engine
 			this->frameCounter++;
 		else
 			this->frameCounter = 1;
-		Common::DateTime stime,gstime;
+		Common::DateTime stime, gstime;
 		if (!this->firstMusicPlay)
 		{
 			int complexityLevel = this->saveBox->getIntValue("complexityLevel");
@@ -199,7 +212,7 @@ namespace engine
 				if (this->saveBox->getIntValue("complexityLevel") < 4 && this->saveBox->getStringValue("type") == "site")
 				{
 					BonusMoney * tempObject = new BonusMoney();
-                    this->addChild(tempObject,3);
+					this->addChild(tempObject, 3);
 				}
 			}
 		}
@@ -223,7 +236,7 @@ namespace engine
 			i--;
 		}
 		ts = Common::DateTime().GetTicks() - stime.GetTicks();
-		stime = Common::DateTime();logInfo("listOfClasses", ts);
+		stime = Common::DateTime(); logInfo("listOfClasses", ts);
 		i = this->listOfTowers.size() - 1;
 		while (i >= 0)
 		{
@@ -295,7 +308,7 @@ namespace engine
 				if (this->levelAdditionally->currentFrame < this->levelAdditionally->totalFrames)
 				{
 					this->levelAdditionally1->tryPlay();
-                    //this->levelAdditionally->gotoAndStop((this->levelAdditionally->currentFrame + 1));
+					//this->levelAdditionally->gotoAndStop((this->levelAdditionally->currentFrame + 1));
 				}
 				if (this->levelAdditionally->currentFrame == 182)
 				{
@@ -308,7 +321,7 @@ namespace engine
 				if (this->levelAdditionally1->currentFrame < this->levelAdditionally1->totalFrames)
 				{
 					this->levelAdditionally1->tryPlay();
-                    //this->levelAdditionally1->gotoAndStop((this->levelAdditionally1->currentFrame + 1));
+					//this->levelAdditionally1->gotoAndStop((this->levelAdditionally1->currentFrame + 1));
 					if (this->levelAdditionally1->currentFrame == 90)
 					{
 						AudioUtil::playSound("Snd_world_openRoad.mp3");
@@ -335,37 +348,37 @@ namespace engine
 				int i = 0;
 				while (i < this->listOfFirePortals.size())
 				{
-                    Indexes * tempObject = new Indexes(new RoadsignFire_mc(), 0);
-                    tempObject->setPosition(this->listOfFirePortals[i]->getPosition());
-                    tempObject->setScaleX(this->listOfFirePortals[i]->getScaleX());
-                    tempObject->setScaleY(this->listOfFirePortals[i]->getScaleY());
+					Indexes * tempObject = new Indexes(new RoadsignFire_mc(), 0);
+					tempObject->setPosition(this->listOfFirePortals[i]->getPosition());
+					tempObject->setScaleX(this->listOfFirePortals[i]->getScaleX());
+					tempObject->setScaleY(this->listOfFirePortals[i]->getScaleY());
 					i++;
 				}
 				i = 0;
 				while (i < this->listOfIcePortals.size())
 				{
-                    Indexes * tempObject = new Indexes(new RoadsignIce_mc(), 0);
-                    tempObject->setPosition(this->listOfIcePortals[i]->getPosition());
-                    tempObject->setScaleX(this->listOfIcePortals[i]->getScaleX());
-                    tempObject->setScaleY(this->listOfIcePortals[i]->getScaleY());
+					Indexes * tempObject = new Indexes(new RoadsignIce_mc(), 0);
+					tempObject->setPosition(this->listOfIcePortals[i]->getPosition());
+					tempObject->setScaleX(this->listOfIcePortals[i]->getScaleX());
+					tempObject->setScaleY(this->listOfIcePortals[i]->getScaleY());
 					i++;
 				}
 				i = 0;
 				while (i < this->listOfStonePortals.size())
 				{
-                    Indexes * tempObject = new Indexes(new RoadsignStone_mc(), 0);
-                    tempObject->setPosition(this->listOfStonePortals[i]->getPosition());
-                    tempObject->setScaleX(this->listOfStonePortals[i]->getScaleX());
-                    tempObject->setScaleY(this->listOfStonePortals[i]->getScaleY());
+					Indexes * tempObject = new Indexes(new RoadsignStone_mc(), 0);
+					tempObject->setPosition(this->listOfStonePortals[i]->getPosition());
+					tempObject->setScaleX(this->listOfStonePortals[i]->getScaleX());
+					tempObject->setScaleY(this->listOfStonePortals[i]->getScaleY());
 					i++;
 				}
 				i = 0;
 				while (i < this->listOfLevinPortals.size())
-                {
-                    Indexes * tempObject = new Indexes(new RoadsignLevin_mc(), 0);
-                    tempObject->setPosition(this->listOfLevinPortals[i]->getPosition());
-                    tempObject->setScaleX(this->listOfLevinPortals[i]->getScaleX());
-                    tempObject->setScaleY(this->listOfLevinPortals[i]->getScaleY());
+				{
+					Indexes * tempObject = new Indexes(new RoadsignLevin_mc(), 0);
+					tempObject->setPosition(this->listOfLevinPortals[i]->getPosition());
+					tempObject->setScaleX(this->listOfLevinPortals[i]->getScaleX());
+					tempObject->setScaleY(this->listOfLevinPortals[i]->getScaleY());
 					i++;
 				}
 			}
@@ -385,81 +398,81 @@ namespace engine
 
 		return;
 	}// end function
-	void World::removeEventTarget(std::MouseEvent * event,BaseNode* node, string caseName){
+	void World::removeEventTarget(std::MouseEvent * event, BaseNode* node, string caseName) {
 		if (!node)return;
 		int ri = event->getIndex(caseName);
-		if (ri >= 0){
+		if (ri >= 0) {
 			Vec2 pos = event->getLocationInView();
-			if (std::hitTest(node, pos, false)){
+			if (std::hitTest(node, pos, false)) {
 				event->remove(ri);
 			}
 		}
 	}
-	void World::removeEventTarget(std::MouseEvent * event, string case1, string caseName){
+	void World::removeEventTarget(std::MouseEvent * event, string case1, string caseName) {
 		int ri = event->getIndex(case1);
-		if (ri >= 0){
+		if (ri >= 0) {
 			ri = event->getIndex(caseName);
 			if (ri >= 0)
 				event->remove(ri);
 		}
 	}
-    bool World::preCheckEventTarget(std::MouseEvent * event, EventMouse::MouseEventType _mouseEventType)
-    {
+	bool World::preCheckEventTarget(std::MouseEvent * event, EventMouse::MouseEventType _mouseEventType)
+	{
 
-         //this->castMask->fireCase->stop();
-        //this->castMask->iceCase->stop();
-        //this->castMask->stoneCase->stop();
-        //this->castMask->levinCase->stop();
-        //this->castMask->getAllCase->stop();
-        //this->castMask->archiveCase->stop();
-        //this->castMask->interfaceUpCase->stop();
-        //this->castMask->sellCase->stop();
-        removeEventTarget(event, "fireCase", "interfaceUpCase");
-        removeEventTarget(event, "iceCase", "interfaceUpCase");
-        removeEventTarget(event, "stoneCase", "interfaceUpCase");
-        removeEventTarget(event, "levinCase", "interfaceUpCase");
-        removeEventTarget(event, "getAllCase", "interfaceUpCase");
-        removeEventTarget(event, "fireCase", "archiveCase");
-        removeEventTarget(event, "iceCase", "archiveCase");
-        removeEventTarget(event, "stoneCase", "archiveCase");
-        removeEventTarget(event, "levinCase", "archiveCase");
-        removeEventTarget(event, "getAllCase", "archiveCase");
-        removeEventTarget(event, "archiveCase", "interfaceUpCase");
-        removeEventTarget(event, "sellCase", "interfaceUpCase");
-        Vec2 pos = event->getLocationInView();
-        switch(_mouseEventType)
-        {
-        case cocos2d::EventMouse::MouseEventType::MOUSE_NONE:
-            break;
-        case cocos2d::EventMouse::MouseEventType::MOUSE_DOWN:
-            if(this->towerMenu)
-            {
-                removeEventTarget(event, this->towerMenu, "road");
-                removeEventTarget(event, this->towerMenu, "towerCase");
-            }
-            if(this->getSphere)
-            {
-                removeEventTarget(event, this->getSphere, "sphereCase");
-                removeEventTarget(event, "fireCase", "sphereCase");
-                removeEventTarget(event, "iceCase", "sphereCase");
-                removeEventTarget(event, "stoneCase", "sphereCase");
-                removeEventTarget(event, "levinCase", "sphereCase");
-                removeEventTarget(event, "getAllCase", "sphereCase");
+		//this->castMask->fireCase->stop();
+	   //this->castMask->iceCase->stop();
+	   //this->castMask->stoneCase->stop();
+	   //this->castMask->levinCase->stop();
+	   //this->castMask->getAllCase->stop();
+	   //this->castMask->archiveCase->stop();
+	   //this->castMask->interfaceUpCase->stop();
+	   //this->castMask->sellCase->stop();
+		removeEventTarget(event, "fireCase", "interfaceUpCase");
+		removeEventTarget(event, "iceCase", "interfaceUpCase");
+		removeEventTarget(event, "stoneCase", "interfaceUpCase");
+		removeEventTarget(event, "levinCase", "interfaceUpCase");
+		removeEventTarget(event, "getAllCase", "interfaceUpCase");
+		removeEventTarget(event, "fireCase", "archiveCase");
+		removeEventTarget(event, "iceCase", "archiveCase");
+		removeEventTarget(event, "stoneCase", "archiveCase");
+		removeEventTarget(event, "levinCase", "archiveCase");
+		removeEventTarget(event, "getAllCase", "archiveCase");
+		removeEventTarget(event, "archiveCase", "interfaceUpCase");
+		removeEventTarget(event, "sellCase", "interfaceUpCase");
+		Vec2 pos = event->getLocationInView();
+		switch (_mouseEventType)
+		{
+		case cocos2d::EventMouse::MouseEventType::MOUSE_NONE:
+			break;
+		case cocos2d::EventMouse::MouseEventType::MOUSE_DOWN:
+			if (this->towerMenu)
+			{
+				removeEventTarget(event, this->towerMenu, "road");
+				removeEventTarget(event, this->towerMenu, "towerCase");
 			}
-			else{
+			if (this->getSphere)
+			{
+				removeEventTarget(event, this->getSphere, "sphereCase");
+				removeEventTarget(event, "fireCase", "sphereCase");
+				removeEventTarget(event, "iceCase", "sphereCase");
+				removeEventTarget(event, "stoneCase", "sphereCase");
+				removeEventTarget(event, "levinCase", "sphereCase");
+				removeEventTarget(event, "getAllCase", "sphereCase");
+			}
+			else {
 				removeEventTarget(event, "sphereCase", "archiveCase");
 				removeEventTarget(event, "sphereCase", "fireCase");
 			}
-            break;
-        case cocos2d::EventMouse::MouseEventType::MOUSE_UP:
-            break;
-        case cocos2d::EventMouse::MouseEventType::MOUSE_MOVE:
-            break;
-        case cocos2d::EventMouse::MouseEventType::MOUSE_SCROLL:
-            break;
-        default:
-            break;
-        }
+			break;
+		case cocos2d::EventMouse::MouseEventType::MOUSE_UP:
+			break;
+		case cocos2d::EventMouse::MouseEventType::MOUSE_MOVE:
+			break;
+		case cocos2d::EventMouse::MouseEventType::MOUSE_SCROLL:
+			break;
+		default:
+			break;
+		}
 		event->reset();
 		return false;
 	};
@@ -471,28 +484,30 @@ namespace engine
 		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
 		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
 		std::MouseEvent me(e);
-		if (!useNodeEvent){
+		if (!useNodeEvent) {
 			me = std::buildMouseEvent(e);
 		}
 		std::MouseEvent * event = &me;
-        if(preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_DOWN))return;
-        if(!event->currentTargets.size())
-            event->currentTargets.push(this);
+		if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_DOWN))return;
+		if (!event->currentTargets.size())
+			event->currentTargets.push(this);
 		this->mouseX = e->getCursorX();
 		this->mouseY = e->getCursorY();
 		while (event->hasNext())
 		{
 			string targetName = event->target->getName();
+			EventNode::beginTouchNode = event->target;// event->currentTargets.at(0);
+			EventNode::beginTouchPos = Vec2(this->mouseX, this->mouseY);
 			{
 				logInfo("mouseDownHandler.target", getNamePath(event->target));
-				Vec2 gpos=event->target->getParent()->convertToWorldSpace(event->target->getPosition());
-				logInfo("mouseDownHandler.target.pos", event->getLocation(),&event->target->getPosition(), &gpos);
-				logInfo("mouseDownHandler.target.zindex", event->target->getLocalZOrder(),0);
+				Vec2 gpos = event->target->getParent()->convertToWorldSpace(event->target->getPosition());
+				logInfo("mouseDownHandler.target.pos", event->getLocation(), &event->target->getPosition(), &gpos);
+				logInfo("mouseDownHandler.target.zindex", event->target->getLocalZOrder(), 0);
 			}
 			if (this->getSphere)
 			{
 				this->getSphere->mouseDownHandler(event);
-                if (!this->getSphere)
+				if (!this->getSphere)
 					return;
 			}
 			else
@@ -500,44 +515,44 @@ namespace engine
 				if (this->cast)
 				{
 					this->cast->mouseDownHandler(event);
-                    if(!this->cast)
-                        return;
+					if (!this->cast)
+						return;
 				}
 				if (this->towerMenu)
 				{
 					this->towerMenu->mouseDownHandler(event);
-                    if(event->processed)
-                        continue;
-                }
+					if (event->processed)
+						continue;
+				}
 				else if (this->ultraTowerMenu)
 				{
 					this->ultraTowerMenu->mouseDownHandler(event);
-                    if(event->processed)
-                        continue;
-                }
+					if (event->processed)
+						continue;
+				}
 				else if (this->exchange)
 				{
 					this->exchange->mouseDownHandler(event);
-                    if(event->processed)
-                        continue;	//return;
+					if (event->processed)
+						continue;	//return;
 				}
 			}
-            if(this->buildTowerMenu)
-            {
-                this->buildTowerMenu->mouseDownHandler(event);
-                if(event->processed)
-                    continue;
-            }
-            if(this->decoration)
-            {
-                this->decoration->mouseDownHandler(event);
-                if(event->processed)
-                    continue;
-            }
-            if(!this->cast && targetName == "towerCase")// && event->target->mouseEnabled
+			if (this->buildTowerMenu)
 			{
-                Node * parent = event->target->getParent()->getParent()->getParent()->getParent();
-                Tower *tower = ISTYPE(Tower, parent);
+				this->buildTowerMenu->mouseDownHandler(event);
+				if (event->processed)
+					continue;
+			}
+			if (this->decoration)
+			{
+				this->decoration->mouseDownHandler(event);
+				if (event->processed)
+					continue;
+			}
+			if (!this->cast && targetName == "towerCase")// && event->target->mouseEnabled
+			{
+				Node * parent = event->target->getParent()->getParent()->getParent()->getParent();
+				Tower *tower = ISTYPE(Tower, parent);
 				if (tower->towerType <= 4)
 				{
 					this->towerMenu = new TowerMenu(tower);
@@ -555,9 +570,9 @@ namespace engine
 			if (this->worldInterface)
 			{
 				this->worldInterface->mouseDownHandler(event);
-                //if(event->processed)
-                //    continue;
-            }
+				//if(event->processed)
+				//    continue;
+			}
 			if (!this->getSphere && !this->cast)
 			{
 				if (targetName == "unitCase")
@@ -620,87 +635,108 @@ namespace engine
 		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
 		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
 		std::MouseEvent me(e);
-		if (!useNodeEvent){
+		if (!useNodeEvent) {
 			me = std::buildMouseEvent(e);
 		}
 		std::MouseEvent * event = &me;
-        if(preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_UP))return;
-        if(!event->currentTargets.size())
-            event->currentTargets.push(this);
+		if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_UP))return;
+		if (!event->currentTargets.size())
+			event->currentTargets.push(this);
 		this->mouseX = e->getCursorX();
 		this->mouseY = e->getCursorY();
 		while (event->hasNext())
-        {
- 			string targetName = event->target->getName();
+		{
+			string targetName = event->target->getName();
 			logInfo("mouseUpHandler.target", getNamePath(event->target));
-            if(this->getSphere)
-            {
-                this->getSphere->mouseUpHandler(event);
-                if(event->processed)
-                    continue;
-            }
-            else
-            {
-                if(this->cast)
-                {
-                    this->cast->mouseUpHandler(event);
-                    if(event->processed)
-                        continue; //return;
-                }
-                if(this->towerMenu)
-                {
-                    this->towerMenu->mouseUpHandler(event);
-                }
-                else if(this->ultraTowerMenu)
-                {
-                    this->ultraTowerMenu->mouseUpHandler(event);
-                }
-                else if(this->exchange)
-                {
-                    this->exchange->mouseUpHandler(event);
-                    if(event->processed)
-                        continue;  //return;
-                }
-            }
-            if(this->buildTowerMenu)
-            {
-                this->buildTowerMenu->mouseUpHandler(event);
-                if(event->processed)
-                    continue;
-            }
-            if(this->decoration)
-            {
-                this->decoration->mouseUpHandler(event);
-                if(event->processed)
-                    continue;
-            }
-            if(this->worldInterface)
-            {
-                this->worldInterface->mouseUpHandler(event);
-                if(event->processed)
-                    continue;
-            }
-        }
+			if (this->getSphere)
+			{
+				this->getSphere->mouseUpHandler(event);
+				if (event->processed)
+					continue;
+			}
+			else
+			{
+				if (this->cast)
+				{
+					this->cast->mouseUpHandler(event);
+					if (event->processed)
+						continue; //return;
+				}
+				if (this->towerMenu)
+				{
+					this->towerMenu->mouseUpHandler(event);
+				}
+				else if (this->ultraTowerMenu)
+				{
+					this->ultraTowerMenu->mouseUpHandler(event);
+				}
+				else if (this->exchange)
+				{
+					this->exchange->mouseUpHandler(event);
+					if (event->processed)
+						continue;  //return;
+				}
+			}
+			if (this->buildTowerMenu)
+			{
+				this->buildTowerMenu->mouseUpHandler(event);
+				if (event->processed)
+					continue;
+			}
+			if (this->decoration)
+			{
+				this->decoration->mouseUpHandler(event);
+				if (event->processed)
+					continue;
+			}
+			if (this->worldInterface)
+			{
+				this->worldInterface->mouseUpHandler(event);
+				if (event->processed)
+					continue;
+			}
+		}
+		EventNode::beginTouchNode = NULL;
 	}// end function
 	void World::mouseMoveHandler(cocos2d::EventMouse* e)
 	{
 		this->mouseX = e->getCursorX();
 		this->mouseY = e->getCursorY();
-        if(!globalNode)EventNode::mouseMoveHandler(e);
+		if (!globalNode)EventNode::mouseMoveHandler(e);
 		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
 		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
 		std::MouseEvent me(e);
-		if (!useNodeEvent){
+		if (!useNodeEvent) {
 			me = std::buildMouseEvent(e);
 		}
 		std::MouseEvent * event = &me;
-        if(preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_MOVE))return;
-        if(!event->currentTargets.size())
-            event->currentTargets.push(this);
+		if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_MOVE))return;
+		if (!event->currentTargets.size())
+			event->currentTargets.push(this);
 		//return;
 		while (event->hasNext())
 		{
- 			string targetName = event->target->getName();
+			string targetName = event->target->getName();
+			if (event->target == EventNode::beginTouchNode) {
+				EventNode * en = ISTYPE(EventNode, event->target);
+				if (en && en->isMouseDrag()) {
+					Vec2 stpos = event->target->getPosition();
+					Vec2 endPos=stpos + Vec2(this->mouseX, this->mouseY) - EventNode::beginTouchPos;
+					EventNode::beginTouchPos = Vec2(this->mouseX, this->mouseY);
+					if (endPos.x < en->minDragPos.x) {
+						endPos.x = en->minDragPos.x;
+					} else if (endPos.x > en->maxDragPos.x) {
+						endPos.x = en->maxDragPos.x;
+					}
+					if (endPos.y < en->minDragPos.y) {
+						endPos.y = en->minDragPos.y;
+					}else if (endPos.y > en->maxDragPos.y) {
+						endPos.y = en->maxDragPos.y;
+					} 
+					event->target->setPosition(endPos);
+				}
+			}
+
 			if (this->getSphere)
 			{
 				this->getSphere->mouseMoveHandler(event);
@@ -727,13 +763,13 @@ namespace engine
 					{
 						if (!this->towerRadius->isVisible() || event->target->getParent()->getParent() != this->towerRadius->myTower)
 						{
-                            Node * parent = event->target->getParent()->getParent()->getParent()->getParent();
+							Node * parent = event->target->getParent()->getParent()->getParent()->getParent();
 							Tower *tower = ISTYPE(Tower, parent);
 							this->towerRadius->myTower = tower;
 							this->towerRadius->setWidth(this->towerRadius->myTower->radius * 2);
 							this->towerRadius->setHeight(this->towerRadius->myTower->radius * 2 * this->scaleRadius);
 							this->towerRadius->setPosition(this->towerRadius->myTower->this_pt);
-                            //std::setAnchorPoint(this->towerRadius, 0.5, 0.5);
+							//std::setAnchorPoint(this->towerRadius, 0.5, 0.5);
 							//this->towerRadius->x = this->towerRadius->myTower->this_pt.x;
 							//this->towerRadius->y = this->towerRadius->myTower->this_pt.y;
 							this->towerRadius->setVisible(true);
@@ -749,13 +785,13 @@ namespace engine
 			}
 			if (this->buildTowerMenu)
 				this->buildTowerMenu->mouseMoveHandler(event);
-            if(this->decoration)
-                this->decoration->mouseMoveHandler(event);
+			if (this->decoration)
+				this->decoration->mouseMoveHandler(event);
 			if (!this->cast && targetName == "towerCase")// && event->target->mouseEnabled
 			{
 				bool tempObject = false;
-                Node * parent = event->target->getParent()->getParent()->getParent()->getParent();
- 				if (this->towerMenu || this->ultraTowerMenu)
+				Node * parent = event->target->getParent()->getParent()->getParent()->getParent();
+				if (this->towerMenu || this->ultraTowerMenu)
 				{
 					if (this->towerMenu)
 					{
@@ -790,15 +826,15 @@ namespace engine
 								}
 							}
 						}
- 						Tower *tower = ISTYPE(Tower, parent);
+						Tower *tower = ISTYPE(Tower, parent);
 						this->towerRadius->setVisible(true);
 						this->towerRadius->myTower = tower;
-						this->towerRadius->setWidth (this->towerRadius->myTower->radius * 2);
-						this->towerRadius->setHeight ( this->towerRadius->myTower->radius * 2 * this->scaleRadius);
+						this->towerRadius->setWidth(this->towerRadius->myTower->radius * 2);
+						this->towerRadius->setHeight(this->towerRadius->myTower->radius * 2 * this->scaleRadius);
 						this->towerRadius->setPosition(this->towerRadius->myTower->this_pt);
 
-                        //std::setAnchorPoint(this->towerRadius, tower->getAnchorPoint());
-                        //this->towerRadius->x = this->towerRadius->myTower->this_pt.x;
+						//std::setAnchorPoint(this->towerRadius, tower->getAnchorPoint());
+						//this->towerRadius->x = this->towerRadius->myTower->this_pt.x;
 						//this->towerRadius->y = this->towerRadius->myTower->this_pt.y;
 
 						if (this->towerRadius->myTower->towerType < 5)
@@ -809,7 +845,7 @@ namespace engine
 							}
 						}
 
-						logInfo("towerRadius", this->towerRadius->getAnchorPoint(),&this->towerRadius->getPosition());
+						logInfo("towerRadius", this->towerRadius->getAnchorPoint(), &this->towerRadius->getPosition());
 						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
 					}
 				}
@@ -850,7 +886,7 @@ namespace engine
 							this->addChild(this->buildTowerMenu);
 							AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
 						}
-                        else if(this->buildTowerMenu->myPlace != place)
+						else if (this->buildTowerMenu->myPlace != place)
 						{
 							this->buildTowerMenu->closeMenu();
 							this->buildTowerMenu = new BuildTowerMenu(place);
@@ -873,17 +909,17 @@ namespace engine
 		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
 		std::MouseEvent me = std::buildMouseEvent(e);
 		std::MouseEvent * event = &me;
-        if(preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_DOWN))return;
-        if(!event->currentTargets.size())
-            event->currentTargets.push(this);
+		if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_DOWN))return;
+		if (!event->currentTargets.size())
+			event->currentTargets.push(this);
 		while (event->hasNext())
 		{
- 			string targetName = event->target->getName();
+			string targetName = event->target->getName();
 			if (targetName == "towerCase")
 			{
 				if (!this->exchange)
 				{
-					Node *parent=event->target->getParent()->getParent();
+					Node *parent = event->target->getParent()->getParent();
 					Tower *tower = ISTYPE(Tower, parent);
 					if (tower->towerType < 5 && !tower->blockTowerFlag)
 					{
@@ -932,12 +968,12 @@ namespace engine
 		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
 		std::MouseEvent me = std::buildMouseEvent(e);
 		std::MouseEvent * event = &me;
-        if(preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_DOWN))return;
-        if(!event->currentTargets.size())
-            event->currentTargets.push(this);
+		if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_DOWN))return;
+		if (!event->currentTargets.size())
+			event->currentTargets.push(this);
 		while (event->hasNext())
 		{
- 			if (this->exchange)
+			if (this->exchange)
 			{
 				this->exchange->rightMouseUpHandler(event);
 			}
@@ -945,21 +981,29 @@ namespace engine
 		return;
 	}
 
+
 	//bool World::onTouchBegan(Touch *touch, cocos2d::Event *event) {
 	//	Node * node = event->getCurrentTarget();
-	//	Vec2 tpos = touch->getLocationInView();
+ //		Vec2 tpos = touch->getLocationInView();
+	//	tpos.y = Main::SCREEN_HEIGHT - tpos.y;
 	//	if (!std::hitTest(node, tpos))return false;
-	//	logInfo("hitTest true : touch in ", getNamePath(node));
+	//	if (!globalNode)EventNode::onTouchBegan(touch,event);
+	//	 
 	//	Event::Type tp = event->getType();
 	//	event->stopPropagation();
+
 	//	MouseEvent mevent(cocos2d::EventMouse::MouseEventType::MOUSE_DOWN);
 	//	mevent.setMouseButton(cocos2d::EventMouse::MouseButton::BUTTON_LEFT);
 	//	mevent.setCursorPosition(tpos.x, tpos.y);
 	//	mevent.setCurrentTarget(node);
+	//	EventNode::beginTouchNode = node;
+	//	EventNode::beginTouchPos = tpos;
 	//	if (globalNode) {
+	//		globalNode->mouseMoveHandler(&mevent);
 	//		globalNode->mouseDownHandler(&mevent);
 	//	}
 	//	else {
+	//		mouseMoveHandler(&mevent);
 	//		mouseDownHandler(&mevent);
 	//	}
 	//	return true;
@@ -967,29 +1011,44 @@ namespace engine
 	//void World::onTouchEnded(Touch *touch, Event *event) {
 	//	Node * node = event->getCurrentTarget();
 	//	Vec2 tpos = touch->getLocationInView();
+	//	tpos.y = Main::SCREEN_HEIGHT - tpos.y;
 	//	if (!std::hitTest(node, tpos))return;
-	//	logInfo("hitTest true : mouse up in ", getNamePath(node));
+	//	if (!globalNode)EventNode::onTouchEnded(touch, event);
 	//	Event::Type tp = event->getType();
 	//	//logInfo("event targetNamePath", getNamePath(node));
 	//	event->stopPropagation();
+
+	//	if (EventNode::beginTouchNode && EventNode::beginTouchNode != node) {
+	//		if (tpos.distance(EventNode::beginTouchPos) > 20) {
+	//			MouseEvent mevent(cocos2d::EventMouse::MouseEventType::MOUSE_MOVE);
+	//			mevent.setMouseButton(cocos2d::EventMouse::MouseButton::BUTTON_LEFT);
+	//			mevent.setCursorPosition(tpos.x, tpos.y);
+	//			mevent.setCurrentTarget(node);
+	//			if (globalNode)
+	//				globalNode->mouseMoveHandler(&mevent);
+	//			//				else
+	//			//					mouseMoveHandler(&mevent);
+	//		}
+	//	}
+	//	EventNode::beginTouchNode = NULL;
 	//	MouseEvent mevent(cocos2d::EventMouse::MouseEventType::MOUSE_UP);
 	//	mevent.setMouseButton(cocos2d::EventMouse::MouseButton::BUTTON_LEFT);
 	//	mevent.setCursorPosition(tpos.x, tpos.y);
 	//	mevent.setCurrentTarget(node);
-	//	if (globalNode) {
+	//	if (globalNode)
 	//		globalNode->mouseUpHandler(&mevent);
-	//	}
-	//	else {
-	//		mouseUpHandler(&mevent);
-	//	}
+	//	//		else
+	//	//			mouseUpHandler(&mevent);
 	//};
 	//void World::onTouchCancelled(Touch *touch, Event *unused_event) {
+
 	//};
 	//void World::onTouchMoved(Touch *touch, Event *event) {
 	//	Vec2 tpos = touch->getLocationInView();
+	//	tpos.y = Main::SCREEN_HEIGHT - tpos.y;
 	//	Node * node = event->getCurrentTarget();
 	//	if (!std::hitTest(node, tpos))return;
-	//	Node * node = event->getCurrentTarget();
+	//	if (!globalNode)EventNode::onTouchMoved(touch, event);
 	//	Event::Type tp = event->getType();
 	//	event->stopPropagation();
 	//	MouseEvent mevent(cocos2d::EventMouse::MouseEventType::MOUSE_MOVE);
@@ -997,13 +1056,12 @@ namespace engine
 	//	mevent.setCursorPosition(tpos.x, tpos.y);
 	//	mevent.setCurrentTarget(node);
 	//	//node->setUserData((void*)1);
-	//	if (globalNode) {
+	//	if (globalNode)
 	//		globalNode->mouseMoveHandler(&mevent);
-	//	}
-	//	else {
-	//		mouseMoveHandler(&mevent);
-	//	}
+	//	//		else
+	//	//			mouseMoveHandler(&mevent);
 	//};
+
 
 
 
@@ -1045,7 +1103,7 @@ namespace engine
 		}
 		tempObject->myPlace = param2;
 		tempObject->autoBuild = param3;
-		this->addChild(tempObject,2);
+		this->addChild(tempObject, 2);
 		tempObject->init();
 		this->listOfTowers.push(tempObject);
 		//this->listOfTowers.sortOn("y", Array.NUMERIC);
@@ -1213,7 +1271,7 @@ namespace engine
 		tempObject->gate = param6;
 		tempObject->path = param4;
 		this->addChild(tempObject, 2);
-        tempObject->init();
+		tempObject->init();
 		//tempObject->setPosition(50, 420);
 		return tempObject;
 	}
@@ -1270,8 +1328,8 @@ namespace engine
 		tempObject1->whoShoot = param3;
 		tempObject1->enemyTarget = param4;
 		tempObject1->damage = param5;
-		this->addChild(tempObject1,3);
-        tempObject1->init();
+		this->addChild(tempObject1, 3);
+		tempObject1->init();
 		return tempObject1;
 	}// end function
 
@@ -2246,114 +2304,114 @@ namespace engine
 		//this->removeEventListener(Event.DEACTIVATE, this->deactivateHandler);
 		//return;
 	}// end function
-    void World::removeClasses(BaseNode * node)
-    {
-        int i = listOfClasses.size()-1;
-        while(i >=0)
-        {
-            if(listOfClasses.at(i) == node)
-            {
-                listOfClasses.remove(i);
-                break;
-            }
-            i--;
-        }
-    };
-    void World::addClasses(BaseNode * node)
-    {
-        int i = listOfClasses.size()-1;
-        while(i >=0)
-        {
-            if(listOfClasses.at(i) == node)
-                 return;
-            i--;
-        }
-        listOfClasses.push(node);
-    };
-    bool World::existClasses(BaseNode * node){
-        int i = listOfClasses.size()-1;
-        while(i >=0)
-        {
-            if(listOfClasses.at(i) == node)
-                 return true;
-            i--;
-        }
-        return false;
-    };
-
-	void World::removeIndexes(Node * node,int indexType)
+	void World::removeClasses(BaseNode * node)
 	{
-	    return;
-		int i = 0,len=0;
-		if(indexType==-1 ||indexType==0){
-		    len = listOfIndexes0.size();
-    		while (i < len)
-    		{
-    			if (listOfIndexes0[i] == node)
-    			{
-    				listOfIndexes0.remove(i);
-    				break;
-    			}
-    			i++;
-    		}
+		int i = listOfClasses.size() - 1;
+		while (i >= 0)
+		{
+			if (listOfClasses.at(i) == node)
+			{
+				listOfClasses.remove(i);
+				break;
+			}
+			i--;
 		}
-		if(indexType==-1 ||indexType==1){
-		    len = listOfIndexes1.size();
-    		while (i < len)
-    		{
-    			if (listOfIndexes1[i] == node)
-    			{
-    				listOfIndexes1.remove(i);
-    				break;
-    			}
-    			i++;
-    		}
+	};
+	void World::addClasses(BaseNode * node)
+	{
+		int i = listOfClasses.size() - 1;
+		while (i >= 0)
+		{
+			if (listOfClasses.at(i) == node)
+				return;
+			i--;
 		}
-		if(indexType==-1 ||indexType==2){
-		    i = 0; len = listOfIndexes2.size();
-    		while (i < len)
-    		{
-    			if (listOfIndexes2[i] == node)
-    			{
-    				listOfIndexes2.remove(i);
-    				break;
-    			}
-    			i++;
-    		}
+		listOfClasses.push(node);
+	};
+	bool World::existClasses(BaseNode * node) {
+		int i = listOfClasses.size() - 1;
+		while (i >= 0)
+		{
+			if (listOfClasses.at(i) == node)
+				return true;
+			i--;
 		}
-		if(indexType==-1 ||indexType==3){
-		    i = 0; len = listOfIndexes3.size();
-    		while (i < len)
-    		{
-    			if (listOfIndexes3[i] == node)
-    			{
-    				listOfIndexes3.remove(i);
-    				break;
-    			}
-    			i++;
-    		}
+		return false;
+	};
+
+	void World::removeIndexes(Node * node, int indexType)
+	{
+		return;
+		int i = 0, len = 0;
+		if (indexType == -1 || indexType == 0) {
+			len = listOfIndexes0.size();
+			while (i < len)
+			{
+				if (listOfIndexes0[i] == node)
+				{
+					listOfIndexes0.remove(i);
+					break;
+				}
+				i++;
+			}
+		}
+		if (indexType == -1 || indexType == 1) {
+			len = listOfIndexes1.size();
+			while (i < len)
+			{
+				if (listOfIndexes1[i] == node)
+				{
+					listOfIndexes1.remove(i);
+					break;
+				}
+				i++;
+			}
+		}
+		if (indexType == -1 || indexType == 2) {
+			i = 0; len = listOfIndexes2.size();
+			while (i < len)
+			{
+				if (listOfIndexes2[i] == node)
+				{
+					listOfIndexes2.remove(i);
+					break;
+				}
+				i++;
+			}
+		}
+		if (indexType == -1 || indexType == 3) {
+			i = 0; len = listOfIndexes3.size();
+			while (i < len)
+			{
+				if (listOfIndexes3[i] == node)
+				{
+					listOfIndexes3.remove(i);
+					break;
+				}
+				i++;
+			}
 		}
 	};
 	void World::addIndexes(Node * node, int indexParam)
-    {
-        return;
-        if (indexParam == 0)
-        {
-            listOfIndexes0.push(this);
-        }
-        else if (indexParam == 1)
-        {
-            listOfIndexes1.push(this);
-        }
-        else if (indexParam == 2)
-        {
-            listOfIndexes2.push(this);
-        }
-        else if (indexParam == 3)
-        {
-            listOfIndexes3.push(this);
-        }
-    }
+	{
+		return;
+		if (indexParam == 0)
+		{
+			listOfIndexes0.push(this);
+		}
+		else if (indexParam == 1)
+		{
+			listOfIndexes1.push(this);
+		}
+		else if (indexParam == 2)
+		{
+			listOfIndexes2.push(this);
+		}
+		else if (indexParam == 3)
+		{
+			listOfIndexes3.push(this);
+		}
+	}
 	void World::removeUnit(units::Unit *unit) {
 		int i = 0;
 		while (i < this->listOfUnits.size())
@@ -2369,23 +2427,23 @@ namespace engine
 		while (i >= 0)
 		{
 			if (this->listOfBullets[i]->enemyTarget == unit) {
-				this->listOfBullets[i]->enemyTarget=NULL;
+				this->listOfBullets[i]->enemyTarget = NULL;
 			}
 			i--;
 		}
 	};
-    void World::removeBullet(Bullet * blt){
-        int i = this->listOfBullets.size() - 1;
+	void World::removeBullet(Bullet * blt) {
+		int i = this->listOfBullets.size() - 1;
 		while (i >= 0)
 		{
 			if (this->listOfBullets[i] == blt) {
-			    this->listOfBullets.remove(i);
+				this->listOfBullets.remove(i);
 				break;
 			};
 			i--;
 		}
-    };
-	void World::removeChild(Node* child, bool cleanup /* = true */){
+	};
+	void World::removeChild(Node* child, bool cleanup /* = true */) {
 		if (ISTYPE(BaseNode, child))
 		{
 			removeClasses(ISTYPE(BaseNode, child));

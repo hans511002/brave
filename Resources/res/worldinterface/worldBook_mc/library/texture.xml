@@ -1,0 +1,27 @@
+<TextureAtlas name="worldBook_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 12575" x="43" y="248" width="41" height="38"/>
+ <SubTexture name="Shape/shape 12577" x="189" y="48" width="61" height="46"/>
+ <SubTexture name="Shape/shape 12579" x="0" y="96" width="61" height="46"/>
+ <SubTexture name="Shape/shape 12581" x="0" y="0" width="61" height="46"/>
+ <SubTexture name="Shape/shape 12583" x="0" y="48" width="61" height="46"/>
+ <SubTexture name="Shape/shape 12585" x="63" y="0" width="61" height="46"/>
+ <SubTexture name="Shape/shape 12587" x="126" y="48" width="61" height="46"/>
+ <SubTexture name="Shape/shape 12589" x="63" y="96" width="61" height="46"/>
+ <SubTexture name="Shape/shape 12591" x="63" y="48" width="61" height="46"/>
+ <SubTexture name="Shape/shape 12592" x="126" y="0" width="61" height="46"/>
+ <SubTexture name="Shape/shape 12594" x="189" y="0" width="61" height="46"/>
+ <SubTexture name="Case" x="126" y="96" width="50" height="50"/>
+ <SubTexture name="Shape/shape 12597" x="0" y="248" width="41" height="38"/>
+ <SubTexture name="Shape/shape 12599" x="0" y="144" width="47" height="50"/>
+ <SubTexture name="Shape/shape 12600" x="196" y="240" width="47" height="50"/>
+ <SubTexture name="Shape/shape 12602" x="98" y="148" width="47" height="50"/>
+ <SubTexture name="Shape/shape 12604" x="196" y="188" width="47" height="50"/>
+ <SubTexture name="Shape/shape 12606" x="147" y="188" width="47" height="50"/>
+ <SubTexture name="Shape/shape 12608" x="49" y="144" width="47" height="50"/>
+ <SubTexture name="Shape/shape 12610" x="147" y="240" width="47" height="50"/>
+ <SubTexture name="Shape/shape 12612" x="98" y="200" width="47" height="50"/>
+ <SubTexture name="Shape/shape 12614" x="49" y="196" width="47" height="50"/>
+ <SubTexture name="Shape/shape 12615" x="0" y="196" width="47" height="50"/>
+ <SubTexture name="Shape/shape 12617" x="178" y="136" width="47" height="50"/>
+ <SubTexture name="Shape/shape 12620" x="178" y="96" width="60" height="38"/>
+</TextureAtlas>

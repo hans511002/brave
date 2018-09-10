@@ -95,6 +95,7 @@ namespace std
 		bool mouseChildren;
 		bool mouseEnabled;
 		bool mouseFlag;
+		bool mouseDrag;
 		virtual void setMouseChildren(bool v,bool setSub=true);
 		virtual void setMouseEnabled(bool v, bool setSub = true);
 		virtual void setMouseFlag(bool v, bool setSub = true);
@@ -103,6 +104,10 @@ namespace std
 		virtual bool isMouseChildren();
 		virtual bool isMouseEnabled();
 		virtual bool isMouseFlag();
+		inline virtual bool isMouseDrag() { return mouseDrag; };
+		inline virtual bool setMouseDrag(bool _drag) { bool old = mouseDrag; mouseDrag = _drag; return old; };
+		Vec2 minDragPos;
+		Vec2 maxDragPos;
 
 		float getStageWidth() const;
 		float getStageHeight() const;

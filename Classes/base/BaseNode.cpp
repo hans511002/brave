@@ -57,7 +57,7 @@ namespace std
 		return retval;
 	};
 
-	EventNode::EventNode() :mouseChildren(false), mouseEnabled(false), mouseFlag(false)
+	EventNode::EventNode() :mouseChildren(false), mouseEnabled(false), mouseFlag(false), mouseDrag(false)
 	{
 	};
 	BaseNode::BaseNode() :schdt(0), autoDel(true), isAutoDel(false), listener(0), linkParent(NULL), touchOnelistener(NULL)
@@ -1163,8 +1163,8 @@ namespace std
 				mevent.setCurrentTarget(node);
 				if (globalNode)
 					globalNode->mouseMoveHandler(&mevent);
-//				else
-//					mouseMoveHandler(&mevent);
+				else
+					mouseMoveHandler(&mevent);
 			}
 		}
 		EventNode::beginTouchNode=NULL;
@@ -1174,8 +1174,8 @@ namespace std
 		mevent.setCurrentTarget(node);
 		if (globalNode)
 			globalNode->mouseUpHandler(&mevent);
-//		else
-//			mouseUpHandler(&mevent);
+		else
+			mouseUpHandler(&mevent);
 	};
 	void EventNode::onTouchCancelled(Touch *touch, Event *unused_event) {
 
@@ -1194,8 +1194,8 @@ namespace std
 		//node->setUserData((void*)1);
 		if (globalNode)
 			globalNode->mouseMoveHandler(&mevent);
-//		else
-//			mouseMoveHandler(&mevent);
+		else
+			mouseMoveHandler(&mevent);
 	};
 
 
@@ -1245,7 +1245,7 @@ namespace std
 	void EventNode::printNodePos(MovieClipSub *node){
 		logInfo(node->getName() + ".isVisible", node->isVisible());
 		logInfo(node->getName() + ".position", node->getPosition());
-		logInfo(node->getName() + ".worldPos", node->convertToWorldSpace(node->getPosition()));
+		logInfo(node->getName() + ".worldPos", node->convertToWorldSpace(Vec2(0,0)));
 		if (ISTYPE(EventNode, node)){
 			EventNode *en = ISTYPE(EventNode, node);
 			logInfo(node->getName() + ".mouseEnabled", en->mouseEnabled);

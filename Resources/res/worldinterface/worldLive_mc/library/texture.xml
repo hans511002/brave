@@ -1,0 +1,7 @@
+<TextureAtlas name="worldLive_mc" imagePath="texture.png">
+ <SubTexture name="__dbTextures/worldLive_mc/Layer 1_0" x="0" y="40" width="90" height="30"/>
+ <SubTexture name="__dbTextures/worldLive_mc/Layer 6_0" x="0" y="0" width="170" height="38"/>
+ <SubTexture name="__dbTextures/worldLive_mc/Layer 7_0" x="92" y="40" width="34" height="33"/>
+ <SubTexture name="__dbTextures/worldLive_mc/Layer 8_0" x="224" y="0" width="30" height="19"/>
+ <SubTexture name="Case" x="172" y="0" width="50" height="50"/>
+</TextureAtlas>

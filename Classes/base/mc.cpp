@@ -415,6 +415,21 @@ namespace engine
 		//	std::setText(text, "TEST");
 		//}
 	}
+	MCText::MCText() :ui::Text()
+	{
+		ui::Text::init();
+		this->setFontName("Arial");//Arial
+		//this->setFontName("宋体");//Arial
+		this->setFontSize(14);
+		//setNodeType("MCText");
+		this->setColor(Color3B::YELLOW);
+		this->setTextHorizontalAlignment(TextHAlignment::LEFT);
+		this->setTextVerticalAlignment(TextVAlignment::CENTER);
+		std::setAnchorPoint(this, 0);
+		//this->ignoreContentAdaptWithSize(false);
+		this->autorelease();
+	};
+
 	MCText::MCText(MC * mc, const string &  slotName) :ui::Text()
 	{
 		ui::Text::init();
@@ -1027,10 +1042,11 @@ namespace engine
 			MovieClipSubBase::setVisible(v);
 		if (this->container && this->container->isVisible() != v)
 		{
-			cocos2d::Mat4 _transform = this->container->getNodeToWorldTransform();
+			cocos2d::Mat4 _transform = this->container->getNodeToParentTransform();
 			if (!this->container->isRunning()){
 				this->container->setVisible(v);
-				this->container->setNodeToParentTransform(_transform);
+				if(v)
+					this->container->setNodeToParentTransform(_transform);
 			}
 			else{
 				this->container->setVisible(v);
@@ -1484,7 +1500,7 @@ namespace engine
 					this->container = ISTYPE(CCArmatureDisplay, display);
 					std::setAnchorPoint(display, Vec2(0, 0));
 					std::changeAnchorPoint(container, 0.5);
-					this->transform = this->container->getNodeToWorldTransform();
+					this->transform = this->container->getNodeToParentTransform();
                     if(bindListenType)
                     {
                         int type = bindListenType;

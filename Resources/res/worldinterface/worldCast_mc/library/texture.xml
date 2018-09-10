@@ -1,0 +1,14 @@
+<TextureAtlas name="worldCast_mc" imagePath="texture.png">
+ <SubTexture name="__dbTextures/worldCast_mc/bg2_0" x="0" y="0" width="306" height="29"/>
+ <SubTexture name="__dbTextures/worldCast_mc/bg1_0" x="0" y="31" width="217" height="80"/>
+ <SubTexture name="butCastGolem.cont" x="447" y="0" width="39" height="38"/>
+ <SubTexture name="Shape/shape 12641" x="360" y="0" width="44" height="44"/>
+ <SubTexture name="Shape/shape 12632" x="260" y="31" width="38" height="38"/>
+ <SubTexture name="butCase" x="308" y="0" width="50" height="50"/>
+ <SubTexture name="butCastIceman.cont" x="406" y="0" width="40" height="38"/>
+ <SubTexture name="Shape/shape 12643" x="300" y="52" width="38" height="38"/>
+ <SubTexture name="Shape/shape 12648" x="406" y="40" width="38" height="38"/>
+ <SubTexture name="Shape/shape 12636" x="360" y="46" width="38" height="38"/>
+ <SubTexture name="butCastAir.cont.cont" x="446" y="40" width="38" height="38"/>
+ <SubTexture name="butCast.contMask" x="219" y="31" width="39" height="38"/>
+</TextureAtlas>

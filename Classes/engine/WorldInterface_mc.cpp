@@ -23,24 +23,42 @@ namespace engine
     //clip->setAlphaThreshold(0);
     //clip->addChild(CCSprite::create("head.png"));
    
-	WorldInterface_mc::WorldInterface_mc():MovieClip("worldinterface/", "WorldInterface_mc", "WorldInterface_mc")
+	WorldInterface_mc::WorldInterface_mc()
 	{
 		SET_NODETYPENAME();
+	}
+	bool WorldInterface_mc::init(){
+		MovieClip * wiBook = new MovieClip("worldinterface/", "worldBook_mc", "worldBook_mc");
+		MovieClip * wiCast = new MovieClip("worldinterface/", "worldCast_mc", "worldCast_mc");
+		MovieClip * wiLive = new MovieClip("worldinterface/", "worldLive_mc", "worldLive_mc");
+		MovieClip * wiSphere = new MovieClip("worldinterface/", "worldSphere_mc", "worldSphere_mc");
+		MovieClip * wiStart=new MovieClip("worldinterface/", "worldStart_mc", "worldStart_mc");
+
+		this->addChild(wiBook);
+		this->addChild(wiCast);
+		this->addChild(wiLive);
+		this->addChild(wiSphere);
+		this->addChild(wiStart);
+
+		lastTime = new MCText();// this->createText("lastTime");
+		this->addChild(lastTime);
+
 		//this->setPosition(0, Main::SCREEN_HEIGHT);
 		//backComponents = this->createMovieClipSub("backComponents");//image
-		barInfo = this->createMovieClipSub("barInfo");
-		barInfoFireTXT = barInfo->createText("fireTXT");
-		barInfoHealthTXT = barInfo->createText("healthTXT");
-		barInfoIceTXT = barInfo->createText("iceTXT");
-		barInfoLevinTXT = barInfo->createText("levinTXT");
-		barInfoMyTarget = NULL;// barInfo->createCase("myTarget");
-		barInfoNoteTXT = barInfo->createText("noteTXT");
-		barInfoPenaltyTXT = barInfo->createText("penaltyTXT");
-		barInfoSpeedTXT = barInfo->createText("speedTXT");
-		barInfoStoneTXT = barInfo->createText("stoneTXT");
-		book = this->createMovieClipSub("book");
+		//barInfo = this->createMovieClipSub("barInfo");
+		//barInfoFireTXT = barInfo->createText("fireTXT");
+		//barInfoHealthTXT = barInfo->createText("healthTXT");
+		//barInfoIceTXT = barInfo->createText("iceTXT");
+		//barInfoLevinTXT = barInfo->createText("levinTXT");
+		//barInfoMyTarget = NULL;// barInfo->createCase("myTarget");
+		//barInfoNoteTXT = barInfo->createText("noteTXT");
+		//barInfoPenaltyTXT = barInfo->createText("penaltyTXT");
+		//barInfoSpeedTXT = barInfo->createText("speedTXT");
+		//barInfoStoneTXT = barInfo->createText("stoneTXT");
+		book = wiBook->createMovieClipSub("book");
 		bookBookCase = book->createCase("bookCase");
-		butCastAir = this->createMovieClipSub("butCastAir");
+
+		butCastAir = wiCast->createMovieClipSub("butCastAir");
 		butCastAirCastAirCase = butCastAir->createCase("castAirCase");
 
 		butCastAirCont = butCastAir->createMovieClipSub("cont", true);//4帧才有
@@ -48,43 +66,46 @@ namespace engine
 		butCastAirContContMask = butCastAirCont->createMask("contMask");
 		//butCastAirContContMask = butCastAirCont->createMovieClipSub("contMask");
 
-		butCastGolem = this->createMovieClipSub("butCastGolem"); 
+		butCastGolem = wiCast->createMovieClipSub("butCastGolem"); 
 		butCastGolemCastGolemCase = butCastGolem->createCase("castGolemCase");
 
 		butCastGolemCont = butCastGolem->createMovieClipSub("cont", true);//4帧才有
 		butCastGolemContContMask = butCastGolemCont->createMask("contMask");
-		butCastIceman = this->createMovieClipSub("butCastIceman");
+		butCastIceman = wiCast->createMovieClipSub("butCastIceman");
 		butCastIcemanCastIcemanCase = butCastIceman->createCase("castIcemanCase");
 		butCastIcemanCont = butCastIceman->createMovieClipSub("cont", true);//4帧才有
         butCastIcemanContContMask = butCastIcemanCont->createMask("contMask");
-		buyFire = this->createMovieClipSub("buyFire");
+
+		buyFire = wiSphere->createMovieClipSub("buyFire");
 		buyFireBuyTXT = buyFire->createText("buyTXT");
 		buyFireCoin = buyFire->createMovieClipSub("coin");
 		buyFireLightUp = buyFire->getSprite("lightUp");
-		buyGetAll = this->createMovieClipSub("buyGetAll");
+		buyGetAll = wiSphere->createMovieClipSub("buyGetAll");
 		buyGetAllBuyTXT = buyGetAll->createText("buyTXT");
 		buyGetAllCoin = buyGetAll->createMovieClipSub("coin");
 		buyGetAllLightUp = buyGetAll->getSprite("lightUp");
-		buyIce = this->createMovieClipSub("buyIce");
+		buyIce = wiSphere->createMovieClipSub("buyIce");
 		buyIceBuyTXT = buyIce->createText("buyTXT");
 		buyIceCoin = buyIce->createMovieClipSub("coin");
 		buyIceLightUp = buyIce->getSprite("lightUp");
-		buyLevin = this->createMovieClipSub("buyLevin");
+		buyLevin = wiSphere->createMovieClipSub("buyLevin");
 		buyLevinBuyTXT = buyLevin->createText("buyTXT");
 		buyLevinCoin = buyLevin->createMovieClipSub("coin");
 		buyLevinLightUp = buyLevin->getSprite("lightUp");
-		buyStone = this->createMovieClipSub("buyStone");
+		buyStone = wiSphere->createMovieClipSub("buyStone");
 		buyStoneBuyTXT = buyStone->createText("buyTXT");
 		buyStoneCoin = buyStone->createMovieClipSub("coin");
 		buyStoneLightUp = buyStone->getSprite("lightUp");
-		fast = this->createMovieClipSub("fast");
+
+		fast = wiStart->createMovieClipSub("fast");
 		fastFastCase = fast->createCase("fastCase");
 		fastCont = fast->createMovieClipSub("cont", true);// 4 5帧 才有
-		fireBack = this->createMovieClipSub("fireBack");
+
+ 		fireSphere = wiSphere->createMovieClipSub("fireSphere");
+		fireBack = wiSphere->createMovieClipSub("fireBack");
 		fireBackCont = fireBack->createMovieClipSub("cont", true);// 2帧 才有
-		fireBacklight = this->createMovieClipSub("fireBacklight");
-		fireNumTXT = this->createText("fireNumTXT");
- 		fireSphere = this->createMovieClipSub("fireSphere");
+		fireBacklight = wiSphere->createMovieClipSub("fireBacklight");
+		fireNumTXT = wiSphere->createText("fireNumTXT");
 		 
 		//Vec2 pos = this->fireSphere->convertToWorldSpace(Vec2(0, 0));
 		//Vec2 wp = this->container->convertToNodeSpaceAR(pos);
@@ -94,48 +115,56 @@ namespace engine
 		//logInfo("this->fireSphere->display", getNamePath(this->fireSphere->display));
  
 		fireSphereSphereCase = fireSphere->createCase("sphereCase");
-		getAll = this->createMovieClipSub("getAll");
+		getAll = wiSphere->createMovieClipSub("getAll");
 		getAllFire = getAll->createMovieClipSub("fire");
 		getAllIce = getAll->createMovieClipSub("ice");
 		getAllLevin = getAll->createMovieClipSub("levin");
 		getAllSphereCase = getAll->createCase("sphereCase");
 		getAllStone = getAll->createMovieClipSub("stone");
-		getAllNumTXT = this->createText("getAllNumTXT");
-		iceBack = this->createMovieClipSub("iceBack");
+		getAllNumTXT = wiSphere->createText("getAllNumTXT");
+		iceBack = wiSphere->createMovieClipSub("iceBack");
 		iceBackCont = iceBack->createMovieClipSub("cont", true);//2帧 才有
-		iceBacklight = this->createMovieClipSub("iceBacklight");
-		iceNumTXT = this->createText("iceNumTXT");
-		iceSphere = this->createMovieClipSub("iceSphere");
+		iceBacklight = wiSphere->createMovieClipSub("iceBacklight");
+		iceNumTXT = wiSphere->createText("iceNumTXT");
+		iceSphere = wiSphere->createMovieClipSub("iceSphere");
 		iceSphereSphereCase = iceSphere->createCase("sphereCase");
-		lastTime = this->createText("lastTime");
-		levinBack = this->createMovieClipSub("levinBack");
+		levinBack = wiSphere->createMovieClipSub("levinBack");
 		levinBackCont = levinBack->createMovieClipSub("cont", true);//2帧 才有
-		levinBacklight = this->createMovieClipSub("levinBacklight");
-		levinNumTXT = this->createText("levinNumTXT");
-		levinSphere = this->createMovieClipSub("levinSphere");
+		levinBacklight = wiSphere->createMovieClipSub("levinBacklight");
+		levinNumTXT = wiSphere->createText("levinNumTXT");
+		levinSphere = wiSphere->createMovieClipSub("levinSphere");
 		levinSphereSphereCase = levinSphere->createCase("sphereCase");
-		liveTXT = this->createText("liveTXT");
-		moneyTXT = this->createText("moneyTXT");
-		pause = this->createMovieClipSub("pause");
+		liveTXT = wiLive->createText("liveTXT");
+		moneyTXT = wiLive->createText("moneyTXT");
+
+		pause = wiBook->createMovieClipSub("pause");
 		pausePauseCase = pause->createCase("pauseCase");
 		//selectUnit = this->createMovieClipSub("selectUnit");
-		sell = this->createMovieClipSub("sell");
-		slow = this->createMovieClipSub("slow");
-		startWaves = this->createMovieClipSub("startWaves");
+		sell = wiBook->createMovieClipSub("sell");
+		//slow = this->createMovieClipSub("slow");
+		startWaves = wiStart->createMovieClipSub("startWaves");
 		startWavesStartWavesCase = startWaves->createCase("startWavesCase");
-		stoneBack = this->createMovieClipSub("stoneBack");
+
+		stoneBack = wiSphere->createMovieClipSub("stoneBack");
 		stoneBackCont = stoneBack->createMovieClipSub("cont",true);//2帧 才有
-		stoneBacklight = this->createMovieClipSub("stoneBacklight");
-		stoneNumTXT = this->createText("stoneNumTXT");
-		stoneSphere = this->createMovieClipSub("stoneSphere");
+		stoneBacklight = wiSphere->createMovieClipSub("stoneBacklight");
+		stoneNumTXT = wiSphere->createText("stoneNumTXT");
+		stoneSphere = wiSphere->createMovieClipSub("stoneSphere");
 		stoneSphereSphereCase = stoneSphere->createCase("sphereCase");
-		testRestart = this->createMovieClipSub("testRestart");
-		testRestartBoard = this->createMovieClipSub("testRestartBoard");
-		testRestartBoardWaveTXT = testRestartBoard->createText("waveTXT");
-		waveTXT = this->createText("waveTXT");
-		//MCText * wavesTXT = this->createText("wavesTXT");
-		//std::setText(wavesTXT, I18N_VALUE(I18N_CODE::U071));
-		traceBezier=NULL;
+		//testRestart = this->createMovieClipSub("testRestart");
+		//testRestartBoard = this->createMovieClipSub("testRestartBoard");
+		//testRestartBoardWaveTXT = testRestartBoard->createText("waveTXT");
+		waveTXT = wiLive->createText("waveTXT");
+		MCText * wavesTXT = wiLive->createText("wavesTXT");
+		std::setText(wavesTXT, I18N_VALUE(I18N_CODE::U071));
+		//traceBezier=NULL;
+
+		wiBook->setPosition(Vec2(Main::SCREEN_WIDTH - 30, Main::SCREEN_HEIGHT - 30));
+		wiCast->setPosition(Vec2(10, 10));
+		wiLive->setPosition(Vec2(30, Main::SCREEN_HEIGHT - 30));
+		wiSphere->setPosition(Vec2(220, Main::SCREEN_HEIGHT + 10));
+		wiStart->setPosition(Vec2(Main::SCREEN_WIDTH - 230, 10));
+
 
 		this->pauseOpenFlag = 0;
 		this->pauseCloseFlag = 0;
@@ -160,6 +189,8 @@ namespace engine
 		this->iceBack->gotoAndStop(3);
 		this->stoneBack->gotoAndStop(3);
 		this->levinBack->gotoAndStop(3);
+
+		return BaseNode::init();
 	};
 	
 	
