@@ -83,14 +83,6 @@ namespace engine
 		fixedRoot->setContentSize(Size(Main::SCREEN_WIDTH, Main::SCREEN_HEIGHT));
 		if (this->getParent())
 			this->getParent()->addChild(fixedRoot);
-		if (Main::SCREEN_WIDTH != Main::LEVEL_MAP_WIDTH || Main::LEVEL_MAP_HEIGHT != Main::SCREEN_HEIGHT)
-		{
-			this->setMouseDrag(true);
-			float h=Main::LEVEL_MAP_HEIGHT - Main::SCREEN_HEIGHT;
-			float w = Main::LEVEL_MAP_WIDTH - Main::SCREEN_WIDTH;
-			this->minDragPos = Vec2(-w, -h);
-			this->maxDragPos = Vec2(0, 0);
-		}
 		this->wavesClass = new Waves();
 		this->feature = new Feature();
 		map = new casts::Map();
@@ -112,6 +104,14 @@ namespace engine
 				//this->setMouseChildren(false);
 				//this->setMouseEnabled(false);
 			}
+		}
+		if (Main::SCREEN_WIDTH != Main::LEVEL_MAP_WIDTH || Main::LEVEL_MAP_HEIGHT != Main::SCREEN_HEIGHT)
+		{
+			this->setMouseDrag(true);
+			float h=Main::LEVEL_MAP_HEIGHT - Main::SCREEN_HEIGHT;
+			float w = Main::LEVEL_MAP_WIDTH - Main::SCREEN_WIDTH;
+			this->minDragPos = Vec2(-w / 2, -h / 2 + this->level->offsetY);
+			this->maxDragPos = Vec2(w / 2, h / 2 - this->level->offsetY);
 		}
 		return true;
 	};
