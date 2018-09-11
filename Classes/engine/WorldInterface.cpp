@@ -205,7 +205,7 @@ namespace engine
 		this->castMask->sellCase->stop();
 		this->castMask->setVisible(false);
 
-		this->addChild(this->castMask);
+		this->addChild(this->castMask,4);
 		this->world->forseIndexFl = true;
 		//测试cast
 		//this->blockCastGolem = true;

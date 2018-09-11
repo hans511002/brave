@@ -552,7 +552,11 @@ namespace engine {
         if (!event)
             return;
         string targetName = event->target->getName();
-        if (targetName == "sphereCase")return;
+        if (targetName == "sphereCase"){
+            Node * parent = event->target->getParent()->getParent();//display -> dbdisplay
+            targetName = parent->getName();
+//            return;
+        }
         if (targetName == "sellCase") {
             this->world->worldInterface->container->sell->gotoAndStop(1);
             while (this->fireCount > 0) {
