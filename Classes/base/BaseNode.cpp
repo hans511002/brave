@@ -474,6 +474,7 @@ namespace std
 		//	return true;
 		//}
 		if (node->getName() == "sphereCase") {
+			//CCLOGWARN("%s",getNamePath(node).c_str());
 			Vec2 mpos=node->convertToWorldSpace(Vec2(0,0));
 			mpos = node->convertToNodeSpace(mpos);
 			Vec2 nsp = node->convertToNodeSpace(pt);
@@ -788,9 +789,10 @@ namespace std
 				//if (n == node)continue;
 				if (!node)continue;
 				if (!node->isVisible()) continue;
+				CCLOGWARN("%s", getNamePath(node).c_str());
 				if (std::hitTest(node, ep)){
 					me.currentTargets.push(node);
-					break;
+					//break;
 				}
 			}
 		}
