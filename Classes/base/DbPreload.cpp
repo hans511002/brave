@@ -74,6 +74,12 @@ namespace std
 	void DbPreload::addPreLoadDb(const string & ske, const string & tex, const string & dbName){
 		addPreLoadDb(DbFile(ske, tex, dbName));
 	};
+	void DbPreload::addPreLoadArm(const string & dir,const string & dbName,const string & fileType ){
+		string ske=dir+"/"+dbName+"."+fileType;
+		string tex=dir+"/"+dbName+".json";
+	  	addPreLoadDb(DbFile(ske, tex, dbName));
+	};
+
 	void  DbPreload::addPreLoadDb(const DbFile & dbf){
 		PMutex m(&this->m);
 		if (this->dbNameMap.find(dbf.dbName) == this->dbNameMap.end())
@@ -175,24 +181,7 @@ namespace std
 						}
                     }
                 }
-                if(dirPath.empty() ){
-					if (getProgress() == 1) {
-						if (autoClose)
-						{
-							break;
-						}
-						else
-						{
-							SLEEP(100);//0.1s
-							continue;
-						}
-					}
-					else if(loadIdx = loadDbFiles.size() ){
-						SLEEP(100);//0.1s
-						continue;
-					}
-				}
-				else {
+                if(!dirPath.empty() ){
 					if (dirPath[dirPath.size() - 1] != '/')
 						dirPath = dirPath + "/";
 					//扫描子文件夹
@@ -213,8 +202,7 @@ namespace std
 						}
 					}
 				}
-				
-				int len = loadDbFiles.size();
+                int len = loadDbFiles.size();
                 for(int i = loadIdx; i < len; i++)
 				{
 					loadDbData(*loadDbFiles.at(i));

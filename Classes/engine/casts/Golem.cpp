@@ -219,7 +219,7 @@ namespace engine {
 					if (this->cameraJitterCounter == 0)
 					{
 						this->cameraJitterCounter = -1;
-						this->world->setPosition(Vec2(0, 0)); 
+						this->world->setPosition(this->world->savePos); 
 						this->world->worldInterface->setPosition(Vec2(0, 0)); 
 					}
 					if(this->world->existClasses(this))
@@ -258,9 +258,9 @@ namespace engine {
 					this->world->setPosition(Vec2(this->world->getPositionX() + this->cameraXOffset, this->world->getPositionY() + this->cameraYOffset));
 					//this->world->x = this->world->x + this->cameraXOffset;
 					//this->world->y = this->world->y + this->cameraYOffset;
-					cocos2d::Point tempObject = this->world->convertToWorldSpace(cocos2d::Point(0, 0));
+					//cocos2d::Point tempObject = this->world->convertToWorldSpace(cocos2d::Point(0, 0));
 					//this->tempObject = Main::mainClass->worldClass->globalToLocal(new Point(0, 0));
-					this->world->worldInterface->setPosition(tempObject);
+					this->world->worldInterface->setPosition(Vec2(this->cameraXOffset, this->cameraYOffset));
 					//this->world->worldInterface.x = this->tempObject.x;
 					//this->world->worldInterface.y = this->tempObject.y;
 
@@ -595,7 +595,7 @@ namespace engine {
 			int i = this->world->listOfUnits.size() - 1;
 			while (i >= 0)
 			{
-				if (this->world->listOfUnits[i]->readyDamage && this->world->listOfUnits[i]->atStage())
+				if (this->world->listOfUnits[i]->readyDamage && this->world->listOfUnits[i]->atStaged)
 				{
 					if (this->world->listOfUnits[i]->shoot_pt.distance(this->this_pt) < 30)
 					{
@@ -758,7 +758,7 @@ namespace engine {
 			{
 				this->dead = true;
 				this->world->removeIndexes(this,1);
-				this->world->setPosition(0, 0);
+				this->world->setPosition(this->world->savePos);
 				this->world->worldInterface->setPosition(0, 0);
 				//this->world->hint.x = Math.round(this->world->hint.x);
 				//this->world->hint.y = Math.round(this->world->hint.y);

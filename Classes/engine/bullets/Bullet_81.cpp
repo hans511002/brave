@@ -51,7 +51,7 @@ namespace engine
 				container->setScale(tempObject);
 				if (container->currentFrame == 4)
 				{
-					if (enemyTarget->atStage() && enemyTarget->readyDamage)
+					if (enemyTarget->atStaged && enemyTarget->readyDamage)
 					{
 						if (enemyTarget->typeUnit != 23)
 						{

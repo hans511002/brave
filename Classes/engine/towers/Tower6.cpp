@@ -155,7 +155,7 @@ namespace engine
 				while (i < world->listOfUnits.size())
 				{
 
-					if (world->listOfUnits[i]->atStage() && world->listOfUnits[i]->readyDamage)
+					if (world->listOfUnits[i]->atStaged && world->listOfUnits[i]->readyDamage)
 					{
 						float tempObject = world->listOfUnits[i]->path / world->listOfUnits[i]->finishPath;
 						if (tempObject > tempObject1)

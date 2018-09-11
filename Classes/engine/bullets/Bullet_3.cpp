@@ -117,7 +117,7 @@ namespace engine{
 				while (i >= 0)
 				{
 				    Unit * unit=world->listOfUnits[i];
-					if (unit->atStage() && unit->readyDamage && abs(unit->shoot_pt.x -this_pt.x) < stoneEffectRadiusXML && abs(unit->shoot_pt.y -this_pt.y) < stoneEffectRadiusXML)
+					if (unit->atStaged && unit->readyDamage && abs(unit->shoot_pt.x -this_pt.x) < stoneEffectRadiusXML && abs(unit->shoot_pt.y -this_pt.y) < stoneEffectRadiusXML)
 					{
 						//if (Point.distance(this_pt, world->listOfUnits[i]->shoot_pt) < Main::mainClass->readXMLClass.stoneEffectRadiusXML)
 						if (this_pt.distance(unit->shoot_pt) < stoneEffectRadiusXML)

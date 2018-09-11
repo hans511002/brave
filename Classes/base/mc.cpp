@@ -1016,14 +1016,14 @@ namespace engine
     Vec2 MovieClipSub::convertToWorldSpace(const Vec2 & pos)
     {
         if(this->isReady && this->display)
-            return this->display->convertToWorldSpace(pos);
+            return this->display->getParent()->convertToWorldSpace(pos);
         else
             return Vec2(-1, -1);
     }
     Vec2 MovieClipSub::localToGlobal(const Vec2 &  pos)
     {
         if(this->isReady && this->display)
-            return getDisplayNode()->convertToWorldSpace(pos);
+            return getDisplayNode()->getParent()->convertToWorldSpace(pos);
         else
             return Vec2(-1, -1);
     };

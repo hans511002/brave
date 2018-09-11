@@ -585,7 +585,7 @@ namespace engine{
 			this->i = this->world->listOfUnits.size() - 1;
 			while (this->i >= 0)
 			{
-				if (this->world->listOfUnits[this->i]->readyDamage && this->world->listOfUnits[this->i]->atStage()
+				if (this->world->listOfUnits[this->i]->readyDamage && this->world->listOfUnits[this->i]->atStaged
 					&& !this->world->listOfUnits[this->i]->icemanFlag && !this->world->listOfUnits[this->i]->teleportFlag
 					&& (this->world->listOfUnits[this->i]->icemanResist > 0 || this->world->listOfUnits[this->i]->typeUnit == 24))
 				{

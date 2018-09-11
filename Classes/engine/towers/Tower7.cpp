@@ -175,7 +175,7 @@ namespace engine
                         i = 0;
                         while (i < world->listOfUnits.size())
                         { 
-                            if (world->listOfUnits[i]->readyDamage && world->listOfUnits[i]->atStage() && !world->listOfUnits[i]->airFlag)
+                            if (world->listOfUnits[i]->readyDamage && world->listOfUnits[i]->atStaged && !world->listOfUnits[i]->airFlag)
                             {
                                 cocos2d::Point tempObject2 = world->bezierClass->getPathPoint(world->listOfUnits[i]->path + world->listOfUnits[i]->speedK * 16, world->listOfUnits[i]->road, world->listOfUnits[i]->way);
                                 cocos2d::Point testTarget = cocos2d::Point(tempObject2.x, tempObject2.y);
@@ -596,7 +596,7 @@ namespace engine
                         i = world->listOfUnits.size() - 1;
                         while (i >= 0)
                         {
-                            if (world->listOfUnits[i]->readyDamage && world->listOfUnits[i]->atStage() && !world->listOfUnits[i]->airFlag && !world->listOfUnits[i]->teleportFlag)
+                            if (world->listOfUnits[i]->readyDamage && world->listOfUnits[i]->atStaged && !world->listOfUnits[i]->airFlag && !world->listOfUnits[i]->teleportFlag)
                             {
                                 if (enemyTarget->shoot_pt.distance( world->listOfUnits[i]->shoot_pt) < Main::mainClass->readXMLClass.ultraAddIceStoneRadiusXML)
                                 {

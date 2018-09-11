@@ -80,7 +80,7 @@ namespace engine
 			}
 			else
 			{
-				if(enemyTarget && enemyTarget->atStage() && enemyTarget->readyDamage)
+				if(enemyTarget && enemyTarget->atStaged && enemyTarget->readyDamage)
 				{
 					if(whoShoot->iceBulletCounter >= Main::mainClass->readXMLClass.listOfIceProbability[(spherePower - 1)])
 					{

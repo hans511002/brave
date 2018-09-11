@@ -92,7 +92,7 @@ namespace engine
 			this->setPosition(this->world->bezierClass->getPathPoint(this->path, this->road, this->way));
 			this->this_pt = this->getPosition();// cocos2d::Vec2();
 			//this->this_pt = new Point(this->x, this->y);
-			this->shoot_pt = this->container->cont->convertToWorldSpace(this->container->cont->getPosition());
+			this->shoot_pt = CONVERT_TO_WORLD_POS(this->container->cont->convertToWorldSpace(this->container->cont->getPosition()));
 			//this->shoot_pt = this->container->localToGlobal(new Point(this->container->cont.x, this->container->cont.y));
  
 			bezier::PathPoint tempObject = this->world->bezierClass->getPathPoint(this->path + 10, this->road, this->way);
@@ -135,18 +135,18 @@ namespace engine
 			}
 			//this->schedule(schedule_selector(Unit::update), 0.0f);
 			//Node *hbDis = (Node*)this->container->getArmature()->getSlot("healthBar")->getDisplay();
-			//Vec2 wpos = hbDis->getParent()->convertToWorldSpace(hbDis->getPosition());
+			//Vec2 wpos = CONVERT_TO_WORLD_POS(hbDis->getParent()->convertToWorldSpace(hbDis->getPosition()));
 			//logInfo("hbDis pos=", wpos, &hbDis->getPosition(), &hbDis->getAnchorPoint());
 			//if (hbDis != this->container->healthBar->display){
 			//	hbDis = this->container->healthBar->display;
-			//	wpos = hbDis->getParent()->convertToWorldSpace(hbDis->getPosition());
+			//	wpos = CONVERT_TO_WORLD_POS(hbDis->getParent()->convertToWorldSpace(hbDis->getPosition()));
 			//	logInfo("hbDis pos=", wpos, &hbDis->getPosition(), &hbDis->getAnchorPoint());
 			//}
 
 			//Node * parent =this->container->healthBar;
 			//while (parent->getParent()){
 			//	string parStr = getNamePath(parent); 
-			//	Vec2 wpos = parent->getParent()->convertToWorldSpace(parent->getPosition());
+			//	Vec2 wpos = CONVERT_TO_WORLD_POS(parent->getParent()->convertToWorldSpace(parent->getPosition()));
 			//	logInfo(parStr + " pos=", wpos, &parent->getPosition(), &parent->getAnchorPoint());
  			//	parent = parent->getParent();
 			//}
@@ -252,7 +252,7 @@ namespace engine
 				this->setPosition(ppo);
 				this->directionManage();
 				this->this_pt = this->getPosition();
-				this->shoot_pt = this->container->cont->convertToWorldSpace(this->container->cont->getPosition());
+				this->shoot_pt = CONVERT_TO_WORLD_POS(this->container->cont->convertToWorldSpace(this->container->cont->getPosition()));
 				//this->shoot_pt = this->container->localToGlobal(new Point(this->container->cont.x, this->container->cont.y));
 				if (this->direction == "up" || this->direction == "down")
 				{
@@ -436,57 +436,60 @@ namespace engine
 		}// end function
 		void Unit::atStageManage() //public function atStageManage() : void
 		{
-			if (!this->atStaged)
+			//if (!this->atStaged)
+			//{
+			if (this->this_pt.x > 0 && this->this_pt.y > 0 && this->this_pt.x < Main::LEVEL_MAP_WIDTH && this->this_pt.y < Main::LEVEL_MAP_HEIGHT)
 			{
-				if (this->world->nowLevel == 6)
+				this->atStaged = true;
+			}else{
+				this->atStaged = false;
+			}
+			if (this->world->nowLevel == 6)
+			{
+				if (this->road == 2)
 				{
-					if (this->road == 2)
+					if (this->path > 129)
 					{
-						if (this->path > 129)
-						{
-							this->atStaged = true;
-						}
-						return;
+						this->atStaged = true;
 					}
-				}
-				else if (this->world->nowLevel == 11)
-				{
-					if (this->road == 2)
-					{
-						if (this->path > 79)
-						{
-							this->atStaged = true;
-						}
-						return;
-					}
-				}
-				else if (this->world->nowLevel == 13)
-				{
-					if (this->road == 2)
-					{
-						if (this->path > 50)
-						{
-							this->atStaged = true;
-						}
-						return;
-					}
-				}
-				else if (this->world->nowLevel == 14)
-				{
-					if (this->road == 2)
-					{
-						if (this->path > 100)
-						{
-							this->atStaged = true;
-						}
-						return;
-					}
-				}
-				if (this->this_pt.x > 0 && this->this_pt.y > 0 && this->this_pt.x < Main::SCREEN_WIDTH && this->this_pt.y < Main::SCREEN_HEIGHT)
-				{
-					this->atStaged = true;
+					return;
 				}
 			}
+			else if (this->world->nowLevel == 11)
+			{
+				if (this->road == 2)
+				{
+					if (this->path > 79)
+					{
+						this->atStaged = true;
+					}
+					return;
+				}
+			}
+			else if (this->world->nowLevel == 13)
+			{
+				if (this->road == 2)
+				{
+					if (this->path > 50)
+					{
+						this->atStaged = true;
+					}
+					return;
+				}
+			}
+			else if (this->world->nowLevel == 14)
+			{
+				if (this->road == 2)
+				{
+					if (this->path > 100)
+					{
+						this->atStaged = true;
+					}
+					return;
+				}
+			}
+				
+			//}
 			//return;
 		}// end function
 		void Unit::animationHandler() //public function animationHandler() : void

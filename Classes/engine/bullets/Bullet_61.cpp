@@ -38,7 +38,7 @@ namespace engine
 					i = world->listOfUnits.size() - 1;
 					while (i >= 0)
 					{
-						if (world->listOfUnits[i]->atStage() && world->listOfUnits[i]->readyDamage && !world->listOfUnits[i]->icemanFlag && !world->listOfUnits[i]->teleportFlag)
+						if (world->listOfUnits[i]->atStaged && world->listOfUnits[i]->readyDamage && !world->listOfUnits[i]->icemanFlag && !world->listOfUnits[i]->teleportFlag)
 						{
 							if (this_pt.distance(world->listOfUnits[i]->shoot_pt) < Main::mainClass->readXMLClass.ultraAddIceLevinDamageRadiusXML)
 							{

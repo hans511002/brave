@@ -59,6 +59,7 @@ public:
 	Main();
 	//CREATE_FUNC(Main);
 	virtual bool init();
+	void addPreloadDB();
 	static Scene* createScene();
     virtual void onEnter();
 	virtual void _onStart();
@@ -82,5 +83,7 @@ public:
 	virtual void touchActionHandler(cocos2d::Ref *pSender, cocos2d::ui::TouchEventType type);
 
 };
+
+#define CONVERT_TO_WORLD_POS(pos) Main::mainClass->worldClass->convertToNodeSpace(pos)
 
 #endif

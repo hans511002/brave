@@ -444,19 +444,19 @@ namespace engine{
 						container->haze3->setVisible(false);
 						container->haze4->setVisible(false);
 					}
-					container->haze1->myPoint = this->container->convertToWorldSpace(container->haze1->getPosition());
-					container->haze2->myPoint = this->container->convertToWorldSpace(container->haze2->getPosition());
-					container->haze3->myPoint = this->container->convertToWorldSpace(container->haze3->getPosition());
-					container->haze4->myPoint = this->container->convertToWorldSpace(container->haze4->getPosition());
-					container->haze5->myPoint = this->container->convertToWorldSpace(container->haze5->getPosition());
-					container->haze6->myPoint = this->container->convertToWorldSpace(container->haze6->getPosition());
-					container->haze7->myPoint = this->container->convertToWorldSpace(container->haze7->getPosition());
-					container->haze8->myPoint = this->container->convertToWorldSpace(container->haze8->getPosition());
-					container->haze9->myPoint = this->container->convertToWorldSpace(container->haze9->getPosition());
-					this->leftSmoke_pt = this->container->convertToWorldSpace(container->haze5->getPosition());
-					this->rightSmoke_pt = this->container->convertToWorldSpace(container->haze7->getPosition());
-					this->upSmoke_pt = this->container->convertToWorldSpace(container->haze6->getPosition());
-					this->downSmoke_pt = this->container->convertToWorldSpace(container->haze8->getPosition());
+					container->haze1->myPoint = CONVERT_TO_WORLD_POS(this->container->convertToWorldSpace(container->haze1->getPosition()));
+					container->haze2->myPoint = CONVERT_TO_WORLD_POS(this->container->convertToWorldSpace(container->haze2->getPosition()));
+					container->haze3->myPoint = CONVERT_TO_WORLD_POS(this->container->convertToWorldSpace(container->haze3->getPosition()));
+					container->haze4->myPoint = CONVERT_TO_WORLD_POS(this->container->convertToWorldSpace(container->haze4->getPosition()));
+					container->haze5->myPoint = CONVERT_TO_WORLD_POS(this->container->convertToWorldSpace(container->haze5->getPosition()));
+					container->haze6->myPoint = CONVERT_TO_WORLD_POS(this->container->convertToWorldSpace(container->haze6->getPosition()));
+					container->haze7->myPoint = CONVERT_TO_WORLD_POS(this->container->convertToWorldSpace(container->haze7->getPosition()));
+					container->haze8->myPoint = CONVERT_TO_WORLD_POS(this->container->convertToWorldSpace(container->haze8->getPosition()));
+					container->haze9->myPoint = CONVERT_TO_WORLD_POS(this->container->convertToWorldSpace(container->haze9->getPosition()));
+					this->leftSmoke_pt = CONVERT_TO_WORLD_POS(this->container->convertToWorldSpace(container->haze5->getPosition()));
+					this->rightSmoke_pt = CONVERT_TO_WORLD_POS(this->container->convertToWorldSpace(container->haze7->getPosition()));
+					this->upSmoke_pt = CONVERT_TO_WORLD_POS(this->container->convertToWorldSpace(container->haze6->getPosition()));
+					this->downSmoke_pt = CONVERT_TO_WORLD_POS(this->container->convertToWorldSpace(container->haze8->getPosition()));
 				}
 				if (container->haze1->myFrame < 60)
 				{
@@ -677,7 +677,7 @@ namespace engine{
 				this->i = this->world->listOfUnits.size() - 1;
 				while (this->i >= 0)
 				{
-					if (this->world->listOfUnits[this->i]->atStage() && this->world->listOfUnits[this->i]->readyDamage)
+					if (this->world->listOfUnits[this->i]->atStaged && this->world->listOfUnits[this->i]->readyDamage)
 					{
 						bool dead = false;
 						units::Unit * tempObject = this->world->listOfUnits[this->i];
@@ -891,7 +891,7 @@ namespace engine{
 					this->i = this->world->listOfUnits.size() - 1;
 					while (this->i >= 0)
 					{
-						if (this->world->listOfUnits[this->i]->atStage() && this->world->listOfUnits[this->i]->readyDamage)
+						if (this->world->listOfUnits[this->i]->atStaged && this->world->listOfUnits[this->i]->readyDamage)
 						{
 							if (this->this_pt.distance(this->world->listOfUnits[this->i]->shoot_pt) < this->radius)
 							{
@@ -931,7 +931,7 @@ namespace engine{
 					while (this->i >= 0)
 					{
 						units::Unit * tempObject = this->world->listOfUnits[this->i];
-						if (tempObject->atStage() && tempObject->readyDamage)
+						if (tempObject->atStaged && tempObject->readyDamage)
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{
@@ -957,7 +957,7 @@ namespace engine{
 					while (this->i >= 0)
 					{
 						units::Unit * tempObject = this->world->listOfUnits[this->i];
-						if (tempObject->atStage() && tempObject->readyDamage)
+						if (tempObject->atStaged && tempObject->readyDamage)
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{
@@ -993,7 +993,7 @@ namespace engine{
 						while (this->i >= 0)
 						{
 							units::Unit * tempObject = this->world->listOfUnits[this->i];
-							if (tempObject->atStage() && tempObject->readyDamage)
+							if (tempObject->atStaged && tempObject->readyDamage)
 							{
 								if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 								{
@@ -1020,7 +1020,7 @@ namespace engine{
 					while (this->i >= 0)
 					{
 						units::Unit * tempObject = this->world->listOfUnits[this->i];
-						if (tempObject->atStage() && tempObject->readyDamage)
+						if (tempObject->atStaged && tempObject->readyDamage)
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{
@@ -1046,7 +1046,7 @@ namespace engine{
 					while (this->i >= 0)
 					{
 						units::Unit * tempObject = this->world->listOfUnits[this->i];
-						if (tempObject->atStage() && tempObject->readyDamage)
+						if (tempObject->atStaged && tempObject->readyDamage)
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{
@@ -1074,7 +1074,7 @@ namespace engine{
 					while (this->i >= 0)
 					{
 						units::Unit * tempObject = this->world->listOfUnits[this->i];
-						if (tempObject->atStage() && tempObject->readyDamage)
+						if (tempObject->atStaged && tempObject->readyDamage)
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{
@@ -1102,7 +1102,7 @@ namespace engine{
 					while (this->i >= 0)
 					{
 						units::Unit * tempObject = this->world->listOfUnits[this->i];
-						if (tempObject->atStage() && tempObject->readyDamage)
+						if (tempObject->atStaged && tempObject->readyDamage)
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{
@@ -1130,7 +1130,7 @@ namespace engine{
 					while (this->i >= 0)
 					{
 						units::Unit * tempObject = this->world->listOfUnits[this->i];
-						if (tempObject->atStage() && tempObject->readyDamage)
+						if (tempObject->atStaged && tempObject->readyDamage)
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{
@@ -1158,7 +1158,7 @@ namespace engine{
 					while (this->i >= 0)
 					{
 						units::Unit * tempObject = this->world->listOfUnits[this->i];
-						if (tempObject->atStage() && tempObject->readyDamage)
+						if (tempObject->atStaged && tempObject->readyDamage)
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{
@@ -1186,7 +1186,7 @@ namespace engine{
 					while (this->i >= 0)
 					{
 						units::Unit * tempObject = this->world->listOfUnits[this->i];
-						if (tempObject->atStage() && tempObject->readyDamage)
+						if (tempObject->atStaged && tempObject->readyDamage)
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{
@@ -1214,7 +1214,7 @@ namespace engine{
 					while (this->i >= 0)
 					{
 						units::Unit * tempObject = this->world->listOfUnits[this->i];
-						if (tempObject->atStage() && tempObject->readyDamage)
+						if (tempObject->atStaged && tempObject->readyDamage)
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{
@@ -1265,7 +1265,7 @@ namespace engine{
 					while (this->i >= 0)
 					{
 						units::Unit * tempObject = this->world->listOfUnits[this->i];
-						if (tempObject->atStage() && tempObject->readyDamage)
+						if (tempObject->atStaged && tempObject->readyDamage)
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{

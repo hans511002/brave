@@ -47,6 +47,8 @@ namespace std
 		virtual void addPreLoadDb(const string & ske, const string & tex, const string & dbName);
 		virtual void addPreLoadDb(const DbFile & db);
 		virtual void addPreLoadDb(const Common::Array<DbFile> & dbs);
+		virtual void addPreLoadArm(const string & dir,const string & dbName,const string & fileType="json" );
+
 		virtual void startSch();
 		virtual bool isStartSch();
 

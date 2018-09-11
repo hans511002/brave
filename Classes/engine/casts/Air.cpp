@@ -220,11 +220,11 @@ namespace engine
 						if (this->cameraJitterCounter == 0)
 						{
 							this->cameraJitterCounter = -1;
-							this->world->setPosition(Vec2(0, 0)); 
+							this->world->setPosition(this->world->savePos); 
 							this->world->worldInterface->setPosition(Vec2(0, 0)); 
 							this->openFlag = false;
 							//this->world->decoration->earthquakeFlag = true;
-							this->shoot_pt = this->container->cont->convertToWorldSpace(this->container->cont->getPosition());
+							this->shoot_pt = CONVERT_TO_WORLD_POS(this->container->cont->convertToWorldSpace(this->container->cont->getPosition()));
 							//this->shoot_pt = this->container->localToGlobal(new Point(this->container->cont.x,this->container->cont.y));
 						}
 					}
@@ -244,9 +244,9 @@ namespace engine
 						this->world->setPosition(Vec2(this->world->getPositionX() + this->cameraXOffset, this->world->getPositionY() + this->cameraYOffset));
 						//this->world->x = this->world->x + this->cameraXOffset;
 						//this->world->y = this->world->y + this->cameraYOffset;
-						cocos2d::Point tempObject = this->world->convertToWorldSpace(cocos2d::Point(0, 0));
+						//cocos2d::Point tempObject = this->world->convertToWorldSpace(cocos2d::Point(0, 0)));
 						//this->tempObject = Main::mainClass->worldClass->globalToLocal(new Point(0, 0));
-						this->world->worldInterface->setPosition(tempObject);
+						this->world->worldInterface->setPosition(Vec2(this->cameraXOffset,this->cameraYOffset));
 						//this->world->worldInterface.x = this->tempObject.x;
 						//this->world->worldInterface.y = this->tempObject.y;
 
@@ -334,7 +334,7 @@ namespace engine
 			this->i = 0;
 			while (this->i < this->world->listOfUnits.size())
 			{
-				if (this->world->listOfUnits[this->i]->readyDamage && this->world->listOfUnits[this->i]->atStage() && !this->world->listOfUnits[this->i]->airFlag)
+				if (this->world->listOfUnits[this->i]->readyDamage && this->world->listOfUnits[this->i]->atStaged && !this->world->listOfUnits[this->i]->airFlag)
 				{
 					float tempObject = this->world->listOfUnits[this->i]->shoot_pt.distance(this->shoot_pt);
 					if (tempObject < this->radius)
@@ -419,7 +419,7 @@ namespace engine
 					this->i = 0;
 					while (this->i < this->world->listOfUnits.size())
 					{
-						if (this->world->listOfUnits[this->i]->atStage() && this->world->listOfUnits[this->i]->readyDamage
+						if (this->world->listOfUnits[this->i]->atStaged && this->world->listOfUnits[this->i]->readyDamage
 							&& !this->world->listOfUnits[this->i]->airFlag && !this->world->listOfUnits[this->i]->teleportFlag)
 						{
 							float tempObject = this->world->listOfUnits[this->i]->shoot_pt.distance(this->shoot_pt);
@@ -489,7 +489,7 @@ namespace engine
 			{
 				this->dead = true;
 				this->world->removeClasses(this);
-				this->world->setPosition(Vec2(0,0) ); 
+				this->world->setPosition(this->world->savePos); 
 				this->world->worldInterface->setPosition(Vec2(0, 0)); 
 				if (this->world->selectObject == this) {
 					this->world->selectObject = NULL;

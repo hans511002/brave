@@ -243,7 +243,7 @@ namespace engine
 			//pointer->getArmature()->getBone("mask2")->offset.rotation=180;
 			//pointer->mask2->setRotation(180);
 			pointer->pointerCase->setMouseEnabled(true);
-			Vec2 pos = pointer->display->convertToWorldSpace(pointer->getPosition());
+			Vec2 pos = CONVERT_TO_WORLD_POS(pointer->display->convertToWorldSpace(pointer->getPosition()));
 			pointer->display->removeChild(pointer,false);
 			//this->world->level->removeChild(pointer);
 			this->world->addChild(pointer,3);
@@ -1434,10 +1434,10 @@ namespace engine
 
 		this->world->worldInterface = new WorldInterface();
 		this->world->worldInterface->init();
-		this->world->fixedRoot->addChild(this->world->worldInterface);
+		this->world->addChild(this->world->worldInterface);
 		//world->logInfo("buyFireBuyTXT", world->worldInterface->container->buyFireBuyTXT->getPosition());
 		//world->logInfo("buyFireBuyTXT", world->worldInterface->container->buyFireBuyTXT->getNamePath());
-		//world->logInfo("buyFireBuyTXT", world->worldInterface->container->buyFire->convertToWorldSpace(world->worldInterface->container->buyFireBuyTXT->getPosition()));
+		//world->logInfo("buyFireBuyTXT", CONVERT_TO_WORLD_POS(world->worldInterface->container->buyFire->convertToWorldSpace(world->worldInterface->container->buyFireBuyTXT->getPosition())));
 
 		if (complexityLevel == 4)
 		{

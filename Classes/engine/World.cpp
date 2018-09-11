@@ -113,6 +113,7 @@ namespace engine
 			this->minDragPos = Vec2(-w / 2, -h / 2 + this->level->offsetY);
 			this->maxDragPos = Vec2(w / 2, h / 2 - this->level->offsetY);
 		}
+		savePos=this->getPosition();
 		return true;
 	};
 	void World::onEnter()
@@ -500,7 +501,7 @@ namespace engine
 			EventNode::beginTouchPos = Vec2(this->mouseX, this->mouseY);
 			{
 				logInfo("mouseDownHandler.target", getNamePath(event->target));
-				Vec2 gpos = event->target->getParent()->convertToWorldSpace(event->target->getPosition());
+				Vec2 gpos = CONVERT_TO_WORLD_POS(event->target->getParent()->convertToWorldSpace(event->target->getPosition()));
 				logInfo("mouseDownHandler.target.pos", event->getLocation(), &event->target->getPosition(), &gpos);
 				logInfo("mouseDownHandler.target.zindex", event->target->getLocalZOrder(), 0);
 			}
@@ -734,6 +735,13 @@ namespace engine
 						endPos.y = en->maxDragPos.y;
 					} 
 					event->target->setPosition(endPos);
+					World * thiz=ISTYPE(World,event->target);
+					if(thiz){
+					    savePos=this->getPosition();
+					    Vec2 moveOffset=endPos-stpos;
+					    stpos = this->worldInterface->getPosition();
+                        this->worldInterface->setPosition(stpos-moveOffset);
+					}
 				}
 			}
 

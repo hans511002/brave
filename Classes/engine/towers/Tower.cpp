@@ -30,7 +30,7 @@ namespace engine{
 			BaseNode::init();
 			////this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
 			this->world = Main::mainClass->worldClass;
-			Vec2 pos = this->myPlace->convertToWorldSpace(Vec2(0, 0));
+			Vec2 pos = CONVERT_TO_WORLD_POS(this->myPlace->convertToWorldSpace(Vec2(0, 0)));
 			this->setPosition(pos);
 			//this->x = this->myPlace.x;
 			//this->y = this->myPlace.y;

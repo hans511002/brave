@@ -126,6 +126,8 @@ namespace engine
 
         float mouseX;
         float mouseY;
+        
+        Vec2 savePos;
 
         World();
         //CREATE_FUNC(World);

@@ -103,9 +103,9 @@ namespace engine {
 					j = world->listOfUnits.size() - 1;
 					while (j >= 0)
 					{
-						Vec2 tempObject = this->convertToWorldSpace(this->listOfAnimation[i]->getPosition());
+						Vec2 tempObject = CONVERT_TO_WORLD_POS(this->convertToWorldSpace(this->listOfAnimation[i]->getPosition()));
 						//tempObject = this->localToGlobal(new Point(this->listOfAnimation[i].x, this->listOfAnimation[i].y));
-						if (world->listOfUnits[j]->atStage() && world->listOfUnits[j]->readyDamage)
+						if (world->listOfUnits[j]->atStaged && world->listOfUnits[j]->readyDamage)
 						{
 							if (world->listOfUnits[j]->shoot_pt.distance(tempObject) < Main::mainClass->readXMLClass.ultraAddFireStoneRadiusXML)
 							{

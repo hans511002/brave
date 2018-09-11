@@ -119,10 +119,9 @@ namespace engine {
                 }
             }
         }
-        this->setPosition(this->world->mouseX, this->world->mouseY);
+        this->setPosition(CONVERT_TO_WORLD_POS(Vec2(this->world->mouseX, this->world->mouseY)));
         this->setMouseChildren(false);
         this->setMouseEnabled(false);
-
         return true;
     }// end function
     //void GetSphere::addChild(Node *child){
@@ -213,7 +212,8 @@ namespace engine {
         }
         if (this->world->getSphere == this) {
             this->world->feature->scanPointersAtCast();
-            this->setPosition(this->world->mouseX, this->world->mouseY);
+            CONVERT_TO_WORLD_POS(Vec2(this->world->mouseX, this->world->mouseY))
+            //this->setPosition(this->world->mouseX, this->world->mouseY);
             if (this->radius->isVisible()) {
                 if (this->radius->currentFrame == 1) {
                     this->radius->setRotation(this->radius->getRotation() + 1);
@@ -1217,27 +1217,22 @@ namespace engine {
         this->ownerType = "tower";
         if (this->fireCount > 0 && this->iceCount == 0 && this->stoneCount == 0 &&
             this->levinCount == 0) {
-            Vec2 pos = this->world->worldInterface->container->fireSphere->convertToWorldSpace(
-                    this->world->worldInterface->container->fireSphere->getPosition());
+            Vec2 pos = CONVERT_TO_WORLD_POS(this->world->worldInterface->container->fireSphere->convertToWorldSpace(this->world->worldInterface->container->fireSphere->getPosition()));
             this->setPosition(pos);
         } else if (this->fireCount == 0 && this->iceCount > 0 && this->stoneCount == 0 &&
                    this->levinCount == 0) {
-            Vec2 pos = this->world->worldInterface->container->iceSphere->convertToWorldSpace(
-                    this->world->worldInterface->container->iceSphere->getPosition());
+            Vec2 pos = CONVERT_TO_WORLD_POS(this->world->worldInterface->container->iceSphere->convertToWorldSpace(this->world->worldInterface->container->iceSphere->getPosition()));
             this->setPosition(pos);
         } else if (this->fireCount == 0 && this->iceCount == 0 && this->stoneCount > 0 &&
                    this->levinCount == 0) {
-            Vec2 pos = this->world->worldInterface->container->stoneSphere->convertToWorldSpace(
-                    this->world->worldInterface->container->stoneSphere->getPosition());
+            Vec2 pos = CONVERT_TO_WORLD_POS(this->world->worldInterface->container->stoneSphere->convertToWorldSpace(this->world->worldInterface->container->stoneSphere->getPosition()));
             this->setPosition(pos);
         } else if (this->fireCount == 0 && this->iceCount == 0 && this->stoneCount == 0 &&
                    this->levinCount > 0) {
-            Vec2 pos = this->world->worldInterface->container->levinSphere->convertToWorldSpace(
-                    this->world->worldInterface->container->levinSphere->getPosition());
+            Vec2 pos = CONVERT_TO_WORLD_POS(this->world->worldInterface->container->levinSphere->convertToWorldSpace(this->world->worldInterface->container->levinSphere->getPosition()));
             this->setPosition(pos);
         } else {
-            Vec2 pos = this->world->worldInterface->container->getAll->convertToWorldSpace(
-                    this->world->worldInterface->container->getAll->getPosition());
+            Vec2 pos = CONVERT_TO_WORLD_POS(this->world->worldInterface->container->getAll->convertToWorldSpace(this->world->worldInterface->container->getAll->getPosition()));
             this->setPosition(pos);
         }
         this->retrieveGetSphere();
