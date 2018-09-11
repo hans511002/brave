@@ -124,8 +124,9 @@ namespace std
 		if (thr){
 			autoClose = true;
 			start();
-			thr->join();
-			thr == NULL;
+			if(thr)
+                thr->join();
+			thr = NULL;
 		}
 	}
     void DbPreload::close() {
