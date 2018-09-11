@@ -212,7 +212,7 @@ namespace engine {
         }
         if (this->world->getSphere == this) {
             this->world->feature->scanPointersAtCast();
-            CONVERT_TO_WORLD_POS(Vec2(this->world->mouseX, this->world->mouseY))
+            CONVERT_TO_WORLD_POS(Vec2(this->world->mouseX, this->world->mouseY));
             //this->setPosition(this->world->mouseX, this->world->mouseY);
             if (this->radius->isVisible()) {
                 if (this->radius->currentFrame == 1) {

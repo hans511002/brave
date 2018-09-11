@@ -45,7 +45,7 @@ namespace std
         //std::mutex mutex;//线程互斥对象   std::ref(n)引用传递参数
         PMutex m(&this->m);
         preLoadDirs.push_back(dir);
-		if (thr = NULL) {
+		if (thr == NULL) {
 			autoStart = true;
 			thr = new std::thread(&DbPreload::run, this);
 		}
@@ -63,7 +63,7 @@ namespace std
 					DbFile *dbp = new DbFile(dbf);
 					loadDbFiles.push(dbp);
  					this->dbNameMap.insert(DbFileMap::value_type(dbName, dbp));
-					if (thr = NULL) {
+					if (thr == NULL) {
 						autoStart = true;
 						thr = new std::thread(&DbPreload::run, this);
 					}
@@ -87,7 +87,7 @@ namespace std
 			DbFile *dbp = new DbFile(dbf);
 			loadDbFiles.push(dbp); 
 			this->dbNameMap.insert(DbFileMap::value_type(dbf.dbName, dbp));
-			if (thr = NULL) {
+			if (thr == NULL) {
 				autoStart = true;
 				thr = new std::thread(&DbPreload::run, this);
 			}
@@ -103,7 +103,7 @@ namespace std
 				DbFile *dbp = new DbFile(dbf);
 				loadDbFiles.push(dbp);
 				this->dbNameMap.insert(DbFileMap::value_type(dbf.dbName, dbp));
-				if (thr = NULL) {
+				if (thr == NULL) {
 					autoStart = true;
 					thr = new std::thread(&DbPreload::run, this);
 				}
@@ -125,7 +125,7 @@ namespace std
 			autoClose = true;
 			start();
 			thr->join();
-			thr = NULL;
+			thr == NULL;
 		}
 	}
     void DbPreload::close() {

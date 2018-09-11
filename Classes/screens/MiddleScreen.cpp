@@ -181,7 +181,7 @@ namespace screens
 					Main::mainClass->preload.startSch();
 				return;
 			}
-			else {
+			else if(Main::mainClass->preload.isRunning()){
 				Main::mainClass->preload.join();
 			}
 			if(this->middleRound->currentFrame < this->middleRound->totalFrames)

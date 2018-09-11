@@ -61,15 +61,13 @@ bool Main::init()
     //this->readXMLClass = new ReadXML();//不使用指针,使用对象
     AudioUtil::setAudioDir("sound");
     AudioUtil::stopAll();
-    preloadSound();
-
     //this->tracker = new GATracker(this, "UA-63231445-3", "AS3", false);
     //this->tracker.trackPageview("openGame");
 	this->enableKeyHandler();
     //this->enableMouseHandler();//world及screen中监听
-
     addPreloadDB();
     preload.start();
+    preloadSound();
     return true;
 }// end function
 
