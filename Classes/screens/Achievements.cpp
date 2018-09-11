@@ -1063,9 +1063,9 @@ namespace screens
 
     void Achievements::autoguidersButtons()  
     {
-        this->autoguidesMouse_pt = cocos2d::Point(this->mouseX, this->mouseY);
+        this->autoguidesMouse_pt = CONVERT_TO_WORLD_POS(cocos2d::Point(this->mouseX, this->mouseY));
         this->autoguidesObject = NULL;
-        this->autoguidesObject_pt = this->container->cont->btnClose->localToGlobal(this->container->cont->btnClose->closeCase->getPosition());
+        this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->cont->btnClose->localToGlobal(this->container->cont->btnClose->closeCase->getPosition()));
         this->autoguidesObjectWidth = this->container->cont->btnClose->closeCase.width / 2;
         this->autoguidesObjectHeight = this->container->cont->btnClose->closeCase.height / 2;
         if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 

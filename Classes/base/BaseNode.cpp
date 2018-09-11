@@ -2,6 +2,10 @@
 #include "MainClass.h"
 #include "base/mc.h"
 #include "DbPreload.h"
+
+#include "MainClass.h"
+#include "engine/World.h" 
+
 #if defined(__GNUC__)
 #include <cxxabi.h>
 #endif
@@ -469,7 +473,15 @@ namespace std
 		//{
 		//	return true;
 		//}
+		if (node->getName() == "sphereCase") {
+			Vec2 mpos=node->convertToWorldSpace(Vec2(0,0));
+			mpos = node->convertToNodeSpace(mpos);
+			Vec2 nsp = node->convertToNodeSpace(pt);
+			nsp = node->convertToWorldSpace(nsp);
+			Vec2 wpos = CONVERT_TO_WORLD_POS(pt);
+			nsp = node->convertToNodeSpace(pt);
 
+		}
 		Vec2 nsp = node->convertToNodeSpace(pt);//convertToNodeSpace convertToNodeSpaceAR
 		Rect bb;
 		bb.size = node->getContentSize(); //node->convertToWorldSpace(node->getPosition())

@@ -211,9 +211,8 @@ namespace engine {
             }
         }
         if (this->world->getSphere == this) {
-            this->world->feature->scanPointersAtCast();
-            CONVERT_TO_WORLD_POS(Vec2(this->world->mouseX, this->world->mouseY));
-            //this->setPosition(this->world->mouseX, this->world->mouseY);
+            this->world->feature->scanPointersAtCast(); 
+            this->setPosition(CONVERT_TO_WORLD_POS(Vec2(this->world->mouseX, this->world->mouseY)));
             if (this->radius->isVisible()) {
                 if (this->radius->currentFrame == 1) {
                     this->radius->setRotation(this->radius->getRotation() + 1);
@@ -232,7 +231,7 @@ namespace engine {
         std::MouseEvent *event = ISTYPE(std::MouseEvent, e);
         if (!event)
             return;
-        //this->setPosition(this->world->mouseX, this->world->mouseY);
+        this->setPosition(CONVERT_TO_WORLD_POS(Vec2(this->world->mouseX, this->world->mouseY)));
         string targetName = event->target->getName();
         if (targetName == "fireCase") {
             if (ISTYPE(EventNode, event->target)->mouseEnabled &&
@@ -431,8 +430,7 @@ namespace engine {
                 } else if (this->world->ultraTowerMenu) {
                     tempObject = this->world->ultraTowerMenu;
                 }
-                if (!this->radius->isVisible() && tempObject->myTower->this_pt.distance(
-                        cocos2d::Point(this->world->mouseX, this->world->mouseY)) > 86) {
+                if (!this->radius->isVisible() && tempObject->myTower->this_pt.distance(CONVERT_TO_WORLD_POS(cocos2d::Point(this->world->mouseX, this->world->mouseY))) > 86) {
                     this->radius->setVisible(true);
                     this->arrow->setVisible(true);
                     tempObject->closeMenu();
@@ -646,7 +644,7 @@ namespace engine {
                     this->retrieveGetSphere();
                 }
             }
-        } else if (targetName == "fireCase") {
+        } else if (targetName == "fireCase" || targetName == "fireSphere") {
             if (ISTYPE(EventNode, event->target)->mouseEnabled) {
                 if (this->listOfStack.size() < 4) {
                     if (this->world->worldInterface->fireCount == 0) {
@@ -656,7 +654,7 @@ namespace engine {
                     this->world->worldInterface->archiveManage("get", "fire");
                 }
             }
-        } else if (targetName == "iceCase") {
+        } else if (targetName == "iceCase" || targetName == "iceSphere") {
             if (ISTYPE(EventNode, event->target)->mouseEnabled) {
                 if (this->listOfStack.size() < 4) {
                     if (this->world->worldInterface->iceCount == 0) {
@@ -666,7 +664,7 @@ namespace engine {
                     this->world->worldInterface->archiveManage("get", "ice");
                 }
             }
-        } else if (targetName == "stoneCase") {
+        } else if (targetName == "stoneCase" || targetName == "stoneSphere") {
             if (ISTYPE(EventNode, event->target)->mouseEnabled) {
                 if (this->listOfStack.size() < 4) {
                     if (this->world->worldInterface->stoneCount == 0) {
@@ -676,7 +674,7 @@ namespace engine {
                     this->world->worldInterface->archiveManage("get", "stone");
                 }
             }
-        } else if (targetName == "levinCase") {
+        } else if (targetName == "levinCase" || targetName == "levinSphere") {
             if (ISTYPE(EventNode, event->target)->mouseEnabled) {
                 if (this->listOfStack.size() < 4) {
                     if (this->world->worldInterface->levinCount == 0) {
@@ -686,7 +684,7 @@ namespace engine {
                     this->world->worldInterface->archiveManage("get", "levin");
                 }
             }
-        } else if (targetName == "getAllCase") {
+        } else if (targetName == "getAllCase" || targetName == "getAll") {
             if (ISTYPE(EventNode, event->target)->mouseEnabled) {
                 if (this->getAllCount < 3) {
                     if (this->world->worldInterface->getAllCount == 0) {

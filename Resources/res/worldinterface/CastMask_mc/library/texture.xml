@@ -1,6 +1,4 @@
 <TextureAtlas name="CastMask_mc" imagePath="texture.png">
- <SubTexture name="Sprite/sprite 47" x="0" y="0" width="50" height="50"/>
- <SubTexture name="Sprite/sprite 4085" x="52" y="0" width="50" height="50"/>
- <SubTexture name="castCase" x="52" y="52" width="50" height="50"/>
- <SubTexture name="sphereCase" x="0" y="52" width="50" height="50"/>
+ <SubTexture name="castCase" x="52" y="0" width="50" height="50"/>
+ <SubTexture name="sphereCase" x="0" y="0" width="50" height="50"/>
 </TextureAtlas>

@@ -1631,7 +1631,7 @@ namespace engine
 
 	void Feature::scanPointersAtCast()
 	{
-		cocos2d::Point tempObject(this->world->mouseX, this->world->mouseY);
+		cocos2d::Point tempObject=CONVERT_TO_WORLD_POS(Vec2(this->world->mouseX, this->world->mouseY));
 		if (tempObject.distance(this->world->pointer1->myPoint) < 30)
 		{
 			if (this->world->pointer1->getAlpha() == 1)

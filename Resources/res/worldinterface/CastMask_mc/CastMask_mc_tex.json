@@ -1,1 +1,1 @@
-{"width":128,"imagePath":"CastMask_mc_tex.png","height":64,"name":"CastMask_mc","SubTexture":[{"width":50,"y":1,"height":50,"name":"castCase","x":53},{"width":50,"y":1,"height":50,"name":"sphereCase","x":1}]}
+{"SubTexture":[{"width":50,"y":1,"height":50,"name":"castCase","x":1},{"width":50,"y":1,"height":50,"name":"sphereCase","x":53}],"width":128,"imagePath":"CastMask_mc_tex.png","height":64,"name":"CastMask_mc"}

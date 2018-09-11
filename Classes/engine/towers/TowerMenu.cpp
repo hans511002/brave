@@ -2483,13 +2483,13 @@ namespace engine
 
 		void TowerMenu::autoguidersButtons()
 		{
-			this->autoguidesMouse_pt = cocos2d::Point(Main::mainClass->worldClass->mouseX, Main::mainClass->worldClass->mouseY);
+			this->autoguidesMouse_pt = CONVERT_TO_WORLD_POS(cocos2d::Point(Main::mainClass->worldClass->mouseX, Main::mainClass->worldClass->mouseY));
 			this->autoguidesObject = NULL;
 			if (this->container->currentFrame == 1)
 			{
 				if (this->container->btnUpgradeMenuBtnUpgradeMenuCase->isReady)
 				{
-					this->autoguidesObject_pt = this->container->btnUpgradeMenu->localToGlobal(this->container->btnUpgradeMenuBtnUpgradeMenuCase->getPosition());
+					this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->btnUpgradeMenu->localToGlobal(this->container->btnUpgradeMenuBtnUpgradeMenuCase->getPosition()));
 					this->autoguidesObjectWidth = this->container->btnUpgradeMenuBtnUpgradeMenuCase->getWidth() / 2;
 					this->autoguidesObjectHeight = this->container->btnUpgradeMenuBtnUpgradeMenuCase->getHeight() / 2;
 					if (this->container->btnUpgradeMenuBtnUpgradeMenuCase->hitTest(this->autoguidesMouse_pt))
@@ -2501,7 +2501,7 @@ namespace engine
 			}
 			else if (this->container->currentFrame == this->container->totalFrames)
 			{
-				this->autoguidesObject_pt = this->container->btnTowerUpgr1->localToGlobal(this->container->btnTowerUpgr1BtnTowerUpgrCase->getPosition());
+				this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->btnTowerUpgr1->localToGlobal(this->container->btnTowerUpgr1BtnTowerUpgrCase->getPosition()));
 				this->autoguidesObjectWidth = this->container->btnTowerUpgr1BtnTowerUpgrCase->getWidth() / 2;
 				this->autoguidesObjectHeight = this->container->btnTowerUpgr1BtnTowerUpgrCase->getHeight() / 2;
 				if (this->container->btnTowerUpgr1BtnTowerUpgrCase->hitTest(this->autoguidesMouse_pt))
@@ -2511,7 +2511,7 @@ namespace engine
 				}
 				if (!this->autoguidesObject)
 				{
-					this->autoguidesObject_pt = this->container->btnTowerUpgr2->localToGlobal(this->container->btnTowerUpgr2BtnTowerUpgrCase->getPosition());
+					this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->btnTowerUpgr2->localToGlobal(this->container->btnTowerUpgr2BtnTowerUpgrCase->getPosition()));
 					this->autoguidesObjectWidth = this->container->btnTowerUpgr2BtnTowerUpgrCase->getWidth() / 2;
 					this->autoguidesObjectHeight = this->container->btnTowerUpgr2BtnTowerUpgrCase->getHeight() / 2;
 					if (this->container->btnTowerUpgr2BtnTowerUpgrCase->hitTest(this->autoguidesMouse_pt))
@@ -2522,7 +2522,7 @@ namespace engine
 				}
 				if (!this->autoguidesObject)
 				{
-					this->autoguidesObject_pt = this->container->btnTowerUpgr3->localToGlobal(this->container->btnTowerUpgr3BtnTowerUpgrCase->getPosition());
+					this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->btnTowerUpgr3->localToGlobal(this->container->btnTowerUpgr3BtnTowerUpgrCase->getPosition()));
 					this->autoguidesObjectWidth = this->container->btnTowerUpgr3BtnTowerUpgrCase->getWidth() / 2;
 					this->autoguidesObjectHeight = this->container->btnTowerUpgr3BtnTowerUpgrCase->getHeight() / 2;
 					if (this->container->btnTowerUpgr3BtnTowerUpgrCase->hitTest(this->autoguidesMouse_pt))
@@ -2533,7 +2533,7 @@ namespace engine
 				}
 				if (!this->autoguidesObject)
 				{
-					this->autoguidesObject_pt = this->container->btnTowerUpgr4->localToGlobal(this->container->btnTowerUpgr4BtnTowerUpgrCase->getPosition());
+					this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->btnTowerUpgr4->localToGlobal(this->container->btnTowerUpgr4BtnTowerUpgrCase->getPosition()));
 					this->autoguidesObjectWidth = this->container->btnTowerUpgr4BtnTowerUpgrCase->getWidth() / 2;
 					this->autoguidesObjectHeight = this->container->btnTowerUpgr4BtnTowerUpgrCase->getHeight() / 2;
 					if (this->container->btnTowerUpgr4BtnTowerUpgrCase->hitTest(this->autoguidesMouse_pt))
@@ -2544,7 +2544,7 @@ namespace engine
 				}
 				if (!this->autoguidesObject && !this->fastBuyUltraFlag.empty())
 				{
-					this->autoguidesObject_pt = this->container->fastBuyUltraContBtnFastBuyUltra->localToGlobal(this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->getPosition());
+					this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->fastBuyUltraContBtnFastBuyUltra->localToGlobal(this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->getPosition()));
 					this->autoguidesObjectWidth = this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->getWidth() / 2;
 					this->autoguidesObjectHeight = this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->getHeight() / 2;
 					if (this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->hitTest(this->autoguidesMouse_pt))
@@ -2556,7 +2556,7 @@ namespace engine
 			}
 			if (!this->autoguidesObject)
 			{
-				this->autoguidesObject_pt = this->container->sphereSlot1->localToGlobal(this->container->sphereSlot1SphereSlotCase->getPosition());
+				this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->sphereSlot1->localToGlobal(this->container->sphereSlot1SphereSlotCase->getPosition()));
 				this->autoguidesObjectWidth = this->container->sphereSlot1SphereSlotCase->getWidth() / 2;
 				this->autoguidesObjectHeight = this->container->sphereSlot1SphereSlotCase->getHeight() / 2;
 				if (this->container->sphereSlot1SphereSlotCase->hitTest(this->autoguidesMouse_pt))
@@ -2566,7 +2566,7 @@ namespace engine
 				}
 				if (!this->autoguidesObject)
 				{
-					this->autoguidesObject_pt = this->container->sphereSlot2->localToGlobal(this->container->sphereSlot2SphereSlotCase->getPosition());
+					this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->sphereSlot2->localToGlobal(this->container->sphereSlot2SphereSlotCase->getPosition()));
 					this->autoguidesObjectWidth = this->container->sphereSlot2SphereSlotCase->getWidth() / 2;
 					this->autoguidesObjectHeight = this->container->sphereSlot2SphereSlotCase->getHeight() / 2;
 					if (this->container->sphereSlot2SphereSlotCase->hitTest(this->autoguidesMouse_pt))
@@ -2577,7 +2577,7 @@ namespace engine
 				}
 				if (!this->autoguidesObject)
 				{
-					this->autoguidesObject_pt = this->container->sphereSlot3->localToGlobal(this->container->sphereSlot3SphereSlotCase->getPosition());
+					this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->sphereSlot3->localToGlobal(this->container->sphereSlot3SphereSlotCase->getPosition()));
 					this->autoguidesObjectWidth = this->container->sphereSlot3SphereSlotCase->getWidth() / 2;
 					this->autoguidesObjectHeight = this->container->sphereSlot3SphereSlotCase->getHeight() / 2;
 					if (this->container->sphereSlot3SphereSlotCase->hitTest(this->autoguidesMouse_pt))
@@ -2588,7 +2588,7 @@ namespace engine
 				}
 				if (!this->autoguidesObject)
 				{
-					this->autoguidesObject_pt = this->container->sphereSlot4->localToGlobal(this->container->sphereSlot4SphereSlotCase->getPosition());
+					this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->sphereSlot4->localToGlobal(this->container->sphereSlot4SphereSlotCase->getPosition()));
 					this->autoguidesObjectWidth = this->container->sphereSlot4SphereSlotCase->getWidth() / 2;
 					this->autoguidesObjectHeight = this->container->sphereSlot4SphereSlotCase->getHeight() / 2;
 					if (this->container->sphereSlot4SphereSlotCase->hitTest(this->autoguidesMouse_pt))

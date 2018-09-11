@@ -214,7 +214,7 @@ namespace engine
                         this->teleportStealthCounter = this->teleportStealthTimer;
                         this_pt = world->bezierClass->getPathPoint(path, road, way);
                         this->setPosition(this_pt); 
-                        shoot_pt = container->localToGlobal(container->getPosition());
+                        shoot_pt = CONVERT_TO_WORLD_POS(container->localToGlobal(container->getPosition()));
                         //shoot_pt = container->localToGlobal(new Point(container->x, container->y));
                         teleportAnima = new MovieClip("unit/","UnitTeleportIn_mc");//new UnitTeleportIn_mc();
                         teleportAnima->stop();

@@ -59,7 +59,7 @@ namespace engine
 				{
 					MovieClip * tempObject = new MovieClip(world, "unit/", "Unit21_frontDeath_mc", "Unit21_frontDeath_mc");//Indexes(new Unit20_frontDeath_mc(), 1);
 					cocos2d::Point pos = container->getPosition();
-					pos = container->localToGlobal(pos);
+					pos = CONVERT_TO_WORLD_POS(container->localToGlobal(pos));
 					tempObject->setPosition(pos);
 					//tempObject = new Indexes(new Unit21_frontDeath_mc(), 1);
 				}
@@ -67,7 +67,7 @@ namespace engine
 				{
 					MovieClip * tempObject = new MovieClip(world, "unit/", "Unit21_backDeath_mc", "Unit21_backDeath_mc");//Indexes(new Unit20_frontDeath_mc(), 1);
 					cocos2d::Point pos = container->getPosition();
-					pos = container->localToGlobal(pos);
+					pos = CONVERT_TO_WORLD_POS(container->localToGlobal(pos));
 					tempObject->setPosition(pos);
 					//tempObject = new Indexes(new Unit21_backDeath_mc(), 1);
 				}

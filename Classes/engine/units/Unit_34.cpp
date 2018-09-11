@@ -59,7 +59,7 @@ namespace engine
             //this->x = 398;
             //this->y = 158;
             this_pt =this->getPosition();// new Point(this->x, this->y);
-            shoot_pt = container->localToGlobal(this_pt);//new Point(container->x, container->y));
+            shoot_pt = CONVERT_TO_WORLD_POS(container->localToGlobal(this_pt));//new Point(container->x, container->y));
             this->speakFlag = true;
             if (world->worldInterface->fasterFlag == 2)
             {
@@ -229,7 +229,7 @@ namespace engine
                                 this->setPosition(tempObject);//x = tempObject.x;
                                 //this->y = tempObject.y;
                                 this_pt =tempObject;// new Point(this->x, this->y);
-                                shoot_pt = container->localToGlobal(container->getPosition());// new Point(container->x, container->y));
+                                shoot_pt = CONVERT_TO_WORLD_POS(container->localToGlobal(container->getPosition()));// new Point(container->x, container->y));
                             }
                             else
                             {
@@ -239,7 +239,7 @@ namespace engine
                                 //this->x = 398;
                                 //this->y = 158;
                                 this_pt =this->getPosition();// new Point(this->x, this->y);
-                                shoot_pt = container->localToGlobal(container->getPosition());// new Point(container->x, container->y));
+                                shoot_pt =CONVERT_TO_WORLD_POS( container->localToGlobal(container->getPosition()));// new Point(container->x, container->y));
                                 notAtRoad++;
                                 if (health > 0)
                                 {

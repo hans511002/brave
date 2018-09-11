@@ -109,7 +109,7 @@ namespace engine
 					}
 					if (world->frameCounter % 2)
 					{
-						cocos2d::Point tempObject1 = container->smokeCont2->localToGlobal(container->smokeCont2->getPosition());
+						cocos2d::Point tempObject1 = CONVERT_TO_WORLD_POS(container->smokeCont2->localToGlobal(container->smokeCont2->getPosition()));
 						BulletTower7_smoke_mc * tempObject = new BulletTower7_smoke_mc(this->world);//new Indexes(new BulletTower7_smoke_mc(), 2, 0);
 						tempObject->setPosition(tempObject1);
 						//tempObject.x = tempObject1.x;

@@ -8,17 +8,22 @@ namespace engine
     CastMask_mc::CastMask_mc() :MovieClip("worldinterface/", "CastMask_mc", "CastMask_mc")
     {
 		SET_NODETYPENAME();
-		archiveCase = this->createCase("archiveCase", false);
-		castAirCase = this->createCase("castAirCase", false);
-		castGolemCase = this->createCase("castGolemCase", false);
-		castIcemanCase = this->createCase("castIcemanCase", false);
-		fireCase = this->createCase("fireCase", false);
-		getAllCase = this->createCase("getAllCase", false);
-		iceCase = this->createCase("iceCase", false);
-		interfaceUpCase = this->createCase("interfaceUpCase", false);
-		levinCase = this->createCase("levinCase", false);
-		sellCase = this->createCase("sellCase", false);
-		stoneCase = this->createCase("stoneCase", false);
+		MovieClip * cast1=new MovieClip("worldinterface/", "CastMask1_mc", "CastMask1_mc");
+		castAirCase = cast1->createCase("castAirCase", false, true);
+		castGolemCase = cast1->createCase("castGolemCase", false, true);
+		castIcemanCase = cast1->createCase("castIcemanCase", false, true);
+		this->setPosition(Vec2(0, Main::SCREEN_HEIGHT)); 
+		this->addChild(cast1);
+		cast1->setPosition(Vec2(0, -Main::SCREEN_HEIGHT ));
+
+		archiveCase = this->createCase("archiveCase", false,true);
+		fireCase = this->createCase("fireCase", false, true);
+		getAllCase = this->createCase("getAllCase", false, true);
+		iceCase = this->createCase("iceCase", false, true);
+		interfaceUpCase = this->createCase("interfaceUpCase", false, true);
+		levinCase = this->createCase("levinCase", false, true);
+		sellCase = this->createCase("sellCase", false, true);
+		stoneCase = this->createCase("stoneCase", false, true);
         return;
     }// end function	
 	namespace    casts
@@ -27,7 +32,7 @@ namespace engine
 		{
 			//this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
 			this->world = Main::mainClass->worldClass;
-			this->setPosition(Vec2(this->world->mouseX, this->world->mouseY));
+			this->setPosition(CONVERT_TO_WORLD_POS(Vec2(this->world->mouseX, this->world->mouseY)));
 			//this->x = this->world->mouseX;
 			//this->y = this->world->mouseY;
 			this->setMouseChildren(false);
@@ -40,7 +45,7 @@ namespace engine
 		void   Cast::update(float dt)
 		{
 			this->world->feature->scanPointersAtCast();
-			this->setPosition(cocos2d::Point(this->world->mouseX, this->world->mouseY));
+			this->setPosition(CONVERT_TO_WORLD_POS(cocos2d::Point(this->world->mouseX, this->world->mouseY)));
 			//this->x = this->world->mouseX;
 			//this->y = this->world->mouseY;
 			if(this->container->currentFrame == 3)
@@ -59,7 +64,7 @@ namespace engine
 		}// end function
 		bool Cast::scanWay()
 		{
-			tempObject = cocos2d::Point(this->world->mouseX, this->world->mouseY);
+			tempObject = CONVERT_TO_WORLD_POS(cocos2d::Point(this->world->mouseX, this->world->mouseY)); 
 			if(this->world->nowLevel == 6)
 			{
 				if(tempObject.x > 650 && tempObject.y < 320)

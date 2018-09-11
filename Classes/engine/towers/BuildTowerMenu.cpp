@@ -30,7 +30,7 @@ namespace engine{
 			this->world = Main::mainClass->worldClass;
 			std::setAnchorPoint(this);
 			Vec2 pos = this->myPlace->getPosition();
-			pos = CONVERT_TO_WORLD_POS(this->myPlace->convertToWorldSpace(Vec2(0,0)));
+			pos = (this->myPlace->convertToWorldSpace(Vec2(0,0)));
 			pos = this->world->convertToNodeSpaceAR(pos);
 			Vec2 bpos = this->myPlace->buildPoint->getPosition();
 			this->setPosition(pos + bpos);

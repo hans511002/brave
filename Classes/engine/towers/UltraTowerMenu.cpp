@@ -197,7 +197,7 @@ namespace engine
                         }
                     }
                 }
-                if (this->myTower->this_pt.distance(cocos2d::Point(this->world->mouseX, this->world->mouseY)) > 75)
+                if (this->myTower->this_pt.distance(CONVERT_TO_WORLD_POS(cocos2d::Point(this->world->mouseX, this->world->mouseY))) > 75)
                 {
                     if (this->mouseEnabled)
                     { 
@@ -243,7 +243,7 @@ namespace engine
                 }
                 if (!this->readyFastBuyUltraFlag)
                 {
-                    if (this->myTower->this_pt.distance(cocos2d::Point(this->world->mouseX, this->world->mouseY)) > 86)
+                    if (this->myTower->this_pt.distance(CONVERT_TO_WORLD_POS(cocos2d::Point(this->world->mouseX, this->world->mouseY))) > 86)
                     {
                         if (this->mouseEnabled)
                         { 
@@ -1332,7 +1332,7 @@ namespace engine
         {
             this->autoguidesMouse_pt = cocos2d::Point(Main::mainClass->worldClass->mouseX, Main::mainClass->worldClass->mouseY);
             this->autoguidesObject = NULL;
-			this->autoguidesObject_pt = container->sphereSlot1SphereSlotCase->localToGlobal(container->sphereSlot1SphereSlotCase->getPosition());
+			this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(container->sphereSlot1SphereSlotCase->localToGlobal(container->sphereSlot1SphereSlotCase->getPosition()));
             this->autoguidesObjectWidth = container->sphereSlot1SphereSlotCase->getWidth() / 2;
             this->autoguidesObjectHeight = container->sphereSlot1SphereSlotCase->getHeight() / 2;
             //if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
@@ -1345,7 +1345,7 @@ namespace engine
             }
             if (!this->autoguidesObject)
             {
-				this->autoguidesObject_pt = container->sphereSlot2SphereSlotCase->localToGlobal(container->sphereSlot2SphereSlotCase->getPosition());
+				this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(container->sphereSlot2SphereSlotCase->localToGlobal(container->sphereSlot2SphereSlotCase->getPosition()));
 				this->autoguidesObjectWidth = container->sphereSlot2SphereSlotCase->getWidth() / 2;
 				this->autoguidesObjectHeight = container->sphereSlot2SphereSlotCase->getHeight() / 2;
                 //if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
@@ -1359,7 +1359,7 @@ namespace engine
             }
             if (!this->autoguidesObject && container->btnUpgradeMenu->isVisible() && container->btnUpgradeMenuBtnUpgradeMenuCase)
             {
-				this->autoguidesObject_pt = container->btnUpgradeMenuBtnUpgradeMenuCase->localToGlobal(container->btnUpgradeMenuBtnUpgradeMenuCase->getPosition());
+				this->autoguidesObject_pt =CONVERT_TO_WORLD_POS( container->btnUpgradeMenuBtnUpgradeMenuCase->localToGlobal(container->btnUpgradeMenuBtnUpgradeMenuCase->getPosition()));
 				this->autoguidesObjectWidth = container->btnUpgradeMenuBtnUpgradeMenuCase->getWidth() / 2;
 				this->autoguidesObjectHeight = container->btnUpgradeMenuBtnUpgradeMenuCase->getHeight() / 2;
                 //if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
@@ -1373,7 +1373,7 @@ namespace engine
             }
             if (!this->autoguidesObject && !this->fastBuyUltraFlag.empty())
             {
-				this->autoguidesObject_pt = container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->localToGlobal(container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->getPosition());
+				this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->localToGlobal(container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->getPosition()));
 				this->autoguidesObjectWidth = container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->getWidth() / 2;
 				this->autoguidesObjectHeight = container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->getHeight() / 2;
                 //if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 

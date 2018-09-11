@@ -308,7 +308,7 @@ namespace engine
                     if (this->visCounter == 1)
                     {
                         this->ballAnima->setVisible(false);
-                        shoot_pt = container->localToGlobal(this->ballAnima->getPosition());
+                        shoot_pt = CONVERT_TO_WORLD_POS(container->localToGlobal(this->ballAnima->getPosition()));
                         world->addBullet(7, shoot_pt, this, enemyTarget, damage);
                     }
                 }
@@ -456,7 +456,7 @@ namespace engine
                                     BulletTower71_mc * tempObject = new BulletTower71_mc();//new Indexes(new BulletTower71_mc(), 3, 0);
                                     //tempObject->rotation = 15;
                                     tempObject->setScale(1);
-                                    cocos2d::Point tempObject1 = container->localToGlobal(this->upgr1_anima->getPosition());
+                                    cocos2d::Point tempObject1 =CONVERT_TO_WORLD_POS(container->localToGlobal(this->upgr1_anima->getPosition()));
                                     tempObject->setPosition(tempObject1); 
                                 }
                             }
@@ -468,7 +468,7 @@ namespace engine
                                     BulletTower71_mc * tempObject = new BulletTower71_mc();//new Indexes(new BulletTower71_mc(), 3, 0);
                                     tempObject->setRotation(15);
                                     tempObject->setScale(1);
-                                    cocos2d::Point tempObject1 = container->localToGlobal(this->upgr1_anima->getPosition());
+                                    cocos2d::Point tempObject1 = CONVERT_TO_WORLD_POS(container->localToGlobal(this->upgr1_anima->getPosition()));
                                     tempObject->setPosition(tempObject1);
                                     //tempObject.x = tempObject1.x;
                                     //tempObject.y = tempObject1.y;
@@ -483,7 +483,7 @@ namespace engine
                                     //tempObject = new Indexes(new BulletTower71_mc(), 3, 0);
                                     //tempObject->rotation = -175;
                                     tempObject->setScale(1);
-                                    cocos2d::Point tempObject1 = container->localToGlobal(this->upgr1_anima->getPosition());
+                                    cocos2d::Point tempObject1 = CONVERT_TO_WORLD_POS(container->localToGlobal(this->upgr1_anima->getPosition()));
                                     tempObject->setPosition(tempObject1);
                                 }
                             }
@@ -497,7 +497,7 @@ namespace engine
                                     //tempObject->rotation = 175;
                                     tempObject->setScaleX(-1);
                                     tempObject->setScaleY(1); 
-                                    cocos2d::Point tempObject1 = container->localToGlobal(this->upgr1_anima->getPosition());
+                                    cocos2d::Point tempObject1 = CONVERT_TO_WORLD_POS(container->localToGlobal(this->upgr1_anima->getPosition()));
                                     tempObject->setPosition(tempObject1);
                                 }
                             }
@@ -511,7 +511,7 @@ namespace engine
                                     //tempObject->rotation = -105;
                                     tempObject->setScaleX(1);
                                     tempObject->setScaleY(-1); 
-                                    cocos2d::Point tempObject1 = container->localToGlobal(this->upgr1_anima->getPosition());
+                                    cocos2d::Point tempObject1 = CONVERT_TO_WORLD_POS(container->localToGlobal(this->upgr1_anima->getPosition()));
                                     //tempObject1 = container->localToGlobal(new Point(this->upgr1_anima->x, this->upgr1_anima->y));
                                     tempObject->setPosition(tempObject1);
                                     //tempObject.x = tempObject1.x;
@@ -527,7 +527,7 @@ namespace engine
                                     //tempObject = new Indexes(new BulletTower71_mc(), 3, 0);
                                     //tempObject->rotation = 105;
                                     tempObject->setScale(1); 
-                                    cocos2d::Point tempObject1 = container->localToGlobal(this->upgr1_anima->getPosition());
+                                    cocos2d::Point tempObject1 = CONVERT_TO_WORLD_POS(container->localToGlobal(this->upgr1_anima->getPosition()));
                                     //cocos2d::Point tempObject1 = container->localToGlobal(new Point(this->upgr1_anima->x, this->upgr1_anima->y));
                                     tempObject->setPosition(tempObject1);
                                     //tempObject.x = tempObject1.x;
@@ -543,7 +543,7 @@ namespace engine
                                     //tempObject = new Indexes(new BulletTower71_mc(), 3, 0);
                                     //tempObject->rotation = -75;
                                     tempObject->setScale(1); 
-                                    cocos2d::Point tempObject1 = container->localToGlobal(this->upgr1_anima->getPosition());
+                                    cocos2d::Point tempObject1 =CONVERT_TO_WORLD_POS( container->localToGlobal(this->upgr1_anima->getPosition()));
                                     tempObject->setPosition(tempObject1); 
                                 }
                             }
@@ -557,7 +557,7 @@ namespace engine
                                     //tempObject->rotation = 75;
                                     tempObject->setScaleX(1); 
                                     tempObject->setScaleY(-1); 
-                                    cocos2d::Point tempObject1 = container->localToGlobal(this->upgr1_anima->getPosition());
+                                    cocos2d::Point tempObject1 = CONVERT_TO_WORLD_POS(container->localToGlobal(this->upgr1_anima->getPosition()));
                                     tempObject->setPosition(tempObject1); 
                                 }
                             }

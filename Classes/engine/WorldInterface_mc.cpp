@@ -114,12 +114,12 @@ namespace engine
 		//logInfo("fireSphere", this->fireSphere ->getPosition());
 		//logInfo("this->fireSphere->display", getNamePath(this->fireSphere->display));
  
-		fireSphereSphereCase = fireSphere->createCase("sphereCase");
+		fireSphereSphereCase = fireSphere->createCase("sphereCase",false,true);
 		getAll = wiSphere->createMovieClipSub("getAll");
 		getAllFire = getAll->createMovieClipSub("fire");
 		getAllIce = getAll->createMovieClipSub("ice");
 		getAllLevin = getAll->createMovieClipSub("levin");
-		getAllSphereCase = getAll->createCase("sphereCase");
+		getAllSphereCase = getAll->createCase("sphereCase", false, true);
 		getAllStone = getAll->createMovieClipSub("stone");
 		getAllNumTXT = wiSphere->createText("getAllNumTXT");
 		iceBack = wiSphere->createMovieClipSub("iceBack");
@@ -127,13 +127,13 @@ namespace engine
 		iceBacklight = wiSphere->createMovieClipSub("iceBacklight");
 		iceNumTXT = wiSphere->createText("iceNumTXT");
 		iceSphere = wiSphere->createMovieClipSub("iceSphere");
-		iceSphereSphereCase = iceSphere->createCase("sphereCase");
+		iceSphereSphereCase = iceSphere->createCase("sphereCase", false, true);
 		levinBack = wiSphere->createMovieClipSub("levinBack");
 		levinBackCont = levinBack->createMovieClipSub("cont", true);//2帧 才有
 		levinBacklight = wiSphere->createMovieClipSub("levinBacklight");
 		levinNumTXT = wiSphere->createText("levinNumTXT");
 		levinSphere = wiSphere->createMovieClipSub("levinSphere");
-		levinSphereSphereCase = levinSphere->createCase("sphereCase");
+		levinSphereSphereCase = levinSphere->createCase("sphereCase", false, true);
 		liveTXT = wiLive->createText("liveTXT");
 		moneyTXT = wiLive->createText("moneyTXT");
 
@@ -150,7 +150,7 @@ namespace engine
 		stoneBacklight = wiSphere->createMovieClipSub("stoneBacklight");
 		stoneNumTXT = wiSphere->createText("stoneNumTXT");
 		stoneSphere = wiSphere->createMovieClipSub("stoneSphere");
-		stoneSphereSphereCase = stoneSphere->createCase("sphereCase");
+		stoneSphereSphereCase = stoneSphere->createCase("sphereCase", false, true);
 		//testRestart = this->createMovieClipSub("testRestart");
 		//testRestartBoard = this->createMovieClipSub("testRestartBoard");
 		//testRestartBoardWaveTXT = testRestartBoard->createText("waveTXT");
@@ -159,11 +159,11 @@ namespace engine
 		std::setText(wavesTXT, I18N_VALUE(I18N_CODE::U071));
 		//traceBezier=NULL;
 
-		wiBook->setPosition(Vec2(Main::SCREEN_WIDTH - 30, Main::SCREEN_HEIGHT - 30));
+		wiBook->setPosition(Vec2(Main::SCREEN_WIDTH - 5, Main::SCREEN_HEIGHT-5 ));
 		wiCast->setPosition(Vec2(10, 10));
-		wiLive->setPosition(Vec2(30, Main::SCREEN_HEIGHT - 30));
-		wiSphere->setPosition(Vec2(220, Main::SCREEN_HEIGHT + 10));
-		wiStart->setPosition(Vec2(Main::SCREEN_WIDTH - 230, 10));
+		wiLive->setPosition(Vec2(10, Main::SCREEN_HEIGHT -5));
+		wiSphere->setPosition(Vec2(220, Main::SCREEN_HEIGHT));
+		wiStart->setPosition(Vec2(Main::SCREEN_WIDTH - 230, 5));
 
 
 		this->pauseOpenFlag = 0;

@@ -298,9 +298,9 @@ namespace screens
 
     void Credits::autoguidersButtons()
     {
-        this->autoguidesMouse_pt = cocos2d::Point(this->mouseX, this->mouseY);
+        this->autoguidesMouse_pt = CONVERT_TO_WORLD_POS(cocos2d::Point(this->mouseX, this->mouseY));
         this->autoguidesObject = NULL;
-        this->autoguidesObject_pt = this->container->cont->logoCont->localToGlobal(this->container->cont->logoCont->logoContCase->getPosition());
+        this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->cont->logoCont->localToGlobal(this->container->cont->logoCont->logoContCase->getPosition()));
         this->autoguidesObjectWidth = this->container->cont->logoCont->logoContCase.width / 2;
         this->autoguidesObjectHeight = this->container->cont->logoCont->logoContCase.height / 2;
         if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
@@ -312,7 +312,7 @@ namespace screens
         }
         if (!this->autoguidesObject)
         {
-            this->autoguidesObject_pt = this->container->cont->noteCont->localToGlobal( this->container->cont->noteCont->noteContCase->getPosition());
+            this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->cont->noteCont->localToGlobal( this->container->cont->noteCont->noteContCase->getPosition()));
             this->autoguidesObjectWidth = this->container->cont->noteCont->noteContCase.width / 2;
             this->autoguidesObjectHeight = this->container->cont->noteCont->noteContCase.height / 2;
             if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
@@ -325,7 +325,7 @@ namespace screens
         }
         if (!this->autoguidesObject)
         {
-            this->autoguidesObject_pt = this->container->cont->facebook->localToGlobal( this->container->cont->facebook->facebookCase->getPosition());
+            this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->cont->facebook->localToGlobal( this->container->cont->facebook->facebookCase->getPosition()));
             this->autoguidesObjectWidth = this->container->cont->facebook->facebookCase.width / 2;
             this->autoguidesObjectHeight = this->container->cont->facebook->facebookCase.height / 2;
             if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
@@ -338,7 +338,7 @@ namespace screens
         }
         if (!this->autoguidesObject)
         {
-            this->autoguidesObject_pt = this->container->cont->twitter->localToGlobal( this->container->cont->twitter->twitterCase->getPosition());
+            this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->cont->twitter->localToGlobal( this->container->cont->twitter->twitterCase->getPosition()));
             this->autoguidesObjectWidth = this->container->cont->twitter->twitterCase.width / 2;
             this->autoguidesObjectHeight = this->container->cont->twitter->twitterCase.height / 2;
             if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
@@ -351,7 +351,7 @@ namespace screens
         }
         if (!this->autoguidesObject)
         {
-            this->autoguidesObject_pt = this->container->cont->btnOk->localToGlobal( this->container->cont->btnOk->okCase->getPosition());
+            this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->cont->btnOk->localToGlobal( this->container->cont->btnOk->okCase->getPosition()));
             this->autoguidesObjectWidth = this->container->cont->btnOk->okCase.width / 2;
             this->autoguidesObjectHeight = this->container->cont->btnOk->okCase.height / 2;
             if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 

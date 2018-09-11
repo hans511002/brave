@@ -581,7 +581,7 @@ namespace engine{
 			if (this->shootinAttackStack.size() == 0)
 			{
 				Tower1_mc * container = ISTYPE(Tower1_mc, this->container);
-				cocos2d::Point tempPos = container->sphere1->localToGlobal(container->sphere1Bullet->getPosition());
+				cocos2d::Point tempPos = CONVERT_TO_WORLD_POS(container->sphere1->localToGlobal(container->sphere1Bullet->getPosition()));
 				if (this->shootingSphere == "fire")
 				{
 					Bullet * tempObject = this->world->addBullet(1, tempPos, this, this->enemyTarget, Main::mainClass->readXMLClass.listOfFireTowerDamageXML[0], 1);
@@ -642,7 +642,7 @@ namespace engine{
 					else
 					{
 						Bullet * tempObject = NULL;
-						cocos2d::Point tempPos = container->localToGlobal(this->shootinAttackStack[0]->getPosition());
+						cocos2d::Point tempPos = CONVERT_TO_WORLD_POS(container->localToGlobal(this->shootinAttackStack[0]->getPosition()));
  						if (this->shootingSphere == "fire")
 						{
 							if (this->shootingTurnStack[0])

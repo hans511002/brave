@@ -26,7 +26,7 @@ namespace engine{
 		//this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
 		this->world = Main::mainClass->worldClass;
 		this->radius = this->world->getSphere->myRadius;
-		this->setPosition(this->world->mouseX, this->world->mouseY);
+		this->setPosition(CONVERT_TO_WORLD_POS(Vec2(this->world->mouseX, this->world->mouseY)));
 		if (this->world->getSphere->type == "holder")
 		{
 			if (this->world->getSphere->fireCount > 0 && this->world->getSphere->iceCount == 0 && this->world->getSphere->stoneCount == 0 && this->world->getSphere->levinCount == 0)

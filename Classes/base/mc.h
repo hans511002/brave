@@ -50,7 +50,7 @@ namespace engine
         MovieClip * createMovieClip(const string &  slot, const string &  rootPath, const string &  dbName);
         MovieClip * createMovieClip(const string &  slot, MovieClip * mc, bool reinit = false);
 
-        MCCase * createCase(const string &  slot, bool reinit = false);
+        MCCase * createCase(const string &  slot, bool reinit = false, bool draw = false);
         MCSprite * createSprite(const string &  slot, const string &  file, bool reinit = false);
         MCSprite * createSprite(const string &  slot, Sprite* file, bool reinit = false);
         MCMask * createMask(const string &  slot, bool reinit = false);

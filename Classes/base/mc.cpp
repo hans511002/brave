@@ -306,9 +306,9 @@ namespace engine
 		return mc;
 	};
 
-    MCCase * MC::createCase(const string &  slotName, bool reinit)
+    MCCase * MC::createCase(const string &  slotName, bool reinit, bool draw)
 	{
-        MCCase *mc=  new MCCase(this, slotName, true, false);
+        MCCase *mc=  new MCCase(this, slotName, true, draw);
 		mc->reinitType = reinit;
 		this->addMCbs(mc, reinit);
         return mc;

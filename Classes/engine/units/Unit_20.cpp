@@ -61,14 +61,14 @@ namespace engine
                 {
                     MovieClip * tempObject = new MovieClip(world, "unit/", "Unit20_frontDeath_mc", "Unit20_frontDeath_mc");//Indexes(new Unit20_frontDeath_mc(), 1);
                     cocos2d::Point pos=container->getPosition();
-                    pos=container->localToGlobal(pos);
+                    pos=CONVERT_TO_WORLD_POS(container->localToGlobal(pos));
                     tempObject->setPosition(pos);
                 }
                 else if (container->cont->currentFrame == 2)
                 {
                     MovieClip * tempObject = new MovieClip(world, "unit/", "Unit20_backDeath_mc", "Unit20_backDeath_mc");//Indexes(new Unit20_backDeath_mc(), 1);
                     cocos2d::Point pos=container->getPosition();
-                    pos=container->localToGlobal(pos);
+                    pos=CONVERT_TO_WORLD_POS(container->localToGlobal(pos));
                     tempObject->setPosition(pos);
                 }
                 AudioUtil::playSound("Snd_unit_orderDeath.mp3");
