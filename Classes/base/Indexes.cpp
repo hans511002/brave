@@ -13,7 +13,7 @@ namespace engine
         this->indexParam = param2;
         this->alphaParam = param3;
         this->world->addIndexes(this,indexParam); 
-        this->world->addChild(this);
+        this->world->addChild(this,3);
         this->world->addClasses(this);
         this->setMouseChildren(false);
         this->setMouseEnabled(false);

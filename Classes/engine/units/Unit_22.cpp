@@ -34,7 +34,7 @@ namespace engine
             this->blockRadiusGr->setMouseChildren(false);
             this->blockRadiusGr->setMouseEnabled(false);
             this->blockRadiusGr->setVisible(false);
-            world->addChild(this->blockRadiusGr);
+            world->addChild(this->blockRadiusGr,4);
             world->addIndexes(this->blockRadiusGr,0);
             return true;
         }// end function

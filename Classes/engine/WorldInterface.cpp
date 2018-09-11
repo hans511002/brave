@@ -1855,7 +1855,7 @@ namespace engine
 		{
 			this->world->cast = new casts::Cast_3();
 		}
-		this->world->addChild(this->world->cast);
+		this->world->addChild(this->world->cast,5);
 		this->world->addClasses(this->world->cast);
 	}// end function
 
@@ -2736,7 +2736,7 @@ namespace engine
 						this->world->getSphere->owner = this->container->fireSphere;
 						this->world->getSphere->ownerType = "archive";
 						this->world->getSphere->ownerPoint = this->container->fireSphereMyPoint;
-						this->world->addChild(this->world->getSphere);
+						this->world->addChild(this->world->getSphere,6);
 						this->world->getSphere->manage("add", "fire");
 					}
 					else if (this->world->getSphere->listOfStack.size() < 4)
@@ -2757,7 +2757,7 @@ namespace engine
 						this->world->getSphere->owner = this->container->iceSphere;
 						this->world->getSphere->ownerType = "archive";
 						this->world->getSphere->ownerPoint = this->container->iceSphereMyPoint;
-						this->world->addChild(this->world->getSphere);
+						this->world->addChild(this->world->getSphere,6);
 						this->world->getSphere->manage("add", "ice");
 					}
 					else if (this->world->getSphere->listOfStack.size() < 4)
@@ -2778,7 +2778,7 @@ namespace engine
 						this->world->getSphere->owner = this->container->stoneSphere;
 						this->world->getSphere->ownerType = "archive";
 						this->world->getSphere->ownerPoint = this->container->stoneSphereMyPoint;
-						this->world->addChild(this->world->getSphere);
+						this->world->addChild(this->world->getSphere,6);
 						this->world->getSphere->manage("add", "stone");
 					}
 					else if (this->world->getSphere->listOfStack.size() < 4)
@@ -2799,7 +2799,7 @@ namespace engine
 						this->world->getSphere->owner = this->container->levinSphere;
 						this->world->getSphere->ownerType = "archive";
 						this->world->getSphere->ownerPoint = this->container->levinSphereMyPoint;
-						this->world->addChild(this->world->getSphere);
+						this->world->addChild(this->world->getSphere,6);
 						this->world->getSphere->manage("add", "levin");
 					}
 					else if (this->world->getSphere->listOfStack.size() < 4)
@@ -2820,7 +2820,7 @@ namespace engine
 						this->world->getSphere->owner = this->container->getAll;
 						this->world->getSphere->ownerType = "archive";
 						this->world->getSphere->ownerPoint = this->container->getAllMyPoint;
-						this->world->addChild(this->world->getSphere);
+						this->world->addChild(this->world->getSphere,6);
 						this->world->getSphere->manage("add", "getAll");
 					}
 					else
@@ -2900,19 +2900,19 @@ namespace engine
 		this->container->pauseOpenFlag = false;
 		this->container->pauseCloseFlag = true;
 		//this->world->menuObject = new PauseMenu();
-		//this->world->addChild(this->world->menuObject);
+		//this->world->addChild(this->world->menuObject,10);
 	}// end function
 
 	void WorldInterface::addFastPause()
 	{
 		//this->world->menuObject = new FastPause();
-		//this->world->addChild(this->world->menuObject);
+		//this->world->addChild(this->world->menuObject,10);
 	}// end function
 
 	void WorldInterface::addEncyclopedia()
 	{
 		//this->world->menuObject = new Encyclopedia();
-		//this->world->addChild(this->world->menuObject);
+		//this->world->addChild(this->world->menuObject,10);
 		//this->container->book->gotoAndStop((this->container->book->totalFrames - 1));
 		//this->container->book.openFlag = false;
 		//this->container->book.closeFlag = true;
@@ -4552,7 +4552,7 @@ namespace engine
 				else if (dynamic_cast<NewEnemy_mc *>(tempObject))
 				{
 					//this->world->menuObject = new Education("newEnemy", tempObject->typeUnit);
-					//this->world->addChild(this->world->menuObject);
+					//this->world->addChild(this->world->menuObject,5);
 					this->removeChild(tempObject);
 					this->listOfNewEnemies.splice(this->i, 1);
 				}
@@ -4561,7 +4561,7 @@ namespace engine
 					if (!this->world->menuObject)
 					{
 						//this->world->menuObject = new Training_5(tempObject->type);
-						//this->world->addChild(this->world->menuObject);
+						//this->world->addChild(this->world->menuObject,5);
 					}
 					this->removeChild(tempObject);
 					this->listOfNewEnemies.splice(this->i, 1);

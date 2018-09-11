@@ -891,14 +891,14 @@ namespace engine
 						if (!this->buildTowerMenu)
 						{
 							this->buildTowerMenu = new BuildTowerMenu(place);
-							this->addChild(this->buildTowerMenu);
+							this->addChild(this->buildTowerMenu,3);
 							AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
 						}
 						else if (this->buildTowerMenu->myPlace != place)
 						{
 							this->buildTowerMenu->closeMenu();
 							this->buildTowerMenu = new BuildTowerMenu(place);
-							this->addChild(this->buildTowerMenu);
+							this->addChild(this->buildTowerMenu,3);
 							AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
 						}
 					}
@@ -938,7 +938,7 @@ namespace engine
 							{
 								this->mouseMoveHandler(event);
 								this->exchange = new Exchange(tower);
-								this->addChild(this->exchange);
+								this->addChild(this->exchange,3);
 								break;
 							}
 							i++;

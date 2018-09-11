@@ -746,7 +746,7 @@ namespace engine {
         } else if (targetName != "archiveCase" && targetName != "getAllCase") {
             if (this->radius->currentFrame == 1) {
                 CastSphere *tempObject = new CastSphere();
-                this->world->addChild(tempObject);
+                this->world->addChild(tempObject,4);
                 this->kill();
             } else {
                 Node *parent = event->target;

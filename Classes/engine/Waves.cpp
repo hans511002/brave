@@ -95,7 +95,7 @@ namespace engine
                         {
                             MoneyAdd *tempObject1 = new MoneyAdd(tempObject);
                             tempObject1->setPosition(this->world->pointer1->getPosition());
-                            this->world->addChild( tempObject1);
+                            this->world->addChild( tempObject1,3);
                         }
                     }
                     if (this->world->pointer2)
@@ -104,7 +104,7 @@ namespace engine
                         {
                             MoneyAdd * tempObject1 = new MoneyAdd(tempObject);
                             tempObject1->setPosition(this->world->pointer2->getPosition());
-                            this->world->addChild( tempObject1);
+                            this->world->addChild( tempObject1,3);
                         }
                     }
                     if (this->world->pointer3)
@@ -115,7 +115,7 @@ namespace engine
                             tempObject1->setPosition(this->world->pointer3->getPosition());
                             //tempObject1.x = this->world->pointer3.x;
                             //tempObject1.y = this->world->pointer3.y;
-                            this->world->addChild(tempObject1);
+                            this->world->addChild(tempObject1,3);
                         }
                     }
                     AudioUtil::playSoundWithVol("Snd_menu_monetki.mp3", 0.95f);

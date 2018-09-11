@@ -13,7 +13,7 @@ namespace engine
         if (this->type == "newElement")
             this->counter = 60;
 		BaseNode::init();
-		this->world->addChild(this);
+		this->world->addChild(this,2);
         this->world->addClasses(this);
 		return;
     }// end function

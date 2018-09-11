@@ -211,7 +211,7 @@ namespace engine
 		this->world->towerRadius->setMouseChildren(false);
 		this->world->towerRadius->mouseEnabled = false;
 		this->world->towerRadius->setVisible(false);
-		this->world->addChild(this->world->towerRadius);
+		this->world->addChild(this->world->towerRadius,4);
 		//std::setAnchorPoint(this->world->towerRadius, 0.5, 0.5);
 
 		//this->world->quality = this->world->saveBox->getStringValue("quality");
@@ -467,7 +467,7 @@ namespace engine
 		//this->world->road->setVisible(false);// visible = false;
 		
         this->world->road = new  RoadLevels_mc(this->world->nowLevel);
-		this->world->addChild(this->world->road); 
+		this->world->addChild(this->world->road,4); 
 		this->world->road->init();
 		//this->world->road->setPosition(this->world->road->initPos);
 		//this->world->logInfo("this->world->road->getPosition",this->world->road->getPosition());
@@ -1045,7 +1045,7 @@ namespace engine
 		if (param1 != "getAll")
 		{
 			this->world->getSphere = new GetSphere();
-			this->world->addChild(this->world->getSphere);
+			this->world->addChild(this->world->getSphere,6);
 			this->world->getSphere->ownerType = "archive";
 			if (param1 == "fire")
 			{
@@ -1091,7 +1091,7 @@ namespace engine
 		else
 		{
 			this->world->getSphere = new GetSphere("getAll");
-			this->world->addChild(this->world->getSphere);
+			this->world->addChild(this->world->getSphere,6);
 			this->world->getSphere->ownerType = "archive";
 			this->world->getSphere->owner = this->world->worldInterface->container->getAll;
 			this->world->getSphere->ownerPoint = this->world->worldInterface->container->getAllMyPoint;
@@ -1142,7 +1142,7 @@ namespace engine
 				tempObject->mouseEnabled = false;
 				tempObject->repeatFlag = false;
 				tempObject->repeatCounter = 0;
-				this->world->addChild(tempObject);
+				this->world->addChild(tempObject,4);
 				this->world->listOfFirePortals.push(tempObject);
 				if (complexityLevel < 4)
 				{
@@ -1219,7 +1219,7 @@ namespace engine
 				tempObject->mouseEnabled = false;
 				tempObject->repeatFlag = false;
 				tempObject->repeatCounter = 0;
-				world->addChild(tempObject);
+				world->addChild(tempObject,4);
 				world->listOfIcePortals.push(tempObject);
 				if (complexityLevel < 4)
 				{
@@ -1296,7 +1296,7 @@ namespace engine
 				tempObject->mouseEnabled = false;
 				tempObject->repeatFlag = false;
 				tempObject->repeatCounter = 0;
-				this->world->addChild(tempObject);
+				this->world->addChild(tempObject,4);
 				this->world->listOfStonePortals.push(tempObject);
 				if (complexityLevel < 4)
 				{
@@ -1373,7 +1373,7 @@ namespace engine
 				tempObject->mouseEnabled = false;
 				tempObject->repeatFlag = false;
 				tempObject->repeatCounter = 0;
-				this->world->addChild(tempObject);
+				this->world->addChild(tempObject,4);
 				this->world->listOfLevinPortals.push(tempObject);
 				if (complexityLevel < 4)
 				{
@@ -1434,7 +1434,7 @@ namespace engine
 
 		this->world->worldInterface = new WorldInterface();
 		this->world->worldInterface->init();
-		this->world->addChild(this->world->worldInterface);
+		this->world->addChild(this->world->worldInterface,5);
 		//world->logInfo("buyFireBuyTXT", world->worldInterface->container->buyFireBuyTXT->getPosition());
 		//world->logInfo("buyFireBuyTXT", world->worldInterface->container->buyFireBuyTXT->getNamePath());
 		//world->logInfo("buyFireBuyTXT", CONVERT_TO_WORLD_POS(world->worldInterface->container->buyFire->convertToWorldSpace(world->worldInterface->container->buyFireBuyTXT->getPosition())));

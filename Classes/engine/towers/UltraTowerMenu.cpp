@@ -65,7 +65,7 @@ namespace engine
                 this->hint->setMouseChildren(false);
                 this->hint->setMouseEnabled(false);
                 this->hint->setVisible(false);
-                this->world->addChild(this->hint);
+                this->world->addChild(this->hint,6);
             }
             this->world->worldInterface->updateInfo();
             return true;
@@ -903,7 +903,7 @@ namespace engine
                                 this->world->getSphere->owner = this->world->worldInterface->container->fireSphere;
                                 this->world->getSphere->ownerType = "archive";
                                 this->world->getSphere->ownerPoint = this->world->worldInterface->container->fireSphereMyPoint;
-                                this->world->addChild(this->world->getSphere);
+                                this->world->addChild(this->world->getSphere,6);
                                 this->myTower->spheresManage("get", "fire", 1);
                                 this->world->getSphere->manage("add", "fire");
                                 this->world->getSphere->setPosition(this->myTower->this_pt);
@@ -917,7 +917,7 @@ namespace engine
                                 this->world->getSphere->owner = this->world->worldInterface->container->stoneSphere;
                                 this->world->getSphere->ownerType = "archive";
                                 this->world->getSphere->ownerPoint = this->world->worldInterface->container->stoneSphereMyPoint;
-                                this->world->addChild(this->world->getSphere);
+                                this->world->addChild(this->world->getSphere,6);
                                 this->myTower->spheresManage("get", "stone", 1);
                                 this->world->getSphere->manage("add", "stone");
                                 this->world->getSphere->setPosition(this->myTower->this_pt); 
@@ -942,7 +942,7 @@ namespace engine
                                 this->world->getSphere->owner = this->world->worldInterface->container->iceSphere;
                                 this->world->getSphere->ownerType = "archive";
                                 this->world->getSphere->ownerPoint = this->world->worldInterface->container->iceSphereMyPoint;
-                                this->world->addChild(this->world->getSphere);
+                                this->world->addChild(this->world->getSphere,6);
                                 this->myTower->spheresManage("get", "ice", 1);
                                 this->world->getSphere->manage("add", "ice");
                                 this->world->getSphere->setPosition(this->myTower->this_pt); 
@@ -954,7 +954,7 @@ namespace engine
                                 this->world->getSphere->owner = this->world->worldInterface->container->levinSphere;
                                 this->world->getSphere->ownerType = "archive";
                                 this->world->getSphere->ownerPoint = this->world->worldInterface->container->levinSphereMyPoint;
-                                this->world->addChild(this->world->getSphere);
+                                this->world->addChild(this->world->getSphere,6);
                                 this->myTower->spheresManage("get", "levin", 1);
                                 this->world->getSphere->manage("add", "levin");
                                 this->world->getSphere->setPosition(this->myTower->this_pt); 
@@ -979,7 +979,7 @@ namespace engine
                                 this->world->getSphere->owner = this->world->worldInterface->container->iceSphere;
                                 this->world->getSphere->ownerType = "archive";
                                 this->world->getSphere->ownerPoint = this->world->worldInterface->container->iceSphereMyPoint;
-                                this->world->addChild(this->world->getSphere);
+                                this->world->addChild(this->world->getSphere,6);
                                 this->myTower->spheresManage("get", "ice", 1);
                                 this->world->getSphere->manage("add", "ice");
                                 this->world->getSphere->setPosition(this->myTower->this_pt); 
@@ -991,7 +991,7 @@ namespace engine
                                 this->world->getSphere->owner = this->world->worldInterface->container->stoneSphere;
                                 this->world->getSphere->ownerType = "archive";
                                 this->world->getSphere->ownerPoint = this->world->worldInterface->container->stoneSphereMyPoint;
-                                this->world->addChild(this->world->getSphere);
+                                this->world->addChild(this->world->getSphere,6);
                                 this->myTower->spheresManage("get", "stone", 1);
                                 this->world->getSphere->manage("add", "stone");
                                 this->world->getSphere->setPosition(this->myTower->this_pt); 
@@ -1016,7 +1016,7 @@ namespace engine
                                 this->world->getSphere->owner = this->world->worldInterface->container->fireSphere;
                                 this->world->getSphere->ownerType = "archive";
                                 this->world->getSphere->ownerPoint = this->world->worldInterface->container->fireSphereMyPoint;
-                                this->world->addChild(this->world->getSphere);
+                                this->world->addChild(this->world->getSphere,6);
                                 this->myTower->spheresManage("get", "fire", 1);
                                 this->world->getSphere->manage("add", "fire");
                                 this->world->getSphere->setPosition(this->myTower->this_pt); 
@@ -1028,7 +1028,7 @@ namespace engine
                                 this->world->getSphere->owner = this->world->worldInterface->container->levinSphere;
                                 this->world->getSphere->ownerType = "archive";
                                 this->world->getSphere->ownerPoint = this->world->worldInterface->container->levinSphereMyPoint;
-                                this->world->addChild(this->world->getSphere);
+                                this->world->addChild(this->world->getSphere,6);
                                 this->myTower->spheresManage("get", "levin", 1);
                                 this->world->getSphere->manage("add", "levin");
                                 this->world->getSphere->setPosition(this->myTower->this_pt);

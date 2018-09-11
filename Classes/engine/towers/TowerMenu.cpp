@@ -115,7 +115,7 @@ namespace engine
 				this->hint->setMouseChildren(false);
 				this->hint->setMouseEnabled(false);
 				this->hint->setVisible(false);
-				this->world->addChild(this->hint);
+				this->world->addChild(this->hint,6);
 			}
 			if (this->world->eduOpenUpgrArrowFlag)
 			{
@@ -2907,7 +2907,7 @@ namespace engine
 				        this->world->getSphere->owner = this->world->worldInterface->container->fireSphere;
 				        this->world->getSphere->ownerType = "archive";
 				        this->world->getSphere->ownerPoint = this->world->worldInterface->container->fireSphereMyPoint;
-				        this->world->addChild(this->world->getSphere);
+				        this->world->addChild(this->world->getSphere,6);
 				        this->i = 0;
 						while (this->i < ((int)this->myTower->shootingTurnStack[0][3] - 1))
 				        { 
@@ -2925,7 +2925,7 @@ namespace engine
 				    this->world->getSphere->owner = this->world->worldInterface->container->iceSphere;
 				    this->world->getSphere->ownerType = "archive";
 				    this->world->getSphere->ownerPoint = this->world->worldInterface->container->iceSphereMyPoint;
-				    this->world->addChild(this->world->getSphere);
+				    this->world->addChild(this->world->getSphere,6);
 				    this->i = 0;
 					while (this->i < (int)this->myTower->shootingTurnStack[1][3])
 				    {
@@ -2944,7 +2944,7 @@ namespace engine
 				        this->world->getSphere->owner = this->world->worldInterface->container->stoneSphere;
 				        this->world->getSphere->ownerType = "archive";
 				        this->world->getSphere->ownerPoint = this->world->worldInterface->container->stoneSphereMyPoint;
-				        this->world->addChild(this->world->getSphere);
+				        this->world->addChild(this->world->getSphere,6);
 				        this->i = 0;
 				        while (this->i < (this->myTower->shootingTurnStack[2][3] - 1))
 				        {
@@ -2962,7 +2962,7 @@ namespace engine
 				    this->world->getSphere->owner = this->world->worldInterface->container->levinSphere;
 				    this->world->getSphere->ownerType = "archive";
 				    this->world->getSphere->ownerPoint = this->world->worldInterface->container->levinSphereMyPoint;
-				    this->world->addChild(this->world->getSphere);
+				    this->world->addChild(this->world->getSphere,6);
 				    this->i = 0;
 				    while (this->i < this->myTower->shootingTurnStack[3][3])
 				    {
@@ -2991,7 +2991,7 @@ namespace engine
 				    this->world->getSphere->owner = this->world->worldInterface->container->fireSphere;
 				    this->world->getSphere->ownerType = "archive";
 				    this->world->getSphere->ownerPoint = this->world->worldInterface->container->fireSphereMyPoint;
-				    this->world->addChild(this->world->getSphere);
+				    this->world->addChild(this->world->getSphere,6);
 				    this->i = 0;
 				    while (this->i < this->myTower->shootingTurnStack[0][3])
 				    {
@@ -3010,7 +3010,7 @@ namespace engine
 				        this->world->getSphere->owner = this->world->worldInterface->container->iceSphere;
 				        this->world->getSphere->ownerType = "archive";
 				        this->world->getSphere->ownerPoint = this->world->worldInterface->container->iceSphereMyPoint;
-				        this->world->addChild(this->world->getSphere);
+				        this->world->addChild(this->world->getSphere,6);
 				        this->i = 0;
 				        while (this->i < (this->myTower->shootingTurnStack[1][3] - 1))
 				        {
@@ -3028,7 +3028,7 @@ namespace engine
 				    this->world->getSphere->owner = this->world->worldInterface->container->stoneSphere;
 				    this->world->getSphere->ownerType = "archive";
 				    this->world->getSphere->ownerPoint = this->world->worldInterface->container->stoneSphereMyPoint;
-				    this->world->addChild(this->world->getSphere);
+				    this->world->addChild(this->world->getSphere,6);
 				    this->i = 0;
 				    while (this->i < this->myTower->shootingTurnStack[2][3])
 				    {
@@ -3048,7 +3048,7 @@ namespace engine
 				        this->world->getSphere->owner = this->world->worldInterface->container->levinSphere;
 				        this->world->getSphere->ownerType = "archive";
 				        this->world->getSphere->ownerPoint = this->world->worldInterface->container->levinSphereMyPoint;
-				        this->world->addChild(this->world->getSphere);
+				        this->world->addChild(this->world->getSphere,6);
 				        this->i = 0;
 				        while (this->i < (this->myTower->shootingTurnStack[3][3] - 1))
 				        {
@@ -3078,7 +3078,7 @@ namespace engine
 				    this->world->getSphere->owner = this->world->worldInterface->container->fireSphere;
 				    this->world->getSphere->ownerType = "archive";
 				    this->world->getSphere->ownerPoint = this->world->worldInterface->container->fireSphereMyPoint;
-				    this->world->addChild(this->world->getSphere);
+				    this->world->addChild(this->world->getSphere,6);
 				    this->i = 0;
 				    while (this->i < this->myTower->shootingTurnStack[0][3])
 				    {
@@ -3097,7 +3097,7 @@ namespace engine
 				        this->world->getSphere->owner = this->world->worldInterface->container->iceSphere;
 				        this->world->getSphere->ownerType = "archive";
 				        this->world->getSphere->ownerPoint = this->world->worldInterface->container->iceSphereMyPoint;
-				        this->world->addChild(this->world->getSphere);
+				        this->world->addChild(this->world->getSphere,6);
 				        this->i = 0;
 				        while (this->i < (this->myTower->shootingTurnStack[1][3] - 1))
 				        {
@@ -3117,7 +3117,7 @@ namespace engine
 				        this->world->getSphere->owner = this->world->worldInterface->container->stoneSphere;
 				        this->world->getSphere->ownerType = "archive";
 				        this->world->getSphere->ownerPoint = this->world->worldInterface->container->stoneSphereMyPoint;
-				        this->world->addChild(this->world->getSphere);
+				        this->world->addChild(this->world->getSphere,6);
 				        this->i = 0;
 				        while (this->i < (this->myTower->shootingTurnStack[2][3] - 1))
 				        {
@@ -3135,7 +3135,7 @@ namespace engine
 				    this->world->getSphere->owner = this->world->worldInterface->container->levinSphere;
 				    this->world->getSphere->ownerType = "archive";
 				    this->world->getSphere->ownerPoint = this->world->worldInterface->container->levinSphereMyPoint;
-				    this->world->addChild(this->world->getSphere);
+				    this->world->addChild(this->world->getSphere,6);
 				    this->i = 0;
 				    while (this->i < this->myTower->shootingTurnStack[3][3])
 				    {
@@ -3166,7 +3166,7 @@ namespace engine
 				        this->world->getSphere->owner = this->world->worldInterface->container->fireSphere;
 				        this->world->getSphere->ownerType = "archive";
 				        this->world->getSphere->ownerPoint = this->world->worldInterface->container->fireSphereMyPoint;
-				        this->world->addChild(this->world->getSphere);
+				        this->world->addChild(this->world->getSphere,6);
 				        this->i = 0;
 				        while (this->i < (this->myTower->shootingTurnStack[0][3] - 1))
 				        {
@@ -3184,7 +3184,7 @@ namespace engine
 				    this->world->getSphere->owner = this->world->worldInterface->container->iceSphere;
 				    this->world->getSphere->ownerType = "archive";
 				    this->world->getSphere->ownerPoint = this->world->worldInterface->container->iceSphereMyPoint;
-				    this->world->addChild(this->world->getSphere);
+				    this->world->addChild(this->world->getSphere,6);
 				    this->i = 0;
 				    while (this->i < this->myTower->shootingTurnStack[1][3])
 				    {
@@ -3201,7 +3201,7 @@ namespace engine
 				    this->world->getSphere->owner = this->world->worldInterface->container->stoneSphere;
 				    this->world->getSphere->ownerType = "archive";
 				    this->world->getSphere->ownerPoint = this->world->worldInterface->container->stoneSphereMyPoint;
-				    this->world->addChild(this->world->getSphere);
+				    this->world->addChild(this->world->getSphere,6);
 				    this->i = 0;
 				    while (this->i < this->myTower->shootingTurnStack[2][3])
 				    {
@@ -3220,7 +3220,7 @@ namespace engine
 				        this->world->getSphere->owner = this->world->worldInterface->container->levinSphere;
 				        this->world->getSphere->ownerType = "archive";
 				        this->world->getSphere->ownerPoint = this->world->worldInterface->container->levinSphereMyPoint;
-				        this->world->addChild(this->world->getSphere);
+				        this->world->addChild(this->world->getSphere,6);
 				        this->i = 0;
 				        while (this->i < (this->myTower->shootingTurnStack[3][3] - 1))
 				        {

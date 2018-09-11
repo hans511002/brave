@@ -2918,7 +2918,7 @@ namespace engine{
 							this->world->getSphere->ownerType = "archive";
 							this->world->getSphere->owner = this->world->worldInterface->container->fireSphere;
 							this->world->getSphere->ownerPoint = this->world->worldInterface->container->fireSphereMyPoint;
-							this->world->addChild(this->world->getSphere);
+							this->world->addChild(this->world->getSphere,6);
 							this->world->getSphere->manage("add", "fire");
 						}
 						else if (this->world->getSphere->listOfStack.size() < 4)
@@ -2939,7 +2939,7 @@ namespace engine{
 							this->world->getSphere->ownerType = "archive";
 							this->world->getSphere->owner = this->world->worldInterface->container->iceSphere;
 							this->world->getSphere->ownerPoint = this->world->worldInterface->container->iceSphereMyPoint;
-							this->world->addChild(this->world->getSphere);
+							this->world->addChild(this->world->getSphere,6);
 							this->world->getSphere->manage("add", "ice");
 						}
 						else if (this->world->getSphere->listOfStack.size() < 4)
@@ -2960,7 +2960,7 @@ namespace engine{
 							this->world->getSphere->ownerType = "archive";
 							this->world->getSphere->owner = this->world->worldInterface->container->stoneSphere;
 							this->world->getSphere->ownerPoint = this->world->worldInterface->container->stoneSphereMyPoint;
-							this->world->addChild(this->world->getSphere);
+							this->world->addChild(this->world->getSphere,6);
 							this->world->getSphere->manage("add", "stone");
 						}
 						else if (this->world->getSphere->listOfStack.size() < 4)
@@ -2981,7 +2981,7 @@ namespace engine{
 							this->world->getSphere->ownerType = "archive";
 							this->world->getSphere->owner = this->world->worldInterface->container->levinSphere;
 							this->world->getSphere->ownerPoint = this->world->worldInterface->container->levinSphereMyPoint;
-							this->world->addChild(this->world->getSphere);
+							this->world->addChild(this->world->getSphere,6);
 							this->world->getSphere->manage("add", "levin");
 						}
 						else if (this->world->getSphere->listOfStack.size() < 4)
@@ -3001,7 +3001,7 @@ namespace engine{
 							this->world->getSphere->ownerType = "archive";
 							this->world->getSphere->owner = this->world->worldInterface->container->getAll;
 							this->world->getSphere->ownerPoint = this->world->worldInterface->container->getAllMyPoint;
-							this->world->addChild(this->world->getSphere);
+							this->world->addChild(this->world->getSphere,6);
 							while (this->spheresStack.size() > 0)
 							{
 

@@ -30,7 +30,7 @@ namespace engine
             this->graphicAtMyTower->setPosition(this->myTower->getPosition()); 
             this->graphicAtMyTower->setMouseChildren(false);
             this->graphicAtMyTower->setMouseEnabled(false);
-            this->world->addChild(this->graphicAtMyTower);
+            this->world->addChild(this->graphicAtMyTower,4);
             this->container = new Exchange1_mc();
             this->container->stop();
             this->container->cross->stop();
