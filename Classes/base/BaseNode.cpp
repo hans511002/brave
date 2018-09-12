@@ -1018,6 +1018,10 @@ namespace std
 	}
 
 	void EventNode::setMouseEnabled(bool v, bool setSub) {
+		MCCase *mc = ISTYPE(MCCase,this);
+		if (mc && !mc->isRunning()) {
+			if (!v)return;
+		}
 		if (v != this->mouseEnabled && !setSub)
 			setNodeMouse(ISTYPE(Node, this), 2, v, setSub);
 	};

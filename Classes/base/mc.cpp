@@ -461,10 +461,9 @@ namespace engine
 		this->slotName = slotName;
 		this->setName(slotName);
 		reinit();
- 		if (mouseEnabled)
+		if (mouseEnabled)
 			enableMouseHandler(useNodeEvent);
-		else
-			disableMouseHandler();
+		this->mouseEnabled = mouseEnabled;
 		//addEventNode(this);
 	};
 	void MCCase::setVisible(bool v){

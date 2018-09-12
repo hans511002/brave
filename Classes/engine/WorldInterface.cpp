@@ -3487,11 +3487,11 @@ namespace engine
 			this->container->fireSphere->setAlpha(0);
 			this->container->fireNumTXT->setAlpha(0);
 			this->container->buyFire->setAlpha(0);
-			this->container->fireSphere->setMouseChildren(false);
-			this->container->fireSphere->setMouseEnabled(false);
-			this->container->fireNumTXT->setMouseEnabled(false); 
-			this->container->buyFire->setMouseChildren(false);
-			this->container->buyFire->setMouseEnabled(false);
+			//this->container->fireSphere->setMouseChildren(false);
+			//this->container->fireSphere->setMouseEnabled(false);
+			//this->container->fireNumTXT->setMouseEnabled(false); 
+			//this->container->buyFire->setMouseChildren(false);
+			//this->container->buyFire->setMouseEnabled(false);
 			this->container->fireSphere->setVisible(false);
  
 			this->container->buyFire->gotoAndStop(2);
@@ -3513,28 +3513,28 @@ namespace engine
 			this->container->stoneSphere->setAlpha(0);
 			this->container->stoneNumTXT->setAlpha(0);
 			this->container->buyStone->setAlpha(0);
-			this->container->stoneSphere->setMouseChildren(false);
-			this->container->stoneSphere->setMouseEnabled(false);
-			this->container->stoneNumTXT->setMouseEnabled(false);
-			this->container->buyStone->setMouseChildren(false);
-			this->container->buyStone->setMouseEnabled(false);
+			//this->container->stoneSphere->setMouseChildren(false);
+			//this->container->stoneSphere->setMouseEnabled(false);
+			//this->container->stoneNumTXT->setMouseEnabled(false);
+			//this->container->buyStone->setMouseChildren(false);
+			//this->container->buyStone->setMouseEnabled(false);
 			this->container->stoneSphere->setVisible(false);
 
 			this->container->levinSphere->setAlpha(0);
 			this->container->levinNumTXT->setAlpha(0);
 			this->container->buyLevin->setAlpha(0);
-			this->container->levinSphere->setMouseChildren(false);
-			this->container->levinSphere->setMouseEnabled(false);
-			this->container->levinNumTXT->setMouseEnabled(false);
-			this->container->buyLevin->setMouseChildren(false);
-			this->container->buyLevin->setMouseEnabled(false);
+			//this->container->levinSphere->setMouseChildren(false);
+			//this->container->levinSphere->setMouseEnabled(false);
+			//this->container->levinNumTXT->setMouseEnabled(false);
+			//this->container->buyLevin->setMouseChildren(false);
+			//this->container->buyLevin->setMouseEnabled(false);
 			this->container->levinSphere->setVisible(false);
 
 			this->container->buyGetAll->setAlpha(0);
 			this->container->getAllNumTXT->setAlpha(0);
-			this->container->getAllNumTXT->setMouseEnabled(false);
-			this->container->buyGetAll->setMouseChildren(false);
-			this->container->buyGetAll->setMouseEnabled(false); 
+			//this->container->getAllNumTXT->setMouseEnabled(false);
+			//this->container->buyGetAll->setMouseChildren(false);
+			//this->container->buyGetAll->setMouseEnabled(false); 
 
 			this->container->getAll->gotoAndStop(3);
 			this->container->fireBack->gotoAndStop(3);

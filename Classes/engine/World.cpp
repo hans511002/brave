@@ -218,17 +218,21 @@ namespace engine
 			}
 		}
 		int ts = Common::DateTime().GetTicks() - stime.GetTicks();
-		stime = Common::DateTime(); logInfo("begin", ts);
+		stime = Common::DateTime(); 
+		//logInfo("begin", ts);
 		this->wavesClass->wavesHandler();
 		ts = Common::DateTime().GetTicks() - stime.GetTicks();
-		stime = Common::DateTime(); logInfo("wavesHandler", ts);
+		stime = Common::DateTime(); 
+		//logInfo("wavesHandler", ts);
 		if (this->worldInterface)
 			this->worldInterface->update();
 		ts = Common::DateTime().GetTicks() - stime.GetTicks();
-		stime = Common::DateTime(); logInfo("worldInterface", ts);
+		stime = Common::DateTime(); 
+		//logInfo("worldInterface", ts);
 		this->feature->update();
 		ts = Common::DateTime().GetTicks() - stime.GetTicks();
-		stime = Common::DateTime(); logInfo("feature", ts);
+		stime = Common::DateTime(); 
+		//logInfo("feature", ts);
 		//子类播放
 		int i = this->listOfClasses.size() - 1;
 		while (i >= 0)
@@ -237,7 +241,8 @@ namespace engine
 			i--;
 		}
 		ts = Common::DateTime().GetTicks() - stime.GetTicks();
-		stime = Common::DateTime(); logInfo("listOfClasses", ts);
+		stime = Common::DateTime(); 
+		logInfo("listOfClasses", ts);
 		i = this->listOfTowers.size() - 1;
 		while (i >= 0)
 		{
@@ -245,7 +250,8 @@ namespace engine
 			i--;
 		}
 		ts = Common::DateTime().GetTicks() - stime.GetTicks();
-		stime = Common::DateTime(); logInfo("listOfTowers", ts);
+		stime = Common::DateTime(); 
+		logInfo("listOfTowers", ts);
 
 		//怪播放
 		i = this->listOfUnits.size() - 1;
@@ -255,7 +261,8 @@ namespace engine
 			i--;
 		}
 		ts = Common::DateTime().GetTicks() - stime.GetTicks();
-		stime = Common::DateTime(); logInfo("listOfUnits", ts);
+		stime = Common::DateTime(); 
+		logInfo("listOfUnits", ts);
 		i = this->listOfBullets.size() - 1;
 		while (i >= 0)
 		{
@@ -263,7 +270,8 @@ namespace engine
 			i--;
 		}
 		ts = Common::DateTime().GetTicks() - stime.GetTicks();
-		stime = Common::DateTime(); logInfo("listOfBullets", ts);
+		stime = Common::DateTime(); 
+		logInfo("listOfBullets", ts);
 		if (this->winDefCounter > -1)
 		{
 			if (this->winDefCounter > 0)
@@ -386,7 +394,8 @@ namespace engine
 		}
 		this->manageIndexes();
 		ts = Common::DateTime().GetTicks() - stime.GetTicks();
-		stime = Common::DateTime(); logInfo("end", ts);
+		stime = Common::DateTime(); 
+		//logInfo("end", ts);
 		ts = Common::DateTime().GetTicks() - gstime.GetTicks();
 		logInfo("all", ts);
 		if (this->worldInterface->fasterFlag == 2)
@@ -988,7 +997,6 @@ namespace engine
 		}
 		return;
 	}
-
 
 	//bool World::onTouchBegan(Touch *touch, cocos2d::Event *event) {
 	//	Node * node = event->getCurrentTarget();
