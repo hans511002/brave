@@ -115,9 +115,6 @@ namespace std
 	{
 		if (useNodeEvent)return;
 		if (!node)return;
-		if (ISTYPE(Node, node)->getName() == "sphereCase") {
-			CCLOGWARN("addEventNode %s", getNamePath(ISTYPE(Node, node)).c_str());
-		}
 		PMutex pm(&globalMutex);
 		int len = globalEventNodes.size();
 		for (int i = 0; i < len; i++)
@@ -125,6 +122,10 @@ namespace std
 			if (globalEventNodes.at(i) == node)
 				return;
 		}
+		if (!ISTYPE(BaseNode, node) && !ISTYPE(BaseLayer,node) && !ISTYPE(BaseSprite, node)) {
+			return;
+		}
+		CCLOGWARN("%s", getNamePath(ISTYPE(Node, node)).c_str());
 		globalEventNodes.push(node);
 		sortGlobalNode = false;
 	};
@@ -136,11 +137,86 @@ namespace std
 			if (globalEventNodes.at(i) == node)
 			{
 				globalEventNodes.remove(i);
-				return;
+				CCLOGWARN("%s", getNamePath(ISTYPE(Node, node)).c_str());
+				i--; l--;
+				//return;
 			}
 		}
 	};
 
+	std::MouseEvent buildMouseEvent(EventMouse * e)
+	{
+		std::MouseEvent  me(e);
+		Node * n = e->getCurrentTarget();
+		assert(n != NULL);
+		EventNode * evRootNode = ISTYPE(EventNode, n);
+		assert(evRootNode != NULL);
+		//只允许一个根
+		if (useGlobalNode) {
+			if (!sortGlobalNode) {
+				nodePriorityIndex = 0;
+				evRootNode->visitTarget(NULL, n, true);
+			}
+			PMutex pm(&globalMutex);
+			int l = globalEventNodes.size();
+			Vec2 ep = e->getLocationInView();
+			for (int i = l - 1; i >= 0; i--)
+			{
+				EventNode * _node = globalEventNodes.at(i);
+				Node *node = ISTYPE(Node, _node);
+				//if (n == node)continue;
+				if (!node)continue;
+				if (!std::getNodeVisible(node))
+					continue;
+				CCLOGWARN("%s", getNamePath(node).c_str());
+				if (std::hitTest(node, ep)) {
+					me.currentTargets.push(node);
+					//break;
+				}
+			}
+		}
+		else {
+			nodePriorityIndex = 0;
+			nodePriorityMap.clear();
+			globalZOrderNodeMap.clear();
+			std::vector<EventNode *> _eventNodes;
+			evRootNode->visitTarget(&_eventNodes, n, true);
+			int l = _eventNodes.size();
+			Vec2 ep = e->getLocationInView();
+			for (int i = l - 1; i >= 0; i--)
+			{
+				EventNode * _node = _eventNodes.at(i);
+				Node *node = ISTYPE(Node, _node);
+				//if (n == node)continue;
+				if (!node)continue;
+				if (!std::getNodeVisible(node)) continue;
+				if (std::hitTest(node, ep)) {
+					me.currentTargets.push(node);
+					break;
+				}
+			}
+		}
+		return me;
+	};
+
+	std::MouseEvent BaseNode::buildMouseEvent(Node * node, cocos2d::EventMouse::MouseButton mouseButton, cocos2d::EventMouse::MouseEventType mouseEventType)
+	{
+		std::MouseEvent e(mouseEventType);
+		e.setMouseButton(mouseButton);
+		if (node)
+		{
+			e.setCurrentTarget(node);
+			Vec2 pos = node->convertToWorldSpace(node->getPosition());
+			e.setCursorPosition(pos.x + 0.1, pos.y + 0.1);
+		}
+		else
+		{
+			e.setCurrentTarget(this);
+			Vec2 pos = this->convertToWorldSpace(this->getPosition());
+			e.setCursorPosition(pos.x + 0.1, pos.y + 0.1);
+		}
+		return e;
+	}
 	void writeLog(string msg, int type)
 	{
 		if (gLog)Common::writeLog(msg, gLog, EventNode::debug, type);
@@ -338,6 +414,7 @@ namespace std
 	};
 	void BaseNode::onExit()
 	{
+		//this->setMouseEnabled(false, true);
 		removeEventNode(this);
 		this->linkNodes.clear();
 		if (this->linkParent)this->linkParent->removeLinkNode(this);
@@ -771,85 +848,11 @@ namespace std
 	};
 
 
-	std::MouseEvent buildMouseEvent(EventMouse * e)
-	{
-		std::MouseEvent  me(e);
-		Node * n = e->getCurrentTarget();
-		assert(n != NULL);
-		EventNode * evRootNode = ISTYPE(EventNode, n);
-		assert(evRootNode != NULL);
-		//只允许一个根
-		if (useGlobalNode) {
-			if (!sortGlobalNode) {
-				nodePriorityIndex = 0;
-				evRootNode->visitTarget(NULL, n, true);
-			}
-			int l = globalEventNodes.size();
-			Vec2 ep = e->getLocationInView();
-			for (int i = l - 1; i >= 0; i--)
-			{
-				EventNode * _node = globalEventNodes.at(i);
-				Node *node = ISTYPE(Node, _node);
-				//if (n == node)continue;
-				if (!node)continue;
-				if (!std::getNodeVisible(node))
-					continue;
-				CCLOGWARN("%s", getNamePath(node).c_str());
-				if (std::hitTest(node, ep)) {
-					me.currentTargets.push(node);
-					//break;
-				}
-			}
-		}
-		else {
-			nodePriorityIndex = 0;
-			nodePriorityMap.clear();
-			globalZOrderNodeMap.clear();
-			std::vector<EventNode *> _eventNodes;
-			evRootNode->visitTarget(&_eventNodes, n, true);
-			int l = _eventNodes.size();
-			Vec2 ep = e->getLocationInView();
-			for (int i = l - 1; i >= 0; i--)
-			{
-				EventNode * _node = _eventNodes.at(i);
-				Node *node = ISTYPE(Node, _node);
-				//if (n == node)continue;
-				if (!node)continue;
-				if (!std::getNodeVisible(node)) continue;
-				if (std::hitTest(node, ep)) {
-					me.currentTargets.push(node);
-					break;
-				}
-			}
-		}
-		return me;
-	};
-
-	std::MouseEvent BaseNode::buildMouseEvent(Node * node, cocos2d::EventMouse::MouseButton mouseButton, cocos2d::EventMouse::MouseEventType mouseEventType)
-	{
-		std::MouseEvent e(mouseEventType);
-		e.setMouseButton(mouseButton);
-		if (node)
-		{
-			e.setCurrentTarget(node);
-			Vec2 pos = node->convertToWorldSpace(node->getPosition());
-			e.setCursorPosition(pos.x + 0.1, pos.y + 0.1);
-		}
-		else
-		{
-			e.setCurrentTarget(this);
-			Vec2 pos = this->convertToWorldSpace(this->getPosition());
-			e.setCursorPosition(pos.x + 0.1, pos.y + 0.1);
-		}
-		return e;
-	}
 	void BaseNode::enableMouseHandler(bool listen)
 	{
-		if (!this->mouseEnabled)
-		{
-			this->setMouseEnabled(true);
-
-		}
+		if (!this->mouseEnabled) 
+			this->setMouseEnabled(true); 
+		//addEventNode(this);
 		if (listen && (listener == NULL && touchOnelistener == NULL))
 		{
 			this->getEventDispatcher()->setEnabled(true);
@@ -871,6 +874,8 @@ namespace std
 		}
 	};
 	void BaseNode::disableMouseHandler() {
+		removeEventNode(this);
+		this->setMouseEnabled(false);
 		if (listener) {
 			getEventDispatcher()->removeEventListener(listener);
 			delete listener;
@@ -881,8 +886,6 @@ namespace std
 			delete touchOnelistener;
 			touchOnelistener = NULL;
 		}
-		this->setMouseEnabled(false);
-
 	}
 
 	void BaseNode::enableKeyHandler()
@@ -993,14 +996,14 @@ namespace std
 			}
 			else if (type == 3)
 				en->mouseFlag = v;
-			if (type == 2) {
-				if (v && !useNodeEvent)
-					addEventNode(en);
-				else
-					removeEventNode(en);
-			}
+			//if (type == 2) {
+			//	if (v && !useNodeEvent)
+			//		addEventNode(en);
+			//	else
+			//		removeEventNode(en);
+			//}
 		}
-		else if (!setSub) {
+		if (!setSub) {
 			return;
 		}
 		Vector<Node*>& chlds = n->getChildren();
@@ -1015,7 +1018,7 @@ namespace std
 	}
 
 	void EventNode::setMouseEnabled(bool v, bool setSub) {
-		if (v != this->mouseEnabled)
+		if (v != this->mouseEnabled && !setSub)
 			setNodeMouse(ISTYPE(Node, this), 2, v, setSub);
 	};
 	void EventNode::setMouseFlag(bool v, bool setSub) {

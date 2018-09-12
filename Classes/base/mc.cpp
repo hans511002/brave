@@ -458,13 +458,13 @@ namespace engine
 		setNodeType("MCCase");
 		BaseNode::init();
 		this->mc = mc;
+		this->slotName = slotName;
+		this->setName(slotName);
+		reinit();
  		if (mouseEnabled)
 			enableMouseHandler(useNodeEvent);
 		else
 			disableMouseHandler();
-		this->slotName = slotName;
-		this->setName(slotName);
-		reinit();
 		//addEventNode(this);
 	};
 	void MCCase::setVisible(bool v){

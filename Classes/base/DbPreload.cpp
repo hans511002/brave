@@ -75,8 +75,8 @@ namespace std
 		addPreLoadDb(DbFile(ske, tex, dbName));
 	};
 	void DbPreload::addPreLoadArm(const string & dir,const string & dbName,const string & fileType ){
-		string ske=dir+"/"+dbName+"."+fileType;
-		string tex=dir+"/"+dbName+".json";
+		string ske=dir+"/"+dbName+"_ske."+fileType;
+		string tex=dir+"/"+dbName+"_tex.json";
 	  	addPreLoadDb(DbFile(ske, tex, dbName));
 	};
 
