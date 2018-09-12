@@ -115,6 +115,9 @@ namespace std
 	{
 		if (useNodeEvent)return;
 		if (!node)return;
+        if(ISTYPE(Node,node)->getName()=="sphereCase"){
+            CCLOGWARN("addEventNode %s",getNamePath(ISTYPE(Node,node)).c_str());
+        }
 		PMutex pm(&globalMutex);
 		int len = globalEventNodes.size();
 		for (int i = 0; i < len; i++)
@@ -1288,7 +1291,7 @@ namespace std
 		return std::getNamePath(node ? node : ISTYPE(Node, this));
 	};
 
-	void EventNode::logInfo(string mouseType, cocos2d::EventMouse* event)
+	void EventNode::logInfo(std::string mouseType, cocos2d::EventMouse* event)
 	{
 		if (!EventNode::debug)return;
 		cocos2d::EventMouse::MouseButton mouseButton = event->getMouseButton();

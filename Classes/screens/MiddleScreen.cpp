@@ -62,10 +62,10 @@ namespace screens
         this->container->rightUp->stop();
         this->container->leftDown->stop();
         this->container->rightDown->stop(); 
-		this->container->leftUp->setPosition(this->container->convertToNodeSpaceAR(this->container->leftUp->convertToWorldSpace(Vec2(0, 0))));
-		this->container->leftDown->setPosition(this->container->convertToNodeSpaceAR(this->container->leftDown->convertToWorldSpace(Vec2(0, 0))));
-		this->container->rightUp->setPosition(this->container->convertToNodeSpaceAR(this->container->rightUp->convertToWorldSpace(Vec2(0, 0))));
-		this->container->rightDown->setPosition(this->container->convertToNodeSpaceAR(this->container->rightDown->convertToWorldSpace(Vec2(0, 0))));
+//		this->container->leftUp->setPosition(this->container->convertToNodeSpaceAR(this->container->leftUp->convertToWorldSpace(Vec2(0, 0))));
+//		this->container->leftDown->setPosition(this->container->convertToNodeSpaceAR(this->container->leftDown->convertToWorldSpace(Vec2(0, 0))));
+//		this->container->rightUp->setPosition(this->container->convertToNodeSpaceAR(this->container->rightUp->convertToWorldSpace(Vec2(0, 0))));
+//		this->container->rightDown->setPosition(this->container->convertToNodeSpaceAR(this->container->rightDown->convertToWorldSpace(Vec2(0, 0))));
 		
 		
 
