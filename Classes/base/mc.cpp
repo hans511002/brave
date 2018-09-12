@@ -458,7 +458,10 @@ namespace engine
 		setNodeType("MCCase");
 		BaseNode::init();
 		this->mc = mc;
-		this->mouseEnabled = mouseEnabled;
+ 		if (mouseEnabled)
+			enableMouseHandler(useNodeEvent);
+		else
+			disableMouseHandler();
 		this->slotName = slotName;
 		this->setName(slotName);
 		reinit();
@@ -1363,8 +1366,7 @@ namespace engine
 			this->setContentSize(size);
 			this->setPosition(origin->x, origin->y);
 			//std::setAnchorPoint(this, 0.5);
-			//std::changeAnchorPoint(this, 0.5);
-			enableMouseHandler(useNodeEvent);
+			//std::changeAnchorPoint(this, 0.5); 
 			//this->setMouseEnabled(true);
 			if (_draw)drawRange();
  		}

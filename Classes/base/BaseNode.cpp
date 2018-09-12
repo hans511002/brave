@@ -18,9 +18,9 @@ namespace std
 	bool useGlobalNode = true;
 	bool sortGlobalNode = false;
 
-	EventNode *globalNode=NULL;
+	EventNode *globalNode = NULL;
 	bool EventNode::debug = true;
-	Node * EventNode::beginTouchNode=NULL;
+	Node * EventNode::beginTouchNode = NULL;
 	Vec2 EventNode::beginTouchPos;
 	std::mutex globalMutex;
 
@@ -76,29 +76,29 @@ namespace std
 		enableMouseHandler();
 		if (draw)drawRange();
 	};
-	string EventNode::getTypeName(){
-        string clzName = "";
-        const char * nmname=typeid(*this).name();
+	string EventNode::getTypeName() {
+		string clzName = "";
+		const char * nmname = typeid(*this).name();
 #if defined(__GNUC__)
-        char* real_name = abi::__cxa_demangle(nmname, nullptr, nullptr, nullptr);
-        clzName=real_name;
-        free(real_name);
+		char* real_name = abi::__cxa_demangle(nmname, nullptr, nullptr, nullptr);
+		clzName = real_name;
+		free(real_name);
 #else
-        clzName=nmname;
+		clzName = nmname;
 #endif
-        int size=clzName.size();
-        int i=size-1;
-        const char * p=clzName.c_str();
-        while(i>=0){
-            if(p[i]==' ' || p[i]==':'){
-                return clzName.substr(i+1);
-            }
-            i--;
-        }
-//		Common::Array<Common::String> names = clzName.Split(" ");
-//		clzName = names.at(names.size() - 1);
-//		names = clzName.Split("::");
-//		clzName = names.at(names.size() - 1);
+		int size = clzName.size();
+		int i = size - 1;
+		const char * p = clzName.c_str();
+		while (i >= 0) {
+			if (p[i] == ' ' || p[i] == ':') {
+				return clzName.substr(i + 1);
+			}
+			i--;
+		}
+		//		Common::Array<Common::String> names = clzName.Split(" ");
+		//		clzName = names.at(names.size() - 1);
+		//		names = clzName.Split("::");
+		//		clzName = names.at(names.size() - 1);
 		return clzName;
 	};
 	//   string BaseNode::getTypeName(){
@@ -115,9 +115,9 @@ namespace std
 	{
 		if (useNodeEvent)return;
 		if (!node)return;
-        if(ISTYPE(Node,node)->getName()=="sphereCase"){
-            CCLOGWARN("addEventNode %s",getNamePath(ISTYPE(Node,node)).c_str());
-        }
+		if (ISTYPE(Node, node)->getName() == "sphereCase") {
+			CCLOGWARN("addEventNode %s", getNamePath(ISTYPE(Node, node)).c_str());
+		}
 		PMutex pm(&globalMutex);
 		int len = globalEventNodes.size();
 		for (int i = 0; i < len; i++)
@@ -226,7 +226,7 @@ namespace std
 		const auto armatureDisplay = factory->buildArmatureDisplay(armatureName, dragonBonesName, "", dragonBonesName);
 		return armatureDisplay;
 	};
-	void removeArmature(const std::string& name, bool disposeData )
+	void removeArmature(const std::string& name, bool disposeData)
 	{
 		const auto factory = dragonBones::CCFactory::getFactory();
 		factory->removeDragonBonesData(name, disposeData);
@@ -267,7 +267,7 @@ namespace std
 	void drawRange(Node * node, Color4F c)
 	{
 		Node * draw = node->getChildByName("drawNode");
-		if (!draw){
+		if (!draw) {
 			DrawNode* drawNode = DrawNode::create();
 			drawNode->setName("drawNode");
 			std::setAnchorPoint(drawNode, node->getAnchorPoint());
@@ -286,7 +286,7 @@ namespace std
 	bool BaseNode::init()
 	{
 		cocos2d::Node::init();
-		if (!ISTYPE(MovieClip, this)){
+		if (!ISTYPE(MovieClip, this)) {
 		}
 		//logInfo("node:getAnchorPoint", this->getAnchorPoint());
 		//logInfo("node:getAnchorPoint", this->getAnchorPointInPoints());
@@ -328,19 +328,6 @@ namespace std
 		BaseSprite::init();
 	};
 
-	bool BaseNode::hitTest(const Vec2 &pt)
-	{
-		if (!mouseEnabled)return false;
-		if (!this->isVisible())return false;
-		return std::hitTest(this, pt);
-	};
-	bool BaseNode::hitTest(cocos2d::EventMouse* event)
-	{
-		if (!mouseEnabled)return false;
-		if (!this->isVisible())return false;
-		return std::hitTest(this, event);
-	};
-
 	void BaseNode::onEnter()
 	{
 		if (!useNodeEvent && this->mouseEnabled)
@@ -364,15 +351,15 @@ namespace std
 	void BaseNode::enterFrameHandler(float dt)
 	{
 	};
-	void BaseNode::enableFrameHandler(bool init){
+	void BaseNode::enableFrameHandler(bool init) {
 		schdt = 2;
 		if (init)
 			this->schedule(schedule_selector(BaseNode::scheduleUpdate), (float)AnimationInterval);
 		else
 			schdt = 1;
 	};
-	void BaseNode::disableFrameHandler(){
-		if (schdt){
+	void BaseNode::disableFrameHandler() {
+		if (schdt) {
 			schdt = 0;
 			this->unschedule(schedule_selector(BaseNode::scheduleUpdate));
 		}
@@ -438,29 +425,35 @@ namespace std
 		return std::buildArmature(armatureName, dragonBonesName);
 	};
 
-	bool  hitTest(cocos2d::Node * node, cocos2d::EventMouse* e)
-	{
-		return hitTest(node, e->getLocationInView());
-	};
 	bool getNodeVisible(Node * node)
 	{
 		if (!node)return false;
 		if (!node->isVisible())return false;
 		Node * par = node->getParent();
-		while (par){
+		while (par) {
 			if (!par->isVisible())return false;
 			par = par->getParent();
 		}
 		return true;
 	}
-
-	bool  hitTest(Node * node, const Vec2 &pt, bool mouseEvent /*= true*/)
+	bool  hitTest(cocos2d::Node * node, cocos2d::EventMouse* e, bool mouseEvent /*= true*/, bool parentCheck/*= false*/)
 	{
-		if (!getNodeVisible(node))return false;
+		return hitTest(node, e->getLocationInView(), mouseEvent, parentCheck);
+	};
+
+	bool  hitTest(Node * node, const Vec2 &pt, bool mouseEvent /*= true*/, bool parentCheck/*= false*/)
+	{
+		if (parentCheck) {
+			if (!getNodeVisible(node))return false;
+		}
+		else {
+			if(!node->isVisible())return false;
+		}
 		if (node->getOpacity() < 2)return false;
-		if (mouseEvent && ISTYPE(EventNode, node)){
+		if (mouseEvent && ISTYPE(EventNode, node)) {
 			EventNode* enode = ISTYPE(EventNode, node);
-			if (!enode->mouseEnabled)return false;
+			if (!enode->mouseEnabled)
+				return false;
 		}
 		MovieClipSubBase * mcbs = ISTYPE(MovieClipSubBase, node);
 		if (mcbs && !mcbs->isReady)
@@ -478,7 +471,7 @@ namespace std
 		//}
 		if (node->getName() == "sphereCase") {
 			//CCLOGWARN("%s",getNamePath(node).c_str());
-			Vec2 mpos=node->convertToWorldSpace(Vec2(0,0));
+			Vec2 mpos = node->convertToWorldSpace(Vec2(0, 0));
 			mpos = node->convertToNodeSpace(mpos);
 			Vec2 nsp = node->convertToNodeSpace(pt);
 			nsp = node->convertToWorldSpace(nsp);
@@ -495,7 +488,68 @@ namespace std
 		}
 		return false;
 	}
+	bool BaseNode::hitTest(const Vec2 &pt)
+	{ 
+		return std::hitTest(this, pt,true,true);
+	};
+	bool BaseNode::hitTest(cocos2d::EventMouse* event)
+	{
+		return std::hitTest(this, event, true, true);
+	};
 
+	void  MouseEvent::hitTest(Node *node, bool incSub)
+	{
+		if (ISTYPE(EventNode, node))
+		{
+			EventNode *n = ISTYPE(EventNode, node);
+			if (n->hitTest(this))
+				currentTargets.push(node);
+		}
+		if (incSub && node->isVisible() && node->getChildrenCount())
+		{
+			int len = node->getChildrenCount();
+			Vector<Node*>& nodes = node->getChildren();
+			for (int i = 0; i < len; i++)
+			{
+				node = nodes.at(i);
+				this->hitTest(node, incSub);
+			}
+		}
+	};
+	void  MouseEvent::hitTest(Node *node, int level)
+	{
+		if (ISTYPE(EventNode, node))
+		{
+			EventNode *n = ISTYPE(EventNode, node);
+			if (n->hitTest(this))
+				currentTargets.push(node);
+			if (n->mouseChildren && node->isVisible() && node->getChildrenCount())
+			{
+				int len = node->getChildrenCount();
+				Vector<Node*>& nodes = node->getChildren();
+				for (int i = 0; i < len; i++)
+				{
+					node = nodes.at(i);
+					this->hitTest(node, level + 1);
+				}
+			}
+		}
+		else
+		{
+			if (!node->getName().empty() && std::hitTest(node, this))
+				currentTargets.push(node);
+			if (node->isVisible() && node->getChildrenCount())
+			{
+				int len = node->getChildrenCount();
+				Vector<Node*>& nodes = node->getChildren();
+				for (int i = 0; i < len; i++)
+				{
+					node = nodes.at(i);
+					this->hitTest(node, level + 1);
+				}
+			}
+		}
+	};
 	bool BaseSprite::atStage()
 	{
 		const auto& stageSize = cocos2d::Director::getInstance()->getVisibleSize();
@@ -518,10 +572,10 @@ namespace std
 	void BaseNode::setAlpha(cocos2d::Node * node, float op)
 	{
 		if (!node)return;
-		op = op<0 ? 0 : op>1 ? 1 : op;
+		op = op < 0 ? 0 : op>1 ? 1 : op;
 		int ops = op * 255;
 		node->setOpacity(ops);
-		if (ISTYPE(MovieClip, node)){
+		if (ISTYPE(MovieClip, node)) {
 			ISTYPE(MovieClip, node)->container->setOpacity(ops);
 		}
 	};
@@ -547,12 +601,12 @@ namespace std
 	{
 		return this->getContentSize().height;
 	};
-	void BaseNode::setWidth(float w){
+	void BaseNode::setWidth(float w) {
 		Size size = this->getContentSize();
 		size.width = w;
 		this->setContentSize(size);
 	};
-	void BaseNode::setHeight(float h){
+	void BaseNode::setHeight(float h) {
 		Size size = this->getContentSize();
 		size.height = h;
 		this->setContentSize(size);
@@ -566,13 +620,13 @@ namespace std
 	{
 		return this->getContentSize().height;
 	};
-	void BaseSprite::setWidth(float w){
+	void BaseSprite::setWidth(float w) {
 		Size size = this->getContentSize();
 		this->setScaleX((w / size.width));
 		//size.width = w;
 		//this->setContentSize(size);
 	};
-	void BaseSprite::setHeight(float h){
+	void BaseSprite::setHeight(float h) {
 		Size size = this->getContentSize();
 		this->setScaleY((h / size.height));
 		//size.height = h;
@@ -589,30 +643,30 @@ namespace std
 		removeEventNode(this);
 		Sprite::onExit();
 	};
-	void BaseNode::addChild(Node *child){
+	void BaseNode::addChild(Node *child) {
 		Node::addChild(child);
 		if (basePoint.x && basePoint.y)
 			child->setPosition(basePoint);
 	};
-	void BaseNode::addChild(Node * child, int localZOrder){
+	void BaseNode::addChild(Node * child, int localZOrder) {
 		Node::addChild(child, localZOrder);
 		if (basePoint.x && basePoint.y)
 			child->setPosition(basePoint);
 	};
-	void BaseNode::addChild(Node* child, int localZOrder, int tag){
+	void BaseNode::addChild(Node* child, int localZOrder, int tag) {
 		Node::addChild(child, localZOrder, tag);
 		if (basePoint.x && basePoint.y)
 			child->setPosition(basePoint);
 	};
-	void BaseNode::addChild(Node* child, int localZOrder, const std::string &name){
+	void BaseNode::addChild(Node* child, int localZOrder, const std::string &name) {
 		Node::addChild(child, localZOrder, name);
 		if (basePoint.x && basePoint.y)
 			child->setPosition(basePoint);
 	};
-	void changeAnchorPoint(Node * node, float xy){
+	void changeAnchorPoint(Node * node, float xy) {
 		changeAnchorPoint(node, Vec2(xy, xy));
 	}
-	void changeAnchorPoint(Node * node, const Vec2& xy){
+	void changeAnchorPoint(Node * node, const Vec2& xy) {
 		Vec2 absPos1 = node->getAnchorPointInPoints();
 		node->setAnchorPoint(xy);
 		Vec2 absPos2 = node->getAnchorPointInPoints();
@@ -631,7 +685,7 @@ namespace std
 		//else{
 		//}
 	};
-	void BaseNode::changeAnchorPoint(float xy){
+	void BaseNode::changeAnchorPoint(float xy) {
 		std::changeAnchorPoint(this, xy);
 	};
 	void BaseNode::drawRange()
@@ -686,67 +740,14 @@ namespace std
 		//hitTest(e->getCurrentTarget(), false);
 	};
 
-	void  MouseEvent::hitTest(Node *node, bool incSub)
-	{
-		if (ISTYPE(EventNode, node))
-		{
-			EventNode *n = ISTYPE(EventNode, node);
-			if (n->hitTest(this))
-				currentTargets.push(node);
-		}
-		if (incSub && node->isVisible() && node->getChildrenCount())
-		{
-			int len = node->getChildrenCount();
-			Vector<Node*>& nodes = node->getChildren();
-			for (int i = 0; i < len; i++)
-			{
-				node = nodes.at(i);
-				hitTest(node, incSub);
-			}
-		}
-	};
-	void  MouseEvent::hitTest(Node *node, int level)
-	{
-		if (ISTYPE(EventNode, node))
-		{
-			EventNode *n = ISTYPE(EventNode, node);
-			if (n->hitTest(this))
-				currentTargets.push(node);
-			if (n->mouseChildren && node->isVisible() && node->getChildrenCount())
-			{
-				int len = node->getChildrenCount();
-				Vector<Node*>& nodes = node->getChildren();
-				for (int i = 0; i < len; i++)
-				{
-					node = nodes.at(i);
-					hitTest(node, level + 1);
-				}
-			}
-		}
-		else
-		{
-			if (!node->getName().empty() && std::hitTest(node, this))
-				currentTargets.push(node);
-			if (node->isVisible() && node->getChildrenCount())
-			{
-				int len = node->getChildrenCount();
-				Vector<Node*>& nodes = node->getChildren();
-				for (int i = 0; i < len; i++)
-				{
-					node = nodes.at(i);
-					hitTest(node, level + 1);
-				}
-			}
-		}
-	};
 	void std::MouseEvent::setCurrentTarget(Node* target)
 	{
 		cocos2d::EventMouse::setCurrentTarget(target);
 		this->target = target;
 		enode = ISTYPE(EventNode, this->target);
 	};
-	bool MouseEvent::hasNext(){
-		if (currentTargets.size() > idx){
+	bool MouseEvent::hasNext() {
+		if (currentTargets.size() > idx) {
 			setCurrentTarget(currentTargets.at(idx));
 			processed = false;
 			idx++;
@@ -764,7 +765,7 @@ namespace std
 		}
 		return -1;
 	};
-	void MouseEvent::remove(int i){
+	void MouseEvent::remove(int i) {
 		if (currentTargets.size() > i)
 			currentTargets.remove(i);
 	};
@@ -774,14 +775,14 @@ namespace std
 	{
 		std::MouseEvent  me(e);
 		Node * n = e->getCurrentTarget();
-		assert (n !=NULL);
-		EventNode * evRootNode=ISTYPE(EventNode, n);
+		assert(n != NULL);
+		EventNode * evRootNode = ISTYPE(EventNode, n);
 		assert(evRootNode != NULL);
 		//只允许一个根
-		if (useGlobalNode ) {
+		if (useGlobalNode) {
 			if (!sortGlobalNode) {
 				nodePriorityIndex = 0;
- 				evRootNode->visitTarget(NULL,n,true);
+				evRootNode->visitTarget(NULL, n, true);
 			}
 			int l = globalEventNodes.size();
 			Vec2 ep = e->getLocationInView();
@@ -791,9 +792,10 @@ namespace std
 				Node *node = ISTYPE(Node, _node);
 				//if (n == node)continue;
 				if (!node)continue;
-				if (!node->isVisible()) continue;
+				if (!std::getNodeVisible(node))
+					continue;
 				CCLOGWARN("%s", getNamePath(node).c_str());
-				if (std::hitTest(node, ep)){
+				if (std::hitTest(node, ep)) {
 					me.currentTargets.push(node);
 					//break;
 				}
@@ -813,7 +815,7 @@ namespace std
 				Node *node = ISTYPE(Node, _node);
 				//if (n == node)continue;
 				if (!node)continue;
-				if (!node->isVisible()) continue;
+				if (!std::getNodeVisible(node)) continue;
 				if (std::hitTest(node, ep)) {
 					me.currentTargets.push(node);
 					break;
@@ -846,8 +848,9 @@ namespace std
 		if (!this->mouseEnabled)
 		{
 			this->setMouseEnabled(true);
+
 		}
-		if (listen && (listener == NULL && touchOnelistener==NULL))
+		if (listen && (listener == NULL && touchOnelistener == NULL))
 		{
 			this->getEventDispatcher()->setEnabled(true);
 
@@ -867,8 +870,8 @@ namespace std
 			this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchOnelistener, this);
 		}
 	};
-	void BaseNode::disableMouseHandler(){
-		if (listener){
+	void BaseNode::disableMouseHandler() {
+		if (listener) {
 			getEventDispatcher()->removeEventListener(listener);
 			delete listener;
 			listener = NULL;
@@ -878,6 +881,8 @@ namespace std
 			delete touchOnelistener;
 			touchOnelistener = NULL;
 		}
+		this->setMouseEnabled(false);
+
 	}
 
 	void BaseNode::enableKeyHandler()
@@ -892,7 +897,8 @@ namespace std
 		if (!this->mouseEnabled)
 		{
 			this->setMouseEnabled(true);
-			this->setMouseEnabled(true);
+			if (!useNodeEvent)
+				addEventNode(this);
 		}
 		if (listener == NULL)
 		{
@@ -923,6 +929,8 @@ namespace std
 			delete touchOnelistener;
 			touchOnelistener = NULL;
 		}
+		this->setMouseEnabled(false);
+		removeEventNode(this);
 	}
 
 	void BaseLayer::enableKeyHandler()
@@ -932,40 +940,40 @@ namespace std
 		keyboardListener->onKeyReleased = CC_CALLBACK_2(BaseNode::keyBoardReleasedHandler, this);
 		getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
 	}
-	bool BaseNode::isVisible(){
+	bool BaseNode::isVisible() {
 		return getNodeVisible(this);
 	};
-	bool BaseSprite::isVisible(){
+	bool BaseSprite::isVisible() {
 		return getNodeVisible(this);
 	};
-	bool BaseLayer::isVisible(){
+	bool BaseLayer::isVisible() {
 		return getNodeVisible(this);
 	};
 
-	bool EventNode::isMouseChildren(){
+	bool EventNode::isMouseChildren() {
 		if (!this->mouseChildren)return false;
 		Node *node = ISTYPE(Node, this);
-		while (node){
+		while (node) {
 			EventNode *enode = ISTYPE(EventNode, node);
 			if (!enode->mouseChildren)return false;
 			node = ISTYPE(Node, node->getParent());
 		}
 		return true;
 	};
-	bool EventNode::isMouseEnabled(){
+	bool EventNode::isMouseEnabled() {
 		if (!this->mouseEnabled)return false;
 		Node *node = ISTYPE(Node, this);
-		while (node){
+		while (node) {
 			EventNode *enode = ISTYPE(EventNode, node);
 			if (!enode->mouseEnabled)return false;
 			node = ISTYPE(Node, node->getParent());
 		}
 		return true;
 	};
-	bool EventNode::isMouseFlag(){
+	bool EventNode::isMouseFlag() {
 		if (!this->mouseFlag)return false;
 		Node *node = ISTYPE(Node, this);
-		while (node){
+		while (node) {
 			EventNode *enode = ISTYPE(EventNode, node);
 			if (!enode->mouseFlag)return false;
 			node = ISTYPE(Node, node->getParent());
@@ -973,16 +981,26 @@ namespace std
 		return true;
 	};
 
-	void EventNode::setNodeMouse(Node * n, int type, bool v, bool setSub){
+	void EventNode::setNodeMouse(Node * n, int type, bool v, bool setSub) {
 		if (!n)
 			return;
 		EventNode *en = ISTYPE(EventNode, n);
-		if (en){
-			if (type == 1)en->mouseChildren = v;
-			else if (type == 2)en->mouseEnabled = v;
-			else if (type == 3)en->mouseFlag = v;
+		if (en) {
+			if (type == 1)
+				en->mouseChildren = v;
+			else if (type == 2) {
+				en->mouseEnabled = v;
+			}
+			else if (type == 3)
+				en->mouseFlag = v;
+			if (type == 2) {
+				if (v && !useNodeEvent)
+					addEventNode(en);
+				else
+					removeEventNode(en);
+			}
 		}
-		else if (!setSub){
+		else if (!setSub) {
 			return;
 		}
 		Vector<Node*>& chlds = n->getChildren();
@@ -991,15 +1009,18 @@ namespace std
 			setNodeMouse(ISTYPE(Node, chlds.at(i)), type, v, setSub);
 	};
 
-	void EventNode::setMouseChildren(bool v, bool setSub){
-		setNodeMouse(ISTYPE(Node, this), 1, v, setSub);
+	void EventNode::setMouseChildren(bool v, bool setSub) {
+		if (v != this->mouseChildren)
+			setNodeMouse(ISTYPE(Node, this), 1, v, setSub);
 	}
 
-	void EventNode::setMouseEnabled(bool v, bool setSub){
-		setNodeMouse(ISTYPE(Node, this), 2, v, setSub);
+	void EventNode::setMouseEnabled(bool v, bool setSub) {
+		if (v != this->mouseEnabled)
+			setNodeMouse(ISTYPE(Node, this), 2, v, setSub);
 	};
-	void EventNode::setMouseFlag(bool v, bool setSub){
-		setNodeMouse(ISTYPE(Node, this), 3, v, setSub);
+	void EventNode::setMouseFlag(bool v, bool setSub) {
+		if (v != this->mouseFlag)
+			setNodeMouse(ISTYPE(Node, this), 3, v, setSub);
 	};
 
 	void EventNode::keyBoardPressedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event)
@@ -1150,14 +1171,14 @@ namespace std
 		mevent.setMouseButton(cocos2d::EventMouse::MouseButton::BUTTON_LEFT);
 		mevent.setCursorPosition(tpos.x, tpos.y);
 		mevent.setCurrentTarget(node);
-		EventNode::beginTouchNode=node;
-		EventNode::beginTouchPos=tpos;
+		EventNode::beginTouchNode = node;
+		EventNode::beginTouchPos = tpos;
 		if (globalNode) {
-            globalNode->mouseMoveHandler(&mevent);
-            globalNode->mouseDownHandler(&mevent);
+			globalNode->mouseMoveHandler(&mevent);
+			globalNode->mouseDownHandler(&mevent);
 		}
 		else {
-            mouseMoveHandler(&mevent);
+			mouseMoveHandler(&mevent);
 			mouseDownHandler(&mevent);
 		}
 		return true;
@@ -1172,8 +1193,8 @@ namespace std
 		//logInfo("event targetNamePath", getNamePath(node));
 		event->stopPropagation();
 
-		if(EventNode::beginTouchNode && EventNode::beginTouchNode!=node){
-			if(tpos.distance(EventNode::beginTouchPos)>20){
+		if (EventNode::beginTouchNode && EventNode::beginTouchNode != node) {
+			if (tpos.distance(EventNode::beginTouchPos) > 20) {
 				MouseEvent mevent(cocos2d::EventMouse::MouseEventType::MOUSE_MOVE);
 				mevent.setMouseButton(cocos2d::EventMouse::MouseButton::BUTTON_LEFT);
 				mevent.setCursorPosition(tpos.x, tpos.y);
@@ -1184,7 +1205,7 @@ namespace std
 					mouseMoveHandler(&mevent);
 			}
 		}
-		EventNode::beginTouchNode=NULL;
+		EventNode::beginTouchNode = NULL;
 		MouseEvent mevent(cocos2d::EventMouse::MouseEventType::MOUSE_UP);
 		mevent.setMouseButton(cocos2d::EventMouse::MouseButton::BUTTON_LEFT);
 		mevent.setCursorPosition(tpos.x, tpos.y);
@@ -1203,7 +1224,7 @@ namespace std
 		Node * node = event->getCurrentTarget();
 		if (!std::hitTest(node, tpos))return;
 		Event::Type tp = event->getType();
- 		event->stopPropagation();
+		event->stopPropagation();
 		MouseEvent mevent(cocos2d::EventMouse::MouseEventType::MOUSE_MOVE);
 		mevent.setMouseButton(cocos2d::EventMouse::MouseButton::BUTTON_LEFT);
 		mevent.setCursorPosition(tpos.x, tpos.y);
@@ -1216,7 +1237,7 @@ namespace std
 	};
 
 
-	string getNamePath(Node *node){
+	string getNamePath(Node *node) {
 		if (!node)return "";
 		string name = node->getName();
 		while (node->getParent())
@@ -1226,7 +1247,7 @@ namespace std
 		}
 		return name;
 	};
-	void  getChildNodes(Common::Array<Node*> & res, Node *node){
+	void  getChildNodes(Common::Array<Node*> & res, Node *node) {
 		if (!node)return;
 		Vector<Node*>& chds = node->getChildren();
 		string nam = getNamePath(node);
@@ -1240,38 +1261,38 @@ namespace std
 				getChildNodes(res, snode);
 		}
 	};
-	Common::Array<Node*>  getChildNodes(Node *node){
+	Common::Array<Node*>  getChildNodes(Node *node) {
 		Common::Array<Node*> res;
 		getChildNodes(res, node);
 		return res;
 	};
 
-	void EventNode::printNodePos(Node *node){
+	void EventNode::printNodePos(Node *node) {
 		logInfo(node->getName() + ".isVisible", node->isVisible());
 		logInfo(node->getName() + ".position", node->getPosition());
 		logInfo(node->getName() + ".worldPos", node->convertToWorldSpace(node->getPosition()));
-		if (ISTYPE(EventNode, node)){
+		if (ISTYPE(EventNode, node)) {
 			EventNode *en = ISTYPE(EventNode, node);
 			logInfo(node->getName() + ".mouseEnabled", en->mouseEnabled);
 		}
-		if (ISTYPE(BaseNode, node)){
+		if (ISTYPE(BaseNode, node)) {
 			BaseNode *en = ISTYPE(BaseNode, node);
 			logInfo(node->getName() + ".alpha", en->getAlpha());
 		}
 	}
-	void EventNode::printNodePos(MovieClipSub *node){
+	void EventNode::printNodePos(MovieClipSub *node) {
 		logInfo(node->getName() + ".isVisible", node->isVisible());
 		logInfo(node->getName() + ".position", node->getPosition());
-		logInfo(node->getName() + ".worldPos", node->convertToWorldSpace(Vec2(0,0)));
-		if (ISTYPE(EventNode, node)){
+		logInfo(node->getName() + ".worldPos", node->convertToWorldSpace(Vec2(0, 0)));
+		if (ISTYPE(EventNode, node)) {
 			EventNode *en = ISTYPE(EventNode, node);
 			logInfo(node->getName() + ".mouseEnabled", en->mouseEnabled);
 		}
 		logInfo(node->getName() + ".alpha", node->getAlpha());
 	}
 
-	void EventNode::printChildNodes(Node *node){
-		if (!node){
+	void EventNode::printChildNodes(Node *node) {
+		if (!node) {
 			node = ISTYPE(Node, this);
 		};
 		if (!node)return;
@@ -1376,7 +1397,7 @@ namespace std
 			msg += label3 + "=" + label4;
 		if (!label5.empty() && !label6.empty())
 			msg += label5 + "=" + label6;
-		CCLOG("%s",msg.c_str());
+		CCLOG("%s", msg.c_str());
 		if (gLog)writeLog(msg, 1);
 	};
 
@@ -1683,11 +1704,11 @@ namespace std
 			if (it->second & linkFlag)
 			{
 				int flag = it->second - linkFlag;
-				if (flag == 0){
+				if (flag == 0) {
 					linkNodes.erase(node);
 					node->setUserObject(NULL);
 				}
-				else{
+				else {
 					linkNodes[node] = it->second - linkFlag;
 				}
 			}
@@ -1697,13 +1718,13 @@ namespace std
 	std::vector<EventNode *> EventNode::visitTarget(Node* node, bool isRootNode)
 	{
 		std::vector<EventNode *>res;
-		visitTarget(&res,node,isRootNode);
+		visitTarget(&res, node, isRootNode);
 		return res;
 	}
 	void EventNode::visitTarget(std::vector<EventNode *> *_res, Node* node, bool isRootNode)
 	{
 		std::vector<EventNode *> &res = *_res;
- 		int i = 0;
+		int i = 0;
 		auto& children = node->getChildren();
 		auto childrenCount = children.size();
 		EventNode * enode = ISTYPE(EventNode, node);
@@ -1714,7 +1735,7 @@ namespace std
 			for (; i < childrenCount; i++)
 			{
 				child = children.at(i);
- 				if (child->getLocalZOrder() < 0)
+				if (child->getLocalZOrder() < 0)
 					visitTarget(child, false);
 				else
 					break;

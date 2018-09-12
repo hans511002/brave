@@ -62,8 +62,8 @@ namespace std
 	inline float setText(ui::Text * tui, double val){setText(tui,(float)val);};
 	int getInt(ui::Text * tui);
 	string getText(ui::Text * tui); 
-	bool hitTest(cocos2d::Node * node, const Vec2 &pt,bool mouseEvent=true);
-	bool hitTest(cocos2d::Node * node, cocos2d::EventMouse* e);
+	bool hitTest(cocos2d::Node * node, const Vec2 &pt,bool mouseEvent=true,bool parentCheck=false);
+	bool hitTest(cocos2d::Node * node, cocos2d::EventMouse* e, bool mouseEvent = true, bool parentCheck = false);
 	void drawRange(cocos2d::Node * node, Color4F c = Color4F::RED);
 	void changeAnchorPoint(Node * node, float xy);
 	void changeAnchorPoint(Node * node, const Vec2& xy); 
@@ -90,8 +90,8 @@ namespace std
 		string nodeType;
 		virtual string getTypeName();
 		inline void setNodeType(string nt) { nodeType = nt; };
-		inline virtual bool hitTest(const Vec2 &pt) { return mouseEnabled ; };
-		inline virtual bool hitTest(cocos2d::EventMouse* event) { return   mouseEnabled; };
+		inline virtual bool hitTest(const Vec2 &pt) { return std::hitTest(ISTYPE(Node,this),pt,true,true); };
+		inline virtual bool hitTest(cocos2d::EventMouse* event) { return std::hitTest(ISTYPE(Node, this), event, true, true); };
 		bool mouseChildren;
 		bool mouseEnabled;
 		bool mouseFlag;
@@ -323,7 +323,7 @@ namespace std
 		virtual void setWidth(float w);
 		virtual void setHeight(float h);
 		inline virtual bool hitTest(const Vec2 &pt) { return std::hitTest(this, pt); };
-		inline virtual bool hitTest(cocos2d::EventMouse* event) { return std::hitTest(this, event); };
+		//inline virtual bool hitTest(cocos2d::EventMouse* event) { return std::hitTest(this, event->getLocationInView()); };
 		virtual void onEnter();
 		virtual void onExit();
 		virtual void drawRange();
@@ -343,7 +343,7 @@ namespace std
 		cocos2d::EventListenerTouchOneByOne * touchOnelistener;
 		BaseLayer();
 		inline virtual bool hitTest(const Vec2 &pt) { return std::hitTest(this, pt); };
-		inline virtual bool hitTest(cocos2d::EventMouse* event) { return std::hitTest(this, event); };
+		//inline virtual bool hitTest(cocos2d::EventMouse* event) { return std::hitTest(this, event); };
 
 		virtual bool init();
 		virtual void onEnter();

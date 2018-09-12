@@ -124,7 +124,7 @@ namespace engine
 			} 
             BaseNode * node = new BaseNode(sec.w, sec.h, true);
             node->setPosition(sec.x, sec.y);
-            node->mouseEnabled = true;
+            node->setMouseEnabled(true);
             this->addChild(node);
 			node->enableMouseHandler(useNodeEvent);
             node->setName("road");

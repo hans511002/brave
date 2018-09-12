@@ -246,7 +246,7 @@ namespace engine
 			Vec2 pos = CONVERT_TO_WORLD_POS(pointer->display->convertToWorldSpace(pointer->getPosition()));
 			pointer->display->removeChild(pointer,false);
 			//this->world->level->removeChild(pointer);
-			this->world->addChild(pointer,3);
+			this->world->addChild(pointer,5);
 			pointer->setPosition(pos);
 			//pointer->pointerCase->enableMouseHandler(useNodeEvent);
 			//this->world->adIndexes(this->world->pointer1,3); 

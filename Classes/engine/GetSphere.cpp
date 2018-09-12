@@ -87,34 +87,28 @@ namespace engine {
             if (this->world->towerMenu->container->btnUpgradeMenu) {
                 if (this->world->towerMenu->container->btnUpgradeMenuBtnUpgradeMenuCase->isReady) {
                     if (this->world->towerMenu->container->btnUpgradeMenuBtnUpgradeMenuCase->mouseEnabled) {
-                        this->world->towerMenu->container->btnUpgradeMenuBtnUpgradeMenuCase->setMouseEnabled(
-                                false);
+                        this->world->towerMenu->container->btnUpgradeMenuBtnUpgradeMenuCase->setMouseEnabled(false);
                     }
                 }
             } else {
                 if (this->world->towerMenu->container->btnTowerUpgr1) {
-                    this->world->towerMenu->container->btnTowerUpgr1BtnTowerUpgrCase->setMouseEnabled(
-                            false);
+                    this->world->towerMenu->container->btnTowerUpgr1BtnTowerUpgrCase->setMouseEnabled(false);
                 }
                 if (this->world->towerMenu->container->btnTowerUpgr2) {
-                    this->world->towerMenu->container->btnTowerUpgr2BtnTowerUpgrCase->setMouseEnabled(
-                            false);
+                    this->world->towerMenu->container->btnTowerUpgr2BtnTowerUpgrCase->setMouseEnabled(false);
                 }
                 if (this->world->towerMenu->container->btnTowerUpgr3) {
-                    this->world->towerMenu->container->btnTowerUpgr3BtnTowerUpgrCase->setMouseEnabled(
-                            false);
+                    this->world->towerMenu->container->btnTowerUpgr3BtnTowerUpgrCase->setMouseEnabled(false);
                 }
                 if (this->world->towerMenu->container->btnTowerUpgr4) {
-                    this->world->towerMenu->container->btnTowerUpgr4BtnTowerUpgrCase->setMouseEnabled(
-                            false);
+                    this->world->towerMenu->container->btnTowerUpgr4BtnTowerUpgrCase->setMouseEnabled(false);
                 }
             }
         } else if (this->world->ultraTowerMenu) {
             if (this->world->ultraTowerMenu->container->btnUpgradeMenu) {
                 if (this->world->ultraTowerMenu->container->btnUpgradeMenuBtnUpgradeMenuCase->isReady) {
                     if (this->world->ultraTowerMenu->container->btnUpgradeMenuBtnUpgradeMenuCase->mouseEnabled) {
-                        this->world->ultraTowerMenu->container->btnUpgradeMenuBtnUpgradeMenuCase->setMouseEnabled(
-                                false);
+                        this->world->ultraTowerMenu->container->btnUpgradeMenuBtnUpgradeMenuCase->setMouseEnabled(false);
                     }
                 }
             }
