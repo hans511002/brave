@@ -13,8 +13,9 @@ namespace std
 		string dbName;
 		int state;
 		DbFile(string ske = "", string tex = "", string dbName = "") :state(0), ske(ske), tex(tex), dbName(dbName){};
+        DbFile(const DbFile & db);
 	};
-	typedef map<string, DbFile*> DbFileMap; 
+	typedef std::map<string, DbFile*> DbFileMap;
 	class DbPreload : public Ref
     {
 	public:
@@ -23,7 +24,7 @@ namespace std
 		bool _startSch;
 
         Common::Array<string> preLoadDirs;
-		Common::Array<DbFile *> loadDbFiles;
+		Common::Array<DbFile*> loadDbFiles;
 		//DbFileMap loadPathMap;
 		DbFileMap dbNameMap;
         bool running;

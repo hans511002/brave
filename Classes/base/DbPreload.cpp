@@ -3,7 +3,12 @@
 namespace std
 {
 	mutex DbPreload::dbloadMutex;
-
+    DbFile::DbFile(const DbFile & db){
+        this->dbName=db.dbName;
+        this->ske=db.ske;
+        this->tex=db.tex;
+        this->state=db.state;
+    };
 	DbPreload::DbPreload(const string & dir, bool autoStart) : running(true), thr(NULL), autoClose(true), autoStart(autoStart), loadSkeNum(0), loadTexNum(0), _startSch(false)
     {
         thr = new std::thread(&DbPreload::run, this);
@@ -57,12 +62,12 @@ namespace std
 			PMutex m(&this->m);
 			for (int i = 0; i < dbs.size(); i++)
 			{
-				DbFile & dbf = dbs.at(i);
+				DbFile dbf = dbs.at(i);
 				if (this->dbNameMap.find(dbf.dbName) == this->dbNameMap.end())
 				{
-					DbFile *dbp = new DbFile(dbf);
-					loadDbFiles.push(dbp);
- 					this->dbNameMap.insert(DbFileMap::value_type(dbName, dbp));
+                    DbFile *dbp =new DbFile(dbf);
+                    loadDbFiles.push(dbp);
+                    this->dbNameMap.insert(DbFileMap::value_type(dbf.dbName, dbp));
 					if (thr == NULL) {
 						autoStart = true;
 						thr = new std::thread(&DbPreload::run, this);
@@ -84,9 +89,10 @@ namespace std
 		PMutex m(&this->m);
 		if (this->dbNameMap.find(dbf.dbName) == this->dbNameMap.end())
 		{
-			DbFile *dbp = new DbFile(dbf);
-			loadDbFiles.push(dbp); 
-			this->dbNameMap.insert(DbFileMap::value_type(dbf.dbName, dbp));
+            DbFile *dbp =new DbFile(dbf);
+            loadDbFiles.push(dbp);
+            //this->dbNameMap.insert(DbFileMap::value_type(dbf.dbName, dbp)); 
+            this->dbNameMap[dbf.dbName]=dbp;
 			if (thr == NULL) {
 				autoStart = true;
 				thr = new std::thread(&DbPreload::run, this);
@@ -100,9 +106,9 @@ namespace std
 			const DbFile & dbf = dbs.at(i);
 			if (this->dbNameMap.find(dbf.dbName) == this->dbNameMap.end())
 			{
-				DbFile *dbp = new DbFile(dbf);
-				loadDbFiles.push(dbp);
-				this->dbNameMap.insert(DbFileMap::value_type(dbf.dbName, dbp));
+                DbFile *dbp =new DbFile(dbf);
+                loadDbFiles.push(dbp);
+                this->dbNameMap.insert(DbFileMap::value_type(dbf.dbName, dbp));
 				if (thr == NULL) {
 					autoStart = true;
 					thr = new std::thread(&DbPreload::run, this);
@@ -128,6 +134,14 @@ namespace std
                 thr->join();
 			thr = NULL;
 		}
+        this->dbNameMap.clear();
+        int len = loadDbFiles.size();
+        for (int i = 0; i < len; i++)
+        {
+            DbFile * db = loadDbFiles.at(i);
+            delete db;
+        }
+        this->loadDbFiles.clear();
 	}
     void DbPreload::close() {
         running = false;
@@ -295,14 +309,14 @@ namespace std
 		int i = 0;
 		while (i < loadDbFiles.size())
 		{
-			DbFile * db = loadDbFiles.at(i);
-			int state=this->dbNameMap[db->dbName]->state;
+			DbFile & db = *loadDbFiles.at(i);
+			int state=this->dbNameMap[db.dbName]->state;
 			if (!(state & 2)){
 				//PMutex loadm(&dbloadMutex);
-				factory->loadTextureAtlasData(db->tex, db->dbName);
+				factory->loadTextureAtlasData(db.tex, db.dbName);
 				//loadm.unlock();
 				PMutex m(&this->m);
-				this->dbNameMap[db->dbName]->state |= 2;
+				this->dbNameMap[db.dbName]->state |= 2;
 				loadTexNum++;
 			}
 			i++;
@@ -319,6 +333,8 @@ namespace std
 		if (!preLoadDirs.empty()) {
 			l += 10;
 		}
+        if(l==0)
+            return 1;
         return d/l;
     };
 }

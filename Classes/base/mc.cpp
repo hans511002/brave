@@ -1017,10 +1017,10 @@ namespace engine
 	
     Vec2 MovieClipSub::convertToWorldSpace(const Vec2 & pos)
     {
-        if(this->isReady && this->display)
+        if(this->isReady && this->display && this->display->getParent())
             return this->display->getParent()->convertToWorldSpace(pos);
         else
-            return Vec2(-1, -1);
+            return Vec2(0, 0);
     }
     Vec2 MovieClipSub::localToGlobal(const Vec2 &  pos)
     {
@@ -1072,9 +1072,18 @@ namespace engine
 			this->reinit();
 		Node * sp = (Node *)this->slot->getDisplay();
 		if (sp)
+		{
+			if (sp != this->display)
+			{
+				this->display = sp; 
+				this->container = ISTYPE(CCArmatureDisplay, display);
+			}
 			return sp->getPosition();
+		}
 		else
-			return Vec2(0,0);
+		{
+			return Vec2(0, 0);
+		}
 		Node * parent = sp->getParent();
 		Vec2 p = sp->getPosition();
 		p = parent->convertToWorldSpace(sp->getPosition());

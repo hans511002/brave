@@ -31,7 +31,8 @@ namespace std
 				musicOn =true;
             }else if(onoff=="off"){
 				musicOn =false;
-                stopMusic();
+                if(isPlayMusic())
+					stopMusic();
             }            
         };
 		void AudioUtil::soundManage(const string & onoff)
@@ -41,7 +42,8 @@ namespace std
 			}
 			else if (onoff == "off") {
 				soundOn = false;
-				stopAllEffects();
+				if (isPlayMusic())
+					stopAllEffects();
 			}
 		};
 
@@ -51,10 +53,12 @@ namespace std
             audioengine->preloadBackgroundMusic(getAudioPath(file).c_str());
         };
         void AudioUtil::playMusic(const char * file,bool loop){
+            if(!AudioUtil::musicOn)return;
             auto audioengine = SimpleAudioEngine::getInstance();
             audioengine->playBackgroundMusic(getAudioPath(file).c_str(),loop);
         };
         void AudioUtil::stopMusic(bool releaseData){
+            if(!AudioUtil::musicOn)return;
             auto audioengine = SimpleAudioEngine::getInstance();
             audioengine->stopBackgroundMusic(releaseData);
         };
@@ -82,6 +86,7 @@ namespace std
         }
         unsigned int AudioUtil::playSoundWithVol(const char * file,float vol,bool loop)
         {
+            if(!AudioUtil::soundOn)return 0;
             auto audioengine = SimpleAudioEngine::getInstance();
 			unsigned int sid=audioengine->playEffect(getAudioPath(file).c_str(),loop,1.0f,0.0f,std::abs(vol));
             if(vol>=0)

@@ -59,15 +59,17 @@ bool Main::init()
     this->saveBoxClass = new SaveBox();
 	this->saveBoxClass->playLevel = 1;
     //this->readXMLClass = new ReadXML();//不使用指针,使用对象
-    AudioUtil::setAudioDir("sound");
-    AudioUtil::stopAll();
     //this->tracker = new GATracker(this, "UA-63231445-3", "AS3", false);
     //this->tracker.trackPageview("openGame");
 	this->enableKeyHandler();
     //this->enableMouseHandler();//world及screen中监听
     addPreloadDB();
     preload.start();
-    preloadSound();
+    AudioUtil::setAudioDir("sound");
+//    AudioUtil::stopAll();
+    AudioUtil::musicManage("off");
+    AudioUtil::soundManage("off");
+//    preloadSound();
     return true;
 }// end function
 
@@ -105,12 +107,12 @@ void Main::addNewScreen(const string & param1)
     }
     else
     {
-        if (this->container)
-        {
-            //this->bmp = new Bitmap(this->getBitmapData(this->container));
-            //this->addChild(Main.mainClass.bmp);
-            this->container->setVisible(false);
-        }
+//        if (this->container)
+//        {
+//            //this->bmp = new Bitmap(this->getBitmapData(this->container));
+//            //this->addChild(Main.mainClass.bmp);
+//            this->container->setVisible(false);
+//        }
         this->middleScreenClass = new MiddleScreen(param1);
         this->addChild(this->middleScreenClass);
     }
@@ -161,8 +163,6 @@ cocos2d::Image * Main::getBitmapData(cocos2d::Node* param1) //: BitmapData
 }// end function
 void Main::addStartLogo()
 {
-
-
     addNewScreen("World");
     //this->container = new StartMenu();
 	//this->startMenuClass = new StartMenu();
@@ -352,6 +352,8 @@ void Main::addPreloadDB(){
 //    preload.addPreLoadDir("tower");
 //    preload.addPreLoadDir("screen");
     string fileType="json";
+    preload.addPreLoadArm("screen/MiddleScreenCentr_mc","MiddleScreenCentr_mc", fileType);
+    preload.addPreLoadArm("screen/MiddleScreen_mc","MiddleScreen_mc", fileType);
     preload.addPreLoadArm("cast/Air_mc","Air_mc", fileType);
     preload.addPreLoadArm("cast/BlowIce_mc","BlowIce_mc", fileType);
     preload.addPreLoadArm("cast/DeathAit_mc","DeathAit_mc", fileType);
@@ -369,8 +371,6 @@ void Main::addPreloadDB(){
     preload.addPreLoadArm("cast/MoveAir_mc","MoveAir_mc", fileType);
     preload.addPreLoadArm("cast/MoveGolem_mc","MoveGolem_mc", fileType);
     preload.addPreLoadArm("cast/MoveIceman_mc","MoveIceman_mc", fileType);
-    preload.addPreLoadArm("screen/MiddleScreenCentr_mc","MiddleScreenCentr_mc", fileType);
-    preload.addPreLoadArm("screen/MiddleScreen_mc","MiddleScreen_mc", fileType);
     preload.addPreLoadArm("sphere/BulletSphereTower_mc","BulletSphereTower_mc", fileType);
     preload.addPreLoadArm("sphere/BulletTower51_1_mc","BulletTower51_1_mc", fileType);
     preload.addPreLoadArm("sphere/BulletTower51_2_mc","BulletTower51_2_mc", fileType);

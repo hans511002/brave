@@ -46,6 +46,7 @@ namespace screens
 
     bool MiddleScreen::init()
     {
+        BaseNode::init();
         //this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
         //this->addEventListener(Event.REMOVED_FROM_STAGE, this->reInit);
         //this->addEventListener(Event.ENTER_FRAME, this->enterFrameHandler);
@@ -55,38 +56,32 @@ namespace screens
         }
         //this->stage.frameRate = 60;
         this->container = new MiddleScreen_mc();
+        this->addChild(this->container);
 		this->container->setPosition(Vec2(-Main::SCREEN_WIDTH_OUT_LEFT, -Main::SCREEN_HEIGHT_OUT_DOWN));
 
 		this->container->stop();
         this->container->leftUp->stop();
         this->container->rightUp->stop();
         this->container->leftDown->stop();
-        this->container->rightDown->stop(); 
-//		this->container->leftUp->setPosition(this->container->convertToNodeSpaceAR(this->container->leftUp->convertToWorldSpace(Vec2(0, 0))));
-//		this->container->leftDown->setPosition(this->container->convertToNodeSpaceAR(this->container->leftDown->convertToWorldSpace(Vec2(0, 0))));
-//		this->container->rightUp->setPosition(this->container->convertToNodeSpaceAR(this->container->rightUp->convertToWorldSpace(Vec2(0, 0))));
-//		this->container->rightDown->setPosition(this->container->convertToNodeSpaceAR(this->container->rightDown->convertToWorldSpace(Vec2(0, 0))));
-		
-		
+        this->container->rightDown->stop();
+        Vec2 lupos=this->container->leftUp->convertToWorldSpace(this->container->leftUp->getPosition());
+        lupos=this->container->convertToNodeSpaceAR(lupos);
+		this->container->leftUp->setPosition(lupos);
+		this->container->leftDown->setPosition(this->container->convertToNodeSpaceAR(this->container->leftDown->convertToWorldSpace(this->container->leftDown->getPosition())));
+		this->container->rightUp->setPosition(this->container->convertToNodeSpaceAR(this->container->rightUp->convertToWorldSpace(this->container->rightUp->getPosition())));
+		this->container->rightDown->setPosition(this->container->convertToNodeSpaceAR(this->container->rightDown->convertToWorldSpace(this->container->rightDown->getPosition())));
 
-		//logInfo("container->leftUp", this->container->leftUp->display->getParent()->getPosition());
-		//logInfo("container->leftUp", this->container->leftUp->display->getParent()->getParent()->getPosition());
-
-		//logInfo("container->rightUp", this->container->rightUp->convertToWorldSpace(Vec2(0, 0)));
-		//
 		//this->container->leftUp->setPosition(0, Main::SCREEN_HEIGHT);
 		//this->container->leftDown->setPosition(0, 0);
-		//this->container->rightUp->setPosition(Main::SCREEN_WIDTH, Main::SCREEN_HEIGHT);
+		//this->container->rightUp->setPosition(Main::LEVEL_MAP_WIDTH, Main::LEVEL_MAP_HEIGHT);
 		//this->container->rightDown->setPosition(Main::SCREEN_WIDTH, 0);
         this->container->setScale(1.0f);
 		//this->container->setPosition(400, 300);
-        this->addChild(this->container);
         if (this->openScreenName == "World" || Main::mainClass->worldClass)
         {
-            AudioUtil::stopAll();
+            //AudioUtil::stopAll();
         }
         AudioUtil::playSoundWithVol("Snd_middleScreen.mp3", 0.95f);
-        BaseNode::init();
         return true;
     }// end function
 
@@ -169,11 +164,11 @@ namespace screens
 				this->middleRound->setPositionX(Main::SCREEN_WIDTH_HALF);
 				this->middleRound->setPositionY(Main::SCREEN_HEIGHT_HALF); 
 				this->addChild(this->middleRound);
-			 
                 Main::mainClass->removeAllScreens();
                 Main::mainClass->addNewScreen(this->openScreenName);
                 Main::mainClass->container->manageListeners("off");
             }
+            //this->middleRound->tryPlay();
 			if (this->frameCounter == 16 && Main::mainClass->preload.getProgress() < 1) {
 				this->frameCounter--;
 				Main::mainClass->preload.setAutoClose();
@@ -189,7 +184,7 @@ namespace screens
 				this->middleRound->gotoAndStop((this->middleRound->currentFrame + 1));
 				this->middleRound->setRotation(this->middleRound->getRotation() + 15);
             }
-            else
+            if(this->frameCounter == 22)
             {
                 this->container->leftUp->gotoAndStop(2);
 				this->container->leftDown->gotoAndStop(2);

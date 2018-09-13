@@ -14,8 +14,8 @@ namespace engine
 		Air_mc::Air_mc() : MovieClip("cast/", "Air_mc", "Air_mc"), cont(0), dust1(0), dust2(0), contBlowing(0)
 		{
 			SET_NODETYPENAME();
- 			cont = this->createMovieClipSub("cont");
-			contBlowing = cont->createMovieClipSub("blowing");
+ 			cont = this->createMovieClipSub("cont",true);
+			contBlowing = cont->createMovieClipSub("blowing", true);
 			dust1 = this->createMovieClipSub("dust1");
 			dust2 = this->createMovieClipSub("dust2");
 		};
