@@ -133,6 +133,10 @@ namespace std
                 thr->join();
 			thr = NULL;
 		}
+		while (getProgress()<1)
+		{
+			SLEEP(100);
+		}
         this->dbNameMap.clear();
         int len = loadDbFiles.size();
         for (int i = 0; i < len; i++)
@@ -234,6 +238,7 @@ namespace std
             } 
         }
 		running = false;
+		SLEEP(100); 
 		thr = NULL;
     };
 
@@ -307,7 +312,7 @@ namespace std
 		const auto factory = dragonBones::CCFactory::getFactory();
 		int i = 0;
         int _loadTexNum=loadTexNum;
-		while (i < loadDbFiles.size())
+		while (i < loadDbFiles.size() && i< loadSkeNum)
 		{
 			DbFile & db = *loadDbFiles.at(i);
 			int state=this->dbNameMap[db.dbName]->state;
@@ -318,7 +323,7 @@ namespace std
 				PMutex m(&this->m);
 				this->dbNameMap[db.dbName]->state |= 2;
 				loadTexNum++;
-                if(loadTexNum-_loadTexNum>5)//释放主线程 用于更新进度条
+                if(loadTexNum-_loadTexNum>50)//释放主线程 用于更新进度条
                     break;
 			}
 			i++;

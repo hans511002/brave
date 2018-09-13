@@ -170,8 +170,7 @@ namespace screens
             }
             //this->middleRound->tryPlay();
 			if (this->frameCounter == 16 && Main::mainClass->preload.getProgress() < 1) {
-				this->frameCounter--;
-				Main::mainClass->preload.setAutoClose();
+				this->frameCounter--; 
 				if (!Main::mainClass->preload.isStartSch())
 					Main::mainClass->preload.startSch();
 				return;

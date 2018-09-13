@@ -64,7 +64,7 @@ bool Main::init()
 	this->enableKeyHandler();
     //this->enableMouseHandler();//world及screen中监听
     addPreloadDB();
-    preload.start();
+    //
     AudioUtil::setAudioDir("sound");
     //    AudioUtil::stopAll();
 //    AudioUtil::musicManage("off");
@@ -115,6 +115,7 @@ void Main::addNewScreen(const string & param1)
 //        }
         this->middleScreenClass = new MiddleScreen(param1);
         this->addChild(this->middleScreenClass);
+		preload.start();
     }
     return;
 }// end function
@@ -352,8 +353,6 @@ void Main::addPreloadDB(){
 //    preload.addPreLoadDir("tower");
 //    preload.addPreLoadDir("screen");
     string fileType="json";
-    preload.addPreLoadArm("screen/MiddleScreenCentr_mc","MiddleScreenCentr_mc", fileType);
-    preload.addPreLoadArm("screen/MiddleScreen_mc","MiddleScreen_mc", fileType);
     preload.addPreLoadArm("cast/Air_mc","Air_mc", fileType);
     preload.addPreLoadArm("cast/BlowIce_mc","BlowIce_mc", fileType);
     preload.addPreLoadArm("cast/DeathAit_mc","DeathAit_mc", fileType);
@@ -498,6 +497,8 @@ void Main::addPreloadDB(){
     preload.addPreLoadArm("worldinterface/worldLive_mc","worldLive_mc", fileType);
     preload.addPreLoadArm("worldinterface/worldSphere_mc","worldSphere_mc", fileType);
     preload.addPreLoadArm("worldinterface/worldStart_mc","worldStart_mc", fileType);
+	preload.addPreLoadArm("screen/MiddleScreenCentr_mc", "MiddleScreenCentr_mc", fileType);
+	preload.addPreLoadArm("screen/MiddleScreen_mc", "MiddleScreen_mc", fileType);
 
 }
 
