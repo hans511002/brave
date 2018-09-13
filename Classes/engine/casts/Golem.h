@@ -53,6 +53,8 @@ namespace engine{
             float cameraXOffset;// : Number;
             float cameraYOffset;// : Number;
 
+			Vec2 movePos;
+
             Golem(cocos2d::Point param1, int param2, int param3, bool param4 = true);
 
 			virtual bool init();

@@ -48,6 +48,8 @@ namespace engine
 		int castGolemTimer;////public var castGolemTimer:int;
 		int castIcemanTimer;////public var castIcemanTimer:int;
 		int castAirTimer;////public var castAirTimer:int;
+		
+		Vec2 savePos;
 
 		WorldInterface();
 		CREATE_FUNC(WorldInterface);

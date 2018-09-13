@@ -305,6 +305,8 @@ namespace engine {
 		{
 			this->directionManage();
 			Air * air = NULL;
+			if (this->direction.empty())
+				this->direction = "left";
 			if (tempObject3.x >= 0)
 			{
 				air = new Air(tempObject3, this->direction);

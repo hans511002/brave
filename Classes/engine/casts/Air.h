@@ -50,6 +50,8 @@ namespace engine
 			float cameraXOffset;//:Number;
 			float cameraYOffset;//:Number;
 
+			Vec2 movePos;
+		
 			Air(cocos2d::Point param1, string param2 = "none");
 
 			virtual bool init();

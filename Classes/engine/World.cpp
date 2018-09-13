@@ -750,6 +750,7 @@ namespace engine
 					    Vec2 moveOffset=endPos-stpos;
 					    stpos = this->worldInterface->getPosition();
                         this->worldInterface->setPosition(stpos-moveOffset);
+						this->worldInterface->savePos = this->worldInterface->getPosition();
 					}
 				}
 			}

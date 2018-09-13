@@ -67,7 +67,7 @@ namespace engine
 			, cameraXOffset(0)
 			, cameraYOffset(0)
 		{
-			//	this->cameraJitterCounter = this->cameraJitterTimer;
+			this->cameraJitterCounter = this->cameraJitterTimer;
 			//	this->addEventListener(Event.ADDED_TO_STAGE, this->init);
 			this->this_pt = param1;
 			this->direction = param2;
@@ -219,9 +219,10 @@ namespace engine
 					{
 						if (this->cameraJitterCounter == 0)
 						{
-							this->cameraJitterCounter = -1;
-							this->world->setPosition(this->world->savePos); 
-							this->world->worldInterface->setPosition(Vec2(0, 0)); 
+							this->cameraJitterCounter = -1; 
+							this->world->setPosition(this->world->savePos - movePos);
+							this->world->worldInterface->setPosition(this->world->worldInterface->savePos + movePos);
+							this->movePos = Vec2(0, 0);
 							this->openFlag = false;
 							//this->world->decoration->earthquakeFlag = true;
 							this->shoot_pt = CONVERT_TO_WORLD_POS(this->container->cont->convertToWorldSpace(this->container->cont->getPosition()));
@@ -241,15 +242,14 @@ namespace engine
 						{
 							this->cameraYOffset = -this->cameraYOffset;
 						}
-						this->world->setPosition(Vec2(this->world->getPositionX() + this->cameraXOffset, this->world->getPositionY() + this->cameraYOffset));
+						Vec2 of(this->cameraXOffset, this->cameraYOffset);
+						this->world->setPosition(this->world->getPosition() + of);
 						//this->world->x = this->world->x + this->cameraXOffset;
 						//this->world->y = this->world->y + this->cameraYOffset;
-						//cocos2d::Point tempObject = this->world->convertToWorldSpace(cocos2d::Point(0, 0)));
+						//cocos2d::Point tempObject = this->world->convertToWorldSpace(cocos2d::Point(0, 0));
 						//this->tempObject = Main::mainClass->worldClass->globalToLocal(new Point(0, 0));
-						this->world->worldInterface->setPosition(Vec2(this->cameraXOffset,this->cameraYOffset));
-						//this->world->worldInterface.x = this->tempObject.x;
-						//this->world->worldInterface.y = this->tempObject.y;
-
+						this->world->worldInterface->setPosition(this->world->worldInterface->getPosition() - of);
+						this->movePos += of;
 						//this->world->hint.x = this->world->hint.x + this->tempObject.x;
 						//this->world->hint.y = this->world->hint.y + this->tempObject.y;
 					}
@@ -488,9 +488,10 @@ namespace engine
 			if (!this->dead)
 			{
 				this->dead = true;
-				this->world->removeClasses(this);
-				this->world->setPosition(this->world->savePos); 
-				this->world->worldInterface->setPosition(Vec2(0, 0)); 
+				this->world->removeClasses(this); 
+				this->world->setPosition(this->world->savePos - movePos);
+				this->world->worldInterface->setPosition(this->world->worldInterface->savePos + movePos);
+				this->movePos = Vec2(0, 0);
 				if (this->world->selectObject == this) {
 					this->world->selectObject = NULL;
 				}
