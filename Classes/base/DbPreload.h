@@ -26,7 +26,7 @@ namespace std
         Common::Array<string> preLoadDirs;
 		Common::Array<DbFile*> loadDbFiles;
 		//DbFileMap loadPathMap;
-		DbFileMap dbNameMap;
+        std::map<std::string, DbFile*> dbNameMap;
         bool running;
         bool autoClose;
         bool autoStart;

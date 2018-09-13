@@ -91,8 +91,7 @@ namespace std
 		{
             DbFile *dbp =new DbFile(dbf);
             loadDbFiles.push(dbp);
-            //this->dbNameMap.insert(DbFileMap::value_type(dbf.dbName, dbp)); 
-            this->dbNameMap[dbf.dbName]=dbp;
+            this->dbNameMap.insert(DbFileMap::value_type(dbf.dbName, dbp));
 			if (thr == NULL) {
 				autoStart = true;
 				thr = new std::thread(&DbPreload::run, this);
