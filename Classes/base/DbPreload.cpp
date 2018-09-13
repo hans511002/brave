@@ -306,6 +306,7 @@ namespace std
 	void DbPreload::addImageAsyncCallBack(float dt){
 		const auto factory = dragonBones::CCFactory::getFactory();
 		int i = 0;
+        int _loadTexNum=loadTexNum;
 		while (i < loadDbFiles.size())
 		{
 			DbFile & db = *loadDbFiles.at(i);
@@ -317,6 +318,8 @@ namespace std
 				PMutex m(&this->m);
 				this->dbNameMap[db.dbName]->state |= 2;
 				loadTexNum++;
+                if(loadTexNum-_loadTexNum>5)//释放主线程 用于更新进度条
+                    break;
 			}
 			i++;
 		}
