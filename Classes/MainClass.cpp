@@ -65,11 +65,11 @@ bool Main::init()
     //this->enableMouseHandler();//world及screen中监听
     addPreloadDB();
     preload.start();
-//    AudioUtil::setAudioDir("sound");
-////    AudioUtil::stopAll();
+    AudioUtil::setAudioDir("sound");
+    //    AudioUtil::stopAll();
 //    AudioUtil::musicManage("off");
 //    AudioUtil::soundManage("off");
-//    preloadSound();
+    preloadSound();
     return true;
 }// end function
 
