@@ -10,6 +10,7 @@ namespace std
 		bool AudioUtil::soundOn = true; 
 		bool AudioUtil::musicOn =true;  
         string AudioUtil::audioDir;
+        string AudioUtil::nowMusic;
         map<string,unsigned int> AudioUtil::soundEffect;
             
         string AudioUtil::getAudioPath(const char * file){
@@ -54,6 +55,7 @@ namespace std
         };
         void AudioUtil::playMusic(const char * file,bool loop){
             if(!AudioUtil::musicOn)return;
+            AudioUtil::nowMusic=file;
             auto audioengine = SimpleAudioEngine::getInstance();
             audioengine->playBackgroundMusic(getAudioPath(file).c_str(),loop);
         };

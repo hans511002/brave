@@ -9,6 +9,7 @@ namespace std
         extern bool soundOn;
 		extern bool musicOn;
 		extern string audioDir;
+		extern string nowMusic;
 		extern map<string,unsigned int> soundEffect;
         
         string getAudioPath(const char * file);

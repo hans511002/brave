@@ -86,22 +86,16 @@ namespace screens
             this->container->freeStars->setVisible(false);
         }
         this->addChild(this->container);
-        //if (Sounds.instance.musicOn)
-        //{
-        //    this->container->btnMusic->gotoAndStop(1);
-        //}
-        //else
-        //{
-        //    this->container->btnMusic->gotoAndStop(4);
-        //}
-        //if (Sounds.instance.soundOn)
-        //{
-        //    this->container->btnSound->gotoAndStop(1);
-        //}
-        //else
-        //{
-        //    this->container->btnSound->gotoAndStop(4);
-        //}
+        if (AudioUtil::musicOn) 
+            this->container->btnMusic->gotoAndStop(1);
+        else 
+            this->container->btnMusic->gotoAndStop(4);
+        
+        if (AudioUtil::soundOn) 
+            this->container->btnSound->gotoAndStop(1); 
+        else 
+            this->container->btnSound->gotoAndStop(4);
+        
         if (!Main::mainClass->saveBoxClass->getBoolValue("difficultyLevel"))
         {
             this->container->setMouseChildren(false);
@@ -144,10 +138,8 @@ namespace screens
                 else
                 {
                     this->firstMusicPlay = true;
-                    //if (Sounds.instance.nowMusic != 0)
-                    //{
-                    //    Sounds.instance.playMusic(0);
-                    //}
+                    if (AudioUtil::nowMusic != "Music_menu_main.mp3") 
+                        AudioUtil::playMusic("Music_menu_main.mp3"); 
                 }
             }
         }
@@ -155,7 +147,7 @@ namespace screens
         {
             if (this->container->freeStars->currentFrame < this->container->freeStars->totalFrames)
             {
-                this->container->freeStars->gotoAndStop((this->container->freeStars->currentFrame + 1));
+                this->container->freeStars->tryPlay();//gotoAndStop((this->container->freeStars->currentFrame + 1));
             }
             else
             {
@@ -163,7 +155,7 @@ namespace screens
             }
             if (this->container->freeStars->cont->currentFrame < this->container->freeStars->cont->totalFrames)
             {
-                this->container->freeStars->cont->gotoAndStop((this->container->freeStars->cont->currentFrame + 1));
+                this->container->freeStars->cont->tryPlay();//gotoAndStop((this->container->freeStars->cont->currentFrame + 1));
             }
             else
             {
@@ -186,7 +178,7 @@ namespace screens
             {
                 if (this->container->upgrades->currentFrame < (this->container->upgrades->totalFrames - 1))
                 {
-                    this->container->upgrades->gotoAndStop((this->container->upgrades->currentFrame + 1));
+                    this->container->upgrades->tryPlay();//gotoAndStop((this->container->upgrades->currentFrame + 1));
                 }
             }
             else if (this->container->upgrades->currentFrame > 1)
@@ -197,14 +189,14 @@ namespace screens
                 }
                 else
                 {
-                    this->container->upgrades->gotoAndStop((this->container->upgrades->currentFrame - 1));
+                    this->container->upgrades->tryPlay();//gotoAndStop((this->container->upgrades->currentFrame - 1));
                 }
             }
-            if (this->container->upgrades->fireCont)
+            if (this->container->upgrades->fireCont->isReady)
             {
                 if (this->container->upgrades->fireCont->currentFrame < this->container->upgrades->fireCont->totalFrames)
                 {
-                    this->container->upgrades->fireCont->gotoAndStop((this->container->upgrades->fireCont->currentFrame + 1));
+                    this->container->upgrades->fireCont->tryPlay();//gotoAndStop((this->container->upgrades->fireCont->currentFrame + 1));
                 }
                 else
                 {
@@ -247,7 +239,7 @@ namespace screens
             {
                 if (this->listOfAnimation[this->i]->currentFrame < this->listOfAnimation[this->i]->totalFrames)
                 {
-                    this->listOfAnimation[this->i]->gotoAndStop((this->listOfAnimation[this->i]->currentFrame + 1));
+                    this->listOfAnimation[this->i]->tryPlay();//gotoAndStop((this->listOfAnimation[this->i]->currentFrame + 1));
                 }
                 else
                 {
@@ -427,7 +419,7 @@ namespace screens
         string targetName = event->target->getName();
         if (this->mouseDownTarget)
         {
-            this->mouseDownTarget = null;
+            this->mouseDownTarget = NULL;
         }
         if (targetName == "musicCase")
         {
@@ -516,7 +508,7 @@ namespace screens
                 {
                     this->container->btnMusic->gotoAndStop(2);
                     AudioUtil::musicManage("on");
-                    AudioUtil::playMusic(0f);
+                    AudioUtil::playMusic("Music_menu_main.mp3");
                 }
             }
         }
@@ -558,8 +550,8 @@ namespace screens
         }
         if (targetName == "upgradesCase1" || targetName == "upgradesCase2")
         {
-            this->mouseMoveTarget = null;
-            this->mouseDownTarget = null;
+            this->mouseMoveTarget = NULL;
+            this->mouseDownTarget = NULL;
             this->container->upgrades.moveFlag = false;
             this->container->upgrades->gotoAndStop(this->container->upgrades->totalFrames);
             this->upgradesClass = new Upgrades();
@@ -571,8 +563,8 @@ namespace screens
         }
         if (targetName == "bookCase1" || targetName == "bookCase2")
         {
-            this->mouseMoveTarget = null;
-            this->mouseDownTarget = null;
+            this->mouseMoveTarget = NULL;
+            this->mouseDownTarget = NULL;
             this->container->book->moveFlag = false;
             this->container->book->gotoAndStop(this->container->book->totalFrames);
             this->encyclopediaClass = new Encyclopedia();
@@ -584,8 +576,8 @@ namespace screens
         }
         if (targetName == "achievesCase1" || targetName == "achievesCase2")
         {
-            this->mouseMoveTarget = null;
-            this->mouseDownTarget = null;
+            this->mouseMoveTarget = NULL;
+            this->mouseDownTarget = NULL;
             this->container->achieves->moveFlag = false;
             this->container->achieves->gotoAndStop(this->container->achieves->totalFrames);
             this->achievementsClass = new Achievements();
@@ -1071,7 +1063,6 @@ namespace screens
                     this->listOfLevels[this->i]->star3->gotoAndStop(this->listOfLevels[this->i]->star3->totalFrames);
                     this->listOfLevels[this->i]->stop();
                     this->listOfLevels[this->i]->levelCase->stop();
-                    ;
                 }
             }
             this->listOfLevels[this->i]->stop();
@@ -1091,7 +1082,7 @@ namespace screens
         {
             if (this->container->road->currentFrame < 12)
             {
-                this->container->road->gotoAndStop((this->container->road->currentFrame + 1));
+                this->container->road->tryPlay();//gotoAndStop((this->container->road->currentFrame + 1));
             }
             else if (!this->roadOff)
             {
@@ -1102,7 +1093,7 @@ namespace screens
         {
             if (this->container->road->currentFrame < 26)
             {
-                this->container->road->gotoAndStop((this->container->road->currentFrame + 1));
+                this->container->road->tryPlay();//gotoAndStop((this->container->road->currentFrame + 1));
             }
             else if (!this->roadOff)
             {
@@ -1113,7 +1104,7 @@ namespace screens
         {
             if (this->container->road->currentFrame < 41)
             {
-                this->container->road->gotoAndStop((this->container->road->currentFrame + 1));
+                this->container->road->tryPlay();//gotoAndStop((this->container->road->currentFrame + 1));
             }
             else if (!this->roadOff)
             {
@@ -1124,7 +1115,7 @@ namespace screens
         {
             if (this->container->road->currentFrame < 55)
             {
-                this->container->road->gotoAndStop((this->container->road->currentFrame + 1));
+                this->container->road->tryPlay();//gotoAndStop((this->container->road->currentFrame + 1));
             }
             else if (!this->roadOff)
             {
@@ -1135,7 +1126,7 @@ namespace screens
         {
             if (this->container->road->currentFrame < 66)
             {
-                this->container->road->gotoAndStop((this->container->road->currentFrame + 1));
+                this->container->road->tryPlay();//gotoAndStop((this->container->road->currentFrame + 1));
             }
             else if (!this->roadOff)
             {
@@ -1146,7 +1137,7 @@ namespace screens
         {
             if (this->container->road->currentFrame < 80)
             {
-                this->container->road->gotoAndStop((this->container->road->currentFrame + 1));
+                this->container->road->tryPlay();//gotoAndStop((this->container->road->currentFrame + 1));
             }
             else if (!this->roadOff)
             {
@@ -1157,7 +1148,7 @@ namespace screens
         {
             if (this->container->road->currentFrame < 92)
             {
-                this->container->road->gotoAndStop((this->container->road->currentFrame + 1));
+                this->container->road->tryPlay();//gotoAndStop((this->container->road->currentFrame + 1));
             }
             else if (!this->roadOff)
             {
@@ -1168,7 +1159,7 @@ namespace screens
         {
             if (this->container->road->currentFrame < 104)
             {
-                this->container->road->gotoAndStop((this->container->road->currentFrame + 1));
+                this->container->road->tryPlay();//gotoAndStop((this->container->road->currentFrame + 1));
             }
             else if (!this->roadOff)
             {
@@ -1179,7 +1170,7 @@ namespace screens
         {
             if (this->container->road->currentFrame < 115)
             {
-                this->container->road->gotoAndStop((this->container->road->currentFrame + 1));
+                this->container->road->tryPlay();//gotoAndStop((this->container->road->currentFrame + 1));
             }
             else if (!this->roadOff)
             {
@@ -1190,7 +1181,7 @@ namespace screens
         {
             if (this->container->road->currentFrame < 127)
             {
-                this->container->road->gotoAndStop((this->container->road->currentFrame + 1));
+                this->container->road->tryPlay();//gotoAndStop((this->container->road->currentFrame + 1));
             }
             else if (!this->roadOff)
             {
@@ -1201,7 +1192,7 @@ namespace screens
         {
             if (this->container->road->currentFrame < 136)
             {
-                this->container->road->gotoAndStop((this->container->road->currentFrame + 1));
+                this->container->road->tryPlay();//gotoAndStop((this->container->road->currentFrame + 1));
             }
             else if (!this->roadOff)
             {
@@ -1212,7 +1203,7 @@ namespace screens
         {
             if (this->container->road->currentFrame < 144)
             {
-                this->container->road->gotoAndStop((this->container->road->currentFrame + 1));
+                this->container->road->tryPlay();//gotoAndStop((this->container->road->currentFrame + 1));
             }
             else if (!this->roadOff)
             {
@@ -1223,7 +1214,7 @@ namespace screens
         {
             if (this->container->road->currentFrame < 153)
             {
-                this->container->road->gotoAndStop((this->container->road->currentFrame + 1));
+                this->container->road->tryPlay();//gotoAndStop((this->container->road->currentFrame + 1));
             }
             else if (!this->roadOff)
             {
@@ -1234,7 +1225,7 @@ namespace screens
         {
             if (this->container->road->currentFrame < 164)
             {
-                this->container->road->gotoAndStop((this->container->road->currentFrame + 1));
+                this->container->road->tryPlay();//gotoAndStop((this->container->road->currentFrame + 1));
             }
             else if (!this->roadOff)
             {
@@ -1245,7 +1236,7 @@ namespace screens
         {
             if (this->container->road->currentFrame < 179)
             {
-                this->container->road->gotoAndStop((this->container->road->currentFrame + 1));
+                this->container->road->tryPlay();//gotoAndStop((this->container->road->currentFrame + 1));
             }
             else if (!this->roadOff)
             {
@@ -1262,15 +1253,15 @@ namespace screens
                 this->newLevelGr->setPositionY(this->listOfLevels[(this->newLevel - 1)]->getPositionY() + 0.65);
                 this->addChild(this->newLevelGr);
                 this->listOfLevels[(this->newLevel - 1)]->setVisible(true);
-                this->listOfLevels[(this->newLevel - 1)]->alpha = 0;
+                this->listOfLevels[(this->newLevel - 1)]->setAlpha(0);
             }
             else if (this->newLevelGr->currentFrame < this->newLevelGr->totalFrames)
             {
                 this->newLevelGr->gotoAndStop((this->newLevelGr->currentFrame + 1));
                 if (this->newLevelGr->currentFrame >= 8)
                 {
-                    this->newLevelGr->alpha = this->newLevelGr->alpha - 0.2;
-                    this->listOfLevels[(this->newLevel - 1)]->alpha = this->listOfLevels[(this->newLevel - 1)]->alpha + 0.2;
+                    this->newLevelGr->setAlpha(this->newLevelGr->getAlpha() - 0.2);
+                    this->listOfLevels[(this->newLevel - 1)]->setAlpha( this->listOfLevels[(this->newLevel - 1)]->getAlpha() + 0.2);
                 }
             }
             else
@@ -1280,11 +1271,11 @@ namespace screens
                     //this->training_1 = new Training_1();
                     //this->addChild(this->training_1);
                 }
-                this->listOfLevels[(this->newLevel - 1)]->alpha = 1;
+                this->listOfLevels[(this->newLevel - 1)]->setAlpha( 1);
                 this->newLevel = 0;
                 Main::mainClass->saveBoxClass->setValue("newLevel",0);
                 this->removeChild(this->newLevelGr);
-                this->newLevelGr = NULl;
+                this->newLevelGr = NULL;
             }
         }
         return;
@@ -1381,18 +1372,15 @@ namespace screens
 
     void LevelsMenu::autoguidersButtons()
     {
-        this->autoguidesMouse_pt = cocos2d::Point(this->mouseX, this->mouseY);
-        this->autoguidesObject = NULL;
-        this->autoguidesObject_pt = this->container->back->localToGlobal(this->container->back->backCase->getPosition());
-        this->autoguidesObjectWidth = this->container->back->backCase->width / 2;
-        this->autoguidesObjectHeight = this->container->back->backCase->height / 2;
-        if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-            && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-            && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-            && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-        {
-            this->autoguidesObject = this->container->back->backCase;
-        }
+		this->autoguidesMouse_pt = CONVERT_TO_WORLD_POS(cocos2d::Point(this->mouseX, this->mouseY));
+		this->autoguidesObject = NULL;
+		this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->back->localToGlobal(this->container->backBackCase->getPosition()));
+		this->autoguidesObjectWidth = this->container->backBackCase->getWidth() / 2;
+		this->autoguidesObjectHeight = this->container->backBackCase->getHeight() / 2;
+		if (this->container->backBackCase->hitTest(autoguidesMouse_pt))
+		{
+			this->autoguidesObject = this->container->backBackCase;
+		}
         if (!this->autoguidesObject)
         {
             this->autoguidesObject_pt = this->container->upgrades->localToGlobal( this->container->upgrades->upgradesCase1->getPosition());
@@ -1723,21 +1711,17 @@ namespace screens
     void LevelsMenu::manageListeners(string param1)
     {
         if (param1 == "on")
-        {
-            //this->addEventListener(Event.ENTER_FRAME, this->enterFrameHandler);
-            //this->addEventListener(MouseEvent.MOUSE_MOVE, this->mouseMoveHandler);
-            //this->addEventListener(MouseEvent.MOUSE_DOWN, this->mouseDownHandler);
-            //this->addEventListener(MouseEvent.MOUSE_UP, this->mouseUpHandler);
-            //this->autoguidersButtons();
-        }
-        else if (param1 == "off")
-        {
-            //this->removeEventListener(Event.ENTER_FRAME, this->enterFrameHandler);
-            //this->removeEventListener(MouseEvent.MOUSE_MOVE, this->mouseMoveHandler);
-            //this->removeEventListener(MouseEvent.MOUSE_DOWN, this->mouseDownHandler);
-            //this->removeEventListener(MouseEvent.MOUSE_UP, this->mouseUpHandler);
-        }
-        return;
+		{
+			this->enableMouseHandler(true);
+			this->enableFrameHandler(true);
+
+		}
+		else if (param1 == "off")
+		{
+			this->disableMouseHandler();
+			this->disableFrameHandler();
+
+		} 
     }// end function
 
     //void reInit(event:Event) 
