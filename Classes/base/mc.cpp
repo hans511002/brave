@@ -193,9 +193,10 @@ namespace engine
 	};
 
 	void MC::addMCbs(MovieClipSubBase * mcs,bool reinit){
+		mcs->reinitType = reinit;
         if(reinit)this->submcbs.push(mcs);
 		MovieClipSubBase *mcbs = ISTYPE(MovieClipSubBase, this);
-		if (reinit || (mcbs && mcbs->reinitType)){
+		if (!reinit && (mcbs && mcbs->reinitType)){
 			submcbs.push(mcs);
 			mcs->reinitType |= 2;
 		}
