@@ -829,7 +829,7 @@ namespace engine
 	{
 		BaseNode::init();
 		Size size = this->container->getContentSize();
-		if (size.width = 0 || size.height == 0){
+		if (size.width == 0 || size.height == 0){
 			const dragonBones::Rectangle & aabb = this->getArmature()->getArmatureData()->aabb;
 			this->container->setContentSize(Size(aabb.width, aabb.height));
 		}
@@ -948,7 +948,7 @@ namespace engine
 	};
 	float MovieClip::getHeight(){
 		Size size = this->container->getContentSize();
-		return	size.width*this->getScaleY();
+		return	size.height*this->getScaleY();
 	};
 	void MovieClip::setWidth(float w)
 	{
@@ -1146,7 +1146,7 @@ namespace engine
 	void MovieClipSub::setHeight(float h){
 		Size size = this->getDisplayNode()->getContentSize();
 		if (size.width > 0){
-			float r = h / (size.width*this->getScaleY());
+			float r = h / (size.height*this->getScaleY());
 			this->setScaleY(this->getScaleY()*r);
 		}
 	};
