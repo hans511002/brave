@@ -124,7 +124,7 @@ android.applicationVariants.all { variant ->
         exclude{
             File f = it.file
             //println f.absolutePath
-            f.absolutePath.endsWith(".zip") || f.absolutePath.indexOf("library")>0
+            f.absolutePath.endsWith(".zip") ||  f.absolutePath.endsWith(".dbproj") || f.absolutePath.indexOf("library")>0
         }
     }
 

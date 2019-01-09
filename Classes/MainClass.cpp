@@ -63,7 +63,7 @@ bool Main::init()
     //this->tracker.trackPageview("openGame");
 	this->enableKeyHandler();
     //this->enableMouseHandler();//world及screen中监听
-    addPreloadDB();
+    //addPreloadDB();
     //
     AudioUtil::setAudioDir("sound");
     //    AudioUtil::stopAll();
@@ -115,7 +115,7 @@ void Main::addNewScreen(const string & param1)
 //        }
         this->middleScreenClass = new MiddleScreen(param1);
         this->addChild(this->middleScreenClass);
-		preload.start();
+//		preload.start();
     }
     return;
 }// end function
