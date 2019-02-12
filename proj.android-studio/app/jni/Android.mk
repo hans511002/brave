@@ -6,17 +6,22 @@ $(call import-add-path,$(LOCAL_PATH)/../../../cocos2d)
 $(call import-add-path,$(LOCAL_PATH)/../../../cocos2d/external)
 $(call import-add-path,$(LOCAL_PATH)/../../../cocos2d/cocos)
 
-LOCAL_MODULE := brave_shared
-
-LOCAL_MODULE_FILENAME := libbrave
-
+LOCAL_MODULE := test_static
+LOCAL_MODULE_FILENAME := libtest
+LOCAL_SRC_FILES := ../../../Classes/base/test.c
 LOCAL_ARM_MODE := arm
+include $(BUILD_STATIC_LIBRARY)
 
+
+LOCAL_MODULE := brave_shared
+LOCAL_STATIC_LIBRARIES := test
+LOCAL_MODULE_FILENAME := libbrave
+LOCAL_ARM_MODE := arm
 #
 LOCAL_SRC_FILES := main.cpp \
-../../../Classes/AppDelegate.cpp \
+  ../../../Classes/AppDelegate.cpp \
+  ../../../Classes/base/BaseNode.cpp                                               \
    ../../../Classes/base/AudioUtil.cpp                                              \
-   ../../../Classes/base/BaseNode.cpp                                               \
    ../../../Classes/base/DbPreload.cpp                                              \
    ../../../Classes/base/Indexes.cpp                                                \
    ../../../Classes/base/JsonUtil.cpp                                               \
