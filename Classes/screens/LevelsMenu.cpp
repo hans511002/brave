@@ -4,7 +4,58 @@
 
 namespace screens
 {
+	Level_mc::Level_mc() :MovieClip("screen/", "Level_mc", "Level_mc") 
+	{
+		this->levelCase = this->createCase("levelCase", true);
+		this->star1 = this->createMovieClipSub("star1", true);
+		this->star2 = this->createMovieClipSub("star2", true);
+		this->star3 = this->createMovieClipSub("star3", true);
+		this->towerEffect = this->createMovieClipSub("towerEffect", true);
+		this->wreath = this->createMovieClipSub("wreath", true);
+	};
 
+	LevelsMenu_mc::LevelsMenu_mc() :MovieClip("screen/", "LevelsMenu_mc", "LevelsMenu_mc")
+	{
+		SET_NODETYPENAME();
+		this->achieves = this->createMovieClipSub("achieves");
+		this->achievesAchievesCase1 = this->achieves->createCase("achievesCase1");
+		this->achievesAchievesCase2 = this->achieves->createCase("achievesCase2");
+		this->back = this->createMovieClipSub("back");
+		this->backBackCase = this->back->createCase("backCase");
+		this->book = this->createMovieClipSub("book");
+		this->bookBookCase1 = this->book->createCase("bookCase1");
+		this->bookBookCase2 = this->book->createCase("bookCase2");
+ 		this->btnMusic = this->createMovieClipSub("btnMusic");
+		this->btnMusicMusicCase = this->btnMusic->createCase("musicCase");
+		this->btnSound = this->createMovieClipSub("btnSound");
+		this->btnSoundSoundCase = this->btnSound->createCase("soundCase");
+		this->freeStars = this->createMovieClipSub("freeStars");
+		this->freeStarsCont = this->freeStars->createMovieClipSub("cont");
+		this->freeStarsContStarsTXT = this->freeStarsCont->createText("starsTXT");
+		this->level1 = (Level_mc*)this->createMovieClip("level1", new Level_mc());
+		this->level2 = (Level_mc*)this->createMovieClip("level2", new Level_mc());
+		this->level3 = (Level_mc*)this->createMovieClip("level3", new Level_mc());
+		this->level4 = (Level_mc*)this->createMovieClip("level4", new Level_mc());
+		this->level5 = (Level_mc*)this->createMovieClip("level5", new Level_mc());
+		this->level6 = (Level_mc*)this->createMovieClip("level6", new Level_mc());
+		this->level7 = (Level_mc*)this->createMovieClip("level7", new Level_mc());
+		this->level8 = (Level_mc*)this->createMovieClip("level8", new Level_mc());
+		this->level9 = (Level_mc*)this->createMovieClip("level9", new Level_mc());
+		this->level10 = (Level_mc*)this->createMovieClip("level10", new Level_mc());
+		this->level11 = (Level_mc*)this->createMovieClip("level11", new Level_mc());
+		this->level12 = (Level_mc*)this->createMovieClip("level12", new Level_mc());
+		this->level13 = (Level_mc*)this->createMovieClip("level13", new Level_mc());
+		this->level14 = (Level_mc*)this->createMovieClip("level14", new Level_mc());
+		this->level15 = (Level_mc*)this->createMovieClip("level15",new Level_mc());
+		this->road = this->createMovieClipSub("road");
+		this->upgrades = this->createMovieClipSub("upgrades");
+		this->upgradesUpgradesCase1 = this->upgrades->createCase("upgradesCase1");
+		this->upgradesUpgradesCase2 = this->upgrades->createCase("upgradesCase2");
+		this->upgradesFireCont = this->upgrades->createMovieClipSub("fireCont");
+		this->wavesAnimation = this->createMovieClipSub("wavesAnimation"); 
+
+		return;
+	}// end function
 
     LevelsMenu::LevelsMenu() :frameCounter(0), newLevel(0), newStarsForLevel(0),container(0)
     {
@@ -30,55 +81,46 @@ namespace screens
         this->container = new LevelsMenu_mc();
         this->container->stop();
         this->container->back->stop();
-        this->container->back->backCase->stop();
-        this->container->upgrades->stop();
-        this->container->upgrades->upgradesCase1->stop();
-        this->container->upgrades->upgradesCase2->stop();
-        this->container->book->stop();
-        this->container->book->bookCase1->stop();
-        this->container->book->bookCase2->stop();
-        this->container->achieves->stop();
-        this->container->achieves->achievesCase1->stop();
-        this->container->achieves->achievesCase2->stop();
-        this->container->back->backCase->setMouseEnabled(true);
-        this->container->upgrades->upgradesCase1->setMouseEnabled(true);
-        this->container->upgrades->upgradesCase2->setMouseEnabled(true);
-        this->container->book->bookCase1->setMouseEnabled(true);
-        this->container->book->bookCase2->setMouseEnabled(true);
-        this->container->achieves->achievesCase1->setMouseEnabled(true);
-        this->container->achieves->achievesCase2->setMouseEnabled(true);
-        this->container->wavesAnimation->stop();
-        this->tempObject1 = this->container->wavesAnimation->numChildren;
+         this->container->upgrades->stop(); 
+        this->container->book->stop(); 
+        this->container->achieves->stop(); 
+        this->container->backBackCase->setMouseEnabled(true);
+        this->container->upgradesUpgradesCase1->setMouseEnabled(true);
+        this->container->upgradesUpgradesCase2->setMouseEnabled(true);
+        this->container->bookBookCase1->setMouseEnabled(true);
+        this->container->bookBookCase2->setMouseEnabled(true);
+        this->container->achievesAchievesCase1->setMouseEnabled(true);
+        this->container->achievesAchievesCase2->setMouseEnabled(true);
+        this->container->wavesAnimation->stop(); 
         this->i = 0;
-        while (this->i < this->tempObject1)
-        {
-            this->tempObject = this->container->wavesAnimation->getChildAt(this->i);
-            this->tempObject->gotoAndStop((std::round(std::random() * (this->tempObject->totalFrames - 1)) + 1));
-            this->listOfAnimation->push(this->tempObject);
-            i++;
+		const std::vector<Slot*>& slots = this->container->wavesAnimation->arm->getSlots();
+		for (int i = 0; i < slots.size(); i++){
+			MovieClipSub * wave= this->container->wavesAnimation->createMovieClipSub(slots.at(i)->getName());
+			wave->gotoAndStop((std::round(std::random() * (wave->totalFrames - 1)) + 1));
+            this->listOfAnimation.push(wave);
         }
-        this->listOfLevels->push(this->container->level1);
-        this->listOfLevels->push(this->container->level2);
-        this->listOfLevels->push(this->container->level3);
-        this->listOfLevels->push(this->container->level4);
-        this->listOfLevels->push(this->container->level5);
-        this->listOfLevels->push(this->container->level6);
-        this->listOfLevels->push(this->container->level7);
-        this->listOfLevels->push(this->container->level8);
-        this->listOfLevels->push(this->container->level9);
-        this->listOfLevels->push(this->container->level10);
-        this->listOfLevels->push(this->container->level11);
-        this->listOfLevels->push(this->container->level12);
-        this->listOfLevels->push(this->container->level13);
-        this->listOfLevels->push(this->container->level14);
-        this->listOfLevels->push(this->container->level15);
+        this->listOfLevels.push(this->container->level1);
+        this->listOfLevels.push(this->container->level2);
+        this->listOfLevels.push(this->container->level3);
+        this->listOfLevels.push(this->container->level4);
+        this->listOfLevels.push(this->container->level5);
+        this->listOfLevels.push(this->container->level6);
+        this->listOfLevels.push(this->container->level7);
+        this->listOfLevels.push(this->container->level8);
+        this->listOfLevels.push(this->container->level9);
+        this->listOfLevels.push(this->container->level10);
+        this->listOfLevels.push(this->container->level11);
+        this->listOfLevels.push(this->container->level12);
+        this->listOfLevels.push(this->container->level13);
+        this->listOfLevels.push(this->container->level14);
+        this->listOfLevels.push(this->container->level15);
         this->preparationLevels();
         this->container->btnMusic->stop();
         this->container->btnSound->stop();
-        this->container->btnMusic->musicCase->setMouseEnabled(true);
-        this->container->btnSound->soundCase->setMouseEnabled(true);
+        this->container->btnMusicMusicCase->setMouseEnabled(true);
+        this->container->btnSoundSoundCase->setMouseEnabled(true);
         this->container->freeStars->stop();
-        this->container->freeStars->cont->stop();
+        this->container->freeStarsCont->stop();
         this->container->freeStars->setMouseChildren(false);
         this->container->freeStars->setMouseEnabled(false);
         if (Main::mainClass->saveBoxClass->getIntValue("stars") == 0)
@@ -153,16 +195,16 @@ namespace screens
             {
                 this->container->freeStars->gotoAndStop(11);
             }
-            if (this->container->freeStars->cont->currentFrame < this->container->freeStars->cont->totalFrames)
+            if (this->container->freeStarsCont->currentFrame < this->container->freeStarsCont->totalFrames)
             {
-                this->container->freeStars->cont->tryPlay();//gotoAndStop((this->container->freeStars->cont->currentFrame + 1));
+                this->container->freeStarsCont->tryPlay();//gotoAndStop((this->container->freeStarsCont->currentFrame + 1));
             }
             else
             {
-                this->container->freeStars->cont->gotoAndStop(1);
+                this->container->freeStarsCont->gotoAndStop(1);
             }
-            this->container->freeStars->cont->starsTXT->setText(Main::mainClass->saveBoxClass->getString("stars"));
-            //this->container->freeStars->cont->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
+            this->container->freeStarsContStarsTXT->setText(Main::mainClass->saveBoxClass->getCharsValue("stars"));
+            //this->container->freeStarsCont->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
         }
         if (this->newLevel > 0 && this->container->mouseEnabled)
         {
@@ -192,15 +234,15 @@ namespace screens
                     this->container->upgrades->tryPlay();//gotoAndStop((this->container->upgrades->currentFrame - 1));
                 }
             }
-            if (this->container->upgrades->fireCont->isReady)
+            if (this->container->upgradesFireCont->isReady)
             {
-                if (this->container->upgrades->fireCont->currentFrame < this->container->upgrades->fireCont->totalFrames)
+                if (this->container->upgradesFireCont->currentFrame < this->container->upgradesFireCont->totalFrames)
                 {
-                    this->container->upgrades->fireCont->tryPlay();//gotoAndStop((this->container->upgrades->fireCont->currentFrame + 1));
+                    this->container->upgradesFireCont->tryPlay();//gotoAndStop((this->container->upgradesFireCont->currentFrame + 1));
                 }
                 else
                 {
-                    this->container->upgrades->fireCont->gotoAndStop(1);
+                    this->container->upgradesFireCont->gotoAndStop(1);
                 }
             }
         }

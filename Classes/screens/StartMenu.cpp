@@ -3,7 +3,7 @@
   
 namespace screens
 {  
-    StartMenu_mc::StartMenu_mc()
+    StartMenu_mc::StartMenu_mc():MovieClip("screen","StartMenu_mc","StartMenu_mc")
     {
 		logOut = this->createCase("logOut");
 		start = this->createMovieClipSub("start");

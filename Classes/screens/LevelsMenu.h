@@ -6,6 +6,7 @@
 #include "engine/xml/ReadXML.h"
 #include "OpenLevel.h"
 #include "engine/level/Level.h"
+#include "Screen.h"
 using namespace engine;
 
 namespace screens
@@ -14,57 +15,76 @@ namespace screens
     {
         
     };
+	struct Level_mc:public MovieClip
+	{
+		MCCase * levelCase;
+		MovieClipSub * star1;
+		MovieClipSub * star2;
+		MovieClipSub * star3;
+		MovieClipSub *towerEffect;
+		MovieClipSub *wreath;
+		Level_mc();
+	};
     struct LevelsMenu_mc :public MovieClip
     {
-        MovieClip * achieves;
-        MovieClip * back;
-        MovieClip * book;
-        MovieClip * btnMusic;
-        MovieClip * btnSound;
-        MovieClip * freeStars;
-        MovieClip * level1;
-        MovieClip * level10;
-        MovieClip * level11;
-        MovieClip * level12;
-        MovieClip * level13;
-        MovieClip * level14;
-        MovieClip * level15;
-        MovieClip * level2;
-        MovieClip * level3;
-        MovieClip * level4;
-        MovieClip * level5;
-        MovieClip * level6;
-        MovieClip * level7;
-        MovieClip * level8;
-        MovieClip * level9;
-        MovieClip * road;
-        MovieClip * upgrades;
-        MovieClip * wavesAnimation;
+        MovieClipSub * achieves;
+		MCCase * achievesAchievesCase1;
+		MCCase * achievesAchievesCase2;
+        MovieClipSub * back;
+		MCCase * backBackCase;
+		MovieClipSub * book;
+		MCCase * bookBookCase1;
+		MCCase * bookBookCase2;
+        MovieClipSub * btnMusic;
+		MCCase * btnMusicMusicCase;
+        MovieClipSub * btnSound;
+		MCCase * btnSoundSoundCase;
+		MovieClipSub * freeStars;
+		MovieClipSub * freeStarsCont;
+		MCText * freeStarsContStarsTXT;
+		Level_mc * level1;
+		Level_mc * level2;
+		Level_mc * level3;
+		Level_mc * level4;
+		Level_mc * level5;
+		Level_mc * level6;
+		Level_mc * level7;
+		Level_mc * level8;
+		Level_mc * level9;
+		Level_mc * level10;
+		Level_mc * level11;
+		Level_mc * level12;
+		Level_mc * level13;
+		Level_mc * level14;
+		Level_mc * level15;
+		MovieClipSub * road;
+        MovieClipSub * upgrades;
+		MCCase * upgradesUpgradesCase1;
+		MCCase * upgradesUpgradesCase2;
+		MovieClipSub * upgradesFireCont;
 
-		LevelsMenu_mc() :MovieClip("","","")
-        {
-			SET_NODETYPENAME();
-			return;
-        }// end function
+        MovieClipSub * wavesAnimation;
+		Map<std::string, MovieClipSub *> waves;
+
+		LevelsMenu_mc();
 
     };
     
-    class LevelsMenu :public BaseNode
+    class LevelsMenu :public Screen
     {
     public:
-        int i;//public var i:int;
-        //public var tempObject:Object;
+         //public var tempObject:Object;
         //public var tempObject1:Object;
         LevelsMenu_mc * container;
         int frameCounter;//public var frameCounter:int = 0;
-        Common::Array<engine::Level *> listOfLevels;//public var listOfLevels:Array;
+        Common::Array<Level_mc *> listOfLevels;//public var listOfLevels:Array;
         int newLevel;//public var newLevel:int = 0;
         dragonBones::CCArmatureDisplay * newLevelGr;// public var newLevelGr:NewLevel_mc;
         bool roadOff;//public var roadOff:Boolean;
         int newStarsForLevel;//public var newStarsForLevel:int = 0;
         Node * mouseMoveTarget;
         Node * mouseDownTarget;
-        Common::Array<dragonBones::CCArmatureDisplay * > listOfAnimation;
+        Common::Array<MovieClipSub * > listOfAnimation;
         OpenLevel * openLevel;
         //Upgrades * upgradesClass;
         //Encyclopedia * encyclopediaClass;
@@ -73,11 +93,7 @@ namespace screens
         //DifficultyLevel * difficultyLevel;
         //public var training_1:Training_1;
         //public var training_9:Training_9;
-        cocos2d::Point autoguidesMouse_pt;//public var autoguidesMouse_pt:Point;
-        Node * autoguidesObject;//public var autoguidesObject:Object;
-        cocos2d::Point autoguidesObject_pt;//public var autoguidesObject_pt:Point;
-        float autoguidesObjectWidth;
-        float autoguidesObjectHeight;
+ 
 
         LevelsMenu();
 
