@@ -38,6 +38,9 @@ public:
 	DbPreload preload;
 	static int fps;
 
+	static float mouseX;
+	static float mouseY;
+
 	static const int SCREEN_WIDTH = 800;
 	static const int SCREEN_HEIGHT = 450;
 	static const int SCREEN_WIDTH_HALF = SCREEN_WIDTH/2;

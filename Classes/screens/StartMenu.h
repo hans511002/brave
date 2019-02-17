@@ -39,8 +39,7 @@ namespace screens
 		MCCase * questionBtnYesYesCase;
 		MovieClipSub * questionBtnNo;
 		MCCase * questionBtnNoNoCase;
-		MovieClipSub * back;
-		MCCase * backBackCase;
+	 
 		MCCase * comlogo;
 		MCText * copyright;
 		MCText * tips;

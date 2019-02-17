@@ -1,0 +1,5 @@
+<TextureAtlas name="back" imagePath="texture.png">
+ <SubTexture name="__dbTextures/back/Layer 2_1" x="52" y="0" width="43" height="46"/>
+ <SubTexture name="__dbTextures/back/Layer 2_2" x="52" y="48" width="42" height="42"/>
+ <SubTexture name="Symbol 47" x="0" y="0" width="50" height="50"/>
+</TextureAtlas>

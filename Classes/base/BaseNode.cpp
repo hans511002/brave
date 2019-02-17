@@ -61,7 +61,7 @@ namespace std
 		return retval;
 	};
 
-	EventNode::EventNode() :mouseChildren(false), mouseEnabled(false), mouseFlag(false), mouseDrag(false)
+	EventNode::EventNode() :mouseChildren(false), mouseEnabled(false), mouseMoveFlag(false), mouseDrag(false)
 	{
 	};
 	BaseNode::BaseNode() :schdt(0), autoDel(true), isAutoDel(false), listener(0), linkParent(NULL), touchOnelistener(NULL)
@@ -974,11 +974,11 @@ namespace std
 		return true;
 	};
 	bool EventNode::isMouseFlag() {
-		if (!this->mouseFlag)return false;
+		if (!this->mouseMoveFlag)return false;
 		Node *node = ISTYPE(Node, this);
 		while (node) {
 			EventNode *enode = ISTYPE(EventNode, node);
-			if (!enode->mouseFlag)return false;
+			if (!enode->mouseMoveFlag)return false;
 			node = ISTYPE(Node, node->getParent());
 		}
 		return true;
@@ -995,7 +995,7 @@ namespace std
 				en->mouseEnabled = v;
 			}
 			else if (type == 3)
-				en->mouseFlag = v;
+				en->mouseMoveFlag = v;
 			//if (type == 2) {
 			//	if (v && !useNodeEvent)
 			//		addEventNode(en);
@@ -1025,8 +1025,8 @@ namespace std
 		if (v != this->mouseEnabled && !setSub)
 			setNodeMouse(ISTYPE(Node, this), 2, v, setSub);
 	};
-	void EventNode::setMouseFlag(bool v, bool setSub) {
-		if (v != this->mouseFlag)
+	void EventNode::setMouseMoveFlag(bool v, bool setSub) {
+		if (v != this->mouseMoveFlag)
 			setNodeMouse(ISTYPE(Node, this), 3, v, setSub);
 	};
 

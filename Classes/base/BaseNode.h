@@ -94,11 +94,11 @@ namespace std
 		inline virtual bool hitTest(cocos2d::EventMouse* event) { return std::hitTest(ISTYPE(Node, this), event, true, true); };
 		bool mouseChildren;
 		bool mouseEnabled;
-		bool mouseFlag;
+		bool mouseMoveFlag;
 		bool mouseDrag;
 		virtual void setMouseChildren(bool v,bool setSub= false);
 		virtual void setMouseEnabled(bool v, bool setSub = false);
-		virtual void setMouseFlag(bool v, bool setSub = false);
+		virtual void setMouseMoveFlag(bool v, bool setSub = false);
 		static void setNodeMouse(Node * en, int type, bool v, bool setSub = false);
 
 		virtual bool isMouseChildren();

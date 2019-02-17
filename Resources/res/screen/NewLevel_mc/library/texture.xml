@@ -1,0 +1,14 @@
+<TextureAtlas name="NewLevel_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 872" x="0" y="0" width="26" height="90"/>
+ <SubTexture name="Shape/shape 874" x="224" y="0" width="26" height="90"/>
+ <SubTexture name="Shape/shape 876" x="56" y="0" width="26" height="90"/>
+ <SubTexture name="Shape/shape 878" x="28" y="0" width="26" height="90"/>
+ <SubTexture name="Shape/shape 880" x="196" y="0" width="26" height="90"/>
+ <SubTexture name="Shape/shape 882" x="112" y="0" width="26" height="90"/>
+ <SubTexture name="Shape/shape 884" x="140" y="0" width="26" height="90"/>
+ <SubTexture name="Shape/shape 886" x="84" y="0" width="26" height="90"/>
+ <SubTexture name="Shape/shape 888" x="0" y="92" width="26" height="90"/>
+ <SubTexture name="Shape/shape 890" x="168" y="0" width="26" height="90"/>
+ <SubTexture name="Shape/shape 892" x="28" y="92" width="26" height="90"/>
+ <SubTexture name="Shape/shape 894" x="56" y="92" width="26" height="59"/>
+</TextureAtlas>

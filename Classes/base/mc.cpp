@@ -302,6 +302,10 @@ namespace engine
 		mc->mc = this;
 		mc->display = NULL;
 		mc->slotName = slot;
+		if (!mc->reinitType){
+			mc->setName(slot);
+			mc->armName = slot;
+		}
 		mc->reinit();
         this->addMCbs(mc, reinit);
 		return mc;

@@ -10,9 +10,8 @@ namespace engine{
             for (int i = 0; i < len; i++)
             {
                 double x = road1[i].x;
-                double y = road1[i].y;
-                x -= Main::SCREEN_WIDTH_OUT_LEFT;
-                y = Main::SCREEN_HEIGHT + Main::SCREEN_HEIGHT_OUT_DOWN - y+Main::mainClass->worldClass->level->offsetY;
+                double y = road1[i].y; 
+				y = Main::LEVEL_MAP_HEIGHT - y; 
                 path[i] = cocos2d::Point(x, y);
             }
         }

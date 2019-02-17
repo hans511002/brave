@@ -103,7 +103,8 @@ namespace engine {
 
 		void Cast_2::addIceman()
 		{
-			tempObject = cocos2d::Point(world->mouseX, world->mouseY);
+			
+			tempObject = CONVERT_TO_WORLD_POS(cocos2d::Point(Main::mouseX, Main::mouseY));
 			//tempObject1 = null;
 			float tempObject2 = 0;
 			float tempObject3 = 10000;

@@ -1,6 +1,9 @@
 ﻿
 #include "LevelsMenu.h"
 #include "MainClass.h"
+#include "DifficultyLevel.h"   
+#include "Upgrades.h"   
+#include "Achievements.h"   
 
 namespace screens
 {
@@ -158,7 +161,7 @@ namespace screens
         return;
     }// end function
 
-    void LevelsMenu::enterFrameHandler(cocos2d::EventMouse * event)
+    void LevelsMenu::enterFrameHandler(float dt)
     {
         if (this->frameCounter < 30)
         {
@@ -292,470 +295,488 @@ namespace screens
         }
         return;
     }// end function
-
+	bool LevelsMenu::preCheckEventTarget(std::MouseEvent * event, EventMouse::MouseEventType _mouseEventType)
+	{
+	}
     void LevelsMenu::mouseMoveHandler(cocos2d::EventMouse * e)
     {
-		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
-		if(!event)
-			return;
-        string targetName = event->target->getName();
-        if (this->mouseMoveTarget)
-        {
-            this->mouseMoveTarget = NULL;
-        }
-        if (targetName == "musicCase")
-        {
-            if (this->container->btnMusic->currentFrame == 1 || this->container->btnMusic->currentFrame == 4)
-            {
-                this->container->btnMusic->gotoAndStop((this->container->btnMusic->currentFrame + 1));
-                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-            }
-        }
-        else if (this->container->btnMusic->currentFrame == 2 || this->container->btnMusic->currentFrame == 5)
-        {
-            this->container->btnMusic->gotoAndStop((this->container->btnMusic->currentFrame - 1));
-        }
-        if (targetName == "soundCase")
-        {
-            if (this->container->btnSound->currentFrame == 1 || this->container->btnSound->currentFrame == 4)
-            {
-                this->container->btnSound->gotoAndStop((this->container->btnSound->currentFrame + 1));
-                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-            }
-        }
-        else if (this->container->btnSound->currentFrame == 2 || this->container->btnSound->currentFrame == 5)
-        {
-            this->container->btnSound->gotoAndStop((this->container->btnSound->currentFrame - 1));
-        }
-        if (targetName == "backCase")
-        {
-            this->mouseMoveTarget = param1->target->parent;
-            if (this->container->back->currentFrame == 1)
-            {
-                this->container->back->gotoAndStop(2);
-                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-            }
-        }
-        else if (this->container->back->currentFrame == 2)
-        {
-            this->container->back->gotoAndStop(1);
-        }
-        if (targetName == "upgradesCase1" || targetName == "upgradesCase2")
-        {
-            this->mouseMoveTarget = param1->target->parent;
-            if (!this->container->upgrades->mouseMoveFlag)
-            {
-                this->container->upgrades->mouseMoveFlag = true;
-                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-            }
-        }
-        else if (this->container->upgrades->mouseMoveFlag)
-        {
-            this->container->upgrades->mouseMoveFlag = false;
-        }
-        if (targetName == "bookCase1" || targetName == "bookCase2")
-        {
-            this->mouseMoveTarget = param1->target->parent;
-            if (!this->container->book->mouseMoveFlag)
-            {
-                this->container->book->mouseMoveFlag = true;
-                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-            }
-        }
-        else if (this->container->book->mouseMoveFlag)
-        {
-            this->container->book->mouseMoveFlag = false;
-        }
-        if (targetName == "achievesCase1" || targetName == "achievesCase2")
-        {
-            this->mouseMoveTarget = param1->target->parent;
-            if (!this->container->achieves->mouseMoveFlag)
-            {
-                this->container->achieves->mouseMoveFlag = true;
-                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-            }
-        }
-        else if (this->container->achieves->mouseMoveFlag)
-        {
-            this->container->achieves->mouseMoveFlag = false;
-        }
-        if (targetName == "levelCase")
-        {
-            if (param1->target->parent->currentFrame == 1 || param1->target->parent->currentFrame == 5 || param1->target->parent->currentFrame == 8)
-            {
-                param1.target->parent->gotoAndStop((param1->target->parent->currentFrame + 1));
-                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-            }
-        }
-        else
-        {
-            if (this->container->level1->currentFrame == 2 || this->container->level1->currentFrame == 6 || this->container->level1->currentFrame == 9)
-            {
-                this->container->level1->gotoAndStop((this->container->level1->currentFrame - 1));
-            }
-            if (this->container->level2->currentFrame == 2 || this->container->level2->currentFrame == 6 || this->container->level2->currentFrame == 9)
-            {
-                this->container->level2->gotoAndStop((this->container->level2->currentFrame - 1));
-            }
-            if (this->container->level3->currentFrame == 2 || this->container->level3->currentFrame == 6 || this->container->level3->currentFrame == 9)
-            {
-                this->container->level3->gotoAndStop((this->container->level3->currentFrame - 1));
-            }
-            if (this->container->level4->currentFrame == 2 || this->container->level4->currentFrame == 6 || this->container->level4->currentFrame == 9)
-            {
-                this->container->level4->gotoAndStop((this->container->level4->currentFrame - 1));
-            }
-            if (this->container->level5->currentFrame == 2 || this->container->level5->currentFrame == 6 || this->container->level5->currentFrame == 9)
-            {
-                this->container->level5->gotoAndStop((this->container->level5->currentFrame - 1));
-            }
-            if (this->container->level6->currentFrame == 2 || this->container->level6->currentFrame == 6 || this->container->level6->currentFrame == 9)
-            {
-                this->container->level6->gotoAndStop((this->container->level6->currentFrame - 1));
-            }
-            if (this->container->level7->currentFrame == 2 || this->container->level7->currentFrame == 6 || this->container->level7->currentFrame == 9)
-            {
-                this->container->level7->gotoAndStop((this->container->level7->currentFrame - 1));
-            }
-            if (this->container->level8->currentFrame == 2 || this->container->level8->currentFrame == 6 || this->container->level8->currentFrame == 9)
-            {
-                this->container->level8->gotoAndStop((this->container->level8->currentFrame - 1));
-            }
-            if (this->container->level9->currentFrame == 2 || this->container->level9->currentFrame == 6 || this->container->level9->currentFrame == 9)
-            {
-                this->container->level9->gotoAndStop((this->container->level9->currentFrame - 1));
-            }
-            if (this->container->level10->currentFrame == 2 || this->container->level10->currentFrame == 6 || this->container->level10->currentFrame == 9)
-            {
-                this->container->level10->gotoAndStop((this->container->level10->currentFrame - 1));
-            }
-            if (this->container->level11->currentFrame == 2 || this->container->level11->currentFrame == 6 || this->container->level11->currentFrame == 9)
-            {
-                this->container->level11->gotoAndStop((this->container->level11->currentFrame - 1));
-            }
-            if (this->container->level12->currentFrame == 2 || this->container->level12->currentFrame == 6 || this->container->level12->currentFrame == 9)
-            {
-                this->container->level12->gotoAndStop((this->container->level12->currentFrame - 1));
-            }
-            if (this->container->level13->currentFrame == 2 || this->container->level13->currentFrame == 6 || this->container->level13->currentFrame == 9)
-            {
-                this->container->level13->gotoAndStop((this->container->level13->currentFrame - 1));
-            }
-            if (this->container->level14->currentFrame == 2 || this->container->level14->currentFrame == 6 || this->container->level14->currentFrame == 9)
-            {
-                this->container->level14->gotoAndStop((this->container->level14->currentFrame - 1));
-            }
-            if (this->container->level15->currentFrame == 2 || this->container->level15->currentFrame == 6 || this->container->level15->currentFrame == 9)
-            {
-                this->container->level15->gotoAndStop((this->container->level15->currentFrame - 1));
-            }
-        }
+		Main::mouseX = e->getCursorX();
+		Main::mouseY = e->getCursorY();
+		if (!globalNode)EventNode::mouseMoveHandler(e);
+		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
+		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
+		std::MouseEvent me(e);
+		if (!useNodeEvent) {
+			me = std::buildMouseEvent(e);
+		}
+		std::MouseEvent * event = &me;
+		if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_MOVE))return;
+		if (!event->currentTargets.size())
+			event->currentTargets.push(this);
+		//return;
+		while (event->hasNext())
+		{
+			string targetName = event->target->getName();
+			if (event->target == EventNode::beginTouchNode) {
+				EventNode * en = ISTYPE(EventNode, event->target);
+				if (en && en->isMouseDrag()) {
+					Vec2 stpos = event->target->getPosition();
+					Vec2 endPos = stpos + Vec2(Main::mouseX, Main::mouseY) - EventNode::beginTouchPos;
+					EventNode::beginTouchPos = Vec2(Main::mouseX, Main::mouseY);
+					if (endPos.x < en->minDragPos.x) {
+						endPos.x = en->minDragPos.x;
+					}
+					else if (endPos.x > en->maxDragPos.x) {
+						endPos.x = en->maxDragPos.x;
+					}
+					if (endPos.y < en->minDragPos.y) {
+						endPos.y = en->minDragPos.y;
+					}
+					else if (endPos.y > en->maxDragPos.y) {
+						endPos.y = en->maxDragPos.y;
+					}
+					event->target->setPosition(endPos);
+				}
+			}
+			if (this->mouseMoveTarget)
+			{
+				this->mouseMoveTarget = NULL;
+			}
+			if (targetName == "musicCase")
+			{
+				if (this->container->btnMusic->currentFrame == 1 || this->container->btnMusic->currentFrame == 4)
+				{
+					this->container->btnMusic->gotoAndStop((this->container->btnMusic->currentFrame + 1));
+					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+				}
+			}
+			else if (this->container->btnMusic->currentFrame == 2 || this->container->btnMusic->currentFrame == 5)
+			{
+				this->container->btnMusic->gotoAndStop((this->container->btnMusic->currentFrame - 1));
+			}
+			if (targetName == "soundCase")
+			{
+				if (this->container->btnSound->currentFrame == 1 || this->container->btnSound->currentFrame == 4)
+				{
+					this->container->btnSound->gotoAndStop((this->container->btnSound->currentFrame + 1));
+					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+				}
+			}
+			else if (this->container->btnSound->currentFrame == 2 || this->container->btnSound->currentFrame == 5)
+			{
+				this->container->btnSound->gotoAndStop((this->container->btnSound->currentFrame - 1));
+			}
+			if (targetName == "backCase")
+			{
+				this->mouseMoveTarget = this->container->back;// event->target->getParent()->getParent();
+				if (this->container->back->currentFrame == 1)
+				{
+					this->container->back->gotoAndStop(2);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+				}
+			}
+			else if (this->container->back->currentFrame == 2)
+			{
+				this->container->back->gotoAndStop(1);
+			}
+			if (targetName == "upgradesCase1" || targetName == "upgradesCase2")
+			{
+				this->mouseMoveTarget = this->container->upgrades;//  param1->target->parent;
+				  AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+			} 
+			if (targetName == "bookCase1" || targetName == "bookCase2")
+			{
+				this->mouseMoveTarget = this->container->book;//  param1->target->parent;
+				 AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+			} 
+			if (targetName == "achievesCase1" || targetName == "achievesCase2")
+			{
+				this->mouseMoveTarget = this->container->achieves;// param1->target->parent;
+					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+			} 
+			if (targetName == "levelCase")
+			{
+				Node * n = event->target->getParent()->getParent()->getParent();
+				Level_mc * level = ISTYPE(Level_mc, n);
+				if (level->currentFrame == 1 || level->currentFrame == 5 || level->currentFrame == 8)
+				{
+					level->gotoAndStop((level->currentFrame + 1));
+					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+				}
+			}
+			else
+			{
+				if (this->container->level1->currentFrame == 2 || this->container->level1->currentFrame == 6 || this->container->level1->currentFrame == 9)
+				{
+					this->container->level1->gotoAndStop((this->container->level1->currentFrame - 1));
+				}
+				if (this->container->level2->currentFrame == 2 || this->container->level2->currentFrame == 6 || this->container->level2->currentFrame == 9)
+				{
+					this->container->level2->gotoAndStop((this->container->level2->currentFrame - 1));
+				}
+				if (this->container->level3->currentFrame == 2 || this->container->level3->currentFrame == 6 || this->container->level3->currentFrame == 9)
+				{
+					this->container->level3->gotoAndStop((this->container->level3->currentFrame - 1));
+				}
+				if (this->container->level4->currentFrame == 2 || this->container->level4->currentFrame == 6 || this->container->level4->currentFrame == 9)
+				{
+					this->container->level4->gotoAndStop((this->container->level4->currentFrame - 1));
+				}
+				if (this->container->level5->currentFrame == 2 || this->container->level5->currentFrame == 6 || this->container->level5->currentFrame == 9)
+				{
+					this->container->level5->gotoAndStop((this->container->level5->currentFrame - 1));
+				}
+				if (this->container->level6->currentFrame == 2 || this->container->level6->currentFrame == 6 || this->container->level6->currentFrame == 9)
+				{
+					this->container->level6->gotoAndStop((this->container->level6->currentFrame - 1));
+				}
+				if (this->container->level7->currentFrame == 2 || this->container->level7->currentFrame == 6 || this->container->level7->currentFrame == 9)
+				{
+					this->container->level7->gotoAndStop((this->container->level7->currentFrame - 1));
+				}
+				if (this->container->level8->currentFrame == 2 || this->container->level8->currentFrame == 6 || this->container->level8->currentFrame == 9)
+				{
+					this->container->level8->gotoAndStop((this->container->level8->currentFrame - 1));
+				}
+				if (this->container->level9->currentFrame == 2 || this->container->level9->currentFrame == 6 || this->container->level9->currentFrame == 9)
+				{
+					this->container->level9->gotoAndStop((this->container->level9->currentFrame - 1));
+				}
+				if (this->container->level10->currentFrame == 2 || this->container->level10->currentFrame == 6 || this->container->level10->currentFrame == 9)
+				{
+					this->container->level10->gotoAndStop((this->container->level10->currentFrame - 1));
+				}
+				if (this->container->level11->currentFrame == 2 || this->container->level11->currentFrame == 6 || this->container->level11->currentFrame == 9)
+				{
+					this->container->level11->gotoAndStop((this->container->level11->currentFrame - 1));
+				}
+				if (this->container->level12->currentFrame == 2 || this->container->level12->currentFrame == 6 || this->container->level12->currentFrame == 9)
+				{
+					this->container->level12->gotoAndStop((this->container->level12->currentFrame - 1));
+				}
+				if (this->container->level13->currentFrame == 2 || this->container->level13->currentFrame == 6 || this->container->level13->currentFrame == 9)
+				{
+					this->container->level13->gotoAndStop((this->container->level13->currentFrame - 1));
+				}
+				if (this->container->level14->currentFrame == 2 || this->container->level14->currentFrame == 6 || this->container->level14->currentFrame == 9)
+				{
+					this->container->level14->gotoAndStop((this->container->level14->currentFrame - 1));
+				}
+				if (this->container->level15->currentFrame == 2 || this->container->level15->currentFrame == 6 || this->container->level15->currentFrame == 9)
+				{
+					this->container->level15->gotoAndStop((this->container->level15->currentFrame - 1));
+				}
+			}
+		}
         return;
     }// end function
 
     void LevelsMenu::mouseDownHandler(cocos2d::EventMouse * e)
     {
-		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
-		if(!event)
-			return;
-        string targetName = event->target->getName();
-        if (this->mouseDownTarget)
-        {
-            this->mouseDownTarget = NULL;
-        }
-        if (targetName == "musicCase")
-        {
-            if (this->container->btnMusic->currentFrame == 2 || this->container->btnMusic->currentFrame == 5)
-            {
-                this->container->btnMusic->gotoAndStop((this->container->btnMusic->currentFrame + 1));
-                AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-            }
-        }
-        else if (targetName == "soundCase")
-        {
-            if (this->container->btnSound->currentFrame == 2 || this->container->btnSound->currentFrame == 5)
-            {
-                this->container->btnSound->gotoAndStop((this->container->btnSound->currentFrame + 1));
-                AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-            }
-        }
-        else if (targetName == "backCase")
-        {
-            this->mouseDownTarget = event->target->parent;
-            if (this->container->back->currentFrame == 2)
-            {
-                this->container->back->gotoAndStop(3);
-                AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-            }
-        }
-        else if (targetName == "upgradesCase1" || targetName == "upgradesCase2")
-        {
-            this->mouseDownTarget = event->target->parent;
-            if (this->container->upgrades->currentFrame != this->container->upgrades->totalFrames)
-            {
-                this->container->upgrades->gotoAndStop(this->container->upgrades->totalFrames);
-                AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-            }
-        }
-        else if (targetName == "bookCase1" || targetName == "bookCase2")
-        {
-            this->mouseDownTarget = event->target->parent;
-            if (this->container->book->currentFrame != this->container->book->totalFrames)
-            {
-                this->container->book->gotoAndStop(this->container->book->totalFrames);
-                AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-            }
-        }
-        else if (targetName == "achievesCase1" || targetName == "achievesCase2")
-        {
-            this->mouseDownTarget = event->target->parent;
-            if (this->container->achieves->currentFrame != this->container->achieves->totalFrames)
-            {
-                this->container->achieves->gotoAndStop(this->container->achieves->totalFrames);
-                AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-            }
-        }
-        else if (targetName == "levelCase")
-        {
-            this->mouseDownTarget = event->target->parent;
-            if (event->target->parent->currentFrame == 2 || event->target->parent->currentFrame == 6 || event->target->parent->currentFrame == 9)
-            {
-                event->target->parent->gotoAndStop((event->target->parent->currentFrame + 1));
-                AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-            }
-        }
+		if (!globalNode)EventNode::mouseDownHandler(e);
+		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
+		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
+		std::MouseEvent me(e);
+		if (!useNodeEvent) {
+			me = std::buildMouseEvent(e);
+		}
+		std::MouseEvent * event = &me;
+		if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_DOWN))return;
+		if (!event->currentTargets.size())
+			event->currentTargets.push(this);
+		Main::mouseX = e->getCursorX();
+		Main::mouseY = e->getCursorY();
+		while (event->hasNext())
+		{
+			string targetName = event->target->getName();
+			EventNode::beginTouchNode = event->target;// event->currentTargets.at(0);
+			EventNode::beginTouchPos = Vec2(Main::mouseX, Main::mouseY);
+
+			if (this->mouseDownTarget)
+			{
+				this->mouseDownTarget = NULL;
+			}
+			if (targetName == "musicCase")
+			{
+				if (this->container->btnMusic->currentFrame == 2 || this->container->btnMusic->currentFrame == 5)
+				{
+					this->container->btnMusic->gotoAndStop((this->container->btnMusic->currentFrame + 1));
+					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+				}
+			}
+			else if (targetName == "soundCase")
+			{
+				if (this->container->btnSound->currentFrame == 2 || this->container->btnSound->currentFrame == 5)
+				{
+					this->container->btnSound->gotoAndStop((this->container->btnSound->currentFrame + 1));
+					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+				}
+			}
+			else if (targetName == "backCase")
+			{
+				this->mouseDownTarget = event->target->getParent()->getParent();
+				if (this->container->back->currentFrame == 2)
+				{
+					this->container->back->gotoAndStop(3);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+				}
+			}
+			else if (targetName == "upgradesCase1" || targetName == "upgradesCase2")
+			{
+				this->mouseDownTarget = event->target->getParent();
+				if (this->container->upgrades->currentFrame != this->container->upgrades->totalFrames)
+				{
+					this->container->upgrades->gotoAndStop(this->container->upgrades->totalFrames);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+				}
+			}
+			else if (targetName == "bookCase1" || targetName == "bookCase2")
+			{
+				this->mouseDownTarget = event->target->getParent();
+				if (this->container->book->currentFrame != this->container->book->totalFrames)
+				{
+					this->container->book->gotoAndStop(this->container->book->totalFrames);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+				}
+			}
+			else if (targetName == "achievesCase1" || targetName == "achievesCase2")
+			{
+				this->mouseDownTarget = event->target->getParent();
+				if (this->container->achieves->currentFrame != this->container->achieves->totalFrames)
+				{
+					this->container->achieves->gotoAndStop(this->container->achieves->totalFrames);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+				}
+			}
+			else if (targetName == "levelCase")
+			{
+				this->mouseDownTarget = event->target->getParent();
+				Node * n=event->target->getParent()->getParent()->getParent();
+				Level_mc * level = ISTYPE(Level_mc, n);
+				if (level->currentFrame == 2 || level->currentFrame == 6 || level->currentFrame == 9)
+				{
+					level->gotoAndStop((level->currentFrame + 1));
+					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+				}
+			}
+		}
         return;
     }// end function
 
     void LevelsMenu::mouseUpHandler(cocos2d::EventMouse * e)
     {
-		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
-		if (!event)
-			return;
-        string targetName = event->target->getName();
-        if (this->mouseDownTarget)
-        {
-            this->mouseDownTarget = NULL;
-        }
-        if (targetName == "musicCase")
-        {
-            if (this->container->btnMusic->currentFrame == 3 || this->container->btnMusic->currentFrame == 6)
-            {
-                if (this->container->btnMusic->currentFrame == 3)
-                {
-                    this->container->btnMusic->gotoAndStop(5);
-                    AudioUtil::musicManage("off");
-                }
-                else if (this->container->btnMusic->currentFrame == 6)
-                {
-                    this->container->btnMusic->gotoAndStop(2);
-                    AudioUtil::musicManage("on");
-                    AudioUtil::playMusic("Music_menu_main.mp3");
-                }
-            }
-        }
-        else if (this->container->btnMusic->currentFrame == 3 || this->container->btnMusic->currentFrame == 6)
-        {
-            this->container->btnMusic->gotoAndStop(this->container->btnMusic->currentFrame - 2);
-        }
-        if (targetName == "soundCase")
-        {
-            if (this->container->btnSound->currentFrame == 3 || this->container->btnSound->currentFrame == 6)
-            {
-                if (this->container->btnSound->currentFrame == 3)
-                {
-                    this->container->btnSound->gotoAndStop(5);
-                    AudioUtil::soundManage("off");
-                }
-                else if (this->container->btnSound->currentFrame == 6)
-                {
-                    this->container->btnSound->gotoAndStop(2);
-                    AudioUtil::soundManage("on");
-                }
-            }
-        }
-        else if (this->container->btnSound->currentFrame == 3 || this->container->btnSound->currentFrame == 6)
-        {
-            this->container->btnSound->gotoAndStop(this->container->btnSound->currentFrame - 2);
-        }
-        if (targetName == "backCase")
-        {
-            if (this->container->back->currentFrame == 3)
-            {
-                this->container->back->gotoAndStop(2);
-                Main::mainClass->addNewScreen("StartMenu");
-            }
-        }
-        else if (this->container->back->currentFrame == 3)
-        {
-            this->container->back->gotoAndStop(1);
-        }
-        if (targetName == "upgradesCase1" || targetName == "upgradesCase2")
-        {
-            this->mouseMoveTarget = NULL;
-            this->mouseDownTarget = NULL;
-            this->container->upgrades.moveFlag = false;
-            this->container->upgrades->gotoAndStop(this->container->upgrades->totalFrames);
-            this->upgradesClass = new Upgrades();
-            this->addChild(this->upgradesClass);
-        }
-        else if (this->container->upgrades->currentFrame == this->container->upgrades->totalFrames)
-        {
-            this->container->upgrades->gotoAndStop((this->container->upgrades->totalFrames - 1));
-        }
-        if (targetName == "bookCase1" || targetName == "bookCase2")
-        {
-            this->mouseMoveTarget = NULL;
-            this->mouseDownTarget = NULL;
-            this->container->book->moveFlag = false;
-            this->container->book->gotoAndStop(this->container->book->totalFrames);
-            this->encyclopediaClass = new Encyclopedia();
-            this->addChild(this->encyclopediaClass);
-        }
-        else if (this->container->book->currentFrame == this->container->book->totalFrames)
-        {
-            this->container->book->gotoAndStop((this->container->book->totalFrames - 1));
-        }
-        if (targetName == "achievesCase1" || targetName == "achievesCase2")
-        {
-            this->mouseMoveTarget = NULL;
-            this->mouseDownTarget = NULL;
-            this->container->achieves->moveFlag = false;
-            this->container->achieves->gotoAndStop(this->container->achieves->totalFrames);
-            this->achievementsClass = new Achievements();
-            this->addChild(this->achievementsClass);
-        }
-        else if (this->container->achieves->currentFrame == this->container->achieves->totalFrames)
-        {
-            this->container->achieves->gotoAndStop((this->container->achieves->totalFrames - 1));
-        }
-        if (targetName == "levelCase")
-        {
-            if (event->target->parent->currentFrame == 3 || event->target->parent->currentFrame == 7 || event->target->parent->currentFrame == 10)
-            {
-                if (event->target->parent->name == "level1")
-                {
-                    this->openLevel = new OpenLevel(1);
-                }
-                else if (event->target->parent->name == "level2")
-                {
-                    this->openLevel = new OpenLevel(2);
-                }
-                else if (event->target->parent->name == "level3")
-                {
-                    this->openLevel = new OpenLevel(3);
-                }
-                else if (event->target->parent->name == "level4")
-                {
-                    this->openLevel = new OpenLevel(4);
-                }
-                else if (event->target->parent->name == "level5")
-                {
-                    this->openLevel = new OpenLevel(5);
-                }
-                else if (event->target->parent->name == "level6")
-                {
-                    this->openLevel = new OpenLevel(6);
-                }
-                else if (event->target->parent->name == "level7")
-                {
-                    this->openLevel = new OpenLevel(7);
-                }
-                else if (event->target->parent->name == "level8")
-                {
-                    this->openLevel = new OpenLevel(8);
-                }
-                else if (event->target->parent->name == "level9")
-                {
-                    this->openLevel = new OpenLevel(9);
-                }
-                else if (event->target->parent->name == "level10")
-                {
-                    this->openLevel = new OpenLevel(10);
-                }
-                else if (event->target->parent->name == "level11")
-                {
-                    this->openLevel = new OpenLevel(11);
-                }
-                else if (event->target->parent->name == "level12")
-                {
-                    this->openLevel = new OpenLevel(12);
-                }
-                else if (event->target->parent->name == "level13")
-                {
-                    this->openLevel = new OpenLevel(13);
-                }
-                else if (event->target->parent->name == "level14")
-                {
-                    this->openLevel = new OpenLevel(14);
-                }
-                else if (event->target->parent->name == "level15")
-                {
-                    this->openLevel = new OpenLevel(15);
-                }
-                this->addChild(this->openLevel);
-            }
-        }
-        if (this->container->level1->currentFrame == 3 || this->container->level1->currentFrame == 7 || this->container->level1->currentFrame == 10)
-        {
-            this->container->level1->gotoAndStop(this->container->level1->currentFrame - 2);
-        }
-        if (this->container->level2->currentFrame == 3 || this->container->level2->currentFrame == 7 || this->container->level2->currentFrame == 10)
-        {
-            this->container->level2->gotoAndStop(this->container->level2->currentFrame - 2);
-        }
-        if (this->container->level3->currentFrame == 3 || this->container->level3->currentFrame == 7 || this->container->level3->currentFrame == 10)
-        {
-            this->container->level3->gotoAndStop(this->container->level3->currentFrame - 2);
-        }
-        if (this->container->level4->currentFrame == 3 || this->container->level4->currentFrame == 7 || this->container->level4->currentFrame == 10)
-        {
-            this->container->level4->gotoAndStop(this->container->level4->currentFrame - 2);
-        }
-        if (this->container->level5->currentFrame == 3 || this->container->level5->currentFrame == 7 || this->container->level5->currentFrame == 10)
-        {
-            this->container->level5->gotoAndStop(this->container->level5->currentFrame - 2);
-        }
-        if (this->container->level6->currentFrame == 3 || this->container->level6->currentFrame == 7 || this->container->level6->currentFrame == 10)
-        {
-            this->container->level6->gotoAndStop(this->container->level6->currentFrame - 2);
-        }
-        if (this->container->level7->currentFrame == 3 || this->container->level7->currentFrame == 7 || this->container->level7->currentFrame == 10)
-        {
-            this->container->level7->gotoAndStop(this->container->level7->currentFrame - 2);
-        }
-        if (this->container->level8->currentFrame == 3 || this->container->level8->currentFrame == 7 || this->container->level8->currentFrame == 10)
-        {
-            this->container->level8->gotoAndStop(this->container->level8->currentFrame - 2);
-        }
-        if (this->container->level9->currentFrame == 3 || this->container->level9->currentFrame == 7 || this->container->level9->currentFrame == 10)
-        {
-            this->container->level9->gotoAndStop(this->container->level9->currentFrame - 2);
-        }
-        if (this->container->level10->currentFrame == 3 || this->container->level10->currentFrame == 7 || this->container->level10->currentFrame == 10)
-        {
-            this->container->level10->gotoAndStop(this->container->level10->currentFrame - 2);
-        }
-        if (this->container->level11->currentFrame == 3 || this->container->level11->currentFrame == 7 || this->container->level11->currentFrame == 10)
-        {
-            this->container->level11->gotoAndStop(this->container->level11->currentFrame - 2);
-        }
-        if (this->container->level12->currentFrame == 3 || this->container->level12->currentFrame == 7 || this->container->level12->currentFrame == 10)
-        {
-            this->container->level12->gotoAndStop(this->container->level12->currentFrame - 2);
-        }
-        if (this->container->level13->currentFrame == 3 || this->container->level13->currentFrame == 7 || this->container->level13->currentFrame == 10)
-        {
-            this->container->level13->gotoAndStop(this->container->level13->currentFrame - 2);
-        }
-        if (this->container->level14->currentFrame == 3 || this->container->level14->currentFrame == 7 || this->container->level14->currentFrame == 10)
-        {
-            this->container->level14->gotoAndStop(this->container->level14->currentFrame - 2);
-        }
-        if (this->container->level15->currentFrame == 3 || this->container->level15->currentFrame == 7 || this->container->level15->currentFrame == 10)
-        {
-            this->container->level15->gotoAndStop(this->container->level15->currentFrame - 2);
-        }
+		if (!globalNode)EventNode::mouseUpHandler(e);
+		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
+		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
+		std::MouseEvent me(e);
+		if (!useNodeEvent) {
+			me = std::buildMouseEvent(e);
+		}
+		std::MouseEvent * event = &me;
+		if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_UP))return;
+		if (!event->currentTargets.size())
+			event->currentTargets.push(this);
+		Main::mouseX = e->getCursorX();
+		Main::mouseY = e->getCursorY();
+		while (event->hasNext())
+		{
+			string targetName = event->target->getName();
+			EventNode::beginTouchNode = event->target;// event->currentTargets.at(0);
+			EventNode::beginTouchPos = Vec2(Main::mouseX, Main::mouseY);
+			if (this->mouseDownTarget)
+			{
+				this->mouseDownTarget = NULL;
+			}
+			if (targetName == "musicCase")
+			{
+				if (this->container->btnMusic->currentFrame == 3 || this->container->btnMusic->currentFrame == 6)
+				{
+					if (this->container->btnMusic->currentFrame == 3)
+					{
+						this->container->btnMusic->gotoAndStop(5);
+						AudioUtil::musicManage("off");
+					}
+					else if (this->container->btnMusic->currentFrame == 6)
+					{
+						this->container->btnMusic->gotoAndStop(2);
+						AudioUtil::musicManage("on");
+						AudioUtil::playMusic("Music_menu_main.mp3");
+					}
+				}
+			}
+			else if (this->container->btnMusic->currentFrame == 3 || this->container->btnMusic->currentFrame == 6)
+			{
+				this->container->btnMusic->gotoAndStop(this->container->btnMusic->currentFrame - 2);
+			}
+			if (targetName == "soundCase")
+			{
+				if (this->container->btnSound->currentFrame == 3 || this->container->btnSound->currentFrame == 6)
+				{
+					if (this->container->btnSound->currentFrame == 3)
+					{
+						this->container->btnSound->gotoAndStop(5);
+						AudioUtil::soundManage("off");
+					}
+					else if (this->container->btnSound->currentFrame == 6)
+					{
+						this->container->btnSound->gotoAndStop(2);
+						AudioUtil::soundManage("on");
+					}
+				}
+			}
+			else if (this->container->btnSound->currentFrame == 3 || this->container->btnSound->currentFrame == 6)
+			{
+				this->container->btnSound->gotoAndStop(this->container->btnSound->currentFrame - 2);
+			}
+			if (targetName == "backCase")
+			{
+				if (this->container->back->currentFrame == 3)
+				{
+					this->container->back->gotoAndStop(2);
+					Main::mainClass->addNewScreen("StartMenu");
+				}
+			}
+			else if (this->container->back->currentFrame == 3)
+			{
+				this->container->back->gotoAndStop(1);
+			}
+			if (targetName == "upgradesCase1" || targetName == "upgradesCase2")
+			{
+				this->mouseMoveTarget = NULL;
+				this->mouseDownTarget = NULL; 
+				this->container->upgrades->gotoAndStop(this->container->upgrades->totalFrames);
+				this->upgradesClass = new Upgrades();
+				this->addChild(this->upgradesClass);
+			}
+			else if (this->container->upgrades->currentFrame == this->container->upgrades->totalFrames)
+			{
+				this->container->upgrades->gotoAndStop((this->container->upgrades->totalFrames - 1));
+			}
+			if (targetName == "bookCase1" || targetName == "bookCase2")
+			{
+				this->mouseMoveTarget = NULL;
+				this->mouseDownTarget = NULL;
+				this->container->book->gotoAndStop(this->container->book->totalFrames);
+				//this->container->book->mouseMoveFlag= false;
+				//this->encyclopediaClass = new Encyclopedia();
+				//this->addChild(this->encyclopediaClass);
+			}
+			else if (this->container->book->currentFrame == this->container->book->totalFrames)
+			{
+				this->container->book->gotoAndStop((this->container->book->totalFrames - 1));
+			}
+			if (targetName == "achievesCase1" || targetName == "achievesCase2")
+			{
+				this->mouseMoveTarget = NULL;
+				this->mouseDownTarget = NULL;
+				this->container->achieves->mouseMoveFlag = false;
+				this->container->achieves->gotoAndStop(this->container->achieves->totalFrames);
+				this->achievementsClass = new Achievements();
+				this->addChild(this->achievementsClass);
+			}
+			else if (this->container->achieves->currentFrame == this->container->achieves->totalFrames)
+			{
+				this->container->achieves->gotoAndStop((this->container->achieves->totalFrames - 1));
+			}
+			if (targetName == "levelCase")
+			{
+				Level_mc * level = ISTYPE(Level_mc, event->target->getParent()->getParent()->getParent());
+				if (level->currentFrame == 3 || level->currentFrame == 7 || level->currentFrame == 10)
+				{
+					if (level->getName() == "level1")
+						this->openLevel = new OpenLevel(1);
+					else if (level->getName() == "level2")
+						this->openLevel = new OpenLevel(2);
+					else if (level->getName() == "level3")
+						this->openLevel = new OpenLevel(3);
+					else if (level->getName() == "level4")
+						this->openLevel = new OpenLevel(4);
+					else if (level->getName() == "level5")
+						this->openLevel = new OpenLevel(5);
+					else if (level->getName() == "level6")
+						this->openLevel = new OpenLevel(6);
+					else if (level->getName() == "level7")
+						this->openLevel = new OpenLevel(7);
+					else if (level->getName() == "level8")
+						this->openLevel = new OpenLevel(8);
+					else if (level->getName() == "level9")
+						this->openLevel = new OpenLevel(9);
+					else if (level->getName() == "level10")
+						this->openLevel = new OpenLevel(10);
+					else if (level->getName() == "level11")
+						this->openLevel = new OpenLevel(11);
+					else if (level->getName() == "level12")
+						this->openLevel = new OpenLevel(12);
+					else if (level->getName() == "level13")
+						this->openLevel = new OpenLevel(13);
+					else if (level->getName() == "level14")
+						this->openLevel = new OpenLevel(14);
+					else if (level->getName() == "level15")
+						this->openLevel = new OpenLevel(15);
+					this->addChild(this->openLevel);
+				}
+			}
+			if (this->container->level1->currentFrame == 3 || this->container->level1->currentFrame == 7 || this->container->level1->currentFrame == 10)
+			{
+				this->container->level1->gotoAndStop(this->container->level1->currentFrame - 2);
+			}
+			if (this->container->level2->currentFrame == 3 || this->container->level2->currentFrame == 7 || this->container->level2->currentFrame == 10)
+			{
+				this->container->level2->gotoAndStop(this->container->level2->currentFrame - 2);
+			}
+			if (this->container->level3->currentFrame == 3 || this->container->level3->currentFrame == 7 || this->container->level3->currentFrame == 10)
+			{
+				this->container->level3->gotoAndStop(this->container->level3->currentFrame - 2);
+			}
+			if (this->container->level4->currentFrame == 3 || this->container->level4->currentFrame == 7 || this->container->level4->currentFrame == 10)
+			{
+				this->container->level4->gotoAndStop(this->container->level4->currentFrame - 2);
+			}
+			if (this->container->level5->currentFrame == 3 || this->container->level5->currentFrame == 7 || this->container->level5->currentFrame == 10)
+			{
+				this->container->level5->gotoAndStop(this->container->level5->currentFrame - 2);
+			}
+			if (this->container->level6->currentFrame == 3 || this->container->level6->currentFrame == 7 || this->container->level6->currentFrame == 10)
+			{
+				this->container->level6->gotoAndStop(this->container->level6->currentFrame - 2);
+			}
+			if (this->container->level7->currentFrame == 3 || this->container->level7->currentFrame == 7 || this->container->level7->currentFrame == 10)
+			{
+				this->container->level7->gotoAndStop(this->container->level7->currentFrame - 2);
+			}
+			if (this->container->level8->currentFrame == 3 || this->container->level8->currentFrame == 7 || this->container->level8->currentFrame == 10)
+			{
+				this->container->level8->gotoAndStop(this->container->level8->currentFrame - 2);
+			}
+			if (this->container->level9->currentFrame == 3 || this->container->level9->currentFrame == 7 || this->container->level9->currentFrame == 10)
+			{
+				this->container->level9->gotoAndStop(this->container->level9->currentFrame - 2);
+			}
+			if (this->container->level10->currentFrame == 3 || this->container->level10->currentFrame == 7 || this->container->level10->currentFrame == 10)
+			{
+				this->container->level10->gotoAndStop(this->container->level10->currentFrame - 2);
+			}
+			if (this->container->level11->currentFrame == 3 || this->container->level11->currentFrame == 7 || this->container->level11->currentFrame == 10)
+			{
+				this->container->level11->gotoAndStop(this->container->level11->currentFrame - 2);
+			}
+			if (this->container->level12->currentFrame == 3 || this->container->level12->currentFrame == 7 || this->container->level12->currentFrame == 10)
+			{
+				this->container->level12->gotoAndStop(this->container->level12->currentFrame - 2);
+			}
+			if (this->container->level13->currentFrame == 3 || this->container->level13->currentFrame == 7 || this->container->level13->currentFrame == 10)
+			{
+				this->container->level13->gotoAndStop(this->container->level13->currentFrame - 2);
+			}
+			if (this->container->level14->currentFrame == 3 || this->container->level14->currentFrame == 7 || this->container->level14->currentFrame == 10)
+			{
+				this->container->level14->gotoAndStop(this->container->level14->currentFrame - 2);
+			}
+			if (this->container->level15->currentFrame == 3 || this->container->level15->currentFrame == 7 || this->container->level15->currentFrame == 10)
+			{
+				this->container->level15->gotoAndStop(this->container->level15->currentFrame - 2);
+			}
+		}
         return;
     }// end function
 
@@ -1414,346 +1435,348 @@ namespace screens
 
     void LevelsMenu::autoguidersButtons()
     {
-		this->autoguidesMouse_pt = CONVERT_TO_WORLD_POS(cocos2d::Point(this->mouseX, this->mouseY));
-		this->autoguidesObject = NULL;
-		this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->back->localToGlobal(this->container->backBackCase->getPosition()));
-		this->autoguidesObjectWidth = this->container->backBackCase->getWidth() / 2;
-		this->autoguidesObjectHeight = this->container->backBackCase->getHeight() / 2;
-		if (this->container->backBackCase->hitTest(autoguidesMouse_pt))
-		{
-			this->autoguidesObject = this->container->backBackCase;
-		}
-        if (!this->autoguidesObject)
-        {
-            this->autoguidesObject_pt = this->container->upgrades->localToGlobal( this->container->upgrades->upgradesCase1->getPosition());
-            this->autoguidesObjectWidth = this->container->upgrades->upgradesCase1->width / 2;
-            this->autoguidesObjectHeight = this->container->upgrades->upgradesCase1->height / 2;
-            if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-            {
-                this->autoguidesObject = this->container->upgrades->upgradesCase1;
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            this->autoguidesObject_pt = this->container->upgrades->localToGlobal(this->container->upgrades->upgradesCase2->getPosition());
-            this->autoguidesObjectWidth = this->container->upgrades.upgradesCase2->width / 2;
-            this->autoguidesObjectHeight = this->container->upgrades.upgradesCase2->height / 2;
-            if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-            {
-                this->autoguidesObject = this->container->upgrades->upgradesCase2;
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            this->autoguidesObject_pt = this->container->book->localToGlobal(this->container->book->bookCase1->getPosition());
-            this->autoguidesObjectWidth = this->container->book->bookCase1->width / 2;
-            this->autoguidesObjectHeight = this->container->book->bookCase1->height / 2;
-            if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-            {
-                this->autoguidesObject = this->container->book->bookCase1;
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            this->autoguidesObject_pt = this->container->book->localToGlobal(this->container->book->bookCase2->getPosition());
-            this->autoguidesObjectWidth = this->container->book->bookCase2->width / 2;
-            this->autoguidesObjectHeight = this->container->book->bookCase2->height / 2;
-            if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-            {
-                this->autoguidesObject = this->container->book->bookCase2;
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            this->autoguidesObject_pt = this->container->achieves->localToGlobal(this->container->achieves->achievesCase1->getPosition());
-            this->autoguidesObjectWidth = this->container->achieves->achievesCase1->width / 2;
-            this->autoguidesObjectHeight = this->container->achieves->achievesCase1->height / 2;
-            if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight
-                && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-            {
-                this->autoguidesObject = this->container->achieves->achievesCase1;
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            this->autoguidesObject_pt = this->container->achieves->localToGlobal(this->container->achieves->achievesCase2->getPosition());
-            this->autoguidesObjectWidth = this->container->achieves->achievesCase2->width / 2;
-            this->autoguidesObjectHeight = this->container->achieves->achievesCase2->height / 2;
-            if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-            {
-                this->autoguidesObject = this->container->achieves->achievesCase2;
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            if (this->container->level1->levelCase)
-            {
-                this->autoguidesObject_pt = this->container->level1->localToGlobal(this->container->level1->levelCase->getPosition());
-                this->autoguidesObjectWidth = this->container->level1->levelCase->width / 2;
-                this->autoguidesObjectHeight = this->container->level1->levelCase->height / 2;
-                if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-                {
-                    this->autoguidesObject = this->container->level1->levelCase;
-                }
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            if (this->container->level2->levelCase)
-            {
-                this->autoguidesObject_pt = this->container->level2->localToGlobal(this->container->level2->levelCase->getPosition());
-                this->autoguidesObjectWidth = this->container->level2->levelCase->width / 2;
-                this->autoguidesObjectHeight = this->container->level2->levelCase->height / 2;
-                if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-                {
-                    this->autoguidesObject = this->container->level2->levelCase;
-                }
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            if (this->container->level3->levelCase)
-            {
-                this->autoguidesObject_pt = this->container->level3->localToGlobal(this->container->level3->levelCase->getPosition());
-                this->autoguidesObjectWidth = this->container->level3->levelCase->width / 2;
-                this->autoguidesObjectHeight = this->container->level3->levelCase->height / 2;
-                if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-                {
-                    this->autoguidesObject = this->container->level3->levelCase;
-                }
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            if (this->container->level4->levelCase)
-            {
-                this->autoguidesObject_pt = this->container->level4->localToGlobal(this->container->level4->levelCase->getPosition());
-                this->autoguidesObjectWidth = this->container->level4->levelCase->width / 2;
-                this->autoguidesObjectHeight = this->container->level4->levelCase->height / 2;
-                if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-                {
-                    this->autoguidesObject = this->container->level4->levelCase;
-                }
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            if (this->container->level5->levelCase)
-            {
-                this->autoguidesObject_pt = this->container->level5->localToGlobal(this->container->level5->levelCase->getPosition());
-                this->autoguidesObjectWidth = this->container->level5->levelCase->width / 2;
-                this->autoguidesObjectHeight = this->container->level5->levelCase->height / 2;
-                if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-                {
-                    this->autoguidesObject = this->container->level5->levelCase;
-                }
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            if (this->container->level6->levelCase)
-            {
-                this->autoguidesObject_pt = this->container->level6->localToGlobal(this->container->level6->levelCase->getPosition());
-                this->autoguidesObjectWidth = this->container->level6->levelCase->width / 2;
-                this->autoguidesObjectHeight = this->container->level6->levelCase->height / 2;
-                if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-                {
-                    this->autoguidesObject = this->container->level6->levelCase;
-                }
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            if (this->container->level7->levelCase)
-            {
-                this->autoguidesObject_pt = this->container->level7->localToGlobal(this->container->level7->levelCase->getPosition());
-                this->autoguidesObjectWidth = this->container->level7->levelCase->width / 2;
-                this->autoguidesObjectHeight = this->container->level7->levelCase->height / 2;
-                if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-                {
-                    this->autoguidesObject = this->container->level7->levelCase;
-                }
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            if (this->container->level8->levelCase)
-            {
-                this->autoguidesObject_pt = this->container->level8->localToGlobal(this->container->level8->levelCase->getPosition());
-                this->autoguidesObjectWidth = this->container->level8->levelCase->width / 2;
-                this->autoguidesObjectHeight = this->container->level8->levelCase->height / 2;
-                if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-                {
-                    this->autoguidesObject = this->container->level8->levelCase;
-                }
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            if (this->container->level9->levelCase)
-            {
-                this->autoguidesObject_pt = this->container->level9->localToGlobal(this->container->level9->levelCase->getPosition());
-                this->autoguidesObjectWidth = this->container->level9->levelCase->width / 2;
-                this->autoguidesObjectHeight = this->container->level9->levelCase->height / 2;
-                if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-                {
-                    this->autoguidesObject = this->container->level9->levelCase;
-                }
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            if (this->container->level10->levelCase)
-            {
-                this->autoguidesObject_pt = this->container->level10->localToGlobal(this->container->level10->levelCase->getPosition());
-                this->autoguidesObjectWidth = this->container->level10->levelCase->width / 2;
-                this->autoguidesObjectHeight = this->container->level10->levelCase->height / 2;
-                if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-                {
-                    this->autoguidesObject = this->container->level10->levelCase;
-                }
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            if (this->container->level11->levelCase)
-            {
-                this->autoguidesObject_pt = this->container->level11->localToGlobal(this->container->level11->levelCase->getPosition());
-                this->autoguidesObjectWidth = this->container->level11->levelCase->width / 2;
-                this->autoguidesObjectHeight = this->container->level11->levelCase->height / 2;
-                if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-                {
-                    this->autoguidesObject = this->container->level11->levelCase;
-                }
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            if (this->container->level12->levelCase)
-            {
-                this->autoguidesObject_pt = this->container->level12->localToGlobal(this->container->level12->levelCase->getPosition());
-                this->autoguidesObjectWidth = this->container->level12->levelCase->width / 2;
-                this->autoguidesObjectHeight = this->container->level12->levelCase->height / 2;
-                if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-                {
-                    this->autoguidesObject = this->container->level12->levelCase;
-                }
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            if (this->container->level13->levelCase)
-            {
-                this->autoguidesObject_pt = this->container->level13->localToGlobal(this->container->level13->levelCase->getPosition());
-                this->autoguidesObjectWidth = this->container->level13->levelCase->width / 2;
-                this->autoguidesObjectHeight = this->container->level13->levelCase->height / 2;
-                if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth
-                    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-                {
-                    this->autoguidesObject = this->container->level13->levelCase;
-                }
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            if (this->container->level14->levelCase)
-            {
-                this->autoguidesObject_pt = this->container->level14->localToGlobal(this->container->level14->levelCase->getPosition());
-                this->autoguidesObjectWidth = this->container->level14->levelCase->width / 2;
-                this->autoguidesObjectHeight = this->container->level14->levelCase->height / 2;
-                if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-                {
-                    this->autoguidesObject = this->container->level14->levelCase;
-                }
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            if (this->container->level15->levelCase)
-            {
-                this->autoguidesObject_pt = this->container->level15->localToGlobal(this->container->level15->levelCase->getPosition());
-                this->autoguidesObjectWidth = this->container->level15->levelCase->width / 2;
-                this->autoguidesObjectHeight = this->container->level15->levelCase->height / 2;
-                if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-                {
-                    this->autoguidesObject = this->container->level15->levelCase;
-                }
-            }
-        }
-        if (this->autoguidesObject)
-        {
-            this->tempObject = new Object();
-            this->tempObject.target = this->autoguidesObject;
-            this->mouseMoveHandler(this->tempObject);
-        }
+		//this->autoguidesMouse_pt = CONVERT_TO_WORLD_POS(cocos2d::Point(this->mouseX, this->mouseY));
+		//this->autoguidesObject = NULL;
+		//this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->back->localToGlobal(this->container->backBackCase->getPosition()));
+		//this->autoguidesObjectWidth = this->container->backBackCase->getWidth() / 2;
+		//this->autoguidesObjectHeight = this->container->backBackCase->getHeight() / 2;
+		//if (this->container->backBackCase->hitTest(autoguidesMouse_pt))
+		//{
+		//	this->autoguidesObject = this->container->backBackCase;
+		//}
+  //      if (!this->autoguidesObject)
+  //      {
+  //          this->autoguidesObject_pt = this->container->upgrades->localToGlobal( this->container->upgrades->upgradesCase1->getPosition());
+  //          this->autoguidesObjectWidth = this->container->upgrades->upgradesCase1->width / 2;
+  //          this->autoguidesObjectHeight = this->container->upgrades->upgradesCase1->height / 2;
+  //          if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
+  //              && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
+  //              && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
+  //              && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+  //          {
+  //              this->autoguidesObject = this->container->upgrades->upgradesCase1;
+  //          }
+  //      }
+  //      if (!this->autoguidesObject)
+  //      {
+  //          this->autoguidesObject_pt = this->container->upgrades->localToGlobal(this->container->upgrades->upgradesCase2->getPosition());
+  //          this->autoguidesObjectWidth = this->container->upgrades.upgradesCase2->width / 2;
+  //          this->autoguidesObjectHeight = this->container->upgrades.upgradesCase2->height / 2;
+  //          if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
+  //              && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
+  //              && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
+  //              && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+  //          {
+  //              this->autoguidesObject = this->container->upgrades->upgradesCase2;
+  //          }
+  //      }
+  //      if (!this->autoguidesObject)
+  //      {
+  //          this->autoguidesObject_pt = this->container->book->localToGlobal(this->container->book->bookCase1->getPosition());
+  //          this->autoguidesObjectWidth = this->container->book->bookCase1->width / 2;
+  //          this->autoguidesObjectHeight = this->container->book->bookCase1->height / 2;
+  //          if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
+  //              && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
+  //              && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
+  //              && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+  //          {
+  //              this->autoguidesObject = this->container->book->bookCase1;
+  //          }
+  //      }
+  //      if (!this->autoguidesObject)
+  //      {
+  //          this->autoguidesObject_pt = this->container->book->localToGlobal(this->container->book->bookCase2->getPosition());
+  //          this->autoguidesObjectWidth = this->container->book->bookCase2->width / 2;
+  //          this->autoguidesObjectHeight = this->container->book->bookCase2->height / 2;
+  //          if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
+  //              && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
+  //              && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
+  //              && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+  //          {
+  //              this->autoguidesObject = this->container->book->bookCase2;
+  //          }
+  //      }
+  //      if (!this->autoguidesObject)
+  //      {
+  //          this->autoguidesObject_pt = this->container->achieves->localToGlobal(this->container->achieves->achievesCase1->getPosition());
+  //          this->autoguidesObjectWidth = this->container->achieves->achievesCase1->width / 2;
+  //          this->autoguidesObjectHeight = this->container->achieves->achievesCase1->height / 2;
+  //          if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
+  //              && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
+  //              && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight
+  //              && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+  //          {
+  //              this->autoguidesObject = this->container->achieves->achievesCase1;
+  //          }
+  //      }
+  //      if (!this->autoguidesObject)
+  //      {
+  //          this->autoguidesObject_pt = this->container->achieves->localToGlobal(this->container->achieves->achievesCase2->getPosition());
+  //          this->autoguidesObjectWidth = this->container->achieves->achievesCase2->width / 2;
+  //          this->autoguidesObjectHeight = this->container->achieves->achievesCase2->height / 2;
+  //          if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
+  //              && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
+  //              && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
+  //              && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+  //          {
+  //              this->autoguidesObject = this->container->achieves->achievesCase2;
+  //          }
+  //      }
+  //      if (!this->autoguidesObject)
+  //      {
+  //          if (this->container->level1->levelCase)
+  //          {
+  //              this->autoguidesObject_pt = this->container->level1->localToGlobal(this->container->level1->levelCase->getPosition());
+  //              this->autoguidesObjectWidth = this->container->level1->levelCase->width / 2;
+  //              this->autoguidesObjectHeight = this->container->level1->levelCase->height / 2;
+  //              if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
+  //                  && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
+  //                  && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
+  //                  && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+  //              {
+  //                  this->autoguidesObject = this->container->level1->levelCase;
+  //              }
+  //          }
+  //      }
+  //      if (!this->autoguidesObject)
+  //      {
+  //          if (this->container->level2->levelCase)
+  //          {
+  //              this->autoguidesObject_pt = this->container->level2->localToGlobal(this->container->level2->levelCase->getPosition());
+  //              this->autoguidesObjectWidth = this->container->level2->levelCase->width / 2;
+  //              this->autoguidesObjectHeight = this->container->level2->levelCase->height / 2;
+  //              if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
+  //                  && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
+  //                  && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
+  //                  && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+  //              {
+  //                  this->autoguidesObject = this->container->level2->levelCase;
+  //              }
+  //          }
+  //      }
+  //      if (!this->autoguidesObject)
+  //      {
+  //          if (this->container->level3->levelCase)
+  //          {
+  //              this->autoguidesObject_pt = this->container->level3->localToGlobal(this->container->level3->levelCase->getPosition());
+  //              this->autoguidesObjectWidth = this->container->level3->levelCase->width / 2;
+  //              this->autoguidesObjectHeight = this->container->level3->levelCase->height / 2;
+  //              if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
+  //                  && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
+  //                  && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
+  //                  && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+  //              {
+  //                  this->autoguidesObject = this->container->level3->levelCase;
+  //              }
+  //          }
+  //      }
+  //      if (!this->autoguidesObject)
+  //      {
+  //          if (this->container->level4->levelCase)
+  //          {
+  //              this->autoguidesObject_pt = this->container->level4->localToGlobal(this->container->level4->levelCase->getPosition());
+  //              this->autoguidesObjectWidth = this->container->level4->levelCase->width / 2;
+  //              this->autoguidesObjectHeight = this->container->level4->levelCase->height / 2;
+  //              if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
+  //                  && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
+  //                  && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
+  //                  && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+  //              {
+  //                  this->autoguidesObject = this->container->level4->levelCase;
+  //              }
+  //          }
+  //      }
+  //      if (!this->autoguidesObject)
+  //      {
+  //          if (this->container->level5->levelCase)
+  //          {
+  //              this->autoguidesObject_pt = this->container->level5->localToGlobal(this->container->level5->levelCase->getPosition());
+  //              this->autoguidesObjectWidth = this->container->level5->levelCase->width / 2;
+  //              this->autoguidesObjectHeight = this->container->level5->levelCase->height / 2;
+  //              if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
+  //                  && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
+  //                  && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
+  //                  && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+  //              {
+  //                  this->autoguidesObject = this->container->level5->levelCase;
+  //              }
+  //          }
+  //      }
+  //      if (!this->autoguidesObject)
+  //      {
+  //          if (this->container->level6->levelCase)
+  //          {
+  //              this->autoguidesObject_pt = this->container->level6->localToGlobal(this->container->level6->levelCase->getPosition());
+  //              this->autoguidesObjectWidth = this->container->level6->levelCase->width / 2;
+  //              this->autoguidesObjectHeight = this->container->level6->levelCase->height / 2;
+  //              if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
+  //                  && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
+  //                  && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
+  //                  && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+  //              {
+  //                  this->autoguidesObject = this->container->level6->levelCase;
+  //              }
+  //          }
+  //      }
+  //      if (!this->autoguidesObject)
+  //      {
+  //          if (this->container->level7->levelCase)
+  //          {
+  //              this->autoguidesObject_pt = this->container->level7->localToGlobal(this->container->level7->levelCase->getPosition());
+  //              this->autoguidesObjectWidth = this->container->level7->levelCase->width / 2;
+  //              this->autoguidesObjectHeight = this->container->level7->levelCase->height / 2;
+  //              if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
+  //                  && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
+  //                  && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
+  //                  && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+  //              {
+  //                  this->autoguidesObject = this->container->level7->levelCase;
+  //              }
+  //          }
+  //      }
+  //      if (!this->autoguidesObject)
+  //      {
+  //          if (this->container->level8->levelCase)
+  //          {
+  //              this->autoguidesObject_pt = this->container->level8->localToGlobal(this->container->level8->levelCase->getPosition());
+  //              this->autoguidesObjectWidth = this->container->level8->levelCase->width / 2;
+  //              this->autoguidesObjectHeight = this->container->level8->levelCase->height / 2;
+  //              if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
+  //                  && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
+  //                  && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
+  //                  && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+  //              {
+  //                  this->autoguidesObject = this->container->level8->levelCase;
+  //              }
+  //          }
+  //      }
+  //      if (!this->autoguidesObject)
+  //      {
+  //          if (this->container->level9->levelCase)
+  //          {
+  //              this->autoguidesObject_pt = this->container->level9->localToGlobal(this->container->level9->levelCase->getPosition());
+  //              this->autoguidesObjectWidth = this->container->level9->levelCase->width / 2;
+  //              this->autoguidesObjectHeight = this->container->level9->levelCase->height / 2;
+  //              if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
+  //                  && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
+  //                  && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
+  //                  && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+  //              {
+  //                  this->autoguidesObject = this->container->level9->levelCase;
+  //              }
+  //          }
+  //      }
+  //      if (!this->autoguidesObject)
+  //      {
+  //          if (this->container->level10->levelCase)
+  //          {
+  //              this->autoguidesObject_pt = this->container->level10->localToGlobal(this->container->level10->levelCase->getPosition());
+  //              this->autoguidesObjectWidth = this->container->level10->levelCase->width / 2;
+  //              this->autoguidesObjectHeight = this->container->level10->levelCase->height / 2;
+  //              if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
+  //                  && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
+  //                  && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
+  //                  && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+  //              {
+  //                  this->autoguidesObject = this->container->level10->levelCase;
+  //              }
+  //          }
+  //      }
+  //      if (!this->autoguidesObject)
+  //      {
+  //          if (this->container->level11->levelCase)
+  //          {
+  //              this->autoguidesObject_pt = this->container->level11->localToGlobal(this->container->level11->levelCase->getPosition());
+  //              this->autoguidesObjectWidth = this->container->level11->levelCase->width / 2;
+  //              this->autoguidesObjectHeight = this->container->level11->levelCase->height / 2;
+  //              if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
+  //                  && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
+  //                  && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
+  //                  && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+  //              {
+  //                  this->autoguidesObject = this->container->level11->levelCase;
+  //              }
+  //          }
+  //      }
+  //      if (!this->autoguidesObject)
+  //      {
+  //          if (this->container->level12->levelCase)
+  //          {
+  //              this->autoguidesObject_pt = this->container->level12->localToGlobal(this->container->level12->levelCase->getPosition());
+  //              this->autoguidesObjectWidth = this->container->level12->levelCase->width / 2;
+  //              this->autoguidesObjectHeight = this->container->level12->levelCase->height / 2;
+  //              if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
+  //                  && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
+  //                  && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
+  //                  && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+  //              {
+  //                  this->autoguidesObject = this->container->level12->levelCase;
+  //              }
+  //          }
+  //      }
+  //      if (!this->autoguidesObject)
+  //      {
+  //          if (this->container->level13->levelCase)
+  //          {
+  //              this->autoguidesObject_pt = this->container->level13->localToGlobal(this->container->level13->levelCase->getPosition());
+  //              this->autoguidesObjectWidth = this->container->level13->levelCase->width / 2;
+  //              this->autoguidesObjectHeight = this->container->level13->levelCase->height / 2;
+  //              if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
+  //                  && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth
+  //                  && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
+  //                  && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+  //              {
+  //                  this->autoguidesObject = this->container->level13->levelCase;
+  //              }
+  //          }
+  //      }
+  //      if (!this->autoguidesObject)
+  //      {
+  //          if (this->container->level14->levelCase)
+  //          {
+  //              this->autoguidesObject_pt = this->container->level14->localToGlobal(this->container->level14->levelCase->getPosition());
+  //              this->autoguidesObjectWidth = this->container->level14->levelCase->width / 2;
+  //              this->autoguidesObjectHeight = this->container->level14->levelCase->height / 2;
+  //              if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
+  //                  && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
+  //                  && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
+  //                  && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+  //              {
+  //                  this->autoguidesObject = this->container->level14->levelCase;
+  //              }
+  //          }
+  //      }
+  //      if (!this->autoguidesObject)
+  //      {
+  //          if (this->container->level15->levelCase)
+  //          {
+  //              this->autoguidesObject_pt = this->container->level15->localToGlobal(this->container->level15->levelCase->getPosition());
+  //              this->autoguidesObjectWidth = this->container->level15->levelCase->width / 2;
+  //              this->autoguidesObjectHeight = this->container->level15->levelCase->height / 2;
+  //              if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
+  //                  && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
+  //                  && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
+  //                  && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+  //              {
+  //                  this->autoguidesObject = this->container->level15->levelCase;
+  //              }
+  //          }
+  //      }
+  //      if (this->autoguidesObject)
+  //      {
+  //          this->tempObject = new Object();
+  //          this->tempObject.target = this->autoguidesObject;
+  //          this->mouseMoveHandler(this->tempObject);
+  //      }
         return;
     }// end function
 
     void LevelsMenu::manageListeners(string param1)
     {
         if (param1 == "on")
-		{
+		{ 
+			if (useNodeEvent)
+				std::globalNode = this;
 			this->enableMouseHandler(true);
 			this->enableFrameHandler(true);
 

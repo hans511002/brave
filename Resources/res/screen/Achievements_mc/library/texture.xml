@@ -1,0 +1,78 @@
+<TextureAtlas name="Achievements_mc" imagePath="texture.png">
+ <SubTexture name="Symbol 1600" x="0" y="613" width="700" height="500"/>
+ <SubTexture name="Symbol 6101" x="0" y="0" width="688" height="515"/>
+ <SubTexture name="Symbol 6103" x="690" y="294" width="162" height="12"/>
+ <SubTexture name="位图 3" x="690" y="164" width="250" height="73"/>
+ <SubTexture name="Symbol 47" x="802" y="308" width="50" height="50"/>
+ <SubTexture name="__dbTextures/Symbol 6208/Layer 5_0" x="690" y="0" width="312" height="80"/>
+ <SubTexture name="__dbTextures/Symbol 6208/Layer 5_1" x="690" y="82" width="312" height="80"/>
+ <SubTexture name="位图 2" x="690" y="268" width="201" height="24"/>
+ <SubTexture name="位图 1" x="690" y="239" width="223" height="27"/>
+ <SubTexture name="__dbTextures/Symbol 6208/Layer 1_0" x="973" y="260" width="46" height="46"/>
+ <SubTexture name="__dbTextures/Symbol 6217/Layer 2_0" x="942" y="164" width="56" height="46"/>
+ <SubTexture name="__dbTextures/Symbol 6217/Layer 2_1" x="854" y="294" width="56" height="46"/>
+ <SubTexture name="__dbTextures/Symbol 6217/Layer 2_2" x="915" y="260" width="56" height="46"/>
+ <SubTexture name="__dbTextures/Symbol 6217/Layer 2_3" x="942" y="212" width="56" height="46"/>
+ <SubTexture name="__dbTextures/Symbol 6224/Layer 2_0" x="690" y="348" width="110" height="38"/>
+ <SubTexture name="__dbTextures/Symbol 6224/Layer 2_1" x="690" y="308" width="110" height="38"/>
+ <SubTexture name="__dbTextures/Symbol 6224/Layer 2_2" x="690" y="388" width="110" height="38"/>
+ <SubTexture name="__dbTextures/Symbol 5822/Layer 1_0" x="158" y="563" width="30" height="48"/>
+ <SubTexture name="__dbTextures/Symbol 5822/Layer 1_2" x="990" y="452" width="30" height="48"/>
+ <SubTexture name="__dbTextures/Symbol 5822/Layer 1_4" x="286" y="563" width="30" height="48"/>
+ <SubTexture name="__dbTextures/Symbol 5822/Layer 1_6" x="382" y="563" width="30" height="48"/>
+ <SubTexture name="__dbTextures/Symbol 5822/Layer 1_8" x="254" y="563" width="30" height="48"/>
+ <SubTexture name="__dbTextures/Symbol 5822/Layer 1_10" x="190" y="563" width="30" height="48"/>
+ <SubTexture name="__dbTextures/Symbol 5822/Layer 1_12" x="94" y="563" width="30" height="48"/>
+ <SubTexture name="__dbTextures/Symbol 5822/Layer 1_14" x="990" y="402" width="30" height="48"/>
+ <SubTexture name="__dbTextures/Symbol 5822/Layer 1_16" x="658" y="516" width="30" height="48"/>
+ <SubTexture name="__dbTextures/Symbol 5822/Layer 1_18" x="222" y="563" width="30" height="48"/>
+ <SubTexture name="__dbTextures/Symbol 5822/Layer 1_20" x="318" y="563" width="30" height="48"/>
+ <SubTexture name="__dbTextures/Symbol 5822/Layer 1_22" x="350" y="563" width="30" height="48"/>
+ <SubTexture name="__dbTextures/Symbol 5822/Layer 1_24" x="126" y="563" width="30" height="48"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_0" x="925" y="496" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_1" x="235" y="516" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_2" x="611" y="516" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_3" x="896" y="402" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_4" x="854" y="342" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_5" x="972" y="502" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_6" x="690" y="428" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_7" x="188" y="516" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_8" x="0" y="516" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_9" x="47" y="563" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_10" x="849" y="389" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_11" x="878" y="543" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_12" x="737" y="428" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_13" x="912" y="308" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_14" x="943" y="449" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_15" x="0" y="563" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_16" x="690" y="522" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_17" x="784" y="548" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_18" x="849" y="436" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_19" x="47" y="516" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_20" x="737" y="475" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_21" x="784" y="501" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_22" x="896" y="449" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_23" x="784" y="454" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_24" x="470" y="516" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_25" x="564" y="516" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_26" x="376" y="516" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_27" x="737" y="522" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_28" x="925" y="543" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_29" x="831" y="483" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_30" x="94" y="516" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_31" x="802" y="360" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_32" x="901" y="355" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_33" x="423" y="516" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_34" x="690" y="475" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_35" x="959" y="308" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_36" x="972" y="549" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_37" x="802" y="407" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_38" x="141" y="516" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_39" x="948" y="355" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_40" x="517" y="516" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_41" x="943" y="402" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_42" x="831" y="530" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_43" x="878" y="496" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_44" x="282" y="516" width="45" height="45"/>
+ <SubTexture name="__dbTextures/Symbol 6202/Layer 1_45" x="329" y="516" width="45" height="45"/>
+</TextureAtlas>

@@ -113,7 +113,7 @@ namespace engine {
                 }
             }
         }
-        this->setPosition(CONVERT_TO_WORLD_POS(Vec2(this->world->mouseX, this->world->mouseY)));
+        this->setPosition(CONVERT_TO_WORLD_POS(Vec2(Main::mouseX, Main::mouseY)));
         this->setMouseChildren(false);
         this->setMouseEnabled(false);
         return true;
@@ -206,7 +206,7 @@ namespace engine {
         }
         if (this->world->getSphere == this) {
             this->world->feature->scanPointersAtCast(); 
-            this->setPosition(CONVERT_TO_WORLD_POS(Vec2(this->world->mouseX, this->world->mouseY)));
+            this->setPosition(CONVERT_TO_WORLD_POS(Vec2(Main::mouseX, Main::mouseY)));
             if (this->radius->isVisible()) {
                 if (this->radius->currentFrame == 1) {
                     this->radius->setRotation(this->radius->getRotation() + 1);
@@ -225,7 +225,7 @@ namespace engine {
         std::MouseEvent *event = ISTYPE(std::MouseEvent, e);
         if (!event)
             return;
-        this->setPosition(CONVERT_TO_WORLD_POS(Vec2(this->world->mouseX, this->world->mouseY)));
+        this->setPosition(CONVERT_TO_WORLD_POS(Vec2(Main::mouseX, Main::mouseY)));
         string targetName = event->target->getName();
         if (targetName == "fireCase") {
             if (ISTYPE(EventNode, event->target)->mouseEnabled &&
@@ -424,7 +424,7 @@ namespace engine {
                 } else if (this->world->ultraTowerMenu) {
                     tempObject = this->world->ultraTowerMenu;
                 }
-                if (!this->radius->isVisible() && tempObject->myTower->this_pt.distance(CONVERT_TO_WORLD_POS(cocos2d::Point(this->world->mouseX, this->world->mouseY))) > 86) {
+                if (!this->radius->isVisible() && tempObject->myTower->this_pt.distance(CONVERT_TO_WORLD_POS(cocos2d::Point(Main::mouseX, Main::mouseY))) > 86) {
                     this->radius->setVisible(true);
                     this->arrow->setVisible(true);
                     tempObject->closeMenu();

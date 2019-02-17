@@ -542,7 +542,7 @@ namespace engine
 						this->world->pointer1->setMouseChildren(true);
 						this->world->pointer1->setMouseEnabled(true);
 						this->world->pointer1->setVisible(false);
-						this->world->pointer1->mouseFlag = false;
+						this->world->pointer1->mouseMoveFlag = false;
 						this->world->pointer1->statusAnima = 1;
 						if (this->world->pointer2)
 						{
@@ -554,7 +554,7 @@ namespace engine
 							this->world->pointer2->setMouseChildren(true);
 							this->world->pointer2->setMouseEnabled(true);
 							this->world->pointer2->setVisible(false);
-							this->world->pointer2->mouseFlag = false;
+							this->world->pointer2->mouseMoveFlag = false;
 							this->world->pointer2->statusAnima = 1;
 						}
 						if (this->world->pointer3)
@@ -567,7 +567,7 @@ namespace engine
 							this->world->pointer3->setMouseChildren(true);
 							this->world->pointer3->setMouseEnabled(true);
 							this->world->pointer3->setVisible(false);
-							this->world->pointer3->mouseFlag = false;
+							this->world->pointer3->mouseMoveFlag = false;
 							this->world->pointer3->statusAnima = 1;
 						}
 					}
@@ -612,7 +612,7 @@ namespace engine
 						}
 					}
 				}
-				else if (tempObject->mouseFlag)
+				else if (tempObject->mouseMoveFlag)
 				{
 					if (tempObject->getScaleX() < 1)
 					{
@@ -1631,7 +1631,7 @@ namespace engine
 
 	void Feature::scanPointersAtCast()
 	{
-		cocos2d::Point tempObject=CONVERT_TO_WORLD_POS(Vec2(this->world->mouseX, this->world->mouseY));
+		cocos2d::Point tempObject=CONVERT_TO_WORLD_POS(Vec2(Main::mouseX, Main::mouseY));
 		if (tempObject.distance(this->world->pointer1->myPoint) < 30)
 		{
 			if (this->world->pointer1->getAlpha() == 1)

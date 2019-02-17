@@ -197,7 +197,7 @@ namespace engine
                         }
                     }
                 }
-                if (this->myTower->this_pt.distance(CONVERT_TO_WORLD_POS(cocos2d::Point(this->world->mouseX, this->world->mouseY))) > 75)
+                if (this->myTower->this_pt.distance(CONVERT_TO_WORLD_POS(cocos2d::Point(Main::mouseX, Main::mouseY))) > 75)
                 {
                     if (this->mouseEnabled)
                     { 
@@ -243,7 +243,7 @@ namespace engine
                 }
                 if (!this->readyFastBuyUltraFlag)
                 {
-                    if (this->myTower->this_pt.distance(CONVERT_TO_WORLD_POS(cocos2d::Point(this->world->mouseX, this->world->mouseY))) > 86)
+                    if (this->myTower->this_pt.distance(CONVERT_TO_WORLD_POS(cocos2d::Point(Main::mouseX, Main::mouseY))) > 86)
                     {
                         if (this->mouseEnabled)
                         { 
@@ -1330,7 +1330,7 @@ namespace engine
 
         void UltraTowerMenu::autoguidersButtons()
         {
-            this->autoguidesMouse_pt = cocos2d::Point(Main::mainClass->worldClass->mouseX, Main::mainClass->worldClass->mouseY);
+            this->autoguidesMouse_pt =CONVERT_TO_WORLD_POS(cocos2d::Point(Main::mouseX, Main::mouseY));
             this->autoguidesObject = NULL;
 			this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(container->sphereSlot1SphereSlotCase->localToGlobal(container->sphereSlot1SphereSlotCase->getPosition()));
             this->autoguidesObjectWidth = container->sphereSlot1SphereSlotCase->getWidth() / 2;

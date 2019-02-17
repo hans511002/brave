@@ -146,7 +146,7 @@ namespace screens
         } 
         this->container->setMouseChildren(false);
         this->container->setMouseEnabled(false);
-        return;
+        return true;
     }// end function
 
     void StartMenu::enterFrameHandler(cocos2d::EventMouse * event)

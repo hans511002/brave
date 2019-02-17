@@ -17,6 +17,9 @@ namespace std {
 
 }
 
+  float Main::mouseX=0;
+  float Main::mouseY=0;
+
 Main::Main() :worldClass(NULL), frameCounter(0), container(NULL), middleScreenClass(NULL), levelsMenuClass(NULL), preload(false)
 {
 	i18n.init();

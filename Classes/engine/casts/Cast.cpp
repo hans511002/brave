@@ -32,9 +32,9 @@ namespace engine
 		{
 			//this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
 			this->world = Main::mainClass->worldClass;
-			this->setPosition(CONVERT_TO_WORLD_POS(Vec2(this->world->mouseX, this->world->mouseY)));
-			//this->x = this->world->mouseX;
-			//this->y = this->world->mouseY;
+			this->setPosition(CONVERT_TO_WORLD_POS(Vec2(Main::mouseX, Main::mouseY)));
+			//this->x = Main::mouseX;
+			//this->y = Main::mouseY;
 			this->setMouseChildren(false);
 			this->setMouseEnabled(false);
 			this->world->hint->setVisible( false);
@@ -45,9 +45,9 @@ namespace engine
 		void   Cast::update(float dt)
 		{
 			this->world->feature->scanPointersAtCast();
-			this->setPosition(CONVERT_TO_WORLD_POS(cocos2d::Point(this->world->mouseX, this->world->mouseY)));
-			//this->x = this->world->mouseX;
-			//this->y = this->world->mouseY;
+			this->setPosition(CONVERT_TO_WORLD_POS(cocos2d::Point(Main::mouseX, Main::mouseY)));
+			//this->x = Main::mouseX;
+			//this->y = Main::mouseY;
 			if(this->container->currentFrame == 3)
 			{
 				if(this->canselCounter < this->canselTimer)
@@ -64,7 +64,7 @@ namespace engine
 		}// end function
 		bool Cast::scanWay()
 		{
-			tempObject = CONVERT_TO_WORLD_POS(cocos2d::Point(this->world->mouseX, this->world->mouseY)); 
+			tempObject = CONVERT_TO_WORLD_POS(cocos2d::Point(Main::mouseX, Main::mouseY)); 
 			if(this->world->nowLevel == 6)
 			{
 				if(tempObject.x > 650 && tempObject.y < 320)

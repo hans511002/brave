@@ -1,5 +1,6 @@
 #include "Upgrades.h"   
- 
+#include "MainClass.h"
+#include "LevelsMenu.h"
 namespace screens
 {   
     Upgrades_mc::Upgrades_mc()
@@ -1853,21 +1854,18 @@ namespace screens
 
     void Upgrades::manageListeners(string param1)
     {
-        if (param1 == "on")
-        {
-            //this->addEventListener(Event.ENTER_FRAME, this->enterFrameHandler);
-            //this->addEventListener(MouseEvent.MOUSE_MOVE, this->mouseMoveHandler);
-            //this->addEventListener(MouseEvent.MOUSE_DOWN, this->mouseDownHandler);
-            //this->addEventListener(MouseEvent.MOUSE_UP, this->mouseUpHandler);
-        }
-        else if (param1 == "off")
-        {
-            //this->removeEventListener(Event.ENTER_FRAME, this->enterFrameHandler);
-            //this->removeEventListener(MouseEvent.MOUSE_MOVE, this->mouseMoveHandler);
-            //this->removeEventListener(MouseEvent.MOUSE_DOWN, this->mouseDownHandler);
-            //this->removeEventListener(MouseEvent.MOUSE_UP, this->mouseUpHandler);
-        }
-        return;
+		if (param1 == "on")
+		{
+			if (useNodeEvent)
+				std::globalNode = this;
+			this->enableMouseHandler(true);
+			this->enableFrameHandler(true);
+		}
+		else if (param1 == "off")
+		{
+			this->disableMouseHandler();
+			this->disableFrameHandler();
+		}
     }// end function
 
     void Upgrades::close()

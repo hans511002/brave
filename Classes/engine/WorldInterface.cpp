@@ -49,6 +49,7 @@ namespace engine
 		//this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
 		this->world = Main::mainClass->worldClass;
 		//////////////////////////begin////////////////////////////////
+		this->setPosition(Vec2(0,0)-this->world->getPosition());
 		this->setMouseChildren(false);
 		this->setMouseEnabled(false);
 		//this->setAlpha(0);
@@ -1742,38 +1743,38 @@ namespace engine
                 event->processed = true;
                 Node * parent = event->target->getParent()->getParent()->getParent();
 				LevelPointer * pointer = ISTYPE(LevelPointer, parent);
-				if (!pointer->mouseFlag)
+				if (!pointer->mouseMoveFlag)
 				{
-					this->world->pointer1->setMouseFlag(true);
+					this->world->pointer1->setMouseMoveFlag(true);
 					if (this->world->pointer2)
 					{
-						this->world->pointer2->setMouseFlag(true);
+						this->world->pointer2->setMouseMoveFlag(true);
 					}
 					if (this->world->pointer3)
 					{
-						this->world->pointer3->setMouseFlag(true);
+						this->world->pointer3->setMouseMoveFlag(true);
 					}
 					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
 				}
 			}
 			else
 			{
-				if (this->world->pointer1->mouseFlag)
+				if (this->world->pointer1->mouseMoveFlag)
 				{
-					this->world->pointer1->setMouseFlag(false);
+					this->world->pointer1->setMouseMoveFlag(false);
 				}
 				if (this->world->pointer2)
 				{
-					if (this->world->pointer2->mouseFlag)
+					if (this->world->pointer2->mouseMoveFlag)
 					{
-						this->world->pointer2->setMouseFlag(false);
+						this->world->pointer2->setMouseMoveFlag(false);
 					}
 				}
 				if (this->world->pointer3)
 				{
-					if (this->world->pointer3->mouseFlag)
+					if (this->world->pointer3->mouseMoveFlag)
 					{
-						this->world->pointer3->setMouseFlag(false);
+						this->world->pointer3->setMouseMoveFlag(false);
 					}
 				}
 			}
@@ -3339,7 +3340,7 @@ namespace engine
 	{
 		if (this->world->hint->isVisible())
 		{
-			this->world->hint->setPosition(CONVERT_TO_WORLD_POS(Vec2(this->world->mouseX, this->world->mouseY)));
+			this->world->hint->setPosition(CONVERT_TO_WORLD_POS(Vec2(Main::mouseX, Main::mouseY)));
 			if (this->world->hint->currentFrame == 1)
 			{
 				if (std::getText(this->world->hint->nameTXT) == I18N_VALUE(I18N_CODE::U003))
@@ -3384,100 +3385,100 @@ namespace engine
 
 	void WorldInterface::autoguidersButtons()
 	{
-		this->autoguidesMouse_pt = CONVERT_TO_WORLD_POS(cocos2d::Point(Main::mainClass->worldClass->mouseX, Main::mainClass->worldClass->mouseY));
-		this->autoguidesObject = NULL;
-		this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->butCastGolem->localToGlobal(this->container->butCastGolemCastGolemCase->getPosition()));
-		this->autoguidesObjectWidth = this->container->butCastGolemCastGolemCase->getWidth() / 2;
-		this->autoguidesObjectHeight = this->container->butCastGolemCastGolemCase->getHeight() / 2;
-		if (this->container->butCastGolemCastGolemCase->hitTest(autoguidesMouse_pt))
-		{
-			this->autoguidesObject = this->container->butCastGolemCastGolemCase;
-		}
-		if (!this->autoguidesObject)
-		{
-			this->autoguidesObject_pt =CONVERT_TO_WORLD_POS( this->container->butCastIceman->localToGlobal(this->container->butCastIcemanCastIcemanCase->getPosition()));
-			this->autoguidesObjectWidth = this->container->butCastIcemanCastIcemanCase->getWidth() / 2;
-			this->autoguidesObjectHeight = this->container->butCastIcemanCastIcemanCase->getHeight() / 2;
-			if (this->container->butCastIcemanCastIcemanCase->hitTest(autoguidesMouse_pt))
-			{
-				this->autoguidesObject = this->container->butCastIcemanCastIcemanCase;
-			}
-		}
-		if (!this->autoguidesObject)
-		{
-			this->autoguidesObject_pt =CONVERT_TO_WORLD_POS( this->container->butCastAir->localToGlobal(this->container->butCastAirCastAirCase->getPosition()));
-			this->autoguidesObjectWidth = this->container->butCastAirCastAirCase->getWidth() / 2;
-			this->autoguidesObjectHeight = this->container->butCastAirCastAirCase->getHeight() / 2;
-			if (this->container->butCastAirCastAirCase->hitTest(autoguidesMouse_pt))
-			{
-				this->autoguidesObject = this->container->butCastAirCastAirCase;
-			}
-		}
-		if (!this->autoguidesObject)
-		{
-			this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->fast->localToGlobal(this->container->fastFastCase->getPosition()));
-			this->autoguidesObjectWidth = this->container->fastFastCase->getWidth() / 2;
-			this->autoguidesObjectHeight = this->container->fastFastCase->getHeight() / 2;
-			if (this->container->fastFastCase->hitTest(autoguidesMouse_pt))
-			{
-				this->autoguidesObject = this->container->fastFastCase;
-			}
-		}
-		if (!this->autoguidesObject)
-		{
-			this->autoguidesObject_pt =CONVERT_TO_WORLD_POS( this->container->fireSphere->localToGlobal(this->container->fireSphereSphereCase->getPosition()));
-			this->autoguidesObjectWidth = this->container->fireSphereSphereCase->getWidth() / 2;
-			this->autoguidesObjectHeight = this->container->fireSphereSphereCase->getHeight() / 2;
-			if (this->container->fireSphereSphereCase->hitTest(autoguidesMouse_pt))
-			{
-				this->autoguidesObject = this->container->fireSphereSphereCase;
-			}
-		}
-		if (!this->autoguidesObject)
-		{
-			this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->iceSphere->localToGlobal(this->container->iceSphereSphereCase->getPosition()));
-			this->autoguidesObjectWidth = this->container->iceSphereSphereCase->getWidth() / 2;
-			this->autoguidesObjectHeight = this->container->iceSphereSphereCase->getHeight() / 2;
-			if (this->container->iceSphereSphereCase->hitTest(autoguidesMouse_pt))
-			{
-				this->autoguidesObject = this->container->iceSphereSphereCase;
-			}
-		}
-		if (!this->autoguidesObject)
-		{
-			this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->stoneSphere->localToGlobal(this->container->stoneSphereSphereCase->getPosition()));
-			this->autoguidesObjectWidth = this->container->stoneSphereSphereCase->getWidth() / 2;
-			this->autoguidesObjectHeight = this->container->stoneSphereSphereCase->getHeight() / 2;
-			if (this->container->stoneSphereSphereCase->hitTest(autoguidesMouse_pt))
-			{
-				this->autoguidesObject = this->container->stoneSphereSphereCase;
-			}
-		}
-		if (!this->autoguidesObject)
-		{
-			this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->levinSphere->localToGlobal(this->container->levinSphereSphereCase->getPosition()));
-			this->autoguidesObjectWidth = this->container->levinSphereSphereCase->getWidth() / 2;
-			this->autoguidesObjectHeight = this->container->levinSphereSphereCase->getHeight() / 2;
-			if (this->container->levinSphereSphereCase->hitTest(autoguidesMouse_pt))
-			{
-				this->autoguidesObject = this->container->levinSphereSphereCase;
-			}
-		}
-		if (!this->autoguidesObject)
-		{
-			this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->getAll->localToGlobal(this->container->getAllSphereCase->getPosition()));
-			this->autoguidesObjectWidth = this->container->getAllSphereCase->getWidth() / 2;
-			this->autoguidesObjectHeight = this->container->getAllSphereCase->getHeight() / 2;
-			if (this->container->getAllSphereCase->hitTest(autoguidesMouse_pt))
-			{
-				this->autoguidesObject = this->container->getAllSphereCase;
-			}
-		}
-		if (this->autoguidesObject)
-		{ //模拟event
-			MouseEvent me = buildMouseEvent(this->autoguidesObject);
-			this->mouseMoveHandler(&me);
-		}
+		//this->autoguidesMouse_pt = CONVERT_TO_WORLD_POS(cocos2d::Point(Main::mouseX, Main::mouseY));
+		//this->autoguidesObject = NULL;
+		//this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->butCastGolem->localToGlobal(this->container->butCastGolemCastGolemCase->getPosition()));
+		//this->autoguidesObjectWidth = this->container->butCastGolemCastGolemCase->getWidth() / 2;
+		//this->autoguidesObjectHeight = this->container->butCastGolemCastGolemCase->getHeight() / 2;
+		//if (this->container->butCastGolemCastGolemCase->hitTest(autoguidesMouse_pt))
+		//{
+		//	this->autoguidesObject = this->container->butCastGolemCastGolemCase;
+		//}
+		//if (!this->autoguidesObject)
+		//{
+		//	this->autoguidesObject_pt =CONVERT_TO_WORLD_POS( this->container->butCastIceman->localToGlobal(this->container->butCastIcemanCastIcemanCase->getPosition()));
+		//	this->autoguidesObjectWidth = this->container->butCastIcemanCastIcemanCase->getWidth() / 2;
+		//	this->autoguidesObjectHeight = this->container->butCastIcemanCastIcemanCase->getHeight() / 2;
+		//	if (this->container->butCastIcemanCastIcemanCase->hitTest(autoguidesMouse_pt))
+		//	{
+		//		this->autoguidesObject = this->container->butCastIcemanCastIcemanCase;
+		//	}
+		//}
+		//if (!this->autoguidesObject)
+		//{
+		//	this->autoguidesObject_pt =CONVERT_TO_WORLD_POS( this->container->butCastAir->localToGlobal(this->container->butCastAirCastAirCase->getPosition()));
+		//	this->autoguidesObjectWidth = this->container->butCastAirCastAirCase->getWidth() / 2;
+		//	this->autoguidesObjectHeight = this->container->butCastAirCastAirCase->getHeight() / 2;
+		//	if (this->container->butCastAirCastAirCase->hitTest(autoguidesMouse_pt))
+		//	{
+		//		this->autoguidesObject = this->container->butCastAirCastAirCase;
+		//	}
+		//}
+		//if (!this->autoguidesObject)
+		//{
+		//	this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->fast->localToGlobal(this->container->fastFastCase->getPosition()));
+		//	this->autoguidesObjectWidth = this->container->fastFastCase->getWidth() / 2;
+		//	this->autoguidesObjectHeight = this->container->fastFastCase->getHeight() / 2;
+		//	if (this->container->fastFastCase->hitTest(autoguidesMouse_pt))
+		//	{
+		//		this->autoguidesObject = this->container->fastFastCase;
+		//	}
+		//}
+		//if (!this->autoguidesObject)
+		//{
+		//	this->autoguidesObject_pt =CONVERT_TO_WORLD_POS( this->container->fireSphere->localToGlobal(this->container->fireSphereSphereCase->getPosition()));
+		//	this->autoguidesObjectWidth = this->container->fireSphereSphereCase->getWidth() / 2;
+		//	this->autoguidesObjectHeight = this->container->fireSphereSphereCase->getHeight() / 2;
+		//	if (this->container->fireSphereSphereCase->hitTest(autoguidesMouse_pt))
+		//	{
+		//		this->autoguidesObject = this->container->fireSphereSphereCase;
+		//	}
+		//}
+		//if (!this->autoguidesObject)
+		//{
+		//	this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->iceSphere->localToGlobal(this->container->iceSphereSphereCase->getPosition()));
+		//	this->autoguidesObjectWidth = this->container->iceSphereSphereCase->getWidth() / 2;
+		//	this->autoguidesObjectHeight = this->container->iceSphereSphereCase->getHeight() / 2;
+		//	if (this->container->iceSphereSphereCase->hitTest(autoguidesMouse_pt))
+		//	{
+		//		this->autoguidesObject = this->container->iceSphereSphereCase;
+		//	}
+		//}
+		//if (!this->autoguidesObject)
+		//{
+		//	this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->stoneSphere->localToGlobal(this->container->stoneSphereSphereCase->getPosition()));
+		//	this->autoguidesObjectWidth = this->container->stoneSphereSphereCase->getWidth() / 2;
+		//	this->autoguidesObjectHeight = this->container->stoneSphereSphereCase->getHeight() / 2;
+		//	if (this->container->stoneSphereSphereCase->hitTest(autoguidesMouse_pt))
+		//	{
+		//		this->autoguidesObject = this->container->stoneSphereSphereCase;
+		//	}
+		//}
+		//if (!this->autoguidesObject)
+		//{
+		//	this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->levinSphere->localToGlobal(this->container->levinSphereSphereCase->getPosition()));
+		//	this->autoguidesObjectWidth = this->container->levinSphereSphereCase->getWidth() / 2;
+		//	this->autoguidesObjectHeight = this->container->levinSphereSphereCase->getHeight() / 2;
+		//	if (this->container->levinSphereSphereCase->hitTest(autoguidesMouse_pt))
+		//	{
+		//		this->autoguidesObject = this->container->levinSphereSphereCase;
+		//	}
+		//}
+		//if (!this->autoguidesObject)
+		//{
+		//	this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->getAll->localToGlobal(this->container->getAllSphereCase->getPosition()));
+		//	this->autoguidesObjectWidth = this->container->getAllSphereCase->getWidth() / 2;
+		//	this->autoguidesObjectHeight = this->container->getAllSphereCase->getHeight() / 2;
+		//	if (this->container->getAllSphereCase->hitTest(autoguidesMouse_pt))
+		//	{
+		//		this->autoguidesObject = this->container->getAllSphereCase;
+		//	}
+		//}
+		//if (this->autoguidesObject)
+		//{ //模拟event
+		//	MouseEvent me = buildMouseEvent(this->autoguidesObject);
+		//	this->mouseMoveHandler(&me);
+		//}
 	}// end function
 
 	void WorldInterface::spheresBlockManage(string param1)

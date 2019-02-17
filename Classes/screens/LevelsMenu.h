@@ -8,6 +8,7 @@
 #include "engine/level/Level.h"
 #include "Screen.h"
 using namespace engine;
+#include "DifficultyLevel.h"   
 
 namespace screens
 {
@@ -64,7 +65,7 @@ namespace screens
 		MovieClipSub * upgradesFireCont;
 
         MovieClipSub * wavesAnimation;
-		Map<std::string, MovieClipSub *> waves;
+		cocos2d::Map<std::string, MovieClipSub *> waves;
 
 		LevelsMenu_mc();
 
@@ -73,7 +74,8 @@ namespace screens
     class LevelsMenu :public Screen
     {
     public:
-         //public var tempObject:Object;
+		Vec2 savePos;
+		//public var tempObject:Object;
         //public var tempObject1:Object;
         LevelsMenu_mc * container;
         int frameCounter;//public var frameCounter:int = 0;
@@ -82,15 +84,15 @@ namespace screens
         dragonBones::CCArmatureDisplay * newLevelGr;// public var newLevelGr:NewLevel_mc;
         bool roadOff;//public var roadOff:Boolean;
         int newStarsForLevel;//public var newStarsForLevel:int = 0;
-        Node * mouseMoveTarget;
+        MC * mouseMoveTarget;
         Node * mouseDownTarget;
         Common::Array<MovieClipSub * > listOfAnimation;
         OpenLevel * openLevel;
-        //Upgrades * upgradesClass;
+        Upgrades * upgradesClass;
         //Encyclopedia * encyclopediaClass;
-        //Achievements * achievementsClass;
+        Achievements * achievementsClass;
         bool firstMusicPlay;
-        //DifficultyLevel * difficultyLevel;
+        DifficultyLevel * difficultyLevel;
         //public var training_1:Training_1;
         //public var training_9:Training_9;
  
@@ -99,7 +101,8 @@ namespace screens
 
 		virtual bool init();
 
-		virtual void enterFrameHandler(cocos2d::EventMouse * event);
+		virtual void enterFrameHandler(float dt);
+		bool preCheckEventTarget(std::MouseEvent * event, EventMouse::MouseEventType _mouseEventType);
 
 		virtual void mouseMoveHandler(cocos2d::EventMouse * param1);
 

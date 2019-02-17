@@ -2,8 +2,6 @@
 #define SCREENS_ACHIEVEMENTS_H
 #include "Screen.h"   
 
- 
-
 namespace screens
 {   
     struct Achievements_mc : public MovieClip
@@ -28,7 +26,7 @@ namespace screens
         bool init(float dt);
         void enterFrameHandler(float dt);
 
-        void mouseMoveHandler(param1);
+        void mouseMoveHandler(cocos2d::EventMouse * event);
 
         void mouseDownHandler(cocos2d::EventMouse * event);
 
@@ -42,8 +40,9 @@ namespace screens
 
         void kill()  ;
 
-       // void reInit(event:Event) ;
+		void  manageListeners(string param1);
 
-    }
+
+	};
 }
 #endif

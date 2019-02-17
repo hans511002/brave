@@ -96,7 +96,7 @@ namespace engine {
 		}
 		void Cast_1::addGolem()
 		{
-			cocos2d::Point tempObject(world->mouseX, world->mouseY);
+			cocos2d::Point tempObject=CONVERT_TO_WORLD_POS(cocos2d::Point(Main::mouseX, Main::mouseY));
 			Golem *  tempObject1 = NULL;
 			float tempObject2 = 0;
 			float tempObject3 = 10000;

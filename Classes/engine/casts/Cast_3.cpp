@@ -12,7 +12,7 @@ namespace engine {
 			//container->gotoAndStop(2);
 			this->addChild(container);
 			Cast::init();
-			this->this_pt = cocos2d::Point(world->mouseX, world->mouseY);
+			this->this_pt = CONVERT_TO_WORLD_POS(cocos2d::Point(Main::mouseX, Main::mouseY));
 			this->autorelease();
 			return true;
 		}// end function
@@ -115,9 +115,9 @@ namespace engine {
 			MoveAir_mc * container = ISTYPE(MoveAir_mc, this->container);
 			if (container->currentFrame == 1)
 			{
-				if (this->this_pt.x != world->mouseX || this->this_pt.y != world->mouseY)
+				if (this->this_pt.x != Main::mouseX || this->this_pt.y != Main::mouseY)
 				{
-					this->this_pt = cocos2d::Point(world->mouseX, world->mouseY);
+					this->this_pt = CONVERT_TO_WORLD_POS(cocos2d::Point(Main::mouseX, Main::mouseY));
 					float tempObject1 = 10000;
 					container->left->setVisible(false);
 					container->right->setVisible(false);

@@ -693,7 +693,7 @@ namespace engine
 					}
 					if (!this->readyFastBuyUltraFlag)
 					{
-						if (this->myTower->this_pt.distance(cocos2d::Point(this->world->mouseX, this->world->mouseY)) > 86)
+						if (this->myTower->this_pt.distance(CONVERT_TO_WORLD_POS(cocos2d::Point(Main::mouseX, Main::mouseY))) > 86)
 						{
 							if (this->mouseEnabled)
 							{
@@ -2483,7 +2483,7 @@ namespace engine
 
 		void TowerMenu::autoguidersButtons()
 		{
-			this->autoguidesMouse_pt = CONVERT_TO_WORLD_POS(cocos2d::Point(Main::mainClass->worldClass->mouseX, Main::mainClass->worldClass->mouseY));
+			this->autoguidesMouse_pt = CONVERT_TO_WORLD_POS(cocos2d::Point(Main::mouseX, Main::mouseY));
 			this->autoguidesObject = NULL;
 			if (this->container->currentFrame == 1)
 			{

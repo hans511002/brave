@@ -35,7 +35,7 @@ namespace engine
             this->container->stop();
             this->container->cross->stop();
             this->addChild(this->container);
-            this->setPosition(this->world->mouseX,this->world->mouseY); 
+            this->setPosition(Main::mouseX,Main::mouseY); 
             this->setMouseChildren(false);
             this->setMouseEnabled(false);
             if (this->world->towerMenu)
@@ -72,7 +72,7 @@ namespace engine
 
         void Exchange::update(float dt) 
         {
-            this->setPosition(this->world->mouseX,this->world->mouseY); 
+            this->setPosition(Main::mouseX,Main::mouseY); 
             if (this->atTower)
             {
                 if (this->container->currentFrame < this->container->totalFrames)

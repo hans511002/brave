@@ -429,6 +429,18 @@
     <ClCompile Include="..\Classes\sys\preloadSound.cpp">
       <Filter>src\sys</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\screens\LevelsMenu.cpp">
+      <Filter>src\screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\screens\DifficultyLevel.cpp">
+      <Filter>src\screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\screens\Upgrades.cpp">
+      <Filter>src\screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\screens\Achievements.cpp">
+      <Filter>src\screens</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -818,9 +830,6 @@
     <ClInclude Include="..\Classes\base\DefineClasses.h">
       <Filter>src\base</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\screens\LevelsMenu.h">
-      <Filter>src\screens</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\base\Indexes.h">
       <Filter>src\base</Filter>
     </ClInclude>
@@ -860,14 +869,23 @@
     <ClInclude Include="..\Classes\common\FileInfo.hpp">
       <Filter>src\common</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\screens\Credits.h">
-      <Filter>src\screens</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\base\AudioUtil.h">
       <Filter>src\base</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\sys\preloadSound.h">
       <Filter>src\sys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\screens\LevelsMenu.h">
+      <Filter>src\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\screens\DifficultyLevel.h">
+      <Filter>src\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\screens\Upgrades.h">
+      <Filter>src\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\screens\Achievements.h">
+      <Filter>src\screens</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

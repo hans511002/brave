@@ -13,7 +13,7 @@ namespace screens
         MCCase *  firstEasyComplexityCase;
         MCCase *  firstNormalComplexityCase;
         MCCase *  firstHardComplexityCase;
-        MovieClipSub* shadow;
+        //MovieClipSub* shadow;
         DeifficultyLevel_mc();
 
     };
@@ -42,5 +42,6 @@ namespace screens
 
         //void reInit(event:Event);
 
-    }
+	 };
 }
+#endif

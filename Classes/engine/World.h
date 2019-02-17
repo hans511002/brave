@@ -124,9 +124,6 @@ namespace engine
         int airVoiceTurn;//: int = 1;
         std::string levelType;
 
-        float mouseX;
-        float mouseY;
-        
         Vec2 savePos;
 
         World();
@@ -179,6 +176,9 @@ namespace engine
 		virtual bool existClasses(BaseNode * node);
 		virtual void removeUnit(units::Unit *);
 		virtual void reInit(cocos2d::EventMouse*event);//event:Event
+		void repairPos(float x, float y);
+		void repairPos(Vec2 pos);
+		Vec2 getMousePos();
 
     };
 

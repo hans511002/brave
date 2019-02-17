@@ -14,8 +14,7 @@ namespace sys
 		{
 			double x = level[i][0];
 			double y = level[i][1];
-			x -= Main::SCREEN_WIDTH_OUT_LEFT;
-			y=Main::SCREEN_HEIGHT + Main::SCREEN_HEIGHT_OUT_DOWN - y+Main::mainClass-> worldClass->level->offsetY;
+			y = Main::LEVEL_MAP_HEIGHT - y; 
 			path[i] = cocos2d::Point(x, y);
 		}
 	}

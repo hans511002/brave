@@ -1,22 +1,11 @@
 ﻿ 
-#include "DeifficultyLevel.h"   
- 
-namespace screens
-{   
-    struct DeifficultyLevel_mc  : public MovieClip
-    {
-        MovieClipSub* first;
-        MovieClipSub* firstEasy;
-        MovieClipSub* firstNormal;
-        MovieClipSub* firstHard;
-        MCCase *  firstEasyComplexityCase;
-        MCCase *  firstNormalComplexityCase;
-        MCCase *  firstHardComplexityCase;
-        MovieClipSub* shadow;
-       
+#include "DifficultyLevel.h"   
+#include "MainClass.h"
+#include "LevelsMenu.h"
 
-    };
-     DeifficultyLevel_mc::DeifficultyLevel_mc():MovieClip("screen/","DeifficultyLevel_mc","DeifficultyLevel_mc")
+namespace screens
+{    
+	DeifficultyLevel_mc::DeifficultyLevel_mc():MovieClip("screen/","DeifficultyLevel_mc","DeifficultyLevel_mc")
     {
         first=this->createMovieClipSub("first");
         firstEasy=first->createMovieClipSub("easy");
@@ -25,7 +14,7 @@ namespace screens
         firstEasyComplexityCase=firstEasy->createCase("complexityCase");
         firstNormalComplexityCase=firstNormal->createCase("complexityCase");
         firstHardComplexityCase=firstHard->createCase("complexityCase");
-        shadow=this->createMovieClipSub("shadow");
+        //shadow=this->createMovieClipSub("shadow");
     };
      
     DifficultyLevel::DifficultyLevel():openFlag(true),closeFlag(false),container(0)
@@ -36,12 +25,8 @@ namespace screens
 
     bool DifficultyLevel::init()
     {
-        //this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
-        //this->addEventListener(Event.REMOVED_FROM_STAGE, this->reInit);
-        //this->addEventListener(Event.ENTER_FRAME, this->enterFrameHandler);
-        //this->addEventListener(MouseEvent.MOUSE_MOVE, this->mouseMoveHandler);
-        //this->addEventListener(MouseEvent.MOUSE_DOWN, this->mouseDwonHandler);
-        //this->addEventListener(MouseEvent.MOUSE_UP, this->mouseUpHandler);
+		this->enableMouseHandler(true);
+		this->enableFrameHandler(true);
         Main::mainClass->levelsMenuClass->manageListeners("off");
         this->container = new DeifficultyLevel_mc();
         this->container->stop();
@@ -120,7 +105,7 @@ namespace screens
             if (this->container->currentFrame == 1 && this->container->first->currentFrame == 1)
             {
                 Main::mainClass->levelsMenuClass->removeChild(this);
-                Main::mainClass->levelsMenuClass->difficultyLevel = null;
+                Main::mainClass->levelsMenuClass->difficultyLevel = NULL;
                 Main::mainClass->levelsMenuClass->manageListeners("on"); 
                 Main::mainClass->levelsMenuClass->container->setMouseChildren(true);
                 Main::mainClass->levelsMenuClass->container->setMouseEnabled(true);
@@ -131,198 +116,229 @@ namespace screens
 
     void DifficultyLevel::mouseMoveHandler(cocos2d::EventMouse * e)
     {
-		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
-		if(!event)
-			return;
-        string targetName = event->target->getName();
-        if (event->target->getParent()->getName() == "easy")
-        {
-            if (param1.target->mouseEnabled)
-            {
-                if (this->container->firstEasy->currentFrame == 1)
-                {
-                    this->container->firstEasy->gotoAndStop(2);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-                }
-            }
-        }
-        else if (this->container->firstEasy->currentFrame == 2)
-        {
-            this->container->firstEasy->gotoAndStop(1);
-        }
-        if (event->target->getParent()->getName() == "normal")
-        {
-            if (param1.target->mouseEnabled)
-            {
-                if (this->container->firstNormal->currentFrame == 1)
-                {
-                    this->container->firstNormal->gotoAndStop(2);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-                }
-            }
-        }
-        else if (this->container->firstNormal->currentFrame == 2)
-        {
-            this->container->firstNormal->gotoAndStop(1);
-        }
-        if (event->target->getParent()->getName() == "hard")
-        {
-            if (param1.target->mouseEnabled)
-            {
-                if (this->container->firstHard->currentFrame == 1)
-                {
-                    this->container->firstHard->gotoAndStop(2);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-                }
-            }
-        }
-        else if (this->container->firstHard->currentFrame == 2)
-        {
-            this->container->firstHard->gotoAndStop(1);
-        }
+		Main::mouseX = e->getCursorX();
+		Main::mouseY = e->getCursorY();
+		if (!globalNode)EventNode::mouseMoveHandler(e);
+		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
+		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
+		std::MouseEvent me(e);
+		if (!useNodeEvent) {
+			me = std::buildMouseEvent(e);
+		}
+		std::MouseEvent * event = &me;
+		//if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_MOVE))return;
+		if (!event->currentTargets.size())
+			event->currentTargets.push(this);
+		//return;
+		while (event->hasNext())
+		{
+			string targetName = event->target->getName();
+			Node * parent = event->target->getParent()->getParent();
+			string parentName = parent->getName();
+
+			if (parentName == "easy")
+			{
+				if (this->container->firstEasy->currentFrame == 1)
+				{
+					this->container->firstEasy->gotoAndStop(2);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+				}
+			}
+			else if (this->container->firstEasy->currentFrame == 2)
+			{
+				this->container->firstEasy->gotoAndStop(1);
+			}
+			if (parentName == "normal")
+			{
+				if (this->container->firstNormal->currentFrame == 1)
+				{
+					this->container->firstNormal->gotoAndStop(2);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+				}
+			}
+			else if (this->container->firstNormal->currentFrame == 2)
+			{
+				this->container->firstNormal->gotoAndStop(1);
+			}
+			if (parentName == "hard")
+			{
+				if (this->container->firstHard->currentFrame == 1)
+				{
+					this->container->firstHard->gotoAndStop(2);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+				}
+			}
+			else if (this->container->firstHard->currentFrame == 2)
+			{
+				this->container->firstHard->gotoAndStop(1);
+			}
+		}
         return;
     }// end function
 
-    void DifficultyLevel::mouseDwonHandler(cocos2d::EventMouse *event) 
+    void DifficultyLevel::mouseDwonHandler(cocos2d::EventMouse *e) 
     {
-        if (event.target.parent.name == "easy")
-        {
-            if (event.target->mouseEnabled)
-            {
-                if (this->container->firstEasy->currentFrame == 2)
-                {
-                    this->container->firstEasy->gotoAndStop(3);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-                }
-            }
-        }
-        else if (event.target.parent.name == "normal")
-        {
-            if (event.target->mouseEnabled)
-            {
-                if (this->container->firstNormal->currentFrame == 2)
-                {
-                    this->container->firstNormal->gotoAndStop(3);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-                }
-            }
-        }
-        else if (event.target.parent.name == "hard")
-        {
-            if (event.target->mouseEnabled)
-            {
-                if (this->container->firstHard->currentFrame == 2)
-                {
-                    this->container->firstHard->gotoAndStop(3);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-                }
-            }
-        }
+		if (!globalNode)EventNode::mouseDownHandler(e);
+		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
+		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
+		std::MouseEvent me(e);
+		if (!useNodeEvent) {
+			me = std::buildMouseEvent(e);
+		}
+		std::MouseEvent * event = &me;
+		//if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_DOWN))return;
+		if (!event->currentTargets.size())
+			event->currentTargets.push(this);
+		Main::mouseX = e->getCursorX();
+		Main::mouseY = e->getCursorY();
+		while (event->hasNext())
+		{
+			string targetName = event->target->getName();
+			EventNode::beginTouchNode = event->target;// event->currentTargets.at(0);
+			EventNode::beginTouchPos = Vec2(Main::mouseX, Main::mouseY);
+
+			Node * parent = event->target->getParent()->getParent();
+			string parentName = parent->getName();
+
+			if (parentName == "easy")
+			{
+				if (this->container->firstEasy->currentFrame == 2)
+				{
+					this->container->firstEasy->gotoAndStop(3);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+				}
+			}
+			else if (parentName == "normal")
+			{
+				if (this->container->firstNormal->currentFrame == 2)
+				{
+					this->container->firstNormal->gotoAndStop(3);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+				}
+			}
+			else if (parentName == "hard")
+			{
+				if (this->container->firstHard->currentFrame == 2)
+				{
+					this->container->firstHard->gotoAndStop(3);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+				}
+			}
+		}
         return;
     }// end function
 
     void DifficultyLevel::mouseUpHandler(cocos2d::EventMouse * e)
     {
-		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
-		if (!event)
-			return;
-        string targetName = event->target->getName();
-        if (event.target.parent.name == "easy")
-        {
-            if (event.target->mouseEnabled)
-            {
-                if (this->container->firstEasy->currentFrame == 3)
-                {
-                    this->container->firstEasy->gotoAndStop(2);
-                    this->closeFlag = true;
-                    Main::mainClass->saveBoxClass->setValue("difficultyLevel", true);
-                    Main::mainClass->saveBoxClass->setValue("complexityLevel", 1);
-                    AudioUtil::playSound("Snd_menu_pageScrolling.mp3");
-                }
-            }
-        }
-        else if (this->container->firstEasy->currentFrame == 3)
-        {
-            this->container->firstEasy->gotoAndStop(1);
-        }
-        if (event.target.parent.name == "normal")
-        {
-            if (event.target->mouseEnabled)
-            {
-                if (this->container->firstNormal->currentFrame == 3)
-                {
-                    this->container->firstNormal->gotoAndStop(2);
-                    this->closeFlag = true;
-                    Main::mainClass->saveBoxClass->setValue("difficultyLevel", true);
-                    Main::mainClass->saveBoxClass->setValue("complexityLevel", 2); 
-                    AudioUtil::playSound("Snd_menu_pageScrolling.mp3");
-                }
-            }
-        }
-        else if (this->container->firstNormal->currentFrame == 3)
-        {
-            this->container->firstNormal->gotoAndStop(1);
-        }
-        if (event.target.parent.name == "hard")
-        {
-            if (event.target->mouseEnabled)
-            {
-                if (this->container->firstHard->currentFrame == 3)
-                {
-                    this->container->firstHard->gotoAndStop(2);
-                    this->closeFlag = true;
-                    Main::mainClass->saveBoxClass->setValue("difficultyLevel", true);
-                    Main::mainClass->saveBoxClass->setValue("complexityLevel", 3); 
-                    AudioUtil::playSound("Snd_menu_pageScrolling.mp3");
-                }
-            }
-        }
-        else if (this->container->firstHard->currentFrame == 3)
-        {
-            this->container->firstHard->gotoAndStop(1);
-        }
+		if (!globalNode)EventNode::mouseUpHandler(e);
+		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
+		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
+		std::MouseEvent me(e);
+		if (!useNodeEvent) {
+			me = std::buildMouseEvent(e);
+		}
+		std::MouseEvent * event = &me;
+		//if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_UP))return;
+		if (!event->currentTargets.size())
+			event->currentTargets.push(this);
+		Main::mouseX = e->getCursorX();
+		Main::mouseY = e->getCursorY();
+		while (event->hasNext())
+		{
+			string targetName = event->target->getName();
+			EventNode::beginTouchNode = event->target;// event->currentTargets.at(0);
+			EventNode::beginTouchPos = Vec2(Main::mouseX, Main::mouseY);
+
+			Node * parent = event->target->getParent()->getParent();
+			string parentName = parent->getName();
+			if (parentName == "easy")
+			{
+				if (this->container->firstEasy->currentFrame == 3)
+				{
+					this->container->firstEasy->gotoAndStop(2);
+					this->closeFlag = true;
+					Main::mainClass->saveBoxClass->setValue("difficultyLevel", true);
+					Main::mainClass->saveBoxClass->setValue("complexityLevel", 1);
+					AudioUtil::playSound("Snd_menu_pageScrolling.mp3");
+				}
+			}
+			else if (this->container->firstEasy->currentFrame == 3)
+			{
+				this->container->firstEasy->gotoAndStop(1);
+			}
+			if (parentName == "normal")
+			{
+				if (this->container->firstNormal->currentFrame == 3)
+				{
+					this->container->firstNormal->gotoAndStop(2);
+					this->closeFlag = true;
+					Main::mainClass->saveBoxClass->setValue("difficultyLevel", true);
+					Main::mainClass->saveBoxClass->setValue("complexityLevel", 2);
+					AudioUtil::playSound("Snd_menu_pageScrolling.mp3");
+				}
+			}
+			else if (this->container->firstNormal->currentFrame == 3)
+			{
+				this->container->firstNormal->gotoAndStop(1);
+			}
+			if (parentName == "hard")
+			{
+				if (this->container->firstHard->currentFrame == 3)
+				{
+					this->container->firstHard->gotoAndStop(2);
+					this->closeFlag = true;
+					Main::mainClass->saveBoxClass->setValue("difficultyLevel", true);
+					Main::mainClass->saveBoxClass->setValue("complexityLevel", 3);
+					AudioUtil::playSound("Snd_menu_pageScrolling.mp3");
+				}
+			}
+			else if (this->container->firstHard->currentFrame == 3)
+			{
+				this->container->firstHard->gotoAndStop(1);
+			}
+		}
         return;
     }// end function
 
     void DifficultyLevel::autoguidersButtons()
     {
-        this->autoguidesMouse_pt = cocos2d::Point(Main::mainClass->worldClass->mouseX, Main::mainClass->worldClass->mouseY);
-        this->autoguidesObject = NULL;
-        this->autoguidesObject_pt = this->container->firstEasy->localToGlobal(this->container->firstEasyComplexityCase->getPosition());
-        this->autoguidesObjectWidth = this->container->firstEasyComplexityCase->width / 2;
-        this->autoguidesObjectHeight = this->container->firstEasyComplexityCase->height / 2;
-        if (this->container->firstEasyComplexityCase->hitText(autoguidesMouse_pt))
-        {
-            this->autoguidesObject = this->container->firstEasyComplexityCase;
-        }
-        if (!this->autoguidesObject)
-        {
-            this->autoguidesObject_pt = this->container->first->easy.localToGlobal(this->container->firstNormalComplexityCase->getPosition());
-            this->autoguidesObjectWidth = this->container->firstNormalComplexityCase->width / 2;
-            this->autoguidesObjectHeight = this->container->firstNormalComplexityCase->height / 2;
-            if (this->container->firstNormalComplexityCase->hitText(autoguidesMouse_pt))
-            {
-                this->autoguidesObject = this->container->firstNormalComplexityCase;
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            this->autoguidesObject_pt = this->container->first->easy.localToGlobal(this->container->firstHardComplexityCase->getPosition());
-            this->autoguidesObjectWidth = this->container->firstHardComplexityCase->width / 2;
-            this->autoguidesObjectHeight = this->container->firstHardComplexityCase->height / 2;
-            if (this->container->firstHardComplexityCase->hitText(autoguidesMouse_pt))
-            {
-                this->autoguidesObject = this->container->firstHardComplexityCase;
-            }
-        }
-        if (this->autoguidesObject)
-        {
-            //模拟事件
-            this->tempObject = new Object();
-            this->tempObject->target = this->autoguidesObject;
-            this->mouseMoveHandler(this->tempObject);
-        }
-        return;
+        //this->autoguidesMouse_pt = cocos2d::Point(Main::mouseX, Main::mouseY);
+        //this->autoguidesObject = NULL;
+        //this->autoguidesObject_pt = this->container->firstEasy->localToGlobal(this->container->firstEasyComplexityCase->getPosition());
+        //this->autoguidesObjectWidth = this->container->firstEasyComplexityCase->width / 2;
+        //this->autoguidesObjectHeight = this->container->firstEasyComplexityCase->height / 2;
+        //if (this->container->firstEasyComplexityCase->hitText(autoguidesMouse_pt))
+        //{
+        //    this->autoguidesObject = this->container->firstEasyComplexityCase;
+        //}
+        //if (!this->autoguidesObject)
+        //{
+        //    this->autoguidesObject_pt = this->container->first->easy.localToGlobal(this->container->firstNormalComplexityCase->getPosition());
+        //    this->autoguidesObjectWidth = this->container->firstNormalComplexityCase->width / 2;
+        //    this->autoguidesObjectHeight = this->container->firstNormalComplexityCase->height / 2;
+        //    if (this->container->firstNormalComplexityCase->hitText(autoguidesMouse_pt))
+        //    {
+        //        this->autoguidesObject = this->container->firstNormalComplexityCase;
+        //    }
+        //}
+        //if (!this->autoguidesObject)
+        //{
+        //    this->autoguidesObject_pt = this->container->first->easy.localToGlobal(this->container->firstHardComplexityCase->getPosition());
+        //    this->autoguidesObjectWidth = this->container->firstHardComplexityCase->width / 2;
+        //    this->autoguidesObjectHeight = this->container->firstHardComplexityCase->height / 2;
+        //    if (this->container->firstHardComplexityCase->hitText(autoguidesMouse_pt))
+        //    {
+        //        this->autoguidesObject = this->container->firstHardComplexityCase;
+        //    }
+        //}
+        //if (this->autoguidesObject)
+        //{
+        //    //模拟事件
+        //    this->tempObject = new Object();
+        //    this->tempObject->target = this->autoguidesObject;
+        //    this->mouseMoveHandler(this->tempObject);
+        //}
+        //return;
     }// end function
 
     //public function reInit(event:Event) : void

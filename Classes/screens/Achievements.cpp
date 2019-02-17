@@ -1,7 +1,8 @@
  
 #include "Achievements.h"   
 #include "engine/World.h"   
-
+#include "MainClass.h"
+#include "LevelsMenu.h"
  
 namespace screens
 {   
@@ -11,7 +12,7 @@ namespace screens
     }// end function
      
 
-    Achievements::Achievements():frameCounter(0),openFlag(true),fireFrame(0),closeFlag(false),dead(false),container(0)
+    Achievements::Achievements():fireFrame(0),container(0)
     {
         //this->addEventListener(Event.ADDED_TO_STAGE, this->init);
         return;
@@ -1109,15 +1110,21 @@ namespace screens
         return;
     }// end function
 
-   // void Achievements::reInit(event:Event)  
-   // {
-   //     this->removeEventListener(Event.REMOVED_FROM_STAGE, this->reInit);
-   //     this->removeEventListener(Event.ENTER_FRAME, this->enterFrameHandler);
-   //     this->removeEventListener(MouseEvent.MOUSE_MOVE, this->mouseMoveHandler);
-   //     this->removeEventListener(MouseEvent.MOUSE_DOWN, this->mouseDownHandler);
-   //     this->removeEventListener(MouseEvent.MOUSE_UP, this->mouseUpHandler);
-   //     this->stage.frameRate = 30;
-   //     return;
-   // }// end function
+	void Achievements::manageListeners(string param1)
+	{
+		if (param1 == "on")
+		{
+			if (useNodeEvent)
+				std::globalNode = this;
+			this->enableMouseHandler(true);
+			this->enableFrameHandler(true);
+		}
+		else if (param1 == "off")
+		{
+			this->disableMouseHandler();
+			this->disableFrameHandler();
+		}
+		return;
+	}// end function
  
 }
