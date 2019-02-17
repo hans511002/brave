@@ -6,91 +6,110 @@
 #include "engine/xml/ReadXML.h"
 #include "base/mc.h"
 using namespace engine;
+#include "Screen.h"
 
 namespace screens
 {
-    class OpenLevel_mc :public MovieClip
-    {
-    public:
-        MovieClip* back;
-        MovieClip* board;
-        MovieClip* shadow;
+	class OpenLevel_mc :public MovieClip
+	{
+	public:
+		Back_mc * back;
+		MovieClipSub* board;
+		MCCase * shadow;
+		MovieClipSub* boardInfoAdd;
+		MovieClipSub* boardInfoAddLevinSphere;
+		MovieClipSub* boardInfoAddStoneSphere;
+		MovieClipSub* boardInfoAddIceSphere;
+		MovieClipSub* boardInfoAddFireSphere;
 
-		OpenLevel_mc() :MovieClip("", "","")
-        {
-            return;
-        }// end function
+		MCCase* boardInfoAddLevinSphereSphereCase;
+		MCCase* boardInfoAddStoneSphereSphereCase;
+		MCCase* boardInfoAddIceSphereSphereCase;
+		MCCase* boardInfoAddFireSphereSphereCase;
+		
+		MovieClipSub* boardInfoAddGetSphere;
 
-    };
-    class HintSurvival_mc :public MovieClip
-    {
-    public:
-        ui::Text * nameTXT;
-        ui::Text * noteTXT;
+		MovieClipSub* boardCurrentComplexity;
+		MCCase* boardCurrentComplexityComplexityCase;
+		MovieClipSub* boardCurrentComplexityFire;
 
-		HintSurvival_mc() :MovieClip("", "","")
-        {
-            return;
-        }// end function
+		MovieClipSub* boardStatus;
+		MCText * boardHeaderTXT;
+		MovieClipSub* boardStar1;
+		MovieClipSub* boardStar2;
+		MovieClipSub* boardStar3;
+		MovieClipSub* boardWreath;
+		MovieClipSub* boardMainMode;
+		MCCase* boardMainModeMainModeCase;
+		MovieClipSub* boardSurvivalMode;
+		MCCase* boardSurvivalModeSurvivalModeCase;
+		MovieClipSub* boardSurvivalModeEyes;
 
-    };
-    class OpenLevel :public BaseNode
-    {
-    public:
-        int i;
-        //public var tempObject:Object;
-        int frameCounter;
-        OpenLevel_mc* container;
-        int playLevel;
-        bool openFlag;// true;
-        bool closeFlag;
-        int oldComplexity;
-        bool dead;
-        HintSurvival_mc* hintSurvival;
-        //public var openSurvEdu:Training_91_mc;
-        int eyes1Counter ;
-        //public var loginOrRegisterClass:LoginOrRegister;
-        cocos2d::Point autoguidesMouse_pt;
-        BaseNode * autoguidesObject;
-        cocos2d::Point autoguidesObject_pt;
-        float autoguidesObjectWidth;
-        float autoguidesObjectHeight;
+		MovieClipSub* boardMap;
+		MovieClipSub* boardStart;
+		MCCase* 	boardStartStartCase;
+		MovieClipSub* boardDescription;
+		
 
-        OpenLevel(int param1);
+		OpenLevel_mc();
 
-        bool init();
+	};
+	class HintSurvival_mc :public MovieClip
+	{
+	public:
+		ui::Text * nameTXT;
+		ui::Text * noteTXT;
 
-        void enterFrameHandler(cocos2d::EventMouse * event) ;
+		HintSurvival_mc();
+	};
+	class OpenLevel :public Screen
+	{
+	public:
+		//public var tempObject:Object;
+		OpenLevel_mc* container;
+		int playLevel;
+		int oldComplexity;
+		HintSurvival_mc* hintSurvival;
+		//public var openSurvEdu:Training_91_mc;
+		int eyes1Counter;
+		//public var loginOrRegisterClass:LoginOrRegister;
+	 
 
-        void mouseMoveHandler(cocos2d::EventMouse * param1) ;
+		OpenLevel(int param1);
 
-        void mouseDownHandler(cocos2d::EventMouse * event) ;
+		bool init();
 
-        void mouseUpHandler(cocos2d::EventMouse * event) ;
+		void enterFrameHandler(cocos2d::EventMouse * event);
 
-        void complexityManage(int param1) ;
+		void mouseMoveHandler(cocos2d::EventMouse * param1);
 
-        void statusManage(bool param1= false) ;
+		void mouseDownHandler(cocos2d::EventMouse * event);
 
-        void manageListeners(string param1) ;
+		void mouseUpHandler(cocos2d::EventMouse * event);
 
-        void autoguidersButtons();
+		void complexityManage(int param1);
 
-        void close();
+		void statusManage(bool param1 = false);
 
-        void kill();
+		void manageListeners(string param1);
 
-        //public function reInit(event:Event) : void
-        //{
-        //    this->removeEventListener(Event.REMOVED_FROM_STAGE, this->reInit);
-        //    this->removeEventListener(Event.ENTER_FRAME, this->enterFrameHandler);
-        //    this->removeEventListener(MouseEvent.MOUSE_MOVE, this->mouseMoveHandler);
-        //    this->removeEventListener(MouseEvent.MOUSE_DOWN, this->mouseDownHandler);
-        //    this->removeEventListener(MouseEvent.MOUSE_UP, this->mouseUpHandler);
-        //    this->stage.frameRate = 30;
-        //    return;
-        //}// end function
+		void autoguidersButtons();
 
-    };
+		void close();
+
+		void kill();
+
+		//public function reInit(event:Event) : void
+		//{
+		//    this->removeEventListener(Event.REMOVED_FROM_STAGE, this->reInit);
+		//    this->removeEventListener(Event.ENTER_FRAME, this->enterFrameHandler);
+		//    this->removeEventListener(MouseEvent.MOUSE_MOVE, this->mouseMoveHandler);
+		//    this->removeEventListener(MouseEvent.MOUSE_DOWN, this->mouseDownHandler);
+		//    this->removeEventListener(MouseEvent.MOUSE_UP, this->mouseUpHandler);
+		//    this->stage.frameRate = 30;
+		//    return;
+		//}// end function
+
+	};
 }
 #endif

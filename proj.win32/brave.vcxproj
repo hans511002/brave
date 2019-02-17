@@ -266,6 +266,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\screens\FastPause.cpp" />
     <ClCompile Include="..\Classes\screens\LevelsMenu.cpp" />
     <ClCompile Include="..\Classes\screens\MiddleScreen.cpp" />
+    <ClCompile Include="..\Classes\screens\OpenLevel.cpp" />
     <ClCompile Include="..\Classes\screens\Upgrades.cpp" />
     <ClCompile Include="..\Classes\sys\bezierBox.cpp" />
     <ClCompile Include="..\Classes\sys\I18n.cpp" />
@@ -399,6 +400,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\screens\FastPause.h" />
     <ClInclude Include="..\Classes\screens\LevelsMenu.h" />
     <ClInclude Include="..\Classes\screens\MiddleScreen.h" />
+    <ClInclude Include="..\Classes\screens\OpenLevel.h" />
     <ClInclude Include="..\Classes\screens\PauseMenu.h" />
     <ClInclude Include="..\Classes\screens\Screen.h" />
     <ClInclude Include="..\Classes\screens\Upgrades.h" />

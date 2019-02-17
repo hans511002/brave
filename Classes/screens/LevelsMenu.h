@@ -9,12 +9,14 @@
 #include "Screen.h"
 using namespace engine;
 #include "DifficultyLevel.h"   
+#include "Upgrades.h"   
+#include "Achievements.h"   
 
 namespace screens
 {
     struct NewLevel_mc:public MovieClip
-    {
-        
+    { 
+		NewLevel_mc();
     };
 	struct Level_mc:public MovieClip
 	{
@@ -81,7 +83,7 @@ namespace screens
         int frameCounter;//public var frameCounter:int = 0;
         Common::Array<Level_mc *> listOfLevels;//public var listOfLevels:Array;
         int newLevel;//public var newLevel:int = 0;
-        dragonBones::CCArmatureDisplay * newLevelGr;// public var newLevelGr:NewLevel_mc;
+		NewLevel_mc * newLevelGr;// public var newLevelGr:NewLevel_mc;
         bool roadOff;//public var roadOff:Boolean;
         int newStarsForLevel;//public var newStarsForLevel:int = 0;
         MC * mouseMoveTarget;

@@ -13,7 +13,10 @@ namespace screens
     {
         
     };
-    
+	Back_mc::Back_mc() :MovieClip("screen/", "back", "back")
+	{
+		this->backCase = this->createCase("backCase");
+	}
     MiddleScreen_mc::MiddleScreen_mc():MovieClip("screen/","MiddleScreen_mc","MiddleScreen_mc")
     {
 		SET_NODETYPENAME();

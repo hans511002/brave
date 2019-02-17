@@ -7,6 +7,8 @@
 
 namespace screens
 {
+	NewLevel_mc::NewLevel_mc() :MovieClip("screen/", "NewLevel_mc", "NewLevel_mc") {
+	}
 	Level_mc::Level_mc() :MovieClip("screen/", "Level_mc", "Level_mc") 
 	{
 		this->levelCase = this->createCase("levelCase", true);

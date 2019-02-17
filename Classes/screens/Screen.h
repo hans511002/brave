@@ -20,6 +20,10 @@ namespace screens
         float autoguidesObjectHeight;
         Screen();
     };
-
+	struct Back_mc : public MovieClip
+	{
+		MCCase * backCase;
+		Back_mc();
+	};
 }
 #endif

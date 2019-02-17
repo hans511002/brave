@@ -2,11 +2,52 @@
 #include "OpenLevel.h"  
 #include "engine/World.h"
 #include "engine/xml/ReadXML.h"
-#include "engine/mc/mc.h"
+#include "MainClass.h"
+#include "LevelsMenu.h"
 
 namespace screens
 {  
-    OpenLevel::OpenLevel(int param1):frameCounter(0),openFlag(true),eyes1Counter(0)
+	OpenLevel_mc::OpenLevel_mc() :MovieClip("screen/", "OpenLevel_mc", "OpenLevel_mc")
+	{
+		this->board = this->createMovieClipSub("board");
+		this->shadow = this->createCase("shadow");
+		this->boardInfoAdd = this->board->createMovieClipSub("infoAdd");
+		this->boardInfoAddLevinSphere = this->boardInfoAdd->createMovieClipSub("levinSphere ");
+		this->boardInfoAddStoneSphere = this->boardInfoAdd->createMovieClipSub("stoneSphere ");
+		this->boardInfoAddIceSphere = this->boardInfoAdd->createMovieClipSub("iceSphere ");
+		this->boardInfoAddFireSphere =this->boardInfoAdd->createMovieClipSub("fireSphere ");
+		this->boardInfoAddGetSphere = this->boardInfoAdd->createMovieClipSub("getSphere ");
+		this->boardInfoAddLevinSphereSphereCase = this->boardInfoAddLevinSphere->createCase("sphereCase");
+		this->boardInfoAddStoneSphereSphereCase = this->boardInfoAddStoneSphere->createCase("sphereCase");
+		this->boardInfoAddIceSphereSphereCase = this->boardInfoAddIceSphere->createCase("sphereCase");
+		this->boardInfoAddFireSphereSphereCase = this->boardInfoAddFireSphere->createCase("sphereCase");
+
+		this->boardCurrentComplexity = this->board->createMovieClipSub("currentComplexity");
+		this->boardCurrentComplexityComplexityCase = this->boardCurrentComplexity->createCase("complexityCase");
+		this->boardCurrentComplexityFire = this->boardCurrentComplexity->createMovieClipSub("fire");
+
+		this->boardStatus = this->board->createMovieClipSub("status");
+		this->boardHeaderTXT = this->board->createText("headerTXT");
+		this->boardStar1 = this->board->createMovieClipSub("star1");
+		this->boardStar2 = this->board->createMovieClipSub("star2");
+		this->boardStar3 = this->board->createMovieClipSub("star3");
+		this->boardWreath = this->board->createMovieClipSub("wreath");
+		this->boardMainMode = this->board->createMovieClipSub("mainMode");
+		this->boardMainModeMainModeCase = this->boardMainMode->createCase("mainModeCase");
+		this->boardSurvivalMode = this->board->createMovieClipSub("survivalMode");
+		this->boardSurvivalModeSurvivalModeCase = this->boardSurvivalMode->createCase("survivalModeCase");
+		this->boardSurvivalModeEyes = this->boardSurvivalMode->createMovieClipSub("eyes");
+
+		this->boardMap = this->board->createMovieClipSub("map");
+		this->boardStart = this->board->createMovieClipSub("start");
+		this->boardStartStartCase = this->boardStart->createCase("startCase");
+		this->boardDescription = this->board->createMovieClipSub("description");
+		 
+		this->back = new Back_mc();
+		this->addChild(this->back);
+		//this->back;
+	}
+    OpenLevel::OpenLevel(int param1): eyes1Counter(0)
     {
         //this->addEventListener(Event.ADDED_TO_STAGE, this->init);
         this->playLevel = param1;
@@ -24,43 +65,43 @@ namespace screens
         this->container = new OpenLevel_mc();
         this->container->stop();
         this->container->back->stop();
-        this->container->back->backCase->stop();
+        //this->container->back->backCase->stop();
         this->container->back->backCase->setMouseEnabled(true);
         this->container->board->stop();
-        this->container->board->description->stop();
-        this->container->board->infoAdd->stop();
-        this->container->board->infoAdd->getSphere->stop();
-        this->container->board->infoAdd->fireSphere->stop();
-        this->container->board->infoAdd->iceSphere->stop();
-        this->container->board->infoAdd->stoneSphere->stop();
-        this->container->board->infoAdd->levinSphere->stop();
-        this->container->board->status->stop();
-        this->container->board->map->stop();
-        this->container->board->star1->stop();
-        this->container->board->star2->stop();
-        this->container->board->star3->stop();
-        this->container->board->wreath->stop();
-        this->container->board->mainMode->gotoAndStop(4);
-        this->container->board->survivalMode->stop();
-        this->container->board->currentComplexity->stop();
-        this->container->board->currentComplexity->fire->gotoAndStop(std::round(std::random() * (this->container->board->currentComplexity->fire->totalFrames - 1) + 1));
-        this->container->board->start->gotoAndStop(1);
-        this->container->board->currentComplexity->complexityCase->setMouseEnabled(true);
+        this->container->boardDescription->stop();
+        this->container->boardInfoAdd->stop();
+        this->container->boardInfoAddGetSphere->stop();
+        this->container->boardInfoAddFireSphere->stop();
+        this->container->boardInfoAddIceSphere->stop();
+        this->container->boardInfoAddStoneSphere->stop();
+        this->container->boardInfoAddLevinSphere->stop();
+        this->container->boardStatus->stop();
+        this->container->boardMap->stop();
+        this->container->boardStar1->stop();
+        this->container->boardStar2->stop();
+        this->container->boardStar3->stop();
+        this->container->boardWreath->stop();
+        this->container->boardMainMode->gotoAndStop(4);
+        this->container->boardSurvivalMode->stop();
+        this->container->boardCurrentComplexity->stop();
+        this->container->boardCurrentComplexityFire->gotoAndStop(std::round(std::random() * (this->container->boardCurrentComplexityFire->totalFrames - 1) + 1));
+        this->container->boardStart->gotoAndStop(1);
+        this->container->boardCurrentComplexityComplexityCase->setMouseEnabled(true);
         this->container->board->setMouseChildren(false);
         this->container->board->setMouseEnabled(false);
-        this->container->board->infoAdd->setVisible(false);
+        this->container->boardInfoAdd->setVisible(false);
         this->addChild(this->container);
         this->container->board->gotoAndStop(this->playLevel);
-        if (Main::mainClass->saveBoxClass.gameSave.data.starsOfLevels[(this->playLevel - 1)] < 3)
+        if (Main::mainClass->saveBoxClass->getIntValue("starsOfLevels",this->playLevel - 1) < 3)
         {
-            this->container->board->survivalMode->gotoAndStop(5);
+            this->container->boardSurvivalMode->gotoAndStop(5);
         }
         else
         {
-            this->container->board->survivalMode->eyes1->stop();
-            this->container->board->survivalMode->eyes1.alpha = 0;
-            this->container->board->survivalMode->survivalModeCase->setMouseEnabled(true);
-            if (!Main::mainClass->saveBoxClass.gameSave.data.eduSurvHint)
+            this->container->boardSurvivalModeEyes->stop();
+			this->container->boardSurvivalModeEyes->setAlpha(0);
+            this->container->boardSurvivalModeSurvivalModeCase->setMouseEnabled(true);
+            if (!Main::mainClass->saveBoxClass->getBoolValue("eduSurvHint"))
             {
                 //this->openSurvEdu = new Training_91_mc();
                 //this->openSurvEdu->stop();
@@ -72,70 +113,62 @@ namespace screens
                 //this->addChild(this->openSurvEdu);
             }
         }
-        this->container->board->start->startCase->setMouseEnabled(true);
+        this->container->boardStartStartCase->setMouseEnabled(true);
         this->statusManage();
 		int starsOfLevel = Main::mainClass->saveBoxClass->getIntValue("starsOfLevels", (this->playLevel - 1));
 		if(starsOfLevel >= 1)
         {
-            this->container->board->star1->gotoAndStop(1);
+            this->container->boardStar1->gotoAndStop(1);
         }
         else
         {
-            this->container->board->star1->gotoAndStop(2);
+            this->container->boardStar1->gotoAndStop(2);
         }
 		if(starsOfLevel >= 2)
         {
-			this->container->board->star2->gotoAndStop(1);
+			this->container->boardStar2->gotoAndStop(1);
         }
         else
         {
-			this->container->board->star2->gotoAndStop(2);
+			this->container->boardStar2->gotoAndStop(2);
         }
 		if(starsOfLevel >= 3)
         {
-			this->container->board->star3->gotoAndStop(1);
+			this->container->boardStar3->gotoAndStop(1);
         }
         else
         {
-			this->container->board->star3->gotoAndStop(3);
+			this->container->boardStar3->gotoAndStop(3);
         }
 		if(starsOfLevel >= 4)
         {
-			this->container->board->wreath->gotoAndStop(1);
+			this->container->boardWreath->gotoAndStop(1);
         }
         else
         {
-			this->container->board->wreath->gotoAndStop(2);
+			this->container->boardWreath->gotoAndStop(2);
         }
 		int complexityLevel = Main::mainClass->saveBoxClass->getIntValue("complexityLevel");
         if (complexityLevel < 4)
         {
         }
 		char tmp[32];
-		sprintf(tmp, "关卡 %i", this->playLevel);
-		this->container->board->headerTXT->setText(tmp);
-        
-        this->container->board->headerTXT->setTextFormat(Main::mainClass->boldTextFormat);
-        this->container->board->map->gotoAndStop(this->playLevel);
-		if(complexityLevel == 1)
+		sprintf(tmp, "%s %i", I18N_VALUE(I18N_CODE::U200), this->playLevel);
+		this->container->boardHeaderTXT->setText(tmp);
+		this->container->boardHeaderTXT->setFontName("bold");
+        //this->container->boardHeaderTXT->setTextFormat(Main::mainClass->boldTextFormat);
+        this->container->boardMap->gotoAndStop(this->playLevel);
+		if(complexityLevel >= 1 && complexityLevel<=3)
         {
-            this->complexityManage(1);
-        }
-		else if(complexityLevel == 2)
-        {
-            this->complexityManage(2);
-        }
-		else if(complexityLevel == 3)
-        {
-            this->complexityManage(3);
-        }
+            this->complexityManage(complexityLevel);
+        } 
         else if (complexityLevel == 4)
         {
 			int oldComplexityLevel = Main::mainClass->saveBoxClass->getIntValue("oldComplexityLevel");
 			this->complexityManage(oldComplexityLevel);
         }
         AudioUtil::playSound("Snd_menu_openBoard.mp3");
-        return;
+        return true;
     }// end function
 
     void OpenLevel::enterFrameHandler(cocos2d::EventMouse * event) 
@@ -159,11 +192,11 @@ namespace screens
                 this->openFlag = false; 
                 this->container->board->setMouseChildren(true);
                 this->container->board->setMouseEnabled(true);
-                this->stage.frameRate = 30;
-                if (this->openSurvEdu)
-                {
-                    this->openSurvEdu->setVisible(true);
-                }
+                //this->stage.frameRate = 30;
+                //if (this->openSurvEdu)
+                //{
+                //    this->openSurvEdu->setVisible(true);
+                //}
             }
         }
         else if (this->closeFlag)
@@ -181,7 +214,7 @@ namespace screens
 		//public var openSurvEdu:Training_91_mc;
         //if (this->openSurvEdu)
         //{
-        //    if (this->openSurvEdu.visible)
+        //    if (this->openSurvEdu->isVisible())
         //    {
         //        if (!this->closeFlag)
         //        {
@@ -202,7 +235,7 @@ namespace screens
         //                {
         //                    this->openSurvEdu->gotoAndStop(23);
         //                }
-        //                if (this->openSurvEdu->currentFrame < this->openSurvEdu.totalFrames)
+        //                if (this->openSurvEdu->currentFrame < this->openSurvEdu->totalFrames)
         //                {
         //                    this->openSurvEdu->gotoAndStop((this->openSurvEdu->currentFrame + 1));
         //                }
@@ -220,86 +253,85 @@ namespace screens
         //        }
         //    }
         //}
-        if (this->container->board->currentComplexity.fire->currentFrame < this->container->board->currentComplexity.fire.totalFrames)
+        if (this->container->boardCurrentComplexityFire->currentFrame < this->container->boardCurrentComplexityFire->totalFrames)
         {
-            this->container->board->currentComplexity.fire->gotoAndStop((this->container->board->currentComplexity.fire->currentFrame + 1));
+            this->container->boardCurrentComplexityFire->gotoAndStop((this->container->boardCurrentComplexityFire->currentFrame + 1));
         }
         else
         {
-            this->container->board->currentComplexity.fire->gotoAndStop(1);
+            this->container->boardCurrentComplexityFire->gotoAndStop(1);
         }
-        if (this->container->board->survivalMode->currentFrame == 4)
+        if (this->container->boardSurvivalMode->currentFrame == 4)
         {
-            if (this->container->board->survivalMode->eyes->currentFrame < this->container->board->survivalMode->eyes.totalFrames)
+            if (this->container->boardSurvivalModeEyes->currentFrame < this->container->boardSurvivalModeEyes->totalFrames)
             {
-                this->container->board->survivalMode->eyes->gotoAndStop((this->container->board->survivalMode->eyes->currentFrame + 1));
+                this->container->boardSurvivalModeEyes->gotoAndStop((this->container->boardSurvivalModeEyes->currentFrame + 1));
             }
             else
             {
-                this->container->board->survivalMode->eyes->gotoAndStop(1);
+                this->container->boardSurvivalModeEyes->gotoAndStop(1);
             }
         }
-        if (this->container->board->infoAdd->isVisible())
+        if (this->container->boardInfoAdd->isVisible())
         {
-            if (this->container->board->infoAdd->getSphere->currentFrame < this->container->board->infoAdd->getSphere.totalFrames)
+            if (this->container->boardInfoAddGetSphere->currentFrame < this->container->boardInfoAddGetSphere->totalFrames)
             {
-                this->container->board->infoAdd->getSphere->gotoAndStop((this->container->board->infoAdd->getSphere->currentFrame + 1));
+                this->container->boardInfoAddGetSphere->gotoAndStop((this->container->boardInfoAddGetSphere->currentFrame + 1));
             }
             else
             {
-                this->container->board->infoAdd->getSphere->gotoAndStop(1);
+                this->container->boardInfoAddGetSphere->gotoAndStop(1);
             }
-            if (this->container->board->infoAdd->fireSphere.visible)
+            if (this->container->boardInfoAddFireSphere->isVisible())
             {
-                if (this->container->board->infoAdd->fireSphere->currentFrame < this->container->board->infoAdd->fireSphere.totalFrames)
+                if (this->container->boardInfoAddFireSphere->currentFrame < this->container->boardInfoAddFireSphere->totalFrames)
                 {
-                    this->container->board->infoAdd->fireSphere->gotoAndStop((this->container->board->infoAdd->fireSphere->currentFrame + 1));
+                    this->container->boardInfoAddFireSphere->gotoAndStop((this->container->boardInfoAddFireSphere->currentFrame + 1));
                 }
                 else
                 {
-                    this->container->board->infoAdd->fireSphere->gotoAndStop(1);
+                    this->container->boardInfoAddFireSphere->gotoAndStop(1);
                 }
             }
-            if (this->container->board->infoAdd->iceSphere.visible)
+            if (this->container->boardInfoAddIceSphere->isVisible())
             {
-                if (this->container->board->infoAdd->iceSphere->currentFrame < this->container->board->infoAdd->iceSphere.totalFrames)
+                if (this->container->boardInfoAddIceSphere->currentFrame < this->container->boardInfoAddIceSphere->totalFrames)
                 {
-                    this->container->board->infoAdd->iceSphere->gotoAndStop((this->container->board->infoAdd->iceSphere->currentFrame + 1));
+                    this->container->boardInfoAddIceSphere->gotoAndStop((this->container->boardInfoAddIceSphere->currentFrame + 1));
                 }
                 else
                 {
-                    this->container->board->infoAdd->iceSphere->gotoAndStop(1);
+                    this->container->boardInfoAddIceSphere->gotoAndStop(1);
                 }
             }
-            if (this->container->board->infoAdd->stoneSphere.visible)
+            if (this->container->boardInfoAddStoneSphere->isVisible())
             {
-                if (this->container->board->infoAdd->stoneSphere->currentFrame < this->container->board->infoAdd->stoneSphere.totalFrames)
+                if (this->container->boardInfoAddStoneSphere->currentFrame < this->container->boardInfoAddStoneSphere->totalFrames)
                 {
-                    this->container->board->infoAdd->stoneSphere->gotoAndStop((this->container->board->infoAdd->stoneSphere->currentFrame + 1));
+                    this->container->boardInfoAddStoneSphere->gotoAndStop((this->container->boardInfoAddStoneSphere->currentFrame + 1));
                 }
                 else
                 {
-                    this->container->board->infoAdd->stoneSphere->gotoAndStop(1);
+                    this->container->boardInfoAddStoneSphere->gotoAndStop(1);
                 }
             }
-            if (this->container->board->infoAdd->levinSphere.visible)
+            if (this->container->boardInfoAddLevinSphere->isVisible())
             {
-                if (this->container->board->infoAdd->levinSphere->currentFrame < this->container->board->infoAdd->levinSphere.totalFrames)
+                if (this->container->boardInfoAddLevinSphere->currentFrame < this->container->boardInfoAddLevinSphere->totalFrames)
                 {
-                    this->container->board->infoAdd->levinSphere->gotoAndStop((this->container->board->infoAdd->levinSphere->currentFrame + 1));
+                    this->container->boardInfoAddLevinSphere->gotoAndStop((this->container->boardInfoAddLevinSphere->currentFrame + 1));
                 }
                 else
                 {
-                    this->container->board->infoAdd->levinSphere->gotoAndStop(1);
+                    this->container->boardInfoAddLevinSphere->gotoAndStop(1);
                 }
             }
         }
         if (this->hintSurvival)
         {
-            this->hintSurvival.x = this->mouseX;
-            this->hintSurvival.y = this->mouseY;
+            this->hintSurvival->setPosition(Main::mouseX, Main::mouseY);
         }
-        if (this->container->board->survivalMode->currentFrame < 4)
+        if (this->container->boardSurvivalMode->currentFrame < 4)
         {
             if (this->eyes1Counter < 60)
             {
@@ -311,43 +343,35 @@ namespace screens
             }
             if (this->eyes1Counter >= 11 && this->eyes1Counter <= 21)
             {
-                this->container->board->survivalMode->eyes1.alpha = this->container->board->survivalMode->eyes1.alpha + 0.1;
+                this->container->boardSurvivalModeEyes->setAlpha(this->container->boardSurvivalModeEyes->getAlpha() + 0.1);
                 if (this->eyes1Counter == 21)
-                {
-                    this->container->board->survivalMode->eyes1.alpha = 1;
-                }
+                    this->container->boardSurvivalModeEyes->setAlpha(1);
             }
             else if (this->eyes1Counter >= 21 && this->eyes1Counter <= 31)
             {
-                this->container->board->survivalMode->eyes1.alpha = this->container->board->survivalMode->eyes1.alpha - 0.1;
+				this->container->boardSurvivalModeEyes->setAlpha(this->container->boardSurvivalModeEyes->getAlpha() - 0.1);
                 if (this->eyes1Counter == 31)
-                {
-                    this->container->board->survivalMode->eyes1.alpha = 0;
-                }
+					this->container->boardSurvivalModeEyes->setAlpha(0);
             }
             else if (this->eyes1Counter >= 31 && this->eyes1Counter <= 41)
             {
-                this->container->board->survivalMode->eyes1.alpha = this->container->board->survivalMode->eyes1.alpha + 0.1;
+				this->container->boardSurvivalModeEyes->setAlpha(this->container->boardSurvivalModeEyes->getAlpha() + 0.1);
                 if (this->eyes1Counter == 41)
-                {
-                    this->container->board->survivalMode->eyes1.alpha = 1;
-                }
+					this->container->boardSurvivalModeEyes->setAlpha(1);
             }
             else if (this->eyes1Counter >= 41 && this->eyes1Counter <= 51)
             {
-                this->container->board->survivalMode->eyes1.alpha = this->container->board->survivalMode->eyes1.alpha - 0.1;
+				this->container->boardSurvivalModeEyes->setAlpha(this->container->boardSurvivalModeEyes->getAlpha() - 0.1);
                 if (this->eyes1Counter == 51)
-                {
-                    this->container->board->survivalMode->eyes1.alpha = 0;
-                }
+					this->container->boardSurvivalModeEyes->setAlpha(0);
             }
-            if (this->container->board->survivalMode->eyes1->currentFrame < this->container->board->survivalMode->eyes1.totalFrames)
+            if (this->container->boardSurvivalModeEyes->currentFrame < this->container->boardSurvivalModeEyes->totalFrames)
             {
-                this->container->board->survivalMode->eyes1->gotoAndStop((this->container->board->survivalMode->eyes1->currentFrame + 1));
+                this->container->boardSurvivalModeEyes->gotoAndStop((this->container->boardSurvivalModeEyes->currentFrame + 1));
             }
             else
             {
-                this->container->board->survivalMode->eyes1->gotoAndStop(1);
+                this->container->boardSurvivalModeEyes->gotoAndStop(1);
             }
         }
         return;
@@ -359,7 +383,7 @@ namespace screens
 		if(!event)
 			return;
         string targetName = event->target->getName();
-        if (param1->target->name == "backCase")
+        if (targetName == "backCase")
         {
             if (this->container->back->currentFrame == 1)
             {
@@ -371,33 +395,33 @@ namespace screens
         {
             this->container->back->gotoAndStop(1);
         }
-        if (param1->target->name == "complexityCase")
+        if (targetName == "complexityCase")
         {
-            if (this->container->board->currentComplexity->currentFrame == 1 || this->container->board->currentComplexity->currentFrame == 4 
-                || this->container->board->currentComplexity->currentFrame == 7)
+            if (this->container->boardCurrentComplexity->currentFrame == 1 || this->container->boardCurrentComplexity->currentFrame == 4 
+                || this->container->boardCurrentComplexity->currentFrame == 7)
             {
-                this->container->board->currentComplexity->gotoAndStop((this->container->board->currentComplexity->currentFrame + 1));
+                this->container->boardCurrentComplexity->gotoAndStop((this->container->boardCurrentComplexity->currentFrame + 1));
                 AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
             }
         }
-        else if (this->container->board->currentComplexity->currentFrame == 2 || this->container->board->currentComplexity->currentFrame == 5 || this->container->board->currentComplexity->currentFrame == 8)
+        else if (this->container->boardCurrentComplexity->currentFrame == 2 || this->container->boardCurrentComplexity->currentFrame == 5 || this->container->boardCurrentComplexity->currentFrame == 8)
         {
-            this->container->board->currentComplexity->gotoAndStop((this->container->board->currentComplexity->currentFrame - 1));
+            this->container->boardCurrentComplexity->gotoAndStop((this->container->boardCurrentComplexity->currentFrame - 1));
         }
-        if (param1->target->name == "survivalModeCase")
+        if (targetName == "survivalModeCase")
         {
-            if (this->container->board->survivalMode->currentFrame == 1)
+            if (this->container->boardSurvivalMode->currentFrame == 1)
             {
-                this->container->board->survivalMode->gotoAndStop(2);
+                this->container->boardSurvivalMode->gotoAndStop(2);
                 AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
             }
-            if (this->container->board->survivalMode->currentFrame == 5)
+            if (this->container->boardSurvivalMode->currentFrame == 5)
             {
                 if (!this->hintSurvival)
                 {
                     this->hintSurvival = new HintSurvival_mc();
                     this->hintSurvival->stop();
-                    this->hintSurvival->setPosition(this->mouseX,this->mouseY); 
+                    this->hintSurvival->setPosition(Main::mouseX,Main::mouseY); 
                     this->hintSurvival->setMouseChildren(false);
                     this->hintSurvival->setMouseEnabled(false);
                     this->addChild(this->hintSurvival);
@@ -406,9 +430,9 @@ namespace screens
         }
         else
         {
-            if (this->container->board->survivalMode->currentFrame == 2)
+            if (this->container->boardSurvivalMode->currentFrame == 2)
             {
-                this->container->board->survivalMode->gotoAndStop(1);
+                this->container->boardSurvivalMode->gotoAndStop(1);
             }
             if (this->hintSurvival)
             {
@@ -416,29 +440,29 @@ namespace screens
                 this->hintSurvival = NULL;
             }
         }
-        if (param1->target->name == "mainModeCase")
+        if (targetName == "mainModeCase")
         {
-            if (this->container->board->mainMode->currentFrame == 1)
+            if (this->container->boardMainMode->currentFrame == 1)
             {
-                this->container->board->mainMode->gotoAndStop(2);
+                this->container->boardMainMode->gotoAndStop(2);
                 AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
             }
         }
-        else if (this->container->board->mainMode->currentFrame == 2)
+        else if (this->container->boardMainMode->currentFrame == 2)
         {
-            this->container->board->mainMode->gotoAndStop(1);
+            this->container->boardMainMode->gotoAndStop(1);
         }
-        if (param1->target->name == "startCase")
+        if (targetName == "startCase")
         {
-            if (this->container->board->start->currentFrame == 1)
+            if (this->container->boardStart->currentFrame == 1)
             {
-                this->container->board->start->gotoAndStop(2);
+                this->container->boardStart->gotoAndStop(2);
                 AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
             }
         }
-        else if (this->container->board->start->currentFrame == 2)
+        else if (this->container->boardStart->currentFrame == 2)
         {
-            this->container->board->start->gotoAndStop(1);
+            this->container->boardStart->gotoAndStop(1);
         }
         return;
     }// end function
@@ -461,33 +485,33 @@ namespace screens
             }
             else if (targetName == "complexityCase")
             {
-                if (this->container->board->currentComplexity->currentFrame == 2 || this->container->board->currentComplexity->currentFrame == 5 || this->container->board->currentComplexity->currentFrame == 8)
+                if (this->container->boardCurrentComplexity->currentFrame == 2 || this->container->boardCurrentComplexity->currentFrame == 5 || this->container->boardCurrentComplexity->currentFrame == 8)
                 {
-                    this->container->board->currentComplexity->gotoAndStop((this->container->board->currentComplexity->currentFrame + 1));
+                    this->container->boardCurrentComplexity->gotoAndStop((this->container->boardCurrentComplexity->currentFrame + 1));
                     AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
                 }
             }
             else if (targetName == "survivalModeCase")
             {
-                if (this->container->board->survivalMode->currentFrame == 2)
+                if (this->container->boardSurvivalMode->currentFrame == 2)
                 {
-                    this->container->board->survivalMode->gotoAndStop(3);
+                    this->container->boardSurvivalMode->gotoAndStop(3);
                     AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
                 }
             }
             else if (targetName == "mainModeCase")
             {
-                if (this->container->board->mainMode->currentFrame == 2)
+                if (this->container->boardMainMode->currentFrame == 2)
                 {
-                    this->container->board->mainMode->gotoAndStop(3);
+                    this->container->boardMainMode->gotoAndStop(3);
                     AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
                 }
             }
             else if (targetName == "startCase")
             {
-                if (this->container->board->start->currentFrame == 2)
+                if (this->container->boardStart->currentFrame == 2)
                 {
-                    this->container->board->start->gotoAndStop(3);
+                    this->container->boardStart->gotoAndStop(3);
                     AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
                 }
             }
@@ -519,7 +543,7 @@ namespace screens
         }
         if (targetName == "complexityCase")
         {
-            if (this->container->board->currentComplexity->currentFrame == 3 || this->container->board->currentComplexity->currentFrame == 6 || this->container->board->currentComplexity->currentFrame == 9)
+            if (this->container->boardCurrentComplexity->currentFrame == 3 || this->container->boardCurrentComplexity->currentFrame == 6 || this->container->boardCurrentComplexity->currentFrame == 9)
             {
                 int complexityLevel=Main::mainClass->saveBoxClass->getIntValue("complexityLevel");
                 if ( complexityLevel == 1)
@@ -534,16 +558,16 @@ namespace screens
                 {
                     this->complexityManage(1);
                 }
-                this->container->board->currentComplexity->gotoAndStop((this->container->board->currentComplexity->currentFrame + 1));
+                this->container->boardCurrentComplexity->gotoAndStop((this->container->boardCurrentComplexity->currentFrame + 1));
             }
         }
-        else if (this->container->board->currentComplexity->currentFrame == 3 || this->container->board->currentComplexity->currentFrame == 6 || this->container->board->currentComplexity->currentFrame == 9)
+        else if (this->container->boardCurrentComplexity->currentFrame == 3 || this->container->boardCurrentComplexity->currentFrame == 6 || this->container->boardCurrentComplexity->currentFrame == 9)
         {
-            this->container->board->currentComplexity->gotoAndStop(this->container->board->currentComplexity->currentFrame - 2);
+            this->container->boardCurrentComplexity->gotoAndStop(this->container->boardCurrentComplexity->currentFrame - 2);
         }
         if (targetName == "survivalModeCase")
         {
-            if (this->container->board->survivalMode->currentFrame == 3)
+            if (this->container->boardSurvivalMode->currentFrame == 3)
             {
                 if (Main::mainClass->saveBoxClass->getIntValue("saveNo") < 4)
                 {
@@ -556,268 +580,198 @@ namespace screens
                 }
             }
         }
-        else if (this->container->board->survivalMode->currentFrame == 3)
+        else if (this->container->boardSurvivalMode->currentFrame == 3)
         {
-            this->container->board->survivalMode->gotoAndStop(1);
+            this->container->boardSurvivalMode->gotoAndStop(1);
         }
         if (targetName == "mainModeCase")
         {
-            if (this->container->board->mainMode->currentFrame == 3)
+            if (this->container->boardMainMode->currentFrame == 3)
             {
-                this->container->board->mainMode->gotoAndStop(4);
-                this->container->board->survivalMode->gotoAndStop(1);
-                this->container->board->survivalMode->eyes1->stop();
-                this->container->board->survivalMode->eyes1->alpha = 0;
-                this->container->board->mainMode->mainModeCase->setMouseEnabled(false);
-                this->container->board->survivalMode->survivalModeCase->setMouseEnabled(true); 
-                this->container->board->currentComplexity->setMouseChildren(true);
-                this->container->board->currentComplexity->setMouseEnabled(true);
+                this->container->boardMainMode->gotoAndStop(4);
+                this->container->boardSurvivalMode->gotoAndStop(1);
+                this->container->boardSurvivalModeEyes->stop();
+                this->container->boardSurvivalModeEyes->setAlpha(0);
+                this->container->boardMainModeMainModeCase->setMouseEnabled(false);
+                this->container->boardSurvivalModeSurvivalModeCase->setMouseEnabled(true); 
+                this->container->boardCurrentComplexity->setMouseChildren(true);
+                this->container->boardCurrentComplexity->setMouseEnabled(true);
                 if (this->oldComplexity == 1)
                 {
                     this->complexityManage(1);
-                    this->container->board->currentComplexity->gotoAndStop(1);
+                    this->container->boardCurrentComplexity->gotoAndStop(1);
                 }
                 else if (this->oldComplexity == 2 || this->oldComplexity == 4)
                 {
                     this->complexityManage(2);
-                    this->container->board->currentComplexity->gotoAndStop(4);
+                    this->container->boardCurrentComplexity->gotoAndStop(4);
                 }
                 else if (this->oldComplexity == 3)
                 {
                     this->complexityManage(3);
-                    this->container->board->currentComplexity->gotoAndStop(7);
+                    this->container->boardCurrentComplexity->gotoAndStop(7);
                 }
             }
         }
-        else if (this->container->board->mainMode->currentFrame == 3)
+        else if (this->container->boardMainMode->currentFrame == 3)
         {
-            this->container->board->mainMode->gotoAndStop(1);
+            this->container->boardMainMode->gotoAndStop(1);
         }
         if (targetName == "startCase")
         {
-            if (this->container->board->start->currentFrame == 3)
+            if (this->container->boardStart->currentFrame == 3)
             {
-                this->container->board->start->gotoAndStop(2);
+                this->container->boardStart->gotoAndStop(2);
                 Main::mainClass->addNewScreen("World");
             }
         }
-        else if (this->container->board->start->currentFrame == 3)
+        else if (this->container->boardStart->currentFrame == 3)
         {
-            this->container->board->start->gotoAndStop(1);
+            this->container->boardStart->gotoAndStop(1);
         }
         return;
     }// end function
 
     void OpenLevel::complexityManage(int param1) 
-    {
+    { 
         if (param1 < 4)
         {
-            if (this->playLevel == 1)
-            {
-                this->container->board->headerTXT.text = "关卡 1";
-                this->container->board->description->gotoAndStop(1);
-            }
-            else if (this->playLevel == 2)
-            {
-                this->container->board->headerTXT.text = "关卡 2";
-                this->container->board->description->gotoAndStop(2);
-            }
-            else if (this->playLevel == 3)
-            {
-                this->container->board->headerTXT.text = "关卡 3";
-                this->container->board->description->gotoAndStop(3);
-            }
-            else if (this->playLevel == 4)
-            {
-                this->container->board->headerTXT.text = "关卡 4";
-                this->container->board->description->gotoAndStop(4);
-            }
-            else if (this->playLevel == 5)
-            {
-                this->container->board->headerTXT.text = "关卡 5";
-                this->container->board->description->gotoAndStop(5);
-            }
-            else if (this->playLevel == 6)
-            {
-                this->container->board->headerTXT.text = "关卡 6";
-                this->container->board->description->gotoAndStop(6);
-            }
-            else if (this->playLevel == 7)
-            {
-                this->container->board->headerTXT.text = "关卡 7";
-                this->container->board->description->gotoAndStop(7);
-            }
-            else if (this->playLevel == 8)
-            {
-                this->container->board->headerTXT.text = "关卡 8";
-                this->container->board->description->gotoAndStop(8);
-            }
-            else if (this->playLevel == 9)
-            {
-                this->container->board->headerTXT.text = "关卡 9";
-                this->container->board->description->gotoAndStop(9);
-            }
-            else if (this->playLevel == 10)
-            {
-                this->container->board->headerTXT.text = "关卡 10";
-                this->container->board->description->gotoAndStop(10);
-            }
-            else if (this->playLevel == 11)
-            {
-                this->container->board->headerTXT.text = "关卡 11";
-                this->container->board->description->gotoAndStop(11);
-            }
-            else if (this->playLevel == 12)
-            {
-                this->container->board->headerTXT.text = "关卡 12";
-                this->container->board->description->gotoAndStop(12);
-            }
-            else if (this->playLevel == 13)
-            {
-                this->container->board->headerTXT.text = "关卡 13";
-                this->container->board->description->gotoAndStop(13);
-            }
-            else if (this->playLevel == 14)
-            {
-                this->container->board->headerTXT.text = "关卡 14";
-                this->container->board->description->gotoAndStop(14);
-            }
-            else if (this->playLevel == 15)
-            {
-                this->container->board->headerTXT.text = "关卡 15";
-                this->container->board->description->gotoAndStop(15);
-            }
+			char tmp[32];
+			sprintf(tmp, "%s %i", I18N_VALUE(I18N_CODE::U200), this->playLevel);
+			std::setText(this->container->boardHeaderTXT, tmp);
+                this->container->boardDescription->gotoAndStop(this->playLevel);
+            
             if (param1 == 1)
             {
-                this->container->board->currentComplexity->gotoAndStop(1);
+                this->container->boardCurrentComplexity->gotoAndStop(1);
                 Main::mainClass->saveBoxClass->setValue("oldComplexityLevel",1);
                 Main::mainClass->saveBoxClass->setValue("complexityLevel",1);
-                if (this->container->board->infoAdd->isVisible())
+                if (this->container->boardInfoAdd->isVisible())
                 {
-                    this->container->board->infoAdd->setVisible(false);
+                    this->container->boardInfoAdd->setVisible(false);
                 }
             }
             else if (param1 == 2)
             {
-                this->container->board->currentComplexity->gotoAndStop(4); 
+                this->container->boardCurrentComplexity->gotoAndStop(4); 
                 Main::mainClass->saveBoxClass->setValue("oldComplexityLevel",2);
                 Main::mainClass->saveBoxClass->setValue("complexityLevel",2);
-                if (this->container->board->infoAdd->isVisible())
+                if (this->container->boardInfoAdd->isVisible())
                 {
-                    this->container->board->infoAdd->setVisible(false);
+                    this->container->boardInfoAdd->setVisible(false);
                 }
             }
             else if (param1 == 3)
             {
-                this->container->board->currentComplexity->gotoAndStop(7); 
+                this->container->boardCurrentComplexity->gotoAndStop(7); 
                 Main::mainClass->saveBoxClass->setValue("oldComplexityLevel",3);
                 Main::mainClass->saveBoxClass->setValue("complexityLevel",3);
-                if (this->container->board->infoAdd->isVisible())
+                if (this->container->boardInfoAdd->isVisible())
                 {
-                    this->container->board->infoAdd->setVisible(false);
+                    this->container->boardInfoAdd->setVisible(false);
                 }
             }
             this->statusManage();
         }
         else if (param1 == 4)
         {
-            this->container->board->description->gotoAndStop(16);
-            this->container->board->mainMode->gotoAndStop(1);
-            this->container->board->survivalMode->gotoAndStop(4);
-            this->container->board->currentComplexity->gotoAndStop(10);
-            this->container->board->mainMode->mainModeCase->setMouseEnabled(true);
-            this->container->board->survivalMode->survivalModeCase->setMouseEnabled(false); 
-            this->container->board->currentComplexity->setMouseChildren(false);
-            this->container->board->currentComplexity->setMouseEnabled(false);
+            this->container->boardDescription->gotoAndStop(16);
+            this->container->boardMainMode->gotoAndStop(1);
+            this->container->boardSurvivalMode->gotoAndStop(4);
+            this->container->boardCurrentComplexity->gotoAndStop(10);
+            this->container->boardMainModeMainModeCase->setMouseEnabled(true);
+            this->container->boardSurvivalModeSurvivalModeCase->setMouseEnabled(false); 
+            this->container->boardCurrentComplexity->setMouseChildren(false);
+            this->container->boardCurrentComplexity->setMouseEnabled(false);
             this->oldComplexity = Main::mainClass->saveBoxClass->getIntValue("complexityLevel");
             Main::mainClass->saveBoxClass->setValue("complexityLevel", 4);
-            if (!this->container->board->infoAdd->isVisible())
+            if (!this->container->boardInfoAdd->isVisible())
             {
-                this->container->board->infoAdd->setVisible(true);
+                this->container->boardInfoAdd->setVisible(true);
                 if (this->playLevel == 1)
                 {
-                    this->container->board->infoAdd->gotoAndStop(1);
-                    this->container->board->infoAdd->iceSphere->setVisible(false);
-                    this->container->board->infoAdd->stoneSphere->setVisible(false);
-                    this->container->board->infoAdd->levinSphere->setVisible(false);
+                    this->container->boardInfoAdd->gotoAndStop(1);
+                    this->container->boardInfoAddIceSphere->setVisible(false);
+                    this->container->boardInfoAddStoneSphere->setVisible(false);
+                    this->container->boardInfoAddLevinSphere->setVisible(false);
                 }
                 else if (this->playLevel == 2)
                 {
-                    this->container->board->infoAdd->gotoAndStop(3);
-                    this->container->board->infoAdd->levinSphere->setVisible(false);
+                    this->container->boardInfoAdd->gotoAndStop(3);
+                    this->container->boardInfoAddLevinSphere->setVisible(false);
                 }
                 else if (this->playLevel == 3)
                 {
-                    this->container->board->infoAdd->gotoAndStop(6);
+                    this->container->boardInfoAdd->gotoAndStop(6);
                 }
                 else if (this->playLevel == 4)
                 {
-                    this->container->board->infoAdd->gotoAndStop(6);
-                    this->container->board->infoAdd->fireSphere->setVisible(false);
-                    this->container->board->infoAdd->iceSphere->setVisible(false);
+                    this->container->boardInfoAdd->gotoAndStop(6);
+                    this->container->boardInfoAddFireSphere->setVisible(false);
+                    this->container->boardInfoAddIceSphere->setVisible(false);
                 }
                 else if (this->playLevel == 5)
                 {
-                    this->container->board->infoAdd->gotoAndStop(6);
-                    this->container->board->infoAdd->fireSphere->setVisible(false);
-                    this->container->board->infoAdd->stoneSphere->setVisible(false);
+                    this->container->boardInfoAdd->gotoAndStop(6);
+                    this->container->boardInfoAddFireSphere->setVisible(false);
+                    this->container->boardInfoAddStoneSphere->setVisible(false);
                 }
                 else if (this->playLevel == 6)
                 {
-                    this->container->board->infoAdd->gotoAndStop(6);
-                    this->container->board->infoAdd->levinSphere->setVisible(false);
+                    this->container->boardInfoAdd->gotoAndStop(6);
+                    this->container->boardInfoAddLevinSphere->setVisible(false);
                 }
                 else if (this->playLevel == 7)
                 {
-                    this->container->board->infoAdd->gotoAndStop(6);
+                    this->container->boardInfoAdd->gotoAndStop(6);
                 }
                 else if (this->playLevel == 8)
                 {
-                    this->container->board->infoAdd->gotoAndStop(7);
-                    this->container->board->infoAdd->stoneSphere->setVisible(false);
+                    this->container->boardInfoAdd->gotoAndStop(7);
+                    this->container->boardInfoAddStoneSphere->setVisible(false);
                 }
                 else if (this->playLevel == 9)
                 {
-                    this->container->board->infoAdd->gotoAndStop(1);
+                    this->container->boardInfoAdd->gotoAndStop(1);
                 }
                 else if (this->playLevel == 10)
                 {
-                    this->container->board->infoAdd->gotoAndStop(6);
-                    this->container->board->infoAdd->levinSphere->setVisible(false);
+                    this->container->boardInfoAdd->gotoAndStop(6);
+                    this->container->boardInfoAddLevinSphere->setVisible(false);
                 }
                 else if (this->playLevel == 11)
                 {
-                    this->container->board->infoAdd->gotoAndStop(8);
+                    this->container->boardInfoAdd->gotoAndStop(8);
                 }
                 else if (this->playLevel == 12)
                 {
-                    this->container->board->infoAdd->gotoAndStop(1);
+                    this->container->boardInfoAdd->gotoAndStop(1);
                 }
                 else if (this->playLevel == 13)
                 {
-                    this->container->board->infoAdd->gotoAndStop(7);
-                    this->container->board->infoAdd->fireSphere->setVisible(false);
-                    this->container->board->infoAdd->stoneSphere->setVisible(false);
+                    this->container->boardInfoAdd->gotoAndStop(7);
+                    this->container->boardInfoAddFireSphere->setVisible(false);
+                    this->container->boardInfoAddStoneSphere->setVisible(false);
                 }
                 else if (this->playLevel == 14)
                 {
-                    this->container->board->infoAdd->gotoAndStop(8);
+                    this->container->boardInfoAdd->gotoAndStop(8);
                 }
                 else if (this->playLevel == 15)
                 {
-                    this->container->board->infoAdd->gotoAndStop(1);
-                    this->container->board->infoAdd->stoneSphere->setVisible(false);
+                    this->container->boardInfoAdd->gotoAndStop(1);
+                    this->container->boardInfoAddStoneSphere->setVisible(false);
                 }
-                this->container->board->infoAdd->getSphere->stop();
-                this->container->board->infoAdd->fireSphere->stop();
-                this->container->board->infoAdd->iceSphere->stop();
-                this->container->board->infoAdd->stoneSphere->stop();
-                this->container->board->infoAdd->levinSphere->stop();
-                if (this->openSurvEdu)
-                {
-                    this->openSurvEdu->closeFlag = true;
-                    Main::mainClass->saveBoxClass->setValue("eduSurvHint" , true);
-                }
+                this->container->boardInfoAddGetSphere->stop();
+                this->container->boardInfoAddFireSphere->stop();
+                this->container->boardInfoAddIceSphere->stop();
+                this->container->boardInfoAddStoneSphere->stop();
+                this->container->boardInfoAddLevinSphere->stop();
+                //if (this->openSurvEdu)
+                //{
+                //    this->openSurvEdu->closeFlag = true;
+                //    Main::mainClass->saveBoxClass->setValue("eduSurvHint" , true);
+                //}
             }
             this->statusManage(true);
         }
@@ -828,30 +782,30 @@ namespace screens
     {
         if (!param1)
         {
-            if (Main::mainClass->saveBoxClass->getIntValue(("levelsFinish",(this->playLevel - 1)) == 0)
+            if (Main::mainClass->saveBoxClass->getIntValue("levelsFinish",(this->playLevel - 1)) == 0)
             {
-                this->container->board->status->gotoAndStop(1);
+                this->container->boardStatus->gotoAndStop(1);
             }
-            else if (Main::mainClass->saveBoxClass->getIntValue(("levelsFinish",(this->playLevel - 1)) == 1)
+            else if (Main::mainClass->saveBoxClass->getIntValue("levelsFinish",(this->playLevel - 1)) == 1)
             {
-                this->container->board->status->gotoAndStop(2);
+                this->container->boardStatus->gotoAndStop(2);
             }
-            else if (Main::mainClass->saveBoxClass->getIntValue(("levelsFinish",(this->playLevel - 1)) == 2)
+            else if (Main::mainClass->saveBoxClass->getIntValue("levelsFinish",(this->playLevel - 1)) == 2)
             {
-                this->container->board->status->gotoAndStop(3);
+                this->container->boardStatus->gotoAndStop(3);
             }
             else if (Main::mainClass->saveBoxClass->getIntValue("levelsFinish",(this->playLevel - 1)) == 3)
             {
-                this->container->board->status->gotoAndStop(4);
+                this->container->boardStatus->gotoAndStop(4);
             }
         }
-        else if (Main::mainClass->saveBoxClass->getIntValue("starsOfLevels",(Main::mainClass->saveBoxClass.playLevel - 1) == 4)
+        else if (Main::mainClass->saveBoxClass->getIntValue("starsOfLevels",Main::mainClass->saveBoxClass->playLevel - 1) == 4)
         {
-            this->container->board->status->gotoAndStop(5);
+            this->container->boardStatus->gotoAndStop(5);
         }
         else
         {
-            this->container->board->status->gotoAndStop(1);
+            this->container->boardStatus->gotoAndStop(1);
         }
         return;
     }// end function
@@ -877,24 +831,24 @@ namespace screens
 
     void OpenLevel::autoguidersButtons()
     {
-        this->autoguidesMouse_pt = cocos2d::Point(this->mouseX, this->mouseY);
-        this->autoguidesObject = NULL;
-        this->autoguidesObject_pt = this->container->back->localToGlobal(new Point(this->container->back->backCase->x, this->container->back->backCase->y));
-        this->autoguidesObjectWidth = this->container->back->backCase->width / 2;
-        this->autoguidesObjectHeight = this->container->back->backCase->height / 2;
-        if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-            && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-            && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-            && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-        {
-            this->autoguidesObject = this->container->back->backCase;
-        }
-        if (this->autoguidesObject)
-        {
-            this->tempObject = new Object();
-            this->tempObject.target = this->autoguidesObject;
-            this->mouseMoveHandler(this->tempObject);
-        }
+        //this->autoguidesMouse_pt = cocos2d::Point(Main::mouseX, Main::mouseY);
+        //this->autoguidesObject = NULL;
+        //this->autoguidesObject_pt = this->container->back->localToGlobal(  cocos2d::Point(this->container->back->backCase->x, this->container->back->backCase->y));
+        //this->autoguidesObjectWidth = this->container->back->backCase->width / 2;
+        //this->autoguidesObjectHeight = this->container->back->backCase->height / 2;
+        //if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
+        //    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
+        //    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
+        //    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+        //{
+        //    this->autoguidesObject = this->container->back->backCase;
+        //}
+        //if (this->autoguidesObject)
+        //{
+        //    this->tempObject = new Object();
+        //    this->tempObject.target = this->autoguidesObject;
+        //    this->mouseMoveHandler(this->tempObject);
+        //}
         return;
     }// end function
 
@@ -905,7 +859,7 @@ namespace screens
             this->closeFlag = true; 
             this->container->board->setMouseChildren(false);
             this->container->board->setMouseEnabled(false);
-            this->stage.frameRate = 60;
+            //this->stage.frameRate = 60;
             if (Main::mainClass->saveBoxClass->getIntValue("complexityLevel") == 4)
             {
                 Main::mainClass->saveBoxClass->setValue("complexityLevel",this->oldComplexity);
@@ -940,4 +894,3 @@ namespace screens
 
 
 }
-#endif

@@ -6,9 +6,9 @@ namespace screens
 {   
     struct Upgrades_mc : public MovieClip
     {
-        public var back:MovieClip;
-        public var cont:MovieClip;
-        public var shadow:MovieClip;
+		Back_mc * back;
+		MovieClipSub* cont;
+        MCCase * shadow;
 
         Upgrades_mc();
 
@@ -92,6 +92,6 @@ namespace screens
 
         //void reInit(event:Event);
 
-    }
+	};
 }
 #endif

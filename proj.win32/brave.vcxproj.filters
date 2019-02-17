@@ -441,6 +441,9 @@
     <ClCompile Include="..\Classes\screens\Achievements.cpp">
       <Filter>src\screens</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\screens\OpenLevel.cpp">
+      <Filter>src\screens</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -885,6 +888,9 @@
       <Filter>src\screens</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\screens\Achievements.h">
+      <Filter>src\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\screens\OpenLevel.h">
       <Filter>src\screens</Filter>
     </ClInclude>
   </ItemGroup>

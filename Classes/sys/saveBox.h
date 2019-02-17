@@ -83,7 +83,7 @@ namespace sys
 			return JsonUtil::getStringValue(getDoc(save), namePath);
 		};
 		//数组
-		int getLength(string namePath, int save = 1) {
+		int getLength(string namePath, int save = 0) {
 			rapidjson::Value * a = JsonUtil::getValue(getDoc(save), namePath);
 			if (!a)return 0;
 			if (a->IsArray()) {
@@ -93,22 +93,22 @@ namespace sys
 			return 0; 
 		};
 	 
-		bool getBoolValue(string namePath, int idx, int save = 1){
+		bool getBoolValue(string namePath, int idx, int save = 0){
 			return JsonUtil::getBoolValue(getDoc(save), namePath, idx);
 		};
-		int getIntValue(string namePath, int idx, int save = 1){
+		int getIntValue(string namePath, int idx, int save = 0){
 			return JsonUtil::getIntValue(getDoc(save), namePath, idx);
 		};
-		long long getLLongValue(string namePath, int idx, int save = 1){
+		long long getLLongValue(string namePath, int idx, int save = 0){
 			return JsonUtil::getLLongValue(getDoc(save), namePath, idx);
 		};
-		double getDoubleValue(string namePath, int idx, int save = 1){
+		double getDoubleValue(string namePath, int idx, int save = 0){
 			return JsonUtil::getDoubleValue(getDoc(save), namePath,idx);
 		};
-		string getStringValue(string namePath, int idx, int save = 1){
+		string getStringValue(string namePath, int idx, int save = 0){
 			return JsonUtil::getStringValue(getDoc(save), namePath, idx);
 		};
-		const char* getCharsValue(string namePath, int idx, int save = 1){
+		const char* getCharsValue(string namePath, int idx, int save = 0){
 			return JsonUtil::getCharsValue(getDoc(save), namePath, idx);
 		};
 
