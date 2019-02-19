@@ -43,9 +43,11 @@ namespace screens
 		this->boardStartStartCase = this->boardStart->createCase("startCase");
 		this->boardDescription = this->board->createMovieClipSub("description");
 		 
-		this->back = new Back_mc();
-		this->addChild(this->back);
+		
 		//this->back;
+	}
+	HintSurvival_mc::HintSurvival_mc() :MovieClip("screen/", "HintSurvival_mc", "HintSurvival_mc")
+	{ 
 	}
     OpenLevel::OpenLevel(int param1): eyes1Counter(0)
     {
@@ -91,6 +93,10 @@ namespace screens
         this->container->board->setMouseEnabled(false);
         this->container->boardInfoAdd->setVisible(false);
         this->addChild(this->container);
+		this->container->back = new Back_mc();
+		this->addChild(this->container->back);
+		this->container->back->setPosition(0, Main::SCREEN_HEIGHT-100);
+
         this->container->board->gotoAndStop(this->playLevel);
         if (Main::mainClass->saveBoxClass->getIntValue("starsOfLevels",this->playLevel - 1) < 3)
         {

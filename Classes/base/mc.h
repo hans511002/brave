@@ -44,7 +44,9 @@ namespace engine
         MC();
 
         MCText * createText(const string &  slot, bool reinit = false);
-        MovieClipSub * createMovieClipSub(const string &  slot,bool reinit=false);
+		//MovieClipSub * createMovieClipSub(const string &  slot, bool reinit = false);
+		template<class MCS= MovieClipSub>  MCS * createMovieClipSub(const string &  slot,bool reinit=false);
+
       //  MovieClip * createMovieClip(const string &  slot, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "", bool reinit = false, bool delay = false);
         MovieClip * createMovieClip(const string &  slot, const string &  rootPath, const string &  armName, const string &  dbName, bool reinit = false,bool delay=false);
         MovieClip * createMovieClip(const string &  slot, const string &  rootPath, const string &  dbName);
@@ -342,6 +344,15 @@ namespace engine
 
 #define MCSUB_STRUCT(clsName) inline clsName(MC *_mc, string soltName, string defAniName = "") :MovieClipSub(_mc, soltName, defAniName){};\
     inline clsName(MC *_mc, dragonBones::Slot * slot, string defAniName = "") :MovieClipSub(_mc, slot, defAniName){};
+
+	template<class MCS>
+	inline MCS * MC::createMovieClipSub(const string & slot, bool reinit)
+	{
+		MCS * mcs = new MCS(this, slotName);
+		mcs->reinitType = reinit;
+		this->addMcs(mcs, reinit);
+		return mcs;
+	}
 
 }
 

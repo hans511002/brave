@@ -57,8 +57,8 @@ namespace screens
 	class HintSurvival_mc :public MovieClip
 	{
 	public:
-		ui::Text * nameTXT;
-		ui::Text * noteTXT;
+		//ui::Text * nameTXT;
+		//ui::Text * noteTXT;
 
 		HintSurvival_mc();
 	};

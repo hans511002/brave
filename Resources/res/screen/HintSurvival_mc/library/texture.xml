@@ -1,0 +1,8 @@
+<TextureAtlas name="HintSurvival_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 6091" x="0" y="94" width="140" height="86"/>
+ <SubTexture name="Shape/shape 6094" x="0" y="0" width="140" height="92"/>
+ <SubTexture name="位图 2" x="142" y="0" width="104" height="33"/>
+ <SubTexture name="位图 3" x="0" y="182" width="124" height="55"/>
+ <SubTexture name="位图 1" x="126" y="224" width="113" height="40"/>
+ <SubTexture name="位图 4" x="126" y="182" width="124" height="40"/>
+</TextureAtlas>

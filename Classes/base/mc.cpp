@@ -267,13 +267,14 @@ namespace engine
         return mt;
 	};
 
-    MovieClipSub * MC::createMovieClipSub(const string &  slotName, bool reinit)
-    {
-        MovieClipSub * mcs = new MovieClipSub(this, slotName);
-		mcs->reinitType = reinit;
-		this->addMcs(mcs, reinit);
-        return mcs;
-    }
+  //  MovieClipSub * MC::createMovieClipSub(const string &  slotName, bool reinit)
+  //  {
+  //      MovieClipSub * mcs = new MovieClipSub(this, slotName);
+		//mcs->reinitType = reinit;
+		//this->addMcs(mcs, reinit);
+  //      return mcs;
+  //  }
+
  //   MovieClip * MC::createMovieClip(const string &  slot, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName, bool reinit, bool delay)
 	//{
 	//	//return  createMovieClip(slot, new MovieClip(rootPath, armName, dbName, defAniName));
