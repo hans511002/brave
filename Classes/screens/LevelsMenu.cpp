@@ -160,7 +160,7 @@ namespace screens
         //    this->addChild(training_91);
         //    Main::mainClass->saveBoxClass.gameSave.data.training_91 = -1;
         //}
-        return;
+        return true;
     }// end function
 
     void LevelsMenu::enterFrameHandler(float dt)
@@ -299,6 +299,7 @@ namespace screens
     }// end function
 	bool LevelsMenu::preCheckEventTarget(std::MouseEvent * event, EventMouse::MouseEventType _mouseEventType)
 	{
+		return false;
 	}
     void LevelsMenu::mouseMoveHandler(cocos2d::EventMouse * e)
     {

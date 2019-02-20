@@ -346,7 +346,7 @@ namespace engine
     inline clsName(MC *_mc, dragonBones::Slot * slot, string defAniName = "") :MovieClipSub(_mc, slot, defAniName){};
 
 	template<class MCS>
-	inline MCS * MC::createMovieClipSub(const string & slot, bool reinit)
+	inline MCS * MC::createMovieClipSub(const string & slotName, bool reinit)
 	{
 		MCS * mcs = new MCS(this, slotName);
 		mcs->reinitType = reinit;

@@ -67,7 +67,7 @@ namespace screens
 		MovieClipSub * upgradesFireCont;
 
         MovieClipSub * wavesAnimation;
-		cocos2d::Map<std::string, MovieClipSub *> waves;
+		std::map<std::string, MovieClipSub *> waves;
 
 		LevelsMenu_mc();
 
