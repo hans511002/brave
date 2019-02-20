@@ -10,6 +10,7 @@
 #include "DbPreload.h"
 
 #include "DefineClasses.h"
+#include "screens/Screen.h"   
 
 class Main : public  BaseLayer //cocos2d::LayerColor //
 {
@@ -20,7 +21,7 @@ public:
 	int i;
 	int j;
 	//void * tempObject;
-	ListenInterface * container;
+	screens::Screen * container;
 	SaveBox * saveBoxClass;
 	//加载配置数据
 	ReadXML readXMLClass;

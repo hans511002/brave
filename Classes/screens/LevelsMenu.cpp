@@ -1,15 +1,15 @@
 ﻿
-#include "LevelsMenu.h"
 #include "MainClass.h"
 #include "DifficultyLevel.h"   
 #include "Upgrades.h"   
 #include "Achievements.h"   
+#include "LevelsMenu.h"
 
 namespace screens
 {
 	NewLevel_mc::NewLevel_mc() :MovieClip("screen/", "NewLevel_mc", "NewLevel_mc") {
 	}
-	Level_mc::Level_mc() :MovieClip("screen/", "Level_mc", "Level_mc") 
+	Level_mc::Level_mc() :MovieClip("screen/", "level", "level") 
 	{
 		this->levelCase = this->createCase("levelCase", true);
 		this->star1 = this->createMovieClipSub("star1", true);

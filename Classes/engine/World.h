@@ -7,12 +7,13 @@
 #include "engine/casts/Map.h"
 #include "base/Indexes.h"
 #include "WorldInterface.h"
+#include "screens/Screen.h"   
 
 //#include "animation/Hint.h"
 
 namespace engine
 {
-	class World : public ListenInterface //, public  BaseLayer
+	class World : public  Screen
     {
     public:
         //int i;

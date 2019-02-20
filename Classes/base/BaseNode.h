@@ -358,11 +358,7 @@ namespace std
 		//float getStageWidth() const;
 		//float getStageHeight() const;
 	};
-	class ListenInterface : public BaseNode
-	{
-	public:
-		virtual inline void manageListeners(string param1){};
-	}; 
+ 
 }
 
 #endif

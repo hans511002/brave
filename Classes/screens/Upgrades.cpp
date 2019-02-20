@@ -1,6 +1,6 @@
-#include "Upgrades.h"   
 #include "MainClass.h"
 #include "LevelsMenu.h"
+#include "Upgrades.h"   
 namespace screens
 {
 	UpgradeButton::UpgradeButton(MC *mc, const std::string &  slot, const string &  defAniName) :MovieClipSub(mc, slot, defAniName)

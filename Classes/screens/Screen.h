@@ -18,6 +18,8 @@ namespace screens
         cocos2d::Point autoguidesObject_pt;
         float autoguidesObjectWidth;
         float autoguidesObjectHeight;
+		virtual void manageListeners(string param1) {};
+
         Screen();
     };
 	struct Back_mc : public MovieClip

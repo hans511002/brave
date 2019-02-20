@@ -89,14 +89,15 @@ void Main::addNewScreen(const string & param1)
         }
         else if (param1 == "LevelsMenu")
         {
-            ////this->container = new LevelsMenu();
-            //this->levelsMenuClass = new LevelsMenu();
-            //this->levelsMenuClass->init();
-            //this->addChild(this->levelsMenuClass);
+            this->levelsMenuClass = new LevelsMenu();
+            this->container = this->levelsMenuClass;
+            this->levelsMenuClass->init();
+            this->addChild(this->levelsMenuClass);
         }
         else if (param1 == "World")
         {
-            this->container = this->worldClass = new World();
+			this->worldClass = new World();
+			this->container = this->worldClass;
             this->worldClass->init();
             this->addChild(this->worldClass);
         }
@@ -167,7 +168,7 @@ cocos2d::Image * Main::getBitmapData(cocos2d::Node* param1) //: BitmapData
 }// end function
 void Main::addStartLogo()
 {
-    addNewScreen("World");
+    addNewScreen("LevelsMenu");
     //this->container = new StartMenu();
 	//this->startMenuClass = new StartMenu();
 	//this->addChild(this->startMenuClass);

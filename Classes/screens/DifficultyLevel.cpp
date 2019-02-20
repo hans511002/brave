@@ -1,7 +1,7 @@
 ﻿ 
-#include "DifficultyLevel.h"   
 #include "MainClass.h"
 #include "LevelsMenu.h"
+#include "DifficultyLevel.h"   
 
 namespace screens
 {    
