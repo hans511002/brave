@@ -110,6 +110,14 @@ namespace std
 	std::unordered_map<float, std::vector<EventNode*>> globalZOrderNodeMap;
 	std::unordered_map<EventNode*, int> nodePriorityMap;
 	int nodePriorityIndex = 0;
+	bool isParent(Node *n, Node * p) {
+		Node *np = n->getParent();
+		while (np ) {
+			if (np == p)return true;
+			np = np->getParent();
+		}
+		return false;
+	};
 
 	void addEventNode(EventNode *node)
 	{
@@ -146,6 +154,9 @@ namespace std
 
 	std::MouseEvent buildMouseEvent(EventMouse * e)
 	{
+		assert(!useNodeEvent);
+		Node * globalEventNode = ISTYPE(Node, globalNode);
+		assert(!useGlobalNode || globalEventNode);
 		std::MouseEvent  me(e);
 		Node * n = e->getCurrentTarget();
 		assert(n != NULL);
@@ -166,10 +177,11 @@ namespace std
 				Node *node = ISTYPE(Node, _node);
 				//if (n == node)continue;
 				if (!node)continue;
+				if (!_node->isParent(globalEventNode))continue;
 				if (!std::getNodeVisible(node))
 					continue;
-				CCLOGWARN("%s", getNamePath(node).c_str());
 				if (std::hitTest(node, ep)) {
+					CCLOGWARN("%i,%s",__LINE__, getNamePath(node).c_str());
 					me.currentTargets.push(node);
 					//break;
 				}
@@ -293,7 +305,7 @@ namespace std
 		//armatureDisplay->setPosition(200.0f, 200.0f);
 		//armatureDisplay->setVisible(true);
 		int time = (Common::DateTime().GetTicks() - dt.GetTicks());
-		CCLOG("%s.%s load time:%i", dragonBonesName.c_str(), armatureName.c_str(), time);
+		//CCLOG("%s.%s load time:%i", dragonBonesName.c_str(), armatureName.c_str(), time);
 		return armatureDisplay;// factory->buildArmatureDisplay(armatureName, dragonBonesName);
 	};
 	dragonBones::CCArmatureDisplay * buildArmature(const string & armatureName, const string& dragonBonesName)
@@ -874,18 +886,18 @@ namespace std
 		}
 	};
 	void BaseNode::disableMouseHandler() {
-		removeEventNode(this);
+		//removeEventNode(this);
 		this->setMouseEnabled(false);
-		if (listener) {
-			getEventDispatcher()->removeEventListener(listener);
-			delete listener;
-			listener = NULL;
-		}
-		if (touchOnelistener) {
-			getEventDispatcher()->removeEventListener(touchOnelistener);
-			delete touchOnelistener;
-			touchOnelistener = NULL;
-		}
+		//if (listener) {
+		//	getEventDispatcher()->removeEventListener(listener);
+		//	delete listener;
+		//	listener = NULL;
+		//}
+		//if (touchOnelistener) {
+		//	getEventDispatcher()->removeEventListener(touchOnelistener);
+		//	delete touchOnelistener;
+		//	touchOnelistener = NULL;
+		//}
 	}
 
 	void BaseNode::enableKeyHandler()
@@ -1181,11 +1193,9 @@ namespace std
 		EventNode::beginTouchNode = node;
 		EventNode::beginTouchPos = tpos;
 		if (globalNode) {
-			globalNode->mouseMoveHandler(&mevent);
 			globalNode->mouseDownHandler(&mevent);
 		}
 		else {
-			mouseMoveHandler(&mevent);
 			mouseDownHandler(&mevent);
 		}
 		return true;
@@ -1218,9 +1228,15 @@ namespace std
 		mevent.setCursorPosition(tpos.x, tpos.y);
 		mevent.setCurrentTarget(node);
 		if (globalNode)
+		{
+			globalNode->mouseMoveHandler(&mevent);
 			globalNode->mouseUpHandler(&mevent);
+		}
 		else
+		{
+			mouseMoveHandler(&mevent);
 			mouseUpHandler(&mevent);
+		}
 	};
 	void EventNode::onTouchCancelled(Touch *touch, Event *unused_event) {
 
@@ -1277,6 +1293,7 @@ namespace std
 	void EventNode::printNodePos(Node *node) {
 		logInfo(node->getName() + ".isVisible", node->isVisible());
 		logInfo(node->getName() + ".position", node->getPosition());
+		logInfo(node->getName() + ".position", node->getContentSize());
 		logInfo(node->getName() + ".worldPos", node->convertToWorldSpace(node->getPosition()));
 		if (ISTYPE(EventNode, node)) {
 			EventNode *en = ISTYPE(EventNode, node);

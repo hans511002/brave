@@ -54,6 +54,7 @@ namespace screens
         //this->addEventListener(Event.ADDED_TO_STAGE, this->init);
         this->playLevel = param1;
         Main::mainClass->saveBoxClass->playLevel = param1;
+		init();
         return;
     }// end function
 
@@ -61,10 +62,15 @@ namespace screens
     {
         //this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
         //this->addEventListener(Event.REMOVED_FROM_STAGE, this->reInit);
-        this->manageListeners("on");
         Main::mainClass->levelsMenuClass->manageListeners("off");
+        this->manageListeners("on");
         //this->stage.frameRate = 60;
         this->container = new OpenLevel_mc();
+		this->addChild(this->container);
+		this->container->setPosition(0, -80);
+		this->container->back = new Back_mc();
+		this->addChild(this->container->back);
+		this->container->back->setPosition(0, Main::SCREEN_HEIGHT - 100);
         this->container->stop();
         this->container->back->stop();
         //this->container->back->backCase->stop();
@@ -92,10 +98,6 @@ namespace screens
         this->container->board->setMouseChildren(false);
         this->container->board->setMouseEnabled(false);
         this->container->boardInfoAdd->setVisible(false);
-        this->addChild(this->container);
-		this->container->back = new Back_mc();
-		this->addChild(this->container->back);
-		this->container->back->setPosition(0, Main::SCREEN_HEIGHT-100);
 
         this->container->board->gotoAndStop(this->playLevel);
         if (Main::mainClass->saveBoxClass->getIntValue("starsOfLevels",this->playLevel - 1) < 3)
@@ -174,6 +176,7 @@ namespace screens
 			this->complexityManage(oldComplexityLevel);
         }
         AudioUtil::playSound("Snd_menu_openBoard.mp3");
+		this->container->play(1);
         return true;
     }// end function
 
@@ -217,7 +220,7 @@ namespace screens
                 this->kill();
             }
         }
-		//public var openSurvEdu:Training_91_mc;
+		//  var openSurvEdu:Training_91_mc;
         //if (this->openSurvEdu)
         //{
         //    if (this->openSurvEdu->isVisible())
@@ -818,21 +821,18 @@ namespace screens
 
     void OpenLevel::manageListeners(string param1) 
     {
-        if (param1 == "on")
-        {
-            //this->addEventListener(Event.ENTER_FRAME, this->enterFrameHandler);
-            //this->addEventListener(MouseEvent.MOUSE_MOVE, this->mouseMoveHandler);
-            //this->addEventListener(MouseEvent.MOUSE_DOWN, this->mouseDownHandler);
-            //this->addEventListener(MouseEvent.MOUSE_UP, this->mouseUpHandler);
-        }
-        else if (param1 == "off")
-        {
-            //this->removeEventListener(Event.ENTER_FRAME, this->enterFrameHandler);
-            //this->removeEventListener(MouseEvent.MOUSE_MOVE, this->mouseMoveHandler);
-            //this->removeEventListener(MouseEvent.MOUSE_DOWN, this->mouseDownHandler);
-            //this->removeEventListener(MouseEvent.MOUSE_UP, this->mouseUpHandler);
-        }
-        return;
+		if (param1 == "on")
+		{
+			if (useNodeEvent)
+				std::globalNode = this;
+			this->enableMouseHandler(true);
+			this->enableFrameHandler(true);
+		}
+		else if (param1 == "off")
+		{
+			this->disableMouseHandler();
+			this->disableFrameHandler();
+		}
     }// end function
 
     void OpenLevel::autoguidersButtons()
@@ -879,6 +879,7 @@ namespace screens
     {
         if (!this->dead)
         {
+			this->manageListeners("off");
             this->dead = true;
             Main::mainClass->levelsMenuClass->manageListeners("on");
             Main::mainClass->levelsMenuClass->removeChild(Main::mainClass->levelsMenuClass->openLevel);

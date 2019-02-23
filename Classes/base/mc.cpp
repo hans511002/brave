@@ -46,6 +46,7 @@ namespace engine
 	void MC::play(int times)
 	{
 		if (this->getArmature() == NULL || this->getAnimation() == NULL)return;
+		if (times == 1 && this->inPlay)return;
 		this->getAnimation()->play(defAniName, times);
         this->inPlay = true;
         this->playTimes = times;

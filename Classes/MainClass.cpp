@@ -93,6 +93,7 @@ void Main::addNewScreen(const string & param1)
             this->container = this->levelsMenuClass;
             this->levelsMenuClass->init();
             this->addChild(this->levelsMenuClass);
+			this->printNodePos(this->levelsMenuClass);
         }
         else if (param1 == "World")
         {

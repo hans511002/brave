@@ -36,6 +36,9 @@ namespace std
 	class BaseNode;
     class EventNode;
 	extern bool useNodeEvent;
+	extern bool useGlobalNode;
+	extern bool sortGlobalNode;
+
     extern sys::I18n i18n;
 	extern EventNode *globalNode;
 
@@ -73,7 +76,7 @@ namespace std
 	string getNamePath(Node *node);
 	Common::Array<Node*>  getChildNodes(Node *node);
 	bool getNodeVisible(Node * node);
-
+	bool isParent(Node *n,Node * p);
 	extern Common::Log * gLog;
 
 	void writeLog(string msg, int type);
@@ -100,7 +103,7 @@ namespace std
 		virtual void setMouseEnabled(bool v, bool setSub = false);
 		virtual void setMouseMoveFlag(bool v, bool setSub = false);
 		static void setNodeMouse(Node * en, int type, bool v, bool setSub = false);
-
+		bool isParent(Node *n) { return std::isParent(ISTYPE(Node,this),n); };
 		virtual bool isMouseChildren();
 		virtual bool isMouseEnabled();
 		virtual bool isMouseFlag();

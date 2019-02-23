@@ -522,11 +522,11 @@ namespace engine
 			event->currentTargets.push(this);
 		Main::mouseX = e->getCursorX();
 		Main::mouseY = e->getCursorY();
+		EventNode::beginTouchPos = Vec2(Main::mouseX, Main::mouseY);
 		while (event->hasNext())
 		{
 			string targetName = event->target->getName();
 			EventNode::beginTouchNode = event->target;// event->currentTargets.at(0);
-			EventNode::beginTouchPos = Vec2(Main::mouseX, Main::mouseY);
 			{
 				logInfo("mouseDownHandler.target", getNamePath(event->target));
 				Vec2 gpos = CONVERT_TO_WORLD_POS(event->target->getParent()->convertToWorldSpace(event->target->getPosition()));
@@ -673,11 +673,11 @@ namespace engine
 			event->currentTargets.push(this);
 		Main::mouseX = e->getCursorX();
 		Main::mouseY = e->getCursorY();
+		EventNode::beginTouchPos = Vec2(Main::mouseX, Main::mouseY);
 		while (event->hasNext())
 		{
 			string targetName = event->target->getName();
 			EventNode::beginTouchNode = event->target;// event->currentTargets.at(0);
-			EventNode::beginTouchPos = Vec2(Main::mouseX, Main::mouseY);
 			logInfo("mouseUpHandler.target", getNamePath(event->target));
 			if (this->getSphere)
 			{
@@ -1673,9 +1673,9 @@ namespace engine
 	void World::manageListeners(string param1)
 	{
 		if (param1 == "on")
-		{
-			if (useNodeEvent)
-				std::globalNode = this;
+		{ 
+			if (std::useGlobalNode)
+					std::globalNode = this;
 			this->enableMouseHandler(true);
 			this->enableFrameHandler(true);
 		}
@@ -1683,7 +1683,6 @@ namespace engine
 		{
 			this->disableMouseHandler();
 			this->disableFrameHandler();
-
 		}
 		return;
 	}// end function

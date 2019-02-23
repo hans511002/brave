@@ -56,7 +56,7 @@ namespace screens
 		this->upgrades = this->createMovieClipSub("upgrades");
 		this->upgradesUpgradesCase1 = this->upgrades->createCase("upgradesCase1");
 		this->upgradesUpgradesCase2 = this->upgrades->createCase("upgradesCase2");
-		this->upgradesFireCont = this->upgrades->createMovieClipSub("fireCont");
+		this->upgradesFireCont = this->upgrades->createMovieClipSub("fireCont",true);
 		this->wavesAnimation = this->createMovieClipSub("wavesAnimation"); 
 
 		return;
@@ -83,10 +83,16 @@ namespace screens
         {
             this->newStarsForLevel = Main::mainClass->saveBoxClass->getIntValue("newStarsForLevel");
         }
-        this->container = new LevelsMenu_mc();
-        this->container->stop();
+		this->container = new LevelsMenu_mc();
+		this->addChild(this->container);
+		this->container->setPosition(0, Main::SCREEN_HEIGHT);
+		//this->printNodePos(this->container);
+		cocos2d::Size size=this->container->getSprite("Layer 1")->getContentSize();
+		float sy = Main::SCREEN_HEIGHT/size.height;
+		this->container->setScaleY(sy);
+		this->container->stop();
         this->container->back->stop();
-         this->container->upgrades->stop(); 
+		this->container->upgrades->stop();
         this->container->book->stop(); 
         this->container->achieves->stop(); 
         this->container->backBackCase->setMouseEnabled(true);
@@ -132,7 +138,6 @@ namespace screens
         {
             this->container->freeStars->setVisible(false);
         }
-        this->addChild(this->container);
         if (AudioUtil::musicOn) 
             this->container->btnMusic->gotoAndStop(1);
         else 
@@ -223,9 +228,9 @@ namespace screens
         {
             if (this->mouseMoveTarget == this->container->upgrades)
             {
-                if (this->container->upgrades->currentFrame < (this->container->upgrades->totalFrames - 1))
+                if (this->container->upgrades->currentFrame < 6)
                 {
-                    this->container->upgrades->tryPlay();//gotoAndStop((this->container->upgrades->currentFrame + 1));
+                    this->container->upgrades->gotoAndStop((this->container->upgrades->currentFrame + 1));
                 }
             }
             else if (this->container->upgrades->currentFrame > 1)
@@ -236,14 +241,14 @@ namespace screens
                 }
                 else
                 {
-                    this->container->upgrades->tryPlay();//gotoAndStop((this->container->upgrades->currentFrame - 1));
+                    this->container->upgrades->gotoAndStop((this->container->upgrades->currentFrame - 1));
                 }
             }
             if (this->container->upgradesFireCont->isReady)
             {
                 if (this->container->upgradesFireCont->currentFrame < this->container->upgradesFireCont->totalFrames)
                 {
-                    this->container->upgradesFireCont->tryPlay();//gotoAndStop((this->container->upgradesFireCont->currentFrame + 1));
+                    this->container->upgradesFireCont->gotoAndStop((this->container->upgradesFireCont->currentFrame + 1));
                 }
                 else
                 {
@@ -284,14 +289,15 @@ namespace screens
             this->i = 0;
             while (this->i < this->listOfAnimation.size())
             {
-                if (this->listOfAnimation[this->i]->currentFrame < this->listOfAnimation[this->i]->totalFrames)
-                {
-                    this->listOfAnimation[this->i]->tryPlay();//gotoAndStop((this->listOfAnimation[this->i]->currentFrame + 1));
-                }
-                else
-                {
-                    this->listOfAnimation[this->i]->gotoAndStop(1);
-                }
+				this->listOfAnimation[this->i]->tryPlay(); 
+				//if (this->listOfAnimation[this->i]->currentFrame < this->listOfAnimation[this->i]->totalFrames)
+    //            {
+    //                this->listOfAnimation[this->i]->tryPlay();//gotoAndStop((this->listOfAnimation[this->i]->currentFrame + 1));
+    //            }
+    //            else
+    //            {
+    //                this->listOfAnimation[this->i]->gotoAndStop(1);
+    //            }
                 i++;
             }
         }
@@ -342,9 +348,7 @@ namespace screens
 				}
 			}
 			if (this->mouseMoveTarget)
-			{
 				this->mouseMoveTarget = NULL;
-			}
 			if (targetName == "musicCase")
 			{
 				if (this->container->btnMusic->currentFrame == 1 || this->container->btnMusic->currentFrame == 4)
@@ -489,11 +493,11 @@ namespace screens
 			event->currentTargets.push(this);
 		Main::mouseX = e->getCursorX();
 		Main::mouseY = e->getCursorY();
+		EventNode::beginTouchPos = Vec2(Main::mouseX, Main::mouseY);
 		while (event->hasNext())
 		{
 			string targetName = event->target->getName();
 			EventNode::beginTouchNode = event->target;// event->currentTargets.at(0);
-			EventNode::beginTouchPos = Vec2(Main::mouseX, Main::mouseY);
 
 			if (this->mouseDownTarget)
 			{
@@ -527,9 +531,9 @@ namespace screens
 			else if (targetName == "upgradesCase1" || targetName == "upgradesCase2")
 			{
 				this->mouseDownTarget = event->target->getParent();
-				if (this->container->upgrades->currentFrame != this->container->upgrades->totalFrames)
+				if (this->container->upgrades->currentFrame != 7)
 				{
-					this->container->upgrades->gotoAndStop(this->container->upgrades->totalFrames);
+					this->container->upgrades->gotoAndStop(7);
 					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
 				}
 			}
@@ -581,11 +585,11 @@ namespace screens
 			event->currentTargets.push(this);
 		Main::mouseX = e->getCursorX();
 		Main::mouseY = e->getCursorY();
+		EventNode::beginTouchPos = Vec2(Main::mouseX, Main::mouseY);
 		while (event->hasNext())
 		{
 			string targetName = event->target->getName();
 			EventNode::beginTouchNode = event->target;// event->currentTargets.at(0);
-			EventNode::beginTouchPos = Vec2(Main::mouseX, Main::mouseY);
 			if (this->mouseDownTarget)
 			{
 				this->mouseDownTarget = NULL;
@@ -647,13 +651,13 @@ namespace screens
 			{
 				this->mouseMoveTarget = NULL;
 				this->mouseDownTarget = NULL; 
-				this->container->upgrades->gotoAndStop(this->container->upgrades->totalFrames);
+				this->container->upgrades->gotoAndStop(7);
 				this->upgradesClass = new Upgrades();
 				this->addChild(this->upgradesClass);
 			}
 			else if (this->container->upgrades->currentFrame == this->container->upgrades->totalFrames)
 			{
-				this->container->upgrades->gotoAndStop((this->container->upgrades->totalFrames - 1));
+				this->container->upgrades->gotoAndStop(7);
 			}
 			if (targetName == "bookCase1" || targetName == "bookCase2")
 			{
@@ -1777,8 +1781,8 @@ namespace screens
     void LevelsMenu::manageListeners(string param1)
     {
         if (param1 == "on")
-		{ 
-			if (useNodeEvent)
+		{  
+			if (std::useGlobalNode)
 				std::globalNode = this;
 			this->enableMouseHandler(true);
 			this->enableFrameHandler(true);

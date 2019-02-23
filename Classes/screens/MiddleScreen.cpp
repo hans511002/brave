@@ -11,7 +11,7 @@ namespace screens
     
     Screen::Screen() :frameCounter(0), openFlag(true), closeFlag(false), dead(false), autoguidesObject(NULL)
     {
-        
+		this->setContentSize(Size(Main::SCREEN_WIDTH, Main::SCREEN_HEIGHT));
     };
 	Back_mc::Back_mc() :MovieClip("screen/", "back", "back")
 	{
