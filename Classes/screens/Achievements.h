@@ -57,7 +57,7 @@ namespace screens
 
 		Achievements();
 
-		virtual bool init(float dt);
+		virtual bool init();
 		virtual void enterFrameHandler(float dt);
 
 		virtual void mouseMoveHandler(cocos2d::EventMouse * event);

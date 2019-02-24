@@ -265,6 +265,9 @@ namespace std
 		//virtual void rightMouseUpHandler(cocos2d::EventMouse* event);
 
 		virtual std::MouseEvent buildMouseEvent(Node * node = NULL, cocos2d::EventMouse::MouseButton mouseButton = cocos2d::EventMouse::MouseButton::BUTTON_LEFT, cocos2d::EventMouse::MouseEventType mouseEventType = cocos2d::EventMouse::MouseEventType::MOUSE_DOWN);
+		void removeEventTarget(std::MouseEvent * event, BaseNode* node, string caseName);
+		void removeEventTarget(std::MouseEvent * event, string case1, string caseName);
+		void removeEventTarget(std::MouseEvent * event, string caseName);
 
 		virtual float getWidth();
 		virtual float getHeight();

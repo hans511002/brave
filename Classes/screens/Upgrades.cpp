@@ -96,9 +96,10 @@ namespace screens
 		costIcemanUpgrade5(4), costAirUpgrade1(1), costAirUpgrade2(2), costAirUpgrade3(2), costAirUpgrade4(3), costAirUpgrade5(4), costFireUpgrade1(1),
 		costFireUpgrade2(1), costFireUpgrade3(1), costFireUpgrade4(1), costFireUpgrade5(2), costIceUpgrade1(1), costIceUpgrade2(1), costIceUpgrade3(1),
 		costIceUpgrade4(1), costIceUpgrade5(2), costStoneUpgrade1(1), costStoneUpgrade2(1), costStoneUpgrade3(1), costStoneUpgrade4(1), costStoneUpgrade5(2),
-		costLevinUpgrade1(1), costLevinUpgrade2(1), costLevinUpgrade3(2), costLevinUpgrade4(2), costLevinUpgrade5(2)
+		costLevinUpgrade1(1), costLevinUpgrade2(1), costLevinUpgrade3(2), costLevinUpgrade4(2), costLevinUpgrade5(2), container(NULL), levelsMenu(NULL), nowUpgradeButton(NULL), hint(NULL)
 	{
 		//this->addEventListener(Event.ADDED_TO_STAGE, this->init);
+ 		init();
 		return;
 	}// end function
 
@@ -166,6 +167,7 @@ namespace screens
 		this->container->cont->setMouseChildren(false);
 		this->container->cont->setMouseEnabled(false);
 		AudioUtil::playSound("Snd_menu_openBoard.mp3");
+		this->container->play(1);
 		return true;
 	}// end function
 

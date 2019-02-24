@@ -79,7 +79,8 @@ namespace screens
 
 		bool init();
 
-		void enterFrameHandler(cocos2d::EventMouse * event);
+		void enterFrameHandler(float dt);
+		bool preCheckEventTarget(std::MouseEvent * event, EventMouse::MouseEventType _mouseEventType);
 
 		void mouseMoveHandler(cocos2d::EventMouse * param1);
 

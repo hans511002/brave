@@ -859,7 +859,30 @@ namespace std
 			currentTargets.remove(i);
 	};
 
+	void BaseNode::removeEventTarget(std::MouseEvent * event, string caseName) {
+		int ri = event->getIndex(caseName);
+		if (ri >= 0)
+			event->remove(ri);
 
+	}
+	void BaseNode::removeEventTarget(std::MouseEvent * event, BaseNode* node, string caseName) {
+		if (!node)return;
+		int ri = event->getIndex(caseName);
+		if (ri >= 0) {
+			Vec2 pos = event->getLocationInView();
+			if (std::hitTest(node, pos, false)) {
+				event->remove(ri);
+			}
+		}
+	}
+	void BaseNode::removeEventTarget(std::MouseEvent * event, string case1, string caseName) {
+		int ri = event->getIndex(case1);
+		if (ri >= 0) {
+			ri = event->getIndex(caseName);
+			if (ri >= 0)
+				event->remove(ri);
+		}
+	}
 	void BaseNode::enableMouseHandler(bool listen)
 	{
 		if (!this->mouseEnabled) 

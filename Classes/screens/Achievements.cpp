@@ -53,10 +53,11 @@ namespace screens
 	Achievements::Achievements() :fireFrame(0), container(0)
 	{
 		//this->addEventListener(Event.ADDED_TO_STAGE, this->init);
+		init();
 		return;
 	}// end function
 
-	bool Achievements::init(float dt)
+	bool Achievements::init()
 	{
 		//this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
 		//this->addEventListener(Event.REMOVED_FROM_STAGE, this->reInit);
@@ -109,6 +110,7 @@ namespace screens
 		this->container->cont->setMouseEnabled(false);
 		this->addChild(this->container);
 		AudioUtil::playSound("Snd_menu_openBoard.mp3");
+		this->container->play(1);
 		return true;
 	}// end function
 

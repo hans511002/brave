@@ -49,7 +49,7 @@ namespace screens
 	HintSurvival_mc::HintSurvival_mc() :MovieClip("screen/", "HintSurvival_mc", "HintSurvival_mc")
 	{ 
 	}
-    OpenLevel::OpenLevel(int param1): eyes1Counter(0)
+    OpenLevel::OpenLevel(int param1): eyes1Counter(0), hintSurvival(NULL)
     {
         //this->addEventListener(Event.ADDED_TO_STAGE, this->init);
         this->playLevel = param1;
@@ -67,7 +67,7 @@ namespace screens
         //this->stage.frameRate = 60;
         this->container = new OpenLevel_mc();
 		this->addChild(this->container);
-		this->container->setPosition(0, -80);
+		this->container->setPosition(0, 745);
 		this->container->back = new Back_mc();
 		this->addChild(this->container->back);
 		this->container->back->setPosition(0, Main::SCREEN_HEIGHT - 100);
@@ -177,10 +177,11 @@ namespace screens
         }
         AudioUtil::playSound("Snd_menu_openBoard.mp3");
 		this->container->play(1);
+		this->container->boardHeaderTXT->setPosition(this->container->boardHeaderTXT->getPosition()+cocos2d::Point(50,30));
         return true;
     }// end function
 
-    void OpenLevel::enterFrameHandler(cocos2d::EventMouse * event) 
+    void OpenLevel::enterFrameHandler(float dt) 
     {
         if (this->frameCounter < 30)
         {
@@ -385,260 +386,336 @@ namespace screens
         }
         return;
     }// end function
-
+	bool OpenLevel::preCheckEventTarget(std::MouseEvent * event, EventMouse::MouseEventType _mouseEventType)
+	{
+		
+ 		Vec2 pos = event->getLocationInView();
+		switch (_mouseEventType)
+		{
+		case cocos2d::EventMouse::MouseEventType::MOUSE_NONE:
+			break;
+		case cocos2d::EventMouse::MouseEventType::MOUSE_DOWN:
+			if(event->currentTargets.size()>1){
+				removeEventTarget(event, "shadow");
+				//removeEventTarget(event, "sphereCase", "fireCase");
+			}
+			break;
+		case cocos2d::EventMouse::MouseEventType::MOUSE_UP:
+			if (event->currentTargets.size() > 1) {
+				removeEventTarget(event, "shadow");
+			}
+			break;
+		case cocos2d::EventMouse::MouseEventType::MOUSE_MOVE:
+			removeEventTarget(event, "shadow");
+			break;
+		case cocos2d::EventMouse::MouseEventType::MOUSE_SCROLL:
+			break;
+		default:
+			break;
+		}
+		event->reset();
+		return false;
+	};
     void OpenLevel::mouseMoveHandler(cocos2d::EventMouse * e) 
     {
-		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
-		if(!event)
-			return;
-        string targetName = event->target->getName();
-        if (targetName == "backCase")
-        {
-            if (this->container->back->currentFrame == 1)
-            {
-                this->container->back->gotoAndStop(2);
-                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-            }
-        }
-        else if (this->container->back->currentFrame == 2)
-        {
-            this->container->back->gotoAndStop(1);
-        }
-        if (targetName == "complexityCase")
-        {
-            if (this->container->boardCurrentComplexity->currentFrame == 1 || this->container->boardCurrentComplexity->currentFrame == 4 
-                || this->container->boardCurrentComplexity->currentFrame == 7)
-            {
-                this->container->boardCurrentComplexity->gotoAndStop((this->container->boardCurrentComplexity->currentFrame + 1));
-                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-            }
-        }
-        else if (this->container->boardCurrentComplexity->currentFrame == 2 || this->container->boardCurrentComplexity->currentFrame == 5 || this->container->boardCurrentComplexity->currentFrame == 8)
-        {
-            this->container->boardCurrentComplexity->gotoAndStop((this->container->boardCurrentComplexity->currentFrame - 1));
-        }
-        if (targetName == "survivalModeCase")
-        {
-            if (this->container->boardSurvivalMode->currentFrame == 1)
-            {
-                this->container->boardSurvivalMode->gotoAndStop(2);
-                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-            }
-            if (this->container->boardSurvivalMode->currentFrame == 5)
-            {
-                if (!this->hintSurvival)
-                {
-                    this->hintSurvival = new HintSurvival_mc();
-                    this->hintSurvival->stop();
-                    this->hintSurvival->setPosition(Main::mouseX,Main::mouseY); 
-                    this->hintSurvival->setMouseChildren(false);
-                    this->hintSurvival->setMouseEnabled(false);
-                    this->addChild(this->hintSurvival);
-                }
-            }
-        }
-        else
-        {
-            if (this->container->boardSurvivalMode->currentFrame == 2)
-            {
-                this->container->boardSurvivalMode->gotoAndStop(1);
-            }
-            if (this->hintSurvival)
-            {
-                this->removeChild(this->hintSurvival);
-                this->hintSurvival = NULL;
-            }
-        }
-        if (targetName == "mainModeCase")
-        {
-            if (this->container->boardMainMode->currentFrame == 1)
-            {
-                this->container->boardMainMode->gotoAndStop(2);
-                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-            }
-        }
-        else if (this->container->boardMainMode->currentFrame == 2)
-        {
-            this->container->boardMainMode->gotoAndStop(1);
-        }
-        if (targetName == "startCase")
-        {
-            if (this->container->boardStart->currentFrame == 1)
-            {
-                this->container->boardStart->gotoAndStop(2);
-                AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-            }
-        }
-        else if (this->container->boardStart->currentFrame == 2)
-        {
-            this->container->boardStart->gotoAndStop(1);
-        }
-        return;
+		Main::mouseX = e->getCursorX();
+		Main::mouseY = e->getCursorY();
+		if (!globalNode)EventNode::mouseMoveHandler(e);
+		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
+		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
+		std::MouseEvent me(e);
+		if (!useNodeEvent) {
+			me = std::buildMouseEvent(e);
+		}
+		std::MouseEvent * event = &me;
+		if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_MOVE))return;
+		if (!event->currentTargets.size())
+			event->currentTargets.push(this);
+		//return;
+		while (event->hasNext())
+		{
+			string targetName = event->target->getName();
+			EventNode::beginTouchNode = event->target;// event->currentTargets.at(0);
+
+			if (targetName == "backCase")
+			{
+				if (this->container->back->currentFrame == 1)
+				{
+					this->container->back->gotoAndStop(2);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+				}
+			}
+			else if (this->container->back->currentFrame == 2)
+			{
+				this->container->back->gotoAndStop(1);
+			}
+			if (targetName == "complexityCase")
+			{
+				if (this->container->boardCurrentComplexity->currentFrame == 1 || this->container->boardCurrentComplexity->currentFrame == 4
+					|| this->container->boardCurrentComplexity->currentFrame == 7)
+				{
+					this->container->boardCurrentComplexity->gotoAndStop((this->container->boardCurrentComplexity->currentFrame + 1));
+					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+				}
+			}
+			else if (this->container->boardCurrentComplexity->currentFrame == 2 || this->container->boardCurrentComplexity->currentFrame == 5 || this->container->boardCurrentComplexity->currentFrame == 8)
+			{
+				this->container->boardCurrentComplexity->gotoAndStop((this->container->boardCurrentComplexity->currentFrame - 1));
+			}
+			if (targetName == "survivalModeCase")
+			{
+				if (this->container->boardSurvivalMode->currentFrame == 1)
+				{
+					this->container->boardSurvivalMode->gotoAndStop(2);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+				}
+				if (this->container->boardSurvivalMode->currentFrame == 5)
+				{
+					if (!this->hintSurvival)
+					{
+						this->hintSurvival = new HintSurvival_mc();
+						this->hintSurvival->stop();
+						this->hintSurvival->setPosition(Main::mouseX, Main::mouseY);
+						this->hintSurvival->setMouseChildren(false);
+						this->hintSurvival->setMouseEnabled(false);
+						this->addChild(this->hintSurvival);
+					}
+				}
+			}
+			else
+			{
+				if (this->container->boardSurvivalMode->currentFrame == 2)
+				{
+					this->container->boardSurvivalMode->gotoAndStop(1);
+				}
+				if (this->hintSurvival)
+				{
+					this->removeChild(this->hintSurvival);
+					this->hintSurvival = NULL;
+				}
+			}
+			if (targetName == "mainModeCase")
+			{
+				if (this->container->boardMainMode->currentFrame == 1)
+				{
+					this->container->boardMainMode->gotoAndStop(2);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+				}
+			}
+			else if (this->container->boardMainMode->currentFrame == 2)
+			{
+				this->container->boardMainMode->gotoAndStop(1);
+			}
+			if (targetName == "startCase")
+			{
+				if (this->container->boardStart->currentFrame == 1)
+				{
+					this->container->boardStart->gotoAndStop(2);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+				}
+			}
+			else if (this->container->boardStart->currentFrame == 2)
+			{
+				this->container->boardStart->gotoAndStop(1);
+			}
+		}
+		return;
     }// end function
 
     void OpenLevel::mouseDownHandler(cocos2d::EventMouse * e) 
     {
-		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
-		if(!event)
-			return;
-        string targetName = event->target->getName();
-        if (!this->openFlag)
-        {
-            if (targetName == "backCase")
-            {
-                if (this->container->back->currentFrame == 2)
-                {
-                    this->container->back->gotoAndStop(3);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-                }
-            }
-            else if (targetName == "complexityCase")
-            {
-                if (this->container->boardCurrentComplexity->currentFrame == 2 || this->container->boardCurrentComplexity->currentFrame == 5 || this->container->boardCurrentComplexity->currentFrame == 8)
-                {
-                    this->container->boardCurrentComplexity->gotoAndStop((this->container->boardCurrentComplexity->currentFrame + 1));
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-                }
-            }
-            else if (targetName == "survivalModeCase")
-            {
-                if (this->container->boardSurvivalMode->currentFrame == 2)
-                {
-                    this->container->boardSurvivalMode->gotoAndStop(3);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-                }
-            }
-            else if (targetName == "mainModeCase")
-            {
-                if (this->container->boardMainMode->currentFrame == 2)
-                {
-                    this->container->boardMainMode->gotoAndStop(3);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-                }
-            }
-            else if (targetName == "startCase")
-            {
-                if (this->container->boardStart->currentFrame == 2)
-                {
-                    this->container->boardStart->gotoAndStop(3);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-                }
-            }
-            else if (targetName == "shadow")
-            {
-                this->close();
-            }
-        }
+		if (!globalNode)EventNode::mouseDownHandler(e);
+		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
+		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
+		std::MouseEvent me(e);
+		if (!useNodeEvent) {
+			me = std::buildMouseEvent(e);
+		}
+		std::MouseEvent * event = &me;
+		if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_DOWN))return;
+		if (!event->currentTargets.size())
+			event->currentTargets.push(this);
+		Main::mouseX = e->getCursorX();
+		Main::mouseY = e->getCursorY();
+		EventNode::beginTouchPos = Vec2(Main::mouseX, Main::mouseY);
+		while (event->hasNext())
+		{
+			string targetName = event->target->getName();
+			EventNode::beginTouchNode = event->target;// event->currentTargets.at(0);
+
+			if (!this->openFlag)
+			{
+				if (targetName == "backCase")
+				{
+					if (this->container->back->currentFrame == 2)
+					{
+						this->container->back->gotoAndStop(3);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+					}
+				}
+				else if (targetName == "complexityCase")
+				{
+					if (this->container->boardCurrentComplexity->currentFrame == 2 || this->container->boardCurrentComplexity->currentFrame == 5 || this->container->boardCurrentComplexity->currentFrame == 8)
+					{
+						this->container->boardCurrentComplexity->gotoAndStop((this->container->boardCurrentComplexity->currentFrame + 1));
+						AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+					}
+				}
+				else if (targetName == "survivalModeCase")
+				{
+					if (this->container->boardSurvivalMode->currentFrame == 2)
+					{
+						this->container->boardSurvivalMode->gotoAndStop(3);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+					}
+				}
+				else if (targetName == "mainModeCase")
+				{
+					if (this->container->boardMainMode->currentFrame == 2)
+					{
+						this->container->boardMainMode->gotoAndStop(3);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+					}
+				}
+				else if (targetName == "startCase")
+				{
+					if (this->container->boardStart->currentFrame == 2)
+					{
+						this->container->boardStart->gotoAndStop(3);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+					}
+				}
+				else if (targetName == "shadow")
+				{
+					this->close();
+				}
+			}
+		}
         return;
     }// end function
 
     void OpenLevel::mouseUpHandler(cocos2d::EventMouse * e) 
     {
-		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
-		if (!event)
-			return;
-        string targetName = event->target->getName();
-        if (targetName == "backCase")
-        {
-            if (this->container->back->currentFrame == 3)
-            {
-                this->container->back->gotoAndStop(2);
-                this->close();
-            }
-        }
-        else if (this->container->back->currentFrame == 3)
-        {
-            this->container->back->gotoAndStop(1);
-        }
-        if (targetName == "complexityCase")
-        {
-            if (this->container->boardCurrentComplexity->currentFrame == 3 || this->container->boardCurrentComplexity->currentFrame == 6 || this->container->boardCurrentComplexity->currentFrame == 9)
-            {
-                int complexityLevel=Main::mainClass->saveBoxClass->getIntValue("complexityLevel");
-                if ( complexityLevel == 1)
-                {
-                    this->complexityManage(2);
-                }
-                else if ( complexityLevel == 2)
-                {
-                    this->complexityManage(3);
-                }
-                else if ( complexityLevel == 3)
-                {
-                    this->complexityManage(1);
-                }
-                this->container->boardCurrentComplexity->gotoAndStop((this->container->boardCurrentComplexity->currentFrame + 1));
-            }
-        }
-        else if (this->container->boardCurrentComplexity->currentFrame == 3 || this->container->boardCurrentComplexity->currentFrame == 6 || this->container->boardCurrentComplexity->currentFrame == 9)
-        {
-            this->container->boardCurrentComplexity->gotoAndStop(this->container->boardCurrentComplexity->currentFrame - 2);
-        }
-        if (targetName == "survivalModeCase")
-        {
-            if (this->container->boardSurvivalMode->currentFrame == 3)
-            {
-                if (Main::mainClass->saveBoxClass->getIntValue("saveNo") < 4)
-                {
-                    //this->loginOrRegisterClass = new LoginOrRegister();
-                    //this->addChild(this->loginOrRegisterClass);
-                }
-                else
-                {
-                    this->complexityManage(4);
-                }
-            }
-        }
-        else if (this->container->boardSurvivalMode->currentFrame == 3)
-        {
-            this->container->boardSurvivalMode->gotoAndStop(1);
-        }
-        if (targetName == "mainModeCase")
-        {
-            if (this->container->boardMainMode->currentFrame == 3)
-            {
-                this->container->boardMainMode->gotoAndStop(4);
-                this->container->boardSurvivalMode->gotoAndStop(1);
-                this->container->boardSurvivalModeEyes->stop();
-                this->container->boardSurvivalModeEyes->setAlpha(0);
-                this->container->boardMainModeMainModeCase->setMouseEnabled(false);
-                this->container->boardSurvivalModeSurvivalModeCase->setMouseEnabled(true); 
-                this->container->boardCurrentComplexity->setMouseChildren(true);
-                this->container->boardCurrentComplexity->setMouseEnabled(true);
-                if (this->oldComplexity == 1)
-                {
-                    this->complexityManage(1);
-                    this->container->boardCurrentComplexity->gotoAndStop(1);
-                }
-                else if (this->oldComplexity == 2 || this->oldComplexity == 4)
-                {
-                    this->complexityManage(2);
-                    this->container->boardCurrentComplexity->gotoAndStop(4);
-                }
-                else if (this->oldComplexity == 3)
-                {
-                    this->complexityManage(3);
-                    this->container->boardCurrentComplexity->gotoAndStop(7);
-                }
-            }
-        }
-        else if (this->container->boardMainMode->currentFrame == 3)
-        {
-            this->container->boardMainMode->gotoAndStop(1);
-        }
-        if (targetName == "startCase")
-        {
-            if (this->container->boardStart->currentFrame == 3)
-            {
-                this->container->boardStart->gotoAndStop(2);
-                Main::mainClass->addNewScreen("World");
-            }
-        }
-        else if (this->container->boardStart->currentFrame == 3)
-        {
-            this->container->boardStart->gotoAndStop(1);
-        }
-        return;
+
+		if (!globalNode)EventNode::mouseUpHandler(e);
+		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
+		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
+		std::MouseEvent me(e);
+		if (!useNodeEvent) {
+			me = std::buildMouseEvent(e);
+		}
+		std::MouseEvent * event = &me;
+		if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_UP))return;
+		if (!event->currentTargets.size())
+			event->currentTargets.push(this);
+		Main::mouseX = e->getCursorX();
+		Main::mouseY = e->getCursorY();
+		EventNode::beginTouchPos = Vec2(Main::mouseX, Main::mouseY);
+		while (event->hasNext())
+		{
+			string targetName = event->target->getName();
+			if (targetName == "backCase")
+			{
+				if (this->container->back->currentFrame == 3)
+				{
+					this->container->back->gotoAndStop(2);
+					this->close();
+				}
+			}
+			else if (this->container->back->currentFrame == 3)
+			{
+				this->container->back->gotoAndStop(1);
+			}
+			if (targetName == "complexityCase")
+			{
+				if (this->container->boardCurrentComplexity->currentFrame == 3 || this->container->boardCurrentComplexity->currentFrame == 6 || this->container->boardCurrentComplexity->currentFrame == 9)
+				{
+					int complexityLevel = Main::mainClass->saveBoxClass->getIntValue("complexityLevel");
+					if (complexityLevel == 1)
+					{
+						this->complexityManage(2);
+					}
+					else if (complexityLevel == 2)
+					{
+						this->complexityManage(3);
+					}
+					else if (complexityLevel == 3)
+					{
+						this->complexityManage(1);
+					}
+					this->container->boardCurrentComplexity->gotoAndStop((this->container->boardCurrentComplexity->currentFrame + 1));
+				}
+			}
+			else if (this->container->boardCurrentComplexity->currentFrame == 3 || this->container->boardCurrentComplexity->currentFrame == 6 || this->container->boardCurrentComplexity->currentFrame == 9)
+			{
+				this->container->boardCurrentComplexity->gotoAndStop(this->container->boardCurrentComplexity->currentFrame - 2);
+			}
+			if (targetName == "survivalModeCase")
+			{
+				if (this->container->boardSurvivalMode->currentFrame == 3)
+				{
+					if (Main::mainClass->saveBoxClass->getIntValue("saveNo") < 4)
+					{
+						//this->loginOrRegisterClass = new LoginOrRegister();
+						//this->addChild(this->loginOrRegisterClass);
+					}
+					else
+					{
+						this->complexityManage(4);
+					}
+				}
+			}
+			else if (this->container->boardSurvivalMode->currentFrame == 3)
+			{
+				this->container->boardSurvivalMode->gotoAndStop(1);
+			}
+			if (targetName == "mainModeCase")
+			{
+				if (this->container->boardMainMode->currentFrame == 3)
+				{
+					this->container->boardMainMode->gotoAndStop(4);
+					this->container->boardSurvivalMode->gotoAndStop(1);
+					this->container->boardSurvivalModeEyes->stop();
+					this->container->boardSurvivalModeEyes->setAlpha(0);
+					this->container->boardMainModeMainModeCase->setMouseEnabled(false);
+					this->container->boardSurvivalModeSurvivalModeCase->setMouseEnabled(true);
+					this->container->boardCurrentComplexity->setMouseChildren(true);
+					this->container->boardCurrentComplexity->setMouseEnabled(true);
+					if (this->oldComplexity == 1)
+					{
+						this->complexityManage(1);
+						this->container->boardCurrentComplexity->gotoAndStop(1);
+					}
+					else if (this->oldComplexity == 2 || this->oldComplexity == 4)
+					{
+						this->complexityManage(2);
+						this->container->boardCurrentComplexity->gotoAndStop(4);
+					}
+					else if (this->oldComplexity == 3)
+					{
+						this->complexityManage(3);
+						this->container->boardCurrentComplexity->gotoAndStop(7);
+					}
+				}
+			}
+			else if (this->container->boardMainMode->currentFrame == 3)
+			{
+				this->container->boardMainMode->gotoAndStop(1);
+			}
+			if (targetName == "startCase")
+			{
+				if (this->container->boardStart->currentFrame == 3)
+				{
+					this->container->boardStart->gotoAndStop(2);
+					Main::mainClass->addNewScreen("World");
+				}
+			}
+			else if (this->container->boardStart->currentFrame == 3)
+			{
+				this->container->boardStart->gotoAndStop(1);
+			}
+		}
+		return;
     }// end function
 
     void OpenLevel::complexityManage(int param1) 
