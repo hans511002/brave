@@ -74,9 +74,6 @@ namespace screens
 
 		virtual void kill();
 
-		virtual void  manageListeners(string param1);
-
-
 	};
 }
 #endif

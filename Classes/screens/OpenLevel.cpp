@@ -388,7 +388,7 @@ namespace screens
     }// end function
 	bool OpenLevel::preCheckEventTarget(std::MouseEvent * event, EventMouse::MouseEventType _mouseEventType)
 	{
-		
+		removeEventTarget(event,this);
  		Vec2 pos = event->getLocationInView();
 		switch (_mouseEventType)
 		{
@@ -894,22 +894,6 @@ namespace screens
             this->container->boardStatus->gotoAndStop(1);
         }
         return;
-    }// end function
-
-    void OpenLevel::manageListeners(string param1) 
-    {
-		if (param1 == "on")
-		{
-			if (useNodeEvent)
-				std::globalNode = this;
-			this->enableMouseHandler(true);
-			this->enableFrameHandler(true);
-		}
-		else if (param1 == "off")
-		{
-			this->disableMouseHandler();
-			this->disableFrameHandler();
-		}
     }// end function
 
     void OpenLevel::autoguidersButtons()

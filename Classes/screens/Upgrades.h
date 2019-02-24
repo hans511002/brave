@@ -155,8 +155,6 @@ namespace screens
 
         void upgradeUpdate();
 
-        void manageListeners(string param1);
-
         void close();
 
         void kill();

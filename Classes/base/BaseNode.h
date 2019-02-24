@@ -268,6 +268,7 @@ namespace std
 		void removeEventTarget(std::MouseEvent * event, BaseNode* node, string caseName);
 		void removeEventTarget(std::MouseEvent * event, string case1, string caseName);
 		void removeEventTarget(std::MouseEvent * event, string caseName);
+		void removeEventTarget(std::MouseEvent * event, Node* node);
 
 		virtual float getWidth();
 		virtual float getHeight();

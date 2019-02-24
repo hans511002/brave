@@ -92,8 +92,6 @@ namespace screens
 
 		void statusManage(bool param1 = false);
 
-		void manageListeners(string param1);
-
 		void autoguidersButtons();
 
 		void close();

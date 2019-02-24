@@ -1778,24 +1778,6 @@ namespace screens
         return;
     }// end function
 
-    void LevelsMenu::manageListeners(string param1)
-    {
-        if (param1 == "on")
-		{  
-			if (std::useGlobalNode)
-				std::globalNode = this;
-			this->enableMouseHandler(true);
-			this->enableFrameHandler(true);
-
-		}
-		else if (param1 == "off")
-		{
-			this->disableMouseHandler();
-			this->disableFrameHandler();
-
-		} 
-    }// end function
-
     //void reInit(event:Event) 
     //{
     //    this->removeEventListener(Event.REMOVED_FROM_STAGE, this->reInit);

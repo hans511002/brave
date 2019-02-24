@@ -1137,21 +1137,4 @@ namespace screens
 		return;
 	}// end function
 
-	void Achievements::manageListeners(string param1)
-	{
-		if (param1 == "on")
-		{
-			if (useNodeEvent)
-				std::globalNode = this;
-			this->enableMouseHandler(true);
-			this->enableFrameHandler(true);
-		}
-		else if (param1 == "off")
-		{
-			this->disableMouseHandler();
-			this->disableFrameHandler();
-		}
-		return;
-	}// end function
-
 }

@@ -120,8 +120,6 @@ namespace screens
 
 		virtual void autoguidersButtons();
 
-		virtual void manageListeners(string param1);
-
         //void reInit(event:Event) 
         //{
         //    this->removeEventListener(Event.REMOVED_FROM_STAGE, this->reInit);

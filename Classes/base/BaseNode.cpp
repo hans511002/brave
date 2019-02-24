@@ -865,6 +865,17 @@ namespace std
 			event->remove(ri);
 
 	}
+	void BaseNode::removeEventTarget(std::MouseEvent * event, Node* node) {
+		int len = event->currentTargets.size();
+		for (int i = 0; i < len; i++)
+		{
+			if (event->currentTargets.at(i) == node)
+			{
+				event->remove(i);
+				return;
+			}
+		}
+	}
 	void BaseNode::removeEventTarget(std::MouseEvent * event, BaseNode* node, string caseName) {
 		if (!node)return;
 		int ri = event->getIndex(caseName);
