@@ -54,7 +54,6 @@ namespace screens
         //this->addEventListener(Event.ADDED_TO_STAGE, this->init);
         this->playLevel = param1;
         Main::mainClass->saveBoxClass->playLevel = param1;
-		init();
         return;
     }// end function
 
@@ -63,14 +62,14 @@ namespace screens
         //this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
         //this->addEventListener(Event.REMOVED_FROM_STAGE, this->reInit);
         Main::mainClass->levelsMenuClass->manageListeners("off");
-        this->manageListeners("on");
         //this->stage.frameRate = 60;
         this->container = new OpenLevel_mc();
 		this->addChild(this->container);
 		this->container->setPosition(0, 745);
 		this->container->back = new Back_mc();
+		this->container->back->setPosition(26, Main::SCREEN_HEIGHT - 15);
 		this->addChild(this->container->back);
-		this->container->back->setPosition(0, Main::SCREEN_HEIGHT - 100);
+		this->printNodePos(this->container->back);
         this->container->stop();
         this->container->back->stop();
         //this->container->back->backCase->stop();
@@ -176,9 +175,10 @@ namespace screens
 			this->complexityManage(oldComplexityLevel);
         }
         AudioUtil::playSound("Snd_menu_openBoard.mp3");
-		this->container->play(1);
+		//this->container->play(1);
 		this->container->boardHeaderTXT->setPosition(this->container->boardHeaderTXT->getPosition()+cocos2d::Point(50,30));
-        return true;
+		this->manageListeners("on");
+		return true;
     }// end function
 
     void OpenLevel::enterFrameHandler(float dt) 
@@ -219,6 +219,7 @@ namespace screens
             {
                 this->closeFlag = false;
                 this->kill();
+				return;
             }
         }
 		//  var openSurvEdu:Training_91_mc;
@@ -535,7 +536,7 @@ namespace screens
 		if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_DOWN))return;
 		if (!event->currentTargets.size())
 			event->currentTargets.push(this);
-		Main::mouseX = e->getCursorX();
+		//Main::mouseX = e->getCursorX();
 		Main::mouseY = e->getCursorY();
 		EventNode::beginTouchPos = Vec2(Main::mouseX, Main::mouseY);
 		while (event->hasNext())
@@ -942,9 +943,9 @@ namespace screens
         {
 			this->manageListeners("off");
             this->dead = true;
-            Main::mainClass->levelsMenuClass->manageListeners("on");
             Main::mainClass->levelsMenuClass->removeChild(Main::mainClass->levelsMenuClass->openLevel);
             Main::mainClass->levelsMenuClass->openLevel = NULL;
+            Main::mainClass->levelsMenuClass->manageListeners("on");
         }
         return;
     }// end function

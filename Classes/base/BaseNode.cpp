@@ -1327,8 +1327,9 @@ namespace std
 	void EventNode::printNodePos(Node *node) {
 		logInfo(node->getName() + ".isVisible", node->isVisible());
 		logInfo(node->getName() + ".position", node->getPosition());
-		logInfo(node->getName() + ".position", node->getContentSize());
-		logInfo(node->getName() + ".worldPos", node->convertToWorldSpace(node->getPosition()));
+		logInfo(node->getName() + ".size", node->getContentSize());
+		logInfo(node->getName() + ".worldPos", node->getParent()->convertToWorldSpace(node->getPosition()));
+		logInfo(node->getName() + ".worldPos", node->convertToWorldSpace(Vec2(0,0)));
 		if (ISTYPE(EventNode, node)) {
 			EventNode *en = ISTYPE(EventNode, node);
 			logInfo(node->getName() + ".mouseEnabled", en->mouseEnabled);

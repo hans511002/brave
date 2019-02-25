@@ -720,6 +720,7 @@ namespace screens
 						this->openLevel = new OpenLevel(14);
 					else if (level->getName() == "level15")
 						this->openLevel = new OpenLevel(15);
+					this->openLevel->init();
 					this->addChild(this->openLevel);
 				}
 			}

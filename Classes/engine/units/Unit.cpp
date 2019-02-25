@@ -94,7 +94,7 @@ namespace engine
 			//this->this_pt = new Point(this->x, this->y);
 			this->shoot_pt = CONVERT_TO_WORLD_POS(this->container->cont->convertToWorldSpace(this->container->cont->getPosition()));
 			//this->shoot_pt = this->container->localToGlobal(new Point(this->container->cont.x, this->container->cont.y));
- 
+
 			bezier::PathPoint tempObject = this->world->bezierClass->getPathPoint(this->path + 10, this->road, this->way);
 			if (this->this_pt.x < tempObject.x - 5)
 			{
@@ -124,7 +124,7 @@ namespace engine
 				{
 					Main::mainClass->saveBoxClass->setValue("firstViewEnemies", (this->typeUnit - 1), 1);
 					NewEnemy_mc * tempObject = new NewEnemy_mc();
- 					tempObject->stop();
+					tempObject->stop();
 					//tempObject->newEnemyCase->stop();
 					tempObject->typeUnit = this->typeUnit;
 					//this->tempObject.newEnemyCase.setMouseEnabled(true);
@@ -148,7 +148,7 @@ namespace engine
 			//	string parStr = getNamePath(parent); 
 			//	Vec2 wpos = CONVERT_TO_WORLD_POS(parent->getParent()->convertToWorldSpace(parent->getPosition()));
 			//	logInfo(parStr + " pos=", wpos, &parent->getPosition(), &parent->getAnchorPoint());
- 			//	parent = parent->getParent();
+			//	parent = parent->getParent();
 			//}
 
 			return true;
@@ -192,7 +192,7 @@ namespace engine
 				if (this->traversedPath < this->airSpacing &&  tempObject > 0)
 				{
 					this->dampingAir = this->dampingAir + 0.4;
-					this->speedK =  tempObject * -1;
+					this->speedK = tempObject * -1;
 					if (this->path - this->speedK < 0)
 					{
 						this->speedK = 0;
@@ -441,7 +441,8 @@ namespace engine
 			if (this->this_pt.x > 0 && this->this_pt.y > 0 && this->this_pt.x < Main::LEVEL_MAP_WIDTH && this->this_pt.y < Main::LEVEL_MAP_HEIGHT)
 			{
 				this->atStaged = true;
-			}else{
+			}
+			else {
 				this->atStaged = false;
 			}
 			if (this->world->nowLevel == 6)
@@ -488,7 +489,7 @@ namespace engine
 					return;
 				}
 			}
-				
+
 			//}
 			//return;
 		}// end function
@@ -557,22 +558,14 @@ namespace engine
 				{
 					this->fireEffectCounter--;
 					if (this->atStaged && this->readyDamage)
-					{
 						this->getHit(this->fireEffectDamage, "fire", 1, false);
-					}
 					if (this->dead)
-					{
 						return;
-					}
 					if (this->container->fireEffect->currentFrame < this->container->fireEffect->totalFrames)
-					{
 						this->container->fireEffect->tryPlay();
 						//this->container->fireEffect->gotoAndStop((this->container->fireEffect->currentFrame + 1));
-					}
 					else
-					{
 						this->container->fireEffect->gotoAndStop(20);
-					}
 				}
 				else
 				{
@@ -602,14 +595,14 @@ namespace engine
 					}
 					else
 					{
-						this->container->iceEffect->currentFrame=16;
+						this->container->iceEffect->currentFrame = 16;
 						this->container->iceEffect->gotoAndStop(16);
 					}
 				}
 				else if (this->container->iceEffect->currentFrame > 16)
 				{
 					if (this->container->iceEffect->currentFrame < this->container->iceEffect->totalFrames)
-					{ 
+					{
 						this->container->iceEffect->tryPlay();
 						//this->container->iceEffect->gotoAndStop((this->container->iceEffect->currentFrame + 1));
 					}
@@ -874,7 +867,7 @@ namespace engine
 			{
 				if (!this->container->iceFreez->isVisible())
 				{
-					this->container->iceFreez->setVisible(true); 
+					this->container->iceFreez->setVisible(true);
 					printNodePos(this->container->iceFreez);
 					this->container->iceFreez->gotoAndStop(1);
 					this->stopAllEffects("fireEffect");
@@ -926,36 +919,36 @@ namespace engine
 			if (this->dead && this->container->iceDeath)
 			{
 				if (this->container->iceDeath->isVisible())
-				{ 
+				{
 					if (this->container->iceDeath->currentFrame < this->container->iceDeath->totalFrames)
-					{ 
+					{
 						if (this->container->iceDeath->currentFrame == 9)
 							this->container->cont->setVisible(false);
-						this->container->iceDeath->tryPlay(); 
+						this->container->iceDeath->tryPlay();
 					}
 					else if (this->container->getAlpha() > 0)
-						this->container->setAlpha(this->container->getAlpha() - 0.25  );
+						this->container->setAlpha(this->container->getAlpha() - 0.25);
 					else
 						this->removeUnitAfterDeathAnima();
 				}
 				else if (this->container->stoneDeath->isVisible())
-				{ 
-					this->container->stoneDeath->tryPlay(); 
+				{
+					this->container->stoneDeath->tryPlay();
 					if (this->container->stoneDeath->currentFrame < this->container->stoneDeath->totalFrames)
 					{
- 						if (this->container->stoneDeath->currentFrame == 3)
+						if (this->container->stoneDeath->currentFrame == 3)
 							this->container->cont->setVisible(false);
-					} 
+					}
 					else
 					{
 						this->removeUnitAfterDeathAnima();
 					}
 				}
 				else if (this->container->levinDeath->isVisible())
-				{ 
+				{
 					if (this->container->levinDeath->currentFrame < this->container->levinDeath->totalFrames)
-					{ 
-						this->container->levinDeath->tryPlay(); 
+					{
+						this->container->levinDeath->tryPlay();
 						if (this->container->levinDeath->currentFrame == 6)
 							this->container->cont->setVisible(false);
 					}
@@ -965,7 +958,7 @@ namespace engine
 						this->removeUnitAfterDeathAnima();
 				}
 				else {
-					logInfo(getNamePath(this),this->getPosition());
+					logInfo(getNamePath(this), this->getPosition());
 				}
 			}
 			//this->container->unitCase.x = this->container->unitCase.coordOrigin.x + this->container->cont.x;
@@ -1039,11 +1032,11 @@ namespace engine
 		////public function getHit(param1:Number, param2:String = "无", param3:int = 0, param4:Boolean = false, param5:int = 0, param6:Object = null) : void
 		bool Unit::getHit(float param1, string param2, int  param3, bool param4, int param5, ShootBase * param6)
 		{
-			if (!this->readyDamage)return false; 
+			if (!this->readyDamage)return false;
 			if (param1 > 0)
 			{
 				this->container->healthBarCounter = 0;
-				this->container->healthBarGetDamage->setVisible(true); 
+				this->container->healthBarGetDamage->setVisible(true);
 				//this->container->healthBarGetDamage->setPosition(this->container->healthBarGetDamage->getPosition());
 			}
 			float tempObject = param1;
@@ -1055,7 +1048,7 @@ namespace engine
 			{
 				if (param5)
 				{
-					 tempObject = param1 * this->fireDamageK;
+					tempObject = param1 * this->fireDamageK;
 					if (!this->container->fireAttack->isVisible() && this->typeUnit != 34)
 					{
 						this->container->fireAttack->setVisible(true);
@@ -1067,7 +1060,7 @@ namespace engine
 						{
 							this->fireEffectFlag = true;
 							this->fireEffectCounter = 30;
-							this->fireEffectDamage =  tempObject * Main::mainClass->readXMLClass.towerFireEffectDamageXML / this->fireEffectCounter;
+							this->fireEffectDamage = tempObject * Main::mainClass->readXMLClass.towerFireEffectDamageXML / this->fireEffectCounter;
 						}
 					}
 					else if (param5 == 0 || param5 == 1)
@@ -1083,12 +1076,12 @@ namespace engine
 					{
 						this->fireEffectFlag = true;
 						this->fireEffectCounter = 30;
-						this->fireEffectDamage =  tempObject * Main::mainClass->readXMLClass.fireEffectDamageXML / this->fireEffectCounter;
+						this->fireEffectDamage = tempObject * Main::mainClass->readXMLClass.fireEffectDamageXML / this->fireEffectCounter;
 					}
 				}
 				else if (param5 == 0 || param5 == 1)
 				{
-					 tempObject = 0;
+					tempObject = 0;
 					this->healthPlusFlag = true;
 					this->healthPlusValue = param1 * Main::mainClass->readXMLClass.listOfEnemiesXML[(this->typeUnit - 1)][30];
 					this->healthPlusValue = this->healthPlusValue / 25;//  this->container->buffHP->totalFrames;
@@ -1098,7 +1091,7 @@ namespace engine
 			{
 				if (param5)
 				{
-				     tempObject = param1 * this->iceDamageK;
+					tempObject = param1 * this->iceDamageK;
 					if (!this->container->iceAttack->isVisible() && this->typeUnit != 34)
 					{
 						this->container->iceAttack->setVisible(true);
@@ -1319,7 +1312,7 @@ namespace engine
 				{
 					if ((param5 == 0 || param5 == 2) && !this->icemanFlag)
 					{
-						 tempObject = 0;
+						tempObject = 0;
 						if (param3 == 1)
 						{
 							if (!this->speedPlusFlag)
@@ -1383,7 +1376,7 @@ namespace engine
 			{
 				if (param5)
 				{
-					 tempObject = param1 * this->stoneDamageK;
+					tempObject = param1 * this->stoneDamageK;
 					if (this->typeUnit != 25)
 					{
 						if (param4)
@@ -1433,7 +1426,7 @@ namespace engine
 				}
 				else if (param5 == 0 || param5 == 3)
 				{
-					 tempObject = 0;
+					tempObject = 0;
 					this->i = 0;
 					while (this->i < this->world->listOfUnits.size())
 					{
@@ -1472,7 +1465,7 @@ namespace engine
 			{
 				if (param5)
 				{
-					 tempObject = param1 * this->levinDamageK;
+					tempObject = param1 * this->levinDamageK;
 					param3 = param3 + Main::mainClass->readXMLClass.levinCountPlus;
 					if (!this->container->levinAttack->isVisible())
 					{
@@ -1572,9 +1565,9 @@ namespace engine
 				{
 					if (!this->container->healthBar->isVisible())
 					{
-						this->container->healthBar->setVisible(true); 
+						this->container->healthBar->setVisible(true);
 					}
-					logInfo("healthBar->setScaleX", this->container->getScaleX(), this->container->healthBarCont->getScaleX());
+					//logInfo("healthBar->setScaleX", this->container->getScaleX(), this->container->healthBarCont->getScaleX());
 					this->container->healthBarCont->setScaleX(this->health / this->healthMax);
 				}
 				else
@@ -1767,62 +1760,64 @@ namespace engine
 			}
 			this->world->removeUnit(this);
 			this->world->removeClasses(this);
-			this->world->removeIndexes(this,1); 
+			this->world->removeIndexes(this, 1);
 			this->world->removeChild(this, true);
 			//return;
 		}// end function
-        void Unit::kill() //public function kill() : void
-        {
-            if(this->dead)
-                return;
-            this->dead = true;
-            this->readyDamage = false;
-            this->moveFlag = false;
-            this->stopAllEffects();
-			bool needRemove = false;
-            if(this->health <= 0)
-            {
-                if((this->lastAttackType == "ice" || this->lastAttackType == "stone" || this->lastAttackType == "levin") && this->container->iceDeath)
-                {
-                    if(this->lastAttackType == "ice")
-                    {
-                        this->container->iceDeath->setVisible(true);
-                        AudioUtil::playSoundWithVol("Snd_unit_iceDeath.mp3", 0.75f);
-                    }
-                    else if(this->lastAttackType == "stone")
-                    {
-                        this->container->stoneDeath->setVisible(true);
-                    }
-                    else if(this->lastAttackType == "levin")
-                    {
-                        this->container->levinDeath->setVisible(true);
-                        AudioUtil::playSound("Snd_unit_levinDeath.mp3");
-                    }
-                    this->setMouseChildren(false);
-                    this->setMouseEnabled(false);
-                    this->world->addClasses(this);
-                    //this->world->addIndexes(this,1);
-                }
-                else
-                {
-                    if(this->typeUnit != 20 && this->typeUnit != 21 && (this->typeUnit < 23 || this->typeUnit > 26) && this->typeUnit != 34)
-                    {
-                        //this->tempObject = new DeathEffect(this, NULL, 6, 0.2, 1);
-                        if(this->lastAttackType != "golem")
-                        {
-                            AudioUtil::playSound("Snd_unit_fireDeath.mp3");
-                        }
-                    }
-					needRemove = true;//this->world->removeChild(this);
-                }
-                this->world->money = this->world->money + this->gold;
-                if(this->replacementFlag > 0)
-                {
-                    this->i = 0;
+		void Unit::kill() //public function kill() : void
+		{
+			if (this->dead)
+				return;
+			this->dead = true;
+			this->readyDamage = false;
+			this->moveFlag = false;
+			this->stopAllEffects();
+			this->world->removeUnit(this);
+			bool needRemove = true;
+			if (this->health <= 0)
+			{
+				if ((this->lastAttackType == "ice" || this->lastAttackType == "stone" || this->lastAttackType == "levin") && this->container->iceDeath)
+				{
+					if (this->lastAttackType == "ice")
+					{
+						this->container->iceDeath->setVisible(true);
+						AudioUtil::playSoundWithVol("Snd_unit_iceDeath.mp3", 0.75f);
+					}
+					else if (this->lastAttackType == "stone")
+					{
+						this->container->stoneDeath->setVisible(true);
+					}
+					else if (this->lastAttackType == "levin")
+					{
+						this->container->levinDeath->setVisible(true);
+						AudioUtil::playSound("Snd_unit_levinDeath.mp3");
+					}
+					this->setMouseChildren(false);
+					this->setMouseEnabled(false);
+					this->world->addClasses(this);
+					needRemove = false;
+					//this->world->addIndexes(this,1);
+				}
+				else
+				{
+					if (this->typeUnit != 20 && this->typeUnit != 21 && (this->typeUnit < 23 || this->typeUnit > 26) && this->typeUnit != 34)
+					{
+						//this->tempObject = new DeathEffect(this, NULL, 6, 0.2, 1);
+						if (this->lastAttackType != "golem")
+						{
+							AudioUtil::playSound("Snd_unit_fireDeath.mp3");
+						}
+					}
+					//this->world->removeChild(this);
+				}
+				this->world->money = this->world->money + this->gold;
+				if (this->replacementFlag > 0)
+				{
+					this->i = 0;
 					while (this->i < this->replacementCount)
 					{
 						int c = this->world->wavesClass->listOfReplacement.size();
-						this->world->wavesClass->listOfReplacement[c][0] = c>0?this->world->wavesClass->listOfReplacement[(c - 1)][0]:0 + 60;
+						this->world->wavesClass->listOfReplacement[c][0] = c > 0 ? this->world->wavesClass->listOfReplacement[(c - 1)][0] : 0 + 60;
 						this->world->wavesClass->listOfReplacement[c][1] = this->replacementFlag == 1 ? 29 : 30;
 						this->world->wavesClass->listOfReplacement[c][2] = this->road;
 						this->world->wavesClass->listOfReplacement[c][3] = this->way;
@@ -1830,163 +1825,134 @@ namespace engine
 						//this->world->wavesClass->listOfReplacement.push([this->world->wavesClass->listOfReplacement[(c- 1)][0] + 60, 29, this->road, this->way, this->path]);
 						i++;
 					}
-                }
-                int addit_killEnemiesCounter = this->world->saveBox->getIntValue("addit_killEnemiesCounter") + 1;
-                this->world->saveBox->setValue("addit_killEnemiesCounter", addit_killEnemiesCounter);
-                //(this->world->saveBox.gameSave.data.addit_killEnemiesCounter + 1);
-                this->world->killEnemiesCounter++;
-                if(addit_killEnemiesCounter == 1)
-                {
-                    this->world->achieveManage("firstKill");
-                }
-                else if(addit_killEnemiesCounter == 2500)
-                {
-                    this->world->achieveManage("kill_2500_enemies");
-                }
-                if(this->world->killEnemiesCounter == 100)
-                {
-                    this->world->achieveManage("kill_100_enemies");
-                }
-            }
-            else
-            {
-                if(this->world->live > 0)
-                {
-                    AudioUtil::playSoundWithVol("Snd_unit_finish.mp3", 0.9f);
-                }
-                this->world->live = this->world->live - this->penalty;
-				needRemove = true;//this->world->removeChild(this);
-                if(this->world->live <= 0)
-                {
-                    this->world->live = 0;
-                    if(this->world->saveBox->getIntValue("complexityLevel") < 4)
-                    {
-                        this->world->winDefCounter = 15;
-                    }
-                    else
-                    {
-                        this->world->winDefCounter = 1;
-                    }
-                }
-            }
-            this->world->worldInterface->updateInfo();
-            this->i = 0;
-            while(this->i < this->world->listOfUnits.size())
-            {
-                if(this->world->listOfUnits[this->i] == this)
-                {
-                    this->world->listOfUnits.remove(this->i);
-                    break;
-                }
-                i++;
-            }
-            if(this->world->selectObject == this)
-            {
-                this->world->worldInterface->barInfoManage();
-            }
-            if(this->world->live > 0 && this->world->wavesClass->nowWave == this->world->wavesClass->maxWaves && !this->world->wavesClass->waveWork)
-            {
-                int tempObject = 0;
-                this->i = 0;
-                while(this->i < this->world->listOfUnits.size())
-                {
-                    if(!this->world->listOfUnits[this->i]->replaced)
-                    {
-                        tempObject++;
-                    }
-                    i++;
-                }
-                if(tempObject <= 3)
-                {
-                    if(this->world->wavesClass->listOfReplacement.size() > 0)
-                    {
-                        this->world->wavesClass->listOfReplacement.clear();
-                    }
-                    this->i = 0;
-                    while(this->i < this->world->listOfUnits.size())
-                    {
-                        if(this->world->listOfUnits[this->i]->replacementFlag)
-                        {
-                            this->world->listOfUnits[this->i]->replacementFlag = false;
-                        }
-                        if(this->world->listOfUnits.size() <= 2)
-                        {
-                            if(this->world->listOfUnits[this->i]->typeUnit == 29 || this->world->listOfUnits[this->i]->typeUnit == 30)
-                            {
-                                this->world->listOfUnits[this->i]->stealthCounter = 0;
-                            }
-                        }
-                        i++;
-                    }
-                }
-                if(this->world->listOfUnits.size() == 0 && this->world->wavesClass->listOfReplacement.size() == 0)
-                {
-                    bool tempObject = false;
-                    if(this->world->wavesClass->listOfWaves.size() > 0)
-                    {
-                        if(this->world->wavesClass->listOfWaves[0].size() > 0)
-                        {
-                            tempObject = true;
-                        }
-                    }
-                    if(!tempObject)
-                    {
-                        if(this->world->wavesClass->listOfWaves.size() > 1)
-                        {
-                            if(this->world->wavesClass->listOfWaves[1].size() > 0)
-                            {
-                                tempObject = true;
-                            }
-                        }
-                    }
-                    if(!tempObject)
-                    {
-                        if(this->world->wavesClass->listOfWaves.size() > 2)
-                        {
-                            if(this->world->wavesClass->listOfWaves[2].size() > 0)
-                            {
-                                tempObject = true;
-                            }
-                        }
-                    }
-                    if (!tempObject)
-                    {
-                    	this->i = 0;
-                    	while(this->i < this->world->listOfClasses.size())
-                    	{
-							if (ISTYPE(Unit,this->world->listOfClasses[this->i] ))
-                    		{
-								Unit * unit=ISTYPE(Unit, this->world->listOfClasses[this->i]);
-								if (!unit->dead)
-                    			{
-                    				tempObject = true;
-                    				break;
-                    			}
-                    		}
-                    		i++;
-                    	}
-                    }
-                    if(!tempObject)
-                    {
-                        if(this->typeUnit != 34)
-                        {
-                            this->world->winDefCounter = 60;
-                        }
-                        else
-                        {
-                            this->world->winDefCounter = 250;
-                        }
-                    }
-                }
-            }
-			if (needRemove) {
-				if (this->world->selectObject == this) {
-					this->world->selectObject = NULL;
 				}
-				this->world->removeUnit(this);
+				int addit_killEnemiesCounter = this->world->saveBox->getIntValue("addit_killEnemiesCounter") + 1;
+				this->world->saveBox->setValue("addit_killEnemiesCounter", addit_killEnemiesCounter);
+				//(this->world->saveBox.gameSave.data.addit_killEnemiesCounter + 1);
+				this->world->killEnemiesCounter++;
+				if (addit_killEnemiesCounter == 1)
+					this->world->achieveManage("firstKill");
+				else if (addit_killEnemiesCounter == 2500)
+					this->world->achieveManage("kill_2500_enemies");
+				if (this->world->killEnemiesCounter == 100)
+					this->world->achieveManage("kill_100_enemies");
+			}
+			else
+			{
+				if (this->world->live > 0)
+					AudioUtil::playSoundWithVol("Snd_unit_finish.mp3", 0.9f);
+				this->world->live = this->world->live - this->penalty;
+				needRemove = true;//this->world->removeChild(this);
+				if (this->world->live <= 0)
+				{
+					this->world->live = 0;
+					if (this->world->saveBox->getIntValue("complexityLevel") < 4)
+						this->world->winDefCounter = 15;
+					else
+						this->world->winDefCounter = 1;
+				}
+			}
+			this->world->worldInterface->updateInfo();
+			if (this->world->live > 0 && this->world->wavesClass->nowWave == this->world->wavesClass->maxWaves && !this->world->wavesClass->waveWork)
+			{
+				int tempObject = 0;
+				this->i = 0;
+				while (this->i < this->world->listOfUnits.size())
+				{
+					if (!this->world->listOfUnits[this->i]->replaced)
+					{
+						tempObject++;
+					}
+					i++;
+				}
+				if (tempObject <= 3)
+				{
+					if (this->world->wavesClass->listOfReplacement.size() > 0)
+					{
+						this->world->wavesClass->listOfReplacement.clear();
+					}
+					this->i = 0;
+					while (this->i < this->world->listOfUnits.size())
+					{
+						if (this->world->listOfUnits[this->i]->replacementFlag)
+						{
+							this->world->listOfUnits[this->i]->replacementFlag = false;
+						}
+						if (this->world->listOfUnits.size() <= 2)
+						{
+							if (this->world->listOfUnits[this->i]->typeUnit == 29 || this->world->listOfUnits[this->i]->typeUnit == 30)
+							{
+								this->world->listOfUnits[this->i]->stealthCounter = 0;
+							}
+						}
+						i++;
+					}
+				}
+				if (this->world->listOfUnits.size() == 0 && this->world->wavesClass->listOfReplacement.size() == 0)
+				{
+					bool tempObject = false;
+					if (this->world->wavesClass->listOfWaves.size() > 0)
+					{
+						if (this->world->wavesClass->listOfWaves[0].size() > 0)
+						{
+							tempObject = true;
+						}
+					}
+					if (!tempObject)
+					{
+						if (this->world->wavesClass->listOfWaves.size() > 1)
+						{
+							if (this->world->wavesClass->listOfWaves[1].size() > 0)
+							{
+								tempObject = true;
+							}
+						}
+					}
+					if (!tempObject)
+					{
+						if (this->world->wavesClass->listOfWaves.size() > 2)
+						{
+							if (this->world->wavesClass->listOfWaves[2].size() > 0)
+							{
+								tempObject = true;
+							}
+						}
+					}
+					if (!tempObject)
+					{
+						this->i = 0;
+						while (this->i < this->world->listOfClasses.size())
+						{
+							if (ISTYPE(Unit, this->world->listOfClasses[this->i]))
+							{
+								Unit * unit = ISTYPE(Unit, this->world->listOfClasses[this->i]);
+								if (!unit->dead)
+								{
+									tempObject = true;
+									break;
+								}
+							}
+							i++;
+						}
+					}
+					if (!tempObject)
+					{
+						if (this->typeUnit != 34)
+						{
+							this->world->winDefCounter = 60;
+						}
+						else
+						{
+							this->world->winDefCounter = 250;
+						}
+					}
+				}
+			}
+			if (needRemove) {
 				this->world->removeChild(this);
 			}
-            //return;
-        }
+			CCLOGWARN("kill unit : %i",(int)this);
+			//return;
+		}
 	}
 }
