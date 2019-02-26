@@ -57,20 +57,12 @@ namespace engine
         MCSprite * createSprite(const string &  slot, Sprite* file, bool reinit = false);
         MCMask * createMask(const string &  slot, bool reinit = false);
         Sprite *getSprite(const string &  slotName);
-		
-
-		virtual void addMcs(MovieClipSub * mcs, bool reinit = false);
-		virtual bool remove(MovieClipSub * ms);
+		 
 		static MovieClip * getRootMc(MC * mc);
-
-		Common::Array<MovieClipSub*> submc; 
+		 
+		//直接子级
 		Common::Array<MovieClipSubBase *> submcbs;
-
-		Common::Array<MovieClipSubBase *> allSubMcbs;
-
-
-        Common::Array<MovieClipSubBase*> updateMcbs;
-
+		Common::Array<MovieClipSubBase *> allSubMcbs; 
 
         virtual void addMCbs(MovieClipSubBase * mcs, bool reinit=false);
 		virtual bool remove(MovieClipSubBase * ms);
@@ -123,10 +115,6 @@ namespace engine
         //Common::Array<MCText*> mct;
         //Common::Array<MCCase*> mcase;
 
-		//所有全部子集群,用于自动删除
-		Common::Array<MovieClipSub*> mcs;
-        Common::Array<MovieClipSubBase*> mcbs;
-        
         MovieClip(dragonBones::CCArmatureDisplay * container, const string &  defAniName = "");
         MovieClip(const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "");
         MovieClip(World * world, const string &  rootPath, const string &  armName, const string &  dbName, const string &  defAniName = "");
@@ -150,9 +138,7 @@ namespace engine
 		virtual bool reinit();
 		virtual bool isVisible();
 
-		void addMcs(MovieClipSub * mcs);
-        virtual void destroy(MovieClipSub * & mcs);
-		virtual bool remove(MovieClipSub * ms);
+        virtual void destroy(MovieClipSubBase * & mcs); 
 	
 		virtual float getWidth();
 		virtual float getHeight();
@@ -350,7 +336,7 @@ namespace engine
 	{
 		MCS * mcs = new MCS(this, slotName);
 		mcs->reinitType = reinit;
-		this->addMcs(mcs, reinit);
+		this->addMCbs(mcs, reinit);
 		return mcs;
 	}
 

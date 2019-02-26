@@ -4,7 +4,7 @@
 #include "Screen.h"   
 
 namespace screens
-{   
+{
 
 	struct UpgradeButton :public MovieClipSub
 	{
@@ -12,17 +12,17 @@ namespace screens
 		MCText * starsTXT;
 		UpgradeButton(MC *mc, const std::string &  slot, const string &  defAniName = "");
 	};
-    struct Upgrades_mc : public MovieClip
-    {
+	struct Upgrades_mc : public MovieClip
+	{
 		MovieClip * stars;
 		MCText * starsTXT;
 		Back_mc * back;
 		MovieClipSub* cont;
-        MCCase * shadow;
+		MCCase * shadow;
 
 		MovieClipSub* contBtnReset;
 		MCCase* contBtnResetResetCase;
-		MovieClipSub* contBtnAccept;  
+		MovieClipSub* contBtnAccept;
 		MCCase* contBtnAcceptAcceptCase;
 		UpgradeButton * levinUpgrade1;
 		UpgradeButton * levinUpgrade2;
@@ -33,7 +33,7 @@ namespace screens
 		UpgradeButton * stoneUpgrade2;
 		UpgradeButton * stoneUpgrade3;
 		UpgradeButton * stoneUpgrade4;
-		UpgradeButton * stoneUpgrade5; 
+		UpgradeButton * stoneUpgrade5;
 		UpgradeButton * iceUpgrade1;
 		UpgradeButton * iceUpgrade2;
 		UpgradeButton * iceUpgrade3;
@@ -89,77 +89,78 @@ namespace screens
 		Sprite * golemArrow3;
 		Sprite * golemArrow4;
 
-        Upgrades_mc();
-    };
-    struct HintUpgrade_mc : public MovieClip
-    { 
-        HintUpgrade_mc();
+		Upgrades_mc();
+	};
+	struct HintUpgrade_mc : public MovieClip
+	{
+		HintUpgrade_mc();
 		UpgradeButton * myTarget;
-    };
-    class Upgrades : public Screen
-    {
-    public:
-        //Object tempObject;
-        //Object tempObject1;
-        Upgrades_mc * container;
-        LevelsMenu * levelsMenu;
+	};
+	class Upgrades : public Screen
+	{
+	public:
+		//Object tempObject;
+		//Object tempObject1;
+		Upgrades_mc * container;
+		LevelsMenu * levelsMenu;
 		UpgradeButton * nowUpgradeButton;
-        HintUpgrade_mc* hint;
-        Common::Array<MovieClip *> listOfUpgradeAnima;
-        int costGolemUpgrade1;
-        int costGolemUpgrade2;
-        int costGolemUpgrade3;
-        int costGolemUpgrade4;
-        int costGolemUpgrade5;
-        int costIcemanUpgrade1;
-        int costIcemanUpgrade2;
-        int costIcemanUpgrade3;
-        int costIcemanUpgrade4;
-        int costIcemanUpgrade5;
-        int costAirUpgrade1;
-        int costAirUpgrade2;
-        int costAirUpgrade3;
-        int costAirUpgrade4;
-        int costAirUpgrade5;
-        int costFireUpgrade1;
-        int costFireUpgrade2;
-        int costFireUpgrade3;
-        int costFireUpgrade4;
-        int costFireUpgrade5;
-        int costIceUpgrade1;
-        int costIceUpgrade2;
-        int costIceUpgrade3;
-        int costIceUpgrade4;
-        int costIceUpgrade5;
-        int costStoneUpgrade1;
-        int costStoneUpgrade2;
-        int costStoneUpgrade3;
-        int costStoneUpgrade4;
-        int costStoneUpgrade5;
-        int costLevinUpgrade1;
-        int costLevinUpgrade2;
-        int costLevinUpgrade3;
-        int costLevinUpgrade4;
-        int costLevinUpgrade5;
+		HintUpgrade_mc* hint;
+		Common::Array<MovieClip *> listOfUpgradeAnima;
+		int costGolemUpgrade1;
+		int costGolemUpgrade2;
+		int costGolemUpgrade3;
+		int costGolemUpgrade4;
+		int costGolemUpgrade5;
+		int costIcemanUpgrade1;
+		int costIcemanUpgrade2;
+		int costIcemanUpgrade3;
+		int costIcemanUpgrade4;
+		int costIcemanUpgrade5;
+		int costAirUpgrade1;
+		int costAirUpgrade2;
+		int costAirUpgrade3;
+		int costAirUpgrade4;
+		int costAirUpgrade5;
+		int costFireUpgrade1;
+		int costFireUpgrade2;
+		int costFireUpgrade3;
+		int costFireUpgrade4;
+		int costFireUpgrade5;
+		int costIceUpgrade1;
+		int costIceUpgrade2;
+		int costIceUpgrade3;
+		int costIceUpgrade4;
+		int costIceUpgrade5;
+		int costStoneUpgrade1;
+		int costStoneUpgrade2;
+		int costStoneUpgrade3;
+		int costStoneUpgrade4;
+		int costStoneUpgrade5;
+		int costLevinUpgrade1;
+		int costLevinUpgrade2;
+		int costLevinUpgrade3;
+		int costLevinUpgrade4;
+		int costLevinUpgrade5;
 
-        Upgrades();
+		Upgrades();
 
-        bool init();
+		bool init();
 
-        void enterFrameHandler(float dt);
-        void mouseMoveHandler(cocos2d::EventMouse * event);
+		void enterFrameHandler(float dt);
+		bool preCheckEventTarget(std::MouseEvent * event, EventMouse::MouseEventType _mouseEventType);
+		void mouseMoveHandler(cocos2d::EventMouse * event);
 
-        void mouseDownHandler(cocos2d::EventMouse * event);
+		void mouseDownHandler(cocos2d::EventMouse * event);
 
-        void mouseUpHandler(cocos2d::EventMouse * event);
+		void mouseUpHandler(cocos2d::EventMouse * event);
 
-        void upgradeUpdate();
+		void upgradeUpdate();
 
-        void close();
+		void close();
 
-        void kill();
+		void kill();
 
-        //void reInit(event:Event);
+		//void reInit(event:Event);
 
 	};
 }

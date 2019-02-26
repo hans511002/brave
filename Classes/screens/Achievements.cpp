@@ -8,9 +8,12 @@ namespace screens
 {
 	ContAchieve::ContAchieve(MC *mc, const std::string &  slot, const string &  defAniName) :MovieClipSub(mc, slot, defAniName)
 	{
+		this->setName(slot);
 		this->nameTXT = this->createText("nameTXT");
 		this->noteTXT = this->createText("noteTXT");
 		icon = this->createMovieClipSub("icon");
+		this->nameTXT->setPosition(this->nameTXT->getPosition() + Vec2(0, 5));
+		this->noteTXT->setPosition(this->noteTXT->getPosition() + Vec2(0, 5));
 	};
 
 	Achievements_mc::Achievements_mc() :MovieClip("screen/", "Achievements_mc", "Achievements_mc")
@@ -67,11 +70,12 @@ namespace screens
 		//this->addEventListener(MouseEvent.MOUSE_UP, this->mouseUpHandler);
 		//this->stage.frameRate = 60;
 		Main::mainClass->levelsMenuClass->manageListeners("off");
-		this->manageListeners("on");
 		this->container = new Achievements_mc();
+		this->addChild(this->container);
+		this->container->setPosition(0, 845);
 		this->container->back = new Back_mc();
+		this->container->back->setPosition(26, Main::SCREEN_HEIGHT - 15);
 		this->addChild(this->container->back);
-		this->container->back->setPosition(0, Main::SCREEN_HEIGHT - 100);
 		this->container->stop();
 		this->container->back->stop();
 		this->container->back->backCase->setMouseEnabled(true);
@@ -108,9 +112,9 @@ namespace screens
 		this->pageManage(1);
 		this->container->cont->setMouseChildren(false);
 		this->container->cont->setMouseEnabled(false);
-		this->addChild(this->container);
 		AudioUtil::playSound("Snd_menu_openBoard.mp3");
-		this->container->play(1);
+		//this->container->play(1);
+		this->manageListeners("on");
 		return true;
 	}// end function
 
@@ -149,6 +153,7 @@ namespace screens
 			{
 				this->closeFlag = false;
 				this->kill();
+				return;
 			}
 		}
 		if (this->container->contFire1->isVisible())
@@ -213,251 +218,323 @@ namespace screens
 		}
 		return;
 	}// end function
-
+	bool Achievements::preCheckEventTarget(std::MouseEvent * event, EventMouse::MouseEventType _mouseEventType)
+	{
+		removeEventTarget(event, this);
+		Vec2 pos = event->getLocationInView();
+		switch (_mouseEventType)
+		{
+		case cocos2d::EventMouse::MouseEventType::MOUSE_NONE:
+			break;
+		case cocos2d::EventMouse::MouseEventType::MOUSE_DOWN:
+			if (event->currentTargets.size() > 1) {
+				removeEventTarget(event, "shadow");
+				//removeEventTarget(event, "sphereCase", "fireCase");
+			}
+			break;
+		case cocos2d::EventMouse::MouseEventType::MOUSE_UP:
+			if (event->currentTargets.size() > 1) {
+				removeEventTarget(event, "shadow");
+			}
+			break;
+		case cocos2d::EventMouse::MouseEventType::MOUSE_MOVE:
+			removeEventTarget(event, "shadow");
+			break;
+		case cocos2d::EventMouse::MouseEventType::MOUSE_SCROLL:
+			break;
+		default:
+			break;
+		}
+		event->reset();
+		return false;
+	};
 	void Achievements::mouseMoveHandler(cocos2d::EventMouse *e)
 	{
-		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
-		if (!event)
-			return;
-		string targetName = event->target->getName();
-		string parentName = event->target->getParent()->getParent()->getName();
-		if (targetName == "backCase")
-		{
-			if (this->container->back->currentFrame == 1)
-			{
-				this->container->back->gotoAndStop(2);
-				AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-			}
+		Main::mouseX = e->getCursorX();
+		Main::mouseY = e->getCursorY();
+		if (!globalNode)EventNode::mouseMoveHandler(e);
+		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
+		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
+		std::MouseEvent me(e);
+		if (!useNodeEvent) {
+			me = std::buildMouseEvent(e);
 		}
-		else if (this->container->back->currentFrame == 2)
+		std::MouseEvent * event = &me;
+		if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_MOVE))return;
+		if (!event->currentTargets.size())
+			event->currentTargets.push(this);
+		//return;
+		while (event->hasNext())
 		{
-			this->container->back->gotoAndStop(1);
-		}
-		if (targetName == "closeCase")
-		{
-			if (this->container->contBtnClose->currentFrame == 1)
-			{
-				this->container->contBtnClose->gotoAndStop(2);
-				AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-			}
-		}
-		else if (this->container->contBtnClose->currentFrame == 2)
-		{
-			this->container->contBtnClose->gotoAndStop(1);
-		}
-		if (parentName == "btnBack")
-		{
-			if (this->container->contBtnBack->currentFrame == 1)
-			{
-				this->container->contBtnBack->gotoAndStop(2);
-				AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-			}
-		}
-		else if (this->container->contBtnBack->currentFrame == 2)
-		{
-			this->container->contBtnBack->gotoAndStop(1);
-		}
-		if (parentName == "btnForward")
-		{
-			if (this->container->contBtnForward->currentFrame == 1)
-			{
-				this->container->contBtnForward->gotoAndStop(2);
-				AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-			}
-		}
-		else if (this->container->contBtnForward->currentFrame == 2)
-		{
-			this->container->contBtnForward->gotoAndStop(1);
-		}
-		if (targetName == "fire1Case")
-		{
-			AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+			string targetName = event->target->getName();
+			EventNode::beginTouchNode = event->target;// event->currentTargets.at(0);
 
+			string parentName = event->target->getParent()->getParent()->getName();
+			if (targetName == "backCase")
+			{
+				if (this->container->back->currentFrame == 1)
+				{
+					this->container->back->gotoAndStop(2);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+				}
+			}
+			else if (this->container->back->currentFrame == 2)
+			{
+				this->container->back->gotoAndStop(1);
+			}
+			if (targetName == "closeCase")
+			{
+				if (this->container->contBtnClose->currentFrame == 1)
+				{
+					this->container->contBtnClose->gotoAndStop(2);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+				}
+			}
+			else if (this->container->contBtnClose->currentFrame == 2)
+			{
+				this->container->contBtnClose->gotoAndStop(1);
+			}
+			if (parentName == "btnBack")
+			{
+				if (this->container->contBtnBack->currentFrame == 1)
+				{
+					this->container->contBtnBack->gotoAndStop(2);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+				}
+			}
+			else if (this->container->contBtnBack->currentFrame == 2)
+			{
+				this->container->contBtnBack->gotoAndStop(1);
+			}
+			if (parentName == "btnForward")
+			{
+				if (this->container->contBtnForward->currentFrame == 1)
+				{
+					this->container->contBtnForward->gotoAndStop(2);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+				}
+			}
+			else if (this->container->contBtnForward->currentFrame == 2)
+			{
+				this->container->contBtnForward->gotoAndStop(1);
+			}
+			if (targetName == "fire1Case")
+			{
+				AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+
+			}
+			else if (this->container->contFire1Case->mouseMoveFlag)
+			{
+				this->container->contFire1Case->mouseMoveFlag = false;
+			}
+			if (targetName == "fire2Case")
+			{
+				AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+			}
+			else if (this->container->contFire2Case->mouseMoveFlag)
+			{
+				this->container->contFire2Case->mouseMoveFlag = false;
+			}
+			if (targetName == "fire3Case")
+			{
+				AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+			}
+			else if (this->container->contFire3Case->mouseMoveFlag)
+			{
+				this->container->contFire3Case->mouseMoveFlag = false;
+			}
+			if (targetName == "fire4Case")
+			{
+				AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+			}
+			else if (this->container->contFire4Case->mouseMoveFlag)
+			{
+				this->container->contFire4Case->mouseMoveFlag = false;
+			}
+			if (targetName == "fire5Case")
+			{
+				AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+			}
+			else if (this->container->contFire5Case->mouseMoveFlag)
+			{
+				this->container->contFire5Case->mouseMoveFlag = false;
+			}
 		}
-		else if (this->container->contFire1Case->mouseMoveFlag)
-		{
-			this->container->contFire1Case->mouseMoveFlag = false;
-		}
-		if (targetName == "fire2Case")
-		{
-			AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-		}
-		else if (this->container->contFire2Case->mouseMoveFlag)
-		{
-			this->container->contFire2Case->mouseMoveFlag = false;
-		}
-		if (targetName == "fire3Case")
-		{
-			AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-		}
-		else if (this->container->contFire3Case->mouseMoveFlag)
-		{
-			this->container->contFire3Case->mouseMoveFlag = false;
-		}
-		if (targetName == "fire4Case")
-		{
-			AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-		}
-		else if (this->container->contFire4Case->mouseMoveFlag)
-		{
-			this->container->contFire4Case->mouseMoveFlag = false;
-		}
-		if (targetName == "fire5Case")
-		{
-			AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-		}
-		else if (this->container->contFire5Case->mouseMoveFlag)
-		{
-			this->container->contFire5Case->mouseMoveFlag = false;
-		}
-		return;
 	}// end function
 
 	void Achievements::mouseDownHandler(cocos2d::EventMouse * e)
 	{
-		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
-		if (!event)
-			return;
-		string targetName = event->target->getName();
-		string parentName = event->target->getParent()->getParent()->getName();
-		if (!this->openFlag)
+		if (!globalNode)EventNode::mouseDownHandler(e);
+		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
+		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
+		std::MouseEvent me(e);
+		if (!useNodeEvent) {
+			me = std::buildMouseEvent(e);
+		}
+		std::MouseEvent * event = &me;
+		if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_DOWN))return;
+		if (!event->currentTargets.size())
+			event->currentTargets.push(this);
+		//Main::mouseX = e->getCursorX();
+		Main::mouseY = e->getCursorY();
+		EventNode::beginTouchPos = Vec2(Main::mouseX, Main::mouseY);
+		while (event->hasNext())
 		{
-			if (targetName == "backCase")
+			string targetName = event->target->getName();
+			EventNode::beginTouchNode = event->target;// event->currentTargets.at(0);
+
+			string parentName = event->target->getParent()->getParent()->getName();
+			if (!this->openFlag)
 			{
-				if (this->container->back->currentFrame == 2)
+				if (targetName == "backCase")
 				{
-					this->container->back->gotoAndStop(3);
-					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+					if (this->container->back->currentFrame == 2)
+					{
+						this->container->back->gotoAndStop(3);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+					}
 				}
-			}
-			else if (targetName == "closeCase")
-			{
-				if (this->container->contBtnClose->currentFrame == 2)
+				else if (targetName == "closeCase")
 				{
-					this->container->contBtnClose->gotoAndStop(3);
-					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+					if (this->container->contBtnClose->currentFrame == 2)
+					{
+						this->container->contBtnClose->gotoAndStop(3);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+					}
 				}
-			}
-			else if (parentName == "btnBack")
-			{
-				if (this->container->contBtnBack->currentFrame == 2)
+				else if (parentName == "btnBack")
 				{
-					this->container->contBtnBack->gotoAndStop(3);
-					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+					if (this->container->contBtnBack->currentFrame == 2)
+					{
+						this->container->contBtnBack->gotoAndStop(3);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+					}
 				}
-			}
-			else if (parentName == "btnForward")
-			{
-				if (this->container->contBtnForward->currentFrame == 2)
+				else if (parentName == "btnForward")
 				{
-					this->container->contBtnForward->gotoAndStop(3);
-					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+					if (this->container->contBtnForward->currentFrame == 2)
+					{
+						this->container->contBtnForward->gotoAndStop(3);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+					}
 				}
-			}
-			else if (targetName == "fire1Case")
-			{
-				if (this->container->contFire1Case->mouseEnabled)
+				else if (targetName == "fire1Case")
 				{
-					this->pageManage(1);
-					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+					if (this->container->contFire1Case->mouseEnabled)
+					{
+						this->pageManage(1);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+					}
 				}
-			}
-			else if (targetName == "fire2Case")
-			{
-				if (this->container->contFire2Case->mouseEnabled)
+				else if (targetName == "fire2Case")
 				{
-					this->pageManage(2);
-					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+					if (this->container->contFire2Case->mouseEnabled)
+					{
+						this->pageManage(2);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+					}
 				}
-			}
-			else if (targetName == "fire3Case")
-			{
-				if (this->container->contFire3Case->mouseEnabled)
+				else if (targetName == "fire3Case")
 				{
-					this->pageManage(3);
-					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+					if (this->container->contFire3Case->mouseEnabled)
+					{
+						this->pageManage(3);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+					}
 				}
-			}
-			else if (targetName == "fire4Case")
-			{
-				if (this->container->contFire4Case->mouseEnabled)
+				else if (targetName == "fire4Case")
 				{
-					this->pageManage(4);
-					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+					if (this->container->contFire4Case->mouseEnabled)
+					{
+						this->pageManage(4);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+					}
 				}
-			}
-			else if (targetName == "fire5Case")
-			{
-				if (this->container->contFire5Case->mouseEnabled)
+				else if (targetName == "fire5Case")
 				{
-					this->pageManage(5);
-					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+					if (this->container->contFire5Case->mouseEnabled)
+					{
+						this->pageManage(5);
+						AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+					}
 				}
-			}
-			else if (targetName == "shadow")
-			{
-				this->close();
+				else if (targetName == "shadow")
+				{
+					this->close();
+				}
 			}
 		}
-		return;
 	}// end function
 
 	void Achievements::mouseUpHandler(cocos2d::EventMouse * e)
 	{
-		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
-		if (!event)
-			return;
-		string targetName = event->target->getName();
-		string parentName = event->target->getParent()->getParent()->getName();
-		if (targetName == "backCase")
+		if (!globalNode)EventNode::mouseUpHandler(e);
+		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
+		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
+		std::MouseEvent me(e);
+		if (!useNodeEvent) {
+			me = std::buildMouseEvent(e);
+		}
+		std::MouseEvent * event = &me;
+		if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_UP))return;
+		if (!event->currentTargets.size())
+			event->currentTargets.push(this);
+		Main::mouseX = e->getCursorX();
+		Main::mouseY = e->getCursorY();
+		EventNode::beginTouchPos = Vec2(Main::mouseX, Main::mouseY);
+		while (event->hasNext())
 		{
-			if (this->container->back->currentFrame == 3)
+			string targetName = event->target->getName();
+			string parentName = event->target->getParent()->getParent()->getName();
+			if (targetName == "backCase")
 			{
-				this->container->back->gotoAndStop(2);
-				this->close();
+				if (this->container->back->currentFrame == 3)
+				{
+					this->container->back->gotoAndStop(2);
+					this->close();
+				}
+			}
+			else if (this->container->back->currentFrame == 3)
+			{
+				this->container->back->gotoAndStop(1);
+			}
+			if (targetName == "closeCase")
+			{
+				if (this->container->contBtnClose->currentFrame == 3)
+				{
+					this->container->contBtnClose->gotoAndStop(2);
+					this->close();
+				}
+			}
+			else if (this->container->contBtnClose->currentFrame == 3)
+			{
+				this->container->contBtnClose->gotoAndStop(1);
+			}
+			if (parentName == "btnBack")
+			{
+				if (this->container->contBtnBack->currentFrame == 3)
+				{
+					this->container->contBtnBack->gotoAndStop(2);
+					this->pageManage((this->page - 1));
+				}
+			}
+			else if (this->container->contBtnBack->currentFrame == 3)
+			{
+				this->container->contBtnBack->gotoAndStop(1);
+			}
+			if (parentName == "btnForward")
+			{
+				if (this->container->contBtnForward->currentFrame == 3)
+				{
+					this->container->contBtnForward->gotoAndStop(2);
+					this->pageManage((this->page + 1));
+				}
+			}
+			else if (this->container->contBtnForward->currentFrame == 3)
+			{
+				this->container->contBtnForward->gotoAndStop(1);
 			}
 		}
-		else if (this->container->back->currentFrame == 3)
-		{
-			this->container->back->gotoAndStop(1);
-		}
-		if (targetName == "closeCase")
-		{
-			if (this->container->contBtnClose->currentFrame == 3)
-			{
-				this->container->contBtnClose->gotoAndStop(2);
-				this->close();
-			}
-		}
-		else if (this->container->contBtnClose->currentFrame == 3)
-		{
-			this->container->contBtnClose->gotoAndStop(1);
-		}
-		if (parentName == "btnBack")
-		{
-			if (this->container->contBtnBack->currentFrame == 3)
-			{
-				this->container->contBtnBack->gotoAndStop(2);
-				this->pageManage((this->page - 1));
-			}
-		}
-		else if (this->container->contBtnBack->currentFrame == 3)
-		{
-			this->container->contBtnBack->gotoAndStop(1);
-		}
-		if (parentName == "btnForward")
-		{
-			if (this->container->contBtnForward->currentFrame == 3)
-			{
-				this->container->contBtnForward->gotoAndStop(2);
-				this->pageManage((this->page + 1));
-			}
-		}
-		else if (this->container->contBtnForward->currentFrame == 3)
-		{
-			this->container->contBtnForward->gotoAndStop(1);
-		}
-		return;
 	}// end function
 
 	void Achievements::pageManage(int param1)
@@ -1091,8 +1168,8 @@ namespace screens
 
 	void Achievements::autoguidersButtons()
 	{
-		this->autoguidesMouse_pt = CONVERT_TO_WORLD_POS(cocos2d::Point(Main::mouseX, Main::mouseY));
-		this->autoguidesObject = NULL;
+		//this->autoguidesMouse_pt = CONVERT_TO_WORLD_POS(cocos2d::Point(Main::mouseX, Main::mouseY));
+		//this->autoguidesObject = NULL;
 		//this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->contBtnClose->localToGlobal(this->container->contBtnCloseCloseCase->getPosition()));
 		//this->autoguidesObjectWidth = this->container->contBtnCloseCloseCase.width / 2;
 		//this->autoguidesObjectHeight = this->container->contBtnCloseCloseCase.height / 2;

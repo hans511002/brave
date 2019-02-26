@@ -69,7 +69,7 @@ namespace screens
 		this->container->back = new Back_mc();
 		this->container->back->setPosition(26, Main::SCREEN_HEIGHT - 15);
 		this->addChild(this->container->back);
-		this->printNodePos(this->container->back);
+		//this->printNodePos(this->container->back);
         this->container->stop();
         this->container->back->stop();
         //this->container->back->backCase->stop();
@@ -163,6 +163,8 @@ namespace screens
 		sprintf(tmp, "%s %i", I18N_VALUE(I18N_CODE::U200), this->playLevel);
 		this->container->boardHeaderTXT->setText(tmp);
 		this->container->boardHeaderTXT->setFontName("bold");
+		this->container->boardHeaderTXT->setTextColor(Color4B(00, 00, 00, 255));
+		this->container->boardHeaderTXT->setFontSize(16);
         //this->container->boardHeaderTXT->setTextFormat(Main::mainClass->boldTextFormat);
         this->container->boardMap->gotoAndStop(this->playLevel);
 		if(complexityLevel >= 1 && complexityLevel<=3)
@@ -644,7 +646,7 @@ namespace screens
 					{
 						this->complexityManage(1);
 					}
-					this->container->boardCurrentComplexity->gotoAndStop((this->container->boardCurrentComplexity->currentFrame + 1));
+					this->container->boardCurrentComplexity->gotoAndStop((this->container->boardCurrentComplexity->currentFrame + 2)%9);
 				}
 			}
 			else if (this->container->boardCurrentComplexity->currentFrame == 3 || this->container->boardCurrentComplexity->currentFrame == 6 || this->container->boardCurrentComplexity->currentFrame == 9)
@@ -726,7 +728,7 @@ namespace screens
 			char tmp[32];
 			sprintf(tmp, "%s %i", I18N_VALUE(I18N_CODE::U200), this->playLevel);
 			std::setText(this->container->boardHeaderTXT, tmp);
-                this->container->boardDescription->gotoAndStop(this->playLevel);
+            this->container->boardDescription->gotoAndStop(this->playLevel);
             
             if (param1 == 1)
             {
