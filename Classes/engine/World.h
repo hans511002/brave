@@ -129,6 +129,7 @@ namespace engine
 
         World();
         //CREATE_FUNC(World);
+		void focusChanged(cocos2d::EventFocus * e);
 
 		virtual bool init();
 

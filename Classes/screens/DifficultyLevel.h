@@ -28,17 +28,17 @@ namespace screens
 
         DifficultyLevel();
 
-        bool init();
+		virtual bool init();
 
-        void enterFrameHandler(float dt=0);
+		virtual void enterFrameHandler(float dt=0);
 
-        void mouseMoveHandler(cocos2d::EventMouse * e);
+        virtual void mouseMoveHandler(cocos2d::EventMouse * e);
 
-        void mouseDwonHandler(cocos2d::EventMouse *e) ;
+		virtual void mouseDownHandler(cocos2d::EventMouse *e) ;
 
-        void mouseUpHandler(cocos2d::EventMouse * e);
+		virtual void mouseUpHandler(cocos2d::EventMouse * e);
 
-        void autoguidersButtons();
+		virtual void autoguidersButtons();
 
         //void reInit(event:Event);
 

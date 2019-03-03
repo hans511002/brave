@@ -4,42 +4,45 @@
 #include "sys/saveBox.h"
 //#include "engine/World.h"
 #include "engine/xml/ReadXML.h"
- 
- 
+
+
 
 namespace screens
 {
- 
-    struct PauseMenu_mc : public MovieClip
-    {
-        MovieClip * scroll;
-        MovieClip * shadow;        
-    };
-    class PauseMenu : public BaseNode
-    {
-    public:
-        int i;
-        //public var tempObject:Object;
-        //public var tempObject1:Object;
-        //public var tempObject2:Object;
-        PauseMenu_mc * container;
-        int frameCounter;
-        bool openFlag;
-        bool closeFlag;
-        World * world;
-        int questionFlag;
-        float startMusicVolume;
-        cocos2d::Point autoguidesMouse_pt;
-        //public var autoguidesObject:Object;
-        cocos2d::Point autoguidesObject_pt;
-        float autoguidesObjectWidth;
-        float autoguidesObjectHeight;
 
-        PauseMenu();
+	struct PauseMenu_mc : public MovieClip
+	{
+		MCCase * shadow;
+		MovieClipSub * scroll;
+		MovieClipSub *scrollBtnSound;
+		MCCase *scrollBtnSoundSoundCase;
+		MovieClipSub *scrollBtnMusic;
+		MCCase * scrollBtnMusicMusicCase;
+		MovieClipSub *scrollBtnRestart;
+		MovieClipSub *scrollBtnRestartArrow;
+		MCCase *scrollBtnRestartRestartCase;
+		MovieClipSub *scrollBtnResume;
+		MovieClipSub *scrollBtnResumeArrow;
+		MCCase *scrollBtnResumeResumeCase;
+		MovieClipSub *scrollBtnExit;
+		MovieClipSub *scrollBtnExitArrow;
+		MCCase *scrollBtnExitExitCase;
+		PauseMenu_mc();
+	};
+	class PauseMenu : public Screen
+	{
+	public:
+		PauseMenu_mc * container;
+		World * world;
+		int questionFlag;
+		float startMusicVolume;
+
+		PauseMenu();
 
 		virtual bool init();
 
-		virtual void enterFrameHandler(cocos2d::EventMouse * event);
+		virtual void enterFrameHandler(float dt);
+		virtual bool  preCheckEventTarget(std::MouseEvent * event, EventMouse::MouseEventType _mouseEventType);
 
 		virtual void mouseMoveHandler(cocos2d::EventMouse *param1);
 
@@ -47,12 +50,10 @@ namespace screens
 
 		virtual void mouseUpHandler(cocos2d::EventMouse * event);
 
-		virtual void autoguidersButtons();
-
 		virtual void close();
 
-        //void reInit(event:Event);
+		//void reInit(event:Event);
 
-    };
+	};
 }
 #endif

@@ -444,6 +444,18 @@
     <ClCompile Include="..\Classes\screens\OpenLevel.cpp">
       <Filter>src\screens</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\screens\StartMenu.cpp">
+      <Filter>src\screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\screens\Screen.cpp">
+      <Filter>src\screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\screens\PauseMenu.cpp">
+      <Filter>src\screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\screens\Defeat.cpp">
+      <Filter>src\screens</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -891,6 +903,12 @@
       <Filter>src\screens</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\screens\OpenLevel.h">
+      <Filter>src\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\screens\StartMenu.h">
+      <Filter>src\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\screens\Defeat.h">
       <Filter>src\screens</Filter>
     </ClInclude>
   </ItemGroup>

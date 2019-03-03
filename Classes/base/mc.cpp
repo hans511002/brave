@@ -181,6 +181,20 @@ namespace engine
 		}
 		return NULL;
 	};
+	void MC::setSubToNull() {
+		//int l = this->submcbs.size();
+		//for (int i = 0; i < l; i++)
+		//{
+		//	MovieClipSubBase * mcs = this->submcbs[i];
+		//	mcs->isReady = false;
+		//	mcs->display = NULL;
+		//	mcs->slot = NULL;
+		//	MC *_mc = ISTYPE(MC, mcs);
+		//	if (_mc) {
+		//		_mc->setSubToNull();
+		//	}
+		//}
+	};
 
 	void MC::addMCbs(MovieClipSubBase * mcs,bool reinit){
 		mcs->reinitType = reinit;
@@ -418,7 +432,7 @@ namespace engine
 		this->slotName = slotName;
 		this->setName(slotName);
 		reinit();
-		if (mouseEnabled)
+		//if (mouseEnabled)
 			enableMouseHandler(useNodeEvent);
 		this->mouseEnabled = mouseEnabled;
 		//addEventNode(this);
@@ -1151,9 +1165,10 @@ namespace engine
 			//logInfo(getNamePath(display), display->getScaleX(), display->getScaleY());
 			//logInfo(getNamePath(this), this->getAnchorPoint(), &this->getPosition(), &(Vec2)(this->getContentSize()));
 			//logInfo(getNamePath(display), display->getAnchorPoint(), &display->getPosition(), &(Vec2)(display->getContentSize()));
-			std::setText(this, "TEST");
-			std::drawRange(this, Color4F::RED);
-			std::drawRange(this->display, Color4F::YELLOW);
+
+			//std::setText(this, "TEST");
+			//std::drawRange(this, Color4F::RED);
+			//std::drawRange(this->display, Color4F::YELLOW);
 		}
 		return this->isReady;
 	};
@@ -1172,11 +1187,22 @@ namespace engine
 				this->root = mc->getArmature()->getBone("root");
 			}
 			else
+			{
+				MC *_mc = ISTYPE(MC, this);
+				if (_mc)_mc->setSubToNull(); 
 				return false;
+			}
 		}
-		if (!this->slot) return false;
-		if (this->display == this->slot->getDisplay())
+		if (!this->slot) {
+			MC *_mc = ISTYPE(MC, this);
+			if (_mc)_mc->setSubToNull();
 			return false;
+		}
+		if (this->display == this->slot->getDisplay())
+		{
+			this->isReady = this->display != NULL;
+			return false;
+		}
         //if(isReady)
         //{ 
         //    CCLOG("%ll %ll %i", this->display, this->slot->getDisplay(), mc->currentFrame);
@@ -1242,6 +1268,8 @@ namespace engine
 				return true;
 			}
 		}
+		MC *_mc = ISTYPE(MC, this);
+		if(_mc)_mc->setSubToNull();
 		isReady = false;
 		return false;
 	};
@@ -1338,7 +1366,6 @@ namespace engine
 			this->release();
         int time = (Common::DateTime().GetTicks() - dt.GetTicks());
         //CCLOG("MovieClip %s.%s load time:%i", dbName.c_str(), armName.c_str(), time);
-
 		return this->isReady;
 	};
 	bool MCMask::reinit()
@@ -1373,10 +1400,16 @@ namespace engine
 				this->root = mc->getArmature()->getBone("root");
 			}
 			else
+			{
+				this->setSubToNull();
+				return false;
+			}
+		}
+		if (!this->slot)
+		{
+			this->setSubToNull();
 				return false;
 		}
-		if (!this->slot) 
-			return false;
 		if (this->arm == this->slot->getChildArmature())
 			return false;
 		this->arm = this->slot->getChildArmature();
@@ -1458,11 +1491,13 @@ namespace engine
 			else
 			{
 				isReady = false;
+				this->setSubToNull();
 				return false;
 			}
 		}
 		else
 		{
+			this->setSubToNull();
 			isReady = false;
 		}
 		return false;

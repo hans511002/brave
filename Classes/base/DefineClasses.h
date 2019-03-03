@@ -53,8 +53,11 @@ namespace engine
 };
 namespace screens
 {
+	class Screen;
 	class LevelsMenu;
 	class MiddleScreen;
+	class StartMenu;
+	class StartLogo;
 };
 namespace sys
 {

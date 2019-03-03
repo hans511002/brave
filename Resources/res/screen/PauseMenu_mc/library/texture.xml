@@ -1,0 +1,54 @@
+<TextureAtlas name="PauseMenu_mc" imagePath="texture.png">
+ <SubTexture name="Symbol 1600" x="0" y="0" width="700" height="500"/>
+ <SubTexture name="__dbTextures/scroll/bg_0" x="1248" y="1587" width="310" height="44"/>
+ <SubTexture name="__dbTextures/scroll/bg_1" x="936" y="1587" width="310" height="62"/>
+ <SubTexture name="__dbTextures/scroll/bg_2" x="624" y="1587" width="310" height="80"/>
+ <SubTexture name="__dbTextures/scroll/bg_3" x="312" y="1572" width="310" height="98"/>
+ <SubTexture name="__dbTextures/scroll/bg_4" x="312" y="1454" width="310" height="117"/>
+ <SubTexture name="__dbTextures/scroll/bg_5" x="0" y="1453" width="310" height="135"/>
+ <SubTexture name="__dbTextures/scroll/bg_6" x="624" y="1433" width="310" height="153"/>
+ <SubTexture name="__dbTextures/scroll/bg_7" x="936" y="1415" width="310" height="171"/>
+ <SubTexture name="__dbTextures/scroll/bg_8" x="1248" y="1397" width="310" height="189"/>
+ <SubTexture name="__dbTextures/scroll/bg_9" x="1560" y="1379" width="310" height="207"/>
+ <SubTexture name="__dbTextures/scroll/bg_10" x="0" y="1227" width="310" height="225"/>
+ <SubTexture name="__dbTextures/scroll/bg_11" x="312" y="1209" width="310" height="244"/>
+ <SubTexture name="__dbTextures/scroll/bg_12" x="1560" y="1116" width="310" height="262"/>
+ <SubTexture name="__dbTextures/scroll/bg_13" x="1248" y="1116" width="310" height="280"/>
+ <SubTexture name="__dbTextures/scroll/bg_14" x="936" y="1116" width="310" height="298"/>
+ <SubTexture name="__dbTextures/scroll/bg_15" x="624" y="1116" width="310" height="316"/>
+ <SubTexture name="__dbTextures/scroll/bg_16" x="312" y="874" width="310" height="334"/>
+ <SubTexture name="__dbTextures/scroll/bg_17" x="0" y="874" width="310" height="352"/>
+ <SubTexture name="__dbTextures/scroll/bg_18" x="936" y="744" width="310" height="370"/>
+ <SubTexture name="__dbTextures/scroll/bg_19" x="1638" y="372" width="310" height="370"/>
+ <SubTexture name="__dbTextures/scroll/bg_20" x="1560" y="744" width="310" height="370"/>
+ <SubTexture name="__dbTextures/scroll/bg_21" x="1014" y="0" width="310" height="370"/>
+ <SubTexture name="__dbTextures/scroll/bg_22" x="702" y="372" width="310" height="370"/>
+ <SubTexture name="__dbTextures/scroll/bg_23" x="1326" y="372" width="310" height="370"/>
+ <SubTexture name="__dbTextures/scroll/bg_24" x="0" y="502" width="310" height="370"/>
+ <SubTexture name="__dbTextures/scroll/bg_25" x="312" y="502" width="310" height="370"/>
+ <SubTexture name="__dbTextures/scroll/bg_26" x="1326" y="0" width="310" height="370"/>
+ <SubTexture name="__dbTextures/scroll/bg_27" x="702" y="0" width="310" height="370"/>
+ <SubTexture name="__dbTextures/scroll/bg_28" x="624" y="744" width="310" height="370"/>
+ <SubTexture name="__dbTextures/scroll/bg_29" x="1014" y="372" width="310" height="370"/>
+ <SubTexture name="__dbTextures/scroll/bg_30" x="1248" y="744" width="310" height="370"/>
+ <SubTexture name="__dbTextures/scroll/bg_31" x="1638" y="0" width="310" height="370"/>
+ <SubTexture name="Symbol 13014" x="1560" y="1587" width="400" height="85"/>
+ <SubTexture name="Symbol 12984" x="624" y="502" width="72" height="31"/>
+ <SubTexture name="Symbol 47" x="624" y="534" width="50" height="50"/>
+ <SubTexture name="Symbol 12986" x="1872" y="744" width="163" height="30"/>
+ <SubTexture name="Symbol 12988" x="1872" y="775" width="161" height="29"/>
+ <SubTexture name="Symbol 245" x="1950" y="300" width="60" height="60"/>
+ <SubTexture name="__dbTextures/btnMusic/Layer 2_1" x="1950" y="486" width="60" height="60"/>
+ <SubTexture name="__dbTextures/btnMusic/Layer 2_2" x="1950" y="362" width="60" height="60"/>
+ <SubTexture name="__dbTextures/btnMusic/Layer 2_4" x="1950" y="424" width="60" height="60"/>
+ <SubTexture name="Symbol 254" x="1950" y="150" width="71" height="73"/>
+ <SubTexture name="__dbTextures/btnSound/Layer 2_1" x="1950" y="225" width="71" height="73"/>
+ <SubTexture name="__dbTextures/btnSound/Layer 2_2" x="1950" y="75" width="71" height="73"/>
+ <SubTexture name="__dbTextures/btnSound/Layer 2_4" x="1950" y="0" width="71" height="73"/>
+ <SubTexture name="__dbTextures/arrow/Layer 1_0" x="1248" y="1632" width="228" height="30"/>
+ <SubTexture name="__dbTextures/arrow/Layer 1_1" x="0" y="1589" width="228" height="30"/>
+ <SubTexture name="__dbTextures/arrow/Layer 1_2" x="1166" y="1664" width="228" height="30"/>
+ <SubTexture name="__dbTextures/arrow/Layer 1_3" x="0" y="1653" width="228" height="30"/>
+ <SubTexture name="__dbTextures/arrow/Layer 1_4" x="936" y="1650" width="228" height="30"/>
+ <SubTexture name="__dbTextures/arrow/Layer 1_5" x="0" y="1621" width="228" height="30"/>
+</TextureAtlas>

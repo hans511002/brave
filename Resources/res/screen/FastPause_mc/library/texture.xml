@@ -1,0 +1,10 @@
+<TextureAtlas name="FastPause_mc" imagePath="texture.png">
+ <SubTexture name="Symbol 1571" x="0" y="0" width="700" height="500"/>
+ <SubTexture name="Symbol 13020" x="702" y="231" width="199" height="76"/>
+ <SubTexture name="Symbol 13022" x="702" y="77" width="199" height="76"/>
+ <SubTexture name="Symbol 13024" x="702" y="462" width="199" height="76"/>
+ <SubTexture name="Symbol 13026" x="702" y="0" width="199" height="76"/>
+ <SubTexture name="Symbol 13028" x="702" y="308" width="199" height="76"/>
+ <SubTexture name="Symbol 13030" x="702" y="385" width="199" height="76"/>
+ <SubTexture name="Symbol 13032" x="702" y="154" width="199" height="76"/>
+</TextureAtlas>

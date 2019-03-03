@@ -8,27 +8,6 @@
 
 namespace screens
 {
-    
-    Screen::Screen() :frameCounter(0), openFlag(true), closeFlag(false), dead(false), autoguidesObject(NULL)
-    {
-		this->setContentSize(Size(Main::SCREEN_WIDTH, Main::SCREEN_HEIGHT));
-    };
-	void Screen::manageListeners(string param1) {
-		if (param1 == "on")
-		{
-			if (std::useGlobalNode)
-				std::globalNode = this;
-			this->enableMouseHandler(true);
-			this->enableFrameHandler(true);
-		}
-		else if (param1 == "off")
-		{
-			this->disableMouseHandler();
-			this->disableFrameHandler();
-		}
-	};
-
-
 	Back_mc::Back_mc() :MovieClip("screen/", "back", "back")
 	{
 		this->backCase = this->createCase("backCase");

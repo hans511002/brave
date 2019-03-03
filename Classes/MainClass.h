@@ -26,7 +26,7 @@ public:
 	//加载配置数据
 	ReadXML readXMLClass;
 	//public var startLogoClass:StartLogo;
-	//public var startMenuClass:StartMenu;
+	StartMenu * startMenuClass;
 	MiddleScreen * middleScreenClass;//public var middleScreenClass:MiddleScreen;
 	LevelsMenu * levelsMenuClass;//public var levelsMenuClass:LevelsMenu;
 	engine::World * worldClass;

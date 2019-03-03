@@ -896,20 +896,20 @@ namespace std
 	}
 	void BaseNode::enableMouseHandler(bool listen)
 	{
-		if (!this->mouseEnabled) 
-			this->setMouseEnabled(true); 
+		if (ISTYPE(MCCase, this)==NULL) {
+			if (!this->mouseEnabled) 
+				this->setMouseEnabled(true); 
+		}
 		//addEventNode(this);
 		if (listen && (listener == NULL && touchOnelistener == NULL))
 		{
 			this->getEventDispatcher()->setEnabled(true);
-
 			listener = cocos2d::EventListenerMouse::create();
 			//listener->onMouseDown = CC_CALLBACK_1(BaseNode::mouseDownHandler, this);
 			//listener->onMouseUp = CC_CALLBACK_1(BaseNode::mouseUpHandler, this);
 			listener->onMouseMove = CC_CALLBACK_1(BaseNode::mouseMoveHandler, this);
 			//listener->onMouseScroll = CC_CALLBACK_1(BaseNode::mouseScrollHandler, this);
 			this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
-
 			touchOnelistener = cocos2d::EventListenerTouchOneByOne::create();
 			touchOnelistener->onTouchBegan = CC_CALLBACK_2(BaseNode::onTouchBegan, this);
 			touchOnelistener->onTouchEnded = CC_CALLBACK_2(BaseNode::onTouchEnded, this);

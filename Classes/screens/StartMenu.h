@@ -6,8 +6,7 @@
 namespace screens
 {
 	struct StartMenu_mc : public MovieClip
-	{
-		MCCase * logOut;
+	{ 
 		MovieClipSub * start;
 		MCCase * startStartCase;
 		MovieClipSub * credits;
@@ -18,21 +17,16 @@ namespace screens
 		MCCase * btnSoundSoundCase;
 		MovieClipSub * back;
 		MCCase * backBackCase;
-		MovieClipSub * glitter;
 		MovieClipSub * saveType;
 		MovieClipSub * saveTypeLocalSave;
 		MCCase * saveTypeLocalSaveLocalSaveCase;
-		MCText * saveTypeLocalSaveTitle;
-		MCText * saveTypeLocalSaveTips;
 		MovieClipSub * saveTypeOnlineSave;
 		MCCase * saveTypeOnlineSaveOnlineSaveCase;
 		MCText * saveTypeOnlineSaveNickTXT;
 		MCText * saveTypeOnlineSaveWelcomeTXT;
-		MCText * saveTypeOnlineSaveModel;
-		MCText * saveTypeOnlineSaveAddSphere;
-		MCText * saveTypeOnlineSaveStar;
-		MCText * saveTypeOnlineSaveCoin;
-		MCText * saveTypeOnlineSaveTitle;
+		MCSprite * saveTypeOnlineSaveLogo;
+		MovieClipSub * glitter;
+
 		MovieClipSub * question;
 		MCText * questionNoteTXT;	 
 		MovieClipSub * questionBtnYes;
@@ -43,15 +37,15 @@ namespace screens
 		MCCase * comlogo;
 		MCText * copyright;
 		MCText * tips;
+
 		MovieClipSub * game1;
-		MCCase * game1Game1Case;	
+		MCCase * game1Game1Case;
 		MCCase * game1NewGame1Case;
 		MovieClipSub * game1SyncSlot;
 		MCCase * game1SyncSlotSyncSlotCase;
 		MovieClipSub * game1DeleteSlot;
 		MCCase * game1DeleteSlotDeleteSlotCase;
-		MCText * game1NumTXT;
-		MCText * game1Name;
+		MCText * game1NumTXT; 
 		MovieClipSub * game2;
 		MCCase * game2Game2Case;
 		MCCase * game2NewGame2Case;
@@ -60,7 +54,6 @@ namespace screens
 		MovieClipSub * game2DeleteSlot;
 		MCCase * game2DeleteSlotDeleteSlotCase;
 		MCText * game2NumTXT;
-		MCText * game2Name;
 		MovieClipSub * game3;
 		MCCase * game3Game3Case;
 		MCCase * game3NewGame3Case;
@@ -69,9 +62,6 @@ namespace screens
 		MovieClipSub * game3DeleteSlot;
 		MCCase * game3DeleteSlotDeleteSlotCase;
 		MCText * game3NumTXT;
-		MCText * game3Name;
-
-
 		StartMenu_mc();
 	};
 
@@ -97,7 +87,8 @@ namespace screens
 		StartMenu();
 		virtual bool init();
 
-		virtual void enterFrameHandler(cocos2d::EventMouse * event);
+		virtual void enterFrameHandler(float dt);
+		virtual bool preCheckEventTarget(std::MouseEvent * event, EventMouse::MouseEventType _mouseEventType);
 
 		virtual void mouseMoveHandler(cocos2d::EventMouse * param1);
 
@@ -105,9 +96,7 @@ namespace screens
 
 		virtual void mouseUpHandler(cocos2d::EventMouse * event);
 
-		virtual void autoguidersButtons();
-
-		virtual void manageListeners(string param1);
+		virtual void autoguidersButtons(); 
 
 		//void reInit(event:Event);
 

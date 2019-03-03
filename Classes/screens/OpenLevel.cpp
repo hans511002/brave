@@ -163,8 +163,8 @@ namespace screens
 		sprintf(tmp, "%s %i", I18N_VALUE(I18N_CODE::U200), this->playLevel);
 		this->container->boardHeaderTXT->setText(tmp);
 		this->container->boardHeaderTXT->setFontName("bold");
-		this->container->boardHeaderTXT->setTextColor(Color4B(00, 00, 00, 255));
-		this->container->boardHeaderTXT->setFontSize(16);
+		this->container->boardHeaderTXT->setTextColor(Color4B(130, 130, 00, 255));
+		this->container->boardHeaderTXT->setFontSize(24);
         //this->container->boardHeaderTXT->setTextFormat(Main::mainClass->boldTextFormat);
         this->container->boardMap->gotoAndStop(this->playLevel);
 		if(complexityLevel >= 1 && complexityLevel<=3)
@@ -204,6 +204,7 @@ namespace screens
                 this->openFlag = false; 
                 this->container->board->setMouseChildren(true);
                 this->container->board->setMouseEnabled(true);
+				if(dt!=0)this->enterFrameHandler(0);
                 //this->stage.frameRate = 30;
                 //if (this->openSurvEdu)
                 //{
@@ -223,7 +224,9 @@ namespace screens
                 this->kill();
 				return;
             }
-        }
+			if (dt != 0)this->enterFrameHandler(0);
+			if (!this->closeFlag)return;
+		}
 		//  var openSurvEdu:Training_91_mc;
         //if (this->openSurvEdu)
         //{
@@ -599,7 +602,6 @@ namespace screens
 
     void OpenLevel::mouseUpHandler(cocos2d::EventMouse * e) 
     {
-
 		if (!globalNode)EventNode::mouseUpHandler(e);
 		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
 		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;

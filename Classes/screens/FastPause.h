@@ -11,16 +11,12 @@ namespace screens
         FastPause_mc();
     };
     
-	class FastPause :public BaseNode
+	class FastPause :public Screen
 	{
 	public:
-		bool dead;
 		FastPause_mc *container;
-		bool openFlag;
-		bool closeFlag;
 		World * world;
 		float startMusicVolume;
-		int frameCounter;
 
 		FastPause();
 
@@ -28,7 +24,7 @@ namespace screens
 
 		virtual void enterFrameHandler(float dt);
 
-		virtual void mouseClickHandler(cocos2d::EventMouse * event);
+		virtual void mouseDownHandler(cocos2d::EventMouse * event);
 
 		virtual void kill();
 

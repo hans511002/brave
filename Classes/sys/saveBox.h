@@ -31,10 +31,16 @@ namespace sys
 		~SaveBox();
 
 		template <class T = int> void setValue(string namePath,T val){
-			JsonUtil::setValue<T>(*gameSave, namePath, val);
+			JsonUtil::setValue<T>(*getDoc(0), namePath, val);
 		};
 		template <class T = int> void setValue(string namePath, int idx, T val){
-			JsonUtil::setValue<T>(*gameSave, namePath, idx, val);
+			JsonUtil::setValue<T>(*getDoc(0), namePath, idx, val);
+		};
+		template <class T = int> void setValue(int save,string namePath, T val) {
+			JsonUtil::setValue<T>(*getDoc(save), namePath, val);
+		};
+		template <class T = int> void setValue(int save, string namePath, int idx, T val) {
+			JsonUtil::setValue<T>(*getDoc(save), namePath, idx, val);
 		};
 
 		bool eraseValue(  string namePath){

@@ -63,7 +63,7 @@ namespace engine
 		//直接子级
 		Common::Array<MovieClipSubBase *> submcbs;
 		Common::Array<MovieClipSubBase *> allSubMcbs; 
-
+		virtual void setSubToNull();
         virtual void addMCbs(MovieClipSubBase * mcs, bool reinit=false);
 		virtual bool remove(MovieClipSubBase * ms);
 

@@ -62,7 +62,8 @@ namespace screens
 		return;
 	}// end function
 
-    LevelsMenu::LevelsMenu() :frameCounter(0), newLevel(0), newStarsForLevel(0),container(0)
+    LevelsMenu::LevelsMenu() :
+		container(0), frameCounter(0), newLevel(0), newLevelGr(0), roadOff(false), newStarsForLevel(0), mouseMoveTarget(0), mouseDownTarget(0), openLevel(0), upgradesClass(0), achievementsClass(0),   firstMusicPlay(0) , difficultyLevel(0) //, encyclopediaClass(0),
     {
         //this->listOfLevels = [];
         //this->listOfAnimation = [];
@@ -171,13 +172,9 @@ namespace screens
     void LevelsMenu::enterFrameHandler(float dt)
     {
         if (this->frameCounter < 30)
-        {
             this->frameCounter++;
-        }
         else
-        {
             this->frameCounter = 1;
-        }
         if (!this->firstMusicPlay)
         {
             if (this->frameCounter == 8)
@@ -186,6 +183,9 @@ namespace screens
                 {
                     this->difficultyLevel = new DifficultyLevel();
                     this->addChild(this->difficultyLevel);
+					this->difficultyLevel->init();
+					this->difficultyLevel->setPosition(Vec2(0, 0));
+					this->printNodePos(this->difficultyLevel);
                 }
                 else
                 {
@@ -1153,7 +1153,7 @@ namespace screens
         {
             if (this->container->road->currentFrame < 12)
             {
-                this->container->road->tryPlay();//gotoAndStop((this->container->road->currentFrame + 1));
+                this->container->road->gotoAndStop((this->container->road->currentFrame + 1));
             }
             else if (!this->roadOff)
             {
@@ -1164,7 +1164,7 @@ namespace screens
         {
             if (this->container->road->currentFrame < 26)
             {
-                this->container->road->tryPlay();//gotoAndStop((this->container->road->currentFrame + 1));
+                this->container->road->gotoAndStop((this->container->road->currentFrame + 1));
             }
             else if (!this->roadOff)
             {
@@ -1175,7 +1175,7 @@ namespace screens
         {
             if (this->container->road->currentFrame < 41)
             {
-                this->container->road->tryPlay();//gotoAndStop((this->container->road->currentFrame + 1));
+                this->container->road->gotoAndStop((this->container->road->currentFrame + 1));
             }
             else if (!this->roadOff)
             {
@@ -1186,7 +1186,7 @@ namespace screens
         {
             if (this->container->road->currentFrame < 55)
             {
-                this->container->road->tryPlay();//gotoAndStop((this->container->road->currentFrame + 1));
+                this->container->road->gotoAndStop((this->container->road->currentFrame + 1));
             }
             else if (!this->roadOff)
             {
@@ -1197,7 +1197,7 @@ namespace screens
         {
             if (this->container->road->currentFrame < 66)
             {
-                this->container->road->tryPlay();//gotoAndStop((this->container->road->currentFrame + 1));
+                this->container->road->gotoAndStop((this->container->road->currentFrame + 1));
             }
             else if (!this->roadOff)
             {
@@ -1208,7 +1208,7 @@ namespace screens
         {
             if (this->container->road->currentFrame < 80)
             {
-                this->container->road->tryPlay();//gotoAndStop((this->container->road->currentFrame + 1));
+                this->container->road->gotoAndStop((this->container->road->currentFrame + 1));
             }
             else if (!this->roadOff)
             {
@@ -1219,7 +1219,7 @@ namespace screens
         {
             if (this->container->road->currentFrame < 92)
             {
-                this->container->road->tryPlay();//gotoAndStop((this->container->road->currentFrame + 1));
+                this->container->road->gotoAndStop((this->container->road->currentFrame + 1));
             }
             else if (!this->roadOff)
             {
@@ -1230,7 +1230,7 @@ namespace screens
         {
             if (this->container->road->currentFrame < 104)
             {
-                this->container->road->tryPlay();//gotoAndStop((this->container->road->currentFrame + 1));
+                this->container->road->gotoAndStop((this->container->road->currentFrame + 1));
             }
             else if (!this->roadOff)
             {
@@ -1241,7 +1241,7 @@ namespace screens
         {
             if (this->container->road->currentFrame < 115)
             {
-                this->container->road->tryPlay();//gotoAndStop((this->container->road->currentFrame + 1));
+                this->container->road->gotoAndStop((this->container->road->currentFrame + 1));
             }
             else if (!this->roadOff)
             {
@@ -1252,7 +1252,7 @@ namespace screens
         {
             if (this->container->road->currentFrame < 127)
             {
-                this->container->road->tryPlay();//gotoAndStop((this->container->road->currentFrame + 1));
+                this->container->road->gotoAndStop((this->container->road->currentFrame + 1));
             }
             else if (!this->roadOff)
             {
@@ -1263,7 +1263,7 @@ namespace screens
         {
             if (this->container->road->currentFrame < 136)
             {
-                this->container->road->tryPlay();//gotoAndStop((this->container->road->currentFrame + 1));
+                this->container->road->gotoAndStop((this->container->road->currentFrame + 1));
             }
             else if (!this->roadOff)
             {
@@ -1274,7 +1274,7 @@ namespace screens
         {
             if (this->container->road->currentFrame < 144)
             {
-                this->container->road->tryPlay();//gotoAndStop((this->container->road->currentFrame + 1));
+                this->container->road->gotoAndStop((this->container->road->currentFrame + 1));
             }
             else if (!this->roadOff)
             {
@@ -1285,7 +1285,7 @@ namespace screens
         {
             if (this->container->road->currentFrame < 153)
             {
-                this->container->road->tryPlay();//gotoAndStop((this->container->road->currentFrame + 1));
+                this->container->road->gotoAndStop((this->container->road->currentFrame + 1));
             }
             else if (!this->roadOff)
             {
@@ -1296,7 +1296,7 @@ namespace screens
         {
             if (this->container->road->currentFrame < 164)
             {
-                this->container->road->tryPlay();//gotoAndStop((this->container->road->currentFrame + 1));
+                this->container->road->gotoAndStop((this->container->road->currentFrame + 1));
             }
             else if (!this->roadOff)
             {
@@ -1307,7 +1307,7 @@ namespace screens
         {
             if (this->container->road->currentFrame < 179)
             {
-                this->container->road->tryPlay();//gotoAndStop((this->container->road->currentFrame + 1));
+                this->container->road->gotoAndStop((this->container->road->currentFrame + 1));
             }
             else if (!this->roadOff)
             {
@@ -1320,8 +1320,9 @@ namespace screens
             {
                 this->newLevelGr = new NewLevel_mc();
                 this->newLevelGr->stop();
-                this->newLevelGr->setPositionX(this->listOfLevels[(this->newLevel - 1)]->getPositionX() + 0.65);
-                this->newLevelGr->setPositionY(this->listOfLevels[(this->newLevel - 1)]->getPositionY() + 0.65);
+				Vec2 pos=this->convertToNodeSpace(this->listOfLevels[(this->newLevel - 1)]->convertToWorldSpace(Vec2(0,0)));
+                this->newLevelGr->setPositionX(pos.x + 0.65);
+                this->newLevelGr->setPositionY(pos.y + 0.65);
                 this->addChild(this->newLevelGr);
                 this->listOfLevels[(this->newLevel - 1)]->setVisible(true);
                 this->listOfLevels[(this->newLevel - 1)]->setAlpha(0);

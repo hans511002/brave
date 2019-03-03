@@ -4,6 +4,7 @@
 #include "engine/World.h"
 #include "screens/MiddleScreen.h"
 #include "screens/LevelsMenu.h"
+#include "screens/StartMenu.h"
 #include "engine/casts/Cast.h"
 #include "engine/WorldInterface.h"
 #include "MainCLass.h"
@@ -82,10 +83,10 @@ void Main::addNewScreen(const string & param1)
     {
         if (param1 == "StartMenu")
         {
-            //this->container = new StartMenu();
-            //         this->startMenuClass = new StartMenu();;
-            //this->startMenuClass->init();
-            //this->addChild(this->startMenuClass);
+			this->startMenuClass = new StartMenu();;
+            this->container = this->startMenuClass;
+            this->startMenuClass->init();
+            this->addChild(this->startMenuClass);
         }
         else if (param1 == "LevelsMenu")
         {
@@ -93,8 +94,7 @@ void Main::addNewScreen(const string & param1)
             this->container = this->levelsMenuClass;
             this->levelsMenuClass->init();
             this->addChild(this->levelsMenuClass);
-			this->printNodePos(this->levelsMenuClass);
-        }
+         }
         else if (param1 == "World")
         {
 			this->worldClass = new World();
@@ -169,10 +169,11 @@ cocos2d::Image * Main::getBitmapData(cocos2d::Node* param1) //: BitmapData
 }// end function
 void Main::addStartLogo()
 {
-    addNewScreen("LevelsMenu");
-    //this->container = new StartMenu();
-	//this->startMenuClass = new StartMenu();
-	//this->addChild(this->startMenuClass);
+    //addNewScreen("LevelsMenu");
+	this->startMenuClass = new StartMenu();
+    this->container = this->startMenuClass;
+	this->startMenuClass->init();
+	this->addChild(this->startMenuClass);
 	return;
 }// end function
 void Main::keyBoardPressedHandler(EventKeyboard::KeyCode keycode, cocos2d::Event *event)

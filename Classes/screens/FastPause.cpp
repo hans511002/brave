@@ -12,9 +12,10 @@ namespace screens
 
     };
      
-    FastPause::FastPause():openFlag(true),closeFlag(false),startMusicVolume(0),frameCounter(0)
+    FastPause::FastPause():startMusicVolume(0)
 	{
         //this->addEventListener(Event.ADDED_TO_STAGE, this->init);
+		init();
         return;
     }// end function
 
@@ -39,54 +40,37 @@ namespace screens
         this->container = new FastPause_mc();
         this->container->stop();
         this->addChild(this->container);
+		this->manageListeners("on");
         return true;
     }// end function
 
     void FastPause::enterFrameHandler(float dt) 
     {
         if (this->frameCounter < 30)
-        {
             this->frameCounter++;
-        }
         else
-        {
             this->frameCounter = 1;
-        }
         if (this->openFlag)
         {
-            //if (Sounds.instance.musicChanel)
-            //{
-            //    if (this->startMusicVolume == 0)
-            //    {
-            //        this->startMusicVolume = AudioUtil::getMusicVolume();
-            //    }
-            //    if (AudioUtil::getMusicVolume() > this->startMusicVolume * 0.35)
-            //    {
-            //       AudioUtil::setMusicVolume(AudioUtil::getMusicVolume()- this->startMusicVolume * 0.035f);
-            //    }
-            //}
+			if (AudioUtil::isPlayMusic()) {
+                if (this->startMusicVolume == 0)
+                    this->startMusicVolume = AudioUtil::getMusicVolume();
+                if (AudioUtil::getMusicVolume() > this->startMusicVolume * 0.35)
+                   AudioUtil::setMusicVolume(AudioUtil::getMusicVolume()- this->startMusicVolume * 0.035f);
+            }
             if (this->container->currentFrame < this->container->totalFrames)
-            {
                 this->container->gotoAndStop((this->container->currentFrame + 1));
-            }
             else
-            {
                 this->openFlag = false;
-            }
         }
         else if (this->closeFlag)
         {
-            //if (Sounds.instance.musicChanel)
-            //{
-            //    if (AudioUtil::getMusicVolume() < this->startMusicVolume)
-            //    {
-            //        AudioUtil::setMusicVolume(AudioUtil::getMusicVolume() + this->startMusicVolume * 0.035f);
-            //    }
-            //}
-            if (this->container->currentFrame > 1)
-            {
-                this->container->gotoAndStop((this->container->currentFrame - 1));
+			if (AudioUtil::isPlayMusic()) {
+                if (AudioUtil::getMusicVolume() < this->startMusicVolume)
+                    AudioUtil::setMusicVolume(AudioUtil::getMusicVolume() + this->startMusicVolume * 0.035f);
             }
+            if (this->container->currentFrame > 1)
+                this->container->gotoAndStop((this->container->currentFrame - 1));
             else
             {
                 this->closeFlag = false;
@@ -109,12 +93,10 @@ namespace screens
         return;
     }// end function
 
-    void FastPause::mouseClickHandler(cocos2d::EventMouse * event)
+    void FastPause::mouseDownHandler(cocos2d::EventMouse * event)
     {
         if (!this->closeFlag)
-        {
             this->closeFlag = true;
-        }
         return;
     }// end function
 

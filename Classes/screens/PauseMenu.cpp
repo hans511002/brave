@@ -2,11 +2,35 @@
 #include "MiddleScreen.h"
 #include "MainClass.h"
 #include "PauseMenu.h"
+#include "engine/World.h" 
+#include "engine/towers/Tower.h"
+#include "engine/towers/BuildTowerMenu.h"
+#include "engine/towers/UltraTowerMenu.h"
+#include "engine/towers/TowerMenu.h"
 
 namespace screens
 {
-    PauseMenu::PauseMenu():frameCounter(0),openFlag(true),questionFlag(0),startMusicVolume(0)
+	PauseMenu_mc::PauseMenu_mc():MovieClip("screen","PauseMenu_mc","PauseMenu_mc")
+	{
+		this-> shadow=this->createCase("shadow");
+		scroll = this->createMovieClipSub("scroll");
+		scrollBtnSound =this->scroll->createMovieClipSub("btnSound");
+		scrollBtnSoundSoundCase=this->scrollBtnSound->createCase("soundCase");
+ 		scrollBtnMusic = this->scroll->createMovieClipSub("btnMusic");
+		scrollBtnMusicMusicCase = this->scrollBtnMusic->createCase("musicCase");
+		scrollBtnRestart = this->scroll->createMovieClipSub("btnRestart");
+		scrollBtnRestartArrow= this->scrollBtnRestart->createMovieClipSub("arrow");
+		scrollBtnRestartRestartCase = this->scrollBtnRestart->createCase("restartCase");
+		scrollBtnResume = this->scroll->createMovieClipSub("btnResume");
+		scrollBtnResumeArrow = this->scrollBtnResume->createMovieClipSub("arrow");
+		scrollBtnResumeResumeCase = this->scrollBtnResume->createCase("resumeCase");
+		scrollBtnExit = this->scroll->createMovieClipSub("btnExit");
+		scrollBtnExitArrow = this->scrollBtnExit->createMovieClipSub("arrow");
+		this->scrollBtnExitExitCase= this->scrollBtnExit->createCase("exitCase");
+	};
+    PauseMenu::PauseMenu(): questionFlag(0),startMusicVolume(0)
     {
+		init();
         //this->addEventListener(Event.ADDED_TO_STAGE, this->init);
         return;
     }// end function
@@ -22,8 +46,7 @@ namespace screens
         //Main::mainClass->stage->frameRate = 30;
         this->world = Main::mainClass->worldClass;
         this->setPosition(Vec2(0,0)); 
-		this->world->worldInterface->setPosition(Vec2(0, 0));
-        
+       
         if (this->world->towerMenu)
         {
             this->world->towerMenu->closeMenu(true);
@@ -42,99 +65,52 @@ namespace screens
             this->world->manageMouse("show");
         }
         this->container = new PauseMenu_mc();
+		cocos2d::Size size = this->container->getSprite("shadow")->getContentSize();
+		float sy = Main::SCREEN_HEIGHT / size.height;
+		float sx = (size.width - Main::SCREEN_WIDTH) / 2;
+		//this->container->setPosition(0, Main::SCREEN_WIDTH);//600
+		this->container->setScaleY(sy);
         this->container->stop();
         this->container->scroll->stop();
-        this->container->scroll->btnMusic->stop();
-        this->container->scroll->btnMusic->musicCase->stop();
-        this->container->scroll->btnSound->stop();
-        this->container->scroll->btnSound->soundCase->stop();
-        this->container->scroll->btnLow->stop();
-        this->container->scroll->btnLow->lowCase->stop();
-        this->container->scroll->btnMedium->stop();
-        this->container->scroll->btnMedium->mediumCase->stop();
-        this->container->scroll->btnHigh->stop();
-        this->container->scroll->btnHigh->highCase->stop();
-        this->container->scroll->btnOn->stop();
-        this->container->scroll->btnOn->onCase->stop();
-        this->container->scroll->btnOff->stop();
-        this->container->scroll->btnOff->offCase->stop();
-        this->container->scroll->btnResume->stop();
-        this->container->scroll->btnResume->arrow->stop();
-        this->container->scroll->btnResume->resumeCase->stop();
-        this->container->scroll->btnRestart->stop();
-        this->container->scroll->btnRestart->arrow->stop();
-        this->container->scroll->btnRestart->restartCase->stop();
-        this->container->scroll->btnExit->stop();
-        this->container->scroll->btnExit->arrow->stop();
-        this->container->scroll->btnExit->exitCase->stop();
-        this->container->scroll->btnMusic->musicCase->setMouseEnabled(true);
-        this->container->scroll->btnSound->soundCase->setMouseEnabled(true);
-        this->container->scroll->btnLow->lowCase->setMouseEnabled(true);
-        this->container->scroll->btnMedium->mediumCase->setMouseEnabled(true);
-        this->container->scroll->btnHigh->highCase->setMouseEnabled(true);
-        this->container->scroll->btnOn->onCase->setMouseEnabled(true);
-        this->container->scroll->btnOff->offCase->setMouseEnabled(true);
-        this->container->scroll->btnResume->resumeCase->setMouseEnabled(true);
-        this->container->scroll->btnRestart->restartCase->setMouseEnabled(true);
-        this->container->scroll->btnExit->exitCase->setMouseEnabled(true); 
+        this->container->scrollBtnMusic->stop();
+        this->container->scrollBtnMusicMusicCase->stop();
+        this->container->scrollBtnSound->stop();
+        this->container->scrollBtnSoundSoundCase->stop(); 
+        this->container->scrollBtnResume->stop();
+        this->container->scrollBtnResumeArrow->stop();
+        this->container->scrollBtnResumeResumeCase->stop();
+        this->container->scrollBtnRestart->stop();
+        this->container->scrollBtnRestartArrow->stop();
+        this->container->scrollBtnRestartRestartCase->stop();
+        this->container->scrollBtnExit->stop();
+        this->container->scrollBtnExitArrow->stop();
+        this->container->scrollBtnExitExitCase->stop();
+        this->container->scrollBtnMusicMusicCase->setMouseEnabled(true);
+        this->container->scrollBtnSoundSoundCase->setMouseEnabled(true); 
+        this->container->scrollBtnResumeResumeCase->setMouseEnabled(true);
+        this->container->scrollBtnRestartRestartCase->setMouseEnabled(true);
+        this->container->scrollBtnExitExitCase->setMouseEnabled(true); 
         this->container->scroll->setMouseChildren(false);
         this->container->scroll->setMouseEnabled(false);
-        this->container->scroll->btnResume->arrow->setVisible(false);
-        this->container->scroll->btnRestart->arrow->setVisible(false);
-        this->container->scroll->btnExit->arrow->setVisible(false);
-        this->container->scroll->btnY8->stop();
-        this->container->scroll->btnY8->y8Case->stop();
-        if (!Main::mainClass->IDIClass.isSponsor)
-        {
-            this->container->scroll->btnY8->y8Case->setMouseEnabled(true);
-        }
+        this->container->scrollBtnResumeArrow->setVisible(false);
+        this->container->scrollBtnRestartArrow->setVisible(false);
+        this->container->scrollBtnExitArrow->setVisible(false);
+        
         this->addChild(this->container);
-        //if (!AudioUtil::musicOn)
-        //{
-        //    this->container->scroll->btnMusic->gotoAndStop(4);
-        //}
-        //if (!AudioUtil::soundOn)
-        //{
-        //    this->container->scroll->btnSound->gotoAndStop(4);
-        //}
-        //if (Main::mainClass->saveBoxClass.gameSave.data.quality == "low")
-        //{
-        //    this->container->scroll->btnLow->gotoAndStop(4);
-        //    this->container->scroll->btnLow->lowCase->setMouseEnabled(false);
-        //}
-        //else if (Main::mainClass->saveBoxClass.gameSave.data.quality == "medium")
-        //{
-        //    this->container->scroll->btnMedium->gotoAndStop(4);
-        //    this->container->scroll->btnMedium->mediumCase->setMouseEnabled(false);
-        //}
-        //else if (Main::mainClass->saveBoxClass.gameSave.data.quality == "high")
-        //{
-        //    this->container->scroll->btnHigh->gotoAndStop(4);
-        //    this->container->scroll->btnHigh->highCase->setMouseEnabled(false);
-        //}
-        if (Main::mainClass->saveBoxClass->getBoolValue("autoPause"))
-        {
-            this->container->scroll->btnOn->gotoAndStop(4);
-            this->container->scroll->btnOn->onCase->setMouseEnabled(false);
-        }
-        else
-        {
-            this->container->scroll->btnOff->gotoAndStop(4);
-            this->container->scroll->btnOff->offCase->setMouseEnabled(false);
-        }
-        return;
+        if (!AudioUtil::musicOn)
+            this->container->scrollBtnMusic->gotoAndStop(4);
+        if (!AudioUtil::soundOn)
+            this->container->scrollBtnSound->gotoAndStop(4);
+		this->manageListeners("on");
+        return true;
     }// end function
 
-    void PauseMenu::enterFrameHandler(cocos2d::EventMouse * event)
+    void PauseMenu::enterFrameHandler(float dt)
     {
         if (this->frameCounter < 30)
-        {
             this->frameCounter++;
-        }
         else
-        {
             this->frameCounter = 1;
-        }
         if (this->openFlag)
         {
             if (AudioUtil::soundOn)
@@ -162,18 +138,16 @@ namespace screens
                 { 
                     this->container->scroll->setMouseChildren(true);
                     this->container->scroll->setMouseEnabled(true);
-                    this->autoguidersButtons();
                 }
                 else if (this->container->scroll->currentFrame == 24)
                 {
                     this->openFlag = false;
-                    this->autoguidersButtons();
                 }
             }
         }
         else if (this->closeFlag)
         {
-            if (AudioUtil::soundOn)
+            if (AudioUtil::musicOn)
             { 
                 if (AudioUtil::getMusicVolume() < this->startMusicVolume )
                 {
@@ -203,965 +177,386 @@ namespace screens
                 this->container->scroll->gotoAndStop((this->container->scroll->currentFrame - 1));
                 if (this->container->scroll->currentFrame == 25)
                 {
-                    this->container->scroll->btnMusic->alpha = 1;
-                    this->container->scroll->btnSound->alpha = 1;
-                    this->container->scroll->btnLow->alpha = 1;
-                    this->container->scroll->btnMedium->alpha = 1;
-                    this->container->scroll->btnHigh->alpha = 1;
-                    this->container->scroll->btnOn->alpha = 1;
-                    this->container->scroll->btnOff->alpha = 1;
-                    this->container->scroll->btnResume->alpha = 1;
-                    this->container->scroll->btnRestart->alpha = 1;
-                    this->container->scroll->btnExit->alpha = 1;
-                    this->container->scroll->qualityTXT->alpha = 1;
-                    this->container->scroll->autopauseTXT->alpha = 1; 
-                    this->container->scroll->btnMusic->setMouseChildren(true);
-                    this->container->scroll->btnMusic->setMouseEnabled(true); 
-                    this->container->scroll->btnSound->setMouseChildren(true);
-                    this->container->scroll->btnSound->setMouseEnabled(true); 
-                    this->container->scroll->btnLow->setMouseChildren(true);
-                    this->container->scroll->btnLow->setMouseEnabled(true); 
-                    this->container->scroll->btnMedium->setMouseChildren(true);
-                    this->container->scroll->btnMedium->setMouseEnabled(true); 
-                    this->container->scroll->btnHigh->setMouseChildren(true);
-                    this->container->scroll->btnHigh->setMouseEnabled(true); 
-                    this->container->scroll->btnOn->setMouseChildren(true);
-                    this->container->scroll->btnOn->setMouseEnabled(true); 
-                    this->container->scroll->btnOff->setMouseChildren(true);
-                    this->container->scroll->btnOff->setMouseEnabled(true); 
-                    this->container->scroll->btnResume->setMouseChildren(true);
-                    this->container->scroll->btnResume->setMouseEnabled(true); 
-                    this->container->scroll->btnRestart->setMouseChildren(true);
-                    this->container->scroll->btnRestart->setMouseEnabled(true); 
-                    this->container->scroll->btnExit->setMouseChildren(true);
-                    this->container->scroll->btnExit->setMouseEnabled(true);
-                    this->autoguidersButtons();
-                }
+                    this->container->scrollBtnMusic->setAlpha(1);
+                    this->container->scrollBtnSound->setAlpha(1); 
+                    this->container->scrollBtnResume->setAlpha(1); 
+                    this->container->scrollBtnRestart->setAlpha(1); 
+                    this->container->scrollBtnExit->setAlpha(1);   
+                    this->container->scrollBtnMusic->setMouseChildren(true);
+                    this->container->scrollBtnMusic->setMouseEnabled(true); 
+                    this->container->scrollBtnSound->setMouseChildren(true);
+                    this->container->scrollBtnSound->setMouseEnabled(true); 
+                    this->container->scrollBtnResume->setMouseChildren(true);
+                    this->container->scrollBtnResume->setMouseEnabled(true); 
+                    this->container->scrollBtnRestart->setMouseChildren(true);
+                    this->container->scrollBtnRestart->setMouseEnabled(true); 
+                    this->container->scrollBtnExit->setMouseChildren(true);
+                    this->container->scrollBtnExit->setMouseEnabled(true);
+                 }
             }
         }
         else if (this->questionFlag > 0)
         {
-            if (this->container->scroll->currentFrame < this->container->scroll->totalFrames)
-            {
-                this->container->scroll->gotoAndStop((this->container->scroll->currentFrame + 1));
-                if (this->container->scroll->currentFrame == 25)
-                {
-                    this->container->scroll->question->stop();
-                    this->container->scroll->question->btnYes->stop();
-                    this->container->scroll->question->btnNo->stop();
-                    this->container->scroll->question->btnYes->yesCase->setMouseEnabled(true);
-                    this->container->scroll->question->btnNo->noCase->setMouseEnabled(true); 
-                    this->container->scroll->question->setMouseChildren(false);
-                    this->container->scroll->question->setMouseEnabled(false);
-                }
-            }
-            else if (this->container->scroll->question->currentFrame < this->container->scroll->question->totalFrames)
-            {
-                this->container->scroll->question->gotoAndStop((this->container->scroll->question->currentFrame + 1));
-                if (this->container->scroll->question->currentFrame == this->container->scroll->question->totalFrames)
-                { 
-                    this->container->scroll->question->setMouseChildren(true);
-                    this->container->scroll->question->setMouseEnabled(true);;
-                    this->autoguidersButtons();
-                }
-            }
+            
         }
-        if (this->container->scroll->btnResume->arrow->isVisible())
+        if (this->container->scrollBtnResumeArrow->isVisible())
         {
-            if (this->container->scroll->btnResume->currentFrame > 1)
+            if (this->container->scrollBtnResume->currentFrame > 1)
             {
-                if (this->container->scroll->btnResume->arrow->currentFrame < this->container->scroll->btnResume->arrow->totalFrames)
+                if (this->container->scrollBtnResumeArrow->currentFrame < this->container->scrollBtnResumeArrow->totalFrames)
                 {
-                    this->container->scroll->btnResume->arrow->gotoAndStop((this->container->scroll->btnResume->arrow->currentFrame + 1));
+                    this->container->scrollBtnResumeArrow->gotoAndStop((this->container->scrollBtnResumeArrow->currentFrame + 1));
                 }
             }
-            else if (this->container->scroll->btnResume->arrow->currentFrame > 1)
+            else if (this->container->scrollBtnResumeArrow->currentFrame > 1)
             {
-                if (this->container->scroll->btnResume->mouseEnabled)
+                if (this->container->scrollBtnResume->mouseEnabled)
                 {
-                    this->container->scroll->btnResume->arrow->gotoAndStop((this->container->scroll->btnResume->arrow->currentFrame - 1));
+                    this->container->scrollBtnResumeArrow->gotoAndStop((this->container->scrollBtnResumeArrow->currentFrame - 1));
                 }
-                else if (this->container->scroll->btnResume->arrow->currentFrame != this->container->scroll->btnResume->arrow->totalFrames)
+                else if (this->container->scrollBtnResumeArrow->currentFrame != this->container->scrollBtnResumeArrow->totalFrames)
                 {
-                    this->container->scroll->btnResume->arrow->gotoAndStop(this->container->scroll->btnResume->arrow->totalFrames);
+                    this->container->scrollBtnResumeArrow->gotoAndStop(this->container->scrollBtnResumeArrow->totalFrames);
                 }
             }
             else
             {
-                this->container->scroll->btnResume->arrow->setVisible(false);
+                this->container->scrollBtnResumeArrow->setVisible(false);
             }
         }
-        if (this->container->scroll->btnRestart->arrow->isVisible())
+        if (this->container->scrollBtnRestartArrow->isVisible())
         {
-            if (this->container->scroll->btnRestart->currentFrame > 1)
+            if (this->container->scrollBtnRestart->currentFrame > 1)
             {
-                if (this->container->scroll->btnRestart->arrow->currentFrame < this->container->scroll->btnRestart->arrow->totalFrames)
+                if (this->container->scrollBtnRestartArrow->currentFrame < this->container->scrollBtnRestartArrow->totalFrames)
                 {
-                    this->container->scroll->btnRestart->arrow->gotoAndStop((this->container->scroll->btnRestart->arrow->currentFrame + 1));
+                    this->container->scrollBtnRestartArrow->gotoAndStop((this->container->scrollBtnRestartArrow->currentFrame + 1));
                 }
             }
-            else if (this->container->scroll->btnRestart->arrow->currentFrame > 1)
+            else if (this->container->scrollBtnRestartArrow->currentFrame > 1)
             {
-                if (this->container->scroll->btnRestart->mouseEnabled)
+                if (this->container->scrollBtnRestart->mouseEnabled)
                 {
-                    this->container->scroll->btnRestart->arrow->gotoAndStop((this->container->scroll->btnRestart->arrow->currentFrame - 1));
+                    this->container->scrollBtnRestartArrow->gotoAndStop((this->container->scrollBtnRestartArrow->currentFrame - 1));
                 }
-                else if (this->container->scroll->btnRestart->arrow->currentFrame != this->container->scroll->btnRestart->arrow->totalFrames)
+                else if (this->container->scrollBtnRestartArrow->currentFrame != this->container->scrollBtnRestartArrow->totalFrames)
                 {
-                    this->container->scroll->btnRestart->arrow->gotoAndStop(this->container->scroll->btnRestart->arrow->totalFrames);
+                    this->container->scrollBtnRestartArrow->gotoAndStop(this->container->scrollBtnRestartArrow->totalFrames);
                 }
             }
             else
             {
-                this->container->scroll->btnRestart->arrow->setVisible(false);
+                this->container->scrollBtnRestartArrow->setVisible(false);
             }
         }
-        if (this->container->scroll->btnExit->arrow->isVisible())
+        if (this->container->scrollBtnExitArrow->isVisible())
         {
-            if (this->container->scroll->btnExit->currentFrame > 1)
+            if (this->container->scrollBtnExit->currentFrame > 1)
             {
-                if (this->container->scroll->btnExit->arrow->currentFrame < this->container->scroll->btnExit->arrow->totalFrames)
+                if (this->container->scrollBtnExitArrow->currentFrame < this->container->scrollBtnExitArrow->totalFrames)
                 {
-                    this->container->scroll->btnExit->arrow->gotoAndStop((this->container->scroll->btnExit->arrow->currentFrame + 1));
+                    this->container->scrollBtnExitArrow->gotoAndStop((this->container->scrollBtnExitArrow->currentFrame + 1));
                 }
             }
-            else if (this->container->scroll->btnExit->arrow->currentFrame > 1)
+            else if (this->container->scrollBtnExitArrow->currentFrame > 1)
             {
-                if (this->container->scroll->btnExit->mouseEnabled)
+                if (this->container->scrollBtnExit->mouseEnabled)
                 {
-                    this->container->scroll->btnExit->arrow->gotoAndStop((this->container->scroll->btnExit->arrow->currentFrame - 1));
+                    this->container->scrollBtnExitArrow->gotoAndStop((this->container->scrollBtnExitArrow->currentFrame - 1));
                 }
-                else if (this->container->scroll->btnExit->arrow->currentFrame != this->container->scroll->btnExit->arrow->totalFrames)
+                else if (this->container->scrollBtnExitArrow->currentFrame != this->container->scrollBtnExitArrow->totalFrames)
                 {
-                    this->container->scroll->btnExit->arrow->gotoAndStop(this->container->scroll->btnExit->arrow->totalFrames);
+                    this->container->scrollBtnExitArrow->gotoAndStop(this->container->scrollBtnExitArrow->totalFrames);
                 }
             }
             else
             {
-                this->container->scroll->btnExit->arrow->setVisible(false);
+                this->container->scrollBtnExitArrow->setVisible(false);
             }
-        }
-        this->i = 0;
-        while (this->i < this->world->listOfClasses.size())
-        { 
-            if (this->world->listOfClasses[this->i] is Indexes)
-            {
-                if (this->world->listOfClasses[this->i]->type == "golemDeath" || this->world->listOfClasses[this->i]->type == "icemanDeath" || this->world->listOfClasses[this->i]->type == "airDeath")
-                {
-                    this->world->listOfClasses[this->i]->update();
-                }
-            }
-            i++;
         }
         return;
     }// end function
-
+	bool PauseMenu::preCheckEventTarget(std::MouseEvent * event, EventMouse::MouseEventType _mouseEventType)
+	{
+		removeEventTarget(event, this);
+		Vec2 pos = event->getLocationInView();
+		switch (_mouseEventType)
+		{
+		case cocos2d::EventMouse::MouseEventType::MOUSE_NONE:
+			break;
+		case cocos2d::EventMouse::MouseEventType::MOUSE_DOWN:
+			if (event->currentTargets.size() > 1) {
+				//removeEventTarget(event, "shadow");
+				//removeEventTarget(event, "sphereCase", "fireCase");
+			}
+			break;
+		case cocos2d::EventMouse::MouseEventType::MOUSE_UP:
+			if (event->currentTargets.size() > 1) {
+			}
+			break;
+		case cocos2d::EventMouse::MouseEventType::MOUSE_MOVE:
+			break;
+		case cocos2d::EventMouse::MouseEventType::MOUSE_SCROLL:
+			break;
+		default:
+			break;
+		}
+		event->reset();
+		return false;
+	};
     void PauseMenu::mouseMoveHandler(cocos2d::EventMouse *e)  
     {
-		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
-		if(!event)
-			return;
-        string targetName = event->target->getName();
-        if (this->questionFlag == 0)
-        {
-            if (param1->target->name == "musicCase")
-            {
-                if (this->container->scroll->btnMusic->currentFrame == 1 || this->container->scroll->btnMusic->currentFrame == 4)
-                {
-                    this->container->scroll->btnMusic->gotoAndStop((this->container->scroll->btnMusic->currentFrame + 1));
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-                }
-            }
-            else if (this->container->scroll->btnMusic->currentFrame == 2 || this->container->scroll->btnMusic->currentFrame == 5)
-            {
-                this->container->scroll->btnMusic->gotoAndStop((this->container->scroll->btnMusic->currentFrame - 1));
-            }
-            if (param1->target->name == "soundCase")
-            {
-                if (this->container->scroll->btnSound->currentFrame == 1 || this->container->scroll->btnSound->currentFrame == 4)
-                {
-                    this->container->scroll->btnSound->gotoAndStop((this->container->scroll->btnSound->currentFrame + 1));
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-                }
-            }
-            else if (this->container->scroll->btnSound->currentFrame == 2 || this->container->scroll->btnSound->currentFrame == 5)
-            {
-                this->container->scroll->btnSound->gotoAndStop((this->container->scroll->btnSound->currentFrame - 1));
-            }
-            if (param1->target->name == "lowCase")
-            {
-                if (this->container->scroll->btnLow->currentFrame == 1)
-                {
-                    this->container->scroll->btnLow->gotoAndStop(2);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-                }
-            }
-            else if (this->container->scroll->btnLow->currentFrame == 2)
-            {
-                if (Main::mainClass->saveBoxClass->getString("quality") != "low")
-                {
-                    this->container->scroll->btnLow->gotoAndStop(1);
-                }
-                else
-                {
-                    this->container->scroll->btnLow->gotoAndStop(4);
-                }
-            }
-            if (param1->target->name == "mediumCase")
-            {
-                if (this->container->scroll->btnMedium->currentFrame == 1)
-                {
-                    this->container->scroll->btnMedium->gotoAndStop(2);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-                }
-            }
-            else if (this->container->scroll->btnMedium->currentFrame == 2)
-            {
-                if (Main::mainClass->saveBoxClass->getString("quality") != "medium")
-                {
-                    this->container->scroll->btnMedium->gotoAndStop(1);
-                }
-                else
-                {
-                    this->container->scroll->btnMedium->gotoAndStop(4);
-                }
-            }
-            if (param1->target->name == "highCase")
-            {
-                if (this->container->scroll->btnHigh->currentFrame == 1)
-                {
-                    this->container->scroll->btnHigh->gotoAndStop(2);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-                }
-            }
-            else if (this->container->scroll->btnHigh->currentFrame == 2)
-            {
-                if (Main::mainClass->saveBoxClass->getString("quality") != "high")
-                {
-                    this->container->scroll->btnHigh->gotoAndStop(1);
-                }
-                else
-                {
-                    this->container->scroll->btnHigh->gotoAndStop(4);
-                }
-            }
-            if (param1->target->name == "onCase")
-            {
-                if (this->container->scroll->btnOn->currentFrame == 1)
-                {
-                    this->container->scroll->btnOn->gotoAndStop(2);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-                }
-            }
-            else if (this->container->scroll->btnOn->currentFrame == 2)
-            {
-                this->container->scroll->btnOn->gotoAndStop(1);
-            }
-            if (param1->target->name == "offCase")
-            {
-                if (this->container->scroll->btnOff->currentFrame == 1)
-                {
-                    this->container->scroll->btnOff->gotoAndStop(2);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-                }
-            }
-            else if (this->container->scroll->btnOff->currentFrame == 2)
-            {
-                this->container->scroll->btnOff->gotoAndStop(1);
-            }
-            if (param1->target->name == "resumeCase")
-            {
-                if (this->container->scroll->btnResume->currentFrame == 1)
-                {
-                    this->container->scroll->btnResume->gotoAndStop(2);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-                    if (!this->container->scroll->btnResume->arrow->isVisible())
-                    {
-                        this->container->scroll->btnResume->arrow->visible(true);
-                    }
-                }
-            }
-            else if (this->container->scroll->btnResume->currentFrame == 2)
-            {
-                this->container->scroll->btnResume->gotoAndStop(1);
-            }
-            if (param1->target->name == "restartCase")
-            {
-                if (this->container->scroll->btnRestart->currentFrame == 1)
-                {
-                    this->container->scroll->btnRestart->gotoAndStop(2);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-                    if (!this->container->scroll->btnRestart->arrow->isVisible())
-                    {
-                        this->container->scroll->btnRestart->arrow->visible(true);
-                    }
-                }
-            }
-            else if (this->container->scroll->btnRestart->currentFrame == 2)
-            {
-                this->container->scroll->btnRestart->gotoAndStop(1);
-            }
-            if (param1->target->name == "exitCase")
-            {
-                if (this->container->scroll->btnExit->currentFrame == 1)
-                {
-                    this->container->scroll->btnExit->gotoAndStop(2);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-                    if (!this->container->scroll->btnExit->arrow->isVisible())
-                    {
-                        this->container->scroll->btnExit->arrow->visible(true);
-                    }
-                }
-            }
-            else if (this->container->scroll->btnExit->currentFrame == 2)
-            {
-                this->container->scroll->btnExit->gotoAndStop(1);
-            }
-            if (this->container->scroll->btnY8->y8Case->mouseEnabled)
-            {
-                if (param1->target->name == "y8Case")
-                {
-                    if (this->container->scroll->btnY8->currentFrame == 1)
-                    {
-                        this->container->scroll->btnY8->gotoAndStop(2);
-                        AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-                    }
-                }
-                else if (this->container->scroll->btnY8->currentFrame == 2)
-                {
-                    this->container->scroll->btnY8->gotoAndStop(1);
-                }
-            }
-        }
-        else
-        {
-            if (param1->target->name == "yesCase")
-            {
-                if (this->container->scroll->question->btnYes->currentFrame == 1)
-                {
-                    this->container->scroll->question->btnYes->gotoAndStop(2);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-                }
-            }
-            else if (this->container->scroll->question)
-            {
-                if (this->container->scroll->question->btnYes->currentFrame == 2)
-                {
-                    this->container->scroll->question->btnYes->gotoAndStop(1);
-                }
-            }
-            if (param1->target->name == "noCase")
-            {
-                if (this->container->scroll->question->btnNo->currentFrame == 1)
-                {
-                    this->container->scroll->question->btnNo->gotoAndStop(2);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-                }
-            }
-            else if (this->container->scroll->question)
-            {
-                if (this->container->scroll->question->btnNo->currentFrame == 2)
-                {
-                    this->container->scroll->question->btnNo->gotoAndStop(1);
-                }
-            }
-        }
-        return;
+		Main::mouseX = e->getCursorX();
+		Main::mouseY = e->getCursorY();
+		if (!globalNode)EventNode::mouseMoveHandler(e);
+		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
+		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
+		std::MouseEvent me(e);
+		if (!useNodeEvent) {
+			me = std::buildMouseEvent(e);
+		}
+		std::MouseEvent * event = &me;
+		if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_MOVE))return;
+		if (!event->currentTargets.size())
+			event->currentTargets.push(this);
+		//return;
+		while (event->hasNext())
+		{
+			string targetName = event->target->getName();
+			EventNode::beginTouchNode = event->target;
+			if (targetName == "musicCase")
+			{
+				if (this->container->scrollBtnMusic->currentFrame == 1 || this->container->scrollBtnMusic->currentFrame == 4)
+				{
+					this->container->scrollBtnMusic->gotoAndStop((this->container->scrollBtnMusic->currentFrame + 1));
+					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+				}
+			}
+			else if (this->container->scrollBtnMusic->currentFrame == 2 || this->container->scrollBtnMusic->currentFrame == 5)
+			{
+				this->container->scrollBtnMusic->gotoAndStop((this->container->scrollBtnMusic->currentFrame - 1));
+			}
+			if (targetName == "soundCase")
+			{
+				if (this->container->scrollBtnSound->currentFrame == 1 || this->container->scrollBtnSound->currentFrame == 4)
+				{
+					this->container->scrollBtnSound->gotoAndStop((this->container->scrollBtnSound->currentFrame + 1));
+					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+				}
+			}
+			else if (this->container->scrollBtnSound->currentFrame == 2 || this->container->scrollBtnSound->currentFrame == 5)
+			{
+				this->container->scrollBtnSound->gotoAndStop((this->container->scrollBtnSound->currentFrame - 1));
+			}
+			if (targetName == "resumeCase")
+			{
+				if (this->container->scrollBtnResume->currentFrame == 1)
+				{
+					this->container->scrollBtnResume->gotoAndStop(2);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+					if (!this->container->scrollBtnResumeArrow->isVisible())
+						this->container->scrollBtnResumeArrow->setVisible(true);
+				}
+			}
+			else if (this->container->scrollBtnResume->currentFrame == 2)
+			{
+				this->container->scrollBtnResume->gotoAndStop(1);
+			}
+			if (targetName == "restartCase")
+			{
+				if (this->container->scrollBtnRestart->currentFrame == 1)
+				{
+					this->container->scrollBtnRestart->gotoAndStop(2);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+					if (!this->container->scrollBtnRestartArrow->isVisible())
+						this->container->scrollBtnRestartArrow->setVisible(true);
+				}
+			}
+			else if (this->container->scrollBtnRestart->currentFrame == 2)
+			{
+				this->container->scrollBtnRestart->gotoAndStop(1);
+			}
+			if (targetName == "exitCase")
+			{
+				if (this->container->scrollBtnExit->currentFrame == 1)
+				{
+					this->container->scrollBtnExit->gotoAndStop(2);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+					if (!this->container->scrollBtnExitArrow->isVisible())
+						this->container->scrollBtnExitArrow->setVisible(true);
+				}
+			}
+			else if (this->container->scrollBtnExit->currentFrame == 2)
+			{
+				this->container->scrollBtnExit->gotoAndStop(1);
+			}
+		}
     }// end function
 
     void PauseMenu::mouseDownHandler(cocos2d::EventMouse *e) 
     {
-		std::MouseEvent * event = ISTYPE(std::MouseEvent, e);
-		if(!event)
-			return;
-        string targetName = event->target->getName();
-        if (this->questionFlag == 0)
-        {
-            if (event.target.name == "musicCase")
-            {
-                if (this->container->scroll->btnMusic->currentFrame == 2 || this->container->scroll->btnMusic->currentFrame == 5)
-                {
-                    this->container->scroll->btnMusic->gotoAndStop((this->container->scroll->btnMusic->currentFrame + 1));
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-                }
-            }
-            else if (event.target.name == "soundCase")
-            {
-                if (this->container->scroll->btnSound->currentFrame == 2 || this->container->scroll->btnSound->currentFrame == 5)
-                {
-                    this->container->scroll->btnSound->gotoAndStop((this->container->scroll->btnSound->currentFrame + 1));
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-                }
-            }
-            else if (event.target.name == "lowCase")
-            {
-                if (this->container->scroll->btnLow->currentFrame == 2)
-                {
-                    this->container->scroll->btnLow->gotoAndStop(3);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-                }
-            }
-            else if (event.target.name == "mediumCase")
-            {
-                if (this->container->scroll->btnMedium->currentFrame == 2)
-                {
-                    this->container->scroll->btnMedium->gotoAndStop(3);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-                }
-            }
-            else if (event.target.name == "highCase")
-            {
-                if (this->container->scroll->btnHigh->currentFrame == 2)
-                {
-                    this->container->scroll->btnHigh->gotoAndStop(3);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-                }
-            }
-            else if (event.target.name == "onCase")
-            {
-                if (this->container->scroll->btnOn->currentFrame == 2)
-                {
-                    this->container->scroll->btnOn->gotoAndStop(3);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-                }
-            }
-            else if (event.target.name == "offCase")
-            {
-                if (this->container->scroll->btnOff->currentFrame == 2)
-                {
-                    this->container->scroll->btnOff->gotoAndStop(3);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-                }
-            }
-            else if (event.target.name == "resumeCase")
-            {
-                if (this->container->scroll->btnResume->currentFrame == 2)
-                {
-                    this->container->scroll->btnResume->gotoAndStop(3);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-                }
-            }
-            else if (event.target.name == "restartCase")
-            {
-                if (this->container->scroll->btnRestart->currentFrame == 2)
-                {
-                    this->container->scroll->btnRestart->gotoAndStop(3);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-                }
-            }
-            else if (event.target.name == "exitCase")
-            {
-                if (this->container->scroll->btnExit->currentFrame == 2)
-                {
-                    this->container->scroll->btnExit->gotoAndStop(3);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-                }
-            }
-            else if (event.target.name == "y8Case")
-            {
-                if (this->container->scroll->btnY8->currentFrame == 2)
-                {
-                    this->container->scroll->btnY8->gotoAndStop(3);
-                    AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-                }
-            }
-        }
-        else if (event.target.name == "yesCase")
-        {
-            if (this->container->scroll->question->btnYes->currentFrame == 2)
-            {
-                this->container->scroll->question->btnYes->gotoAndStop(3);
-                AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-            }
-        }
-        else if (event.target.name == "noCase")
-        {
-            if (this->container->scroll->question->btnNo->currentFrame == 2)
-            {
-                this->container->scroll->question->btnNo->gotoAndStop(3);
-                AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-            }
-        }
-        return;
+		if (!globalNode)EventNode::mouseDownHandler(e);
+		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
+		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
+		std::MouseEvent me(e);
+		if (!useNodeEvent) {
+			me = std::buildMouseEvent(e);
+		}
+		std::MouseEvent * event = &me;
+		if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_DOWN))return;
+		if (!event->currentTargets.size())
+			event->currentTargets.push(this);
+		//Main::mouseX = e->getCursorX();
+		Main::mouseY = e->getCursorY();
+		EventNode::beginTouchPos = Vec2(Main::mouseX, Main::mouseY);
+		while (event->hasNext())
+		{
+			string targetName = event->target->getName();
+			EventNode::beginTouchNode = event->target;
+
+			if (targetName == "musicCase")
+			{
+				if (this->container->scrollBtnMusic->currentFrame == 2 || this->container->scrollBtnMusic->currentFrame == 5)
+				{
+					this->container->scrollBtnMusic->gotoAndStop((this->container->scrollBtnMusic->currentFrame + 1));
+					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+				}
+			}
+			else if (targetName == "soundCase")
+			{
+				if (this->container->scrollBtnSound->currentFrame == 2 || this->container->scrollBtnSound->currentFrame == 5)
+				{
+					this->container->scrollBtnSound->gotoAndStop((this->container->scrollBtnSound->currentFrame + 1));
+					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+				}
+			}
+			else if (targetName == "resumeCase")
+			{
+				if (this->container->scrollBtnResume->currentFrame == 2)
+				{
+					this->container->scrollBtnResume->gotoAndStop(3);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+				}
+			}
+			else if (targetName == "restartCase")
+			{
+				if (this->container->scrollBtnRestart->currentFrame == 2)
+				{
+					this->container->scrollBtnRestart->gotoAndStop(3);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+				}
+			}
+			else if (targetName == "exitCase")
+			{
+				if (this->container->scrollBtnExit->currentFrame == 2)
+				{
+					this->container->scrollBtnExit->gotoAndStop(3);
+					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
+				}
+			}
+		}
     }// end function
 
-    void PauseMenu::mouseUpHandler(cocos2d::EventMouse * event) 
-    {
-        if (this->questionFlag == 0)
-        {
-            if (event.target.name == "musicCase")
-            {
-                if (this->container->scroll->btnMusic->currentFrame == 3)
-                {
-                    this->container->scroll->btnMusic->gotoAndStop(5);
-                    //AudioUtil::musicPausePosition = AudioUtil::musicChanel.position;
-                    AudioUtil::musicManage("off");
-                }
-                else if (this->container->scroll->btnMusic->currentFrame == 6)
-                {
-                    this->container->scroll->btnMusic->gotoAndStop(2);
-                    AudioUtil::musicManage("on");
-                    if (this->world->wavesClass->nowWave == 0)
-                    {
-                        AudioUtil::playMusic(1f);
-                    }
-                    else
-                    {
-                        AudioUtil::playMusic(2f);
-                    }
-                }
-            }
-            else if (this->container->scroll->btnMusic->currentFrame == 3 || this->container->scroll->btnMusic->currentFrame == 6)
-            {
-                this->container->scroll->btnMusic->gotoAndStop(this->container->scroll->btnMusic->currentFrame - 2);
-            }
-            if (event.target.name == "soundCase")
-            {
-                if (this->container->scroll->btnSound->currentFrame == 3)
-                {
-                    this->container->scroll->btnSound->gotoAndStop(5);
-                    AudioUtil::soundManage("off");
-                }
-                else if (this->container->scroll->btnSound->currentFrame == 6)
-                {
-                    this->container->scroll->btnSound->gotoAndStop(2);
-                    AudioUtil::soundManage("on");
-                }
-            }
-            else if (this->container->scroll->btnSound->currentFrame == 3 || this->container->scroll->btnSound->currentFrame == 6)
-            {
-                this->container->scroll->btnSound->gotoAndStop(this->container->scroll->btnSound->currentFrame - 2);
-            }
-            if (event.target.name == "lowCase")
-            {
-                if (this->container->scroll->btnLow->currentFrame == 3)
-                { 
-                    this->world->stage.quality = "low";
-                    Main::mainClass->saveBoxClass->setValue(quality , "low");
-                    this->container->scroll->btnLow->gotoAndStop(4);
-                    this->container->scroll->btnLow->lowCase->setMouseEnabled(false);
-                    if (this->container->scroll->btnMedium->currentFrame != 1)
-                    {
-                        this->container->scroll->btnMedium->gotoAndStop(1);
-                        this->container->scroll->btnMedium->mediumCase->setMouseEnabled(true);
-                    }
-                    if (this->container->scroll->btnHigh->currentFrame != 1)
-                    {
-                        this->container->scroll->btnHigh->gotoAndStop(1);
-                        this->container->scroll->btnHigh->highCase->setMouseEnabled(true);
-                    }
-                }
-            }
-            else if (this->container->scroll->btnLow->currentFrame == 3)
-            {
-                this->container->scroll->btnLow->gotoAndStop(1);
-            }
-            if (event.target.name == "mediumCase")
-            {
-                if (this->container->scroll->btnMedium->currentFrame == 3)
-                { 
-                    this->world->stage.quality = "medium";
-                    Main::mainClass->saveBoxClass->setValue(quality , "medium"); 
-                    this->container->scroll->btnMedium->gotoAndStop(4);
-                    this->container->scroll->btnMedium->mediumCase->setMouseEnabled(false);
-                    if (this->container->scroll->btnLow->currentFrame != 1)
-                    {
-                        this->container->scroll->btnLow->gotoAndStop(1);
-                        this->container->scroll->btnLow->lowCase->setMouseEnabled(true);
-                    }
-                    if (this->container->scroll->btnHigh->currentFrame != 1)
-                    {
-                        this->container->scroll->btnHigh->gotoAndStop(1);
-                        this->container->scroll->btnHigh->highCase->setMouseEnabled(true);
-                    }
-                }
-            }
-            else if (this->container->scroll->btnMedium->currentFrame == 3)
-            {
-                this->container->scroll->btnMedium->gotoAndStop(1);
-            }
-            if (event.target.name == "highCase")
-            {
-                if (this->container->scroll->btnHigh->currentFrame == 3)
-                { 
-                    this->world->stage.quality = "high";
-                    Main::mainClass->saveBoxClass->setValue(quality , "high"); ;
-                    this->container->scroll->btnHigh->gotoAndStop(4);
-                    this->container->scroll->btnHigh->highCase->setMouseEnabled(false);
-                    if (this->container->scroll->btnLow->currentFrame != 1)
-                    {
-                        this->container->scroll->btnLow->gotoAndStop(1);
-                        this->container->scroll->btnLow->lowCase->setMouseEnabled(true);
-                    }
-                    if (this->container->scroll->btnMedium->currentFrame != 1)
-                    {
-                        this->container->scroll->btnMedium->gotoAndStop(1);
-                        this->container->scroll->btnMedium->mediumCase->setMouseEnabled(true);
-                    }
-                }
-            }
-            else if (this->container->scroll->btnHigh->currentFrame == 3)
-            {
-                this->container->scroll->btnHigh->gotoAndStop(1);
-            }
-            if (event.target.name == "onCase")
-            {
-                if (this->container->scroll->btnOn->currentFrame == 3)
-                {
-                    this->container->scroll->btnOn->gotoAndStop(4);
-                    this->container->scroll->btnOn->onCase->setMouseEnabled(false);
-                    this->container->scroll->btnOff->gotoAndStop(1);
-                    this->container->scroll->btnOff->offCase->setMouseEnabled(true);
-                    Main::mainClass->saveBoxClass->setValue("autoPause",true);
-                }
-            }
-            else if (this->container->scroll->btnOn->currentFrame == 3)
-            {
-                this->container->scroll->btnOn->gotoAndStop(1);
-            }
-            if (event.target.name == "offCase")
-            {
-                if (this->container->scroll->btnOff->currentFrame == 3)
-                {
-                    this->container->scroll->btnOff->gotoAndStop(4);
-                    this->container->scroll->btnOff->offCase->setMouseEnabled(false);
-                    this->container->scroll->btnOn->gotoAndStop(1);
-                    this->container->scroll->btnOn->onCase->setMouseEnabled(true);
-                    Main::mainClass->saveBoxClass->setValue("autoPause",false);
-                }
-            }
-            else if (this->container->scroll->btnOff->currentFrame == 3)
-            {
-                this->container->scroll->btnOff->gotoAndStop(1);
-            }
-            if (event.target.name == "resumeCase")
-            {
-                if (this->container->scroll->btnResume->currentFrame == 3)
-                {
-                    this->close();
-                }
-            }
-            else if (this->container->scroll->btnResume->currentFrame == 3)
-            {
-                this->container->scroll->btnResume->gotoAndStop(1);
-            }
-            if (event.target.name == "restartCase")
-            {
-                if (this->container->scroll->btnRestart->currentFrame == 3)
-                {
-                    this->container->scroll->btnRestart->gotoAndStop(1);
-                    this->questionFlag = 1;
-                    this->container->scroll->btnMusic->alpha = 0.5;
-                    this->container->scroll->btnSound->alpha = 0.5;
-                    this->container->scroll->btnLow->alpha = 0.5;
-                    this->container->scroll->btnMedium->alpha = 0.5;
-                    this->container->scroll->btnHigh->alpha = 0.5;
-                    this->container->scroll->btnOn->alpha = 0.5;
-                    this->container->scroll->btnOff->alpha = 0.5;
-                    this->container->scroll->btnResume->alpha = 0.5;
-                    this->container->scroll->btnRestart->alpha = 0.5;
-                    this->container->scroll->btnExit->alpha = 0.5;
-                    this->container->scroll->qualityTXT->alpha = 0.5;
-                    this->container->scroll->autopauseTXT->alpha = 0.5; 
-                    this->container->scroll->btnMusic->setMouseChildren(false);
-                    this->container->scroll->btnMusic->setMouseEnabled(false); 
-                    this->container->scroll->btnSound->setMouseChildren(false);
-                    this->container->scroll->btnSound->setMouseEnabled(false); 
-                    this->container->scroll->btnLow->setMouseChildren(false);
-                    this->container->scroll->btnLow->setMouseEnabled(false); 
-                    this->container->scroll->btnMedium->setMouseChildren(false);
-                    this->container->scroll->btnMedium->setMouseEnabled(false); 
-                    this->container->scroll->btnHigh->setMouseChildren(false);
-                    this->container->scroll->btnHigh->setMouseEnabled(false); 
-                    this->container->scroll->btnOn->setMouseChildren(false);
-                    this->container->scroll->btnOn->setMouseEnabled(false); 
-                    this->container->scroll->btnOff->setMouseChildren(false);
-                    this->container->scroll->btnOff->setMouseEnabled(false); 
-                    this->container->scroll->btnResume->setMouseChildren(false);
-                    this->container->scroll->btnResume->setMouseEnabled(false); 
-                    this->container->scroll->btnRestart->setMouseChildren(false);
-                    this->container->scroll->btnRestart->setMouseEnabled(false); 
-                    this->container->scroll->btnExit->setMouseChildren(false);
-                    this->container->scroll->btnExit->setMouseEnabled(false);
-                }
-            }
-            else if (this->container->scroll->btnRestart->currentFrame == 3)
-            {
-                this->container->scroll->btnRestart->gotoAndStop(1);
-            }
-            if (event.target.name == "exitCase")
-            {
-                if (this->container->scroll->btnExit->currentFrame == 3)
-                {
-                    this->container->scroll->btnExit->gotoAndStop(1);
-                    this->questionFlag = 2;
-                    this->container->scroll->btnMusic->alpha = 0.5;
-                    this->container->scroll->btnSound->alpha = 0.5;
-                    this->container->scroll->btnLow->alpha = 0.5;
-                    this->container->scroll->btnMedium->alpha = 0.5;
-                    this->container->scroll->btnHigh->alpha = 0.5;
-                    this->container->scroll->btnOn->alpha = 0.5;
-                    this->container->scroll->btnOff->alpha = 0.5;
-                    this->container->scroll->btnResume->alpha = 0.5;
-                    this->container->scroll->btnRestart->alpha = 0.5;
-                    this->container->scroll->btnExit->alpha = 0.5;
-                    this->container->scroll->qualityTXT->alpha = 0.5;
-                    this->container->scroll->autopauseTXT->alpha = 0.5; 
-                    this->container->scroll->btnMusic->setMouseChildren(false);
-                    this->container->scroll->btnMusic->setMouseEnabled(false); 
-                    this->container->scroll->btnSound->setMouseChildren(false);
-                    this->container->scroll->btnSound->setMouseEnabled(false); 
-                    this->container->scroll->btnLow->setMouseChildren(false);
-                    this->container->scroll->btnLow->setMouseEnabled(false); 
-                    this->container->scroll->btnMedium->setMouseChildren(false);
-                    this->container->scroll->btnMedium->setMouseEnabled(false); 
-                    this->container->scroll->btnHigh->setMouseChildren(false);
-                    this->container->scroll->btnHigh->setMouseEnabled(false); 
-                    this->container->scroll->btnOn->setMouseChildren(false);
-                    this->container->scroll->btnOn->setMouseEnabled(false); 
-                    this->container->scroll->btnOff->setMouseChildren(false);
-                    this->container->scroll->btnOff->setMouseEnabled(false); 
-                    this->container->scroll->btnResume->setMouseChildren(false);
-                    this->container->scroll->btnResume->setMouseEnabled(false); 
-                    this->container->scroll->btnRestart->setMouseChildren(false);
-                    this->container->scroll->btnRestart->setMouseEnabled(false); 
-                    this->container->scroll->btnExit->setMouseChildren(false);
-                    this->container->scroll->btnExit->setMouseEnabled(false);
-                }
-            }
-            else if (this->container->scroll->btnExit->currentFrame == 3)
-            {
-                this->container->scroll->btnExit->gotoAndStop(1);
-            }
-            if (event.target.name == "y8Case")
-            {
-                if (this->container->scroll->btnY8->currentFrame == 3)
-                {
-                    this->container->scroll->btnY8->gotoAndStop(2);
-                    //navigateToURL(new URLRequest("http://www.y8.com/?utm_source=" + Main::mainClass->domainName + "&utm_medium=g_prelogo&utm_campaign=brave_heads"));
-                }
-            }
-            else if (this->container->scroll->btnY8->currentFrame == 3)
-            {
-                this->container->scroll->btnY8->gotoAndStop(1);
-            }
-        }
-        else if (this->container->scroll->question)
-        {
-            if (event.target.name == "yesCase")
-            {
-                if (this->container->scroll->question->btnYes->currentFrame == 3)
-                {
-                    this->container->scroll->question->btnYes->gotoAndStop(2);
-                    if (this->questionFlag == 1)
-                    {
-                        Main::mainClass->addNewScreen("World");
-                    }
-                    else if (this->questionFlag == 2)
-                    {
-                        Main::mainClass->addNewScreen("LevelsMenu");
-                    }
-                    Main::mainClass->testingClass = NULL;
-                }
-            }
-            else if (this->container->scroll->question->btnYes->currentFrame == 3)
-            {
-                this->container->scroll->question->btnYes->gotoAndStop(1);
-            }
-            if (event.target.name == "noCase")
-            {
-                if (this->container->scroll->question->btnNo->currentFrame == 3)
-                {
-                    this->container->scroll->question->btnNo->gotoAndStop(2);
-                    this->questionFlag = 0;
-                }
-            }
-            else if (this->container->scroll->question->btnNo->currentFrame == 3)
-            {
-                this->container->scroll->question->btnNo->gotoAndStop(1);
-            }
-        }
-        return;
-    }// end function
-
-    void PauseMenu::autoguidersButtons() 
-    {
-        this->autoguidesMouse_pt = new Point(this->mouseX, this->mouseY);
-        this->autoguidesObject = null;
-        this->autoguidesObject_pt = this->container->scroll->btnMusic->localToGlobal(this->container->scroll->btnMusic->musicCase->getPosition());
-        this->autoguidesObjectWidth = this->container->scroll->btnMusic->musicCase.width / 2;
-        this->autoguidesObjectHeight = this->container->scroll->btnMusic->musicCase.height / 2;
-        if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-            && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-            && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-            && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-        {
-            this->autoguidesObject = this->container->scroll->btnMusic->musicCase;
-        }
-        if (!this->autoguidesObject)
-        {
-            this->autoguidesObject_pt = this->container->scroll->btnSound->localToGlobal( this->container->scroll->btnSound->soundCase->getPosition());
-            this->autoguidesObjectWidth = this->container->scroll->btnSound->soundCase.width / 2;
-            this->autoguidesObjectHeight = this->container->scroll->btnSound->soundCase.height / 2;
-            if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-            {
-                this->autoguidesObject = this->container->scroll->btnSound->soundCase;
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            this->autoguidesObject_pt = this->container->scroll->btnLow->localToGlobal(this->container->scroll->btnLow->lowCase->getPosition());
-            this->autoguidesObjectWidth = this->container->scroll->btnLow->lowCase.width / 2;
-            this->autoguidesObjectHeight = this->container->scroll->btnLow->lowCase.height / 2;
-            if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-            {
-                this->autoguidesObject = this->container->scroll->btnLow->lowCase;
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            this->autoguidesObject_pt = this->container->scroll->btnMedium->localToGlobal(this->container->scroll->btnMedium->mediumCase->getPosition());
-            this->autoguidesObjectWidth = this->container->scroll->btnMedium->mediumCase.width / 2;
-            this->autoguidesObjectHeight = this->container->scroll->btnMedium->mediumCase.height / 2;
-            if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-            {
-                this->autoguidesObject = this->container->scroll->btnMedium->mediumCase;
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            this->autoguidesObject_pt = this->container->scroll->btnHigh->localToGlobal( this->container->scroll->btnHigh->highCase->getPosition());
-            this->autoguidesObjectWidth = this->container->scroll->btnHigh->highCase.width / 2;
-            this->autoguidesObjectHeight = this->container->scroll->btnHigh->highCase.height / 2;
-            if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-            {
-                this->autoguidesObject = this->container->scroll->btnHigh->highCase;
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            this->autoguidesObject_pt = this->container->scroll->btnOn->localToGlobal(this->container->scroll->btnOn->onCase->getPosition());
-            this->autoguidesObjectWidth = this->container->scroll->btnOn->onCase.width / 2;
-            this->autoguidesObjectHeight = this->container->scroll->btnOn->onCase.height / 2;
-            if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-            {
-                this->autoguidesObject = this->container->scroll->btnOn->onCase;
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            this->autoguidesObject_pt = this->container->scroll->btnOff->localToGlobal(this->container->scroll->btnOff->offCase->getPosition());
-            this->autoguidesObjectWidth = this->container->scroll->btnOff->offCase.width / 2;
-            this->autoguidesObjectHeight = this->container->scroll->btnOff->offCase.height / 2;
-            if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-            {
-                this->autoguidesObject = this->container->scroll->btnOff->offCase;
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            this->autoguidesObject_pt = this->container->scroll->btnResume->localToGlobal(this->container->scroll->btnResume->resumeCase->getPosition());
-            this->autoguidesObjectWidth = this->container->scroll->btnResume->resumeCase.width / 2;
-            this->autoguidesObjectHeight = this->container->scroll->btnResume->resumeCase.height / 2;
-            if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-            {
-                this->autoguidesObject = this->container->scroll->btnResume->resumeCase;
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            this->autoguidesObject_pt = this->container->scroll->btnRestart->localToGlobal(this->container->scroll->btnRestart->restartCase->getPosition());
-            this->autoguidesObjectWidth = this->container->scroll->btnRestart->restartCase.width / 2;
-            this->autoguidesObjectHeight = this->container->scroll->btnRestart->restartCase.height / 2;
-            if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-            {
-                this->autoguidesObject = this->container->scroll->btnRestart->restartCase;
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            this->autoguidesObject_pt = this->container->scroll->btnExit->localToGlobal(this->container->scroll->btnExit->exitCase->getPosition());
-            this->autoguidesObjectWidth = this->container->scroll->btnExit->exitCase.width / 2;
-            this->autoguidesObjectHeight = this->container->scroll->btnExit->exitCase.height / 2;
-            if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-            {
-                this->autoguidesObject = this->container->scroll->btnExit->exitCase;
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            if (this->container->scroll->question)
-            {
-                this->autoguidesObject_pt = this->container->scroll->question->btnYes->localToGlobal(this->container->scroll->question->btnYes->yesCase->getPosition());
-                this->autoguidesObjectWidth = this->container->scroll->question->btnYes->yesCase.width / 2;
-                this->autoguidesObjectHeight = this->container->scroll->question->btnYes->yesCase.height / 2;
-                if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-                {
-                    this->autoguidesObject = this->container->scroll->question->btnYes->yesCase;
-                }
-            }
-        }
-        if (!this->autoguidesObject)
-        {
-            if (this->container->scroll->question)
-            {
-                this->autoguidesObject_pt = this->container->scroll->question->btnNo->localToGlobal(this->container->scroll->question->btnNo->noCase->getPosition());
-                this->autoguidesObjectWidth = this->container->scroll->question->btnNo->noCase.width / 2;
-                this->autoguidesObjectHeight = this->container->scroll->question->btnNo->noCase.height / 2;
-                if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-                {
-                    this->autoguidesObject = this->container->scroll->question->btnNo->noCase;
-                }
-            }
-        }
-        if (this->autoguidesObject)
-        {
-            this->tempObject = new Object();
-            this->tempObject.target = this->autoguidesObject;
-            this->mouseMoveHandler(this->tempObject);
-        }
-        return;
-    }// end function
-
+	void PauseMenu::mouseUpHandler(cocos2d::EventMouse * e)
+	{
+		if (!globalNode)EventNode::mouseUpHandler(e);
+		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
+		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
+		std::MouseEvent me(e);
+		if (!useNodeEvent) {
+			me = std::buildMouseEvent(e);
+		}
+		std::MouseEvent * event = &me;
+		if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_UP))return;
+		if (!event->currentTargets.size())
+			event->currentTargets.push(this);
+		Main::mouseX = e->getCursorX();
+		Main::mouseY = e->getCursorY();
+		EventNode::beginTouchPos = Vec2(Main::mouseX, Main::mouseY);
+		while (event->hasNext())
+		{
+			string targetName = event->target->getName();
+			if (targetName == "musicCase")
+			{
+				if (this->container->scrollBtnMusic->currentFrame == 3)
+				{
+					this->container->scrollBtnMusic->gotoAndStop(5);
+					//AudioUtil::musicPausePosition = AudioUtil::musicChanel.position;
+					AudioUtil::musicManage("off");
+				}
+				else if (this->container->scrollBtnMusic->currentFrame == 6)
+				{
+					this->container->scrollBtnMusic->gotoAndStop(2);
+					AudioUtil::musicManage("on");
+					if (this->world->wavesClass->nowWave == 0)
+						AudioUtil::playMusic("Music_world_beforeBattle.mp3");// (1f);
+					else
+						AudioUtil::playMusic("Music_world_battle.mp3");//2f
+				}
+			}
+			else if (this->container->scrollBtnMusic->currentFrame == 3 || this->container->scrollBtnMusic->currentFrame == 6)
+			{
+				this->container->scrollBtnMusic->gotoAndStop(this->container->scrollBtnMusic->currentFrame - 2);
+			}
+			if (targetName == "soundCase")
+			{
+				if (this->container->scrollBtnSound->currentFrame == 3)
+				{
+					this->container->scrollBtnSound->gotoAndStop(5);
+					AudioUtil::soundManage("off");
+				}
+				else if (this->container->scrollBtnSound->currentFrame == 6)
+				{
+					this->container->scrollBtnSound->gotoAndStop(2);
+					AudioUtil::soundManage("on");
+				}
+			}
+			else if (this->container->scrollBtnSound->currentFrame == 3 || this->container->scrollBtnSound->currentFrame == 6)
+			{
+				this->container->scrollBtnSound->gotoAndStop(this->container->scrollBtnSound->currentFrame - 2);
+			}
+			if (targetName == "resumeCase")
+			{
+				if (this->container->scrollBtnResume->currentFrame == 3)
+				{
+					this->close();
+				}
+			}
+			else if (this->container->scrollBtnResume->currentFrame == 3)
+			{
+				this->container->scrollBtnResume->gotoAndStop(1);
+			}
+			if (targetName == "restartCase")
+			{
+				if (this->container->scrollBtnRestart->currentFrame == 3)
+				{
+					Main::mainClass->addNewScreen("World");
+				}
+			}
+			else if (this->container->scrollBtnRestart->currentFrame == 3)
+			{
+				this->container->scrollBtnRestart->gotoAndStop(1);
+			}
+			if (targetName == "exitCase")
+			{
+				if (this->container->scrollBtnExit->currentFrame == 3)
+				{
+					Main::mainClass->addNewScreen("LevelsMenu");
+				}
+			}
+			else if (this->container->scrollBtnExit->currentFrame == 3)
+			{
+				this->container->scrollBtnExit->gotoAndStop(1);
+			}
+		}
+	}// end function
+ 
     void PauseMenu::close()
     {
         if (!this->closeFlag)
         {
             this->closeFlag = true;
-            this->container->scroll->btnResume->gotoAndStop(2); 
+            this->container->scrollBtnResume->gotoAndStop(2); 
             this->container->setMouseChildren(false);
             this->container->setMouseEnabled(false);
         }

@@ -188,6 +188,7 @@ namespace screens
 			if (this->container->currentFrame < this->container->totalFrames)
 			{
 				this->container->gotoAndStop((this->container->currentFrame + 1));
+				if (this->openFlag && dt > 0)this->enableFrameHandler(0);
 			}
 			else
 			{
@@ -203,6 +204,7 @@ namespace screens
 			if (this->container->currentFrame > 1)
 			{
 				this->container->gotoAndStop((this->container->currentFrame - 1));
+				if (this->closeFlag && dt > 0)this->enableFrameHandler(0);
 			}
 			else
 			{

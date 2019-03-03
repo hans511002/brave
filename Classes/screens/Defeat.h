@@ -1,14 +1,26 @@
 ﻿#ifndef SCREENS_DEFEAT_H
 #define SCREENS_DEFEAT_H
 #include "BaseHeaders.h"   
+#include "Screen.h"
 
  
 namespace screens
 {  
     struct DefMenu_mc : public MovieClip
     {
-        MovieClip * first;
-        MovieClip * shadow;
+		MovieClipSub * first;
+		MovieClipSub * firstScroll;
+		MovieClipSub * firstFire;
+		MovieClipSub * firstScrollBtnContinue;
+		MCCase * firstScrollBtnContinueContinueCase;
+		MovieClipSub * firstScrollBtnContinueArrow;
+
+		MovieClipSub * firstScrollBtnRestart;
+		MCCase * firstScrollBtnRestartRestartCase;
+		MovieClipSub * firstScrollBtnRestartArrow;
+		
+		cocos2d::Sprite * logo;
+
         DefMenu_mc() ;
     };
 
@@ -34,17 +46,7 @@ namespace screens
         void mouseDownHandler(cocos2d::EventMouse * event);
 
         void mouseUpHandler(cocos2d::EventMouse * event);
-
-        //void reInit() 
-        //{
-        //    this->removeEventListener(Event.REMOVED_FROM_STAGE, this->reInit);
-        //    this->removeEventListener(Event.ENTER_FRAME, this->enterFrameHandler);
-        //    this->removeEventListener(MouseEvent.MOUSE_MOVE, this->mouseMoveHandler);
-        //    this->removeEventListener(MouseEvent.MOUSE_DOWN, this->mouseDownHandler);
-        //    this->removeEventListener(MouseEvent.MOUSE_UP, this->mouseUpHandler);
-        //    return;
-        //}// end function
-
-    }
+		 
+	};
 }
 #endif

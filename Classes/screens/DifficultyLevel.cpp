@@ -8,9 +8,9 @@ namespace screens
 	DeifficultyLevel_mc::DeifficultyLevel_mc():MovieClip("screen/","DeifficultyLevel_mc","DeifficultyLevel_mc")
     {
         first=this->createMovieClipSub("first");
-        firstEasy=first->createMovieClipSub("easy");
-        firstNormal=first->createMovieClipSub("normal");
-        firstHard=first->createMovieClipSub("hard");
+        firstEasy=first->createMovieClipSub("easy",true);
+        firstNormal=first->createMovieClipSub("normal", true);
+        firstHard=first->createMovieClipSub("hard", true);
         firstEasyComplexityCase=firstEasy->createCase("complexityCase");
         firstNormalComplexityCase=firstNormal->createCase("complexityCase");
         firstHardComplexityCase=firstHard->createCase("complexityCase");
@@ -19,7 +19,7 @@ namespace screens
      
     DifficultyLevel::DifficultyLevel():openFlag(true),closeFlag(false),container(0)
     {
-        //this->addEventListener(Event.ADDED_TO_STAGE, this->init);
+		init();
         return;
     }// end function
 
@@ -28,40 +28,33 @@ namespace screens
 		this->enableMouseHandler(true);
 		this->enableFrameHandler(true);
         Main::mainClass->levelsMenuClass->manageListeners("off");
-        this->container = new DeifficultyLevel_mc();
+        this->container = new DeifficultyLevel_mc(); 
+		cocos2d::Size size = this->container->getSprite("bg")->getContentSize();
+		float sy = Main::SCREEN_HEIGHT / size.height;
+		float sx = (size.width - Main::SCREEN_WIDTH) / 2;
+		this->container->setPosition(0, 525);
+		this->container->setScaleY(sy);
         this->container->stop();
         this->container->first->stop();
         this->container->firstEasy->stop();
         this->container->firstNormal->stop();
-        this->container->firstHard->stop();
-        this->container->firstEasyComplexityCase->stop();
-        this->container->firstNormalComplexityCase->stop();
-        this->container->firstHardComplexityCase->stop();
-        this->container->firstEasyComplexityCase->setMouseEnabled(false);
-        this->container->firstNormalComplexityCase->setMouseEnabled(false);
-        this->container->firstHardComplexityCase->setMouseEnabled(false);
+        this->container->firstHard->stop(); 
         this->addChild(this->container);
-        this->setPosition(Main::SCREEN_WIDTH_HALF, Main::SCREEN_HEIGHT_HALF);
         AudioUtil::playSound("Snd_menu_pageScrolling.mp3");
-        return true;
+		this->manageListeners("on");
+		return true;
     }// end function
 
     void DifficultyLevel::enterFrameHandler(float dt) 
     {
         if (this->frameCounter < 30)
-        {
             this->frameCounter++;
-        }
         else
-        {
             this->frameCounter = 1;
-        }
         if (this->openFlag)
         {
             if (this->container->currentFrame < this->container->totalFrames)
-            {
                 this->container->gotoAndStop((this->container->currentFrame + 1));
-            }
             if (this->container->first->currentFrame < this->container->first->totalFrames)
             {
                 this->container->first->gotoAndStop((this->container->first->currentFrame + 1));
@@ -82,6 +75,7 @@ namespace screens
                 this->container->firstNormalComplexityCase->setMouseEnabled(true);
                 this->container->firstHardComplexityCase->setMouseEnabled(true);
             }
+			if (this->openFlag && dt > 0)this->enableFrameHandler(0);
         }
         else if (this->closeFlag)
         {
@@ -109,12 +103,13 @@ namespace screens
                 Main::mainClass->levelsMenuClass->manageListeners("on"); 
                 Main::mainClass->levelsMenuClass->container->setMouseChildren(true);
                 Main::mainClass->levelsMenuClass->container->setMouseEnabled(true);
-            }
+            }else if (dt != 0)
+				this->enterFrameHandler(0); 
         }
         return;
     }// end function
 
-    void DifficultyLevel::mouseMoveHandler(cocos2d::EventMouse * e)
+ 	void DifficultyLevel::mouseMoveHandler(cocos2d::EventMouse * e)
     {
 		Main::mouseX = e->getCursorX();
 		Main::mouseY = e->getCursorY();
@@ -176,7 +171,7 @@ namespace screens
         return;
     }// end function
 
-    void DifficultyLevel::mouseDwonHandler(cocos2d::EventMouse *e) 
+    void DifficultyLevel::mouseDownHandler(cocos2d::EventMouse *e)
     {
 		if (!globalNode)EventNode::mouseDownHandler(e);
 		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();

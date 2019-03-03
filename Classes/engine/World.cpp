@@ -29,6 +29,8 @@
 #include "screens/MiddleScreen.h"
 #include "screens/PauseMenu.h"
 #include "screens/FastPause.h"
+#include "screens/PauseMenu.h"
+#include "screens/Defeat.h"
 
 using namespace engine;
 using namespace engine::units;
@@ -123,11 +125,12 @@ namespace engine
 		BaseNode::onEnter();
 		if (fixedRoot && !fixedRoot->getParent())
 			this->getParent()->addChild(fixedRoot);
-
-
 		//this->schedule(schedule_selector(World::enterFrameHandler), 0.033f);
 		//Main::mainClass->tracker.trackPageview("openLevel_" + this->nowLevel);
 	}// end function
+	void World::focusChanged(cocos2d::EventFocus * e) {
+	
+	};
 
 	void World::onExit()
 	{
@@ -300,8 +303,8 @@ namespace engine
 				this->winDefCounter = -1;
 				if (this->live <= 0)
 				{
-					//this->menuObject = new Defeat();
-					//this->addChild(this->menuObject);
+					this->menuObject = new Defeat();
+					this->addChild(this->menuObject);
 				}
 				else if (this->nowLevel == 15 && this->saveBox->getIntValue("complexityLevel") < 4)
 				{
@@ -2386,6 +2389,7 @@ namespace engine
 		//this->removeEventListener(MouseEvent.MOUSE_DOWN, this->mouseDownHandler);
 		//this->removeEventListener(MouseEvent.MOUSE_UP, this->mouseUpHandler);
 		//this->removeEventListener(Event.DEACTIVATE, this->deactivateHandler);
+		
 		//return;
 	}// end function
 	void World::removeClasses(BaseNode * node)

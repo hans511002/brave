@@ -31,9 +31,9 @@ namespace std
             if(onoff=="on"){
 				musicOn =true;
             }else if(onoff=="off"){
-				musicOn =false;
                 if(isPlayMusic())
 					stopMusic();
+				musicOn =false;
             }            
         };
 		void AudioUtil::soundManage(const string & onoff)
@@ -42,9 +42,9 @@ namespace std
 				soundOn = true;
 			}
 			else if (onoff == "off") {
-				soundOn = false;
 				if (isPlayMusic())
 					stopAllEffects();
+				soundOn = false;
 			}
 		};
 

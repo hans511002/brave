@@ -19,7 +19,11 @@ namespace screens
         float autoguidesObjectWidth;
         float autoguidesObjectHeight;
 		virtual void manageListeners(string param1);
+		cocos2d::EventListenerFocus * focusListener;
+		virtual bool  preCheckEventTarget(std::MouseEvent * event, EventMouse::MouseEventType _mouseEventType) { return false; };
 
+		//void focusChanged(cocos2d::EventFocus * e);
+		//void enableFocusEvent();
         Screen();
     };
 	struct Back_mc : public MovieClip
