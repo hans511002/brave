@@ -168,6 +168,7 @@ namespace screens
                 this->world->manageListeners("on");
                 this->world->menuObject = NULL;
                 this->world->removeChild(this);
+				return;
             }
         }
         if (this->questionFlag == 0)
@@ -301,6 +302,9 @@ namespace screens
 		default:
 			break;
 		}
+		if (event->currentTargets.size() > 1) {
+			removeEventTarget(event, this->container->shadow);
+		}
 		event->reset();
 		return false;
 	};
@@ -361,6 +365,7 @@ namespace screens
 			else if (this->container->scrollBtnResume->currentFrame == 2)
 			{
 				this->container->scrollBtnResume->gotoAndStop(1);
+				this->container->scrollBtnResume->mouseEnabled=(true);
 			}
 			if (targetName == "restartCase")
 			{
@@ -375,6 +380,7 @@ namespace screens
 			else if (this->container->scrollBtnRestart->currentFrame == 2)
 			{
 				this->container->scrollBtnRestart->gotoAndStop(1);
+				this->container->scrollBtnRestart->mouseEnabled = (true);
 			}
 			if (targetName == "exitCase")
 			{
@@ -389,6 +395,7 @@ namespace screens
 			else if (this->container->scrollBtnExit->currentFrame == 2)
 			{
 				this->container->scrollBtnExit->gotoAndStop(1);
+				this->container->scrollBtnExit->mouseEnabled = (true);
 			}
 		}
     }// end function
@@ -530,7 +537,12 @@ namespace screens
 			{
 				if (this->container->scrollBtnRestart->currentFrame == 3)
 				{
+					this->manageListeners("off");
+					//this->world->manageListeners("on");
+					//this->world->menuObject = NULL;
+					this->world->removeChild(this);
 					Main::mainClass->addNewScreen("World");
+					return;
 				}
 			}
 			else if (this->container->scrollBtnRestart->currentFrame == 3)
@@ -541,7 +553,12 @@ namespace screens
 			{
 				if (this->container->scrollBtnExit->currentFrame == 3)
 				{
+					this->manageListeners("off");
+					//this->world->manageListeners("on");
+					//this->world->menuObject = NULL;
+					this->world->removeChild(this);
 					Main::mainClass->addNewScreen("LevelsMenu");
+					return;
 				}
 			}
 			else if (this->container->scrollBtnExit->currentFrame == 3)

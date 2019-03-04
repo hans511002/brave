@@ -140,6 +140,7 @@ namespace engine
 		this->wavesClass = NULL;
 		delete this->feature;
 		this->feature = NULL;
+		BaseNode::onExit();
 	};
 	//void  World::enterFrameHandler()  // event : Event
 	void  World::enterFrameHandler(float dt)
@@ -304,7 +305,7 @@ namespace engine
 				if (this->live <= 0)
 				{
 					this->menuObject = new Defeat();
-					this->addChild(this->menuObject);
+					this->addChild(this->menuObject,9999);
 				}
 				else if (this->nowLevel == 15 && this->saveBox->getIntValue("complexityLevel") < 4)
 				{
@@ -313,8 +314,8 @@ namespace engine
 				}
 				else
 				{
-					//this->menuObject = new Victory();
-					//this->addChild(this->menuObject);
+					this->menuObject = new Victory();
+					this->addChild(this->menuObject);
 				}
 			}
 		}
@@ -323,17 +324,13 @@ namespace engine
 		{
 			if (this->viewBoss == 1)
 			{
-				//if (Sounds.instance.musicChanel)
-				//{
-				//	if (this->startMusicVolume == 0)
-				//	{
-				//		this->startMusicVolume =AudioUtil::getMusicVolume();
-				//	}
-				//	if (AudioUtil::getMusicVolume() > this->startMusicVolume * 0.35)
-				//	{
-				//		AudioUtil::setMusicVolume(AudioUtil::getMusicVolume() - this->startMusicVolume * 0.035f);
-				//	}
-				//}
+				if (AudioUtil::musicOn)
+				{
+					if (this->startMusicVolume == 0)
+						this->startMusicVolume =AudioUtil::getMusicVolume();
+					if (AudioUtil::getMusicVolume() > this->startMusicVolume * 0.35)
+						AudioUtil::setMusicVolume(AudioUtil::getMusicVolume() - this->startMusicVolume * 0.035f);
+				}
 				if (this->levelAdditionally->currentFrame < this->levelAdditionally->totalFrames)
 				{
 					this->levelAdditionally1->tryPlay();

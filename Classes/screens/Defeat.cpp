@@ -44,7 +44,7 @@ namespace screens
 		cocos2d::Size size = this->container->getSprite("shadow")->getContentSize();
 		float sy = Main::SCREEN_HEIGHT / size.height;
 		float sx = (size.width - Main::SCREEN_WIDTH) / 2;
-		//this->container->setPosition(0, Main::SCREEN_WIDTH);//600
+		this->container->setPosition(0, 100);//600
 		this->container->setScaleY(sy);
 		this->container->stop();
 		this->container->first->stop();

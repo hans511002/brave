@@ -272,6 +272,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\screens\Screen.cpp" />
     <ClCompile Include="..\Classes\screens\StartMenu.cpp" />
     <ClCompile Include="..\Classes\screens\Upgrades.cpp" />
+    <ClCompile Include="..\Classes\screens\Victory.cpp" />
     <ClCompile Include="..\Classes\sys\bezierBox.cpp" />
     <ClCompile Include="..\Classes\sys\I18n.cpp" />
     <ClCompile Include="..\Classes\sys\preloadSound.cpp" />
@@ -410,6 +411,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\screens\Screen.h" />
     <ClInclude Include="..\Classes\screens\StartMenu.h" />
     <ClInclude Include="..\Classes\screens\Upgrades.h" />
+    <ClInclude Include="..\Classes\screens\Victory.h" />
     <ClInclude Include="..\Classes\sys\bezierBox.h" />
     <ClInclude Include="..\Classes\sys\I18n.h" />
     <ClInclude Include="..\Classes\sys\preloadSound.h" />

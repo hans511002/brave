@@ -456,6 +456,9 @@
     <ClCompile Include="..\Classes\screens\Defeat.cpp">
       <Filter>src\screens</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\screens\Victory.cpp">
+      <Filter>src\screens</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -909,6 +912,9 @@
       <Filter>src\screens</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\screens\Defeat.h">
+      <Filter>src\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\screens\Victory.h">
       <Filter>src\screens</Filter>
     </ClInclude>
   </ItemGroup>
