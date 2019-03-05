@@ -1,0 +1,60 @@
+<TextureAtlas name="WinMenu_mc" imagePath="texture.png">
+ <SubTexture name="Symbol 1571" x="702" y="0" width="700" height="500"/>
+ <SubTexture name="Symbol 1600" x="0" y="0" width="700" height="500"/>
+ <SubTexture name="Symbol 6229" x="1404" y="0" width="454" height="419"/>
+ <SubTexture name="Symbol 6231" x="1691" y="421" width="106" height="272"/>
+ <SubTexture name="Symbol 6289" x="1859" y="0" width="165" height="252"/>
+ <SubTexture name="__dbTextures/Symbol 6290/Layer 3_0" x="1404" y="421" width="285" height="419"/>
+ <SubTexture name="Symbol 325" x="1977" y="468" width="39" height="37"/>
+ <SubTexture name="Symbol 6280" x="1859" y="254" width="117" height="298"/>
+ <SubTexture name="__dbTextures/scroll/Layer 7_0" x="1732" y="1207" width="239" height="8"/>
+ <SubTexture name="__dbTextures/scroll/Layer 7_1" x="640" y="1111" width="239" height="37"/>
+ <SubTexture name="__dbTextures/scroll/Layer 7_2" x="400" y="1111" width="239" height="66"/>
+ <SubTexture name="__dbTextures/scroll/Layer 7_3" x="1391" y="944" width="239" height="95"/>
+ <SubTexture name="__dbTextures/scroll/Layer 7_4" x="1709" y="859" width="239" height="124"/>
+ <SubTexture name="__dbTextures/scroll/Layer 7_5" x="1779" y="706" width="239" height="152"/>
+ <SubTexture name="__dbTextures/scroll/Layer 7_9" x="1799" y="553" width="239" height="152"/>
+ <SubTexture name="Symbol 6236" x="1631" y="984" width="400" height="85"/>
+ <SubTexture name="位图 1" x="1691" y="695" width="86" height="62"/>
+ <SubTexture name="__dbTextures/Symbol 6279/Layer 5_2" x="1393" y="842" width="314" height="50"/>
+ <SubTexture name="__dbTextures/Symbol 6279/Layer 5_3" x="493" y="1043" width="411" height="66"/>
+ <SubTexture name="__dbTextures/Symbol 6279/Layer 5_4" x="586" y="960" width="510" height="81"/>
+ <SubTexture name="__dbTextures/Symbol 6279/Layer 5_5" x="0" y="801" width="608" height="97"/>
+ <SubTexture name="__dbTextures/Symbol 6279/Layer 5_6" x="680" y="502" width="705" height="113"/>
+ <SubTexture name="__dbTextures/Symbol 6279/Layer 5_7" x="0" y="502" width="678" height="104"/>
+ <SubTexture name="__dbTextures/Symbol 6279/Layer 5_8" x="679" y="617" width="648" height="94"/>
+ <SubTexture name="__dbTextures/Symbol 6279/Layer 5_9" x="652" y="713" width="623" height="87"/>
+ <SubTexture name="__dbTextures/Symbol 6279/Layer 4_11" x="1514" y="1207" width="216" height="37"/>
+ <SubTexture name="__dbTextures/Symbol 6279/Layer 4_12" x="1392" y="894" width="307" height="48"/>
+ <SubTexture name="__dbTextures/Symbol 6279/Layer 4_13" x="0" y="1064" width="398" height="61"/>
+ <SubTexture name="__dbTextures/Symbol 6279/Layer 4_14" x="0" y="988" width="491" height="74"/>
+ <SubTexture name="__dbTextures/Symbol 6279/Layer 4_15" x="0" y="900" width="584" height="86"/>
+ <SubTexture name="__dbTextures/Symbol 6279/Layer 4_16" x="0" y="608" width="677" height="99"/>
+ <SubTexture name="__dbTextures/Symbol 6279/Layer 4_17" x="0" y="709" width="650" height="90"/>
+ <SubTexture name="__dbTextures/Symbol 6279/Layer 4_18" x="610" y="802" width="622" height="80"/>
+ <SubTexture name="__dbTextures/Symbol 6279/Layer 4_19" x="610" y="884" width="598" height="74"/>
+ <SubTexture name="Symbol 6237" x="0" y="1189" width="191" height="30"/>
+ <SubTexture name="Symbol 47" x="1977" y="384" width="50" height="50"/>
+ <SubTexture name="Symbol 6250" x="192" y="1196" width="161" height="29"/>
+ <SubTexture name="Symbol 56" x="2026" y="0" width="8" height="5"/>
+ <SubTexture name="Symbol 6265" x="1580" y="1071" width="180" height="134"/>
+ <SubTexture name="位图 20" x="204" y="1127" width="171" height="67"/>
+ <SubTexture name="位图 21" x="1234" y="862" width="156" height="58"/>
+ <SubTexture name="位图 22" x="1799" y="493" width="38" height="28"/>
+ <SubTexture name="Symbol 6269" x="906" y="1043" width="187" height="143"/>
+ <SubTexture name="Symbol 6271" x="1210" y="922" width="180" height="134"/>
+ <SubTexture name="位图 25" x="1799" y="461" width="48" height="30"/>
+ <SubTexture name="位图 23" x="1977" y="436" width="48" height="30"/>
+ <SubTexture name="位图 24" x="1799" y="421" width="58" height="38"/>
+ <SubTexture name="Symbol 6273" x="1391" y="1040" width="187" height="143"/>
+ <SubTexture name="Symbol 6275" x="1761" y="1071" width="180" height="134"/>
+ <SubTexture name="位图 26" x="1977" y="254" width="46" height="128"/>
+ <SubTexture name="位图 27" x="1277" y="713" width="114" height="147"/>
+ <SubTexture name="位图 28" x="0" y="1127" width="202" height="60"/>
+ <SubTexture name="Symbol 6277" x="1095" y="1058" width="187" height="143"/>
+ <SubTexture name="__dbTextures/Symbol 6248/Layer 1_0" x="1284" y="1185" width="228" height="30"/>
+ <SubTexture name="__dbTextures/Symbol 6248/Layer 1_1" x="377" y="1178" width="228" height="30"/>
+ <SubTexture name="__dbTextures/Symbol 6248/Layer 1_2" x="607" y="1181" width="228" height="30"/>
+ <SubTexture name="__dbTextures/Symbol 6248/Layer 1_3" x="640" y="1149" width="228" height="30"/>
+ <SubTexture name="__dbTextures/Symbol 6248/Layer 1_4" x="837" y="1188" width="228" height="30"/>
+</TextureAtlas>

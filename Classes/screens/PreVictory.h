@@ -4,36 +4,37 @@
 #include "Screen.h"
 
 namespace screens
-{ 
-    struct PreVictory_mc:public MovieClip
-    {
-        MovieClipSub * cont;
-        MovieClipSub * contBtnOk;
-        MCCase * contBtnOkOkCase;
-        PreVictory_mc();
-    };
-    class PreVictory :public Screen
-    { 
-        PreVictory_mc * container;  
+{
+	struct PreVictory_mc :public MovieClip
+	{
+		MovieClipSub * cont;
+		MovieClipSub * contBtnOk;
+		MCCase * contBtnOkOkCase;
+		PreVictory_mc();
+	};
+	class PreVictory :public Screen
+	{
+	public:
+		PreVictory_mc * container;
 
-         PreVictory();
+		PreVictory();
 
-        bool init();
+		virtual bool init();
 
-        void enterFrameHandler(float dt);
+		virtual void enterFrameHandler(float dt);
 
-        void mouseMoveHandler(cocos2d::EventMouse * event) ;
+		virtual void mouseMoveHandler(cocos2d::EventMouse * e);
 
-        void mouseDownHandler(cocos2d::EventMouse * event);
+		virtual void mouseDownHandler(cocos2d::EventMouse * e);
 
-        void mouseUpHandler(cocos2d::EventMouse * event);
+		virtual void mouseUpHandler(cocos2d::EventMouse * e);
 
-        void stopAll() ;;
+		virtual void stopAll();;
 
-        void close() ;
+		virtual void close();
 
-        void kill() ; 
+		virtual void kill();
 
-    };
+	};
 }
 #endif

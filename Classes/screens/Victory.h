@@ -5,45 +5,49 @@
 
 namespace screens
 {
-    struct SponsorLink:public MovieClipSub
-    {
-        MovieClipSub * firstSponsorLink1Cont;
-        MCCase * firstSponsorLink1Link1Case;
-        SponsorLink(MC * mc,const & string slotName,int reinit);
-    };
-    struct WinMenuBase:public MovieClip
-    {
-        MovieClipSub * first;
-        MovieClipSub * firstStars;
-        MovieClipSub * firstScrollBtnContinue;
-        MovieClipSub * firstScrollBtnContinueArrow;
-        MCCase * firstScrollBtnContinueContinueCase;
-        MovieClipSub * firstScrollBtnRestart;
-        MovieClipSub * firstScrollBtnRestartArrow;
-        MCCase * firstScrollBtnRestartRestartCase; 
-        
-        MovieClipSub * firstSponsor;
-        SponsorLink * firstSponsorLink1;
-        SponsorLink * firstSponsorLink2;
-        SponsorLink * firstSponsorLink3;
-        WinMenuBase(const string & name);
-    };
-    struct WinMenu_mc:public WinMenuBase
-    { 
-        WinMenu_mc();
-    };
-    struct WinMenuFinish_mc:public WinMenuBase
-    {
-        WinMenuFinish_mc();
-    };
-    struct WinSurvMenu_mc:public WinMenuBase
-    {
-        WinSurvMenu_mc();
-    };
+	struct WinMenuBase :public MovieClip
+	{
+		MovieClipSub * first;
+		MovieClipSub * firstStars; 
+
+		MovieClipSub * firstScroll;
+
+		MovieClipSub * firstScrollLogo;
+		MCCase * firstScrollLogoLogoCase;
+
+		MovieClipSub * firstScrollBtnContinue;
+		MovieClipSub * firstScrollBtnContinueArrow;
+		MCCase * firstScrollBtnContinueContinueCase;
+		MovieClipSub * firstScrollBtnRestart;
+		MovieClipSub * firstScrollBtnRestartArrow;
+		MCCase * firstScrollBtnRestartRestartCase;
+
+		MovieClipSub * firstSponsor;
+		MovieClipSub * firstSponsorLink1;
+		MCCase * firstSponsorLink1Link1Case;
+		MovieClipSub * firstSponsorLink2;
+		MCCase * firstSponsorLink2Link2Case;
+		MovieClipSub * firstSponsorLink3;
+		MCCase * firstSponsorLink3Link3Case;
+
+		WinMenuBase(const string & name);
+	};
+	struct WinMenu_mc :public WinMenuBase
+	{
+		WinMenu_mc();
+	};
+	struct WinMenuFinish_mc :public WinMenuBase
+	{
+		WinMenuFinish_mc();
+	};
+	struct WinSurvMenu_mc :public WinMenuBase
+	{
+		WinSurvMenu_mc();
+	};
 	class Victory :public Screen
 	{
 	public:
-		MovieClip container;
+		WinMenuBase* container;
 		int starsFlag;
 		World * world;
 		bool firstSoundPlay;
@@ -58,14 +62,13 @@ namespace screens
 
 		virtual void mouseUpHandler(cocos2d::EventMouse * event);
 
-		//virtual void link1Play(event:VideoEvent);
+		virtual void link1Play(cocos2d::Event *e);
 
-		//virtual void link2Play(event:VideoEvent);
+		virtual void link2Play(cocos2d::Event *e);
 
-		//virtual void link3Play(event:VideoEvent);
+		virtual void link3Play(cocos2d::Event *e);
 
 		virtual void removeLinksListeners();
-
 
 	};
 }

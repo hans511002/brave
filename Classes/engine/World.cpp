@@ -31,6 +31,9 @@
 #include "screens/FastPause.h"
 #include "screens/PauseMenu.h"
 #include "screens/Defeat.h"
+#include "screens/Victory.h"
+#include "screens/PreVictory.h"
+
 
 using namespace engine;
 using namespace engine::units;
@@ -309,8 +312,8 @@ namespace engine
 				}
 				else if (this->nowLevel == 15 && this->saveBox->getIntValue("complexityLevel") < 4)
 				{
-					//this->menuObject = new PreVictory();
-					//this->addChild(this->menuObject);
+					this->menuObject = new PreVictory();
+					this->addChild(this->menuObject);
 				}
 				else
 				{

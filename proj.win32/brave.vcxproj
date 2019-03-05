@@ -269,7 +269,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\screens\MiddleScreen.cpp" />
     <ClCompile Include="..\Classes\screens\OpenLevel.cpp" />
     <ClCompile Include="..\Classes\screens\PauseMenu.cpp" />
+    <ClCompile Include="..\Classes\screens\PreVictory.cpp" />
     <ClCompile Include="..\Classes\screens\Screen.cpp" />
+    <ClCompile Include="..\Classes\screens\StartLogo.cpp" />
     <ClCompile Include="..\Classes\screens\StartMenu.cpp" />
     <ClCompile Include="..\Classes\screens\Upgrades.cpp" />
     <ClCompile Include="..\Classes\screens\Victory.cpp" />
@@ -408,7 +410,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\screens\MiddleScreen.h" />
     <ClInclude Include="..\Classes\screens\OpenLevel.h" />
     <ClInclude Include="..\Classes\screens\PauseMenu.h" />
+    <ClInclude Include="..\Classes\screens\PreVictory.h" />
     <ClInclude Include="..\Classes\screens\Screen.h" />
+    <ClInclude Include="..\Classes\screens\StartLogo.h" />
     <ClInclude Include="..\Classes\screens\StartMenu.h" />
     <ClInclude Include="..\Classes\screens\Upgrades.h" />
     <ClInclude Include="..\Classes\screens\Victory.h" />

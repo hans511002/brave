@@ -1,5 +1,5 @@
-﻿#ifndef SCREENS_PREVICTORY_H 
-#define SCREENS_PREVICTORY_H
+﻿#ifndef SCREENS_STARTLOGO_H 
+#define SCREENS_STARTLOGO_H
 #include "BaseHeaders.h"   
 #include "Screen.h"
 
