@@ -5,6 +5,41 @@
 
 namespace screens
 {
+    struct SponsorLink:public MovieClipSub
+    {
+        MovieClipSub * firstSponsorLink1Cont;
+        MCCase * firstSponsorLink1Link1Case;
+        SponsorLink(MC * mc,const & string slotName,int reinit);
+    };
+    struct WinMenuBase:public MovieClip
+    {
+        MovieClipSub * first;
+        MovieClipSub * firstStars;
+        MovieClipSub * firstScrollBtnContinue;
+        MovieClipSub * firstScrollBtnContinueArrow;
+        MCCase * firstScrollBtnContinueContinueCase;
+        MovieClipSub * firstScrollBtnRestart;
+        MovieClipSub * firstScrollBtnRestartArrow;
+        MCCase * firstScrollBtnRestartRestartCase; 
+        
+        MovieClipSub * firstSponsor;
+        SponsorLink * firstSponsorLink1;
+        SponsorLink * firstSponsorLink2;
+        SponsorLink * firstSponsorLink3;
+        WinMenuBase(const string & name);
+    };
+    struct WinMenu_mc:public WinMenuBase
+    { 
+        WinMenu_mc();
+    };
+    struct WinMenuFinish_mc:public WinMenuBase
+    {
+        WinMenuFinish_mc();
+    };
+    struct WinSurvMenu_mc:public WinMenuBase
+    {
+        WinSurvMenu_mc();
+    };
 	class Victory :public Screen
 	{
 	public:
