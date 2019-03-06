@@ -168,22 +168,25 @@ LOCAL_SRC_FILES := main.cpp \
    ../../../Classes/engine/xml/ReadXML.cpp                                        \
    ../../../Classes/engine/xml/XmlConfigParser.cpp                                \
    ../../../Classes/MainClass.cpp                                                 \
-   ../../../Classes/screens/FastPause.cpp                                         \
-   ../../../Classes/screens/MiddleScreen.cpp                                      \
    ../../../Classes/sys/bezierBox.cpp                                             \
    ../../../Classes/sys/I18n.cpp                                                  \
    ../../../Classes/sys/saveBox.cpp        \
-   ../../../Classes/sys/preloadSound.cpp
+   ../../../Classes/sys/preloadSound.cpp   \
+   ../../../Classes/screens/FastPause.cpp                                         \
+   ../../../Classes/screens/MiddleScreen.cpp                                      \
+   ../../../Classes/screens/StartMenu.cpp                                         \
+   ../../../Classes/screens/Achievements.cpp                                      \
+   ../../../Classes/screens/Defeat.cpp                                            \
+   ../../../Classes/screens/DifficultyLevel.cpp                                   \
+   ../../../Classes/screens/LevelsMenu.cpp                                        \
+   ../../../Classes/screens/OpenLevel.cpp                                         \
+   ../../../Classes/screens/Upgrades.cpp                                          \
+   ../../../Classes/screens/Victory.cpp                                          \
+   ../../../Classes/screens/PreVictory.cpp                                          \
+   ../../../Classes/screens/PauseMenu.cpp 
 
-#   ../../../Classes/screens/StartMenu.cpp                                         \
+
 #   ../../../Classes/screens/Credits.cpp                                           \
-#   ../../../Classes/screens/Achievements.cpp                                      \
-#   ../../../Classes/screens/Defeat.cpp                                            \
-#   ../../../Classes/screens/DifficultyLevel.cpp                                   \
-#   ../../../Classes/screens/LevelsMenu.cpp                                        \
-#   ../../../Classes/screens/OpenLevel.cpp                                         \
-#   ../../../Classes/screens/Upgrades.cpp                                          \
-#   ../../../Classes/screens/PauseMenu.cpp                                         \
 
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../../cocos2d $(LOCAL_PATH)/../../../Classes $(LOCAL_PATH)/../../../Classes/base

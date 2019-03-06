@@ -10,8 +10,8 @@ namespace screens
 		first = this->createMovieClipSub("first");
 		firstScroll = this->first->createMovieClipSub("scroll");
 		firstFire = this->first->createMovieClipSub("fire");
-		firstScrollBtnContinue = this->first->createMovieClipSub("btnContinue");
-		firstScrollBtnRestart = this->first->createMovieClipSub("btnRestart");
+		firstScrollBtnContinue = this->firstScroll->createMovieClipSub("btnContinue");
+		firstScrollBtnRestart = this->firstScroll->createMovieClipSub("btnRestart");
 		firstScrollBtnContinueContinueCase = this->firstScrollBtnContinue->createCase("continueCase");
 		firstScrollBtnRestartRestartCase = this->firstScrollBtnRestart->createCase("restartCase");
 		firstScrollBtnRestartArrow = this->firstScrollBtnRestart->createMovieClipSub("arrow");
@@ -44,7 +44,7 @@ namespace screens
 		cocos2d::Size size = this->container->getSprite("shadow")->getContentSize();
 		float sy = Main::SCREEN_HEIGHT / size.height;
 		float sx = (size.width - Main::SCREEN_WIDTH) / 2;
-		this->container->setPosition(0, 100);//600
+		this->container->setPosition(0, 20);//600
 		this->container->setScaleY(sy);
 		this->container->stop();
 		this->container->first->stop();
@@ -134,14 +134,7 @@ namespace screens
 				}
 			}
 		}
-		if (this->container->firstFire->currentFrame < this->container->firstFire->totalFrames)
-		{
-			this->container->firstFire->gotoAndStop((this->container->firstFire->currentFrame + 1));
-		}
-		else
-		{
-			this->container->firstFire->gotoAndStop(1);
-		}
+		this->container->firstFire->tryPlay();
 		if (this->container->firstScrollBtnContinue->currentFrame > 1)
 		{
 			if (!this->container->firstScrollBtnContinueArrow->isVisible())

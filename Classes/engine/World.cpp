@@ -44,9 +44,6 @@ namespace engine
 	{
 		if (useNodeEvent)
 			std::globalNode = this;
-		////////////level end////////
-		live = 0; winDefCounter = (1);
-		///////////////////////
 		//MCCase::worldMouseHandler.node = this;
 		//MCCase::worldMouseHandler.mouseDownHandler = NODE_MOUSEHANDLER_SELECTOR(World::mouseDownHandler);
 		//MCCase::worldMouseHandler.mouseMoveHandler =   NODE_MOUSEHANDLER_SELECTOR (World::mouseMoveHandler);
@@ -64,6 +61,9 @@ namespace engine
 		//this->listOfStonePortals = [];
 		//this->listOfLevinPortals = [];
 		this->live = this->liveMax;
+		////////////level end////////
+		//live = 0; winDefCounter = (1);
+		///////////////////////
 		//this->listOfMoveSpheres = [];
 		this->listOfClasses.clear();
 		//this->listOfTowers = [];
