@@ -1,1 +1,1 @@
-{"width":512,"imagePath":"star_tex.png","height":128,"name":"star","SubTexture":[{"width":70,"y":1,"height":38,"name":"__dbTextures/star/Layer 2_0","x":435},{"width":432,"y":1,"height":69,"name":"位图 1","x":1}]}
+{"width":128,"SubTexture":[{"width":70,"y":65,"height":38,"name":"__dbTextures/star/Layer 2_0","x":1},{"width":86,"y":1,"height":62,"name":"位图 1","x":1}],"height":128,"name":"star","imagePath":"star_tex.png"}

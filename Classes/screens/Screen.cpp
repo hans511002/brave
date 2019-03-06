@@ -5,7 +5,10 @@ namespace screens
 	{
 		this->setContentSize(Size(Main::SCREEN_WIDTH, Main::SCREEN_HEIGHT));
 	};
-
+	bool Screen::preCheckEventTarget(std::MouseEvent * event, EventMouse::MouseEventType _mouseEventType) {
+		removeEventTarget(event, this);
+		return false;
+	};
 	void Screen::manageListeners(string param1) {
 		if (param1 == "on")
 		{

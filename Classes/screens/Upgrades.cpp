@@ -16,11 +16,12 @@ namespace screens
 		this->shadow = this->createCase("shadow");
 		this->stars=new MovieClip("screen/", "star", "star");
 		this->starsTXT = this->stars->createText("starsTXT");
-
-		contBtnReset = this->cont->createMovieClipSub("btnReset");
-		contBtnResetResetCase = this->contBtnReset->createCase("resetCase");
-		contBtnAccept = this->cont->createMovieClipSub("btnAccept");
-		contBtnAcceptAcceptCase = this->contBtnAccept->createCase("acceptCase");
+		std::setText(this->starsTXT, "TEST");
+		std::drawRange(this->starsTXT, Color4F::RED);
+		this->contBtnReset = this->cont->createMovieClipSub("btnReset");
+		this->contBtnResetResetCase = this->contBtnReset->createCase("resetCase");
+		this->contBtnAccept = this->cont->createMovieClipSub("btnAccept");
+		this->contBtnAcceptAcceptCase = this->contBtnAccept->createCase("acceptCase");
 		this->levinUpgrade1 = this->cont->createMovieClipSub<UpgradeButton>("levinUpgrade1");
 		this->levinUpgrade2 = this->cont->createMovieClipSub<UpgradeButton>("levinUpgrade2");
 		this->levinUpgrade3 = this->cont->createMovieClipSub<UpgradeButton>("levinUpgrade3");
@@ -119,7 +120,8 @@ namespace screens
 		this->container->back->setPosition(26, Main::SCREEN_HEIGHT - 15);
 		this->addChild(this->container->back);
 		this->addChild(this->container->stars);
-		this->container->stars->setPosition(Main::SCREEN_WIDTH - 10, Main::SCREEN_HEIGHT - 10);
+		this->printNodePos(this->container->stars);
+		this->container->stars->setPosition(0, Main::SCREEN_HEIGHT - 10);
 		this->container->stop();
 		this->container->back->stop();
 		this->container->back->backCase->stop();
@@ -164,7 +166,7 @@ namespace screens
 		this->hint->setMouseEnabled(false);
 		this->hint->setVisible(false);
 		this->addChild(this->hint);
-		this->upgradeUpdate();
+		//this->upgradeUpdate();
 		this->container->cont->setMouseChildren(false);
 		this->container->cont->setMouseEnabled(false);
 		AudioUtil::playSound("Snd_menu_openBoard.mp3");

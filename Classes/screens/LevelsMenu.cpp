@@ -149,7 +149,8 @@ namespace screens
         else 
             this->container->btnSound->gotoAndStop(4);
         
-        if (!Main::mainClass->saveBoxClass->getBoolValue("difficultyLevel"))
+		this->container->setMouseEnabled(true);
+		if (!Main::mainClass->saveBoxClass->getBoolValue("difficultyLevel"))
         {
             this->container->setMouseChildren(false);
             this->container->setMouseEnabled(false);
@@ -213,7 +214,7 @@ namespace screens
             {
                 this->container->freeStarsCont->gotoAndStop(1);
             }
-            this->container->freeStarsContStarsTXT->setText(Main::mainClass->saveBoxClass->getCharsValue("stars"));
+			std::setText(this->container->freeStarsContStarsTXT, Main::mainClass->saveBoxClass->getIntValue("stars"));
             //this->container->freeStarsCont->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
         }
         if (this->newLevel > 0 && this->container->mouseEnabled)

@@ -15,11 +15,11 @@ namespace screens
 		this->firstScrollLogoLogoCase = this->firstScrollLogo->createCase("logoCase");
 
 		this->firstScrollBtnContinue = this->firstScroll->createMovieClipSub("btnContinue");
-		this->firstScrollBtnContinueArrow = this->firstScrollBtnContinue->createMovieClipSub("aArrow");
-		this->firstScrollBtnContinueContinueCase = this->firstScrollBtnContinue->createCase("case");
+		this->firstScrollBtnContinueArrow = this->firstScrollBtnContinue->createMovieClipSub("arrow");
+		this->firstScrollBtnContinueContinueCase = this->firstScrollBtnContinue->createCase("continueCase");
 		this->firstScrollBtnRestart = this->firstScroll->createMovieClipSub("btnRestart", true);
-		this->firstScrollBtnRestartArrow = this->firstScrollBtnRestart->createMovieClipSub("aArrow");
-		this->firstScrollBtnRestartRestartCase = this->firstScrollBtnRestart->createCase("case");
+		this->firstScrollBtnRestartArrow = this->firstScrollBtnRestart->createMovieClipSub("arrow");
+		this->firstScrollBtnRestartRestartCase = this->firstScrollBtnRestart->createCase("restartCase");
 
 		this->firstSponsor = NULL;
 		this->firstSponsorLink1 = NULL;
@@ -82,6 +82,7 @@ namespace screens
 		{
 			this->container = new WinSurvMenu_mc();
 		}
+		this->container->setPosition(Vec2(-350,850));
 		this->container->stop();
 		this->container->first->stop();
 		this->container->firstStars->stop();
@@ -118,8 +119,9 @@ namespace screens
 			}
 			if (Main::mainClass->saveBoxClass->getIntValue("starsOfLevels", Main::mainClass->saveBoxClass->playLevel - 1) < this->starsFlag)
 			{
-				Main::mainClass->saveBoxClass->setValue("stars", Main::mainClass->saveBoxClass->getIntValue("stars")
-					+ (this->starsFlag - Main::mainClass->saveBoxClass->getIntValue("starsOfLevels", Main::mainClass->saveBoxClass->playLevel - 1)));
+				int stars = Main::mainClass->saveBoxClass->getIntValue("stars")
+					+ (this->starsFlag - Main::mainClass->saveBoxClass->getIntValue("starsOfLevels", Main::mainClass->saveBoxClass->playLevel - 1));
+				Main::mainClass->saveBoxClass->setValue("stars", stars);
 				Main::mainClass->saveBoxClass->setValue("newStarsForLevel", Main::mainClass->saveBoxClass->playLevel);
 				Main::mainClass->saveBoxClass->setValue("starsOfLevels", Main::mainClass->saveBoxClass->playLevel - 1, this->starsFlag);
 			}

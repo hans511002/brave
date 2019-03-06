@@ -159,9 +159,9 @@ namespace engine
 	}
 	MovieClipSub*  MC::getMemSubMC(const string &  slotName)
 	{
-		for (int i = 0; i < this->submcbs.size(); i++)
+		for (int i = 0; i < this->allSubMcbs.size(); i++)
 		{
-			MovieClipSub *mcbs = ISTYPE(MovieClipSub, this->submcbs[i]);
+			MovieClipSub *mcbs = ISTYPE(MovieClipSub, this->allSubMcbs[i]);
 			if (mcbs) {
 				if (slotName == mcbs->getName())
 					return mcbs;

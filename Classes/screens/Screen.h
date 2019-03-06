@@ -25,7 +25,8 @@ namespace screens
 		//void enableFocusEvent();
         Screen();
         virtual void enterFrameHandler(float dt){};
-		virtual bool preCheckEventTarget(std::MouseEvent * event, EventMouse::MouseEventType _mouseEventType) { return false; };
+		
+		virtual bool preCheckEventTarget(std::MouseEvent * event, EventMouse::MouseEventType _mouseEventType);
 		virtual void mouseMoveHandler(cocos2d::EventMouse * event){};
 		virtual void mouseDownHandler(cocos2d::EventMouse * event){};
 		virtual void mouseUpHandler(cocos2d::EventMouse * event){};

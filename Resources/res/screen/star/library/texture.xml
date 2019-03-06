@@ -1,4 +1,4 @@
 <TextureAtlas name="star" imagePath="texture.png">
- <SubTexture name="__dbTextures/star/Layer 2_0" x="434" y="0" width="70" height="38"/>
- <SubTexture name="位图 1" x="0" y="0" width="432" height="69"/>
+ <SubTexture name="__dbTextures/star/Layer 2_0" x="0" y="64" width="70" height="38"/>
+ <SubTexture name="位图 1" x="0" y="0" width="86" height="62"/>
 </TextureAtlas>
