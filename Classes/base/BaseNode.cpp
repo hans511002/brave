@@ -1227,9 +1227,11 @@ namespace std
 		EventNode::beginTouchNode = node;
 		EventNode::beginTouchPos = tpos;
 		if (globalNode) {
+			globalNode->mouseMoveHandler(&mevent);
 			globalNode->mouseDownHandler(&mevent);
 		}
 		else {
+			mouseMoveHandler(&mevent);
 			mouseDownHandler(&mevent);
 		}
 		return true;
@@ -1263,12 +1265,10 @@ namespace std
 		mevent.setCurrentTarget(node);
 		if (globalNode)
 		{
-			globalNode->mouseMoveHandler(&mevent);
 			globalNode->mouseUpHandler(&mevent);
 		}
 		else
 		{
-			mouseMoveHandler(&mevent);
 			mouseUpHandler(&mevent);
 		}
 	};

@@ -462,7 +462,9 @@ namespace screens
 				}
 				else if (targetName == "shadow")
 				{
-					this->close();
+					Sprite * bg = this->container->cont->getSprite("Layer 27");
+					if (!bg || !std::hitTest(bg, EventNode::beginTouchPos))
+						this->close();
 				}
 			}
 		}
