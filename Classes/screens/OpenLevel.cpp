@@ -91,7 +91,7 @@ namespace screens
         this->container->boardMainMode->gotoAndStop(4);
         this->container->boardSurvivalMode->stop();
         this->container->boardCurrentComplexity->stop();
-        this->container->boardCurrentComplexityFire->gotoAndStop(std::round(std::random() * (this->container->boardCurrentComplexityFire->totalFrames - 1) + 1));
+        this->container->boardCurrentComplexityFire->gotoAndStop((int)(std::random() * (this->container->boardCurrentComplexityFire->totalFrames - 1+0.5) + 1));
         this->container->boardStart->gotoAndStop(1);
         this->container->boardCurrentComplexityComplexityCase->setMouseEnabled(true);
         this->container->board->setMouseChildren(false);
@@ -161,7 +161,7 @@ namespace screens
         }
 		char tmp[32];
 		sprintf(tmp, "%s %i", I18N_VALUE(I18N_CODE::U200), this->playLevel);
-		this->container->boardHeaderTXT->setText(tmp);
+		this->container->boardHeaderTXT->setText(string(tmp));
 		this->container->boardHeaderTXT->setFontName("bold");
 		this->container->boardHeaderTXT->setTextColor(Color4B(130, 130, 00, 255));
 		this->container->boardHeaderTXT->setFontSize(24);

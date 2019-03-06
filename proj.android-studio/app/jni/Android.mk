@@ -184,6 +184,7 @@ LOCAL_SRC_FILES := main.cpp \
    ../../../Classes/screens/Victory.cpp                                          \
    ../../../Classes/screens/PreVictory.cpp                                          \
    ../../../Classes/screens/StartLogo.cpp                                          \
+   ../../../Classes/screens/Screen.cpp                                          \
    ../../../Classes/screens/PauseMenu.cpp
 
 

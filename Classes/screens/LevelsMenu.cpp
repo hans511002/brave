@@ -108,7 +108,7 @@ namespace screens
 		const std::vector<Slot*>& slots = this->container->wavesAnimation->arm->getSlots();
 		for (int i = 0; i < slots.size(); i++){
 			MovieClipSub * wave= this->container->wavesAnimation->createMovieClipSub(slots.at(i)->getName());
-			wave->gotoAndStop((std::round(std::random() * (wave->totalFrames - 1)) + 1));
+			wave->gotoAndStop(((int)(std::random() * (wave->totalFrames - 1)+0.5) + 1));
             this->listOfAnimation.push(wave);
         }
         this->listOfLevels.push(this->container->level1);
