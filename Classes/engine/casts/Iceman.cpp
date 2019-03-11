@@ -734,6 +734,14 @@ namespace engine{
 			}
 			return;
 		}// end function
+		void Iceman::remove() {
+			if (this->world->selectObject == this) {
+				this->world->selectObject = NULL;
+			}
+			this->world->removeIndexes(this, 1);
+			this->world->removeClasses(this);
+			this->world->removeChild(this);
+		}
 
 		void  Iceman::kill()
 		{
@@ -741,12 +749,6 @@ namespace engine{
 			{
 				this->dead = true;
 				this->soundTimerManageMove(false); 
-				if (this->world->selectObject == this) {
-					this->world->selectObject = NULL;
-				}
-				this->world->removeIndexes(this,1);
-				this->world->removeClasses(this);
-				this->world->removeChild(this);
 			}
 			return;
 		}// end function

@@ -197,7 +197,7 @@ namespace engine
 			}
 			return false;
 		}// end function
-		Cast::remove(){
+		void Cast::remove(){
 			this->world->worldInterface->castRegime("off");
 			this->world->worldInterface->autoguidersButtons();
 			this->world->cast = NULL;

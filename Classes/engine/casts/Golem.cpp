@@ -760,23 +760,26 @@ namespace engine {
 			this->kill();
 			return;
 		}// end function
+		void Golem::remove() {
+			this->world->removeIndexes(this, 1);
+			this->world->setPosition(this->world->savePos - movePos);
+			this->world->worldInterface->setPosition(this->world->worldInterface->savePos + movePos);
+			this->movePos = Vec2(0, 0);
+			//this->world->hint.x = Math.round(this->world->hint.x);
+			//this->world->hint.y = Math.round(this->world->hint.y);
+			if (this->world->selectObject == this) {
+				this->world->selectObject = NULL;
+			}
+			this->world->removeClasses(this);
+			this->world->removeChild(this);
+		}
 
 		void Golem::kill()
 		{
 			if (!this->dead)
 			{
 				this->dead = true;
-				this->world->removeIndexes(this,1);
-				this->world->setPosition(this->world->savePos - movePos);
-				this->world->worldInterface->setPosition(this->world->worldInterface->savePos + movePos);
-				this->movePos = Vec2(0, 0);
-				//this->world->hint.x = Math.round(this->world->hint.x);
-				//this->world->hint.y = Math.round(this->world->hint.y);
-				if (this->world->selectObject == this) {
-					this->world->selectObject = NULL;
-				}
-				this->world->removeClasses(this);
-				this->world->removeChild(this);
+				
 			}
 			return;
 		}// end function

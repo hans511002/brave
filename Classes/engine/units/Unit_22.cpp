@@ -214,14 +214,14 @@ namespace engine
             return;
         }// end function
 
-		void Unit_22::rmove()
+		void Unit_22::remove()
         {
             this->world->removeIndexes(this->blockRadiusGr,0);
             if(this->blockRadiusGr){
                 world->removeChild(this->blockRadiusGr);
                 this->blockRadiusGr=NULL;
             }  
-            Unit::rmove();
+            Unit::remove();
             return;
         }// end function
 

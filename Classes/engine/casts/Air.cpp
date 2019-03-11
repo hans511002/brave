@@ -486,20 +486,22 @@ namespace engine
 			}
 			return;
 		} // end function
+		void Air::remove() {
+			this->world->removeClasses(this);
+			this->world->setPosition(this->world->savePos - movePos);
+			this->world->worldInterface->setPosition(this->world->worldInterface->savePos + movePos);
+			this->movePos = Vec2(0, 0);
+			if (this->world->selectObject == this) {
+				this->world->selectObject = NULL;
+			}
+			this->world->removeChild(this);
+		}
 
 		void Air::kill()
 		{
 			if (!this->dead)
 			{
 				this->dead = true;
-				this->world->removeClasses(this); 
-				this->world->setPosition(this->world->savePos - movePos);
-				this->world->worldInterface->setPosition(this->world->worldInterface->savePos + movePos);
-				this->movePos = Vec2(0, 0);
-				if (this->world->selectObject == this) {
-					this->world->selectObject = NULL;
-				}
-				this->world->removeChild(this);
 			}
 			return;
 		} // end function

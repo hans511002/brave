@@ -162,7 +162,7 @@ namespace engine
 			//logInfo("healthBar.localToGlobal", wpos);
 			if (this->dead )
 			{
-				if{this->container->iceDeath)
+				if(this->container->iceDeath)
 				{
 					if (this->container->iceDeath->isVisible())
 					{
