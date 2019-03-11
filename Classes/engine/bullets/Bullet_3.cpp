@@ -54,6 +54,10 @@ namespace engine{
 
 		void Bullet_3::update(float dt)
 		{
+            if(this->dead){
+                this->remove();
+                return;
+            }
 			Bullet::update();
 			if (mainCounter == 11)
 			{
@@ -132,15 +136,14 @@ namespace engine{
 			return;
 		}// end function
 
-		void Bullet_3::kill()
+		void Bullet_3::remove()
 		{
+			Bullet::remove();
 			if (this->shadow)
-			{
-				world->removeIndexes(this,2); 
-				world->removeChild(this->shadow);
+			{ 
+				this->world->removeChild(this->shadow);
 				this->shadow = NULL;
-			}
-			Bullet::kill();
+			} 
 			return;
 		}// end function
 	}

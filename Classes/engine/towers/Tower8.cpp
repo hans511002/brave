@@ -68,6 +68,10 @@ namespace engine
 
         void Tower8::update(float dt) 
         {
+            if(this->dead){
+                this->remove();
+                return;
+            }
 			Tower8_mc *	container = ISTYPE(Tower8_mc,this->container);
 			if(this->soundCounter != -1)
             {

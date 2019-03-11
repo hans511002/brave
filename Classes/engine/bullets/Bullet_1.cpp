@@ -29,6 +29,10 @@ namespace engine{
 
         void Bullet_1::update(float dt)
         { 
+            if(this->dead){
+                this->remove();
+                return;
+            }
             Bullet::update();
             if (mainCounter == 7)
             {

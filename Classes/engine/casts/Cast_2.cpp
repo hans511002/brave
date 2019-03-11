@@ -17,6 +17,10 @@ namespace engine {
 
 		void Cast_2::update(float dt)
 		{
+			if(this->dead){
+				this->remove();
+				return;
+			}
 			Cast::update();
 			return;
 		}// end function

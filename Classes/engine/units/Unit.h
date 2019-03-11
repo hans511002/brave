@@ -206,6 +206,7 @@ namespace engine
 			virtual void removeUnitAfterDeathAnima();
 
 			virtual void kill();
+			virtual void remove();
 
 			//virtual void onExit();
 		};
@@ -239,7 +240,7 @@ public:\
 		UNIT_CLASS_DEFINE(Unit_19, );
 		UNIT_CLASS_DEFINE(Unit_20, virtual void kill(););
 		UNIT_CLASS_DEFINE(Unit_21, virtual void kill(););
-		UNIT_CLASS_DEFINE(Unit_22, int blockTowerRadius; MovieClip * blockRadiusGr; bool greenFlag; cocos2d::Point testTarget; virtual void scanAtRadius(); virtual void kill(););
+		UNIT_CLASS_DEFINE(Unit_22, int blockTowerRadius; MovieClip * blockRadiusGr; bool greenFlag; cocos2d::Point testTarget; virtual void scanAtRadius(); virtual void remove(););
 
 		UNIT_CLASS_DEFINE(Unit_23, RoadsignFire_mc * myPortal; MovieClip * portalAnima; virtual void kill(););
 		UNIT_CLASS_DEFINE(Unit_24, RoadsignIce_mc * myPortal; MovieClip * portalAnima; virtual void kill(););
@@ -247,7 +248,7 @@ public:\
 		UNIT_CLASS_DEFINE(Unit_26, RoadsignLevin_mc * myPortal; MovieClip * portalAnima; virtual void kill(););
 		UNIT_CLASS_DEFINE(Unit_27, int teleportPhase; int teleportTimer; int teleportCounter; int teleportStealthTimer; int teleportStealthCounter; float teleportDistance; float teleportRadius; Common::Array<Unit*> listOfTeleportUnits; int soundCounter; int soundTimer; int soundTimer1; int teleportUnitsMax; int teleportUnitsCounter; virtual void kill(););
 		UNIT_CLASS_DEFINE(Unit_28, float giveHealthRadius; int giveHeathCounter; int giveHeathTimer; float giveHeath;);
-		UNIT_CLASS_DEFINE(Unit_29, float returnHealth; int stealthCounter; int stealthTimer; int phase; virtual void kill(););
+		UNIT_CLASS_DEFINE(Unit_29, float returnHealth; int stealthCounter; int stealthTimer; int phase; virtual void remove(););
 		UNIT_CLASS_DEFINE(Unit_30, float returnHealth; int stealthCounter; int stealthTimer; int phase; virtual void kill(););
 		UNIT_CLASS_DEFINE(Unit_31, float distanceX; float distanceY; int counter; bool firstView; virtual void moveHandler(););
 		UNIT_CLASS_DEFINE(Unit_32, float distanceX; float distanceY; int counter; bool firstView; virtual void moveHandler(););

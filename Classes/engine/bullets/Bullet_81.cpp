@@ -32,6 +32,10 @@ namespace engine
 
 		void Bullet_81::update(float dt)
 		{
+            if(this->dead){
+                this->remove();
+                return;
+            }
 			Bullet::update();
 			if (this->getPositionX() != this_pt.x && this->getPositionY() != this_pt.y)
 			{

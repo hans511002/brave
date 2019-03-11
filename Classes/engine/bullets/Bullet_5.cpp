@@ -60,7 +60,11 @@ namespace engine{
         }// end function  
         void Bullet_5::update(float dt)
         {
-            Bullet::update();
+             if(this->dead){
+                this->remove();
+                return;
+            }
+           Bullet::update();
             if (container->currentFrame < container->totalFrames)
             {
                 container->tryPlay();
@@ -188,15 +192,15 @@ namespace engine{
             return;
         }// end function
         
-        void Bullet_5::kill()
+        void Bullet_5::remove()
         {
             if (this->shadow)
             {
-                world->removeIndexes(this,2); 
-                world->removeChild(this->shadow);
+                this->world->removeIndexes(this,2); 
+                this->world->removeChild(this->shadow);
                 this->shadow = NULL;
             }
-            Bullet::kill();
+            Bullet::remove();
             return;
         }// end function
 

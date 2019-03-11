@@ -73,6 +73,10 @@ namespace engine {
 
 		void Bullet_51::update(float dt)
 		{
+            if(this->dead){
+                this->remove();
+                return;
+            }
 			Bullet::update();
 			liveCounter++;
 			i = this->listOfAnimation.size() - 1;

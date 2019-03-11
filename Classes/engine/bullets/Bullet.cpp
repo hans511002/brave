@@ -172,17 +172,20 @@ namespace engine {
 			}
 			return;
 		}// end function
+		void Bullet::remove(){
+			world->removeBullet(this);
+			world->removeIndexes(this, 2);
+			world->removeIndexes(this, 3);
+			this->world->removeChild(this);
+			this->dead=true;
+		}
 
 		void Bullet::kill()
 		{
 			if (!this->dead)
 			{
 				this->dead = true;
-				this->i = 0;
-				world->removeBullet(this);
-				world->removeIndexes(this, 2);
-				world->removeIndexes(this, 3);
-				this->world->removeChild(this);
+				this->i = 0; 
 			}
 			return;
 		}// end function

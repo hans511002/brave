@@ -72,6 +72,11 @@ namespace engine
         }// end function
         void UltraTowerMenu::update(float dt)
         {
+            if (this->dead)
+            {
+                this->remove();
+                return;
+            }
             if (this->closeFlag)
             {
                 this->kill();
@@ -1694,22 +1699,23 @@ namespace engine
             }
             return;
         }// end function
-
-        void UltraTowerMenu::kill()
-        {
+        void UltraTowerMenu::kill(){
             if (!this->dead)
             {
                 this->dead = true;
-                this->world->worldInterface->updateInfo();
-                world->removeIndexes(this,3); 
-                if (this->lastE)
-                {
-                    this->world->mouseMoveHandler(this->lastE);
-                }
-				this->world->removeClasses(this);
-                this->world->removeChild(this);
             }
-            return;
+        }
+        void UltraTowerMenu::remove()
+        { 
+            this->world->worldInterface->updateInfo();
+            world->removeIndexes(this,3); 
+            if (this->lastE)
+            {
+                this->world->mouseMoveHandler(this->lastE);
+            }
+			this->world->removeClasses(this);
+            this->world->removeChild(this);
+        
         }// end function
     }
 }

@@ -158,6 +158,7 @@ namespace engine
 			virtual void towerGetSphereManage(string param1, string param2);
 
 			virtual void kill();
+            virtual void remove();
 
         };
 

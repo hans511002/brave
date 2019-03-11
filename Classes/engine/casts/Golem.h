@@ -74,6 +74,7 @@ namespace engine{
 			virtual void  closeGolem();
 
 			virtual void  kill();
+            virtual void remove();
 
         };
     }

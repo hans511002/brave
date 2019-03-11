@@ -19,6 +19,10 @@ namespace engine {
 
 		void Cast_3::update(float dt)
 		{
+			if(this->dead){
+				this->remove();
+				return;
+			}
 			this->directionManage();
 			Cast::update();
 			return;

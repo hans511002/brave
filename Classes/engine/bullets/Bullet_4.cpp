@@ -28,7 +28,11 @@ namespace engine{
 
         void Bullet_4::update(float dt)
         {
-            Bullet::update();
+             if(this->dead){
+                this->remove();
+                return;
+            }
+           Bullet::update();
             if (container->currentFrame < container->totalFrames)
             {
                 container->tryPlay();

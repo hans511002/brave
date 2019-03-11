@@ -126,6 +126,10 @@ namespace engine
 
 		void Air::update(float dt)
 		{ 
+			if(this->dead){
+				this->remove();
+				return;
+			}
 			if (!this->openFlag)
 			{
 				if (this->voiceCounter > 0)

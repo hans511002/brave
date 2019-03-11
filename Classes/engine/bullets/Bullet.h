@@ -165,7 +165,7 @@ namespace engine{
 			virtual void scanAtRadius();
 
 			virtual void kill();
-
+			virtual void remove();
 		};
 	}
 }

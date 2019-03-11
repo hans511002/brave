@@ -92,6 +92,7 @@ namespace engine{
 			virtual void  soundTimerMoveFunk();
 
 			virtual void  kill();
+			virtual void remove();
 
 		};
 	}

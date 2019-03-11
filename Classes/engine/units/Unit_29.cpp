@@ -487,14 +487,14 @@ namespace engine
 			return;
 		}// end function
 
-		void Unit_29::kill()
+		void Unit_29::remove()
 		{
 			if (!dead)
 			{
 			    this->world->removeClasses(this);
 			    world->removeIndexes(this);  
 			}
-			Unit::kill();
+			Unit::remove();
 			return;
 		}// end function
 

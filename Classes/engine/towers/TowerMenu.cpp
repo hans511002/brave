@@ -182,6 +182,11 @@ namespace engine
 		}// end function
 		void TowerMenu::update(float dt)
 		{
+			if (this->dead)
+			{
+				this->remove();
+				return;
+			}
 			//logInfo(getNamePath(container->sphereSlot1SphereAnima), container->sphereSlot1SphereAnima->getPosition(),
 			//	&container->sphereSlot1SphereAnima->convertToWorldSpace(container->sphereSlot1SphereAnima->getPosition()));
 			//logInfo(getNamePath(container->sphereSlot1SphereAnima->display), container->sphereSlot1SphereAnima->display->getPosition(),
@@ -3770,13 +3775,8 @@ namespace engine
 			}
 			return;
 		}// end function
-
-		void TowerMenu::kill()
-		{
-			if (!this->dead)
-			{
-				this->dead = true;
-				this->world->worldInterface->updateInfo();
+		void TowerMenu::remove(){
+			this->world->worldInterface->updateInfo();
 				this->world->removeChild(this->towerRadius);
 				this->towerRadius = NULL;
 				this->world->removeChild(this->towerRadius1);
@@ -3790,6 +3790,13 @@ namespace engine
 					this->world->mouseMoveHandler(this->lastE);
 				}
 				this->world->removeChild(this);
+		}
+
+		void TowerMenu::kill()
+		{
+			if (!this->dead)
+			{
+				this->dead = true;
 			}
 			return;
 		}// end function

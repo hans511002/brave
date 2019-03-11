@@ -44,6 +44,10 @@ namespace engine
 
 		void   Cast::update(float dt)
 		{
+			if(this->dead){
+				this->remove();
+				return;
+			}
 			this->world->feature->scanPointersAtCast();
 			this->setPosition(CONVERT_TO_WORLD_POS(cocos2d::Point(Main::mouseX, Main::mouseY)));
 			//this->x = Main::mouseX;
@@ -193,18 +197,20 @@ namespace engine
 			}
 			return false;
 		}// end function
+		Cast::remove(){
+			this->world->worldInterface->castRegime("off");
+			this->world->worldInterface->autoguidersButtons();
+			this->world->cast = NULL;
+			if (this->world->selectObject == this)
+				this->world->selectObject = NULL;
+			this->world->removeClasses(this);
+			this->world->removeChild(this);
+		}
 		void  Cast::kill()
 		{
 			if(!this->dead)
 			{
-				this->dead = true;
-				this->world->worldInterface->castRegime("off");
-				this->world->worldInterface->autoguidersButtons();
-				this->world->cast = NULL;
-				if (this->world->selectObject == this)
-					this->world->selectObject = NULL;
-				this->world->removeClasses(this);
-				this->world->removeChild(this);
+				this->dead = true; 
 			}
 			return;
 		}// end function

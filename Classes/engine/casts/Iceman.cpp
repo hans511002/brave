@@ -102,6 +102,10 @@ namespace engine{
 
 		void  Iceman::update(float dt)
 		{
+			if(this->dead){
+				this->remove();
+				return;
+			}
 			MovieClip * tempObject = NULL;
 			if (!this->openFlag)
 			{

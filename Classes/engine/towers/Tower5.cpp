@@ -89,7 +89,11 @@ namespace engine
 
         void Tower5::update(float dt)
         {
-            if (this->soundCounter != -1)
+            if(this->dead){
+                this->remove();
+                return;
+            }
+           if (this->soundCounter != -1)
             {
                 if (this->soundCounter < this->soundTimer)
                 {

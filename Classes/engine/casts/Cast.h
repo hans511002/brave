@@ -54,6 +54,7 @@ namespace engine{
 			virtual bool scanWay();
 
 			virtual void   kill();
+			virtual void remove();
 
 		};
     }

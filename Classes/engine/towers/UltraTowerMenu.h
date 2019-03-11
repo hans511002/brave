@@ -48,6 +48,7 @@ namespace engine
 			virtual  void  closeMenu(bool param1 = false);
 
 			virtual void kill();
+			virtual void remove();
 
 		};
     }

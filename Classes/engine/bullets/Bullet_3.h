@@ -23,7 +23,7 @@ namespace engine{
 			virtual bool init();
 
 			virtual void update(float dt = 0);
-			virtual void kill();
+			virtual void remove();
 		};
     }
 }

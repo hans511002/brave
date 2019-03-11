@@ -82,8 +82,11 @@ namespace engine
 
 		void Bullet_7::update(float dt)
 		{
+            if(this->dead){
+                this->remove();
+                return;
+            }
 			Bullet::update();
-
 			BulletTower7_mc *container = (BulletTower7_mc *)this->container;
 			if (container->smoke)
 			{
@@ -214,7 +217,7 @@ namespace engine
 			return;
 		}// end function
 
-		void Bullet_7::kill()
+		void Bullet_7::remove()
 		{
 			if (this->shadow)
 			{
@@ -222,7 +225,7 @@ namespace engine
 				world->removeChild(this->shadow);
 				this->shadow = NULL;
 			}
-			Bullet::kill();
+			Bullet::remove();
 			return;
 		}// end function
 	}

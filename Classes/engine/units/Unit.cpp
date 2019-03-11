@@ -160,6 +160,57 @@ namespace engine
 			//logInfo("healthBar.getPosition", pos);
 			//Vec2 wpos = this->container->healthBar->localToGlobal(pos);
 			//logInfo("healthBar.localToGlobal", wpos);
+			if (this->dead )
+			{
+				if{this->container->iceDeath)
+				{
+					if (this->container->iceDeath->isVisible())
+					{
+						if (this->container->iceDeath->currentFrame < this->container->iceDeath->totalFrames)
+						{
+							if (this->container->iceDeath->currentFrame == 9)
+								this->container->cont->setVisible(false);
+							this->container->iceDeath->tryPlay();
+						}
+						else if (this->container->getAlpha() > 0)
+							this->container->setAlpha(this->container->getAlpha() - 0.25);
+						else
+							this->removeUnitAfterDeathAnima();
+						return;
+					}
+					else if (this->container->stoneDeath->isVisible())
+					{
+						this->container->stoneDeath->tryPlay();
+						if (this->container->stoneDeath->currentFrame < this->container->stoneDeath->totalFrames)
+						{
+							if (this->container->stoneDeath->currentFrame == 3)
+								this->container->cont->setVisible(false);
+						}
+						else 
+							this->removeUnitAfterDeathAnima(); 
+						return;
+					}
+					else if (this->container->levinDeath->isVisible())
+					{
+						if (this->container->levinDeath->currentFrame < this->container->levinDeath->totalFrames)
+						{
+							this->container->levinDeath->tryPlay();
+							if (this->container->levinDeath->currentFrame == 6)
+								this->container->cont->setVisible(false);
+						}
+						else if (this->container->getAlpha() > 0)
+							this->container->setAlpha(this->container->getAlpha() - 0.25);
+						else
+							this->removeUnitAfterDeathAnima();
+						return;
+					}
+					else {
+						logInfo(getNamePath(this), this->getPosition());
+					}
+				}
+				this->remove();
+				return;
+			}
 			this->moveHandler();
 			if (this->path >= this->finishPath)
 			{
@@ -916,51 +967,7 @@ namespace engine
 					}
 				}
 			}
-			if (this->dead && this->container->iceDeath)
-			{
-				if (this->container->iceDeath->isVisible())
-				{
-					if (this->container->iceDeath->currentFrame < this->container->iceDeath->totalFrames)
-					{
-						if (this->container->iceDeath->currentFrame == 9)
-							this->container->cont->setVisible(false);
-						this->container->iceDeath->tryPlay();
-					}
-					else if (this->container->getAlpha() > 0)
-						this->container->setAlpha(this->container->getAlpha() - 0.25);
-					else
-						this->removeUnitAfterDeathAnima();
-				}
-				else if (this->container->stoneDeath->isVisible())
-				{
-					this->container->stoneDeath->tryPlay();
-					if (this->container->stoneDeath->currentFrame < this->container->stoneDeath->totalFrames)
-					{
-						if (this->container->stoneDeath->currentFrame == 3)
-							this->container->cont->setVisible(false);
-					}
-					else
-					{
-						this->removeUnitAfterDeathAnima();
-					}
-				}
-				else if (this->container->levinDeath->isVisible())
-				{
-					if (this->container->levinDeath->currentFrame < this->container->levinDeath->totalFrames)
-					{
-						this->container->levinDeath->tryPlay();
-						if (this->container->levinDeath->currentFrame == 6)
-							this->container->cont->setVisible(false);
-					}
-					else if (this->container->getAlpha() > 0)
-						this->container->setAlpha(this->container->getAlpha() - 0.25);
-					else
-						this->removeUnitAfterDeathAnima();
-				}
-				else {
-					logInfo(getNamePath(this), this->getPosition());
-				}
-			}
+			
 			//this->container->unitCase.x = this->container->unitCase.coordOrigin.x + this->container->cont.x;
 			//this->container->unitCase.y = this->container->unitCase.coordOrigin.y + this->container->cont.y;
 			//this->container->buffHP.x = this->container->buffHP.coordOrigin.x + this->container->cont.x;
@@ -1764,6 +1771,10 @@ namespace engine
 			this->world->removeChild(this, true);
 			//return;
 		}// end function
+
+		void Unit::remove(){
+			removeUnitAfterDeathAnima();
+		}
 		void Unit::kill() //public function kill() : void
 		{
 			if (this->dead)
@@ -1949,7 +1960,7 @@ namespace engine
 				}
 			}
 			if (needRemove) {
-				this->world->removeChild(this);
+				//this->world->removeChild(this);
 			}
 			CCLOGWARN("kill unit : %i",(int)this);
 			//return;

@@ -60,6 +60,7 @@ namespace engine
 			virtual void scan();
 			virtual void attack();
 			virtual void kill();
+			virtual void remove();
 		};
 	}
 }

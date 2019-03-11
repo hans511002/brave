@@ -66,6 +66,10 @@ namespace engine
         }// end function
         void Tower1::update(float dt)
         {
+            if(this->dead){
+                this->remove();
+                return;
+            }
 			Tower1_mc * container = ISTYPE(Tower1_mc,this->container);
             Tower::update();
             if (this->firstTowerMenuCounter > -1)

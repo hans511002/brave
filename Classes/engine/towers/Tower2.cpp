@@ -61,6 +61,10 @@ namespace engine
 
         void Tower2::update(float dt) 
         {
+            if(this->dead){
+                this->remove();
+                return;
+            }
             Tower::update();
 			Tower2_mc * container = ISTYPE(Tower2_mc ,this->container);
             if (world->frameCounter % 2)

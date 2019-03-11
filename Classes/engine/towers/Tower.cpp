@@ -107,6 +107,10 @@ namespace engine{
 
 		void Tower::update(float dt)
 		{
+			if(this->dead){
+				this->remove();
+				return;
+			}
 			if (!this->buildAnima)
 			{
 				if (this->towerType < 5)
@@ -3037,25 +3041,27 @@ namespace engine{
 			return;
 		}// end function
 
+		void Tower::remove(){
+			this->i = 0;
+			while (this->i < this->world->listOfTowers.size())
+			{
+				if (this->world->listOfTowers[this->i] == this)
+				{
+					this->world->listOfTowers.splice(this->i, 1);
+					if (this->world->towerRadius->myTower == this) {
+						this->world->towerRadius->myTower = NULL;
+					}
+					this->world->removeChild(this);
+					break;
+				}
+				i++;
+			}
+		}
 		void Tower::kill()
 		{
 			if (!this->dead)
 			{
 				this->dead = true;
-				this->i = 0;
-				while (this->i < this->world->listOfTowers.size())
-				{
-					if (this->world->listOfTowers[this->i] == this)
-					{
-						this->world->listOfTowers.splice(this->i, 1);
-						if (this->world->towerRadius->myTower == this) {
-							this->world->towerRadius->myTower = NULL;
-						}
-						this->world->removeChild(this);
-						break;
-					}
-					i++;
-				}
 			}
 			return;
 		}// end function

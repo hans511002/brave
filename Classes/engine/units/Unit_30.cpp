@@ -504,11 +504,11 @@ namespace engine
 					moveFlag = false;
 					this->setMouseChildren(false);
 					this->setMouseEnabled(false);
-					world->addClasses(this);
+					this->world->addClasses(this);
 					if (lastAttackType == "golem")
-					    world->addIndexes(this,0); 
+					    this->world->addIndexes(this,0); 
 					else
-					    world->addIndexes(this,1);
+					    this->world->addIndexes(this,1);
 				}
 			}
 			else

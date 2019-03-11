@@ -56,6 +56,10 @@ namespace engine
 
 		void Tower6::update(float dt)
 		{
+			if(this->dead){
+                this->remove();
+                return;
+            }
 			if (this->soundCounter != -1)
 			{
 				if (this->soundCounter < this->soundTimer)

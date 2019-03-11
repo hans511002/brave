@@ -214,17 +214,14 @@ namespace engine
             return;
         }// end function
 
-		void Unit_22::kill()
+		void Unit_22::rmove()
         {
-            if (!dead)
-            {
-                world->removeIndexes(this->blockRadiusGr,0);
-                if(this->blockRadiusGr){
-                    world->removeChild(this->blockRadiusGr);
-                    this->blockRadiusGr=NULL;
-                } 
-            }
-            Unit::kill();
+            this->world->removeIndexes(this->blockRadiusGr,0);
+            if(this->blockRadiusGr){
+                world->removeChild(this->blockRadiusGr);
+                this->blockRadiusGr=NULL;
+            }  
+            Unit::rmove();
             return;
         }// end function
 
