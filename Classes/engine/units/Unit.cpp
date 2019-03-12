@@ -1783,7 +1783,6 @@ namespace engine
 			this->readyDamage = false;
 			this->moveFlag = false;
 			this->stopAllEffects();
-			this->world->removeUnit(this);
 			bool needRemove = true;
 			if (this->health <= 0)
 			{
