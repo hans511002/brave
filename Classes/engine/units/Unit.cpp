@@ -1784,6 +1784,8 @@ namespace engine
 			this->moveFlag = false;
 			this->stopAllEffects();
 			bool needRemove = true;
+			this->world->removeUnit(this);
+			this->world->addClasses(this);
 			if (this->health <= 0)
 			{
 				if ((this->lastAttackType == "ice" || this->lastAttackType == "stone" || this->lastAttackType == "levin") && this->container->iceDeath)
