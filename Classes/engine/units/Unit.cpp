@@ -946,17 +946,13 @@ namespace engine
 				else
 				{
 					if (this->container->iceFreez->currentFrame < 46)
-					{
 						this->container->iceFreez->gotoAndStop(46);
-					}
 					if (this->container->iceFreez->currentFrame < this->container->iceFreez->totalFrames)
 					{
+						if (this->container->iceFreez->currentFrame == 46)
+							AudioUtil::playSound("Snd_unit_floeCrash.mp3");
 						this->container->iceFreez->tryPlay();
 						//this->container->iceFreez->gotoAndStop((this->container->iceFreez->currentFrame + 1));
-						if (this->container->iceFreez->currentFrame == 46)
-						{
-							AudioUtil::playSound("Snd_unit_floeCrash.mp3");
-						}
 					}
 					else
 					{

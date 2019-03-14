@@ -121,7 +121,7 @@ namespace engine
 			this->minDragPos = Vec2(-w, -h );
 			this->maxDragPos = Vec2(0, 0);
 		}
-		savePos=this->getPosition();
+		//savePos=this->getPosition();
 		return true;
 	};
 	void World::onEnter()
@@ -748,6 +748,7 @@ namespace engine
 		else if (endPos.y > this->maxDragPos.y) {
 			endPos.y = this->maxDragPos.y;
 		}
+		savePos = this->getPosition();
 		Vec2 moveOffset = endPos - savePos;
 		this->setPosition(endPos); 
 		this->worldInterface->setPosition(this->worldInterface->getPosition() - moveOffset);
@@ -758,8 +759,9 @@ namespace engine
 		return CONVERT_TO_WORLD_POS(cocos2d::Point(Main::mouseX, Main::mouseY)); 
 	};
 
-	void World::repairPos(float x,float y) {
-		Vec2 moveOffset(x, y);
+	void World::repairPos(float ofx,float ofy) {
+		Vec2 moveOffset(ofx, ofy);
+		savePos = this->getPosition();
 		Vec2 endPos = savePos + moveOffset;
 		if (endPos.x < this->minDragPos.x) {
 			endPos.x = this->minDragPos.x;

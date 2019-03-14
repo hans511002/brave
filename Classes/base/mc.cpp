@@ -47,7 +47,7 @@ namespace engine
 	{
 		if (this->getArmature() == NULL || this->getAnimation() == NULL)return;
 		if (times == 1 && this->inPlay)return;
-		this->getAnimation()->play(defAniName, times);
+		this->getAnimation()->gotoAndPlayByFrame(defAniName, this->currentFrame, times);
         this->inPlay = true;
         this->playTimes = times;
         if(times==1)bindMovieListen(1);
@@ -57,7 +57,8 @@ namespace engine
 		if (this->getArmature() == NULL || this->getAnimation() == NULL)return;
 		string aniName = _aniName;
 		if (aniName == "")aniName = defAniName;
-		this->getAnimation()->play(aniName, times);
+		//this->getAnimation()->play(aniName, times);
+		this->getAnimation()->gotoAndPlayByFrame(aniName, this->currentFrame-1, times);
         this->playTimes = times;
         this->inPlay = true;
         if(times == 1)bindMovieListen(1);

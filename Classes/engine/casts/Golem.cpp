@@ -220,12 +220,11 @@ namespace engine {
 				}
 				if (this->cameraJitterCounter <= 0)
 				{
-					if (this->cameraJitterCounter == 0)
+					if (this->cameraJitterCounter == 0)//还原移动前位置
 					{
 						this->cameraJitterCounter = -1;
-						this->world->setPosition(this->world->savePos- movePos);
-						this->world->worldInterface->setPosition(this->world->worldInterface->savePos + movePos);
-						movePos = Vec2(0, 0);
+						this->world->repairPos(-movePos.x,-movePos.y);
+ 						movePos = Vec2(0, 0);
 					}
 					if(this->world->existClasses(this))
 					{
@@ -260,19 +259,8 @@ namespace engine {
 					{
 						this->cameraYOffset = -this->cameraYOffset;
 					}
-					Vec2 of(this->cameraXOffset, this->cameraYOffset);
-					this->world->setPosition(this->world->getPosition() + of);
-					//this->world->x = this->world->x + this->cameraXOffset;
-					//this->world->y = this->world->y + this->cameraYOffset;
-					//cocos2d::Point tempObject = this->world->convertToWorldSpace(cocos2d::Point(0, 0));
-					//this->tempObject = Main::mainClass->worldClass->globalToLocal(new Point(0, 0));
-					this->world->worldInterface->setPosition(this->world->worldInterface->getPosition() - of);
-					this->movePos += of;
-
-
-					//this->world->worldInterface.x = this->tempObject.x;
-					//this->world->worldInterface.y = this->tempObject.y;
-
+					this->world->repairPos(movePos.x, movePos.y); 
+					this->movePos += Vec2(this->cameraXOffset, this->cameraYOffset);
 					//this->world->hint.x = this->world->hint.x + this->tempObject.x;
 					//this->world->hint.y = this->world->hint.y + this->tempObject.y;
 				}
@@ -762,9 +750,8 @@ namespace engine {
 		}// end function
 		void Golem::remove() {
 			this->world->removeIndexes(this, 1);
-			this->world->setPosition(this->world->savePos - movePos);
-			this->world->worldInterface->setPosition(this->world->worldInterface->savePos + movePos);
-			this->movePos = Vec2(0, 0);
+			this->world->repairPos(-movePos.x, -movePos.y);
+ 			this->movePos = Vec2(0, 0);
 			//this->world->hint.x = Math.round(this->world->hint.x);
 			//this->world->hint.y = Math.round(this->world->hint.y);
 			if (this->world->selectObject == this) {

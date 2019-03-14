@@ -224,8 +224,7 @@ namespace engine
 						if (this->cameraJitterCounter == 0)
 						{
 							this->cameraJitterCounter = -1; 
-							this->world->setPosition(this->world->savePos - movePos);
-							this->world->worldInterface->setPosition(this->world->worldInterface->savePos + movePos);
+							this->world->repairPos(  -movePos.x,-movePos.y); 
 							this->movePos = Vec2(0, 0);
 							this->openFlag = false;
 							//this->world->decoration->earthquakeFlag = true;
@@ -238,22 +237,12 @@ namespace engine
 						this->cameraJitterCounter--;
 						this->cameraXOffset = cocos2d::rand_0_1() * 2;
 						if (cocos2d::rand_0_1() < 0.5)
-						{
 							this->cameraXOffset = -this->cameraXOffset;
-						}
 						this->cameraYOffset = cocos2d::rand_0_1() * 2;
 						if (cocos2d::rand_0_1() < 0.5)
-						{
 							this->cameraYOffset = -this->cameraYOffset;
-						}
-						Vec2 of(this->cameraXOffset, this->cameraYOffset);
-						this->world->setPosition(this->world->getPosition() + of);
-						//this->world->x = this->world->x + this->cameraXOffset;
-						//this->world->y = this->world->y + this->cameraYOffset;
-						//cocos2d::Point tempObject = this->world->convertToWorldSpace(cocos2d::Point(0, 0));
-						//this->tempObject = Main::mainClass->worldClass->globalToLocal(new Point(0, 0));
-						this->world->worldInterface->setPosition(this->world->worldInterface->getPosition() - of);
-						this->movePos += of;
+						this->world->repairPos(this->cameraXOffset, this->cameraYOffset);
+						this->movePos += Vec2(this->cameraXOffset, this->cameraYOffset);
 						//this->world->hint.x = this->world->hint.x + this->tempObject.x;
 						//this->world->hint.y = this->world->hint.y + this->tempObject.y;
 					}
@@ -488,8 +477,7 @@ namespace engine
 		} // end function
 		void Air::remove() {
 			this->world->removeClasses(this);
-			this->world->setPosition(this->world->savePos - movePos);
-			this->world->worldInterface->setPosition(this->world->worldInterface->savePos + movePos);
+			this->world->repairPos(-movePos.x, -movePos.y);
 			this->movePos = Vec2(0, 0);
 			if (this->world->selectObject == this) {
 				this->world->selectObject = NULL;
