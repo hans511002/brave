@@ -199,7 +199,7 @@ namespace engine
 	void MC::addMCbs(MovieClipSubBase * mcs,bool reinit){
 		mcs->reinitType = reinit;
 		this->submcbs.push(mcs);
-		//this->allSubMcbs.push(mcs);
+		this->allSubMcbs.push(mcs);
 		MovieClipSubBase *mcbs = ISTYPE(MovieClipSubBase, this);
 		if (!reinit && (mcbs && mcbs->reinitType)){
  			mcs->reinitType |= 2;
@@ -208,8 +208,9 @@ namespace engine
 			ISTYPE(Node, mcs)->retain();
 		}
 		MovieClip * mvc = getRootMc(this);
-		if (mvc)
+		if (mvc && mvc!=this)
 			mvc->allSubMcbs.push(mcs);
+
 	};
 	 
 	bool MC::remove(MovieClipSubBase * mcs){
@@ -497,13 +498,6 @@ namespace engine
 
 	void MovieClip::destroy()
 	{ 
-		if (this->container) {
-			this->container->dispose();
-			if (_autoRemoveData) {
-				removeArmature();
-			}
-			//this->container->getEventDispatcher()->removeAllEventListeners();
-		}
 		//this->container->getEventDispatcher()->removeCustomEventListeners(dragonBones::EventObject::COMPLETE);
 		int l = this->allSubMcbs.size();
 		for (int i = l - 1; i >= 0; i--)
@@ -518,6 +512,13 @@ namespace engine
 			this->allSubMcbs[i] = NULL;
 		}
 		this->allSubMcbs.clear();
+		if (this->container) {
+			this->container->dispose();
+			if (_autoRemoveData) {
+				removeArmature();
+			}
+			//this->container->getEventDispatcher()->removeAllEventListeners();
+		}
 	}
 	void MovieClip::destroy(MovieClipSubBase * & ms)
 	{
