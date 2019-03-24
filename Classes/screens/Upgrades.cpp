@@ -235,7 +235,7 @@ namespace screens
 		{
 			this->hint->setPosition(Main::mouseX, Main::mouseY);
 		}
-		this->hint->setZOrder(999);
+		this->hint->setLocalZOrder(999);
 		return;
 	}// end function
 	bool Upgrades::preCheckEventTarget(std::MouseEvent * event, EventMouse::MouseEventType _mouseEventType)
@@ -338,7 +338,7 @@ namespace screens
 							string startsTxt = this->nowUpgradeButton->starsTXT->getString();
 							this->nowUpgradeButton->gotoAndStop(1);
 							std::setText(this->nowUpgradeButton->starsTXT, startsTxt);
-							// 加粗 颜色
+							// 锟接达拷 锟斤拷色
 							//this->nowUpgradeButton->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 						}
 					}

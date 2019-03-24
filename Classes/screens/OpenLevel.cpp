@@ -161,7 +161,7 @@ namespace screens
         }
 		char tmp[32];
 		sprintf(tmp, "%s %i", I18N_VALUE(I18N_CODE::U200), this->playLevel);
-		this->container->boardHeaderTXT->setText(string(tmp));
+		this->container->boardHeaderTXT->setString(string(tmp));
 		this->container->boardHeaderTXT->setFontName("bold");
 		this->container->boardHeaderTXT->setTextColor(Color4B(130, 130, 00, 255));
 		this->container->boardHeaderTXT->setFontSize(24);
