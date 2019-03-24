@@ -20,7 +20,7 @@ namespace engine{
 				xmlCache.insert(std::map<std::string, tinyxml2::XMLDocument *>::value_type(name, doc));
 				return doc;
 			}
-			return false;
+			return NULL;
 		}
 	};
 	bool XMLConfigParser::removeDoc(std::string fileName, std::string name){
@@ -63,7 +63,7 @@ namespace engine{
 	
 	tinyxml2::XMLElement *  XMLConfigParser::findChild(tinyxml2::XMLElement * root, std::string nodePath,  std::string &attrName){
 		attrName.clear();
-		if (!root)return false;
+		if (!root)return NULL;
 		nodePath = Common::String::Trim(nodePath, '.');
 		std::vector<std::string> elems;
 		split(nodePath, '.', elems);
@@ -82,12 +82,12 @@ namespace engine{
 			i++;
 			cnode = findChild(root, elName);
 			if (!cnode){
-				return false;
+				return NULL;
 			}
 			root = cnode;
 		}
 		if (i < n){ 
-			return false;
+			return NULL;
 		} 
 			
 		return root;
