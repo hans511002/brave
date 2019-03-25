@@ -829,17 +829,7 @@ namespace engine
         string targetName=event->target->getName();
 		logInfo("mouseMoveHandler.target", getNamePath(event->target));
 		if (!this->world->getSphere && !this->world->cast)
-		{
-   //         if(targetName == "slow")
-			//{
-   //             event->processed = true;
-   //             if(this->container->slow->currentFrame == 2)
-			//	{
-			//		this->container->slow->gotoAndStop(3);
-			//		AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
-			//	}
-			//}
-   //         else 
+		{ 
 			if(targetName == "fastCase")
 			{
                 event->processed = true;
@@ -852,13 +842,6 @@ namespace engine
 					}
 				}
             }
-			//else if (targetName == "traceBezier")
-			//{
-			//	if (this->container->traceBezier->currentFrame == 2)
-			//	{
-			//		this->container->traceBezier->gotoAndStop(3);
-			//	}
-			//}
             else if(targetName == "pauseCase")
 			{
                 event->processed = true;
@@ -1111,43 +1094,14 @@ namespace engine
 			return;
         string targetName = event->target->getName();
         if(!this->world->getSphere && !this->world->cast)
-		{
-			//if (targetName == "slow")
-			//{
-   //             event->processed = true;
-   //             if(this->container->slow->currentFrame == 3)
-			//	{
-			//		if (this->fasterFlag != 1)
-			//		{
-			//			this->fastPlayControl(1);
-			//			if (this->container->fast->currentFrame != 1)
-			//			{
-			//				this->container->fast->gotoAndStop(1);
-			//			}
-			//		}
-			//		else
-			//		{
-			//			this->fastPlayControl(0);
-			//			this->container->slow->gotoAndStop(2);
-			//		}
-			//	}
-			//}
-			//else if (this->container->slow->currentFrame == 3)
-			//{
-			//	if (this->fasterFlag != 1)
-			//	{
-			//		this->container->slow->gotoAndStop(1);
-			//	}
-			//}
+		{ 
 			if (targetName == "fastCase")
 			{
                 event->processed = true;
                 if(ISTYPE(EventNode, event->target)->mouseEnabled)
 				{
 					if (this->container->fast->currentFrame == 3 || this->container->fast->currentFrame == 6)
-					{
 						this->fasterManage(true);
-					}
 				}
 			}
 			else if (this->container->fast->currentFrame == 3 || this->container->fast->currentFrame == 6)
@@ -1157,18 +1111,7 @@ namespace engine
 				{
 					this->container->fastCont->stop();
 				}
-			}
-			//if (targetName == "traceBezier")
-			//{
-			//	if (this->container->traceBezier->currentFrame == 3)
-			//	{
-			//		this->container->traceBezier->gotoAndStop(2);
-			//	}
-			//}
-			//else if (this->container->traceBezier->currentFrame == 3)
-			//{
-			//	this->container->traceBezier->gotoAndStop(1);
-			//}
+			} 
 			if (targetName == "pauseCase")
 			{
                 event->processed = true;
@@ -1215,31 +1158,6 @@ namespace engine
 					this->container->bookCloseFlag = true;
 				}
 			}
-			//if (targetName == "testRestart")
-			//{
-   //             event->processed = true;
-   //             if(this->container->testRestart->currentFrame == 3)
-			//	{
-			//		this->container->testRestart->gotoAndStop(2);
-			//		//if (std::getText(this->container->testRestartBoardWaveTXT) == "")
-			//		//{
-			//		//	//Main::mainClass->testingClass->loadWave = Main::mainClass->worldClass->wavesClass->nowWave;
-			//		//}
-			//		//else if (std::getInt(this->container->testRestartBoardWaveTXT) < Main::mainClass->testingClass->listOfStory.size())
-			//		//{
-			//		//	//Main::mainClass->testingClass->loadWave = std::getInt(this->container->testRestartBoardWaveTXT);
-			//		//}
-			//		//else
-			//		//{
-			//		//	//Main::mainClass->testingClass->loadWave = 0;
-			//		//}
-			//		Main::mainClass->addNewScreen("World");
-			//	}
-			//}
-			//else if (this->container->testRestart->currentFrame == 3)
-			//{
-			//	this->container->testRestart->gotoAndStop(1);
-			//}
 		}
 	}// end function
 	void WorldInterface::mouseMoveHandler(cocos2d::EventMouse *e)//MouseEvent
@@ -1422,20 +1340,7 @@ namespace engine
 					this->removeChild(this->getAllHint);
 					this->getAllHint = NULL;
 				}
-			}
-   //         if(targetName == "slow")
-			//{
-   //             event->processed = true;
-			//	if (this->container->slow->currentFrame == 1)
-			//	{
-			//		this->container->slow->gotoAndStop(2);
-			//		AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
-			//	}
-			//}
-			//else if (this->container->slow->currentFrame == 2)
-			//{
-			//	this->container->slow->gotoAndStop(1);
-			//}
+			} 
             if(targetName == "fastCase")
 			{
                 event->processed = true;
@@ -1444,16 +1349,11 @@ namespace engine
 					if (this->container->fast->currentFrame == 1 || this->container->fast->currentFrame == 4)
 					{
 						int tempObject = 0;
-						if (this->container->fast->currentFrame == 4)
-						{
-							tempObject = this->container->fastCont->currentFrame;
-						}
-						this->container->fast->tryPlay();
-						//this->container->fast->gotoAndStop((this->container->fast->currentFrame + 1));
-						if (this->container->fast->currentFrame == 5)
-						{
-							this->container->fastCont->gotoAndStop(tempObject);
-						}
+						if (this->container->fast->currentFrame == 4) 
+							tempObject = this->container->fastCont->currentFrame; 
+						this->container->fast->gotoAndStop((this->container->fast->currentFrame + 1));
+						if (this->container->fast->currentFrame == 5) 
+							this->container->fastCont->gotoAndStop(tempObject); 
 						AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
 					}
 				}
@@ -1462,14 +1362,10 @@ namespace engine
 			{
 				int tempObject = 0;
 				if (this->container->fast->currentFrame == 5)
-				{
 					tempObject = this->container->fastCont->currentFrame;
-				}
 				this->container->fast->gotoAndStop((this->container->fast->currentFrame - 1));
 				if (this->container->fast->currentFrame == 4)
-				{
 					this->container->fastCont->gotoAndStop(tempObject);
-				}
 			}
 			//if (targetName == "traceBezier")
 			//{
@@ -3022,25 +2918,17 @@ namespace engine
 
 	void WorldInterface::fastPlayControl(int param1)
 	{
-		if (param1 == 0)
-		{
-			const auto factory = dragonBones::CCFactory::getFactory();
-			factory->getClock()->timeScale = 1;
-			this->fasterFlag = 0;
-			//Main::mainClass->stage.frameRate = 30;
-		}
-		else if (param1 == 1)
-		{
-			this->fasterFlag = 1;
-			//Main::mainClass->stage.frameRate = 1;
-		}
-		else if (param1 == 2)
+		if (param1 == 2)
 		{
 			const auto factory = dragonBones::CCFactory::getFactory();
 			factory->getClock()->timeScale = 2;
 			this->fasterFlag = 2;
-			//Main::mainClass->stage.frameRate = 30;
-		}
+		}else
+		{
+			const auto factory = dragonBones::CCFactory::getFactory();
+			factory->getClock()->timeScale = 1;
+			this->fasterFlag = 1;
+		} 
 	}// end function
 
 	void  WorldInterface::barInfoView()
@@ -3835,31 +3723,19 @@ namespace engine
 		if (this->fasterFlag != 2)
 		{
 			if (param1)
-			{
 				this->container->fast->gotoAndStop(5);
-			}
 			else
-			{
 				this->container->fast->gotoAndStop(4);
-			}
 			this->container->fastCont->stop();
 			this->fastPlayControl(2);
-			//if (this->container->slow->currentFrame != 1)
-			//{
-			//	this->container->slow->gotoAndStop(1);
-			//}
 		}
 		else
 		{
 			if (param1)
-			{
 				this->container->fast->gotoAndStop(2);
-			}
 			else
-			{
 				this->container->fast->gotoAndStop(1);
-			}
-			this->fastPlayControl(0);
+			this->fastPlayControl(1);
 		}
 	}// end function
 

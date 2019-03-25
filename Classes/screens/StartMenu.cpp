@@ -1059,7 +1059,9 @@ namespace screens
 			}
 			else if (targetName == "musicCase")
 			{
-				if (this->container->btnMusic->currentFrame == 2 || this->container->btnMusic->currentFrame == 5)
+				if (this->container->btnMusic->currentFrame == 1 || this->container->btnMusic->currentFrame == 4)
+					this->container->btnMusic->gotoAndStop((this->container->btnMusic->currentFrame + 1));
+				if (this->container->btnMusic->currentFrame == 2 || this->container->btnMusic->currentFrame == 5)				
 				{
 					this->container->btnMusic->gotoAndStop((this->container->btnMusic->currentFrame + 1));
 					AudioUtil::playSoundWithVol("Snd_menu_mouseDown.mp3", 0.9f);
@@ -1067,6 +1069,8 @@ namespace screens
 			}
 			else if (targetName == "soundCase")
 			{
+				if (this->container->btnSound->currentFrame == 1 || this->container->btnSound->currentFrame == 4)
+					this->container->btnSound->gotoAndStop((this->container->btnSound->currentFrame + 1));
 				if (this->container->btnSound->currentFrame == 2 || this->container->btnSound->currentFrame == 5)
 				{
 					this->container->btnSound->gotoAndStop((this->container->btnSound->currentFrame + 1));
@@ -1292,12 +1296,12 @@ namespace screens
 					if (this->container->btnSound->currentFrame == 3)
 					{
 						this->container->btnSound->gotoAndStop(5);
-						//AudioUtil::soundManage("off");
+						AudioUtil::soundManage("off");
 					}
 					else if (this->container->btnSound->currentFrame == 6)
 					{
 						this->container->btnSound->gotoAndStop(2);
-						//AudioUtil::soundManage("on");
+						AudioUtil::soundManage("on");
 					}
 				}
 			}
