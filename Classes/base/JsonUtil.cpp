@@ -18,6 +18,7 @@ namespace rapidjson {
 			//rapidjson::FileReadStream inputStream(myFile,buf, sizeof(buf));  //创建一个输入流
 			newDoc.Parse<kParseStopWhenDoneFlag>(reinterpret_cast<char*>(data.getBytes()));//.ParseStream(inputStream); //将读取的内容转换为dom元素
             //fclose(myFile); //关闭文件，很重要
+			return 0;
 		}
 		if (newDoc.HasParseError()) {
 			ifstream ifs(jsonFile);
@@ -26,8 +27,9 @@ namespace rapidjson {
 			//log("Json Parse error:%d", newDoc.GetParseError()); //打印错误编号
 			if (newDoc.HasParseError())
 				return newDoc.GetParseError();
+			return 0;
 		}
-		return 0;
+		return 1;
 	}
 	int writeFile(rapidjson::Document * doc, string jsonFile)
 	{

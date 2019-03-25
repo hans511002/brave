@@ -1,5 +1,5 @@
 ﻿#include "BaseHeaders.h"
-
+#include "rapidjson/stringbuffer.h"
 #include "saveBox.h"
 //#include "MainClass.h"
 
@@ -16,9 +16,17 @@ namespace sys
 		gameSave4 = new rapidjson::Document();
 		gameSave5 = new rapidjson::Document();
 		gameSave6 = new rapidjson::Document();
-		gameSave1->SetObject();
-		gameSave2->SetObject();
-		gameSave3->SetObject();
+		string wrPath = FileUtils::getInstance()->getWritablePath(); 
+		if (JsonUtil::readFile(this->gameSave1, wrPath + "/brave1.json") != 0) {
+			gameSave1->SetObject();
+		}
+		if (JsonUtil::readFile(this->gameSave2, wrPath + "/brave2.json") != 0) {
+			gameSave2->SetObject();
+		}
+		if (JsonUtil::readFile(this->gameSave3, wrPath + "/brave3.json") != 0) {
+			gameSave3->SetObject();
+		}
+		//net get
 		gameSave4->SetObject();
 		gameSave5->SetObject();
 		gameSave6->SetObject();
@@ -42,29 +50,18 @@ namespace sys
 	void  SaveBox::checkSaves(int param1)
 	{
 		if(param1 == 1)
-		{
 			this->gameSave = this->gameSave1;
-		}
 		else if(param1 == 2)
-		{
 			this->gameSave = this->gameSave2;
-		}
 		else if(param1 == 3)
-		{
 			this->gameSave = this->gameSave3;
-		}
 		else if(param1 == 4)
-		{
 			this->gameSave = this->gameSave4;
-		}
 		else if(param1 == 5)
-		{
 			this->gameSave = this->gameSave5;
-		}
 		else if(param1 == 6)
-		{
 			this->gameSave = this->gameSave6;
-		}
+		this->setValue("saveIndex", param1);
 		if(!this->getBoolValue("haveSave"))
 		{
 			this->setValue("haveSave", true);
@@ -233,36 +230,46 @@ namespace sys
 
 	void SaveBox::updateSever()
 	{
-		//if (this->gameSave)
-		//{
-		//	if (this->gameSave.data.type == "site")
-		//	{
-		//		if (this->gameSave.data.saveNo == this->gameSave4.data.saveNo)
-		//		{
-		//			this->siteSaveConvertionToServer(4);
-		//			if (Main.mainClass.IDIClass.idnet)
-		//			{
-		//				Main.mainClass.IDIClass.saveData(4);
-		//			}
-		//		}
-		//		else if (this->gameSave.data.saveNo == this->gameSave5.data.saveNo)
-		//		{
-		//			this->siteSaveConvertionToServer(5);
-		//			if (Main.mainClass.IDIClass.idnet)
-		//			{
-		//				Main.mainClass.IDIClass.saveData(5);
-		//			}
-		//		}
-		//		else if (this->gameSave.data.saveNo == this->gameSave6.data.saveNo)
-		//		{
-		//			this->siteSaveConvertionToServer(6);
-		//			if (Main.mainClass.IDIClass.idnet)
-		//			{
-		//				Main.mainClass.IDIClass.saveData(6);
-		//			}
-		//		}
-		//	}
-		//}
+		if (this->gameSave)
+		{
+			string saveIndex=this->getStringValue("saveIndex");
+			if (saveIndex == "")return;
+			if (this->getStringValue("type") != "site") {
+				string wrPath=FileUtils::getInstance()->getWritablePath();
+				string saveFile = wrPath + "/brave" + saveIndex + ".json";
+				JsonUtil::writeFile(this->gameSave, saveFile);
+				//// 3. 把 DOM 转换（stringify）成 JSON。
+				//JsonUtil::StringBuffer buffer;
+				//JsonUtil::Writer<JsonUtil::StringBuffer> writer(buffer);
+				//this->gameSave->Accept(writer);
+				//FileUtils::getInstance()->writeStringToFile(buffer.GetString(), saveFile);
+			}else {
+				//if (this->gameSave.data.saveNo == this->gameSave4.data.saveNo)
+				//{
+				//	this->siteSaveConvertionToServer(4);
+				//	if (Main.mainClass.IDIClass.idnet)
+				//	{
+				//		Main.mainClass.IDIClass.saveData(4);
+				//	}
+				//}
+				//else if (this->gameSave.data.saveNo == this->gameSave5.data.saveNo)
+				//{
+				//	this->siteSaveConvertionToServer(5);
+				//	if (Main.mainClass.IDIClass.idnet)
+				//	{
+				//		Main.mainClass.IDIClass.saveData(5);
+				//	}
+				//}
+				//else if (this->gameSave.data.saveNo == this->gameSave6.data.saveNo)
+				//{
+				//	this->siteSaveConvertionToServer(6);
+				//	if (Main.mainClass.IDIClass.idnet)
+				//	{
+				//		Main.mainClass.IDIClass.saveData(6);
+				//	}
+				//}
+			}
+		}
 		//return;
 	};
 
