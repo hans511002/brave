@@ -105,9 +105,9 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup>
     <CustomBuildStep>
-      <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
-xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
-</Command>
+      <Command>if not exist "$(OutDir)\Resources" mkdir "$(OutDir)\Resources"
+xcopy "$(ProjectDir)..\Resources\res" "$(OutDir)\Resources" /D /E /I /F /Y
+xcopy "$(ProjectDir)..\Resources\test" "$(OutDir)\Resources" /D /E /I /F /Y</Command>
       <Outputs>$(TargetName).cab</Outputs>
       <Inputs>$(TargetFileName)</Inputs>
     </CustomBuildStep>
@@ -441,8 +441,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\cocos2d\external\Box2D\proj.win32\libbox2d.vcxproj">
-      <Project>{929480e7-23c0-4df6-8456-096d71547116}</Project>
+    <ProjectReference Include="..\cocos2d\cocos\2d\libcocos2d.vcxproj">
+      <Project>{98a51ba8-fc3a-415b-ac8f-8c7bd464e93e}</Project>
     </ProjectReference>
     <ProjectReference Include="..\libdragonbones.vcxproj">
       <Project>{bde5c8d9-6363-44a7-b0b8-a2884cdb1306}</Project>
