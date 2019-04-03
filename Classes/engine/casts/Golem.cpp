@@ -220,7 +220,7 @@ namespace engine {
 				}
 				if (this->cameraJitterCounter <= 0)
 				{
-					if (this->cameraJitterCounter == 0)//还原移动前位置
+					if (this->cameraJitterCounter == 0)//锟斤拷原锟狡讹拷前位锟斤拷
 					{
 						this->cameraJitterCounter = -1;
 						this->world->repairPos(-movePos.x,-movePos.y);
@@ -758,16 +758,16 @@ namespace engine {
 				this->world->selectObject = NULL;
 			}
 			this->world->removeClasses(this);
-			this->world->removeChild(this);
+            this->world->removeDead(this);
+            this->world->removeChild(this);
 		}
 
 		void Golem::kill()
 		{
-			if (!this->dead)
-			{
-				this->dead = true;
-			}
-			return;
+            if (this->dead)return;
+            this->dead = true;
+            this->world->removeClasses(this);
+            this->world->addDead(this);
 		}// end function
 
 	}

@@ -1,7 +1,7 @@
 ﻿
 #include "Unit.h"
 #include "MainClass.h"
-#include "engine/World.h" 
+#include "engine/World.h"
 #include "engine/WorldInterface.h"
 
 namespace engine
@@ -145,7 +145,7 @@ namespace engine
 
 			//Node * parent =this->container->healthBar;
 			//while (parent->getParent()){
-			//	string parStr = getNamePath(parent); 
+			//	string parStr = getNamePath(parent);
 			//	Vec2 wpos = CONVERT_TO_WORLD_POS(parent->getParent()->convertToWorldSpace(parent->getPosition()));
 			//	logInfo(parStr + " pos=", wpos, &parent->getPosition(), &parent->getAnchorPoint());
 			//	parent = parent->getParent();
@@ -186,8 +186,8 @@ namespace engine
 							if (this->container->stoneDeath->currentFrame == 3)
 								this->container->cont->setVisible(false);
 						}
-						else 
-							this->removeUnitAfterDeathAnima(); 
+						else
+							this->removeUnitAfterDeathAnima();
 						return;
 					}
 					else if (this->container->levinDeath->isVisible())
@@ -963,7 +963,7 @@ namespace engine
 					}
 				}
 			}
-			
+
 			//this->container->unitCase.x = this->container->unitCase.coordOrigin.x + this->container->cont.x;
 			//this->container->unitCase.y = this->container->unitCase.coordOrigin.y + this->container->cont.y;
 			//this->container->buffHP.x = this->container->buffHP.coordOrigin.x + this->container->cont.x;
@@ -1764,6 +1764,7 @@ namespace engine
 			}
 			this->world->removeUnit(this);
 			this->world->removeClasses(this);
+			this->world->removeDead(this);
 			this->world->removeIndexes(this, 1);
 			this->world->removeChild(this, true);
 			//return;
@@ -1785,7 +1786,7 @@ namespace engine
 			this->stopAllEffects();
 			bool needRemove = true;
 			this->world->removeUnit(this);
-			this->world->addClasses(this);
+			this->world->addDead(this);
 			if (this->health <= 0)
 			{
 				if ((this->lastAttackType == "ice" || this->lastAttackType == "stone" || this->lastAttackType == "levin") && this->container->iceDeath)
@@ -1806,7 +1807,6 @@ namespace engine
 					}
 					this->setMouseChildren(false);
 					this->setMouseEnabled(false);
-					this->world->addClasses(this);
 					needRemove = false;
 					//this->world->addIndexes(this,1);
 				}

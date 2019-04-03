@@ -489,11 +489,11 @@ namespace engine
 
 		void Unit_29::remove()
 		{
-			if (!dead)
-			{
-			    this->world->removeClasses(this);
-			    world->removeIndexes(this);  
-			}
+//			if (!dead)
+//			{
+//			    this->world->removeClasses(this);
+//			    world->removeIndexes(this);
+//			}
 			Unit::remove();
 			return;
 		}// end function

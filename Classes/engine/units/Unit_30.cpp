@@ -491,6 +491,8 @@ namespace engine
 
 		void Unit_30::kill()
 		{
+            Unit::kill();
+            return;
 			if (this->phase < 5 && health <= 0)
 			{
 				if (readyDamage)
@@ -500,11 +502,12 @@ namespace engine
 				    world->removeIndexes(this);   
 					stopAllEffects();
 					health = 0;
+                    this->dead = true;
 					readyDamage = false;
 					moveFlag = false;
 					this->setMouseChildren(false);
 					this->setMouseEnabled(false);
-					this->world->addClasses(this);
+					this->world->addDead(this);
 					if (lastAttackType == "golem")
 					    this->world->addIndexes(this,0); 
 					else
@@ -513,11 +516,8 @@ namespace engine
 			}
 			else
 			{
-				if (!dead)
-				{
-				    world->removeClasses(this);  
- 				    world->removeIndexes(this);   
-				}
+				world->removeClasses(this);
+                world->removeIndexes(this);
 				Unit::kill();
 			}
 			return;

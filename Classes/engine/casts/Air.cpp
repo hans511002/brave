@@ -477,6 +477,7 @@ namespace engine
 		} // end function
 		void Air::remove() {
 			this->world->removeClasses(this);
+            this->world->removeDead(this);
 			this->world->repairPos(-movePos.x, -movePos.y);
 			this->movePos = Vec2(0, 0);
 			if (this->world->selectObject == this) {
@@ -487,11 +488,10 @@ namespace engine
 
 		void Air::kill()
 		{
-			if (!this->dead)
-			{
-				this->dead = true;
-			}
-			return;
+			if (this->dead)return;
+            this->dead = true;
+            this->world->removeClasses(this);
+            this->world->addDead(this);
 		} // end function
 
 	}

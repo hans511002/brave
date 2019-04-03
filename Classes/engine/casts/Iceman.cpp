@@ -740,17 +740,17 @@ namespace engine{
 			}
 			this->world->removeIndexes(this, 1);
 			this->world->removeClasses(this);
-			this->world->removeChild(this);
+            this->world->removeDead(this);
+            this->world->removeChild(this);
 		}
 
 		void  Iceman::kill()
 		{
-			if (!this->dead)
-			{
-				this->dead = true;
-				this->soundTimerManageMove(false); 
-			}
-			return;
+            if (this->dead)return;
+            this->dead = true;
+            this->soundTimerManageMove(false);
+            this->world->removeClasses(this);
+            this->world->addDead(this);
 		}// end function
 
 	}

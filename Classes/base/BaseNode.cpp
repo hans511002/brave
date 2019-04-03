@@ -14,7 +14,7 @@ const double BaseNode::AnimationInterval = 1.0f / (double)Main::FrameRate;
 
 namespace std
 {
-	bool useNodeEvent = false;
+	bool useNodeEvent = true;
 	bool useGlobalNode = true;
 	bool sortGlobalNode = false;
 

@@ -58,12 +58,13 @@ namespace engine
         bool forseIndexFl;// : Boolean;
         GetSphere *getSphere; //public var getSphere : GetSphere;
 		Common::Array<GetSphere *>listOfMoveSpheres;//public var listOfMoveSpheres : Array;
-
 		Common::Array<BaseNode *>listOfClasses;//public var listOfClasses : Array;
-
         Common::Array<towers::Tower *>listOfTowers;//public var listOfTowers : Array;
         Common::Array<engine::units::Unit *> listOfUnits;//public var listOfUnits : Array;
         Common::Array<engine::bullets::Bullet *> listOfBullets;//public var listOfBullets : Array;
+        Common::Array<BaseNode *>listOfDeads;
+
+
         towers::BuildTowerMenu * buildTowerMenu;//public var buildTowerMenu : BuildTowerMenu;
         towers::TowerMenu *towerMenu;//public var towerMenu : TowerMenu;
         UltraTowerMenu * ultraTowerMenu;//public var ultraTowerMenu : UltraTowerMenu;
@@ -173,8 +174,10 @@ namespace engine
         virtual void removeBullet(Bullet *);
 	    virtual void addIndexes(Node * node, int indexParam);
 		virtual void removeIndexes(Node * node,int indexType=-1);
+        virtual void addClasses(BaseNode * node);
 		virtual void removeClasses(BaseNode * node);
-		virtual void addClasses(BaseNode * node);
+        virtual void addDead(BaseNode *node);
+        virtual void removeDead(BaseNode *node) ;
 		virtual bool existClasses(BaseNode * node);
 		virtual void removeUnit(units::Unit *);
 		virtual void reInit(cocos2d::EventMouse*event);//event:Event

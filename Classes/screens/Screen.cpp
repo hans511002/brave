@@ -6,6 +6,7 @@ namespace screens
 		this->setContentSize(Size(Main::SCREEN_WIDTH, Main::SCREEN_HEIGHT));
 	};
 	bool Screen::preCheckEventTarget(std::MouseEvent * event, EventMouse::MouseEventType _mouseEventType) {
+        if(useNodeEvent)return false;
 		removeEventTarget(event, this);
 		return false;
 	};

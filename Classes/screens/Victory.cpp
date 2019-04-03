@@ -403,6 +403,8 @@ namespace screens
 		std::MouseEvent me(e);
 		if (!useNodeEvent) {
 			me = std::buildMouseEvent(e);
+        }else if(globalNode && globalNode==this){
+            if (!std::hitTest(this, e))return;
 		}
 		std::MouseEvent * event = &me;
 		if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_MOVE))return;
@@ -496,6 +498,8 @@ namespace screens
 		std::MouseEvent me(e);
 		if (!useNodeEvent) {
 			me = std::buildMouseEvent(e);
+        }else if(globalNode && globalNode==this){
+            if (!std::hitTest(this, e))return;
 		}
 		std::MouseEvent * event = &me;
 		if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_DOWN))return;
@@ -571,6 +575,8 @@ namespace screens
 		std::MouseEvent me(e);
 		if (!useNodeEvent) {
 			me = std::buildMouseEvent(e);
+        }else if(globalNode && globalNode==this){
+            if (!std::hitTest(this, e))return;
 		}
 		std::MouseEvent * event = &me;
 		if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_UP))return;

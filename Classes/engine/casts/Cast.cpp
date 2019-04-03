@@ -204,14 +204,15 @@ namespace engine
 			if (this->world->selectObject == this)
 				this->world->selectObject = NULL;
 			this->world->removeClasses(this);
-			this->world->removeChild(this);
+            this->world->removeDead(this);
+            this->world->removeChild(this);
 		}
 		void  Cast::kill()
 		{
-			if(!this->dead)
-			{
-				this->dead = true; 
-			}
+            if (this->dead)return;
+            this->dead = true;
+            this->world->removeClasses(this);
+            this->world->addDead(this);
 			return;
 		}// end function
 

@@ -174,6 +174,7 @@ namespace engine {
 		}// end function
 		void Bullet::remove(){
 			world->removeBullet(this);
+            this->world->removeDead(this);
 			world->removeIndexes(this, 2);
 			world->removeIndexes(this, 3);
 			this->world->removeChild(this);
@@ -182,11 +183,11 @@ namespace engine {
 
 		void Bullet::kill()
 		{
-			if (!this->dead)
-			{
-				this->dead = true;
-				this->i = 0; 
-			}
+            if (this->dead)return;
+            this->dead = true;
+ 			this->i = 0;
+            this->world->removeClasses(this);
+            this->world->addDead(this);
 			return;
 		}// end function
 

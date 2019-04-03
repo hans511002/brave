@@ -22,7 +22,7 @@ namespace screens
 		saveTypeLocalSave = saveType->createMovieClipSub("localSave", true);
 		saveTypeLocalSaveLocalSaveCase = saveTypeLocalSave->createCase("localSaveCase", true);
 		saveTypeOnlineSave = saveType->createMovieClipSub("onlineSave", true);
-		saveTypeOnlineSaveOnlineSaveCase = saveTypeOnlineSave->createCase("onlineSaveCase", true);
+        saveTypeOnlineSaveOnlineSaveCase = saveTypeOnlineSave->createCase("onlineSaveCase", true);
 		saveTypeOnlineSaveNickTXT = saveTypeOnlineSave->createText("nickTXT", true);
 		saveTypeOnlineSaveWelcomeTXT = saveTypeOnlineSave->createText("welcomeTXT", true);
 		//saveTypeOnlineSaveLogo = saveTypeOnlineSave->createSprite("logo");
@@ -74,7 +74,8 @@ namespace screens
         //this->removeEventListener(Event.ADDED_TO_STAGE, this->init);
         //this->addEventListener(Event.REMOVED_FROM_STAGE, this->reInit);
         this->container = new StartMenu_mc();
-		//this->printNodePos(this->container);
+        this->container->saveTypeOnlineSave->setVisible(false);
+        //this->printNodePos(this->container);
 		cocos2d::Size size = this->container->getSprite("bg")->getContentSize();
 		float sy = Main::SCREEN_HEIGHT / size.height;
 		float sx = (size.width - Main::SCREEN_WIDTH) / 2;
@@ -630,6 +631,7 @@ namespace screens
     }// end function
 	bool StartMenu::preCheckEventTarget(std::MouseEvent * event, EventMouse::MouseEventType _mouseEventType)
 	{
+        if(useNodeEvent)return false;
 		removeEventTarget(event, this);
 		Vec2 pos = event->getLocationInView();
 		switch (_mouseEventType)
@@ -666,6 +668,8 @@ namespace screens
 		std::MouseEvent me(e);
 		if (!useNodeEvent) {
 			me = std::buildMouseEvent(e);
+        }else if(globalNode && globalNode==this){
+            if (!std::hitTest(this, e))return;
 		}
 		std::MouseEvent * event = &me;
 		if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_MOVE))return;
@@ -1037,6 +1041,8 @@ namespace screens
 		std::MouseEvent me(e);
 		if (!useNodeEvent) {
 			me = std::buildMouseEvent(e);
+        }else if(globalNode && globalNode==this){
+            if (!std::hitTest(this, e))return;
 		}
 		std::MouseEvent * event = &me;
 		if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_DOWN))return;
@@ -1231,6 +1237,8 @@ namespace screens
 		std::MouseEvent me(e);
 		if (!useNodeEvent) {
 			me = std::buildMouseEvent(e);
+        }else if(globalNode && globalNode==this){
+            if (!std::hitTest(this, e))return;
 		}
 		std::MouseEvent * event = &me;
 		if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_UP))return;

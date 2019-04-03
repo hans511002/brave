@@ -449,7 +449,7 @@ namespace engine
                             if (this->n == tempObject)
                             {
                                 break;
-                                continue;
+                                //continue;
                             }
                             tempObject = this->n;
                             tempObject1 = this->world->bezierClass->getPathPoint(tempObject, this->listOfReplacement[this->i][2], this->listOfReplacement[this->i][3]);

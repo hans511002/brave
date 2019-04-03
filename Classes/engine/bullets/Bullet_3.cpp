@@ -138,12 +138,12 @@ namespace engine{
 
 		void Bullet_3::remove()
 		{
-			Bullet::remove();
 			if (this->shadow)
-			{ 
+			{
 				this->world->removeChild(this->shadow);
 				this->shadow = NULL;
-			} 
+			}
+			Bullet::remove();
 			return;
 		}// end function
 	}
