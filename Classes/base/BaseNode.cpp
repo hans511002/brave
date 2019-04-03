@@ -73,7 +73,6 @@ namespace std
 	{
 		setNodeType("BaseNode");
 		this->setContentSize(Size(w, h));
-		enableMouseHandler();
 		if (draw)drawRange();
 	};
 	string EventNode::getTypeName() {
@@ -420,13 +419,14 @@ namespace std
 	{
 		if (!useNodeEvent && this->mouseEnabled)
 			addEventNode(this);
-		Node::onEnter();
+        enableMouseHandler(this->mouseEnabled);
+        Node::onEnter();
 		if (schdt == 1)
 			this->schedule(schedule_selector(BaseNode::scheduleUpdate), (float)AnimationInterval);
 	};
 	void BaseNode::onExit()
 	{
-		//this->setMouseEnabled(false, true);
+		//this->mouseEnabled=(false);
 		removeEventNode(this);
 		this->linkNodes.clear();
 		if (this->linkParent)this->linkParent->removeLinkNode(this);
@@ -826,7 +826,7 @@ namespace std
 	};
 	MouseEvent::MouseEvent(cocos2d::EventMouse * e) :EventMouse(*e), idx(0), target(NULL), processed(false), enode(NULL)
 	{
-		//hitTest(e->getCurrentTarget(), false);
+		hitTest(e->getCurrentTarget(), false);
 	};
 
 	void std::MouseEvent::setCurrentTarget(Node* target)
@@ -898,7 +898,7 @@ namespace std
 	{
 		if (ISTYPE(MCCase, this)==NULL) {
 			if (!this->mouseEnabled) 
-				this->setMouseEnabled(true); 
+				this->mouseEnabled=(true);
 		}
 		//addEventNode(this);
 		if (listen && (listener == NULL && touchOnelistener == NULL))
@@ -921,7 +921,7 @@ namespace std
 	};
 	void BaseNode::disableMouseHandler() {
 		//removeEventNode(this);
-		this->setMouseEnabled(false);
+		this->mouseEnabled=(false);
 		//if (listener) {
 		//	getEventDispatcher()->removeEventListener(listener);
 		//	delete listener;
@@ -945,7 +945,7 @@ namespace std
 	{
 		if (!this->mouseEnabled)
 		{
-			this->setMouseEnabled(true);
+			this->mouseEnabled=(true);
 			if (!useNodeEvent)
 				addEventNode(this);
 		}
@@ -978,7 +978,7 @@ namespace std
 			delete touchOnelistener;
 			touchOnelistener = NULL;
 		}
-		this->setMouseEnabled(false);
+		this->mouseEnabled=(false);
 		removeEventNode(this);
 	}
 
@@ -1064,6 +1064,10 @@ namespace std
 	}
 
 	void EventNode::setMouseEnabled(bool v, bool setSub) {
+        if(v){
+            BaseNode *node = ISTYPE(BaseNode,this);
+            node->enableMouseHandler(true);
+        }
 		MCCase *mc = ISTYPE(MCCase,this);
 		if (mc && !mc->isRunning()) {
 			if (!v)return;

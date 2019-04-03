@@ -55,8 +55,8 @@ namespace engine
 		//barInfoPenaltyTXT = barInfo->createText("penaltyTXT");
 		//barInfoSpeedTXT = barInfo->createText("speedTXT");
 		//barInfoStoneTXT = barInfo->createText("stoneTXT");
-		book = wiBook->createMovieClipSub("book");
-		bookBookCase = book->createCase("bookCase");
+		book = wiBook->createMovieClipSub("book",true);
+		bookBookCase = book->createCase("bookCase",true);
 
 		butCastAir = wiCast->createMovieClipSub("butCastAir");
 		butCastAirCastAirCase = butCastAir->createCase("castAirCase");
@@ -138,7 +138,7 @@ namespace engine
 		moneyTXT = wiLive->createText("moneyTXT");
 
 		pause = wiBook->createMovieClipSub("pause");
-		pausePauseCase = pause->createCase("pauseCase");
+		pausePauseCase = pause->createCase("pauseCase",true);
 		//selectUnit = this->createMovieClipSub("selectUnit");
 		sell = wiBook->createMovieClipSub("sell");
 		//slow = this->createMovieClipSub("slow");

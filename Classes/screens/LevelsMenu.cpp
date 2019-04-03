@@ -90,6 +90,8 @@ namespace screens {
 //        this->container->setScaleY(sy);
 //        this->container->setPosition(0, Main::SCREEN_HEIGHT);
         this->container->setMouseDrag(true);
+        this->container->setMouseEnabled(true);
+        this->container->enableMouseHandler(true);
         this->container->setPosition(0, Main::LEVEL_MAP_HEIGHT);
         this->minDragPos = Vec2(0, Main::SCREEN_HEIGHT);
         this->maxDragPos = Vec2(0, Main::LEVEL_MAP_HEIGHT);
