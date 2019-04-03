@@ -1066,7 +1066,7 @@ namespace std
 	void EventNode::setMouseEnabled(bool v, bool setSub) {
         if(v){
             BaseNode *node = ISTYPE(BaseNode,this);
-            node->enableMouseHandler(true);
+            if(node)node->enableMouseHandler(true);
         }
 		MCCase *mc = ISTYPE(MCCase,this);
 		if (mc && !mc->isRunning()) {
@@ -1137,9 +1137,9 @@ namespace std
 	void EventNode::mouseDownHandler(cocos2d::EventMouse* event)
 	{
 		Node * node = event->getCurrentTarget();
+		logInfo("check mouse down: ", getNamePath(node));
 		//Vec2 pt = node->getPosition();
 		//logInfo(getNamePath(node), pt, &node->convertToWorldSpace(pt), &node->convertToNodeSpace(node->convertToWorldSpace(pt)));
-
 		//loginfo("mouseDown",event);
 		if (!std::hitTest(node, event))return;
 		logInfo("hitTest true : mouse down in ", getNamePath(node));
@@ -1163,6 +1163,7 @@ namespace std
 	void EventNode::mouseUpHandler(cocos2d::EventMouse* event)
 	{
 		Node * node = event->getCurrentTarget();
+		logInfo("check mouse up: ", getNamePath(node));
 		if (!std::hitTest(node, event))return;
 		logInfo("hitTest true : mouse up in ", getNamePath(node));
 		Event::Type tp = event->getType();
@@ -1189,6 +1190,7 @@ namespace std
 		if (!std::hitTest(event->getCurrentTarget(), event))return;
 		//logInfo("hitTest true : mouse move in ", event->getCurrentTarget()->getName());
 		Node * node = event->getCurrentTarget();
+		logInfo("check mouse moved: ", getNamePath(node));
 		Event::Type tp = event->getType();
 		//logInfo("event targetNamePath", getNamePath(node));
 		event->stopPropagation();
@@ -1216,7 +1218,7 @@ namespace std
 
 	bool EventNode::onTouchBegan(Touch *touch, cocos2d::Event *event) {
 		Node * node = event->getCurrentTarget();
-		logInfo("check touch : ", getNamePath(node));
+		logInfo("check touch begin: ", getNamePath(node));
 		Vec2 tpos = touch->getLocationInView();
 		tpos.y = Main::SCREEN_HEIGHT - tpos.y;
 		if (!std::hitTest(node, tpos))return false;
@@ -1242,6 +1244,7 @@ namespace std
 	};
 	void EventNode::onTouchEnded(Touch *touch, Event *event) {
 		Node * node = event->getCurrentTarget();
+		logInfo("check touch end: ", getNamePath(node));
 		Vec2 tpos = touch->getLocationInView();
 		tpos.y = Main::SCREEN_HEIGHT - tpos.y;
 		if (!std::hitTest(node, tpos))return;
@@ -1283,6 +1286,7 @@ namespace std
 		Vec2 tpos = touch->getLocationInView();
 		tpos.y = Main::SCREEN_HEIGHT - tpos.y;
 		Node * node = event->getCurrentTarget();
+		logInfo("check touch moved : ", getNamePath(node));
 		if (!std::hitTest(node, tpos))return;
 		Event::Type tp = event->getType();
 		event->stopPropagation();

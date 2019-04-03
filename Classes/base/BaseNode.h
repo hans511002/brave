@@ -65,8 +65,8 @@ namespace std
 	inline float setText(ui::Text * tui, double val){setText(tui,(float)val);};
 	int getInt(ui::Text * tui);
 	string getText(ui::Text * tui); 
-	bool hitTest(cocos2d::Node * node, const Vec2 &pt,bool mouseEvent=true,bool parentCheck=false);
-	bool hitTest(cocos2d::Node * node, cocos2d::EventMouse* e, bool mouseEvent = true, bool parentCheck = false);
+	bool hitTest(cocos2d::Node * node, const Vec2 &pt,bool mouseEvent=true,bool parentCheck= true);
+	bool hitTest(cocos2d::Node * node, cocos2d::EventMouse* e, bool mouseEvent = true, bool parentCheck = true);
 	void drawRange(cocos2d::Node * node, Color4F c = Color4F::RED);
 	void changeAnchorPoint(Node * node, float xy);
 	void changeAnchorPoint(Node * node, const Vec2& xy); 

@@ -155,8 +155,8 @@ namespace engine {
         this->container->stoneBacklight->setVisible (false);
         this->container->levinBacklight->setVisible (false);
         this->container->buyGetAll->setVisible (false);
-        this->container->getAll->setVisible (false);
-
+        //this->container->getAll->setVisible (false);
+		this->container->getAllSphereCase->setMouseEnabled(false);
         //this->container->testRestart->stop();
         //this->container->testRestartBoard->stop();
         //this->container->testRestart->setMouseEnabled(true);
@@ -212,7 +212,7 @@ namespace engine {
         this->castMask->sellCase->stop ();
         this->castMask->setVisible (false);
 
-        this->addChild (this->castMask, 1);
+        this->addChild (this->castMask);
         this->world->forseIndexFl = true;
         //测试cast
         //this->blockCastGolem = true;
@@ -222,9 +222,8 @@ namespace engine {
     };
 
     void WorldInterface::onEnter () {
-        this->spheresBlockManage ();
         BaseNode::onEnter ();
-
+        this->spheresBlockManage ();
     };
 
 
@@ -2686,7 +2685,7 @@ namespace engine {
             //this->container->buyGetAll->setMouseChildren(false);
             //this->container->buyGetAll->setMouseEnabled(false);
             this->container->buyGetAll->setVisible (false);
-            this->container->getAll->setVisible (false);
+            //this->container->getAll->setVisible (false);
 
             this->container->getAll->gotoAndStop (3);
             this->container->fireBack->gotoAndStop (3);

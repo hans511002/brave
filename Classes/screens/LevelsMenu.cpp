@@ -92,9 +92,12 @@ namespace screens {
         this->container->setMouseDrag(true);
         this->container->setMouseEnabled(true);
         this->container->enableMouseHandler(true);
-        this->container->setPosition(0, Main::LEVEL_MAP_HEIGHT);
-        this->minDragPos = Vec2(0, Main::SCREEN_HEIGHT);
-        this->maxDragPos = Vec2(0, Main::LEVEL_MAP_HEIGHT);
+        //this->container->setPosition(0, Main::LEVEL_MAP_HEIGHT);
+        this->maxDragPos = Vec2(0, 0);
+        this->minDragPos = Vec2(0, Main::SCREEN_HEIGHT-Main::LEVEL_MAP_HEIGHT);
+		this->container->display->setPosition(0, Main::LEVEL_MAP_HEIGHT);
+		this->container->setName("LevelsMenu_mc");
+		this->printNodePos(this->container);
 
         this->container->stop();
         this->container->back->stop();
@@ -324,6 +327,24 @@ namespace screens {
                     }
                     event->target->setPosition(endPos);
                 }
+				if (event->target != this->container && this->container->isMouseDrag()) {
+					Vec2 stpos = this->container->getPosition();
+					Vec2 endPos = stpos + Vec2(Main::mouseX, Main::mouseY) - EventNode::beginTouchPos;
+					EventNode::beginTouchPos = Vec2(Main::mouseX, Main::mouseY);
+					if (endPos.x < en->minDragPos.x) {
+						endPos.x = en->minDragPos.x;
+					}
+					else if (endPos.x > en->maxDragPos.x) {
+						endPos.x = en->maxDragPos.x;
+					}
+					if (endPos.y < en->minDragPos.y) {
+						endPos.y = en->minDragPos.y;
+					}
+					else if (endPos.y > en->maxDragPos.y) {
+						endPos.y = en->maxDragPos.y;
+					}
+					this->container->setPosition(endPos);
+				}
             }
             if (this->mouseMoveTarget)
                 this->mouseMoveTarget = NULL;

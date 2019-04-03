@@ -481,14 +481,16 @@ namespace engine {
 
     //cocos2d::EventMouse* event
     void World::mouseDownHandler(cocos2d::EventMouse *e) {
-        if (!globalNode)EventNode::mouseDownHandler(e);
+		logInfo("check mouse down: ", getNamePath(e->getCurrentTarget()));
+		if (!globalNode)EventNode::mouseDownHandler(e);
         cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
         if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
         std::MouseEvent me(e);
         if (!useNodeEvent) {
             me = std::buildMouseEvent(e);
         }else if(globalNode && globalNode==this){
-            if (!std::hitTest(this, e))return;
+            if (!std::hitTest(e->getCurrentTarget(), e,true,true))return;
+			e->stopPropagation(); 
         }
         std::MouseEvent *event = &me;
         if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_DOWN))return;
@@ -601,7 +603,8 @@ namespace engine {
     }
 
     void World::mouseUpHandler(cocos2d::EventMouse *e) {
-        if (!globalNode)EventNode::mouseUpHandler(e);
+		logInfo("check mouse up: ", getNamePath(e->getCurrentTarget()));
+		if (!globalNode)EventNode::mouseUpHandler(e);
         cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
         if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
         std::MouseEvent me(e);
@@ -704,7 +707,8 @@ namespace engine {
     }
 
     void World::mouseMoveHandler(cocos2d::EventMouse *e) {
-        if (Main::mouseX == e->getCursorX() && Main::mouseY == e->getCursorY())
+//		logInfo("check mouse umoved: ", getNamePath(e->getCurrentTarget()));
+		if (Main::mouseX == e->getCursorX() && Main::mouseY == e->getCursorY())
             return;
         Main::mouseX = e->getCursorX();
         Main::mouseY = e->getCursorY();

@@ -132,12 +132,12 @@ void Main::removeAllScreens()
     //	this->removeChild(this->bmp);
     //	this->bmp = null;
     //}
-    //if (this->startMenuClass)
-    //{
-    //	this->lastClass = "StartMenu";
-    //	this->removeChild(this->startMenuClass);
-    //	this->startMenuClass = null;
-    //}
+    if (this->startMenuClass)
+    {
+    	this->lastClass = "StartMenu";
+    	this->removeChild(this->startMenuClass);
+    	this->startMenuClass = NULL;
+    }
     if (this->levelsMenuClass)
     {
         this->lastClass = "LevelsMenu";
