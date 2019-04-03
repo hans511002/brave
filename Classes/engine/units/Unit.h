@@ -165,6 +165,8 @@ namespace engine
 
 			int blockTowerRadius;//22
 
+			bool removed;
+
 			inline Unit() :direction("none"), world(NULL), road(0), way(0), path(0), finishPath(0), stopAnima(false), typeUnit(0), health(0), healthMax(0), speedK(0), speedKSave(0),
 				gold(0), fireDamageK(0), iceDamageK(0), stoneDamageK(0), levinDamageK(0), penalty(0), dead(false), readyDamage(true),
 				bulletTower6Effect(false), airFlag(false), fireLevinKillFlag(false), moveFlag(true), gate(0), nextTurnFlag(false), nextTurnPath(0), nextTurnMidPath(0),

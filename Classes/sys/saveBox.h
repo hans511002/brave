@@ -8,6 +8,51 @@
 
 namespace sys
 {
+	struct Config {
+		rapidjson::Document systemConfig;
+		Config();
+		Config(string file, bool savet = false);
+		void save();
+		bool savett;
+		string file;
+		void setSave(string file, bool savet=false);
+
+		template <class T = int> void setValue(string namePath, T val) {
+			JsonUtil::setValue<T>(systemConfig, namePath, val);
+			if(savett)
+                save();
+		};
+		template <class T = int> void setValue(string namePath, int idx, T val) {
+			JsonUtil::setValue<T>(systemConfig, namePath, idx, val);
+			if (savett)save();
+		};
+		inline rapidjson::Value * getValue(string namePath) {
+ 			return rapidjson::getValue(&systemConfig, namePath);
+		}
+		inline bool HasMember(string namePath) {
+			return getValue(namePath) != NULL;
+		}
+		bool getBoolValue(string namePath) {
+			return JsonUtil::getBoolValue(&systemConfig, namePath);
+		};
+		int getIntValue(string namePath ) {
+			return JsonUtil::getIntValue(&systemConfig, namePath);
+		};
+		long long getLLongValue(string namePath ) {
+			return JsonUtil::getLLongValue(&systemConfig, namePath);
+		};
+		double getDoubleValue(string namePath ) {
+			return JsonUtil::getDoubleValue(&systemConfig, namePath);
+		};
+		const char* getCharsValue(string namePath ) {
+			return JsonUtil::getCharsValue(&systemConfig, namePath);
+		};
+		string getStringValue(string namePath ) {
+			return JsonUtil::getStringValue(&systemConfig, namePath);
+		};
+	};
+	extern Config sysConf;
+
 	/**
 	保存数据到本地或服务器，暂时不实现
 	*/

@@ -50,16 +50,19 @@ namespace engine{
                     i = 0;
                     while (i < world->listOfUnits.size())
                     {
-                        float tempObject = this_pt.distance(world->listOfUnits[i]->shoot_pt);
-                        if (tempObject < 50)
-                        {
-                            if (!tempObject1)
+                        Unit * unit= world->listOfUnits[i];
+                        if(!unit->dead){
+                            float tempObject = this_pt.distance(world->listOfUnits[i]->shoot_pt);
+                            if (tempObject < 50)
                             {
-                                tempObject1 = world->listOfUnits[i];
-                            }
-                            else if (this_pt.distance(tempObject1->shoot_pt) > tempObject)
-                            {
-                                tempObject1 = world->listOfUnits[i];
+                                if (!tempObject1)
+                                {
+                                    tempObject1 = world->listOfUnits[i];
+                                }
+                                else if (this_pt.distance(tempObject1->shoot_pt) > tempObject)
+                                {
+                                    tempObject1 = world->listOfUnits[i];
+                                }
                             }
                         }
                         i++;

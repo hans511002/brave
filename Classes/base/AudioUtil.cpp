@@ -28,23 +28,30 @@ namespace std
         };
         void AudioUtil::musicManage(const string & onoff)
         {
-            if(onoff=="on"){
-				musicOn =true;
-            }else if(onoff=="off"){
-                if(isPlayMusic())
+			bool _musicOn = false;
+            if(onoff=="on")
+				_musicOn =true;
+            else if(onoff=="off")
+				_musicOn =false;
+			if (_musicOn != musicOn) {
+				if (!_musicOn && isPlayMusic())
 					stopMusic();
-				musicOn =false;
-            }            
-        };
+                musicOn = _musicOn;
+				sysConf.setValue("musicOn", musicOn);
+			}
+		};
 		void AudioUtil::soundManage(const string & onoff)
 		{
-			if (onoff == "on") {
-				soundOn = true;
-			}
-			else if (onoff == "off") {
-				if (isPlayMusic())
+			bool _soundOn = false;
+			if (onoff == "on") 
+				_soundOn = true;
+			else if (onoff == "off")
+				_soundOn = false;
+			if (_soundOn != soundOn) {
+				if (!_soundOn)
 					stopAllEffects();
-				soundOn = false;
+                soundOn = _soundOn;
+				sysConf.setValue("musicOn", soundOn);
 			}
 		};
 

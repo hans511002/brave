@@ -150,7 +150,7 @@ namespace engine
 			//	logInfo(parStr + " pos=", wpos, &parent->getPosition(), &parent->getAnchorPoint());
 			//	parent = parent->getParent();
 			//}
-
+			removed = false;
 			return true;
 		}// end function
 		void Unit::update(float dt) //public function update() : void
@@ -1035,6 +1035,7 @@ namespace engine
 		////public function getHit(param1:Number, param2:String = "无", param3:int = 0, param4:Boolean = false, param5:int = 0, param6:Object = null) : void
 		bool Unit::getHit(float param1, string param2, int  param3, bool param4, int param5, ShootBase * param6)
 		{
+			if (this->dead || this->health <= 0)return false;
 			if (!this->readyDamage)return false;
 			if (param1 > 0)
 			{
@@ -1769,12 +1770,15 @@ namespace engine
 		}// end function
 
 		void Unit::remove(){
+			if (removed)return;
+			removed = true;
 			removeUnitAfterDeathAnima();
 		}
 		void Unit::kill() //public function kill() : void
 		{
 			if (this->dead)
 				return;
+			this->health = 0;
 			this->dead = true;
 			this->readyDamage = false;
 			this->moveFlag = false;

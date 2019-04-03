@@ -5,6 +5,24 @@
 
 namespace sys
 {
+    //存储系统配置, 登录信息等
+    Config sysConf;
+	Config::Config() {
+		if (file.empty() || JsonUtil::readFile(&systemConfig, file) != 0) {
+			systemConfig.SetObject();
+		}
+	}
+	void Config::save() {
+		JsonUtil::writeFile(&systemConfig, file);
+	}
+	Config::Config(string file, bool savet ) {
+		setSave(file, savet);
+	}; 
+	void Config::setSave(string file, bool savet) {
+		this->file = file;
+		this->savett = savet;
+	};
+
 	SaveBox::SaveBox() :maxStars(63), playLevel(1)
 	{
 		//Document d;

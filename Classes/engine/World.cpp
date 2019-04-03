@@ -253,10 +253,21 @@ namespace engine
 			stime = Common::DateTime();
 			logInfo("feature", ts);
 		}
+        int i=0;
+        i = this->listOfBullets.size() - 1;
+        while (i >= 0)
+        {
+            this->listOfBullets[i]->update();
+            i--;
+        }
+        if (printTime) {
+            ts = Common::DateTime().GetTicks() - stime.GetTicks();
+            stime = Common::DateTime();
+            logInfo("listOfBullets", ts);
+        }
 		//子类播放
-		int i = this->listOfClasses.size() - 1;
-		while (i >= 0)
-		{
+        i= this->listOfClasses.size() - 1;
+		while (i >= 0){
 			this->listOfClasses[i]->update();
 			i--;
 		}
@@ -266,8 +277,7 @@ namespace engine
 			logInfo("listOfClasses", ts);
 		}
 		i = this->listOfTowers.size() - 1;
-		while (i >= 0)
-		{
+		while (i >= 0){
 			this->listOfTowers[i]->update();
 			i--;
 		}
@@ -278,9 +288,9 @@ namespace engine
 		}
 		//怪播放
 		i = this->listOfUnits.size() - 1;
-		while (i >= 0)
-		{
-			this->listOfUnits[i]->update();
+		while (i >= 0){
+			engine::units::Unit *unit=this->listOfUnits[i];
+			unit->update();
 			i--;
 		}
 		if (printTime) {
@@ -288,38 +298,20 @@ namespace engine
 			stime = Common::DateTime();
 			logInfo("listOfUnits", ts);
 		}
-		i = this->listOfBullets.size() - 1;
-		while (i >= 0)
-		{
-			this->listOfBullets[i]->update();
-			i--;
-		}
-		if (printTime) {
-			ts = Common::DateTime().GetTicks() - stime.GetTicks();
-			stime = Common::DateTime();
-			logInfo("listOfBullets", ts);
-		}
-		if (this->winDefCounter > -1)
-		{
-			if (this->winDefCounter > 0)
-			{
+
+		if (this->winDefCounter > -1){
+			if (this->winDefCounter > 0){
 				winDefCounter--;
 			}
-			else if (!this->menuObject)
-			{
+			else if (!this->menuObject){
 				this->winDefCounter = -1;
-				if (this->live <= 0)
-				{
+				if (this->live <= 0){
 					this->menuObject = new Defeat();
 					this->addChild(this->menuObject,9999);
-				}
-				else if (this->nowLevel == 15 && this->saveBox->getIntValue("complexityLevel") < 4)
-				{
+				}else if (this->nowLevel == 15 && this->saveBox->getIntValue("complexityLevel") < 4){
 					this->menuObject = new PreVictory();
 					this->addChild(this->menuObject, 9999);
-				}
-				else
-				{
+				}else{
 					this->menuObject = new Victory();
 					this->addChild(this->menuObject, 9999);
 				}

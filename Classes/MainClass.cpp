@@ -69,10 +69,11 @@ bool Main::init()
     //this->enableMouseHandler();//world及screen中监听
     //addPreloadDB();
     //
-    AudioUtil::setAudioDir("sound");
+    sysConf.setSave(FileUtils::getInstance()->getWritablePath() + "/system.json",true);
+    AudioUtil::setAudioDir("sound"); 
     //    AudioUtil::stopAll();
-//    AudioUtil::musicManage("off");
-//    AudioUtil::soundManage("off");
+	AudioUtil::musicOn = sysConf.getBoolValue("musicOn");
+	AudioUtil::soundOn = sysConf.getBoolValue("soundOn");
     preloadSound();
     return true;
 }// end function

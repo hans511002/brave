@@ -596,7 +596,7 @@ namespace engine {
 				{
 					if (this->world->listOfUnits[i]->shoot_pt.distance(this->this_pt) < 30)
 					{
-						if (this->world->listOfUnits[i]->health < this->health)
+						if (this->world->listOfUnits[i]->health>0 && this->world->listOfUnits[i]->health < this->health)
 						{
 							this->health = this->health - this->world->listOfUnits[i]->health;
 							this->world->listOfUnits[i]->getHit(this->world->listOfUnits[i]->health, "golem");
@@ -766,7 +766,6 @@ namespace engine {
 			if (!this->dead)
 			{
 				this->dead = true;
-				
 			}
 			return;
 		}// end function
