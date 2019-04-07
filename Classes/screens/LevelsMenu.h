@@ -27,24 +27,9 @@ namespace screens
 		MovieClipSub *towerEffect;
 		MovieClipSub *wreath;
 		Level_mc();
-	};
+	}; 
     struct LevelsMenu_mc :public MovieClip
     {
-        MovieClipSub * achieves;
-		MCCase * achievesAchievesCase1;
-		MCCase * achievesAchievesCase2;
-        MovieClipSub * back;
-		MCCase * backBackCase;
-		MovieClipSub * book;
-		MCCase * bookBookCase1;
-		MCCase * bookBookCase2;
-        MovieClipSub * btnMusic;
-		MCCase * btnMusicMusicCase;
-        MovieClipSub * btnSound;
-		MCCase * btnSoundSoundCase;
-		MovieClipSub * freeStars;
-		MovieClipSub * freeStarsCont;
-		MCText * freeStarsContStarsTXT;
 		Level_mc * level1;
 		Level_mc * level2;
 		Level_mc * level3;
@@ -61,10 +46,26 @@ namespace screens
 		Level_mc * level14;
 		Level_mc * level15;
 		MovieClipSub * road;
-        MovieClipSub * upgrades;
+ 		MovieClipSub *upgrades;
 		MCCase * upgradesUpgradesCase1;
 		MCCase * upgradesUpgradesCase2;
 		MovieClipSub * upgradesFireCont;
+		MovieClipSub * book;
+		MCCase * bookBookCase1;
+		MCCase * bookBookCase2;
+		MovieClipSub * achieves;
+		MCCase * achievesAchievesCase1;
+		MCCase * achievesAchievesCase2;
+		MovieClip * back;
+		MCCase * backBackCase;
+		MovieClipSub * freeStars;
+		MovieClipSub * freeStarsCont;
+		MCText * freeStarsContStarsTXT;
+
+		MovieClipSub * btnMusic;
+		MCCase * btnMusicMusicCase;
+		MovieClipSub * btnSound;
+		MCCase * btnSoundSoundCase;
 
         MovieClipSub * wavesAnimation;
 		std::map<std::string, MovieClipSub *> waves;

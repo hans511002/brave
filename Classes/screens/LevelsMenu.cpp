@@ -20,21 +20,6 @@ namespace screens {
 
     LevelsMenu_mc::LevelsMenu_mc() : MovieClip("screen/", "LevelsMenu_mc", "LevelsMenu_mc") {
         SET_NODETYPENAME();
-        this->achieves = this->createMovieClipSub("achieves");
-        this->achievesAchievesCase1 = this->achieves->createCase("achievesCase1");
-        this->achievesAchievesCase2 = this->achieves->createCase("achievesCase2");
-        this->back = this->createMovieClipSub("back");
-        this->backBackCase = this->back->createCase("backCase");
-        this->book = this->createMovieClipSub("book");
-        this->bookBookCase1 = this->book->createCase("bookCase1");
-        this->bookBookCase2 = this->book->createCase("bookCase2");
-        this->btnMusic = this->createMovieClipSub("btnMusic");
-        this->btnMusicMusicCase = this->btnMusic->createCase("musicCase");
-        this->btnSound = this->createMovieClipSub("btnSound");
-        this->btnSoundSoundCase = this->btnSound->createCase("soundCase");
-        this->freeStars = this->createMovieClipSub("freeStars");
-        this->freeStarsCont = this->freeStars->createMovieClipSub("cont");
-        this->freeStarsContStarsTXT = this->freeStarsCont->createText("starsTXT");
         this->level1 = (Level_mc *) this->createMovieClip("level1", new Level_mc());
         this->level2 = (Level_mc *) this->createMovieClip("level2", new Level_mc());
         this->level3 = (Level_mc *) this->createMovieClip("level3", new Level_mc());
@@ -51,11 +36,6 @@ namespace screens {
         this->level14 = (Level_mc *) this->createMovieClip("level14", new Level_mc());
         this->level15 = (Level_mc *) this->createMovieClip("level15", new Level_mc());
         this->road = this->createMovieClipSub("road");
-        this->upgrades = this->createMovieClipSub("upgrades");
-        this->upgradesUpgradesCase1 = this->upgrades->createCase("upgradesCase1");
-        this->upgradesUpgradesCase2 = this->upgrades->createCase("upgradesCase2");
-        this->upgradesFireCont = this->upgrades->createMovieClipSub("fireCont", true);
-        this->wavesAnimation = this->createMovieClipSub("wavesAnimation");
 
         return;
     }// end function
@@ -98,6 +78,40 @@ namespace screens {
 		this->container->display->setPosition(0, Main::LEVEL_MAP_HEIGHT);
 		this->container->setName("LevelsMenu_mc");
 		this->printNodePos(this->container);
+
+
+		MovieClip * btnSM = new MovieClip("screen/", "sound_mc", "LevelsMenu_mc");
+		this->addChild(btnSM);
+		btnSM->setPosition(Vec2(0, Main::SCREEN_HEIGHT));
+		this->container->btnMusic = btnSM->createMovieClipSub("btnMusic");
+		this->container->btnMusicMusicCase = this->container->btnMusic->createCase("musicCase");
+		this->container->btnSound = btnSM->createMovieClipSub("btnSound");
+		this->container->btnSoundSoundCase = this->container->btnSound->createCase("soundCase");
+		
+		this->container->back = new MovieClip("screen/", "back", "back");// this->createMovieClipSub("back");
+		this->addChild(this->container->back);
+		this->container->backBackCase = this->container->back->createCase("backCase");
+ 		this->container->back->setPosition(26, Main::SCREEN_HEIGHT - 15);
+
+		MovieClip * upbook = new MovieClip("screen/", "upgrades_mc", "LevelsMenu_mc");
+		this->addChild(upbook);
+		upbook->setPosition(Vec2(0, Main::LEVEL_MAP_HEIGHT));
+
+		this->container->achieves = upbook->createMovieClipSub("achieves");
+		this->container->achievesAchievesCase1 = this->container->achieves->createCase("achievesCase1");
+		this->container->achievesAchievesCase2 = this->container->achieves->createCase("achievesCase2");
+		this->container->book = upbook->createMovieClipSub("book");
+		this->container->bookBookCase1 = this->container->book->createCase("bookCase1");
+		this->container->bookBookCase2 = this->container->book->createCase("bookCase2");
+		this->container->freeStars = upbook->createMovieClipSub("freeStars");
+		this->container->freeStarsCont = this->container->freeStars->createMovieClipSub("cont");
+		this->container->freeStarsContStarsTXT = this->container->freeStarsCont->createText("starsTXT");
+
+		this->container->upgrades = upbook->createMovieClipSub("upgrades");
+		this->container->upgradesUpgradesCase1 = this->container->upgrades->createCase("upgradesCase1");
+		this->container->upgradesUpgradesCase2 = this->container->upgrades->createCase("upgradesCase2");
+		this->container->upgradesFireCont = this->container->upgrades->createMovieClipSub("fireCont", true);
+		this->container->wavesAnimation = this->container->createMovieClipSub("wavesAnimation");
 
         this->container->stop();
         this->container->back->stop();
