@@ -89,7 +89,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LevelsMenu.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LevelsMenu.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Classes/screens/LevelsMenu.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="279">
@@ -99,21 +99,23 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Waves.cpp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../Classes/engine/Waves.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="161">
+              <caret line="844" column="72" lean-forward="false" selection-start-line="844" selection-start-column="63" selection-end-line="844" selection-end-column="72" />
+              <folding>
+                <element signature="e#0#22#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Bullet_2.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Classes/engine/bullets/Bullet_2.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="420">
               <caret line="74" column="30" lean-forward="false" selection-start-line="74" selection-start-column="30" selection-end-line="74" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Bullet_2.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Classes/engine/bullets/Bullet_2.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-69">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -3270,11 +3272,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="129" />
-    <option name="y" value="43" />
-    <option name="width" value="1750" />
-    <option name="height" value="969" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -3595,7 +3597,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -3668,11 +3670,12 @@
           <option name="timeStamp" value="56" />
         </breakpoint>
       </breakpoints>
-      <option name="time" value="57" />
+      <option name="time" value="58" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="AndroidRunConfigurationType">
-        <watch expression="this-&gt;world-&gt;live" />
+        <watch expression="this-&gt;world-&gt;pointer1-&gt;counter" />
+        <watch expression="this-&gt;world-&gt;pointer1-&gt;mask1-&gt;getRotation()" />
       </configuration>
     </watches-manager>
   </component>
@@ -3753,13 +3756,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../Classes/engine/bullets/Bullet_81.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../Classes/engine/World.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="759">
@@ -3937,6 +3933,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="743">
           <caret line="1982" column="21" lean-forward="false" selection-start-line="1982" selection-start-column="21" selection-end-line="1982" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -4161,6 +4158,16 @@
         <state relative-caret-position="279">
           <caret line="333" column="21" lean-forward="true" selection-start-line="333" selection-start-column="21" selection-end-line="333" selection-end-column="21" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Classes/engine/Waves.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="844" column="72" lean-forward="false" selection-start-line="844" selection-start-column="63" selection-end-line="844" selection-end-column="72" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
