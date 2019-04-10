@@ -73,11 +73,11 @@ namespace screens {
         this->container->setMouseEnabled(true);
         this->container->enableMouseHandler(true);
         //this->container->setPosition(0, Main::LEVEL_MAP_HEIGHT);
-        this->maxDragPos = Vec2(0, 0);
-        this->minDragPos = Vec2(0, Main::SCREEN_HEIGHT-Main::LEVEL_MAP_HEIGHT);
+        this->container->maxDragPos = Vec2(0, 0);
+        this->container->minDragPos = Vec2(0, Main::SCREEN_HEIGHT-Main::LEVEL_MAP_HEIGHT);
 		this->container->display->setPosition(0, Main::LEVEL_MAP_HEIGHT);
 		this->container->setName("LevelsMenu_mc");
-		this->printNodePos(this->container);
+		//this->printNodePos(this->container);
 
 
 		MovieClip * btnSM = new MovieClip("screen/", "sound_mc", "LevelsMenu_mc");
@@ -323,39 +323,23 @@ namespace screens {
         //return;
         while (event->hasNext()) {
             string targetName = event->target->getName();
-            if (event->target == EventNode::beginTouchNode) {
+            if (event->target == EventNode::beginTouchNode &&(EventNode::beginTouchPos.x!= Main::mouseX|| EventNode::beginTouchPos.y != Main::mouseY)) {
                 EventNode *en = ISTYPE(EventNode, event->target);
-                if (en && en->isMouseDrag()) {
-                    Vec2 stpos = event->target->getPosition();
-                    Vec2 endPos =stpos + Vec2(Main::mouseX, Main::mouseY) - EventNode::beginTouchPos;
-                    EventNode::beginTouchPos = Vec2(Main::mouseX, Main::mouseY);
-                    if (endPos.x < en->minDragPos.x) {
-                        endPos.x = en->minDragPos.x;
-                    } else if (endPos.x > en->maxDragPos.x) {
-                        endPos.x = en->maxDragPos.x;
-                    }
-                    if (endPos.y < en->minDragPos.y) {
-                        endPos.y = en->minDragPos.y;
-                    } else if (endPos.y > en->maxDragPos.y) {
-                        endPos.y = en->maxDragPos.y;
-                    }
-                    event->target->setPosition(endPos);
-                }
-				if (event->target != this->container && this->container->isMouseDrag()) {
+				if (this->container->isMouseDrag()   ) {
 					Vec2 stpos = this->container->getPosition();
 					Vec2 endPos = stpos + Vec2(Main::mouseX, Main::mouseY) - EventNode::beginTouchPos;
 					EventNode::beginTouchPos = Vec2(Main::mouseX, Main::mouseY);
-					if (endPos.x < en->minDragPos.x) {
-						endPos.x = en->minDragPos.x;
+					if (endPos.x < this->container->minDragPos.x) {
+						endPos.x = this->container->minDragPos.x;
 					}
-					else if (endPos.x > en->maxDragPos.x) {
-						endPos.x = en->maxDragPos.x;
+					else if (endPos.x > this->container->maxDragPos.x) {
+						endPos.x = this->container->maxDragPos.x;
 					}
-					if (endPos.y < en->minDragPos.y) {
-						endPos.y = en->minDragPos.y;
+					if (endPos.y < this->container->minDragPos.y) {
+						endPos.y = this->container->minDragPos.y;
 					}
-					else if (endPos.y > en->maxDragPos.y) {
-						endPos.y = en->maxDragPos.y;
+					else if (endPos.y > this->container->maxDragPos.y) {
+						endPos.y = this->container->maxDragPos.y;
 					}
 					this->container->setPosition(endPos);
 				}
