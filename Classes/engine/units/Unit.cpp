@@ -1757,6 +1757,8 @@ namespace engine
 		}// end function
 		void Unit::removeUnitAfterDeathAnima() //public function removeUnitAfterDeathAnima() : void
 		{
+			if (removed)return;
+			removed = true;
 			//if (this->parent)
 			//{
 			if (this->world->selectObject == this) {
@@ -1770,9 +1772,7 @@ namespace engine
 			//return;
 		}// end function
 
-		void Unit::remove(){
-			if (removed)return;
-			removed = true;
+		void Unit::remove(){			
 			removeUnitAfterDeathAnima();
 		}
 		void Unit::kill() //public function kill() : void

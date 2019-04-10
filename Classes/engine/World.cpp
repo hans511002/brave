@@ -292,7 +292,7 @@ namespace engine {
         }
         i = this->listOfDeads.size() - 1;
         while (i >= 0) {
-             this->listOfDeads[i]->update();
+            this->listOfDeads[i]->update();
             i--;
         }
         if (this->winDefCounter > -1) {
