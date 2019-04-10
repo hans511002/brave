@@ -26,11 +26,11 @@ namespace engine
                 }
                 else
                 {
-                    float tempObject = std::random();
+                    float path = std::random();
                     i = world->listOfLevinPortals.size() - 1;
                     while (i >= 0)
                     {
-                        if (tempObject > i / world->listOfLevinPortals.size())
+                        if (path > i / world->listOfLevinPortals.size())
                         {
                             this->myPortal = world->listOfLevinPortals[i];
                             break;
@@ -59,9 +59,9 @@ namespace engine
 				this->addChild(this->portalAnima);
             }
             this->setPosition(world->bezierClass->getPathPoint(path + speedK, road, way));
-			//tempObject = world->bezierClass->getPathPoint(path + speedK, road, way);
-			//this->x = tempObject.x;
-			//this->y = tempObject.y;
+			//path = world->bezierClass->getPathPoint(path + speedK, road, way);
+			//this->x = path.x;
+			//this->y = path.y;
 			directionFlag = true;
 			directionManage();
 			//this->x = this_pt.x;
@@ -178,29 +178,29 @@ namespace engine
                 {
                     if (world->frameCounter == 10 || world->frameCounter == 20 || world->frameCounter == 30)
                     {
-                        float tempObject1 = ::round(std::random() * (3 - 1)) + 1;// Math.round(Math.random() * (3 - 1)) + 1;
-                        float tempObject2 = world->bezierClass->getPathLength(road, tempObject1);
-                        float tempObject6 = 10000;
+                        float path1 = ::round(std::random() * (3 - 1)) + 1;// Math.round(Math.random() * (3 - 1)) + 1;
+                        float path2 = world->bezierClass->getPathLength(road, path1);
+                        float path6 = 10000;
                         j = 0;
-                        while (j < tempObject2)
+                        while (j < path2)
                         {
-                            cocos2d::Point tempObject3 = world->bezierClass->getPathPoint(j, road, tempObject1);
-                            //tempObject3 = new Point(tempObject3.x, tempObject3.y);
-                            float tempObject4 = this_pt.distance(tempObject3);
-                            if (tempObject4 < 30)
+                            cocos2d::Point path3 = world->bezierClass->getPathPoint(j, road, path1);
+                            //path3 = new Point(path3.x, path3.y);
+                            float path4 = this_pt.distance(path3);
+                            if (path4 < 30)
                             {
-                                if (tempObject4 < tempObject6)
+                                if (path4 < path6)
                                 {
-                                    tempObject6 = tempObject4;
+                                    path6 = path4;
                                 }
                                 else
                                 {
-                                    Unit * tempObject = world->addUnit(33, road, tempObject1, j + std::random() * 20);
-                                    tempObject->direction = direction;
-                                    tempObject->readyDamage = false;
-                                    tempObject->moveFlag = false;
-                                    tempObject->setPosition(this->getPosition());
-                                    tempObject->setAlpha(0);
+                                    Unit * unit = world->addUnit(33, road, path1, j + std::random() * 20);
+                                    unit->direction = direction;
+                                    unit->readyDamage = false;
+                                    unit->moveFlag = false;
+                                    unit->setPosition(this->getPosition());
+                                    unit->setAlpha(0);
                                     listOfTornado.splice(0, 1);
                                     break;
                                 }
@@ -218,18 +218,18 @@ namespace engine
         {
             if (!dead && health <= 0)
             {
-                MovieClip * tempObject = NULL;
+                MovieClip * deadMc = NULL;
 				if(direction != "up")
 				{
-					tempObject = new MovieClip(world, "unit/", "Unit26HorisontDeath_mc", "Unit26HorisontDeath_mc");// new Indexes(new Unit26HorisontDeath_mc(), 1);
+					deadMc = new MovieClip(world, "unit/", "Unit26HorisontDeath_mc", "Unit26HorisontDeath_mc");// new Indexes(new Unit26HorisontDeath_mc(), 1);
 				}
 				else
 				{
-					tempObject = new MovieClip(world, "unit/", "Unit26VerticalDeath_mc", "Unit26VerticalDeath_mc");//Indexes(new Unit26VerticalDeath_mc(), 1);
+					deadMc = new MovieClip(world, "unit/", "Unit26VerticalDeath_mc", "Unit26VerticalDeath_mc");//Indexes(new Unit26VerticalDeath_mc(), 1);
 				}
-				tempObject->container->setScaleX(container->getScaleX());//X = container.scaleX;
-				tempObject->container->setScaleY(container->getScaleY());//Y = container.scaleY;
-				tempObject->setPosition(shoot_pt);				 
+				deadMc->container->setScaleX(container->getScaleX());//X = container.scaleX;
+				deadMc->container->setScaleY(container->getScaleY());//Y = container.scaleY;
+				deadMc->setPosition(shoot_pt);				 
             }
             Unit::kill();
             return;

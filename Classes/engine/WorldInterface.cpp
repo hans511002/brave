@@ -2092,7 +2092,7 @@ namespace engine {
         this->container->butCastGolem->gotoAndStop (6);
         AudioUtil::playSoundWithVol ("Snd_menu_mouseDown.mp3", 0.9f);
         this->castRegime ("on");
-        //if (this->world->road)this->world->road->setVisible(false);
+        if (this->world->road)this->world->road->setVisible(false);
         this->addCast ("golem");
     }// end function
 

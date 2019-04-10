@@ -29,7 +29,7 @@ namespace engine
 			upgr1_8 = (BulletTower71_mc*)this->createMovieClip("upgr1_8", new BulletTower71_mc());
 
 		};
-        Tower7::Tower7():roundCounter(0),soundCounter(0),soundTimer(5)
+        Tower7::Tower7():roundCounter(0),soundCounter(0),soundTimer(5), upgr1_anima(NULL)
         {
             return;
         }// end function
@@ -193,23 +193,23 @@ namespace engine
                                         {
                                             if (tempObject2.x > tempObject1.x && tempObject2.x - tempObject1.x >= world->listOfUnits[i]->speedK * 0.5)
                                             {
-                                                world->listOfUnits[i]->tempObject1 = container->upgr1_4;
+                                                world->listOfUnits[i]->bulltTower71Mc = container->upgr1_4;
                                                 listOfTargets.push(world->listOfUnits[i]);
                                             }
                                             else if (tempObject2.y > tempObject1.y && tempObject2.y - tempObject1.y >= world->listOfUnits[i]->speedK * 0.5)
                                             {
-                                                world->listOfUnits[i]->tempObject1 = container->upgr1_6;
+                                                world->listOfUnits[i]->bulltTower71Mc = container->upgr1_6;
                                                 listOfTargets.push(world->listOfUnits[i]);
                                             }
                                         }
                                         else if (tempObject2.x < tempObject1.x && tempObject1.x - tempObject2.x >= world->listOfUnits[i]->speedK * 0.5)
                                         {
-                                            world->listOfUnits[i]->tempObject1 = container->upgr1_3;
+                                            world->listOfUnits[i]->bulltTower71Mc = container->upgr1_3;
                                             listOfTargets.push(world->listOfUnits[i]);
                                         }
                                         else if (tempObject2.y > tempObject1.y && tempObject2.y - tempObject1.y >= world->listOfUnits[i]->speedK * 0.5)
                                         {
-                                            world->listOfUnits[i]->tempObject1 = container->upgr1_8;
+                                            world->listOfUnits[i]->bulltTower71Mc = container->upgr1_8;
                                             listOfTargets.push(world->listOfUnits[i]);
                                         }
                                     }
@@ -217,23 +217,23 @@ namespace engine
                                     {
                                         if (tempObject2.x > tempObject1.x && tempObject2.x - tempObject1.x >= world->listOfUnits[i]->speedK * 0.5)
                                         {
-                                            world->listOfUnits[i]->tempObject1 = container->upgr1_1;
+                                            world->listOfUnits[i]->bulltTower71Mc = container->upgr1_1;
                                             listOfTargets.push(world->listOfUnits[i]);
                                         }
                                         else if (tempObject2.y < tempObject1.y && tempObject1.y - tempObject2.y >= world->listOfUnits[i]->speedK * 0.5)
                                         {
-                                            world->listOfUnits[i]->tempObject1 = container->upgr1_5;
+                                            world->listOfUnits[i]->bulltTower71Mc = container->upgr1_5;
                                             listOfTargets.push(world->listOfUnits[i]);
                                         }
                                     }
                                     else if (tempObject2.x < tempObject1.x && tempObject1.x - tempObject2.x >= world->listOfUnits[i]->speedK * 0.5)
                                     {
-                                        world->listOfUnits[i]->tempObject1 = container->upgr1_2;
+                                        world->listOfUnits[i]->bulltTower71Mc = container->upgr1_2;
                                         listOfTargets.push(world->listOfUnits[i]);
                                     }
                                     else if (tempObject2.y < tempObject1.y && tempObject1.y - tempObject2.y >= world->listOfUnits[i]->speedK * 0.5)
                                     {
-                                        world->listOfUnits[i]->tempObject1 = container->upgr1_7;
+                                        world->listOfUnits[i]->bulltTower71Mc = container->upgr1_7;
                                         listOfTargets.push(world->listOfUnits[i]);
                                     }
                                 }
@@ -248,13 +248,13 @@ namespace engine
                             {
 								if(listOfTargets[i]->resLen > enemyTarget->resLen)
                                 {
-                                    this->upgr1_anima = listOfTargets[i]->tempObject1;
+                                    this->upgr1_anima = listOfTargets[i]->bulltTower71Mc;
                                     enemyTarget = listOfTargets[i];
                                 }
                             }
                             else
                             {
-                                this->upgr1_anima = listOfTargets[i]->tempObject1;
+                                this->upgr1_anima = listOfTargets[i]->bulltTower71Mc;
                                 enemyTarget = listOfTargets[i];
                                 this->upgr1_intervalCounter = 0;
                             }

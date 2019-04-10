@@ -44,35 +44,27 @@ namespace engine
 			}
 			if (liveCounter > 0)
 			{
+				units::Unit* unit = NULL;
 				if (!enemyTarget || enemyTarget->dead)
 				{
-					units::Unit* tempObject1 = NULL;
 					i = 0;
 					while (i < world->listOfUnits.size())
 					{
-						float tempObject = this_pt.distance(world->listOfUnits[i]->shoot_pt);// Point.distance(this_pt, world->listOfUnits[i]->shoot_pt);
-						if (tempObject < 50)
+						float distLen = this_pt.distance(world->listOfUnits[i]->shoot_pt);// Point.distance(this_pt, world->listOfUnits[i]->shoot_pt);
+						if (distLen < 50)
 						{
-							if (!tempObject1)
-							{
-								tempObject1 = world->listOfUnits[i];
-							}
-							else if (this_pt.distance(tempObject1->shoot_pt) > tempObject)
-							{
-								tempObject1 = world->listOfUnits[i];
-							}
+							if (!unit)
+								unit = world->listOfUnits[i];
+							else if (this_pt.distance(unit->shoot_pt) > distLen)
+								unit = world->listOfUnits[i];
 						}
 						i++;
 					}
-					if (tempObject1)
-					{
-						enemyTarget = tempObject1;
-					}
-					else
-					{
+					if (!unit) {
 						kill();
 						return;
 					}
+					enemyTarget = unit;
 				}
 				distanceX = enemyTarget->getPosition().x - this_pt.x;
 				distanceY = enemyTarget->getPosition().y - this_pt.y;

@@ -461,12 +461,11 @@ namespace engine
 		this->world->addChild(this->world->hint,3);
 		this->afterLoadXML();
 		
+        this->world->road = new  RoadLevels_mc(this->world->nowLevel);
 		//this->world->road->armature->getAnimation()->stop(); 
 		//this->world->road->armature->setName("road");
 		//this->world->road->setAlpha(0);
-		//this->world->road->setVisible(false);// visible = false;
-		
-        this->world->road = new  RoadLevels_mc(this->world->nowLevel);
+		this->world->road->setVisible(false);// visible = false;		
 		this->world->addChild(this->world->road,4); 
 		this->world->road->init();
 		//this->world->road->setPosition(this->world->road->initPos);

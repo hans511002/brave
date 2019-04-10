@@ -2262,6 +2262,13 @@ namespace engine {
             }
             i--;
         }
+		i = this->listOfTowers.size() - 1;
+		while (i >= 0) {
+			if (this->listOfTowers[i]->enemyTarget == unit) {
+				this->listOfTowers[i]->enemyTarget = NULL;
+			}
+ 			i--;
+		}
     };
 
     void World::removeBullet(Bullet *blt) {

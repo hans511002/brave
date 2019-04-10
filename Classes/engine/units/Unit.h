@@ -72,7 +72,7 @@ namespace engine
 			int i, j, n;
 			float resLen;// tempObject:Object;
 			bool resFlag;//public var tempObject1:Object;
-			BulletTower71_mc * tempObject1;
+			BulletTower71_mc * bulltTower71Mc;
 			//public var tempObject2:Object;
 			//public var tempObject3:Object;
 			//public var tempObject4:Object;
@@ -175,7 +175,7 @@ namespace engine
 				speedPlusFlag(false), speedPlusCounter(0), speedPlusValue(0), airGo(0), airWaitTimer(0), airSpacing(0), airPower(0), airResist(0), dampingAir(0), traversedPath(0),
 				icemanFlag(false), icemanCounter(0), icemanResist(0), fireEffectFlag(false), fireEffectCounter(0), fireEffectDamage(0), iceEffectFlag(false), iceEffectCounter(0),
 				iceEffectSlowdown(0), replacementFlag(0), replacementCount(0), mainMoveFlag(true), stealthCounter(0), hiddenFlag(false),
-				invisibleCounter(0), invisibleTimer(0), visibleCounter(0), visibleTimer(0), newEnemyCounter(0), atStaged(false), teleportAnima(NULL), blockTowerRadius(0), teleportFlagObj(0)
+				invisibleCounter(0), invisibleTimer(0), visibleCounter(0), visibleTimer(0), newEnemyCounter(0), atStaged(false), teleportAnima(NULL), blockTowerRadius(0), teleportFlagObj(0), bulltTower71Mc(NULL)
 			{
 
 			}// end function

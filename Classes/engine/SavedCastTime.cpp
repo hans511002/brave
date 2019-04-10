@@ -14,7 +14,7 @@ namespace engine
         contNoteTXT = cont->createText("noteTXT");
     }
 
-    SavedCastTime::SavedCastTime(string param1, int param2)
+    SavedCastTime::SavedCastTime(string param1, int param2):dead(false)
     {
         //this->addEventListener(Event.ADDED_TO_STAGE,this->init);
         this->type = param1;

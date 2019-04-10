@@ -72,25 +72,25 @@ namespace engine
 					//tempObject = new Indexes(new Unit21_backDeath_mc(), 1);
 				}
 				AudioUtil::playSound("Snd_unit_orderDeath.mp3");
-				//tempObject1 = container->localToGlobal(new Point(container->x, container->y));
-				//tempObject.x = tempObject1.x;
-				//tempObject.y = tempObject1.y;
-				float tempObject1 = 0;
-				float tempObject2 = 0;
-				float tempObject3 = 0;
+				//path1 = container->localToGlobal(new Point(container->x, container->y));
+				//tempObject.x = path1.x;
+				//tempObject.y = path1.y;
+				float path1 = 0;
+				float path2 = 0;
+				float path3 = 0;
 				if(way == 1)
 				{
-					tempObject1 = path;
+					path1 = path;
 				}
 				else if(way == 2)
 				{
-					tempObject2 = path;
+					path2 = path;
 				}
 				else if(way == 2)
 				{
-					tempObject3 = path;
+					path3 = path;
 				}
-				if(tempObject1 == 0)
+				if(path1 == 0)
 				{
 					float tempObject = 10000;
 					float tempObject4 = world->bezierClass->getPathLength(road, 1);
@@ -110,9 +110,9 @@ namespace engine
 						}
 						i = i + 5;
 					}
-					tempObject1 = i;
+					path1 = i;
 				}
-				if(tempObject2 == 0)
+				if(path2 == 0)
 				{
 					float tempObject = 10000;
 					float tempObject4 = world->bezierClass->getPathLength(road, 2);
@@ -132,9 +132,9 @@ namespace engine
 						}
 						i = i + 5;
 					}
-					tempObject2 = i;
+					path2 = i;
 				}
-				if(tempObject3 == 0)
+				if(path3 == 0)
 				{
 					float tempObject = 10000;
 					float tempObject4 = world->bezierClass->getPathLength(road, 3);
@@ -154,7 +154,7 @@ namespace engine
 						}
 						i = i + 5;
 					}
-					tempObject3 = i;
+					path3 = i;
 				}
 				j = 0;
 				i = 1;
@@ -164,27 +164,27 @@ namespace engine
 					j++;
 					if(j == 1)
 					{
-						tempObject1 = tempObject1 + 15;
-						tempObject = world->addUnit(32, road, 1, tempObject1);
+						path1 = path1 + 15;
+						tempObject = world->addUnit(32, road, 1, path1);
 						tempObject->speedKSave = tempObject->speedKSave - 0.1;
 					}
 					else if(j == 2)
 					{
-						tempObject2 = tempObject2 + 15;
-						tempObject = world->addUnit(32, road, 2, tempObject2);
+						path2 = path2 + 15;
+						tempObject = world->addUnit(32, road, 2, path2);
 						tempObject->speedKSave = tempObject->speedKSave - 0.14;
 					}
 					else if(j == 3)
 					{
-						tempObject3 = tempObject3 + 15;
-						tempObject = world->addUnit(32, road, 3, tempObject3);
+						path3 = path3 + 15;
+						tempObject = world->addUnit(32, road, 3, path3);
 						tempObject->speedKSave = tempObject->speedKSave - 0.17;
 					}
 					else if(j == 4)
 					{
 						j = 0;
-						tempObject3 = tempObject3 + 15;
-						tempObject = world->addUnit(32, road, 1, tempObject1);
+						path3 = path3 + 15;
+						tempObject = world->addUnit(32, road, 1, path1);
 						tempObject->speedKSave = tempObject->speedKSave - 0.2;
 					}
 					tempObject->speedK = tempObject->speedKSave;

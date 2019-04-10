@@ -1488,8 +1488,8 @@ namespace engine
 									if (this->world->listOfUnits[this->i]->this_pt.distance(this->this_pt) < Main::mainClass->readXMLClass.towerLevinEffectRadiusXML)
 										//if(Point.distance(this->world->listOfUnits[this->i].this_pt, this->this_pt) < Main::mainClass->readXMLClass.towerLevinEffectRadiusXML)
 									{
-										Bullet * tempObject1 = this->world->addBullet(4, this->shoot_pt, this, this->world->listOfUnits[this->i], param1 * Main::mainClass->readXMLClass.towerLevinEffectDamageXML, 1);
-										tempObject1->effectFlag = false;
+										Bullet * bullet = this->world->addBullet(4, this->shoot_pt, this, this->world->listOfUnits[this->i], param1 * Main::mainClass->readXMLClass.towerLevinEffectDamageXML, 1);
+										bullet->effectFlag = false;
 										param3 = param3 - 1;
 										if (param3 <= 0)
 										{
@@ -1523,9 +1523,9 @@ namespace engine
 								if (this->world->listOfUnits[this->i]->this_pt.distance(this->this_pt) < Main::mainClass->readXMLClass.levinEffectRadiusXML)
 									//if(Point.distance(this->world->listOfUnits[this->i].this_pt, this->this_pt) < Main::mainClass->readXMLClass.levinEffectRadiusXML)
 								{
-									Bullet * tempObject1 = this->world->addBullet(4, this->shoot_pt, this, this->world->listOfUnits[this->i], param1 * Main::mainClass->readXMLClass.towerLevinEffectDamageXML, 1);
-									tempObject1->effectFlag = false;
-									tempObject1->setVisible(false);
+									Bullet * bullet = this->world->addBullet(4, this->shoot_pt, this, this->world->listOfUnits[this->i], param1 * Main::mainClass->readXMLClass.towerLevinEffectDamageXML, 1);
+									bullet->effectFlag = false;
+									bullet->setVisible(false);
 									param3 = param3 - 1;
 									if (param3 <= 0)
 									{
