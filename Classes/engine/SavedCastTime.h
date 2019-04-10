@@ -12,7 +12,6 @@ namespace engine
     {
         MovieClipSub * cont;
         ui::Text * contNoteTXT;
-
         SavedCastTime_mc() ;
     };
     class SavedCastTime :public BaseNode

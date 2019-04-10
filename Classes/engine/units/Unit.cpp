@@ -1779,7 +1779,6 @@ namespace engine
 		{
 			if (this->dead)
 				return;
-			this->health = 0;
 			this->dead = true;
 			this->readyDamage = false;
 			this->moveFlag = false;
@@ -1963,7 +1962,8 @@ namespace engine
 			if (needRemove) {
 				//this->world->removeChild(this);
 			}
-			CCLOGWARN("kill unit : %i",(int)this);
+            this->health = 0;
+            CCLOGWARN("kill unit : %i",(int)this);
 			//return;
 		}
 	}

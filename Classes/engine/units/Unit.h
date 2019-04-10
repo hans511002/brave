@@ -8,27 +8,27 @@
 
 namespace engine
 {
- 
+
 	//class WaveData;
 	struct MouseStatusMC :public MovieClip
 	{
 		int mouseStatus;
-		inline MouseStatusMC(string rootPath, string armName, string dbName, string defAniName = "") :mouseStatus(0), MovieClip(rootPath, armName, dbName, defAniName){
+		inline MouseStatusMC(string rootPath, string armName, string dbName, string defAniName = "") :mouseStatus(0), MovieClip(rootPath, armName, dbName, defAniName) {
 		};
-		
+
 	};
 	struct NewEnemy_mc :public MouseStatusMC
-		{
-			MCCase* newEnemyCase;
-			int typeUnit;
-			NewEnemy_mc();
-		};
+	{
+		MCCase* newEnemyCase;
+		int typeUnit;
+		NewEnemy_mc();
+	};
 	struct NewElement_mc :public MouseStatusMC
-		{
-			MCCase *newElementCase;
-			int type;
-			NewElement_mc();
-		};
+	{
+		MCCase *newElementCase;
+		int type;
+		NewElement_mc();
+	};
 	namespace units
 	{
 		class Unit;
@@ -40,29 +40,29 @@ namespace engine
 			cocos2d::Point myPoint;
 			bool repeatFlag;
 			int repeatCounter;
-			inline Roadsign_mc(string path, string arm, string dbName) :MovieClip(path, arm, dbName){};
+			inline Roadsign_mc(string path, string arm, string dbName) :MovieClip(path, arm, dbName) {};
 		};
 		struct RoadsignFire_mc : public Roadsign_mc
 		{
-			inline RoadsignFire_mc() :Roadsign_mc("worldinterface/", "RoadsignFire_mc", "RoadsignFire_mc"){
+			inline RoadsignFire_mc() :Roadsign_mc("worldinterface/", "RoadsignFire_mc", "RoadsignFire_mc") {
 				SET_NODETYPENAME();
 			};
 		};
 		struct RoadsignIce_mc : public Roadsign_mc
 		{
-			inline RoadsignIce_mc() :Roadsign_mc("worldinterface/", "RoadsignIce_mc", "RoadsignIce_mc"){
+			inline RoadsignIce_mc() :Roadsign_mc("worldinterface/", "RoadsignIce_mc", "RoadsignIce_mc") {
 				SET_NODETYPENAME();
 			};
 		};
 		struct RoadsignStone_mc : public Roadsign_mc
 		{
-			inline RoadsignStone_mc() :Roadsign_mc("worldinterface/", "RoadsignStone_mc", "RoadsignStone_mc"){
+			inline RoadsignStone_mc() :Roadsign_mc("worldinterface/", "RoadsignStone_mc", "RoadsignStone_mc") {
 				SET_NODETYPENAME();
 			};
 		};
 		struct RoadsignLevin_mc : public Roadsign_mc
 		{
-			inline RoadsignLevin_mc() :Roadsign_mc("worldinterface/", "RoadsignLevin_mc", "RoadsignLevin_mc"){
+			inline RoadsignLevin_mc() :Roadsign_mc("worldinterface/", "RoadsignLevin_mc", "RoadsignLevin_mc") {
 				SET_NODETYPENAME();
 			};
 		};
@@ -182,7 +182,7 @@ namespace engine
 
 			virtual bool init();
 
-			virtual void update(float dt=0);
+			virtual void update(float dt = 0);
 
 			virtual void moveHandler();
 
@@ -221,24 +221,24 @@ public:\
 	MEMBER_DEFINE \
 		};
 
-		UNIT_CLASS_DEFINE(Unit_1,);
-		UNIT_CLASS_DEFINE(Unit_2,);
-		UNIT_CLASS_DEFINE(Unit_3,);
-		UNIT_CLASS_DEFINE(Unit_4,);
-		UNIT_CLASS_DEFINE(Unit_5,);
-		UNIT_CLASS_DEFINE(Unit_6,);
-		UNIT_CLASS_DEFINE(Unit_7,);
-		UNIT_CLASS_DEFINE(Unit_8,);
+		UNIT_CLASS_DEFINE(Unit_1, );
+		UNIT_CLASS_DEFINE(Unit_2, );
+		UNIT_CLASS_DEFINE(Unit_3, );
+		UNIT_CLASS_DEFINE(Unit_4, );
+		UNIT_CLASS_DEFINE(Unit_5, );
+		UNIT_CLASS_DEFINE(Unit_6, );
+		UNIT_CLASS_DEFINE(Unit_7, );
+		UNIT_CLASS_DEFINE(Unit_8, );
 		UNIT_CLASS_DEFINE(Unit_9, );
-		UNIT_CLASS_DEFINE(Unit_10,);
-		UNIT_CLASS_DEFINE(Unit_11,);
-		UNIT_CLASS_DEFINE(Unit_12,);
-		UNIT_CLASS_DEFINE(Unit_13,);
-		UNIT_CLASS_DEFINE(Unit_14,);
-		UNIT_CLASS_DEFINE(Unit_15,);
-		UNIT_CLASS_DEFINE(Unit_16,);
+		UNIT_CLASS_DEFINE(Unit_10, );
+		UNIT_CLASS_DEFINE(Unit_11, );
+		UNIT_CLASS_DEFINE(Unit_12, );
+		UNIT_CLASS_DEFINE(Unit_13, );
+		UNIT_CLASS_DEFINE(Unit_14, );
+		UNIT_CLASS_DEFINE(Unit_15, );
+		UNIT_CLASS_DEFINE(Unit_16, );
 		UNIT_CLASS_DEFINE(Unit_17, );
-		UNIT_CLASS_DEFINE(Unit_18,);
+		UNIT_CLASS_DEFINE(Unit_18, );
 		UNIT_CLASS_DEFINE(Unit_19, );
 		UNIT_CLASS_DEFINE(Unit_20, virtual void kill(););
 		UNIT_CLASS_DEFINE(Unit_21, virtual void kill(););
@@ -246,7 +246,7 @@ public:\
 
 		UNIT_CLASS_DEFINE(Unit_23, RoadsignFire_mc * myPortal; MovieClip * portalAnima; virtual void kill(););
 		UNIT_CLASS_DEFINE(Unit_24, RoadsignIce_mc * myPortal; MovieClip * portalAnima; virtual void kill(););
-		UNIT_CLASS_DEFINE(Unit_25, RoadsignStone_mc * myPortal; MovieClip * portalAnima; virtual void kill(); virtual void update(float dt=0););
+		UNIT_CLASS_DEFINE(Unit_25, RoadsignStone_mc * myPortal; MovieClip * portalAnima; virtual void kill(); virtual void update(float dt = 0););
 		UNIT_CLASS_DEFINE(Unit_26, RoadsignLevin_mc * myPortal; MovieClip * portalAnima; virtual void kill(););
 		UNIT_CLASS_DEFINE(Unit_27, int teleportPhase; int teleportTimer; int teleportCounter; int teleportStealthTimer; int teleportStealthCounter; float teleportDistance; float teleportRadius; Common::Array<Unit*> listOfTeleportUnits; int soundCounter; int soundTimer; int soundTimer1; int teleportUnitsMax; int teleportUnitsCounter; virtual void kill(););
 		UNIT_CLASS_DEFINE(Unit_28, float giveHealthRadius; int giveHeathCounter; int giveHeathTimer; float giveHeath;);
