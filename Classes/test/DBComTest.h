@@ -1,23 +1,73 @@
 #include "BaseDemo.h"
 #include "BaseHeaders.h"
 #include "BaseNode.h"
-#include "MaskTest.h"
-#include "engine/WorldInterface_mc.h"
-/**
-* How to use
-* 1. Load data.
-*    factory.loadDragonBonesData();
-*    factory.loadTextureAtlasData();
-*
-* 2. Build armature.
-*    armatureDisplay = factory.buildArmatureDisplay("armatureName");
-*
-* 3. Play animation.
-*    armatureDisplay->getAnimation()->play("animationName");
-*
-* 4. Add armature to stage.
-*    addChild(armatureDisplay);
-*/
+#include "MaskTest.h" 
+
+namespace engine
+{
+	class LevelPointerTest :public MovieClip
+	{
+	public:
+		MCCase * pointerCase;
+		MovieClipSub * fireAnima;
+		MovieClipSub * eyesAnima;
+		Sprite * mask1;
+		Sprite * mask2;
+		Sprite * firel;//2
+		Sprite * firer;//1 2 
+		Sprite * arrow;
+
+		LevelPointerTest();
+		float counter;
+		int timer;
+		Vec2 myPoint;
+		int statusAnima;
+
+		void resetMask() {
+			mask1 = this->getSprite("mask1");
+			mask2 = this->getSprite("mask2");
+			firel = this->getSprite("firel");
+			firer = this->getSprite("firer");
+			if (this->currentFrame == 1) {
+				if (mask1) {
+					mask1->setLocalZOrder(1);
+					mask1->setAnchorPoint(Vec2(0, 0.5));
+					mask1->setRotation(0);
+				}
+				firer->setLocalZOrder(0);
+
+				mask2->setLocalZOrder(3);
+				mask2->setAnchorPoint(Vec2(1, 0.5));
+				mask2->setRotation(0);
+				firel->setLocalZOrder(2);
+			}
+			else {
+				if (mask1) {
+					mask1->setLocalZOrder(1);
+					mask1->setAnchorPoint(Vec2(0, 0.5));
+					mask1->setRotation(0);
+				}
+				firer->setLocalZOrder(4);
+				mask2->setLocalZOrder(3);
+				mask2->setAnchorPoint(Vec2(1, 0.5));
+				mask2->setRotation(0);
+				firel->setLocalZOrder(2);
+			}
+		};
+	};
+	LevelPointerTest::LevelPointerTest() :MovieClip("", "pointer", "LevelBase"), statusAnima(0), timer(0), counter(0)
+	{
+		SET_NODETYPENAME();
+		pointerCase = this->createCase("pointerCase");
+		fireAnima = this->createMovieClipSub("fireAnima", false);
+		eyesAnima = this->createMovieClipSub("eyesAnima");
+		mask1 = this->getSprite("mask1");
+		mask2 = this->getSprite("mask2");
+		firel = this->getSprite("firel");
+		firer = this->getSprite("firer"); 
+		arrow = (Sprite*)this->getArmature()->getSlot("arrow")->getDisplay();
+	};
+}
 class DBComTest : BaseDemo
 {
 public:
@@ -33,7 +83,7 @@ public:
 	}
 	dragonBones::CCArmatureDisplay* armatureDisplay;
 protected:
-	LevelPointer * pointer=NULL;
+	LevelPointerTest * pointer=NULL;
 	Tower1_mc * tower = NULL;
 	void onEnter()
 	{
@@ -48,7 +98,7 @@ protected:
 		//addPointer();
 		//addTest();
 		//addWorldInterface();
-		addTower();
+		addPointer();
 		return;
 	}
 	int currentFrame;
@@ -56,9 +106,27 @@ protected:
 	int totalFrames, frameCounter;
 	string direction;
 	MovieClip *mc;
-	ui::Text *text = NULL;
-	WorldInterface_mc *container = NULL;
+	ui::Text *text = NULL; 
 
+	void round() {
+		if (pointer->currentFrame == 1) {
+			float r= pointer->mask1->getRotation();
+			pointer->mask1->setRotation(r + 1);
+			if (r == 180) {
+				pointer->gotoAndStop(2);
+				pointer->resetMask();
+			}
+		}
+		else {
+			float r = pointer->mask2->getRotation();
+			pointer->mask2->setRotation(r + 1);
+			if (r == 180) {
+				pointer->gotoAndStop(1);
+				pointer->resetMask();
+			}
+		}
+		pointer->fireAnima->setRotation(pointer->fireAnima->getRotation()+1);
+	}
 	virtual void  scheduleUpdate(float dt)
 	{
 		if (this->frameCounter < 30)
@@ -84,8 +152,10 @@ protected:
 		//	//pointer->mask5->setOpacity(currentFrame%256);
 		//	pointer->mask2->mask->setOpacity(currentFrame % 256);
 		//}
-		//pointer->mask1->setRotation(pointer->mask1->getRotation()+1);
-		//pointer->mask2->setRotation(pointer->mask2->getRotation()+1);
+		
+		round();
+
+
 		//pointer->fireAnima->setRotation(currentFrame);
 		//logInfo("pointer->mask1->getPosition ", pointer->mask1->mask->getPosition(), &pointer->mask1->mask->getAnchorPointInPoints());
 		//logInfo("pointer->mask2->getPosition ", pointer->mask2->mask->getPosition(), &pointer->mask2->mask->getAnchorPointInPoints());
@@ -94,19 +164,19 @@ protected:
 		//	//text->setText(I18N_VALUE(I18N_CODE::U102));
 		//	if (text)
 		//		std::setText(text, I18N_VALUE(I18N_CODE::U102));
-		//	if (pointer) {
-		//		pointer->fireAnima->setVisible(true);
-		//		Vec2 pt = pointer->fireAnima->container->getPosition();
-		//		Vec2 wpt = pointer->fireAnima->container->convertToWorldSpace(pt);
-		//		logInfo(getNamePath(pointer->fireAnima->container), pt, &wpt, &pointer->fireAnima->container->convertToNodeSpace(wpt));
+			//if (pointer) {
+			//	pointer->fireAnima->setVisible(true);
+			//	Vec2 pt = pointer->fireAnima->container->getPosition();
+			//	Vec2 wpt = pointer->fireAnima->container->convertToWorldSpace(pt);
+			//	logInfo(getNamePath(pointer->fireAnima->container), pt, &wpt, &pointer->fireAnima->container->convertToNodeSpace(wpt));
 
-		//		pt = pointer->tcase1->getPosition();
-		//		wpt = pointer->tcase1->convertToWorldSpace(pt);
-		//		logInfo(getNamePath(pointer->tcase1), pt, &wpt, &pointer->tcase1->convertToNodeSpace(wpt));
-		//		pt = pointer->tcase2->getPosition();
-		//		wpt = pointer->tcase2->convertToWorldSpace(pt);
-		//		logInfo(getNamePath(pointer->tcase2), pt, &wpt, &pointer->tcase2->convertToNodeSpace(wpt));
-		//	}
+			//	pt = pointer->tcase1->getPosition();
+			//	wpt = pointer->tcase1->convertToWorldSpace(pt);
+			//	logInfo(getNamePath(pointer->tcase1), pt, &wpt, &pointer->tcase1->convertToNodeSpace(wpt));
+			//	pt = pointer->tcase2->getPosition();
+			//	wpt = pointer->tcase2->convertToWorldSpace(pt);
+			//	logInfo(getNamePath(pointer->tcase2), pt, &wpt, &pointer->tcase2->convertToNodeSpace(wpt));
+			//}
 		//	if (container) {
 		//		printSphereCase();
 		//		if (currentFrame < 40) {
@@ -124,25 +194,10 @@ protected:
 		//	}
 		//}
 
-		if (currentFrame > 100) {
-			tower->sphere1->setVisible(true);
-			if(!tower->sphere1->isPlay())
-				tower->sphere1->play(0);
-			if (((currentFrame / 100 ) %4+1) != tower->sphere1Bullet->currentFrame) {
-				tower->sphere1Bullet->gotoAndStop((currentFrame / 100) % 4 + 1);
-				//if (!tower->sphere1BulletCont->isPlay())
-				//	tower->sphere1BulletCont->play(1); 
-			}
-		}
+ 
 
 	}
-	void printSphereCase() {
-		printNodePos(container->fireSphereSphereCase);
-		printNodePos(container->iceSphereSphereCase);
-		printNodePos(container->stoneSphereSphereCase);
-		printNodePos(container->levinSphereSphereCase);
-
-	}
+ 
 	void printNodePos(Node *node) {
 		Vec2 pt = node->getPosition();
 		Vec2 wpt = node->convertToWorldSpace(pt);
@@ -178,15 +233,14 @@ protected:
 		this->addChild(start_button);
 	}
 	void addPointer() {
-		pointer = new LevelPointer();
+	pointer = new LevelPointerTest();
 
-		pointer->mask1->setVisible(false);
-		pointer->mask2->setVisible(false);
-		pointer->arrow->setVisible(false);
-		pointer->mask3->setVisible(false);
-		pointer->mask4->setVisible(false);
-		pointer->mask5->setVisible(false);
-
+		//pointer->mask1->setVisible(false);
+		//pointer->mask2->setVisible(false);
+		//pointer->arrow->setVisible(false);
+		//pointer->mask3->setVisible(false);
+		//pointer->mask4->setVisible(false);
+		//pointer->mask5->setVisible(false);
 
 		pointer->eyesAnima->play(0);
 		pointer->fireAnima->play(0);
@@ -194,11 +248,11 @@ protected:
 		this->addChild(pointer);
 		pointer->statusAnima = 1;
 		pointer->myPoint = cocos2d::Point(pointer->getPosition());
-		pointer->gotoAndStop(1);
+ 		pointer->resetMask();
 		//pointer->mask2->stop();
 		//pointer->arrow->stop();
-		pointer->fireAnima->setVisible(false);
-		pointer->eyesAnima->setVisible(false);
+		//pointer->fireAnima->setVisible(false);
+		//pointer->eyesAnima->setVisible(false);
 		//std::changeAnchorPoint(pointer->mask2,Vec2(1,0.5));
 		//pointer->getArmature()->getBone("mask2")->offset.rotation=180;
 		//pointer->mask2->setScaleX(-1);
@@ -209,304 +263,63 @@ protected:
 		pointer->setScaleY(0.9f);
 		pointer->setScaleX(0.9f);
 		//pointer->setVisible(false);
-		float tempObject = pointer->getRotation();
-		pointer->setRotation(0);
-		pointer->arrow->setRotation(tempObject);
+		//float tempObject = pointer->getRotation();
+		//pointer->setRotation(0);
+		//pointer->arrow->setRotation(tempObject);
 
-		//std::setAnchorPoint(pointer->mask1, Vec2(1, 0.5));
-		std::changeAnchorPoint(pointer->mask1->mask, Vec2(0, 0.5));
-		std::changeAnchorPoint(pointer->mask2->mask, Vec2(1, 0.5));
-		//pointer->mask1->setRotation(-180);
+		////std::setAnchorPoint(pointer->mask1, Vec2(1, 0.5));
+		//std::changeAnchorPoint(pointer->mask1->mask, Vec2(0, 0.5));
+		//std::changeAnchorPoint(pointer->mask2->mask, Vec2(1, 0.5));
+		////pointer->mask1->setRotation(-180);
 
-		pointer->mask2->mask->setOpacityModifyRGB(true);
-		pointer->mask5->setOpacityModifyRGB(true);
-		glEnable(GL_BLEND);
-		//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		//glBlendFunc(GL_ONE, GL_ONE);GL_DST_ALPHA
+		//pointer->mask2->mask->setOpacityModifyRGB(true);
+		//pointer->mask5->setOpacityModifyRGB(true);
+		//glEnable(GL_BLEND);
+		////glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		////glBlendFunc(GL_ONE, GL_ONE);GL_DST_ALPHA
 
-		ccBlendFunc blendFunc;
-		blendFunc.src = GL_SRC_ALPHA;
-		blendFunc.dst = GL_DST_ALPHA;
-		//pointer->mask1->setBlendFunc(blendFunc);
-		//pointer->mask2->mask->setBlendFunc(blendFunc);
-		//blendFunc.src = GL_ONE;
-		//blendFunc.dst = GL_ZERO; 
+		//ccBlendFunc blendFunc;
+		//blendFunc.src = GL_SRC_ALPHA;
+		//blendFunc.dst = GL_DST_ALPHA;
+		////pointer->mask1->setBlendFunc(blendFunc);
+		////pointer->mask2->mask->setBlendFunc(blendFunc);
+		////blendFunc.src = GL_ONE;
+		////blendFunc.dst = GL_ZERO; 
+		////blendFunc.src = GL_DST_ALPHA;            // mask图片的当前alpha值是多少，如果是0（完全透明），那么就显示mask的。如果是1（完全不透明）
+		////blendFunc.dst = GL_ZERO;                // maskSprite不可见
+
+		//pointer->mask2->mask->setPosition(pointer->mask2->mask->getPosition() + Vec2(50, 50));
 		//blendFunc.src = GL_DST_ALPHA;            // mask图片的当前alpha值是多少，如果是0（完全透明），那么就显示mask的。如果是1（完全不透明）
 		//blendFunc.dst = GL_ZERO;                // maskSprite不可见
 
-		pointer->mask2->mask->setPosition(pointer->mask2->mask->getPosition() + Vec2(50, 50));
-		blendFunc.src = GL_DST_ALPHA;            // mask图片的当前alpha值是多少，如果是0（完全透明），那么就显示mask的。如果是1（完全不透明）
-		blendFunc.dst = GL_ZERO;                // maskSprite不可见
+		//pointer->mask5->visit();
+		//pointer->mask2->mask->visit();
 
-		pointer->mask5->visit();
-		pointer->mask2->mask->visit();
-
-		//pointer->mask1->setVisible(false); 
-		//pointer->mask2->setVisible(false);
-		//if(pointer->mask3->mask)pointer->mask3->mask->setBlendFunc(blendFunc);
-		//if (pointer->mask4->mask)pointer->mask4->mask->setBlendFunc(blendFunc);
-		pointer->mask5->setPosition(pointer->mask5->getPosition() + Vec2(50, 50));
-		//pointer->mask5->setBlendFunc(blendFunc);
-		//pointer->mask5 ->setOpacity(0);
-		//pointer->mask2 ->mask->setOpacity(0);
+		////pointer->mask1->setVisible(false); 
+		////pointer->mask2->setVisible(false);
+		////if(pointer->mask3->mask)pointer->mask3->mask->setBlendFunc(blendFunc);
+		////if (pointer->mask4->mask)pointer->mask4->mask->setBlendFunc(blendFunc);
+		//pointer->mask5->setPosition(pointer->mask5->getPosition() + Vec2(50, 50));
+		////pointer->mask5->setBlendFunc(blendFunc);
+		////pointer->mask5 ->setOpacity(0);
+		////pointer->mask2 ->mask->setOpacity(0);
 
 
 
 
-		//pointer->mask5->setVisible(false);
-		pointer->mask3->setVisible(false);
-		pointer->mask4->setVisible(false);
-		pointer->arrow->setVisible(false);
-		//pointer->mask1->setRotation(-180);
-		Sprite *mask6 = (Sprite*)pointer->getArmature()->getSlot("Layer 3")->getDisplay();
-		mask6->setVisible(false);
-		mask6 = (Sprite*)pointer->getArmature()->getSlot("Layer 14")->getDisplay();
-		mask6->setVisible(false);
-		logInfo("pointer->mask1->getPosition ", pointer->mask1->mask->getPosition(), &pointer->mask1->mask->getAnchorPointInPoints());
+		////pointer->mask5->setVisible(false);
+		//pointer->mask3->setVisible(false);
+		//pointer->mask4->setVisible(false);
+		//pointer->arrow->setVisible(false);
+		////pointer->mask1->setRotation(-180);
+		//Sprite *mask6 = (Sprite*)pointer->getArmature()->getSlot("Layer 3")->getDisplay();
+		//mask6->setVisible(false);
+		//mask6 = (Sprite*)pointer->getArmature()->getSlot("Layer 14")->getDisplay();
+		//mask6->setVisible(false);
+		//logInfo("pointer->mask1->getPosition ", pointer->mask1->mask->getPosition(), &pointer->mask1->mask->getAnchorPointInPoints());
 
 	}
-	void addWorldInterface() {
-		container = new WorldInterface_mc();
-		this->addChild(container);
-
-
-		this->container->stop();
-
-		this->container->fireBack->stop();
-		this->container->iceBack->stop();
-		this->container->stoneBack->stop();
-		this->container->levinBack->stop();
-		//this->container->backComponents->stop();
-		this->container->fireSphere->stop();
-		this->container->iceSphere->stop();
-		this->container->stoneSphere->stop();
-		this->container->levinSphere->stop();
-		this->container->getAll->stop();
-		this->container->buyFire->stop();
-		this->container->buyIce->stop();
-		this->container->buyStone->stop();
-		this->container->buyLevin->stop();
-		this->container->buyGetAll->stop();
-		this->container->buyFireCoin->stop();
-		this->container->buyIceCoin->stop();
-		this->container->buyStoneCoin->stop();
-		this->container->buyLevinCoin->stop();
-		this->container->buyGetAllCoin->stop();
-		this->container->sell->stop();
-		this->container->book->stop();
-		this->container->pause->stop();
-		this->container->startWaves->stop();
-		this->container->butCastGolem->stop();
-		this->container->butCastIceman->stop();
-		this->container->butCastAir->stop();
-		this->container->barInfo->stop();
-		this->container->slow->stop();
-		this->container->fast->stop();
-		//this->container->traceBezier->stop();
-		this->container->barInfo->setPositionY(15);//Main:: - 585
-		this->container->bookBookCase->setMouseEnabled(true);
-		this->container->pausePauseCase->setMouseEnabled(true);
-		this->container->startWavesStartWavesCase->setMouseEnabled(true);
-		this->container->butCastGolemCastGolemCase->setMouseEnabled(true);
-		this->container->butCastIcemanCastIcemanCase->setMouseEnabled(true);
-		this->container->butCastAirCastAirCase->setMouseEnabled(true);
-		//this->container->slow->setMouseEnabled(true);
-		if (this->container->traceBezier)this->container->traceBezier->setMouseEnabled(true);
-		//this->container->fireNumTXT->setMouseEnabled(false);
-		//this->container->iceNumTXT->setMouseEnabled(false);
-		//this->container->stoneNumTXT->setMouseEnabled(false);
-		//this->container->levinNumTXT->setMouseEnabled(false);
-		//this->container->barInfo->setMouseChildren(false);
-		//this->container->barInfo->setMouseEnabled(false);
-		//this->container->lastTime->setMouseEnabled(false);
-
-		this->container->butCastGolem->setAlpha(0);
-		this->container->butCastIceman->setAlpha(0);
-		this->container->butCastAir->setAlpha(0);
-
-		this->container->butCastGolem->setVisible(false);
-		this->container->butCastIceman->setVisible(false);
-		this->container->butCastAir->setVisible(false);
-		this->container->barInfo->setVisible(false);
-
-		this->container->lastTime->setVisible(false);
-		//this->container->buyFireLightUp->setVisible(false);
-		//this->container->buyIceLightUp->setVisible(false);
-		//this->container->buyStoneLightUp->setVisible(false);
-		//this->container->buyLevinLightUp->setVisible(false);
-		//this->container->buyGetAllLightUp->setVisible(false);
-
-		//		this->container->backComponents.cacheAsBitmap = true;
-		this->container->fireSphereMyPoint = this->container->fireSphere->localToGlobal(this->container->fireSphereSphereCase->getPosition());
-		this->container->iceSphereMyPoint = this->container->iceSphere->localToGlobal(this->container->iceSphereSphereCase->getPosition());
-		this->container->stoneSphereMyPoint = this->container->stoneSphere->localToGlobal(this->container->stoneSphereSphereCase->getPosition());
-		this->container->levinSphereMyPoint = this->container->levinSphere->localToGlobal(this->container->levinSphereSphereCase->getPosition());
-		this->container->getAllMyPoint = this->container->getAll->localToGlobal(this->container->getAllSphereCase->getPosition());
-		this->container->fireBacklightTurnFlag = true;
-		this->container->iceBacklightTurnFlag = true;
-		this->container->stoneBacklightTurnFlag = true;
-		this->container->levinBacklightTurnFlag = true;
-		this->container->fireBacklight->stop();
-		this->container->iceBacklight->stop();
-		this->container->stoneBacklight->stop();
-		this->container->levinBacklight->stop();
-		this->container->fireBacklight->setVisible(false);
-		this->container->iceBacklight->setVisible(false);
-		this->container->stoneBacklight->setVisible(false);
-		this->container->levinBacklight->setVisible(false);
-		this->container->buyGetAll->setVisible(false);
-		this->container->testRestart->stop();
-		this->container->testRestartBoard->stop();
-		this->container->testRestart->setMouseEnabled(true);
-		spheresBlockManage();
-	};
-	void spheresBlockManage(string param1="")
-	{
-		if (param1 == "")
-		{
-			//this->container->fireSphere->setAlpha(0);
-			//this->container->fireNumTXT->setAlpha(0);
-			//this->container->buyFire->setAlpha(0);
-			this->container->fireSphere->setMouseChildren(false);
-			this->container->fireSphere->setMouseEnabled(false);
-			this->container->fireNumTXT->setMouseEnabled(false);
-			this->container->buyFire->setMouseChildren(false);
-			this->container->buyFire->setMouseEnabled(false);
-			this->container->fireSphere->setVisible(false);
-
-			this->container->buyFire->gotoAndStop(2);
-			this->container->buyIce->gotoAndStop(2);
-			this->container->buyStone->gotoAndStop(2);
-			this->container->buyLevin->gotoAndStop(2);
-			this->container->buyGetAll->gotoAndStop(2);
-
-			//this->container->iceSphere->setAlpha(0);
-			//this->container->iceNumTXT->setAlpha(0);
-			//this->container->buyIce->setAlpha(0);
-			this->container->iceSphere->setMouseChildren(false);
-			this->container->iceSphere->setMouseEnabled(false);
-			this->container->iceNumTXT->setMouseEnabled(false);
-			this->container->buyIce->setMouseChildren(false);
-			this->container->buyIce->setMouseEnabled(false);
-			this->container->iceSphere->setVisible(false);
-
-			//this->container->stoneSphere->setAlpha(0);
-			//this->container->stoneNumTXT->setAlpha(0);
-			//this->container->buyStone->setAlpha(0);
-			this->container->stoneSphere->setMouseChildren(false);
-			this->container->stoneSphere->setMouseEnabled(false);
-			this->container->stoneNumTXT->setMouseEnabled(false);
-			this->container->buyStone->setMouseChildren(false);
-			this->container->buyStone->setMouseEnabled(false);
-			this->container->stoneSphere->setVisible(false);
-
-			//this->container->levinSphere->setAlpha(0);
-			//this->container->levinNumTXT->setAlpha(0);
-			//this->container->buyLevin->setAlpha(0);
-			this->container->levinSphere->setMouseChildren(false);
-			this->container->levinSphere->setMouseEnabled(false);
-			this->container->levinNumTXT->setMouseEnabled(false);
-			this->container->buyLevin->setMouseChildren(false);
-			this->container->buyLevin->setMouseEnabled(false);
-			this->container->levinSphere->setVisible(false);
-
-			//this->container->buyGetAll->setAlpha(0);
-			//this->container->getAllNumTXT->setAlpha(0);
-			this->container->getAllNumTXT->setMouseEnabled(false);
-			this->container->buyGetAll->setMouseChildren(false);
-			this->container->buyGetAll->setMouseEnabled(false);
-			this->container->getAll->setVisible(false);
-
-			this->container->getAll->gotoAndStop(3);
-			this->container->fireBack->gotoAndStop(3);
-			this->container->iceBack->gotoAndStop(3);
-			this->container->stoneBack->gotoAndStop(3);
-			this->container->levinBack->gotoAndStop(3);
-		}
-		else if (param1 == "unblockFire")
-		{
-			this->container->fireSphere->setScaleY(1);
-			this->container->fireSphere->setScaleX(1);
-			this->container->fireSphere->setAlpha(1);
-			this->container->fireNumTXT->setAlpha(1);
-			this->container->buyFire->setAlpha(1);
-			this->container->fireSphere->setMouseChildren(true);
-			this->container->fireSphere->setMouseEnabled(true);
-			this->container->fireNumTXT->setMouseEnabled(false);
-			this->container->buyFire->setMouseChildren(true);
-			this->container->buyFire->setMouseEnabled(true);
-			this->container->fireBack->gotoAndStop(1);
-			this->container->fireSphere->setVisible(true);
-		}
-		else if (param1 == "unblockIce")
-		{
-			this->container->iceSphere->setScaleY(1);
-			this->container->iceSphere->setScaleX(1);
-			this->container->iceSphere->setAlpha(1);
-			this->container->iceNumTXT->setAlpha(1);
-			this->container->buyIce->setAlpha(1);
-			this->container->iceSphere->setMouseChildren(true);
-			this->container->iceSphere->setMouseEnabled(true);
-			this->container->iceNumTXT->setMouseEnabled(false);
-			this->container->buyIce->setMouseChildren(true);
-			this->container->buyIce->setMouseEnabled(true);
-			this->container->iceBack->gotoAndStop(1);
-			this->container->iceSphere->setVisible(true);
-		}
-		else if (param1 == "unblockStone")
-		{
-			this->container->stoneSphere->setScaleY(1);
-			this->container->stoneSphere->setScaleX(1);
-			this->container->stoneSphere->setAlpha(1);
-			this->container->stoneNumTXT->setAlpha(1);
-			this->container->buyStone->setAlpha(1);
-			this->container->stoneSphere->setMouseChildren(true);
-			this->container->stoneSphere->setMouseEnabled(true);
-			this->container->stoneNumTXT->setMouseEnabled(false);
-			this->container->buyStone->setMouseChildren(true);
-			this->container->buyStone->setMouseEnabled(true);
-			this->container->stoneBack->gotoAndStop(1);
-			this->container->stoneSphere->setVisible(true);
-		}
-		else if (param1 == "unblockLevin")
-		{
-			this->container->levinSphere->setScaleY(1);
-			this->container->levinSphere->setScaleX(1);
-			this->container->levinSphere->setAlpha(1);
-			this->container->levinNumTXT->setAlpha(1);
-			this->container->buyLevin->setAlpha(1);
-			this->container->levinSphere->setMouseChildren(true);
-			this->container->levinSphere->setMouseEnabled(true);
-			this->container->levinNumTXT->setMouseEnabled(false);
-			this->container->buyLevin->setMouseChildren(true);
-			this->container->buyLevin->setMouseEnabled(true);
-			this->container->levinBack->gotoAndStop(1);
-			this->container->levinSphere->setVisible(true);
-		}
-		else if (param1 == "unblockGetAll")
-		{
-			this->container->getAll->setScaleY(1);
-			this->container->getAll->setScaleX(1);
-			this->container->getAll->gotoAndStop(1);
-			this->container->getAllFire->stop();
-			this->container->getAllIce->stop();
-			this->container->getAllStone->stop();
-			this->container->getAllLevin->stop();
-			this->container->buyGetAll->setAlpha(1);
-			this->container->getAllNumTXT->setAlpha(1);
-			this->container->getAllNumTXT->setMouseEnabled(false);
-			this->container->buyGetAll->setMouseChildren(true);
-			this->container->buyGetAll->setMouseEnabled(true);
-			this->container->getAll->setVisible(true);
-		}
- 		return;
-	}
-	void addTower() {
-		tower = new Tower1_mc();
-		this->addChild(tower);
-		tower->setPosition(200, 200);
-		tower->sphere1->setVisible(false);
-	}
+  
 }
 
 ;

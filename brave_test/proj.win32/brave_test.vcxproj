@@ -35,7 +35,7 @@
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v120_xp</PlatformToolset>
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0'">v140</PlatformToolset>
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v140_xp</PlatformToolset>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -149,8 +149,6 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\brave\Classes\base\BaseNode.cpp" />
-    <ClCompile Include="..\..\brave\Classes\base\FileUtil.cpp" />
-    <ClCompile Include="..\..\brave\Classes\base\JsonUtil.cpp" />
     <ClCompile Include="..\..\brave\Classes\base\mc.cpp" />
     <ClCompile Include="..\..\brave\Classes\common\ArgsParse.cpp" />
     <ClCompile Include="..\..\brave\Classes\common\Decoding.cpp" />
@@ -161,11 +159,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\..\brave\Classes\common\Log.cpp" />
     <ClCompile Include="..\..\brave\Classes\common\md5.cpp" />
     <ClCompile Include="..\..\brave\Classes\common\NetConstDefine.cpp" />
-    <ClCompile Include="..\..\brave\Classes\common\Socket.cpp" />
     <ClCompile Include="..\..\brave\Classes\common\strCodeing.cpp" />
-    <ClCompile Include="..\..\brave\Classes\common\String.cpp" />
     <ClCompile Include="..\..\brave\Classes\engine\WorldInterface_mc.cpp" />
-    <ClCompile Include="..\..\brave\Classes\sys\I18n.cpp" />
     <ClCompile Include="..\..\brave\Classes\test\AppDelegate.cpp" />
     <ClCompile Include="..\..\brave\Classes\test\CoreElement.cpp" />
     <ClCompile Include="..\..\brave\Classes\test\DragHelper.cpp" />
@@ -173,12 +168,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\brave\Classes\base\AllHeaders.h" />
     <ClInclude Include="..\..\brave\Classes\base\BaseHeaders.h" />
     <ClInclude Include="..\..\brave\Classes\base\BaseLayer.h" />
     <ClInclude Include="..\..\brave\Classes\base\BaseNode.h" />
-    <ClInclude Include="..\..\brave\Classes\base\FileUtil.h" />
-    <ClInclude Include="..\..\brave\Classes\base\JsonUtil.h" />
     <ClInclude Include="..\..\brave\Classes\base\mc.h" />
     <ClInclude Include="..\..\brave\Classes\common\ArgsParse.h" />
     <ClInclude Include="..\..\brave\Classes\common\Array.h" />
@@ -216,15 +208,12 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\..\brave\Classes\common\NetworkStream.h" />
     <ClInclude Include="..\..\brave\Classes\common\numMap.hpp" />
     <ClInclude Include="..\..\brave\Classes\common\platform.h" />
-    <ClInclude Include="..\..\brave\Classes\common\Socket.h" />
     <ClInclude Include="..\..\brave\Classes\common\strCoding.h" />
-    <ClInclude Include="..\..\brave\Classes\common\String.h" />
     <ClInclude Include="..\..\brave\Classes\common\TcpClient.h" />
     <ClInclude Include="..\..\brave\Classes\common\TcpListener.h" />
     <ClInclude Include="..\..\brave\Classes\common\TimeSpan.h" />
     <ClInclude Include="..\..\brave\Classes\common\UdpClient.h" />
     <ClInclude Include="..\..\brave\Classes\engine\WorldInterface_mc.h" />
-    <ClInclude Include="..\..\brave\Classes\sys\I18n.h" />
     <ClInclude Include="..\..\brave\Classes\test\AnimationBase.h" />
     <ClInclude Include="..\..\brave\Classes\test\AnimationLayer.h" />
     <ClInclude Include="..\..\brave\Classes\test\AppDelegate.h" />

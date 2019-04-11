@@ -25,14 +25,45 @@ namespace engine {
 	{
 		SET_NODETYPENAME();
 		pointerCase = this->createCase("pointerCase");
-		fireAnima = this->createMovieClipSub("fireAnima");
+		fireAnima = this->createMovieClipSub("fireAnima", false);
 		eyesAnima = this->createMovieClipSub("eyesAnima");
-		//mask1 = this->createMask("mask1");
-		//mask2 = this->createMask("mask2");
-		mask1 = (Sprite*)this->getArmature()->getSlot("mask1")->getDisplay();
-		mask2 = (Sprite*)this->getArmature()->getSlot("mask2")->getDisplay();
+		mask1 = this->getSprite("mask1");
+		mask2 = this->getSprite("mask2");
+		firel = this->getSprite("firel");
+		firer = this->getSprite("firer");
 		arrow = (Sprite*)this->getArmature()->getSlot("arrow")->getDisplay();
 	}
+	void LevelPointer::resetMask() {
+		mask1 = this->getSprite("mask1");
+		mask2 = this->getSprite("mask2");
+		firel = this->getSprite("firel");
+		firer = this->getSprite("firer");
+		if (this->currentFrame == 1) {
+			if (mask1) {
+				mask1->setLocalZOrder(1);
+				mask1->setAnchorPoint(Vec2(0, 0.5));
+				mask1->setRotation(0);
+			}
+			firer->setLocalZOrder(0);
+
+			mask2->setLocalZOrder(3);
+			mask2->setAnchorPoint(Vec2(1, 0.5));
+			mask2->setRotation(0);
+			firel->setLocalZOrder(2);
+		}
+		else {
+			if (mask1) {
+				mask1->setLocalZOrder(1);
+				mask1->setAnchorPoint(Vec2(0, 0.5));
+				mask1->setRotation(0);
+			}
+			firer->setLocalZOrder(4);
+			mask2->setLocalZOrder(3);
+			mask2->setAnchorPoint(Vec2(1, 0.5));
+			mask2->setRotation(0);
+			firel->setLocalZOrder(2);
+		}
+	};
 
 	BuildTowerPlace::BuildTowerPlace(string arm) :MovieClip("worldinterface/", arm, "LevelBase")
 	{

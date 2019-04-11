@@ -107,7 +107,7 @@
     <CustomBuildStep>
       <Command>if not exist "$(OutDir)\Resources" mkdir "$(OutDir)\Resources"
 xcopy "$(ProjectDir)..\Resources\res" "$(OutDir)\Resources\res" /D /E /I /F /Y
-xcopy "$(ProjectDir)..\Resources\test" "$(OutDir)\Resources\rest" /D /E /I /F /Y</Command>
+xcopy "$(ProjectDir)..\Resources\test" "$(OutDir)\Resources\test" /D /E /I /F /Y</Command>
       <Outputs>$(TargetName).cab</Outputs>
       <Inputs>$(TargetFileName)</Inputs>
     </CustomBuildStep>

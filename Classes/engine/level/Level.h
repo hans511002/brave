@@ -22,12 +22,17 @@ namespace engine{
 		MovieClipSub * eyesAnima;
 		Sprite * mask1;
 		Sprite * mask2;
+		Sprite * firel;//2
+		Sprite * firer;//1 2 
 		Sprite * arrow;
+
 		LevelPointer();
 		float counter;
 		int timer;
 		Vec2 myPoint;
 		int statusAnima;
+		void resetMask();
+
 	};
 
 	struct Level : public MovieClip{
