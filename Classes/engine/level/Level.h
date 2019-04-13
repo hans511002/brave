@@ -32,7 +32,8 @@ namespace engine{
 		Vec2 myPoint;
 		int statusAnima;
 		void resetMask();
-
+		void round(float r=0);
+		void gotoAndStop(int c);
 	};
 
 	struct Level : public MovieClip{

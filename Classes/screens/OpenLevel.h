@@ -73,6 +73,7 @@ namespace screens
 		//public var openSurvEdu:Training_91_mc;
 		int eyes1Counter;
 		//public var loginOrRegisterClass:LoginOrRegister;
+		int complexityChange;
 	 
 
 		OpenLevel(int param1);

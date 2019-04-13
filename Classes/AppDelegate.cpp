@@ -40,7 +40,7 @@ void AppDelegate::initGLContextAttrs()
 
     GLView::setGLContextAttrs(glContextAttrs);
 }
-#include "test/DBComTest.h"
+//#include "test/DBComTest.h"
 
 bool AppDelegate::applicationDidFinishLaunching() {
     // initialize director
@@ -67,13 +67,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	//auto scene = HelloWorld::createScene(); 
 	//// run
 	//director->runWithScene(scene);
-	
-	 
 
-	//auto scene = Main::createScene();
-
-	auto scene = DBComTest::createScene();
-
+	auto scene = Main::createScene();
+	//auto scene = DBComTest::createScene();
 
     // create a scene. it's an autorelease object
     //auto scene = HelloDragonBones::createScene();

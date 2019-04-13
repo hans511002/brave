@@ -201,7 +201,8 @@ protected:
 	void printNodePos(Node *node) {
 		Vec2 pt = node->getPosition();
 		Vec2 wpt = node->convertToWorldSpace(pt);
-		logInfo(getNamePath(node), pt, &wpt, &node->convertToNodeSpace(wpt));
+		Vec2 wnpt = node->convertToNodeSpace(wpt);
+		logInfo(getNamePath(node), pt, &wpt, &wnpt);
 	}
 	void addTest() {
 		string str1 = I18N_VALUE(I18N_CODE::U001);

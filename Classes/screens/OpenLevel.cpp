@@ -270,13 +270,9 @@ namespace screens
         //    }
         //}
         if (this->container->boardCurrentComplexityFire->currentFrame < this->container->boardCurrentComplexityFire->totalFrames)
-        {
             this->container->boardCurrentComplexityFire->gotoAndStop((this->container->boardCurrentComplexityFire->currentFrame + 1));
-        }
         else
-        {
             this->container->boardCurrentComplexityFire->gotoAndStop(1);
-        }
         if (this->container->boardSurvivalMode->currentFrame == 4)
         {
             if (this->container->boardSurvivalModeEyes->currentFrame < this->container->boardSurvivalModeEyes->totalFrames)
@@ -390,7 +386,11 @@ namespace screens
                 this->container->boardSurvivalModeEyes->gotoAndStop(1);
             }
         }
-        return;
+		if (complexityChange) {
+			if(complexityChange--==1)
+				this->container->boardCurrentComplexity->gotoAndStop((this->container->boardCurrentComplexity->currentFrame - 1));
+		}
+		return;
     }// end function
 	bool OpenLevel::preCheckEventTarget(std::MouseEvent * event, EventMouse::MouseEventType _mouseEventType)
 	{
@@ -470,6 +470,7 @@ namespace screens
 			else if (this->container->boardCurrentComplexity->currentFrame == 2 || this->container->boardCurrentComplexity->currentFrame == 5 || this->container->boardCurrentComplexity->currentFrame == 8)
 			{
 				this->container->boardCurrentComplexity->gotoAndStop((this->container->boardCurrentComplexity->currentFrame - 1));
+				complexityChange = 0;
 			}
 			if (targetName == "survivalModeCase")
 			{
@@ -646,18 +647,13 @@ namespace screens
 				{
 					int complexityLevel = Main::mainClass->saveBoxClass->getIntValue("complexityLevel");
 					if (complexityLevel == 1)
-					{
 						this->complexityManage(2);
-					}
 					else if (complexityLevel == 2)
-					{
 						this->complexityManage(3);
-					}
 					else if (complexityLevel == 3)
-					{
 						this->complexityManage(1);
-					}
-					this->container->boardCurrentComplexity->gotoAndStop((this->container->boardCurrentComplexity->currentFrame + 2)%9);
+					this->container->boardCurrentComplexity->gotoAndStop((this->container->boardCurrentComplexity->currentFrame + 1)%9);
+					complexityChange = 3;
 				}
 			}
 			else if (this->container->boardCurrentComplexity->currentFrame == 3 || this->container->boardCurrentComplexity->currentFrame == 6 || this->container->boardCurrentComplexity->currentFrame == 9)

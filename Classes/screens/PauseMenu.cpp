@@ -126,7 +126,7 @@ namespace screens
             }
             if (this->container->currentFrame < this->container->totalFrames)
             {
-                this->container->gotoAndStop((this->container->currentFrame + 1));
+				this->container->tryPlay();// gotoAndStop((this->container->currentFrame + 1));
             }
             if (this->container->scroll->currentFrame < 24)
             {
@@ -138,6 +138,10 @@ namespace screens
                 { 
                     this->container->scroll->setMouseChildren(true);
                     this->container->scroll->setMouseEnabled(true);
+					if (!AudioUtil::musicOn)
+						this->container->scrollBtnMusic->gotoAndStop(4);
+					if (!AudioUtil::soundOn)
+						this->container->scrollBtnSound->gotoAndStop(4);
                 }
                 else if (this->container->scroll->currentFrame == 24)
                 {

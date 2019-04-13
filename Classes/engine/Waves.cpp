@@ -750,11 +750,13 @@ namespace engine
                     if (this->world->pointer2)
                     {
 						this->world->pointer2->fireAnima->setRotation(0);
+						this->world->pointer2->counter= this->world->pointer1->counter;
                     }
                     if (this->world->pointer3)
                     {
 						this->world->pointer3->fireAnima->setRotation(0);
-                    }
+						this->world->pointer3->counter = this->world->pointer1->counter;
+					}
                     if (this->listOfWaves.size() > 0)
                     {
 						if (this->listOfWaves[0].size() > 0)
@@ -836,77 +838,17 @@ namespace engine
                         if (this->world->pointer1)
                         {
                             if (this->world->pointer1->isVisible())
-                            {
-                                if (this->world->pointer1->currentFrame == 1)
-                                {
-									if (this->world->pointer1->mask1->getRotation() + this->world->pointer1->counter < 0)
-                                    {
-										this->world->pointer1->mask1->setRotation(this->world->pointer1->mask1->getRotation() + this->world->pointer1->counter);
-										this->world->pointer1->fireAnima->setRotation(this->world->pointer1->fireAnima->getRotation() + this->world->pointer1->counter);
-                                    }
-                                    else
-                                    {
-										float tempObject = this->world->pointer1->mask1->getRotation() + this->world->pointer1->counter;
-                                        this->world->pointer1->gotoAndStop(2);
-										this->world->pointer1->mask2->setRotation(tempObject);
-                                    }
-                                }
-                                else
-                                {
-									this->world->pointer1->mask2->setRotation(this->world->pointer1->mask2->getRotation() + this->world->pointer1->counter);
-									this->world->pointer1->fireAnima->setRotation(this->world->pointer1->fireAnima->getRotation() + this->world->pointer1->counter);
-                                }
-                            }
+								this->world->pointer1->round();
                         }
                         if (this->world->pointer2)
                         {
                             if (this->world->pointer2->isVisible())
-                            {
-                                if (this->world->pointer2->currentFrame == 1)
-                                {
-									if (this->world->pointer2->mask1->getRotation() + this->world->pointer1->counter < 0)
-                                    {
-										this->world->pointer2->mask1->setRotation(this->world->pointer2->mask1->getRotation() + this->world->pointer1->counter);
-										this->world->pointer2->fireAnima->setRotation(this->world->pointer2->fireAnima->getRotation() + this->world->pointer1->counter);
-                                    }
-                                    else
-                                    {
-										float tempObject = this->world->pointer2->mask1->getRotation() + this->world->pointer1->counter;
-                                        this->world->pointer2->gotoAndStop(2);
-										this->world->pointer2->mask2->setRotation(  tempObject);
-                                    }
-                                }
-                                else
-                                {
-									this->world->pointer2->mask2->setRotation(this->world->pointer2->mask2->getRotation() + this->world->pointer1->counter);
-									this->world->pointer2->fireAnima->setRotation(this->world->pointer2->fireAnima->getRotation() + this->world->pointer1->counter);
-                                }
-                            }
+								this->world->pointer2->round(); 
                         }
                         if (this->world->pointer3)
                         {
                             if (this->world->pointer3->isVisible())
-                            {
-                                if (this->world->pointer3->currentFrame == 1)
-                                {
-                                    if (this->world->pointer3->mask1->getRotation()+ this->world->pointer1->counter < 0)
-                                    {
-										this->world->pointer3->mask1->setRotation(this->world->pointer3->mask1->getRotation() + this->world->pointer1->counter);
-										this->world->pointer3->fireAnima->setRotation( this->world->pointer3->fireAnima->getRotation() + this->world->pointer1->counter);
-                                    }
-                                    else
-                                    {
-										float tempObject = this->world->pointer3->mask1->getRotation() + this->world->pointer1->counter;
-                                        this->world->pointer3->gotoAndStop(2);
-										this->world->pointer3->mask2->setRotation(  tempObject);
-                                    }
-                                }
-                                else
-                                {
-									this->world->pointer3->mask2->setRotation( this->world->pointer3->mask2->getRotation() + this->world->pointer1->counter);
-									this->world->pointer3->fireAnima->setRotation(this->world->pointer3->fireAnima->getRotation() + this->world->pointer1->counter);
-                                }
-                            }
+								this->world->pointer3->round(); 
                         }
                     }
                     else

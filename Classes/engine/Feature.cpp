@@ -534,8 +534,8 @@ namespace engine
 					if (tempObject->getScaleX() <= 0)
 					{
 						this->world->pointer1->gotoAndStop(1);
-						this->world->pointer1->mask1->setRotation(-180);
-						this->world->pointer1->mask2->setRotation(0);
+						//this->world->pointer1->mask1->setRotation(-180);
+						//this->world->pointer1->mask2->setRotation(0);
 						this->world->pointer1->setScaleY(0);
 						this->world->pointer1->setScaleX(0);
 						this->world->pointer1->setMouseChildren(true);
@@ -546,8 +546,8 @@ namespace engine
 						if (this->world->pointer2)
 						{
 							this->world->pointer2->gotoAndStop(1);
-							this->world->pointer2->mask1->setRotation(-180);
-							this->world->pointer2->mask2->setRotation(0);
+							//this->world->pointer2->mask1->setRotation(-180);
+							//this->world->pointer2->mask2->setRotation(0);
 							this->world->pointer2->setScaleY(0);
 							this->world->pointer2->setScaleX(0);
 							this->world->pointer2->setMouseChildren(true);
@@ -559,8 +559,8 @@ namespace engine
 						if (this->world->pointer3)
 						{
 							this->world->pointer3->gotoAndStop(1);
-							this->world->pointer3->mask1->setRotation(-180);
-							this->world->pointer3->mask2->setRotation(0);
+							//this->world->pointer3->mask1->setRotation(-180);
+							//this->world->pointer3->mask2->setRotation(0);
 							this->world->pointer3->setScaleY(0);
 							this->world->pointer3->setScaleX(0);
 							this->world->pointer3->setMouseChildren(true);

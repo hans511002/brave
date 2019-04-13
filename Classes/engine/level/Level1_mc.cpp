@@ -27,11 +27,15 @@ namespace engine {
 		pointerCase = this->createCase("pointerCase");
 		fireAnima = this->createMovieClipSub("fireAnima", false);
 		eyesAnima = this->createMovieClipSub("eyesAnima");
-		mask1 = this->getSprite("mask1");
-		mask2 = this->getSprite("mask2");
-		firel = this->getSprite("firel");
-		firer = this->getSprite("firer");
+		//mask1 = this->getSprite("mask1");
+		//mask2 = this->getSprite("mask2");
+		//firel = this->getSprite("firel");
+		//firer = this->getSprite("firer");
 		arrow = (Sprite*)this->getArmature()->getSlot("arrow")->getDisplay();
+	}
+	void LevelPointer::gotoAndStop(int c) {
+		MovieClip::gotoAndStop(c);
+		this->resetMask();
 	}
 	void LevelPointer::resetMask() {
 		mask1 = this->getSprite("mask1");
@@ -64,7 +68,26 @@ namespace engine {
 			firel->setLocalZOrder(2);
 		}
 	};
-
+	void LevelPointer::round(float rate) {
+		rate = rate == 0 ? this->counter : rate;
+		if (this->currentFrame == 1) {
+			float r = this->mask1->getRotation();
+			this->mask1->setRotation(r + rate);
+			if ((int)r == 180) {
+				this->gotoAndStop(2);
+				//this->resetMask();
+			}
+		}
+		else {
+			float r = this->mask2->getRotation();
+			this->mask2->setRotation(r + rate);
+			if ((int)r == 180) {
+				this->gotoAndStop(1);
+				//this->resetMask();
+			}
+		}
+		this->fireAnima->setRotation(this->fireAnima->getRotation() + rate);
+	}
 	BuildTowerPlace::BuildTowerPlace(string arm) :MovieClip("worldinterface/", arm, "LevelBase")
 	{
 		SET_NODETYPENAME();

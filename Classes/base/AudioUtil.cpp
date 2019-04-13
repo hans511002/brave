@@ -51,7 +51,7 @@ namespace std
 				if (!_soundOn)
 					stopAllEffects();
                 soundOn = _soundOn;
-				sysConf.setValue("musicOn", soundOn);
+				sysConf.setValue("soundOn", soundOn);
 			}
 		};
 
