@@ -172,14 +172,14 @@ cocos2d::Image * Main::getBitmapData(cocos2d::Node* param1) //: BitmapData
 }// end function
 void Main::addStartLogo()
 {
-    //addNewScreen("LevelsMenu");
-	this->startLogoClass = new StartLogo();
-	this->container = this->startLogoClass;
-	this->addChild(this->startLogoClass);
-	//this->startMenuClass = new StartMenu();
-    //this->container = this->startMenuClass;
-	//this->startMenuClass->init();
-	//this->addChild(this->startMenuClass);
+	//this->startLogoClass = new StartLogo();
+	//this->container = this->startLogoClass;
+	//this->addChild(this->startLogoClass);
+
+	this->startMenuClass = new StartMenu();
+    this->container = this->startMenuClass;
+	this->startMenuClass->init();
+	this->addChild(this->startMenuClass);
 	return;
 }// end function
 void Main::keyBoardPressedHandler(EventKeyboard::KeyCode keycode, cocos2d::Event *event)
