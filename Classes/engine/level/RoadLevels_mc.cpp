@@ -124,7 +124,7 @@ namespace engine
 				sec.w += effectPos.at(i).w;
 				sec.h += effectPos.at(i).h;
 			} 
-            BaseNode * node = new BaseNode(sec.w, sec.h, true);
+            BaseNode * node = new BaseNode(sec.w, sec.h, false);
             node->setPosition(sec.x, sec.y);
             node->setMouseEnabled(true);
             this->addChild(node);

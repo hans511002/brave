@@ -185,6 +185,7 @@ namespace screens
 			this->world->achieveManage("complete_10_withAllLives");
 		}
 		this->manageListeners("on");
+		Main::mainClass->saveBoxClass->updateSever();
 		return true;
 	}// end function
 

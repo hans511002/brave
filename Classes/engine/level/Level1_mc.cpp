@@ -256,7 +256,7 @@ namespace engine {
 
 		pointer1 = (LevelPointer*)this->createMovieClip("pointer1", new LevelPointer());
 		pointer2 = (LevelPointer*)this->createMovieClip("pointer2", new LevelPointer());
-
+		pointer2->arrow->setRotation(-90);
 		flags.push(flag1);
 		flags.push(flag2);
 		places.push(place1);
@@ -293,6 +293,7 @@ namespace engine {
 
 		pointer1 = (LevelPointer*)this->createMovieClip("pointer1", new LevelPointer());
 		pointer2 = (LevelPointer*)this->createMovieClip("pointer2", new LevelPointer());
+		pointer2->arrow->setRotation(180);
 
 		//additionally = this->createMovieClipSub("additionally");
 

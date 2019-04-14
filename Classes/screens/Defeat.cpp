@@ -66,6 +66,7 @@ namespace screens
 			//Main::mainClass->tracker.trackPageview("defeatLevel_" + this->world->nowLevel);
 		}
 		this->manageListeners("on");
+		Main::mainClass->saveBoxClass->updateSever();
 		return true;
 	}// end function
 

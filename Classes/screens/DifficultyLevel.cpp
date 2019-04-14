@@ -261,6 +261,7 @@ namespace screens
 					Main::mainClass->saveBoxClass->setValue("difficultyLevel", true);
 					Main::mainClass->saveBoxClass->setValue("complexityLevel", 1);
 					AudioUtil::playSound("Snd_menu_pageScrolling.mp3");
+					Main::mainClass->saveBoxClass->updateSever();
 				}
 			}
 			else if (this->container->firstEasy->currentFrame == 3)
@@ -276,6 +277,7 @@ namespace screens
 					Main::mainClass->saveBoxClass->setValue("difficultyLevel", true);
 					Main::mainClass->saveBoxClass->setValue("complexityLevel", 2);
 					AudioUtil::playSound("Snd_menu_pageScrolling.mp3");
+					Main::mainClass->saveBoxClass->updateSever();
 				}
 			}
 			else if (this->container->firstNormal->currentFrame == 3)
@@ -291,6 +293,7 @@ namespace screens
 					Main::mainClass->saveBoxClass->setValue("difficultyLevel", true);
 					Main::mainClass->saveBoxClass->setValue("complexityLevel", 3);
 					AudioUtil::playSound("Snd_menu_pageScrolling.mp3");
+					Main::mainClass->saveBoxClass->updateSever();
 				}
 			}
 			else if (this->container->firstHard->currentFrame == 3)

@@ -6,6 +6,7 @@
 #include "screens/LevelsMenu.h"
 #include "screens/StartMenu.h"
 #include "screens/StartLogo.h"
+#include "screens/PauseMenu.h"
 #include "engine/casts/Cast.h"
 #include "engine/WorldInterface.h"
 #include "MainCLass.h"
@@ -295,6 +296,64 @@ void Main::keyBoardPressedHandler(EventKeyboard::KeyCode keycode, cocos2d::Event
 }// end function
 void Main::keyBoardReleasedHandler(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event){
 	EventNode::keyBoardPressedHandler(keyCode, event);
+	if (keyCode == EventKeyboard::KeyCode::KEY_ESCAPE)  //返回 KEY_BACK
+	{
+		if (this->startMenuClass) {
+			if (this->startMenuClass->container->back &&
+				this->startMenuClass->container->back->isVisible() ) {
+				std::MouseEvent me(cocos2d::EventMouse::MouseEventType::MOUSE_DOWN);
+				me.setCurrentTarget(this->startMenuClass->container->backBackCase);
+				Vec2 cursor=this->startMenuClass->container->backBackCase->convertToWorldSpace(Vec2(1, 1));
+				me.setCursorPosition(cursor.x, cursor.y);
+				this->startMenuClass->mouseMoveHandler(&me);
+				this->startMenuClass->mouseDownHandler(&me);
+				this->startMenuClass->mouseUpHandler(&me);
+			}
+			else {
+				Director::getInstance()->popScene();
+			}
+		}
+		else if (levelsMenuClass) {
+			if (this->levelsMenuClass->container->back &&
+				this->levelsMenuClass->container->back->isVisible()) {
+				std::MouseEvent me(cocos2d::EventMouse::MouseEventType::MOUSE_DOWN);
+				me.setCurrentTarget(this->levelsMenuClass->container->backBackCase);
+				Vec2 cursor = this->levelsMenuClass->container->backBackCase->convertToWorldSpace(Vec2(1, 1));
+				me.setCursorPosition(cursor.x, cursor.y);
+				this->levelsMenuClass->mouseMoveHandler(&me);
+				this->levelsMenuClass->mouseDownHandler(&me);
+				this->levelsMenuClass->mouseUpHandler(&me);
+			}
+			else {
+				Director::getInstance()->popScene();
+			}
+		}
+		else if(worldClass) {
+			PauseMenu *pause = ISTYPE(PauseMenu, this->worldClass->menuObject);
+			if (pause) {
+				std::MouseEvent me(cocos2d::EventMouse::MouseEventType::MOUSE_DOWN);
+				me.setCurrentTarget(pause->container->scrollBtnExitExitCase);
+				Vec2 cursor = pause->container->scrollBtnExitExitCase->convertToWorldSpace(Vec2(1, 1));
+				me.setCursorPosition(cursor.x, cursor.y);
+				pause->mouseMoveHandler(&me);
+				pause->mouseDownHandler(&me);
+				pause->mouseUpHandler(&me);
+			}
+			else {
+				std::MouseEvent me(cocos2d::EventMouse::MouseEventType::MOUSE_DOWN);
+				me.setCurrentTarget(this->worldClass->worldInterface->container->pausePauseCase);
+				Vec2 cursor = this->worldClass->worldInterface->container->pausePauseCase->convertToWorldSpace(Vec2(1, 1));
+				me.setCursorPosition(cursor.x, cursor.y);
+				this->worldClass->worldInterface->mouseMoveHandler(&me);
+				this->worldClass->worldInterface->mouseDownHandler(&me);
+				this->worldClass->worldInterface->mouseUpHandler(&me);
+			}
+		}
+		else {
+			Director::getInstance()->popScene();
+		}
+		//
+	}
 };
 void Main::mouseDownHandler(cocos2d::EventMouse* event){
 	EventNode::mouseDownHandler(event);

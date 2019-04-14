@@ -429,6 +429,9 @@ namespace engine
 	MCCase::MCCase(MC * mc, const string &  slotName, bool mouseEnabled, bool draw) :BaseNode(), _draw(draw)
 	{
 		setNodeType("MCCase");
+		if (Main::releaseTest) {
+			_draw = false;
+		}
 		BaseNode::init();
 		this->mc = mc;
 		this->slotName = slotName;

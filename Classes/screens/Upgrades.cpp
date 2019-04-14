@@ -114,13 +114,13 @@ namespace screens
 		this->levelsMenu->manageListeners("off");
 		this->container = new Upgrades_mc(); 
 		this->addChild(this->container);
-		this->container->setPosition(0, 800);
+		this->container->setPosition(0, 710);
 		this->container->back = new Back_mc();
-		//this->container->setScaleY(0.8);
+		this->container->setScaleY(0.8f);
 		this->container->back->setPosition(26, Main::SCREEN_HEIGHT - 15);
 		this->addChild(this->container->back);
 		this->addChild(this->container->stars);
-		this->printNodePos(this->container->stars);
+		//this->printNodePos(this->container->stars);
 		this->container->stars->setPosition(0, Main::SCREEN_HEIGHT - 10);
 		this->container->stop();
 		this->container->back->stop();
@@ -131,34 +131,7 @@ namespace screens
 		this->container->contBtnAccept->stop(); 
 		this->container->contBtnResetResetCase->setMouseEnabled(true);
 		this->container->contBtnAcceptAcceptCase->setMouseEnabled(true);
-		this->container->golemArrow1->setVisible(false);
-		this->container->golemArrow2->setVisible(false);
-		this->container->golemArrow3->setVisible(false);
-		this->container->golemArrow4->setVisible(false);
-		this->container->icemanArrow1->setVisible(false);
-		this->container->icemanArrow2->setVisible(false);
-		this->container->icemanArrow3->setVisible(false);
-		this->container->icemanArrow4->setVisible(false);
-		this->container->airArrow1->setVisible(false);
-		this->container->airArrow2->setVisible(false);
-		this->container->airArrow3->setVisible(false);
-		this->container->airArrow4->setVisible(false);
-		this->container->fireArrow1->setVisible(false);
-		this->container->fireArrow2->setVisible(false);
-		this->container->fireArrow3->setVisible(false);
-		this->container->fireArrow4->setVisible(false);
-		this->container->iceArrow1->setVisible(false);
-		this->container->iceArrow2->setVisible(false);
-		this->container->iceArrow3->setVisible(false);
-		this->container->iceArrow4->setVisible(false);
-		this->container->stoneArrow1->setVisible(false);
-		this->container->stoneArrow2->setVisible(false);
-		this->container->stoneArrow3->setVisible(false);
-		this->container->stoneArrow4->setVisible(false);
-		this->container->levinArrow1->setVisible(false);
-		this->container->levinArrow2->setVisible(false);
-		this->container->levinArrow3->setVisible(false);
-		this->container->levinArrow4->setVisible(false);
+
 		this->hint = new HintUpgrade_mc();
 		this->hint->stop();
 		this->hint->myTarget = NULL;
@@ -187,6 +160,7 @@ namespace screens
 		}
 		if (this->openFlag)
 		{
+			//this->printNodePos(this->container->fireArrow1);
 			if (this->container->currentFrame < this->container->totalFrames)
 			{
 				this->container->gotoAndStop((this->container->currentFrame + 1));
@@ -194,6 +168,35 @@ namespace screens
 			}
 			else
 			{
+				/*
+				this->container->golemArrow1->setOpacity(0);
+				this->container->golemArrow2->setOpacity(0);
+				this->container->golemArrow3->setOpacity(0);
+				this->container->golemArrow4->setOpacity(0);
+				this->container->icemanArrow1->setOpacity(0);
+				this->container->icemanArrow2->setOpacity(0);
+				this->container->icemanArrow3->setOpacity(0);
+				this->container->icemanArrow4->setOpacity(0);
+				this->container->airArrow1->setOpacity(0);
+				this->container->airArrow2->setOpacity(0);
+				this->container->airArrow3->setOpacity(0);
+				this->container->airArrow4->setOpacity(0);
+				this->container->fireArrow1->setOpacity(0);
+				this->container->fireArrow2->setOpacity(0);
+				this->container->fireArrow3->setOpacity(0);
+				this->container->fireArrow4->setOpacity(0);
+				this->container->iceArrow1->setOpacity(0);
+				this->container->iceArrow2->setOpacity(0);
+				this->container->iceArrow3->setOpacity(0);
+				this->container->iceArrow4->setOpacity(0);
+				this->container->stoneArrow1->setOpacity(0);
+				this->container->stoneArrow2->setOpacity(0);
+				this->container->stoneArrow3->setOpacity(0);
+				this->container->stoneArrow4->setOpacity(0);
+				this->container->levinArrow1->setOpacity(0);
+				this->container->levinArrow2->setOpacity(0);
+				this->container->levinArrow3->setOpacity(0);
+				this->container->levinArrow4->setOpacity(0);*/
 				this->openFlag = false;
 				this->container->cont->setMouseChildren(true);
 				this->container->cont->setMouseEnabled(true);
@@ -590,10 +593,10 @@ namespace screens
 						if (this->nowUpgradeButton->currentFrame == 2)
 						{
 							this->nowUpgradeButton->gotoAndStop(3);
-							cocos2d::Point tempObject = this->container->cont->localToGlobal(this->nowUpgradeButton->getPosition());
+							//cocos2d::Point tempObject = this->container->cont->localToGlobal(this->nowUpgradeButton->getPosition());
 							AnimUpgrade_mc * tempObject1 = new AnimUpgrade_mc();
 							tempObject1->stop();
-							tempObject1->setPosition(tempObject);
+							tempObject1->setPosition(Vec2(Main::mouseX,Main::mouseY));
 							tempObject1->setMouseChildren(false);
 							tempObject1->setMouseEnabled(false);
 							this->addChild(tempObject1);
@@ -1007,6 +1010,7 @@ namespace screens
 			}
 			if (targetName == "acceptCase")
 			{
+				Main::mainClass->saveBoxClass->updateSever();
 				if (this->container->contBtnAccept->currentFrame == 3)
 				{
 					this->container->contBtnAccept->gotoAndStop(2);
@@ -1047,7 +1051,7 @@ namespace screens
 			{
 				this->container->golemUpgrade2->gotoAndStop(3);
 				this->container->golemUpgrade2->upgradeCase->setMouseEnabled(false);
-				this->container->golemArrow1->setVisible(true);
+				this->container->golemArrow1->setOpacity(255);
 			}
 			else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costGolemUpgrade2 && Main::mainClass->saveBoxClass->getBoolValue("upgradeGolem1"))
 			{
@@ -1055,7 +1059,7 @@ namespace screens
 				std::setText(this->container->golemUpgrade2->starsTXT, this->costGolemUpgrade2);
 				//this->container->golemUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->golemUpgrade2->upgradeCase->setMouseEnabled(true);
-				this->container->golemArrow1->setVisible(false);
+				this->container->golemArrow1->setOpacity(0);
 			}
 			else
 			{
@@ -1063,13 +1067,13 @@ namespace screens
 				std::setText(this->container->golemUpgrade2->starsTXT, this->costGolemUpgrade2);
 				//this->container->golemUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->golemUpgrade2->upgradeCase->setMouseEnabled(false);
-				this->container->golemArrow1->setVisible(false);
+				this->container->golemArrow1->setOpacity(0);
 			}
 			if (Main::mainClass->saveBoxClass->getBoolValue("upgradeGolem3"))
 			{
 				this->container->golemUpgrade3->gotoAndStop(3);
 				this->container->golemUpgrade3->upgradeCase->setMouseEnabled(false);
-				this->container->golemArrow2->setVisible(true);
+				this->container->golemArrow2->setOpacity(255);
 			}
 			else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costGolemUpgrade3 && Main::mainClass->saveBoxClass->getBoolValue("upgradeGolem2"))
 			{
@@ -1077,7 +1081,7 @@ namespace screens
 				std::setText(this->container->golemUpgrade3->starsTXT, this->costGolemUpgrade3);
 				//this->container->golemUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->golemUpgrade3->upgradeCase->setMouseEnabled(true);
-				this->container->golemArrow2->setVisible(false);
+				this->container->golemArrow2->setOpacity(0);
 			}
 			else
 			{
@@ -1085,13 +1089,13 @@ namespace screens
 				std::setText(this->container->golemUpgrade3->starsTXT, this->costGolemUpgrade3);
 				//this->container->golemUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->golemUpgrade3->upgradeCase->setMouseEnabled(false);
-				this->container->golemArrow2->setVisible(false);
+				this->container->golemArrow2->setOpacity(0);
 			}
 			if (Main::mainClass->saveBoxClass->getBoolValue("upgradeGolem4"))
 			{
 				this->container->golemUpgrade4->gotoAndStop(3);
 				this->container->golemUpgrade4->upgradeCase->setMouseEnabled(false);
-				this->container->golemArrow3->setVisible(true);
+				this->container->golemArrow3->setOpacity(255);
 			}
 			else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costGolemUpgrade4 && Main::mainClass->saveBoxClass->getBoolValue("upgradeGolem3"))
 			{
@@ -1099,7 +1103,7 @@ namespace screens
 				std::setText(this->container->golemUpgrade4->starsTXT, this->costGolemUpgrade4);
 				//this->container->golemUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->golemUpgrade4->upgradeCase->setMouseEnabled(true);
-				this->container->golemArrow3->setVisible(false);
+				this->container->golemArrow3->setOpacity(0);
 			}
 			else
 			{
@@ -1107,13 +1111,13 @@ namespace screens
 				std::setText(this->container->golemUpgrade4->starsTXT, this->costGolemUpgrade4);
 				//this->container->golemUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->golemUpgrade4->upgradeCase->setMouseEnabled(false);
-				this->container->golemArrow3->setVisible(false);
+				this->container->golemArrow3->setOpacity(0);
 			}
 			if (Main::mainClass->saveBoxClass->getBoolValue("upgradeGolem5"))
 			{
 				this->container->golemUpgrade5->gotoAndStop(3);
 				this->container->golemUpgrade5->upgradeCase->setMouseEnabled(false);
-				this->container->golemArrow4->setVisible(true);
+				this->container->golemArrow4->setOpacity(255);
 			}
 			else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costGolemUpgrade5 && Main::mainClass->saveBoxClass->getBoolValue("upgradeGolem4"))
 			{
@@ -1121,7 +1125,7 @@ namespace screens
 				std::setText(this->container->golemUpgrade5->starsTXT, this->costGolemUpgrade5);
 				//this->container->golemUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->golemUpgrade5->upgradeCase->setMouseEnabled(true);
-				this->container->golemArrow4->setVisible(false);
+				this->container->golemArrow4->setOpacity(0);
 			}
 			else
 			{
@@ -1129,7 +1133,7 @@ namespace screens
 				std::setText(this->container->golemUpgrade5->starsTXT, this->costGolemUpgrade5);
 				//this->container->golemUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->golemUpgrade5->upgradeCase->setMouseEnabled(false);
-				this->container->golemArrow4->setVisible(false);
+				this->container->golemArrow4->setOpacity(0);
 			}
 		}
 		else
@@ -1142,22 +1146,22 @@ namespace screens
 			std::setText(this->container->golemUpgrade2->starsTXT, this->costGolemUpgrade2);
 			//this->container->golemUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 			this->container->golemUpgrade2->upgradeCase->setMouseEnabled(false);
-			this->container->golemArrow1->setVisible(false);
+			this->container->golemArrow1->setOpacity(0);
 			this->container->golemUpgrade3->gotoAndStop(5);
 			std::setText(this->container->golemUpgrade3->starsTXT, this->costGolemUpgrade3);
 			//this->container->golemUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 			this->container->golemUpgrade3->upgradeCase->setMouseEnabled(false);
-			this->container->golemArrow2->setVisible(false);
+			this->container->golemArrow2->setOpacity(0);
 			this->container->golemUpgrade4->gotoAndStop(5);
 			std::setText(this->container->golemUpgrade4->starsTXT, this->costGolemUpgrade4);
 			//this->container->golemUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 			this->container->golemUpgrade4->upgradeCase->setMouseEnabled(false);
-			this->container->golemArrow3->setVisible(false);
+			this->container->golemArrow3->setOpacity(0);
 			this->container->golemUpgrade5->gotoAndStop(5);
 			std::setText(this->container->golemUpgrade5->starsTXT, this->costGolemUpgrade5);
 			//this->container->golemUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 			this->container->golemUpgrade5->upgradeCase->setMouseEnabled(false);
-			this->container->golemArrow4->setVisible(false);
+			this->container->golemArrow4->setOpacity(0);
 		}
 		if (Main::mainClass->saveBoxClass->getIntValue("openLevels",1) > 0 || Main::mainClass->saveBoxClass->getIntValue("saveNo") > 3)
 		{
@@ -1184,7 +1188,7 @@ namespace screens
 			{
 				this->container->icemanUpgrade2->gotoAndStop(3);
 				this->container->icemanUpgrade2->upgradeCase->setMouseEnabled(false);
-				this->container->icemanArrow1->setVisible(true);
+				this->container->icemanArrow1->setOpacity(255);
 			}
 			else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costIcemanUpgrade2 && Main::mainClass->saveBoxClass->getBoolValue("upgradeIceman1"))
 			{
@@ -1192,7 +1196,7 @@ namespace screens
 				std::setText(this->container->icemanUpgrade2->starsTXT, this->costIcemanUpgrade2);
 				//this->container->icemanUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->icemanUpgrade2->upgradeCase->setMouseEnabled(true);
-				this->container->icemanArrow1->setVisible(false);
+				this->container->icemanArrow1->setOpacity(0);
 			}
 			else
 			{
@@ -1200,13 +1204,13 @@ namespace screens
 				std::setText(this->container->icemanUpgrade2->starsTXT, this->costIcemanUpgrade2);
 				//this->container->icemanUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->icemanUpgrade2->upgradeCase->setMouseEnabled(false);
-				this->container->icemanArrow1->setVisible(false);
+				this->container->icemanArrow1->setOpacity(0);
 			}
 			if (Main::mainClass->saveBoxClass->getBoolValue("upgradeIceman3"))
 			{
 				this->container->icemanUpgrade3->gotoAndStop(3);
 				this->container->icemanUpgrade3->upgradeCase->setMouseEnabled(false);
-				this->container->icemanArrow2->setVisible(true);
+				this->container->icemanArrow2->setOpacity(255);
 			}
 			else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costIcemanUpgrade3 && Main::mainClass->saveBoxClass->getBoolValue("upgradeIceman2"))
 			{
@@ -1214,7 +1218,7 @@ namespace screens
 				std::setText(this->container->icemanUpgrade3->starsTXT, this->costIcemanUpgrade3);
 				//this->container->icemanUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->icemanUpgrade3->upgradeCase->setMouseEnabled(true);
-				this->container->icemanArrow2->setVisible(false);
+				this->container->icemanArrow2->setOpacity(0);
 			}
 			else
 			{
@@ -1222,13 +1226,13 @@ namespace screens
 				std::setText(this->container->icemanUpgrade3->starsTXT, this->costIcemanUpgrade3);
 				//this->container->icemanUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->icemanUpgrade3->upgradeCase->setMouseEnabled(false);
-				this->container->icemanArrow2->setVisible(false);
+				this->container->icemanArrow2->setOpacity(0);
 			}
 			if (Main::mainClass->saveBoxClass->getBoolValue("upgradeIceman4"))
 			{
 				this->container->icemanUpgrade4->gotoAndStop(3);
 				this->container->icemanUpgrade4->upgradeCase->setMouseEnabled(false);
-				this->container->icemanArrow3->setVisible(true);
+				this->container->icemanArrow3->setOpacity(255);
 			}
 			else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costIcemanUpgrade4 && Main::mainClass->saveBoxClass->getBoolValue("upgradeIceman3"))
 			{
@@ -1236,7 +1240,7 @@ namespace screens
 				std::setText(this->container->icemanUpgrade4->starsTXT, this->costIcemanUpgrade4);
 				//this->container->icemanUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->icemanUpgrade4->upgradeCase->setMouseEnabled(true);
-				this->container->icemanArrow3->setVisible(false);
+				this->container->icemanArrow3->setOpacity(0);
 			}
 			else
 			{
@@ -1244,13 +1248,13 @@ namespace screens
 				std::setText(this->container->icemanUpgrade4->starsTXT, this->costIcemanUpgrade4);
 				//this->container->icemanUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->icemanUpgrade4->upgradeCase->setMouseEnabled(false);
-				this->container->icemanArrow3->setVisible(false);
+				this->container->icemanArrow3->setOpacity(0);
 			}
 			if (Main::mainClass->saveBoxClass->getBoolValue("upgradeIceman5"))
 			{
 				this->container->icemanUpgrade5->gotoAndStop(3);
 				this->container->icemanUpgrade5->upgradeCase->setMouseEnabled(false);
-				this->container->icemanArrow4->setVisible(true);
+				this->container->icemanArrow4->setOpacity(255);
 			}
 			else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costIcemanUpgrade5 && Main::mainClass->saveBoxClass->getBoolValue("upgradeIceman4"))
 			{
@@ -1258,7 +1262,7 @@ namespace screens
 				std::setText(this->container->icemanUpgrade5->starsTXT, this->costIcemanUpgrade5);
 				//this->container->icemanUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->icemanUpgrade5->upgradeCase->setMouseEnabled(true);
-				this->container->icemanArrow4->setVisible(false);
+				this->container->icemanArrow4->setOpacity(0);
 			}
 			else
 			{
@@ -1266,7 +1270,7 @@ namespace screens
 				std::setText(this->container->icemanUpgrade5->starsTXT, this->costIcemanUpgrade5);
 				//this->container->icemanUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->icemanUpgrade5->upgradeCase->setMouseEnabled(false);
-				this->container->icemanArrow4->setVisible(false);
+				this->container->icemanArrow4->setOpacity(0);
 			}
 		}
 		else
@@ -1279,22 +1283,22 @@ namespace screens
 			std::setText(this->container->icemanUpgrade2->starsTXT, this->costIcemanUpgrade2);
 			//this->container->icemanUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 			this->container->icemanUpgrade2->upgradeCase->setMouseEnabled(false);
-			this->container->icemanArrow1->setVisible(false);
+			this->container->icemanArrow1->setOpacity(0);
 			this->container->icemanUpgrade3->gotoAndStop(5);
 			std::setText(this->container->icemanUpgrade3->starsTXT, this->costIcemanUpgrade3);
 			//this->container->icemanUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 			this->container->icemanUpgrade3->upgradeCase->setMouseEnabled(false);
-			this->container->icemanArrow2->setVisible(false);
+			this->container->icemanArrow2->setOpacity(0);
 			this->container->icemanUpgrade4->gotoAndStop(5);
 			std::setText(this->container->icemanUpgrade4->starsTXT, this->costIcemanUpgrade4);
 			//this->container->icemanUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 			this->container->icemanUpgrade4->upgradeCase->setMouseEnabled(false);
-			this->container->icemanArrow3->setVisible(false);
+			this->container->icemanArrow3->setOpacity(0);
 			this->container->icemanUpgrade5->gotoAndStop(5);
 			std::setText(this->container->icemanUpgrade5->starsTXT, this->costIcemanUpgrade5);
 			//this->container->icemanUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 			this->container->icemanUpgrade5->upgradeCase->setMouseEnabled(false);
-			this->container->icemanArrow4->setVisible(false);
+			this->container->icemanArrow4->setOpacity(0);
 		}
 		if (Main::mainClass->saveBoxClass->getIntValue("openLevels", 2)  > 0)
 		{
@@ -1321,7 +1325,7 @@ namespace screens
 			{
 				this->container->airUpgrade2->gotoAndStop(3);
 				this->container->airUpgrade2->upgradeCase->setMouseEnabled(false);
-				this->container->airArrow1->setVisible(true);
+				this->container->airArrow1->setOpacity(255);
 			}
 			else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costAirUpgrade2 && Main::mainClass->saveBoxClass->getBoolValue("upgradeAir1"))
 			{
@@ -1329,7 +1333,7 @@ namespace screens
 				std::setText(this->container->airUpgrade2->starsTXT, this->costAirUpgrade2);
 				//this->container->airUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->airUpgrade2->upgradeCase->setMouseEnabled(true);
-				this->container->airArrow1->setVisible(false);
+				this->container->airArrow1->setOpacity(0);
 			}
 			else
 			{
@@ -1337,13 +1341,13 @@ namespace screens
 				std::setText(this->container->airUpgrade2->starsTXT, this->costAirUpgrade2);
 				//this->container->airUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->airUpgrade2->upgradeCase->setMouseEnabled(false);
-				this->container->airArrow1->setVisible(false);
+				this->container->airArrow1->setOpacity(0);
 			}
 			if (Main::mainClass->saveBoxClass->getBoolValue("upgradeAir3"))
 			{
 				this->container->airUpgrade3->gotoAndStop(3);
 				this->container->airUpgrade3->upgradeCase->setMouseEnabled(false);
-				this->container->airArrow2->setVisible(true);
+				this->container->airArrow2->setOpacity(255);
 			}
 			else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costAirUpgrade3 && Main::mainClass->saveBoxClass->getBoolValue("upgradeAir2"))
 			{
@@ -1351,7 +1355,7 @@ namespace screens
 				std::setText(this->container->airUpgrade3->starsTXT, this->costAirUpgrade3);
 				//this->container->airUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->airUpgrade3->upgradeCase->setMouseEnabled(true);
-				this->container->airArrow2->setVisible(false);
+				this->container->airArrow2->setOpacity(0);
 			}
 			else
 			{
@@ -1359,13 +1363,13 @@ namespace screens
 				std::setText(this->container->airUpgrade3->starsTXT, this->costAirUpgrade3);
 				//this->container->airUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->airUpgrade3->upgradeCase->setMouseEnabled(false);
-				this->container->airArrow2->setVisible(false);
+				this->container->airArrow2->setOpacity(0);
 			}
 			if (Main::mainClass->saveBoxClass->getBoolValue("upgradeAir4"))
 			{
 				this->container->airUpgrade4->gotoAndStop(3);
 				this->container->airUpgrade4->upgradeCase->setMouseEnabled(false);
-				this->container->airArrow3->setVisible(true);
+				this->container->airArrow3->setOpacity(255);
 			}
 			else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costAirUpgrade4 && Main::mainClass->saveBoxClass->getBoolValue("upgradeAir3"))
 			{
@@ -1373,7 +1377,7 @@ namespace screens
 				std::setText(this->container->airUpgrade4->starsTXT, this->costAirUpgrade4);
 				//this->container->airUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->airUpgrade4->upgradeCase->setMouseEnabled(true);
-				this->container->airArrow3->setVisible(false);
+				this->container->airArrow3->setOpacity(0);
 			}
 			else
 			{
@@ -1381,13 +1385,13 @@ namespace screens
 				std::setText(this->container->airUpgrade4->starsTXT, this->costAirUpgrade4);
 				//this->container->airUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->airUpgrade4->upgradeCase->setMouseEnabled(false);
-				this->container->airArrow3->setVisible(false);
+				this->container->airArrow3->setOpacity(0);
 			}
 			if (Main::mainClass->saveBoxClass->getBoolValue("upgradeAir5"))
 			{
 				this->container->airUpgrade5->gotoAndStop(3);
 				this->container->airUpgrade5->upgradeCase->setMouseEnabled(false);
-				this->container->airArrow4->setVisible(true);
+				this->container->airArrow4->setOpacity(255);
 			}
 			else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costAirUpgrade5 && Main::mainClass->saveBoxClass->getBoolValue("upgradeAir4"))
 			{
@@ -1395,7 +1399,7 @@ namespace screens
 				std::setText(this->container->airUpgrade5->starsTXT, this->costAirUpgrade5);
 				//this->container->airUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->airUpgrade5->upgradeCase->setMouseEnabled(true);
-				this->container->airArrow4->setVisible(false);
+				this->container->airArrow4->setOpacity(0);
 			}
 			else
 			{
@@ -1403,7 +1407,7 @@ namespace screens
 				std::setText(this->container->airUpgrade5->starsTXT, this->costAirUpgrade5);
 				//this->container->airUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->airUpgrade5->upgradeCase->setMouseEnabled(false);
-				this->container->airArrow4->setVisible(false);
+				this->container->airArrow4->setOpacity(0);
 			}
 		}
 		else
@@ -1416,22 +1420,22 @@ namespace screens
 			std::setText(this->container->airUpgrade2->starsTXT, this->costAirUpgrade2);
 			//this->container->airUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 			this->container->airUpgrade2->upgradeCase->setMouseEnabled(false);
-			this->container->airArrow1->setVisible(false);
+			this->container->airArrow1->setOpacity(0);
 			this->container->airUpgrade3->gotoAndStop(5);
 			std::setText(this->container->airUpgrade3->starsTXT, this->costAirUpgrade3);
 			//this->container->airUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 			this->container->airUpgrade3->upgradeCase->setMouseEnabled(false);
-			this->container->airArrow2->setVisible(false);
+			this->container->airArrow2->setOpacity(0);
 			this->container->airUpgrade4->gotoAndStop(5);
 			std::setText(this->container->airUpgrade4->starsTXT, this->costAirUpgrade4);
 			//this->container->airUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 			this->container->airUpgrade4->upgradeCase->setMouseEnabled(false);
-			this->container->airArrow3->setVisible(false);
+			this->container->airArrow3->setOpacity(0);
 			this->container->airUpgrade5->gotoAndStop(5);
 			std::setText(this->container->airUpgrade5->starsTXT, this->costAirUpgrade5);
 			//this->container->airUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 			this->container->airUpgrade5->upgradeCase->setMouseEnabled(false);
-			this->container->airArrow4->setVisible(false);
+			this->container->airArrow4->setOpacity(0);
 		}
 		if (Main::mainClass->saveBoxClass->getIntValue("openLevels", 1) > 0 || Main::mainClass->saveBoxClass->getIntValue("saveNo") > 3)
 		{
@@ -1458,7 +1462,8 @@ namespace screens
 			{
 				this->container->fireUpgrade2->gotoAndStop(3);
 				this->container->fireUpgrade2->upgradeCase->setMouseEnabled(false);
-				this->container->fireArrow1->setVisible(true);
+				this->container->fireArrow1->setOpacity(255);
+				//this->printNodePos(this->container->fireArrow1);
 			}
 			else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costFireUpgrade2 && Main::mainClass->saveBoxClass->getBoolValue("upgradeFire1"))
 			{
@@ -1466,7 +1471,7 @@ namespace screens
 				std::setText(this->container->fireUpgrade2->starsTXT, this->costFireUpgrade2);
 				//this->container->fireUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->fireUpgrade2->upgradeCase->setMouseEnabled(true);
-				this->container->fireArrow1->setVisible(false);
+				this->container->fireArrow1->setOpacity(0);
 			}
 			else
 			{
@@ -1474,13 +1479,13 @@ namespace screens
 				std::setText(this->container->fireUpgrade2->starsTXT, this->costFireUpgrade2);
 				//this->container->fireUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->fireUpgrade2->upgradeCase->setMouseEnabled(false);
-				this->container->fireArrow1->setVisible(false);
+				this->container->fireArrow1->setOpacity(0);
 			}
 			if (Main::mainClass->saveBoxClass->getBoolValue("upgradeFire3"))
 			{
 				this->container->fireUpgrade3->gotoAndStop(3);
 				this->container->fireUpgrade3->upgradeCase->setMouseEnabled(false);
-				this->container->fireArrow2->setVisible(true);
+				this->container->fireArrow2->setOpacity(255);
 			}
 			else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costFireUpgrade3 && Main::mainClass->saveBoxClass->getBoolValue("upgradeFire2"))
 			{
@@ -1488,7 +1493,7 @@ namespace screens
 				std::setText(this->container->fireUpgrade3->starsTXT, this->costFireUpgrade3);
 				//this->container->fireUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->fireUpgrade3->upgradeCase->setMouseEnabled(true);
-				this->container->fireArrow2->setVisible(false);
+				this->container->fireArrow2->setOpacity(0);
 			}
 			else
 			{
@@ -1496,13 +1501,13 @@ namespace screens
 				std::setText(this->container->fireUpgrade3->starsTXT, this->costFireUpgrade3);
 				//this->container->fireUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->fireUpgrade3->upgradeCase->setMouseEnabled(false);
-				this->container->fireArrow2->setVisible(false);
+				this->container->fireArrow2->setOpacity(0);
 			}
 			if (Main::mainClass->saveBoxClass->getBoolValue("upgradeFire4"))
 			{
 				this->container->fireUpgrade4->gotoAndStop(3);
 				this->container->fireUpgrade4->upgradeCase->setMouseEnabled(false);
-				this->container->fireArrow3->setVisible(true);
+				this->container->fireArrow3->setOpacity(255);
 			}
 			else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costFireUpgrade4 && Main::mainClass->saveBoxClass->getBoolValue("upgradeFire3"))
 			{
@@ -1510,7 +1515,7 @@ namespace screens
 				std::setText(this->container->fireUpgrade4->starsTXT, this->costFireUpgrade4);
 				//this->container->fireUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->fireUpgrade4->upgradeCase->setMouseEnabled(true);
-				this->container->fireArrow3->setVisible(false);
+				this->container->fireArrow3->setOpacity(0);
 			}
 			else
 			{
@@ -1518,13 +1523,13 @@ namespace screens
 				std::setText(this->container->fireUpgrade4->starsTXT, this->costFireUpgrade4);
 				//this->container->fireUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->fireUpgrade4->upgradeCase->setMouseEnabled(false);
-				this->container->fireArrow3->setVisible(false);
+				this->container->fireArrow3->setOpacity(0);
 			}
 			if (Main::mainClass->saveBoxClass->getBoolValue("upgradeFire5"))
 			{
 				this->container->fireUpgrade5->gotoAndStop(3);
 				this->container->fireUpgrade5->upgradeCase->setMouseEnabled(false);
-				this->container->fireArrow4->setVisible(true);
+				this->container->fireArrow4->setOpacity(255);
 			}
 			else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costFireUpgrade5 && Main::mainClass->saveBoxClass->getBoolValue("upgradeFire4"))
 			{
@@ -1532,7 +1537,7 @@ namespace screens
 				std::setText(this->container->fireUpgrade5->starsTXT, this->costFireUpgrade5);
 				//this->container->fireUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->fireUpgrade5->upgradeCase->setMouseEnabled(true);
-				this->container->fireArrow4->setVisible(false);
+				this->container->fireArrow4->setOpacity(0);
 			}
 			else
 			{
@@ -1540,7 +1545,7 @@ namespace screens
 				std::setText(this->container->fireUpgrade5->starsTXT, this->costFireUpgrade5);
 				//this->container->fireUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->fireUpgrade5->upgradeCase->setMouseEnabled(false);
-				this->container->fireArrow4->setVisible(false);
+				this->container->fireArrow4->setOpacity(0);
 			}
 		}
 		else
@@ -1553,22 +1558,22 @@ namespace screens
 			std::setText(this->container->fireUpgrade2->starsTXT, this->costFireUpgrade2);
 			//this->container->fireUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 			this->container->fireUpgrade2->upgradeCase->setMouseEnabled(false);
-			this->container->fireArrow1->setVisible(false);
+			this->container->fireArrow1->setOpacity(0);
 			this->container->fireUpgrade3->gotoAndStop(5);
 			std::setText(this->container->fireUpgrade3->starsTXT, this->costFireUpgrade3);
 			//this->container->fireUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 			this->container->fireUpgrade3->upgradeCase->setMouseEnabled(false);
-			this->container->fireArrow2->setVisible(false);
+			this->container->fireArrow2->setOpacity(0);
 			this->container->fireUpgrade4->gotoAndStop(5);
 			std::setText(this->container->fireUpgrade4->starsTXT, this->costFireUpgrade4);
 			//this->container->fireUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 			this->container->fireUpgrade4->upgradeCase->setMouseEnabled(false);
-			this->container->fireArrow3->setVisible(false);
+			this->container->fireArrow3->setOpacity(0);
 			this->container->fireUpgrade5->gotoAndStop(5);
 			std::setText(this->container->fireUpgrade5->starsTXT, this->costFireUpgrade5);
 			//this->container->fireUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 			this->container->fireUpgrade5->upgradeCase->setMouseEnabled(false);
-			this->container->fireArrow4->setVisible(false);
+			this->container->fireArrow4->setOpacity(0);
 		}
 		if (Main::mainClass->saveBoxClass->getIntValue("openLevels", 1) > 0 || Main::mainClass->saveBoxClass->getIntValue("saveNo") > 3)
 		{
@@ -1595,7 +1600,7 @@ namespace screens
 			{
 				this->container->iceUpgrade2->gotoAndStop(3);
 				this->container->iceUpgrade2->upgradeCase->setMouseEnabled(false);
-				this->container->iceArrow1->setVisible(true);
+				this->container->iceArrow1->setOpacity(255);
 			}
 			else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costIceUpgrade2 && Main::mainClass->saveBoxClass->getBoolValue("upgradeIce1"))
 			{
@@ -1603,7 +1608,7 @@ namespace screens
 				std::setText(this->container->iceUpgrade2->starsTXT, this->costIceUpgrade2);
 				//this->container->iceUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->iceUpgrade2->upgradeCase->setMouseEnabled(true);
-				this->container->iceArrow1->setVisible(false);
+				this->container->iceArrow1->setOpacity(0);
 			}
 			else
 			{
@@ -1611,13 +1616,13 @@ namespace screens
 				std::setText(this->container->iceUpgrade2->starsTXT, this->costIceUpgrade2);
 				//this->container->iceUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->iceUpgrade2->upgradeCase->setMouseEnabled(false);
-				this->container->iceArrow1->setVisible(false);
+				this->container->iceArrow1->setOpacity(0);
 			}
 			if (Main::mainClass->saveBoxClass->getBoolValue("upgradeIce3"))
 			{
 				this->container->iceUpgrade3->gotoAndStop(3);
 				this->container->iceUpgrade3->upgradeCase->setMouseEnabled(false);
-				this->container->iceArrow2->setVisible(true);
+				this->container->iceArrow2->setOpacity(255);
 			}
 			else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costIceUpgrade3 && Main::mainClass->saveBoxClass->getBoolValue("upgradeIce2"))
 			{
@@ -1625,7 +1630,7 @@ namespace screens
 				std::setText(this->container->iceUpgrade3->starsTXT, this->costIceUpgrade3);
 				//this->container->iceUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->iceUpgrade3->upgradeCase->setMouseEnabled(true);
-				this->container->iceArrow2->setVisible(false);
+				this->container->iceArrow2->setOpacity(0);
 			}
 			else
 			{
@@ -1633,13 +1638,13 @@ namespace screens
 				std::setText(this->container->iceUpgrade3->starsTXT, this->costIceUpgrade3);
 				//this->container->iceUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->iceUpgrade3->upgradeCase->setMouseEnabled(false);
-				this->container->iceArrow2->setVisible(false);
+				this->container->iceArrow2->setOpacity(0);
 			}
 			if (Main::mainClass->saveBoxClass->getBoolValue("upgradeIce4"))
 			{
 				this->container->iceUpgrade4->gotoAndStop(3);
 				this->container->iceUpgrade4->upgradeCase->setMouseEnabled(false);
-				this->container->iceArrow3->setVisible(true);
+				this->container->iceArrow3->setOpacity(255);
 			}
 			else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costIceUpgrade4 && Main::mainClass->saveBoxClass->getBoolValue("upgradeIce3"))
 			{
@@ -1647,7 +1652,7 @@ namespace screens
 				std::setText(this->container->iceUpgrade4->starsTXT, this->costIceUpgrade4);
 				//this->container->iceUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->iceUpgrade4->upgradeCase->setMouseEnabled(true);
-				this->container->iceArrow3->setVisible(false);
+				this->container->iceArrow3->setOpacity(0);
 			}
 			else
 			{
@@ -1655,13 +1660,13 @@ namespace screens
 				std::setText(this->container->iceUpgrade4->starsTXT, this->costIceUpgrade4);
 				//this->container->iceUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->iceUpgrade4->upgradeCase->setMouseEnabled(false);
-				this->container->iceArrow3->setVisible(false);
+				this->container->iceArrow3->setOpacity(0);
 			}
 			if (Main::mainClass->saveBoxClass->getBoolValue("upgradeIce5"))
 			{
 				this->container->iceUpgrade5->gotoAndStop(3);
 				this->container->iceUpgrade5->upgradeCase->setMouseEnabled(false);
-				this->container->iceArrow4->setVisible(true);
+				this->container->iceArrow4->setOpacity(255);
 			}
 			else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costIceUpgrade5 && Main::mainClass->saveBoxClass->getBoolValue("upgradeIce4"))
 			{
@@ -1669,7 +1674,7 @@ namespace screens
 				std::setText(this->container->iceUpgrade5->starsTXT, this->costIceUpgrade5);
 				//this->container->iceUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->iceUpgrade5->upgradeCase->setMouseEnabled(true);
-				this->container->iceArrow4->setVisible(false);
+				this->container->iceArrow4->setOpacity(0);
 			}
 			else
 			{
@@ -1677,7 +1682,7 @@ namespace screens
 				std::setText(this->container->iceUpgrade5->starsTXT, this->costIceUpgrade5);
 				//this->container->iceUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->iceUpgrade5->upgradeCase->setMouseEnabled(false);
-				this->container->iceArrow4->setVisible(false);
+				this->container->iceArrow4->setOpacity(0);
 			}
 		}
 		else
@@ -1690,22 +1695,22 @@ namespace screens
 			std::setText(this->container->iceUpgrade2->starsTXT, this->costIceUpgrade2);
 			//this->container->iceUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 			this->container->iceUpgrade2->upgradeCase->setMouseEnabled(false);
-			this->container->iceArrow1->setVisible(false);
+			this->container->iceArrow1->setOpacity(0);
 			this->container->iceUpgrade3->gotoAndStop(5);
 			std::setText(this->container->iceUpgrade3->starsTXT, this->costIceUpgrade3);
 			//this->container->iceUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 			this->container->iceUpgrade3->upgradeCase->setMouseEnabled(false);
-			this->container->iceArrow2->setVisible(false);
+			this->container->iceArrow2->setOpacity(0);
 			this->container->iceUpgrade4->gotoAndStop(5);
 			std::setText(this->container->iceUpgrade4->starsTXT, this->costIceUpgrade4);
 			//this->container->iceUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 			this->container->iceUpgrade4->upgradeCase->setMouseEnabled(false);
-			this->container->iceArrow3->setVisible(false);
+			this->container->iceArrow3->setOpacity(0);
 			this->container->iceUpgrade5->gotoAndStop(5);
 			std::setText(this->container->iceUpgrade5->starsTXT, this->costIceUpgrade5);
 			//this->container->iceUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 			this->container->iceUpgrade5->upgradeCase->setMouseEnabled(false);
-			this->container->iceArrow4->setVisible(false);
+			this->container->iceArrow4->setOpacity(0);
 		}
 		if (Main::mainClass->saveBoxClass->getIntValue("openLevels", 2)  > 0)
 		{
@@ -1732,7 +1737,7 @@ namespace screens
 			{
 				this->container->stoneUpgrade2->gotoAndStop(3);
 				this->container->stoneUpgrade2->upgradeCase->setMouseEnabled(false);
-				this->container->stoneArrow1->setVisible(true);
+				this->container->stoneArrow1->setOpacity(255);
 			}
 			else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costStoneUpgrade2 && Main::mainClass->saveBoxClass->getBoolValue("upgradeStone1"))
 			{
@@ -1740,7 +1745,7 @@ namespace screens
 				std::setText(this->container->stoneUpgrade2->starsTXT, this->costStoneUpgrade2);
 				//this->container->stoneUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->stoneUpgrade2->upgradeCase->setMouseEnabled(true);
-				this->container->stoneArrow1->setVisible(false);
+				this->container->stoneArrow1->setOpacity(0);
 			}
 			else
 			{
@@ -1748,13 +1753,13 @@ namespace screens
 				std::setText(this->container->stoneUpgrade2->starsTXT, this->costStoneUpgrade2);
 				//this->container->stoneUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->stoneUpgrade2->upgradeCase->setMouseEnabled(false);
-				this->container->stoneArrow1->setVisible(false);
+				this->container->stoneArrow1->setOpacity(0);
 			}
 			if (Main::mainClass->saveBoxClass->getBoolValue("upgradeStone3"))
 			{
 				this->container->stoneUpgrade3->gotoAndStop(3);
 				this->container->stoneUpgrade3->upgradeCase->setMouseEnabled(false);
-				this->container->stoneArrow2->setVisible(true);
+				this->container->stoneArrow2->setOpacity(255);
 			}
 			else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costStoneUpgrade3 && Main::mainClass->saveBoxClass->getBoolValue("upgradeStone2"))
 			{
@@ -1762,7 +1767,7 @@ namespace screens
 				std::setText(this->container->stoneUpgrade3->starsTXT, this->costStoneUpgrade3);
 				//this->container->stoneUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->stoneUpgrade3->upgradeCase->setMouseEnabled(true);
-				this->container->stoneArrow2->setVisible(false);
+				this->container->stoneArrow2->setOpacity(0);
 			}
 			else
 			{
@@ -1770,13 +1775,13 @@ namespace screens
 				std::setText(this->container->stoneUpgrade3->starsTXT, this->costStoneUpgrade3);
 				//this->container->stoneUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->stoneUpgrade3->upgradeCase->setMouseEnabled(false);
-				this->container->stoneArrow2->setVisible(false);
+				this->container->stoneArrow2->setOpacity(0);
 			}
 			if (Main::mainClass->saveBoxClass->getBoolValue("upgradeStone4"))
 			{
 				this->container->stoneUpgrade4->gotoAndStop(3);
 				this->container->stoneUpgrade4->upgradeCase->setMouseEnabled(false);
-				this->container->stoneArrow3->setVisible(true);
+				this->container->stoneArrow3->setOpacity(255);
 			}
 			else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costStoneUpgrade4 && Main::mainClass->saveBoxClass->getBoolValue("upgradeStone3"))
 			{
@@ -1784,7 +1789,7 @@ namespace screens
 				std::setText(this->container->stoneUpgrade4->starsTXT, this->costStoneUpgrade4);
 				//this->container->stoneUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->stoneUpgrade4->upgradeCase->setMouseEnabled(true);
-				this->container->stoneArrow3->setVisible(false);
+				this->container->stoneArrow3->setOpacity(0);
 			}
 			else
 			{
@@ -1792,13 +1797,13 @@ namespace screens
 				std::setText(this->container->stoneUpgrade4->starsTXT, this->costStoneUpgrade4);
 				//this->container->stoneUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->stoneUpgrade4->upgradeCase->setMouseEnabled(false);
-				this->container->stoneArrow3->setVisible(false);
+				this->container->stoneArrow3->setOpacity(0);
 			}
 			if (Main::mainClass->saveBoxClass->getBoolValue("upgradeStone5"))
 			{
 				this->container->stoneUpgrade5->gotoAndStop(3);
 				this->container->stoneUpgrade5->upgradeCase->setMouseEnabled(false);
-				this->container->stoneArrow4->setVisible(true);
+				this->container->stoneArrow4->setOpacity(255);
 			}
 			else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costStoneUpgrade5 && Main::mainClass->saveBoxClass->getBoolValue("upgradeStone4"))
 			{
@@ -1806,7 +1811,7 @@ namespace screens
 				std::setText(this->container->stoneUpgrade5->starsTXT, this->costStoneUpgrade5);
 				//this->container->stoneUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->stoneUpgrade5->upgradeCase->setMouseEnabled(true);
-				this->container->stoneArrow4->setVisible(false);
+				this->container->stoneArrow4->setOpacity(0);
 			}
 			else
 			{
@@ -1814,7 +1819,7 @@ namespace screens
 				std::setText(this->container->stoneUpgrade5->starsTXT, this->costStoneUpgrade5);
 				//this->container->stoneUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->stoneUpgrade5->upgradeCase->setMouseEnabled(false);
-				this->container->stoneArrow4->setVisible(false);
+				this->container->stoneArrow4->setOpacity(0);
 			}
 		}
 		else
@@ -1827,22 +1832,22 @@ namespace screens
 			std::setText(this->container->stoneUpgrade2->starsTXT, this->costStoneUpgrade2);
 			//this->container->stoneUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 			this->container->stoneUpgrade2->upgradeCase->setMouseEnabled(false);
-			this->container->stoneArrow1->setVisible(false);
+			this->container->stoneArrow1->setOpacity(0);
 			this->container->stoneUpgrade3->gotoAndStop(5);
 			std::setText(this->container->stoneUpgrade3->starsTXT, this->costStoneUpgrade3);
 			//this->container->stoneUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 			this->container->stoneUpgrade3->upgradeCase->setMouseEnabled(false);
-			this->container->stoneArrow2->setVisible(false);
+			this->container->stoneArrow2->setOpacity(0);
 			this->container->stoneUpgrade4->gotoAndStop(5);
 			std::setText(this->container->stoneUpgrade4->starsTXT, this->costStoneUpgrade4);
 			//this->container->stoneUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 			this->container->stoneUpgrade4->upgradeCase->setMouseEnabled(false);
-			this->container->stoneArrow3->setVisible(false);
+			this->container->stoneArrow3->setOpacity(0);
 			this->container->stoneUpgrade5->gotoAndStop(5);
 			std::setText(this->container->stoneUpgrade5->starsTXT, this->costStoneUpgrade5);
 			//this->container->stoneUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 			this->container->stoneUpgrade5->upgradeCase->setMouseEnabled(false);
-			this->container->stoneArrow4->setVisible(false);
+			this->container->stoneArrow4->setOpacity(0);
 		}
 		if (Main::mainClass->saveBoxClass->getIntValue("openLevels",3) > 0)
 		{
@@ -1869,7 +1874,7 @@ namespace screens
 			{
 				this->container->levinUpgrade2->gotoAndStop(3);
 				this->container->levinUpgrade2->upgradeCase->setMouseEnabled(false);
-				this->container->levinArrow1->setVisible(true);
+				this->container->levinArrow1->setOpacity(255);
 			}
 			else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costLevinUpgrade2 && Main::mainClass->saveBoxClass->getBoolValue("upgradeLevin1"))
 			{
@@ -1877,7 +1882,7 @@ namespace screens
 				std::setText(this->container->levinUpgrade2->starsTXT, this->costLevinUpgrade2);
 				//this->container->levinUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->levinUpgrade2->upgradeCase->setMouseEnabled(true);
-				this->container->levinArrow1->setVisible(false);
+				this->container->levinArrow1->setOpacity(0);
 			}
 			else
 			{
@@ -1885,13 +1890,13 @@ namespace screens
 				std::setText(this->container->levinUpgrade2->starsTXT, this->costLevinUpgrade2);
 				//this->container->levinUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->levinUpgrade2->upgradeCase->setMouseEnabled(false);
-				this->container->levinArrow1->setVisible(false);
+				this->container->levinArrow1->setOpacity(0);
 			}
 			if (Main::mainClass->saveBoxClass->getBoolValue("upgradeLevin3"))
 			{
 				this->container->levinUpgrade3->gotoAndStop(3);
 				this->container->levinUpgrade3->upgradeCase->setMouseEnabled(false);
-				this->container->levinArrow2->setVisible(true);
+				this->container->levinArrow2->setOpacity(255);
 			}
 			else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costLevinUpgrade3 && Main::mainClass->saveBoxClass->getBoolValue("upgradeLevin2"))
 			{
@@ -1899,7 +1904,7 @@ namespace screens
 				std::setText(this->container->levinUpgrade3->starsTXT, this->costLevinUpgrade3);
 				//this->container->levinUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->levinUpgrade3->upgradeCase->setMouseEnabled(true);
-				this->container->levinArrow2->setVisible(false);
+				this->container->levinArrow2->setOpacity(0);
 			}
 			else
 			{
@@ -1907,13 +1912,13 @@ namespace screens
 				std::setText(this->container->levinUpgrade3->starsTXT, this->costLevinUpgrade3);
 				//this->container->levinUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->levinUpgrade3->upgradeCase->setMouseEnabled(false);
-				this->container->levinArrow2->setVisible(false);
+				this->container->levinArrow2->setOpacity(0);
 			}
 			if (Main::mainClass->saveBoxClass->getBoolValue("upgradeLevin4"))
 			{
 				this->container->levinUpgrade4->gotoAndStop(3);
 				this->container->levinUpgrade4->upgradeCase->setMouseEnabled(false);
-				this->container->levinArrow3->setVisible(true);
+				this->container->levinArrow3->setOpacity(255);
 			}
 			else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costLevinUpgrade4 && Main::mainClass->saveBoxClass->getBoolValue("upgradeLevin3"))
 			{
@@ -1921,7 +1926,7 @@ namespace screens
 				std::setText(this->container->levinUpgrade4->starsTXT, this->costLevinUpgrade4);
 				//this->container->levinUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->levinUpgrade4->upgradeCase->setMouseEnabled(true);
-				this->container->levinArrow3->setVisible(false);
+				this->container->levinArrow3->setOpacity(0);
 			}
 			else
 			{
@@ -1929,13 +1934,13 @@ namespace screens
 				std::setText(this->container->levinUpgrade4->starsTXT, this->costLevinUpgrade4);
 				//this->container->levinUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->levinUpgrade4->upgradeCase->setMouseEnabled(false);
-				this->container->levinArrow3->setVisible(false);
+				this->container->levinArrow3->setOpacity(0);
 			}
 			if (Main::mainClass->saveBoxClass->getBoolValue("upgradeLevin5"))
 			{
 				this->container->levinUpgrade5->gotoAndStop(3);
 				this->container->levinUpgrade5->upgradeCase->setMouseEnabled(false);
-				this->container->levinArrow4->setVisible(true);
+				this->container->levinArrow4->setOpacity(255);
 			}
 			else if (Main::mainClass->saveBoxClass->getIntValue("stars") >= this->costLevinUpgrade5 && Main::mainClass->saveBoxClass->getBoolValue("upgradeLevin4"))
 			{
@@ -1943,7 +1948,7 @@ namespace screens
 				std::setText(this->container->levinUpgrade5->starsTXT, this->costLevinUpgrade5);
 				//this->container->levinUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->levinUpgrade5->upgradeCase->setMouseEnabled(true);
-				this->container->levinArrow4->setVisible(false);
+				this->container->levinArrow4->setOpacity(0);
 			}
 			else
 			{
@@ -1951,7 +1956,7 @@ namespace screens
 				std::setText(this->container->levinUpgrade5->starsTXT, this->costLevinUpgrade5);
 				//this->container->levinUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 				this->container->levinUpgrade5->upgradeCase->setMouseEnabled(false);
-				this->container->levinArrow4->setVisible(false);
+				this->container->levinArrow4->setOpacity(0);
 			}
 		}
 		else
@@ -1964,22 +1969,22 @@ namespace screens
 			std::setText(this->container->levinUpgrade2->starsTXT, this->costLevinUpgrade2);
 			//this->container->levinUpgrade2->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 			this->container->levinUpgrade2->upgradeCase->setMouseEnabled(false);
-			this->container->levinArrow1->setVisible(false);
+			this->container->levinArrow1->setOpacity(0);
 			this->container->levinUpgrade3->gotoAndStop(5);
 			std::setText(this->container->levinUpgrade3->starsTXT, this->costLevinUpgrade3);
 			//this->container->levinUpgrade3->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 			this->container->levinUpgrade3->upgradeCase->setMouseEnabled(false);
-			this->container->levinArrow2->setVisible(false);
+			this->container->levinArrow2->setOpacity(0);
 			this->container->levinUpgrade4->gotoAndStop(5);
 			std::setText(this->container->levinUpgrade4->starsTXT, this->costLevinUpgrade4);
 			//this->container->levinUpgrade4->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 			this->container->levinUpgrade4->upgradeCase->setMouseEnabled(false);
-			this->container->levinArrow3->setVisible(false);
+			this->container->levinArrow3->setOpacity(0);
 			this->container->levinUpgrade5->gotoAndStop(5);
 			std::setText(this->container->levinUpgrade5->starsTXT, this->costLevinUpgrade5);
 			//this->container->levinUpgrade5->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
 			this->container->levinUpgrade5->upgradeCase->setMouseEnabled(false);
-			this->container->levinArrow4->setVisible(false);
+			this->container->levinArrow4->setOpacity(0);
 		}
 		if (Main::mainClass->saveBoxClass->getBoolValue("upgradeFire1") || Main::mainClass->saveBoxClass->getBoolValue("upgradeIce1") || Main::mainClass->saveBoxClass->getBoolValue("upgradeStone1") || Main::mainClass->saveBoxClass->getBoolValue("upgradeLevin1") || Main::mainClass->saveBoxClass->getBoolValue("upgradeGolem1") || Main::mainClass->saveBoxClass->getBoolValue("upgradeIceman1") || Main::mainClass->saveBoxClass->getBoolValue("upgradeAir1"))
 		{

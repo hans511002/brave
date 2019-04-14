@@ -9,21 +9,21 @@ namespace engine
     {
 		SET_NODETYPENAME();
 		MovieClip * cast1=new MovieClip("worldinterface/", "CastMask1_mc", "CastMask1_mc");
-		castAirCase = cast1->createCase("castAirCase", false, true);
-		castGolemCase = cast1->createCase("castGolemCase", false, true);
-		castIcemanCase = cast1->createCase("castIcemanCase", false, true);
+		castAirCase = cast1->createCase("castAirCase", false);
+		castGolemCase = cast1->createCase("castGolemCase", false);
+		castIcemanCase = cast1->createCase("castIcemanCase", false);
 		this->setPosition(Vec2(0, Main::SCREEN_HEIGHT)); 
 		this->addChild(cast1);
 		cast1->setPosition(Vec2(0, -Main::SCREEN_HEIGHT ));
 
-		archiveCase = this->createCase("archiveCase", false,true);
-		fireCase = this->createCase("fireCase", false, true);
-		getAllCase = this->createCase("getAllCase", false, true);
+		archiveCase = this->createCase("archiveCase", false);
+		fireCase = this->createCase("fireCase", false);
+		getAllCase = this->createCase("getAllCase", false);
 		iceCase = this->createCase("iceCase", false, true);
-		interfaceUpCase = this->createCase("interfaceUpCase", false, true);
-		levinCase = this->createCase("levinCase", false, true);
-		sellCase = this->createCase("sellCase", false, true);
-		stoneCase = this->createCase("stoneCase", false, true);
+		interfaceUpCase = this->createCase("interfaceUpCase", false);
+		levinCase = this->createCase("levinCase", false);
+		sellCase = this->createCase("sellCase", false);
+		stoneCase = this->createCase("stoneCase", false);
         return;
     }// end function	
 	namespace    casts

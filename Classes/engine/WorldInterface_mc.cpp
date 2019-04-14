@@ -114,12 +114,12 @@ namespace engine
 		//logInfo("fireSphere", this->fireSphere ->getPosition());
 		//logInfo("this->fireSphere->display", getNamePath(this->fireSphere->display));
  
-		fireSphereSphereCase = fireSphere->createCase("sphereCase",false,true);
+		fireSphereSphereCase = fireSphere->createCase("sphereCase",false);
 		getAll = wiSphere->createMovieClipSub("getAll");
 		getAllFire = getAll->createMovieClipSub("fire");
 		getAllIce = getAll->createMovieClipSub("ice");
 		getAllLevin = getAll->createMovieClipSub("levin");
-		getAllSphereCase = getAll->createCase("sphereCase", false, true);
+		getAllSphereCase = getAll->createCase("sphereCase", false);
 		getAllStone = getAll->createMovieClipSub("stone");
 		getAllNumTXT = wiSphere->createText("getAllNumTXT");
 		iceBack = wiSphere->createMovieClipSub("iceBack");
@@ -127,13 +127,13 @@ namespace engine
 		iceBacklight = wiSphere->createMovieClipSub("iceBacklight");
 		iceNumTXT = wiSphere->createText("iceNumTXT");
 		iceSphere = wiSphere->createMovieClipSub("iceSphere");
-		iceSphereSphereCase = iceSphere->createCase("sphereCase", false, true);
+		iceSphereSphereCase = iceSphere->createCase("sphereCase", false);
 		levinBack = wiSphere->createMovieClipSub("levinBack");
 		levinBackCont = levinBack->createMovieClipSub("cont", true);//2帧 才有
 		levinBacklight = wiSphere->createMovieClipSub("levinBacklight");
 		levinNumTXT = wiSphere->createText("levinNumTXT");
 		levinSphere = wiSphere->createMovieClipSub("levinSphere");
-		levinSphereSphereCase = levinSphere->createCase("sphereCase", false, true);
+		levinSphereSphereCase = levinSphere->createCase("sphereCase", false);
 		liveTXT = wiLive->createText("liveTXT");
 		moneyTXT = wiLive->createText("moneyTXT");
 
@@ -150,7 +150,7 @@ namespace engine
 		stoneBacklight = wiSphere->createMovieClipSub("stoneBacklight");
 		stoneNumTXT = wiSphere->createText("stoneNumTXT");
 		stoneSphere = wiSphere->createMovieClipSub("stoneSphere");
-		stoneSphereSphereCase = stoneSphere->createCase("sphereCase", false, true);
+		stoneSphereSphereCase = stoneSphere->createCase("sphereCase", false);
 		//testRestart = this->createMovieClipSub("testRestart");
 		//testRestartBoard = this->createMovieClipSub("testRestartBoard");
 		//testRestartBoardWaveTXT = testRestartBoard->createText("waveTXT");

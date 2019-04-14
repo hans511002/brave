@@ -73,6 +73,9 @@ namespace std
 	{
 		setNodeType("BaseNode");
 		this->setContentSize(Size(w, h));
+		if (Main::releaseTest) {
+			draw = false;
+		}
 		if (draw)drawRange();
 	};
 	string EventNode::getTypeName() {
