@@ -59,6 +59,7 @@ public:
 
 	static Main *mainClass;
 	static bool moneyDebug;
+	static bool releaseTest;
 
 	Main();
 	//CREATE_FUNC(Main);

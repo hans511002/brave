@@ -1929,21 +1929,22 @@ namespace engine{
 					if (this->world->frameCounter == 10 || this->world->frameCounter == 20 || this->world->frameCounter == 30)
 					{
 						bool tempObject = false;
-						this->i = 0;
-						while (this->i < this->world->listOfUnits.size())
+						this->i = this->world->listOfUnits.size()-1;
+						while (this->i >=0 )
 						{
-							if (this->world->listOfUnits[this->i]->typeUnit == 22)
+							Unit * unit=this->world->listOfUnits[this->i];
+							if (unit->typeUnit == 22)
 							{
-								if (this->world->listOfUnits[this->i]->readyDamage && this->world->listOfUnits[this->i]->atStaged && !this->world->listOfUnits[this->i]->icemanFlag && !this->world->listOfUnits[this->i]->airShockFlag)
+								if (unit->readyDamage && unit->atStaged && !unit->icemanFlag && !unit->airShockFlag)
 								{
-									if (this->this_pt.distance(this->world->listOfUnits[this->i]->this_pt) < this->world->listOfUnits[this->i]->blockTowerRadius)
+									if (this->this_pt.distance(unit->this_pt) < unit->blockTowerRadius)
 									{
 										tempObject = true;
 										break;
 									}
 								}
 							}
-							i++;
+							i--;
 						}
 						if (!tempObject)
 						{
@@ -2890,19 +2891,18 @@ namespace engine{
 
 		void Tower::scanAndPush()
 		{
-			this->i = 0;
-			while (this->i < this->world->listOfUnits.size())
+			this->i = this->world->listOfUnits.size()-1;
+			while (this->i >=0 )
 			{
-				if (this->world->listOfUnits[this->i]->atStaged && this->world->listOfUnits[this->i]->readyDamage && !this->world->listOfUnits[this->i]->airFlag)
+				Unit * unit = this->world->listOfUnits[this->i]; 
+				if (unit->atStaged && unit->readyDamage && !unit->airFlag &&!unit->dead)
 				{
-					this->testTarget = this->world->listOfUnits[this->i]->shoot_pt;
+					this->testTarget = unit->shoot_pt;
 					this->scanAtRadius();
-					if (this->greenFlag)
-					{
-						this->listOfTargets.push(this->world->listOfUnits[this->i]);
-					}
+					if (this->greenFlag) 
+						this->listOfTargets.push(unit); 
 				}
-				i++;
+				i--;
 			}
 			return;
 		}// end function

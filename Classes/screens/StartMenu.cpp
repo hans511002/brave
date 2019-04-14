@@ -91,9 +91,12 @@ namespace screens
         this->container->btnSoundSoundCase->setMouseEnabled(true);
         this->container->backBackCase->setMouseEnabled(true);
         this->container->back->setVisible(false);
-		
         this->addChild(this->container);
-        if (AudioUtil::musicOn)
+		if (Main::releaseTest) {
+			this->container->credits->setVisible(false);
+		}
+		
+		if (AudioUtil::musicOn)
             this->container->btnMusic->gotoAndStop(1);
         else
             this->container->btnMusic->gotoAndStop(4);

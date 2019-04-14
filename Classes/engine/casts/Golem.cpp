@@ -592,25 +592,24 @@ namespace engine {
 			int i = this->world->listOfUnits.size() - 1;
 			while (i >= 0)
 			{
-				if (this->world->listOfUnits[i]->readyDamage && this->world->listOfUnits[i]->atStaged)
+				Unit * unit = this->world->listOfUnits[i];
+				if (unit->readyDamage &&!unit->dead && unit->atStaged)
 				{
-					if (this->world->listOfUnits[i]->shoot_pt.distance(this->this_pt) < 30)
+					if (unit->shoot_pt.distance(this->this_pt) < 30)
 					{
-						if (this->world->listOfUnits[i]->health>0 && this->world->listOfUnits[i]->health < this->health)
+						if (unit->health>0 && unit->health < this->health)
 						{
-							this->health = this->health - this->world->listOfUnits[i]->health;
-							this->world->listOfUnits[i]->getHit(this->world->listOfUnits[i]->health, "golem");
+							this->health = this->health - unit->health;
+							unit->getHit(unit->health, "golem");
 							int addit_golemKillEnemiesCounter = this->world->saveBox->getIntValue("addit_golemKillEnemiesCounter") + 1;
 							//this->world->saveBox.gameSave.data.addit_golemKillEnemiesCounter++;
 							this->world->saveBox->setValue("addit_golemKillEnemiesCounter", addit_golemKillEnemiesCounter);
 							if (addit_golemKillEnemiesCounter == 250)
-							{
 								this->world->achieveManage("golemKill_250_enemies");
-							}
 						}
 						else
 						{
-							this->world->listOfUnits[i]->getHit(this->health, "golem");
+							unit->getHit(this->health, "golem");
 							this->health = 0;
 							this->closeGolem();
 							break;

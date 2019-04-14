@@ -5,6 +5,7 @@
 #include "screens/MiddleScreen.h"
 #include "screens/LevelsMenu.h"
 #include "screens/StartMenu.h"
+#include "screens/StartLogo.h"
 #include "engine/casts/Cast.h"
 #include "engine/WorldInterface.h"
 #include "MainCLass.h"
@@ -12,7 +13,8 @@
 
 Main * Main::mainClass;
 const double Main::AnimationInterval = 1.0f / (double)Main::FrameRate;
-bool Main::moneyDebug=true;
+bool Main::moneyDebug = false;
+bool Main::releaseTest =true;
 namespace std {
 	sys::I18n i18n;
 
@@ -171,10 +173,13 @@ cocos2d::Image * Main::getBitmapData(cocos2d::Node* param1) //: BitmapData
 void Main::addStartLogo()
 {
     //addNewScreen("LevelsMenu");
-	this->startMenuClass = new StartMenu();
-    this->container = this->startMenuClass;
-	this->startMenuClass->init();
-	this->addChild(this->startMenuClass);
+	this->startLogoClass = new StartLogo();
+	this->container = this->startLogoClass;
+	this->addChild(this->startLogoClass);
+	//this->startMenuClass = new StartMenu();
+    //this->container = this->startMenuClass;
+	//this->startMenuClass->init();
+	//this->addChild(this->startMenuClass);
 	return;
 }// end function
 void Main::keyBoardPressedHandler(EventKeyboard::KeyCode keycode, cocos2d::Event *event)

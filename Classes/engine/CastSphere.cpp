@@ -677,10 +677,10 @@ namespace engine{
 				this->i = this->world->listOfUnits.size() - 1;
 				while (this->i >= 0)
 				{
-					if (this->world->listOfUnits[this->i]->atStaged && this->world->listOfUnits[this->i]->readyDamage)
+					units::Unit * tempObject = this->world->listOfUnits[this->i];
+					if (tempObject->atStaged && tempObject->readyDamage && !tempObject->dead)
 					{
 						bool dead = false;
-						units::Unit * tempObject = this->world->listOfUnits[this->i];
 						if (container->haze9->isVisible())
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < container->haze9->getWidth())
@@ -891,11 +891,11 @@ namespace engine{
 					this->i = this->world->listOfUnits.size() - 1;
 					while (this->i >= 0)
 					{
-						if (this->world->listOfUnits[this->i]->atStaged && this->world->listOfUnits[this->i]->readyDamage)
+						units::Unit * tempObject = this->world->listOfUnits[this->i];
+						if (tempObject->atStaged && tempObject->readyDamage && !tempObject->dead)
 						{
-							if (this->this_pt.distance(this->world->listOfUnits[this->i]->shoot_pt) < this->radius)
-							{
-								units::Unit * tempObject = this->world->listOfUnits[this->i];
+							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
+							{ 
 								float tempObject1 = Main::mainClass->readXMLClass.getAllMultiply2;
 								bool dead = tempObject->getHit(tempObject1, "getAll");
 								if (dead)
@@ -931,7 +931,7 @@ namespace engine{
 					while (this->i >= 0)
 					{
 						units::Unit * tempObject = this->world->listOfUnits[this->i];
-						if (tempObject->atStaged && tempObject->readyDamage)
+						if (tempObject->atStaged && tempObject->readyDamage && !tempObject->dead)
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{
@@ -957,7 +957,7 @@ namespace engine{
 					while (this->i >= 0)
 					{
 						units::Unit * tempObject = this->world->listOfUnits[this->i];
-						if (tempObject->atStaged && tempObject->readyDamage)
+						if (tempObject->atStaged && tempObject->readyDamage && !tempObject->dead)
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{
@@ -993,7 +993,7 @@ namespace engine{
 						while (this->i >= 0)
 						{
 							units::Unit * tempObject = this->world->listOfUnits[this->i];
-							if (tempObject->atStaged && tempObject->readyDamage)
+							if (tempObject->atStaged && tempObject->readyDamage && !tempObject->dead)
 							{
 								if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 								{
@@ -1020,7 +1020,7 @@ namespace engine{
 					while (this->i >= 0)
 					{
 						units::Unit * tempObject = this->world->listOfUnits[this->i];
-						if (tempObject->atStaged && tempObject->readyDamage)
+						if (tempObject->atStaged && tempObject->readyDamage && !tempObject->dead)
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{
@@ -1046,7 +1046,7 @@ namespace engine{
 					while (this->i >= 0)
 					{
 						units::Unit * tempObject = this->world->listOfUnits[this->i];
-						if (tempObject->atStaged && tempObject->readyDamage)
+						if (tempObject->atStaged && tempObject->readyDamage && !tempObject->dead)
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{
@@ -1074,7 +1074,7 @@ namespace engine{
 					while (this->i >= 0)
 					{
 						units::Unit * tempObject = this->world->listOfUnits[this->i];
-						if (tempObject->atStaged && tempObject->readyDamage)
+						if (tempObject->atStaged && tempObject->readyDamage && !tempObject->dead)
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{
@@ -1102,7 +1102,7 @@ namespace engine{
 					while (this->i >= 0)
 					{
 						units::Unit * tempObject = this->world->listOfUnits[this->i];
-						if (tempObject->atStaged && tempObject->readyDamage)
+						if (tempObject->atStaged && tempObject->readyDamage && !tempObject->dead)
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{
@@ -1130,7 +1130,7 @@ namespace engine{
 					while (this->i >= 0)
 					{
 						units::Unit * tempObject = this->world->listOfUnits[this->i];
-						if (tempObject->atStaged && tempObject->readyDamage)
+						if (tempObject->atStaged && tempObject->readyDamage && !tempObject->dead)
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{
@@ -1158,7 +1158,7 @@ namespace engine{
 					while (this->i >= 0)
 					{
 						units::Unit * tempObject = this->world->listOfUnits[this->i];
-						if (tempObject->atStaged && tempObject->readyDamage)
+						if (tempObject->atStaged && tempObject->readyDamage && !tempObject->dead)
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{
@@ -1186,7 +1186,7 @@ namespace engine{
 					while (this->i >= 0)
 					{
 						units::Unit * tempObject = this->world->listOfUnits[this->i];
-						if (tempObject->atStaged && tempObject->readyDamage)
+						if (tempObject->atStaged && tempObject->readyDamage && !tempObject->dead)
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{
@@ -1214,7 +1214,7 @@ namespace engine{
 					while (this->i >= 0)
 					{
 						units::Unit * tempObject = this->world->listOfUnits[this->i];
-						if (tempObject->atStaged && tempObject->readyDamage)
+						if (tempObject->atStaged && tempObject->readyDamage && !tempObject->dead)
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{
@@ -1265,7 +1265,7 @@ namespace engine{
 					while (this->i >= 0)
 					{
 						units::Unit * tempObject = this->world->listOfUnits[this->i];
-						if (tempObject->atStaged && tempObject->readyDamage)
+						if (tempObject->atStaged && tempObject->readyDamage && !tempObject->dead)
 						{
 							if (this->this_pt.distance(tempObject->shoot_pt) < this->radius)
 							{

@@ -589,20 +589,20 @@ namespace engine{
 			this->i = this->world->listOfUnits.size() - 1;
 			while (this->i >= 0)
 			{
-				if (this->world->listOfUnits[this->i]->readyDamage && this->world->listOfUnits[this->i]->atStaged
-					&& !this->world->listOfUnits[this->i]->icemanFlag && !this->world->listOfUnits[this->i]->teleportFlag
-					&& (this->world->listOfUnits[this->i]->icemanResist > 0 || this->world->listOfUnits[this->i]->typeUnit == 24))
+				Unit * unit=this->world->listOfUnits[this->i];
+				if (unit->readyDamage && unit->atStaged &&!unit->dead && !unit->icemanFlag && !unit->teleportFlag
+					&& (unit->icemanResist > 0 || unit->typeUnit == 24))
 				{
-					if (this->world->listOfUnits[this->i]->shoot_pt.distance(this->this_pt) < this->radius)
+					if (unit->shoot_pt.distance(this->this_pt) < this->radius)
 					{
-						this->world->listOfUnits[this->i]->icemanFlag = true;
-						if (this->world->listOfUnits[this->i]->typeUnit != 24)
+						unit->icemanFlag = true;
+						if (unit->typeUnit != 24)
 						{
-							this->world->listOfUnits[this->i]->icemanCounter = ::round(Main::mainClass->readXMLClass.castIcemanFreezTimerXML * this->world->listOfUnits[this->i]->icemanResist);
+							unit->icemanCounter = ::round(Main::mainClass->readXMLClass.castIcemanFreezTimerXML * unit->icemanResist);
 						}
 						else
 						{
-							this->world->listOfUnits[this->i]->icemanCounter = Main::mainClass->readXMLClass.castIcemanFreezTimerXML;
+							unit->icemanCounter = Main::mainClass->readXMLClass.castIcemanFreezTimerXML;
 						}
 						AudioUtil::playSoundWithVol("Snd_iceman_freezes.mp3", 0.5f);
 						this->world->icemanSlowdownEnemiesCounter++;

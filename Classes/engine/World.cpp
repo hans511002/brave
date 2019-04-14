@@ -2267,6 +2267,14 @@ namespace engine {
 			if (this->listOfTowers[i]->enemyTarget == unit) {
 				this->listOfTowers[i]->enemyTarget = NULL;
 			}
+			int j = this->listOfTowers[i]->listOfTargets.size() - 1;
+			while (j>=0)
+			{
+				if (this->listOfTowers[i]->listOfTargets[j] == unit) {
+					this->listOfTowers[i]->listOfTargets.remove(j);
+				}
+				j--;
+			}  
  			i--;
 		}
     };

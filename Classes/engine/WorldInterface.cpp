@@ -59,6 +59,9 @@ namespace engine {
         this->addChild (this->container);
         this->container->init ();
         //printChildNodes();
+		if (Main::releaseTest) {
+			this->container->book->setVisible(false);
+		}
 
         //this->container->stop();
 

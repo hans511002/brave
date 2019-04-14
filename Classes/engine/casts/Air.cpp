@@ -324,22 +324,23 @@ namespace engine
 
 		void Air::scan()
 		{
-			this->i = 0;
-			while (this->i < this->world->listOfUnits.size())
+			this->i = this->world->listOfUnits.size()-1;
+			while (this->i >=0 )
 			{
-				if (this->world->listOfUnits[this->i]->readyDamage && this->world->listOfUnits[this->i]->atStaged && !this->world->listOfUnits[this->i]->airFlag)
+				Unit *unit=this->world->listOfUnits[this->i];
+				if (unit->readyDamage && unit->atStaged && !unit->airFlag &&!unit->dead)
 				{
-					float tempObject = this->world->listOfUnits[this->i]->shoot_pt.distance(this->shoot_pt);
+					float tempObject = unit->shoot_pt.distance(this->shoot_pt);
 					if (tempObject < this->radius)
 					{
 						if (this->direction == "left" || this->direction == "right")
 						{
-							if (this->world->listOfUnits[this->i]->shoot_pt.y > this->shoot_pt.y - 30
-								&& this->world->listOfUnits[this->i]->shoot_pt.y < this->shoot_pt.y + 30)
+							if (unit->shoot_pt.y > this->shoot_pt.y - 30
+								&& unit->shoot_pt.y < this->shoot_pt.y + 30)
 							{
 								if (this->direction == "left")
 								{
-									if (this->world->listOfUnits[this->i]->shoot_pt.x < this->shoot_pt.x)
+									if (unit->shoot_pt.x < this->shoot_pt.x)
 									{
 										this->workFlag = true;
 										break;
@@ -347,7 +348,7 @@ namespace engine
 								}
 								else if (this->direction == "right")
 								{
-									if (this->world->listOfUnits[this->i]->shoot_pt.x > this->shoot_pt.x)
+									if (unit->shoot_pt.x > this->shoot_pt.x)
 									{
 										this->workFlag = true;
 										break;
@@ -357,12 +358,12 @@ namespace engine
 						}
 						else if (this->direction == "up" || this->direction == "down")
 						{
-							if (this->world->listOfUnits[this->i]->shoot_pt.x > this->shoot_pt.x - 30
-								&& this->world->listOfUnits[this->i]->shoot_pt.x < this->shoot_pt.x + 30)
+							if (unit->shoot_pt.x > this->shoot_pt.x - 30
+								&& unit->shoot_pt.x < this->shoot_pt.x + 30)
 							{
 								if (this->direction == "up")
 								{
-									if (this->world->listOfUnits[this->i]->shoot_pt.y < this->shoot_pt.y)
+									if (unit->shoot_pt.y < this->shoot_pt.y)
 									{
 										this->workFlag = true;
 										break;
@@ -370,7 +371,7 @@ namespace engine
 								}
 								else if (this->direction == "down")
 								{
-									if (this->world->listOfUnits[this->i]->shoot_pt.y > this->shoot_pt.y)
+									if (unit->shoot_pt.y > this->shoot_pt.y)
 									{
 										this->workFlag = true;
 										break;
@@ -380,7 +381,7 @@ namespace engine
 						}
 					}
 				}
-				i++;
+				i--;
 			}
 			return;
 		} // end function
@@ -409,60 +410,60 @@ namespace engine
 				}
 				else if (this->container->cont->currentFrame > 20)
 				{
-					this->i = 0;
-					while (this->i < this->world->listOfUnits.size())
+					this->i = this->world->listOfUnits.size()-1;
+					while (this->i >=0 )
 					{
-						if (this->world->listOfUnits[this->i]->atStaged && this->world->listOfUnits[this->i]->readyDamage
-							&& !this->world->listOfUnits[this->i]->airFlag && !this->world->listOfUnits[this->i]->teleportFlag)
+						Unit *unit = this->world->listOfUnits[this->i];
+						if (unit->atStaged && unit->readyDamage &&!unit->dead && !unit->airFlag && !unit->teleportFlag)
 						{
-							float tempObject = this->world->listOfUnits[this->i]->shoot_pt.distance(this->shoot_pt);
+							float tempObject = unit->shoot_pt.distance(this->shoot_pt);
 							if (tempObject < this->radius)
 							{
 								if (this->direction == "left" || this->direction == "right")
 								{
-									if (this->world->listOfUnits[this->i]->shoot_pt.y > this->shoot_pt.y - 30
-										&& this->world->listOfUnits[this->i]->shoot_pt.y < this->shoot_pt.y + 30)
+									if (unit->shoot_pt.y > this->shoot_pt.y - 30
+										&& unit->shoot_pt.y < this->shoot_pt.y + 30)
 									{
 										if (this->direction == "left")
 										{
-											if (this->world->listOfUnits[this->i]->shoot_pt.x < this->shoot_pt.x)
+											if (unit->shoot_pt.x < this->shoot_pt.x)
 											{
-												this->world->listOfUnits[this->i]->setAirSettings("air");
+												unit->setAirSettings("air");
 											}
 										}
 										else if (this->direction == "right")
 										{
-											if (this->world->listOfUnits[this->i]->shoot_pt.x > this->shoot_pt.x)
+											if (unit->shoot_pt.x > this->shoot_pt.x)
 											{
-												this->world->listOfUnits[this->i]->setAirSettings("air");
+												unit->setAirSettings("air");
 											}
 										}
 									}
 								}
 								else if (this->direction == "up" || this->direction == "down")
 								{
-									if (this->world->listOfUnits[this->i]->shoot_pt.x > this->shoot_pt.x - 30
-										&& this->world->listOfUnits[this->i]->shoot_pt.x < this->shoot_pt.x + 30)
+									if (unit->shoot_pt.x > this->shoot_pt.x - 30
+										&& unit->shoot_pt.x < this->shoot_pt.x + 30)
 									{
 										if (this->direction == "up")
 										{
-											if (this->world->listOfUnits[this->i]->shoot_pt.y < this->shoot_pt.y)
+											if (unit->shoot_pt.y < this->shoot_pt.y)
 											{
-												this->world->listOfUnits[this->i]->setAirSettings("air");
+												unit->setAirSettings("air");
 											}
 										}
 										else if (this->direction == "down")
 										{
-											if (this->world->listOfUnits[this->i]->shoot_pt.y > this->shoot_pt.y)
+											if (unit->shoot_pt.y > this->shoot_pt.y)
 											{
-												this->world->listOfUnits[this->i]->setAirSettings("air");
+												unit->setAirSettings("air");
 											}
 										}
 									}
 								}
 							}
 						}
-						i++;
+						i--;
 					}
 				}
 			}
