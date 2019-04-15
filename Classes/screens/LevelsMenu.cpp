@@ -91,7 +91,7 @@ namespace screens {
 		this->container->back = new MovieClip("screen/", "back", "back");// this->createMovieClipSub("back");
 		this->addChild(this->container->back);
 		this->container->backBackCase = this->container->back->createCase("backCase");
- 		this->container->back->setPosition(26, Main::SCREEN_HEIGHT - 15);
+ 		this->container->back->setPosition(26, Main::SCREEN_HEIGHT - 18);
 
 		MovieClip * upbook = new MovieClip("screen/", "upgrades_mc", "LevelsMenu_mc");
 		this->addChild(upbook);
@@ -103,9 +103,16 @@ namespace screens {
 		this->container->book = upbook->createMovieClipSub("book");
 		this->container->bookBookCase1 = this->container->book->createCase("bookCase1");
 		this->container->bookBookCase2 = this->container->book->createCase("bookCase2");
+		if (Main::releaseTest) {
+			this->container->book->setVisible(false);
+		}
 		this->container->freeStars = upbook->createMovieClipSub("freeStars");
 		this->container->freeStarsCont = this->container->freeStars->createMovieClipSub("cont");
 		this->container->freeStarsContStarsTXT = this->container->freeStarsCont->createText("starsTXT");
+		this->container->freeStarsContStarsTXT->setPosition(this->container->freeStarsContStarsTXT->getPosition()+Vec2(20,6));
+		this->container->freeStarsContStarsTXT->setFontSize(24);
+		this->container->freeStarsContStarsTXT->setFontName("bold");
+		this->container->freeStarsContStarsTXT->setColor(Color3B(165,35,20)); 
 
 		this->container->upgrades = upbook->createMovieClipSub("upgrades");
 		this->container->upgradesUpgradesCase1 = this->container->upgrades->createCase("upgradesCase1");
@@ -212,20 +219,17 @@ namespace screens {
             }
         }
         if (this->container->freeStars->isVisible()) {
-            if (this->container->freeStars->currentFrame <
-                this->container->freeStars->totalFrames) {
+            if (this->container->freeStars->currentFrame < this->container->freeStars->totalFrames) {
                 this->container->freeStars->tryPlay();//gotoAndStop((this->container->freeStars->currentFrame + 1));
             } else {
                 this->container->freeStars->gotoAndStop(11);
             }
-            if (this->container->freeStarsCont->currentFrame <
-                this->container->freeStarsCont->totalFrames) {
+            if (this->container->freeStarsCont->currentFrame < this->container->freeStarsCont->totalFrames) {
                 this->container->freeStarsCont->tryPlay();//gotoAndStop((this->container->freeStarsCont->currentFrame + 1));
             } else {
                 this->container->freeStarsCont->gotoAndStop(1);
             }
-            std::setText(this->container->freeStarsContStarsTXT,
-                         Main::mainClass->saveBoxClass->getIntValue("stars"));
+            std::setText(this->container->freeStarsContStarsTXT,Main::mainClass->saveBoxClass->getIntValue("stars"));
             //this->container->freeStarsCont->starsTXT.setTextFormat(Main::mainClass->boldTextFormat);
         }
         if (this->newLevel > 0 && this->container->mouseEnabled) {

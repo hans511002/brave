@@ -11,6 +11,7 @@ namespace screens
 		MCText * nameTXT;
 		MCText * noteTXT;
 		ContAchieve(MC *mc, const std::string &  slot, const string &  defAniName = "");
+		void gotoAndStop(int c);
 	};
 	struct Achievements_mc : public MovieClip
 	{

@@ -12,10 +12,22 @@ namespace screens
 		this->nameTXT = this->createText("nameTXT");
 		this->noteTXT = this->createText("noteTXT");
 		icon = this->createMovieClipSub("icon");
-		this->nameTXT->setPosition(this->nameTXT->getPosition() + Vec2(0, 5));
+		this->nameTXT->setPosition(this->nameTXT->getPosition() + Vec2(50, 3));
 		this->noteTXT->setPosition(this->noteTXT->getPosition() + Vec2(0, 5));
+		this->nameTXT->setFontSize(20);
+		this->nameTXT->setColor(Color3B(255,205,2));
 	};
-
+	void ContAchieve::gotoAndStop(int cf) {
+		MovieClipSub::gotoAndStop(cf);
+		if (this->currentFrame == 1) {
+			this->noteTXT->setFontSize(14);
+			this->noteTXT->setColor(Color3B(246, 222, 166));
+		}
+		else {
+			this->noteTXT->setFontSize(14);
+			this->noteTXT->setColor(Color3B(140, 133, 119));
+		}
+	}
 	Achievements_mc::Achievements_mc() :MovieClip("screen/", "Achievements_mc", "Achievements_mc")
 	{
 		shadow = this->createCase("shadow");
@@ -222,7 +234,7 @@ namespace screens
 	}// end function
 	bool Achievements::preCheckEventTarget(std::MouseEvent * event, EventMouse::MouseEventType _mouseEventType)
 	{
-        if(useNodeEvent)return false;
+		if (useNodeEvent)return false;
 		removeEventTarget(event, this);
 		Vec2 pos = event->getLocationInView();
 		switch (_mouseEventType)
@@ -261,8 +273,9 @@ namespace screens
 		std::MouseEvent me(e);
 		if (!useNodeEvent) {
 			me = std::buildMouseEvent(e);
-        }else if(globalNode && globalNode==this){
-            if (!std::hitTest(this, e))return;
+		}
+		else if (globalNode && globalNode == this) {
+			if (!std::hitTest(this, e))return;
 		}
 		std::MouseEvent * event = &me;
 		if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_MOVE))return;
@@ -375,8 +388,9 @@ namespace screens
 		std::MouseEvent me(e);
 		if (!useNodeEvent) {
 			me = std::buildMouseEvent(e);
-        }else if(globalNode && globalNode==this){
-            if (!std::hitTest(this, e))return;
+		}
+		else if (globalNode && globalNode == this) {
+			if (!std::hitTest(this, e))return;
 		}
 		std::MouseEvent * event = &me;
 		if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_DOWN))return;
@@ -483,8 +497,9 @@ namespace screens
 		std::MouseEvent me(e);
 		if (!useNodeEvent) {
 			me = std::buildMouseEvent(e);
-        }else if(globalNode && globalNode==this){
-            if (!std::hitTest(this, e))return;
+		}
+		else if (globalNode && globalNode == this) {
+			if (!std::hitTest(this, e))return;
 		}
 		std::MouseEvent * event = &me;
 		if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_UP))return;
@@ -661,97 +676,97 @@ namespace screens
 				this->container->contAchieve2->gotoAndStop(2);
 			}
 			this->container->contAchieve2->icon->gotoAndStop(2);
-				std::setText(this->container->contAchieve2->nameTXT, I18N_VALUE(I18N_CODE::U026));
-				std::setText(this->container->contAchieve2->noteTXT, I18N_VALUE(I18N_CODE::U073));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_kill_2500_enemies"))
-				{
-					this->container->contAchieve3->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve3->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve2->nameTXT, I18N_VALUE(I18N_CODE::U026));
+			std::setText(this->container->contAchieve2->noteTXT, I18N_VALUE(I18N_CODE::U073));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_kill_2500_enemies"))
+			{
+				this->container->contAchieve3->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve3->gotoAndStop(2);
+			}
 			this->container->contAchieve3->icon->gotoAndStop(3);
-				std::setText(this->container->contAchieve3->nameTXT, I18N_VALUE(I18N_CODE::U027));
-				std::setText(this->container->contAchieve3->noteTXT, I18N_VALUE(I18N_CODE::U074));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_call_100_earlyWaves"))
-				{
-					this->container->contAchieve4->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve4->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve3->nameTXT, I18N_VALUE(I18N_CODE::U027));
+			std::setText(this->container->contAchieve3->noteTXT, I18N_VALUE(I18N_CODE::U074));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_call_100_earlyWaves"))
+			{
+				this->container->contAchieve4->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve4->gotoAndStop(2);
+			}
 			this->container->contAchieve4->icon->gotoAndStop(4);
-				std::setText(this->container->contAchieve4->nameTXT, I18N_VALUE(I18N_CODE::U028));
-				std::setText(this->container->contAchieve4->noteTXT, I18N_VALUE(I18N_CODE::U075));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_build_100_towers"))
-				{
-					this->container->contAchieve5->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve5->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve4->nameTXT, I18N_VALUE(I18N_CODE::U028));
+			std::setText(this->container->contAchieve4->noteTXT, I18N_VALUE(I18N_CODE::U075));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_build_100_towers"))
+			{
+				this->container->contAchieve5->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve5->gotoAndStop(2);
+			}
 			this->container->contAchieve5->icon->gotoAndStop(5);
-				std::setText(this->container->contAchieve5->nameTXT, I18N_VALUE(I18N_CODE::U029));
-				std::setText(this->container->contAchieve5->noteTXT, I18N_VALUE(I18N_CODE::U076));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_createGolem_5_times"))
-				{
-					this->container->contAchieve6->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve6->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve5->nameTXT, I18N_VALUE(I18N_CODE::U029));
+			std::setText(this->container->contAchieve5->noteTXT, I18N_VALUE(I18N_CODE::U076));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_createGolem_5_times"))
+			{
+				this->container->contAchieve6->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve6->gotoAndStop(2);
+			}
 			this->container->contAchieve6->icon->gotoAndStop(6);
-				std::setText(this->container->contAchieve6->nameTXT, I18N_VALUE(I18N_CODE::U030));
-				std::setText(this->container->contAchieve6->noteTXT, I18N_VALUE(I18N_CODE::U077));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_createIceman_15_times"))
-				{
-					this->container->contAchieve7->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve7->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve6->nameTXT, I18N_VALUE(I18N_CODE::U030));
+			std::setText(this->container->contAchieve6->noteTXT, I18N_VALUE(I18N_CODE::U077));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_createIceman_15_times"))
+			{
+				this->container->contAchieve7->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve7->gotoAndStop(2);
+			}
 			this->container->contAchieve7->icon->gotoAndStop(7);
-				std::setText(this->container->contAchieve7->nameTXT, I18N_VALUE(I18N_CODE::U031));
-				std::setText(this->container->contAchieve7->noteTXT, I18N_VALUE(I18N_CODE::U078));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_createAir_7_times"))
-				{
-					this->container->contAchieve8->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve8->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve7->nameTXT, I18N_VALUE(I18N_CODE::U031));
+			std::setText(this->container->contAchieve7->noteTXT, I18N_VALUE(I18N_CODE::U078));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_createAir_7_times"))
+			{
+				this->container->contAchieve8->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve8->gotoAndStop(2);
+			}
 			this->container->contAchieve8->icon->gotoAndStop(8);
-				std::setText(this->container->contAchieve8->nameTXT, I18N_VALUE(I18N_CODE::U032));
-				std::setText(this->container->contAchieve8->noteTXT, I18N_VALUE(I18N_CODE::U079));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_callAllWavesInLevel"))
-				{
-					this->container->contAchieve9->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve9->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve8->nameTXT, I18N_VALUE(I18N_CODE::U032));
+			std::setText(this->container->contAchieve8->noteTXT, I18N_VALUE(I18N_CODE::U079));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_callAllWavesInLevel"))
+			{
+				this->container->contAchieve9->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve9->gotoAndStop(2);
+			}
 			this->container->contAchieve9->icon->gotoAndStop(9);
-				std::setText(this->container->contAchieve9->nameTXT, I18N_VALUE(I18N_CODE::U033));
-				std::setText(this->container->contAchieve9->noteTXT, I18N_VALUE(I18N_CODE::U080));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_sellFireIceStoneLevin"))
-				{
-					this->container->contAchieve10->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve10->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve9->nameTXT, I18N_VALUE(I18N_CODE::U033));
+			std::setText(this->container->contAchieve9->noteTXT, I18N_VALUE(I18N_CODE::U080));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_sellFireIceStoneLevin"))
+			{
+				this->container->contAchieve10->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve10->gotoAndStop(2);
+			}
 			this->container->contAchieve10->icon->gotoAndStop(10);
-				std::setText(this->container->contAchieve10->nameTXT, I18N_VALUE(I18N_CODE::U034));
-				std::setText(this->container->contAchieve10->noteTXT, I18N_VALUE(I18N_CODE::U081));
-				this->container->contFire1->setVisible(true);
+			std::setText(this->container->contAchieve10->nameTXT, I18N_VALUE(I18N_CODE::U034));
+			std::setText(this->container->contAchieve10->noteTXT, I18N_VALUE(I18N_CODE::U081));
+			this->container->contFire1->setVisible(true);
 			this->container->contFire1Case->setMouseEnabled(false);
 		}
 		else if (param1 == 2)
@@ -765,108 +780,108 @@ namespace screens
 				this->container->contAchieve1->gotoAndStop(2);
 			}
 			this->container->contAchieve1->icon->gotoAndStop(11);
-				std::setText(this->container->contAchieve1->nameTXT, I18N_VALUE(I18N_CODE::U035));
-				std::setText(this->container->contAchieve1->noteTXT, I18N_VALUE(I18N_CODE::U082));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_sellIce_10_times"))
-				{
-					this->container->contAchieve2->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve2->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve1->nameTXT, I18N_VALUE(I18N_CODE::U035));
+			std::setText(this->container->contAchieve1->noteTXT, I18N_VALUE(I18N_CODE::U082));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_sellIce_10_times"))
+			{
+				this->container->contAchieve2->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve2->gotoAndStop(2);
+			}
 			this->container->contAchieve2->icon->gotoAndStop(12);
-				std::setText(this->container->contAchieve2->nameTXT, I18N_VALUE(I18N_CODE::U036));
-				std::setText(this->container->contAchieve2->noteTXT, I18N_VALUE(I18N_CODE::U083));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_sellStone_10_times"))
-				{
-					this->container->contAchieve3->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve3->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve2->nameTXT, I18N_VALUE(I18N_CODE::U036));
+			std::setText(this->container->contAchieve2->noteTXT, I18N_VALUE(I18N_CODE::U083));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_sellStone_10_times"))
+			{
+				this->container->contAchieve3->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve3->gotoAndStop(2);
+			}
 			this->container->contAchieve3->icon->gotoAndStop(13);
-				std::setText(this->container->contAchieve3->nameTXT, I18N_VALUE(I18N_CODE::U037));
-				std::setText(this->container->contAchieve3->noteTXT, I18N_VALUE(I18N_CODE::U084));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_sellLevin_10_times"))
-				{
-					this->container->contAchieve4->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve4->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve3->nameTXT, I18N_VALUE(I18N_CODE::U037));
+			std::setText(this->container->contAchieve3->noteTXT, I18N_VALUE(I18N_CODE::U084));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_sellLevin_10_times"))
+			{
+				this->container->contAchieve4->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve4->gotoAndStop(2);
+			}
 			this->container->contAchieve4->icon->gotoAndStop(14);
-				std::setText(this->container->contAchieve4->nameTXT, I18N_VALUE(I18N_CODE::U038));
-				std::setText(this->container->contAchieve4->noteTXT, I18N_VALUE(I18N_CODE::U085));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_golemKill_250_enemies"))
-				{
-					this->container->contAchieve5->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve5->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve4->nameTXT, I18N_VALUE(I18N_CODE::U038));
+			std::setText(this->container->contAchieve4->noteTXT, I18N_VALUE(I18N_CODE::U085));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_golemKill_250_enemies"))
+			{
+				this->container->contAchieve5->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve5->gotoAndStop(2);
+			}
 			this->container->contAchieve5->icon->gotoAndStop(15);
-				std::setText(this->container->contAchieve5->nameTXT, I18N_VALUE(I18N_CODE::U039));
-				std::setText(this->container->contAchieve5->noteTXT, I18N_VALUE(I18N_CODE::U086));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_icemanSlowdown_75_enemies"))
-				{
-					this->container->contAchieve6->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve6->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve5->nameTXT, I18N_VALUE(I18N_CODE::U039));
+			std::setText(this->container->contAchieve5->noteTXT, I18N_VALUE(I18N_CODE::U086));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_icemanSlowdown_75_enemies"))
+			{
+				this->container->contAchieve6->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve6->gotoAndStop(2);
+			}
 			this->container->contAchieve6->icon->gotoAndStop(16);
-				std::setText(this->container->contAchieve6->nameTXT, I18N_VALUE(I18N_CODE::U040));
-				std::setText(this->container->contAchieve6->noteTXT, I18N_VALUE(I18N_CODE::U087));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_icemanSlowdown_500_enemies"))
-				{
-					this->container->contAchieve7->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve7->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve6->nameTXT, I18N_VALUE(I18N_CODE::U040));
+			std::setText(this->container->contAchieve6->noteTXT, I18N_VALUE(I18N_CODE::U087));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_icemanSlowdown_500_enemies"))
+			{
+				this->container->contAchieve7->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve7->gotoAndStop(2);
+			}
 			this->container->contAchieve7->icon->gotoAndStop(17);
-				std::setText(this->container->contAchieve7->nameTXT, I18N_VALUE(I18N_CODE::U041));
-				std::setText(this->container->contAchieve7->noteTXT, I18N_VALUE(I18N_CODE::U088));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_buildUltraTower"))
-				{
-					this->container->contAchieve8->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve8->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve7->nameTXT, I18N_VALUE(I18N_CODE::U041));
+			std::setText(this->container->contAchieve7->noteTXT, I18N_VALUE(I18N_CODE::U088));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_buildUltraTower"))
+			{
+				this->container->contAchieve8->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve8->gotoAndStop(2);
+			}
 			this->container->contAchieve8->icon->gotoAndStop(18);
-				std::setText(this->container->contAchieve8->nameTXT, I18N_VALUE(I18N_CODE::U042));
-				std::setText(this->container->contAchieve8->noteTXT, I18N_VALUE(I18N_CODE::U089));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_buildUltraTower_50_times"))
-				{
-					this->container->contAchieve9->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve9->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve8->nameTXT, I18N_VALUE(I18N_CODE::U042));
+			std::setText(this->container->contAchieve8->noteTXT, I18N_VALUE(I18N_CODE::U089));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_buildUltraTower_50_times"))
+			{
+				this->container->contAchieve9->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve9->gotoAndStop(2);
+			}
 			this->container->contAchieve9->icon->gotoAndStop(19);
-				std::setText(this->container->contAchieve9->nameTXT, I18N_VALUE(I18N_CODE::U043));
-				std::setText(this->container->contAchieve9->noteTXT, I18N_VALUE(I18N_CODE::U090));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_buildAllUltraTowers"))
-				{
-					this->container->contAchieve10->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve10->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve9->nameTXT, I18N_VALUE(I18N_CODE::U043));
+			std::setText(this->container->contAchieve9->noteTXT, I18N_VALUE(I18N_CODE::U090));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_buildAllUltraTowers"))
+			{
+				this->container->contAchieve10->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve10->gotoAndStop(2);
+			}
 			this->container->contAchieve10->icon->gotoAndStop(20);
-				std::setText(this->container->contAchieve10->nameTXT, I18N_VALUE(I18N_CODE::U044));
-				std::setText(this->container->contAchieve10->noteTXT, I18N_VALUE(I18N_CODE::U091));
-				this->container->contFire2->setVisible(true);
+			std::setText(this->container->contAchieve10->nameTXT, I18N_VALUE(I18N_CODE::U044));
+			std::setText(this->container->contAchieve10->noteTXT, I18N_VALUE(I18N_CODE::U091));
+			this->container->contFire2->setVisible(true);
 			this->container->contFire2Case->setMouseEnabled(false);
 		}
 		else if (param1 == 3)
@@ -880,223 +895,183 @@ namespace screens
 				this->container->contAchieve1->gotoAndStop(2);
 			}
 			this->container->contAchieve1->icon->gotoAndStop(21);
-				std::setText(this->container->contAchieve1->nameTXT, I18N_VALUE(I18N_CODE::U045));
-				std::setText(this->container->contAchieve1->noteTXT, I18N_VALUE(I18N_CODE::U092));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_castFire_150_times"))
-				{
-					this->container->contAchieve2->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve2->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve1->nameTXT, I18N_VALUE(I18N_CODE::U045));
+			std::setText(this->container->contAchieve1->noteTXT, I18N_VALUE(I18N_CODE::U092));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_castFire_150_times"))
+			{
+				this->container->contAchieve2->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve2->gotoAndStop(2);
+			}
 			this->container->contAchieve2->icon->gotoAndStop(22);
-				std::setText(this->container->contAchieve2->nameTXT, I18N_VALUE(I18N_CODE::U046));
-				std::setText(this->container->contAchieve2->noteTXT, I18N_VALUE(I18N_CODE::U093));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_castIce_150_times"))
-				{
-					this->container->contAchieve3->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve3->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve2->nameTXT, I18N_VALUE(I18N_CODE::U046));
+			std::setText(this->container->contAchieve2->noteTXT, I18N_VALUE(I18N_CODE::U093));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_castIce_150_times"))
+			{
+				this->container->contAchieve3->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve3->gotoAndStop(2);
+			}
 			this->container->contAchieve3->icon->gotoAndStop(23);
-				std::setText(this->container->contAchieve3->nameTXT, I18N_VALUE(I18N_CODE::U047));
-				std::setText(this->container->contAchieve3->noteTXT, I18N_VALUE(I18N_CODE::U094));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_castStone_150_times"))
-				{
-					this->container->contAchieve4->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve4->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve3->nameTXT, I18N_VALUE(I18N_CODE::U047));
+			std::setText(this->container->contAchieve3->noteTXT, I18N_VALUE(I18N_CODE::U094));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_castStone_150_times"))
+			{
+				this->container->contAchieve4->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve4->gotoAndStop(2);
+			}
 			this->container->contAchieve4->icon->gotoAndStop(24);
-				std::setText(this->container->contAchieve4->nameTXT, I18N_VALUE(I18N_CODE::U048));
-				std::setText(this->container->contAchieve4->noteTXT, I18N_VALUE(I18N_CODE::U095));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_castLevin_150_times"))
-				{
-					this->container->contAchieve5->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve5->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve4->nameTXT, I18N_VALUE(I18N_CODE::U048));
+			std::setText(this->container->contAchieve4->noteTXT, I18N_VALUE(I18N_CODE::U095));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_castLevin_150_times"))
+			{
+				this->container->contAchieve5->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve5->gotoAndStop(2);
+			}
 			this->container->contAchieve5->icon->gotoAndStop(25);
-				std::setText(this->container->contAchieve5->nameTXT, I18N_VALUE(I18N_CODE::U049));
-				std::setText(this->container->contAchieve5->noteTXT, I18N_VALUE(I18N_CODE::U096));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_castGetAll_10_times"))
-				{
-					this->container->contAchieve6->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve6->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve5->nameTXT, I18N_VALUE(I18N_CODE::U049));
+			std::setText(this->container->contAchieve5->noteTXT, I18N_VALUE(I18N_CODE::U096));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_castGetAll_10_times"))
+			{
+				this->container->contAchieve6->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve6->gotoAndStop(2);
+			}
 			this->container->contAchieve6->icon->gotoAndStop(26);
-				std::setText(this->container->contAchieve6->nameTXT, I18N_VALUE(I18N_CODE::U050));
-				std::setText(this->container->contAchieve6->noteTXT, I18N_VALUE(I18N_CODE::U097));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_castGetAll_100_times"))
-				{
-					this->container->contAchieve7->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve7->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve6->nameTXT, I18N_VALUE(I18N_CODE::U050));
+			std::setText(this->container->contAchieve6->noteTXT, I18N_VALUE(I18N_CODE::U097));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_castGetAll_100_times"))
+			{
+				this->container->contAchieve7->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve7->gotoAndStop(2);
+			}
 			this->container->contAchieve7->icon->gotoAndStop(27);
-				std::setText(this->container->contAchieve7->nameTXT, I18N_VALUE(I18N_CODE::U051));
-				std::setText(this->container->contAchieve7->noteTXT, I18N_VALUE(I18N_CODE::U098));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_castKill_1_enemy"))
-				{
-					this->container->contAchieve8->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve8->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve7->nameTXT, I18N_VALUE(I18N_CODE::U051));
+			std::setText(this->container->contAchieve7->noteTXT, I18N_VALUE(I18N_CODE::U098));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_castKill_1_enemy"))
+			{
+				this->container->contAchieve8->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve8->gotoAndStop(2);
+			}
 			this->container->contAchieve8->icon->gotoAndStop(28);
-				std::setText(this->container->contAchieve8->nameTXT, I18N_VALUE(I18N_CODE::U052));
-				std::setText(this->container->contAchieve8->noteTXT, I18N_VALUE(I18N_CODE::U099));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_castKill_100_enemy"))
-				{
-					this->container->contAchieve9->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve9->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve8->nameTXT, I18N_VALUE(I18N_CODE::U052));
+			std::setText(this->container->contAchieve8->noteTXT, I18N_VALUE(I18N_CODE::U099));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_castKill_100_enemy"))
+			{
+				this->container->contAchieve9->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve9->gotoAndStop(2);
+			}
 			this->container->contAchieve9->icon->gotoAndStop(29);
-				std::setText(this->container->contAchieve9->nameTXT, I18N_VALUE(I18N_CODE::U053));
-				std::setText(this->container->contAchieve9->noteTXT, I18N_VALUE(I18N_CODE::U100));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_complete_10_hardLevels"))
-				{
-					this->container->contAchieve10->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve10->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve9->nameTXT, I18N_VALUE(I18N_CODE::U053));
+			std::setText(this->container->contAchieve9->noteTXT, I18N_VALUE(I18N_CODE::U100));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_complete_10_hardLevels"))
+			{
+				this->container->contAchieve10->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve10->gotoAndStop(2);
+			}
 			this->container->contAchieve10->icon->gotoAndStop(30);
-				std::setText(this->container->contAchieve10->nameTXT, I18N_VALUE(I18N_CODE::U054));
-				std::setText(this->container->contAchieve10->noteTXT, I18N_VALUE(I18N_CODE::U101));
-				this->container->contFire3->setVisible(true);
+			std::setText(this->container->contAchieve10->nameTXT, I18N_VALUE(I18N_CODE::U054));
+			std::setText(this->container->contAchieve10->noteTXT, I18N_VALUE(I18N_CODE::U101));
+			this->container->contFire3->setVisible(true);
 			this->container->contFire3Case->setMouseEnabled(false);
 		}
 		else if (param1 == 4)
 		{
 			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_complete_10_survivalLevels"))
-			{
 				this->container->contAchieve1->gotoAndStop(1);
-			}
 			else
-			{
 				this->container->contAchieve1->gotoAndStop(2);
-			}
 			this->container->contAchieve1->icon->gotoAndStop(31);
-				std::setText(this->container->contAchieve1->nameTXT, I18N_VALUE(I18N_CODE::U055));
-				std::setText(this->container->contAchieve1->noteTXT, I18N_VALUE(I18N_CODE::U102));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_complete_10_withAllLives"))
-				{
-					this->container->contAchieve2->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve2->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve1->nameTXT, I18N_VALUE(I18N_CODE::U055));
+			std::setText(this->container->contAchieve1->noteTXT, I18N_VALUE(I18N_CODE::U102));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_complete_10_withAllLives"))
+				this->container->contAchieve2->gotoAndStop(1);
+			else
+				this->container->contAchieve2->gotoAndStop(2);
 			this->container->contAchieve2->icon->gotoAndStop(32);
-				std::setText(this->container->contAchieve2->nameTXT, I18N_VALUE(I18N_CODE::U056));
-				std::setText(this->container->contAchieve2->noteTXT, I18N_VALUE(I18N_CODE::U103));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_dude_01"))
-				{
-					this->container->contAchieve3->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve3->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve2->nameTXT, I18N_VALUE(I18N_CODE::U056));
+			std::setText(this->container->contAchieve2->noteTXT, I18N_VALUE(I18N_CODE::U103));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_dude_01"))
+				this->container->contAchieve3->gotoAndStop(1);
+			else
+				this->container->contAchieve3->gotoAndStop(2);
 			this->container->contAchieve3->icon->gotoAndStop(33);
-				std::setText(this->container->contAchieve3->nameTXT, I18N_VALUE(I18N_CODE::U057));
-				std::setText(this->container->contAchieve3->noteTXT, I18N_VALUE(I18N_CODE::U104));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_dude_02"))
-				{
-					this->container->contAchieve4->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve4->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve3->nameTXT, I18N_VALUE(I18N_CODE::U057));
+			std::setText(this->container->contAchieve3->noteTXT, I18N_VALUE(I18N_CODE::U104));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_dude_02"))
+				this->container->contAchieve4->gotoAndStop(1);
+			else
+				this->container->contAchieve4->gotoAndStop(2);
 			this->container->contAchieve4->icon->gotoAndStop(34);
-				std::setText(this->container->contAchieve4->nameTXT, I18N_VALUE(I18N_CODE::U058));
-				std::setText(this->container->contAchieve4->noteTXT, I18N_VALUE(I18N_CODE::U105));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_dude_03"))
-				{
-					this->container->contAchieve5->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve5->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve4->nameTXT, I18N_VALUE(I18N_CODE::U058));
+			std::setText(this->container->contAchieve4->noteTXT, I18N_VALUE(I18N_CODE::U105));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_dude_03"))
+				this->container->contAchieve5->gotoAndStop(1);
+			else
+				this->container->contAchieve5->gotoAndStop(2);
 			this->container->contAchieve5->icon->gotoAndStop(35);
-				std::setText(this->container->contAchieve5->nameTXT, I18N_VALUE(I18N_CODE::U059));
-				std::setText(this->container->contAchieve5->noteTXT, I18N_VALUE(I18N_CODE::U106));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_dude_04"))
-				{
-					this->container->contAchieve6->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve6->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve5->nameTXT, I18N_VALUE(I18N_CODE::U059));
+			std::setText(this->container->contAchieve5->noteTXT, I18N_VALUE(I18N_CODE::U106));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_dude_04"))
+				this->container->contAchieve6->gotoAndStop(1);
+			else
+				this->container->contAchieve6->gotoAndStop(2);
 			this->container->contAchieve6->icon->gotoAndStop(36);
-				std::setText(this->container->contAchieve6->nameTXT, I18N_VALUE(I18N_CODE::U060));
-				std::setText(this->container->contAchieve6->noteTXT, I18N_VALUE(I18N_CODE::U107));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_dude_05"))
-				{
-					this->container->contAchieve7->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve7->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve6->nameTXT, I18N_VALUE(I18N_CODE::U060));
+			std::setText(this->container->contAchieve6->noteTXT, I18N_VALUE(I18N_CODE::U107));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_dude_05"))
+				this->container->contAchieve7->gotoAndStop(1);
+			else
+				this->container->contAchieve7->gotoAndStop(2);
 			this->container->contAchieve7->icon->gotoAndStop(37);
-				std::setText(this->container->contAchieve7->nameTXT, I18N_VALUE(I18N_CODE::U061));
-				std::setText(this->container->contAchieve7->noteTXT, I18N_VALUE(I18N_CODE::U108));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_dude_06"))
-				{
-					this->container->contAchieve8->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve8->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve7->nameTXT, I18N_VALUE(I18N_CODE::U061));
+			std::setText(this->container->contAchieve7->noteTXT, I18N_VALUE(I18N_CODE::U108));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_dude_06"))
+				this->container->contAchieve8->gotoAndStop(1);
+			else
+				this->container->contAchieve8->gotoAndStop(2);
 			this->container->contAchieve8->icon->gotoAndStop(38);
-				std::setText(this->container->contAchieve8->nameTXT, I18N_VALUE(I18N_CODE::U062));
-				std::setText(this->container->contAchieve8->noteTXT, I18N_VALUE(I18N_CODE::U109));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_dude_07"))
-				{
-					this->container->contAchieve9->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve9->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve8->nameTXT, I18N_VALUE(I18N_CODE::U062));
+			std::setText(this->container->contAchieve8->noteTXT, I18N_VALUE(I18N_CODE::U109));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_dude_07"))
+				this->container->contAchieve9->gotoAndStop(1);
+			else
+				this->container->contAchieve9->gotoAndStop(2);
 			this->container->contAchieve9->icon->gotoAndStop(39);
-				std::setText(this->container->contAchieve9->nameTXT, I18N_VALUE(I18N_CODE::U063));
-				std::setText(this->container->contAchieve9->noteTXT, I18N_VALUE(I18N_CODE::U110));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_dude_08"))
-				{
-					this->container->contAchieve10->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve10->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve9->nameTXT, I18N_VALUE(I18N_CODE::U063));
+			std::setText(this->container->contAchieve9->noteTXT, I18N_VALUE(I18N_CODE::U110));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_dude_08"))
+				this->container->contAchieve10->gotoAndStop(1);
+			else
+				this->container->contAchieve10->gotoAndStop(2);
 			this->container->contAchieve10->icon->gotoAndStop(40);
-				std::setText(this->container->contAchieve10->nameTXT, I18N_VALUE(I18N_CODE::U064));
-				std::setText(this->container->contAchieve10->noteTXT, I18N_VALUE(I18N_CODE::U111));
-				this->container->contFire4->setVisible(true);
+			std::setText(this->container->contAchieve10->nameTXT, I18N_VALUE(I18N_CODE::U064));
+			std::setText(this->container->contAchieve10->noteTXT, I18N_VALUE(I18N_CODE::U111));
+			this->container->contFire4->setVisible(true);
 			this->container->contFire4Case->setMouseEnabled(false);
 		}
 		else if (param1 == 5)
@@ -1110,64 +1085,64 @@ namespace screens
 				this->container->contAchieve1->gotoAndStop(2);
 			}
 			this->container->contAchieve1->icon->gotoAndStop(41);
-				std::setText(this->container->contAchieve1->nameTXT, I18N_VALUE(I18N_CODE::U065));
-				std::setText(this->container->contAchieve1->noteTXT, I18N_VALUE(I18N_CODE::U112));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_dude_10"))
-				{
-					this->container->contAchieve2->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve2->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve1->nameTXT, I18N_VALUE(I18N_CODE::U065));
+			std::setText(this->container->contAchieve1->noteTXT, I18N_VALUE(I18N_CODE::U112));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_dude_10"))
+			{
+				this->container->contAchieve2->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve2->gotoAndStop(2);
+			}
 			this->container->contAchieve2->icon->gotoAndStop(42);
-				std::setText(this->container->contAchieve2->nameTXT, I18N_VALUE(I18N_CODE::U066));
-				std::setText(this->container->contAchieve2->noteTXT, I18N_VALUE(I18N_CODE::U113));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_dude_11"))
-				{
-					this->container->contAchieve3->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve3->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve2->nameTXT, I18N_VALUE(I18N_CODE::U066));
+			std::setText(this->container->contAchieve2->noteTXT, I18N_VALUE(I18N_CODE::U113));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_dude_11"))
+			{
+				this->container->contAchieve3->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve3->gotoAndStop(2);
+			}
 			this->container->contAchieve3->icon->gotoAndStop(43);
-				std::setText(this->container->contAchieve3->nameTXT, I18N_VALUE(I18N_CODE::U067));
-				std::setText(this->container->contAchieve3->noteTXT, I18N_VALUE(I18N_CODE::U114));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_dude_12"))
-				{
-					this->container->contAchieve4->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve4->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve3->nameTXT, I18N_VALUE(I18N_CODE::U067));
+			std::setText(this->container->contAchieve3->noteTXT, I18N_VALUE(I18N_CODE::U114));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_dude_12"))
+			{
+				this->container->contAchieve4->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve4->gotoAndStop(2);
+			}
 			this->container->contAchieve4->icon->gotoAndStop(44);
-				std::setText(this->container->contAchieve4->nameTXT, I18N_VALUE(I18N_CODE::U068));
-				std::setText(this->container->contAchieve4->noteTXT, I18N_VALUE(I18N_CODE::U115));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_dude_13"))
-				{
-					this->container->contAchieve5->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve5->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve4->nameTXT, I18N_VALUE(I18N_CODE::U068));
+			std::setText(this->container->contAchieve4->noteTXT, I18N_VALUE(I18N_CODE::U115));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_dude_13"))
+			{
+				this->container->contAchieve5->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve5->gotoAndStop(2);
+			}
 			this->container->contAchieve5->icon->gotoAndStop(45);
-				std::setText(this->container->contAchieve5->nameTXT, I18N_VALUE(I18N_CODE::U069));
-				std::setText(this->container->contAchieve5->noteTXT, I18N_VALUE(I18N_CODE::U116));
-				if (Main::mainClass->saveBoxClass->getBoolValue("achieve_dude_14"))
-				{
-					this->container->contAchieve6->gotoAndStop(1);
-				}
-				else
-				{
-					this->container->contAchieve6->gotoAndStop(2);
-				}
+			std::setText(this->container->contAchieve5->nameTXT, I18N_VALUE(I18N_CODE::U069));
+			std::setText(this->container->contAchieve5->noteTXT, I18N_VALUE(I18N_CODE::U116));
+			if (Main::mainClass->saveBoxClass->getBoolValue("achieve_dude_14"))
+			{
+				this->container->contAchieve6->gotoAndStop(1);
+			}
+			else
+			{
+				this->container->contAchieve6->gotoAndStop(2);
+			}
 			this->container->contAchieve6->icon->gotoAndStop(46);
-				std::setText(this->container->contAchieve6->nameTXT, I18N_VALUE(I18N_CODE::U070));
-				std::setText(this->container->contAchieve6->noteTXT, I18N_VALUE(I18N_CODE::U117));
-				this->container->contAchieve7->setVisible(false);
+			std::setText(this->container->contAchieve6->nameTXT, I18N_VALUE(I18N_CODE::U070));
+			std::setText(this->container->contAchieve6->noteTXT, I18N_VALUE(I18N_CODE::U117));
+			this->container->contAchieve7->setVisible(false);
 			this->container->contAchieve8->setVisible(false);
 			this->container->contAchieve9->setVisible(false);
 			this->container->contAchieve10->setVisible(false);

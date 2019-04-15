@@ -57,7 +57,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->getOpenGLView()->setViewPortInPoints(0,0, Main::SCREEN_WIDTH, Main::SCREEN_HEIGHT);
 
     // turn on display FPS
-    director->setDisplayStats(true);
+	if(!Main::releaseTest)
+		director->setDisplayStats(true);
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(Main::AnimationInterval);

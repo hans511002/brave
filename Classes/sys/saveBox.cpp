@@ -10,9 +10,17 @@ namespace sys
 	Config::Config() {
 		init();
 	}
-	void Config::init() {
-		if (file.empty() || JsonUtil::readFile(&systemConfig, file) != 0) {
+	int Config::init() {
+		if (file.empty()) {
 			systemConfig.SetObject();
+			return 1;
+		}
+		else {
+			int res=JsonUtil::readFile(&systemConfig, file);
+			if (res != 0) {
+				systemConfig.SetObject();
+			}
+			return res;
 		}
 	};
 
@@ -22,10 +30,10 @@ namespace sys
 	Config::Config(string file, bool savet ) {
 		setSave(file, savet);
 	}; 
-	void Config::setSave(string file, bool savet) {
+	int Config::setSave(string file, bool savet) {
 		this->file = file;
 		this->savett = savet;
-		init(); 
+		return init(); 
 	};
 
 	SaveBox::SaveBox() :maxStars(63), playLevel(1)

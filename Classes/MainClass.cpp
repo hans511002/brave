@@ -72,7 +72,10 @@ bool Main::init()
     //this->enableMouseHandler();//world及screen中监听
     //addPreloadDB();
     //
-    sysConf.setSave(FileUtils::getInstance()->getWritablePath() + "/system.json",true);
+	if (sysConf.setSave(FileUtils::getInstance()->getWritablePath() + "/system.json", true) != 0) {
+		sysConf.setValue("musicOn", true);
+		sysConf.setValue("soundOn", true);
+	};
     AudioUtil::setAudioDir("sound"); 
     //    AudioUtil::stopAll();
 	AudioUtil::musicOn = sysConf.getBoolValue("musicOn");
@@ -83,6 +86,7 @@ bool Main::init()
 
 void Main::addNewScreen(const string & param1)
 {
+	AudioUtil::stopMusic(true);
     if (this->middleScreenClass)
     {
         if (param1 == "StartMenu")

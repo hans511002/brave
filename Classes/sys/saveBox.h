@@ -15,8 +15,8 @@ namespace sys
 		void save();
 		bool savett;
 		string file;
-		void setSave(string file, bool savet=false);
-		void init();
+		int setSave(string file, bool savet=false);
+		int init();
 
 		template <class T = int> void setValue(string namePath, T val) {
 			JsonUtil::setValue<T>(systemConfig, namePath, val);

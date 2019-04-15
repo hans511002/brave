@@ -17,7 +17,8 @@ namespace screens
 		this->stars=new MovieClip("screen/", "star", "star");
 		this->starsTXT = this->stars->createText("starsTXT");
 		std::setText(this->starsTXT, "TEST");
-		std::drawRange(this->starsTXT, Color4F::RED);
+		//std::drawRange(this->starsTXT, Color4F::RED);
+		this->starsTXT->setPosition(this->starsTXT->getPosition()+Vec2(10,34));
 		this->contBtnReset = this->cont->createMovieClipSub("btnReset");
 		this->contBtnResetResetCase = this->contBtnReset->createCase("resetCase");
 		this->contBtnAccept = this->cont->createMovieClipSub("btnAccept");
@@ -117,7 +118,7 @@ namespace screens
 		this->container->setPosition(0, 710);
 		this->container->back = new Back_mc();
 		this->container->setScaleY(0.8f);
-		this->container->back->setPosition(26, Main::SCREEN_HEIGHT - 15);
+		this->container->back->setPosition(26, Main::SCREEN_HEIGHT - 18);
 		this->addChild(this->container->back);
 		this->addChild(this->container->stars);
 		//this->printNodePos(this->container->stars);
@@ -829,177 +830,177 @@ namespace screens
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeGolem1"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeGolem1", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costGolemUpgrade1);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costGolemUpgrade1);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeGolem2"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeGolem2", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costGolemUpgrade2);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costGolemUpgrade2);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeGolem3"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeGolem3", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costGolemUpgrade3);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costGolemUpgrade3);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeGolem4"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeGolem4", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costGolemUpgrade4);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costGolemUpgrade4);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeGolem5"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeGolem5", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costGolemUpgrade5);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costGolemUpgrade5);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeIceman1"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeIceman1", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costIcemanUpgrade1);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costIcemanUpgrade1);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeIceman2"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeIceman2", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costIcemanUpgrade2);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costIcemanUpgrade2);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeIceman3"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeIceman3", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costIcemanUpgrade3);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costIcemanUpgrade3);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeIceman4"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeIceman4", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costIcemanUpgrade4);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costIcemanUpgrade4);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeIceman5"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeIceman5", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costIcemanUpgrade5);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costIcemanUpgrade5);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeAir1"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeAir1", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costAirUpgrade1);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costAirUpgrade1);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeAir2"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeAir2", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costAirUpgrade2);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costAirUpgrade2);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeAir3"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeAir3", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costAirUpgrade3);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costAirUpgrade3);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeAir4"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeAir4", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costAirUpgrade4);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costAirUpgrade4);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeAir5"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeAir5", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costAirUpgrade5);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costAirUpgrade5);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeFire1"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeFire1", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costFireUpgrade1);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costFireUpgrade1);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeFire2"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeFire2", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costFireUpgrade2);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costFireUpgrade2);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeFire3"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeFire3", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costFireUpgrade3);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costFireUpgrade3);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeFire4"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeFire4", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costFireUpgrade4);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costFireUpgrade4);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeFire5"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeFire5", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costFireUpgrade5);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costFireUpgrade5);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeIce1"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeIce1", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costIceUpgrade1);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costIceUpgrade1);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeIce2"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeIce2", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costIceUpgrade2);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costIceUpgrade2);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeIce3"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeIce3", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costIceUpgrade3);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costIceUpgrade3);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeIce4"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeIce4", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costIceUpgrade4);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costIceUpgrade4);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeIce5"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeIce5", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costIceUpgrade5);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costIceUpgrade5);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeStone1"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeStone1", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costStoneUpgrade1);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costStoneUpgrade1);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeStone2"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeStone2", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costStoneUpgrade2);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costStoneUpgrade2);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeStone3"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeStone3", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costStoneUpgrade3);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costStoneUpgrade3);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeStone4"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeStone4", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costStoneUpgrade4);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costStoneUpgrade4);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeStone5"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeStone5", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costStoneUpgrade5);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costStoneUpgrade5);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeLevin1"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeLevin1", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costLevinUpgrade1);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costLevinUpgrade1);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeLevin2"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeLevin2", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costLevinUpgrade2);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costLevinUpgrade2);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeLevin3"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeLevin3", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costLevinUpgrade3);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costLevinUpgrade3);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeLevin4"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeLevin4", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costLevinUpgrade4);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costLevinUpgrade4);
 					}
 					if (Main::mainClass->saveBoxClass->getBoolValue("upgradeLevin5"))
 					{
 						Main::mainClass->saveBoxClass->setValue("upgradeLevin5", false);
-						Main::mainClass->saveBoxClass->setValue("stars", stars + this->costLevinUpgrade5);
+						Main::mainClass->saveBoxClass->setValue("stars", stars += this->costLevinUpgrade5);
 					}
 					this->upgradeUpdate();
 				}
