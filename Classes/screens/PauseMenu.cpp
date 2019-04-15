@@ -151,13 +151,11 @@ namespace screens
         }
         else if (this->closeFlag)
         {
-            if (AudioUtil::musicOn)
-            { 
-                if (AudioUtil::getMusicVolume() < this->startMusicVolume )
-                {
-                    AudioUtil::setMusicVolume(AudioUtil::getMusicVolume() - this->startMusicVolume * 0.035 );
-                }
-            }
+ 
+            if (AudioUtil::getMusicVolume() < this->startMusicVolume )
+            {
+                AudioUtil::setMusicVolume(AudioUtil::getMusicVolume() + this->startMusicVolume * 0.035 );
+            } 
             if (this->container->scroll->currentFrame > 1)
             {
                 this->container->scroll->gotoAndStop((this->container->scroll->currentFrame - 1));
@@ -537,6 +535,8 @@ namespace screens
 			{
 				if (this->container->scrollBtnResume->currentFrame == 3)
 				{
+					if (AudioUtil::soundOn && this->startMusicVolume > 0)
+						AudioUtil::setMusicVolume(startMusicVolume);
 					this->close();
 				}
 			}
@@ -551,6 +551,8 @@ namespace screens
 					this->manageListeners("off");
 					//this->world->manageListeners("on");
 					//this->world->menuObject = NULL;
+					if (AudioUtil::soundOn && this->startMusicVolume > 0)
+							AudioUtil::setMusicVolume(startMusicVolume);
 					this->world->removeChild(this);
 					Main::mainClass->addNewScreen("World");
 					return;
@@ -564,6 +566,8 @@ namespace screens
 			{
 				if (this->container->scrollBtnExit->currentFrame == 3)
 				{
+					if (AudioUtil::soundOn && this->startMusicVolume > 0)
+						AudioUtil::setMusicVolume(startMusicVolume);
 					this->manageListeners("off");
 					//this->world->manageListeners("on");
 					//this->world->menuObject = NULL;

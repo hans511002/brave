@@ -45,7 +45,7 @@ namespace screens
 	WinSurvMenu_mc::WinSurvMenu_mc() :WinMenuBase("WinSurvMenu_mc")
 	{
 	}
-	Victory::Victory()
+	Victory::Victory(): startMusicVolume(0)
 	{
 		//this->addEventListener(Event.ADDED_TO_STAGE, this->init);
 		init();
@@ -201,19 +201,19 @@ namespace screens
 			{
 				if (AudioUtil::musicOn)
 				{
+					if (startMusicVolume == 0)
+						startMusicVolume = AudioUtil::getMusicVolume();
 					if (AudioUtil::getMusicVolume() > 0)
-					{
 						AudioUtil::setMusicVolume(AudioUtil::getMusicVolume() - 0.1f);
-					}
 					else if (AudioUtil::getMusicVolume() != 0)
-					{
 						AudioUtil::setMusicVolume(0.0f);
-					}
 				}
 			}
 			else
 			{
 				this->firstSoundPlay = true;
+				if (this->startMusicVolume > 0)
+					AudioUtil::setMusicVolume(startMusicVolume);
 				AudioUtil::stopAll();
 				AudioUtil::playSound("Snd_menu_victory.mp3");
 			}

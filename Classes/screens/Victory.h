@@ -51,7 +51,7 @@ namespace screens
 		int starsFlag;
 		World * world;
 		bool firstSoundPlay;
-
+		float startMusicVolume;
 		Victory();
 		virtual bool init();
 		virtual void enterFrameHandler(float dt);
