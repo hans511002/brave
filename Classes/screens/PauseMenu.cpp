@@ -69,6 +69,7 @@ namespace screens
 		float sy = Main::SCREEN_HEIGHT / size.height;
 		float sx = (size.width - Main::SCREEN_WIDTH) / 2;
 		//this->container->setPosition(0, Main::SCREEN_WIDTH);//600
+		this->setPosition(this->world->convertToNodeSpace(Vec2(0,0)));
 		this->container->setScaleY(sy);
         this->container->stop();
         this->container->scroll->stop();

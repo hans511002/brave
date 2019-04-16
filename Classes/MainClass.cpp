@@ -86,7 +86,6 @@ bool Main::init()
 
 void Main::addNewScreen(const string & param1)
 {
-	AudioUtil::stopMusic(true);
     if (this->middleScreenClass)
     {
         if (param1 == "StartMenu")

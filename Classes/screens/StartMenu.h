@@ -80,7 +80,7 @@ namespace screens
 		int waitCounter;
 		int syncLoginCounter;
 		Hint_mc * syncHint;
-		static bool firstMusicPlay;
+		bool firstMusicPlay;
 
 		float mouseX, mouseY;
 

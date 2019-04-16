@@ -2120,7 +2120,8 @@ namespace engine {
         this->container->pauseOpenFlag = false;
         this->container->pauseCloseFlag = true;
         this->world->menuObject = new PauseMenu ();
-        this->world->addChild (this->world->menuObject, 10);
+        
+		this->world->addChild (this->world->menuObject, 10);
     }// end function
 
     void WorldInterface::addFastPause () {

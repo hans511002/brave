@@ -62,6 +62,7 @@ namespace sys
 		gameSave5->SetObject();
 		gameSave6->SetObject();
 		gameSave = gameSave1;
+		checkSaves(1);
 		//SetValueByPointer(d, "/project", "RapidJSON");
 		//SetValueByPointer(d, "/stars", 10);
 		//if (Value* stars = GetValueByPointer(d, "/stars"))

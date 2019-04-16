@@ -4,7 +4,6 @@
 
 namespace screens
 {  
-	bool StartMenu::firstMusicPlay = false;
     StartMenu_mc::StartMenu_mc():MovieClip("screen","StartMenu_mc","StartMenu_mc")
     { 
 		start = this->createMovieClipSub("start",true);
@@ -63,7 +62,7 @@ namespace screens
         return;
     }// end function
 
-    StartMenu::StartMenu():page(1),question(0),loginFlag1(0),waitCounter(0),syncLoginCounter(0), syncHint(NULL)
+    StartMenu::StartMenu():page(1),question(0),loginFlag1(0),waitCounter(0),syncLoginCounter(0), syncHint(NULL), firstMusicPlay(false)
     {
         //this->addEventListener(Event.ADDED_TO_STAGE, this->init);
         return;
@@ -114,12 +113,12 @@ namespace screens
             //this->container->setVisible(false);
             this->manageListeners("on");
         }
-        if (!StartMenu::firstMusicPlay)
+        if (!this->firstMusicPlay)
         {
-            StartMenu::firstMusicPlay = true;
+			this->firstMusicPlay = true;
 			AudioUtil::playMusic("Music_menu_main.mp3");
         }
-        if (Main::mainClass->lastClass == "LevelsMenu")
+        if (Main::mainClass->lastClass == "LevelsMenu" && !Main::releaseTest)
         {
             this->container->gotoAndStop(53);
             if (Main::mainClass->saveBoxClass->getStringValue("type") == "site")
@@ -1324,6 +1323,11 @@ namespace screens
 			{
 				if (targetName == "startCase")
 				{
+					if (Main::releaseTest) {
+						Main::mainClass->saveBoxClass->checkSaves(1);
+						Main::mainClass->addNewScreen("LevelsMenu");
+						return;
+					}
 					if (this->container->start->currentFrame == 3)
 					{
 						this->page = 2;

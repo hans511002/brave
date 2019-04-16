@@ -105,6 +105,7 @@ namespace screens {
 		this->container->bookBookCase2 = this->container->book->createCase("bookCase2");
 		if (Main::releaseTest) {
 			this->container->book->setVisible(false);
+			this->container->achieves->setVisible(false);
 		}
 		this->container->freeStars = upbook->createMovieClipSub("freeStars");
 		this->container->freeStarsCont = this->container->freeStars->createMovieClipSub("cont");
@@ -213,7 +214,7 @@ namespace screens {
                     this->printNodePos(this->difficultyLevel);
                 } else {
                     this->firstMusicPlay = true;
-                    if (AudioUtil::nowMusic != "Music_menu_main.mp3")
+                    if (AudioUtil::nowMusic != "Music_menu_main.mp3" || !AudioUtil::isPlayMusic())
                         AudioUtil::playMusic("Music_menu_main.mp3");
                 }
             }
