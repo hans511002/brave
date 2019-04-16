@@ -184,10 +184,6 @@ namespace screens
                         this->container->setMouseEnabled(true);
                         this->container->back->setVisible(false);
                         this->autoguidersButtons();
-						if (Main::releaseTest) {
-							this->printNodePos(this->container->start->container);
- 							this->container->start->container->setPosition(this->container->start->container->getPosition() + Vec2(0, 40));
-						}
                     }
                 }
                 else if (this->container->currentFrame > 28)
