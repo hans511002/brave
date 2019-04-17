@@ -782,6 +782,7 @@ namespace std
 	};
 	void BaseNode::drawRange()
 	{
+		if(!Main::releaseTest)
 		std::drawRange(this, Color4F::GREEN);
 		//DrawNode* drawNode = DrawNode::create();
 		//this->addChild(drawNode);
@@ -795,7 +796,7 @@ namespace std
 	};
 	void BaseSprite::drawRange()
 	{
-		std::drawRange(this, Color4F::YELLOW);
+		if (!Main::releaseTest)std::drawRange(this, Color4F::YELLOW);
 		//DrawNode* drawNode = DrawNode::create();
 		//this->addChild(drawNode);
 		//Vec2 pos = this->getPosition();
@@ -808,7 +809,7 @@ namespace std
 	};
 	void BaseLayer::drawRange()
 	{
-		std::drawRange(this, Color4F::YELLOW);
+		if (!Main::releaseTest)std::drawRange(this, Color4F::YELLOW);
 		//DrawNode* drawNode = DrawNode::create();
 		//this->addChild(drawNode);
 		//Vec2 pos = this->getPosition();

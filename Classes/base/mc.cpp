@@ -1298,7 +1298,7 @@ namespace engine
 			//std::setAnchorPoint(this, 0.5);
 			//std::changeAnchorPoint(this, 0.5); 
 			//this->setMouseEnabled(true);
-			if (_draw)drawRange();
+			if (_draw && !Main::releaseTest)drawRange();
  		}
 		return this->isReady;
 	};

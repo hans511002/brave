@@ -23,7 +23,7 @@ namespace engine
 		{
 			SET_NODETYPENAME();
 			std::changeAnchorPoint(this, 0.5);
-			this->drawRange();
+			if (!Main::releaseTest)this->drawRange();
 		}
 		TowerMenu_mc::TowerMenu_mc() : MovieClip("tower/", "TowerMenu_mc", "TowerMenu_mc"){
 			SET_NODETYPENAME();
