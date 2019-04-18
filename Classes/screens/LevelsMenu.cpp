@@ -44,7 +44,7 @@ namespace screens {
             container(0), frameCounter(0), newLevel(0), newLevelGr(0), roadOff(false),
             newStarsForLevel(0), mouseMoveTarget(0), mouseDownTarget(0), openLevel(0),
             upgradesClass(0), achievementsClass(0), firstMusicPlay(0),
-            difficultyLevel(0) //, encyclopediaClass(0),
+            difficultyLevel(0), training_1(0), training_9(0) //, encyclopediaClass(0),
     {
         //this->listOfLevels = [];
         //this->listOfAnimation = [];

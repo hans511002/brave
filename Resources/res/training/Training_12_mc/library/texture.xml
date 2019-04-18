@@ -1,0 +1,23 @@
+<TextureAtlas name="Training_12_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 5191" x="85" y="44" width="84" height="43"/>
+ <SubTexture name="Shape/shape 5193" x="170" y="44" width="84" height="43"/>
+ <SubTexture name="Shape/shape 5195" x="0" y="0" width="84" height="43"/>
+ <SubTexture name="Shape/shape 5197" x="85" y="88" width="84" height="43"/>
+ <SubTexture name="Shape/shape 5199" x="170" y="88" width="84" height="43"/>
+ <SubTexture name="Shape/shape 5201" x="0" y="176" width="84" height="43"/>
+ <SubTexture name="Shape/shape 5204" x="0" y="44" width="84" height="43"/>
+ <SubTexture name="Shape/shape 5206" x="85" y="176" width="84" height="43"/>
+ <SubTexture name="Shape/shape 5208" x="0" y="132" width="84" height="43"/>
+ <SubTexture name="Shape/shape 5210" x="0" y="88" width="84" height="43"/>
+ <SubTexture name="Shape/shape 5212" x="170" y="176" width="84" height="43"/>
+ <SubTexture name="Shape/shape 5214" x="170" y="132" width="84" height="43"/>
+ <SubTexture name="Shape/shape 5216" x="85" y="0" width="84" height="43"/>
+ <SubTexture name="Shape/shape 5218" x="170" y="0" width="84" height="43"/>
+ <SubTexture name="Shape/shape 5220" x="85" y="132" width="84" height="43"/>
+ <SubTexture name="__dbTextures/Training_12_mc/Layer 2_5" x="49" y="220" width="15" height="4"/>
+ <SubTexture name="补间 19" x="0" y="220" width="48" height="12"/>
+ <SubTexture name="补间 23" x="162" y="220" width="47" height="11"/>
+ <SubTexture name="补间 18" x="114" y="232" width="47" height="11"/>
+ <SubTexture name="补间 9" x="65" y="220" width="48" height="11"/>
+ <SubTexture name="补间 10" x="114" y="220" width="47" height="11"/>
+</TextureAtlas>

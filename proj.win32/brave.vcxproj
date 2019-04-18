@@ -282,6 +282,8 @@ xcopy "$(ProjectDir)..\Resources\test" "$(OutDir)\Resources\test" /D /E /I /F /Y
     <ClCompile Include="..\Classes\test\CoreElement.cpp" />
     <ClCompile Include="..\Classes\test\DragHelper.cpp" />
     <ClCompile Include="..\Classes\test\HelloWorldScene.cpp" />
+    <ClCompile Include="..\Classes\training\Training.cpp" />
+    <ClCompile Include="..\Classes\training\Training_1.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -437,6 +439,8 @@ xcopy "$(ProjectDir)..\Resources\test" "$(OutDir)\Resources\test" /D /E /I /F /Y
     <ClInclude Include="..\Classes\test\ReplaceAnimation.h" />
     <ClInclude Include="..\Classes\test\ReplaceSkin.h" />
     <ClInclude Include="..\Classes\test\ReplaceSlotDisplay.h" />
+    <ClInclude Include="..\Classes\training\training.h" />
+    <ClInclude Include="..\Classes\training\Training_1.h" />
     <ClInclude Include="..\cocos2d\external\tinyxml2\tinyxml2.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>

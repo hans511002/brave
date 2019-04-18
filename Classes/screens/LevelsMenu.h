@@ -11,6 +11,9 @@ using namespace engine;
 #include "DifficultyLevel.h"   
 #include "Upgrades.h"   
 #include "Achievements.h"   
+#include "training/Training_1.h"   
+#include "training/Training_9.h"   
+using namespace training;
 
 namespace screens
 {
@@ -96,8 +99,8 @@ namespace screens
         Achievements * achievementsClass;
         bool firstMusicPlay;
         DifficultyLevel * difficultyLevel;
-        //public var training_1:Training_1;
-        //public var training_9:Training_9;
+		Training_1* training_1;
+		Training_9 *training_9;
  
 
         LevelsMenu();

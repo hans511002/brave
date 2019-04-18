@@ -1,0 +1,22 @@
+<TextureAtlas name="Training_4_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 2308" x="132" y="0" width="65" height="47"/>
+ <SubTexture name="Shape/shape 2310" x="132" y="147" width="65" height="47"/>
+ <SubTexture name="Shape/shape 2312" x="132" y="196" width="65" height="47"/>
+ <SubTexture name="Shape/shape 2314" x="132" y="49" width="65" height="47"/>
+ <SubTexture name="Shape/shape 2316" x="0" y="147" width="65" height="47"/>
+ <SubTexture name="Shape/shape 2318" x="0" y="0" width="65" height="47"/>
+ <SubTexture name="Shape/shape 2322" x="66" y="196" width="65" height="47"/>
+ <SubTexture name="Shape/shape 2324" x="66" y="49" width="65" height="47"/>
+ <SubTexture name="Shape/shape 2326" x="0" y="49" width="65" height="47"/>
+ <SubTexture name="Shape/shape 2328" x="0" y="98" width="65" height="47"/>
+ <SubTexture name="Shape/shape 2329" x="66" y="98" width="65" height="47"/>
+ <SubTexture name="Shape/shape 2331" x="66" y="147" width="65" height="47"/>
+ <SubTexture name="Shape/shape 2334" x="0" y="196" width="65" height="47"/>
+ <SubTexture name="Shape/shape 2336" x="66" y="0" width="65" height="47"/>
+ <SubTexture name="Shape/shape 2338" x="132" y="98" width="65" height="47"/>
+ <SubTexture name="__dbTextures/Training_4_mc/Layer 2_5" x="235" y="0" width="11" height="8"/>
+ <SubTexture name="__dbTextures/Training_4_mc/Layer 2_9" x="198" y="0" width="36" height="25"/>
+ <SubTexture name="__dbTextures/Training_4_mc/Layer 2_11" x="198" y="52" width="35" height="25"/>
+ <SubTexture name="__dbTextures/Training_4_mc/Layer 2_12" x="198" y="78" width="35" height="25"/>
+ <SubTexture name="__dbTextures/Training_4_mc/Layer 2_22" x="198" y="26" width="35" height="25"/>
+</TextureAtlas>
