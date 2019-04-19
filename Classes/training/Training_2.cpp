@@ -1,52 +1,39 @@
-﻿package training
-{
-    import engine.*;
-    import flash.display.*;
-    import flash.events.*;
-    import flash.geom.*;
+﻿#include "Training_2.h"   
+#include "engine/World.h"   
 
-    public class Training_2 extends Sprite
+using namespace engine;
+
+namespace training
+{  
+    Training_2_mc::Training_2_mc() :MovieClip("training", "Training_2_mc", "Training_2_mc")
+     {
+
+     };
+    Training_2::Training_2()
     {
-        public var i:int;
-        public var j:int;
-        public var tempObject:Object;
-        public var container:Training_2_mc;
-        public var frameCounter:int = 0;
-        public var openFlag:Boolean = true;
-        public var closeFlag:Boolean;
-        public var dead:Boolean;
-        public var world:World;
-        public var autoguidesMouse_pt:Point;
-        public var autoguidesObject:Object;
-        public var autoguidesObject_pt:Point;
-        public var autoguidesObjectWidth:Number;
-        public var autoguidesObjectHeight:Number;
+        //this.addEventListener(Event.ADDED_TO_STAGE, this.init);
+        return;
+    }// end function
 
-        public function Training_2()
-        {
-            this.addEventListener(Event.ADDED_TO_STAGE, this.init);
-            return;
-        }// end function
+    bool Training_2_mc::init()  
+    {
+        //this.removeEventListener(Event.ADDED_TO_STAGE, this.init);
+        //this.addEventListener(Event.REMOVED_FROM_STAGE, this.reInit);
+        //this.addEventListener(Event.ENTER_FRAME, this.enterFrameHandler);
+        //this.addEventListener(MouseEvent.MOUSE_MOVE, this.mouseMoveHandler);
+        //this.addEventListener(MouseEvent.MOUSE_DOWN, this.mouseDownHandler);
+        //this.addEventListener(MouseEvent.MOUSE_UP, this.mouseUpHandler);
+        //this.world = Main.mainClass.worldClass;
+        //this.container = new Training_2_mc();
+        //this.container.x = Main.SCREEN_WIDTH_HALF;
+        //this.container.y = Main.SCREEN_HEIGHT_HALF;
+        //this.contStops();
+        //this.addChild(this.container);
+        //Sounds.instance.playSound("snd_menu_pageScrolling");
+        return true;
+    }// end function
 
-        public function init(event:Event) : void
-        {
-            this.removeEventListener(Event.ADDED_TO_STAGE, this.init);
-            this.addEventListener(Event.REMOVED_FROM_STAGE, this.reInit);
-            this.addEventListener(Event.ENTER_FRAME, this.enterFrameHandler);
-            this.addEventListener(MouseEvent.MOUSE_MOVE, this.mouseMoveHandler);
-            this.addEventListener(MouseEvent.MOUSE_DOWN, this.mouseDownHandler);
-            this.addEventListener(MouseEvent.MOUSE_UP, this.mouseUpHandler);
-            this.world = Main.mainClass.worldClass;
-            this.container = new Training_2_mc();
-            this.container.x = Main.SCREEN_WIDTH_HALF;
-            this.container.y = Main.SCREEN_HEIGHT_HALF;
-            this.contStops();
-            this.addChild(this.container);
-            Sounds.instance.playSound("snd_menu_pageScrolling");
-            return;
-        }// end function
-
-        public function enterFrameHandler(event:Event) : void
+        void Training_2_mc::enterFrameHandler(float dt)  
         {
             if (this.frameCounter < 30)
             {
@@ -96,7 +83,7 @@
             return;
         }// end function
 
-        public function mouseMoveHandler(param1) : void
+        void Training_2_mc::mouseMoveHandler(cocos2d::EventMouse * e) 
         {
             if (param1.target.name == "okCase")
             {
@@ -113,7 +100,7 @@
             return;
         }// end function
 
-        public function mouseDownHandler(event:MouseEvent) : void
+        void Training_2_mc::mouseDownHandler(cocos2d::EventMouse * e)  
         {
             if (event.target.name == "okCase")
             {
@@ -126,7 +113,7 @@
             return;
         }// end function
 
-        public function mouseUpHandler(event:MouseEvent) : void
+        void Training_2_mc::mouseUpHandler(cocos2d::EventMouse * e)  
         {
             if (event.target.name == "okCase")
             {
@@ -143,7 +130,7 @@
             return;
         }// end function
 
-        public function contStops() : void
+        void Training_2_mc::contStops()  
         {
             this.container.stop();
             this.container.cont.stop();
@@ -155,28 +142,9 @@
             this.container.cont.mouseEnabled = _loc_1;
             return;
         }// end function
+ 
 
-        public function autoguidersButtons() : void
-        {
-            this.autoguidesMouse_pt = new Point(this.mouseX, this.mouseY);
-            this.autoguidesObject = null;
-            this.autoguidesObject_pt = this.container.cont.btnOk.localToGlobal(new Point(this.container.cont.btnOk.okCase.x, this.container.cont.btnOk.okCase.y));
-            this.autoguidesObjectWidth = this.container.cont.btnOk.okCase.width / 2;
-            this.autoguidesObjectHeight = this.container.cont.btnOk.okCase.height / 2;
-            if (this.autoguidesMouse_pt.x >= this.autoguidesObject_pt.x - this.autoguidesObjectWidth && this.autoguidesMouse_pt.x <= this.autoguidesObject_pt.x + this.autoguidesObjectWidth && this.autoguidesMouse_pt.y >= this.autoguidesObject_pt.y - this.autoguidesObjectHeight && this.autoguidesMouse_pt.y <= this.autoguidesObject_pt.y + this.autoguidesObjectHeight)
-            {
-                this.autoguidesObject = this.container.cont.btnOk.okCase;
-            }
-            if (this.autoguidesObject)
-            {
-                this.tempObject = new Object();
-                this.tempObject.target = this.autoguidesObject;
-                this.mouseMoveHandler(this.tempObject);
-            }
-            return;
-        }// end function
-
-        public function close() : void
+        void Training_2_mc::close() 
         {
             if (!this.closeFlag)
             {
@@ -189,7 +157,7 @@
             return;
         }// end function
 
-        public function kill() : void
+        void Training_2_mc::kill()  
         {
             if (!this.dead)
             {
@@ -201,16 +169,7 @@
             }
             return;
         }// end function
-
-        public function reInit(event:Event) : void
-        {
-            this.removeEventListener(Event.REMOVED_FROM_STAGE, this.reInit);
-            this.removeEventListener(Event.ENTER_FRAME, this.enterFrameHandler);
-            this.removeEventListener(MouseEvent.MOUSE_MOVE, this.mouseMoveHandler);
-            this.removeEventListener(MouseEvent.MOUSE_DOWN, this.mouseDownHandler);
-            this.removeEventListener(MouseEvent.MOUSE_UP, this.mouseUpHandler);
-            return;
-        }// end function
+ 
 
     }
 }
