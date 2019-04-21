@@ -8,7 +8,7 @@ using namespace engine;
 namespace training
 {
 	struct Training_1_mc : public MovieClip {
-		Training_1_mc() :MovieClip("training", "Training_1_mc", "Training_1_mc") {};
+		Training_1_mc() ;
 	};
 	class Training_1 : public Training
 	{
@@ -19,11 +19,11 @@ namespace training
 
 		Training_1();
 
-		bool init();
+		virtual bool init();
 
-		void enterFrameHandler(float dt);
+		virtual void enterFrameHandler(float dt);
 
-		void kill();
+		virtual void kill();
 
 		//public function reInit(event:Event) : void
 		//{

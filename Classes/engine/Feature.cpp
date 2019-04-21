@@ -25,7 +25,7 @@
 #include "engine/casts/Cast.h"
 #include "engine/level/Level.h"
 #include "engine/level/Level1_mc.h"
-
+#include "training/Training_6.h"
 
 namespace engine
 {
@@ -601,11 +601,11 @@ namespace engine
 							{
 								if (complexityLevel < 4)
 								{
-									//if (!this->world->trainingClass)
-									//{
-									//	this->world->trainingClass = new Training_6();
-									//	this->world->addChild(this->world->trainingClass);
-									//}
+									if (!this->world->trainingClass)
+									{
+										this->world->trainingClass = new training::Training_6();
+										this->world->addChild(this->world->trainingClass);
+									}
 								}
 							}
 						}

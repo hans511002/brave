@@ -1579,6 +1579,9 @@ namespace engine
 				//this->lastE = event;
 				this->closeMenu();
 			}
+			if (this->training_12) {
+				this->training_12->mouseDownHandler(e);
+			}
 			return;
 		}// end function
 

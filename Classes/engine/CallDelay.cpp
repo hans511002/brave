@@ -1,7 +1,8 @@
 #include "CallDelay.h" 
 #include "MainClass.h"
 #include "engine/World.h"
- 
+#include "training/Training_11.h" 
+
 namespace engine
 {
      
@@ -30,9 +31,14 @@ namespace engine
             {
                 if (this->type1 > 1 && this->type1 < 5)
                 {
-                    //this->tempObject = new Training_11(this->type1);
-                    //this->world->worldInterface->addChild(this->tempObject);
-                }
+					if (!Main::mainClass->saveBoxClass->getBoolValue("Training_11", type1-1))
+					{ 
+						training::Training_11 *training_11 = new training::Training_11(this->type1);
+						this->world->worldInterface->addChild(training_11);
+						this->world->trainings.push(training_11);
+						Main::mainClass->saveBoxClass->setValue("Training_11", type1-1, true);
+					}
+				}
 				NewElement_mc * tempObject = new NewElement_mc();
                 tempObject->stop();
                 tempObject->newElementCase->stop();
@@ -41,6 +47,7 @@ namespace engine
                 tempObject->newElementCase->setMouseEnabled(true);
                 this->world->worldInterface->addChild(tempObject);
                 this->world->worldInterface->listOfNewEnemies.push(tempObject);
+
                 this->world->worldInterface->newEnemyUpdate();
                 AudioUtil::playSoundWithVol("snd_world_newEnemy.mp3", 0.9f);
             }
@@ -55,7 +62,6 @@ namespace engine
         {
             this->dead = true;
 			this->world->removeChild(this);//this->world->removeClasses(this);
-             
         }
         return;
     }// end function

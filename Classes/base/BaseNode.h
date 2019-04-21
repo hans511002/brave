@@ -93,8 +93,8 @@ namespace std
 		string nodeType;
 		virtual string getTypeName();
 		inline void setNodeType(string nt) { nodeType = nt; };
-		inline virtual bool hitTest(const Vec2 &pt) { return std::hitTest(ISTYPE(Node,this),pt,true,true); };
-		inline virtual bool hitTest(cocos2d::EventMouse* event) { return std::hitTest(ISTYPE(Node, this), event, true, true); };
+		inline virtual bool hitTest(const Vec2 &pt, bool parentCheck=false) { return std::hitTest(ISTYPE(Node,this),pt,true, parentCheck); };
+		inline virtual bool hitTest(cocos2d::EventMouse* event, bool parentCheck = false) { return std::hitTest(ISTYPE(Node, this), event, true, parentCheck); };
 		bool mouseChildren;
 		bool mouseEnabled;
 		bool mouseMoveFlag;
@@ -222,8 +222,8 @@ namespace std
 		//virtual string getTypeName();
         virtual bool init();
         virtual bool atStage();
-		virtual bool hitTest(const Vec2 &pt);
-		virtual bool hitTest(cocos2d::EventMouse* event);
+		virtual bool hitTest(const Vec2 &pt, bool parentCheck=false);
+		virtual bool hitTest(cocos2d::EventMouse* event, bool parentCheck=false);
         inline Vec2 localToGlobal(const Vec2 &  pos) { return this->convertToWorldSpace(pos); };
         inline Vec2 globalToLocal(const Vec2 &  pos) { return this->convertToNodeSpaceAR(pos); };
 
@@ -318,11 +318,11 @@ namespace std
 	class BaseSprite :public   cocos2d::Sprite, public EventNode
 	{
 	protected:
-		inline BaseSprite() {};
 	public:
 		bool init();
 		bool atStage();
 		//void mouseDownHandler(cocos2d::EventMouse *event);
+		BaseSprite();
 		BaseSprite(const string &file);
 		BaseSprite(cocos2d::Sprite* sprite);
 		virtual float getWidth();

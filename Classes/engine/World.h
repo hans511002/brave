@@ -8,7 +8,7 @@
 #include "base/Indexes.h"
 #include "WorldInterface.h"
 #include "screens/Screen.h"   
-
+#include "training/Training.h" 
 //#include "animation/Hint.h"
 
 namespace engine
@@ -78,9 +78,14 @@ namespace engine
 		Common::Array<BaseNode *> listOfIndexes3 ;
         casts::Cast* cast;
         casts::Map * map; //public var map : Map;
-        BaseNode * menuObject;//public var menuObject : Object;//՝�� �ˠѧϰ
+        BaseNode * menuObject;//public var menuObject : Object;//
         //public var sortIndex : Array;
 
+
+		Common::Array<training::Training *> trainings;
+		BaseNode * trainingClass;//public var trainingClass : Object;
+
+		
 
         //PointTimer * pointer4;
 		LevelPointer * pointer1;
@@ -100,7 +105,6 @@ namespace engine
         sys::SaveBox * saveBox;
 		towers::Exchange * exchange;//public var exchange : Exchange;
         int portalViewCounter;//: int = 30;
-        BaseNode * trainingClass;//public var trainingClass : Object;
 		Hint_mc* hint;// : Hint_mc;
         float startMusicVolume;//: Number = 0;
         bool bonusMoneyFlag;//: Boolean = true;

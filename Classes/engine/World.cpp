@@ -33,6 +33,9 @@
 #include "screens/Defeat.h"
 #include "screens/Victory.h"
 #include "screens/PreVictory.h"
+#include "training/Training_2.h"
+#include "training/Training_5.h"
+#include "training/Training_92.h"
 
 
 using namespace engine;
@@ -177,31 +180,50 @@ namespace engine {
                 AudioUtil::playMusic("Music_world_beforeBattle.mp3");// (1f);
                 if (complexityLevel < 4) {
                     if (this->nowLevel == 1) {
-                        //this->menuObject = new Training_2();
-                        //this->addChild(this->menuObject);
+						if (!Main::mainClass->saveBoxClass->getBoolValue("Training_2"))
+						{
+							this->menuObject = new training::Training_2();
+							this->addChild(this->menuObject, 99);
+							Main::mainClass->saveBoxClass->setValue("Training_2", true);
+						}
+						//this->menuObject->setZOrder(10);
                         //this->setMouseChildren(true);
                         //this->setMouseEnabled(true);
                     } else if (this->nowLevel >= 2 && this->nowLevel <= 11) {
-                        //this->menuObject = new Training_92(this->nowLevel - 1);
-                        //this->addChild(this->menuObject);
+						if (!Main::mainClass->saveBoxClass->getBoolValue("Training_92", this->nowLevel-1))
+						{ 
+							this->menuObject = new training::Training_92(this->nowLevel - 1);
+							this->addChild(this->menuObject, 99);
+							Main::mainClass->saveBoxClass->setValue("Training_92", this->nowLevel-1, true);
+						}
                         //this->setMouseChildren(true);
                         //this->setMouseEnabled(true);
                     } else if (this->nowLevel == 13) {
-                        //this->menuObject = new Training_92(11);
-                        //this->addChild(this->menuObject);
+						if (!Main::mainClass->saveBoxClass->getBoolValue("Training_92", 11))
+						{ 
+							this->menuObject = new training::Training_92(11);
+							this->addChild(this->menuObject, 99);
+							Main::mainClass->saveBoxClass->setValue("Training_92", 11, true);
+						}
                         //this->setMouseChildren(true);
                         //this->setMouseEnabled(true);
                     }
-                } else if (this->nowLevel == 1) {
-                    //this->menuObject = new Training_92(13);
-                    //this->addChild(this->menuObject);
-                    //this->setMouseChildren(true);
-                    //this->setMouseEnabled(true);
-                } else if (this->nowLevel == 2) {
-                    //this->menuObject = new Training_5(3);
-                    //this->addChild(this->menuObject);
-                    //this->setMouseChildren(true);
-                    //this->setMouseEnabled(true);
+				}
+				else if (this->nowLevel == 1) {
+					if (!Main::mainClass->saveBoxClass->getBoolValue("Training_92", 13))
+					{
+						this->menuObject = new training::Training_92(13);
+						this->addChild(this->menuObject, 99);
+						Main::mainClass->saveBoxClass->setValue("Training_92", 13, true);
+					} 
+				}
+				else if (this->nowLevel == 2) {
+					if (!Main::mainClass->saveBoxClass->getBoolValue("Training_5", 3))
+					{
+						this->menuObject = new training::Training_5(3);
+						this->addChild(this->menuObject, 99);
+						Main::mainClass->saveBoxClass->setValue("Training_92", 3, true);
+					}
                 }
             }
         } else if (this->secondMusicPlay) {
@@ -480,127 +502,142 @@ namespace engine {
     };
 
     //cocos2d::EventMouse* event
-    void World::mouseDownHandler(cocos2d::EventMouse *e) {
+	void World::mouseDownHandler(cocos2d::EventMouse *e) {
 		logInfo("check mouse down: ", getNamePath(e->getCurrentTarget()));
 		if (!globalNode)EventNode::mouseDownHandler(e);
-        cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
-        if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
-        std::MouseEvent me(e);
-        if (!useNodeEvent) {
-            me = std::buildMouseEvent(e);
-        }else if(globalNode && globalNode==this){
-            if (!std::hitTest(e->getCurrentTarget(), e,true,true))return;
-			e->stopPropagation(); 
-        }
-        std::MouseEvent *event = &me;
-        if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_DOWN))return;
-        if (!event->currentTargets.size())
-            event->currentTargets.push(this);
-        Main::mouseX = e->getCursorX();
-        Main::mouseY = e->getCursorY();
-        EventNode::beginTouchPos = Vec2(Main::mouseX, Main::mouseY);
-        while (event->hasNext()) {
-            string targetName = event->target->getName();
-            EventNode::beginTouchNode = event->target;// event->currentTargets.at(0);
-            {
-                logInfo("mouseDownHandler.target", getNamePath(event->target));
-                Vec2 gpos = CONVERT_TO_WORLD_POS(event->target->getParent()->convertToWorldSpace(
-                        event->target->getPosition()));
-                logInfo("mouseDownHandler.target.pos", event->getLocation(),
-                        &event->target->getPosition(), &gpos);
-                logInfo("mouseDownHandler.target.zindex", event->target->getLocalZOrder(), 0);
-            }
-            if (this->getSphere) {
-                this->getSphere->mouseDownHandler(event);
-                if (!this->getSphere)
-                    return;
-            } else {
-                if (this->cast) {
-                    this->cast->mouseDownHandler(event);
-                    if (!this->cast)
-                        return;
-                }
-                if (this->towerMenu) {
-                    this->towerMenu->mouseDownHandler(event);
-                    if (event->processed)
-                        continue;
-                } else if (this->ultraTowerMenu) {
-                    this->ultraTowerMenu->mouseDownHandler(event);
-                    if (event->processed)
-                        continue;
-                } else if (this->exchange) {
-                    this->exchange->mouseDownHandler(event);
-                    if (event->processed)
-                        continue;    //return;
-                }
-            }
-            if (this->buildTowerMenu) {
-                this->buildTowerMenu->mouseDownHandler(event);
-                if (event->processed)
-                    continue;
-            }
-            if (this->decoration) {
-                this->decoration->mouseDownHandler(event);
-                if (event->processed)
-                    continue;
-            }
-            if (!this->cast && targetName == "towerCase")// && event->target->mouseEnabled
-            {
-                Node *parent = event->target->getParent()->getParent()->getParent()->getParent();
-                Tower *tower = ISTYPE(Tower, parent);
-                if (tower->towerType <= 4) {
-                    this->towerMenu = new TowerMenu(tower);
-                    this->addChild(this->towerMenu, 3);
-                    this->towerMenu->init();
-                } else {
-                    this->ultraTowerMenu = new UltraTowerMenu(tower);
-                    this->addChild(this->ultraTowerMenu, 3);
-                    this->ultraTowerMenu->init();
-                }
-                AudioUtil::playSound("Snd_tower_openMenu.mp3");
-            }
-            if (this->worldInterface) {
-                this->worldInterface->mouseDownHandler(event);
-                //if(event->processed)
-                //    continue;
-            }
-            if (!this->getSphere && !this->cast) {
-                if (targetName == "unitCase") {
-                    Node *parent = event->target->getParent()->getParent()->getParent()->getParent();
-                    Unit *unit = ISTYPE(Unit, parent);
-                    this->worldInterface->barInfoManage(unit);
-                } else if (this->selectObject) {
-                    if (ISTYPE(Unit, this->selectObject)) {
-                        this->worldInterface->barInfoManage();
-                    } else if (ISTYPE(TowerMenu, this->selectObject) ||
-                               ISTYPE(UltraTowerMenu, this->selectObject)) {
-                        if (!this->towerMenu && !this->ultraTowerMenu) {
-                            this->worldInterface->barInfoManage();
-                        }
-                    }
-                }
-            } else {
-                if (this->selectObject) {
-                    if (this->selectObject != this->getSphere && this->selectObject != this->cast) {
-                        if (ISTYPE(TowerMenu, this->selectObject)) {
-                            this->worldInterface->barInfoManage();
-                        }
-                    }
-                } else {
-                    this->worldInterface->barInfoManage();
-                }
-                if (this->getSphere) {
-                    if (this->selectObject != this->getSphere) {
-                        this->worldInterface->barInfoManage(this->getSphere);
-                    }
-                } else if (this->cast) {
-                    if (this->selectObject != this->cast) {
-                        this->worldInterface->barInfoManage(this->cast);
-                    }
-                }
-            }
-        }
-    }
+		cocos2d::EventMouse::MouseButton mouseButton = e->getMouseButton();
+		if (mouseButton == cocos2d::EventMouse::MouseButton::BUTTON_RIGHT)return;
+		std::MouseEvent me(e);
+		if (!useNodeEvent) {
+			me = std::buildMouseEvent(e);
+		}
+		else if (globalNode && globalNode == this) {
+			if (!std::hitTest(e->getCurrentTarget(), e, true, true))return;
+			e->stopPropagation();
+		}
+		std::MouseEvent *event = &me;
+		if (preCheckEventTarget(event, EventMouse::MouseEventType::MOUSE_DOWN))return;
+		if (!event->currentTargets.size())
+			event->currentTargets.push(this);
+		Main::mouseX = e->getCursorX();
+		Main::mouseY = e->getCursorY();
+		EventNode::beginTouchPos = Vec2(Main::mouseX, Main::mouseY);
+		while (event->hasNext()) {
+			string targetName = event->target->getName();
+			EventNode::beginTouchNode = event->target;// event->currentTargets.at(0);
+			{
+				logInfo("mouseDownHandler.target", getNamePath(event->target));
+				Vec2 gpos = CONVERT_TO_WORLD_POS(event->target->getParent()->convertToWorldSpace(
+					event->target->getPosition()));
+				logInfo("mouseDownHandler.target.pos", event->getLocation(),
+					&event->target->getPosition(), &gpos);
+				logInfo("mouseDownHandler.target.zindex", event->target->getLocalZOrder(), 0);
+			}
+			if (this->getSphere) {
+				this->getSphere->mouseDownHandler(event);
+				if (!this->getSphere)
+					return;
+			}
+			else {
+				if (this->cast) {
+					this->cast->mouseDownHandler(event);
+					if (!this->cast)
+						return;
+				}
+				if (this->towerMenu) {
+					this->towerMenu->mouseDownHandler(event);
+					if (event->processed)
+						continue;
+				}
+				else if (this->ultraTowerMenu) {
+					this->ultraTowerMenu->mouseDownHandler(event);
+					if (event->processed)
+						continue;
+				}
+				else if (this->exchange) {
+					this->exchange->mouseDownHandler(event);
+					if (event->processed)
+						continue;    //return;
+				}
+			}
+			if (this->buildTowerMenu) {
+				this->buildTowerMenu->mouseDownHandler(event);
+				if (event->processed)
+					continue;
+			}
+			if (this->decoration) {
+				this->decoration->mouseDownHandler(event);
+				if (event->processed)
+					continue;
+			}
+			if (!this->cast && targetName == "towerCase")// && event->target->mouseEnabled
+			{
+				Node *parent = event->target->getParent()->getParent()->getParent()->getParent();
+				Tower *tower = ISTYPE(Tower, parent);
+				if (tower->towerType <= 4) {
+					this->towerMenu = new TowerMenu(tower);
+					this->addChild(this->towerMenu, 3);
+					this->towerMenu->init();
+				}
+				else {
+					this->ultraTowerMenu = new UltraTowerMenu(tower);
+					this->addChild(this->ultraTowerMenu, 3);
+					this->ultraTowerMenu->init();
+				}
+				AudioUtil::playSound("Snd_tower_openMenu.mp3");
+			}
+			if (this->worldInterface) {
+				this->worldInterface->mouseDownHandler(event);
+				//if(event->processed)
+				//    continue;
+			}
+			if (!this->getSphere && !this->cast) {
+				if (targetName == "unitCase") {
+					Node *parent = event->target->getParent()->getParent()->getParent()->getParent();
+					Unit *unit = ISTYPE(Unit, parent);
+					this->worldInterface->barInfoManage(unit);
+				}
+				else if (this->selectObject) {
+					if (ISTYPE(Unit, this->selectObject)) {
+						this->worldInterface->barInfoManage();
+					}
+					else if (ISTYPE(TowerMenu, this->selectObject) ||
+						ISTYPE(UltraTowerMenu, this->selectObject)) {
+						if (!this->towerMenu && !this->ultraTowerMenu) {
+							this->worldInterface->barInfoManage();
+						}
+					}
+				}
+			}
+			else {
+				if (this->selectObject) {
+					if (this->selectObject != this->getSphere && this->selectObject != this->cast) {
+						if (ISTYPE(TowerMenu, this->selectObject)) {
+							this->worldInterface->barInfoManage();
+						}
+					}
+				}
+				else {
+					this->worldInterface->barInfoManage();
+				}
+				if (this->getSphere) {
+					if (this->selectObject != this->getSphere) {
+						this->worldInterface->barInfoManage(this->getSphere);
+					}
+				}
+				else if (this->cast) {
+					if (this->selectObject != this->cast) {
+						this->worldInterface->barInfoManage(this->cast);
+					}
+				}
+			}
+			int i = this->trainings.size() - 1;
+			while (i >= 0) {
+				this->trainings[i]->mouseDownHandler(e);
+				i--;
+			}
+		}
+	}
 
     void World::mouseUpHandler(cocos2d::EventMouse *e) {
 		logInfo("check mouse up: ", getNamePath(e->getCurrentTarget()));

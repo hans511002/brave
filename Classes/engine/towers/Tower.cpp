@@ -6,7 +6,7 @@
 #include "engine/WorldInterface.h"
 #include "engine/towers/UltraTowerMenu.h"
 #include "engine/towers/TowerMenu.h"
-
+#include "training/Training_12.h"
 namespace engine{
 	namespace towers{
 
@@ -768,8 +768,8 @@ namespace engine{
 							{
 								if (!Main::mainClass->saveBoxClass->getBoolValue("firstClickKeepAll"))
 								{
-									//this->world->towerMenu->training_12 = new Training_12();
-									//this->world->towerMenu->addChild(this->world->towerMenu->training_12);
+									this->world->towerMenu->training_12 = new training::Training_12();
+									this->world->towerMenu->addChild(this->world->towerMenu->training_12);
 								}
 							}
 						}

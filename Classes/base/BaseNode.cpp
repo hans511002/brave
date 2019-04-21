@@ -405,6 +405,10 @@ namespace std
 		setNodeType(name);
 		return true;
 	};
+	BaseSprite::BaseSprite() {
+		setNodeType("BaseSprite");
+	};
+
 	BaseSprite::BaseSprite(const string & file)
 	{
 		setNodeType("BaseSprite");
@@ -580,13 +584,13 @@ namespace std
 		}
 		return false;
 	}
-	bool BaseNode::hitTest(const Vec2 &pt)
+	bool BaseNode::hitTest(const Vec2 &pt, bool parentCheck)
 	{ 
-		return std::hitTest(this, pt,true,true);
+		return std::hitTest(this, pt,true, parentCheck);
 	};
-	bool BaseNode::hitTest(cocos2d::EventMouse* event)
+	bool BaseNode::hitTest(cocos2d::EventMouse* event, bool parentCheck)
 	{
-		return std::hitTest(this, event, true, true);
+		return std::hitTest(this, event, true, parentCheck);
 	};
 
 	void  MouseEvent::hitTest(Node *node, bool incSub)

@@ -219,6 +219,20 @@ list(APPEND GAME_SOURCE
     Classes/screens/StartLogo.cpp
     Classes/screens/Screen.cpp
     Classes/screens/PauseMenu.cpp
+    Classes/training/Training.cpp
+    Classes/training/Training_1.cpp
+    Classes/training/Training_2.cpp
+    Classes/training/Training_3.cpp
+    Classes/training/Training_4.cpp
+    Classes/training/Training_5.cpp
+    Classes/training/Training_6.cpp
+    Classes/training/Training_7.cpp
+    Classes/training/Training_8.cpp
+    Classes/training/Training_9.cpp
+    Classes/training/Training_11.cpp
+    Classes/training/Training_12.cpp
+    Classes/training/Training_91.cpp
+    Classes/training/Training_92.cpp
 )
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h

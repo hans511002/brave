@@ -140,6 +140,7 @@ namespace screens
         } 
         this->container->setMouseChildren(false);
         this->container->setMouseEnabled(false);
+		this->container->getArmature()->getBone("start")->offset.y = this->container->getArmature()->getBone("start")->offset.y+ 20;
         return true;
     }// end function
 

@@ -11,7 +11,9 @@
 #include "engine/units/Unit.h"
 #include "InTimer.h"
 #include "CallDelay.h"
-
+#include "training/Training_5.h"
+#include "training/Training_8.h"
+#include "training/Training_92.h"
 
 using namespace engine::units;
 using namespace bezier ;
@@ -301,11 +303,15 @@ namespace engine
 				}
 				else if (this->world->nowLevel == 2)
 				{
-					//if (!this->world->menuObject)
-					//{
-					//    this->world->menuObject = new Training_92(12);
-					//    this->world->addChild(this->world->menuObject);
-					//}
+					if (!this->world->menuObject)
+					{
+						if (!Main::mainClass->saveBoxClass->getBoolValue("Training_92", 12))
+						{ 
+							this->world->menuObject = new training::Training_92(12);
+							this->world->addChild(this->world->menuObject, 99);
+							Main::mainClass->saveBoxClass->setValue("Training_92", 12, true);
+						}
+					}
 				}
 				else if (this->world->nowLevel == 3)
 				{
@@ -320,7 +326,7 @@ namespace engine
 					//if (!this->world->menuObject)
 					//{
 					//    this->world->menuObject = new Training_10();
-					//    this->world->addChild(this->world->menuObject);
+					//    this->world->addChild(this->world->menuObject,99);
 					//}
 				}
 			}
@@ -329,40 +335,56 @@ namespace engine
 				if (this->world->nowLevel == 1)
 				{
 					this->world->worldInterface->blockCastIceman = false;
-					//if (!this->world->menuObject)
-					//{
-					//    this->world->menuObject = new Training_5(6);
-					//    this->world->addChild(this->world->menuObject);
-					//}
+					if (!this->world->menuObject)
+					{
+						if (!Main::mainClass->saveBoxClass->getBoolValue("Training_5", 6))
+						{
+							this->world->menuObject = new training::Training_5(6);
+							this->world->addChild(this->world->menuObject,99);
+							Main::mainClass->saveBoxClass->setValue("Training_5", 6, true);
+						}
+					}
 				}
 			}
 			else if (this->nowWave == 5)
 			{
 				if (this->world->nowLevel == 1)
 				{
-					//if (!this->world->menuObject)
-					//{
-					//    this->world->menuObject = new Training_8(1);
-					//    this->world->addChild(this->world->menuObject);
-					//}
+					if (!this->world->menuObject)
+					{
+						if (!Main::mainClass->saveBoxClass->getBoolValue("Training_8", 1))
+						{
+							this->world->menuObject = new training::Training_8(1);
+							this->world->addChild(this->world->menuObject, 99); 
+							Main::mainClass->saveBoxClass->setValue("Training_8",1, true);
+						}
+					}
 				}
 				else if (this->world->nowLevel == 2)
 				{
 					this->world->worldInterface->blockCastAir = false;
-					//if (!this->world->menuObject)
-					//{
-					//    this->world->menuObject = new Training_5(7);
-					//    this->world->addChild(this->world->menuObject);
-					//}
+					if (!this->world->menuObject)
+					{
+						if (!Main::mainClass->saveBoxClass->getBoolValue("Training_5", 7))
+						{ 
+							this->world->menuObject = new training::Training_5(7);
+							this->world->addChild(this->world->menuObject, 99);
+							Main::mainClass->saveBoxClass->setValue("Training_5", 7, true);
+						}
+					}
 				}
 				else if (this->world->nowLevel == 3)
 				{
 					this->world->worldInterface->blockCastGolem = false;
-					//if (!this->world->menuObject)
-					//{
-					//    this->world->menuObject = new Training_5(5);
-					//    this->world->addChild(this->world->menuObject);
-					//}
+					if (!this->world->menuObject)
+					{
+						if (!Main::mainClass->saveBoxClass->getBoolValue("Training_5", 5))
+						{ 
+							this->world->menuObject = new training::Training_5(5);
+							this->world->addChild(this->world->menuObject, 99);
+							Main::mainClass->saveBoxClass->setValue("Training_5", 5, true);
+						}
+					}
 				}
 			}
 		}

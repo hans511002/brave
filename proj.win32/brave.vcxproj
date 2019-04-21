@@ -82,7 +82,7 @@
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
       <DisableSpecificWarnings>4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -284,6 +284,18 @@ xcopy "$(ProjectDir)..\Resources\test" "$(OutDir)\Resources\test" /D /E /I /F /Y
     <ClCompile Include="..\Classes\test\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\training\Training.cpp" />
     <ClCompile Include="..\Classes\training\Training_1.cpp" />
+    <ClCompile Include="..\Classes\training\Training_11.cpp" />
+    <ClCompile Include="..\Classes\training\Training_12.cpp" />
+    <ClCompile Include="..\Classes\training\Training_2.cpp" />
+    <ClCompile Include="..\Classes\training\Training_3.cpp" />
+    <ClCompile Include="..\Classes\training\Training_4.cpp" />
+    <ClCompile Include="..\Classes\training\Training_5.cpp" />
+    <ClCompile Include="..\Classes\training\Training_6.cpp" />
+    <ClCompile Include="..\Classes\training\Training_7.cpp" />
+    <ClCompile Include="..\Classes\training\Training_8.cpp" />
+    <ClCompile Include="..\Classes\training\Training_9.cpp" />
+    <ClCompile Include="..\Classes\training\Training_91.cpp" />
+    <ClCompile Include="..\Classes\training\Training_92.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -439,8 +451,20 @@ xcopy "$(ProjectDir)..\Resources\test" "$(OutDir)\Resources\test" /D /E /I /F /Y
     <ClInclude Include="..\Classes\test\ReplaceAnimation.h" />
     <ClInclude Include="..\Classes\test\ReplaceSkin.h" />
     <ClInclude Include="..\Classes\test\ReplaceSlotDisplay.h" />
-    <ClInclude Include="..\Classes\training\training.h" />
+    <ClInclude Include="..\Classes\training\Training.h" />
     <ClInclude Include="..\Classes\training\Training_1.h" />
+    <ClInclude Include="..\Classes\training\Training_11.h" />
+    <ClInclude Include="..\Classes\training\Training_12.h" />
+    <ClInclude Include="..\Classes\training\Training_2.h" />
+    <ClInclude Include="..\Classes\training\Training_3.h" />
+    <ClInclude Include="..\Classes\training\Training_4.h" />
+    <ClInclude Include="..\Classes\training\Training_5.h" />
+    <ClInclude Include="..\Classes\training\Training_6.h" />
+    <ClInclude Include="..\Classes\training\Training_7.h" />
+    <ClInclude Include="..\Classes\training\Training_8.h" />
+    <ClInclude Include="..\Classes\training\Training_9.h" />
+    <ClInclude Include="..\Classes\training\Training_91.h" />
+    <ClInclude Include="..\Classes\training\Training_92.h" />
     <ClInclude Include="..\cocos2d\external\tinyxml2\tinyxml2.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>

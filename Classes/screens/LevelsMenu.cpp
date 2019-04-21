@@ -40,8 +40,7 @@ namespace screens {
         return;
     }// end function
 
-    LevelsMenu::LevelsMenu() :
-            container(0), frameCounter(0), newLevel(0), newLevelGr(0), roadOff(false),
+    LevelsMenu::LevelsMenu() :container(0), frameCounter(0), newLevel(0), newLevelGr(0), roadOff(false),
             newStarsForLevel(0), mouseMoveTarget(0), mouseDownTarget(0), openLevel(0),
             upgradesClass(0), achievementsClass(0), firstMusicPlay(0),
             difficultyLevel(0), training_1(0), training_9(0) //, encyclopediaClass(0),
@@ -184,18 +183,18 @@ namespace screens {
             this->container->setMouseChildren(false);
             this->container->setMouseEnabled(false);
         }
-        //if (Main::mainClass->saveBoxClass.gameSave.data.training_9 == 1)
-        //{
-        //    Main::mainClass->saveBoxClass.gameSave.data.training_9 = 2;
-        //    this->training_9 = new Training_9();
-        //    this->addChild(this->training_9);
-        //}
-        //if (Main::mainClass->saveBoxClass.gameSave.data.training_91 > 0)
-        //{
-        //    training_91 = new Training_91(Main::mainClass->saveBoxClass.gameSave.data.training_91);
-        //    this->addChild(training_91);
-        //    Main::mainClass->saveBoxClass.gameSave.data.training_91 = -1;
-        //}
+        if (Main::mainClass->saveBoxClass->getIntValue("training_9") == 1)
+        {
+            Main::mainClass->saveBoxClass->setValue("training_9", 2);
+            this->training_9 = new Training_9();
+            this->addChild(this->training_9);
+        }
+        if (Main::mainClass->saveBoxClass->getIntValue("training_91") > 0)
+        {
+			Training_91 *training_91 = new Training_91(Main::mainClass->saveBoxClass->getIntValue("training_91"));
+            this->addChild(training_91);
+			Main::mainClass->saveBoxClass->setValue("training_91", -1); 
+        }
         return true;
     }// end function
 
@@ -1178,8 +1177,12 @@ namespace screens {
                 }
             } else {
                 if (this->newLevel == 1) {
-                    //this->training_1 = new Training_1();
-                    //this->addChild(this->training_1);
+					if (!Main::mainClass->saveBoxClass->getBoolValue("Training_1"))
+					{
+						this->training_1 = new training::Training_1();
+						this->container->addChild(this->training_1);
+						Main::mainClass->saveBoxClass->setValue("Training_1", true);
+					}
                 }
                 this->listOfLevels[(this->newLevel - 1)]->setAlpha(1);
                 this->newLevel = 0;

@@ -2,6 +2,7 @@
 #define ENGINE_CALLDELAY_H
 #include "BaseHeaders.h" 
 #include "engine/units/Unit.h"
+  
 
 namespace engine
 {
@@ -9,7 +10,6 @@ namespace engine
 	{
 	public:
 		int i;
-		//public var tempObject:Object;
 		string type;
 		int type1;
 		int counter;

@@ -30,13 +30,9 @@ namespace screens
         this->world = Main::mainClass->worldClass;
         this->world->manageListeners("off");
         if (this->world->exchange)
-        {
             this->world->worldInterface->breaking();
-        }
         else if (this->world->getSphere || this->world->cast)
-        {
             this->world->manageMouse("show");
-        }
         this->container = new FastPause_mc();
         this->container->stop();
         this->addChild(this->container);

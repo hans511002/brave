@@ -27,6 +27,7 @@
 #include "screens/PauseMenu.h"
 #include "screens/FastPause.h"
 #include "WorldInterface.h"
+#include "training/Training_5.h"
 
 namespace engine {
     WorldInterface::WorldInterface () : container (NULL), fasterFlag (0), world (NULL), castMask (NULL), lastTime (NULL), sellHint (NULL), getAllHint (NULL),
@@ -217,10 +218,11 @@ namespace engine {
 
         this->addChild (this->castMask);
         this->world->forseIndexFl = true;
-        //测试cast
-        //this->blockCastGolem = true;
-        //this->blockCastIceman = true;
-        //this->blockCastAir = true;
+		if (Main::releaseTest) {  //测试cast
+			this->blockCastGolem = true;
+			this->blockCastIceman = true;
+			this->blockCastAir = true;
+		}
         return true;
     };
 
@@ -3410,14 +3412,23 @@ namespace engine {
                         tempObject->setScaleX (0);
                     }
                 } else if (dynamic_cast<NewEnemy_mc *>(tempObject)) {
+					//if (!Main::mainClass->saveBoxClass->getBoolValue("Training_newEnemy", tempObject->typeUnit))
+					//{ 
                     //this->world->menuObject = new Education("newEnemy", tempObject->typeUnit);
                     //this->world->addChild(this->world->menuObject,5);
+					//	Main::mainClass->saveBoxClass->setValue("Training_newEnemy", tempObject->typeUnit, true);
+					//}
                     this->removeChild (tempObject);
                     this->listOfNewEnemies.splice (this->i, 1);
                 } else if (dynamic_cast<NewElement_mc *>(tempObject)) {
                     if (!this->world->menuObject) {
-                        //this->world->menuObject = new Training_5(tempObject->type);
-                        //this->world->addChild(this->world->menuObject,5);
+						NewElement_mc * ne= ISTYPE(NewElement_mc, tempObject);
+						if (!Main::mainClass->saveBoxClass->getBoolValue("Training_5", ne->type))
+						{ 
+							this->world->menuObject = new training::Training_5(ne->type);
+							this->world->addChild(this->world->menuObject,99);
+							Main::mainClass->saveBoxClass->setValue("Training_5", ne->type, true);
+						}
                     }
                     this->removeChild (tempObject);
                     this->listOfNewEnemies.splice (this->i, 1);

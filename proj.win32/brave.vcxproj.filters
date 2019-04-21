@@ -474,6 +474,42 @@
     <ClCompile Include="..\Classes\training\Training_1.cpp">
       <Filter>src\training</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\training\Training_2.cpp">
+      <Filter>src\training</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\training\Training_3.cpp">
+      <Filter>src\training</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\training\Training_4.cpp">
+      <Filter>src\training</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\training\Training_5.cpp">
+      <Filter>src\training</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\training\Training_6.cpp">
+      <Filter>src\training</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\training\Training_7.cpp">
+      <Filter>src\training</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\training\Training_8.cpp">
+      <Filter>src\training</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\training\Training_9.cpp">
+      <Filter>src\training</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\training\Training_91.cpp">
+      <Filter>src\training</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\training\Training_92.cpp">
+      <Filter>src\training</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\training\Training_12.cpp">
+      <Filter>src\training</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\training\Training_11.cpp">
+      <Filter>src\training</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -938,10 +974,46 @@
     <ClInclude Include="..\Classes\screens\StartLogo.h">
       <Filter>src\screens</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\training\training.h">
+    <ClInclude Include="..\Classes\training\Training_1.h">
       <Filter>src\training</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\training\Training_1.h">
+    <ClInclude Include="..\Classes\training\Training.h">
+      <Filter>src\training</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\training\Training_9.h">
+      <Filter>src\training</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\training\Training_91.h">
+      <Filter>src\training</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\training\Training_92.h">
+      <Filter>src\training</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\training\Training_2.h">
+      <Filter>src\training</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\training\Training_3.h">
+      <Filter>src\training</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\training\Training_4.h">
+      <Filter>src\training</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\training\Training_5.h">
+      <Filter>src\training</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\training\Training_6.h">
+      <Filter>src\training</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\training\Training_7.h">
+      <Filter>src\training</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\training\Training_8.h">
+      <Filter>src\training</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\training\Training_11.h">
+      <Filter>src\training</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\training\Training_12.h">
       <Filter>src\training</Filter>
     </ClInclude>
   </ItemGroup>

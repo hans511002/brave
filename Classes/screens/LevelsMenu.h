@@ -13,6 +13,7 @@ using namespace engine;
 #include "Achievements.h"   
 #include "training/Training_1.h"   
 #include "training/Training_9.h"   
+#include "training/Training_91.h"   
 using namespace training;
 
 namespace screens
@@ -71,8 +72,7 @@ namespace screens
 		MCCase * btnSoundSoundCase;
 
         MovieClipSub * wavesAnimation;
-		std::map<std::string, MovieClipSub *> waves;
-
+		std::map<std::string, MovieClipSub *> waves; 
 		LevelsMenu_mc();
 
     };

@@ -7,42 +7,45 @@ using namespace engine;
 
 namespace training
 {
-    struct Training_2_mc : public MovieClip {
-        Training_2_mc() ;
-    };
-    class Training_1 : public Training
-    {
-    public: 
-        Training_2_mc * container;  
-        Training_2();
+	struct Training_2_mc : public MovieClip {
+		MovieClipSub * cont;
+		MovieClipSub * contBtnOk;
+		MCCase * contBtnOkOkCase; 
+		Training_2_mc();
+	};
+	class Training_2 : public Training
+	{
+	public:
+		Training_2_mc * container;
+		Training_2();
 
-        bool init();
+		virtual  bool init();
 
-        void enterFrameHandler(float dt)  ;
+		virtual  void enterFrameHandler(float dt);
 
-        void mouseMoveHandler(cocos2d::EventMouse * e)  ;
+		virtual void mouseMoveHandler(cocos2d::EventMouse * e);
 
-        void mouseDownHandler(cocos2d::EventMouse * e) ;
+		virtual void mouseDownHandler(cocos2d::EventMouse * e);
 
-        void mouseUpHandler(cocos2d::EventMouse * e);
+		virtual void mouseUpHandler(cocos2d::EventMouse * e);
 
-        void contStops() ;
- 
+		virtual void contStops();
 
-        void close() ;
 
-        void kill() ;
+		virtual void close();
 
-        //void reInit(event:Event) : void
-        //{
-        //    this.removeEventListener(Event.REMOVED_FROM_STAGE, this.reInit);
-        //    this.removeEventListener(Event.ENTER_FRAME, this.enterFrameHandler);
-        //    this.removeEventListener(MouseEvent.MOUSE_MOVE, this.mouseMoveHandler);
-        //    this.removeEventListener(MouseEvent.MOUSE_DOWN, this.mouseDownHandler);
-        //    this.removeEventListener(MouseEvent.MOUSE_UP, this.mouseUpHandler);
-        //    return;
-        //}// end function
+		virtual void kill();
 
-    };
+		//void reInit(event:Event) : void
+		//{
+		//    this.removeEventListener(Event.REMOVED_FROM_STAGE, this.reInit);
+		//    this.removeEventListener(Event.ENTER_FRAME, this.enterFrameHandler);
+		//    this.removeEventListener(MouseEvent.MOUSE_MOVE, this.mouseMoveHandler);
+		//    this.removeEventListener(MouseEvent.MOUSE_DOWN, this.mouseDownHandler);
+		//    this.removeEventListener(MouseEvent.MOUSE_UP, this.mouseUpHandler);
+		//    return;
+		//}// end function
+
+	};
 }
 #endif
