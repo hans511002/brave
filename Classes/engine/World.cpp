@@ -80,6 +80,7 @@ namespace engine {
         //this->listOfStonePortals = [];
         //this->listOfLevinPortals = [];
         this->live = this->liveMax;
+		
         ////////////level end////////
         //live = 0; winDefCounter = (1);
         ///////////////////////
@@ -166,6 +167,8 @@ namespace engine {
 
     //void  World::enterFrameHandler()  // event : Event
     void World::enterFrameHandler(float dt) {
+		if(Main::moneyDebug)
+			this->money = 1000000;
         bool printTime = false;
         if (this->frameCounter < 30)
             this->frameCounter++;
