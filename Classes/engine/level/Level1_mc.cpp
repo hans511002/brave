@@ -329,9 +329,9 @@ namespace engine {
 		place5 = (BuildTowerPlace*)this->createMovieClip("place5", new BuildTowerPlace("placeRight"));
 		place6 = (BuildTowerPlace*)this->createMovieClip("place6", new BuildTowerPlace("placeRight"));
 		place7 = (BuildTowerPlace*)this->createMovieClip("place7", new BuildTowerPlace("placeRight"));
-		place8 = (BuildTowerPlace*)this->createMovieClip("place8", new BuildTowerPlace("placeRight"));
-		place9 = (BuildTowerPlace*)this->createMovieClip("place9", new BuildTowerPlace("placeRight"));
-		place10 = (BuildTowerPlace*)this->createMovieClip("place10", new BuildTowerPlace("placeRight"));
+		place8 = (BuildTowerPlace*)this->createMovieClip("place8", new BuildTowerPlace("placeStone"));
+		place9 = (BuildTowerPlace*)this->createMovieClip("place9", new BuildTowerPlace("placeStone"));
+		place10 = (BuildTowerPlace*)this->createMovieClip("place10", new BuildTowerPlace("placeStone"));
 
 		pointer1 = (LevelPointer*)this->createMovieClip("pointer1", new LevelPointer());
 
@@ -367,20 +367,21 @@ namespace engine {
 		flag1 = this->createMovieClip("flag1", "worldinterface/", "flag", "LevelBase");
 		flag2 = this->createMovieClip("flag2", "worldinterface/", "flag", "LevelBase");
 
-		place1 = (BuildTowerPlace*)this->createMovieClip("place1", new BuildTowerPlace("placeLeft"));
-		place2 = (BuildTowerPlace*)this->createMovieClip("place2", new BuildTowerPlace("placeRight"));
-		place3 = (BuildTowerPlace*)this->createMovieClip("place3", new BuildTowerPlace("placeRight"));
-		place4 = (BuildTowerPlace*)this->createMovieClip("place4", new BuildTowerPlace("placeLeft"));
-		place5 = (BuildTowerPlace*)this->createMovieClip("place5", new BuildTowerPlace("placeRight"));
-		place6 = (BuildTowerPlace*)this->createMovieClip("place6", new BuildTowerPlace("placeRight"));
-		place7 = (BuildTowerPlace*)this->createMovieClip("place7", new BuildTowerPlace("placeRight"));
-		place8 = (BuildTowerPlace*)this->createMovieClip("place8", new BuildTowerPlace("placeRight"));
-		place9 = (BuildTowerPlace*)this->createMovieClip("place9", new BuildTowerPlace("placeRight"));
-		place10 = (BuildTowerPlace*)this->createMovieClip("place10", new BuildTowerPlace("placeRight"));
-		place11 = (BuildTowerPlace*)this->createMovieClip("place11", new BuildTowerPlace("placeRight"));
+		place1 = (BuildTowerPlace*)this->createMovieClip("place1", new BuildTowerPlace("placeStone"));
+		place2 = (BuildTowerPlace*)this->createMovieClip("place2", new BuildTowerPlace("placeStone"));
+		place3 = (BuildTowerPlace*)this->createMovieClip("place3", new BuildTowerPlace("placeStone"));
+		place4 = (BuildTowerPlace*)this->createMovieClip("place4", new BuildTowerPlace("placeStone"));
+		place5 = (BuildTowerPlace*)this->createMovieClip("place5", new BuildTowerPlace("placeStone"));
+		place6 = (BuildTowerPlace*)this->createMovieClip("place6", new BuildTowerPlace("placeStone"));
+		place7 = (BuildTowerPlace*)this->createMovieClip("place7", new BuildTowerPlace("placeStone"));
+		place8 = (BuildTowerPlace*)this->createMovieClip("place8", new BuildTowerPlace("placeStone"));
+		place9 = (BuildTowerPlace*)this->createMovieClip("place9", new BuildTowerPlace("placeStone"));
+		place10 = (BuildTowerPlace*)this->createMovieClip("place10", new BuildTowerPlace("placeStone"));
+		place11 = (BuildTowerPlace*)this->createMovieClip("place11", new BuildTowerPlace("placeStone"));
 
 		pointer1 = (LevelPointer*)this->createMovieClip("pointer1", new LevelPointer());
 		pointer2 = (LevelPointer*)this->createMovieClip("pointer2", new LevelPointer());
+		pointer1->arrow->setRotation(90);
 
 		flags.push(flag1);
 		flags.push(flag2);
@@ -457,16 +458,16 @@ namespace engine {
 		flag3 = this->createMovieClip("flag3", "worldinterface/", "flag", "LevelBase");
 		flag4 = this->createMovieClip("flag4", "worldinterface/", "flag", "LevelBase");
 
-		place1 = (BuildTowerPlace*)this->createMovieClip("place1", new BuildTowerPlace("placeLeft"));
-		place2 = (BuildTowerPlace*)this->createMovieClip("place2", new BuildTowerPlace("placeRight"));
-		place3 = (BuildTowerPlace*)this->createMovieClip("place3", new BuildTowerPlace("placeRight"));
-		place4 = (BuildTowerPlace*)this->createMovieClip("place4", new BuildTowerPlace("placeLeft"));
-		place5 = (BuildTowerPlace*)this->createMovieClip("place5", new BuildTowerPlace("placeRight"));
-		place6 = (BuildTowerPlace*)this->createMovieClip("place6", new BuildTowerPlace("placeRight"));
-		place7 = (BuildTowerPlace*)this->createMovieClip("place7", new BuildTowerPlace("placeRight"));
-		place8 = (BuildTowerPlace*)this->createMovieClip("place8", new BuildTowerPlace("placeRight"));
-		place9 = (BuildTowerPlace*)this->createMovieClip("place9", new BuildTowerPlace("placeRight"));
-		place10 = (BuildTowerPlace*)this->createMovieClip("place10", new BuildTowerPlace("placeRight"));
+		place1 = (BuildTowerPlace*)this->createMovieClip("place1", new BuildTowerPlace("placeStone"));
+		place2 = (BuildTowerPlace*)this->createMovieClip("place2", new BuildTowerPlace("placeStone"));
+		place3 = (BuildTowerPlace*)this->createMovieClip("place3", new BuildTowerPlace("placeStone"));
+		place4 = (BuildTowerPlace*)this->createMovieClip("place4", new BuildTowerPlace("placeStone"));
+		place5 = (BuildTowerPlace*)this->createMovieClip("place5", new BuildTowerPlace("placeStone"));
+		place6 = (BuildTowerPlace*)this->createMovieClip("place6", new BuildTowerPlace("placeStone"));
+		place7 = (BuildTowerPlace*)this->createMovieClip("place7", new BuildTowerPlace("placeStone"));
+		place8 = (BuildTowerPlace*)this->createMovieClip("place8", new BuildTowerPlace("placeStone"));
+		place9 = (BuildTowerPlace*)this->createMovieClip("place9", new BuildTowerPlace("placeStone"));
+		place10 = (BuildTowerPlace*)this->createMovieClip("place10", new BuildTowerPlace("placeStone"));
 
 		pointer1 = (LevelPointer*)this->createMovieClip("pointer1", new LevelPointer());
 		pointer2 = (LevelPointer*)this->createMovieClip("pointer2", new LevelPointer());

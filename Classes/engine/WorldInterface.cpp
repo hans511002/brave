@@ -53,10 +53,10 @@ namespace engine {
         this->world = Main::mainClass->worldClass;
         //////////////////////////begin////////////////////////////////
         this->setPosition (Vec2 (0, 0) - this->world->getPosition ());
-        this->setMouseChildren (false);
-        this->setMouseEnabled (false);
+        this->setMouseChildren(false);
+        this->setMouseEnabled(false);
         //this->setAlpha(0);
-        this->container = new WorldInterface_mc ();
+        this->container = new WorldInterface_mc();
         this->addChild (this->container);
         this->container->init ();
         //printChildNodes();

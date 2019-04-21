@@ -329,7 +329,7 @@ namespace screens {
             string targetName = event->target->getName();
             if (event->target == EventNode::beginTouchNode &&(EventNode::beginTouchPos.x!= Main::mouseX|| EventNode::beginTouchPos.y != Main::mouseY)) {
                 EventNode *en = ISTYPE(EventNode, event->target);
-				if (this->container->isMouseDrag()   ) {
+				if (en && this->container->isMouseDrag()) {
 					Vec2 stpos = this->container->getPosition();
 					Vec2 endPos = stpos + Vec2(Main::mouseX, Main::mouseY) - EventNode::beginTouchPos;
 					EventNode::beginTouchPos = Vec2(Main::mouseX, Main::mouseY);

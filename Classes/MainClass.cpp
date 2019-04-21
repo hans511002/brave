@@ -64,7 +64,11 @@ bool Main::init()
     CCLOG("fps=%i", Main::fps);
 
     this->saveBoxClass = new SaveBox();
-	this->saveBoxClass->playLevel = 1;
+
+	//test
+	this->saveBoxClass->playLevel = 7;
+	Main::mainClass->saveBoxClass->setValue("newLevel", this->saveBoxClass->playLevel);
+
     //this->readXMLClass = new ReadXML();//不使用指针,使用对象
     //this->tracker = new GATracker(this, "UA-63231445-3", "AS3", false);
     //this->tracker.trackPageview("openGame");
