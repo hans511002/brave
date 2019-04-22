@@ -465,7 +465,7 @@ namespace engine
 		//this->world->road->armature->getAnimation()->stop(); 
 		//this->world->road->armature->setName("road");
 		//this->world->road->setAlpha(0);
-		this->world->road->setVisible(false);// visible = false;		
+		//this->world->road->setVisible(false);// visible = false;		
 		this->world->addChild(this->world->road,4); 
 		this->world->road->init();
 		//this->world->road->setPosition(this->world->road->initPos);

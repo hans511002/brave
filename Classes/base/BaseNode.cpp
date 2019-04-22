@@ -73,9 +73,6 @@ namespace std
 	{
 		setNodeType("BaseNode");
 		this->setContentSize(Size(w, h));
-		if (Main::releaseTest) {
-			draw = false;
-		}
 		if (draw)drawRange();
 	};
 	string EventNode::getTypeName() {
@@ -786,7 +783,7 @@ namespace std
 	};
 	void BaseNode::drawRange()
 	{
-		if(!Main::releaseTest)
+		if(!Main::releaseTest || Main::moneyDebug)
 		std::drawRange(this, Color4F::GREEN);
 		//DrawNode* drawNode = DrawNode::create();
 		//this->addChild(drawNode);
@@ -800,7 +797,8 @@ namespace std
 	};
 	void BaseSprite::drawRange()
 	{
-		if (!Main::releaseTest)std::drawRange(this, Color4F::YELLOW);
+		if (!Main::releaseTest || Main::moneyDebug)
+			std::drawRange(this, Color4F::YELLOW);
 		//DrawNode* drawNode = DrawNode::create();
 		//this->addChild(drawNode);
 		//Vec2 pos = this->getPosition();
@@ -813,7 +811,8 @@ namespace std
 	};
 	void BaseLayer::drawRange()
 	{
-		if (!Main::releaseTest)std::drawRange(this, Color4F::YELLOW);
+		if (!Main::releaseTest || Main::moneyDebug)
+			std::drawRange(this, Color4F::YELLOW);
 		//DrawNode* drawNode = DrawNode::create();
 		//this->addChild(drawNode);
 		//Vec2 pos = this->getPosition();
@@ -912,7 +911,7 @@ namespace std
 		if (listen && (listener == NULL && touchOnelistener == NULL))
 		{
 			this->getEventDispatcher()->setEnabled(true);
-			if (!Main::releaseTest) {
+			if (!Main::releaseTest || Main::moneyDebug) {
 				listener = cocos2d::EventListenerMouse::create();
 				//listener->onMouseDown = CC_CALLBACK_1(BaseNode::mouseDownHandler, this);
 				//listener->onMouseUp = CC_CALLBACK_1(BaseNode::mouseUpHandler, this);

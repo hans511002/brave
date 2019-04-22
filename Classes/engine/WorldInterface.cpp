@@ -2096,24 +2096,21 @@ namespace engine {
     {
         this->container->butCastGolem->gotoAndStop (6);
         AudioUtil::playSoundWithVol ("Snd_menu_mouseDown.mp3", 0.9f);
-        this->castRegime ("on");
-        if (this->world->road)this->world->road->setVisible(false);
+        this->castRegime ("on"); 
         this->addCast ("golem");
     }// end function
 
     void WorldInterface::castIceman () {
         this->container->butCastIceman->gotoAndStop (6);
         AudioUtil::playSoundWithVol ("Snd_menu_mouseDown.mp3", 0.9f);
-        this->castRegime ("on");
-        if (this->world->road) this->world->road->setVisible (false);
+        this->castRegime ("on"); 
         this->addCast ("iceman");
     }// end function
 
     void WorldInterface::castAir () {
         this->container->butCastAir->gotoAndStop (6);
         AudioUtil::playSoundWithVol ("Snd_menu_mouseDown.mp3", 0.9f);
-        this->castRegime ("on");
-        if (this->world->road)this->world->road->setVisible (false);
+        this->castRegime ("on"); 
         this->addCast ("air");
     }// end function
 

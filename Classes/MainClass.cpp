@@ -14,7 +14,7 @@
 
 Main * Main::mainClass;
 const double Main::AnimationInterval = 1.0f / (double)Main::FrameRate;
-bool Main::moneyDebug = false;
+bool Main::moneyDebug = true;
 bool Main::releaseTest =true;
 bool Main::fullTraining = false;
 namespace std {
@@ -66,9 +66,9 @@ bool Main::init()
 
     this->saveBoxClass = new SaveBox();
 
-	//test
-	this->saveBoxClass->playLevel = 7;
-	Main::mainClass->saveBoxClass->setValue("newLevel", this->saveBoxClass->playLevel);
+	////test
+	//this->saveBoxClass->playLevel = 1;
+	//Main::mainClass->saveBoxClass->setValue("newLevel", this->saveBoxClass->playLevel);
 
     //this->readXMLClass = new ReadXML();//不使用指针,使用对象
     //this->tracker = new GATracker(this, "UA-63231445-3", "AS3", false);

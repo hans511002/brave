@@ -120,7 +120,7 @@ namespace engine
 			this->world->forseIndexFl = true;
 			if (this->typeUnit < 33)
 			{
-				if (Main::mainClass->saveBoxClass->getIntValue("firstViewEnemies", (this->typeUnit - 1)) == 0)
+				if (Main::fullTraining && Main::mainClass->saveBoxClass->getIntValue("firstViewEnemies", (this->typeUnit - 1)) == 0)
 				{
 					Main::mainClass->saveBoxClass->setValue("firstViewEnemies", (this->typeUnit - 1), 1);
 					NewEnemy_mc * tempObject = new NewEnemy_mc();

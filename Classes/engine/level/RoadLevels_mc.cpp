@@ -32,32 +32,78 @@ namespace engine
             calcSectors(bezierBox.level2_path1, bezierBox.level2_path2, bezierBox.level2_path3);
 			effectPos.push(Sector(0, 0, 0, 0));
 			effectPos.push(Sector(-10, 0, 0, 10));
-			effectPos.push(Sector(-10, 0, 0, 0));
+			effectPos.push(Sector(-10, 10, 0, 0));
 			effectPos.push(Sector(-10, -5, 0, 10));
-			effectPos.push(Sector(-10, -10, 10, 10));
 			effectPos.push(Sector(-10, 0, 10, 10));
-			effectPos.push(Sector(-10, 10, 10, 10));
-			effectPos.push(Sector(0, 0, 10, 0));
-			effectPos.push(Sector(0, 0, 10, 10));
+			effectPos.push(Sector(-10, 0, 10, 10));
+			effectPos.push(Sector(-10, 20, 10, 0));
+			effectPos.push(Sector(5, 0, 10, 0));
+			effectPos.push(Sector(0, 5, 10, 0));
 			effectPos.push(Sector(-10, 0, 10, 0));
 		}
         else if(level == 3)
         {
             calcSectors(bezierBox.level3_path1, bezierBox.level3_path2, bezierBox.level3_path3);
+			effectPos.push(Sector(0, 20, 0, -10));
+			effectPos.push(Sector(0, 5, 0, 5));
+			effectPos.push(Sector(0, 5, 0, 0)) ;
+			effectPos.push(Sector(0, 0, 0, 0));
+			effectPos.push(Sector(0, 0, 0, 0));
+			effectPos.push(Sector(-10, 0, 0, 0));
+			effectPos.push(Sector(0, 0, 0, -10));
+			effectPos.push(Sector(0, 0, 0, 0));
+			effectPos.push(Sector(0, 15, 0, -10));
+			while (this->sectors.size() > effectPos.size()) {
+				effectPos.push(Sector(0, 0, 0, 0));
+			} 
             calcSectors(bezierBox.level3_path11, bezierBox.level3_path12, bezierBox.level3_path13);
-			effectPos.push(Sector(0, 10, 0, 10));
-			effectPos.push(Sector(0, 0, 0, 10));
+			effectPos.push(Sector(0, 10, 0, -10));
+			effectPos.push(Sector(0, 10, 0, 0));
+			effectPos.push(Sector(0, 15, 0, -10));
+			effectPos.push(Sector(0, 0, 0, 0));
+			effectPos.push(Sector(0, 0, 0, -10));
+			effectPos.push(Sector(0, 0, 0, 0));
+			effectPos.push(Sector(0, 15, 0, -10));
 		}
         else if(level == 4)
         {
             calcSectors(bezierBox.level4_path1, bezierBox.level4_path2, bezierBox.level4_path3);
-            calcSectors(bezierBox.level4_path11, bezierBox.level4_path12, bezierBox.level4_path13);
-        }
+			effectPos.push(Sector(0, 10, 0, -20));
+			effectPos.push(Sector(0, 10, 0, 0));
+			effectPos.push(Sector(0, 10, 0, 0));
+			while (this->sectors.size() > effectPos.size()) {
+				effectPos.push(Sector(0, 0, 0, 0));
+			}
+			calcSectors(bezierBox.level4_path11, bezierBox.level4_path12, bezierBox.level4_path13);
+			effectPos.push(Sector(0, 0, 0, 0));
+			effectPos.push(Sector(0, 0, -10, 0));
+			effectPos.push(Sector(0, 5, 0, -15));
+			effectPos.push(Sector(0, 5, -5, 0));
+			effectPos.push(Sector(0, 20, 0, -10));
+		}
         else if(level == 5)
         {
             calcSectors(bezierBox.level5_path1, bezierBox.level5_path2, bezierBox.level5_path3);
-            calcSectors(bezierBox.level5_path11, bezierBox.level5_path12, bezierBox.level5_path13);
-        }
+			effectPos.push(Sector(0, 0, -15, 0));
+			effectPos.push(Sector(0, 0, -15, 0));
+			effectPos.push(Sector(0, 0, 0, -15));
+			effectPos.push(Sector(0, 0, 0, 0));
+			effectPos.push(Sector(0, 20, 0, -15));
+			effectPos.push(Sector(0, 20, 0, -15));
+			effectPos.push(Sector(0, 20, 0, -15));
+			effectPos.push(Sector(10, 0, -10,0));
+			while (this->sectors.size() > effectPos.size()) {
+				effectPos.push(Sector(0, 0, 0, 0));
+			}
+			calcSectors(bezierBox.level5_path11, bezierBox.level5_path12, bezierBox.level5_path13);
+			effectPos.push(Sector(0, 0, -10, 0));
+			effectPos.push(Sector(0, 15, 0, -10));
+			effectPos.push(Sector(0, 15, -15, 0));
+			effectPos.push(Sector(0, 15, -15, -5));
+			effectPos.push(Sector(0, 15, -15, -5));
+			effectPos.push(Sector(0, 15, 0, -5));
+			effectPos.push(Sector(10, 0, 0, 0));
+		}
         else if(level == 6)
         {
             calcSectors(bezierBox.level6_path1, bezierBox.level6_path2, bezierBox.level6_path3);
@@ -124,7 +170,7 @@ namespace engine
 				sec.w += effectPos.at(i).w;
 				sec.h += effectPos.at(i).h;
 			} 
-            BaseNode * node = new BaseNode(sec.w, sec.h, false);
+            BaseNode * node = new BaseNode(sec.w, sec.h, true);
             node->setPosition(sec.x, sec.y);
             node->setMouseEnabled(true);
             this->addChild(node);
