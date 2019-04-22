@@ -380,7 +380,7 @@ namespace training
 				AudioUtil::playSound("Snd_menu_upgrIconMouseDown.mp3");
 				this->world->worldInterface->container->stoneSphere->setVisible(true);
 				this->world->worldInterface->container->stoneSphere->setScale(0); 
-				new CallDelay("newElement", 3);
+				if(Main::fullTraining) new CallDelay("newElement", 3);
 			}
 		}
 		return;

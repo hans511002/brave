@@ -766,7 +766,7 @@ namespace engine{
 						{
 							if (!this->world->towerMenu->training_12)
 							{
-								if (!Main::mainClass->saveBoxClass->getBoolValue("firstClickKeepAll"))
+								if (Main::fullTraining &&  !Main::mainClass->saveBoxClass->getBoolValue("firstClickKeepAll"))
 								{
 									this->world->towerMenu->training_12 = new training::Training_12();
 									this->world->towerMenu->addChild(this->world->towerMenu->training_12);

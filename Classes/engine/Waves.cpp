@@ -289,23 +289,21 @@ namespace engine
 				//{
 				//    Sounds.instance.musicChanel.soundTransform = new SoundTransform(0, 0);
 				//}
-				//if (this->world->nowLevel == 1)
-				//{
-				//    new CallDelay("newElement", 1);
-				//}
+				if (this->world->nowLevel == 1)
+					if (Main::fullTraining)new CallDelay("newElement", 1);
 			}
 			else if (this->nowWave == 2)
 			{
 				if (this->world->nowLevel == 1)
 				{
 					new InTimer("openIce");
-					new CallDelay("newElement", 2);
+					if(Main::fullTraining)new CallDelay("newElement", 2);
 				}
 				else if (this->world->nowLevel == 2)
 				{
 					if (!this->world->menuObject)
 					{
-						if (!Main::mainClass->saveBoxClass->getBoolValue("Training_92", 12))
+						if (Main::fullTraining && !Main::mainClass->saveBoxClass->getBoolValue("Training_92", 12))
 						{ 
 							this->world->menuObject = new training::Training_92(12);
 							this->world->addChild(this->world->menuObject, 99);
@@ -316,7 +314,7 @@ namespace engine
 				else if (this->world->nowLevel == 3)
 				{
 					new InTimer("openLevin");
-					new CallDelay("newElement", 4);
+					if (Main::fullTraining)new CallDelay("newElement", 4);
 				}
 			}
 			else if (this->nowWave == 3)
@@ -365,7 +363,7 @@ namespace engine
 					this->world->worldInterface->blockCastAir = false;
 					if (!this->world->menuObject)
 					{
-						if (!Main::mainClass->saveBoxClass->getBoolValue("Training_5", 7))
+						if (Main::fullTraining && !Main::mainClass->saveBoxClass->getBoolValue("Training_5", 7))
 						{ 
 							this->world->menuObject = new training::Training_5(7);
 							this->world->addChild(this->world->menuObject, 99);
@@ -378,7 +376,7 @@ namespace engine
 					this->world->worldInterface->blockCastGolem = false;
 					if (!this->world->menuObject)
 					{
-						if (!Main::mainClass->saveBoxClass->getBoolValue("Training_5", 5))
+						if (Main::fullTraining && !Main::mainClass->saveBoxClass->getBoolValue("Training_5", 5))
 						{ 
 							this->world->menuObject = new training::Training_5(5);
 							this->world->addChild(this->world->menuObject, 99);

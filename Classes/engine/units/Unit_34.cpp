@@ -5,6 +5,7 @@
 #include "engine/towers/TowerMenu.h"
 #include "engine/towers/UltraTowerMenu.h"
 #include "engine/casts/Cast.h"
+#include "engine/InTimer.h"
 
 namespace engine
 {
@@ -553,8 +554,8 @@ namespace engine
 				MovieClip* tempObject =new MovieClip(world,"unit/","Unit34Death_mc","Unit34Death_mc");// new Indexes(new Unit34Death_mc(), 3);
                 tempObject->setPosition(shoot_pt.x,shoot_pt.y - 44.5);//.x = shoot_pt.x;
                 //tempObject.y = shoot_pt.y - 44.5;
-                //new InTimer("bossDeath");
-                //new InTimer("bossSpeakInDeath");
+                new engine::InTimer("bossDeath");
+                new engine::InTimer("bossSpeakInDeath");
                 world->wavesClass->listOfWaves[0].clear();// = [];
                 world->wavesClass->listOfWaves[1].clear();//  = [];
                 world->wavesClass->listOfWaves[2].clear();//  = [];

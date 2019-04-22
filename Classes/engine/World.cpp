@@ -193,7 +193,7 @@ namespace engine {
                         //this->setMouseChildren(true);
                         //this->setMouseEnabled(true);
                     } else if (this->nowLevel >= 2 && this->nowLevel <= 11) {
-						if (!Main::mainClass->saveBoxClass->getBoolValue("Training_92", this->nowLevel-1))
+						if (Main::fullTraining && !Main::mainClass->saveBoxClass->getBoolValue("Training_92", this->nowLevel-1))
 						{ 
 							this->menuObject = new training::Training_92(this->nowLevel - 1);
 							this->addChild(this->menuObject, 99);
@@ -202,7 +202,7 @@ namespace engine {
                         //this->setMouseChildren(true);
                         //this->setMouseEnabled(true);
                     } else if (this->nowLevel == 13) {
-						if (!Main::mainClass->saveBoxClass->getBoolValue("Training_92", 11))
+						if (Main::fullTraining && !Main::mainClass->saveBoxClass->getBoolValue("Training_92", 11))
 						{ 
 							this->menuObject = new training::Training_92(11);
 							this->addChild(this->menuObject, 99);
@@ -221,7 +221,7 @@ namespace engine {
 					} 
 				}
 				else if (this->nowLevel == 2) {
-					if (!Main::mainClass->saveBoxClass->getBoolValue("Training_5", 3))
+					if (Main::fullTraining && !Main::mainClass->saveBoxClass->getBoolValue("Training_5", 3))
 					{
 						this->menuObject = new training::Training_5(3);
 						this->addChild(this->menuObject, 99);

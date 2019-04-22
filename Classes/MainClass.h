@@ -60,6 +60,7 @@ public:
 	static Main *mainClass;
 	static bool moneyDebug;
 	static bool releaseTest;
+	static bool fullTraining;
 
 	Main();
 	//CREATE_FUNC(Main);

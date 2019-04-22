@@ -16,6 +16,7 @@ Main * Main::mainClass;
 const double Main::AnimationInterval = 1.0f / (double)Main::FrameRate;
 bool Main::moneyDebug = false;
 bool Main::releaseTest =true;
+bool Main::fullTraining = false;
 namespace std {
 	sys::I18n i18n;
 

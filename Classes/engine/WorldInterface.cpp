@@ -3423,7 +3423,7 @@ namespace engine {
                 } else if (dynamic_cast<NewElement_mc *>(tempObject)) {
                     if (!this->world->menuObject) {
 						NewElement_mc * ne= ISTYPE(NewElement_mc, tempObject);
-						if (!Main::mainClass->saveBoxClass->getBoolValue("Training_5", ne->type))
+						if (Main::fullTraining && !Main::mainClass->saveBoxClass->getBoolValue("Training_5", ne->type))
 						{ 
 							this->world->menuObject = new training::Training_5(ne->type);
 							this->world->addChild(this->world->menuObject,99);

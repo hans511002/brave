@@ -2,6 +2,7 @@
 #include "engine/World.h"
 #include "engine/WorldInterface.h"
 #include "engine/GetSphere.h"
+#include "training/Training_12.h"
 
 namespace engine
 {
@@ -216,12 +217,12 @@ namespace engine
 						this->autoguidersButtons();
 						if (!this->training_12 && this->world->nowLevel > 1 && this->world->nowLevel < 5)
 						{
-							if (!Main::mainClass->saveBoxClass->getBoolValue("firstClickKeepAll"))
+							if (Main::fullTraining && !Main::mainClass->saveBoxClass->getBoolValue("firstClickKeepAll"))
 							{
 								if (this->myTower->spheresStack.size()> 0)
 								{
-									//this->training_12 = new Training_12();
-									//this->addChild(this->training_12);
+									this->training_12 = new training::Training_12();
+									this->addChild(this->training_12);
 								}
 							}
 						}

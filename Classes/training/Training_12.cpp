@@ -29,7 +29,7 @@ namespace training
 		this->container->stop();
 		this->addChild(this->container);
 		this->myTowerMenu = this->world->towerMenu;
-		this->setPosition(5,5);
+		this->setPosition(50,50);
 		this->mouseChildren = false;
 		this->mouseEnabled = false;
 		return true;
@@ -84,6 +84,7 @@ namespace training
 			}
 			if (!this->world->towerMenu)
 			{
+				Main::mainClass->saveBoxClass->setValue("firstClickKeepAll", true);
 				this->closeFlag = true;
 			}
 		}

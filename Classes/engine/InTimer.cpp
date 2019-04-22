@@ -84,7 +84,7 @@ namespace engine
                 if (Main::mainClass->saveBoxClass->getIntValue("saveNo") > 3)
                 {
                     this->world->worldInterface->spheresBlockManage("unblockGetAll");
-                    new CallDelay("newElement", 8);
+                   if(Main::fullTraining)new CallDelay("newElement", 8);
                 }
                 this->kill();
             }
