@@ -228,11 +228,11 @@ namespace engine
 				}
 				else
 				{
-					this->container1->btnGetAll->tryPlay(0); 
-					this->container1->cont1->tryPlay(0); 
-					this->container1->cont2->tryPlay(0); 
 					if (this->world->eduOpenUpgrArrowFlag)
 					{
+						this->container1->btnGetAll->tryPlay(0); 
+						this->container1->cont1->tryPlay(0); 
+						this->container1->cont2->tryPlay(0); 
 						if (this->starsAnima->currentFrame < this->starsAnima->totalFrames)
 						{
 							this->starsAnima->tryPlay();
@@ -255,7 +255,9 @@ namespace engine
 							this->world->eduOpenUpgrArrowFlag = false;
 						}
 					}
- 
+					this->container->btnGetAll->tryPlay(0);
+					this->container->cont1->tryPlay(0);
+					this->container->cont2->tryPlay(0);
 					if (this->openUltraSection)
 					{
 						if (this->container->currentFrame < this->container->totalFrames)

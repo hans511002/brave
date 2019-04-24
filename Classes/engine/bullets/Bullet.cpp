@@ -126,7 +126,7 @@ namespace engine {
 		void Bullet::update(float dt)
 		{
 			this->mainCounter++;
-			if (this->mainCounter == this->changeIndex)
+			if (this->mainCounter == this->changeIndex && this->enemyTarget)
 			{
 				if (this->bulletType == 3 || this->bulletType == 5 || this->bulletType == 7)
 				{

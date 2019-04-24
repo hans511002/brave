@@ -839,9 +839,10 @@ namespace engine {
                 bool tempObject = false;
 				Node *parent = event->target->getParent();
 				for (int i = 0; i < 3; i++) {
-					if (parent == NULL)return;
 					parent= parent->getParent();
+					if (parent == NULL)return;
 				}
+				
                 if (this->towerMenu || this->ultraTowerMenu) {
                     if (this->towerMenu) {
                         if (this->towerMenu->myTower != parent) {

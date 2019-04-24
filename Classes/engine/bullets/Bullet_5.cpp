@@ -84,16 +84,12 @@ namespace engine{
                 bezier::PathPoint tempObject = world->bezierClass->getPathPoint(this->enemyPath, this->enemyRoad, this->enemyWay);
                 this->enemyStartPoint = cocos2d::Point(tempObject.x, tempObject.y);
                 if (liveCounter > this->correct)
-                {
-                    //this->x = this->x + distanceX / (liveCounter - this->correct);
-                    this->setPositionX(this->getPositionX() + distanceX / (liveCounter - this->correct));
-                    //this->y = this->y + (distanceY / (liveCounter - this->correct) - 8);
-                    this->setPositionY(this->getPositionY() + (distanceY / (liveCounter - this->correct) - 8));
-                    
-                    this->shadow->setPositionX(this->shadow->getPositionX()+(this->enemyStartPoint.x - this->shadow->getPositionX()) / (liveCounter - this->correct));
-                    //this->shadow.x = this->shadow.x + (this->enemyStartPoint.x - this->shadow.x) / (liveCounter - this->correct);
-                    this->shadow->setPositionY(this->shadow->getPositionY()+(this->enemyStartPoint.y - this->shadow->getPositionY()) / (liveCounter - this->correct));
-                    //this->shadow.y = this->shadow.y + (this->enemyStartPoint.y - this->shadow.y) / (liveCounter - this->correct);
+                { 
+					this->setPosition(this->getPositionX() + distanceX / (liveCounter - this->correct),
+						this->getPositionY() + (distanceY / (liveCounter - this->correct) + 8));
+					Vec2 shpos = this->shadow->getPosition();
+					this->shadow->setPosition(shpos.x + (this->enemyStartPoint.x - shpos.x) / (liveCounter - this->correct), shpos.y + (this->enemyStartPoint.y - shpos.y) / (liveCounter - this->correct));
+
                     if (!this->rotationFlag)
                     {
 						container->setRotation(container->getRotation() - 7);
@@ -123,6 +119,7 @@ namespace engine{
                     this->shadow->setPositionY(this->shadow->getPositionY()+(this->enemyStartPoint.y - this->shadow->getPositionY()) / (liveCounter * 10));
                     //this->shadow.x = this->shadow.x + (this->enemyStartPoint.x - this->shadow.x) / (liveCounter * 10);
                     //this->shadow.y = this->shadow.y + (this->enemyStartPoint.y - this->shadow.y) / (liveCounter * 10);
+
                     if (liveCounter == 4)
                     {
                         BulletTower5_1Bang_mc * tempObject =  new BulletTower5_1Bang_mc(this->world) ;
