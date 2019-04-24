@@ -67,7 +67,7 @@ namespace engine
     {
         return inPlay;
     }
-	bool MC::tryPlay()
+	bool MC::tryPlay(int times)
 	{
 		MovieClipSub *mcs=ISTYPE(MovieClipSub, this);
 		if (mcs) {
@@ -78,7 +78,8 @@ namespace engine
 		}
 		if (!this->inPlay)
 		{
-			this->play(1);
+			if (this->currentFrame == totalFrames-1)currentFrame = 1;
+			this->play(times);
 			return this->inPlay;
 		}
 		else {

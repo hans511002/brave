@@ -1576,7 +1576,7 @@ namespace engine
         void UltraTowerMenu::hintPosition(int param1 )
         {
             //tempObject = container->localToGlobal(new Point(container->btnUpgradeMenu->x, container->btnUpgradeMenu->y));
-            cocos2d::Point tempObject = container->localToGlobal(container->btnUpgradeMenu->getPosition());
+            cocos2d::Point tempObject = container->btnUpgradeMenuBtnUpgradeMenuCase->convertToWorldSpace(Vec2(0, 0));
             param1 = param1 - 1;
             if (tempObject.x < 120)
             {

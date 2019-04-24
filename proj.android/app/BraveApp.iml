@@ -103,6 +103,9 @@
     <content url="file://$MODULE_DIR$/../../Classes/sys">
       <sourceFolder url="file://$MODULE_DIR$/../../Classes/sys" isTestSource="false" />
     </content>
+    <content url="file://$MODULE_DIR$/../../Classes/training">
+      <sourceFolder url="file://$MODULE_DIR$/../../Classes/training" isTestSource="false" />
+    </content>
     <content url="file://$MODULE_DIR$/../../Resources/res">
       <sourceFolder url="file://$MODULE_DIR$/../../Resources/res" type="java-resource" />
     </content>

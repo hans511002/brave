@@ -99,9 +99,7 @@ namespace engine
 				this->container->btnGetAllBtnGetAllCase->setMouseEnabled(true);
 			}
 			if (this->myTower->towerType == 4)
-			{
 				this->container->gotoAndStop(this->container->totalFrames);
-			}
 			this->myTower->setMouseChildren(false);
 			this->myTower->setMouseEnabled(false);
 			this->world->worldInterface->barInfoManage(this);
@@ -230,36 +228,11 @@ namespace engine
 				}
 				else
 				{
+					this->container1->btnGetAll->tryPlay(0); 
+					this->container1->cont1->tryPlay(0); 
+					this->container1->cont2->tryPlay(0); 
 					if (this->world->eduOpenUpgrArrowFlag)
 					{
-						if (this->container1->btnGetAll->currentFrame < this->container1->btnGetAll->totalFrames)
-						{
-							this->container1->btnGetAll->tryPlay();
-					        //this->container1->btnGetAll->gotoAndStop((this->container1->btnGetAll->currentFrame + 1));
-						}
-						else
-						{
-							this->container1->btnGetAll->gotoAndStop(1);
-						}
-						if (this->container1->cont1->currentFrame < this->container1->cont1->totalFrames)
-						{
-							this->container1->cont1->tryPlay();
-					        //this->container1->cont1->gotoAndStop((this->container1->cont1->currentFrame + 1));
-						}
-						else
-						{
-							this->container1->cont1->gotoAndStop(1);
-						}
-						if (this->container1->cont2->currentFrame < this->container1->cont2->totalFrames)
-						{
-							this->container1->cont2->tryPlay();
-					        //this->container1->cont2->gotoAndStop((this->container1->cont2->currentFrame + 1));
-						}
-						else
-						{
-							this->container1->cont2->gotoAndStop(1);
-						}
-
 						if (this->starsAnima->currentFrame < this->starsAnima->totalFrames)
 						{
 							this->starsAnima->tryPlay();
@@ -282,39 +255,13 @@ namespace engine
 							this->world->eduOpenUpgrArrowFlag = false;
 						}
 					}
-					if (this->container->btnGetAll->currentFrame < this->container->btnGetAll->totalFrames)
-					{
-						this->container->btnGetAll->tryPlay();
-					    //this->container->btnGetAll->gotoAndStop((this->container->btnGetAll->currentFrame + 1));
-					}
-					else
-					{
-						this->container->btnGetAll->gotoAndStop(1);
-					}
-					if (this->container->cont1->currentFrame < this->container->cont1->totalFrames)
-					{
-						this->container->cont1->tryPlay();
-					    //this->container->cont1->gotoAndStop((this->container->cont1->currentFrame + 1));
-					}
-					else
-					{
-						this->container->cont1->gotoAndStop(1);
-					}
-					if (this->container->cont2->currentFrame < this->container->cont2->totalFrames)
-					{
-						this->container->cont2->tryPlay();
-					    //this->container->cont2->gotoAndStop((this->container->cont2->currentFrame + 1));
-					}
-					else
-					{
-						this->container->cont2->gotoAndStop(1);
-					}
+ 
 					if (this->openUltraSection)
 					{
 						if (this->container->currentFrame < this->container->totalFrames)
 						{
-							this->container->tryPlay();
-						    //this->container->gotoAndStop((this->container->currentFrame + 1));
+							//this->container->tryPlay();
+						    this->container->gotoAndStop((this->container->currentFrame + 1));
 							if (this->container->currentFrame == 4 || this->container->currentFrame == 6 || this->container->currentFrame == 9 || this->container->currentFrame == 11)
 							{
 								std::setText(this->container->btnUpgradeMenuCostTXT, Main::mainClass->readXMLClass.costSlot4XML);
@@ -334,337 +281,51 @@ namespace engine
 							this->autoguidersButtons();
 						}
 					}
-					if (this->hint)
+					if (this->hint && Main::fullTraining)
 					{
 						if (this->hint->isVisible())
 						{
 							if (this->hint->currentFrame < 5)
 							{
-								if (this->hint->contCont1Sphere1->currentFrame < this->hint->contCont1Sphere1->totalFrames)
-								{
-									this->hint->contCont1Sphere1->tryPlay();
-							        //this->hint->contCont1Sphere1->gotoAndStop((this->hint->contCont1Sphere1->currentFrame + 1));
-								}
-								else
-								{
-									this->hint->contCont1Sphere1->gotoAndStop(1);
-								}
-								if (this->hint->contCont1Sphere2->currentFrame < this->hint->contCont1Sphere2->totalFrames)
-								{
-									this->hint->contCont1Sphere2->tryPlay();
-							        //this->hint->contCont1Sphere2->gotoAndStop((this->hint->contCont1Sphere2->currentFrame + 1));
-								}
-								else
-								{
-									this->hint->contCont1Sphere2->gotoAndStop(1);
-								}
+								this->hint->contCont1Sphere1->tryPlay(0); 
+								this->hint->contCont1Sphere2->tryPlay(0); 
 							}
 						}
 					}
 					if (this->exampleUltraTower)
 					{
-						if (ISTYPE(Tower5_mc, this->exampleUltraTower))
-						{
-							Tower5_mc * tower = ISTYPE(Tower5_mc, this->exampleUltraTower);
-							if (this->world->frameCounter % 2)
-							{
-								if (tower->currentFrame < tower->totalFrames)
-								{
-									tower->tryPlay();
-							        //tower->gotoAndStop((tower->currentFrame + 1));
-								}
-								else
-								{
-									tower->gotoAndStop(1);
-								}
-							}
-						}
-						else if (ISTYPE(Tower6_mc, this->exampleUltraTower))
-						{
-							Tower6_mc * tower = ISTYPE(Tower6_mc, this->exampleUltraTower);
-							if (this->world->frameCounter % 2)
-							{
-								if (tower->currentFrame < exampleUltraTower->totalFrames)
-								{
-									tower->tryPlay();
-							        //tower->gotoAndStop((tower->currentFrame + 1));
-								}
-								else
-								{
-									tower->gotoAndStop(1);
-								}
-							}
-						}
-						else if (ISTYPE(Tower7_mc, this->exampleUltraTower))
+						this->exampleUltraTower->tryPlay(0); 
+						if (ISTYPE(Tower7_mc, this->exampleUltraTower))
 						{
 							Tower7_mc * tower = ISTYPE(Tower7_mc, this->exampleUltraTower);
-							if (tower->cont1->currentFrame < tower->cont1->totalFrames)
-							{
-								tower->cont1->tryPlay();
-							    //tower->cont1->gotoAndStop((tower->cont1->currentFrame + 1));
-							}
-							else
-							{
-								tower->cont1->gotoAndStop(1);
-							}
-							if (tower->cont2->currentFrame < tower->cont2->totalFrames)
-							{
-								tower->cont2->tryPlay();
-							    //tower->cont2->gotoAndStop((tower->cont2->currentFrame + 1));
-							}
-							else
-							{
-								tower->cont2->gotoAndStop(1);
-							}
-							if (tower->cont3->currentFrame < tower->cont3->totalFrames)
-							{
-								tower->cont3->tryPlay();
-							    //tower->cont3->gotoAndStop((tower->cont3->currentFrame + 1));
-							}
-							else
-							{
-								tower->cont3->gotoAndStop(1);
-							}
+							tower->cont1->tryPlay(0); 
+							tower->cont2->tryPlay(0); 
+							tower->cont3->tryPlay(0); 
 						}
 						else if (ISTYPE(Tower8_mc, this->exampleUltraTower))
 						{
 							Tower8_mc * tower = ISTYPE(Tower8_mc, this->exampleUltraTower);
-							if (this->world->frameCounter % 2)
-							{
-								if (tower->cont1->currentFrame < tower->cont1->totalFrames)
-								{
-									tower->cont1->tryPlay();
-								    //tower->cont1->gotoAndStop((tower->cont1->currentFrame + 1));
-								}
-								else
-								{
-									tower->cont1->gotoAndStop(1);
-								}
-								if (tower->cont2->currentFrame < tower->cont2->totalFrames)
-								{
-									tower->cont2->tryPlay();
-								    //tower->cont2->gotoAndStop((tower->cont2->currentFrame + 1));
-								}
-								else
-								{
-									tower->cont2->gotoAndStop(1);
-								}
-								if (tower->cont3->currentFrame < tower->cont3->totalFrames)
-								{
-									tower->cont3->tryPlay();
-								    //tower->cont3->gotoAndStop((tower->cont3->currentFrame + 1));
-								}
-								else
-								{
-									tower->cont3->gotoAndStop(1);
-								}
-							}
+							tower->cont1->tryPlay(0); 
+							tower->cont2->tryPlay(0); 
+							tower->cont3->tryPlay(0);  
 							tower->cont2->setRotation( tower->cont2->getRotation() + 3);
 						}
 					}
 					if (this->container->sphereSlot1->isVisible())
 					{
-						if (this->container->sphereSlot1->currentFrame == 1)
-						{
-							if (this->container->sphereSlot1SphereAnimaCont->currentFrame < this->container->sphereSlot1SphereAnimaCont->totalFrames)
-							{
-								this->container->sphereSlot1SphereAnimaCont->tryPlay();
-								//this->container->sphereSlot1SphereAnimaCont->gotoAndStop((this->container->sphereSlot1SphereAnimaCont->currentFrame + 1));
-							}
-							else
-							{
-								this->container->sphereSlot1SphereAnimaCont->gotoAndStop(1);
-							}
-						}
-						else if (this->container->sphereSlot1SphereAnima->currentFrame == 2)
-						{
-							if (this->container->sphereSlot1SphereAnimaCont->currentFrame < this->container->sphereSlot1SphereAnimaCont->totalFrames)
-							{
-								this->container->sphereSlot1SphereAnimaCont->tryPlay();
-								//this->container->sphereSlot1SphereAnimaCont->gotoAndStop((this->container->sphereSlot1SphereAnimaCont->currentFrame + 1));
-							}
-							else
-							{
-								this->container->sphereSlot1SphereAnimaCont->gotoAndStop(1);
-							}
-						}
-						else if (this->container->sphereSlot1SphereAnima->currentFrame == 3)
-						{
-							if (this->container->sphereSlot1SphereAnimaCont->currentFrame < this->container->sphereSlot1SphereAnimaCont->totalFrames)
-							{
-								this->container->sphereSlot1SphereAnimaCont->tryPlay();
-								//this->container->sphereSlot1SphereAnimaCont->gotoAndStop((this->container->sphereSlot1SphereAnimaCont->currentFrame + 1));
-							}
-							else
-							{
-								this->container->sphereSlot1SphereAnimaCont->gotoAndStop(1);
-							}
-						}
-						else if (this->container->sphereSlot1SphereAnima->currentFrame == 4)
-						{
-							if (this->container->sphereSlot1SphereAnimaCont->currentFrame < this->container->sphereSlot1SphereAnimaCont->totalFrames)
-							{
-								this->container->sphereSlot1SphereAnimaCont->tryPlay();
-								//this->container->sphereSlot1SphereAnimaCont->gotoAndStop((this->container->sphereSlot1SphereAnimaCont->currentFrame + 1));
-							}
-							else
-							{
-								this->container->sphereSlot1SphereAnimaCont->gotoAndStop(1);
-							}
-						}
+						this->container->sphereSlot1SphereAnimaCont->tryPlay(0);  
 					}
 					if (this->container->sphereSlot2->isVisible())//(this->container->sphereSlot2SphereAnima->isVisible())
 					{
-						if (this->container->sphereSlot2SphereAnima->currentFrame == 1)
-						{
-							if (this->container->sphereSlot2SphereAnimaCont->currentFrame < this->container->sphereSlot2SphereAnimaCont->totalFrames)
-							{
-								this->container->sphereSlot2SphereAnimaCont->tryPlay();
-								//this->container->sphereSlot2SphereAnimaCont->gotoAndStop((this->container->sphereSlot2SphereAnimaCont->currentFrame + 1));
-							}
-							else
-							{
-								this->container->sphereSlot2SphereAnimaCont->gotoAndStop(1);
-							}
-						}
-						else if (this->container->sphereSlot2SphereAnima->currentFrame == 2)
-						{
-							if (this->container->sphereSlot2SphereAnimaCont->currentFrame < this->container->sphereSlot2SphereAnimaCont->totalFrames)
-							{
-								this->container->sphereSlot2SphereAnimaCont->tryPlay();
-								//this->container->sphereSlot2SphereAnimaCont->gotoAndStop((this->container->sphereSlot2SphereAnimaCont->currentFrame + 1));
-							}
-							else
-							{
-								this->container->sphereSlot2SphereAnimaCont->gotoAndStop(1);
-							}
-						}
-						else if (this->container->sphereSlot2SphereAnima->currentFrame == 3)
-						{
-							if (this->container->sphereSlot2SphereAnimaCont->currentFrame < this->container->sphereSlot2SphereAnimaCont->totalFrames)
-							{
-								this->container->sphereSlot2SphereAnimaCont->tryPlay();
-								//this->container->sphereSlot2SphereAnimaCont->gotoAndStop((this->container->sphereSlot2SphereAnimaCont->currentFrame + 1));
-							}
-							else
-							{
-								this->container->sphereSlot2SphereAnimaCont->gotoAndStop(1);
-							}
-						}
-						else if (this->container->sphereSlot2SphereAnima->currentFrame == 4)
-						{
-							if (this->container->sphereSlot2SphereAnimaCont->currentFrame < this->container->sphereSlot2SphereAnimaCont->totalFrames)
-							{
-								this->container->sphereSlot2SphereAnimaCont->tryPlay();
-								//this->container->sphereSlot2SphereAnimaCont->gotoAndStop((this->container->sphereSlot2SphereAnimaCont->currentFrame + 1));
-							}
-							else
-							{
-								this->container->sphereSlot2SphereAnimaCont->gotoAndStop(1);
-							}
-						}
+						this->container->sphereSlot2SphereAnimaCont->tryPlay(0); 
 					}
 					if (this->container->sphereSlot3->isVisible())
 					{
-						if (this->container->sphereSlot3SphereAnima->currentFrame == 1)
-						{
-							if (this->container->sphereSlot3SphereAnimaCont->currentFrame < this->container->sphereSlot3SphereAnimaCont->totalFrames)
-							{
-								this->container->sphereSlot3SphereAnimaCont->tryPlay();
-								//this->container->sphereSlot3SphereAnimaCont->gotoAndStop((this->container->sphereSlot3SphereAnimaCont->currentFrame + 1));
-							}
-							else
-							{
-								this->container->sphereSlot3SphereAnimaCont->gotoAndStop(1);
-							}
-						}
-						else if (this->container->sphereSlot3SphereAnima->currentFrame == 2)
-						{
-							if (this->container->sphereSlot3SphereAnimaCont->currentFrame < this->container->sphereSlot3SphereAnimaCont->totalFrames)
-							{
-								this->container->sphereSlot3SphereAnimaCont->tryPlay();
-								//this->container->sphereSlot3SphereAnimaCont->gotoAndStop((this->container->sphereSlot3SphereAnimaCont->currentFrame + 1));
-							}
-							else
-							{
-								this->container->sphereSlot3SphereAnimaCont->gotoAndStop(1);
-							}
-						}
-						else if (this->container->sphereSlot3SphereAnima->currentFrame == 3)
-						{
-							if (this->container->sphereSlot3SphereAnimaCont->currentFrame < this->container->sphereSlot3SphereAnimaCont->totalFrames)
-							{
-								this->container->sphereSlot3SphereAnimaCont->tryPlay();
-								//this->container->sphereSlot3SphereAnimaCont->gotoAndStop((this->container->sphereSlot3SphereAnimaCont->currentFrame + 1));
-							}
-							else
-							{
-								this->container->sphereSlot3SphereAnimaCont->gotoAndStop(1);
-							}
-						}
-						else if (this->container->sphereSlot3SphereAnima->currentFrame == 4)
-						{
-							if (this->container->sphereSlot3SphereAnimaCont->currentFrame < this->container->sphereSlot3SphereAnimaCont->totalFrames)
-							{
-								this->container->sphereSlot3SphereAnimaCont->tryPlay();
-								//this->container->sphereSlot3SphereAnimaCont->gotoAndStop((this->container->sphereSlot3SphereAnimaCont->currentFrame + 1));
-							}
-							else
-							{
-								this->container->sphereSlot3SphereAnimaCont->gotoAndStop(1);
-							}
-						}
+						this->container->sphereSlot3SphereAnima->tryPlay(0); 
 					}
 					if (this->container->sphereSlot4->isVisible())
 					{
-						if (this->container->sphereSlot4SphereAnima->currentFrame == 1)
-						{
-							if (this->container->sphereSlot4SphereAnimaCont->currentFrame < this->container->sphereSlot4SphereAnimaCont->totalFrames)
-							{
-								this->container->sphereSlot4SphereAnimaCont->tryPlay();
-								//this->container->sphereSlot4SphereAnimaCont->gotoAndStop((this->container->sphereSlot4SphereAnimaCont->currentFrame + 1));
-							}
-							else
-							{
-								this->container->sphereSlot4SphereAnimaCont->gotoAndStop(1);
-							}
-						}
-						else if (this->container->sphereSlot4SphereAnima->currentFrame == 2)
-						{
-							if (this->container->sphereSlot4SphereAnimaCont->currentFrame < this->container->sphereSlot4SphereAnimaCont->totalFrames)
-							{
-								this->container->sphereSlot4SphereAnimaCont->tryPlay();
-								//this->container->sphereSlot4SphereAnimaCont->gotoAndStop((this->container->sphereSlot4SphereAnimaCont->currentFrame + 1));
-							}
-							else
-							{
-								this->container->sphereSlot4SphereAnimaCont->gotoAndStop(1);
-							}
-						}
-						else if (this->container->sphereSlot4SphereAnima->currentFrame == 3)
-						{
-							if (this->container->sphereSlot4SphereAnimaCont->currentFrame < this->container->sphereSlot4SphereAnimaCont->totalFrames)
-							{
-								this->container->sphereSlot4SphereAnimaCont->tryPlay();
-								//this->container->sphereSlot4SphereAnimaCont->gotoAndStop((this->container->sphereSlot4SphereAnimaCont->currentFrame + 1));
-							}
-							else
-							{
-								this->container->sphereSlot4SphereAnimaCont->gotoAndStop(1);
-							}
-						}
-						else if (this->container->sphereSlot4SphereAnima->currentFrame == 4)
-						{
-							if (this->container->sphereSlot4SphereAnimaCont->currentFrame < this->container->sphereSlot4SphereAnimaCont->totalFrames)
-							{
-							    this->container->sphereSlot4SphereAnimaCont->tryPlay();
-								//this->container->sphereSlot4SphereAnimaCont->gotoAndStop((this->container->sphereSlot4SphereAnimaCont->currentFrame + 1));
-							}
-							else
-							{
-								this->container->sphereSlot4SphereAnimaCont->gotoAndStop(1);
-							}
-						}
+						this->container->sphereSlot4SphereAnima->tryPlay(0); 
 					}
 					if (this->closeFastBuyUltraFlag)
 					{
@@ -938,7 +599,7 @@ namespace engine
 					if (btnTowerUpgr->currentFrame < 5)
 					{
 						this->towerRadius1->setVisible(true);
-                        string parentName = event->target->getParent()->getName();
+                        string parentName = event->target->getParent()->getParent()->getName();
                         if(parentName == "btnTowerUpgr1")
 						{
 							this->towerRadius1->setWidth(Main::mainClass->readXMLClass.ultraFireStoneRadiusXML * 2);
@@ -1779,6 +1440,7 @@ namespace engine
 					MCCase *scase = ISTYPE(MCCase,event->target);
 					MovieClipSub * btnTowerUpgr = scase->getParentMC<MovieClipSub>();// this->container->getSphereSlot(scase);
 					Node * parent = event->target->getParent()->getParent();
+					string parName = parent->getName();
 					if (parent != this->container->btnTowerUpgr1->display)
 					{
 						if (this->container->btnTowerUpgr1->currentFrame == 3)
@@ -1823,11 +1485,11 @@ namespace engine
 						std::setText(costTXT, tempObject1);
 						if (this->fastBuyUltraFlag.empty())
 						{
-							this->fastBuyUltraFlag = event->target->getParent()->getName();
+							this->fastBuyUltraFlag = parName;
 							this->openFastBuyUltraFlag = true;
 							this->fastBuyUltraManage();
 						}
-						else if (event->target->getParent()->getName() == this->fastBuyUltraFlag)
+						else if (parName == this->fastBuyUltraFlag)
 						{
 							this->fastBuyUltraFlag = "";
 							this->closeFastBuyUltraFlag = true;
@@ -1842,11 +1504,11 @@ namespace engine
 							}
 							this->closeFastBuyUltraFlag = true;
 							this->mouseMoveHandler(event);
-							this->fastBuyUltraFlag = event->target->getParent()->getName();
+							this->fastBuyUltraFlag = parName;
 							this->openFastBuyUltraFlag = true;
 							this->closeFastBuyUltraFlag = false;
 							this->fastBuyUltraManage();
-							this->exampleUltraManage(event->target->getParent()->getName());
+							this->exampleUltraManage(parName);
 						}
 					}
 				}
@@ -1894,7 +1556,7 @@ namespace engine
 				else
 				{
 					this->fastBuyUltraManage();
-					if (this->container->btnTowerUpgr1)
+					if (this->container->btnTowerUpgr1->isReady)
 					{
 						if (Main::mainClass->readXMLClass.ultraTower1Block == 0)
 						{
@@ -1916,13 +1578,14 @@ namespace engine
 								this->container->btnTowerUpgr1BtnTowerUpgrCase->setMouseEnabled(false);
 							}
 							std::setText(this->container->btnTowerUpgr1CostTXT,Main::mainClass->readXMLClass.costUltraFireStone);
+							this->container->btnTowerUpgr1CostTXT->setColor(Color3B::BLACK);
 						}
 						else
 						{
 							this->container->btnTowerUpgr1->gotoAndStop(5);
 						}
 					}
-					if (this->container->btnTowerUpgr2)
+					if (this->container->btnTowerUpgr2->isReady)
 					{
 						if (Main::mainClass->readXMLClass.ultraTower2Block == 0)
 						{
@@ -1944,13 +1607,14 @@ namespace engine
 								this->container->btnTowerUpgr2BtnTowerUpgrCase->setMouseEnabled(false);
 							}
 							std::setText(this->container->btnTowerUpgr2CostTXT, Main::mainClass->readXMLClass.costUltraIceLevin);
+							this->container->btnTowerUpgr2CostTXT->setColor(Color3B::BLACK);
 						}
 						else
 						{
 							this->container->btnTowerUpgr2->gotoAndStop(5);
 						}
 					}
-					if (this->container->btnTowerUpgr3)
+					if (this->container->btnTowerUpgr3->isReady)
 					{
 						if (Main::mainClass->readXMLClass.ultraTower3Block == 0)
 						{
@@ -1972,13 +1636,14 @@ namespace engine
 								this->container->btnTowerUpgr3BtnTowerUpgrCase->setMouseEnabled(false);
 							}
 							std::setText(this->container->btnTowerUpgr3CostTXT, Main::mainClass->readXMLClass.costUltraIceStone);
+							this->container->btnTowerUpgr3CostTXT->setColor(Color3B::BLACK);
 						}
 						else
 						{
 							this->container->btnTowerUpgr3->gotoAndStop(5);
 						}
 					}
-					if (this->container->btnTowerUpgr4)
+					if (this->container->btnTowerUpgr4->isReady)
 					{
 						if (Main::mainClass->readXMLClass.ultraTower4Block == 0)
 						{
@@ -2000,6 +1665,7 @@ namespace engine
 								this->container->btnTowerUpgr4BtnTowerUpgrCase->setMouseEnabled(false);
 							}
 							std::setText(this->container->btnTowerUpgr4CostTXT, Main::mainClass->readXMLClass.costUltraFireLevin);
+							this->container->btnTowerUpgr4CostTXT->setColor(Color3B::BLACK);
 						}
 						else
 						{
@@ -2492,133 +2158,138 @@ namespace engine
 
 		void TowerMenu::autoguidersButtons()
 		{
-			this->autoguidesMouse_pt = CONVERT_TO_WORLD_POS(cocos2d::Point(Main::mouseX, Main::mouseY));
-			this->autoguidesObject = NULL;
-			if (this->container->currentFrame == 1)
-			{
-				if (this->container->btnUpgradeMenuBtnUpgradeMenuCase->isReady)
-				{
-					this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->btnUpgradeMenu->localToGlobal(this->container->btnUpgradeMenuBtnUpgradeMenuCase->getPosition()));
-					this->autoguidesObjectWidth = this->container->btnUpgradeMenuBtnUpgradeMenuCase->getWidth() / 2;
-					this->autoguidesObjectHeight = this->container->btnUpgradeMenuBtnUpgradeMenuCase->getHeight() / 2;
-					if (this->container->btnUpgradeMenuBtnUpgradeMenuCase->hitTest(this->autoguidesMouse_pt))
-						//if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-					{
-						this->autoguidesObject = this->container->btnUpgradeMenuBtnUpgradeMenuCase;
-					}
-				}
-			}
-			else if (this->container->currentFrame == this->container->totalFrames)
-			{
-				this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->btnTowerUpgr1->localToGlobal(this->container->btnTowerUpgr1BtnTowerUpgrCase->getPosition()));
-				this->autoguidesObjectWidth = this->container->btnTowerUpgr1BtnTowerUpgrCase->getWidth() / 2;
-				this->autoguidesObjectHeight = this->container->btnTowerUpgr1BtnTowerUpgrCase->getHeight() / 2;
-				if (this->container->btnTowerUpgr1BtnTowerUpgrCase->hitTest(this->autoguidesMouse_pt))
-					//if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-				{
-					this->autoguidesObject = this->container->btnTowerUpgr1BtnTowerUpgrCase;
-				}
-				if (!this->autoguidesObject)
-				{
-					this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->btnTowerUpgr2->localToGlobal(this->container->btnTowerUpgr2BtnTowerUpgrCase->getPosition()));
-					this->autoguidesObjectWidth = this->container->btnTowerUpgr2BtnTowerUpgrCase->getWidth() / 2;
-					this->autoguidesObjectHeight = this->container->btnTowerUpgr2BtnTowerUpgrCase->getHeight() / 2;
-					if (this->container->btnTowerUpgr2BtnTowerUpgrCase->hitTest(this->autoguidesMouse_pt))
-						//if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-					{
-						this->autoguidesObject = this->container->btnTowerUpgr2BtnTowerUpgrCase;
-					}
-				}
-				if (!this->autoguidesObject)
-				{
-					this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->btnTowerUpgr3->localToGlobal(this->container->btnTowerUpgr3BtnTowerUpgrCase->getPosition()));
-					this->autoguidesObjectWidth = this->container->btnTowerUpgr3BtnTowerUpgrCase->getWidth() / 2;
-					this->autoguidesObjectHeight = this->container->btnTowerUpgr3BtnTowerUpgrCase->getHeight() / 2;
-					if (this->container->btnTowerUpgr3BtnTowerUpgrCase->hitTest(this->autoguidesMouse_pt))
-						//if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-					{
-						this->autoguidesObject = this->container->btnTowerUpgr3BtnTowerUpgrCase;
-					}
-				}
-				if (!this->autoguidesObject)
-				{
-					this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->btnTowerUpgr4->localToGlobal(this->container->btnTowerUpgr4BtnTowerUpgrCase->getPosition()));
-					this->autoguidesObjectWidth = this->container->btnTowerUpgr4BtnTowerUpgrCase->getWidth() / 2;
-					this->autoguidesObjectHeight = this->container->btnTowerUpgr4BtnTowerUpgrCase->getHeight() / 2;
-					if (this->container->btnTowerUpgr4BtnTowerUpgrCase->hitTest(this->autoguidesMouse_pt))
-						//if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-					{
-						this->autoguidesObject = this->container->btnTowerUpgr4BtnTowerUpgrCase;
-					}
-				}
-				if (!this->autoguidesObject && !this->fastBuyUltraFlag.empty())
-				{
-					this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->fastBuyUltraContBtnFastBuyUltra->localToGlobal(this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->getPosition()));
-					this->autoguidesObjectWidth = this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->getWidth() / 2;
-					this->autoguidesObjectHeight = this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->getHeight() / 2;
-					if (this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->hitTest(this->autoguidesMouse_pt))
-						//if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-					{
-						this->autoguidesObject = this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase;
-					}
-				}
-			}
-			if (!this->autoguidesObject)
-			{
-				this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->sphereSlot1->localToGlobal(this->container->sphereSlot1SphereSlotCase->getPosition()));
-				this->autoguidesObjectWidth = this->container->sphereSlot1SphereSlotCase->getWidth() / 2;
-				this->autoguidesObjectHeight = this->container->sphereSlot1SphereSlotCase->getHeight() / 2;
-				if (this->container->sphereSlot1SphereSlotCase->hitTest(this->autoguidesMouse_pt))
-					//if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-				{
-					this->autoguidesObject = this->container->sphereSlot1SphereSlotCase;
-				}
-				if (!this->autoguidesObject)
-				{
-					this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->sphereSlot2->localToGlobal(this->container->sphereSlot2SphereSlotCase->getPosition()));
-					this->autoguidesObjectWidth = this->container->sphereSlot2SphereSlotCase->getWidth() / 2;
-					this->autoguidesObjectHeight = this->container->sphereSlot2SphereSlotCase->getHeight() / 2;
-					if (this->container->sphereSlot2SphereSlotCase->hitTest(this->autoguidesMouse_pt))
-						//if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-					{
-						this->autoguidesObject = this->container->sphereSlot2SphereSlotCase;
-					}
-				}
-				if (!this->autoguidesObject)
-				{
-					this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->sphereSlot3->localToGlobal(this->container->sphereSlot3SphereSlotCase->getPosition()));
-					this->autoguidesObjectWidth = this->container->sphereSlot3SphereSlotCase->getWidth() / 2;
-					this->autoguidesObjectHeight = this->container->sphereSlot3SphereSlotCase->getHeight() / 2;
-					if (this->container->sphereSlot3SphereSlotCase->hitTest(this->autoguidesMouse_pt))
-						//if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-					{
-						this->autoguidesObject = this->container->sphereSlot3SphereSlotCase;
-					}
-				}
-				if (!this->autoguidesObject)
-				{
-					this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->sphereSlot4->localToGlobal(this->container->sphereSlot4SphereSlotCase->getPosition()));
-					this->autoguidesObjectWidth = this->container->sphereSlot4SphereSlotCase->getWidth() / 2;
-					this->autoguidesObjectHeight = this->container->sphereSlot4SphereSlotCase->getHeight() / 2;
-					if (this->container->sphereSlot4SphereSlotCase->hitTest(this->autoguidesMouse_pt))
-						//if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-					{
-						this->autoguidesObject = this->container->sphereSlot4SphereSlotCase;
-					}
-				}
-			}
-			if (this->autoguidesObject)
-			{
-				//事件
-				//tempObject = new Object();
-				//tempObject->target = this->autoguidesObject;
-				//this->mouseMoveHandler(tempObject);
-			}
+			//this->autoguidesMouse_pt = CONVERT_TO_WORLD_POS(cocos2d::Point(Main::mouseX, Main::mouseY));
+			//this->autoguidesObject = NULL;
+			//if (this->container->currentFrame == 1)
+			//{
+			//	if (this->container->btnUpgradeMenuBtnUpgradeMenuCase->isReady)
+			//	{
+			//		this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->btnUpgradeMenu->localToGlobal(this->container->btnUpgradeMenuBtnUpgradeMenuCase->getPosition()));
+			//		this->autoguidesObjectWidth = this->container->btnUpgradeMenuBtnUpgradeMenuCase->getWidth() / 2;
+			//		this->autoguidesObjectHeight = this->container->btnUpgradeMenuBtnUpgradeMenuCase->getHeight() / 2;
+			//		if (this->container->btnUpgradeMenuBtnUpgradeMenuCase->hitTest(this->autoguidesMouse_pt))
+			//			//if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+			//		{
+			//			this->autoguidesObject = this->container->btnUpgradeMenuBtnUpgradeMenuCase;
+			//		}
+			//	}
+			//}
+			//else if (this->container->currentFrame == this->container->totalFrames)
+			//{
+			//	this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->btnTowerUpgr1->localToGlobal(this->container->btnTowerUpgr1BtnTowerUpgrCase->getPosition()));
+			//	this->autoguidesObjectWidth = this->container->btnTowerUpgr1BtnTowerUpgrCase->getWidth() / 2;
+			//	this->autoguidesObjectHeight = this->container->btnTowerUpgr1BtnTowerUpgrCase->getHeight() / 2;
+			//	if (this->container->btnTowerUpgr1BtnTowerUpgrCase->hitTest(this->autoguidesMouse_pt))
+			//		//if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+			//	{
+			//		this->autoguidesObject = this->container->btnTowerUpgr1BtnTowerUpgrCase;
+			//	}
+			//	if (!this->autoguidesObject)
+			//	{
+			//		this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->btnTowerUpgr2->localToGlobal(this->container->btnTowerUpgr2BtnTowerUpgrCase->getPosition()));
+			//		this->autoguidesObjectWidth = this->container->btnTowerUpgr2BtnTowerUpgrCase->getWidth() / 2;
+			//		this->autoguidesObjectHeight = this->container->btnTowerUpgr2BtnTowerUpgrCase->getHeight() / 2;
+			//		if (this->container->btnTowerUpgr2BtnTowerUpgrCase->hitTest(this->autoguidesMouse_pt))
+			//			//if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+			//		{
+			//			this->autoguidesObject = this->container->btnTowerUpgr2BtnTowerUpgrCase;
+			//		}
+			//	}
+			//	if (!this->autoguidesObject)
+			//	{
+			//		this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->btnTowerUpgr3->localToGlobal(this->container->btnTowerUpgr3BtnTowerUpgrCase->getPosition()));
+			//		this->autoguidesObjectWidth = this->container->btnTowerUpgr3BtnTowerUpgrCase->getWidth() / 2;
+			//		this->autoguidesObjectHeight = this->container->btnTowerUpgr3BtnTowerUpgrCase->getHeight() / 2;
+			//		if (this->container->btnTowerUpgr3BtnTowerUpgrCase->hitTest(this->autoguidesMouse_pt))
+			//			//if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+			//		{
+			//			this->autoguidesObject = this->container->btnTowerUpgr3BtnTowerUpgrCase;
+			//		}
+			//	}
+			//	if (!this->autoguidesObject)
+			//	{
+			//		this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->btnTowerUpgr4->localToGlobal(this->container->btnTowerUpgr4BtnTowerUpgrCase->getPosition()));
+			//		this->autoguidesObjectWidth = this->container->btnTowerUpgr4BtnTowerUpgrCase->getWidth() / 2;
+			//		this->autoguidesObjectHeight = this->container->btnTowerUpgr4BtnTowerUpgrCase->getHeight() / 2;
+			//		if (this->container->btnTowerUpgr4BtnTowerUpgrCase->hitTest(this->autoguidesMouse_pt))
+			//			//if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+			//		{
+			//			this->autoguidesObject = this->container->btnTowerUpgr4BtnTowerUpgrCase;
+			//		}
+			//	}
+			//	if (!this->autoguidesObject && !this->fastBuyUltraFlag.empty())
+			//	{
+			//		this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->fastBuyUltraContBtnFastBuyUltra->localToGlobal(this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->getPosition()));
+			//		this->autoguidesObjectWidth = this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->getWidth() / 2;
+			//		this->autoguidesObjectHeight = this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->getHeight() / 2;
+			//		if (this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->hitTest(this->autoguidesMouse_pt))
+			//			//if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+			//		{
+			//			this->autoguidesObject = this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase;
+			//		}
+			//	}
+			//}
+			//if (!this->autoguidesObject)
+			//{
+			//	this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->sphereSlot1->localToGlobal(this->container->sphereSlot1SphereSlotCase->getPosition()));
+			//	this->autoguidesObjectWidth = this->container->sphereSlot1SphereSlotCase->getWidth() / 2;
+			//	this->autoguidesObjectHeight = this->container->sphereSlot1SphereSlotCase->getHeight() / 2;
+			//	if (this->container->sphereSlot1SphereSlotCase->hitTest(this->autoguidesMouse_pt))
+			//		//if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+			//	{
+			//		this->autoguidesObject = this->container->sphereSlot1SphereSlotCase;
+			//	}
+			//	if (!this->autoguidesObject)
+			//	{
+			//		this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->sphereSlot2->localToGlobal(this->container->sphereSlot2SphereSlotCase->getPosition()));
+			//		this->autoguidesObjectWidth = this->container->sphereSlot2SphereSlotCase->getWidth() / 2;
+			//		this->autoguidesObjectHeight = this->container->sphereSlot2SphereSlotCase->getHeight() / 2;
+			//		if (this->container->sphereSlot2SphereSlotCase->hitTest(this->autoguidesMouse_pt))
+			//			//if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+			//		{
+			//			this->autoguidesObject = this->container->sphereSlot2SphereSlotCase;
+			//		}
+			//	}
+			//	if (!this->autoguidesObject)
+			//	{
+			//		this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->sphereSlot3->localToGlobal(this->container->sphereSlot3SphereSlotCase->getPosition()));
+			//		this->autoguidesObjectWidth = this->container->sphereSlot3SphereSlotCase->getWidth() / 2;
+			//		this->autoguidesObjectHeight = this->container->sphereSlot3SphereSlotCase->getHeight() / 2;
+			//		if (this->container->sphereSlot3SphereSlotCase->hitTest(this->autoguidesMouse_pt))
+			//			//if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+			//		{
+			//			this->autoguidesObject = this->container->sphereSlot3SphereSlotCase;
+			//		}
+			//	}
+			//	if (!this->autoguidesObject)
+			//	{
+			//		this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(this->container->sphereSlot4->localToGlobal(this->container->sphereSlot4SphereSlotCase->getPosition()));
+			//		this->autoguidesObjectWidth = this->container->sphereSlot4SphereSlotCase->getWidth() / 2;
+			//		this->autoguidesObjectHeight = this->container->sphereSlot4SphereSlotCase->getHeight() / 2;
+			//		if (this->container->sphereSlot4SphereSlotCase->hitTest(this->autoguidesMouse_pt))
+			//			//if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+			//		{
+			//			this->autoguidesObject = this->container->sphereSlot4SphereSlotCase;
+			//		}
+			//	}
+			//}
+			//if (this->autoguidesObject)
+			//{
+			//	//事件
+			//	//tempObject = new Object();
+			//	//tempObject->target = this->autoguidesObject;
+			//	//this->mouseMoveHandler(tempObject);
+			//}
 			return;
 		}// end function
 
 		void TowerMenu::hintManage(string param1, int param2, Node * param3)
 		{
+#if WIN32
+#else
+			return;
+#endif // WIN32
+
 			if (param1 == "ultraButtons")
 			{
 				if (!param3)
@@ -2690,38 +2361,32 @@ namespace engine
 		}// end function
 
 		void TowerMenu::hintPosition(int param1, Node* param2)
-		{
+		{ 
+			return;
+ 
 			Vec2 tempObject;
 			if (param1 == 1)
-			{
-				tempObject = this->container->btnTowerUpgr1->localToGlobal(this->container->btnTowerUpgr1BtnTowerUpgrCase->getPosition());
-			}
+				tempObject = this->container->btnTowerUpgr1BtnTowerUpgrCase->convertToWorldSpace(Vec2(0, 0));
 			else if (param1 == 2)
-			{
-				tempObject = this->container->btnTowerUpgr2->localToGlobal(this->container->btnTowerUpgr2BtnTowerUpgrCase->getPosition());
- 			}
+				tempObject = this->container->btnTowerUpgr2BtnTowerUpgrCase->convertToWorldSpace(Vec2(0, 0));
 			else if (param1 == 3)
-			{
-				tempObject = this->container->btnTowerUpgr3->localToGlobal(this->container->btnTowerUpgr3BtnTowerUpgrCase->getPosition());
- 			}
+				tempObject = this->container->btnTowerUpgr3BtnTowerUpgrCase->convertToWorldSpace(Vec2(0, 0));
 			else if (param1 == 4)
-			{
-				tempObject = this->container->btnTowerUpgr4->localToGlobal(this->container->btnTowerUpgr4BtnTowerUpgrCase->getPosition());
-			}
+				tempObject = this->container->btnTowerUpgr4BtnTowerUpgrCase->convertToWorldSpace(Vec2(0, 0));
 			else if (param1 == 5)
 			{
-			    tempObject = this->container->localToGlobal(this->container->btnUpgradeMenu->getPosition()) ;
+			    tempObject =  this->container->btnUpgradeMenuBtnUpgradeMenuCase->convertToWorldSpace(Vec2(0,0)) ;
 			    this->hint->gotoAndStop((param1 - 1));
 			}
 			else if (param1 == 9)
 			{
 			    if (!param2)
-			    {
-					tempObject = this->container->localToGlobal(this->container->btnUpgradeMenu->getPosition());
- 			    }
+			    { 
+					tempObject = this->container->btnUpgradeMenuBtnUpgradeMenuCase->convertToWorldSpace(Vec2(0, 0));
+				}
 			    else
 			    {
-			        tempObject = param2->getParent()->convertToWorldSpace(param2->getPosition());
+					tempObject = param2->convertToWorldSpace(Vec2(0, 0)); 
 			    }
 			    this->hint->gotoAndStop((param1 - 1));
 			}
@@ -2729,139 +2394,95 @@ namespace engine
 			{
 			    if (tempObject.x < 120)
 			    {
-			        if (tempObject.y < 120)
+			        if (tempObject.y > 120)
 			        {
 			            this->hint->gotoAndStop(4);
-			            this->hint->setPositionY( tempObject.y + 12);
-			        }
-			        else if (tempObject.y > Main::SCREEN_HEIGHT - 120)
-			        {
-			            this->hint->gotoAndStop(2);
-			            this->hint->setPositionY( tempObject.y - 12);
+						this->hint->setPosition(Vec2(tempObject.x + 12, tempObject.y - 12) - this->world->getPosition());
 			        }
 			        else
 			        {
-			            this->hint->gotoAndStop(2);
-			            this->hint->setPositionY(tempObject.y - 12);
-			        }
-			        this->hint->setPositionX(tempObject.x + 12);
+			            this->hint->gotoAndStop(2); 
+						this->hint->setPosition(Vec2(tempObject.x+12, tempObject.y + 12) - this->world->getPosition());
+					}
 			    }
 			    else if (tempObject.x > Main::SCREEN_WIDTH - 120)
 			    {
 			        if (tempObject.y < 120)
 			        {
-			            this->hint->gotoAndStop(3);
-			            this->hint->setPositionY(tempObject.y + 12);
+			            this->hint->gotoAndStop(1); 
+						this->hint->setPosition(Vec2(tempObject.x - 12, tempObject.y + 12) - this->world->getPosition());
 			        }
-			        else if (tempObject.y > Main::SCREEN_HEIGHT - 120)
+			        else  
 			        {
-			            this->hint->gotoAndStop(1);
-			            this->hint->setPositionY(tempObject.y - 12);
-			        }
-			        else
-			        {
-			            this->hint->gotoAndStop(1);
-			            this->hint->setPositionY(tempObject.y + 12);
-			        }
+			            this->hint->gotoAndStop(3); 
+						this->hint->setPosition(Vec2(tempObject.x - 12, tempObject.y - 12) - this->world->getPosition());
+					} 
 			        this->hint->setPositionX(tempObject.x - 12);
 			    }
 			    else if (tempObject.y < 120)
 			    {
 			        if (tempObject.x < 120)
 			        {
-			            this->hint->gotoAndStop(4);
-			            this->hint->setPositionX(tempObject.x + 12);
-			            this->hint->setPositionY(tempObject.y + 12);
-			        }
-			        else if (tempObject.x > Main::SCREEN_WIDTH - 120)
+			            this->hint->gotoAndStop(2); 
+						this->hint->setPosition(Vec2(tempObject.x + 12, tempObject.y + 12) - this->world->getPosition());
+					}
+			        else 
 			        {
-			            this->hint->gotoAndStop(3);
-			            this->hint->setPositionX(tempObject.x - 12);
-			            this->hint->setPositionY(tempObject.y + 12);
-			        }
-			        else
-			        {
-			            this->hint->gotoAndStop(4);
-			            this->hint->setPositionX(tempObject.x);
-			            this->hint->setPositionY(tempObject.y + 12);
-			        }
+			            this->hint->gotoAndStop(1); 
+						this->hint->setPosition(Vec2(tempObject.x - 12, tempObject.y + 12) - this->world->getPosition());
+					} 
 			    }
 			    else if (tempObject.y > Main::SCREEN_HEIGHT - 120)
 			    {
 			        if (tempObject.x < 120)
 			        {
-			            this->hint->gotoAndStop(2);
-			            this->hint->setPositionX(tempObject.x + 12);
-			            this->hint->setPositionY(tempObject.y - 12);
-			        }
-			        else if (tempObject.x > Main::SCREEN_WIDTH - 120)
+			            this->hint->gotoAndStop(4); 
+						this->hint->setPosition(Vec2(tempObject.x + 12, tempObject.y - 12) - this->world->getPosition());
+					}
+			        else 
 			        {
-			            this->hint->gotoAndStop(1);
-			            this->hint->setPositionX(tempObject.x - 12);
-			            this->hint->setPositionY(tempObject.y - 12);
-			        }
-			        else
-			        {
-			            this->hint->gotoAndStop(2);
-			            this->hint->setPositionX(tempObject.x);
-			            this->hint->setPositionY(tempObject.y - 12);
-			        }
+			            this->hint->gotoAndStop(3); 
+						this->hint->setPosition(Vec2(tempObject.x - 12, tempObject.y - 12) - this->world->getPosition());
+					}
 			    }
 			    else
 			    {
-			        this->hint->gotoAndStop(2);
-			        this->hint->setPositionX(tempObject.x);
-			        this->hint->setPositionY(tempObject.y - 12);
+			        this->hint->gotoAndStop(1); 
+					this->hint->setPosition(Vec2(tempObject.x - 12, tempObject.y + 12) - this->world->getPosition());
 			    }
 			}
 			else if (tempObject.x < 120)
 			{
 			    if (tempObject.y < 120)
 			    {
-			        this->hint->gotoAndStop(this->hint->currentFrame + 4);
-			        this->hint->setPositionY(tempObject.y + 12);
-			    }
-			    else if (tempObject.y > Main::SCREEN_HEIGHT - 120)
-			    {
 			        this->hint->gotoAndStop(this->hint->currentFrame + 2);
 			        this->hint->setPositionY(tempObject.y - 12);
 			    }
 			    else
 			    {
-			        this->hint->gotoAndStop(this->hint->currentFrame + 2);
-			        this->hint->setPositionY(tempObject.y - 12);
+					this->hint->gotoAndStop(this->hint->currentFrame + 4);
+					this->hint->setPositionY(tempObject.y + 12);
 			    }
 			    this->hint->setPositionX(tempObject.x + 12);
 			}
 			else if (tempObject.x > Main::SCREEN_WIDTH - 120)
 			{
 			    if (tempObject.y < 120)
-			    {
-			        this->hint->gotoAndStop(this->hint->currentFrame + 3);
-			        this->hint->setPositionY(tempObject.y + 12);
-			    }
-			    else if (tempObject.y > Main::SCREEN_HEIGHT - 120)
-			    {
-			        this->hint->gotoAndStop((this->hint->currentFrame + 1));
+			    { 
+					this->hint->gotoAndStop((this->hint->currentFrame + 1));
 			        this->hint->setPositionY(tempObject.y - 12);
 			    }
 			    else
 			    {
-			        this->hint->gotoAndStop((this->hint->currentFrame + 1));
-			        this->hint->setPositionY(tempObject.y + 12);
+			        this->hint->gotoAndStop(this->hint->currentFrame + 3);
+			        this->hint->setPositionY(tempObject.y + 12); 
 			    }
 			    this->hint->setPositionX(tempObject.x - 12);
 			}
 			else if (tempObject.y < 120)
 			{
 			    if (tempObject.x < 120)
-			    {
-			        this->hint->gotoAndStop(this->hint->currentFrame + 4);
-			        this->hint->setPositionX(tempObject.x + 12);
-			        this->hint->setPositionY(tempObject.y + 12);
-			    }
-			    else if (tempObject.x > Main::SCREEN_WIDTH - 120)
-			    {
+			    { 
 			        this->hint->gotoAndStop(this->hint->currentFrame + 3);
 			        this->hint->setPositionX(tempObject.x - 12);
 			        this->hint->setPositionY(tempObject.y + 12);
@@ -2869,20 +2490,14 @@ namespace engine
 			    else
 			    {
 			        this->hint->gotoAndStop(this->hint->currentFrame + 4);
-			        this->hint->setPositionX(tempObject.x);
-			        this->hint->setPositionY(tempObject.y + 12);
+			        this->hint->setPositionX(tempObject.x + 12);
+			        this->hint->setPositionY(tempObject.y + 12); 
 			    }
 			}
 			else if (tempObject.y > Main::SCREEN_HEIGHT - 120)
 			{
 			    if (tempObject.x < 120)
-			    {
-			        this->hint->gotoAndStop(this->hint->currentFrame + 2);
-			        this->hint->setPositionX(tempObject.x + 12);
-			        this->hint->setPositionY(tempObject.y - 12);
-			    }
-			    else if (tempObject.x > Main::SCREEN_WIDTH - 120)
-			    {
+			    { 
 			        this->hint->gotoAndStop((this->hint->currentFrame + 1));
 			        this->hint->setPositionX(tempObject.x - 12);
 			        this->hint->setPositionY(tempObject.y - 12);
@@ -2890,15 +2505,15 @@ namespace engine
 			    else
 			    {
 			        this->hint->gotoAndStop(this->hint->currentFrame + 2);
-			        this->hint->setPositionX(tempObject.x);
-			        this->hint->setPositionY(tempObject.y - 12);
+			        this->hint->setPositionX(tempObject.x + 12);
+			        this->hint->setPositionY(tempObject.y - 12); 
 			    }
 			}
 			else
 			{
-			    this->hint->gotoAndStop(this->hint->currentFrame + 2);
+			    this->hint->gotoAndStop(this->hint->currentFrame + 3);
 			    this->hint->setPositionX(tempObject.x);
-			    this->hint->setPositionY(tempObject.y - 12);
+			    this->hint->setPositionY(tempObject.y + 12);
 			}
 			//tempObject = NULL;
 			return;
@@ -3641,8 +3256,8 @@ namespace engine
 							}
 						}
 					}
-					this->fastBuyPrice = int(this->container->fastBuyUltraContBtnFastBuyUltraCostTXT);
-					if (this->world->money >= int(this->container->fastBuyUltraContBtnFastBuyUltraCostTXT))
+					this->fastBuyPrice = std::getInt(this->container->fastBuyUltraContBtnFastBuyUltraCostTXT);
+					if (this->world->money >= this->fastBuyPrice)
 					{
 						this->container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->setMouseEnabled(true);
 					}

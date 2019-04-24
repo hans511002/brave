@@ -8,8 +8,8 @@ namespace engine
 		TowerMenuHint_mc::TowerMenuHint_mc() :MovieClip("tower/", "TowerMenuHint_mc", "TowerMenuHint_mc")
 		{
 			SET_NODETYPENAME();
-			cont = this->createMovieClipSub("cont");
-			contCont1 = cont->createMovieClipSub("cont1");
+			cont = this->createMovieClipSub("cont", true);
+			contCont1 = cont->createMovieClipSub("cont1",true);
 			//不复用
 			//contCont1Sphere1 = contCont1->createMovieClipSub("sphere1");
 			//contCont1Sphere2 = contCont1->createMovieClipSub("sphere2");
@@ -61,21 +61,21 @@ namespace engine
 			sphereSlot1 = this->createMovieClipSub("sphereSlot1");
 			sphereSlot1SphereSlotCase = sphereSlot1->createCase("sphereSlotCase");
 			sphereSlot1SphereAnima = sphereSlot1->createMovieClip("sphereAnima", "tower/", "TowerMenuSphere_mc", "TowerMenuSphere_mc");
-			sphereSlot1SphereAnimaCont = sphereSlot1SphereAnima->createMovieClipSub("cont");
+			sphereSlot1SphereAnimaCont = sphereSlot1SphereAnima->createMovieClipSub("cont",true);
 			
 
 			sphereSlot2 = this->createMovieClipSub("sphereSlot2");
 			sphereSlot2SphereSlotCase = sphereSlot2->createCase("sphereSlotCase");
 			sphereSlot2SphereAnima = sphereSlot2->createMovieClip("sphereAnima", "tower/", "TowerMenuSphere_mc", "TowerMenuSphere_mc");
-			sphereSlot2SphereAnimaCont = sphereSlot2SphereAnima->createMovieClipSub("cont");
+			sphereSlot2SphereAnimaCont = sphereSlot2SphereAnima->createMovieClipSub("cont", true);
 			sphereSlot3 = this->createMovieClipSub("sphereSlot3");
 			sphereSlot3SphereSlotCase = sphereSlot3->createCase("sphereSlotCase");
 			sphereSlot3SphereAnima = sphereSlot3->createMovieClip("sphereAnima", "tower/", "TowerMenuSphere_mc", "TowerMenuSphere_mc");
-			sphereSlot3SphereAnimaCont = sphereSlot3SphereAnima->createMovieClipSub("cont");
+			sphereSlot3SphereAnimaCont = sphereSlot3SphereAnima->createMovieClipSub("cont", true);
 			sphereSlot4 = this->createMovieClipSub("sphereSlot4");
 			sphereSlot4SphereSlotCase = sphereSlot4->createCase("sphereSlotCase");
 			sphereSlot4SphereAnima = sphereSlot4->createMovieClip("sphereAnima", "tower/", "TowerMenuSphere_mc", "TowerMenuSphere_mc");
-			sphereSlot4SphereAnimaCont = sphereSlot4SphereAnima->createMovieClipSub("cont");
+			sphereSlot4SphereAnimaCont = sphereSlot4SphereAnima->createMovieClipSub("cont", true);
 
 		}
 
@@ -104,8 +104,8 @@ namespace engine
 			sphereSlot1SphereAnima = sphereSlot1->createMovieClip("sphereAnima", "tower/", "TowerMenuSphere_mc", "TowerMenuSphere_mc");
 			sphereSlot1SphereAnimaCont = sphereSlot1SphereAnima->createMovieClipSub("cont");
 			
-			sphereSlot1 = this->createMovieClipSub("sphereSlot2");
-			sphereSlot2SphereAnima = sphereSlot1->createMovieClip("sphereAnima", "tower/", "TowerMenuSphere_mc", "TowerMenuSphere_mc");
+			sphereSlot2 = this->createMovieClipSub("sphereSlot2");
+			sphereSlot2SphereAnima = sphereSlot2->createMovieClip("sphereAnima", "tower/", "TowerMenuSphere_mc", "TowerMenuSphere_mc");
 			sphereSlot2SphereAnimaCont = sphereSlot1SphereAnima->createMovieClipSub("cont");
 			sphereSlot2SphereSlotCase = sphereSlot2->createCase("sphereSlotCase");
 

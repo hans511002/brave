@@ -28,6 +28,14 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
+        debug {
+            externalNativeBuild {
+                cmake {
+                    arguments '-DDEBUG_TEST=1'
+                }
+            }
+        }
     }
     sourceSets.main {
         //java.srcDir "src/main"

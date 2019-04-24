@@ -45,16 +45,13 @@ namespace engine{
             {
                 this->rotationFlag = true;
             }
-            this->shadow = new MovieClip("sphere","UnitShadow_mc","UnitShadow_mc");// new UnitShadow_mc();
-            this->shadow->stop(); 
-            this->shadow->setMouseChildren(false);
-            this->shadow->setMouseEnabled(false);
+			this->shadow = new UnitShadow_mc();// new MovieClip("sphere","UnitShadow_mc","UnitShadow_mc");// new UnitShadow_mc();
+          
             this->shadow->setPosition(this_pt.x,whoShoot->getPositionY());
             //this->shadow->x = this_pt.x;
             //this->shadow->y = whoShoot.y;
             this->shadow->setScale(0.5,0.5);
-            world->addChild(this->shadow, 2);
-            world->addIndexes(this->shadow,2);
+            world->addChild(this->shadow, 2); 
             AudioUtil::playSound("Snd_tower_shootUltra1_1.mp3");
             return true;
         }// end function  

@@ -88,8 +88,8 @@ namespace engine
 			effectPos.push(Sector(0, 0, -15, 0));
 			effectPos.push(Sector(0, 0, 0, -15));
 			effectPos.push(Sector(0, 0, 0, 0));
-			effectPos.push(Sector(0, 20, 0, -15));
-			effectPos.push(Sector(0, 20, 0, -15));
+			effectPos.push(Sector(0, 20, -10, -15));
+			effectPos.push(Sector(0, 20, -10, -15));
 			effectPos.push(Sector(0, 20, 0, -15));
 			effectPos.push(Sector(10, 0, -10,0));
 			while (this->sectors.size() > effectPos.size()) {
@@ -97,12 +97,12 @@ namespace engine
 			}
 			calcSectors(bezierBox.level5_path11, bezierBox.level5_path12, bezierBox.level5_path13);
 			effectPos.push(Sector(0, 0, -10, 0));
-			effectPos.push(Sector(0, 15, 0, -10));
+			effectPos.push(Sector(0, 15, -10, -10));
 			effectPos.push(Sector(0, 15, -15, 0));
 			effectPos.push(Sector(0, 15, -15, -5));
 			effectPos.push(Sector(0, 15, -15, -5));
-			effectPos.push(Sector(0, 15, 0, -5));
-			effectPos.push(Sector(10, 0, 0, 0));
+			effectPos.push(Sector(0, 20, -10, -5));
+			effectPos.push(Sector(10, 0, -10, 0));
 		}
         else if(level == 6)
         {

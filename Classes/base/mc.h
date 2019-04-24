@@ -32,7 +32,7 @@ namespace engine
 		virtual  void nextFram();
         virtual void play(const string &  aniName = "", int times = 1);
 		virtual void play(int times);
-		virtual bool tryPlay();
+		virtual bool tryPlay(int times=1);
 		virtual bool isPlayEnd();
 
         virtual void stop(const string &  aniName = "");

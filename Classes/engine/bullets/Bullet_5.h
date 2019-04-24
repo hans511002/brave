@@ -17,7 +17,7 @@ namespace engine{
 			int enemyWay;
 			float enemyPath;//:Number;
 			float enemySpeed;//:Number;
-			MovieClip *shadow;
+			UnitShadow_mc *shadow;
 			float deviation;
 			bool effectFlag;
 

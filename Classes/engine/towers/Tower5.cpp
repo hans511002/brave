@@ -109,18 +109,19 @@ namespace engine
             else
             {
                 Tower::update();
-                if (world->frameCounter % 2)
-                {
-                    if (container->currentFrame < container->totalFrames)
-                    {
-                        container->tryPlay();
-                        //container->gotoAndStop((container->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->gotoAndStop(1);
-                    }
-                }
+				if(!container->inPlay)container->play(0);
+                //if (world->frameCounter % 2)
+                //{
+                //    if (container->currentFrame < container->totalFrames)
+                //    {
+                //        container->tryPlay();
+                //        //container->gotoAndStop((container->currentFrame + 1));
+                //    }
+                //    else
+                //    {
+                //        container->gotoAndStop(1);
+                //    }
+                //}
             }
             return;
         }// end function

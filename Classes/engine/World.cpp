@@ -193,8 +193,8 @@ namespace engine {
                         //this->setMouseChildren(true);
                         //this->setMouseEnabled(true);
                     } else if (this->nowLevel >= 2 && this->nowLevel <= 11) {
-						if (Main::fullTraining && !Main::mainClass->saveBoxClass->getBoolValue("Training_92", this->nowLevel-1))
-						{ 
+						if (!Main::mainClass->saveBoxClass->getBoolValue("Training_92", this->nowLevel-1))
+						{ //Main::fullTraining && 
 							this->menuObject = new training::Training_92(this->nowLevel - 1);
 							this->addChild(this->menuObject, 99);
 							Main::mainClass->saveBoxClass->setValue("Training_92", this->nowLevel-1, true);
@@ -837,7 +837,11 @@ namespace engine {
             if (!this->cast && targetName == "towerCase")// && event->target->mouseEnabled
             {
                 bool tempObject = false;
-                Node *parent = event->target->getParent()->getParent()->getParent()->getParent();
+				Node *parent = event->target->getParent();
+				for (int i = 0; i < 3; i++) {
+					if (parent == NULL)return;
+					parent= parent->getParent();
+				}
                 if (this->towerMenu || this->ultraTowerMenu) {
                     if (this->towerMenu) {
                         if (this->towerMenu->myTower != parent) {

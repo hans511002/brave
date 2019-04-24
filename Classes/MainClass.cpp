@@ -14,9 +14,16 @@
 
 Main * Main::mainClass;
 const double Main::AnimationInterval = 1.0f / (double)Main::FrameRate;
+#ifdef DEBUG_TEST
 bool Main::moneyDebug = true;
-bool Main::releaseTest =true;
-bool Main::fullTraining = false;
+bool Main::releaseTest =false;
+bool Main::fullTraining = true;
+#else
+bool Main::moneyDebug = true;
+bool Main::releaseTest = true;
+bool Main::fullTraining = false; 
+#endif // DEBUG_TEST
+
 namespace std {
 	sys::I18n i18n;
 
