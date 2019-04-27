@@ -584,8 +584,8 @@ namespace engine {
 				}
 				else {
 					this->ultraTowerMenu = new UltraTowerMenu(tower);
-					this->addChild(this->ultraTowerMenu, 3);
 					this->ultraTowerMenu->init();
+					this->addChild(this->ultraTowerMenu, 3);
 				}
 				AudioUtil::playSound("Snd_tower_openMenu.mp3");
 			}

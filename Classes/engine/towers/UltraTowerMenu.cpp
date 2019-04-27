@@ -7,10 +7,10 @@ namespace engine
 {
     namespace towers
     { 
-    	UltraTowerMenu::UltraTowerMenu(Tower *param1)
+    	UltraTowerMenu::UltraTowerMenu(Tower *param1):hint(0),i(0),j(0), container(0), lastE(0), sellTax(0.4f)
         {
             //this->addEventListener(Event.ADDED_TO_STAGE, this->init);
-            this->myTower = param1;
+            this->myTower = param1; 
             return;
         }// end function
         bool UltraTowerMenu::init()
@@ -48,6 +48,7 @@ namespace engine
             container->sellUltraTowerSellUltraTowerCase->stop();
             container->sellUltraTowerSellUltraTowerCase->setMouseEnabled(true);
             this->addChild(container);
+			this->closeFastBuyUltraFlag = true;
             this->world->addClasses(this);
             if (this->myTower->upgradeTypeAdd == 1)
             {
@@ -60,12 +61,12 @@ namespace engine
             this->world->worldInterface->barInfoManage(this);
             if (!this->hint)
             {
-                this->hint = new UltraTowerMenuHint_mc();
-                this->hint->stop(); 
-                this->hint->setMouseChildren(false);
-                this->hint->setMouseEnabled(false);
-                this->hint->setVisible(false);
-                this->world->addChild(this->hint,6);
+                //this->hint = new UltraTowerMenuHint_mc();
+                //this->hint->stop(); 
+                //this->hint->setMouseChildren(false);
+                //this->hint->setMouseEnabled(false);
+                //this->hint->setVisible(false);
+                //this->world->addChild(this->hint,6);
             }
             this->world->worldInterface->updateInfo();
             return true;
@@ -290,7 +291,7 @@ namespace engine
                     container->btnUpgradeMenu->gotoAndStop(2);
                     AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
                 }
-                if (!this->hint->isVisible() && !this->openFlag && !this->closeFlag)
+                if (this->hint && !this->hint->isVisible() && !this->openFlag && !this->closeFlag)
                 {
                     this->hint->setVisible(true);
                     if (this->myTower->towerType == 5)
@@ -319,7 +320,7 @@ namespace engine
                 }
                 if (targetName == "btnUpgradeMenuBLOCKCase")
                 {
-                    if (!this->hint->isVisible() && !this->openFlag && !this->closeFlag)
+                    if (this->hint && !this->hint->isVisible() && !this->openFlag && !this->closeFlag)
                     {
                         this->hint->setVisible(true);
                         if (this->myTower->towerType == 5)
@@ -342,13 +343,13 @@ namespace engine
                 }
                 else if (targetName == "btnUpgradeMenuLOCKCase")
                 {
-                    if (!this->hint->isVisible() && !this->openFlag && !this->closeFlag)
+                    if (this->hint && !this->hint->isVisible() && !this->openFlag && !this->closeFlag)
                     {
                         this->hint->setVisible(true);
                         this->hintPosition(21);
                     }
                 }
-                else if (this->hint->isVisible())
+                else if (this->hint && this->hint->isVisible())
                 {
                     this->hint->setVisible(false);
                 }
@@ -1575,6 +1576,7 @@ namespace engine
 
         void UltraTowerMenu::hintPosition(int param1 )
         {
+			if(!this->hint)return;
             //tempObject = container->localToGlobal(new Point(container->btnUpgradeMenu->x, container->btnUpgradeMenu->y));
             cocos2d::Point tempObject = container->btnUpgradeMenuBtnUpgradeMenuCase->convertToWorldSpace(Vec2(0, 0));
             param1 = param1 - 1;

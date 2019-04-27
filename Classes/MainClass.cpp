@@ -72,7 +72,9 @@ bool Main::init()
     CCLOG("fps=%i", Main::fps);
 
     this->saveBoxClass = new SaveBox();
-
+	  Main::moneyDebug = true;
+	  Main::releaseTest = true;
+	  Main::fullTraining = false;
 	////test
 	//this->saveBoxClass->playLevel = 1;
 	//Main::mainClass->saveBoxClass->setValue("newLevel", this->saveBoxClass->playLevel);

@@ -105,16 +105,16 @@ namespace engine
 			this->world->worldInterface->barInfoManage(this);
 			if (!this->hint)
 			{
-				this->hint = new TowerMenuHint_mc();
-				this->hint->stop();
-				this->hint->cont->stop();
-				this->hint->contCont1->stop();
-				this->hint->contCont1Sphere1->stop();
-				this->hint->contCont1Sphere2->stop();
-				this->hint->setMouseChildren(false);
-				this->hint->setMouseEnabled(false);
-				this->hint->setVisible(false);
-				this->world->addChild(this->hint,6);
+				//this->hint = new TowerMenuHint_mc();
+				//this->hint->stop();
+				//this->hint->cont->stop();
+				//this->hint->contCont1->stop();
+				//this->hint->contCont1Sphere1->stop();
+				//this->hint->contCont1Sphere2->stop();
+				//this->hint->setMouseChildren(false);
+				//this->hint->setMouseEnabled(false);
+				//this->hint->setVisible(false);
+				//this->world->addChild(this->hint,6);
 			}
 			if (this->world->eduOpenUpgrArrowFlag)
 			{
@@ -323,11 +323,11 @@ namespace engine
 					}
 					if (this->container->sphereSlot3->isVisible())
 					{
-						this->container->sphereSlot3SphereAnima->tryPlay(0); 
+						this->container->sphereSlot3SphereAnimaCont->tryPlay(0);
 					}
 					if (this->container->sphereSlot4->isVisible())
 					{
-						this->container->sphereSlot4SphereAnima->tryPlay(0); 
+						this->container->sphereSlot3SphereAnimaCont->tryPlay(0);
 					}
 					if (this->closeFastBuyUltraFlag)
 					{
@@ -449,13 +449,13 @@ namespace engine
 					}
 					if (this->myTower->towerType < 5)
 					{
-						if (!this->hint->isVisible() && !this->openFlag && !this->closeFlag)
+						if (this->hint && !this->hint->isVisible() && !this->openFlag && !this->closeFlag)
 						{
 							this->hint->setVisible(true);
 							this->hintPosition(5);
 						}
 					}
-					else if (this->hint->isVisible())
+					else if (this->hint && this->hint->isVisible())
 					{
 						this->hint->setVisible(false);
 					}
@@ -471,7 +471,7 @@ namespace engine
 					{
 						if (targetName == "btnUpgradeMenuBLOCKCase")
 						{
-							if (!this->hint->isVisible() && !this->openFlag && !this->closeFlag)
+							if (this->hint && !this->hint->isVisible() && !this->openFlag && !this->closeFlag)
 							{
 								this->hint->setVisible(true);
 								this->hintPosition(5);
@@ -485,12 +485,12 @@ namespace engine
 								this->hintPosition(9);
 							}
 						}
-						else if (this->hint->isVisible())
+						else if (this->hint && this->hint->isVisible())
 						{
 							this->hint->setVisible(false);
 						}
 					}
-					else if (this->hint->isVisible())
+					else if (this->hint && this->hint->isVisible())
 					{
 						this->hint->setVisible(false);
 					}
@@ -622,7 +622,7 @@ namespace engine
 							this->towerRadius1->setWidth(Main::mainClass->readXMLClass.ultraFireLevinRadiusXML * 2);
 							this->towerRadius1->setHeight(Main::mainClass->readXMLClass.ultraFireLevinRadiusXML * 2 * this->world->scaleRadius);
 						}
-						if (this->hint->currentFrame > 4)
+						if (this->hint && this->hint->currentFrame > 4)
 						{
 							this->hintManage("ultraButtons", 1);
 						}
@@ -698,7 +698,7 @@ namespace engine
 						{
 							this->world->worldInterface->archiveSphereBacklightManage("");
 						}
-						if (this->hint->currentFrame != 9 || !this->hint->isVisible())
+						if (this->hint && (this->hint->currentFrame != 9 || !this->hint->isVisible()))
 						{
 							this->hintManage("ultraButtons", 9, event->target->getParent());
 							if (this->exampleUltraTower)
@@ -763,7 +763,7 @@ namespace engine
 						}
 						if (targetName != "fastBuyUltraCase")
 						{
-							if (this->hint->isVisible())
+							if (this->hint && this->hint->isVisible())
 							{
 								this->hint->setVisible(false);
 							}
@@ -783,7 +783,7 @@ namespace engine
 							this->container->fastBuyUltraContBtnFastBuyUltra->gotoAndStop(2);
 							std::setText(this->container->fastBuyUltraContBtnFastBuyUltraCostTXT, fastBuyPrice);
 							//this->container->fastBuyUltraContBtnFastBuyUltraCostTXT = this->fastBuyPrice;
-							if (this->hint->currentFrame > 4)
+							if (this->hint && this->hint->currentFrame > 4)
 							{
 								this->hintManage("ultraButtons", 1);
 							}
@@ -801,7 +801,7 @@ namespace engine
 								{
 									this->world->worldInterface->archiveSphereBacklightManage("stone");
 								}
-								if (this->hint->cont->currentFrame != 1 || !this->hint->isVisible())
+								if (this->hint && (this->hint->cont->currentFrame != 1 || !this->hint->isVisible()))
 								{
 									this->hintManage("ultraButtons", 1);
 								}
@@ -820,7 +820,7 @@ namespace engine
 								{
 									this->world->worldInterface->archiveSphereBacklightManage("levin");
 								}
-								if (this->hint->cont->currentFrame != 2 || !this->hint->isVisible())
+								if (this->hint && (this->hint->cont->currentFrame != 2 || !this->hint->isVisible()))
 								{
 									this->hintManage("ultraButtons", 2);
 								}
@@ -839,7 +839,7 @@ namespace engine
 								{
 									this->world->worldInterface->archiveSphereBacklightManage("stone");
 								}
-								if (this->hint->cont->currentFrame != 3 || !this->hint->isVisible())
+								if (this->hint && (this->hint->cont->currentFrame != 3 || !this->hint->isVisible()))
 								{
 									this->hintManage("ultraButtons", 3);
 								}
@@ -858,14 +858,16 @@ namespace engine
 								{
 									this->world->worldInterface->archiveSphereBacklightManage("levin");
 								}
-								if (this->hint->cont->currentFrame != 4 || !this->hint->isVisible())
+								if (this->hint && (this->hint->cont->currentFrame != 4 || !this->hint->isVisible()))
 								{
 									this->hintManage("ultraButtons", 4);
 								}
 							}
-							this->hint->setPositionX(this->getPositionX() + this->container->getPositionX() + this->container->fastBuyUltraCont->getPositionX() + this->container->fastBuyUltraContBtnFastBuyUltra->getPositionX());
-							this->hint->setPositionY(this->getPositionY() + this->container->getPositionY() + this->container->fastBuyUltraCont->getPositionY() + this->container->fastBuyUltraContBtnFastBuyUltra->getPositionY() - 15);
-							AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+							if (this->hint) {
+								this->hint->setPositionX(this->getPositionX() + this->container->getPositionX() + this->container->fastBuyUltraCont->getPositionX() + this->container->fastBuyUltraContBtnFastBuyUltra->getPositionX());
+								this->hint->setPositionY(this->getPositionY() + this->container->getPositionY() + this->container->fastBuyUltraCont->getPositionY() + this->container->fastBuyUltraContBtnFastBuyUltra->getPositionY() - 15);
+								AudioUtil::playSoundWithVol("Snd_menu_mouseMove.mp3", 0.95f);
+							}
 						}
 					}
 					else if (this->container->fastBuyUltraContBtnFastBuyUltra->currentFrame == 2)
@@ -1421,12 +1423,14 @@ namespace engine
 						if (this->myTower->towerType == 4)
 						{
 							this->towerRadius1->setVisible(false);
-							this->hint->gotoAndStop(1);
-							this->hint->cont->stop();
-							this->hint->contCont1->stop();
-							this->hint->contCont1Sphere1->stop();
-							this->hint->contCont1Sphere2->stop();
-							this->hint->setVisible(false);
+							if (this->hint) {
+								this->hint->gotoAndStop(1);
+								this->hint->cont->stop();
+								this->hint->contCont1->stop();
+								this->hint->contCont1Sphere1->stop();
+								this->hint->contCont1Sphere2->stop();
+								this->hint->setVisible(false);
+							}
 						}
 					}
 				}
@@ -1709,7 +1713,7 @@ namespace engine
 					if (this->container->btnUpgradeMenu->currentFrame != 5)
 					{
 						this->container->btnUpgradeMenu->gotoAndStop(5);
-						if (!this->openFlag && !this->closeFlag)
+						if (this->hint && !this->openFlag && !this->closeFlag)
 						{
 							this->hint->setVisible(true);
 							this->hintPosition(9);
@@ -1747,7 +1751,7 @@ namespace engine
 					if (this->container->btnUpgradeMenu->currentFrame != 5)
 					{
 						this->container->btnUpgradeMenu->gotoAndStop(5);
-						if (!this->openFlag && !this->closeFlag)
+						if (this->hint && !this->openFlag && !this->closeFlag)
 						{
 							this->hint->setVisible(true);
 							this->hintPosition(9);
@@ -1785,7 +1789,7 @@ namespace engine
 					if (this->container->btnUpgradeMenu->currentFrame != 5)
 					{
 						this->container->btnUpgradeMenu->gotoAndStop(5);
-						if (!this->openFlag && !this->closeFlag)
+						if (this->hint && !this->openFlag && !this->closeFlag)
 						{
 							this->hint->setVisible(true);
 							this->hintPosition(9);
@@ -2287,9 +2291,9 @@ namespace engine
 
 		void TowerMenu::hintManage(string param1, int param2, Node * param3)
 		{
+			if(!this->hint )return;
 #if WIN32
 #else
-			return;
 #endif // WIN32
 
 			if (param1 == "ultraButtons")
@@ -2364,7 +2368,7 @@ namespace engine
 
 		void TowerMenu::hintPosition(int param1, Node* param2)
 		{ 
-			return;
+			if(!this->hint)return;
  
 			Vec2 tempObject;
 			if (param1 == 1)
