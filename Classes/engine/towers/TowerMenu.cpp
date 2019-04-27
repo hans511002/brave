@@ -327,7 +327,7 @@ namespace engine
 					}
 					if (this->container->sphereSlot4->isVisible())
 					{
-						this->container->sphereSlot3SphereAnimaCont->tryPlay(0);
+						this->container->sphereSlot4SphereAnimaCont->tryPlay(0);
 					}
 					if (this->closeFastBuyUltraFlag)
 					{
