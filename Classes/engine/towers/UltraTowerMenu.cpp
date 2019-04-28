@@ -1051,6 +1051,7 @@ namespace engine
                     this->world->money = this->world->money + tempObject;
                     this->world->worldInterface->updateInfo();
                     this->closeMenu();
+					this->myTower->myPlace->setVisible(true);
                     this->myTower->myPlace->gotoAndStop(1);
                     //this->myTower->myPlace->buildPoint->stop();
                     this->myTower->myPlace->placeForBuildCase->setMouseEnabled(true);
@@ -1336,67 +1337,67 @@ namespace engine
 
         void UltraTowerMenu::autoguidersButtons()
         {
-            this->autoguidesMouse_pt =CONVERT_TO_WORLD_POS(cocos2d::Point(Main::mouseX, Main::mouseY));
-            this->autoguidesObject = NULL;
-			this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(container->sphereSlot1SphereSlotCase->localToGlobal(container->sphereSlot1SphereSlotCase->getPosition()));
-            this->autoguidesObjectWidth = container->sphereSlot1SphereSlotCase->getWidth() / 2;
-            this->autoguidesObjectHeight = container->sphereSlot1SphereSlotCase->getHeight() / 2;
-            //if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-            //    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-            //    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-            //    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-			if (container->sphereSlot1SphereSlotCase->hitTest(autoguidesMouse_pt))
-            {
-                this->autoguidesObject = container->sphereSlot1SphereSlotCase;
-            }
-            if (!this->autoguidesObject)
-            {
-				this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(container->sphereSlot2SphereSlotCase->localToGlobal(container->sphereSlot2SphereSlotCase->getPosition()));
-				this->autoguidesObjectWidth = container->sphereSlot2SphereSlotCase->getWidth() / 2;
-				this->autoguidesObjectHeight = container->sphereSlot2SphereSlotCase->getHeight() / 2;
-                //if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                //    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                //    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                //    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-				if (container->sphereSlot2SphereSlotCase->hitTest(autoguidesMouse_pt))
-				{
-                    this->autoguidesObject = container->sphereSlot2SphereSlotCase;
-                }
-            }
-            if (!this->autoguidesObject && container->btnUpgradeMenu->isVisible() && container->btnUpgradeMenuBtnUpgradeMenuCase)
-            {
-				this->autoguidesObject_pt =CONVERT_TO_WORLD_POS( container->btnUpgradeMenuBtnUpgradeMenuCase->localToGlobal(container->btnUpgradeMenuBtnUpgradeMenuCase->getPosition()));
-				this->autoguidesObjectWidth = container->btnUpgradeMenuBtnUpgradeMenuCase->getWidth() / 2;
-				this->autoguidesObjectHeight = container->btnUpgradeMenuBtnUpgradeMenuCase->getHeight() / 2;
-                //if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                //    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                //    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                //    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-				if (container->btnUpgradeMenuBtnUpgradeMenuCase->hitTest(autoguidesMouse_pt))
-				{
-                    this->autoguidesObject = container->btnUpgradeMenuBtnUpgradeMenuCase;
-                }
-            }
-            if (!this->autoguidesObject && !this->fastBuyUltraFlag.empty())
-            {
-				this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->localToGlobal(container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->getPosition()));
-				this->autoguidesObjectWidth = container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->getWidth() / 2;
-				this->autoguidesObjectHeight = container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->getHeight() / 2;
-                //if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
-                //    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
-                //    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
-                //    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
-				if (container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->hitTest(autoguidesMouse_pt))
-				{
-                    this->autoguidesObject = container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase;
-                }
-            }
-            if (this->autoguidesObject)
-            {
-                //构造事件对象
-				std::MouseEvent  me = this->buildMouseEvent(this->autoguidesObject);
-                this->mouseMoveHandler(&me);
-            }
+   //         this->autoguidesMouse_pt =CONVERT_TO_WORLD_POS(cocos2d::Point(Main::mouseX, Main::mouseY));
+   //         this->autoguidesObject = NULL;
+			//this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(container->sphereSlot1SphereSlotCase->localToGlobal(container->sphereSlot1SphereSlotCase->getPosition()));
+   //         this->autoguidesObjectWidth = container->sphereSlot1SphereSlotCase->getWidth() / 2;
+   //         this->autoguidesObjectHeight = container->sphereSlot1SphereSlotCase->getHeight() / 2;
+   //         //if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
+   //         //    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
+   //         //    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
+   //         //    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+			//if (container->sphereSlot1SphereSlotCase->hitTest(autoguidesMouse_pt))
+   //         {
+   //             this->autoguidesObject = container->sphereSlot1SphereSlotCase;
+   //         }
+   //         if (!this->autoguidesObject)
+   //         {
+			//	this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(container->sphereSlot2SphereSlotCase->localToGlobal(container->sphereSlot2SphereSlotCase->getPosition()));
+			//	this->autoguidesObjectWidth = container->sphereSlot2SphereSlotCase->getWidth() / 2;
+			//	this->autoguidesObjectHeight = container->sphereSlot2SphereSlotCase->getHeight() / 2;
+   //             //if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
+   //             //    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
+   //             //    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
+   //             //    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+			//	if (container->sphereSlot2SphereSlotCase->hitTest(autoguidesMouse_pt))
+			//	{
+   //                 this->autoguidesObject = container->sphereSlot2SphereSlotCase;
+   //             }
+   //         }
+   //         if (!this->autoguidesObject && container->btnUpgradeMenu->isVisible() && container->btnUpgradeMenuBtnUpgradeMenuCase)
+   //         {
+			//	this->autoguidesObject_pt =CONVERT_TO_WORLD_POS( container->btnUpgradeMenuBtnUpgradeMenuCase->localToGlobal(container->btnUpgradeMenuBtnUpgradeMenuCase->getPosition()));
+			//	this->autoguidesObjectWidth = container->btnUpgradeMenuBtnUpgradeMenuCase->getWidth() / 2;
+			//	this->autoguidesObjectHeight = container->btnUpgradeMenuBtnUpgradeMenuCase->getHeight() / 2;
+   //             //if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
+   //             //    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
+   //             //    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
+   //             //    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+			//	if (container->btnUpgradeMenuBtnUpgradeMenuCase->hitTest(autoguidesMouse_pt))
+			//	{
+   //                 this->autoguidesObject = container->btnUpgradeMenuBtnUpgradeMenuCase;
+   //             }
+   //         }
+   //         if (!this->autoguidesObject && !this->fastBuyUltraFlag.empty())
+   //         {
+			//	this->autoguidesObject_pt = CONVERT_TO_WORLD_POS(container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->localToGlobal(container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->getPosition()));
+			//	this->autoguidesObjectWidth = container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->getWidth() / 2;
+			//	this->autoguidesObjectHeight = container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->getHeight() / 2;
+   //             //if (this->autoguidesMouse_pt.x >= this->autoguidesObject_pt.x - this->autoguidesObjectWidth 
+   //             //    && this->autoguidesMouse_pt.x <= this->autoguidesObject_pt.x + this->autoguidesObjectWidth 
+   //             //    && this->autoguidesMouse_pt.y >= this->autoguidesObject_pt.y - this->autoguidesObjectHeight 
+   //             //    && this->autoguidesMouse_pt.y <= this->autoguidesObject_pt.y + this->autoguidesObjectHeight)
+			//	if (container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase->hitTest(autoguidesMouse_pt))
+			//	{
+   //                 this->autoguidesObject = container->fastBuyUltraContBtnFastBuyUltraFastBuyUltraCase;
+   //             }
+   //         }
+   //         if (this->autoguidesObject)
+   //         {
+   //             //构造事件对象
+			//	std::MouseEvent  me = this->buildMouseEvent(this->autoguidesObject);
+   //             this->mouseMoveHandler(&me);
+   //         }
             return;
         }// end function
 

@@ -44,8 +44,8 @@ namespace engine
 			btnUpgradeMenu = this->createMovieClipSub("btnUpgradeMenu");
 			btnUpgradeMenuBtnUpgradeMenuCase = btnUpgradeMenu->createCase("btnUpgradeMenuCase");
 			btnUpgradeMenuBtnUpgradeMenuLOCKCase = btnUpgradeMenu->createCase("btnUpgradeMenuLOCKCase");
-			btnUpgradeMenuCostTXT = btnUpgradeMenu->createText("costTXT");
-
+			btnUpgradeMenuCostTXT = btnUpgradeMenu->createText("costTXT",true);
+			btnUpgradeMenuCostTXT->setPosition(btnUpgradeMenuCostTXT->getPosition()+Vec2(10,15));
 			cont1 = this->createMovieClipSub("cont1");
 			cont2 = this->createMovieClipSub("cont2");
 			fastBuyUltraCont = this->createMovieClipSub("fastBuyUltraCont", true);//13 帧后才有

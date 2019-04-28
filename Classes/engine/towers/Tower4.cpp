@@ -35,7 +35,6 @@ namespace engine
 			//sphere3_3 = this->createMovieClipSub("sphere3_3");
 			//sphere3_3Bullet = (BulletSphereTower_mc*)sphere3_3->createMovieClip("bullet", new BulletSphereTower_mc());
 			//sphere3_3BulletCont = sphere3_3Bullet->createMovieClipSub("cont");
-			init();
 
 		}
 		bool Tower4_mc::init() {
@@ -57,6 +56,10 @@ namespace engine
 			sphere4_2Bullet->gotoAndStop(5);
 			sphere4_3Bullet->gotoAndStop(5);
 			sphere4_4Bullet->gotoAndStop(5);
+			sphere4_1Bullet->setPosition(sphere4_1Bullet->getPosition() + Vec2(0, -10));
+			sphere4_2Bullet->setPosition(sphere4_2Bullet->getPosition() + Vec2(0, -10));
+			sphere4_3Bullet->setPosition(sphere4_3Bullet->getPosition() + Vec2(0, -10));
+			sphere4_4Bullet->setPosition(sphere4_4Bullet->getPosition() + Vec2(0, -10));
 			return true;
 		}
 
@@ -86,7 +89,8 @@ namespace engine
             container->boneBlock->setVisible(false);
             container->selectTower->setVisible(false);
             this->addChild(container);
-            Tower::init();
+			container->init();
+			Tower::init();
             if (!autoBuild)
             {
                 AudioUtil::playSoundWithVol("Snd_tower_build1.mp3", 0.9f);

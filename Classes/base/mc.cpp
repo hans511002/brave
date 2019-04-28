@@ -78,7 +78,7 @@ namespace engine
 		}
 		if (!this->inPlay)
 		{
-			if (this->currentFrame == totalFrames-1)currentFrame = 1;
+			if (times==0 && this->currentFrame >= totalFrames-1)currentFrame = 1;
 			this->play(times);
 			return this->inPlay;
 		}

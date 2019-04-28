@@ -24,6 +24,7 @@ namespace engine
 			sphere1Bullet = (BulletSphereTower_mc*)sphere1->createMovieClip("bullet", new BulletSphereTower_mc());
 			sphere1BulletCont = sphere1Bullet->cont;
 			sphere1Bullet->gotoAndStop(5);
+			sphere1Bullet->setPosition(sphere1Bullet->getPosition() + Vec2(0, -10));
 			return true;
 		}
 

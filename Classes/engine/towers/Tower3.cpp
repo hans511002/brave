@@ -24,7 +24,6 @@ namespace engine
 			//sphere2_2 = this->createMovieClipSub("sphere2_2");
 			//sphere2_2Bullet = (BulletSphereTower_mc*)sphere2_2->createMovieClip("bullet", new BulletSphereTower_mc());
 			//sphere2_2BulletCont = sphere2_2Bullet->createMovieClipSub("cont");
-			init();
 		}
 		bool Tower3_mc::init() {
 			Tower2_mc::init();
@@ -42,6 +41,11 @@ namespace engine
 			sphere3_1Bullet->gotoAndStop(5);
 			sphere3_2Bullet->gotoAndStop(5);
 			sphere3_3Bullet->gotoAndStop(5);
+
+			sphere3_1Bullet->setPosition(sphere3_1Bullet->getPosition() + Vec2(0, -10));
+			sphere3_2Bullet->setPosition(sphere3_2Bullet->getPosition() + Vec2(0, -10));
+			sphere3_3Bullet->setPosition(sphere3_3Bullet->getPosition() + Vec2(0, -10));
+
 			return true;
 		}
 
@@ -71,6 +75,7 @@ namespace engine
 			container->boneBlock->setVisible(false);
 			container->selectTower->setVisible(false);
 			this->addChild(container);
+			container->init();
 			Tower::init();
 			if (!autoBuild)
 			{

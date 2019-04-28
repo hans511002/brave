@@ -9,7 +9,6 @@ namespace engine
 	{ 
 		Tower2_mc::Tower2_mc() :Tower1_mc("tower/", "Tower2_mc", "Tower2_mc")
 		{
-			init();
 		};
 		bool Tower2_mc::init() {
 			Tower1_mc::init();
@@ -22,6 +21,10 @@ namespace engine
 			sphere2_2BulletCont = sphere2_2Bullet->cont;//createMovieClipSub("cont", true);
 			sphere2_1Bullet->gotoAndStop(5);
 			sphere2_2Bullet->gotoAndStop(5);
+
+			sphere2_1Bullet->setPosition(sphere2_1Bullet->getPosition() + Vec2(0, -10));
+			sphere2_2Bullet->setPosition(sphere2_2Bullet->getPosition() + Vec2(0, -10));
+
 			return true;
 		}
 
@@ -51,6 +54,8 @@ namespace engine
             container->boneBlock->setVisible(false);
             container->selectTower->setVisible(false);
             this->addChild(container);
+			container->init();
+
             Tower::init();
             if (!autoBuild)
             {

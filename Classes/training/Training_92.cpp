@@ -64,7 +64,7 @@ namespace training
 		this->manageListeners("on");
 		this->world = Main::mainClass->worldClass;
 		this->container = new Training_92_mc();
-		this->container->setPosition(Main::SCREEN_WIDTH_HALF, Main::LEVEL_MAP_HEIGHT/2);
+		this->container->setPosition(Vec2(Main::SCREEN_WIDTH_HALF, Main::LEVEL_MAP_HEIGHT / 2 - 60) - this->world->getPosition());
 		this->contStops();
 		this->container->cont->mouseChildren = false;
 		this->container->cont->mouseEnabled = false;

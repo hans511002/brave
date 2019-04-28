@@ -69,55 +69,55 @@ namespace engine
 		bool Cast::scanWay()
 		{
 			tempObject = CONVERT_TO_WORLD_POS(cocos2d::Point(Main::mouseX, Main::mouseY)); 
-			if(this->world->nowLevel == 6)
-			{
-				if(tempObject.x > 650 && tempObject.y < 320)
-				{
-					return false;
-				} 
-			}
-			else if(this->world->nowLevel == 11)
-			{
-				if(tempObject.x > 390 && tempObject.x < 656 && tempObject.y < 190)
-				{
-					return false;
-				}
-			}
-			else if(this->world->nowLevel == 13)
-			{
-				if(tempObject.x > 480 && tempObject.x < 550 && tempObject.y > 277)
-				{
-					return false;
-				}
-			}
-			else if(this->world->nowLevel == 14)
-			{
-				if(tempObject.x > 645 && tempObject.y > 440)
-				{
-					return false;
-				}
-			}
-			else if(this->world->nowLevel == 15)
-			{
-				if(tempObject.x >= 366 && tempObject.x <= 447 && tempObject.y < 296)
-				{
-					return false;
-				}
-			}
-			auto ab = dynamic_cast<Cast_3*>(this);
-			if(ab)
-			{
-				if(this->world->nowLevel == 9)
-				{
-					if(tempObject.x >= 370 && tempObject.x <= 470 && tempObject.y >= 240 && tempObject.y <= 390)
-					{
-						return true;
-					}
-				}
-				if(this->world->nowLevel == 15)
-				{
-				}
-			}
+			//if(this->world->nowLevel == 6)
+			//{
+			//	if(tempObject.x > 650 && tempObject.y < 320)
+			//	{
+			//		return false;
+			//	} 
+			//}
+			//else if(this->world->nowLevel == 11)
+			//{
+			//	if(tempObject.x > 390 && tempObject.x < 656 && tempObject.y < 190)
+			//	{
+			//		return false;
+			//	}
+			//}
+			//else if(this->world->nowLevel == 13)
+			//{
+			//	if(tempObject.x > 480 && tempObject.x < 550 && tempObject.y > 277)
+			//	{
+			//		return false;
+			//	}
+			//}
+			//else if(this->world->nowLevel == 14)
+			//{
+			//	if(tempObject.x > 645 && tempObject.y > 440)
+			//	{
+			//		return false;
+			//	}
+			//}
+			//else if(this->world->nowLevel == 15)
+			//{
+			//	if(tempObject.x >= 366 && tempObject.x <= 447 && tempObject.y < 296)
+			//	{
+			//		return false;
+			//	}
+			//}
+			//auto ab = dynamic_cast<Cast_3*>(this);
+			//if(ab)
+			//{
+			//	if(this->world->nowLevel == 9)
+			//	{
+			//		if(tempObject.x >= 370 && tempObject.x <= 470 && tempObject.y >= 240 && tempObject.y <= 390)
+			//		{
+			//			return true;
+			//		}
+			//	}
+			//	if(this->world->nowLevel == 15)
+			//	{
+			//	}
+			//}
 			this->n = 1;
 			while(this->n <= Main::mainClass->readXMLClass.strategies)
 			{
