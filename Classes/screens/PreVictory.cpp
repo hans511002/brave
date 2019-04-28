@@ -33,7 +33,7 @@ namespace screens
 		Main::mainClass->worldClass->worldInterface->breaking();
 		this->container = new PreVictory_mc();
 		this->stopAll();
-		this->container->setPosition(Main::SCREEN_WIDTH_HALF, Main::SCREEN_HEIGHT_HALF);
+		this->container->setPosition(Vec2(Main::SCREEN_WIDTH_HALF, Main::SCREEN_HEIGHT_HALF) - Main::mainClass->worldClass->getPosition());
 		this->addChild(this->container);
 		this->container->cont->setMouseChildren(false);
 		this->container->cont->mouseEnabled = false;
