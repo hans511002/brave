@@ -57,7 +57,7 @@ namespace engine
 
                 this->setMouseChildren(false);
                 this->setMouseEnabled(false);
-                this->portalAnima = new MovieClip("unit/", "RoadUnitIce_mc");// RoadUnitIce_mc();
+                this->portalAnima = new MovieClip("unit/", "RoadUnitIce_mc", "RoadUnitIce_mc");// RoadUnitIce_mc();
 				this->portalAnima->stop();
 				this->portalAnima->setVisible(false);
 				this->addChild(this->portalAnima); 

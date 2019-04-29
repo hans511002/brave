@@ -122,7 +122,7 @@ namespace engine
                 {
                     if (!teleportAnima)
                     {
-                        teleportAnima = new MovieClip("unit/","UnitTeleportOut_mc");
+                        teleportAnima = new MovieClip("unit/","UnitTeleportOut_mc", "UnitTeleportOut_mc");
                         teleportAnima->stop();
                         teleportAnima->setPosition(container->unitCase->getPosition());
                         //teleportAnima->x = container->unitCase.x;
@@ -133,7 +133,7 @@ namespace engine
                         i = 0;
                         while (i < this->listOfTeleportUnits.size())
                         {
-                            this->listOfTeleportUnits[i]->teleportAnima = new MovieClip("unit/","UnitTeleportOut_mc");
+                            this->listOfTeleportUnits[i]->teleportAnima = new MovieClip("unit/","UnitTeleportOut_mc", "UnitTeleportOut_mc");
                             this->listOfTeleportUnits[i]->teleportAnima->stop();
                             this->listOfTeleportUnits[i]->teleportAnima->setPosition(this->listOfTeleportUnits[i]->container->unitCase->getPosition());
                             //this->listOfTeleportUnits[i]->teleportAnima->x = this->listOfTeleportUnits[i]->container->unitCase.x;
@@ -216,7 +216,7 @@ namespace engine
                         this->setPosition(this_pt); 
                         shoot_pt = CONVERT_TO_WORLD_POS(container->localToGlobal(container->getPosition()));
                         //shoot_pt = container->localToGlobal(new Point(container->x, container->y));
-                        teleportAnima = new MovieClip("unit/","UnitTeleportIn_mc");//new UnitTeleportIn_mc();
+                        teleportAnima = new MovieClip("unit/","UnitTeleportIn_mc", "UnitTeleportIn_mc");//new UnitTeleportIn_mc();
                         teleportAnima->stop();
                         teleportAnima->setPosition(container->unitCase->getPosition());
                         //teleportAnima->x = container->unitCase.x;
@@ -233,7 +233,7 @@ namespace engine
                             this->listOfTeleportUnits[i]->setPosition(tempObject);
                             this->listOfTeleportUnits[i]->this_pt = tempObject;//new Point(this->listOfTeleportUnits[i]->x, this->listOfTeleportUnits[i]->y);
                             this->listOfTeleportUnits[i]->shoot_pt = tempObject;//this->listOfTeleportUnits[i]->container->localToGlobal(new Point(this->listOfTeleportUnits[i]->container->x, this->listOfTeleportUnits[i]->container->y));
-                            this->listOfTeleportUnits[i]->teleportAnima = new MovieClip("unit/","UnitTeleportIn_mc");//new UnitTeleportIn_mc();
+                            this->listOfTeleportUnits[i]->teleportAnima = new MovieClip("unit/","UnitTeleportIn_mc", "UnitTeleportIn_mc");//new UnitTeleportIn_mc();
                             this->listOfTeleportUnits[i]->teleportAnima->stop();
                             this->listOfTeleportUnits[i]->teleportAnima->setPosition(this->listOfTeleportUnits[i]->container->unitCase->getPosition());
                             //this->listOfTeleportUnits[i]->teleportAnima->x = this->listOfTeleportUnits[i]->container->unitCase.x;

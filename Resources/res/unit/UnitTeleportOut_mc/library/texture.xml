@@ -1,0 +1,12 @@
+<TextureAtlas name="UnitTeleportOut_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 10655" x="0" y="38" width="39" height="36"/>
+ <SubTexture name="Shape/shape 10657" x="41" y="76" width="39" height="36"/>
+ <SubTexture name="Shape/shape 10659" x="82" y="76" width="39" height="36"/>
+ <SubTexture name="Shape/shape 10661" x="82" y="38" width="39" height="36"/>
+ <SubTexture name="Shape/shape 10663" x="0" y="114" width="39" height="36"/>
+ <SubTexture name="Shape/shape 10665" x="82" y="0" width="39" height="36"/>
+ <SubTexture name="Shape/shape 10667" x="41" y="38" width="39" height="36"/>
+ <SubTexture name="Shape/shape 10669" x="0" y="0" width="39" height="36"/>
+ <SubTexture name="Shape/shape 10671" x="0" y="76" width="39" height="36"/>
+ <SubTexture name="Shape/shape 10673" x="41" y="0" width="39" height="36"/>
+</TextureAtlas>

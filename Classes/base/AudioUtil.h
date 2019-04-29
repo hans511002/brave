@@ -29,7 +29,7 @@ namespace std
           
         void preloadEffect(const char * file);
         unsigned int playSoundWithVol(const char * file,float vol=1.0f,bool loop=false);
-        inline unsigned int playSound(const char * file,bool loop=false){return playSoundWithVol(file,-1,loop);};
+        inline unsigned int playSound(const char * file,bool loop=false){return playSoundWithVol(file,1,loop);};
         void stopEffect (unsigned int soundId );
         void pauseEffect (unsigned int soundId );
         void resumeEffect (unsigned int soundId );

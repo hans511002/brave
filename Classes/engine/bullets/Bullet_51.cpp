@@ -15,7 +15,7 @@ namespace engine {
 			bulletType = 51;
 			liveCounter = 0;
 			distanceX = -40;
-			distanceY = -40;
+			distanceY = 40;
 			this->setPosition(this_pt);
 			//this->x = this_pt.x;
 			//this->y = this_pt.y;
@@ -23,7 +23,7 @@ namespace engine {
 			while (i < 7)
 			{
 				distanceX = -40;
-				distanceY = distanceY + 10;
+				distanceY = distanceY - 10;
 				j = 0;
 				while (j < 7)
 				{
@@ -42,14 +42,14 @@ namespace engine {
 							tempObject->setScaleX(tempObject->getScaleX() * -1);
 							tempObject->setPositionX(-44);
 						}
-						tempObject->setPositionY(-624);//.y = -624;
+						tempObject->setPositionY( 624);//.y = -624;
 					}
 					else
 					{
 						this->turnFlag = true;
 						tempObject = new BulletTower51_2_mc();
 						tempObject->setPositionX(0);//tempObject.x = 0;
-						tempObject->setPositionY(-624);//tempObject.y = -624;
+						tempObject->setPositionY( 624);//tempObject.y = -624;
 					}
 					tempObject->stop();
 					tempObject->setPositionX(tempObject->getPositionX() + distanceX);

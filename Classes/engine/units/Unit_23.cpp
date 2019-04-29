@@ -52,7 +52,7 @@ namespace engine
 				container->setVisible(false);
 				this->setMouseChildren(false);
 				this->setMouseEnabled(false);
-				this->portalAnima = new MovieClip("unit/", "RoadUnitFire_mc");// RoadUnitFire_mc();
+				this->portalAnima = new MovieClip("unit/", "RoadUnitFire_mc", "RoadUnitFire_mc");// RoadUnitFire_mc();
 				this->portalAnima->stop();
 				this->portalAnima->setVisible(false);
 				this->addChild(this->portalAnima);

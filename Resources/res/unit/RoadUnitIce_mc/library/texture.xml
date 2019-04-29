@@ -1,0 +1,13 @@
+<TextureAtlas name="RoadUnitIce_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 11616" x="153" y="57" width="49" height="56"/>
+ <SubTexture name="Shape/shape 11618" x="204" y="0" width="49" height="56"/>
+ <SubTexture name="Shape/shape 11620" x="102" y="0" width="49" height="56"/>
+ <SubTexture name="Shape/shape 11622" x="51" y="0" width="49" height="56"/>
+ <SubTexture name="Shape/shape 11624" x="0" y="57" width="49" height="56"/>
+ <SubTexture name="Shape/shape 11599" x="102" y="57" width="49" height="56"/>
+ <SubTexture name="Shape/shape 11602" x="0" y="0" width="49" height="56"/>
+ <SubTexture name="Shape/shape 11605" x="153" y="0" width="49" height="56"/>
+ <SubTexture name="Shape/shape 11608" x="51" y="57" width="49" height="56"/>
+ <SubTexture name="Shape/shape 11611" x="0" y="114" width="49" height="56"/>
+ <SubTexture name="Shape/shape 11614" x="204" y="57" width="49" height="56"/>
+</TextureAtlas>

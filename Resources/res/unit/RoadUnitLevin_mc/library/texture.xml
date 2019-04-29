@@ -1,0 +1,10 @@
+<TextureAtlas name="RoadUnitLevin_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 10637" x="0" y="81" width="65" height="79"/>
+ <SubTexture name="Shape/shape 10639" x="67" y="81" width="65" height="79"/>
+ <SubTexture name="Shape/shape 10641" x="0" y="0" width="65" height="79"/>
+ <SubTexture name="Shape/shape 10643" x="0" y="162" width="65" height="79"/>
+ <SubTexture name="Shape/shape 10645" x="134" y="0" width="65" height="79"/>
+ <SubTexture name="Shape/shape 10647" x="67" y="162" width="65" height="79"/>
+ <SubTexture name="Shape/shape 10649" x="134" y="81" width="65" height="79"/>
+ <SubTexture name="Shape/shape 10651" x="67" y="0" width="65" height="79"/>
+</TextureAtlas>

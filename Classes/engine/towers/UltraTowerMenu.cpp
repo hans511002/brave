@@ -47,8 +47,11 @@ namespace engine
             container->sellUltraTower->stop();
             container->sellUltraTowerSellUltraTowerCase->stop();
             container->sellUltraTowerSellUltraTowerCase->setMouseEnabled(true);
+			container->btnUpgradeMenuCostTXT->setPosition(container->btnUpgradeMenuCostTXT->getPosition() + Vec2(8, 10));
+			container->fastBuyUltraContBtnFastBuyUltraCostTXT->setPosition(container->fastBuyUltraContBtnFastBuyUltraCostTXT->getPosition() + Vec2(10,15));
+			
             this->addChild(container);
-			this->closeFastBuyUltraFlag = true;
+			//this->closeFastBuyUltraFlag = true;
             this->world->addClasses(this);
             if (this->myTower->upgradeTypeAdd == 1)
             {
@@ -874,7 +877,7 @@ namespace engine
                         std::setText(container->btnUpgradeMenuCostTXT, Main::mainClass->readXMLClass.costUltraAddFireLevin);
                         //container->btnUpgradeMenu->costTXT.text = Main::mainClass->readXMLClass.costUltraAddFireLevin;
                     }
-                    if (!this->fastBuyUltraFlag.empty())
+                    if (this->fastBuyUltraFlag.empty())
                     {
                         this->fastBuyUltraFlag = "upgrade";
                         this->openFastBuyUltraFlag = true;
@@ -1101,7 +1104,7 @@ namespace engine
                     {
                         container->btnUpgradeMenu->setVisible(false);
                     }
-                    else if (this->world->money >= Main::mainClass->readXMLClass.costUltraAddFireStone && !this->fastBuyUltraFlag.empty())
+                    else if (this->world->money >= Main::mainClass->readXMLClass.costUltraAddFireStone && this->fastBuyUltraFlag.empty())
                     {
                         container->btnUpgradeMenu->gotoAndStop(1);
                         container->btnUpgradeMenuBtnUpgradeMenuCase->setMouseEnabled(true);
@@ -1110,7 +1113,7 @@ namespace engine
                     {
                         container->btnUpgradeMenu->gotoAndStop(4);
                     }
-					if (!this->fastBuyUltraFlag.empty())
+					if (this->fastBuyUltraFlag.empty())
                     {
                         std::setText(container->btnUpgradeMenuCostTXT, Main::mainClass->readXMLClass.costUltraAddFireStone);
                         //container->btnUpgradeMenu->costTXT.text = Main::mainClass->readXMLClass.costUltraAddFireStone;
@@ -1165,7 +1168,7 @@ namespace engine
                     {
                         container->btnUpgradeMenu->setVisible(false);
                     }
-					else if (this->world->money >= Main::mainClass->readXMLClass.costUltraAddIceLevin && !this->fastBuyUltraFlag.empty())
+					else if (this->world->money >= Main::mainClass->readXMLClass.costUltraAddIceLevin && this->fastBuyUltraFlag.empty())
                     {
                         container->btnUpgradeMenu->gotoAndStop(1);
                         container->btnUpgradeMenuBtnUpgradeMenuCase->setMouseEnabled(true);
@@ -1174,7 +1177,7 @@ namespace engine
                     {
                         container->btnUpgradeMenu->gotoAndStop(4);
                     }
-					if (!this->fastBuyUltraFlag.empty())
+					if (this->fastBuyUltraFlag.empty())
                     {
                         std::setText(container->btnUpgradeMenuCostTXT, Main::mainClass->readXMLClass.costUltraAddIceLevin);
                         //container->btnUpgradeMenu->costTXT.text = Main::mainClass->readXMLClass.costUltraAddIceLevin;
@@ -1229,7 +1232,7 @@ namespace engine
                     {
                         container->btnUpgradeMenu->setVisible(false);
                     }
-					else if (this->world->money >= Main::mainClass->readXMLClass.costUltraAddIceStone && !this->fastBuyUltraFlag.empty())
+					else if (this->world->money >= Main::mainClass->readXMLClass.costUltraAddIceStone && this->fastBuyUltraFlag.empty())
                     {
                         container->btnUpgradeMenu->gotoAndStop(1);
                         container->btnUpgradeMenuBtnUpgradeMenuCase->setMouseEnabled(true);
@@ -1238,7 +1241,7 @@ namespace engine
                     {
                         container->btnUpgradeMenu->gotoAndStop(4);
                     }
-					if (!this->fastBuyUltraFlag.empty())
+					if (this->fastBuyUltraFlag.empty())
                     {
                         std::setText(container->btnUpgradeMenuCostTXT, Main::mainClass->readXMLClass.costUltraAddIceStone);
                         //container->btnUpgradeMenu->costTXT.text = Main::mainClass->readXMLClass.costUltraAddIceStone;
@@ -1293,7 +1296,7 @@ namespace engine
                     {
                         container->btnUpgradeMenu->setVisible(false);
                     }
-					else if (this->world->money >= Main::mainClass->readXMLClass.costUltraAddFireLevin && !this->fastBuyUltraFlag.empty())
+					else if (this->world->money >= Main::mainClass->readXMLClass.costUltraAddFireLevin && this->fastBuyUltraFlag.empty())
                     {
                         container->btnUpgradeMenu->gotoAndStop(1);
                         container->btnUpgradeMenuBtnUpgradeMenuCase->setMouseEnabled(true);
@@ -1302,7 +1305,7 @@ namespace engine
                     {
                         container->btnUpgradeMenu->gotoAndStop(4);
                     }
-					if (!this->fastBuyUltraFlag.empty())
+					if (this->fastBuyUltraFlag.empty())
                     {
                         std::setText(container->btnUpgradeMenuCostTXT, Main::mainClass->readXMLClass.costUltraAddFireLevin);
                         //container->btnUpgradeMenu->costTXT.text = Main::mainClass->readXMLClass.costUltraAddFireLevin;
@@ -1415,7 +1418,7 @@ namespace engine
                 container->fastBuyUltraContIndicator4->stop();
                 container->fastBuyUltraContIndicator2->setVisible(false);
                 container->fastBuyUltraContIndicator3->setVisible(false);
-                if (!this->fastBuyUltraFlag.empty() && !this->openFastBuyUltraFlag && !this->closeFastBuyUltraFlag)
+                if (this->fastBuyUltraFlag.empty() && !this->openFastBuyUltraFlag && !this->closeFastBuyUltraFlag)
                 {
                     container->fastBuyUltraCont->setVisible(false);
                 }

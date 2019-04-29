@@ -107,7 +107,19 @@ namespace engine
         else if(level == 6)
         {
             calcSectors(bezierBox.level6_path1, bezierBox.level6_path2, bezierBox.level6_path3);
-            calcSectors(bezierBox.level6_path11, bezierBox.level6_path12, bezierBox.level6_path13);
+			effectPos.push(Sector(0, 10, 0, 0));
+			effectPos.push(Sector(0, 0, 0, 0));
+			effectPos.push(Sector(0, 0, 0, 0));
+			effectPos.push(Sector(0, 0, 0, 0));
+			effectPos.push(Sector(0, 10, 0, 0));
+			while (this->sectors.size() > effectPos.size()) {
+				effectPos.push(Sector(0, 0, 0, 0));
+			}
+			calcSectors(bezierBox.level6_path11, bezierBox.level6_path12, bezierBox.level6_path13);
+			effectPos.push(Sector(0, 0, 0, 0));
+			effectPos.push(Sector(5, 0, 0, 0));
+			effectPos.push(Sector(0, 10, 0, 0));
+			effectPos.push(Sector(-10, 0, 0, 0));
         }
         else if(level == 7)
         {

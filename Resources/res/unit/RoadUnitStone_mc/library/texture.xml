@@ -1,0 +1,9 @@
+<TextureAtlas name="RoadUnitStone_mc" imagePath="texture.png">
+ <SubTexture name="Shape/shape 11667" x="140" y="0" width="68" height="44"/>
+ <SubTexture name="Shape/shape 11669" x="70" y="0" width="68" height="44"/>
+ <SubTexture name="Shape/shape 11671" x="70" y="46" width="68" height="44"/>
+ <SubTexture name="Shape/shape 11673" x="0" y="46" width="68" height="44"/>
+ <SubTexture name="Shape/shape 11675" x="0" y="0" width="68" height="44"/>
+ <SubTexture name="Shape/shape 11677" x="140" y="46" width="68" height="44"/>
+ <SubTexture name="Shape/shape 11679" x="0" y="92" width="68" height="44"/>
+</TextureAtlas>

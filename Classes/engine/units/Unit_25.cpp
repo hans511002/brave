@@ -56,7 +56,7 @@ namespace engine
 				container->setVisible(false);
 				this->setMouseChildren(false);
 				this->setMouseEnabled(false);
-				this->portalAnima = new MovieClip("unit/", "RoadUnitStone_mc");// RoadUnitStone_mc();
+				this->portalAnima = new MovieClip("unit/", "RoadUnitStone_mc", "RoadUnitStone_mc");// RoadUnitStone_mc();
 				this->portalAnima->stop();
 				this->portalAnima->setVisible(false);
 				this->addChild(this->portalAnima); 
