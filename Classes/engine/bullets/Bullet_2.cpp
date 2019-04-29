@@ -47,18 +47,19 @@ namespace engine
 				units::Unit* unit = NULL;
 				if (!enemyTarget || enemyTarget->dead)
 				{
-					i = 0;
-					while (i < world->listOfUnits.size())
+					i = world->listOfUnits.size() - 1;
+					while (i >=0)
 					{
-						float distLen = this_pt.distance(world->listOfUnits[i]->shoot_pt);// Point.distance(this_pt, world->listOfUnits[i]->shoot_pt);
+						Unit * unitTmp = world->listOfUnits[i];
+						float distLen = this_pt.distance(unitTmp->shoot_pt);// Point.distance(this_pt, world->listOfUnits[i]->shoot_pt);
 						if (distLen < 50)
 						{
 							if (!unit)
-								unit = world->listOfUnits[i];
+								unit = unitTmp;
 							else if (this_pt.distance(unit->shoot_pt) > distLen)
-								unit = world->listOfUnits[i];
+								unit = unitTmp;
 						}
-						i++;
+						i--;
 					}
 					if (!unit) {
 						kill();

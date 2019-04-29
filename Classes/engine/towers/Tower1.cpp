@@ -24,7 +24,7 @@ namespace engine
 			sphere1Bullet = (BulletSphereTower_mc*)sphere1->createMovieClip("bullet", new BulletSphereTower_mc());
 			sphere1BulletCont = sphere1Bullet->cont;
 			sphere1Bullet->gotoAndStop(5);
-			sphere1Bullet->setPosition(sphere1Bullet->getPosition() + Vec2(0, -10));
+			sphere1Bullet->setPosition(sphere1Bullet->getPosition() + Vec2(0, -15));
 			return true;
 		}
 
@@ -91,30 +91,20 @@ namespace engine
                         world->ultraTowerMenu->closeMenu();
                     }
                     world->towerMenu = new TowerMenu(this);
-                    world->addChild(world->towerMenu,3);
+                    world->addChild(world->towerMenu,4);
                     world->towerMenu->init();
                     world->towerMenu->monitor();
                     this->setMouseChildren(true);
                     this->setMouseEnabled(true);
                 }
             }
-            if (world->frameCounter % 2)
-            {
-                if (container->currentFrame < container->totalFrames)
-                {
-                    container->tryPlay();
-                    //container->gotoAndStop((container->currentFrame + 1));
-                }
-                else
-                {
-                    container->gotoAndStop(1);
-                }
-            }
+			container->tryPlay(0);
+             
             if (spheresStack.size() == 1)
             {
 				//container->sphere1Bullet->nextFram();
 
-				container->sphere1->tryPlay();
+				container->sphere1->tryPlay(0);
 				//if (container->sphere1->currentFrame < container->sphere1->totalFrames)
 	//            {
 	//                container->sphere1->tryPlay();
@@ -124,7 +114,7 @@ namespace engine
 	//            {
 	//                container->sphere1->gotoAndStop(1);
 	//            }
-				container->sphere1BulletCont->tryPlay();
+				container->sphere1BulletCont->tryPlay(0);
                 //if (container->sphere1BulletCont->currentFrame < container->sphere1BulletCont->totalFrames)
                 //{
                 //    container->sphere1BulletCont->tryPlay();

@@ -28,7 +28,7 @@ namespace training
 		this->container->stop();
 		Vec2 pos;
 		if (this->myLevel >= 1 && this->myLevel<=15)
-			pos = Main::mainClass->levelsMenuClass->listOfLevels[this->myLevel-1]->convertToWorldSpace(Vec2(0,0))  ;
+			pos = Main::mainClass->levelsMenuClass->listOfLevels[this->myLevel-1]->levelCase->convertToWorldSpace(Vec2(0,0))+Vec2(20,30)  ;
 		pos = Main::mainClass->levelsMenuClass->convertToNodeSpaceAR(pos+Vec2(-7,15)); 
 		this->addChild(this->container);
 		this->mouseChildren = false;

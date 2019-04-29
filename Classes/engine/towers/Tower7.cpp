@@ -176,72 +176,73 @@ namespace engine
                     else if (world->frameCounter % 2)
                     {
                         listOfTargets.clear();// = [];
-                        i = 0;
-                        while (i < world->listOfUnits.size())
+                        i = world->listOfUnits.size()-1;
+                        while (i >=0 )
                         { 
-                            if (world->listOfUnits[i]->readyDamage && world->listOfUnits[i]->atStaged && !world->listOfUnits[i]->airFlag)
+							Unit * unit = world->listOfUnits[i];
+							if (unit->readyDamage && unit->atStaged && !unit->airFlag)
                             {
-                                cocos2d::Point tempObject2 = world->bezierClass->getPathPoint(world->listOfUnits[i]->path + world->listOfUnits[i]->speedK * 16, world->listOfUnits[i]->road, world->listOfUnits[i]->way);
+                                cocos2d::Point tempObject2 = world->bezierClass->getPathPoint(unit->path + unit->speedK * 16, unit->road, unit->way);
                                 cocos2d::Point testTarget = cocos2d::Point(tempObject2.x, tempObject2.y);
                                 scanAtRadius();
                                 if (greenFlag)
                                 {
-                                    cocos2d::Point tempObject1 = world->bezierClass->getPathPoint(world->listOfUnits[i]->path + world->listOfUnits[i]->speedK * 15, world->listOfUnits[i]->road, world->listOfUnits[i]->way);
+                                    cocos2d::Point tempObject1 = world->bezierClass->getPathPoint(unit->path + unit->speedK * 15, unit->road, unit->way);
                                     if (this_pt.y > tempObject2.y)
                                     {
                                         if (this_pt.x > tempObject1.x)
                                         {
-                                            if (tempObject2.x > tempObject1.x && tempObject2.x - tempObject1.x >= world->listOfUnits[i]->speedK * 0.5)
+                                            if (tempObject2.x > tempObject1.x && tempObject2.x - tempObject1.x >= unit->speedK * 0.5)
                                             {
-                                                world->listOfUnits[i]->bulltTower71Mc = container->upgr1_4;
-                                                listOfTargets.push(world->listOfUnits[i]);
+                                                unit->bulltTower71Mc = container->upgr1_4;
+                                                listOfTargets.push(unit);
                                             }
-                                            else if (tempObject2.y > tempObject1.y && tempObject2.y - tempObject1.y >= world->listOfUnits[i]->speedK * 0.5)
+                                            else if (tempObject2.y > tempObject1.y && tempObject2.y - tempObject1.y >= unit->speedK * 0.5)
                                             {
-                                                world->listOfUnits[i]->bulltTower71Mc = container->upgr1_6;
-                                                listOfTargets.push(world->listOfUnits[i]);
+                                                unit->bulltTower71Mc = container->upgr1_6;
+                                                listOfTargets.push(unit);
                                             }
                                         }
-                                        else if (tempObject2.x < tempObject1.x && tempObject1.x - tempObject2.x >= world->listOfUnits[i]->speedK * 0.5)
+                                        else if (tempObject2.x < tempObject1.x && tempObject1.x - tempObject2.x >= unit->speedK * 0.5)
                                         {
-                                            world->listOfUnits[i]->bulltTower71Mc = container->upgr1_3;
-                                            listOfTargets.push(world->listOfUnits[i]);
+                                            unit->bulltTower71Mc = container->upgr1_3;
+                                            listOfTargets.push(unit);
                                         }
-                                        else if (tempObject2.y > tempObject1.y && tempObject2.y - tempObject1.y >= world->listOfUnits[i]->speedK * 0.5)
+                                        else if (tempObject2.y > tempObject1.y && tempObject2.y - tempObject1.y >= unit->speedK * 0.5)
                                         {
-                                            world->listOfUnits[i]->bulltTower71Mc = container->upgr1_8;
-                                            listOfTargets.push(world->listOfUnits[i]);
+                                            unit->bulltTower71Mc = container->upgr1_8;
+                                            listOfTargets.push(unit);
                                         }
                                     }
                                     else if (this_pt.x > tempObject2.x)
                                     {
-                                        if (tempObject2.x > tempObject1.x && tempObject2.x - tempObject1.x >= world->listOfUnits[i]->speedK * 0.5)
+                                        if (tempObject2.x > tempObject1.x && tempObject2.x - tempObject1.x >= unit->speedK * 0.5)
                                         {
-                                            world->listOfUnits[i]->bulltTower71Mc = container->upgr1_1;
-                                            listOfTargets.push(world->listOfUnits[i]);
+                                            unit->bulltTower71Mc = container->upgr1_1;
+                                            listOfTargets.push(unit);
                                         }
-                                        else if (tempObject2.y < tempObject1.y && tempObject1.y - tempObject2.y >= world->listOfUnits[i]->speedK * 0.5)
+                                        else if (tempObject2.y < tempObject1.y && tempObject1.y - tempObject2.y >= unit->speedK * 0.5)
                                         {
-                                            world->listOfUnits[i]->bulltTower71Mc = container->upgr1_5;
-                                            listOfTargets.push(world->listOfUnits[i]);
+                                            unit->bulltTower71Mc = container->upgr1_5;
+                                            listOfTargets.push(unit);
                                         }
                                     }
-                                    else if (tempObject2.x < tempObject1.x && tempObject1.x - tempObject2.x >= world->listOfUnits[i]->speedK * 0.5)
+                                    else if (tempObject2.x < tempObject1.x && tempObject1.x - tempObject2.x >= unit->speedK * 0.5)
                                     {
-                                        world->listOfUnits[i]->bulltTower71Mc = container->upgr1_2;
-                                        listOfTargets.push(world->listOfUnits[i]);
+                                        unit->bulltTower71Mc = container->upgr1_2;
+                                        listOfTargets.push(unit);
                                     }
-                                    else if (tempObject2.y < tempObject1.y && tempObject1.y - tempObject2.y >= world->listOfUnits[i]->speedK * 0.5)
+                                    else if (tempObject2.y < tempObject1.y && tempObject1.y - tempObject2.y >= unit->speedK * 0.5)
                                     {
-                                        world->listOfUnits[i]->bulltTower71Mc = container->upgr1_7;
-                                        listOfTargets.push(world->listOfUnits[i]);
+                                        unit->bulltTower71Mc = container->upgr1_7;
+                                        listOfTargets.push(unit);
                                     }
                                 }
                             }
-                            i++;
+                            i--;
                         }
-                        i = 0;
-                        while (i < listOfTargets.size())
+                        i = listOfTargets.size()-1;
+                        while (i >=0 )
                         {
 							listOfTargets[i]->resLen = listOfTargets[i]->path / listOfTargets[i]->finishPath;
                             if (enemyTarget)
@@ -258,7 +259,7 @@ namespace engine
                                 enemyTarget = listOfTargets[i];
                                 this->upgr1_intervalCounter = 0;
                             }
-                            i++;
+                            i--;
                         }
                     }
                 }
@@ -600,72 +601,73 @@ namespace engine
                         i = world->listOfUnits.size() - 1;
                         while (i >= 0)
                         {
-                            if (world->listOfUnits[i]->readyDamage && world->listOfUnits[i]->atStaged && !world->listOfUnits[i]->airFlag && !world->listOfUnits[i]->teleportFlag)
+							Unit * unit = world->listOfUnits[i];
+							if (unit->readyDamage && unit->atStaged && !unit->airFlag && !unit->teleportFlag)
                             {
-                                if (enemyTarget->shoot_pt.distance( world->listOfUnits[i]->shoot_pt) < Main::mainClass->readXMLClass.ultraAddIceStoneRadiusXML)
+                                if (enemyTarget->shoot_pt.distance( unit->shoot_pt) < Main::mainClass->readXMLClass.ultraAddIceStoneRadiusXML)
                                 {
                                     if (this->upgr1_anima->getName() == "upgr1_1")
                                     {
-                                        if (this_pt.x + 30 >= world->listOfUnits[i]->shoot_pt.x && this_pt.y - 30 <= world->listOfUnits[i]->shoot_pt.y && this_pt.y + 150 >= world->listOfUnits[i]->shoot_pt.y)
+                                        if (this_pt.x + 30 >= unit->shoot_pt.x && this_pt.y - 30 <= unit->shoot_pt.y && this_pt.y + 150 >= unit->shoot_pt.y)
                                         {
-                                            world->listOfUnits[i]->setAirSettings("tower71");
-                                            world->listOfUnits[i]->getHit(this->upgr1_damage, "ice", 2, false, 71, this);
+                                            unit->setAirSettings("tower71");
+                                            unit->getHit(this->upgr1_damage, "ice", 2, false, 71, this);
                                         }
                                     }
                                     else if (this->upgr1_anima->getName() == "upgr1_2")
                                     {
-                                        if (this_pt.x - 30 <= world->listOfUnits[i]->shoot_pt.x && this_pt.y - 30 <= world->listOfUnits[i]->shoot_pt.y && this_pt.y + 150 >= world->listOfUnits[i]->shoot_pt.y)
+                                        if (this_pt.x - 30 <= unit->shoot_pt.x && this_pt.y - 30 <= unit->shoot_pt.y && this_pt.y + 150 >= unit->shoot_pt.y)
                                         {
-                                            world->listOfUnits[i]->setAirSettings("tower71");
-                                            world->listOfUnits[i]->getHit(this->upgr1_damage, "ice", 2, false, 71, this);
+                                            unit->setAirSettings("tower71");
+                                            unit->getHit(this->upgr1_damage, "ice", 2, false, 71, this);
                                         }
                                     }
                                     else if (this->upgr1_anima->getName() == "upgr1_3")
                                     {
-                                        if (this_pt.x - 30 <= world->listOfUnits[i]->shoot_pt.x && this_pt.y + 30 >= world->listOfUnits[i]->shoot_pt.y && this_pt.y - 150 <= world->listOfUnits[i]->shoot_pt.y)
+                                        if (this_pt.x - 30 <= unit->shoot_pt.x && this_pt.y + 30 >= unit->shoot_pt.y && this_pt.y - 150 <= unit->shoot_pt.y)
                                         {
-                                            world->listOfUnits[i]->setAirSettings("tower71");
-                                            world->listOfUnits[i]->getHit(this->upgr1_damage, "ice", 2, false, 71, this);
+                                            unit->setAirSettings("tower71");
+                                            unit->getHit(this->upgr1_damage, "ice", 2, false, 71, this);
                                         }
                                     }
                                     else if (this->upgr1_anima->getName() == "upgr1_4")
                                     {
-                                        if (this_pt.x + 30 >= world->listOfUnits[i]->shoot_pt.x && this_pt.y + 30 >= world->listOfUnits[i]->shoot_pt.y && this_pt.y - 150 <= world->listOfUnits[i]->shoot_pt.y)
+                                        if (this_pt.x + 30 >= unit->shoot_pt.x && this_pt.y + 30 >= unit->shoot_pt.y && this_pt.y - 150 <= unit->shoot_pt.y)
                                         {
-                                            world->listOfUnits[i]->setAirSettings("tower71");
-                                            world->listOfUnits[i]->getHit(this->upgr1_damage, "ice", 2, false, 71, this);
+                                            unit->setAirSettings("tower71");
+                                            unit->getHit(this->upgr1_damage, "ice", 2, false, 71, this);
                                         }
                                     }
                                     else if (this->upgr1_anima->getName() == "upgr1_5")
                                     {
-                                        if (this_pt.x + 30 >= world->listOfUnits[i]->shoot_pt.x && this_pt.x - 150 <= world->listOfUnits[i]->shoot_pt.x && this_pt.y - 30 <= world->listOfUnits[i]->shoot_pt.y)
+                                        if (this_pt.x + 30 >= unit->shoot_pt.x && this_pt.x - 150 <= unit->shoot_pt.x && this_pt.y - 30 <= unit->shoot_pt.y)
                                         {
-                                            world->listOfUnits[i]->setAirSettings("tower71");
-                                            world->listOfUnits[i]->getHit(this->upgr1_damage, "ice", 2, false, 71, this);
+                                            unit->setAirSettings("tower71");
+                                            unit->getHit(this->upgr1_damage, "ice", 2, false, 71, this);
                                         }
                                     }
                                     else if (this->upgr1_anima->getName() == "upgr1_6")
                                     {
-                                        if (this_pt.x + 30 >= world->listOfUnits[i]->shoot_pt.x && this_pt.x - 150 <= world->listOfUnits[i]->shoot_pt.x && this_pt.y + 30 >= world->listOfUnits[i]->shoot_pt.y)
+                                        if (this_pt.x + 30 >= unit->shoot_pt.x && this_pt.x - 150 <= unit->shoot_pt.x && this_pt.y + 30 >= unit->shoot_pt.y)
                                         {
-                                            world->listOfUnits[i]->setAirSettings("tower71");
-                                            world->listOfUnits[i]->getHit(this->upgr1_damage, "ice", 2, false, 71, this);
+                                            unit->setAirSettings("tower71");
+                                            unit->getHit(this->upgr1_damage, "ice", 2, false, 71, this);
                                         }
                                     }
                                     else if (this->upgr1_anima->getName() == "upgr1_7")
                                     {
-                                        if (this_pt.x - 30 <= world->listOfUnits[i]->shoot_pt.x && this_pt.x + 150 >= world->listOfUnits[i]->shoot_pt.x && this_pt.y - 30 <= world->listOfUnits[i]->shoot_pt.y)
+                                        if (this_pt.x - 30 <= unit->shoot_pt.x && this_pt.x + 150 >= unit->shoot_pt.x && this_pt.y - 30 <= unit->shoot_pt.y)
                                         {
-                                            world->listOfUnits[i]->setAirSettings("tower71");
-                                            world->listOfUnits[i]->getHit(this->upgr1_damage, "ice", 2, false, 71, this);
+                                            unit->setAirSettings("tower71");
+                                            unit->getHit(this->upgr1_damage, "ice", 2, false, 71, this);
                                         }
                                     }
                                     else if (this->upgr1_anima->getName() == "upgr1_8")
                                     {
-                                        if (this_pt.x - 30 <= world->listOfUnits[i]->shoot_pt.x && this_pt.x + 150 >= world->listOfUnits[i]->shoot_pt.x && this_pt.y + 30 >= world->listOfUnits[i]->shoot_pt.y)
+                                        if (this_pt.x - 30 <= unit->shoot_pt.x && this_pt.x + 150 >= unit->shoot_pt.x && this_pt.y + 30 >= unit->shoot_pt.y)
                                         {
-                                            world->listOfUnits[i]->setAirSettings("tower71");
-                                            world->listOfUnits[i]->getHit(this->upgr1_damage, "ice", 2, false, 71, this);
+                                            unit->setAirSettings("tower71");
+                                            unit->getHit(this->upgr1_damage, "ice", 2, false, 71, this);
                                         }
                                     }
                                 }

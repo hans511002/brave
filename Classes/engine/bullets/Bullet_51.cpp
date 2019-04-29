@@ -107,21 +107,18 @@ namespace engine {
 					j = world->listOfUnits.size() - 1;
 					while (j >= 0)
 					{
+						Unit * unit = world->listOfUnits[j];
 						Vec2 tempObject = CONVERT_TO_WORLD_POS(this->convertToWorldSpace(this->listOfAnimation[i]->getPosition()));
 						//tempObject = this->localToGlobal(new Point(this->listOfAnimation[i].x, this->listOfAnimation[i].y));
-						if (world->listOfUnits[j]->atStaged && world->listOfUnits[j]->readyDamage)
+						if (unit->atStaged && unit->readyDamage)
 						{
-							if (world->listOfUnits[j]->shoot_pt.distance(tempObject) < Main::mainClass->readXMLClass.ultraAddFireStoneRadiusXML)
+							if (unit->shoot_pt.distance(tempObject) < Main::mainClass->readXMLClass.ultraAddFireStoneRadiusXML)
 							{
-								Unit * tempObject = world->listOfUnits[j];
+								Unit * tempObject = unit;
 								if (tempObject->typeUnit != 23)
-								{
 									tempObject->getHit(damage, "fire", 2, true, bulletType, whoShoot);
-								}
 								else
-								{
 									tempObject->getHit(damage, "fire", 2, false, bulletType, whoShoot);
-								}
 							}
 						}
 						j--;

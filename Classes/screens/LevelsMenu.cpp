@@ -186,12 +186,13 @@ namespace screens {
         if (Main::mainClass->saveBoxClass->getIntValue("training_9") == 1)
         {
             Main::mainClass->saveBoxClass->setValue("training_9", 2);
-            this->training_9 = new Training_9();
+            this->training_9 = new training::Training_9();
             this->addChild(this->training_9);
         }
-        if (Main::mainClass->saveBoxClass->getIntValue("training_91") > 0)
+        if (Main::mainClass->saveBoxClass->getIntValue("training_91") > 0 && Main::moneyDebug)
         {
-			Training_91 *training_91 = new Training_91(Main::mainClass->saveBoxClass->getIntValue("training_91"));
+			//生存模式
+			Training_91 *training_91 = new training::Training_91(Main::mainClass->saveBoxClass->getIntValue("training_91"));
             this->addChild(training_91);
 			Main::mainClass->saveBoxClass->setValue("training_91", -1); 
         }

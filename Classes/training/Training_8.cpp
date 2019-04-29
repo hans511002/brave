@@ -38,7 +38,7 @@ namespace training
 		this->world = Main::mainClass->worldClass;
 		this->manageListeners("on");
 		this->container = new Training_8_mc();
-		this->container->setPosition(Vec2(Main::SCREEN_WIDTH_HALF, Main::LEVEL_MAP_HEIGHT/2 - 50)-this->world->getPosition());
+		this->container->setPosition(Vec2(Main::SCREEN_WIDTH_HALF, Main::LEVEL_MAP_HEIGHT/2 - 60)-this->world->getPosition());
 		this->contStops();
 		this->container->cont->mouseChildren = false;
 		this->container->cont->mouseEnabled = false;

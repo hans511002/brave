@@ -82,7 +82,7 @@ namespace screens
 		{
 			this->container = new WinSurvMenu_mc();
 		}
-		this->container->setPosition(Vec2(-350,850)-this->world->getPosition());
+		this->container->setPosition(Vec2(-350,780)-this->world->getPosition());
 		this->container->stop();
 		this->container->first->stop();
 		this->container->firstStars->stop();

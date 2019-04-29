@@ -77,13 +77,14 @@ namespace engine
                     i = world->listOfUnits.size()- 1;
                     while (i >= 0)
                     { 
-                        if (!world->listOfUnits[i]->bulletTower6Effect && world->listOfUnits[i]->readyDamage && world->listOfUnits[i]->atStaged)
+						Unit * unit = world->listOfUnits[i];
+						if (!unit->bulletTower6Effect && unit->readyDamage && unit->atStaged)
                         {
-                            float tempObject1 = world->listOfUnits[i]->shoot_pt.distance(enemyTarget->shoot_pt);
+                            float tempObject1 = unit->shoot_pt.distance(enemyTarget->shoot_pt);
                             if (tempObject > tempObject1)
                             {
                                 tempObject = tempObject1;
-                                tempObject2 = world->listOfUnits[i];
+                                tempObject2 = unit;
                             }
                         }
                         i--;

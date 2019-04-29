@@ -52,23 +52,23 @@ namespace engine{
                 if (!enemyTarget ||enemyTarget->dead)
                 {
                     units::Unit * tempObject1 = NULL;
-                    i = 0;
-                    while (i < world->listOfUnits.size())
+                    i = world->listOfUnits.size()-1;
+                    while (i >=0 )
                     {
-
-                        float  tempObject = this_pt.distance(world->listOfUnits[i]->shoot_pt);
+						Unit * unit= world->listOfUnits[i];
+                        float  tempObject = this_pt.distance(unit->shoot_pt);
                         if (tempObject < 50)
                         {
                             if (!tempObject1)
                             {
-                                tempObject1 = world->listOfUnits[i];
+                                tempObject1 = unit;
                             }
                             else if (this_pt.distance(tempObject1->shoot_pt) > tempObject)
                             {
-                                tempObject1 = world->listOfUnits[i];
+                                tempObject1 = unit;
                             }
                         }
-                        i++;
+                        i--;
                     }
                     if (tempObject1)
                     {

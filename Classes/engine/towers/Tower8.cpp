@@ -94,33 +94,33 @@ namespace engine
                 Tower::update();
                 if (world->frameCounter % 2)
                 {
-                    if (container->cont1->currentFrame < container->cont1->totalFrames)
-                    {
-                        container->cont1->tryPlay();
-                        //container->cont1->gotoAndStop((container->cont1->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->cont1->gotoAndStop(1);
-                    }
-                    if (container->cont2->currentFrame < container->cont2->totalFrames)
-                    {
-                        container->cont2->tryPlay();
-                        //container->cont2->gotoAndStop((container->cont2->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->cont2->gotoAndStop(1);
-                    }
-                    if (container->cont3->currentFrame < container->cont3->totalFrames)
-                    {
-                        container->cont3->tryPlay();
-                        //container->cont3->gotoAndStop((container->cont3->currentFrame + 1));
-                    }
-                    else
-                    {
-                        container->cont3->gotoAndStop(1);
-                    }
+                        container->cont1->tryPlay(0);
+                    //if (container->cont1->currentFrame < container->cont1->totalFrames)
+                    //{
+                    //    //container->cont1->gotoAndStop((container->cont1->currentFrame + 1));
+                    //}
+                    //else
+                    //{
+                    //    container->cont1->gotoAndStop(1);
+                    //}
+                        container->cont2->tryPlay(0);
+                    //if (container->cont2->currentFrame < container->cont2->totalFrames)
+                    //{
+                    //    //container->cont2->gotoAndStop((container->cont2->currentFrame + 1));
+                    //}
+                    //else
+                    //{
+                    //    container->cont2->gotoAndStop(1);
+                    //}
+                        container->cont3->tryPlay(0);
+                    //if (container->cont3->currentFrame < container->cont3->totalFrames)
+                    //{
+                    //    //container->cont3->gotoAndStop((container->cont3->currentFrame + 1));
+                    //}
+                    //else
+                    //{
+                    //    container->cont3->gotoAndStop(1);
+                    //}
                 }
                 container->cont2->setRotation(container->cont2->getRotation() + 3);
             }
@@ -187,7 +187,7 @@ namespace engine
                     {
                         if (container->cont4->currentFrame < container->cont4->totalFrames)
                         {
-                            container->cont4->tryPlay();
+                            container->cont4->tryPlay(0);
                             //container->cont4->gotoAndStop((container->cont4->currentFrame + 1));
                         }
                         else

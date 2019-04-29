@@ -1996,8 +1996,8 @@ namespace engine{
 			float tempObject1 = 0;
 			if (this->world->nowLevel == 3)
 			{
-				this->i = 0;
-				while (this->i < this->listOfTargets.size())
+				this->i = this->listOfTargets.size()-1;
+				while (this->i >=0 )
 				{
 					tempObject = this->listOfTargets[this->i];
 					tempObject->resFlag = false;
@@ -2006,23 +2006,17 @@ namespace engine{
 						if (tempObject->way == 1)
 						{
 							if (tempObject->path > 855)
-							{
 								tempObject1 = 855;
-							}
 						}
 						else if (tempObject->way == 2)
 						{
 							if (tempObject->path > 827)
-							{
 								tempObject1 = 827;
-							}
 						}
 						else if (tempObject->way == 3)
 						{
 							if (tempObject->path > 844)
-							{
 								tempObject1 = 844;
-							}
 						}
 					}
 					else if (tempObject->road == 2)
@@ -2030,23 +2024,17 @@ namespace engine{
 						if (tempObject->way == 1)
 						{
 							if (tempObject->path > 515)
-							{
 								tempObject1 = 515;
-							}
 						}
 						else if (tempObject->way == 2)
 						{
 							if (tempObject->path > 474)
-							{
 								tempObject1 = 474;
-							}
 						}
 						else if (tempObject->way == 3)
 						{
 							if (tempObject->path > 501)
-							{
 								tempObject1 = 501;
-							}
 						}
 					}
 					if (tempObject1 > 0)
@@ -2058,9 +2046,7 @@ namespace engine{
 							if (this->enemyTarget->resFlag)
 							{
 								if (tempObject->resLen > this->enemyTarget->resLen)
-								{
 									this->enemyTarget = tempObject;
-								}
 							}
 							else
 							{
@@ -2080,9 +2066,7 @@ namespace engine{
 							if (!this->enemyTarget->resFlag)
 							{
 								if (tempObject->resLen > this->enemyTarget->resLen)
-								{
 									this->enemyTarget = tempObject;
-								}
 							}
 						}
 						else
@@ -2090,7 +2074,7 @@ namespace engine{
 							this->enemyTarget = tempObject;
 						}
 					}
-					i++;
+					i--;
 				}
 			}
 			else if (this->world->nowLevel == 5)
@@ -2106,23 +2090,17 @@ namespace engine{
 						if (tempObject->way == 1)
 						{
 							if (tempObject->path > 1006)
-							{
 								tempObject1 = 1006;
-							}
 						}
 						else if (tempObject->way == 2)
 						{
 							if (tempObject->path > 990)
-							{
 								tempObject1 = 990;
-							}
 						}
 						else if (tempObject->way == 3)
 						{
 							if (tempObject->path > 1016)
-							{
 								tempObject1 = 1016;
-							}
 						}
 					}
 					else if (tempObject->road == 2)
@@ -2130,23 +2108,17 @@ namespace engine{
 						if (tempObject->way == 1)
 						{
 							if (tempObject->path > 969)
-							{
 								tempObject1 = 969;
-							}
 						}
 						else if (tempObject->way == 2)
 						{
 							if (tempObject->path > 882)
-							{
 								tempObject1 = 882;
-							}
 						}
 						else if (tempObject->way == 3)
 						{
 							if (tempObject->path > 922)
-							{
 								tempObject1 = 922;
-							}
 						}
 					}
 					if (tempObject1 > 0)
@@ -2158,14 +2130,10 @@ namespace engine{
 							if (this->enemyTarget->resFlag)
 							{
 								if (tempObject->resLen > this->enemyTarget->resLen)
-								{
 									this->enemyTarget = tempObject;
-								}
 							}
 							else
-							{
 								this->enemyTarget = tempObject;
-							}
 						}
 						else
 						{

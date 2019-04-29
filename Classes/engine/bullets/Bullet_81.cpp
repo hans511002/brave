@@ -58,21 +58,13 @@ namespace engine
 					if (enemyTarget->atStaged && enemyTarget->readyDamage)
 					{
 						if (enemyTarget->typeUnit != 23)
-						{
 							enemyTarget->getHit(damage / 2, "fire", 2, true, bulletType, whoShoot);
-						}
 						else
-						{
 							enemyTarget->getHit(damage / 2, "fire", 2, false, bulletType, whoShoot);
-						}
 						if (!enemyTarget->dead && enemyTarget->readyDamage)
-						{
 							enemyTarget->getHit(damage / 2, "levin", 2, false, bulletType, whoShoot);
-						}
 						if (enemyTarget->dead)
-						{
 							enemyTarget->fireLevinKillFlag = true;
-						}
 					}
 				}
 			}

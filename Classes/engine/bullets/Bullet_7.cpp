@@ -173,19 +173,16 @@ namespace engine
 						i = world->listOfUnits.size() - 1;
 						while (i >= 0)
 						{
-							if (world->listOfUnits[i]->atStaged && world->listOfUnits[i]->readyDamage)
+							Unit * unit = world->listOfUnits[i];
+							if (unit->atStaged && unit->readyDamage)
 							{
-								if (this_pt.distance(world->listOfUnits[i]->shoot_pt) < Main::mainClass->readXMLClass.ultraIceStoneDamageRadiusXML)
+								if (this_pt.distance(unit->shoot_pt) < Main::mainClass->readXMLClass.ultraIceStoneDamageRadiusXML)
 								{
-									Unit* tempObject = world->listOfUnits[i];
+									Unit* tempObject = unit;
 									if (tempObject->typeUnit != 24)
-									{
 										tempObject->getHit(damage / 2, "ice", 2, true, bulletType, whoShoot);
-									}
 									else
-									{
 										tempObject->getHit(damage / 2, "ice", 2, false, bulletType, whoShoot);
-									}
 									if (!tempObject->dead && tempObject->readyDamage)
 									{
 										if (!enemyTarget->icemanFlag)
@@ -194,13 +191,9 @@ namespace engine
 											enemyTarget->iceEffectCounter = Main::mainClass->readXMLClass.ultraIceStoneSlowdownTimerXML;
 										}
 										if (tempObject->typeUnit != 25)
-										{
 											tempObject->getHit(damage / 2, "stone", 2, true, bulletType, whoShoot);
-										}
 										else
-										{
 											tempObject->getHit(damage / 2, "stone", 2, false, bulletType, whoShoot);
-										}
 									}
 								}
 							}

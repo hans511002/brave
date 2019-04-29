@@ -155,20 +155,20 @@ namespace engine
 			{
 				float tempObject1 = 0;
 				Unit *tempObject2 = NULL;
-				i = 0;
-				while (i < world->listOfUnits.size())
+				i = world->listOfUnits.size()-1;
+				while (i >=0 )
 				{
-
-					if (world->listOfUnits[i]->atStaged && world->listOfUnits[i]->readyDamage)
+					Unit * unit = world->listOfUnits[i];
+					if (unit->atStaged && unit->readyDamage)
 					{
-						float tempObject = world->listOfUnits[i]->path / world->listOfUnits[i]->finishPath;
+						float tempObject = unit->path / unit->finishPath;
 						if (tempObject > tempObject1)
 						{
 							tempObject1 = tempObject;
-							tempObject2 = world->listOfUnits[i];
+							tempObject2 = unit;
 						}
 					}
-					i++;
+					i--;
 				}
 				if (tempObject1 > 0)
 				{

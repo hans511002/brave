@@ -59,11 +59,12 @@ namespace engine
                     i = world->listOfUnits.size() - 1;
                     while (i >= 0)
                     { 
-                        if (world->listOfUnits[i]->atStaged && world->listOfUnits[i]->readyDamage)
+						Unit * unit = world->listOfUnits[i];
+						if (unit->atStaged && unit->readyDamage)
                         {
-                            if (this_pt.distance(world->listOfUnits[i]->shoot_pt) < Main::mainClass->readXMLClass.ultraFireLevinDamageRadiusXML)
+                            if (this_pt.distance(unit->shoot_pt) < Main::mainClass->readXMLClass.ultraFireLevinDamageRadiusXML)
                             {
-                                Unit * tempObject = world->listOfUnits[i];
+                                Unit * tempObject = unit;
                                 if (tempObject->typeUnit != 23)
                                 {
                                     tempObject->getHit(damage / 2, "fire", 2, true, bulletType, whoShoot);

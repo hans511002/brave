@@ -42,9 +42,9 @@ namespace engine
 			sphere3_2Bullet->gotoAndStop(5);
 			sphere3_3Bullet->gotoAndStop(5);
 
-			sphere3_1Bullet->setPosition(sphere3_1Bullet->getPosition() + Vec2(0, -10));
-			sphere3_2Bullet->setPosition(sphere3_2Bullet->getPosition() + Vec2(0, -10));
-			sphere3_3Bullet->setPosition(sphere3_3Bullet->getPosition() + Vec2(0, -10));
+			sphere3_1Bullet->setPosition(sphere3_1Bullet->getPosition() + Vec2(0, -15));
+			sphere3_2Bullet->setPosition(sphere3_2Bullet->getPosition() + Vec2(0, -15));
+			sphere3_3Bullet->setPosition(sphere3_3Bullet->getPosition() + Vec2(0, -15));
 
 			return true;
 		}
@@ -86,28 +86,28 @@ namespace engine
 
 		void Tower3::update(float dt)
 		{
-			if(this->dead){
+			if (this->dead) {
 				this->remove();
 				return;
 			}
 			Tower::update();
 			Tower3_mc * container = ISTYPE(Tower3_mc, this->container);
-			if (world->frameCounter % 2)
-			{
-				if (container->currentFrame < container->totalFrames)
-				{
-					container->tryPlay();
-					//container->gotoAndStop((container->currentFrame + 1));
-				}
-				else
-				{
-					container->gotoAndStop(1);
-				}
-			}
+			container->tryPlay(0);
+			//if (world->frameCounter % 2)
+			//{
+			//	if (container->currentFrame < container->totalFrames)
+			//	{
+			//		//container->gotoAndStop((container->currentFrame + 1));
+			//	}
+			//	else
+			//	{
+			//		container->gotoAndStop(1);
+			//	}
+			//}
 			if (spheresStack.size() == 1)
 			{
-				container->sphere1->tryPlay();
-				container->sphere1BulletCont->tryPlay();
+				container->sphere1->tryPlay(0);
+				container->sphere1BulletCont->tryPlay(0);
 				//if (container->sphere1->currentFrame < container->sphere1->totalFrames)
 	//            {
 	//                container->sphere1->tryPlay();
@@ -129,16 +129,16 @@ namespace engine
 			}
 			else if (spheresStack.size() == 2)
 			{
-				if (container->sphere2_1->currentFrame < container->sphere2_1->totalFrames)
-				{
-					container->sphere2_1->tryPlay();
-					//container->sphere2_1->gotoAndStop((container->sphere2_1->currentFrame + 1));
-				}
-				else
-				{
-					container->sphere2_1->gotoAndStop(1);
-				}
-				container->sphere2_1BulletCont->tryPlay();
+				container->sphere2_1->tryPlay(0);
+				container->sphere2_1BulletCont->tryPlay(0);
+				//if (container->sphere2_1->currentFrame < container->sphere2_1->totalFrames)
+				//{
+				//	//container->sphere2_1->gotoAndStop((container->sphere2_1->currentFrame + 1));
+				//}
+				//else
+				//{
+				//	container->sphere2_1->gotoAndStop(1);
+				//}
 				//            if (container->sphere2_1BulletCont->currentFrame < container->sphere2_1BulletCont->totalFrames)
 				//            {
 				//                container->sphere2_1BulletCont->tryPlay();
@@ -148,16 +148,16 @@ namespace engine
 				//            {
 				//                container->sphere2_1BulletCont->gotoAndStop(1);
 				//            } 
-				if (container->sphere2_2->currentFrame < container->sphere2_2->totalFrames)
-				{
-					container->sphere2_2->tryPlay();
-					//container->sphere2_2->gotoAndStop((container->sphere2_2->currentFrame + 1));
-				}
-				else
-				{
-					container->sphere2_2->gotoAndStop(1);
-				}
-				container->sphere2_2BulletCont->tryPlay();
+				container->sphere2_2->tryPlay(0);
+				container->sphere2_2BulletCont->tryPlay(0);
+				//if (container->sphere2_2->currentFrame < container->sphere2_2->totalFrames)
+				//{
+				//	//container->sphere2_2->gotoAndStop((container->sphere2_2->currentFrame + 1));
+				//}
+				//else
+				//{
+				//	container->sphere2_2->gotoAndStop(1);
+				//}
 				//            if (container->sphere2_2BulletCont->currentFrame < container->sphere2_2BulletCont->totalFrames)
 				//            {
 				//                container->sphere2_2BulletCont->tryPlay();
@@ -170,16 +170,16 @@ namespace engine
 			}
 			else if (spheresStack.size() == 3)
 			{
-				if (container->sphere3_1->currentFrame < container->sphere3_1->totalFrames)
-				{
-					container->sphere3_1->tryPlay();
-					//container->sphere3_1->gotoAndStop((container->sphere3_1->currentFrame + 1));
-				}
-				else
-				{
-					container->sphere3_1->gotoAndStop(1);
-				}
-				container->sphere3_1BulletCont->tryPlay();
+				container->sphere3_1->tryPlay(0);
+				container->sphere3_1BulletCont->tryPlay(0);
+				//if (container->sphere3_1->currentFrame < container->sphere3_1->totalFrames)
+				//{
+				//	//container->sphere3_1->gotoAndStop((container->sphere3_1->currentFrame + 1));
+				//}
+				//else
+				//{
+				//	container->sphere3_1->gotoAndStop(1);
+				//}
 				//if (container->sphere3_1BulletCont->currentFrame < container->sphere3_1BulletCont->totalFrames)
 				//{
 				//	container->sphere3_1BulletCont->tryPlay();
@@ -189,16 +189,16 @@ namespace engine
 				//{
 				//	container->sphere3_1BulletCont->gotoAndStop(1);
 				//}
-				if (container->sphere3_2->currentFrame < container->sphere3_2->totalFrames)
-				{
-					container->sphere3_2->tryPlay();
-					//container->sphere3_2->gotoAndStop((container->sphere3_2->currentFrame + 1));
-				}
-				else
-				{
-					container->sphere3_2->gotoAndStop(1);
-				}
-				container->sphere3_2BulletCont->tryPlay();
+				container->sphere3_2->tryPlay(0);
+				container->sphere3_2BulletCont->tryPlay(0);
+				//if (container->sphere3_2->currentFrame < container->sphere3_2->totalFrames)
+				//{
+				//	//container->sphere3_2->gotoAndStop((container->sphere3_2->currentFrame + 1));
+				//}
+				//else
+				//{
+				//	container->sphere3_2->gotoAndStop(1);
+				//}
 				//if (container->sphere3_2BulletCont->currentFrame < container->sphere3_2BulletCont->totalFrames)
 				//{
 				//	container->sphere3_2BulletCont->tryPlay();
@@ -208,16 +208,16 @@ namespace engine
 				//{
 				//	container->sphere3_2BulletCont->gotoAndStop(1);
 				//}
-				if (container->sphere3_3->currentFrame < container->sphere3_3->totalFrames)
-				{
-					container->sphere3_3->tryPlay();
-					//container->sphere3_3->gotoAndStop((container->sphere3_3->currentFrame + 1));
-				}
-				else
-				{
-					container->sphere3_3->gotoAndStop(1);
-				}
-				container->sphere3_3BulletCont->tryPlay();
+				container->sphere3_3->tryPlay(0);
+				container->sphere3_3BulletCont->tryPlay(0);
+				//if (container->sphere3_3->currentFrame < container->sphere3_3->totalFrames)
+				//{
+				//	//container->sphere3_3->gotoAndStop((container->sphere3_3->currentFrame + 1));
+				//}
+				//else
+				//{
+				//	container->sphere3_3->gotoAndStop(1);
+				//}
 				//if (container->sphere3_3BulletCont->currentFrame < container->sphere3_3BulletCont->totalFrames)
 				//{
 				//	container->sphere3_3BulletCont->tryPlay();

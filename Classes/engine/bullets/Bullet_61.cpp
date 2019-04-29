@@ -42,19 +42,18 @@ namespace engine
 					i = world->listOfUnits.size() - 1;
 					while (i >= 0)
 					{
-						if (world->listOfUnits[i]->atStaged && world->listOfUnits[i]->readyDamage && !world->listOfUnits[i]->icemanFlag && !world->listOfUnits[i]->teleportFlag)
+						Unit * unit = world->listOfUnits[i];
+						if (unit->atStaged && unit->readyDamage && !unit->icemanFlag && !unit->teleportFlag)
 						{
-							if (this_pt.distance(world->listOfUnits[i]->shoot_pt) < Main::mainClass->readXMLClass.ultraAddIceLevinDamageRadiusXML)
+							if (this_pt.distance(unit->shoot_pt) < Main::mainClass->readXMLClass.ultraAddIceLevinDamageRadiusXML)
 							{
-								Unit * tempObject = world->listOfUnits[i];
+								Unit * tempObject = unit;
 								tempObject->getHit(damage / 2, "ice", 2, false, bulletType, whoShoot);
 								if (!tempObject->dead && tempObject->readyDamage)
 								{
 									tempObject->getHit(damage / 2, "levin", 2, false, bulletType, whoShoot);
 									if (tempObject->health > 0)
-									{
 										tempObject->icemanFlag = true;
-									}
 								}
 							}
 						}

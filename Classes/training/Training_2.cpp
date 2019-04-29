@@ -33,7 +33,7 @@ namespace training
 		this->manageListeners("on");
 		this->world->manageListeners("off");
 		this->container = new Training_2_mc();
-		this->container->setPosition(Vec2(Main::SCREEN_WIDTH_HALF, Main::LEVEL_MAP_HEIGHT/2-50)-this->world->getPosition());
+		this->container->setPosition(Vec2(Main::SCREEN_WIDTH_HALF, Main::LEVEL_MAP_HEIGHT/2-60)-this->world->getPosition());
 		this->contStops();
 		this->addChild(this->container);
 		AudioUtil::playSound("Snd_menu_pageScrolling.mp3");
