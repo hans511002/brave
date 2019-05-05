@@ -225,7 +225,7 @@ namespace engine {
 					{
 						this->menuObject = new training::Training_5(3);
 						this->addChild(this->menuObject, 99);
-						Main::mainClass->saveBoxClass->setValue("Training_92", 3, true);
+						Main::mainClass->saveBoxClass->setValue("Training_5", 3, true);
 					}
                 }
             }

@@ -330,9 +330,11 @@ namespace training
 
 	void Training_92::contStops()
 	{
+		if (!this->container->contCont1->isReady)return;
 		this->container->stop();
-		this->container->cont->stop();
-		this->container->contCont1->gotoAndStop(this->page);
+		this->container->cont->stop(); 
+		//this->container->contCont1->getAnimation()->timeScale = 10.0f/30;
+		this->container->contCont1->gotoAndStop((float)(this->page / (double)this->container->contCont1->totalFrames+0.0001));
 		this->container->contCont1BtnOk->stop();
 		this->container->contCont1BtnLeft->stop();
 		this->container->contCont1BtnRight->stop();

@@ -34,6 +34,9 @@ namespace engine
 		virtual void play(int times);
 		virtual bool tryPlay(int times=1);
 		virtual bool isPlayEnd();
+		virtual void gotoAndStopByTime(float time, const string & _aniName="");
+		virtual void gotoAndStop(float progress, const string & _aniName="");
+
 
         virtual void stop(const string &  aniName = "");
         virtual	 dragonBones::Armature *getArmature()=0;
@@ -161,6 +164,8 @@ namespace engine
 		virtual void onExit();
 		virtual void onceMovieHandler(cocos2d::EventCustom *event);
         virtual void gotoAndStop(int cf, const string &  aniName = "");
+		virtual void gotoAndStopByTime(float time, const string & _aniName="");
+		virtual void gotoAndStop(float progress, const string & _aniName="");
 
         virtual void update(float dt = 0);
 		virtual const dragonBones::Rectangle & getRectangle();
@@ -213,6 +218,8 @@ namespace engine
 		inline virtual void setAlpha(float op) { BaseNode::setAlpha(getDisplayNode(), op); };
 		inline virtual float getAlpha() { return  BaseNode::getAlpha(getDisplayNode()); };
 		inline virtual string getName() { return getDisplayNode()->getName(); };
+		virtual void gotoAndStopByTime(float time, const string & _aniName = "");
+		virtual void gotoAndStop(float progress, const string & _aniName = "");
 
 		virtual float getWidth();
 		virtual float getHeight();

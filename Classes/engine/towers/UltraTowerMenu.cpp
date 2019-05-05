@@ -24,7 +24,7 @@ namespace engine
             }
             this->setMouseChildren(false);
             this->setMouseEnabled(false);
-            this->setPosition(this->myTower->this_pt);
+            this->setPosition(this->myTower->this_pt+Vec2(0,20));
             //this->x = this->myTower->this_pt.x;
             //this->y = this->myTower->this_pt.y;
             this->towerRadius = new TowerRadius_mc();

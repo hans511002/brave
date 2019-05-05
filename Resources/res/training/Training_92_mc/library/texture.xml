@@ -1,6 +1,6 @@
 <TextureAtlas name="Training_92_mc" imagePath="texture.png">
- <SubTexture name="Shape/shape 5222" x="0" y="0" width="700" height="500"/>
- <SubTexture name="Sprite/sprite 5256" x="702" y="0" width="700" height="500"/>
+ <SubTexture name="Shape/shape 5222" x="702" y="0" width="700" height="500"/>
+ <SubTexture name="Sprite/sprite 5256" x="0" y="0" width="700" height="500"/>
  <SubTexture name="__dbTextures/Sprite/sprite 10322/Layer 5_0" x="499" y="868" width="59" height="364"/>
  <SubTexture name="__dbTextures/Sprite/sprite 10322/Layer 5_1" x="512" y="502" width="135" height="364"/>
  <SubTexture name="__dbTextures/Sprite/sprite 10322/Layer 5_2" x="1137" y="838" width="210" height="364"/>
@@ -8,8 +8,8 @@
  <SubTexture name="__dbTextures/Sprite/sprite 10322/Layer 5_4" x="0" y="868" width="361" height="364"/>
  <SubTexture name="__dbTextures/Sprite/sprite 10322/Layer 5_5" x="700" y="502" width="436" height="364"/>
  <SubTexture name="__dbTextures/Sprite/sprite 10322/Layer 5_6" x="0" y="502" width="511" height="364"/>
- <SubTexture name="__dbTextures/Sprite/sprite 10322/Layer 5_7" x="1404" y="0" width="586" height="364"/>
- <SubTexture name="__dbTextures/Sprite/sprite 10322/Layer 5_15" x="1404" y="366" width="586" height="364"/>
+ <SubTexture name="__dbTextures/Sprite/sprite 10322/Layer 5_7" x="1404" y="366" width="586" height="364"/>
+ <SubTexture name="__dbTextures/Sprite/sprite 10322/Layer 5_15" x="1404" y="0" width="586" height="364"/>
  <SubTexture name="__dbTextures/Sprite/sprite 10322/cont1_0" x="560" y="868" width="73" height="334"/>
  <SubTexture name="__dbTextures/Sprite/sprite 10322/cont1_1" x="362" y="868" width="135" height="334"/>
  <SubTexture name="__dbTextures/Sprite/sprite 10322/cont1_2" x="1845" y="732" width="197" height="334"/>
@@ -19,66 +19,69 @@
  <SubTexture name="__dbTextures/Sprite/sprite 10322/cont1_6" x="1398" y="732" width="445" height="334"/>
  <SubTexture name="Symbol 10319" x="1992" y="301" width="43" height="298"/>
  <SubTexture name="Symbol 10321" x="1992" y="0" width="45" height="300"/>
+ <SubTexture name="__dbTextures/Symbol 10317/Layer 20_0" x="544" y="1670" width="284" height="58"/>
  <SubTexture name="位图 8" x="0" y="1436" width="285" height="98"/>
- <SubTexture name="位图 7" x="0" y="1636" width="284" height="98"/>
- <SubTexture name="位图 6" x="559" y="1570" width="284" height="98"/>
+ <SubTexture name="位图 7" x="559" y="1570" width="284" height="98"/>
+ <SubTexture name="位图 6" x="0" y="1636" width="284" height="98"/>
+ <SubTexture name="位图 12" x="544" y="1730" width="284" height="57"/>
  <SubTexture name="位图 10" x="287" y="1456" width="271" height="98"/>
  <SubTexture name="位图 11" x="286" y="1556" width="271" height="98"/>
- <SubTexture name="__dbTextures/Symbol 10317/Layer 19_5" x="1658" y="1454" width="150" height="170"/>
- <SubTexture name="__dbTextures/Symbol 10317/Layer 19_6" x="846" y="1397" width="150" height="170"/>
+ <SubTexture name="__dbTextures/Symbol 10317/Layer 19_5" x="1506" y="1576" width="150" height="170"/>
+ <SubTexture name="__dbTextures/Symbol 10317/Layer 19_6" x="1810" y="1454" width="150" height="170"/>
  <SubTexture name="__dbTextures/Symbol 10317/Layer 19_7" x="1244" y="1597" width="256" height="91"/>
  <SubTexture name="Symbol 10281" x="0" y="1234" width="339" height="201"/>
- <SubTexture name="__dbTextures/Symbol 10317/Layer 19_9" x="544" y="1670" width="256" height="71"/>
- <SubTexture name="__dbTextures/Symbol 10317/Layer 19_10" x="1244" y="1690" width="256" height="58"/>
- <SubTexture name="__dbTextures/Symbol 10317/Layer 19_11" x="0" y="1736" width="203" height="55"/>
- <SubTexture name="__dbTextures/Symbol 10317/Layer 19_12" x="0" y="1793" width="121" height="54"/>
- <SubTexture name="__dbTextures/Symbol 10317/Layer 19_13" x="998" y="1416" width="244" height="191"/>
- <SubTexture name="__dbTextures/Symbol 10317/Layer 19_14" x="1260" y="1404" width="244" height="191"/>
- <SubTexture name="__dbTextures/Symbol 10317/Layer 18_5" x="997" y="1764" width="142" height="57"/>
- <SubTexture name="__dbTextures/Symbol 10317/Layer 18_6" x="1652" y="1784" width="140" height="57"/>
- <SubTexture name="__dbTextures/Symbol 10317/Layer 18_7" x="846" y="1569" width="150" height="170"/>
+ <SubTexture name="__dbTextures/Symbol 10317/Layer 19_9" x="1244" y="1690" width="256" height="71"/>
+ <SubTexture name="__dbTextures/Symbol 10317/Layer 19_10" x="0" y="1736" width="256" height="58"/>
+ <SubTexture name="__dbTextures/Symbol 10317/Layer 19_11" x="1798" y="1742" width="203" height="55"/>
+ <SubTexture name="__dbTextures/Symbol 10317/Layer 19_12" x="1796" y="1799" width="121" height="54"/>
+ <SubTexture name="__dbTextures/Symbol 10317/Layer 19_13" x="1260" y="1404" width="244" height="191"/>
+ <SubTexture name="__dbTextures/Symbol 10317/Layer 19_14" x="998" y="1416" width="244" height="191"/>
+ <SubTexture name="__dbTextures/Symbol 10317/Layer 18_5" x="1652" y="1784" width="142" height="57"/>
+ <SubTexture name="__dbTextures/Symbol 10317/Layer 18_6" x="664" y="1789" width="140" height="57"/>
+ <SubTexture name="__dbTextures/Symbol 10317/Layer 18_7" x="1506" y="1404" width="150" height="170"/>
  <SubTexture name="位图 9" x="0" y="1536" width="284" height="98"/>
- <SubTexture name="__dbTextures/Symbol 10317/Layer 18_9" x="1810" y="1454" width="150" height="170"/>
- <SubTexture name="__dbTextures/Symbol 10317/Layer 18_10" x="1506" y="1576" width="150" height="170"/>
- <SubTexture name="__dbTextures/Symbol 10317/Layer 18_11" x="1506" y="1404" width="150" height="170"/>
+ <SubTexture name="__dbTextures/Symbol 10317/Layer 18_9" x="846" y="1569" width="150" height="170"/>
+ <SubTexture name="__dbTextures/Symbol 10317/Layer 18_10" x="846" y="1397" width="150" height="170"/>
+ <SubTexture name="__dbTextures/Symbol 10317/Layer 18_11" x="1658" y="1454" width="150" height="170"/>
  <SubTexture name="Symbol 5212" x="1020" y="1048" width="84" height="43"/>
- <SubTexture name="Symbol 10252" x="1423" y="2036" width="513" height="191"/>
+ <SubTexture name="Symbol 10252" x="285" y="1850" width="513" height="191"/>
  <SubTexture name="__dbTextures/Symbol 10317/Layer 17_5" x="998" y="1609" width="244" height="92"/>
  <SubTexture name="__dbTextures/Symbol 10317/Layer 17_6" x="286" y="1656" width="256" height="89"/>
  <SubTexture name="__dbTextures/Symbol 10317/Layer 17_7" x="362" y="1204" width="135" height="57"/>
  <SubTexture name="__dbTextures/Symbol 10317/Layer 17_8" x="1658" y="1626" width="138" height="157"/>
- <SubTexture name="__dbTextures/Symbol 10317/Layer 17_9" x="537" y="1788" width="142" height="51"/>
- <SubTexture name="__dbTextures/Symbol 10317/Layer 17_10" x="405" y="1747" width="130" height="50"/>
- <SubTexture name="__dbTextures/Symbol 10317/Layer 17_11" x="205" y="1787" width="139" height="57"/>
- <SubTexture name="__dbTextures/Symbol 10317/Layer 16_4" x="1230" y="1750" width="160" height="64"/>
+ <SubTexture name="__dbTextures/Symbol 10317/Layer 17_9" x="141" y="1798" width="142" height="51"/>
+ <SubTexture name="__dbTextures/Symbol 10317/Layer 17_10" x="285" y="1798" width="130" height="50"/>
+ <SubTexture name="__dbTextures/Symbol 10317/Layer 17_11" x="0" y="1796" width="139" height="57"/>
+ <SubTexture name="__dbTextures/Symbol 10317/Layer 16_4" x="830" y="1741" width="160" height="64"/>
  <SubTexture name="__dbTextures/Symbol 10317/Layer 16_8" x="1502" y="1748" width="148" height="56"/>
  <SubTexture name="__dbTextures/Symbol 10317/Layer 15_4" x="1798" y="1682" width="204" height="58"/>
- <SubTexture name="__dbTextures/Symbol 10317/Layer 15_5" x="544" y="1743" width="200" height="43"/>
- <SubTexture name="__dbTextures/Symbol 10317/Layer 15_8" x="802" y="1741" width="193" height="57"/>
- <SubTexture name="__dbTextures/Symbol 10317/Layer 15_9" x="205" y="1747" width="198" height="38"/>
+ <SubTexture name="__dbTextures/Symbol 10317/Layer 15_5" x="992" y="1764" width="200" height="43"/>
+ <SubTexture name="__dbTextures/Symbol 10317/Layer 15_8" x="1230" y="1763" width="193" height="57"/>
+ <SubTexture name="__dbTextures/Symbol 10317/Layer 15_9" x="464" y="1789" width="198" height="38"/>
  <SubTexture name="Symbol 10256" x="998" y="1732" width="231" height="31"/>
  <SubTexture name="Symbol 10286" x="998" y="1703" width="235" height="28"/>
- <SubTexture name="Symbol 10310" x="440" y="2068" width="449" height="103"/>
- <SubTexture name="位图 51" x="1798" y="1742" width="204" height="49"/>
+ <SubTexture name="Symbol 10310" x="884" y="2046" width="449" height="103"/>
+ <SubTexture name="位图 51" x="258" y="1747" width="204" height="49"/>
  <SubTexture name="__dbTextures/Symbol 10317/Layer 11_8" x="1798" y="1626" width="214" height="54"/>
- <SubTexture name="__dbTextures/Symbol 10317/Layer 11_12" x="681" y="1788" width="119" height="54"/>
- <SubTexture name="Symbol 10236" x="0" y="2068" width="438" height="191"/>
- <SubTexture name="Symbol 10245" x="1141" y="1816" width="443" height="191"/>
- <SubTexture name="Symbol 10248" x="1586" y="1843" width="442" height="191"/>
- <SubTexture name="Symbol 10258" x="891" y="2009" width="531" height="212"/>
+ <SubTexture name="__dbTextures/Symbol 10317/Layer 11_12" x="1919" y="1799" width="119" height="54"/>
+ <SubTexture name="Symbol 10236" x="444" y="2046" width="438" height="191"/>
+ <SubTexture name="Symbol 10245" x="1351" y="1843" width="443" height="191"/>
+ <SubTexture name="Symbol 10248" x="0" y="2042" width="442" height="191"/>
+ <SubTexture name="Symbol 10258" x="1351" y="2036" width="531" height="212"/>
  <SubTexture name="Symbol 10266" x="846" y="1204" width="171" height="191"/>
- <SubTexture name="Symbol 10272" x="1844" y="1068" width="171" height="191"/>
+ <SubTexture name="Symbol 10272" x="340" y="1263" width="171" height="191"/>
  <SubTexture name="Symbol 10278" x="1844" y="1261" width="171" height="191"/>
- <SubTexture name="Symbol 10288" x="346" y="1844" width="544" height="223"/>
- <SubTexture name="Symbol 10294" x="1671" y="1068" width="171" height="191"/>
- <SubTexture name="Symbol 10301" x="340" y="1263" width="171" height="191"/>
- <SubTexture name="Symbol 10307" x="1671" y="1261" width="171" height="191"/>
+ <SubTexture name="Symbol 10288" x="806" y="1822" width="544" height="223"/>
+ <SubTexture name="Symbol 10294" x="1671" y="1261" width="171" height="191"/>
+ <SubTexture name="Symbol 10301" x="1844" y="1068" width="171" height="191"/>
+ <SubTexture name="Symbol 10307" x="1671" y="1068" width="171" height="191"/>
  <SubTexture name="Symbol 10315" x="1019" y="1204" width="240" height="211"/>
- <SubTexture name="位图 3" x="1020" y="988" width="104" height="58"/>
- <SubTexture name="位图 4" x="1020" y="868" width="104" height="58"/>
- <SubTexture name="位图 5" x="1020" y="928" width="104" height="58"/>
+ <SubTexture name="位图 3" x="1020" y="928" width="104" height="58"/>
+ <SubTexture name="位图 4" x="1020" y="988" width="104" height="58"/>
+ <SubTexture name="位图 5" x="1020" y="868" width="104" height="58"/>
  <SubTexture name="Symbol 47" x="648" y="502" width="50" height="50"/>
+ <SubTexture name="__dbTextures/Symbol 3975/Layer 2_0" x="648" y="554" width="45" height="35"/>
  <SubTexture name="__dbTextures/Symbol 3975/Layer 2_1" x="1992" y="600" width="45" height="35"/>
  <SubTexture name="__dbTextures/Symbol 3975/Layer 2_2" x="648" y="591" width="45" height="35"/>
- <SubTexture name="__dbTextures/Symbol 3975/Layer 2_3" x="648" y="554" width="45" height="35"/>
+ <SubTexture name="__dbTextures/Symbol 3975/Layer 2_3" x="648" y="628" width="45" height="35"/>
 </TextureAtlas>

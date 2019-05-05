@@ -16,6 +16,23 @@ namespace engine
 			return aniData->frameCount + 1;
 		return 0;
 	};
+	void MC::gotoAndStopByTime(float time, const string & _aniName) {
+		if (this->getArmature() == NULL || this->getAnimation() == NULL)return;
+		string aniName = _aniName;
+		if (aniName == "")aniName = defAniName;
+		this->currentFrame = (int)(time* this->getArmature()->getArmatureData()->frameRate+0.5 );
+		this->inPlay = false;
+		this->getAnimation()->gotoAndStopByTime(aniName, time);
+	}
+	void MC::gotoAndStop(float progress, const string & _aniName) {
+		if (this->getArmature() == NULL || this->getAnimation() == NULL)return;
+		string aniName = _aniName;
+		if (aniName == "")aniName = defAniName;
+		this->getArmature()->getArmatureData()->getAnimation(aniName)->duration;
+		this->currentFrame = (int)(progress * this->totalFrames + 0.5);// this->getArmature()->getArmatureData()->frameRate *  + 0.5);
+ 		this->inPlay = false;
+		this->getAnimation()->gotoAndStopByProgress(aniName, progress);
+	}
 	void MC::gotoAndStop(int cf, const string & _aniName)
 	{
 		if (this->getArmature() == NULL || this->getAnimation() == NULL)return;
@@ -566,6 +583,35 @@ namespace engine
 				mcs->reinit();
 		}
     }
+	void MovieClip::gotoAndStopByTime(float time, const string & aniName) {
+		if (this->mc && !this->isReady) {
+			this->reinit();
+		}
+		if (this->mc && !this->isReady)return;
+		MC::gotoAndStopByTime(time, aniName);
+		int l = this->submcbs.size();
+		for (int i = 0; i < l; i++)
+		{
+			MovieClipSubBase * mcs = this->submcbs[i];
+			if (mcs->reinitType & 1 == 1 || !mcs->isReady)
+				mcs->reinit();
+		}
+	}
+	void MovieClip::gotoAndStop(float progress, const string & aniName) {
+		if (this->mc && !this->isReady) {
+			this->reinit();
+		}
+		if (this->mc && !this->isReady)return;
+		MC::gotoAndStop(progress, aniName);
+		int l = this->submcbs.size();
+		for (int i = 0; i < l; i++)
+		{
+			MovieClipSubBase * mcs = this->submcbs[i];
+			if (mcs->reinitType & 1 == 1 || !mcs->isReady)
+				mcs->reinit();
+		}
+	  }
+
     MovieClip::MovieClip(dragonBones::CCArmatureDisplay * container, const string &  _defAniName) :isOnce(false), container(0), world(0), myFrame(0), speedX(0), speedY(0), setAr(false), _autoRemoveData(false)
 	{
 		setNodeType("MovieClip");
@@ -1093,7 +1139,35 @@ namespace engine
 				this->submcbs[i]->reinit();
 		} 
 	};
-
+	void MovieClipSub::gotoAndStopByTime(float time, const string & aniName) {
+		if (!this->isReady && this->reinitType) {
+			this->reinit();
+		}
+		if (!this->isReady)return;
+		MC::gotoAndStopByTime(time, aniName);
+		int l = this->submcbs.size();
+		for (int i = 0; i < l; i++)
+		{
+			MovieClipSubBase * mcs = this->submcbs[i];
+			if (mcs->reinitType & 1 == 1 || !mcs->isReady)
+				this->submcbs[i]->reinit();
+		}
+	}
+	void MovieClipSub::gotoAndStop(float progress, const string & aniName)
+	 {
+		if (!this->isReady && this->reinitType) {
+			this->reinit();
+		}
+		if (!this->isReady)return;
+		MC::gotoAndStop(progress, aniName);
+		int l = this->submcbs.size();
+		for (int i = 0; i < l; i++)
+		{
+			MovieClipSubBase * mcs = this->submcbs[i];
+			if (mcs->reinitType & 1 == 1 || !mcs->isReady)
+				this->submcbs[i]->reinit();
+		}
+	};
 	ImageMovieClip::ImageMovieClip(const string &  _rootPath, const string &  fileNamePre, int numFormat, int imgSize)
 	{
 		setNodeType("ImageMovieClip");

@@ -22,7 +22,7 @@ namespace engine {
 			i = 0;
 			while (i < 7)
 			{
-				distanceX = -40;
+				distanceX = -45;
 				distanceY = distanceY - 10;
 				j = 0;
 				while (j < 7)
