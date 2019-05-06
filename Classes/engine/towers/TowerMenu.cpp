@@ -1716,7 +1716,8 @@ namespace engine
 					this->container->sphereSlot2->gotoAndStop(4);
 					if (this->container->btnUpgradeMenu->currentFrame != 5)
 					{
-						this->container->btnUpgradeMenu->gotoAndStop(5);
+						this->container->btnUpgradeMenu->gotoAndStop(5);  
+						//this->container->btnUpgradeMenu->gotoAndStop((float)(5/(double) this->container->btnUpgradeMenu->totalFrames));
 						this->container->btnUpgradeMenuCostTXT->setVisible(false);
 						if (this->hint && !this->openFlag && !this->closeFlag)
 						{

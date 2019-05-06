@@ -24,12 +24,16 @@ namespace engine
 		this->inPlay = false;
 		this->getAnimation()->gotoAndStopByTime(aniName, time);
 	}
-	void MC::gotoAndStop(float progress, const string & _aniName) {
+	void MC::gotoAndStop(double progress, const string & _aniName) {
 		if (this->getArmature() == NULL || this->getAnimation() == NULL)return;
 		string aniName = _aniName;
 		if (aniName == "")aniName = defAniName;
 		this->getArmature()->getArmatureData()->getAnimation(aniName)->duration;
-		this->currentFrame = (int)(progress * this->totalFrames + 0.5);// this->getArmature()->getArmatureData()->frameRate *  + 0.5);
+		if(progress<1)
+			this->currentFrame = (int)(progress * this->totalFrames) + 1;
+		else
+			this->currentFrame = this->totalFrames  ;
+		// this->getArmature()->getArmatureData()->frameRate *  + 0.5);
  		this->inPlay = false;
 		this->getAnimation()->gotoAndStopByProgress(aniName, progress);
 	}
@@ -40,8 +44,9 @@ namespace engine
 		//if (aniName == "")aniName = defAniName;
 		if (cf == 0)cf = 1; 
 		this->currentFrame = (cf - 1) % totalFrames + 1;
-		float progress=(float)((this->currentFrame-1) / (double)this->totalFrames +0.000001); 
-		gotoAndStop(progress,_aniName);
+		double y= (1000000-(1000000/this->getArmature()->getArmatureData()->frameRate * this->getArmature()->getArmatureData()->frameRate))/(double) 1000000;
+		double progress=((this->currentFrame-1) / (double)(this->totalFrames -1) + this->currentFrame*y);
+		MC::gotoAndStop(progress,_aniName);
 	}
 	void MC::nextFram()
 	{
@@ -594,7 +599,7 @@ namespace engine
 				mcs->reinit();
 		}
 	}
-	void MovieClip::gotoAndStop(float progress, const string & aniName) {
+	void MovieClip::gotoAndStop(double progress, const string & aniName) {
 		if (this->mc && !this->isReady) {
 			this->reinit();
 		}
@@ -1150,7 +1155,7 @@ namespace engine
 				this->submcbs[i]->reinit();
 		}
 	}
-	void MovieClipSub::gotoAndStop(float progress, const string & aniName)
+	void MovieClipSub::gotoAndStop(double progress, const string & aniName)
 	 {
 		if (!this->isReady && this->reinitType) {
 			this->reinit();
