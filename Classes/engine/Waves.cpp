@@ -147,7 +147,7 @@ namespace engine
 				if (this->world->nowLevel == 1)
 				{
 					this->world->worldInterface->blockCastGolem = true;
-					this->world->worldInterface->blockCastIceman = false;// true;
+					this->world->worldInterface->blockCastIceman = true;
 					this->world->worldInterface->blockCastAir = true;
 				}
 				else if (this->world->nowLevel == 2)
