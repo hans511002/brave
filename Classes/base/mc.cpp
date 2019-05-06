@@ -45,7 +45,7 @@ namespace engine
 		if (cf == 0)cf = 1; 
 		this->currentFrame = (cf - 1) % totalFrames + 1;
 		double y= (1000000-(1000000/this->getArmature()->getArmatureData()->frameRate * this->getArmature()->getArmatureData()->frameRate))/(double) 1000000;
-		double progress=((this->currentFrame-1) / (double)(this->totalFrames -1) + this->currentFrame*y);
+		double progress=(std::abs(this->currentFrame-1) / (double)(this->totalFrames -1)  );
 		MC::gotoAndStop(progress,_aniName);
 	}
 	void MC::nextFram()
