@@ -36,22 +36,19 @@ namespace engine
 	void MC::gotoAndStop(int cf, const string & _aniName)
 	{
 		if (this->getArmature() == NULL || this->getAnimation() == NULL)return;
-		if (cf == 0)cf = 1;
-		string aniName = _aniName;
-		if (aniName == "")aniName = defAniName;
+		//string aniName = _aniName;
+		//if (aniName == "")aniName = defAniName;
+		if (cf == 0)cf = 1; 
 		this->currentFrame = (cf - 1) % totalFrames + 1;
-		//if (this->getAnimation()->getLastAnimationName() != aniName)
-  //          this->getAnimation()->gotoAndStopByFrame(aniName, currentFrame - 1);
-  //      else 
-		this->inPlay = false;
-		this->getAnimation()->gotoAndStopByFrame(aniName, currentFrame - 1);
-	};
+		float progress=(float)((this->currentFrame-1) / (double)this->totalFrames +0.000001); 
+		gotoAndStop(progress,_aniName);
+	}
 	void MC::nextFram()
 	{
 		if (this->getArmature() == NULL || this->getAnimation() == NULL)return;
 		this->currentFrame++;
 		gotoAndStop(this->currentFrame);
-	};
+	}
 	void MC::stop(const string &  _aniName)
 	{
 		if (this->getArmature() == NULL || this->getAnimation() == NULL)return;
