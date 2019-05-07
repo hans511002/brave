@@ -1113,33 +1113,37 @@ namespace engine {
                     if (this->container->butCastGolem->currentFrame == 1) {
                         this->container->butCastGolem->gotoAndStop (2);
                         AudioUtil::playSoundWithVol ("Snd_menu_mouseMove.mp3", 0.95f);
-                        if (!this->world->hint->isVisible ()) {
-                            this->world->hint->setVisible (true);
-                        }
-                        if (this->world->hint->currentFrame != 1) {
-                            this->world->hint->gotoAndStop (1);
-                        }
-                        string cnVal = I18N_VALUE(I18N_CODE::U001);
-                        if (std::getText (this->world->hint->nameTXT) != cnVal) {
-                            std::setText (this->world->hint->nameTXT, cnVal);
-                            std::setText (this->world->hint->noteTXT, I18N_VALUE(I18N_CODE::U002));
-                            //this->world->hint->nameTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                            std::setText (this->world->hint->timeTXT, int (this->castGolemTimer / 30));
-                            //this->world->hint->timeTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                            this->hintUpdate ();
-                        }
+                        if(this->world->hint){
+                            if (!this->world->hint->isVisible ()) {
+                                this->world->hint->setVisible (true);
+                            }
+                            if (this->world->hint->currentFrame != 1) {
+                                this->world->hint->gotoAndStop (1);
+                            }
+                            string cnVal = I18N_VALUE(I18N_CODE::U001);
+                            if (std::getText (this->world->hint->nameTXT) != cnVal) {
+                                std::setText (this->world->hint->nameTXT, cnVal);
+                                std::setText (this->world->hint->noteTXT, I18N_VALUE(I18N_CODE::U002));
+                                //this->world->hint->nameTXT.setTextFormat(Main::mainClass->boldTextFormat);
+                                std::setText (this->world->hint->timeTXT, int (this->castGolemTimer / 30));
+                                //this->world->hint->timeTXT.setTextFormat(Main::mainClass->boldTextFormat);
+                                this->hintUpdate ();
+                            }
+                        }                        
                     } else if (this->container->butCastGolem->currentFrame == 4) {
-                        if (!this->world->hint->isVisible ()) {
-                            this->world->hint->setVisible (true);
-                        }
-                        if (this->world->hint->currentFrame != 1) {
-                            this->world->hint->gotoAndStop (1);
-                        }
-                        if (std::getText (this->world->hint->nameTXT) != I18N_VALUE(I18N_CODE::U003)) {
-                            std::setText (this->world->hint->nameTXT, I18N_VALUE(I18N_CODE::U003));
-                            std::setText (this->world->hint->noteTXT, I18N_VALUE(I18N_CODE::U002));
-                            //this->world->hint->nameTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                            this->hintUpdate ();
+                        if(this->world->hint){
+                            if (!this->world->hint->isVisible ()) {
+                                this->world->hint->setVisible (true);
+                            }
+                            if (this->world->hint->currentFrame != 1) {
+                                this->world->hint->gotoAndStop (1);
+                            }
+                            if (std::getText (this->world->hint->nameTXT) != I18N_VALUE(I18N_CODE::U003)) {
+                                std::setText (this->world->hint->nameTXT, I18N_VALUE(I18N_CODE::U003));
+                                std::setText (this->world->hint->noteTXT, I18N_VALUE(I18N_CODE::U002));
+                                //this->world->hint->nameTXT.setTextFormat(Main::mainClass->boldTextFormat);
+                                this->hintUpdate ();
+                            }
                         }
                     }
                 }
@@ -1147,7 +1151,7 @@ namespace engine {
                 if (this->container->butCastGolem->currentFrame == 2) {
                     this->container->butCastGolem->gotoAndStop (1);
                 }
-                if (this->world->hint->isVisible ()) {
+                if (this->world->hint && this->world->hint->isVisible ()) {
                     if (std::getText (this->world->hint->nameTXT) == I18N_VALUE(I18N_CODE::U003) ||
                         std::getText (this->world->hint->nameTXT) == I18N_VALUE(I18N_CODE::U001)) {
                         this->world->hint->setVisible (false);
@@ -1160,33 +1164,37 @@ namespace engine {
                     if (this->container->butCastIceman->currentFrame == 1) {
                         this->container->butCastIceman->gotoAndStop (2);
                         AudioUtil::playSoundWithVol ("Snd_menu_mouseMove.mp3", 0.95f);
-                        if (!this->world->hint->isVisible ()) {
-                            this->world->hint->setVisible (true);
-                            this->world->hint->setLocalZOrder (3);
-                        }
-                        if (this->world->hint->currentFrame != 1) {
-                            this->world->hint->gotoAndStop (1);
-                        }
-                        if (std::getText (this->world->hint->nameTXT) != I18N_VALUE(I18N_CODE::U004)) {
-                            std::setText (this->world->hint->nameTXT, I18N_VALUE(I18N_CODE::U004));
-                            std::setText (this->world->hint->noteTXT, I18N_VALUE(I18N_CODE::U006));
-                            //this->world->hint->nameTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                            std::setText (this->world->hint->timeTXT, int (this->castIcemanTimer / 30));
-                            //this->world->hint->timeTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                            this->hintUpdate ();
-                        }
+                        if(this->world->hint){
+                            if (!this->world->hint->isVisible ()) {
+                                this->world->hint->setVisible (true);
+                                this->world->hint->setLocalZOrder (3);
+                            }
+                            if (this->world->hint->currentFrame != 1) {
+                                this->world->hint->gotoAndStop (1);
+                            }
+                            if (std::getText (this->world->hint->nameTXT) != I18N_VALUE(I18N_CODE::U004)) {
+                                std::setText (this->world->hint->nameTXT, I18N_VALUE(I18N_CODE::U004));
+                                std::setText (this->world->hint->noteTXT, I18N_VALUE(I18N_CODE::U006));
+                                //this->world->hint->nameTXT.setTextFormat(Main::mainClass->boldTextFormat);
+                                std::setText (this->world->hint->timeTXT, int (this->castIcemanTimer / 30));
+                                //this->world->hint->timeTXT.setTextFormat(Main::mainClass->boldTextFormat);
+                                this->hintUpdate ();
+                            }
+                        }                        
                     } else if (this->container->butCastIceman->currentFrame == 4) {
-                        if (!this->world->hint->isVisible ()) {
-                            this->world->hint->setVisible (true);
-                        }
-                        if (this->world->hint->currentFrame != 1) {
-                            this->world->hint->gotoAndStop (1);
-                        }
-                        if (std::getText (this->world->hint->nameTXT) != I18N_VALUE(I18N_CODE::U005)) {
-                            std::setText (this->world->hint->nameTXT, I18N_VALUE(I18N_CODE::U005));
-                            std::setText (this->world->hint->noteTXT, I18N_VALUE(I18N_CODE::U006));
-                            //this->world->hint->nameTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                            this->hintUpdate ();
+                        if(this->world->hint){
+                             if (!this->world->hint->isVisible ()) {
+                                this->world->hint->setVisible (true);
+                            }
+                            if (this->world->hint->currentFrame != 1) {
+                                this->world->hint->gotoAndStop (1);
+                            }
+                            if (std::getText (this->world->hint->nameTXT) != I18N_VALUE(I18N_CODE::U005)) {
+                                std::setText (this->world->hint->nameTXT, I18N_VALUE(I18N_CODE::U005));
+                                std::setText (this->world->hint->noteTXT, I18N_VALUE(I18N_CODE::U006));
+                                //this->world->hint->nameTXT.setTextFormat(Main::mainClass->boldTextFormat);
+                                this->hintUpdate ();
+                            }
                         }
                     }
                 }
@@ -1194,7 +1202,7 @@ namespace engine {
                 if (this->container->butCastIceman->currentFrame == 2) {
                     this->container->butCastIceman->gotoAndStop (1);
                 }
-                if (this->world->hint->isVisible ()) {
+                if (this->world->hint && this->world->hint->isVisible ()) {
                     if (std::getText (this->world->hint->nameTXT) == I18N_VALUE(I18N_CODE::U005) ||
                         std::getText (this->world->hint->nameTXT) == I18N_VALUE(I18N_CODE::U004)) {
                         this->world->hint->setVisible (false);
@@ -1207,40 +1215,44 @@ namespace engine {
                     if (this->container->butCastAir->currentFrame == 1) {
                         this->container->butCastAir->gotoAndStop (2);
                         AudioUtil::playSoundWithVol ("Snd_menu_mouseMove.mp3", 0.95f);
-                        if (!this->world->hint->isVisible ()) {
-                            this->world->hint->setVisible (true);
-                        }
-                        if (this->world->hint->currentFrame != 1) {
-                            this->world->hint->gotoAndStop (1);
-                        }
-                        if (std::getText (this->world->hint->nameTXT) != I18N_VALUE(I18N_CODE::U007)) {
-                            std::setText (this->world->hint->nameTXT, I18N_VALUE(I18N_CODE::U007));
-                            std::setText (this->world->hint->noteTXT, I18N_VALUE(I18N_CODE::U009));
-                            //this->world->hint->nameTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                            std::setText (this->world->hint->timeTXT, int (this->castAirTimer / 30));
-                            //this->world->hint->timeTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                            this->hintUpdate ();
+                        if(this->world->hint){
+                            if (!this->world->hint->isVisible ()) {
+                                this->world->hint->setVisible (true);
+                            }
+                            if (this->world->hint->currentFrame != 1) {
+                                this->world->hint->gotoAndStop (1);
+                            }
+                            if (std::getText (this->world->hint->nameTXT) != I18N_VALUE(I18N_CODE::U007)) {
+                                std::setText (this->world->hint->nameTXT, I18N_VALUE(I18N_CODE::U007));
+                                std::setText (this->world->hint->noteTXT, I18N_VALUE(I18N_CODE::U009));
+                                //this->world->hint->nameTXT.setTextFormat(Main::mainClass->boldTextFormat);
+                                std::setText (this->world->hint->timeTXT, int (this->castAirTimer / 30));
+                                //this->world->hint->timeTXT.setTextFormat(Main::mainClass->boldTextFormat);
+                                this->hintUpdate ();
+                            } 
                         }
                     } else if (this->container->butCastAir->currentFrame == 4) {
-                        if (!this->world->hint->isVisible ()) {
-                            this->world->hint->setVisible (true);
+                        if(this->world->hint){
+                            if (!this->world->hint->isVisible ()) {
+                                this->world->hint->setVisible (true);
+                            }
+                            if (this->world->hint->currentFrame != 1) {
+                                this->world->hint->gotoAndStop (1);
+                            }
+                            if (std::getText (this->world->hint->nameTXT) != I18N_VALUE(I18N_CODE::U008)) {
+                                std::setText (this->world->hint->nameTXT, I18N_VALUE(I18N_CODE::U008));
+                                std::setText (this->world->hint->noteTXT, I18N_VALUE(I18N_CODE::U009));
+                                //this->world->hint->nameTXT.setTextFormat(Main::mainClass->boldTextFormat);
+                                this->hintUpdate ();
+                            }                           
                         }
-                        if (this->world->hint->currentFrame != 1) {
-                            this->world->hint->gotoAndStop (1);
-                        }
-                        if (std::getText (this->world->hint->nameTXT) != I18N_VALUE(I18N_CODE::U008)) {
-                            std::setText (this->world->hint->nameTXT, I18N_VALUE(I18N_CODE::U008));
-                            std::setText (this->world->hint->noteTXT, I18N_VALUE(I18N_CODE::U009));
-                            //this->world->hint->nameTXT.setTextFormat(Main::mainClass->boldTextFormat);
-                            this->hintUpdate ();
-                        }
-                    }
+                     }
                 }
             } else {
                 if (this->container->butCastAir->currentFrame == 2) {
                     this->container->butCastAir->gotoAndStop (1);
                 }
-                if (this->world->hint->isVisible ()) {
+                if (this->world->hint && this->world->hint->isVisible ()) {
                     if (std::getText (this->world->hint->nameTXT) == I18N_VALUE(I18N_CODE::U008) ||
                         std::getText (this->world->hint->nameTXT) == I18N_VALUE(I18N_CODE::U007)) {
                         this->world->hint->setVisible (false);
@@ -2508,7 +2520,7 @@ namespace engine {
     }// end function
 
     void WorldInterface::hintUpdate () {
-        if (this->world->hint->isVisible ()) {
+        if (this->world->hint && this->world->hint->isVisible ()) {
             this->world->hint->setPosition (CONVERT_TO_WORLD_POS(Vec2 (Main::mouseX, Main::mouseY)));
             if (this->world->hint->currentFrame == 1) {
                 if (std::getText (this->world->hint->nameTXT) == I18N_VALUE(I18N_CODE::U003)) {

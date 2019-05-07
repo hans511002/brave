@@ -452,13 +452,15 @@ namespace engine
 		//	}
 		//}
 
+		if(Main::fullTraining){
+			this->world->hint = new Hint_mc();
+			this->world->hint->stop();
+			this->world->hint->setMouseChildren(false);
+			this->world->hint->mouseEnabled = false;
+			this->world->hint->setVisible(false);
+			this->world->addChild(this->world->hint,3);
+		}
 
-		this->world->hint = new Hint_mc();
-		this->world->hint->stop();
-		this->world->hint->setMouseChildren(false);
-		this->world->hint->mouseEnabled = false;
-		this->world->hint->setVisible(false);
-		this->world->addChild(this->world->hint,3);
 		this->afterLoadXML();
 		
         this->world->road = new  RoadLevels_mc(this->world->nowLevel);
