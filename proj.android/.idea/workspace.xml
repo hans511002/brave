@@ -50,7 +50,7 @@
       <file leaf-file-name="Cast.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Classes/engine/casts/Cast.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
+            <state relative-caret-position="276">
               <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="17" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
@@ -62,7 +62,7 @@
       <file leaf-file-name="MainClass.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Classes/MainClass.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
+            <state relative-caret-position="7314">
               <caret line="318" column="0" lean-forward="false" selection-start-line="318" selection-start-column="0" selection-end-line="318" selection-end-column="0" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
@@ -74,7 +74,7 @@
       <file leaf-file-name="CCRef.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../cocos2d/cocos/base/CCRef.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
+            <state relative-caret-position="2254">
               <caret line="98" column="0" lean-forward="false" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
               <folding />
             </state>
@@ -84,7 +84,7 @@
       <file leaf-file-name="CCDirector.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../cocos2d/cocos/base/CCDirector.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
+            <state relative-caret-position="21321">
               <caret line="927" column="0" lean-forward="false" selection-start-line="927" selection-start-column="0" selection-end-line="927" selection-end-column="0" />
               <folding />
             </state>
@@ -94,7 +94,7 @@
       <file leaf-file-name="CCVector.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../cocos2d/cocos/base/CCVector.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
+            <state relative-caret-position="8464">
               <caret line="368" column="0" lean-forward="false" selection-start-line="368" selection-start-column="0" selection-end-line="368" selection-end-column="0" />
               <folding />
             </state>
@@ -104,7 +104,7 @@
       <file leaf-file-name="Feature.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Classes/engine/Feature.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-6">
+            <state relative-caret-position="10695">
               <caret line="465" column="21" lean-forward="false" selection-start-line="465" selection-start-column="21" selection-end-line="465" selection-end-column="21" />
               <folding />
             </state>
@@ -114,8 +114,8 @@
       <file leaf-file-name="WorldInterface.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../Classes/engine/WorldInterface.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="1156" column="0" lean-forward="false" selection-start-line="1156" selection-start-column="0" selection-end-line="1156" selection-end-column="0" />
+            <state relative-caret-position="274">
+              <caret line="1155" column="13" lean-forward="false" selection-start-line="1155" selection-start-column="13" selection-end-line="1155" selection-end-column="13" />
               <folding>
                 <element signature="e#34525#47172#0" expanded="false" />
                 <element signature="e#47178#49804#0" expanded="false" />
@@ -127,7 +127,7 @@
       <file leaf-file-name="Golem.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Classes/engine/casts/Golem.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
+            <state relative-caret-position="644">
               <caret line="28" column="13" lean-forward="false" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="13" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
@@ -3288,7 +3288,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-9" />
     <option name="y" value="-9" />
     <option name="width" value="1938" />
@@ -3385,21 +3385,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
-            <path>
-              <item name="proj.android" type="1abcf292:AndroidViewProjectNode" />
-              <item name="BraveApp" type="feadf853:AndroidModuleNode" />
-            </path>
-            <path>
-              <item name="proj.android" type="1abcf292:AndroidViewProjectNode" />
-              <item name="BraveApp" type="feadf853:AndroidModuleNode" />
-              <item name="cpp" type="9a30073f:AndroidJniFolderNode" />
-            </path>
             <path>
               <item name="proj.android" type="1abcf292:AndroidViewProjectNode" />
               <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
@@ -3408,6 +3397,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -3593,10 +3584,9 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="1" />
-    <editor active="true" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
     <layout>
-      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32879817" sideWeight="0.49785408" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -3611,13 +3601,13 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2247854" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3106576" sideWeight="0.6174893" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Build" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31030577" sideWeight="0.6174893" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16201717" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27145922" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41156462" sideWeight="0.6309013" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41156462" sideWeight="0.6309013" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -3632,15 +3622,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="OCSymbolicBreakpointType">
-          <properties>
-            <option name="moduleName" value="libart.so" />
-            <option name="symbolPattern" value="art_sigsegv_fault" />
-          </properties>
-          <option name="timeStamp" value="88" />
-        </breakpoint>
-      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
@@ -3876,9 +3857,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19573">
           <caret line="851" column="25" lean-forward="false" selection-start-line="851" selection-start-column="25" selection-end-line="851" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#22#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3886,9 +3864,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#24#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3896,7 +3871,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1702">
           <caret line="74" column="30" lean-forward="false" selection-start-line="74" selection-start-column="30" selection-end-line="74" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3904,10 +3878,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3243">
           <caret line="141" column="27" lean-forward="false" selection-start-line="141" selection-start-column="16" selection-end-line="141" selection-end-column="27" />
-          <folding>
-            <element signature="e#299#852#1" expanded="false" />
-            <element signature="e#856#977#1" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3915,7 +3885,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3923,7 +3892,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
           <caret line="1491" column="17" lean-forward="true" selection-start-line="1491" selection-start-column="17" selection-end-line="1491" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3931,7 +3899,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="483">
           <caret line="21" column="22" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3939,7 +3906,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="217" column="41" lean-forward="false" selection-start-line="217" selection-start-column="41" selection-end-line="217" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3947,9 +3913,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1932">
           <caret line="84" column="24" lean-forward="false" selection-start-line="84" selection-start-column="24" selection-end-line="84" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3965,7 +3928,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
           <caret line="212" column="13" lean-forward="false" selection-start-line="212" selection-start-column="13" selection-end-line="212" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3989,7 +3951,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-68">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3997,7 +3958,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4030,14 +3990,14 @@
         <state relative-caret-position="465">
           <caret line="483" column="29" lean-forward="false" selection-start-line="483" selection-start-column="29" selection-end-line="483" selection-end-column="29" />
           <folding>
-            <element signature="e#0#22#0" expanded="true" />
+            <element signature="e#0#22#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../Classes/engine/casts/Golem.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
+        <state relative-caret-position="644">
           <caret line="28" column="13" lean-forward="false" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="13" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
@@ -4054,7 +4014,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../Classes/engine/Feature.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6">
+        <state relative-caret-position="10695">
           <caret line="465" column="21" lean-forward="false" selection-start-line="465" selection-start-column="21" selection-end-line="465" selection-end-column="21" />
           <folding />
         </state>
@@ -4077,7 +4037,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../Classes/engine/casts/Cast.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
+        <state relative-caret-position="276">
           <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="17" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
@@ -4103,7 +4063,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../Classes/MainClass.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
+        <state relative-caret-position="7314">
           <caret line="318" column="0" lean-forward="false" selection-start-line="318" selection-start-column="0" selection-end-line="318" selection-end-column="0" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
@@ -4113,7 +4073,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../cocos2d/cocos/base/CCDirector.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
+        <state relative-caret-position="21321">
           <caret line="927" column="0" lean-forward="false" selection-start-line="927" selection-start-column="0" selection-end-line="927" selection-end-column="0" />
           <folding />
         </state>
@@ -4121,7 +4081,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../cocos2d/cocos/base/CCVector.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
+        <state relative-caret-position="8464">
           <caret line="368" column="0" lean-forward="false" selection-start-line="368" selection-start-column="0" selection-end-line="368" selection-end-column="0" />
           <folding />
         </state>
@@ -4129,7 +4089,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../cocos2d/cocos/base/CCRef.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
+        <state relative-caret-position="2254">
           <caret line="98" column="0" lean-forward="false" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
           <folding />
         </state>
@@ -4137,8 +4097,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../Classes/engine/WorldInterface.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="1156" column="0" lean-forward="false" selection-start-line="1156" selection-start-column="0" selection-end-line="1156" selection-end-column="0" />
+        <state relative-caret-position="274">
+          <caret line="1155" column="13" lean-forward="false" selection-start-line="1155" selection-start-column="13" selection-end-line="1155" selection-end-column="13" />
           <folding>
             <element signature="e#34525#47172#0" expanded="false" />
             <element signature="e#47178#49804#0" expanded="false" />

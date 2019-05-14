@@ -2302,9 +2302,14 @@ namespace engine {
         }
         i = this->listOfBullets.size() - 1;
         while (i >= 0) {
-            if (this->listOfBullets[i]->enemyTarget == unit) {
-                this->listOfBullets[i]->enemyTarget = NULL;
+			Bullet* bullet=this->listOfBullets[i];
+            if (bullet->enemyTarget == unit) {
+				bullet->enemyTarget = NULL;
             }
+			Bullet_6 *b6 = ISTYPE(Bullet_6, bullet);
+			if (b6) {
+				b6->chainTarget = NULL;
+			}
             i--;
         }
 		i = this->listOfTowers.size() - 1;

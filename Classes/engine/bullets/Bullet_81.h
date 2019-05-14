@@ -13,8 +13,7 @@ namespace engine
 			float hypotenuse;
 			float cathetus1;
 			float cathetus2;
-			float angleAlpha;
-			BaseNode *chainTarget;//:Object;
+			float angleAlpha; 
 			float myWidth;
 			float myHeight;
 

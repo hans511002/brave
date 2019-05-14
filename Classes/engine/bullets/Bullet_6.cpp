@@ -11,6 +11,7 @@ namespace engine
         Bullet_6::Bullet_6():length(0),unitsCout(1)
         { 
 			SET_NODETYPENAME();
+			chainTarget = NULL;
 			return;
         }// end function
 
@@ -52,23 +53,29 @@ namespace engine
             {
                 container->tryPlay();
 			    //container->gotoAndStop((container->currentFrame + 1));
-                this->cathetus1 = enemyTarget->shoot_pt.x - this_pt.x;
-                this->cathetus2 = enemyTarget->shoot_pt.y - this_pt.y;
+                this->cathetus1 = this_pt.x - enemyTarget->shoot_pt.x;
+                this->cathetus2 = this_pt.y - enemyTarget->shoot_pt.y ;
+
+
                 this->hypotenuse = this_pt.distance(enemyTarget->shoot_pt);
-                this->angleAlpha = std::atan2(this->cathetus2, this->cathetus1) * (180 / std::PI) - 90;
-                //container->rotation = this->angleAlpha;
+                this->angleAlpha = std::atan2(this->cathetus2, this->cathetus1) * (180 / std::PI) +45;
+				
+
+				
+				
+				this->container->setRotation( this->angleAlpha);
                 if (container->getWidth() > container->getHeight())
                 {
 					//container->width = this->hypotenuse;
 					//container->setContentSize(Size(this->hypotenuse, container->getHeight()));
-					container->setScaleX(container->getWidth() / this->hypotenuse);
-                    container->setScaleY(container->getScaleX());
+					container->setScaleX( this->hypotenuse/ container->getWidth());
+                    //container->setScaleY(container->getScaleX());
                 }
                 else
                 {
                     //container->height = this->hypotenuse;
-					container->setScaleY(container->getHeight() / this->hypotenuse);
-					container->setScaleX(container->getScaleY());
+					container->setScaleY( this->hypotenuse/ container->getHeight());
+					//container->setScaleX(container->getScaleY());
                 }
                 if (!this->chainTarget)
                 {
@@ -136,7 +143,7 @@ namespace engine
                 {
                     enemyTarget->getHit(this->damageLittle / 2, "ice", 2, false, bulletType, whoShoot);
                 }
-                if (!enemyTarget->dead && enemyTarget->readyDamage)
+                if (enemyTarget && !enemyTarget->dead && enemyTarget->readyDamage)
                 {
                     if (!enemyTarget->icemanFlag)
                     {

@@ -1708,7 +1708,8 @@ namespace engine
         void UltraTowerMenu::kill(){
             if (!this->dead)
             {
-                this->dead = true;
+				this->dead = true; 
+				UltraTowerMenu::remove();
             }
         }
         void UltraTowerMenu::remove()

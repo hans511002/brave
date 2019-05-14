@@ -107,10 +107,6 @@ namespace engine{
 
 		void Tower::update(float dt)
 		{
-			if(this->dead){
-				this->remove();
-				return;
-			}
 			if (!this->buildAnima)
 			{
 				if (this->towerType < 5)
@@ -3030,6 +3026,7 @@ namespace engine{
 			if (!this->dead)
 			{
 				this->dead = true;
+				Tower::remove();
 			}
 			return;
 		}// end function

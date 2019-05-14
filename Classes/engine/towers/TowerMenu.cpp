@@ -386,7 +386,7 @@ namespace engine
 					}
 					else if (this->fastBuyUltraFlag == "btnTowerUpgr2")
 					{
-						if (this->myTower->shootingTurnStack.size() > 3);//(this->myTower->shootingTurnStack[1] && this->myTower->shootingTurnStack[3])
+						if (this->myTower->shootingTurnStack[1] && this->myTower->shootingTurnStack[3])
 						{
 							this->readyFastBuyUltraFlag = false;
 							this->ultraUpgradeTower(this->fastBuyUltraFlag);
@@ -1074,7 +1074,7 @@ namespace engine
 					this->i = 0;
 					while (this->i < this->world->listOfMoveSpheres.size())
 					{
-						if (this->world->listOfMoveSpheres[this->i]->owner == this->myTower)
+						if (this->world->listOfMoveSpheres[this->i]->owner == ISTYPE(MC, this->myTower))
 						{
 							if (this->world->listOfMoveSpheres[this->i]->speedFrame >= 0)
 							{
@@ -2537,7 +2537,7 @@ namespace engine
 		{
 			if (param1 == "btnTowerUpgr1")
 			{
-				if (this->myTower->shootingTurnStack.size() > 0)
+				if (this->myTower->shootingTurnStack[0])
 				{
 					if ((int)this->myTower->shootingTurnStack[0][3] > 1)
 					{
@@ -3430,6 +3430,7 @@ namespace engine
 			if (!this->dead)
 			{
 				this->dead = true;
+				TowerMenu::remove();
 			}
 			return;
 		}// end function

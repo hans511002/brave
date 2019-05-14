@@ -99,6 +99,7 @@ namespace engine
 		{
 			if (times==0 && this->currentFrame >= totalFrames-1)currentFrame = 1;
 			this->play(times);
+			this->currentFrame++;
 			return this->inPlay;
 		}
 		else {
