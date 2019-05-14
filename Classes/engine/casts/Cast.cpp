@@ -37,7 +37,8 @@ namespace engine
 			//this->y = Main::mouseY;
 			this->setMouseChildren(false);
 			this->setMouseEnabled(false);
-			this->world->hint->setVisible( false);
+			if(this->world->hint)
+				this->world->hint->setVisible( false);
 			this->world->worldInterface->barInfoManage(this);
 			return true;
 		}// end function
