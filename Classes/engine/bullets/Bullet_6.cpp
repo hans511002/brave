@@ -53,16 +53,14 @@ namespace engine
             {
                 container->tryPlay();
 			    //container->gotoAndStop((container->currentFrame + 1));
-                this->cathetus1 = this_pt.x - enemyTarget->shoot_pt.x;
-                this->cathetus2 = this_pt.y - enemyTarget->shoot_pt.y ;
-
-
+                this->cathetus1 =  enemyTarget->shoot_pt.x-this_pt.x;
+                this->cathetus2 =  enemyTarget->shoot_pt.y-this_pt.y ; 
                 this->hypotenuse = this_pt.distance(enemyTarget->shoot_pt);
-                this->angleAlpha = std::atan2(this->cathetus2, this->cathetus1) * (180 / std::PI) +45;
-				
-
-				
-				
+                this->angleAlpha = std::atan2(this->cathetus2, this->cathetus1) * (180 / std::PI);
+				if (this->angleAlpha < 0) {
+                    this->angleAlpha = this->angleAlpha + 360;
+                }
+                this->angleAlpha = 360 - this->angleAlpha - 90;				
 				this->container->setRotation( this->angleAlpha);
                 if (container->getWidth() > container->getHeight())
                 {
